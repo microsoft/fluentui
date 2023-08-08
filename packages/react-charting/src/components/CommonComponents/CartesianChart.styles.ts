@@ -15,21 +15,24 @@ export const getStyles = (props: ICartesianChartStyleProps): ICartesianChartStyl
         width: '100%',
         height: '100%',
         flexDirection: 'column',
+        overflow: 'hidden',
       },
       className,
     ],
     chartWrapper: {
       overflow: 'auto',
     },
-    tooltipTitle: {
-      textAlign: 'center',
-      fontSize: FontSizes.xSmall,
-      fontWeight: FontWeights.semibold,
-      fontStyle: 'normal',
-      lineHeight: FontSizes.medium,
-      color: NeutralColors.gray160,
-      fill: theme.semanticColors.bodyText,
-    },
+    axisTitle: [
+      theme.fonts.xSmall,
+      {
+        textAlign: 'center',
+        fontWeight: FontWeights.semibold,
+        fontStyle: 'normal',
+        lineHeight: FontSizes.medium,
+        color: NeutralColors.gray160,
+        fill: theme.semanticColors.bodyText,
+      },
+    ],
     xAxis: {
       selectors: {
         text: [

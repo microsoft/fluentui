@@ -78,7 +78,7 @@ export interface ILineChartProps extends ICartesianChartProps {
   culture?: string;
 
   /**
-   * * @default false
+   * @default false
    * The prop used to enable the perf optimization
    */
   enablePerfOptimization?: boolean;

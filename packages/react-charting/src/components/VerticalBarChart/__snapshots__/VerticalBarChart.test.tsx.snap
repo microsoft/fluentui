@@ -13,6 +13,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_3"
@@ -75,8 +76,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -90,7 +94,8 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -118,8 +123,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <g
@@ -142,7 +150,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={48}
+            x={28}
             y={224}
           />
           <text
@@ -155,7 +163,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={56}
+            x={36}
             y={218}
           >
             10.0k
@@ -181,7 +189,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={12.615384615384617}
+            x={-7.384615384615383}
             y={20}
           />
           <text
@@ -194,7 +202,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={20.615384615384617}
+            x={0.6153846153846168}
             y={14}
           >
             50.0k
@@ -220,7 +228,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-40.46153846153846}
+            x={-60.46153846153847}
             y={122}
           />
           <text
@@ -233,7 +241,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={-32.46153846153846}
+            x={-52.46153846153847}
             y={116}
           >
             30.0k
@@ -244,8 +252,11 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -263,7 +274,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -769,6 +780,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_3"
@@ -831,8 +843,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -846,7 +861,8 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -874,8 +890,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <g
@@ -898,7 +917,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={48}
+            x={28}
             y={224}
           />
           <text
@@ -911,7 +930,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={56}
+            x={36}
             y={218}
           >
             10.0k
@@ -937,7 +956,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={12.615384615384617}
+            x={-7.384615384615383}
             y={20}
           />
           <text
@@ -950,7 +969,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={20.615384615384617}
+            x={0.6153846153846168}
             y={14}
           >
             50.0k
@@ -976,7 +995,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-40.46153846153846}
+            x={-60.46153846153847}
             y={122}
           />
           <text
@@ -989,7 +1008,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={-32.46153846153846}
+            x={-52.46153846153847}
             y={116}
           >
             30.0k
@@ -1000,8 +1019,11 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1019,7 +1041,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1444,6 +1466,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_58"
@@ -1506,8 +1529,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1521,7 +1547,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -1549,8 +1576,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_58"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -1561,8 +1591,11 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1580,7 +1613,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1943,6 +1976,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_3"
@@ -2005,8 +2039,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2020,7 +2057,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -2048,8 +2086,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -2060,8 +2101,11 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2079,7 +2123,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2442,6 +2486,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_26"
@@ -2504,8 +2549,11 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2519,7 +2567,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -2547,8 +2596,11 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_26"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -2559,8 +2611,11 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2578,7 +2633,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2921,6 +2976,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_11"
@@ -2983,8 +3039,11 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2998,7 +3057,8 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -3026,8 +3086,11 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_11"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -3038,8 +3101,11 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3057,7 +3123,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3080,6 +3146,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_18"
@@ -3142,8 +3209,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3157,7 +3227,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -3185,8 +3256,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_18"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -3197,8 +3271,11 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3216,7 +3293,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3579,6 +3656,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_34"
@@ -3641,8 +3719,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3656,7 +3737,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -3684,8 +3766,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_34"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -3696,8 +3781,11 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3715,7 +3803,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -4078,6 +4166,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_42"
@@ -4140,8 +4229,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4155,7 +4247,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -4183,8 +4276,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_42"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -4195,8 +4291,11 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4214,7 +4313,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -4577,6 +4676,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_50"
@@ -4639,8 +4739,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4654,7 +4757,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -4682,8 +4786,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_50"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
          
@@ -4694,8 +4801,11 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4713,7 +4823,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>

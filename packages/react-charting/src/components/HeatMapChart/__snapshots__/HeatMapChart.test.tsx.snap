@@ -13,6 +13,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_1"
@@ -75,8 +76,11 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -90,7 +94,8 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -118,8 +123,11 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_1"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -132,7 +140,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, 22.52475247524754)"
+        transform="translate(-9.702970297029697, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
@@ -168,7 +176,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, 148.76237623762376)"
+        transform="translate(-39.4059405940594, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
@@ -198,8 +206,11 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -217,7 +228,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -616,6 +627,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_1"
@@ -678,8 +690,11 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -693,7 +708,8 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -721,8 +737,11 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_1"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -735,7 +754,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, 22.52475247524754)"
+        transform="translate(-9.702970297029697, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
@@ -771,7 +790,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, 148.76237623762376)"
+        transform="translate(-39.4059405940594, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
@@ -801,8 +820,11 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -820,7 +842,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1004,6 +1026,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_1"
@@ -1066,8 +1089,11 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1081,7 +1107,8 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -1109,8 +1136,11 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_1"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1123,7 +1153,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, 22.52475247524754)"
+        transform="translate(-9.702970297029697, 22.52475247524754)"
       >
         <rect
           fill="rgb(255, 195, 195)"
@@ -1159,7 +1189,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, 148.76237623762376)"
+        transform="translate(-39.4059405940594, 148.76237623762376)"
       >
         <rect
           fill="rgb(255, 197, 186)"
@@ -1189,8 +1219,11 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1208,7 +1241,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1483,6 +1516,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_1"
@@ -1545,8 +1579,11 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1560,7 +1597,8 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={342}
       />
       <g
@@ -1588,8 +1626,11 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_1"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1602,7 +1643,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, 22.9207920792079)"
+        transform="translate(-9.702970297029697, 22.9207920792079)"
       >
         <rect
           fill="rgb(166, 207, 226)"
@@ -1638,7 +1679,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, 168.96039603960395)"
+        transform="translate(-39.4059405940594, 168.96039603960395)"
       >
         <rect
           fill="rgb(159, 198, 222)"
@@ -1668,8 +1709,11 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1687,7 +1731,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(0,
                    287)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1710,6 +1754,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_1"
@@ -1772,8 +1817,11 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1787,7 +1835,8 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -1815,8 +1864,11 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_1"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1829,7 +1881,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, 22.52475247524754)"
+        transform="translate(-9.702970297029697, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
@@ -1865,7 +1917,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, 148.76237623762376)"
+        transform="translate(-39.4059405940594, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
@@ -1895,8 +1947,11 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1914,7 +1969,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2098,6 +2153,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_1"
@@ -2160,8 +2216,11 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2175,7 +2234,8 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -2203,8 +2263,11 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_1"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -2217,7 +2280,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-19.405940594059405, 22.52475247524754)"
+        transform="translate(-9.702970297029697, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
@@ -2253,7 +2316,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(10.297029702970299, 148.76237623762376)"
+        transform="translate(-39.4059405940594, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
@@ -2283,8 +2346,11 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2302,7 +2368,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>

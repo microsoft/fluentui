@@ -23,7 +23,7 @@ const options: IChoiceGroupOption[] = [
   { key: 'calloutExample', text: 'Custom Callout Example' },
 ];
 
-export class VerticalBarChartBasicExample extends React.Component<IVerticalBarChartProps, IVerticalChartState> {
+export class VerticalBarChartAxisTitleExample extends React.Component<IVerticalBarChartProps, IVerticalChartState> {
   constructor(props: IVerticalBarChartProps) {
     super(props);
     this.state = {
@@ -197,6 +197,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
             culture={window.navigator.language}
             chartTitle="Vertical bar chart basic example "
             data={points}
+            xAxisTitle="Different categories of animals and fruits"
+            yAxisTitle="Values of each category"
             width={this.state.width}
             useSingleColor={this.state.useSingleColor}
             height={this.state.height}
@@ -210,7 +212,6 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               ) => (props ? defaultRender(props) : null),
             })}
             hideLabels={this.state.hideLabels}
-            showXAxisLablesTooltip={true}
           />
         </div>
       </>

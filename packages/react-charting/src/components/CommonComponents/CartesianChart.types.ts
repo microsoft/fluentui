@@ -135,7 +135,7 @@ export interface ICartesianChartStyles {
   /**
    * styles for tooltip
    */
-  tooltipTitle?: IStyle;
+  axisTitle?: IStyle;
 
   /**
    * Style for the chart Title.
@@ -398,6 +398,12 @@ export interface ICartesianChartProps {
    * @default undefined
    */
   yAxisTitle?: string;
+
+  /**
+   * Prop to set the y axis title
+   * @default undefined
+   */
+  yAxisTitleSecondary?: string;
 }
 
 export interface IYValueHover {
@@ -428,10 +434,6 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    * Define the chart title
    */
   chartTitle?: string;
-
-  xAxisTitle?: string;
-
-  yAxisTitle?: string;
 
   /**
    * Only used for Area chart

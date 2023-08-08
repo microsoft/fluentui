@@ -13,6 +13,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_2"
@@ -75,8 +76,11 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -90,7 +94,8 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -118,8 +123,11 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_2"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -139,8 +147,8 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
-          x={40}
+          width={-20}
+          x={20}
           y={4}
         />
         <rect
@@ -160,8 +168,8 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-37.5}
-          x={40}
+          width={-20}
+          x={20}
           y={106}
         />
         <rect
@@ -181,8 +189,8 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-40}
-          x={40}
+          width={-20}
+          x={20}
           y={192.7}
         />
         <rect
@@ -203,7 +211,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseOver={[Function]}
           role="img"
           width={-15}
-          x={40}
+          x={20}
           y={233.5}
         />
       </g>
@@ -211,8 +219,11 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -230,7 +241,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1241,6 +1252,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_2"
@@ -1303,8 +1315,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1318,7 +1333,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -1346,8 +1362,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_2"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -1366,8 +1385,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
-          x={40}
+          width={-20}
+          x={20}
           y={4}
         />
          
@@ -1378,8 +1397,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1397,7 +1419,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1850,6 +1872,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_9"
@@ -1912,8 +1935,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1927,7 +1953,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -1955,8 +1982,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_9"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -1975,8 +2005,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
-          x={40}
+          width={-20}
+          x={20}
           y={4}
         />
          
@@ -1987,8 +2017,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2006,7 +2039,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2029,6 +2062,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_15"
@@ -2091,8 +2125,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2106,7 +2143,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -2134,8 +2172,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_15"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -2151,7 +2192,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           role="img"
           transform="translate(0,-5.125)"
           width={-12}
-          x={40}
+          x={20}
           y={14.25}
         />
          
@@ -2162,8 +2203,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2181,7 +2225,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2626,6 +2670,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_22"
@@ -2688,8 +2733,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2703,7 +2751,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -2731,8 +2780,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_22"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -2748,7 +2800,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           role="img"
           transform="translate(0,-5.125)"
           width={-12}
-          x={40}
+          x={20}
           y={14.25}
         />
          
@@ -2759,8 +2811,11 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2778,7 +2833,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>

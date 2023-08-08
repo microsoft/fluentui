@@ -68,22 +68,22 @@ export interface IAxisData {
 export interface IMargins {
   /**
    * left margin for the chart.
-   * @default 80
+   * @default 40
    */
   left?: number;
   /**
    * Right margin for the chart.
-   * @default 40
+   * @default 20
    */
   right?: number;
   /**
    * Top margin for the chart.
-   * @default 40
+   * @default 20
    */
   top?: number;
   /**
    * Bottom margin for the chart.
-   * @default 70
+   * @default 35
    */
   bottom?: number;
 }

@@ -96,6 +96,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     };
     this.idForGraph = getId('chart_');
     this.titleMargin = 8;
+    this._isRtl = true;
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
@@ -469,9 +470,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             <SVGTooltipText
               content={this.props.xAxisTitle}
               textProps={{
-                x: this.margins.left! + this.state.startFromX,
+                x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
                 y: svgDimensions.height - this.titleMargin,
-                className: this._classNames.tooltipTitle!,
+                className: this._classNames.axisTitle!,
+                textAnchor: 'middle',
               }}
               maxWidth={xAxisTitleMaximumAllowedWidth}
               wrapContent={wrapContent}
@@ -501,10 +503,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   className={this._classNames.yAxis}
                 />
                 <SVGTooltipText
-                  content={this.props.yAxisTitle}
+                  content={this.props.yAxisTitleSecondary}
                   textProps={{
                     x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
-                    y: this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!,
+                    y: this._isRtl
+                      ? this.state.startFromX - this.titleMargin
+                      : svgDimensions.width - this.margins.right!,
                     textAnchor: 'middle',
                     transform: `translate(${
                       this._isRtl
@@ -512,7 +516,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                         : this.margins.right! / 2 + this.titleMargin
                     },
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
-                    className: this._classNames.tooltipTitle!,
+                    className: this._classNames.axisTitle!,
                   }}
                   maxWidth={yAxisTitleMaximumAllowedHeight}
                   wrapContent={wrapContent}
@@ -530,7 +534,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 textAnchor: 'middle',
                 transform: `translate(0,
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
-                className: this._classNames.tooltipTitle!,
+                className: this._classNames.axisTitle!,
               }}
               maxWidth={yAxisTitleMaximumAllowedHeight}
               wrapContent={wrapContent}

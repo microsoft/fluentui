@@ -25,6 +25,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           font-size: 14px;
           font-weight: 400;
           height: 100%;
+          overflow: hidden;
           width: 100%;
         }
     id="chart_12"
@@ -81,8 +82,11 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           class=
 
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #323130;
                 fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-style: normal;
                 font-weight: 600;
@@ -92,7 +96,8 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           data-is-focusable="false"
           id="tooltip-host14"
           tabindex="-1"
-          x="40"
+          text-anchor="middle"
+          x="-10"
           y="-8"
         />
         <g
@@ -120,20 +125,23 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+              & g {
+                text-anchor: end;
+              }
           id="yAxisGElementchart_12"
-          transform="translate(40, 0)"
+          transform="translate(-40, 0)"
         />
         <g>
           <rect
             fill="transparent"
             height="-20"
             id="rectangle9"
-            width="-20"
+            width="-40"
           />
         </g>
         <g>
           <path
-            d="M40,-0.625L-20,20"
+            d="M-40,-0.625L20,20"
             fill="transparent"
             id="0-line-areaChart_6"
             opacity="1"
@@ -141,7 +149,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
             stroke-width="3"
           />
           <path
-            d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+            d="M-40,-0.625L20,20L20,-35L-40,-35Z"
             fill="red"
             fill-opacity="0.7"
             id="0-graph-areaChart_6"
@@ -149,11 +157,11 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           />
           <g
             clip-path="url(#clip)"
-            d="M40,-0.625L-20,20L-20,-35L40,-35Z"
+            d="M-40,-0.625L20,20L20,-35L-40,-35Z"
           >
             <circle
               aria-label="20. metaData1, 50."
-              cx="40"
+              cx="-40"
               cy="-0.625"
               data-is-focusable="true"
               fill="red"
@@ -166,7 +174,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
             />
             <circle
               aria-label="40. metaData1, 80."
-              cx="-20"
+              cx="20"
               cy="20"
               data-is-focusable="true"
               fill="red"
@@ -195,8 +203,11 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           class=
 
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #323130;
                 fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-style: normal;
                 font-weight: 600;
@@ -210,7 +221,7 @@ exports[`Area chart rendering Should re-render the Area chart with data 2`] = `
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="12"
+          y="-12"
         />
       </svg>
     </div>
@@ -378,6 +389,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -441,8 +453,11 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -456,7 +471,8 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -484,8 +500,11 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -495,12 +514,12 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -511,7 +530,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -522,12 +541,12 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -545,7 +564,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="#ffffff"
@@ -570,8 +589,8 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={-20}
-          x2={-20}
+          x1={20}
+          x2={20}
           y1={0}
           y2={310}
         />
@@ -580,8 +599,11 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -599,7 +621,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -966,6 +988,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -1029,8 +1052,11 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1044,7 +1070,8 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -1072,8 +1099,11 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -1083,12 +1113,12 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -1099,7 +1129,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -1110,12 +1140,12 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -1133,7 +1163,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="#ffffff"
@@ -1158,8 +1188,8 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={-20}
-          x2={-20}
+          x1={20}
+          x2={20}
           y1={0}
           y2={310}
         />
@@ -1168,8 +1198,11 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1187,7 +1220,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1451,6 +1484,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -1514,8 +1548,11 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1529,7 +1566,8 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -1557,8 +1595,11 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -1568,12 +1609,12 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -1584,7 +1625,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -1595,12 +1636,12 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -1618,7 +1659,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="#ffffff"
@@ -1643,8 +1684,8 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           strokeDasharray={5.5}
           strokeWidth={1}
           visibility="visibility"
-          x1={-20}
-          x2={-20}
+          x1={20}
+          x2={20}
           y1={0}
           y2={310}
         />
@@ -1653,8 +1694,11 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1672,7 +1716,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1936,6 +1980,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -1999,8 +2044,11 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2014,7 +2062,8 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -2042,8 +2091,11 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -2053,12 +2105,12 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -2070,7 +2122,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         />
         <path
           aria-label="metaData1, series 1 of 1 with 2 data points."
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           data-is-focusable={true}
           fill="red"
           fillOpacity={0.7}
@@ -2098,8 +2150,11 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2117,7 +2172,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2301,6 +2356,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -2364,8 +2420,11 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2379,7 +2438,8 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -2407,8 +2467,11 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -2418,12 +2481,12 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -2434,7 +2497,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="#637cef"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -2445,12 +2508,12 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="#637cef"
@@ -2468,7 +2531,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="#637cef"
@@ -2503,8 +2566,11 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2522,7 +2588,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2706,6 +2772,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -2769,8 +2836,11 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2784,7 +2854,8 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -2812,8 +2883,11 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -2823,12 +2897,12 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -2839,7 +2913,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -2850,12 +2924,12 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -2873,7 +2947,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="red"
@@ -2908,8 +2982,11 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2927,7 +3004,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3111,6 +3188,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -3174,8 +3252,11 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3189,7 +3270,8 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -3217,8 +3299,11 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -3228,12 +3313,12 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={10}
+          width={-10}
         />
       </g>
       <g>
         <path
-          d="M10,29.808Z"
+          d="M-10,29.808Z"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -3244,7 +3329,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           strokeWidth={3}
         />
         <circle
-          cx={10}
+          cx={-10}
           cy={29.8076923076923}
           fill="red"
           fillOpacity={0.7}
@@ -3259,12 +3344,12 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         />
         <g
           clipPath="url(#clip)"
-          d="M10,29.808L10,275Z"
+          d="M-10,29.808L-10,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={10}
+            cx={-10}
             cy={29.8076923076923}
             data-is-focusable={true}
             fill="red"
@@ -3299,8 +3384,11 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3318,7 +3406,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3502,6 +3590,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -3565,8 +3654,11 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3580,7 +3672,8 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -3608,8 +3701,11 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -3619,12 +3715,12 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -3635,7 +3731,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -3646,12 +3742,12 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -3669,7 +3765,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="red"
@@ -3704,8 +3800,11 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3723,7 +3822,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3887,6 +3986,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -3950,8 +4050,11 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3965,7 +4068,8 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={342}
       />
       <g
@@ -3993,8 +4097,11 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -4004,12 +4111,12 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,130.625L-20,20"
+          d="M-40,130.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -4020,7 +4127,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,130.625L-20,20L-20,315L40,315Z"
+          d="M-40,130.625L20,20L20,315L-40,315Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -4031,12 +4138,12 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,130.625L-20,20L-20,315L40,315Z"
+          d="M-40,130.625L20,20L20,315L-40,315Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={130.625}
             data-is-focusable={true}
             fill="red"
@@ -4054,7 +4161,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="red"
@@ -4089,8 +4196,11 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4108,7 +4218,7 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         transform="translate(0,
                    287)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -4131,6 +4241,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -4194,8 +4305,11 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4209,7 +4323,8 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -4237,8 +4352,11 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -4248,12 +4366,12 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -4264,7 +4382,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -4275,12 +4393,12 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -4298,7 +4416,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="red"
@@ -4333,8 +4451,11 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4352,7 +4473,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -4536,6 +4657,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -4599,8 +4721,11 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4614,7 +4739,8 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -4642,8 +4768,11 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -4653,12 +4782,12 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -4669,7 +4798,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -4680,12 +4809,12 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -4703,7 +4832,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="red"
@@ -4738,8 +4867,11 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4757,7 +4889,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -4941,6 +5073,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -5004,8 +5137,11 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5019,7 +5155,8 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -5047,8 +5184,11 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -5058,12 +5198,12 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -5074,7 +5214,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -5085,12 +5225,12 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -5108,7 +5248,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="red"
@@ -5143,8 +5283,11 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5162,7 +5305,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -5346,6 +5489,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_6"
@@ -5409,8 +5553,11 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5424,7 +5571,8 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -5452,8 +5600,11 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_6"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <rect
@@ -5463,12 +5614,12 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           onMouseMove={[Function]}
           onMouseOut={[Function]}
           onMouseOver={[Function]}
-          width={-20}
+          width={-40}
         />
       </g>
       <g>
         <path
-          d="M40,115.625L-20,20"
+          d="M-40,115.625L20,20"
           fill="transparent"
           id="0-line-areaChart_0"
           onMouseMove={[Function]}
@@ -5479,7 +5630,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           strokeWidth={3}
         />
         <path
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           fill="red"
           fillOpacity={0.7}
           id="0-graph-areaChart_0"
@@ -5490,12 +5641,12 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         />
         <g
           clipPath="url(#clip)"
-          d="M40,115.625L-20,20L-20,275L40,275Z"
+          d="M-40,115.625L20,20L20,275L-40,275Z"
           key="0-dots-areaChart_0"
         >
           <circle
             aria-label="20. metaData1, 50."
-            cx={40}
+            cx={-40}
             cy={115.625}
             data-is-focusable={true}
             fill="red"
@@ -5513,7 +5664,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           />
           <circle
             aria-label="40. metaData1, 80."
-            cx={-20}
+            cx={20}
             cy={20}
             data-is-focusable={true}
             fill="red"
@@ -5548,8 +5699,11 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5567,7 +5721,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>

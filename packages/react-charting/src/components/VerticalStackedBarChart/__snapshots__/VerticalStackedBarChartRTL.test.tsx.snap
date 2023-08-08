@@ -25,6 +25,7 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
           font-size: 14px;
           font-weight: 400;
           height: 100%;
+          overflow: hidden;
           width: 100%;
         }
     id="chart_6"
@@ -80,8 +81,11 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
           class=
 
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #323130;
                 fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-style: normal;
                 font-weight: 600;
@@ -91,7 +95,8 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
           data-is-focusable="false"
           id="tooltip-host8"
           tabindex="-1"
-          x="40"
+          text-anchor="middle"
+          x="-10"
           y="-8"
         />
         <g
@@ -119,8 +124,11 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+              & g {
+                text-anchor: end;
+              }
           id="yAxisGElementchart_6"
-          transform="translate(40, 0)"
+          transform="translate(-40, 0)"
         />
         <g />
         <g />
@@ -128,8 +136,11 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
           class=
 
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #323130;
                 fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-style: normal;
                 font-weight: 600;
@@ -143,7 +154,7 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="12"
+          y="-12"
         />
       </svg>
     </div>
@@ -397,6 +408,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_3"
@@ -459,8 +471,11 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -474,7 +489,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -502,8 +518,11 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <g
@@ -533,7 +552,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
+              x={28}
               y={78.84615384615384}
             />
             <rect
@@ -557,7 +576,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
+              x={28}
               y={54.326923076923066}
             />
           </g>
@@ -573,7 +592,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={56}
+            x={36}
             y={48.326923076923066}
           >
             45
@@ -606,7 +625,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
+              x={-64}
               y={127.88461538461539}
             />
             <rect
@@ -630,7 +649,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
+              x={-64}
               y={29.807692307692307}
             />
           </g>
@@ -646,7 +665,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-36}
+            x={-56}
             y={23.807692307692307}
           >
             50
@@ -658,8 +677,11 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -677,7 +699,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1092,6 +1114,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_3"
@@ -1154,8 +1177,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1169,7 +1195,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -1197,8 +1224,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <g
@@ -1228,7 +1258,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
+              x={28}
               y={78.84615384615384}
             />
             <rect
@@ -1252,7 +1282,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
+              x={28}
               y={54.326923076923066}
             />
           </g>
@@ -1268,7 +1298,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={56}
+            x={36}
             y={48.326923076923066}
           >
             45
@@ -1301,7 +1331,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
+              x={-64}
               y={127.88461538461539}
             />
             <rect
@@ -1325,7 +1355,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
+              x={-64}
               y={29.807692307692307}
             />
           </g>
@@ -1341,7 +1371,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-36}
+            x={-56}
             y={23.807692307692307}
           >
             50
@@ -1353,8 +1383,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1372,7 +1405,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -1705,6 +1738,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_3"
@@ -1767,8 +1801,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -1782,7 +1819,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={302}
       />
       <g
@@ -1810,8 +1848,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g>
         <g
@@ -1841,7 +1882,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               key="0"
               transform="translate(0, 0)"
               width={16}
-              x={48}
+              x={28}
               y={78.84615384615384}
             />
             <rect
@@ -1856,7 +1897,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               key="1"
               transform="translate(0, 0)"
               width={16}
-              x={48}
+              x={28}
               y={54.326923076923066}
             />
           </g>
@@ -1872,7 +1913,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={56}
+            x={36}
             y={48.326923076923066}
           >
             45
@@ -1905,7 +1946,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               key="1"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
+              x={-64}
               y={127.88461538461539}
             />
             <rect
@@ -1920,7 +1961,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               key="2"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
+              x={-64}
               y={29.807692307692307}
             />
           </g>
@@ -1936,7 +1977,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-36}
+            x={-56}
             y={23.807692307692307}
           >
             50
@@ -1951,13 +1992,13 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           strokeLinecap="round"
           strokeWidth={3}
           transform="translate(0, 0)"
-          x1={56}
-          x2={-36}
+          x1={-56}
+          x2={36}
           y1={201.4423076923077}
           y2={127.88461538461539}
         />
         <circle
-          cx={56}
+          cx={-56}
           cy={201.4423076923077}
           fill="#ffffff"
           key="0-0-dot"
@@ -1969,7 +2010,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           visibility="visibility"
         />
         <circle
-          cx={-36}
+          cx={36}
           cy={127.88461538461539}
           fill="#ffffff"
           key="0-1-dot"
@@ -1985,8 +2026,11 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2004,7 +2048,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2449,6 +2493,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_66"
@@ -2511,8 +2556,11 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2526,7 +2574,8 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -2554,8 +2603,11 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_66"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -2563,8 +2615,11 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2582,7 +2637,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -2855,6 +2910,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_3"
@@ -2917,8 +2973,11 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2932,7 +2991,8 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -2960,8 +3020,11 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -2969,8 +3032,11 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -2988,7 +3054,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3261,6 +3327,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_26"
@@ -3323,8 +3390,11 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3338,7 +3408,8 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -3366,8 +3437,11 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_26"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -3375,8 +3449,11 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3394,7 +3471,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3647,6 +3724,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_11"
@@ -3709,8 +3787,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3724,7 +3805,8 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -3752,8 +3834,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_11"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -3761,8 +3846,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3780,7 +3868,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -3803,6 +3891,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_18"
@@ -3865,8 +3954,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3880,7 +3972,8 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -3908,8 +4001,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_18"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -3917,8 +4013,11 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -3936,7 +4035,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -4209,6 +4308,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_50"
@@ -4271,8 +4371,11 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4286,7 +4389,8 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -4314,8 +4418,11 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_50"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -4323,8 +4430,11 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4342,7 +4452,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -4615,6 +4725,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_34"
@@ -4677,8 +4788,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4692,7 +4806,8 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -4720,8 +4835,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_34"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -4729,8 +4847,11 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -4748,7 +4869,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -5021,6 +5142,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_42"
@@ -5083,8 +5205,11 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5098,7 +5223,8 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -5126,8 +5252,11 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_42"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -5135,8 +5264,11 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5154,7 +5286,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>
@@ -5427,6 +5559,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         font-size: 14px;
         font-weight: 400;
         height: 100%;
+        overflow: hidden;
         width: 100%;
       }
   id="chart_58"
@@ -5489,8 +5622,11 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5504,7 +5640,8 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
-        x={40}
+        textAnchor="middle"
+        x={-10}
         y={-8}
       />
       <g
@@ -5532,8 +5669,11 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
+            & g {
+              text-anchor: end;
+            }
         id="yAxisGElementchart_58"
-        transform="translate(40, 0)"
+        transform="translate(-40, 0)"
       />
       <g />
       <g />
@@ -5541,8 +5681,11 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         className=
 
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               color: #323130;
               fill: #323130;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 10px;
               font-style: normal;
               font-weight: 600;
@@ -5560,7 +5703,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={12}
+        y={-12}
       />
     </svg>
   </div>

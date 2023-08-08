@@ -415,7 +415,7 @@ describe('Vertical bar chart - Subcomponent xAxis Labels', () => {
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /showDots/i)).toHaveLength(5);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('20,0...');
+      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('1,00...');
     },
   );
 

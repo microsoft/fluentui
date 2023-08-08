@@ -25,6 +25,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           font-size: 14px;
           font-weight: 400;
           height: 100%;
+          overflow: hidden;
           width: 100%;
         }
     id="chart_1"
@@ -80,8 +81,11 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           class=
 
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #323130;
                 fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-style: normal;
                 font-weight: 600;
@@ -91,7 +95,8 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           data-is-focusable="false"
           id="tooltip-host3"
           tabindex="-1"
-          x="40"
+          text-anchor="middle"
+          x="-10"
           y="-8"
         />
         <g
@@ -119,8 +124,11 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
+              & g {
+                text-anchor: end;
+              }
           id="yAxisGElementchart_1"
-          transform="translate(40, 0)"
+          transform="translate(-40, 0)"
         />
         <g
           aria-label="2020-03-04T00:00:00.000Z, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -129,7 +137,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(-19.405940594059405, -7.227722772277229)"
+          transform="translate(-9.702970297029697, -7.227722772277229)"
         >
           <rect
             fill="rgb(166, 207, 226)"
@@ -161,7 +169,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(10.297029702970299, -34.45544554455446)"
+          transform="translate(-39.4059405940594, -34.45544554455446)"
         >
           <rect
             fill="rgb(159, 198, 222)"
@@ -191,8 +199,11 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           class=
 
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 color: #323130;
                 fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 10px;
                 font-style: normal;
                 font-weight: 600;
@@ -206,7 +217,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="12"
+          y="-12"
         />
       </svg>
     </div>

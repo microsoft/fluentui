@@ -157,6 +157,8 @@ exports[`GaugeChart - event listeners testing should show a callout when the mou
               role="img"
               tabindex="-1"
               text-anchor="middle"
+              x="0"
+              y="0"
             >
               ...
             </text>
@@ -922,6 +924,8 @@ exports[`GaugeChart - snapshot testing should not render min and max values of t
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             25%
           </text>
@@ -1454,6 +1458,8 @@ exports[`GaugeChart - snapshot testing should not render the legends when the hi
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             25%
           </text>
@@ -1644,6 +1650,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly 1`] = 
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             25%
           </text>
@@ -2189,6 +2197,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly in dar
               onMouseLeave={[Function]}
               role="img"
               textAnchor="middle"
+              x={0}
+              y={0}
             >
               25%
             </text>
@@ -2722,6 +2732,8 @@ exports[`GaugeChart - snapshot testing should render GaugeChart correctly when t
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             25%
           </text>
@@ -3234,6 +3246,8 @@ exports[`GaugeChart - snapshot testing should render a color from DataVizPalette
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             60%
           </text>
@@ -3656,6 +3670,8 @@ exports[`GaugeChart - snapshot testing should render a placeholder segment when 
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             60%
           </text>
@@ -4110,6 +4126,8 @@ exports[`GaugeChart - snapshot testing should render the chart title correctly 1
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             25%
           </text>
@@ -4642,6 +4660,8 @@ exports[`GaugeChart - snapshot testing should render the chart value in fraction
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             25/100
           </text>
@@ -5174,6 +5194,8 @@ exports[`GaugeChart - snapshot testing should render the sublabel correctly 1`] 
             onMouseLeave={[Function]}
             role="img"
             textAnchor="middle"
+            x={0}
+            y={0}
           >
             25%
           </text>
