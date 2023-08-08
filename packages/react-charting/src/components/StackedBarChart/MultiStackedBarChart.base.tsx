@@ -163,6 +163,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
     const total =
       this.props.variant === MultiStackedBarChartVariant.AbsoluteScale ? this._longestBarTotalValue : barTotalValue;
+    let value = 0;
 
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
@@ -194,7 +195,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
 
     let prevPosition = 0;
-    let value = 0;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color
