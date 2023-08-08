@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Changes for lazy load for hover card and legends",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
