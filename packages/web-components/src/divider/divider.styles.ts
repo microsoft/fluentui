@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   colorBrandForeground1,
   colorBrandStroke1,
@@ -125,4 +125,18 @@ export const styles = css`
   :host([appearance='subtle']) ::slotted(*) {
     color: ${colorNeutralForeground3};
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host([appearance='strong'])::before,
+    :host([appearance='strong'])::after,
+    :host([appearance='brand'])::before,
+    :host([appearance='brand'])::after,
+    :host([appearance='subtle'])::before,
+    :host([appearance='subtle'])::after,
+    :host::after,
+    :host::before {
+      background: WindowText;
+      color: WindowText;
+    }
+  `),
+);
