@@ -555,6 +555,90 @@ describe('Overflow', () => {
     cy.get(`[${selectors.item}="2"]`).should('not.be.visible');
   });
 
+  it('should be no flickering', () => {
+    mount(
+      <Container>
+        <Item width="unset" id="0">
+          Item 0
+        </Item>
+        <Item width="unset" id="1">
+          Item 1
+        </Item>
+        <Item width="unset" id="2">
+          Super Long Item 2
+        </Item>
+        <Item width="unset" id="3">
+          3
+        </Item>
+        <Item id="4">Item 4</Item>
+        <Item id="5">Item 5</Item>
+        <Menu />
+      </Container>,
+    );
+
+    setContainerSize(355);
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    setContainerSize(354);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    setContainerSize(353);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+    setContainerSize(352);
+    cy.get(`[${selectors.item}="3"]`).should('be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('not.be.visible');
+  });
+
+  it('should be no flickering with larger divider', () => {
+    mount(
+      <Container>
+        <Item id={'1'} groupId={'1'}>
+          1
+        </Item>
+        <CustomDivider groupId={'1'} data-divider="1" />
+        <Item id={'2'} groupId={'2'}>
+          2
+        </Item>
+        <CustomDivider groupId={'2'} data-divider="2" />
+        <Item id={'3'} groupId={'3'}>
+          3
+        </Item>
+        <Item id={'4'} groupId={'3'}>
+          4
+        </Item>
+        <CustomDivider groupId={'3'} data-divider="3" />
+        <Item id={'5'} groupId={'4'}>
+          5
+        </Item>
+        <Item id={'6'} groupId={'4'}>
+          6
+        </Item>
+        <CustomDivider groupId={'4'} data-divider="4" />
+        <Item id={'7'} groupId={'5'}>
+          7
+        </Item>
+        <Menu />
+      </Container>,
+    );
+
+    setContainerSize(470);
+    cy.get(`[${selectors.item}="7"]`).should('be.visible');
+    setContainerSize(469);
+    cy.get(`[${selectors.divider}="4"]`).should('exist');
+    cy.get(`[${selectors.item}="6"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="5"]`).should('be.visible');
+    cy.get(`[${selectors.divider}]`).should('have.length', 4);
+    setContainerSize(419);
+    cy.get(`[${selectors.divider}="4"]`).should('not.exist');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    setContainerSize(418);
+    cy.get(`[${selectors.divider}="4"]`).should('not.exist');
+    cy.get(`[${selectors.item}="5"]`).should('not.be.visible');
+    cy.get(`[${selectors.item}="4"]`).should('be.visible');
+    setContainerSize(417);
+  });
+
   it('should remove overflow menu if the last overflowed item can take its place', () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     mount(
