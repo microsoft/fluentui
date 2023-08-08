@@ -106,6 +106,8 @@ export {
   SSRProvider,
   useId,
   useIsomorphicLayoutEffect,
+  useEventCallback,
+  mergeCallbacks,
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
