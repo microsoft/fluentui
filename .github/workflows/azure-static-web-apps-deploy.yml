@@ -18,11 +18,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.18.1
-          cache: 'yarn'
-
       - name: Build and Deploy Job
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
