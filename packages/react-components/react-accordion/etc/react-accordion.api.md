@@ -98,6 +98,7 @@ export type AccordionItemContextValue<Value = AccordionItemValue> = {
     open: boolean;
     disabled: boolean;
     value: Value;
+    onHeaderClick(event: AccordionToggleEvent): void;
 };
 
 // @public (undocumented)
