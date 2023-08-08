@@ -94,10 +94,10 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     };
 
     // use capture phase because React can update DOM before the event bubbles to the document
+    element?.addEventListener('click', conditionalHandler, true);
     element?.addEventListener('touchstart', conditionalHandler, true);
     element?.addEventListener('contextmenu', conditionalHandler, true);
     element?.addEventListener('mousedown', handleMouseDown, true);
-    element?.addEventListener('mouseup', conditionalHandler, true);
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
     timeoutId.current = window.setTimeout(() => {
@@ -108,7 +108,6 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
       element?.removeEventListener('touchstart', conditionalHandler, true);
       element?.removeEventListener('contextmenu', conditionalHandler, true);
       element?.removeEventListener('mousedown', handleMouseDown, true);
-      element?.removeEventListener('mouseup', conditionalHandler, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;
