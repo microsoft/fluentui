@@ -36,7 +36,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   });
 
-  const focusRef = useFocusFirstElement(open, modalType);
+  const focusRef = useFocusFirstElement(open);
   const disableBodyScroll = useDisableBodyScroll();
   const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
 
