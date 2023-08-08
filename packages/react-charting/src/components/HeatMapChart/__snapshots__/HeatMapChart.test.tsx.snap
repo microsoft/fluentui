@@ -330,144 +330,182 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            max-width: 238px;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-          {
-            animation-duration: 0.367s;
-            animation-fill-mode: both;
-            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
-            animation-timing-function: cubic-bezier(.1,.9,.2,1);
-          }
-      data-is-focusable={false}
-      hidden={false}
-      id="10"
-      style={
-        Object {
-          "left": 8,
-          "maxHeight": 752,
-          "top": 8,
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              max-width: 238px;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        role="text"
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
+        data-is-focusable={false}
+        hidden={false}
+        id="10"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "left": 8,
+            "maxHeight": 752,
+            "top": 8,
           }
         }
+        tabIndex={-1}
       >
         <div
           className=
-
+              ms-Callout-main
               {
-                background-blend-mode: normal, luminosity;
                 background-color: #ffffff;
-                display: grid;
-                overflow: hidden;
-                padding-bottom: 10px;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 11px;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
               }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          role="text"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
         >
           <div
             className=
 
                 {
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
+                  background-blend-mode: normal, luminosity;
+                  background-color: #ffffff;
+                  display: grid;
+                  overflow: hidden;
+                  padding-bottom: 10px;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 11px;
                 }
           >
             <div
               className=
 
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #605e5c;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 16px;
-                    opacity: 0.8;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
                   }
             >
-               
+              <div
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      line-height: 16px;
+                      opacity: 0.8;
+                    }
+              >
+                 
+              </div>
             </div>
-          </div>
-          <div
-            className=
-
-                {
-                  align-items: flex-end;
-                  display: flex;
-                }
-          >
             <div
               className=
 
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    border-left: 4px solid rgb(159, 198, 222);
-                    color: #323130;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 28px;
-                    font-weight: 600;
-                    line-height: 22px;
-                    margin-top: unset;
-                    padding-left: 8px;
+                    align-items: flex-end;
+                    display: flex;
                   }
             >
+              <div
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      border-left: 4px solid rgb(159, 198, 222);
+                      color: #323130;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 28px;
+                      font-weight: 600;
+                      line-height: 22px;
+                      margin-top: unset;
+                      padding-left: 8px;
+                    }
+              >
+                <div
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 16px;
+                      }
+                >
+                  Execllent (0-200)
+                </div>
+                <div
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: rgb(159, 198, 222);
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 28px;
+                        font-weight: bold;
+                        line-height: 36px;
+                      }
+                >
+                  50
+                </div>
+              </div>
               <div
                 className=
 
@@ -478,25 +516,28 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      line-height: 16px;
+                      margin-left: 6px;
                     }
               >
-                Execllent (0-200)
-              </div>
-              <div
-                className=
+                <span
+                  className=
 
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      color: rgb(159, 198, 222);
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 28px;
-                      font-weight: bold;
-                      line-height: 36px;
-                    }
-              >
-                50
+                      {
+                        font-weight: 700;
+                      }
+                >
+                  50
+                </span>
+                /
+                <span
+                  className=
+
+                      {
+                        font-weight: 600;
+                      }
+                >
+                  2,391
+                </span>
               </div>
             </div>
             <div
@@ -505,55 +546,22 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    border-top: 1px solid #c8c6c4;
                     color: #323130;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 12px;
                     font-weight: 400;
-                    margin-left: 6px;
+                    margin-top: 10px;
+                    padding-top: 10px;
                   }
             >
-              <span
-                className=
-
-                    {
-                      font-weight: 700;
-                    }
-              >
-                50
-              </span>
-              /
-              <span
-                className=
-
-                    {
-                      font-weight: 600;
-                    }
-              >
-                2,391
-              </span>
+              a good day to start with in Texas with best air quality
             </div>
-          </div>
-          <div
-            className=
-
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  border-top: 1px solid #c8c6c4;
-                  color: #323130;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 12px;
-                  font-weight: 400;
-                  margin-top: 10px;
-                  padding-top: 10px;
-                }
-          >
-            a good day to start with in Texas with best air quality
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -893,9 +901,6 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -1326,9 +1331,6 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -1507,9 +1509,6 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
       </g>
     </svg>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -1849,9 +1848,6 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2191,8 +2187,5 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
