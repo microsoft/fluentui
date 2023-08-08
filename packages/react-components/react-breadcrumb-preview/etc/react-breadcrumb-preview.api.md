@@ -12,7 +12,6 @@ import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Link } from '@fluentui/react-link';
 import { LinkProps } from '@fluentui/react-link';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -97,7 +96,7 @@ export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<Lin
 
 // @public (undocumented)
 export type BreadcrumbLinkSlots = {
-    root: Slot<typeof Link>;
+    root: LinkProps;
     icon?: Slot<'span'>;
 };
 
@@ -187,7 +186,7 @@ export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React
 export const useBreadcrumbItemStyles_unstable: (state: BreadcrumbItemState) => BreadcrumbItemState;
 
 // @public
-export const useBreadcrumbLink_unstable: (props: BreadcrumbLinkProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbLinkState;
+export const useBreadcrumbLink_unstable: (props: BreadcrumbLinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => BreadcrumbLinkState;
 
 // @public
 export const useBreadcrumbLinkStyles_unstable: (state: BreadcrumbLinkState) => BreadcrumbLinkState;
