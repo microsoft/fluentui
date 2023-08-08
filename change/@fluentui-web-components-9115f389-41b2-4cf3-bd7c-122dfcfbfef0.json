@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(web-components): enumerate side-effects for package export paths",
+  "packageName": "@fluentui/web-components",
+  "email": "chhol@microsoft.com",
+  "dependentChangeType": "patch"
+}
