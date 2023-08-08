@@ -105,6 +105,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     }, 1);
 
     return () => {
+      element?.removeEventListener('click', conditionalHandler, true);
       element?.removeEventListener('touchstart', conditionalHandler, true);
       element?.removeEventListener('contextmenu', conditionalHandler, true);
       element?.removeEventListener('mousedown', handleMouseDown, true);
