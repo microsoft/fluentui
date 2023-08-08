@@ -488,6 +488,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
             {this.props.legendBars}
           </div>
         )}
+        {/** The callout is used for narration, so keep it mounted on the DOM */}
         {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
       </div>
     );
