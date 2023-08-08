@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Contrast ratio a11y bug fix for detailslist",
+  "packageName": "@uifabric/azure-themes",
+  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
