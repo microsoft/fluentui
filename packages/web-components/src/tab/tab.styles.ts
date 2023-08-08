@@ -58,15 +58,11 @@ export const styles = css`
     font-weight: ${fontWeightSemibold};
   }
 
-  :host::before,
-  :host::after {
-    height: ${strokeWidthThicker};
-  }
-
   :host([aria-selected='true'])::after {
     background-color: ${colorCompoundBrandStroke};
     border-radius: ${borderRadiusCircular};
     content: '';
+    height: ${strokeWidthThicker};
     inset: 0;
     position: absolute;
     z-index: 2;
@@ -77,6 +73,7 @@ export const styles = css`
     border-radius: ${borderRadiusCircular};
     content: '';
     inset: 0;
+    height: ${strokeWidthThicker};
     position: absolute;
     z-index: 1;
   }
