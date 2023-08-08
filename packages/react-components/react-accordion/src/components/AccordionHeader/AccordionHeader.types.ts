@@ -1,13 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { ARIAButtonSlotProps } from '@fluentui/react-aria';
+import type { AccordionHeaderContextValue } from '../../contexts/accordionHeader';
 
 export type AccordionHeaderSize = 'small' | 'medium' | 'large' | 'extra-large';
 export type AccordionHeaderExpandIconPosition = 'start' | 'end';
-
-export type AccordionHeaderContextValue = Required<Pick<AccordionHeaderProps, 'expandIconPosition' | 'size'>> & {
-  disabled: boolean;
-  open: boolean;
-};
 
 export type AccordionHeaderContextValues = {
   accordionHeader: AccordionHeaderContextValue;

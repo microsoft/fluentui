@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { useSkeletonContext } from '../../contexts/SkeletonContext';
 import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types';
 
@@ -21,19 +21,12 @@ export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Re
     shape = 'rectangle',
   } = props;
 
-  const root = getNativeElementProps('div', {
-    ref,
-    ...props,
-  });
-
-  return {
-    appearance,
-    animation,
-    size,
-    shape,
-    components: {
-      root: 'div',
-    },
-    root,
-  };
+  const root = slot.always(
+    getNativeElementProps('div', {
+      ref,
+      ...props,
+    }),
+    { elementType: 'div' },
+  );
+  return { appearance, animation, size, shape, components: { root: 'div' }, root };
 };
