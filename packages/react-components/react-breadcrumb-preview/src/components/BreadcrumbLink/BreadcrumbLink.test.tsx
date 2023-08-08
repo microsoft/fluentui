@@ -29,7 +29,7 @@ describe('BreadcrumbLink', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <a
-          class="fui-Link fui-Link fui-BreadcrumbLink"
+          class="fui-Link fui-BreadcrumbLink"
           href="#"
           tabindex="0"
         >
@@ -48,7 +48,7 @@ describe('BreadcrumbLink', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <a
-          class="fui-Link fui-Link fui-BreadcrumbLink"
+          class="fui-Link fui-BreadcrumbLink"
           href="#"
           tabindex="0"
         >
@@ -85,7 +85,7 @@ describe('BreadcrumbLink', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <a
-          class="fui-Link fui-Link fui-BreadcrumbLink"
+          class="fui-Link fui-BreadcrumbLink"
           href="#"
           tabindex="0"
         >
@@ -118,7 +118,7 @@ describe('BreadcrumbLink', () => {
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <a
-          class="fui-Link fui-Link fui-BreadcrumbLink"
+          class="fui-Link fui-BreadcrumbLink"
           href="#"
           tabindex="0"
         >
