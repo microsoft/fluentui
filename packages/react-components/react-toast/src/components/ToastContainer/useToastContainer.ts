@@ -7,6 +7,8 @@ import {
   useEventCallback,
   useId,
   slot,
+  useMotionPresence,
+  useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
@@ -36,7 +38,7 @@ export const useToastContainer_unstable = (
   ref: React.Ref<HTMLElement>,
 ): ToastContainerState => {
   const {
-    visible,
+    visible: visibleProp,
     children,
     close: closeProp,
     remove,
@@ -65,6 +67,25 @@ export const useToastContainer_unstable = (
     // Escape is already reserved to dismiss all toasts
     ignoreDefaultKeydown: { Tab: true, Escape: true, Enter: true },
   });
+
+  const { shouldRender, visible, ref: motionRef, motionState } = useMotionPresence(visibleProp);
+
+  useIsomorphicLayoutEffect(() => {
+    if (motionState !== 'entering' || !toastRef.current) {
+      return;
+    }
+
+    const element = toastRef.current;
+    element.style.setProperty('--fui-toast-height', `${element.scrollHeight}px`);
+  }, [motionState]);
+
+  useIsomorphicLayoutEffect(() => {
+    if (motionState !== 'exiting') {
+      return;
+    }
+
+    remove();
+  }, [motionState, remove]);
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;
@@ -220,7 +241,7 @@ export const useToastContainer_unstable = (
     ),
     root: slot.always(
       getNativeElementProps('div', {
-        ref: useMergedRefs(ref, toastRef, toastAnimationRef),
+        ref: useMergedRefs(ref, toastRef, toastAnimationRef, motionRef),
         children,
         tabIndex: 0,
         role: 'listitem',
@@ -239,6 +260,7 @@ export const useToastContainer_unstable = (
     transitionTimeout: 500,
     running,
     visible,
+    shouldRender,
     remove,
     close,
     onTransitionEntering,

@@ -14,8 +14,19 @@ export const renderToastContainer_unstable = (
   state: ToastContainerState,
   contextValues: ToastContainerContextValues,
 ) => {
-  const { onTransitionEntering, visible, transitionTimeout, remove, nodeRef } = state;
+  const { onTransitionEntering, visible, transitionTimeout, remove, nodeRef, shouldRender } = state;
   assertSlots<ToastContainerSlots>(state);
+
+  if (shouldRender) {
+    return (
+      <ToastContainerContextProvider value={contextValues.toast}>
+        <state.root />
+        <state.timer />
+      </ToastContainerContextProvider>
+    );
+  }
+
+  return null;
 
   return (
     <Transition
