@@ -17,12 +17,12 @@ export { Actions } from './TreeActions.stories';
 export { DefaultOpenTrees } from './TreeDefaultOpenTrees.stories';
 export { OpenItemsControlled } from './TreeControllingOpenAndClose.stories';
 export { CustomizingInteractionAndControl } from './TreeCustomizingInteractionAndControl.stories';
-export { InlineStylingForNestedTree } from './TreeInlineStylingForNestedTree.stories';
+export { InlineStylingTreeItemLevel } from './TreeInlineStylingTreeItemLevel.stories';
 export { FlatTree } from './FlatTree.stories';
-export { TreeSingleAndMultiSelection } from './TreeSelection.stories';
+export { Selection } from './TreeSelection.stories';
 
 // SCENARIOS & FEATURES
-export { TreeManipulation } from './TreeManipulation';
+export { Manipulation } from './TreeManipulation.stories';
 export { LazyLoading } from './TreeLazyLoading.stories';
 export { InfiniteScrolling } from './TreeInfiniteScrolling.stories';
 export { Virtualization } from './Virtualization.stories';

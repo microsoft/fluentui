@@ -9,21 +9,14 @@ import {
 } from '@fluentui/react-tree-preview';
 
 export const CustomizingInteractionAndControl = () => {
-  const [openItems, setOpenItems] = React.useState<Set<TreeItemValue>>(() => new Set());
+  const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
   const onOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     if (data.type === 'Click' || data.type === 'Enter') {
       alert('click on item');
       return;
     }
-    const nextOpenItems = new Set(openItems);
-    if (data.open) {
-      nextOpenItems.add(data.value);
-    } else {
-      nextOpenItems.delete(data.value);
-    }
-    setOpenItems(nextOpenItems);
+    setOpenItems(data.openItems);
   };
-
   return (
     <Tree aria-label="Tree" openItems={openItems} onOpenChange={onOpenChange}>
       <TreeItem itemType="branch" value="default-subtree-1">
@@ -57,8 +50,9 @@ export const CustomizingInteractionAndControl = () => {
 CustomizingInteractionAndControl.parameters = {
   docs: {
     description: {
-      story:
-        'By default, every expandable TreeItem responds to clicks on both content and the expand/collapse icon. To handle these separately, listen for the `onOpenChange` event in the `Tree` component. You can check the event type to determine whether the content or the icon was clicked, allowing you to override the default behavior.',
+      story: `
+By default, every expandable TreeItem responds to clicks on both content and the expand/collapse icon. To handle these separately, listen for the \`onOpenChange\` event in the \`Tree\` component. You can check the event type to determine whether the content or the icon was clicked, allowing you to override the default behavior.
+      `,
     },
   },
 };

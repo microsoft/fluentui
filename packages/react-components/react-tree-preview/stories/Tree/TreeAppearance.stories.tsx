@@ -17,7 +17,6 @@ export const Appearance = () => {
           </Tree>
         </TreeItem>
       </Tree>
-      <br />
       <Tree aria-label="Subtle Alpha Tree" appearance="subtle-alpha">
         <TreeItem itemType="branch">
           <TreeItemLayout>Subtle-alpha appearance</TreeItemLayout>
@@ -31,7 +30,6 @@ export const Appearance = () => {
           </Tree>
         </TreeItem>
       </Tree>
-      <br />
       <Tree aria-label="Transparent Tree" appearance="transparent">
         <TreeItem itemType="branch">
           <TreeItemLayout>Transparent appearance</TreeItemLayout>
@@ -52,11 +50,12 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story:
-        'A tree can have the following `appearance` variants:\n' +
-        '- `subtle`: the default appearance.\n' +
-        '- `subtle-alpha`: minimizes emphasis on hovered or focused states.\n' +
-        '- `transparent`: no background color.\n',
+      story: `
+A tree can have the following \`appearance\` variants:
+- \`subtle\`: the default appearance.
+- \`subtle-alpha\`: minimizes emphasis on hovered or focused states.
+- \`transparent\`: no background color.
+      `,
     },
   },
 };

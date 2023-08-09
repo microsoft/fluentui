@@ -134,9 +134,11 @@ export const FlatTree = () => {
 FlatTree.parameters = {
   docs: {
     description: {
-      story: `The \`FlatTree\` component enables a more efficient and flexible way to manage tree structures by representing them in a flattened format. Unlike nested trees, flat trees simplify many common tasks such as searching or adding/removing items, and they are essential for supporting features like virtualization.
+      story: `
+The \`FlatTree\` component is a simplified version of \`Tree\` that is meant to be used together with the \`useHeadlessFlatTree_unstable\` hook. It enables a more efficient and flexible way to manage tree structures by representing them in a flattened format. Unlike nested trees, flat trees simplify many common tasks such as searching or adding/removing items, and they are essential for supporting features like virtualization.
 
-If you need to utilize a nested tree with \`FlatTree\`, simply convert it to the flat format using the \`flattenTree\` helper.`,
+If you need to utilize a nested tree with \`FlatTree\`, simply convert it to the flat format using the \`flattenTree\` helper.
+`,
     },
   },
 };

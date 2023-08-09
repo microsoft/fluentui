@@ -1,20 +1,20 @@
 import * as React from 'react';
 import {
-  FlatTree as Tree,
+  FlatTree,
   TreeItem,
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
+  TreeItemProps,
 } from '@fluentui/react-tree-preview';
 import { Delete20Regular } from '@fluentui/react-icons';
-import { Button } from '@fluentui/react-button';
-import { HeadlessTreeItem } from '../../src/utils/createHeadlessTree';
+import { Button } from '@fluentui/react-components';
 
 type ItemProps = HeadlessFlatTreeItemProps & { content: string };
 
-const defaultSubTrees: ItemProps[][] = [
+const subtrees: ItemProps[][] = [
   [
     { value: '1', content: 'Level 1, item 1' },
     { value: '1-1', parentValue: '1', content: 'Item 1-1' },
@@ -26,23 +26,21 @@ const defaultSubTrees: ItemProps[][] = [
   ],
 ];
 
-const CustomTreeItem = ({
-  item,
-  isItemRemovable,
-  onRemoveItem,
-}: {
-  item: HeadlessTreeItem<ItemProps>;
-  onRemoveItem: (id: string) => void;
-  isItemRemovable: boolean;
-}) => {
-  const { content, ...treeItemProps } = item.getTreeItemProps();
+type CustomTreeItemProps = TreeItemProps & {
+  onRemoveItem?: (value: string) => void;
+};
+
+const CustomTreeItem = ({ onRemoveItem, ...props }: CustomTreeItemProps) => {
+  const level = props['aria-level'];
+  const value = props.value as string;
+  const isItemRemovable = level !== 1 && !value.endsWith('-btn');
 
   const handleRemoveItem = React.useCallback(() => {
-    onRemoveItem(item.value.toString());
-  }, [item, onRemoveItem]);
+    onRemoveItem?.(value);
+  }, [value, onRemoveItem]);
 
   return (
-    <TreeItem key={item.value} {...treeItemProps}>
+    <TreeItem {...props}>
       <TreeItemLayout
         actions={
           isItemRemovable ? (
@@ -55,16 +53,16 @@ const CustomTreeItem = ({
           ) : undefined
         }
       >
-        {content}
+        {props.children}
       </TreeItemLayout>
     </TreeItem>
   );
 };
 
-export const TreeManipulation = () => {
-  const [trees, setTrees] = React.useState(defaultSubTrees);
+export const Manipulation = () => {
+  const [trees, setTrees] = React.useState(subtrees);
 
-  const handleOpenChange = (_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     // casting here to string as no number values are used in this example
     const value = data.value as string;
     if (value.endsWith('-btn')) {
@@ -120,23 +118,25 @@ export const TreeManipulation = () => {
   );
 
   return (
-    <Tree {...flatTree.getTreeProps()} aria-label="Tree">
-      {Array.from(flatTree.items(), item => (
-        <CustomTreeItem
-          item={item}
-          isItemRemovable={!(item.level === 1 || item.value.toString().endsWith('-btn'))}
-          onRemoveItem={removeFlatTreeItem}
-        />
-      ))}
-    </Tree>
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Tree">
+      {Array.from(flatTree.items(), item => {
+        const { content, ...treeItemProps } = item.getTreeItemProps();
+        return (
+          <CustomTreeItem {...treeItemProps} key={item.value} onRemoveItem={removeFlatTreeItem}>
+            {content}
+          </CustomTreeItem>
+        );
+      })}
+    </FlatTree>
   );
 };
 
-TreeManipulation.parameters = {
+Manipulation.parameters = {
   docs: {
     description: {
-      story:
-        'With a flat tree structure, you can easily manipulate the tree and control its state. In the example below, you can add or remove tree items by working with the `parentValue` property, which ensures the correct parent-child relationships within the tree',
+      story: `
+With a flat tree structure, you can easily manipulate the tree and control its state. In the example below, you can add or remove tree items by working with the \`parentValue\` property, which ensures the correct parent-child relationships within the tree
+      `,
     },
   },
 };

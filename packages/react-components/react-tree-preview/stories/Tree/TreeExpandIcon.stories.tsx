@@ -53,7 +53,7 @@ export const ExpandIcon = () => {
 ExpandIcon.parameters = {
   docs: {
     description: {
-      story: 'Both tree item layouts can have a custom expand/collapse icon.',
+      story: `Both tree item layouts can have a custom expand/collapse icon.`,
     },
   },
 };

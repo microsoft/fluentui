@@ -117,7 +117,9 @@ const mockFetch = (type: string) => {
 LazyLoading.parameters = {
   docs: {
     description: {
-      story: `This example shows lazy loading in a flat tree, where data is loaded on-demand to optimize rendering time and performance. Items are dynamically loaded when necessary.`,
+      story: `
+This example shows lazy loading in a flat tree, where data is loaded on-demand to optimize rendering time and performance. Items are dynamically loaded when necessary.
+      `,
     },
   },
 };

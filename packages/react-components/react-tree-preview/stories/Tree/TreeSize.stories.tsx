@@ -25,7 +25,6 @@ export const Size = () => {
           </Tree>
         </TreeItem>
       </Tree>
-      <br />
       <Tree aria-label="Default Tree">
         <TreeItem itemType="branch">
           <TreeItemLayout>Medium size tree</TreeItemLayout>
@@ -54,7 +53,9 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: 'A tree can be displayed in a `small` or `medium` (default) size.',
+      story: `
+A tree can be displayed in a \`small\` or \`medium\` (default) size.
+      `,
     },
   },
 };

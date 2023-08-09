@@ -56,7 +56,8 @@ export const Aside = () => (
 Aside.parameters = {
   docs: {
     description: {
-      story: `Both tree item layouts supports \`aside\` content that is displayed on the right side of a tree item. It can be used to display additional information, such as a badge with notification count or an icon indicating importance.
+      story: `
+Both tree item layouts supports \`aside\` content that is displayed on the right side of a tree item. It can be used to display additional information, such as a badge with notification count or an icon indicating importance.
 
 > ⚠️ Aside content is \`aria-hidden\` by default
       `,

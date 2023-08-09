@@ -18,11 +18,11 @@ const pinnedItems = [
   { value: 'pinned-item-3', parentValue: 'pinned', name: 'Pinned item 3' },
 ];
 
-interface Result {
+interface FetchResult {
   results: { name: string }[];
 }
 
-type Item = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
+type CustomItem = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
 
 const useStyles = makeStyles({
   container: {
@@ -35,7 +35,7 @@ const useStyles = makeStyles({
 export const InfiniteScrolling = () => {
   const [page, setPage] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(false);
-  const peopleItems = useQuery<Item[]>([
+  const peopleItems = useQuery<CustomItem[]>([
     { value: 'people', name: 'People' },
     ...Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
       value: `person-${index + 1}`,
@@ -44,7 +44,7 @@ export const InfiniteScrolling = () => {
     })),
   ]);
 
-  const items = React.useMemo<Item[]>(
+  const items = React.useMemo<CustomItem[]>(
     () => [
       ...pinnedItems,
       ...peopleItems.value,
@@ -68,8 +68,8 @@ export const InfiniteScrolling = () => {
   const fetchMoreItems = () => {
     setIsLoading(true);
 
-    mockFetchPeople(page).then((json: Result) => {
-      const fetchedItems = json.results.map<Item>(person => ({
+    mockFetchPeople(page).then((json: FetchResult) => {
+      const fetchedItems = json.results.map<CustomItem>(person => ({
         value: `person-${person.name}`,
         parentValue: 'people',
         name: person.name,
@@ -119,7 +119,7 @@ function useQuery<Value>(initialValue: Value) {
   return { ...queryResult, query } as const;
 }
 
-function mockFetchPeople(page: number): Promise<Result> {
+function mockFetchPeople(page: number): Promise<FetchResult> {
   return new Promise(resolve => {
     setTimeout(() => {
       const startIndex = page * ITEMS_PER_PAGE + 1;
@@ -135,8 +135,9 @@ function mockFetchPeople(page: number): Promise<Result> {
 InfiniteScrolling.parameters = {
   docs: {
     description: {
-      story:
-        'This example takes the previous lazy loading concept a step further by adding infinite scrolling. As the user navigates through the tree, additional items are loaded incrementally, enhancing the responsiveness and scalability of the tree.',
+      story: `
+This example takes the previous lazy loading concept a step further by adding infinite scrolling. As the user navigates through the tree, additional items are loaded incrementally, enhancing the responsiveness and scalability of the tree.
+      `,
     },
   },
 };

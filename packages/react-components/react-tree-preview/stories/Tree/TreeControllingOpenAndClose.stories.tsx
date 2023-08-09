@@ -9,9 +9,9 @@ import {
 } from '@fluentui/react-tree-preview';
 
 export const OpenItemsControlled = () => {
-  const [openItems, setOpenItems] = React.useState<TreeItemValue[]>([]);
+  const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
   const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    setOpenItems(curr => (data.open ? [...curr, data.value] : curr.filter(value => value !== data.value)));
+    setOpenItems(data.openItems);
   };
   return (
     <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
@@ -49,8 +49,9 @@ export const OpenItemsControlled = () => {
 OpenItemsControlled.parameters = {
   docs: {
     description: {
-      story:
-        "You can also control the open/closed state of `TreeItem` components with the Tree component's `openItems` prop and `onOpenChange` callback. `openItems` takes an array of open IDs, and `onOpenChange` updates it as items are opened or closed.",
+      story: `
+You can also control the open/closed state of \`TreeItem\` components with the Tree component's \`openItems\` prop and \`onOpenChange\` callback. \`openItems\` takes an [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) (like an array or a set) of open IDs, and \`onOpenChange\` updates it as items are opened or closed.
+      `,
     },
   },
 };
