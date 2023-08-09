@@ -10,7 +10,6 @@ import {
   VerticalBarChart,
   VerticalStackedBarChart,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '../../../../../packages/theme/src/index';
 
 storiesOf('react-charting/VerticalBarChart', module)
   .addDecorator((story, context) => TestWrapperDecorator(story, context))
@@ -232,21 +231,21 @@ storiesOf('react-charting/VerticalBarChart', module)
         {
           legend: 'Metadata1',
           data: 40,
-          color: '#0078d4', // Replaced DefaultPalette.blue
+          color: '#0078d4',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '40%',
         },
         {
           legend: 'Metadata2',
           data: 5,
-          color: '#00188f', // Replaced DefaultPalette.blueMid
+          color: '#00188f',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '5%',
         },
         {
           legend: 'Metadata3',
           data: 20,
-          color: '#00bcf2', // Replaced DefaultPalette.blueLight
+          color: '#00bcf2',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '20%',
         },
@@ -256,21 +255,21 @@ storiesOf('react-charting/VerticalBarChart', module)
         {
           legend: 'Metadata1',
           data: 30,
-          color: '#0078d4', // Replaced DefaultPalette.blue
+          color: '#0078d4',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '30%',
         },
         {
           legend: 'Metadata2',
           data: 20,
-          color: '#00188f', // Replaced DefaultPalette.blueMid
+          color: '#00188f',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '20%',
         },
         {
           legend: 'Metadata3',
           data: 40,
-          color: '#00bcf2', // Replaced DefaultPalette.blueLight
+          color: '#00bcf2',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '40%',
         },
@@ -280,21 +279,21 @@ storiesOf('react-charting/VerticalBarChart', module)
         {
           legend: 'Metadata1',
           data: 44,
-          color: '#0078d4', // Replaced DefaultPalette.blue
+          color: '#0078d4',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '44%',
         },
         {
           legend: 'Metadata2',
           data: 28,
-          color: '#00188f', // Replaced DefaultPalette.blueMid
+          color: '#00188f',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '28%',
         },
         {
           legend: 'Metadata3',
           data: 30,
-          color: '#00bcf2', // Replaced DefaultPalette.blueLight
+          color: '#00bcf2',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '30%',
         },
@@ -304,21 +303,21 @@ storiesOf('react-charting/VerticalBarChart', module)
         {
           legend: 'Metadata1',
           data: 88,
-          color: '#0078d4', // Replaced DefaultPalette.blue
+          color: '#0078d4',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '88%',
         },
         {
           legend: 'Metadata2',
           data: 22,
-          color: '#00188f', // Replaced DefaultPalette.blueMid
+          color: '#00188f',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '22%',
         },
         {
           legend: 'Metadata3',
           data: 30,
-          color: '#00bcf2', // Replaced DefaultPalette.blueLight
+          color: '#00bcf2',
           xAxisCalloutData: '2020/04/30',
           yAxisCalloutData: '30%',
         },
@@ -331,8 +330,8 @@ storiesOf('react-charting/VerticalBarChart', module)
 
           ...(showLine && {
             lineData: [
-              { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-              { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+              { y: 42, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 10, legend: 'Recommended Builds', color: '#a4262c' },
             ],
           }),
         },
@@ -340,7 +339,7 @@ storiesOf('react-charting/VerticalBarChart', module)
           chartData: secondChartPoints,
           xAxisPoint: 20,
           ...(showLine && {
-            lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
+            lineData: [{ y: 33, legend: 'Supported Builds', color: '#e3008c' }],
           }),
         },
         {
@@ -348,8 +347,8 @@ storiesOf('react-charting/VerticalBarChart', module)
           xAxisPoint: 40,
           ...(showLine && {
             lineData: [
-              { y: 60, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-              { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+              { y: 60, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 20, legend: 'Recommended Builds', color: '#a4262c' },
             ],
           }),
         },
@@ -358,8 +357,8 @@ storiesOf('react-charting/VerticalBarChart', module)
           xAxisPoint: 60,
           ...(showLine && {
             lineData: [
-              { y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-              { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+              { y: 41, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 10, legend: 'Recommended Builds', color: '#a4262c' },
             ],
           }),
         },
@@ -368,8 +367,8 @@ storiesOf('react-charting/VerticalBarChart', module)
           xAxisPoint: 80,
           ...(showLine && {
             lineData: [
-              { y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
-              { y: 70, legend: 'Recommended Builds', color: DefaultPalette.redDark },
+              { y: 100, legend: 'Supported Builds', color: '#e3008c' },
+              { y: 70, legend: 'Recommended Builds', color: '#a4262c' },
             ],
           }),
         },
