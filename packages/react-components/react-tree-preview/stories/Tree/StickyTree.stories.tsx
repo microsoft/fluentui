@@ -27,7 +27,9 @@ import { HeadlessTreeItem } from '../../src/utils/createHeadlessTree';
 
 /**
  * List of issues:
- * Issue1: expand an item.
+ * Category1: item being blocked by sticky header
+ * - Issue1: expand an item.
+ * - Issue2: what to do when an item is added/removed to one of the sticky header? for added, maybe we can scroll, what to do for remove?
  *
  */
 
@@ -175,7 +177,7 @@ const useScrollItemIfNeeded_item = ({
       // - need to keep ref on all headers
       // - no gurantee of visibility
       if (isBehindHeaders(itemRef.current, value)) {
-        itemRef.current.scrollIntoView({ block: 'center' });
+        itemRef.current.scrollIntoView({ block: 'center' }); // TODO: scrollIntoView scrolls everything, so if the container is in another scrollable container, it may scroll the container as well.
       }
       //
       // Issue1: solution 3 - check if the item is hidden, if it is, dock its parent to top?
@@ -214,17 +216,16 @@ const RenderItem = React.forwardRef<
   );
 });
 
-const useScrollItemIfNeeded_tree = (items: FlatItem[]) => {
-  const headerRefs: Array<{ ref: React.RefObject<HTMLDivElement>; value: TreeItemValue }> = [];
-  items
-    .map(item => item.value)
-    .forEach(value => {
-      const headerRef = React.useRef<HTMLDivElement>(null);
-      headerRefs.push({
-        ref: headerRef,
-        value,
-      });
+const useScrollItemIfNeeded_tree = (items: FlatItem[], openItems: Set<TreeItemValue>) => {
+  const headerRefs = React.useMemo(() => {
+    const result: { [key: TreeItemValue]: React.RefObject<HTMLDivElement> | undefined } = {};
+    openItems.forEach(value => {
+      if (!result[value]) {
+        result[value] = React.createRef<HTMLDivElement>();
+      }
     });
+    return result;
+  }, [openItems]);
 
   const containerRef = React.useRef<HTMLDivElement>(null);
 
@@ -252,13 +253,9 @@ const useScrollItemIfNeeded_tree = (items: FlatItem[]) => {
       }
     }
 
-    const parentRect = parentValue
-      ? headerRefs.find(headerRef => headerRef.value === parentValue)?.ref.current?.getBoundingClientRect()
-      : undefined;
+    const parentRect = parentValue ? headerRefs[parentValue]?.current?.getBoundingClientRect() : undefined;
     const nextSiblingOfParentRect = nextSiblingOfParentValue
-      ? headerRefs
-          .find(headerRefs => headerRefs.value === nextSiblingOfParentValue)
-          ?.ref.current?.getBoundingClientRect()
+      ? headerRefs[nextSiblingOfParentValue]?.current?.getBoundingClientRect()
       : undefined;
 
     const containerRect = containerRef.current?.getBoundingClientRect();
@@ -294,18 +291,14 @@ export const StickyTreePrototype = ({ items, headerHeight }: { items: FlatItem[]
   });
   const classes = useStyles();
 
-  const { headerRefs, containerRef, isBehindHeaders } = useScrollItemIfNeeded_tree(items);
+  const { headerRefs, containerRef, isBehindHeaders } = useScrollItemIfNeeded_tree(items, openItems);
 
   return (
     <div className={classes.rail} ref={containerRef}>
       <Tree {...flatTree.getTreeProps()} aria-label="Tree" className={classes.tree}>
         {Array.from(flatTree.items(), flatTreeItem => {
           return flatTreeItem.level === 1 ? (
-            <RenderHeader
-              item={flatTreeItem}
-              headerHeight={headerHeight}
-              ref={headerRefs.find(headerRef => headerRef.value === flatTreeItem.value)?.ref}
-            />
+            <RenderHeader item={flatTreeItem} headerHeight={headerHeight} ref={headerRefs[flatTreeItem.value]} />
           ) : (
             <RenderItem
               item={flatTreeItem}
@@ -323,7 +316,9 @@ const SettingsContext = React.createContext({ enableScrollOnExpand: true });
 const useSettingsContext = () => React.useContext(SettingsContext);
 
 export const StickyTreeExample = () => {
-  const flatTreeItems = createFlatTreeItems([
+  const [hasChat, setHasChat] = React.useState<boolean>(true);
+  const [savedHasChild, setSavedHasChild] = React.useState<boolean>(true);
+  const rawItems = [
     {
       headerName: 'Favorites',
       min: 5,
@@ -336,8 +331,8 @@ export const StickyTreeExample = () => {
     },
     {
       headerName: 'Saved',
-      min: 0,
-      max: 0,
+      min: savedHasChild ? 1 : 0,
+      max: savedHasChild ? 1 : 0,
     },
     {
       headerName: 'Alexandria',
@@ -354,9 +349,11 @@ export const StickyTreeExample = () => {
       min: 10,
       max: 10,
     },
-  ]);
+  ].filter(item => (hasChat ? true : item.headerName !== 'Chat'));
+  const flatTreeItems = createFlatTreeItems(rawItems);
 
   const [enableScrollOnExpand, setEnableScrollOnExpand] = React.useState<boolean>(true);
+
   return (
     <SettingsContext.Provider value={{ enableScrollOnExpand }}>
       <ul>
@@ -365,9 +362,15 @@ export const StickyTreeExample = () => {
         <li>header all have same height which is a fixed and known number</li>
         {enableScrollOnExpand && <li>only two level </li>}
       </ul>
-
+      Settings control:
       <button onClick={() => setEnableScrollOnExpand(v => !v)}>
         {enableScrollOnExpand ? 'disable scroll on expand' : 'enable scroll on expand'}
+      </button>
+      <br />
+      Items control:
+      <button onClick={() => setHasChat(v => !v)}>{hasChat ? 'remove Chat header' : 'add Chat header'}</button>
+      <button onClick={() => setSavedHasChild(v => !v)}>
+        {savedHasChild ? 'remove child from Saved header' : 'add child to Saved header'}
       </button>
       <StickyTreePrototype items={flatTreeItems} headerHeight={32} />
     </SettingsContext.Provider>
