@@ -24,6 +24,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 - Do not use `defaultProps` in `EventListener` to avoid deprecation warnings. @layershifter ([#28725](https://github.com/microsoft/fluentui/pull/28725))
 - `Datepicker`: add onCalendarOpenStateChange prop. @jurokapsiar ([#28136](https://github.com/microsoft/fluentui/pull/28136))
 - Outline color now respects OS force colors settings. @george-cz ([#28182](https://github.com/microsoft/fluentui/pull/28182))
+- Remove `items` from `defaultProps` in Toolbar to fix warnings @layershifter ([#28723](https://github.com/microsoft/fluentui/pull/28723))
 
 <!--------------------------------[ v0.66.4 ]------------------------------- -->
 ## [v0.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.4) (2023-03-10)

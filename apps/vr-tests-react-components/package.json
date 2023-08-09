@@ -68,7 +68,7 @@
     "@fluentui/react-toolbar": "*",
     "@fluentui/react-tree-preview": "*",
     "@fluentui/react-utilities": "*",
-    "@griffel/react": "^1.5.7",
+    "@griffel/react": "^1.5.14",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"
