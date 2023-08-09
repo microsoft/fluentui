@@ -42,27 +42,16 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
   const timeoutId = React.useRef<number | undefined>(undefined);
   useIFrameFocus(options);
 
-  const mouseDownEventRef = React.useRef<MouseEvent | null>();
+  const isMouseDownInsideRef = React.useRef<boolean>();
+
+  const contains: UseOnClickOrScrollOutsideOptions['contains'] =
+    containsProp || ((parent, child) => !!parent?.contains(child));
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
-    const contains: UseOnClickOrScrollOutsideOptions['contains'] =
-      containsProp || ((parent, child) => !!parent?.contains(child));
-
     const target = ev.composedPath()[0] as HTMLElement;
 
-    const isOutside = refs.every(ref => {
-      if (mouseDownEventRef.current) {
-        // Selecting text from inside to outside will rigger click event.
-        // In this case click event target is outside but mouse down event target is inside.
-        // And this click event should be considered as inside click.
-        return (
-          !contains(ref.current || null, target) &&
-          !contains(ref.current || null, mouseDownEventRef.current.target as HTMLElement)
-        );
-      }
-      return !contains(ref.current || null, target);
-    });
-    mouseDownEventRef.current = null;
+    const isOutside = !isMouseDownInsideRef.current && refs.every(ref => !contains(ref.current || null, target));
+    isMouseDownInsideRef.current = false;
 
     if (isOutside && !disabled) {
       callback(ev);
@@ -70,7 +59,10 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
   });
 
   const handleMouseDown = useEventCallback((ev: MouseEvent) => {
-    mouseDownEventRef.current = ev;
+    // Selecting text from inside to outside will rigger click event.
+    // In this case click event target is outside but mouse down event target is inside.
+    // And this click event should be considered as inside click.
+    isMouseDownInsideRef.current = refs.some(ref => contains(ref.current || null, ev.target as HTMLElement));
   });
 
   React.useEffect(() => {
