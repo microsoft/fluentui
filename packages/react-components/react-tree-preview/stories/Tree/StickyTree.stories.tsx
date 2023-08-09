@@ -21,6 +21,7 @@ import {
   makeStyles,
   shorthands,
   useMergedRefs,
+  Checkbox,
 } from '@fluentui/react-components';
 import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { HeadlessTreeItem } from '../../src/utils/createHeadlessTree';
@@ -95,6 +96,7 @@ const ActionsExample = () => (
 const useStyles = makeStyles({
   rail: {
     width: '360px',
+    minWidth: '360px',
     height: '700px',
     // boxSizing: 'border-box',
     ...shorthands.border('1px', 'solid', 'black'),
@@ -300,8 +302,24 @@ const StickyTreePrototype = ({ items, headerHeight }: { items: FlatItem[]; heade
   );
 };
 
+type Headers = {
+  Favorites: boolean;
+  Activity: boolean;
+  Saved: boolean;
+  Alexandria: boolean;
+  Chat: boolean;
+  Channel: boolean;
+};
+const allHeaders: Headers = {
+  Favorites: true,
+  Activity: true,
+  Saved: true,
+  Alexandria: true,
+  Chat: true,
+  Channel: true,
+};
 export const StickyTreeExample = () => {
-  const [hasChat, setHasChat] = React.useState<boolean>(true);
+  const [headers, setHeaders] = React.useState<Headers>(allHeaders);
   const [savedHasChild, setSavedHasChild] = React.useState<boolean>(true);
   const rawItems = [
     {
@@ -334,23 +352,55 @@ export const StickyTreeExample = () => {
       min: 10,
       max: 10,
     },
-  ].filter(item => (hasChat ? true : item.headerName !== 'Chat'));
+  ].filter(item => headers[item.headerName as keyof Headers]);
   const flatTreeItems = createFlatTreeItems(rawItems);
 
   return (
     <>
-      <ul>
-        <strong>limitations:</strong>
-        <li>no virtualization</li>
-        <li>header all have same height which is a fixed and known number</li>
-        <li>only two level </li>
-      </ul>
-      Items control:
-      <button onClick={() => setHasChat(v => !v)}>{hasChat ? 'remove Chat header' : 'add Chat header'}</button>
-      <button onClick={() => setSavedHasChild(v => !v)}>
-        {savedHasChild ? 'remove child from Saved header' : 'add child to Saved header'}
-      </button>
-      <StickyTreePrototype items={flatTreeItems} headerHeight={32} />
+      <div
+        style={{ border: '1px solid black', maxWidth: 750, padding: 10, marginBottom: 10, display: 'flex', gap: 10 }}
+      >
+        <div>
+          <h3>Current implementation:</h3>
+          When an item is being expanded and its first child is hidden behind the sticky headers, programmatically
+          scroll the first child to center.
+        </div>
+        <div>
+          <h3>limitations:</h3>
+          <li>no virtualization</li>
+          <li>header all have same height which is a fixed and known number</li>
+          <li>only two level </li>
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: 30 }}>
+        <StickyTreePrototype items={flatTreeItems} headerHeight={32} />
+        <div>
+          <h3>Update Items:</h3>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            1. Section Headers:
+            <br />
+            {Object.keys(allHeaders).map(header => (
+              <Checkbox
+                checked={headers[header as keyof Headers]}
+                onChange={(_ev, data) => {
+                  setHeaders(v => {
+                    const newHeaders = { ...v };
+                    newHeaders[header as keyof Headers] = !!data.checked;
+                    return newHeaders;
+                  });
+                }}
+                label={header}
+              />
+            ))}
+          </div>
+          <br />
+          2.
+          <button onClick={() => setSavedHasChild(v => !v)}>
+            {savedHasChild ? 'remove child from Saved header' : 'add child to Saved header'}
+          </button>
+        </div>
+      </div>
     </>
   );
 };
