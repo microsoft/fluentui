@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore(cxe-coastal): migrate to new slot API",
-  "packageName": "@fluentui/react-select",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

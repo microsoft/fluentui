@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bugfix: headless tree should respect itemType",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

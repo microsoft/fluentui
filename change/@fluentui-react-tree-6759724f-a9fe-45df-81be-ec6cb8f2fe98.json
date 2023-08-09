@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: implements nested tree selection",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
