@@ -167,8 +167,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         role: 'treeitem',
         'aria-level': level,
         [dataTreeItemValueAttrName]: value,
-        'aria-checked':
-          selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
+        'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
         'aria-selected': selectionMode === 'single' ? checked : undefined,
         'aria-expanded': isBranch ? open : undefined,
         onClick: handleClick,
