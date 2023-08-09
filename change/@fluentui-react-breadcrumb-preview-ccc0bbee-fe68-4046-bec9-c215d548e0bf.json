@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: disabled BreadcrumbLink shouldn't be focusable",
+  "packageName": "@fluentui/react-breadcrumb-preview",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
