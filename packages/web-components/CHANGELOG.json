@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 04:16:56 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.28",
+      "version": "3.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a00e814aa5a1641754d4b7fb6f05c0ac2aa4e060",
+            "comment": "fix(web-components): enumerate side-effects for package export paths"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 08 Aug 2023 04:18:02 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.27",
       "version": "3.0.0-alpha.27",
