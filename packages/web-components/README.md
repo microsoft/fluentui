@@ -55,3 +55,7 @@ Storybook will watch modules for changes and hot-reload the module when necessar
 `Failed to execute 'define' on 'CustomElementRegistry': the name "my-custom-element-name" has already been used with this registry`
 
 This is a known issue and will indicate that you need to refresh the page. We're working on surfacing a more instructive error message for this case.
+
+## Testing
+
+When testing locally, start the dev server and in a separate terminal window, run `yarn test:dev` within the web-components folder.
