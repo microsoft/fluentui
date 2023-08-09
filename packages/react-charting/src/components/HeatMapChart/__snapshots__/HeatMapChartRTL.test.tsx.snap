@@ -75,7 +75,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 display: none;
               }
           id="xAxisGElementchart_1"
-          transform="translate(0, -35)"
+          transform="translate(0, -70)"
         />
         <text
           class=
@@ -96,7 +96,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           id="tooltip-host3"
           tabindex="-1"
           text-anchor="middle"
-          x="10"
+          x="20"
           y="-8"
         />
         <g
@@ -125,7 +125,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 stroke: rgb(179, 179, 179);
               }
           id="yAxisGElementchart_1"
-          transform="translate(40, 0)"
+          transform="translate(80, 0)"
         />
         <g
           aria-label="2020-03-04T00:00:00.000Z, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -134,12 +134,12 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           fill-opacity="1"
           role="img"
           tabindex="0"
-          transform="translate(-19.405940594059405, -7.227722772277229)"
+          transform="translate(-38.81188118811881, -24.554455445544555)"
         >
           <rect
             fill="rgb(166, 207, 226)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="43.663366336633665"
+            width="58.21782178217822"
           />
           <text
             class=
@@ -155,7 +155,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(29.10891089108911, 21.831683168316832)"
           >
             25
           </text>
@@ -166,12 +166,12 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           fill-opacity="1"
           role="img"
           tabindex="-1"
-          transform="translate(10.297029702970299, -34.45544554455446)"
+          transform="translate(20.594059405940598, -69.10891089108911)"
         >
           <rect
             fill="rgb(159, 198, 222)"
-            height="26.683168316831683"
-            width="29.10891089108911"
+            height="43.663366336633665"
+            width="58.21782178217822"
           />
           <text
             class=
@@ -187,7 +187,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                 }
             dominant-baseline="middle"
             text-anchor="middle"
-            transform="translate(14.554455445544555, 13.341584158415841)"
+            transform="translate(29.10891089108911, 21.831683168316832)"
           >
             50
           </text>
@@ -212,9 +212,9 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           tabindex="-1"
           text-anchor="middle"
           transform="translate(0,
-                   -63)rotate(-90)"
-          x="43"
-          y="12"
+                   -98)rotate(-90)"
+          x="78"
+          y="32"
         />
       </svg>
     </div>

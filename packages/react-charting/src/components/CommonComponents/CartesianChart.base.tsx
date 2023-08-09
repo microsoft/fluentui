@@ -107,26 +107,38 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      */
     this.margins = {
       top: this.props.margins?.top ?? 20,
-      bottom: this.props.margins?.bottom ?? this.props.xAxisTitle ? 70 : 35,
+      bottom: this.props.margins?.bottom ?? 35,
       right: this._isRtl
-        ? this.props.margins?.left ?? this.props.yAxisTitle
-          ? 80
-          : 40
-        : this.props.margins?.right ?? this.props.yAxisTitle
-        ? this.props?.secondaryYScaleOptions
-          ? 80
-          : 40
+        ? this.props.margins?.left ?? 40
+        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+        ? 40
         : 20,
       left: this._isRtl
-        ? this.props.margins?.right ?? this.props.yAxisTitle
-          ? this.props?.secondaryYScaleOptions
-            ? 80
-            : 40
+        ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+          ? 40
           : 20
-        : this.props.margins?.left ?? this.props.yAxisTitle
+        : this.props.margins?.left ?? 40,
+    };
+    const shiftedMargins = (this.margins = {
+      top: this.props.margins?.top ?? 20,
+      bottom: this.props.margins?.bottom ?? 70,
+      right: this._isRtl
+        ? this.props.margins?.left ?? 80
+        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
         ? 80
         : 40,
-    };
+      left: this._isRtl
+        ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+          ? 80
+          : 40
+        : this.props.margins?.left ?? 80,
+    });
+    if (this.props.xAxisTitle !== undefined || this.props.xAxisTitle !== '') {
+      this.margins = shiftedMargins;
+    }
+    if (this.props.yAxisTitle !== undefined || this.props.yAxisTitle !== '') {
+      this.margins = shiftedMargins;
+    }
   }
 
   public componentDidMount(): void {

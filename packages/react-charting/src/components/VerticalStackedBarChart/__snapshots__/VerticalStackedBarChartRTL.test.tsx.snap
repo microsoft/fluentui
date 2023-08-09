@@ -75,7 +75,7 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
                 display: none;
               }
           id="xAxisGElementchart_6"
-          transform="translate(0, -35)"
+          transform="translate(0, -70)"
         />
         <text
           class=
@@ -96,7 +96,7 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
           id="tooltip-host8"
           tabindex="-1"
           text-anchor="middle"
-          x="10"
+          x="20"
           y="-8"
         />
         <g
@@ -125,7 +125,7 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
                 stroke: rgb(179, 179, 179);
               }
           id="yAxisGElementchart_6"
-          transform="translate(40, 0)"
+          transform="translate(80, 0)"
         />
         <g />
         <g />
@@ -149,9 +149,9 @@ exports[`Vertical stacked bar chart rendering Should re-render the Vertical stac
           tabindex="-1"
           text-anchor="middle"
           transform="translate(0,
-                   -63)rotate(-90)"
-          x="43"
-          y="12"
+                   -98)rotate(-90)"
+          x="78"
+          y="32"
         />
       </svg>
     </div>
@@ -459,7 +459,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               display: none;
             }
         id="xAxisGElementchart_3"
-        transform="translate(0, 275)"
+        transform="translate(0, 240)"
       />
       <text
         className=
@@ -484,7 +484,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={302}
       />
       <g
@@ -513,7 +513,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g>
         <g
@@ -532,7 +532,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={196.15384615384616}
+              height={169.23076923076923}
               key="0"
               onBlur={[Function]}
               onClick={[Function]}
@@ -543,8 +543,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
-              y={78.84615384615384}
+              x={88}
+              y={70.76923076923077}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
@@ -556,7 +556,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={24.51923076923077}
+              height={21.153846153846153}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -567,8 +567,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
-              y={54.326923076923066}
+              x={88}
+              y={49.61538461538462}
             />
           </g>
           <text
@@ -583,8 +583,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={56}
-            y={48.326923076923066}
+            x={96}
+            y={43.61538461538462}
           >
             45
           </text>
@@ -605,7 +605,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={147.1153846153846}
+              height={126.92307692307692}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -616,8 +616,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
-              y={127.88461538461539}
+              x={-64}
+              y={113.07692307692308}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
@@ -629,7 +629,7 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={98.07692307692308}
+              height={84.61538461538461}
               key="2"
               onBlur={[Function]}
               onClick={[Function]}
@@ -640,8 +640,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
-              y={29.807692307692307}
+              x={-64}
+              y={28.461538461538467}
             />
           </g>
           <text
@@ -656,8 +656,8 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-36}
-            y={23.807692307692307}
+            x={-56}
+            y={22.461538461538467}
           >
             50
           </text>
@@ -688,9 +688,9 @@ exports[`VerticalStackedBarChart - mouse events Should render callout correctly 
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
+                   212)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -1170,7 +1170,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               display: none;
             }
         id="xAxisGElementchart_3"
-        transform="translate(0, 275)"
+        transform="translate(0, 240)"
       />
       <text
         className=
@@ -1195,7 +1195,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={302}
       />
       <g
@@ -1224,7 +1224,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g>
         <g
@@ -1243,7 +1243,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={196.15384615384616}
+              height={169.23076923076923}
               key="0"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1254,8 +1254,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
-              y={78.84615384615384}
+              x={88}
+              y={70.76923076923077}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 5%."
@@ -1267,7 +1267,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={24.51923076923077}
+              height={21.153846153846153}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1278,8 +1278,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={48}
-              y={54.326923076923066}
+              x={88}
+              y={49.61538461538462}
             />
           </g>
           <text
@@ -1294,8 +1294,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={56}
-            y={48.326923076923066}
+            x={96}
+            y={43.61538461538462}
           >
             45
           </text>
@@ -1316,7 +1316,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#0078d4"
-              height={147.1153846153846}
+              height={126.92307692307692}
               key="1"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1327,8 +1327,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
-              y={127.88461538461539}
+              x={-64}
+              y={113.07692307692308}
             />
             <rect
               aria-label="2020/04/30. Metadata2, 20%."
@@ -1340,7 +1340,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                   }
               data-is-focusable={true}
               fill="#00188f"
-              height={98.07692307692308}
+              height={84.61538461538461}
               key="2"
               onBlur={[Function]}
               onClick={[Function]}
@@ -1351,8 +1351,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               role="img"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
-              y={29.807692307692307}
+              x={-64}
+              y={28.461538461538467}
             />
           </g>
           <text
@@ -1367,8 +1367,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-36}
-            y={23.807692307692307}
+            x={-56}
+            y={22.461538461538467}
           >
             50
           </text>
@@ -1399,9 +1399,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
+                   212)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -1799,7 +1799,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               display: none;
             }
         id="xAxisGElementchart_3"
-        transform="translate(0, 275)"
+        transform="translate(0, 240)"
       />
       <text
         className=
@@ -1824,7 +1824,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={302}
       />
       <g
@@ -1853,7 +1853,7 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g>
         <g
@@ -1879,12 +1879,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#0078d4"
-              height={196.15384615384616}
+              height={169.23076923076923}
               key="0"
               transform="translate(0, 0)"
               width={16}
-              x={48}
-              y={78.84615384615384}
+              x={88}
+              y={70.76923076923077}
             />
             <rect
               className=
@@ -1894,12 +1894,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#00188f"
-              height={24.51923076923077}
+              height={21.153846153846153}
               key="1"
               transform="translate(0, 0)"
               width={16}
-              x={48}
-              y={54.326923076923066}
+              x={88}
+              y={49.61538461538462}
             />
           </g>
           <text
@@ -1914,8 +1914,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={56}
-            y={48.326923076923066}
+            x={96}
+            y={43.61538461538462}
           >
             45
           </text>
@@ -1943,12 +1943,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#0078d4"
-              height={147.1153846153846}
+              height={126.92307692307692}
               key="1"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
-              y={127.88461538461539}
+              x={-64}
+              y={113.07692307692308}
             />
             <rect
               className=
@@ -1958,12 +1958,12 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
                     opacity: ;
                   }
               fill="#00188f"
-              height={98.07692307692308}
+              height={84.61538461538461}
               key="2"
               transform="translate(0, 0)"
               width={16}
-              x={-44}
-              y={29.807692307692307}
+              x={-64}
+              y={28.461538461538467}
             />
           </g>
           <text
@@ -1978,8 +1978,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
             role="img"
             textAnchor="middle"
             transform="translate(0, 0)"
-            x={-36}
-            y={23.807692307692307}
+            x={-56}
+            y={22.461538461538467}
           >
             50
           </text>
@@ -1993,14 +1993,14 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           strokeLinecap="round"
           strokeWidth={3}
           transform="translate(0, 0)"
-          x1={56}
-          x2={-36}
-          y1={201.4423076923077}
-          y2={127.88461538461539}
+          x1={96}
+          x2={-56}
+          y1={176.53846153846155}
+          y2={113.07692307692308}
         />
         <circle
-          cx={56}
-          cy={201.4423076923077}
+          cx={96}
+          cy={176.53846153846155}
           fill="#ffffff"
           key="0-0-dot"
           onMouseOver={[Function]}
@@ -2011,8 +2011,8 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
           visibility="visibility"
         />
         <circle
-          cx={-36}
-          cy={127.88461538461539}
+          cx={-56}
+          cy={113.07692307692308}
           fill="#ffffff"
           key="0-1-dot"
           onMouseOver={[Function]}
@@ -2047,9 +2047,9 @@ exports[`VerticalStackedBarChart - mouse events Should render customized callout
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
+                   212)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -2559,7 +2559,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               display: none;
             }
         id="xAxisGElementchart_66"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -2584,7 +2584,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -2613,7 +2613,7 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_66"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -2641,9 +2641,9 @@ exports[`VerticalStackedBarChart snapShot testing Should not render bar labels 1
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -2970,7 +2970,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               display: none;
             }
         id="xAxisGElementchart_3"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -2995,7 +2995,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -3024,7 +3024,7 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_3"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -3052,9 +3052,9 @@ exports[`VerticalStackedBarChart snapShot testing renders VerticalStackedBarChar
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -3381,7 +3381,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               display: none;
             }
         id="xAxisGElementchart_26"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -3406,7 +3406,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -3435,7 +3435,7 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_26"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -3463,9 +3463,9 @@ exports[`VerticalStackedBarChart snapShot testing renders enabledLegendsWrapLine
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -3772,7 +3772,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               display: none;
             }
         id="xAxisGElementchart_11"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -3797,7 +3797,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -3826,7 +3826,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_11"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -3854,9 +3854,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideLegend correctly 1
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -3933,7 +3933,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               display: none;
             }
         id="xAxisGElementchart_18"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -3958,7 +3958,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -3987,7 +3987,7 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_18"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -4015,9 +4015,9 @@ exports[`VerticalStackedBarChart snapShot testing renders hideTooltip correctly 
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -4344,7 +4344,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               display: none;
             }
         id="xAxisGElementchart_50"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -4369,7 +4369,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -4398,7 +4398,7 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_50"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -4426,9 +4426,9 @@ exports[`VerticalStackedBarChart snapShot testing renders isCalloutForStack corr
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -4755,7 +4755,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               display: none;
             }
         id="xAxisGElementchart_34"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -4780,7 +4780,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -4809,7 +4809,7 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_34"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -4837,9 +4837,9 @@ exports[`VerticalStackedBarChart snapShot testing renders showXAxisLablesTooltip
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -5166,7 +5166,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               display: none;
             }
         id="xAxisGElementchart_42"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -5191,7 +5191,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -5220,7 +5220,7 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_42"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -5248,9 +5248,9 @@ exports[`VerticalStackedBarChart snapShot testing renders wrapXAxisLables correc
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
@@ -5577,7 +5577,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               display: none;
             }
         id="xAxisGElementchart_58"
-        transform="translate(0, -35)"
+        transform="translate(0, -70)"
       />
       <text
         className=
@@ -5602,7 +5602,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={10}
+        x={20}
         y={-8}
       />
       <g
@@ -5631,7 +5631,7 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_58"
-        transform="translate(40, 0)"
+        transform="translate(80, 0)"
       />
       <g />
       <g />
@@ -5659,9 +5659,9 @@ exports[`VerticalStackedBarChart snapShot testing renders yAxisTickFormat correc
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -63)rotate(-90)"
-        x={43}
-        y={12}
+                   -98)rotate(-90)"
+        x={78}
+        y={32}
       />
     </svg>
   </div>
