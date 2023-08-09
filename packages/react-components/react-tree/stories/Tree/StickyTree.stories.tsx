@@ -413,6 +413,7 @@ export const StickyTreeExample = () => {
 };
 
 StickyTreeExample.parameters = {
+  title: 'Preview Components/Sticky Tree',
   docs: {
     description: {
       story: 'sticky tree prototype',
