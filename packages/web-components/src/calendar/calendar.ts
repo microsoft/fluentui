@@ -12,7 +12,7 @@ import {
   keyPageUp,
 } from '@microsoft/fast-web-utilities';
 import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
-import { FluentDateFormatter, NUM_DAYS_IN_WEEK, NUM_MONTHS_IN_YEAR, NUM_YEARS_IN_DECADE } from './date-formatter.js';
+import { FluentDateFormatter, NUM_DAYS_IN_WEEK, NUM_YEARS_IN_DECADE } from './date-formatter.js';
 
 /**
  * Month picker information needed for rendering
@@ -181,12 +181,7 @@ export class Calendar extends FASTCalendar {
   /**
    * keeps track of the current focused and active date on the day grid
    */
-  protected navigatedDate: Date = new Date(`${this.month}-01-${this.year}`);
-
-  /**
-   * keeps track of the current focused and active cell on the secondary panel
-   */
-  protected navigatedRightPanelCell: number = this.yearPickerOpen ? this.year : this.month;
+  protected navigatedDate: Date = new Date(`${this.year}/${this.month}/01`);
 
   /**
    * element array that contains the current secondary panel cells
@@ -209,12 +204,13 @@ export class Calendar extends FASTCalendar {
   public attributeChangedCallback(name: string, oldValue: string, newValue: string) {
     // Sets focus on day grid cell when the month is updated on the day grid
     if (name === 'month') {
+      console.log(this.navigatedDate);
       if (this.navigatedDate.getMonth() + 1 != this.month || this.navigatedDate.getFullYear() != this.year) {
-        this.navigatedDate = new Date(`${this.month}-01-${this.year}`);
+        this.navigatedDate = new Date(`${this.year}/${this.month}/01`);
       } else {
         Updates.enqueue(() => {
           const el = this.getNavigatedDayElement();
-          el.tabIndex = 3;
+          el.tabIndex = 0;
           el.focus();
         });
       }
@@ -229,7 +225,7 @@ export class Calendar extends FASTCalendar {
         if (this.secondaryPanelCells) {
           this.secondaryPanelCells.forEach(cell => cell.setAttribute('tabindex', '-1'));
           const focus = this.secondaryPanelCells[0] as HTMLElement;
-          focus.tabIndex = 6;
+          focus.tabIndex = 0;
         }
       });
     }
@@ -488,13 +484,14 @@ export class Calendar extends FASTCalendar {
     currentCell.tabIndex = -1;
 
     // set navigatedDate to correspond to the date on the event target cell
-    this.navigatedDate = new Date(`${date.month}-${date.day}-${date.year}`);
+    this.navigatedDate = new Date(`${date.year}/${date.month}/${date.day}`);
 
     switch (event.key) {
       case keyArrowRight: {
         event.preventDefault();
         // Update navigatedDate
         this.navigatedDate.setDate(date.day + 1);
+        console.log(this.navigatedDate);
 
         // Update the month on the calendar if reached the end of the current month
         if (currentCell.getAttribute('grid-column') == '7' && this.navigatedDate.getMonth() + 1 != this.month) {
@@ -552,8 +549,9 @@ export class Calendar extends FASTCalendar {
     }
 
     // Get the navigated element and set focus
+    console.log(this.navigatedDate);
     const el = this.getNavigatedDayElement();
-    el.tabIndex = 3;
+    el.tabIndex = 0;
     el.focus();
 
     return true;
@@ -657,7 +655,7 @@ export class Calendar extends FASTCalendar {
 
     // Set focus on the cell corresponding to the updated index
     const focus = this.secondaryPanelCells[index] as HTMLElement;
-    focus.tabIndex = 6;
+    focus.tabIndex = 0;
     focus.focus();
 
     return true;

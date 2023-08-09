@@ -1,6 +1,5 @@
 import { ElementViewTemplate, html, repeat, ViewTemplate, when } from '@microsoft/fast-element';
-import { CalendarOptions, calendarTemplate, calendarTitleTemplate, tagFor } from '@microsoft/fast-foundation';
-import { keyEnter } from '@microsoft/fast-web-utilities';
+import { CalendarOptions, calendarTemplate, MonthFormat, tagFor } from '@microsoft/fast-foundation';
 import type { Calendar } from './calendar.js';
 
 const ArrowUp16 = html.partial(`
@@ -14,6 +13,24 @@ const ArrowDown16 = html.partial(`
 </svg>
 `);
 
+export function calendarTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
+  return html`
+    <div
+      class="title"
+      part="title"
+      aria-live="polite"
+      aria-label="${(x: T) =>
+        x.dateFormatter.getDate(`${x.month}-2-${x.year}`, {
+          month: 'long',
+          year: 'numeric',
+        })}"
+    >
+      <span part="month">${(x: T) => x.dateFormatter.getMonth(x.month)}</span>
+      <span part="year">${(x: T) => x.dateFormatter.getYear(x.year)}</span>
+    </div>
+  `;
+}
+
 /**
  * A secondary panel title template that includes the year (if month picker) or decade (if year picker)
  * @returns - A secondary panel title template
@@ -21,19 +38,32 @@ const ArrowDown16 = html.partial(`
  */
 export function calendarSecondaryPanelTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
   const yearPickerTitle = html`
-    <span
+    <span aria-labelledby="id-secondary-panel-title"
       >${(x: T) => x.dateFormatter.getYear(x.getYearPickerInfo().decadeStart)}-${(x: T) =>
         x.dateFormatter.getYear(x.getYearPickerInfo().decadeEnd)}</span
     >
   `;
 
-  const monthPickerTitle = html` <span>${(x: T) => x.dateFormatter.getYear(x.getMonthPickerInfo().year)}</span> `;
+  const monthPickerTitle = html`
+    <span aria-labelledby="id-secondary-panel-title"
+      >${(x: T) => x.dateFormatter.getYear(x.getMonthPickerInfo().year)}</span
+    >
+  `;
 
   return html`
     <div
       class="secondary-panel-title"
       part="secondary-panel-title"
-      tabindex="4"
+      id="id-secondary-panel-title"
+      tabindex="0"
+      role="button"
+      aria-label="${(x: T) =>
+        x.yearPickerOpen
+          ? `Range of years, ${x.dateFormatter.getYear(x.getYearPickerInfo().decadeStart)} to ${x.dateFormatter.getYear(
+              x.getYearPickerInfo().decadeEnd,
+            )} selected`
+          : `Year picker, ${x.dateFormatter.getYear(x.getMonthPickerInfo().year)} selected`}"
+      aria-live="polite"
       @click=${x => x.toggleYearPicker()}
       @keydown=${(x, c) => x.handleSecondaryPanelTitleKeydown(c.event as KeyboardEvent)}
     >
@@ -59,15 +89,21 @@ export function secondaryPanelCellTemplate(
   return html`
       <${cellTag}
           class="${(x, c) => c.parentContext.parent.getSecondaryCellClassNames(x.detail, todayMonth, todayYear)}"
+          id="id-secondary-panel-cell"
           part="secondary-panel-cell"
           tabindex="-1"
           role="gridcell"
           grid-column="${(x, c) => c.index + 1}"
+          aria-label="${(x, c) =>
+            c.parentContext.parent.yearPickerOpen
+              ? c.parentContext.parent.dateFormatter.getYear(x.detail)
+              : c.parentContext.parent.dateFormatter.getMonth(x.detail)}"
           @click="${(x, c) => c.parentContext.parent.$emit('secondaryPanelCellSelected', x.detail)}"
           @keydown="${(x, c) => c.parentContext.parent.handleSecondaryPanelKeydown(c.event as KeyboardEvent, x.detail)}"
       >
         <div
-        class="secondary-panel-cell">
+        class="secondary-panel-cell"
+        aria-labelledby="id-secondary-panel-cell">
           ${x => x.text}
         </div>
         <slot name="${x => x.detail}"></slot>
@@ -121,7 +157,7 @@ export function interactiveSecondaryPanelGridTemplate<T extends Calendar>(
   const gridTag = html.partial(tagFor(options.dataGrid));
 
   return html<T>`
-  <${gridTag} class="secondary-panel-grid interact" part="secondary-panel-grid" generate-header="none">
+  <${gridTag} class="secondary-panel-grid interact" part="secondary-panel-grid" generate-header="none" aria-role="grid">
       ${x =>
         x.yearPickerOpen
           ? html`${repeat(
@@ -160,7 +196,11 @@ export const template: ElementViewTemplate<Calendar> = html`
           <span
             class="navicon-up"
             part="navicon-up"
-            tabindex="1"
+            role="navigation"
+            aria-label="Previous Month"
+            aria-describedby="Press enter to go to previous month"
+            aria-pressed="true"
+            tabindex="0"
             @click="${x => x.handleSwitchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
             @keydown="${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'previous')}"
           >
@@ -169,7 +209,10 @@ export const template: ElementViewTemplate<Calendar> = html`
           <span
             class="navicon-down"
             part="navicon-down"
-            tabindex="2"
+            role="navigation"
+            aria-label="Next Month"
+            aria-pressed="true"
+            tabindex="0"
             @click="${x => x.handleSwitchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
             @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'next')}
           >
@@ -187,7 +230,7 @@ export const template: ElementViewTemplate<Calendar> = html`
           x => !x.hasAttribute('monthPickerVisible'),
           html` <div
             class=${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}
-            tabindex="7"
+            tabindex="0"
             @click="${(x, c) => x.handleGoToToday()}"
             @keydown="${(x, c) => x.handleLinkKeydown(c.event as KeyboardEvent)}"
           >
@@ -205,7 +248,10 @@ export const template: ElementViewTemplate<Calendar> = html`
             <span
               class="navicon-up"
               part="navicon-up"
-              tabindex="5"
+              role="navigation"
+              aria-label="Previous Year"
+              aria-pressed="true"
+              tabindex="0"
               @click="${x =>
                 x.yearPickerOpen
                   ? (x.yearPickerDecade = x.getYearPickerInfo().previousStart)
@@ -217,7 +263,10 @@ export const template: ElementViewTemplate<Calendar> = html`
             <span
               class="navicon-down"
               part="navicon-down"
-              tabindex="5"
+              role="navigation"
+              aria-label="Next Year"
+              aria-pressed="true"
+              tabindex="0"
               @click="${x =>
                 x.yearPickerOpen
                   ? (x.yearPickerDecade = x.getYearPickerInfo().nextStart)
@@ -237,7 +286,7 @@ export const template: ElementViewTemplate<Calendar> = html`
           <div
             class="${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}"
             @click="${(x, c) => x.handleGoToToday()}"
-            tabindex="7"
+            tabindex="0"
             @keydown="${(x, c) => x.handleLinkKeydown(c.event as KeyboardEvent)}"
           >
             Go to today
