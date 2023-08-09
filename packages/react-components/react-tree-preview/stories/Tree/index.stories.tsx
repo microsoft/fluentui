@@ -28,7 +28,6 @@ export { InfiniteScrolling } from './TreeInfiniteScrolling.stories';
 export { Virtualization } from './Virtualization.stories';
 
 export { StickyTreeExample } from './StickyTree.stories';
-export { StickyNestedTreeExample } from './StickyNestedTree.stories';
 
 export default {
   title: 'Preview Components/Tree',
