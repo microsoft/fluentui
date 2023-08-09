@@ -15,7 +15,7 @@ storiesOf('react-charting/HorizontalBarChart', module)
   .addDecorator((story, context) => TestWrapperDecorator(story, context))
   .addDecorator((story, context) => {
     const steps =
-      context.name === 'Basic'
+      context.name.includes('Basic') && !context.name.includes('RTL')
         ? new Steps()
             .snapshot('default', { cropTo: '.testWrapper' })
             .executeScript(
