@@ -85,7 +85,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           id="tooltip-host560"
           tabindex="-1"
           text-anchor="middle"
-          x="-10"
+          x="10"
           y="-8"
         />
         <g
@@ -113,11 +113,8 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-              & g {
-                text-anchor: end;
-              }
           id="yAxisGElementchart_558"
-          transform="translate(-40, 0)"
+          transform="translate(40, 0)"
         />
         <g>
            
@@ -146,7 +143,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="-12"
+          y="12"
         />
       </svg>
     </div>
@@ -555,7 +552,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           id="tooltip-host568"
           tabindex="-1"
           text-anchor="middle"
-          x="-10"
+          x="10"
           y="-8"
         />
         <g
@@ -583,11 +580,8 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-              & g {
-                text-anchor: end;
-              }
           id="yAxisGElementchart_566"
-          transform="translate(-40, 0)"
+          transform="translate(40, 0)"
         />
         <g>
            
@@ -616,7 +610,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="-12"
+          y="12"
         />
       </svg>
     </div>
@@ -1038,7 +1032,7 @@ exports[`Should reflect theme change 1`] = `
             id="tooltip-host579"
             tabindex="-1"
             text-anchor="middle"
-            x="-10"
+            x="10"
             y="-8"
           />
           <g
@@ -1066,11 +1060,8 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-                & g {
-                  text-anchor: end;
-                }
             id="yAxisGElementchart_577"
-            transform="translate(-40, 0)"
+            transform="translate(40, 0)"
           />
           <g>
              
@@ -1099,7 +1090,7 @@ exports[`Should reflect theme change 1`] = `
             transform="translate(0,
                    -63)rotate(-90)"
             x="43"
-            y="-12"
+            y="12"
           />
         </svg>
       </div>
@@ -1520,7 +1511,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           id="tooltip-host587"
           tabindex="-1"
           text-anchor="middle"
-          x="-10"
+          x="10"
           y="-8"
         />
         <g
@@ -1548,11 +1539,8 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-              & g {
-                text-anchor: end;
-              }
           id="yAxisGElementchart_585"
-          transform="translate(-40, 0)"
+          transform="translate(40, 0)"
         />
         <g>
            
@@ -1581,7 +1569,7 @@ exports[`Vertical bar chart re-rendering Should re-render the vertical bar chart
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="-12"
+          y="12"
         />
       </svg>
     </div>
@@ -1990,7 +1978,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           id="tooltip-host46"
           tabindex="-1"
           text-anchor="middle"
-          x="-10"
+          x="10"
           y="-8"
         />
         <g
@@ -2018,11 +2006,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-              & g {
-                text-anchor: end;
-              }
           id="yAxisGElementchart_44"
-          transform="translate(-40, 0)"
+          transform="translate(40, 0)"
         />
         <g>
            
@@ -2051,7 +2036,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="-12"
+          y="12"
         />
       </svg>
     </div>
@@ -2460,7 +2445,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           id="tooltip-host54"
           tabindex="-1"
           text-anchor="middle"
-          x="-10"
+          x="10"
           y="-8"
         />
         <g
@@ -2488,11 +2473,8 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-              & g {
-                text-anchor: end;
-              }
           id="yAxisGElementchart_52"
-          transform="translate(-40, 0)"
+          transform="translate(40, 0)"
         />
         <g>
            
@@ -2522,7 +2504,7 @@ exports[`Vertical bar chart rendering Should render the vertical bar chart with 
           transform="translate(0,
                    -63)rotate(-90)"
           x="43"
-          y="-12"
+          y="12"
         />
       </svg>
     </div>
@@ -3019,7 +3001,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -3047,11 +3029,8 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
@@ -3074,7 +3053,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={28}
+            x={48}
             y={224}
           />
           <text
@@ -3087,7 +3066,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={36}
+            x={56}
             y={218}
           >
             10.0k
@@ -3113,7 +3092,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-7.384615384615383}
+            x={12.615384615384617}
             y={20}
           />
           <text
@@ -3126,7 +3105,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={0.6153846153846168}
+            x={20.615384615384617}
             y={14}
           >
             50.0k
@@ -3152,7 +3131,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-60.46153846153847}
+            x={-40.46153846153846}
             y={122}
           />
           <text
@@ -3165,7 +3144,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={-52.46153846153847}
+            x={-32.46153846153846}
             y={116}
           >
             30.0k
@@ -3198,7 +3177,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -3794,7 +3773,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -3822,11 +3801,8 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
@@ -3849,7 +3825,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={28}
+            x={48}
             y={224}
           />
           <text
@@ -3862,7 +3838,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={36}
+            x={56}
             y={218}
           >
             10.0k
@@ -3888,7 +3864,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-7.384615384615383}
+            x={12.615384615384617}
             y={20}
           />
           <text
@@ -3901,7 +3877,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={0.6153846153846168}
+            x={20.615384615384617}
             y={14}
           >
             50.0k
@@ -3927,7 +3903,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             onMouseOver={[Function]}
             role="img"
             width={16}
-            x={-60.46153846153847}
+            x={-40.46153846153846}
             y={122}
           />
           <text
@@ -3940,7 +3916,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
                   font-weight: 600;
                 }
             textAnchor="middle"
-            x={-52.46153846153847}
+            x={-32.46153846153846}
             y={116}
           >
             30.0k
@@ -3973,7 +3949,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -4488,7 +4464,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -4516,11 +4492,8 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_58"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -4553,7 +4526,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -4995,7 +4968,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -5023,11 +4996,8 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -5060,7 +5030,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -5502,7 +5472,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -5530,11 +5500,8 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_26"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -5567,7 +5534,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -5989,7 +5956,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -6017,11 +5984,8 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_11"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -6054,7 +6018,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -6156,7 +6120,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -6184,11 +6148,8 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_18"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -6221,7 +6182,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -6663,7 +6624,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -6691,11 +6652,8 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_34"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -6728,7 +6686,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -7170,7 +7128,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -7198,11 +7156,8 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_42"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -7235,7 +7190,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -7677,7 +7632,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={-8}
       />
       <g
@@ -7705,11 +7660,8 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_50"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
          
@@ -7742,7 +7694,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         transform="translate(0,
                    -63)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>

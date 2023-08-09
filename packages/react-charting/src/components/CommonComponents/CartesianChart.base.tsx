@@ -99,7 +99,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     };
     this.idForGraph = getId('chart_');
     this.titleMargin = 8;
-    this._isRtl = true;
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.

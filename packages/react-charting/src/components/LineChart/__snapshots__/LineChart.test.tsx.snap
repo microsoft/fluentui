@@ -96,7 +96,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -124,11 +124,8 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -152,17 +149,17 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M54.5 115.625
-     A5.5 5.5 0 1 0 65.5 115.625
-     M54.5 115.625
-     A 5.5 5.5 0 1 1 65.5 115.625
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
@@ -180,10 +177,10 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -227,7 +224,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -685,7 +682,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -713,11 +710,8 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -741,17 +735,17 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M54.5 115.625
-     A5.5 5.5 0 1 0 65.5 115.625
-     M54.5 115.625
-     A 5.5 5.5 0 1 1 65.5 115.625
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
@@ -769,10 +763,10 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -816,7 +810,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -1172,7 +1166,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -1200,11 +1194,8 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -1228,17 +1219,17 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M54.5 115.625
-     A5.5 5.5 0 1 0 65.5 115.625
-     M54.5 115.625
-     A 5.5 5.5 0 1 1 65.5 115.625
+            d="M34.5 115.625
+     A5.5 5.5 0 1 0 45.5 115.625
+     M34.5 115.625
+     A 5.5 5.5 0 1 1 45.5 115.625
      "
             data-is-focusable={true}
             fill="#ffffff"
@@ -1256,10 +1247,10 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -1303,7 +1294,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -1659,7 +1650,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -1687,11 +1678,8 @@ exports[`LineChart snapShot testing Should render with default colors when line 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -1715,17 +1703,17 @@ exports[`LineChart snapShot testing Should render with default colors when line 
             stroke="#637cef"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M59.5 115.625
-     A0.5 0.5 0 1 0 60.5 115.625
-     M59.5 115.625
-     A 0.5 0.5 0 1 1 60.5 115.625
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="#637cef"
@@ -1743,10 +1731,10 @@ exports[`LineChart snapShot testing Should render with default colors when line 
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="#637cef"
@@ -1790,7 +1778,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -2054,7 +2042,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -2082,11 +2070,8 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -2110,17 +2095,17 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M59.5 115.625
-     A0.5 0.5 0 1 0 60.5 115.625
-     M59.5 115.625
-     A 0.5 0.5 0 1 1 60.5 115.625
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
@@ -2138,10 +2123,10 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -2185,7 +2170,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -2449,7 +2434,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -2477,11 +2462,8 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -2505,17 +2487,17 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M59.5 115.625
-     A0.5 0.5 0 1 0 60.5 115.625
-     M59.5 115.625
-     A 0.5 0.5 0 1 1 60.5 115.625
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
@@ -2533,10 +2515,10 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -2580,7 +2562,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -2824,7 +2806,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={342}
       />
       <g
@@ -2852,11 +2834,8 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -2880,17 +2859,17 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={130.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M59.5 130.625
-     A0.5 0.5 0 1 0 60.5 130.625
-     M59.5 130.625
-     A 0.5 0.5 0 1 1 60.5 130.625
+            d="M39.5 130.625
+     A0.5 0.5 0 1 0 40.5 130.625
+     M39.5 130.625
+     A 0.5 0.5 0 1 1 40.5 130.625
      "
             data-is-focusable={true}
             fill="red"
@@ -2908,10 +2887,10 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -2955,7 +2934,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         transform="translate(0,
                    287)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -3058,7 +3037,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -3086,11 +3065,8 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -3114,17 +3090,17 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M59.5 115.625
-     A0.5 0.5 0 1 0 60.5 115.625
-     M59.5 115.625
-     A 0.5 0.5 0 1 1 60.5 115.625
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
@@ -3142,10 +3118,10 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -3189,7 +3165,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -3453,7 +3429,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -3481,11 +3457,8 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -3509,17 +3482,17 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M59.5 115.625
-     A0.5 0.5 0 1 0 60.5 115.625
-     M59.5 115.625
-     A 0.5 0.5 0 1 1 60.5 115.625
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
@@ -3537,10 +3510,10 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -3584,7 +3557,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>
@@ -3848,7 +3821,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={60}
+        x={80}
         y={302}
       />
       <g
@@ -3876,11 +3849,8 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(100, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -3904,17 +3874,17 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={100}
-            x2={20}
+            x1={40}
+            x2={120}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M99.5 115.625
-     A0.5 0.5 0 1 0 100.5 115.625
-     M99.5 115.625
-     A 0.5 0.5 0 1 1 100.5 115.625
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
@@ -3932,10 +3902,10 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M119.5 20
+     A0.5 0.5 0 1 0 120.5 20
+     M119.5 20
+     A 0.5 0.5 0 1 1 120.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -3979,7 +3949,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={128}
+        y={12}
       />
     </svg>
   </div>
@@ -4243,7 +4213,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={40}
+        x={60}
         y={302}
       />
       <g
@@ -4271,11 +4241,8 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_9"
-        transform="translate(60, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <line
@@ -4299,17 +4266,17 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
             stroke="red"
             strokeLinecap="round"
             strokeWidth={4}
-            x1={60}
-            x2={20}
+            x1={40}
+            x2={80}
             y1={115.625}
             y2={20}
           />
           <path
             aria-label="20. metaData1, 50."
-            d="M59.5 115.625
-     A0.5 0.5 0 1 0 60.5 115.625
-     M59.5 115.625
-     A 0.5 0.5 0 1 1 60.5 115.625
+            d="M39.5 115.625
+     A0.5 0.5 0 1 0 40.5 115.625
+     M39.5 115.625
+     A 0.5 0.5 0 1 1 40.5 115.625
      "
             data-is-focusable={true}
             fill="red"
@@ -4327,10 +4294,10 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           />
           <path
             aria-label="40. metaData1, 80."
-            d="M19.5 20
-     A0.5 0.5 0 1 0 20.5 20
-     M19.5 20
-     A 0.5 0.5 0 1 1 20.5 20
+            d="M79.5 20
+     A0.5 0.5 0 1 0 80.5 20
+     M79.5 20
+     A 0.5 0.5 0 1 1 80.5 20
      "
             data-is-focusable={true}
             fill="red"
@@ -4374,7 +4341,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={88}
+        y={12}
       />
     </svg>
   </div>

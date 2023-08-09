@@ -95,7 +95,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -123,16 +123,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -203,7 +200,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -299,7 +296,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -912,7 +909,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -940,16 +937,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -1020,7 +1014,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -1116,7 +1110,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -1649,7 +1643,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -1677,16 +1671,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -1757,7 +1748,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -1853,7 +1844,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -2298,7 +2289,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -2326,16 +2317,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2406,7 +2394,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2502,7 +2490,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -2927,7 +2915,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={342}
       />
       <g
@@ -2955,16 +2943,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3035,7 +3020,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3131,7 +3116,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         transform="translate(0,
                    287)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -3233,7 +3218,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -3261,16 +3246,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3341,7 +3323,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3437,7 +3419,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -3882,7 +3864,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -3910,16 +3892,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3990,7 +3969,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4086,7 +4065,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -4531,7 +4510,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -4559,16 +4538,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4639,7 +4615,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4735,7 +4711,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
@@ -5180,7 +5156,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={-10}
+        x={10}
         y={302}
       />
       <g
@@ -5208,16 +5184,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-            & g {
-              text-anchor: end;
-            }
         id="yAxisGElementchart_3"
-        transform="translate(-40, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(-1, 0)"
+          transform="translate(19, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -5288,7 +5261,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         </g>
         <g
           key="1"
-          transform="translate(-48, 0)"
+          transform="translate(-28, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -5384,7 +5357,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         transform="translate(0,
                    247)rotate(-90)"
         x={43}
-        y={-12}
+        y={12}
       />
     </svg>
   </div>
