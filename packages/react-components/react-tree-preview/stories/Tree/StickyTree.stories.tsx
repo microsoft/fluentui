@@ -93,7 +93,7 @@ const ActionsExample = () => (
 const useStyles = makeStyles({
   rail: {
     width: '360px',
-    height: '800px',
+    height: '700px',
     // boxSizing: 'border-box',
     ...shorthands.border('1px', 'solid', 'black'),
     overflowY: 'auto',
@@ -205,9 +205,9 @@ const RenderItem = React.forwardRef<
   return (
     <TreeItem
       aria-description="has context menu"
+      ref={useMergedRefs<HTMLDivElement>(ref, itemRef)}
       {...focusTargetAttribute}
       {...treeItemProps}
-      ref={useMergedRefs<HTMLDivElement>(ref, itemRef)}
     >
       <TreeItemLayout actions={<ActionsExample />}>{content}</TreeItemLayout>
     </TreeItem>
@@ -359,6 +359,13 @@ export const StickyTreeExample = () => {
   const [enableScrollOnExpand, setEnableScrollOnExpand] = React.useState<boolean>(true);
   return (
     <SettingsContext.Provider value={{ enableScrollOnExpand }}>
+      <ul>
+        limitations:
+        <li>no virtualization</li>
+        <li>header all have same height which is a fixed and known number</li>
+        {enableScrollOnExpand && <li>only two level </li>}
+      </ul>
+
       <button onClick={() => setEnableScrollOnExpand(v => !v)}>
         {enableScrollOnExpand ? 'disable scroll on expand' : 'enable scroll on expand'}
       </button>
