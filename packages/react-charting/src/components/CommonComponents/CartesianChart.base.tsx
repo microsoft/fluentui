@@ -119,25 +119,20 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           : 20
         : this.props.margins?.left ?? 40,
     };
-    const shiftedMargins = (this.margins = {
-      top: this.props.margins?.top ?? 20,
-      bottom: this.props.margins?.bottom ?? 70,
-      right: this._isRtl
-        ? this.props.margins?.left ?? 80
-        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
-        ? 80
-        : 40,
-      left: this._isRtl
+    if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
+      this.margins.bottom! = this.props.margins?.bottom ?? 70;
+    }
+    if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
+      this.margins.left! = this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
           ? 80
           : 40
-        : this.props.margins?.left ?? 80,
-    });
-    if (this.props.xAxisTitle !== undefined || this.props.xAxisTitle !== '') {
-      this.margins = shiftedMargins;
-    }
-    if (this.props.yAxisTitle !== undefined || this.props.yAxisTitle !== '') {
-      this.margins = shiftedMargins;
+        : this.props.margins?.left ?? 80;
+      this.margins.right! = this._isRtl
+        ? this.props.margins?.left ?? 80
+        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+        ? 80
+        : 40;
     }
   }
 

@@ -70,7 +70,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, 240)"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -95,7 +95,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={302}
       />
       <g
@@ -124,7 +124,7 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <rect
@@ -144,8 +144,8 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-60}
-          x={80}
+          width={-30}
+          x={40}
           y={4}
         />
         <rect
@@ -165,9 +165,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-75}
-          x={80}
-          y={92}
+          width={-37.5}
+          x={40}
+          y={106}
         />
         <rect
           aria-label="2020/04/30. 88%."
@@ -186,9 +186,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-80}
-          x={80}
-          y={166.79999999999998}
+          width={-40}
+          x={40}
+          y={192.7}
         />
         <rect
           aria-label="2020/04/30. 10%."
@@ -207,9 +207,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-30}
-          x={80}
-          y={202}
+          width={-15}
+          x={40}
+          y={233.5}
         />
       </g>
       <text
@@ -236,9 +236,9 @@ exports[`HorizontalBarChartWithAxis - mouse events Should render callout correct
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+                   247)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -1314,7 +1314,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               display: none;
             }
         id="xAxisGElementchart_2"
-        transform="translate(0, -70)"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -1339,7 +1339,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={-8}
       />
       <g
@@ -1368,7 +1368,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_2"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <rect
@@ -1387,8 +1387,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-60}
-          x={80}
+          width={-30}
+          x={40}
           y={4}
         />
          
@@ -1419,9 +1419,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders HorizontalBarChartW
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -1928,7 +1928,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               display: none;
             }
         id="xAxisGElementchart_9"
-        transform="translate(0, -70)"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -1953,7 +1953,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={-8}
       />
       <g
@@ -1982,7 +1982,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_9"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <rect
@@ -2001,8 +2001,8 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          width={-60}
-          x={80}
+          width={-30}
+          x={40}
           y={4}
         />
          
@@ -2033,9 +2033,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders hideLegend correctl
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -2112,7 +2112,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               display: none;
             }
         id="xAxisGElementchart_15"
-        transform="translate(0, -70)"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -2137,7 +2137,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={-8}
       />
       <g
@@ -2166,7 +2166,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_15"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <rect
@@ -2180,10 +2180,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          transform="translate(0,-0.75)"
-          width={-24}
-          x={80}
-          y={5.5}
+          transform="translate(0,-5.125)"
+          width={-12}
+          x={40}
+          y={14.25}
         />
          
          
@@ -2213,9 +2213,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showToolTipForYAxis
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -2714,7 +2714,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               display: none;
             }
         id="xAxisGElementchart_22"
-        transform="translate(0, -70)"
+        transform="translate(0, -35)"
       />
       <text
         className=
@@ -2739,7 +2739,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={-8}
       />
       <g
@@ -2768,7 +2768,7 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_22"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g>
         <rect
@@ -2782,10 +2782,10 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
           onMouseLeave={[Function]}
           onMouseOver={[Function]}
           role="img"
-          transform="translate(0,-0.75)"
-          width={-24}
-          x={80}
-          y={5.5}
+          transform="translate(0,-5.125)"
+          width={-12}
+          x={40}
+          y={14.25}
         />
          
          
@@ -2815,9 +2815,9 @@ exports[`HorizontalBarChartWithAxis snapShot testing renders showYAxisLables cor
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   -98)rotate(-90)"
-        x={78}
-        y={32}
+                   -63)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>

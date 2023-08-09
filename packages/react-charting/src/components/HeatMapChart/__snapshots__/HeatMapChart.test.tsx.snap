@@ -70,7 +70,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               display: none;
             }
         id="xAxisGElementchart_1"
-        transform="translate(0, 240)"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -95,7 +95,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={302}
       />
       <g
@@ -124,7 +124,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_1"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -137,12 +137,12 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-38.81188118811881, 22.17821782178217)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -158,7 +158,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -173,12 +173,12 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(20.594059405940598, 131.08910891089107)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -194,7 +194,7 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -223,9 +223,9 @@ exports[`HeatMapChart - mouse events Should render callout correctly on mouseove
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+                   247)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -689,7 +689,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               display: none;
             }
         id="xAxisGElementchart_1"
-        transform="translate(0, 240)"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -714,7 +714,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={302}
       />
       <g
@@ -743,7 +743,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_1"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -756,12 +756,12 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-38.81188118811881, 22.17821782178217)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -777,7 +777,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -792,12 +792,12 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(20.594059405940598, 131.08910891089107)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -813,7 +813,7 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -842,9 +842,9 @@ exports[`HeatMapChart snapShot testing renders HeatMapChart correctly 1`] = `
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+                   247)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -1082,7 +1082,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               display: none;
             }
         id="xAxisGElementchart_1"
-        transform="translate(0, 240)"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -1107,7 +1107,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={302}
       />
       <g
@@ -1136,7 +1136,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_1"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1149,12 +1149,12 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-38.81188118811881, 22.17821782178217)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(255, 195, 195)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -1170,7 +1170,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -1185,12 +1185,12 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(20.594059405940598, 131.08910891089107)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(255, 197, 186)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -1206,7 +1206,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -1235,9 +1235,9 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+                   247)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -1566,7 +1566,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               display: none;
             }
         id="xAxisGElementchart_1"
-        transform="translate(0, 280)"
+        transform="translate(0, 315)"
       />
       <text
         className=
@@ -1591,7 +1591,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={342}
       />
       <g
@@ -1620,7 +1620,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_1"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1633,12 +1633,12 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-38.81188118811881, 22.574257425742587)"
+        transform="translate(-19.405940594059405, 22.9207920792079)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={126.13861386138613}
-          width={58.21782178217822}
+          height={143.11881188118812}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -1654,7 +1654,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 63.06930693069307)"
+          transform="translate(14.554455445544555, 71.55940594059406)"
         >
           25
         </text>
@@ -1669,12 +1669,12 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(20.594059405940598, 151.2871287128713)"
+        transform="translate(10.297029702970299, 168.96039603960395)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={126.13861386138613}
-          width={58.21782178217822}
+          height={143.11881188118812}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -1690,7 +1690,7 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 63.06930693069307)"
+          transform="translate(14.554455445544555, 71.55940594059406)"
         >
           50
         </text>
@@ -1719,9 +1719,9 @@ exports[`HeatMapChart snapShot testing renders hideLegend correctly 1`] = `
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   252)rotate(-90)"
-        x={78}
-        y={32}
+                   287)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -1798,7 +1798,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               display: none;
             }
         id="xAxisGElementchart_1"
-        transform="translate(0, 240)"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -1823,7 +1823,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={302}
       />
       <g
@@ -1852,7 +1852,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_1"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -1865,12 +1865,12 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-38.81188118811881, 22.17821782178217)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -1886,7 +1886,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -1901,12 +1901,12 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(20.594059405940598, 131.08910891089107)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -1922,7 +1922,7 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -1951,9 +1951,9 @@ exports[`HeatMapChart snapShot testing renders hideTooltip correctly 1`] = `
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+                   247)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
@@ -2191,7 +2191,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               display: none;
             }
         id="xAxisGElementchart_1"
-        transform="translate(0, 240)"
+        transform="translate(0, 275)"
       />
       <text
         className=
@@ -2216,7 +2216,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
         textAnchor="middle"
-        x={20}
+        x={10}
         y={302}
       />
       <g
@@ -2245,7 +2245,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               stroke: rgb(179, 179, 179);
             }
         id="yAxisGElementchart_1"
-        transform="translate(80, 0)"
+        transform="translate(40, 0)"
       />
       <g
         aria-label="Mar/04, p2. Execllent (0-200), 25/2479. Due to unexpected heavy rain, all the pollutants are washed
@@ -2258,12 +2258,12 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(-38.81188118811881, 22.17821782178217)"
+        transform="translate(-19.405940594059405, 22.52475247524754)"
       >
         <rect
           fill="rgb(166, 207, 226)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -2279,7 +2279,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           25
         </text>
@@ -2294,12 +2294,12 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseOut={[Function]}
         onMouseOver={[Function]}
         role="img"
-        transform="translate(20.594059405940598, 131.08910891089107)"
+        transform="translate(10.297029702970299, 148.76237623762376)"
       >
         <rect
           fill="rgb(159, 198, 222)"
-          height={106.73267326732673}
-          width={58.21782178217822}
+          height={123.7128712871287}
+          width={29.10891089108911}
         />
         <text
           className=
@@ -2315,7 +2315,7 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
               }
           dominantBaseline="middle"
           textAnchor="middle"
-          transform="translate(29.10891089108911, 53.366336633663366)"
+          transform="translate(14.554455445544555, 61.85643564356435)"
         >
           50
         </text>
@@ -2344,9 +2344,9 @@ exports[`HeatMapChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         onMouseLeave={[Function]}
         textAnchor="middle"
         transform="translate(0,
-                   212)rotate(-90)"
-        x={78}
-        y={32}
+                   247)rotate(-90)"
+        x={43}
+        y={12}
       />
     </svg>
   </div>
