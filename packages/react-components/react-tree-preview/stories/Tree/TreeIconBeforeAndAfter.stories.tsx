@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree-preview';
 import { Image20Regular, LockClosed20Regular, Person20Regular, Warning20Regular } from '@fluentui/react-icons';
 
-export const IconBeforeAfter = () => {
+export const IconBeforeAndAfter = () => {
   return (
-    <Tree aria-label="Tree">
+    <Tree aria-label="Icon Before & After">
       <TreeItem itemType="branch">
         <TreeItemLayout iconBefore={<Image20Regular />} iconAfter={<LockClosed20Regular />}>
           level 1, item 1
@@ -32,7 +32,7 @@ export const IconBeforeAfter = () => {
   );
 };
 
-IconBeforeAfter.parameters = {
+IconBeforeAndAfter.parameters = {
   docs: {
     name: 'Icon Before/After',
     description: {

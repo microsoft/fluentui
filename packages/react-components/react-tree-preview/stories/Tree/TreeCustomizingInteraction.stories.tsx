@@ -8,7 +8,7 @@ import {
   TreeOpenChangeEvent,
 } from '@fluentui/react-tree-preview';
 
-export const CustomizingInteractionAndControl = () => {
+export const CustomizingInteraction = () => {
   const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
   const onOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     if (data.type === 'Click' || data.type === 'Enter') {
@@ -18,7 +18,7 @@ export const CustomizingInteractionAndControl = () => {
     setOpenItems(data.openItems);
   };
   return (
-    <Tree aria-label="Tree" openItems={openItems} onOpenChange={onOpenChange}>
+    <Tree aria-label="Customizing Interaction" openItems={openItems} onOpenChange={onOpenChange}>
       <TreeItem itemType="branch" value="default-subtree-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
@@ -47,7 +47,7 @@ export const CustomizingInteractionAndControl = () => {
   );
 };
 
-CustomizingInteractionAndControl.parameters = {
+CustomizingInteraction.parameters = {
   docs: {
     description: {
       story: `

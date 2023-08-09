@@ -24,7 +24,7 @@ const RecursiveTreeItem: React.FC = () => {
 };
 
 export const InlineStylingTreeItemLevel = () => (
-  <Tree aria-label="Tree">
+  <Tree aria-label="Inline Styling Tree Item Level">
     <RecursiveTreeItem />
   </Tree>
 );

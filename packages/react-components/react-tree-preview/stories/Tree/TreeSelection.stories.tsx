@@ -32,7 +32,7 @@ export const Selection = () => {
   });
 
   return (
-    <FlatTree {...flatTree.getTreeProps()} aria-label="Tree">
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Selection">
       {Array.from(flatTree.items(), flatTreeItem => {
         const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (

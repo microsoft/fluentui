@@ -5,7 +5,7 @@ import { Avatar } from '@fluentui/react-components';
 export const Layouts = () => {
   return (
     <>
-      <Tree aria-label="Tree">
+      <Tree aria-label="Default Layout">
         <TreeItem itemType="branch">
           <TreeItemLayout>Tree using TreeItemLayout</TreeItemLayout>
           <Tree>
@@ -22,9 +22,7 @@ export const Layouts = () => {
         </TreeItem>
       </Tree>
 
-      <br />
-
-      <Tree aria-label="Tree Persona">
+      <Tree aria-label="Persona Layout">
         <TreeItem itemType="branch">
           <TreeItemPersonaLayout media={<Avatar image={{ alt: 'avatar' }} />}>
             Tree using TreeItemPersonaLayout

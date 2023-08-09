@@ -14,7 +14,7 @@ export const OpenItemsControlled = () => {
     setOpenItems(data.openItems);
   };
   return (
-    <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
+    <Tree aria-label="Open Items Controlled" openItems={openItems} onOpenChange={handleOpenChange}>
       <TreeItem itemType="branch" value="tree-item-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>

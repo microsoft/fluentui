@@ -9,14 +9,14 @@ export { Size } from './TreeSize.stories';
 export { Appearance } from './TreeAppearance.stories';
 export { Layouts } from './TreeLayouts.stories';
 export { ExpandIcon } from './TreeExpandIcon.stories';
-export { IconBeforeAfter } from './TreeIconBeforeAfter.stories';
+export { IconBeforeAndAfter } from './TreeIconBeforeAndAfter.stories';
 export { Aside } from './TreeAside.stories';
 export { Actions } from './TreeActions.stories';
 
 // FUNCTIONAL EXAMPLES
-export { DefaultOpenTrees } from './TreeDefaultOpenTrees.stories';
-export { OpenItemsControlled } from './TreeControllingOpenAndClose.stories';
-export { CustomizingInteractionAndControl } from './TreeCustomizingInteractionAndControl.stories';
+export { DefaultOpen } from './TreeDefaultOpen.stories';
+export { OpenItemsControlled } from './OpenItemsControlled.stories';
+export { CustomizingInteraction } from './TreeCustomizingInteraction.stories';
 export { InlineStylingTreeItemLevel } from './TreeInlineStylingTreeItemLevel.stories';
 export { FlatTree } from './FlatTree.stories';
 export { Selection } from './TreeSelection.stories';

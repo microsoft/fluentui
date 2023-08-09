@@ -30,7 +30,7 @@ const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
   return (
     <Menu positioning="below-end" openOnContext>
       <MenuTrigger disableButtonEnhancement>
-        <TreeItem aria-description="has context menu" {...focusTargetAttribute} {...props}>
+        <TreeItem aria-description="has actions" {...focusTargetAttribute} {...props}>
           <TreeItemLayout
             actions={
               <>
@@ -63,7 +63,7 @@ const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
 
 export const Actions = () => {
   return (
-    <Tree aria-label="Tree">
+    <Tree aria-label="Actions">
       <CustomTreeItem itemType="branch">
         item 1
         <Tree>
@@ -114,7 +114,7 @@ The \`actions\` slot has a \`role="toolbar"\` and ensures proper horizontal navi
 
 > ⚠️ Although \`actions\` are easy to navigate, they're not an expected pattern according to [WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).providing a context menu with the same functionalities as the actions is recommended to ensure your tree item is accessible.
 
-In the example below, we recompose the \`TreeItem\` component to include both a context menu and actions that provide the same amount of functionalities.
+In the example below, we compose on top of \`TreeItem\` component to include both a context menu and actions that provide the same amount of functionalities. We also provide an \`aria-description\` to the tree item to indicate that it has actions. This is a new behavior that the user might not be aware of, so you might need to explain somewhere else in the UI what does having actions refers to.
 
 > ⚠️ Don't forget to add a proper description to \`TreeItem\` to ensure screen readers have enough information to understand the context
 

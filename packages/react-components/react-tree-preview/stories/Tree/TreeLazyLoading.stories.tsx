@@ -72,7 +72,7 @@ export const LazyLoading = () => {
   const flatTree = useHeadlessFlatTree_unstable(tree, { onOpenChange: handleOpenChange });
   const treeProps = flatTree.getTreeProps();
   return (
-    <Tree {...treeProps} aria-label="Tree">
+    <Tree {...treeProps} aria-label="Lazy Loading">
       {Array.from(flatTree.items(), item => {
         const { name, ...itemProps } = item.getTreeItemProps();
         const { isLoading = false } = trees[item.value as 'people' | 'planets' | 'starships'] ?? {};

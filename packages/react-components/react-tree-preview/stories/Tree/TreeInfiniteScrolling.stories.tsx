@@ -91,7 +91,12 @@ export const InfiniteScrolling = () => {
   };
 
   return (
-    <Tree {...flatTree.getTreeProps()} aria-label="Tree" onScroll={handleScroll} className={styles.container}>
+    <Tree
+      {...flatTree.getTreeProps()}
+      aria-label="Infinite Scrolling"
+      onScroll={handleScroll}
+      className={styles.container}
+    >
       {Array.from(flatTree.items(), flatTreeItem => {
         const { name, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (

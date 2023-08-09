@@ -112,7 +112,7 @@ export const Virtualization = () => {
         children: FixedSizeTreeItem,
       }}
       onNavigation_unstable={handleNavigation}
-      aria-label="Tree"
+      aria-label="Virtualization"
     />
   );
 };

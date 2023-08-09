@@ -15,7 +15,7 @@ const AsideContent = ({ isImportant, messageCount }: { isImportant?: boolean; me
 );
 
 export const Aside = () => (
-  <Tree aria-label="Tree">
+  <Tree aria-label="Aside">
     <TreeItem itemType="branch" aria-description="Important, 3 message">
       <TreeItemLayout aside={<AsideContent isImportant={true} messageCount={3} />}>level 1, item 1</TreeItemLayout>
       <Tree>

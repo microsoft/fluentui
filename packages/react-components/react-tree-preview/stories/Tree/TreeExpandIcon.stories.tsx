@@ -9,7 +9,7 @@ export const ExpandIcon = () => {
     setOpenItems(curr => (data.open ? [...curr, data.value] : curr.filter(value => value !== data.value)));
   };
   return (
-    <Tree aria-label="Tree" openItems={openItems} onOpenChange={handleOpenChange}>
+    <Tree aria-label="Expand Icon" openItems={openItems} onOpenChange={handleOpenChange}>
       <TreeItem itemType="branch" value="tree-item-2">
         <TreeItemLayout
           expandIcon={openItems.includes('tree-item-2') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}

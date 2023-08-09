@@ -105,13 +105,13 @@ export const FlatTree = () => {
   const focusTargetAttribute = useRestoreFocusTarget();
 
   return (
-    <Tree {...flatTree.getTreeProps()} aria-label="Tree">
+    <Tree {...flatTree.getTreeProps()} aria-label="Flat Tree">
       {Array.from(flatTree.items(), flatTreeItem => {
         const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (
           <Menu key={flatTreeItem.value} positioning="below-end" openOnContext>
             <MenuTrigger disableButtonEnhancement>
-              <TreeItem aria-description="has context menu" {...focusTargetAttribute} {...treeItemProps}>
+              <TreeItem aria-description="has actions" {...focusTargetAttribute} {...treeItemProps}>
                 <TreeItemLayout actions={<ActionsExample />}>{content}</TreeItemLayout>
               </TreeItem>
             </MenuTrigger>

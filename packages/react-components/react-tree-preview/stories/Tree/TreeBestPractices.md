@@ -14,7 +14,7 @@
 - **If you provide additional buttons or functionality within tree items actions, make them accessible with a context menu:**
 
   - Ensure that any additional actions or features in tree items are accessible for both mouse and keyboard users by implementing a context menu.
-  - Include an `aria-description` or `aria-describedby` on tree items with actions/context menu to offer more descriptive information about the interactions, e.g., "has context menu."
+  - Include an `aria-description` or `aria-describedby` on tree items with actions/context menu to offer more descriptive information about the interactions, e.g., "has actions."
   - The added functionality should not disrupt keyboard navigation within the tree.
 
 </details>

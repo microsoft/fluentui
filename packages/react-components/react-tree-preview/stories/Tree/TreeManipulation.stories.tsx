@@ -118,7 +118,7 @@ export const Manipulation = () => {
   );
 
   return (
-    <FlatTree {...flatTree.getTreeProps()} aria-label="Tree">
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Manipulation">
       {Array.from(flatTree.items(), item => {
         const { content, ...treeItemProps } = item.getTreeItemProps();
         return (
