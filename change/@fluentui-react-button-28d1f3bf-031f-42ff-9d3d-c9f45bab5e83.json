@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Button icon no longer rendering off-center with falsy children.",
-  "packageName": "@fluentui/react-button",
-  "email": "andrew.enger48@gmail.com",
-  "dependentChangeType": "patch"
-}

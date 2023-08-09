@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: Breaking Change, onHeaderClick erroneously removed",
-  "packageName": "@fluentui/react-accordion",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

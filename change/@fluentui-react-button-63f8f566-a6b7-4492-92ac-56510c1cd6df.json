@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: updated styles to icon fill on hover only for subtle and transparent variant of button",
-  "packageName": "@fluentui/react-button",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,7 @@
 {
   "type": "patch",
-  "comment": "chore: Update Griffel to latest version",
+  "comment": "fix: flickering in Overflow",
   "packageName": "@fluentui/react-overflow",
-  "email": "olfedias@microsoft.com",
+  "email": "vkozlova@microsoft.com",
   "dependentChangeType": "patch"
 }
