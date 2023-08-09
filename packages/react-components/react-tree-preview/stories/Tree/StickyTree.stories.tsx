@@ -288,9 +288,15 @@ const StickyTreePrototype = ({ items, headerHeight }: { items: FlatItem[]; heade
       <Tree {...flatTree.getTreeProps()} aria-label="Tree" className={classes.tree}>
         {Array.from(flatTree.items(), flatTreeItem => {
           return flatTreeItem.level === 1 ? (
-            <RenderHeader item={flatTreeItem} headerHeight={headerHeight} ref={headerRefs[flatTreeItem.value]} />
+            <RenderHeader
+              key={flatTreeItem.value}
+              item={flatTreeItem}
+              headerHeight={headerHeight}
+              ref={headerRefs[flatTreeItem.value]}
+            />
           ) : (
             <RenderItem
+              key={flatTreeItem.value}
               item={flatTreeItem}
               parentJustExpanded={firstChildValueRef.current === flatTreeItem.value}
               isBehindHeaders={isBehindHeaders}
@@ -391,6 +397,7 @@ export const StickyTreeExample = () => {
                   });
                 }}
                 label={header}
+                key={header}
               />
             ))}
           </div>
