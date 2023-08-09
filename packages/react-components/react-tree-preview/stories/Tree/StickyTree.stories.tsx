@@ -188,17 +188,23 @@ const useScrollItemIfNeeded_item = ({
   const itemRef = React.useRef<HTMLDivElement>(null);
   React.useEffect(() => {
     if (itemRef.current && parentJustExpanded) {
-      // Issue1: this is the simplest solution.
+      // Issue1: solution 1 - this is the simplest solution.
       // Pro: simple
       // Con:
       // - scroll jump for a collapsed header in the middle.
       // - No guarantee of visibility.
       // itemRef.current.scrollIntoView({ block: 'center' });
       //
-      // Issue1: check if the item is hidden, if it is, dock its header to top.
+      // Issue1: solution 2 - check if the item is hidden, if it is, scroll it to center
+      // Pro: no scroll jump
+      // Con:
+      // - need to keep ref on all headers
+      // - no gurantee of visibility
       if (isBehindHeaders(itemRef.current, value)) {
         itemRef.current.scrollIntoView({ block: 'center' });
       }
+      //
+      // Issue1: solution 3 - check if the item is hidden, if it is, dock its parent to top?
     }
   }, [parentJustExpanded]);
   return itemRef;
