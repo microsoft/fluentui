@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore(cxe-red): migrate to new slot API",
-  "packageName": "@fluentui/react-datepicker-compat",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
