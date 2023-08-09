@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 07:36:09 GMT",
+      "tag": "@fluentui/react-charting_v5.16.59",
+      "version": "5.16.59",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a92de1ce6016123a4f5ee5859bc54b91f6384e2e",
+            "comment": "Changes for lazy load for hover card and legends"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Aug 2023 07:35:28 GMT",
       "tag": "@fluentui/react-charting_v5.16.58",
       "version": "5.16.58",
