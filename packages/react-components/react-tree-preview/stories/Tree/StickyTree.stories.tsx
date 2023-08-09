@@ -90,40 +90,6 @@ const ActionsExample = () => (
 
 // ------------------------------ Sticky tree implementation ------------------------------
 
-const flatTreeItems = createFlatTreeItems([
-  {
-    headerName: 'Favorites',
-    min: 5,
-    max: 5,
-  },
-  {
-    headerName: 'Activity',
-    min: 0,
-    max: 0,
-  },
-  {
-    headerName: 'Saved',
-    min: 0,
-    max: 0,
-  },
-  {
-    headerName: 'Alexandria',
-    min: 20,
-    max: 20,
-  },
-  {
-    headerName: 'Chat',
-    min: 30,
-    max: 30,
-  },
-  {
-    headerName: 'Channel',
-    min: 10,
-    max: 10,
-  },
-]);
-
-const HEADER_HEIGHT = 32;
 const useStyles = makeStyles({
   rail: {
     width: '360px',
@@ -141,7 +107,6 @@ const useStyles = makeStyles({
     zIndex: 99,
     position: 'sticky',
     boxSizing: 'border-box',
-    height: `${HEADER_HEIGHT}px`,
     ...shorthands.borderBottom('1px', 'solid', 'magenta'),
   },
 });
@@ -149,13 +114,14 @@ const useStyles = makeStyles({
 const RenderHeader = React.forwardRef<
   HTMLDivElement,
   {
-    flatTreeItem: HeadlessTreeItem<FlatItem>; // TODO type
+    item: HeadlessTreeItem<FlatItem>; // TODO type
+    headerHeight: number;
   }
->(({ flatTreeItem }, ref) => {
+>(({ item, headerHeight }, ref) => {
   const classes = useStyles();
   const focusTargetAttribute = useRestoreFocusTarget();
 
-  const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+  const { content, ...treeItemProps } = item.getTreeItemProps();
   const pos = treeItemProps['aria-posinset'];
   const setSize = treeItemProps['aria-setsize'];
 
@@ -166,8 +132,9 @@ const RenderHeader = React.forwardRef<
       {...treeItemProps}
       className={classes.header}
       style={{
-        top: `${HEADER_HEIGHT * (pos - 1)}px`,
-        bottom: `${HEADER_HEIGHT * (setSize - pos)}px`,
+        top: `${headerHeight * (pos - 1)}px`,
+        bottom: `${headerHeight * (setSize - pos)}px`,
+        height: `${headerHeight}px`,
       }}
       ref={ref}
     >
@@ -185,8 +152,15 @@ const useScrollItemIfNeeded_item = ({
   parentJustExpanded?: boolean;
   isBehindHeaders: (element: HTMLElement, value: TreeItemValue) => boolean | undefined;
 }) => {
+  const { enableScrollOnExpand } = useSettingsContext();
+
   const itemRef = React.useRef<HTMLDivElement>(null);
+
   React.useEffect(() => {
+    if (!enableScrollOnExpand) {
+      return;
+    }
+
     if (itemRef.current && parentJustExpanded) {
       // Issue1: solution 1 - this is the simplest solution.
       // Pro: simple
@@ -206,21 +180,21 @@ const useScrollItemIfNeeded_item = ({
       //
       // Issue1: solution 3 - check if the item is hidden, if it is, dock its parent to top?
     }
-  }, [parentJustExpanded]);
+  }, [parentJustExpanded, enableScrollOnExpand]);
   return itemRef;
 };
 
 const RenderItem = React.forwardRef<
   HTMLDivElement,
   {
-    flatTreeItem: HeadlessTreeItem<FlatItem>; // TODO type
+    item: HeadlessTreeItem<FlatItem>; // TODO type
     parentJustExpanded?: boolean;
     isBehindHeaders: (element: HTMLElement, value: TreeItemValue) => boolean | undefined;
   }
->(({ flatTreeItem, parentJustExpanded, isBehindHeaders }, ref) => {
+>(({ item, parentJustExpanded, isBehindHeaders }, ref) => {
   const focusTargetAttribute = useRestoreFocusTarget();
 
-  const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+  const { content, ...treeItemProps } = item.getTreeItemProps();
 
   const itemRef = useScrollItemIfNeeded_item({
     value: treeItemProps.value,
@@ -233,16 +207,16 @@ const RenderItem = React.forwardRef<
       aria-description="has context menu"
       {...focusTargetAttribute}
       {...treeItemProps}
-      ref={useMergedRefs(ref, itemRef)}
+      ref={useMergedRefs<HTMLDivElement>(ref, itemRef)}
     >
       <TreeItemLayout actions={<ActionsExample />}>{content}</TreeItemLayout>
     </TreeItem>
   );
 });
 
-const useScrollItemIfNeeded_tree = () => {
+const useScrollItemIfNeeded_tree = (items: FlatItem[]) => {
   const headerRefs: Array<{ ref: React.RefObject<HTMLDivElement>; value: TreeItemValue }> = [];
-  flatTreeItems
+  items
     .map(item => item.value)
     .forEach(value => {
       const headerRef = React.useRef<HTMLDivElement>(null);
@@ -254,6 +228,12 @@ const useScrollItemIfNeeded_tree = () => {
 
   const containerRef = React.useRef<HTMLDivElement>(null);
 
+  const { enableScrollOnExpand } = useSettingsContext();
+
+  if (!enableScrollOnExpand) {
+    return { headerRefs, containerRef, isBehindHeaders: () => false };
+  }
+
   const isBehindHeaders = (element: HTMLElement, value: TreeItemValue) => {
     // consider an item is hidden if:
     // - its top is above its parent header's bottom
@@ -262,7 +242,7 @@ const useScrollItemIfNeeded_tree = () => {
     const elementRect = element.getBoundingClientRect();
     let parentValue: TreeItemValue | undefined;
     let nextSiblingOfParentValue: TreeItemValue | undefined;
-    for (const item of flatTreeItems) {
+    for (const item of items) {
       if (item.value === value) {
         parentValue = item.parentValue;
       }
@@ -295,8 +275,8 @@ const useScrollItemIfNeeded_tree = () => {
   return { headerRefs, containerRef, isBehindHeaders };
 };
 
-export const StickyTreeExample = () => {
-  const [openItems, setOpenItems] = React.useState<TreeProps['openItems']>(flatTreeItems.map(item => item.value));
+export const StickyTreePrototype = ({ items, headerHeight }: { items: FlatItem[]; headerHeight: number }) => {
+  const [openItems, setOpenItems] = React.useState<Set<TreeItemValue>>(new Set(items.map(item => item.value)));
 
   const firstChildValueRef = React.useRef<TreeItemValue | undefined>(undefined);
   const onOpenChange: TreeProps['onOpenChange'] = (e, data) => {
@@ -304,17 +284,17 @@ export const StickyTreeExample = () => {
     if (data.open) {
       // scroll to make first child visible
       const expandedItemValue = data.value;
-      firstChildValueRef.current = flatTreeItems.find(item => item.parentValue === expandedItemValue)?.value;
+      firstChildValueRef.current = items.find(item => item.parentValue === expandedItemValue)?.value;
     }
   };
 
-  const flatTree = useHeadlessFlatTree_unstable(flatTreeItems, {
+  const flatTree = useHeadlessFlatTree_unstable(items, {
     openItems,
     onOpenChange,
   });
   const classes = useStyles();
 
-  const { headerRefs, containerRef, isBehindHeaders } = useScrollItemIfNeeded_tree();
+  const { headerRefs, containerRef, isBehindHeaders } = useScrollItemIfNeeded_tree(items);
 
   return (
     <div className={classes.rail} ref={containerRef}>
@@ -322,12 +302,13 @@ export const StickyTreeExample = () => {
         {Array.from(flatTree.items(), flatTreeItem => {
           return flatTreeItem.level === 1 ? (
             <RenderHeader
-              flatTreeItem={flatTreeItem}
+              item={flatTreeItem}
+              headerHeight={headerHeight}
               ref={headerRefs.find(headerRef => headerRef.value === flatTreeItem.value)?.ref}
             />
           ) : (
             <RenderItem
-              flatTreeItem={flatTreeItem}
+              item={flatTreeItem}
               parentJustExpanded={firstChildValueRef.current === flatTreeItem.value}
               isBehindHeaders={isBehindHeaders}
             />
@@ -335,6 +316,54 @@ export const StickyTreeExample = () => {
         })}
       </Tree>
     </div>
+  );
+};
+
+const SettingsContext = React.createContext({ enableScrollOnExpand: true });
+const useSettingsContext = () => React.useContext(SettingsContext);
+
+export const StickyTreeExample = () => {
+  const flatTreeItems = createFlatTreeItems([
+    {
+      headerName: 'Favorites',
+      min: 5,
+      max: 5,
+    },
+    {
+      headerName: 'Activity',
+      min: 0,
+      max: 0,
+    },
+    {
+      headerName: 'Saved',
+      min: 0,
+      max: 0,
+    },
+    {
+      headerName: 'Alexandria',
+      min: 20,
+      max: 20,
+    },
+    {
+      headerName: 'Chat',
+      min: 30,
+      max: 30,
+    },
+    {
+      headerName: 'Channel',
+      min: 10,
+      max: 10,
+    },
+  ]);
+
+  const [enableScrollOnExpand, setEnableScrollOnExpand] = React.useState<boolean>(true);
+  return (
+    <SettingsContext.Provider value={{ enableScrollOnExpand }}>
+      <button onClick={() => setEnableScrollOnExpand(v => !v)}>
+        {enableScrollOnExpand ? 'disable scroll on expand' : 'enable scroll on expand'}
+      </button>
+      <StickyTreePrototype items={flatTreeItems} headerHeight={32} />
+    </SettingsContext.Provider>
   );
 };
 
