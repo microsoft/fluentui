@@ -506,6 +506,10 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
       contentStyles.placeholder,
       state.content.className,
     );
+    // FIXME: this is a deprecated API
+    // should be removed in the next major version
+    // eslint-disable-next-line deprecation/deprecation
+    state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 
   state.content.className = mergeClasses(

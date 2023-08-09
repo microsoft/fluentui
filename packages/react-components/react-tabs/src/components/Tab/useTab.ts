@@ -48,16 +48,11 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   }, [onRegister, onUnregister, innerRef, value]);
 
   const iconSlot = slot.optional(icon, { elementType: 'span' });
-  const contentShorthand = slot.always(content, {
+  const contentSlot = slot.always(content, {
     defaultProps: { children: props.children },
     elementType: 'span',
   });
-  const iconOnly = Boolean(iconSlot?.children && !contentShorthand.children);
-  const contentReservedSpaceSlot = slot.optional(content, {
-    renderByDefault: !selected && !iconOnly && reserveSelectedTabSpace,
-    defaultProps: { children: props.children },
-    elementType: 'span',
-  });
+  const iconOnly = Boolean(iconSlot?.children && !contentSlot.children);
   return {
     components: { root: 'button', icon: 'span', content: 'span', contentReservedSpace: 'span' },
     root: slot.always(
@@ -76,8 +71,12 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     ),
     icon: iconSlot,
     iconOnly,
-    content: contentShorthand,
-    contentReservedSpace: contentReservedSpaceSlot,
+    content: contentSlot,
+    contentReservedSpace: slot.optional(content, {
+      renderByDefault: !selected && !iconOnly && reserveSelectedTabSpace,
+      defaultProps: { children: props.children },
+      elementType: 'span',
+    }),
     appearance,
     disabled,
     selected,

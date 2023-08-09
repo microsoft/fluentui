@@ -61,6 +61,13 @@ export type TabState = ComponentState<TabInternalSlots> &
      */
     selected: boolean;
     /**
+     * When defined, tab content with selected style is rendered hidden to reserve space.
+     * This keeps consistent content size between unselected and selected states.
+     *
+     * @deprecated - use `contentReservedSpace` internal slot instead.
+     */
+    contentReservedSpaceClassName?: string;
+    /**
      * A tab can be either 'small', 'medium', or 'large' size.
      */
     size: 'small' | 'medium' | 'large';

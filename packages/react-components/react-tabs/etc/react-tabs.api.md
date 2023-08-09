@@ -111,6 +111,7 @@ export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'
     appearance?: 'transparent' | 'subtle';
     iconOnly: boolean;
     selected: boolean;
+    contentReservedSpaceClassName?: string;
     size: 'small' | 'medium' | 'large';
     vertical: boolean;
 };
