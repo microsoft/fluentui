@@ -2,6 +2,51 @@
   "name": "@fluentui/test-utilities",
   "entries": [
     {
+      "date": "Wed, 28 Jun 2023 07:37:29 GMT",
+      "tag": "@fluentui/test-utilities_v8.3.6",
+      "version": "8.3.6",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 05 May 2023 18:14:00 GMT",
+      "tag": "@fluentui/test-utilities_v8.3.4",
+      "version": "8.3.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "0475089ff40110402c8f1e31f8c52c17f8b2e0e2",
+            "comment": "fix: explicitly ship dist/ folder."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 May 2023 22:20:21 GMT",
+      "tag": "@fluentui/test-utilities_v8.3.3",
+      "version": "8.3.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/test-utilities",
+            "commit": "1235c3caf6133d0478ef8a4173034124c53ae833",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression with how npm publish works."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 03 Mar 2023 07:47:16 GMT",
       "tag": "@fluentui/test-utilities_v8.3.0",
       "version": "8.3.0",

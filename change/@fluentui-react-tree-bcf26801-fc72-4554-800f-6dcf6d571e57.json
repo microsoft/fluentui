@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: add node field to package.json exports map.",
-  "packageName": "@fluentui/react-tree",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

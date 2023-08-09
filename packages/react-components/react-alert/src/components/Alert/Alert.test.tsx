@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 
 import { isConformant } from '../../testing/isConformant';
 import { Alert } from './Alert';
-import { alertClassNames } from './useAlertStyles';
+import { alertClassNames } from './useAlertStyles.styles';
 
 describe('Alert', () => {
   isConformant({

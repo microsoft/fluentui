@@ -1,16 +1,20 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { assertSlots } from '@fluentui/react-utilities';
 import type { SelectSlots, SelectState } from './Select.types';
 
 /**
  * Render the final JSX of Select
  */
 export const renderSelect_unstable = (state: SelectState) => {
-  const { slots, slotProps } = getSlots<SelectSlots>(state);
+  assertSlots<SelectSlots>(state);
   return (
-    <slots.root {...slotProps.root}>
-      <slots.select {...slotProps.select}>{slotProps.select.children}</slots.select>
-      <slots.icon {...slotProps.icon} />
-    </slots.root>
+    <state.root>
+      <state.select>{state.select.children}</state.select>
+      <state.icon />
+    </state.root>
   );
 };

@@ -4,18 +4,20 @@
   "version": "0.66.4",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
+    "type-check": "tsc -p . --noEmit",
     "bundle": "just-scripts perf-test:bundle",
     "clean": "just-scripts clean",
     "test": "just-scripts test",
-    "perf:test": "just-scripts perf-test",
-    "perf:test:base": "just-scripts perf-test --base"
+    "perf:test": "just-scripts perf-test"
+  },
+  "dependencies": {
+    "@fluentui/react-northstar": "*",
+    "@fluentui/react-northstar-prototypes": "*",
+    "@fluentui/digest": "*",
+    "flamegrill": "0.2.0"
   },
   "devDependencies": {
-    "@fluentui/digest": "^0.66.4",
-    "@fluentui/react-northstar": "^0.66.4",
-    "@fluentui/react-northstar-prototypes": "^0.66.4",
-    "flamegrill": "0.2.0"
+    "@fluentui/scripts-tasks": "*"
   },
   "publishConfig": {
     "access": "public"

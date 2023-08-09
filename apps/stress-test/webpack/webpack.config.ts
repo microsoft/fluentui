@@ -2,7 +2,7 @@ import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { registerTsPaths, createPathAliasesConfig, rules } from '@fluentui/scripts-storybook';
+import { registerTsPaths, rules } from '@fluentui/scripts-storybook';
 import { configurePages } from './pageConfig.js';
 import { configureGriffel } from './griffelConfig.js';
 import * as WebpackDevServer from 'webpack-dev-server';
@@ -12,7 +12,7 @@ const enabledReactProfiling = true;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const { tsConfigAllPath } = createPathAliasesConfig();
+const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 
 type WebpackArgs = {
   mode: 'production' | 'development' | 'none';

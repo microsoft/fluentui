@@ -1,16 +1,9 @@
-// @ts-check
-
-const {
-  getPackageStoriesGlob,
-  createPathAliasesConfig,
-  registerTsPaths,
-  rules,
-  registerRules,
-} = require('@fluentui/scripts-storybook');
+const path = require('path');
+const { getPackageStoriesGlob, registerTsPaths, rules, registerRules } = require('@fluentui/scripts-storybook');
 
 const rootMain = require('../../../.storybook/main');
 
-const { tsConfigAllPath } = createPathAliasesConfig();
+const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 
 module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
   ...rootMain,
@@ -19,8 +12,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main'), 'typescript
     '../src/**/*.stories.mdx',
     '../src/**/*.stories.@(ts|tsx)',
     ...getPackageStoriesGlob({ packageName: '@fluentui/react-components', callerPath: __dirname }),
-    '../../../packages/react-components/react-migration-v0-v9/stories/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
-    '../../../packages/react-components/react-migration-v8-v9/stories/**/@(index.stories.@(ts|tsx)|*.stories.mdx)',
+    ...getPackageStoriesGlob({ packageName: '@fluentui/public-docsite-v9', callerPath: __dirname }),
   ],
   staticDirs: ['../public'],
   addons: [...rootMain.addons],

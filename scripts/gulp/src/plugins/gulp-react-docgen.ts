@@ -1,11 +1,12 @@
-import gutil from 'gulp-util';
 import path from 'path';
+
+import gutil from 'gulp-util';
 import through2 from 'through2';
 import Vinyl from 'vinyl';
 
-import getComponentInfo, { GetComponentInfoOptions } from './util/getComponentInfo';
-
 import config from '../config';
+
+import getComponentInfo, { GetComponentInfoOptions } from './util/getComponentInfo';
 
 const { paths } = config;
 
@@ -50,12 +51,16 @@ export default function reactDocGen(options: DocGenPluginOptions) {
 
       cb(null, infoFile);
     } catch (err) {
+      if (!(err instanceof Error)) {
+        return;
+      }
+
       const pluginError = new gutil.PluginError(pluginName, err);
       const relativePath = path.relative(process.cwd(), file.path);
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack),
+        gutil.colors.gray(err.stack ?? 'error stack is empty'),
       ].join('\n\n');
       this.emit('error', pluginError);
     }

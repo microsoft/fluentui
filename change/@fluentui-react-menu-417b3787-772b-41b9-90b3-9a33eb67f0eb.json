@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(MenuItem): Disabled should render correctly in high contrast mode",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

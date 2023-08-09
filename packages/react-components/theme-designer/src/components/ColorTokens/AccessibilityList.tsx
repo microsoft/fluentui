@@ -1,27 +1,30 @@
 import * as React from 'react';
 import {
   Accordion,
-  AccordionPanel,
-  AccordionItem,
   AccordionHeader,
-  Theme,
-  BrandVariants,
+  AccordionItem,
+  AccordionPanel,
   Badge,
+  BrandVariants,
   makeStyles,
+  Theme,
+  tokens,
 } from '@fluentui/react-components';
-import { getAccessibilityChecker } from './getAccessibilityChecker';
-import { ColorTokensList } from './ColorTokensList';
+import { getAccessibilityChecker, TestType } from '../../utils/getAccessibilityChecker';
+import { TokenIssueList } from './TokenIssueList';
+import { TokenList } from './TokenList';
+import { sortOverrideableColorTokens } from '../../utils/getOverridableTokenBrandColors';
+import { CheckmarkCircleRegular, ErrorCircleRegular, WarningRegular } from '@fluentui/react-icons';
+import { ColorOverrideBrands } from '../../Context/ThemeDesignerContext';
 import { Brands } from '@fluentui/react-theme';
-import { ColorOverrideBrands } from './ColorTokens';
-import { sortOverrideableColorTokens } from './getOverridableTokenBrandColors';
-import { CheckmarkCircleRegular, WarningRegular } from '@fluentui/react-icons';
 
 export interface AccessibilityListProps {
   brand: BrandVariants;
-  brandColors: ColorOverrideBrands;
   colorOverride: ColorOverrideBrands;
+  themeOverrides: Partial<Theme>;
   onNewOverride: (color: string, newColor: Brands) => void;
   theme: Theme;
+  themeName: string;
 }
 
 const useStyles = makeStyles({
@@ -30,54 +33,86 @@ const useStyles = makeStyles({
   },
 });
 
-export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
+export interface AccessibilityContrastChipProps {
+  failKeys: string[];
+  testType: TestType;
+}
+
+export const AccessibilityContrastChip: React.FunctionComponent<AccessibilityContrastChipProps> = props => {
   const styles = useStyles();
+  const { failKeys, testType } = props;
 
-  const { brand, brandColors, colorOverride, onNewOverride, theme } = props;
+  const detailText = () => {
+    if (failKeys.length === 0) {
+      return `All ${testType === TestType.contrastRatio ? 'contrast requirements' : 'luminosity suggestions'} met`;
+    }
+    if (testType === TestType.contrastRatio) {
+      return `${failKeys.length} contrast issue${failKeys.length > 1 ? 's' : ''}`;
+    }
+    return `${failKeys.length} luminosity warning${failKeys.length > 1 ? 's' : ''}`;
+  };
 
-  const { all, fail } = getAccessibilityChecker(theme);
-  const failKeys = Object.keys(fail);
-
-  const failContrastNum = (
-    <Badge appearance="outline" color="important">
+  return (
+    <Badge appearance="outline" color="important" style={{ justifyContent: 'unset' }}>
       {failKeys.length > 0 ? (
         <>
-          <WarningRegular className={styles.icon} color="red" />
-          {failKeys.length} token{failKeys.length > 1 ? 's' : ''} miss required contrast &nbsp;
+          {testType === TestType.contrastRatio ? (
+            <ErrorCircleRegular className={styles.icon} color={tokens.colorPaletteRedForeground1} />
+          ) : (
+            <WarningRegular className={styles.icon} color={tokens.colorPaletteRedForeground1} />
+          )}
+          {detailText()}
         </>
       ) : (
         <>
-          <CheckmarkCircleRegular className={styles.icon} color="green" /> All contrast requirements met &nbsp;
+          <CheckmarkCircleRegular className={styles.icon} color={tokens.colorPaletteGreenForeground1} />
+          {detailText()}
         </>
       )}
     </Badge>
   );
+};
+
+export const AccessibilityList: React.FunctionComponent<AccessibilityListProps> = props => {
+  const { brand, theme, colorOverride, onNewOverride, themeOverrides, themeName } = props;
+
+  const { all, failedContrastTests } = getAccessibilityChecker(theme);
+
+  const failedContrastKeys = Array.from(new Set(failedContrastTests.map(test => test.testInfo!.currToken)).values());
 
   return (
     <>
-      <Accordion multiple defaultOpenItems="Fail">
-        <AccordionItem value="Fail">
-          <AccordionHeader>Contrast Issues &nbsp; {failContrastNum}</AccordionHeader>
-          <AccordionPanel>
-            <ColorTokensList
-              brand={brand}
-              brandColors={brandColors}
-              colorOverride={colorOverride}
-              coveredTokens={sortOverrideableColorTokens(failKeys)}
-              onNewOverride={onNewOverride}
-              failList={fail}
-            />
-          </AccordionPanel>
-        </AccordionItem>
+      <Accordion multiple>
+        {failedContrastKeys.length > 0 ? (
+          <AccordionItem value="FailContrast">
+            <AccordionHeader>
+              Contrast Tests &nbsp;{' '}
+              <AccessibilityContrastChip failKeys={failedContrastKeys} testType={TestType.contrastRatio} />
+            </AccordionHeader>
+            <AccordionPanel>
+              <TokenIssueList
+                brand={brand}
+                testType={TestType.contrastRatio}
+                themeName={themeName}
+                colorOverrides={colorOverride}
+                themeOverrides={themeOverrides}
+                onNewOverride={onNewOverride}
+                coveredTokens={sortOverrideableColorTokens(failedContrastKeys)}
+                tests={failedContrastTests}
+              />
+            </AccordionPanel>
+          </AccordionItem>
+        ) : null}
         <AccordionItem value="All Tokens">
           <AccordionHeader>All Tokens</AccordionHeader>
           <AccordionPanel>
-            <ColorTokensList
+            <TokenList
               brand={brand}
-              brandColors={brandColors}
-              colorOverride={colorOverride}
-              coveredTokens={sortOverrideableColorTokens(all)}
+              themeName={themeName}
+              themeOverrides={themeOverrides}
+              colorOverrides={colorOverride}
               onNewOverride={onNewOverride}
+              coveredTokens={sortOverrideableColorTokens(all)}
             />
           </AccordionPanel>
         </AccordionItem>

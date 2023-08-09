@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCardPreview_unstable } from './useCardPreview';
 import { renderCardPreview_unstable } from './renderCardPreview';
-import { useCardPreviewStyles_unstable } from './useCardPreviewStyles';
+import { useCardPreviewStyles_unstable } from './useCardPreviewStyles.styles';
 import type { CardPreviewProps } from './CardPreview.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

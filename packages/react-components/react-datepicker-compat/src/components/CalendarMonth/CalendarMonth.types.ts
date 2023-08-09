@@ -1,25 +1,13 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import type { Slot } from '@fluentui/react-utilities';
 import type { CalendarStrings, DateFormatting } from '../../utils';
-import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
-export type CalendarMonthSlots = {
-  root: Slot<'div'>;
-};
-
-/**
- * {@docCategory Calendar}
- */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarMonth {
   focus(): void;
 }
 
-/**
- * {@docCategory Calendar}
- */
 export interface CalendarMonthProps {
   /**
    * Optional callback to access the ICalendarMonth interface. Use this instead of ref for accessing
@@ -58,11 +46,6 @@ export interface CalendarMonthProps {
   onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
 
   /**
-   * Custom navigation icons.
-   */
-  navigationIcons?: CalendarNavigationIcons;
-
-  /**
    * Value of today. If unspecified, current time in client machine will be used.
    */
   today?: Date;
@@ -89,19 +72,19 @@ export interface CalendarMonthProps {
 
   /**
    * Whether the month picker should highlight the current month
-   * @defaultvalue false
+   * @default false
    */
   highlightCurrentMonth?: boolean;
 
   /**
    * Whether the month picker should highlight the selected month
-   * @defaultvalue false
+   * @default false
    */
   highlightSelectedMonth?: boolean;
 
   /**
    * Allows all dates and buttons to be focused, including disabled ones
-   * @defaultvalue false
+   * @default false
    */
   allFocusable?: boolean;
 
@@ -112,7 +95,7 @@ export interface CalendarMonthProps {
 
   /**
    * Whether the year picker is hidden
-   * @defaultvalue false
+   * @default false
    */
   yearPickerHidden?: boolean;
 
@@ -123,11 +106,11 @@ export interface CalendarMonthProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarMonthStyleProps extends CalendarPickerStyleProps {}
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarMonthStyles extends CalendarPickerStyles {}

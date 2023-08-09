@@ -3,6 +3,7 @@
 exports[`TabList renders tabs when disabled 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
@@ -63,6 +64,7 @@ exports[`TabList renders tabs when disabled 1`] = `
 exports[`TabList renders tabs with default selected tab 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
@@ -126,6 +128,7 @@ exports[`TabList renders tabs with default selected tab 1`] = `
 exports[`TabList renders with no tabs 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"
@@ -136,6 +139,7 @@ exports[`TabList renders with no tabs 1`] = `
 exports[`TabList renders with tabs 1`] = `
 <div>
   <div
+    aria-orientation="horizontal"
     class="fui-TabList"
     data-tabster="{\\"mover\\":{\\"cyclic\\":true,\\"direction\\":2,\\"memorizeCurrent\\":true}}"
     role="tablist"

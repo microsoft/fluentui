@@ -1,12 +1,16 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { assertSlots } from '@fluentui/react-utilities';
 import type { DialogContentState, DialogContentSlots } from './DialogContent.types';
 
 /**
  * Render the final JSX of DialogContent
  */
 export const renderDialogContent_unstable = (state: DialogContentState) => {
-  const { slots, slotProps } = getSlots<DialogContentSlots>(state);
+  assertSlots<DialogContentSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-skeleton",
-  "version": "9.0.0-beta.3",
+  "version": "9.0.14",
   "description": "Converged v9 Skeleton Component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -18,25 +18,27 @@
     "just": "just-scripts",
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor",
+    "generate-api": "just-scripts generate-api",
     "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
-    "start": "yarn storybook"
+    "start": "yarn storybook",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "9.0.0-alpha.26",
-    "@fluentui/react-shared-contexts": "^9.3.1",
-    "@fluentui/react-theme": "^9.1.6",
-    "@fluentui/react-utilities": "^9.7.1",
-    "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0"
+    "@fluentui/react-field": "^9.1.16",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.14",
+    "@fluentui/react-shared-contexts": "^9.7.2",
+    "@fluentui/react-theme": "^9.1.11",
+    "@fluentui/react-utilities": "^9.11.0",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
@@ -47,8 +49,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {

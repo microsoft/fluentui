@@ -14,8 +14,8 @@ import {
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { TooltipHost, TooltipOverflowMode } from '@fluentui/react';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -40,6 +40,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _refArray: IRefArrayData[];
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
+  private _emptyChartId: string;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -58,6 +59,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_HBC_empty');
   }
 
   public render(): JSX.Element {
@@ -65,7 +67,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return (
+    return !this._isChartEmpty() ? (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -100,15 +102,11 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                 <FocusZone direction={FocusZoneDirection.horizontal}>
                   <div className={this._classNames.chartTitle}>
                     {points!.chartTitle && (
-                      <TooltipHost
-                        overflowMode={TooltipOverflowMode.Self}
-                        hostClassName={this._classNames.chartTitleLeft}
+                      <FocusableTooltipText
+                        className={this._classNames.chartTitleLeft}
                         content={points!.chartTitle}
-                      >
-                        <span {...getAccessibleDataObject(points!.chartTitleAccessibilityData)}>
-                          {points!.chartTitle}
-                        </span>
-                      </TooltipHost>
+                        accessibilityData={points!.chartTitleAccessibilityData}
+                      />
                     )}
                     {chartDataText}
                   </div>
@@ -165,6 +163,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           </>
         </Callout>
       </div>
+    ) : (
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -225,9 +230,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _getChartDataText = (data: IChartProps) => {
     return this.props.barChartCustomData ? (
-      <div data-is-focusable={true} role="text">
-        {this.props.barChartCustomData(data)}
-      </div>
+      <div role="text">{this.props.barChartCustomData(data)}</div>
     ) : (
       this._getDefaultTextData(data)
     );
@@ -240,7 +243,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     const x = chartData.horizontalBarChartdata!.x;
     const y = chartData.horizontalBarChartdata!.y;
 
-    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!);
+    const accessibilityData = getAccessibleDataObject(data.chartDataAccessibilityData!, 'text', false);
     switch (chartDataMode) {
       case 'default':
         return (
@@ -388,4 +391,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

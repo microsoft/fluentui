@@ -11,13 +11,11 @@ export function useFocusFirstElement(open: boolean, modalType: DialogModalType) 
   const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent_unstable();
   const dialogRef = React.useRef<DialogSurfaceElement>(null);
-  const triggerRef = React.useRef<HTMLElement>();
 
   React.useEffect(() => {
     if (!open) {
-      return triggerRef.current?.focus();
+      return;
     }
-    triggerRef.current = targetDocument?.activeElement as HTMLElement | undefined;
     const element = dialogRef.current && findFirstFocusable(dialogRef.current);
     if (element) {
       element.focus();

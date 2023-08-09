@@ -1,43 +1,45 @@
 import * as React from 'react';
-import { makeStyles } from '@fluentui/react-components';
-import { addMonths, addYears, defaultDatePickerStrings, DatePicker } from '@fluentui/react-datepicker-compat';
-import type { DatePickerStrings } from '@fluentui/react-datepicker-compat';
+import { addMonths, addYears, DatePicker } from '@fluentui/react-datepicker-compat';
+import { Field, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
-  root: {
-    marginTop: '15px',
+  inputControl: {
     maxWidth: '300px',
   },
 });
 
-const today = new Date(Date.now());
+const today = new Date();
 const minDate = addMonths(today, -1);
 const maxDate = addYears(today, 1);
-const strings: DatePickerStrings = {
-  ...defaultDatePickerStrings,
-  isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()} and ${maxDate.toLocaleDateString()}`,
+
+const onFormatDate = (date?: Date): string => {
+  return `${date?.getMonth()}/${date?.getDate()}/${date?.getFullYear()}`;
 };
 
 export const DateBoundaries = () => {
   const styles = useStyles();
 
   return (
-    <div>
-      <div>
-        When date boundaries are set (via <code>minDate</code> and <code>maxDate</code> props) the DatePicker will not
-        allow out-of-bounds dates to be picked or entered. In this example, the allowed dates are{' '}
-        {minDate.toLocaleDateString()} to {maxDate.toLocaleDateString()}.
-      </div>
+    <Field label={`The date boundaries for this example are ${minDate.toDateString()} to ${maxDate.toDateString()}.`}>
       <DatePicker
-        className={styles.root}
-        // DatePicker uses English strings by default. For localized apps, you must override this prop.
-        strings={strings}
-        placeholder="Select a date..."
-        aria-label="Select a date"
         minDate={minDate}
         maxDate={maxDate}
+        placeholder="Select a date..."
+        formatDate={onFormatDate}
         allowTextInput
+        className={styles.inputControl}
       />
-    </div>
+    </Field>
   );
+};
+
+DateBoundaries.parameters = {
+  docs: {
+    description: {
+      story:
+        'A DatePicker allows setting date boundaries. To set a max boundary, use the `maxDate` prop. To set a minimum' +
+        ' boundary, use the `minDate` prop. When date boundaries are set the DatePicker will not allow out-of-bounds' +
+        ' dates to be picked or entered.',
+    },
+  },
 };

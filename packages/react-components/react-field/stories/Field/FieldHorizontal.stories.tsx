@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { Input } from '@fluentui/react-components';
-import { Field } from '@fluentui/react-components/unstable';
+import { Field, Input } from '@fluentui/react-components';
 
 export const Horizontal = () => (
   <Field label="Horizontal" orientation="horizontal" hint="Validation message and hint are below the input.">

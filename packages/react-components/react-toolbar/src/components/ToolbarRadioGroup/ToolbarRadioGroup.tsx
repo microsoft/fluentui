@@ -6,7 +6,7 @@ import {
   useToolbarGroupStyles_unstable,
   useToolbarGroup_unstable,
 } from '../../ToolbarGroup';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToolbarRadioGroup component is a Button to be used inside Toolbar
@@ -17,8 +17,7 @@ export const ToolbarRadioGroup: ForwardRefComponent<ToolbarRadioGroupProps> = Re
 
   useToolbarGroupStyles_unstable(state);
 
-  const { useToolbarGroupStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useToolbarGroupStyles_unstable')(state);
 
   return renderToolbarGroup_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

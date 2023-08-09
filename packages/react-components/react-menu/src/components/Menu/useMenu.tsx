@@ -176,7 +176,6 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const shouldHandleCloseRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
@@ -195,7 +194,6 @@ const useMenuOpenState = (
 
     if (!data.open) {
       state.setContextTarget(undefined);
-      shouldHandleCloseRef.current = true;
     }
 
     if (data.bubble) {
@@ -279,20 +277,8 @@ const useMenuOpenState = (
   React.useEffect(() => {
     if (open) {
       focusFirst();
-    } else {
-      if (shouldHandleCloseRef.current) {
-        // We know that React effects are sync so we focus the trigger here
-        // after any event handler (event handlers will update state and re-render).
-        // Since the browser only performs the default behaviour for the Tab key once
-        // keyboard events have fully bubbled up the window, the browser will move
-        // focus to the next tabbable element before/after the trigger if needed.
-        // If the Tab key was not pressed, focus will remain on the trigger as expected.
-        state.triggerRef.current?.focus();
-      }
     }
-
-    shouldHandleCloseRef.current = false;
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst]);
+  }, [open, focusFirst]);
 
   return [open, setOpen] as const;
 };

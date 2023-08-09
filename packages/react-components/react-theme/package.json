@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "9.1.6",
+  "version": "9.1.11",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -22,7 +22,7 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,8 +30,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "tslib": "^2.1.0",
-    "@fluentui/tokens": "1.0.0-alpha.3"
+    "@fluentui/tokens": "1.0.0-alpha.8",
+    "@swc/helpers": "^0.4.14"
   },
   "beachball": {
     "disallowedChangeTypes": [

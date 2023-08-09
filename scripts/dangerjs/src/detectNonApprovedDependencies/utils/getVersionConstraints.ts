@@ -1,9 +1,11 @@
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+
+import type { PackageJson } from '@fluentui/scripts-monorepo';
+
+import { isIgnored } from '../approvedPackages';
 
 import { getPackageName, getPackageVersion } from './packageNameUtils';
-import { isIgnored } from '../approvedPackages';
-import type { PackageJson } from '@fluentui/scripts-monorepo';
 
 type Constraints = { [PackageId: string]: string[] };
 
@@ -42,7 +44,9 @@ const parsePackageJson = (packageJsonPath: string): string[] => {
       return `${packageName}@${versionConstraint}`;
     });
   } catch (err) {
-    throw new Error(`There was an error reading the ${packageJsonPath} file: ${err.stack}`);
+    throw new Error(
+      `There was an error reading the ${packageJsonPath} file: ${err instanceof Error ? err.stack : err}`,
+    );
   }
 };
 

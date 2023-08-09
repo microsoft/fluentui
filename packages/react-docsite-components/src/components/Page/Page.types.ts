@@ -31,6 +31,8 @@ export interface IPageProps<TPlatforms extends string = string> {
   /** Optional title of the file to be passed to edit URL if different than the page title. */
   fileNamePrefix?: string;
 
+  banner?: IBanner;
+
   /** (1) Overview of the page as Markdown string */
   overview?: string;
 
@@ -123,6 +125,11 @@ export interface IPageProps<TPlatforms extends string = string> {
 export interface IExample extends IExampleCardProps {
   /** Working example of the example */
   view: React.ReactNode;
+}
+
+export interface IBanner {
+  title?: string;
+  message?: string;
 }
 
 export interface IPageSectionProps<TPlatforms extends string = string>

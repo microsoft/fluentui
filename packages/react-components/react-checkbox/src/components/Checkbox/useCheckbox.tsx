@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
-  resolveShorthand,
   useControllableState,
   useEventCallback,
   useId,
   useIsomorphicLayoutEffect,
   useMergedRefs,
+  slot,
 } from '@fluentui/react-utilities';
 import { CheckboxProps, CheckboxState } from './Checkbox.types';
 import {
@@ -29,6 +30,9 @@ import { useFocusWithin } from '@fluentui/react-tabster';
  * @param ref - reference to `<input>` element of Checkbox
  */
 export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLInputElement>): CheckboxState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
   const { disabled = false, required, shape = 'square', size = 'medium', labelPosition = 'after', onChange } = props;
 
   const [checked, setChecked] = useControllableState({
@@ -69,15 +73,14 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
       indicator: 'div',
       label: Label,
     },
-    root: resolveShorthand(props.root, {
-      required: true,
+    root: slot.always(props.root, {
       defaultProps: {
         ref: useFocusWithin<HTMLSpanElement>(),
         ...nativeProps.root,
       },
+      elementType: 'span',
     }),
-    input: resolveShorthand(props.input, {
-      required: true,
+    input: slot.always(props.input, {
       defaultProps: {
         type: 'checkbox',
         id,
@@ -85,22 +88,24 @@ export const useCheckbox_unstable = (props: CheckboxProps, ref: React.Ref<HTMLIn
         checked: checked === true,
         ...nativeProps.primary,
       },
+      elementType: 'input',
     }),
-    label: resolveShorthand(props.label, {
-      required: false,
+    label: slot.optional(props.label, {
       defaultProps: {
         htmlFor: id,
         disabled,
         required,
         size: 'medium', // Even if the checkbox itself is large
       },
+      elementType: Label,
     }),
-    indicator: resolveShorthand(props.indicator, {
-      required: true,
+    indicator: slot.optional(props.indicator, {
+      renderByDefault: true,
       defaultProps: {
         'aria-hidden': true,
         children: checkmarkIcon,
       },
+      elementType: 'div',
     }),
   };
 

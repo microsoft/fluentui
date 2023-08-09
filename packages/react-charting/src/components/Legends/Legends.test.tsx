@@ -186,12 +186,6 @@ describe('Legends - basic props', () => {
     const dataIsFocusable = wrapper.getDOMNode().querySelector('[class^="legend"]')?.getAttribute('data-is-focusable');
     expect(dataIsFocusable).toBeTruthy();
   });
-
-  it('Should render focusZonePropsInHoverCard correctly', () => {
-    wrapper = mount(<Legends legends={legends} {...focusZonePropsInHoverCard} />);
-    const focusZoneProps = wrapper.getDOMNode().querySelector('[class^="legend"]')?.getAttribute('aria-label');
-    expect(focusZoneProps).toBe('Legend 1 selected');
-  });
 });
 
 describe('Render calling with respective to props', () => {

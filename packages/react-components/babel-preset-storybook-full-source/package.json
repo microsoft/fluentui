@@ -18,7 +18,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -27,9 +27,9 @@
   },
   "dependencies": {
     "@babel/core": "^7.10.4",
-    "prettier": "2.8.4",
-    "pkg-up": "^3.1.0",
-    "tslib": "^2.1.0"
+    "@swc/helpers": "^0.4.14",
+    "prettier": "2.8.8",
+    "pkg-up": "^3.1.0"
   },
   "exports": {
     ".": {

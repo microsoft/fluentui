@@ -15,7 +15,7 @@ export type FluentProviderSlots = {
 
 // exported for callers to avoid referencing react-shared-context
 // and applying Partial<> when passing custom style hooks.
-export type FluentProviderCustomStyleHooks = Partial<CustomStyleHooksContextValue>;
+export type FluentProviderCustomStyleHooks = CustomStyleHooksContextValue;
 
 export type FluentProviderProps = Omit<ComponentProps<FluentProviderSlots>, 'dir'> & {
   /**
@@ -48,6 +48,19 @@ export type FluentProviderState = ComponentState<FluentProviderSlots> &
   > & {
     theme: ThemeContextValue;
     themeClassName: string;
+    /**
+     * Props used to render SSR theme variables style element
+     */
+    serverStyleProps: {
+      /**
+       * CSS rule containing CSS variables
+       */
+      cssRule: string;
+      /**
+       * Additional attributes applied to the style element
+       */
+      attributes: Record<string, string>;
+    };
   };
 
 export type FluentProviderContextValues = Pick<

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add node field to package.json exports map.",
-  "packageName": "@fluentui/react-tabs",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

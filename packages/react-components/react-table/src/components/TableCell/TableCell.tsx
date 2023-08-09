@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useTableCell_unstable } from './useTableCell';
 import { renderTableCell_unstable } from './renderTableCell';
-import { useTableCellStyles_unstable } from './useTableCellStyles';
+import { useTableCellStyles_unstable } from './useTableCellStyles.styles';
 import type { TableCellProps } from './TableCell.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * TableCell component
@@ -14,8 +14,7 @@ export const TableCell: ForwardRefComponent<TableCellProps> = React.forwardRef((
 
   useTableCellStyles_unstable(state);
 
-  const { useTableCellStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useTableCellStyles_unstable')(state);
 
   return renderTableCell_unstable(state);
 });

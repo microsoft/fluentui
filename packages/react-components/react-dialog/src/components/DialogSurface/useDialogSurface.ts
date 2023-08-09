@@ -1,20 +1,14 @@
 import * as React from 'react';
 import {
   getNativeElementProps,
-  resolveShorthand,
   useEventCallback,
   useMergedRefs,
   isResolvedShorthand,
+  slot,
 } from '@fluentui/react-utilities';
-import type {
-  DialogSurfaceElement,
-  DialogSurfaceElementIntersection,
-  DialogSurfaceProps,
-  DialogSurfaceState,
-} from './DialogSurface.types';
+import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
-import { isEscapeKeyDismiss } from '../../utils';
-import { useModalAttributes } from '@fluentui/react-tabster';
+import { Escape } from '@fluentui/keyboard-keys';
 
 /**
  * Create the state required to render DialogSurface.
@@ -29,9 +23,8 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
-  const { backdrop, as } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
-  const inertTrapFocus = useDialogContext_unstable(ctx => ctx.inertTrapFocus);
+  const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
@@ -50,10 +43,10 @@ export const useDialogSurface_unstable = (
     }
   });
 
-  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<DialogSurfaceElementIntersection>) => {
+  const handleKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     props.onKeyDown?.(event);
 
-    if (isEscapeKeyDismiss(event, modalType)) {
+    if (event.key === Escape && !event.isDefaultPrevented()) {
       requestOpenChange({
         event,
         open: false,
@@ -65,32 +58,31 @@ export const useDialogSurface_unstable = (
     }
   });
 
-  const { modalAttributes } = useModalAttributes({
-    trapFocus: modalType !== 'non-modal',
-    legacyTrapFocus: !inertTrapFocus,
-  });
-
-  return {
-    components: {
-      backdrop: 'div',
-      root: 'div',
+  const backdrop = slot.optional(props.backdrop, {
+    renderByDefault: open && modalType !== 'non-modal',
+    defaultProps: {
+      'aria-hidden': 'true',
     },
-    backdrop: resolveShorthand(backdrop, {
-      required: open && modalType !== 'non-modal',
-      defaultProps: {
-        'aria-hidden': 'true',
-        onClick: handledBackdropClick,
-      },
-    }),
-    root: getNativeElementProps(as ?? 'div', {
-      tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
-      'aria-modal': modalType !== 'non-modal',
-      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
-      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
-      ...props,
-      ...modalAttributes,
-      onKeyDown: handleKeyDown,
-      ref: useMergedRefs(ref, dialogRef),
-    }),
+    elementType: 'div',
+  });
+  if (backdrop) {
+    backdrop.onClick = handledBackdropClick;
+  }
+  return {
+    components: { backdrop: 'div', root: 'div' },
+    backdrop,
+    root: slot.always(
+      getNativeElementProps(props.as ?? 'div', {
+        tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
+        'aria-modal': modalType !== 'non-modal',
+        role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+        'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+        ...props,
+        ...modalAttributes,
+        onKeyDown: handleKeyDown,
+        ref: useMergedRefs(ref, dialogRef),
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(DialogTitle): adds type=\"button\" to close action",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

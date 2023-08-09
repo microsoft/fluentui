@@ -8,17 +8,31 @@ import {
   DialogTrigger,
   DialogBody,
   Button,
+  useRestoreFocusTarget,
 } from '@fluentui/react-components';
 import story from './DialogTriggerOutsideDialog.md';
 
 export const TriggerOutsideDialog = () => {
   const [open, setOpen] = React.useState(false);
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
   return (
     <>
-      <Button aria-expanded={open} onClick={() => setOpen(true)}>
+      <Button
+        {...restoreFocusTargetAttribute}
+        onClick={() => {
+          setOpen(true);
+        }}
+      >
         Open Dialog
       </Button>
-      <Dialog open={open} onOpenChange={(event, data) => setOpen(data.open)}>
+
+      <Dialog
+        open={open}
+        onOpenChange={(event, data) => {
+          setOpen(data.open);
+        }}
+      >
         <DialogSurface>
           <DialogBody>
             <DialogTitle>Dialog title</DialogTitle>
@@ -27,6 +41,7 @@ export const TriggerOutsideDialog = () => {
               est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
               cumque eaque?
             </DialogContent>
+
             <DialogActions>
               <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>

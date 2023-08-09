@@ -3,8 +3,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { RadioProps } from './Radio.types';
 import { renderRadio_unstable } from './renderRadio';
 import { useRadio_unstable } from './useRadio';
-import { useRadioStyles_unstable } from './useRadioStyles';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useRadioStyles_unstable } from './useRadioStyles.styles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Radio component is a wrapper for a radio button with a label.
@@ -14,8 +14,7 @@ export const Radio: ForwardRefComponent<RadioProps> = React.forwardRef((props, r
 
   useRadioStyles_unstable(state);
 
-  const { useRadioStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useRadioStyles_unstable')(state);
 
   return renderRadio_unstable(state);
 });

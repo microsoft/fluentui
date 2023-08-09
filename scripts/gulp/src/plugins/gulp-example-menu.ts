@@ -1,6 +1,7 @@
+import path from 'path';
+
 import gutil from 'gulp-util';
 import _ from 'lodash';
-import path from 'path';
 import through2, { FlushCallback, TransformFunction } from 'through2';
 import Vinyl from 'vinyl';
 
@@ -65,12 +66,16 @@ export default () => {
 
       cb();
     } catch (err) {
+      if (!(err instanceof Error)) {
+        return;
+      }
+
       const pluginError = new gutil.PluginError(pluginName, err);
       const relativePath = path.relative(process.cwd(), file.path);
       pluginError.message = [
         gutil.colors.magenta(`Error in file: ${relativePath}`),
         gutil.colors.red(err.message),
-        gutil.colors.gray(err.stack),
+        gutil.colors.gray(err.stack ?? 'error stack is empty'),
       ].join('\n\n');
       this.emit('error', pluginError);
     }

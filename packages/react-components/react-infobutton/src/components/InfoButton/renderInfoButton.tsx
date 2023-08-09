@@ -1,21 +1,24 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { assertSlots } from '@fluentui/react-utilities';
 import { PopoverTrigger } from '@fluentui/react-popover';
-import type { PopoverProps } from '@fluentui/react-popover';
 import type { InfoButtonState, InfoButtonSlots } from './InfoButton.types';
 
 /**
  * Render the final JSX of InfoButton
  */
 export const renderInfoButton_unstable = (state: InfoButtonState) => {
-  const { slots, slotProps } = getSlots<InfoButtonSlots>(state);
+  assertSlots<InfoButtonSlots>(state);
 
   return (
-    <slots.popover {...(slotProps.popover as PopoverProps)}>
+    <state.popover>
       <PopoverTrigger>
-        <slots.root {...slotProps.root} />
+        <state.root />
       </PopoverTrigger>
-      <slots.content {...slotProps.content} />
-    </slots.popover>
+      <state.info />
+    </state.popover>
   );
 };

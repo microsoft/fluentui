@@ -2,9 +2,9 @@ import * as React from 'react';
 import type { ToolbarButtonProps } from './ToolbarButton.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderButton_unstable } from '@fluentui/react-button';
-import { useToolbarButtonStyles_unstable } from './useToolbarButtonStyles';
+import { useToolbarButtonStyles_unstable } from './useToolbarButtonStyles.styles';
 import { useToolbarButton_unstable } from './useToolbarButton';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * ToolbarButton component is a Button to be used inside Toolbar
@@ -15,8 +15,7 @@ export const ToolbarButton: ForwardRefComponent<ToolbarButtonProps> = React.forw
 
   useToolbarButtonStyles_unstable(state);
 
-  const { useToolbarButtonStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useToolbarButtonStyles_unstable')(state);
 
   return renderButton_unstable(state);
   // Casting is required due to lack of distributive union to support unions on @types/react

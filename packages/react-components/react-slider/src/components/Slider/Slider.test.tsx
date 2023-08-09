@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, screen } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
 import { resetIdsForTests } from '@fluentui/react-utilities';
 import { Slider } from './Slider';
 import { isConformant } from '../../testing/isConformant';
@@ -117,5 +118,21 @@ describe('Slider', () => {
     render(<Slider aria-valuetext={testValue} />);
 
     expect(screen.getByRole('slider').getAttribute('aria-valuetext')).toEqual(testValue);
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message">
+        <Slider />
+      </Field>,
+    );
+
+    const slider = result.getByRole('slider');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(slider.id).toEqual(label.htmlFor);
+    expect(slider.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(slider.getAttribute('aria-invalid')).toEqual('true');
   });
 });

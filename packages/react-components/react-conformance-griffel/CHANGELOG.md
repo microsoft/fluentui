@@ -1,8 +1,72 @@
 # Change Log - @fluentui/react-conformance-griffel
 
-This log was last generated on Wed, 04 Jan 2023 01:41:00 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 13:16:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.2)
+
+Wed, 09 Aug 2023 13:16:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.1..@fluentui/react-conformance-griffel_v9.0.2)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.1)
+
+Thu, 20 Jul 2023 18:27:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0..@fluentui/react-conformance-griffel_v9.0.1)
+
+### Patches
+
+- Bump @fluentui/react-conformance to v0.17.1 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0)
+
+Tue, 11 Jul 2023 18:46:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.23..@fluentui/react-conformance-griffel_v9.0.0)
+
+### Minor changes
+
+- feat: release stable ([PR #28460](https://github.com/microsoft/fluentui/pull/28460) by martinhochel@microsoft.com)
+
+## [9.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.23)
+
+Tue, 20 Jun 2023 12:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.22..@fluentui/react-conformance-griffel_v9.0.0-beta.23)
+
+### Changes
+
+- Bump @fluentui/react-conformance to v0.17.0 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+
+## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.22)
+
+Wed, 31 May 2023 06:46:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.21..@fluentui/react-conformance-griffel_v9.0.0-beta.22)
+
+### Changes
+
+- chore: Update Griffel to v1.5.7. ([PR #27925](https://github.com/microsoft/fluentui/pull/27925) by seanmonahan@microsoft.com)
+
+## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.21)
+
+Fri, 12 May 2023 20:28:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.20..@fluentui/react-conformance-griffel_v9.0.0-beta.21)
+
+### Changes
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+
+## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.20)
+
+Tue, 21 Mar 2023 21:23:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance-griffel_v9.0.0-beta.19..@fluentui/react-conformance-griffel_v9.0.0-beta.20)
+
+### Changes
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
 
 ## [9.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance-griffel_v9.0.0-beta.19)
 

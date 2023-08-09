@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon-codesandbox",
-  "version": "9.0.0-alpha.0",
+  "version": "0.1.0",
   "description": "Storybook addon that enables codesandbox exports for stories",
   "private": true,
   "main": "lib-commonjs/index.js",
@@ -19,7 +19,7 @@
     "lint": "just-scripts lint",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -27,22 +27,26 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "tslib": "^2.1.0",
-    "codesandbox-import-utils": "2.2.3",
+    "@swc/helpers": "^0.4.14",
     "@types/dedent": "0.7.0",
+    "codesandbox-import-utils": "2.2.3",
     "dedent": "0.7.0"
   },
   "peerDependencies": {
     "@storybook/addons": "^6.5.15"
   },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "import": "./lib/index.js",
       "node": "./lib-commonjs/index.js",
       "require": "./lib-commonjs/index.js"
-    },
-    "./preset": {
-      "require": "./preset.js"
     },
     "./package.json": "./package.json"
   }
