@@ -27,6 +27,8 @@ export { LazyLoading } from './TreeLazyLoading.stories';
 export { InfiniteScrolling } from './TreeInfiniteScrolling.stories';
 export { Virtualization } from './Virtualization.stories';
 
+export { StickyTreeExample } from './StickyTree.stories';
+
 export default {
   title: 'Preview Components/Tree',
   component: Tree,
