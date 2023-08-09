@@ -1,8 +1,46 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 12 Jun 2023 04:17:30 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 04:16:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.28)
+
+Wed, 09 Aug 2023 04:16:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.27..@fluentui/web-components_v3.0.0-alpha.28)
+
+### Changes
+
+- fix(web-components): enumerate side-effects for package export paths ([PR #28748](https://github.com/microsoft/fluentui/pull/28748) by chhol@microsoft.com)
+
+## [3.0.0-alpha.27](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.27)
+
+Tue, 08 Aug 2023 04:18:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.26..@fluentui/web-components_v3.0.0-alpha.27)
+
+### Changes
+
+- (accessibility): high contrast fixes ([PR #28717](https://github.com/microsoft/fluentui/pull/28717) by brian.christopher.brady@gmail.com)
+- Fixes low contrast in dark mode for web component badge ([PR #28766](https://github.com/microsoft/fluentui/pull/28766) by ryan@ryanmerrill.net)
+
+## [3.0.0-alpha.26](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.26)
+
+Mon, 07 Aug 2023 04:17:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.25..@fluentui/web-components_v3.0.0-alpha.26)
+
+### Changes
+
+- feat: Add support for scoped theming ([PR #28441](https://github.com/microsoft/fluentui/pull/28441) by miroslav.stastny@microsoft.com)
+
+## [3.0.0-alpha.25](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.25)
+
+Wed, 19 Jul 2023 04:18:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.24..@fluentui/web-components_v3.0.0-alpha.25)
+
+### Changes
+
+- fix(web-components): check if component is connected before calling setAttribute in attribute changed callback ([PR #28500](https://github.com/microsoft/fluentui/pull/28500) by chhol@microsoft.com)
+- feat(checkbox): Add checkbox web component ([PR #27450](https://github.com/microsoft/fluentui/pull/27450) by brianbrady@microsoft.com)
 
 ## [3.0.0-alpha.24](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.24)
 

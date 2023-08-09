@@ -2,6 +2,101 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 04:16:56 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.28",
+      "version": "3.0.0-alpha.28",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "a00e814aa5a1641754d4b7fb6f05c0ac2aa4e060",
+            "comment": "fix(web-components): enumerate side-effects for package export paths"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 08 Aug 2023 04:18:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.27",
+      "version": "3.0.0-alpha.27",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brian.christopher.brady@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "54df8d3a425019ac593089e57225e624247aeb2e",
+            "comment": "(accessibility): high contrast fixes"
+          },
+          {
+            "author": "ryan@ryanmerrill.net",
+            "package": "@fluentui/web-components",
+            "commit": "5e205bc242bef175275d73d3ca5c52243782f589",
+            "comment": "Fixes low contrast in dark mode for web component badge"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 07 Aug 2023 04:17:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.26",
+      "version": "3.0.0-alpha.26",
+      "comments": {
+        "none": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c41d572219c127e1c042ce847b9e867c150b230c",
+            "comment": "dummy change to trigger CI"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "67cb8d06db5c7f17da4c6116729925705c0f7d3e",
+            "comment": "feat: Add support for scoped theming"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 28 Jul 2023 04:14:52 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.25",
+      "version": "3.0.0-alpha.25",
+      "comments": {
+        "none": [
+          {
+            "author": "me@levithomason.com",
+            "package": "@fluentui/web-components",
+            "commit": "b1dae68db2d16f214923fd188872d5cbe485e01a",
+            "comment": "Documentation style updates"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 19 Jul 2023 04:18:54 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.25",
+      "version": "3.0.0-alpha.25",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ee984a5df76329a1da80fbe2cb6b20394d26eb7c",
+            "comment": "fix(web-components): check if component is connected before calling setAttribute in attribute changed callback"
+          },
+          {
+            "author": "brianbrady@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "44328d34af5ce81c8b66b87a02a6082c2e967fc5",
+            "comment": "feat(checkbox): Add checkbox web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 12 Jun 2023 04:17:30 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.24",
       "version": "3.0.0-alpha.24",

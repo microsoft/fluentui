@@ -1,3 +1,5 @@
+import { WCThemeDecorator } from '../src/utilities/WCThemeDecorator'
+
 export const parameters = {
   layout: 'fullscreen',
   controls: { expanded: true },
@@ -11,3 +13,5 @@ export const parameters = {
     },
   },
 };
+
+export const decorators = [WCThemeDecorator];
