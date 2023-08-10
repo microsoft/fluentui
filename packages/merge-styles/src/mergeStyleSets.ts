@@ -100,7 +100,8 @@ export function mergeStyleSets(
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any> {
   let shadowConfig = undefined;
   let sets = styleSets;
-  if (typeof styleSets[0].stylesheetKey === 'string') {
+  const first = styleSets[0];
+  if (first && typeof first.stylesheetKey === 'string') {
     shadowConfig = styleSets[0];
     sets = styleSets.slice(1);
   }
