@@ -4,6 +4,7 @@ import {
   useEventCallback,
   useControllableState,
   getNativeElementProps,
+  slot,
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
@@ -108,13 +109,16 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'menu',
-      'aria-labelledby': menuContext.triggerId,
-      ...focusAttributes,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, innerRef),
+        role: 'menu',
+        'aria-labelledby': menuContext.triggerId,
+        ...focusAttributes,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     hasIcons: menuContext.hasIcons || false,
     hasCheckmarks: menuContext.hasCheckmarks || false,
     checkedValues,

@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Tue, 01 Aug 2023 10:17:21 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 13:16:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.21)
+
+Wed, 09 Aug 2023 13:16:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.20..@fluentui/react-image_v9.1.21)
+
+### Patches
+
+- chore(cxe-prg): migrate to new slot API ([PR #28752](https://github.com/microsoft/fluentui/pull/28752) by bernardo.sunderhus@gmail.com)
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.7.2 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-theme to v9.1.11 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+
+## [9.1.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.20)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.19..@fluentui/react-image_v9.1.20)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.7.1 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-theme to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
 
 ## [9.1.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.19)
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 
@@ -25,37 +25,32 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
   const max = clampMax(props.max ?? 1);
   const value = clampValue(props.value, max);
 
-  const root = getNativeElementProps('div', {
-    ref,
-    role: 'progressbar',
-    'aria-valuemin': value !== undefined ? 0 : undefined,
-    'aria-valuemax': value !== undefined ? max : undefined,
-    'aria-valuenow': value,
-    'aria-labelledby': field?.labelId,
-    ...props,
-  });
-
+  const root = slot.always(
+    getNativeElementProps('div', {
+      ref,
+      role: 'progressbar',
+      'aria-valuemin': value !== undefined ? 0 : undefined,
+      'aria-valuemax': value !== undefined ? max : undefined,
+      'aria-valuenow': value,
+      'aria-labelledby': field?.labelId,
+      ...props,
+    }),
+    { elementType: 'div' },
+  );
   if (field && (field.validationMessageId || field.hintId)) {
     // Prepend the field's validation message and/or hint to the user's aria-describedby
     root['aria-describedby'] = [field?.validationMessageId, field?.hintId, root['aria-describedby']]
       .filter(Boolean)
       .join(' ');
   }
-
-  const bar = resolveShorthand(props.bar, {
-    required: true,
-  });
-
+  const bar = slot.always(props.bar, { elementType: 'div' });
   const state: ProgressBarState = {
     color,
     max,
     shape,
     thickness,
     value,
-    components: {
-      root: 'div',
-      bar: 'div',
-    },
+    components: { root: 'div', bar: 'div' },
     root,
     bar,
   };

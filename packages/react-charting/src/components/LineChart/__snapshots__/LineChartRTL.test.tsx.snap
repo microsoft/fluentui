@@ -309,9 +309,6 @@ exports[`Line chart rendering Should re-render the Line chart with data 2`] = `
         </div>
       </div>
     </div>
-    <span
-      class="ms-layer"
-    />
   </div>
 </div>
 `;
@@ -645,188 +642,196 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-          {
-            animation-duration: 0.367s;
-            animation-fill-mode: both;
-            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
-            animation-timing-function: cubic-bezier(.1,.9,.2,1);
-          }
-      data-is-focusable={true}
-      hidden={false}
-      id="toolTipcircle0_0_1"
-      style={
-        Object {
-          "left": 8,
-          "maxHeight": 745,
-          "top": 15,
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
+        data-is-focusable={true}
+        hidden={false}
+        id="toolTipcircle0_0_1"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "left": 8,
+            "maxHeight": 745,
+            "top": 15,
           }
         }
+        tabIndex={-1}
       >
         <div
           className=
-
+              ms-Callout-main
               {
-                background-blend-mode: normal, luminosity;
                 background-color: #ffffff;
-                display: grid;
-                overflow: hidden;
-                padding-bottom: 10px;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 11px;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
               }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
         >
           <div
             className=
 
                 {
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
+                  background-blend-mode: normal, luminosity;
+                  background-color: #ffffff;
+                  display: grid;
+                  overflow: hidden;
+                  padding-bottom: 10px;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 11px;
                 }
-            style={Object {}}
           >
             <div
               className=
 
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #605e5c;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 16px;
-                    opacity: 0.8;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
                   }
-              data-is-focusable={false}
-              role="text"
-            >
-              20
-            </div>
-          </div>
-          <div
-            style={Object {}}
-          >
-            <div
-              data-is-focusable={false}
-              key="callout-content-0"
-              role="text"
               style={Object {}}
             >
               <div
+                className=
+
+                    {
+                      -moz-osx-font-smoothing: grayscale;
+                      -webkit-font-smoothing: antialiased;
+                      color: #605e5c;
+                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                      font-size: 12px;
+                      font-weight: 400;
+                      line-height: 16px;
+                      opacity: 0.8;
+                    }
+                data-is-focusable={false}
+                role="text"
+              >
+                20
+              </div>
+            </div>
+            <div
+              style={Object {}}
+            >
+              <div
+                data-is-focusable={false}
+                key="callout-content-0"
+                role="text"
                 style={Object {}}
               >
                 <div
-                  className=
-
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        border-left: 4px solid red;
-                        color: #323130;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 16px;
-                        font-weight: 400;
-                        margin-top: 13px;
-                        padding-left: 8px;
-                      }
-                      @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-                        forced-color-adjust: none;
-                      }
-                  id="0_50"
+                  style={Object {}}
                 >
-                  <div>
-                    <div
-                      className=
+                  <div
+                    className=
 
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            color: #605e5c;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 12px;
-                            font-weight: 400;
-                            line-height: 16px;
-                          }
-                          @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                            color: rgb(255, 255, 255);
-                          }
-                    >
-                       
-                      metaData1
-                    </div>
-                    <div
-                      className=
+                        {
+                          -moz-osx-font-smoothing: grayscale;
+                          -webkit-font-smoothing: antialiased;
+                          border-left: 4px solid red;
+                          color: #323130;
+                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                          font-size: 16px;
+                          font-weight: 400;
+                          margin-top: 13px;
+                          padding-left: 8px;
+                        }
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                          forced-color-adjust: none;
+                        }
+                    id="0_50"
+                  >
+                    <div>
+                      <div
+                        className=
 
-                          {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 16px;
-                            font-weight: bold;
-                            line-height: 22px;
-                          }
-                          @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
-                            color: rgb(255, 255, 255);
-                          }
-                    >
-                      50
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #605e5c;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                            }
+                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                              color: rgb(255, 255, 255);
+                            }
+                      >
+                         
+                        metaData1
+                      </div>
+                      <div
+                        className=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 16px;
+                              font-weight: bold;
+                              line-height: 22px;
+                            }
+                            @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& {
+                              color: rgb(255, 255, 255);
+                            }
+                      >
+                        50
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -836,7 +841,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -1169,81 +1174,88 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-          {
-            animation-duration: 0.367s;
-            animation-fill-mode: both;
-            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
-            animation-timing-function: cubic-bezier(.1,.9,.2,1);
-          }
-      data-is-focusable={true}
-      hidden={false}
-      id="toolTipcircle0_0_1"
-      style={
-        Object {
-          "left": 8,
-          "maxHeight": 745,
-          "top": 15,
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
+        data-is-focusable={true}
+        hidden={false}
+        id="toolTipcircle0_0_1"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "left": 8,
+            "maxHeight": 745,
+            "top": 15,
           }
         }
+        tabIndex={-1}
       >
-        <div>
-          <pre>
-            {
+        <div
+          className=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
+        >
+          <div>
+            <pre>
+              {
   "x": 20,
   "values": [
     {
@@ -1254,11 +1266,12 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
     }
   ]
 }
-          </pre>
+            </pre>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -1591,81 +1604,88 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-          {
-            animation-duration: 0.367s;
-            animation-fill-mode: both;
-            animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
-            animation-timing-function: cubic-bezier(.1,.9,.2,1);
-          }
-      data-is-focusable={true}
-      hidden={false}
-      id="toolTipcircle0_0_1"
-      style={
-        Object {
-          "left": 8,
-          "maxHeight": 745,
-          "top": 15,
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
+        data-is-focusable={true}
+        hidden={false}
+        id="toolTipcircle0_0_1"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "left": 8,
+            "maxHeight": 745,
+            "top": 15,
           }
         }
+        tabIndex={-1}
       >
-        <div>
-          <pre>
-            {
+        <div
+          className=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
+        >
+          <div>
+            <pre>
+              {
   "x": 20,
   "values": [
     {
@@ -1676,11 +1696,12 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
     }
   ]
 }
-          </pre>
+            </pre>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -2019,9 +2040,6 @@ exports[`LineChart snapShot testing Should render with default colors when line 
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2360,9 +2378,6 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2681,9 +2696,6 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2861,9 +2873,6 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
       </g>
     </svg>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3202,9 +3211,6 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3543,9 +3549,6 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3884,9 +3887,6 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4225,8 +4225,5 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;

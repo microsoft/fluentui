@@ -50,7 +50,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const child = getTriggerChild(children);
 
   const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(event)) {
+    if (isTargetDisabled(event) || event.isDefaultPrevented()) {
       return;
     }
 

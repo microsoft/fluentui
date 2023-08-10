@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Tue, 01 Aug 2023 13:04:25 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 13:16:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.1)
+
+Wed, 09 Aug 2023 13:16:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.0..@fluentui/react-migration-v8-v9_v9.4.1)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+- Bump @fluentui/react-components to v9.28.0 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-theme to v9.1.11 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+
+## [9.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.0)
+
+Fri, 04 Aug 2023 08:52:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.3.13..@fluentui/react-migration-v8-v9_v9.4.0)
+
+### Minor changes
+
+- feat(tokens): Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2 ([PR #28638](https://github.com/microsoft/fluentui/pull/28638) by miroslav.stastny@microsoft.com)
+- Bump @fluentui/react-components to v9.27.4 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-theme to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
 
 ## [9.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.3.13)
 
