@@ -4,7 +4,7 @@ import { fixtureURL } from '../helpers.tests.js';
 import { Direction } from '@microsoft/fast-web-utilities';
 import type { Slider } from './slider.js';
 
-test.describe.only('Slider', () => {
+test.describe('Slider', () => {
   let page: Page;
   let element: Locator;
   let root: Locator;
