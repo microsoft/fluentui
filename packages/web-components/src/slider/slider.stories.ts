@@ -27,7 +27,7 @@ export default {
     disabled: false,
     readOnly: false,
     min: 0,
-    max: 100,
+    max: 10,
     size: SliderSetSize.medium,
     orientation: 'horizontal',
   },
@@ -42,7 +42,7 @@ export default {
       control: 'number',
       defaultValue: 100,
     },
-    value: { control: 'number', defaultValue: 50 },
+    value: { control: 'number', defaultValue: 5 },
     size: {
       control: {
         type: 'inline-radio',
