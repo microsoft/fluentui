@@ -1,7 +1,7 @@
 {
   "type": "prerelease",
-  "comment": "chore: Update Griffel to latest version",
+  "comment": "chore(react-virtualizer): migrate to new slot API",
   "packageName": "@fluentui/react-virtualizer",
-  "email": "olfedias@microsoft.com",
+  "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
 }

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(tokens): add durationGentle",
-  "packageName": "@fluentui/react-theme-sass",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}

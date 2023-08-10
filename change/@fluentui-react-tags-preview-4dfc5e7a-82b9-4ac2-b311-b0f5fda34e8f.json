@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore(teams-prg): migrate to new slot API",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

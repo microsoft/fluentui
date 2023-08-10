@@ -172,6 +172,7 @@ storiesOf('react-charting/VerticalBarChart', module)
             hideTooltip={false}
             showXAxisLablesTooltip={true}
             wrapXAxisLables={false}
+            hideLabels={true}
           />
         </div>
       );

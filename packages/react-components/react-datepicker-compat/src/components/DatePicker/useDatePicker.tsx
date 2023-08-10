@@ -119,6 +119,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     isMonthPickerVisible = true,
     maxDate,
     minDate,
+    mountNode,
     onOpenChange,
     onSelectDate: onUserSelectDate,
     openOnClick = true,
@@ -449,6 +450,7 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     inlinePopup,
     components: { root: Input, calendar: Calendar as React.FC<Partial<CalendarProps>>, popupSurface: 'div' },
     calendar: calendarShorthand,
+    mountNode,
     root,
     popupSurface,
   };

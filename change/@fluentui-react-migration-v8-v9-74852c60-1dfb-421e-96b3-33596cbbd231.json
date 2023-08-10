@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update Griffel to latest version",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

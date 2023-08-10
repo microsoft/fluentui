@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: inaccurate calculation of size",
-  "packageName": "@fluentui/react-overflow",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

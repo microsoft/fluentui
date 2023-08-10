@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(teams-prg): migrate to new slot API",
-  "packageName": "@fluentui/react-alert",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
