@@ -17,4 +17,6 @@
   - Include an `aria-description` or `aria-describedby` on tree items with actions/context menu to offer more descriptive information about the interactions, e.g., "has actions."
   - The added functionality should not disrupt keyboard navigation within the tree.
 
+- **Use `aria-selected=true` once a treeitem is selected in custom behaviors** Some tree utilization might use the selection feature for navigation purposes, in this case, the `aria-selected` attribute should be set to `true` once the treeitem is the current active item to indicate that it is selected for the navigation.
+
 </details>
