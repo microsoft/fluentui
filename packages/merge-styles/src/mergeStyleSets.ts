@@ -98,11 +98,11 @@ export function mergeStyleSets(
  * @param styleSets - One or more style sets to be merged.
  */
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any> {
-  let shadowConfig = undefined;
+  let shadowConfig: ShadowConfig | undefined = undefined;
   let sets = styleSets;
   const first = styleSets[0];
-  if (first && typeof first.stylesheetKey === 'string') {
-    shadowConfig = styleSets[0];
+  if (first && first.hasOwnProperty('stylesheetKey')) {
+    shadowConfig = styleSets[0] as ShadowConfig;
     sets = styleSets.slice(1);
   }
 

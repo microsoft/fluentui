@@ -102,6 +102,8 @@ export const InjectionMode: {
     insertNode: 1;
     appendChild: 2;
     unstable_constructibleStylesheet: 3;
+    insertNodeAndConstructableStylesheet: 4;
+    appedChildAndConstructableStylesheet: 5;
 };
 
 // @public (undocumented)
@@ -486,22 +488,23 @@ export interface IStyleSheetConfig {
 export function keyframes(timeline: IKeyframes): string;
 
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ShadowConfig" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions, stylesheetKey?: string): string;
+export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions, shadowConfig?: ShadowConfig): string;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
 TStyleSet1 | false | null | undefined,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined
-], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
@@ -509,10 +512,10 @@ TStyleSet1 | false | null | undefined,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined,
 TStyleSet4 | false | null | undefined
-], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
+], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions, stylesheetKey?: string): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
@@ -533,7 +536,7 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(s
 export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
-export function mergeStyleSets(stylesheetKey: string, ...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(shadowConfig: ShadowConfig, ...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
 export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
@@ -559,7 +562,7 @@ export class Stylesheet {
     getClassNameCache(): {
         [key: string]: string;
     };
-    static getInstance(stylesheetKey?: string): Stylesheet;
+    static getInstance({ stylesheetKey, inShadow }?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
