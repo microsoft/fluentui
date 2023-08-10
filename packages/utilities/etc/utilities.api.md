@@ -130,7 +130,7 @@ export function calculatePrecision(value: number | string): number;
 export function canUseDOM(): boolean;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps, stylesheetKey?: string) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
@@ -1275,7 +1275,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export const useAdoptedStylesheet_unstable: (stylesheetKey: string) => void;
+export const useAdoptedStylesheet_unstable: (stylesheetKey: string, adopteGlobally?: boolean) => string | undefined;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
