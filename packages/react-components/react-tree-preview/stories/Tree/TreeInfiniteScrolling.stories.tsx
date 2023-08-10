@@ -5,6 +5,7 @@ import {
   TreeItemLayout,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
+  TreeItemValue,
 } from '@fluentui/react-tree-preview';
 import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 
@@ -30,11 +31,25 @@ const useStyles = makeStyles({
     paddingBottom: '10px',
     ...shorthands.overflow('auto'),
   },
+  screenReadersOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    ...shorthands.margin('-1'),
+    ...shorthands.overflow('hidden'),
+    clip: 'rect(0,0,0,0)',
+    whiteSpace: 'nowrap',
+  },
 });
 
 export const InfiniteScrolling = () => {
   const [page, setPage] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(false);
+
+  const [ariaMessage, setAriaMessage] = React.useState('');
+  const itemToFocusRef = React.useRef<HTMLDivElement>(null);
+  const [itemToFocusValue, setItemToFocusValue] = React.useState<TreeItemValue>();
+
   const peopleItems = useQuery<CustomItem[]>([
     { value: 'people', name: 'People' },
     ...Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
@@ -65,20 +80,24 @@ export const InfiniteScrolling = () => {
 
   const flatTree = useHeadlessFlatTree_unstable(items, { defaultOpenItems: ['pinned', 'people'] });
 
-  const fetchMoreItems = () => {
+  const fetchMoreItems = async () => {
     setIsLoading(true);
+    setAriaMessage(`loading more people...`);
 
-    mockFetchPeople(page).then((json: FetchResult) => {
-      const fetchedItems = json.results.map<CustomItem>(person => ({
-        value: `person-${person.name}`,
-        parentValue: 'people',
-        name: person.name,
-      }));
+    const json = await mockFetchPeople(page);
+    const fetchedItems = json.results.map<CustomItem>(person => ({
+      value: `person-${person.name}`,
+      parentValue: 'people',
+      name: person.name,
+    }));
+    const firstNewItemValue = fetchedItems[0].value;
 
-      setIsLoading(false);
-      setPage(prev => prev + 1);
-      peopleItems.query(() => [...peopleItems.value, ...fetchedItems]);
-    });
+    await peopleItems.query(() => [...peopleItems.value, ...fetchedItems]);
+
+    setIsLoading(false);
+    setPage(prev => prev + 1);
+    setAriaMessage(`${fetchedItems.length} new people loaded`);
+    setItemToFocusValue(firstNewItemValue);
   };
 
   const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
@@ -90,22 +109,47 @@ export const InfiniteScrolling = () => {
     }
   };
 
+  React.useEffect(() => {
+    if (itemToFocusRef.current) {
+      itemToFocusRef.current.focus();
+      setItemToFocusValue(undefined);
+    }
+  }, [itemToFocusValue]);
+
   return (
-    <Tree
-      {...flatTree.getTreeProps()}
-      aria-label="Infinite Scrolling"
-      onScroll={handleScroll}
-      className={styles.container}
-    >
-      {Array.from(flatTree.items(), flatTreeItem => {
-        const { name, ...treeItemProps } = flatTreeItem.getTreeItemProps();
-        return (
-          <TreeItem {...treeItemProps} key={flatTreeItem.value}>
-            <TreeItemLayout>{name}</TreeItemLayout>
-          </TreeItem>
-        );
-      })}
-    </Tree>
+    <>
+      <Tree
+        {...flatTree.getTreeProps()}
+        aria-label="Infinite Scrolling"
+        onScroll={handleScroll}
+        className={styles.container}
+      >
+        {Array.from(flatTree.items(), flatTreeItem => {
+          const { name, value, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+          return (
+            <TreeItem
+              {...treeItemProps}
+              key={value}
+              value={value}
+              ref={value === itemToFocusValue ? itemToFocusRef : undefined}
+            >
+              <TreeItemLayout>{name}</TreeItemLayout>
+            </TreeItem>
+          );
+        })}
+      </Tree>
+
+      <AriaLive content={ariaMessage} />
+    </>
+  );
+};
+
+const AriaLive = ({ content }: { content: string | undefined }) => {
+  const styles = useStyles();
+  return (
+    <div aria-live="polite" aria-atomic="true" className={styles.screenReadersOnly}>
+      {content}
+    </div>
   );
 };
 

@@ -7,14 +7,27 @@ import {
   TreeOpenChangeEvent,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
+  TreeItemValue,
 } from '@fluentui/react-tree-preview';
-import { Spinner } from '@fluentui/react-components';
+import { makeStyles, Spinner, shorthands } from '@fluentui/react-components';
 
 interface Result {
   results: { name: string }[];
 }
 
 type Entity = HeadlessFlatTreeItemProps & { name: string };
+
+const useStyles = makeStyles({
+  screenReadersOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    ...shorthands.margin('-1'),
+    ...shorthands.overflow('hidden'),
+    clip: 'rect(0,0,0,0)',
+    whiteSpace: 'nowrap',
+  },
+});
 
 export const LazyLoading = () => {
   const peopleTree = useQuery<Entity[]>([]);
@@ -50,39 +63,76 @@ export const LazyLoading = () => {
     [peopleTree, planetsTree, starshipsTree],
   );
 
-  const handleOpenChange = (_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+  const [ariaMessage, setAriaMessage] = React.useState('');
+  const itemToFocusRef = React.useRef<HTMLDivElement>(null);
+  const [itemToFocusValue, setItemToFocusValue] = React.useState<TreeItemValue>();
+
+  const handleOpenChange = async (_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
     if (data.open) {
       if (
         (data.value === 'people' || data.value === 'planets' || data.value === 'starships') &&
         !trees[data.value].isLoaded
       ) {
-        trees[data.value].query(() =>
-          mockFetch(data.value as string).then((json: Result) =>
-            json.results.map<Entity>(entity => ({
+        setAriaMessage(`loading ${data.value} items...`);
+
+        trees[data.value].query(
+          async () => {
+            const json = await mockFetch(data.value as string);
+            return json.results.map<Entity>(entity => ({
               value: `${data.value}/${entity.name}`,
               parentValue: data.value,
               name: entity.name,
-            })),
-          ),
+            }));
+          },
+          (entities: Entity[]) => {
+            const firstItemValue = entities[0].value;
+            if (firstItemValue) {
+              setItemToFocusValue(firstItemValue);
+              setAriaMessage(`${data.value} items loaded`);
+            }
+          },
         );
       }
     }
   };
 
+  React.useEffect(() => {
+    if (itemToFocusRef.current) {
+      itemToFocusRef.current.focus();
+      setItemToFocusValue(undefined);
+    }
+  }, [itemToFocusValue]);
+
   const flatTree = useHeadlessFlatTree_unstable(tree, { onOpenChange: handleOpenChange });
   const treeProps = flatTree.getTreeProps();
   return (
-    <Tree {...treeProps} aria-label="Lazy Loading">
-      {Array.from(flatTree.items(), item => {
-        const { name, ...itemProps } = item.getTreeItemProps();
-        const { isLoading = false } = trees[item.value as 'people' | 'planets' | 'starships'] ?? {};
-        return (
-          <TreeItem key={item.value} {...itemProps}>
-            <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>{name}</TreeItemLayout>
-          </TreeItem>
-        );
-      })}
-    </Tree>
+    <>
+      <Tree {...treeProps} aria-label="Lazy Loading">
+        {Array.from(flatTree.items(), item => {
+          const { name, ...itemProps } = item.getTreeItemProps();
+          const { isLoading = false } = trees[item.value as 'people' | 'planets' | 'starships'] ?? {};
+          return (
+            <TreeItem
+              key={item.value}
+              {...itemProps}
+              ref={item.value === itemToFocusValue ? itemToFocusRef : undefined}
+            >
+              <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>{name}</TreeItemLayout>
+            </TreeItem>
+          );
+        })}
+      </Tree>
+      <AriaLive content={ariaMessage} />
+    </>
+  );
+};
+
+const AriaLive = ({ content }: { content: string | undefined }) => {
+  const styles = useStyles();
+  return (
+    <div aria-live="polite" aria-atomic="true" className={styles.screenReadersOnly}>
+      {content}
+    </div>
   );
 };
 
@@ -92,10 +142,13 @@ export const LazyLoading = () => {
  */
 function useQuery<Value>(initialValue: Value) {
   const [queryResult, setQueryResult] = React.useState({ value: initialValue, isLoading: false, isLoaded: false });
-  const query = (fn: () => Promise<Value> | Value) => {
+  const query = (fn: () => Promise<Value> | Value, onDone?: (data: Value) => void) => {
     setQueryResult(curr => ({ ...curr, isLoading: true }));
     Promise.resolve(fn()).then(nextValue => {
       setQueryResult({ value: nextValue, isLoaded: true, isLoading: false });
+      if (onDone) {
+        onDone(nextValue);
+      }
     });
   };
   return { ...queryResult, query } as const;

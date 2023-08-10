@@ -52,10 +52,17 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
   const { slots, slotProps } = getSlots<TreeSlots>(state);
+  const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
+    if (instance) {
+      // This element stays between the tree and treeitem
+      // Due to accessibility issues this element should have role="none"
+      instance.setAttribute('role', 'none');
+    }
+  }, []);
   return (
     <TreeProvider value={contextValues.tree}>
       <slots.root {...slotProps.root}>
-        <FixedSizeList {...props.listProps} />
+        <FixedSizeList outerRef={handleOuterRef} {...props.listProps} />
       </slots.root>
     </TreeProvider>
   );
