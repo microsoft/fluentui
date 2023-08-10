@@ -1,11 +1,24 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree-preview';
+import {
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  TreeItemValue,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+} from '@fluentui/react-tree-preview';
 
-export const DefaultOpenTrees = () => {
-  const defaultOpenTrees = ['default-subtree-1', 'default-subtree-2', 'default-subtree-2-1'];
-
+export const CustomizingInteraction = () => {
+  const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
+  const onOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    if (data.type === 'Click' || data.type === 'Enter') {
+      alert('click on item');
+      return;
+    }
+    setOpenItems(data.openItems);
+  };
   return (
-    <Tree aria-label="Tree" defaultOpenItems={defaultOpenTrees}>
+    <Tree aria-label="Customizing Interaction" openItems={openItems} onOpenChange={onOpenChange}>
       <TreeItem itemType="branch" value="default-subtree-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
@@ -14,9 +27,6 @@ export const DefaultOpenTrees = () => {
           </TreeItem>
           <TreeItem itemType="leaf">
             <TreeItemLayout>level 2, item 2</TreeItemLayout>
-          </TreeItem>
-          <TreeItem itemType="leaf">
-            <TreeItemLayout>level 2, item 3</TreeItemLayout>
           </TreeItem>
         </Tree>
       </TreeItem>
@@ -29,12 +39,6 @@ export const DefaultOpenTrees = () => {
               <TreeItem itemType="leaf">
                 <TreeItemLayout>level 3, item 1</TreeItemLayout>
               </TreeItem>
-              <TreeItem itemType="leaf">
-                <TreeItemLayout>level 3, item 2</TreeItemLayout>
-              </TreeItem>
-              <TreeItem itemType="leaf">
-                <TreeItemLayout>level 3, item 3</TreeItemLayout>
-              </TreeItem>
             </Tree>
           </TreeItem>
         </Tree>
@@ -43,11 +47,12 @@ export const DefaultOpenTrees = () => {
   );
 };
 
-DefaultOpenTrees.parameters = {
+CustomizingInteraction.parameters = {
   docs: {
     description: {
-      story:
-        'Use the `defaultOpenItems` prop in the `Tree` component to set the default open or closed state for expandable tree item components. It takes an array of IDs, opening only the `TreeItem` components with those IDs on initial render, while all others are closed.',
+      story: `
+By default, every expandable TreeItem responds to clicks on both content and the expand/collapse icon. To handle these separately, listen for the \`onOpenChange\` event in the \`Tree\` component. You can check the event type to determine whether the content or the icon was clicked, allowing you to override the default behavior.
+      `,
     },
   },
 };
