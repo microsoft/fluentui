@@ -22,13 +22,13 @@ export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | 
 export function mergeCss(
   args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[],
   options?: IStyleOptions,
-  stylesheetKey: string = '__global__',
+  stylesheetKey?: string,
 ): string {
   const styleArgs = args instanceof Array ? args : [args];
   const { classes, objects } = extractStyleParts(stylesheetKey, styleArgs);
 
   if (objects.length) {
-    classes.push(styleToClassName(stylesheetKey, options || {}, objects));
+    classes.push(styleToClassName(options || {}, stylesheetKey, objects));
   }
 
   return classes.join(' ');

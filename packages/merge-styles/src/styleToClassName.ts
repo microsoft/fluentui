@@ -8,6 +8,7 @@ import { provideUnits } from './transforms/provideUnits';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { IStyleOptions } from './IStyleOptions';
 import { tokenizeWithParentheses } from './tokenizeWithParentheses';
+import { ShadowConfig } from './mergeStyleSets';
 
 const DISPLAY_NAME = 'displayName';
 
@@ -244,15 +245,15 @@ export interface IRegistration {
 }
 
 export function styleToRegistration(
-  stylesheetKey: string = '__global__',
   options: IStyleOptions,
+  shadowConfig?: ShadowConfig,
   ...args: IStyle[]
 ): IRegistration | undefined {
   const rules: IRuleSet = extractRules(args);
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = Stylesheet.getInstance(stylesheetKey);
+    const stylesheet = Stylesheet.getInstance(shadowConfig);
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
@@ -284,9 +285,9 @@ export function styleToRegistration(
 export function applyRegistration(
   registration: IRegistration,
   specificityMultiplier: number = 1,
-  stylesheetKey: string = '__global__',
+  shadowConfig?: ShadowConfig,
 ): void {
-  const stylesheet = Stylesheet.getInstance(stylesheetKey);
+  const stylesheet = Stylesheet.getInstance(shadowConfig);
   const { className, key, args, rulesToInsert } = registration;
 
   if (rulesToInsert) {
@@ -306,10 +307,10 @@ export function applyRegistration(
   }
 }
 
-export function styleToClassName(stylesheetKey: string, options: IStyleOptions, ...args: IStyle[]): string {
-  const registration = styleToRegistration(stylesheetKey, options, ...args);
+export function styleToClassName(options: IStyleOptions, shadowConfig?: ShadowConfig, ...args: IStyle[]): string {
+  const registration = styleToRegistration(options, shadowConfig, ...args);
   if (registration) {
-    applyRegistration(registration, options.specificityMultiplier);
+    applyRegistration(registration, options.specificityMultiplier, shadowConfig);
 
     return registration.className;
   }

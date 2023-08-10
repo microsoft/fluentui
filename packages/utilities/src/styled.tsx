@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
-import { useAdoptedStylesheet_unstable } from './shadowDom/MergeStylesShadowRootContext';
+import {
+  useAdoptedStylesheet_unstable,
+  useHasMergeStylesShadowRootContext,
+} from './shadowDom/MergeStylesShadowRootContext';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 
@@ -89,7 +92,7 @@ export function styled<
 
   const { scope, fields = DefaultFields } = customizable;
 
-  const stylesheetKey = scope || '__global__';
+  const stylesheetKey = scope; // || '__global__';
 
   const Wrapped = React.forwardRef((props: TComponentProps, forwardedRef: React.Ref<TRef>) => {
     const styles = React.useRef<StyleFunction<TStyleProps, TStyleSet>>();
@@ -97,6 +100,8 @@ export function styled<
     const settings = useCustomizationSettings(fields, scope);
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
+
+    const inShadow = useHasMergeStylesShadowRootContext();
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
@@ -123,9 +128,19 @@ export function styled<
       // eslint-disable-next-line
       // @ts-ignore
       styles.current.__stylesheetKey__ = stylesheetKey;
+      // eslint-disable-next-line
+      // @ts-ignore
+      styles.current.__inShadow__ = inShadow;
     }
 
     useAdoptedStylesheet_unstable(stylesheetKey);
+
+    // const inShadow = useAdoptedStylesheet_unstable(stylesheetKey);
+    // if (styles.current) {
+    //   // eslint-disable-next-line
+    //   // @ts-ignore
+    //   styles.current.__stylesheetKey__ = inShadow ? stylesheetKey : undefined;
+    // }
 
     return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });

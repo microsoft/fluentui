@@ -651,4 +651,6 @@ export interface IButtonStyles {
   splitButtonMenuFocused?: IStyle;
 
   __stylesheetKey__?: string;
+
+  __inShadow__?: boolean;
 }

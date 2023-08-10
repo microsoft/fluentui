@@ -1,12 +1,13 @@
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { Stylesheet } from './Stylesheet';
+import { ShadowConfig } from './mergeStyleSets';
 
 /**
  * Separates the classes and style objects. Any classes that are pre-registered
  * args are auto expanded into objects.
  */
 export function extractStyleParts(
-  stylesheetKey: string = '__global__',
+  shadowConfig?: ShadowConfig,
   ...args: (IStyle | IStyle[] | false | null | undefined)[]
 ): {
   classes: string[];
@@ -14,7 +15,7 @@ export function extractStyleParts(
 } {
   const classes: string[] = [];
   const objects: {}[] = [];
-  const stylesheet = Stylesheet.getInstance(stylesheetKey);
+  const stylesheet = Stylesheet.getInstance(shadowConfig);
 
   function _processArgs(argsList: (IStyle | IStyle[])[]): void {
     for (const arg of argsList) {

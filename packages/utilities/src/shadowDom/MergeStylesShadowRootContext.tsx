@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
+import { getDocument, getWindow } from '../dom';
 
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
@@ -9,9 +10,11 @@ export type MergeStylesShadowRootContextValue = {
   shadowRoot?: ShadowRoot | null;
 };
 
-const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue>({
-  stylesheets: new Map(),
-});
+// const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue>({
+//   stylesheets: new Map(),
+// });
+
+const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue | undefined>(undefined);
 
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
@@ -28,43 +31,72 @@ export const MergeStylesShadowRootProvider_unstable: React.FC<MergeStylesShadowR
   shadowRoot,
   ...props
 }) => {
-  const ctx = useMergeStylesShadowRootContext_unstable();
-
   const value = React.useMemo(() => {
     return {
-      stylesheets: ctx.stylesheets,
+      stylesheets: new Map(),
       shadowRoot,
     };
-  }, [ctx, shadowRoot]);
+  }, [shadowRoot]);
 
-  return <MergeStylesShadowRootContext.Provider value={value} {...props} />;
+  return (
+    <MergeStylesShadowRootContext.Provider value={value} {...props} />
+    /* <GlobalStyles />
+      {props.children}
+    </MergeStylesShadowRootContext.Provider> */
+  );
 };
 
 export type MergeStylesContextConsumerProps = {
-  stylesheetKey?: string;
+  stylesheetKey: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  children: (inShadow: boolean) => React.ReactElement<any, any>;
 };
 
 export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerProps> = ({
   stylesheetKey,
   children,
 }) => {
-  // useAdoptedStylesheet_unstable('__global__');
-  useAdoptedStylesheet_unstable(stylesheetKey ?? '__global__');
+  useAdoptedStylesheet_unstable('__global__');
+  // useAdoptedStylesheet_unstable('IconButton');
+  // useAdoptedStylesheet_unstable('Fabric');
+  useAdoptedStylesheet_unstable(stylesheetKey);
 
-  return <>{children}</>;
+  const inShadow = useHasMergeStylesShadowRootContext();
+
+  return children(inShadow);
+
+  // return <>{children}</>;
 };
 
 // const GlobalStyles: React.FC = props => {
-//   useAdoptedStylesheet_unstable('__global__');
+//   // useAdoptedStylesheet_unstable('@fluentui/style-utilities', true);
+//   // useAdoptedStylesheet_unstable('__global__', true);
 //   return null;
 // };
 
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */
-export const useAdoptedStylesheet_unstable = (stylesheetKey: string): void => {
+export const useAdoptedStylesheet_unstable = (
+  stylesheetKey: string,
+  adopteGlobally: boolean = false,
+): string | undefined => {
   const shadowCtx = useMergeStylesShadowRootContext_unstable();
   const rootMergeStyles = useMergeStylesRootStylesheets_unstable();
+  // console.log('useAdoptedStylesheets', stylesheetKey);
+
+  if (!shadowCtx) {
+    return undefined;
+  }
+
+  if (adopteGlobally) {
+    const doc = getDocument();
+    const win = getWindow();
+    const stylesheet = win?.__mergeStylesAdoptedStyleSheets__?.get(stylesheetKey)?.getAdoptableStyleSheet();
+    if (doc && stylesheet && !doc.adoptedStyleSheets.includes(stylesheet)) {
+      doc.adoptedStyleSheets = [...doc.adoptedStyleSheets, stylesheet];
+    }
+  }
 
   if (shadowCtx.shadowRoot && !shadowCtx.stylesheets.has(stylesheetKey)) {
     const stylesheet = rootMergeStyles.get(stylesheetKey);
@@ -74,6 +106,12 @@ export const useAdoptedStylesheet_unstable = (stylesheetKey: string): void => {
       shadowCtx.shadowRoot.adoptedStyleSheets = [...shadowCtx.shadowRoot.adoptedStyleSheets, adoptableStyleSheet];
     }
   }
+
+  return stylesheetKey;
+};
+
+export const useHasMergeStylesShadowRootContext = () => {
+  return !!useMergeStylesRootStylesheets_unstable();
 };
 
 export const useMergeStylesShadowRootContext_unstable = () => {

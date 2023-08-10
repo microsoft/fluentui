@@ -37,38 +37,45 @@ export function customizable(
       public render(): JSX.Element {
         return (
           <MergeStylesShadowRootConsumer stylesheetKey={scope}>
-            <CustomizerContext.Consumer>
-              {(context: ICustomizerContext) => {
-                const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
+            {(inShadow: boolean) => {
+              return (
+                <CustomizerContext.Consumer>
+                  {(context: ICustomizerContext) => {
+                    const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                const componentProps = this.props as any;
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    const componentProps = this.props as any;
 
-                // If defaultProps.styles is a function, evaluate it before calling concatStyleSets
-                if (defaultProps.styles && typeof defaultProps.styles === 'function') {
-                  defaultProps.styles = defaultProps.styles({ ...defaultProps, ...componentProps });
-                }
+                    // If defaultProps.styles is a function, evaluate it before calling concatStyleSets
+                    if (defaultProps.styles && typeof defaultProps.styles === 'function') {
+                      defaultProps.styles = defaultProps.styles({ ...defaultProps, ...componentProps });
+                    }
 
-                // If concatStyles is true and custom styles have been defined compute those styles
-                if (concatStyles && defaultProps.styles) {
-                  if (
-                    this._styleCache.default !== defaultProps.styles ||
-                    this._styleCache.component !== componentProps.styles
-                  ) {
-                    const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
-                    this._styleCache.default = defaultProps.styles;
-                    this._styleCache.component = componentProps.styles;
-                    this._styleCache.merged = mergedStyles;
-                    this._styleCache.merged.__stylesheetKey__ = scope;
-                  }
+                    // If concatStyles is true and custom styles have been defined compute those styles
+                    if (concatStyles && defaultProps.styles) {
+                      if (
+                        this._styleCache.default !== defaultProps.styles ||
+                        this._styleCache.component !== componentProps.styles
+                      ) {
+                        const mergedStyles = concatStyleSets(defaultProps.styles, componentProps.styles);
+                        this._styleCache.default = defaultProps.styles;
+                        this._styleCache.component = componentProps.styles;
+                        this._styleCache.merged = mergedStyles;
+                        this._styleCache.merged.__stylesheetKey__ = scope;
+                        this._styleCache.merged.__inShadow__ = inShadow;
+                      }
 
-                  return <ComposedComponent {...defaultProps} {...componentProps} styles={this._styleCache.merged} />;
-                }
+                      return (
+                        <ComposedComponent {...defaultProps} {...componentProps} styles={this._styleCache.merged} />
+                      );
+                    }
 
-                const styles = { ...defaultProps.styles, ...componentProps.styles, __stylesheetKey__: scope };
-                return <ComposedComponent {...defaultProps} {...componentProps} styles={styles} />;
-              }}
-            </CustomizerContext.Consumer>
+                    const styles = { ...defaultProps.styles, ...componentProps.styles, __stylesheetKey__: scope };
+                    return <ComposedComponent {...defaultProps} {...componentProps} styles={styles} />;
+                  }}
+                </CustomizerContext.Consumer>
+              );
+            }}
           </MergeStylesShadowRootConsumer>
         );
       }
