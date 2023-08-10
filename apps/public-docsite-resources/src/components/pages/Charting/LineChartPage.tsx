@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { DemoPage } from '../../DemoPage';
 
-import { LegendsPageProps } from '@fluentui/react-examples/lib/react-charting/Legends/Legends.doc';
+import { LineChartPageProps } from '@fluentui/react-examples/lib/react-charting/LineChart/LineChart.doc';
 
-export const LegendsPage = (props: { isHeaderVisible: boolean }) => (
+export const LineChartPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('../../../../dist/api/react-charting/Legends.page.json')}
-    {...{ ...LegendsPageProps, ...props }}
+    jsonDocs={require('../../../../dist/api/react-charting/LineChart.page.json')}
+    {...{ ...LineChartPageProps, ...props }}
   />
 );

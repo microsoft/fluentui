@@ -90,6 +90,6 @@ module.exports = {
       'Toggle',
       'Tooltip',
     ],
-    'react-charting': ['Legends', 'LineChart'],
+    'react-charting': ['Legends', 'LineChart', 'AreaChart'],
   },
 };

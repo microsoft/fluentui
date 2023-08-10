@@ -531,6 +531,12 @@ export const AppDefinition: IAppDefinition = {
           name: 'LineChart',
           url: '#/examples/LineChart',
         },
+        {
+          component: require<any>('./components/pages/Charting/AreaChartPage').AreaChartPage,
+          key: 'AreaChart',
+          name: 'AreaChart',
+          url: '#/examples/AreaChart',
+        },
       ],
     },
     {

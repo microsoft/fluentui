@@ -24,7 +24,7 @@ import { ITheme as ITheme_2 } from '@fluentui/react';
 import * as React_2 from 'react';
 import { SVGProps } from 'react';
 
-// @public (undocumented)
+// @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 
 // @public (undocumented)
@@ -137,7 +137,7 @@ export interface IAccessibilityProps {
     ariaLabelledBy?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IAreaChartProps extends ICartesianChartProps {
     culture?: string;
     data: IChartProps;
@@ -885,6 +885,7 @@ export interface ILineChartProps extends ICartesianChartProps {
     colorFillBars?: IColorFillBarsProps[];
     culture?: string;
     data: IChartProps;
+    enablePerfOptimization?: boolean;
     eventAnnotationProps?: IEventsAnnotationProps;
     getCalloutDescriptionMessage?: (calloutDataProps: ICustomizedCalloutData) => string | undefined;
     onRenderCalloutPerDataPoint?: IRenderFunction<ICustomizedCalloutData>;
@@ -956,6 +957,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     culture?: string;
     customizedCallout?: any;
     datasetForXAxisDomain?: string[];
+    enableFirstRenderOptimization?: boolean;
     focusZoneDirection?: FocusZoneDirection;
     // (undocumented)
     getAxisData?: any;
@@ -963,7 +965,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     getGraphData?: any;
     getmargins?: (margins: IMargins) => void;
     isCalloutForStack?: boolean;
-    legendBars: JSX.Element;
+    legendBars: JSX.Element | null;
     maxOfYVal?: number;
     onChartMouseLeave?: () => void;
     points: any;
