@@ -2,7 +2,6 @@ import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 import type { Divider } from './divider.js';
-import { lightModeStylesheetBehavior } from '@microsoft/fast-foundation';
 
 test.describe('Divider', () => {
   let page: Page;
