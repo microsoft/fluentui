@@ -8,11 +8,11 @@ storiesOf('react-charting/PieChart', module)
   .addDecorator((story, context) => TestWrapperDecorator(story, context))
   .addDecorator((story, context) => {
     const steps = new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
-    return <StoryWright steps={steps}>{story()}</StoryWright>;
+    return <StoryWright steps={steps}>{story(context)}</StoryWright>;
   })
   .addStory(
     'Basic',
-    () => {
+    (context: any) => {
       const points = [
         { y: 50, x: 'A' },
         { y: 25, x: 'B' },
@@ -23,7 +23,7 @@ storiesOf('react-charting/PieChart', module)
         <PieChart
           culture={window.navigator.language}
           data={points}
-          chartTitle="Pie Chart basic example"
+          chartTitle="Pie Chart basic example123"
           colors={colors}
         />
       );

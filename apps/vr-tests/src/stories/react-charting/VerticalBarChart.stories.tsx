@@ -3,6 +3,7 @@ import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../../utilities/TestWrapperDecorator';
 import { Steps, StoryWright } from 'storywright';
 import {
+  GroupedVerticalBarChart,
   ILineChartLineOptions,
   IVSChartDataPoint,
   IVerticalBarChartDataPoint,
@@ -171,13 +172,14 @@ storiesOf('react-charting/VerticalBarChart', module)
             hideLegend={true}
             hideTooltip={false}
             showXAxisLablesTooltip={true}
-            wrapXAxisLables={false}
+            wrapXAxisLables={true}
             hideLabels={true}
+            secondaryYScaleOptions={{ yMaxValue: 17, yMinValue: 5 }}
           />
         </div>
       );
     },
-    { includeRtl: true },
+    { includeRtl: true, includeDarkMode: true },
   )
   .addStory(
     'Rotated Label',
@@ -397,8 +399,119 @@ storiesOf('react-charting/VerticalBarChart', module)
               allowFocusOnLegends: true,
             }}
             hideLabels={false}
+            wrapXAxisLables={true}
           />
         </div>
+      );
+    },
+    { includeDarkMode: true, includeRtl: true },
+  )
+  .addStory(
+    'Grouped',
+    () => {
+      const data = [
+        {
+          name: 'Metadata info multi lines text Completed',
+          series: [
+            {
+              key: 'series1',
+              data: 33000,
+              color: '#00bcf2',
+              legend: 'MetaData1',
+              xAxisCalloutData: '2020/04/30',
+              yAxisCalloutData: '33%',
+            },
+            {
+              key: 'series2',
+              data: 44000,
+              color: '#0078d4',
+              legend: 'MetaData4',
+              xAxisCalloutData: '2020/04/30',
+              yAxisCalloutData: '44%',
+            },
+          ],
+        },
+        {
+          name: 'Meta Data2',
+          series: [
+            {
+              key: 'series1',
+              data: 33000,
+              color: '#00bcf2',
+              legend: 'MetaData1',
+              xAxisCalloutData: '2020/05/30',
+              yAxisCalloutData: '33%',
+            },
+            {
+              key: 'series2',
+              data: 3000,
+              color: '#0078d4',
+              legend: 'MetaData4',
+              xAxisCalloutData: '2020/05/30',
+              yAxisCalloutData: '3%',
+            },
+          ],
+        },
+        {
+          name: 'Single line text ',
+          series: [
+            {
+              key: 'series1',
+              data: 14000,
+              color: '#00bcf2',
+              legend: 'MetaData1',
+              xAxisCalloutData: '2020/06/30',
+              yAxisCalloutData: '14%',
+            },
+            {
+              key: 'series2',
+              data: 50000,
+              color: '#0078d4',
+              legend: 'MetaData4',
+              xAxisCalloutData: '2020/06/30',
+              yAxisCalloutData: '50%',
+            },
+          ],
+        },
+        {
+          name: 'Hello World!!!',
+          series: [
+            {
+              key: 'series1',
+              data: 33000,
+              color: '#00bcf2',
+              legend: 'MetaData1',
+              xAxisCalloutData: '2020/07/30',
+              yAxisCalloutData: '33%',
+            },
+            {
+              key: 'series2',
+              data: 3000,
+              color: '#0078d4',
+              legend: 'MetaData4',
+              xAxisCalloutData: '2020/07/30',
+              yAxisCalloutData: '3%',
+            },
+          ],
+        },
+      ];
+
+      const rootStyle = { width: `${700}px`, height: `${400}px` };
+      return (
+        <>
+          <div style={rootStyle}>
+            <GroupedVerticalBarChart
+              culture={window.navigator.language}
+              chartTitle="Grouped Vertical Bar chart basic example"
+              data={data}
+              height={400}
+              width={700}
+              wrapXAxisLables
+              barwidth={16}
+              hideLabels={false}
+            />
+          </div>
+        </>
       );
     },
     { includeDarkMode: true, includeRtl: true },
