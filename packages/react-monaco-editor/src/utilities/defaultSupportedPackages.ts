@@ -79,7 +79,7 @@ if (typesContext) {
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });
 }
-if (typeof window === 'object' && window.location.href.indexOf('react-charting') !== -1) {
+if (true) {
   chartingGroup.packages.push({ packageName: '@fluentui/react-charting', loadTypes });
 }
 
