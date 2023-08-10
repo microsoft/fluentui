@@ -87,23 +87,19 @@ export const useTabAnimatedIndicatorStyles_unstable = (state: TabState): TabStat
   if (selected) {
     const { previousSelectedValue, selectedValue, registeredTabs } = getRegisteredTabs();
 
-    if (previousSelectedValue) {
+    if (previousSelectedValue && lastAnimatedFrom !== previousSelectedValue) {
       const previousSelectedTabRect = getRegisteredTabRect(registeredTabs, previousSelectedValue);
       const selectedTabRect = getRegisteredTabRect(registeredTabs, selectedValue);
-  
-      if (
-        selectedTabRect &&
-        previousSelectedTabRect &&
-        lastAnimatedFrom !== previousSelectedValue
-      ) {
+
+      if (selectedTabRect && previousSelectedTabRect) {
         const offset = vertical
           ? previousSelectedTabRect.y - selectedTabRect.y
           : previousSelectedTabRect.x - selectedTabRect.x;
-  
+
         const scale = vertical
           ? previousSelectedTabRect.height / selectedTabRect.height
           : previousSelectedTabRect.width / selectedTabRect.width;
-  
+
         setAnimationValues({ offset, scale });
         setLastAnimatedFrom(previousSelectedValue);
       }
