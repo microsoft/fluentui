@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { isInteractiveHTMLElement, useEventCallback, resolveShorthand } from '@fluentui/react-utilities';
+import { isInteractiveHTMLElement, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Space } from '@fluentui/keyboard-keys';
 import type { DataGridRowProps, DataGridRowState } from './DataGridRow.types';
 import { useTableRow_unstable } from '../TableRow/useTableRow';
@@ -23,7 +23,9 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   const columnDefs = useDataGridContext_unstable(ctx => ctx.columns);
   const selectable = useDataGridContext_unstable(ctx => ctx.selectableRows);
   const selected = useDataGridContext_unstable(ctx => ctx.selection.isRowSelected(rowId));
-  const tabbable = useDataGridContext_unstable(ctx => ctx.focusMode === 'row_unstable');
+  const focusMode = useDataGridContext_unstable(ctx => ctx.focusMode);
+  const compositeRowTabsterAttribute = useDataGridContext_unstable(ctx => ctx.compositeRowTabsterAttribute);
+  const tabbable = focusMode === 'row_unstable' || focusMode === 'composite';
   const appearance = useDataGridContext_unstable(ctx => {
     if (!isHeader && selectable && ctx.selection.isRowSelected(rowId)) {
       return ctx.selectionAppearance;
@@ -56,12 +58,13 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
     {
       appearance,
       'aria-selected': selectable ? selected : undefined,
+      tabIndex: tabbable && !isHeader ? 0 : undefined,
+      ...(focusMode === 'composite' && !isHeader && compositeRowTabsterAttribute),
       ...props,
       onClick,
       onKeyDown,
       children: null,
       as: 'div',
-      tabIndex: tabbable && !isHeader ? 0 : undefined,
     },
     ref,
   );
@@ -72,7 +75,10 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
       ...baseState.components,
       selectionCell: DataGridSelectionCell,
     },
-    selectionCell: resolveShorthand(props.selectionCell, { required: selectable }),
+    selectionCell: slot.optional(props.selectionCell, {
+      renderByDefault: selectable,
+      elementType: DataGridSelectionCell,
+    }),
     renderCell: props.children,
     columnDefs,
     dataGridContextValue,

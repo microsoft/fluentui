@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
@@ -89,7 +89,7 @@ export const useCardSelectable = (
       selectableCheckboxProps['aria-label'] = referenceLabel;
     }
 
-    return resolveShorthand(checkbox, {
+    return slot.optional(checkbox, {
       defaultProps: {
         ref: checkboxRef,
         type: 'checkbox',
@@ -99,6 +99,7 @@ export const useCardSelectable = (
         onBlur: () => setIsSelectFocused(false),
         ...selectableCheckboxProps,
       },
+      elementType: 'input',
     });
   }, [checkbox, floatingAction, isCardSelected, isSelectable, onChangeHandler, referenceId, referenceLabel]);
 
@@ -107,10 +108,11 @@ export const useCardSelectable = (
       return;
     }
 
-    return resolveShorthand(floatingAction, {
+    return slot.optional(floatingAction, {
       defaultProps: {
         ref: checkboxRef,
       },
+      elementType: 'div',
     });
   }, [floatingAction]);
 

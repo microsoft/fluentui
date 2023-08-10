@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Wed, 28 Jun 2023 11:12:27 GMT and should not be manually modified.
+This log was last generated on Fri, 04 Aug 2023 08:52:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.13)
+
+Fri, 04 Aug 2023 08:52:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.11..@fluentui/react-jsx-runtime_v9.0.0-alpha.13)
+
+### Changes
+
+- chore: update createElement to support new slot methods ([PR #28373](https://github.com/microsoft/fluentui/pull/28373) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+
+## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.11)
+
+Tue, 11 Jul 2023 18:46:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.10..@fluentui/react-jsx-runtime_v9.0.0-alpha.11)
+
+### Changes
+
+- Bump @fluentui/react-conformance-griffel to v9.0.0 ([PR #28491](https://github.com/microsoft/fluentui/pull/28491) by beachball)
+
+## [9.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.10)
+
+Mon, 03 Jul 2023 11:57:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.9..@fluentui/react-jsx-runtime_v9.0.0-alpha.10)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.10.1 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
 
 ## [9.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.9)
 

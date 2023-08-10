@@ -2,6 +2,51 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 13:16:49 GMT",
+      "tag": "@fluentui/react-aria_v9.3.29",
+      "version": "9.3.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/react-aria_v9.3.28",
+      "version": "9.3.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.11.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 03 Jul 2023 11:57:14 GMT",
+      "tag": "@fluentui/react-aria_v9.3.26",
+      "version": "9.3.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.10.1",
+            "commit": "61633ba5de03e0ddf4839dba6da325e30c7ce9bd"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:22 GMT",
       "tag": "@fluentui/react-aria_v9.3.25",
       "version": "9.3.25",

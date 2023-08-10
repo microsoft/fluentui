@@ -219,6 +219,36 @@ describe('useTableSelectionState', () => {
     });
 
     describe('allRowsSelected', () => {
+      it('should return true after items updated if all selectable rows are selected', () => {
+        const getRowId = (item: { value: string }) => item.value;
+        let tableState = mockTableState({ items, getRowId });
+        const { result, rerender } = renderHook(() =>
+          useTableSelectionState(tableState, { selectionMode: 'multiselect' }),
+        );
+
+        act(() => {
+          result.current.selection.toggleAllRows(mockSyntheticEvent());
+        });
+
+        act(() => {
+          result.current.selection.deselectRow(mockSyntheticEvent(), 'c');
+        });
+
+        expect(result.current.selection.allRowsSelected).toBe(false);
+
+        // remove the deselected item
+        const nextItems = [...items];
+        const indexToDelete = nextItems.findIndex(x => x.value === 'c');
+        nextItems.splice(indexToDelete, 1);
+        tableState = mockTableState({ items: nextItems, getRowId });
+
+        act(() => {
+          rerender();
+        });
+
+        expect(result.current.selection.allRowsSelected).toBe(true);
+      });
+
       it('should return true if all rows are selected', () => {
         const { result } = renderHook(() =>
           useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),
@@ -258,6 +288,32 @@ describe('useTableSelectionState', () => {
     });
 
     describe('someRowsSelected', () => {
+      it('should return false after selectedItems are removed', () => {
+        const getRowId = (item: { value: string }) => item.value;
+        let tableState = mockTableState({ items, getRowId });
+        const { result, rerender } = renderHook(() =>
+          useTableSelectionState(tableState, { selectionMode: 'multiselect' }),
+        );
+
+        act(() => {
+          result.current.selection.selectRow(mockSyntheticEvent(), 'a');
+        });
+
+        expect(result.current.selection.someRowsSelected).toBe(true);
+
+        // remove the deselected item
+        const nextItems = [...items];
+        const indexToDelete = nextItems.findIndex(x => x.value === 'a');
+        nextItems.splice(indexToDelete, 1);
+        tableState = mockTableState({ items: nextItems, getRowId });
+
+        act(() => {
+          rerender();
+        });
+
+        expect(result.current.selection.someRowsSelected).toBe(false);
+      });
+
       it('should return true if there is a selected row', () => {
         const { result } = renderHook(() =>
           useTableSelectionState(mockTableState({ items }), { selectionMode: 'multiselect' }),

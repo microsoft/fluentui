@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: support rendering to a mountNode from PortalMountNodeContext",
-  "packageName": "@fluentui/react-portal",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

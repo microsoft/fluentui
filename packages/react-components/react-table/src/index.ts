@@ -4,6 +4,7 @@ export {
   useTableSort,
   createTableColumn,
   useTableColumnSizing_unstable,
+  useTableCompositeNavigation,
 } from './hooks';
 
 export type {
@@ -126,7 +127,7 @@ export {
   useDataGridCell_unstable,
   renderDataGridCell_unstable,
 } from './DataGridCell';
-export type { DataGridCellProps, DataGridCellState, DataGridCellSlots } from './DataGridCell';
+export type { DataGridCellProps, DataGridCellState, DataGridCellSlots, DataGridCellFocusMode } from './DataGridCell';
 
 export {
   DataGridRow,

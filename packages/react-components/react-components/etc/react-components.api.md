@@ -44,6 +44,7 @@ import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
+import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -175,12 +176,14 @@ import { DataGridBodySlots } from '@fluentui/react-table';
 import { DataGridBodyState } from '@fluentui/react-table';
 import { DataGridCell } from '@fluentui/react-table';
 import { dataGridCellClassNames } from '@fluentui/react-table';
+import { DataGridCellFocusMode } from '@fluentui/react-table';
 import { DataGridCellProps } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
 import { DataGridCellState } from '@fluentui/react-table';
 import { dataGridClassNames } from '@fluentui/react-table';
 import { DataGridContextValue } from '@fluentui/react-table';
 import { DataGridContextValues } from '@fluentui/react-table';
+import { DataGridFocusMode } from '@fluentui/react-table';
 import { DataGridHeader } from '@fluentui/react-table';
 import { DataGridHeaderCell } from '@fluentui/react-table';
 import { dataGridHeaderCellClassNames } from '@fluentui/react-table';
@@ -399,6 +402,7 @@ import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
+import { mergeCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
@@ -611,7 +615,10 @@ import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
 import { SliderState } from '@fluentui/react-slider';
 import { Slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotComponentType } from '@fluentui/react-utilities';
+import { SlotOptions } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 import { SortDirection } from '@fluentui/react-table';
@@ -906,6 +913,7 @@ import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { useFieldContextValues_unstable } from '@fluentui/react-field';
@@ -999,6 +1007,8 @@ import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
@@ -1029,6 +1039,7 @@ import { useTableCellLayout_unstable } from '@fluentui/react-table';
 import { useTableCellLayoutStyles_unstable } from '@fluentui/react-table';
 import { useTableCellStyles_unstable } from '@fluentui/react-table';
 import { useTableColumnSizing_unstable } from '@fluentui/react-table';
+import { useTableCompositeNavigation } from '@fluentui/react-table';
 import { useTableContext } from '@fluentui/react-table';
 import { useTableFeatures } from '@fluentui/react-table';
 import { UseTableFeaturesOptions } from '@fluentui/react-table';
@@ -1169,6 +1180,8 @@ export { AccordionToggleEvent }
 export { AccordionToggleEventHandler }
 
 export { arrowHeights }
+
+export { assertSlots }
 
 export { Avatar }
 
@@ -1432,6 +1445,8 @@ export { DataGridCell }
 
 export { dataGridCellClassNames }
 
+export { DataGridCellFocusMode }
+
 export { DataGridCellProps }
 
 export { DataGridCellSlots }
@@ -1443,6 +1458,8 @@ export { dataGridClassNames }
 export { DataGridContextValue }
 
 export { DataGridContextValues }
+
+export { DataGridFocusMode }
 
 export { DataGridHeader }
 
@@ -1880,6 +1897,8 @@ export { MenuTriggerProps }
 
 export { MenuTriggerState }
 
+export { mergeCallbacks }
+
 export { mergeClasses }
 
 export { OnOpenChangeData }
@@ -2304,7 +2323,13 @@ export { SliderState }
 
 export { Slot }
 
+export { slot }
+
 export { SlotClassNames }
+
+export { SlotComponentType }
+
+export { SlotOptions }
 
 export { SlotPropsRecord }
 
@@ -2894,6 +2919,8 @@ export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
 
+export { useEventCallback }
+
 export { useField_unstable }
 
 export { useFieldContext_unstable }
@@ -3080,6 +3107,10 @@ export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
 
+export { useRestoreFocusSource }
+
+export { useRestoreFocusTarget }
+
 export { useScrollbarWidth }
 
 export { useSelect_unstable }
@@ -3139,6 +3170,8 @@ export { useTableCellLayoutStyles_unstable }
 export { useTableCellStyles_unstable }
 
 export { useTableColumnSizing_unstable }
+
+export { useTableCompositeNavigation }
 
 export { useTableContext }
 

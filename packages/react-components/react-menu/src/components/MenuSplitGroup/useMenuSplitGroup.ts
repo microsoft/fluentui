@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, getRTLSafeKey, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, getRTLSafeKey, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { MenuSplitGroupProps, MenuSplitGroupState } from './MenuSplitGroup.types';
@@ -54,11 +54,14 @@ export const useMenuSplitGroup_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      role: 'group',
-      ref: useMergedRefs(ref, innerRef),
-      onKeyDown,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        role: 'group',
+        ref: useMergedRefs(ref, innerRef),
+        onKeyDown,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

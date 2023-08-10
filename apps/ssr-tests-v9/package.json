@@ -18,7 +18,7 @@
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "dependencies": {
-    "@fluentui/react-components": "^9.23.1"
+    "@fluentui/react-components": "*"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",

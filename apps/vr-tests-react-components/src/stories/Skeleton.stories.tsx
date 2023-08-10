@@ -1,14 +1,28 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
-import { TestWrapperDecoratorPauseAnimation } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { Steps, StoryWright } from 'storywright';
+import { makeStyles } from '@griffel/react';
+
+const useStyles = makeStyles({
+  paused: {
+    '& *': {
+      animationPlayState: 'paused !important',
+      animationDelay: '-1s !important',
+    },
+  },
+});
 
 storiesOf('Skeleton converged', module)
-  .addDecorator(TestWrapperDecoratorPauseAnimation)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
   .addStory(
     'Opaque Skeleton with rectangle',
     () => (
-      <Skeleton className="test-class">
+      <Skeleton className={useStyles().paused}>
         <SkeletonItem style={{ width: '96px' }} />
       </Skeleton>
     ),
@@ -21,7 +35,7 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Opaque Skeleton with circle',
     () => (
-      <Skeleton className="test-class">
+      <Skeleton className={useStyles().paused}>
         <SkeletonItem shape="circle" />
       </Skeleton>
     ),
@@ -34,7 +48,7 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Opaque Skeleton with square',
     () => (
-      <Skeleton className="test-class">
+      <Skeleton className={useStyles().paused}>
         <SkeletonItem shape="square" />
       </Skeleton>
     ),
@@ -47,39 +61,36 @@ storiesOf('Skeleton converged', module)
   .addStory(
     'Translucent Skeleton with rectangle',
     () => (
-      <Skeleton className="test-class" appearance="translucent">
+      <Skeleton className={useStyles().paused} appearance="translucent">
         <SkeletonItem style={{ width: '96px' }} />
       </Skeleton>
     ),
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   )
   .addStory(
-    'Translucent Skeleton with  circle',
+    'Translucent Skeleton with circle',
     () => (
-      <Skeleton className="test-class" appearance="translucent">
+      <Skeleton className={useStyles().paused} appearance="translucent">
         <SkeletonItem shape="circle" />
       </Skeleton>
     ),
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   )
   .addStory(
     'Translucent Skeleton with square',
     () => (
-      <Skeleton className="test-class" appearance="translucent">
+      <Skeleton className={useStyles().paused} appearance="translucent">
         <SkeletonItem shape="square" />
       </Skeleton>
     ),
     {
       includeHighContrast: true,
       includeDarkMode: true,
-      includeRtl: true,
     },
   );

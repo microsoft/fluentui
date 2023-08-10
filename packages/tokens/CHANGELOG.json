@@ -2,6 +2,42 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 13:17:11 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.8",
+      "version": "1.0.0-alpha.8",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "3df6e4cf274b9811b7a279d9f611d8a6c20fdab8",
+            "comment": "feat: add durationGentle"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.7",
+      "version": "1.0.0-alpha.7",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "141424a604b98ea762cfa375fe78df8c9e6bdec8",
+            "comment": "feat: add status color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:36 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.6",
       "version": "1.0.0-alpha.6",

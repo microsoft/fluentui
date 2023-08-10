@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: adds internal tag on jsdoc for getSlotsNext",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

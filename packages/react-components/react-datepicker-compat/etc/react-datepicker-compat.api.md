@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -156,8 +157,7 @@ export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public (undocumented)
-export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
-    componentRef?: React_2.RefObject<IDatePicker>;
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & Pick<PortalProps, 'mountNode'> & {
     onSelectDate?: (date: Date | null | undefined) => void;
     required?: boolean;
     disabled?: boolean;
@@ -295,13 +295,6 @@ export interface ICalendarMonth {
     focus(): void;
 }
 
-// @public (undocumented)
-export interface IDatePicker {
-    focus(): void;
-    reset(): void;
-    showDatePickerPopup(): void;
-}
-
 // @public
 export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
 
@@ -357,7 +350,7 @@ export const TimeConstants: {
 };
 
 // @public
-export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLElement>) => DatePickerState;
+export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLInputElement>) => DatePickerState;
 
 // @public
 export const useDatePickerStyles_unstable: (state: DatePickerState) => DatePickerState;

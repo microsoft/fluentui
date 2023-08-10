@@ -1,4 +1,4 @@
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
 import type { MenuDividerProps, MenuDividerState } from './MenuDivider.types';
 
@@ -10,11 +10,14 @@ export const useMenuDivider_unstable = (props: MenuDividerProps, ref: React.Ref<
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      role: 'presentation',
-      'aria-hidden': true,
-      ...props,
-      ref,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        role: 'presentation',
+        'aria-hidden': true,
+        ...props,
+        ref,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };
