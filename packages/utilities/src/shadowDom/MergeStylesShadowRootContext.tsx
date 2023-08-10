@@ -77,16 +77,13 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */
-export const useAdoptedStylesheet_unstable = (
-  stylesheetKey: string,
-  adopteGlobally: boolean = false,
-): string | undefined => {
+export const useAdoptedStylesheet_unstable = (stylesheetKey: string, adopteGlobally: boolean = false): boolean => {
   const shadowCtx = useMergeStylesShadowRootContext_unstable();
   const rootMergeStyles = useMergeStylesRootStylesheets_unstable();
   // console.log('useAdoptedStylesheets', stylesheetKey);
 
   if (!shadowCtx) {
-    return undefined;
+    return false;
   }
 
   if (adopteGlobally) {
@@ -107,11 +104,11 @@ export const useAdoptedStylesheet_unstable = (
     }
   }
 
-  return stylesheetKey;
+  return true;
 };
 
 export const useHasMergeStylesShadowRootContext = () => {
-  return !!useMergeStylesRootStylesheets_unstable();
+  return !!useMergeStylesShadowRootContext_unstable();
 };
 
 export const useMergeStylesShadowRootContext_unstable = () => {

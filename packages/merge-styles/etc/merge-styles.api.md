@@ -64,7 +64,7 @@ export function fontFace(font: IFontFace): void;
 //
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
@@ -111,7 +111,7 @@ export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: string;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: string;
 } & {
     subComponentStyles: {
         [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never>;
@@ -463,7 +463,7 @@ export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TSt
 export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
     [key: string]: any;
 }> = {
-    [P in keyof Omit_2<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
+    [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;

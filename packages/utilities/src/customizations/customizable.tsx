@@ -5,6 +5,7 @@ import { CustomizerContext } from './CustomizerContext';
 import { concatStyleSets } from '@fluentui/merge-styles';
 import type { ICustomizerContext } from './CustomizerContext';
 import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 
 export function customizable(
   scope: string,
@@ -19,6 +20,8 @@ export function customizable(
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
+
+      private _shadowDom: ShadowConfig | undefined;
 
       constructor(props: P) {
         super(props);
@@ -43,6 +46,17 @@ export function customizable(
                   {(context: ICustomizerContext) => {
                     const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
+                    if (
+                      !this._shadowDom ||
+                      this._shadowDom.stylesheetKey !== scope ||
+                      this._shadowDom.inShadow !== inShadow
+                    ) {
+                      this._shadowDom = {
+                        stylesheetKey: scope,
+                        inShadow,
+                      };
+                    }
+
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     const componentProps = this.props as any;
 
@@ -61,17 +75,29 @@ export function customizable(
                         this._styleCache.default = defaultProps.styles;
                         this._styleCache.component = componentProps.styles;
                         this._styleCache.merged = mergedStyles;
-                        this._styleCache.merged.__stylesheetKey__ = scope;
-                        this._styleCache.merged.__inShadow__ = inShadow;
+                        // this._styleCache.merged.__stylesheetKey__ = scope;
+                        // this._styleCache.merged.__inShadow__ = inShadow;
                       }
 
                       return (
-                        <ComposedComponent {...defaultProps} {...componentProps} styles={this._styleCache.merged} />
+                        <ComposedComponent
+                          {...defaultProps}
+                          {...componentProps}
+                          shadowDom={this._shadowDom}
+                          styles={this._styleCache.merged}
+                        />
                       );
                     }
 
-                    const styles = { ...defaultProps.styles, ...componentProps.styles, __stylesheetKey__: scope };
-                    return <ComposedComponent {...defaultProps} {...componentProps} styles={styles} />;
+                    const styles = { ...defaultProps.styles, ...componentProps.styles };
+                    return (
+                      <ComposedComponent
+                        {...defaultProps}
+                        {...componentProps}
+                        shadowDom={this._shadowDom}
+                        styles={styles}
+                      />
+                    );
                   }}
                 </CustomizerContext.Consumer>
               );

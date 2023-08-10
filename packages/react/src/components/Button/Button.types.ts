@@ -9,6 +9,7 @@ import type { IContextualMenuProps } from '../../ContextualMenu';
 import type { IIconProps } from '../../Icon';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 
 /**
  * {@docCategory Button}
@@ -344,6 +345,8 @@ export interface IButtonProps
    * overall SplitButton container
    */
   primaryActionButtonProps?: IButtonProps;
+
+  shadowDom?: ShadowConfig;
 }
 
 /**
@@ -649,8 +652,4 @@ export interface IButtonStyles {
    * Style override for the SplitButton when only primaryButton is in a disabled state
    */
   splitButtonMenuFocused?: IStyle;
-
-  __stylesheetKey__?: string;
-
-  __inShadow__?: boolean;
 }

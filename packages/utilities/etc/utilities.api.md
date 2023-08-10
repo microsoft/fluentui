@@ -22,6 +22,7 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public
@@ -130,7 +131,7 @@ export function calculatePrecision(value: number | string): number;
 export function canUseDOM(): boolean;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps, stylesheetKey?: string) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps, shadowDom?: ShadowConfig) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
@@ -1275,7 +1276,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export const useAdoptedStylesheet_unstable: (stylesheetKey: string, adopteGlobally?: boolean) => string | undefined;
+export const useAdoptedStylesheet_unstable: (stylesheetKey: string, adopteGlobally?: boolean) => boolean;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;

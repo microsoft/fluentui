@@ -30,7 +30,7 @@ export type __MapToFunctionType<T> = Extract<T, Function> extends never
  */
 export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: any }> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
+  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
 } & IStylesheetKey;
@@ -40,7 +40,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: 
  */
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: IStyle;
+  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
 } & IStylesheetKey;
@@ -51,7 +51,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
  */
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   // eslint-disable-next-line deprecation/deprecation
-  [P in keyof Omit<TStyleSet, 'subComponentStyles' | '__stylesheetKey__'>]: string;
+  [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {
   subComponentStyles: {
     [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<

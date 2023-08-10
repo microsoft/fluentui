@@ -354,6 +354,7 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
@@ -2706,6 +2707,8 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
     // @deprecated (undocumented)
     rootProps?: React_2.ButtonHTMLAttributes<HTMLButtonElement> | React_2.AnchorHTMLAttributes<HTMLAnchorElement>;
     secondaryText?: string;
+    // (undocumented)
+    shadowDom?: ShadowConfig;
     split?: boolean;
     splitButtonAriaLabel?: string;
     splitButtonMenuProps?: IButtonProps;
@@ -2720,8 +2723,6 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
 
 // @public (undocumented)
 export interface IButtonStyles {
-    // (undocumented)
-    __stylesheetKey__?: string;
     description?: IStyle;
     descriptionChecked?: IStyle;
     descriptionDisabled?: IStyle;
