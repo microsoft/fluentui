@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, IStackTokens, SpinButton } from '@fluentui/react';
+import { Stack, IStackTokens, SpinButton, Text } from '@fluentui/react';
 import { DefaultButton, PrimaryButton } from '@fluentui/react/lib/Button';
 import {
   MergeStylesRootProvider_unstable,
@@ -16,12 +16,7 @@ export interface IButtonExampleProps {
 }
 
 // Example formatting
-const stackTokens: IStackTokens = { childrenGap: 40 };
-
-const Hmmm = props => {
-  useAdoptedStylesheet_unstable('Hmmm');
-  return <div {...props} />;
-};
+const stackTokens: IStackTokens = { childrenGap: 10 };
 
 export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> = props => {
   const [shadowRootEl, setShadowRootEl] = React.useState<HTMLElement | null>(null);
@@ -40,31 +35,21 @@ export const ButtonDefaultExample: React.FunctionComponent<IButtonExampleProps> 
       <MergeStylesRootProvider_unstable>
         <root.div className="shadow-root" delegatesFocus ref={setter}>
           <MergeStylesShadowRootProvider_unstable shadowRoot={shadowRootEl?.shadowRoot}>
-            <Stack horizontal tokens={stackTokens}>
+            <Stack tokens={stackTokens}>
+              <Text variant="large">Shadow DOM</Text>
               {/* eslint-disable-next-line */}
               <DefaultButton text="In the shadows" onClick={onClick} allowDisabledFocus disabled={disabled} />
-              {/* <PrimaryButton
-                text="Primary"
-                onClick={_alertClicked}
-                allowDisabledFocus
-                disabled={disabled}
-                checked={checked}
-              />
-              <PrimaryButton
-                text="Primary 2"
-                onClick={_alertClicked}
-                allowDisabledFocus
-                disabled={disabled}
-                checked={checked}
-              />*/}
+              <PrimaryButton text="Primary" allowDisabledFocus disabled={disabled} />
               <SpinButton label="Shadow Button" />
             </Stack>
           </MergeStylesShadowRootProvider_unstable>
         </root.div>
       </MergeStylesRootProvider_unstable>
-      <Stack horizontal tokens={stackTokens}>
+      <Stack tokens={stackTokens}>
+        <Text variant="large">Light DOM</Text>
         {/* eslint-disable-next-line */}
         <DefaultButton text="In the light" onClick={onClick} allowDisabledFocus disabled={disabled} />
+        <PrimaryButton text="Primary" allowDisabledFocus disabled={disabled} />
         <SpinButton label="Light Button" />
       </Stack>
     </>
