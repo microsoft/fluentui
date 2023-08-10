@@ -305,7 +305,7 @@ export class Calendar extends FASTCalendar {
    * @returns - string of class names
    * @public
    */
-  public getSecondaryCellClassNames(detail: number, todayMonth: number, todayYear: number) {
+  public getSecondaryPanelCellClassNames(detail: number, todayMonth: number, todayYear: number) {
     const isToday = this.yearPickerOpen ? detail === todayYear : detail === todayMonth;
     const isSelected = this.yearPickerOpen ? detail === this.year : detail === this.month;
 
@@ -316,6 +316,20 @@ export class Calendar extends FASTCalendar {
     ]
       .filter(Boolean)
       .join(' ');
+  }
+
+  /**
+   * Creates a aria-label string for cells on the secondary panel
+   * @returns - aria-label string
+   * @public
+   */
+  public getSecondaryPanelCellLabels(detail: number): string {
+    const labeltext = this.yearPickerOpen
+      ? this.dateFormatter.getYear(detail)
+      : [this.dateFormatter.getMonth(detail), this.dateFormatter.getYear(this.year)].join(' ');
+    const isSelected = this.yearPickerOpen ? detail === this.year : detail === this.month;
+
+    return [labeltext, isSelected && 'selected'].filter(Boolean).join(' ');
   }
 
   /**

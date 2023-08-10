@@ -88,16 +88,13 @@ export function secondaryPanelCellTemplate(
   const cellTag = html.partial(tagFor(options.dataGridCell));
   return html`
       <${cellTag}
-          class="${(x, c) => c.parentContext.parent.getSecondaryCellClassNames(x.detail, todayMonth, todayYear)}"
+          class="${(x, c) => c.parentContext.parent.getSecondaryPanelCellClassNames(x.detail, todayMonth, todayYear)}"
           id="id-secondary-panel-cell"
           part="secondary-panel-cell"
           tabindex="-1"
           role="gridcell"
           grid-column="${(x, c) => c.index + 1}"
-          aria-label="${(x, c) =>
-            c.parentContext.parent.yearPickerOpen
-              ? c.parentContext.parent.dateFormatter.getYear(x.detail)
-              : c.parentContext.parent.dateFormatter.getMonth(x.detail)}"
+          aria-label="${(x, c) => c.parentContext.parent.getSecondaryPanelCellLabels(x.detail)}"
           @click="${(x, c) => c.parentContext.parent.$emit('secondaryPanelCellSelected', x.detail)}"
           @keydown="${(x, c) => c.parentContext.parent.handleSecondaryPanelKeydown(c.event as KeyboardEvent, x.detail)}"
       >
@@ -157,7 +154,7 @@ export function interactiveSecondaryPanelGridTemplate<T extends Calendar>(
   const gridTag = html.partial(tagFor(options.dataGrid));
 
   return html<T>`
-  <${gridTag} class="secondary-panel-grid interact" part="secondary-panel-grid" generate-header="none" aria-role="grid">
+  <${gridTag} class="secondary-panel-grid interact" part="secondary-panel-grid" generate-header="none" role="grid">
       ${x =>
         x.yearPickerOpen
           ? html`${repeat(
