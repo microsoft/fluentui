@@ -50,8 +50,8 @@ export const AreaChartPageProps: IDocPageProps = {
       view: <AreaChartCustomAccessibilityExample />,
     },
   ],
-  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/AreaChartOverview.md'),
-  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/AreaChartBestPractices.md'),
+  overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartOverview.md'),
+  bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartBestPractices.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };
