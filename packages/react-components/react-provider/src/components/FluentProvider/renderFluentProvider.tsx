@@ -14,6 +14,8 @@ import {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
+import { IconDirectionContextProvider } from '@fluentui/react-icons/lib/contexts/IconDirectionContext';
+import type { IconDirectionContextValue } from '@fluentui/react-icons';
 
 /**
  * Render the final JSX of FluentProvider
@@ -21,6 +23,7 @@ import type { FluentProviderContextValues, FluentProviderState, FluentProviderSl
 export const renderFluentProvider_unstable = (
   state: FluentProviderState,
   contextValues: FluentProviderContextValues,
+  iconContextValues?: IconDirectionContextValue,
 ) => {
   assertSlots<FluentProviderSlots>(state);
 
@@ -37,21 +40,23 @@ export const renderFluentProvider_unstable = (
           >
             <TooltipVisibilityProvider value={contextValues.tooltip}>
               <TextDirectionProvider dir={contextValues.textDirection}>
-                <OverridesProvider value={contextValues.overrides_unstable}>
-                  <state.root>
-                    {canUseDOM() ? null : (
-                      <style
-                        // Using dangerous HTML because react can escape characters
-                        // which can lead to invalid CSS.
-                        // eslint-disable-next-line react/no-danger
-                        dangerouslySetInnerHTML={{ __html: state.serverStyleProps.cssRule }}
-                        {...state.serverStyleProps.attributes}
-                      />
-                    )}
+                <IconDirectionContextProvider value={iconContextValues}>
+                  <OverridesProvider value={contextValues.overrides_unstable}>
+                    <state.root>
+                      {canUseDOM() ? null : (
+                        <style
+                          // Using dangerous HTML because react can escape characters
+                          // which can lead to invalid CSS.
+                          // eslint-disable-next-line react/no-danger
+                          dangerouslySetInnerHTML={{ __html: state.serverStyleProps.cssRule }}
+                          {...state.serverStyleProps.attributes}
+                        />
+                      )}
 
-                    {state.root.children}
-                  </state.root>
-                </OverridesProvider>
+                      {state.root.children}
+                    </state.root>
+                  </OverridesProvider>
+                </IconDirectionContextProvider>
               </TextDirectionProvider>
             </TooltipVisibilityProvider>
           </CustomStyleHooksProvider>
