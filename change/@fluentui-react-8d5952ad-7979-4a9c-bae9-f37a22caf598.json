@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Pass-through pointer events in Details Row focus rects",
+  "packageName": "@fluentui/react",
+  "email": "tmichon@microsoft.com",
+  "dependentChangeType": "patch"
+}
