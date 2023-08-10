@@ -15,6 +15,7 @@ storiesOf('react-charting/Legend', module)
             `document.querySelectorAll('div[class^="overflowIndicationTextStyle"]')[0].click()`,
           )
           .snapshot('expanded', { cropTo: '.testWrapper' })
+          .end()
       : new Steps().snapshot('default', { cropTo: '.testWrapper' }).end();
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
@@ -272,7 +273,7 @@ storiesOf('react-charting/Legend', module)
       ];
 
       return (
-        <div style={{ width: 400, padding: 10, display: 'flex' }}>
+        <div style={{ width: 400, height: 600, padding: 10, display: 'flex' }}>
           <Legends
             legends={legends}
             overflowText={'Overflow Items'}
