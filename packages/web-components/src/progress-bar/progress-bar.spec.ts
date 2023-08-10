@@ -126,15 +126,13 @@ test.describe('Progress Bar', () => {
   });
 
   // Fluent Specific propertiy tests
-  test('should set and retrieve the `thickness` property correctly to medium', async () => {
+  test('should set and retrieve the `thickness` property correctly', async () => {
     await element.evaluate((node: ProgressBar) => {
       node.thickness = 'medium';
     });
 
     await expect(element).toHaveJSProperty('thickness', 'medium');
-  });
 
-  test('should set and retrieve the `thickness` property correctly to large', async () => {
     await element.evaluate((node: ProgressBar) => {
       node.thickness = 'large';
     });
@@ -142,15 +140,13 @@ test.describe('Progress Bar', () => {
     await expect(element).toHaveJSProperty('thickness', 'large');
   });
 
-  test('should set and retrieve the `shape` property correctly as square', async () => {
+  test('should set and retrieve the `shape` property correctly', async () => {
     await element.evaluate((node: ProgressBar) => {
       node.shape = 'square';
     });
 
     await expect(element).toHaveJSProperty('shape', 'square');
-  });
 
-  test('should set and retrieve the `shape` property correctly as rounded', async () => {
     await element.evaluate((node: ProgressBar) => {
       node.shape = 'rounded';
     });
@@ -158,23 +154,19 @@ test.describe('Progress Bar', () => {
     await expect(element).toHaveJSProperty('shape', 'rounded');
   });
 
-  test('should set and retrieve the `validationState` property correctly as success', async () => {
+  test('should set and retrieve the `validationState` property correctly', async () => {
     await element.evaluate((node: ProgressBar) => {
       node.validationState = 'success';
     });
 
     await expect(element).toHaveJSProperty('validationState', 'success');
-  });
 
-  test('should set and retrieve the `validationState` property correctly as warning', async () => {
     await element.evaluate((node: ProgressBar) => {
       node.validationState = 'warning';
     });
 
     await expect(element).toHaveJSProperty('validationState', 'warning');
-  });
 
-  test('should set and retrieve the `validationState` property correctly as error', async () => {
     await element.evaluate((node: ProgressBar) => {
       node.validationState = 'error';
     });
