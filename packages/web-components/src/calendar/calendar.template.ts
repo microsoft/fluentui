@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html, repeat, ViewTemplate, when } from '@microsoft/fast-element';
-import { CalendarOptions, calendarTemplate, MonthFormat, tagFor } from '@microsoft/fast-foundation';
+import { CalendarOptions, calendarTemplate, tagFor } from '@microsoft/fast-foundation';
 import type { Calendar } from './calendar.js';
 
 const ArrowUp16 = html.partial(`
@@ -95,6 +95,7 @@ export function secondaryPanelCellTemplate(
           role="gridcell"
           grid-column="${(x, c) => c.index + 1}"
           aria-label="${(x, c) => c.parentContext.parent.getSecondaryPanelCellLabels(x.detail)}"
+          aria-selected="${(x, c) => c.parentContext.parent.getSecondaryPanelCellSelected(x.detail)}"
           @click="${(x, c) => c.parentContext.parent.$emit('secondaryPanelCellSelected', x.detail)}"
           @keydown="${(x, c) => c.parentContext.parent.handleSecondaryPanelKeydown(c.event as KeyboardEvent, x.detail)}"
       >

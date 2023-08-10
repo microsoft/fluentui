@@ -324,12 +324,20 @@ export class Calendar extends FASTCalendar {
    * @public
    */
   public getSecondaryPanelCellLabels(detail: number): string {
-    const labeltext = this.yearPickerOpen
+    return this.yearPickerOpen
       ? this.dateFormatter.getYear(detail)
       : [this.dateFormatter.getMonth(detail), this.dateFormatter.getYear(this.year)].join(' ');
+  }
+
+  /**
+   * Creates a string for the aria-selected attribute on secondary panel cells
+   * @returns - aria-selected string: true or false
+   * @public
+   */
+  public getSecondaryPanelCellSelected(detail: number): string {
     const isSelected = this.yearPickerOpen ? detail === this.year : detail === this.month;
 
-    return [labeltext, isSelected && 'selected'].filter(Boolean).join(' ');
+    return isSelected ? 'true' : 'false';
   }
 
   /**
