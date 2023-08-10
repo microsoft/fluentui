@@ -47,6 +47,10 @@
       "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
       "@fluentui/react-jsx-runtime": ["packages/react-components/react-jsx-runtime/src/index.ts"],
+      "@fluentui/react-jsx-runtime/jsx-runtime": ["packages/react-components/react-jsx-runtime/src/jsx-runtime.ts"],
+      "@fluentui/react-jsx-runtime/jsx-dev-runtime": [
+        "packages/react-components/react-jsx-runtime/src/jsx-dev-runtime.ts"
+      ],
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
