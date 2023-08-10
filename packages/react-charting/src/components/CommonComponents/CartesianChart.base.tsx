@@ -120,18 +120,18 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         : this.props.margins?.left ?? 40,
     };
     if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
-      this.margins.bottom! = this.props.margins?.bottom ?? 70;
+      this.margins.bottom! = this.props.margins?.bottom ?? 55;
     }
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
       this.margins.left! = this._isRtl
         ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
-          ? 80
+          ? 60
           : 40
-        : this.props.margins?.left ?? 80;
+        : this.props.margins?.left ?? 60;
       this.margins.right! = this._isRtl
-        ? this.props.margins?.left ?? 80
+        ? this.props.margins?.left ?? 60
         : this.props.margins?.right ?? this.props?.secondaryYAxistitle
-        ? 80
+        ? 60
         : 40;
     }
   }
@@ -523,7 +523,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   <SVGTooltipText
                     content={this.props.secondaryYAxistitle}
                     textProps={{
-                      x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
+                      x:
+                        (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                        this.state._removalValueForTextTuncate!,
                       y: this._isRtl
                         ? this.state.startFromX - this.titleMargin
                         : svgDimensions.width - this.margins.right!,
@@ -547,7 +549,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               <SVGTooltipText
                 content={this.props.yAxisTitle}
                 textProps={{
-                  x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
+                  x:
+                    (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                    this.state._removalValueForTextTuncate!,
                   y: this._isRtl
                     ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
                     : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,

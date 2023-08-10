@@ -389,6 +389,7 @@ export interface ICartesianChartProps {
   /**
    * Prop to set the x axis title
    * @default undefined
+   * Minimum bottom margin required for x axis title is 55px
    */
 
   xAxisTitle?: string;
@@ -396,12 +397,15 @@ export interface ICartesianChartProps {
   /**
    * Prop to set the y axis title
    * @default undefined
+   * Mimimum left margin required for y axis title is 60px and for RTL is 40px
+   * Mimimum right margin required for y axis title is 40px and for RTL is 60px
    */
   yAxisTitle?: string;
 
   /**
    * Prop to set the secondary y axis title
    * @default undefined
+   * If RTL is enabled, mimimum left and right margins required for secondary y axis title is 60px
    */
   secondaryYAxistitle?: string;
 }
