@@ -31,6 +31,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         innerRadius={this.props.innerRadius}
         outerRadius={this.props.outerRadius}
         color={`${this.colors(i)}`}
+        theme={this.props.theme}
       />
     );
   };
