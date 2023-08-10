@@ -134,7 +134,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
     this._enableComputationOptimization = true;
-    this._firstRenderOptimization = false;
+    this._firstRenderOptimization = true;
     this._emptyChartId = getId('_AreaChart_empty');
   }
 
