@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 10 Aug 2023 04:18:05 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.28",
+      "version": "3.0.0-alpha.28",
+      "comments": {
+        "none": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c83bfec16fd0d93b1305e5f5aec5d8a62c8f7cb7",
+            "comment": "add playwright testing to the web component package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Aug 2023 04:16:56 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.28",
       "version": "3.0.0-alpha.28",
