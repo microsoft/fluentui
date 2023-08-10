@@ -65,7 +65,6 @@
   },
   "peerDependencies": {
     "@fluentui/react": "^8.110.12",
-    "@testing-library/react": "12.1.2",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",
