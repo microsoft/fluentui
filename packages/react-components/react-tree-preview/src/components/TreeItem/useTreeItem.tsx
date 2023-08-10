@@ -142,7 +142,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     });
   });
 
-  const isBranch = itemType === 'branch';
   return {
     value,
     open,
@@ -168,8 +167,10 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         'aria-level': level,
         [dataTreeItemValueAttrName]: value,
         'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
-        'aria-selected': selectionMode === 'single' ? checked : undefined,
-        'aria-expanded': isBranch ? open : undefined,
+        // aria-selected is required according to WAI-ARIA spec
+        // https://www.w3.org/TR/wai-aria-1.1/#treeitem
+        'aria-selected': selectionMode === 'single' ? checked : 'false',
+        'aria-expanded': itemType === 'branch' ? open : undefined,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
         onMouseOver: handleActionsVisible,
