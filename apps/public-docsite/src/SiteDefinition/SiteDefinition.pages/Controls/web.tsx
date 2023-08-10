@@ -110,6 +110,8 @@ export const categories: { [name: string]: ICategory } = {
     Legends: {},
     LineChart: {},
     AreaChart: {},
+    DonutChart: {},
+    VerticalBarChart: {},
   },
   Utilities: {
     Announced: {

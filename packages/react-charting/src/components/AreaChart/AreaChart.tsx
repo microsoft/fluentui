@@ -4,6 +4,7 @@ import { IAreaChartProps, IAreaChartStyleProps, IAreaChartStyles } from '../../i
 import { AreaChartBase } from '../AreaChart/AreaChart.base';
 import { getStyles } from './AreaChart.styles';
 
+// Create a AreaChart variant which uses these default styles and this styled subcomponent.
 /**
  * Areachart component.
  * {@docCategory AreaChart}

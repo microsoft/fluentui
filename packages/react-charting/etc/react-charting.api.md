@@ -87,7 +87,7 @@ export const DataVizPalette: {
     highSuccess: string;
 };
 
-// @public (undocumented)
+// @public
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
 // @public (undocumented)
@@ -422,7 +422,7 @@ export interface IDataPoint {
 export interface IDonutChart {
 }
 
-// @public (undocumented)
+// @public
 export interface IDonutChartProps extends ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
     culture?: string;
@@ -1305,7 +1305,7 @@ export interface IVerticalBarChartDataPoint {
     yAxisCalloutData?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalBarChartProps extends ICartesianChartProps {
     barWidth?: number;
     chartTitle?: string;
@@ -1503,7 +1503,7 @@ export enum TreeTraverse {
     preOrder = 1
 }
 
-// @public (undocumented)
+// @public
 export const VerticalBarChart: React_2.FunctionComponent<IVerticalBarChartProps>;
 
 // @public (undocumented)

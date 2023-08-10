@@ -537,6 +537,18 @@ export const AppDefinition: IAppDefinition = {
           name: 'AreaChart',
           url: '#/examples/AreaChart',
         },
+        {
+          component: require<any>('./components/pages/Charting/DonutChartPage').AreaChartPage,
+          key: 'DonutChart',
+          name: 'DonutChart',
+          url: '#/examples/DonutChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/VerticalBarChartPage').VerticalBarPage,
+          key: 'VerticalBarChart',
+          name: 'VerticalBarChart',
+          url: '#/examples/VerticalBarChart',
+        },
       ],
     },
     {
