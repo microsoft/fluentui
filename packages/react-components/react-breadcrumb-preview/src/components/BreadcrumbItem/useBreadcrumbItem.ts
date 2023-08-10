@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { BreadcrumbItemProps, BreadcrumbItemState } from './BreadcrumbItem.types';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 
@@ -19,21 +19,20 @@ export const useBreadcrumbItem_unstable = (
   const { size, iconPosition } = useBreadcrumbContext_unstable();
   const { current = false, icon } = props;
 
-  const iconShorthand = resolveShorthand(icon);
-
+  const iconSlot = slot.optional(icon, { elementType: 'span' });
   return {
-    components: {
-      root: 'li',
-      icon: 'span',
-    },
-    root: getNativeElementProps('li', {
-      ref,
-      ...props,
-    }),
+    components: { root: 'li', icon: 'span' },
+    root: slot.always(
+      getNativeElementProps('li', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'li' },
+    ),
     size,
     current,
-    icon: iconShorthand,
-    iconOnly: Boolean(iconShorthand?.children && !props.children),
+    icon: iconSlot,
+    iconOnly: Boolean(iconSlot?.children && !props.children),
     iconPosition: props.iconPosition || iconPosition,
   };
 };

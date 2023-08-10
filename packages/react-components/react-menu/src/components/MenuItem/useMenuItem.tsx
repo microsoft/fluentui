@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useEventCallback, resolveShorthand, useMergedRefs, getNativeElementProps } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs, getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useCharacterSearch } from './useCharacterSearch';
 import { useMenuTriggerContext_unstable } from '../../contexts/menuTriggerContext';
@@ -46,54 +46,59 @@ export const useMenuItem_unstable = (props: MenuItemProps, ref: React.Ref<ARIABu
       content: 'span',
       secondaryContent: 'span',
     },
-    root: getNativeElementProps(
-      as,
-      useARIAButtonProps(as, {
-        role: 'menuitem',
-        ...props,
-        disabled: false,
-        disabledFocusable: disabled,
-        ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
-        onKeyDown: useEventCallback(event => {
-          props.onKeyDown?.(event);
-          if (!event.isDefaultPrevented() && (event.key === Space || event.key === Enter)) {
-            dismissedWithKeyboardRef.current = true;
-          }
-        }),
-        onMouseEnter: useEventCallback(event => {
-          innerRef.current?.focus();
+    root: slot.always(
+      getNativeElementProps(
+        as,
+        useARIAButtonProps(as, {
+          role: 'menuitem',
+          ...props,
+          disabled: false,
+          disabledFocusable: disabled,
+          ref: useMergedRefs(ref, innerRef) as React.Ref<ARIAButtonElementIntersection<'div'>>,
+          onKeyDown: useEventCallback(event => {
+            props.onKeyDown?.(event);
+            if (!event.isDefaultPrevented() && (event.key === Space || event.key === Enter)) {
+              dismissedWithKeyboardRef.current = true;
+            }
+          }),
+          onMouseEnter: useEventCallback(event => {
+            innerRef.current?.focus();
 
-          props.onMouseEnter?.(event);
-        }),
-        onClick: useEventCallback(event => {
-          if (!hasSubmenu && !persistOnClick) {
-            setOpen(event, {
-              open: false,
-              keyboard: dismissedWithKeyboardRef.current,
-              bubble: true,
-              type: 'menuItemClick',
-              event,
-            });
-            dismissedWithKeyboardRef.current = false;
-          }
+            props.onMouseEnter?.(event);
+          }),
+          onClick: useEventCallback(event => {
+            if (!hasSubmenu && !persistOnClick) {
+              setOpen(event, {
+                open: false,
+                keyboard: dismissedWithKeyboardRef.current,
+                bubble: true,
+                type: 'menuItemClick',
+                event,
+              });
+              dismissedWithKeyboardRef.current = false;
+            }
 
-          props.onClick?.(event);
+            props.onClick?.(event);
+          }),
         }),
-      }),
+      ),
+      { elementType: 'div' },
     ),
-    icon: resolveShorthand(props.icon, { required: hasIcons }),
-    checkmark: resolveShorthand(props.checkmark, { required: hasCheckmarks }),
-    submenuIndicator: resolveShorthand(props.submenuIndicator, {
-      required: hasSubmenu,
+    icon: slot.optional(props.icon, { renderByDefault: hasIcons, elementType: 'span' }),
+    checkmark: slot.optional(props.checkmark, { renderByDefault: hasCheckmarks, elementType: 'span' }),
+    submenuIndicator: slot.optional(props.submenuIndicator, {
+      renderByDefault: hasSubmenu,
       defaultProps: {
         children: dir === 'ltr' ? <ChevronRightIcon /> : <ChevronLeftIcon />,
       },
+      elementType: 'span',
     }),
-    content: resolveShorthand(props.content, {
-      required: !!props.children,
+    content: slot.optional(props.content, {
+      renderByDefault: !!props.children,
       defaultProps: { children: props.children },
+      elementType: 'span',
     }),
-    secondaryContent: resolveShorthand(props.secondaryContent),
+    secondaryContent: slot.optional(props.secondaryContent, { elementType: 'span' }),
   };
   useCharacterSearch(state, innerRef);
   return state;

@@ -1,4 +1,4 @@
-import { SelectionMode, getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { SelectionMode, getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type {
   TreeCheckedChangeData,
   TreeNavigationData_unstable,
@@ -33,6 +33,7 @@ export function useRootTree(
     | 'aria-label'
     | 'aria-labelledby'
   >,
+
   ref: React.Ref<HTMLElement>,
 ): TreeState {
   warnIfNoProperPropsRootTree(props);
@@ -126,12 +127,15 @@ export function useRootTree(
     openItems,
     checkedItems,
     requestTreeResponse,
-    root: getNativeElementProps('div', {
-      ref,
-      role: 'tree',
-      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        role: 'tree',
+        'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 }
 

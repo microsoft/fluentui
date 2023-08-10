@@ -11,11 +11,11 @@ import {
   ProjectGraph,
   readProjectConfiguration,
 } from '@nx/devkit';
-import * as semver from 'semver';
+import chalk from 'chalk';
+import semver from 'semver';
 
 import { NormalizePackageDependenciesGeneratorSchema } from './schema';
 import { PackageJson } from '../../types';
-import * as chalk from 'chalk';
 
 type ProjectIssues = { [projectName: string]: { [depName: string]: string } };
 

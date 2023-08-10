@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Fri, 04 Aug 2023 08:52:58 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 13:16:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.29)
+
+Wed, 09 Aug 2023 13:16:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.28..@fluentui/react-aria_v9.3.29)
+
+### Patches
+
+- chore(teams-prg): migrate to new slot API ([PR #28751](https://github.com/microsoft/fluentui/pull/28751) by bernardo.sunderhus@gmail.com)
 
 ## [9.3.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.28)
 
