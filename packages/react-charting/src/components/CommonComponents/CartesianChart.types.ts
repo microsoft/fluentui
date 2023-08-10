@@ -400,10 +400,10 @@ export interface ICartesianChartProps {
   yAxisTitle?: string;
 
   /**
-   * Prop to set the y axis title
+   * Prop to set the secondary y axis title
    * @default undefined
    */
-  yAxisTitleSecondary?: string;
+  secondaryYAxistitle?: string;
 }
 
 export interface IYValueHover {

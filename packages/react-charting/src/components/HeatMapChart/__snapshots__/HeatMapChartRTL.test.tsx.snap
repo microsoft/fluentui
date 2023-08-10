@@ -77,28 +77,6 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           id="xAxisGElementchart_1"
           transform="translate(0, -35)"
         />
-        <text
-          class=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #323130;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host3"
-          tabindex="-1"
-          text-anchor="middle"
-          x="10"
-          y="-8"
-        />
         <g
           class=
 
@@ -192,30 +170,6 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
             50
           </text>
         </g>
-        <text
-          class=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #323130;
-                fill: #323130;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 10px;
-                font-style: normal;
-                font-weight: 600;
-                line-height: 14px;
-                text-align: center;
-              }
-          data-is-focusable="false"
-          id="tooltip-host4"
-          tabindex="-1"
-          text-anchor="middle"
-          transform="translate(0,
-                   -63)rotate(-90)"
-          x="43"
-          y="12"
-        />
       </svg>
     </div>
     <div
@@ -255,7 +209,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone5"
+                data-focuszone-id="FocusZone3"
                 role="listbox"
               >
                 <div

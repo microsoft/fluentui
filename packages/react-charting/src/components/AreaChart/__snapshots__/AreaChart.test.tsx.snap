@@ -73,32 +73,6 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -216,34 +190,6 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -286,7 +232,7 @@ exports[`AreaChart - mouse events Should render callout correctly on mouseover 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -677,32 +623,6 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -820,34 +740,6 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -890,7 +782,7 @@ exports[`AreaChart - mouse events Should render customized callout on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1178,32 +1070,6 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -1321,34 +1187,6 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -1391,7 +1229,7 @@ exports[`AreaChart - mouse events Should render customized callout per stack on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1679,32 +1517,6 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -1782,34 +1594,6 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -1858,7 +1642,7 @@ exports[`AreaChart snapShot testing Should not render circles when optimizeLarge
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2049,32 +1833,6 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -2192,34 +1950,6 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -2268,7 +1998,7 @@ exports[`AreaChart snapShot testing Should render with default colors when line 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2459,32 +2189,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -2602,34 +2306,6 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -2678,7 +2354,7 @@ exports[`AreaChart snapShot testing renders Areachart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2869,32 +2545,6 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -2998,34 +2648,6 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -3074,7 +2696,7 @@ exports[`AreaChart snapShot testing renders Areachart with single point correctl
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3265,32 +2887,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -3408,34 +3004,6 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -3467,7 +3035,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone8"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -3655,32 +3223,6 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
         id="xAxisGElementchart_6"
         transform="translate(0, 315)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={342}
-      />
       <g
         className=
 
@@ -3798,34 +3340,6 @@ exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
           y2={350}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   287)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
 </div>
@@ -3903,32 +3417,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
             }
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
-      />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
       />
       <g
         className=
@@ -4047,34 +3535,6 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -4123,7 +3583,7 @@ exports[`AreaChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4314,32 +3774,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -4457,34 +3891,6 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -4533,7 +3939,7 @@ exports[`AreaChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4724,32 +4130,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -4867,34 +4247,6 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -4943,7 +4295,7 @@ exports[`AreaChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -5134,32 +4486,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         id="xAxisGElementchart_6"
         transform="translate(0, 275)"
       />
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host8"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        x={10}
-        y={302}
-      />
       <g
         className=
 
@@ -5277,34 +4603,6 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
           y2={310}
         />
       </g>
-      <text
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #323130;
-              fill: #323130;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 10px;
-              font-style: normal;
-              font-weight: 600;
-              line-height: 14px;
-              text-align: center;
-            }
-        data-is-focusable={false}
-        id="tooltip-host9"
-        onBlurCapture={[Function]}
-        onFocusCapture={[Function]}
-        onKeyDown={[Function]}
-        onMouseEnter={[Function]}
-        onMouseLeave={[Function]}
-        textAnchor="middle"
-        transform="translate(0,
-                   247)rotate(-90)"
-        x={43}
-        y={12}
-      />
     </svg>
   </div>
   <div
@@ -5353,7 +4651,7 @@ exports[`AreaChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone10"
+              data-focuszone-id="FocusZone8"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

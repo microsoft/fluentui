@@ -124,13 +124,13 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
     if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
       this.margins.left! = this._isRtl
-        ? this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+        ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
           ? 80
           : 40
         : this.props.margins?.left ?? 80;
       this.margins.right! = this._isRtl
         ? this.props.margins?.left ?? 80
-        : this.props.margins?.right ?? this.props?.secondaryYScaleOptions
+        : this.props.margins?.right ?? this.props?.secondaryYAxistitle
         ? 80
         : 40;
     }
@@ -482,17 +482,19 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               })`}
               className={this._classNames.xAxis}
             />
-            <SVGTooltipText
-              content={this.props.xAxisTitle}
-              textProps={{
-                x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
-                y: svgDimensions.height - this.titleMargin,
-                className: this._classNames.axisTitle!,
-                textAnchor: 'middle',
-              }}
-              maxWidth={xAxisTitleMaximumAllowedWidth}
-              wrapContent={wrapContent}
-            />
+            {this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisTitle}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: svgDimensions.height - this.titleMargin,
+                  className: this._classNames.axisTitle!,
+                  textAnchor: 'middle',
+                }}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                wrapContent={wrapContent}
+              />
+            )}
             <g
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
@@ -517,43 +519,47 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                   }, 0)`}
                   className={this._classNames.yAxis}
                 />
-                <SVGTooltipText
-                  content={this.props.yAxisTitleSecondary}
-                  textProps={{
-                    x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
-                    y: this._isRtl
-                      ? this.state.startFromX - this.titleMargin
-                      : svgDimensions.width - this.margins.right!,
-                    textAnchor: 'middle',
-                    transform: `translate(${
-                      this._isRtl
-                        ? this.margins.right! / 2 - this.titleMargin
-                        : this.margins.right! / 2 + this.titleMargin
-                    },
+                {this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '' && (
+                  <SVGTooltipText
+                    content={this.props.secondaryYAxistitle}
+                    textProps={{
+                      x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
+                      y: this._isRtl
+                        ? this.state.startFromX - this.titleMargin
+                        : svgDimensions.width - this.margins.right!,
+                      textAnchor: 'middle',
+                      transform: `translate(${
+                        this._isRtl
+                          ? this.margins.right! / 2 - this.titleMargin
+                          : this.margins.right! / 2 + this.titleMargin
+                      },
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
-                    className: this._classNames.axisTitle!,
-                  }}
-                  maxWidth={yAxisTitleMaximumAllowedHeight}
-                  wrapContent={wrapContent}
-                />
+                      className: this._classNames.axisTitle!,
+                    }}
+                    maxWidth={yAxisTitleMaximumAllowedHeight}
+                    wrapContent={wrapContent}
+                  />
+                )}
               </g>
             )}
             {children}
-            <SVGTooltipText
-              content={this.props.yAxisTitle}
-              textProps={{
-                x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
-                y: this._isRtl
-                  ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
-                  : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,
-                textAnchor: 'middle',
-                transform: `translate(0,
+            {this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.yAxisTitle}
+                textProps={{
+                  x: this.margins.bottom! + this.state._removalValueForTextTuncate! + this.titleMargin,
+                  y: this._isRtl
+                    ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
+                    : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,
+                  textAnchor: 'middle',
+                  transform: `translate(0,
                    ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
-                className: this._classNames.axisTitle!,
-              }}
-              maxWidth={yAxisTitleMaximumAllowedHeight}
-              wrapContent={wrapContent}
-            />
+                  className: this._classNames.axisTitle!,
+                }}
+                maxWidth={yAxisTitleMaximumAllowedHeight}
+                wrapContent={wrapContent}
+              />
+            )}
           </svg>
         </FocusZone>
 
