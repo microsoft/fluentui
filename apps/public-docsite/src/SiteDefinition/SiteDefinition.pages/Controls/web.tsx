@@ -114,6 +114,8 @@ export const categories: { [name: string]: ICategory } = {
     VerticalBarChart: {},
     GaugeChart: {},
     GroupedVerticalBarChart: {},
+    HeatMapChart: {},
+    HorizontalBarChart: {},
   },
   Utilities: {
     Announced: {

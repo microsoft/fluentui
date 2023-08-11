@@ -96,6 +96,8 @@ module.exports = {
       'AreaChart',
       'DonutChart',
       'VerticalBarChart',
+      'GroupedVerticalBarChart',
+      'HeatMapChart',
       'HorizontalBarChart',
       'PieChart',
       'GaugeChart',

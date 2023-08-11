@@ -113,10 +113,10 @@ export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolea
 // @public
 export const GroupedVerticalBarChart: React_2.FunctionComponent<IGroupedVerticalBarChartProps>;
 
-// @public (undocumented)
+// @public
 export const HeatMapChart: React_2.FunctionComponent<IHeatMapChartProps>;
 
-// @public (undocumented)
+// @public
 export const HorizontalBarChart: React_2.FunctionComponent<IHorizontalBarChartProps>;
 
 // @public (undocumented)
@@ -617,7 +617,7 @@ export interface IHeatMapChartDataPoint {
     y: string | Date | number;
 }
 
-// @public (undocumented)
+// @public
 export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {
     chartTitle?: string;
     culture?: string;
@@ -651,7 +651,7 @@ export interface IHeatMapChartStyles {
     text?: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export interface IHorizontalBarChartProps {
     barChartCustomData?: IRenderFunction<IChartProps>;
     barHeight?: number;

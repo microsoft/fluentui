@@ -3,6 +3,10 @@ import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
+/**
+ * HorizontalBarChart component.
+ * {@docCategory HorizontalBarChart}
+ */
 export interface IHorizontalBarChartProps {
   /**
    * An array of chart data points for the Horizontal bar chart
