@@ -286,6 +286,8 @@ import { mergeScopedSettings } from '@fluentui/utilities';
 import { mergeSettings } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/style-utilities';
 import { mergeStyleSets } from '@fluentui/style-utilities';
+import { MergeStylesRootProvider_unstable } from '@fluentui/utilities';
+import { MergeStylesShadowRootProvider_unstable } from '@fluentui/utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities';
@@ -373,6 +375,7 @@ import { toMatrix } from '@fluentui/utilities';
 import { trProperties } from '@fluentui/utilities';
 import { unhoistMethods } from '@fluentui/utilities';
 import { unregisterIcons } from '@fluentui/style-utilities';
+import { useAdoptedStylesheet_unstable } from '@fluentui/utilities';
 import { useCustomizationSettings } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
 import { useFocusRects } from '@fluentui/utilities';
@@ -9943,6 +9946,10 @@ export { mergeStyles }
 
 export { mergeStyleSets }
 
+export { MergeStylesRootProvider_unstable }
+
+export { MergeStylesShadowRootProvider_unstable }
+
 export { mergeThemes }
 
 // @public (undocumented)
@@ -11353,6 +11360,8 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 
 // @public
 export function updateT(color: IColor, t: number): IColor;
+
+export { useAdoptedStylesheet_unstable }
 
 export { useCustomizationSettings }
 
