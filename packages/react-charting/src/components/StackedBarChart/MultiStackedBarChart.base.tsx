@@ -54,7 +54,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _isRTL: boolean = getRTL();
   private _emptyChartId: string;
   private _barId: string;
-  private _barIdEmptyPartToWhole: string;
+  private _barIdPlaceholderPartToWhole: string;
   private _barIdEmpty: string;
 
   public constructor(props: IMultiStackedBarChartProps) {
@@ -76,7 +76,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._calloutId = getId('callout');
     this._emptyChartId = getId('_MSBC_empty');
     this._barId = getId('_MSBC_rect_');
-    this._barIdEmptyPartToWhole = getId('_MSBC_rect_partToWhole_');
+    this._barIdPlaceholderPartToWhole = getId('_MSBC_rect_partToWhole_');
     this._barIdEmpty = getId('_MSBC_rect_empty');
   }
 
@@ -109,7 +109,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           this.props.href,
         );
         return (
-          <div key={index} id={getId('_MSBC_bar_')}>
+          <div key={index} id={`_MSBC_bar-${index}`}>
             {singleChartBars}
           </div>
         );
@@ -256,7 +256,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            id={this._barId + index}
+            id={`${this._barId}-${index}`}
             x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
@@ -294,7 +294,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
             <rect
               key={0}
-              id={this._barIdEmptyPartToWhole}
+              id={this._barIdPlaceholderPartToWhole}
               x={'0%'}
               y={0}
               width={'100%'}
@@ -588,7 +588,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
-      this.props.data.filter(item => item.chartData && item.chartData.length === 0).length === 0
+      this.props.data.filter(
+        item => item.chartData && item.chartData.length === 0 && (!item.chartTitle || item.chartTitle === ''),
+      ).length === 0
     );
   }
 }

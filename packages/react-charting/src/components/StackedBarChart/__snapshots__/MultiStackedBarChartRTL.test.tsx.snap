@@ -128,7 +128,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_20"
+                  id="_MSBC_rect_2-0"
                   width="6.9522899104892675%"
                   x="0%"
                   y="0"
@@ -155,7 +155,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_21"
+                  id="_MSBC_rect_2-1"
                   width="3.997566698531329%"
                   x="6.9522899104892675%"
                   y="0"
@@ -182,7 +182,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_22"
+                  id="_MSBC_rect_2-2"
                   width="0.9298687755279396%"
                   x="10.949856609020596%"
                   y="0"
@@ -209,7 +209,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_23"
+                  id="_MSBC_rect_2-3"
                   width="15.12123055531416%"
                   x="11.879725384548536%"
                   y="0"
@@ -236,7 +236,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_24"
+                  id="_MSBC_rect_2-4"
                   width="72.99904406013731%"
                   x="27.000955939862695%"
                   y="0"
@@ -359,7 +359,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_20"
+                  id="_MSBC_rect_2-0"
                   width="34.14634146341463%"
                   x="0%"
                   y="0"
@@ -386,7 +386,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_21"
+                  id="_MSBC_rect_2-1"
                   width="13.658536585365852%"
                   x="34.14634146341463%"
                   y="0"
@@ -413,7 +413,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_22"
+                  id="_MSBC_rect_2-2"
                   width="8.536585365853657%"
                   x="47.80487804878048%"
                   y="0"
@@ -440,7 +440,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_23"
+                  id="_MSBC_rect_2-3"
                   width="22.4390243902439%"
                   x="56.341463414634134%"
                   y="0"
@@ -467,7 +467,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_24"
+                  id="_MSBC_rect_2-4"
                   width="21.219512195121947%"
                   x="78.78048780487804%"
                   y="0"
@@ -617,7 +617,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#0078d4"
                   height="12"
-                  id="_MSBC_rect_20"
+                  id="_MSBC_rect_2-0"
                   width="63.49206349206349%"
                   x="0%"
                   y="0"
@@ -644,7 +644,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_21"
+                  id="_MSBC_rect_2-1"
                   width="36.507936507936506%"
                   x="63.49206349206349%"
                   y="0"
@@ -1280,7 +1280,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_2220"
+                  id="_MSBC_rect_222-0"
                   width="6.9522899104892675%"
                   x="0%"
                   y="0"
@@ -1307,7 +1307,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_2221"
+                  id="_MSBC_rect_222-1"
                   width="3.997566698531329%"
                   x="6.9522899104892675%"
                   y="0"
@@ -1334,7 +1334,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_2222"
+                  id="_MSBC_rect_222-2"
                   width="0.9298687755279396%"
                   x="10.949856609020596%"
                   y="0"
@@ -1361,7 +1361,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_2223"
+                  id="_MSBC_rect_222-3"
                   width="15.12123055531416%"
                   x="11.879725384548536%"
                   y="0"
@@ -1388,7 +1388,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_2224"
+                  id="_MSBC_rect_222-4"
                   width="72.99904406013731%"
                   x="27.000955939862695%"
                   y="0"
@@ -1511,7 +1511,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_2220"
+                  id="_MSBC_rect_222-0"
                   width="34.14634146341463%"
                   x="0%"
                   y="0"
@@ -1538,7 +1538,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_2221"
+                  id="_MSBC_rect_222-1"
                   width="13.658536585365852%"
                   x="34.14634146341463%"
                   y="0"
@@ -1565,7 +1565,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_2222"
+                  id="_MSBC_rect_222-2"
                   width="8.536585365853657%"
                   x="47.80487804878048%"
                   y="0"
@@ -1592,7 +1592,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_2223"
+                  id="_MSBC_rect_222-3"
                   width="22.4390243902439%"
                   x="56.341463414634134%"
                   y="0"
@@ -1619,7 +1619,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_2224"
+                  id="_MSBC_rect_222-4"
                   width="21.219512195121947%"
                   x="78.78048780487804%"
                   y="0"
@@ -1769,7 +1769,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#0078d4"
                   height="12"
-                  id="_MSBC_rect_2220"
+                  id="_MSBC_rect_222-0"
                   width="63.49206349206349%"
                   x="0%"
                   y="0"
@@ -1796,7 +1796,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_2221"
+                  id="_MSBC_rect_222-1"
                   width="36.507936507936506%"
                   x="63.49206349206349%"
                   y="0"
@@ -2432,7 +2432,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_2400"
+                  id="_MSBC_rect_240-0"
                   width="6.9522899104892675%"
                   x="0%"
                   y="0"
@@ -2459,7 +2459,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_2401"
+                  id="_MSBC_rect_240-1"
                   width="3.997566698531329%"
                   x="6.9522899104892675%"
                   y="0"
@@ -2486,7 +2486,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_2402"
+                  id="_MSBC_rect_240-2"
                   width="0.9298687755279396%"
                   x="10.949856609020596%"
                   y="0"
@@ -2513,7 +2513,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_2403"
+                  id="_MSBC_rect_240-3"
                   width="15.12123055531416%"
                   x="11.879725384548536%"
                   y="0"
@@ -2540,7 +2540,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_2404"
+                  id="_MSBC_rect_240-4"
                   width="72.99904406013731%"
                   x="27.000955939862695%"
                   y="0"
@@ -2663,7 +2663,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_2400"
+                  id="_MSBC_rect_240-0"
                   width="34.14634146341463%"
                   x="0%"
                   y="0"
@@ -2690,7 +2690,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_2401"
+                  id="_MSBC_rect_240-1"
                   width="13.658536585365852%"
                   x="34.14634146341463%"
                   y="0"
@@ -2717,7 +2717,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_2402"
+                  id="_MSBC_rect_240-2"
                   width="8.536585365853657%"
                   x="47.80487804878048%"
                   y="0"
@@ -2744,7 +2744,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_2403"
+                  id="_MSBC_rect_240-3"
                   width="22.4390243902439%"
                   x="56.341463414634134%"
                   y="0"
@@ -2771,7 +2771,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_2404"
+                  id="_MSBC_rect_240-4"
                   width="21.219512195121947%"
                   x="78.78048780487804%"
                   y="0"
@@ -2921,7 +2921,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#0078d4"
                   height="12"
-                  id="_MSBC_rect_2400"
+                  id="_MSBC_rect_240-0"
                   width="63.49206349206349%"
                   x="0%"
                   y="0"
@@ -2948,7 +2948,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_2401"
+                  id="_MSBC_rect_240-1"
                   width="36.507936507936506%"
                   x="63.49206349206349%"
                   y="0"
@@ -3597,7 +3597,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#e81123"
                     height="12"
-                    id="_MSBC_rect_2610"
+                    id="_MSBC_rect_261-0"
                     width="6.9522899104892675%"
                     x="0%"
                     y="0"
@@ -3624,7 +3624,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#107c10"
                     height="12"
-                    id="_MSBC_rect_2611"
+                    id="_MSBC_rect_261-1"
                     width="3.997566698531329%"
                     x="6.9522899104892675%"
                     y="0"
@@ -3651,7 +3651,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#ffb900"
                     height="12"
-                    id="_MSBC_rect_2612"
+                    id="_MSBC_rect_261-2"
                     width="0.9298687755279396%"
                     x="10.949856609020596%"
                     y="0"
@@ -3678,7 +3678,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#00bcf2"
                     height="12"
-                    id="_MSBC_rect_2613"
+                    id="_MSBC_rect_261-3"
                     width="15.12123055531416%"
                     x="11.879725384548536%"
                     y="0"
@@ -3705,7 +3705,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#000000"
                     height="12"
-                    id="_MSBC_rect_2614"
+                    id="_MSBC_rect_261-4"
                     width="72.99904406013731%"
                     x="27.000955939862695%"
                     y="0"
@@ -3828,7 +3828,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#e81123"
                     height="12"
-                    id="_MSBC_rect_2610"
+                    id="_MSBC_rect_261-0"
                     width="34.14634146341463%"
                     x="0%"
                     y="0"
@@ -3855,7 +3855,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#107c10"
                     height="12"
-                    id="_MSBC_rect_2611"
+                    id="_MSBC_rect_261-1"
                     width="13.658536585365852%"
                     x="34.14634146341463%"
                     y="0"
@@ -3882,7 +3882,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#ffb900"
                     height="12"
-                    id="_MSBC_rect_2612"
+                    id="_MSBC_rect_261-2"
                     width="8.536585365853657%"
                     x="47.80487804878048%"
                     y="0"
@@ -3909,7 +3909,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#00bcf2"
                     height="12"
-                    id="_MSBC_rect_2613"
+                    id="_MSBC_rect_261-3"
                     width="22.4390243902439%"
                     x="56.341463414634134%"
                     y="0"
@@ -3936,7 +3936,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#000000"
                     height="12"
-                    id="_MSBC_rect_2614"
+                    id="_MSBC_rect_261-4"
                     width="21.219512195121947%"
                     x="78.78048780487804%"
                     y="0"
@@ -4086,7 +4086,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#0078d4"
                     height="12"
-                    id="_MSBC_rect_2610"
+                    id="_MSBC_rect_261-0"
                     width="63.49206349206349%"
                     x="0%"
                     y="0"
@@ -4113,7 +4113,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#107c10"
                     height="12"
-                    id="_MSBC_rect_2611"
+                    id="_MSBC_rect_261-1"
                     width="36.507936507936506%"
                     x="63.49206349206349%"
                     y="0"
