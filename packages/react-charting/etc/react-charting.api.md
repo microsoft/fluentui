@@ -90,7 +90,7 @@ export const DataVizPalette: {
 // @public
 export const DonutChart: React_2.FunctionComponent<IDonutChartProps>;
 
-// @public (undocumented)
+// @public
 export const GaugeChart: React_2.FunctionComponent<IGaugeChartProps>;
 
 // @public (undocumented)
@@ -464,7 +464,7 @@ export interface IEventsAnnotationProps {
     strokeColor?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IGaugeChartProps {
     calloutProps?: Partial<ICalloutProps>;
     chartTitle?: string;
@@ -487,7 +487,7 @@ export interface IGaugeChartProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IGaugeChartSegment {
     accessibilityData?: IAccessibilityProps;
     color?: string;

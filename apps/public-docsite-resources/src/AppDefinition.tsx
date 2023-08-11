@@ -544,10 +544,16 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/DonutChart',
         },
         {
-          component: require<any>('./components/pages/Charting/VerticalBarChartPage').VerticalBarPage,
+          component: require<any>('./components/pages/Charting/VerticalBarChartPage').VerticalBarChartPage,
           key: 'VerticalBarChart',
           name: 'VerticalBarChart',
           url: '#/examples/VerticalBarChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/GaugeChartPage').GaugeChartPage,
+          key: 'GaugeChart',
+          name: 'GaugeChart',
+          url: '#/examples/GaugeChart',
         },
       ],
     },
