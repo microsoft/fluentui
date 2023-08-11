@@ -85,24 +85,35 @@ function expandSelector(newSelector: string, currentSelector: string): string {
   return newSelector;
 }
 
-function extractSelector(currentSelector: string, rules: IRuleSet = { __order: [] }, selector: string, value: IStyle) {
+function extractSelector(
+  currentSelector: string,
+  rules: IRuleSet = { __order: [] },
+  selector: string,
+  value: IStyle,
+  shadowConfig?: ShadowConfig,
+) {
   if (selector.indexOf('@') === 0) {
     selector = selector + '{' + currentSelector;
-    extractRules([value], rules, selector);
+    extractRules([value], rules, selector, shadowConfig);
   } else if (selector.indexOf(',') > -1) {
     expandCommaSeparatedGlobals(selector)
       .split(',')
       .map((s: string) => s.trim())
       .forEach((separatedSelector: string) =>
-        extractRules([value], rules, expandSelector(separatedSelector, currentSelector)),
+        extractRules([value], rules, expandSelector(separatedSelector, currentSelector), shadowConfig),
       );
   } else {
-    extractRules([value], rules, expandSelector(selector, currentSelector));
+    extractRules([value], rules, expandSelector(selector, currentSelector), shadowConfig);
   }
 }
 
-function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, currentSelector: string = '&'): IRuleSet {
-  const stylesheet = Stylesheet.getInstance();
+function extractRules(
+  args: IStyle[],
+  rules: IRuleSet = { __order: [] },
+  currentSelector: string = '&',
+  shadowConfig?: ShadowConfig,
+): IRuleSet {
+  const stylesheet = Stylesheet.getInstance(shadowConfig);
   let currentRules: IDictionary | undefined = rules[currentSelector] as IDictionary;
 
   if (!currentRules) {
@@ -117,11 +128,11 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
       const expandedRules = stylesheet.argsFromClassName(arg);
 
       if (expandedRules) {
-        extractRules(expandedRules, rules, currentSelector);
+        extractRules(expandedRules, rules, currentSelector, shadowConfig);
       }
       // Else if the arg is an array, we need to recurse in.
     } else if (Array.isArray(arg)) {
-      extractRules(arg, rules, currentSelector);
+      extractRules(arg, rules, currentSelector, shadowConfig);
     } else {
       for (const prop in arg as any) {
         if ((arg as any).hasOwnProperty(prop)) {
@@ -133,13 +144,13 @@ function extractRules(args: IStyle[], rules: IRuleSet = { __order: [] }, current
 
             for (const newSelector in selectors) {
               if (selectors.hasOwnProperty(newSelector)) {
-                extractSelector(currentSelector, rules, newSelector, selectors[newSelector]);
+                extractSelector(currentSelector, rules, newSelector, selectors[newSelector], shadowConfig);
               }
             }
           } else if (typeof propValue === 'object') {
             // prop is a selector.
             if (propValue !== null) {
-              extractSelector(currentSelector, rules, prop, propValue);
+              extractSelector(currentSelector, rules, prop, propValue, shadowConfig);
             }
           } else {
             if (propValue !== undefined) {
@@ -249,7 +260,7 @@ export function styleToRegistration(
   shadowConfig?: ShadowConfig,
   ...args: IStyle[]
 ): IRegistration | undefined {
-  const rules: IRuleSet = extractRules(args);
+  const rules: IRuleSet = extractRules(args, undefined, undefined, shadowConfig);
   const key = getKeyForRules(options, rules);
 
   if (key) {
