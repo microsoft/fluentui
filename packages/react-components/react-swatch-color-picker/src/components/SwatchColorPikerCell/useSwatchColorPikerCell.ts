@@ -1,7 +1,7 @@
 import * as React from 'react';
 import type { SwatchColorPikerCellProps, SwatchColorPikerCellState } from './SwatchColorPikerCell.types';
-import { useRadio_unstable } from '@fluentui/react-components';
-// import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
+import { Radio } from '@fluentui/react-components';
+import { getNativeElementProps } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render BreadcrumbButton.
@@ -17,18 +17,20 @@ export const useSwatchColorPikerCell_unstable = (
   ref: React.Ref<HTMLInputElement>,
 ): SwatchColorPikerCellState => {
   // const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
-  const { color = 'purple', name = 'test', ...rest } = props;
+  const { color = 'purple', ...rest } = props;
 
   return {
-    ...useRadio_unstable(
-      {
-        ...rest,
-        name,
-      },
+    components: {
+      // TODO add each slot's element type or component
+      root: Radio,
+    },
+    // TODO add appropriate slots, for example:
+    // mySlot: resolveShorthand(props.mySlot),
+    root: getNativeElementProps('input', {
       ref,
-    ),
+      ...rest,
+    }),
     color,
-    // name,
   };
 };
 

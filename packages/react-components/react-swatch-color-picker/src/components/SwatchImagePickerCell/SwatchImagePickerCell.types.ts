@@ -8,7 +8,15 @@ export type SwatchImagePickerCellSlots = {
 /**
  * SwatchImagePickerCell Props
  */
-export type SwatchImagePickerCellProps = ComponentProps<SwatchImagePickerCellSlots> & {};
+export type SwatchImagePickerCellProps = ComponentProps<SwatchImagePickerCellSlots> & {
+  // TODO make base type
+  shape?: 'circular' | 'square';
+  size?: number;
+  selected?: boolean; // if this color is selected
+  disabled?: boolean;
+  url: string;
+  id?: string | number; // TODO make it required
+};
 
 /**
  * State used in rendering SwatchImagePickerCell

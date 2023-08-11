@@ -12,9 +12,17 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
+  root: {},
+  row: {
     display: 'flex',
-    flexDirectiion: 'column',
+    flexDirection: 'row',
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '50px 50px 50px',
+    gridTemplateRows: '50px 50px 50px',
+    columnGap: '10px',
+    rowGap: '10px',
   },
 
   // TODO add additional classes for different states and/or slots
@@ -25,7 +33,8 @@ const useStyles = makeStyles({
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, state.root.className);
+  const type = state.type === 'row' ? styles.row : styles.grid;
+  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, state.root.className, type);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

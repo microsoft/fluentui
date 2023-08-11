@@ -3,6 +3,7 @@ import { SwatchImagePickerCell } from '@fluentui/react-swatch-color-picker';
 import { RadioGroup, Radio } from '@fluentui/react-components';
 export const Default = () => {
   const [color, setColor] = React.useState('red');
+  console.log(color);
   return (
     <>
       <RadioGroup value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">

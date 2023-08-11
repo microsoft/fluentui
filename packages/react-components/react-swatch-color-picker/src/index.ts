@@ -23,14 +23,6 @@ export type {
   SwatchImagePickerCellState,
 } from './SwatchImagePickerCell';
 export {
-  SwatchRow,
-  renderSwatchRow_unstable,
-  swatchRowClassNames,
-  useSwatchRowStyles_unstable,
-  useSwatchRow_unstable,
-} from './SwatchRow';
-export type { SwatchRowProps, SwatchRowSlots, SwatchRowState } from './SwatchRow';
-export {
   SwatchPicker,
   renderSwatchPicker_unstable,
   swatchPickerClassNames,

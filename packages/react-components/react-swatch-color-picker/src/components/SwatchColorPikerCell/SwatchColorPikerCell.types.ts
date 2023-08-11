@@ -13,12 +13,12 @@ export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots
     selected?: boolean; // if this color is selected
     disabled?: boolean;
     color: string;
+    id?: string | number; // TODO make it required
   };
 
 /**
  * State used in rendering SwatchColorPikerCell
  */
 export type SwatchColorPikerCellState = ComponentState<SwatchColorPikerCellSlots> &
-  Omit<RadioState, keyof RadioSlots | 'components'> &
-  // Omit<RadioState, keyof RadioProps | 'label'> &
-  Required<Pick<SwatchColorPikerCellProps, 'color'>>;
+  Required<Pick<SwatchColorPikerCellProps, 'name' | 'value' | 'onChange'>> &
+  Partial<Omit<SwatchColorPikerCellProps, 'name' | 'value' | 'onChange'>>;
