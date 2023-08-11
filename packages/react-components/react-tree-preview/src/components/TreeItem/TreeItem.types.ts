@@ -21,6 +21,9 @@ export type TreeItemContextValues = {
  * TreeItem Props
  */
 export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
+  /**
+   * A tree item can be a leaf or a branch
+   */
   itemType: TreeItemType;
   value?: TreeItemValue;
 };

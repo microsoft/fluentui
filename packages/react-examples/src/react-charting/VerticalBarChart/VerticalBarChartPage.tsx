@@ -13,6 +13,7 @@ import { VerticalBarChartDynamicExample } from './VerticalBarChart.Dynamic.Examp
 import { VerticalBarChartTooltipExample } from './VerticalBarChart.AxisTooltip.Example';
 import { VerticalBarChartCustomAccessibilityExample } from './VerticalBarChart.CustomAccessibility.Example';
 import { VerticalBarChartRotatedLabelExample } from './VerticalBarChart.RotateLabels.Example';
+import { VerticalBarChartAxisTitleExample } from './VerticalBarChart.AxisTitle.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.Basic.Example.tsx') as string;
@@ -26,6 +27,8 @@ const VerticalBarChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.CustomAccessibility.Example.tsx') as string;
 const VerticalBarChartRotateLabelsExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.RotateLabels.Example.tsx') as string;
+const VerticalBarChartAxisTitleLabelsExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalBarChart/VerticalBarChart.AxisTitle.Example.tsx') as string;
 
 export class VerticalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -55,6 +58,9 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             </ExampleCard>
             <ExampleCard title="VerticalBarChart rotate label" code={VerticalBarChartRotateLabelsExampleCode}>
               <VerticalBarChartRotatedLabelExample />
+            </ExampleCard>
+            <ExampleCard title="VerticalBarChart axis title" code={VerticalBarChartAxisTitleLabelsExampleCode}>
+              <VerticalBarChartAxisTitleExample />
             </ExampleCard>
           </div>
         }
