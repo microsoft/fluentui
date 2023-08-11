@@ -24,6 +24,8 @@
   },
   "dependencies": {
     "@fluentui/react-breadcrumb-preview": "*",
+    "@fluentui/react-tree-preview": "*",
+    "@fluentui/react-tags-preview": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-migration-v8-v9": "*",
     "@fluentui/react-migration-v0-v9": "*",
@@ -35,7 +37,7 @@
     "@fluentui/react-storybook-addon-codesandbox": "*",
     "@fluentui/theme-designer": "*",
     "@fluentui/react-search-preview": "*",
-    "@griffel/react": "^1.5.7",
+    "@griffel/react": "^1.5.14",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",

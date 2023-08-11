@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { TableCellProps, TableCellState } from './TableCell.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -21,11 +21,14 @@ export const useTableCell_unstable = (props: TableCellProps, ref: React.Ref<HTML
     components: {
       root: rootComponent,
     },
-    root: getNativeElementProps(rootComponent, {
-      ref,
-      role: rootComponent === 'div' ? 'cell' : undefined,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps(rootComponent, {
+        ref,
+        role: rootComponent === 'div' ? 'cell' : undefined,
+        ...props,
+      }),
+      { elementType: rootComponent },
+    ),
     noNativeElements,
     size,
   };

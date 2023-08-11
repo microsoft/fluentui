@@ -28,6 +28,8 @@ const defaultButtonStyles = {
 const useStyles = makeStyles({
   root: {
     ...shorthands.padding(tokens.spacingHorizontalNone),
+    minWidth: 'unset',
+    textWrap: 'nowrap',
   },
   small: {
     height: '24px',

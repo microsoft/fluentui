@@ -79,12 +79,15 @@ export type HeadlessFlatTreeItem<Props extends HeadlessFlatTreeItemProps> = Head
 export type HeadlessFlatTreeItemProps = HeadlessTreeItemProps;
 
 // @public (undocumented)
-export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'> & Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems' | 'defaultChecked'>;
+export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'> & Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
+    defaultCheckedItems?: TreeProps['checkedItems'];
+};
 
 // @public (undocumented)
-const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
-export { renderTree_unstable as renderFlatTree_unstable }
-export { renderTree_unstable }
+export const renderFlatTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
+
+// @public (undocumented)
+export const renderTree_unstable: (state: TreeState, contextValues: TreeContextValues) => JSX.Element;
 
 // @public
 export const renderTreeItem_unstable: (state: TreeItemState, contextValues: TreeItemContextValues) => JSX.Element;
@@ -101,6 +104,7 @@ export const Tree: ForwardRefComponent<TreeProps>;
 // @public (undocumented)
 export type TreeCheckedChangeData = {
     value: TreeItemValue;
+    checkedItems: Map<TreeItemValue, TreeSelectionValue>;
     target: HTMLElement;
     event: React_2.ChangeEvent<HTMLElement>;
     type: 'Change';
@@ -152,6 +156,7 @@ export type TreeItemContextValue = {
     itemType: TreeItemType;
     value: TreeItemValue;
     open: boolean;
+    checked: TreeSelectionValue;
 };
 
 // @public
@@ -166,7 +171,7 @@ export type TreeItemLayoutProps = ComponentProps<Partial<TreeItemLayoutSlots>>;
 // @public (undocumented)
 export type TreeItemLayoutSlots = {
     root: Slot<'div'>;
-    content: NonNullable<Slot<'div'>>;
+    main: NonNullable<Slot<'div'>>;
     iconBefore?: Slot<'div'>;
     iconAfter?: Slot<'div'>;
     expandIcon?: Slot<'div'>;
@@ -198,7 +203,7 @@ export type TreeItemPersonaLayoutProps = ComponentProps<Partial<TreeItemPersonaL
 export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon' | 'selector'> & {
     root: NonNullable<Slot<'div'>>;
     media: NonNullable<Slot<'div'>>;
-    content: NonNullable<Slot<'div'>>;
+    main: NonNullable<Slot<'div'>>;
     description?: Slot<'div'>;
 };
 
@@ -269,6 +274,7 @@ export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 // @public (undocumented)
 export type TreeOpenChangeData = {
     open: boolean;
+    openItems: Set<TreeItemValue>;
     value: TreeItemValue;
     target: HTMLElement;
 } & ({
@@ -301,7 +307,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
     selectionMode?: SelectionMode_2;
     checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
-    defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
     onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 
@@ -329,6 +334,9 @@ export { TreeState }
 export const useFlatTree_unstable: (props: FlatTreeProps, ref: React_2.Ref<HTMLElement>) => TreeState;
 
 // @public (undocumented)
+export const useFlatTreeContextValues_unstable: (state: TreeState) => TreeContextValues;
+
+// @public (undocumented)
 export const useFlatTreeStyles_unstable: (state: TreeState) => TreeState;
 
 // @public
@@ -341,9 +349,7 @@ export const useTree_unstable: (props: TreeProps, ref: React_2.Ref<HTMLElement>)
 export const useTreeContext_unstable: <T>(selector: ContextSelector<TreeContextValue, T>) => T;
 
 // @public (undocumented)
-function useTreeContextValues_unstable(state: TreeState): TreeContextValues;
-export { useTreeContextValues_unstable as useFlatTreeContextValues_unstable }
-export { useTreeContextValues_unstable }
+export function useTreeContextValues_unstable(state: TreeState): TreeContextValues;
 
 // @public
 export function useTreeItem_unstable(props: TreeItemProps, ref: React_2.Ref<HTMLDivElement>): TreeItemState;

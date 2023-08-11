@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Tue, 25 Jul 2023 07:44:53 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2023 07:34:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.13)
+
+Fri, 11 Aug 2023 07:34:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.12..@fluentui/react_v8.110.13)
+
+### Patches
+
+- Pass-through pointer events in Details Row focus rects ([PR #28439](https://github.com/microsoft/fluentui/pull/28439) by tmichon@microsoft.com)
+
+## [8.110.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.12)
+
+Fri, 04 Aug 2023 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.11..@fluentui/react_v8.110.12)
+
+### Patches
+
+- fix(TimePicker): Selection now works in locales that don't use "am"/"pm" in their time format ([PR #28469](https://github.com/microsoft/fluentui/pull/28469) by behowell@microsoft.com)
 
 ## [8.110.11](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.11)
 

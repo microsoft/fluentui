@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { useTreeContext_unstable } from '../../contexts/index';
@@ -42,8 +41,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const selectionRef = React.useRef<HTMLInputElement>(null);
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
-  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
+  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
@@ -133,13 +132,21 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (isEventFromSubtree) {
       return;
     }
-    requestTreeResponse({ event, value, itemType, type: 'Change', target: event.currentTarget });
+    requestTreeResponse({
+      event,
+      value,
+      itemType,
+      type: 'Change',
+      target: event.currentTarget,
+      checked: checked === 'mixed' ? true : !checked,
+    });
   });
 
   const isBranch = itemType === 'branch';
   return {
     value,
     open,
+    checked,
     subtreeRef,
     layoutRef,
     selectionRef,
@@ -152,23 +159,27 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     },
     isAsideVisible,
     isActionsVisible,
-    root: getNativeElementProps(as, {
-      tabIndex: -1,
-      ...rest,
-      ref,
-      role: 'treeitem',
-      'aria-level': level,
-      [dataTreeItemValueAttrName]: value,
-      'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
-      'aria-selected': selectionMode === 'single' ? checked : undefined,
-      'aria-expanded': isBranch ? open : undefined,
-      onClick: handleClick,
-      onKeyDown: handleKeyDown,
-      onMouseOver: handleActionsVisible,
-      onFocus: handleActionsVisible,
-      onMouseOut: handleActionsInvisible,
-      onBlur: handleActionsInvisible,
-      onChange: handleChange,
-    }),
+    root: slot.always(
+      getNativeElementProps(as, {
+        tabIndex: -1,
+        ...rest,
+        ref,
+        role: 'treeitem',
+        'aria-level': level,
+        [dataTreeItemValueAttrName]: value,
+        'aria-checked':
+          selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
+        'aria-selected': selectionMode === 'single' ? checked : undefined,
+        'aria-expanded': isBranch ? open : undefined,
+        onClick: handleClick,
+        onKeyDown: handleKeyDown,
+        onMouseOver: handleActionsVisible,
+        onFocus: handleActionsVisible,
+        onMouseOut: handleActionsInvisible,
+        onBlur: handleActionsInvisible,
+        onChange: handleChange,
+      }),
+      { elementType: 'div' },
+    ),
   };
 }

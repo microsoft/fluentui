@@ -1,6 +1,6 @@
 import { logger } from '@nx/devkit';
-import * as ejs from 'ejs';
-import * as fs from 'fs';
+import ejs from 'ejs';
+import fs from 'fs';
 /**
  * Similar to @nx/devkit#generateFiles function but for getting content only
  *

@@ -31,7 +31,6 @@ export interface IHorizontalBarChartState {
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
-  emptyChart?: boolean;
   barSpacing: number;
 }
 
@@ -44,6 +43,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _isRTL: boolean = getRTL();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
+  private _emptyChartId: string;
 
   constructor(props: IHorizontalBarChartProps) {
     super(props);
@@ -57,22 +57,17 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
-      emptyChart: false,
       barSpacing: 0.5,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
     this._hoverOff = this._hoverOff.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_HBC_empty');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
   }
 
   public componentDidMount(): void {
-    const isChartEmpty: boolean = !(this.props.data && this.props.data.length > 0);
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
-
     this._adjustBarSpacing();
   }
 
@@ -81,7 +76,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     this._adjustProps();
     const { palette } = theme!;
     let datapoint: number | undefined = 0;
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
         {data!.map((points: IChartProps, index: number) => {
           if (points.chartData && points.chartData![0] && points.chartData![0].horizontalBarChartdata!.x) {
@@ -178,7 +173,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
         </Callout>
       </div>
     ) : (
-      <div id={getId('_HBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -432,4 +432,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       (point.horizontalBarChartdata ? `${point.horizontalBarChartdata.x}/${point.horizontalBarChartdata.y}` : 0);
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }
