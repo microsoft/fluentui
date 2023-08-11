@@ -3,6 +3,7 @@ import type { BreadcrumbLinkSlots, BreadcrumbLinkState } from './BreadcrumbLink.
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useLinkStyles_unstable, LinkState } from '@fluentui/react-link';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 
 export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots> = {
   root: 'fui-BreadcrumbLink',
@@ -35,6 +36,9 @@ const useStyles = makeStyles({
       ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalXS),
     },
   },
+  focusIndicator: createCustomFocusIndicatorStyle({
+    backgroundImage: `linear-gradient(0deg, black 1px, ${tokens.colorNeutralForeground2}, ${tokens.colorTransparentBackground} 1px, ${tokens.colorTransparentBackground},${tokens.colorNeutralForeground2} 2px, ${tokens.colorNeutralForeground2}, ${tokens.colorTransparentBackground} 3px, ${tokens.colorTransparentBackground})`,
+  }),
   small: {
     height: '24px',
     ...typographyStyles.caption1,
@@ -107,6 +111,8 @@ export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): Br
     large: styles.currentLarge,
   };
 
+  const iconOnlyFocusStyle = state.iconOnly ? styles.focusIndicator : '';
+
   state.root.className = mergeClasses(
     breadcrumbLinkClassNames.root,
     styles.root,
@@ -115,6 +121,7 @@ export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): Br
     state.current && currentSizeMap[state.size],
     state.current && styles.current,
     state.root.className,
+    iconOnlyFocusStyle,
   );
 
   if (state.icon) {
