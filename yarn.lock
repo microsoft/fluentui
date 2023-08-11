@@ -1683,6 +1683,14 @@
     "@uifabric/set-version" "^7.0.23"
     tslib "^1.10.0"
 
+"@fluentui/react-conformance-griffel@9.0.0-beta.19":
+  version "9.0.0-beta.19"
+  resolved "https://registry.yarnpkg.com/@fluentui/react-conformance-griffel/-/react-conformance-griffel-9.0.0-beta.19.tgz#3998ff3764c685929091dcaac5b85ad1353feda8"
+  integrity sha512-wJSdW5Z08Jm8jQRqXbb1fj+Dn3ifqR2gTabx3ghKnpWvwSMj8s3EVPoeoaO8phCCyIP7c5XtQDYhc+KBW3K8Cw==
+  dependencies:
+    "@griffel/react" "^1.5.2"
+    tslib "^2.1.0"
+
 "@fluentui/react-icons@^2.0.207":
   version "2.0.207"
   resolved "https://registry.yarnpkg.com/@fluentui/react-icons/-/react-icons-2.0.207.tgz#64a4a20e36ec281ef7bd530710219213d485348e"
@@ -1742,7 +1750,7 @@
     "@griffel/core" "^1.14.1"
     tslib "^2.1.0"
 
-"@griffel/react@^1.0.0", "@griffel/react@^1.5.14":
+"@griffel/react@^1.0.0", "@griffel/react@^1.5.14", "@griffel/react@^1.5.2":
   version "1.5.14"
   resolved "https://registry.yarnpkg.com/@griffel/react/-/react-1.5.14.tgz#ea58ebd82007d421d16da49b7e57eccba391d609"
   integrity sha512-/x6cy6xMtpow1r+Zrw/hMKHwo+imFAgKaZ3A/+M8GyT3L9AFxK1Kyg4JvARPjLBAn9Q2q5dkCr78jOguuVSScg==
