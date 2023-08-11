@@ -7,6 +7,10 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
 
+/**
+ * HorizontalBarChartWithAxis component.
+ * {@docCategory HorizontalBarChartWithAxis}
+ */
 export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.

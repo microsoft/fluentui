@@ -127,7 +127,7 @@ export enum HorizontalBarChartVariant {
     PartToWhole = "part-to-whole"
 }
 
-// @public (undocumented)
+// @public
 export const HorizontalBarChartWithAxis: React_2.FunctionComponent<IHorizontalBarChartWithAxisProps>;
 
 // @public (undocumented)
@@ -710,7 +710,7 @@ export interface IHorizontalBarChartWithAxisDataPoint {
     yAxisCalloutData?: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
     barHeight?: number;
     chartTitle?: string;

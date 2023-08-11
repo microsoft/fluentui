@@ -574,6 +574,13 @@ export const AppDefinition: IAppDefinition = {
           name: 'HorizontalBarChart',
           url: '#/examples/HorizontalBarChart',
         },
+        {
+          component: require<any>('./components/pages/Charting/HorizontalBarChartWithAxisPage')
+            .HorizontalBarChartWithAxisPage,
+          key: 'HorizontalBarChartWithAxis',
+          name: 'HorizontalBarChartWithAxis',
+          url: '#/examples/HorizontalBarChartWithAxis',
+        },
       ],
     },
     {

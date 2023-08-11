@@ -99,6 +99,7 @@ module.exports = {
       'GroupedVerticalBarChart',
       'HeatMapChart',
       'HorizontalBarChart',
+      'HorizontalBarChartWithAxis',
       'PieChart',
       'GaugeChart',
     ],
