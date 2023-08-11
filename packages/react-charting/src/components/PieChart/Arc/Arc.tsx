@@ -3,9 +3,8 @@ import * as shape from 'd3-shape';
 import { IArcProps, IArcState, IArcStyles } from './Arc.types';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
-import { convertToLocaleString } from '../../../utilities/utilities';
+import { shouldWrapContent, convertToLocaleString } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
-import { select as d3Select } from 'd3-selection';
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
@@ -103,29 +102,11 @@ export class LabeledArc extends Arc {
           isTooltipVisibleProp={this.state.isArcFocused}
           shouldReceiveFocus={false}
           maxWidth={40}
-          wrapContent={this._wrapContent}
+          wrapContent={shouldWrapContent}
         />
       </g>
     );
   }
-
-  private _wrapContent = (content: string, id: string, maxWidth: number) => {
-    const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
-    textElement.text(content);
-    if (!textElement.node()) {
-      return false;
-    }
-
-    let isOverflowing = false;
-    let textLength = textElement.node()!.getComputedTextLength();
-    while (textLength > maxWidth && content.length > 0) {
-      content = content.slice(0, -1);
-      textElement.text(content + '...');
-      isOverflowing = true;
-      textLength = textElement.node()!.getComputedTextLength();
-    }
-    return isOverflowing;
-  };
 }
 
 function _updateChart(newProps: IArcProps): void {

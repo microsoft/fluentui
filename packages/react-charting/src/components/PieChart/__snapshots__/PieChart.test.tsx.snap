@@ -19,7 +19,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone0"
+    data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -40,7 +40,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__2"
+          id="id__3"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -63,7 +63,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host3"
+            id="tooltip-host4"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -84,7 +84,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__5"
+          id="id__6"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -107,7 +107,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
-            id="tooltip-host6"
+            id="tooltip-host7"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -128,7 +128,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__8"
+          id="id__9"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -151,7 +151,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host9"
+            id="tooltip-host10"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -189,7 +189,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone12"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -210,7 +210,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__12"
+          id="id__14"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -233,7 +233,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host13"
+            id="tooltip-host15"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -254,7 +254,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__15"
+          id="id__17"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -277,7 +277,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="hanging"
-            id="tooltip-host16"
+            id="tooltip-host18"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}
@@ -298,7 +298,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__18"
+          id="id__20"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -321,7 +321,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 }
             data-is-focusable={false}
             dominantBaseline="auto"
-            id="tooltip-host19"
+            id="tooltip-host21"
             onBlurCapture={[Function]}
             onFocusCapture={[Function]}
             onKeyDown={[Function]}

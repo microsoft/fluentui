@@ -1390,6 +1390,24 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
   });
 }
 
+export function shouldWrapContent(content: string, id: string, maxWidth: number) {
+  const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
+  textElement.text(content);
+  if (!textElement.node()) {
+    return false;
+  }
+
+  let isOverflowing = false;
+  let textLength = textElement.node()!.getComputedTextLength();
+  while (textLength > maxWidth && content.length > 0) {
+    content = content.slice(0, -1);
+    textElement.text(content + '...');
+    isOverflowing = true;
+    textLength = textElement.node()!.getComputedTextLength();
+  }
+  return isOverflowing;
+}
+
 export function formatValueWithSIPrefix(value: number) {
   let specifier: string;
   if (value < 1000) {
