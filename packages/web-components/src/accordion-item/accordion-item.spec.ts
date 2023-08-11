@@ -40,8 +40,6 @@ test.describe('Accordion item', () => {
             `;
     });
 
-    await expect(element).not.toHaveAttribute('headinglevel', '');
-
     await expect(element).toHaveJSProperty('headinglevel', 2);
   });
 
@@ -118,12 +116,35 @@ test.describe('Accordion item', () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
         <fluent-accordion>
-            <fluent-accordion-item size="large"></fluent-accordion-item>
+            <fluent-accordion-item></fluent-accordion-item>
         </fluent-accordion>
       `;
     });
 
+    await element.evaluate<void, AccordionItem>(node => {
+      node.size = 'small';
+    });
+    await expect(element).toHaveAttribute('size', 'small');
+    await expect(element).toHaveJSProperty('size', 'small');
+
+    await element.evaluate<void, AccordionItem>(node => {
+      node.size = 'medium';
+    });
+
+    await expect(element).toHaveAttribute('size', 'medium');
+    await expect(element).toHaveJSProperty('size', 'medium');
+
+    await element.evaluate<void, AccordionItem>(node => {
+      node.size = 'large';
+    });
     await expect(element).toHaveAttribute('size', 'large');
+    await expect(element).toHaveJSProperty('size', 'large');
+
+    await element.evaluate<void, AccordionItem>(node => {
+      node.size = 'extra-large';
+    });
+    await expect(element).toHaveAttribute('size', 'extra-large');
+    await expect(element).toHaveJSProperty('size', 'extra-large');
   });
 
   test('should set the block attribute when block is set to true', async () => {
@@ -136,6 +157,14 @@ test.describe('Accordion item', () => {
     });
 
     await expect(element).toHaveAttribute('block', '');
+    await expect(element).toHaveJSProperty('block', true);
+
+    await element.evaluate<void, AccordionItem>(node => {
+      node.block = false;
+    });
+
+    await expect(element).not.toHaveAttribute('block', '');
+    await expect(element).toHaveJSProperty('block', false);
   });
 
   test('should set the expand-icon-position attribute to the provided value', async () => {
@@ -148,5 +177,13 @@ test.describe('Accordion item', () => {
     });
 
     await expect(element).toHaveAttribute('expand-icon-position', 'end');
+    await expect(element).toHaveJSProperty('expandIconPosition', 'end');
+
+    await element.evaluate<void, AccordionItem>(node => {
+      node.expandIconPosition = 'start';
+    });
+
+    await expect(element).toHaveAttribute('expand-icon-position', 'start');
+    await expect(element).toHaveJSProperty('expandIconPosition', 'start');
   });
 });
