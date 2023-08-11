@@ -2,6 +2,61 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 12:14:24 GMT",
+      "tag": "@fluentui/react-components_v9.28.1",
+      "version": "9.28.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b52b54415c4d663885710fc113166be24d810742",
+            "comment": "fix: flickering in Overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a",
+            "comment": "chore(react-migration-v0-v9): migrate to new slot API"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b52b54415c4d663885710fc113166be24d810742",
+            "comment": "fix: flickering in Overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c736e39f1e07e013cc4a700eaa6cdcd6ae02127c",
+            "comment": "chore(react-tabs): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f9f2b69201c81811e8e4ce23f971d6174127d0ca",
+            "comment": "chore: tests for slot.resolveShorthand behavior"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "227120f07b98c30bb5bca06738d980f7fac81b91",
+            "comment": "feat: Added mountNode to DatePicker compat."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "742ae8f17c984b1e0098785c457e35f5a8054438",
+            "comment": "chore(react-virtualizer): migrate to new slot API"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Aug 2023 13:16:47 GMT",
       "tag": "@fluentui/react-components_v9.28.0",
       "version": "9.28.0",

@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Wed, 09 Aug 2023 13:16:59 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2023 12:14:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.27)
+
+Fri, 11 Aug 2023 12:14:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.26..@fluentui/react-overflow_v9.0.27)
+
+### Patches
+
+- fix: flickering in Overflow ([PR #28767](https://github.com/microsoft/fluentui/pull/28767) by vkozlova@microsoft.com)
+- Bump @fluentui/priority-overflow to v9.1.4 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.28 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
 
 ## [9.0.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.26)
 

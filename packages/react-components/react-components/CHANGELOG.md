@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 09 Aug 2023 13:16:47 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2023 12:14:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.28.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.28.1)
+
+Fri, 11 Aug 2023 12:14:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.28.0..@fluentui/react-components_v9.28.1)
+
+### Minor changes
+
+- `@fluentui/react-datepicker-compat`
+  - feat: Added mountNode to DatePicker compat. ([PR #28747](https://github.com/microsoft/fluentui/pull/28747) by gcox@microsoft.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: flickering in Overflow ([PR #28767](https://github.com/microsoft/fluentui/pull/28767) by vkozlova@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - chore(react-migration-v0-v9): migrate to new slot API ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-overflow`
+  - fix: flickering in Overflow ([PR #28767](https://github.com/microsoft/fluentui/pull/28767) by vkozlova@microsoft.com)
+- `@fluentui/react-tabs`
+  - chore(react-tabs): migrate to new slot API ([PR #28773](https://github.com/microsoft/fluentui/pull/28773) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - chore: tests for slot.resolveShorthand behavior ([PR #28819](https://github.com/microsoft/fluentui/pull/28819) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - chore(react-virtualizer): migrate to new slot API ([PR #28774](https://github.com/microsoft/fluentui/pull/28774) by bernardo.sunderhus@gmail.com)
 
 ## [9.28.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.28.0)
 

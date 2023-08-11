@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Wed, 09 Aug 2023 13:16:59 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2023 12:14:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.0.19)
+
+Fri, 11 Aug 2023 12:14:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.0.18..@fluentui/react-migration-v0-v9_v9.0.19)
+
+### Patches
+
+- chore(react-migration-v0-v9): migrate to new slot API ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-components to v9.28.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
 
 ## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.0.18)
 
