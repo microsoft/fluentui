@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 07:34:49 GMT",
+      "tag": "@fluentui/react_v8.110.13",
+      "version": "8.110.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77950274f90b3b0921e8d24d6a29ec530099512d",
+            "comment": "Pass-through pointer events in Details Row focus rects"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 04 Aug 2023 07:35:28 GMT",
       "tag": "@fluentui/react_v8.110.12",
       "version": "8.110.12",
