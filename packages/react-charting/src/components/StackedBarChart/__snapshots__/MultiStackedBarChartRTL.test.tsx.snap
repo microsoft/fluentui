@@ -17,7 +17,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
         }
   >
     <div
-      id="_MSBC_bar_5"
+      id="_MSBC_bar-0"
     >
       <div
         class=
@@ -35,7 +35,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone8"
+          data-focuszone-id="FocusZone5"
         >
           <div
             class=
@@ -72,7 +72,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               </span>
               <div
                 hidden=""
-                id="tooltip9"
+                id="tooltip6"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored
@@ -86,7 +86,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone10"
+          data-focuszone-id="FocusZone7"
         >
           <div
             class=
@@ -248,7 +248,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
       </div>
     </div>
     <div
-      id="_MSBC_bar_6"
+      id="_MSBC_bar-1"
     >
       <div
         class=
@@ -266,7 +266,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone11"
+          data-focuszone-id="FocusZone8"
         >
           <div
             class=
@@ -303,7 +303,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               </span>
               <div
                 hidden=""
-                id="tooltip12"
+                id="tooltip9"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored Second Chart
@@ -317,7 +317,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone13"
+          data-focuszone-id="FocusZone10"
         >
           <div
             class=
@@ -479,7 +479,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
       </div>
     </div>
     <div
-      id="_MSBC_bar_7"
+      id="_MSBC_bar-2"
     >
       <div
         class=
@@ -497,7 +497,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone14"
+          data-focuszone-id="FocusZone11"
         >
           <div
             class=
@@ -534,7 +534,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               </span>
               <div
                 hidden=""
-                id="tooltip15"
+                id="tooltip12"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Unmonitored
@@ -575,7 +575,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone16"
+          data-focuszone-id="FocusZone13"
         >
           <div
             class=
@@ -694,7 +694,7 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone17"
+                data-focuszone-id="FocusZone14"
                 role="listbox"
               >
                 <div
@@ -1169,7 +1169,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
         }
   >
     <div
-      id="_MSBC_bar_225"
+      id="_MSBC_bar-0"
     >
       <div
         class=
@@ -1187,7 +1187,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone228"
+          data-focuszone-id="FocusZone179"
         >
           <div
             class=
@@ -1224,7 +1224,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               </span>
               <div
                 hidden=""
-                id="tooltip229"
+                id="tooltip180"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored
@@ -1238,7 +1238,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone230"
+          data-focuszone-id="FocusZone181"
         >
           <div
             class=
@@ -1280,7 +1280,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_222-0"
+                  id="_MSBC_rect_176-0"
                   width="6.9522899104892675%"
                   x="0%"
                   y="0"
@@ -1307,7 +1307,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_222-1"
+                  id="_MSBC_rect_176-1"
                   width="3.997566698531329%"
                   x="6.9522899104892675%"
                   y="0"
@@ -1334,7 +1334,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_222-2"
+                  id="_MSBC_rect_176-2"
                   width="0.9298687755279396%"
                   x="10.949856609020596%"
                   y="0"
@@ -1361,7 +1361,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_222-3"
+                  id="_MSBC_rect_176-3"
                   width="15.12123055531416%"
                   x="11.879725384548536%"
                   y="0"
@@ -1388,7 +1388,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_222-4"
+                  id="_MSBC_rect_176-4"
                   width="72.99904406013731%"
                   x="27.000955939862695%"
                   y="0"
@@ -1400,7 +1400,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       </div>
     </div>
     <div
-      id="_MSBC_bar_226"
+      id="_MSBC_bar-1"
     >
       <div
         class=
@@ -1418,7 +1418,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone231"
+          data-focuszone-id="FocusZone182"
         >
           <div
             class=
@@ -1455,7 +1455,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               </span>
               <div
                 hidden=""
-                id="tooltip232"
+                id="tooltip183"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored Second Chart
@@ -1469,7 +1469,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone233"
+          data-focuszone-id="FocusZone184"
         >
           <div
             class=
@@ -1511,7 +1511,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_222-0"
+                  id="_MSBC_rect_176-0"
                   width="34.14634146341463%"
                   x="0%"
                   y="0"
@@ -1538,7 +1538,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_222-1"
+                  id="_MSBC_rect_176-1"
                   width="13.658536585365852%"
                   x="34.14634146341463%"
                   y="0"
@@ -1565,7 +1565,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_222-2"
+                  id="_MSBC_rect_176-2"
                   width="8.536585365853657%"
                   x="47.80487804878048%"
                   y="0"
@@ -1592,7 +1592,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_222-3"
+                  id="_MSBC_rect_176-3"
                   width="22.4390243902439%"
                   x="56.341463414634134%"
                   y="0"
@@ -1619,7 +1619,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_222-4"
+                  id="_MSBC_rect_176-4"
                   width="21.219512195121947%"
                   x="78.78048780487804%"
                   y="0"
@@ -1631,7 +1631,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
       </div>
     </div>
     <div
-      id="_MSBC_bar_227"
+      id="_MSBC_bar-2"
     >
       <div
         class=
@@ -1649,7 +1649,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone234"
+          data-focuszone-id="FocusZone185"
         >
           <div
             class=
@@ -1686,7 +1686,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               </span>
               <div
                 hidden=""
-                id="tooltip235"
+                id="tooltip186"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Unmonitored
@@ -1727,7 +1727,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone236"
+          data-focuszone-id="FocusZone187"
         >
           <div
             class=
@@ -1769,7 +1769,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#0078d4"
                   height="12"
-                  id="_MSBC_rect_222-0"
+                  id="_MSBC_rect_176-0"
                   width="63.49206349206349%"
                   x="0%"
                   y="0"
@@ -1796,7 +1796,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_222-1"
+                  id="_MSBC_rect_176-1"
                   width="36.507936507936506%"
                   x="63.49206349206349%"
                   y="0"
@@ -1846,7 +1846,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone237"
+                data-focuszone-id="FocusZone188"
                 role="listbox"
               >
                 <div
@@ -2321,7 +2321,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
         }
   >
     <div
-      id="_MSBC_bar_243"
+      id="_MSBC_bar-0"
     >
       <div
         class=
@@ -2339,7 +2339,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone246"
+          data-focuszone-id="FocusZone194"
         >
           <div
             class=
@@ -2376,7 +2376,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               </span>
               <div
                 hidden=""
-                id="tooltip247"
+                id="tooltip195"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored
@@ -2390,7 +2390,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone248"
+          data-focuszone-id="FocusZone196"
         >
           <div
             class=
@@ -2432,7 +2432,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_240-0"
+                  id="_MSBC_rect_191-0"
                   width="6.9522899104892675%"
                   x="0%"
                   y="0"
@@ -2459,7 +2459,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_240-1"
+                  id="_MSBC_rect_191-1"
                   width="3.997566698531329%"
                   x="6.9522899104892675%"
                   y="0"
@@ -2486,7 +2486,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_240-2"
+                  id="_MSBC_rect_191-2"
                   width="0.9298687755279396%"
                   x="10.949856609020596%"
                   y="0"
@@ -2513,7 +2513,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_240-3"
+                  id="_MSBC_rect_191-3"
                   width="15.12123055531416%"
                   x="11.879725384548536%"
                   y="0"
@@ -2540,7 +2540,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_240-4"
+                  id="_MSBC_rect_191-4"
                   width="72.99904406013731%"
                   x="27.000955939862695%"
                   y="0"
@@ -2552,7 +2552,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       </div>
     </div>
     <div
-      id="_MSBC_bar_244"
+      id="_MSBC_bar-1"
     >
       <div
         class=
@@ -2570,7 +2570,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone249"
+          data-focuszone-id="FocusZone197"
         >
           <div
             class=
@@ -2607,7 +2607,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               </span>
               <div
                 hidden=""
-                id="tooltip250"
+                id="tooltip198"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Monitored Second Chart
@@ -2621,7 +2621,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone251"
+          data-focuszone-id="FocusZone199"
         >
           <div
             class=
@@ -2663,7 +2663,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#e81123"
                   height="12"
-                  id="_MSBC_rect_240-0"
+                  id="_MSBC_rect_191-0"
                   width="34.14634146341463%"
                   x="0%"
                   y="0"
@@ -2690,7 +2690,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_240-1"
+                  id="_MSBC_rect_191-1"
                   width="13.658536585365852%"
                   x="34.14634146341463%"
                   y="0"
@@ -2717,7 +2717,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#ffb900"
                   height="12"
-                  id="_MSBC_rect_240-2"
+                  id="_MSBC_rect_191-2"
                   width="8.536585365853657%"
                   x="47.80487804878048%"
                   y="0"
@@ -2744,7 +2744,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#00bcf2"
                   height="12"
-                  id="_MSBC_rect_240-3"
+                  id="_MSBC_rect_191-3"
                   width="22.4390243902439%"
                   x="56.341463414634134%"
                   y="0"
@@ -2771,7 +2771,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#000000"
                   height="12"
-                  id="_MSBC_rect_240-4"
+                  id="_MSBC_rect_191-4"
                   width="21.219512195121947%"
                   x="78.78048780487804%"
                   y="0"
@@ -2783,7 +2783,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
       </div>
     </div>
     <div
-      id="_MSBC_bar_245"
+      id="_MSBC_bar-2"
     >
       <div
         class=
@@ -2801,7 +2801,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone252"
+          data-focuszone-id="FocusZone200"
         >
           <div
             class=
@@ -2838,7 +2838,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               </span>
               <div
                 hidden=""
-                id="tooltip253"
+                id="tooltip201"
                 style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
               >
                 Unmonitored
@@ -2879,7 +2879,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               &:focus {
                 outline: none;
               }
-          data-focuszone-id="FocusZone254"
+          data-focuszone-id="FocusZone202"
         >
           <div
             class=
@@ -2921,7 +2921,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#0078d4"
                   height="12"
-                  id="_MSBC_rect_240-0"
+                  id="_MSBC_rect_191-0"
                   width="63.49206349206349%"
                   x="0%"
                   y="0"
@@ -2948,7 +2948,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 <rect
                   fill="#107c10"
                   height="12"
-                  id="_MSBC_rect_240-1"
+                  id="_MSBC_rect_191-1"
                   width="36.507936507936506%"
                   x="63.49206349206349%"
                   y="0"
@@ -2998,7 +2998,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone255"
+                data-focuszone-id="FocusZone203"
                 role="listbox"
               >
                 <div
@@ -3486,7 +3486,7 @@ exports[`Should reflect theme change 1`] = `
           }
     >
       <div
-        id="_MSBC_bar_264"
+        id="_MSBC_bar-0"
       >
         <div
           class=
@@ -3504,7 +3504,7 @@ exports[`Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone267"
+            data-focuszone-id="FocusZone212"
           >
             <div
               class=
@@ -3541,7 +3541,7 @@ exports[`Should reflect theme change 1`] = `
                 </span>
                 <div
                   hidden=""
-                  id="tooltip268"
+                  id="tooltip213"
                   style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   Monitored
@@ -3555,7 +3555,7 @@ exports[`Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone269"
+            data-focuszone-id="FocusZone214"
           >
             <div
               class=
@@ -3597,7 +3597,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#e81123"
                     height="12"
-                    id="_MSBC_rect_261-0"
+                    id="_MSBC_rect_209-0"
                     width="6.9522899104892675%"
                     x="0%"
                     y="0"
@@ -3624,7 +3624,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#107c10"
                     height="12"
-                    id="_MSBC_rect_261-1"
+                    id="_MSBC_rect_209-1"
                     width="3.997566698531329%"
                     x="6.9522899104892675%"
                     y="0"
@@ -3651,7 +3651,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#ffb900"
                     height="12"
-                    id="_MSBC_rect_261-2"
+                    id="_MSBC_rect_209-2"
                     width="0.9298687755279396%"
                     x="10.949856609020596%"
                     y="0"
@@ -3678,7 +3678,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#00bcf2"
                     height="12"
-                    id="_MSBC_rect_261-3"
+                    id="_MSBC_rect_209-3"
                     width="15.12123055531416%"
                     x="11.879725384548536%"
                     y="0"
@@ -3705,7 +3705,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#000000"
                     height="12"
-                    id="_MSBC_rect_261-4"
+                    id="_MSBC_rect_209-4"
                     width="72.99904406013731%"
                     x="27.000955939862695%"
                     y="0"
@@ -3717,7 +3717,7 @@ exports[`Should reflect theme change 1`] = `
         </div>
       </div>
       <div
-        id="_MSBC_bar_265"
+        id="_MSBC_bar-1"
       >
         <div
           class=
@@ -3735,7 +3735,7 @@ exports[`Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone270"
+            data-focuszone-id="FocusZone215"
           >
             <div
               class=
@@ -3772,7 +3772,7 @@ exports[`Should reflect theme change 1`] = `
                 </span>
                 <div
                   hidden=""
-                  id="tooltip271"
+                  id="tooltip216"
                   style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   Monitored Second Chart
@@ -3786,7 +3786,7 @@ exports[`Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone272"
+            data-focuszone-id="FocusZone217"
           >
             <div
               class=
@@ -3828,7 +3828,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#e81123"
                     height="12"
-                    id="_MSBC_rect_261-0"
+                    id="_MSBC_rect_209-0"
                     width="34.14634146341463%"
                     x="0%"
                     y="0"
@@ -3855,7 +3855,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#107c10"
                     height="12"
-                    id="_MSBC_rect_261-1"
+                    id="_MSBC_rect_209-1"
                     width="13.658536585365852%"
                     x="34.14634146341463%"
                     y="0"
@@ -3882,7 +3882,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#ffb900"
                     height="12"
-                    id="_MSBC_rect_261-2"
+                    id="_MSBC_rect_209-2"
                     width="8.536585365853657%"
                     x="47.80487804878048%"
                     y="0"
@@ -3909,7 +3909,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#00bcf2"
                     height="12"
-                    id="_MSBC_rect_261-3"
+                    id="_MSBC_rect_209-3"
                     width="22.4390243902439%"
                     x="56.341463414634134%"
                     y="0"
@@ -3936,7 +3936,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#000000"
                     height="12"
-                    id="_MSBC_rect_261-4"
+                    id="_MSBC_rect_209-4"
                     width="21.219512195121947%"
                     x="78.78048780487804%"
                     y="0"
@@ -3948,7 +3948,7 @@ exports[`Should reflect theme change 1`] = `
         </div>
       </div>
       <div
-        id="_MSBC_bar_266"
+        id="_MSBC_bar-2"
       >
         <div
           class=
@@ -3966,7 +3966,7 @@ exports[`Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone273"
+            data-focuszone-id="FocusZone218"
           >
             <div
               class=
@@ -4003,7 +4003,7 @@ exports[`Should reflect theme change 1`] = `
                 </span>
                 <div
                   hidden=""
-                  id="tooltip274"
+                  id="tooltip219"
                   style="position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0px; border: 0px; overflow: hidden; white-space: nowrap;"
                 >
                   Unmonitored
@@ -4044,7 +4044,7 @@ exports[`Should reflect theme change 1`] = `
                 &:focus {
                   outline: none;
                 }
-            data-focuszone-id="FocusZone275"
+            data-focuszone-id="FocusZone220"
           >
             <div
               class=
@@ -4086,7 +4086,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#0078d4"
                     height="12"
-                    id="_MSBC_rect_261-0"
+                    id="_MSBC_rect_209-0"
                     width="63.49206349206349%"
                     x="0%"
                     y="0"
@@ -4113,7 +4113,7 @@ exports[`Should reflect theme change 1`] = `
                   <rect
                     fill="#107c10"
                     height="12"
-                    id="_MSBC_rect_261-1"
+                    id="_MSBC_rect_209-1"
                     width="36.507936507936506%"
                     x="63.49206349206349%"
                     y="0"
@@ -4163,7 +4163,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone276"
+                  data-focuszone-id="FocusZone221"
                   role="listbox"
                 >
                   <div
