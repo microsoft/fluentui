@@ -1,6 +1,8 @@
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
+import { Avatar, getHashCode } from './avatar.js';
+import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
 test.describe('Avatar Component', () => {
   let page: Page;
@@ -21,21 +23,70 @@ test.describe('Avatar Component', () => {
     await page.close();
   });
 
+  const colorAttributes = {
+    neutral: 'neutral',
+    brand: 'brand',
+    colorful: 'colorful',
+    darkRed: 'dark-red',
+    cranberry: 'cranberry',
+    red: 'red',
+    pumpkin: 'pumpkin',
+    peach: 'peach',
+    marigold: 'marigold',
+    gold: 'gold',
+    brass: 'brass',
+    brown: 'brown',
+    forest: 'forest',
+    seafoam: 'seafoam',
+    darkGreen: 'dark-green',
+    lightTeal: 'light-teal',
+    teal: 'teal',
+    steel: 'steel',
+    blue: 'blue',
+    royalBlue: 'royal-blue',
+    cornflower: 'cornflower',
+    navy: 'navy',
+    lavender: 'lavender',
+    purple: 'purple',
+    grape: 'grape',
+    lilac: 'lilac',
+    pink: 'pink',
+    magenta: 'magenta',
+    plum: 'plum',
+    beige: 'beige',
+    mink: 'mink',
+    platinum: 'platinum',
+    anchor: 'anchor',
+  };
+
+  const appearanceAttributes = {
+    ring: 'ring',
+    shadow: 'shadow',
+    ringShadow: 'ring-shadow',
+  };
+
+  const sizeAttributes = {
+    _16: 16,
+    _20: 20,
+    _24: 24,
+    _28: 28,
+    _32: 32,
+    _36: 36,
+    _40: 40,
+    _48: 48,
+    _56: 56,
+    _64: 64,
+    _72: 72,
+    _96: 96,
+    _120: 120,
+    _128: 128,
+  };
+
   test('should render without crashing', async () => {
     await page.waitForSelector('fluent-avatar');
   });
 
-  test('should generate initials based on the provided name value', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-        <fluent-avatar name="John Doe"></fluent-avatar>
-      `;
-    });
-
-    await expect(element).toHaveText('JD');
-  });
-
-  test('should render with custom initials based on the provided initials value', async () => {
+  test('When no name value is set, should render with custom initials based on the provided initials value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
         <fluent-avatar initials="JD"></fluent-avatar>
@@ -45,43 +96,105 @@ test.describe('Avatar Component', () => {
     await expect(element).toHaveText('JD');
   });
 
-  test('should set the size attribute to the provided size value', async () => {
+  test('When name value is set, should generate initials based on the provided name value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-avatar size="48"></fluent-avatar>
+        <fluent-avatar name="John Doe"></fluent-avatar>
       `;
     });
 
-    await expect(element).toHaveAttribute('size', '48');
+    await expect(element).toHaveText('JD');
   });
 
-  test('should set the shape attribute to the provided shape value', async () => {
+  test('When name value and custom initials are set, should prioritize the provided initials', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-avatar shape="circular"></fluent-avatar>
+        <fluent-avatar name="Julie Wright" initials="JJ"></fluent-avatar>
       `;
     });
 
-    await expect(element).toHaveAttribute('shape', 'circular');
+    await expect(element).toHaveText('JJ');
   });
 
-  test('should set the appearance attribute to the provided appearance value', async () => {
+  test('should render correctly in active state', async () => {
+    await element.evaluate((node: Avatar) => {
+      node.active = 'active';
+    });
+
+    await expect(element).toHaveJSProperty('active', 'active');
+  });
+
+  test('should render correctly in inactive state', async () => {
+    await element.evaluate((node: Avatar) => {
+      node.active = 'inactive';
+    });
+
+    await expect(element).toHaveJSProperty('active', 'inactive');
+  });
+
+  test('default color should be neutral', async () => {
+    await expect(element).toHaveAttribute('data-color', `neutral`);
+  });
+
+  test('should default to a specific color when "colorful" is set without name or colorId', async () => {
+    await element.evaluate((node: Avatar) => {
+      node.color = 'colorful';
+    });
+    const generatedColor = await element.evaluate((node: Avatar) => {
+      return node.generateColor();
+    });
+    await expect(element).toHaveAttribute('data-color', `${generatedColor}`);
+  });
+
+  test('should derive the color from the name attribute when set to "colorful"', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-avatar appearance="ring"></fluent-avatar>
+        <fluent-avatar name="John Doe" color="colorful"></fluent-avatar>
       `;
     });
 
-    await expect(element).toHaveAttribute('appearance', 'ring');
+    const generatedColor = await element.evaluate((node: Avatar) => {
+      return node.generateColor();
+    });
+
+    await expect(element).toHaveAttribute('data-color', `${generatedColor}`);
   });
 
-  test('should set the color attrinute to the provided color value', async () => {
+  test('should prioritize color derivation from colorId over name when set to "colorful"', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-avatar color="brand"></fluent-avatar>
+        <fluent-avatar color-id="pumpkin" name="John Doe" color="colorful"></fluent-avatar>
       `;
     });
 
-    await expect(element).toHaveAttribute('color', 'brand');
+    const generatedColor = await element.evaluate((node: Avatar) => {
+      return node.generateColor();
+    });
+    await expect(element).toHaveAttribute('data-color', `${generatedColor}`);
   });
+
+  for (const [attribute, value] of Object.entries(colorAttributes)) {
+    test(`should set the color attribute to \`${value}\` on the internal control`, async () => {
+      await element.evaluate((node: Avatar, colorValue: string) => {
+        node.color = colorValue as AvatarColor;
+      }, value as string);
+      await expect(element).toHaveJSProperty('color', `${value}`);
+    });
+  }
+  for (const [attribute, value] of Object.entries(sizeAttributes)) {
+    test(`should set the size attribute to \`${value}\` on the internal control`, async () => {
+      await element.evaluate((node: Avatar, sizeValue: number) => {
+        node.size = sizeValue as AvatarSize;
+      }, value as number);
+      await expect(element).toHaveJSProperty('size', value);
+    });
+  }
+  for (const [attribute, value] of Object.entries(appearanceAttributes)) {
+    test(`should set the appearance attribute to \`${value}\` on the internal control`, async () => {
+      await element.evaluate((node: Avatar, sizeValue: string) => {
+        node.appearance = sizeValue as AvatarAppearance;
+      }, value as string);
+      await expect(element).toHaveJSProperty('appearance', `${value}`);
+    });
+  }
 });
