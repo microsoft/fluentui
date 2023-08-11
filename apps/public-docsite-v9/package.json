@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@fluentui/react-breadcrumb-preview": "*",
+    "@fluentui/react-tree-preview": "*",
     "@fluentui/react-tags-preview": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-migration-v8-v9": "*",
