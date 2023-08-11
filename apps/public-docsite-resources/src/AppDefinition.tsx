@@ -555,6 +555,13 @@ export const AppDefinition: IAppDefinition = {
           name: 'GaugeChart',
           url: '#/examples/GaugeChart',
         },
+        {
+          component: require<any>('./components/pages/Charting/GroupedVerticalBarChartPage')
+            .GroupedVerticalBarChartPage,
+          key: 'GroupedVerticalBarChart',
+          name: 'GroupedVerticalBarChart',
+          url: '#/examples/GroupedVerticalBarChart',
+        },
       ],
     },
     {

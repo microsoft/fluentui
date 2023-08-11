@@ -8,6 +8,10 @@ import {
   IGVBarChartSeriesPoint,
 } from '../../index';
 
+/**
+ * GroupedVerticalBarchart component.
+ * {@docCategory GroupedVerticalBarChart}
+ */
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   /**
    * chart title for the chart

@@ -110,7 +110,7 @@ export const getColorFromToken: (token: string, isDarkTheme?: boolean) => string
 // @public (undocumented)
 export const getNextColor: (index: number, offset?: number, isDarkTheme?: boolean) => string;
 
-// @public (undocumented)
+// @public
 export const GroupedVerticalBarChart: React_2.FunctionComponent<IGroupedVerticalBarChartProps>;
 
 // @public (undocumented)
@@ -535,7 +535,7 @@ export interface IGroupedVerticalBarChartData {
     stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
-// @public (undocumented)
+// @public
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
     barwidth?: number;
     chartTitle?: string;

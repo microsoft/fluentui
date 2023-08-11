@@ -113,6 +113,7 @@ export const categories: { [name: string]: ICategory } = {
     DonutChart: {},
     VerticalBarChart: {},
     GaugeChart: {},
+    GroupedVerticalBarChart: {},
   },
   Utilities: {
     Announced: {
