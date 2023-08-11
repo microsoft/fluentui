@@ -1,10 +1,6 @@
 import * as React from 'react';
-import {
-  getPartitionedNativeProps,
-  resolveShorthand,
-  useControllableState,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { InputProps, InputState } from './Input.types';
 import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
@@ -18,6 +14,8 @@ import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-co
  * @param ref - reference to `<input>` element of Input
  */
 export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputElement>): InputState => {
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+
   const overrides = useOverrides();
 
   const { size = 'medium', appearance = overrides.inputDefaultAppearance ?? 'outline', onChange } = props;
@@ -54,19 +52,19 @@ export const useInput_unstable = (props: InputProps, ref: React.Ref<HTMLInputEle
       contentBefore: 'span',
       contentAfter: 'span',
     },
-    input: resolveShorthand(props.input, {
-      required: true,
+    input: slot.always(props.input, {
       defaultProps: {
         type: 'text',
         ref,
         ...nativeProps.primary,
       },
+      elementType: 'input',
     }),
-    contentAfter: resolveShorthand(props.contentAfter),
-    contentBefore: resolveShorthand(props.contentBefore),
-    root: resolveShorthand(props.root, {
-      required: true,
+    contentAfter: slot.optional(props.contentAfter, { elementType: 'span' }),
+    contentBefore: slot.optional(props.contentBefore, { elementType: 'span' }),
+    root: slot.always(props.root, {
       defaultProps: nativeProps.root,
+      elementType: 'span',
     }),
   };
 

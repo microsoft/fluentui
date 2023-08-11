@@ -1,8 +1,157 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Mon, 13 Mar 2023 08:58:26 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2023 12:14:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.30)
+
+Fri, 11 Aug 2023 12:14:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.29..@fluentui/react-aria_v9.3.30)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+
+## [9.3.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.29)
+
+Wed, 09 Aug 2023 13:16:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.28..@fluentui/react-aria_v9.3.29)
+
+### Patches
+
+- chore(teams-prg): migrate to new slot API ([PR #28751](https://github.com/microsoft/fluentui/pull/28751) by bernardo.sunderhus@gmail.com)
+
+## [9.3.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.28)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.26..@fluentui/react-aria_v9.3.28)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+
+## [9.3.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.26)
+
+Mon, 03 Jul 2023 11:57:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.25..@fluentui/react-aria_v9.3.26)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.10.1 ([PR #28412](https://github.com/microsoft/fluentui/pull/28412) by beachball)
+
+## [9.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.25)
+
+Wed, 28 Jun 2023 11:12:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.24..@fluentui/react-aria_v9.3.25)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.10.0 ([PR #28320](https://github.com/microsoft/fluentui/pull/28320) by beachball)
+
+## [9.3.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.24)
+
+Mon, 26 Jun 2023 09:53:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.23..@fluentui/react-aria_v9.3.24)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.4 ([PR #28296](https://github.com/microsoft/fluentui/pull/28296) by beachball)
+
+## [9.3.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.23)
+
+Tue, 20 Jun 2023 12:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.22..@fluentui/react-aria_v9.3.23)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.3 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+
+## [9.3.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.22)
+
+Wed, 31 May 2023 06:46:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.21..@fluentui/react-aria_v9.3.22)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.2 ([PR #28054](https://github.com/microsoft/fluentui/pull/28054) by beachball)
+
+## [9.3.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.21)
+
+Thu, 25 May 2023 10:00:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.20..@fluentui/react-aria_v9.3.21)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.1 ([PR #27988](https://github.com/microsoft/fluentui/pull/27988) by beachball)
+
+## [9.3.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.20)
+
+Thu, 18 May 2023 00:39:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.19..@fluentui/react-aria_v9.3.20)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.9.0 ([PR #27834](https://github.com/microsoft/fluentui/pull/27834) by beachball)
+
+## [9.3.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.19)
+
+Fri, 12 May 2023 20:28:12 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.18..@fluentui/react-aria_v9.3.19)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.3 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+- Bump @fluentui/react-utilities to v9.8.1 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.18)
+
+Mon, 17 Apr 2023 17:54:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.17..@fluentui/react-aria_v9.3.18)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.8.0 ([PR #27564](https://github.com/microsoft/fluentui/pull/27564) by beachball)
+
+## [9.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.17)
+
+Wed, 12 Apr 2023 09:31:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.16..@fluentui/react-aria_v9.3.17)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.4 ([PR #27274](https://github.com/microsoft/fluentui/pull/27274) by beachball)
+
+## [9.3.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.16)
+
+Tue, 04 Apr 2023 18:44:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.15..@fluentui/react-aria_v9.3.16)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.3 ([PR #27434](https://github.com/microsoft/fluentui/pull/27434) by beachball)
+
+## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.15)
+
+Tue, 21 Mar 2023 21:23:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.14..@fluentui/react-aria_v9.3.15)
+
+### Patches
+
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+- Bump @fluentui/react-utilities to v9.7.2 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.14)
+
+Thu, 16 Mar 2023 14:36:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.13..@fluentui/react-aria_v9.3.14)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.7.1 ([PR #27229](https://github.com/microsoft/fluentui/pull/27229) by beachball)
 
 ## [9.3.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.13)
 

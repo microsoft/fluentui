@@ -4,25 +4,24 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
+    "code-style": "just-scripts code-style",
+    "type-check": "tsc -p . --noEmit",
+    "test:perf": "just-scripts perf-test"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
-    "@fluentui/example-data": "^8.4.6",
-    "@fluentui/react": "^8.106.6",
+    "@fluentui/scripts-perf-test-flamegrill": "*",
+    "@fluentui/example-data": "*",
+    "@fluentui/react": "*",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "flamegrill": "0.2.0",
-    "lodash": "^4.17.15",
-    "querystring": "^0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"

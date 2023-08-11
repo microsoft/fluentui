@@ -167,6 +167,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
           selectionDetails: this._getSelectionDetails(),
         });
       },
+      getKey: this._getKey,
     });
 
     this.state = {
@@ -214,7 +215,6 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
               compact={isCompactMode}
               columns={columns}
               selectionMode={SelectionMode.multiple}
-              getKey={this._getKey}
               setKey="multiple"
               layoutMode={DetailsListLayoutMode.justified}
               isHeaderVisible={true}

@@ -70,7 +70,7 @@ export class FloatingSuggestions<TItem>
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString,
+        queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -278,9 +278,8 @@ export class FloatingSuggestions<TItem>
       case KeyCodes.del:
         if (
           this.props.onRemoveSuggestion &&
-          this.suggestionsControl.current &&
-          this.suggestionsControl.current.hasSuggestionSelected &&
-          this.suggestionsControl.current.currentSuggestion &&
+          this.suggestionsControl.current?.hasSuggestionSelected &&
+          this.suggestionsControl.current?.currentSuggestion &&
           ev.shiftKey
         ) {
           this.props.onRemoveSuggestion(this.suggestionsControl.current.currentSuggestion!.item);

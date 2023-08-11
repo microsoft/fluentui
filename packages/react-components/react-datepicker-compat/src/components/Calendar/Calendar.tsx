@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Backspace, Enter, Escape, PageDown, PageUp, Space } from '@fluentui/keyboard-keys';
 import { useControllableState } from '@fluentui/react-utilities';
-import { mergeClasses } from '@griffel/react';
 import {
   addMonths,
   addYears,
@@ -15,8 +14,7 @@ import {
 } from '../../utils';
 import { CalendarDay } from '../CalendarDay/CalendarDay';
 import { CalendarMonth } from '../CalendarMonth/CalendarMonth';
-import { defaultCalendarNavigationIcons } from './defaults';
-import { useCalendarStyles_unstable } from './useCalendarStyles';
+import { useCalendarStyles_unstable } from './useCalendarStyles.styles';
 import type { ICalendarDay } from '../CalendarDay/CalendarDay.types';
 import type { ICalendarMonth } from '../CalendarMonth/CalendarMonth.types';
 import type { CalendarProps } from './Calendar.types';
@@ -131,6 +129,9 @@ function useFocusLogic({ componentRef }: CalendarProps, isDayPickerVisible: bool
   return [dayPicker, monthPicker, focusOnNextUpdate] as const;
 }
 
+/**
+ * @internal
+ */
 export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef<HTMLDivElement, CalendarProps>(
   (props, forwardedRef) => {
     const {
@@ -150,7 +151,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       isMonthPickerVisible: isMonthPickerVisibleProp = true,
       maxDate,
       minDate,
-      navigationIcons = defaultCalendarNavigationIcons,
       onDismiss,
       onSelectDate,
       restrictedDates,
@@ -195,7 +195,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       return (
         showGoToToday && (
           <button
-            className={mergeClasses('js-goToday', classes.goTodayButton)}
+            className={classes.goTodayButton}
             onClick={onGotoToday}
             onKeyDown={onButtonKeyDown(onGotoToday)}
             type="button"
@@ -269,6 +269,7 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
           break;
 
         case Escape:
+          ev.stopPropagation();
           onDismiss?.();
           break;
 
@@ -316,9 +317,12 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
       );
     }
     if (dateTimeFormatter && strings!.selectedDateFormatString) {
+      const dateStringFormatter = monthPickerOnly
+        ? dateTimeFormatter.formatMonthYear
+        : dateTimeFormatter.formatMonthDayYear;
       selectedDateString = strings!.selectedDateFormatString.replace(
         '{0}',
-        dateTimeFormatter.formatMonthDayYear(selectedDate, strings!),
+        dateStringFormatter(selectedDate, strings!),
       );
     }
     const selectionAndTodayString = selectedDateString + ', ' + todayDateString;
@@ -349,7 +353,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
             strings={strings!}
             // eslint-disable-next-line react/jsx-no-bind
             onHeaderSelect={onHeaderSelect}
-            navigationIcons={navigationIcons!}
             showWeekNumbers={showWeekNumbers}
             firstWeekOfYear={firstWeekOfYear!}
             dateTimeFormatter={dateTimeFormatter!}
@@ -378,7 +381,6 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
               highlightSelectedMonth={highlightSelectedMonth!}
               // eslint-disable-next-line react/jsx-no-bind
               onHeaderSelect={onHeaderSelect}
-              navigationIcons={navigationIcons!}
               dateTimeFormatter={dateTimeFormatter!}
               minDate={minDate}
               maxDate={maxDate}

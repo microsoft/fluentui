@@ -1,268 +1,238 @@
-import * as React from 'react';
-import { Input } from '@fluentui/react-input';
-import { Field } from '@fluentui/react-field';
 import { DayOfWeek, FirstWeekOfYear } from '../../utils';
-import { PopoverSurface } from '@fluentui/react-popover';
-import type { InputProps } from '@fluentui/react-input';
-import type { PopoverProps } from '@fluentui/react-popover';
+import { Input } from '@fluentui/react-input';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { CalendarProps } from '../Calendar/Calendar.types';
 import type { CalendarStrings, DateFormatting } from '../../utils';
+import type { PortalProps } from '@fluentui/react-portal';
+import type { PositioningProps } from '@fluentui/react-positioning';
 
 export type DatePickerSlots = {
-  root: NonNullable<Slot<'div'>>;
-  inputField: NonNullable<Slot<typeof Field>>;
-  input: NonNullable<Slot<typeof Input>>;
-  wrapper: NonNullable<Slot<'div'>>;
-  popover: NonNullable<Slot<Partial<PopoverProps>>>;
-  popoverSurface: NonNullable<Slot<typeof PopoverSurface>>;
+  root: NonNullable<Slot<typeof Input>>;
   calendar: NonNullable<Slot<Partial<CalendarProps>>>;
+  popupSurface?: Slot<'div'>;
 };
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export interface IDatePicker {
-  /** Sets focus to the text field */
-  focus(): void;
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> &
+  Pick<PortalProps, 'mountNode'> & {
+    /**
+     * Callback issued when a date is selected
+     */
+    onSelectDate?: (date: Date | null | undefined) => void;
 
-  /** Reset the state of the picker to the default */
-  reset(): void;
+    /**
+     * Whether the DatePicker is a required field or not. When using `<Field>`, this prop is automatically set.
+     * @default false
+     */
+    required?: boolean;
 
-  /** Open the datepicker callout */
-  showDatePickerPopup(): void;
-}
+    /**
+     * Disabled state of the DatePicker.
+     * @default false
+     */
+    disabled?: boolean;
 
-export type DatePickerProps = ComponentProps<Partial<DatePickerSlots>> & {
-  /**
-   * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: React.RefObject<IDatePicker>;
+    /**
+     * Whether or not the Input of the DatePicker is underlined.
+     * @default false
+     */
+    underlined?: boolean;
 
-  /**
-   * Pass textField props to textField component.
-   * Prop name is "textField" for compatibility with upcoming slots work.
-   */
-  textField?: InputProps;
+    /**
+     * Whether the month picker is shown beside the day picker or hidden.
+     * @default true
+     */
+    isMonthPickerVisible?: boolean;
 
-  /**
-   * Callback issued when a date is selected
-   */
-  onSelectDate?: (date: Date | null | undefined) => void;
+    /**
+     * Show month picker on top of date picker when visible.
+     * @default false
+     */
+    showMonthPickerAsOverlay?: boolean;
 
-  /**
-   * Label for the DatePicker
-   */
-  label?: string;
+    /**
+     * Whether the DatePicker allows input a date string directly or not
+     * @default false
+     */
+    allowTextInput?: boolean;
 
-  /**
-   * Whether the DatePicker is a required field or not
-   * @defaultvalue false
-   */
-  isRequired?: boolean;
+    /**
+     * Whether the DatePicker should open automatically when the control is focused
+     * WARNING: setting this to false creates an accessibility violation and is not recommended
+     * @default true
+     */
+    disableAutoFocus?: boolean;
 
-  /**
-   * Disabled state of the DatePicker.
-   * @defaultvalue false
-   */
-  disabled?: boolean;
+    /**
+     * Whether the DatePicker should open when the input is clicked
+     * @default true
+     */
+    openOnClick?: boolean;
 
-  /**
-   * Aria Label for TextField of the DatePicker for screen reader users.
-   */
-  ariaLabel?: string;
+    /**
+     * Whether the DatePicker should be open by default
+     *
+     * @default false
+     */
+    defaultOpen?: boolean;
 
-  /**
-   * Whether or not the Textfield of the DatePicker is underlined.
-   * @defaultvalue false
-   */
-  underlined?: boolean;
+    /**
+     * Whether the DatePicker is open or not
+     *
+     * @default false
+     */
+    open?: boolean;
 
-  /**
-   * Aria label for date picker popup for screen reader users.
-   * @defaultvalue Calendar
-   */
-  pickerAriaLabel?: string;
+    /**
+     * Callback to run when the DatePicker's open state changes
+     */
+    onOpenChange?: (open: boolean) => void;
 
-  /**
-   * Whether the month picker is shown beside the day picker or hidden.
-   * @defaultvalue true
-   */
-  isMonthPickerVisible?: boolean;
+    /**
+     * Callback to run after the DatePicker's input has been validated
+     */
+    onValidationResult?: (data: DatePickerValidationResultData) => void;
 
-  /**
-   * Show month picker on top of date picker when visible.
-   * @defaultvalue false
-   */
-  showMonthPickerAsOverlay?: boolean;
+    /**
+     * Whether the DatePicker should render the popup as inline or in a portal
+     *
+     * @default false
+     */
+    inlinePopup?: boolean;
 
-  /**
-   * Whether the DatePicker allows input a date string directly or not
-   * @defaultvalue false
-   */
-  allowTextInput?: boolean;
+    /**
+     * Configure the positioning of the DatePicker dialog
+     *
+     * @default below
+     */
+    positioning?: PositioningProps;
 
-  /**
-   * Whether the DatePicker should open automatically when the control is focused
-   * WARNING: setting this to false creates an accessibility violation and is not recommended
-   * @defaultvalue true
-   */
-  disableAutoFocus?: boolean;
+    /**
+     * Placeholder text for the DatePicker
+     */
+    placeholder?: string;
 
-  /**
-   * Whether the DatePicker should open when the input is clicked
-   * @defaultvalue true
-   */
-  openOnClick?: boolean;
+    /**
+     * Value of today. If unspecified, current time in client machine will be used.
+     */
+    today?: Date;
 
-  /**
-   * Placeholder text for the DatePicker
-   */
-  placeholder?: string;
+    /**
+     * Default value of the DatePicker, if any
+     *
+     * When the component is controlled, `null` should be used instead of `undefined` to avoid controlled vs. uncontrolled
+     * ambiguity.
+     */
+    value?: Date | null;
 
-  /**
-   * Value of today. If unspecified, current time in client machine will be used.
-   */
-  today?: Date;
+    /**
+     * Optional method to format the chosen date to a string to display in the DatePicker
+     * @default date.toString()
+     */
+    formatDate?: (date?: Date) => string;
 
-  /**
-   * Default value of the DatePicker, if any
-   */
-  value?: Date;
+    /**
+     * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
+     * @default new Date(Date.parse(dateStr))
+     */
+    parseDateFromString?: (dateStr: string) => Date | null;
 
-  /**
-   * Optional method to format the chosen date to a string to display in the DatePicker
-   * @defaultvalue date.toString()
-   */
-  formatDate?: (date?: Date) => string;
+    /**
+     * The first day of the week for your locale.
+     * @default DayOfWeek.Sunday
+     */
+    firstDayOfWeek?: DayOfWeek;
 
-  /**
-   * Optional method to parse the text input value to date, it is only useful when allowTextInput is set to true
-   * @defaultvalue new Date(Date.parse(dateStr))
-   */
-  parseDateFromString?: (dateStr: string) => Date | null;
+    /**
+     * Localized strings to use in the Calendar
+     */
+    strings?: CalendarStrings;
 
-  /**
-   * The first day of the week for your locale.
-   * @defaultvalue DayOfWeek.Sunday
-   */
-  firstDayOfWeek?: DayOfWeek;
+    /**
+     * Whether the month picker should highlight the current month
+     * @default false
+     */
+    highlightCurrentMonth?: boolean;
 
-  /**
-   * Localized strings to use in the DatePicker
-   */
-  strings?: DatePickerStrings;
+    /**
+     * Whether the month picker should highlight the selected month
+     * @default false
+     */
+    highlightSelectedMonth?: boolean;
 
-  /**
-   * Whether the month picker should highlight the current month
-   * @defaultvalue false
-   */
-  highlightCurrentMonth?: boolean;
+    /**
+     * Whether the calendar should show the week number (weeks 1 to 53) before each week row
+     * @default false
+     */
+    showWeekNumbers?: boolean;
 
-  /**
-   * Whether the month picker should highlight the selected month
-   * @defaultvalue false
-   */
-  highlightSelectedMonth?: boolean;
+    /**
+     * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
+     * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
+     * @default FirstWeekOfYear.FirstFullWeek
+     */
+    firstWeekOfYear?: FirstWeekOfYear;
 
-  /**
-   * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-   * @defaultvalue false
-   */
-  showWeekNumbers?: boolean;
+    /**
+     * Whether the "Go to today" link should be shown or not
+     */
+    showGoToToday?: boolean;
 
-  /**
-   * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
-   * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-   * @defaultvalue FirstWeekOfYear.FirstFullWeek
-   */
-  firstWeekOfYear?: FirstWeekOfYear;
+    /**
+     * Determines if the DatePicker has a border.
+     * @default false
+     */
+    borderless?: boolean;
 
-  /**
-   * Whether the "Go to today" link should be shown or not
-   */
-  showGoToToday?: boolean;
+    /**
+     * Apply additional formatting to dates, for example localized date formatting.
+     */
+    dateTimeFormatter?: DateFormatting;
 
-  /**
-   * Determines if the DatePicker has a border.
-   * @defaultvalue false
-   */
-  borderless?: boolean;
+    /**
+     * The minimum allowable date.
+     */
+    minDate?: Date;
 
-  /**
-   * Optional CSS class for the DatePicker root element.
-   */
-  className?: string;
+    /**
+     * The maximum allowable date.
+     */
+    maxDate?: Date;
 
-  /**
-   * Apply additional formatting to dates, for example localized date formatting.
-   */
-  dateTimeFormatter?: DateFormatting;
+    /**
+     * The initially highlighted date.
+     */
+    initialPickerDate?: Date;
 
-  /**
-   * The minimum allowable date.
-   */
-  minDate?: Date;
+    /**
+     * Allows all elements to be focused, including disabled ones
+     * @default false
+     */
+    allFocusable?: boolean;
 
-  /**
-   * The maximum allowable date.
-   */
-  maxDate?: Date;
+    /**
+     * Whether the CalendarDay close button should be shown or not.
+     */
+    showCloseButton?: boolean;
+  };
 
-  /**
-   * The initially highlighted date.
-   */
-  initialPickerDate?: Date;
+/**
+ * State used in rendering DatePicker.
+ */
+export type DatePickerState = ComponentState<DatePickerSlots> &
+  Pick<DatePickerProps, 'mountNode'> & {
+    disabled: boolean;
+    inlinePopup: boolean;
+  };
 
-  /**
-   * Allows all elements to be focused, including disabled ones
-   * @defaultvalue false
-   */
-  allFocusable?: boolean;
-
-  /**
-   * Callback that runs after DatePicker's menu (Calendar) is closed
-   */
-  onAfterMenuDismiss?: () => void;
-
-  /**
-   * Whether the CalendarDay close button should be shown or not.
-   */
-  showCloseButton?: boolean;
-
-  /**
-   * The tabIndex of the TextField
-   */
-  tabIndex?: number;
-};
-
-export type DatePickerState = ComponentState<DatePickerSlots> & {
-  disabled: boolean;
-  isDatePickerShown: boolean;
+/**
+ * Data passed to the `onValidationResult` callback.
+ */
+export type DatePickerValidationResultData = {
+  /** The error found when validating the input. */
+  error?: DatePickerErrorType;
 };
 
 /**
- * {@docCategory DatePicker}
+ * Error types returned by the `onValidationResult` callback.
  */
-export interface DatePickerStrings extends CalendarStrings {
-  /**
-   * Error message to render for TextField if isRequired validation fails.
-   */
-  isRequiredErrorMessage?: string;
-
-  /**
-   * Error message to render for TextField if input date string parsing fails.
-   */
-  invalidInputErrorMessage?: string;
-
-  /**
-   * Error message to render for TextField if date boundary (minDate, maxDate) validation fails.
-   */
-  isOutOfBoundsErrorMessage?: string;
-
-  /**
-   * Status message to render for TextField the input date parsing fails,
-   * and the typed value is cleared and reset to the previous value.
-   *  e.g. "Invalid entry `{0}`, date reset to `{1}`"
-   */
-  isResetStatusMessage?: string;
-}
+export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';

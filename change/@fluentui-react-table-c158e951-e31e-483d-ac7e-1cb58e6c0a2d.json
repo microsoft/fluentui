@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added support for keyboard navigation in Table/DataGrid",
-  "packageName": "@fluentui/react-table",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,8 +1,26 @@
 # Change Log - @fluentui/api-docs
 
-This log was last generated on Fri, 08 Oct 2021 07:31:50 GMT and should not be manually modified.
+This log was last generated on Mon, 19 Jun 2023 07:36:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.11)
+
+Mon, 19 Jun 2023 07:36:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.2.10..@fluentui/api-docs_v8.2.11)
+
+### Patches
+
+- chore: bump api-extractor-model to support typescript 4.7 ([PR #28067](https://github.com/microsoft/fluentui/pull/28067) by martinhochel@microsoft.com)
+
+## [8.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.10)
+
+Wed, 31 May 2023 07:38:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/api-docs_v8.2.6..@fluentui/api-docs_v8.2.10)
+
+### Patches
+
+- fix: bump api-extractor and tsdoc which enables us to remove --isolateModules hacks within our code ([PR #27936](https://github.com/microsoft/fluentui/pull/27936) by martinhochel@microsoft.com)
 
 ## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/api-docs_v8.2.0)
 

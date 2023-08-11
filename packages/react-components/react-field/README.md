@@ -2,8 +2,6 @@
 
 **React Field component for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
-
 ## Description
 
 Field adds a label, validation message, and hint text to a control. Any single form control can be used as the child of the Field.
@@ -13,7 +11,7 @@ Field adds a label, validation message, and hint text to a control. Any single f
 To import Field:
 
 ```js
-import { Field } from '@fluentui/react-components/unstable';
+import { Field } from '@fluentui/react-components';
 ```
 
 ### Examples

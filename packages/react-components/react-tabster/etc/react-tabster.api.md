@@ -11,22 +11,24 @@ import type { RefObject } from 'react';
 import { Types } from 'tabster';
 
 // @internal (undocumented)
-export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void;
+export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
 
 // @public
-export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector, enableOutline, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
+export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    // @deprecated
     enableOutline?: boolean;
     selector?: 'focus' | 'focus-within';
 }
 
 // @public
-export const createFocusOutlineStyle: ({ selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
-export interface CreateFocusOutlineStyleOptions extends CreateCustomFocusIndicatorStyleOptions {
+export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {
+    enableOutline?: boolean;
     // (undocumented)
     style?: Partial<FocusOutlineStyleOptions>;
 }
@@ -42,12 +44,15 @@ export type FocusOutlineStyleOptions = {
     outlineOffset?: string | FocusOutlineOffset;
 };
 
+// @public (undocumented)
+export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseArrowNavigationGroupOptions {
-    axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
+    axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
     circular?: boolean;
     ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     memorizeCurrent?: boolean;
@@ -56,10 +61,11 @@ export interface UseArrowNavigationGroupOptions {
 }
 
 // @public
-export const useFocusableGroup: (options?: UseFocusableGroupOptions | undefined) => Types.TabsterDOMAttribute;
+export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.TabsterDOMAttribute;
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
+    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 
@@ -73,13 +79,19 @@ export const useFocusFinders: () => {
 };
 
 // @public (undocumented)
-export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
+export function useFocusObserved(name: string, options?: UseFocusObservedOptions): () => Types.ObservedElementAsyncRequest<boolean>;
+
+// @public (undocumented)
+export function useFocusVisible<TElement extends HTMLElement = HTMLElement>(options?: UseFocusVisibleOptions): React_2.RefObject<TElement>;
 
 // @public
 export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): React_2.RefObject<TElement>;
 
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
+
+// @internal
+export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
 
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {
@@ -94,6 +106,15 @@ export interface UseModalAttributesOptions {
     legacyTrapFocus?: boolean;
     trapFocus?: boolean;
 }
+
+// @public (undocumented)
+export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
+
+// @public
+export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
+
+// @public
+export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;

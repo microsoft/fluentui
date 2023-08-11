@@ -16,7 +16,8 @@ export type UseOnClickOrScrollOutsideOptions = {
 
   /**
    * By default uses element.contains, but custom contain function can be provided
-   * @param parentRef - provided parent ref
+   *
+   * @param parent - provided parent element
    * @param child - event target element
    */
   contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
@@ -45,13 +46,19 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     const contains: UseOnClickOrScrollOutsideOptions['contains'] =
       containsProp || ((parent, child) => !!parent?.contains(child));
 
-    const isOutside = refs.every(ref => !contains(ref.current || null, ev.target as HTMLElement));
+    const target = ev.composedPath()[0] as HTMLElement;
+    const isOutside = refs.every(ref => !contains(ref.current || null, target));
+
     if (isOutside && !disabled) {
       callback(ev);
     }
   });
 
   React.useEffect(() => {
+    if (disabled) {
+      return;
+    }
+
     // Store the current event to avoid triggering handlers immediately
     // Note this depends on a deprecated but extremely well supported quirk of the web platform
     // https://github.com/facebook/react/issues/20074
@@ -67,12 +74,10 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
       listener(event);
     };
 
-    if (!disabled) {
-      // use capture phase because React can update DOM before the event bubbles to the document
-      element?.addEventListener('click', conditionalHandler, true);
-      element?.addEventListener('touchstart', conditionalHandler, true);
-      element?.addEventListener('contextmenu', conditionalHandler, true);
-    }
+    // use capture phase because React can update DOM before the event bubbles to the document
+    element?.addEventListener('click', conditionalHandler, true);
+    element?.addEventListener('touchstart', conditionalHandler, true);
+    element?.addEventListener('contextmenu', conditionalHandler, true);
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
     timeoutId.current = window.setTimeout(() => {
@@ -145,25 +150,32 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
 
   // Adds listener to the custom iframe focus event
   React.useEffect(() => {
-    if (!disabled) {
-      targetDocument?.addEventListener(FUI_FRAME_EVENT, listener, true);
-      return () => {
-        targetDocument?.removeEventListener(FUI_FRAME_EVENT, listener, true);
-      };
+    if (disabled) {
+      return;
     }
+
+    targetDocument?.addEventListener(FUI_FRAME_EVENT, listener, true);
+
+    return () => {
+      targetDocument?.removeEventListener(FUI_FRAME_EVENT, listener, true);
+    };
   }, [targetDocument, disabled, listener]);
 
   // Starts polling for the active element
   React.useEffect(() => {
-    if (!disabled) {
-      timeoutRef.current = targetDocument?.defaultView?.setInterval(() => {
-        const activeElement = targetDocument?.activeElement;
-        if (activeElement?.tagName === 'IFRAME' || activeElement?.tagName === 'WEBVIEW') {
-          const event = new CustomEvent(FUI_FRAME_EVENT, { bubbles: true });
-          activeElement.dispatchEvent(event);
-        }
-      }, pollDuration);
+    if (disabled) {
+      return;
     }
+
+    timeoutRef.current = targetDocument?.defaultView?.setInterval(() => {
+      const activeElement = targetDocument?.activeElement;
+
+      if (activeElement?.tagName === 'IFRAME' || activeElement?.tagName === 'WEBVIEW') {
+        const event = new CustomEvent(FUI_FRAME_EVENT, { bubbles: true });
+        activeElement.dispatchEvent(event);
+      }
+    }, pollDuration);
+
     return () => {
       targetDocument?.defaultView?.clearTimeout(timeoutRef.current);
     };

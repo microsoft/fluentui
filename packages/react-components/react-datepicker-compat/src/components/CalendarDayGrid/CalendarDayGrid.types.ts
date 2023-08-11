@@ -4,7 +4,7 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utils';
 import type { CalendarStrings, DateFormatting, DayGridOptions } from '../../utils';
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarDayGrid {
@@ -12,7 +12,7 @@ export interface ICalendarDayGrid {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayGridProps extends DayGridOptions {
   /**
@@ -63,28 +63,28 @@ export interface CalendarDayGridProps extends DayGridOptions {
 
   /**
    * The first day of the week for your locale.
-   * @defaultvalue DayOfWeek.Sunday
+   * @default DayOfWeek.Sunday
    */
   firstDayOfWeek: DayOfWeek;
 
   /**
    * Defines when the first week of the year should start, FirstWeekOfYear.FirstDay,
    * FirstWeekOfYear.FirstFullWeek or FirstWeekOfYear.FirstFourDayWeek are the possible values
-   * @defaultvalue FirstWeekOfYear.FirstDay
+   * @default FirstWeekOfYear.FirstDay
    */
   firstWeekOfYear: FirstWeekOfYear;
 
   /**
    * The date range type indicating how  many days should be selected as the user
    * selects days
-   * @defaultValue DateRangeType.Day
+   * @default DateRangeType.Day
    */
   dateRangeType: DateRangeType;
 
   /**
    * The number of days to select while dateRangeType === DateRangeType.Day. Used in order to have multi-day
    * views.
-   * @defaultValue 1
+   * @default 1
    */
   daysToSelectInDayView?: number;
 
@@ -95,7 +95,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
 
   /**
    * Whether the calendar should show the week number (weeks 1 to 53) before each week row
-   * @defaultvalue false
+   * @default false
    */
   showWeekNumbers?: boolean;
 
@@ -113,7 +113,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
   /**
    * How many weeks to show by default. If not provided, will show enough weeks to display the current
    * month, between 4 and 6 depending
-   * @defaultvalue undefined
+   * @default undefined
    */
   weeksToShow?: number;
 
@@ -135,19 +135,19 @@ export interface CalendarDayGridProps extends DayGridOptions {
   /**
    * The days that are selectable when `dateRangeType` is WorkWeek.
    * If `dateRangeType` is not WorkWeek this property does nothing.
-   * @defaultvalue [Monday,Tuesday,Wednesday,Thursday,Friday]
+   * @default [Monday,Tuesday,Wednesday,Thursday,Friday]
    */
   workWeekDays?: DayOfWeek[];
 
   /**
    * Whether the close button should be shown or not
-   * @defaultvalue false
+   * @default false
    */
   showCloseButton?: boolean;
 
   /**
    * Allows all dates and buttons to be focused, including disabled ones
-   * @defaultvalue false
+   * @default false
    */
   allFocusable?: boolean;
 
@@ -158,7 +158,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
 
   /**
    * Whether to show days outside the selected month with lighter styles
-   * @defaultvalue true
+   * @default true
    */
   lightenDaysOutsideNavigatedMonth?: boolean;
 
@@ -176,7 +176,7 @@ export interface CalendarDayGridProps extends DayGridOptions {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayGridStyleProps {
   /**
@@ -211,7 +211,7 @@ export interface CalendarDayGridStyleProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarDayGridStyles {
   /**

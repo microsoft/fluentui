@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCard_unstable } from './useCard';
 import { renderCard_unstable } from './renderCard';
-import { useCardStyles_unstable } from './useCardStyles';
+import { useCardStyles_unstable } from './useCardStyles.styles';
 import type { CardProps } from './Card.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useCardContextValue } from './useCardContextValue';

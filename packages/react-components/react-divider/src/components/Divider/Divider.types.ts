@@ -4,12 +4,12 @@ export type DividerSlots = {
   /**
    * Root of the component that renders as a `<div>` tag.
    */
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 
   /**
    * Accessibility wrapper for content when presented.
    */
-  wrapper: Slot<'div'>;
+  wrapper: NonNullable<Slot<'div'>>;
 };
 
 export type DividerProps = ComponentProps<Partial<DividerSlots>> & {

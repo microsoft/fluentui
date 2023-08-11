@@ -3,9 +3,9 @@ import { Label } from '@fluentui/react-label';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 /**
- * The props added to the Field's child element.
+ * The props added to the control inside the Field.
  */
-export type FieldChildProps = Pick<
+export type FieldControlProps = Pick<
   React.HTMLAttributes<HTMLElement>,
   'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'
 >;
@@ -52,13 +52,15 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
    * The Field's child can be a single form control, or a render function that takes the props that should be spread on
    * a form control.
    *
-   * All form controls in this library can be used directly as children (such as `<Input>` or `<RadioGroup>`), as well
-   * as intrinsic form controls like `<input>` or `<textarea>`. Custom controls can also be used as long as they
-   * accept FieldChildProps and spread them on the appropriate element.
+   * All form controls in this library can be used directly as children (such as `<Input>` or `<RadioGroup>`).
    *
-   * For more complex scenarios, a render function can be used to pass the FieldChildProps to the appropriate control.
+   * For other controls, there are two options:
+   * 1. The child of Field can be a render function that is given the props that should be spread on the control.
+   *    `<Field>{(props) => <MyInput {...props} />}</Field>`
+   * 2. The control itself can merge props from field with useFieldControlProps_unstable().
+   *    `props = useFieldControlProps_unstable(props);`
    */
-  children?: React.ReactElement<FieldChildProps> | null | ((props: FieldChildProps) => React.ReactNode);
+  children?: React.ReactNode | ((props: FieldControlProps) => React.ReactNode);
 
   /**
    * The orientation of the label relative to the field component.
@@ -100,4 +102,27 @@ export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
  * State used in rendering Field
  */
 export type FieldState = ComponentState<Required<FieldSlots>> &
-  Required<Pick<FieldProps, 'orientation' | 'validationState'>>;
+  Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>> &
+  Pick<FieldProps, 'children'> & {
+    /**
+     * The ID generated for the control inside the field, and the default value of label.htmlFor prop.
+     */
+    generatedControlId: string;
+  };
+
+export type FieldContextValue = Readonly<
+  Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
+    /** The label's for prop. Undefined if there is no label. */
+    labelFor?: string;
+    /** The label's id prop. Undefined if there is no label. */
+    labelId?: string;
+    /** The validationMessage's id prop. Undefined if there is no validationMessage. */
+    validationMessageId?: string;
+    /** The hint's id prop. Undefined if there is no hint. */
+    hintId?: string;
+  }
+>;
+
+export type FieldContextValues = {
+  field: FieldContextValue;
+};

@@ -2,6 +2,182 @@
   "name": "@fluentui/react-theme",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 13:17:11 GMT",
+      "tag": "@fluentui/react-theme_v9.1.11",
+      "version": "9.1.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.8",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/react-theme_v9.1.10",
+      "version": "9.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.7",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 20 Jul 2023 18:27:35 GMT",
+      "tag": "@fluentui/react-theme_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "5a4b16715e8e929f11d8113f710e578ca73acaa6",
+            "comment": "chore: migrate to monosize"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 11:12:34 GMT",
+      "tag": "@fluentui/react-theme_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Jun 2023 12:39:07 GMT",
+      "tag": "@fluentui/react-theme_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.6",
+            "commit": "81c9b35e0830297b2aca2cece2ae67b3899c4647"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 May 2023 20:45:36 GMT",
+      "tag": "@fluentui/react-theme_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "69e0617a93cb44ef42f3bd19284b7dc5fe27fed3",
+            "comment": "chore: update test-ssr script"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 May 2023 00:39:17 GMT",
+      "tag": "@fluentui/react-theme_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "06cd515eda59a3078bfe32f9cc7c1f281cd20208",
+            "comment": "chore: add test-ssr script to v9 packages"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 May 2023 20:27:56 GMT",
+      "tag": "@fluentui/react-theme_v9.1.8",
+      "version": "9.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "c28decb23d191a0daaaf6d5d1832429715102129",
+            "comment": "chore: exclude .swcrc from being published"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.5",
+            "commit": "79c08ce5bbf6387b2b18ba4c3d2d5681e0177d4b"
+          }
+        ],
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-theme",
+            "commit": "dbda7fa69e3000aaf8dd4a061e254ebd35198b8e",
+            "comment": "fix: update npmignore files to fix npm8/node16 regression how npm publish works"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 21 Mar 2023 21:23:10 GMT",
+      "tag": "@fluentui/react-theme_v9.1.7",
+      "version": "9.1.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "ead1c6d4c2ac3f3596b62b8cbc07b0a03041f11f",
+            "comment": "fix: add node field to package.json exports map."
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-theme",
+            "commit": "2fac1a139149bd13b76b1306207bc988dca9c72c",
+            "comment": "chore: migrate to swc transpilation approach."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.4",
+            "commit": "b7a26f6263c80e3253c6b8338c33b73bae33e2b5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Mar 2023 10:19:53 GMT",
+      "tag": "@fluentui/react-theme_v9.1.6",
+      "version": "9.1.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-theme",
+            "comment": "Bump @fluentui/tokens to v1.0.0-alpha.3",
+            "commit": "5da01b4766ae6d81befb7bcd588d9cf8d969e1e2"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Jan 2023 19:53:58 GMT",
       "tag": "@fluentui/react-theme_v9.1.5",
       "version": "9.1.5",

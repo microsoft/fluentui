@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AriaLive renders a default state 1`] = `
+<div>
+  <div
+    aria-live="assertive"
+    class="fui-AriaLive__assertive"
+  />
+  <div
+    aria-live="polite"
+    class="fui-AriaLive__polite"
+  />
+</div>
+`;

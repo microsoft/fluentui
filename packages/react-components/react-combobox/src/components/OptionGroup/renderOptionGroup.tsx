@@ -1,17 +1,21 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+
+import { assertSlots } from '@fluentui/react-utilities';
 import type { OptionGroupState, OptionGroupSlots } from './OptionGroup.types';
 
 /**
  * Render the final JSX of OptionGroup
  */
 export const renderOptionGroup_unstable = (state: OptionGroupState) => {
-  const { slots, slotProps } = getSlots<OptionGroupSlots>(state);
+  assertSlots<OptionGroupSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.label && <slots.label {...slotProps.label}>{slotProps.label.children}</slots.label>}
-      {slotProps.root.children}
-    </slots.root>
+    <state.root>
+      {state.label && <state.label>{state.label.children}</state.label>}
+      {state.root.children}
+    </state.root>
   );
 };

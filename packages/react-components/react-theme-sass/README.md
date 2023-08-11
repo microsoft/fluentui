@@ -24,7 +24,8 @@ ReactDOM.render(
 2. In SCSS styles you can import SCSS variables from `@fluentui/react-theme-sass` and use them in the styles:
 
 ```scss
-@import '~@fluentui/react-theme-sass';
+@import '@fluentui/react-theme-sass';
+
 .brandedElement {
   color: $colorBrandForeground1;
   background: $colorBrandBackground;
@@ -32,4 +33,4 @@ ReactDOM.render(
 }
 ```
 
-⚠ This package does not export any Javascript code.️
+> ⚠ Note: This package does not export any Javascript code.️

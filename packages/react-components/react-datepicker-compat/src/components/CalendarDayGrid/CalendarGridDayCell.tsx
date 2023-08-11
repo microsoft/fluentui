@@ -4,17 +4,23 @@ import { getRTLSafeKey } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { mergeClasses } from '@griffel/react';
 import { addDays, addWeeks, compareDates, findAvailableDate, DateRangeType } from '../../utils';
-import { weekCornersClassNames } from './useWeekCornerStyles';
+import { weekCornersClassNames } from './useWeekCornerStyles.styles';
+import { extraCalendarDayGridClassNames } from './useCalendarDayGridStyles.styles';
 import type { AvailableDateOptions } from '../../utils';
 import type { DayInfo } from './CalendarDayGrid';
 import type { CalendarGridRowProps } from './CalendarGridRow';
-import { extraCalendarDayGridClassNames } from './useCalendarDayGridStyles';
 
+/**
+ * @internal
+ */
 export interface CalendarGridDayCellProps extends CalendarGridRowProps {
   day: DayInfo;
   dayIndex: number;
 }
 
+/**
+ * @internal
+ */
 export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellProps> = props => {
   const {
     navigatedDate,
@@ -210,7 +216,6 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
         classNames.dayCell,
         weekCorners && cornerStyle,
         day.isSelected && classNames.daySelected,
-        day.isSelected && 'ms-CalendarDay-daySelected',
         !day.isInBounds && classNames.dayOutsideBounds,
         !day.isInMonth && classNames.dayOutsideNavigatedMonth,
       )}
@@ -235,11 +240,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
       <button
         key={day.key + 'button'}
         aria-hidden={ariaHidden}
-        className={mergeClasses(
-          classNames.dayButton,
-          day.isToday && classNames.dayIsToday,
-          day.isToday && 'ms-CalendarDay-dayIsToday',
-        )}
+        className={mergeClasses(classNames.dayButton, day.isToday && classNames.dayIsToday)}
         aria-label={ariaLabel}
         id={isNavigatedDate ? activeDescendantId : undefined}
         disabled={!ariaHidden && !day.isInBounds}

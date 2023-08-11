@@ -14,7 +14,7 @@ import { BrandVariants, Theme as ThemeV9 } from '@fluentui/react-components';
 import { black, blackAlpha, grey, sharedColors, white, whiteAlpha } from './themeDuplicates';
 
 const mappedNeutrals = {
-  black: black,
+  black,
   blackTranslucent40: blackAlpha[40],
   neutralDark: grey[8],
   neutralPrimary: grey[14],
@@ -28,7 +28,7 @@ const mappedNeutrals = {
   neutralLight: grey[92],
   neutralLighter: grey[96],
   neutralLighterAlt: grey[98],
-  white: white,
+  white,
   whiteTranslucent40: whiteAlpha[40],
 };
 

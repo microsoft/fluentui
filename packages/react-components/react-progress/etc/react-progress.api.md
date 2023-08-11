@@ -8,7 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -37,22 +36,6 @@ export type ProgressBarSlots = {
 
 // @public
 export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'color'>;
-
-// @public @deprecated (undocumented)
-export const ProgressField_unstable: ForwardRefComponent<ProgressFieldProps_unstable>;
-
-// @public @deprecated (undocumented)
-export const progressFieldClassNames: {
-    control: string;
-    root: string;
-    label: string;
-    validationMessage: string;
-    validationMessageIcon: string;
-    hint: string;
-};
-
-// @public @deprecated (undocumented)
-export type ProgressFieldProps_unstable = DeprecatedFieldProps<ProgressBarProps>;
 
 // @public
 export const renderProgressBar_unstable: (state: ProgressBarState) => JSX.Element;

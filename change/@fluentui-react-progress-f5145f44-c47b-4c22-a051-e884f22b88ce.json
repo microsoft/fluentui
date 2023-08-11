@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Smooth out animation of indeterminate progress bar",
-  "packageName": "@fluentui/react-progress",
-  "email": "behowell@microsoft.com",
-  "dependentChangeType": "patch"
-}

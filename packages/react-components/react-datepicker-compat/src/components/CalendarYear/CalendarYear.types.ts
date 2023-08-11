@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { AnimationDirection } from '../Calendar/Calendar.types';
-import type { CalendarNavigationIcons } from '../Calendar/Calendar.types';
 import type { CalendarPickerStyleProps, CalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export interface ICalendarYear {
@@ -12,7 +11,7 @@ export interface ICalendarYear {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearRange {
   fromYear: number;
@@ -20,14 +19,14 @@ export interface CalendarYearRange {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearRangeToString {
   (range: CalendarYearRange): string;
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearStrings {
   rangeAriaLabel?: string | CalendarYearRangeToString;
@@ -37,7 +36,7 @@ export interface CalendarYearStrings {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarYearProps {
   /**
@@ -68,11 +67,6 @@ export interface CalendarYearProps {
   onSelectYear?: (year: number) => void;
 
   /**
-   * Custom navigation icons.
-   */
-  navigationIcons?: CalendarNavigationIcons;
-
-  /**
    * Callback action when the header is selected
    */
   onHeaderSelect?: (focus: boolean) => void;
@@ -89,13 +83,13 @@ export interface CalendarYearProps {
 
   /**
    * Whether the year picker should highlight the current year
-   * @defaultvalue false
+   * @default false
    */
   highlightCurrentYear?: boolean;
 
   /**
    * Whether the year picker should highlight the selected year
-   * @defaultvalue false
+   * @default false
    */
   highlightSelectedYear?: boolean;
 
@@ -120,10 +114,19 @@ export interface CalendarYearProps {
   animationDirection?: AnimationDirection;
 }
 
+/**
+ * @internal
+ */
 export interface CalendarYearStyleProps extends CalendarPickerStyleProps {}
 
+/**
+ * @internal
+ */
 export interface CalendarYearStyles extends CalendarPickerStyles {}
 
+/**
+ * @internal
+ */
 export interface CalendarYearHeaderProps extends CalendarYearProps, CalendarYearRange {
   /**
    * Callback action when the 'previous' navigation button is selected

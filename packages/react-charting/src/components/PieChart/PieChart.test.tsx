@@ -28,12 +28,12 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints = [
+export const chartPoints = [
   { y: 50, x: 'A' },
   { y: 25, x: 'B' },
   { y: 25, x: 'C' },
 ];
-const colors = [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green];
+export const colors = [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green];
 
 describe('PieChart snapShot testing', () => {
   it('renders PieChart correctly', () => {
@@ -91,5 +91,19 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, width: 600 });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<PieChart data={chartPoints} colors={colors} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<PieChart data={[]} colors={colors} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

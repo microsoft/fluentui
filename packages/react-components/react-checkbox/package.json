@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-checkbox",
-  "version": "9.1.2",
+  "version": "9.1.30",
   "description": "Fluent UI checkbox component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -22,25 +22,27 @@
     "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "9.0.0-alpha.24",
-    "@fluentui/react-icons": "^2.0.175",
-    "@fluentui/react-label": "^9.1.2",
-    "@fluentui/react-shared-contexts": "^9.3.0",
-    "@fluentui/react-tabster": "^9.5.6",
-    "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.7.0",
-    "@griffel/react": "^1.5.2",
-    "tslib": "^2.1.0"
+    "@fluentui/react-field": "^9.1.17",
+    "@fluentui/react-icons": "^2.0.207",
+    "@fluentui/react-jsx-runtime": "9.0.0-alpha.15",
+    "@fluentui/react-label": "^9.1.25",
+    "@fluentui/react-shared-contexts": "^9.7.2",
+    "@fluentui/react-tabster": "^9.12.2",
+    "@fluentui/react-theme": "^9.1.11",
+    "@fluentui/react-utilities": "^9.11.1",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
@@ -57,6 +59,7 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
     },

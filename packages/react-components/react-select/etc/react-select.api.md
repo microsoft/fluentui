@@ -8,7 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -22,22 +21,6 @@ export const Select: ForwardRefComponent<SelectProps>;
 
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;
-
-// @public @deprecated (undocumented)
-export const SelectField_unstable: ForwardRefComponent<SelectFieldProps_unstable>;
-
-// @public @deprecated (undocumented)
-export const selectFieldClassNames: {
-    control: string;
-    root: string;
-    label: string;
-    validationMessage: string;
-    validationMessageIcon: string;
-    hint: string;
-};
-
-// @public @deprecated (undocumented)
-export type SelectFieldProps_unstable = DeprecatedFieldProps<SelectProps>;
 
 // @public
 export type SelectOnChangeData = {

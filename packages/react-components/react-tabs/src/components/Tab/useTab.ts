@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  mergeCallbacks,
+  useEventCallback,
+  useMergedRefs,
+  slot,
+} from '@fluentui/react-utilities';
 import type { TabProps, TabState } from './Tab.types';
 import { useTabListContext_unstable } from '../TabList/TabListContext';
 import { SelectTabEvent } from '../TabList/TabList.types';
@@ -14,7 +20,7 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, disabled: tabDisabled = false, icon, value } = props;
+  const { content, disabled: tabDisabled = false, icon, onClick, value } = props;
 
   const appearance = useTabListContext_unstable(ctx => ctx.appearance);
   const reserveSelectedTabSpace = useTabListContext_unstable(ctx => ctx.reserveSelectedTabSpace);
@@ -28,7 +34,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
   const disabled = listDisabled || tabDisabled;
 
   const innerRef = React.useRef<HTMLElement>(null);
-  const onClick = useEventCallback((event: SelectTabEvent) => onSelect(event, { value }));
+  const onTabClick = useEventCallback(mergeCallbacks(onClick, (event: SelectTabEvent) => onSelect(event, { value })));
 
   React.useEffect(() => {
     onRegister({
@@ -41,30 +47,37 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
     };
   }, [onRegister, onUnregister, innerRef, value]);
 
-  const iconShorthand = resolveShorthand(icon);
-  const contentShorthand = resolveShorthand(content, { required: true, defaultProps: { children: props.children } });
+  const iconSlot = slot.optional(icon, { elementType: 'span' });
+  const contentSlot = slot.always(content, {
+    defaultProps: { children: props.children },
+    elementType: 'span',
+  });
+  const iconOnly = Boolean(iconSlot?.children && !contentSlot.children);
   return {
-    components: {
-      root: 'button',
-      icon: 'span',
-      content: 'span',
-    },
-    root: getNativeElementProps('button', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'tab',
-      type: 'button',
-      // aria-selected undefined indicates it is not selectable
-      // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
-      'aria-selected': disabled ? undefined : `${selected}`,
-      ...props,
-      disabled,
-      onClick,
+    components: { root: 'button', icon: 'span', content: 'span', contentReservedSpace: 'span' },
+    root: slot.always(
+      getNativeElementProps('button', {
+        ref: useMergedRefs(ref, innerRef),
+        role: 'tab',
+        type: 'button',
+        // aria-selected undefined indicates it is not selectable
+        // according to https://www.w3.org/TR/wai-aria-1.1/#aria-selected
+        'aria-selected': disabled ? undefined : `${selected}`,
+        ...props,
+        disabled,
+        onClick: onTabClick,
+      }),
+      { elementType: 'button' },
+    ),
+    icon: iconSlot,
+    iconOnly,
+    content: contentSlot,
+    contentReservedSpace: slot.optional(content, {
+      renderByDefault: !selected && !iconOnly && reserveSelectedTabSpace,
+      defaultProps: { children: props.children },
+      elementType: 'span',
     }),
-    icon: iconShorthand,
-    iconOnly: Boolean(iconShorthand?.children && !contentShorthand.children),
-    content: contentShorthand,
     appearance,
-    contentReservedSpaceClassName: reserveSelectedTabSpace ? '' : undefined,
     disabled,
     selected,
     size,

@@ -1,8 +1,65 @@
 # Change Log - @fluentui/react-theme
 
-This log was last generated on Wed, 21 Dec 2022 10:20:32 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 13:17:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.11)
+
+Wed, 09 Aug 2023 13:17:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.10..@fluentui/react-theme_v9.1.11)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.8 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+
+## [9.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.10)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.9..@fluentui/react-theme_v9.1.10)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.7 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+
+## [9.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.9)
+
+Tue, 20 Jun 2023 12:39:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.8..@fluentui/react-theme_v9.1.9)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.6 ([PR #28229](https://github.com/microsoft/fluentui/pull/28229) by beachball)
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.8)
+
+Fri, 12 May 2023 20:27:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.7..@fluentui/react-theme_v9.1.8)
+
+### Patches
+
+- chore: exclude .swcrc from being published ([PR #27740](https://github.com/microsoft/fluentui/pull/27740) by olfedias@microsoft.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.5 ([PR #27827](https://github.com/microsoft/fluentui/pull/27827) by beachball)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.7)
+
+Tue, 21 Mar 2023 21:23:10 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.6..@fluentui/react-theme_v9.1.7)
+
+### Patches
+
+- fix: add node field to package.json exports map. ([PR #27154](https://github.com/microsoft/fluentui/pull/27154) by tristan.watanabe@gmail.com)
+- chore: migrate to swc transpilation approach. ([PR #27250](https://github.com/microsoft/fluentui/pull/27250) by tristan.watanabe@gmail.com)
+- Bump @fluentui/tokens to v1.0.0-alpha.4 ([PR #27271](https://github.com/microsoft/fluentui/pull/27271) by beachball)
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.6)
+
+Wed, 15 Mar 2023 10:19:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme_v9.1.5..@fluentui/react-theme_v9.1.6)
+
+### Patches
+
+- Bump @fluentui/tokens to v1.0.0-alpha.3 ([PR #27213](https://github.com/microsoft/fluentui/pull/27213) by beachball)
 
 ## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme_v9.1.5)
 

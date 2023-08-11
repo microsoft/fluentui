@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { assertSlots } from '@fluentui/react-utilities';
 import { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.types';
 
 /**
@@ -7,7 +10,7 @@ import { MenuGroupHeaderSlots, MenuGroupHeaderState } from './MenuGroupHeader.ty
  * slots to children.
  */
 export const renderMenuGroupHeader_unstable = (state: MenuGroupHeaderState) => {
-  const { slots, slotProps } = getSlots<MenuGroupHeaderSlots>(state);
+  assertSlots<MenuGroupHeaderSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

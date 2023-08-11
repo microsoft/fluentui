@@ -22,7 +22,10 @@ export const Small = (props: Partial<ToolbarProps>) => (
 Small.parameters = {
   docs: {
     description: {
-      story: ['Height of the container is 32px'].join('\n'),
+      story: [
+        'The size determines the spacing around the toolbar controls.',
+        'A small sized toolbar has no vertical padding and uses 20px for horizontal padding.',
+      ].join('\n'),
     },
   },
 };

@@ -4,11 +4,17 @@ import { DAYS_IN_WEEK } from '../../utils';
 import type { CalendarDayGridProps, CalendarDayGridStyles } from './CalendarDayGrid.types';
 import type { DayInfo } from './CalendarDayGrid';
 
+/**
+ * @internal
+ */
 export interface CalendarDayMonthHeaderRowProps extends CalendarDayGridProps {
   weeks: DayInfo[][];
   classNames: CalendarDayGridStyles;
 }
 
+/**
+ * @internal
+ */
 export const CalendarMonthHeaderRow: React.FunctionComponent<CalendarDayMonthHeaderRowProps> = props => {
   const { showWeekNumbers, strings, firstDayOfWeek, allFocusable, weeksToShow, weeks, classNames } = props;
   const dayLabels = strings.shortDays.slice();

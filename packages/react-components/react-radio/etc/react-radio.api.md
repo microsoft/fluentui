@@ -8,13 +8,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { ContextSelector } from '@fluentui/react-context-selector';
-import { DeprecatedFieldProps } from '@fluentui/react-field';
-import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
-import { Provider } from 'react';
-import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -32,28 +27,12 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps>;
 export const radioGroupClassNames: SlotClassNames<RadioGroupSlots>;
 
 // @public (undocumented)
-export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
+export type RadioGroupContextValue = Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required' | 'aria-describedby'>;
 
 // @public (undocumented)
 export type RadioGroupContextValues = {
     radioGroup: RadioGroupContextValue;
 };
-
-// @public @deprecated (undocumented)
-export const RadioGroupField_unstable: ForwardRefComponent<RadioGroupFieldProps_unstable>;
-
-// @public @deprecated (undocumented)
-export const radioGroupFieldClassNames: {
-    control: string;
-    root: string;
-    label: string;
-    validationMessage: string;
-    validationMessageIcon: string;
-    hint: string;
-};
-
-// @public @deprecated (undocumented)
-export type RadioGroupFieldProps_unstable = DeprecatedFieldProps<RadioGroupProps>;
 
 // @public
 export type RadioGroupOnChangeData = {
@@ -72,7 +51,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
 };
 
 // @public (undocumented)
-export const RadioGroupProvider: Provider<RadioGroupContextValue> & FC<ProviderProps<RadioGroupContextValue>>;
+export const RadioGroupProvider: React_2.Provider<RadioGroupContextValue | undefined>;
 
 // @public (undocumented)
 export type RadioGroupSlots = {
@@ -80,7 +59,7 @@ export type RadioGroupSlots = {
 };
 
 // @public
-export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Partial<Exclude<RadioGroupProps, 'onChange' | 'layout'>>;
+export type RadioGroupState = ComponentState<RadioGroupSlots> & Required<Pick<RadioGroupProps, 'layout'>> & Pick<RadioGroupProps, 'name' | 'value' | 'defaultValue' | 'disabled' | 'layout' | 'required'>;
 
 // @public
 export type RadioOnChangeData = {
@@ -118,8 +97,11 @@ export const useRadio_unstable: (props: RadioProps, ref: React_2.Ref<HTMLInputEl
 // @public
 export const useRadioGroup_unstable: (props: RadioGroupProps, ref: React_2.Ref<HTMLDivElement>) => RadioGroupState;
 
-// @public (undocumented)
-export const useRadioGroupContext_unstable: <T>(selector: ContextSelector<RadioGroupContextValue, T>) => T;
+// @public @deprecated (undocumented)
+export const useRadioGroupContext_unstable: <T>(selector: (ctx: RadioGroupContextValue) => T) => T;
+
+// @public
+export const useRadioGroupContextValue_unstable: () => RadioGroupContextValue;
 
 // @public (undocumented)
 export const useRadioGroupContextValues: (state: RadioGroupState) => RadioGroupContextValues;

@@ -1,5 +1,8 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime classic */
+/** @jsx createElement */
+
+import { createElement } from '@fluentui/react-jsx-runtime';
+import { assertSlots } from '@fluentui/react-utilities';
 import { MenuPopoverSlots, MenuPopoverState } from './MenuPopover.types';
 import { Portal } from '@fluentui/react-portal';
 
@@ -7,15 +10,15 @@ import { Portal } from '@fluentui/react-portal';
  * Render the final JSX of MenuPopover
  */
 export const renderMenuPopover_unstable = (state: MenuPopoverState) => {
-  const { slots, slotProps } = getSlots<MenuPopoverSlots>(state);
+  assertSlots<MenuPopoverSlots>(state);
 
   if (state.inline) {
-    return <slots.root {...slotProps.root} />;
+    return <state.root />;
   }
 
   return (
     <Portal mountNode={state.mountNode}>
-      <slots.root {...slotProps.root} />
+      <state.root />
     </Portal>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useBadge_unstable } from './useBadge';
-import { useBadgeStyles_unstable } from './useBadgeStyles';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useBadgeStyles_unstable } from './useBadgeStyles.styles';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { renderBadge_unstable } from './renderBadge';
 import type { BadgeProps } from './Badge.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -14,8 +14,7 @@ export const Badge: ForwardRefComponent<BadgeProps> = React.forwardRef((props, r
 
   useBadgeStyles_unstable(state);
 
-  const { useBadgeStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useBadgeStyles_unstable')(state);
 
   return renderBadge_unstable(state);
 });

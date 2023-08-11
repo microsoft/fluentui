@@ -8,7 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -22,22 +21,6 @@ export const Textarea: ForwardRefComponent<TextareaProps>;
 
 // @public (undocumented)
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
-
-// @public @deprecated (undocumented)
-export const TextareaField_unstable: ForwardRefComponent<TextareaFieldProps_unstable>;
-
-// @public @deprecated (undocumented)
-export const textareaFieldClassNames: {
-    control: string;
-    root: string;
-    label: string;
-    validationMessage: string;
-    validationMessageIcon: string;
-    hint: string;
-};
-
-// @public @deprecated (undocumented)
-export type TextareaFieldProps_unstable = DeprecatedFieldProps<TextareaProps>;
 
 // @public
 export type TextareaOnChangeData = {

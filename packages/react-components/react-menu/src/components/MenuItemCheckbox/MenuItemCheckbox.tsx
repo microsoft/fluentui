@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { useMenuItemCheckbox_unstable } from './useMenuItemCheckbox';
 import { renderMenuItemCheckbox_unstable } from './renderMenuItemCheckbox';
-import { useMenuItemCheckboxStyles_unstable } from './useMenuItemCheckboxStyles';
+import { useMenuItemCheckboxStyles_unstable } from './useMenuItemCheckboxStyles.styles';
 import type { MenuItemCheckboxProps } from './MenuItemCheckbox.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHooks_unstable } from '@fluentui/react-shared-contexts';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Define a styled MenuItemCheckbox, using the `useMenuItemCheckbox_unstable` hook.
@@ -14,8 +14,7 @@ export const MenuItemCheckbox: ForwardRefComponent<MenuItemCheckboxProps> = Reac
 
   useMenuItemCheckboxStyles_unstable(state);
 
-  const { useMenuItemCheckboxStyles_unstable: useCustomStyles } = useCustomStyleHooks_unstable();
-  useCustomStyles(state);
+  useCustomStyleHook_unstable('useMenuItemCheckboxStyles_unstable')(state);
 
   return renderMenuItemCheckbox_unstable(state);
 });

@@ -5,6 +5,7 @@ import {
   useControllableState,
   useEventCallback,
   useMergedRefs,
+  slot,
 } from '@fluentui/react-utilities';
 import type { TabRegisterData, SelectTabData, SelectTabEvent, TabListProps, TabListState } from './TabList.types';
 import { TabValue } from '../Tab/Tab.types';
@@ -81,12 +82,16 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'tablist',
-      ...focusAttributes,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, innerRef),
+        role: 'tablist',
+        'aria-orientation': vertical ? 'vertical' : 'horizontal',
+        ...focusAttributes,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     appearance,
     reserveSelectedTabSpace,
     disabled,

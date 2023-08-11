@@ -28,7 +28,7 @@ exports[`Combobox renders a default state 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 01-.78 0L4.15 8.35a.5.5 0 11.7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0z"
+          d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
           fill="currentColor"
         />
       </svg>
@@ -43,7 +43,7 @@ exports[`Combobox renders an open listbox 1`] = `
     class="fui-Combobox"
   >
     <input
-      aria-activedescendant="fluent-option21"
+      aria-activedescendant="fluent-option3"
       aria-expanded="true"
       class="fui-Combobox__input"
       role="combobox"
@@ -66,21 +66,21 @@ exports[`Combobox renders an open listbox 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 01-.78 0L4.15 8.35a.5.5 0 11.7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0z"
+          d="M15.85 7.65c.2.2.2.5 0 .7l-5.46 5.49a.55.55 0 0 1-.78 0L4.15 8.35a.5.5 0 1 1 .7-.7L10 12.8l5.15-5.16c.2-.2.5-.2.7 0Z"
           fill="currentColor"
         />
       </svg>
     </span>
     <div
       class="fui-Listbox fui-Combobox__listbox"
-      id="fluent-listbox20"
+      id="fluent-listbox2"
       role="listbox"
       style="position: fixed; left: 0px; top: 0px; margin: 0px; width: 0px;"
     >
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option21"
+        id="fluent-option3"
         role="option"
       >
         <span
@@ -97,7 +97,7 @@ exports[`Combobox renders an open listbox 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
               fill="currentColor"
             />
           </svg>
@@ -107,7 +107,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option22"
+        id="fluent-option4"
         role="option"
       >
         <span
@@ -124,7 +124,7 @@ exports[`Combobox renders an open listbox 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
               fill="currentColor"
             />
           </svg>
@@ -134,7 +134,7 @@ exports[`Combobox renders an open listbox 1`] = `
       <div
         aria-selected="false"
         class="fui-Option"
-        id="fluent-option23"
+        id="fluent-option5"
         role="option"
       >
         <span
@@ -151,7 +151,7 @@ exports[`Combobox renders an open listbox 1`] = `
             xmlns="http://www.w3.org/2000/svg"
           >
             <path
-              d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+              d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
               fill="currentColor"
             />
           </svg>

@@ -15,6 +15,12 @@ import {
   PresenceBadgeStatus,
   Avatar,
   Input,
+  useId,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -147,22 +153,35 @@ export const ResizableColumnsUncontrolled = () => {
   };
   const rows = getRows();
 
+  const inputId = useId('column-width');
+
   return (
     <>
       <p>
-        First column width:{' '}
-        <Input type="number" onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
+        <label htmlFor={inputId}>First column width: </label>
+        <Input type="number" id={inputId} onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
       </p>
       <Table sortable aria-label="Table with sort" ref={tableRef}>
         <TableHeader>
           <TableRow>
             {columns.map(column => (
-              <TableHeaderCell
-                key={column.columnId}
-                {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
-              >
-                {column.renderHeaderCell()}
-              </TableHeaderCell>
+              <Menu openOnContext key={column.columnId}>
+                <MenuTrigger>
+                  <TableHeaderCell
+                    key={column.columnId}
+                    {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
+                  >
+                    {column.renderHeaderCell()}
+                  </TableHeaderCell>
+                </MenuTrigger>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId)}>
+                      Keyboard Column Resizing
+                    </MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
             ))}
           </TableRow>
         </TableHeader>
@@ -214,10 +233,10 @@ ResizableColumnsUncontrolled.parameters = {
         'Options can be passed to the plugin to define minimum, default and optimal ',
         '(in a controlled scenario) width of the column.',
         '',
-        'To learn about how to control widths from the parent, please see the example below.',
+        'To make features like column resizing work with keyboard navigation, the `Menu` component is used to provide',
+        ' a context menu for the header cells, which allows the user to access advanced Table features.',
         '',
-        "> As this is is a preview, we don't currently provide an example how to change the column widths via keyboard.",
-        'We are [tracking an issue](https://github.com/microsoft/fluentui/issues/26739) on this matter.',
+        'To learn about how to control widths from the parent, please see the example below.',
       ].join('\n'),
     },
   },

@@ -16,8 +16,8 @@ import {
 import { createV9Theme } from '@fluentui/react-migration-v8-v9';
 
 import descriptionMd from './Description.md';
-import { ThemePreviewV8 } from '../ThemePreviewV8';
-import { ThemePreviewV9 } from '../ThemePreviewV9';
+import { ThemePreviewV8 } from '../ThemePreviewV8.stories';
+import { ThemePreviewV9 } from '../ThemePreviewV9.stories';
 
 const useStyles = makeStyles({
   root: {

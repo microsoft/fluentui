@@ -13,7 +13,7 @@ import type { IButtonProps } from '@fluentui/react';
 import type { IContextualMenuItem } from '@fluentui/react';
 import type { IContextualMenuProps } from '@fluentui/react';
 import type { IPalette } from '@fluentui/react';
-import { IStackItemProps } from '@fluentui/react';
+import type { IStackItemProps } from '@fluentui/react';
 import type { IStackProps } from '@fluentui/react';
 import type { MenuProps } from '@fluentui/react-menu';
 import * as React_2 from 'react';
@@ -63,10 +63,10 @@ export const CompoundButtonShim: React_2.ForwardRefExoticComponent<IButtonProps 
 export const createBrandVariants: (palette: IPalette, interpolation?: Interpolation) => BrandVariants;
 
 // @public
-export const createV8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkTheme?: boolean, themeV8?: Theme_2 | undefined) => Theme_2;
+export const createV8Theme: (brandColors: BrandVariants, themeV9: Theme, isDarkTheme?: boolean, themeV8?: Theme_2) => Theme_2;
 
 // @public
-export const createV9Theme: (themeV8: Theme_2, baseThemeV9?: Theme | undefined) => Theme;
+export const createV9Theme: (themeV8: Theme_2, baseThemeV9?: Theme) => Theme;
 
 // @public
 export const DefaultButtonShim: React_2.ForwardRefExoticComponent<IButtonProps & React_2.RefAttributes<HTMLButtonElement>>;

@@ -1,7 +1,7 @@
 import { AnimationDirection } from '../Calendar/Calendar.types';
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarPickerStyleProps {
   /**
@@ -36,7 +36,7 @@ export interface CalendarPickerStyleProps {
 }
 
 /**
- * {@docCategory Calendar}
+ * @internal
  */
 export interface CalendarPickerStyles {
   /**

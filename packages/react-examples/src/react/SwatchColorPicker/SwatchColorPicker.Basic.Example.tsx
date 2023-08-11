@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useId } from '@fluentui/react-hooks';
-import { SwatchColorPicker } from '@fluentui/react/lib/SwatchColorPicker';
+import { IColorCellProps, SwatchColorPicker } from '@fluentui/react/lib/SwatchColorPicker';
 
 const colorCellsExample1 = [
   { id: 'a', label: 'orange', color: '#ca5010' },
@@ -24,12 +24,36 @@ const colorCellsExample2 = [
   { id: 'l', label: 'gray20', color: '#69797e' },
 ];
 
+const colorCellsExample3 = [
+  { id: 'a', label: 'redBlueGradient', color: 'linear-gradient(0, red, blue)' },
+  { id: 'b', label: 'greenGradient', color: 'linear-gradient(0, grey, green)' },
+  { id: 'c', label: 'yellowGradient', color: 'linear-gradient(0, grey, yellow)' },
+  { id: 'd', label: 'magentaGradient', color: 'linear-gradient(0, grey, magenta)' },
+  { id: 'e', label: 'cyanGradient', color: 'linear-gradient(0, #038387, #ca5010)' },
+  { id: 'f', label: 'ygGradient', color: 'linear-gradient(0, #8cbd18, #69797e)' },
+  { id: 'g', label: 'grayGreen', color: 'linear-gradient(0, #0b6a0b, #69797e)' },
+  { id: 'h', label: 'gray', color: '#7a7574' },
+];
+
 export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
   const [previewColor, setPreviewColor] = React.useState<string>();
   const baseId = useId('colorpicker');
 
   const swatchColorPickerOnCellHovered = (id: string, color: string) => {
     setPreviewColor(color!);
+  };
+
+  const renderCustomCellContent = (cellProps: IColorCellProps) => {
+    return (
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          borderRadius: '50%',
+          background: cellProps.color,
+        }}
+      />
+    );
   };
 
   return (
@@ -81,6 +105,17 @@ export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
         cellBorderWidth={3}
         colorCells={colorCellsExample2}
         aria-labelledby={`${baseId}-grid`}
+      />
+      <div id={`${baseId}-custom-content`}>Swatch color picker with gradient colors:</div>
+      <SwatchColorPicker
+        columnCount={4}
+        cellHeight={40}
+        cellWidth={40}
+        cellShape={'circle'}
+        colorCells={colorCellsExample3}
+        aria-labelledby={`${baseId}-custom-content`}
+        // eslint-disable-next-line react/jsx-no-bind
+        onRenderColorCellContent={renderCustomCellContent}
       />
       <div id={`${baseId}-disabled`}>Simple disabled circle swatch color picker:</div>
       <SwatchColorPicker

@@ -1,4 +1,6 @@
+import { isHTMLElement } from '@fluentui/react-utilities';
 import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
+
 import { FOCUS_VISIBLE_ATTR } from './constants';
 
 /**
@@ -22,9 +24,9 @@ type HTMLElementWithFocusVisibleScope = {
 /**
  * @internal
  * @param scope - Applies the ponyfill to all DOM children
- * @param win - window
+ * @param targetWindow - window
  */
-export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () => void {
+export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void {
   if (alreadyInScope(scope)) {
     // Focus visible polyfill already applied at this scope
     return () => undefined;
@@ -34,7 +36,7 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, win: Window): () =
     current: undefined,
   };
 
-  const keyborg = createKeyborg(win);
+  const keyborg = createKeyborg(targetWindow);
 
   // When navigation mode changes remove the focus-visible selector
   keyborg.subscribe(isNavigatingWithKeyboard => {
@@ -88,13 +90,6 @@ function applyFocusVisibleClass(el: HTMLElement) {
 
 function removeFocusVisibleClass(el: HTMLElement) {
   el.removeAttribute(FOCUS_VISIBLE_ATTR);
-}
-
-function isHTMLElement(target: EventTarget | null): target is HTMLElement {
-  if (!target) {
-    return false;
-  }
-  return Boolean(target && typeof target === 'object' && 'classList' in target && 'contains' in target);
 }
 
 function alreadyInScope(el: HTMLElement | null | undefined): boolean {

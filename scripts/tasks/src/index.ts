@@ -87,3 +87,13 @@ export type {
 export { preset } from './presets';
 export { expandSourcePath } from './copy';
 export { postprocessTask } from './postprocess';
+export {
+  getPerfRegressions,
+  AllRenderTypes,
+  DefaultRenderTypes,
+  ScenarioIterations,
+  ScenarioRenderTypes,
+  ScenarioNames,
+  perfTestEnv,
+  PerfRegressionConfig,
+} from './perf-task';
