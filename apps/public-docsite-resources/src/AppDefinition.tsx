@@ -581,6 +581,18 @@ export const AppDefinition: IAppDefinition = {
           name: 'HorizontalBarChartWithAxis',
           url: '#/examples/HorizontalBarChartWithAxis',
         },
+        {
+          component: require<any>('./components/pages/Charting/PieChartPage').PieChartPage,
+          key: 'PieChart',
+          name: 'PieChart',
+          url: '#/examples/PieChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/SankeyChartPage').SankeyChartPage,
+          key: 'SankeyChart',
+          name: 'SankeyChart',
+          url: '#/examples/SankeyChart',
+        },
       ],
     },
     {

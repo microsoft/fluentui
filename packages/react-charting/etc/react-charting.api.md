@@ -1046,7 +1046,7 @@ export interface IMultiStackedBarChartStyles {
 export interface IPieChart {
 }
 
-// @public (undocumented)
+// @public
 export interface IPieChartProps {
     chartTitle?: string;
     className?: string;
@@ -1086,7 +1086,7 @@ export interface ISankeyChartData {
     nodes: SNode[];
 }
 
-// @public (undocumented)
+// @public
 export interface ISankeyChartProps {
     borderColorsForNodes?: string[];
     className?: string;
@@ -1465,10 +1465,10 @@ export enum NodesComposition {
     long = 1
 }
 
-// @public (undocumented)
+// @public
 export const PieChart: React_2.FunctionComponent<IPieChartProps>;
 
-// @public (undocumented)
+// @public
 export const SankeyChart: React_2.FunctionComponent<ISankeyChartProps>;
 
 // @public (undocumented)

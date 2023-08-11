@@ -102,6 +102,7 @@ module.exports = {
       'HorizontalBarChartWithAxis',
       'PieChart',
       'GaugeChart',
+      'SankeyChart',
     ],
   },
 };

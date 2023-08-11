@@ -4,6 +4,10 @@ import { IChartProps } from '../../types/IDataPoint';
 
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
+/**
+ * SankeyChart component.
+ * {@docCategory SankeyChart}
+ */
 export interface ISankeyChartProps {
   /**
    * Data to render in the chart.

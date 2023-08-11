@@ -4,6 +4,10 @@ import { IDataPoint } from '../../types/IDataPoint';
 export type { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}
 
+/**
+ * PieChart component.
+ * {@docCategory PieChart}
+ */
 export interface IPieChartProps {
   /**
    * Data to render in the chart.

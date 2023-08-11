@@ -117,6 +117,8 @@ export const categories: { [name: string]: ICategory } = {
     HeatMapChart: {},
     HorizontalBarChart: {},
     HorizontalBarChartWithAxis: {},
+    PieChart: {},
+    SankeyChart: {},
   },
   Utilities: {
     Announced: {
