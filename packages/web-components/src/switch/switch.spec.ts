@@ -35,7 +35,7 @@ test.describe.only('Switch', () => {
   });
 
   test('should set the label value when passed a value attribute', async () => {
-    const testValue = 'asdasdasda';
+    const testValue = 'My Test Value';
 
     await root.evaluate((node, testValue) => {
       node.innerHTML = /* html */ `
