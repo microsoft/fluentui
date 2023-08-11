@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
-import { Avatar, getHashCode } from './avatar.js';
+import { Avatar } from './avatar.js';
 import { AvatarAppearance, AvatarColor, AvatarSize } from './avatar.options.js';
 
 test.describe('Avatar Component', () => {
@@ -179,6 +179,7 @@ test.describe('Avatar Component', () => {
         node.color = colorValue as AvatarColor;
       }, value as string);
       await expect(element).toHaveJSProperty('color', `${value}`);
+      await expect(element).toHaveAttribute('color', `${value}`);
     });
   }
   for (const [attribute, value] of Object.entries(sizeAttributes)) {
@@ -187,14 +188,17 @@ test.describe('Avatar Component', () => {
         node.size = sizeValue as AvatarSize;
       }, value as number);
       await expect(element).toHaveJSProperty('size', value);
+      await expect(element).toHaveAttribute('size', `${value}`);
     });
   }
   for (const [attribute, value] of Object.entries(appearanceAttributes)) {
-    test(`should set the appearance attribute to \`${value}\` on the internal control`, async () => {
-      await element.evaluate((node: Avatar, sizeValue: string) => {
-        node.appearance = sizeValue as AvatarAppearance;
+    test(`should set and reflect the appearance attribute to \`${value}\` on the internal control`, async () => {
+      await element.evaluate((node: Avatar, appearanceValue: string) => {
+        node.appearance = appearanceValue as AvatarAppearance;
       }, value as string);
+
       await expect(element).toHaveJSProperty('appearance', `${value}`);
+      await expect(element).toHaveAttribute('appearance', `${value}`);
     });
   }
 });
