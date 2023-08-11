@@ -593,6 +593,37 @@ export const AppDefinition: IAppDefinition = {
           name: 'SankeyChart',
           url: '#/examples/SankeyChart',
         },
+        {
+          component: require<any>('./components/pages/Charting/SparklineChartPage').SparklineChartPage,
+          key: 'SparklineChart',
+          name: 'SparklineChart',
+          url: '#/examples/SparklineChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/StackedBarChartPage').StackedBarChartPage,
+          key: 'StackedBarChart',
+          name: 'StackedBarChart',
+          url: '#/examples/StackedBarChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/MultiStackedBarChartPage').MultiStackedBarChartPage,
+          key: 'MultiStackedBarChart',
+          name: 'MultiStackedBarChart',
+          url: '#/examples/MultiStackedBarChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/TreeChartPage').TreeChartPage,
+          key: 'TreeChart',
+          name: 'TreeChart',
+          url: '#/examples/TreeChart',
+        },
+        {
+          component: require<any>('./components/pages/Charting/VerticalStackedBarChartPage')
+            .VerticalStackedBarChartPage,
+          key: 'VerticalStackedBarChart',
+          name: 'VerticalStackedBarChart',
+          url: '#/examples/VerticalStackedBarChart',
+        },
       ],
     },
     {

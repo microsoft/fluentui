@@ -11,6 +11,10 @@ import {
   IVSChartDataPoint,
 } from '../../index';
 
+/**
+ * VerticalStackedBarChart component.
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.

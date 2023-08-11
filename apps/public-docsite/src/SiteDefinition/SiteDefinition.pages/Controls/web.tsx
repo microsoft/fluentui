@@ -119,6 +119,11 @@ export const categories: { [name: string]: ICategory } = {
     HorizontalBarChartWithAxis: {},
     PieChart: {},
     SankeyChart: {},
+    SparklineChart: {},
+    StackedBarChart: {},
+    MultiStackedBarChart: {},
+    TreeChart: {},
+    VerticalStackedBarChart: {},
   },
   Utilities: {
     Announced: {

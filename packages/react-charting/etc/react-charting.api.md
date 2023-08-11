@@ -987,7 +987,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
     yAxisType?: YAxisType;
 }
 
-// @public (undocumented)
+// @public
 export interface IMultiStackedBarChartProps {
     barHeight?: number;
     calloutProps?: Partial<ICalloutProps>;
@@ -1137,7 +1137,7 @@ export interface IShapeProps {
     svgProps: React_2.SVGAttributes<SVGElement>;
 }
 
-// @public (undocumented)
+// @public
 export interface ISparklineProps {
     className?: string;
     culture?: string;
@@ -1166,7 +1166,7 @@ export interface ISparklineStyles {
 export interface IStackedBarChart {
 }
 
-// @public (undocumented)
+// @public
 export interface IStackedBarChartProps {
     barBackgroundColor?: string;
     barHeight?: number;
@@ -1225,7 +1225,7 @@ export interface IStackedBarChartStyles {
     target: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export interface ITreeChartDataPoint {
     bodytext?: string;
     children?: Array<ITreeChartDataPoint>;
@@ -1347,7 +1347,7 @@ export interface IVerticalBarChartStyles extends ICartesianChartStyles {
     yAxisTicks?: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
     allowHoverOnLegend?: boolean;
     barCornerRadius?: number;
@@ -1448,7 +1448,7 @@ export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof t
 // @public
 export const LineChart: React_2.FunctionComponent<ILineChartProps>;
 
-// @public (undocumented)
+// @public
 export const MultiStackedBarChart: React_2.FunctionComponent<IMultiStackedBarChartProps>;
 
 // @public (undocumented)
@@ -1483,10 +1483,10 @@ export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
 // @public (undocumented)
 export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
 
-// @public (undocumented)
+// @public
 export const Sparkline: React_2.FunctionComponent<ISparklineProps>;
 
-// @public (undocumented)
+// @public
 export const StackedBarChart: React_2.FunctionComponent<IStackedBarChartProps>;
 
 // Warning: (ae-forgotten-export) The symbol "ITextboxProps" needs to be exported by the entry point index.d.ts
@@ -1494,7 +1494,7 @@ export const StackedBarChart: React_2.FunctionComponent<IStackedBarChartProps>;
 // @public (undocumented)
 export const Textbox: React_2.FunctionComponent<ITextboxProps>;
 
-// @public (undocumented)
+// @public
 export const TreeChart: React_2.FunctionComponent<ITreeProps>;
 
 // @public (undocumented)
@@ -1506,7 +1506,7 @@ export enum TreeTraverse {
 // @public
 export const VerticalBarChart: React_2.FunctionComponent<IVerticalBarChartProps>;
 
-// @public (undocumented)
+// @public
 export const VerticalStackedBarChart: React_2.FunctionComponent<IVerticalStackedBarChartProps>;
 
 // (No @packageDocumentation comment for this package)

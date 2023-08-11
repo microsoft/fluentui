@@ -6,6 +6,10 @@ import { IOverflowSetProps } from '@fluentui/react/lib/OverflowSet';
 import { IFocusZoneProps } from '@fluentui/react-focus';
 import { ILegendsProps } from '../Legends/index';
 
+/**
+ * MultiStackedBarChart component.
+ * {@docCategory MultiStackedBarChart}
+ */
 export interface IMultiStackedBarChartProps {
   /**
    * An array of chart data points for the multistacked bar chart
