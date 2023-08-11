@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 13:16:48 GMT",
+      "tag": "@fluentui/priority-overflow_v9.1.3",
+      "version": "9.1.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "6247214bde5df11e951247f0a6d1278cc98490ea",
+            "comment": "fix: inaccurate calculation of size"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jul 2023 13:29:15 GMT",
       "tag": "@fluentui/priority-overflow_v9.1.2",
       "version": "9.1.2",

@@ -29,6 +29,12 @@ const useStyles = makeStyles({
     alignItems: 'center',
     ...shorthands.padding(tokens.spacingHorizontalXS),
   },
+  iconOnly: {
+    '&:hover': {
+      ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid'),
+      ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalXS),
+    },
+  },
   small: {
     height: '24px',
     ...typographyStyles.caption1,
@@ -112,7 +118,8 @@ export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): Br
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className);
+    const iconOnlyClass = state.iconOnly ? styles.iconOnly : '';
+    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className, iconOnlyClass);
   }
 
   useLinkStyles_unstable(state as LinkState);

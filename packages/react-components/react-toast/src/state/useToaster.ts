@@ -32,11 +32,6 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
     }
   });
 
-  const tryRestoreFocus = React.useCallback(() => {
-    lastActiveElementRef.current?.focus();
-    lastActiveElementRef.current = null;
-  }, []);
-
   const pauseAllToasts = React.useCallback(() => {
     toaster.visibleToasts.forEach(toastId => {
       const toast = toaster.toasts.get(toastId);
@@ -69,6 +64,25 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
       return cur;
     }, undefined as Toast | undefined);
   }, [toaster]);
+
+  const tryRestoreFocus = React.useCallback(() => {
+    const mostRecentToast = getMostRecentVisibleToast();
+    if (mostRecentToast?.imperativeRef.current) {
+      mostRecentToast.imperativeRef.current.focus();
+    } else {
+      lastActiveElementRef.current?.focus();
+      lastActiveElementRef.current = null;
+    }
+  }, [getMostRecentVisibleToast]);
+
+  const closeAllToasts = React.useCallback(() => {
+    toaster.visibleToasts.forEach(toastId => {
+      const toast = toaster.toasts.get(toastId);
+      toast?.close();
+    });
+
+    tryRestoreFocus();
+  }, [toaster, tryRestoreFocus]);
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -192,5 +206,6 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
     pauseAllToasts,
     playAllToasts,
     tryRestoreFocus,
+    closeAllToasts,
   };
 }

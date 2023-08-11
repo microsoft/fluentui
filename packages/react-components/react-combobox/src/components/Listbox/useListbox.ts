@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getNativeElementProps, mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  mergeCallbacks,
+  useEventCallback,
+  useMergedRefs,
+  slot,
+} from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import type { OptionValue } from '../../utils/OptionCollection.types';
@@ -87,14 +93,17 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      role: multiselect ? 'menu' : 'listbox',
-      'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
-      'aria-multiselectable': multiselect,
-      tabIndex: 0,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        role: multiselect ? 'menu' : 'listbox',
+        'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
+        'aria-multiselectable': multiselect,
+        tabIndex: 0,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     multiselect,
     clearSelection,
     ...optionCollection,

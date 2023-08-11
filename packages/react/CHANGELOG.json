@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 04 Aug 2023 07:35:28 GMT",
+      "tag": "@fluentui/react_v8.110.12",
+      "version": "8.110.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1d1aa7cc05cf1bee98e2dbebdd9a5040544379f1",
+            "comment": "fix(TimePicker): Selection now works in locales that don't use \"am\"/\"pm\" in their time format"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jul 2023 07:44:53 GMT",
       "tag": "@fluentui/react_v8.110.11",
       "version": "8.110.11",

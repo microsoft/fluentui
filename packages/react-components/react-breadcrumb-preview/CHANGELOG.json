@@ -2,6 +2,134 @@
   "name": "@fluentui/react-breadcrumb-preview",
   "entries": [
     {
+      "date": "Wed, 09 Aug 2023 13:16:50 GMT",
+      "tag": "@fluentui/react-breadcrumb-preview_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "ae895389be847075d79e5638d7ecc39a949d24f4",
+            "comment": "fix: disabled BreadcrumbLink shouldn't be focusable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "d5ece238df797e84a59affc6162b0fa5cc46649d",
+            "comment": "chore(cxe-prg): migrate to new slot API"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.28",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-link to v9.1.7",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.2",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.12.1",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-theme to v9.1.11",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:55 GMT",
+      "tag": "@fluentui/react-breadcrumb-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "d445789f33a50255a6a51548d7282a482bc78a0b",
+            "comment": "fix: made BreadcrumbButton consistent with other items"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "ede28fe6d1d1ce394c6f019bd424ec8b14ca9d12",
+            "comment": "feat: Added an icon for BreadcrumbItem"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.27",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-link to v9.1.6",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.7.1",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.12.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-theme to v9.1.10",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.11.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 01 Aug 2023 10:17:21 GMT",
       "tag": "@fluentui/react-breadcrumb-preview_v0.1.3",
       "version": "0.1.3",

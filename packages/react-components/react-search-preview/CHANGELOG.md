@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-search-preview
 
-This log was last generated on Tue, 01 Aug 2023 10:17:21 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 13:17:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.5)
+
+Wed, 09 Aug 2023 13:17:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.4..@fluentui/react-search-preview_v0.1.5)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+- Bump @fluentui/react-input to v9.4.26 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-theme to v9.1.11 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+
+## [0.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.4)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.3..@fluentui/react-search-preview_v0.1.4)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.25 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-theme to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.3)
 

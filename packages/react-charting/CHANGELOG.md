@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 02 Aug 2023 07:34:48 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 07:36:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.16.59](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.59)
+
+Wed, 09 Aug 2023 07:36:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.58..@fluentui/react-charting_v5.16.59)
+
+### Patches
+
+- Changes for lazy load for hover card and legends ([PR #27857](https://github.com/microsoft/fluentui/pull/27857) by ankityadav@microsoft.com)
+
+## [5.16.58](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.58)
+
+Fri, 04 Aug 2023 07:35:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.16.57..@fluentui/react-charting_v5.16.58)
+
+### Patches
+
+- Bump @fluentui/theme-samples to v8.7.105 ([PR #28373](https://github.com/microsoft/fluentui/pull/28373) by beachball)
+- Bump @fluentui/react to v8.110.12 ([PR #28373](https://github.com/microsoft/fluentui/pull/28373) by beachball)
 
 ## [5.16.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.16.57)
 
