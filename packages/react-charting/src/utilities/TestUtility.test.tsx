@@ -63,3 +63,8 @@ export const testScreenResolutionChanges = (testFunction: () => void) => {
     });
   });
 };
+
+it('getById and getByClass should be defined', () => {
+  expect(getById).toBeDefined();
+  expect(getByClass).toBeDefined();
+});
