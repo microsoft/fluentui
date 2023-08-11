@@ -2,6 +2,27 @@
   "name": "@fluentui/react-image",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 12:14:26 GMT",
+      "tag": "@fluentui/react-image_v9.1.22",
+      "version": "9.1.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-utilities to v9.11.1",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-image",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Aug 2023 13:16:56 GMT",
       "tag": "@fluentui/react-image_v9.1.21",
       "version": "9.1.21",

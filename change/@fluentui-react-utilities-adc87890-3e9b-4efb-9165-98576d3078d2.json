@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: tests for slot.resolveShorthand behavior",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
