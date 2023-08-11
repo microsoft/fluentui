@@ -229,6 +229,7 @@ export interface ICartesianChartProps {
     noOfCharsToTruncate?: number;
     parentRef?: HTMLElement | null;
     rotateXAxisLables?: boolean;
+    secondaryYAxistitle?: string;
     secondaryYScaleOptions?: {
         yMinValue?: number;
         yMaxValue?: number;
@@ -247,9 +248,11 @@ export interface ICartesianChartProps {
     xAxisTickCount?: number;
     xAxisTickPadding?: number;
     xAxistickSize?: number;
+    xAxisTitle?: string;
     xMaxValue?: number;
     yAxisTickCount?: number;
     yAxisTickFormat?: any;
+    yAxisTitle?: string;
     yMaxValue?: number;
     yMinValue?: number;
 }
@@ -270,6 +273,7 @@ export interface ICartesianChartStyleProps {
 
 // @public (undocumented)
 export interface ICartesianChartStyles {
+    axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
     calloutContentRoot?: IStyle;
     calloutContentX?: IStyle;
