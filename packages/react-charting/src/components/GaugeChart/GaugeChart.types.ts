@@ -5,7 +5,7 @@ import { IAccessibilityProps } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
 /**
- * Gaugechart component.
+ * IGaugeChartSegment interface for Gaugechart.
  * {@docCategory GaugeChart}
  */
 export interface IGaugeChartSegment {
@@ -36,7 +36,7 @@ export enum GaugeValueFormat {
 }
 
 /**
- * Gaugechart component.
+ * IGaugeChartProps for Gaugechart component.
  * {@docCategory GaugeChart}
  */
 export interface IGaugeChartProps {

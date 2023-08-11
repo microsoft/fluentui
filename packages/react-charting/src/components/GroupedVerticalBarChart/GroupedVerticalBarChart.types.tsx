@@ -9,7 +9,7 @@ import {
 } from '../../index';
 
 /**
- * GroupedVerticalBarchart component.
+ * IGroupedVerticalBarChartProps for GroupedVerticalBarchart component.
  * {@docCategory GroupedVerticalBarChart}
  */
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {

@@ -5,7 +5,7 @@ import { IChartProps } from '../../types/IDataPoint';
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
 /**
- * SankeyChart component.
+ * ISankeyChartProps for Sankeychart component.
  * {@docCategory SankeyChart}
  */
 export interface ISankeyChartProps {

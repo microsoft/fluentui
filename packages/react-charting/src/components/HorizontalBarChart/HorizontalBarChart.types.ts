@@ -4,7 +4,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
 /**
- * HorizontalBarChart component.
+ * IHorizontalBarChartProps for HorizontalBarchart component.
  * {@docCategory HorizontalBarChart}
  */
 export interface IHorizontalBarChartProps {

@@ -6,7 +6,7 @@ import { getStyles } from './PieChart.styles';
 
 // Create a PieChart variant which uses these default styles and this styled subcomponent.
 /**
- * PieChart component.
+ * Piechart component.
  * {@docCategory PieChart}
  */
 export const PieChart: React.FunctionComponent<IPieChartProps> = styled<

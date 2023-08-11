@@ -12,7 +12,7 @@ import {
 } from '../../index';
 
 /**
- * VerticalStackedBarChart component.
+ * IVerticalStackedBarChartProps for VerticalStackedBarchart component.
  * {@docCategory VerticalStackedBarChart}
  */
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {

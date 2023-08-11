@@ -8,7 +8,7 @@ import {
 } from '../../index';
 
 /**
- * HorizontalBarChartWithAxis component.
+ * IHorizontalBarChartWithAxisProps for HorizontalBarchartWithAxis component.
  * {@docCategory HorizontalBarChartWithAxis}
  */
 export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {

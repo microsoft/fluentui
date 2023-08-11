@@ -10,7 +10,7 @@ import { ILegendsProps } from '../Legends/Legends.types';
 import { IHeatMapChartData } from '../../types/IDataPoint';
 
 /**
- * HeatMapChart component.
+ * IHeatMapChartProps for HeatMapchart component.
  * {@docCategory HeatMapChart}
  */
 export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {

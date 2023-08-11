@@ -2,7 +2,7 @@ import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
 /**
- * TreeChart component.
+ * ITreeChartDataPoint interface for Treechart component.
  * {@docCategory TreeChart}
  */
 export interface ITreeChartDataPoint {

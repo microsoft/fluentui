@@ -10,7 +10,7 @@ import { getHorizontalBarChartStyles } from './HorizontalBarChart.styles';
 
 // Create a HorizontalBarChart variant which uses these default styles and this styled subcomponent.
 /**
- * HorizontalBarChart component.
+ * HorizontalBarchart component.
  * {@docCategory HorizontalBarChart}
  */
 export const HorizontalBarChart: React.FunctionComponent<IHorizontalBarChartProps> = styled<

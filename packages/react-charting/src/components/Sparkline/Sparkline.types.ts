@@ -6,7 +6,7 @@ import { ICartesianChartStyleProps } from '../CommonComponents/index';
 export interface ISparklineStyleProps extends ICartesianChartStyleProps {}
 
 /**
- * Sparkline component.
+ * ISparklineProps for Sparkline component.
  * {@docCategory Sparkline}
  */
 export interface ISparklineProps {

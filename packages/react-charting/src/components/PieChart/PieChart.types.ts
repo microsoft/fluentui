@@ -5,7 +5,7 @@ export type { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}
 
 /**
- * PieChart component.
+ * IPieChartProps for Piechart component.
  * {@docCategory PieChart}
  */
 export interface IPieChartProps {

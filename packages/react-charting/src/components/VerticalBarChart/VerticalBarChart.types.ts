@@ -9,7 +9,7 @@ import {
 import { ILineChartLineOptions } from '../../types/index';
 
 /**
- * VerticalBarChart component.
+ * IVerticalBarChartProps for VerticalBarchart component.
  * {@docCategory VerticalBarChart}
  */
 export interface IVerticalBarChartProps extends ICartesianChartProps {

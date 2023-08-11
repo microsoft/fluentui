@@ -9,7 +9,7 @@ export interface IStackedBarChart {}
 import { IChartProps, IChartDataPoint } from './index';
 
 /**
- * StackedBarChart component.
+ * IStackedBarChartProps for StackedBarchart component.
  * {@docCategory StackedBarChart}
  */
 export interface IStackedBarChartProps {
