@@ -11,11 +11,8 @@ test.describe('Text Component', () => {
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
-
     element = page.locator('fluent-text');
-
     root = page.locator('#root');
-
     await page.goto(fixtureURL('components-text--text'));
   });
 
