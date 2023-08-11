@@ -16,7 +16,7 @@ const DonutChartCustomCalloutExampleCode =
 const DonutChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/DonutChart.CustomAccessibility.Example.tsx') as string;
 
-export const AreaChartPageProps: IDocPageProps = {
+export const DonutChartPageProps: IDocPageProps = {
   title: 'DonutChart',
   componentName: 'DonutChart',
   componentUrl: 'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/DonutChart',
