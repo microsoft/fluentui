@@ -593,6 +593,13 @@
       "projectType": "library",
       "implicitDependencies": []
     },
+    "@fluentui/react-nav": {
+      "root": "packages/react-components/react-nav",
+      "projectType": "library",
+      "implicitDependencies": [],
+      "sourceRoot": "packages/react-components/react-nav/src",
+      "tags": ["vNext", "platform:web"]
+    },
     "@fluentui/react-northstar": {
       "root": "packages/fluentui/react-northstar",
       "projectType": "library",

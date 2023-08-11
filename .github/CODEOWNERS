@@ -223,6 +223,7 @@ packages/react-components/react-breadcrumb @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg
 packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
+packages/react-components/react-nav @microsoft/cxe-red
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
