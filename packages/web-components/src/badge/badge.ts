@@ -1,5 +1,7 @@
 import { attr, FASTElement } from '@microsoft/fast-element';
-import { applyMixins, StartEnd } from '@microsoft/fast-foundation';
+import { StartEnd } from '@microsoft/fast-foundation';
+// TODO: Remove with https://github.com/microsoft/fast/pull/6797
+import { applyMixins } from '../utils/apply-mixins.js';
 import { BadgeAppearance, BadgeColor, BadgeShape, BadgeSize } from './badge.options.js';
 
 /**
