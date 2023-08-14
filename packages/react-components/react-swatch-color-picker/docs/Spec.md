@@ -1,16 +1,72 @@
 # @fluentui/react-swatch-color-picker Spec
 
-## Background
+## Background TODO - description from V8
 
-_Description and use cases of this component_
+A swatch color picker (SwatchColorPicker) displays color options as a grid. It can be shown by itself, with a header and dividers, or as a button that expands to show the swatch color picker.
+
+### Fabric (v8)
+
+```jsx
+import { IColorCellProps, SwatchColorPicker } from '@fluentui/react/lib/SwatchColorPicker';
+
+const colorCellsExample1 = [
+  { id: 'a', label: 'orange', color: '#ca5010' },
+  { id: 'b', label: 'cyan', color: '#038387' },
+  { id: 'c', label: 'blueMagenta', color: '#8764b8' },
+  { id: 'd', label: 'magenta', color: '#881798' },
+  { id: 'e', label: 'white', color: '#ffffff' },
+];
+
+export const SwatchColorPickerBasicExample: React.FunctionComponent = () => {
+  const [previewColor, setPreviewColor] = React.useState<string>();
+  const baseId = useId('colorpicker');
+
+  const swatchColorPickerOnCellHovered = (id: string, color: string) => {
+    setPreviewColor(color!);
+  };
+
+  return (
+    <>
+      <div id={`${baseId}-circle`}>Simple circle swatch color picker:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'circle'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-circle`}
+      />
+      <div id={`${baseId}-square`}>Simple square swatch color picker with default size of 20px:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellShape={'square'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-square`}
+      />
+      <div id={`${baseId}-custom-size`}>Simple square swatch color picker with custom size of 35px:</div>
+      <SwatchColorPicker
+        columnCount={5}
+        cellHeight={35}
+        cellWidth={35}
+        cellShape={'square'}
+        colorCells={colorCellsExample1}
+        aria-labelledby={`${baseId}-custom-size`}
+      />
+    </>
+  );
+};
+```
 
 ## Prior Art
 
-_Include background research done for this component_
+- [Open UI research](https://open-ui.org/components/) TODO - add OpenUI research
+- [Convergence epic](https://github.com/microsoft/fluentui/issues/28606)
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Components TODO
+
+| Purpose                                                      | Fabric (V8)         | V9                         | Matching? |
+| ------------------------------------------------------------ | ------------------- | -------------------------- | --------- |
+| Component responsible for rendering swatches as row and grid | SwatchColorPicker   | SwatchPicker / SwatchGroup | ⚠️        |
+| Color cell                                                   | ColorPickerGridCell | ColorSwatch                | ⚠️        |
+| Image cell                                                   |                     | ImageSwatch                | ❌        |
 
 ## Sample Code
 
@@ -18,17 +74,66 @@ _Provide some representative example code that uses the proposed API for the com
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+### Swatch Variants
+
+- Color
+- Gradient
+- Image
+- Pattern / texture
+- Custom (needs discussion)
+
+### Shapes
+
+- Square - default
+- Circular
+- Rounded
+
+### Sizes
+
+Custom size can be set via CSS using `width` and `height` props.
+
+#### Swatch Size
+
+- Small - 24px
+- Medium - default - 30px
+- Large - TODO
+
+#### Density
+
+- Small - 24px
+- Medium - default - 30px
+- Large - TODO
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
-
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### Components
+
+| Component                   | Purpose                                                |
+| --------------------------- | ------------------------------------------------------ |
+| SwatchGroup or SwatchPicker | Group which can represent swatches as a row or a grid. |
+| ColorSwatch                 | Swatch for color                                       |
+| ImageSatch                  | Swatch for image/texture/pattern                       |
+
+Swatches are split on two as Color and Image for JSX composition.
+
+## SwatchGroup/SwatchPicker
+
+## ColorSwatch
+
+is used for picking colors:
+
+- solid color
+- gradient
+
+## ImageSwatch
+
+is used to pick images:
+
+- image
+- texture
+- pattern
 
 ## Migration
 
