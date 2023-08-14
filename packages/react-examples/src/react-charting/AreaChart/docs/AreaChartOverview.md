@@ -1,46 +1,24 @@
 <div>
   <p>
-    Use a line graph to visualize data sets over a period of time for an individual or group of items. The
-    amount of lines (data sets) depend on the attributes selected during the report creation.
+    Area charts depict a time-series relationship. But unlike line charts, they can also visually represent
+    volume. Information is graphed on two axes, using data points connected by line segments. The area between
+    the axis and this line is commonly emphasized with color or shading for legibility. Most often area charts
+    compare two or more categories. The area chart is a highly performant visual. It uses a path based
+    rendering mechanism to render the area component. On hovering, the nearest x datapoint is identified and
+    the corresponding point is hovered.
   </p>
-  <p>The line graph thickness will vary depending on the number of data sets and data increments.</p>
-
-  <h3>Variant details</h3>
-  <h4>Event annotations</h4>
+  <h3>Area chart variants</h3>
+  <h4>Stacked area chart</h4>
   <p>
-    Event annotations are used to highlight events and annotate them using messages. Annotations are
-    represented by vertical line markers to mark the date and callouts to represent the message. Events can be
-    added by using <code>eventAnnotationProps</code> prop. Each event contains a
-    <code>date, event message</code> and event details callout callback
-    <code>onRenderCard</code>
-  </p>
-  <h4>Gaps</h4>
-  <p>
-    A line chart can have gaps/breaks in between. This is to represent missing data. The gaps can also be
-    replaced with dashed or dotted lines for specific scenarios, say to represent low confidence predictions
-    for a time series forecast graph. Gaps can be added by using <code>gaps</code> prop. A gap is denoted by
-    <code>startIndex</code> and
-    <code>endIndex</code> datapoints in the line. A line will be drawn uptil the startIndex and skipped for
-    <code>endIndex - startIndex</code> number of datapoints. A line can have as many gaps as possible.
-  </p>
-  <h4>Line border</h4>
-  <p>
-    Each line in the chart can contain a 2 px border for better highlighting of the line when there are
-    multiple items in the chart. The border will have color of the background theme. Lines will be highlighted
-    in order of their appearance in legends. Line border is a highly suggested style that you should apply to
-    make multiple lines more distinguishable from each other. Use <code>lineBorderWidth</code> prop present
-    inside
-    <code>lineOptions</code> to enable it.
-  </p>
-  <h4>Lines with large dataset</h4>
-  <p>
-    We use a path based rendering technique to show datasets with large number of points (greater than 1k).
-    Using this technique datasets with over 10k points can be rendered easily. Enable this rendering method by
-    setting the <code>optimizeLargeData</code> prop to <code>true</code>.
+    In stacked area chart, two or more data series are stacked vertically. It helps in easy comparison across
+    different dimensions. The callout on hover for stacked chart displays multiple values from the stack. The
+    callout can be customized to show single values or stacked values. Refer to the props
+    <code>onRenderCalloutPerDataPoint and onRenderCalloutPerStack</code> using which custom content for the
+    callout can be defined.
   </p>
   <h4>Custom accessibility</h4>
   <p>
-    Line chart provides a bunch of props to enable custom accessibility messages. Use
+    Area chart provides a bunch of props to enable custom accessibility messages. Use
     <code>xAxisCalloutAccessibilityData</code>
     and <code>callOutAccessibilityData</code> to configure x axis and y axis accessibility messages
     respectively.

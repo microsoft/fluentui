@@ -545,12 +545,14 @@ export const AppDefinition: IAppDefinition = {
         },
         {
           name: 'VerticalBarChart',
+          key: 'VerticalBarChart',
+          url: '#/examples/VerticalBarChart',
           links: [
             {
               component: require<any>('./components/pages/Charting/VerticalBarChartPage').VerticalBarChartPage,
-              key: 'VerticalBarChart',
-              name: 'VerticalBarChart',
-              url: '#/examples/VerticalBarChart/Basic',
+              key: 'VerticalBarChart - Standard',
+              name: 'VerticalBarChart - Standard',
+              url: '#/examples/VerticalBarChart/Standard',
             },
             {
               component: require<any>('./components/pages/Charting/GroupedVerticalBarChartPage')
