@@ -770,6 +770,7 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
+export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
   PositioningProps,
   PositioningShorthand,
