@@ -111,9 +111,14 @@ export const categories: { [name: string]: ICategory } = {
     LineChart: {},
     AreaChart: {},
     DonutChart: {},
-    VerticalBarChart: {},
+    VerticalBarChart: {
+      subPages: {
+        Standard: {},
+        Stacked: {},
+        Grouped: {},
+      },
+    },
     GaugeChart: {},
-    GroupedVerticalBarChart: {},
     HeatMapChart: {},
     HorizontalBarChart: {},
     HorizontalBarChartWithAxis: {},
@@ -123,7 +128,6 @@ export const categories: { [name: string]: ICategory } = {
     StackedBarChart: {},
     MultiStackedBarChart: {},
     TreeChart: {},
-    VerticalStackedBarChart: {},
   },
   Utilities: {
     Announced: {
