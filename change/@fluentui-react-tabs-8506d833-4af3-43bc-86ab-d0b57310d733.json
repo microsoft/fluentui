@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Defer tabs rectangle computation only when previousSelectedValue is defined",
+  "packageName": "@fluentui/react-tabs",
+  "email": "nasirvi@microsoft.com",
+  "dependentChangeType": "patch"
+}
