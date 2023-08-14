@@ -2,6 +2,29 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 14 Aug 2023 07:34:44 GMT",
+      "tag": "@fluentui/react-charting_v5.17.0",
+      "version": "5.17.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294",
+            "comment": "Removing react testing library from peer dependency"
+          }
+        ],
+        "minor": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "ddffebd7abd2e0c80b31300d61f738c6cf0d1e02",
+            "comment": "Adding optional axis titles"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 07:34:50 GMT",
       "tag": "@fluentui/react-charting_v5.16.60",
       "version": "5.16.60",

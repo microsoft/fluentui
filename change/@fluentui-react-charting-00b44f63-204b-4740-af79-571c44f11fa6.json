@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Removing react testing library from peer dependency",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "patch"
-}
