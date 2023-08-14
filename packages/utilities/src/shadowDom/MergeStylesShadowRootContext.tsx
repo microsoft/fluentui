@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
 import { getDocument, getWindow } from '../dom';
+import { FocusRectsProvider } from '../FocusRectsProvider';
 
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
@@ -27,22 +28,25 @@ export type MergeStylesShadowRootProviderProps = {
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export const MergeStylesShadowRootProvider_unstable: React.FC<MergeStylesShadowRootProviderProps> = ({
-  shadowRoot,
-  ...props
-}) => {
+export const MergeStylesShadowRootProvider_unstable: React.FC<
+  React.PropsWithChildren<MergeStylesShadowRootProviderProps>
+> = ({ shadowRoot, ...props }) => {
   const value = React.useMemo(() => {
     return {
       stylesheets: new Map(),
       shadowRoot,
     };
   }, [shadowRoot]);
+  const focusProviderRef = React.useRef<HTMLDivElement>(null);
 
   return (
-    <MergeStylesShadowRootContext.Provider value={value} {...props} />
-    /* <GlobalStyles />
-      {props.children}
-    </MergeStylesShadowRootContext.Provider> */
+    <MergeStylesShadowRootContext.Provider value={value} {...props}>
+      <FocusRectsProvider providerRef={focusProviderRef}>
+        <div className="shadow-dom-focus-provider" ref={focusProviderRef}>
+          {props.children}
+        </div>
+      </FocusRectsProvider>
+    </MergeStylesShadowRootContext.Provider>
   );
 };
 
