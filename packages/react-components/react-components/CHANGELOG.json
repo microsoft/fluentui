@@ -2,6 +2,29 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 14 Aug 2023 21:22:22 GMT",
+      "tag": "@fluentui/react-components_v9.29.0",
+      "version": "9.29.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6d3e683056ba52fc1df923d1c23d24abaa840fba",
+            "comment": "feat: re-export `resolvePositioningShorthand` from @fluentui/react-positioning"
+          }
+        ],
+        "patch": [
+          {
+            "author": "nasirvi@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b180b6512aa21887ab78d4910503506ab8e35e6b",
+            "comment": "Defer tabs rectangle computation only when previousSelectedValue is defined"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:24 GMT",
       "tag": "@fluentui/react-components_v9.28.1",
       "version": "9.28.1",

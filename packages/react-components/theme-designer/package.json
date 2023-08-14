@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-alert": "9.0.0-beta.65",
-    "@fluentui/react-components": "^9.28.1",
+    "@fluentui/react-components": "^9.29.0",
     "@fluentui/react-context-selector": "^9.1.28",
     "@fluentui/react-icons": "^2.0.207",
     "@fluentui/react-storybook-addon-codesandbox": "^0.1.0",

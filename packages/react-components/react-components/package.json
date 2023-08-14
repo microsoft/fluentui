@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.28.1",
+  "version": "9.29.0",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -65,7 +65,7 @@
     "@fluentui/react-spinner": "^9.3.5",
     "@fluentui/react-switch": "^9.1.30",
     "@fluentui/react-table": "^9.7.5",
-    "@fluentui/react-tabs": "^9.3.30",
+    "@fluentui/react-tabs": "^9.3.31",
     "@fluentui/react-tabster": "^9.12.2",
     "@fluentui/react-textarea": "^9.3.27",
     "@fluentui/react-theme": "^9.1.11",
