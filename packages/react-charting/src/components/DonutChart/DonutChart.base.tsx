@@ -213,7 +213,7 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
         // mapping data to the format Legends component needs
         const legend: ILegend = {
           title: point.legend!,
-          color,
+          color: color,
           action: () => {
             if (this.state.selectedLegend === point.legend) {
               this.setState({ selectedLegend: '' });

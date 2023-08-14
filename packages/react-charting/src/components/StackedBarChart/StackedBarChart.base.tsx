@@ -242,7 +242,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color,
+        color: color,
         action:
           total > 0
             ? () => {
@@ -282,7 +282,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
       const shouldHighlight = this._legendHighlighted(point.legend!) || this._noLegendHighlighted() ? true : false;
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight,
+        shouldHighlight: shouldHighlight,
         href: this.props.href!,
       });
 
@@ -352,7 +352,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
-          color,
+          color: color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
@@ -424,7 +424,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
-        color,
+        color: color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,

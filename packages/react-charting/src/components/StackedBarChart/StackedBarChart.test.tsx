@@ -36,12 +36,12 @@ const points: IChartDataPoint[] = [
 const chartTitle = 'Stacked bar chart 2nd example';
 
 export const chartPoints: IChartProps = {
-  chartTitle,
+  chartTitle: chartTitle,
   chartData: points,
 };
 
 export const emptyChartPoints: IChartProps = {
-  chartTitle,
+  chartTitle: chartTitle,
   chartData: [],
 };
 

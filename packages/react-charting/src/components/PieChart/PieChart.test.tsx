@@ -72,7 +72,7 @@ describe('Render calling with respective to props', () => {
     const props = {
       data: chartPoints,
       height: 300,
-      colors,
+      colors: colors,
     };
     const component = mount(<PieChart {...props} />);
     component.setProps({ ...props });
@@ -85,7 +85,7 @@ describe('Render calling with respective to props', () => {
     const props = {
       data: chartPoints,
       height: 300,
-      colors,
+      colors: colors,
     };
     const component = mount(<PieChart {...props} />);
     component.setProps({ ...props, width: 600 });

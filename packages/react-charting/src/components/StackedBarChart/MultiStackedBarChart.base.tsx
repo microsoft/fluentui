@@ -232,8 +232,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight,
-        href,
+        shouldHighlight: shouldHighlight,
+        href: href,
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
@@ -380,7 +380,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
-          color,
+          color: color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
@@ -399,9 +399,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
       theme: theme!,
-      width,
+      width: width,
       className,
-      barHeight,
+      barHeight: barHeight,
     });
   };
 
@@ -429,7 +429,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             }
             const legend: ILegend = {
               title: point.legend!,
-              color,
+              color: color,
               action: () => {
                 this._onClick(point.legend!);
               },
@@ -455,7 +455,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           }
           const legend: ILegend = {
             title: point.legend!,
-            color,
+            color: color,
             action: () => {
               this._onClick(point.legend!);
             },
@@ -516,7 +516,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
-        color,
+        color: color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
