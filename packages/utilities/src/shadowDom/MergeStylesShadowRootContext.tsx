@@ -42,7 +42,7 @@ export const MergeStylesShadowRootProvider_unstable: React.FC<
   return (
     <MergeStylesShadowRootContext.Provider value={value} {...props}>
       <FocusRectsProvider providerRef={focusProviderRef}>
-        <div className="shadow-dom-focus-provider" ref={focusProviderRef}>
+        <div className="ms-MergeStylesShadowRootProvider" ref={focusProviderRef}>
           {props.children}
         </div>
       </FocusRectsProvider>

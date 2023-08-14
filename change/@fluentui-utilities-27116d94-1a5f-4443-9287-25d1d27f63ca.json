@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix an issue where focus rect styles are not visible for components within shadow doms",
+  "packageName": "@fluentui/utilities",
+  "email": "brwai@microsoft.com",
+  "dependentChangeType": "patch"
+}
