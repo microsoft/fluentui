@@ -113,8 +113,8 @@ export const categories: { [name: string]: ICategory } = {
     DonutChart: {},
     VerticalBarChart: {
       subPages: {
-        Standard: {},
-        Stacked: {},
+        VerticalBarChartStandard: {},
+        VerticalStackedBarChart: {},
         Grouped: {},
       },
     },
