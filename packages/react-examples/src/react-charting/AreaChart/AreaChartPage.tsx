@@ -5,6 +5,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   PropertiesTableSet,
+  Markdown,
 } from '@fluentui/react-docsite-components';
 
 import { AreaChartBasicExample } from './AreaChart.Basic.Example';
@@ -64,8 +65,16 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
           />
         }
         isHeaderVisible={this.props.isHeaderVisible}
-        overview={require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartOverview.md')}
-        bestPractices={require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartBestPractices.md')}
+        overview={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartOverview.md')}
+          </Markdown>
+        }
+        bestPractices={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartBestPractices.md')}
+          </Markdown>
+        }
       />
     );
   }
