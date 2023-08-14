@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 11 Aug 2023 12:14:25 GMT and should not be manually modified.
+This log was last generated on Mon, 14 Aug 2023 21:22:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.31)
+
+Mon, 14 Aug 2023 21:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.3.30..@fluentui/react-tabs_v9.3.31)
+
+### Patches
+
+- Defer tabs rectangle computation only when previousSelectedValue is defined ([PR #28749](https://github.com/microsoft/fluentui/pull/28749) by nasirvi@microsoft.com)
 
 ## [9.3.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.30)
 

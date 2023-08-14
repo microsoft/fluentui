@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabs",
   "entries": [
     {
+      "date": "Mon, 14 Aug 2023 21:22:22 GMT",
+      "tag": "@fluentui/react-tabs_v9.3.31",
+      "version": "9.3.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "nasirvi@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b180b6512aa21887ab78d4910503506ab8e35e6b",
+            "comment": "Defer tabs rectangle computation only when previousSelectedValue is defined"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:25 GMT",
       "tag": "@fluentui/react-tabs_v9.3.30",
       "version": "9.3.30",
