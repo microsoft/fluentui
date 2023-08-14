@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 
 const useContainerStyles = makeStyles({
   innerWrapper: {
@@ -28,7 +28,7 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Medium dismissible
           </InteractionTagPrimary>
-          <Secondary />
+          <InteractionTagSecondary />
         </InteractionTag>
         <InteractionTag shape="circular">
           <InteractionTagPrimary icon={<CalendarMonthRegular />}>Medium circular</InteractionTagPrimary>
@@ -43,7 +43,7 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Small dismissible
           </InteractionTagPrimary>
-          <Secondary />
+          <InteractionTagSecondary />
         </InteractionTag>
         <InteractionTag size="small" shape="circular">
           <InteractionTagPrimary icon={<CalendarMonthRegular />}>Small circular</InteractionTagPrimary>
@@ -58,7 +58,7 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Extra Small dismissible
           </InteractionTagPrimary>
-          <Secondary />
+          <InteractionTagSecondary />
         </InteractionTag>
         <InteractionTag size="extra-small" shape="circular">
           <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra Small circular</InteractionTagPrimary>

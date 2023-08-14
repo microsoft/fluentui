@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -32,13 +32,13 @@ export const Shape = () => {
         <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
           Rounded
         </InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
       <InteractionTag shape="circular">
         <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
           Circular
         </InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
     </div>
   );

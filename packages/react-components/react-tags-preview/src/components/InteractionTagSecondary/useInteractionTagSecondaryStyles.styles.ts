@@ -1,11 +1,11 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { SecondarySlots, SecondaryState } from './Secondary.types';
+import type { InteractionTagSecondarySlots, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
 
-export const secondaryClassNames: SlotClassNames<SecondarySlots> = {
-  root: 'fui-Secondary',
+export const interactionTagSecondaryClassNames: SlotClassNames<InteractionTagSecondarySlots> = {
+  root: 'fui-InteractionTagSecondary',
 };
 
 const mediumIconSize = '20px';
@@ -127,14 +127,16 @@ const useRootDisabledStyles = makeStyles({
   },
 });
 
-export const useSecondaryStyles_unstable = (state: SecondaryState): SecondaryState => {
+export const useInteractionTagSecondaryStyles_unstable = (
+  state: InteractionTagSecondaryState,
+): InteractionTagSecondaryState => {
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
 
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
-    secondaryClassNames.root,
+    interactionTagSecondaryClassNames.root,
     rootStyles.base,
     state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],

@@ -8,7 +8,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
  * InteractionTag component - a visual representation of an attribute with primary and secondary actions.
- * Can have `InteractionTagPrimary` and `Secondary` components as its children.
+ * Can have `InteractionTagPrimary` and `InteractionTagSecondary` components as its children.
  */
 export const InteractionTag: ForwardRefComponent<InteractionTagProps> = React.forwardRef((props, ref) => {
   const state = useInteractionTag_unstable(props, ref);

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -18,13 +18,13 @@ export const Dismiss = () => {
     <div className={containerStyles.root}>
       <InteractionTag>
         <InteractionTagPrimary hasSecondaryAction>Primary text</InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
       <InteractionTag>
         <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
           Primary text
         </InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
       <InteractionTag>
         <InteractionTagPrimary
@@ -34,7 +34,7 @@ export const Dismiss = () => {
         >
           Primary text
         </InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
     </div>
   );

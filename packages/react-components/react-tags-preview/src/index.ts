@@ -24,13 +24,17 @@ export type {
   InteractionTagPrimaryState,
 } from './InteractionTagPrimary';
 export {
-  Secondary,
-  renderSecondary_unstable,
-  secondaryClassNames,
-  useSecondaryStyles_unstable,
-  useSecondary_unstable,
-} from './Secondary';
-export type { SecondaryProps, SecondarySlots, SecondaryState } from './Secondary';
+  InteractionTagSecondary,
+  renderInteractionTagSecondary_unstable,
+  interactiontagsecondaryClassNames,
+  useInteractionTagSecondaryStyles_unstable,
+  useInteractionTagSecondary_unstable,
+} from './InteractionTagSecondary';
+export type {
+  InteractionTagSecondaryProps,
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryState,
+} from './InteractionTagSecondary';
 
 export {
   TagGroup,

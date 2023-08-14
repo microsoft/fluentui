@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip } from '@fluentui/react-components';
-import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { bundleIcon, HeartFilled, HeartRegular } from '@fluentui/react-icons';
 
 const HeartIcon = bundleIcon(HeartFilled, HeartRegular);
@@ -33,9 +33,9 @@ export const HasPrimaryAction = () => {
         </PopoverSurface>
       </Popover>
       <Tooltip content={liked ? 'unlike' : 'I like this'} relationship="label">
-        <Secondary onClick={toggleSecondary}>
+        <InteractionTagSecondary onClick={toggleSecondary}>
           <HeartIcon filled={liked} />
-        </Secondary>
+        </InteractionTagSecondary>
       </Tooltip>
     </InteractionTag>
   );

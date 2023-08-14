@@ -1,17 +1,17 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 
-export type SecondarySlots = {
+export type InteractionTagSecondarySlots = {
   root: NonNullable<Slot<'button'>>;
 };
 
 /**
- * Secondary Props
+ * InteractionTagSecondary Props
  */
-export type SecondaryProps = ComponentProps<SecondarySlots>;
+export type InteractionTagSecondaryProps = ComponentProps<InteractionTagSecondarySlots>;
 
 /**
- * State used in rendering Secondary
+ * State used in rendering InteractionTagSecondary
  */
-export type SecondaryState = ComponentState<SecondarySlots> &
+export type InteractionTagSecondaryState = ComponentState<InteractionTagSecondarySlots> &
   Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;

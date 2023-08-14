@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
@@ -19,19 +19,19 @@ export const Appearance = () => {
         <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           filled
         </InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
       <InteractionTag appearance="outline">
         <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           outline
         </InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
       <InteractionTag appearance="brand">
         <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           brand
         </InteractionTagPrimary>
-        <Secondary />
+        <InteractionTagSecondary />
       </InteractionTag>
     </div>
   );
