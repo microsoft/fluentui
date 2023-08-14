@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
+
 import { TreeChartTwoLayerExample } from './TreeChart.TwoLayer.Example';
 import { TreeChartThreeLayerLongExample } from './TreeChart.ThreeLayerLong.Example';
 import { TreeChartThreeLayerCompactExample } from './TreeChart.ThreeLayerCompact.Example';

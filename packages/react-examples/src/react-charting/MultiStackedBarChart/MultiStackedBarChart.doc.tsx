@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
+
 import { MultiStackedBarChartExample } from './MultiStackedBarChart.Example';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
 import { MultiStackedBarChartVariantExample } from './MultiStackedBarChart.Variant.Example';

@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
+
 import { VerticalStackedBarChartBasicExample } from './VerticalStackedBarChart.Basic.Example';
 import { VerticalStackedBarChartStyledExample } from './VerticalStackedBarChart.Styled.Example';
 import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart.Callout.Example';
