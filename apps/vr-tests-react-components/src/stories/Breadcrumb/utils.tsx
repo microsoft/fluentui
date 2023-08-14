@@ -57,7 +57,7 @@ export const SampleBreadcrumbItems = (props: BreadcrumbProps) => (
   <Breadcrumb {...props} className="breadcrumb-sample">
     <BreadcrumbItem>Item 1</BreadcrumbItem>
     <BreadcrumbDivider />
-    <BreadcrumbItem>Item 2</BreadcrumbItem>
+    <BreadcrumbItem icon={<CalendarMonth />}>Item 2</BreadcrumbItem>
     <BreadcrumbDivider />
     <BreadcrumbItem current>Item 3</BreadcrumbItem>
   </Breadcrumb>
