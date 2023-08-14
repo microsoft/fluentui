@@ -1,4 +1,4 @@
-import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
 
 import descriptionMd from './InteractionTagDescription.md';
 import bestPracticesMd from './InteractionTagBestPractices.md';
@@ -18,7 +18,7 @@ export default {
   title: 'Preview Components/Tag/InteractionTag',
   component: InteractionTag,
   subcomponents: {
-    Primary,
+    InteractionTagPrimary,
     Secondary,
   },
   parameters: {

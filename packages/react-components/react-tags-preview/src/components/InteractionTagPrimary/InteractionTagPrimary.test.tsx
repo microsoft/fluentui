@@ -1,5 +1,5 @@
 import { isConformant } from '../../testing/isConformant';
-import { Primary } from './Primary';
+import { InteractionTagPrimary } from './InteractionTagPrimary';
 
 const requiredProps = {
   media: 'media',
@@ -8,10 +8,10 @@ const requiredProps = {
   secondaryText: 'Secondary text',
 };
 
-describe('Primary', () => {
+describe('InteractionTagPrimary', () => {
   isConformant({
-    Component: Primary,
-    displayName: 'Primary',
+    Component: InteractionTagPrimary,
+    displayName: 'InteractionTagPrimary',
     requiredProps,
   });
 });

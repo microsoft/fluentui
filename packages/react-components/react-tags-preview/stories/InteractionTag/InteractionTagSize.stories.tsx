@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
 
 const useContainerStyles = makeStyles({
   innerWrapper: {
@@ -22,46 +22,46 @@ export const Size = () => {
     <div className={styles.outerWrapper}>
       <div className={styles.innerWrapper}>
         <InteractionTag>
-          <Primary>Medium</Primary>
+          <InteractionTagPrimary>Medium</InteractionTagPrimary>
         </InteractionTag>
         <InteractionTag>
-          <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Medium dismissible
-          </Primary>
+          </InteractionTagPrimary>
           <Secondary />
         </InteractionTag>
         <InteractionTag shape="circular">
-          <Primary icon={<CalendarMonthRegular />}>Medium circular</Primary>
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Medium circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
       <div className={styles.innerWrapper}>
         <InteractionTag size="small">
-          <Primary>Small</Primary>
+          <InteractionTagPrimary>Small</InteractionTagPrimary>
         </InteractionTag>
 
         <InteractionTag size="small">
-          <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Small dismissible
-          </Primary>
+          </InteractionTagPrimary>
           <Secondary />
         </InteractionTag>
         <InteractionTag size="small" shape="circular">
-          <Primary icon={<CalendarMonthRegular />}>Small circular</Primary>
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Small circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
       <div className={styles.innerWrapper}>
         <InteractionTag size="extra-small">
-          <Primary>Extra Small</Primary>
+          <InteractionTagPrimary>Extra Small</InteractionTagPrimary>
         </InteractionTag>
 
         <InteractionTag size="extra-small">
-          <Primary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Extra Small dismissible
-          </Primary>
+          </InteractionTagPrimary>
           <Secondary />
         </InteractionTag>
         <InteractionTag size="extra-small" shape="circular">
-          <Primary icon={<CalendarMonthRegular />}>Extra Small circular</Primary>
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra Small circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
     </div>

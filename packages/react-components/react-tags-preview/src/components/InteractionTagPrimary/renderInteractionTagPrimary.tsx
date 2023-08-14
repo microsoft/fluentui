@@ -4,14 +4,21 @@
 import { createElement } from '@fluentui/react-jsx-runtime';
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { PrimaryState, PrimarySlots, PrimaryContextValues } from './Primary.types';
+import type {
+  InteractionTagPrimaryState,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryContextValues,
+} from './InteractionTagPrimary.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 
 /**
- * Render the final JSX of Primary
+ * Render the final JSX of InteractionTagPrimary
  */
-export const renderPrimary_unstable = (state: PrimaryState, contextValues: PrimaryContextValues) => {
-  assertSlots<PrimarySlots>(state);
+export const renderInteractionTagPrimary_unstable = (
+  state: InteractionTagPrimaryState,
+  contextValues: InteractionTagPrimaryContextValues,
+) => {
+  assertSlots<InteractionTagPrimarySlots>(state);
 
   return (
     <state.root>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
-import type { PrimaryProps, PrimaryState } from './Primary.types';
+import type { InteractionTagPrimaryProps, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
 
 const avatarSizeMap = {
@@ -15,15 +15,18 @@ const avatarShapeMap = {
 } as const;
 
 /**
- * Create the state required to render Primary.
+ * Create the state required to render InteractionTagPrimary.
  *
- * The returned state can be modified with hooks such as usePrimaryStyles_unstable,
- * before being passed to renderPrimary_unstable.
+ * The returned state can be modified with hooks such as useInteractionTagPrimaryStyles_unstable,
+ * before being passed to renderInteractionTagPrimary_unstable.
  *
- * @param props - props from this instance of Primary
- * @param ref - reference to root HTMLElement of Primary
+ * @param props - props from this instance of InteractionTagPrimary
+ * @param ref - reference to root HTMLElement of InteractionTagPrimary
  */
-export const usePrimary_unstable = (props: PrimaryProps, ref: React.Ref<HTMLElement>): PrimaryState => {
+export const useInteractionTagPrimary_unstable = (
+  props: InteractionTagPrimaryProps,
+  ref: React.Ref<HTMLElement>,
+): InteractionTagPrimaryState => {
   const { appearance, disabled, shape, size } = useInteractionTagContext_unstable();
   const { hasSecondaryAction = false } = props;
 

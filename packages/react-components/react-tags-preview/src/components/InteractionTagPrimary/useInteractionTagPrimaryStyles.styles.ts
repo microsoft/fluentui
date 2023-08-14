@@ -1,5 +1,5 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { PrimarySlots, PrimaryState } from './Primary.types';
+import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { tokens } from '@fluentui/react-theme';
@@ -7,16 +7,16 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import {
   useIconStyles,
   useMediaStyles,
-  usePrimaryTextStyles,
+  useInteractionTagPrimaryTextStyles,
   useSecondaryTextStyles,
 } from '../Tag/useTagStyles.styles';
 
-export const primaryClassNames: SlotClassNames<PrimarySlots> = {
-  root: 'fui-Primary',
-  media: 'fui-Primary__media',
-  icon: 'fui-Primary__icon',
-  primaryText: 'fui-Primary__primaryText',
-  secondaryText: 'fui-Primary__secondaryText',
+export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots> = {
+  root: 'fui-InteractionTagPrimary',
+  media: 'fui-InteractionTagPrimary__media',
+  icon: 'fui-InteractionTagPrimary__icon',
+  primaryText: 'fui-InteractionTagPrimary__primaryText',
+  secondaryText: 'fui-InteractionTagPrimary__secondaryText',
 };
 
 const useRootStyles = makeStyles({
@@ -139,7 +139,7 @@ const useRootDisabledAppearances = makeStyles({
 });
 
 /**
- * Styles for Primary without leading media/icon
+ * Styles for InteractionTagPrimary without leading media/icon
  */
 const useRootWithoutMediaStyles = makeStyles({
   medium: {
@@ -153,7 +153,7 @@ const useRootWithoutMediaStyles = makeStyles({
   },
 });
 /**
- * Styles for Primary when InteractionTag has a Secondary button
+ * Styles for InteractionTagPrimary when InteractionTag has a Secondary button
  */
 const useRootWithSecondaryActionStyles = makeStyles({
   base: {
@@ -176,7 +176,9 @@ const useRootWithSecondaryActionStyles = makeStyles({
   },
 });
 
-export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => {
+export const useInteractionTagPrimaryStyles_unstable = (
+  state: InteractionTagPrimaryState,
+): InteractionTagPrimaryState => {
   const rootStyles = useRootStyles();
   const rootDisabledAppearances = useRootDisabledAppearances();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
@@ -190,7 +192,7 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
-    primaryClassNames.root,
+    interactionTagPrimaryClassNames.root,
 
     rootStyles.base,
     state.disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
@@ -206,7 +208,7 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
 
   if (state.media) {
     state.media.className = mergeClasses(
-      primaryClassNames.media,
+      interactionTagPrimaryClassNames.media,
       mediaStyles.base,
       mediaStyles[size],
       state.media.className,
@@ -214,7 +216,7 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
   }
   if (state.icon) {
     state.icon.className = mergeClasses(
-      primaryClassNames.icon,
+      interactionTagPrimaryClassNames.icon,
       iconStyles.base,
       iconStyles[size],
       state.icon.className,
@@ -222,7 +224,7 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
   }
   if (state.primaryText) {
     state.primaryText.className = mergeClasses(
-      primaryClassNames.primaryText,
+      interactionTagPrimaryClassNames.primaryText,
 
       primaryTextStyles.base,
       primaryTextStyles[size],
@@ -234,7 +236,7 @@ export const usePrimaryStyles_unstable = (state: PrimaryState): PrimaryState => 
   }
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
-      primaryClassNames.secondaryText,
+      interactionTagPrimaryClassNames.secondaryText,
       secondaryTextStyles.base,
       state.secondaryText.className,
     );

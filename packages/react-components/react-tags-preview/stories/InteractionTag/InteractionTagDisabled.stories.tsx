@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, Secondary } from '@fluentui/react-tags-preview';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({
@@ -14,21 +14,21 @@ export const Disabled = () => {
   return (
     <div className={styles.container}>
       <InteractionTag disabled>
-        <Primary secondaryText="appearance=filled" icon={<CalendarMonthRegular />} hasSecondaryAction>
+        <InteractionTagPrimary secondaryText="appearance=filled" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
-        </Primary>
+        </InteractionTagPrimary>
         <Secondary />
       </InteractionTag>
       <InteractionTag disabled appearance="outline">
-        <Primary secondaryText="appearance=outline" icon={<CalendarMonthRegular />} hasSecondaryAction>
+        <InteractionTagPrimary secondaryText="appearance=outline" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
-        </Primary>
+        </InteractionTagPrimary>
         <Secondary />
       </InteractionTag>
       <InteractionTag disabled appearance="brand">
-        <Primary secondaryText="appearance=brand" icon={<CalendarMonthRegular />} hasSecondaryAction>
+        <InteractionTagPrimary secondaryText="appearance=brand" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
-        </Primary>
+        </InteractionTagPrimary>
         <Secondary />
       </InteractionTag>
     </div>

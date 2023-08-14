@@ -2,9 +2,9 @@ import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities'
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
 import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
-export type PrimaryContextValues = TagAvatarContextValues;
+export type InteractionTagPrimaryContextValues = TagAvatarContextValues;
 
-export type PrimarySlots = {
+export type InteractionTagPrimarySlots = {
   root: NonNullable<Slot<'button'>>;
 
   /**
@@ -15,7 +15,7 @@ export type PrimarySlots = {
   icon?: Slot<'span'>;
 
   /**
-   * Main text for the Primary button. Children of the root slot are automatically rendered here
+   * Main text for the InteractionTagPrimary button. Children of the root slot are automatically rendered here
    */
   primaryText: Slot<'span'>;
 
@@ -26,22 +26,22 @@ export type PrimarySlots = {
 };
 
 /**
- * Primary Props
+ * InteractionTagPrimary Props
  */
-export type PrimaryProps = ComponentProps<Partial<PrimarySlots>> & {
+export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPrimarySlots>> & {
   /**
    * Whether the `InteractionTag` component has a `Secondary` component that provides an secondary action.
-   * If `true`, the `Primary` component will adjust its styles to accommodate the `Secondary` component.
+   * If `true`, the `InteractionTagPrimary` component will adjust its styles to accommodate the `Secondary` component.
    */
   hasSecondaryAction?: boolean;
 };
 
 /**
- * State used in rendering Primary
+ * State used in rendering InteractionTagPrimary
  */
-export type PrimaryState = ComponentState<PrimarySlots> &
+export type InteractionTagPrimaryState = ComponentState<InteractionTagPrimarySlots> &
   Required<
     Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> &
-      Pick<PrimaryProps, 'hasSecondaryAction'>
+      Pick<InteractionTagPrimaryProps, 'hasSecondaryAction'>
   > &
   UseTagAvatarContextValuesOptions;

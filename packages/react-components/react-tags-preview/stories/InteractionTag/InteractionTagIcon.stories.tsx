@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { InteractionTag, Primary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-tags-preview';
 
 export const Icon = () => (
   <InteractionTag>
-    <Primary icon={<CalendarMonthRegular />}>Primary text</Primary>
+    <InteractionTagPrimary icon={<CalendarMonthRegular />}>Primary text</InteractionTagPrimary>
   </InteractionTag>
 );
 

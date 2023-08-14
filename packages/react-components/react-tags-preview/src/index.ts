@@ -11,13 +11,18 @@ export {
 } from './InteractionTag';
 export type { InteractionTagProps, InteractionTagSlots, InteractionTagState } from './InteractionTag';
 export {
-  Primary,
-  primaryClassNames,
-  renderPrimary_unstable,
-  usePrimaryStyles_unstable,
-  usePrimary_unstable,
-} from './Primary';
-export type { PrimaryContextValues, PrimaryProps, PrimarySlots, PrimaryState } from './Primary';
+  InteractionTagPrimary,
+  interactionTagPrimaryClassNames,
+  renderInteractionTagPrimary_unstable,
+  useInteractionTagPrimaryStyles_unstable,
+  useInteractionTagPrimary_unstable,
+} from './InteractionTagPrimary';
+export type {
+  InteractionTagPrimaryContextValues,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryState,
+} from './InteractionTagPrimary';
 export {
   Secondary,
   renderSecondary_unstable,
