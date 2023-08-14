@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { TagGroup, Tag, InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
+import {
+  TagGroup,
+  Tag,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-tags-preview';
 import { ComponentMeta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { withStoryWrightSteps } from '../../utilities';
@@ -31,16 +37,16 @@ export const Dismissible = () => (
 export const DismissibleWithInteractionTag = () => (
   <TagGroup>
     <InteractionTag>
-      <Primary hasSecondaryAction>Tag 1</Primary>
-      <Secondary />
+      <InteractionTagPrimary hasSecondaryAction>Tag 1</InteractionTagPrimary>
+      <InteractionTagSecondary />
     </InteractionTag>
     <InteractionTag>
-      <Primary hasSecondaryAction>Tag 2</Primary>
-      <Secondary />
+      <InteractionTagPrimary hasSecondaryAction>Tag 2</InteractionTagPrimary>
+      <InteractionTagSecondary />
     </InteractionTag>
     <InteractionTag>
-      <Primary hasSecondaryAction>Tag 3</Primary>
-      <Secondary />
+      <InteractionTagPrimary hasSecondaryAction>Tag 3</InteractionTagPrimary>
+      <InteractionTagSecondary />
     </InteractionTag>
   </TagGroup>
 );

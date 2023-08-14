@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST } from '../../utilities';
@@ -29,10 +29,10 @@ export default {
 
 export const Filled = () => (
   <InteractionTag appearance="filled">
-    <Primary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
+    <InteractionTagPrimary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
-    </Primary>
-    <Secondary id={dismissButtonId} />
+    </InteractionTagPrimary>
+    <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
 export const FilledHighContrast = getStoryVariant(Filled, HIGH_CONTRAST);
@@ -40,10 +40,10 @@ export const FilledDarkMode = getStoryVariant(Filled, DARK_MODE);
 
 export const Outline = () => (
   <InteractionTag appearance="outline">
-    <Primary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
+    <InteractionTagPrimary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
-    </Primary>
-    <Secondary id={dismissButtonId} />
+    </InteractionTagPrimary>
+    <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
 export const OutlineHighContrast = getStoryVariant(Outline, HIGH_CONTRAST);
@@ -51,10 +51,10 @@ export const OutlineDarkMode = getStoryVariant(Outline, DARK_MODE);
 
 export const Brand = () => (
   <InteractionTag appearance="brand">
-    <Primary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
+    <InteractionTagPrimary id={contentId} icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
-    </Primary>
-    <Secondary id={dismissButtonId} />
+    </InteractionTagPrimary>
+    <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
 export const BrandHighContrast = getStoryVariant(Brand, HIGH_CONTRAST);

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InteractionTag, Primary, Secondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
@@ -18,7 +18,7 @@ export default {
 
 export const Default = () => (
   <InteractionTag>
-    <Primary>Primary Text</Primary>
+    <InteractionTagPrimary>Primary Text</InteractionTagPrimary>
   </InteractionTag>
 );
 
@@ -29,10 +29,10 @@ export const DefaultHighContrast = getStoryVariant(Default, HIGH_CONTRAST);
 // disabled
 export const Disabled = () => (
   <InteractionTag disabled>
-    <Primary icon={<CalendarMonth />} hasSecondaryAction>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
-    </Primary>
-    <Secondary />
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
   </InteractionTag>
 );
 export const DisabledHighContrast = getStoryVariant(Disabled, HIGH_CONTRAST);
@@ -40,10 +40,10 @@ export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
 
 export const OutlineDisabled = () => (
   <InteractionTag appearance="outline" disabled>
-    <Primary icon={<CalendarMonth />} hasSecondaryAction>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
-    </Primary>
-    <Secondary />
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
   </InteractionTag>
 );
 export const OutlineDisabledHighContrast = getStoryVariant(OutlineDisabled, HIGH_CONTRAST);
@@ -51,10 +51,10 @@ export const OutlineDisabledDarkMode = getStoryVariant(OutlineDisabled, DARK_MOD
 
 export const BrandDisabled = () => (
   <InteractionTag appearance="brand" disabled>
-    <Primary icon={<CalendarMonth />} hasSecondaryAction>
+    <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
       Primary Text
-    </Primary>
-    <Secondary />
+    </InteractionTagPrimary>
+    <InteractionTagSecondary />
   </InteractionTag>
 );
 export const BrandDisabledHighContrast = getStoryVariant(BrandDisabled, HIGH_CONTRAST);
@@ -63,44 +63,48 @@ export const BrandDisabledDarkMode = getStoryVariant(BrandDisabled, DARK_MODE);
 // size
 export const SizeSmall = () => (
   <InteractionTag size="small">
-    <Primary>Primary Text</Primary>
+    <InteractionTagPrimary>Primary Text</InteractionTagPrimary>
   </InteractionTag>
 );
 export const SizeSmallDismissible = () => (
   <InteractionTag size="small">
-    <Primary hasSecondaryAction>Primary Text</Primary>
-    <Secondary />
+    <InteractionTagPrimary hasSecondaryAction>Primary Text</InteractionTagPrimary>
+    <InteractionTagSecondary />
   </InteractionTag>
 );
 export const SizeSmallWithIcon = () => (
   <InteractionTag size="small">
-    <Primary icon={<CalendarMonth />}>Primary Text</Primary>
+    <InteractionTagPrimary icon={<CalendarMonth />}>Primary Text</InteractionTagPrimary>
   </InteractionTag>
 );
 export const SizeSmallWithMedia = () => (
   <InteractionTag size="small">
-    <Primary media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}>Primary Text</Primary>
+    <InteractionTagPrimary media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}>
+      Primary Text
+    </InteractionTagPrimary>
   </InteractionTag>
 );
 
 export const SizeExtraSmall = () => (
   <InteractionTag size="extra-small">
-    <Primary>Primary Text</Primary>
+    <InteractionTagPrimary>Primary Text</InteractionTagPrimary>
   </InteractionTag>
 );
 export const SizeExtraSmallDismissible = () => (
   <InteractionTag size="extra-small">
-    <Primary hasSecondaryAction>Primary Text</Primary>
-    <Secondary />
+    <InteractionTagPrimary hasSecondaryAction>Primary Text</InteractionTagPrimary>
+    <InteractionTagSecondary />
   </InteractionTag>
 );
 export const SizeExtraSmallWithIcon = () => (
   <InteractionTag size="extra-small">
-    <Primary icon={<CalendarMonth />}>Primary Text</Primary>
+    <InteractionTagPrimary icon={<CalendarMonth />}>Primary Text</InteractionTagPrimary>
   </InteractionTag>
 );
 export const SizeExtraSmallWithMedia = () => (
   <InteractionTag size="extra-small">
-    <Primary media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}>Primary Text</Primary>
+    <InteractionTagPrimary media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}>
+      Primary Text
+    </InteractionTagPrimary>
   </InteractionTag>
 );
