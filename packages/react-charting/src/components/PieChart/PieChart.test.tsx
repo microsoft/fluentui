@@ -28,12 +28,12 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints = [
+export const chartPoints = [
   { y: 50, x: 'A' },
   { y: 25, x: 'B' },
   { y: 25, x: 'C' },
 ];
-const colors = [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green];
+export const colors = [DefaultPalette.red, DefaultPalette.blue, DefaultPalette.green];
 
 describe('PieChart snapShot testing', () => {
   it('renders PieChart correctly', () => {
@@ -72,7 +72,7 @@ describe('Render calling with respective to props', () => {
     const props = {
       data: chartPoints,
       height: 300,
-      colors: colors,
+      colors,
     };
     const component = mount(<PieChart {...props} />);
     component.setProps({ ...props });
@@ -85,7 +85,7 @@ describe('Render calling with respective to props', () => {
     const props = {
       data: chartPoints,
       height: 300,
-      colors: colors,
+      colors,
     };
     const component = mount(<PieChart {...props} />);
     component.setProps({ ...props, width: 600 });

@@ -1,0 +1,288 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pie chart rendering Should re-render the Pie chart with data 1`] = `
+<div>
+  <div
+    aria-label="Graph has no data to display"
+    id="_PieChart_empty5"
+    role="alert"
+    style="opacity: 0;"
+  />
+</div>
+`;
+
+exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
+<div>
+  <div
+    class=
+        ms-PieChart
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          width: 670px;
+        }
+    style=""
+  >
+    <svg
+      height="350"
+      width="600"
+    >
+      <g
+        transform="translate(300, 175)"
+      >
+        <g
+          class="arc"
+        >
+          <path
+            class=
+
+                {
+                  fill: #e81123;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M0,-165A165,165,0,1,1,0,165L0,0Z"
+          />
+          <text
+            text-anchor="middle"
+            transform="translate(82.5, 1.8318679906315083e-14)"
+          >
+            A
+            -
+            50
+          </text>
+        </g>
+        <g
+          class="arc"
+        >
+          <path
+            class=
+
+                {
+                  fill: #0078d4;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M0,165A165,165,0,0,1,-165,0L0,0Z"
+          />
+          <text
+            text-anchor="middle"
+            transform="translate(-58.33630944789022, 58.33630944789013)"
+          >
+            B
+            -
+            25
+          </text>
+        </g>
+        <g
+          class="arc"
+        >
+          <path
+            class=
+
+                {
+                  fill: #107c10;
+                  stroke-width: 2px;
+                  stroke: #ffffff;
+                }
+            d="M-165,0A165,165,0,0,1,0,-165L0,0Z"
+          />
+          <text
+            text-anchor="middle"
+            transform="translate(-58.33630944789013, -58.33630944789022)"
+          >
+            C
+            -
+            25
+          </text>
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
+<div
+  className=
+      ms-PieChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 670px;
+      }
+>
+  <svg
+    height={350}
+    width={600}
+  >
+    <g
+      transform="translate(300, 175)"
+    >
+      <g
+        className="arc"
+      >
+        <path
+          className=
+
+              {
+                fill: #e81123;
+                stroke-width: 2px;
+                stroke: #ffffff;
+              }
+          d="M0,-165A165,165,0,1,1,0,165L0,0Z"
+        />
+        <text
+          textAnchor="middle"
+          transform="translate(82.5, 1.8318679906315083e-14)"
+        >
+          A
+          -
+          50
+        </text>
+      </g>
+      <g
+        className="arc"
+      >
+        <path
+          className=
+
+              {
+                fill: #0078d4;
+                stroke-width: 2px;
+                stroke: #ffffff;
+              }
+          d="M0,165A165,165,0,0,1,-165,0L0,0Z"
+        />
+        <text
+          textAnchor="middle"
+          transform="translate(-58.33630944789022, 58.33630944789013)"
+        >
+          B
+          -
+          25
+        </text>
+      </g>
+      <g
+        className="arc"
+      >
+        <path
+          className=
+
+              {
+                fill: #107c10;
+                stroke-width: 2px;
+                stroke: #ffffff;
+              }
+          d="M-165,0A165,165,0,0,1,0,-165L0,0Z"
+        />
+        <text
+          textAnchor="middle"
+          transform="translate(-58.33630944789013, -58.33630944789022)"
+        >
+          C
+          -
+          25
+        </text>
+      </g>
+    </g>
+  </svg>
+</div>
+`;
+
+exports[`PieChart snapShot testing renders with colors, width and height data correctly 1`] = `
+<div
+  className=
+      ms-PieChart
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        width: 670px;
+      }
+>
+  <svg
+    height={300}
+    width={600}
+  >
+    <g
+      transform="translate(300, 150)"
+    >
+      <g
+        className="arc"
+      >
+        <path
+          className=
+
+              {
+                fill: #e81123;
+                stroke-width: 2px;
+                stroke: #ffffff;
+              }
+          d="M0,-140A140,140,0,1,1,0,140L0,0Z"
+        />
+        <text
+          textAnchor="middle"
+          transform="translate(70, 1.554312234475219e-14)"
+        >
+          A
+          -
+          50
+        </text>
+      </g>
+      <g
+        className="arc"
+      >
+        <path
+          className=
+
+              {
+                fill: #0078d4;
+                stroke-width: 2px;
+                stroke: #ffffff;
+              }
+          d="M0,140A140,140,0,0,1,-140,0L0,0Z"
+        />
+        <text
+          textAnchor="middle"
+          transform="translate(-49.49747468305837, 49.49747468305829)"
+        >
+          B
+          -
+          25
+        </text>
+      </g>
+      <g
+        className="arc"
+      >
+        <path
+          className=
+
+              {
+                fill: #107c10;
+                stroke-width: 2px;
+                stroke: #ffffff;
+              }
+          d="M-140,0A140,140,0,0,1,0,-140L0,0Z"
+        />
+        <text
+          textAnchor="middle"
+          transform="translate(-49.49747468305829, -49.49747468305837)"
+        >
+          C
+          -
+          25
+        </text>
+      </g>
+    </g>
+  </svg>
+</div>
+`;

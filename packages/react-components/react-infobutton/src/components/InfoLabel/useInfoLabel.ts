@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
-import { mergeCallbacks, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
+import { mergeCallbacks, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
@@ -28,34 +28,37 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
   const baseId = useId('infolabel-');
   const [open, setOpen] = React.useState(false);
 
-  const root = resolveShorthand(rootShorthand, {
-    required: true,
+  const root = slot.always(rootShorthand, {
     defaultProps: {
       className,
       style,
     },
+    elementType: 'span',
   });
 
-  const label = resolveShorthand(labelShorthand, {
-    required: true,
+  const label = slot.always(labelShorthand, {
     defaultProps: {
       id: baseId + '__label',
       ref,
       size,
       ...labelProps,
     },
+    elementType: Label,
   });
 
-  const infoButton = resolveShorthand(infoButtonShorthand, {
-    required: !!info,
+  const infoButton = slot.optional(infoButtonShorthand, {
+    renderByDefault: !!info,
     defaultProps: {
       id: baseId + '__infoButton',
       size,
       info,
     },
+    elementType: InfoButton,
   });
 
-  const infoButtonPopover = resolveShorthand(infoButton?.popover, { required: true });
+  const infoButtonPopover = slot.always(infoButton?.popover, {
+    elementType: 'div',
+  });
   infoButtonPopover.onOpenChange = useEventCallback(
     mergeCallbacks(infoButtonPopover.onOpenChange, (e, data) => {
       setOpen(data.open);
@@ -64,10 +67,11 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
 
   if (infoButton) {
     infoButton.popover = infoButtonPopover;
-    infoButton.info = resolveShorthand(infoButton?.info, {
+    infoButton.info = slot.optional(infoButton?.info, {
       defaultProps: {
         id: baseId + '__info',
       },
+      elementType: 'div',
     });
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;

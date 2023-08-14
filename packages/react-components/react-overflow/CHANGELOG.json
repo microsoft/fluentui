@@ -2,6 +2,120 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 12:14:25 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.27",
+      "version": "9.0.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b52b54415c4d663885710fc113166be24d810742",
+            "comment": "fix: flickering in Overflow"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.4",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.28",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.11.1",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Aug 2023 13:16:59 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.26",
+      "version": "9.0.26",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "6247214bde5df11e951247f0a6d1278cc98490ea",
+            "comment": "fix: inaccurate calculation of size"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.3",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.1.11",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.25",
+      "version": "9.0.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.27",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.1.10",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.11.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:20 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.24",
+      "version": "9.0.24",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d8493a92520cacac29e9fe341a17d3595bc48343",
+            "comment": "fix: Overflow update should run show/hide steps twice"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.2",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:31 GMT",
       "tag": "@fluentui/react-overflow_v9.0.23",
       "version": "9.0.23",

@@ -99,12 +99,10 @@
       "@fluentui/react-colorpicker-compat": ["packages/react-components/react-colorpicker-compat/src/index.ts"],
       "@fluentui/react-combobox": ["packages/react-components/react-combobox/src/index.ts"],
       "@fluentui/react-components": ["packages/react-components/react-components/src/index.ts"],
-      "@fluentui/react-tags-preview": ["packages/react-components/react-tags-preview/src/index.ts"],
       "@fluentui/react-components/unstable": ["packages/react-components/react-components/src/unstable/index.ts"],
       "@fluentui/react-conformance": ["packages/react-conformance/src/index.ts"],
       "@fluentui/react-conformance-griffel": ["packages/react-components/react-conformance-griffel/src/index.ts"],
       "@fluentui/react-context-selector": ["packages/react-components/react-context-selector/src/index.ts"],
-      "@fluentui/react-data-grid-react-window": ["packages/react-components/react-data-grid-react-window/src/index.ts"],
       "@fluentui/react-datepicker-compat": ["packages/react-components/react-datepicker-compat/src/index.ts"],
       "@fluentui/react-dialog": ["packages/react-components/react-dialog/src/index.ts"],
       "@fluentui/react-divider": ["packages/react-components/react-divider/src/index.ts"],
@@ -144,6 +142,7 @@
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
+      "@fluentui/react-tags-preview": ["packages/react-components/react-tags-preview/src/index.ts"],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
@@ -155,7 +154,9 @@
       "@fluentui/react-utilities": ["packages/react-components/react-utilities/src/index.ts"],
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
-      "@fluentui/tokens": ["packages/tokens/src/index.ts"]
+      "@fluentui/tokens": ["packages/tokens/src/index.ts"],
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
+      "@fluentui/react-tree-preview": ["packages/react-components/react-tree-preview/src/index.ts"]
     }
   }
 }

@@ -74,6 +74,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
   private _xAxisType: XAxisTypes;
   private _calloutAnchorPoint: IVerticalBarChartDataPoint | null;
   private _domainMargin: number;
+  private _emptyChartId: string;
 
   public constructor(props: IVerticalBarChartProps) {
     super(props);
@@ -100,6 +101,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
         : XAxisTypes.StringAxis;
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._emptyChartId = getId('_VBC_empty');
   }
 
   public render(): JSX.Element {
@@ -181,7 +183,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       />
     ) : (
       <div
-        id={getId('_VBC_empty')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -531,7 +533,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
       if (barHeight < 1) {
@@ -689,7 +691,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(point.legend!);
         },

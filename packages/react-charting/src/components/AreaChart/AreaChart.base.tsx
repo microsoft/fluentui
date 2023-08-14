@@ -70,7 +70,6 @@ export interface IAreaChartState extends IBasestate {
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
-  emptyChart?: boolean;
   /** focused point */
   activePoint: string;
 }
@@ -107,6 +106,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   //from O(n^2) to O(n) using a map.
   private _enableComputationOptimization: boolean;
   private _firstRenderOptimization: boolean;
+  private _emptyChartId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -123,17 +123,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isCircleClicked: false,
       nearestCircleToHighlight: null,
       isShowCalloutPending: false,
-      emptyChart: !(
-        (
-          this.props.data &&
-          this.props.data.lineChartData &&
-          this.props.data.lineChartData.length > 0 &&
-          this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-        )
-        // if all the data sets have no data
-        // filtering all items which have no data and checking if the length of the filtered array is 0
-        // which means chart is not empty
-      ),
       activePoint: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
@@ -146,6 +135,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._tooltipId = getId('AreaChartTooltipID');
     this._enableComputationOptimization = true;
     this._firstRenderOptimization = true;
+    this._emptyChartId = getId('_AreaChart_empty');
   }
 
   public componentDidUpdate() {
@@ -159,7 +149,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    if (!this.state.emptyChart) {
+    if (!this._isChartEmpty()) {
       const { lineChartData, chartTitle } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
@@ -235,7 +225,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
     return (
       <div
-        id={getId('_AreaChart_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -303,7 +293,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
       this.setState({
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         isCalloutVisible: false,
         isShowCalloutPending: true,
         lineXValue: this._xAxisRectScale(pointToHighlight),
@@ -339,7 +329,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!found) {
       this.setState({
         isCalloutVisible: false,
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         displayOfLine: InterceptVisibility.hide,
         isCircleClicked: false,
       });
@@ -563,7 +553,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       const legend: ILegend = {
         title: singleChartData.legend,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(singleChartData.legend);
         },
@@ -695,7 +685,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
               {...(this.props.optimizeLargeData && {
-                'data-is-focusable': true,
+                'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
                 role: 'img',
                 'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
                   points[index].data.length
@@ -726,7 +716,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 <circle
                   key={circleId}
                   id={circleId}
-                  data-is-focusable={true}
+                  data-is-focusable={this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted()}
                   cx={xScale(singlePoint.xVal)}
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}
@@ -909,4 +899,18 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      (
+        this.props.data &&
+        this.props.data.lineChartData &&
+        this.props.data.lineChartData.length > 0 &&
+        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+      )
+      // if all the data sets have no data
+      // filtering all items which have no data and checking if the length of the filtered array is 0
+      // which means chart is not empty
+    );
+  }
 }

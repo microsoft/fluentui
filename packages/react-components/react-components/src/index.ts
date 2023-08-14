@@ -40,6 +40,8 @@ export {
   useModalAttributes,
   useObservedElement,
   useFocusObserved,
+  useRestoreFocusTarget,
+  useRestoreFocusSource,
 } from '@fluentui/react-tabster';
 export type {
   CreateCustomFocusIndicatorStyleOptions,
@@ -96,12 +98,16 @@ export {
   getNativeElementProps,
   getPartitionedNativeProps,
   getSlots,
+  slot,
+  assertSlots,
   IdPrefixProvider,
   resetIdsForTests,
   resolveShorthand,
   SSRProvider,
   useId,
   useIsomorphicLayoutEffect,
+  useEventCallback,
+  mergeCallbacks,
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
@@ -113,6 +119,8 @@ export type {
   ResolveShorthandFunction,
   ResolveShorthandOptions,
   Slot,
+  SlotOptions,
+  SlotComponentType,
   SlotClassNames,
   SlotPropsRecord,
   SlotRenderFunction,
@@ -762,6 +770,7 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
+export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
   PositioningProps,
   PositioningShorthand,

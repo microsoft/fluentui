@@ -1,11 +1,11 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Link, LinkProps } from '@fluentui/react-link';
+import { LinkProps } from '@fluentui/react-link';
 
 export type BreadcrumbLinkSlots = {
   /**
    * Root element of the BreadcrumbLink.
    */
-  root: Slot<typeof Link>;
+  root: LinkProps;
 
   /**
    * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.

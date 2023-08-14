@@ -2,6 +2,210 @@
   "name": "@fluentui/react-infobutton",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 12:14:26 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.49",
+      "version": "9.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-label to v9.1.25",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.7.13",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.12.2",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-utilities to v9.11.1",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Aug 2023 13:16:57 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.48",
+      "version": "9.0.0-beta.48",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-label to v9.1.24",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.7.12",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.12.1",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-theme to v9.1.11",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.47",
+      "version": "9.0.0-beta.47",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-label to v9.1.23",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.7.11",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.12.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-theme to v9.1.10",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-utilities to v9.11.0",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13",
+            "commit": "0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Aug 2023 10:17:21 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.46",
+      "version": "9.0.0-beta.46",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-label to v9.1.22",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.7.10",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.11.1",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Jul 2023 10:34:14 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.45",
+      "version": "9.0.0-beta.45",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.7.9",
+            "commit": "d2d8068110a9a7f71f417a40ee5f2db0ed1c40b9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:19 GMT",
+      "tag": "@fluentui/react-infobutton_v9.0.0-beta.44",
+      "version": "9.0.0-beta.44",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-popover to v9.7.8",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infobutton",
+            "comment": "Bump @fluentui/react-tabster to v9.11.0",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:29 GMT",
       "tag": "@fluentui/react-infobutton_v9.0.0-beta.43",
       "version": "9.0.0-beta.43",

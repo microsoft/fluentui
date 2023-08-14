@@ -22,25 +22,29 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
+    textWrap: 'nowrap',
   },
   icon: {
     display: 'flex',
     alignItems: 'center',
     ...shorthands.padding(tokens.spacingHorizontalXS),
   },
+  iconOnly: {
+    '&:hover': {
+      ...shorthands.borderBottom(tokens.strokeWidthThin, 'solid'),
+      ...shorthands.padding(tokens.spacingVerticalNone, tokens.spacingHorizontalXS),
+    },
+  },
   small: {
     height: '24px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.caption1,
   },
   medium: {
     height: '32px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.body1,
   },
   large: {
     height: '40px',
-    ...shorthands.padding(tokens.spacingHorizontalS),
     ...typographyStyles.body2,
   },
   overflow: {
@@ -114,7 +118,8 @@ export const useBreadcrumbLinkStyles_unstable = (state: BreadcrumbLinkState): Br
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className);
+    const iconOnlyClass = state.iconOnly ? styles.iconOnly : '';
+    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className, iconOnlyClass);
   }
 
   useLinkStyles_unstable(state as LinkState);

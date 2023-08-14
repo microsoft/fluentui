@@ -24,12 +24,12 @@ export const config: typeof baseConfig & Required<Pick<BeachballConfig, 'changel
         const generators = [
           // Fixes any dependency mismatches caused by beachball scoping
           'dependency-mismatch',
-          // Fixes unwanted pre-release dependency bumps caused by beachball - This needs to run last otherwise deps within apps will contain exact versions ( which dependency-mismatch generator update - TODO we need to fix it)
+          // Fixes unwanted pre-release dependency bumps caused by beachball
           'normalize-package-dependencies',
         ];
 
         generators.forEach(generator => {
-          const cmd = `yarn nx workspace-generator ${generator}`;
+          const cmd = `yarn nx g @fluentui/workspace-plugin:${generator}`;
           const out = execSync(cmd);
           console.log(out.toString());
         });

@@ -99,6 +99,7 @@ const useContentButtonStyles = makeStyles({
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
+        color: tokens.colorNeutralForeground2BrandHover,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
@@ -110,6 +111,7 @@ const useContentButtonStyles = makeStyles({
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline',
+        color: tokens.colorNeutralForeground2BrandPressed,
       },
       [`& .${iconRegularClassName}`]: {
         display: 'none',
@@ -118,15 +120,15 @@ const useContentButtonStyles = makeStyles({
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    color: tokens.colorBrandForeground1,
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorBrandForeground2Hover,
+      color: tokens.colorCompoundBrandForeground1Hover,
     },
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorBrandForeground2Pressed,
+      color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
 
@@ -256,16 +258,16 @@ const useDismissButtonStyles = makeStyles({
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
-    color: tokens.colorBrandForeground2,
+    color: tokens.colorBrandForeground1,
     borderLeftColor: tokens.colorBrandStroke2, // divider
     ':hover': {
       cursor: 'pointer',
       backgroundColor: tokens.colorBrandBackground2Hover,
-      color: tokens.colorBrandForeground2Hover,
+      color: tokens.colorCompoundBrandForeground1Hover,
     },
     ':hover:active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
-      color: tokens.colorBrandForeground2Pressed,
+      color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
 
