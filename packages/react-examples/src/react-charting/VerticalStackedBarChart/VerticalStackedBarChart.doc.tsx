@@ -47,8 +47,8 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
     },
     {
       title: 'VerticalStackedBarChart custom accessibility',
-      code: VerticalStackedBarChartCustomAccessibilityExample,
-      view: <VerticalBarChartCustomAccessibilityExampleCode />,
+      code: VerticalBarChartCustomAccessibilityExampleCode,
+      view: <VerticalStackedBarChartCustomAccessibilityExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/docs/VerticalStackedBarChartOverview.md'),
