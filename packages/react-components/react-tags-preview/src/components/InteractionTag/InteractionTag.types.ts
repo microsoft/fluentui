@@ -15,6 +15,8 @@ export type InteractionTagSlots = {
  * InteractionTag Props
  */
 export type InteractionTagProps<Value = string> = ComponentProps<Partial<InteractionTagSlots>> & {
+  // TODO add comments with default value
+
   appearance?: TagAppearance;
   disabled?: boolean;
   shape?: TagShape;
