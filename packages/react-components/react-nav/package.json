@@ -32,9 +32,9 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-theme": "*",
-    "@fluentui/react-utilities": "*",
-    "@griffel/react": "^1.5.2",
+    "@fluentui/react-theme": "^9.1.11",
+    "@fluentui/react-utilities": "^9.1.11",
+    "@griffel/react": "*",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
