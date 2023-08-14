@@ -4,7 +4,7 @@ import { styles } from './calendar.styles.js';
 import { template } from './calendar.template.js';
 
 /**
- * The Fluent Slider Element.
+ * The Fluent Calendar Element.
  *
  *
  * @public

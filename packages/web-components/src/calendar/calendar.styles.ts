@@ -30,6 +30,7 @@ import {
   lineHeightBase200,
   lineHeightBase300,
   spacingHorizontalM,
+  spacingHorizontalNone,
   spacingHorizontalS,
   spacingVerticalM,
   spacingVerticalS,
@@ -45,9 +46,8 @@ export const styles = css`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: ${spacingHorizontalM};
     width: 248px;
-    height: 285px;
+    min-height: 285px;
     outline: solid black;
     color: ${colorNeutralForeground1};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
@@ -62,6 +62,10 @@ export const styles = css`
     border-radius: ${borderRadiusMedium};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
   }
+  :host .calendar-body {
+    margin: ${spacingVerticalS} ${spacingHorizontalM} 0;
+    min-height: 192px;
+  }
   :host .secondary-panel-cell-outer:not(.secondary-panel-today):hover {
     background: ${colorBrandBackgroundInvertedHover};
     color: ${colorNeutralForeground1Static};
@@ -73,7 +77,7 @@ export const styles = css`
   :host .title,
   .secondary-panel-title {
     position: inline;
-    padding: ${spacingHorizontalM};
+    padding: ${spacingVerticalXS} ${spacingHorizontalS};
     font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     color: ${colorNeutralForeground1};
   }
@@ -170,6 +174,7 @@ export const styles = css`
   }
   :host .navicon-container {
     display: flex;
+    column-gap: ${spacingHorizontalNone};
   }
   :host .navicon-up,
   .navicon-down {
@@ -178,13 +183,15 @@ export const styles = css`
     height: 16px;
     cursor: pointer;
     vertical-align: middle;
-    margin: auto 0;
   }
   :host .header {
     width: 248px;
     height: 41px;
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    column-gap: ${spacingHorizontalNone};
+    padding: ${spacingHorizontalS} ${spacingHorizontalM};
   }
   :host .slotted-link {
     visibility: hidden;
@@ -192,8 +199,8 @@ export const styles = css`
   :host([show-slotted-link]) .slotted-link {
     height: 20px;
     cursor: pointer;
-    margin: ${spacingVerticalM} 0;
-    margin-right: 8px;
+    padding: ${spacingVerticalM} ${spacingVerticalS};
+    margin-inline-end: ${spacingVerticalM};
     visibility: visible;
   }
   :host([show-slotted-link]) .slotted-link.inactive {

@@ -218,11 +218,13 @@ export const template: ElementViewTemplate<Calendar> = html`
           </span>
         </div>
       </div>
-      ${calendarTemplate({
-        dataGrid: 'fast-data-grid',
-        dataGridRow: 'fast-data-grid-row',
-        dataGridCell: 'fast-data-grid-cell',
-      })}
+      <div class="calendar-body" part="calendar-body">
+        ${calendarTemplate({
+          dataGrid: 'fast-data-grid',
+          dataGridRow: 'fast-data-grid-row',
+          dataGridCell: 'fast-data-grid-cell',
+        })}
+      </div>
       <div class="footer" part="footer">
         ${when(
           x => !x.hasAttribute('monthPickerVisible'),
