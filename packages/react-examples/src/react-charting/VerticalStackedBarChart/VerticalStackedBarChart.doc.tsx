@@ -40,7 +40,7 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
       code: VerticalBarChartCalloutExampleCode,
       view: <VerticalStackedBarChartCalloutExample />,
     },
-    {
+    /*{ ToDo - Fix this example
       title: 'VerticalStackedBarChart tooltip',
       code: VerticalBarChartTooltipExampleCode,
       view: <VerticalStackedBarChartTooltipExample />,
@@ -49,7 +49,7 @@ export const VerticalStackedBarChartPageProps: IDocPageProps = {
       title: 'VerticalStackedBarChart custom accessibility',
       code: VerticalBarChartCustomAccessibilityExampleCode,
       view: <VerticalStackedBarChartCustomAccessibilityExample />,
-    },
+    },*/
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/docs/VerticalStackedBarChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/docs/VerticalStackedBarChartBestPractices.md'),
