@@ -6,7 +6,7 @@ import {
   testScreenResolutionChanges,
   testWithWait,
   testWithoutWait,
-} from '../../utilities/TestUtility';
+} from '../../utilities/TestUtility.test';
 import { MultiStackedBarChart } from './MultiStackedBarChart';
 import { IChartDataPoint, IChartProps, IMultiStackedBarChartProps } from './index';
 import { DefaultPalette, ThemeProvider } from '@fluentui/react';
