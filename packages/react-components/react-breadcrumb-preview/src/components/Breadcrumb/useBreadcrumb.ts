@@ -17,7 +17,6 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     appearance = 'transparent',
     focusMode = 'tab',
     dividerType = 'chevron',
-    iconPosition = 'before',
     size = 'medium',
     list,
     ...rest
@@ -46,7 +45,6 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
     list: slot.optional(list, { renderByDefault: true, defaultProps: { role: 'list' }, elementType: 'ol' }),
     appearance,
     dividerType,
-    iconPosition,
     size,
   };
 };

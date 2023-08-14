@@ -5,7 +5,7 @@ export type BreadcrumbItemSlots = {
   root: Slot<'li'>;
 
   /**
-   * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
+   * Icon that renders before the `children`.
    */
   icon?: Slot<'span'>;
 };
