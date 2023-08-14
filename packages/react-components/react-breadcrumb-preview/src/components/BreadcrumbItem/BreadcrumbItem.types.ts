@@ -21,24 +21,10 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> &
      * @default false
      */
     current?: boolean;
-
-    /**
-     * Icon position for BreadcrumbLink or BreadcrumbLink.
-     *
-     * @default 'before'
-     */
-    iconPosition?: 'before' | 'after';
   };
 
 /**
  * State used in rendering BreadcrumbItem
  */
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
-  Required<Pick<BreadcrumbItemProps, 'size' | 'current' | 'iconPosition'>> & {
-    /**
-     * A BreadcrumbItem can contain only an icon.
-     *
-     * @default false
-     */
-    iconOnly: boolean;
-  };
+  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;
