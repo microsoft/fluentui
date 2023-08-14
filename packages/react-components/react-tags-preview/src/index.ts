@@ -26,7 +26,7 @@ export type {
 export {
   InteractionTagSecondary,
   renderInteractionTagSecondary_unstable,
-  interactiontagsecondaryClassNames,
+  interactionTagSecondaryClassNames,
   useInteractionTagSecondaryStyles_unstable,
   useInteractionTagSecondary_unstable,
 } from './InteractionTagSecondary';

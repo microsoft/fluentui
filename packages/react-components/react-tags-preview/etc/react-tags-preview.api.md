@@ -22,6 +22,32 @@ export const InteractionTag: ForwardRefComponent<InteractionTagProps>;
 export const interactionTagClassNames: SlotClassNames<InteractionTagSlots>;
 
 // @public
+export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryProps>;
+
+// @public (undocumented)
+export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots>;
+
+// @public (undocumented)
+export type InteractionTagPrimaryContextValues = TagAvatarContextValues;
+
+// @public
+export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPrimarySlots>> & {
+    hasSecondaryAction?: boolean;
+};
+
+// @public (undocumented)
+export type InteractionTagPrimarySlots = {
+    root: NonNullable<Slot<'button'>>;
+    media?: Slot<'span'>;
+    icon?: Slot<'span'>;
+    primaryText: Slot<'span'>;
+    secondaryText?: Slot<'span'>;
+};
+
+// @public
+export type InteractionTagPrimaryState = ComponentState<InteractionTagPrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> & Pick<InteractionTagPrimaryProps, 'hasSecondaryAction'>> & UseTagAvatarContextValuesOptions;
+
+// @public
 export type InteractionTagProps<Value = string> = ComponentProps<Partial<InteractionTagSlots>> & {
     appearance?: TagAppearance;
     disabled?: boolean;
@@ -29,6 +55,23 @@ export type InteractionTagProps<Value = string> = ComponentProps<Partial<Interac
     size?: TagSize;
     value?: Value;
 };
+
+// @public
+export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondaryProps>;
+
+// @public (undocumented)
+export const interactionTagSecondaryClassNames: SlotClassNames<InteractionTagSecondarySlots>;
+
+// @public
+export type InteractionTagSecondaryProps = ComponentProps<InteractionTagSecondarySlots>;
+
+// @public (undocumented)
+export type InteractionTagSecondarySlots = {
+    root: NonNullable<Slot<'button'>>;
+};
+
+// @public
+export type InteractionTagSecondaryState = ComponentState<InteractionTagSecondarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;
 
 // @public (undocumented)
 export type InteractionTagSlots = {
@@ -41,62 +84,19 @@ export type InteractionTagState<Value = string> = ComponentState<InteractionTagS
 };
 
 // @public
-export const Primary: ForwardRefComponent<PrimaryProps>;
-
-// @public (undocumented)
-export const primaryClassNames: SlotClassNames<PrimarySlots>;
-
-// @public (undocumented)
-export type PrimaryContextValues = TagAvatarContextValues;
-
-// @public
-export type PrimaryProps = ComponentProps<Partial<PrimarySlots>> & {
-    hasSecondaryAction?: boolean;
-};
-
-// @public (undocumented)
-export type PrimarySlots = {
-    root: NonNullable<Slot<'button'>>;
-    media?: Slot<'span'>;
-    icon?: Slot<'span'>;
-    primaryText: Slot<'span'>;
-    secondaryText?: Slot<'span'>;
-};
-
-// @public
-export type PrimaryState = ComponentState<PrimarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'> & Pick<PrimaryProps, 'hasSecondaryAction'>> & UseTagAvatarContextValuesOptions;
-
-// @public
 export const renderInteractionTag_unstable: (state: InteractionTagState, contextValues: InteractionTagContextValues) => JSX.Element;
 
 // @public
-export const renderPrimary_unstable: (state: PrimaryState, contextValues: PrimaryContextValues) => JSX.Element;
+export const renderInteractionTagPrimary_unstable: (state: InteractionTagPrimaryState, contextValues: InteractionTagPrimaryContextValues) => JSX.Element;
 
 // @public
-export const renderSecondary_unstable: (state: SecondaryState) => JSX.Element;
+export const renderInteractionTagSecondary_unstable: (state: InteractionTagSecondaryState) => JSX.Element;
 
 // @public
 export const renderTag_unstable: (state: TagState, contextValues: TagContextValues) => JSX.Element;
 
 // @public
 export const renderTagGroup_unstable: (state: TagGroupState, contextValue: TagGroupContextValues) => JSX.Element;
-
-// @public
-export const Secondary: ForwardRefComponent<SecondaryProps>;
-
-// @public (undocumented)
-export const secondaryClassNames: SlotClassNames<SecondarySlots>;
-
-// @public
-export type SecondaryProps = ComponentProps<SecondarySlots>;
-
-// @public (undocumented)
-export type SecondarySlots = {
-    root: NonNullable<Slot<'button'>>;
-};
-
-// @public
-export type SecondaryState = ComponentState<SecondarySlots> & Required<Pick<InteractionTagContextValue, 'appearance' | 'disabled' | 'shape' | 'size'>>;
 
 // @public
 export const Tag: ForwardRefComponent<TagProps>;
@@ -165,19 +165,19 @@ export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React
 export function useInteractionTagContextValues_unstable(state: InteractionTagState): InteractionTagContextValues;
 
 // @public
+export const useInteractionTagPrimary_unstable: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLElement>) => InteractionTagPrimaryState;
+
+// @public (undocumented)
+export const useInteractionTagPrimaryStyles_unstable: (state: InteractionTagPrimaryState) => InteractionTagPrimaryState;
+
+// @public
+export const useInteractionTagSecondary_unstable: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLElement>) => InteractionTagSecondaryState;
+
+// @public (undocumented)
+export const useInteractionTagSecondaryStyles_unstable: (state: InteractionTagSecondaryState) => InteractionTagSecondaryState;
+
+// @public
 export const useInteractionTagStyles_unstable: (state: InteractionTagState) => InteractionTagState;
-
-// @public
-export const usePrimary_unstable: (props: PrimaryProps, ref: React_2.Ref<HTMLElement>) => PrimaryState;
-
-// @public (undocumented)
-export const usePrimaryStyles_unstable: (state: PrimaryState) => PrimaryState;
-
-// @public
-export const useSecondary_unstable: (props: SecondaryProps, ref: React_2.Ref<HTMLElement>) => SecondaryState;
-
-// @public (undocumented)
-export const useSecondaryStyles_unstable: (state: SecondaryState) => SecondaryState;
 
 // @public
 export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
