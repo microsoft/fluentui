@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { TagGroup, Tag, InteractionTag, Primary, Secondary, TagSize } from '@fluentui/react-tags-preview';
+import {
+  TagGroup,
+  Tag,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+  TagSize,
+} from '@fluentui/react-tags-preview';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
@@ -27,10 +34,10 @@ export const Sizes = () => {
               {size}
             </Tag>
             <InteractionTag>
-              <Primary icon={<CalendarMonthRegular />} hasSecondaryAction>
+              <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
                 {size}
-              </Primary>
-              <Secondary />
+              </InteractionTagPrimary>
+              <InteractionTagSecondary />
             </InteractionTag>
           </TagGroup>
         </div>

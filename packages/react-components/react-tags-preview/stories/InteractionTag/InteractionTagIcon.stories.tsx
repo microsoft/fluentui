@@ -12,7 +12,7 @@ Icon.storyName = 'Icon';
 Icon.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can render a custom icon if provided.',
+      story: 'An InteractionTag can render a custom icon if provided.',
     },
   },
 };

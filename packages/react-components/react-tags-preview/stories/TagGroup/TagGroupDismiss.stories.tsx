@@ -1,12 +1,19 @@
 import * as React from 'react';
-import { TagGroup, Tag, InteractionTag, TagGroupProps, Primary, Secondary } from '@fluentui/react-tags-preview';
+import {
+  TagGroup,
+  Tag,
+  InteractionTag,
+  TagGroupProps,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-tags-preview';
 
 export const Dismiss = () => {
   const defaultItems = [
     {
       value: '1',
       tag: (
-        <Tag dismissible key="1" aria-label="Tag1, remove">
+        <Tag dismissible value="1" key="1" aria-label="Tag1, remove">
           Tag 1
         </Tag>
       ),
@@ -14,7 +21,7 @@ export const Dismiss = () => {
     {
       value: '2',
       tag: (
-        <Tag dismissible key="2" aria-label="Tag2, remove">
+        <Tag dismissible value="2" key="2" aria-label="Tag2, remove">
           Tag 2
         </Tag>
       ),
@@ -22,18 +29,18 @@ export const Dismiss = () => {
     {
       value: 'foo',
       tag: (
-        <InteractionTag key="foo">
-          <Primary hasSecondaryAction>Foo</Primary>
-          <Secondary aria-label="Foo, remove" />
+        <InteractionTag value="foo" key="foo">
+          <InteractionTagPrimary hasSecondaryAction>Foo</InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="Foo, remove" />
         </InteractionTag>
       ),
     },
     {
       value: 'bar',
       tag: (
-        <InteractionTag key="bar">
-          <Primary hasSecondaryAction>Bar</Primary>
-          <Secondary aria-label="Bar, remove" />
+        <InteractionTag value="bar" key="bar">
+          <InteractionTagPrimary hasSecondaryAction>Bar</InteractionTagPrimary>
+          <InteractionTagSecondary aria-label="Bar, remove" />
         </InteractionTag>
       ),
     },

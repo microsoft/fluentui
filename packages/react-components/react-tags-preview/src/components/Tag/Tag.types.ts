@@ -31,6 +31,8 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
+  // TODO add comments with default value
+
   appearance?: TagAppearance;
   disabled?: boolean;
   dismissible?: boolean;

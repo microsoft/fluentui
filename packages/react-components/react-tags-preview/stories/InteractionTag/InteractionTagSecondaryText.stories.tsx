@@ -11,7 +11,7 @@ SecondaryText.storyName = 'SecondaryText';
 SecondaryText.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can have a secondary text.',
+      story: 'An InteractionTag can have a secondary text.',
     },
   },
 };

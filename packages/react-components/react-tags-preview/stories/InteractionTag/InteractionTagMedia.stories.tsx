@@ -15,7 +15,7 @@ Media.storyName = 'Media';
 Media.parameters = {
   docs: {
     description: {
-      story: 'A tag can render a media, for example an Avatar.',
+      story: 'An InteractionTag can render a media, for example an Avatar.',
     },
   },
 };

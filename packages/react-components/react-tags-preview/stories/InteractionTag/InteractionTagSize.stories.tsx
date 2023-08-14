@@ -72,7 +72,7 @@ Size.storyName = 'Size';
 Size.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag supports `medium`, `small` and `extra-small` size. Default size is `medium`.',
+      story: 'An InteractionTag supports `medium`, `small` and `extra-small` size. Default size is `medium`.',
     },
   },
 };

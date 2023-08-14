@@ -44,7 +44,7 @@ Dismiss.storyName = 'Dismiss';
 Dismiss.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can have a button that dismisses it',
+      story: 'An InteractionTag can have a button that dismisses it',
     },
   },
 };

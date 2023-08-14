@@ -48,7 +48,7 @@ Shape.storyName = 'Shape';
 Shape.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can be rounded or circular,',
+      story: 'An InteractionTag can be rounded or circular,',
     },
   },
 };
