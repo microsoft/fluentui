@@ -544,23 +544,28 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/DonutChart',
         },
         {
-          component: require<any>('./components/pages/Charting/VerticalBarChartPage').VerticalBarChartPage,
-          key: 'VerticalBarChart',
           name: 'VerticalBarChart',
-          url: '#/examples/VerticalBarChart',
+          links: [
+            {
+              component: require<any>('./components/pages/Charting/VerticalBarChartPage').VerticalBarChartPage,
+              key: 'VerticalBarChart',
+              name: 'VerticalBarChart',
+              url: '#/examples/VerticalBarChart/Basic',
+            },
+            {
+              component: require<any>('./components/pages/Charting/GroupedVerticalBarChartPage')
+                .GroupedVerticalBarChartPage,
+              key: 'GroupedVerticalBarChart',
+              name: 'VerticalBarChart - Grouped',
+              url: '#/examples/VerticalBarChart/Grouped',
+            },
+          ],
         },
         {
           component: require<any>('./components/pages/Charting/GaugeChartPage').GaugeChartPage,
           key: 'GaugeChart',
           name: 'GaugeChart',
           url: '#/examples/GaugeChart',
-        },
-        {
-          component: require<any>('./components/pages/Charting/GroupedVerticalBarChartPage')
-            .GroupedVerticalBarChartPage,
-          key: 'GroupedVerticalBarChart',
-          name: 'GroupedVerticalBarChart',
-          url: '#/examples/GroupedVerticalBarChart',
         },
         {
           component: require<any>('./components/pages/Charting/HeatMapChartPage').HeatMapChartPage,
