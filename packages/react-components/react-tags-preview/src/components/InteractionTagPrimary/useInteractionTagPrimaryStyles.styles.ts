@@ -7,7 +7,7 @@ import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons
 import {
   useIconStyles,
   useMediaStyles,
-  useInteractionTagPrimaryTextStyles,
+  usePrimaryTextStyles,
   useSecondaryTextStyles,
 } from '../Tag/useTagStyles.styles';
 
