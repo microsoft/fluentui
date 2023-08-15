@@ -322,6 +322,10 @@ export class Stylesheet {
     return this._constructibleSheet;
   }
 
+  public setAdoptableStyleSheet(sheet: CSSStyleSheet): void {
+    this._constructibleSheet = sheet;
+  }
+
   /**
    * Serializes the Stylesheet instance into a format which allows rehydration on creation.
    * @returns string representation of `ISerializedStylesheet` interface.

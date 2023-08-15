@@ -5,6 +5,7 @@ import type { IIconProps } from '../../Icon';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
 
 /**
  * {@docCategory SpinButton}
@@ -258,6 +259,8 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
    * Additional props for the up and down arrow buttons.
    */
   iconButtonProps?: IButtonProps;
+
+  shadowDom?: ShadowConfig;
 }
 
 /**
