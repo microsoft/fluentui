@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 15 Aug 2023 07:33:23 GMT",
+      "tag": "@fluentui/react-charting_v5.17.0",
+      "version": "5.17.0",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "1a8fdb694c25306d70fda02382a06961c3004312",
+            "comment": "Adding component tests for Multi Stacked bar chart"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Aug 2023 07:34:44 GMT",
       "tag": "@fluentui/react-charting_v5.17.0",
       "version": "5.17.0",
