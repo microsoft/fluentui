@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 15 Aug 2023 04:16:11 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.29",
+      "version": "3.0.0-alpha.29",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "8c3c3b2fbc9cf08609ae30d5f9fd2dddfaef3b0c",
+            "comment": "fix(web-components): update latest versions of fast packages and fix unallowed attributes issue for fluent-divider"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 10 Aug 2023 04:18:05 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.28",
       "version": "3.0.0-alpha.28",
