@@ -48,10 +48,12 @@ const linkItems: Item[] = [
   },
   {
     key: 3,
+    item: 'Item 3',
     linkProps: {
       'aria-label': 'Item 3',
       href: 'https://developer.microsoft.com/',
       icon: <CalendarMonth />,
+      disabled: true,
     },
   },
   {
@@ -59,8 +61,6 @@ const linkItems: Item[] = [
     item: 'Item 4',
     linkProps: {
       href: 'https://developer.microsoft.com/',
-      icon: <CalendarMonthRegular />,
-      iconPosition: 'after',
     },
   },
   {

@@ -44,7 +44,6 @@ type LinkItem = {
     href: string;
     icon?: BreadcrumbLinkProps['icon'];
     disabled?: boolean;
-    iconPosition?: 'before' | 'after';
   };
 };
 
@@ -73,6 +72,7 @@ const linkItems: LinkItem[] = [
   },
   {
     key: 3,
+    item: 'Item 3',
     linkProps: {
       'aria-label': 'Item 3',
       href: 'https://developer.microsoft.com/',
@@ -85,7 +85,6 @@ const linkItems: LinkItem[] = [
     linkProps: {
       href: 'https://developer.microsoft.com/',
       icon: <CalendarMonthRegular />,
-      iconPosition: 'after',
     },
   },
   {
