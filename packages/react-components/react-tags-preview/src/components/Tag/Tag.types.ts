@@ -1,14 +1,8 @@
-import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TagAppearance, TagShape, TagSize } from '../../utils/types';
+import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
-export type TagSize = 'extra-small' | 'small' | 'medium';
-
-export type TagContextValues = {
-  avatar: {
-    size?: AvatarSize;
-    shape?: AvatarShape;
-  };
-};
+export type TagContextValues = TagAvatarContextValues;
 
 export type TagSlots = {
   root: NonNullable<Slot<'button', 'span'>>;
@@ -37,10 +31,12 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-  appearance?: 'filled' | 'outline' | 'brand';
+  // TODO add comments with default value
+
+  appearance?: TagAppearance;
   disabled?: boolean;
   dismissible?: boolean;
-  shape?: 'rounded' | 'circular';
+  shape?: TagShape;
   size?: TagSize;
   /**
    * Unique value identifying the tag within a TagGroup
@@ -52,9 +48,5 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
  * State used in rendering Tag
  */
 export type TagState = ComponentState<TagSlots> &
-  Required<
-    Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
-      avatarSize: AvatarSize | undefined;
-      avatarShape: AvatarShape | undefined;
-    }
-  >;
+  Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> &
+  UseTagAvatarContextValuesOptions;
