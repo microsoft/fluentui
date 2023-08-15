@@ -106,6 +106,8 @@ export {
   SSRProvider,
   useId,
   useIsomorphicLayoutEffect,
+  useEventCallback,
+  mergeCallbacks,
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
@@ -768,6 +770,7 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
+export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
   PositioningProps,
   PositioningShorthand,

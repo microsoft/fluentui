@@ -52,10 +52,17 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
   const { slots, slotProps } = getSlots<TreeSlots>(state);
+  const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
+    if (instance) {
+      // This element stays between the tree and treeitem
+      // Due to accessibility issues this element should have role="none"
+      instance.setAttribute('role', 'none');
+    }
+  }, []);
   return (
     <TreeProvider value={contextValues.tree}>
       <slots.root {...slotProps.root}>
-        <FixedSizeList {...props.listProps} />
+        <FixedSizeList outerRef={handleOuterRef} {...props.listProps} />
       </slots.root>
     </TreeProvider>
   );
@@ -112,7 +119,7 @@ export const Virtualization = () => {
         children: FixedSizeTreeItem,
       }}
       onNavigation_unstable={handleNavigation}
-      aria-label="Tree"
+      aria-label="Virtualization"
     />
   );
 };
@@ -120,12 +127,16 @@ export const Virtualization = () => {
 Virtualization.parameters = {
   docs: {
     description: {
-      story:
-        "A tree **does not** support virtualization by default. To enable it, you'll need to adopt a custom third-party virtualization library.\n\n" +
-        'By utilizing virtualization, the tree only renders the nodes that are currently visible on the screen. This significantly reduces the number of DOM nodes, leading to quicker interaction times for large trees.\n\n' +
-        'In this example of a flat tree with `react-window` for virtualization, two main adjustments are necessary:\n\n' +
-        '1. `Tree` component must be recomposed using composition API to use `FixedSizeList` to wrap root content.\n' +
-        "2. Navigation will break as some nodes will not be available on the DOM (since they'll be virtualized), to fix this we'll need to provide a custom navigation handler that will scroll to the correct node before calling the default handler.",
+      story: `
+A tree **does not** support virtualization by default. To enable it, you'll need to adopt a custom third-party virtualization library.
+
+By utilizing virtualization, the tree only renders the nodes that are currently visible on the screen. This significantly reduces the number of DOM nodes, leading to quicker interaction times for large trees.
+
+In this example of a flat tree with \`react-window\` for virtualization, two main adjustments are necessary:
+
+1. \`Tree\` component must be recomposed using composition API to use \`FixedSizeList\` to wrap root content.
+2. Navigation will break as some nodes will not be available on the DOM (since they'll be virtualized), to fix this we'll need to provide a custom navigation handler that will scroll to the correct node before calling the default handler.
+      `,
     },
   },
 };

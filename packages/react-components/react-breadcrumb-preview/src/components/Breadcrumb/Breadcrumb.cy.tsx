@@ -24,8 +24,13 @@ const BreadcrumbSampleWithButton = (props: BreadcrumbProps) => (
         <BreadcrumbButton id="breadcrumb-button-2">Item 2</BreadcrumbButton>
       </BreadcrumbItem>
       <BreadcrumbItem>
-        <BreadcrumbButton id="breadcrumb-button-3" current>
+        <BreadcrumbButton id="breadcrumb-button-3" disabled>
           Item 3
+        </BreadcrumbButton>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbButton id="breadcrumb-button-4" current>
+          Item 4
         </BreadcrumbButton>
       </BreadcrumbItem>
     </Breadcrumb>
@@ -54,8 +59,13 @@ const BreadcrumbSampleWithLink = (props: BreadcrumbProps) => (
         </BreadcrumbLink>
       </BreadcrumbItem>
       <BreadcrumbItem>
-        <BreadcrumbLink href="#" id="breadcrumb-link-3" current>
+        <BreadcrumbLink href="#" id="breadcrumb-link-3" disabled>
           Item 3
+        </BreadcrumbLink>
+      </BreadcrumbItem>
+      <BreadcrumbItem>
+        <BreadcrumbLink href="#" id="breadcrumb-link-4" current>
+          Item 4
         </BreadcrumbLink>
       </BreadcrumbItem>
     </Breadcrumb>
@@ -102,7 +112,8 @@ describe('Breadcrumb', () => {
         cy.realPress('Tab');
         cy.get('#breadcrumb-button-2').should('be.focused');
         cy.realPress('Tab');
-        cy.get('#breadcrumb-button-3').should('be.focused');
+        cy.get('#breadcrumb-button-3').should('not.be.focused');
+        cy.get('#breadcrumb-button-4').should('be.focused');
       });
     });
 
@@ -120,7 +131,8 @@ describe('Breadcrumb', () => {
         cy.realPress('ArrowRight');
         cy.get('#breadcrumb-button-2').should('be.focused');
         cy.realPress('ArrowRight');
-        cy.get('#breadcrumb-button-3').should('be.focused');
+        cy.get('#breadcrumb-button-3').should('not.be.focused');
+        cy.get('#breadcrumb-button-4').should('be.focused');
         cy.realPress('ArrowRight');
         cy.get('#breadcrumb-button-1').should('be.focused');
       });
@@ -141,7 +153,8 @@ describe('Breadcrumb', () => {
         cy.realPress('Tab');
         cy.get('#breadcrumb-link-2').should('be.focused');
         cy.realPress('Tab');
-        cy.get('#breadcrumb-link-3').should('be.focused');
+        cy.get('#breadcrumb-link-3').should('not.be.focused');
+        cy.get('#breadcrumb-link-4').should('be.focused');
       });
     });
 
@@ -159,7 +172,8 @@ describe('Breadcrumb', () => {
         cy.realPress('ArrowRight');
         cy.get('#breadcrumb-link-2').should('be.focused');
         cy.realPress('ArrowRight');
-        cy.get('#breadcrumb-link-3').should('be.focused');
+        cy.get('#breadcrumb-link-3').should('not.be.focused');
+        cy.get('#breadcrumb-link-4').should('be.focused');
         cy.realPress('ArrowRight');
         cy.get('#breadcrumb-link-1').should('be.focused');
       });

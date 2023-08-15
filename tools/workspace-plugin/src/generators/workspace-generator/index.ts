@@ -1,4 +1,4 @@
-import * as path from 'path';
+import path from 'path';
 import { Tree, formatFiles, generateFiles, names, offsetFromRoot } from '@nx/devkit';
 
 import { WorkspaceGeneratorGeneratorSchema } from './schema';

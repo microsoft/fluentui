@@ -515,6 +515,7 @@ export const tokens: Record<keyof Theme, string> = {
   durationFaster: 'var(--durationFaster)',
   durationFast: 'var(--durationFast)',
   durationNormal: 'var(--durationNormal)',
+  durationGentle: 'var(--durationGentle)',
   durationSlow: 'var(--durationSlow)',
   durationSlower: 'var(--durationSlower)',
   durationUltraSlow: 'var(--durationUltraSlow)',

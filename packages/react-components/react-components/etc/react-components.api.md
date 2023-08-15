@@ -402,6 +402,7 @@ import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
+import { mergeCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
@@ -578,6 +579,7 @@ import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
@@ -912,6 +914,7 @@ import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { useFieldContextValues_unstable } from '@fluentui/react-field';
@@ -1895,6 +1898,8 @@ export { MenuTriggerProps }
 
 export { MenuTriggerState }
 
+export { mergeCallbacks }
+
 export { mergeClasses }
 
 export { OnOpenChangeData }
@@ -2246,6 +2251,8 @@ export { renderTooltip_unstable }
 export { renderToStyleElements }
 
 export { resetIdsForTests }
+
+export { resolvePositioningShorthand }
 
 export { resolveShorthand }
 
@@ -2914,6 +2921,8 @@ export { useDividerStyles_unstable }
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
+
+export { useEventCallback }
 
 export { useField_unstable }
 

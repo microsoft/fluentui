@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "chore: re-export slot and assertSlots methods",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

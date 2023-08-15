@@ -1,5 +1,5 @@
 import { logger } from '@nx/devkit';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 import { disableChalk, formatMockedCalls } from '../utils-testing';
 import { generateChangeFilesHelp } from './generate-change-files';
