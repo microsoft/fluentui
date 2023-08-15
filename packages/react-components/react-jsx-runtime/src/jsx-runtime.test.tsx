@@ -1,10 +1,8 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { render } from '@testing-library/react';
 import { assertSlots, getSlotsNext, resolveShorthand, slot } from '@fluentui/react-utilities';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { createElement } from './createElement';
 
 describe('createElement with getSlotsNext', () => {
   describe('general behavior tests', () => {
@@ -47,7 +45,6 @@ describe('createElement with getSlotsNext', () => {
         <div>
           <div>1</div>
           <div>2</div>
-          <div>3</div>
         </div>,
       );
 
@@ -58,9 +55,6 @@ describe('createElement with getSlotsNext', () => {
           </div>
           <div>
             2
-          </div>
-          <div>
-            3
           </div>
         </div>
       `);
@@ -141,13 +135,11 @@ describe('createElement with getSlotsNext', () => {
       expect(children.mock.calls[0][0]).toBe('div');
       expect(children.mock.calls[0][1].id).toBe('outer');
       expect(children.mock.calls[0][1].children).toMatchInlineSnapshot(`
-        <React.Fragment>
-          <div
-            id="inner"
-          >
-            Inner children
-          </div>
-        </React.Fragment>
+        <div
+          id="inner"
+        >
+          Inner children
+        </div>
       `);
 
       expect(result.container.firstChild).toMatchInlineSnapshot(`
@@ -208,6 +200,7 @@ describe('createElement with assertSlots', () => {
     it('handles an array of children', () => {
       const result = render(
         <div>
+          <div>0</div>
           <div>1</div>
           <div>2</div>
         </div>,
@@ -215,6 +208,9 @@ describe('createElement with assertSlots', () => {
 
       expect(result.container.firstChild).toMatchInlineSnapshot(`
         <div>
+          <div>
+            0
+          </div>
           <div>
             1
           </div>
@@ -299,13 +295,11 @@ describe('createElement with assertSlots', () => {
       expect(children.mock.calls[0][0]).toBe('div');
       expect(children.mock.calls[0][1].id).toBe('outer');
       expect(children.mock.calls[0][1].children).toMatchInlineSnapshot(`
-        <React.Fragment>
-          <div
-            id="inner"
-          >
-            Inner children
-          </div>
-        </React.Fragment>
+        <div
+          id="inner"
+        >
+          Inner children
+        </div>
       `);
 
       expect(result.container.firstChild).toMatchInlineSnapshot(`
