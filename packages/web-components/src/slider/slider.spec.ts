@@ -57,7 +57,7 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('min', 0);
   });
 
-  test.only('should set a default `max` property of 10 when `max` is not provided', async () => {
+  test('should set a default `max` property of 10 when `max` is not provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
