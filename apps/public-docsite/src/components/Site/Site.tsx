@@ -11,6 +11,7 @@ import {
   trackEvent,
   trackPageView,
   IWithPlatformProps,
+  TopBanner,
   TopNav,
   ScrollBars,
   INavPage,
@@ -158,6 +159,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
 
     const SiteContent = () => (
       <div key="site" className={styles.siteRoot}>
+        {this._renderTopBanner()}
         {this._renderTopNav()}
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
@@ -328,6 +330,10 @@ export class Site<TPlatforms extends string = string> extends React.Component<
         />
       );
     }
+  };
+
+  private _renderTopBanner = (): JSX.Element | undefined => {
+    return <TopBanner />;
   };
 
   private _renderPlatformPicker = (): JSX.Element | null => {
