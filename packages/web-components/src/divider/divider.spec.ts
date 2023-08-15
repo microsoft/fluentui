@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
-import type { Divider } from './divider.js';
+import { Divider } from './divider.js';
 
 test.describe('Divider', () => {
   let page: Page;
@@ -11,11 +11,11 @@ test.describe('Divider', () => {
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
 
+    await page.goto(fixtureURL('components-divider--divider'));
+
     element = page.locator('fluent-divider');
 
     root = page.locator('#root');
-
-    await page.goto(fixtureURL('components-divider--divider'));
   });
 
   test.afterAll(async () => {
@@ -55,17 +55,16 @@ test.describe('Divider', () => {
             `;
     });
 
-    await expect(element).toHaveJSProperty('ariaOrientation', 'vertical');
+    await expect(element).toHaveAttribute('aria-orientation', 'vertical');
 
     await element.evaluate((node: Divider) => {
       node.orientation = 'horizontal';
     });
 
-    await expect(element).toHaveJSProperty('ariaOrientation', 'horizontal');
+    await expect(element).toHaveAttribute('aria-orientation', 'horizontal');
   });
 
-  // These test fail for Fluent Divider because aria-orientation is set regardless of role. Something is broken.
-  test('should NOT set the `aria-orientation` attribute equal to the `orientation` value if the `role` is presentational', async () => {
+  test('should NOT set the `aria-orientation` property equal to `orientation` value if the `role` is presentational', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
                 <fluent-divider orientation="vertical"></fluent-divider>
@@ -78,8 +77,8 @@ test.describe('Divider', () => {
       node.role = 'presentation';
     });
 
-    await expect(element).not.toHaveAttribute('aria-orientation', 'horizontal');
-    await expect(element).not.toHaveAttribute('aria-orientation', 'vertical');
+    await expect(element).not.toHaveJSProperty('aria-orientation', 'vertical');
+    await expect(element).not.toHaveJSProperty('aria-orientation', 'horizontal');
   });
 
   test('should initialize to the provided value attribute if set post-connection', async () => {
