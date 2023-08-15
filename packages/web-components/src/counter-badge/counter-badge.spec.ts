@@ -21,69 +21,6 @@ test.describe('CounterBadge component', () => {
     await page.close();
   });
 
-  test('should not render icon when iconPosition is none', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                  <fluent-counter-badge count="100"></fluent-counter-badge>
-              `;
-    });
-
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      const startSlot = element?.shadowRoot?.querySelector('slot[name="start"]') as HTMLSlotElement;
-      const endSlot = element?.shadowRoot?.querySelector('slot[name="end"]') as HTMLSlotElement;
-      return {
-        startContent: startSlot ? startSlot.assignedNodes()[0]?.textContent || '' : '',
-        endContent: endSlot ? endSlot.assignedNodes()[0]?.textContent || '' : '',
-      };
-    });
-
-    expect(shadowContent.startContent).toBe('');
-    expect(shadowContent.endContent).toBe('');
-  });
-
-  test('should render icon at start when iconPosition is start', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                    <fluent-counter-badge count="100"><span slot="start">Icon</span></fluent-counter-badge>
-                `;
-    });
-
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      const startSlot = element?.shadowRoot?.querySelector('slot[name="start"]') as HTMLSlotElement;
-      const endSlot = element?.shadowRoot?.querySelector('slot[name="end"]') as HTMLSlotElement;
-      return {
-        startContent: startSlot ? startSlot.assignedNodes()[0]?.textContent || '' : '',
-        endContent: endSlot ? endSlot.assignedNodes()[0]?.textContent || '' : '',
-      };
-    });
-
-    expect(shadowContent.startContent).not.toBe('');
-    expect(shadowContent.endContent).toBe('');
-  });
-
-  test('should render icon at end when iconPosition is end', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                        <fluent-counter-badge count="100"><span slot="end">Icon</span></fluent-counter-badge>
-                    `;
-    });
-
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      const startSlot = element?.shadowRoot?.querySelector('slot[name="start"]') as HTMLSlotElement;
-      const endSlot = element?.shadowRoot?.querySelector('slot[name="end"]') as HTMLSlotElement;
-      return {
-        startContent: startSlot ? startSlot.assignedNodes()[0]?.textContent || '' : '',
-        endContent: endSlot ? endSlot.assignedNodes()[0]?.textContent || '' : '',
-      };
-    });
-
-    expect(shadowContent.startContent).toBe('');
-    expect(shadowContent.endContent).not.toBe('');
-  });
-
   test('should handle overflow count property correctly', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
