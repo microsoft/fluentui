@@ -84,4 +84,44 @@ describe('slot', () => {
       [SLOT_RENDER_FUNCTION_SYMBOL]: expect.any(Function),
     });
   });
+  describe('.resolveShorthand', () => {
+    it('resolves a string', () => {
+      expect(slot.resolveShorthand('hello')).toEqual({ children: 'hello' });
+    });
+
+    it('resolves a JSX element', () => {
+      const jsx = <div>hello</div>;
+      expect(slot.resolveShorthand(jsx)).toEqual({ children: jsx });
+    });
+
+    it('resolves a number', () => {
+      expect(slot.resolveShorthand(42)).toEqual({ children: 42 });
+    });
+    it('resolves an array', () => {
+      expect(slot.resolveShorthand([])).toEqual({ children: [] });
+    });
+
+    it('resolves an object as the same object', () => {
+      const slotA = {};
+      const resolvedProps = slot.resolveShorthand(slotA);
+      expect(resolvedProps).toEqual({});
+      expect(resolvedProps).toBe(slotA);
+    });
+
+    it('resolves "null" without creating a child element', () => {
+      expect(slot.resolveShorthand(null)).toEqual(null);
+    });
+
+    it('resolves undefined without creating a child element', () => {
+      expect(slot.resolveShorthand(undefined)).toEqual(undefined);
+    });
+
+    it('should console an error when a function is passed as value', () => {
+      console.error = jest.fn();
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const fn: any = () => null;
+      expect(slot.resolveShorthand(fn)).toBe(fn);
+      expect(console.error).toHaveBeenCalled();
+    });
+  });
 });

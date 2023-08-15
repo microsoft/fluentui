@@ -5,16 +5,12 @@ import {
   TreeItemLayout,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
+  TreeItemValue,
 } from '@fluentui/react-tree-preview';
 import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 
-interface Result {
-  results: { name: string }[];
-}
-
-type Item = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
-
-const MAX_PAGES = 3;
+const ITEMS_PER_PAGE = 10;
+const MAX_PAGES = 4;
 
 const pinnedItems = [
   { value: 'pinned', name: 'Pinned', id: 'pinned' },
@@ -23,27 +19,47 @@ const pinnedItems = [
   { value: 'pinned-item-3', parentValue: 'pinned', name: 'Pinned item 3' },
 ];
 
+interface FetchResult {
+  results: { name: string }[];
+}
+
+type CustomItem = HeadlessFlatTreeItemProps & { name: string | React.ReactNode };
+
 const useStyles = makeStyles({
   container: {
     height: '400px',
     paddingBottom: '10px',
     ...shorthands.overflow('auto'),
   },
+  screenReadersOnly: {
+    position: 'absolute',
+    width: '1px',
+    height: '1px',
+    ...shorthands.margin('-1'),
+    ...shorthands.overflow('hidden'),
+    clip: 'rect(0,0,0,0)',
+    whiteSpace: 'nowrap',
+  },
 });
 
 export const InfiniteScrolling = () => {
   const [page, setPage] = React.useState(1);
   const [isLoading, setIsLoading] = React.useState(false);
-  const peopleItems = useQuery<Item[]>([
+
+  const [ariaMessage, setAriaMessage] = React.useState('');
+  const itemToFocusRef = React.useRef<HTMLDivElement>(null);
+  const [itemToFocusValue, setItemToFocusValue] = React.useState<TreeItemValue>();
+
+  const peopleItems = useQuery<CustomItem[]>([
     { value: 'people', name: 'People' },
-    ...Array.from({ length: 10 }, (_, index) => ({
+    ...Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
       value: `person-${index + 1}`,
       parentValue: 'people',
       name: `Person ${index + 1}`,
     })),
   ]);
 
-  const items = React.useMemo<Item[]>(
+  const items = React.useMemo<CustomItem[]>(
     () => [
       ...pinnedItems,
       ...peopleItems.value,
@@ -64,22 +80,24 @@ export const InfiniteScrolling = () => {
 
   const flatTree = useHeadlessFlatTree_unstable(items, { defaultOpenItems: ['pinned', 'people'] });
 
-  const fetchMoreItems = () => {
+  const fetchMoreItems = async () => {
     setIsLoading(true);
+    setAriaMessage(`loading more people...`);
 
-    fetch(`https://swapi.dev/api/people?page=${page}`)
-      .then(res => res.json())
-      .then((json: Result) => {
-        const fetchedItems = json.results.map<Item>(person => ({
-          value: `person-${person.name}`,
-          parentValue: 'people',
-          name: person.name,
-        }));
+    const json = await mockFetchPeople(page);
+    const fetchedItems = json.results.map<CustomItem>(person => ({
+      value: `person-${person.name}`,
+      parentValue: 'people',
+      name: person.name,
+    }));
+    const firstNewItemValue = fetchedItems[0].value;
 
-        setIsLoading(false);
-        setPage(page + 1);
-        peopleItems.query(() => [...peopleItems.value, ...fetchedItems]);
-      });
+    await peopleItems.query(() => [...peopleItems.value, ...fetchedItems]);
+
+    setIsLoading(false);
+    setPage(prev => prev + 1);
+    setAriaMessage(`${fetchedItems.length} new people loaded`);
+    setItemToFocusValue(firstNewItemValue);
   };
 
   const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
@@ -91,17 +109,47 @@ export const InfiniteScrolling = () => {
     }
   };
 
+  React.useEffect(() => {
+    if (itemToFocusRef.current) {
+      itemToFocusRef.current.focus();
+      setItemToFocusValue(undefined);
+    }
+  }, [itemToFocusValue]);
+
   return (
-    <Tree {...flatTree.getTreeProps()} aria-label="Tree" onScroll={handleScroll} className={styles.container}>
-      {Array.from(flatTree.items(), flatTreeItem => {
-        const { name, ...treeItemProps } = flatTreeItem.getTreeItemProps();
-        return (
-          <TreeItem {...treeItemProps} key={flatTreeItem.value}>
-            <TreeItemLayout>{name}</TreeItemLayout>
-          </TreeItem>
-        );
-      })}
-    </Tree>
+    <>
+      <Tree
+        {...flatTree.getTreeProps()}
+        aria-label="Infinite Scrolling"
+        onScroll={handleScroll}
+        className={styles.container}
+      >
+        {Array.from(flatTree.items(), flatTreeItem => {
+          const { name, value, ...treeItemProps } = flatTreeItem.getTreeItemProps();
+          return (
+            <TreeItem
+              {...treeItemProps}
+              key={value}
+              value={value}
+              ref={value === itemToFocusValue ? itemToFocusRef : undefined}
+            >
+              <TreeItemLayout>{name}</TreeItemLayout>
+            </TreeItem>
+          );
+        })}
+      </Tree>
+
+      <AriaLive content={ariaMessage} />
+    </>
+  );
+};
+
+const AriaLive = ({ content }: { content: string | undefined }) => {
+  const styles = useStyles();
+  return (
+    <div aria-live="polite" aria-atomic="true" className={styles.screenReadersOnly}>
+      {content}
+    </div>
   );
 };
 
@@ -120,11 +168,25 @@ function useQuery<Value>(initialValue: Value) {
   return { ...queryResult, query } as const;
 }
 
+function mockFetchPeople(page: number): Promise<FetchResult> {
+  return new Promise(resolve => {
+    setTimeout(() => {
+      const startIndex = page * ITEMS_PER_PAGE + 1;
+      const results = Array.from({ length: ITEMS_PER_PAGE }, (_, index) => ({
+        name: `Person ${startIndex + index}`,
+      }));
+
+      resolve({ results });
+    }, 1000);
+  });
+}
+
 InfiniteScrolling.parameters = {
   docs: {
     description: {
-      story:
-        'This example takes the previous lazy loading concept a step further by adding infinite scrolling. As the user navigates through the tree, additional items are loaded incrementally, enhancing the responsiveness and scalability of the tree.',
+      story: `
+This example takes the previous lazy loading concept a step further by adding infinite scrolling. As the user navigates through the tree, additional items are loaded incrementally, enhancing the responsiveness and scalability of the tree.
+      `,
     },
   },
 };
