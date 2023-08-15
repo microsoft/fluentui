@@ -488,7 +488,7 @@ test.describe('TextInput', () => {
     test('should report invalid validity when `value` does not match `pattern`', async () => {
       await root.evaluate(node => {
         node.innerHTML = /* html */ `
-                    <fluent-text-input type="tel" pattern="value" required value="other value"></fluent-text-input>
+                    <fluent-text-input type="tel" pattern="value" required value="555"></fluent-text-input>
                 `;
       });
 
