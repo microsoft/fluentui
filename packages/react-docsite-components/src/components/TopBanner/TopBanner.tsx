@@ -1,7 +1,9 @@
 import * as React from 'react';
 import * as styles from './TopBanner.module.scss';
 
-export const TopBanner: React.FC = () => (
+import type { ITopBannerProps } from './TopBanner.types';
+
+export const TopBanner: React.FC<ITopBannerProps> = ({ cdnUrl }) => (
   <div className={styles.topBanner}>
     <div className={styles.topBannerContent}>
       <span className={styles.topBannerHeader}>
@@ -15,7 +17,7 @@ export const TopBanner: React.FC = () => (
     <img
       className={styles.topBannerImage}
       role="presentation"
-      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/banner_image.webp"
+      src={cdnUrl + '/fabric-website/images/fluent2-top-banner-image.webp'}
     />
   </div>
 );
