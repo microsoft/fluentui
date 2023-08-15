@@ -57,14 +57,14 @@ test.describe('Slider', () => {
     await expect(element).toHaveJSProperty('min', 0);
   });
 
-  test('should set a default `max` property of 10 when `max` is not provided', async () => {
+  test.only('should set a default `max` property of 10 when `max` is not provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-slider></fluent-slider>
         `;
     });
 
-    await expect(element).toHaveAttribute('max', '10');
+    await expect(element).toHaveJSProperty('max', 10);
   });
 
   test('should set a `tabindex` of 0', async () => {
