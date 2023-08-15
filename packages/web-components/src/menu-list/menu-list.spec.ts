@@ -357,7 +357,7 @@ test.describe('Menu', () => {
     await expect(menuItems.nth(3)).toBeFocused();
   });
 
-  test('should close the menu when pressing the escape key', async () => {
+  test('should navigate to submenu, close it with escape key, and return focus to the first menu item', async () => {
     test.slow();
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -492,7 +492,7 @@ test.describe('Menu', () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
                 <fluent-menu-list>
-                    <fluent-menu-item role="menuitemcheckbox"></fluent-menu-item>
+                    <fluent-menu-item role="menuitemradio"></fluent-menu-item>
                     <fluent-menu-item>Menu item 2</fluent-menu-item>
                     <fluent-menu-item>Menu item 3</fluent-menu-item>
                     <fluent-menu-item>Menu item 4</fluent-menu-item>
