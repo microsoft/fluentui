@@ -8,7 +8,7 @@ export type BreadcrumbLinkSlots = {
   root: LinkProps;
 
   /**
-   * Icon that renders either before or after the `children` as specified by the `iconPosition` prop.
+   * Icon that renders before the `children`.
    */
   icon?: Slot<'span'>;
 };
@@ -24,13 +24,6 @@ export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> &
      * @default false
      */
     current?: boolean;
-
-    /**
-     * Icon position for BreadcrumbLink or BreadcrumbLink.
-     *
-     * @default 'before'
-     */
-    iconPosition?: 'before' | 'after';
 
     /**
      * Defines a sate when the Link is part of overflow menu.
@@ -52,11 +45,4 @@ export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> &
  */
 export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> &
   Partial<Omit<BreadcrumbLinkProps, 'size'>> &
-  Required<Pick<BreadcrumbLinkProps, 'size'>> & {
-    /**
-     * A BreadcrumbLink can contain only an icon.
-     *
-     * @default false
-     */
-    iconOnly: boolean;
-  };
+  Required<Pick<BreadcrumbLinkProps, 'size'>>;

@@ -19,7 +19,6 @@ type Item = {
     onClick?: () => void;
     icon?: ButtonProps['icon'];
     disabled?: boolean;
-    iconPosition?: 'before' | 'after';
   };
 };
 
@@ -33,10 +32,12 @@ const buttonItems: Item[] = [
   },
   {
     key: 1,
+    item: 'Item 1',
     buttonProps: {
       icon: <CalendarMonth />,
       'aria-label': 'Item 1',
       onClick: () => console.log('item 1 was clicked'),
+      disabled: true,
     },
   },
   {
@@ -59,7 +60,6 @@ const buttonItems: Item[] = [
     item: 'Item 4',
     buttonProps: {
       icon: <CalendarMonth />,
-      iconPosition: 'after',
       onClick: () => console.log('item 4 was clicked'),
     },
   },
