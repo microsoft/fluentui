@@ -22,7 +22,7 @@ test.describe('TextInput', () => {
 
     label = element.locator('.label');
 
-    await page.goto(fixtureURL('debug--blank'));
+    await page.goto(fixtureURL('components-textinput--text-input'));
   });
 
   test.afterAll(async () => {
