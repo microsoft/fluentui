@@ -217,6 +217,8 @@ test.describe.only('Switch', () => {
         `;
     });
 
+    await expect(element).toHaveAttribute('aria-disabled', 'false');
+
     await element.evaluate((node: Switch) => {
       node.disabled = true;
     });
