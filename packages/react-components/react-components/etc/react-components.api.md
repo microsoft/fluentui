@@ -579,6 +579,7 @@ import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
@@ -2250,6 +2251,8 @@ export { renderTooltip_unstable }
 export { renderToStyleElements }
 
 export { resetIdsForTests }
+
+export { resolvePositioningShorthand }
 
 export { resolveShorthand }
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: changes tsconfig target to ES2019",
+  "packageName": "@fluentui/react-portal-compat",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

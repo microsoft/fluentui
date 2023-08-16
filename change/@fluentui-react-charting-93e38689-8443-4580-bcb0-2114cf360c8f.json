@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Adding optional axis titles",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "patch"
-}

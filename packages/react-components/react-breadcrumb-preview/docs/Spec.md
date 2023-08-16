@@ -172,13 +172,12 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property     | Values                     | Default       | Purpose                          |
-| ------------ | -------------------------- | ------------- | -------------------------------- |
-| appearance   | `transparent`, `subtle`    | `transparent` | Sets appearance                  |
-| dividerType  | `chevron`, `slash`         | `chevron`     | Sets type of divider             |
-| focusMode    | `tab`, `arrow`             | `tab`         | Sets focus mode                  |
-| iconPosition | `before`, `after`          | `before`      | Sets icon position for all items |
-| size         | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb   |
+| Property    | Values                     | Default       | Purpose                        |
+| ----------- | -------------------------- | ------------- | ------------------------------ |
+| appearance  | `transparent`, `subtle`    | `transparent` | Sets appearance                |
+| dividerType | `chevron`, `slash`         | `chevron`     | Sets type of divider           |
+| focusMode   | `tab`, `arrow`             | `tab`         | Sets focus mode                |
+| size        | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 
@@ -253,7 +252,7 @@ Usage
 
 ```jsx
 <BreadcrumbItem>
-  <BreadcrumbButton icon={<IconComponent />} iconPosition="after">Item</BreadcrumbButton>
+  <BreadcrumbButton icon={<IconComponent />}>Item</BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem>
   <BreadcrumbLink icon={<IconComponent />}>Item</BreadcrumbLink>
@@ -318,11 +317,10 @@ Under the hood @fluentui/react-button component is used.
 
 #### API
 
-| Property     | Values            | Default  | Purpose                |
-| ------------ | ----------------- | -------- | ---------------------- |
-| current      | boolean           | false    | Indicates current page |
-| icon         | _slot_            |          | Sets icon              |
-| iconPosition | `before`, `after` | `before` | Sets icon position     |
+| Property | Values  | Default | Purpose                |
+| -------- | ------- | ------- | ---------------------- |
+| current  | boolean | false   | Indicates current page |
+| icon     | _slot_  |         | Sets icon              |
 
 For Link @fluentui/react-link component is used.
 
