@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as shape from 'd3-shape';
 import { IArcProps, IArcState, IArcStyles } from './Arc.types';
-import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { wrapContent, convertToLocaleString } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
@@ -55,6 +55,8 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 }
 
 export class LabeledArc extends Arc {
+  private _isRTL = getRTL();
+
   public constructor(props: IArcProps) {
     super(props);
     this._arcId = getId('piechart_arc');
@@ -96,7 +98,7 @@ export class LabeledArc extends Arc {
             x: labelX,
             y: labelY,
             dominantBaseline: angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto',
-            textAnchor: angle > Math.PI ? 'end' : 'start',
+            textAnchor: (!this._isRTL && angle > Math.PI) || (this._isRTL && angle < Math.PI) ? 'end' : 'start',
             'aria-label': `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`,
             className: classNames.arcText,
           }}
