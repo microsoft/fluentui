@@ -6,6 +6,9 @@ import { concatStyleSets } from '@fluentui/merge-styles';
 import type { ICustomizerContext } from './CustomizerContext';
 import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
 import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import { getWindow } from '../../lib/dom';
+// eslint-disable-next-line
+import { WindowContext } from '@fluentui/react-window-provider';
 
 export function customizable(
   scope: string,
@@ -17,6 +20,7 @@ export function customizable(
   return function customizableFactory<P>(ComposedComponent: React.ComponentType<P>): any {
     const resultClass = class ComponentWithInjectedProps extends React.Component<P, {}> {
       public static displayName: string = 'Customized' + scope;
+      public static contextType = WindowContext;
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       private _styleCache: { default?: any; component?: any; merged?: any } = {};
@@ -46,14 +50,18 @@ export function customizable(
                   {(context: ICustomizerContext) => {
                     const defaultProps = Customizations.getSettings(fields, scope, context.customizations);
 
+                    const win = this.context.window ?? getWindow();
                     if (
                       !this._shadowDom ||
                       this._shadowDom.stylesheetKey !== scope ||
-                      this._shadowDom.inShadow !== inShadow
+                      this._shadowDom.inShadow !== inShadow ||
+                      this._shadowDom.window !== win
+                      // false
                     ) {
                       this._shadowDom = {
                         stylesheetKey: scope,
                         inShadow,
+                        window: win,
                       };
                     }
 

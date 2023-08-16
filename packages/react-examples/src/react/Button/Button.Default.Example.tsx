@@ -19,7 +19,7 @@ import { WindowProvider } from '@fluentui/react-window-provider';
 import { CompassNWIcon, DictionaryIcon, TrainSolidIcon } from '@fluentui/react-icons-mdl2';
 // eslint-disable-next-line
 import root from 'react-shadow';
-import { EventMap, Stylesheet } from '@fluentui/merge-styles';
+import { EventMap, InjectionMode, Stylesheet } from '@fluentui/merge-styles';
 
 export interface IButtonExampleProps {
   // These are set based on the toggles shown above the examples (not needed in real code)
@@ -50,6 +50,7 @@ const TestComp: React.FC<TestCompProps> = ({ inShadow }) => {
       <SpinButton label="SpinButton" disabled={disabled} />
       <Checkbox label="Checkbox" disabled={disabled} />
       <TextField label="TextField" disabled={disabled} />
+      <TextField label="TextField2" disabled={disabled} />
       {/* eslint-disable-next-line */}
       <Checkbox label="Disable controls" checked={disabled} onChange={onClick} />
       <Stack tokens={{ childrenGap: 5 }}>
@@ -91,6 +92,7 @@ const TestWindow: React.FC = () => {
 
     const next = new Map();
     childWindow.__mergeStylesAdoptedStyleSheets__ = new EventMap<string, Stylesheet>();
+    childWindow.__isChild__ = true;
     window.__mergeStylesAdoptedStyleSheets__?.forEach((value, key) => {
       const sheet = new childWindow.CSSStyleSheet();
 
@@ -103,7 +105,7 @@ const TestWindow: React.FC = () => {
         sheet.insertRule(rule.cssText);
       }
 
-      const style = new Stylesheet(undefined, undefined, key);
+      const style = new Stylesheet({ injectionMode: InjectionMode.unstable_constructibleStylesheet }, undefined, key);
       style.setAdoptableStyleSheet(sheet);
 
       childWindow.__mergeStylesAdoptedStyleSheets__?.set(key, style);

@@ -39,10 +39,10 @@ export const MergeStylesShadowRootProvider_unstable: React.FC<MergeStylesShadowR
   }, [shadowRoot]);
 
   return (
-    <MergeStylesShadowRootContext.Provider value={value} {...props} />
-    /* <GlobalStyles />
+    <MergeStylesShadowRootContext.Provider value={value} {...props}>
+      <GlobalStyles />
       {props.children}
-    </MergeStylesShadowRootContext.Provider> */
+    </MergeStylesShadowRootContext.Provider>
   );
 };
 
@@ -68,31 +68,22 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
   // return <>{children}</>;
 };
 
-// const GlobalStyles: React.FC = props => {
-//   // useAdoptedStylesheet_unstable('@fluentui/style-utilities', true);
-//   // useAdoptedStylesheet_unstable('__global__', true);
-//   return null;
-// };
+const GlobalStyles: React.FC = props => {
+  // useAdoptedStylesheet_unstable('@fluentui/style-utilities', true);
+  useAdoptedStylesheet_unstable('__global__');
+  return null;
+};
 
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */
-export const useAdoptedStylesheet_unstable = (stylesheetKey: string, adopteGlobally: boolean = false): boolean => {
+export const useAdoptedStylesheet_unstable = (stylesheetKey: string): boolean => {
   const shadowCtx = useMergeStylesShadowRootContext_unstable();
   const rootMergeStyles = useMergeStylesRootStylesheets_unstable();
   // console.log('useAdoptedStylesheets', stylesheetKey);
 
   if (!shadowCtx) {
     return false;
-  }
-
-  if (adopteGlobally) {
-    const doc = getDocument();
-    const win = getWindow();
-    const stylesheet = win?.__mergeStylesAdoptedStyleSheets__?.get(stylesheetKey)?.getAdoptableStyleSheet();
-    if (doc && stylesheet && !doc.adoptedStyleSheets.includes(stylesheet)) {
-      doc.adoptedStyleSheets = [...doc.adoptedStyleSheets, stylesheet];
-    }
   }
 
   if (shadowCtx.shadowRoot && !shadowCtx.stylesheets.has(stylesheetKey)) {

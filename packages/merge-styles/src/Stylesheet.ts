@@ -234,16 +234,22 @@ export class Stylesheet {
    * Gets the singleton instance.
    */
   public static getInstance(
-    { stylesheetKey, inShadow }: ShadowConfig = { stylesheetKey: '__global__', inShadow: false },
+    { stylesheetKey, inShadow, window: win }: ShadowConfig = {
+      stylesheetKey: '__global__',
+      inShadow: false,
+      window: undefined,
+    },
   ): Stylesheet {
+    const global = (win ?? _global) as typeof _global;
+
     if (stylesheetKey && inShadow) {
-      _stylesheet = _global[ADOPTED_STYLESHEETS]?.get(stylesheetKey);
+      _stylesheet = global[ADOPTED_STYLESHEETS]?.get(stylesheetKey);
     } else {
-      _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
+      _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
     }
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
-      const fabricConfig = _global?.FabricConfig || {};
+      const fabricConfig = global?.FabricConfig || {};
       if (inShadow) {
         fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
         fabricConfig.mergeStyles.injectionMode = InjectionMode.unstable_constructibleStylesheet;
@@ -253,21 +259,21 @@ export class Stylesheet {
       _stylesheet = stylesheet;
       if (stylesheetKey) {
         if (inShadow || stylesheetKey === '__global__') {
-          if (!_global[ADOPTED_STYLESHEETS]) {
-            _global[ADOPTED_STYLESHEETS] = new EventMap();
+          if (!global[ADOPTED_STYLESHEETS]) {
+            global[ADOPTED_STYLESHEETS] = new EventMap();
           }
-          _global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
+          global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
           const css = _stylesheet._getConstructibleStylesheet();
           requestAnimationFrame(() => {
-            _global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
+            global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
           });
         }
 
         if (stylesheetKey === '__global__') {
-          _global[STYLESHEET_SETTING] = stylesheet;
+          global[STYLESHEET_SETTING] = stylesheet;
         }
       } else {
-        _global[STYLESHEET_SETTING] = stylesheet;
+        global[STYLESHEET_SETTING] = stylesheet;
       }
     }
 
@@ -474,15 +480,6 @@ export class Stylesheet {
       switch (injectionMode) {
         case InjectionMode.insertNode:
           this._insertNode(element!, rule);
-          // const { sheet } = element! as HTMLStyleElement;
-
-          // try {
-          //   (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
-          // } catch (e) {
-          //   // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
-          //   // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
-          //   // which could be slower and bulkier.
-          // }
           break;
 
         case InjectionMode.insertNodeAndConstructableStylesheet:
@@ -501,16 +498,6 @@ export class Stylesheet {
 
         case InjectionMode.unstable_constructibleStylesheet:
           this._insertRuleIntoSheet(constructableSheet!, rule);
-          // try {
-          //   (constructableSheet as CSSStyleSheet).insertRule(
-          //     rule,
-          //     (constructableSheet as CSSStyleSheet).cssRules.length,
-          //   );
-          // } catch (e) {
-          //   // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
-          //   // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
-          //   // which could be slower and bulkier.
-          // }
           break;
       }
     } else {
@@ -550,6 +537,10 @@ export class Stylesheet {
   // Forces the regeneration of incoming styles without totally resetting the stylesheet.
   public resetKeys(): void {
     this._keyToClassName = {};
+  }
+
+  public get counter(): number {
+    return this._counter;
   }
 
   private get _counter(): number {
