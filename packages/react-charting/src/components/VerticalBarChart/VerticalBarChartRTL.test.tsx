@@ -13,7 +13,7 @@ import {
   testScreenResolutionChanges,
   testWithWait,
   testWithoutWait,
-} from '../../utilities/TestUtility';
+} from '../../utilities/TestUtility.test';
 import { IVerticalBarChartProps } from './VerticalBarChart.types';
 
 const pointsWithLine = [

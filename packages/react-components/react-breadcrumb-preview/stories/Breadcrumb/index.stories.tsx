@@ -8,7 +8,7 @@ export { BreadcrumbSize } from './BreadcrumbSize.stories';
 export { BreadcrumbWithOverflow } from './BreadcrumbWithOverflow.stories';
 export { BreadcrumbLinkWithOverflow } from './BreadcrumbLinkWithOverflow.stories';
 export { BreadcrumbItemWithOverflow } from './BreadcrumbItemWithOverflow.stories';
-export { BreadcrumbFocusMode } from './BreadcrumbFocusMode';
+export { BreadcrumbFocusMode } from './BreadcrumbFocusMode.stories';
 
 export default {
   title: 'Preview Components/Breadcrumb',

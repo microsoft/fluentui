@@ -57,6 +57,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _isRTL: boolean = getRTL();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
   private _emptyChartId: string;
+  private _barId: string;
+  private _barIdPlaceholderPartToWhole: string;
+  private _barIdEmpty: string;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -79,6 +82,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._calloutId = getId('callout');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
     this._emptyChartId = getId('_MSBC_empty');
+    this._barId = getId('_MSBC_rect_');
+    this._barIdPlaceholderPartToWhole = getId('_MSBC_rect_partToWhole_');
+    this._barIdEmpty = getId('_MSBC_rect_empty');
   }
 
   public componentDidMount(): void {
@@ -113,7 +119,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           this.props.hideDenominator![index],
           this.props.href,
         );
-        return <div key={index}>{singleChartBars}</div>;
+        return (
+          <div key={index} id={`_MSBC_bar-${index}`}>
+            {singleChartBars}
+          </div>
+        );
       });
 
       return (
@@ -262,7 +272,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
-
       return (
         <g
           key={index}
@@ -322,14 +331,30 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (data.chartData!.length === 0) {
         bars.push(
           <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={this._barIdPlaceholderPartToWhole}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }
       if (barTotalValue === 0) {
         bars.push(
           <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={this._barIdEmpty}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }
@@ -602,7 +627,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
-      this.props.data.filter(item => item.chartData && item.chartData.length === 0).length === 0
+      this.props.data.filter(
+        item => item.chartData && item.chartData.length === 0 && (!item.chartTitle || item.chartTitle === ''),
+      ).length === 0
     );
   }
 }

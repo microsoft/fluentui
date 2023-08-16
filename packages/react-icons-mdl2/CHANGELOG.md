@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-icons-mdl2
 
-This log was last generated on Wed, 28 Jun 2023 07:37:37 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 07:35:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.3.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.48)
+
+Wed, 16 Aug 2023 07:35:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-icons-mdl2_v1.3.47..@fluentui/react-icons-mdl2_v1.3.48)
+
+### Patches
+
+- feat: Add VivaEngageIcon to package. ([PR #28804](https://github.com/microsoft/fluentui/pull/28804) by ololubek@microsoft.com)
 
 ## [1.3.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-icons-mdl2_v1.3.47)
 
