@@ -115,7 +115,7 @@ export const categories: { [name: string]: ICategory } = {
       subPages: {
         VerticalBarChartStandard: {},
         VerticalStackedBarChart: {},
-        Grouped: {},
+        GroupedVerticalBarChart: {},
       },
     },
     GaugeChart: {},

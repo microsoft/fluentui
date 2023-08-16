@@ -4,5 +4,7 @@ import { VerticalBarChartPageProps as ExternalProps } from '@fluentui/react-exam
 export const VerticalBarChartStandardPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
+    title: 'VerticalBarChart - Standard',
+    url: 'standard',
   },
 };

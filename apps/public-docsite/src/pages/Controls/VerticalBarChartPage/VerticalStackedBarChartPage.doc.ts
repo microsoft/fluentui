@@ -4,5 +4,7 @@ import { VerticalStackedBarChartPageProps as ExternalProps } from '@fluentui/rea
 export const VerticalStackedBarChartPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
+    title: 'VerticalBarChart - Stacked',
+    url: 'stacked',
   },
 };
