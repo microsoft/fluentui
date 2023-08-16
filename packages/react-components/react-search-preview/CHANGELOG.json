@@ -2,6 +2,27 @@
   "name": "@fluentui/react-search-preview",
   "entries": [
     {
+      "date": "Wed, 16 Aug 2023 17:41:08 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.8",
+      "version": "0.1.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-input to v9.4.29",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Aug 2023 11:38:33 GMT",
       "tag": "@fluentui/react-search-preview_v0.1.7",
       "version": "0.1.7",

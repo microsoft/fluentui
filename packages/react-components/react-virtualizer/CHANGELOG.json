@@ -2,6 +2,27 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Wed, 16 Aug 2023 17:41:08 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.34",
+      "version": "9.0.0-alpha.34",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "e40f1181983bbf4b0926cd15fb8dbc7a9e3188a3",
+            "comment": "Fix: Ensure scrollViewRef is merged with container ref"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Aug 2023 11:38:33 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.33",
       "version": "9.0.0-alpha.33",

@@ -66,7 +66,7 @@
     "@fluentui/react-toast": "*",
     "@fluentui/react-tooltip": "*",
     "@fluentui/react-toolbar": "*",
-    "@fluentui/react-tree": ">=9.0.0-alpha",
+    "@fluentui/react-tree": "*",
     "@fluentui/react-utilities": "*",
     "@griffel/react": "^1.5.14",
     "react": "17.0.2",

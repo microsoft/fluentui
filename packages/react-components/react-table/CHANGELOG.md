@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Wed, 16 Aug 2023 11:38:33 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.7.7)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.7.6..@fluentui/react-table_v9.7.7)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.21 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.32 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-radio to v9.1.32 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
 
 ## [9.7.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.7.6)
 

@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-breadcrumb-preview
 
-This log was last generated on Wed, 16 Aug 2023 11:38:32 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.1)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.0..@fluentui/react-breadcrumb-preview_v0.3.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.31 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-link to v9.1.10 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.0)
 
