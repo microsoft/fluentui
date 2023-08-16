@@ -188,75 +188,20 @@ export function secondaryPanelTemplate<T extends Calendar>(options: CalendarOpti
 export const template: ElementViewTemplate<Calendar> = html`
   <div class="control" @keydown=${(x, c) => x.handleControlKeydown(c.event as KeyboardEvent)}>
     <div class="date-view">
-      <div class="header">
-        ${calendarTitleTemplate()}
-        <div class="navicon-container">
-          <span
-            class="navicon-up"
-            part="navicon-up"
-            role="navigation"
-            aria-label="Previous Month"
-            aria-describedby="Press enter to go to previous month"
-            aria-pressed="true"
-            tabindex="0"
-            @click="${x => x.handleSwitchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
-            @keydown="${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'previous')}"
-          >
-            ${ArrowUp16}
-          </span>
-          <span
-            class="navicon-down"
-            part="navicon-down"
-            role="navigation"
-            aria-label="Next Month"
-            aria-pressed="true"
-            tabindex="0"
-            @click="${x => x.handleSwitchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
-            @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'next')}
-          >
-            ${ArrowDown16}
-          </span>
-        </div>
-      </div>
-      <div class="calendar-body" part="calendar-body">
-        ${calendarTemplate({
-          dataGrid: 'fast-data-grid',
-          dataGridRow: 'fast-data-grid-row',
-          dataGridCell: 'fast-data-grid-cell',
-        })}
-      </div>
-      <div class="footer" part="footer">
-        ${when(
-          x => !x.hasAttribute('monthPickerVisible'),
-          html` <div
-            class=${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}
-            tabindex="0"
-            @click="${(x, c) => x.handleGoToToday()}"
-            @keydown="${(x, c) => x.handleLinkKeydown(c.event as KeyboardEvent)}"
-          >
-            Go to today
-          </div>`,
-        )}
-      </div>
-    </div>
-    ${when(
-      x => x.hasAttribute('monthPickerVisible'),
-      html`<div class="secondary-panel">
+      <div class="calendar-container">
         <div class="header">
-          ${x => calendarSecondaryPanelTitleTemplate()}
+          ${calendarTitleTemplate()}
           <div class="navicon-container">
             <span
               class="navicon-up"
               part="navicon-up"
               role="navigation"
-              aria-label="Previous Year"
+              aria-label="Previous Month"
+              aria-describedby="Press enter to go to previous month"
               aria-pressed="true"
               tabindex="0"
-              @click="${x =>
-                x.yearPickerOpen
-                  ? (x.yearPickerDecade = x.getYearPickerInfo().previousStart)
-                  : (x.monthPickerYear = x.getMonthPickerInfo().previous)}"
-              @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'previous')}
+              @click="${x => x.handleSwitchMonth(x.getMonthInfo().previous.month, x.getMonthInfo().previous.year)}"
+              @keydown="${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'previous')}"
             >
               ${ArrowUp16}
             </span>
@@ -264,24 +209,85 @@ export const template: ElementViewTemplate<Calendar> = html`
               class="navicon-down"
               part="navicon-down"
               role="navigation"
-              aria-label="Next Year"
+              aria-label="Next Month"
               aria-pressed="true"
               tabindex="0"
-              @click="${x =>
-                x.yearPickerOpen
-                  ? (x.yearPickerDecade = x.getYearPickerInfo().nextStart)
-                  : (x.monthPickerYear = x.getMonthPickerInfo().next)}"
-              @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'next')}
+              @click="${x => x.handleSwitchMonth(x.getMonthInfo().next.month, x.getMonthInfo().next.year)}"
+              @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'primary', 'next')}
             >
               ${ArrowDown16}
             </span>
           </div>
         </div>
-        ${secondaryPanelTemplate({
-          dataGrid: 'fast-data-grid',
-          dataGridRow: 'fast-data-grid-row',
-          dataGridCell: 'fast-data-grid-cell',
-        })}
+        <div class="calendar-body" part="calendar-body">
+          ${calendarTemplate({
+            dataGrid: 'fast-data-grid',
+            dataGridRow: 'fast-data-grid-row',
+            dataGridCell: 'fast-data-grid-cell',
+          })}
+        </div>
+      </div>
+      ${when(
+        x => !x.hasAttribute('monthPickerVisible'),
+        html` <div class="footer" part="footer">
+          <div
+            class=${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}
+            tabindex="0"
+            @click="${(x, c) => x.handleGoToToday()}"
+            @keydown="${(x, c) => x.handleLinkKeydown(c.event as KeyboardEvent)}"
+          >
+            Go to today
+          </div>
+        </div>`,
+      )}
+    </div>
+    ${when(
+      x => x.hasAttribute('monthPickerVisible'),
+      html`<div class="secondary-panel">
+        <div class="secondary-panel-container">
+          <div class="header">
+            ${x => calendarSecondaryPanelTitleTemplate()}
+            <div class="navicon-container">
+              <span
+                class="navicon-up"
+                part="navicon-up"
+                role="navigation"
+                aria-label="Previous Year"
+                aria-pressed="true"
+                tabindex="0"
+                @click="${x =>
+                  x.yearPickerOpen
+                    ? (x.yearPickerDecade = x.getYearPickerInfo().previousStart)
+                    : (x.monthPickerYear = x.getMonthPickerInfo().previous)}"
+                @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'previous')}
+              >
+                ${ArrowUp16}
+              </span>
+              <span
+                class="navicon-down"
+                part="navicon-down"
+                role="navigation"
+                aria-label="Next Year"
+                aria-pressed="true"
+                tabindex="0"
+                @click="${x =>
+                  x.yearPickerOpen
+                    ? (x.yearPickerDecade = x.getYearPickerInfo().nextStart)
+                    : (x.monthPickerYear = x.getMonthPickerInfo().next)}"
+                @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'next')}
+              >
+                ${ArrowDown16}
+              </span>
+            </div>
+          </div>
+          <div class="secondary-panel-body">
+            ${secondaryPanelTemplate({
+              dataGrid: 'fast-data-grid',
+              dataGridRow: 'fast-data-grid-row',
+              dataGridCell: 'fast-data-grid-cell',
+            })}
+          </div>
+        </div>
         <div class="footer" part="footer">
           <div
             class="${x => (x.isToday() ? 'slotted-link inactive' : 'slotted-link')}"

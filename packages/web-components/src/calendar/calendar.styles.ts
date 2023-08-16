@@ -33,6 +33,7 @@ import {
   spacingHorizontalNone,
   spacingHorizontalS,
   spacingVerticalM,
+  spacingVerticalNone,
   spacingVerticalS,
   spacingVerticalXS,
 } from '../theme/design-tokens.js';
@@ -45,34 +46,39 @@ export const styles = css`
   :host .date-view {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 248px;
-    min-height: 285px;
-    outline: solid black;
     color: ${colorNeutralForeground1};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
+  }
+  :host .calendar-body {
+    margin: ${spacingVerticalS} ${spacingHorizontalM} ${spacingHorizontalM};
+    min-height: 192px;
+  }
+  :host .calendar-container {
+    min-height: 224px;
+    display: flex;
+    flex-direction: column;
+    gap: ${spacingVerticalNone};
   }
   :host .secondary-panel {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: ${spacingHorizontalM};
-    outline: solid lightblue;
+    min-height: 215px;
+    width: 248px;
     border-radius: ${borderRadiusMedium};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
   }
-  :host .calendar-body {
-    margin: ${spacingVerticalS} ${spacingHorizontalM} 0;
-    min-height: 192px;
+  :host .secondary-panel-body {
+    height: 168px;
+    padding: ${spacingVerticalS} ${spacingHorizontalM} ${spacingVerticalM};
+    box-sizing: border-box;
   }
-  :host .secondary-panel-cell-outer:not(.secondary-panel-today):hover {
-    background: ${colorBrandBackgroundInvertedHover};
-    color: ${colorNeutralForeground1Static};
-  }
-  :host .day:not(.today):active {
-    background: ${colorBrandBackgroundInvertedSelected};
-    color: ${colorNeutralForeground1Static};
+  :host .secondary-panel-container {
+    display: flex;
+    flex-direction: column;
+    gap: ${spacingVerticalNone};
   }
   :host .title,
   .secondary-panel-title {
@@ -80,6 +86,10 @@ export const styles = css`
     padding: ${spacingVerticalXS} ${spacingHorizontalS};
     font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     color: ${colorNeutralForeground1};
+    border-radius: ${borderRadiusMedium};
+  }
+  :host .secondary-panel-title:hover {
+    background-color: ${colorBrandBackgroundInvertedHover};
   }
   :host .secondary-panel-title {
     cursor: pointer;
@@ -97,64 +107,73 @@ export const styles = css`
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    white-space: normal;
     height: 44px;
     width: 44px;
     border-radius: ${borderRadiusMedium};
+    box-sizing: border-box;
+  }
+  :host .secondary-panel-today {
+    color: ${colorNeutralForeground2Selected};
+    background: ${colorBrandBackgroundInvertedSelected};
+  }
+  :host .secondary-panel-cell-outer:not(.secondary-panel-today):not(.secondary-panel-selected):hover {
+    background: ${colorBrandBackgroundInvertedHover};
+    color: ${colorNeutralForeground1Static};
+  }
+  :host .secondary-panel-cell-outer:not(.secondary-panel-today):active {
+    background: ${colorBrandBackgroundInvertedSelected};
+    color: ${colorNeutralForeground1Static};
+  }
+  :host .secondary-panel-selected {
+    color: ${colorNeutralForeground1Static};
+    background: ${colorBrandBackgroundInvertedSelected};
+  }
+  :host .day:not(.today):not(.selected):hover {
+    background: ${colorBrandBackgroundInvertedHover};
+    color: ${colorNeutralForeground1Static};
+  }
+  :host .day:not(.today):active {
+    background: ${colorBrandBackgroundInvertedSelected};
+    color: ${colorNeutralForeground1Static};
+  }
+  :host .day.selected {
+    color: ${colorNeutralForeground1Static};
+    background: ${colorBrandBackgroundInvertedSelected};
   }
   :host .week-days,
   .week {
     color: ${colorNeutralForeground3};
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    border-left: var(--cell-border, none);
     border-bottom: none;
-    padding: 0;
-  }
-  :host .interact .week {
-    grid-gap: calc(var(--design-unit) * 1px);
-    margin-top: calc(var(--design-unit) * 1px);
+    padding: ${spacingVerticalNone} ${spacingHorizontalNone};
+    height: 32px;
   }
   :host .day,
   .week-day {
-    border-bottom: var(--cell-border);
-    border-right: var(--cell-border);
-    padding: var(--cell-padding);
     border-radius: 4px;
+    height: 32px;
   }
   :host .week-day {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     text-align: center;
     border-radius: 0;
-    border-top: var(--cell-border);
     color: ${colorNeutralForeground3};
   }
   :host .day {
     box-sizing: border-box;
-    vertical-align: top;
-    outline-offset: -1px;
     line-height: 32px;
-    white-space: normal;
     width: 32px;
   }
   :host .interact .day,
   .secondary-panel-cell {
-    background: var(--neutral-fill-rest);
     cursor: pointer;
   }
   :host .day.inactive {
     color: ${colorNeutralForegroundDisabled};
     background: ${colorTransparentBackground};
-  }
-  :host .day.disabled {
-    background: var(--disabled-day-background);
-    color: var(--disabled-day-color);
-    cursor: var(--disabled-cursor);
-    opacity: var(--disabled-day-opacity);
-    outline: var(--disabled-day-outline);
-  }
-  :host .day.selected {
-    color: ${colorNeutralForeground1Static};
-    background: ${colorBrandBackgroundInvertedSelected};
   }
   :host .date {
     text-align: center;
@@ -166,11 +185,6 @@ export const styles = css`
     color: ${colorNeutralForegroundStaticInverted};
     background: ${colorBrandBackground};
     border-radius: 16px;
-  }
-  :host .today.inactive .date {
-    background: transparent;
-    color: inherit;
-    width: auto;
   }
   :host .navicon-container {
     display: flex;
@@ -199,8 +213,7 @@ export const styles = css`
   :host([show-slotted-link]) .slotted-link {
     height: 20px;
     cursor: pointer;
-    padding: ${spacingVerticalM} ${spacingVerticalS};
-    margin-inline-end: ${spacingVerticalM};
+    margin-inline-end: ${spacingVerticalS};
     visibility: visible;
   }
   :host([show-slotted-link]) .slotted-link.inactive {
@@ -211,13 +224,6 @@ export const styles = css`
   :host .footer {
     display: flex;
     justify-content: flex-end;
-  }
-  :host .secondary-panel-today {
-    color: ${colorNeutralForeground2Selected};
-    background: ${colorBrandBackgroundInvertedSelected};
-  }
-  :host .secondary-panel-selected {
-    color: ${colorNeutralForeground2Selected};
-    background: ${colorBrandBackgroundInvertedSelected};
+    padding: 0 ${spacingHorizontalM} ${spacingHorizontalM};
   }
 `;
