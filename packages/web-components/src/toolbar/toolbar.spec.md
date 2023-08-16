@@ -64,9 +64,12 @@ Interactions are inherited from FAST Toolbar component.
 
   - Differences between FAST Toolbar component and Fluent Toolbar component spec:
 
-    - React Toolbar component contains custom components: `ToolbarButton`, `ToolbarDivider`, `ToolbarGroup`, `ToolbarRadioButton`, `ToolbarRadioGroup`, `ToolbarToggleButton`; whereas FASTToolbar does not.
-    - React Toolbar component has a `size` attribute that can be set to "small", "medium", or "large". FASTToolbar does not have this attribute.
-    - React Toolbar component has a component: `ToolbarItemGroup`. This looks like it is made to contain radio buttons and checkbox elements. FASTToolbar does not have this component.
+    - React Toolbar contains custom components: `ToolbarButton`, `ToolbarDivider`, `ToolbarGroup`, `ToolbarRadioButton`, `ToolbarRadioGroup`, `ToolbarToggleButton`
+    - FAST Toolbar does not contain custom components.
+    - React Toolbar: Optional boolean value to change orientation from default horizontal to vertical: `vertical?: boolean`.
+    - FAST Toolbar: Optional string value to change orientation from default horizontal to vertical: `orientation?: "horizontal" | "vertical"`.
+    - React Toolbar has a `size` attribute that can be set to "small", "medium", or "large". FAST Toolbar does not have this attribute.
+    - React Toolbar has a component: `ToolbarItemGroup`. This looks like it is made to contain radio buttons and checkbox elements. FAST Toolbar does not have this component.
 
 - [x] Fluent UI React V9 Storybook for implementation differences and document:
 
