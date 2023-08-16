@@ -245,14 +245,14 @@ export const styles = css`
   }
 
   :host([appearance='subtle']:hover) .control {
-    background-color: ${colorSubtleBackgroundHover};
-    color: ${colorNeutralForeground2Hover};
+    background-color: var(--buttonHoveredBackground, ${colorSubtleBackgroundHover});
+    color: var(--buttonHoveredColor, ${colorNeutralForeground2Hover});
     border-color: transparent;
   }
 
   :host([appearance='subtle']:hover:active) .control {
-    background-color: ${colorSubtleBackgroundPressed};
-    color: ${colorNeutralForeground2Pressed};
+    background-color: var(--buttonHoveredActiveBackground, ${colorSubtleBackgroundPressed});
+    color: var(--buttonHoveredActiveColor, ${colorNeutralForeground2Pressed});
     border-color: transparent;
   }
 
@@ -264,11 +264,11 @@ export const styles = css`
   }
 
   :host([appearance='subtle']:hover) ::slotted(svg) {
-    fill: ${colorNeutralForeground2BrandHover};
+    fill: var(--buttonHoveredSvgFill, ${colorNeutralForeground2BrandHover});
   }
 
   :host([appearance='subtle']:hover:active) ::slotted(svg) {
-    fill: ${colorNeutralForeground2BrandPressed};
+    fill: var(--buttonHoveredActiveSvgFill, ${colorNeutralForeground2BrandPressed});
   }
 
   :host([appearance='transparent']) .control {

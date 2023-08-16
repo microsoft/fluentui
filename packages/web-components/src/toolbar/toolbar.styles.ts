@@ -3,7 +3,10 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorNeutralBackground1,
+  colorNeutralBackground1Hover,
+  colorNeutralBackground1Pressed,
   colorNeutralForeground1,
+  colorNeutralForeground2,
   fontFamilyBase,
   spacingHorizontalNone,
   spacingHorizontalS,
@@ -19,6 +22,14 @@ export const styles = css`
   ${display('inline-flex')}
 
   :host {
+    /* Custom CSS properties specific to fluent-button inside fluent-toolbar */
+    --buttonHoveredBackground: ${colorNeutralBackground1Hover};
+    --buttonHoveredColor: ${colorNeutralForeground2};
+    --buttonHoveredSvgFill: ${colorNeutralForeground2};
+    --buttonHoveredActiveBackground: ${colorNeutralBackground1Pressed};
+    --buttonHoveredActiveColor: ${colorNeutralForeground2};
+    --buttonHoveredActiveSvgFill: ${colorNeutralForeground2};
+
     --toolbar-item-gap: 4px;
     align-items: center;
     background: ${colorNeutralBackground1};

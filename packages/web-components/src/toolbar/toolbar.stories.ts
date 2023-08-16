@@ -1,6 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
+import { colorNeutralStroke2 } from '../theme/design-tokens.js';
 import { ToolbarSize } from './toolbar.options.js';
 import type { Toolbar as FluentToolbar } from './toolbar.js';
 import './define.js';
@@ -180,6 +181,60 @@ export default {
 export const Toolbar = renderComponent(storyTemplate).bind({});
 
 const verticalToolbar = html<ToolbarStoryArgs>`
+  <style>
+    #story--components-toolbar--vertical-toolbar div {
+      align-content: space-between;
+      display: flex;
+      flex-direction: row;
+    }
+    #story--components-toolbar--vertical-toolbar code {
+      align-self: flex-start;
+      margin: 0 12px;
+      width: 150px;
+    }
+    .vertical-bordered {
+      border-left: 1px solid ${colorNeutralStroke2};
+      border-right: 1px solid ${colorNeutralStroke2};
+    }
+    .no-radius {
+      border-radius: 0;
+    }
+  </style>
+  <code>Border and square edges are optional -- please enforce by CSS class.</code>
+  <fluent-toolbar orientation="vertical" class="vertical-bordered no-radius">
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBold}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextItalic}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextUnderline}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextStrikethrough}</fluent-button>
+    <fluent-divider orientation="horizontal"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Highlight}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextColor}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextFontSize}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ClearFormatting}</fluent-button>
+    <fluent-divider orientation="horizontal"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentIncrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentDecrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBulletList}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextNumberList}</fluent-button>
+    <fluent-divider orientation="horizontal"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="horizontal"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="horizontal"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+
+  <code>Border and square edges are optional -- please enforce by CSS class.</code>
   <fluent-toolbar orientation="vertical">
     <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBold}</fluent-button>
     <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextItalic}</fluent-button>
@@ -227,4 +282,224 @@ const labelToolbar = html<ToolbarStoryArgs>`
     </span>
   </fluent-toolbar>
 `;
-export const LabelAndStartSlot = renderComponent(labelToolbar).bind({});
+export const LabelStartAndEndSlots = renderComponent(labelToolbar).bind({});
+
+const sizesToolbar = html<ToolbarStoryArgs>`
+  <style>
+    code {
+      margin: 20px 0;
+    }
+    .bordered {
+      border-bottom: 1px solid ${colorNeutralStroke2};
+    }
+    .no-radius {
+      border-radius: 0;
+    }
+  </style>
+  <code>size="small"</code>
+  <fluent-toolbar size="small">
+    <fluent-button icon-only appearance="primary" shape="rounded" size="small">${TextBold}</fluent-button>
+    <fluent-button icon-only appearance="outline" shape="rounded" size="small">${TextItalic}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextUnderline}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextStrikethrough}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Highlight}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextColor}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextFontSize}</fluent-button>
+    <fluent-menu-button appearance="subtle" shape="rounded" size="small"> Paragraph </fluent-menu-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ClearFormatting}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentIncrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentDecrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBulletList}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextNumberList}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+
+  <code>size="medium"</code>
+  <fluent-toolbar size="medium">
+    <fluent-button icon-only appearance="primary" shape="rounded" size="small">${TextBold}</fluent-button>
+    <fluent-button icon-only appearance="outline" shape="rounded" size="small">${TextItalic}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextUnderline}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextStrikethrough}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Highlight}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextColor}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextFontSize}</fluent-button>
+    <fluent-menu-button appearance="subtle" shape="rounded" size="small"> Paragraph </fluent-menu-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ClearFormatting}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentIncrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentDecrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBulletList}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextNumberList}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+
+  <code>size="large". Border and square edges are optional -- please enforce by CSS class.</code>
+  <fluent-toolbar size="large" class="bordered no-radius">
+    <fluent-button icon-only appearance="primary" shape="rounded" size="small">${TextBold}</fluent-button>
+    <fluent-button icon-only appearance="outline" shape="rounded" size="small">${TextItalic}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextUnderline}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextStrikethrough}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Highlight}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextColor}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextFontSize}</fluent-button>
+    <fluent-menu-button appearance="subtle" shape="rounded" size="small"> Paragraph </fluent-menu-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ClearFormatting}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentIncrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentDecrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBulletList}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextNumberList}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+`;
+
+export const Sizes = renderComponent(sizesToolbar).bind({});
+
+const rtlToolbar = html<ToolbarStoryArgs>`
+  <fluent-toolbar dir="rtl">
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBold}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextItalic}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextUnderline}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextStrikethrough}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Highlight}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextColor}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextFontSize}</fluent-button>
+    <fluent-menu-button appearance="subtle" shape="rounded" size="small"> Paragraph </fluent-menu-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ClearFormatting}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentIncrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentDecrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBulletList}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextNumberList}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+`;
+export const RTL = renderComponent(rtlToolbar).bind({});
+
+const buttonToolbar = html<ToolbarStoryArgs>`
+  <code>Toolbar size="small" with Button</code>
+  <fluent-toolbar size="small">
+    <fluent-button appearance="primary" shape="rounded" size="small">New</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+
+  <code>Toolbar size="medium" with Button</code>
+  <fluent-toolbar>
+    <fluent-button appearance="primary" shape="rounded" size="small">New</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+
+  <code>Toolbar size="large" with Button</code>
+  <fluent-toolbar size="large">
+    <fluent-button appearance="primary" shape="rounded" size="small">New</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+`;
+export const ToolbarWithButton = renderComponent(buttonToolbar).bind({});
