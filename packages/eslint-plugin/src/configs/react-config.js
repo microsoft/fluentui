@@ -132,6 +132,7 @@ module.exports = {
       // Test overrides
       files: [...configHelpers.testFiles],
       rules: {
+        'no-restricted-globals': 'off',
         'react/jsx-no-bind': 'off',
       },
     },
