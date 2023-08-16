@@ -3,13 +3,15 @@ import * as shape from 'd3-shape';
 import { IArcProps, IArcState, IArcStyles } from './Arc.types';
 import { classNamesFunction, getId } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
-import { shouldWrapContent, convertToLocaleString } from '../../../utilities/utilities';
+import { wrapContent, convertToLocaleString } from '../../../utilities/utilities';
 import { SVGTooltipText } from '../../../utilities/SVGTooltipText';
 
 export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
     arc: shape.arc(),
   };
+
+  protected _arcId: string;
 
   public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): null {
     _updateChart(nextProps);
@@ -20,8 +22,9 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     super(props);
     this.state = {
       isArcFocused: false,
-      id: getId('pie_chart_arc'),
     };
+
+    this._arcId = getId('piechart_arc');
   }
 
   public updateChart = (newProps: IArcProps) => {
@@ -36,7 +39,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     return (
       <path
         d={arc(this.props.data)}
-        className={`${this.state.isArcFocused ? classNames.pieRootFocused : classNames.pieRoot}`}
+        className={`${this.state.isArcFocused ? classNames.arcRootFocussed : classNames.arcRoot}`}
         onClick={this.props.data?.data.onClick}
       />
     );
@@ -54,9 +57,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
 export class LabeledArc extends Arc {
   public constructor(props: IArcProps) {
     super(props);
-    this.state = {
-      id: getId(),
-    };
+    this._arcId = getId('piechart_arc');
   }
 
   public render(): JSX.Element {
@@ -80,9 +81,9 @@ export class LabeledArc extends Arc {
 
     return (
       <g
-        className={classNames.pie}
+        className={classNames.arc}
         data-is-focusable={true}
-        id={this.state.id}
+        id={this._arcId}
         onFocus={this._onFocus}
         onBlur={this._onBlur}
         aria-label={content}
@@ -97,12 +98,12 @@ export class LabeledArc extends Arc {
             dominantBaseline: angle > Math.PI / 2 && angle < (3 * Math.PI) / 2 ? 'hanging' : 'auto',
             textAnchor: angle > Math.PI ? 'end' : 'start',
             'aria-label': `${data?.data.x}-${convertToLocaleString(data?.data.y, culture)}`,
-            className: classNames.pieText,
+            className: classNames.arcText,
           }}
           isTooltipVisibleProp={this.state.isArcFocused}
           shouldReceiveFocus={false}
           maxWidth={40}
-          wrapContent={shouldWrapContent}
+          wrapContent={wrapContent}
         />
       </g>
     );

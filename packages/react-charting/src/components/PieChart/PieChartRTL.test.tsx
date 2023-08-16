@@ -15,7 +15,7 @@ describe('Pie chart rendering', () => {
 
     // Mock the implementation of shouldWrapContent as it internally calls a Browser Function like
     // getComputedTextLength() which will otherwise lead to a crash if mounted
-    jest.spyOn(utils, 'shouldWrapContent').mockImplementation(() => false);
+    jest.spyOn(utils, 'wrapContent').mockImplementation(() => false);
 
     // Act
     rerender(<PieChart data={chartPoints} colors={colors} />);

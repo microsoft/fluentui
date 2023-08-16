@@ -41,10 +41,6 @@ export interface IArcState {
    * The state controls, whether the arc needs to be focused or not
    */
   isArcFocused?: boolean;
-  /**
-   * Unique Identifier for each arc
-   */
-  id: string;
 }
 
 export interface IArcData {
@@ -78,11 +74,11 @@ export interface IArcStyles {
   /**
    * Style set for the card header component root
    */
-  pieRoot: IStyle;
+  arcRoot: IStyle;
 
-  pie: IStyle;
+  arc: IStyle;
 
-  pieRootFocused: IStyle;
+  arcRootFocussed: IStyle;
 
-  pieText: IStyle;
+  arcText: IStyle;
 }
