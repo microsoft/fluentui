@@ -26,7 +26,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
     left: 0,
     top: 0,
     width: height,
-    height: height,
+    height,
     textAlign: 'center',
     // inline-flex prevents the check from shifting with custom line height styles
     display: 'inline-flex',
@@ -43,7 +43,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',
         width: height,
-        height: height,
+        height,
         verticalAlign: 'top',
         position: 'relative',
         userSelect: 'none',

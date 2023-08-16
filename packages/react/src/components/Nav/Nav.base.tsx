@@ -49,8 +49,6 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     initializeComponentRef(this);
     this.state = {
       isGroupCollapsed: {},
-      // TODO: consider removing
-      // eslint-disable-next-line react/no-unused-state
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey,
     };
@@ -309,7 +307,6 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     if (!ev.defaultPrevented) {
       link.isExpanded = !link.isExpanded;
-      // eslint-disable-next-line react/no-unused-state
       this.setState({ isLinkExpandStateChanged: true });
     }
 

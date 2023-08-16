@@ -139,7 +139,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
-      compact: compact,
+      compact,
     });
 
     const { shouldEnterInnerZone = this._isInnerZoneKeystroke } = focusZoneProps;
