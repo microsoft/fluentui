@@ -98,6 +98,31 @@ test.describe('Accordion item', () => {
     await expect(button).not.toHaveAttribute('disabled', '');
   });
 
+  test('accordion-item should NOT be expandable via click when accordion is disabled', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+          <fluent-accordion>
+              <fluent-accordion-item></fluent-accordion-item>
+              <fluent-accordion-item disabled></fluent-accordion-item>
+              <fluent-accordion-item></fluent-accordion-item>
+          </fluent-accordion>
+      `;
+    });
+    const firstItem = element.nth(0);
+    const secondItem = element.nth(1);
+
+    await firstItem.click();
+    await expect(firstItem).toHaveAttribute('expanded', '');
+    await expect(firstItem).toHaveJSProperty('expanded', true);
+
+    await secondItem.click();
+    await expect(secondItem).not.toHaveAttribute('expanded', '');
+    await expect(secondItem).toHaveJSProperty('expanded', false);
+
+    await expect(firstItem).toHaveAttribute('expanded', '');
+    await expect(firstItem).toHaveJSProperty('expanded', true);
+  });
+
   test('should set internal properties to match the id when provided', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -108,7 +133,6 @@ test.describe('Accordion item', () => {
     });
 
     await expect(element.locator(`[role="region"]`)).toHaveAttribute('aria-labelledby', 'foo');
-
     await expect(button).toHaveId('foo');
   });
 
