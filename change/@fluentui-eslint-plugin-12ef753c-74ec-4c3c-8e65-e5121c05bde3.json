@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: disable global `document` and `window` access for React.",
+  "packageName": "@fluentui/eslint-plugin",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
