@@ -33,25 +33,26 @@ function sharedAfterEach() {
   }
   window.requestAnimationFrame = originalRAF;
 }
-const yPoint: string[] = ['p1', 'p2'];
 
-const xPoint: Date[] = [new Date('2020-03-03'), new Date('2020-03-04')];
+const stringPoints: string[] = ['p1', 'p2'];
+const datePoints: Date[] = [new Date('2020-03-03'), new Date('2020-03-04')];
+
 const HeatMapData: IHeatMapChartProps['data'] = [
   {
     value: 100,
     legend: 'Execllent (0-200)',
     data: [
       {
-        x: xPoint[0],
-        y: yPoint[0],
+        x: datePoints[0],
+        y: stringPoints[0],
         value: 50,
         rectText: 50,
         ratio: [50, 2391],
         descriptionMessage: 'a good day to start with in Texas with best air quality',
       },
       {
-        x: xPoint[1],
-        y: yPoint[1],
+        x: datePoints[1],
+        y: stringPoints[1],
         value: 25,
         rectText: 25,
         ratio: [25, 2479],
@@ -73,16 +74,16 @@ const HeatMapData2: IHeatMapChartProps['data'] = [
     legend: 'Nasty',
     data: [
       {
-        x: xPoint[0],
-        y: yPoint[0],
+        x: stringPoints[0],
+        y: datePoints[0],
         value: 50,
         rectText: 50,
         ratio: [50, 2391],
         descriptionMessage: 'a good day to start with in Texas with best air quality',
       },
       {
-        x: xPoint[1],
-        y: yPoint[1],
+        x: stringPoints[1],
+        y: datePoints[1],
         value: 25,
         rectText: 25,
         ratio: [25, 2479],
@@ -210,7 +211,7 @@ describe('HeatMapChart - basic props', () => {
       />,
     );
     const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="legendContainer"]');
-    expect(hideLegendDOM).toBeDefined();
+    expect(hideLegendDOM!.length).toBe(1);
   });
 
   it('Should mount callout when hideTootip false ', () => {
@@ -219,10 +220,11 @@ describe('HeatMapChart - basic props', () => {
         data={HeatMapData}
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
+        calloutProps={{ doNotLayer: true }}
       />,
     );
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-    expect(hideLegendDOM).toBeDefined();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    expect(wrapper.find('.ms-Callout').exists()).toBeTruthy();
   });
 
   it('Should not mount callout when hideTootip true ', () => {
@@ -232,10 +234,11 @@ describe('HeatMapChart - basic props', () => {
         domainValuesForColorScale={[0, 600]}
         rangeValuesForColorScale={['lightblue', 'darkblue']}
         hideTooltip={true}
+        calloutProps={{ doNotLayer: true }}
       />,
     );
-    const hideLegendDOM = wrapper.getDOMNode().querySelectorAll('[class^="ms-Layer"]');
-    expect(hideLegendDOM.length).toBe(0);
+    wrapper.find('rect').at(0).simulate('mouseover');
+    expect(wrapper.find('.ms-Callout').exists()).toBeFalsy();
   });
 });
 

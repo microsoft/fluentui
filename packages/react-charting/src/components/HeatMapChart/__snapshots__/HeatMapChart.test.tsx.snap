@@ -1005,7 +1005,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         transform="translate(40, 0)"
       />
       <g
-        aria-label="Mar/04, p2. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
+        aria-label="p2, Mar/04. Nasty, 25/2479. Due to unexpected heavy rain, all the pollutants are washed
       off and people of alaska are hoping for more of this days."
         data-is-focusable={true}
         fillOpacity="1"
@@ -1042,7 +1042,7 @@ exports[`HeatMapChart snapShot testing renders corretly even when data is not pr
         </text>
       </g>
       <g
-        aria-label="Mar/03, p1. Nasty, 50/2391. a good day to start with in Texas with best air quality."
+        aria-label="p1, Mar/03. Nasty, 50/2391. a good day to start with in Texas with best air quality."
         data-is-focusable={true}
         fillOpacity="1"
         key="10"
