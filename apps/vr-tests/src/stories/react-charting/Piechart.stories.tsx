@@ -23,7 +23,7 @@ storiesOf('react-charting/PieChart', module)
         <PieChart
           culture={window.navigator.language}
           data={points}
-          chartTitle="Pie Chart basic example123"
+          chartTitle="Pie Chart basic example"
           colors={colors}
         />
       );
