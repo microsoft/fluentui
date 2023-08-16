@@ -19,7 +19,7 @@ storiesOf('react-charting/VerticalBarChart', module)
     return <StoryWright steps={steps}>{story()}</StoryWright>;
   })
   .addStory(
-    'Basic',
+    'Basic - Secondary Y Axis',
     () => {
       const points: IVerticalBarChartDataPoint[] = [
         {
@@ -129,6 +129,7 @@ storiesOf('react-charting/VerticalBarChart', module)
             lineLegendColor={'brown'}
             lineOptions={lineOptions}
             hideLabels={false}
+            secondaryYScaleOptions={{ yMaxValue: 17, yMinValue: 5 }}
           />
         </div>
       );
@@ -136,7 +137,7 @@ storiesOf('react-charting/VerticalBarChart', module)
     { includeDarkMode: true, includeRtl: true },
   )
   .addStory(
-    'Dynamic',
+    'Dynamic - Wrap Labels',
     () => {
       const points: IVerticalBarChartDataPoint[] = [
         {
@@ -150,7 +151,7 @@ storiesOf('react-charting/VerticalBarChart', module)
           color: '#005a9e',
         },
         {
-          x: 'Large data, showing all text by tooltip',
+          x: 'Large data, showing all text',
           y: 3000,
           color: '#00188f',
         },
@@ -170,11 +171,7 @@ storiesOf('react-charting/VerticalBarChart', module)
             height={350}
             width={650}
             hideLegend={true}
-            hideTooltip={false}
-            showXAxisLablesTooltip={true}
-            wrapXAxisLables={true}
-            hideLabels={true}
-            secondaryYScaleOptions={{ yMaxValue: 17, yMinValue: 5 }}
+            wrapXAxisLables
           />
         </div>
       );
@@ -182,7 +179,7 @@ storiesOf('react-charting/VerticalBarChart', module)
     { includeRtl: true, includeDarkMode: true },
   )
   .addStory(
-    'Rotated Label',
+    'Rotated Label- Hide Legends',
     () => {
       const points: IVerticalBarChartDataPoint[] = [
         {
@@ -399,7 +396,6 @@ storiesOf('react-charting/VerticalBarChart', module)
               allowFocusOnLegends: true,
             }}
             hideLabels={false}
-            wrapXAxisLables={true}
           />
         </div>
       );
@@ -407,7 +403,7 @@ storiesOf('react-charting/VerticalBarChart', module)
     { includeDarkMode: true, includeRtl: true },
   )
   .addStory(
-    'Grouped',
+    'Grouped - Wrap Labels',
     () => {
       const data = [
         {
