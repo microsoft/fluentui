@@ -1,5 +1,6 @@
 import { IStyle } from './IStyle';
 import { ShadowConfig } from './mergeStyleSets';
+import { EventMap } from './EventMap';
 
 export const InjectionMode = {
   /**
@@ -22,8 +23,7 @@ export const InjectionMode = {
    * NOTE: This API is unstable and subject to change or removal without notice.
    * Depend on it at your own risk.
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  unstable_constructibleStylesheet: 3 as 3,
+  constructableStylesheet: 3 as 3,
 
   insertNodeAndConstructableStylesheet: 4 as 4,
 
@@ -112,73 +112,6 @@ const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navi
 
 const SUPPORTS_CONSTRUCTIBLE_STYLESHEETS = 'CSSStyleSheet' in window;
 
-// export type EventMap<K, V> = Map<K, V> & {
-//   raise: (type: string, data: { key: K; sheet: V }) => void;
-//   on: (type: string, callback: (data: { key: K; sheet: V }) => void) => void;
-//   off: (type: string) => void;
-// }
-
-export type EventArgs = { key: string; sheet: Stylesheet };
-export type EventHandler = (args: EventArgs) => void;
-
-export class EventMap<K, V> {
-  private _events: Map<string, EventHandler[]>;
-  private _self: Map<K, V>;
-
-  constructor() {
-    this._self = new Map<K, V>();
-    this._events = new Map<string, EventHandler[]>();
-  }
-
-  public get(key: K) {
-    return this._self.get(key);
-  }
-
-  public set(key: K, value: V) {
-    this._self.set(key, value);
-  }
-
-  public has(key: K) {
-    return this._self.has(key);
-  }
-
-  public forEach(callback: (value: V, key: K, map: Map<K, V>) => void) {
-    this._self.forEach(callback);
-  }
-
-  public raise(type: string, data: { key: K; sheet: V }) {
-    const handlers = this._events.get(type);
-    if (!handlers) {
-      return;
-    }
-
-    for (const handler of handlers) {
-      // eslint-disable-next-line
-      // @ts-ignore
-      handler?.(data as EventArgs);
-    }
-  }
-
-  public on(type: string, callback: EventHandler) {
-    const handlers = this._events.get(type);
-    if (!handlers) {
-      this._events.set(type, [callback]);
-    } else {
-      handlers.push(callback);
-    }
-  }
-
-  public off(type: string, callback: EventHandler) {
-    const handlers = this._events.get(type);
-    if (handlers) {
-      const index = handlers.indexOf(callback);
-      if (index >= 0) {
-        handlers.splice(index, 1);
-      }
-    }
-  }
-}
-
 export type AdoptableStylesheet = {
   fluentSheet: Stylesheet;
   adoptedSheet: CSSStyleSheet;
@@ -252,7 +185,7 @@ export class Stylesheet {
       const fabricConfig = global?.FabricConfig || {};
       if (inShadow) {
         fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
-        fabricConfig.mergeStyles.injectionMode = InjectionMode.unstable_constructibleStylesheet;
+        fabricConfig.mergeStyles.injectionMode = InjectionMode.constructableStylesheet;
       }
 
       const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet, stylesheetKey);
@@ -263,7 +196,7 @@ export class Stylesheet {
             global[ADOPTED_STYLESHEETS] = new EventMap();
           }
           global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
-          const css = _stylesheet._getConstructibleStylesheet();
+          const css = _stylesheet._getConstructableStylesheet();
           requestAnimationFrame(() => {
             global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
           });
@@ -280,12 +213,42 @@ export class Stylesheet {
     return _stylesheet;
   }
 
+  public static projectStylesToWindow(targetWindow: Window, srcWindow?: Window): void {
+    const global = (srcWindow ?? _global) as typeof _global;
+    const clone = new EventMap<string, Stylesheet>();
+
+    // TODO: add support for <style> tags
+    global[ADOPTED_STYLESHEETS]?.forEach((value, key) => {
+      const srcSheet = value.getAdoptableStyleSheet();
+      if (!srcSheet) {
+        return;
+      }
+
+      const constructableSheet = new targetWindow.CSSStyleSheet();
+
+      for (const rule of srcSheet.cssRules) {
+        constructableSheet.insertRule(rule.cssText);
+      }
+
+      const serialized = JSON.parse(value.serialize());
+      const stylesheet = new Stylesheet(
+        {
+          injectionMode: InjectionMode.constructableStylesheet,
+        },
+        serialized,
+        key,
+      );
+
+      stylesheet.setAdoptableStyleSheet(constructableSheet);
+      clone.set(key, stylesheet);
+    });
+
+    (targetWindow as typeof _global)[ADOPTED_STYLESHEETS] = clone;
+  }
+
   constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string) {
     // If there is no document we won't have an element to inject into.
     const defaultInjectionMode = typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode;
-    // const defaultInjectionMode =
-    //   typeof stylesheetKey === 'string' ? InjectionMode.unstable_constructibleStylesheet : InjectionMode.insertNode;
-    // const defaultInjectionMode = InjectionMode.unstable_constructibleStylesheet;
     this._config = {
       injectionMode: defaultInjectionMode,
       defaultPrefix: 'css',
@@ -295,10 +258,7 @@ export class Stylesheet {
     };
 
     // Need to add a adoptedStyleSheets polyfill
-    if (
-      !SUPPORTS_CONSTRUCTIBLE_STYLESHEETS &&
-      this._config.injectionMode === InjectionMode.unstable_constructibleStylesheet
-    ) {
+    if (!SUPPORTS_CONSTRUCTIBLE_STYLESHEETS && this._config.injectionMode === InjectionMode.constructableStylesheet) {
       this._config.injectionMode = defaultInjectionMode;
     }
 
@@ -314,7 +274,7 @@ export class Stylesheet {
 
     this._classNameToArgs = serializedStylesheet?.classNameToArgs ?? this._classNameToArgs;
     // Come back to this
-    if (this._config.injectionMode !== InjectionMode.unstable_constructibleStylesheet) {
+    if (this._config.injectionMode !== InjectionMode.constructableStylesheet) {
       this._styleCounter = serializedStylesheet?.counter ?? this._styleCounter;
     }
     this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
@@ -450,26 +410,20 @@ export class Stylesheet {
    */
   public insertRule(rule: string, preserve?: boolean): void {
     const { injectionMode } = this._config;
-    // const element =
-    //   injectionMode === InjectionMode.unstable_constructibleStylesheet
-    //     ? this._getConstructibleStylesheet()
-    //     : injectionMode !== InjectionMode.none
-    //     ? this._getStyleElement()
-    //     : undefined;
 
     let element: HTMLStyleElement | undefined = undefined;
     let constructableSheet: CSSStyleSheet | undefined = undefined;
 
     if (injectionMode === InjectionMode.insertNode || injectionMode === InjectionMode.appendChild) {
       element = this._getStyleElement();
-    } else if (injectionMode === InjectionMode.unstable_constructibleStylesheet) {
-      constructableSheet = this._getConstructibleStylesheet();
+    } else if (injectionMode === InjectionMode.constructableStylesheet) {
+      constructableSheet = this._getConstructableStylesheet();
     } else if (
       injectionMode === InjectionMode.insertNodeAndConstructableStylesheet ||
       injectionMode === InjectionMode.appedChildAndConstructableStylesheet
     ) {
       element = this._getStyleElement();
-      constructableSheet = this._getConstructibleStylesheet();
+      constructableSheet = this._getConstructableStylesheet();
     }
 
     if (preserve) {
@@ -496,7 +450,7 @@ export class Stylesheet {
           this._insertRuleIntoSheet(constructableSheet!, rule);
           break;
 
-        case InjectionMode.unstable_constructibleStylesheet:
+        case InjectionMode.constructableStylesheet:
           this._insertRuleIntoSheet(constructableSheet!, rule);
           break;
       }
@@ -544,13 +498,13 @@ export class Stylesheet {
   }
 
   private get _counter(): number {
-    return this._config.injectionMode === InjectionMode.unstable_constructibleStylesheet
+    return this._config.injectionMode === InjectionMode.constructableStylesheet
       ? constructableStyleSheetCounter
       : this._styleCounter;
   }
 
   private set _counter(value: number) {
-    if (this._config.injectionMode === InjectionMode.unstable_constructibleStylesheet) {
+    if (this._config.injectionMode === InjectionMode.constructableStylesheet) {
       constructableStyleSheetCounter = value;
     } else {
       this._styleCounter = value;
@@ -600,6 +554,10 @@ export class Stylesheet {
 
     styleElement.setAttribute('data-merge-styles', 'true');
 
+    if (this._stylesheetKey === '__global__') {
+      styleElement.setAttribute('data-merge-styles-global', 'true');
+    }
+
     const { cspSettings } = this._config;
     if (cspSettings) {
       if (cspSettings.nonce) {
@@ -626,9 +584,9 @@ export class Stylesheet {
     return styleElement;
   }
 
-  private _getConstructibleStylesheet(): CSSStyleSheet {
+  private _getConstructableStylesheet(): CSSStyleSheet {
     if (!this._constructibleSheet) {
-      this._constructibleSheet = this._createConstructibleStylesheet();
+      this._constructibleSheet = this._createConstructableStylesheet();
 
       // _global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: this._stylesheetKey!, sheet: this });
       // Reset the style element on the next frame.
@@ -640,7 +598,7 @@ export class Stylesheet {
     return this._constructibleSheet;
   }
 
-  private _createConstructibleStylesheet(): CSSStyleSheet {
+  private _createConstructableStylesheet(): CSSStyleSheet {
     const sheet = new CSSStyleSheet();
 
     // eslint-disable-next-line
