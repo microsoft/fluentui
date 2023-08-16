@@ -322,6 +322,14 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
             className=
                 ms-TextField-field
                 {
+                  cursor: pointer;
+                  height: 32px;
+                  line-height: 30px;
+                  overflow: hidden;
+                  specificity-multiplier: 2px;
+                  text-overflow: ellipsis;
+                }
+                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
@@ -383,13 +391,6 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
-                }
-                {
-                  cursor: pointer;
-                  height: 32px;
-                  line-height: 30px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
                 }
             data-is-focusable={true}
             id="DatePicker0-label"
@@ -555,6 +556,14 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             className=
                 ms-TextField-field
                 {
+                  cursor: pointer;
+                  height: 32px;
+                  line-height: 30px;
+                  overflow: hidden;
+                  specificity-multiplier: 2px;
+                  text-overflow: ellipsis;
+                }
+                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
@@ -616,13 +625,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
                   color: GrayText;
-                }
-                {
-                  cursor: pointer;
-                  height: 32px;
-                  line-height: 30px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
                 }
             data-is-focusable={true}
             id="DatePicker0-label"
