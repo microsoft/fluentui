@@ -581,13 +581,27 @@ export const AppDefinition: IAppDefinition = {
           key: 'HorizontalBarChart',
           name: 'HorizontalBarChart',
           url: '#/examples/HorizontalBarChart',
-        },
-        {
-          component: require<any>('./components/pages/Charting/HorizontalBarChartWithAxisPage')
-            .HorizontalBarChartWithAxisPage,
-          key: 'HorizontalBarChartWithAxis',
-          name: 'HorizontalBarChartWithAxis',
-          url: '#/examples/HorizontalBarChartWithAxis',
+          links: [
+            {
+              component: require<any>('./components/pages/Charting/HorizontalBarChartWithAxisPage')
+                .HorizontalBarChartWithAxisPage,
+              key: 'HorizontalBarChart - WithAxis',
+              name: 'HorizontalBarChart - WithAxis',
+              url: '#/examples/HorizontalBarChart/WithAxis',
+            },
+            {
+              component: require<any>('./components/pages/Charting/MultiStackedBarChartPage').MultiStackedBarChartPage,
+              key: 'HorizontalBarChart - MultiStacked',
+              name: 'HorizontalBarChart - MultiStacked',
+              url: '#/examples/HorizontalBarChart/MultiStacked',
+            },
+            {
+              component: require<any>('./components/pages/Charting/StackedBarChartPage').StackedBarChartPage,
+              key: 'HorizontalBarChart - Stacked',
+              name: 'HorizontalBarChart - Stacked',
+              url: '#/examples/HorizontalBarChart/Stacked',
+            },
+          ],
         },
         {
           component: require<any>('./components/pages/Charting/PieChartPage').PieChartPage,
@@ -606,18 +620,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'SparklineChart',
           name: 'SparklineChart',
           url: '#/examples/SparklineChart',
-        },
-        {
-          component: require<any>('./components/pages/Charting/StackedBarChartPage').StackedBarChartPage,
-          key: 'StackedBarChart',
-          name: 'StackedBarChart',
-          url: '#/examples/StackedBarChart',
-        },
-        {
-          component: require<any>('./components/pages/Charting/MultiStackedBarChartPage').MultiStackedBarChartPage,
-          key: 'MultiStackedBarChart',
-          name: 'MultiStackedBarChart',
-          url: '#/examples/MultiStackedBarChart',
         },
         {
           component: require<any>('./components/pages/Charting/TreeChartPage').TreeChartPage,

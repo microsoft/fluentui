@@ -4,5 +4,7 @@ import { MultiStackedBarChartPageProps as ExternalProps } from '@fluentui/react-
 export const MultiStackedBarChartPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
+    title: 'HorizontalBarChart - Multi Stacked',
+    url: 'multistacked',
   },
 };

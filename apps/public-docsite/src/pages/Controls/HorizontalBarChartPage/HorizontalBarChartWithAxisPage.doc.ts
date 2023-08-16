@@ -4,5 +4,7 @@ import { HorizontalBarChartWithAxisPageProps as ExternalProps } from '@fluentui/
 export const HorizontalBarChartWithAxisPageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
+    title: 'HorizontalBarChart - WithAxis',
+    url: 'withaxis',
   },
 };

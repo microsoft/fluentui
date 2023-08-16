@@ -113,19 +113,22 @@ export const categories: { [name: string]: ICategory } = {
     DonutChart: {},
     VerticalBarChart: {
       subPages: {
-        VerticalStackedBarChart: { title: 'Stacked' },
         Grouped: { title: 'Grouped' },
+        VerticalStackedBarChart: { title: 'Stacked' },
       },
     },
     GaugeChart: {},
     HeatMapChart: {},
-    HorizontalBarChart: {},
-    HorizontalBarChartWithAxis: {},
+    HorizontalBarChart: {
+      subPages: {
+        StackedBarChart: { title: 'Stacked' },
+        MultiStackedBarChart: { title: 'Multi Stacked' },
+        WithAxis: { title: 'With Axis' },
+      },
+    },
     PieChart: {},
     SankeyChart: {},
     SparklineChart: {},
-    StackedBarChart: {},
-    MultiStackedBarChart: {},
     TreeChart: {},
   },
   Utilities: {
