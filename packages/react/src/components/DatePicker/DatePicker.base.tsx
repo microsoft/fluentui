@@ -11,6 +11,7 @@ import {
 import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
+import { mergeStyles } from '../../Styling';
 import { TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
@@ -19,7 +20,6 @@ import type { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from 
 import type { IRenderFunction } from '@fluentui/utilities';
 import type { ICalendar } from '../../Calendar';
 import type { ITextField, ITextFieldProps } from '../../TextField';
-import { mergeStyles } from '@fluentui/merge-styles';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
 
