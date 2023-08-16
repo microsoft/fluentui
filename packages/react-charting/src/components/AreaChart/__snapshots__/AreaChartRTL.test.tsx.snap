@@ -21,6 +21,9 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
     role="presentation"
   >
     <div
+      id="defaultTabbableElement_13"
+    />
+    <div
       class=
           ms-FocusZone
           &:focus {

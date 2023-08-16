@@ -77,6 +77,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private yAxisElementSecondary: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
+  private idForDefaultTabbableElement: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
   private _tickValues: (string | number)[];
@@ -99,6 +100,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     };
     this.idForGraph = getId('chart_');
     this.titleMargin = 8;
+    this.idForDefaultTabbableElement = getId('defaultTabbableElement_');
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
@@ -463,7 +465,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         onMouseLeave={this._onChartLeave}
       >
-        <FocusZone direction={focusDirection} className={this._classNames.chartWrapper} {...svgFocusZoneProps}>
+        {!this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
+        <FocusZone
+          direction={focusDirection}
+          className={this._classNames.chartWrapper}
+          defaultTabbableElement={`#${this.idForDefaultTabbableElement}`}
+          {...svgFocusZoneProps}
+        >
+          {this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
           <svg
             width={svgDimensions.width}
             height={svgDimensions.height}

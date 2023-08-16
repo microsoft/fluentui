@@ -21,6 +21,9 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
     role="presentation"
   >
     <div
+      id="defaultTabbableElement_46"
+    />
+    <div
       class=
           ms-FocusZone
           &:focus {
