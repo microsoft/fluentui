@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Mon, 14 Aug 2023 21:22:22 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 11:38:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.79](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.79)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.78..@fluentui/react-portal-compat_v9.0.79)
+
+### Patches
+
+- chore: changes tsconfig target to ES2019 ([PR #28848](https://github.com/microsoft/fluentui/pull/28848) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-components to v9.29.1 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
 
 ## [9.0.78](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.78)
 

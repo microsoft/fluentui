@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "BREAKING CHANGE: use JSX children for InteractionTag's action buttons",
+  "type": "patch",
+  "comment": "fix: tag changes hover pointer only when hovering dismiss icon",
   "packageName": "@fluentui/react-tags-preview",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
