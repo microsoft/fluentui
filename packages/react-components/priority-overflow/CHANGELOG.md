@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Wed, 09 Aug 2023 13:16:48 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2023 12:14:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.4)
+
+Fri, 11 Aug 2023 12:14:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.3..@fluentui/priority-overflow_v9.1.4)
+
+### Patches
+
+- fix: flickering in Overflow ([PR #28767](https://github.com/microsoft/fluentui/pull/28767) by vkozlova@microsoft.com)
 
 ## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.3)
 

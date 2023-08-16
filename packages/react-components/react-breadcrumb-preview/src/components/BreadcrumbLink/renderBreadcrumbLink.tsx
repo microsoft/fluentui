@@ -11,12 +11,11 @@ import type { BreadcrumbLinkState, BreadcrumbLinkSlots } from './BreadcrumbLink.
  */
 export const renderBreadcrumbLink_unstable = (state: BreadcrumbLinkState) => {
   assertSlots<BreadcrumbLinkSlots>(state);
-  const { iconOnly, iconPosition } = state;
+
   return (
     <state.root>
-      {iconPosition !== 'after' && state.icon && <state.icon />}
-      {!iconOnly && state.root.children}
-      {iconPosition === 'after' && state.icon && <state.icon />}
+      {state.icon && <state.icon />}
+      {state.root.children}
     </state.root>
   );
 };

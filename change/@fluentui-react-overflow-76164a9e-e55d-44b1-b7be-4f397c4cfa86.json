@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: flickering in Overflow",
-  "packageName": "@fluentui/react-overflow",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
