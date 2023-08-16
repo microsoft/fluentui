@@ -551,16 +551,23 @@ export const AppDefinition: IAppDefinition = {
             {
               component: require<any>('./components/pages/Charting/VerticalBarChartStandardPage')
                 .VerticalBarChartStandardPage,
-              key: 'VerticalBarChartStandard',
+              key: 'VerticalBarChart - Standard',
               name: 'VerticalBarChart - Standard',
               url: '#/examples/VerticalBarChart/Standard',
             },
             {
               component: require<any>('./components/pages/Charting/VerticalStackedBarChartPage')
                 .VerticalStackedBarChartPage,
-              key: 'VerticalStackedBarChartPage',
+              key: 'VerticalBarChart - Stacked',
               name: 'VerticalBarChart - Stacked',
               url: '#/examples/VerticalBarChart/Stacked',
+            },
+            {
+              component: require<any>('./components/pages/Charting/GroupedVerticalBarChartPage')
+                .GroupedVerticalBarChartPage,
+              key: 'VerticalBarChart - Grouped',
+              name: 'VerticalBarChart - Grouped',
+              url: '#/examples/VerticalBarChart/Grouped',
             },
           ],
         },
@@ -624,13 +631,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'TreeChart',
           name: 'TreeChart',
           url: '#/examples/TreeChart',
-        },
-        {
-          component: require<any>('./components/pages/Charting/VerticalStackedBarChartPage')
-            .VerticalStackedBarChartPage,
-          key: 'VerticalStackedBarChart',
-          name: 'VerticalStackedBarChart',
-          url: '#/examples/VerticalStackedBarChart',
         },
       ],
     },
