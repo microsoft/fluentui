@@ -62,7 +62,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   });
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-      props.onNavigation_unstable?.(event, data);
+      props.onNavigation?.(event, data);
       if (walkerRef.current) {
         navigate(data, walkerRef.current);
       }
@@ -76,7 +76,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
       checkedItems,
       onOpenChange: handleOpenChange,
       // eslint-disable-next-line @typescript-eslint/naming-convention
-      onNavigation_unstable: handleNavigation,
+      onNavigation: handleNavigation,
       onCheckedChange: handleCheckedChange,
     },
     useMergedRefs(ref, initializeWalker),
