@@ -75,7 +75,6 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
       openItems,
       checkedItems,
       onOpenChange: handleOpenChange,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
       onNavigation: handleNavigation,
       onCheckedChange: handleCheckedChange,
     },
