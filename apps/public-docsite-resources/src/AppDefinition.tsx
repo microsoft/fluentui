@@ -549,13 +549,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/VerticalBarChart',
           links: [
             {
-              component: require<any>('./components/pages/Charting/VerticalBarChartStandardPage')
-                .VerticalBarChartStandardPage,
-              key: 'VerticalBarChart - Standard',
-              name: 'VerticalBarChart - Standard',
-              url: '#/examples/VerticalBarChart/Standard',
-            },
-            {
               component: require<any>('./components/pages/Charting/VerticalStackedBarChartPage')
                 .VerticalStackedBarChartPage,
               key: 'VerticalBarChart - Stacked',
