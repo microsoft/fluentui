@@ -8,7 +8,7 @@ Use this component when you need to present your users with a clear visual struc
 >
 > ```jsx
 >
-> import { Tree } from '@fluentui/react-components/unstable';
+> import { Tree } from '@fluentui/react-tree';
 >
 > ```
 >
