@@ -2,6 +2,45 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Wed, 16 Aug 2023 11:38:33 GMT",
+      "tag": "@fluentui/react-tree_v9.0.0-beta.33",
+      "version": "9.0.0-beta.33",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-avatar to v9.5.20",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-button to v9.3.30",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-checkbox to v9.1.31",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-radio to v9.1.31",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tree",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:26 GMT",
       "tag": "@fluentui/react-tree_v9.0.0-beta.32",
       "version": "9.0.0-beta.32",

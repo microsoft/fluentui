@@ -2,6 +2,49 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 16 Aug 2023 11:38:32 GMT",
+      "tag": "@fluentui/react-components_v9.29.1",
+      "version": "9.29.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "b6082a65fa8424cf646c88fa028e15b747871b7d",
+            "comment": "Added CY tests for Breacrumb with Menu and Overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "d4bde491437d4574dce6210c6e24a10dcbd0b229",
+            "comment": "chore: changes tsconfig target to ES2019"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "a3e1a603ac387bff5d5c7367ed58ab2c511d8c3c",
+            "comment": "removed iconPosition prop from the Breadcrumb"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "a0cf8651e27d09ce9a76a3be0c993ab24a96a80e",
+            "comment": "BREAKING CHANGE: use JSX children for InteractionTag's action buttons"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "d40ea6e1d43cd21d1404d9c71018d822958c6644",
+            "comment": "feat: supports new automatic JSX runtime"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Aug 2023 21:22:22 GMT",
       "tag": "@fluentui/react-components_v9.29.0",
       "version": "9.29.0",
