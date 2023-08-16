@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: stable release",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

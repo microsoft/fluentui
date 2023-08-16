@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Wed, 16 Aug 2023 11:38:33 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.34)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.33..@fluentui/react-virtualizer_v9.0.0-alpha.34)
+
+### Changes
+
+- Fix: Ensure scrollViewRef is merged with container ref ([PR #28829](https://github.com/microsoft/fluentui/pull/28829) by mifraser@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
 
 ## [9.0.0-alpha.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.33)
 

@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 16 Aug 2023 11:38:32 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 17:41:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.29.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.2)
+
+Wed, 16 Aug 2023 17:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.1..@fluentui/react-components_v9.29.2)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: stable release react-tree ([PR #28845](https://github.com/microsoft/fluentui/pull/28845) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: release stable version ([PR #28880](https://github.com/microsoft/fluentui/pull/28880) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags-preview`
+  - fix: tag changes hover pointer only when hovering dismiss icon ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by yuanboxue@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: stable release ([PR #28845](https://github.com/microsoft/fluentui/pull/28845) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - Fix: Ensure scrollViewRef is merged with container ref ([PR #28829](https://github.com/microsoft/fluentui/pull/28829) by mifraser@microsoft.com)
 
 ## [9.29.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.1)
 

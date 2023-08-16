@@ -2,6 +2,33 @@
   "name": "@fluentui/react-persona",
   "entries": [
     {
+      "date": "Wed, 16 Aug 2023 17:41:08 GMT",
+      "tag": "@fluentui/react-persona_v9.2.31",
+      "version": "9.2.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-avatar to v9.5.21",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-badge to v9.1.28",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-persona",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Aug 2023 11:38:33 GMT",
       "tag": "@fluentui/react-persona_v9.2.30",
       "version": "9.2.30",

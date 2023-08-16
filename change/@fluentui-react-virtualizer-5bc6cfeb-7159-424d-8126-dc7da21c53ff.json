@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fix: Ensure scrollViewRef is merged with container ref",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}
