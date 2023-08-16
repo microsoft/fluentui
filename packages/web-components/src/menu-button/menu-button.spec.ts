@@ -181,53 +181,6 @@ test.describe('Menu Button', () => {
   });
 });
 
-test.describe('Menu Button - Isolates Flaky Attribute Tests', () => {
-  let page: Page;
-  let element: Locator;
-  let root: Locator;
-  let control: Locator;
-
-  test.beforeAll(async ({ browser }) => {
-    page = await browser.newPage();
-    await page.goto(fixtureURL('components-button-menu-button--button'));
-    element = page.locator('fluent-menu-button');
-    root = page.locator('#root');
-    control = element.locator('.control');
-  });
-
-  test.afterAll(async () => {
-    await page.close();
-  });
-
-  async function testAttribute(attributeName: string) {
-    // Insert the component with the specified attribute.
-    await root.evaluate((node, attr) => {
-      node.innerHTML = `<fluent-menu-button ${attr}></fluent-menu-button>`;
-    }, attributeName);
-
-    // Check if the attribute is set on the internal control.
-    let attrValue = await control.getAttribute(attributeName);
-    expect(attrValue).toBe('');
-
-    // Toggle the attribute on the component.
-    await element.evaluate((node, attr) => {
-      node.toggleAttribute(attr);
-    }, attributeName);
-
-    // Check that the attribute is removed from the internal control.
-    attrValue = await control.getAttribute(attributeName);
-    expect(attrValue).toBe(null);
-  }
-
-  test('should set the `autofocus` attribute on the internal control', async () => {
-    await testAttribute('autofocus');
-  });
-
-  test('should set the `formnovalidate` attribute on the internal control', async () => {
-    await testAttribute('formnovalidate');
-  });
-});
-
 test.describe('Menu Button - Regular Attributes', () => {
   let page: Page;
   let element: Locator;
@@ -298,9 +251,11 @@ test.describe('Menu Button - Boolean Attributes', () => {
   });
 
   const booleanAttributes = {
+    autofocus: 'true',
     disabled: 'true',
     disabledFocusable: 'true',
     iconOnly: 'true',
+    formnovalidate: 'true',
     ariaBusy: 'false',
     ariaAtomic: 'true',
     ariaDisabled: 'true',
