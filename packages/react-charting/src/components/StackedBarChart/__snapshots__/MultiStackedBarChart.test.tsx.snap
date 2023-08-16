@@ -36,213 +36,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
             &:focus {
               outline: none;
             }
-<<<<<<< HEAD
-        data-focuszone-id="FocusZone2"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #323130;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={false}
-              role="text"
-            >
-              Monitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip3"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Monitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={false}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone4"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                padding-right: 0px;
-              }
-        >
-          <svg
-            aria-label="Monitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 40%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              key="0"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#e81123"
-                height={12}
-                key="0"
-                width="62.22222222222222%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              key="1"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                key="1"
-                width="35.77777777777778%"
-                x="64.22222222222223%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    key="1"
-  >
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-=======
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
         data-focuszone-id="FocusZone5"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -368,10 +161,9 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -387,9 +179,8 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_2-0"
                 key="0"
-                width="63.49206349206349%"
+                width="62.22222222222222%"
                 x="0%"
                 y={0}
               />
@@ -401,10 +192,9 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -420,10 +210,9 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_2-1"
                 key="1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="35.77777777777778%"
+                x="64.22222222222223%"
                 y={0}
               />
             </g>
@@ -595,7 +384,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_2-0"
                 key="0"
                 width="62.22222222222222%"
                 x="0%"
@@ -627,7 +415,6 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_2-1"
                 key="1"
                 width="35.77777777777778%"
                 x="64.22222222222223%"
@@ -911,213 +698,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
             &:focus {
               outline: none;
             }
-<<<<<<< HEAD
-        data-focuszone-id="FocusZone2"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #323130;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={false}
-              role="text"
-            >
-              Monitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip3"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Monitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={false}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone4"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                padding-right: 0px;
-              }
-        >
-          <svg
-            aria-label="Monitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 40%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              key="0"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#e81123"
-                height={12}
-                key="0"
-                width="62.22222222222222%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              key="1"
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                key="1"
-                width="35.77777777777778%"
-                x="64.22222222222223%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    key="1"
-  >
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-=======
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
         data-focuszone-id="FocusZone5"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -1243,10 +823,9 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1262,9 +841,8 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_2-0"
                 key="0"
-                width="63.49206349206349%"
+                width="62.22222222222222%"
                 x="0%"
                 y={0}
               />
@@ -1276,10 +854,9 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -1295,10 +872,9 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_2-1"
                 key="1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="35.77777777777778%"
+                x="64.22222222222223%"
                 y={0}
               />
             </g>
@@ -1470,7 +1046,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_2-0"
                 key="0"
                 width="62.22222222222222%"
                 x="0%"
@@ -1502,7 +1077,6 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_2-1"
                 key="1"
                 width="35.77777777777778%"
                 x="64.22222222222223%"
@@ -1820,12 +1394,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#e81123"
                 height={12}
-<<<<<<< HEAD
                 width="61.002178649237464%"
-=======
-                id="_MSBC_rect_73-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -1854,14 +1423,8 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.07625272331154%"
                 x="63.002178649237464%"
-=======
-                id="_MSBC_rect_73-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
@@ -2005,12 +1568,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#0078d4"
                 height={12}
-<<<<<<< HEAD
                 width="61.002178649237464%"
-=======
-                id="_MSBC_rect_73-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -2039,14 +1597,8 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.07625272331154%"
                 x="63.002178649237464%"
-=======
-                id="_MSBC_rect_73-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
@@ -2283,12 +1835,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#e81123"
                 height={12}
-<<<<<<< HEAD
                 width="61.002178649237464%"
-=======
-                id="_MSBC_rect_61-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -2317,14 +1864,8 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.07625272331154%"
                 x="63.002178649237464%"
-=======
-                id="_MSBC_rect_61-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
@@ -2486,12 +2027,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#0078d4"
                 height={12}
-<<<<<<< HEAD
                 width="61.002178649237464%"
-=======
-                id="_MSBC_rect_61-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -2520,14 +2056,8 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.07625272331154%"
                 x="63.002178649237464%"
-=======
-                id="_MSBC_rect_61-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
@@ -2647,211 +2177,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
       }
   onMouseLeave={[Function]}
 >
-<<<<<<< HEAD
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone2"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #323130;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={false}
-              role="text"
-            >
-              Monitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip3"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Monitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={false}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone4"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                padding-right: 0px;
-              }
-        >
-          <svg
-            aria-label="Monitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 40%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#e81123"
-                height={12}
-                width="62.22222222222222%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="35.77777777777778%"
-                x="64.22222222222223%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-=======
   <div
     id="_MSBC_bar-0"
   >
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
     <div
       className=
 
@@ -2993,10 +2321,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3011,8 +2338,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_2-0"
-                width="63.49206349206349%"
+                width="62.22222222222222%"
                 x="0%"
                 y={0}
               />
@@ -3024,10 +2350,9 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3042,9 +2367,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_2-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="35.77777777777778%"
+                x="64.22222222222223%"
                 y={0}
               />
             </g>
@@ -3214,12 +2538,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#0078d4"
                 height={12}
-<<<<<<< HEAD
                 width="62.22222222222222%"
-=======
-                id="_MSBC_rect_2-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -3248,14 +2567,8 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.77777777777778%"
                 x="64.22222222222223%"
-=======
-                id="_MSBC_rect_2-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
@@ -3508,12 +2821,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#e81123"
                 height={12}
-<<<<<<< HEAD
                 width="62.22222222222222%"
-=======
-                id="_MSBC_rect_49-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -3542,14 +2850,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.77777777777778%"
                 x="64.22222222222223%"
-=======
-                id="_MSBC_rect_49-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
@@ -3692,10 +2994,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3710,8 +3011,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_49-0"
-                width="63.49206349206349%"
+                width="62.22222222222222%"
                 x="0%"
                 y={0}
               />
@@ -3723,10 +3023,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -3741,9 +3040,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_49-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="35.77777777777778%"
+                x="64.22222222222223%"
                 y={0}
               />
             </g>
@@ -3989,10 +3287,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4007,8 +3304,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_14-0"
-                width="63.49206349206349%"
+                width="62.22222222222222%"
                 x="0%"
                 y={0}
               />
@@ -4020,10 +3316,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4038,9 +3333,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_14-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="35.77777777777778%"
+                x="64.22222222222223%"
                 y={0}
               />
             </g>
@@ -4193,10 +3487,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4211,8 +3504,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_14-0"
-                width="63.49206349206349%"
+                width="62.22222222222222%"
                 x="0%"
                 y={0}
               />
@@ -4224,10 +3516,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4242,9 +3533,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_14-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="35.77777777777778%"
+                x="64.22222222222223%"
                 y={0}
               />
             </g>
@@ -4393,10 +3683,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4411,8 +3700,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_37-0"
-                width="63.49206349206349%"
+                width="62.22222222222222%"
                 x="0%"
                 y={0}
               />
@@ -4424,10 +3712,9 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   {
                     cursor: default;
                     opacity: ;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
                   }
                   &:focus {
+                    outline-color: #000000;
                     stroke-width: 2px;
                     stroke: #000000;
                   }
@@ -4442,9 +3729,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_37-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
+                width="35.77777777777778%"
+                x="64.22222222222223%"
                 y={0}
               />
             </g>
@@ -4614,899 +3900,6 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#0078d4"
                 height={12}
-<<<<<<< HEAD
-                width="62.22222222222222%"
-=======
-                id="_MSBC_rect_37-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-<<<<<<< HEAD
-                width="35.77777777777778%"
-                x="64.22222222222223%"
-=======
-                id="_MSBC_rect_37-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div
-    className=
-
-        {
-          margin-bottom: 0px;
-          margin-left: 4px;
-          margin-right: 0px;
-          margin-top: 5px;
-        }
-  >
-    <div
-      className=
-
-          {
-            align-items: center;
-            margin-bottom: 0;
-            margin-left: -8px;
-            margin-right: 0;
-            margin-top: -8px;
-            white-space: nowrap;
-            width: 100%;
-          }
-    >
-      <div>
-        <div
-          style={
-            Object {
-              "position": "relative",
-            }
-          }
-        >
-          <div
-            data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
-          >
-            <div
-              aria-label="Legends"
-              aria-multiselectable={false}
-              className=
-                  ms-FocusZone
-                  &:focus {
-                    outline: none;
-                  }
-<<<<<<< HEAD
-              data-focuszone-id="FocusZone43"
-              onFocus={[Function]}
-              onKeyDown={[Function]}
-              onMouseDownCapture={[Function]}
-              role="listbox"
-            >
-              <div
-                className=
-                    ms-OverflowSet
-                    {
-                      display: flex;
-                      flex-wrap: wrap;
-                      justify-content: unset;
-                      position: relative;
-                    }
-                role="group"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <span
-    className="ms-layer"
-  />
-</div>
-`;
-
-exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] = `
-<div
-  className=
-      ms-StackedBarChart
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        width: 100%;
-      }
-  onMouseLeave={[Function]}
->
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone11"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #323130;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={false}
-              role="text"
-            >
-              Monitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip12"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Monitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={false}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone13"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                padding-right: 0px;
-              }
-        >
-          <svg
-            aria-label="Monitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 40%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#e81123"
-                height={12}
-                width="62.22222222222222%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="35.77777777777778%"
-                x="64.22222222222223%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone14"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #323130;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={false}
-              role="text"
-            >
-              Unmonitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip15"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Unmonitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={false}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone16"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                padding-right: 0px;
-              }
-        >
-          <svg
-            aria-label="Unmonitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#0078d4"
-                height={12}
-                width="62.22222222222222%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="35.77777777777778%"
-                x="64.22222222222223%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <span
-    className="ms-layer"
-  />
-</div>
-`;
-
-exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] = `
-<div
-  className=
-      ms-StackedBarChart
-      {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        display: flex;
-        flex-direction: column;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
-        width: 100%;
-      }
-  onMouseLeave={[Function]}
->
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone28"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #323130;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={false}
-              role="text"
-            >
-              Monitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip29"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Monitored
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone30"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                padding-right: 0px;
-              }
-        >
-          <svg
-            aria-label="Monitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 40%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#e81123"
-                height={12}
-                width="62.22222222222222%"
-                x="0%"
-                y={0}
-              />
-            </g>
-            <g
-              aria-label="2020/04/30, 23%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#107c10"
-                height={12}
-                width="35.77777777777778%"
-                x="64.22222222222223%"
-                y={0}
-              />
-            </g>
-          </svg>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div>
-    <div
-      className=
-
-          {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 10px;
-            width: 100%;
-          }
-    >
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone31"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: flex;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 12px;
-                font-weight: 400;
-                justify-content: space-between;
-              }
-        >
-          <div
-            className=
-                ms-TooltipHost
-                {
-                  color: #323130;
-                  display: block;
-                  margin-bottom: 5px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-            onBlurCapture={[Function]}
-            onFocusCapture={[Function]}
-            onKeyDown={[Function]}
-            onMouseEnter={[Function]}
-            onMouseLeave={[Function]}
-            role="none"
-          >
-            <span
-              data-is-focusable={false}
-              role="text"
-            >
-              Unmonitored
-            </span>
-            <div
-              hidden={true}
-              id="tooltip32"
-              style={
-                Object {
-                  "border": 0,
-                  "height": 1,
-                  "margin": -1,
-                  "overflow": "hidden",
-                  "padding": 0,
-                  "position": "absolute",
-                  "whiteSpace": "nowrap",
-                  "width": 1,
-                }
-              }
-            >
-              Unmonitored
-            </div>
-          </div>
-          <div
-            data-is-focusable={false}
-            role="text"
-          >
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                    font-weight: 600;
-                  }
-            >
-              40
-            </span>
-            <span
-              className=
-
-                  {
-                    color: #323130;
-                    font-size: 14px;
-                  }
-            >
-               / 63
-            </span>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-FocusZone
-            &:focus {
-              outline: none;
-            }
-        data-focuszone-id="FocusZone33"
-        onFocus={[Function]}
-        onKeyDown={[Function]}
-        onMouseDownCapture={[Function]}
-      >
-        <div
-          className=
-
-              {
-                padding-right: 0px;
-              }
-        >
-          <svg
-            aria-label="Unmonitored"
-            className=
-
-                {
-                  display: block;
-                  height: 12px;
-                  overflow: visible;
-                  width: 100%;
-                }
-          >
-            <g
-              aria-label="2020/04/30, 87%."
-              className=
-
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
-              data-is-focusable={true}
-              onBlur={[Function]}
-              onFocus={[Function]}
-              onMouseLeave={[Function]}
-              onMouseMove={[Function]}
-              onMouseOver={[Function]}
-              role="img"
-            >
-              <rect
-                fill="#0078d4"
-                height={12}
                 width="62.22222222222222%"
                 x="0%"
                 y={0}
@@ -5594,10 +3987,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone34"
-=======
               data-focuszone-id="FocusZone46"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -5984,12 +4374,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#e81123"
                 height={12}
-<<<<<<< HEAD
                 width="62.22222222222222%"
-=======
-                id="_MSBC_rect_25-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -6018,14 +4403,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.77777777777778%"
                 x="64.22222222222223%"
-=======
-                id="_MSBC_rect_25-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
@@ -6195,12 +4574,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#0078d4"
                 height={12}
-<<<<<<< HEAD
                 width="62.22222222222222%"
-=======
-                id="_MSBC_rect_25-0"
-                width="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 x="0%"
                 y={0}
               />
@@ -6229,14 +4603,8 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
-<<<<<<< HEAD
                 width="35.77777777777778%"
                 x="64.22222222222223%"
-=======
-                id="_MSBC_rect_25-1"
-                width="36.507936507936506%"
-                x="63.49206349206349%"
->>>>>>> de73662bd4db7d730a3c256d7c900959100f3971
                 y={0}
               />
             </g>
