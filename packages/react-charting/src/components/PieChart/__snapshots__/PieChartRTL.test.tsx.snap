@@ -40,7 +40,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
         width="600"
       >
         <g
-          class="arc"
+          class="pie"
           transform="translate(300, 175)"
         >
           <g
@@ -51,7 +51,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   outline: none;
                 }
             data-is-focusable="true"
-            id="id__48"
+            id="piechart_arc48"
             role="img"
             tabindex="0"
           >
@@ -90,7 +90,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   outline: none;
                 }
             data-is-focusable="true"
-            id="id__51"
+            id="piechart_arc51"
             role="img"
             tabindex="-1"
           >
@@ -129,7 +129,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
                   outline: none;
                 }
             data-is-focusable="true"
-            id="id__54"
+            id="piechart_arc54"
             role="img"
             tabindex="-1"
           >
@@ -196,7 +196,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
       width={600}
     >
       <g
-        className="arc"
+        className="pie"
         transform="translate(300, 175)"
       >
         <g
@@ -207,7 +207,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__3"
+          id="piechart_arc3"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -251,7 +251,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__6"
+          id="piechart_arc6"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -295,7 +295,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__9"
+          id="piechart_arc9"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -366,7 +366,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
       width={600}
     >
       <g
-        className="arc"
+        className="pie"
         transform="translate(300, 150)"
       >
         <g
@@ -377,7 +377,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__14"
+          id="piechart_arc14"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -421,7 +421,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__17"
+          id="piechart_arc17"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"
@@ -465,7 +465,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
                 outline: none;
               }
           data-is-focusable={true}
-          id="id__20"
+          id="piechart_arc20"
           onBlur={[Function]}
           onFocus={[Function]}
           role="img"

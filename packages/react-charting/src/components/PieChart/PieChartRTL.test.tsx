@@ -13,7 +13,7 @@ describe('Pie chart rendering', () => {
     expect(container).toMatchSnapshot();
     expect(getById(container, /_PieChart_empty/i)).toHaveLength(1);
 
-    // Mock the implementation of shouldWrapContent as it internally calls a Browser Function like
+    // Mock the implementation of wrapContent as it internally calls a Browser Function like
     // getComputedTextLength() which will otherwise lead to a crash if mounted
     jest.spyOn(utils, 'wrapContent').mockImplementation(() => false);
 
