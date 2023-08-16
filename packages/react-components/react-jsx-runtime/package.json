@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-jsx-runtime",
   "version": "9.0.0-alpha.16",
-  "description": "Custom v9 runtime for JSX",
+  "description": "Custom JSX runtime for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
