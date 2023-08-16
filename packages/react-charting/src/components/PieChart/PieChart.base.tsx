@@ -5,34 +5,19 @@ import { Pie } from './Pie/Pie';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 
 const getClassNames = classNamesFunction<IPieChartStyleProps, IPieChartStyles>();
-export interface IPieChartState {
-  emptyChart?: boolean;
-}
 
-export class PieChartBase extends React.Component<IPieChartProps, IPieChartState> {
+export class PieChartBase extends React.Component<IPieChartProps, {}> {
   public static defaultProps: Partial<IPieChartProps> = {
     data: [],
     width: 600,
     height: 350,
   };
   private _classNames: IProcessedStyleSet<IPieChartStyles>;
+  private _emptyChartId: string;
 
   public constructor(props: IPieChartProps) {
     super(props);
-    this.state = {
-      emptyChart: false,
-    };
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty = !(
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data.filter(item => item.y > 0).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_PieChart_empty');
   }
 
   public render(): JSX.Element {
@@ -48,7 +33,7 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
     const radius = Math.min(width!, height!) / 2;
     const outerRadius = radius - 10;
 
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <div className={this._classNames.root}>
         {this.props.chartTitle && <p className={this._classNames.chartTitle}>{this.props.chartTitle}</p>}
         <Pie
@@ -64,11 +49,15 @@ export class PieChartBase extends React.Component<IPieChartProps, IPieChartState
       </div>
     ) : (
       <div
-        id={getId('_PieChart_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
       />
     );
+  }
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0 && this.props.data.filter(item => item.y > 0).length > 0);
   }
 }

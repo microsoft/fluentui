@@ -1,8 +1,27 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Tue, 20 Jun 2023 12:39:07 GMT and should not be manually modified.
+This log was last generated on Wed, 09 Aug 2023 13:17:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.8)
+
+Wed, 09 Aug 2023 13:17:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.7..@fluentui/tokens_v1.0.0-alpha.8)
+
+### Changes
+
+- feat: add durationGentle ([PR #28770](https://github.com/microsoft/fluentui/pull/28770) by miroslav.stastny@microsoft.com)
+
+## [1.0.0-alpha.7](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.7)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.6..@fluentui/tokens_v1.0.0-alpha.7)
+
+### Changes
+
+- feat: add status color tokens ([PR #28006](https://github.com/microsoft/fluentui/pull/28006) by miroslav.stastny@microsoft.com)
+- Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2 ([PR #28638](https://github.com/microsoft/fluentui/pull/28638) by miroslav.stastny@microsoft.com)
 
 ## [1.0.0-alpha.6](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.6)
 

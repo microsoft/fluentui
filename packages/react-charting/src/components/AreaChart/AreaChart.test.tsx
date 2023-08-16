@@ -46,7 +46,7 @@ const points: ILineChartPoints[] = [
     color: 'red',
   },
 ];
-const chartPoints = {
+export const chartPoints = {
   chartTitle: 'AreaChart',
   lineChartData: points,
 };
@@ -70,7 +70,7 @@ const emptyPoint = [
     color: 'red',
   },
 ];
-const emptyChartPoints = {
+export const emptyChartPoints = {
   chartTitle: 'EmptyAreaChart',
   lineChartData: emptyPoint,
 };

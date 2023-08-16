@@ -27,7 +27,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone2"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -71,7 +71,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip3"
               style={
                 Object {
                   "border": 0,
@@ -112,7 +112,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -137,11 +137,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 94%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -159,11 +155,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="13457/15000."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -196,7 +188,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone5"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -240,7 +232,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -281,7 +273,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -306,11 +298,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 19%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -328,11 +316,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="14200/15000."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -541,7 +525,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone2"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -585,7 +569,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip3"
               style={
                 Object {
                   "border": 0,
@@ -626,7 +610,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -651,11 +635,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 94%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -673,11 +653,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="13457/15000."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -710,7 +686,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone5"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -754,7 +730,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -795,7 +771,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -820,11 +796,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 19%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -842,11 +814,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="14200/15000."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -975,7 +943,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone8"
+        data-focuszone-id="FocusZone10"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1019,7 +987,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip9"
+              id="tooltip11"
               style={
                 Object {
                   "border": 0,
@@ -1047,7 +1015,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone10"
+        data-focuszone-id="FocusZone12"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1071,11 +1039,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 94%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -1108,7 +1072,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone13"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1152,7 +1116,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             </span>
             <div
               hidden={true}
-              id="tooltip12"
+              id="tooltip14"
               style={
                 Object {
                   "border": 0,
@@ -1180,7 +1144,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
             {
               padding-right: 0px;
             }
-        data-focuszone-id="FocusZone13"
+        data-focuszone-id="FocusZone15"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1204,11 +1168,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 19%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -1258,7 +1218,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone1"
+        data-focuszone-id="FocusZone2"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1302,7 +1262,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip2"
+              id="tooltip3"
               style={
                 Object {
                   "border": 0,
@@ -1330,7 +1290,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone3"
+        data-focuszone-id="FocusZone4"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1354,11 +1314,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 94%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -1409,7 +1365,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone4"
+        data-focuszone-id="FocusZone5"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1453,7 +1409,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             </span>
             <div
               hidden={true}
-              id="tooltip5"
+              id="tooltip6"
               style={
                 Object {
                   "border": 0,
@@ -1481,7 +1437,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
             {
               padding-right: 40px;
             }
-        data-focuszone-id="FocusZone6"
+        data-focuszone-id="FocusZone7"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1505,11 +1461,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 19%."
               className=
 
-                  &:focus {
-                    outline-color: #000000;
-                    stroke-width: 2px;
-                    stroke: #000000;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}

@@ -6,7 +6,7 @@ import bestPracticesMd from './BreadcrumbButtonBestPractices.md';
 export { Default } from './BreadcrumbButtonDefault.stories';
 
 export default {
-  title: 'Preview Components/BreadcrumbButton',
+  title: 'Preview Components/Breadcrumb/BreadcrumbButton',
   component: BreadcrumbButton,
   parameters: {
     docs: {

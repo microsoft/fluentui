@@ -15,7 +15,6 @@ const originalRAF = window.requestAnimationFrame;
 
 function sharedBeforeEach() {
   resetIds();
-  jest.useFakeTimers();
   Object.defineProperty(window, 'requestAnimationFrame', {
     writable: true,
     value: (callback: FrameRequestCallback) => callback(0),
@@ -34,11 +33,10 @@ function sharedAfterEach() {
   if ((global.setTimeout as any).mock) {
     jest.useRealTimers();
   }
-  jest.useRealTimers();
   window.requestAnimationFrame = originalRAF;
 }
 
-const chartPoints = [
+export const chartPoints = [
   {
     name: '2000',
     series: [
@@ -87,7 +85,7 @@ const chartPoints = [
   },
 ];
 
-const emptyChartPoints = [
+export const emptyChartPoints = [
   {
     name: 'Empty chart',
     series: [],
@@ -262,9 +260,11 @@ describe('GroupedVerticalBarChart - mouse events', () => {
   beforeEach(sharedBeforeEach);
   afterEach(sharedAfterEach);
 
-  it('Should render callout correctly on mouseover', () => {
+  it('Should render callout correctly on mouseover', async () => {
     wrapper = mount(<GroupedVerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
     wrapper.find('rect').at(0).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
