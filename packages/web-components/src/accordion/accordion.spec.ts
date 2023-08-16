@@ -273,10 +273,6 @@ test.describe('Accordion', () => {
 
     await secondItemButton.click();
 
-    await secondItemButton.evaluate(node => {
-      node.dispatchEvent(new MouseEvent('click', { bubbles: true }));
-    });
-
     await expect(firstItem).not.toHaveAttribute('expanded', '');
 
     await expect(secondItem).toHaveAttribute('expanded', '');
