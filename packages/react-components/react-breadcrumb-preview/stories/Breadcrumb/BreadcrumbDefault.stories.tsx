@@ -5,7 +5,6 @@ import {
   BreadcrumbDivider,
   BreadcrumbProps,
   BreadcrumbButton,
-  BreadcrumbLink,
 } from '@fluentui/react-breadcrumb-preview';
 import { RadioGroup, Radio, Label } from '@fluentui/react-components';
 type Item = {
@@ -53,18 +52,6 @@ function renderButton(item: Item) {
   );
 }
 
-function renderLink(item: Item) {
-  const isLastItem = items.length - 1 === item.key;
-  return (
-    <React.Fragment key={`item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>
-        <BreadcrumbLink>{item.value}</BreadcrumbLink>
-      </BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
-
 export const Default = () => {
   const [size, setSize] = React.useState('medium' as BreadcrumbProps['size']);
   const [breadcrumbType, setBreadcrumbType] = React.useState('item');
@@ -93,14 +80,12 @@ export const Default = () => {
           >
             <Radio value="item" label="Non-interactive item" />
             <Radio value="button" label="Button" />
-            <Radio value="link" label="Link" />
           </RadioGroup>
         </div>
       </div>
       <Breadcrumb aria-label="Small Breadcrumb" size={size}>
         {breadcrumbType === 'item' && items.map(item => renderItem(item))}
         {breadcrumbType === 'button' && items.map(item => renderButton(item))}
-        {breadcrumbType === 'link' && items.map(item => renderLink(item))}
       </Breadcrumb>
     </>
   );
