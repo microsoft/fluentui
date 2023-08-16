@@ -397,7 +397,6 @@ It should be done by the partners using JSX composition.
 For Menu `@fluentui/react-menu` component should be used.
 
 `maxDisplayedItems` and `overflowIndex` are part of `partitionBreadcrumbItems` which is helper in Breadcrumb utils.
-For non-clickable items tooltip is shown instead of overflow menu.
 
 #### Truncate long names:
 
@@ -437,6 +436,9 @@ Tooltip is shown `onHover` on collapsed menu or items with long names.
 ![Breadcrumb Tooltip](./assets/breadcrumb-tooltip.png)
 
 Tooltipls can be multiline. It is recommended to use content no longer than 80 symbols.
+Interactive items have tooltips when their names are longer than 30 symbols.
+Non-interactive Breadcrumb runs the entire available space where the control is placed.
+If the space is limited, the string will truncate the end of it.
 
 ### Keyboard
 
