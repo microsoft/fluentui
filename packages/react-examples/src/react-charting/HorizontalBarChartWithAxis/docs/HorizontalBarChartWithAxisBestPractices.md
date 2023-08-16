@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+HorizontalBarChartWithAxis best practices content placeholder.

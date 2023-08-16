@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+TreeChart best practices content placeholder.

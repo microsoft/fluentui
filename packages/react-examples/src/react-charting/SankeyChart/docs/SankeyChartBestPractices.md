@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+SankeyChart best practices content placeholder.

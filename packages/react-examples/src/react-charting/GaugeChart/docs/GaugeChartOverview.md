@@ -1,65 +1,40 @@
 <div>
   <p>
-    Use a line graph to visualize data sets over a period of time for an individual or group of items. The
-    amount of lines (data sets) depend on the attributes selected during the report creation.
+    Gauge chart measures the progress of a metric against its target and its primary components are a
+    speedometer and a needle. The speedometer usually consists of color-coded segments progressing value from
+    left to right.
   </p>
-  <p>The line graph thickness will vary depending on the number of data sets and data increments.</p>
-
-  <h3>Variant details</h3>
-  <h4>Event annotations</h4>
-  <p>
-    Event annotations are used to highlight events and annotate them using messages. Annotations are
-    represented by vertical line markers to mark the date and callouts to represent the message. Events can be
-    added by using <code>eventAnnotationProps</code> prop. Each event contains a
-    <code>date, event message</code> and event details callout callback
-    <code>onRenderCard</code>
-  </p>
-  <h4>Gaps</h4>
-  <p>
-    A line chart can have gaps/breaks in between. This is to represent missing data. The gaps can also be
-    replaced with dashed or dotted lines for specific scenarios, say to represent low confidence predictions
-    for a time series forecast graph. Gaps can be added by using <code>gaps</code> prop. A gap is denoted by
-    <code>startIndex</code> and
-    <code>endIndex</code> datapoints in the line. A line will be drawn uptil the startIndex and skipped for
-    <code>endIndex - startIndex</code> number of datapoints. A line can have as many gaps as possible.
-  </p>
-  <h4>Line border</h4>
-  <p>
-    Each line in the chart can contain a 2 px border for better highlighting of the line when there are
-    multiple items in the chart. The border will have color of the background theme. Lines will be highlighted
-    in order of their appearance in legends. Line border is a highly suggested style that you should apply to
-    make multiple lines more distinguishable from each other. Use <code>lineBorderWidth</code> prop present
-    inside
-    <code>lineOptions</code> to enable it.
-  </p>
-  <h4>Lines with large dataset</h4>
-  <p>
-    We use a path based rendering technique to show datasets with large number of points (greater than 1k).
-    Using this technique datasets with over 10k points can be rendered easily. Enable this rendering method by
-    setting the <code>optimizeLargeData</code> prop to <code>true</code>.
-  </p>
-  <h4>Custom accessibility</h4>
-  <p>
-    Line chart provides a bunch of props to enable custom accessibility messages. Use
-    <code>xAxisCalloutAccessibilityData</code>
-    and <code>callOutAccessibilityData</code> to configure x axis and y axis accessibility messages
-    respectively.
-  </p>
-  <h4>Date Axis localization</h4>
-  <p>
-    The axes support 2 ways of localization. <br />
-    1. Javascript provided inbuilt localization for numeric and date axis. Specify the culture and
-    dateLocalizeOptions for date axis to define target localization. Refer the
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString">
-      Javascript localization guide
-    </a>
-    for usage. <br />
-    2. Custom locale definition: The consumer of the library can specify a custom locale definition as
-    supported by d3 <a href="https://github.com/d3/d3-time-format/blob/main/locale/en-US.json">like this</a>.
-    The date axis will use the date range and the multiformat specified in the definition to determine the
-    correct labels to show in the ticks. For example - If the date range is in days then the axis will show
-    hourly ticks. If the date range spans across months then the axis will show months in tick labels and so
-    on. Specify the custom locale definition in the <code>timeFormatLocale</code> prop. Refer to the Custom
-    Locale Date Axis example in line chart for sample usage.
-  </p>
+  <h3>Implementation details</h3>
+  <ul>
+    <li>
+      The diameter of the gauge depends upon the <code>width</code> and <code>height</code> props passed to
+      the chart. If the props are omitted, a default diameter of 140px will be used.
+    </li>
+    <li>
+      To render a title above the gauge, set the <code>chartTitle</code> prop.
+    </li>
+    <li>
+      The needle position depends upon the required <code>chartValue</code> prop.
+    </li>
+    <li>
+      Use the required <code>segments</code> prop to divide the gauge into colored sections. These sections
+      can have fixed sizes, or the users can choose to create a sweeping effect by varying the segment size
+      with the chartValue.
+    </li>
+    <li>
+      Set the <code>minValue</code> prop if the minimum value of the gauge is different than 0. A placeholder
+      segment will be rendered if the <code>maxValue</code> prop is greater than the total size of the
+      segments.
+    </li>
+    <li>
+      To render an additional text below the chartValue, set the <code>sublabel</code> prop.
+    </li>
+    <li>
+      To hide the minimum and maximum values of the gauge, set the <code>hideMinMax</code> prop.
+    </li>
+    <li>
+      The chartValue prop is rendered as a percentage by default. Set the <code>chartVaueFormat</code> prop to
+      'fraction' or a formatter function.
+    </li>
+  </ul>
 </div>

@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+DonutChart best practices content placeholder.

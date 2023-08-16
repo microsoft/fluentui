@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+SparklineChart best practices content placeholder.

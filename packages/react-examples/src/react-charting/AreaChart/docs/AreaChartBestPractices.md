@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+AreaChart best practices content placeholder.

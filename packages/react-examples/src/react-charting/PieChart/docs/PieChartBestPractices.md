@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+PieChart best practices content placeholder.

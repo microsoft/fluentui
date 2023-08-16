@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+MultiStackedBarChart best practices content placeholder.

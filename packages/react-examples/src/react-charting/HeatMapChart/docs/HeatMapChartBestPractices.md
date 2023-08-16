@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+HeatMapChart best practices content placeholder.

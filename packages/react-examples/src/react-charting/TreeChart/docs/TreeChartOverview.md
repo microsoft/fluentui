@@ -1,65 +1,25 @@
 <div>
+  <p>Tree chart component involves two types of layers of tree. </p>
+  <h4>Two layer chart</h4>
   <p>
-    Use a line graph to visualize data sets over a period of time for an individual or group of items. The
-    amount of lines (data sets) depend on the attributes selected during the report creation.
+    Consists of two levels of tree, and can be navigated using tab and arrow keys, if we hover over the node,
+    it reads node and its parent information using a screen reader.
   </p>
-  <p>The line graph thickness will vary depending on the number of data sets and data increments.</p>
-
-  <h3>Variant details</h3>
-  <h4>Event annotations</h4>
+  <h4>Three layer Long composition</h4>
   <p>
-    Event annotations are used to highlight events and annotate them using messages. Annotations are
-    represented by vertical line markers to mark the date and callouts to represent the message. Events can be
-    added by using <code>eventAnnotationProps</code> prop. Each event contains a
-    <code>date, event message</code> and event details callout callback
-    <code>onRenderCard</code>
+    Consists of three levels of nodes, with nodes stacked one after the other. Specify{' '}
+    <code>composition</code> as long to specify the long composition.
   </p>
-  <h4>Gaps</h4>
+  <h4>Three layer Compact composition</h4>
+  <p>Consists of three levels of nodes, with nodes side by side and then stacked one after the other.</p>
+  <p>The long and compact composition are present for only terminal nodes of a tree</p>
+  Specify <code>composition</code> as compact to specify the long composition.
+  <h4>Three layer Automatic composition</h4>
   <p>
-    A line chart can have gaps/breaks in between. This is to represent missing data. The gaps can also be
-    replaced with dashed or dotted lines for specific scenarios, say to represent low confidence predictions
-    for a time series forecast graph. Gaps can be added by using <code>gaps</code> prop. A gap is denoted by
-    <code>startIndex</code> and
-    <code>endIndex</code> datapoints in the line. A line will be drawn uptil the startIndex and skipped for
-    <code>endIndex - startIndex</code> number of datapoints. A line can have as many gaps as possible.
+    When there's constraint on the space, for nodes having more than 2 children it is implemented as compact
+    and long for nodes with less than 2 children.
   </p>
-  <h4>Line border</h4>
   <p>
-    Each line in the chart can contain a 2 px border for better highlighting of the line when there are
-    multiple items in the chart. The border will have color of the background theme. Lines will be highlighted
-    in order of their appearance in legends. Line border is a highly suggested style that you should apply to
-    make multiple lines more distinguishable from each other. Use <code>lineBorderWidth</code> prop present
-    inside
-    <code>lineOptions</code> to enable it.
-  </p>
-  <h4>Lines with large dataset</h4>
-  <p>
-    We use a path based rendering technique to show datasets with large number of points (greater than 1k).
-    Using this technique datasets with over 10k points can be rendered easily. Enable this rendering method by
-    setting the <code>optimizeLargeData</code> prop to <code>true</code>.
-  </p>
-  <h4>Custom accessibility</h4>
-  <p>
-    Line chart provides a bunch of props to enable custom accessibility messages. Use
-    <code>xAxisCalloutAccessibilityData</code>
-    and <code>callOutAccessibilityData</code> to configure x axis and y axis accessibility messages
-    respectively.
-  </p>
-  <h4>Date Axis localization</h4>
-  <p>
-    The axes support 2 ways of localization. <br />
-    1. Javascript provided inbuilt localization for numeric and date axis. Specify the culture and
-    dateLocalizeOptions for date axis to define target localization. Refer the
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString">
-      Javascript localization guide
-    </a>
-    for usage. <br />
-    2. Custom locale definition: The consumer of the library can specify a custom locale definition as
-    supported by d3 <a href="https://github.com/d3/d3-time-format/blob/main/locale/en-US.json">like this</a>.
-    The date axis will use the date range and the multiformat specified in the definition to determine the
-    correct labels to show in the ticks. For example - If the date range is in days then the axis will show
-    hourly ticks. If the date range spans across months then the axis will show months in tick labels and so
-    on. Specify the custom locale definition in the <code>timeFormatLocale</code> prop. Refer to the Custom
-    Locale Date Axis example in line chart for sample usage.
+    Use <code>treeTraversal</code> to specify the tree traversal order as preOrder or levelOrder
   </p>
 </div>

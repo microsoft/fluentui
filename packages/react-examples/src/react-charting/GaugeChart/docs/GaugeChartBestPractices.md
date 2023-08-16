@@ -1,3 +1,3 @@
 ### Content
 
-LineChart best practices content placeholder.
+GaugeChart best practices content placeholder.

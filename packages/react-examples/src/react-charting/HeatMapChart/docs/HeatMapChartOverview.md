@@ -1,49 +1,38 @@
 <div>
   <p>
-    Use a line graph to visualize data sets over a period of time for an individual or group of items. The
-    amount of lines (data sets) depend on the attributes selected during the report creation.
+    Heat Map Chart is a two-dimensional visual representation of data, where values are encoded in colors,
+    delivering a convenient, insightful view of information. Essentially, this chart type is a data table with
+    rows and columns denoting different sets of categories. Each cell in the table can contain a numerical or
+    logical value that determines the cell color based on a given color palette.
   </p>
-  <p>The line graph thickness will vary depending on the number of data sets and data increments.</p>
-
-  <h3>Variant details</h3>
-  <h4>Event annotations</h4>
+  <h4>Defining Color scale</h4>
   <p>
-    Event annotations are used to highlight events and annotate them using messages. Annotations are
-    represented by vertical line markers to mark the date and callouts to represent the message. Events can be
-    added by using <code>eventAnnotationProps</code> prop. Each event contains a
-    <code>date, event message</code> and event details callout callback
-    <code>onRenderCard</code>
+    The color palette for a heat map chart is defined by a domain/range combination. The domain consists of
+    values in the chart columns. It is an array of numbers. See <code>domainValuesForColorScale</code>. The
+    range is an array <code>rangeValuesForColorScale</code> of colors in hex format. The graph creates a
+    mapping between each value from domain to range. For all values in the domain, an equivalent interpolation
+    is drawn in the range of color scale. For eg: if the domain is [0,500,900] and range is [green, blue,
+    red], then [0, 500] is mapped in the range [green, blue] and [500, 900] in the range [blue, red],
   </p>
-  <h4>Gaps</h4>
+  <h4>Data formatting</h4>
+  <p>Use the following formatters based on the type of axis.</p>
   <p>
-    A line chart can have gaps/breaks in between. This is to represent missing data. The gaps can also be
-    replaced with dashed or dotted lines for specific scenarios, say to represent low confidence predictions
-    for a time series forecast graph. Gaps can be added by using <code>gaps</code> prop. A gap is denoted by
-    <code>startIndex</code> and
-    <code>endIndex</code> datapoints in the line. A line will be drawn uptil the startIndex and skipped for
-    <code>endIndex - startIndex</code> number of datapoints. A line can have as many gaps as possible.
+    For date x axis use: <code>xAxisDateFormatString</code>
   </p>
-  <h4>Line border</h4>
   <p>
-    Each line in the chart can contain a 2 px border for better highlighting of the line when there are
-    multiple items in the chart. The border will have color of the background theme. Lines will be highlighted
-    in order of their appearance in legends. Line border is a highly suggested style that you should apply to
-    make multiple lines more distinguishable from each other. Use <code>lineBorderWidth</code> prop present
-    inside
-    <code>lineOptions</code> to enable it.
+    For date y axis use: <code>yAxisDateFormatString</code>
   </p>
-  <h4>Lines with large dataset</h4>
   <p>
-    We use a path based rendering technique to show datasets with large number of points (greater than 1k).
-    Using this technique datasets with over 10k points can be rendered easily. Enable this rendering method by
-    setting the <code>optimizeLargeData</code> prop to <code>true</code>.
+    For numeric x axis use: <code>xAxisNumberFormatString</code>
   </p>
-  <h4>Custom accessibility</h4>
   <p>
-    Line chart provides a bunch of props to enable custom accessibility messages. Use
-    <code>xAxisCalloutAccessibilityData</code>
-    and <code>callOutAccessibilityData</code> to configure x axis and y axis accessibility messages
-    respectively.
+    For numeric y axis use: <code>yAxisNumberFormatString</code>
+  </p>
+  <p>
+    For string x axis use: <code>xAxisStringFormatter</code>
+  </p>
+  <p>
+    For string y axis use: <code>yAxisStringFormatter</code>
   </p>
   <h4>Date Axis localization</h4>
   <p>
