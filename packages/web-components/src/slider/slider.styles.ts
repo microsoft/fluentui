@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusMedium,
@@ -199,4 +199,23 @@ export const styles = css`
     width: 100%;
     bottom: 0;
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    .track:hover,
+    .track:active,
+    .track {
+      background: WindowText;
+    }
+    .thumb-cursor:hover,
+    .thumb-cursor:active,
+    .thumb-cursor {
+      background: ButtonText;
+    }
+
+    :host(:hover) .track-start,
+    .track-start:active,
+    .track-start {
+      background: Highlight;
+    }
+  `),
+);

@@ -1,4 +1,5 @@
 import { css } from '@microsoft/fast-element';
+import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import { styles as ButtonStyles } from '../button/button.styles.js';
 import {
   colorBrandBackgroundHover,
@@ -105,4 +106,16 @@ export const styles = css`
   :host([aria-pressed='true'][appearance='transparent']:active) .control {
     color: ${colorNeutralForeground2BrandPressed};
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host([aria-pressed='true']) .control,
+    :host([aria-pressed='true'][appearance='primary']) .control,
+    :host([aria-pressed='true'][appearance='subtle']) .control,
+    :host([aria-pressed='true'][appearance='outline']) .control,
+    :host([aria-pressed='true'][appearance='transparent']) .control,
+    :host([aria-pressed='true'][appearance='transparent']) .control {
+      background: SelectedItem;
+      color: SelectedItemText;
+    }
+  `),
+);
