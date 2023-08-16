@@ -91,7 +91,6 @@ export const BreadcrumbSize = () => {
         {items.map(item => renderLink(item))}
       </Breadcrumb>
       <h2>Medium</h2>
-      <Breadcrumb aria-label="Default breadcrumb">{items.map(item => renderItem(item, 'medium'))}</Breadcrumb>
       <Breadcrumb aria-label="Medium breadcrumb example with buttons" size="medium">
         {items.map(item => renderButton(item))}
       </Breadcrumb>
@@ -99,9 +98,6 @@ export const BreadcrumbSize = () => {
         {items.map(item => renderLink(item))}
       </Breadcrumb>
       <h2>Large</h2>
-      <Breadcrumb aria-label="Large breadcrumb" size="large">
-        {items.map(item => renderItem(item, 'large'))}
-      </Breadcrumb>
       <Breadcrumb aria-label="Large breadcrumb example with buttons" size="large">
         {items.map(item => renderButton(item))}
       </Breadcrumb>

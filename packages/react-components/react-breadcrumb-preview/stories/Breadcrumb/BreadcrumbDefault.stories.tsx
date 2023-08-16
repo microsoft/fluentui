@@ -91,7 +91,7 @@ export const Default = () => {
             value={breadcrumbType}
             onChange={(_, data) => setBreadcrumbType(data.value)}
           >
-            <Radio value="item" label="Item" />
+            <Radio value="item" label="Non-interactive item" />
             <Radio value="button" label="Button" />
             <Radio value="link" label="Link" />
           </RadioGroup>
