@@ -3,7 +3,7 @@ import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
 
 export const Default = () => {
   return (
-    <Tree aria-label="Tree">
+    <Tree aria-label="Default">
       <TreeItem itemType="branch">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
