@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: release stable version",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
