@@ -68,22 +68,22 @@ test.describe('Badge component', () => {
     await expect(element).toHaveJSProperty('color', 'severe');
 
     await element.evaluate((node: Badge) => {
+      node.color = 'subtle';
+    });
+    await expect(element).toHaveAttribute('color', 'subtle');
+    await expect(element).toHaveJSProperty('color', 'subtle');
+
+    await element.evaluate((node: Badge) => {
       node.color = 'success';
     });
     await expect(element).toHaveAttribute('color', 'success');
     await expect(element).toHaveJSProperty('color', 'success');
 
     await element.evaluate((node: Badge) => {
-      node.color = 'subtle';
+      node.color = 'warning';
     });
-    await expect(element).toHaveAttribute('color', 'subtle');
-    await expect(element).toHaveJSProperty('color', 'subtle');
-
-    await element.evaluate((node: Badge) => {
-      node.color = 'subtle';
-    });
-    await expect(element).toHaveAttribute('color', 'subtle');
-    await expect(element).toHaveJSProperty('color', 'subtle');
+    await expect(element).toHaveAttribute('color', 'warning');
+    await expect(element).toHaveJSProperty('color', 'warning');
   });
 
   test('should reflect size attribute and update property', async () => {
