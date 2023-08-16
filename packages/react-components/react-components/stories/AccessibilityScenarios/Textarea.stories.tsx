@@ -7,23 +7,6 @@ import { Scenario } from './utils';
 import { useForm, Controller, OnSubmit } from 'react-hook-form';
 import { usePubSub, PubSubProvider, Handler } from '@cactuslab/usepubsub';
 
-const generateCustomerId = (): string => {
-  let char;
-  let hash = 0;
-  const random = Math.random().toString();
-  for (let i = 0; i < random.length; i++) {
-    char = random.charCodeAt(i);
-    //eslint-disable-next-line no-bitwise
-    hash = (hash << 5) - hash + char;
-    //eslint-disable-next-line no-bitwise
-    hash |= 0; // Convert to 32bit integer
-  }
-  hash += 2147483647; // Convert to positive integer
-  return hash.toString().padStart(10, '0').substring(2);
-};
-
-let isSubmitting = false;
-
 interface FormTextareas {
   knowledge: string;
   effort: string;
@@ -56,13 +39,11 @@ const ValidationMessage: React.FC<ValidationMessageProps> = ({ id, formValidatio
   return (
     <>
       {isAlerting ? (
-        <div role="alert" style={{ color: 'red' }} id={`${id}Errors`}>
+        <div role="alert" id={`${id}Errors`}>
           {children}
         </div>
       ) : (
-        <div style={{ color: 'green' }} id={`${id}Errors`}>
-          {children}
-        </div>
+        <div id={`${id}Errors`}>{children}</div>
       )}
     </>
   );
@@ -72,29 +53,29 @@ const useFormValidation = (
   handleSubmit: (callback: OnSubmit<FormTextareas>) => (e?: React.BaseSyntheticEvent) => Promise<void>,
 ) => {
   const pubSub = usePubSub();
-  const isHandlingSubmit = React.useRef(false);
+  const isSubmitting = React.useRef(false);
 
   const wrappedHandleSubmit = React.useCallback(
     (callback: OnSubmit<FormTextareas>) => {
       const handler = handleSubmit(callback);
       return async (e: React.BaseSyntheticEvent) => {
-        isHandlingSubmit.current = true;
+        isSubmitting.current = true;
         const result = await handler(e);
-        isHandlingSubmit.current = false;
+        isSubmitting.current = false;
         return result;
       };
     },
-    [isHandlingSubmit, handleSubmit],
+    [isSubmitting, handleSubmit],
   );
 
   const onFieldValidated = React.useCallback(
     (field: string) => {
-      if (!isHandlingSubmit.current) {
+      if (!isSubmitting.current) {
         pubSub.publish(field, 'validate');
       }
       return true;
     },
-    [isHandlingSubmit, pubSub],
+    [isSubmitting, pubSub],
   );
 
   const notifyFormFieldError = React.useCallback(
@@ -126,19 +107,26 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
   const [isProblemNotSolved, setIsProblemNotSolved] = React.useState(false);
   const [isSubmittedAndValid, setIsSubmittedAndValid] = React.useState(false);
 
-  React.useEffect(() => {
-    if (formState.isSubmitting) {
-      isSubmitting = true;
+  const customerId = React.useMemo((): string => {
+    let char;
+    let hash = 0;
+    const random = Math.random().toString();
+    for (let i = 0; i < random.length; i++) {
+      char = random.charCodeAt(i);
+      //eslint-disable-next-line no-bitwise
+      hash = (hash << 5) - hash + char;
+      //eslint-disable-next-line no-bitwise
+      hash |= 0; // Convert to 32bit integer
     }
-  }, [formState]);
+    hash += 2147483647; // Convert to positive integer
+    return hash.toString().padStart(10, '0').substring(2);
+  }, []);
 
   React.useEffect(() => {
     // If the form is submitting and has errors, focus the first error fiel, otherwise do nothing
-    if (!isSubmitting || !formState.isSubmitted || formState.isValid) {
+    if (!formState.isSubmitting || formState.isValid) {
       return;
     }
-    isSubmitting = false;
-
     const firstErrorName = Object.keys(errors)[0] as keyof FormTextareas;
     const firstErrorField = document.getElementById(firstErrorName);
 
@@ -257,7 +245,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
 
             <div>
               <Checkbox
-                checked={isProblemNotSolved}
+                // checked={isProblemNotSolved}
                 onChange={onProblemNotSolvedChange}
                 label="My problem has not been solved."
               />
@@ -279,7 +267,7 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
                 }
                 rules={{
                   required: isProblemNotSolved,
-                  minLength: isProblemNotSolved ? 20 : 0,
+                  minLength: 20,
                   validate: {
                     always: () => {
                       if (!formState.isSubmitting) {
@@ -345,16 +333,9 @@ const QuestionnaireAboutCustomerExperienceAccessibility = () => {
             )}
 
             <div>
-              <Label htmlFor="customerId">Your customer id:</Label>
-              <Textarea
-                id="customerId"
-                defaultValue={generateCustomerId()}
-                readOnly
-                aria-describedby="customerIdHint"
-              />
+              <Label htmlFor="customerId">Your customer id</Label>
+              <Textarea id="customerId" defaultValue={customerId} readOnly />
             </div>
-
-            <p id="customerIdHint">We will use the customer id to track your feedback.</p>
 
             <Button type="submit">Submit</Button>
           </form>

@@ -32,7 +32,7 @@ export const QuestionnaireAboutFoodCheckboxes: React.FunctionComponent = () => {
       {!isSubmitted ? (
         <form onSubmit={onSubmit}>
           <div role="group" aria-labelledby="foodLabel">
-            <Label id="foodLabel">Select food that you like:</Label>
+            <Label id="foodLabel">Select food that you like</Label>
 
             <Checkbox
               checked={

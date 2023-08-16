@@ -25,7 +25,7 @@ const StatusSubmenu: React.FunctionComponent<StatusSubmenuProps> = props => {
 
   return (
     <Menu checkedValues={checkedValues} onCheckedValueChange={onChange}>
-      <MenuTrigger disableButtonEnhancement>
+      <MenuTrigger>
         <MenuItem>Status</MenuItem>
       </MenuTrigger>
 
@@ -70,7 +70,7 @@ export const ProfileMenu: React.FunctionComponent = () => {
   return (
     <Scenario pageTitle="Profile menu">
       <Menu>
-        <MenuTrigger disableButtonEnhancement>
+        <MenuTrigger>
           <MenuButton>Profile</MenuButton>
         </MenuTrigger>
 

@@ -9,13 +9,13 @@ export const SoundControlSliders: React.FunctionComponent = () => {
     <Scenario pageTitle="Sound control sliders">
       <h1>Sound control panel</h1>
 
-      <Label htmlFor="volume">Volume:</Label>
+      <Label htmlFor="volume">Volume</Label>
       <Slider id="volume" defaultValue={30} />
 
-      <Label htmlFor="bass">Bass:</Label>
+      <Label htmlFor="bass">Bass</Label>
       <Slider id="bass" defaultValue={5} min={0} max={10} vertical />
 
-      <Label htmlFor="treble">Treble:</Label>
+      <Label htmlFor="treble">Treble</Label>
       <Slider id="treble" defaultValue={5} min={0} max={10} vertical />
     </Scenario>
   );
