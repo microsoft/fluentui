@@ -406,11 +406,11 @@ function useYearRangeState({ selectedYear, navigatedYear }: ICalendarYearProps) 
   const [fromYear, setFromYear] = React.useState<number>(rangeYear);
 
   const onNavNext = () => {
-    setFromYear(i => i + CELL_COUNT);
+    setFromYear(year => year + CELL_COUNT);
   };
 
   const onNavPrevious = () => {
-    setFromYear(i => i - CELL_COUNT);
+    setFromYear(year => year - CELL_COUNT);
   };
 
   React.useEffect(() => {
