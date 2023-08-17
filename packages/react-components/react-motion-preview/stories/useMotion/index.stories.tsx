@@ -1,5 +1,4 @@
 import descriptionMd from './UseMotionDescription.md';
-import bestPracticesMd from './UseMotionBestPractices.md';
 
 export { Default } from './UseMotionDefault.stories';
 
@@ -8,7 +7,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd].join('\n'),
       },
     },
   },

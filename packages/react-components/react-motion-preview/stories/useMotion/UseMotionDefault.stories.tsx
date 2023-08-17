@@ -52,9 +52,11 @@ export const Default = () => {
         Toggle
       </Button>
 
-      <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.active && styles.visible)}>
-        Lorem ipsum
-      </div>
+      {motion.state !== 'unmounted' && (
+        <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.active && styles.visible)}>
+          Lorem ipsum
+        </div>
+      )}
     </div>
   );
 };
