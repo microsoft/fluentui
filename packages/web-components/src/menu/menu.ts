@@ -79,6 +79,7 @@ export class Menu extends FASTElement {
    */
   public disconnectedCallback() {
     super.disconnectedCallback();
+    this.cleanup?.();
     this.removeListeners();
   }
 
@@ -165,6 +166,7 @@ export class Menu extends FASTElement {
         Updates.enqueue(this.setPositioningTask);
       }
     }
+    this.cleanup?.();
     this.$emit('changed', { open: newValue });
   }
 
@@ -197,7 +199,6 @@ export class Menu extends FASTElement {
    */
   protected setPositioning(): void {
     if (this.$fastController.isConnected && this._menuList && this.open && this._trigger) {
-      this.cleanup?.();
       this.cleanup = autoUpdate(this, this.positioningContainer!, async () => {
         const { middlewareData, x, y } = await computePosition(this._trigger!, this.positioningContainer!, {
           placement: 'bottom',
@@ -257,8 +258,9 @@ export class Menu extends FASTElement {
     document.removeEventListener('click', this.handleDocumentClick);
     this._trigger?.removeEventListener('click', this.toggleMenu);
     this._trigger?.removeEventListener('keydown', this.handleTriggerKeydown);
-    this._trigger?.removeEventListener('mouseover', this.openMenu);
-    this._trigger?.removeEventListener('mouseover', this.openMenu);
+    if (this.openOnHover) {
+      this._trigger?.removeEventListener('mouseover', this.openMenu);
+    }
   }
 
   /**
