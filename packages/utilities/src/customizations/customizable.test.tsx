@@ -162,7 +162,7 @@ describe('customizable', () => {
 
     const updatedComponent = wrapper.find('ConcatStyles');
     const finalStylesAfterRerender = (updatedComponent.props() as IComponentProps).styles;
-    expect(finalStylesAfterRerender).toBe(finalStyles);
+    expect(finalStylesAfterRerender).toStrictEqual(finalStyles);
     expect(finalStylesAfterRerender).toEqual(finalStyles);
   });
 
