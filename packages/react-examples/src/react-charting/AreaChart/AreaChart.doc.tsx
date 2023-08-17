@@ -40,14 +40,14 @@ export const AreaChartPageProps: IDocPageProps = {
       view: <AreaChartMultipleExample />,
     },
     {
-      title: 'AreaChart large data',
-      code: AreaChartLargeDataExampleCode,
-      view: <AreaChartLargeDataExample />,
-    },
-    {
       title: 'AreaChart Custom Accessibility',
       code: AreaChartCustomAccessibilityExampleCode,
       view: <AreaChartCustomAccessibilityExample />,
+    },
+    {
+      title: 'AreaChart large data',
+      code: AreaChartLargeDataExampleCode,
+      view: <AreaChartLargeDataExample />,
     },
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartOverview.md'),

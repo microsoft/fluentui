@@ -122,17 +122,17 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
       {
         legend: 'First',
         data: chart1Points,
-        color: DataVizPalette.color11,
+        color: DataVizPalette.color8,
       },
       {
         legend: 'Second',
         data: chart2Points,
-        color: DataVizPalette.color12,
+        color: DataVizPalette.color9,
       },
       {
         legend: 'Third',
         data: chart3Points,
-        color: DataVizPalette.color13,
+        color: DataVizPalette.color10,
       },
     ];
 

@@ -160,17 +160,17 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
       {
         legend: 'legend1',
         data: chart1Points,
-        color: DataVizPalette.color8,
+        color: DataVizPalette.color11,
       },
       {
         legend: 'legend2',
         data: chart2Points,
-        color: DataVizPalette.color9,
+        color: DataVizPalette.color12,
       },
       {
         legend: 'legend3',
         data: chart3Points,
-        color: DataVizPalette.color10,
+        color: DataVizPalette.color13,
       },
     ];
 
