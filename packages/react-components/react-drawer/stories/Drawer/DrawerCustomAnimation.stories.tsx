@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { DrawerOverlay, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
-import { Button, makeStyles, mergeClasses, shorthands, tokens, useMotionPresence } from '@fluentui/react-components';
+import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
+import { useMotion } from '@fluentui/react-motion-preview';
 
 const visibleKeyframe = {
   ...shorthands.borderRadius(0),
@@ -37,23 +38,38 @@ const useStyles = makeStyles({
       to: hiddenKeyframe,
     },
   },
+
+  backdropEntering: {
+    transitionDuration: '2s',
+  },
+
+  backdropExiting: {
+    transitionDuration: '1s',
+  },
 });
 
 export const CustomAnimation = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const { ref, motionState } = useMotionPresence(isOpen);
+  const motion = useMotion<HTMLDivElement>({
+    presence: isOpen,
+  });
 
   return (
     <div>
       <DrawerOverlay
-        ref={ref}
-        open={isOpen}
+        backdrop={{
+          className: mergeClasses(
+            motion.state === 'entering' && styles.backdropEntering,
+            motion.state === 'exiting' && styles.backdropExiting,
+          ),
+        }}
+        motion={motion}
         className={mergeClasses(
           styles.drawer,
-          motionState === 'entering' && styles.drawerEntering,
-          motionState === 'exiting' && styles.drawerExiting,
+          motion.state === 'entering' && styles.drawerEntering,
+          motion.state === 'exiting' && styles.drawerExiting,
         )}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >

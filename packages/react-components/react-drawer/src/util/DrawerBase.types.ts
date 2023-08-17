@@ -1,4 +1,4 @@
-import { UseMotionPresenceState } from '@fluentui/react-utilities';
+import { MotionProps } from '@fluentui/react-motion-preview';
 
 export type DrawerBaseProps = {
   /**
@@ -33,6 +33,14 @@ export type DrawerBaseProps = {
    * @default false
    */
   defaultOpen?: boolean;
+
+  /**
+   *
+   */
+  motion?: MotionProps<HTMLDivElement>;
 };
 
-export type DrawerBaseState = Required<Pick<UseMotionPresenceState<HTMLDivElement>, 'active' | 'motionState'>>;
+export type DrawerBaseState = {
+  active: MotionProps['active'];
+  motionState: MotionProps['state'];
+};

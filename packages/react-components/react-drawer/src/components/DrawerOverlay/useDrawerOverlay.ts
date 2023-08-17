@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs, useMotionPresence, slot } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
-import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
+import { useBaseDrawerDefaultProps } from '../../util/useBaseDrawerDefaultProps';
+import { useMotion } from '@fluentui/react-motion-preview';
 
 /**
  * Create the state required to render DrawerOverlay.
@@ -17,18 +18,27 @@ export const useDrawerOverlay_unstable = (
   props: DrawerOverlayProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
-  const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
+  const { open, defaultOpen, size, position } = useBaseDrawerDefaultProps(props);
+  const { modalType = 'modal', inertTrapFocus, onOpenChange, motion } = props;
 
-  const { ref: drawerRef, active, motionState } = useMotionPresence<HTMLDivElement>(open);
+  const drawerMotion = useMotion(
+    motion || {
+      presence: open,
+      ref,
+    },
+  );
+  const backdropMotion = useMotion<HTMLDivElement>(
+    motion || {
+      presence: open,
+    },
+  );
 
-  const backdropPresence = useMotionPresence<HTMLDivElement>(open);
   const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
 
   const root = slot.always<DialogSurfaceProps>(
     getNativeElementProps('div', {
       ...props,
-      ref: useMergedRefs(ref, drawerRef),
+      ref: drawerMotion.ref,
     }),
     {
       elementType: DialogSurface,
@@ -37,16 +47,16 @@ export const useDrawerOverlay_unstable = (
           elementType: 'div',
           renderByDefault: hasCustomBackdrop,
           defaultProps: {
-            ref: backdropPresence.ref,
+            ref: backdropMotion.ref,
           },
         }),
       },
     },
   );
 
-  const dialog = slot.always<DialogProps>(
+  const dialog = slot.always(
     {
-      open: motionState !== 'unmounted',
+      open: true,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
@@ -68,8 +78,8 @@ export const useDrawerOverlay_unstable = (
     dialog,
     size,
     position,
-    motionState,
-    active,
-    backdropActive: backdropPresence.active,
+    active: drawerMotion.active,
+    motionState: drawerMotion.state,
+    backdropActive: backdropMotion.active,
   };
 };

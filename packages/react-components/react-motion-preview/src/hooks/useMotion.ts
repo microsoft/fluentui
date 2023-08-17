@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { canUseDOM } from '../ssr/canUseDOM';
-import { useAnimationFrame } from './useAnimationFrame';
-import { useTimeout } from './useTimeout';
+
+import {
+  canUseDOM,
+  RefObjectFunction,
+  useAnimationFrame,
+  useMergedRefs,
+  usePrevious,
+  useTimeout,
+} from '@fluentui/react-utilities';
 
 /**
  * CSS Typed Object Model
@@ -30,10 +36,15 @@ interface StylePropertyMapReadOnly {
  * HTMLElement with styled map.
  * @see https://developer.mozilla.org/en-US/docs/Web/API/Element/computedStyleMap
  */
-type HTMLElementWithStyledMap<TElement extends HTMLElement = HTMLElement> = TElement & {
+type HTMLElementWithStyledMap<T extends HTMLElement = HTMLElement> = T & {
   computedStyleMap(): StylePropertyMapReadOnly;
 };
 
+/**
+ * CSS with number parsing.
+ * @see https://drafts.css-houdini.org/css-typed-om-1/#css
+ * @see https://developer.mozilla.org/en-US/docs/Web/API/CSS/number
+ */
 type CSSWithNumber = typeof CSS & {
   number(value: number): {
     value: number;
@@ -44,52 +55,56 @@ type CSSWithNumber = typeof CSS & {
 /**
  * @internal
  *
- * State for useMotionPresence hook.
+ * Motion props.
  */
-export type UseMotionPresenceState<TElement extends HTMLElement> = {
+export type MotionProps<T = HTMLElement> = {
+  /**
+   * Whether the element should be present in the DOM.
+   *
+   * @default false
+   */
+  presence: boolean;
+
   /**
    * Ref to the element.
    *
    * @example
-   * const { ref } = useMotionPresence<HTMLDivElement>(isOpen);
+   * const motion = useMotion<HTMLDivElement>({ presence: isOpen });
    *
-   * <div ref={ref} />
+   * <div ref={motion.ref} />
    */
-  ref: React.RefCallback<TElement>;
+  ref?: RefObjectFunction<T> | React.RefCallback<T> | React.Ref<T>;
 
   /**
    * Whether the element is currently active in the DOM.
    * Useful to apply CSS transitions only when the element is active.
    *
    * @example
-   * const { active, ref } = useMotionPresence<HTMLDivElement>(isOpen);
+   * const motion = useMotion<HTMLDivElement>({ presence: isOpen });
    *
-   * <div ref={ref} className={active ? 'element element-active' : 'element'} />
+   * <div ref={motion.ref} className={motion.active ? 'element element-active' : 'element'} />
    */
-  active: boolean;
+  active?: boolean;
 
   /**
    * Current state of the element.
    *
+   * - `unmounted` - The element is not yet rendered or can be safely removed from the DOM.
    * - `entering` - The element is performing enter animation.
+   * - `entered` - The element has finished enter animation.
+   * - `idle` - The element is currently not animating, but rendered on screen.
    * - `exiting` - The element is performing exit animation.
-   * - `resting` - The element is currently not animating, but rendered on screen.
-   * - `unmounted` - The element is not rendered or can be removed from the DOM.
+   * - `exited` - The element has finished exit animation.
    *
    * @example
-   * const { motionState, ref } = useMotionPresence<HTMLDivElement>(isOpen);
+   * const motion = useMotion<HTMLDivElement>({ presence: isOpen });
    *
-   * <div ref={ref} className={`element element-${motionState}`} />
+   * <div ref={motion.ref} className={`element element-${motion.state}`} />
    */
-  motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';
+  state?: 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
 };
 
-/**
- * @internal
- *
- * Options for useMotionPresence hook.
- */
-export type UseMotionPresenceOptions = {
+export type MotionOptions = {
   /**
    * Whether to animate the element on first mount.
    *
@@ -106,15 +121,15 @@ export type UseMotionPresenceOptions = {
  * @returns - CSS styles.
  */
 const getElementComputedStyle = (node: HTMLElement): CSSStyleDeclaration => {
-  const window = node.ownerDocument.defaultView;
+  const win = node.ownerDocument?.defaultView ? node.ownerDocument.defaultView : window;
 
-  if (!window || !canUseDOM()) {
+  if (!win || !canUseDOM()) {
     return {
       getPropertyValue: (_: string) => '',
     } as CSSStyleDeclaration;
   }
 
-  return window.getComputedStyle(node, null);
+  return win.getComputedStyle(node, null);
 };
 
 /**
@@ -246,36 +261,43 @@ const getMotionDuration = (node: HTMLElementWithStyledMap) => {
 };
 
 /**
+ * @internal
+ *
  * Hook to manage the presence of an element in the DOM based on its CSS transition/animation state.
  *
  * @param present - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
-export const useMotionPresence = <TElement extends HTMLElement>(
+const useMotionPresence = <T extends HTMLElement>(
   present: boolean,
-  options: UseMotionPresenceOptions = {},
-): UseMotionPresenceState<TElement> => {
+  options: MotionOptions = {},
+): Required<Omit<MotionProps<T>, 'presence'>> => {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
-  const [state, setState] = React.useState<Omit<UseMotionPresenceState<TElement>, 'ref'>>({
-    motionState: present ? 'resting' : 'unmounted',
+  const [state, setState] = React.useState<Required<Pick<MotionProps, 'active' | 'state'>>>({
+    state: present ? 'idle' : 'unmounted',
     active: false,
   });
 
-  const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<TElement> | null>(null);
+  const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<T> | null>(null);
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setActiveAnimationFrame, cancelActiveAnimationFrame] = useAnimationFrame();
   const [setProcessingAnimationFrame, cancelProcessingAnimationFrame] = useAnimationFrame();
+  const [setDelayedAnimationFrame, cancelDelayedAnimationFrame] = useAnimationFrame();
   const skipAnimationOnFirstRender = React.useRef(!animateOnFirstMount);
 
   const processAnimation = React.useCallback(
     (callback: () => void) => {
-      if (!currentElement) {
+      const targetElement = currentElement;
+
+      if (!targetElement) {
         return;
       }
 
       clearAnimationTimeout();
-      const animationFrame = requestAnimationFrame(() => {
-        const duration = getMotionDuration(currentElement);
+      cancelProcessingAnimationFrame();
+      setProcessingAnimationFrame(() => {
+        const duration = getMotionDuration(targetElement);
 
         if (duration === 0) {
           callback();
@@ -292,13 +314,19 @@ export const useMotionPresence = <TElement extends HTMLElement>(
 
       return () => {
         clearAnimationTimeout();
-        cancelAnimationFrame(animationFrame);
+        cancelProcessingAnimationFrame();
       };
     },
-    [clearAnimationTimeout, currentElement, setAnimationTimeout],
+    [
+      cancelProcessingAnimationFrame,
+      clearAnimationTimeout,
+      currentElement,
+      setAnimationTimeout,
+      setProcessingAnimationFrame,
+    ],
   );
 
-  const ref: React.RefCallback<HTMLElementWithStyledMap<TElement>> = React.useCallback(node => {
+  const ref: React.RefCallback<HTMLElementWithStyledMap<T>> = React.useCallback(node => {
     if (!node) {
       return;
     }
@@ -308,30 +336,33 @@ export const useMotionPresence = <TElement extends HTMLElement>(
 
   React.useEffect(() => {
     if (present) {
-      setState({
+      setState(prevState => ({
+        ...prevState,
+        state: 'entering',
         active: skipAnimationOnFirstRender.current ? true : false,
-        motionState: 'resting',
-      });
+      }));
     }
   }, [present]);
 
   React.useEffect(() => {
     const skipAnimation = skipAnimationOnFirstRender.current;
-    const onUnmount = () => cancelProcessingAnimationFrame();
+    const onUnmount = () => {
+      cancelActiveAnimationFrame();
+      cancelDelayedAnimationFrame();
+    };
 
-    setProcessingAnimationFrame(() => {
+    setActiveAnimationFrame(() => {
       setState(prevState => {
-        let motionState = prevState.motionState;
+        let newState = prevState.state;
 
         if (skipAnimation) {
-          motionState = present ? 'resting' : 'unmounted';
+          newState = present ? 'idle' : 'unmounted';
         } else {
-          motionState = present ? 'entering' : 'exiting';
+          newState = present ? 'entering' : 'exiting';
         }
 
         return {
-          ...prevState,
-          motionState,
+          state: newState,
           active: present,
         };
       });
@@ -344,12 +375,26 @@ export const useMotionPresence = <TElement extends HTMLElement>(
     processAnimation(() => {
       setState(prevState => ({
         ...prevState,
-        motionState: present ? 'resting' : 'unmounted',
+        state: present ? 'entered' : 'exited',
       }));
+
+      setDelayedAnimationFrame(() => {
+        setState(prevState => ({
+          ...prevState,
+          state: present ? 'idle' : 'unmounted',
+        }));
+      });
     });
 
     return onUnmount;
-  }, [cancelProcessingAnimationFrame, present, processAnimation, setProcessingAnimationFrame]);
+  }, [
+    cancelActiveAnimationFrame,
+    cancelDelayedAnimationFrame,
+    present,
+    processAnimation,
+    setActiveAnimationFrame,
+    setDelayedAnimationFrame,
+  ]);
 
   React.useEffect(() => {
     skipAnimationOnFirstRender.current = false;
@@ -358,5 +403,82 @@ export const useMotionPresence = <TElement extends HTMLElement>(
   return {
     ref,
     ...state,
+  };
+};
+
+/**
+ * @internal
+ *
+ * Hook to manage the presence of an element in the DOM based on its CSS transition/animation state.
+ *
+ * @param props - Motion props to manage the presence of an element in the DOM
+ * @param options - Motion options to configure the hook
+ */
+export const useMotion = <T extends HTMLElement>(
+  props: MotionProps<T>,
+  options?: MotionOptions,
+): Required<MotionProps<T>> => {
+  const { ref, presence, active, state } = props;
+  const previousProps = usePrevious(props);
+  const mergedRef = useMergedRefs<T>(ref);
+
+  /**
+   * Heads up!
+   * We don't want these warnings in production even though it is against native behavior
+   */
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (previousProps && Object.keys(props).length !== Object.keys(previousProps).length) {
+        // eslint-disable-next-line no-console
+        console.error(
+          [
+            'useMotion: The hook needs to be called with the same amount of props on every render.',
+            'This is to ensure the internal state of the hook is stable and can be used to accurately detect the motion state.',
+            'Please make sure to not change the props on subsequent renders or to use the hook conditionally.',
+            '\nCurrent props:',
+            JSON.stringify(props, null, 2),
+            '\nPrevious props:',
+            JSON.stringify(previousProps, null, 2),
+          ].join(' '),
+        );
+      }
+    }, [props, previousProps]);
+  }
+
+  if (typeof ref !== 'undefined' && typeof state !== 'undefined') {
+    const isMounted = state !== 'unmounted';
+
+    return {
+      ref: mergedRef,
+      state,
+      presence: presence ?? isMounted,
+      active: active ?? (isMounted && state !== 'exited'),
+    };
+  }
+
+  if (process.env.NODE_ENV !== 'production') {
+    if (typeof presence === 'undefined') {
+      throw new Error('useMotion: The hook needs either a `ref` and `state` or `presence` prop to work.');
+    }
+  }
+
+  const isPresent = !!presence;
+  /**
+   * Heads up!
+   * This hook returns a MotionProps but also accepts MotionProps as an argument.
+   * In case the hook is called with a MotionProps argument, we don't need to perform the expensive computation of the
+   * motion state and can just return the props as is. This is intentional as it allows others to use the hook on their
+   * side without having to worry about the performance impact of the hook.
+   */
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const { ref: motionRef, ...motionPresence } = useMotionPresence(isPresent, options);
+
+  return {
+    presence: isPresent,
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    ref: useMergedRefs<T>(ref, motionRef as RefObjectFunction<T>),
+    active: motionPresence.active,
+    state: motionPresence.state,
   };
 };

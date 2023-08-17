@@ -21,4 +21,6 @@ export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> &
 /**
  * State used in rendering DrawerInline
  */
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps & DrawerBaseState;
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> &
+  Omit<DrawerInlineProps, 'open' | 'defaultOpen' | 'motion'> &
+  DrawerBaseState;

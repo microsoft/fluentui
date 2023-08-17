@@ -20,9 +20,9 @@ export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
 const useDrawerRootStyles = makeStyles({
   root: {
     position: 'relative',
-    transform: 'translateZ(0)',
-    transitionProperty: 'margin',
-    willChange: 'margin',
+    opacity: 1,
+    transitionProperty: 'opacity, transform',
+    willChange: 'opacity, transform',
   },
 
   /* Separator */
@@ -34,11 +34,14 @@ const useDrawerRootStyles = makeStyles({
   },
 
   /* Hidden */
+  hidden: {
+    opacity: 0,
+  },
   hiddenLeft: {
-    marginLeft: `calc(var(${drawerCSSVars.drawerSizeVar}) * -1)`,
+    transform: `translateX(calc(var(${drawerCSSVars.drawerSizeVar}) * -1))`,
   },
   hiddenRight: {
-    marginRight: `calc(var(${drawerCSSVars.drawerSizeVar}) * -1)`,
+    transform: `translateX(calc(var(${drawerCSSVars.drawerSizeVar})))`,
   },
 });
 
@@ -63,8 +66,8 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
       return undefined;
     }
 
-    return state.position === 'left' ? styles.hiddenLeft : styles.hiddenRight;
-  }, [state.position, state.active, styles.hiddenLeft, styles.hiddenRight]);
+    return mergeClasses(styles.hidden, state.position === 'left' ? styles.hiddenLeft : styles.hiddenRight);
+  }, [state.active, state.position, styles.hidden, styles.hiddenLeft, styles.hiddenRight]);
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,

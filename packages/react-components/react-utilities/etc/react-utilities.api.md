@@ -295,6 +295,9 @@ export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'childr
 };
 
 // @internal
+export function useAnimationFrame(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+
+// @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
 // @internal (undocumented)
@@ -323,23 +326,7 @@ export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 export function useIsSSR(): boolean;
 
 // @public
-export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
-
-// @public
-export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, options?: UseMotionPresenceOptions) => UseMotionPresenceState<TElement>;
-
-// @public
-export type UseMotionPresenceOptions = {
-    animateOnFirstMount?: boolean;
-};
-
-// @public
-export type UseMotionPresenceState<TElement extends HTMLElement> = {
-    ref: React_2.RefCallback<TElement>;
-    shouldRender: boolean;
-    visible: boolean;
-    motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';
-};
+export function useMergedRefs<T>(...refs: (React_2.Ref<T> | RefObjectFunction<T> | undefined)[]): RefObjectFunction<T>;
 
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {
@@ -366,7 +353,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
-export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
+export function useTimeout(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
 
 // (No @packageDocumentation comment for this package)
 
