@@ -1,7 +1,7 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import { colorNeutralStroke2 } from '../theme/design-tokens.js';
+import { colorNeutralStroke2, shadow8 } from '../theme/design-tokens.js';
 import { ToolbarSize } from './toolbar.options.js';
 import type { Toolbar as FluentToolbar } from './toolbar.js';
 import './define.js';
@@ -189,6 +189,7 @@ const verticalToolbar = html<ToolbarStoryArgs>`
     }
     #story--components-toolbar--vertical-toolbar code {
       align-self: flex-start;
+      font-size: 0.75em;
       margin: 0 12px;
       width: 150px;
     }
@@ -200,7 +201,7 @@ const verticalToolbar = html<ToolbarStoryArgs>`
       border-radius: 0;
     }
   </style>
-  <code>Border and square edges are optional -- please enforce by CSS class.</code>
+  <code>Border and square edges are optional. Border requires Fluent Design Token: 'colorNeutralStroke2'.</code>
   <fluent-toolbar orientation="vertical" class="vertical-bordered no-radius">
     <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBold}</fluent-button>
     <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextItalic}</fluent-button>
@@ -234,7 +235,7 @@ const verticalToolbar = html<ToolbarStoryArgs>`
     </span>
   </fluent-toolbar>
 
-  <code>Border and square edges are optional -- please enforce by CSS class.</code>
+  <code>Border and square edges are optional. Border requires Fluent Design Token: 'colorNeutralStroke2'.</code>
   <fluent-toolbar orientation="vertical">
     <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBold}</fluent-button>
     <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextItalic}</fluent-button>
@@ -287,6 +288,7 @@ export const LabelStartAndEndSlots = renderComponent(labelToolbar).bind({});
 const sizesToolbar = html<ToolbarStoryArgs>`
   <style>
     code {
+      font-size: 0.75em;
       margin: 20px 0;
     }
     .bordered {
@@ -366,7 +368,10 @@ const sizesToolbar = html<ToolbarStoryArgs>`
     </span>
   </fluent-toolbar>
 
-  <code>size="large". Border and square edges are optional -- please enforce by CSS class.</code>
+  <code
+    >size="large". Border and square edges are optional. Border requires Fluent Design Token:
+    'colorNeutralStroke2'</code
+  >
   <fluent-toolbar size="large" class="bordered no-radius">
     <fluent-button icon-only appearance="primary" shape="rounded" size="small">${TextBold}</fluent-button>
     <fluent-button icon-only appearance="outline" shape="rounded" size="small">${TextItalic}</fluent-button>
@@ -503,3 +508,47 @@ const buttonToolbar = html<ToolbarStoryArgs>`
   </fluent-toolbar>
 `;
 export const ToolbarWithButton = renderComponent(buttonToolbar).bind({});
+
+const floatingToolbar = html<ToolbarStoryArgs>`
+  <style>
+    .floating {
+      box-shadow: ${shadow8};
+    }
+  </style>
+  <code>Box shadow requires use of Fluent Design Token: 'shadow8'</code>
+  <fluent-toolbar class="floating">
+    <fluent-button icon-only appearance="primary" shape="rounded" size="small">${TextBold}</fluent-button>
+    <fluent-button icon-only appearance="outline" shape="rounded" size="small">${TextItalic}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextUnderline}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextStrikethrough}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Highlight}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextColor}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextFontSize}</fluent-button>
+    <fluent-menu-button appearance="subtle" shape="rounded" size="small"> Paragraph </fluent-menu-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ClearFormatting}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentIncrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextIndentDecrease}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextBulletList}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextNumberList}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TextQuote}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Link}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Code}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Important}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Insert}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Table}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableAdd}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${TableDismiss}</fluent-button>
+    <fluent-divider orientation="vertical"></fluent-divider>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowUndo}</fluent-button>
+    <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${ArrowRedo}</fluent-button>
+    <span slot="end">
+      <fluent-button icon-only appearance="subtle" shape="rounded" size="small">${Delete}</fluent-button>
+    </span>
+  </fluent-toolbar>
+`;
+
+export const Floating = renderComponent(floatingToolbar).bind({});
