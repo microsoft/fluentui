@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(DatePicker): readOnlyTextField styles should win over textfield's default styles.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
