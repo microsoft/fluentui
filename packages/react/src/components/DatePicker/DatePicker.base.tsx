@@ -423,12 +423,12 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
     const divProps = getNativeProps(inputProps!, divProperties);
     // Need to increase specificity of provided classname since the Field's classname has the same specificity and
     // therefore will override the values of the provided one.
-    const readOnlyTextFieldClassName = mergeStyles(classNames.readOnlyTextField, { specificityMultiplier: 2 });
+    const readOnlyTextFieldClassName = mergeStyles(divProps.className, classNames.readOnlyTextField);
 
     // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
     // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
     return (
-      <div {...divProps} className={css(readOnlyTextFieldClassName, divProps.className)} tabIndex={tabIndex || 0}>
+      <div {...divProps} className={readOnlyTextFieldClassName} tabIndex={tabIndex || 0}>
         {formattedDate || (
           // Putting the placeholder in a separate span fixes specificity issues for the text color
           <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
