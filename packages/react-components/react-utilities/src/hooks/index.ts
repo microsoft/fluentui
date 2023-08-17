@@ -1,3 +1,4 @@
+export * from './useAnimationFrame';
 export * from './useControllableState';
 export * from './useEventCallback';
 export * from './useFirstMount';
@@ -10,4 +11,3 @@ export * from './useOnScrollOutside';
 export * from './usePrevious';
 export * from './useScrollbarWidth';
 export * from './useTimeout';
-export * from './useAnimationFrame';
