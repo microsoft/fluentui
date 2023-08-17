@@ -14,8 +14,7 @@ import {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
 } from '@fluentui/react-shared-contexts';
 import type { FluentProviderContextValues, FluentProviderState, FluentProviderSlots } from './FluentProvider.types';
-import { IconDirectionContextProvider } from '@fluentui/react-icons/lib/contexts/IconDirectionContext';
-import type { IconDirectionContextValue } from '@fluentui/react-icons';
+import { IconDirectionContextProvider, IconDirectionContextValue } from '@fluentui/react-icons';
 
 /**
  * Render the final JSX of FluentProvider
@@ -23,7 +22,6 @@ import type { IconDirectionContextValue } from '@fluentui/react-icons';
 export const renderFluentProvider_unstable = (
   state: FluentProviderState,
   contextValues: FluentProviderContextValues,
-  iconContextValues?: IconDirectionContextValue,
 ) => {
   assertSlots<FluentProviderSlots>(state);
 
@@ -40,7 +38,7 @@ export const renderFluentProvider_unstable = (
           >
             <TooltipVisibilityProvider value={contextValues.tooltip}>
               <TextDirectionProvider dir={contextValues.textDirection}>
-                <IconDirectionContextProvider value={iconContextValues}>
+                <IconDirectionContextProvider value={contextValues.textDirection as IconDirectionContextValue}>
                   <OverridesProvider value={contextValues.overrides_unstable}>
                     <state.root>
                       {canUseDOM() ? null : (
