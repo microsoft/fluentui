@@ -70,6 +70,38 @@ test.describe('CounterBadge component', () => {
     expect(shadowContent).toContain('0');
   });
 
+  test('should show 0 when showZero is set programmatically', async () => {
+    await element.evaluate((node: CounterBadge) => {
+      node.showZero = true;
+      node.count = 0;
+    });
+
+    await expect(element).toHaveJSProperty('showZero', true);
+
+    let shadowContent = await page.evaluate(() => {
+      const element = document.querySelector('fluent-counter-badge');
+      return element?.shadowRoot?.textContent;
+    });
+
+    expect(shadowContent).toContain('0');
+  });
+
+  test('should not show 0 when showZero is set programmatically', async () => {
+    await element.evaluate((node: CounterBadge) => {
+      node.showZero = false;
+      node.count = 0;
+    });
+
+    await expect(element).toHaveJSProperty('showZero', false);
+
+    let shadowContent = await page.evaluate(() => {
+      const element = document.querySelector('fluent-counter-badge');
+      return element?.shadowRoot?.textContent;
+    });
+
+    expect(shadowContent).not.toContain('0');
+  });
+
   test('should render correctly with dot attribute', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
@@ -84,6 +116,31 @@ test.describe('CounterBadge component', () => {
       return element?.shadowRoot?.textContent;
     });
     expect(shadowContent).not.toContain('5');
+  });
+
+  test('should show and hide dot programmatically', async () => {
+    await element.evaluate((node: CounterBadge) => {
+      node.dot = true;
+      node.count = 5;
+    });
+    await expect(element).toHaveJSProperty('dot', true);
+
+    let shadowContent = await page.evaluate(() => {
+      const element = document.querySelector('fluent-counter-badge');
+      return element?.shadowRoot?.textContent;
+    });
+    expect(shadowContent).not.toContain('5');
+
+    await element.evaluate((node: CounterBadge) => {
+      node.dot = false;
+    });
+    await expect(element).toHaveJSProperty('dot', false);
+
+    shadowContent = await page.evaluate(() => {
+      const element = document.querySelector('fluent-counter-badge');
+      return element?.shadowRoot?.textContent;
+    });
+    expect(shadowContent).toContain('5');
   });
 
   test('should reflect shape attribute and update property', async () => {
