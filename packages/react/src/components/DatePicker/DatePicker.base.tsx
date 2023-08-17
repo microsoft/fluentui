@@ -421,7 +421,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
     const divProps = getNativeProps(inputProps!, divProperties);
-    // Need to merge styles so the provided stlyes win over the default ones. This is due to the classnames having the
+    // Need to merge styles so the provided styles win over the default ones. This is due to the classnames having the
     // same specificity.
     const readOnlyTextFieldClassName = mergeStyles(divProps.className, classNames.readOnlyTextField);
 
