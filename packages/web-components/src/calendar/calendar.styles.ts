@@ -50,6 +50,7 @@ export const styles = css`
     color: ${colorNeutralForeground1};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
     border-radius: ${borderRadiusMedium};
+    background-color: ${colorTransparentBackground};
   }
   :host .calendar-body {
     margin: ${spacingVerticalS} ${spacingHorizontalM} ${spacingHorizontalM};
@@ -69,6 +70,7 @@ export const styles = css`
     width: 248px;
     border-radius: ${borderRadiusMedium};
     font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
+    background-color: ${colorTransparentBackground};
   }
   :host .secondary-panel-body {
     height: 168px;
@@ -114,19 +116,19 @@ export const styles = css`
   }
   :host .secondary-panel-today {
     color: ${colorNeutralForeground2Selected};
-    background: ${colorBrandBackgroundInvertedSelected};
+    background-color: ${colorBrandBackgroundInvertedSelected};
   }
   :host .secondary-panel-cell-outer:not(.secondary-panel-today):not(.secondary-panel-selected):hover {
-    background: ${colorBrandBackgroundInvertedHover};
-    color: ${colorNeutralForeground1Static};
-  }
-  :host .secondary-panel-cell-outer:not(.secondary-panel-today):active {
-    background: ${colorBrandBackgroundInvertedSelected};
+    background-color: ${colorBrandBackgroundInvertedHover};
     color: ${colorNeutralForeground1Static};
   }
   :host .secondary-panel-selected {
     color: ${colorNeutralForeground1Static};
-    background: ${colorBrandBackgroundInvertedSelected};
+    background-color: ${colorBrandBackgroundInvertedSelected};
+  }
+  :host .secondary-panel-cell-outer:not(.secondary-panel-today):not(.secondary-panel-selected):active {
+    background-color: ${colorBrandBackgroundInvertedSelected};
+    color: ${colorNeutralForeground1Static};
   }
   :host .day {
     z-index: 0;
@@ -156,64 +158,26 @@ export const styles = css`
     width: 28px;
     border-radius: 100%;
   }
-  :host .interact .today:not(.inactive):not(.selected):hover::before {
-    z-index: -2;
-    content: '';
-    position: absolute;
-    display: block;
-    height: 28px;
-    width: 28px;
-    border-radius: ${borderRadiusMedium};
+  :host .interact .today:not(.inactive):not(.selected):hover {
+    background-color: ${colorBrandBackgroundInvertedHover};
+  }
+  :host .interact .today:not(.inactive):not(.selected):active {
+    background-color: ${colorBrandBackgroundInvertedSelected};
+  }
+  :host .interact .today:not(.inactive).selected {
+    background-color: ${colorBrandBackgroundInvertedSelected};
+  }
+  :host .day:not(.today):not(.selected):hover {
     color: ${colorNeutralForeground1Static};
     background-color: ${colorBrandBackgroundInvertedHover};
   }
-  :host .interact .today:not(.inactive):not(.selected):active::before {
-    background: ${colorBrandBackgroundInvertedSelected};
+  :host .day:not(.today):not(.selected):active {
     color: ${colorNeutralForeground1Static};
+    background-color: ${colorBrandBackgroundInvertedSelected};
   }
-  :host .interact .today:not(.inactive).selected::before {
-    z-index: -2;
-    content: '';
-    position: absolute;
-    display: block;
-    height: 28px;
-    width: 28px;
-    border-radius: ${borderRadiusMedium};
-    background: ${colorBrandBackgroundInvertedSelected};
+  :host .day:not(.today).selected {
     color: ${colorNeutralForeground1Static};
-  }
-  :host .day:not(.today):not(.selected):hover::after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    display: block;
-    height: 28px;
-    width: 28px;
-    border-radius: ${borderRadiusMedium};
-    color: ${colorNeutralForeground1Static};
-    background-color: ${colorBrandBackgroundInvertedHover};
-  }
-  :host .day:not(.today):active::after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    display: block;
-    height: 28px;
-    width: 28px;
-    border-radius: ${borderRadiusMedium};
-    color: ${colorNeutralForeground1Static};
-    background: ${colorBrandBackgroundInvertedSelected};
-  }
-  :host .day:not(.today).selected::after {
-    z-index: -1;
-    content: '';
-    position: absolute;
-    display: block;
-    height: 28px;
-    width: 28px;
-    border-radius: ${borderRadiusMedium};
-    color: ${colorNeutralForeground1Static};
-    background: ${colorBrandBackgroundInvertedSelected};
+    background-color: ${colorBrandBackgroundInvertedSelected};
   }
   :host .week-days,
   .week {
@@ -285,5 +249,97 @@ export const styles = css`
     display: flex;
     justify-content: flex-end;
     padding: 0 ${spacingHorizontalM} ${spacingHorizontalM};
+  }
+  :host .first-transition-row.animated {
+    animation: FadeOut, SlideUpOut20, transitionRowDisappearance;
+    animation-duration: 0.367s;
+    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+  }
+  :host .last-transition-row.animated {
+    animation: FadeOut, SlideDownOut20, transitionRowDisappearance;
+    animation-duration: 0.367s;
+    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+  }
+  :host .week.animated-up {
+    animation: FadeIn, SlideUpIn20;
+    animation-duration: 0.367s;
+    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+  }
+  :host .week.animated-down {
+    animation: FadeIn, SlideDownIn20;
+    animation-duration: 0.367s;
+    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+  }
+
+  @keyframes FadeOut {
+    0% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes FadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+
+  @keyframes SlideUpIn20 {
+    0% {
+      transform: translate3d(0, 20px, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes SlideDownIn20 {
+    0% {
+      transform: translate3d(0, -20px, 0);
+    }
+    100% {
+      transform: translate3d(0, 0, 0);
+    }
+  }
+
+  @keyframes SlideUpOut20 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, -20px, 0);
+    }
+  }
+
+  @keyframes SlideDownOut20 {
+    0% {
+      transform: translate3d(0, 0, 0);
+    }
+    100% {
+      transform: translate3d(0, 20px, 0);
+    }
+  }
+
+  @keyframes transitionRowDisappearance {
+    100% {
+      width: 0;
+      height: 0;
+      overflow: 'hidden';
+    }
+    99% {
+      width: 100%;
+      height: 28;
+      overflow: 'visible';
+    }
+    0% {
+      width: 100%;
+      height: 28;
+      overflow: 'visible';
+    }
   }
 `;

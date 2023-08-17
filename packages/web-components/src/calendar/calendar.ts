@@ -206,13 +206,13 @@ export class Calendar extends FASTCalendar {
     if (name === 'month') {
       if (this.navigatedDate.getMonth() + 1 != this.month || this.navigatedDate.getFullYear() != this.year) {
         this.navigatedDate = new Date(`${this.year}/${this.month}/01`);
-      } else {
-        Updates.enqueue(() => {
-          const el = this.getNavigatedDayElement();
-          el.tabIndex = 0;
-          el.focus();
-        });
       }
+
+      Updates.enqueue(() => {
+        const el = this.getNavigatedDayElement();
+        el.tabIndex = 0;
+        el.focus();
+      });
     }
 
     // Updates the secondaryPanelCells array and sets focus on the first cell
@@ -285,11 +285,56 @@ export class Calendar extends FASTCalendar {
     // // filter them by current month
     // this.selectedDates = '';
 
+    if ((month < this.month && year == this.year) || year < this.year) {
+      this.prevMonthTransition();
+    } else {
+      this.nextMonthTransition();
+    }
+
     this.year = year;
     this.month = month;
 
     this.monthPickerYear = year;
     this.yearPickerDecade = year - (year % 10);
+  }
+
+  public prevMonthTransition() {
+    console.log('prev');
+    Updates.enqueue(() => {
+      const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
+
+      rows?.forEach(row => row.classList.add('animated-up'));
+
+      const firstTransitionRow = this.shadowRoot?.querySelector('.week-days')?.nextElementSibling as HTMLElement;
+
+      firstTransitionRow.classList.add('first-transition-row');
+      firstTransitionRow.classList.add('animated');
+
+      setTimeout(() => {
+        firstTransitionRow.classList.remove('animated');
+        rows?.forEach(row => row.classList.remove('animated-up'));
+      }, 367);
+    });
+  }
+
+  public nextMonthTransition() {
+    console.log('next');
+    Updates.enqueue(() => {
+      const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
+
+      rows?.forEach(row => row.classList.add('animated-down'));
+
+      const lastTransitionRow = this.shadowRoot?.querySelector('.week-days')?.parentElement
+        ?.lastElementChild as HTMLElement;
+
+      lastTransitionRow.classList.add('last-transition-row');
+      lastTransitionRow.classList.add('animated');
+
+      setTimeout(() => {
+        lastTransitionRow.classList.remove('animated');
+        rows?.forEach(row => row.classList.remove('animated-down'));
+      }, 367);
+    });
   }
 
   /**
