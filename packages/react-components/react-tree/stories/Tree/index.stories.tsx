@@ -2,6 +2,7 @@ import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout, FlatTree } from 
 
 import descriptionMd from './TreeDescription.md';
 import bestPracticesMd from './TreeBestPractices.md';
+import a11yMd from './TreeA11y.md';
 
 // VISUAL EXAMPLES
 export { Default } from './TreeDefault.stories';
@@ -34,7 +35,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, a11yMd].join('\n'),
       },
     },
   },
