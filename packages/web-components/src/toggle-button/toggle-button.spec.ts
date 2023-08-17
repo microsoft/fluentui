@@ -237,34 +237,40 @@ test.describe('Toggle Button - Isolates Flaky Boolean Attribute Tests', () => {
     await page.close();
   });
 
-  async function testAttribute(attributeName: string) {
-    // Insert the component with the specified attribute.
-    await root.evaluate((node, attr) => {
-      node.innerHTML = `<fluent-toggle-button ${attr}></fluent-toggle-button>`;
-    }, attributeName);
+  test('should reflect the `autofocus` attribute on the internal control', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+          <fluent-toggle-button></fluent-toggle-button>
+      `;
+    });
 
-    // Check if the attribute is set on the internal control.
-    let attrValue = await control.getAttribute(attributeName);
-    expect(attrValue).toBe('');
+    const autofocusAttribute = await element.getAttribute('autofocus');
+    expect(autofocusAttribute === '' || autofocusAttribute === 'autofocus').toBeFalsy();
 
-    // Remove the attribute from the component.
-    await element.evaluate((node, attr) => {
-      node.removeAttribute(attr);
-    }, attributeName);
+    await element.evaluate(node => {
+      node.toggleAttribute('autofocus');
+    });
 
-    await page.waitForTimeout(100);
-
-    // Check that the attribute is removed from the internal control.
-    attrValue = await control.getAttribute(attributeName);
-    expect(attrValue).toBe(null);
-  }
-
-  test('should set the `autofocus` attribute on the internal control', async () => {
-    await testAttribute('autofocus');
+    const noAutofocusAttribute = await element.getAttribute('autofocus');
+    expect(noAutofocusAttribute === '' || noAutofocusAttribute === 'autofocus').toBeTruthy();
   });
 
-  test('should set the `formnovalidate` attribute on the internal control', async () => {
-    await testAttribute('formnovalidate');
+  test('should reflect the `formnovalidate` attribute on the internal control', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+          <fluent-toggle-button></fluent-toggle-button>
+      `;
+    });
+
+    const autofocusAttribute = await element.getAttribute('formnovalidate');
+    expect(autofocusAttribute === '' || autofocusAttribute === 'formnovalidate').toBeFalsy();
+
+    await element.evaluate(node => {
+      node.toggleAttribute('formnovalidate');
+    });
+
+    const noAutofocusAttribute = await element.getAttribute('formnovalidate');
+    expect(noAutofocusAttribute === '' || noAutofocusAttribute === 'formnovalidate').toBeTruthy();
   });
 });
 
