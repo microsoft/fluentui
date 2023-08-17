@@ -11,7 +11,7 @@ import {
   workspaceRoot,
   installPackagesTask,
 } from '@nrwl/devkit';
-import * as childProcess from 'child_process';
+import childProcess from 'child_process';
 
 import generator from './index';
 import { PackageJson, TsConfig } from '../../types';

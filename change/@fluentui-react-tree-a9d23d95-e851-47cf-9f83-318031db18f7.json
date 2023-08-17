@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Docs(react-tree): Improve docs and stories",
-  "packageName": "@fluentui/react-tree",
-  "email": "petrduda@microsoft.com",
-  "dependentChangeType": "patch"
-}

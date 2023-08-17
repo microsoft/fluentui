@@ -156,7 +156,7 @@ export const Toolbar = compose<'div', ToolbarProps, ToolbarStylesProps, {}, {}>(
       children,
       design,
       getOverflowItems,
-      items,
+      items = [],
       overflow,
       overflowItem,
       overflowOpen,
@@ -663,7 +663,6 @@ Toolbar.propTypes = {
 };
 Toolbar.defaultProps = {
   accessibility: toolbarBehavior,
-  items: [],
   overflowItem: {},
   overflowSentinel: {},
 };

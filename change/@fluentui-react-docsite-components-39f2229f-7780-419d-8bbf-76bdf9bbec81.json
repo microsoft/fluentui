@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Remove top clip for image to work correctly and move top banner under top nav.",
+  "packageName": "@fluentui/react-docsite-components",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

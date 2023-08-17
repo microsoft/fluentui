@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState, useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { AccordionProps, AccordionState } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -48,11 +48,14 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ...props,
-      ...(navigation ? arrowNavigationProps : undefined),
-      ref,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ...props,
+        ...(navigation ? arrowNavigationProps : undefined),
+        ref,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };
 

@@ -3,10 +3,10 @@ import type { VirtualizerProps, VirtualizerState } from './Virtualizer.types';
 
 import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useState } from 'react';
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
-import { resolveShorthand } from '@fluentui/react-utilities';
 import { flushSync } from 'react-dom';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
 import { renderVirtualizerChildPlaceholder } from './renderVirtualizer';
+import { slot } from '@fluentui/react-utilities';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
   const {
@@ -488,31 +488,31 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       afterContainer: 'div',
     },
     virtualizedChildren: childArray.current,
-    before: resolveShorthand(props.before, {
-      required: true,
+    before: slot.always(props.before, {
       defaultProps: {
         ref: setBeforeRef,
         role: 'none',
       },
+      elementType: 'div',
     }),
-    after: resolveShorthand(props.after, {
-      required: true,
+    after: slot.always(props.after, {
       defaultProps: {
         ref: setAfterRef,
         role: 'none',
       },
+      elementType: 'div',
     }),
-    beforeContainer: resolveShorthand(props.beforeContainer, {
-      required: true,
+    beforeContainer: slot.always(props.beforeContainer, {
       defaultProps: {
         role: 'none',
       },
+      elementType: 'div',
     }),
-    afterContainer: resolveShorthand(props.afterContainer, {
-      required: true,
+    afterContainer: slot.always(props.afterContainer, {
       defaultProps: {
         role: 'none',
       },
+      elementType: 'div',
     }),
     beforeBufferHeight: isFullyInitialized ? calculateBefore() : 0,
     afterBufferHeight: isFullyInitialized ? calculateAfter() : 0,

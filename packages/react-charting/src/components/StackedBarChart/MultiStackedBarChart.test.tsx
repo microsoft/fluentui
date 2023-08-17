@@ -82,7 +82,6 @@ export const chartPoints: IChartProps[] = [
 
 export const emptyChartPoints: IChartProps[] = [
   {
-    chartTitle: 'Monitored',
     chartData: [],
   },
 ];
