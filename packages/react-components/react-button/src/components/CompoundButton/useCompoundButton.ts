@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useButton_unstable } from '../Button/index';
 import type { CompoundButtonProps, CompoundButtonState } from './CompoundButton.types';
 
@@ -23,8 +23,8 @@ export const useCompoundButton_unstable = (
       contentContainer: 'span',
       secondaryContent: 'span',
     },
-    contentContainer: resolveShorthand(contentContainer, { required: true }),
-    secondaryContent: resolveShorthand(secondaryContent),
+    contentContainer: slot.always(contentContainer, { elementType: 'span' }),
+    secondaryContent: slot.optional(secondaryContent, { elementType: 'span' }),
   };
 
   // Recalculate iconOnly to take into account secondaryContent.

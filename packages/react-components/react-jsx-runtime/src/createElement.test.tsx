@@ -1,17 +1,9 @@
 /** @jsxRuntime classic */
-/** @jsxFrag Fragment */
 /** @jsx createElement */
 
 import { render } from '@testing-library/react';
-import {
-  ComponentProps,
-  ComponentState,
-  Slot,
-  assertSlots,
-  getSlotsNext,
-  resolveShorthand,
-  slot,
-} from '@fluentui/react-utilities';
+import { assertSlots, getSlotsNext, resolveShorthand, slot } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { createElement } from './createElement';
 
 describe('createElement with getSlotsNext', () => {
@@ -55,6 +47,7 @@ describe('createElement with getSlotsNext', () => {
         <div>
           <div>1</div>
           <div>2</div>
+          <div>3</div>
         </div>,
       );
 
@@ -65,6 +58,9 @@ describe('createElement with getSlotsNext', () => {
           </div>
           <div>
             2
+          </div>
+          <div>
+            3
           </div>
         </div>
       `);
@@ -347,7 +343,5 @@ describe('createElement with assertSlots', () => {
 
       expect(result.container.firstChild).toMatchInlineSnapshot(`<span />`);
     });
-
-    it.todo("should pass 'as' property to base element that aren't html element");
   });
 });
