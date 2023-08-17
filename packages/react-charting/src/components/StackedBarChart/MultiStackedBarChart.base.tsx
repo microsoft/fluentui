@@ -38,7 +38,6 @@ export interface IMultiStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
   barSpacingInPercent: number;
 }
 
@@ -73,7 +72,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
-      emptyChart: false,
       barSpacingInPercent: 0,
     };
     this._onLeave = this._onLeave.bind(this);
