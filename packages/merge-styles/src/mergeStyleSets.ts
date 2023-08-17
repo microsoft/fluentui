@@ -10,7 +10,7 @@ import { ObjectOnly } from './ObjectOnly';
 export type ShadowConfig = {
   stylesheetKey: string;
   inShadow: boolean;
-  window: Window | undefined;
+  window?: Window;
 };
 
 /**

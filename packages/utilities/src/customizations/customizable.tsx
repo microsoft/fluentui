@@ -6,7 +6,7 @@ import { concatStyleSets } from '@fluentui/merge-styles';
 import type { ICustomizerContext } from './CustomizerContext';
 import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
 import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
-import { getWindow } from '../../lib/dom';
+import { getWindow } from '../dom/getWindow';
 // eslint-disable-next-line
 import { WindowContext } from '@fluentui/react-window-provider';
 

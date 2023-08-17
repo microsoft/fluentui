@@ -1,6 +1,6 @@
 import { IStyle } from './IStyle';
 import { ShadowConfig } from './mergeStyleSets';
-import { EventMap } from './EventMap';
+import { EventHandler, EventMap } from './EventMap';
 
 export const InjectionMode = {
   /**
@@ -19,14 +19,18 @@ export const InjectionMode = {
   appendChild: 2 as 2,
 
   /**
-   * Inserts rules into constructible stylesheets.
-   * NOTE: This API is unstable and subject to change or removal without notice.
-   * Depend on it at your own risk.
+   * Inserts rules into constructable stylesheets.
    */
   constructableStylesheet: 3 as 3,
 
+  /**
+   * Same as `insertNode` and `constructableStylesheet`
+   */
   insertNodeAndConstructableStylesheet: 4 as 4,
 
+  /**
+   * Same as `appendChild` and `constructableStylesheet`
+   */
   appedChildAndConstructableStylesheet: 5 as 5,
 };
 
@@ -224,9 +228,10 @@ export class Stylesheet {
         return;
       }
 
-      const constructableSheet = new targetWindow.CSSStyleSheet();
+      const constructableSheet = new (targetWindow as Window & typeof globalThis).CSSStyleSheet();
 
-      for (const rule of srcSheet.cssRules) {
+      for (let i = 0; i < srcSheet.cssRules.length; i++) {
+        const rule = srcSheet.cssRules[i];
         constructableSheet.insertRule(rule.cssText);
       }
 
@@ -244,6 +249,39 @@ export class Stylesheet {
     });
 
     (targetWindow as typeof _global)[ADOPTED_STYLESHEETS] = clone;
+  }
+
+  public static onAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void {
+    const global = (targetWindow ?? _global) as typeof _global;
+
+    if (!global[ADOPTED_STYLESHEETS]) {
+      global[ADOPTED_STYLESHEETS] = new EventMap();
+    }
+
+    global[ADOPTED_STYLESHEETS]!.on('add-sheet', callback);
+  }
+
+  public static offAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void {
+    const global = (targetWindow ?? _global) as typeof _global;
+
+    if (!global[ADOPTED_STYLESHEETS]) {
+      return;
+    }
+
+    global[ADOPTED_STYLESHEETS]!.off('add-sheet', callback);
+  }
+
+  public static forEachAdoptedStyleSheet(
+    callback: (value: Stylesheet, key: string, map: Map<string, Stylesheet>) => void,
+    srcWindow?: Window,
+  ): void {
+    const global = (srcWindow ?? _global) as typeof _global;
+
+    if (!global[ADOPTED_STYLESHEETS]) {
+      return;
+    }
+
+    global[ADOPTED_STYLESHEETS]!.forEach(callback);
   }
 
   constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string) {

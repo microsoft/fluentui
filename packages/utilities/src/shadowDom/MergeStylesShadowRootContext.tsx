@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
-import { getDocument, getWindow } from '../dom';
-
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */

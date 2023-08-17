@@ -1276,7 +1276,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export const useAdoptedStylesheet_unstable: (stylesheetKey: string, adopteGlobally?: boolean) => boolean;
+export const useAdoptedStylesheet_unstable: (stylesheetKey: string) => boolean;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
