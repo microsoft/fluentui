@@ -30,6 +30,7 @@ export type {
 export {
   IdPrefixProvider,
   resetIdsForTests,
+  useAnimationFrame,
   useControllableState,
   useEventCallback,
   useFirstMount,
@@ -42,15 +43,8 @@ export {
   usePrevious,
   useScrollbarWidth,
   useTimeout,
-  useMotionPresence,
 } from './hooks/index';
-export type {
-  RefObjectFunction,
-  UseControllableStateOptions,
-  UseOnClickOrScrollOutsideOptions,
-  UseMotionPresenceOptions,
-  UseMotionPresenceState,
-} from './hooks/index';
+export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
 
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
