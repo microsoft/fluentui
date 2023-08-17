@@ -7,7 +7,7 @@ import {
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
-import { getWindow } from '../lib/dom';
+import { getWindow } from './dom/getWindow';
 // eslint-disable-next-line
 import { useWindow } from '@fluentui/react-window-provider';
 

@@ -33,30 +33,6 @@ export type DeepPartial<T> = {
     [P in keyof T]?: T[P] extends (infer U)[] ? DeepPartial<U>[] : T[P] extends object ? DeepPartial<T[P]> : T[P];
 };
 
-// @public (undocumented)
-export class EventMap<K, V> {
-    constructor();
-    // (undocumented)
-    forEach(callback: (value: V, key: K, map: Map<K, V>) => void): void;
-    // (undocumented)
-    get(key: K): V | undefined;
-    // (undocumented)
-    has(key: K): boolean;
-    // (undocumented)
-    off(type: string, callback: EventHandler): void;
-    // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
-    //
-    // (undocumented)
-    on(type: string, callback: EventHandler): void;
-    // (undocumented)
-    raise(type: string, data: {
-        key: K;
-        sheet: V;
-    }): void;
-    // (undocumented)
-    set(key: K, value: V): void;
-}
-
 // @public
 export function fontFace(font: IFontFace): void;
 
@@ -101,7 +77,7 @@ export const InjectionMode: {
     none: 0;
     insertNode: 1;
     appendChild: 2;
-    unstable_constructibleStylesheet: 3;
+    constructableStylesheet: 3;
     insertNodeAndConstructableStylesheet: 4;
     appedChildAndConstructableStylesheet: 5;
 };
@@ -557,21 +533,35 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
+    get counter(): number;
+    // (undocumented)
+    static forEachAdoptedStyleSheet(callback: (value: Stylesheet, key: string, map: Map<string, Stylesheet>) => void, srcWindow?: Window): void;
+    // (undocumented)
     getAdoptableStyleSheet(): CSSStyleSheet | undefined;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
     };
-    static getInstance({ stylesheetKey, inShadow }?: ShadowConfig): Stylesheet;
+    static getInstance({ stylesheetKey, inShadow, window: win }?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
+    // (undocumented)
+    static offAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
+    // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    static onAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
     onInsertRule(callback: Function): Function;
     onReset(callback: Function): Function;
+    // (undocumented)
+    static projectStylesToWindow(targetWindow: Window, srcWindow?: Window): void;
     reset(): void;
     // (undocumented)
     resetKeys(): void;
     serialize(): string;
+    // (undocumented)
+    setAdoptableStyleSheet(sheet: CSSStyleSheet): void;
     setConfig(config?: IStyleSheetConfig): void;
 }
 

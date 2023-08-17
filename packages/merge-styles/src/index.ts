@@ -39,6 +39,4 @@ export { setRTL } from './StyleOptionsState';
 
 export type { ObjectOnly } from './ObjectOnly';
 
-export { EventMap } from './Stylesheet';
-
 import './version';

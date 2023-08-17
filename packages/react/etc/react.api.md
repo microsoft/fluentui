@@ -8658,6 +8658,8 @@ export interface ISpinButtonProps extends React_2.HTMLAttributes<HTMLDivElement>
     onIncrement?: (value: string, event?: React_2.MouseEvent<HTMLElement> | React_2.KeyboardEvent<HTMLElement>) => string | void;
     onValidate?: (value: string, event?: React_2.SyntheticEvent<HTMLElement>) => string | void;
     precision?: number;
+    // (undocumented)
+    shadowDom?: ShadowConfig;
     step?: number;
     styles?: IStyleFunctionOrObject<ISpinButtonStyleProps, ISpinButtonStyles>;
     theme?: ITheme;
@@ -9279,6 +9281,8 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     readOnly?: boolean;
     resizable?: boolean;
     revealPasswordAriaLabel?: string;
+    // (undocumented)
+    shadowDom?: ShadowConfig;
     styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
     suffix?: string;
     theme?: ITheme;
