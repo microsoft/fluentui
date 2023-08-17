@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
-import { IAreaChartProps, ChartHoverCard } from '@fluentui/react-charting';
+import { IAreaChartProps, ChartHoverCard, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 
 interface IAreaChartBasicState {
@@ -141,7 +141,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       {
         legend: 'legend1',
         data: chart1Points,
-        color: '#0099BC',
       },
     ];
 
@@ -182,7 +181,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
             height={this.state.height}
             width={this.state.width}
             data={chartData}
-            showYAxisGridLines={true}
             enablePerfOptimization={true}
             // eslint-disable-next-line react/jsx-no-bind
             onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
@@ -191,7 +189,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                   XValue={props.x.toString()}
                   Legend={'Custom Legend'}
                   YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
-                  color={'red'}
+                  color={getColorFromToken(DataVizPalette.color7)}
                 />
               ) : null
             }
