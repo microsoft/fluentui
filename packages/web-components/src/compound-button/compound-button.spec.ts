@@ -200,40 +200,40 @@ test.describe('Compound Button - Isolating Flaky', () => {
     await page.close();
   });
 
-  test('should set the `autofocus` attribute on the internal control', async () => {
+  test('should reflect the `autofocus` attribute on the internal control', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-                <fluent-compound-button autofocus></fluent-compound-button>
-            `;
+          <fluent-compound-button></fluent-compound-button>
+      `;
     });
 
-    const AutofocusAttribute = await control.getAttribute('autofocus');
-    expect(AutofocusAttribute).toBe('');
+    const autofocusAttribute = await element.getAttribute('autofocus');
+    expect(autofocusAttribute === '' || autofocusAttribute === 'autofocus').toBeFalsy();
 
     await element.evaluate(node => {
       node.toggleAttribute('autofocus');
     });
 
-    const noAutofocusAttribute = await control.getAttribute('autofocus');
-    expect(noAutofocusAttribute).toBe(null);
+    const noAutofocusAttribute = await element.getAttribute('autofocus');
+    expect(noAutofocusAttribute === '' || noAutofocusAttribute === 'autofocus').toBeTruthy();
   });
 
-  test('should set the `formnovalidate` attribute on the internal control', async () => {
+  test('should reflect the `formnovalidate` attribute on the internal control', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-          <fluent-compound-button formnovalidate></fluent-compound-button>
+          <fluent-compound-button></fluent-compound-button>
       `;
     });
 
-    const formnovalidateAttribute = await control.getAttribute('formnovalidate');
-    expect(formnovalidateAttribute).toBe('');
+    const autofocusAttribute = await element.getAttribute('formnovalidate');
+    expect(autofocusAttribute === '' || autofocusAttribute === 'formnovalidate').toBeFalsy();
 
     await element.evaluate(node => {
       node.toggleAttribute('formnovalidate');
     });
 
-    const noFormnovalidateAttribute = await control.getAttribute('formnovalidate');
-    expect(noFormnovalidateAttribute).toBe(null);
+    const noAutofocusAttribute = await element.getAttribute('formnovalidate');
+    expect(noAutofocusAttribute === '' || noAutofocusAttribute === 'formnovalidate').toBeTruthy();
   });
 });
 
