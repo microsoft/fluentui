@@ -1,3 +1,3 @@
-`DialogTrigger` is not a component that can be used outside of `Dialog`. If you want to trigger the dialog from outside of `Dialog`, you should use controlled state instead.
-
-> ⚠️ Note: As there will be no `DialogTrigger`, you should handle focus restoration when the dialog gets closed.
+When using a `Dialog` without a `DialogTrigger`, it is up to the user to make sure that the focus is restored correctly
+when the dialog is closed. This can be done quite easily by using the `useRestoreFocusTarget` hook. The `Dialog` already
+uses the `useRestoreFocusSource` hook directly, which will restore focus to the most recently focused target on close.

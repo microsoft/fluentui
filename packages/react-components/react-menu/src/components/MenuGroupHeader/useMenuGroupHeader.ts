@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useMenuGroupContext_unstable } from '../../contexts/menuGroupContext';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { MenuGroupHeaderProps, MenuGroupHeaderState } from './MenuGroupHeader.types';
 
 /**
@@ -16,10 +16,13 @@ export function useMenuGroupHeader_unstable(
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      id,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        id,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 }

@@ -33,3 +33,6 @@ export { BackgroundAppearanceProvider, useBackgroundAppearance } from './Backgro
 export type { BackgroundAppearanceContextValue } from './BackgroundAppearanceContext';
 
 export { PortalMountNodeProvider, usePortalMountNode } from './PortalMountNodeContext';
+
+export { AnnounceProvider as AnnounceProvider_unstable, useAnnounce as useAnnounce_unstable } from './AnnounceContext';
+export type { AnnounceContextValue as AnnounceContextValue_unstable } from './AnnounceContext';

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { SkeletonProps, SkeletonState } from './Skeleton.types';
 import { useSkeletonContext } from '../../contexts/SkeletonContext';
 
@@ -16,20 +16,15 @@ export const useSkeleton_unstable = (props: SkeletonProps, ref: React.Ref<HTMLEl
   const { animation: contextAnimation, appearance: contextAppearance } = useSkeletonContext();
   const { animation = contextAnimation ?? 'wave', appearance = contextAppearance ?? 'opaque' } = props;
 
-  const root = getNativeElementProps('div', {
-    ref,
-    role: 'progressbar',
-    'aria-busy': true,
-    'aria-label': 'Loading Content',
-    ...props,
-  });
-
-  return {
-    animation,
-    appearance,
-    components: {
-      root: 'div',
-    },
-    root,
-  };
+  const root = slot.always(
+    getNativeElementProps('div', {
+      ref,
+      role: 'progressbar',
+      'aria-busy': true,
+      'aria-label': 'Loading Content',
+      ...props,
+    }),
+    { elementType: 'div' },
+  );
+  return { animation, appearance, components: { root: 'div' }, root };
 };

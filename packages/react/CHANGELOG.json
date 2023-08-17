@@ -2,6 +2,78 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 07:34:49 GMT",
+      "tag": "@fluentui/react_v8.110.13",
+      "version": "8.110.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77950274f90b3b0921e8d24d6a29ec530099512d",
+            "comment": "Pass-through pointer events in Details Row focus rects"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 07:35:28 GMT",
+      "tag": "@fluentui/react_v8.110.12",
+      "version": "8.110.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1d1aa7cc05cf1bee98e2dbebdd9a5040544379f1",
+            "comment": "fix(TimePicker): Selection now works in locales that don't use \"am\"/\"pm\" in their time format"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 07:44:53 GMT",
+      "tag": "@fluentui/react_v8.110.11",
+      "version": "8.110.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1a8fcdedfaa41b4478342d3f7aa49f58a85c07dd",
+            "comment": "fix: Datepicker renders input description if onRenderDescription is passed in"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fe5d70f04fa3ad62d10da9cd19662a7bcfb771b2",
+            "comment": "fix: DetailsColumn tooltip shows on focus, and is associated via aria-describedby"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e6e662c52a7a7d9c4a9f95e01e1e2194f4e72b04",
+            "comment": "fix: do not dismiss editable comboboxes on scroll or resize immediately after opening"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 18 Jul 2023 07:35:18 GMT",
+      "tag": "@fluentui/react_v8.110.10",
+      "version": "8.110.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "bbba7284a99cf7a63cbd7676a5a85e8770163357",
+            "comment": "Keytip: Make keytip data align with which instance is visible (for duplicate registrations)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 17 Jul 2023 07:39:32 GMT",
       "tag": "@fluentui/react_v8.110.9",
       "version": "8.110.9",

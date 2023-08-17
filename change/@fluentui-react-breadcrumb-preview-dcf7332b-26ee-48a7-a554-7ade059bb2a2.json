@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release react-breadcrumb to unstable",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
