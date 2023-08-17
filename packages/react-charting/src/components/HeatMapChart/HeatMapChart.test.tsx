@@ -3,9 +3,11 @@ import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import toJson from 'enzyme-to-json';
 
-import { resetIds } from '../../Utilities';
+import { resetIds, setRTL } from '../../Utilities';
 import { IHeatMapChartProps, HeatMapChart } from './index';
 import { IHeatMapChartState, HeatMapChartBase } from './HeatMapChart.base';
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 // Wrapper of the HeatMapChart to be tested.
 let wrapper: ReactWrapper<IHeatMapChartProps, IHeatMapChartState, HeatMapChartBase> | undefined;
@@ -180,6 +182,36 @@ describe('HeatMapChart snapShot testing', () => {
     );
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('should render HeatMapChart correctly when the layout direction is RTL', () => {
+    setRTL(true);
+
+    wrapper = mount(
+      <HeatMapChart
+        data={HeatMapData}
+        domainValuesForColorScale={[0, 600]}
+        rangeValuesForColorScale={['lightblue', 'darkblue']}
+      />,
+    );
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+
+    setRTL(false);
+  });
+
+  it('should render HeatMapChart correctly in dark theme', () => {
+    wrapper = mount(
+      <ThemeProvider theme={DarkTheme}>
+        <HeatMapChart
+          data={HeatMapData}
+          domainValuesForColorScale={[0, 600]}
+          rangeValuesForColorScale={['lightblue', 'darkblue']}
+        />
+      </ThemeProvider>,
+    );
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });

@@ -161,7 +161,7 @@ describe('HeatMap chart rendering', () => {
   });
 });
 
-describe('HeatMapChart interactivity tests', () => {
+describe('HeatMapChart interaction and accessibility tests', () => {
   it(`should highlight the corresponding rectangle(s) when the mouse moves over a legend and
   unhighlight them when the mouse moves out of the legend`, () => {
     const { container } = render(
@@ -205,7 +205,7 @@ describe('HeatMapChart interactivity tests', () => {
   });
 
   it(`should show a callout when a highlighted rectangle is hovered/focused and
-  hide it when a unhighlighted rectangle is hovered/focused`, () => {
+  hide it when an unhighlighted rectangle is hovered/focused`, () => {
     const { container } = render(
       <HeatMapChart
         data={HeatMapData2}
