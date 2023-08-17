@@ -18,10 +18,10 @@ const useStyles = makeStyles({
   },
 
   /* Separator */
-  separatorLeft: {
+  separatorStart: {
     ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
   },
-  separatorRight: {
+  separatorEnd: {
     ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
   },
 });
@@ -38,8 +38,8 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
       return undefined;
     }
 
-    return state.position === 'left' ? styles.separatorLeft : styles.separatorRight;
-  }, [state.position, state.separator, styles.separatorRight, styles.separatorLeft]);
+    return state.position === 'start' ? styles.separatorStart : styles.separatorEnd;
+  }, [state.position, state.separator, styles.separatorEnd, styles.separatorStart]);
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
