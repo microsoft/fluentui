@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Thu, 17 Aug 2023 13:49:56 GMT",
+      "tag": "@fluentui/react-tree_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ccd513e9b7c3179bef3588d183be1e3e4b9d7f7d",
+            "comment": "bugfix: headless flat tree itemType manual definition"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Aug 2023 17:41:08 GMT",
       "tag": "@fluentui/react-tree_v9.0.0",
       "version": "9.0.0",

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 16 Aug 2023 17:41:07 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Aug 2023 13:49:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.29.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.3)
+
+Thu, 17 Aug 2023 13:49:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.2..@fluentui/react-components_v9.29.3)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - bugfix: headless flat tree itemType manual definition ([PR #28898](https://github.com/microsoft/fluentui/pull/28898) by bernardo.sunderhus@gmail.com)
 
 ## [9.29.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.2)
 
