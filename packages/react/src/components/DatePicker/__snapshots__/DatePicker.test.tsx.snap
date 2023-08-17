@@ -322,14 +322,6 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
             className=
                 ms-TextField-field
                 {
-                  cursor: pointer;
-                  height: 32px;
-                  line-height: 30px;
-                  overflow: hidden;
-                  specificity-multiplier: 2px;
-                  text-overflow: ellipsis;
-                }
-                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
@@ -339,15 +331,19 @@ exports[`DatePicker renders DatePicker with value correctly 1`] = `
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
+                  cursor: pointer;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  height: 32px;
+                  line-height: 30px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
                   min-width: 0px;
                   outline: 0px;
+                  overflow: hidden;
                   padding-bottom: 0;
                   padding-left: 8px;
                   padding-right: 24px;
@@ -556,14 +552,6 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             className=
                 ms-TextField-field
                 {
-                  cursor: pointer;
-                  height: 32px;
-                  line-height: 30px;
-                  overflow: hidden;
-                  specificity-multiplier: 2px;
-                  text-overflow: ellipsis;
-                }
-                {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
                   background-color: transparent;
@@ -573,15 +561,19 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
                   box-shadow: none;
                   box-sizing: border-box;
                   color: #323130;
+                  cursor: pointer;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
+                  height: 32px;
+                  line-height: 30px;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
                   margin-top: 0px;
                   min-width: 0px;
                   outline: 0px;
+                  overflow: hidden;
                   padding-bottom: 0;
                   padding-left: 8px;
                   padding-right: 24px;
