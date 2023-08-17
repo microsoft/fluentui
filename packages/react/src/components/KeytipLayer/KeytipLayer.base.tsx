@@ -662,7 +662,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    * @param inKeytipMode - Boolean so set whether we are in keytip mode or not
    */
   private _setInKeytipMode = (inKeytipMode: boolean): void => {
-    this.setState({ inKeytipMode: inKeytipMode });
+    this.setState({ inKeytipMode });
     this._keytipManager.inKeytipMode = inKeytipMode;
   };
 

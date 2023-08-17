@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-jsx-runtime",
-  "version": "9.0.0-alpha.15",
-  "description": "React components for building web experiences",
+  "version": "9.0.0",
+  "description": "Custom JSX runtime for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -40,8 +40,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {

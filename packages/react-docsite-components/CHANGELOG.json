@@ -2,6 +2,21 @@
   "name": "@fluentui/react-docsite-components",
   "entries": [
     {
+      "date": "Wed, 16 Aug 2023 07:35:27 GMT",
+      "tag": "@fluentui/react-docsite-components_v8.13.0",
+      "version": "8.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-docsite-components",
+            "commit": "35c85db9215be83c0e9c71250648d1587eb5f97f",
+            "comment": "feat: Add TopBanner component and use it in the site template."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 14 Aug 2023 07:34:45 GMT",
       "tag": "@fluentui/react-docsite-components_v8.12.41",
       "version": "8.12.41",

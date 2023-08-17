@@ -49,48 +49,15 @@ const useRootStyles = makeStyles({
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
   outline: {
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForeground2,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
 
   rounded: {
@@ -231,6 +198,34 @@ const useDismissIconStyles = makeStyles({
     paddingRight: tagSpacingExtraSmall,
     fontSize: extraSmallIconSize,
   },
+
+  filled: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':hover:active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
+  outline: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':hover:active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
+  brand: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':hover:active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
 });
 
 export const usePrimaryTextStyles = makeStyles({
@@ -340,6 +335,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       tagClassNames.dismissIcon,
       dismissIconStyles.base,
       dismissIconStyles[size],
+      !state.disabled && dismissIconStyles[appearance],
       state.dismissIcon.className,
     );
   }

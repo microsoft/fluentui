@@ -107,6 +107,6 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         },
       },
     ],
-    disabledStyle: disabledStyle,
+    disabledStyle,
   };
 };
