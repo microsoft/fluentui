@@ -4,7 +4,7 @@ import bestPracticesMd from './UseMotionBestPractices.md';
 export { Default } from './UseMotionDefault.stories';
 
 export default {
-  title: 'Preview Components/useMotion',
+  title: 'Utilities/Motion/useMotion',
   parameters: {
     docs: {
       description: {
