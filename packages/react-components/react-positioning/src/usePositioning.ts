@@ -122,7 +122,6 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
       }
       // We run this check once, no need to add deps here
       // TODO: Should be rework to handle options.enabled and contentRef updates
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   }
 
