@@ -15,11 +15,32 @@ export type InteractionTagSlots = {
  * InteractionTag Props
  */
 export type InteractionTagProps<Value = string> = ComponentProps<Partial<InteractionTagSlots>> & {
-  // TODO add comments with default value
-
+  /**
+   * An InteractionTag can have filled, outlined or brand experience.
+   *
+   * @default 'filled'
+   */
   appearance?: TagAppearance;
+
+  /**
+   * An InteractionTag can show that it cannot be interacted with.
+   *
+   * @default false
+   */
   disabled?: boolean;
+
+  /**
+   * An InteractionTag can have rounded or circular shape.
+   *
+   * @default 'round'
+   */
   shape?: TagShape;
+
+  /**
+   * An InteractionTag has three sizes.
+   *
+   * @default 'medium'
+   */
   size?: TagSize;
 
   /**
