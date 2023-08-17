@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "update some components to optionally support shadow dom",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "add support for shadow dom and constructable stylesheets",
+  "packageName": "@fluentui/merge-styles",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
