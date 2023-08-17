@@ -271,6 +271,9 @@ export class Menu extends FASTElement {
    * @param {KeyboardEvent} e - the keyboard event
    */
   public handleMenuKeydown(e: KeyboardEvent): boolean | void {
+    if (e.defaultPrevented) {
+      return;
+    }
     const key = e.key;
 
     switch (key) {
@@ -301,6 +304,9 @@ export class Menu extends FASTElement {
    * @param {KeyboardEvent} e - the keyboard event
    */
   public handleTriggerKeydown = (e: KeyboardEvent): boolean | void => {
+    if (e.defaultPrevented) {
+      return;
+    }
     const key = e.key;
     switch (key) {
       case keySpace:
