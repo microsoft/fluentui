@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Aug 2023 13:49:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.1)
+
+Thu, 17 Aug 2023 13:49:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0..@fluentui/react-tree_v9.0.1)
+
+### Patches
+
+- bugfix: headless flat tree itemType manual definition ([PR #28898](https://github.com/microsoft/fluentui/pull/28898) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0)
 
