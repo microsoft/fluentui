@@ -16,7 +16,6 @@ import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import { clamp } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
 
@@ -40,7 +39,7 @@ export interface IMultiStackedBarChartState {
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
   emptyChart?: boolean;
-  barSpacing: number;
+  barSpacingInPercent: number;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -75,7 +74,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       yCalloutValue: '',
       calloutLegend: '',
       emptyChart: false,
-      barSpacing: 2,
+      barSpacingInPercent: 0,
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
@@ -88,7 +87,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   }
 
   public componentDidMount(): void {
-    this._adjustBarSpacing();
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
+    const MARGIN_WIDTH_IN_PX = 2;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      this.setState({ barSpacingInPercent: currentBarSpacing });
+    }
   }
 
   public render(): JSX.Element {
@@ -166,16 +170,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
-  private _adjustBarSpacing() {
-    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width;
-    if (svgWidth) {
-      const BAR_SPACING_FACTOR = 1;
-      // The barspacing is provided in percentage terms, so changes inversely to the width of the svg
-      const currentBarSpacing = clamp((200 / svgWidth) * BAR_SPACING_FACTOR, 1, 0.1);
-      this.setState({ barSpacing: currentBarSpacing });
-    }
-  }
-
   /**
    * The Create bar functions returns an array of <rect> elements, which form the bars
    * For each bar an x value, and a width needs to be specified
@@ -191,11 +185,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
   ): JSX.Element {
-    const barSpacing = this.state.barSpacing;
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
       1;
-    const totalMargin = barSpacing * (noOfBars - 1);
+    const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
@@ -204,15 +197,15 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       (acc: number, point: IChartDataPoint) => acc + (point.data ? point.data : 0),
       0,
     );
-    let total =
+    const total =
       this.props.variant === MultiStackedBarChartVariant.AbsoluteScale ? this._longestBarTotalValue : barTotalValue;
 
-    total += (totalMargin * total) / (100 - totalMargin);
-
-    let sumOfPercent = totalMargin;
+    let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
-      value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+      const currValue = (pointData / total) * 100;
+      value = currValue ? currValue : 0;
+
       if (value < 1 && value !== 0) {
         value = 1;
       } else if (value > 99 && value !== 100) {
@@ -236,7 +229,16 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       sumOfPercent += value;
     }
 
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     let prevPosition = 0;
     let value = 0;
@@ -291,10 +293,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
+            id={`${this._barId}-${index}`}
             x={`${
               this._isRTL
-                ? 100 - startingPoint[index] - value - barSpacing * index
-                : startingPoint[index] + barSpacing * index
+                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
+                : startingPoint[index] + this.state.barSpacingInPercent * index
             }%`}
             y={0}
             width={value + '%'}
@@ -311,8 +314,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             key="text"
             x={`${
               this._isRTL
-                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMargin
-                : (startingPoint[startingPoint.length - 1] || 0) + value + totalMargin
+                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
+                : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
             }%`}
             textAnchor={this._isRTL ? 'end' : 'start'}
             y={barHeight / 2}

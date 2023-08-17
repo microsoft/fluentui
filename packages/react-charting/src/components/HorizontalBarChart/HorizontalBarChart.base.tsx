@@ -16,7 +16,6 @@ import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
-import { clamp } from '@fluentui/react';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -31,7 +30,7 @@ export interface IHorizontalBarChartState {
   yCalloutValue?: string;
   barCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
-  barSpacing: number;
+  barSpacingInPercent: number;
 }
 
 export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartProps, IHorizontalBarChartState> {
@@ -57,7 +56,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: '',
       xCalloutValue: '',
       yCalloutValue: '',
-      barSpacing: 0.5,
+      barSpacingInPercent: 0,
     };
     this._refArray = [];
     this._uniqLineText = '_HorizontalLine_' + Math.random().toString(36).substring(7);
@@ -68,7 +67,12 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   public componentDidMount(): void {
-    this._adjustBarSpacing();
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
+    const MARGIN_WIDTH_IN_PX = 2;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      this.setState({ barSpacingInPercent: currentBarSpacing });
+    }
   }
 
   public render(): JSX.Element {
@@ -295,18 +299,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     );
   }
 
-  // Adjusts the margin percentage, based on the width of the svg (inversly propotional)
-  private _adjustBarSpacing(): void {
-    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width;
-    if (svgWidth) {
-      // [0,1] Controls the spacing between the bars
-      const BAR_SPACING_FACTOR = 1;
-      // The barspacing is provided in percentage terms, so changes inversely to the width of the svg
-      const currentBarSpacing = clamp((200 / svgWidth) * BAR_SPACING_FACTOR, 1, 0.2);
-      this.setState({ barSpacing: currentBarSpacing });
-    }
-  }
-
   /**
    * This functions returns an array of <rect> elements, which form the bars
    * For each bar an x value, and a width needs to be specified
@@ -316,26 +308,21 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
 
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
     const noOfBars =
-      data.chartData?.reduce(
-        (count: number, point: IChartDataPoint) => (count += (point.horizontalBarChartdata?.x || 0) > 0 ? 1 : 0),
-        0,
-      ) || 1;
-    const totalSpacing = this.state.barSpacing * (noOfBars - 1);
+      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
     const startingPoint: number[] = [];
-    let total = data.chartData!.reduce(
+    const total = data.chartData!.reduce(
       (acc: number, point: IChartDataPoint) =>
         acc + (point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0),
       0,
     );
-
-    total += (totalSpacing * total) / (100 - totalSpacing);
-
     let prevPosition = 0;
     let value = 0;
 
-    let sumOfPercent = totalSpacing;
+    let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.horizontalBarChartdata!.x ? point.horizontalBarChartdata!.x : 0;
       value = (pointData / total) * 100;
@@ -349,7 +336,15 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       return sumOfPercent;
     });
 
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+    const scalingRatio = sumOfPercent !== 0 ? (sumOfPercent - totalMarginPercent) / 100 : 1;
 
     const bars = data.chartData!.map((point: IChartDataPoint, index: number) => {
       const color: string = point.color ? point.color : defaultPalette[Math.floor(Math.random() * 4 + 1)];
@@ -398,8 +393,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           key={index}
           x={`${
             this._isRTL
-              ? 100 - startingPoint[index] - value - index * this.state.barSpacing
-              : startingPoint[index] + index * this.state.barSpacing
+              ? 100 - startingPoint[index] - value - index * this.state.barSpacingInPercent
+              : startingPoint[index] + index * this.state.barSpacingInPercent
           }%`}
           y={0}
           data-is-focusable={point.legend !== '' ? true : false}
