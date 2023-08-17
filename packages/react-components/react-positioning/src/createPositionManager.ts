@@ -73,7 +73,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
       }
 
       scrollParents.forEach(scrollParent => {
-        scrollParent.addEventListener('scroll', updatePosition);
+        scrollParent.addEventListener('scroll', updatePosition, { passive: true });
       });
 
       isFirstUpdate = false;
@@ -130,7 +130,7 @@ export function createPositionManager(options: PositionManagerOptions): Position
   };
 
   if (targetWindow) {
-    targetWindow.addEventListener('scroll', updatePosition);
+    targetWindow.addEventListener('scroll', updatePosition, { passive: true });
     targetWindow.addEventListener('resize', updatePosition);
   }
 
