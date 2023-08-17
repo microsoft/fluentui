@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-accordion
 
-This log was last generated on Wed, 09 Aug 2023 13:16:48 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.4)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.3.3..@fluentui/react-accordion_v9.3.4)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [9.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.3)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.3.2..@fluentui/react-accordion_v9.3.3)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+
+## [9.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.2)
+
+Fri, 11 Aug 2023 12:14:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-accordion_v9.3.1..@fluentui/react-accordion_v9.3.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.30 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.28 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-tabster to v9.12.2 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
 
 ## [9.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-accordion_v9.3.1)
 

@@ -16,7 +16,7 @@ export const useBreadcrumbItem_unstable = (
   props: BreadcrumbItemProps,
   ref: React.Ref<HTMLElement>,
 ): BreadcrumbItemState => {
-  const { size, iconPosition } = useBreadcrumbContext_unstable();
+  const { size } = useBreadcrumbContext_unstable();
   const { current = false, icon } = props;
 
   const iconSlot = slot.optional(icon, { elementType: 'span' });
@@ -32,7 +32,5 @@ export const useBreadcrumbItem_unstable = (
     size,
     current,
     icon: iconSlot,
-    iconOnly: Boolean(iconSlot?.children && !props.children),
-    iconPosition: props.iconPosition || iconPosition,
   };
 };

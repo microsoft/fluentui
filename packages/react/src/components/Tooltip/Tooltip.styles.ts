@@ -19,7 +19,7 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
         background: semanticColors.menuBackground,
         boxShadow: effects.elevation8,
         padding: '8px',
-        maxWidth: maxWidth,
+        maxWidth,
         selectors: {
           ':after': {
             content: `''`,

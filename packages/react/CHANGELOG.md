@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 04 Aug 2023 07:35:28 GMT and should not be manually modified.
+This log was last generated on Fri, 11 Aug 2023 07:34:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.13)
+
+Fri, 11 Aug 2023 07:34:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.12..@fluentui/react_v8.110.13)
+
+### Patches
+
+- Pass-through pointer events in Details Row focus rects ([PR #28439](https://github.com/microsoft/fluentui/pull/28439) by tmichon@microsoft.com)
 
 ## [8.110.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.12)
 

@@ -41,7 +41,7 @@ export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
    * `openItems`, `onOpenChange`, `onNavigation_unstable` and `ref`
    */
   getTreeProps(): Required<
-    Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable' | 'checkedItems' | 'onCheckedChange'>
+    Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation' | 'checkedItems' | 'onCheckedChange'>
   > & {
     ref: React.Ref<HTMLDivElement>;
     openItems: ImmutableSet<TreeItemValue>;
@@ -93,7 +93,7 @@ export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
 
 export type HeadlessFlatTreeOptions = Pick<
   FlatTreeProps,
-  'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'
+  'onOpenChange' | 'onNavigation' | 'selectionMode' | 'onCheckedChange'
 > &
   Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
     defaultCheckedItems?: TreeProps['checkedItems'];
@@ -151,7 +151,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-      options.onNavigation_unstable?.(event, data);
+      options.onNavigation?.(event, data);
       if (walkerRef.current) {
         navigate(data, walkerRef.current);
       }
@@ -196,8 +196,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
       checkedItems,
       onOpenChange: handleOpenChange,
       onCheckedChange: handleCheckedChange,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      onNavigation_unstable: handleNavigation,
+      onNavigation: handleNavigation,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [openItems, checkedItems],

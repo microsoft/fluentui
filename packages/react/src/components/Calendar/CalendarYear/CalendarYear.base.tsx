@@ -86,7 +86,7 @@ const CalendarYearGridCell: React.FunctionComponent<ICalendarYearGridCellProps> 
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     highlightCurrent: highlightCurrentYear,
     highlightSelected: highlightSelectedYear,
   });
@@ -163,9 +163,9 @@ const CalendarYearGrid: React.FunctionComponent<ICalendarYearGridProps> = props 
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
-    animateBackwards: animateBackwards,
-    animationDirection: animationDirection,
+    className,
+    animateBackwards,
+    animationDirection,
   });
 
   const onRenderYear = (value: number) => {
@@ -228,7 +228,7 @@ const CalendarYearNavArrow: React.FunctionComponent<ICalendarYearNavArrowProps> 
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
   });
 
   const ariaLabel =
@@ -279,7 +279,7 @@ const CalendarYearNav: React.FunctionComponent<ICalendarYearHeaderProps> = props
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
   });
 
   return (
@@ -320,10 +320,10 @@ const CalendarYearTitle: React.FunctionComponent<ICalendarYearHeaderProps> = pro
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     hasHeaderClickCallback: !!props.onHeaderSelect,
-    animateBackwards: animateBackwards,
-    animationDirection: animationDirection,
+    animateBackwards,
+    animationDirection,
   });
 
   if (props.onHeaderSelect) {
@@ -368,10 +368,10 @@ const CalendarYearHeader: React.FunctionComponent<ICalendarYearHeaderProps> = pr
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     hasHeaderClickCallback: !!props.onHeaderSelect,
-    animateBackwards: animateBackwards,
-    animationDirection: animationDirection,
+    animateBackwards,
+    animationDirection,
   });
 
   return (
@@ -438,7 +438,7 @@ export const CalendarYearBase: React.FunctionComponent<ICalendarYearProps> = pro
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
   });
 
   return (

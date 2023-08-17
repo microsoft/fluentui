@@ -2,6 +2,39 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 12:14:25 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.27",
+      "version": "9.0.27",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b52b54415c4d663885710fc113166be24d810742",
+            "comment": "fix: flickering in Overflow"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.4",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.28",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.11.1",
+            "commit": "a77bcda1628e8b20b113d0237317efd7ebbc5294"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Aug 2023 13:16:59 GMT",
       "tag": "@fluentui/react-overflow_v9.0.26",
       "version": "9.0.26",

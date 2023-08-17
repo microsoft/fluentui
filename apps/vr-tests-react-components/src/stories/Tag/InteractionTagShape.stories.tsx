@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';
@@ -30,54 +30,68 @@ export default {
   decorators: [story => withStoryWrightSteps({ story, steps })],
 } as ComponentMeta<typeof InteractionTag>;
 
-export const Rounded = () => <InteractionTag content={{ id: contentId }}>Primary Text</InteractionTag>;
+export const Rounded = () => (
+  <InteractionTag>
+    <InteractionTagPrimary id={contentId}>Primary Text</InteractionTagPrimary>
+  </InteractionTag>
+);
 
 export const RoundedWithSecondaryText = () => (
-  <InteractionTag content={{ id: contentId }} secondaryText="Secondary Text">
-    Primary Text
+  <InteractionTag>
+    <InteractionTagPrimary id={contentId} secondaryText="Secondary Text">
+      Primary Text
+    </InteractionTagPrimary>
   </InteractionTag>
 );
 
 export const RoundedWithMedia = () => (
-  <InteractionTag content={{ id: contentId }} media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}>
-    Primary Text
+  <InteractionTag>
+    <InteractionTagPrimary id={contentId} media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}>
+      Primary Text
+    </InteractionTagPrimary>
   </InteractionTag>
 );
 export const RoundedWithMediaRTL = getStoryVariant(RoundedWithMedia, RTL);
 
 export const RoundedDismissible = () => (
-  <InteractionTag content={{ id: contentId }} dismissible dismissButton={{ id: dismissButtonId }}>
-    Primary Text
+  <InteractionTag>
+    <InteractionTagPrimary id={contentId} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
 export const RoundedDismissibleRTL = getStoryVariant(RoundedDismissible, RTL);
 
 export const Circular = () => (
-  <InteractionTag content={{ id: contentId }} shape="circular">
-    Primary Text
+  <InteractionTag shape="circular">
+    <InteractionTagPrimary id={contentId}>Primary Text</InteractionTagPrimary>
   </InteractionTag>
 );
 
 export const CircularWithSecondaryText = () => (
-  <InteractionTag content={{ id: contentId }} shape="circular" secondaryText="Secondary Text">
-    Primary Text
+  <InteractionTag shape="circular">
+    <InteractionTagPrimary id={contentId} secondaryText="Secondary Text">
+      Primary Text
+    </InteractionTagPrimary>
   </InteractionTag>
 );
 
 export const CircularWithMedia = () => (
-  <InteractionTag
-    content={{ id: contentId }}
-    shape="circular"
-    media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}
-  >
-    Primary Text
+  <InteractionTag shape="circular">
+    <InteractionTagPrimary id={contentId} media={<Avatar name="Lydia Bauer" badge={{ status: 'available' }} />}>
+      Primary Text
+    </InteractionTagPrimary>
   </InteractionTag>
 );
 export const CircularWithMediaRTL = getStoryVariant(CircularWithMedia, RTL);
 
 export const CircularDismissible = () => (
-  <InteractionTag content={{ id: contentId }} shape="circular" dismissible dismissButton={{ id: dismissButtonId }}>
-    Primary Text
+  <InteractionTag shape="circular">
+    <InteractionTagPrimary id={contentId} hasSecondaryAction>
+      Primary Text
+    </InteractionTagPrimary>
+    <InteractionTagSecondary id={dismissButtonId} />
   </InteractionTag>
 );
 export const CircularDismissibleRTL = getStoryVariant(CircularDismissible, RTL);
