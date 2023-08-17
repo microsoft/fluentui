@@ -30,9 +30,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const [isActionsVisible, setActionsVisible] = React.useState(false);
   const [isAsideVisible, setAsideVisible] = React.useState(true);
 
-  const handleActionsRef = (actionsElement: HTMLDivElement | null) => {
+  const handleActionsRef = useEventCallback((actionsElement: HTMLDivElement | null) => {
     setAsideVisible(actionsElement === null);
-  };
+  });
 
   const actionsRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLDivElement>(null);
