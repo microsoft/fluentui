@@ -148,124 +148,139 @@ test.describe('Tabs', () => {
     }
   });
 
-  test('should set an `id` attribute on tab items with a unique ID when an `id` is NOT provided', async () => {
-    await root.evaluate(
-      (node, { template }) => {
-        node.innerHTML = template;
-      },
-      { template },
-    );
+  test.describe('`id` NOT provided', () => {
+    test('should set an `id` attribute on tab items with a unique ID when an `id` is NOT provided', async () => {
+      await root.evaluate(
+        (node, { template }) => {
+          node.innerHTML = template;
+        },
+        { template },
+      );
 
-    const tabCount = await tabs.count();
+      const tabCount = await tabs.count();
 
-    for (let i = 0; i < tabCount; i++) {
-      const tab = tabs.nth(i);
+      for (let i = 0; i < tabCount; i++) {
+        const tab = tabs.nth(i);
 
-      const id = await tab.getAttribute('id');
+        const id = await tab.getAttribute('id');
 
-      // The ID function may not start at 0 so we need to check that the ID is unique
-      expect(id).toMatch(/tab-\d+/);
+        // The ID function may not start at 0 so we need to check that the ID is unique
+        expect(id).toMatch(/tab-\d+/);
 
-      const tabPanel = element.locator(`#${id}`);
+        const tabPanel = element.locator(`#${id}`);
 
-      await expect(tabPanel).toHaveCount(1);
-    }
-  });
-
-  test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided', async () => {
-    await root.evaluate(
-      (node, { template }) => {
-        node.innerHTML = template;
-      },
-      { template },
-    );
-
-    const tabCount = await tabs.count();
-
-    for (let i = 0; i < tabCount; i++) {
-      const tab = tabs.nth(i);
-
-      const panelId = (await tab.getAttribute('aria-controls')) as string;
-
-      expect(panelId).toMatch(/panel-\d+/);
-
-      const tabPanel = element.locator(`#${panelId}`);
-
-      await expect(tabPanel).toHaveCount(1);
-
-      const tabId = (await tab.getAttribute('id')) as string;
-
-      expect(tabId).toMatch(/tab-\d+/);
-
-      await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
-
-      await expect(tab).toHaveAttribute('aria-controls', panelId);
-    }
-  });
-
-  test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided and additional tabs and panels are added', async () => {
-    await root.evaluate(
-      (node, { template }) => {
-        node.innerHTML = template;
-      },
-      { template },
-    );
-
-    let tabCount = await tabs.count();
-
-    for (let i = 0; i < tabCount; i++) {
-      const tab = tabs.nth(i);
-
-      const panelId = (await tab.getAttribute('aria-controls')) as string;
-
-      expect(panelId).toMatch(/panel-\d+/);
-
-      const tabPanel = element.locator(`#${panelId}`);
-
-      await expect(tabPanel).toHaveCount(1);
-
-      const tabId = (await tab.getAttribute('id')) as string;
-
-      expect(tabId).toMatch(/tab-\d+/);
-
-      await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
-
-      await expect(tab).toHaveAttribute('aria-controls', panelId);
-    }
-
-    await element.evaluate<void, Tabs>(node => {
-      const tabs = Array.from(node.querySelectorAll('fluent-tab'));
-
-      const newTab = document.createElement('fluent-tab');
-      newTab.textContent = 'New Tab';
-      node.insertBefore(newTab, tabs[1]);
-
-      const newPanel = document.createElement('fluent-tab-panel');
-      newPanel.textContent = 'New Panel';
-      node.insertBefore(newPanel, tabs[1]);
+        await expect(tabPanel).toHaveCount(1);
+      }
     });
 
-    tabCount = await tabs.count();
+    test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided', async () => {
+      await root.evaluate(
+        (node, { template }) => {
+          node.innerHTML = template;
+        },
+        { template },
+      );
 
-    for (let i = 0; i < tabCount; i++) {
-      const tab = tabs.nth(i);
+      const tabCount = await tabs.count();
 
-      const panelId = (await tab.getAttribute('aria-controls')) as string;
+      for (let i = 0; i < tabCount; i++) {
+        const tab = tabs.nth(i);
 
-      expect(panelId).toMatch(/panel-\d+/);
+        const panelId = (await tab.getAttribute('aria-controls')) as string;
 
-      const tabPanel = element.locator(`#${panelId}`);
+        expect(panelId).toMatch(/panel-\d+/);
 
-      await expect(tabPanel).toHaveCount(1);
+        const tabPanel = element.locator(`#${panelId}`);
 
-      const tabId = (await tab.getAttribute('id')) as string;
+        await expect(tabPanel).toHaveCount(1);
 
-      expect(tabId).toMatch(/tab-\d+/);
+        const tabId = (await tab.getAttribute('id')) as string;
 
-      await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
+        expect(tabId).toMatch(/tab-\d+/);
 
-      await expect(tab).toHaveAttribute('aria-controls', panelId);
-    }
+        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
+
+        await expect(tab).toHaveAttribute('aria-controls', panelId);
+      }
+    });
+
+    test('should set `aria-labelledby` on the tab panel and `aria-controls` on the tab which corresponds to the matching ID when IDs are NOT provided and additional tabs and panels are added', async () => {
+      await root.evaluate(
+        (node, { template }) => {
+          node.innerHTML = template;
+        },
+        { template },
+      );
+
+      let tabCount = await tabs.count();
+
+      for (let i = 0; i < tabCount; i++) {
+        const tab = tabs.nth(i);
+
+        const panelId = (await tab.getAttribute('aria-controls')) as string;
+
+        expect(panelId).toMatch(/panel-\d+/);
+
+        const tabPanel = element.locator(`#${panelId}`);
+
+        await expect(tabPanel).toHaveCount(1);
+
+        const tabId = (await tab.getAttribute('id')) as string;
+
+        expect(tabId).toMatch(/tab-\d+/);
+
+        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
+
+        await expect(tab).toHaveAttribute('aria-controls', panelId);
+      }
+
+      await element.evaluate<void, Tabs>(node => {
+        const tabs = Array.from(node.querySelectorAll('fluent-tab'));
+
+        const newTab = document.createElement('fluent-tab');
+        newTab.textContent = 'New Tab';
+        node.insertBefore(newTab, tabs[1]);
+
+        const newPanel = document.createElement('fluent-tab-panel');
+        newPanel.textContent = 'New Panel';
+        node.insertBefore(newPanel, tabs[1]);
+      });
+
+      tabCount = await tabs.count();
+
+      for (let i = 0; i < tabCount; i++) {
+        const tab = tabs.nth(i);
+
+        const panelId = (await tab.getAttribute('aria-controls')) as string;
+
+        expect(panelId).toMatch(/panel-\d+/);
+
+        const tabPanel = element.locator(`#${panelId}`);
+
+        await expect(tabPanel).toHaveCount(1);
+
+        const tabId = (await tab.getAttribute('id')) as string;
+
+        expect(tabId).toMatch(/tab-\d+/);
+
+        await expect(tabPanel).toHaveAttribute('aria-labelledby', tabId);
+
+        await expect(tab).toHaveAttribute('aria-controls', panelId);
+      }
+    });
+
+    test('should default the first tab as the active index if `activeid` is NOT provided', async () => {
+      await root.evaluate(
+        (node, { template }) => {
+          node.innerHTML = template;
+        },
+        { template },
+      );
+
+      await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
+
+      await expect(element).toHaveJSProperty('activeTabIndex', 0);
+    });
   });
 
   test.describe('active tab', () => {
@@ -286,19 +301,6 @@ test.describe('Tabs', () => {
       }, secondTabId);
 
       await expect(secondTab).toHaveAttribute('aria-selected', 'true');
-    });
-
-    test('should default the first tab as the active index if `activeid` is NOT provided', async () => {
-      await root.evaluate(
-        (node, { template }) => {
-          node.innerHTML = template;
-        },
-        { template },
-      );
-
-      await expect(tabs.nth(0)).toHaveAttribute('aria-selected', 'true');
-
-      await expect(element).toHaveJSProperty('activeTabIndex', 0);
     });
 
     test('should update `aria-selected` attribute on the active tab when `activeId` is updated', async () => {
