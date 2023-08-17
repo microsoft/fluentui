@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: headless flat tree itemType manual definition",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
