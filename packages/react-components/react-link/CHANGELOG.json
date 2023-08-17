@@ -2,6 +2,21 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Wed, 16 Aug 2023 17:41:08 GMT",
+      "tag": "@fluentui/react-link_v9.1.10",
+      "version": "9.1.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Aug 2023 11:38:33 GMT",
       "tag": "@fluentui/react-link_v9.1.9",
       "version": "9.1.9",

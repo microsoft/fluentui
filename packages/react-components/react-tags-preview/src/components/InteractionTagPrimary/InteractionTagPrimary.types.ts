@@ -32,6 +32,8 @@ export type InteractionTagPrimaryProps = ComponentProps<Partial<InteractionTagPr
   /**
    * Whether the `InteractionTag` component has a `Secondary` component that provides an secondary action.
    * If `true`, the `InteractionTagPrimary` component will adjust its styles to accommodate the `Secondary` component.
+   *
+   * @default false
    */
   hasSecondaryAction?: boolean;
 };

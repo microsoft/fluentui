@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Wed, 16 Aug 2023 11:38:33 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Aug 2023 13:49:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.1)
+
+Thu, 17 Aug 2023 13:49:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0..@fluentui/react-tree_v9.0.1)
+
+### Patches
+
+- bugfix: headless flat tree itemType manual definition ([PR #28898](https://github.com/microsoft/fluentui/pull/28898) by bernardo.sunderhus@gmail.com)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.0-beta.33..@fluentui/react-tree_v9.0.0)
+
+### Patches
+
+- feat: stable release ([PR #28845](https://github.com/microsoft/fluentui/pull/28845) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-avatar to v9.5.21 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-button to v9.3.31 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.32 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-radio to v9.1.32 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
 
 ## [9.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.0-beta.33)
 
