@@ -128,15 +128,90 @@ export const styles = css`
     color: ${colorNeutralForeground1Static};
     background: ${colorBrandBackgroundInvertedSelected};
   }
-  :host .day:not(.today):not(.selected):hover {
-    background: ${colorBrandBackgroundInvertedHover};
-    color: ${colorNeutralForeground1Static};
+  :host .day {
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    line-height: 32px;
+    width: 32px;
+    position: relative;
+    border-radius: ${borderRadiusMedium};
   }
-  :host .day:not(.today):active {
+  :host .interact .today:not(.inactive) {
+    color: ${colorNeutralForegroundStaticInverted};
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 0;
+  }
+  :host .interact .today:not(.inactive)::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: ${colorBrandBackground};
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+  }
+  :host .interact .today:not(.inactive):not(.selected):hover::before {
+    z-index: -2;
+    content: '';
+    position: absolute;
+    display: block;
+    height: 28px;
+    width: 28px;
+    border-radius: ${borderRadiusMedium};
+    color: ${colorNeutralForeground1Static};
+    background-color: ${colorBrandBackgroundInvertedHover};
+  }
+  :host .interact .today:not(.inactive):not(.selected):active::before {
     background: ${colorBrandBackgroundInvertedSelected};
     color: ${colorNeutralForeground1Static};
   }
-  :host .day.selected {
+  :host .interact .today:not(.inactive).selected::before {
+    z-index: -2;
+    content: '';
+    position: absolute;
+    display: block;
+    height: 28px;
+    width: 28px;
+    border-radius: ${borderRadiusMedium};
+    background: ${colorBrandBackgroundInvertedSelected};
+    color: ${colorNeutralForeground1Static};
+  }
+  :host .day:not(.today):not(.selected):hover::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    display: block;
+    height: 28px;
+    width: 28px;
+    border-radius: ${borderRadiusMedium};
+    color: ${colorNeutralForeground1Static};
+    background-color: ${colorBrandBackgroundInvertedHover};
+  }
+  :host .day:not(.today):active::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    display: block;
+    height: 28px;
+    width: 28px;
+    border-radius: ${borderRadiusMedium};
+    color: ${colorNeutralForeground1Static};
+    background: ${colorBrandBackgroundInvertedSelected};
+  }
+  :host .day:not(.today).selected::after {
+    z-index: -1;
+    content: '';
+    position: absolute;
+    display: block;
+    height: 28px;
+    width: 28px;
+    border-radius: ${borderRadiusMedium};
     color: ${colorNeutralForeground1Static};
     background: ${colorBrandBackgroundInvertedSelected};
   }
@@ -149,11 +224,6 @@ export const styles = css`
     padding: ${spacingVerticalNone} ${spacingHorizontalNone};
     height: 32px;
   }
-  :host .day,
-  .week-day {
-    border-radius: 4px;
-    height: 32px;
-  }
   :host .week-day {
     display: flex;
     flex-direction: column;
@@ -161,11 +231,6 @@ export const styles = css`
     text-align: center;
     border-radius: 0;
     color: ${colorNeutralForeground3};
-  }
-  :host .day {
-    box-sizing: border-box;
-    line-height: 32px;
-    width: 32px;
   }
   :host .interact .day,
   .secondary-panel-cell {
@@ -180,11 +245,6 @@ export const styles = css`
     width: 32px;
     height: 32px;
     border-radius: 4px;
-  }
-  :host .interact .today:not(.inactive) {
-    color: ${colorNeutralForegroundStaticInverted};
-    background: ${colorBrandBackground};
-    border-radius: 16px;
   }
   :host .navicon-container {
     display: flex;

@@ -38,32 +38,39 @@ export function calendarTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
  */
 export function calendarSecondaryPanelTitleTemplate<T extends Calendar>(): ViewTemplate<T> {
   const yearPickerTitle = html`
-    <span aria-labelledby="id-secondary-panel-title"
+    <span
+      aria-live="polite"
+      aria-label="${(x: T) =>
+        `Range of years, ${x.dateFormatter.getYear(x.getYearPickerInfo().decadeStart)} to ${x.dateFormatter.getYear(
+          x.getYearPickerInfo().decadeEnd,
+        )} selected`}"
+    ></span>
+    <span
       >${(x: T) => x.dateFormatter.getYear(x.getYearPickerInfo().decadeStart)}-${(x: T) =>
         x.dateFormatter.getYear(x.getYearPickerInfo().decadeEnd)}</span
     >
   `;
 
   const monthPickerTitle = html`
-    <span aria-labelledby="id-secondary-panel-title"
-      >${(x: T) => x.dateFormatter.getYear(x.getMonthPickerInfo().year)}</span
-    >
+    <span
+      aria-live="polite"
+      aria-label="${(x: T) => `Year picker, ${x.dateFormatter.getYear(x.getMonthPickerInfo().year)} selected`}"
+    ></span>
+    <span>${(x: T) => x.dateFormatter.getYear(x.getMonthPickerInfo().year)}</span>
   `;
 
   return html`
     <div
       class="secondary-panel-title"
       part="secondary-panel-title"
-      id="id-secondary-panel-title"
       tabindex="0"
-      role="button"
       aria-label="${(x: T) =>
         x.yearPickerOpen
           ? `Range of years, ${x.dateFormatter.getYear(x.getYearPickerInfo().decadeStart)} to ${x.dateFormatter.getYear(
               x.getYearPickerInfo().decadeEnd,
             )} selected`
           : `Year picker, ${x.dateFormatter.getYear(x.getMonthPickerInfo().year)} selected`}"
-      aria-live="polite"
+      role="button"
       @click=${x => x.toggleYearPicker()}
       @keydown=${(x, c) => x.handleSecondaryPanelTitleKeydown(c.event as KeyboardEvent)}
     >
