@@ -421,8 +421,8 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
     const divProps = getNativeProps(inputProps!, divProperties);
-    // Need to increase specificity of provided classname since the Field's classname has the same specificity and
-    // therefore will override the values of the provided one.
+    // Need to merge styles so the provided stlyes win over the default ones. This is due to the classnames having the
+    // same specificity.
     const readOnlyTextFieldClassName = mergeStyles(divProps.className, classNames.readOnlyTextField);
 
     // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
