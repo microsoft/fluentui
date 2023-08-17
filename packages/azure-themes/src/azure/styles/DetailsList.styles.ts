@@ -17,7 +17,6 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
     circle: [
       {
         fontSize: 0,
-        paddingTop: 1,
         paddingLeft: 1,
         borderRadius: 2,
         color: semanticColors.listBackground,
@@ -129,9 +128,6 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
                   color: extendedSemanticColors.listLinkHovered,
                 },
               },
-            },
-            ':after': {
-              border: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
             },
             ':focus': {
               backgroundColor: extendedSemanticColors.rowFocus,
