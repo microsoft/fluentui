@@ -33,7 +33,7 @@ test.describe('Button', () => {
     expect(disabledAttribute).toBe('');
 
     await element.evaluate(node => {
-      node.toggleAttribute('disabled');
+      node.removeAttribute('disabled');
     });
 
     const noDisabledAttribute = await control.getAttribute('disabled');
@@ -72,24 +72,6 @@ test.describe('Button', () => {
     });
 
     await expect(control).toHaveAttribute('form', 'foo');
-  });
-
-  test('should set the `autofocus` attribute on the internal control', async () => {
-    await root.evaluate(node => {
-      node.innerHTML = /* html */ `
-                <fluent-button autofocus></fluent-button>
-            `;
-    });
-
-    const AutofocusAttribute = await control.getAttribute('autofocus');
-    expect(AutofocusAttribute).toBe('');
-
-    await element.evaluate(node => {
-      node.toggleAttribute('autofocus');
-    });
-
-    const noAutofocusAttribute = await control.getAttribute('autofocus');
-    expect(noAutofocusAttribute).toBe(null);
   });
 
   test('of type `submit` should submit the parent form when clicked', async () => {
@@ -341,6 +323,7 @@ test.describe('Button', () => {
     });
 
     const booleanAttributes = {
+      autofocus: 'true',
       disabled: 'true',
       disabledFocusable: 'true',
       iconOnly: 'true',
