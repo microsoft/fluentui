@@ -15,6 +15,7 @@ import { FASTAccordion } from '@microsoft/fast-foundation';
 import { FASTAccordionItem } from '@microsoft/fast-foundation';
 import { FASTAnchor } from '@microsoft/fast-foundation';
 import { FASTButton } from '@microsoft/fast-foundation';
+import { FASTCheckbox } from '@microsoft/fast-foundation';
 import { FASTDivider } from '@microsoft/fast-foundation';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
@@ -29,6 +30,7 @@ import { FASTSwitch } from '@microsoft/fast-foundation';
 import { FASTTab } from '@microsoft/fast-foundation';
 import { FASTTabPanel } from '@microsoft/fast-foundation';
 import { FASTTabs } from '@microsoft/fast-foundation';
+import { FASTTextField } from '@microsoft/fast-foundation';
 import { FASTToolbar } from '@microsoft/fast-foundation';
 import { MenuItemRole } from '@microsoft/fast-foundation';
 import { RadioGroupOrientation } from '@microsoft/fast-foundation';
@@ -37,6 +39,7 @@ import { StartEnd } from '@microsoft/fast-foundation';
 import { StartEndOptions } from '@microsoft/fast-foundation';
 import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
 import { TabsOrientation } from '@microsoft/fast-foundation';
+import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
 import type { Theme } from '@fluentui/tokens';
 import { ToolbarOptions } from '@microsoft/fast-foundation';
 import { ToolbarOrientation } from '@microsoft/fast-foundation';
@@ -467,6 +470,49 @@ export type ButtonSize = ValuesOf<typeof ButtonSize>;
 
 // @public
 export const ButtonTemplate: ElementViewTemplate<Button>;
+
+// @public
+export class Checkbox extends FASTCheckbox {
+    labelPosition?: CheckboxLabelPosition;
+    shape?: CheckboxShape;
+    size?: CheckboxSize;
+}
+
+// @public
+export const CheckboxDefinition: FASTElementDefinition<typeof Checkbox>;
+
+// @public
+export const CheckboxLabelPosition: {
+    readonly before: "before";
+    readonly after: "after";
+};
+
+// @public (undocumented)
+export type CheckboxLabelPosition = ValuesOf<typeof CheckboxLabelPosition>;
+
+// @public
+export const CheckboxShape: {
+    readonly circular: "circular";
+    readonly square: "square";
+};
+
+// @public (undocumented)
+export type CheckboxShape = ValuesOf<typeof CheckboxShape>;
+
+// @public
+export const CheckboxSize: {
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public (undocumented)
+export type CheckboxSize = ValuesOf<typeof CheckboxSize>;
+
+// @public
+export const CheckboxStyles: ElementStyles;
+
+// @public
+export const CheckboxTemplate: ElementViewTemplate<Checkbox>;
 
 // @public (undocumented)
 export const colorBackgroundOverlay: CSSDesignToken<string>;
@@ -1878,6 +1924,9 @@ export const RadioTemplate: ElementViewTemplate<Radio>;
 export const setTheme: (theme: Theme) => void;
 
 // @public (undocumented)
+export const setThemeFor: (element: FASTElement, theme: Theme) => void;
+
+// @public (undocumented)
 export const shadow16: CSSDesignToken<string>;
 
 // @public (undocumented)
@@ -2196,6 +2245,46 @@ export const TextFont: {
 
 // @public
 export type TextFont = ValuesOf<typeof TextFont>;
+
+// @public
+export class TextInput extends FASTTextField {
+    appearance?: TextInputAppearance;
+    controlSize?: TextInputControlSize;
+}
+
+// @public
+export const TextInputAppearance: {
+    readonly outline: "outline";
+    readonly underline: "underline";
+    readonly filledLighter: "filled-lighter";
+    readonly filledDarker: "filled-darker";
+};
+
+// @public
+export type TextInputAppearance = ValuesOf<typeof TextInputAppearance>;
+
+// @public
+export const TextInputControlSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type TextInputControlSize = ValuesOf<typeof TextInputControlSize>;
+
+// @public
+export const TextInputDefinition: FASTElementDefinition<typeof TextInput>;
+
+// @public
+export const TextInputStyles: ElementStyles;
+
+// Warning: (ae-internal-missing-underscore) The name "TextInputTemplate" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export const TextInputTemplate: ElementViewTemplate<TextInput>;
+
+export { TextInputType }
 
 // @public
 export const TextSize: {
