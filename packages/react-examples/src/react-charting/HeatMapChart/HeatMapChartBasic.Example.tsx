@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HeatMapChart, IHeatMapChartProps } from '@fluentui/react-charting';
+import { HeatMapChart, IHeatMapChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
 interface IHeatMapChartBasicExampleState {
   width: number;
@@ -39,20 +39,21 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
       {
         value: 100,
         legend: 'Execllent (0-200)',
-        data: [],
+        data: [
+          {
+            x: xPoint[2],
+            y: yPoint[2],
+            value: 46,
+            rectText: 46,
+            ratio: [46, 2391],
+            descriptionMessage: 'air quality is seems to be excellent today',
+          },
+        ],
       },
       {
         value: 250,
         legend: 'Good (201-300)',
         data: [
-          {
-            x: xPoint[2],
-            y: yPoint[2],
-            value: 246,
-            rectText: 246,
-            ratio: [246, 2391],
-            descriptionMessage: 'air quality is seems to be very nice today',
-          },
           {
             x: xPoint[0],
             y: yPoint[1],
@@ -330,8 +331,13 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             yAxisNumberFormatString=".3s"
             width={this.state.width}
             height={this.state.height}
-            domainValuesForColorScale={[0, 600]}
-            rangeValuesForColorScale={['lightblue', 'darkblue']}
+            domainValuesForColorScale={[0, 200, 400, 600]}
+            rangeValuesForColorScale={[
+              getColorFromToken(DataVizPalette.success),
+              getColorFromToken(DataVizPalette.warning),
+              getColorFromToken(DataVizPalette.error),
+              getColorFromToken(DataVizPalette.highError),
+            ]}
           />
         </div>
       </>
