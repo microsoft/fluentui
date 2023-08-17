@@ -26,6 +26,7 @@ export function useFluentProviderContextValues_unstable(state: FluentProviderSta
     overrides_unstable,
     provider,
     textDirection: dir,
+    iconDirection: {},
     tooltip,
     theme,
     themeClassName: applyStylesToPortals ? root.className! : themeClassName,
