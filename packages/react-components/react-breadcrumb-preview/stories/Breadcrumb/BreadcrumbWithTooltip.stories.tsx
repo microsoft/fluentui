@@ -50,13 +50,56 @@ const items: Item[] = [
   },
   {
     key: 4,
+    item: 'Item 5',
+  },
+  {
+    key: 5,
+    item: 'Item 6',
+  },
+  {
+    key: 6,
+    item: 'Item 7',
+  },
+  {
+    key: 7,
+    item: 'Item 8',
+  },
+];
+
+const itemsWithLongNames: Item[] = [
+  {
+    key: 0,
+    item: 'Item 1',
+  },
+  {
+    key: 1,
+    item: 'Item 2',
+  },
+  {
+    key: 2,
+    item: "Item 3 is long even for tooltip. Don't think about what you want to be, but what you want to do.",
+  },
+  {
+    key: 3,
+    item: 'Item 4',
+  },
+  {
+    key: 4,
     item: 'Item 5 which is longer than 30 characters',
   },
   {
     key: 5,
-    item: "Item 6 is long even for tooltip. Don't think about what you want to be, but what you want to do.",
+    item: "Don't think about what you want to be, but what you want to do.",
   },
 ];
+
+const useTooltipStyles = makeStyles({
+  tooltip: {
+    whiteSpace: 'nowrap',
+    ...shorthands.overflow('hidden'),
+    textOverflow: 'ellipsis',
+  },
+});
 
 function renderItem(entry: Item, isLastItem: boolean) {
   return (
@@ -92,7 +135,7 @@ const BreadcrumbMenuItem: React.FC<{ item: Item }> = props => {
 const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
   const { overflowItems, startDisplayedItems, endDisplayedItems } = props;
   const { ref, isOverflowing, overflowCount } = useOverflowMenu<HTMLButtonElement>();
-
+  const tooltipStyles = useTooltipStyles();
   if (!isOverflowing && overflowItems && overflowItems.length === 0) {
     return null;
   }
@@ -100,7 +143,14 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
   return (
     <Menu hasIcons>
       <MenuTrigger disableButtonEnhancement>
-        <Tooltip withArrow content={getTooltipContent(overflowItems)} relationship="label">
+        <Tooltip
+          withArrow
+          content={{
+            children: getTooltipContent(overflowItems),
+            className: tooltipStyles.tooltip,
+          }}
+          relationship="label"
+        >
           <BreadcrumbButton
             id="menu"
             appearance="transparent"
@@ -124,31 +174,21 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
   );
 };
 
-const useStyles = makeStyles({
-  root: {
-    alignItems: 'flex-start',
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'flex-start',
-    ...shorthands.overflow('auto'),
-    ...shorthands.padding('50px', '20px'),
-    rowGap: '20px',
-  },
-});
-
 const getTooltipContent = (breadcrumbItems: readonly Item[] | undefined) => {
   if (!breadcrumbItems) {
     return '';
   }
   return breadcrumbItems.reduce((acc, initialValue, idx, arr) => {
     return (
-      <div style={{ display: 'flex' }}>
+      <>
         {acc}
-        {arr[0].item !== initialValue.item && <BreadcrumbDivider />}
+        {arr[0].item !== initialValue.item && (
+          <BreadcrumbDivider style={{ display: 'inline', verticalAlign: 'middle' }} />
+        )}
         {initialValue.item}
-      </div>
+      </>
     );
-  }, <div style={{ display: 'flex' }} />);
+  }, <React.Fragment />);
 };
 
 const BreadcrumbWithTooltipExample = () => {
@@ -159,7 +199,7 @@ const BreadcrumbWithTooltipExample = () => {
     });
   const lastIdx = items.length - 1;
   return (
-    <Breadcrumb aria-label="breadcrumb-with-overflow">
+    <Breadcrumb aria-label="breadcrumb-with-tootip">
       {startDisplayedItems.map(item => renderItem(item, lastIdx === item.key))}
       {overflowItems && (
         <MenuWithTooltip
@@ -173,30 +213,17 @@ const BreadcrumbWithTooltipExample = () => {
   );
 };
 
-const NonInteractiveBreadcrumb = () => {
-  const lastIdx = items.length - 1;
-  return (
-    <Breadcrumb aria-label="breadcrumb-with-overflow">
-      {items.map(item => (
-        <React.Fragment key={item.key}>
-          <BreadcrumbItem>{item}</BreadcrumbItem>
-          {lastIdx === item.key && <BreadcrumbDivider />}
-        </React.Fragment>
-      ))}
-    </Breadcrumb>
-  );
-};
-
 export const BreadcrumbWithTooltip = () => {
-  const styles = useStyles();
-
+  const itemsLength = itemsWithLongNames.length - 1;
   return (
-    <div className={styles.root}>
+    <>
       <h3>Interactive Breadcrumb with a tooltip</h3>
-      <BreadcrumbWithTooltipExample />
-      <h3>Non-interactive Breadcrumb with a tooltip</h3>
-      {/* <NonInteractiveBreadcrumb /> */}
-    </div>
+      <BreadcrumbWithTooltipExample aria-label="interactive-breadcrumb-with-tooltip" />
+      <h2>Breadcrumb with long names</h2>
+      <Breadcrumb aria-label="breadcrumb-with-long-names">
+        {itemsWithLongNames.map(item => renderItem(item, itemsLength === item.key))}
+      </Breadcrumb>
+    </>
   );
 };
 
