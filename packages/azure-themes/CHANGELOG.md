@@ -1,8 +1,17 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Thu, 18 May 2023 12:22:15 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2023 12:23:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [7.10.38](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.10.38)
+
+Fri, 18 Aug 2023 12:23:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@uifabric/azure-themes_v7.10.37..@uifabric/azure-themes_v7.10.38)
+
+### Patches
+
+- Contrast ratio a11y bug fix for detailslist ([PR #28781](https://github.com/microsoft/fluentui/pull/28781) by 30805892+Jacqueline-ms@users.noreply.github.com)
 
 ## [7.10.37](https://github.com/microsoft/fluentui/tree/@uifabric/azure-themes_v7.10.37)
 

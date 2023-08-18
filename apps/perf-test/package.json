@@ -27,7 +27,7 @@
     "@uifabric/set-version": "^7.0.24",
     "@uifabric/example-app-base": "^7.22.33",
     "@uifabric/example-data": "^7.1.6",
-    "@uifabric/experiments": "^7.45.25",
+    "@uifabric/experiments": "^7.45.26",
     "@microsoft/load-themed-styles": "^1.10.26",
     "office-ui-fabric-react": "^7.204.0",
     "querystring": "^0.2.0",

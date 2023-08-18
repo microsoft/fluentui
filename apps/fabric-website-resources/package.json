@@ -40,7 +40,7 @@
     "@fluentui/react-examples": "^0.15.15",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@uifabric/api-docs": "^7.7.10",
-    "@uifabric/azure-themes": "^7.10.37",
+    "@uifabric/azure-themes": "^7.10.38",
     "@uifabric/example-app-base": "^7.22.33",
     "@uifabric/icons": "^7.9.5",
     "@uifabric/mdl2-theme": "^0.7.33",
