@@ -31,13 +31,41 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-  // TODO add comments with default value
-
+  /**
+   * A Tag can have filled, outlined or brand experience.
+   *
+   * @default 'filled'
+   */
   appearance?: TagAppearance;
+
+  /**
+   * A Tag can show that it cannot be interacted with.
+   *
+   * @default false
+   */
   disabled?: boolean;
+
+  /**
+   * A Tag can be dismissible
+   *
+   * @default false
+   */
   dismissible?: boolean;
+
+  /**
+   * A Tag can have rounded or circular shape.
+   *
+   * @default 'round'
+   */
   shape?: TagShape;
+
+  /**
+   * A Tag has three sizes.
+   *
+   * @default 'medium'
+   */
   size?: TagSize;
+
   /**
    * Unique value identifying the tag within a TagGroup
    */

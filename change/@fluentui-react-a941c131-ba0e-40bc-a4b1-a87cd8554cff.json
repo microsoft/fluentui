@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(DatePicker): Make year picker react to go to today.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
