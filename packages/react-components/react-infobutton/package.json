@@ -23,6 +23,8 @@
     "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
     "start": "yarn storybook",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {

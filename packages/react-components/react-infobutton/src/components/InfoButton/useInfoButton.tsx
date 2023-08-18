@@ -83,12 +83,14 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (e, data) => setPopoverOpen(data.open));
 
   const closeOnTabBack = (ev: KeyboardEvent) => {
-    if (ev.shiftKey && ev.key === 'Tab') {
+    ev.stopPropagation();
+    if (ev.currentTarget === ev.target && ev.shiftKey && ev.key === 'Tab') {
       setPopoverOpen(false);
     }
   };
   const closeOnTabForward = (ev: KeyboardEvent) => {
-    if (ev.key === 'Tab') {
+    ev.stopPropagation();
+    if (ev.currentTarget === ev.target && !ev.shiftKey && ev.key === 'Tab') {
       setPopoverOpen(false);
     }
   };
@@ -97,7 +99,6 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
   const infoTabDismissRef = (element: HTMLDivElement) => {
     if (element) {
       const focusableElements = findAllFocusable(element);
-
       if (focusableElements.length > 0) {
         // We need two events, one for the surface in case the popover is opened but tabbed back right away and one for
         // the first item since the surface can only be focused programmatically because of its tabIndex = -1
@@ -106,7 +107,6 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
           'keydown',
           focusableElements.length > 1 ? closeOnTabBack : mergeCallbacks(closeOnTabBack, closeOnTabForward),
         );
-
         if (focusableElements.length > 1) {
           focusableElements[focusableElements.length - 1].addEventListener('keydown', closeOnTabForward);
         }
