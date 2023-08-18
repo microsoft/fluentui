@@ -3,7 +3,7 @@ import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 import type { Switch } from './switch.js';
 
-test.describe.only('Switch', () => {
+test.describe('Switch', () => {
   let page: Page;
   let element: Locator;
   let root: Locator;
