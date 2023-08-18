@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "BREAKING CHANGE: use JSX children for InteractionTag's action buttons",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

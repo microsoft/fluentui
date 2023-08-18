@@ -190,7 +190,7 @@ export const getDetailsColumnStyles = (props: IDetailsColumnStyleProps): IDetail
 
     accessibleLabel: hiddenContentStyle,
 
-    borderWhileDragging: borderWhileDragging,
+    borderWhileDragging,
 
     noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `outline ${transitionDurationDrag}ms ease` }],
 

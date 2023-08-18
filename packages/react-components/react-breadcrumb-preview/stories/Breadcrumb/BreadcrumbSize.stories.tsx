@@ -5,7 +5,6 @@ import {
   BreadcrumbDivider,
   BreadcrumbProps,
   BreadcrumbButton,
-  BreadcrumbLink,
 } from '@fluentui/react-breadcrumb-preview';
 import { RadioGroup, Radio, Label } from '@fluentui/react-components';
 
@@ -54,24 +53,12 @@ function renderButton(item: Item) {
   );
 }
 
-function renderLink(item: Item) {
-  const isLastItem = items.length - 1 === item.key;
-  return (
-    <React.Fragment key={`link-item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>
-        <BreadcrumbLink>{item.value}</BreadcrumbLink>
-      </BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
-
 export const BreadcrumbSize = () => {
   const [dividerType, setDividerType] = React.useState('chevron' as BreadcrumbProps['dividerType']);
   return (
     <>
       Only small breadcrumbs can have `slash` divider.
-      <h2>Small</h2>
+      <h3>Small</h3>
       <Label>Divider type</Label>
       <RadioGroup
         aria-labelledby="radio-group-divider"
@@ -81,32 +68,21 @@ export const BreadcrumbSize = () => {
         <Radio value="slash" label="Slash" />
         <Radio value="chevron" label="Chevron" />
       </RadioGroup>
+      <h4>Non-interactive item</h4>
       <Breadcrumb aria-label="Small breadcrumb example with slashes" size="small" dividerType={dividerType}>
         {items.map(item => renderItem(item, 'small'))}
       </Breadcrumb>
+      <h4>Breadcrumb with buttons</h4>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">
         {items.map(item => renderButton(item))}
       </Breadcrumb>
-      <Breadcrumb aria-label="Small breadcrumb example with links" size="small">
-        {items.map(item => renderLink(item))}
-      </Breadcrumb>
-      <h2>Medium</h2>
-      <Breadcrumb aria-label="Default breadcrumb">{items.map(item => renderItem(item, 'medium'))}</Breadcrumb>
+      <h3>Medium</h3>
       <Breadcrumb aria-label="Medium breadcrumb example with buttons" size="medium">
         {items.map(item => renderButton(item))}
       </Breadcrumb>
-      <Breadcrumb aria-label="Medium breadcrumb example with links" size="medium">
-        {items.map(item => renderLink(item))}
-      </Breadcrumb>
-      <h2>Large</h2>
-      <Breadcrumb aria-label="Large breadcrumb" size="large">
-        {items.map(item => renderItem(item, 'large'))}
-      </Breadcrumb>
+      <h3>Large</h3>
       <Breadcrumb aria-label="Large breadcrumb example with buttons" size="large">
         {items.map(item => renderButton(item))}
-      </Breadcrumb>
-      <Breadcrumb aria-label="Large breadcrumb example with links" size="large">
-        {items.map(item => renderLink(item))}
       </Breadcrumb>
     </>
   );

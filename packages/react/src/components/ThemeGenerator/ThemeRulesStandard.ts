@@ -107,10 +107,10 @@ export function themeRulesStandardCreator(): IThemeRules {
     const inherits = slotRules[BaseSlots[inheritedBase]];
     const thisSlotRule = {
       name: slotName,
-      inherits: inherits,
+      inherits,
       asShade: inheritedShade,
       isCustomized: false,
-      isBackgroundShade: isBackgroundShade,
+      isBackgroundShade,
       dependentRules: [],
     };
     slotRules[slotName] = thisSlotRule;
