@@ -32,14 +32,17 @@ const useStyles = makeStyles({
   small: {
     height: '24px',
     ...typographyStyles.caption1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
   },
   medium: {
     height: '32px',
     ...typographyStyles.body1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
   },
   large: {
     height: '40px',
     ...typographyStyles.body2,
+    ...shorthands.padding(tokens.spacingHorizontalS),
   },
   overflow: {
     ...shorthands.padding(tokens.spacingHorizontalSNudge),

@@ -27,4 +27,7 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> &
  * State used in rendering BreadcrumbItem
  */
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
-  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;
+  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>> & {
+    // TODO add description
+    isInteractive?: boolean;
+  };
