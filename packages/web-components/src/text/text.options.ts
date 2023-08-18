@@ -1,4 +1,4 @@
-import { ValuesOf } from '@microsoft/fast-foundation';
+import { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 /**
  * TextSize constants

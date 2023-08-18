@@ -3036,23 +3036,23 @@
     eslint-plugin-react "7.24.0"
     eslint-plugin-security "1.4.0"
 
-"@microsoft/fast-element@2.0.0-beta.25":
-  version "2.0.0-beta.25"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.0.0-beta.25.tgz#14af14920ea5d4c24f1ba3f3ee417307aadbaa18"
-  integrity sha512-n8elNmwUXwMgB4ixNdAJqTY5yeSAN9siROojscPgWpYK+aORU4w3Kqr6nqJk6yFgFbPFCwt1jJSt5Fkbd7t1eQ==
+"@microsoft/fast-element@2.0.0-beta.26":
+  version "2.0.0-beta.26"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-2.0.0-beta.26.tgz#c43ddc23c88af4bb190f7f2236d06d7722488f20"
+  integrity sha512-t4x7mlNZdLHg5mTeNAiH9+lpTNFiZTpZZk/YsRGwNBKlw6mEBGT5zYRfQq5X3WhRbXafKmIa4V+etA1kP0ebWw==
 
 "@microsoft/fast-element@^1.10.4":
   version "1.11.0"
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.11.0.tgz#494f6c87057bcbb42406982d68a92887d6b5acb1"
   integrity sha512-VKJYMkS5zgzHHb66sY7AFpYv6IfFhXrjQcAyNgi2ivD65My1XOhtjfKez5ELcLFRJfgZNAxvI8kE69apXERTkw==
 
-"@microsoft/fast-foundation@3.0.0-alpha.29":
-  version "3.0.0-alpha.29"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-3.0.0-alpha.29.tgz#40bc7250982c50d04a8c7b5707986cb0ebb1e07d"
-  integrity sha512-ZWVMhSL5KNskutCTtK2rX2BaL4A9fCHLw8pSUyxaIW9YLxWFEFHBvJ13Ax1JxTQYlXGqM5yMP/74qokEUpZWzw==
+"@microsoft/fast-foundation@3.0.0-alpha.30":
+  version "3.0.0-alpha.30"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-3.0.0-alpha.30.tgz#1c1bde427f38952fb6003c5537ce3636035df9fe"
+  integrity sha512-48TGnD5MIcJl8as13uX9cUUFS3zxRLnBh5yJRjLUz2/Apon6pIKj+qWWZFDZbt5UuGCq/FE5+iiTamK8DjTsew==
   dependencies:
     "@floating-ui/dom" "^1.0.3"
-    "@microsoft/fast-element" "2.0.0-beta.25"
+    "@microsoft/fast-element" "2.0.0-beta.26"
     "@microsoft/fast-web-utilities" "^6.0.0"
     tabbable "^5.2.0"
     tslib "^2.4.0"

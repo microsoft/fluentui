@@ -1,4 +1,5 @@
-import { AnchorOptions, ValuesOf } from '@microsoft/fast-foundation';
+import { AnchorOptions } from '@microsoft/fast-foundation/anchor.js';
+import { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from '../button/button.options.js';
 
 /**
