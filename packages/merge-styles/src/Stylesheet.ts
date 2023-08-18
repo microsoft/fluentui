@@ -1,5 +1,5 @@
 import { IStyle } from './IStyle';
-import { GLOBAL_STYLESHEET_KEY, ShadowConfig } from './shadowConfig';
+import { DEFAULT_SHADOW_CONFIG, GLOBAL_STYLESHEET_KEY, ShadowConfig } from './shadowConfig';
 import { EventHandler, EventMap } from './EventMap';
 
 export const InjectionMode = {
@@ -170,13 +170,8 @@ export class Stylesheet {
   /**
    * Gets the singleton instance.
    */
-  public static getInstance(
-    { stylesheetKey, inShadow, window: win }: ShadowConfig = {
-      stylesheetKey: GLOBAL_STYLESHEET_KEY,
-      inShadow: false,
-      window: undefined,
-    },
-  ): Stylesheet {
+  public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
+    const { stylesheetKey, inShadow, window: win } = shadowConfig ?? DEFAULT_SHADOW_CONFIG;
     const global = (win ?? _global) as typeof _global;
 
     if (stylesheetKey && inShadow) {

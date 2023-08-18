@@ -551,7 +551,7 @@ export class Stylesheet {
     getClassNameCache(): {
         [key: string]: string;
     };
-    static getInstance({ stylesheetKey, inShadow, window: win }?: ShadowConfig): Stylesheet;
+    static getInstance(shadowConfig?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;

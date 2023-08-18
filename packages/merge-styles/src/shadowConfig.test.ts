@@ -1,7 +1,9 @@
-import { GLOBAL_STYLESHEET_KEY, isShadowConfig } from './shadowConfig';
+import { DEFAULT_SHADOW_CONFIG, GLOBAL_STYLESHEET_KEY, isShadowConfig } from './shadowConfig';
 
 describe('shadowConfig', () => {
   it('is a ShadowConfig', () => {
+    expect(isShadowConfig(DEFAULT_SHADOW_CONFIG)).toBe(true);
+
     expect(
       isShadowConfig({
         stylesheetKey: 'foo',

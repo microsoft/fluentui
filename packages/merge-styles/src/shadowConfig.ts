@@ -6,6 +6,12 @@ export type ShadowConfig = {
 
 export const GLOBAL_STYLESHEET_KEY = '__global__';
 
+export const DEFAULT_SHADOW_CONFIG: ShadowConfig = {
+  stylesheetKey: GLOBAL_STYLESHEET_KEY,
+  inShadow: false,
+  window: undefined,
+} as const;
+
 export const isShadowConfig = (obj: unknown): obj is ShadowConfig => {
   if (!obj) {
     return false;
