@@ -22,7 +22,7 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import type { ShadowConfig } from '@fluentui/merge-styles';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public

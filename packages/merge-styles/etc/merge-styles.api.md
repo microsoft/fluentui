@@ -464,7 +464,6 @@ export interface IStyleSheetConfig {
 export function keyframes(timeline: IKeyframes): string;
 
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "ShadowConfig" needs to be exported by the entry point index.d.ts
 //
 // @public
 export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions, shadowConfig?: ShadowConfig): string;
@@ -525,6 +524,13 @@ export { Omit_2 as Omit }
 
 // @public
 export function setRTL(isRTL: boolean): void;
+
+// @public (undocumented)
+export type ShadowConfig = {
+    stylesheetKey: string;
+    inShadow: boolean;
+    window?: Window;
+};
 
 // @public
 export class Stylesheet {

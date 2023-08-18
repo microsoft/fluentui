@@ -39,4 +39,6 @@ export { setRTL } from './StyleOptionsState';
 
 export type { ObjectOnly } from './ObjectOnly';
 
+export type { ShadowConfig } from './shadowConfig';
+
 import './version';
