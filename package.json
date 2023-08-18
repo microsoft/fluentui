@@ -24,7 +24,7 @@
     "check:change": "beachball check --scope packages/web-components -b web-components-v3",
     "check:modified-files": "node -r ./scripts/ts-node/register ./scripts/executors/check-for-modified-files",
     "check:affected-package": "node ./scripts/executors/checkIfPackagesAffected.js",
-    "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/html|@storybook/mdx2-csf|svelte|@testing-library|vue|@cypress/react|cypress|@swc/wasm|@cactuslab/usepubsub|react-vis|@microsoft/load-themed-styles\"",
+    "check:installed-dependencies-versions": "satisfied --skip-invalid --ignore \"prettier|angular|lit|sass|@storybook/html|@storybook/mdx2-csf|svelte|@testing-library|vue|@cypress/react|cypress|@swc/wasm|@cactuslab/usepubsub|react-vis|@microsoft/load-themed-styles|eslint-plugin-playwright\"",
     "clean": "lage clean --verbose",
     "code-style": "lage code-style --verbose",
     "codepen": "cd packages/react && node ../../scripts/executors/local-codepen.js",
