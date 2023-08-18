@@ -48,6 +48,10 @@ export const parameters = {
       'react-dom': '^17',
       // necessary when using typescript in CodeSandbox
       'react-scripts': 'latest',
+      // Most recent minor version of @swc/helpers 0.4 depends on
+      // @swc/helpers version 0.4.14 which CodeSanbox doesn't seem to pick up.
+      // Explicitly adding 0.4.14 is necessary to properly build react-components in CodeSandbox.
+      '@swc/helpers': '0.4.14',
     },
     optionalDependencies: {
       '@fluentui/react-components': '^9.0.0', // necessary for FluentProvider
