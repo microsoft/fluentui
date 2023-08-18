@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN.",
-  "packageName": "@fluentui/style-utilities",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "patch"
-}
