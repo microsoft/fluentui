@@ -16,7 +16,7 @@ export const Dismiss = () => {
   return (
     <TagGroup onDismiss={removeItem}>
       {visibleTags.map(tag => (
-        <Tag dismissible value={tag.value} key={tag.value} aria-label={`${tag.children}, remove`}>
+        <Tag dismissible dismissIcon={{ 'aria-label': 'remove' }} value={tag.value} key={tag.value}>
           {tag.children}
         </Tag>
       ))}
@@ -28,7 +28,8 @@ Dismiss.storyName = 'Dismiss';
 Dismiss.parameters = {
   docs: {
     description: {
-      story: 'A tag can have a dismiss icon. TagGroup can handle dismiss for a collection of tags.',
+      story:
+        'A tag can have a dismiss icon and become focusable. TagGroup can handle dismiss for a collection of tags.',
     },
   },
 };
