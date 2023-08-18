@@ -27,21 +27,23 @@ const defaultButtonStyles = {
 };
 const useStyles = makeStyles({
   root: {
-    ...shorthands.padding(tokens.spacingHorizontalNone),
     minWidth: 'unset',
     textWrap: 'nowrap',
   },
   small: {
     height: '24px',
     ...typographyStyles.caption1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
   },
   medium: {
     height: '32px',
     ...typographyStyles.body1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
   },
   large: {
     height: '40px',
     ...typographyStyles.body2,
+    ...shorthands.padding(tokens.spacingHorizontalS),
   },
   current: {
     ':hover': {

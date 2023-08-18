@@ -47,6 +47,9 @@ const useStyles = makeStyles({
   currentLarge: {
     ...typographyStyles.subtitle2,
   },
+  noSpacing: {
+    ...shorthands.padding(0),
+  },
 });
 
 const useIconStyles = makeStyles({
@@ -82,11 +85,15 @@ export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): Br
     medium: styles.currentMedium,
     large: styles.currentLarge,
   };
+  const noSpacingStyle =
+    state.isInteractive || (!state.isInteractive && state.size === 'small') ? styles.noSpacing : '';
+
   state.root.className = mergeClasses(
     breadcrumbItemClassNames.root,
     styles.root,
     styles[size],
     state.current && currentSizeMap[size],
+    noSpacingStyle,
     state.root.className,
   );
 
