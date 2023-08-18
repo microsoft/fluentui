@@ -221,6 +221,7 @@ export const styles = css`
     height: 16px;
     cursor: pointer;
     vertical-align: middle;
+    border-radius: ${borderRadiusMedium};
   }
   :host .header {
     width: 248px;
@@ -260,12 +261,14 @@ export const styles = css`
     animation-duration: 0.367s;
     animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
   }
-  :host .week.animated-up {
+  :host .week.animated-up,
+  .secondary-panel-row.animated-up {
     animation: FadeIn, SlideUpIn20;
     animation-duration: 0.367s;
     animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
   }
-  :host .week.animated-down {
+  :host .week.animated-down,
+  .secondary-panel-row.animated-down {
     animation: FadeIn, SlideDownIn20;
     animation-duration: 0.367s;
     animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);

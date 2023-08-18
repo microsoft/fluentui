@@ -287,8 +287,20 @@ export class Calendar extends FASTCalendar {
 
     if ((month < this.month && year == this.year) || year < this.year) {
       this.prevMonthTransition();
-    } else {
+    } else if ((month > this.month && year == this.year) || year > this.year) {
       this.nextMonthTransition();
+    }
+
+    if (
+      (year < this.monthPickerYear && !this.yearPickerOpen) ||
+      (year < this.getYearPickerInfo().decadeStart && this.yearPickerOpen)
+    ) {
+      this.secondaryPanelTransition('previous');
+    } else if (
+      (year > this.monthPickerYear && !this.yearPickerOpen) ||
+      (year > this.getYearPickerInfo().decadeEnd && this.yearPickerOpen)
+    ) {
+      this.secondaryPanelTransition('next');
     }
 
     this.year = year;
@@ -298,8 +310,21 @@ export class Calendar extends FASTCalendar {
     this.yearPickerDecade = year - (year % 10);
   }
 
-  public prevMonthTransition() {
-    console.log('prev');
+  public handleSwitchSecondaryPanel(direction: string) {
+    if (direction === 'previous') {
+      this.yearPickerOpen
+        ? (this.yearPickerDecade = this.getYearPickerInfo().previousStart)
+        : (this.monthPickerYear = this.getMonthPickerInfo().previous);
+    } else if (direction === 'next') {
+      this.yearPickerOpen
+        ? (this.yearPickerDecade = this.getYearPickerInfo().nextStart)
+        : (this.monthPickerYear = this.getMonthPickerInfo().next);
+    }
+
+    this.secondaryPanelTransition(direction);
+  }
+
+  private prevMonthTransition() {
     Updates.enqueue(() => {
       const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
 
@@ -317,8 +342,7 @@ export class Calendar extends FASTCalendar {
     });
   }
 
-  public nextMonthTransition() {
-    console.log('next');
+  private nextMonthTransition() {
     Updates.enqueue(() => {
       const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
 
@@ -333,6 +357,40 @@ export class Calendar extends FASTCalendar {
       setTimeout(() => {
         lastTransitionRow.classList.remove('animated');
         rows?.forEach(row => row.classList.remove('animated-down'));
+      }, 367);
+    });
+  }
+
+  private secondaryPanelTransition(direction: string) {
+    Updates.enqueue(() => {
+      const secondaryPanelRows =
+        this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.secondary-panel-row'));
+
+      if (direction === 'previous') {
+        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-up'));
+      } else if (direction === 'next') {
+        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-down'));
+      }
+
+      setTimeout(() => {
+        if (direction === 'previous') {
+          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-up'));
+        } else if (direction === 'next') {
+          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-down'));
+        }
+      }, 367);
+    });
+  }
+
+  private nextSecondaryPanelTransition() {
+    Updates.enqueue(() => {
+      const secondaryPanelRows =
+        this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.secondary-panel-row'));
+
+      secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-up'));
+
+      setTimeout(() => {
+        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-up'));
       }, 367);
     });
   }
@@ -662,9 +720,7 @@ export class Calendar extends FASTCalendar {
 
         // Check if reached the end of the current year/decade
         if (index === this.secondaryPanelCells.length - 1) {
-          this.yearPickerOpen
-            ? (this.yearPickerDecade = this.getYearPickerInfo().nextStart)
-            : (this.monthPickerYear = this.getMonthPickerInfo().next);
+          this.handleSwitchSecondaryPanel('next');
           return true;
         }
         index = (index + 1) % this.secondaryPanelCells.length;
@@ -673,9 +729,7 @@ export class Calendar extends FASTCalendar {
       case keyArrowLeft: {
         event.preventDefault();
         if (index === 0) {
-          this.yearPickerOpen
-            ? (this.yearPickerDecade = this.getYearPickerInfo().previousStart)
-            : (this.monthPickerYear = this.getMonthPickerInfo().previous);
+          this.handleSwitchSecondaryPanel('previous');
           return true;
         }
         index = (index - 1) % this.secondaryPanelCells.length;
@@ -684,9 +738,7 @@ export class Calendar extends FASTCalendar {
       case keyArrowDown: {
         event.preventDefault();
         if (index >= this.secondaryPanelCells.length - 4) {
-          this.yearPickerOpen
-            ? (this.yearPickerDecade = this.getYearPickerInfo().nextStart)
-            : (this.monthPickerYear = this.getMonthPickerInfo().next);
+          this.handleSwitchSecondaryPanel('next');
         }
         index = (index + 4) % this.secondaryPanelCells.length;
         break;
@@ -694,11 +746,9 @@ export class Calendar extends FASTCalendar {
       case keyArrowUp: {
         event.preventDefault();
         if (index < 4) {
-          this.yearPickerOpen
-            ? (this.yearPickerDecade = this.getYearPickerInfo().previousStart)
-            : (this.monthPickerYear = this.getMonthPickerInfo().previous);
+          this.handleSwitchSecondaryPanel('previous');
         }
-        index = (index - 4) % this.secondaryPanelCells.length;
+        index = (index - 4 + this.secondaryPanelCells.length) % this.secondaryPanelCells.length;
         break;
       }
       case keyHome: {

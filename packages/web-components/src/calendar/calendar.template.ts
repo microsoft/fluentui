@@ -262,10 +262,7 @@ export const template: ElementViewTemplate<Calendar> = html`
                 aria-label="Previous Year"
                 aria-pressed="true"
                 tabindex="0"
-                @click="${x =>
-                  x.yearPickerOpen
-                    ? (x.yearPickerDecade = x.getYearPickerInfo().previousStart)
-                    : (x.monthPickerYear = x.getMonthPickerInfo().previous)}"
+                @click="${x => x.handleSwitchSecondaryPanel('previous')}"
                 @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'previous')}
               >
                 ${ArrowUp16}
@@ -277,10 +274,7 @@ export const template: ElementViewTemplate<Calendar> = html`
                 aria-label="Next Year"
                 aria-pressed="true"
                 tabindex="0"
-                @click="${x =>
-                  x.yearPickerOpen
-                    ? (x.yearPickerDecade = x.getYearPickerInfo().nextStart)
-                    : (x.monthPickerYear = x.getMonthPickerInfo().next)}"
+                @click="${x => x.handleSwitchSecondaryPanel('next')}"
                 @keydown=${(x, c) => x.handleNavIconKeydown(c.event as KeyboardEvent, 'secondary', 'next')}
               >
                 ${ArrowDown16}
