@@ -356,7 +356,7 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import { ShadowConfig } from '@fluentui/merge-styles';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';

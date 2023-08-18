@@ -2,7 +2,7 @@ import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory TextField}

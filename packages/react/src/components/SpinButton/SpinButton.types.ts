@@ -5,7 +5,7 @@ import type { IIconProps } from '../../Icon';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory SpinButton}

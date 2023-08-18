@@ -2,7 +2,7 @@ import { memoizeFunction } from '../../Utilities';
 import { getGlobalClassNames, mergeStyleSets } from '../../Styling';
 import type { ITheme } from '../../Styling';
 import type { IButtonStyles } from './Button.types';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import type { ShadowConfig } from '@fluentui/merge-styles';
 
 export interface IButtonClassNames {
   root?: string;

@@ -9,7 +9,7 @@ import type { IContextualMenuProps } from '../../ContextualMenu';
 import type { IIconProps } from '../../Icon';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory Button}
