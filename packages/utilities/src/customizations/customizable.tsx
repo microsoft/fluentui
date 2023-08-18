@@ -83,8 +83,6 @@ export function customizable(
                         this._styleCache.default = defaultProps.styles;
                         this._styleCache.component = componentProps.styles;
                         this._styleCache.merged = mergedStyles;
-                        // this._styleCache.merged.__stylesheetKey__ = scope;
-                        // this._styleCache.merged.__inShadow__ = inShadow;
                       }
 
                       return (
