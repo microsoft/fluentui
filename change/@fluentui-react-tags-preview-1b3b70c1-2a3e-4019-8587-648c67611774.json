@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: tag changes hover pointer only when hovering dismiss icon",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

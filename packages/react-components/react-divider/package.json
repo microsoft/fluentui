@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-divider",
-  "version": "9.2.26",
+  "version": "9.2.27",
   "description": "Fluent UI component to visually separate content.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,7 +33,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.16",
+    "@fluentui/react-jsx-runtime": "^9.0.0",
     "@fluentui/react-shared-contexts": "^9.7.2",
     "@fluentui/react-theme": "^9.1.11",
     "@fluentui/react-utilities": "^9.11.1",
