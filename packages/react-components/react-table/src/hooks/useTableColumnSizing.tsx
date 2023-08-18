@@ -75,6 +75,13 @@ function useTableColumnSizingState<TItem>(
       setColumnWidth: (columnId: TableColumnId, w: number) =>
         columnResizeState.setColumnWidth(undefined, { columnId, width: w }),
       getColumnWidths: columnResizeState.getColumns,
+      getTableProps: () => {
+        return {
+          style: {
+            width: columnResizeState.getColumns().reduce((acc, col) => acc + col.width, 0),
+          },
+        };
+      },
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
 

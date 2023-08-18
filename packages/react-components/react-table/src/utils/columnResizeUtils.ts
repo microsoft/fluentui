@@ -148,12 +148,17 @@ export function setColumnProperty(
  * @param containerWidth
  * @returns
  */
-export function adjustColumnWidthsToFitContainer(state: ColumnWidthState[], containerWidth: number) {
+export function adjustColumnWidthsToFitContainer(
+  state: ColumnWidthState[],
+  containerWidth: number,
+  constrainMinWidth = true,
+  constrainMaxWidth = true,
+) {
   let newState = state;
   const totalWidth = getTotalWidth(newState);
 
   // The total width is smaller, we are expanding columns
-  if (totalWidth < containerWidth) {
+  if (totalWidth < containerWidth && constrainMinWidth) {
     let difference = containerWidth - totalWidth;
     let i = 0;
     // We start at the beginning and assign the columns their ideal width
@@ -174,7 +179,7 @@ export function adjustColumnWidthsToFitContainer(state: ColumnWidthState[], cont
   }
 
   // The total width is larger than container, we need to squash the columns
-  else if (totalWidth >= containerWidth) {
+  else if (totalWidth >= containerWidth && constrainMaxWidth) {
     let difference = totalWidth - containerWidth;
     // We start with the last column
     let j = newState.length - 1;

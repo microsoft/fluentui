@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SortDirection } from '../components/Table/Table.types';
+import { SortDirection, TableProps } from '../components/Table/Table.types';
 import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 import { SelectionMode } from '@fluentui/react-utilities';
 
@@ -176,6 +176,7 @@ export interface ColumnWidthState {
 }
 
 export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
+export type ColumnSizingTableProps = Partial<TableProps>;
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
 export type EnableKeyboardModeOnChangeCallback = (columnId: TableColumnId, isKeyboardMode: boolean) => void;
@@ -184,6 +185,7 @@ export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
+  getTableProps: () => ColumnSizingTableProps;
   getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
   getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
   enableKeyboardMode: (
@@ -214,4 +216,6 @@ export type UseTableColumnSizingParams = {
     data: { columnId: TableColumnId; width: number },
   ) => void;
   containerWidthOffset?: number;
+  constrainMinWidth?: boolean;
+  constrainMaxWidth?: boolean;
 };

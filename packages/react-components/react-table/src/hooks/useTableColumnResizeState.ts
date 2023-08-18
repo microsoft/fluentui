@@ -21,6 +21,8 @@ type ComponentState<T> = {
   containerWidth: number;
   columnWidthState: ColumnWidthState[];
   columnSizingOptions: TableColumnSizingOptions | undefined;
+  constrainMinWidth?: boolean;
+  constrainMaxWidth?: boolean;
 };
 
 type ColumnResizeStateAction<T> =
@@ -50,7 +52,12 @@ const createReducer =
         return {
           ...state,
           containerWidth: action.containerWidth,
-          columnWidthState: adjustColumnWidthsToFitContainer(state.columnWidthState, action.containerWidth),
+          columnWidthState: adjustColumnWidthsToFitContainer(
+            state.columnWidthState,
+            action.containerWidth,
+            state.constrainMinWidth,
+            state.constrainMaxWidth,
+          ),
         };
 
       case 'COLUMNS_UPDATED':
@@ -58,7 +65,12 @@ const createReducer =
         return {
           ...state,
           columns: action.columns,
-          columnWidthState: adjustColumnWidthsToFitContainer(newS, state.containerWidth),
+          columnWidthState: adjustColumnWidthsToFitContainer(
+            newS,
+            state.containerWidth,
+            state.constrainMinWidth,
+            state.constrainMaxWidth,
+          ),
         };
 
       case 'COLUMN_SIZING_OPTIONS_UPDATED':
@@ -66,7 +78,12 @@ const createReducer =
         return {
           ...state,
           columnSizingOptions: action.columnSizingOptions,
-          columnWidthState: adjustColumnWidthsToFitContainer(newState, state.containerWidth),
+          columnWidthState: adjustColumnWidthsToFitContainer(
+            newState,
+            state.containerWidth,
+            state.constrainMinWidth,
+            state.constrainMaxWidth,
+          ),
         };
 
       case 'SET_COLUMN_WIDTH':
@@ -85,7 +102,12 @@ const createReducer =
         // Set this width as idealWidth, because its a deliberate change, not a recalculation because of container
         newColumnWidthState = setColumnProperty(newColumnWidthState, columnId, 'idealWidth', width);
         // Adjust the widths to the container size
-        newColumnWidthState = adjustColumnWidthsToFitContainer(newColumnWidthState, containerWidth);
+        newColumnWidthState = adjustColumnWidthsToFitContainer(
+          newColumnWidthState,
+          containerWidth,
+          state.constrainMinWidth,
+          state.constrainMaxWidth,
+        );
 
         return { ...state, columnWidthState: newColumnWidthState };
     }
@@ -96,7 +118,7 @@ export function useTableColumnResizeState<T>(
   containerWidth: number,
   params: UseTableColumnSizingParams = {},
 ): ColumnResizeState {
-  const { onColumnResize, columnSizingOptions } = params;
+  const { onColumnResize, columnSizingOptions, constrainMaxWidth, constrainMinWidth } = params;
 
   const reducer = React.useMemo(() => createReducer<T>(), []);
 
@@ -105,6 +127,8 @@ export function useTableColumnResizeState<T>(
     containerWidth: 0,
     columnWidthState: columnDefinitionsToState(columns, undefined, columnSizingOptions),
     columnSizingOptions,
+    constrainMinWidth: constrainMinWidth ?? true,
+    constrainMaxWidth: constrainMaxWidth ?? true,
   });
 
   useIsomorphicLayoutEffect(() => {
