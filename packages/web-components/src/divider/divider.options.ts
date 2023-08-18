@@ -1,5 +1,5 @@
 import { DividerOrientation, DividerRole } from '@microsoft/fast-foundation/divider.js';
-import { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 /**
  * Fast Foundation DividerRole property
