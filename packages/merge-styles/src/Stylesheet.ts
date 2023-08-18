@@ -386,7 +386,6 @@ export class Stylesheet {
     const { namespace } = this._config;
     const prefix = displayName || this._config.defaultPrefix;
 
-    // return `${namespace ? namespace + '-' : ''}${prefix}-${this._counter++}`;
     return `${namespace ? namespace + '-' : ''}${prefix}-${this._counter++}`;
   }
 
