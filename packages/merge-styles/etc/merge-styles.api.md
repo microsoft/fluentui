@@ -39,8 +39,6 @@ export function fontFace(font: IFontFace): void;
 // @public (undocumented)
 export const GLOBAL_STYLESHEET_KEY = "__global__";
 
-// Warning: (ae-forgotten-export) The symbol "IStylesheetKey" needs to be exported by the entry point index.d.ts
-//
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
@@ -48,7 +46,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
     };
-} & IStylesheetKey;
+};
 
 // @public
 export interface ICSPSettings {
@@ -95,7 +93,7 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     subComponentStyles: {
         [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never>;
     };
-} & IStylesheetKey;
+};
 
 // @public
 export interface IRawFontStyle {
@@ -433,7 +431,7 @@ export interface IStyleBaseArray extends Array<IStyle> {
 }
 
 // @public
-export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps, __stylesheetKey__?: string) => DeepPartial<TStyleSet>;
+export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => DeepPartial<TStyleSet>;
 
 // @public
 export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = IStyleFunction<TStylesProps, TStyleSet> | DeepPartial<TStyleSet>;
@@ -447,7 +445,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
     };
-} & IStylesheetKey;
+};
 
 // @public
 export interface IStyleSheetConfig {
