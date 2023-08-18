@@ -8,7 +8,7 @@ import { provideUnits } from './transforms/provideUnits';
 import { rtlifyRules } from './transforms/rtlifyRules';
 import { IStyleOptions } from './IStyleOptions';
 import { tokenizeWithParentheses } from './tokenizeWithParentheses';
-import { ShadowConfig } from './mergeStyleSets';
+import { ShadowConfig } from './shadowConfig';
 
 const DISPLAY_NAME = 'displayName';
 

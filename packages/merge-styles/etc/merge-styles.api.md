@@ -509,7 +509,7 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TS
 export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
 export function mergeStyleSets(shadowConfig: ShadowConfig, ...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;

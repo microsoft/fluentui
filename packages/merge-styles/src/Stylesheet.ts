@@ -1,5 +1,5 @@
 import { IStyle } from './IStyle';
-import { ShadowConfig } from './mergeStyleSets';
+import { ShadowConfig } from './shadowConfig';
 import { EventHandler, EventMap } from './EventMap';
 
 export const InjectionMode = {

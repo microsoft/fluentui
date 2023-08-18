@@ -1,7 +1,7 @@
 import { InjectionMode, Stylesheet } from './Stylesheet';
 import { styleToClassName } from './styleToClassName';
 import { IStyleOptions } from './IStyleOptions';
-import { ShadowConfig } from './mergeStyleSets';
+import { ShadowConfig } from './shadowConfig';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
 

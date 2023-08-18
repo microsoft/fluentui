@@ -1,7 +1,7 @@
 import { extractStyleParts } from './extractStyleParts';
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { IStyleOptions } from './IStyleOptions';
-import { ShadowConfig } from './mergeStyleSets';
+import { ShadowConfig } from './shadowConfig';
 import { getStyleOptions } from './StyleOptionsState';
 import { styleToClassName } from './styleToClassName';
 
