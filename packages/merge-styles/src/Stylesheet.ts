@@ -1,5 +1,5 @@
 import { IStyle } from './IStyle';
-import { ShadowConfig } from './shadowConfig';
+import { GLOBAL_STYLESHEET_KEY, ShadowConfig } from './shadowConfig';
 import { EventHandler, EventMap } from './EventMap';
 
 export const InjectionMode = {
@@ -172,7 +172,7 @@ export class Stylesheet {
    */
   public static getInstance(
     { stylesheetKey, inShadow, window: win }: ShadowConfig = {
-      stylesheetKey: '__global__',
+      stylesheetKey: GLOBAL_STYLESHEET_KEY,
       inShadow: false,
       window: undefined,
     },
@@ -195,7 +195,7 @@ export class Stylesheet {
       const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet, stylesheetKey);
       _stylesheet = stylesheet;
       if (stylesheetKey) {
-        if (inShadow || stylesheetKey === '__global__') {
+        if (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY) {
           if (!global[ADOPTED_STYLESHEETS]) {
             global[ADOPTED_STYLESHEETS] = new EventMap();
           }
@@ -206,7 +206,7 @@ export class Stylesheet {
           });
         }
 
-        if (stylesheetKey === '__global__') {
+        if (stylesheetKey === GLOBAL_STYLESHEET_KEY) {
           global[STYLESHEET_SETTING] = stylesheet;
         }
       } else {
@@ -302,7 +302,7 @@ export class Stylesheet {
 
     // When something is inserted globally, outside of a shadow context
     // we proably still need to adopt it in the shadow context
-    if (stylesheetKey === '__global__') {
+    if (stylesheetKey === GLOBAL_STYLESHEET_KEY) {
       if (this._config.injectionMode === InjectionMode.insertNode) {
         this._config.injectionMode = InjectionMode.insertNodeAndConstructableStylesheet;
       } else if (this._config.injectionMode === InjectionMode.appedChildAndConstructableStylesheet) {
@@ -592,7 +592,7 @@ export class Stylesheet {
 
     styleElement.setAttribute('data-merge-styles', 'true');
 
-    if (this._stylesheetKey === '__global__') {
+    if (this._stylesheetKey === GLOBAL_STYLESHEET_KEY) {
       styleElement.setAttribute('data-merge-styles-global', 'true');
     }
 

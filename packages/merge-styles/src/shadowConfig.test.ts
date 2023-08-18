@@ -1,4 +1,4 @@
-import { ShadowConfig, isShadowConfig } from './shadowConfig';
+import { GLOBAL_STYLESHEET_KEY, isShadowConfig } from './shadowConfig';
 
 describe('shadowConfig', () => {
   it('is a ShadowConfig', () => {
@@ -18,7 +18,7 @@ describe('shadowConfig', () => {
 
     expect(
       isShadowConfig({
-        stylesheetKey: '__global__',
+        stylesheetKey: GLOBAL_STYLESHEET_KEY,
         inShadow: false,
         window: {},
       }),
@@ -34,7 +34,7 @@ describe('shadowConfig', () => {
 
     expect(
       isShadowConfig({
-        stylesheetKey: '__global__',
+        stylesheetKey: GLOBAL_STYLESHEET_KEY,
         inShadow: true,
         window: undefined,
       }),
@@ -64,7 +64,7 @@ describe('shadowConfig', () => {
 
     expect(
       isShadowConfig({
-        stylesheetKey: '__global__',
+        stylesheetKey: GLOBAL_STYLESHEET_KEY,
         inShadow: true,
         window: null,
       }),

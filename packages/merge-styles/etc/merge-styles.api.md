@@ -36,6 +36,9 @@ export type DeepPartial<T> = {
 // @public
 export function fontFace(font: IFontFace): void;
 
+// @public (undocumented)
+export const GLOBAL_STYLESHEET_KEY = "__global__";
+
 // Warning: (ae-forgotten-export) The symbol "IStylesheetKey" needs to be exported by the entry point index.d.ts
 //
 // @public

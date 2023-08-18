@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { GLOBAL_STYLESHEET_KEY } from '@fluentui/merge-styles';
 import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
@@ -54,7 +55,7 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
   stylesheetKey,
   children,
 }) => {
-  useAdoptedStylesheet_unstable('__global__');
+  useAdoptedStylesheet_unstable(GLOBAL_STYLESHEET_KEY);
   // useAdoptedStylesheet_unstable('IconButton');
   // useAdoptedStylesheet_unstable('Fabric');
   useAdoptedStylesheet_unstable(stylesheetKey);
@@ -68,7 +69,7 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
 
 const GlobalStyles: React.FC = props => {
   // useAdoptedStylesheet_unstable('@fluentui/style-utilities', true);
-  useAdoptedStylesheet_unstable('__global__');
+  useAdoptedStylesheet_unstable(GLOBAL_STYLESHEET_KEY);
   return null;
 };
 

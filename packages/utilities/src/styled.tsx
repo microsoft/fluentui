@@ -140,22 +140,9 @@ export function styled<
         !customizedStyles && !propStyles;
 
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
-      // // eslint-disable-next-line
-      // // @ts-ignore
-      // styles.current.__stylesheetKey__ = stylesheetKey;
-      // // eslint-disable-next-line
-      // // @ts-ignore
-      // styles.current.__inShadow__ = inShadow;
     }
 
     useAdoptedStylesheet_unstable(scope);
-
-    // const inShadow = useAdoptedStylesheet_unstable(stylesheetKey);
-    // if (styles.current) {
-    //   // eslint-disable-next-line
-    //   // @ts-ignore
-    //   styles.current.__stylesheetKey__ = inShadow ? stylesheetKey : undefined;
-    // }
 
     return (
       <Component
