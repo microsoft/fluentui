@@ -7,15 +7,12 @@ test.describe('Switch', () => {
   let page: Page;
   let element: Locator;
   let root: Locator;
-  let form: Locator;
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
 
     element = page.locator('fluent-switch');
 
     root = page.locator('#root');
-
-    form = page.locator('form');
 
     await page.goto(fixtureURL('components-switch--switch'));
   });
@@ -48,8 +45,7 @@ test.describe('Switch', () => {
     const switchElement = page.locator('fluent-switch');
 
     expect(await switchElement.textContent()).toContain(testValue);
-
-    expect(await switchElement.getAttribute('current-value')).toBe(testValue);
+    await expect(switchElement).toHaveAttribute('current-value', testValue);
   });
 
   test('should set and retrieve the `label-position` property correctly', async () => {
