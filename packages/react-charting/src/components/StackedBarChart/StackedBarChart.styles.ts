@@ -31,6 +31,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       height: barHeight ? barHeight : 12,
       display: 'block',
       marginBottom: showTriangle ? '16px' : '10px',
+      overflow: 'visible',
     },
     chartTitle: {
       ...theme.fonts.small,
@@ -51,10 +52,9 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
-      stroke: theme.palette.white,
-      strokeWidth: 2,
       selectors: {
         '&:focus': {
+          outlineColor: theme.palette.black,
           stroke: theme.palette.black,
           strokeWidth: '2px',
         },
