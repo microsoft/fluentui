@@ -13,6 +13,8 @@ import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Motion } from '@fluentui/react-motion-preview';
+import { MotionShorthand } from '@fluentui/react-motion-preview';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -126,7 +128,7 @@ export type DrawerInlineSlots = {
 };
 
 // @public
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerInlineProps & DrawerBaseState;
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & Omit<DrawerInlineProps, 'open' | 'defaultOpen' | 'motion'> & DrawerBaseState;
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
@@ -143,9 +145,9 @@ export type DrawerOverlaySlots = DialogSurfaceSlots & {
 };
 
 // @public
-export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseProps & DrawerBaseState & {
+export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & Omit<DrawerBaseProps, 'open' | 'defaultOpen'> & DrawerBaseState & {
     dialog: DialogProps;
-    backdropVisible: boolean;
+    backdropMotion: Motion<HTMLDivElement>;
 };
 
 // @public
@@ -183,7 +185,7 @@ export const renderDrawerHeaderTitle_unstable: (state: DrawerHeaderTitleState) =
 export const renderDrawerInline_unstable: (state: DrawerInlineState) => JSX.Element | null;
 
 // @public
-export const renderDrawerOverlay_unstable: (state: DrawerOverlayState) => JSX.Element;
+export const renderDrawerOverlay_unstable: (state: DrawerOverlayState) => JSX.Element | null;
 
 // @public
 export const useDrawer_unstable: (props: DrawerProps, ref: React_2.Ref<HTMLElement>) => DrawerState;

@@ -81,9 +81,7 @@ export const CustomInlineAnimation = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const motion = useMotion<HTMLDivElement>({
-    presence: isOpen,
-  });
+  const motion = useMotion<HTMLDivElement>(isOpen);
 
   return (
     <div className={styles.root}>

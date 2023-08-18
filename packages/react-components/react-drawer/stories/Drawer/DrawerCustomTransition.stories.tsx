@@ -28,9 +28,7 @@ export const CustomTransition = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const motion = useMotion({
-    presence: isOpen,
-  });
+  const motion = useMotion<HTMLDivElement>(isOpen);
 
   return (
     <div>

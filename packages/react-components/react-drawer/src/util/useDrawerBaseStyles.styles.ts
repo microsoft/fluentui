@@ -86,14 +86,14 @@ export const useDrawerDurationStyles = makeStyles({
 });
 
 export const getDrawerBaseClassNames = (
-  { position, size, motionState }: DrawerBaseState & DrawerBaseProps,
+  { position, size, motion }: DrawerBaseState & DrawerBaseProps,
   baseStyles: ReturnType<typeof useDrawerBaseStyles>,
 ) => {
   return mergeClasses(
     baseStyles.reducedMotion,
     position && baseStyles[position],
     size && baseStyles[size],
-    motionState === 'entering' && baseStyles.entering,
-    motionState === 'exiting' && baseStyles.exiting,
+    motion.type === 'entering' && baseStyles.entering,
+    motion.type === 'exiting' && baseStyles.exiting,
   );
 };

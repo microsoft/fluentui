@@ -52,24 +52,24 @@ export const CustomAnimation = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const motion = useMotion<HTMLDivElement>({
-    presence: isOpen,
-  });
+  const motion = useMotion<HTMLDivElement>(isOpen);
+  const backdropMotion = useMotion<HTMLDivElement>(isOpen);
 
   return (
     <div>
       <DrawerOverlay
         backdrop={{
+          motion: backdropMotion,
           className: mergeClasses(
-            motion.state === 'entering' && styles.backdropEntering,
-            motion.state === 'exiting' && styles.backdropExiting,
+            motion.type === 'entering' && styles.backdropEntering,
+            motion.type === 'exiting' && styles.backdropExiting,
           ),
         }}
-        motion={motion}
+        open={motion}
         className={mergeClasses(
           styles.drawer,
-          motion.state === 'entering' && styles.drawerEntering,
-          motion.state === 'exiting' && styles.drawerExiting,
+          motion.type === 'entering' && styles.drawerEntering,
+          motion.type === 'exiting' && styles.drawerExiting,
         )}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >

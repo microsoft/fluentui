@@ -11,7 +11,7 @@ import type { DrawerInlineState, DrawerInlineSlots } from './DrawerInline.types'
 export const renderDrawerInline_unstable = (state: DrawerInlineState) => {
   assertSlots<DrawerInlineSlots>(state);
 
-  if (state.motionState === 'unmounted') {
+  if (state.motion.type === 'unmounted') {
     return null;
   }
 

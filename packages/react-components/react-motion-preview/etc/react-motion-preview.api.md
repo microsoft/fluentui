@@ -5,23 +5,27 @@
 ```ts
 
 import * as React_2 from 'react';
-import { RefObjectFunction } from '@fluentui/react-utilities';
 
 // @public (undocumented)
-export type MotionOptions = {
+export type Motion<Element extends HTMLElement = HTMLElement> = {
+    ref: React_2.Ref<Element>;
+    active: boolean;
+    state: MotionStateType;
+};
+
+// @public (undocumented)
+export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | Motion<Element>;
+
+// @public (undocumented)
+export type MotionStateType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
+
+// @internal
+export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: UseMotionOptions): Motion<Element>;
+
+// @public (undocumented)
+export type UseMotionOptions = {
     animateOnFirstMount?: boolean;
 };
-
-// @internal
-export type MotionProps<T = HTMLElement> = {
-    presence: boolean;
-    ref?: RefObjectFunction<T> | React_2.RefCallback<T> | React_2.Ref<T>;
-    active?: boolean;
-    state?: 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
-};
-
-// @internal
-export const useMotion: <T extends HTMLElement>(props: MotionProps<T>, options?: MotionOptions) => Required<MotionProps<T>>;
 
 // (No @packageDocumentation comment for this package)
 

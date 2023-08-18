@@ -78,7 +78,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
     getDrawerBaseClassNames(state, baseStyles),
     state.position && rootStyles[state.position],
     state.size && durationStyles[state.size],
-    state.active && rootStyles.visible,
+    state.motion.active && rootStyles.visible,
     state.root.className,
   );
 
@@ -86,7 +86,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
     backdrop.className = mergeClasses(
       drawerOverlayClassNames.backdrop,
       backdropStyles.backdrop,
-      state.backdropActive && backdropStyles.backdropVisible,
+      state.backdropMotion.active && backdropStyles.backdropVisible,
       state.size && durationStyles[state.size],
       backdrop.className,
     );

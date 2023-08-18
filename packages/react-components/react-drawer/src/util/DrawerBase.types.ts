@@ -1,4 +1,4 @@
-import { MotionProps } from '@fluentui/react-motion-preview';
+import { MotionShorthand, MotionState } from '@fluentui/react-motion-preview';
 
 export type DrawerBaseProps = {
   /**
@@ -25,7 +25,7 @@ export type DrawerBaseProps = {
    *
    * @default false
    */
-  open?: boolean;
+  open?: MotionShorthand<HTMLDivElement>;
 
   /**
    * Default value for the uncontrolled open state of the Drawer.
@@ -33,14 +33,8 @@ export type DrawerBaseProps = {
    * @default false
    */
   defaultOpen?: boolean;
-
-  /**
-   *
-   */
-  motion?: MotionProps<HTMLDivElement>;
 };
 
 export type DrawerBaseState = {
-  active: MotionProps['active'];
-  motionState: MotionProps['state'];
+  motion: MotionState<HTMLDivElement>;
 };

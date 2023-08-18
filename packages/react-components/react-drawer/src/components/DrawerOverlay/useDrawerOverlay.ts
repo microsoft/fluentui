@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getNativeElementProps, isResolvedShorthand, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
 import { useBaseDrawerDefaultProps } from '../../util/useBaseDrawerDefaultProps';
@@ -19,26 +19,17 @@ export const useDrawerOverlay_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
   const { open, defaultOpen, size, position } = useBaseDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange, motion } = props;
+  const { modalType = 'modal', inertTrapFocus, onOpenChange, motion = open } = props;
 
-  const drawerMotion = useMotion(
-    motion || {
-      presence: open,
-      ref,
-    },
-  );
-  const backdropMotion = useMotion<HTMLDivElement>(
-    motion || {
-      presence: open,
-    },
-  );
+  const drawerMotion = useMotion(motion);
+  const backdropMotion = useMotion(isResolvedShorthand(props.backdrop) ? props.backdrop.motion ?? open : open);
 
   const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
 
   const root = slot.always<DialogSurfaceProps>(
     getNativeElementProps('div', {
       ...props,
-      ref: drawerMotion.ref,
+      ref: useMergedRefs(ref, drawerMotion.ref),
     }),
     {
       elementType: DialogSurface,
@@ -47,6 +38,7 @@ export const useDrawerOverlay_unstable = (
           elementType: 'div',
           renderByDefault: hasCustomBackdrop,
           defaultProps: {
+            motion: backdropMotion,
             ref: backdropMotion.ref,
           },
         }),
@@ -78,8 +70,7 @@ export const useDrawerOverlay_unstable = (
     dialog,
     size,
     position,
-    active: drawerMotion.active,
-    motionState: drawerMotion.state,
-    backdropActive: backdropMotion.active,
+    motion: drawerMotion,
+    backdropMotion,
   };
 };

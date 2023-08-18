@@ -41,6 +41,7 @@
     "@fluentui/keyboard-keys": "^9.0.3",
     "@fluentui/react-context-selector": "^9.1.28",
     "@fluentui/react-shared-contexts": "^9.7.2",
+    "@fluentui/react-motion-preview": "0.0.0",
     "@fluentui/react-aria": "^9.3.30",
     "@fluentui/react-icons": "^2.0.207",
     "@fluentui/react-tabster": "^9.12.2",

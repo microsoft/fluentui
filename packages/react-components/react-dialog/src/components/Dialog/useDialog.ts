@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { useControllableState, useEventCallback, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import {
+  useControllableState,
+  useEventCallback,
+  useId,
+  useIsomorphicLayoutEffect,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
 import { useModalAttributes } from '@fluentui/react-tabster';
+import { useMotion } from '@fluentui/react-motion-preview';
 
 /**
  * Create the state required to render Dialog.
@@ -26,6 +33,8 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     initialState: false,
   });
 
+  const motion = useMotion(open);
+
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     onOpenChange?.(data.event, data);
 
@@ -36,7 +45,9 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   });
 
-  const focusRef = useFocusFirstElement(open, modalType);
+  const isVisible = motion.isVisible();
+
+  const focusRef = useFocusFirstElement(isVisible, modalType);
   const disableBodyScroll = useDisableBodyScroll();
   const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
 
@@ -52,13 +63,11 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   return {
-    components: {
-      backdrop: 'div',
-    },
+    motion,
+    components: {},
     inertTrapFocus,
-    open,
     modalType,
-    content: open ? content : null,
+    content: isVisible ? content : null,
     trigger,
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),

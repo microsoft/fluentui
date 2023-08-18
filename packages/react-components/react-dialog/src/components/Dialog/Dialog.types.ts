@@ -2,6 +2,7 @@ import type * as React from 'react';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 import type { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 import type { DialogSurfaceElement } from '../DialogSurface/DialogSurface.types';
+import type { MotionShorthand } from '@fluentui/react-motion-preview';
 
 export type DialogSlots = {};
 
@@ -68,7 +69,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Controls the open state of the dialog
    * @default false
    */
-  open?: boolean;
+  open?: MotionShorthand<DialogSurfaceElement>;
   /**
    * Default value for the uncontrolled open state of the dialog.
    * @default false
