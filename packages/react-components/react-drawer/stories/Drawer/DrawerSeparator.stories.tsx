@@ -30,7 +30,7 @@ export const Separator = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline position="left" open={leftOpen}>
+      <DrawerInline position="start" open={leftOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -61,7 +61,7 @@ export const Separator = () => {
         </Button>
       </div>
 
-      <DrawerInline separator position="right" open={rightOpen}>
+      <DrawerInline separator position="end" open={rightOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
