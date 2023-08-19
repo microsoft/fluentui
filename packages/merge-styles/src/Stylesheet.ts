@@ -627,12 +627,6 @@ export class Stylesheet {
   private _getConstructableStylesheet(): CSSStyleSheet {
     if (!this._constructibleSheet) {
       this._constructibleSheet = this._createConstructableStylesheet();
-
-      // _global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: this._stylesheetKey!, sheet: this });
-      // Reset the style element on the next frame.
-      // window.requestAnimationFrame(() => {
-      //   this._styleElement = undefined;
-      // });
     }
 
     return this._constructibleSheet;
@@ -640,11 +634,6 @@ export class Stylesheet {
 
   private _createConstructableStylesheet(): CSSStyleSheet {
     const sheet = new CSSStyleSheet();
-
-    // eslint-disable-next-line
-    // @ts-ignore this exists
-    // document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
-
     return sheet;
   }
 
