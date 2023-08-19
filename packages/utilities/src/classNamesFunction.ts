@@ -1,7 +1,7 @@
 import { mergeCssSets, Stylesheet } from '@fluentui/merge-styles';
 import { getRTL } from './rtl';
 import { getWindow } from './dom';
-import type { IStyleSet, IProcessedStyleSet, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
+import type { IStyleSet, IProcessedStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
 import type { StyleFunction } from './styled';
 
 const MAX_CACHE_COUNT = 50;
@@ -59,7 +59,6 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
 ): (
   getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
   styleProps?: TStyleProps,
-  shadowDom?: ShadowConfig,
 ) => IProcessedStyleSet<TStyleSet> {
   // We build a trie where each node is a Map. The map entry key represents an argument
   // value, and the entry value is another node (Map). Each node has a `__retval__`
@@ -76,7 +75,6 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   const getClassNames = (
     styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
     styleProps: TStyleProps = {} as TStyleProps,
-    shadowDom?: ShadowConfig,
   ): IProcessedStyleSet<TStyleSet> => {
     // If useStaticStyles is true, styleFunctionOrObject returns slot to classname mappings.
     // If there is also no style overrides, we can skip merge styles completely and
@@ -118,8 +116,11 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
               ? styleFunctionOrObject(styleProps)
               : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
-          { rtl: !!rtl, specificityMultiplier: options.useStaticStyles ? DEFAULT_SPECIFICITY_MULTIPLIER : undefined },
-          shadowDom,
+          {
+            shadowConfig: (styleFunctionOrObject as StyleFunction<TStyleProps, TStyleSet>).__shadowConfig__,
+            rtl: !!rtl,
+            specificityMultiplier: options.useStaticStyles ? DEFAULT_SPECIFICITY_MULTIPLIER : undefined,
+          },
         );
       }
 

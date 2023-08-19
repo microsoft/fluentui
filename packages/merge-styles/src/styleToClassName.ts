@@ -255,16 +255,12 @@ export interface IRegistration {
   rulesToInsert: string[];
 }
 
-export function styleToRegistration(
-  options: IStyleOptions,
-  shadowConfig?: ShadowConfig,
-  ...args: IStyle[]
-): IRegistration | undefined {
-  const rules: IRuleSet = extractRules(args, undefined, undefined, shadowConfig);
+export function styleToRegistration(options: IStyleOptions, ...args: IStyle[]): IRegistration | undefined {
+  const rules: IRuleSet = extractRules(args, undefined, undefined, options.shadowConfig);
   const key = getKeyForRules(options, rules);
 
   if (key) {
-    const stylesheet = Stylesheet.getInstance(shadowConfig);
+    const stylesheet = Stylesheet.getInstance(options.shadowConfig);
     const registration: Partial<IRegistration> = {
       className: stylesheet.classNameFromKey(key),
       key,
@@ -318,10 +314,10 @@ export function applyRegistration(
   }
 }
 
-export function styleToClassName(options: IStyleOptions, shadowConfig?: ShadowConfig, ...args: IStyle[]): string {
-  const registration = styleToRegistration(options, shadowConfig, ...args);
+export function styleToClassName(options: IStyleOptions, ...args: IStyle[]): string {
+  const registration = styleToRegistration(options, ...args);
   if (registration) {
-    applyRegistration(registration, options.specificityMultiplier, shadowConfig);
+    applyRegistration(registration, options.specificityMultiplier, options.shadowConfig);
 
     return registration.className;
   }

@@ -35,6 +35,9 @@ export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyl
 
   /** True if no styles prop or styles from Customizer is passed to wrapped component. */
   __noStyleOverride__: boolean;
+
+  /** Shadow DOM configuration object */
+  __shadowConfig__?: ShadowConfig;
 };
 
 /**
@@ -104,14 +107,14 @@ export function styled<
 
     const win = useWindow() ?? getWindow();
     const inShadow = useHasMergeStylesShadowRootContext();
-    const shadowDom = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow });
+    const shadowConfig = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow });
     if (
-      shadowDom.current.stylesheetKey !== scope ||
-      shadowDom.current.inShadow !== inShadow ||
-      shadowDom.current.window !== win
+      shadowConfig.current.stylesheetKey !== scope ||
+      shadowConfig.current.inShadow !== inShadow ||
+      shadowConfig.current.window !== win
       // false
     ) {
-      shadowDom.current = {
+      shadowConfig.current = {
         stylesheetKey: scope,
         inShadow,
         window: win,
@@ -142,18 +145,11 @@ export function styled<
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
     }
 
+    styles.current.__shadowConfig__ = shadowConfig.current;
+
     useAdoptedStylesheet_unstable(scope);
 
-    return (
-      <Component
-        ref={forwardedRef}
-        {...rest}
-        {...additionalProps}
-        {...props}
-        shadowDom={shadowDom.current}
-        styles={styles.current}
-      />
-    );
+    return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });
   // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
   // able to drop IE 11 support and compile with ES6 libs

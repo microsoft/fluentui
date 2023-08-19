@@ -131,7 +131,7 @@ export function calculatePrecision(value: number | string): number;
 export function canUseDOM(): boolean;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps, shadowDom?: ShadowConfig) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
 export const colGroupProperties: Record<string, number>;
@@ -1252,6 +1252,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
 export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
     __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
     __noStyleOverride__: boolean;
+    __shadowConfig__?: ShadowConfig;
 };
 
 // @public

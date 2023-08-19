@@ -105,7 +105,7 @@ export function mergeStyleSets(
     sets = styleSets.slice(1);
   }
 
-  return mergeCssSets(sets as any, getStyleOptions(), shadowConfig);
+  return mergeCssSets(sets as any, { ...getStyleOptions(), shadowConfig });
 }
 
 /**
@@ -120,7 +120,6 @@ export function mergeStyleSets(
 export function mergeCssSets<TStyleSet>(
   styleSets: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
-  shadowConfig?: ShadowConfig,
 ): IProcessedStyleSet<TStyleSet>;
 
 /**
@@ -135,7 +134,6 @@ export function mergeCssSets<TStyleSet>(
 export function mergeCssSets<TStyleSet1, TStyleSet2>(
   styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined],
   options?: IStyleOptions,
-  shadowConfig?: ShadowConfig,
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 /**
@@ -154,7 +152,6 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(
     TStyleSet3 | false | null | undefined,
   ],
   options?: IStyleOptions,
-  shadowConfig?: ShadowConfig,
 ): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 /**
@@ -174,7 +171,6 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
     TStyleSet4 | false | null | undefined,
   ],
   options?: IStyleOptions,
-  shadowConfig?: ShadowConfig,
 ): IProcessedStyleSet<
   ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>
 >;
@@ -191,7 +187,6 @@ export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
 export function mergeCssSets<TStyleSet>(
   styleSet: [TStyleSet | false | null | undefined],
   options?: IStyleOptions,
-  shadowConfig?: ShadowConfig,
 ): IProcessedStyleSet<TStyleSet>;
 
 /**
@@ -206,11 +201,11 @@ export function mergeCssSets<TStyleSet>(
 export function mergeCssSets(
   styleSets: Array<IStyleSet | undefined | false | null>,
   options?: IStyleOptions,
-  shadowConfig?: ShadowConfig,
 ): IProcessedStyleSet<any> {
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
   const styleSet = styleSets[0];
+  const { shadowConfig } = options || {};
 
   if (!styleSet && styleSets.length <= 1) {
     return { subComponentStyles: {} } as any;
@@ -232,7 +227,7 @@ export function mergeCssSets(
       const { classes, objects } = extractStyleParts(shadowConfig, styles);
 
       if (objects?.length) {
-        const registration = styleToRegistration(options || {}, shadowConfig, { displayName: styleSetArea }, objects);
+        const registration = styleToRegistration(options || {}, { displayName: styleSetArea }, objects);
 
         if (registration) {
           registrations.push(registration);

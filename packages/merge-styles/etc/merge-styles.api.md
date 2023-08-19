@@ -39,6 +39,8 @@ export function fontFace(font: IFontFace): void;
 // @public (undocumented)
 export const GLOBAL_STYLESHEET_KEY = "__global__";
 
+// Warning: (ae-forgotten-export) The symbol "IShadowConfig" needs to be exported by the entry point index.d.ts
+//
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit_2<TStyleSet, 'subComponentStyles'>]: IStyle;
@@ -46,7 +48,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
     };
-};
+} & IShadowConfig;
 
 // @public
 export interface ICSPSettings {
@@ -93,7 +95,7 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     subComponentStyles: {
         [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never>;
     };
-};
+} & IShadowConfig;
 
 // @public
 export interface IRawFontStyle {
@@ -445,7 +447,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
     };
-};
+} & IShadowConfig;
 
 // @public
 export interface IStyleSheetConfig {
@@ -467,20 +469,20 @@ export function keyframes(timeline: IKeyframes): string;
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions, shadowConfig?: ShadowConfig): string;
+export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions): string;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
 TStyleSet1 | false | null | undefined,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined
-], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
@@ -488,10 +490,10 @@ TStyleSet1 | false | null | undefined,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined,
 TStyleSet4 | false | null | undefined
-], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
+], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions, shadowConfig?: ShadowConfig): IProcessedStyleSet<TStyleSet>;
+export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
@@ -574,7 +576,7 @@ export class Stylesheet {
 
 // Warnings were encountered during analysis:
 //
-// lib/IStyleSet.d.ts:53:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+// lib/IStyleSet.d.ts:54:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
