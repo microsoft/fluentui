@@ -195,7 +195,6 @@ export class Stylesheet {
             global[ADOPTED_STYLESHEETS] = new EventMap();
           }
           global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
-          const css = _stylesheet._getConstructableStylesheet();
           requestAnimationFrame(() => {
             global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
           });
