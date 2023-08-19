@@ -139,7 +139,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
       toggle,
       getClassNames,
       role,
-      shadowDom,
     } = this.props;
 
     const { menuHidden } = this.state;
@@ -173,7 +172,6 @@ export class BaseButton extends React.Component<IBaseButtonProps, IBaseButtonSta
           checked!,
           !menuHidden,
           this.props.split,
-          shadowDom,
         );
 
     const { _ariaDescriptionId, _labelId, _descriptionId } = this;

@@ -259,8 +259,6 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
    * Additional props for the up and down arrow buttons.
    */
   iconButtonProps?: IButtonProps;
-
-  shadowDom?: ShadowConfig;
 }
 
 /**
@@ -301,6 +299,8 @@ export interface ISpinButtonStyles {
    * Styles for the arrowButtonsContainer
    */
   arrowButtonsContainer: IStyle;
+
+  __shadowConfig__?: ShadowConfig;
 }
 
 /**

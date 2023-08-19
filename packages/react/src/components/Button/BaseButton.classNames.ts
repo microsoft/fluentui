@@ -2,7 +2,6 @@ import { memoizeFunction } from '../../Utilities';
 import { getGlobalClassNames, mergeStyleSets } from '../../Styling';
 import type { ITheme } from '../../Styling';
 import type { IButtonStyles } from './Button.types';
-import type { ShadowConfig } from '@fluentui/merge-styles';
 
 export interface IButtonClassNames {
   root?: string;
@@ -40,12 +39,11 @@ export const getBaseButtonClassNames = memoizeFunction(
     checked: boolean,
     expanded: boolean,
     isSplit: boolean | undefined,
-    shadowDom?: ShadowConfig,
   ): IButtonClassNames => {
     const classNames = getGlobalClassNames(ButtonGlobalClassNames, theme || {});
 
     const isExpanded = expanded && !isSplit;
-    return mergeStyleSets(shadowDom, {
+    return mergeStyleSets(styles.__shadowConfig__, {
       root: [
         classNames.msButton,
         styles.root,

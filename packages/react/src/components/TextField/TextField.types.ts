@@ -285,8 +285,6 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * password button for password inputs (Edge, IE).
    */
   revealPasswordAriaLabel?: string;
-
-  shadowDom?: ShadowConfig;
 }
 
 /**
@@ -398,6 +396,8 @@ export interface ITextFieldStyles {
    * Styling for reveal password icon
    */
   revealIcon: IStyle;
+
+  __shadowConfig__?: ShadowConfig;
 }
 
 /**
