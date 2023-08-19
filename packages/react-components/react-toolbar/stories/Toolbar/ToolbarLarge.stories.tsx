@@ -22,7 +22,10 @@ export const Large = (props: Partial<ToolbarProps>) => (
 Large.parameters = {
   docs: {
     description: {
-      story: ['Height of the container is 48px'].join('\n'),
+      story: [
+        'The size determines the spacing around the toolbar controls.',
+        'A large sized toolbar uses 4px for vertical padding and 20px for horizontal padding.',
+      ].join('\n'),
     },
   },
 };

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-context-selector",
-  "version": "9.1.19",
+  "version": "9.1.28",
   "description": "React useContextSelector hook in userland",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -20,7 +20,7 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -28,7 +28,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.8.1",
+    "@fluentui/react-utilities": "^9.11.1",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

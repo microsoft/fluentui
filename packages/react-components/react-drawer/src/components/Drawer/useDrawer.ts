@@ -1,20 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
-import { DialogProps } from '@fluentui/react-dialog';
+import { slot } from '@fluentui/react-utilities';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
-
-const getModalType = (modal?: DrawerProps['modal'], lightDismiss?: DrawerProps['lightDismiss']) => {
-  if (!modal) {
-    return 'non-modal';
-  }
-
-  if (!lightDismiss) {
-    return 'alert';
-  }
-
-  return 'modal';
-};
+import { DrawerOverlay } from '../DrawerOverlay/DrawerOverlay';
+import { DrawerInline } from '../DrawerInline/DrawerInline';
 
 /**
  * Create the state required to render Drawer.
@@ -26,57 +15,18 @@ const getModalType = (modal?: DrawerProps['modal'], lightDismiss?: DrawerProps['
  * @param ref - reference to root HTMLElement of Drawer
  */
 export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
-  const {
-    type = 'overlay',
-    position = 'left',
-    size = 'small',
-    modal = true,
-    lightDismiss = true,
-    separator = false,
-    onOpenChange,
-    children,
-    open: initialOpen = false,
-    defaultOpen: initialDefaultOpen = false,
-    ...otherProps
-  } = props;
-
-  const [open] = useControllableState({
-    state: initialOpen,
-    defaultState: initialDefaultOpen,
-    initialState: false,
-  });
-
-  const dialogProps = React.useMemo(() => {
-    return {
-      modalType: getModalType(modal, lightDismiss),
-      open,
-      onOpenChange,
-      children,
-    } as DialogProps;
-  }, [children, lightDismiss, modal, onOpenChange, open]);
-
-  const dialogSurfaceProps = {
-    ...otherProps,
-    children,
-  };
+  const { type = 'overlay' } = props;
 
   return {
     components: {
-      root: 'div',
+      root: type === 'overlay' ? DrawerOverlay : DrawerInline,
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
+    root: slot.always(props, {
+      defaultProps: {
+        ref,
+      } as DrawerProps,
+      elementType: type === 'overlay' ? DrawerOverlay : DrawerInline,
     }),
-
-    dialog: dialogProps,
-    dialogSurface: dialogSurfaceProps,
-
-    type,
-    open,
-    position,
-    size,
-    separator,
   };
 };

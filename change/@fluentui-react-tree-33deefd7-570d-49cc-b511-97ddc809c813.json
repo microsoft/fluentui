@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: fix lint warnings",
+  "packageName": "@fluentui/react-tree",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

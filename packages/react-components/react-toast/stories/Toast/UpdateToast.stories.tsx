@@ -1,19 +1,53 @@
 import * as React from 'react';
-import { Toaster, useToastController } from '@fluentui/react-toast';
-import { useId } from '@fluentui/react-components';
+import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
 export const UpdateToast = () => {
+  const toastId = useId('toast');
   const toasterId = useId('toaster');
-  const toastId = useId('example');
-  const { dispatchToast, updateToast } = useToastController();
-  const notify = () => dispatchToast('This toast never closes', { toastId, timeout: -1, toasterId });
-  const update = () => updateToast({ content: 'This toast will close soon', toastId, timeout: 1000, toasterId });
+  const [unmounted, setUnmounted] = React.useState(true);
+
+  const { dispatchToast, updateToast } = useToastController(toasterId);
+  const notify = () => {
+    dispatchToast(
+      <Toast>
+        <ToastTitle>This toast never closes</ToastTitle>
+      </Toast>,
+      {
+        toastId,
+        intent: 'warning',
+        timeout: -1,
+        onStatusChange: (e, { status }) => setUnmounted(status === 'unmounted'),
+      },
+    );
+    setUnmounted(false);
+  };
+  const update = () =>
+    updateToast({
+      content: (
+        <Toast>
+          <ToastTitle>This toast will close soon</ToastTitle>
+        </Toast>
+      ),
+      intent: 'success',
+      toastId,
+      timeout: 2000,
+    });
 
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
-      <button onClick={update}>Update toast</button>
+      <Button onClick={unmounted ? notify : update}>{unmounted ? 'Make toast' : 'Update toast'}</Button>
     </>
   );
+};
+
+UpdateToast.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Use the `updateToast` imperative API to make changes to a Toast that is already visible. To do this',
+        'you **must** provide an id when dispatching the toast. Almost all options of a Toast can be updated.',
+      ].join('\n'),
+    },
+  },
 };

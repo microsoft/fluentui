@@ -12,6 +12,7 @@ import { AreaChartMultipleExample } from './AreaChart.Multiple.Example';
 import { AreaChartStyledExample } from './AreaChart.Styled.Example';
 import { AreaChartCustomAccessibilityExample } from './AreaChart.CustomAccessibility.Example';
 import { AreaChartLargeDataExample } from './AreaChart.LargeData.Example';
+import { AreaChartDataChangeExample } from './AreaChart.DataChange.Example';
 
 const AreaChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.Basic.Example.tsx') as string;
@@ -23,6 +24,8 @@ const AreaChartCustomAccessibilityExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.CustomAccessibility.Example.tsx') as string;
 const AreaChartLargeDataExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.LargeData.Example.tsx') as string;
+const AreaChartDataChangeExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/AreaChart.DataChange.Example.tsx') as string;
 
 export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -46,6 +49,9 @@ export class AreaChart extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Area chart large data" code={AreaChartLargeDataExampleCode}>
               <AreaChartLargeDataExample />
+            </ExampleCard>
+            <ExampleCard title="Area chart Data Change" code={AreaChartDataChangeExampleCode}>
+              <AreaChartDataChangeExample />
             </ExampleCard>
           </div>
         }

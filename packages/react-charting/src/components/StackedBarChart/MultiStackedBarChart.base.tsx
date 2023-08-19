@@ -52,6 +52,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
+  private _emptyChartId: string;
+  private _barId: string;
+  private _barIdPlaceholderPartToWhole: string;
+  private _barIdEmpty: string;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -70,66 +74,84 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+    this._emptyChartId = getId('_MSBC_empty');
+    this._barId = getId('_MSBC_rect_');
+    this._barIdPlaceholderPartToWhole = getId('_MSBC_rect_partToWhole_');
+    this._barIdEmpty = getId('_MSBC_rect_empty');
   }
 
   public render(): JSX.Element {
-    const { data, theme, culture } = this.props;
-    this._adjustProps();
-    const { palette } = theme!;
-    const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
-    const { isCalloutVisible } = this.state;
+    if (!this._isChartEmpty()) {
+      const { data, theme, culture } = this.props;
+      this._adjustProps();
+      const { palette } = theme!;
+      const legends = this._getLegendData(data!, this.props.hideRatio!, palette);
+      const { isCalloutVisible } = this.state;
 
-    this._classNames = getClassNames(this.props.styles!, {
-      legendColor: this.state.color,
-      theme: theme!,
-      variant: this.props.variant,
-      hideLabels: this.props.hideLabels,
-    });
+      this._classNames = getClassNames(this.props.styles!, {
+        legendColor: this.state.color,
+        theme: theme!,
+        variant: this.props.variant,
+        hideLabels: this.props.hideLabels,
+      });
 
-    const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
-    const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
+      const legendName = this.state.xCalloutValue ? this.state.xCalloutValue : this.state.calloutLegend;
+      const calloutYVal = this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard;
 
-    this._longestBarTotalValue = this._computeLongestBarTotalValue();
-    const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
-      const singleChartBars = this._createBarsAndLegends(
-        singleChartData!,
-        this.props.barHeight!,
-        palette,
-        this.props.hideRatio![index],
-        this.props.hideDenominator![index],
-        this.props.href,
+      this._longestBarTotalValue = this._computeLongestBarTotalValue();
+      const bars: JSX.Element[] = data!.map((singleChartData: IChartProps, index: number) => {
+        const singleChartBars = this._createBarsAndLegends(
+          singleChartData!,
+          this.props.barHeight!,
+          palette,
+          this.props.hideRatio![index],
+          this.props.hideDenominator![index],
+          this.props.href,
+        );
+        return (
+          <div key={index} id={`_MSBC_bar-${index}`}>
+            {singleChartBars}
+          </div>
+        );
+      });
+
+      return (
+        <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
+          {bars}
+          {!this.props.hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
+          <Callout
+            gapSpace={15}
+            isBeakVisible={false}
+            target={this.state.refSelected}
+            setInitialFocus={true}
+            hidden={!(!this.props.hideTooltip && isCalloutVisible)}
+            directionalHint={DirectionalHint.topAutoEdge}
+            id={this._calloutId}
+            onDismiss={this._closeCallout}
+            preventDismissOnLostFocus={true}
+            /** Keep the callout updated with details of focused/hovered bar */
+            shouldUpdateWhenHidden={true}
+            {...this.props.calloutProps!}
+            {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
+          >
+            <>
+              {this.props.onRenderCalloutPerDataPoint ? (
+                this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+              ) : (
+                <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} culture={culture} />
+              )}
+            </>
+          </Callout>
+        </div>
       );
-      return <div key={index}>{singleChartBars}</div>;
-    });
-
+    }
     return (
-      <div className={this._classNames.root} onMouseLeave={this._handleChartMouseLeave}>
-        {bars}
-        {!this.props.hideLegend && <div className={this._classNames.legendContainer}>{legends}</div>}
-        <Callout
-          gapSpace={15}
-          isBeakVisible={false}
-          target={this.state.refSelected}
-          setInitialFocus={true}
-          hidden={!(!this.props.hideTooltip && isCalloutVisible)}
-          directionalHint={DirectionalHint.topAutoEdge}
-          id={this._calloutId}
-          onDismiss={this._closeCallout}
-          preventDismissOnLostFocus={true}
-          /** Keep the callout updated with details of focused/hovered bar */
-          shouldUpdateWhenHidden={true}
-          {...this.props.calloutProps!}
-          {...getAccessibleDataObject(this.state.callOutAccessibilityData, 'text', false)}
-        >
-          <>
-            {this.props.onRenderCalloutPerDataPoint ? (
-              this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-            ) : (
-              <ChartHoverCard Legend={legendName} YValue={calloutYVal} color={this.state.color} culture={culture} />
-            )}
-          </>
-        </Callout>
-      </div>
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -215,7 +237,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
-
       return (
         <g
           key={index}
@@ -235,6 +256,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
+            id={`${this._barId}-${index}`}
             x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
@@ -270,14 +292,30 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (data.chartData!.length === 0) {
         bars.push(
           <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={this._barIdPlaceholderPartToWhole}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }
       if (barTotalValue === 0) {
         bars.push(
           <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={this._barIdEmpty}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }
@@ -545,4 +583,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
     return longestBarTotalValue;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(
+        item => item.chartData && item.chartData.length === 0 && (!item.chartTitle || item.chartTitle === ''),
+      ).length === 0
+    );
+  }
 }

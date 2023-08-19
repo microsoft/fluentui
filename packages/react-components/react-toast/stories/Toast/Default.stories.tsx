@@ -1,16 +1,36 @@
 import * as React from 'react';
-import { Toaster, useToastController } from '@fluentui/react-toast';
-import { useId } from '@fluentui/react-components';
+import {
+  useId,
+  Link,
+  Button,
+  Toaster,
+  useToastController,
+  Toast,
+  ToastTitle,
+  ToastBody,
+  ToastFooter,
+} from '@fluentui/react-components';
 
 export const Default = () => {
   const toasterId = useId('toaster');
-  const { dispatchToast } = useToastController();
-  const notify = () => dispatchToast('This is a toast', { toasterId });
+  const { dispatchToast } = useToastController(toasterId);
+  const notify = () =>
+    dispatchToast(
+      <Toast>
+        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
+        <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
+        <ToastFooter>
+          <Link>Action</Link>
+          <Link>Action</Link>
+        </ToastFooter>
+      </Toast>,
+      { intent: 'success' },
+    );
 
   return (
     <>
       <Toaster toasterId={toasterId} />
-      <button onClick={notify}>Make toast</button>
+      <Button onClick={notify}>Make toast</Button>
     </>
   );
 };

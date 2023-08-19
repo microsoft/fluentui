@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 import { useLinkState_unstable } from './useLinkState';
 import type { LinkProps, LinkState } from './Link.types';
 
@@ -12,6 +13,7 @@ export const useLink_unstable = (
   props: LinkProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): LinkState => {
+  const backgroundAppearance = useBackgroundAppearance();
   const { appearance = 'default', disabled = false, disabledFocusable = false, inline = false } = props;
   const as = props.as || (props.href ? 'a' : 'button');
   const type = as === 'button' ? 'button' : undefined;
@@ -28,12 +30,16 @@ export const useLink_unstable = (
       root: 'a',
     },
 
-    root: getNativeElementProps(as, {
-      ref,
-      type,
-      ...props,
-      as,
-    }),
+    root: slot.always(
+      getNativeElementProps(as, {
+        ref,
+        type,
+        ...props,
+        as,
+      }),
+      { elementType: 'a' },
+    ),
+    backgroundAppearance,
   };
 
   useLinkState_unstable(state);

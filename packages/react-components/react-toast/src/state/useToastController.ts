@@ -5,12 +5,18 @@ import {
   dismissToast as dismissToastVanilla,
   dismissAllToasts as dismissAllToastsVanilla,
   updateToast as updateToastVanilla,
+  playToast as playToastVanilla,
+  pauseToast as pauseToastVanilla,
 } from './vanilla';
-import { ToastId, ToastOptions, ToasterId, UpdateToastEventDetail } from './types';
+import { DispatchToastOptions, ToastId, ToasterId, UpdateToastOptions } from './types';
 
 const noop = () => undefined;
 
-export function useToastController() {
+/**
+ * @param toasterId - If an id is provided all imperative methods control that specific toaster
+ * @returns Imperative methods to control toasts
+ */
+export function useToastController(toasterId?: ToasterId) {
   const { targetDocument } = useFluent();
 
   return React.useMemo(() => {
@@ -20,22 +26,30 @@ export function useToastController() {
         dismissToast: noop,
         dismissAllToasts: noop,
         updateToast: noop,
+        pauseToast: noop,
+        playToast: noop,
       };
     }
 
     return {
-      dispatchToast: (content: React.ReactNode, options?: Partial<ToastOptions>) => {
-        dispatchToastVanilla(content, options, targetDocument);
+      dispatchToast: (content: React.ReactNode, options?: DispatchToastOptions) => {
+        dispatchToastVanilla(content, { ...options, toasterId, data: { root: options?.root } }, targetDocument);
       },
-      dismissToast: (toastId: ToastId, toasterId?: ToasterId) => {
+      dismissToast: (toastId: ToastId) => {
         dismissToastVanilla(toastId, toasterId, targetDocument);
       },
-      dismissAllToasts: (toasterId?: ToasterId) => {
+      dismissAllToasts: () => {
         dismissAllToastsVanilla(toasterId, targetDocument);
       },
-      updateToast: (options: UpdateToastEventDetail) => {
-        updateToastVanilla(options, targetDocument);
+      updateToast: (options: UpdateToastOptions) => {
+        updateToastVanilla({ ...options, data: { root: options.root }, toasterId }, targetDocument);
+      },
+      pauseToast: (toastId: ToastId) => {
+        pauseToastVanilla(toastId, toasterId, targetDocument);
+      },
+      playToast: (toastId: ToastId) => {
+        playToastVanilla(toastId, toasterId, targetDocument);
       },
     };
-  }, [targetDocument]);
+  }, [targetDocument, toasterId]);
 }

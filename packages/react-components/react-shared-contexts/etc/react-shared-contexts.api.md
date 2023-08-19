@@ -8,6 +8,20 @@ import * as React_2 from 'react';
 import type { Theme } from '@fluentui/react-theme';
 
 // @internal (undocumented)
+export type AnnounceContextValue_unstable = {
+    announce: (message: string, options?: AnnounceOptions) => void;
+};
+
+// @internal (undocumented)
+export const AnnounceProvider_unstable: React_2.Provider<AnnounceContextValue_unstable | undefined>;
+
+// @internal (undocumented)
+export type BackgroundAppearanceContextValue = 'inverted' | undefined;
+
+// @internal (undocumented)
+export const BackgroundAppearanceProvider: React_2.Provider<BackgroundAppearanceContextValue>;
+
+// @internal (undocumented)
 export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useAccordionHeaderStyles_unstable: CustomStyleHook;
     useAccordionItemStyles_unstable: CustomStyleHook;
@@ -94,6 +108,9 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerHeaderStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -183,6 +200,9 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerHeaderStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -272,6 +292,9 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerHeaderStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)
@@ -281,6 +304,9 @@ export type OverridesContextValue_unstable = {
 
 // @internal (undocumented)
 export const OverridesProvider_unstable: React_2.Provider<OverridesContextValue_unstable | undefined>;
+
+// @internal (undocumented)
+export const PortalMountNodeProvider: React_2.Provider<PortalMountNodeContextValue>;
 
 // @internal (undocumented)
 export const Provider_unstable: React_2.Provider<ProviderContextValue_unstable>;
@@ -316,16 +342,29 @@ export type TooltipVisibilityContextValue_unstable = {
 // @internal (undocumented)
 export const TooltipVisibilityProvider_unstable: React_2.Provider<TooltipVisibilityContextValue_unstable>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "useAnnounce" is marked as @public, but its signature references "AnnounceContextValue_unstable" which is marked as @internal
+//
+// @public (undocumented)
+export function useAnnounce_unstable(): AnnounceContextValue_unstable;
+
+// Warning: (ae-incompatible-release-tags) The symbol "useBackgroundAppearance" is marked as @public, but its signature references "BackgroundAppearanceContextValue" which is marked as @internal
+//
+// @public (undocumented)
+export function useBackgroundAppearance(): BackgroundAppearanceContextValue;
+
 // @public
 export const useCustomStyleHook_unstable: (hook: keyof CustomStyleHooksContextValue_unstable) => CustomStyleHook;
 
 // @public (undocumented)
 export function useFluent_unstable(): ProviderContextValue_unstable;
 
-// Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "useOverrides" is marked as @public, but its signature references "OverridesContextValue_unstable" which is marked as @internal
 //
 // @public (undocumented)
 export function useOverrides_unstable(): OverridesContextValue_unstable;
+
+// @public (undocumented)
+export function usePortalMountNode(): PortalMountNodeContextValue;
 
 // @public (undocumented)
 export function useThemeClassName_unstable(): ThemeClassNameContextValue_unstable;

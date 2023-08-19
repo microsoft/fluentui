@@ -572,6 +572,7 @@ function getBounds(
 }
 
 function isInsideElement(
+  // eslint-disable-next-line deprecation/deprecation
   targetElementRect: ClientRect,
   mouseX: number,
   mouseY: number,

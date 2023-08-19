@@ -7,11 +7,13 @@ import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
 export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayoutSlots> = {
   root: 'fui-TreeItemPersonaLayout',
-  expandIcon: 'fui-TreeItemPersonaLayout__expandIcon',
   media: 'fui-TreeItemPersonaLayout__media',
-  content: 'fui-TreeItemPersonaLayout__content',
   description: 'fui-TreeItemPersonaLayout__description',
   main: 'fui-TreeItemPersonaLayout__main',
+  expandIcon: 'fui-TreeItemPersonaLayout__expandIcon',
+  aside: 'fui-TreeItemPersonaLayout__aside',
+  actions: 'fui-TreeItemPersonaLayout__actions',
+  selector: 'fui-TreeItemPersonaLayout__selector',
 };
 
 /**
@@ -19,14 +21,19 @@ export const treeItemPersonaLayoutClassNames: SlotClassNames<TreeItemPersonaLayo
  */
 const useRootStyles = makeStyles({
   base: {
-    display: 'flex',
+    display: 'grid',
+    gridTemplateRows: '1fr auto',
+    gridTemplateColumns: 'auto auto 1fr auto',
+    gridTemplateAreas: `
+      "expandIcon media main        aside"
+      "expandIcon media description aside"
+    `,
     alignItems: 'center',
     ...typographyStyles.body1,
-    ...shorthands.gridArea('layout'),
     ':active': {
       color: tokens.colorNeutralForeground2Pressed,
       backgroundColor: tokens.colorSubtleBackgroundPressed,
-      // TODO: stop using treeItemClassNames.expandIcon for styling
+      // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon for styling
       [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Pressed,
       },
@@ -34,7 +41,7 @@ const useRootStyles = makeStyles({
     ':hover': {
       color: tokens.colorNeutralForeground2Hover,
       backgroundColor: tokens.colorSubtleBackgroundHover,
-      // TODO: stop using treeItemClassNames.expandIcon  for styling
+      // TODO: stop using treeItemPersonaLayoutClassNames.expandIcon  for styling
       [`& .${treeItemPersonaLayoutClassNames.expandIcon}`]: {
         color: tokens.colorNeutralForeground3Hover,
       },
@@ -57,28 +64,59 @@ const useMediaStyles = makeStyles({
     alignItems: 'center',
     width: '32px',
     height: '32px',
+    ...shorthands.gridArea('media'),
     ...shorthands.padding(0, tokens.spacingHorizontalXS, 0, tokens.spacingHorizontalXXS),
   },
 });
 
-const useContentStyles = makeStyles({
+const useMainStyles = makeStyles({
   base: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'column',
+    ...shorthands.gridArea('main'),
     ...shorthands.padding(
       tokens.spacingVerticalMNudge,
       tokens.spacingHorizontalXS,
       tokens.spacingVerticalMNudge,
       tokens.spacingHorizontalS,
     ),
-    ...shorthands.gap(tokens.spacingVerticalNone, tokens.spacingHorizontalNone),
+  },
+  withDescription: {
+    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalXS, 0, tokens.spacingHorizontalS),
   },
 });
 
 const useDescriptionStyles = makeStyles({
   base: {
+    ...shorthands.gridArea('description'),
     ...typographyStyles.caption1,
+    ...shorthands.padding(0, tokens.spacingHorizontalXS, tokens.spacingVerticalMNudge, tokens.spacingHorizontalS),
+  },
+});
+
+/**
+ * Styles for the action icon slot
+ */
+const useActionsStyles = makeStyles({
+  base: {
+    display: 'flex',
+    marginLeft: 'auto',
+    position: 'relative',
+    zIndex: 1,
+    ...shorthands.gridArea('aside'),
+    ...shorthands.padding(0, tokens.spacingHorizontalS),
+  },
+});
+/**
+ * Styles for the action icon slot
+ */
+const useAsideStyles = makeStyles({
+  base: {
+    display: 'flex',
+    marginLeft: 'auto',
+    alignItems: 'center',
+    zIndex: 0,
+    ...shorthands.gridArea('aside'),
+    ...shorthands.padding(0, tokens.spacingHorizontalM),
+    ...shorthands.gap(tokens.spacingHorizontalXS),
   },
 });
 
@@ -93,6 +131,7 @@ const useExpandIconStyles = makeStyles({
     minWidth: '24px',
     boxSizing: 'border-box',
     color: tokens.colorNeutralForeground3,
+    ...shorthands.gridArea('expandIcon'),
     ...shorthands.flex(0, 0, 'auto'),
     ...shorthands.padding(tokens.spacingVerticalXS, 0),
   },
@@ -106,9 +145,11 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
 ): TreeItemPersonaLayoutState => {
   const rootStyles = useRootStyles();
   const mediaStyles = useMediaStyles();
-  const contentStyles = useContentStyles();
   const descriptionStyles = useDescriptionStyles();
+  const actionsStyles = useActionsStyles();
+  const asideStyles = useAsideStyles();
   const expandIconStyles = useExpandIconStyles();
+  const mainStyles = useMainStyles();
 
   const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
 
@@ -121,15 +162,13 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
 
   state.media.className = mergeClasses(treeItemPersonaLayoutClassNames.media, mediaStyles.base, state.media.className);
 
-  if (state.content) {
-    state.content.className = mergeClasses(
-      treeItemPersonaLayoutClassNames.content,
-      contentStyles.base,
-      state.content.className,
-    );
-  }
   if (state.main) {
-    state.main.className = mergeClasses(treeItemPersonaLayoutClassNames.main, state.main.className);
+    state.main.className = mergeClasses(
+      treeItemPersonaLayoutClassNames.main,
+      mainStyles.base,
+      state.description && mainStyles.withDescription,
+      state.main.className,
+    );
   }
   if (state.description) {
     state.description.className = mergeClasses(
@@ -138,12 +177,30 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
       state.description.className,
     );
   }
+  if (state.actions) {
+    state.actions.className = mergeClasses(
+      treeItemPersonaLayoutClassNames.actions,
+      actionsStyles.base,
+      state.actions.className,
+    );
+  }
+  if (state.aside) {
+    state.aside.className = mergeClasses(
+      treeItemPersonaLayoutClassNames.aside,
+      asideStyles.base,
+      state.aside.className,
+    );
+  }
   if (state.expandIcon) {
     state.expandIcon.className = mergeClasses(
       treeItemPersonaLayoutClassNames.expandIcon,
       expandIconStyles.base,
       state.expandIcon.className,
     );
+  }
+
+  if (state.selector) {
+    state.selector.className = mergeClasses(treeItemPersonaLayoutClassNames.selector, state.selector.className);
   }
 
   return state;

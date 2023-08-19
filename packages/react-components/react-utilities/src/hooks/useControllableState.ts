@@ -19,6 +19,10 @@ export type UseControllableStateOptions<State> = {
   initialState: State;
 };
 
+function isFactoryDispatch<State>(newState: React.SetStateAction<State>): newState is (prevState: State) => State {
+  return typeof newState === 'function';
+}
+
 /**
  * @internal
  *
@@ -45,15 +49,27 @@ export const useControllableState = <State>(
     }
     return isInitializer(options.defaultState) ? options.defaultState() : options.defaultState;
   });
-  return useIsControlled(options.state) ? [options.state, noop] : [internalState, setInternalState];
+
+  // Heads up!
+  // This part is specific for controlled mode and mocks behavior of React dispatcher function.
+
+  const stateValueRef = React.useRef<State | undefined>(options.state);
+
+  React.useEffect(() => {
+    stateValueRef.current = options.state;
+  }, [options.state]);
+
+  const setControlledState = React.useCallback((newState: React.SetStateAction<State>) => {
+    if (isFactoryDispatch(newState)) {
+      newState(stateValueRef.current as State);
+    }
+  }, []);
+
+  return useIsControlled(options.state) ? [options.state, setControlledState] : [internalState, setInternalState];
 };
 
 function isInitializer<State>(value: State | (() => State)): value is () => State {
   return typeof value === 'function';
-}
-
-function noop() {
-  /* noop */
 }
 
 /**

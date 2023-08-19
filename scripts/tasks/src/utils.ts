@@ -2,7 +2,7 @@ import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { parseJson, stripJsonComments } from '@nrwl/devkit';
+import { parseJson, stripJsonComments } from '@nx/devkit';
 import type { TscTaskOptions } from 'just-scripts';
 
 /**
@@ -108,6 +108,8 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - 💡 NOTE: this is not used unless api-extractor resolves resolving workspace d.ts packages - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
 function createNormalizedTsPaths(options: { definitionsRootPath: string; pathAliasesTsConfigPath: string }) {
   type PathAliases = Record<string, string[]>;
   const { definitionsRootPath, pathAliasesTsConfigPath } = options;
@@ -132,14 +134,16 @@ export function getTsPathAliasesApiExtractorConfig(options: {
   definitionsRootPath: string;
   pathAliasesTsConfigPath?: string;
 }) {
-  const { packageJson, tsConfig, pathAliasesTsConfigPath, definitionsRootPath } = options;
+  const { packageJson, tsConfig /* , pathAliasesTsConfigPath, definitionsRootPath */ } = options;
   /**
    * Because api-extractor ran into race conditions when executing via lage (https://github.com/microsoft/fluentui/issues/25766),
    * we won't use path aliases on CI, rather serving api-extractor rolluped dts files cross package, that will be referenced via yarn workspace sym-links
+   *
+   * 💡 NOTE: this is not used unless api-extractor resolves resolving workspace d.ts packages - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
    */
-  const normalizedPaths = pathAliasesTsConfigPath
-    ? createNormalizedTsPaths({ definitionsRootPath, pathAliasesTsConfigPath })
-    : undefined;
+  // const normalizedPaths = pathAliasesTsConfigPath
+  //   ? createNormalizedTsPaths({ definitionsRootPath, pathAliasesTsConfigPath })
+  //   : undefined;
 
   /**
    * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
@@ -166,10 +170,13 @@ export function getTsPathAliasesApiExtractorConfig(options: {
        */
       skipLibCheck: false,
       /**
-       * just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
+       * api-extractor introduced a "feature" which is actually a bug and makes using path aliases impossible
+       * - with this api extractor change user is forced to rely on yarn/npm "workspace" symlinks in order to determine that inner workspace package should not be bundled in type definition rollup/api.md
+       * - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
+       *
        */
-      // @ts-expect-error - just-scripts provides invalid types
-      paths: normalizedPaths,
+      paths: undefined,
+      baseUrl: '.',
     },
   };
 

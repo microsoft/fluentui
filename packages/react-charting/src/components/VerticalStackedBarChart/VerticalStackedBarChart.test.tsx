@@ -70,7 +70,7 @@ const secondChartPoints: IVSChartDataPoint[] = [
   },
 ];
 
-const chartPoints: IVerticalStackedChartProps[] = [
+export const chartPoints: IVerticalStackedChartProps[] = [
   { chartData: firstChartPoints, xAxisPoint: 0 },
   { chartData: secondChartPoints, xAxisPoint: 20 },
 ];
@@ -83,6 +83,8 @@ const chartPoints2: IVerticalStackedChartProps[] = [
     lineData: [{ y: 30, legend: 'Line1', color: DefaultPalette.yellow }],
   },
 ];
+
+export const emptyChartPoints: IVerticalStackedChartProps[] = [{ chartData: [], xAxisPoint: 0 }];
 
 describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders VerticalStackedBarChart correctly', () => {
@@ -258,6 +260,8 @@ describe('VerticalStackedBarChart - mouse events', () => {
     wrapper.update();
 
     wrapper.find('rect').at(0).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
@@ -317,5 +321,21 @@ describe('VerticalStackedBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<VerticalStackedBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<VerticalStackedBarChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

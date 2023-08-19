@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement a priority queue",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

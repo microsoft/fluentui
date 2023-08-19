@@ -1,5 +1,5 @@
 import type { VirtualizerProps } from './Virtualizer.types';
-import { useVirtualizerStyles_unstable } from './useVirtualizerStyles';
+import { useVirtualizerStyles_unstable } from './useVirtualizerStyles.styles';
 import { useVirtualizer_unstable } from './useVirtualizer';
 import { renderVirtualizer_unstable } from './renderVirtualizer';
 import type { FC } from 'react';

@@ -11,14 +11,21 @@ export type TreeItemSlots = {
   root: Slot<ExtractSlotProps<Slot<'div'> & { style?: TreeItemCSSProperties }>>;
 };
 
-export type TreeItemContextValues = { treeItem: TreeItemContextValue };
+export type TreeItemValue = string | number;
+
+export type TreeItemContextValues = {
+  treeItem: TreeItemContextValue;
+};
 
 /**
  * TreeItem Props
  */
-export type TreeItemProps<Value = string> = ComponentProps<Partial<TreeItemSlots>> & {
-  value?: Value;
+export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
+  /**
+   * A tree item can be a leaf or a branch
+   */
   itemType: TreeItemType;
+  value?: TreeItemValue;
 };
 
 /**

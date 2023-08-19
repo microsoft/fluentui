@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { mount } from '@cypress/react';
-import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { Drawer, DrawerProps } from '@fluentui/react-drawer';
@@ -32,7 +31,7 @@ describe('Drawer', () => {
 
       return (
         <>
-          <ControlledDrawer position="right" open={open} />
+          <ControlledDrawer position="end" open={open} />
           <button id="button" onClick={() => setOpen(true)}>
             Open
           </button>
@@ -55,8 +54,8 @@ describe('Drawer', () => {
     cy.get('#drawer').should('not.exist');
   });
 
-  it('should NOT dismiss the drawer when clicking on the backdrop if `lightDismiss` is false', () => {
-    mountFluent(<ControlledDrawer open lightDismiss={false} />);
+  it('should NOT dismiss the drawer when clicking on the backdrop if `modalType` is `alert`', () => {
+    mountFluent(<ControlledDrawer open modalType={'alert'} />);
 
     cy.get('#drawer').should('exist');
     cy.get(backdropSelector).click({ force: true });

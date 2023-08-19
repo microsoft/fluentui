@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.3.19",
+  "version": "9.3.30",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -22,7 +22,7 @@
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.3",
-    "@fluentui/react-utilities": "^9.8.1",
+    "@fluentui/react-utilities": "^9.11.1",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

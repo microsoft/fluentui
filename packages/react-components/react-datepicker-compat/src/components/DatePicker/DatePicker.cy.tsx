@@ -16,6 +16,8 @@ const popoverSelector = '[role="dialog"]';
 describe('DatePicker', () => {
   it('opens a default datepicker', () => {
     mount(<DatePicker />);
+
+    cy.focused().should('not.exist');
     cy.get(inputSelector).click().get(popoverSelector).should('be.visible');
   });
 
@@ -30,5 +32,11 @@ describe('DatePicker', () => {
     cy.get(inputSelector).click();
 
     cy.get('body').find('[aria-owns]').should('exist');
+  });
+
+  it('should move focus back to the input when the popup is closed', () => {
+    mount(<DatePicker inlinePopup />);
+    cy.get(inputSelector).focus().realPress('Enter').realPress('Escape');
+    cy.focused().should('have.attr', 'role', 'combobox');
   });
 });

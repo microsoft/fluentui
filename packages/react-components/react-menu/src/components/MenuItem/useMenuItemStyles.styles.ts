@@ -24,9 +24,10 @@ const useStyles = makeStyles({
     position: 'relative',
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackground1,
-    paddingRight: '10px',
-    paddingLeft: '10px',
+    paddingRight: '6px',
+    paddingLeft: '6px',
     height: '32px',
+    minHeight: '32px',
     display: 'flex',
     alignItems: 'center',
     fontSize: tokens.fontSizeBase300,
@@ -89,6 +90,8 @@ const useStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
     ':hover': {
       color: tokens.colorNeutralForegroundDisabled,
+      backgroundColor: tokens.colorNeutralBackground1,
+      cursor: 'not-allowed',
       [`& .${iconFilledClassName}`]: {
         display: 'none',
       },

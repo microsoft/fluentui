@@ -1,8 +1,12 @@
 export {
+  slot,
+  isSlot,
   getSlots,
   getSlotsNext,
+  assertSlots,
   resolveShorthand,
   isResolvedShorthand,
+  SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
 export type {
@@ -19,6 +23,8 @@ export type {
   SlotRenderFunction,
   SlotShorthandValue,
   UnknownSlotProps,
+  SlotComponentType,
+  SlotOptions,
 } from './compose/index';
 
 export {
@@ -64,3 +70,13 @@ export type { FluentTriggerComponent, TriggerProps } from './trigger/index';
  */
 export type { NativeTouchOrMouseEvent, ReactTouchOrMouseEvent, TouchOrMouseEvent } from './events/index';
 export { isTouchEvent, isMouseEvent, getEventClientCoords } from './events/index';
+
+export type {
+  SelectionMode,
+  OnSelectionChangeCallback,
+  OnSelectionChangeData,
+  SelectionItemId,
+  SelectionHookParams,
+  SelectionMethods,
+} from './selection/index';
+export { useSelection } from './selection/index';

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-card",
-  "version": "9.0.9",
+  "version": "9.0.30",
   "private": false,
   "description": "Card container components for Fluent UI React.",
   "main": "lib-commonjs/index.js",
@@ -14,7 +14,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "e2e": "cypress run --component",
@@ -26,24 +26,24 @@
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.21",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-button": "^9.3.11",
+    "@fluentui/react-button": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.3",
-    "@fluentui/react-tabster": "^9.7.0",
-    "@fluentui/react-theme": "^9.1.8",
-    "@fluentui/react-utilities": "^9.8.1",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.3",
-    "@griffel/react": "^1.5.2",
+    "@fluentui/react-tabster": "^9.12.2",
+    "@fluentui/react-theme": "^9.1.11",
+    "@fluentui/react-utilities": "^9.11.1",
+    "@fluentui/react-jsx-runtime": "^9.0.0",
+    "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {

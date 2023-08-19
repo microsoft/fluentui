@@ -10,7 +10,8 @@ import {
 import descriptionMd from './DataGridDescription.md';
 
 export { Default } from './Default.stories';
-export { RowNavigation } from './RowNavigation.stories';
+export { CompositeNavigation } from './CompositeNavigation.stories';
+export { FocusableElementsInCells } from './FocusableElementsInCells.stories';
 export { Sort } from './Sort.stories';
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
@@ -20,7 +21,6 @@ export { SingleSelectControlled } from './SingleSelectControlled.stories';
 export { SubtleSelection } from './SubtleSelection.stories';
 export { SelectionAppearance } from './SelectionAppearance.stories';
 export { ResizableColumns } from './ResizableColumns.stories';
-export { KeyboardColumnResizing } from './KeyboardColumnResizing.stories';
 export { Virtualization } from './Virtualization.stories';
 export { CustomRowId } from './CustomRowId.stories';
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: removes unnecessary grid gaps",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

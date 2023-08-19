@@ -4,6 +4,11 @@ import { ObjectSlotProps, Slots } from './getSlots';
 
 /**
  * Similar to `getSlots`, main difference is that it's compatible with new custom jsx pragma
+ *
+ * @internal
+ * This is an internal temporary method, this method will cease to exist eventually!
+ *
+ * * ❗️❗️ **DO NOT USE IT EXTERNALLY** ❗️❗️
  */
 export function getSlotsNext<R extends SlotPropsRecord>(
   state: ComponentState<R>,
@@ -32,7 +37,10 @@ function getSlotNext<R extends SlotPropsRecord, K extends keyof R>(
   if (props === undefined) {
     return [null, undefined as R[K]];
   }
-  const { as: asProp, ...propsWithoutAs } = props;
+
+  type NonUndefined<T> = T extends undefined ? never : T;
+  // TS Error: Property 'as' does not exist on type 'UnknownSlotProps | undefined'.ts(2339)
+  const { as: asProp, ...propsWithoutAs } = props as NonUndefined<typeof props>;
 
   const slot = (
     state.components?.[slotName] === undefined || typeof state.components[slotName] === 'string'

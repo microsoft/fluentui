@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/babel-preset-global-context",
-  "version": "9.0.0-beta.26",
+  "version": "9.0.0-beta.35",
   "description": "Babel preset that transforms createContext calls to use global context shims",
   "main": "lib-commonjs/index.js",
   "typings": "./dist/index.d.ts",
@@ -21,7 +21,7 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr ./stories/**/*.stories.tsx"
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -40,7 +40,7 @@
     "find-up": "^5.0.0"
   },
   "peerDependencies": {
-    "@fluentui/global-context": "9.0.0-beta.26"
+    "@fluentui/global-context": "9.0.0-beta.35"
   },
   "beachball": {
     "disallowedChangeTypes": [

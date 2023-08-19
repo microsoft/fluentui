@@ -58,3 +58,4 @@ export {
   useOptionGroup_unstable,
 } from './OptionGroup';
 export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './OptionGroup';
+export type { OptionOnSelectData, SelectionEvents } from './Selection';

@@ -10,12 +10,13 @@ import type {
   TargetElement,
   UsePositioningReturn,
 } from './types';
-import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent } from './utils';
+import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent, normalizeAutoSize } from './utils';
 import {
   shift as shiftMiddleware,
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
+  resetMaxSize as resetMaxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware';
@@ -24,7 +25,7 @@ import { createPositionManager } from './createPositionManager';
 /**
  * @internal
  */
-export function usePositioning(options: UsePositioningOptions): UsePositioningReturn {
+export function usePositioning(options: PositioningProps & PositioningOptions): UsePositioningReturn {
   const managerRef = React.useRef<PositionManager | null>(null);
   const targetRef = React.useRef<TargetElement | null>(null);
   const overrideTargetRef = React.useRef<TargetElement | null>(null);
@@ -121,7 +122,6 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
       }
       // We run this check once, no need to add deps here
       // TODO: Should be rework to handle options.enabled and contentRef updates
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   }
 
@@ -150,18 +150,11 @@ export function usePositioning(options: UsePositioningOptions): UsePositioningRe
   return { targetRef: setTarget, containerRef: setContainer, arrowRef: setArrow };
 }
 
-interface UsePositioningOptions extends PositioningProps, Pick<PositioningOptions, 'fallbackPositions' | 'pinned'> {
-  /**
-   * If false, does not position anything
-   */
-  enabled?: boolean;
-}
-
 function usePositioningOptions(options: PositioningOptions) {
   const {
     align,
     arrowPadding,
-    autoSize,
+    autoSize: rawAutoSize,
     coverTarget,
     flipBoundary,
     offset,
@@ -169,20 +162,25 @@ function usePositioningOptions(options: PositioningOptions) {
     pinned,
     position,
     unstable_disableTether: disableTether,
+    // eslint-disable-next-line deprecation/deprecation
     positionFixed,
+    strategy,
     overflowBoundaryPadding,
     fallbackPositions,
+    useTransform,
   } = options;
 
   const { dir } = useFluent();
   const isRtl = dir === 'rtl';
-  const strategy: Strategy = positionFixed ? 'fixed' : 'absolute';
+  const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
+  const autoSize = normalizeAutoSize(rawAutoSize);
 
   return React.useCallback(
     (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const middleware = [
+        autoSize && resetMaxSizeMiddleware(autoSize),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),
@@ -206,7 +204,8 @@ function usePositioningOptions(options: PositioningOptions) {
       return {
         placement,
         middleware,
-        strategy,
+        strategy: positionStrategy,
+        useTransform,
       };
     },
     [
@@ -221,9 +220,10 @@ function usePositioningOptions(options: PositioningOptions) {
       overflowBoundary,
       pinned,
       position,
-      strategy,
+      positionStrategy,
       overflowBoundaryPadding,
       fallbackPositions,
+      useTransform,
     ],
   );
 }
