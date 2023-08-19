@@ -16,15 +16,15 @@ export const Position = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const [position, setPosition] = React.useState<DrawerProps['position']>('left');
+  const [position, setPosition] = React.useState<DrawerProps['position']>('start');
 
   const onClickLeftButton = React.useCallback(() => {
-    setPosition('left');
+    setPosition('start');
     setIsOpen(true);
   }, []);
 
   const onClickRightButton = React.useCallback(() => {
-    setPosition('right');
+    setPosition('end');
     setIsOpen(true);
   }, []);
 
@@ -42,7 +42,7 @@ export const Position = () => {
               />
             }
           >
-            {position === 'left' ? 'Left' : 'Right'} Drawer
+            {position === 'start' ? 'Left' : 'Right'} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
