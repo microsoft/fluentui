@@ -465,25 +465,25 @@ export class Stylesheet {
     if (element || constructableSheet) {
       switch (injectionMode) {
         case InjectionMode.insertNode:
-          this._insertNode(element!, rule);
+          this._insertNode(element, rule);
           break;
 
         case InjectionMode.insertNodeAndConstructableStylesheet:
-          this._insertNode(element!, rule);
-          this._insertRuleIntoSheet(constructableSheet!, rule);
+          this._insertNode(element, rule);
+          this._insertRuleIntoSheet(constructableSheet, rule);
           break;
 
         case InjectionMode.appendChild:
-          (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
+          element && (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
           break;
 
         case InjectionMode.appedChildAndConstructableStylesheet:
-          (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
-          this._insertRuleIntoSheet(constructableSheet!, rule);
+          element && (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
+          this._insertRuleIntoSheet(constructableSheet, rule);
           break;
 
         case InjectionMode.constructableStylesheet:
-          this._insertRuleIntoSheet(constructableSheet!, rule);
+          this._insertRuleIntoSheet(constructableSheet, rule);
           break;
       }
     } else {
@@ -543,7 +543,11 @@ export class Stylesheet {
     }
   }
 
-  private _insertNode(element: HTMLStyleElement, rule: string): void {
+  private _insertNode(element: HTMLStyleElement | undefined, rule: string): void {
+    if (!element) {
+      return;
+    }
+
     const { sheet } = element! as HTMLStyleElement;
 
     try {
@@ -555,9 +559,13 @@ export class Stylesheet {
     }
   }
 
-  private _insertRuleIntoSheet(sheet: CSSStyleSheet, rule: string): void {
+  private _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined, rule: string): void {
+    if (!sheet) {
+      return;
+    }
+
     try {
-      sheet.insertRule(rule, sheet.cssRules.length);
+      sheet!.insertRule(rule, sheet!.cssRules.length);
     } catch (e) {
       // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
       // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
