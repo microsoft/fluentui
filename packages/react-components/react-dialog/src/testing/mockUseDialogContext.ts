@@ -8,6 +8,12 @@ import type { DialogContextValue } from '../contexts/dialogContext';
  */
 export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}) => {
   const mockContext: DialogContextValue = {
+    motion: {
+      ref: { current: null },
+      type: 'unmounted',
+      isActive: () => false,
+      isVisible: () => false,
+    },
     open: false,
     modalType: 'modal',
     inertTrapFocus: false,

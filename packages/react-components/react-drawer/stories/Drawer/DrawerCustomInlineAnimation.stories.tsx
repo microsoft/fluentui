@@ -87,11 +87,11 @@ export const CustomInlineAnimation = () => {
     <div className={styles.root}>
       <DrawerInline
         separator
-        motion={motion}
+        open={motion}
         className={mergeClasses(
           styles.drawer,
-          motion.state === 'entering' && styles.drawerEntering,
-          motion.state === 'exiting' && styles.drawerExiting,
+          motion.type === 'entering' && styles.drawerEntering,
+          motion.type === 'exiting' && styles.drawerExiting,
         )}
       >
         <DrawerHeader>
@@ -117,10 +117,10 @@ export const CustomInlineAnimation = () => {
       <div
         className={mergeClasses(
           styles.content,
-          motion.active && styles.contentActive,
-          motion.state === 'entering' && styles.contentEntering,
-          motion.state === 'exiting' && styles.contentExiting,
-          motion.state === 'idle' && styles.contentIdle,
+          motion.isActive() && styles.contentActive,
+          motion.type === 'entering' && styles.contentEntering,
+          motion.type === 'exiting' && styles.contentExiting,
+          motion.type === 'idle' && styles.contentIdle,
         )}
       >
         <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>

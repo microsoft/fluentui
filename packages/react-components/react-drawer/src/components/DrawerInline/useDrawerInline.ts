@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState, slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useMotion } from '@fluentui/react-motion-preview';
+import { useMotionFromSlot } from '@fluentui/react-motion-preview';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
 import { useBaseDrawerDefaultProps } from '../../util/useBaseDrawerDefaultProps';
 
@@ -17,17 +17,16 @@ export const useDrawerInline_unstable = (
   props: DrawerInlineProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerInlineState => {
-  const { size, position } = useBaseDrawerDefaultProps(props);
+  const { size, position, ...defaultProps } = useBaseDrawerDefaultProps(props);
+  const { separator = false } = props;
 
   const [open] = useControllableState({
-    state: props.open,
-    defaultState: props.defaultOpen,
+    state: defaultProps.open,
+    defaultState: defaultProps.defaultOpen,
     initialState: false,
   });
 
-  const { separator = false, motion = open } = props;
-
-  const drawerMotion = useMotion(motion);
+  const [drawerProps, drawerMotion] = useMotionFromSlot(props, open);
 
   return {
     components: {
@@ -36,8 +35,8 @@ export const useDrawerInline_unstable = (
 
     root: slot.always(
       getNativeElementProps('div', {
+        ...drawerProps,
         ref: useMergedRefs(ref, drawerMotion.ref),
-        ...props,
       }),
       { elementType: 'div' },
     ),

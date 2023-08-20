@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { unstable_batchedUpdates } from 'react-dom';
 import { HTMLElementWithStyledMap, getMotionDuration } from '../utils/style';
 import { useAnimationFrame, useTimeout } from '@fluentui/react-utilities';
 import { useIsMotion } from './useIsMotion';
@@ -68,10 +69,8 @@ export function useMotionPresence<Element extends HTMLElement>(
 ): MotionState<Element> {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
-  const [state, setState] = React.useState<Pick<MotionState<Element>, 'active' | 'type'>>({
-    type: present ? 'idle' : 'unmounted',
-    active: false,
-  });
+  const [type, setType] = React.useState<MotionType>(present ? 'idle' : 'unmounted');
+  const [active, setActive] = React.useState<boolean>(false);
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
@@ -130,11 +129,10 @@ export function useMotionPresence<Element extends HTMLElement>(
 
   React.useEffect(() => {
     if (present) {
-      setState(prevState => ({
-        ...prevState,
-        type: 'entering',
-        active: skipAnimationOnFirstRender.current ? true : false,
-      }));
+      unstable_batchedUpdates(() => {
+        setType('entering');
+        setActive(skipAnimationOnFirstRender.current ? true : false);
+      });
     }
   }, [present]);
 
@@ -146,19 +144,15 @@ export function useMotionPresence<Element extends HTMLElement>(
     };
 
     setActiveAnimationFrame(() => {
-      setState(prevState => {
-        let newState = prevState.type;
+      unstable_batchedUpdates(() => {
+        setActive(present);
+        setType(() => {
+          if (skipAnimation) {
+            return present ? 'idle' : 'unmounted';
+          }
 
-        if (skipAnimation) {
-          newState = present ? 'idle' : 'unmounted';
-        } else {
-          newState = present ? 'entering' : 'exiting';
-        }
-
-        return {
-          type: newState,
-          active: present,
-        };
+          return present ? 'entering' : 'exiting';
+        });
       });
     });
 
@@ -167,17 +161,8 @@ export function useMotionPresence<Element extends HTMLElement>(
     }
 
     processAnimation(() => {
-      setState(prevState => ({
-        ...prevState,
-        type: present ? 'entered' : 'exited',
-      }));
-
-      setDelayedAnimationFrame(() => {
-        setState(prevState => ({
-          ...prevState,
-          type: present ? 'idle' : 'unmounted',
-        }));
-      });
+      setType(present ? 'entered' : 'exited');
+      setDelayedAnimationFrame(() => setType(present ? 'idle' : 'unmounted'));
     });
 
     return onUnmount;
@@ -194,7 +179,17 @@ export function useMotionPresence<Element extends HTMLElement>(
     skipAnimationOnFirstRender.current = false;
   }, []);
 
-  return React.useMemo(() => ({ ref, ...state }), [ref, state]);
+  return React.useMemo(() => {
+    const isVisible = () => type !== 'unmounted';
+    const isActive = () => active;
+
+    return {
+      ref,
+      type,
+      isVisible,
+      isActive,
+    };
+  }, [active, ref, type]);
 }
 
 /**

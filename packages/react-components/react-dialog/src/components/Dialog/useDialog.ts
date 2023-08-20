@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  useControllableState,
-  useEventCallback,
-  useId,
-  useIsomorphicLayoutEffect,
-  useMergedRefs,
-} from '@fluentui/react-utilities';
+import { useControllableState, useEventCallback, useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
@@ -34,6 +28,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const motion = useMotion(open);
+  const isVisible = motion.isVisible();
 
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     onOpenChange?.(data.event, data);
@@ -44,8 +39,6 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
       setOpen(data.open);
     }
   });
-
-  const isVisible = motion.isVisible();
 
   const focusRef = useFocusFirstElement(isVisible, modalType);
   const disableBodyScroll = useDisableBodyScroll();
@@ -63,6 +56,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   return {
+    open,
     motion,
     components: {},
     inertTrapFocus,

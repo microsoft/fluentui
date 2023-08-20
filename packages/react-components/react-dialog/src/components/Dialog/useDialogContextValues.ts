@@ -3,14 +3,15 @@ import type { DialogContextValues, DialogState } from './Dialog.types';
 
 export function useDialogContextValues_unstable(state: DialogState): DialogContextValues {
   const {
-    modalType,
-    open,
     dialogRef,
     dialogTitleId,
-    isNestedDialog,
     inertTrapFocus,
-    requestOpenChange,
+    isNestedDialog,
     modalAttributes,
+    modalType,
+    motion,
+    open,
+    requestOpenChange,
     triggerAttributes,
   } = state;
 
@@ -19,15 +20,16 @@ export function useDialogContextValues_unstable(state: DialogState): DialogConte
    * there is no sense to memoize it
    */
   const dialog: DialogContextValue = {
-    open,
-    modalType,
     dialogRef,
     dialogTitleId,
-    isNestedDialog,
     inertTrapFocus,
+    isNestedDialog,
     modalAttributes,
-    triggerAttributes,
+    modalType,
+    motion,
+    open,
     requestOpenChange,
+    triggerAttributes,
   };
 
   const dialogSurface: DialogSurfaceContextValue = false;

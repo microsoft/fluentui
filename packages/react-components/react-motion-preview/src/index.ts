@@ -1,2 +1,2 @@
-export { useMotion } from './hooks';
-export type { UseMotionOptions, MotionType, MotionState, MotionShorthand } from './hooks';
+export { useMotion, useMotionPresence, useMotionFromSlot } from './hooks';
+export type { MotionShorthand, MotionShorthandValue, MotionState, MotionType, UseMotionOptions } from './hooks';

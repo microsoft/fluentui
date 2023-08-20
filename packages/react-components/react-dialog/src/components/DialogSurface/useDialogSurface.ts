@@ -6,10 +6,10 @@ import {
   isResolvedShorthand,
   slot,
 } from '@fluentui/react-utilities';
-import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
+import { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { Escape } from '@fluentui/keyboard-keys';
-import { useMotion } from '../../../../react-motion-preview/src/index';
+import { useMotionFromSlot } from '@fluentui/react-motion-preview';
 
 /**
  * Create the state required to render DialogSurface.
@@ -28,6 +28,7 @@ export const useDialogSurface_unstable = (
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const motion = useDialogContext_unstable(ctx => ctx.motion);
+  const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
@@ -59,16 +60,18 @@ export const useDialogSurface_unstable = (
     }
   });
 
-  const [backdropMotion, backdropProps] = useMotionFromSlot<HTMLDivElement>(props.backdrop, motion.isVisible());
+  const [backdropProps, backdropMotion] = useMotionFromSlot(props.backdrop, open);
 
-  const backdrop = slot.optional(backdropProps, {
-    renderByDefault: motion.isVisible() && modalType !== 'non-modal',
-    defaultProps: {
-      'aria-hidden': 'true',
-      ref: backdropMotion.ref,
-    },
-    elementType: 'div',
-  });
+  const backdrop =
+    motion.isVisible() && modalType !== 'non-modal'
+      ? slot.optional(backdropProps, {
+          defaultProps: {
+            'aria-hidden': 'true',
+            ref: backdropMotion.ref as React.Ref<HTMLDivElement>,
+          },
+          elementType: 'div',
+        })
+      : undefined;
 
   if (backdrop) {
     backdrop.onClick = handledBackdropClick;
@@ -90,5 +93,8 @@ export const useDialogSurface_unstable = (
       }),
       { elementType: 'div' },
     ),
+
+    motion,
+    backdropMotion,
   };
 };

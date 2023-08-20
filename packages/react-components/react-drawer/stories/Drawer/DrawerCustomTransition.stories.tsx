@@ -33,13 +33,12 @@ export const CustomTransition = () => {
   return (
     <div>
       <DrawerOverlay
-        motion={motion}
+        open={motion}
         className={mergeClasses(
           styles.drawer,
-          motion.active && styles.drawerVisible,
-          motion.state === 'exiting' && styles.drawerExiting,
+          motion.isActive() && styles.drawerVisible,
+          motion.type === 'exiting' && styles.drawerExiting,
         )}
-        open={isOpen}
         onOpenChange={(_, { open }) => setIsOpen(open)}
       >
         <DrawerHeader>

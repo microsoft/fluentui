@@ -62,12 +62,12 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
   }, [state.position, state.separator, styles.separatorRight, styles.separatorLeft]);
 
   const hiddenClass = React.useCallback(() => {
-    if (state.motion.active) {
+    if (state.motion.isActive()) {
       return undefined;
     }
 
     return mergeClasses(styles.hidden, state.position === 'left' ? styles.hiddenLeft : styles.hiddenRight);
-  }, [state.motion.active, state.position, styles.hidden, styles.hiddenLeft, styles.hiddenRight]);
+  }, [state.motion, state.position, styles.hidden, styles.hiddenLeft, styles.hiddenRight]);
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
