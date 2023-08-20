@@ -51,7 +51,7 @@ const useBackdropStyles = makeStyles({
   backdrop: {
     opacity: 0,
     transitionProperty: 'opacity',
-    transitionTimingFunction: tokens.curveEasyEase,
+    transitionTimingFunction: tokens.curveLinear,
     willChange: 'opacity',
   },
 

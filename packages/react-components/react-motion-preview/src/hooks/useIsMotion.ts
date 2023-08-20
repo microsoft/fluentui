@@ -23,7 +23,7 @@ export function useIsMotion<Element extends HTMLElement>(
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
-      if (typeof previousShorthand !== typeof shorthand) {
+      if (previousShorthand !== null && typeof previousShorthand !== typeof shorthand) {
         // eslint-disable-next-line no-console
         console.error(
           [
@@ -32,7 +32,7 @@ export function useIsMotion<Element extends HTMLElement>(
             'Please make sure to not change the shorthand on subsequent renders or to use the hook conditionally.',
             '\nCurrent shorthand:',
             JSON.stringify(shorthand, null, 2),
-            '\nPrevious props:',
+            '\nPrevious shorthand:',
             JSON.stringify(previousShorthand, null, 2),
           ].join(' '),
         );

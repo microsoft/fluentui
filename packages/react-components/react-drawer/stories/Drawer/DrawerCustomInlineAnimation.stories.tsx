@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
 import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
-import { useMotion } from '../../../react-motion-preview/src/index';
+import { useMotion } from '@fluentui/react-motion-preview';
 
 const visibleKeyframe = {
   ...shorthands.borderRadius(0),

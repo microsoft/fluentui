@@ -28,7 +28,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const motion = useMotion(open);
-  const isVisible = motion.isVisible();
+  const isVisible = motion.canRender();
 
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     onOpenChange?.(data.event, data);

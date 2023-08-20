@@ -63,7 +63,7 @@ export const useDialogSurface_unstable = (
   const [backdropProps, backdropMotion] = useMotionFromSlot(props.backdrop, open);
 
   const backdrop =
-    motion.isVisible() && modalType !== 'non-modal'
+    motion.canRender() && modalType !== 'non-modal'
       ? slot.optional(backdropProps, {
           defaultProps: {
             'aria-hidden': 'true',

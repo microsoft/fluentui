@@ -12,7 +12,7 @@ import { Dialog } from '@fluentui/react-dialog';
 export const renderDrawerOverlay_unstable = (state: DrawerOverlayState) => {
   assertSlots<DrawerOverlaySlots>(state);
 
-  if (state.motion.type === 'unmounted') {
+  if (!state.motion.canRender()) {
     return null;
   }
 

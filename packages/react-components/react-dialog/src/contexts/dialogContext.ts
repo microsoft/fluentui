@@ -4,7 +4,7 @@ import { DialogSurfaceElement } from '../DialogSurface';
 import type { Context } from '@fluentui/react-context-selector';
 import type { DialogModalType, DialogOpenChangeData } from '../Dialog';
 import { useModalAttributes } from '@fluentui/react-tabster';
-import type { MotionShorthand, MotionState } from '@fluentui/react-motion-preview';
+import { getDefaultMotionState, MotionShorthand, MotionState } from '@fluentui/react-motion-preview';
 
 export type DialogContextValue = {
   open: MotionShorthand<DialogSurfaceElement>;
@@ -22,12 +22,7 @@ export type DialogContextValue = {
 
 const defaultContextValue: DialogContextValue = {
   open: false,
-  motion: {
-    ref: { current: null },
-    type: 'unmounted',
-    isActive: () => false,
-    isVisible: () => false,
-  },
+  motion: getDefaultMotionState(),
   inertTrapFocus: false,
   modalType: 'modal',
   isNestedDialog: false,

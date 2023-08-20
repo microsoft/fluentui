@@ -18,13 +18,6 @@ export type MotionType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exitin
 export type MotionState<Element extends HTMLElement = HTMLElement> = {
   /**
    * Ref to the element.
-   *
-   * @example
-   * ```tsx
-   * const motion = useMotion<HTMLDivElement>(isOpen);
-   *
-   * <div ref={motion.ref} />
-   * ```
    */
   ref: React.Ref<Element>;
 
@@ -37,18 +30,20 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
    * - `idle` - The element is currently not animating, but rendered on screen.
    * - `exiting` - The element is performing exit animation.
    * - `exited` - The element has finished exit animation.
-   *
-   * @example
-   * ```tsx
-   * const motion = useMotion<HTMLDivElement>(isOpen);
-   *
-   * <div ref={motion.ref} className={`element element-${motion.state}`} />
-   * ```
    */
   type: MotionType;
 
+  /**
+   * Indicates whether the component is currently rendered and visible.
+   * Useful to apply CSS transitions only when the element is active.
+   */
   isActive(): boolean;
-  isVisible(): boolean;
+
+  /**
+   * Indicates whether the component can be rendered.
+   * This can be used to avoid rendering the component when it is not visible anymore.
+   */
+  canRender(): boolean;
 };
 
 export type MotionShorthandValue = boolean;
@@ -63,7 +58,7 @@ export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionS
  * @param present - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
-export function useMotionPresence<Element extends HTMLElement>(
+function useMotionPresence<Element extends HTMLElement>(
   present: boolean,
   options: UseMotionOptions = {},
 ): MotionState<Element> {
@@ -180,21 +175,31 @@ export function useMotionPresence<Element extends HTMLElement>(
   }, []);
 
   return React.useMemo(() => {
-    const isVisible = () => type !== 'unmounted';
+    const canRender = () => type !== 'unmounted';
     const isActive = () => active;
 
     return {
       ref,
       type,
-      isVisible,
+      canRender,
       isActive,
     };
   }, [active, ref, type]);
 }
 
 /**
- * @internal
- *
+ * Returns a default motion state.
+ */
+export function getDefaultMotionState<Element extends HTMLElement>(): MotionState<Element> {
+  return {
+    ref: { current: null },
+    type: 'unmounted',
+    isActive: () => false,
+    canRender: () => false,
+  };
+}
+
+/**
  * Hook to manage the presence of an element in the DOM based on its CSS transition/animation state.
  *
  * @param props - Motion props to manage the presence of an element in the DOM
