@@ -1,19 +1,19 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { useMotion, MotionProps, MotionOptions } from './useMotion';
+import { useMotion, UseMotionOptions, MotionShorthand, getDefaultMotionState } from './useMotion';
 
 const defaultDuration = 100;
 const renderHookWithRef = (
-  initialState: MotionProps,
-  initialOptions?: MotionOptions,
+  initialMotion: MotionShorthand,
+  initialOptions?: UseMotionOptions,
   style: Record<string, string | undefined> = { 'transition-duration': `${defaultDuration}ms` },
 ) => {
   const refEl = document.createElement('div');
-  const hook = renderHook(({ state, options }) => useMotion(state, options), {
+  const hook = renderHook(({ motion, options }) => useMotion(motion, options), {
     initialProps: {
-      state: initialState,
+      motion: initialMotion,
       options: initialOptions,
-    } as { state: MotionProps; options?: MotionOptions },
+    } as { motion: MotionShorthand; options?: UseMotionOptions },
   });
 
   Object.entries(style).forEach(([key, value]) => value && refEl.style.setProperty(key, value));
@@ -46,89 +46,89 @@ describe('useMotion', () => {
 
   describe('when presence is false by default', () => {
     it('should return default values when presence is false', () => {
-      const { result } = renderHookWithRef({ presence: false });
+      const { result } = renderHookWithRef(false);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.isActive()).toBe(false);
     });
   });
 
   describe('when presence is true by default', () => {
     it('should return default values', () => {
-      const { result } = renderHookWithRef({ presence: true });
+      const { result } = renderHookWithRef(true);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.active).toBe(true);
+      expect(result.current.isActive()).toBe(true);
     });
 
     it('should change visible to true when animateOnFirstMount is true', () => {
-      const { result } = renderHookWithRef({ presence: true }, { animateOnFirstMount: true });
+      const { result } = renderHookWithRef(true, { animateOnFirstMount: true });
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.active).toBe(false);
+      expect(result.current.isActive()).toBe(false);
 
       jumpToNextFrame();
 
-      expect(result.current.active).toBe(true);
+      expect(result.current.isActive()).toBe(true);
     });
   });
 
   describe('when presence changes', () => {
     it('should toggle values starting with false', () => {
-      const { result, rerender } = renderHookWithRef({ presence: false });
+      const { result, rerender } = renderHookWithRef(false);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.isActive()).toBe(false);
 
-      rerender({ state: { presence: true } });
+      rerender({ motion: true });
 
       act(() => jest.advanceTimersToNextTimer());
 
-      expect(result.current.state).toBe('entering');
-      expect(result.current.active).toBe(true);
+      expect(result.current.type).toBe('entering');
+      expect(result.current.isActive()).toBe(true);
 
       act(() => jest.advanceTimersByTime(defaultDuration + 1));
-      expect(result.current.state).toBe('entered');
+      expect(result.current.type).toBe('entered');
 
       act(() => jest.advanceTimersToNextTimer());
 
-      expect(result.current.state).toBe('idle');
+      expect(result.current.type).toBe('idle');
 
-      rerender({ state: { presence: false } });
+      rerender({ motion: false });
 
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('exiting');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('exiting');
+      expect(result.current.isActive()).toBe(false);
 
       act(() => jest.advanceTimersByTime(defaultDuration + 1));
-      expect(result.current.state).toBe('exited');
+      expect(result.current.type).toBe('exited');
 
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.isActive()).toBe(false);
     });
 
     it('should toggle values starting with true', () => {
-      const { result, rerender } = renderHookWithRef({ presence: true });
+      const { result, rerender } = renderHookWithRef(true);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.active).toBe(true);
+      expect(result.current.isActive()).toBe(true);
 
-      rerender({ state: { presence: false } });
+      rerender({ motion: false });
 
       act(() => jest.advanceTimersToNextTimer());
 
-      expect(result.current.state).toBe('exiting');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('exiting');
+      expect(result.current.isActive()).toBe(false);
 
       act(() => jest.advanceTimersByTime(defaultDuration + 1));
-      expect(result.current.state).toBe('exited');
+      expect(result.current.type).toBe('exited');
 
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.isActive()).toBe(false);
     });
   });
 
@@ -139,40 +139,40 @@ describe('useMotion', () => {
     { message: 'with long animation', styles: { 'animation-duration': '1000ms' } },
   ])('when presence changes - $message', ({ styles }) => {
     it('should toggle values starting with false', () => {
-      const { result, rerender } = renderHookWithRef({ presence: false }, {}, styles);
+      const { result, rerender } = renderHookWithRef(false, {}, styles);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.isActive()).toBe(false);
 
-      rerender({ state: { presence: true } });
-
-      act(() => jest.advanceTimersToNextTimer());
-
-      expect(result.current.state).toBe('entering');
-      expect(result.current.active).toBe(true);
+      rerender({ motion: true });
 
       act(() => jest.advanceTimersToNextTimer());
 
-      expect(result.current.state).toBe('entered');
+      expect(result.current.type).toBe('entering');
+      expect(result.current.isActive()).toBe(true);
 
       act(() => jest.advanceTimersToNextTimer());
 
-      expect(result.current.state).toBe('idle');
-
-      rerender({ state: { presence: false } });
+      expect(result.current.type).toBe('entered');
 
       act(() => jest.advanceTimersToNextTimer());
 
-      expect(result.current.state).toBe('exiting');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('idle');
+
+      rerender({ motion: false });
 
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('exited');
+
+      expect(result.current.type).toBe('exiting');
+      expect(result.current.isActive()).toBe(false);
 
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('exited');
+
+      act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.isActive()).toBe(false);
     });
   });
 
@@ -181,57 +181,57 @@ describe('useMotion', () => {
     { message: 'with no animation', styles: { 'animation-duration': '0' } },
   ])('when presence changes - $message', ({ styles }) => {
     it('should toggle values when transition-duration is 0', () => {
-      const { result, rerender } = renderHookWithRef({ presence: false }, {}, styles);
+      const { result, rerender } = renderHookWithRef(false, {}, styles);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.isActive()).toBe(false);
 
-      rerender({ state: { presence: true } });
-
-      act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('entered');
+      rerender({ motion: true });
 
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('idle');
-
-      // requestAnimationFrame
-      act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.active).toBe(true);
-      // timeout
-      act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('idle');
-
-      rerender({ state: { presence: false } });
+      expect(result.current.type).toBe('entered');
 
       act(() => jest.advanceTimersToNextTimer());
-      act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toBe('idle');
 
       // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.isActive()).toBe(true);
       // timeout
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.state).toBe('unmounted');
+      expect(result.current.type).toBe('idle');
+
+      rerender({ motion: false });
+
+      act(() => jest.advanceTimersToNextTimer());
+      act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.isActive()).toBe(false);
+
+      // requestAnimationFrame
+      act(() => jest.advanceTimersToNextTimer());
+      // timeout
+      act(() => jest.advanceTimersToNextTimer());
+      expect(result.current.type).toBe('unmounted');
     });
   });
 
   describe('when motion is received', () => {
     it('should return default values when presence is false', () => {
-      const { result } = renderHookWithRef({ presence: false, state: 'unmounted', active: false });
+      const defaultState = getDefaultMotionState();
+      const { result } = renderHookWithRef(getDefaultMotionState());
 
-      expect(typeof result.current.ref).toBe('function');
-      expect(result.current.state).toBe('unmounted');
-      expect(result.current.presence).toBe(false);
-      expect(result.current.active).toBe(false);
+      expect(result.current.type).toStrictEqual('unmounted');
+      expect(result.current.ref).toStrictEqual(defaultState.ref);
+      expect(result.current.isActive()).toStrictEqual(false);
     });
 
     it('should return default values when presence is true', () => {
-      const { result } = renderHookWithRef({ presence: true, state: 'idle', active: true });
+      const defaultState = getDefaultMotionState();
+      const { result } = renderHookWithRef({ ...getDefaultMotionState(), isActive: () => true });
 
-      expect(typeof result.current.ref).toBe('function');
-      expect(result.current.presence).toBe(true);
-      expect(result.current.active).toBe(true);
+      expect(result.current.ref).toStrictEqual(defaultState.ref);
+      expect(result.current.isActive()).toStrictEqual(true);
     });
   });
 });

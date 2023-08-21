@@ -5,23 +5,34 @@
 ```ts
 
 import * as React_2 from 'react';
-import { RefObjectFunction } from '@fluentui/react-utilities';
+
+// @public
+export function getDefaultMotionState<Element extends HTMLElement>(): MotionState<Element>;
 
 // @public (undocumented)
-export type MotionOptions = {
+export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | MotionState<Element>;
+
+// @public (undocumented)
+export type MotionShorthandValue = boolean;
+
+// @public (undocumented)
+export type MotionState<Element extends HTMLElement = HTMLElement> = {
+    ref: React_2.Ref<Element>;
+    type: MotionType;
+    isActive(): boolean;
+    canRender(): boolean;
+};
+
+// @public (undocumented)
+export type MotionType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
+
+// @public
+export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: UseMotionOptions): MotionState<Element>;
+
+// @public (undocumented)
+export type UseMotionOptions = {
     animateOnFirstMount?: boolean;
 };
-
-// @internal
-export type MotionProps<T = HTMLElement> = {
-    presence: boolean;
-    ref?: RefObjectFunction<T> | React_2.RefCallback<T> | React_2.Ref<T>;
-    active?: boolean;
-    state?: 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
-};
-
-// @internal
-export const useMotion: <T extends HTMLElement>(props: MotionProps<T>, options?: MotionOptions) => Required<MotionProps<T>>;
 
 // (No @packageDocumentation comment for this package)
 
