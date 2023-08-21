@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
+
 import {
   MEDIA_QUERY_BREAKPOINT_SELECTOR,
   SURFACE_BORDER_WIDTH,
@@ -9,6 +10,7 @@ import {
   useDialogContext_unstable,
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
+import { useMotionStyles } from '@fluentui/react-motion-preview/src/index';
 
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
   root: 'fui-DialogSurface',
@@ -101,14 +103,26 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const backdropStyles = useBackdropStyles();
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
+  const motionClasses = useMotionStyles(
+    state.motion,
+    mergeClasses(
+      state.motion.isActive() && surfaceStyles.visible,
+      state.motion.type === 'entering' && surfaceStyles.entering,
+      state.motion.type === 'exiting' && surfaceStyles.exiting,
+    ),
+  );
+
+  const backdropMotionClasses = useMotionStyles(
+    state.backdropMotion,
+    mergeClasses(state.backdropMotion.isActive() && backdropStyles.visible),
+  );
+
   state.root.className = mergeClasses(
     dialogSurfaceClassNames.root,
     surfaceStyles.root,
     surfaceStyles.focusOutline,
     isNestedDialog && backdropStyles.nestedNativeDialogBackdrop,
-    state.motion.isActive() && surfaceStyles.visible,
-    state.motion.type === 'entering' && surfaceStyles.entering,
-    state.motion.type === 'exiting' && surfaceStyles.exiting,
+    motionClasses,
     state.root.className,
   );
 
@@ -117,7 +131,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
       dialogSurfaceClassNames.backdrop,
       backdropStyles.backdrop,
       isNestedDialog && backdropStyles.nestedDialogBackdrop,
-      state.backdropMotion.isActive() && backdropStyles.visible,
+      backdropMotionClasses,
       state.backdrop.className,
     );
   }

@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useMotionStyles } from '@fluentui/react-motion-preview';
+import { tokens } from '@fluentui/react-theme';
+
+import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
 import {
   drawerCSSVars,
   useDrawerBaseClassNames,
   useDrawerBaseStyles,
   useDrawerDurationStyles,
 } from '../../util/useDrawerBaseStyles.styles';
-import { tokens } from '@fluentui/react-theme';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
   root: 'fui-DrawerInline',
@@ -68,18 +70,15 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     return state.position === 'start' ? rootStyles.separatorStart : rootStyles.separatorEnd;
   }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
 
-  const motionClasses = React.useMemo(() => {
-    if (!state.motion.hasInternalMotion) {
-      return;
-    }
-
-    return mergeClasses(
+  const motionClasses = useMotionStyles(
+    state.motion,
+    mergeClasses(
       rootMotionStyles.root,
       state.size && durationStyles[state.size],
       state.position && !state.motion.isActive() && rootMotionStyles[state.position],
       state.motion.isActive() && rootMotionStyles.visible,
-    );
-  }, [durationStyles, rootMotionStyles, state.motion, state.position, state.size]);
+    ),
+  );
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,

@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { useMotionStyles } from '@fluentui/react-motion-preview';
 
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
 import {
@@ -81,43 +82,35 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
 
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
-  const motionClasses = React.useMemo(() => {
-    return mergeClasses(
+  const motionClasses = useMotionStyles(
+    state.motion,
+    mergeClasses(
       state.position && rootMotionStyles[state.position],
       state.size && durationStyles[state.size],
       state.motion.isActive() && rootMotionStyles.visible,
       state.root.className,
-    );
-  }, [durationStyles, rootMotionStyles, state.motion, state.position, state.root.className, state.size]);
+    ),
+  );
 
-  const backdropMotionClasses = React.useMemo(() => {
-    return mergeClasses(
+  const backdropMotionClasses = useMotionStyles(
+    state.backdropMotion,
+    mergeClasses(
       backdropMotionStyles.backdrop,
       state.backdropMotion.isActive() && backdropMotionStyles.backdropVisible,
       state.size && durationStyles[state.size],
-    );
-  }, [
-    backdropMotionStyles.backdrop,
-    backdropMotionStyles.backdropVisible,
-    durationStyles,
-    state.backdropMotion,
-    state.size,
-  ]);
+    ),
+  );
 
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
     useDrawerBaseClassNames(state, baseStyles),
     rootStyles.root,
-    state.motion.hasInternalMotion && motionClasses,
+    motionClasses,
     state.root.className,
   );
 
   if (backdrop) {
-    backdrop.className = mergeClasses(
-      drawerOverlayClassNames.backdrop,
-      state.backdropMotion.hasInternalMotion && backdropMotionClasses,
-      backdrop.className,
-    );
+    backdrop.className = mergeClasses(drawerOverlayClassNames.backdrop, backdropMotionClasses, backdrop.className);
   }
 
   return state;
