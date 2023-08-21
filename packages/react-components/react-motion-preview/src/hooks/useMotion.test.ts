@@ -1,5 +1,4 @@
 import { act, renderHook } from '@testing-library/react-hooks';
-import { fail } from 'assert';
 
 import { useMotion, UseMotionOptions, MotionShorthand, getDefaultMotionState, useIsMotion } from './useMotion';
 
