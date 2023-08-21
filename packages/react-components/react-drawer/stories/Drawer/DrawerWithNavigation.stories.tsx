@@ -25,7 +25,7 @@ export const WithNavigation = () => {
 
   return (
     <div>
-      <DrawerOverlay position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <DrawerOverlay position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>
