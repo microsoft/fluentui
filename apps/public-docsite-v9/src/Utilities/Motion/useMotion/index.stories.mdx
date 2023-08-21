@@ -1,6 +1,8 @@
-import { Meta, Description } from '@storybook/addon-docs';
+import { Title, Subtitle, Meta, Description } from '@storybook/addon-docs';
 
 import { MotionExample } from './MotionExample.stories';
+
+<Title>useMotion</Title>
 
 <Meta title="Utilities/Motion/useMotion" />
 
@@ -11,7 +13,7 @@ import { MotionExample } from './MotionExample.stories';
   will automatically adjust and stay synchronized.
 </Description>
 
-## Usage
+<Subtitle>Usage</Subtitle>
 
 ```tsx
 import * as React from 'react';
@@ -75,5 +77,7 @@ export const MotionExample = () => {
   );
 };
 ```
+
+<Subtitle>Example</Subtitle>
 
 <MotionExample />
