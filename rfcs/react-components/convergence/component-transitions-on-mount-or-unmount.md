@@ -28,30 +28,17 @@ A tracker hook, that monitors the state of animations and transitions for a part
 
 #### API
 
-The hook accepts a `MotionProps` param and a `MotionOptions`:
+The hook accepts a `MotionShorthand` param and a `MotionOptions`:
 
 ```tsx
 // Types
-type MotionProps = {
-  /**
-   * Whether the element should be present in the DOM.
-   */
-  presence: boolean;
+export type MotionType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
 
+export type MotionState<Element extends HTMLElement = HTMLElement> = {
   /**
-   * Ref used to track the target element that requires animation. It should
-   * be passed to the element responsible for performing the animation.
+   * Ref to the element.
    */
-  ref;
-
-  /**
-   * Indicates whether the component is currently rendered and visible.
-   *
-   * This flag will be set to `true` one frame after the motionState changes from 'unmounted' to 'entering' or 'resting'
-   * It will be set to `false` when the specified presence value changes to false.
-   * Useful to apply CSS transitions only when the element is active.
-   */
-  active;
+  ref: React.Ref<Element>;
 
   /**
    * Current state of the element.
@@ -63,8 +50,24 @@ type MotionProps = {
    * - `exiting` - The element is performing exit animation.
    * - `exited` - The element has finished exit animation.
    */
-  state: 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
+  type: MotionType;
+
+  /**
+   * Indicates whether the component is currently rendered and visible.
+   * Useful to apply CSS transitions only when the element is active.
+   */
+  isActive(): boolean;
+
+  /**
+   * Indicates whether the component can be rendered.
+   * This can be used to avoid rendering the component when it is not visible anymore.
+   */
+  canRender(): boolean;
 };
+
+export type MotionShorthandValue = boolean;
+
+export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | MotionState<Element>;
 
 type MotionOptions = {
   /**
@@ -77,16 +80,14 @@ type MotionOptions = {
 };
 
 // Usage
-const props = {
-  presence: true,
-};
+const [open, setOpen] = React.useState(false);
 const options = {
   animateOnFirstMount: false,
 };
-const { ref, presence, active, state } = useMotion(props, options);
+const { ref, type, isActive, canRender } = useMotion(open, options);
 ```
 
-The hook also outputs the same `MotionProps`. This is for cases when the motion props don't need to be recalculated or are passed by another component. See the **Usage** section on this document.
+The hook always returns a `MotionState`. The received `MotionShorthand` parameter can be either a `boolean` or a `MotionState`. This flexibility is extremely useful for cases when an override on another component is needed, and with that a double calculation is avoided. See the **Usage** section on this document.
 
 #### Usage
 
@@ -100,10 +101,7 @@ import { useMotion } from '@fluentui/react-motion-preview';
 import type { SampleProps, SampleState } from './Sample.types';
 
 export const useSample_unstable = ({ open = false }: SampleProps, ref: React.Ref<HTMLElement>): SampleState => {
-  const motion = useMotion({
-    presence: open,
-    ref,
-  });
+  const motion = useMotion(open);
 
   return {
     components: {
@@ -112,14 +110,13 @@ export const useSample_unstable = ({ open = false }: SampleProps, ref: React.Ref
 
     root: slot.always(
       getNativeElementProps('div', {
-        ref: motion.ref,
+        ref: useMergedRefs(ref, motion.ref),
         ...props,
       }),
       { elementType: 'div' },
     ),
 
-    active: motion.active,
-    motionState: motion.state,
+    motion,
   };
 };
 ```
@@ -137,7 +134,7 @@ import type { SampleState, SampleSlots } from './Sample.types';
 export const renderSample_unstable = (state: SampleState) => {
   const { slots, slotProps } = getSlots<SampleSlots>(state);
 
-  if (state.motionState === 'unmounted') {
+  if (state.motion.canRender()) {
     return null;
   }
 
@@ -186,9 +183,9 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 
   state.root.className = mergeClasses(
     SampleClassNames.root,
-    state.active && styles.visible,
-    state.motionState === 'entering' && styles.entering,
-    state.motionState === 'exiting' && styles.exiting,
+    state.motion.isActive() && styles.visible,
+    state.motion.type === 'entering' && styles.entering,
+    state.motion.type === 'exiting' && styles.exiting,
     styles.root,
   );
 
@@ -252,8 +249,8 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 
   state.root.className = mergeClasses(
     SampleClassNames.root,
-    state.motionState === 'entering' && styles.entering,
-    state.motionState === 'exiting' && styles.exiting,
+    state.motion.type === 'entering' && styles.entering,
+    state.motion.type === 'exiting' && styles.exiting,
     styles.root,
   );
 
@@ -283,7 +280,7 @@ export const CustomDuration = () => {
 };
 ```
 
-Fluent components can also accept a `motion` prop, that can be used to receive `useMotion` values called from another component. This is very useful for cases when a completely custom animation/transition is needed. In this case, we enable full control to override animations/transitions while improving performance by not computing the values twice:
+In order to enable overrides, Fluent components can also accept a prop that can be used to receive `useMotion` values coming from another component. This is extremely useful for cases when a completely custom animation/transition is needed. In this case, we enable full control to override animations/transitions while improving performance by not computing the values twice. In the following example, the `open` prop for the Drawer can receive either a `boolean` or a `MotionState`:
 
 ##### Application side:
 
@@ -308,9 +305,7 @@ export const CustomAnimation = () => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const motion = useMotion<HTMLDivElement>({
-    presence: open,
-  });
+  const motion = useMotion<HTMLDivElement>(open);
 
   const onClick = () => setOpen(!open);
 
@@ -319,7 +314,7 @@ export const CustomAnimation = () => {
       <Button appearance="primary" onClick={onClick}>
         Toggle
       </Button>
-      <Drawer motion={motion} className={mergeClasses(styles.drawer, motion.active && styles.drawerVisible)} />;
+      <Drawer open={motion} className={mergeClasses(styles.drawer, motion.isActive() && styles.drawerVisible)} />;
     </div>
   );
 };
@@ -328,16 +323,9 @@ export const CustomAnimation = () => {
 ##### Fluent Component:
 
 ```tsx
-export const useDrawer_unstable = (props: DrawerInlineProps, ref: React.Ref<HTMLDivElement>): DrawerInlineState => {
-  const { open, motion: motionProp } = props;
-
-  // Call useMotion with given motion values or create a new one
-  const motion = useMotion(
-    motionProp || {
-      presence: open,
-      ref,
-    },
-  );
+export const useDrawer_unstable = ({ open }: DrawerInlineProps, ref: React.Ref<HTMLDivElement>): DrawerInlineState => {
+  // Call useMotion with given motion values
+  const motion = useMotion(open);
 
   return {
     components: {
@@ -346,14 +334,13 @@ export const useDrawer_unstable = (props: DrawerInlineProps, ref: React.Ref<HTML
 
     root: slot.always(
       getNativeElementProps('div', {
-        ref: motion.ref,
+        ref: useMergedRefs(ref, motion.ref),
         ...props,
       }),
       { elementType: 'div' },
     ),
 
-    active: motion.active,
-    motionState: motion.state,
+    motion,
   };
 };
 ```
@@ -374,4 +361,4 @@ export const useDrawer_unstable = (props: DrawerInlineProps, ref: React.Ref<HTML
 
 #### Cons
 
-- 👎 Lacks support for sequential animation playback, similar to React Transition Group.
+- 👎 Lacks support for sequential animation playback, similar to React Transition Group. This can be implemented using a separate solution, while using the `useMotion` hook.
