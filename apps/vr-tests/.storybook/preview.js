@@ -2,6 +2,8 @@
 import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 /**
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
@@ -28,6 +30,12 @@ setAddon({
       setRTL(false);
       return storyFn(context);
     });
+    if (config.includeDarkMode) {
+      this.add(storyName + ' - Dark Mode', context => {
+        setRTL(false);
+        return <ThemeProvider theme={DarkTheme}>{storyFn(context)}</ThemeProvider>;
+      });
+    }
     if (config.includeRtl) {
       this.add(storyName + ' - RTL', context => {
         setRTL(true);

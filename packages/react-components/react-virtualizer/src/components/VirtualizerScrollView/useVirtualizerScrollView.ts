@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useVirtualizer_unstable } from '../Virtualizer/useVirtualizer';
 import type { VirtualizerScrollViewProps, VirtualizerScrollViewState } from './VirtualizerScrollView.types';
 import { useStaticVirtualizerMeasure } from '../../Hooks';
@@ -19,7 +19,7 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
   if (virtualizerLengthRef.current !== virtualizerLength) {
     virtualizerLengthRef.current = virtualizerLength;
   }
-  const scrollViewRef = useMergedRefs(React.useRef<HTMLDivElement>(null), scrollRef) as React.RefObject<HTMLDivElement>;
+  const scrollViewRef = useMergedRefs(props.scrollViewRef, scrollRef) as React.RefObject<HTMLDivElement>;
   const imperativeVirtualizerRef = React.useRef<VirtualizerDataRef | null>(null);
   const scrollCallbackRef = React.useRef<null | ((index: number) => void)>(null);
 
@@ -69,11 +69,11 @@ export function useVirtualizerScrollView_unstable(props: VirtualizerScrollViewPr
       ...virtualizerState.components,
       container: 'div',
     },
-    container: resolveShorthand(props.container, {
-      required: true,
+    container: slot.always(props.container, {
       defaultProps: {
         ref: scrollViewRef as React.RefObject<HTMLDivElement>,
       },
+      elementType: 'div',
     }),
   };
 }

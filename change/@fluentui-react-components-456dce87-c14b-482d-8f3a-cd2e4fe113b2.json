@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export useEventCallback and mergeCallbacks",
-  "packageName": "@fluentui/react-components",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

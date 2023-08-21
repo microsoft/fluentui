@@ -95,11 +95,9 @@ export const Default = () => {
       <Breadcrumb aria-label="breadcrumb-item-icon-example">
         <BreadcrumbItem icon={<CalendarMonth />}>Item with an icon</BreadcrumbItem>
         <BreadcrumbDivider />
-        <BreadcrumbItem icon={<CalendarMonth />} />
+        <BreadcrumbItem>Item 1</BreadcrumbItem>
         <BreadcrumbDivider />
-        <BreadcrumbItem icon={<CalendarMonth />} iconPosition="after">
-          Item with an icon
-        </BreadcrumbItem>
+        <BreadcrumbItem>Item 2</BreadcrumbItem>
       </Breadcrumb>
     </>
   );
