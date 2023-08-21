@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, useMergedRefs } from '@fluentui/react-utilities';
-import { useEventCallback } from '@fluentui/react-utilities';
+import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
-import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../contexts/index';
+import { useTreeContext_unstable } from '../../contexts/index';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
@@ -31,9 +30,9 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const [isActionsVisible, setActionsVisible] = React.useState(false);
   const [isAsideVisible, setAsideVisible] = React.useState(true);
 
-  const handleActionsRef = (actionsElement: HTMLDivElement | null) => {
+  const handleActionsRef = React.useCallback((actionsElement: HTMLDivElement | null) => {
     setAsideVisible(actionsElement === null);
-  };
+  }, []);
 
   const actionsRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLDivElement>(null);
@@ -43,13 +42,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
-  const parentChecked = useTreeItemContext_unstable(ctx => ctx.checked);
-  const checked = useTreeContext_unstable(ctx => {
-    if (selectionMode === 'multiselect' && typeof parentChecked === 'boolean') {
-      return parentChecked;
-    }
-    return ctx.checkedItems.get(value);
-  });
+  const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
   const handleClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     onClick?.(event);
@@ -149,7 +142,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     });
   });
 
-  const isBranch = itemType === 'branch';
   return {
     value,
     open,
@@ -166,24 +158,29 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     },
     isAsideVisible,
     isActionsVisible,
-    root: getNativeElementProps(as, {
-      tabIndex: -1,
-      ...rest,
-      ref,
-      role: 'treeitem',
-      'aria-level': level,
-      [dataTreeItemValueAttrName]: value,
-      'aria-checked':
-        selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
-      'aria-selected': selectionMode === 'single' ? checked : undefined,
-      'aria-expanded': isBranch ? open : undefined,
-      onClick: handleClick,
-      onKeyDown: handleKeyDown,
-      onMouseOver: handleActionsVisible,
-      onFocus: handleActionsVisible,
-      onMouseOut: handleActionsInvisible,
-      onBlur: handleActionsInvisible,
-      onChange: handleChange,
-    }),
+    root: slot.always(
+      getNativeElementProps(as, {
+        tabIndex: -1,
+        ...rest,
+        ref,
+        role: 'treeitem',
+        'aria-level': level,
+        [dataTreeItemValueAttrName]: value,
+        'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
+        // aria-selected is required according to WAI-ARIA spec
+        // https://www.w3.org/TR/wai-aria-1.1/#treeitem
+        // Casting: when selectionMode is 'single', checked is a boolean
+        'aria-selected': selectionMode === 'single' ? (checked as boolean) : 'false',
+        'aria-expanded': itemType === 'branch' ? open : undefined,
+        onClick: handleClick,
+        onKeyDown: handleKeyDown,
+        onMouseOver: handleActionsVisible,
+        onFocus: handleActionsVisible,
+        onMouseOut: handleActionsInvisible,
+        onBlur: handleActionsInvisible,
+        onChange: handleChange,
+      }),
+      { elementType: 'div' },
+    ),
   };
 }

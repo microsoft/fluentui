@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { TagGroupProps, TagGroupState } from './TagGroup.types';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { interactionTagClassNames } from '../InteractionTag/useInteractionTagStyles.styles';
+import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/useInteractionTagSecondaryStyles.styles';
 
 /**
  * Create the state required to render TagGroup.
@@ -35,7 +35,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
       }
 
       // if there is no next focusable, focus on the previous focusable
-      if (activeElement?.className.includes(interactionTagClassNames.dismissButton)) {
+      if (activeElement?.className.includes(interactionTagSecondaryClassNames.root)) {
         const prev = findPrevFocusable(activeElement.parentElement as HTMLElement, { container: innerRef.current });
         prev?.focus();
       } else {
@@ -51,7 +51,6 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
   });
 
   return {
-    dismissible: !!onDismiss,
     handleTagDismiss,
     size,
 
@@ -59,11 +58,14 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
       root: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'toolbar',
-      ...arrowNavigationProps,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, innerRef),
+        role: 'toolbar',
+        ...arrowNavigationProps,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

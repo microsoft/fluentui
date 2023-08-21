@@ -1,3 +1,6 @@
+/// <reference types="cypress" />
+/// <reference types="cypress-real-events" />
+
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -18,7 +21,7 @@ const mount = (element: JSX.Element) => {
 
 const TreeTest: React.FC<TreeProps> = props => {
   return (
-    <Tree id="baseTree" aria-label="Tree" {...props}>
+    <Tree id="tree" aria-label="Tree" {...props}>
       {props.children ?? (
         <>
           <TreeItem itemType="branch" value="item1" data-testid="item1">
@@ -55,7 +58,7 @@ const TreeTest: React.FC<TreeProps> = props => {
 };
 TreeTest.displayName = 'Tree';
 
-describe(TreeTest.displayName!, () => {
+describe('Tree', () => {
   it('should have all but first level items hidden', () => {
     mount(<TreeTest />);
     cy.get('[data-testid="item1__item1"]').should('not.exist');
@@ -111,7 +114,7 @@ describe(TreeTest.displayName!, () => {
     });
     it('should not expand/collapse item on actions click', () => {
       mount(
-        <TreeTest id="baseTree" aria-label="Tree">
+        <TreeTest id="tree" aria-label="Tree">
           <TreeItem itemType="branch" value="item1" data-testid="item1">
             <TreeItemLayout actions={<Button id="action">action!</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
@@ -154,7 +157,7 @@ describe(TreeTest.displayName!, () => {
     });
     it('should focus on actions when pressing tab key', () => {
       mount(
-        <TreeTest id="baseTree" aria-label="Tree">
+        <TreeTest id="tree" aria-label="Tree">
           <TreeItem itemType="branch" value="item1" data-testid="item1">
             <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
@@ -173,7 +176,7 @@ describe(TreeTest.displayName!, () => {
     });
     it('should not expand/collapse item on actions Enter/Space key', () => {
       mount(
-        <TreeTest id="baseTree" aria-label="Tree">
+        <TreeTest id="tree" aria-label="Tree">
           <TreeItem itemType="branch" value="item1" data-testid="item1">
             <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
@@ -199,7 +202,7 @@ describe(TreeTest.displayName!, () => {
       cy.document().realPress('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
     });
-    it('should focus out of baseTree when pressing tab key inside baseTree.', () => {
+    it('should focus out of tree when pressing tab key inside tree.', () => {
       mount(<TreeTest />);
       cy.focused().should('not.exist');
       cy.document().realPress('Tab');

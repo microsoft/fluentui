@@ -57,8 +57,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         userSelect: 'none',
         borderRadius: 0,
         border: 'none',
-        height: height,
-        width: width,
+        height,
+        width,
         verticalAlign: 'top',
       },
       !circle && {
@@ -95,8 +95,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         selectors: {
           ['&:hover::before']: {
             content: '""',
-            height: height,
-            width: width,
+            height,
+            width,
             position: 'absolute',
             top: -calculatedBorderWidth,
             left: -calculatedBorderWidth,

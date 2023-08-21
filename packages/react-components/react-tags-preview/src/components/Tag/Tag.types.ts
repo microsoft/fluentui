@@ -1,14 +1,8 @@
-import { AvatarSize, AvatarShape } from '@fluentui/react-avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { TagAppearance, TagShape, TagSize } from '../../utils/types';
+import { TagAvatarContextValues, UseTagAvatarContextValuesOptions } from '../../utils/useTagAvatarContextValues';
 
-export type TagSize = 'extra-small' | 'small' | 'medium';
-
-export type TagContextValues = {
-  avatar: {
-    size?: AvatarSize;
-    shape?: AvatarShape;
-  };
-};
+export type TagContextValues = TagAvatarContextValues;
 
 export type TagSlots = {
   root: NonNullable<Slot<'button', 'span'>>;
@@ -37,11 +31,41 @@ export type TagSlots = {
  * Tag Props
  */
 export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
-  appearance?: 'filled' | 'outline' | 'brand';
+  /**
+   * A Tag can have filled, outlined or brand experience.
+   *
+   * @default 'filled'
+   */
+  appearance?: TagAppearance;
+
+  /**
+   * A Tag can show that it cannot be interacted with.
+   *
+   * @default false
+   */
   disabled?: boolean;
+
+  /**
+   * A Tag can be dismissible
+   *
+   * @default false
+   */
   dismissible?: boolean;
-  shape?: 'rounded' | 'circular';
+
+  /**
+   * A Tag can have rounded or circular shape.
+   *
+   * @default 'round'
+   */
+  shape?: TagShape;
+
+  /**
+   * A Tag has three sizes.
+   *
+   * @default 'medium'
+   */
   size?: TagSize;
+
   /**
    * Unique value identifying the tag within a TagGroup
    */
@@ -52,9 +76,5 @@ export type TagProps<Value = string> = ComponentProps<Partial<TagSlots>> & {
  * State used in rendering Tag
  */
 export type TagState = ComponentState<TagSlots> &
-  Required<
-    Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'> & {
-      avatarSize: AvatarSize | undefined;
-      avatarShape: AvatarShape | undefined;
-    }
-  >;
+  Required<Pick<TagProps, 'appearance' | 'disabled' | 'dismissible' | 'shape' | 'size'>> &
+  UseTagAvatarContextValuesOptions;

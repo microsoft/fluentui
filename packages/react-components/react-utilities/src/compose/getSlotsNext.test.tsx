@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { getSlotsNext } from './getSlotsNext';
-import type { Slot } from './types';
+import type { ExtractSlotProps, Slot, SlotComponentType, UnknownSlotProps } from './types';
 import { resolveShorthand } from './resolveShorthand';
 import { SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
+
+const resolveShorthandMock = <Props extends UnknownSlotProps>(props: Props): SlotComponentType<Props> => {
+  // casting is required here as SlotComponent is a callable
+  return { ...props } as SlotComponentType<Props>;
+};
 
 describe('getSlotsNext', () => {
   type FooProps = { id?: string; children?: React.ReactNode };
@@ -10,7 +15,12 @@ describe('getSlotsNext', () => {
 
   it('returns provided component type for root if the as prop is not provided', () => {
     type Slots = { root: Slot<'div'> };
-    expect(getSlotsNext<Slots>({ root: {}, components: { root: 'div' } })).toEqual({
+    expect(
+      getSlotsNext<Slots>({
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({}),
+        components: { root: 'div' },
+      }),
+    ).toEqual({
       slots: { root: 'div' },
       slotProps: { root: {} },
     });
@@ -18,7 +28,12 @@ describe('getSlotsNext', () => {
 
   it('returns root slot as a span with no props', () => {
     type Slots = { root: Slot<'div', 'span'> };
-    expect(getSlotsNext<Slots>({ root: { as: 'span' }, components: { root: 'div' } })).toEqual({
+    expect(
+      getSlotsNext<Slots>({
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'span' }),
+        components: { root: 'div' },
+      }),
+    ).toEqual({
       slots: { root: 'span' },
       slotProps: { root: {} },
     });
@@ -28,7 +43,10 @@ describe('getSlotsNext', () => {
     type Slots = { root: Slot<'button'> };
     const invalidProp = { href: 'href' } as React.ButtonHTMLAttributes<HTMLButtonElement>;
     expect(
-      getSlotsNext<Slots>({ root: { as: 'button', id: 'id', ...invalidProp }, components: { root: 'button' } }),
+      getSlotsNext<Slots>({
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'button', id: 'id', ...invalidProp }),
+        components: { root: 'button' },
+      }),
     ).toEqual({
       slots: { root: 'button' },
       slotProps: { root: { id: 'id', href: 'href' } },
@@ -37,7 +55,12 @@ describe('getSlotsNext', () => {
 
   it('returns root slot as an anchor, leaving the href intact', () => {
     type Slots = { root: Slot<'a'> };
-    expect(getSlotsNext<Slots>({ root: { as: 'a', id: 'id', href: 'href' }, components: { root: 'a' } })).toEqual({
+    expect(
+      getSlotsNext<Slots>({
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'a', id: 'id', href: 'href' }),
+        components: { root: 'a' },
+      }),
+    ).toEqual({
       slots: { root: 'a' },
       slotProps: { root: { id: 'id', href: 'href' } },
     });
@@ -50,13 +73,16 @@ describe('getSlotsNext', () => {
     };
     expect(
       getSlotsNext<Slots>({
-        icon: {},
+        icon: resolveShorthandMock<ExtractSlotProps<Slots['icon']>>({}),
         components: { root: 'div', icon: Foo },
-        root: { as: 'div' },
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
       }),
     ).toEqual({
       slots: { root: 'div', icon: Foo },
-      slotProps: { root: {}, icon: {} },
+      slotProps: {
+        root: {},
+        icon: {},
+      },
     });
   });
 
@@ -68,12 +94,15 @@ describe('getSlotsNext', () => {
     expect(
       getSlotsNext<Slots>({
         components: { icon: 'button', root: 'div' },
-        root: { as: 'span' },
-        icon: { id: 'id', children: 'children' },
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'span' }),
+        icon: resolveShorthandMock<ExtractSlotProps<Slots['icon']>>({ id: 'id', children: 'children' }),
       }),
     ).toEqual({
       slots: { root: 'span', icon: 'button' },
-      slotProps: { root: {}, icon: { id: 'id', children: 'children' } },
+      slotProps: {
+        root: {},
+        icon: { id: 'id', children: 'children' },
+      },
     });
   });
 
@@ -84,13 +113,20 @@ describe('getSlotsNext', () => {
     };
     expect(
       getSlotsNext<Slots>({
-        root: { as: 'div' },
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
         components: { root: 'div', icon: 'a' },
-        icon: { id: 'id', href: 'href', children: 'children' },
+        icon: resolveShorthandMock<ExtractSlotProps<Slots['icon']>>({ id: 'id', href: 'href', children: 'children' }),
       }),
     ).toEqual({
       slots: { root: 'div', icon: 'a' },
-      slotProps: { root: {}, icon: { id: 'id', href: 'href', children: 'children' } },
+      slotProps: {
+        root: {},
+        icon: {
+          id: 'id',
+          href: 'href',
+          children: 'children',
+        },
+      },
     });
   });
 
@@ -102,12 +138,19 @@ describe('getSlotsNext', () => {
     expect(
       getSlotsNext<Slots>({
         components: { root: 'div', icon: Foo },
-        root: { as: 'div' },
-        icon: { id: 'id', href: 'href', children: 'children' },
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
+        icon: resolveShorthandMock<ExtractSlotProps<Slots['icon']>>({ id: 'id', href: 'href', children: 'children' }),
       }),
     ).toEqual({
       slots: { root: 'div', icon: Foo },
-      slotProps: { root: {}, icon: { id: 'id', href: 'href', children: 'children' } },
+      slotProps: {
+        root: {},
+        icon: {
+          id: 'id',
+          href: 'href',
+          children: 'children',
+        },
+      },
     });
   });
 
@@ -120,30 +163,40 @@ describe('getSlotsNext', () => {
     expect(
       getSlotsNext<Slots>({
         components: { root: 'div', icon: Foo },
-        root: { as: 'div' },
-        icon: { id: 'bar', children: renderIcon },
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
+        icon: resolveShorthandMock<ExtractSlotProps<Slots['icon']>>({ id: 'bar', children: renderIcon }),
       }),
     ).toEqual({
       slots: { root: 'div', icon: Foo },
-      slotProps: { root: {}, icon: { id: 'bar', children: renderIcon } },
+      slotProps: {
+        root: {},
+        icon: { id: 'bar', children: renderIcon },
+      },
     });
   });
 
   it('can use slot children functions from resolveShorthand to replace default slot rendering', () => {
     type Slots = {
       root: Slot<'div'>;
-      icon: Slot<'a'>;
+      icon?: Slot<'a'>;
     };
     const renderFunction = (C: React.ElementType, p: {}) => <C {...p} />;
     expect(
       getSlotsNext<Slots>({
         components: { root: 'div', icon: Foo },
-        root: resolveShorthand({ as: 'div' }, { required: true }),
-        icon: resolveShorthand({ id: 'bar', children: renderFunction }),
+        root: resolveShorthand<ExtractSlotProps<Slots['root']>>({ as: 'div' }, { required: true }),
+        icon: resolveShorthand<ExtractSlotProps<Slots['icon']>>({ id: 'bar', children: renderFunction }),
       }),
     ).toEqual({
       slots: { root: 'div', icon: Foo },
-      slotProps: { root: {}, icon: { children: undefined, id: 'bar', [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction } },
+      slotProps: {
+        root: {},
+        icon: {
+          children: undefined,
+          id: 'bar',
+          [SLOT_RENDER_FUNCTION_SYMBOL]: renderFunction,
+        },
+      },
     });
   });
 
@@ -155,14 +208,18 @@ describe('getSlotsNext', () => {
     };
     expect(
       getSlotsNext<Slots>({
-        root: { as: 'div' },
+        root: resolveShorthandMock<ExtractSlotProps<Slots['root']>>({ as: 'div' }),
         components: { root: 'div', input: 'input', icon: 'a' },
-        input: {},
+        input: resolveShorthandMock<ExtractSlotProps<Slots['input']>>({}),
         icon: undefined,
       }),
     ).toEqual({
       slots: { root: 'div', input: 'input', icon: null },
-      slotProps: { root: {}, input: {}, icon: undefined },
+      slotProps: {
+        root: {},
+        input: {},
+        icon: undefined,
+      },
     });
   });
 });

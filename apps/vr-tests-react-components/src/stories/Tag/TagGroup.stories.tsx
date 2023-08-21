@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { TagGroup, Tag, InteractionTag } from '@fluentui/react-tags-preview';
+import {
+  TagGroup,
+  Tag,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+} from '@fluentui/react-tags-preview';
 import { ComponentMeta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { withStoryWrightSteps } from '../../utilities';
@@ -20,20 +26,28 @@ export const Default = () => (
   </TagGroup>
 );
 
-const onDismiss = () => ({});
 export const Dismissible = () => (
-  <TagGroup onDismiss={onDismiss}>
-    <Tag>Tag 1</Tag>
-    <Tag>Tag 2</Tag>
-    <Tag>Tag 3</Tag>
+  <TagGroup>
+    <Tag dismissible>Tag 1</Tag>
+    <Tag dismissible>Tag 2</Tag>
+    <Tag dismissible>Tag 3</Tag>
   </TagGroup>
 );
 
 export const DismissibleWithInteractionTag = () => (
-  <TagGroup onDismiss={onDismiss}>
-    <InteractionTag>Tag 1</InteractionTag>
-    <InteractionTag>Tag 2</InteractionTag>
-    <InteractionTag>Tag 3</InteractionTag>
+  <TagGroup>
+    <InteractionTag>
+      <InteractionTagPrimary hasSecondaryAction>Tag 1</InteractionTagPrimary>
+      <InteractionTagSecondary />
+    </InteractionTag>
+    <InteractionTag>
+      <InteractionTagPrimary hasSecondaryAction>Tag 2</InteractionTagPrimary>
+      <InteractionTagSecondary />
+    </InteractionTag>
+    <InteractionTag>
+      <InteractionTagPrimary hasSecondaryAction>Tag 3</InteractionTagPrimary>
+      <InteractionTagSecondary />
+    </InteractionTag>
   </TagGroup>
 );
 

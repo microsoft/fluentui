@@ -17,6 +17,7 @@ const Wrapper: React.FC = ({ children }) => (
       isAsideVisible: true,
       itemType: 'leaf',
       open: false,
+      checked: false,
     }}
   >
     {children}
