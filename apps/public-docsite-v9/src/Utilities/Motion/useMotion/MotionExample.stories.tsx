@@ -38,7 +38,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const Default = () => {
+export const MotionExample = () => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
