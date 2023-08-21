@@ -29,10 +29,15 @@ export const useDrawerBaseStyles = makeStyles({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     backgroundColor: tokens.colorNeutralBackground1,
-    transitionDuration: 'unset',
   },
 
-  /* Reduced motion */
+  /* Motion */
+  entering: {
+    transitionTimingFunction: tokens.curveDecelerateMid,
+  },
+  exiting: {
+    transitionTimingFunction: tokens.curveAccelerateMin,
+  },
   reducedMotion: {
     '@media screen and (prefers-reduced-motion: reduce)': {
       transitionDuration: '0.001ms',
@@ -47,14 +52,6 @@ export const useDrawerBaseStyles = makeStyles({
   end: {
     right: 0,
     left: 'auto',
-  },
-
-  /* Motion */
-  entering: {
-    transitionTimingFunction: tokens.curveDecelerateMid,
-  },
-  exiting: {
-    transitionTimingFunction: tokens.curveAccelerateMin,
   },
 
   /* Sizes */
@@ -92,17 +89,16 @@ export const useDrawerBaseClassNames = (
   baseStyles: ReturnType<typeof useDrawerBaseStyles>,
 ) => {
   const motionClasses = React.useMemo(() => {
+    if (!motion.hasInternalMotion) {
+      return;
+    }
+
     return mergeClasses(
+      baseStyles.reducedMotion,
       motion.type === 'entering' && baseStyles.entering,
       motion.type === 'exiting' && baseStyles.exiting,
     );
-  }, [baseStyles.entering, baseStyles.exiting, motion.type]);
+  }, [baseStyles.entering, baseStyles.exiting, baseStyles.reducedMotion, motion.hasInternalMotion, motion.type]);
 
-  return mergeClasses(
-    baseStyles.root,
-    baseStyles.reducedMotion,
-    position && baseStyles[position],
-    size && baseStyles[size],
-    motion.hasInternalMotion && motionClasses,
-  );
+  return mergeClasses(baseStyles.root, position && baseStyles[position], size && baseStyles[size], motionClasses);
 };

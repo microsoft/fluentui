@@ -37,12 +37,10 @@ const useDrawerMotionStyles = makeStyles({
     transitionProperty: 'opacity, transform',
     willChange: 'opacity, transform',
   },
-
-  /* Hidden */
-  hiddenStart: {
+  start: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
   },
-  hiddenEnd: {
+  end: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar})), 0, 0)`,
   },
 
@@ -71,31 +69,24 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
   }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
 
   const motionClasses = React.useMemo(() => {
+    if (!state.motion.hasInternalMotion) {
+      return;
+    }
+
     return mergeClasses(
       rootMotionStyles.root,
       state.size && durationStyles[state.size],
-      !state.motion.isActive() && state.position === 'start'
-        ? rootMotionStyles.hiddenStart
-        : rootMotionStyles.hiddenEnd,
+      state.position && !state.motion.isActive() && rootMotionStyles[state.position],
       state.motion.isActive() && rootMotionStyles.visible,
     );
-  }, [
-    durationStyles,
-    rootMotionStyles.hiddenEnd,
-    rootMotionStyles.hiddenStart,
-    rootMotionStyles.root,
-    rootMotionStyles.visible,
-    state.motion,
-    state.position,
-    state.size,
-  ]);
+  }, [durationStyles, rootMotionStyles, state.motion, state.position, state.size]);
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
     useDrawerBaseClassNames(state, baseStyles),
     rootStyles.root,
     separatorClass,
-    state.motion.hasInternalMotion && motionClasses,
+    motionClasses,
     state.root.className,
   );
 
