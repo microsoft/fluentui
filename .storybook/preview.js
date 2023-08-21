@@ -48,7 +48,7 @@ export const parameters = {
       'react-dom': '^17',
       // necessary when using typescript in CodeSandbox
       'react-scripts': 'latest',
-      // pin @swc/helper - it uses dependency alias in 0.4.36 and it is not supported by CodeSandbox
+      // pin @swc/helpers - it uses dependency alias in 0.4.36 and it is not supported by CodeSandbox
       '@swc/helpers': '0.4.35',
     },
     optionalDependencies: {
