@@ -2,6 +2,27 @@
   "name": "@fluentui/react-positioning",
   "entries": [
     {
+      "date": "Mon, 21 Aug 2023 11:38:01 GMT",
+      "tag": "@fluentui/react-positioning_v9.9.5",
+      "version": "9.9.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "89bd803c8433397784d62a4172a988240a779596",
+            "comment": "fix: make event listners passive"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:26 GMT",
       "tag": "@fluentui/react-positioning_v9.9.4",
       "version": "9.9.4",

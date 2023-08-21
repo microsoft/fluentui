@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.19)
+
+Mon, 21 Aug 2023 11:38:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.18..@fluentui/react-provider_v9.7.19)
+
+### Patches
+
+- chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
 
 ## [9.7.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.18)
 

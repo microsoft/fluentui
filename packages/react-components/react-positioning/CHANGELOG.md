@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-positioning
 
-This log was last generated on Fri, 11 Aug 2023 12:14:26 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.9.5)
+
+Mon, 21 Aug 2023 11:38:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-positioning_v9.9.4..@fluentui/react-positioning_v9.9.5)
+
+### Patches
+
+- fix: make event listners passive ([PR #28839](https://github.com/microsoft/fluentui/pull/28839) by olfedias@microsoft.com)
+- chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
 
 ## [9.9.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-positioning_v9.9.4)
 

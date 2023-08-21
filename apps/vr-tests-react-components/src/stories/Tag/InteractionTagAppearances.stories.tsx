@@ -15,10 +15,12 @@ const steps = new Steps()
   .snapshot('hover content', { cropTo: '.testWrapper' })
   .mouseDown(`#${contentId}`)
   .snapshot('pressed content', { cropTo: '.testWrapper' })
+  .mouseUp(`#${contentId}`)
   .hover(`#${dismissButtonId}`)
   .snapshot('hover dismiss', { cropTo: '.testWrapper' })
   .mouseDown(`#${dismissButtonId}`)
   .snapshot('pressed dismiss', { cropTo: '.testWrapper' })
+  .mouseUp(`#${dismissButtonId}`)
   .end();
 
 export default {

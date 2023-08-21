@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.22)
+
+Mon, 21 Aug 2023 11:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.5.21..@fluentui/react-avatar_v9.5.22)
+
+### Patches
+
+- Bump @fluentui/react-popover to v9.7.16 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
+- Bump @fluentui/react-tooltip to v9.2.33 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
 
 ## [9.5.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.21)
 

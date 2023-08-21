@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate to new slots API",
-  "packageName": "@fluentui/react-search-preview",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

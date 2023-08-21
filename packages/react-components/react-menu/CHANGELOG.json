@@ -2,6 +2,27 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Mon, 21 Aug 2023 11:38:01 GMT",
+      "tag": "@fluentui/react-menu_v9.12.8",
+      "version": "9.12.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f042ed0d53377114375be20bd87f81a97e04e22c",
+            "comment": "fix: make MenuItem with long content grow its height"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.9.5",
+            "commit": "55e07ffc8d180554fb027841e7d2a89637cefcb3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Aug 2023 17:41:08 GMT",
       "tag": "@fluentui/react-menu_v9.12.7",
       "version": "9.12.7",
