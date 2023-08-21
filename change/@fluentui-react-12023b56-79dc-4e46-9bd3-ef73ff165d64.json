@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN.",
-  "packageName": "@fluentui/react",
-  "email": "Humberto.Morimoto@microsoft.com",
-  "dependentChangeType": "none"
-}
