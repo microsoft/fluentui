@@ -1,70 +1,35 @@
-import { html } from '@microsoft/fast-element';
-import type { Args, Meta } from '@storybook/html';
-import { renderComponent } from '../helpers.stories.js';
-import type { Avatar as FluentAvatar } from './avatar.js';
-import { AvatarActive, AvatarAppearance, AvatarColor, AvatarShape, AvatarSize } from './avatar.options.js';
-import './define.js';
+import * as React from 'react';
+import parse from 'html-react-parser';
+import { Steps, StoryWright } from 'storywright';
+import { AvatarDefinition, FluentDesignSystem } from '@fluentui/web-components';
+import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator';
 
-type AvatarStoryArgs = Args & FluentAvatar;
-type AvatarStoryMeta = Meta<AvatarStoryArgs>;
-
-const storyTemplate = html<AvatarStoryArgs>`
-  <fluent-avatar
-    appearance="${x => x.appearance}"
-    active="${x => x.active}"
-    color="${x => x.color}"
-    shape="${x => x.shape}"
-    size="${x => x.size}"
-    initials="${x => x.initials}"
-    name="${x => x.name}"
-  ></fluent-avatar>
-`;
+AvatarDefinition.define(FluentDesignSystem.registry);
 
 export default {
-  title: 'Components/Avatar',
-  argTypes: {
-    active: {
-      options: Object.values(AvatarActive),
-      control: {
-        type: 'select',
-      },
+  title: 'Avatar',
+  decorators: [
+    (story: () => React.ReactElement) => {
+      return (
+        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
+          <div className="testWrapper" style={{ width: '300px' }}>
+            {story()}
+          </div>
+        </StoryWright>
+      );
     },
-    appearance: {
-      options: Object.values(AvatarAppearance),
-      control: {
-        type: 'select',
-      },
-    },
-    color: {
-      options: Object.values(AvatarColor),
-      control: {
-        type: 'select',
-      },
-    },
-    initials: {
-      control: 'text',
-    },
-    name: {
-      control: 'text',
-    },
-    shape: {
-      options: Object.values(AvatarShape),
-      control: {
-        type: 'select',
-      },
-    },
-    size: {
-      options: Object.values(AvatarSize),
-      control: {
-        type: 'select',
-      },
-    },
-  },
-} as AvatarStoryMeta;
+  ],
+};
 
-export const Avatar = renderComponent(storyTemplate).bind({});
+export const Default = () =>
+  parse(`
+  <fluent-avatar></fluent-avatar>
+  `);
 
-export const Image = renderComponent(html<AvatarStoryArgs>`<fluent-avatar>
+export const DefaultRTL = getStoryVariant(Default, RTL);
+
+export const Image = () =>
+  parse(`<fluent-avatar>
   <img
     alt="Persona test"
     role="presentation"
@@ -73,7 +38,8 @@ export const Image = renderComponent(html<AvatarStoryArgs>`<fluent-avatar>
   />
 </fluent-avatar>`);
 
-export const Icon = renderComponent(html<AvatarStoryArgs>`
+export const Icon = () =>
+  parse(`
   <fluent-avatar
     ><svg
       fill="currentColor"
@@ -90,13 +56,10 @@ export const Icon = renderComponent(html<AvatarStoryArgs>`
   ></fluent-avatar>
 `);
 
-export const Badge = renderComponent(html<AvatarStoryArgs>` <fluent-avatar name="Lydia Bauer"
-  ><fluent-badge slot="badge" size="extra-small"></fluent-badge
-></fluent-avatar>`);
+export const IconDarkMode = getStoryVariant(Icon, DARK_MODE);
 
-export const ColorBrand = renderComponent(html<AvatarStoryArgs>`<fluent-avatar color="brand"></fluent-avatar>`);
-
-export const Color = renderComponent(html<AvatarStoryArgs>`
+export const Color = () =>
+  parse(`
   <div style="display: flex; gap: 8px; flex-wrap: wrap;">
     <fluent-avatar color="neutral" name="Neutral avatar"></fluent-avatar>
     <fluent-avatar color="brand" name="Brand avatar"></fluent-avatar>
@@ -133,7 +96,11 @@ export const Color = renderComponent(html<AvatarStoryArgs>`
   </div>
 `);
 
-export const Colorful = renderComponent(html<AvatarStoryArgs>`
+export const ColorRTL = getStoryVariant(Color, RTL);
+export const ColorDarkMode = getStoryVariant(Color, DARK_MODE);
+
+export const Colorful = () =>
+  parse(`
   <div style="display: flex; gap: 8px; flex-wrap: wrap;">
     <fluent-avatar color="colorful" name="Mona Kane"></fluent-avatar>
     <fluent-avatar color="colorful" name="Tim Deboer"></fluent-avatar>
@@ -150,13 +117,18 @@ export const Colorful = renderComponent(html<AvatarStoryArgs>`
   </div>
 `);
 
-export const Shape = renderComponent(html<AvatarStoryArgs>`
+export const ColorfulRTL = getStoryVariant(Colorful, RTL);
+export const ColorfulDarkMode = getStoryVariant(Colorful, DARK_MODE);
+
+export const Shape = () =>
+  parse(`
   <fluent-avatar shape="circular"></fluent-avatar>
   <fluent-avatar shape="square"></fluent-avatar>
 `);
 
-export const Active = renderComponent(html<AvatarStoryArgs>`
-  <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+export const Active = () =>
+  parse(`
+  <div style="display: flex; gap: 24px; flex-wrap: wrap; padding: 24px">
     <fluent-avatar>U</fluent-avatar>
     <fluent-avatar active="active">A</fluent-avatar>
     <fluent-avatar active="inactive">I</fluent-avatar>
@@ -164,17 +136,28 @@ export const Active = renderComponent(html<AvatarStoryArgs>`
   </div>
 `);
 
-export const ActiveAppearance = renderComponent(html<AvatarStoryArgs>`
-  <div style="display: flex; gap: 24px; flex-wrap: wrap;">
+export const ActiveDarkMode = getStoryVariant(Active, DARK_MODE);
+
+export const ActiveAppearance = () =>
+  parse(`
+  <div style="display: flex; gap: 24px; flex-wrap: wrap; padding: 24px">
     <fluent-avatar active="active" appearance="ring">R</fluent-avatar>
     <fluent-avatar active="active" appearance="shadow">S</fluent-avatar>
     <fluent-avatar active="active" appearance="ring-shadow">RS</fluent-avatar>
   </div>
 `);
 
-export const CustomInitials = renderComponent(html<AvatarStoryArgs>` <fluent-avatar initials="CRF"></fluent-avatar> `);
+export const ActiveAppearanceDarkMode = getStoryVariant(ActiveAppearance, DARK_MODE);
 
-export const Size = renderComponent(html<AvatarStoryArgs>`
+export const CustomInitials = () =>
+  parse(`
+    <fluent-avatar initials="CRF"></fluent-avatar>
+`);
+
+export const CustomInitialsRTL = getStoryVariant(CustomInitials, RTL);
+
+export const Size = () =>
+  parse(`
   <div style="display: flex; gap: 24px; flex-wrap: wrap;">
     <fluent-avatar name="Jane Doe" size="16">16</fluent-avatar>
     <fluent-avatar name="Lydia Bauer" size="20">20</fluent-avatar>

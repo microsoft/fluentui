@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusLarge,
@@ -309,4 +309,10 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
     cursor: not-allowed;
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host([appearance='transparent']:hover) .control {
+      border-color: Highlight;
+    }
+  `),
+);

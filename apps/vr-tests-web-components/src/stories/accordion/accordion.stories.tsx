@@ -1,7 +1,8 @@
 import * as React from 'react';
 import parse from 'html-react-parser';
-import { StoryWright, Steps } from 'storywright';
+import { Steps, StoryWright } from 'storywright';
 import { accordionDefinition, accordionItemDefinition, FluentDesignSystem } from '@fluentui/web-components';
+import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator';
 
 accordionDefinition.define(FluentDesignSystem.registry);
 accordionItemDefinition.define(FluentDesignSystem.registry);
@@ -11,13 +12,7 @@ export default {
   decorators: [
     (story: () => React.ReactElement) => {
       return (
-        <StoryWright
-          steps={new Steps()
-            .snapshot('normal', { cropTo: '.testWrapper' })
-            .click('#accordion-0')
-            .snapshot('opened', { cropTo: '.testWrapper' })
-            .end()}
-        >
+        <StoryWright steps={new Steps().snapshot('normal', { cropTo: '.testWrapper' }).end()}>
           <div className="testWrapper" style={{ width: '300px' }}>
             {story()}
           </div>
@@ -43,6 +38,48 @@ const subtract20Filled = `<svg
   <rect x="3" y="9.25" width="14" height="1.5" rx="0.75" fill="#212121" />
 </svg>`;
 
+export const Size = () =>
+  parse(`
+    <fluent-accordion>
+      <fluent-accordion-item expanded size="small">
+        <span slot="heading">Small</span>
+        Small Panel
+      </fluent-accordion-item>
+      <fluent-accordion-item expanded size="medium">
+        <span slot="heading">Medium</span>
+        Medium Panel
+      </fluent-accordion-item>
+      <fluent-accordion-item expanded size="large">
+        <span slot="heading">Large</span>
+        Large Panel
+      </fluent-accordion-item>
+      <fluent-accordion-item expanded size="extra-large">
+        <span slot="heading">Extra Large</span>
+        Extra Large Panel
+      </fluent-accordion-item>
+    </fluent-accordion>
+  `);
+
+export const SizeRTL = getStoryVariant(Size, RTL);
+export const SizeDarkMode = getStoryVariant(Size, DARK_MODE);
+
+export const ExpandIconPositionEnd = () =>
+  parse(`
+  <fluent-accordion openItems={[0]}>
+    <fluent-accordion-item expanded expand-icon-position="end">
+      <span slot="heading">Opened</span>
+      Visible Panel
+    </fluent-accordion-item>
+    <fluent-accordion-item expand-icon-position="end">
+      <span slot="heading">Closed</span>
+      Hidden Panel
+    </fluent-accordion-item>
+  </fluent-accordion>
+`);
+
+export const ExpandIconPositionEndRTL = getStoryVariant(ExpandIconPositionEnd, RTL);
+export const ExpandIconPositionEndDarkMode = getStoryVariant(ExpandIconPositionEnd, DARK_MODE);
+
 export const AccordionWithCustomIcons = () =>
   parse(`
   <fluent-accordion>
@@ -67,26 +104,22 @@ export const AccordionWithCustomIcons = () =>
   </fluent-accordion>
 `);
 
-export const AccordionWithCustomIconsRTL = () =>
+export const AccordionWithCustomIconsRTL = getStoryVariant(AccordionWithCustomIcons, RTL);
+export const AccordionWithCustomIconsDarkMode = getStoryVariant(AccordionWithCustomIcons, DARK_MODE);
+
+export const Disabled = () =>
   parse(`
-  <fluent-accordion dir="rtl">
-    <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
-      <span slot="heading">Accordion Header 1</span>
-      Accordion Panel 1
+  <fluent-accordion>
+    <fluent-accordion-item disabled expanded>
+      <span slot="heading">Disabled Item Opened</span>
+      Disabled Item Opened Panel
     </fluent-accordion-item>
-    <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
-      <span slot="heading">Accordion Header 2</span>
-      Accordion Panel 1
-    </fluent-accordion-item>
-    <fluent-accordion-item>
-      <span slot="collapsed-icon">${add20Filled}</span>
-      <span slot="expanded-icon">${subtract20Filled}</span>
-      <span slot="heading">Accordion Header 3</span>
-      Accordion Panel 1
+    <fluent-accordion-item disabled>
+      <span slot="heading">Disabled Item Closed</span>
+      Disabled Item Closed Panel
     </fluent-accordion-item>
   </fluent-accordion>
 `);
+
+export const DisabledRTL = getStoryVariant(Disabled, RTL);
+export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
