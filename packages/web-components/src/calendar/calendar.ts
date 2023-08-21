@@ -228,6 +228,10 @@ export class Calendar extends FASTCalendar {
         }
       });
     }
+
+    if (name === 'selected-dates') {
+      this.$emit('selectedDatesChanged');
+    }
   }
 
   /**
@@ -526,7 +530,7 @@ export class Calendar extends FASTCalendar {
         this.selectedDates += `${month}-${day}-${year},`;
       }
     } else {
-      this.selectedDates = `${month}-${day}-${year},`;
+      this.selectedDates = `${month}-${day}-${year}`;
     }
 
     console.log(this.selectedDates);
