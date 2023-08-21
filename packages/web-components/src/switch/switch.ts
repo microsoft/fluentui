@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTSwitch } from '@microsoft/fast-foundation';
+import { FASTSwitch } from '@microsoft/fast-foundation/switch.js';
 import { SwitchLabelPosition } from './switch.options.js';
 
 export class Switch extends FASTSwitch {

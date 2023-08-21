@@ -23,111 +23,111 @@
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
     },
-    "./accordion": {
+    "./accordion.js": {
       "types": "./dist/esm/accordion/define.d.ts",
       "default": "./dist/esm/accordion/define.js"
     },
-    "./accordion-item": {
+    "./accordion-item.js": {
       "types": "./dist/esm/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
-    "./anchor-button": {
+    "./anchor-button.js": {
       "types": "./dist/esm/anchor-button/define.d.ts",
       "default": "./dist/esm/anchor-button/define.js"
     },
-    "./avatar": {
+    "./avatar.js": {
       "types": "./dist/esm/avatar/define.d.ts",
       "default": "./dist/esm/avatar/define.js"
     },
-    "./badge": {
+    "./badge.js": {
       "types": "./dist/esm/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
     },
-    "./button": {
+    "./button.js": {
       "types": "./dist/esm/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
     },
-    "./checkbox": {
+    "./checkbox.js": {
       "types": "./dist/esm/checkbox/define.d.ts",
       "default": "./dist/esm/checkbox/define.js"
     },
-    "./compound-button": {
+    "./compound-button.js": {
       "types": "./dist/esm/compound-button/define.d.ts",
       "default": "./dist/esm/compound-button/define.js"
     },
-    "./counter-badge": {
+    "./counter-badge.js": {
       "types": "./dist/esm/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
     },
-    "./divider": {
+    "./divider.js": {
       "types": "./dist/esm/divider/define.d.ts",
       "default": "./dist/esm/divider/define.js"
     },
-    "./image": {
+    "./image.js": {
       "types": "./dist/esm/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
     },
-    "./label": {
+    "./label.js": {
       "types": "./dist/esm/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
     },
-    "./menu-list": {
+    "./menu-list.js": {
       "types": "./dist/esm/menu-list/define.d.ts",
       "default": "./dist/esm/menu-list/define.js"
     },
-    "./menu-button": {
+    "./menu-button.js": {
       "types": "./dist/esm/menu-button/define.d.ts",
       "default": "./dist/esm/menu-button/define.js"
     },
-    "./menu-item": {
+    "./menu-item.js": {
       "types": "./dist/esm/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
     },
-    "./progress-bar": {
+    "./progress-bar.js": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
     },
-    "./radio": {
+    "./radio.js": {
       "types": "./dist/esm/radio/define.d.ts",
       "default": "./dist/esm/radio/define.js"
     },
-    "./radio-group": {
+    "./radio-group.js": {
       "types": "./dist/esm/radio-group/define.d.ts",
       "default": "./dist/esm/radio-group/define.js"
     },
-    "./slider": {
+    "./slider.js": {
       "types": "./dist/esm/slider/define.d.ts",
       "default": "./dist/esm/slider/define.js"
     },
-    "./spinner": {
+    "./spinner.js": {
       "types": "./dist/esm/spinner/define.d.ts",
       "default": "./dist/esm/spinner/define.js"
     },
-    "./switch": {
+    "./switch.js": {
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
     },
-    "./tab": {
+    "./tab.js": {
       "types": "./dist/esm/tab/define.d.ts",
       "default": "./dist/esm/tab/define.js"
     },
-    "./tabs": {
+    "./tabs.js": {
       "types": "./dist/esm/tabs/define.d.ts",
       "default": "./dist/esm/tabs/define.js"
     },
-    "./tab-panel": {
+    "./tab-panel.js": {
       "types": "./dist/esm/tab-panel/define.d.ts",
       "default": "./dist/esm/tab-panel/define.js"
     },
-    "./text": {
+    "./text.js": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
-    "./text-input": {
+    "./text-input.js": {
       "types": "./dist/esm/text-input/define.d.ts",
       "default": "./dist/esm/text-input/define.js"
     },
-    "./toggle-button": {
+    "./toggle-button.js": {
       "types": "./dist/esm/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
     }
@@ -187,8 +187,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "2.0.0-beta.25",
-    "@microsoft/fast-foundation": "3.0.0-alpha.29",
+    "@microsoft/fast-element": "2.0.0-beta.26",
+    "@microsoft/fast-foundation": "3.0.0-alpha.31",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
