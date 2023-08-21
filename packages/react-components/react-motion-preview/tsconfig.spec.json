@@ -5,13 +5,5 @@
     "outDir": "dist",
     "types": ["jest", "node"]
   },
-  "include": [
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.d.ts",
-    "src/components/AnimatePresence/testing/**/*.ts",
-    "src/components/AnimatePresence/testing/**/*.tsx"
-  ]
+  "include": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.d.ts"]
 }

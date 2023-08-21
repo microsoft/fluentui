@@ -26,7 +26,7 @@ export const useDrawerInline_unstable = (
     initialState: false,
   });
 
-  const [drawerProps, drawerMotion] = useMotionFromSlot(props, open);
+  const [drawerProps, drawerMotion] = useMotionFromSlot<DrawerInlineProps, HTMLDivElement>(props, open);
 
   return {
     components: {

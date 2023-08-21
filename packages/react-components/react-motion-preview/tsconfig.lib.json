@@ -9,14 +9,6 @@
     "inlineSources": true,
     "types": ["static-assets", "environment"]
   },
-  "exclude": [
-    "src/components/AnimatePresence/testing/**",
-    "**/*.spec.ts",
-    "**/*.spec.tsx",
-    "**/*.test.ts",
-    "**/*.test.tsx",
-    "**/*.stories.ts",
-    "**/*.stories.tsx"
-  ],
+  "exclude": ["**/*.spec.ts", "**/*.spec.tsx", "**/*.test.ts", "**/*.test.tsx", "**/*.stories.ts", "**/*.stories.tsx"],
   "include": ["./src/**/*.ts", "./src/**/*.tsx"]
 }

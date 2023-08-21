@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import { DrawerBaseProps, DrawerBaseState } from './DrawerBase.types';
+import * as React from 'react';
 
 /**
  * CSS variable names used internally for uniform styling in Drawer.
@@ -28,6 +29,7 @@ export const useDrawerBaseStyles = makeStyles({
     alignItems: 'flex-start',
     justifyContent: 'flex-start',
     backgroundColor: tokens.colorNeutralBackground1,
+    transitionDuration: 'unset',
   },
 
   /* Reduced motion */
@@ -85,15 +87,22 @@ export const useDrawerDurationStyles = makeStyles({
   },
 });
 
-export const getDrawerBaseClassNames = (
+export const useDrawerBaseClassNames = (
   { position, size, motion }: DrawerBaseState & DrawerBaseProps,
   baseStyles: ReturnType<typeof useDrawerBaseStyles>,
 ) => {
+  const motionClasses = React.useMemo(() => {
+    return mergeClasses(
+      motion.type === 'entering' && baseStyles.entering,
+      motion.type === 'exiting' && baseStyles.exiting,
+    );
+  }, [baseStyles.entering, baseStyles.exiting, motion.type]);
+
   return mergeClasses(
+    baseStyles.root,
     baseStyles.reducedMotion,
     position && baseStyles[position],
     size && baseStyles[size],
-    motion.type === 'entering' && baseStyles.entering,
-    motion.type === 'exiting' && baseStyles.exiting,
+    motion.hasInternalMotion && motionClasses,
   );
 };

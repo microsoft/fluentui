@@ -5,7 +5,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
 import {
-  getDrawerBaseClassNames,
+  useDrawerBaseClassNames,
   useDrawerBaseStyles,
   drawerCSSVars,
   useDrawerDurationStyles,
@@ -24,6 +24,15 @@ const useDrawerRootStyles = makeStyles({
     position: 'fixed',
     top: 0,
     bottom: 0,
+    boxShadow: tokens.shadow64,
+  },
+});
+
+/**
+ * Styles for the root slot when motion is enabled
+ */
+const useDrawerRootMotionStyles = makeStyles({
+  root: {
     transitionProperty: 'transform, box-shadow',
     willChange: 'transform, box-shadow',
     boxShadow: '0px transparent',
@@ -47,7 +56,7 @@ const useDrawerRootStyles = makeStyles({
 /**
  * Styles for the backdrop slot
  */
-const useBackdropStyles = makeStyles({
+const useBackdropMotionStyles = makeStyles({
   backdrop: {
     opacity: 0,
     transitionProperty: 'opacity',
@@ -67,27 +76,46 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   const baseStyles = useDrawerBaseStyles();
   const durationStyles = useDrawerDurationStyles();
   const rootStyles = useDrawerRootStyles();
-  const backdropStyles = useBackdropStyles();
+  const rootMotionStyles = useDrawerRootMotionStyles();
+  const backdropMotionStyles = useBackdropMotionStyles();
 
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
+  const motionClasses = React.useMemo(() => {
+    return mergeClasses(
+      state.position && rootMotionStyles[state.position],
+      state.size && durationStyles[state.size],
+      state.motion.isActive() && rootMotionStyles.visible,
+      state.root.className,
+    );
+  }, [durationStyles, rootMotionStyles, state.motion, state.position, state.root.className, state.size]);
+
+  const backdropMotionClasses = React.useMemo(() => {
+    return mergeClasses(
+      backdropMotionStyles.backdrop,
+      state.backdropMotion.isActive() && backdropMotionStyles.backdropVisible,
+      state.size && durationStyles[state.size],
+    );
+  }, [
+    backdropMotionStyles.backdrop,
+    backdropMotionStyles.backdropVisible,
+    durationStyles,
+    state.backdropMotion,
+    state.size,
+  ]);
+
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
-    baseStyles.root,
+    useDrawerBaseClassNames(state, baseStyles),
     rootStyles.root,
-    getDrawerBaseClassNames(state, baseStyles),
-    state.position && rootStyles[state.position],
-    state.size && durationStyles[state.size],
-    state.motion.isActive() && rootStyles.visible,
+    state.motion.hasInternalMotion && motionClasses,
     state.root.className,
   );
 
   if (backdrop) {
     backdrop.className = mergeClasses(
       drawerOverlayClassNames.backdrop,
-      backdropStyles.backdrop,
-      state.backdropMotion.isActive() && backdropStyles.backdropVisible,
-      state.size && durationStyles[state.size],
+      state.backdropMotion.hasInternalMotion && backdropMotionClasses,
       backdrop.className,
     );
   }

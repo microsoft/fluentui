@@ -4,7 +4,7 @@ import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types'
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import {
   drawerCSSVars,
-  getDrawerBaseClassNames,
+  useDrawerBaseClassNames,
   useDrawerBaseStyles,
   useDrawerDurationStyles,
 } from '../../util/useDrawerBaseStyles.styles';
@@ -20,9 +20,6 @@ export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
 const useDrawerRootStyles = makeStyles({
   root: {
     position: 'relative',
-    opacity: 1,
-    transitionProperty: 'opacity, transform',
-    willChange: 'opacity, transform',
   },
 
   /* Separator */
@@ -32,16 +29,27 @@ const useDrawerRootStyles = makeStyles({
   separatorRight: {
     ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
   },
+});
+
+const useDrawerMotionStyles = makeStyles({
+  root: {
+    opacity: 0,
+    transitionProperty: 'opacity, transform',
+    willChange: 'opacity, transform',
+  },
 
   /* Hidden */
-  hidden: {
-    opacity: 0,
-  },
   hiddenLeft: {
-    transform: `translateX(calc(var(${drawerCSSVars.drawerSizeVar}) * -1))`,
+    transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
   },
   hiddenRight: {
-    transform: `translateX(calc(var(${drawerCSSVars.drawerSizeVar})))`,
+    transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar})), 0, 0)`,
+  },
+
+  /* Visible */
+  visible: {
+    opacity: 1,
+    transform: `translate3D(0, 0, 0)`,
   },
 });
 
@@ -51,32 +59,44 @@ const useDrawerRootStyles = makeStyles({
 export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): DrawerInlineState => {
   const baseStyles = useDrawerBaseStyles();
   const durationStyles = useDrawerDurationStyles();
-  const styles = useDrawerRootStyles();
+  const rootStyles = useDrawerRootStyles();
+  const rootMotionStyles = useDrawerMotionStyles();
 
-  const separatorClass = React.useCallback(() => {
+  const separatorClass = React.useMemo(() => {
     if (!state.separator) {
       return undefined;
     }
 
-    return state.position === 'left' ? styles.separatorLeft : styles.separatorRight;
-  }, [state.position, state.separator, styles.separatorRight, styles.separatorLeft]);
+    return state.position === 'left' ? rootStyles.separatorLeft : rootStyles.separatorRight;
+  }, [state.position, state.separator, rootStyles.separatorRight, rootStyles.separatorLeft]);
 
-  const hiddenClass = React.useCallback(() => {
-    if (state.motion.isActive()) {
-      return undefined;
-    }
-
-    return mergeClasses(styles.hidden, state.position === 'left' ? styles.hiddenLeft : styles.hiddenRight);
-  }, [state.motion, state.position, styles.hidden, styles.hiddenLeft, styles.hiddenRight]);
+  const motionClasses = React.useMemo(() => {
+    return mergeClasses(
+      rootMotionStyles.root,
+      rootMotionStyles.root,
+      state.size && durationStyles[state.size],
+      !state.motion.isActive() && state.position === 'left'
+        ? rootMotionStyles.hiddenLeft
+        : rootMotionStyles.hiddenRight,
+      state.motion.isActive() && rootMotionStyles.visible,
+    );
+  }, [
+    durationStyles,
+    rootMotionStyles.hiddenLeft,
+    rootMotionStyles.hiddenRight,
+    rootMotionStyles.root,
+    rootMotionStyles.visible,
+    state.motion,
+    state.position,
+    state.size,
+  ]);
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
-    baseStyles.root,
-    styles.root,
-    getDrawerBaseClassNames(state, baseStyles),
-    hiddenClass(),
-    separatorClass(),
-    state.size && durationStyles[state.size],
+    useDrawerBaseClassNames(state, baseStyles),
+    rootStyles.root,
+    separatorClass,
+    state.motion.hasInternalMotion && motionClasses,
     state.root.className,
   );
 

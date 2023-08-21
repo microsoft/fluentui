@@ -44,6 +44,12 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
    * This can be used to avoid rendering the component when it is not visible anymore.
    */
   canRender(): boolean;
+
+  /**
+   * Whether to disable internal motion.
+   * This is useful when the component is wrapped in a parent component that handles the motion.
+   */
+  hasInternalMotion: boolean;
 };
 
 export type MotionShorthandValue = boolean;
@@ -59,12 +65,12 @@ export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionS
  * @param events - Callbacks for when the element enters or exits the DOM
  */
 function useMotionPresence<Element extends HTMLElement>(
-  present: boolean,
+  presence: boolean,
   options: UseMotionOptions = {},
 ): MotionState<Element> {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
-  const [type, setType] = React.useState<MotionType>(present ? 'idle' : 'unmounted');
+  const [type, setType] = React.useState<MotionType>(presence ? 'idle' : 'unmounted');
   const [active, setActive] = React.useState<boolean>(false);
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
@@ -123,13 +129,13 @@ function useMotionPresence<Element extends HTMLElement>(
   }, []);
 
   React.useEffect(() => {
-    if (present) {
+    if (presence) {
       unstable_batchedUpdates(() => {
         setType('entering');
         setActive(skipAnimationOnFirstRender.current ? true : false);
       });
     }
-  }, [present]);
+  }, [presence]);
 
   React.useEffect(() => {
     const skipAnimation = skipAnimationOnFirstRender.current;
@@ -140,13 +146,13 @@ function useMotionPresence<Element extends HTMLElement>(
 
     setActiveAnimationFrame(() => {
       unstable_batchedUpdates(() => {
-        setActive(present);
+        setActive(presence);
         setType(() => {
           if (skipAnimation) {
-            return present ? 'idle' : 'unmounted';
+            return presence ? 'idle' : 'unmounted';
           }
 
-          return present ? 'entering' : 'exiting';
+          return presence ? 'entering' : 'exiting';
         });
       });
     });
@@ -156,15 +162,15 @@ function useMotionPresence<Element extends HTMLElement>(
     }
 
     processAnimation(() => {
-      setType(present ? 'entered' : 'exited');
-      setDelayedAnimationFrame(() => setType(present ? 'idle' : 'unmounted'));
+      setType(presence ? 'entered' : 'exited');
+      setDelayedAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
     });
 
     return onUnmount;
   }, [
     cancelActiveAnimationFrame,
     cancelDelayedAnimationFrame,
-    present,
+    presence,
     processAnimation,
     setActiveAnimationFrame,
     setDelayedAnimationFrame,
@@ -183,6 +189,7 @@ function useMotionPresence<Element extends HTMLElement>(
       type,
       canRender,
       isActive,
+      hasInternalMotion: true,
     };
   }, [active, ref, type]);
 }
@@ -192,8 +199,9 @@ function useMotionPresence<Element extends HTMLElement>(
  */
 export function getDefaultMotionState<Element extends HTMLElement>(): MotionState<Element> {
   return {
-    ref: { current: null },
+    ref: React.createRef<Element>(),
     type: 'unmounted',
+    hasInternalMotion: false,
     isActive: () => false,
     canRender: () => false,
   };
@@ -213,9 +221,16 @@ export function useMotion<Element extends HTMLElement>(
    * Heads up!
    * This hook returns a Motion but also accepts Motion as an argument.
    * In case the hook is called with a Motion as argument, we don't need to perform the expensive computation of the
-   * motion state and can just return the motion as is. This is intentional as it allows others to use the hook on their
-   * side without having to worry about the performance impact of the hook.
+   * motion state and can just return the motion value as is. This is intentional as it allows others to use the hook
+   * on their side without having to worry about the performance impact of the hook.
    */
+  if (useIsMotion(shorthand)) {
+    return {
+      ...shorthand,
+      hasInternalMotion: false,
+    };
+  }
+
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
+  return useMotionPresence(shorthand, options);
 }
