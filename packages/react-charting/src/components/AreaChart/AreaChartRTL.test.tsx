@@ -5,12 +5,7 @@ import { ThemeProvider } from '@fluentui/react';
 import { AreaChart, IAreaChartProps } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
-import {
-  getByClass,
-  getById,
-  testWithWait,
-  testWithoutWait,
-} from '../../utilities/TestUtility';
+import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 
 const chart1Points = [
   {
@@ -247,7 +242,8 @@ describe('Area chart rendering', () => {
     { data: chartData },
     container => {
       expect(container).toMatchSnapshot();
-    });
+    },
+  );
 
   testWithoutWait(
     'Should render the area chart with date x-axis data',
@@ -255,22 +251,19 @@ describe('Area chart rendering', () => {
     { data: chartDataWithDates },
     container => {
       expect(container).toMatchSnapshot();
-    });
+    },
+  );
 });
 
 describe('Area chart - Subcomponent Area', () => {
-  testWithoutWait(
-    'Should render the Areas with the specified colors',
-    AreaChart,
-    { data: chartData },
-    container => {
-      const getById = queryAllByAttribute.bind(null, 'id');
-      const areas = getById(container, /graph-areaChart/i);
-      // Assert
-      expect(areas[0].getAttribute('fill')).toEqual('green');
-      expect(areas[1].getAttribute('fill')).toEqual('yellow');
-      expect(areas[2].getAttribute('fill')).toEqual('blue');
-    });
+  testWithoutWait('Should render the Areas with the specified colors', AreaChart, { data: chartData }, container => {
+    const getById = queryAllByAttribute.bind(null, 'id');
+    const areas = getById(container, /graph-areaChart/i);
+    // Assert
+    expect(areas[0].getAttribute('fill')).toEqual('green');
+    expect(areas[1].getAttribute('fill')).toEqual('yellow');
+    expect(areas[2].getAttribute('fill')).toEqual('blue');
+  });
 });
 
 describe('Area chart - Subcomponent legend', () => {
@@ -288,7 +281,8 @@ describe('Area chart - Subcomponent legend', () => {
       expect(areas[0].getAttribute('fill-opacity')).toEqual('0.7');
       expect(areas[1].getAttribute('fill-opacity')).toEqual('0.1');
       expect(areas[2].getAttribute('fill-opacity')).toEqual('0.1');
-    });
+    },
+  );
 
   testWithoutWait(
     'Should reduce opacity of the other lines in Area chat and opacity should be zero for selected Area',
@@ -304,7 +298,8 @@ describe('Area chart - Subcomponent legend', () => {
       expect(areaLines[0].getAttribute('opacity')).toEqual('0');
       expect(areaLines[1].getAttribute('opacity')).toEqual('0.1');
       expect(areaLines[2].getAttribute('opacity')).toEqual('0.1');
-    });
+    },
+  );
 
   testWithoutWait(
     'Should highlight the corresponding Legend on mouse over on legends',
@@ -316,7 +311,8 @@ describe('Area chart - Subcomponent legend', () => {
       fireEvent.mouseOver(legend1!);
       // Assert
       expect(screen.queryByText('legend2')).toHaveStyle('opacity: 0.67');
-    });
+    },
+  );
 
   testWithoutWait(
     'Should select legend on single mouse click on legends',
@@ -332,8 +328,8 @@ describe('Area chart - Subcomponent legend', () => {
       const firstLegend = screen.queryByText('legend1')?.closest('button');
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
       expect(firstLegend).toHaveAttribute('tabIndex', '0');
-    });
-
+    },
+  );
 
   testWithoutWait(
     'Should deselect legend on double mouse click on legends',
@@ -354,9 +350,9 @@ describe('Area chart - Subcomponent legend', () => {
       fireEvent.click(legend!);
       // Assert
       expect(firstLegend).toHaveAttribute('aria-selected', 'false');
-    });
+    },
+  );
 });
-
 
 describe('Area chart - Subcomponent callout', () => {
   testWithWait(
@@ -369,7 +365,8 @@ describe('Area chart - Subcomponent callout', () => {
       fireEvent.mouseOver(areas[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
-    });
+    },
+  );
 
   testWithWait(
     'Should show the stacked callout over the are on mouse over',
@@ -383,13 +380,15 @@ describe('Area chart - Subcomponent callout', () => {
       // Assert
       expect(getByClass(container, /calloutlegendText/i)).toBeDefined();
       expect(getByClass(container, /calloutlegendText/i)).toHaveLength(3);
-    });
+    },
+  );
 
   testWithWait(
     'Should show the custom callout over the Area on mouse over',
     AreaChart,
     {
-      data: chartData, calloutProps: { doNotLayer: true },
+      data: chartData,
+      calloutProps: { doNotLayer: true },
       onRenderCalloutPerDataPoint: (props: IAreaChartProps) =>
         props ? (
           <div className="onRenderCalloutPerDataPoint">
@@ -402,7 +401,8 @@ describe('Area chart - Subcomponent callout', () => {
       fireEvent.mouseOver(areas[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
-    });
+    },
+  );
 });
 
 describe('Area chart - Subcomponent xAxis Labels', () => {
@@ -416,7 +416,8 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       fireEvent.mouseOver(xAxisLabels[0]);
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
-    });
+    },
+  );
 
   testWithWait(
     'Should show rotated x-axis labels',
@@ -428,9 +429,9 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       screen.debug(undefined, Infinity);
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
-    });
+    },
+  );
 });
-
 
 describe('Screen resolution', () => {
   const originalInnerWidth = global.innerWidth;
@@ -456,7 +457,8 @@ describe('Screen resolution', () => {
       });
       // Assert
       expect(container).toMatchSnapshot();
-    });
+    },
+  );
 
   testWithWait(
     'Should remain unchanged on zoom out',
@@ -471,7 +473,8 @@ describe('Screen resolution', () => {
       });
       // Assert
       expect(container).toMatchSnapshot();
-    });
+    },
+  );
 });
 
 test('Should reflect theme change', () => {

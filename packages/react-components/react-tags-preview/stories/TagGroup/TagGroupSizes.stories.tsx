@@ -1,8 +1,14 @@
 import * as React from 'react';
-import { TagGroup, Tag, InteractionTag } from '@fluentui/react-tags-preview';
+import {
+  TagGroup,
+  Tag,
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+  TagSize,
+} from '@fluentui/react-tags-preview';
 import { Avatar, makeStyles } from '@fluentui/react-components';
-import { Calendar3DayRegular } from '@fluentui/react-icons';
-import { TagSize } from '../../src/Tag';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -21,15 +27,17 @@ export const Sizes = () => {
         <div key={size}>
           {`${size}: `}
           <TagGroup size={size}>
-            <Tag>{size}</Tag>
             <Tag dismissible media={<Avatar name="Katri Athokas" />}>
               {size}
             </Tag>
-            <Tag icon={<Calendar3DayRegular />} shape="circular">
+            <Tag icon={<CalendarMonthRegular />} shape="circular" dismissible>
               {size}
             </Tag>
-            <InteractionTag dismissible icon={<Calendar3DayRegular />}>
-              {size}
+            <InteractionTag>
+              <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
+                {size}
+              </InteractionTagPrimary>
+              <InteractionTagSecondary />
             </InteractionTag>
           </TagGroup>
         </div>

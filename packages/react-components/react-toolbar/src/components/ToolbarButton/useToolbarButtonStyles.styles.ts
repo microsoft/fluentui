@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { ToolbarButtonState } from './ToolbarButton.types';
 
@@ -8,6 +8,7 @@ const useBaseStyles = makeStyles({
   },
   verticalIcon: {
     fontSize: '24px',
+    ...shorthands.margin('0'),
   },
 });
 

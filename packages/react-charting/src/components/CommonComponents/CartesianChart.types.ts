@@ -133,6 +133,11 @@ export interface ICartesianChartStyles {
   tooltip?: IStyle;
 
   /**
+   * styles for tooltip
+   */
+  axisTitle?: IStyle;
+
+  /**
    * Style for the chart Title.
    */
   chartTitle?: IStyle;
@@ -380,6 +385,29 @@ export interface ICartesianChartProps {
    * @default True for LineChart but False for other charts
    */
   enableReflow?: boolean;
+
+  /**
+   * Prop to set the x axis title
+   * @default undefined
+   * Minimum bottom margin required for x axis title is 55px
+   */
+
+  xAxisTitle?: string;
+
+  /**
+   * Prop to set the y axis title
+   * @default undefined
+   * Minimum left margin required for y axis title is 60px and for RTL is 40px
+   * Minimum right margin required for y axis title is 40px and for RTL is 60px
+   */
+  yAxisTitle?: string;
+
+  /**
+   * Prop to set the secondary y axis title
+   * @default undefined
+   * If RTL is enabled, minimum left and right margins required for secondary y axis title is 60px
+   */
+  secondaryYAxistitle?: string;
 }
 
 export interface IYValueHover {
@@ -437,7 +465,7 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
   /**
    * Legends of the chart.
    */
-  legendBars: JSX.Element;
+  legendBars: JSX.Element | null;
 
   /**
    * Callout props
@@ -568,4 +596,10 @@ export interface IModifiedCartesianChartProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /**
+   * @default false
+   * Used to control the first render cycle Performance optimization code.
+   */
+  enableFirstRenderOptimization?: boolean;
 }

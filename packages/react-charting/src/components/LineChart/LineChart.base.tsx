@@ -138,8 +138,6 @@ export interface ILineChartState extends IBasestate {
   nearestCircleToHighlight: ILineChartDataPoint | null;
 
   activeLine: number | null;
-
-  emptyChart?: boolean;
 }
 
 export class LineChartBase extends React.Component<ILineChartProps, ILineChartState> {
@@ -170,6 +168,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _rectId: string;
   private _staticHighlightCircle: string;
   private _createLegendsMemoized: (data: LineChartDataWithIndex[]) => JSX.Element;
+  private _firstRenderOptimization: boolean;
+  private _emptyChartId: string;
 
   constructor(props: ILineChartProps) {
     super(props);
@@ -186,7 +186,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       activePoint: '',
       nearestCircleToHighlight: null,
       activeLine: null,
-      emptyChart: false,
     };
     this._refArray = [];
     this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
@@ -201,6 +200,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._rectId = getId('containerRectLD');
     this._staticHighlightCircle = getId('staticHighlightCircle');
     this._createLegendsMemoized = memoizeFunction((data: LineChartDataWithIndex[]) => this._createLegends(data));
+    this._firstRenderOptimization = true;
+    this._emptyChartId = getId('_LineChart_empty');
 
     props.eventAnnotationProps &&
       props.eventAnnotationProps.labelHeight &&
@@ -221,18 +222,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   }
 
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.lineChartData &&
-      this.props.data.lineChartData.length > 0 &&
-      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
-  }
-
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
@@ -244,7 +233,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._calloutPoints = calloutData(points);
     }
 
-    const legendBars = this._createLegendsMemoized(this._points!);
+    let legendBars = null;
+    // reduce computation cost by only creating legendBars
+    // if when hideLegend is false.
+    // NOTE: they are rendered only when hideLegend is false in CartesianChart.
+    if (!this.props.hideLegend) {
+      legendBars = this._createLegendsMemoized(this._points!);
+    }
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
@@ -270,7 +265,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       tickFormat: tickFormat,
     };
 
-    return !this.state.emptyChart ? (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         chartTitle={data.chartTitle}
@@ -285,6 +280,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         xAxisType={isXAxisDateType ? XAxisTypes.DateAxis : XAxisTypes.NumericAxis}
         customizedCallout={this._getCustomizedCallout()}
         onChartMouseLeave={this._handleChartMouseLeave}
+        enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
         /* eslint-disable react/jsx-no-bind */
         // eslint-disable-next-line react/no-children-prop
         children={(props: IChildProps) => {
@@ -298,7 +294,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   y1={0}
                   x2={0}
                   y2={props.containerHeight}
-                  stroke={'#C8C8C8'}
+                  stroke={'#323130'}
                   id={this._verticalLine}
                   visibility={'hidden'}
                   strokeDasharray={'5,5'}
@@ -333,7 +329,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     ) : (
       <div
-        id={getId('_LineChart_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -345,20 +341,20 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
       ? lineChartData.map((item: ILineChartPoints, index: number) => {
-        let color: string;
-        // isInverted property is applicable to v8 themes only
-        if (typeof item.color === 'undefined') {
-          color = getNextColor(index, 0, this.props.theme?.isInverted);
-        } else {
-          color = getColorFromToken(item.color, this.props.theme?.isInverted);
-        }
+          let color: string;
+          // isInverted property is applicable to v8 themes only
+          if (typeof item.color === 'undefined') {
+            color = getNextColor(index, 0, this.props.theme?.isInverted);
+          } else {
+            color = getColorFromToken(item.color, this.props.theme?.isInverted);
+          }
 
-        return {
-          ...item,
-          index: allowMultipleShapesForPoints ? index : -1,
-          color,
-        };
-      })
+          return {
+            ...item,
+            index: allowMultipleShapesForPoints ? index : -1,
+            color,
+          };
+        })
       : [];
   };
 
@@ -366,8 +362,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return this.props.onRenderCalloutPerStack
       ? this.props.onRenderCalloutPerStack(this.state.stackCalloutProps)
       : this.props.onRenderCalloutPerDataPoint
-        ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
-        : null;
+      ? this.props.onRenderCalloutPerDataPoint(this.state.dataPointCalloutProps)
+      : null;
   };
 
   private _getMargins = (margins: IMargins) => {
@@ -440,34 +436,34 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     const colorFillBarsLegendDataItems = this.props.colorFillBars
       ? this.props.colorFillBars.map((colorFillBar: IColorFillBarsProps, index: number) => {
-        const title = colorFillBar.legend;
-        // isInverted property is applicable to v8 themes only
-        const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
-        const legend: ILegend = {
-          title,
-          color,
-          action: () => {
-            if (isLegendMultiSelectEnabled) {
-              this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
-            } else {
-              this._handleSingleLegendSelectionAction(colorFillBar);
-            }
-          },
-          onMouseOutAction: () => {
-            this.setState({ activeLegend: '' });
-          },
-          hoverAction: () => {
-            this._handleChartMouseLeave();
-            this.setState({ activeLegend: title });
-          },
-          opacity: this._getColorFillBarOpacity(colorFillBar),
-          stripePattern: colorFillBar.applyPattern,
-        };
-        return legend;
-      })
+          const title = colorFillBar.legend;
+          // isInverted property is applicable to v8 themes only
+          const color = getColorFromToken(colorFillBar.color, this.props.theme?.isInverted);
+          const legend: ILegend = {
+            title,
+            color,
+            action: () => {
+              if (isLegendMultiSelectEnabled) {
+                this._handleMultipleColorFillBarLegendSelectionAction(colorFillBar);
+              } else {
+                this._handleSingleLegendSelectionAction(colorFillBar);
+              }
+            },
+            onMouseOutAction: () => {
+              this.setState({ activeLegend: '' });
+            },
+            hoverAction: () => {
+              this._handleChartMouseLeave();
+              this.setState({ activeLegend: title });
+            },
+            opacity: this._getColorFillBarOpacity(colorFillBar),
+            stripePattern: colorFillBar.applyPattern,
+          };
+          return legend;
+        })
       : [];
 
-    const legends = (
+    return (
       <Legends
         legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
@@ -478,7 +474,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         {...this.props.legendProps}
       />
     );
-    return legends;
   }
 
   private _closeCallout = () => {
@@ -675,8 +670,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               {...this._getClickHandler(this._points[i].onLineClick)}
               opacity={1}
               role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${this._points[i].data.length
-                } data points.`}
+              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
+                this._points[i].data.length
+              } data points.`}
             />,
           );
         } else {
@@ -692,8 +688,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               strokeLinecap={this._points[i].lineOptions?.strokeLinecap ?? 'round'}
               opacity={0.1}
               role="img"
-              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${this._points[i].data.length
-                } data points.`}
+              aria-label={`${legendVal}, series ${i + 1} of ${this._points.length} with ${
+                this._points[i].data.length
+              } data points.`}
             />,
           );
         }
@@ -931,7 +928,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       try {
         document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
-      } catch (e) { }
+      } catch (e) {}
     }
     // Used to display tooltip at x axis labels.
     if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
@@ -939,7 +936,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       try {
         document.getElementById(this._tooltipId) && document.getElementById(this._tooltipId)!.remove();
         // eslint-disable-next-line no-empty
-      } catch (e) { }
+      } catch (e) {}
       const tooltipProps = {
         tooltipCls: classNames.tooltip!,
         id: this._tooltipId,
@@ -1217,7 +1214,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         activeLine: null,
       });
     }
-  };
+  }
 
   /**
    * Screen readers announce an element as clickable if the onClick attribute is set.
@@ -1384,4 +1381,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.lineChartData &&
+      this.props.data.lineChartData.length > 0 &&
+      this.props.data.lineChartData.filter((item: ILineChartPoints) => item.data.length).length > 0
+    );
+  }
 }

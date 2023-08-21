@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import {
   presenceAvailableFilled,
   presenceAvailableRegular,
@@ -69,11 +69,12 @@ export const usePresenceBadge_unstable = (
         role: 'img',
         ...props,
         size,
-        icon: resolveShorthand(props.icon, {
+        icon: slot.optional(props.icon, {
           defaultProps: {
             children: IconElement ? <IconElement /> : null,
           },
-          required: true,
+          renderByDefault: true,
+          elementType: 'span',
         }),
       },
       ref,

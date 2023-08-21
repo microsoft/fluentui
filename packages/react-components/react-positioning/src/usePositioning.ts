@@ -10,12 +10,13 @@ import type {
   TargetElement,
   UsePositioningReturn,
 } from './types';
-import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent } from './utils';
+import { useCallbackRef, toFloatingUIPlacement, hasAutofocusFilter, hasScrollParent, normalizeAutoSize } from './utils';
 import {
   shift as shiftMiddleware,
   flip as flipMiddleware,
   coverTarget as coverTargetMiddleware,
   maxSize as maxSizeMiddleware,
+  resetMaxSize as resetMaxSizeMiddleware,
   offset as offsetMiddleware,
   intersecting as intersectingMiddleware,
 } from './middleware';
@@ -121,7 +122,6 @@ export function usePositioning(options: PositioningProps & PositioningOptions): 
       }
       // We run this check once, no need to add deps here
       // TODO: Should be rework to handle options.enabled and contentRef updates
-      // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
   }
 
@@ -154,7 +154,7 @@ function usePositioningOptions(options: PositioningOptions) {
   const {
     align,
     arrowPadding,
-    autoSize,
+    autoSize: rawAutoSize,
     coverTarget,
     flipBoundary,
     offset,
@@ -173,12 +173,14 @@ function usePositioningOptions(options: PositioningOptions) {
   const { dir } = useFluent();
   const isRtl = dir === 'rtl';
   const positionStrategy: Strategy = strategy ?? positionFixed ? 'fixed' : 'absolute';
+  const autoSize = normalizeAutoSize(rawAutoSize);
 
   return React.useCallback(
     (container: HTMLElement | null, arrow: HTMLElement | null) => {
       const hasScrollableElement = hasScrollParent(container);
 
       const middleware = [
+        autoSize && resetMaxSizeMiddleware(autoSize),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),

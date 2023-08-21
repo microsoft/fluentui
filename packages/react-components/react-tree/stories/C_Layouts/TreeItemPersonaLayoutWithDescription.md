@@ -1,1 +1,0 @@
-You can add a `description` prop to the `TreeItemPersonaLayout` that can be used to display secondary text content beneath the primary text content. This is useful for providing additional information or context about the primary content.

@@ -2,11 +2,11 @@
 /** @jsx createElement */
 
 import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type {
   TreeItemPersonaLayoutState,
   TreeItemPersonaLayoutContextValues,
-  TreeItemPersonaLayoutInternalSlots,
+  TreeItemPersonaLayoutSlots,
 } from './TreeItemPersonaLayout.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 import { ButtonContextProvider } from '@fluentui/react-button';
@@ -18,20 +18,21 @@ export const renderTreeItemPersonaLayout_unstable = (
   state: TreeItemPersonaLayoutState,
   contextValues: TreeItemPersonaLayoutContextValues,
 ) => {
-  const { slots, slotProps } = getSlotsNext<TreeItemPersonaLayoutInternalSlots>(state);
+  assertSlots<TreeItemPersonaLayoutSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.expandIcon && <slots.expandIcon {...slotProps.expandIcon} />}
+    <state.root>
+      {state.expandIcon && <state.expandIcon />}
+      {state.selector && <state.selector />}
       <AvatarContextProvider value={contextValues.avatar}>
-        <slots.media {...slotProps.media} />
+        <state.media />
       </AvatarContextProvider>
-      <slots.content {...slotProps.content} />
-      {slots.description && <slots.description {...slotProps.description} />}
+      <state.main />
+      {state.description && <state.description />}
       <ButtonContextProvider value={state.buttonContextValue}>
-        {slots.actions && <slots.actions {...slotProps.actions} />}
-        {slots.aside && <slots.aside {...slotProps.aside} />}
+        {state.actions && <state.actions />}
+        {state.aside && <state.aside />}
       </ButtonContextProvider>
-    </slots.root>
+    </state.root>
   );
 };

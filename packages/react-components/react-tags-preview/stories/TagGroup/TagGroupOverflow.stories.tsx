@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TagGroup, Tag, TagProps } from '@fluentui/react-tags-preview';
+import { TagGroup, Tag, TagProps, tagClassNames } from '@fluentui/react-tags-preview';
 import {
   makeStyles,
   shorthands,
@@ -50,7 +50,14 @@ type OverflowMenuItemProps = {
 };
 
 const useMenuItemStyles = makeStyles({
-  menuItem: shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalXS),
+  menuItem: {
+    ...shorthands.padding(tokens.spacingVerticalSNudge, tokens.spacingHorizontalXS),
+    ':hover': {
+      [`& .${tagClassNames.root}`]: {
+        color: tokens.colorNeutralForeground2Hover,
+      },
+    },
+  },
   tag: {
     backgroundColor: 'transparent',
     ...shorthands.borderColor('transparent'),

@@ -5,7 +5,7 @@ import { ThemeProvider } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
-import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility';
+import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',

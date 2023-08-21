@@ -120,8 +120,8 @@ Breadcrumb can be:
 
 ### Icon
 
-Non-clickable items can't have icon.
-Only BreadcrumButton and BreadcrumbLink can have an icon with text or just icon.
+Breadcrumb items can have icons. If you need an icon for an interactive item, use it inside BreadcrumButton or BreadcrumbLink.
+For non-interactive items use the icon inside BreadcrumbItem.
 
 ### Size
 
@@ -172,13 +172,12 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property     | Values                     | Default       | Purpose                          |
-| ------------ | -------------------------- | ------------- | -------------------------------- |
-| appearance   | `transparent`, `subtle`    | `transparent` | Sets appearance                  |
-| dividerType  | `chevron`, `slash`         | `chevron`     | Sets type of divider             |
-| focusMode    | `tab`, `arrow`             | `tab`         | Sets focus mode                  |
-| iconPosition | `before`, `after`          | `before`      | Sets icon position for all items |
-| size         | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb   |
+| Property    | Values                     | Default       | Purpose                        |
+| ----------- | -------------------------- | ------------- | ------------------------------ |
+| appearance  | `transparent`, `subtle`    | `transparent` | Sets appearance                |
+| dividerType | `chevron`, `slash`         | `chevron`     | Sets type of divider           |
+| focusMode   | `tab`, `arrow`             | `tab`         | Sets focus mode                |
+| size        | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 
@@ -190,7 +189,7 @@ BreadcrumbItem can be:
 
 - Button - BreadcrumbButton component is used inside BreadcrumbItem.
 - Link - BreadcrumbLink is used inside BreadcrumbItem.
-- Non-clickable content
+- Non-clickable content (text and/or icon).
 - Dropdown Menu
 
 It can contain a tooltip.
@@ -253,10 +252,13 @@ Usage
 
 ```jsx
 <BreadcrumbItem>
-  <BreadcrumbButton icon={<IconComponent />} iconPosition="after">Item</BreadcrumbButton>
+  <BreadcrumbButton icon={<IconComponent />}>Item</BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem>
   <BreadcrumbLink icon={<IconComponent />}>Item</BreadcrumbLink>
+</BreadcrumbItem>
+<BreadcrumbItem icon={<IconComponent />}>
+  Item
 </BreadcrumbItem>
 ```
 
@@ -315,11 +317,10 @@ Under the hood @fluentui/react-button component is used.
 
 #### API
 
-| Property     | Values            | Default  | Purpose                |
-| ------------ | ----------------- | -------- | ---------------------- |
-| current      | boolean           | false    | Indicates current page |
-| icon         | _slot_            |          | Sets icon              |
-| iconPosition | `before`, `after` | `before` | Sets icon position     |
+| Property | Values  | Default | Purpose                |
+| -------- | ------- | ------- | ---------------------- |
+| current  | boolean | false   | Indicates current page |
+| icon     | _slot_  |         | Sets icon              |
 
 For Link @fluentui/react-link component is used.
 

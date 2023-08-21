@@ -48,10 +48,12 @@ const linkItems: Item[] = [
   },
   {
     key: 3,
+    item: 'Item 3',
     linkProps: {
       'aria-label': 'Item 3',
       href: 'https://developer.microsoft.com/',
       icon: <CalendarMonth />,
+      disabled: true,
     },
   },
   {
@@ -59,8 +61,6 @@ const linkItems: Item[] = [
     item: 'Item 4',
     linkProps: {
       href: 'https://developer.microsoft.com/',
-      icon: <CalendarMonthRegular />,
-      iconPosition: 'after',
     },
   },
   {
@@ -82,7 +82,7 @@ const linkItems: Item[] = [
 
 function renderLink(el: Item, isLastItem: boolean = false) {
   return (
-    <React.Fragment key={`${el.key}-button`}>
+    <React.Fragment key={`${el.key}-link`}>
       <BreadcrumbItem>
         <BreadcrumbLink
           {...el.linkProps}
@@ -102,7 +102,7 @@ export const Default = () => {
   const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
   return (
     <>
-      <Label>Appearance (see the difference on `hover`)</Label>
+      <Label>Appearance</Label>
       <RadioGroup
         aria-labelledby="breadcrumb-appearance"
         value={appearance}
