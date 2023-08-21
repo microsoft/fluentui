@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTButton } from '@microsoft/fast-foundation';
+import { FASTButton } from '@microsoft/fast-foundation/button.js';
 import { ButtonAppearance, ButtonShape, ButtonSize } from './button.options.js';
 
 /**

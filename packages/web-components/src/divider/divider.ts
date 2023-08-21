@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTDivider } from '@microsoft/fast-foundation';
+import { FASTDivider } from '@microsoft/fast-foundation/divider.js';
 import { DividerAlignContent, DividerAppearance } from './divider.options.js';
 
 /**

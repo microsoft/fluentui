@@ -1,5 +1,5 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { progressTemplate } from '@microsoft/fast-foundation';
+import { progressTemplate } from '@microsoft/fast-foundation/progress.js';
 import type { ProgressBar } from './progress-bar.js';
 
 export const template: ElementViewTemplate<ProgressBar> = progressTemplate({

@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { buttonTemplate } from '@microsoft/fast-foundation';
+import { buttonTemplate } from '@microsoft/fast-foundation/button.js';
 import type { MenuButton } from './menu-button.js';
 
 /**

@@ -1,5 +1,5 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { FASTTab } from '@microsoft/fast-foundation';
+import { FASTTab } from '@microsoft/fast-foundation/tab.js';
 
 /**
  * Tab extends the FASTTab and is a child of the TabList
