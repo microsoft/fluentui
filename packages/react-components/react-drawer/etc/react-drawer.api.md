@@ -13,8 +13,8 @@ import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Motion } from '@fluentui/react-motion-preview';
 import { MotionShorthand } from '@fluentui/react-motion-preview';
+import { MotionState } from '@fluentui/react-motion-preview';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -128,7 +128,7 @@ export type DrawerInlineSlots = {
 };
 
 // @public
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & Omit<DrawerInlineProps, 'open' | 'defaultOpen' | 'motion'> & DrawerBaseState;
+export type DrawerInlineState = ComponentState<DrawerInlineSlots> & Omit<DrawerInlineProps, 'open' | 'defaultOpen'> & DrawerBaseState;
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
@@ -147,7 +147,7 @@ export type DrawerOverlaySlots = DialogSurfaceSlots & {
 // @public
 export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & Omit<DrawerBaseProps, 'open' | 'defaultOpen'> & DrawerBaseState & {
     dialog: DialogProps;
-    backdropMotion: Motion<HTMLDivElement>;
+    backdropMotion: MotionState<HTMLDivElement>;
 };
 
 // @public

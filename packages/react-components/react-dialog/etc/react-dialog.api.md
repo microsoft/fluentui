@@ -10,8 +10,11 @@ import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
+import { MotionShorthand } from '@fluentui/react-motion-preview';
+import { MotionState } from '@fluentui/react-motion-preview';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -103,7 +106,7 @@ export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: 
 // @public (undocumented)
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
     modalType?: DialogModalType;
-    open?: boolean;
+    open?: MotionShorthand<DialogSurfaceElement>;
     defaultOpen?: boolean;
     onOpenChange?: DialogOpenChangeEventHandler;
     children: [JSX.Element, JSX.Element] | JSX.Element;
@@ -133,12 +136,15 @@ export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
-    backdrop?: Slot<'div'>;
+    backdrop?: Slot<DialogBackdropProps>;
     root: Slot<'div'>;
 };
 
 // @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
+    motion: MotionState_2<DialogSurfaceElement>;
+    backdropMotion: MotionState_2<DialogSurfaceElement>;
+};
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;

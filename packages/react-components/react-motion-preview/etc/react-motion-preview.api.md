@@ -5,22 +5,41 @@
 ```ts
 
 import * as React_2 from 'react';
+import { SlotShorthandValue } from '@fluentui/react-utilities';
+import { UnknownSlotProps } from '@fluentui/react-utilities';
+
+// @public
+export function getDefaultMotionState<Element extends HTMLElement>(): MotionState<Element>;
 
 // @public (undocumented)
-export type Motion<Element extends HTMLElement = HTMLElement> = {
+export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | MotionState<Element>;
+
+// @public (undocumented)
+export type MotionShorthandValue = boolean;
+
+// @public (undocumented)
+export type MotionState<Element extends HTMLElement = HTMLElement> = {
     ref: React_2.Ref<Element>;
-    active: boolean;
-    state: MotionStateType;
+    type: MotionType;
+    isActive(): boolean;
+    canRender(): boolean;
+    hasInternalMotion: boolean;
 };
 
 // @public (undocumented)
-export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | Motion<Element>;
+export type MotionType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
 
 // @public (undocumented)
-export type MotionStateType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
+export interface UnknownSlotPropsWithMotion<Element extends HTMLElement> extends UnknownSlotProps {
+    // (undocumented)
+    motion?: MotionShorthand<Element>;
+}
+
+// @public
+export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: UseMotionOptions): MotionState<Element>;
 
 // @internal
-export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: UseMotionOptions): Motion<Element>;
+export function useMotionFromSlot<Props extends UnknownSlotProps, Element extends HTMLElement>(props: Props | SlotShorthandValue | undefined | null, shorthand: MotionShorthand<Element>, options?: UseMotionOptions): [Props, MotionState<Element>];
 
 // @public (undocumented)
 export type UseMotionOptions = {

@@ -39,10 +39,10 @@ const useDrawerRootMotionStyles = makeStyles({
   },
 
   /* Positioning */
-  left: {
+  start: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
   },
-  right: {
+  end: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * 1), 0, 0)`,
   },
 
