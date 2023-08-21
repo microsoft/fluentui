@@ -1,8 +1,8 @@
 import type { Locator, Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
+import { fixtureURL } from '../helpers.tests.js';
 import type { Tabs } from './tabs.js';
 import type { Tab } from '../tab/tab.js';
-import { fixtureURL } from '../helpers.tests.js';
 
 test.describe('Tabs', () => {
   let page: Page;
@@ -48,10 +48,8 @@ test.describe('Tabs', () => {
       { template },
     );
 
-    const tab = await tabs.nth(2);
+    const tab = tabs.nth(2);
     await tab.click();
-
-    await page.waitForTimeout(200);
 
     const tabIndicatorValues = await page.evaluate(() => {
       const tabsElement = document.querySelector('fluent-tabs') as Element;
@@ -75,7 +73,7 @@ test.describe('Tabs', () => {
 
     const tab = tabs.nth(2);
 
-    let valueBeforeClick = await page.evaluate(() => {
+    const valueBeforeClick = await page.evaluate(() => {
       const tabElement = document.querySelector('fluent-tab:nth-child(3)') as Element;
       return tabElement.getAttribute('data-animate');
     });
@@ -83,9 +81,8 @@ test.describe('Tabs', () => {
     expect(valueBeforeClick).toBe(null);
 
     await tab.click();
-    await page.waitForTimeout(300);
 
-    let valueAfterClick = await page.evaluate(() => {
+    const valueAfterClick = await page.evaluate(() => {
       const tabElement = document.querySelector('fluent-tab:nth-child(3)') as Element;
       return tabElement.getAttribute('data-animate');
     });
