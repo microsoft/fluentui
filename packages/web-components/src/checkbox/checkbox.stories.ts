@@ -1,6 +1,5 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
-import { css } from '@microsoft/fast-element';
 import { renderComponent } from '../helpers.stories.js';
 import type { Checkbox as FluentCheckbox } from './checkbox.js';
 import './define.js';
