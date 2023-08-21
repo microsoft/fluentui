@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: Enable lint for unit tests",
-  "packageName": "@fluentui/web-components",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "none"
-}
