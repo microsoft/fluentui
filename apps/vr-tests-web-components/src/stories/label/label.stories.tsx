@@ -2,7 +2,7 @@ import * as React from 'react';
 import parse from 'html-react-parser';
 import { Steps, StoryWright } from 'storywright';
 import { LabelDefinition, FluentDesignSystem } from '@fluentui/web-components';
-import { DARK_MODE, getStoryVariant } from '../../utilities/WCThemeDecorator';
+import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator';
 
 LabelDefinition.define(FluentDesignSystem.registry);
 
@@ -32,4 +32,8 @@ export const WeightRegular = () => parse(`<fluent-label weight="regular">Regular
 export const WeightSemibold = () => parse(`<fluent-label weight="semibold">Semibold</fluent-label>`);
 
 export const Required = () => parse(`<fluent-label required>Required</fluent-label>`);
+export const RequiredDarkMode = getStoryVariant(Required, DARK_MODE);
+export const RequiredRTL = getStoryVariant(Required, RTL);
+
 export const Disabled = () => parse(`<fluent-label disabled>Disabled</fluent-label>`);
+export const DisabledDarkMode = getStoryVariant(Disabled, DARK_MODE);
