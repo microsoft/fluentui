@@ -8,7 +8,6 @@ test.describe('Radio', () => {
   let page: Page;
   let element: Locator;
   let root: Locator;
-  let form: Locator;
   let radios: Locator;
 
   test.beforeAll(async ({ browser }) => {
@@ -17,8 +16,6 @@ test.describe('Radio', () => {
     element = page.locator('fluent-radio-group');
 
     root = page.locator('#root');
-
-    form = page.locator('form');
 
     radios = element.locator('fluent-radio');
 
