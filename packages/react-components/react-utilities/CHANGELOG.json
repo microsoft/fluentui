@@ -2,6 +2,36 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Fri, 11 Aug 2023 12:14:25 GMT",
+      "tag": "@fluentui/react-utilities_v9.11.1",
+      "version": "9.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f9f2b69201c81811e8e4ce23f971d6174127d0ca",
+            "comment": "chore: tests for slot.resolveShorthand behavior"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:58 GMT",
+      "tag": "@fluentui/react-utilities_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6a8afe2b7becaf1b10cbc9ae98b39d352b8c7026",
+            "comment": "feat: implement new slot methods (slot and assertSlots)"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:36 GMT",
       "tag": "@fluentui/react-utilities_v9.10.1",
       "version": "9.10.1",

@@ -1,4 +1,4 @@
-import { SelectionMode, getNativeElementProps, useEventCallback } from '@fluentui/react-utilities';
+import { SelectionMode, getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type {
   TreeCheckedChangeData,
   TreeNavigationData_unstable,
@@ -29,10 +29,11 @@ export function useRootTree(
     | 'checkedItems'
     | 'onOpenChange'
     | 'onCheckedChange'
-    | 'onNavigation_unstable'
+    | 'onNavigation'
     | 'aria-label'
     | 'aria-labelledby'
   >,
+
   ref: React.Ref<HTMLElement>,
 ): TreeState {
   warnIfNoProperPropsRootTree(props);
@@ -44,10 +45,17 @@ export function useRootTree(
   const requestOpenChange = (data: TreeOpenChangeData) => props.onOpenChange?.(data.event, data);
 
   const requestCheckedChange = (data: TreeCheckedChangeData) => props.onCheckedChange?.(data.event, data);
+
   const requestNavigation = (data: TreeNavigationData_unstable) => {
-    props.onNavigation_unstable?.(data.event, data);
-    if (data.type === treeDataTypes.ArrowDown || data.type === treeDataTypes.ArrowUp) {
-      data.event.preventDefault();
+    props.onNavigation?.(data.event, data);
+    switch (data.type) {
+      case treeDataTypes.ArrowDown:
+      case treeDataTypes.ArrowUp:
+      case treeDataTypes.Home:
+      case treeDataTypes.End:
+        // stop the default behavior of the event
+        // which is to scroll the page
+        data.event.preventDefault();
     }
   };
 
@@ -126,12 +134,15 @@ export function useRootTree(
     openItems,
     checkedItems,
     requestTreeResponse,
-    root: getNativeElementProps('div', {
-      ref,
-      role: 'tree',
-      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        role: 'tree',
+        'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 }
 

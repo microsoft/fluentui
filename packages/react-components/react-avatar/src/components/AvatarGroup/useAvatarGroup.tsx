@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 
 /**
@@ -14,24 +14,19 @@ import type { AvatarGroupProps, AvatarGroupState } from './AvatarGroup.types';
 export const useAvatarGroup_unstable = (props: AvatarGroupProps, ref: React.Ref<HTMLElement>): AvatarGroupState => {
   const { layout = 'spread', size = defaultAvatarGroupSize } = props;
 
-  const root = getNativeElementProps(
-    'div',
-    {
-      role: 'group',
-      ...props,
-      ref,
-    },
-    ['size'],
+  const root = slot.always(
+    getNativeElementProps(
+      'div',
+      {
+        role: 'group',
+        ...props,
+        ref,
+      },
+      ['size'],
+    ),
+    { elementType: 'div' },
   );
-
-  return {
-    layout,
-    size,
-    components: {
-      root: 'div',
-    },
-    root,
-  };
+  return { layout, size, components: { root: 'div' }, root };
 };
 
 export const defaultAvatarGroupSize = 32;

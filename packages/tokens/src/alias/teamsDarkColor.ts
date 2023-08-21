@@ -143,6 +143,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorBrandStroke2: brand[50], // #004c87 Global.Color.Brand.50
   colorBrandStroke2Hover: brand[50], // #004c87 Global.Color.Brand.50
   colorBrandStroke2Pressed: brand[30], // #043862 Global.Color.Brand.30
+  colorBrandStroke2Contrast: brand[50], // #004c87 Global.Color.Brand.50
   colorCompoundBrandStroke: brand[90], // #1890f1 Global.Color.Brand.90
   colorCompoundBrandStrokeHover: brand[100], // #2899f5 Global.Color.Brand.100
   colorCompoundBrandStrokePressed: brand[80], // #0078d4 Global.Color.Brand.80
@@ -152,6 +153,7 @@ export const generateColorTokens = (brand: BrandVariants): ColorTokens => ({
   colorTransparentStrokeInteractive: 'transparent', // transparent undefined
   colorTransparentStrokeDisabled: 'transparent', // transparent undefined
   colorNeutralStrokeAlpha: whiteAlpha[10], // rgba(255, 255, 255, 0.1) Global.Color.WhiteAlpha.10
+  colorNeutralStrokeAlpha2: whiteAlpha[20], // rgba(255, 255, 255, 0.2) Global.Color.WhiteAlpha.20
   colorStrokeFocus1: black, // #000000 Global.Color.Black
   colorStrokeFocus2: white, // #ffffff Global.Color.White
   colorNeutralShadowAmbient: 'rgba(0,0,0,0.24)', // rgba(0,0,0,0.24) undefined

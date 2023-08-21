@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { TreeItemPersonaLayoutProps, TreeItemPersonaLayoutState } from './TreeItemPersonaLayout.types';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useTreeContext_unstable } from '../../contexts';
 import { treeAvatarSize } from '../../utils/tokens';
 import { useTreeItemLayout_unstable } from '../TreeItemLayout/useTreeItemLayout';
@@ -20,7 +20,7 @@ export const useTreeItemPersonaLayout_unstable = (
   props: TreeItemPersonaLayoutProps,
   ref: React.Ref<HTMLSpanElement>,
 ): TreeItemPersonaLayoutState => {
-  const { media, children, content, description } = props;
+  const { media, children, main, description } = props;
 
   const treeItemLayoutState = useTreeItemLayout_unstable(
     {
@@ -38,7 +38,7 @@ export const useTreeItemPersonaLayout_unstable = (
     ...treeItemLayoutState,
     components: {
       expandIcon: 'div',
-      content: 'div',
+      main: 'div',
       description: 'div',
       root: 'div',
       media: 'div',
@@ -48,8 +48,8 @@ export const useTreeItemPersonaLayout_unstable = (
       selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     avatarSize: treeAvatarSize[size],
-    content: resolveShorthand(content, { required: true, defaultProps: { children } }),
-    media: resolveShorthand(media, { required: true }),
-    description: resolveShorthand(description),
+    main: slot.always(main, { defaultProps: { children }, elementType: 'div' }),
+    media: slot.always(media, { elementType: 'div' }),
+    description: slot.optional(description, { elementType: 'div' }),
   };
 };

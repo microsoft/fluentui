@@ -316,9 +316,6 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
         </div>
       </div>
     </div>
-    <span
-      class="ms-layer"
-    />
   </div>
 </div>
 `;

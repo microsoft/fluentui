@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { ToastBodyProps, ToastBodyState } from './ToastBody.types';
 import { useToastContainerContext } from '../../contexts/toastContainerContext';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
@@ -21,12 +21,15 @@ export const useToastBody_unstable = (props: ToastBodyProps, ref: React.Ref<HTML
       root: 'div',
       subtitle: 'div',
     },
-    subtitle: resolveShorthand(props.subtitle),
-    root: getNativeElementProps('div', {
-      ref,
-      id: bodyId,
-      ...props,
-    }),
+    subtitle: slot.optional(props.subtitle, { elementType: 'div' }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        id: bodyId,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     backgroundAppearance,
   };
 };

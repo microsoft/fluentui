@@ -5,6 +5,7 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
   root: 'fui-BreadcrumbItem',
+  icon: 'fui-BreadcrumbItem__icon',
 };
 
 /**
@@ -16,6 +17,11 @@ const useStyles = makeStyles({
     alignItems: 'center',
     color: tokens.colorNeutralForeground2,
     boxSizing: 'border-box',
+  },
+  icon: {
+    display: 'flex',
+    alignItems: 'center',
+    ...shorthands.padding(tokens.spacingHorizontalXS),
   },
   small: {
     height: '24px',
@@ -41,6 +47,30 @@ const useStyles = makeStyles({
   currentLarge: {
     ...typographyStyles.subtitle2,
   },
+  noSpacing: {
+    ...shorthands.padding(0),
+  },
+});
+
+const useIconStyles = makeStyles({
+  small: {
+    fontSize: '12px',
+    height: '12px',
+    lineHeight: tokens.lineHeightBase200,
+    width: '12px',
+  },
+  medium: {
+    fontSize: '16px',
+    height: '16px',
+    lineHeight: tokens.lineHeightBase400,
+    width: '16px',
+  },
+  large: {
+    fontSize: '20px',
+    height: '20px',
+    lineHeight: tokens.lineHeightBase600,
+    width: '20px',
+  },
 });
 
 /**
@@ -48,19 +78,28 @@ const useStyles = makeStyles({
  */
 export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): BreadcrumbItemState => {
   const styles = useStyles();
+  const iconStyles = useIconStyles();
   const size = state.size || 'medium';
   const currentSizeMap = {
     small: styles.currentSmall,
     medium: styles.currentMedium,
     large: styles.currentLarge,
   };
+  const noSpacingStyle =
+    state.isInteractive || (!state.isInteractive && state.size === 'small') ? styles.noSpacing : '';
+
   state.root.className = mergeClasses(
     breadcrumbItemClassNames.root,
     styles.root,
     styles[size],
     state.current && currentSizeMap[size],
+    noSpacingStyle,
     state.root.className,
   );
+
+  if (state.icon) {
+    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className);
+  }
 
   return state;
 };

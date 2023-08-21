@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState } from '@fluentui/react-utilities';
+import { getNativeElementProps, useControllableState, slot } from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
 import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
 
@@ -27,10 +27,13 @@ export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Re
       root: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
 
     size,
     position,

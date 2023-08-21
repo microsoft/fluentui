@@ -4,4 +4,3 @@ export * from './renderAccordionHeader';
 export * from './useAccordionHeader';
 export * from './useAccordionHeaderContextValues';
 export * from './useAccordionHeaderStyles.styles';
-export * from './AccordionHeaderContext';

@@ -16,9 +16,9 @@ import {
   ChangeType,
   readNxJson,
 } from '@nx/devkit';
-import * as path from 'path';
-import * as os from 'os';
-import * as ts from 'typescript';
+import path from 'path';
+import os from 'os';
+import ts from 'typescript';
 
 import { getTemplate, uniqueArray } from './lib/utils';
 import setupCypressComponentTesting from '../cypress-component-configuration';

@@ -233,7 +233,13 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       this._calloutPoints = calloutData(points);
     }
 
-    const legendBars = this._createLegendsMemoized(this._points!);
+    let legendBars = null;
+    // reduce computation cost by only creating legendBars
+    // if when hideLegend is false.
+    // NOTE: they are rendered only when hideLegend is false in CartesianChart.
+    if (!this.props.hideLegend) {
+      legendBars = this._createLegendsMemoized(this._points!);
+    }
     const calloutProps = {
       isCalloutVisible: this.state.isCalloutVisible,
       directionalHint: DirectionalHint.topAutoEdge,
@@ -457,7 +463,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         })
       : [];
 
-    const legends = (
+    return (
       <Legends
         legends={[...legendDataItems, ...colorFillBarsLegendDataItems]}
         enabledWrapLines={this.props.enabledLegendsWrapLines}
@@ -468,7 +474,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         {...this.props.legendProps}
       />
     );
-    return legends;
   }
 
   private _closeCallout = () => {
