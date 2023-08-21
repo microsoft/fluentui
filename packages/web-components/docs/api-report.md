@@ -25,24 +25,22 @@ import { FASTProgress } from '@microsoft/fast-foundation/progress.js';
 import { FASTProgressRing } from '@microsoft/fast-foundation/progress-ring.js';
 import { FASTRadio } from '@microsoft/fast-foundation/radio.js';
 import { FASTRadioGroup } from '@microsoft/fast-foundation/radio-group.js';
-import { FASTSlider } from '@microsoft/fast-foundation';
-import { FASTSlider as FASTSlider_2 } from '@microsoft/fast-foundation/slider.js';
+import { FASTSlider } from '@microsoft/fast-foundation/slider.js';
 import { FASTSwitch } from '@microsoft/fast-foundation/switch.js';
 import { FASTTab } from '@microsoft/fast-foundation/tab.js';
 import { FASTTabPanel } from '@microsoft/fast-foundation/tab-panel.js';
 import { FASTTabs } from '@microsoft/fast-foundation/tabs.js';
 import { FASTTextField } from '@microsoft/fast-foundation/text-field.js';
 import { MenuItemRole } from '@microsoft/fast-foundation/menu-item.js';
-import { RadioGroupOrientation } from '@microsoft/fast-foundation';
+import { RadioGroupOrientation } from '@microsoft/fast-foundation/radio-group.js';
 import { SliderOrientation } from '@microsoft/fast-foundation/slider.js';
-import { StartEnd } from '@microsoft/fast-foundation';
-import { StartEndOptions } from '@microsoft/fast-foundation';
-import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
+import { StartEnd } from '@microsoft/fast-foundation/patterns.js';
+import { StartEndOptions } from '@microsoft/fast-foundation/patterns.js';
+import type { StaticallyComposableHTML } from '@microsoft/fast-foundation/utilities.js';
 import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
-import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
+import { TextFieldType as TextInputType } from '@microsoft/fast-foundation/text-field.js';
 import type { Theme } from '@fluentui/tokens';
 import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
-import { ValuesOf as ValuesOf_2 } from '@microsoft/fast-foundation';
 
 // @public
 export class Accordion extends FASTAccordion {
@@ -335,7 +333,7 @@ export const BadgeAppearance: {
 };
 
 // @public
-export type BadgeAppearance = ValuesOf_2<typeof BadgeAppearance>;
+export type BadgeAppearance = ValuesOf<typeof BadgeAppearance>;
 
 // @public
 export const BadgeColor: {
@@ -350,7 +348,7 @@ export const BadgeColor: {
 };
 
 // @public
-export type BadgeColor = ValuesOf_2<typeof BadgeColor>;
+export type BadgeColor = ValuesOf<typeof BadgeColor>;
 
 // @public
 export const BadgeDefinition: FASTElementDefinition<typeof Badge>;
@@ -370,7 +368,7 @@ export const BadgeShape: {
 };
 
 // @public
-export type BadgeShape = ValuesOf_2<typeof BadgeShape>;
+export type BadgeShape = ValuesOf<typeof BadgeShape>;
 
 // @public
 export const BadgeSize: {
@@ -383,7 +381,7 @@ export const BadgeSize: {
 };
 
 // @public
-export type BadgeSize = ValuesOf_2<typeof BadgeSize>;
+export type BadgeSize = ValuesOf<typeof BadgeSize>;
 
 // @public
 export const BadgeStyles: ElementStyles;
@@ -1987,7 +1985,7 @@ export type SliderSize = ValuesOf<typeof SliderSize>;
 export const SliderStyles: ElementStyles;
 
 // @public (undocumented)
-export const SliderTemplate: ElementViewTemplate<FASTSlider_2>;
+export const SliderTemplate: ElementViewTemplate<FASTSlider>;
 
 // @public (undocumented)
 export const spacingHorizontalL: CSSDesignToken<string>;

@@ -1,4 +1,4 @@
-import { endSlotTemplate, startSlotTemplate } from '@microsoft/fast-foundation';
+import { endSlotTemplate, startSlotTemplate } from '@microsoft/fast-foundation/patterns.js';
 import { FASTTab, TabOptions } from '@microsoft/fast-foundation/tab.js';
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
 

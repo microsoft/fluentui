@@ -3046,10 +3046,10 @@
   resolved "https://registry.yarnpkg.com/@microsoft/fast-element/-/fast-element-1.11.0.tgz#494f6c87057bcbb42406982d68a92887d6b5acb1"
   integrity sha512-VKJYMkS5zgzHHb66sY7AFpYv6IfFhXrjQcAyNgi2ivD65My1XOhtjfKez5ELcLFRJfgZNAxvI8kE69apXERTkw==
 
-"@microsoft/fast-foundation@3.0.0-alpha.30":
-  version "3.0.0-alpha.30"
-  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-3.0.0-alpha.30.tgz#1c1bde427f38952fb6003c5537ce3636035df9fe"
-  integrity sha512-48TGnD5MIcJl8as13uX9cUUFS3zxRLnBh5yJRjLUz2/Apon6pIKj+qWWZFDZbt5UuGCq/FE5+iiTamK8DjTsew==
+"@microsoft/fast-foundation@3.0.0-alpha.31":
+  version "3.0.0-alpha.31"
+  resolved "https://registry.yarnpkg.com/@microsoft/fast-foundation/-/fast-foundation-3.0.0-alpha.31.tgz#096b143d3f513801899d3a1eac00b09913064c4c"
+  integrity sha512-266JfAlmiz1uGQ0cnGIPtahZZ3WVNS8+6vrjsHmEg46sJTzb+9WfhgFan40y+MzgvWzZGr1Y1mh6GVpwVmKFJA==
   dependencies:
     "@floating-ui/dom" "^1.0.3"
     "@microsoft/fast-element" "2.0.0-beta.26"
