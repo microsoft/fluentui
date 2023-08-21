@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Fri, 11 Aug 2023 12:14:25 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.33)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.3.32..@fluentui/react-tabs_v9.3.33)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [9.3.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.32)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.3.31..@fluentui/react-tabs_v9.3.32)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+
+## [9.3.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.31)
+
+Mon, 14 Aug 2023 21:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.3.30..@fluentui/react-tabs_v9.3.31)
+
+### Patches
+
+- Defer tabs rectangle computation only when previousSelectedValue is defined ([PR #28749](https://github.com/microsoft/fluentui/pull/28749) by nasirvi@microsoft.com)
 
 ## [9.3.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.30)
 

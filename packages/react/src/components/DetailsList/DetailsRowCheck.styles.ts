@@ -41,7 +41,7 @@ export const getDetailsRowCheckStyles = (props: IDetailsRowCheckStyleProps): IDe
         backgroundColor: 'transparent',
         border: 'none',
         opacity: isCheckVisible ? 1 : 0,
-        height: height,
+        height,
         width: CHECK_CELL_WIDTH,
         padding: 0,
         margin: 0,

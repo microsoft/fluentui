@@ -1,8 +1,44 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Fri, 11 Aug 2023 12:14:26 GMT and should not be manually modified.
+This log was last generated on Thu, 17 Aug 2023 13:49:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.6)
+
+Thu, 17 Aug 2023 13:49:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.5..@fluentui/react-migration-v8-v9_v9.4.6)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.29.3 ([PR #28896](https://github.com/microsoft/fluentui/pull/28896) by beachball)
+
+## [9.4.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.5)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.4..@fluentui/react-migration-v8-v9_v9.4.5)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.29.2 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.4)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.3..@fluentui/react-migration-v8-v9_v9.4.4)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.29.1 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+
+## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.3)
+
+Mon, 14 Aug 2023 21:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.2..@fluentui/react-migration-v8-v9_v9.4.3)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.29.0 ([PR #28822](https://github.com/microsoft/fluentui/pull/28822) by beachball)
 
 ## [9.4.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.2)
 

@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Mon, 14 Aug 2023 07:34:45 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2023 07:35:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.1)
+
+Fri, 18 Aug 2023 07:35:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.0..@fluentui/react-docsite-components_v8.13.1)
+
+### Patches
+
+- fix: Remove top clip for image to work correctly and move top banner under top nav. ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by esteban.230@hotmail.com)
+- Bump @fluentui/react to v8.110.14 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/theme to v2.6.35 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/example-data to v8.4.12 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/public-docsite-setup to v0.3.22 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/react-monaco-editor to v1.7.119 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+
+## [8.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.0)
+
+Wed, 16 Aug 2023 07:35:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.12.41..@fluentui/react-docsite-components_v8.13.0)
+
+### Minor changes
+
+- feat: Add TopBanner component and use it in the site template. ([PR #28870](https://github.com/microsoft/fluentui/pull/28870) by esteban.230@hotmail.com)
 
 ## [8.12.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.12.41)
 

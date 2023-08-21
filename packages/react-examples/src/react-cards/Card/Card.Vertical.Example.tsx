@@ -115,7 +115,12 @@ export const CardVerticalExample: React.FunctionComponent = () => {
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
         </Card.Item>
         <Card.Item fill>
-          <Image src="//via.placeholder.com/256x144" width="100%" alt="Placeholder image." />
+          <Image
+            src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+            width="100%"
+            alt="Placeholder image."
+            height={144}
+          />
         </Card.Item>
         <Card.Section>
           <Text variant="small" styles={siteTextStyles}>

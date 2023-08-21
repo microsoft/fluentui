@@ -276,7 +276,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
     entityInnerHost: [
       {
         transition: 'transform 500ms cubic-bezier(0.5, 0, 0, 1)',
-        transformOrigin: transformOrigin,
+        transformOrigin,
         transform: 'scale(0)',
       },
       !isCollapsed && {
