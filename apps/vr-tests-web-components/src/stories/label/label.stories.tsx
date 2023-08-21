@@ -1,5 +1,5 @@
 import * as React from 'react';
-import parse from 'html-react-parser';
+import { default as parse } from 'html-react-parser';
 import { Steps, StoryWright } from 'storywright';
 import { LabelDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator';
