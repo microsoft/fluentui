@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: make MenuItem with long content grow its height",
+  "packageName": "@fluentui/react-menu",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -24,12 +24,15 @@ const useStyles = makeStyles({
     position: 'relative',
     color: tokens.colorNeutralForeground2,
     backgroundColor: tokens.colorNeutralBackground1,
-    paddingRight: '6px',
-    paddingLeft: '6px',
-    height: '32px',
+    paddingRight: tokens.spacingVerticalSNudge, // 6px
+    paddingLeft: tokens.spacingVerticalSNudge,
+    paddingTop: tokens.spacingVerticalSNudge,
+    boxSizing: 'border-box',
+    maxWidth: '290px',
     minHeight: '32px',
+    flexShrink: 0,
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'start',
     fontSize: tokens.fontSizeBase300,
     cursor: 'pointer',
     ...shorthands.gap('4px'),
@@ -67,6 +70,9 @@ const useStyles = makeStyles({
     ':focus': {
       color: tokens.colorNeutralForeground3Hover,
     },
+  },
+  checkmark: {
+    marginTop: '2px',
   },
   icon: {
     width: '20px',
@@ -138,7 +144,7 @@ export const useMenuItemStyles_unstable = (state: MenuItemState) => {
   }
 
   if (state.checkmark) {
-    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, state.checkmark.className);
+    state.checkmark.className = mergeClasses(menuItemClassNames.checkmark, styles.checkmark, state.checkmark.className);
   }
 
   if (state.secondaryContent) {
