@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use `:active` selector for pressed style instead of `:hover:active`",
+  "packageName": "@fluentui/react-tags-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
