@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusCircular,
   borderRadiusLarge,
@@ -65,6 +65,8 @@ export const styles = css`
     --icon-spacing: ${spacingHorizontalSNudge};
     contain: layout style;
     vertical-align: middle;
+    min-width: 96px;
+    min-height: 32px;
   }
 
   :host .control {
@@ -74,13 +76,11 @@ export const styles = css`
     justify-content: center;
     text-decoration-line: none;
     margin: 0;
-    min-height: 32px;
     outline-style: none;
     background-color: ${colorNeutralBackground1};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
     padding: 0 ${spacingHorizontalM};
-    min-width: 96px;
     border-radius: ${borderRadiusMedium};
     font-size: ${fontSizeBase300};
     font-family: ${fontFamilyBase};
@@ -309,10 +309,4 @@ export const styles = css`
     color: ${colorNeutralForegroundDisabled};
     cursor: not-allowed;
   }
-`.withBehaviors(
-  forcedColorsStylesheetBehavior(css`
-    :host([appearance='transparent']:hover) .control {
-      border-color: Highlight;
-    }
-  `),
-);
+`;
