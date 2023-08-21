@@ -1,8 +1,8 @@
 import * as React from 'react';
-import parse from 'html-react-parser';
+import { default as parse } from 'html-react-parser';
 import { Steps, StoryWright } from 'storywright';
 import { BadgeDefinition, FluentDesignSystem } from '@fluentui/web-components';
-import { DARK_MODE, getStoryVariant } from '../../utilities/WCThemeDecorator';
+import { DARK_MODE, getStoryVariant } from '../../utilities/WCThemeDecorator.js';
 
 BadgeDefinition.define(FluentDesignSystem.registry);
 
