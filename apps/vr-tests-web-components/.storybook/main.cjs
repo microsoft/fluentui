@@ -43,7 +43,7 @@ module.exports = /** @type {import('../../../.storybook/main').StorybookBaseConf
     config.plugins = config.plugins ?? [];
 
     config.resolve.extensionAlias = {
-      '.js': ['.js', '.ts'],
+      '.js': ['.js', '.ts', '.tsx'],
       '.mjs': ['.mjs', '.mts'],
     };
     config.resolve.extensions.push(...['.ts', '.js']);
