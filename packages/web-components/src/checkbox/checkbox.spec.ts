@@ -3,7 +3,7 @@ import type { Locator, Page } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
 import type { Checkbox } from './checkbox.js';
 
-test.describe.only('Checkbox', () => {
+test.describe('Checkbox', () => {
   let page: Page;
   let element: Locator;
   let root: Locator;
