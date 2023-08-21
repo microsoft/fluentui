@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Make year picker react to go to today.",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

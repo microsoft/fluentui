@@ -9,8 +9,9 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { Input } from '@fluentui/react-input';
-import { InputState } from '@fluentui/react-input';
+import type { InputProps } from '@fluentui/react-input';
+import type { InputSlots } from '@fluentui/react-input';
+import type { InputState } from '@fluentui/react-input';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -25,17 +26,15 @@ export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 
 // @public
-export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
+export type SearchBoxProps = Omit<ComponentProps<Partial<SearchBoxSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & InputProps;
 
 // @public (undocumented)
-export type SearchBoxSlots = {
-    root: NonNullable<Slot<typeof Input>>;
+export type SearchBoxSlots = InputSlots & {
     dismiss?: Slot<'span'>;
-    contentAfter?: Slot<'span'>;
 };
 
 // @public
-export type SearchBoxState = ComponentState<SearchBoxSlots> & Required<Pick<InputState, 'size'>> & Required<Pick<SearchBoxProps, 'disabled'>> & {
+export type SearchBoxState = ComponentState<SearchBoxSlots> & InputState & Required<Pick<InputState, 'size'>> & Required<Pick<SearchBoxProps, 'disabled'>> & {
     focused: boolean;
 };
 

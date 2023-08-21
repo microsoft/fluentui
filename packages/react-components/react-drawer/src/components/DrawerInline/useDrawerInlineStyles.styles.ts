@@ -23,10 +23,10 @@ const useDrawerRootStyles = makeStyles({
   },
 
   /* Separator */
-  separatorLeft: {
+  separatorStart: {
     ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
   },
-  separatorRight: {
+  separatorEnd: {
     ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
   },
 });
@@ -39,10 +39,10 @@ const useDrawerMotionStyles = makeStyles({
   },
 
   /* Hidden */
-  hiddenLeft: {
+  hiddenStart: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
   },
-  hiddenRight: {
+  hiddenEnd: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar})), 0, 0)`,
   },
 
@@ -67,23 +67,23 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
       return undefined;
     }
 
-    return state.position === 'left' ? rootStyles.separatorLeft : rootStyles.separatorRight;
-  }, [state.position, state.separator, rootStyles.separatorRight, rootStyles.separatorLeft]);
+    return state.position === 'start' ? rootStyles.separatorStart : rootStyles.separatorEnd;
+  }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
 
   const motionClasses = React.useMemo(() => {
     return mergeClasses(
       rootMotionStyles.root,
       rootMotionStyles.root,
       state.size && durationStyles[state.size],
-      !state.motion.isActive() && state.position === 'left'
-        ? rootMotionStyles.hiddenLeft
-        : rootMotionStyles.hiddenRight,
+      !state.motion.isActive() && state.position === 'start'
+        ? rootMotionStyles.hiddenStart
+        : rootMotionStyles.hiddenEnd,
       state.motion.isActive() && rootMotionStyles.visible,
     );
   }, [
     durationStyles,
-    rootMotionStyles.hiddenLeft,
-    rootMotionStyles.hiddenRight,
+    rootMotionStyles.hiddenStart,
+    rootMotionStyles.hiddenEnd,
     rootMotionStyles.root,
     rootMotionStyles.visible,
     state.motion,

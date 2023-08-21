@@ -4,9 +4,9 @@ export type DrawerBaseProps = {
   /**
    * Position of the drawer.
    *
-   * @default 'left'
+   * @default 'start'
    */
-  position?: 'left' | 'right';
+  position?: 'start' | 'end';
 
   /**
    * Size of the drawer.

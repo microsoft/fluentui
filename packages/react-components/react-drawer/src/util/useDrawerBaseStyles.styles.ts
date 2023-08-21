@@ -40,11 +40,11 @@ export const useDrawerBaseStyles = makeStyles({
   },
 
   /* Positioning */
-  left: {
+  start: {
     left: 0,
     right: 'auto',
   },
-  right: {
+  end: {
     right: 0,
     left: 'auto',
   },
