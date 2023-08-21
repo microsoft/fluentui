@@ -538,7 +538,7 @@ exports[`UnifiedPeoplePicker renders correctly with selected and suggested items
                               }
                           onError={[Function]}
                           onLoad={[Function]}
-                          src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/office-ui-fabric-react-assets/persona-female.png"
+                          src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-female.png"
                         />
                       </div>
                       <div

@@ -34,7 +34,7 @@ export const Size = () => {
 
   return (
     <div>
-      <DrawerOverlay size={size} position="right" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
+      <DrawerOverlay size={size} position="end" open={open} onOpenChange={(_, state) => setOpen(state.open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={

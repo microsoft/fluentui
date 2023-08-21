@@ -2,11 +2,14 @@ import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SearchBoxSlots, SearchBoxState } from './SearchBox.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import { useInputStyles_unstable } from '@fluentui/react-input';
 
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots> = {
   root: 'fui-SearchBox',
   dismiss: 'fui-SearchBox__dismiss',
   contentAfter: 'fui-SearchBox__contentAfter',
+  contentBefore: 'fui-SearchBox__contentBefore',
+  input: 'fui-SearchBox__input',
 };
 
 /**
@@ -98,7 +101,7 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   const dismissStyles = useDismissStyles();
 
   state.root.className = mergeClasses(searchBoxClassNames.root, rootStyles[size], state.root.className);
-  state.root.input!.className = rootStyles.input;
+  state.input.className = mergeClasses(searchBoxClassNames.input, rootStyles.input, state.input.className);
 
   if (state.dismiss) {
     state.dismiss.className = mergeClasses(
@@ -109,6 +112,10 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
 
       state.dismiss.className,
     );
+  }
+
+  if (state.contentBefore) {
+    state.contentBefore.className = mergeClasses(searchBoxClassNames.contentBefore, state.contentBefore.className);
   }
 
   if (state.contentAfter) {
@@ -123,6 +130,8 @@ export const useSearchBoxStyles_unstable = (state: SearchBoxState): SearchBoxSta
   } else if (state.dismiss) {
     state.dismiss.className = mergeClasses(state.dismiss.className, contentAfterStyles.contentAfter);
   }
+
+  useInputStyles_unstable(state);
 
   return state;
 };

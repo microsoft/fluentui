@@ -1,26 +1,26 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Input, InputState } from '@fluentui/react-input';
+import type { InputProps, InputSlots, InputState } from '@fluentui/react-input';
 
-export type SearchBoxSlots = {
-  // Root of the component, wrapping the inputs
-  root: NonNullable<Slot<typeof Input>>;
-
+export type SearchBoxSlots = InputSlots & {
   // Last element in the input, within the input border
   dismiss?: Slot<'span'>;
-
-  // Element after the input text, within the input border
-  contentAfter?: Slot<'span'>;
 };
 
 /**
  * SearchBox Props
  */
-export type SearchBoxProps = ComponentProps<SearchBoxSlots>;
+export type SearchBoxProps = Omit<
+  ComponentProps<Partial<SearchBoxSlots>, 'input'>,
+  // `children` is unsupported. The rest of these native props have customized definitions.
+  'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
+> &
+  InputProps;
 
 /**
  * State used in rendering SearchBox
  */
 export type SearchBoxState = ComponentState<SearchBoxSlots> &
+  InputState &
   Required<Pick<InputState, 'size'>> &
   Required<Pick<SearchBoxProps, 'disabled'>> & {
     focused: boolean;

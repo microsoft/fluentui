@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tree",
-  "version": "9.0.1",
+  "version": "9.0.2",
   "description": "Tree component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -25,6 +25,9 @@
     "e2e:local": "cypress open --component"
   },
   "devDependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "*",
@@ -35,7 +38,7 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.3",
     "@fluentui/react-aria": "^9.3.30",
-    "@fluentui/react-avatar": "^9.5.21",
+    "@fluentui/react-avatar": "^9.5.22",
     "@fluentui/react-button": "^9.3.31",
     "@fluentui/react-checkbox": "^9.1.32",
     "@fluentui/react-context-selector": "^9.1.28",
