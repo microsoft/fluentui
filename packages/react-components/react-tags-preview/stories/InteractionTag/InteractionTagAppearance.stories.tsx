@@ -31,7 +31,7 @@ export const Appearance = () => {
         <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           brand
         </InteractionTagPrimary>
-        <InteractionTagSecondary aria-label={`brand, remove`} />
+        <InteractionTagSecondary aria-label="brand, remove" />
       </InteractionTag>
     </div>
   );
