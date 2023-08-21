@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
-import { fixtureURL } from '../helpers.tests.js';
 import { Direction } from '@microsoft/fast-web-utilities';
+import { fixtureURL } from '../helpers.tests.js';
 import type { Slider } from './slider.js';
 
 test.describe('Slider', () => {
