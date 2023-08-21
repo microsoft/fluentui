@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { checkboxTemplate } from '@microsoft/fast-foundation';
+import { checkboxTemplate } from '@microsoft/fast-foundation/checkbox.js';
 
 import type { Checkbox } from './checkbox.js';
 

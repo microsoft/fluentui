@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTAccordionItem } from '@microsoft/fast-foundation';
+import { FASTAccordionItem } from '@microsoft/fast-foundation/accordion-item.js';
 import { AccordionItemExpandIconPosition, AccordionItemSize } from './accordion-item.options.js';
 
 /**

@@ -1,5 +1,5 @@
 import type { ElementViewTemplate } from '@microsoft/fast-element';
-import { progressRingTemplate } from '@microsoft/fast-foundation';
+import { progressRingTemplate } from '@microsoft/fast-foundation/progress-ring.js';
 import { Spinner } from './spinner.js';
 
 export const template: ElementViewTemplate<Spinner> = progressRingTemplate({

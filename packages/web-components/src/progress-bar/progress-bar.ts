@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTProgress } from '@microsoft/fast-foundation';
+import { FASTProgress } from '@microsoft/fast-foundation/progress.js';
 import type { ProgressBarShape, ProgressBarThickness, ProgressBarValidationState } from './progress-bar.options.js';
 
 /**

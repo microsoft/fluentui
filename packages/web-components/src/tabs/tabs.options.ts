@@ -1,5 +1,5 @@
-import { ValuesOf } from '@microsoft/fast-foundation';
-import { TabsOrientation } from '@microsoft/fast-foundation';
+import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
 
 export const TabsAppearance = {
   subtle: 'subtle',
