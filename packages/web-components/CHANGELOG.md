@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 09 Aug 2023 04:16:56 GMT and should not be manually modified.
+This log was last generated on Tue, 15 Aug 2023 04:16:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.29)
+
+Tue, 15 Aug 2023 04:16:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.28..@fluentui/web-components_v3.0.0-alpha.29)
+
+### Changes
+
+- fix(web-components): update latest versions of fast packages and fix unallowed attributes issue for fluent-divider ([PR #28837](https://github.com/microsoft/fluentui/pull/28837) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.28](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.28)
 
