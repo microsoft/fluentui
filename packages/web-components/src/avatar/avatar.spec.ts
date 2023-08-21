@@ -84,6 +84,7 @@ test.describe('Avatar Component', () => {
 
   test('should render without crashing', async () => {
     await page.waitForSelector('fluent-avatar');
+    await expect(element).toBeVisible();
   });
 
   test('When no name value is set, should render with custom initials based on the provided initials value', async () => {
@@ -173,7 +174,7 @@ test.describe('Avatar Component', () => {
     await expect(element).toHaveAttribute('data-color', `${generatedColor}`);
   });
 
-  for (const [attribute, value] of Object.entries(colorAttributes)) {
+  for (const [, value] of Object.entries(colorAttributes)) {
     test(`should set the color attribute to \`${value}\` on the internal control`, async () => {
       await element.evaluate((node: Avatar, colorValue: string) => {
         node.color = colorValue as AvatarColor;
@@ -182,7 +183,7 @@ test.describe('Avatar Component', () => {
       await expect(element).toHaveAttribute('color', `${value}`);
     });
   }
-  for (const [attribute, value] of Object.entries(sizeAttributes)) {
+  for (const [, value] of Object.entries(sizeAttributes)) {
     test(`should set the size attribute to \`${value}\` on the internal control`, async () => {
       await element.evaluate((node: Avatar, sizeValue: number) => {
         node.size = sizeValue as AvatarSize;
@@ -191,7 +192,7 @@ test.describe('Avatar Component', () => {
       await expect(element).toHaveAttribute('size', `${value}`);
     });
   }
-  for (const [attribute, value] of Object.entries(appearanceAttributes)) {
+  for (const [, value] of Object.entries(appearanceAttributes)) {
     test(`should set and reflect the appearance attribute to \`${value}\` on the internal control`, async () => {
       await element.evaluate((node: Avatar, appearanceValue: string) => {
         node.appearance = appearanceValue as AvatarAppearance;
