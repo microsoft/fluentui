@@ -82,6 +82,11 @@ test.describe('Avatar Component', () => {
     _128: 128,
   };
 
+  test('should render without crashing', async () => {
+    await page.waitForSelector('fluent-avatar');
+    await expect(element).toBeVisible();
+  });
+
   test('When no name value is set, should render with custom initials based on the provided initials value', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
