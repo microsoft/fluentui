@@ -1,9 +1,9 @@
 import * as React from 'react';
-import parse from 'html-react-parser';
+import { default as parse } from 'html-react-parser';
 import { Steps, StoryWright } from 'storywright';
 import { TextInputDefinition, LabelDefinition, FluentDesignSystem } from '@fluentui/web-components';
 import { tokens } from '@fluentui/tokens';
-import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator';
+import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
 TextInputDefinition.define(FluentDesignSystem.registry);
 LabelDefinition.define(FluentDesignSystem.registry);
