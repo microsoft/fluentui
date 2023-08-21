@@ -78,7 +78,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveJSProperty('showZero', true);
 
-    let shadowContent = await page.evaluate(() => {
+    const shadowContent = await page.evaluate(() => {
       const element = document.querySelector('fluent-counter-badge');
       return element?.shadowRoot?.textContent;
     });
@@ -94,7 +94,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveJSProperty('showZero', false);
 
-    let shadowContent = await page.evaluate(() => {
+    const shadowContent = await page.evaluate(() => {
       const element = document.querySelector('fluent-counter-badge');
       return element?.shadowRoot?.textContent;
     });
