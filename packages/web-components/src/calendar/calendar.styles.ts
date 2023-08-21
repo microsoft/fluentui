@@ -3,23 +3,13 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorBrandBackground,
-  colorBrandBackground2,
   colorBrandBackgroundInvertedHover,
-  colorBrandBackgroundInvertedPressed,
   colorBrandBackgroundInvertedSelected,
-  colorBrandStroke1,
-  colorBrandStroke2,
-  colorCompoundBrandBackground,
-  colorNeutralBackground1,
-  colorNeutralBackground4,
   colorNeutralForeground1,
   colorNeutralForeground1Static,
-  colorNeutralForeground2,
   colorNeutralForeground2Selected,
   colorNeutralForeground3,
-  colorNeutralForeground4,
   colorNeutralForegroundDisabled,
-  colorNeutralForegroundInverted,
   colorNeutralForegroundStaticInverted,
   colorTransparentBackground,
   fontFamilyBase,
@@ -39,7 +29,6 @@ import {
 } from '../theme/design-tokens.js';
 
 export const styles = css`
-  ${display('inline')}
   :host .control {
     display: flex;
   }
@@ -75,7 +64,6 @@ export const styles = css`
   :host .secondary-panel-body {
     height: 168px;
     padding: ${spacingVerticalS} ${spacingHorizontalM} ${spacingVerticalM};
-    box-sizing: border-box;
   }
   :host .secondary-panel-container {
     display: flex;
@@ -84,7 +72,6 @@ export const styles = css`
   }
   :host .title,
   .secondary-panel-title {
-    position: inline;
     padding: ${spacingVerticalXS} ${spacingHorizontalS};
     font: ${fontWeightBold} ${fontSizeBase200} / ${lineHeightBase200} ${fontFamilyBase};
     color: ${colorNeutralForeground1};
@@ -251,12 +238,12 @@ export const styles = css`
     justify-content: flex-end;
     padding: 0 ${spacingHorizontalM} ${spacingHorizontalM};
   }
-  :host .first-transition-row.animated {
+  :host .first-transition-row-animated {
     animation: FadeOut, SlideUpOut20, transitionRowDisappearance;
     animation-duration: 0.367s;
     animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
   }
-  :host .last-transition-row.animated {
+  :host .last-transition-row-animated {
     animation: FadeOut, SlideDownOut20, transitionRowDisappearance;
     animation-duration: 0.367s;
     animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);

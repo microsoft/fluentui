@@ -229,6 +229,7 @@ export class Calendar extends FASTCalendar {
       });
     }
 
+    //Emits an event when the selected dates attribute is updated
     if (name === 'selected-dates') {
       this.$emit('selectedDatesChanged');
     }
@@ -285,16 +286,17 @@ export class Calendar extends FASTCalendar {
    * @public
    */
   public handleSwitchMonth(month: number, year: number) {
-    // // TODO: For range selection, instead of clearing out the selected dates,
-    // // filter them by current month
-    // this.selectedDates = '';
+    // TODO: For range selection, instead of clearing out the selected dates,
+    // filter them by current month
 
+    // Check which transition to use for the primary panel
     if ((month < this.month && year == this.year) || year < this.year) {
       this.prevMonthTransition();
     } else if ((month > this.month && year == this.year) || year > this.year) {
       this.nextMonthTransition();
     }
 
+    // Check which transition to use for the secondary panel
     if (
       (year < this.monthPickerYear && !this.yearPickerOpen) ||
       (year < this.getYearPickerInfo().decadeStart && this.yearPickerOpen)
@@ -314,6 +316,11 @@ export class Calendar extends FASTCalendar {
     this.yearPickerDecade = year - (year % 10);
   }
 
+  /**
+   * Moves the secondary panel to the previous or next year and/or decade
+   * @param direction - direction to move the secondary panel: previous or next
+   * @public
+   */
   public handleSwitchSecondaryPanel(direction: string) {
     if (direction === 'previous') {
       this.yearPickerOpen
@@ -326,77 +333,6 @@ export class Calendar extends FASTCalendar {
     }
 
     this.secondaryPanelTransition(direction);
-  }
-
-  private prevMonthTransition() {
-    Updates.enqueue(() => {
-      const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
-
-      rows?.forEach(row => row.classList.add('animated-up'));
-
-      const firstTransitionRow = this.shadowRoot?.querySelector('.week-days')?.nextElementSibling as HTMLElement;
-
-      firstTransitionRow.classList.add('first-transition-row');
-      firstTransitionRow.classList.add('animated');
-
-      setTimeout(() => {
-        firstTransitionRow.classList.remove('animated');
-        rows?.forEach(row => row.classList.remove('animated-up'));
-      }, 367);
-    });
-  }
-
-  private nextMonthTransition() {
-    Updates.enqueue(() => {
-      const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
-
-      rows?.forEach(row => row.classList.add('animated-down'));
-
-      const lastTransitionRow = this.shadowRoot?.querySelector('.week-days')?.parentElement
-        ?.lastElementChild as HTMLElement;
-
-      lastTransitionRow.classList.add('last-transition-row');
-      lastTransitionRow.classList.add('animated');
-
-      setTimeout(() => {
-        lastTransitionRow.classList.remove('animated');
-        rows?.forEach(row => row.classList.remove('animated-down'));
-      }, 367);
-    });
-  }
-
-  private secondaryPanelTransition(direction: string) {
-    Updates.enqueue(() => {
-      const secondaryPanelRows =
-        this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.secondary-panel-row'));
-
-      if (direction === 'previous') {
-        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-up'));
-      } else if (direction === 'next') {
-        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-down'));
-      }
-
-      setTimeout(() => {
-        if (direction === 'previous') {
-          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-up'));
-        } else if (direction === 'next') {
-          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-down'));
-        }
-      }, 367);
-    });
-  }
-
-  private nextSecondaryPanelTransition() {
-    Updates.enqueue(() => {
-      const secondaryPanelRows =
-        this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.secondary-panel-row'));
-
-      secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-up'));
-
-      setTimeout(() => {
-        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-up'));
-      }, 367);
-    });
   }
 
   /**
@@ -801,5 +737,77 @@ export class Calendar extends FASTCalendar {
     }
 
     return true;
+  }
+
+  /**
+   * Handles CSS animation classes for previous direction transitions on the primary panel
+   * @private
+   */
+  private prevMonthTransition() {
+    Updates.enqueue(() => {
+      const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
+
+      rows?.forEach(row => row.classList.add('animated-up'));
+
+      const firstTransitionRow = this.shadowRoot?.querySelector('.week-days')?.nextElementSibling as HTMLElement;
+
+      firstTransitionRow.classList.add('first-transition-row-animated');
+
+      //The timeout for the animation is set to the duration of the CSS animation as specified in the stylesheet
+      setTimeout(() => {
+        firstTransitionRow.classList.remove('first-transition-row-animated');
+        rows?.forEach(row => row.classList.remove('animated-up'));
+      }, 367);
+    });
+  }
+
+  /**
+   * Handles CSS animation classes for next direction transitions on the primary panel
+   * @private
+   */
+  private nextMonthTransition() {
+    Updates.enqueue(() => {
+      const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
+
+      rows?.forEach(row => row.classList.add('animated-down'));
+
+      const lastTransitionRow = this.shadowRoot?.querySelector('.week-days')?.parentElement
+        ?.lastElementChild as HTMLElement;
+
+      lastTransitionRow.classList.add('last-transition-row-animated');
+
+      //The timeout for the animation is set to the duration of the CSS animation as specified in the stylesheet
+      setTimeout(() => {
+        lastTransitionRow.classList.remove('last-transition-row-animated');
+        rows?.forEach(row => row.classList.remove('animated-down'));
+      }, 367);
+    });
+  }
+
+  /**
+   * Handles CSS animation classes for transitions on the secondary panel
+   * @param - direction for the transition: previous or next
+   * @private
+   */
+  private secondaryPanelTransition(direction: string) {
+    Updates.enqueue(() => {
+      const secondaryPanelRows =
+        this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.secondary-panel-row'));
+
+      if (direction === 'previous') {
+        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-up'));
+      } else if (direction === 'next') {
+        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-down'));
+      }
+
+      //The timeout for the animation is set to the duration of the CSS animation as specified in the stylesheet
+      setTimeout(() => {
+        if (direction === 'previous') {
+          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-up'));
+        } else if (direction === 'next') {
+          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-down'));
+        }
+      }, 367);
+    });
   }
 }
