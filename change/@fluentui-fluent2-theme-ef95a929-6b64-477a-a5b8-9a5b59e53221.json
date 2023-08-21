@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Ensure fluent2 dark theme isInverted:true, set primary fluent2darktheme button color to match light theme",
-  "packageName": "@fluentui/fluent2-theme",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

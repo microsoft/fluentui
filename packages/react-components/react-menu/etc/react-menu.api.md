@@ -24,7 +24,13 @@ import type { TriggerProps } from '@fluentui/react-utilities';
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
 // @public
+export const dispatchMenuEnterEvent: (el: HTMLElement, nativeEvent: MouseEvent) => void;
+
+// @public
 export const Menu: React_2.FC<MenuProps>;
+
+// @public
+export const MENU_ENTER_EVENT = "fuimenuenter";
 
 // @public (undocumented)
 export type MenuCheckedValueChangeData = {
@@ -235,6 +241,7 @@ export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuLi
     selectRadio: SelectableHandler;
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
+    hasMenuContext?: boolean;
 };
 
 // @public

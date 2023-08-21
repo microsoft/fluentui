@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Tue, 20 Jun 2023 12:38:56 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jul 2023 18:27:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.1)
+
+Thu, 20 Jul 2023 18:27:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.17.0..@fluentui/react-conformance_v0.17.1)
+
+### Patches
+
+- fix: add @swc/helpers to deps instead of tslib as we use swc for transpilation ([PR #28599](https://github.com/microsoft/fluentui/pull/28599) by martinhochel@microsoft.com)
 
 ## [0.17.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.0)
 

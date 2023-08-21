@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
+This log was last generated on Wed, 16 Aug 2023 17:41:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0)
+
+Wed, 16 Aug 2023 17:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.16..@fluentui/react-jsx-runtime_v9.0.0)
+
+### Patches
+
+- chore: release stable version ([PR #28880](https://github.com/microsoft/fluentui/pull/28880) by bernardo.sunderhus@gmail.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.16)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.15..@fluentui/react-jsx-runtime_v9.0.0-alpha.16)
+
+### Changes
+
+- feat: supports new automatic JSX runtime ([PR #28810](https://github.com/microsoft/fluentui/pull/28810) by bernardo.sunderhus@gmail.com)
+
+## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.15)
+
+Fri, 11 Aug 2023 12:14:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.13..@fluentui/react-jsx-runtime_v9.0.0-alpha.15)
+
+### Changes
+
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+
+## [9.0.0-alpha.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.13)
+
+Fri, 04 Aug 2023 08:52:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.11..@fluentui/react-jsx-runtime_v9.0.0-alpha.13)
+
+### Changes
+
+- chore: update createElement to support new slot methods ([PR #28373](https://github.com/microsoft/fluentui/pull/28373) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
 
 ## [9.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.11)
 

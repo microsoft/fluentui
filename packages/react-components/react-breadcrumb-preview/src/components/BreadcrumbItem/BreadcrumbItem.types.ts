@@ -3,6 +3,11 @@ import type { BreadcrumbProps } from '../Breadcrumb';
 
 export type BreadcrumbItemSlots = {
   root: Slot<'li'>;
+
+  /**
+   * Icon that renders before the `children`.
+   */
+  icon?: Slot<'span'>;
 };
 
 /**

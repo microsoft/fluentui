@@ -7,16 +7,10 @@ import {
   BreadcrumbButton,
   BreadcrumbLink,
 } from '@fluentui/react-breadcrumb-preview';
-import { RadioGroup, Radio, Label, ButtonProps } from '@fluentui/react-components';
+import { RadioGroup, Radio, Label } from '@fluentui/react-components';
 type Item = {
   key: number;
   value: string;
-  buttonProps?: {
-    'aria-label'?: string;
-    icon?: ButtonProps['icon'];
-    disabled?: boolean;
-    iconPosition?: 'before' | 'after';
-  };
 };
 const items: Item[] = [
   {

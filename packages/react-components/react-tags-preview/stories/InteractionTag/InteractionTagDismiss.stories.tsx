@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Avatar, makeStyles } from '@fluentui/react-components';
-import { Calendar3Day20Regular } from '@fluentui/react-icons';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -16,16 +16,25 @@ export const Dismiss = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <InteractionTag dismissible>Primary text</InteractionTag>
-      <InteractionTag dismissible icon={<Calendar3Day20Regular />}>
-        Primary text
+      <InteractionTag>
+        <InteractionTagPrimary hasSecondaryAction>Primary text</InteractionTagPrimary>
+        <InteractionTagSecondary />
       </InteractionTag>
-      <InteractionTag
-        dismissible
-        media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
-        secondaryText="Secondary text"
-      >
-        Primary text
+      <InteractionTag>
+        <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
+          Primary text
+        </InteractionTagPrimary>
+        <InteractionTagSecondary />
+      </InteractionTag>
+      <InteractionTag>
+        <InteractionTagPrimary
+          media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
+          secondaryText="Secondary text"
+          hasSecondaryAction
+        >
+          Primary text
+        </InteractionTagPrimary>
+        <InteractionTagSecondary />
       </InteractionTag>
     </div>
   );
@@ -35,7 +44,7 @@ Dismiss.storyName = 'Dismiss';
 Dismiss.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can have a button that dismisses it',
+      story: 'An InteractionTag can have a button that dismisses it',
     },
   },
 };
