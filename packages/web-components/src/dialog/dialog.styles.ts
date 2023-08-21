@@ -1,14 +1,16 @@
 import {
   borderRadiusXLarge,
+  colorBackgroundOverlay,
   colorNeutralBackground1,
+  colorNeutralForeground1,
   colorTransparentStroke,
   fontFamilyBase,
   fontSizeBase300,
-  fontSizeBase400,
+  fontSizeBase500,
   fontWeightRegular,
   fontWeightSemibold,
   lineHeightBase300,
-  lineHeightBase400,
+  lineHeightBase500,
   shadow64,
   spacingHorizontalS,
   spacingHorizontalXL,
@@ -38,7 +40,7 @@ export const styles = css`
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
+    background: ${colorBackgroundOverlay};
     touch-action: none;
   }
 
@@ -75,21 +77,33 @@ export const styles = css`
     box-sizing: border-box;
     display: grid;
     grid-template-rows: auto 1fr auto;
-    grid-template-columns: 1fr 1fr auto;
+    grid-template-columns: auto 1fr 76px;
     overflow: unset;
     max-height: calc(100vh - 48px);
   }
 
+  :host([alert]) .root,
+  :host([modal]) .root {
+    grid-template-columns: auto 1fr;
+  }
+
+  :host([alert]) .header,
+  :host([modal]) .header {
+    padding-right: ${spacingVerticalXXL};
+  }
+
   .header {
-    grid-column-start: 1;
-    grid-row-end: 1;
-    grid-row-start: 1;
+    grid-column: 1 / 3;
+    grid-row: 1 / 1;
     padding-bottom: ${spacingVerticalXS};
-    font-size: ${fontSizeBase400};
-    line-height: ${lineHeightBase400};
+    font-size: ${fontSizeBase500};
+    line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
     font-family: ${fontFamilyBase};
     padding: ${spacingVerticalXXL} ${spacingHorizontalXS} ${spacingVerticalXS} ${spacingHorizontalXXL};
+    color: ${colorNeutralForeground1};
+    margin-bottom: ${spacingVerticalS};
+    display: inline-block;
     height: fit-content;
   }
 
@@ -110,6 +124,7 @@ export const styles = css`
     padding: 0 ${spacingHorizontalXXL};
     vertical-align: top;
     min-height: 32px;
+    color: ${colorNeutralForeground1};
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     font-weight: ${fontWeightRegular};
@@ -140,10 +155,7 @@ export const styles = css`
       max-width: 100%;
       width: 100vw;
     }
-    .root {
-      max-width: 100vw;
-      grid-template-rows: auto 1fr auto;
-    }
+
     .actions {
       display: flex;
       grid-column-start: 1;
