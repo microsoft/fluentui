@@ -73,7 +73,6 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
   const motionClasses = React.useMemo(() => {
     return mergeClasses(
       rootMotionStyles.root,
-      rootMotionStyles.root,
       state.size && durationStyles[state.size],
       !state.motion.isActive() && state.position === 'start'
         ? rootMotionStyles.hiddenStart
@@ -82,8 +81,8 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     );
   }, [
     durationStyles,
-    rootMotionStyles.hiddenStart,
     rootMotionStyles.hiddenEnd,
+    rootMotionStyles.hiddenStart,
     rootMotionStyles.root,
     rootMotionStyles.visible,
     state.motion,

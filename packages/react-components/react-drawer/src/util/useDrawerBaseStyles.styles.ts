@@ -74,7 +74,7 @@ export const useDrawerBaseStyles = makeStyles({
 
 export const useDrawerDurationStyles = makeStyles({
   small: {
-    transitionDuration: tokens.durationNormal,
+    transitionDuration: tokens.durationGentle,
   },
   medium: {
     transitionDuration: tokens.durationSlow,
