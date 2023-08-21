@@ -61,6 +61,8 @@ export const WithSvg = () =>
     </fluent-divider>
 `);
 
+export const WithSvgRtl = getStoryVariant(WithSvg, RTL);
+
 export const VerticalWithSvg = () =>
   parse(`
   <fluent-divider orientation="vertical">
