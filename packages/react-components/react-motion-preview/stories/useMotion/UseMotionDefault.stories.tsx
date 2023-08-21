@@ -42,9 +42,7 @@ export const Default = () => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const motion = useMotion<HTMLDivElement>({
-    presence: open,
-  });
+  const motion = useMotion<HTMLDivElement>(open);
 
   return (
     <div className={styles.root}>
@@ -52,8 +50,8 @@ export const Default = () => {
         Toggle
       </Button>
 
-      {motion.state !== 'unmounted' && (
-        <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.active && styles.visible)}>
+      {motion.canRender() && (
+        <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.isActive() && styles.visible)}>
           Lorem ipsum
         </div>
       )}
