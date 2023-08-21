@@ -1,4 +1,4 @@
-import { FASTMenuItem, MenuItemRole } from '@microsoft/fast-foundation';
+import { FASTMenuItem, MenuItemRole } from '@microsoft/fast-foundation/menu-item.js';
 
 export type MenuItemColumnCount = 0 | 1 | 2;
 

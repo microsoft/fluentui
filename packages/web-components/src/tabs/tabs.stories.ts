@@ -1,5 +1,5 @@
 import { html } from '@microsoft/fast-element';
-import { TabsOrientation } from '@microsoft/fast-foundation';
+import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Tabs as FluentTabs } from './tabs.js';

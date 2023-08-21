@@ -4,43 +4,43 @@
 
 ```ts
 
-import { AnchorOptions as AnchorButtonOptions } from '@microsoft/fast-foundation';
-import { ButtonOptions } from '@microsoft/fast-foundation';
-import { CSSDesignToken } from '@microsoft/fast-foundation';
-import { DividerOrientation } from '@microsoft/fast-foundation';
-import { DividerRole } from '@microsoft/fast-foundation';
+import type { AnchorOptions as AnchorButtonOptions } from '@microsoft/fast-foundation/anchor.js';
+import type { ButtonOptions } from '@microsoft/fast-foundation/button.js';
+import { CSSDesignToken } from '@microsoft/fast-foundation/design-token.js';
+import { DividerOrientation } from '@microsoft/fast-foundation/divider.js';
+import { DividerRole } from '@microsoft/fast-foundation/divider.js';
 import { ElementStyles } from '@microsoft/fast-element';
 import { ElementViewTemplate } from '@microsoft/fast-element';
-import { FASTAccordion } from '@microsoft/fast-foundation';
-import { FASTAccordionItem } from '@microsoft/fast-foundation';
-import { FASTAnchor } from '@microsoft/fast-foundation';
-import { FASTButton } from '@microsoft/fast-foundation';
-import { FASTCheckbox } from '@microsoft/fast-foundation';
-import { FASTDivider } from '@microsoft/fast-foundation';
+import { FASTAccordion } from '@microsoft/fast-foundation/accordion.js';
+import { FASTAccordionItem } from '@microsoft/fast-foundation/accordion-item.js';
+import { FASTAnchor } from '@microsoft/fast-foundation/anchor.js';
+import { FASTButton } from '@microsoft/fast-foundation/button.js';
+import { FASTCheckbox } from '@microsoft/fast-foundation/checkbox.js';
+import { FASTDivider } from '@microsoft/fast-foundation/divider.js';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
-import { FASTMenu } from '@microsoft/fast-foundation';
-import { FASTMenuItem } from '@microsoft/fast-foundation';
-import { FASTProgress } from '@microsoft/fast-foundation';
-import { FASTProgressRing } from '@microsoft/fast-foundation';
-import { FASTRadio } from '@microsoft/fast-foundation';
-import { FASTRadioGroup } from '@microsoft/fast-foundation';
-import { FASTSlider } from '@microsoft/fast-foundation';
-import { FASTSwitch } from '@microsoft/fast-foundation';
-import { FASTTab } from '@microsoft/fast-foundation';
-import { FASTTabPanel } from '@microsoft/fast-foundation';
-import { FASTTabs } from '@microsoft/fast-foundation';
-import { FASTTextField } from '@microsoft/fast-foundation';
-import { MenuItemRole } from '@microsoft/fast-foundation';
-import { RadioGroupOrientation } from '@microsoft/fast-foundation';
-import { SliderOrientation } from '@microsoft/fast-foundation';
-import { StartEnd } from '@microsoft/fast-foundation';
-import { StartEndOptions } from '@microsoft/fast-foundation';
-import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
-import { TabsOrientation } from '@microsoft/fast-foundation';
-import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
+import { FASTMenu } from '@microsoft/fast-foundation/menu.js';
+import { FASTMenuItem } from '@microsoft/fast-foundation/menu-item.js';
+import { FASTProgress } from '@microsoft/fast-foundation/progress.js';
+import { FASTProgressRing } from '@microsoft/fast-foundation/progress-ring.js';
+import { FASTRadio } from '@microsoft/fast-foundation/radio.js';
+import { FASTRadioGroup } from '@microsoft/fast-foundation/radio-group.js';
+import { FASTSlider } from '@microsoft/fast-foundation/slider.js';
+import { FASTSwitch } from '@microsoft/fast-foundation/switch.js';
+import { FASTTab } from '@microsoft/fast-foundation/tab.js';
+import { FASTTabPanel } from '@microsoft/fast-foundation/tab-panel.js';
+import { FASTTabs } from '@microsoft/fast-foundation/tabs.js';
+import { FASTTextField } from '@microsoft/fast-foundation/text-field.js';
+import { MenuItemRole } from '@microsoft/fast-foundation/menu-item.js';
+import { RadioGroupOrientation } from '@microsoft/fast-foundation/radio-group.js';
+import { SliderOrientation } from '@microsoft/fast-foundation/slider.js';
+import { StartEnd } from '@microsoft/fast-foundation/patterns.js';
+import { StartEndOptions } from '@microsoft/fast-foundation/patterns.js';
+import type { StaticallyComposableHTML } from '@microsoft/fast-foundation/utilities.js';
+import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
+import { TextFieldType as TextInputType } from '@microsoft/fast-foundation/text-field.js';
 import type { Theme } from '@fluentui/tokens';
-import { ValuesOf } from '@microsoft/fast-foundation';
+import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 // @public
 export class Accordion extends FASTAccordion {
