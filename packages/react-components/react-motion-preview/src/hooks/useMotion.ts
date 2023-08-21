@@ -73,7 +73,7 @@ const useFirstMountCondition = (condition: boolean): boolean => {
  *
  * Hook to manage the presence of an element in the DOM based on its CSS transition/animation state.
  *
- * @param present - Whether the element should be present in the DOM
+ * @param presence - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
 function useMotionPresence<Element extends HTMLElement>(
@@ -233,6 +233,8 @@ const stringifyShorthand = <Element extends HTMLElement>(value: MotionShorthand<
  * since this can lead breaking the rules of hooks.
  *
  * It also return a boolean indicating whether the shorthand is a motion object.
+ *
+ * @param shorthand - Motion shorthand to configure the hook
  */
 export function useIsMotion<Element extends HTMLElement>(
   shorthand: MotionShorthand<Element>,
