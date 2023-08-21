@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Thu, 17 Aug 2023 13:49:56 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.2)
+
+Mon, 21 Aug 2023 11:38:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.0.1..@fluentui/react-tree_v9.0.2)
+
+### Patches
+
+- chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+- fix: stabilize `handleActionsRef` created by TreeItem ([PR #28896](https://github.com/microsoft/fluentui/pull/28896) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.22 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
 
 ## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.0.1)
 

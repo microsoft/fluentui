@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: stabilize `handleActionsRef` created by TreeItem",
-  "packageName": "@fluentui/react-tree",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
