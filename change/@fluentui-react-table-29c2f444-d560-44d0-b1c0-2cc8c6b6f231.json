@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "user can disable the default header button click trigger column sort while keep datagrid sorting feature",
+  "packageName": "@fluentui/react-table",
+  "email": "email not defined",
+  "dependentChangeType": "patch"
+}
