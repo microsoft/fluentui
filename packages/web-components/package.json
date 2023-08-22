@@ -130,6 +130,10 @@
     "./toggle-button.js": {
       "types": "./dist/esm/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
+    },
+    "./theme.js": {
+      "types": "./dist/esm/theme/index.d.ts",
+      "default": "./dist/esm/theme/index.js"
     }
   },
   "sideEffects": [
