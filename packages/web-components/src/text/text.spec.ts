@@ -7,12 +7,10 @@ import { TextAlign, TextFont, TextSize, TextWeight } from './text.options.js';
 test.describe('Text Component', () => {
   let page: Page;
   let element: Locator;
-  let root: Locator;
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     element = page.locator('fluent-text');
-    root = page.locator('#root');
     await page.goto(fixtureURL('components-text--text'));
   });
 
@@ -55,6 +53,7 @@ test.describe('Text Component', () => {
 
   test('should render without crashing', async () => {
     await page.waitForSelector('fluent-text');
+    await expect(element).toBeVisible();
   });
 
   test(`should set and reflect and update the nowrap attribute and property on the internal control`, async () => {
@@ -147,7 +146,7 @@ test.describe('Text Component', () => {
     await expect(element).toHaveJSProperty('block', false);
   });
 
-  for (const [attribute, value] of Object.entries(sizeAttributes)) {
+  for (const [, value] of Object.entries(sizeAttributes)) {
     test(`should set and reflect the size attribute to \`${value}\` on the internal control`, async () => {
       await element.evaluate((node: Text, sizeValue: string) => {
         node.size = sizeValue as TextSize;
@@ -157,7 +156,7 @@ test.describe('Text Component', () => {
       await expect(element).toHaveAttribute('size', `${value}`);
     });
   }
-  for (const [attribute, value] of Object.entries(weightAttributes)) {
+  for (const [, value] of Object.entries(weightAttributes)) {
     test(`should set and reflect the weight attribute to \`${value}\` on the internal control`, async () => {
       await element.evaluate((node: Text, weightValue: string) => {
         node.weight = weightValue as TextWeight;
@@ -167,7 +166,7 @@ test.describe('Text Component', () => {
       await expect(element).toHaveAttribute('weight', `${value}`);
     });
   }
-  for (const [attribute, value] of Object.entries(alignAttributes)) {
+  for (const [, value] of Object.entries(alignAttributes)) {
     test(`should set and reflect the align attribute to \`${value}\` on the internal control`, async () => {
       await element.evaluate((node: Text, alignValue: string) => {
         node.align = alignValue as TextAlign;
@@ -177,7 +176,7 @@ test.describe('Text Component', () => {
       await expect(element).toHaveAttribute('align', `${value}`);
     });
   }
-  for (const [attribute, value] of Object.entries(fontAttributes)) {
+  for (const [, value] of Object.entries(fontAttributes)) {
     test(`should set and reflect the font attribute to \`${value}\` on the internal control`, async () => {
       await element.evaluate((node: Text, fontValue: string) => {
         node.font = fontValue as TextFont;
