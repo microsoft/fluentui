@@ -11,7 +11,7 @@
     "**/*.test.ts",
     "**/*.test.tsx",
     "**/*.d.ts",
-    "src/components/AnimatePresence/testing/**/*.ts",
-    "src/components/AnimatePresence/testing/**/*.tsx"
+    "./src/testing/**/*.ts",
+    "./src/testing/**/*.tsx"
   ]
 }

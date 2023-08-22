@@ -10,7 +10,7 @@
     "types": ["static-assets", "environment"]
   },
   "exclude": [
-    "src/components/AnimatePresence/testing/**",
+    "./src/testing/**",
     "**/*.spec.ts",
     "**/*.spec.tsx",
     "**/*.test.ts",
