@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { DialogSurfaceContextValue } from '../../contexts';
-import { MotionShorthand, MotionState } from '../../../../react-motion-preview/src/index';
+import { MotionShorthand, MotionState } from '@fluentui/react-motion-preview';
 
 export type DialogBackdropProps = ExtractSlotProps<Slot<'div'>> & {
   motion?: MotionShorthand<HTMLDivElement>;

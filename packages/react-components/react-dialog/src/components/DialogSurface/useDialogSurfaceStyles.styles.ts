@@ -10,7 +10,7 @@ import {
   useDialogContext_unstable,
 } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
-import { useMotionStyles } from '@fluentui/react-motion-preview/src/index';
+import { useMotionStyles } from '@fluentui/react-motion-preview';
 
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
   root: 'fui-DialogSurface',
