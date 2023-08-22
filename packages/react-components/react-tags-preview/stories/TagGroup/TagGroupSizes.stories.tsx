@@ -26,7 +26,7 @@ export const Sizes = () => {
       {sizes.map(size => (
         <div key={size}>
           {`${size}: `}
-          <TagGroup size={size}>
+          <TagGroup size={size} aria-label="Sizes">
             <Tag dismissible media={<Avatar name="Katri Athokas" />}>
               {size}
             </Tag>

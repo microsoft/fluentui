@@ -52,7 +52,11 @@ export const Dismiss = () => {
     setItems([...items].filter(item => item.value !== dismissedTagValue));
   };
 
-  return <TagGroup onDismiss={removeItem}>{items.map(item => item.tag)}</TagGroup>;
+  return (
+    <TagGroup onDismiss={removeItem} aria-label="Dismiss">
+      {items.map(item => item.tag)}
+    </TagGroup>
+  );
 };
 
 Dismiss.storyName = 'Dismiss';
