@@ -32,8 +32,7 @@ const storyTemplate = html<CalendarStoryArgs>`
   </script>
   <style>
     div.docs-story > div:first-child {
-      height: 285px;
-      width: 472;
+      height: 295px;
     }
     .selected-dates-container {
       font: ${fontWeightRegular} ${fontSizeBase300} / ${lineHeightBase300} ${fontFamilyBase};
