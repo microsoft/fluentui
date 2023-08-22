@@ -120,6 +120,8 @@ export {
 } from './TableCellLayout';
 export type { TableCellLayoutProps, TableCellLayoutSlots, TableCellLayoutState } from './TableCellLayout';
 
+export { DataGridContextProvider, useDataGridContext_unstable } from './contexts/dataGridContext';
+
 export {
   DataGridCell,
   dataGridCellClassNames,
