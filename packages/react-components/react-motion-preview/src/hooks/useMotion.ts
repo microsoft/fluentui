@@ -36,13 +36,13 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
    * Indicates whether the component is currently rendered and visible.
    * Useful to apply CSS transitions only when the element is active.
    */
-  isActive(): boolean;
+  active: boolean;
 
   /**
    * Indicates whether the component can be rendered.
    * This can be used to avoid rendering the component when it is not visible anymore.
    */
-  canRender(): boolean;
+  canRender: boolean;
 };
 
 export type MotionShorthandValue = boolean;
@@ -173,17 +173,15 @@ function useMotionPresence<Element extends HTMLElement>(
     skipAnimationOnFirstRender.current = false;
   }, []);
 
-  return React.useMemo<MotionState<Element>>(() => {
-    const canRender = () => type !== 'unmounted';
-    const isActive = () => active;
-
-    return {
+  return React.useMemo<MotionState<Element>>(
+    () => ({
       ref,
       type,
-      canRender,
-      isActive,
-    };
-  }, [active, ref, type]);
+      canRender: type !== 'unmounted',
+      active,
+    }),
+    [active, ref, type],
+  );
 }
 
 /**
@@ -193,8 +191,8 @@ export function getDefaultMotionState<Element extends HTMLElement>(): MotionStat
   return {
     ref: React.createRef<Element>(),
     type: 'unmounted',
-    isActive: () => false,
-    canRender: () => false,
+    active: false,
+    canRender: false,
   };
 }
 

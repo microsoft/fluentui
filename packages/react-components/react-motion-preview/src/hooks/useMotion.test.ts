@@ -51,7 +51,7 @@ describe('useMotion', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.type).toBe('unmounted');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
     });
   });
 
@@ -60,18 +60,18 @@ describe('useMotion', () => {
       const { result } = renderHookWithRef(true);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.isActive()).toBe(true);
+      expect(result.current.active).toBe(true);
     });
 
     it('should change visible to true when animateOnFirstMount is true', () => {
       const { result } = renderHookWithRef(true, { animateOnFirstMount: true });
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       jumpToNextFrame();
 
-      expect(result.current.isActive()).toBe(true);
+      expect(result.current.active).toBe(true);
     });
   });
 
@@ -81,14 +81,14 @@ describe('useMotion', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.type).toBe('unmounted');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       rerender({ motion: true });
 
       act(() => jest.advanceTimersToNextTimer());
 
       expect(result.current.type).toBe('entering');
-      expect(result.current.isActive()).toBe(true);
+      expect(result.current.active).toBe(true);
 
       act(() => jest.advanceTimersByTime(defaultDuration + 1));
       expect(result.current.type).toBe('entered');
@@ -101,35 +101,35 @@ describe('useMotion', () => {
 
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.type).toBe('exiting');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       act(() => jest.advanceTimersByTime(defaultDuration + 1));
       expect(result.current.type).toBe('exited');
 
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.type).toBe('unmounted');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
     });
 
     it('should toggle values starting with true', () => {
       const { result, rerender } = renderHookWithRef(true);
 
       expect(typeof result.current.ref).toBe('function');
-      expect(result.current.isActive()).toBe(true);
+      expect(result.current.active).toBe(true);
 
       rerender({ motion: false });
 
       act(() => jest.advanceTimersToNextTimer());
 
       expect(result.current.type).toBe('exiting');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       act(() => jest.advanceTimersByTime(defaultDuration + 1));
       expect(result.current.type).toBe('exited');
 
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.type).toBe('unmounted');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
     });
   });
 
@@ -144,14 +144,14 @@ describe('useMotion', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.type).toBe('unmounted');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       rerender({ motion: true });
 
       act(() => jest.advanceTimersToNextTimer());
 
       expect(result.current.type).toBe('entering');
-      expect(result.current.isActive()).toBe(true);
+      expect(result.current.active).toBe(true);
 
       act(() => jest.advanceTimersToNextTimer());
 
@@ -166,14 +166,14 @@ describe('useMotion', () => {
       act(() => jest.advanceTimersToNextTimer());
 
       expect(result.current.type).toBe('exiting');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.type).toBe('exited');
 
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.type).toBe('unmounted');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
     });
   });
 
@@ -186,7 +186,7 @@ describe('useMotion', () => {
 
       expect(typeof result.current.ref).toBe('function');
       expect(result.current.type).toBe('unmounted');
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       rerender({ motion: true });
 
@@ -198,7 +198,7 @@ describe('useMotion', () => {
 
       // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.isActive()).toBe(true);
+      expect(result.current.active).toBe(true);
       // timeout
       act(() => jest.advanceTimersToNextTimer());
       expect(result.current.type).toBe('idle');
@@ -207,7 +207,7 @@ describe('useMotion', () => {
 
       act(() => jest.advanceTimersToNextTimer());
       act(() => jest.advanceTimersToNextTimer());
-      expect(result.current.isActive()).toBe(false);
+      expect(result.current.active).toBe(false);
 
       // requestAnimationFrame
       act(() => jest.advanceTimersToNextTimer());
@@ -224,15 +224,15 @@ describe('useMotion', () => {
 
       expect(result.current.type).toStrictEqual('unmounted');
       expect(result.current.ref).toStrictEqual(defaultState.ref);
-      expect(result.current.isActive()).toStrictEqual(false);
+      expect(result.current.active).toStrictEqual(false);
     });
 
     it('should return default values when presence is true', () => {
       const defaultState = getDefaultMotionState();
-      const { result } = renderHookWithRef({ ...getDefaultMotionState(), isActive: () => true });
+      const { result } = renderHookWithRef({ ...getDefaultMotionState(), active: true });
 
       expect(result.current.ref).toStrictEqual(defaultState.ref);
-      expect(result.current.isActive()).toStrictEqual(true);
+      expect(result.current.active).toStrictEqual(true);
     });
   });
 

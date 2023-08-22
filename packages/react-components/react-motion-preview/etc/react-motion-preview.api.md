@@ -19,8 +19,8 @@ export type MotionShorthandValue = boolean;
 export type MotionState<Element extends HTMLElement = HTMLElement> = {
     ref: React_2.Ref<Element>;
     type: MotionType;
-    isActive(): boolean;
-    canRender(): boolean;
+    active: boolean;
+    canRender: boolean;
 };
 
 // @public (undocumented)
