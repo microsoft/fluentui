@@ -273,7 +273,7 @@ export const ResizableColumnsControlled = () => {
         </Button>
       </p>
       <div style={{ overflowX: 'auto' }}>
-        <Table sortable aria-label="Table with sort" ref={tableRef}>
+        <Table sortable aria-label="Table with sort" ref={tableRef} {...columnSizing.getTableProps()}>
           <TableHeader>
             <TableRow>
               {columns.map((column, index) => (

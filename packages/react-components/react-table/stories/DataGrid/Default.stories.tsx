@@ -150,29 +150,27 @@ const columns: TableColumnDefinition<Item>[] = [
 
 export const Default = () => {
   return (
-    <div style={{ overflowX: 'auto' }}>
-      <DataGrid
-        items={items}
-        columns={columns}
-        sortable
-        selectionMode="multiselect"
-        getRowId={item => item.file.label}
-        onSelectionChange={(e, data) => console.log(data)}
-        focusMode="composite"
-      >
-        <DataGridHeader>
-          <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
-            {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+    <DataGrid
+      items={items}
+      columns={columns}
+      sortable
+      selectionMode="multiselect"
+      getRowId={item => item.file.label}
+      onSelectionChange={(e, data) => console.log(data)}
+      focusMode="composite"
+    >
+      <DataGridHeader>
+        <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
+          {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
+        </DataGridRow>
+      </DataGridHeader>
+      <DataGridBody<Item>>
+        {({ item, rowId }) => (
+          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+            {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
-        </DataGridHeader>
-        <DataGridBody<Item>>
-          {({ item, rowId }) => (
-            <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
-              {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
-            </DataGridRow>
-          )}
-        </DataGridBody>
-      </DataGrid>
-    </div>
+        )}
+      </DataGridBody>
+    </DataGrid>
   );
 };

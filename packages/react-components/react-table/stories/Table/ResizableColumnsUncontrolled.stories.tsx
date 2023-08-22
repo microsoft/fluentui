@@ -162,7 +162,7 @@ export const ResizableColumnsUncontrolled = () => {
         <Input type="number" id={inputId} onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
       </p>
       <div style={{ overflowX: 'auto' }}>
-        <Table sortable aria-label="Table with sort" ref={tableRef}>
+        <Table sortable aria-label="Table with sort" ref={tableRef} {...columnSizing_unstable.getTableProps()}>
           <TableHeader>
             <TableRow>
               {columns.map(column => (
