@@ -18,6 +18,7 @@ export const defaultColumnSizingState: TableColumnSizingState = {
   getColumnWidths: () => [],
   getOnMouseDown: () => () => null,
   setColumnWidth: () => null,
+  getTableProps: () => ({}),
   getTableHeaderCellProps: () => ({ style: {}, columnId: '' }),
   getTableCellProps: () => ({ style: {}, columnId: '' }),
   enableKeyboardMode: () => () => null,
