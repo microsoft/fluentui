@@ -182,7 +182,6 @@ function useMotionPresence<Element extends HTMLElement>(
       type,
       canRender,
       isActive,
-      hasInternalMotion: true,
     };
   }, [active, ref, type]);
 }
