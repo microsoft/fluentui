@@ -754,7 +754,7 @@ const ResizableColumns: React.FC<SharedVrTestArgs & { scrollToEnd?: boolean }> =
                     el.scrollIntoView();
                   }
                 }}
-               />
+              />
             </TableRow>
           ))}
         </TableBody>
