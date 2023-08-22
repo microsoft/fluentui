@@ -173,7 +173,7 @@ function useMotionPresence<Element extends HTMLElement>(
     skipAnimationOnFirstRender.current = false;
   }, []);
 
-  return React.useMemo(() => {
+  return React.useMemo<MotionState<Element>>(() => {
     const canRender = () => type !== 'unmounted';
     const isActive = () => active;
 
