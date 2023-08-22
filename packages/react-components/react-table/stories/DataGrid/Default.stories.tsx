@@ -153,7 +153,7 @@ export const Default = () => {
     <DataGrid
       items={items}
       columns={columns}
-      // sortable
+      sortable
       selectionMode="multiselect"
       getRowId={item => item.file.label}
       onSelectionChange={(e, data) => console.log(data)}

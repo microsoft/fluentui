@@ -120,6 +120,11 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
   getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
+
+  /**
+   * The columns which satisfy sorting criteria
+   */
+  getSortableColumns: () => TableColumnDefinition<TItem>[];
   /**
    * State and actions to manage row selection
    */
