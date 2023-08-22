@@ -17,19 +17,19 @@ export const Disabled = () => {
         <InteractionTagPrimary secondaryText="appearance=filled" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </InteractionTagPrimary>
-        <InteractionTagSecondary />
+        <InteractionTagSecondary aria-label="filled disabled, remove" />
       </InteractionTag>
       <InteractionTag disabled appearance="outline">
         <InteractionTagPrimary secondaryText="appearance=outline" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </InteractionTagPrimary>
-        <InteractionTagSecondary />
+        <InteractionTagSecondary aria-label="outline disabled, remove" />
       </InteractionTag>
       <InteractionTag disabled appearance="brand">
         <InteractionTagPrimary secondaryText="appearance=brand" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </InteractionTagPrimary>
-        <InteractionTagSecondary />
+        <InteractionTagSecondary aria-label="brand disabled, remove" />
       </InteractionTag>
     </div>
   );
