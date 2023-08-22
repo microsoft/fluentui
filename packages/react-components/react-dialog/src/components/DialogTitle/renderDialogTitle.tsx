@@ -1,9 +1,3 @@
-/** @jsxRuntime classic */
-/** @jsxFrag Fragment */
-/** @jsx createElement */
-
-import { createElement, Fragment } from '@fluentui/react-jsx-runtime';
-
 import { assertSlots } from '@fluentui/react-utilities';
 import type { DialogTitleState, DialogTitleSlots } from './DialogTitle.types';
 

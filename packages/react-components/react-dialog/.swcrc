@@ -19,7 +19,8 @@
     "externalHelpers": true,
     "transform": {
       "react": {
-        "runtime": "classic",
+        "runtime": "automatic",
+        "importSource": "@fluentui/react-jsx-runtime",
         "useSpread": true
       }
     },

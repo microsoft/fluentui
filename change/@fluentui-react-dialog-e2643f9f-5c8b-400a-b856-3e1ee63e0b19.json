@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: migrates to JSX importSource",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

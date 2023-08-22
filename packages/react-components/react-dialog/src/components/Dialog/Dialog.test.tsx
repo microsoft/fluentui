@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render } from '@testing-library/react';
 import { Dialog } from './Dialog';
 import { DialogProps } from './Dialog.types';

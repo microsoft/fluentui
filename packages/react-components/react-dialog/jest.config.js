@@ -10,7 +10,11 @@ module.exports = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
-        tsconfig: '<rootDir>/tsconfig.spec.json',
+        tsconfig: {
+          module: 'CommonJS',
+          jsx: 'react-jsx',
+          jsxImportSource: '@fluentui/react-jsx-runtime',
+        },
         isolatedModules: true,
       },
     ],

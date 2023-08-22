@@ -5,7 +5,7 @@
     "noEmit": true,
     "isolatedModules": true,
     "importHelpers": true,
-    "jsx": "react",
+    "jsx": "preserve",
     "noUnusedLocals": true,
     "preserveConstEnums": true
   },

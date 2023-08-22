@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { render } from '@testing-library/react';
 import { DialogActions } from './DialogActions';
 import { isConformant } from '../../testing/isConformant';
