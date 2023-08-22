@@ -408,6 +408,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 
 // @public
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+    sortable?: boolean;
     sortDirection?: SortDirection;
 };
 
@@ -420,7 +421,7 @@ export type TableHeaderCellSlots = {
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements'> & Pick<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";
