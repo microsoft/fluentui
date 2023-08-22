@@ -992,6 +992,7 @@ export {
   useDataGridBody_unstable,
   renderDataGridBody_unstable,
   DataGrid,
+  DataGridContextProvider,
   dataGridClassNames,
   useDataGridStyles_unstable,
   useDataGrid_unstable,
