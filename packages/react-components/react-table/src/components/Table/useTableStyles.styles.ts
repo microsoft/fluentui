@@ -20,7 +20,6 @@ const useTableLayoutStyles = makeStyles({
 const useFlexLayoutStyles = makeStyles({
   root: {
     display: 'block',
-    minWidth: 'fit-content',
   },
 });
 

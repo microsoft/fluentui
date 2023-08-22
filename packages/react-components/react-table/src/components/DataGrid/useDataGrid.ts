@@ -110,6 +110,7 @@ export const useDataGrid_unstable = (props: DataGridProps, ref: React.Ref<HTMLEl
       noNativeElements: true,
       ...(focusMode === 'cell' && gridTabsterAttribute),
       ...(focusMode === 'composite' && compositeTabsterAttribute),
+      ...(resizableColumns ? tableState.columnSizing_unstable.getTableProps(props) : {}),
       ...props,
       onKeyDown,
     },
