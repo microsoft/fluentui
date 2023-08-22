@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Tue, 22 Aug 2023 04:17:13 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.30",
+      "version": "3.0.0-alpha.30",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2f59582504dca05054a49aa2d47a483356fb6a69",
+            "comment": "feat(web-components): update core component files to use foundation export paths and update package exports to include extensions"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Aug 2023 04:16:01 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.29",
       "version": "3.0.0-alpha.29",
