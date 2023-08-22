@@ -125,7 +125,7 @@ export const useSample_unstable = ({ open = false }: SampleProps, ref: React.Ref
 
 ```tsx
 import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { SampleState, SampleSlots } from './Sample.types';
 
 /**
