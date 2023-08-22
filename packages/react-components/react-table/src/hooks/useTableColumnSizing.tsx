@@ -77,14 +77,16 @@ function useTableColumnSizingState<TItem>(
       getColumnWidths: columnResizeState.getColumns,
       getTableHeaderCellProps: (columnId: TableColumnId) => {
         const col = columnResizeState.getColumnById(columnId);
+        const isLastColumn = columns[columns.length - 1]?.columnId === columnId;
 
-        const aside = (
+        const aside = isLastColumn ? null : (
           <TableResizeHandle
             onMouseDown={mouseHandler.getOnMouseDown(columnId)}
             onTouchStart={mouseHandler.getOnMouseDown(columnId)}
             {...getKeyboardResizingProps(columnId, col?.width || 0)}
           />
         );
+
         return col
           ? {
               style: getColumnStyles(col),

@@ -272,46 +272,48 @@ export const ResizableColumnsControlled = () => {
           Add removed column
         </Button>
       </p>
-      <Table sortable aria-label="Table with sort" ref={tableRef}>
-        <TableHeader>
-          <TableRow>
-            {columns.map((column, index) => (
-              <Menu openOnContext key={column.columnId}>
-                <MenuTrigger>
-                  <TableHeaderCell
-                    key={column.columnId}
-                    {...columnSizing.getTableHeaderCellProps(column.columnId)}
-                    {...headerSortProps(column.columnId)}
-                  >
-                    {column.renderHeaderCell()}
-                    <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
-                      x
-                    </span>
-                  </TableHeaderCell>
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem onClick={columnSizing.enableKeyboardMode(column.columnId)}>
-                      Keyboard Column Resizing
-                    </MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {rows.map(({ item }) => (
-            <TableRow key={item.file.label}>
-              {columns.map(column => (
-                <TableCell key={column.columnId} {...columnSizing.getTableCellProps(column.columnId)}>
-                  {column.renderCell(item)}
-                </TableCell>
+      <div style={{ overflowX: 'auto' }}>
+        <Table sortable aria-label="Table with sort" ref={tableRef}>
+          <TableHeader>
+            <TableRow>
+              {columns.map((column, index) => (
+                <Menu openOnContext key={column.columnId}>
+                  <MenuTrigger>
+                    <TableHeaderCell
+                      key={column.columnId}
+                      {...columnSizing.getTableHeaderCellProps(column.columnId)}
+                      {...headerSortProps(column.columnId)}
+                    >
+                      {column.renderHeaderCell()}
+                      <span style={{ position: 'absolute', right: 0 }} onClick={() => removeColumn(index)}>
+                        x
+                      </span>
+                    </TableHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem onClick={columnSizing.enableKeyboardMode(column.columnId)}>
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
               ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {rows.map(({ item }) => (
+              <TableRow key={item.file.label}>
+                {columns.map(column => (
+                  <TableCell key={column.columnId} {...columnSizing.getTableCellProps(column.columnId)}>
+                    {column.renderCell(item)}
+                  </TableCell>
+                ))}
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   );
 };
