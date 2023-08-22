@@ -4,7 +4,7 @@
 
 - To group multiple tags together, use `TagGroup`. `TagGroup` can handle dismiss of multiple `Tag`.
 
-- Dismissible `Tag` should provide information to screen readers about the dismiss action. For example `dismissIcon={{ 'aria-label': 'remove' }}`.
+- Dismissible `Tag` should provide information to screen readers about the dismiss action. For example `aria-label="primary text, remove"`.
 
 ### Don't
 

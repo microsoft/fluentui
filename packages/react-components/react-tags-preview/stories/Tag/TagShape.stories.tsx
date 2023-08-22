@@ -24,7 +24,7 @@ export const Shape = () => {
 
       <Tag
         dismissible
-        dismissIcon={{ 'aria-label': 'remove' }}
+        aria-label="Rounded, Secondary text, remove"
         icon={<CalendarMonthRegular />}
         secondaryText="Secondary text"
       >
@@ -33,7 +33,7 @@ export const Shape = () => {
       <Tag
         shape="circular"
         dismissible
-        dismissIcon={{ 'aria-label': 'remove' }}
+        aria-label="Circular, Secondary text, remove"
         icon={<CalendarMonthRegular />}
         secondaryText="Secondary text"
       >

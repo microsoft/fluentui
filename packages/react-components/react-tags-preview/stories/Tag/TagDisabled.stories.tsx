@@ -13,13 +13,33 @@ export const Disabled = () => {
   const styles = useContainerStyles();
   return (
     <div className={styles.container}>
-      <Tag disabled secondaryText="appearance=filled" icon={<CalendarMonthRegular />} dismissible>
+      <Tag
+        disabled
+        secondaryText="appearance=filled"
+        icon={<CalendarMonthRegular />}
+        dismissible
+        aria-label="filled disabled, remove"
+      >
         disabled
       </Tag>
-      <Tag disabled secondaryText="appearance=outline" appearance="outline" icon={<CalendarMonthRegular />} dismissible>
+      <Tag
+        disabled
+        secondaryText="appearance=outline"
+        appearance="outline"
+        icon={<CalendarMonthRegular />}
+        dismissible
+        aria-label="outline disabled, remove"
+      >
         disabled
       </Tag>
-      <Tag disabled secondaryText="appearance=brand" appearance="brand" icon={<CalendarMonthRegular />} dismissible>
+      <Tag
+        disabled
+        secondaryText="appearance=brand"
+        appearance="brand"
+        icon={<CalendarMonthRegular />}
+        dismissible
+        aria-label="brand disabled, remove"
+      >
         disabled
       </Tag>
     </div>
