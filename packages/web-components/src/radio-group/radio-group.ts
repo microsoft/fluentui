@@ -1,4 +1,4 @@
-import { attr } from '@microsoft/fast-element';
+// import { attr } from '@microsoft/fast-element';
 import { FASTRadioGroup } from '@microsoft/fast-foundation/radio-group.js';
 
 /**
@@ -13,6 +13,6 @@ export class RadioGroup extends FASTRadioGroup {
    * @remarks
    * HTML Attribute: stacked
    */
-  @attr({ mode: 'boolean' })
+  // @attr({ mode: 'boolean' })
   public stacked: boolean = false;
 }
