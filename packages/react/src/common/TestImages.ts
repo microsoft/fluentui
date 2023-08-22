@@ -1,6 +1,6 @@
 // If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
 
-const baseProductionCdnUrl = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/';
+const baseProductionCdnUrl = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/';
 
 /** @deprecated Use the version from `@fluentui/example-data` instead. */
 export const TestImages = {

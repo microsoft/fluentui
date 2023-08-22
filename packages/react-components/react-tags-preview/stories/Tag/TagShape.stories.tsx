@@ -22,10 +22,21 @@ export const Shape = () => {
         Circular
       </Tag>
 
-      <Tag dismissible icon={<CalendarMonthRegular />} secondaryText="Secondary text">
+      <Tag
+        dismissible
+        dismissIcon={{ 'aria-label': 'remove' }}
+        icon={<CalendarMonthRegular />}
+        secondaryText="Secondary text"
+      >
         Rounded
       </Tag>
-      <Tag shape="circular" dismissible icon={<CalendarMonthRegular />} secondaryText="Secondary text">
+      <Tag
+        shape="circular"
+        dismissible
+        dismissIcon={{ 'aria-label': 'remove' }}
+        icon={<CalendarMonthRegular />}
+        secondaryText="Secondary text"
+      >
         Circular
       </Tag>
     </div>

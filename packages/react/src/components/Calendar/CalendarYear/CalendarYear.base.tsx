@@ -398,26 +398,26 @@ function useAnimateBackwards({ selectedYear, navigatedYear }: ICalendarYearProps
   }
 }
 
-const enum NavigationDirection {
-  Previous,
-  Next,
-}
-
 function useYearRangeState({ selectedYear, navigatedYear }: ICalendarYearProps) {
-  const [fromYear, navigate] = React.useReducer(
-    (state: number, action: NavigationDirection): number => {
-      return state + (action === NavigationDirection.Next ? CELL_COUNT : -CELL_COUNT);
-    },
-    undefined,
-    () => {
-      const rangeYear = selectedYear || navigatedYear || new Date().getFullYear();
-      return Math.floor(rangeYear / 10) * 10;
-    },
-  );
-  const toYear = fromYear + CELL_COUNT - 1;
+  const rangeYear = React.useMemo(() => {
+    return selectedYear || navigatedYear || Math.floor(new Date().getFullYear() / 10) * 10;
+  }, [navigatedYear, selectedYear]);
 
-  const onNavNext = () => navigate(NavigationDirection.Next);
-  const onNavPrevious = () => navigate(NavigationDirection.Previous);
+  const [fromYear, setFromYear] = React.useState<number>(rangeYear);
+
+  const onNavNext = () => {
+    setFromYear(year => year + CELL_COUNT);
+  };
+
+  const onNavPrevious = () => {
+    setFromYear(year => year - CELL_COUNT);
+  };
+
+  React.useEffect(() => {
+    setFromYear(rangeYear);
+  }, [rangeYear]);
+
+  const toYear = fromYear + CELL_COUNT - 1;
 
   return [fromYear, toYear, onNavNext, onNavPrevious] as const;
 }

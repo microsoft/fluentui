@@ -13,13 +13,13 @@ export const Appearance = () => {
   const styles = useContainerStyles();
   return (
     <div className={styles.container}>
-      <Tag icon={<CalendarMonthRegular />} dismissible>
+      <Tag icon={<CalendarMonthRegular />} dismissible dismissIcon={{ 'aria-label': 'remove' }}>
         filled
       </Tag>
-      <Tag appearance="outline" icon={<CalendarMonthRegular />} dismissible>
+      <Tag appearance="outline" icon={<CalendarMonthRegular />} dismissible dismissIcon={{ 'aria-label': 'remove' }}>
         outline
       </Tag>
-      <Tag appearance="brand" icon={<CalendarMonthRegular />} dismissible>
+      <Tag appearance="brand" icon={<CalendarMonthRegular />} dismissible dismissIcon={{ 'aria-label': 'remove' }}>
         brand
       </Tag>
     </div>

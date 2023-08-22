@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.52)
+
+Mon, 21 Aug 2023 11:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.51..@fluentui/react-infobutton_v9.0.0-beta.52)
+
+### Changes
+
+- fix: Cursor should be pointer when hovering the button to show it's a button. ([PR #28893](https://github.com/microsoft/fluentui/pull/28893) by esteban.230@hotmail.com)
+- Bump @fluentui/react-popover to v9.7.16 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
 
 ## [9.0.0-beta.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.51)
 

@@ -204,7 +204,7 @@ const useDismissIconStyles = makeStyles({
       cursor: 'pointer',
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':hover:active': {
+    ':active': {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
@@ -213,7 +213,7 @@ const useDismissIconStyles = makeStyles({
       cursor: 'pointer',
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':hover:active': {
+    ':active': {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
@@ -222,7 +222,7 @@ const useDismissIconStyles = makeStyles({
       cursor: 'pointer',
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':hover:active': {
+    ':active': {
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
