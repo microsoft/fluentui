@@ -6,7 +6,6 @@ import {
   useFluentContext,
   useTriggerElement,
   useUnhandledProps,
-  useOnIFrameFocus,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -143,13 +142,6 @@ export const Tooltip: React.FC<TooltipProps> &
   const triggerElement = useTriggerElement(props);
 
   const unhandledProps = useUnhandledProps(Tooltip.handledProps, props);
-
-  useOnIFrameFocus(open, context.target, (e: Event) => {
-    setOpen(__ => {
-      _.invoke(props, 'onOpenChange', e, { ...props, ...{ open: false } });
-      return false;
-    });
-  });
 
   const contentRef = React.useRef<HTMLElement>();
   const pointerTargetRef = React.useRef<HTMLDivElement>();
