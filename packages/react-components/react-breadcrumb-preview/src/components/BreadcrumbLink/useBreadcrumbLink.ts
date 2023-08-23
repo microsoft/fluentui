@@ -16,7 +16,7 @@ export const useBreadcrumbLink_unstable = (
   props: BreadcrumbLinkProps,
   ref: React.Ref<HTMLAnchorElement | HTMLButtonElement>,
 ): BreadcrumbLinkState => {
-  const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
+  const { appearance, size } = useBreadcrumbContext_unstable();
   const { current = false, disabled = false, icon, overflow = false } = props;
 
   const link = useLink_unstable(props, ref);
@@ -41,8 +41,6 @@ export const useBreadcrumbLink_unstable = (
     current,
     disabled,
     icon: iconShorthand,
-    iconOnly: Boolean(iconShorthand?.children && !props.children),
-    iconPosition: props.iconPosition || iconPosition,
     overflow,
     size: props.size || size,
   };

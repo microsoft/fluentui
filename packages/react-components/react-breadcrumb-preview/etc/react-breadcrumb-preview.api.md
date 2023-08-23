@@ -27,7 +27,7 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
 
 // @public
-export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size'> & Pick<ButtonProps, 'disabled'> & {
+export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'appearance' | 'size'> & Pick<ButtonProps, 'disabled'> & {
     current?: boolean;
 };
 
@@ -66,7 +66,6 @@ export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots>;
 // @public
 export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & Pick<BreadcrumbProps, 'size'> & {
     current?: boolean;
-    iconPosition?: 'before' | 'after';
 };
 
 // @public (undocumented)
@@ -76,8 +75,8 @@ export type BreadcrumbItemSlots = {
 };
 
 // @public
-export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size' | 'current' | 'iconPosition'>> & {
-    iconOnly: boolean;
+export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size' | 'current'>> & {
+    isInteractive?: boolean;
 };
 
 // @public
@@ -89,7 +88,6 @@ export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots>;
 // @public
 export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<LinkProps, 'appearance' | 'disabled'> & {
     current?: boolean;
-    iconPosition?: 'before' | 'after';
     overflow?: boolean;
     size?: 'small' | 'medium' | 'large';
 };
@@ -101,16 +99,13 @@ export type BreadcrumbLinkSlots = {
 };
 
 // @public
-export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<Omit<BreadcrumbLinkProps, 'size'>> & Required<Pick<BreadcrumbLinkProps, 'size'>> & {
-    iconOnly: boolean;
-};
+export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<Omit<BreadcrumbLinkProps, 'size'>> & Required<Pick<BreadcrumbLinkProps, 'size'>>;
 
 // @public
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     appearance?: 'transparent' | 'subtle';
     focusMode?: 'arrow' | 'tab';
     dividerType?: 'chevron' | 'slash';
-    iconPosition?: 'before' | 'after';
     size?: 'small' | 'medium' | 'large';
 };
 
@@ -121,7 +116,7 @@ export type BreadcrumbSlots = {
 };
 
 // @public
-export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;
+export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'appearance' | 'size' | 'dividerType'>>;
 
 // @public (undocumented)
 export const isTruncatableBreadcrumbContent: (content: string, maxLength: number) => boolean;

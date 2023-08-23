@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-jsx-runtime",
-  "version": "9.0.0-alpha.15",
-  "description": "React components for building web experiences",
+  "version": "9.0.1",
+  "description": "Custom JSX runtime for @fluentui/react-components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -20,7 +20,8 @@
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "bundle-size": "monosize measure"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,7 +31,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-utilities": "^9.11.1",
+    "@fluentui/react-utilities": "^9.11.2",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
@@ -40,8 +41,7 @@
   "beachball": {
     "disallowedChangeTypes": [
       "major",
-      "minor",
-      "patch"
+      "prerelease"
     ]
   },
   "exports": {
@@ -50,6 +50,18 @@
       "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
+    },
+    "./jsx-dev-runtime": {
+      "types": "./dist/jsx-dev-runtime.d.ts",
+      "node": "./lib-commonjs/jsx-dev-runtime.js",
+      "import": "./lib/jsx-dev-runtime.js",
+      "require": "./lib-commonjs/jsx-dev-runtime.js"
+    },
+    "./jsx-runtime": {
+      "types": "./dist/jsx-runtime.d.ts",
+      "node": "./lib-commonjs/jsx-runtime.js",
+      "import": "./lib/jsx-runtime.js",
+      "require": "./lib-commonjs/jsx-runtime.js"
     },
     "./package.json": "./package.json"
   }

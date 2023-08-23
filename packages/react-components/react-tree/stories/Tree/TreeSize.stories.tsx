@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
 export const Size = () => {
   return (
     <>
-      <Tree size="small" aria-label="Small Tree">
+      <Tree size="small" aria-label="Small Size Tree">
         <TreeItem itemType="branch">
           <TreeItemLayout>Small size tree</TreeItemLayout>
           <Tree>
@@ -25,8 +25,7 @@ export const Size = () => {
           </Tree>
         </TreeItem>
       </Tree>
-      <br />
-      <Tree aria-label="Default Tree">
+      <Tree aria-label="Default Size Tree">
         <TreeItem itemType="branch">
           <TreeItemLayout>Medium size tree</TreeItemLayout>
           <Tree>
@@ -54,7 +53,9 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: 'A tree can be displayed in a `small` or `medium` (default) size.',
+      story: `
+A tree can be displayed in a \`small\` or \`medium\` (default) size.
+      `,
     },
   },
 };
