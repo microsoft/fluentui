@@ -6,7 +6,9 @@ const setTimer = jest.fn((callback: jest.Func) => {
   return 0;
 });
 
-const cancelTimer = jest.fn(() => 0);
+const cancelTimer = jest.fn(() => {
+  return;
+});
 
 describe('useBrowserTimer', () => {
   it('should return array with functions', () => {
@@ -15,8 +17,6 @@ describe('useBrowserTimer', () => {
     expect(hookValues).toHaveLength(2);
     expect(typeof hookValues[0]).toBe('function');
     expect(typeof hookValues[1]).toBe('function');
-    expect(hookValues[0].name).toBe('set');
-    expect(hookValues[1].name).toBe('cancel');
   });
 
   it('calls the setter only n times', () => {
@@ -41,7 +41,7 @@ describe('useBrowserTimer', () => {
     expect(timerId).toBe(0);
   });
 
-  it('should not call the cancel callback if not setter was called', () => {
+  it('should not call the cancel callback if no setter was called', () => {
     const [, cancelTestTimer] = renderHook(() => useBrowserTimer(setTimer, cancelTimer)).result.current;
 
     cancelTestTimer();

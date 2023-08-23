@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: added cursor style in AccordionHeader for AccordionItem disabled state",
-  "packageName": "@fluentui/react-accordion",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

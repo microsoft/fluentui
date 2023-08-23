@@ -185,7 +185,7 @@ packages/react-components/react-accordion @microsoft/cxe-coastal
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto @sopranopillow
 packages/react-components/react-badge @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
-packages/react-components/react-card @microsoft/cxe-prg
+packages/react-components/react-card @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
 packages/react-components/react-combobox @microsoft/cxe-coastal @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
@@ -208,7 +208,7 @@ packages/react-components/react-spinbutton @microsoft/cxe-red @spmonahan
 packages/react-components/react-spinner @microsoft/cxe-red @tomi-msft
 packages/react-components/react-switch @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
-packages/react-components/react-text @microsoft/cxe-prg
+packages/react-components/react-text @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-components/react-tooltip @microsoft/cxe-red @behowell @khmakoto
 packages/react-components/react-toolbar @microsoft/teams-prg @chpalac @ling1726
@@ -232,7 +232,7 @@ packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-breadcrumb-preview @microsoft/cxe-prg
-packages/react-components/react-drawer @microsoft/cxe-prg  @marcosmoura
+packages/react-components/react-drawer @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg

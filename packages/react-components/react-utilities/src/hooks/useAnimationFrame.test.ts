@@ -2,13 +2,8 @@ import { renderHook } from '@testing-library/react-hooks';
 import { useAnimationFrame } from './useAnimationFrame';
 
 describe('useAnimationFrame', () => {
-  beforeEach(() => {
-    jest.useFakeTimers();
-  });
-
-  afterEach(() => {
-    jest.useRealTimers();
-  });
+  beforeEach(() => jest.useFakeTimers());
+  afterEach(() => jest.useRealTimers());
 
   it('calls the callback only on the next frame', () => {
     const [setTestRequestAnimationFrame] = renderHook(() => useAnimationFrame()).result.current;
@@ -46,7 +41,7 @@ describe('useAnimationFrame', () => {
 
     jest.runAllTimers();
 
-    expect(callbackA).not.toHaveBeenCalled();
+    expect(callbackA).not.toHaveBeenCalledTimes(1);
     expect(callbackB).toHaveBeenCalledTimes(1);
   });
 

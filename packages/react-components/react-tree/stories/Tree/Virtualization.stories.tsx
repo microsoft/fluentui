@@ -13,7 +13,7 @@ import {
   useFlatTreeContextValues_unstable,
   HeadlessFlatTreeItem,
   useHeadlessFlatTree_unstable,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 
