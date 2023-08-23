@@ -7,9 +7,9 @@ import {
   useEventCallback,
   useId,
   slot,
-  useMotionPresence,
   useIsomorphicLayoutEffect,
 } from '@fluentui/react-utilities';
+import { useMotion } from '@fluentui/react-motion-preview';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { Delete, Tab } from '@fluentui/keyboard-keys';
 import { useFocusableGroup, useFocusFinders } from '@fluentui/react-tabster';
@@ -68,24 +68,24 @@ export const useToastContainer_unstable = (
     ignoreDefaultKeydown: { Tab: true, Escape: true, Enter: true },
   });
 
-  const { shouldRender, visible, ref: motionRef, motionState } = useMotionPresence(visibleProp);
+  const { active: visible, canRender: shouldRender, type, ref: motionRef } = useMotion(visibleProp);
 
   useIsomorphicLayoutEffect(() => {
-    if (motionState !== 'entering' || !toastRef.current) {
+    if (type !== 'entering' || !toastRef.current) {
       return;
     }
 
     const element = toastRef.current;
     element.style.setProperty('--fui-toast-height', `${element.scrollHeight}px`);
-  }, [motionState]);
+  }, [type]);
 
   useIsomorphicLayoutEffect(() => {
-    if (motionState !== 'exiting') {
+    if (type !== 'exited') {
       return;
     }
 
     remove();
-  }, [motionState, remove]);
+  }, [type, remove]);
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;

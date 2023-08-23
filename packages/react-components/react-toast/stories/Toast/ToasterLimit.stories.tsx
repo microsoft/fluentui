@@ -15,7 +15,7 @@ let count = 0;
 export const ToasterLimit = () => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
-  const [limit, setLimit] = React.useState(1);
+  const [limit, setLimit] = React.useState(3);
   const notify = () =>
     dispatchToast(
       <Toast>
