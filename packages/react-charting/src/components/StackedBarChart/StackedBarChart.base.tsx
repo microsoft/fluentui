@@ -160,7 +160,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           <FocusZone direction={FocusZoneDirection.horizontal}>
             <div>
               <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={data?.chartTitle}>
-                {bars[0]}
+                <g>{bars[0]}</g>
                 <Callout
                   gapSpace={15}
                   isBeakVisible={false}
