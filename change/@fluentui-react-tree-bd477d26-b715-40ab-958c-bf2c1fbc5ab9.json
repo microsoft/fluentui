@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: adds tsconfig.cy.json file to root of the package",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "none"
-}
