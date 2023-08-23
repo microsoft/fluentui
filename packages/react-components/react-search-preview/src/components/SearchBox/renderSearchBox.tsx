@@ -1,8 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-/** @jsxFrag React.Fragment */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { SearchBoxState, SearchBoxSlots } from './SearchBox.types';
 
