@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 22 Aug 2023 04:17:13 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 04:18:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.31)
+
+Wed, 23 Aug 2023 04:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.30..@fluentui/web-components_v3.0.0-alpha.31)
+
+### Changes
+
+- feat(web-components): add explicit named exports for design tokens and package export path for theme utils ([PR #28952](https://github.com/microsoft/fluentui/pull/28952) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.30)
 
