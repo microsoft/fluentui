@@ -103,9 +103,6 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'author',
-    compare: (a, b) => {
-      return a.author.label.localeCompare(b.author.label);
-    },
     renderHeaderCell: () => {
       return 'Author';
     },
@@ -136,9 +133,6 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
     renderHeaderCell: () => {
       return 'Last update';
     },
@@ -148,29 +142,36 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
 ];
 
-export const Default = () => {
+export const ColumnSort = () => {
   return (
-    <DataGrid
-      items={items}
-      columns={columns}
-      sortable
-      selectionMode="multiselect"
-      getRowId={item => item.file.label}
-      onSelectionChange={(e, data) => console.log(data)}
-      focusMode="composite"
-    >
+    <DataGrid items={items} columns={columns}>
       <DataGridHeader>
-        <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>
+        <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
         </DataGridRow>
       </DataGridHeader>
       <DataGridBody<Item>>
         {({ item, rowId }) => (
-          <DataGridRow<Item> key={rowId} selectionCell={{ 'aria-label': 'Select row' }}>
+          <DataGridRow<Item> key={rowId}>
             {({ renderCell }) => <DataGridCell>{renderCell(item)}</DataGridCell>}
           </DataGridRow>
         )}
       </DataGridBody>
     </DataGrid>
   );
+};
+
+ColumnSort.parameters = {
+  docs: {
+    description: {
+      story: [
+        'To enable sorting in a specific column, just specify the `compare` function in the that column for `columns` property.',
+        '',
+        '> Due to screen reader support, the sort status might not be announced once a sortable column header',
+        'is invoked. [This is a known issue.](https://github.com/nvaccess/nvda/issues/10890)',
+        'However the implementation still follows the',
+        '[pattern recommended by the WAI](https://www.w3.org/WAI/ARIA/apg/example-index/table/sortable-table.html)',
+      ].join('\n'),
+    },
+  },
 };

@@ -13,6 +13,7 @@ export { Default } from './Default.stories';
 export { CompositeNavigation } from './CompositeNavigation.stories';
 export { FocusableElementsInCells } from './FocusableElementsInCells.stories';
 export { Sort } from './Sort.stories';
+export { ColumnSort } from './ColumnSort.stories';
 export { SortControlled } from './SortControlled.stories';
 export { MultipleSelect } from './MultipleSelect.stories';
 export { MultipleSelectControlled } from './MultipleSelectControlled.stories';
