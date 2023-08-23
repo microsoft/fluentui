@@ -1,5 +1,5 @@
 import { UnknownSlotProps, slot, SlotShorthandValue } from '@fluentui/react-utilities';
-import { MotionShorthand, MotionState, useMotion, UseMotionOptions } from './useMotion';
+import { MotionShorthand, MotionState, useMotion, MotionOptions } from './useMotion';
 
 export interface UnknownSlotPropsWithMotion<Element extends HTMLElement> extends UnknownSlotProps {
   motion?: MotionShorthand<Element>;
@@ -16,7 +16,7 @@ export interface UnknownSlotPropsWithMotion<Element extends HTMLElement> extends
 export function useMotionFromSlot<Props extends UnknownSlotProps, Element extends HTMLElement>(
   props: Props | SlotShorthandValue | undefined | null,
   shorthand: MotionShorthand<Element>,
-  options?: UseMotionOptions,
+  options?: MotionOptions,
 ): [Props, MotionState<Element>] {
   const shorthandProps = slot.resolveShorthand(props);
   const { motion: motionProp, ...slotProps } = (shorthandProps ?? {}) as UnknownSlotPropsWithMotion<Element>;

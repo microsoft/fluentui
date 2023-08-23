@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { unstable_batchedUpdates } from 'react-dom';
-import { HTMLElementWithStyledMap, getMotionDuration } from '../utils/style';
-import { useAnimationFrame, useTimeout } from '@fluentui/react-utilities';
-import { useIsMotion } from './useIsMotion';
+import { HTMLElementWithStyledMap, getMotionDuration } from '../utils/dom-style';
+import { useAnimationFrame, useTimeout, usePrevious } from '@fluentui/react-utilities';
 
 export type MotionOptions = {
   /**
@@ -34,22 +33,16 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
   type: MotionType;
 
   /**
-   * Indicates whether the component is currently rendered and visible.
-   * Useful to apply CSS transitions only when the element is active.
-   */
-  isActive(): boolean;
-
-  /**
    * Indicates whether the component can be rendered.
-   * This can be used to avoid rendering the component when it is not visible anymore.
+   * Useful to render the element before animating it or to remove it from the DOM after exit animation.
    */
-  canRender(): boolean;
+  canRender: boolean;
 
   /**
-   * Whether to disable internal motion.
-   * This is useful when the component is wrapped in a parent component that handles the motion.
+   * Indicates whether the component is ready to receive a CSS transition className.
+   * Useful to apply CSS transitions when the element is mounted and ready to be animated.
    */
-  hasInternalMotion: boolean;
+  active: boolean;
 };
 
 export type MotionShorthandValue = boolean;
@@ -180,18 +173,15 @@ function useMotionPresence<Element extends HTMLElement>(
     skipAnimationOnFirstRender.current = false;
   }, []);
 
-  return React.useMemo(() => {
-    const canRender = () => type !== 'unmounted';
-    const isActive = () => active;
-
-    return {
+  return React.useMemo<MotionState<Element>>(
+    () => ({
       ref,
       type,
-      canRender,
-      isActive,
-      hasInternalMotion: true,
-    };
-  }, [active, ref, type]);
+      active,
+      canRender: type !== 'unmounted',
+    }),
+    [active, ref, type],
+  );
 }
 
 /**
@@ -201,9 +191,8 @@ export function getDefaultMotionState<Element extends HTMLElement>(): MotionStat
   return {
     ref: React.createRef<Element>(),
     type: 'unmounted',
-    hasInternalMotion: false,
-    isActive: () => false,
-    canRender: () => false,
+    active: false,
+    canRender: false,
   };
 }
 
@@ -224,13 +213,50 @@ export function useMotion<Element extends HTMLElement>(
    * motion state and can just return the motion value as is. This is intentional as it allows others to use the hook
    * on their side without having to worry about the performance impact of the hook.
    */
-  if (useIsMotion(shorthand)) {
-    return {
-      ...shorthand,
-      hasInternalMotion: false,
-    };
-  }
-
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useMotionPresence(shorthand, options);
+  return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
+}
+
+const stringifyShorthand = <Element extends HTMLElement>(value: MotionShorthand<Element>) => {
+  return JSON.stringify(value, null, 2);
+};
+
+/**
+ * @internal
+ *
+ * This method emits a warning if the hook is called with
+ * a different typeof of shorthand on subsequent renders,
+ * since this can lead breaking the rules of hooks.
+ *
+ * It also return a boolean indicating whether the shorthand is a motion object.
+ */
+export function useIsMotion<Element extends HTMLElement>(
+  shorthand: MotionShorthand<Element>,
+): shorthand is MotionState<Element> {
+  const previousShorthand = usePrevious(shorthand);
+
+  /**
+   * Heads up!
+   * We don't want these warnings in production even though it is against native behavior
+   */
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (previousShorthand !== null && typeof previousShorthand !== typeof shorthand) {
+        // eslint-disable-next-line no-console
+        console.error(
+          [
+            'useMotion: The hook needs to be called with the same typeof of shorthand on every render.',
+            'This is to ensure the internal state of the hook is stable and can be used to accurately detect the motion state.',
+            'Please make sure to not change the shorthand on subsequent renders or to use the hook conditionally.',
+            '\nCurrent shorthand:',
+            stringifyShorthand(shorthand),
+            '\nPrevious shorthand:',
+            stringifyShorthand(previousShorthand),
+          ].join(' '),
+        );
+      }
+    }, [shorthand, previousShorthand]);
+  }
+  return typeof shorthand === 'object';
 }

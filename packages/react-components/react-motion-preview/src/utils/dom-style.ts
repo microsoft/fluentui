@@ -81,9 +81,9 @@ export const hasCSSOMSupport = (node: HTMLElementWithStyledMap) => {
  * @returns - CSS styles.
  */
 export const getElementComputedStyle = (node: HTMLElement): CSSStyleDeclaration => {
-  const win = node.ownerDocument?.defaultView ? node.ownerDocument.defaultView : window;
+  const win = canUseDOM() && (node.ownerDocument?.defaultView ?? window);
 
-  if (!win || !canUseDOM()) {
+  if (!win) {
     return {
       getPropertyValue: (_: string) => '',
     } as CSSStyleDeclaration;
@@ -105,8 +105,10 @@ export function toMs(duration: string): number {
     return 0;
   }
 
-  if (trimmed.includes('ms')) {
-    return parseFloat(trimmed);
+  if (trimmed.endsWith('ms')) {
+    const parsed = Number(trimmed.replace('ms', ''));
+
+    return isNaN(parsed) ? 0 : parsed;
   }
 
   return Number(trimmed.slice(0, -1).replace(',', '.')) * 1000;
