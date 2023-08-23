@@ -904,7 +904,7 @@ export const LightSemanticColors: IAzureSemanticColors = {
     background: BaseColors.WHITE,
     disabled: BaseColors.GRAY_F3F2F1,
     hover: BaseColors.GRAY_605E5C,
-    accent: BaseColors.BLUE_0078D4,
+    accent: BaseColors.GRAY_605E5C,
     focus: BaseColors.BLUE_0078D4,
     error: BaseColors.RED_A4262C,
     dirty: BaseColors.PURPLE_8A2DA5,

@@ -38,7 +38,6 @@ export interface IMultiStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -53,6 +52,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
+  private _emptyChartId: string;
+  private _barId: string;
+  private _barIdPlaceholderPartToWhole: string;
+  private _barIdEmpty: string;
 
   public constructor(props: IMultiStackedBarChartProps) {
     super(props);
@@ -67,26 +70,18 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
-      emptyChart: false,
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
-  }
-
-  public componentDidMount(): void {
-    const isChartEmpty: boolean = !(
-      this.props.data &&
-      this.props.data.length > 0 &&
-      this.props.data.filter(item => item.chartData && item.chartData.length === 0).length === 0
-    );
-    if (this.state.emptyChart !== isChartEmpty) {
-      this.setState({ emptyChart: isChartEmpty });
-    }
+    this._emptyChartId = getId('_MSBC_empty');
+    this._barId = getId('_MSBC_rect_');
+    this._barIdPlaceholderPartToWhole = getId('_MSBC_rect_partToWhole_');
+    this._barIdEmpty = getId('_MSBC_rect_empty');
   }
 
   public render(): JSX.Element {
-    if (!this.state.emptyChart) {
+    if (!this._isChartEmpty()) {
       const { data, theme, culture } = this.props;
       this._adjustProps();
       const { palette } = theme!;
@@ -113,7 +108,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           this.props.hideDenominator![index],
           this.props.href,
         );
-        return <div key={index}>{singleChartBars}</div>;
+        return (
+          <div key={index} id={`_MSBC_bar-${index}`}>
+            {singleChartBars}
+          </div>
+        );
       });
 
       return (
@@ -147,7 +146,12 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       );
     }
     return (
-      <div id={getId('_MSBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -173,7 +177,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
-      value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+      let value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
       if (value < 1 && value !== 0) {
         value = 1;
       } else if (value > 99 && value !== 100) {
@@ -233,7 +237,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
-
       return (
         <g
           key={index}
@@ -253,6 +256,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
+            id={`${this._barId}-${index}`}
             x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
             y={0}
             width={value + '%'}
@@ -288,14 +292,30 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       if (data.chartData!.length === 0) {
         bars.push(
           <g key={0} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={this._barIdPlaceholderPartToWhole}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }
       if (barTotalValue === 0) {
         bars.push(
           <g key={'empty'} className={this._classNames.noData} onClick={this._redirectToUrl.bind(this, href)}>
-            <rect key={0} x={'0%'} y={0} width={'100%'} height={barHeight} fill={palette.neutralLight} />
+            <rect
+              key={0}
+              id={this._barIdEmpty}
+              x={'0%'}
+              y={0}
+              width={'100%'}
+              height={barHeight}
+              fill={palette.neutralLight}
+            />
           </g>,
         );
       }
@@ -563,4 +583,14 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
     return longestBarTotalValue;
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(
+        item => item.chartData && item.chartData.length === 0 && (!item.chartTitle || item.chartTitle === ''),
+      ).length === 0
+    );
+  }
 }

@@ -126,7 +126,7 @@ export class WeeklyDayPickerBase extends React.Component<IWeeklyDayPickerProps, 
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      className: className,
+      className,
     });
 
     return (

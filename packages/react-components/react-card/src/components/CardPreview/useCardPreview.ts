@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardPreviewClassNames } from './useCardPreviewStyles.styles';
@@ -50,10 +50,13 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
       logo: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref: previewRef,
-      ...props,
-    }),
-    logo: resolveShorthand(logo),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: previewRef,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    logo: slot.optional(logo, { elementType: 'div' }),
   };
 };

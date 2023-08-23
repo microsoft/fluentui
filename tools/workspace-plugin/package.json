@@ -1,0 +1,12 @@
+{
+  "name": "@fluentui/workspace-plugin",
+  "version": "0.0.0",
+  "private": true,
+  "type": "commonjs",
+  "generators": "./generators.json",
+  "scripts": {
+    "test": "nx run @fluentui/workspace-plugin:test",
+    "type-check": "nx run @fluentui/workspace-plugin:type-check",
+    "lint": "nx run @fluentui/workspace-plugin:lint-old"
+  }
+}

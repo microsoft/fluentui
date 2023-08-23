@@ -1,19 +1,20 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { TreeItemLayoutInternalSlots, TreeItemLayoutState } from './TreeItemLayout.types';
+import type { TreeItemLayoutSlots, TreeItemLayoutState } from './TreeItemLayout.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { treeItemLevelToken } from '../../utils/tokens';
 import { useTreeItemContext_unstable } from '../../contexts/treeItemContext';
 
-export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutInternalSlots> = {
+export const treeItemLayoutClassNames: SlotClassNames<TreeItemLayoutSlots> = {
   root: 'fui-TreeItemLayout',
   iconBefore: 'fui-TreeItemLayout__iconBefore',
-  content: 'fui-TreeItemLayout__content',
+  main: 'fui-TreeItemLayout__main',
   iconAfter: 'fui-TreeItemLayout__iconAfter',
   expandIcon: 'fui-TreeItemLayout__expandIcon',
   aside: 'fui-TreeItemLayout__aside',
   actions: 'fui-TreeItemLayout__actions',
+  selector: 'fui-TreeItemLayout__selector',
 };
 
 /**
@@ -125,7 +126,7 @@ const useExpandIconStyles = makeStyles({
 /**
  * Styles for the content slot
  */
-const useContentStyles = makeStyles({
+const useMainStyles = makeStyles({
   base: {
     ...shorthands.padding(0, tokens.spacingHorizontalXXS),
   },
@@ -166,12 +167,12 @@ const useIconAfterStyles = makeStyles({
  * Apply styling to the TreeItemLayout slots based on the state
  */
 export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): TreeItemLayoutState => {
-  const { content, iconAfter, iconBefore, expandIcon, root } = state;
+  const { main, iconAfter, iconBefore, expandIcon, root, aside, actions, selector } = state;
   const rootStyles = useRootStyles();
   const actionsStyles = useActionsStyles();
   const asideStyles = useAsideStyles();
 
-  const contentStyles = useContentStyles();
+  const mainStyles = useMainStyles();
 
   const expandIconStyles = useExpandIconStyles();
   const iconStyles = useIconStyles();
@@ -191,7 +192,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     root.className,
   );
 
-  content.className = mergeClasses(treeItemLayoutClassNames.content, contentStyles.base, content.className);
+  main.className = mergeClasses(treeItemLayoutClassNames.main, mainStyles.base, main.className);
 
   if (expandIcon) {
     expandIcon.className = mergeClasses(
@@ -219,22 +220,21 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
     );
   }
 
-  if (state.actions) {
-    state.actions.className = mergeClasses(
-      treeItemLayoutClassNames.actions,
-      actionsStyles.base,
-      state.actions.className,
-    );
+  if (actions) {
+    actions.className = mergeClasses(treeItemLayoutClassNames.actions, actionsStyles.base, actions.className);
   }
-  if (state.aside) {
-    state.aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideStyles.base, state.aside.className);
+  if (aside) {
+    aside.className = mergeClasses(treeItemLayoutClassNames.aside, asideStyles.base, aside.className);
   }
-  if (state.expandIcon) {
-    state.expandIcon.className = mergeClasses(
+  if (expandIcon) {
+    expandIcon.className = mergeClasses(
       treeItemLayoutClassNames.expandIcon,
       expandIconStyles.base,
-      state.expandIcon.className,
+      expandIcon.className,
     );
+  }
+  if (selector) {
+    selector.className = mergeClasses(treeItemLayoutClassNames.selector, selector.className);
   }
 
   return state;

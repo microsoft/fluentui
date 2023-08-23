@@ -8,7 +8,7 @@ export type BreadcrumbButtonSlots = ButtonSlots;
  * BreadcrumbButton Props
  */
 export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> &
-  Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size'> &
+  Pick<BreadcrumbProps, 'appearance' | 'size'> &
   Pick<ButtonProps, 'disabled'> & {
     /**
      * Defines current sate of BreadcrumbButton.
