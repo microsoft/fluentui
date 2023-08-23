@@ -90,11 +90,8 @@ test.describe('CounterBadge component', () => {
       `;
     });
     await expect(element).toHaveJSProperty('dot', true);
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      return element?.shadowRoot?.textContent;
-    });
-    expect(shadowContent).not.toContain('5');
+
+    await expect(element).not.toContainText('5');
   });
 
   test('should show dot programmatically', async () => {
@@ -105,11 +102,7 @@ test.describe('CounterBadge component', () => {
     });
 
     await expect(element).toHaveJSProperty('dot', true);
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      return element?.shadowRoot?.textContent;
-    });
-    expect(shadowContent).not.toContain('5');
+    await expect(element).not.toContainText('5');
   });
 
   test('should hide dot programmatically', async () => {
@@ -123,11 +116,8 @@ test.describe('CounterBadge component', () => {
       node.dot = false;
     });
 
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      return element?.shadowRoot?.textContent;
-    });
-    expect(shadowContent).toContain('5');
+    await expect(element).toContainText('5');
+    await expect(element).toHaveJSProperty('dot', false);
   });
 
   test('should reflect shape attribute and update property', async () => {
