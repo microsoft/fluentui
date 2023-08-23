@@ -1,8 +1,8 @@
 import type { Locator, Page } from '@playwright/test';
 import { expect, test } from '@playwright/test';
 import { fixtureURL } from '../helpers.tests.js';
-import type { Tabs } from './tabs.js';
 import type { Tab } from '../tab/tab.js';
+import type { Tabs } from './tabs.js';
 
 test.describe('Tabs', () => {
   let page: Page;
@@ -291,7 +291,7 @@ test.describe('Tabs', () => {
 
       const secondTab = tabs.nth(1);
 
-      const secondTabId = (await secondTab.getAttribute('id')) ?? '';
+      const secondTabId = `${await secondTab.getAttribute('id')}`;
 
       await element.evaluate((node: Tabs, secondTabId) => {
         node.activeid = secondTabId;
@@ -312,7 +312,7 @@ test.describe('Tabs', () => {
 
       const secondTab = tabs.nth(1);
 
-      const secondTabId = (await secondTab.getAttribute('id')) ?? '';
+      const secondTabId = `${await secondTab.getAttribute('id')}`;
 
       await element.evaluate((node: Tabs, secondTabId) => {
         node.setAttribute('activeId', secondTabId);
@@ -333,7 +333,7 @@ test.describe('Tabs', () => {
 
       const secondTab = tabs.nth(1);
 
-      const secondTabId = (await secondTab.getAttribute('id')) ?? '';
+      const secondTabId = `${await secondTab.getAttribute('id')}`;
 
       const tabPanels = element.locator('fluent-tab-panel');
 
@@ -434,7 +434,15 @@ test.describe('Tabs', () => {
 
     await (await element.elementHandle())?.waitForElementState('stable');
 
-    await secondTab.click({ force: true });
+    await secondTab.evaluate(node => {
+      node.dispatchEvent(
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+        }),
+      );
+    });
 
     await expect(element).toHaveJSProperty('activeid', firstTabId);
   });
@@ -459,9 +467,8 @@ test.describe('Tabs', () => {
 
     const secondTab = tabs.nth(1);
 
-    const firstTabId = (await firstTab.getAttribute('id')) ?? '';
-
-    const secondTabId = (await secondTab.getAttribute('id')) ?? '';
+    const firstTabId = `${await firstTab.getAttribute('id')}`;
+    const secondTabId = `${await secondTab.getAttribute('id')}`;
 
     await element.evaluate((node: Tabs, firstTabId) => {
       node.activeid = firstTabId;
@@ -469,7 +476,15 @@ test.describe('Tabs', () => {
 
     await expect(element).toHaveJSProperty('activeid', firstTabId);
 
-    await secondTab.click({ force: true });
+    await secondTab.evaluate(node => {
+      node.dispatchEvent(
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+        }),
+      );
+    });
 
     await expect(element).toHaveJSProperty('activeid', firstTabId);
 
@@ -479,8 +494,15 @@ test.describe('Tabs', () => {
 
     await (await element.elementHandle())?.waitForElementState('stable');
 
-    await secondTab.click({ force: true });
-
+    await secondTab.evaluate(node => {
+      node.dispatchEvent(
+        new MouseEvent('click', {
+          bubbles: true,
+          cancelable: true,
+          view: window,
+        }),
+      );
+    });
     await expect(element).toHaveJSProperty('activeid', secondTabId);
   });
 
@@ -504,9 +526,8 @@ test.describe('Tabs', () => {
 
     const thirdTab = tabs.nth(2);
 
-    const firstTabId = (await firstTab.getAttribute('id')) ?? '';
-
-    const thirdTabId = (await thirdTab.getAttribute('id')) ?? '';
+    const firstTabId = `${await firstTab.getAttribute('id')}`;
+    const thirdTabId = `${await thirdTab.getAttribute('id')}`;
 
     await element.evaluate((node: Tabs, firstTabId) => {
       node.activeid = firstTabId;
@@ -537,9 +558,8 @@ test.describe('Tabs', () => {
 
     const secondTab = tabs.nth(1);
 
-    const firstTabId = (await firstTab.getAttribute('id')) ?? '';
-
-    const secondTabId = (await secondTab.getAttribute('id')) ?? '';
+    const firstTabId = `${await firstTab.getAttribute('id')}`;
+    const secondTabId = `${await secondTab.getAttribute('id')}`;
 
     await element.evaluate((node: Tabs, firstTabId) => {
       node.activeid = firstTabId;
