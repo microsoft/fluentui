@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: ensure interop between assertSlots and old API",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
