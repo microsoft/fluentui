@@ -126,8 +126,10 @@ test.describe('TextInput', () => {
     }
   });
   test('should reflect control-size attribute values', async () => {
-    await element.evaluate((node: TextInput) => {
-      node.controlSize = 'small';
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+                <fluent-text-input control-size="small"></fluent-text-input>
+            `;
     });
 
     await expect(element).toHaveAttribute('control-size', 'small');
@@ -145,6 +147,12 @@ test.describe('TextInput', () => {
     });
     await expect(element).toHaveAttribute('control-size', 'large');
     await expect(element).toHaveJSProperty('controlSize', 'large');
+
+    await element.evaluate((node: TextInput) => {
+      node.controlSize = 'small';
+    });
+    await expect(element).toHaveAttribute('control-size', 'small');
+    await expect(element).toHaveJSProperty('controlSize', 'small');
   });
 
   test('should reflect appearance attribute values', async () => {
