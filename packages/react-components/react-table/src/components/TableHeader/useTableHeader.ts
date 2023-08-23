@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { TableHeaderProps, TableHeaderState } from './TableHeader.types';
 import { useTableContext } from '../../contexts/tableContext';
 
@@ -20,11 +20,14 @@ export const useTableHeader_unstable = (props: TableHeaderProps, ref: React.Ref<
     components: {
       root: rootComponent,
     },
-    root: getNativeElementProps(rootComponent, {
-      ref,
-      role: rootComponent === 'div' ? 'rowgroup' : undefined,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps(rootComponent, {
+        ref,
+        role: rootComponent === 'div' ? 'rowgroup' : undefined,
+        ...props,
+      }),
+      { elementType: rootComponent },
+    ),
     noNativeElements,
   };
 };

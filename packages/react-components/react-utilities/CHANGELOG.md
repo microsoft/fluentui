@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 03 Jul 2023 11:57:14 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 12:01:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.11.2)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.11.1..@fluentui/react-utilities_v9.11.2)
+
+### Patches
+
+- bugfix: ensure interop between assertSlots and old API ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by bernardo.sunderhus@gmail.com)
+
+## [9.11.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.11.1)
+
+Fri, 11 Aug 2023 12:14:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.11.0..@fluentui/react-utilities_v9.11.1)
+
+### Patches
+
+- chore: tests for slot.resolveShorthand behavior ([PR #28819](https://github.com/microsoft/fluentui/pull/28819) by bernardo.sunderhus@gmail.com)
+
+## [9.11.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.11.0)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.10.1..@fluentui/react-utilities_v9.11.0)
+
+### Minor changes
+
+- feat: implement new slot methods (slot and assertSlots) ([PR #28373](https://github.com/microsoft/fluentui/pull/28373) by bernardo.sunderhus@gmail.com)
 
 ## [9.10.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.10.1)
 

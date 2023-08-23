@@ -28,7 +28,7 @@ export interface ImmutableSet<Value> {
    * This is an internal API and should not be used directly.
    */
   // eslint-disable-next-line @typescript-eslint/naming-convention
-  dangerousGetInternalSet_unstable(): Set<Value>;
+  dangerouslyGetInternalSet_unstable(): Set<Value>;
 }
 
 const emptyImmutableSet = createImmutableSet<never>();
@@ -60,8 +60,12 @@ function dangerouslyCreateImmutableSet<Value>(internalSet: Set<Value>): Immutabl
       return internalSet[Symbol.iterator]();
     },
     // eslint-disable-next-line @typescript-eslint/naming-convention
-    dangerousGetInternalSet_unstable: () => internalSet,
+    dangerouslyGetInternalSet_unstable: () => internalSet,
   };
+}
+
+function isImmutableSet<Value>(value: unknown): value is ImmutableSet<Value> {
+  return typeof value === 'object' && value !== null && 'dangerouslyGetInternalSet_unstable' in value;
 }
 
 /**
@@ -75,5 +79,7 @@ function createImmutableSet<Value>(iterable?: Iterable<Value>): ImmutableSet<Val
 export const ImmutableSet = {
   empty: emptyImmutableSet,
   create: createImmutableSet,
-  dangerouslyCreate: dangerouslyCreateImmutableSet,
+  isImmutableSet,
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  dangerouslyCreate_unstable: dangerouslyCreateImmutableSet,
 };

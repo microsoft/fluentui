@@ -4,11 +4,11 @@ import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
-  resolveShorthand,
   mergeCallbacks,
   useEventCallback,
   useId,
   useMergedRefs,
+  slot,
 } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
@@ -158,62 +158,50 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   let triggerSlot: Slot<'input'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
 
-  triggerSlot = resolveShorthand(props.input, {
-    required: true,
+  triggerSlot = slot.always(props.input, {
     defaultProps: {
       ref: useMergedRefs(props.input?.ref, triggerRef),
       type: 'text',
       value: value ?? '',
       ...triggerNativeProps,
     },
+    elementType: 'input',
   });
-
   const resolvedPropsOnKeyDown = triggerSlot.onKeyDown;
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
-  triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
-
-  // only resolve listbox slot if needed
+  triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur); // only resolve listbox slot if needed
   listboxSlot =
     open || hasFocus
-      ? resolveShorthand(props.listbox, {
-          required: true,
-          defaultProps: {
-            children: props.children,
-            style: popupDimensions,
-          },
+      ? slot.optional(props.listbox, {
+          renderByDefault: true,
+          defaultProps: { children: props.children, style: popupDimensions },
+          elementType: Listbox,
         })
       : undefined;
-
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
-
   if (hideActiveDescendant) {
     triggerSlot['aria-activedescendant'] = undefined;
   }
-
   const state: ComboboxState = {
-    components: {
-      root: 'div',
-      input: 'input',
-      expandIcon: 'span',
-      listbox: Listbox,
-    },
-    root: resolveShorthand(props.root, {
-      required: true,
+    components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
+    root: slot.always(props.root, {
       defaultProps: {
         'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
         ...rootNativeProps,
       },
+      elementType: 'div',
     }),
     input: triggerSlot,
     listbox: listboxSlot,
-    expandIcon: resolveShorthand(props.expandIcon, {
-      required: true,
+    expandIcon: slot.optional(props.expandIcon, {
+      renderByDefault: true,
       defaultProps: {
         'aria-expanded': open,
         children: <ChevronDownIcon />,
         role: 'button',
       },
+      elementType: 'span',
     }),
     ...baseState,
   };

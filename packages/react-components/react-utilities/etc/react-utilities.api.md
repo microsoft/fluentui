@@ -7,8 +7,14 @@
 import { DispatchWithoutAction } from 'react';
 import * as React_2 from 'react';
 
+// @public
+function always<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined, options: SlotOptions<Props>): SlotComponentType<Props>;
+
 // @internal
 export function applyTriggerPropsToChildren<TriggerChildProps>(children: TriggerProps<TriggerChildProps>['children'], triggerChildProps: TriggerChildProps): React_2.ReactElement | null;
+
+// @internal
+export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asserts state is SlotComponents<Slots>;
 
 // @public
 export function canUseDOM(): boolean;
@@ -105,6 +111,9 @@ export function isMouseEvent(event: TouchOrMouseEvent): event is MouseEvent | Re
 export function isResolvedShorthand<Shorthand extends Slot<UnknownSlotProps>>(shorthand?: Shorthand): shorthand is ExtractSlotProps<Shorthand>;
 
 // @public
+export function isSlot<Props extends {}>(element: unknown): element is SlotComponentType<Props>;
+
+// @public
 export function isTouchEvent(event: TouchOrMouseEvent): event is TouchEvent | React_2.TouchEvent;
 
 // @internal
@@ -123,6 +132,11 @@ export type OnSelectionChangeCallback = (event: React_2.SyntheticEvent, selected
 export type OnSelectionChangeData = {
     selectedItems: Set<SelectionItemId>;
 };
+
+// @public
+function optional<Props extends UnknownSlotProps>(value: Props | SlotShorthandValue | undefined | null, options: {
+    renderByDefault?: boolean;
+} & SlotOptions<Props>): SlotComponentType<Props> | undefined;
 
 // @internal (undocumented)
 export interface PriorityQueue<T> {
@@ -154,7 +168,10 @@ export type RefObjectFunction<T> = React_2.RefObject<T> & ((value: T) => void);
 export function resetIdsForTests(): void;
 
 // @public
-export const resolveShorthand: ResolveShorthandFunction;
+export const resolveShorthand: ResolveShorthandFunction<UnknownSlotProps>;
+
+// @public
+function resolveShorthand_2<Props extends UnknownSlotProps | null | undefined>(value: Props | SlotShorthandValue): Props;
 
 // @public (undocumented)
 export type ResolveShorthandFunction<Props extends UnknownSlotProps = UnknownSlotProps> = {
@@ -211,12 +228,38 @@ export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentTyp
     } & WithSlotRenderFunction<IntrinsicElementProps<As>>;
 }[AlternateAs] | null : 'Error: First parameter to Slot must not be not a union of types. See documentation of Slot type.';
 
+declare namespace slot {
+    export {
+        always,
+        optional,
+        resolveShorthand_2 as resolveShorthand,
+        SlotOptions
+    }
+}
+export { slot }
+
+// @internal
+export const SLOT_ELEMENT_TYPE_SYMBOL: unique symbol;
+
 // @internal
 export const SLOT_RENDER_FUNCTION_SYMBOL: unique symbol;
 
 // @public
 export type SlotClassNames<Slots> = {
     [SlotName in keyof Slots]-?: string;
+};
+
+// @public
+export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
+    (props: React_2.PropsWithChildren<{}>): React_2.ReactElement | null;
+    [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
+    [SLOT_ELEMENT_TYPE_SYMBOL]: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+};
+
+// @public (undocumented)
+export type SlotOptions<Props extends UnknownSlotProps> = {
+    elementType: React_2.ComponentType<Props> | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
+    defaultProps?: Partial<Props>;
 };
 
 // @public
@@ -250,6 +293,9 @@ export type TriggerProps<TriggerChildProps = unknown> = {
 export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'children' | 'className' | 'style'> & {
     as?: keyof JSX.IntrinsicElements;
 };
+
+// @internal
+export function useAnimationFrame(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
 
 // @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
@@ -307,7 +353,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
-export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
+export function useTimeout(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
 
 // (No @packageDocumentation comment for this package)
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 
 import type { ToastTitleProps, ToastTitleState } from './ToastTitle.types';
@@ -38,19 +38,22 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
   }
 
   return {
-    action: resolveShorthand(props.action),
-    components: {
-      root: 'div',
-      media: 'div',
-      action: 'div',
-    },
-    media: resolveShorthand(props.media, { required: !!intent, defaultProps: { children: defaultIcon } }),
-    root: getNativeElementProps('div', {
-      ref,
-      children: props.children,
-      id: titleId,
-      ...props,
+    action: slot.optional(props.action, { elementType: 'div' }),
+    components: { root: 'div', media: 'div', action: 'div' },
+    media: slot.optional(props.media, {
+      renderByDefault: !!intent,
+      defaultProps: { children: defaultIcon },
+      elementType: 'div',
     }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        children: props.children,
+        id: titleId,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     intent,
     backgroundAppearance,
   };

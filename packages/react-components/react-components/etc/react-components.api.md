@@ -44,6 +44,7 @@ import { AccordionToggleData } from '@fluentui/react-accordion';
 import { AccordionToggleEvent } from '@fluentui/react-accordion';
 import { AccordionToggleEventHandler } from '@fluentui/react-accordion';
 import { arrowHeights } from '@fluentui/react-popover';
+import { assertSlots } from '@fluentui/react-utilities';
 import { Avatar } from '@fluentui/react-avatar';
 import { avatarClassNames } from '@fluentui/react-avatar';
 import { AvatarGroup } from '@fluentui/react-avatar';
@@ -180,6 +181,7 @@ import { DataGridCellProps } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
 import { DataGridCellState } from '@fluentui/react-table';
 import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextProvider } from '@fluentui/react-table';
 import { DataGridContextValue } from '@fluentui/react-table';
 import { DataGridContextValues } from '@fluentui/react-table';
 import { DataGridFocusMode } from '@fluentui/react-table';
@@ -269,6 +271,13 @@ import { FieldControlPropsOptions } from '@fluentui/react-field';
 import { FieldProps } from '@fluentui/react-field';
 import { FieldSlots } from '@fluentui/react-field';
 import { FieldState } from '@fluentui/react-field';
+import { flattenTree_unstable } from '@fluentui/react-tree';
+import { FlattenTreeItem } from '@fluentui/react-tree';
+import { FlatTree } from '@fluentui/react-tree';
+import { flatTreeClassNames } from '@fluentui/react-tree';
+import { FlatTreeProps } from '@fluentui/react-tree';
+import { FlatTreeSlots } from '@fluentui/react-tree';
+import { FlatTreeState } from '@fluentui/react-tree';
 import { FluentProvider } from '@fluentui/react-provider';
 import { fluentProviderClassNames } from '@fluentui/react-provider';
 import { FluentProviderContextValues } from '@fluentui/react-provider';
@@ -286,6 +295,10 @@ import { getSlots } from '@fluentui/react-utilities';
 import { GriffelRenderer } from '@griffel/react';
 import { GriffelResetStyle } from '@griffel/react';
 import { GriffelStyle } from '@griffel/react';
+import { HeadlessFlatTree } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItem } from '@fluentui/react-tree';
+import { HeadlessFlatTreeItemProps } from '@fluentui/react-tree';
+import { HeadlessFlatTreeOptions } from '@fluentui/react-tree';
 import { HorizontalSpacingTokens } from '@fluentui/react-theme';
 import { IdPrefixProvider } from '@fluentui/react-utilities';
 import { Image as Image_2 } from '@fluentui/react-image';
@@ -401,6 +414,7 @@ import { MenuTriggerChildProps } from '@fluentui/react-menu';
 import { MenuTriggerContextProvider } from '@fluentui/react-menu';
 import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
+import { mergeCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
@@ -514,6 +528,7 @@ import { renderDivider_unstable } from '@fluentui/react-divider';
 import { renderDropdown_unstable } from '@fluentui/react-combobox';
 import { RendererProvider } from '@griffel/react';
 import { renderField_unstable } from '@fluentui/react-field';
+import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
 import { renderInput_unstable } from '@fluentui/react-input';
@@ -576,7 +591,12 @@ import { renderToolbar_unstable } from '@fluentui/react-toolbar';
 import { renderToolbarGroup_unstable } from '@fluentui/react-toolbar';
 import { renderTooltip_unstable } from '@fluentui/react-tooltip';
 import { renderToStyleElements } from '@griffel/react';
+import { renderTree_unstable } from '@fluentui/react-tree';
+import { renderTreeItem_unstable } from '@fluentui/react-tree';
+import { renderTreeItemLayout_unstable } from '@fluentui/react-tree';
+import { renderTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
 import { resetIdsForTests } from '@fluentui/react-utilities';
+import { resolvePositioningShorthand } from '@fluentui/react-positioning';
 import { resolveShorthand } from '@fluentui/react-utilities';
 import { ResolveShorthandFunction } from '@fluentui/react-utilities';
 import { ResolveShorthandOptions } from '@fluentui/react-utilities';
@@ -613,7 +633,10 @@ import { SliderProps } from '@fluentui/react-slider';
 import { SliderSlots } from '@fluentui/react-slider';
 import { SliderState } from '@fluentui/react-slider';
 import { Slot } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
+import { SlotComponentType } from '@fluentui/react-utilities';
+import { SlotOptions } from '@fluentui/react-utilities';
 import { SlotPropsRecord } from '@fluentui/react-utilities';
 import { SlotRenderFunction } from '@fluentui/react-utilities';
 import { SortDirection } from '@fluentui/react-table';
@@ -826,6 +849,40 @@ import { TooltipProps } from '@fluentui/react-tooltip';
 import { TooltipSlots } from '@fluentui/react-tooltip';
 import { TooltipState } from '@fluentui/react-tooltip';
 import { TooltipTriggerProps } from '@fluentui/react-tooltip';
+import { Tree } from '@fluentui/react-tree';
+import { TreeCheckedChangeData } from '@fluentui/react-tree';
+import { TreeCheckedChangeEvent } from '@fluentui/react-tree';
+import { treeClassNames } from '@fluentui/react-tree';
+import { TreeContextValue } from '@fluentui/react-tree';
+import { TreeContextValues } from '@fluentui/react-tree';
+import { TreeItem } from '@fluentui/react-tree';
+import { treeItemClassNames } from '@fluentui/react-tree';
+import { TreeItemContextValue } from '@fluentui/react-tree';
+import { TreeItemLayout } from '@fluentui/react-tree';
+import { treeItemLayoutClassNames } from '@fluentui/react-tree';
+import { TreeItemLayoutProps } from '@fluentui/react-tree';
+import { TreeItemLayoutSlots } from '@fluentui/react-tree';
+import { TreeItemLayoutState } from '@fluentui/react-tree';
+import { treeItemLevelToken } from '@fluentui/react-tree';
+import { TreeItemPersonaLayout } from '@fluentui/react-tree';
+import { treeItemPersonaLayoutClassNames } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutProps } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutSlots } from '@fluentui/react-tree';
+import { TreeItemPersonaLayoutState } from '@fluentui/react-tree';
+import { TreeItemProps } from '@fluentui/react-tree';
+import { TreeItemProvider } from '@fluentui/react-tree';
+import { TreeItemSlots } from '@fluentui/react-tree';
+import { TreeItemState } from '@fluentui/react-tree';
+import { TreeItemValue } from '@fluentui/react-tree';
+import { TreeNavigationData_unstable } from '@fluentui/react-tree';
+import { TreeNavigationEvent_unstable } from '@fluentui/react-tree';
+import { TreeOpenChangeData } from '@fluentui/react-tree';
+import { TreeOpenChangeEvent } from '@fluentui/react-tree';
+import { TreeProps } from '@fluentui/react-tree';
+import { TreeProvider } from '@fluentui/react-tree';
+import { TreeSelectionValue } from '@fluentui/react-tree';
+import { TreeSlots } from '@fluentui/react-tree';
+import { TreeState } from '@fluentui/react-tree';
 import { TypographyStyle } from '@fluentui/react-theme';
 import { TypographyStyles } from '@fluentui/react-theme';
 import { typographyStyles } from '@fluentui/react-theme';
@@ -882,6 +939,7 @@ import { useDataGridBody_unstable } from '@fluentui/react-table';
 import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
 import { useDataGridCell_unstable } from '@fluentui/react-table';
 import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridContext_unstable } from '@fluentui/react-table';
 import { useDataGridContextValues_unstable } from '@fluentui/react-table';
 import { useDataGridHeader_unstable } from '@fluentui/react-table';
 import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
@@ -908,11 +966,15 @@ import { useDivider_unstable } from '@fluentui/react-divider';
 import { useDividerStyles_unstable } from '@fluentui/react-divider';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
+import { useEventCallback } from '@fluentui/react-utilities';
 import { useField_unstable } from '@fluentui/react-field';
 import { useFieldContext_unstable } from '@fluentui/react-field';
 import { useFieldContextValues_unstable } from '@fluentui/react-field';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { useFieldStyles_unstable } from '@fluentui/react-field';
+import { useFlatTree_unstable } from '@fluentui/react-tree';
+import { useFlatTreeContextValues_unstable } from '@fluentui/react-tree';
+import { useFlatTreeStyles_unstable } from '@fluentui/react-tree';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
@@ -922,6 +984,7 @@ import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFocusObserved } from '@fluentui/react-tabster';
 import { useFocusWithin } from '@fluentui/react-tabster';
+import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
@@ -1001,6 +1064,8 @@ import { useRadioGroupContextValue_unstable } from '@fluentui/react-radio';
 import { useRadioGroupContextValues } from '@fluentui/react-radio';
 import { useRadioGroupStyles_unstable } from '@fluentui/react-radio';
 import { useRadioStyles_unstable } from '@fluentui/react-radio';
+import { useRestoreFocusSource } from '@fluentui/react-tabster';
+import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
@@ -1089,6 +1154,18 @@ import { useToolbarToggleButtonStyles_unstable } from '@fluentui/react-toolbar';
 import { useTooltip_unstable } from '@fluentui/react-tooltip';
 import { useTooltipStyles_unstable } from '@fluentui/react-tooltip';
 import { useTooltipVisibility_unstable as useTooltipVisibility } from '@fluentui/react-shared-contexts';
+import { useTree_unstable } from '@fluentui/react-tree';
+import { useTreeContext_unstable } from '@fluentui/react-tree';
+import { useTreeContextValues_unstable } from '@fluentui/react-tree';
+import { useTreeItem_unstable } from '@fluentui/react-tree';
+import { useTreeItemContext_unstable } from '@fluentui/react-tree';
+import { useTreeItemContextValues_unstable } from '@fluentui/react-tree';
+import { useTreeItemLayout_unstable } from '@fluentui/react-tree';
+import { useTreeItemLayoutStyles_unstable } from '@fluentui/react-tree';
+import { useTreeItemPersonaLayout_unstable } from '@fluentui/react-tree';
+import { useTreeItemPersonaLayoutStyles_unstable } from '@fluentui/react-tree';
+import { useTreeItemStyles_unstable } from '@fluentui/react-tree';
+import { useTreeStyles_unstable } from '@fluentui/react-tree';
 import { VerticalSpacingTokens } from '@fluentui/react-theme';
 import { webDarkTheme } from '@fluentui/react-theme';
 import { webLightTheme } from '@fluentui/react-theme';
@@ -1172,6 +1249,8 @@ export { AccordionToggleEvent }
 export { AccordionToggleEventHandler }
 
 export { arrowHeights }
+
+export { assertSlots }
 
 export { Avatar }
 
@@ -1445,6 +1524,8 @@ export { DataGridCellState }
 
 export { dataGridClassNames }
 
+export { DataGridContextProvider }
+
 export { DataGridContextValue }
 
 export { DataGridContextValues }
@@ -1623,6 +1704,20 @@ export { FieldSlots }
 
 export { FieldState }
 
+export { flattenTree_unstable }
+
+export { FlattenTreeItem }
+
+export { FlatTree }
+
+export { flatTreeClassNames }
+
+export { FlatTreeProps }
+
+export { FlatTreeSlots }
+
+export { FlatTreeState }
+
 export { FluentProvider }
 
 export { fluentProviderClassNames }
@@ -1656,6 +1751,14 @@ export { GriffelRenderer }
 export { GriffelResetStyle }
 
 export { GriffelStyle }
+
+export { HeadlessFlatTree }
+
+export { HeadlessFlatTreeItem }
+
+export { HeadlessFlatTreeItemProps }
+
+export { HeadlessFlatTreeOptions }
 
 export { HorizontalSpacingTokens }
 
@@ -1887,6 +1990,8 @@ export { MenuTriggerProps }
 
 export { MenuTriggerState }
 
+export { mergeCallbacks }
+
 export { mergeClasses }
 
 export { OnOpenChangeData }
@@ -2113,6 +2218,8 @@ export { RendererProvider }
 
 export { renderField_unstable }
 
+export { renderFlatTree_unstable }
+
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
@@ -2237,7 +2344,17 @@ export { renderTooltip_unstable }
 
 export { renderToStyleElements }
 
+export { renderTree_unstable }
+
+export { renderTreeItem_unstable }
+
+export { renderTreeItemLayout_unstable }
+
+export { renderTreeItemPersonaLayout_unstable }
+
 export { resetIdsForTests }
+
+export { resolvePositioningShorthand }
 
 export { resolveShorthand }
 
@@ -2311,7 +2428,13 @@ export { SliderState }
 
 export { Slot }
 
+export { slot }
+
 export { SlotClassNames }
+
+export { SlotComponentType }
+
+export { SlotOptions }
 
 export { SlotPropsRecord }
 
@@ -2737,6 +2860,74 @@ export { TooltipState }
 
 export { TooltipTriggerProps }
 
+export { Tree }
+
+export { TreeCheckedChangeData }
+
+export { TreeCheckedChangeEvent }
+
+export { treeClassNames }
+
+export { TreeContextValue }
+
+export { TreeContextValues }
+
+export { TreeItem }
+
+export { treeItemClassNames }
+
+export { TreeItemContextValue }
+
+export { TreeItemLayout }
+
+export { treeItemLayoutClassNames }
+
+export { TreeItemLayoutProps }
+
+export { TreeItemLayoutSlots }
+
+export { TreeItemLayoutState }
+
+export { treeItemLevelToken }
+
+export { TreeItemPersonaLayout }
+
+export { treeItemPersonaLayoutClassNames }
+
+export { TreeItemPersonaLayoutProps }
+
+export { TreeItemPersonaLayoutSlots }
+
+export { TreeItemPersonaLayoutState }
+
+export { TreeItemProps }
+
+export { TreeItemProvider }
+
+export { TreeItemSlots }
+
+export { TreeItemState }
+
+export { TreeItemValue }
+
+export { TreeNavigationData_unstable }
+
+export { TreeNavigationEvent_unstable }
+
+export { TreeOpenChangeData }
+
+export { TreeOpenChangeEvent }
+
+export { TreeProps }
+
+export { TreeProvider }
+
+export { TreeSelectionValue }
+
+export { TreeSlots }
+
+export { TreeState }
+
 export { TypographyStyle }
 
 export { TypographyStyles }
@@ -2849,6 +3040,8 @@ export { useDataGridCell_unstable }
 
 export { useDataGridCellStyles_unstable }
 
+export { useDataGridContext_unstable }
+
 export { useDataGridContextValues_unstable }
 
 export { useDataGridHeader_unstable }
@@ -2901,6 +3094,8 @@ export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
 
+export { useEventCallback }
+
 export { useField_unstable }
 
 export { useFieldContext_unstable }
@@ -2910,6 +3105,12 @@ export { useFieldContextValues_unstable }
 export { useFieldControlProps_unstable }
 
 export { useFieldStyles_unstable }
+
+export { useFlatTree_unstable }
+
+export { useFlatTreeContextValues_unstable }
+
+export { useFlatTreeStyles_unstable }
 
 export { useFluent }
 
@@ -2928,6 +3129,8 @@ export { useFocusFinders }
 export { useFocusObserved }
 
 export { useFocusWithin }
+
+export { useHeadlessFlatTree_unstable }
 
 export { useId }
 
@@ -3086,6 +3289,10 @@ export { useRadioGroupContextValues }
 export { useRadioGroupStyles_unstable }
 
 export { useRadioStyles_unstable }
+
+export { useRestoreFocusSource }
+
+export { useRestoreFocusTarget }
 
 export { useScrollbarWidth }
 
@@ -3262,6 +3469,30 @@ export { useTooltip_unstable }
 export { useTooltipStyles_unstable }
 
 export { useTooltipVisibility }
+
+export { useTree_unstable }
+
+export { useTreeContext_unstable }
+
+export { useTreeContextValues_unstable }
+
+export { useTreeItem_unstable }
+
+export { useTreeItemContext_unstable }
+
+export { useTreeItemContextValues_unstable }
+
+export { useTreeItemLayout_unstable }
+
+export { useTreeItemLayoutStyles_unstable }
+
+export { useTreeItemPersonaLayout_unstable }
+
+export { useTreeItemPersonaLayoutStyles_unstable }
+
+export { useTreeItemStyles_unstable }
+
+export { useTreeStyles_unstable }
 
 export { VerticalSpacingTokens }
 
