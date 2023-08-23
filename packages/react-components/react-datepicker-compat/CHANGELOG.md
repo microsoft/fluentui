@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-datepicker-compat
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.3.3)
+
+Mon, 21 Aug 2023 11:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-datepicker-compat_v0.3.2..@fluentui/react-datepicker-compat_v0.3.3)
+
+### Patches
+
+- fix: Make year picker react to go to today. ([PR #28907](https://github.com/microsoft/fluentui/pull/28907) by esteban.230@hotmail.com)
+- Bump @fluentui/react-popover to v9.7.16 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
+- Bump @fluentui/react-positioning to v9.9.5 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-datepicker-compat_v0.3.2)
 

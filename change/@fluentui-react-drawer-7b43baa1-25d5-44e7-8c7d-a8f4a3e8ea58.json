@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: rename values of position prop from left/right to start/end",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

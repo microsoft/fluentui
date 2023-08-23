@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.8)
+
+Mon, 21 Aug 2023 11:38:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.7..@fluentui/react-menu_v9.12.8)
+
+### Patches
+
+- fix: make MenuItem with long content grow its height ([PR #28675](https://github.com/microsoft/fluentui/pull/28675) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-positioning to v9.9.5 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
 
 ## [9.12.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.7)
 

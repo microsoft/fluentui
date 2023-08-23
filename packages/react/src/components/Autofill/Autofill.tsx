@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
+import {
+  Async,
+  getDocument,
+  getNativeProps,
+  initializeComponentRef,
+  inputProperties,
+  isIE11,
+  KeyCodes,
+} from '../../Utilities';
+import { WindowContext } from '@fluentui/react-window-provider';
 import type { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
@@ -23,6 +32,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   public static defaultProps = {
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
+  // need to check WindowContext to get the provided document
+  public static contextType = WindowContext;
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
@@ -95,7 +106,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
-    const isFocused = this._inputElement.current && this._inputElement.current === document.activeElement;
+    const document = this.context?.window.document || getDocument(this._inputElement.current);
+    const isFocused = this._inputElement.current && this._inputElement.current === document?.activeElement;
 
     if (
       isFocused &&
