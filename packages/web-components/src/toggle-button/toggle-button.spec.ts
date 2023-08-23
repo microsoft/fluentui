@@ -25,8 +25,8 @@ test.describe('Toggle Button', () => {
   test('should set the `disabled` attribute on the internal control', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-                <fluent-toggle-button disabled></fluent-toggle-button>
-            `;
+          <fluent-toggle-button disabled></fluent-toggle-button>
+      `;
     });
 
     await expect(element).toHaveJSProperty('disabled', true);
@@ -122,10 +122,17 @@ test.describe('Toggle Button', () => {
             `;
     });
 
+    await element.waitFor({ state: 'attached' });
+
     await element.click();
 
-    const ariaPressed = await control.getAttribute('aria-pressed');
-    expect(ariaPressed).toBe('true');
+    await expect(element).toHaveAttribute('aria-pressed', 'true');
+    await expect(control).toHaveAttribute('aria-pressed', 'true');
+
+    await element.click();
+
+    await expect(element).toHaveAttribute('aria-pressed', 'false');
+    await expect(control).toHaveAttribute('aria-pressed', 'false');
   });
 
   test('should set and retrieve the `appearance` property correctly', async () => {
