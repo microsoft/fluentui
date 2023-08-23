@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(cxe-prg): migrate to new slot API",
-  "packageName": "@fluentui/react-drawer",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

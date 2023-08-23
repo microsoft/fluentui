@@ -295,6 +295,9 @@ export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'childr
 };
 
 // @internal
+export function useAnimationFrame(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+
+// @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
 // @internal (undocumented)
@@ -324,25 +327,6 @@ export function useIsSSR(): boolean;
 
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
-
-// Warning: (ae-incompatible-release-tags) The symbol "useMotionPresence" is marked as @public, but its signature references "UseMotionPresenceOptions" which is marked as @internal
-// Warning: (ae-incompatible-release-tags) The symbol "useMotionPresence" is marked as @public, but its signature references "UseMotionPresenceState" which is marked as @internal
-//
-// @public
-export const useMotionPresence: <TElement extends HTMLElement>(present: boolean, options?: UseMotionPresenceOptions) => UseMotionPresenceState<TElement>;
-
-// @internal
-export type UseMotionPresenceOptions = {
-    animateOnFirstMount?: boolean;
-};
-
-// @internal
-export type UseMotionPresenceState<TElement extends HTMLElement> = {
-    ref: React_2.RefCallback<TElement>;
-    shouldRender: boolean;
-    visible: boolean;
-    motionState: 'entering' | 'exiting' | 'resting' | 'unmounted';
-};
 
 // @internal (undocumented)
 export type UseOnClickOrScrollOutsideOptions = {

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: new useMotionPresence hook - get the state for css animations/transitions",
-  "packageName": "@fluentui/react-utilities",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

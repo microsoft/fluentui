@@ -1,8 +1,62 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Fri, 04 Aug 2023 08:52:58 GMT and should not be manually modified.
+This log was last generated on Mon, 21 Aug 2023 11:38:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.17)
+
+Mon, 21 Aug 2023 11:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.16..@fluentui/react-drawer_v9.0.0-beta.17)
+
+### Changes
+
+- fix: rename values of position prop from left/right to start/end ([PR #28905](https://github.com/microsoft/fluentui/pull/28905) by marcosvmmoura@gmail.com)
+
+## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.16)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.15..@fluentui/react-drawer_v9.0.0-beta.16)
+
+### Changes
+
+- Bump @fluentui/react-dialog to v9.5.24 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [9.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.15)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.14..@fluentui/react-drawer_v9.0.0-beta.15)
+
+### Changes
+
+- Bump @fluentui/react-dialog to v9.5.23 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+
+## [9.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.14)
+
+Fri, 11 Aug 2023 12:14:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.13..@fluentui/react-drawer_v9.0.0-beta.14)
+
+### Changes
+
+- Bump @fluentui/react-dialog to v9.5.22 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+
+## [9.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.13)
+
+Wed, 09 Aug 2023 13:16:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.12..@fluentui/react-drawer_v9.0.0-beta.13)
+
+### Changes
+
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+- chore(cxe-prg): migrate to new slot API ([PR #28752](https://github.com/microsoft/fluentui/pull/28752) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-dialog to v9.5.21 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.2 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-theme to v9.1.11 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.12)
 

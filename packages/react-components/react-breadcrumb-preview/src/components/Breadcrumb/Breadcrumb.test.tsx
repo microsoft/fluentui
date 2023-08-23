@@ -109,7 +109,7 @@ describe('Breadcrumb', () => {
               class="fui-BreadcrumbItem"
             >
               <button
-                class="fui-Link fui-Link fui-BreadcrumbLink"
+                class="fui-Link fui-BreadcrumbLink"
                 type="button"
               >
                 Link 1

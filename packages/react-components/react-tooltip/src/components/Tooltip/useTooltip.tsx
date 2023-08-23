@@ -6,7 +6,6 @@ import {
 } from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
-  resolveShorthand,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
@@ -16,6 +15,7 @@ import {
   getTriggerChild,
   mergeCallbacks,
   useEventCallback,
+  slot,
 } from '@fluentui/react-utilities';
 import type { TooltipProps, TooltipState, TooltipChildProps } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
@@ -76,11 +76,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     components: {
       content: 'div',
     },
-    content: resolveShorthand(content, {
+    content: slot.always(content, {
       defaultProps: {
         role: 'tooltip',
       },
-      required: true,
+      elementType: 'div',
     }),
   };
 

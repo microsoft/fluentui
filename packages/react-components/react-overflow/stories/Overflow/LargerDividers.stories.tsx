@@ -57,7 +57,7 @@ export const LargerDividers = () => {
   const styles = useStyles();
 
   return (
-    <Overflow padding={20}>
+    <Overflow>
       <div className={mergeClasses(styles.container, styles.resizableArea)}>
         <OverflowItem id={'1'} groupId={'1'}>
           <Button>Item 1</Button>

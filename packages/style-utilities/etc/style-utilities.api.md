@@ -82,7 +82,7 @@ export { DefaultPalette }
 export const EdgeChromiumHighContrastSelector = "@media screen and (-ms-high-contrast: active), screen and (forced-colors: active)";
 
 // @public (undocumented)
-export const FLUENT_CDN_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20230524.001";
+export const FLUENT_CDN_BASE_URL = "https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002";
 
 // @public
 export function focusClear(): IRawStyle;

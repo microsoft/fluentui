@@ -1,8 +1,33 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 04 Aug 2023 07:35:28 GMT and should not be manually modified.
+This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.14)
+
+Fri, 18 Aug 2023 07:35:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.13..@fluentui/react_v8.110.14)
+
+### Patches
+
+- chore: fix all lint warnings for @fluentui/react ([PR #28888](https://github.com/microsoft/fluentui/pull/28888) by seanmonahan@microsoft.com)
+- fix(DatePicker): readOnlyTextField styles should win over textfield's default styles. ([PR #28891](https://github.com/microsoft/fluentui/pull/28891) by esteban.230@hotmail.com)
+- fix(DatePicker): Make year picker react to go to today. ([PR #28907](https://github.com/microsoft/fluentui/pull/28907) by esteban.230@hotmail.com)
+- Bump @fluentui/foundation-legacy to v8.2.44 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.24 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/react-focus to v8.8.31 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/style-utilities to v8.9.17 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+- Bump @fluentui/theme to v2.6.35 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+
+## [8.110.13](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.13)
+
+Fri, 11 Aug 2023 07:34:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.12..@fluentui/react_v8.110.13)
+
+### Patches
+
+- Pass-through pointer events in Details Row focus rects ([PR #28439](https://github.com/microsoft/fluentui/pull/28439) by tmichon@microsoft.com)
 
 ## [8.110.12](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.12)
 
