@@ -8,16 +8,14 @@ test.describe('CounterBadge component', () => {
   let element: Locator;
   let root: Locator;
 
-  test.beforeAll(async ({ browser }) => {
+  test.beforeEach(async ({ browser }) => {
     page = await browser.newPage();
-
     element = page.locator('fluent-counter-badge');
     root = page.locator('#root');
-
     await page.goto(fixtureURL('components-badge-counter-badge--counter-badge'));
   });
 
-  test.afterAll(async () => {
+  test.afterEach(async () => {
     await page.close();
   });
 
@@ -96,6 +94,7 @@ test.describe('CounterBadge component', () => {
 
     const shadowContent = await page.evaluate(() => {
       const element = document.querySelector('fluent-counter-badge');
+      console.log(element);
       return element?.shadowRoot?.textContent;
     });
 
