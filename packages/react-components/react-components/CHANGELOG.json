@@ -2,6 +2,132 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 23 Aug 2023 12:01:48 GMT",
+      "tag": "@fluentui/react-components_v9.29.5",
+      "version": "9.29.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a8256f19f7cda7695b1de3c6b37768933bec7e4f",
+            "comment": "fix: added cursor style in AccordionHeader for AccordionItem disabled state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc",
+            "comment": "bugfix: ensure interop between assertSlots and old API"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8329d0a01d1b421aa10b6e993f75a0d61294fb06",
+            "comment": "chore: adds tsconfig.cy.json file to root of the package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Aug 2023 11:38:00 GMT",
+      "tag": "@fluentui/react-components_v9.29.4",
+      "version": "9.29.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "039d87ed8c63c1bcfbf7d4c4a6fa61ac92f838bd",
+            "comment": "fix: breadcrumb spacing"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "d73590f34a41a22776a0bc2c41391b589531e679",
+            "comment": "fix: Make year picker react to go to today."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f042ed0d53377114375be20bd87f81a97e04e22c",
+            "comment": "fix: make MenuItem with long content grow its height"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "89bd803c8433397784d62a4172a988240a779596",
+            "comment": "fix: make event listners passive"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34",
+            "comment": "chore: migrate to new slots API"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "ad2fe1f95bbd2c9a053e9a058ccabc7e153b413c",
+            "comment": "chore: add documentation"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "55e07ffc8d180554fb027841e7d2a89637cefcb3",
+            "comment": "fix: use `:active` selector for pressed style instead of `:hover:active`"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3d6b8e8646a5dc6fe6c05fcbf50fefd0e61db92c",
+            "comment": "fix: stabilize `handleActionsRef` created by TreeItem"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "768de13c5e30222f64b2cc453bc4b134a6e90712",
+            "comment": "fix: rename values of position prop from left/right to start/end"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "7899bcf885c6599dcfe23cddb532c954b25aca79",
+            "comment": "fix: Cursor should be pointer when hovering the button to show it's a button."
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "40cd99729f234f5c705ade1cbca7c5a75e454e9e",
+            "comment": "doc: adds drag & drop example"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 17 Aug 2023 13:49:56 GMT",
       "tag": "@fluentui/react-components_v9.29.3",
       "version": "9.29.3",

@@ -1,9 +1,8 @@
 import * as React from 'react';
 
-type UseBrowserTimerSetter =
+type BrowserTimerSetter =
   | ((fn: () => void, duration?: number, ...args: Record<string, unknown>[]) => number)
   | ((fn: () => void) => number);
-type UseBrowserTimerCancel = ((timerId: number) => void) | (() => void);
 
 /**
  * @internal
@@ -21,27 +20,30 @@ type UseBrowserTimerCancel = ((timerId: number) => void) | (() => void);
  * setTimer(() => console.log('Hello world!'), 1000);
  * cancelTimer();
  */
-export function useBrowserTimer<TSetter extends UseBrowserTimerSetter, TCancel extends UseBrowserTimerCancel>(
-  setTimer: TSetter,
-  cancelTimer: TCancel,
-) {
-  const [timeout] = React.useState(() => ({
-    id: undefined as number | undefined,
-    set: (fn: () => void, delay?: number) => {
-      timeout.cancel();
-      timeout.id = delay ? setTimer(fn, delay) : setTimer(fn);
-      return timeout.id;
-    },
-    cancel: () => {
-      if (timeout.id !== undefined) {
-        cancelTimer(timeout.id);
-        timeout.id = undefined;
+export function useBrowserTimer(setTimer: BrowserTimerSetter, cancelTimer: (id: number) => void) {
+  const id = React.useRef<number | undefined>(undefined);
+
+  const set = React.useCallback(
+    (fn: () => void, delay?: number) => {
+      if (id.current !== undefined) {
+        cancelTimer(id.current);
       }
+
+      id.current = setTimer(fn, delay);
+      return id.current;
     },
-  }));
+    [cancelTimer, setTimer],
+  );
+
+  const cancel = React.useCallback(() => {
+    if (id.current !== undefined) {
+      cancelTimer(id.current);
+      id.current = undefined;
+    }
+  }, [cancelTimer]);
 
   // Clean up the timeout when the component is unloaded
-  React.useEffect(() => timeout.cancel, [timeout]);
+  React.useEffect(() => cancel, [cancel]);
 
-  return [timeout.set, timeout.cancel] as const;
+  return [set, cancel] as const;
 }

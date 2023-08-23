@@ -471,6 +471,8 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
+    // (undocumented)
     get cursorLocation(): number | null;
     // (undocumented)
     static defaultProps: {

@@ -181,6 +181,7 @@ import { DataGridCellProps } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
 import { DataGridCellState } from '@fluentui/react-table';
 import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextProvider } from '@fluentui/react-table';
 import { DataGridContextValue } from '@fluentui/react-table';
 import { DataGridContextValues } from '@fluentui/react-table';
 import { DataGridFocusMode } from '@fluentui/react-table';
@@ -938,6 +939,7 @@ import { useDataGridBody_unstable } from '@fluentui/react-table';
 import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
 import { useDataGridCell_unstable } from '@fluentui/react-table';
 import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridContext_unstable } from '@fluentui/react-table';
 import { useDataGridContextValues_unstable } from '@fluentui/react-table';
 import { useDataGridHeader_unstable } from '@fluentui/react-table';
 import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
@@ -1524,6 +1526,8 @@ export { DataGridCellSlots }
 export { DataGridCellState }
 
 export { dataGridClassNames }
+
+export { DataGridContextProvider }
 
 export { DataGridContextValue }
 
@@ -3038,6 +3042,8 @@ export { useDataGridBodyStyles_unstable }
 export { useDataGridCell_unstable }
 
 export { useDataGridCellStyles_unstable }
+
+export { useDataGridContext_unstable }
 
 export { useDataGridContextValues_unstable }
 

@@ -30,6 +30,7 @@ export type {
 export {
   IdPrefixProvider,
   resetIdsForTests,
+  useAnimationFrame,
   useControllableState,
   useEventCallback,
   useFirstMount,
@@ -42,7 +43,6 @@ export {
   usePrevious,
   useScrollbarWidth,
   useTimeout,
-  useAnimationFrame,
 } from './hooks/index';
 export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
 

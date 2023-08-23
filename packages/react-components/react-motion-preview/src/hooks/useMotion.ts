@@ -4,7 +4,7 @@ import { HTMLElementWithStyledMap, getMotionDuration } from '../utils/style';
 import { useAnimationFrame, useTimeout } from '@fluentui/react-utilities';
 import { useIsMotion } from './useIsMotion';
 
-export type UseMotionOptions = {
+export type MotionOptions = {
   /**
    * Whether to animate the element on first mount.
    *
@@ -66,7 +66,7 @@ export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionS
  */
 function useMotionPresence<Element extends HTMLElement>(
   presence: boolean,
-  options: UseMotionOptions = {},
+  options: MotionOptions = {},
 ): MotionState<Element> {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
@@ -215,7 +215,7 @@ export function getDefaultMotionState<Element extends HTMLElement>(): MotionStat
  */
 export function useMotion<Element extends HTMLElement>(
   shorthand: MotionShorthand<Element>,
-  options?: UseMotionOptions,
+  options?: MotionOptions,
 ): MotionState<Element> {
   /**
    * Heads up!
