@@ -29,15 +29,15 @@ test.describe('Toggle Button', () => {
             `;
     });
 
-    const disabledAttribute = await control.getAttribute('disabled');
-    expect(disabledAttribute).toBe('');
+    await expect(element).toHaveJSProperty('disabled', true);
+    await expect(control).toHaveJSProperty('disabled', true);
 
-    await element.evaluate(node => {
-      node.toggleAttribute('disabled');
+    await element.evaluate((node: ToggleButton) => {
+      node.disabled = false;
     });
 
-    const noDisabledAttribute = await control.getAttribute('disabled');
-    expect(noDisabledAttribute).toBe(null);
+    await expect(element).not.toHaveJSProperty('disabled', true);
+    await expect(control).not.toHaveJSProperty('disabled', true);
   });
 
   test('should set the `form` attribute on the internal button when `formId` is provided', async () => {
@@ -344,16 +344,16 @@ test.describe('Toggle Button - Boolean Attributes', () => {
   });
 
   const booleanAttributes = {
-    disabled: 'true',
-    disabledFocusable: 'true',
-    iconOnly: 'true',
-    ariaBusy: 'false',
-    ariaAtomic: 'true',
-    ariaDisabled: 'true',
-    ariaExpanded: 'true',
-    ariaHaspopup: 'true',
-    ariaHidden: 'true',
-    ariaPressed: 'true',
+    disabled: true,
+    disabledFocusable: true,
+    iconOnly: true,
+    ariaBusy: false,
+    ariaAtomic: true,
+    ariaDisabled: true,
+    ariaExpanded: true,
+    ariaHaspopup: true,
+    ariaHidden: true,
+    ariaPressed: true,
   };
 
   for (const [attribute, value] of Object.entries(booleanAttributes)) {
@@ -362,19 +362,12 @@ test.describe('Toggle Button - Boolean Attributes', () => {
     test(`should set the boolean attribute: \`${attributeSpinalCase}\` to \`${value}\``, async () => {
       await element.evaluate(
         (node: any, { attribute, value }) => {
-          if (value === 'true') {
-            node[attribute] = true;
-          } else if (value === 'false') {
-            node[attribute] = false;
-          }
+          node[attribute] = value;
         },
         { attribute, value },
       );
 
-      // If value is "true" or "false", convert it to a boolean for comparison
-      const expectedValue = value === 'true' || value === 'false' ? value === 'true' : value;
-
-      await expect(element).toHaveJSProperty(`${attribute}`, expectedValue);
+      await expect(element).toHaveJSProperty(attribute, value);
     });
   }
 });
