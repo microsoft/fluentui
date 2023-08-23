@@ -45,7 +45,7 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Hover,
       color: tokens.colorNeutralForeground2BrandHover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2BrandPressed,
     },
@@ -59,7 +59,7 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground2BrandHover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground2BrandPressed,
     },
@@ -73,7 +73,7 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackground2Hover,
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
       color: tokens.colorCompoundBrandForeground1Pressed,
     },

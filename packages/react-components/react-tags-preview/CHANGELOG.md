@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-tags-preview
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 12:01:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.3)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.2..@fluentui/react-tags-preview_v0.2.3)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.31 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-avatar to v9.5.23 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-tabster to v9.12.3 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.2)
+
+Mon, 21 Aug 2023 11:38:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.1..@fluentui/react-tags-preview_v0.2.2)
+
+### Patches
+
+- chore: add documentation ([PR #28899](https://github.com/microsoft/fluentui/pull/28899) by yuanboxue@microsoft.com)
+- fix: use `:active` selector for pressed style instead of `:hover:active` ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.22 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.1)
 
