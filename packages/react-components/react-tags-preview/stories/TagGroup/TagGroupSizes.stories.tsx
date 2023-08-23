@@ -26,7 +26,7 @@ export const Sizes = () => {
       {sizes.map(size => (
         <div key={size}>
           {`${size}: `}
-          <TagGroup size={size} aria-label="Sizes">
+          <TagGroup size={size} aria-label={`${size} tag group example`}>
             <Tag dismissible media={<Avatar name="Katri Athokas" />}>
               {size}
             </Tag>
@@ -37,7 +37,7 @@ export const Sizes = () => {
               <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
                 {size}
               </InteractionTagPrimary>
-              <InteractionTagSecondary />
+              <InteractionTagSecondary aria-label="remove" />
             </InteractionTag>
           </TagGroup>
         </div>
