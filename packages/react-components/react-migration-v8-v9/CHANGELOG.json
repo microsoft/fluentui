@@ -2,6 +2,27 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Wed, 23 Aug 2023 12:01:49 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.4.8",
+      "version": "9.4.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.29.5",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-utilities to v9.11.2",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Aug 2023 11:38:03 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.4.7",
       "version": "9.4.7",
