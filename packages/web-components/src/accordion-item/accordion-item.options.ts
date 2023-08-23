@@ -1,4 +1,4 @@
-import { ValuesOf } from '@microsoft/fast-foundation';
+import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 /**
  * An Accordion Item header font size can be small, medium, large, and extra-large

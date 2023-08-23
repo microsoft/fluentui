@@ -1,6 +1,6 @@
-import { ElementViewTemplate } from '@microsoft/fast-element';
+import type { ElementViewTemplate } from '@microsoft/fast-element';
 import { html } from '@microsoft/fast-element';
-import { menuItemTemplate } from '@microsoft/fast-foundation';
+import { menuItemTemplate } from '@microsoft/fast-foundation/menu-item.js';
 import type { MenuItem } from './menu-item.js';
 
 const Checkmark16Filled = html.partial(
