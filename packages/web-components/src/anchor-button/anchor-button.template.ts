@@ -1,5 +1,5 @@
 import { ElementViewTemplate } from '@microsoft/fast-element';
-import { anchorTemplate } from '@microsoft/fast-foundation';
+import { anchorTemplate } from '@microsoft/fast-foundation/anchor.js';
 import type { AnchorButton } from './anchor-button.js';
 
 /**
