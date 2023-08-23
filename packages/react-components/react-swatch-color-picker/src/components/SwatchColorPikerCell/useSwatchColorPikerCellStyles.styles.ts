@@ -4,6 +4,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 
 export const swatchColorPikerCellClassNames: SlotClassNames<SwatchColorPikerCellSlots> = {
   root: 'fui-SwatchColorPikerCell',
+  input: 'fui-SwatchColorPikerCell__input',
   // TODO: add class names for all slots on SwatchColorPikerCellSlots.
   // Should be of the form `<slotName>: 'fui-SwatchColorPikerCell__<slotName>`
 };
@@ -13,9 +14,17 @@ export const swatchColorPikerCellClassNames: SlotClassNames<SwatchColorPikerCell
  */
 const useStyles = makeStyles({
   root: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     width: '50px',
     height: '50px',
+  },
+  input: {
     cursor: 'pointer',
+    opacity: 0,
+    width: 'inherit',
+    height: 'inherit',
   },
 });
 
@@ -26,8 +35,6 @@ export const useSwatchColorPikerCellStyles_unstable = (state: SwatchColorPikerCe
   const styles = useStyles();
   state.root.className = mergeClasses(swatchColorPikerCellClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
+  state.input.className = mergeClasses(styles.input, state.input.className);
   return state;
 };

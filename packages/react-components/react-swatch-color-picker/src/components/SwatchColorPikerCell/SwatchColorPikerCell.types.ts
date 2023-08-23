@@ -1,7 +1,14 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Radio, RadioProps, RadioSlots, RadioState } from '@fluentui/react-components';
 
-export type SwatchColorPikerCellSlots = RadioSlots;
+export type SwatchColorPikerCellSlots = Pick<RadioSlots, 'root' | 'input'>;
+
+// export type SwatchColorPikerCellSlots = {
+//   /**
+//    * Root element of the SwatchColorCell.
+//    */
+//   root: RadioProps;
+// };
 
 /**
  * SwatchColorPikerCell Props

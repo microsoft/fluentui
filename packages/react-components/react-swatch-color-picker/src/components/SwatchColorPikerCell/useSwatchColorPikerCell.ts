@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { SwatchColorPikerCellProps, SwatchColorPikerCellState } from './SwatchColorPikerCell.types';
-import { Radio } from '@fluentui/react-components';
+import { Radio, useRadio_unstable } from '@fluentui/react-components';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 
 /**
@@ -19,10 +19,12 @@ export const useSwatchColorPikerCell_unstable = (
   // const { appearance, iconPosition, size } = useBreadcrumbContext_unstable();
   const { color = 'purple', ...rest } = props;
 
+  const radio = useRadio_unstable(props, ref);
   return {
     components: {
       // TODO add each slot's element type or component
-      root: Radio,
+      root: 'span',
+      input: 'input',
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
@@ -30,6 +32,9 @@ export const useSwatchColorPikerCell_unstable = (
       ref,
       ...rest,
     }),
+    input: {
+      ...radio.input,
+    },
     color,
   };
 };

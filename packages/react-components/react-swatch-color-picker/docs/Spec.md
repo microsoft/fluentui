@@ -74,6 +74,11 @@ _Provide some representative example code that uses the proposed API for the com
 
 ## Variants
 
+### Layout variants
+
+- Grid
+- Row
+
 ### Swatch Variants
 
 - Color
@@ -87,22 +92,28 @@ _Provide some representative example code that uses the proposed API for the com
 - Square - default
 - Circular
 - Rounded
+  Rounded can be done as default border-radiuses depending on the size of the swatch.
 
-### Sizes
-
-Custom size can be set via CSS using `width` and `height` props.
-
-#### Swatch Size
+### Size
 
 - Small - 24px
 - Medium - default - 30px
 - Large - TODO
+  Custom size can be set via CSS using `width` and `height` props.
 
-#### Density
+### Density/Gap
 
-- Small - 24px
-- Medium - default - 30px
+- Small
+- Medium - default
 - Large - TODO
+  Horizontal and vertical density can be changed via CSS.
+
+### States
+
+- hover
+- selected
+- focused
+- pressed
 
 ## API
 
@@ -110,15 +121,47 @@ Custom size can be set via CSS using `width` and `height` props.
 
 ### Components
 
-| Component                   | Purpose                                                |
-| --------------------------- | ------------------------------------------------------ |
-| SwatchGroup or SwatchPicker | Group which can represent swatches as a row or a grid. |
-| ColorSwatch                 | Swatch for color                                       |
-| ImageSatch                  | Swatch for image/texture/pattern                       |
+| Component                     | Purpose                                                |
+| ----------------------------- | ------------------------------------------------------ |
+| SwatchGroup or _SwatchPicker_ | Group which can represent swatches as a row or a grid. |
+| ColorSwatch                   | Swatch for color                                       |
+| ImageSatch                    | Swatch for image/texture/pattern                       |
 
 Swatches are split on two as Color and Image for JSX composition.
 
-## SwatchGroup/SwatchPicker
+## SwatchPicker
+
+#### Anatomy
+
+![visual anatomy of the SwatchPicker component](./assets/todo.png)
+
+#### DOM
+
+```HTML
+<nav aria-label="breadcrumb">
+  <ol>
+  {children}
+  </ol>
+</nav>
+```
+
+#### ColorPicker structure:
+
+- root `nav` element
+- list `ol` element
+
+Multiple borders and shadows are custom props and set via CSS.
+
+#### API
+
+| Property    | Values                          | Default  | Purpose                              |
+| ----------- | ------------------------------- | -------- | ------------------------------------ |
+| shape       | `square`, `circular`, `rounded` | `square` | Sets shape                           |
+| size        | `small`, `medium`, `large`      | `medium` | Defines size of the SwatchPickerCell |
+| density/gap | `small`, `medium`, `large`      | `medium` | Sets distance between swatches       |
+| id          | number                          |          | Sets color id                        |
+| type        | `row`, `grid`                   | `grid`   | Sets type of SwatchPicker id         |
+| onChange    |                                 |          |                                      |
 
 ## ColorSwatch
 
@@ -127,6 +170,40 @@ is used for picking colors:
 - solid color
 - gradient
 
+#### Anatomy
+
+![visual anatomy of the SwatchPicker component](./assets/todo.png)
+
+#### DOM
+
+```HTML
+<nav aria-label="breadcrumb">
+  <ol>
+  {children}
+  </ol>
+</nav>
+```
+
+#### ColorSwatch structure:
+
+- root `nav` element
+- list `ol` element
+
+Multiple borders and shadows are custom props and set via CSS.
+
+#### API
+
+| Property | Values                          | Default  | Purpose                              |
+| -------- | ------------------------------- | -------- | ------------------------------------ |
+| shape    | `square`, `circular`, `rounded` | `square` | Sets shape                           |
+| size     | `small`, `medium`, `large`      | `medium` | Defines size of the SwatchPickerCell |
+| name     |                                 |          |                                      |
+| value    |                                 |          | Sets color id                        |
+| color    |                                 |          | Sets color for the swatch            |
+| id       | number                          |          | Sets color id                        |
+| label    |                                 |          | Sets label for the tooltip           |
+| disabled | boolean                         |          |                                      |
+
 ## ImageSwatch
 
 is used to pick images:
@@ -134,6 +211,39 @@ is used to pick images:
 - image
 - texture
 - pattern
+
+#### Anatomy
+
+![visual anatomy of the SwatchPicker component](./assets/todo.png)
+
+#### DOM
+
+```HTML
+<nav aria-label="breadcrumb">
+  <ol>
+  {children}
+  </ol>
+</nav>
+```
+
+#### ColorSwatch structure:
+
+- root `nav` element
+- list `ol` element
+
+Multiple borders and shadows are custom props and set via CSS.
+
+#### API
+
+| Property | Values                          | Default  | Purpose                              |
+| -------- | ------------------------------- | -------- | ------------------------------------ |
+| shape    | `square`, `circular`, `rounded` | `square` | Sets shape                           |
+| size     | `small`, `medium`, `large`      | `medium` | Defines size of the SwatchPickerCell |
+| name     |                                 |          |                                      |
+| value    |                                 |          | Sets color id                        |
+| uri      |                                 |          | Sets image uri                       |
+| label    |                                 |          | Sets label for the tooltip           |
+| disabled | boolean                         |          |                                      |
 
 ## Migration
 
