@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTAnchor } from '@microsoft/fast-foundation';
+import { FASTAnchor } from '@microsoft/fast-foundation/anchor.js';
 import { AnchorButtonAppearance, AnchorButtonShape, AnchorButtonSize } from './anchor-button.options.js';
 
 /**
