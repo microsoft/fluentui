@@ -1,11 +1,11 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { useMotion, UseMotionOptions, MotionShorthand, getDefaultMotionState, useIsMotion } from './useMotion';
+import { useMotion, MotionOptions, MotionShorthand, getDefaultMotionState, useIsMotion } from './useMotion';
 
 const defaultDuration = 100;
 const renderHookWithRef = (
   initialMotion: MotionShorthand,
-  initialOptions?: UseMotionOptions,
+  initialOptions?: MotionOptions,
   style: Record<string, string | undefined> = { 'transition-duration': `${defaultDuration}ms` },
 ) => {
   const refEl = document.createElement('div');
@@ -13,7 +13,7 @@ const renderHookWithRef = (
     initialProps: {
       motion: initialMotion,
       options: initialOptions,
-    } as { motion: MotionShorthand; options?: UseMotionOptions },
+    } as { motion: MotionShorthand; options?: MotionOptions },
   });
 
   Object.entries(style).forEach(([key, value]) => value && refEl.style.setProperty(key, value));
