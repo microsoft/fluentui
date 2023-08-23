@@ -10,11 +10,8 @@ test.describe('Image', () => {
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
-
     element = page.locator('fluent-image');
-
     root = page.locator('#root');
-
     await page.goto(fixtureURL('components-image--image'));
   });
 
@@ -22,48 +19,66 @@ test.describe('Image', () => {
     await page.close();
   });
 
-  test('should initialize to the provided value attribute if set post-connection', async () => {
+  test('should initialize to the `block` attribute', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-        <fluent-image>
+        <fluent-image block>
           <img alt="Short image description" src="https://picsum.photos/300/100">
         </fluent-image>
       `;
     });
 
-    await element.evaluate((node: Image) => {
-      node.block = true;
-    });
     await expect(element).toHaveJSProperty('block', true);
 
     await element.evaluate((node: Image) => {
       node.block = false;
     });
-    await expect(element).toHaveJSProperty('block', false);
+    await expect(element).not.toHaveJSProperty('block', true);
+  });
 
-    await element.evaluate((node: Image) => {
-      node.bordered = true;
+  test('should initialize to the `bordered` attribute', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-image bordered>
+          <img alt="Short image description" src="https://picsum.photos/300/100">
+        </fluent-image>
+      `;
     });
+
     await expect(element).toHaveJSProperty('bordered', true);
 
     await element.evaluate((node: Image) => {
       node.bordered = undefined;
     });
-    await expect(element).toHaveJSProperty('bordered', false);
+    await expect(element).not.toHaveJSProperty('bordered', true);
+  });
 
-    await element.evaluate((node: Image) => {
-      node.shadow = true;
+  test('should initialize to the `shadow` attribute', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-image shadow>
+          <img alt="Short image description" src="https://picsum.photos/300/100">
+        </fluent-image>
+      `;
     });
+
     await expect(element).toHaveJSProperty('shadow', true);
 
     await element.evaluate((node: Image) => {
       node.shadow = undefined;
     });
-    await expect(element).toHaveJSProperty('shadow', false);
+    await expect(element).not.toHaveJSProperty('shadow', true);
+  });
 
-    await element.evaluate((node: Image) => {
-      node.fit = 'default';
+  test('should initialize to the `fit` attribute', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-image fit="default">
+          <img alt="Short image description" src="https://picsum.photos/300/100">
+        </fluent-image>
+      `;
     });
+
     await expect(element).toHaveJSProperty('fit', 'default');
 
     await element.evaluate((node: Image) => {
@@ -85,10 +100,17 @@ test.describe('Image', () => {
       node.fit = 'cover';
     });
     await expect(element).toHaveJSProperty('fit', 'cover');
+  });
 
-    await element.evaluate((node: Image) => {
-      node.shape = 'circular';
+  test('should initialize to the `shape` attribute', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+        <fluent-image shape="circular">
+          <img alt="Short image description" src="https://picsum.photos/300/100">
+        </fluent-image>
+      `;
     });
+
     await expect(element).toHaveJSProperty('shape', 'circular');
 
     await element.evaluate((node: Image) => {
