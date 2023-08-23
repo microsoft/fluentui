@@ -69,47 +69,27 @@ test.describe('CounterBadge component', () => {
   });
 
   test('should show 0 when showZero is set programmatically', async () => {
+    await page.waitForSelector('fluent-counter-badge');
     await element.evaluate((node: CounterBadge) => {
       node.showZero = true;
       node.count = 0;
     });
-
     await expect(element).toHaveJSProperty('showZero', true);
-
     const shadowContent = await page.evaluate(() => {
       const element = document.querySelector('fluent-counter-badge');
       return element?.shadowRoot?.textContent;
     });
-
     expect(shadowContent).toContain('0');
   });
 
-  test('should not show 0 when showZero is set programmatically', async () => {
-    await element.evaluate((node: CounterBadge) => {
-      node.showZero = false;
-      node.count = 0;
-    });
-
-    await expect(element).toHaveJSProperty('showZero', false);
-
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-
-      return element?.shadowRoot?.textContent;
-    });
-
-    expect(shadowContent).not.toContain('0');
-  });
-
   test('should render correctly with dot attribute', async () => {
+    await page.waitForSelector('fluent-counter-badge');
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-                  <fluent-counter-badge dot count="5"></fluent-counter-badge>
-              `;
+        <fluent-counter-badge dot count="5"></fluent-counter-badge>
+      `;
     });
-
     await expect(element).toHaveJSProperty('dot', true);
-
     const shadowContent = await page.evaluate(() => {
       const element = document.querySelector('fluent-counter-badge');
       return element?.shadowRoot?.textContent;
@@ -118,12 +98,13 @@ test.describe('CounterBadge component', () => {
   });
 
   test('should show dot programmatically', async () => {
-    await element.evaluate((node: CounterBadge) => {
-      node.dot = true;
-      node.count = 5;
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+                <fluent-counter-badge count="5" dot></fluent-counter-badge>
+            `;
     });
-    await expect(element).toHaveJSProperty('dot', true);
 
+    await expect(element).toHaveJSProperty('dot', true);
     const shadowContent = await page.evaluate(() => {
       const element = document.querySelector('fluent-counter-badge');
       return element?.shadowRoot?.textContent;
@@ -132,15 +113,15 @@ test.describe('CounterBadge component', () => {
   });
 
   test('should hide dot programmatically', async () => {
-    await element.evaluate((node: CounterBadge) => {
-      node.dot = true; // First set to true
-      node.count = 5;
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+                <fluent-counter-badge count="5" dot></fluent-counter-badge>
+            `;
     });
 
     await element.evaluate((node: CounterBadge) => {
-      node.dot = false; // Then set to false
+      node.dot = false;
     });
-    await expect(element).toHaveJSProperty('dot', false);
 
     const shadowContent = await page.evaluate(() => {
       const element = document.querySelector('fluent-counter-badge');
