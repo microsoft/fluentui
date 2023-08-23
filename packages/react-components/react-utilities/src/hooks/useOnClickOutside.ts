@@ -42,16 +42,19 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
   const timeoutId = React.useRef<number | undefined>(undefined);
   useIFrameFocus(options);
 
-  const isMouseDownInsideRef = React.useRef<boolean>();
+  const isMouseDownInsideRef = React.useRef(false);
 
   const contains: UseOnClickOrScrollOutsideOptions['contains'] =
     containsProp || ((parent, child) => !!parent?.contains(child));
 
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
-    const target = ev.composedPath()[0] as HTMLElement;
+    if (isMouseDownInsideRef.current) {
+      isMouseDownInsideRef.current = false;
+      return;
+    }
 
-    const isOutside = !isMouseDownInsideRef.current && refs.every(ref => !contains(ref.current || null, target));
-    isMouseDownInsideRef.current = false;
+    const target = ev.composedPath()[0] as HTMLElement;
+    const isOutside = refs.every(ref => !contains(ref.current || null, target));
 
     if (isOutside && !disabled) {
       callback(ev);
