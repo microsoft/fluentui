@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tree, TreeItem as FuiTreeItem, TreeItemLayout, TreeItemProps as FuiTreeItemProps } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, TreeItemProps } from '@fluentui/react-components';
 import { Edit20Regular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import {
   Button,
@@ -8,17 +8,12 @@ import {
   MenuList,
   MenuPopover,
   MenuTrigger,
-  Slot,
-  getSlots,
-  ComponentProps,
-  resolveShorthand,
   useRestoreFocusTarget,
 } from '@fluentui/react-components';
 
-type TreeItemSlots = { layout: Slot<typeof TreeItemLayout> };
-type TreeItemProps = FuiTreeItemProps & ComponentProps<Partial<TreeItemSlots>>;
+type CustomTreeItemProps = TreeItemProps;
 
-const TreeItem = ({ layout, children, ...props }: TreeItemProps) => {
+const CustomTreeItem = ({ children, ...props }: CustomTreeItemProps) => {
   const focusTargetAttribute = useRestoreFocusTarget();
   const [layoutChildren, subtree] = React.Children.toArray(children);
 
@@ -32,36 +27,29 @@ const TreeItem = ({ layout, children, ...props }: TreeItemProps) => {
     </>
   );
 
-  const { slots, slotProps } = getSlots<TreeItemSlots>({
-    components: { layout: TreeItemLayout },
-    layout: resolveShorthand(layout, {
-      required: true,
-      defaultProps: {
-        actions: (
-          <>
-            <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
-            <Menu>
-              <MenuTrigger disableButtonEnhancement>
-                <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
-              </MenuTrigger>
-              <MenuPopover>
-                <MenuList>{commonMenuItems}</MenuList>
-              </MenuPopover>
-            </Menu>
-          </>
-        ),
-        children: layoutChildren,
-      },
-    }),
-  });
-
   return (
     <Menu positioning="below-end" openOnContext>
       <MenuTrigger disableButtonEnhancement>
-        <FuiTreeItem aria-description="has context menu" {...focusTargetAttribute} {...props}>
-          <slots.layout {...slotProps.layout} />
+        <TreeItem aria-description="has actions" {...focusTargetAttribute} {...props}>
+          <TreeItemLayout
+            actions={
+              <>
+                <Button aria-label="Edit" appearance="subtle" icon={<Edit20Regular />} />
+                <Menu>
+                  <MenuTrigger disableButtonEnhancement>
+                    <Button aria-label="More options" appearance="subtle" icon={<MoreHorizontal20Regular />} />
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>{commonMenuItems}</MenuList>
+                  </MenuPopover>
+                </Menu>
+              </>
+            }
+          >
+            {layoutChildren}
+          </TreeItemLayout>
           {subtree}
-        </FuiTreeItem>
+        </TreeItem>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
@@ -75,42 +63,42 @@ const TreeItem = ({ layout, children, ...props }: TreeItemProps) => {
 
 export const Actions = () => {
   return (
-    <Tree aria-label="Tree">
-      <TreeItem itemType="branch">
+    <Tree aria-label="Actions">
+      <CustomTreeItem itemType="branch">
         item 1
         <Tree>
-          <TreeItem itemType="branch">
+          <CustomTreeItem itemType="branch">
             item 1-1
             <Tree>
-              <TreeItem itemType="leaf">item 1-1-1</TreeItem>
-              <TreeItem itemType="leaf">item 1-1-2</TreeItem>
-              <TreeItem itemType="leaf">item 1-1-3</TreeItem>
+              <CustomTreeItem itemType="leaf">item 1-1-1</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 1-1-2</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 1-1-3</CustomTreeItem>
             </Tree>
-          </TreeItem>
-          <TreeItem itemType="leaf">item 1-2</TreeItem>
-          <TreeItem itemType="leaf">item 1-3</TreeItem>
+          </CustomTreeItem>
+          <CustomTreeItem itemType="leaf">item 1-2</CustomTreeItem>
+          <CustomTreeItem itemType="leaf">item 1-3</CustomTreeItem>
         </Tree>
-      </TreeItem>
-      <TreeItem itemType="branch">
+      </CustomTreeItem>
+      <CustomTreeItem itemType="branch">
         item 2
         <Tree>
-          <TreeItem itemType="branch">
+          <CustomTreeItem itemType="branch">
             item 2-1
             <Tree>
-              <TreeItem itemType="leaf">item 2-1-1</TreeItem>
+              <CustomTreeItem itemType="leaf">item 2-1-1</CustomTreeItem>
             </Tree>
-          </TreeItem>
+          </CustomTreeItem>
 
-          <TreeItem itemType="branch">
+          <CustomTreeItem itemType="branch">
             item 3
             <Tree>
-              <TreeItem itemType="leaf">item 3-1</TreeItem>
-              <TreeItem itemType="leaf">item 3-2</TreeItem>
-              <TreeItem itemType="leaf">item 3-3</TreeItem>
+              <CustomTreeItem itemType="leaf">item 3-1</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 3-2</CustomTreeItem>
+              <CustomTreeItem itemType="leaf">item 3-3</CustomTreeItem>
             </Tree>
-          </TreeItem>
+          </CustomTreeItem>
         </Tree>
-      </TreeItem>
+      </CustomTreeItem>
     </Tree>
   );
 };
@@ -118,9 +106,20 @@ export const Actions = () => {
 Actions.parameters = {
   docs: {
     description: {
-      story: `In addition to the \`aside\` content, both tree item layouts support \`actions\` prop that can be used for tasks such as edit, rename, or triggering a menu. These action buttons are initially hidden but are shown on hover or can be controlled by the \`visible\` property, ensuring they take priority over the \`aside\` content when needed.
+      story: `
+In addition to \`aside\` slot, both tree item layouts support \`actions\` slot that can be used for tasks such as edit, rename, or triggering a menu.
+\`actions\` and \`aside\` slots are positioned on the exact same spot, so they won't be visible at the same time. \`aside\` slot is visible by default meanwhile \`actions\` slot are only visible when the tree item is active (by hovering or by navigating to it). \`actions\` slot supports a \`visible\` prop to force visibility of the actions.
 
-> ⚠️ The \`actions\` prop is \`aria-hidden\` by default. Always implement a context menu to ensure that these actions are accessible to all users. Additionally, include an \`aria-description\` or \`aria-describedby\` on tree items with actions or context menus to indicate interactions, such as "has context menu."`,
+The \`actions\` slot has a \`role="toolbar"\` and ensures proper horizontal navigation with the keyboard by using [\`useArrowNavigationGroup\`](https://react.fluentui.dev/?path=/docs/utilities-focus-management-usearrownavigationgroup--default).
+
+> ⚠️ Although \`actions\` are easy to navigate, they're not an expected pattern according to [WAI-ARIA](https://www.w3.org/WAI/ARIA/apg/patterns/treeview/).providing a context menu with the same functionalities as the actions is recommended to ensure your tree item is accessible.
+
+In the example below, we compose on top of \`TreeItem\` component to include both a context menu and actions that provide the same amount of functionalities. We also provide an \`aria-description\` to the tree item to indicate that it has actions. This is a new behavior that the user might not be aware of, so you might need to explain somewhere else in the UI what does having actions refers to.
+
+> ⚠️ Don't forget to add a proper description to \`TreeItem\` to ensure screen readers have enough information to understand the context
+
+> ⚠️ Actions are still experimental and user experience might change in the future.
+`,
     },
   },
 };

@@ -44,10 +44,10 @@ export const CalendarDayBase: React.FunctionComponent<ICalendarDayProps> = props
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     headerIsClickable: !!onHeaderSelect,
-    showWeekNumbers: showWeekNumbers,
-    animationDirection: animationDirection,
+    showWeekNumbers,
+    animationDirection,
   });
 
   const monthAndYear = dateTimeFormatter.formatMonthYear(navigatedDate, strings);

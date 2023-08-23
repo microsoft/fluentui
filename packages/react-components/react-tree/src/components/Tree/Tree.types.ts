@@ -111,8 +111,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * @param event - a React's Synthetic event
    * @param data - A data object with relevant information,
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+  onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 
   /**
    * This refers to the selection mode of the tree.
