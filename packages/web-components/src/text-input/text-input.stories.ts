@@ -120,7 +120,7 @@ export const ContentStartAfter = renderComponent(html<TextInputStoryArgs>`
 export const Placeholder = renderComponent(html<TextInputStoryArgs>`
   <fluent-text-input placeholder="This is a placeholder">
     <span slot="end">${Person20Regular}</span>
-    <fluent-label>Disabled Input</fluent-label>
+    <fluent-label>Input with a placeholder</fluent-label>
   </fluent-text-input>
 `);
 
