@@ -22,13 +22,19 @@ type BrowserTimerSetter =
  */
 export function useBrowserTimer(setTimer: BrowserTimerSetter, cancelTimer: (id: number) => void) {
   const id = React.useRef<number | undefined>(undefined);
+
   const set = React.useCallback(
     (fn: () => void, delay?: number) => {
+      if (id.current !== undefined) {
+        cancelTimer(id.current);
+      }
+
       id.current = setTimer(fn, delay);
       return id.current;
     },
-    [setTimer],
+    [cancelTimer, setTimer],
   );
+
   const cancel = React.useCallback(() => {
     if (id.current !== undefined) {
       cancelTimer(id.current);
