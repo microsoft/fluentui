@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation/utilities.js';
 import { styles as ButtonStyles } from '../button/button.styles.js';
 import {
   colorBrandBackgroundHover,
