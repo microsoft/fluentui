@@ -396,6 +396,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
     columns: TableColumnDefinition<TItem>[];
     columnSizing_unstable: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
+    getSortableColumns: () => TableColumnDefinition<TItem>[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
     tableRef: React_2.Ref<HTMLDivElement>;
