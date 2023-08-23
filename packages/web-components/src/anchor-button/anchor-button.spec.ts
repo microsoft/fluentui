@@ -33,15 +33,15 @@ const attributes = {
 
 // Boolean Attributes
 const booleanAttributes = {
-  iconOnly: 'true',
-  disabled: 'true',
-  disabledFocusable: 'true',
-  ariaAtomic: 'true',
-  ariaBusy: 'false',
-  ariaDisabled: 'true',
-  ariaExpanded: 'true',
-  ariaHaspopup: 'true',
-  ariaHidden: 'true',
+  iconOnly: true,
+  disabled: true,
+  disabledFocusable: true,
+  ariaAtomic: true,
+  ariaBusy: false,
+  ariaDisabled: true,
+  ariaExpanded: true,
+  ariaHaspopup: true,
+  ariaHidden: true,
 };
 
 test.describe('Anchor Button - Regular Attributes', () => {
@@ -92,22 +92,15 @@ test.describe('Anchor Button - Boolean Attributes', () => {
   for (const [attribute, value] of Object.entries(booleanAttributes)) {
     const attributeSpinalCase = spinalCase(attribute);
 
-    test(`should set the boolean attribute: \`${attributeSpinalCase}\` to \`${value}\` on the internal control`, async () => {
+    test(`should set the boolean attribute: \`${attributeSpinalCase}\` to \`${value}\``, async () => {
       await element.evaluate(
         (node: any, { attribute, value }) => {
-          if (value === 'true') {
-            node[attribute] = true;
-          } else if (value === 'false') {
-            node[attribute] = false;
-          }
+          node[attribute] = value;
         },
         { attribute, value },
       );
 
-      // If value is "true" or "false", convert it to a boolean for comparison
-      const expectedValue = value === 'true' || value === 'false' ? value === 'true' : value;
-
-      await expect(element).toHaveJSProperty(`${attribute}`, expectedValue);
+      await expect(element).toHaveJSProperty(attribute, value);
     });
   }
 });
