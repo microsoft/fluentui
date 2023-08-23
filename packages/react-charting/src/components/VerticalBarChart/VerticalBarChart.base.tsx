@@ -191,6 +191,42 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   }
 
+  public getDomainMargins() {
+    this._xAxisType =
+      this.props.data! && this.props.data!.length > 0
+        ? (getTypeOfAxis(this.props.data![0].x, true) as XAxisTypes)
+        : XAxisTypes.StringAxis;
+    this._xAxisLabels = this.props.data!.map((point: IVerticalBarChartDataPoint) => point.x as string);
+    this._getMargins(this.props.margins!);
+    return this._getDomainMargins(this.props.width!);
+  }
+
+  public getScales(containerHeight: number, containerWidth: number, isNumericAxis: boolean) {
+    this._adjustProps();
+    this._yMax = Math.max(
+      d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
+      this.props.yMaxValue || 0,
+    );
+    this._xAxisLabels = this.props.data!.map((point: IVerticalBarChartDataPoint) => point.x as string);
+    this._getMargins(this.props.margins!);
+    return this._getScales(containerHeight, containerWidth, isNumericAxis);
+  }
+
+  public getAriaLabels() {
+    if (this.props.data && this.props.data.length > 0) {
+      return [this.props.data.map(item => this._getAriaLabel(item))];
+    }
+    return '';
+  }
+
+  public createColors() {
+    if (this.props.data && this.props.data.length > 0) {
+      this._getAxisData({ yAxisDomainValues: this.props.data.map(item => item.y) });
+    }
+    this._adjustProps();
+    return this._createColors();
+  }
+
   private _createLine = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     xScale: any,
@@ -468,7 +504,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     });
   };
 
-  private _onBarFocus = (point: IVerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void => {
+  private _onBarFocus(point: IVerticalBarChartDataPoint, refArrayIndexNumber: number, color: string): void {
     const { YValueHover, hoverXValue } = this._getCalloutContentForLineAndBar(point);
     this._refArray.forEach((obj: IRefArrayData, index: number) => {
       if (obj.index === point.legend! && refArrayIndexNumber === index) {
@@ -489,7 +525,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         });
       }
     });
-  };
+  }
 
   private _getScales = (
     containerHeight: number,
