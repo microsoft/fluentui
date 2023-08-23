@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: create useAnimationFrame hook",
+  "packageName": "@fluentui/react-utilities",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

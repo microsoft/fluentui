@@ -67,6 +67,7 @@ export function useToaster<TElement extends HTMLElement = HTMLDivElement>(option
 
   const tryRestoreFocus = React.useCallback(() => {
     const mostRecentToast = getMostRecentVisibleToast();
+    console.log(mostRecentToast?.imperativeRef);
     if (mostRecentToast?.imperativeRef.current) {
       mostRecentToast.imperativeRef.current.focus();
     } else {

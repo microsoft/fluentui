@@ -10,6 +10,8 @@ import {
   Toast,
 } from '@fluentui/react-components';
 
+let count = 0;
+
 export const ToasterLimit = () => {
   const toasterId = useId('toaster');
   const { dispatchToast } = useToastController(toasterId);
@@ -17,10 +19,11 @@ export const ToasterLimit = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle>Limited to 3 toasts</ToastTitle>
+        <ToastTitle>Limited to 3 toasts {count++}</ToastTitle>
       </Toast>,
       { intent: 'success' },
     );
+  console.log(limit);
 
   return (
     <>

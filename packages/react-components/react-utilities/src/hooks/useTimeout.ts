@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useBrowserTimer } from './useBrowserTimer';
 
 /**
  * @internal
@@ -9,22 +9,5 @@ import * as React from 'react';
  * @returns A pair of [setTimeout, clearTimeout] that are stable between renders.
  */
 export function useTimeout() {
-  const [timeout] = React.useState(() => ({
-    id: undefined as ReturnType<typeof setTimeout> | undefined,
-    set: (fn: () => void, delay: number) => {
-      timeout.clear();
-      timeout.id = setTimeout(fn, delay);
-    },
-    clear: () => {
-      if (timeout.id !== undefined) {
-        clearTimeout(timeout.id);
-        timeout.id = undefined;
-      }
-    },
-  }));
-
-  // Clean up the timeout when the component is unloaded
-  React.useEffect(() => timeout.clear, [timeout]);
-
-  return [timeout.set, timeout.clear] as const;
+  return useBrowserTimer(setTimeout, clearTimeout);
 }

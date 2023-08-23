@@ -232,13 +232,14 @@ packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
 packages/react-components/react-breadcrumb-preview @microsoft/cxe-prg
-packages/react-components/react-drawer @microsoft/cxe-prg
+packages/react-components/react-drawer @microsoft/cxe-prg  @marcosmoura
 packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
 packages/react-components/react-search-preview @microsoft/cxe-coastal
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
+packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 # <%= NX-CODEOWNER-PLACEHOLDER %>
