@@ -29,15 +29,15 @@ test.describe('Button', () => {
             `;
     });
 
-    const disabledAttribute = await control.getAttribute('disabled');
-    expect(disabledAttribute).toBe('');
+    await expect(element).toHaveJSProperty('disabled', true);
+    await expect(control).toHaveJSProperty('disabled', true);
 
-    await element.evaluate(node => {
-      node.removeAttribute('disabled');
+    await element.evaluate((node: Button) => {
+      node.disabled = false;
     });
 
-    const noDisabledAttribute = await control.getAttribute('disabled');
-    expect(noDisabledAttribute).toBe(null);
+    await expect(element).not.toHaveJSProperty('disabled', true);
+    await expect(control).not.toHaveJSProperty('disabled', true);
   });
 
   test('should set the `formnovalidate` attribute on the internal control', async () => {
@@ -47,15 +47,17 @@ test.describe('Button', () => {
             `;
     });
 
-    const formnovalidateAttribute = await control.getAttribute('formnovalidate');
-    expect(formnovalidateAttribute).toBe('');
+    await expect(element).toHaveJSProperty('formnovalidate', true);
+    await expect(element).toHaveAttribute('formnovalidate', '');
+    await expect(control).toHaveAttribute('formnovalidate', '');
 
-    await element.evaluate(node => {
-      node.toggleAttribute('formnovalidate');
+    await element.evaluate((node: Button) => {
+      node.formnovalidate = false;
     });
 
-    const noFormnovalidateAttribute = await control.getAttribute('formnovalidate');
-    expect(noFormnovalidateAttribute).toBe(null);
+    await expect(element).not.toHaveJSProperty('formnovalidate', true);
+    await expect(element).not.toHaveAttribute('formnovalidate', '');
+    await expect(control).not.toHaveAttribute('formnovalidate', '');
   });
 
   test('should set the `form` attribute on the internal button when `formId` is provided', async () => {
