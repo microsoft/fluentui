@@ -5,7 +5,7 @@ import {
   TreeItemLayout,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 
 const SELECTION_MODE = 'multiselect'; // change to "single" for single selection
 
