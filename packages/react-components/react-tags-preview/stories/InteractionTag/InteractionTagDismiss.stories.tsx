@@ -25,7 +25,7 @@ export const Dismiss = () => {
       {visibleTags.map(tag => (
         <InteractionTag value={tag.value} key={tag.value}>
           <InteractionTagPrimary hasSecondaryAction>{tag.children}</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label={'remove'} />
+          <InteractionTagSecondary aria-label="remove" />
         </InteractionTag>
       ))}
     </TagGroup>
