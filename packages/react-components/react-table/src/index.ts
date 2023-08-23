@@ -163,7 +163,7 @@ export type {
   DataGridContextValue,
   DataGridFocusMode,
 } from './DataGrid';
-export { DataGridContextProvider } from './contexts/dataGridContext';
+export { DataGridContextProvider, useDataGridContext_unstable } from './contexts/dataGridContext';
 
 export {
   DataGridHeader,

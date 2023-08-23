@@ -12,6 +12,7 @@ import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Provider } from 'react';
@@ -571,6 +572,9 @@ export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.R
 
 // @public
 export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
+
+// @public (undocumented)
+export const useDataGridContext_unstable: <T>(selector: ContextSelector<DataGridContextValue, T>) => T;
 
 // @public (undocumented)
 export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues;
