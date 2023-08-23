@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTProgressRing } from '@microsoft/fast-foundation';
+import { FASTProgressRing } from '@microsoft/fast-foundation/progress-ring.js';
 import type { SpinnerAppearance, SpinnerSize } from './spinner.options.js';
 
 /**
