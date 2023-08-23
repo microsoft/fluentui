@@ -49,7 +49,7 @@
 |                                   - Hide legends                                    |                                   Should not show any rendered legends                                    |      RTL      |
 |                           - Hover mouse over line legends                           |                             Should reduce the opacity of the other lines/bars                             |      RTL      |
 |                           - Hover mouse over bar legends                            |                             Should reduce the opacity of the other lines/bars                             |      RTL      |
-|                      - Mouse move from one bar to another bar                       |                     Should reset the opacity of the lines on mouse leave a bar legend                     |      RTL      |
+|                   - Mouse move from one legend to another legend                    |                     Should reset the opacity of the lines on mouse leave a bar legend                     |      RTL      |
 |                         - Single mouse click on bar legends                         |                      Should select legend on single mouse click on respective legend                      |      RTL      |
 |                         - Double mouse click on bar legends                         |                     Should deselect legend on double mouse click on respective legend                     |      RTL      |
 |                        - Single mouse click on line legends                         |                      Should select legend on single mouse click on respective legend                      |      RTL      |
@@ -69,5 +69,3 @@
 |                     - Increase the screen resolution (zoom in)                      |                                    Should remain unchanged on zoom in                                     |      RTL      |
 |                     - Decrease the screen resolution (zoom out)                     |                                    Should remain unchanged on zoom out                                    |      RTL      |
 |                        Test 11: Theme changed to Dark Theme                         |                                        Should reflect theme change                                        |      RTL      |
-
-

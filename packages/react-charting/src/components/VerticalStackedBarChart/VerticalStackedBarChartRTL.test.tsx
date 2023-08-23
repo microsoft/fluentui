@@ -48,13 +48,27 @@ const simplePoints = [
   },
 ];
 
-const simplePointsWithoutLine = [
+const simplePointsWithLine = [
   {
     chartData: firstChartPoints,
     xAxisPoint: 20,
     lineData: [{ y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
   },
 ];
+
+const simpleChartPoints: IVSChartDataPoint[] = [
+  { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
+  { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
+];
+
+const simplePointsWithoutLine = [
+  {
+    chartData: simpleChartPoints,
+    xAxisPoint: 20,
+  },
+];
+
+const maxBarGap = 5;
 
 describe('Vertical stacked bar chart rendering', () => {
   testWithoutWait(
@@ -97,13 +111,39 @@ describe('Vertical stacked bar chart - Subcomponent bar', () => {
   testWithWait(
     'Should render the bar with the given width',
     VerticalStackedBarChart,
-    { data: simplePointsWithoutLine, barWidth: 100 },
+    { data: simplePointsWithLine, barWidth: 100 },
     container => {
       // Assert
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       expect(bars).toHaveLength(2);
       expect(bars[0].getAttribute('width')).toEqual('100');
       expect(bars[1].getAttribute('width')).toEqual('100');
+    },
+  );
+
+  testWithWait(
+    'Should render the bar with the given maximum bar gap',
+    VerticalStackedBarChart,
+    { data: simplePointsWithoutLine, barGapMax: maxBarGap },
+    container => {
+      // Assert
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars).toHaveLength(2);
+      const firstBarYvalue = Number(bars[1].getAttribute('y'));
+      const firstBarHeight = Number(bars[1].getAttribute('height'));
+      const secondBarYvalue = Number(bars[0].getAttribute('y'));
+      expect(firstBarYvalue! + firstBarHeight + maxBarGap).toEqual(secondBarYvalue!);
+    },
+  );
+
+  testWithWait(
+    'Should render the bar with the given bar corner radius',
+    VerticalStackedBarChart,
+    { data: simplePointsWithoutLine, barCornerRadius: 6 },
+    container => {
+      // Assert
+      const legend = screen.queryByText('a 6 6');
+      expect(legend).toBeDefined();
     },
   );
 
@@ -175,8 +215,10 @@ describe('Vertical stacked bar chart - Subcomponent Legends', () => {
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       const line = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'line');
       fireEvent.mouseOver(legends![1]);
+
       // Assert
       expect(line[8].getAttribute('opacity')).toEqual('0.1');
+      expect(bars[1]).not.toHaveAttribute('opacity');
       expect(bars[1]).toHaveStyle('opacity: 0.1');
       expect(bars[3]).toHaveStyle('opacity: 0.1');
       expect(bars[4]).toHaveStyle('opacity: 0.1');
@@ -329,6 +371,7 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      expect(screen.queryByText('Custom Callout Content')).toBeDefined();
     },
   );
 
@@ -350,6 +393,7 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
       fireEvent.mouseOver(lines[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      expect(screen.queryByText('Custom Callout Content')).toBeDefined();
     },
   );
 
