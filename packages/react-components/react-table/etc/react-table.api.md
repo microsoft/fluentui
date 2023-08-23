@@ -12,7 +12,11 @@ import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import { ReactNode } from 'react';
@@ -84,6 +88,9 @@ export type DataGridCellState = TableCellState;
 
 // @public (undocumented)
 export const dataGridClassNames: SlotClassNames<DataGridSlots>;
+
+// @public (undocumented)
+export const DataGridContextProvider: Provider<DataGridContextValue | undefined> & FC<ProviderProps<DataGridContextValue | undefined>>;
 
 // @public (undocumented)
 export type DataGridContextValue = TableFeaturesState<any> & {
@@ -566,6 +573,9 @@ export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.R
 
 // @public
 export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
+
+// @public (undocumented)
+export const useDataGridContext_unstable: <T>(selector: ContextSelector<DataGridContextValue, T>) => T;
 
 // @public (undocumented)
 export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues;
