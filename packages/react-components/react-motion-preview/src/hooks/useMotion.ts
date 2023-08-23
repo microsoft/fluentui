@@ -3,7 +3,7 @@ import { unstable_batchedUpdates } from 'react-dom';
 import { HTMLElementWithStyledMap, getMotionDuration } from '../utils/dom-style';
 import { useAnimationFrame, useTimeout, usePrevious } from '@fluentui/react-utilities';
 
-export type UseMotionOptions = {
+export type MotionOptions = {
   /**
    * Whether to animate the element on first mount.
    *
@@ -33,16 +33,16 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
   type: MotionType;
 
   /**
-   * Indicates whether the component is currently rendered and visible.
-   * Useful to apply CSS transitions only when the element is active.
-   */
-  active: boolean;
-
-  /**
    * Indicates whether the component can be rendered.
-   * This can be used to avoid rendering the component when it is not visible anymore.
+   * Useful to render the element before animating it or to remove it from the DOM after exit animation.
    */
   canRender: boolean;
+
+  /**
+   * Indicates whether the component is ready to receive a CSS transition className.
+   * Useful to apply CSS transitions when the element is mounted and ready to be animated.
+   */
+  active: boolean;
 };
 
 export type MotionShorthandValue = boolean;
@@ -59,7 +59,7 @@ export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionS
  */
 function useMotionPresence<Element extends HTMLElement>(
   presence: boolean,
-  options: UseMotionOptions = {},
+  options: MotionOptions = {},
 ): MotionState<Element> {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
@@ -177,8 +177,8 @@ function useMotionPresence<Element extends HTMLElement>(
     () => ({
       ref,
       type,
-      canRender: type !== 'unmounted',
       active,
+      canRender: type !== 'unmounted',
     }),
     [active, ref, type],
   );
@@ -204,7 +204,7 @@ export function getDefaultMotionState<Element extends HTMLElement>(): MotionStat
  */
 export function useMotion<Element extends HTMLElement>(
   shorthand: MotionShorthand<Element>,
-  options?: UseMotionOptions,
+  options?: MotionOptions,
 ): MotionState<Element> {
   /**
    * Heads up!
@@ -216,6 +216,10 @@ export function useMotion<Element extends HTMLElement>(
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
 }
+
+const stringifyShorthand = <Element extends HTMLElement>(value: MotionShorthand<Element>) => {
+  return JSON.stringify(value, null, 2);
+};
 
 /**
  * @internal
@@ -239,8 +243,6 @@ export function useIsMotion<Element extends HTMLElement>(
     // eslint-disable-next-line react-hooks/rules-of-hooks
     React.useEffect(() => {
       if (previousShorthand !== null && typeof previousShorthand !== typeof shorthand) {
-        const stringifyShorthand = (value: MotionShorthand<Element>) => JSON.stringify(value, null, 2);
-
         // eslint-disable-next-line no-console
         console.error(
           [
