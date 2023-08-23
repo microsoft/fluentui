@@ -21,7 +21,7 @@ export const Dismiss = () => {
   };
 
   return (
-    <TagGroup onDismiss={removeItem}>
+    <TagGroup onDismiss={removeItem} aria-label="Dismiss">
       {visibleTags.map(tag => (
         <InteractionTag value={tag.value} key={tag.value}>
           <InteractionTagPrimary hasSecondaryAction>{tag.children}</InteractionTagPrimary>
