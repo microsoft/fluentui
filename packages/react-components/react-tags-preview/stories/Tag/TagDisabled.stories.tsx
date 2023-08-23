@@ -18,7 +18,7 @@ export const Disabled = () => {
         secondaryText="appearance=filled"
         icon={<CalendarMonthRegular />}
         dismissible
-        aria-label="filled disabled, remove"
+        dismissIcon={{ 'aria-label': 'remove' }}
       >
         disabled
       </Tag>
@@ -28,7 +28,7 @@ export const Disabled = () => {
         appearance="outline"
         icon={<CalendarMonthRegular />}
         dismissible
-        aria-label="outline disabled, remove"
+        dismissIcon={{ 'aria-label': 'remove' }}
       >
         disabled
       </Tag>
@@ -38,7 +38,7 @@ export const Disabled = () => {
         appearance="brand"
         icon={<CalendarMonthRegular />}
         dismissible
-        aria-label="brand disabled, remove"
+        dismissIcon={{ 'aria-label': 'remove' }}
       >
         disabled
       </Tag>

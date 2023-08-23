@@ -25,7 +25,7 @@ export const Size = () => {
         <Tag>Medium</Tag>
         <Tag
           dismissible
-          aria-label="Medium dismissible, remove"
+          dismissIcon={{ 'aria-label': 'remove' }}
           media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
         >
           Medium dismissible
@@ -40,7 +40,7 @@ export const Size = () => {
         <Tag size="small">Small</Tag>
         <Tag
           dismissible
-          aria-label="Small dismissible, remove"
+          dismissIcon={{ 'aria-label': 'remove' }}
           size="small"
           media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
         >
@@ -56,7 +56,7 @@ export const Size = () => {
         <Tag size="extra-small">Extra small</Tag>
         <Tag
           dismissible
-          aria-label="Extra small dismissible, remove"
+          dismissIcon={{ 'aria-label': 'remove' }}
           size="extra-small"
           media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
         >
