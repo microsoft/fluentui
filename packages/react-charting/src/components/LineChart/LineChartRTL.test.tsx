@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
-import { ThemeProvider } from '@fluentui/react';
+import { DefaultPalette, ThemeProvider } from '@fluentui/react';
 import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
@@ -97,6 +97,16 @@ const pointsWithGaps: ILineChartPoints[] = [
     lineOptions: {
       lineBorderWidth: '4',
     },
+    gaps: [
+      {
+        startIndex: 3,
+        endIndex: 4,
+      },
+      {
+        startIndex: 6,
+        endIndex: 7,
+      },
+    ],
     data: [
       {
         x: new Date('2020-03-03T00:00:00.000Z'),
@@ -152,7 +162,7 @@ const pointsWithGaps: ILineChartPoints[] = [
         y: 269000,
       },
     ],
-    color: 'green',
+    color: DefaultPalette.blue,
   },
 ];
 
@@ -339,7 +349,7 @@ describe('Line chart - Subcomponent line', () => {
     container => {
       const lines = getById(container, /lineID/i);
       // Assert
-      expect(lines.length == 9);
+      expect(lines).toHaveLength(8);
     },
   );
 });
