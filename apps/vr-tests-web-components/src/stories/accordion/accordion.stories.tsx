@@ -1,8 +1,8 @@
 import * as React from 'react';
-import parse from 'html-react-parser';
+import { default as parse } from 'html-react-parser';
 import { Steps, StoryWright } from 'storywright';
 import { accordionDefinition, accordionItemDefinition, FluentDesignSystem } from '@fluentui/web-components';
-import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator';
+import { DARK_MODE, getStoryVariant, RTL } from '../../utilities/WCThemeDecorator.js';
 
 accordionDefinition.define(FluentDesignSystem.registry);
 accordionItemDefinition.define(FluentDesignSystem.registry);

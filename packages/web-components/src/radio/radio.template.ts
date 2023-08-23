@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { radioTemplate } from '@microsoft/fast-foundation';
+import { radioTemplate } from '@microsoft/fast-foundation/radio.js';
 import type { Radio } from './radio.js';
 
 export const template: ElementViewTemplate<Radio> = radioTemplate({

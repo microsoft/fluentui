@@ -1,5 +1,5 @@
 import { attr, css, ElementStyles } from '@microsoft/fast-element';
-import { FASTTabs, TabsOrientation } from '@microsoft/fast-foundation';
+import { FASTTabs, TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
 import { Tab } from '../index.js';
 import { TabsAppearance, TabsSize } from './tabs.options.js';
 
