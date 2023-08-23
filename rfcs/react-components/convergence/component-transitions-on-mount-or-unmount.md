@@ -132,13 +132,12 @@ import type { SampleState, SampleSlots } from './Sample.types';
  * Render the final JSX of Sample
  */
 export const renderSample_unstable = (state: SampleState) => {
-
   if (state.motion.canRender) {
     return null;
   }
-  
+
   assertSlots<SampleSlots>(state);
-  
+
   return <state.root />;
 };
 ```
