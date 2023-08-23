@@ -50,8 +50,8 @@ export const MotionExample = () => {
         Toggle
       </Button>
 
-      {motion.canRender() && (
-        <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.isActive() && styles.visible)}>
+      {motion.canRender && (
+        <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.active && styles.visible)}>
           Lorem ipsum
         </div>
       )}
