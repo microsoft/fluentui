@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Wed, 23 Aug 2023 04:18:01 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-alpha.31",
+      "version": "3.0.0-alpha.31",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "913d17528272d230a1c6f72652271faaebeb1a12",
+            "comment": "feat(web-components): add explicit named exports for design tokens and package export path for theme utils"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 22 Aug 2023 04:17:13 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.30",
       "version": "3.0.0-alpha.30",
