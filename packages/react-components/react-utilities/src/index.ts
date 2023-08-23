@@ -30,6 +30,7 @@ export type {
 export {
   IdPrefixProvider,
   resetIdsForTests,
+  useAnimationFrame,
   useControllableState,
   useEventCallback,
   useFirstMount,
