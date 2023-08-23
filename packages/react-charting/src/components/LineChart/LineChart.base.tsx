@@ -1171,7 +1171,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
 
-  private _handleHover(
+  private _handleHover = (
     x: number | Date,
     y: number | Date,
     lineHeight: number,
@@ -1179,7 +1179,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     circleId: string,
     xAxisCalloutAccessibilityData: IAccessibilityProps,
     mouseEvent: React.MouseEvent<SVGElement>,
-  ) {
+  ) => {
     mouseEvent.persist();
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
@@ -1214,7 +1214,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         activeLine: null,
       });
     }
-  }
+  };
 
   /**
    * Screen readers announce an element as clickable if the onClick attribute is set.
