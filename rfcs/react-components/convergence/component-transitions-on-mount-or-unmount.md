@@ -56,13 +56,13 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
    * Indicates whether the component is currently rendered and visible.
    * Useful to apply CSS transitions only when the element is active.
    */
-  isActive(): boolean;
+  active: boolean;
 
   /**
    * Indicates whether the component can be rendered.
    * This can be used to avoid rendering the component when it is not visible anymore.
    */
-  canRender(): boolean;
+  canRender: boolean;
 };
 
 export type MotionShorthandValue = boolean;
@@ -84,7 +84,7 @@ const [open, setOpen] = React.useState(false);
 const options = {
   animateOnFirstMount: false,
 };
-const { ref, type, isActive, canRender } = useMotion(open, options);
+const { ref, type, active, canRender } = useMotion(open, options);
 ```
 
 The hook always returns a `MotionState`. The received `MotionShorthand` parameter can be either a `boolean` or a `MotionState`. This flexibility is extremely useful for cases when an override on another component is needed, and with that a double calculation is avoided. See the **Usage** section on this document.
@@ -133,7 +133,7 @@ import type { SampleState, SampleSlots } from './Sample.types';
  */
 export const renderSample_unstable = (state: SampleState) => {
 
-  if (state.motion.canRender()) {
+  if (state.motion.canRender) {
     return null;
   }
   
@@ -184,7 +184,7 @@ export const useSampleStyles_unstable = (state: SampleState): SampleState => {
 
   state.root.className = mergeClasses(
     SampleClassNames.root,
-    state.motion.isActive() && styles.visible,
+    state.motion.active && styles.visible,
     state.motion.type === 'entering' && styles.entering,
     state.motion.type === 'exiting' && styles.exiting,
     styles.root,
@@ -315,7 +315,7 @@ export const CustomAnimation = () => {
       <Button appearance="primary" onClick={onClick}>
         Toggle
       </Button>
-      <Drawer open={motion} className={mergeClasses(styles.drawer, motion.isActive() && styles.drawerVisible)} />;
+      <Drawer open={motion} className={mergeClasses(styles.drawer, motion.active && styles.drawerVisible)} />;
     </div>
   );
 };
