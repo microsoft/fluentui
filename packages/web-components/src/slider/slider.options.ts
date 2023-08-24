@@ -1,5 +1,5 @@
-import { ValuesOf } from '@microsoft/fast-foundation';
-export { SliderOrientation } from '@microsoft/fast-foundation';
+import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+export { SliderOrientation } from '@microsoft/fast-foundation/slider.js';
 
 /**
  * SliderSize Constants

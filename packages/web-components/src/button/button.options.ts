@@ -1,4 +1,5 @@
-import { ButtonOptions, ValuesOf } from '@microsoft/fast-foundation';
+import type { ButtonOptions } from '@microsoft/fast-foundation/button.js';
+import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 /**
  * ButtonAppearance constants
