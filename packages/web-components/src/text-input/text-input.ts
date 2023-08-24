@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTTextField } from '@microsoft/fast-foundation';
+import { FASTTextField } from '@microsoft/fast-foundation/text-field.js';
 import { TextInputAppearance, TextInputControlSize } from './text-input.options.js';
 
 /**

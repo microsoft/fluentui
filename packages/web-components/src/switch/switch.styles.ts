@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation/utilities.js';
 import {
   borderRadiusCircular,
   colorCompoundBrandBackground,

@@ -1,4 +1,4 @@
-import { DesignToken } from '@microsoft/fast-foundation';
+import { DesignToken } from '@microsoft/fast-foundation/design-token.js';
 
 const { create } = DesignToken;
 
