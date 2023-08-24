@@ -707,7 +707,7 @@ const ResizableColumns: React.FC<SharedVrTestArgs & { scrollToEnd?: boolean }> =
     ],
   );
   return (
-    <div style={{ width: '500px', overflow: 'auto' }}>
+    <div style={{ width: '500px', overflow: 'auto', border: '1px dashed black' }}>
       <Table noNativeElements={noNativeElements} ref={tableRef} {...columnSizing.getTableProps()}>
         <TableHeader>
           <TableRow>
