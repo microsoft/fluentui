@@ -1,4 +1,4 @@
-import { render, screen, queryAllByAttribute, fireEvent, act } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
@@ -257,7 +257,6 @@ describe('Area chart rendering', () => {
 
 describe('Area chart - Subcomponent Area', () => {
   testWithoutWait('Should render the Areas with the specified colors', AreaChart, { data: chartData }, container => {
-    const getById = queryAllByAttribute.bind(null, 'id');
     const areas = getById(container, /graph-areaChart/i);
     // Assert
     expect(areas[0].getAttribute('fill')).toEqual('green');
@@ -276,7 +275,6 @@ describe('Area chart - Subcomponent legend', () => {
       expect(legend).toBeDefined();
       fireEvent.mouseOver(legend!);
       // Assert
-      const getById = queryAllByAttribute.bind(null, 'id');
       const areas = getById(container, /graph-areaChart/i);
       expect(areas[0].getAttribute('fill-opacity')).toEqual('0.7');
       expect(areas[1].getAttribute('fill-opacity')).toEqual('0.1');
@@ -293,7 +291,6 @@ describe('Area chart - Subcomponent legend', () => {
       expect(legend).toBeDefined();
       fireEvent.mouseOver(legend!);
       // Assert
-      const getById = queryAllByAttribute.bind(null, 'id');
       const areaLines = getById(container, /line-areaChart/i);
       expect(areaLines[0].getAttribute('opacity')).toEqual('0');
       expect(areaLines[1].getAttribute('opacity')).toEqual('0.1');
@@ -323,7 +320,6 @@ describe('Area chart - Subcomponent legend', () => {
       expect(legend).toBeDefined();
       fireEvent.click(legend!);
       // Assert
-      const getById = queryAllByAttribute.bind(null, 'id');
       expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
       const firstLegend = screen.queryByText('legend1')?.closest('button');
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
@@ -341,7 +337,6 @@ describe('Area chart - Subcomponent legend', () => {
 
       //single click on first legend
       fireEvent.click(legend!);
-      const getById = queryAllByAttribute.bind(null, 'id');
       expect(getById(container, /graph-areaChart/i)[1]).toHaveAttribute('fill-opacity', '0.1');
       const firstLegend = screen.queryByText('legend1')?.closest('button');
       expect(firstLegend).toHaveAttribute('aria-selected', 'true');
@@ -411,7 +406,6 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     AreaChart,
     { data: chartDataWithDates, showXAxisLablesTooltip: true },
     container => {
-      const getById = queryAllByAttribute.bind(null, 'id');
       const xAxisLabels = getById(container, /showDots/i);
       fireEvent.mouseOver(xAxisLabels[0]);
       // Assert
@@ -424,8 +418,6 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     AreaChart,
     { data: chartDataWithDates, rotateXAxisLables: true },
     container => {
-      // Arrange
-      const getByClass = queryAllByAttribute.bind(null, 'class');
       // Assert
       screen.debug(undefined, Infinity);
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
