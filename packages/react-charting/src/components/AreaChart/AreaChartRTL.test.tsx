@@ -419,7 +419,6 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
     { data: chartDataWithDates, rotateXAxisLables: true },
     container => {
       // Assert
-      screen.debug(undefined, Infinity);
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
     },
   );
