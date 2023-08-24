@@ -8,7 +8,7 @@ import {
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
   TreeItemValue,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { makeStyles, Spinner, shorthands } from '@fluentui/react-components';
 
 interface Result {

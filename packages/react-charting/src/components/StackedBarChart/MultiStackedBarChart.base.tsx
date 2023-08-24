@@ -177,7 +177,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
-      value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+      let value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
       if (value < 1 && value !== 0) {
         value = 1;
       } else if (value > 99 && value !== 100) {

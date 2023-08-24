@@ -6,7 +6,7 @@ import {
   treeItemLevelToken,
   useTreeContext_unstable,
   useTreeItemContext_unstable,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 
 const RecursiveTreeItem: React.FC = () => {
   const level = useTreeContext_unstable(ctx => ctx.level);

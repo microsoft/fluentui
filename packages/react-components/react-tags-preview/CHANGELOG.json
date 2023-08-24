@@ -2,6 +2,72 @@
   "name": "@fluentui/react-tags-preview",
   "entries": [
     {
+      "date": "Wed, 23 Aug 2023 12:01:49 GMT",
+      "tag": "@fluentui/react-tags-preview_v0.2.3",
+      "version": "0.2.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-aria to v9.3.31",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-avatar to v9.5.23",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.1",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.12.3",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.11.2",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Aug 2023 11:38:02 GMT",
+      "tag": "@fluentui/react-tags-preview_v0.2.2",
+      "version": "0.2.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "ad2fe1f95bbd2c9a053e9a058ccabc7e153b413c",
+            "comment": "chore: add documentation"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "55e07ffc8d180554fb027841e7d2a89637cefcb3",
+            "comment": "fix: use `:active` selector for pressed style instead of `:hover:active`"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-avatar to v9.5.22",
+            "commit": "55e07ffc8d180554fb027841e7d2a89637cefcb3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 16 Aug 2023 17:41:08 GMT",
       "tag": "@fluentui/react-tags-preview_v0.2.1",
       "version": "0.2.1",

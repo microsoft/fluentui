@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-search-preview
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 12:01:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.10)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.9..@fluentui/react-search-preview_v0.1.10)
+
+### Patches
+
+- Bump @fluentui/react-input to v9.4.30 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [0.1.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.9)
+
+Mon, 21 Aug 2023 11:38:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.8..@fluentui/react-search-preview_v0.1.9)
+
+### Patches
+
+- chore: migrate to new slots API ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by bernardo.sunderhus@gmail.com)
 
 ## [0.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.8)
 
