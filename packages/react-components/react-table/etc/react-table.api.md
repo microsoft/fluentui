@@ -29,6 +29,9 @@ import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
 
+// @public (undocumented)
+export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined>;
+
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
     columnId: TableColumnId;
@@ -367,9 +370,6 @@ export interface TableColumnDefinition<TItem> {
 
 // @public (undocumented)
 export type TableColumnId = string | number;
-
-// @public (undocumented)
-export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined>;
 
 // @public (undocumented)
 export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {

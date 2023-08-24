@@ -1019,8 +1019,6 @@ export {
   useTableColumnSizing_unstable,
   ColumnIdContextProvider,
   useColumnIdContext,
-  DataGridContextProvider,
-  useDataGridContext_unstable,
   TableHeaderContextProvider,
   useIsInTableHeader,
 } from '@fluentui/react-table';

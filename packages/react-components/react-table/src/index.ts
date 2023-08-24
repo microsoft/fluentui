@@ -91,7 +91,6 @@ export {
 export type { TableResizeHandleProps, TableResizeHandleSlots, TableResizeHandleState } from './TableResizeHandle';
 
 export { ColumnIdContextProvider, useColumnIdContext } from './contexts/columnIdContext';
-export { DataGridContextProvider, useDataGridContext_unstable } from './contexts/dataGridContext';
 export { TableContextProvider, useTableContext } from './contexts/tableContext';
 export { useTableRowIdContext, TableRowIdContextProvider } from './contexts/rowIdContext';
 export { TableHeaderContextProvider, useIsInTableHeader } from './contexts/tableHeaderContext';

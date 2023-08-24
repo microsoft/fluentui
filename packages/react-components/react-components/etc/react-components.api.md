@@ -131,7 +131,7 @@ import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
-import { ColumnIdContextProvider } '@fluentui/react-table';
+import { ColumnIdContextProvider } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValue } from '@fluentui/react-combobox';
@@ -3152,6 +3152,8 @@ export { useInput_unstable }
 
 export { useInputStyles_unstable }
 
+export { useIsInTableHeader }
+
 export { useIsomorphicLayoutEffect }
 
 export { useIsOverflowGroupVisible }
@@ -3159,8 +3161,6 @@ export { useIsOverflowGroupVisible }
 export { useIsOverflowItemVisible }
 
 export { useIsSSR }
-
-export { useIsInTableHeader }
 
 export { useKeyboardNavAttribute }
 
