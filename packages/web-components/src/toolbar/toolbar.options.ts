@@ -1,4 +1,6 @@
-import { ToolbarOptions, ToolbarOrientation, ValuesOf } from '@microsoft/fast-foundation';
+import { ToolbarOrientation } from '@microsoft/fast-foundation/toolbar.js';
+import type { ToolbarOptions } from '@microsoft/fast-foundation/toolbar.js';
+import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 /**
  * Toolbar size options.

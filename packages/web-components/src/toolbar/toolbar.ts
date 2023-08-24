@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTToolbar } from '@microsoft/fast-foundation';
+import { FASTToolbar } from '@microsoft/fast-foundation/toolbar.js';
 import { ToolbarSize } from './toolbar.options.js';
 
 /**
