@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "expose useDataGridContext_unstable etc. contexts",
-  "packageName": "@fluentui/react-components",
-  "email": "email not defined",
-  "dependentChangeType": "patch"
-}
