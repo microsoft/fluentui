@@ -30,17 +30,7 @@ When a set of controls is visually presented as a group, the toolbar role can be
 
 ### CSS Variables
 
-borderRadiusMedium,
-colorNeutralBackground1,
-colorNeutralBackground1Hover,
-colorNeutralBackground1Pressed,
-colorNeutralForeground1,
-colorNeutralForeground2,
-fontFamilyBase,
-spacingHorizontalNone,
-spacingHorizontalS,
-spacingHorizontalXL,
-spacingHorizontalXS,
+None
 
 ## Interactions
 
