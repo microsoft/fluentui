@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(react-popover): Only apply modal attributes if the PopoverSurface traps focus.",
-  "packageName": "@fluentui/react-popover",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
