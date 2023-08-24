@@ -1,4 +1,4 @@
-import { attr, Observable } from '@microsoft/fast-element';
+import { attr, css, Observable, Updates } from '@microsoft/fast-element';
 import { FASTListboxOption, FASTSelect } from '@microsoft/fast-foundation';
 import { colorNeutralForeground1, colorNeutralForeground3 } from '../theme/design-tokens.js';
 import { DropdownAppearance, DropdownControlSizes } from './dropdown.options.js';
@@ -40,17 +40,35 @@ export class Dropdown extends FASTSelect {
   public get displayValue(): string {
     Observable.track(this, 'displayValue');
     if ((this.selectedOptions.length == 0 || this.selectedIndex == -1) && this.placeholder) {
-      this.style.setProperty('--placeholder-visible', `${colorNeutralForeground3.$value}`);
+      Updates.enqueue(() => {
+        this.$fastController.addStyles(css`
+          :host {
+            --placeholder-visible: ${colorNeutralForeground3};
+          }
+        `);
+      });
       this.currentValue = '';
       return this.placeholder;
     }
     if (this.multiple) {
+      Updates.enqueue(() => {
+        this.$fastController.addStyles(css`
+          :host {
+            --placeholder-visible: ${colorNeutralForeground1};
+          }
+        `);
+      });
       const selectedOptionsText = this.selectedOptions.map(option => option.text);
-      this.style.setProperty('--placeholder-visible', `${colorNeutralForeground1.$value}`);
       this.currentValue = this.firstSelectedOption?.text;
       return selectedOptionsText.join(', ') || '';
     } else {
-      this.style.setProperty('--placeholder-visible', `${colorNeutralForeground1.$value}`);
+      Updates.enqueue(() => {
+        this.$fastController.addStyles(css`
+          :host {
+            --placeholder-visible: ${colorNeutralForeground1};
+          }
+        `);
+      });
       return this.firstSelectedOption?.text ?? '';
     }
   }

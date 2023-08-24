@@ -175,11 +175,6 @@ export const styles = css`
   .listbox[hidden] {
     display: none;
   }
-  :host(:not([aria-haspopup])) .listbox {
-    left: auto;
-    position: static;
-    z-index: auto;
-  }
 
   :host([style-sizes='small']) {
     height: 24px;
@@ -224,9 +219,6 @@ export const styles = css`
   :host([disabled]) {
     cursor: auto;
     user-select: none;
-  }
-
-  .listbox {
   }
 
   :host(:not([multiple])) {
