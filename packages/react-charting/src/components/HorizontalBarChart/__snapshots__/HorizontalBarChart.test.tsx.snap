@@ -137,10 +137,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -158,10 +155,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="13457/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -304,10 +298,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -325,10 +316,7 @@ exports[`HorizontalBarChart - mouse events Should render callout correctly on mo
               aria-label="14200/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -647,10 +635,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -668,10 +653,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="13457/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -814,10 +796,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -835,10 +814,7 @@ exports[`HorizontalBarChart - mouse events Should render customized callout on m
               aria-label="14200/15000."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={false}
               fill="#edebe9"
               height={12}
@@ -1063,10 +1039,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -1195,10 +1168,7 @@ exports[`HorizontalBarChart snapShot testing Should not render bar labels in abs
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
@@ -1344,10 +1314,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 94%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#004b50"
               height={12}
@@ -1494,10 +1461,7 @@ exports[`HorizontalBarChart snapShot testing Should render absolute-scale varian
               aria-label="2020/04/30, 19%."
               className=
 
-                  {
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
+
               data-is-focusable={true}
               fill="#5c2d91"
               height={12}
