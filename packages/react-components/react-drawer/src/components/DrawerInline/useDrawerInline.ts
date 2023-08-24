@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState, slot } from '@fluentui/react-utilities';
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
-import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
+import { useBaseDrawerDefaultProps } from '../../util/useBaseDrawerDefaultProps';
 
 /**
  * Create the state required to render DrawerInline.
@@ -13,7 +13,7 @@ import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
  * @param ref - reference to root HTMLElement of DrawerInline
  */
 export const useDrawerInline_unstable = (props: DrawerInlineProps, ref: React.Ref<HTMLElement>): DrawerInlineState => {
-  const { open: initialOpen, defaultOpen, size, position } = getDefaultDrawerProps(props);
+  const { open: initialOpen, defaultOpen, size, position } = useBaseDrawerDefaultProps(props);
   const { separator = false } = props;
 
   const [open] = useControllableState({
