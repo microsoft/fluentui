@@ -6,7 +6,7 @@ import {
   useHeadlessFlatTree_unstable,
   HeadlessFlatTreeItemProps,
   TreeItemProps,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 
 import {
   DndContext,

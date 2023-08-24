@@ -75,7 +75,9 @@ export type BreadcrumbItemSlots = {
 };
 
 // @public
-export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;
+export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size' | 'current'>> & {
+    isInteractive?: boolean;
+};
 
 // @public
 export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps>;

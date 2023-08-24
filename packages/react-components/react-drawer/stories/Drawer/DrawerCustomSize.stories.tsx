@@ -28,7 +28,7 @@ export const CustomSize = () => {
     <div>
       <DrawerOverlay
         open={open}
-        position="right"
+        position="end"
         onOpenChange={(_, state) => setOpen(state.open)}
         style={{ width: `${customSize}px` }}
       >
