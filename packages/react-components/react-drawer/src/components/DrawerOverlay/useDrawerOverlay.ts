@@ -2,7 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
-import { useBaseDrawerDefaultProps } from '../../util/useBaseDrawerDefaultProps';
+import { useDrawerDefaultProps } from '../../util/useDrawerDefaultProps';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 /**
@@ -18,7 +18,7 @@ export const useDrawerOverlay_unstable = (
   props: DrawerOverlayProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
-  const { open, defaultOpen, size, position } = useBaseDrawerDefaultProps(props);
+  const { open, defaultOpen, size, position } = useDrawerDefaultProps(props);
   const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
 
   const drawerMotion = useMotion<HTMLDivElement>(open);
