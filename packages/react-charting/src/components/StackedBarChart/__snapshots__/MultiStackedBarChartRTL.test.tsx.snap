@@ -116,7 +116,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -142,7 +141,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -168,7 +166,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -194,7 +191,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -220,7 +216,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -342,7 +337,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -368,7 +362,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -394,7 +387,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -420,7 +412,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -446,7 +437,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -595,7 +585,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -621,7 +610,6 @@ exports[`Multi Stacked bar chart rendering Should render the Multi Stacked bar c
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1256,7 +1244,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1282,7 +1269,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1308,7 +1294,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1334,7 +1319,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1360,7 +1344,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1482,7 +1465,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1508,7 +1490,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1534,7 +1515,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1560,7 +1540,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1586,7 +1565,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1735,7 +1713,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -1761,7 +1738,6 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2396,7 +2372,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2422,7 +2397,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2448,7 +2422,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2474,7 +2447,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2500,7 +2472,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2622,7 +2593,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2648,7 +2618,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2674,7 +2643,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2700,7 +2668,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2726,7 +2693,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2875,7 +2841,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -2901,7 +2866,6 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                       opacity: ;
                     }
                     &:focus {
-                      outline-color: #000000;
                       stroke-width: 2px;
                       stroke: #000000;
                     }
@@ -3549,7 +3513,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3575,7 +3538,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3601,7 +3563,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3627,7 +3588,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3653,7 +3613,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3775,7 +3734,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3801,7 +3759,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3827,7 +3784,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3853,7 +3809,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -3879,7 +3834,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -4028,7 +3982,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }
@@ -4054,7 +4007,6 @@ exports[`Should reflect theme change 1`] = `
                         opacity: ;
                       }
                       &:focus {
-                        outline-color: #ffffff;
                         stroke-width: 2px;
                         stroke: #ffffff;
                       }

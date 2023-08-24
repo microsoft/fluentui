@@ -54,7 +54,6 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       cursor: href ? 'pointer' : 'default',
       selectors: {
         '&:focus': {
-          outlineColor: theme.palette.black,
           stroke: theme.palette.black,
           strokeWidth: '2px',
         },

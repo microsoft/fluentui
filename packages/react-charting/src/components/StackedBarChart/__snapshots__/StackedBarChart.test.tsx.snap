@@ -135,71 +135,71 @@ exports[`StackedBarChart - mouse events Should render callout correctly on mouse
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          key="0"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar7"
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
             key="0"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar7"
+              key="0"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          key="1"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar8"
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
             key="1"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar8"
+              key="1"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <div
           className=
@@ -504,71 +504,71 @@ exports[`StackedBarChart - mouse events Should render customized callout on mous
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          key="0"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar7"
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
             key="0"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar7"
+              key="0"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          key="1"
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar8"
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
             key="1"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar8"
+              key="1"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <div
           className=
@@ -790,67 +790,67 @@ exports[`StackedBarChart snapShot testing renders StackedBarChart correctly 1`] 
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar2"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar2"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar3"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar3"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <span
           className="ms-layer"
@@ -996,67 +996,67 @@ exports[`StackedBarChart snapShot testing renders enabledLegendsWrapLines correc
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar45"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar45"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar46"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar46"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <span
           className="ms-layer"
@@ -1192,67 +1192,67 @@ exports[`StackedBarChart snapShot testing renders hideDenominator correctly 1`] 
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar30"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar30"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar31"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar31"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <span
           className="ms-layer"
@@ -1398,67 +1398,67 @@ exports[`StackedBarChart snapShot testing renders hideLegend correctly 1`] = `
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar9"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar9"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar10"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar10"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <span
           className="ms-layer"
@@ -1578,67 +1578,67 @@ exports[`StackedBarChart snapShot testing renders hideNumberDisplay correctly 1`
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar23"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar23"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar24"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar24"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <span
           className="ms-layer"
@@ -1784,67 +1784,67 @@ exports[`StackedBarChart snapShot testing renders hideTooltip correctly 1`] = `
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={false}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar16"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar16"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={false}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar17"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar17"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <span
           className="ms-layer"
@@ -1964,67 +1964,67 @@ exports[`StackedBarChart snapShot testing renders ignoreFixStyle correctly 1`] =
               width: 100%;
             }
       >
-        <g
-          aria-label="first Lorem ipsum dolor sit amet, 40."
-          className=
+        <g>
+          <g
+            aria-label="first Lorem ipsum dolor sit amet, 40."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#5c005c"
-            height={12}
-            id="_SBC_bar37"
-            width="63.49206349206349%"
-            x="0%"
-            y={0}
-          />
-        </g>
-        <g
-          aria-label="Winter is coming, 23."
-          className=
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#5c005c"
+              height={12}
+              id="_SBC_bar37"
+              width="63.49206349206349%"
+              x="0%"
+              y={0}
+            />
+          </g>
+          <g
+            aria-label="Winter is coming, 23."
+            className=
 
-              {
-                cursor: default;
-                opacity: ;
-              }
-              &:focus {
-                outline-color: #000000;
-                stroke-width: 2px;
-                stroke: #000000;
-              }
-          data-is-focusable={true}
-          onBlur={[Function]}
-          onFocus={[Function]}
-          onMouseLeave={[Function]}
-          onMouseMove={[Function]}
-          onMouseOver={[Function]}
-          pointerEvents="all"
-          role="img"
-        >
-          <rect
-            fill="#e81123"
-            height={12}
-            id="_SBC_bar38"
-            width="36.507936507936506%"
-            x="63.49206349206349%"
-            y={0}
-          />
+                {
+                  cursor: default;
+                  opacity: ;
+                }
+                &:focus {
+                  stroke-width: 2px;
+                  stroke: #000000;
+                }
+            data-is-focusable={true}
+            onBlur={[Function]}
+            onFocus={[Function]}
+            onMouseLeave={[Function]}
+            onMouseMove={[Function]}
+            onMouseOver={[Function]}
+            pointerEvents="all"
+            role="img"
+          >
+            <rect
+              fill="#e81123"
+              height={12}
+              id="_SBC_bar38"
+              width="36.507936507936506%"
+              x="63.49206349206349%"
+              y={0}
+            />
+          </g>
         </g>
         <span
           className="ms-layer"

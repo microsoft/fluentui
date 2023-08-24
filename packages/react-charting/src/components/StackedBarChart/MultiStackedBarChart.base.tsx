@@ -86,7 +86,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
   public componentDidMount(): void {
     const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
-    const MARGIN_WIDTH_IN_PX = 2;
+    const MARGIN_WIDTH_IN_PX = 3;
     if (svgWidth) {
       const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
       this.setState({ barSpacingInPercent: currentBarSpacing });

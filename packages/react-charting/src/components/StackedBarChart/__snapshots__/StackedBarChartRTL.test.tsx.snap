@@ -89,113 +89,111 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               }
           focusable="false"
         >
-          <g
-            aria-label="2020/04/30, 40%."
-            class=
+          <g>
+            <g
+              aria-label="2020/04/30, 40%."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="0"
-          >
-            <rect
-              fill="#0078d4"
-              height="12"
-              id="_SBC_bar213"
-              width="37.22084367245658%"
-              x="0%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="second, 100."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                fill="#0078d4"
+                height="12"
+                id="_SBC_bar213"
+                width="37.22084367245658%"
+                x="0%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="second, 100."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#107c10"
-              height="12"
-              id="_SBC_bar214"
-              width="12.40694789081886%"
-              x="37.22084367245658%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="third, -200."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#107c10"
+                height="12"
+                id="_SBC_bar214"
+                width="12.40694789081886%"
+                x="37.22084367245658%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="third, -200."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#e81123"
-              height="12"
-              id="_SBC_bar215"
-              width="0.7444168734491317%"
-              x="49.62779156327544%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="fourth, 400."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#e81123"
+                height="12"
+                id="_SBC_bar215"
+                width="0.7444168734491317%"
+                x="49.62779156327544%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="fourth, 400."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#d83b01"
-              height="12"
-              id="_SBC_bar216"
-              width="49.62779156327544%"
-              x="50.37220843672457%"
-              y="0"
-            />
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#d83b01"
+                height="12"
+                id="_SBC_bar216"
+                width="49.62779156327544%"
+                x="50.37220843672457%"
+                y="0"
+              />
+            </g>
           </g>
           <span
             class="ms-layer"
@@ -700,113 +698,111 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               }
           focusable="false"
         >
-          <g
-            aria-label="2020/04/30, 40%."
-            class=
+          <g>
+            <g
+              aria-label="2020/04/30, 40%."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="0"
-          >
-            <rect
-              fill="#0078d4"
-              height="12"
-              id="_SBC_bar223"
-              width="37.22084367245658%"
-              x="0%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="second, 100."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                fill="#0078d4"
+                height="12"
+                id="_SBC_bar223"
+                width="37.22084367245658%"
+                x="0%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="second, 100."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#107c10"
-              height="12"
-              id="_SBC_bar224"
-              width="12.40694789081886%"
-              x="37.22084367245658%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="third, -200."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#107c10"
+                height="12"
+                id="_SBC_bar224"
+                width="12.40694789081886%"
+                x="37.22084367245658%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="third, -200."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#e81123"
-              height="12"
-              id="_SBC_bar225"
-              width="0.7444168734491317%"
-              x="49.62779156327544%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="fourth, 400."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#e81123"
+                height="12"
+                id="_SBC_bar225"
+                width="0.7444168734491317%"
+                x="49.62779156327544%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="fourth, 400."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#d83b01"
-              height="12"
-              id="_SBC_bar226"
-              width="49.62779156327544%"
-              x="50.37220843672457%"
-              y="0"
-            />
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#d83b01"
+                height="12"
+                id="_SBC_bar226"
+                width="49.62779156327544%"
+                x="50.37220843672457%"
+                y="0"
+              />
+            </g>
           </g>
           <span
             class="ms-layer"
@@ -1324,113 +1320,111 @@ exports[`Should reflect theme change 1`] = `
                 }
             focusable="false"
           >
-            <g
-              aria-label="2020/04/30, 40%."
-              class=
+            <g>
+              <g
+                aria-label="2020/04/30, 40%."
+                class=
 
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #ffffff;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-              data-is-focusable="true"
-              pointer-events="all"
-              role="img"
-              tabindex="0"
-            >
-              <rect
-                fill="#0078d4"
-                height="12"
-                id="_SBC_bar236"
-                width="37.22084367245658%"
-                x="0%"
-                y="0"
-              />
-            </g>
-            <g
-              aria-label="second, 100."
-              class=
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="0"
+              >
+                <rect
+                  fill="#0078d4"
+                  height="12"
+                  id="_SBC_bar236"
+                  width="37.22084367245658%"
+                  x="0%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="second, 100."
+                class=
 
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #ffffff;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-              data-is-focusable="true"
-              pointer-events="all"
-              role="img"
-              tabindex="-1"
-            >
-              <rect
-                fill="#107c10"
-                height="12"
-                id="_SBC_bar237"
-                width="12.40694789081886%"
-                x="37.22084367245658%"
-                y="0"
-              />
-            </g>
-            <g
-              aria-label="third, -200."
-              class=
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#107c10"
+                  height="12"
+                  id="_SBC_bar237"
+                  width="12.40694789081886%"
+                  x="37.22084367245658%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="third, -200."
+                class=
 
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #ffffff;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-              data-is-focusable="true"
-              pointer-events="all"
-              role="img"
-              tabindex="-1"
-            >
-              <rect
-                fill="#e81123"
-                height="12"
-                id="_SBC_bar238"
-                width="0.7444168734491317%"
-                x="49.62779156327544%"
-                y="0"
-              />
-            </g>
-            <g
-              aria-label="fourth, 400."
-              class=
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#e81123"
+                  height="12"
+                  id="_SBC_bar238"
+                  width="0.7444168734491317%"
+                  x="49.62779156327544%"
+                  y="0"
+                />
+              </g>
+              <g
+                aria-label="fourth, 400."
+                class=
 
-                  {
-                    cursor: default;
-                    opacity: ;
-                  }
-                  &:focus {
-                    outline-color: #ffffff;
-                    stroke-width: 2px;
-                    stroke: #ffffff;
-                  }
-              data-is-focusable="true"
-              pointer-events="all"
-              role="img"
-              tabindex="-1"
-            >
-              <rect
-                fill="#d83b01"
-                height="12"
-                id="_SBC_bar239"
-                width="49.62779156327544%"
-                x="50.37220843672457%"
-                y="0"
-              />
+                    {
+                      cursor: default;
+                      opacity: ;
+                    }
+                    &:focus {
+                      stroke-width: 2px;
+                      stroke: #ffffff;
+                    }
+                data-is-focusable="true"
+                pointer-events="all"
+                role="img"
+                tabindex="-1"
+              >
+                <rect
+                  fill="#d83b01"
+                  height="12"
+                  id="_SBC_bar239"
+                  width="49.62779156327544%"
+                  x="50.37220843672457%"
+                  y="0"
+                />
+              </g>
             </g>
             <span
               class="ms-layer"
@@ -1936,27 +1930,28 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
               }
           focusable="false"
         >
-          <g
-            class=
+          <g>
+            <g
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-          >
-            <rect
-              fill="#edebe9"
-              height="12"
-              id="_SBC_empty_bar_16"
-              width="100%"
-              x="0%"
-              y="0"
-            />
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+            >
+              <rect
+                fill="#edebe9"
+                height="12"
+                id="_SBC_empty_bar_16"
+                width="100%"
+                x="0%"
+                y="0"
+              />
+            </g>
           </g>
           <span
             class="ms-layer"
@@ -2461,113 +2456,111 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with no
               }
           focusable="false"
         >
-          <g
-            aria-label="2020/04/30, 40%."
-            class=
+          <g>
+            <g
+              aria-label="2020/04/30, 40%."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="0"
-          >
-            <rect
-              fill="#0078d4"
-              height="12"
-              id="_SBC_bar2"
-              width="37.22084367245658%"
-              x="0%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="second, 100."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="0"
+            >
+              <rect
+                fill="#0078d4"
+                height="12"
+                id="_SBC_bar2"
+                width="37.22084367245658%"
+                x="0%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="second, 100."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#107c10"
-              height="12"
-              id="_SBC_bar3"
-              width="12.40694789081886%"
-              x="37.22084367245658%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="third, -200."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#107c10"
+                height="12"
+                id="_SBC_bar3"
+                width="12.40694789081886%"
+                x="37.22084367245658%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="third, -200."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#e81123"
-              height="12"
-              id="_SBC_bar4"
-              width="0.7444168734491317%"
-              x="49.62779156327544%"
-              y="0"
-            />
-          </g>
-          <g
-            aria-label="fourth, 400."
-            class=
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#e81123"
+                height="12"
+                id="_SBC_bar4"
+                width="0.7444168734491317%"
+                x="49.62779156327544%"
+                y="0"
+              />
+            </g>
+            <g
+              aria-label="fourth, 400."
+              class=
 
-                {
-                  cursor: default;
-                  opacity: ;
-                }
-                &:focus {
-                  outline-color: #000000;
-                  stroke-width: 2px;
-                  stroke: #000000;
-                }
-            data-is-focusable="true"
-            pointer-events="all"
-            role="img"
-            tabindex="-1"
-          >
-            <rect
-              fill="#d83b01"
-              height="12"
-              id="_SBC_bar5"
-              width="49.62779156327544%"
-              x="50.37220843672457%"
-              y="0"
-            />
+                  {
+                    cursor: default;
+                    opacity: ;
+                  }
+                  &:focus {
+                    stroke-width: 2px;
+                    stroke: #000000;
+                  }
+              data-is-focusable="true"
+              pointer-events="all"
+              role="img"
+              tabindex="-1"
+            >
+              <rect
+                fill="#d83b01"
+                height="12"
+                id="_SBC_bar5"
+                width="49.62779156327544%"
+                x="50.37220843672457%"
+                y="0"
+              />
+            </g>
           </g>
           <span
             class="ms-layer"
