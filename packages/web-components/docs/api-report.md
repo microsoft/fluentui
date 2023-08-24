@@ -19,6 +19,7 @@ import { FASTCheckbox } from '@microsoft/fast-foundation/checkbox.js';
 import { FASTDivider } from '@microsoft/fast-foundation/divider.js';
 import { FASTElement } from '@microsoft/fast-element';
 import { FASTElementDefinition } from '@microsoft/fast-element';
+<<<<<<< HEAD
 import { FASTMenu } from '@microsoft/fast-foundation/menu.js';
 import { FASTMenuItem } from '@microsoft/fast-foundation/menu-item.js';
 import { FASTProgress } from '@microsoft/fast-foundation/progress.js';
@@ -39,8 +40,60 @@ import { StartEndOptions } from '@microsoft/fast-foundation/patterns.js';
 import type { StaticallyComposableHTML } from '@microsoft/fast-foundation/utilities.js';
 import { TabsOrientation } from '@microsoft/fast-foundation/tabs.js';
 import { TextFieldType as TextInputType } from '@microsoft/fast-foundation/text-field.js';
+||||||| a2759700ee
+import { FASTMenu } from '@microsoft/fast-foundation';
+import { FASTMenuItem } from '@microsoft/fast-foundation';
+import { FASTProgress } from '@microsoft/fast-foundation';
+import { FASTProgressRing } from '@microsoft/fast-foundation';
+import { FASTRadio } from '@microsoft/fast-foundation';
+import { FASTRadioGroup } from '@microsoft/fast-foundation';
+import { FASTSlider } from '@microsoft/fast-foundation';
+import { FASTSwitch } from '@microsoft/fast-foundation';
+import { FASTTab } from '@microsoft/fast-foundation';
+import { FASTTabPanel } from '@microsoft/fast-foundation';
+import { FASTTabs } from '@microsoft/fast-foundation';
+import { FASTTextField } from '@microsoft/fast-foundation';
+import { MenuItemRole } from '@microsoft/fast-foundation';
+import { RadioGroupOrientation } from '@microsoft/fast-foundation';
+import { SliderOrientation } from '@microsoft/fast-foundation';
+import { StartEnd } from '@microsoft/fast-foundation';
+import { StartEndOptions } from '@microsoft/fast-foundation';
+import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
+import { TabsOrientation } from '@microsoft/fast-foundation';
+import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
+=======
+import { FASTMenu } from '@microsoft/fast-foundation';
+import { FASTMenuItem } from '@microsoft/fast-foundation';
+import { FASTProgress } from '@microsoft/fast-foundation';
+import { FASTProgressRing } from '@microsoft/fast-foundation';
+import { FASTRadio } from '@microsoft/fast-foundation';
+import { FASTRadioGroup } from '@microsoft/fast-foundation';
+import { FASTSlider } from '@microsoft/fast-foundation';
+import { FASTSwitch } from '@microsoft/fast-foundation';
+import { FASTTab } from '@microsoft/fast-foundation';
+import { FASTTabPanel } from '@microsoft/fast-foundation';
+import { FASTTabs } from '@microsoft/fast-foundation';
+import { FASTTextField } from '@microsoft/fast-foundation';
+import { FASTToolbar } from '@microsoft/fast-foundation';
+import { MenuItemRole } from '@microsoft/fast-foundation';
+import { RadioGroupOrientation } from '@microsoft/fast-foundation';
+import { SliderOrientation } from '@microsoft/fast-foundation';
+import { StartEnd } from '@microsoft/fast-foundation';
+import { StartEndOptions } from '@microsoft/fast-foundation';
+import { StaticallyComposableHTML } from '@microsoft/fast-foundation';
+import { TabsOrientation } from '@microsoft/fast-foundation';
+import { TextFieldType as TextInputType } from '@microsoft/fast-foundation';
+>>>>>>> abc924b348167bc9f1258a0e0df0fa9e26d9fe9e
 import type { Theme } from '@fluentui/tokens';
+<<<<<<< HEAD
 import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
+||||||| a2759700ee
+import { ValuesOf } from '@microsoft/fast-foundation';
+=======
+import { ToolbarOptions } from '@microsoft/fast-foundation';
+import { ToolbarOrientation } from '@microsoft/fast-foundation';
+import { ValuesOf } from '@microsoft/fast-foundation';
+>>>>>>> abc924b348167bc9f1258a0e0df0fa9e26d9fe9e
 
 // @public
 export class Accordion extends FASTAccordion {
@@ -124,7 +177,10 @@ export const AnchorButtonAppearance: {
     readonly outline: "outline";
     readonly subtle: "subtle";
     readonly secondary: "secondary";
-    readonly transparent: "transparent";
+    readonly transparent: "transparent"; /**
+    * An Anchor Button can be secondary, primary, outline, subtle, transparent
+    * @public
+    */
 };
 
 // @public
@@ -2381,6 +2437,34 @@ export const ToggleButtonStyles: ElementStyles;
 
 // @public
 export const ToggleButtonTemplate: ElementViewTemplate<ToggleButton>;
+
+// @public
+export class Toolbar extends FASTToolbar {
+    size?: ToolbarSize;
+}
+
+// @public
+export const ToolbarDefinition: FASTElementDefinition<typeof Toolbar>;
+
+export { ToolbarOptions }
+
+export { ToolbarOrientation }
+
+// @public
+export const ToolbarSize: {
+    readonly small: "small";
+    readonly medium: "medium";
+    readonly large: "large";
+};
+
+// @public
+export type ToolbarSize = ValuesOf<typeof ToolbarSize>;
+
+// @public
+export const ToolbarStyles: ElementStyles;
+
+// @public (undocumented)
+export const ToolbarTemplate: ElementViewTemplate<Toolbar>;
 
 // (No @packageDocumentation comment for this package)
 
