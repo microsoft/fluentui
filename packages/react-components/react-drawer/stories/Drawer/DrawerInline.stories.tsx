@@ -53,11 +53,11 @@ export const Inline = () => {
 
       <div className={styles.content}>
         <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-          Toggle left
+          {leftOpen ? 'Close' : 'Open'} left
         </Button>
 
         <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-          Toggle right
+          {rightOpen ? 'Close' : 'Open'} right
         </Button>
       </div>
 

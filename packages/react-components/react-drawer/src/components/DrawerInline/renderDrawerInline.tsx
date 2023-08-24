@@ -9,10 +9,11 @@ import type { DrawerInlineState, DrawerInlineSlots } from './DrawerInline.types'
  * Render the final JSX of DrawerInline
  */
 export const renderDrawerInline_unstable = (state: DrawerInlineState) => {
-  assertSlots<DrawerInlineSlots>(state);
-
-  if (!state.open) {
+  if (!state.motion.canRender) {
     return null;
   }
+
+  assertSlots<DrawerInlineSlots>(state);
+
   return <state.root />;
 };
