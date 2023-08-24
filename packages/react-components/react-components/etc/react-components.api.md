@@ -927,6 +927,7 @@ import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
@@ -990,6 +991,7 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useIsInTableHeader } from '@fluentui/react-table';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
@@ -3016,6 +3018,8 @@ export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
 
+export { useColumnIdContext }
+
 export { useCombobox_unstable }
 
 export { useComboboxContextValues }
@@ -3149,6 +3153,8 @@ export { useIsOverflowGroupVisible }
 export { useIsOverflowItemVisible }
 
 export { useIsSSR }
+
+export { useIsInTableHeader }
 
 export { useKeyboardNavAttribute }
 

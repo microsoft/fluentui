@@ -559,6 +559,9 @@ export interface TableSortState<TItem> {
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
 // @public
+export const useColumnIdContext: () => TableColumnId;
+
+// @public
 export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
 
 // @public
@@ -605,6 +608,9 @@ export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionC
 
 // @public
 export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
+
+// @public (undocumented)
+export const useIsInTableHeader: () => boolean;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
