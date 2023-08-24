@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Wed, 16 Aug 2023 17:41:08 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 12:01:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.18)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.17..@fluentui/react-drawer_v9.0.0-beta.18)
+
+### Changes
+
+- Bump @fluentui/react-dialog to v9.5.25 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.17)
+
+Mon, 21 Aug 2023 11:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.16..@fluentui/react-drawer_v9.0.0-beta.17)
+
+### Changes
+
+- fix: rename values of position prop from left/right to start/end ([PR #28905](https://github.com/microsoft/fluentui/pull/28905) by marcosvmmoura@gmail.com)
 
 ## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.16)
 

@@ -61,7 +61,7 @@ export const Inline = () => {
         </Button>
       </div>
 
-      <DrawerInline position="right" open={rightOpen}>
+      <DrawerInline position="end" open={rightOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={

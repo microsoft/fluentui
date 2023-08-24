@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 07:36:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.110.15](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.15)
+
+Wed, 23 Aug 2023 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.14..@fluentui/react_v8.110.15)
+
+### Patches
+
+- fix: Autofill looks up owner document for inputElement ([PR #27312](https://github.com/microsoft/fluentui/pull/27312) by sarah.higley@microsoft.com)
 
 ## [8.110.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.14)
 

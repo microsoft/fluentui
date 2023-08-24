@@ -1,8 +1,54 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 17 Aug 2023 13:49:56 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 12:01:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.29.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.5)
+
+Wed, 23 Aug 2023 12:01:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.4..@fluentui/react-components_v9.29.5)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - fix: added cursor style in AccordionHeader for AccordionItem disabled state ([PR #28850](https://github.com/microsoft/fluentui/pull/28850) by kakrookaran@gmail.com)
+- `@fluentui/react-utilities`
+  - bugfix: ensure interop between assertSlots and old API ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by bernardo.sunderhus@gmail.com)
+
+## [9.29.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.4)
+
+Mon, 21 Aug 2023 11:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.3..@fluentui/react-components_v9.29.4)
+
+### Patches
+
+- `@fluentui/react-breadcrumb-preview`
+  - fix: breadcrumb spacing ([PR #28883](https://github.com/microsoft/fluentui/pull/28883) by vkozlova@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Make year picker react to go to today. ([PR #28907](https://github.com/microsoft/fluentui/pull/28907) by esteban.230@hotmail.com)
+- `@fluentui/react-menu`
+  - fix: make MenuItem with long content grow its height ([PR #28675](https://github.com/microsoft/fluentui/pull/28675) by yuanboxue@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: make event listners passive ([PR #28839](https://github.com/microsoft/fluentui/pull/28839) by olfedias@microsoft.com)
+  - chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+- `@fluentui/react-search-preview`
+  - chore: migrate to new slots API ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags-preview`
+  - chore: add documentation ([PR #28899](https://github.com/microsoft/fluentui/pull/28899) by yuanboxue@microsoft.com)
+  - fix: use `:active` selector for pressed style instead of `:hover:active` ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by yuanboxue@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+  - fix: stabilize `handleActionsRef` created by TreeItem ([PR #28896](https://github.com/microsoft/fluentui/pull/28896) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - fix: rename values of position prop from left/right to start/end ([PR #28905](https://github.com/microsoft/fluentui/pull/28905) by marcosvmmoura@gmail.com)
+- `@fluentui/react-infobutton`
+  - fix: Cursor should be pointer when hovering the button to show it's a button. ([PR #28893](https://github.com/microsoft/fluentui/pull/28893) by esteban.230@hotmail.com)
 
 ## [9.29.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.3)
 

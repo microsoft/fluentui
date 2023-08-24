@@ -227,7 +227,7 @@
     "enzyme": "3.10.0",
     "enzyme-to-json": "3.6.2",
     "esbuild": "0.14.51",
-    "esbuild-loader": "2.20.0",
+    "esbuild-loader": "3.2.0",
     "eslint": "7.25.0",
     "eslint-config-airbnb": "18.2.1",
     "eslint-config-prettier": "8.3.0",

@@ -76,7 +76,7 @@ By default, the `overlay` acts as a modal, rendering an overlay scrim behind the
 | Property     | Values                                     | Default   | Description                                             |
 | ------------ | ------------------------------------------ | --------- | ------------------------------------------------------- |
 | type         | `overlay`, `inline`                        | `overlay` | Set the [type](#type) of Drawer                         |
-| position     | `left`, `right`                            | `left`    | Set the position of the Drawer                          |
+| position     | `start`, `end`                             | `start`   | Set the position of the Drawer                          |
 | size         | `small`, `medium`, `large`, `full`, number | `small`   | The drawer width [size](#size)                          |
 | modal        | boolean                                    | `true`    | Set the visibility of the `overlay` scrim               |
 | open         | boolean                                    | `false`   | Define the Drawer visibility                            |
