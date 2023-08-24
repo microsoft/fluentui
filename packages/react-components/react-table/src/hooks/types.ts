@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SortDirection } from '../components/Table/Table.types';
+import { SortDirection, TableProps } from '../components/Table/Table.types';
 import { TableHeaderCellProps } from '../components/TableHeaderCell/TableHeaderCell.types';
 import { SelectionMode } from '@fluentui/react-utilities';
 
@@ -180,6 +180,7 @@ export interface ColumnWidthState {
   padding: number;
 }
 
+export type ColumnSizingTableProps = Partial<TableProps>;
 export type ColumnSizingTableHeaderCellProps = Pick<TableHeaderCellProps, 'style' | 'aside'>;
 export type ColumnSizingTableCellProps = Pick<TableHeaderCellProps, 'style'>;
 
@@ -189,6 +190,7 @@ export interface TableColumnSizingState {
   getOnMouseDown: (columnId: TableColumnId) => (e: React.MouseEvent | React.TouchEvent) => void;
   setColumnWidth: (columnId: TableColumnId, newSize: number) => void;
   getColumnWidths: () => ColumnWidthState[];
+  getTableProps: (props?: Partial<TableProps>) => ColumnSizingTableProps;
   getTableHeaderCellProps: (columnId: TableColumnId) => ColumnSizingTableHeaderCellProps;
   getTableCellProps: (columnId: TableColumnId) => ColumnSizingTableCellProps;
   enableKeyboardMode: (
