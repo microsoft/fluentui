@@ -177,6 +177,7 @@ export const CalendarMonth: React.FunctionComponent<CalendarMonthProps> = props 
         selectedYear={
           selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined
         }
+        navigatedYear={navigatedDate.getFullYear()}
         onRenderYear={onRenderYear}
         strings={yearStrings}
         componentRef={calendarYearRef}

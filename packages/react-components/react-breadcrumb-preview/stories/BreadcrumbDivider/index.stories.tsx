@@ -6,7 +6,7 @@ import bestPracticesMd from './BreadcrumbDividerBestPractices.md';
 export { Default } from './BreadcrumbDividerDefault.stories';
 
 export default {
-  title: 'Preview Components/BreadcrumbDivider',
+  title: 'Preview Components/Breadcrumb/BreadcrumbDivider',
   component: BreadcrumbDivider,
   parameters: {
     docs: {

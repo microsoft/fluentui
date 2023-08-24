@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixed accessibility issues in pie chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "yushsingla@microsoft.com",
+  "dependentChangeType": "patch"
+}

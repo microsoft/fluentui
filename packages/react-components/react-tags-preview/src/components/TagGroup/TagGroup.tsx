@@ -7,7 +7,8 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { useTagGroupContextValues_unstable } from './useTagGroupContextValues';
 
 /**
- * TagGroup component - TODO: add more docs
+ * TagGroup component - a container for multiple tags.
+ * Provides context to size or dismiss children tags.
  */
 export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef((props, ref) => {
   const state = useTagGroup_unstable(props, ref);

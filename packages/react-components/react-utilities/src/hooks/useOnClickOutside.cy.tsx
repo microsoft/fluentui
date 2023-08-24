@@ -90,4 +90,21 @@ describe('useOnClickOutside', () => {
         expect(onOutsideClick).to.be.calledTwice;
       });
   });
+
+  it('should not call callback with inside text selection finishing outside', () => {
+    const onOutsideClick = cy.spy();
+
+    mount(<Example useShadowDOM={false} onOutsideClick={onOutsideClick} />);
+
+    cy.get('#inside-button')
+      .trigger('mousedown', { which: 1 })
+      .trigger('mousemove')
+      .get('#outside-buttonA')
+      .trigger('mousemove')
+      .trigger('mouseup')
+      .trigger('click')
+      .then(() => {
+        expect(onOutsideClick).to.not.be.called;
+      });
+  });
 });

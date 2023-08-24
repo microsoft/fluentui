@@ -6,7 +6,8 @@ import bestPracticesMd from './BreadcrumbBestPractices.md';
 export { Default } from './BreadcrumbDefault.stories';
 export { BreadcrumbSize } from './BreadcrumbSize.stories';
 export { BreadcrumbWithOverflow } from './BreadcrumbWithOverflow.stories';
-export { BreadcrumbFocusMode } from './BreadcrumbFocusMode';
+export { BreadcrumbItemWithOverflow } from './BreadcrumbItemWithOverflow.stories';
+export { BreadcrumbFocusMode } from './BreadcrumbFocusMode.stories';
 
 export default {
   title: 'Preview Components/Breadcrumb',

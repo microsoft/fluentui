@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
-import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, mergeCallbacks, useControllableState, slot } from '@fluentui/react-utilities';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';
 
@@ -28,9 +27,10 @@ const popoverSizeMap = {
  * @param ref - reference to root HTMLElement of InfoButton
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
-  const { size = 'medium' } = props;
+  const { size = 'medium', inline = true } = props;
 
   const state: InfoButtonState = {
+    inline,
     size,
 
     components: {
@@ -39,27 +39,31 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       info: PopoverSurface,
     },
 
-    root: getNativeElementProps('button', {
-      children: infoButtonIconMap[size],
-      type: 'button',
-      'aria-label': 'information',
-      ...props,
-      ref,
-    }),
-    popover: resolveShorthand(props.popover, {
-      required: true,
+    root: slot.always(
+      getNativeElementProps('button', {
+        children: infoButtonIconMap[size],
+        type: 'button',
+        'aria-label': 'information',
+        ...props,
+        ref,
+      }),
+      { elementType: 'button' },
+    ),
+    popover: slot.always(props.popover, {
       defaultProps: {
+        inline,
         positioning: 'above-start',
         size: popoverSizeMap[size],
         withArrow: true,
       },
+      elementType: Popover as React.FC<Partial<PopoverProps>>,
     }),
-    info: resolveShorthand(props.info, {
-      required: true,
+    info: slot.always(props.info, {
       defaultProps: {
         role: 'note',
         tabIndex: -1,
       },
+      elementType: PopoverSurface,
     }),
   };
 

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
@@ -11,7 +12,6 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
 import {
-  ChartHoverCard,
   convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
@@ -32,10 +32,15 @@ import {
   calculateLongestLabelWidth,
   createYAxisLabels,
   ChartTypes,
+  wrapContent,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
+import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
+const ChartHoverCard = lazy(() =>
+  import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
+);
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -75,6 +80,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private _reqID: number;
   private _isRtl: boolean = getRTL();
   private _tickValues: (string | number)[];
+  private titleMargin: number;
   private _isFirstRender: boolean = true;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -92,6 +98,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       startFromX: 0,
     };
     this.idForGraph = getId('chart_');
+    this.titleMargin = 8;
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
@@ -112,6 +119,21 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           : 20
         : this.props.margins?.left ?? 40,
     };
+    if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
+      this.margins.bottom! = this.props.margins?.bottom ?? 55;
+    }
+    if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
+      this.margins.left! = this._isRtl
+        ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
+          ? 60
+          : 40
+        : this.props.margins?.left ?? 60;
+      this.margins.right! = this._isRtl
+        ? this.props.margins?.left ?? 60
+        : this.props.margins?.right ?? this.props?.secondaryYAxistitle
+        ? 60
+        : 40;
+    }
   }
 
   public componentDidMount(): void {
@@ -145,7 +167,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
     }
-
     if (
       !this.props.wrapXAxisLables &&
       this.props.rotateXAxisLables &&
@@ -215,6 +236,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(margin);
+
+    let callout: JSX.Element | null = null;
 
     let children = null;
     if (
@@ -396,6 +419,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         yScale,
         yScaleSecondary,
       });
+
+      if (!this.props.hideTooltip && calloutProps!.isCalloutVisible) {
+        callout = this._generateCallout(calloutProps, chartHoverProps);
+      }
     }
 
     this._classNames = getClassNames(this.props.styles!, {
@@ -419,6 +446,15 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     } else {
       focusDirection = FocusZoneDirection.horizontal;
     }
+
+    const xAxisTitleMaximumAllowedWidth =
+      svgDimensions.width - this.margins.left! - this.margins.right! - this.state.startFromX!;
+    const yAxisTitleMaximumAllowedHeight =
+      svgDimensions.height -
+      this.margins.bottom! -
+      this.margins.top! -
+      this.state._removalValueForTextTuncate! -
+      this.titleMargin;
     return (
       <div
         id={this.idForGraph}
@@ -446,6 +482,19 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               })`}
               className={this._classNames.xAxis}
             />
+            {this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisTitle}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: svgDimensions.height - this.titleMargin,
+                  className: this._classNames.axisTitle!,
+                  textAnchor: 'middle',
+                }}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                wrapContent={wrapContent}
+              />
+            )}
             <g
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
@@ -459,49 +508,107 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               className={this._classNames.yAxis}
             />
             {this.props.secondaryYScaleOptions && (
-              <g
-                ref={(e: SVGElement | null) => {
-                  this.yAxisElementSecondary = e;
-                }}
-                id={`yAxisGElementSecondary${this.idForGraph}`}
-                transform={`translate(${
-                  this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
-                }, 0)`}
-                className={this._classNames.yAxis}
-              />
+              <g>
+                <g
+                  ref={(e: SVGElement | null) => {
+                    this.yAxisElementSecondary = e;
+                  }}
+                  id={`yAxisGElementSecondary${this.idForGraph}`}
+                  transform={`translate(${
+                    this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+                  }, 0)`}
+                  className={this._classNames.yAxis}
+                />
+                {this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '' && (
+                  <SVGTooltipText
+                    content={this.props.secondaryYAxistitle}
+                    textProps={{
+                      x:
+                        (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                        this.state._removalValueForTextTuncate!,
+                      y: this._isRtl
+                        ? this.state.startFromX - this.titleMargin
+                        : svgDimensions.width - this.margins.right!,
+                      textAnchor: 'middle',
+                      transform: `translate(${
+                        this._isRtl
+                          ? this.margins.right! / 2 - this.titleMargin
+                          : this.margins.right! / 2 + this.titleMargin
+                      },
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                      className: this._classNames.axisTitle!,
+                    }}
+                    maxWidth={yAxisTitleMaximumAllowedHeight}
+                    wrapContent={wrapContent}
+                  />
+                )}
+              </g>
             )}
             {children}
+            {this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.yAxisTitle}
+                textProps={{
+                  x:
+                    (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                    this.state._removalValueForTextTuncate!,
+                  y: this._isRtl
+                    ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
+                    : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,
+                  textAnchor: 'middle',
+                  transform: `translate(0,
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                  className: this._classNames.axisTitle!,
+                }}
+                maxWidth={yAxisTitleMaximumAllowedHeight}
+                wrapContent={wrapContent}
+              />
+            )}
           </svg>
         </FocusZone>
+
         {!this.props.hideLegend && (
           <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {this.props.legendBars}
           </div>
         )}
         {/** The callout is used for narration, so keep it mounted on the DOM */}
-        <Callout
-          hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
-          /** Keep the callout updated with details of focused/hovered chart element */
-          shouldUpdateWhenHidden={true}
-          {...calloutProps}
-        >
-          {/** Given custom callout, then it will render */}
-          {this.props.customizedCallout && this.props.customizedCallout}
-          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-            <ChartHoverCard
-              XValue={calloutProps.XValue}
-              Legend={calloutProps.legend!}
-              YValue={calloutProps.YValue!}
-              color={calloutProps.color!}
-              culture={this.props.culture}
-              {...chartHoverProps}
-            />
-          )}
-        </Callout>
+        {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
       </div>
+    );
+  }
+  /**
+   * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
+   * only the calloutprops and charthover props changes.
+   * @param calloutProps
+   * @param chartHoverProps
+   * @returns
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
+    return (
+      <Callout
+        hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+        /** Keep the callout updated with details of focused/hovered chart element */
+        shouldUpdateWhenHidden={true}
+        {...calloutProps}
+      >
+        {/** Given custom callout, then it will render */}
+        {this.props.customizedCallout && this.props.customizedCallout}
+        {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+        {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+        {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+        {!this.props.customizedCallout && !this.props.isCalloutForStack && (
+          <ChartHoverCard
+            XValue={calloutProps.XValue}
+            Legend={calloutProps.legend!}
+            YValue={calloutProps.YValue!}
+            color={calloutProps.color!}
+            culture={this.props.culture}
+            {...chartHoverProps}
+          />
+        )}
+      </Callout>
     );
   }
 
