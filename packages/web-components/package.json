@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-alpha.31",
+  "version": "3.0.0-beta.0",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -203,6 +203,6 @@
       "minor",
       "patch"
     ],
-    "tag": "alpha"
+    "tag": "beta"
   }
 }
