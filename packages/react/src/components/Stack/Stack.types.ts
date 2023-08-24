@@ -156,6 +156,16 @@ export interface IStackProps
    * @defaultvalue false
    */
   enableScopedSelectors?: boolean;
+
+  /**
+   * When receiving a falsy value, render null instead. Default behavior allows rendering falsy values so cases like
+   * this one can happen:
+   * ```tsx
+   * <Stack>0 1 2 3 4</Stack>
+   * ```
+   * @deprecated
+   */
+  doNotRenderFalsyValues?: boolean;
 }
 
 /**
