@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 21 Aug 2023 11:38:00 GMT and should not be manually modified.
+This log was last generated on Wed, 23 Aug 2023 12:01:48 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.29.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.5)
+
+Wed, 23 Aug 2023 12:01:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.4..@fluentui/react-components_v9.29.5)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - fix: added cursor style in AccordionHeader for AccordionItem disabled state ([PR #28850](https://github.com/microsoft/fluentui/pull/28850) by kakrookaran@gmail.com)
+- `@fluentui/react-utilities`
+  - bugfix: ensure interop between assertSlots and old API ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by bernardo.sunderhus@gmail.com)
 
 ## [9.29.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.4)
 

@@ -7,7 +7,7 @@ import {
   TreeItemLayout,
   useHeadlessFlatTree_unstable,
   HeadlessFlatTreeItemProps,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import {
   Button,
   Menu,
