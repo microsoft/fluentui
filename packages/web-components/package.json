@@ -1,8 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "sideEffects": false,
-  "version": "3.0.0-alpha.26",
+  "version": "3.0.0-alpha.31",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -24,115 +23,148 @@
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
     },
-    "./accordion": {
+    "./accordion.js": {
       "types": "./dist/esm/accordion/define.d.ts",
       "default": "./dist/esm/accordion/define.js"
     },
-    "./accordion-item": {
+    "./accordion-item.js": {
       "types": "./dist/esm/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
-    "./anchor-button": {
+    "./anchor-button.js": {
       "types": "./dist/esm/anchor-button/define.d.ts",
       "default": "./dist/esm/anchor-button/define.js"
     },
-    "./avatar": {
+    "./avatar.js": {
       "types": "./dist/esm/avatar/define.d.ts",
       "default": "./dist/esm/avatar/define.js"
     },
-    "./badge": {
+    "./badge.js": {
       "types": "./dist/esm/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
     },
-    "./button": {
+    "./button.js": {
       "types": "./dist/esm/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
     },
-    "./checkbox": {
+    "./checkbox.js": {
       "types": "./dist/esm/checkbox/define.d.ts",
       "default": "./dist/esm/checkbox/define.js"
     },
-    "./compound-button": {
+    "./compound-button.js": {
       "types": "./dist/esm/compound-button/define.d.ts",
       "default": "./dist/esm/compound-button/define.js"
     },
-    "./counter-badge": {
+    "./counter-badge.js": {
       "types": "./dist/esm/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
     },
-    "./divider": {
+    "./divider.js": {
       "types": "./dist/esm/divider/define.d.ts",
       "default": "./dist/esm/divider/define.js"
     },
-    "./image": {
+    "./image.js": {
       "types": "./dist/esm/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
     },
-    "./label": {
+    "./label.js": {
       "types": "./dist/esm/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
     },
-    "./menu-list": {
+    "./menu-list.js": {
       "types": "./dist/esm/menu-list/define.d.ts",
       "default": "./dist/esm/menu-list/define.js"
     },
-    "./menu-button": {
+    "./menu-button.js": {
       "types": "./dist/esm/menu-button/define.d.ts",
       "default": "./dist/esm/menu-button/define.js"
     },
-    "./menu-item": {
+    "./menu-item.js": {
       "types": "./dist/esm/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
     },
-    "./progress-bar": {
+    "./progress-bar.js": {
       "types": "./dist/esm/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
     },
-    "./radio": {
+    "./radio.js": {
       "types": "./dist/esm/radio/define.d.ts",
       "default": "./dist/esm/radio/define.js"
     },
-    "./radio-group": {
+    "./radio-group.js": {
       "types": "./dist/esm/radio-group/define.d.ts",
       "default": "./dist/esm/radio-group/define.js"
     },
-    "./slider": {
+    "./slider.js": {
       "types": "./dist/esm/slider/define.d.ts",
       "default": "./dist/esm/slider/define.js"
     },
-    "./spinner": {
+    "./spinner.js": {
       "types": "./dist/esm/spinner/define.d.ts",
       "default": "./dist/esm/spinner/define.js"
     },
-    "./switch": {
+    "./switch.js": {
       "types": "./dist/esm/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
     },
-    "./tab": {
+    "./tab.js": {
       "types": "./dist/esm/tab/define.d.ts",
       "default": "./dist/esm/tab/define.js"
     },
-    "./tabs": {
+    "./tabs.js": {
       "types": "./dist/esm/tabs/define.d.ts",
       "default": "./dist/esm/tabs/define.js"
     },
-    "./tab-panel": {
+    "./tab-panel.js": {
       "types": "./dist/esm/tab-panel/define.d.ts",
       "default": "./dist/esm/tab-panel/define.js"
     },
-    "./text": {
+    "./text.js": {
       "types": "./dist/esm/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
-    "./text-input": {
+    "./text-input.js": {
       "types": "./dist/esm/text-input/define.d.ts",
       "default": "./dist/esm/text-input/define.js"
     },
-    "./toggle-button": {
+    "./toggle-button.js": {
       "types": "./dist/esm/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
+    },
+    "./theme.js": {
+      "types": "./dist/esm/theme/index.d.ts",
+      "default": "./dist/esm/theme/index.js"
     }
   },
+  "sideEffects": [
+    "./dist/esm/accordion/define.js",
+    "./dist/esm/accordion-item/define.js",
+    "./dist/esm/anchor-button/define.js",
+    "./dist/esm/avatar/define.js",
+    "./dist/esm/badge/define.js",
+    "./dist/esm/button/define.js",
+    "./dist/esm/checkbox/define.js",
+    "./dist/esm/compound-button/define.js",
+    "./dist/esm/counter-badge/define.js",
+    "./dist/esm/divider/define.js",
+    "./dist/esm/image/define.js",
+    "./dist/esm/label/define.js",
+    "./dist/esm/menu-list/define.js",
+    "./dist/esm/menu-button/define.js",
+    "./dist/esm/menu-item/define.js",
+    "./dist/esm/progress-bar/define.js",
+    "./dist/esm/radio/define.js",
+    "./dist/esm/radio-group/define.js",
+    "./dist/esm/slider/define.js",
+    "./dist/esm/spinner/define.js",
+    "./dist/esm/switch/define.js",
+    "./dist/esm/tab/define.js",
+    "./dist/esm/tabs/define.js",
+    "./dist/esm/tab-panel/define.js",
+    "./dist/esm/text/define.js",
+    "./dist/esm/text-input/define.js",
+    "./dist/esm/toggle-button/define.js"
+  ],
   "scripts": {
     "tsc": "tsc",
     "api-extractor": "api-extractor",
@@ -148,49 +180,19 @@
     "start": "yarn start-storybook -p 6006 --docs --no-manager-cache",
     "start-storybook": "node node_modules/@storybook/html/bin/index",
     "build-storybook": "node node_modules/@storybook/html/bin/build -o ./dist/storybook --docs",
-    "test": "yarn test-chrome:verbose",
-    "test-node": "mocha --reporter min --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
-    "test-node:verbose": "mocha --reporter spec --exit dist/esm/__test__/setup-node.js './dist/esm/**/*.spec.js'",
-    "test-chrome": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --single-run --coverage",
-    "test-chrome:verbose": "karma start karma.conf.cjs --no-fail-on-empty-test-suite --browsers=ChromeHeadlessOpt --single-run --coverage --reporter=mocha",
-    "test-chrome:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js",
-    "test-chrome:debugger": "karma start karma.conf.cjs --browsers=ChromeDebugging",
-    "test-chrome:verbose:watch": "karma start karma.conf.cjs --browsers=ChromeHeadlessOpt --coverage --watch-extensions js --reporter=mocha ",
-    "test-chrome:verbose:debugger": "karma start karma.conf.cjs --browsers=ChromeDebugging --reporter=mocha",
-    "test-firefox": "karma start karma.conf.cjs --browsers=FirefoxHeadless --single-run --coverage",
-    "test-firefox:verbose": "karma start karma.conf.cjs --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
+    "pretest": "yarn build-storybook --quiet",
+    "test": "npx playwright test",
+    "test:dev": "playwright test"
   },
   "devDependencies": {
-    "@storybook/html": "6.5.15",
-    "@types/chai": "4.3.3",
-    "@types/chai-spies": "1.0.3",
-    "@types/karma": "6.3.3",
-    "@types/mocha": "7.0.2",
-    "chai": "4.3.6",
-    "chai-spies": "1.0.0",
-    "esm": "3.2.25",
-    "ignore-loader": "0.1.2",
-    "istanbul": "0.4.5",
-    "istanbul-instrumenter-loader": "3.0.1",
-    "jsdom-global": "3.0.2",
-    "karma": "6.4.0",
-    "karma-chrome-launcher": "3.1.1",
-    "karma-coverage": "2.2.0",
-    "karma-coverage-istanbul-reporter": "3.0.3",
-    "karma-firefox-launcher": "^1.3.0",
-    "karma-mocha": "2.0.1",
-    "karma-mocha-reporter": "2.2.5",
-    "karma-source-map-support": "1.4.0",
-    "karma-sourcemap-loader": "0.3.8",
-    "karma-webpack": "5.0.0",
-    "mocha": "7.2.0",
     "@microsoft/api-extractor": "7.31.2",
+    "@storybook/html": "6.5.15",
     "rimraf": "^3.0.2",
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "^2.0.0-beta.23",
-    "@microsoft/fast-foundation": "^3.0.0-alpha.27",
+    "@microsoft/fast-element": "2.0.0-beta.26",
+    "@microsoft/fast-foundation": "3.0.0-alpha.31",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"

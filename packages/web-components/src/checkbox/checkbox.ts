@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTCheckbox } from '@microsoft/fast-foundation';
+import { FASTCheckbox } from '@microsoft/fast-foundation/checkbox.js';
 import { CheckboxLabelPosition, CheckboxShape, CheckboxSize } from './checkbox.options.js';
 
 /**
