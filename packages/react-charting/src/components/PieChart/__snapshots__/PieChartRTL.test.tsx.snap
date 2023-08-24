@@ -46,7 +46,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
           <g
             aria-label="A-50"
             class=
-
+                arc
                 {
                   outline: none;
                 }
@@ -85,7 +85,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
           <g
             aria-label="B-25"
             class=
-
+                arc
                 {
                   outline: none;
                 }
@@ -124,7 +124,7 @@ exports[`Pie chart rendering Should re-render the Pie chart with data 2`] = `
           <g
             aria-label="C-25"
             class=
-
+                arc
                 {
                   outline: none;
                 }
@@ -202,7 +202,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
         <g
           aria-label="A-50"
           className=
-
+              arc
               {
                 outline: none;
               }
@@ -246,7 +246,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
         <g
           aria-label="B-25"
           className=
-
+              arc
               {
                 outline: none;
               }
@@ -290,7 +290,7 @@ exports[`PieChart snapShot testing renders PieChart correctly 1`] = `
         <g
           aria-label="C-25"
           className=
-
+              arc
               {
                 outline: none;
               }
@@ -372,7 +372,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         <g
           aria-label="A-50"
           className=
-
+              arc
               {
                 outline: none;
               }
@@ -416,7 +416,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         <g
           aria-label="B-25"
           className=
-
+              arc
               {
                 outline: none;
               }
@@ -460,7 +460,7 @@ exports[`PieChart snapShot testing renders with colors, width and height data co
         <g
           aria-label="C-25"
           className=
-
+              arc
               {
                 outline: none;
               }

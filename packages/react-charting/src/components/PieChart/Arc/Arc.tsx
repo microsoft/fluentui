@@ -83,7 +83,7 @@ export class LabeledArc extends Arc {
 
     return (
       <g
-        className={classNames.arc}
+        className={`${classNames.arc} arc`}
         data-is-focusable={true}
         id={this._arcId}
         onFocus={this._onFocus}
