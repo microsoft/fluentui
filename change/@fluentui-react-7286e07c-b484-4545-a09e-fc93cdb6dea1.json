@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "AutoFill: the problem was that after pressing the left or right keys, the field gets cleared, so I have changed that behavior, so now after pressing the left/right key, then the cursor will behave as expected and the field is not cleared anymore",
+  "packageName": "@fluentui/react",
+  "email": "chebbim106@gmail.com",
+  "dependentChangeType": "patch"
+}
