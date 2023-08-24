@@ -1,4 +1,4 @@
-import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout, FlatTree } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout, TreeItemPersonaLayout, FlatTree } from '@fluentui/react-components';
 
 import descriptionMd from './TreeDescription.md';
 import bestPracticesMd from './TreeBestPractices.md';
