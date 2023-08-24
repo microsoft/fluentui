@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "\"feat: Add VivaEngageIcon to package.\"",
+  "comment": "feat: Add VivaEngageIcon to package.",
   "packageName": "@fluentui/react-icons-mdl2-branded",
   "email": "ololubek@microsoft.com",
   "dependentChangeType": "patch"
