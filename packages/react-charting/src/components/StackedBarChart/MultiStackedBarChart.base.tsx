@@ -202,7 +202,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
       const currValue = (pointData / total) * 100;
-      value = currValue ? currValue : 0;
+      let value = currValue ? currValue : 0;
 
       if (value < 1 && value !== 0) {
         value = 1;
