@@ -1,5 +1,5 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { accordionItemTemplate } from '@microsoft/fast-foundation';
+import { accordionItemTemplate } from '@microsoft/fast-foundation/accordion-item.js';
 import { AccordionItem } from './accordion-item.js';
 
 const chevronRight20Filled = html.partial(`<svg
