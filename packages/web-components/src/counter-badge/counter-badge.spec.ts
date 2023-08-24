@@ -28,12 +28,7 @@ test.describe('CounterBadge component', () => {
 
     await expect(element).toHaveAttribute('overflow-count', '100');
 
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      return element?.shadowRoot?.textContent;
-    });
-
-    expect(shadowContent).toContain('100+');
+    await expect(element).toContainText('100+');
   });
 
   test('should reflect the count attribute properly', async () => {
@@ -44,12 +39,7 @@ test.describe('CounterBadge component', () => {
     });
     await expect(element).toHaveAttribute('count', '5');
 
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      return element?.shadowRoot?.textContent;
-    });
-
-    expect(shadowContent).toContain('5');
+    await expect(element).toContainText('5');
   });
 
   test('should show 0 when showZero attribute is present and value is 0', async () => {
@@ -61,11 +51,7 @@ test.describe('CounterBadge component', () => {
     await expect(element).toHaveAttribute('show-zero', '');
     await expect(element).toHaveJSProperty('showZero', true);
 
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      return element?.shadowRoot?.textContent;
-    });
-    expect(shadowContent).toContain('0');
+    await expect(element).toContainText('0');
   });
 
   test('should show 0 when showZero is set programmatically', async () => {
@@ -75,11 +61,8 @@ test.describe('CounterBadge component', () => {
       node.count = 0;
     });
     await expect(element).toHaveJSProperty('showZero', true);
-    const shadowContent = await page.evaluate(() => {
-      const element = document.querySelector('fluent-counter-badge');
-      return element?.shadowRoot?.textContent;
-    });
-    expect(shadowContent).toContain('0');
+
+    await expect(element).toContainText('0');
   });
 
   test('should render correctly with dot attribute', async () => {
