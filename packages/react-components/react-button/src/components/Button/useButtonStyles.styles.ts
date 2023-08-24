@@ -42,13 +42,6 @@ const useRootBaseClassName = makeResetStyles({
     color: tokens.colorNeutralForeground1Hover,
 
     cursor: 'pointer',
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
   },
 
   ':hover:active': {
@@ -57,13 +50,6 @@ const useRootBaseClassName = makeResetStyles({
     color: tokens.colorNeutralForeground1Pressed,
 
     outlineStyle: 'none',
-
-    [`& .${iconFilledClassName}`]: {
-      display: 'inline',
-    },
-    [`& .${iconRegularClassName}`]: {
-      display: 'none',
-    },
   },
 
   padding: `${buttonSpacingMedium} ${tokens.spacingHorizontalM}`,
@@ -193,7 +179,12 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Hover,
-
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
       [`& .${buttonClassNames.icon}`]: {
         color: tokens.colorNeutralForeground2BrandHover,
       },
@@ -203,9 +194,31 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2Pressed,
-
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
       [`& .${buttonClassNames.icon}`]: {
         color: tokens.colorNeutralForeground2BrandPressed,
+      },
+    },
+
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Canvas',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'Canvas',
+        },
+      },
+      ':hover:active': {
+        color: 'Canvas',
+
+        [`& .${buttonClassNames.icon}`]: {
+          color: 'Canvas',
+        },
       },
     },
   },
@@ -218,12 +231,37 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorTransparentBackgroundHover,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandHover,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
     },
 
     ':hover:active': {
       backgroundColor: tokens.colorTransparentBackgroundPressed,
       ...shorthands.borderColor('transparent'),
       color: tokens.colorNeutralForeground2BrandPressed,
+      [`& .${iconFilledClassName}`]: {
+        display: 'inline',
+      },
+      [`& .${iconRegularClassName}`]: {
+        display: 'none',
+      },
+    },
+
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: 'Highlight',
+      },
+      ':hover:active': {
+        backgroundColor: tokens.colorTransparentBackgroundHover,
+        ...shorthands.borderColor('transparent'),
+        color: 'Highlight',
+      },
     },
   },
 
@@ -518,7 +556,7 @@ export const useButtonStyles_unstable = (state: ButtonState): ButtonState => {
     state.icon.className = mergeClasses(
       buttonClassNames.icon,
       iconBaseClassName,
-      state.root.children !== undefined && state.root.children !== null && iconStyles[iconPosition],
+      !!state.root.children && iconStyles[iconPosition],
       iconStyles[size],
       state.icon.className,
     );

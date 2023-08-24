@@ -9,6 +9,7 @@ import {
   ToastTitle,
   ToastBody,
   ToastFooter,
+  ToastTrigger,
 } from '@fluentui/react-components';
 
 export const FocusKeyboardShortcut = () => {
@@ -17,7 +18,15 @@ export const FocusKeyboardShortcut = () => {
   const notify = () =>
     dispatchToast(
       <Toast>
-        <ToastTitle action={<Link>Undo</Link>}>Email sent</ToastTitle>
+        <ToastTitle
+          action={
+            <ToastTrigger>
+              <Link>Dismiss</Link>
+            </ToastTrigger>
+          }
+        >
+          Email sent
+        </ToastTitle>
         <ToastBody subtitle="Subtitle">This is a toast body</ToastBody>
         <ToastFooter>
           <Link>Action</Link>
@@ -29,7 +38,7 @@ export const FocusKeyboardShortcut = () => {
 
   return (
     <>
-      <Toaster shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} toasterId={toasterId} />
+      <Toaster limit={3} shortcuts={{ focus: e => e.ctrlKey && e.key === 'm' }} toasterId={toasterId} />
       <Button onClick={notify}>Make toast</Button>
     </>
   );

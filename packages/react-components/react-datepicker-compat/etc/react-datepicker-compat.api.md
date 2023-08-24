@@ -10,6 +10,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -156,7 +157,7 @@ export const datePickerClassNames: SlotClassNames<DatePickerSlots>;
 export type DatePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public (undocumented)
-export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & {
+export type DatePickerProps = Omit<ComponentProps<Partial<DatePickerSlots>>, 'defaultValue' | 'value'> & Pick<PortalProps, 'mountNode'> & {
     onSelectDate?: (date: Date | null | undefined) => void;
     required?: boolean;
     disabled?: boolean;

@@ -1,8 +1,140 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Tue, 11 Jul 2023 18:46:36 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.3.0)
+
+Thu, 24 Aug 2023 10:26:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.34..@fluentui/react-tooltip_v9.3.0)
+
+### Minor changes
+
+- feat: Add documentKeyboardEvent to OnVisibleChangeData when Tooltip is hidden via Escape ([PR #28951](https://github.com/microsoft/fluentui/pull/28951) by behowell@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.2 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-portal to v9.3.9 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-positioning to v9.9.7 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+
+## [9.2.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.34)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.33..@fluentui/react-tooltip_v9.2.34)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-portal to v9.3.8 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-positioning to v9.9.6 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [9.2.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.33)
+
+Mon, 21 Aug 2023 11:38:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.32..@fluentui/react-tooltip_v9.2.33)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.9.5 ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by beachball)
+
+## [9.2.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.32)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.31..@fluentui/react-tooltip_v9.2.32)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [9.2.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.31)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.30..@fluentui/react-tooltip_v9.2.31)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+
+## [9.2.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.30)
+
+Fri, 11 Aug 2023 12:14:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.29..@fluentui/react-tooltip_v9.2.30)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.15 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-portal to v9.3.7 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-positioning to v9.9.4 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+- Bump @fluentui/react-utilities to v9.11.1 ([PR #28808](https://github.com/microsoft/fluentui/pull/28808) by beachball)
+
+## [9.2.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.29)
+
+Wed, 09 Aug 2023 13:17:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.28..@fluentui/react-tooltip_v9.2.29)
+
+### Patches
+
+- chore: Update Griffel to latest version ([PR #28684](https://github.com/microsoft/fluentui/pull/28684) by olfedias@microsoft.com)
+- chore(cxe-red): migrate to new slot API ([PR #28753](https://github.com/microsoft/fluentui/pull/28753) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.14 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-portal to v9.3.6 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-positioning to v9.9.3 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.2 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+- Bump @fluentui/react-theme to v9.1.11 ([PR #28775](https://github.com/microsoft/fluentui/pull/28775) by beachball)
+
+## [9.2.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.28)
+
+Fri, 04 Aug 2023 08:52:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.27..@fluentui/react-tooltip_v9.2.28)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.13 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-portal to v9.3.5 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-positioning to v9.9.2 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.1 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-theme to v9.1.10 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+- Bump @fluentui/react-utilities to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/0bf7d9438c1d0ff90cd2b28bc4cceb4f807afbca) by beachball)
+
+## [9.2.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.27)
+
+Tue, 01 Aug 2023 10:17:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.26..@fluentui/react-tooltip_v9.2.27)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.3.4 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-positioning to v9.9.1 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.0 ([PR #28689](https://github.com/microsoft/fluentui/pull/28689) by beachball)
+
+## [9.2.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.26)
+
+Thu, 27 Jul 2023 10:34:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.25..@fluentui/react-tooltip_v9.2.26)
+
+### Patches
+
+- Bump @fluentui/react-positioning to v9.9.0 ([PR #28649](https://github.com/microsoft/fluentui/pull/28649) by beachball)
+
+## [9.2.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.25)
+
+Tue, 25 Jul 2023 13:29:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.24..@fluentui/react-tooltip_v9.2.25)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.3.3 ([PR #28622](https://github.com/microsoft/fluentui/pull/28622) by beachball)
+
+## [9.2.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.24)
+
+Thu, 20 Jul 2023 18:27:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.2.23..@fluentui/react-tooltip_v9.2.24)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.12 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
+- Bump @fluentui/react-portal to v9.3.2 ([PR #26826](https://github.com/microsoft/fluentui/pull/26826) by beachball)
 
 ## [9.2.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.2.23)
 

@@ -26,6 +26,13 @@ const useStyles = makeStyles({
     transitionDuration: '.2s',
     zIndex: 1,
 
+    // If mouse users focus on the resize handle through a context menu, we want the handle
+    // to be visible because the mouse might not be hovering over the handle
+    ':focus': {
+      opacity: 1,
+      outlineStyle: 'none',
+    },
+
     ':hover': {
       opacity: 1,
     },

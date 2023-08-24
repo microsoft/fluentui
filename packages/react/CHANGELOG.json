@@ -2,6 +2,143 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 23 Aug 2023 07:36:23 GMT",
+      "tag": "@fluentui/react_v8.110.15",
+      "version": "8.110.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0c71b67bb41fdc2de8c3c547e77646a4b2ab36e9",
+            "comment": "fix: Autofill looks up owner document for inputElement"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Aug 2023 07:35:24 GMT",
+      "tag": "@fluentui/react_v8.110.14",
+      "version": "8.110.14",
+      "comments": {
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "67b93043888f980623a863c56655b061ad6bce91",
+            "comment": "docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN."
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "669c13cc90c399d2e0e727be721f868c6c6e2932",
+            "comment": "chore: fix all lint warnings for @fluentui/react"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "63595d2d015cea78d78c2b6a8438a3eec12477ed",
+            "comment": "fix(DatePicker): readOnlyTextField styles should win over textfield's default styles."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "d73590f34a41a22776a0bc2c41391b589531e679",
+            "comment": "fix(DatePicker): Make year picker react to go to today."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.44",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.24",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.31",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.17",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.35",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Aug 2023 07:34:49 GMT",
+      "tag": "@fluentui/react_v8.110.13",
+      "version": "8.110.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77950274f90b3b0921e8d24d6a29ec530099512d",
+            "comment": "Pass-through pointer events in Details Row focus rects"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 07:35:28 GMT",
+      "tag": "@fluentui/react_v8.110.12",
+      "version": "8.110.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1d1aa7cc05cf1bee98e2dbebdd9a5040544379f1",
+            "comment": "fix(TimePicker): Selection now works in locales that don't use \"am\"/\"pm\" in their time format"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 07:44:53 GMT",
+      "tag": "@fluentui/react_v8.110.11",
+      "version": "8.110.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1a8fcdedfaa41b4478342d3f7aa49f58a85c07dd",
+            "comment": "fix: Datepicker renders input description if onRenderDescription is passed in"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "fe5d70f04fa3ad62d10da9cd19662a7bcfb771b2",
+            "comment": "fix: DetailsColumn tooltip shows on focus, and is associated via aria-describedby"
+          },
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "e6e662c52a7a7d9c4a9f95e01e1e2194f4e72b04",
+            "comment": "fix: do not dismiss editable comboboxes on scroll or resize immediately after opening"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 18 Jul 2023 07:35:18 GMT",
       "tag": "@fluentui/react_v8.110.10",
       "version": "8.110.10",

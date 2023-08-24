@@ -1,4 +1,4 @@
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 
 import descriptionMd from './InteractionTagDescription.md';
 import bestPracticesMd from './InteractionTagBestPractices.md';
@@ -12,10 +12,15 @@ export { Shape } from './InteractionTagShape.stories';
 export { Size } from './InteractionTagSize.stories';
 export { Appearance } from './InteractionTagAppearance.stories';
 export { Disabled } from './InteractionTagDisabled.stories';
+export { HasPrimaryAction } from './InteractionTagHasPrimaryAction.stories';
 
 export default {
   title: 'Preview Components/Tag/InteractionTag',
   component: InteractionTag,
+  subcomponents: {
+    InteractionTagPrimary,
+    InteractionTagSecondary,
+  },
   parameters: {
     docs: {
       description: {

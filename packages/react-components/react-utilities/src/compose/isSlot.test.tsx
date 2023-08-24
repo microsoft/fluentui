@@ -1,31 +1,37 @@
 import * as React from 'react';
-import { isResolvedShorthand } from './isResolvedShorthand';
+import { isSlot } from './isSlot';
+import * as slot from './slot';
 
-describe('isResolvedShorthand', () => {
-  it('resolves a string', () => {
-    expect(isResolvedShorthand('hello')).toEqual(false);
+describe('isSlot', () => {
+  it('handles a string', () => {
+    expect(isSlot('hello')).toEqual(false);
   });
 
-  it('resolves a JSX element', () => {
-    expect(isResolvedShorthand(<div>hello</div>)).toEqual(false);
+  it('handles a JSX element', () => {
+    expect(isSlot(<div>hello</div>)).toEqual(false);
   });
 
-  it('resolves a number', () => {
-    expect(isResolvedShorthand(42)).toEqual(false);
+  it('handles a number', () => {
+    expect(isSlot(42)).toEqual(false);
   });
 
-  it('resolves null', () => {
-    expect(isResolvedShorthand(null)).toEqual(false);
+  it('handles null', () => {
+    expect(isSlot(null)).toEqual(false);
   });
 
-  it('resolves undefined', () => {
-    expect(isResolvedShorthand(undefined)).toEqual(false);
+  it('handles undefined', () => {
+    expect(isSlot(undefined)).toEqual(false);
   });
 
-  it('resolves object', () => {
-    expect(isResolvedShorthand({})).toEqual(true);
+  it('handles object', () => {
+    expect(isSlot({})).toEqual(false);
   });
-  it('resolves array', () => {
-    expect(isResolvedShorthand(['1', 2])).toEqual(false);
+
+  it('handles array', () => {
+    expect(isSlot(['1', 2])).toEqual(false);
+  });
+
+  it('handles actual slot', () => {
+    expect(isSlot(slot.optional({}, { elementType: 'div' }))).toEqual(true);
   });
 });

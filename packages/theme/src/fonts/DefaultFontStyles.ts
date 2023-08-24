@@ -7,7 +7,7 @@ import type { IFontStyles } from '../types/IFontStyles';
 import type { IFabricConfig } from '../types/IFabricConfig';
 
 // Default urls.
-const DefaultBaseUrl = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets';
+const DefaultBaseUrl = 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets';
 
 // Standard font styling.
 export const DefaultFontStyles: IFontStyles = createFontStyles(getLanguage());
