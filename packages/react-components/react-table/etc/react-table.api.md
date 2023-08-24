@@ -369,6 +369,9 @@ export interface TableColumnDefinition<TItem> {
 export type TableColumnId = string | number;
 
 // @public (undocumented)
+export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined>;
+
+// @public (undocumented)
 export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
     defaultWidth?: number;
 }>;
@@ -434,6 +437,9 @@ export const tableHeaderClassName = "fui-TableHeader";
 
 // @public (undocumented)
 export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
+
+// @public (undocumented)
+export const TableHeaderContextProvider: React_2.Provider<string | undefined>;
 
 // @public
 export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
@@ -558,7 +564,7 @@ export interface TableSortState<TItem> {
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
-// @public
+// @public (undocumented)
 export const useColumnIdContext: () => TableColumnId;
 
 // @public

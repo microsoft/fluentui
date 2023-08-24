@@ -131,6 +131,7 @@ import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
+import { ColumnIdContextProvider } '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValue } from '@fluentui/react-combobox';
@@ -718,6 +719,7 @@ import { TableHeaderCellSlots } from '@fluentui/react-table';
 import { TableHeaderCellState } from '@fluentui/react-table';
 import { tableHeaderClassName } from '@fluentui/react-table';
 import { tableHeaderClassNames } from '@fluentui/react-table';
+import { TableHeaderContextProvider } from '@fluentui/react-table';
 import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
@@ -1425,6 +1427,8 @@ export { CheckboxState }
 export { ColorPaletteTokens }
 
 export { ColorTokens }
+
+export { ColumnIdContextProvider }
 
 export { Combobox }
 
@@ -2599,6 +2603,8 @@ export { TableHeaderCellState }
 export { tableHeaderClassName }
 
 export { tableHeaderClassNames }
+
+export { TableHeaderContextProvider }
 
 export { TableHeaderProps }
 
