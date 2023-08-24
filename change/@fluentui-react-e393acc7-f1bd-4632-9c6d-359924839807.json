@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "add displayName to dialog footer and content",
+  "comment": "fix: Add displayName to dialog footer and content",
   "packageName": "@fluentui/react",
   "email": "mingyuanyu@microsoft.com",
   "dependentChangeType": "patch"
