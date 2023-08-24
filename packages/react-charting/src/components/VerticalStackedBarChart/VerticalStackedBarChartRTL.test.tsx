@@ -301,6 +301,7 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
     VerticalStackedBarChart,
     { data: simplePoints, calloutProps: { doNotLayer: true } },
     container => {
+      // eslint-disable-next-line
       const handleMouseOver = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onStackHover');
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
@@ -399,6 +400,7 @@ describe('Vertical stacked bar chart - Subcomponent callout', () => {
     VerticalStackedBarChart,
     { data: simplePoints, calloutProps: { doNotLayer: true } },
     container => {
+      // eslint-disable-next-line
       const handleMouseclick = jest.spyOn(VerticalStackedBarChartBase.prototype as any, '_onClick');
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
