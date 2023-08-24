@@ -5,11 +5,8 @@ import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IVSChartDataPoint } from '../../index';
-
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
-
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-
 import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 
 const firstChartPoints: IVSChartDataPoint[] = [
