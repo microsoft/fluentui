@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs: improve storybook and examples to better align with design guidelines",
+  "packageName": "@fluentui/react-card",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

@@ -34,7 +34,7 @@ const CardSample = (props: CardProps) => (
 
     <Card id="card" {...props}>
       <CardHeader
-        image={<img src={resolveAsset('powerpoint_logo.svg')} alt="Microsoft PowerPoint logo" />}
+        image={<img src={resolveAsset('pptx.png')} alt="Microsoft PowerPoint logo" />}
         header={<b>App Name</b>}
         description={<span>Developer</span>}
       />
@@ -71,7 +71,7 @@ const CardWithCustomHeader = ({
 
     <Card id="card" {...props}>
       <CardHeader
-        image={<img src={resolveAsset('powerpoint_logo.svg')} alt="Microsoft PowerPoint logo" />}
+        image={<img src={resolveAsset('pptx.png')} alt="Microsoft PowerPoint logo" />}
         header={<b id={customHeaderId}>App Name</b>}
         description={<span>Developer</span>}
       />
