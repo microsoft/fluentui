@@ -50,6 +50,14 @@ export interface IsConformantOptions<TProps = {}> {
    * If there are tests that aren't supposed to run on a component, this allows to opt out of any test.
    */
   disabledTests?: string[];
+
+  /**
+   * Disable tests that verify the component's prop types.
+   * These tests require TypeScript information.
+   * It is recommended to keep these tests enabled, but they can be disabled in a large repo to improve test performance and memory consumption.
+   */
+  disableTypeTests?: boolean;
+
   /**
    * Optional flag that means the component is not exported at top level.
    * @defaultvalue false
@@ -104,12 +112,36 @@ export interface IsConformantOptions<TProps = {}> {
   tsConfig?: Partial<{ configName: string; configDir: string }>;
 }
 
-export type ConformanceTest<TProps = {}> = (
-  componentInfo: ComponentDoc,
-  testInfo: IsConformantOptions<TProps>,
-  tsProgram: ts.Program,
-) => void;
+export type ConformanceTest<TProps = {}> =
+  | ((testInfo: IsConformantOptions<TProps>) => void)
+  | ((testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void)
+  | ((testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void);
 
 export interface TestObject<TProps = {}> {
   [key: string]: ConformanceTest<TProps>;
+}
+
+export interface DefaultTestObject<TProps = {}> {
+  'exports-component': (testInfo: IsConformantOptions<TProps>) => void;
+  'component-renders': (testInfo: IsConformantOptions<TProps>) => void;
+  'component-has-displayname': (testInfo: IsConformantOptions<TProps>) => void;
+  'component-handles-ref': (testInfo: IsConformantOptions<TProps>) => void;
+  'component-has-root-ref': (testInfo: IsConformantOptions<TProps>) => void;
+  'omits-size-prop': (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void;
+  'component-handles-classname': (testInfo: IsConformantOptions<TProps>) => void;
+  'component-has-static-classnames-object': (
+    testInfo: IsConformantOptions<TProps>,
+    componentInfo: ComponentDoc,
+  ) => void;
+  'name-matches-filename': (testInfo: IsConformantOptions<TProps>) => void;
+  'exported-top-level': (testInfo: IsConformantOptions<TProps>) => void;
+  'has-top-level-file': (testInfo: IsConformantOptions<TProps>) => void;
+  'kebab-aria-attributes': (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void;
+  'consistent-callback-names': (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void;
+  'consistent-callback-args': (
+    testInfo: IsConformantOptions<TProps>,
+    componentInfo: ComponentDoc,
+    tsProgram: ts.Program,
+  ) => void;
+  'primary-slot-gets-native-props': (testInfo: IsConformantOptions<TProps>) => void;
 }
