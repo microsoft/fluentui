@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Revert \"Keytips: Align keytipData with visible instance for dupes (#28522)\"",
-  "packageName": "@fluentui/react",
-  "email": "makopch@microsoft.com",
-  "dependentChangeType": "patch"
-}
