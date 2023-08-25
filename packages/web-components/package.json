@@ -24,115 +24,115 @@
       "default": "./dist/esm/index.js"
     },
     "./accordion.js": {
-      "types": "./dist/esm/accordion/define.d.ts",
+      "types": "./dist/dts/accordion/define.d.ts",
       "default": "./dist/esm/accordion/define.js"
     },
     "./accordion-item.js": {
-      "types": "./dist/esm/accordion-item/define.d.ts",
+      "types": "./dist/dts/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
     "./anchor-button.js": {
-      "types": "./dist/esm/anchor-button/define.d.ts",
+      "types": "./dist/dts/anchor-button/define.d.ts",
       "default": "./dist/esm/anchor-button/define.js"
     },
     "./avatar.js": {
-      "types": "./dist/esm/avatar/define.d.ts",
+      "types": "./dist/dts/avatar/define.d.ts",
       "default": "./dist/esm/avatar/define.js"
     },
     "./badge.js": {
-      "types": "./dist/esm/badge/define.d.ts",
+      "types": "./dist/dts/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
     },
     "./button.js": {
-      "types": "./dist/esm/button/define.d.ts",
+      "types": "./dist/dts/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
     },
     "./checkbox.js": {
-      "types": "./dist/esm/checkbox/define.d.ts",
+      "types": "./dist/dts/checkbox/define.d.ts",
       "default": "./dist/esm/checkbox/define.js"
     },
     "./compound-button.js": {
-      "types": "./dist/esm/compound-button/define.d.ts",
+      "types": "./dist/dts/compound-button/define.d.ts",
       "default": "./dist/esm/compound-button/define.js"
     },
     "./counter-badge.js": {
-      "types": "./dist/esm/counter-badge/define.d.ts",
+      "types": "./dist/dts/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
     },
     "./divider.js": {
-      "types": "./dist/esm/divider/define.d.ts",
+      "types": "./dist/dts/divider/define.d.ts",
       "default": "./dist/esm/divider/define.js"
     },
     "./image.js": {
-      "types": "./dist/esm/image/define.d.ts",
+      "types": "./dist/dts/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
     },
     "./label.js": {
-      "types": "./dist/esm/label/define.d.ts",
+      "types": "./dist/dts/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
     },
     "./menu-list.js": {
-      "types": "./dist/esm/menu-list/define.d.ts",
+      "types": "./dist/dts/menu-list/define.d.ts",
       "default": "./dist/esm/menu-list/define.js"
     },
     "./menu-button.js": {
-      "types": "./dist/esm/menu-button/define.d.ts",
+      "types": "./dist/dts/menu-button/define.d.ts",
       "default": "./dist/esm/menu-button/define.js"
     },
     "./menu-item.js": {
-      "types": "./dist/esm/menu-item/define.d.ts",
+      "types": "./dist/dts/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
     },
     "./progress-bar.js": {
-      "types": "./dist/esm/progress-bar/define.d.ts",
+      "types": "./dist/dts/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
     },
     "./radio.js": {
-      "types": "./dist/esm/radio/define.d.ts",
+      "types": "./dist/dts/radio/define.d.ts",
       "default": "./dist/esm/radio/define.js"
     },
     "./radio-group.js": {
-      "types": "./dist/esm/radio-group/define.d.ts",
+      "types": "./dist/dts/radio-group/define.d.ts",
       "default": "./dist/esm/radio-group/define.js"
     },
     "./slider.js": {
-      "types": "./dist/esm/slider/define.d.ts",
+      "types": "./dist/dts/slider/define.d.ts",
       "default": "./dist/esm/slider/define.js"
     },
     "./spinner.js": {
-      "types": "./dist/esm/spinner/define.d.ts",
+      "types": "./dist/dts/spinner/define.d.ts",
       "default": "./dist/esm/spinner/define.js"
     },
     "./switch.js": {
-      "types": "./dist/esm/switch/define.d.ts",
+      "types": "./dist/dts/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
     },
     "./tab.js": {
-      "types": "./dist/esm/tab/define.d.ts",
+      "types": "./dist/dts/tab/define.d.ts",
       "default": "./dist/esm/tab/define.js"
     },
     "./tabs.js": {
-      "types": "./dist/esm/tabs/define.d.ts",
+      "types": "./dist/dts/tabs/define.d.ts",
       "default": "./dist/esm/tabs/define.js"
     },
     "./tab-panel.js": {
-      "types": "./dist/esm/tab-panel/define.d.ts",
+      "types": "./dist/dts/tab-panel/define.d.ts",
       "default": "./dist/esm/tab-panel/define.js"
     },
     "./text.js": {
-      "types": "./dist/esm/text/define.d.ts",
+      "types": "./dist/dts/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
     "./text-input.js": {
-      "types": "./dist/esm/text-input/define.d.ts",
+      "types": "./dist/dts/text-input/define.d.ts",
       "default": "./dist/esm/text-input/define.js"
     },
     "./toggle-button.js": {
-      "types": "./dist/esm/toggle-button/define.d.ts",
+      "types": "./dist/dts/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
     },
     "./theme.js": {
-      "types": "./dist/esm/theme/index.d.ts",
+      "types": "./dist/dts/theme/index.d.ts",
       "default": "./dist/esm/theme/index.js"
     }
   },
