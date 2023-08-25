@@ -27,7 +27,7 @@ export const useDrawerInline_unstable = (
     initialState: false,
   });
 
-  const drawerMotion = useMotion<HTMLDivElement>(open);
+  const motion = useMotion<HTMLDivElement>(open);
 
   return {
     components: {
@@ -37,7 +37,7 @@ export const useDrawerInline_unstable = (
     root: slot.always(
       getNativeElementProps('div', {
         ...props,
-        ref: useMergedRefs(ref, drawerMotion.ref),
+        ref: useMergedRefs(ref, motion.ref),
       }),
       { elementType: 'div' },
     ),
@@ -45,6 +45,6 @@ export const useDrawerInline_unstable = (
     size,
     position,
     separator,
-    motion: drawerMotion,
+    motion,
   };
 };
