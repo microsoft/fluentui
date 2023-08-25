@@ -18,8 +18,6 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '50px',
-    height: '50px',
   },
   input: {
     cursor: 'pointer',
@@ -33,6 +31,18 @@ const useStyles = makeStyles({
   circular: {
     ...shorthands.borderRadius(tokens.borderRadiusCircular),
   },
+  small: {
+    width: '24px',
+    height: '24px',
+  },
+  medium: {
+    width: '30px',
+    height: '30px',
+  },
+  large: {
+    width: '50px',
+    height: '50px',
+  },
 });
 
 /**
@@ -41,8 +51,14 @@ const useStyles = makeStyles({
 export const useSwatchColorPikerCellStyles_unstable = (state: SwatchColorPikerCellState): SwatchColorPikerCellState => {
   const styles = useStyles();
   const shape = state.shape === 'circular' ? styles.circular : styles.square;
-
-  state.root.className = mergeClasses(swatchColorPikerCellClassNames.root, styles.root, shape, state.root.className);
+  const size = state.size || 'medium';
+  state.root.className = mergeClasses(
+    swatchColorPikerCellClassNames.root,
+    styles.root,
+    shape,
+    styles[size],
+    state.root.className,
+  );
 
   state.input.className = mergeClasses(styles.input, state.input.className);
   return state;
