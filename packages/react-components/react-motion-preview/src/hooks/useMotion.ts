@@ -105,6 +105,11 @@ function useMotionPresence<Element extends HTMLElement>(
     setCurrentElement(node);
   }, []);
 
+  const onFinished = React.useCallback(() => {
+    setType(presence ? 'entered' : 'exited');
+    setAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
+  }, [presence, setAnimationFrame]);
+
   React.useEffect(() => {
     if (isFirstReactRender) {
       return;
@@ -115,6 +120,7 @@ function useMotionPresence<Element extends HTMLElement>(
      */
     if (disableAnimation) {
       setType(presence ? 'idle' : 'unmounted');
+      setActive(presence);
       return;
     }
 
@@ -140,7 +146,7 @@ function useMotionPresence<Element extends HTMLElement>(
         const duration = getMotionDuration(currentElement);
 
         if (duration === 0) {
-          setType(presence ? 'idle' : 'unmounted');
+          onFinished();
           return;
         }
 
@@ -149,10 +155,7 @@ function useMotionPresence<Element extends HTMLElement>(
          * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
          * if the transition has multiple properties.
          */
-        setAnimationTimeout(() => {
-          setType(presence ? 'entered' : 'exited');
-          setAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
-        }, duration);
+        setAnimationTimeout(() => onFinished(), duration);
       });
     });
 
@@ -166,6 +169,7 @@ function useMotionPresence<Element extends HTMLElement>(
     currentElement,
     disableAnimation,
     isFirstReactRender,
+    onFinished,
     presence,
     setAnimationFrame,
     setAnimationTimeout,
