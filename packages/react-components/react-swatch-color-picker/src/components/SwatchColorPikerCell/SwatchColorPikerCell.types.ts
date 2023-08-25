@@ -16,7 +16,7 @@ export type SwatchColorPikerCellSlots = Pick<RadioSlots, 'root' | 'input'>;
 export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots> &
   Pick<RadioProps, 'name' | 'value'> & {
     shape?: 'circular' | 'square';
-    size?: number;
+    size?: 'small' | 'medium' | 'large';
     selected?: boolean; // if this color is selected
     disabled?: boolean;
     color: string;

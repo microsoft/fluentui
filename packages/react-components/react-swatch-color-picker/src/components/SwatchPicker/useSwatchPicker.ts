@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
-import { RadioGroup } from '@fluentui/react-components';
+import { RadioGroup, useRadioGroup_unstable } from '@fluentui/react-components';
 
 /**
  * Create the state required to render SwatchPicker.
@@ -16,19 +16,34 @@ export const useSwatchPicker_unstable = (
   props: SwatchPickerProps,
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
-  const { type = 'row' } = props;
+  const { layout = 'row', size = 'medium', shape = 'square', ...rest } = props;
   return {
     // TODO add appropriate props/defaults
-    components: {
-      // TODO add each slot's element type or component
-      root: RadioGroup,
-    },
+    // components: {
+    //   // TODO add each slot's element type or component
+    //   root: RadioGroup,
+    // },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
+    // root: slot.always(
+    //   getNativeElementProps('div', {
+    //     ref,
+    //     ...props,
+    //   }),
+    //   { elementType: 'div' },
+    // ),
+    // root: getNativeElementProps('div', {
+    //   ref,
+    //   ...props,
+    // }),
+    ...useRadioGroup_unstable(
+      {
+        ...rest,
+      },
       ref,
-      ...props,
-    }),
-    type,
+    ),
+    layout,
+    size,
+    shape,
   };
 };

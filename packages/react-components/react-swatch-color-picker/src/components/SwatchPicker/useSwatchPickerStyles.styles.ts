@@ -33,8 +33,8 @@ const useStyles = makeStyles({
  */
 export const useSwatchPickerStyles_unstable = (state: SwatchPickerState): SwatchPickerState => {
   const styles = useStyles();
-  const type = state.type === 'row' ? styles.row : styles.grid;
-  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, state.root.className, type);
+  const layout = state.layout === 'row' ? styles.row : styles.grid;
+  state.root.className = mergeClasses(swatchPickerClassNames.root, styles.root, layout, state.root.className);
 
   // TODO Add class names to slots, for example:
   // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);

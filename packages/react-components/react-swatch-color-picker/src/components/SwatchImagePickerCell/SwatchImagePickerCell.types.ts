@@ -11,7 +11,7 @@ export type SwatchImagePickerCellSlots = {
 export type SwatchImagePickerCellProps = ComponentProps<SwatchImagePickerCellSlots> & {
   // TODO make base type
   shape?: 'circular' | 'square';
-  size?: number;
+  size?: 'small' | 'medium' | 'large';
   selected?: boolean; // if this color is selected
   disabled?: boolean;
   url: string;

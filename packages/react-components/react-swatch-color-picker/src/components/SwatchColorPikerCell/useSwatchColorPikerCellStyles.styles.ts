@@ -1,6 +1,7 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SwatchColorPikerCellSlots, SwatchColorPikerCellState } from './SwatchColorPikerCell.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 export const swatchColorPikerCellClassNames: SlotClassNames<SwatchColorPikerCellSlots> = {
   root: 'fui-SwatchColorPikerCell',
@@ -26,6 +27,12 @@ const useStyles = makeStyles({
     width: 'inherit',
     height: 'inherit',
   },
+  square: {
+    ...shorthands.borderRadius(tokens.borderRadiusNone),
+  },
+  circular: {
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+  },
 });
 
 /**
@@ -33,7 +40,9 @@ const useStyles = makeStyles({
  */
 export const useSwatchColorPikerCellStyles_unstable = (state: SwatchColorPikerCellState): SwatchColorPikerCellState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(swatchColorPikerCellClassNames.root, styles.root, state.root.className);
+  const shape = state.shape === 'circular' ? styles.circular : styles.square;
+
+  state.root.className = mergeClasses(swatchColorPikerCellClassNames.root, styles.root, shape, state.root.className);
 
   state.input.className = mergeClasses(styles.input, state.input.className);
   return state;

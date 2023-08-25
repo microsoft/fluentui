@@ -11,7 +11,7 @@ import type { SwatchColorPikerCellState, SwatchColorPikerCellSlots } from './Swa
 export const renderSwatchColorPikerCell_unstable = (state: SwatchColorPikerCellState) => {
   const { slots, slotProps } = getSlotsNext<SwatchColorPikerCellSlots>(state);
   return (
-    <slots.root {...slotProps.root} style={{ backgroundColor: state.color }}>
+    <slots.root {...slotProps.root} style={{ background: state.color }}>
       <slots.input {...slotProps.input} />
     </slots.root>
   );
