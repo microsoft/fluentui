@@ -115,6 +115,7 @@ function useMotionPresence<Element extends HTMLElement>(
      */
     if (disableAnimation) {
       setType(presence ? 'idle' : 'unmounted');
+      setActive(presence);
       return;
     }
 
