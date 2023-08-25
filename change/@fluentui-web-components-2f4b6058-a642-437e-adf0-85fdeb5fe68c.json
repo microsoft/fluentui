@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Bump version to beta",
-  "packageName": "@fluentui/web-components",
-  "email": "miroslav.stastny@microsoft.com",
-  "dependentChangeType": "patch"
-}
