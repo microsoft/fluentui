@@ -1,7 +1,44 @@
 import * as React from 'react';
-import { unstable_batchedUpdates } from 'react-dom';
-import { HTMLElementWithStyledMap, getMotionDuration } from '../utils/dom-style';
-import { useAnimationFrame, useTimeout, usePrevious } from '@fluentui/react-utilities';
+import { useAnimationFrame, useTimeout, usePrevious, useFirstMount } from '@fluentui/react-utilities';
+
+import { getMotionDuration } from '../utils/dom-style';
+import type { HTMLElementWithStyledMap } from '../utils/dom-style';
+
+type ChangedDeps = Record<string, unknown>;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const usePreviousValue = (value: any, initialValue: any) => {
+  const ref = React.useRef(initialValue);
+
+  React.useEffect(() => {
+    ref.current = value;
+  }, [value]);
+
+  return ref.current;
+};
+
+export function useChangedEffect(dependencies: ChangedDeps) {
+  const previousDeps = usePreviousValue(dependencies, []);
+
+  const changedDependencies = React.useMemo(
+    () =>
+      Object.entries(dependencies)
+        .filter(([key, value]) => value !== previousDeps[key])
+        .map(([key]) => key)
+        .join(', '),
+    [dependencies, previousDeps],
+  );
+
+  React.useEffect(() => {
+    if (changedDependencies.length > 0) {
+      // eslint-disable-next-line no-console
+      console.log(`[useChangedEffect]: ${changedDependencies}`);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [dependencies]);
+
+  return React.useMemo(() => Object.values(dependencies), [dependencies]);
+}
 
 export type MotionOptions = {
   /**
@@ -12,7 +49,7 @@ export type MotionOptions = {
   animateOnFirstMount?: boolean;
 };
 
-export type MotionType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
+export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 
 export type MotionState<Element extends HTMLElement = HTMLElement> = {
   /**
@@ -52,6 +89,24 @@ export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionS
 /**
  * @internal
  *
+ * Checks if components was mounted after first render and a certain condition is met.
+ *
+ * @param condition - Condition to check
+ */
+const useFirstMountCondition = (condition: boolean): boolean => {
+  const isFirst = React.useRef(true);
+
+  if (isFirst.current && condition) {
+    isFirst.current = false;
+    return true;
+  }
+
+  return isFirst.current;
+};
+
+/**
+ * @internal
+ *
  * Hook to manage the presence of an element in the DOM based on its CSS transition/animation state.
  *
  * @param present - Whether the element should be present in the DOM
@@ -63,55 +118,20 @@ function useMotionPresence<Element extends HTMLElement>(
 ): MotionState<Element> {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
-  const [type, setType] = React.useState<MotionType>(presence ? 'idle' : 'unmounted');
-  const [active, setActive] = React.useState<boolean>(false);
+  const [type, setType] = React.useState<MotionType>(
+    presence && animateOnFirstMount ? 'entering' : presence ? 'idle' : 'unmounted',
+  );
+  const [active, setActive] = React.useState<boolean>(!animateOnFirstMount && presence);
+
+  const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
-  const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
-  const [setActiveAnimationFrame, cancelActiveAnimationFrame] = useAnimationFrame();
-  const [setProcessingAnimationFrame, cancelProcessingAnimationFrame] = useAnimationFrame();
-  const [setDelayedAnimationFrame, cancelDelayedAnimationFrame] = useAnimationFrame();
-  const skipAnimationOnFirstRender = React.useRef(!animateOnFirstMount);
 
-  const processAnimation = React.useCallback(
-    (callback: () => void) => {
-      const targetElement = currentElement;
-
-      if (!targetElement) {
-        return;
-      }
-
-      clearAnimationTimeout();
-      cancelProcessingAnimationFrame();
-      setProcessingAnimationFrame(() => {
-        const duration = getMotionDuration(targetElement);
-
-        if (duration === 0) {
-          callback();
-          return;
-        }
-
-        /**
-         * Use CSS transition duration + 1ms to ensure the animation has finished on both enter and exit states.
-         * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
-         * if the transition has multiple properties.
-         */
-        setAnimationTimeout(() => callback(), duration + 1);
-      });
-
-      return () => {
-        clearAnimationTimeout();
-        cancelProcessingAnimationFrame();
-      };
-    },
-    [
-      cancelProcessingAnimationFrame,
-      clearAnimationTimeout,
-      currentElement,
-      setAnimationTimeout,
-      setProcessingAnimationFrame,
-    ],
-  );
+  const isFirstReactRender = useFirstMount();
+  const isFirstDOMRender = useFirstMountCondition(!!currentElement);
+  const isInitiallyPresent = React.useRef<boolean>(presence).current;
+  const disableAnimation = isFirstDOMRender && isInitiallyPresent && !animateOnFirstMount;
 
   const ref: React.RefCallback<HTMLElementWithStyledMap<Element>> = React.useCallback(node => {
     if (!node) {
@@ -122,56 +142,70 @@ function useMotionPresence<Element extends HTMLElement>(
   }, []);
 
   React.useEffect(() => {
-    if (presence) {
-      unstable_batchedUpdates(() => {
-        setType('entering');
-        setActive(skipAnimationOnFirstRender.current ? true : false);
-      });
+    if (isFirstReactRender) {
+      return;
     }
-  }, [presence]);
 
-  React.useEffect(() => {
-    const skipAnimation = skipAnimationOnFirstRender.current;
-    const onUnmount = () => {
-      cancelActiveAnimationFrame();
-      cancelDelayedAnimationFrame();
+    /*
+     * In case animation is disabled, we can skip the animation and go straight to the idle state.
+     */
+    if (disableAnimation) {
+      setType(presence ? 'idle' : 'unmounted');
+      return;
+    }
+
+    setType(presence ? 'entering' : 'exiting');
+
+    /*
+     * If the element is not rendered, nothing to do.
+     */
+    if (!currentElement) {
+      return;
+    }
+
+    /*
+     * Wait for the next frame to ensure the element is rendered and the animation can start.
+     */
+    setAnimationFrame(() => {
+      setActive(presence);
+
+      /*
+       * Wait for the next frame to ensure the animation has started.
+       */
+      setAnimationFrame(() => {
+        const duration = getMotionDuration(currentElement);
+
+        if (duration === 0) {
+          setType(presence ? 'idle' : 'unmounted');
+          return;
+        }
+
+        /**
+         * Wait for the animation to finish before updating the state.
+         * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
+         * if the transition has multiple properties.
+         */
+        setAnimationTimeout(() => {
+          setType(presence ? 'entered' : 'exited');
+          setAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
+        }, duration);
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame();
+      clearAnimationTimeout();
     };
-
-    setActiveAnimationFrame(() => {
-      unstable_batchedUpdates(() => {
-        setActive(presence);
-        setType(() => {
-          if (skipAnimation) {
-            return presence ? 'idle' : 'unmounted';
-          }
-
-          return presence ? 'entering' : 'exiting';
-        });
-      });
-    });
-
-    if (skipAnimation) {
-      return onUnmount;
-    }
-
-    processAnimation(() => {
-      setType(presence ? 'entered' : 'exited');
-      setDelayedAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
-    });
-
-    return onUnmount;
   }, [
-    cancelActiveAnimationFrame,
-    cancelDelayedAnimationFrame,
+    cancelAnimationFrame,
+    clearAnimationTimeout,
+    currentElement,
+    disableAnimation,
+    isFirstReactRender,
     presence,
-    processAnimation,
-    setActiveAnimationFrame,
-    setDelayedAnimationFrame,
+    setAnimationFrame,
+    setAnimationTimeout,
   ]);
-
-  React.useEffect(() => {
-    skipAnimationOnFirstRender.current = false;
-  }, []);
 
   return React.useMemo<MotionState<Element>>(
     () => ({
