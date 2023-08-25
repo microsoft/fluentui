@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: tag with secondary text has no top border under windows high contrast",
+  "packageName": "@fluentui/react-tags-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -2,6 +2,106 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 24 Aug 2023 10:26:32 GMT",
+      "tag": "@fluentui/react-components_v9.30.0",
+      "version": "9.30.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "44789c103b2c4a05c026c72f4a594a291fdb0141",
+            "comment": "docs: improve storybook and examples to better align with design guidelines"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-components",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5",
+            "comment": "expose useDataGridContext_unstable etc. contexts"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "d7f04c2b9e5b36267f7d822fe493fc57cf5bc492",
+            "comment": "chore: decrease bundle size & adds fixtures"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8919d6c7e807cbfdb9c46f292fbb76cd908dc708",
+            "comment": "fix(react-popover): Only apply modal attributes if the PopoverSurface traps focus."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-table",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5",
+            "comment": "expose useDataGridContext_unstable etc. contexts"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "192b74335ed4d99dbcbeeab5aa2075409e911e1a",
+            "comment": "fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "afcfb2ebe322e2a8e204ac192e68f48f1164107f",
+            "comment": "feat: Export DataGridContextProvider."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "afcfb2ebe322e2a8e204ac192e68f48f1164107f",
+            "comment": "feat: Export DataGridContextProvider."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "45b2bea5f7bd1c8a453ce37726818f572afe0ab0",
+            "comment": "feat: Add documentKeyboardEvent to OnVisibleChangeData when Tooltip is hidden via Escape"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "148d5fa771ea9eb1f5a96f817782e76484070ec3",
+            "comment": "feat: create a new useAnimationFrame hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:48 GMT",
+      "tag": "@fluentui/react-components_v9.29.5",
+      "version": "9.29.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a8256f19f7cda7695b1de3c6b37768933bec7e4f",
+            "comment": "fix: added cursor style in AccordionHeader for AccordionItem disabled state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc",
+            "comment": "bugfix: ensure interop between assertSlots and old API"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8329d0a01d1b421aa10b6e993f75a0d61294fb06",
+            "comment": "chore: adds tsconfig.cy.json file to root of the package"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 21 Aug 2023 11:38:00 GMT",
       "tag": "@fluentui/react-components_v9.29.4",
       "version": "9.29.4",

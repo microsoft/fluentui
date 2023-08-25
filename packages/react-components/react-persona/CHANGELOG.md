@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-persona
 
-This log was last generated on Mon, 21 Aug 2023 11:38:03 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.34)
+
+Thu, 24 Aug 2023 10:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.33..@fluentui/react-persona_v9.2.34)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.24 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-badge to v9.1.30 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.2 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+
+## [9.2.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.33)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-persona_v9.2.32..@fluentui/react-persona_v9.2.33)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.23 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-badge to v9.1.29 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
 
 ## [9.2.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-persona_v9.2.32)
 
