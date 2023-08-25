@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
@@ -6,6 +7,11 @@ import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+
+const beforeAll = () => {
+  jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
+  jest.spyOn(Date.prototype, 'toLocaleTimeString').mockReturnValue('08/25/2023');
+};
 
 const calloutItemStyle = mergeStyles({
   borderBottom: '1px solid #D9D9D9',
@@ -47,12 +53,12 @@ const basicChartPoints = {
 const datePoints: ILineChartPoints[] = [
   {
     data: [
-      { x: new Date('2020/01/01'), y: 30 },
-      { x: new Date('2020/02/01'), y: 50 },
-      { x: new Date('2020/03/01'), y: 30 },
-      { x: new Date('2020/04/01'), y: 50 },
-      { x: new Date('2020/05/01'), y: 30 },
-      { x: new Date('2020/06/01'), y: 50 },
+      { x: new Date('01/01/2020'), y: 30 },
+      { x: new Date('02/01/2020'), y: 50 },
+      { x: new Date('03/01/2020'), y: 30 },
+      { x: new Date('04/01/2020'), y: 50 },
+      { x: new Date('05/01/2020'), y: 30 },
+      { x: new Date('06/01/2020'), y: 50 },
     ],
     legend: 'First',
     lineOptions: {
@@ -72,8 +78,8 @@ const colorFillBarData = [
     color: 'blue',
     data: [
       {
-        startX: new Date('2020/01/01'),
-        endX: new Date('2020/02/01'),
+        startX: new Date('01/01/2020'),
+        endX: new Date('02/01/2020'),
       },
     ],
   },
@@ -82,8 +88,8 @@ const colorFillBarData = [
     color: 'red',
     data: [
       {
-        startX: new Date('2018/04/01'),
-        endX: new Date('2018/05/01'),
+        startX: new Date('04/01/2018'),
+        endX: new Date('05/01/2018'),
       },
     ],
     applyPattern: true,
@@ -190,6 +196,8 @@ describe('Line chart rendering', () => {
       // Assert
       expect(container).toMatchSnapshot();
     },
+    undefined,
+    beforeAll,
   );
 
   testWithoutWait(
@@ -351,6 +359,8 @@ describe('Line chart - Subcomponent line', () => {
       // Assert
       expect(lines).toHaveLength(8);
     },
+    undefined,
+    beforeAll,
   );
 });
 
@@ -508,6 +518,8 @@ describe('Line chart - Subcomponent Time Range', () => {
       // Assert
       expect(getByClass(container, /rect/i).length > 0);
     },
+    undefined,
+    beforeAll,
   );
 
   testWithWait(
@@ -527,6 +539,8 @@ describe('Line chart - Subcomponent Time Range', () => {
       expect(filledBars[0].getAttribute('fill-opacity')).toEqual('0.4');
       expect(filledBars[1].getAttribute('fill-opacity')).toEqual('0.1');
     },
+    undefined,
+    beforeAll,
   );
 });
 
@@ -542,6 +556,8 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Febr...');
     },
+    undefined,
+    beforeAll,
   );
 
   testWithWait(
@@ -552,6 +568,8 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(40.5,0)');
     },
+    undefined,
+    beforeAll,
   );
 });
 
@@ -577,6 +595,8 @@ describe('Line chart - Subcomponent Event', () => {
       expect(event).toBeDefined();
       fireEvent.click(event!);
     },
+    undefined,
+    beforeAll,
   );
 });
 
