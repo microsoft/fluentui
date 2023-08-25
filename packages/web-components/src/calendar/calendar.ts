@@ -205,6 +205,8 @@ export class Calendar extends FASTCalendar {
     // Sets focus on day grid cell when the month is updated on the day grid
     if (name === 'month') {
       if (this.navigatedDate.getMonth() + 1 != this.month || this.navigatedDate.getFullYear() != this.year) {
+        const el = this.getNavigatedDayElement();
+        el.tabIndex = -1;
         this.navigatedDate = new Date(`${this.year}/${this.month}/01`);
       }
 
@@ -503,13 +505,9 @@ export class Calendar extends FASTCalendar {
         }
       } else if (panel === 'secondary') {
         if (direction === 'previous') {
-          this.yearPickerOpen
-            ? (this.yearPickerDecade = this.getYearPickerInfo().previousStart)
-            : (this.monthPickerYear = this.getMonthPickerInfo().previous);
+          this.handleSwitchSecondaryPanel(direction);
         } else if (direction === 'next') {
-          this.yearPickerOpen
-            ? (this.yearPickerDecade = this.getYearPickerInfo().nextStart)
-            : (this.monthPickerYear = this.getMonthPickerInfo().next);
+          this.handleSwitchSecondaryPanel(direction);
         }
       }
     }
@@ -618,7 +616,7 @@ export class Calendar extends FASTCalendar {
     el.tabIndex = 0;
     el.focus();
 
-    // return true;
+    return true;
   }
 
   /**
@@ -714,7 +712,7 @@ export class Calendar extends FASTCalendar {
     focus.tabIndex = 0;
     focus.focus();
 
-    // return true;
+    return true;
   }
 
   /**

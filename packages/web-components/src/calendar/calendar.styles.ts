@@ -1,5 +1,5 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+import { display, forcedColorsStylesheetBehavior } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   colorBrandBackground,
@@ -9,9 +9,11 @@ import {
   colorNeutralForeground1Static,
   colorNeutralForeground2Selected,
   colorNeutralForeground3,
+  colorNeutralForeground4,
   colorNeutralForegroundDisabled,
   colorNeutralForegroundStaticInverted,
   colorTransparentBackground,
+  curveDecelerateMid,
   fontFamilyBase,
   fontSizeBase200,
   fontSizeBase300,
@@ -19,6 +21,7 @@ import {
   fontWeightRegular,
   lineHeightBase200,
   lineHeightBase300,
+  lineHeightBase600,
   spacingHorizontalM,
   spacingHorizontalNone,
   spacingHorizontalS,
@@ -26,9 +29,11 @@ import {
   spacingVerticalNone,
   spacingVerticalS,
   spacingVerticalXS,
+  strokeWidthThick,
 } from '../theme/design-tokens.js';
 
 export const styles = css`
+  ${display('inline-flex')}
   :host .control {
     display: flex;
   }
@@ -95,7 +100,7 @@ export const styles = css`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
+    align-items: center;
     height: 44px;
     width: 44px;
     border-radius: ${borderRadiusMedium};
@@ -122,7 +127,7 @@ export const styles = css`
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height: 32px;
+    line-height: ${lineHeightBase600};
     width: 32px;
     position: relative;
     border-radius: ${borderRadiusMedium};
@@ -188,14 +193,14 @@ export const styles = css`
     cursor: pointer;
   }
   :host .day.inactive {
-    color: ${colorNeutralForegroundDisabled};
+    color: ${colorNeutralForeground4};
     background: ${colorTransparentBackground};
   }
   :host .date {
     text-align: center;
     width: 32px;
     height: 32px;
-    border-radius: 4px;
+    border-radius: ${borderRadiusMedium};
   }
   :host .navicon-container {
     display: flex;
@@ -216,6 +221,7 @@ export const styles = css`
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     column-gap: ${spacingHorizontalNone};
     padding: ${spacingHorizontalS} ${spacingHorizontalM};
   }
@@ -241,24 +247,24 @@ export const styles = css`
   :host .first-transition-row-animated {
     animation: FadeOut, SlideUpOut20, transitionRowDisappearance;
     animation-duration: 0.367s;
-    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+    animation-timing-function: ${curveDecelerateMid};
   }
   :host .last-transition-row-animated {
     animation: FadeOut, SlideDownOut20, transitionRowDisappearance;
     animation-duration: 0.367s;
-    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+    animation-timing-function: ${curveDecelerateMid};
   }
   :host .week.animated-up,
   .secondary-panel-row.animated-up {
     animation: FadeIn, SlideUpIn20;
     animation-duration: 0.367s;
-    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+    animation-timing-function: ${curveDecelerateMid};
   }
   :host .week.animated-down,
   .secondary-panel-row.animated-down {
     animation: FadeIn, SlideDownIn20;
     animation-duration: 0.367s;
-    animation-timing-function: cubic-bezier(0.1, 0.9, 0.2, 1);
+    animation-timing-function: ${curveDecelerateMid};
   }
 
   @keyframes FadeOut {
@@ -319,17 +325,86 @@ export const styles = css`
     100% {
       width: 0;
       height: 0;
-      overflow: 'hidden';
+      overflow: hidden;
     }
     99% {
       width: 100%;
       height: 28;
-      overflow: 'visible';
+      overflow: visible;
     }
     0% {
       width: 100%;
       height: 28;
-      overflow: 'visible';
+      overflow: visible;
     }
   }
-`;
+`.withBehaviors(
+  forcedColorsStylesheetBehavior(css`
+    :host .interact .today:not(.inactive)::after {
+      border: ${strokeWidthThick} solid Mark;
+    }
+    :host .interact .today:not(.inactive):not(.selected):hover {
+      height: 32px;
+      width: 32px;
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+    }
+    :host .interact .today:not(.inactive).selected {
+      height: 32px;
+      width: 32px;
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+    }
+    :host .day:not(.today):not(.selected):hover {
+      height: 32px;
+      width: 32px;
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+    }
+    :host .day:not(.today):not(.selected):active {
+      height: 32px;
+      width: 32px;
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+      color: Highlight;
+    }
+    :host .day:not(.today).selected {
+      height: 32px;
+      width: 32px;
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+    }
+    :host .secondary-panel-today {
+      height: 44px;
+      width: 44px;
+      border: ${strokeWidthThick} solid Mark;
+      box-sizing: border-box;
+    }
+    :host .secondary-panel-cell-outer:not(.secondary-panel-today):not(.secondary-panel-selected):hover {
+      height: 44px;
+      width: 44px;
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+    }
+    :host .secondary-panel-selected {
+      height: 44px;
+      width: 44px;
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+    }
+    :host .secondary-panel-cell-outer:not(.secondary-panel-today):not(.secondary-panel-selected):active {
+      height: 44px;
+      width: 44px;
+      border: ${strokeWidthThick} solid Highlight;
+      color: Highlight;
+      box-sizing: border-box;
+    }
+    :host([show-slotted-link]) .slotted-link.inactive {
+      color: GrayText;
+    }
+    :host .secondary-panel-title:hover {
+      border: ${strokeWidthThick} solid Highlight;
+      box-sizing: border-box;
+    }
+  `),
+);
