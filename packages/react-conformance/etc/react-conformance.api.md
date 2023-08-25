@@ -10,7 +10,7 @@ import { render } from '@testing-library/react';
 import * as ts from 'typescript';
 
 // @public (undocumented)
-export type ConformanceTest<TProps = {}> = (componentInfo: ComponentDoc, testInfo: IsConformantOptions<TProps>, tsProgram: ts.Program) => void;
+export type ConformanceTest<TProps = {}> = ((testInfo: IsConformantOptions<TProps>) => void) | ((testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void) | ((testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void);
 
 // @public (undocumented)
 export function isConformant<TProps = {}>(...testInfo: Partial<IsConformantOptions<TProps>>[]): void;
@@ -20,6 +20,7 @@ export interface IsConformantOptions<TProps = {}> {
     Component: React_2.ComponentType<TProps>;
     componentPath: string;
     disabledTests?: string[];
+    disableTypeTests?: boolean;
     displayName: string;
     elementRefName?: string;
     extraTests?: TestObject<TProps>;
