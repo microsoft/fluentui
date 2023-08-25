@@ -65,7 +65,7 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     baseClassNames,
     rootStyles.root,
     separatorClass,
-    !state.motion.active && rootStyles[state.position],
+    rootStyles[state.position],
     state.motion.active && rootStyles.visible,
     state.root.className,
   );
