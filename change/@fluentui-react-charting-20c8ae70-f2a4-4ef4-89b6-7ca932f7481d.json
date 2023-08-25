@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixed the focus indicator bug in horizontal bar chart and multi stack bar chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "yushsingla@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,35 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Fri, 25 Aug 2023 07:35:36 GMT",
+      "tag": "@fluentui/react_v8.111.0",
+      "version": "8.111.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "makopch@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7f699be51bb04a28c418eaa927f10cad4fbb341f",
+            "comment": "Revert \"Keytips: Align keytipData with visible instance for dupes (#28522)\""
+          },
+          {
+            "author": "mingyuanyu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0dfca34f7aabc1ee0c087a1dfcc4d55b6880c883",
+            "comment": "fix: Add displayName to dialog footer and content"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "846a45467d7e70f3960950b6eb42d3a1d3cef2e5",
+            "comment": "feat(Stack): Add deprecated flag to render null when receiving a falsy value."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Aug 2023 07:36:23 GMT",
       "tag": "@fluentui/react_v8.110.15",
       "version": "8.110.15",
