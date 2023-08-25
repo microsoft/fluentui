@@ -4,42 +4,6 @@ import { useAnimationFrame, useTimeout, usePrevious, useFirstMount } from '@flue
 import { getMotionDuration } from '../utils/dom-style';
 import type { HTMLElementWithStyledMap } from '../utils/dom-style';
 
-type ChangedDeps = Record<string, unknown>;
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const usePreviousValue = (value: any, initialValue: any) => {
-  const ref = React.useRef(initialValue);
-
-  React.useEffect(() => {
-    ref.current = value;
-  }, [value]);
-
-  return ref.current;
-};
-
-export function useChangedEffect(dependencies: ChangedDeps) {
-  const previousDeps = usePreviousValue(dependencies, []);
-
-  const changedDependencies = React.useMemo(
-    () =>
-      Object.entries(dependencies)
-        .filter(([key, value]) => value !== previousDeps[key])
-        .map(([key]) => key)
-        .join(', '),
-    [dependencies, previousDeps],
-  );
-
-  React.useEffect(() => {
-    if (changedDependencies.length > 0) {
-      // eslint-disable-next-line no-console
-      console.log(`[useChangedEffect]: ${changedDependencies}`);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dependencies]);
-
-  return React.useMemo(() => Object.values(dependencies), [dependencies]);
-}
-
 export type MotionOptions = {
   /**
    * Whether to animate the element on first mount.
