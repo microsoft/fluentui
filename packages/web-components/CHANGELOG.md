@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Wed, 23 Aug 2023 04:18:01 GMT and should not be manually modified.
+This log was last generated on Fri, 25 Aug 2023 04:19:39 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.1)
+
+Fri, 25 Aug 2023 04:19:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.31..@fluentui/web-components_v3.0.0-beta.1)
+
+### Changes
+
+- Bump version to beta ([PR #28976](https://github.com/microsoft/fluentui/pull/28976) by miroslav.stastny@microsoft.com)
 
 ## [3.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.31)
 

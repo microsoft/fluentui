@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 25 Aug 2023 04:19:39 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.1",
+      "version": "3.0.0-beta.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "c271ab35c7160288de81b27a31627aa199a9afe3",
+            "comment": "Bump version to beta"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Aug 2023 04:18:01 GMT",
       "tag": "@fluentui/web-components_v3.0.0-alpha.31",
       "version": "3.0.0-alpha.31",
