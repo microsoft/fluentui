@@ -26,7 +26,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookCon
         backgrounds: false,
         viewport: false,
         toolbars: false,
-        actions: false,
+        actions: true,
       },
     },
   ],
