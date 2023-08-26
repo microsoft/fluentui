@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CardHeader } from '@fluentui/react-components';
 import { makeStyles, shorthands, Button, Body1, Caption1 } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   container: {
@@ -25,7 +25,7 @@ const resolveAsset = (asset: string) => {
 export const Default = () => {
   const styles = useStyles();
 
-  const powerpointLogoURL = resolveAsset('powerpoint_logo.svg');
+  const powerpointLogoURL = resolveAsset('pptx.png');
 
   return (
     <div className={styles.container}>
@@ -38,7 +38,7 @@ export const Default = () => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -49,7 +49,7 @@ export const Default = () => {
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -60,7 +60,7 @@ export const Default = () => {
             <b>App Name</b>
           </Body1>
         }
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
       />
 
       <CardHeader
@@ -81,7 +81,7 @@ export const Default = () => {
             <b>App Name</b>
           </Body1>
         }
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
       />
 
       <CardHeader

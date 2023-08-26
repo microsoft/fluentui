@@ -29,6 +29,9 @@ import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 // @public (undocumented)
 export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
 
+// @public (undocumented)
+export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined>;
+
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
     columnId: TableColumnId;
@@ -435,6 +438,9 @@ export const tableHeaderClassName = "fui-TableHeader";
 // @public (undocumented)
 export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
 
+// @public (undocumented)
+export const TableHeaderContextProvider: React_2.Provider<string | undefined>;
+
 // @public
 export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
 
@@ -558,6 +564,9 @@ export interface TableSortState<TItem> {
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
+// @public (undocumented)
+export const useColumnIdContext: () => TableColumnId;
+
 // @public
 export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
 
@@ -605,6 +614,9 @@ export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionC
 
 // @public
 export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
+
+// @public (undocumented)
+export const useIsInTableHeader: () => boolean;
 
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
