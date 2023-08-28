@@ -28,7 +28,7 @@ async function getReactComponent(
  * A conformance test for mergeClasses() that ensures that a classname from props is passed as a last param,
  * i.e. ensures that user's overrides have higher priority.
  */
-export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
+export const overridesWin: ConformanceTest = (testInfo: IsConformantOptions) => {
   const testOptions = testInfo.testOptions as
     | (TestOptions & { [OVERRIDES_WIN_TEST_NAME]?: OverridesWinTestOptions })
     | undefined;
