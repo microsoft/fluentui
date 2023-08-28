@@ -13,7 +13,7 @@ export const Dismiss = () => {
     {
       value: '1',
       tag: (
-        <Tag dismissible value="1" key="1" aria-label="Tag1, remove">
+        <Tag dismissible value="1" key="1" dismissIcon={{ 'aria-label': 'remove' }}>
           Tag 1
         </Tag>
       ),
@@ -21,7 +21,7 @@ export const Dismiss = () => {
     {
       value: '2',
       tag: (
-        <Tag dismissible value="2" key="2" aria-label="Tag2, remove">
+        <Tag dismissible value="2" key="2" dismissIcon={{ 'aria-label': 'remove' }}>
           Tag 2
         </Tag>
       ),
