@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-charting",
-  "version": "5.17.3",
+  "version": "5.17.4",
   "description": "Experimental React charting components for building experiences for Microsoft 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -38,7 +38,7 @@
   },
   "dependencies": {
     "@fluentui/react-focus": "^8.8.31",
-    "@fluentui/theme-samples": "^8.7.109",
+    "@fluentui/theme-samples": "^8.7.110",
     "@microsoft/load-themed-styles": "^1.10.26",
     "@types/d3-array": "1.2.1",
     "@types/d3-axis": "1.0.10",
@@ -64,7 +64,7 @@
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@fluentui/react": "^8.111.0",
+    "@fluentui/react": "^8.111.1",
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",
