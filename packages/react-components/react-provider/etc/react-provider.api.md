@@ -4,9 +4,12 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { IconDirectionContextValue } from '@fluentui/react-icons';
 import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
@@ -125,6 +128,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyle
     provider: ProviderContextValue_unstable;
     themeClassName: ThemeClassNameContextValue_unstable;
     textDirection: 'ltr' | 'rtl';
+    iconDirection: IconDirectionContextValue;
     tooltip: TooltipVisibilityContextValue_unstable;
 };
 
