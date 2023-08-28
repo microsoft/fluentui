@@ -101,7 +101,7 @@ describe('AreaChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hideLegend hhh correctly', async () => {
+  it('renders hideLegend correctly', async () => {
     wrapper = mount(<AreaChart data={chartPoints} hideLegend={true} />);
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();
