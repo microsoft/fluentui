@@ -112,7 +112,7 @@ export interface IsConformantOptions<TProps = {}> {
   tsConfig?: Partial<{ configName: string; configDir: string }>;
 }
 
-export type BaseConformanceTest<TProps = {}> = ConformanceTest<TProps>;
+export type BaseConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>) => void;
 export type ConformanceTest<TProps = {}> = (
   testInfo: IsConformantOptions<TProps>,
   componentInfo: ComponentDoc,
