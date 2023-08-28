@@ -38,7 +38,7 @@ const TestComp: React.FC<TestCompProps> = ({ inShadow }) => {
   const label = inShadow ? 'Shadow DOM' : 'Light DOM';
 
   const [disabled, setDisabled] = React.useState(false);
-  const onClick = e => {
+  const onClick = () => {
     setDisabled(!disabled);
   };
 
@@ -107,7 +107,11 @@ const TestWindow: React.FC = () => {
   return <PrimaryButton text="Open Child Window" onClick={openWindow} />;
 };
 
-const Shadow: React.FC = ({ window, children }) => {
+type ShadowProps = {
+  window: Window;
+};
+
+const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
   // This is a ref but we're using state to manage it so we can force
   // a re-render.
   const [shadowRootEl, setShadowRootEl] = React.useState<HTMLElement | null>(null);
