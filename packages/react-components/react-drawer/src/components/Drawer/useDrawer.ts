@@ -21,7 +21,7 @@ export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElemen
 
   return {
     components: {
-      root: 'div',
+      root: elementType,
     },
 
     root: slot.always<DrawerProps>(
