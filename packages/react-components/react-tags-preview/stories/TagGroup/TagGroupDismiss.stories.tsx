@@ -13,7 +13,7 @@ export const Dismiss = () => {
     {
       value: '1',
       tag: (
-        <Tag dismissible value="1" key="1" aria-label="Tag1, remove">
+        <Tag dismissible value="1" key="1" dismissIcon={{ 'aria-label': 'remove' }}>
           Tag 1
         </Tag>
       ),
@@ -21,7 +21,7 @@ export const Dismiss = () => {
     {
       value: '2',
       tag: (
-        <Tag dismissible value="2" key="2" aria-label="Tag2, remove">
+        <Tag dismissible value="2" key="2" dismissIcon={{ 'aria-label': 'remove' }}>
           Tag 2
         </Tag>
       ),
@@ -31,7 +31,7 @@ export const Dismiss = () => {
       tag: (
         <InteractionTag value="foo" key="foo">
           <InteractionTagPrimary hasSecondaryAction>Foo</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="Foo, remove" />
+          <InteractionTagSecondary aria-label="remove" />
         </InteractionTag>
       ),
     },
@@ -40,7 +40,7 @@ export const Dismiss = () => {
       tag: (
         <InteractionTag value="bar" key="bar">
           <InteractionTagPrimary hasSecondaryAction>Bar</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="Bar, remove" />
+          <InteractionTagSecondary aria-label="remove" />
         </InteractionTag>
       ),
     },
@@ -52,7 +52,11 @@ export const Dismiss = () => {
     setItems([...items].filter(item => item.value !== dismissedTagValue));
   };
 
-  return <TagGroup onDismiss={removeItem}>{items.map(item => item.tag)}</TagGroup>;
+  return (
+    <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
+      {items.map(item => item.tag)}
+    </TagGroup>
+  );
 };
 
 Dismiss.storyName = 'Dismiss';
