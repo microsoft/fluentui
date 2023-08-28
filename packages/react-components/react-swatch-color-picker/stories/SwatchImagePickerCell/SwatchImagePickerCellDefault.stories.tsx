@@ -35,7 +35,7 @@ export const Default = () => {
     <>
       <SwatchPicker
         size="large"
-        type="row"
+        layout="row"
         value={swatchId}
         onChange={(_, data) => setSwatchId(data.value)}
         aria-labelledby="colors"

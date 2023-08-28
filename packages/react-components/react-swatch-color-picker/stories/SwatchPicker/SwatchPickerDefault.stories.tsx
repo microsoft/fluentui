@@ -1,31 +1,78 @@
 import * as React from 'react';
 import { SwatchPicker, SwatchPickerProps, SwatchColorPikerCell } from '@fluentui/react-swatch-color-picker';
+import { makeStyles, shorthands } from '@fluentui/react-components';
+
+const customStyles = makeStyles({
+  root: {
+    ...shorthands.borderRadius('8px'),
+    boxShadow: 'rgb(46 46 46 / 43%) 0px 1px 2px 0px',
+  },
+});
+
+const colors = [
+  {
+    id: 0,
+    color: 'red',
+  },
+  {
+    id: 1,
+    color: 'rgb(189, 255, 104)',
+  },
+  {
+    id: 2,
+    color: 'rgba(189, 255, 104,.4)',
+  },
+  {
+    id: 3,
+    color: '#f09',
+  },
+  {
+    id: 4,
+    color: 'yellow',
+  },
+  {
+    id: 5,
+    color: 'cyan',
+  },
+  {
+    id: 6,
+    color: 'purple',
+  },
+  {
+    id: 7,
+    color: 'magenta',
+  },
+];
 
 export const Default = (props: Partial<SwatchPickerProps>) => {
   const [color, setColor] = React.useState('red');
+  const styles = customStyles();
   return (
     <>
       <h2>row</h2>
-      <SwatchPicker type="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
-        <SwatchColorPikerCell id={0} name="color" value="red" color="red" />
-        <SwatchColorPikerCell id={1} name="color" value="rgb(189, 255, 104)" color="rgb(189, 255, 104)" />
-        <SwatchColorPikerCell id={2} name="color" value="rgba(189, 255, 104,.4)" color="rgba(189, 255, 104,.4)" />
-        <SwatchColorPikerCell id={3} name="color" value="#f09" color="#f09" />
-        <SwatchColorPikerCell id={4} name="color" value="yellow" color="yellow" />
-        <SwatchColorPikerCell id={5} name="color" value="cyan" color="cyan" />
-        <SwatchColorPikerCell id={6} name="color" value="purple" color="purple" />
-        <SwatchColorPikerCell id={7} name="color" value="magenta" color="magenta" />
+      <SwatchPicker layout="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
+        {colors.map(item => (
+          <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.color} color={item.color} />
+        ))}
       </SwatchPicker>
       <h2>grid</h2>
-      <SwatchPicker type="grid" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
-        <SwatchColorPikerCell id={0} name="color" value="red" color="red" />
-        <SwatchColorPikerCell id={1} name="color" value="rgb(189, 255, 104)" color="rgb(189, 255, 104)" />
-        <SwatchColorPikerCell id={2} name="color" value="rgba(189, 255, 104,.4)" color="rgba(189, 255, 104,.4)" />
-        <SwatchColorPikerCell id={3} name="color" value="#f09" color="#f09" />
-        <SwatchColorPikerCell id={4} name="color" value="yellow" color="yellow" />
-        <SwatchColorPikerCell id={5} name="color" value="cyan" color="cyan" />
-        <SwatchColorPikerCell id={6} name="color" value="purple" color="purple" />
-        <SwatchColorPikerCell id={7} name="color" value="magenta" color="magenta" />
+      <SwatchPicker layout="grid" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
+        {colors.map(item => (
+          <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.color} color={item.color} />
+        ))}
+      </SwatchPicker>
+      <h2>custom cell</h2>
+      <SwatchPicker layout="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
+        {colors.map(item => (
+          <SwatchColorPikerCell
+            id={item.id}
+            key={item.id}
+            name="color"
+            value={item.color}
+            color={item.color}
+            className={styles.root}
+          />
+        ))}
       </SwatchPicker>
       Background can be changed
       <div style={{ backgroundColor: color, width: 200, height: 200 }} />

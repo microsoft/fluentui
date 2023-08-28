@@ -6,7 +6,7 @@ export const Default = () => {
     <>
       <SwatchPicker
         size="small"
-        type="row"
+        layout="row"
         shape="circular"
         value={color}
         onChange={(_, data) => setColor(data.value)}
@@ -22,7 +22,7 @@ export const Default = () => {
           color="linear-gradient(#ff3335, #e6ff03)"
         />
       </SwatchPicker>
-      <SwatchPicker type="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
+      <SwatchPicker layout="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
         <SwatchColorPikerCell name="color" value="red" color="red" />
         <SwatchColorPikerCell name="color" value="rgb(189, 255, 104)" color="rgb(189, 255, 104)" />
         <SwatchColorPikerCell name="color" value="rgba(189, 255, 104,.4)" color="rgba(189, 255, 104,.4)" />
@@ -35,7 +35,7 @@ export const Default = () => {
       </SwatchPicker>
       <SwatchPicker
         size="large"
-        type="row"
+        layout="row"
         shape="circular"
         value={color}
         onChange={(_, data) => setColor(data.value)}
