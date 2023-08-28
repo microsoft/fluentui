@@ -29,7 +29,7 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
 };
 
 // @public (undocumented)
-export type MotionType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
+export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 
 // @public
 export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: MotionOptions): MotionState<Element>;
