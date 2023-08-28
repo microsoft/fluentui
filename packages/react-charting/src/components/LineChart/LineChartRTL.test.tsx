@@ -587,7 +587,7 @@ describe('Line chart - Subcomponent Event', () => {
   testWithWait(
     'Should render events with defined data',
     LineChart,
-    { data: simplePoints, eventAnnotationProps, tickValues, tickFormat: '%m/%d' },
+    { data: simplePoints, eventAnnotationProps: eventAnnotationProps, tickValues: tickValues, tickFormat: '%m/%d' },
     container => {
       // Arrange
       const event = screen.queryByText('3 events');
