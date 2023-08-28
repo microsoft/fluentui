@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
@@ -6,6 +7,11 @@ import { AreaChart, IAreaChartProps } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { AreaChartBase } from './AreaChart.base';
+
+const beforeAll = () => {
+  jest.spyOn(AreaChartBase.prototype as any, '_getAriaLabel').mockReturnValue('08/25/2023');
+};
 
 const chart1Points = [
   {
@@ -161,46 +167,46 @@ const chartData = {
 
 const chart1PointsWithDate = [
   {
-    x: new Date('2018/01/06'),
+    x: new Date('01/06/2018'),
     y: 5,
   },
   {
-    x: new Date('2018/01/08'),
+    x: new Date('01/08/2018'),
     y: 16,
   },
   {
-    x: new Date('2018/01/16'),
+    x: new Date('01/16/2018'),
     y: 6,
   },
   {
-    x: new Date('2018/02/06'),
+    x: new Date('02/06/2018'),
     y: 30,
   },
   {
-    x: new Date('2018/02/16'),
+    x: new Date('02/16/2018'),
     y: 10,
   },
 ];
 
 const chart2PointsWithDate = [
   {
-    x: new Date('2018/01/06'),
+    x: new Date('01/06/2018'),
     y: 10,
   },
   {
-    x: new Date('2018/01/08'),
+    x: new Date('01/08/2018'),
     y: 33,
   },
   {
-    x: new Date('2018/01/16'),
+    x: new Date('01/16/2018'),
     y: 21,
   },
   {
-    x: new Date('2018/02/06'),
+    x: new Date('02/06/2018'),
     y: 44,
   },
   {
-    x: new Date('2018/02/16'),
+    x: new Date('02/16/2018'),
     y: 22,
   },
 ];
@@ -252,6 +258,8 @@ describe('Area chart rendering', () => {
     container => {
       expect(container).toMatchSnapshot();
     },
+    undefined,
+    beforeAll,
   );
 });
 
@@ -411,6 +419,8 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Jan ...');
     },
+    undefined,
+    beforeAll,
   );
 
   testWithWait(
@@ -421,6 +431,8 @@ describe('Area chart - Subcomponent xAxis Labels', () => {
       // Assert
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('translate(39.03658536585366,0)');
     },
+    undefined,
+    beforeAll,
   );
 });
 
