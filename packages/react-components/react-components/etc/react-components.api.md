@@ -131,6 +131,7 @@ import { CheckboxSlots } from '@fluentui/react-checkbox';
 import { CheckboxState } from '@fluentui/react-checkbox';
 import { ColorPaletteTokens } from '@fluentui/react-theme';
 import { ColorTokens } from '@fluentui/react-theme';
+import { ColumnIdContextProvider } from '@fluentui/react-table';
 import { Combobox } from '@fluentui/react-combobox';
 import { comboboxClassNames } from '@fluentui/react-combobox';
 import { ComboboxContextValue } from '@fluentui/react-combobox';
@@ -181,6 +182,7 @@ import { DataGridCellProps } from '@fluentui/react-table';
 import { DataGridCellSlots } from '@fluentui/react-table';
 import { DataGridCellState } from '@fluentui/react-table';
 import { dataGridClassNames } from '@fluentui/react-table';
+import { DataGridContextProvider } from '@fluentui/react-table';
 import { DataGridContextValue } from '@fluentui/react-table';
 import { DataGridContextValues } from '@fluentui/react-table';
 import { DataGridFocusMode } from '@fluentui/react-table';
@@ -717,6 +719,7 @@ import { TableHeaderCellSlots } from '@fluentui/react-table';
 import { TableHeaderCellState } from '@fluentui/react-table';
 import { tableHeaderClassName } from '@fluentui/react-table';
 import { tableHeaderClassNames } from '@fluentui/react-table';
+import { TableHeaderContextProvider } from '@fluentui/react-table';
 import { TableHeaderProps } from '@fluentui/react-table';
 import { TableHeaderSlots } from '@fluentui/react-table';
 import { TableHeaderState } from '@fluentui/react-table';
@@ -926,6 +929,7 @@ import { useCardStyles_unstable } from '@fluentui/react-card';
 import { useCheckbox_unstable } from '@fluentui/react-checkbox';
 import { useCheckboxStyles_unstable } from '@fluentui/react-checkbox';
 import { useCheckmarkStyles_unstable } from '@fluentui/react-menu';
+import { useColumnIdContext } from '@fluentui/react-table';
 import { useCombobox_unstable } from '@fluentui/react-combobox';
 import { useComboboxContextValues } from '@fluentui/react-combobox';
 import { useComboboxStyles_unstable } from '@fluentui/react-combobox';
@@ -938,6 +942,7 @@ import { useDataGridBody_unstable } from '@fluentui/react-table';
 import { useDataGridBodyStyles_unstable } from '@fluentui/react-table';
 import { useDataGridCell_unstable } from '@fluentui/react-table';
 import { useDataGridCellStyles_unstable } from '@fluentui/react-table';
+import { useDataGridContext_unstable } from '@fluentui/react-table';
 import { useDataGridContextValues_unstable } from '@fluentui/react-table';
 import { useDataGridHeader_unstable } from '@fluentui/react-table';
 import { useDataGridHeaderCell_unstable } from '@fluentui/react-table';
@@ -988,6 +993,7 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useIsInTableHeader } from '@fluentui/react-table';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
 import { useIsOverflowItemVisible } from '@fluentui/react-overflow';
@@ -1422,6 +1428,8 @@ export { ColorPaletteTokens }
 
 export { ColorTokens }
 
+export { ColumnIdContextProvider }
+
 export { Combobox }
 
 export { comboboxClassNames }
@@ -1521,6 +1529,8 @@ export { DataGridCellSlots }
 export { DataGridCellState }
 
 export { dataGridClassNames }
+
+export { DataGridContextProvider }
 
 export { DataGridContextValue }
 
@@ -2594,6 +2604,8 @@ export { tableHeaderClassName }
 
 export { tableHeaderClassNames }
 
+export { TableHeaderContextProvider }
+
 export { TableHeaderProps }
 
 export { TableHeaderSlots }
@@ -3012,6 +3024,8 @@ export { useCheckboxStyles_unstable }
 
 export { useCheckmarkStyles_unstable }
 
+export { useColumnIdContext }
+
 export { useCombobox_unstable }
 
 export { useComboboxContextValues }
@@ -3035,6 +3049,8 @@ export { useDataGridBodyStyles_unstable }
 export { useDataGridCell_unstable }
 
 export { useDataGridCellStyles_unstable }
+
+export { useDataGridContext_unstable }
 
 export { useDataGridContextValues_unstable }
 
@@ -3135,6 +3151,8 @@ export { useImageStyles_unstable }
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
+
+export { useIsInTableHeader }
 
 export { useIsomorphicLayoutEffect }
 

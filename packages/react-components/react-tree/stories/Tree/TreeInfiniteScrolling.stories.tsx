@@ -6,7 +6,7 @@ import {
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
   TreeItemValue,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { makeStyles, shorthands, Spinner } from '@fluentui/react-components';
 
 const ITEMS_PER_PAGE = 10;

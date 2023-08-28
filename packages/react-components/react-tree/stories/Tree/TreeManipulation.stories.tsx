@@ -9,7 +9,7 @@ import {
   useHeadlessFlatTree_unstable,
   TreeItemProps,
   TreeItemValue,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { Delete20Regular } from '@fluentui/react-icons';
 import {
   Button,

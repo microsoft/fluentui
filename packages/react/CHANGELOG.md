@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 18 Aug 2023 07:35:24 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Aug 2023 07:36:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.111.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.111.1)
+
+Mon, 28 Aug 2023 07:36:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.111.0..@fluentui/react_v8.111.1)
+
+### Patches
+
+- fix(AutoFill): Do not clear input when pressing left arrow after typing. ([PR #28975](https://github.com/microsoft/fluentui/pull/28975) by chebbim106@gmail.com)
+
+## [8.111.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.111.0)
+
+Fri, 25 Aug 2023 07:35:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.15..@fluentui/react_v8.111.0)
+
+### Minor changes
+
+- feat(Stack): Add deprecated flag to render null when receiving a falsy value. ([PR #28978](https://github.com/microsoft/fluentui/pull/28978) by esteban.230@hotmail.com)
+
+### Patches
+
+- Revert "Keytips: Align keytipData with visible instance for dupes (#28522)" ([PR #28977](https://github.com/microsoft/fluentui/pull/28977) by makopch@microsoft.com)
+- fix: Add displayName to dialog footer and content ([PR #28939](https://github.com/microsoft/fluentui/pull/28939) by mingyuanyu@microsoft.com)
+
+## [8.110.15](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.15)
+
+Wed, 23 Aug 2023 07:36:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.110.14..@fluentui/react_v8.110.15)
+
+### Patches
+
+- fix: Autofill looks up owner document for inputElement ([PR #27312](https://github.com/microsoft/fluentui/pull/27312) by sarah.higley@microsoft.com)
 
 ## [8.110.14](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.110.14)
 

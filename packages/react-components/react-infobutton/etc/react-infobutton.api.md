@@ -25,6 +25,7 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 // @public
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
     size?: 'small' | 'medium' | 'large';
+    inline?: boolean;
 };
 
 // @public (undocumented)
@@ -35,7 +36,7 @@ export type InfoButtonSlots = {
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'inline' | 'size'>>;
 
 // @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
