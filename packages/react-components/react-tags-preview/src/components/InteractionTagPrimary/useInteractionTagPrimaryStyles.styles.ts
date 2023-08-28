@@ -9,6 +9,7 @@ import {
   useMediaStyles,
   usePrimaryTextStyles,
   useSecondaryTextStyles,
+  useTagWithSecondaryTextContrastStyles,
 } from '../Tag/useTagStyles.styles';
 
 export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots> = {
@@ -189,6 +190,8 @@ export const useInteractionTagPrimaryStyles_unstable = (
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextStyles = useSecondaryTextStyles();
 
+  const tagWithSecondaryTextContrastStyles = useTagWithSecondaryTextContrastStyles();
+
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
@@ -202,6 +205,8 @@ export const useInteractionTagPrimaryStyles_unstable = (
     !state.media && !state.icon && rootWithoutMediaStyles[size],
     state.hasSecondaryAction && rootWithSecondaryActionStyles.base,
     state.hasSecondaryAction && rootWithSecondaryActionStyles[size],
+
+    state.secondaryText && tagWithSecondaryTextContrastStyles[shape],
 
     state.root.className,
   );

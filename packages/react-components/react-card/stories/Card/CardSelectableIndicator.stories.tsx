@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Caption1, tokens, Checkbox, Text } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -90,7 +90,7 @@ export const SelectableIndicator = () => {
           <CardHeader
             header={<Text weight="semibold">iOS App Prototype</Text>}
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
           />
         </Card>
 
@@ -110,7 +110,7 @@ export const SelectableIndicator = () => {
           <CardHeader
             header={<Text weight="semibold">iOS App Prototype</Text>}
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
           />
         </Card>
       </div>
@@ -123,7 +123,7 @@ export const SelectableIndicator = () => {
           floatingAction={<Checkbox onChange={onSelected3Change} checked={selected3} />}
         >
           <CardHeader
-            image={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word Logo" />}
+            image={<img src={resolveAsset('docx.png')} alt="Microsoft Word Logo" />}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
           />
@@ -136,7 +136,7 @@ export const SelectableIndicator = () => {
           floatingAction={<Checkbox onChange={onSelected4Change} checked={selected4} />}
         >
           <CardHeader
-            image={<img src={resolveAsset('excel_logo.svg')} alt="Microsoft Excel Logo" />}
+            image={<img src={resolveAsset('xlsx.png')} alt="Microsoft Excel Logo" />}
             header={<Text weight="semibold">Team Budget</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
           />

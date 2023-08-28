@@ -255,7 +255,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         case KeyCodes.left:
         case KeyCodes.right:
           if (this._autoFillEnabled) {
-            this.setState({ inputValue: this.props.suggestedDisplayValue || '' });
+            this.setState(prev => ({
+              inputValue: this.props.suggestedDisplayValue || prev.inputValue,
+            }));
             this._autoFillEnabled = false;
           }
           break;

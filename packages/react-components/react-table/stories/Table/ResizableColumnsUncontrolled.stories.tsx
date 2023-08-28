@@ -161,60 +161,62 @@ export const ResizableColumnsUncontrolled = () => {
         <label htmlFor={inputId}>First column width: </label>
         <Input type="number" id={inputId} onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
       </p>
-      <Table sortable aria-label="Table with sort" ref={tableRef}>
-        <TableHeader>
-          <TableRow>
-            {columns.map(column => (
-              <Menu openOnContext key={column.columnId}>
-                <MenuTrigger>
-                  <TableHeaderCell
-                    key={column.columnId}
-                    {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
-                  >
-                    {column.renderHeaderCell()}
-                  </TableHeaderCell>
-                </MenuTrigger>
-                <MenuPopover>
-                  <MenuList>
-                    <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId)}>
-                      Keyboard Column Resizing
-                    </MenuItem>
-                  </MenuList>
-                </MenuPopover>
-              </Menu>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {rows.map(({ item }) => (
-            <TableRow key={item.file.label}>
-              <TableCell {...columnSizing_unstable.getTableCellProps('file')}>
-                <TableCellLayout truncate media={item.file.icon}>
-                  {item.file.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing_unstable.getTableCellProps('author')}>
-                <TableCellLayout
-                  truncate
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdated')}>
-                <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdate')}>
-                <TableCellLayout truncate media={item.lastUpdate.icon}>
-                  {item.lastUpdate.label}
-                </TableCellLayout>
-              </TableCell>
+      <div style={{ overflowX: 'auto' }}>
+        <Table sortable aria-label="Table with sort" ref={tableRef} {...columnSizing_unstable.getTableProps()}>
+          <TableHeader>
+            <TableRow>
+              {columns.map(column => (
+                <Menu openOnContext key={column.columnId}>
+                  <MenuTrigger>
+                    <TableHeaderCell
+                      key={column.columnId}
+                      {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
+                    >
+                      {column.renderHeaderCell()}
+                    </TableHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId)}>
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {rows.map(({ item }) => (
+              <TableRow key={item.file.label}>
+                <TableCell {...columnSizing_unstable.getTableCellProps('file')}>
+                  <TableCellLayout truncate media={item.file.icon}>
+                    {item.file.label}
+                  </TableCellLayout>
+                </TableCell>
+                <TableCell {...columnSizing_unstable.getTableCellProps('author')}>
+                  <TableCellLayout
+                    truncate
+                    media={
+                      <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                    }
+                  >
+                    {item.author.label}
+                  </TableCellLayout>
+                </TableCell>
+                <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdated')}>
+                  <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
+                </TableCell>
+                <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdate')}>
+                  <TableCellLayout truncate media={item.lastUpdate.icon}>
+                    {item.lastUpdate.label}
+                  </TableCellLayout>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   );
 };
