@@ -1017,6 +1017,10 @@ export {
   TableRowIdContextProvider,
   useTableRowIdContext,
   useTableColumnSizing_unstable,
+  ColumnIdContextProvider,
+  useColumnIdContext,
+  TableHeaderContextProvider,
+  useIsInTableHeader,
 } from '@fluentui/react-table';
 
 export type {

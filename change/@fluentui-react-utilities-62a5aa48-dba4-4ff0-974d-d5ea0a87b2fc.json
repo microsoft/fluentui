@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click",
-  "packageName": "@fluentui/react-utilities",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

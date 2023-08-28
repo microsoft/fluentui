@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 23 Aug 2023 12:01:48 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.30.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.0)
+
+Thu, 24 Aug 2023 10:26:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.5..@fluentui/react-components_v9.30.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Export DataGridContextProvider. ([PR #28955](https://github.com/microsoft/fluentui/pull/28955) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - feat: Export DataGridContextProvider. ([PR #28955](https://github.com/microsoft/fluentui/pull/28955) by esteban.230@hotmail.com)
+- `@fluentui/react-tooltip`
+  - feat: Add documentKeyboardEvent to OnVisibleChangeData when Tooltip is hidden via Escape ([PR #28951](https://github.com/microsoft/fluentui/pull/28951) by behowell@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: create a new useAnimationFrame hook ([PR #28948](https://github.com/microsoft/fluentui/pull/28948) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - docs: improve storybook and examples to better align with design guidelines ([PR #28969](https://github.com/microsoft/fluentui/pull/28969) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - expose useDataGridContext_unstable etc. contexts ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by email not defined)
+- `@fluentui/react-jsx-runtime`
+  - chore: decrease bundle size & adds fixtures ([PR #28962](https://github.com/microsoft/fluentui/pull/28962) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - fix(react-popover): Only apply modal attributes if the PopoverSurface traps focus. ([PR #28613](https://github.com/microsoft/fluentui/pull/28613) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - expose useDataGridContext_unstable etc. contexts ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by email not defined)
+- `@fluentui/react-utilities`
+  - fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click ([PR #28765](https://github.com/microsoft/fluentui/pull/28765) by yuanboxue@microsoft.com)
 
 ## [9.29.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.5)
 

@@ -38,6 +38,7 @@ export interface IMultiStackedBarChartState {
   dataPointCalloutProps?: IChartDataPoint;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
+  barSpacingInPercent: number;
 }
 
 export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarChartProps, IMultiStackedBarChartState> {
@@ -52,6 +53,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _calloutAnchorPoint: IChartDataPoint | null;
   private _longestBarTotalValue: number;
   private _isRTL: boolean = getRTL();
+  private barChartSvgRef: React.RefObject<SVGSVGElement>;
   private _emptyChartId: string;
   private _barId: string;
   private _barIdPlaceholderPartToWhole: string;
@@ -70,14 +72,25 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       xCalloutValue: '',
       yCalloutValue: '',
       calloutLegend: '',
+      barSpacingInPercent: 0,
     };
     this._onLeave = this._onLeave.bind(this);
     this._onBarLeave = this._onBarLeave.bind(this);
     this._calloutId = getId('callout');
+    this.barChartSvgRef = React.createRef<SVGSVGElement>();
     this._emptyChartId = getId('_MSBC_empty');
     this._barId = getId('_MSBC_rect_');
     this._barIdPlaceholderPartToWhole = getId('_MSBC_rect_partToWhole_');
     this._barIdEmpty = getId('_MSBC_rect_empty');
+  }
+
+  public componentDidMount(): void {
+    const svgWidth = this.barChartSvgRef.current?.getBoundingClientRect().width || 0;
+    const MARGIN_WIDTH_IN_PX = 3;
+    if (svgWidth) {
+      const currentBarSpacing = (MARGIN_WIDTH_IN_PX / svgWidth) * 100;
+      this.setState({ barSpacingInPercent: currentBarSpacing });
+    }
   }
 
   public render(): JSX.Element {
@@ -155,6 +168,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     );
   }
 
+  /**
+   * The Create bar functions returns an array of <rect> elements, which form the bars
+   * For each bar an x value, and a width needs to be specified
+   * The computations are done based on percentages
+   * Extra margin is also provided, in the x value to provide some spacing
+   */
+
   private _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
@@ -163,6 +183,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideDenominator: boolean,
     href?: string,
   ): JSX.Element {
+    const noOfBars =
+      data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
+      1;
+    const totalMarginPercent = this.state.barSpacingInPercent * (noOfBars - 1);
     const { culture } = this.props;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     // calculating starting point of each bar and it's range
@@ -177,7 +201,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     let sumOfPercent = 0;
     data.chartData!.map((point: IChartDataPoint, index: number) => {
       const pointData = point.data ? point.data : 0;
-      let value = (pointData / total) * 100 ? (pointData / total) * 100 : 0;
+      const currValue = (pointData / total) * 100;
+      let value = currValue ? currValue : 0;
+
       if (value < 1 && value !== 0) {
         value = 1;
       } else if (value > 99 && value !== 100) {
@@ -201,7 +227,16 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       sumOfPercent += value;
     }
 
-    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / 100 : 1;
+    /**
+     * The %age of the space occupied by the margin needs to subtracted
+     * while computing the scaling ratio, since the margins are not being
+     * scaled down, only the data is being scaled down from a higher percentage to lower percentage
+     * Eg: 95% of the space is taken by the bars, 5% by the margins
+     * Now if the sumOfPercent is 120% -> This needs to be scaled down to 95%, not 100%
+     * since that's only space available to the bars
+     */
+
+    const scalingRatio = sumOfPercent !== 0 ? sumOfPercent / (100 - totalMarginPercent) : 1;
 
     let prevPosition = 0;
     let value = 0;
@@ -232,8 +267,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight: shouldHighlight,
-        href: href,
+        shouldHighlight,
+        href,
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
@@ -257,7 +292,11 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           <rect
             key={index}
             id={`${this._barId}-${index}`}
-            x={`${this._isRTL ? 100 - startingPoint[index] - value : startingPoint[index]}%`}
+            x={`${
+              this._isRTL
+                ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
+                : startingPoint[index] + this.state.barSpacingInPercent * index
+            }%`}
             y={0}
             width={value + '%'}
             height={barHeight}
@@ -273,9 +312,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             key="text"
             x={`${
               this._isRTL
-                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value
-                : (startingPoint[startingPoint.length - 1] || 0) + value
+                ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
+                : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
             }%`}
+            textAnchor={this._isRTL ? 'end' : 'start'}
             y={barHeight / 2}
             dominantBaseline="central"
             transform={`translate(${this._isRTL ? -4 : 4})`}
@@ -362,7 +402,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </FocusZone>
         <FocusZone direction={FocusZoneDirection.horizontal}>
           <div className={this._classNames.chartWrapper}>
-            <svg className={this._classNames.chart} aria-label={data?.chartTitle}>
+            <svg ref={this.barChartSvgRef} className={this._classNames.chart} aria-label={data?.chartTitle}>
               {bars}
             </svg>
           </div>
@@ -380,7 +420,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
-          color: color,
+          color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
@@ -399,9 +439,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
       theme: theme!,
-      width: width,
+      width,
       className,
-      barHeight: barHeight,
+      barHeight,
     });
   };
 
@@ -429,7 +469,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             }
             const legend: ILegend = {
               title: point.legend!,
-              color: color,
+              color,
               action: () => {
                 this._onClick(point.legend!);
               },
@@ -455,7 +495,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           }
           const legend: ILegend = {
             title: point.legend!,
-            color: color,
+            color,
             action: () => {
               this._onClick(point.legend!);
             },
@@ -516,7 +556,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
-        color: color,
+        color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
