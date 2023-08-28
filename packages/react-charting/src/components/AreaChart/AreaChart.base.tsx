@@ -293,7 +293,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     // if no points need to be called out then don't show vertical line and callout card
     if (found && pointToHighlightUpdated && !this.state.isShowCalloutPending) {
       this.setState({
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         isCalloutVisible: false,
         isShowCalloutPending: true,
         lineXValue: this._xAxisRectScale(pointToHighlight),
@@ -329,7 +329,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     if (!found) {
       this.setState({
         isCalloutVisible: false,
-        nearestCircleToHighlight: nearestCircleToHighlight,
+        nearestCircleToHighlight,
         displayOfLine: InterceptVisibility.hide,
         isCircleClicked: false,
       });
@@ -553,7 +553,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
 
       const legend: ILegend = {
         title: singleChartData.legend,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(singleChartData.legend);
         },
@@ -890,7 +890,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   };
 
-  private _getAriaLabel = (lineIndex: number, pointIndex: number): string => {
+  private _getAriaLabel(lineIndex: number, pointIndex: number): string {
     const line = this.props.data.lineChartData![lineIndex];
     const point = line.data[pointIndex];
     const formattedDate = point.x instanceof Date ? point.x.toLocaleString() : point.x;
@@ -898,7 +898,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
-  };
+  }
 
   private _isChartEmpty(): boolean {
     return !(
