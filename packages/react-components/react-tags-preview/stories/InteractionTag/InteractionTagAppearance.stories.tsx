@@ -19,19 +19,19 @@ export const Appearance = () => {
         <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           filled
         </InteractionTagPrimary>
-        <InteractionTagSecondary aria-label="filled, remove" />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
       <InteractionTag appearance="outline">
         <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           outline
         </InteractionTagPrimary>
-        <InteractionTagSecondary aria-label="outline, remove" />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
       <InteractionTag appearance="brand">
         <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           brand
         </InteractionTagPrimary>
-        <InteractionTagSecondary aria-label="brand, remove" />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
     </div>
   );
