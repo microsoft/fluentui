@@ -31,7 +31,7 @@ export const Dismiss = () => {
       tag: (
         <InteractionTag value="foo" key="foo">
           <InteractionTagPrimary hasSecondaryAction>Foo</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="Foo, remove" />
+          <InteractionTagSecondary aria-label="remove" />
         </InteractionTag>
       ),
     },
@@ -40,7 +40,7 @@ export const Dismiss = () => {
       tag: (
         <InteractionTag value="bar" key="bar">
           <InteractionTagPrimary hasSecondaryAction>Bar</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="Bar, remove" />
+          <InteractionTagSecondary aria-label="remove" />
         </InteractionTag>
       ),
     },
@@ -52,7 +52,11 @@ export const Dismiss = () => {
     setItems([...items].filter(item => item.value !== dismissedTagValue));
   };
 
-  return <TagGroup onDismiss={removeItem}>{items.map(item => item.tag)}</TagGroup>;
+  return (
+    <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
+      {items.map(item => item.tag)}
+    </TagGroup>
+  );
 };
 
 Dismiss.storyName = 'Dismiss';
