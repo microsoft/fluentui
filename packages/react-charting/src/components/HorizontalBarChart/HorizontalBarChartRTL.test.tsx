@@ -6,7 +6,7 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
-import { IChartProps } from '@fluentui/react-charting';
+import { HorizontalBarChartVariant, IChartProps } from '@fluentui/react-charting';
 
 const chartPoints: IChartProps[] = [
   {
@@ -98,6 +98,36 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
       expect(bars[3].getAttribute('fill')).toEqual(DefaultPalette.neutralLight);
       expect(bars[4].getAttribute('fill')).toEqual(DefaultPalette.redDark);
       expect(bars[5].getAttribute('fill')).toEqual(DefaultPalette.neutralLight);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars with labels hidden',
+    HorizontalBarChart,
+    { data: chartPoints, hideLabels: true },
+    container => {
+      // Assert
+      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars with left side labels/Legend',
+    HorizontalBarChart,
+    { data: chartPoints },
+    container => {
+      // Assert
+      expect(getByClass(container, /chartTitleLeft/i)).toHaveLength(3);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars right side value inline with bar',
+    HorizontalBarChart,
+    { data: chartPoints, variant: HorizontalBarChartVariant.AbsoluteScale },
+    container => {
+      // Assert
+      expect(getByClass(container, /chartTitleRight/i)).toHaveLength(3);
     },
   );
 });
