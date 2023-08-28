@@ -18,6 +18,28 @@ const useStyles = makeStyles({
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
+    boxSizing: 'border-box',
+    '&:hover': {
+      ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
+    },
+    '&:enabled:checked': {
+      ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
+      boxShadow: 'inset 0 0 0 2px white',
+
+      // ':hover': {
+      //   [`& ~ .${radioClassNames.indicator}`]: {
+      //     borderColor: tokens.colorCompoundBrandStrokeHover,
+      //     color: tokens.colorCompoundBrandForeground1Hover,
+      //   },
+      // },
+
+      // ':hover:active': {
+      //   [`& ~ .${radioClassNames.indicator}`]: {
+      //     borderColor: tokens.colorCompoundBrandStrokePressed,
+      //     color: tokens.colorCompoundBrandForeground1Pressed,
+      //   },
+      // },
+    },
   },
   input: {
     cursor: 'pointer',

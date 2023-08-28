@@ -91,8 +91,8 @@ _Provide some representative example code that uses the proposed API for the com
 
 - Square - default
 - Circular
-- Rounded
-  Rounded can be done as default border-radiuses depending on the size of the swatch.
+
+If the user wants to have rounded shape, it can be done via CSS.
 
 ### Size
 
@@ -102,6 +102,8 @@ _Provide some representative example code that uses the proposed API for the com
   Custom size can be set via CSS using `width` and `height` props.
 
 ### Density/Gap
+
+Maybe it's better to use number
 
 - Small
 - Medium - default
@@ -193,16 +195,16 @@ Multiple borders and shadows are custom props and set via CSS.
 
 #### API
 
-| Property | Values                          | Default  | Purpose                              |
-| -------- | ------------------------------- | -------- | ------------------------------------ |
-| shape    | `square`, `circular`, `rounded` | `square` | Sets shape                           |
-| size     | `small`, `medium`, `large`      | `medium` | Defines size of the SwatchPickerCell |
-| name     |                                 |          |                                      |
-| value    |                                 |          | Sets color id                        |
-| color    |                                 |          | Sets color for the swatch            |
-| id       | number                          |          | Sets color id                        |
-| label    |                                 |          | Sets label for the tooltip           |
-| disabled | boolean                         |          |                                      |
+| Property | Values                     | Default  | Purpose                              |
+| -------- | -------------------------- | -------- | ------------------------------------ |
+| shape    | `square`, `circular`       | `square` | Sets shape.                          |
+| size     | `small`, `medium`, `large` | `medium` | Defines size of the SwatchPickerCell |
+| name     |                            |          |                                      |
+| value    |                            |          | Sets color id                        |
+| color    |                            |          | Sets color for the swatch            |
+| id       | number                     |          | Sets color id                        |
+| label    |                            |          | Sets label for the tooltip           |
+| disabled | boolean                    |          |                                      |
 
 ## ImageSwatch
 

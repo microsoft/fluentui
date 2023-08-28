@@ -11,6 +11,9 @@ import type { SwatchImagePickerCellState, SwatchImagePickerCellSlots } from './S
 export const renderSwatchImagePickerCell_unstable = (state: SwatchImagePickerCellState) => {
   const { slots, slotProps } = getSlotsNext<SwatchImagePickerCellSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <slots.root {...slotProps.root} />;
+  return (
+    <slots.root {...slotProps.root} style={{ backgroundImage: `url(${state.uri})` }}>
+      <slots.input {...slotProps.input} />
+    </slots.root>
+  );
 };

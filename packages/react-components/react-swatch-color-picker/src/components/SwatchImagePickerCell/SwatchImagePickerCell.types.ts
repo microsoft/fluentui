@@ -1,26 +1,26 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Radio, RadioProps } from '@fluentui/react-components';
+import { Radio, RadioProps, RadioSlots } from '@fluentui/react-components';
 
-export type SwatchImagePickerCellSlots = {
-  root: Slot<typeof Radio>;
-};
+export type SwatchImagePickerCellSlots = Pick<RadioSlots, 'root' | 'input'>;
 
 /**
  * SwatchImagePickerCell Props
  */
-export type SwatchImagePickerCellProps = ComponentProps<SwatchImagePickerCellSlots> & {
-  // TODO make base type
-  shape?: 'circular' | 'square';
-  size?: 'small' | 'medium' | 'large';
-  selected?: boolean; // if this color is selected
-  disabled?: boolean;
-  url: string;
-  id?: string | number; // TODO make it required
-};
+export type SwatchImagePickerCellProps = ComponentProps<SwatchImagePickerCellSlots> &
+  Pick<RadioProps, 'name' | 'value'> & {
+    // TODO make base type
+    shape?: 'circular' | 'square';
+    size?: 'small' | 'medium' | 'large';
+    selected?: boolean; // if this color is selected
+    disabled?: boolean;
+    uri: string;
+    id?: string | number; // TODO make it required
+  };
 
 /**
  * State used in rendering SwatchImagePickerCell
  */
-export type SwatchImagePickerCellState = ComponentState<SwatchImagePickerCellSlots>;
-// TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from SwatchImagePickerCellProps.
-// & Required<Pick<SwatchImagePickerCellProps, 'propName'>>
+export type SwatchImagePickerCellState = ComponentState<SwatchImagePickerCellSlots> &
+  // Required<Pick<SwatchImagePickerCellProps, 'uri'>>;
+  Required<Pick<SwatchImagePickerCellProps, 'name' | 'value' | 'onChange' | 'uri'>> &
+  Partial<Omit<SwatchImagePickerCellProps, 'name' | 'value' | 'onChange' | 'uri'>>;
