@@ -112,36 +112,31 @@ export interface IsConformantOptions<TProps = {}> {
   tsConfig?: Partial<{ configName: string; configDir: string }>;
 }
 
-export type ConformanceTest<TProps = {}> =
-  | ((testInfo: IsConformantOptions<TProps>) => void)
-  | ((testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void)
-  | ((testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void);
+export type BaseConformanceTest<TProps = {}> = ConformanceTest<TProps>;
+export type ConformanceTest<TProps = {}> = (
+  testInfo: IsConformantOptions<TProps>,
+  componentInfo: ComponentDoc,
+  tsProgram: ts.Program,
+) => void;
 
 export interface TestObject<TProps = {}> {
-  [key: string]: ConformanceTest<TProps>;
+  [key: string]: BaseConformanceTest<TProps> | ConformanceTest<TProps>;
 }
 
 export interface DefaultTestObject<TProps = {}> {
-  'exports-component': (testInfo: IsConformantOptions<TProps>) => void;
-  'component-renders': (testInfo: IsConformantOptions<TProps>) => void;
-  'component-has-displayname': (testInfo: IsConformantOptions<TProps>) => void;
-  'component-handles-ref': (testInfo: IsConformantOptions<TProps>) => void;
-  'component-has-root-ref': (testInfo: IsConformantOptions<TProps>) => void;
-  'omits-size-prop': (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void;
-  'component-handles-classname': (testInfo: IsConformantOptions<TProps>) => void;
-  'component-has-static-classnames-object': (
-    testInfo: IsConformantOptions<TProps>,
-    componentInfo: ComponentDoc,
-  ) => void;
-  'name-matches-filename': (testInfo: IsConformantOptions<TProps>) => void;
-  'exported-top-level': (testInfo: IsConformantOptions<TProps>) => void;
-  'has-top-level-file': (testInfo: IsConformantOptions<TProps>) => void;
-  'kebab-aria-attributes': (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void;
-  'consistent-callback-names': (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc) => void;
-  'consistent-callback-args': (
-    testInfo: IsConformantOptions<TProps>,
-    componentInfo: ComponentDoc,
-    tsProgram: ts.Program,
-  ) => void;
-  'primary-slot-gets-native-props': (testInfo: IsConformantOptions<TProps>) => void;
+  'exports-component': BaseConformanceTest<TProps>;
+  'component-renders': BaseConformanceTest<TProps>;
+  'component-has-displayname': BaseConformanceTest<TProps>;
+  'component-handles-ref': BaseConformanceTest<TProps>;
+  'component-has-root-ref': BaseConformanceTest<TProps>;
+  'omits-size-prop': ConformanceTest<TProps>;
+  'component-handles-classname': BaseConformanceTest<TProps>;
+  'component-has-static-classnames-object': ConformanceTest<TProps>;
+  'name-matches-filename': BaseConformanceTest<TProps>;
+  'exported-top-level': BaseConformanceTest<TProps>;
+  'has-top-level-file': BaseConformanceTest<TProps>;
+  'kebab-aria-attributes': ConformanceTest<TProps>;
+  'consistent-callback-names': ConformanceTest<TProps>;
+  'consistent-callback-args': ConformanceTest<TProps>;
+  'primary-slot-gets-native-props': BaseConformanceTest<TProps>;
 }
