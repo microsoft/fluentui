@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Fixed pathing to types for package exports",
-  "packageName": "@fluentui/web-components",
-  "email": "mmansour@microsoft.com",
-  "dependentChangeType": "patch"
-}
