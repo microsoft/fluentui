@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 
-import { ConformanceTest, DefaultTestObject, IsConformantOptions } from './types';
+import { BaseConformanceTest, ConformanceTest, DefaultTestObject, IsConformantOptions } from './types';
 import { defaultTests } from './defaultTests';
 import { merge } from './utils/merge';
 import { createTsProgram } from './utils/createTsProgram';
@@ -100,8 +100,9 @@ function runNonTypeTests(mergedOptions: IsConformantOptions) {
   }
 }
 
-function isNonTypeTest<TProps = {}>(
-  func: ConformanceTest<TProps>,
-): func is (testInfo: IsConformantOptions<TProps>) => void {
+/**
+ * Verifies that a test function has only one parameter. If so, this test does not require TS info.
+ */
+function isNonTypeTest<TProps = {}>(func: ConformanceTest<TProps>): func is BaseConformanceTest<TProps> {
   return func.length === 1;
 }
