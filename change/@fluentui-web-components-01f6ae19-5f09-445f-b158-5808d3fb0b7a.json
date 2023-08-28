@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(card): adds card web component",
+  "packageName": "@fluentui/web-components",
+  "email": "brian.christopher.brady@gmail.com",
+  "dependentChangeType": "patch"
+}
