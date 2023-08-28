@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(AutoFill): Do not clear input when pressing left arrow after typing.",
-  "packageName": "@fluentui/react",
-  "email": "chebbim106@gmail.com",
-  "dependentChangeType": "patch"
-}
