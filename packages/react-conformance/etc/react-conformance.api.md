@@ -10,7 +10,7 @@ import { render } from '@testing-library/react';
 import * as ts from 'typescript';
 
 // @public (undocumented)
-export type BaseConformanceTest<TProps = {}> = ConformanceTest<TProps>;
+export type BaseConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>) => void;
 
 // @public (undocumented)
 export type ConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>, componentInfo: ComponentDoc, tsProgram: ts.Program) => void;
