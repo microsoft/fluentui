@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { unstable_batchedUpdates } from 'react-dom';
-import { HTMLElementWithStyledMap, getMotionDuration } from '../utils/dom-style';
-import { useAnimationFrame, useTimeout, usePrevious } from '@fluentui/react-utilities';
+import { useAnimationFrame, useTimeout, usePrevious, useFirstMount } from '@fluentui/react-utilities';
+
+import { getMotionDuration } from '../utils/dom-style';
+import type { HTMLElementWithStyledMap } from '../utils/dom-style';
 
 export type MotionOptions = {
   /**
@@ -12,7 +13,7 @@ export type MotionOptions = {
   animateOnFirstMount?: boolean;
 };
 
-export type MotionType = 'unmounted' | 'entering' | 'entered' | 'idle' | 'exiting' | 'exited';
+export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 
 export type MotionState<Element extends HTMLElement = HTMLElement> = {
   /**
@@ -43,11 +44,35 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
    * Useful to apply CSS transitions when the element is mounted and ready to be animated.
    */
   active: boolean;
+
+  /**
+   * Indicates whether the component has internal motion.
+   * Useful to avoid applying internal motion when the component is being overridden by a parent.
+   */
+  hasInternalMotion: boolean;
 };
 
 export type MotionShorthandValue = boolean;
 
 export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | MotionState<Element>;
+
+/**
+ * @internal
+ *
+ * Checks if components was mounted after first render and a certain condition is met.
+ *
+ * @param condition - Condition to check
+ */
+const useFirstMountCondition = (condition: boolean): boolean => {
+  const isFirst = React.useRef(true);
+
+  if (isFirst.current && condition) {
+    isFirst.current = false;
+    return true;
+  }
+
+  return isFirst.current;
+};
 
 /**
  * @internal
@@ -63,55 +88,20 @@ function useMotionPresence<Element extends HTMLElement>(
 ): MotionState<Element> {
   const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
 
-  const [type, setType] = React.useState<MotionType>(presence ? 'idle' : 'unmounted');
-  const [active, setActive] = React.useState<boolean>(false);
+  const [type, setType] = React.useState<MotionType>(
+    presence && animateOnFirstMount ? 'entering' : presence ? 'idle' : 'unmounted',
+  );
+  const [active, setActive] = React.useState<boolean>(!animateOnFirstMount && presence);
+
+  const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
-  const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
-  const [setActiveAnimationFrame, cancelActiveAnimationFrame] = useAnimationFrame();
-  const [setProcessingAnimationFrame, cancelProcessingAnimationFrame] = useAnimationFrame();
-  const [setDelayedAnimationFrame, cancelDelayedAnimationFrame] = useAnimationFrame();
-  const skipAnimationOnFirstRender = React.useRef(!animateOnFirstMount);
 
-  const processAnimation = React.useCallback(
-    (callback: () => void) => {
-      const targetElement = currentElement;
-
-      if (!targetElement) {
-        return;
-      }
-
-      clearAnimationTimeout();
-      cancelProcessingAnimationFrame();
-      setProcessingAnimationFrame(() => {
-        const duration = getMotionDuration(targetElement);
-
-        if (duration === 0) {
-          callback();
-          return;
-        }
-
-        /**
-         * Use CSS transition duration + 1ms to ensure the animation has finished on both enter and exit states.
-         * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
-         * if the transition has multiple properties.
-         */
-        setAnimationTimeout(() => callback(), duration + 1);
-      });
-
-      return () => {
-        clearAnimationTimeout();
-        cancelProcessingAnimationFrame();
-      };
-    },
-    [
-      cancelProcessingAnimationFrame,
-      clearAnimationTimeout,
-      currentElement,
-      setAnimationTimeout,
-      setProcessingAnimationFrame,
-    ],
-  );
+  const isFirstReactRender = useFirstMount();
+  const isFirstDOMRender = useFirstMountCondition(!!currentElement);
+  const isInitiallyPresent = React.useRef<boolean>(presence).current;
+  const disableAnimation = isFirstDOMRender && isInitiallyPresent && !animateOnFirstMount;
 
   const ref: React.RefCallback<HTMLElementWithStyledMap<Element>> = React.useCallback(node => {
     if (!node) {
@@ -121,57 +111,75 @@ function useMotionPresence<Element extends HTMLElement>(
     setCurrentElement(node);
   }, []);
 
-  React.useEffect(() => {
-    if (presence) {
-      unstable_batchedUpdates(() => {
-        setType('entering');
-        setActive(skipAnimationOnFirstRender.current ? true : false);
-      });
-    }
-  }, [presence]);
+  const onFinished = React.useCallback(() => {
+    setType(presence ? 'entered' : 'exited');
+    setAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
+  }, [presence, setAnimationFrame]);
 
   React.useEffect(() => {
-    const skipAnimation = skipAnimationOnFirstRender.current;
-    const onUnmount = () => {
-      cancelActiveAnimationFrame();
-      cancelDelayedAnimationFrame();
+    if (isFirstReactRender) {
+      return;
+    }
+
+    /*
+     * In case animation is disabled, we can skip the animation and go straight to the idle state.
+     */
+    if (disableAnimation) {
+      setType(presence ? 'idle' : 'unmounted');
+      setActive(presence);
+      return;
+    }
+
+    setType(presence ? 'entering' : 'exiting');
+
+    /*
+     * If the element is not rendered, nothing to do.
+     */
+    if (!currentElement) {
+      return;
+    }
+
+    /*
+     * Wait for the next frame to ensure the element is rendered and the animation can start.
+     */
+    setAnimationFrame(() => {
+      setActive(presence);
+
+      /*
+       * Wait for the next frame to ensure the animation has started.
+       */
+      setAnimationFrame(() => {
+        const duration = getMotionDuration(currentElement);
+
+        if (duration === 0) {
+          onFinished();
+          return;
+        }
+
+        /**
+         * Wait for the animation to finish before updating the state.
+         * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
+         * if the transition has multiple properties.
+         */
+        setAnimationTimeout(() => onFinished(), duration);
+      });
+    });
+
+    return () => {
+      cancelAnimationFrame();
+      clearAnimationTimeout();
     };
-
-    setActiveAnimationFrame(() => {
-      unstable_batchedUpdates(() => {
-        setActive(presence);
-        setType(() => {
-          if (skipAnimation) {
-            return presence ? 'idle' : 'unmounted';
-          }
-
-          return presence ? 'entering' : 'exiting';
-        });
-      });
-    });
-
-    if (skipAnimation) {
-      return onUnmount;
-    }
-
-    processAnimation(() => {
-      setType(presence ? 'entered' : 'exited');
-      setDelayedAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
-    });
-
-    return onUnmount;
   }, [
-    cancelActiveAnimationFrame,
-    cancelDelayedAnimationFrame,
+    cancelAnimationFrame,
+    clearAnimationTimeout,
+    currentElement,
+    disableAnimation,
+    isFirstReactRender,
+    onFinished,
     presence,
-    processAnimation,
-    setActiveAnimationFrame,
-    setDelayedAnimationFrame,
+    setAnimationFrame,
+    setAnimationTimeout,
   ]);
-
-  React.useEffect(() => {
-    skipAnimationOnFirstRender.current = false;
-  }, []);
 
   return React.useMemo<MotionState<Element>>(
     () => ({
@@ -179,8 +187,11 @@ function useMotionPresence<Element extends HTMLElement>(
       type,
       active,
       canRender: type !== 'unmounted',
+      hasInternalMotion: true,
     }),
-    [active, ref, type],
+    // No need to add ref to the deps array as it is stable
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [active, type],
   );
 }
 
@@ -193,6 +204,7 @@ export function getDefaultMotionState<Element extends HTMLElement>(): MotionStat
     type: 'unmounted',
     active: false,
     canRender: false,
+    hasInternalMotion: true,
   };
 }
 
@@ -214,7 +226,7 @@ export function useMotion<Element extends HTMLElement>(
    * on their side without having to worry about the performance impact of the hook.
    */
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
+  return useIsMotion(shorthand) ? { ...shorthand, hasInternalMotion: false } : useMotionPresence(shorthand, options);
 }
 
 const stringifyShorthand = <Element extends HTMLElement>(value: MotionShorthand<Element>) => {

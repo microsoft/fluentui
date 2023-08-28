@@ -281,7 +281,7 @@ const useRootStyles = makeStyles({
     minWidth: '64px',
     ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
-    ...shorthands.borderRadius(buttonSpacingSmall),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
