@@ -14,7 +14,7 @@ export const Dismiss = () => {
   };
 
   return (
-    <TagGroup onDismiss={removeItem}>
+    <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
       {visibleTags.map(tag => (
         <Tag dismissible dismissIcon={{ 'aria-label': 'remove' }} value={tag.value} key={tag.value}>
           {tag.children}
