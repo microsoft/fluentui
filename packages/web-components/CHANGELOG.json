@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Mon, 28 Aug 2023 04:19:02 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.2",
+      "version": "3.0.0-beta.2",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "mmansour@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "9d4c07c582596b55ceea4b68677fd74dd9236ae7",
+            "comment": "Fixed pathing to types for package exports"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 25 Aug 2023 04:19:39 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.1",
       "version": "3.0.0-beta.1",

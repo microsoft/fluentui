@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Fri, 25 Aug 2023 04:19:39 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Aug 2023 04:19:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.2)
+
+Mon, 28 Aug 2023 04:19:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.1..@fluentui/web-components_v3.0.0-beta.2)
+
+### Changes
+
+- Fixed pathing to types for package exports ([PR #28986](https://github.com/microsoft/fluentui/pull/28986) by mmansour@microsoft.com)
 
 ## [3.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.1)
 
