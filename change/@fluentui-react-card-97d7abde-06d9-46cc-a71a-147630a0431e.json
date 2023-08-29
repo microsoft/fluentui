@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: CardHeader grid layout ignoring line-height of content",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
