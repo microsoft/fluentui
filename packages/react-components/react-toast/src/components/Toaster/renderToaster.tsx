@@ -21,7 +21,7 @@ export const renderToaster_unstable = (state: ToasterState) => {
     <>
       {renderAriaLive ? <AriaLive announceRef={announceRef} /> : null}
       {hasToasts ? (
-        <Portal>
+        <Portal mountNode={state.mountNode}>
           {state.bottomStart ? <state.bottomStart /> : null}
           {state.bottomEnd ? <state.bottomEnd /> : null}
           {state.topStart ? <state.topStart /> : null}
