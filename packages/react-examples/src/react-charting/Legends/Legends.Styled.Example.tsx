@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ILegend, Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
-import { FontWeights } from '@fluentui/react/lib/Styling';
+import { DefaultPalette, FontWeights } from '@fluentui/react/lib/Styling';
 
 export class LegendStyledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
