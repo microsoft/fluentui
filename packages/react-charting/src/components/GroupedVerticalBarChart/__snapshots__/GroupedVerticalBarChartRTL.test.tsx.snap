@@ -4,7 +4,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_GVBC_empty5"
+    id="_GVBC_empty76"
     role="alert"
     style="opacity: 0;"
   />
@@ -12,6 +12,452 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 `;
 
 exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Vertical Bar chart with data 2`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_77"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone78"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_77"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_77"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <g
+            transform="translate(32.47311827956989, 0)"
+          >
+            <rect
+              aria-label="2020/04/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="0"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/04/30. MetaData4, 44%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="13.399999999999999"
+            />
+          </g>
+          <g
+            transform="translate(2.2365591397849443, 0)"
+          >
+            <rect
+              aria-label="2020/05/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/05/30. MetaData4, 3%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="0"
+            />
+          </g>
+          <g
+            transform="translate(-28, 0)"
+          >
+            <rect
+              aria-label="2020/06/30. MetaData1, 14%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="0"
+            />
+            <rect
+              aria-label="2020/06/30. MetaData4, 50%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="20"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone79"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00bcf2;
+                              border-color: #00bcf2;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00bcf2, #00bcf2);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData4"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData4
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grouped Vertical bar chart rendering Should render the grouped vertical bar chart with numeric x-axis data 1`] = `
 <div>
   <div
     class=
@@ -107,10 +553,10 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
         />
         <g>
           <g
-            transform="translate(19, 0)"
+            transform="translate(30.081300813008127, 0)"
           >
             <rect
-              aria-label="2000. MetaData1, 66."
+              aria-label="2020/04/30. MetaData1, 66."
               class=
 
                   {
@@ -122,12 +568,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="0"
-              width="-9"
+              width="-5.560975609756097"
               x="0"
               y="4.45652173913043"
             />
             <rect
-              aria-label="2000. MetaData2, 13."
+              aria-label="2020/04/30. MetaData2, 13."
               class=
 
                   {
@@ -139,12 +585,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-9"
-              x="10"
+              width="-5.560975609756097"
+              x="6.178861788617886"
               y="0"
             />
             <rect
-              aria-label="2000. MetaData3, 34."
+              aria-label="2020/04/30. MetaData3, 34."
               class=
 
                   {
@@ -156,16 +602,16 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-9"
-              x="20"
+              width="-5.560975609756097"
+              x="12.357723577235772"
               y="0"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(1.0406504065040636, 0)"
           >
             <rect
-              aria-label="2010. MetaData1, 14."
+              aria-label="2020/04/30. MetaData1, 14."
               class=
 
                   {
@@ -177,12 +623,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-9"
+              width="-5.560975609756097"
               x="0"
               y="0"
             />
             <rect
-              aria-label="2010. MetaData2, 90."
+              aria-label="2020/04/30. MetaData2, 90."
               class=
 
                   {
@@ -194,12 +640,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-9"
-              x="10"
+              width="-5.560975609756097"
+              x="6.178861788617886"
               y="18.80434782608696"
             />
             <rect
-              aria-label="2010. MetaData3, 33."
+              aria-label="2020/04/30. MetaData3, 33."
               class=
 
                   {
@@ -211,8 +657,63 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               opacity=""
               role="img"
               tabindex="-1"
-              width="-9"
-              x="20"
+              width="-5.560975609756097"
+              x="12.357723577235772"
+              y="0"
+            />
+          </g>
+          <g
+            transform="translate(-28, 0)"
+          >
+            <rect
+              aria-label="2020/04/30. MetaData1, 54."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-5.560975609756097"
+              x="0"
+              y="0"
+            />
+            <rect
+              aria-label="2020/04/30. MetaData2, 72."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00188f"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-5.560975609756097"
+              x="6.178861788617886"
+              y="8.04347826086957"
+            />
+            <rect
+              aria-label="2020/04/30. MetaData3, 18."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-5.560975609756097"
+              x="12.357723577235772"
               y="0"
             />
           </g>
@@ -525,6 +1026,1344 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                             }
                       >
                         MetaData3
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grouped Vertical bar chart rendering Should render the grouped vertical bar chart with string x-axis data 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_12"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone13"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_12"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_12"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <g
+            transform="translate(32.47311827956989, 0)"
+          >
+            <rect
+              aria-label="2020/04/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="0"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/04/30. MetaData4, 44%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="13.399999999999999"
+            />
+          </g>
+          <g
+            transform="translate(2.2365591397849443, 0)"
+          >
+            <rect
+              aria-label="2020/05/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/05/30. MetaData4, 3%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="0"
+            />
+          </g>
+          <g
+            transform="translate(-28, 0)"
+          >
+            <rect
+              aria-label="2020/06/30. MetaData1, 14%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="0"
+            />
+            <rect
+              aria-label="2020/06/30. MetaData4, 50%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="20"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone14"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00bcf2;
+                              border-color: #00bcf2;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00bcf2, #00bcf2);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData4"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData4
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged on zoom in 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_95"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone96"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_95"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_95"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <g
+            transform="translate(32.47311827956989, 0)"
+          >
+            <rect
+              aria-label="2020/04/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="0"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/04/30. MetaData4, 44%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="13.399999999999999"
+            />
+          </g>
+          <g
+            transform="translate(2.2365591397849443, 0)"
+          >
+            <rect
+              aria-label="2020/05/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/05/30. MetaData4, 3%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="0"
+            />
+          </g>
+          <g
+            transform="translate(-28, 0)"
+          >
+            <rect
+              aria-label="2020/06/30. MetaData1, 14%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="0"
+            />
+            <rect
+              aria-label="2020/06/30. MetaData4, 50%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="20"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone97"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00bcf2;
+                              border-color: #00bcf2;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00bcf2, #00bcf2);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData4"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData4
+                      </div>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged on zoom out 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          display: flex;
+          flex-direction: column;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 100%;
+          overflow: hidden;
+          width: 100%;
+        }
+    id="chart_101"
+    role="presentation"
+  >
+    <div
+      class=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
+          {
+            overflow: auto;
+          }
+      data-focuszone-id="FocusZone102"
+    >
+      <svg
+        focusable="false"
+        height="0"
+        style="display: block;"
+        width="0"
+      >
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+                width: 1px;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+          id="xAxisGElementchart_101"
+          transform="translate(0, -35)"
+        />
+        <g
+          class=
+
+              & text {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #323130;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 10px;
+                font-weight: 600;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                fill: rgb(179, 179, 179);
+              }
+              & path {
+                display: none;
+              }
+              & line {
+                opacity: 0.2;
+                stroke: #323130;
+              }
+              @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                opacity: 0.1;
+                stroke: rgb(179, 179, 179);
+              }
+          id="yAxisGElementchart_101"
+          transform="translate(40, 0)"
+        />
+        <g>
+          <g
+            transform="translate(32.47311827956989, 0)"
+          >
+            <rect
+              aria-label="2020/04/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="0"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/04/30. MetaData4, 44%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="13.399999999999999"
+            />
+          </g>
+          <g
+            transform="translate(2.2365591397849443, 0)"
+          >
+            <rect
+              aria-label="2020/05/30. MetaData1, 33%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="1.3000000000000043"
+            />
+            <rect
+              aria-label="2020/05/30. MetaData4, 3%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="0"
+            />
+          </g>
+          <g
+            transform="translate(-28, 0)"
+          >
+            <rect
+              aria-label="2020/06/30. MetaData1, 14%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#00bcf2"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="0"
+              y="0"
+            />
+            <rect
+              aria-label="2020/06/30. MetaData4, 50%."
+              class=
+
+                  {
+                    cursor: default;
+                  }
+              data-is-focusable="true"
+              fill="#0078d4"
+              height="0"
+              opacity=""
+              role="img"
+              tabindex="-1"
+              width="-7.354838709677419"
+              x="8.172043010752688"
+              y="20"
+            />
+          </g>
+        </g>
+      </svg>
+    </div>
+    <div
+      class=
+
+          {
+            margin-left: 20px;
+            margin-top: 8px;
+          }
+    >
+      <div
+        class=
+
+            {
+              align-items: center;
+              margin-bottom: 0;
+              margin-left: -8px;
+              margin-right: 0;
+              margin-top: -8px;
+              white-space: nowrap;
+              width: 100%;
+            }
+      >
+        <div>
+          <div
+            style="position: relative;"
+          >
+            <div
+              data-automation-id="visibleContent"
+              style="position: fixed; visibility: hidden;"
+            >
+              <div
+                aria-label="Legends"
+                aria-multiselectable="false"
+                class=
+                    ms-FocusZone
+                    &:focus {
+                      outline: none;
+                    }
+                data-focuszone-id="FocusZone103"
+                role="listbox"
+              >
+                <div
+                  class=
+                      ms-OverflowSet
+                      {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: unset;
+                        position: relative;
+                      }
+                  role="group"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData1"
+                      aria-posinset="1"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="0"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #00bcf2;
+                              border-color: #00bcf2;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #00bcf2, #00bcf2);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData1
+                      </div>
+                    </button>
+                  </div>
+                  <div
+                    class=
+                        ms-OverflowSet-item
+                        {
+                          display: inherit;
+                          flex-shrink: 0;
+                        }
+                    role="none"
+                  >
+                    <button
+                      aria-label="MetaData4"
+                      aria-posinset="2"
+                      aria-selected="false"
+                      aria-setsize="2"
+                      class=
+
+                          {
+                            align-items: center;
+                            background: none;
+                            border: none;
+                            cursor: pointer;
+                            display: flex;
+                            outline: transparent;
+                            padding-bottom: 8px;
+                            padding-left: 8px;
+                            padding-right: 8px;
+                            padding-top: 8px;
+                            position: relative;
+                            text-transform: capitalize;
+                          }
+                          &::-moz-focus-inner {
+                            border: 0;
+                          }
+                          .ms-Fabric--isFocusVisible &:focus:after {
+                            border: 1px solid transparent;
+                            bottom: 1px;
+                            content: "";
+                            left: 1px;
+                            outline: 1px solid #605e5c;
+                            position: absolute;
+                            right: 1px;
+                            top: 1px;
+                            z-index: 1;
+                          }
+                          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                            outline-color: #605e5c;
+                          }
+                      data-is-focusable="true"
+                      role="option"
+                      tabindex="-1"
+                    >
+                      <div
+                        class=
+
+                            {
+                              background-color: #0078d4;
+                              border-color: #0078d4;
+                              border: 1px solid;
+                              content: ;
+                              height: 12px;
+                              margin-right: 8px;
+                              width: 12px;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                              content: linear-gradient(to right, #0078d4, #0078d4);
+                              opacity: ;
+                            }
+                      />
+                      <div
+                        class=
+
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              color: #323130;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 12px;
+                              font-weight: 400;
+                              line-height: 16px;
+                              opacity: ;
+                            }
+                      >
+                        MetaData4
                       </div>
                     </button>
                   </div>
@@ -5749,6 +7588,466 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                       MetaData3
                     </div>
                   </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
+<div>
+  <div
+    class=
+
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background: #1b1a19;
+          color: #f3f2f1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+        }
+  >
+    <div
+      class=
+
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            display: flex;
+            flex-direction: column;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 100%;
+            overflow: hidden;
+            width: 100%;
+          }
+      id="chart_110"
+      role="presentation"
+    >
+      <div
+        class=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
+            {
+              overflow: auto;
+            }
+        data-focuszone-id="FocusZone111"
+      >
+        <svg
+          focusable="false"
+          height="0"
+          style="display: block;"
+          width="0"
+        >
+          <g
+            class=
+
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #f3f2f1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #f3f2f1;
+                  width: 1px;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                  opacity: 0.1;
+                  stroke: rgb(179, 179, 179);
+                }
+                & path {
+                  display: none;
+                }
+            id="xAxisGElementchart_110"
+            transform="translate(0, -35)"
+          />
+          <g
+            class=
+
+                & text {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #f3f2f1;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 10px;
+                  font-weight: 600;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& text {
+                  fill: rgb(179, 179, 179);
+                }
+                & path {
+                  display: none;
+                }
+                & line {
+                  opacity: 0.2;
+                  stroke: #f3f2f1;
+                }
+                @media screen and (-ms-high-contrast: white-on-black), screen and (forced-colors: active) and (prefers-color-scheme: dark){& line {
+                  opacity: 0.1;
+                  stroke: rgb(179, 179, 179);
+                }
+            id="yAxisGElementchart_110"
+            transform="translate(40, 0)"
+          />
+          <g>
+            <g
+              transform="translate(32.47311827956989, 0)"
+            >
+              <rect
+                aria-label="2020/04/30. MetaData1, 33%."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="0"
+                opacity=""
+                role="img"
+                tabindex="0"
+                width="-7.354838709677419"
+                x="0"
+                y="1.3000000000000043"
+              />
+              <rect
+                aria-label="2020/04/30. MetaData4, 44%."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="0"
+                opacity=""
+                role="img"
+                tabindex="-1"
+                width="-7.354838709677419"
+                x="8.172043010752688"
+                y="13.399999999999999"
+              />
+            </g>
+            <g
+              transform="translate(2.2365591397849443, 0)"
+            >
+              <rect
+                aria-label="2020/05/30. MetaData1, 33%."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="0"
+                opacity=""
+                role="img"
+                tabindex="-1"
+                width="-7.354838709677419"
+                x="0"
+                y="1.3000000000000043"
+              />
+              <rect
+                aria-label="2020/05/30. MetaData4, 3%."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="0"
+                opacity=""
+                role="img"
+                tabindex="-1"
+                width="-7.354838709677419"
+                x="8.172043010752688"
+                y="0"
+              />
+            </g>
+            <g
+              transform="translate(-28, 0)"
+            >
+              <rect
+                aria-label="2020/06/30. MetaData1, 14%."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#00bcf2"
+                height="0"
+                opacity=""
+                role="img"
+                tabindex="-1"
+                width="-7.354838709677419"
+                x="0"
+                y="0"
+              />
+              <rect
+                aria-label="2020/06/30. MetaData4, 50%."
+                class=
+
+                    {
+                      cursor: default;
+                    }
+                data-is-focusable="true"
+                fill="#0078d4"
+                height="0"
+                opacity=""
+                role="img"
+                tabindex="-1"
+                width="-7.354838709677419"
+                x="8.172043010752688"
+                y="20"
+              />
+            </g>
+          </g>
+        </svg>
+      </div>
+      <div
+        class=
+
+            {
+              margin-left: 20px;
+              margin-top: 8px;
+            }
+      >
+        <div
+          class=
+
+              {
+                align-items: center;
+                margin-bottom: 0;
+                margin-left: -8px;
+                margin-right: 0;
+                margin-top: -8px;
+                white-space: nowrap;
+                width: 100%;
+              }
+        >
+          <div>
+            <div
+              style="position: relative;"
+            >
+              <div
+                data-automation-id="visibleContent"
+                style="position: fixed; visibility: hidden;"
+              >
+                <div
+                  aria-label="Legends"
+                  aria-multiselectable="false"
+                  class=
+                      ms-FocusZone
+                      &:focus {
+                        outline: none;
+                      }
+                  data-focuszone-id="FocusZone112"
+                  role="listbox"
+                >
+                  <div
+                    class=
+                        ms-OverflowSet
+                        {
+                          display: flex;
+                          flex-wrap: wrap;
+                          justify-content: unset;
+                          position: relative;
+                        }
+                    role="group"
+                  >
+                    <div
+                      class=
+                          ms-OverflowSet-item
+                          {
+                            display: inherit;
+                            flex-shrink: 0;
+                          }
+                      role="none"
+                    >
+                      <button
+                        aria-label="MetaData1"
+                        aria-posinset="1"
+                        aria-selected="false"
+                        aria-setsize="2"
+                        class=
+
+                            {
+                              align-items: center;
+                              background: none;
+                              border: none;
+                              cursor: pointer;
+                              display: flex;
+                              outline: transparent;
+                              padding-bottom: 8px;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              padding-top: 8px;
+                              position: relative;
+                              text-transform: capitalize;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                        data-is-focusable="true"
+                        role="option"
+                        tabindex="0"
+                      >
+                        <div
+                          class=
+
+                              {
+                                background-color: #00bcf2;
+                                border-color: #00bcf2;
+                                border: 1px solid;
+                                content: ;
+                                height: 12px;
+                                margin-right: 8px;
+                                width: 12px;
+                              }
+                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                content: linear-gradient(to right, #00bcf2, #00bcf2);
+                                opacity: ;
+                              }
+                        />
+                        <div
+                          class=
+
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #f3f2f1;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16px;
+                                opacity: ;
+                              }
+                        >
+                          MetaData1
+                        </div>
+                      </button>
+                    </div>
+                    <div
+                      class=
+                          ms-OverflowSet-item
+                          {
+                            display: inherit;
+                            flex-shrink: 0;
+                          }
+                      role="none"
+                    >
+                      <button
+                        aria-label="MetaData4"
+                        aria-posinset="2"
+                        aria-selected="false"
+                        aria-setsize="2"
+                        class=
+
+                            {
+                              align-items: center;
+                              background: none;
+                              border: none;
+                              cursor: pointer;
+                              display: flex;
+                              outline: transparent;
+                              padding-bottom: 8px;
+                              padding-left: 8px;
+                              padding-right: 8px;
+                              padding-top: 8px;
+                              position: relative;
+                              text-transform: capitalize;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid transparent;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #a19f9d;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                              outline-color: #a19f9d;
+                            }
+                        data-is-focusable="true"
+                        role="option"
+                        tabindex="-1"
+                      >
+                        <div
+                          class=
+
+                              {
+                                background-color: #0078d4;
+                                border-color: #0078d4;
+                                border: 1px solid;
+                                content: ;
+                                height: 12px;
+                                margin-right: 8px;
+                                width: 12px;
+                              }
+                              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+                                content: linear-gradient(to right, #0078d4, #0078d4);
+                                opacity: ;
+                              }
+                        />
+                        <div
+                          class=
+
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #f3f2f1;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: 12px;
+                                font-weight: 400;
+                                line-height: 16px;
+                                opacity: ;
+                              }
+                        >
+                          MetaData4
+                        </div>
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
