@@ -71,7 +71,7 @@ describe('Horizontal bar chart rendering', () => {
   });
 
   testWithoutWait(
-    'Should render the Horizontal bar chart with string x-axis data',
+    'Should render the Horizontal bar chart legend with string data',
     HorizontalBarChart,
     { data: chartPoints },
     container => {
@@ -82,23 +82,6 @@ describe('Horizontal bar chart rendering', () => {
 });
 
 describe('Horizontal bar chart - Subcomponent bar', () => {
-  testWithWait(
-    'Should render the bar with the given height',
-    HorizontalBarChart,
-    { data: chartPoints, barHeight: 50 },
-    container => {
-      // Assert
-      const bars = getByClass(container, /barWrapper-/i);
-      expect(bars).toHaveLength(6);
-      expect(bars[0].getAttribute('height')).toEqual('50');
-      expect(bars[1].getAttribute('height')).toEqual('50');
-      expect(bars[2].getAttribute('height')).toEqual('50');
-      expect(bars[3].getAttribute('height')).toEqual('50');
-      expect(bars[4].getAttribute('height')).toEqual('50');
-      expect(bars[5].getAttribute('height')).toEqual('50');
-    },
-  );
-
   testWithWait(
     'Should render the bars with the specified colors',
     HorizontalBarChart,
@@ -117,6 +100,23 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
   );
 
   testWithWait(
+    'Should render the bar with the given height',
+    HorizontalBarChart,
+    { data: chartPoints, barHeight: 50 },
+    container => {
+      // Assert
+      const bars = getByClass(container, /barWrapper-/i);
+      expect(bars).toHaveLength(6);
+      expect(bars[0].getAttribute('height')).toEqual('50');
+      expect(bars[1].getAttribute('height')).toEqual('50');
+      expect(bars[2].getAttribute('height')).toEqual('50');
+      expect(bars[3].getAttribute('height')).toEqual('50');
+      expect(bars[4].getAttribute('height')).toEqual('50');
+      expect(bars[5].getAttribute('height')).toEqual('50');
+    },
+  );
+
+  testWithWait(
     'Should render the bars with labels hidden',
     HorizontalBarChart,
     { data: chartPoints, hideLabels: true },
@@ -127,7 +127,7 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
   );
 
   testWithWait(
-    'Should render the bars with left side labels/Legend',
+    'Should render the bars with left side label/Legend',
     HorizontalBarChart,
     { data: chartPoints },
     container => {
