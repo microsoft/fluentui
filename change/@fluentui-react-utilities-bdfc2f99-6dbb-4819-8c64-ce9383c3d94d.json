@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: `useOnClickOutside` should invoke callback on clicking scrollbar",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
