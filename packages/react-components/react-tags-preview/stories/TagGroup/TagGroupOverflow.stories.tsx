@@ -99,7 +99,7 @@ const OverflowMenu = () => {
   return (
     <Menu>
       <MenuTrigger disableButtonEnhancement>
-        <Tag ref={ref} aria-label={`${overflowCount} more tags`}>{`+${overflowCount}`}</Tag>
+        <Tag as="button" ref={ref} aria-label={`${overflowCount} more tags`}>{`+${overflowCount}`}</Tag>
       </MenuTrigger>
       <MenuPopover>
         <MenuList>
