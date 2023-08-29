@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-import { MultiStackedBarChartExample } from './MultiStackedBarChart.Example';
+//import { MultiStackedBarChartExample } from './MultiStackedBarChart.Example';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
 import { MultiStackedBarChartVariantExample } from './MultiStackedBarChart.Variant.Example';
 
@@ -19,11 +19,11 @@ export const MultiStackedBarChartPageProps: IDocPageProps = {
   componentUrl:
     'https://github.com/microsoft/fluentui/tree/master/packages/react-charting/src/components/MultiStackedBarChart',
   examples: [
-    {
-      title: 'MultiStackedBarChart N/M',
-      code: MultiStackedBarChartExampleCode,
-      view: <MultiStackedBarChartExample />,
-    },
+    //{
+    //  title: 'MultiStackedBarChart N/M',
+    //  code: MultiStackedBarChartExampleCode,
+    //  view: <MultiStackedBarChartExample />,
+    //},
     {
       title: 'MultiStackedBarChart absolute scale',
       code: MultiStackedBarChartVariantExampleCode,
