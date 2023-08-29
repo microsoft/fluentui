@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: adds mountNode to DialogSurface API",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
