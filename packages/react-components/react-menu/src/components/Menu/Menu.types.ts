@@ -239,7 +239,7 @@ export type MenuOpenChangeData = {
     }
   | {
       type: 'scrollOutside';
-      event: MouseEvent | TouchEvent;
+      event: MouseEvent | TouchEvent | Event;
     }
   | {
       type: 'menuMouseEnter';

@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "fix: update type `OpenPopoverEvents` to include `Event` with the added scroll event listener in `useOnScrollOutside`",
+  "comment": "fix: update type `OpenPopoverEvents` to include `Event` (as `useOnScrollOutside` adds scroll event listener)",
   "packageName": "@fluentui/react-popover",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
