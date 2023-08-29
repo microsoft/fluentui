@@ -6,8 +6,8 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
 import { MultiStackedBarChartVariantExample } from './MultiStackedBarChart.Variant.Example';
 
-const MultiStackedBarChartExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/MultiStackedBarChart.Example.tsx') as string;
+//const MultiStackedBarChartExampleCode =
+//  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/MultiStackedBarChart.Example.tsx') as string;
 const MultiStackedBarChartWithPlaceholderExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/MultiStackedBarChart/MultiStackedBarChartWithPlaceHolder.Example.tsx') as string;
 const MultiStackedBarChartVariantExampleCode =
