@@ -114,7 +114,7 @@ const ADOPTED_STYLESHEETS = '__mergeStylesAdoptedStyleSheets__';
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
 
-const SUPPORTS_CONSTRUCTIBLE_STYLESHEETS = 'CSSStyleSheet' in window;
+const SUPPORTS_CONSTRUCTIBLE_STYLESHEETS = typeof window !== 'undefined' && 'CSSStyleSheet' in window;
 
 export type AdoptableStylesheet = {
   fluentSheet: Stylesheet;
@@ -195,7 +195,7 @@ export class Stylesheet {
             global[ADOPTED_STYLESHEETS] = new EventMap();
           }
           global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
-          requestAnimationFrame(() => {
+          (global as Window).requestAnimationFrame?.(() => {
             global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
           });
         }
