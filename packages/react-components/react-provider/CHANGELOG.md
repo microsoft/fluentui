@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Thu, 24 Aug 2023 10:26:35 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2023 12:57:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.8.0)
+
+Tue, 29 Aug 2023 12:57:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.21..@fluentui/react-provider_v9.8.0)
+
+### Minor changes
+
+- feat: Add IconDirectionProvider to FluentProvider ([PR #28803](https://github.com/microsoft/fluentui/pull/28803) by ololubek@microsoft.com)
+- Bump @fluentui/react-tabster to v9.12.5 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-utilities to v9.13.0 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.3 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
 
 ## [9.7.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.21)
 

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add disabledFocusOnIframe for useOnClickOutside()",
-  "packageName": "@fluentui/react-utilities",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

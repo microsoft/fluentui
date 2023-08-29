@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: adds mountNode to Toaster API",
-  "packageName": "@fluentui/react-toast",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

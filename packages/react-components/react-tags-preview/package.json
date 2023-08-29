@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tags-preview",
-  "version": "0.2.4",
+  "version": "0.2.5",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -34,14 +34,14 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.3",
-    "@fluentui/react-aria": "^9.3.32",
-    "@fluentui/react-avatar": "^9.5.24",
+    "@fluentui/react-aria": "^9.3.33",
+    "@fluentui/react-avatar": "^9.5.25",
     "@fluentui/react-icons": "^2.0.207",
-    "@fluentui/react-jsx-runtime": "^9.0.2",
+    "@fluentui/react-jsx-runtime": "^9.0.3",
     "@fluentui/react-shared-contexts": "^9.7.2",
-    "@fluentui/react-tabster": "^9.12.4",
+    "@fluentui/react-tabster": "^9.12.5",
     "@fluentui/react-theme": "^9.1.11",
-    "@fluentui/react-utilities": "^9.12.0",
+    "@fluentui/react-utilities": "^9.13.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.4.14"
   },

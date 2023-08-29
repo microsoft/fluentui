@@ -2,6 +2,29 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 29 Aug 2023 12:57:36 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.0",
+      "version": "9.13.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2147e3d60a21ff7ded34b27a19f3d5313533e910",
+            "comment": "feat: add disabledFocusOnIframe for useOnClickOutside()"
+          }
+        ],
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "17f08ac2e61d5f569067e78832096a54c3966d0b",
+            "comment": "fix: `useOnClickOutside` should invoke callback on clicking scrollbar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Aug 2023 10:26:34 GMT",
       "tag": "@fluentui/react-utilities_v9.12.0",
       "version": "9.12.0",
