@@ -6,7 +6,7 @@ describe('useOnClickOutside', () => {
     jest.useRealTimers();
   });
 
-  const supportedEvents = ['click', 'touchstart', 'contextmenu', 'fuiframefocus', 'mousedown'];
+  const supportedEvents = ['mouseup', 'touchstart', 'fuiframefocus', 'mousedown'];
 
   it.each(supportedEvents)('should add %s listener', event => {
     // Arrange
