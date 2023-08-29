@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add closeOnIframeFocus prop to Popover",
-  "packageName": "@fluentui/react-popover",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

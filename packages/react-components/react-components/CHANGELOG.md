@@ -1,8 +1,48 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 24 Aug 2023 10:26:32 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2023 12:57:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.30.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.1)
+
+Tue, 29 Aug 2023 12:57:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.30.0..@fluentui/react-components_v9.30.1)
+
+### Minor changes
+
+- `@fluentui/react-dialog`
+  - feat: adds mountNode to DialogSurface API ([PR #29003](https://github.com/microsoft/fluentui/pull/29003) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-motion-preview`
+  - feat: release preview package ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by marcosvmmoura@gmail.com)
+  - feat: create react-motion-preview package with useMotion hook ([PR #28699](https://github.com/microsoft/fluentui/pull/28699) by marcosvmmoura@gmail.com)
+- `@fluentui/react-popover`
+  - feat: add closeOnIframeFocus prop to Popover ([PR #28881](https://github.com/microsoft/fluentui/pull/28881) by olfedias@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: Add IconDirectionProvider to FluentProvider ([PR #28803](https://github.com/microsoft/fluentui/pull/28803) by ololubek@microsoft.com)
+- `@fluentui/react-toast`
+  - feat: adds mountNode to Toaster API ([PR #29003](https://github.com/microsoft/fluentui/pull/29003) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - feat: add disabledFocusOnIframe for useOnClickOutside() ([PR #28881](https://github.com/microsoft/fluentui/pull/28881) by olfedias@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - fix: Small Button now uses token for its border radius ([PR #28589](https://github.com/microsoft/fluentui/pull/28589) by mehars.6925@gmail.com)
+- `@fluentui/react-card`
+  - fix: CardHeader grid layout ignoring line-height of content ([PR #28968](https://github.com/microsoft/fluentui/pull/28968) by marcosvmmoura@gmail.com)
+- `@fluentui/react-table`
+  - fix: Improve visuals when Table/DataGrid overflows it's parent ([PR #28940](https://github.com/microsoft/fluentui/pull/28940) by jirivyhnalek@microsoft.com)
+- `@fluentui/react-tags-preview`
+  - fix: tag with secondary text has no top border under windows high contrast ([PR #28963](https://github.com/microsoft/fluentui/pull/28963) by yuanboxue@microsoft.com)
+  - fix: use regular icon for dismiss ([PR #28958](https://github.com/microsoft/fluentui/pull/28958) by yuanboxue@microsoft.com)
+- `@fluentui/react-utilities`
+  - fix: `useOnClickOutside` should invoke callback on clicking scrollbar ([PR #28965](https://github.com/microsoft/fluentui/pull/28965) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - fix(react-infobutton): Making InfoButton's PopoverSurface inline by default. ([PR #28605](https://github.com/microsoft/fluentui/pull/28605) by esteban.230@hotmail.com)
 
 ## [9.30.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.0)
 
