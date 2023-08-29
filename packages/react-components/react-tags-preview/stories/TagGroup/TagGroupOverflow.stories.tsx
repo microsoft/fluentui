@@ -135,7 +135,7 @@ export const WithOverflow = () => {
   return (
     <div className={styles.container}>
       <Overflow minimumVisible={2} padding={30}>
-        <TagGroup className={styles.tagGroup}>
+        <TagGroup className={styles.tagGroup} aria-label="Overflow example">
           {defaultItems.map(item => (
             <OverflowItem key={item.value} id={item.value!}>
               <Tag key={item.value} {...item} />

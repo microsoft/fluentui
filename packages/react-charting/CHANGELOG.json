@@ -2,6 +2,78 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 29 Aug 2023 07:44:31 GMT",
+      "tag": "@fluentui/react-charting_v5.17.5",
+      "version": "5.17.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "132879294+v-baambati@users.noreply.github.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b130af3e12d5f46ff1217bcb47222eb89d55db2f",
+            "comment": {
+              "title": "",
+              "value": ""
+            }
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Aug 2023 07:36:25 GMT",
+      "tag": "@fluentui/react-charting_v5.17.4",
+      "version": "5.17.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.110",
+            "commit": "5d42a5f3e0515660da3f8dbe1de82a109191dd79"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.111.1",
+            "commit": "5d42a5f3e0515660da3f8dbe1de82a109191dd79"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Aug 2023 07:35:36 GMT",
+      "tag": "@fluentui/react-charting_v5.17.3",
+      "version": "5.17.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "yushsingla@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "78808a4e906580cd2b7a946b8be359eb548206bc",
+            "comment": "Fixed the focus indicator bug in horizontal bar chart and multi stack bar chart"
+          },
+          {
+            "author": "yushsingla@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b0e9dad9f173b1e87c3a1fffbc8a4cba768400b3",
+            "comment": "fixed accessibility issues in pie chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.109",
+            "commit": "846a45467d7e70f3960950b6eb42d3a1d3cef2e5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.111.0",
+            "commit": "846a45467d7e70f3960950b6eb42d3a1d3cef2e5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 23 Aug 2023 07:36:23 GMT",
       "tag": "@fluentui/react-charting_v5.17.2",
       "version": "5.17.2",

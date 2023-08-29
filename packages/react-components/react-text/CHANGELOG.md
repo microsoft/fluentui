@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-text
 
-This log was last generated on Wed, 23 Aug 2023 12:01:49 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.3.26)
+
+Thu, 24 Aug 2023 10:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-text_v9.3.25..@fluentui/react-text_v9.3.26)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.2 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
 
 ## [9.3.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-text_v9.3.25)
 

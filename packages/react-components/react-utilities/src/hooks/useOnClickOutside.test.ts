@@ -61,6 +61,22 @@ describe('useOnClickOutside', () => {
     expect(callback).toHaveBeenCalledTimes(1);
   });
 
+  it('should not invoke callback when active element is an iframe and focus events for iframes are disabled', () => {
+    // Arrange
+    jest.useFakeTimers();
+    const iframe = document.createElement('iframe');
+    const callback = jest.fn();
+    document.body.appendChild(iframe);
+    renderHook(() => useOnClickOutside({ element: document, disabledFocusOnIframe: true, callback, refs: [] }));
+
+    // Act
+    iframe.focus();
+    jest.runOnlyPendingTimers();
+
+    // Assert
+    expect(callback).not.toBeCalled();
+  });
+
   it('should invoke callback when active element is a webview', () => {
     // Arrange
     jest.useFakeTimers();
