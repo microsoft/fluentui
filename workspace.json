@@ -1130,6 +1130,11 @@
       "projectType": "application",
       "implicitDependencies": []
     },
+    "@fluentui/vr-tests-web-components": {
+      "root": "apps/vr-tests-web-components",
+      "projectType": "application",
+      "implicitDependencies": []
+    },
     "@fluentui/web-components": {
       "root": "packages/web-components",
       "projectType": "library",

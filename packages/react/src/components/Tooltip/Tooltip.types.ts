@@ -13,7 +13,7 @@ export interface ITooltip {}
 /**
  * {@docCategory Tooltip}
  */
-export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
+export interface ITooltipProps extends Omit<React.HTMLAttributes<HTMLDivElement | TooltipBase>, 'content'> {
   /**
    * Optional callback to access the ITooltip interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
