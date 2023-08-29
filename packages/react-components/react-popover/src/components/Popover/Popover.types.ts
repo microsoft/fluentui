@@ -209,6 +209,7 @@ export type OnOpenChangeData = { open: boolean };
  * The supported events that will trigger open/close of the menu
  */
 export type OpenPopoverEvents =
+  | Event
   | MouseEvent
   | TouchEvent
   | React.FocusEvent<HTMLElement>
