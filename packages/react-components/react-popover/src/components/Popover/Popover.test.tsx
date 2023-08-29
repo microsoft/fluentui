@@ -17,6 +17,8 @@ describe('Popover', () => {
       'component-has-static-classnames-object',
       // Popover does not have own styles
       'make-styles-overrides-win',
+      // Popover onOpenChange uses Event type due to scroll event in useOnScrollOutside
+      'consistent-callback-args',
     ],
   });
 
