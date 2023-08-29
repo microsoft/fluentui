@@ -6,7 +6,7 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { HorizontalBarChart } from './HorizontalBarChart';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { HorizontalBarChartBase } from './HorizontalBarChart.base';
-import { HorizontalBarChartVariant, IChartProps } from '@fluentui/react-charting';
+import { HorizontalBarChartVariant, IChartProps } from './index';
 
 const chartPoints: IChartProps[] = [
   {
