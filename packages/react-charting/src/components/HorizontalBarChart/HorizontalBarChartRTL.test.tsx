@@ -47,6 +47,21 @@ const chartPoints: IChartProps[] = [
   },
 ];
 
+const chartPointsWithBenchMark: IChartProps[] = [
+  {
+    chartTitle: 'one',
+    chartData: [{ legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, color: DefaultPalette.tealDark }],
+  },
+  {
+    chartTitle: 'two',
+    chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, y: 200 }, color: DefaultPalette.purple }],
+  },
+  {
+    chartTitle: 'three',
+    chartData: [{ legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, color: DefaultPalette.redDark }],
+  },
+];
+
 describe('Horizontal bar chart rendering', () => {
   beforeEach(() => {
     jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
@@ -122,12 +137,61 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
   );
 
   testWithWait(
-    'Should render the bars right side value inline with bar',
+    'Should render the bars right side value inline with bar when variant is absolute scale',
     HorizontalBarChart,
     { data: chartPoints, variant: HorizontalBarChartVariant.AbsoluteScale },
     container => {
       // Assert
+      expect(getByClass(container, /chartTitleRight/i)).toHaveLength(0);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars right side value on top of the with bar when variant part to whole',
+    HorizontalBarChart,
+    { data: chartPoints, variant: HorizontalBarChartVariant.PartToWhole },
+    container => {
+      // Assert
       expect(getByClass(container, /chartTitleRight/i)).toHaveLength(3);
+    },
+  );
+
+  testWithWait(
+    'Should render the bars right side value with franctional value when chartDataMode is fraction',
+    HorizontalBarChart,
+    { data: chartPoints, chartDataMode: 'fraction' },
+    container => {
+      // Assert
+      expect(getByClass(container, /chartDataTextDenominator/i)).toHaveLength(3);
+    },
+  );
+
+  testWithWait(
+    'Should show the custom data on right side of the chart',
+    HorizontalBarChart,
+    {
+      data: chartPoints,
+      barChartCustomData: (props: IChartProps) =>
+        props ? (
+          <div className="barChartCustomData">
+            <p>Bar Custom Data</p>
+          </div>
+        ) : null,
+    },
+    container => {
+      expect(getByClass(container, /barChartCustomData/i)).toHaveLength(3);
+    },
+  );
+});
+
+describe('Horizontal bar chart - Subcomponent Benchmark', () => {
+  testWithWait(
+    'Should render the bar with branchmark',
+    HorizontalBarChart,
+    { data: chartPointsWithBenchMark },
+    container => {
+      // Assert
+      expect(getByClass(container, /triangle/i)).toHaveLength(3);
     },
   );
 });
