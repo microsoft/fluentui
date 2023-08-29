@@ -123,6 +123,7 @@ const useStyles = makeStyles({
     minWidth: '150px',
     resize: 'horizontal',
     width: '100%',
+    boxSizing: 'border-box',
   },
   tagGroup: {
     display: 'flex', // TagGroup is inline-flex by default, but we want it to be same width as the container
