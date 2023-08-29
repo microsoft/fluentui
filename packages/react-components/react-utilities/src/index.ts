@@ -44,7 +44,13 @@ export {
   useScrollbarWidth,
   useTimeout,
 } from './hooks/index';
-export type { RefObjectFunction, UseControllableStateOptions, UseOnClickOrScrollOutsideOptions } from './hooks/index';
+export type {
+  RefObjectFunction,
+  UseControllableStateOptions,
+  UseOnClickOrScrollOutsideOptions,
+  UseOnClickOutsideOptions,
+  UseOnScrollOutsideOptions,
+} from './hooks/index';
 
 export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 

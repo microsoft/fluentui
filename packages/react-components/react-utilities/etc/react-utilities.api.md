@@ -328,8 +328,14 @@ export function useIsSSR(): boolean;
 // @public
 export function useMergedRefs<T>(...refs: (React_2.Ref<T> | undefined)[]): RefObjectFunction<T>;
 
-// @internal (undocumented)
-export type UseOnClickOrScrollOutsideOptions = {
+// @public @deprecated (undocumented)
+export type UseOnClickOrScrollOutsideOptions = UseOnClickOutsideOptions;
+
+// @internal
+export const useOnClickOutside: (options: UseOnClickOutsideOptions) => void;
+
+// @public (undocumented)
+export type UseOnClickOutsideOptions = {
     element: Document | undefined;
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
     contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
@@ -339,10 +345,12 @@ export type UseOnClickOrScrollOutsideOptions = {
 };
 
 // @internal
-export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
+export const useOnScrollOutside: (options: UseOnScrollOutsideOptions) => void;
 
-// @internal
-export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
+// @public (undocumented)
+export type UseOnScrollOutsideOptions = Pick<UseOnClickOutsideOptions, 'element' | 'refs' | 'contains' | 'disabled'> & {
+    callback: (ev: Event | MouseEvent | TouchEvent) => void;
+};
 
 // @internal (undocumented)
 export const usePrevious: <ValueType = unknown>(value: ValueType) => ValueType | null;
