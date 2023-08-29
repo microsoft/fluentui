@@ -47,6 +47,7 @@ export {
 export type {
   RefObjectFunction,
   UseControllableStateOptions,
+  // eslint-disable-next-line deprecation/deprecation
   UseOnClickOrScrollOutsideOptions,
   UseOnClickOutsideOptions,
   UseOnScrollOutsideOptions,
