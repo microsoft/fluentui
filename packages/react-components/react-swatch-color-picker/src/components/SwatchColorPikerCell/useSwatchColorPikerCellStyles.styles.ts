@@ -6,8 +6,6 @@ import { tokens } from '@fluentui/react-theme';
 export const swatchColorPikerCellClassNames: SlotClassNames<SwatchColorPikerCellSlots> = {
   root: 'fui-SwatchColorPikerCell',
   input: 'fui-SwatchColorPikerCell__input',
-  // TODO: add class names for all slots on SwatchColorPikerCellSlots.
-  // Should be of the form `<slotName>: 'fui-SwatchColorPikerCell__<slotName>`
 };
 
 /**
@@ -21,6 +19,13 @@ const useStyles = makeStyles({
     boxSizing: 'border-box',
     '&:hover': {
       ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
+    },
+    [`& ~ .${swatchColorPikerCellClassNames.input}`]: {
+      opacity: 1,
+      '&:checked': {
+        opacity: 1,
+        backgroundColor: 'red',
+      },
     },
     '&:enabled:checked': {
       ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
