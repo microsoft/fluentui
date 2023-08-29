@@ -1,8 +1,70 @@
 # Change Log - @fluentui/react-breadcrumb-preview
 
-This log was last generated on Fri, 11 Aug 2023 12:14:26 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.4)
+
+Thu, 24 Aug 2023 10:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.3..@fluentui/react-breadcrumb-preview_v0.3.4)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.33 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-link to v9.1.12 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-tabster to v9.12.4 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.2 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+
+## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.3)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.2..@fluentui/react-breadcrumb-preview_v0.3.3)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.32 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-link to v9.1.11 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-tabster to v9.12.3 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.2)
+
+Mon, 21 Aug 2023 11:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.1..@fluentui/react-breadcrumb-preview_v0.3.2)
+
+### Patches
+
+- fix: breadcrumb spacing ([PR #28883](https://github.com/microsoft/fluentui/pull/28883) by vkozlova@microsoft.com)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.1)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.0..@fluentui/react-breadcrumb-preview_v0.3.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.31 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-link to v9.1.10 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.0)
+
+Wed, 16 Aug 2023 11:38:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.2.2..@fluentui/react-breadcrumb-preview_v0.3.0)
+
+### Minor changes
+
+- removed iconPosition prop from the Breadcrumb ([PR #28846](https://github.com/microsoft/fluentui/pull/28846) by vkozlova@microsoft.com)
+- Bump @fluentui/react-button to v9.3.30 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+- Bump @fluentui/react-link to v9.1.9 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
+
+### Patches
+
+- Added CY tests for Breacrumb with Menu and Overflow ([PR #28790](https://github.com/microsoft/fluentui/pull/28790) by vkozlova@microsoft.com)
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.2.2)
 

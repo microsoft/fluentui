@@ -1,8 +1,155 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 11 Aug 2023 12:14:24 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.30.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.0)
+
+Thu, 24 Aug 2023 10:26:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.5..@fluentui/react-components_v9.30.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Export DataGridContextProvider. ([PR #28955](https://github.com/microsoft/fluentui/pull/28955) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - feat: Export DataGridContextProvider. ([PR #28955](https://github.com/microsoft/fluentui/pull/28955) by esteban.230@hotmail.com)
+- `@fluentui/react-tooltip`
+  - feat: Add documentKeyboardEvent to OnVisibleChangeData when Tooltip is hidden via Escape ([PR #28951](https://github.com/microsoft/fluentui/pull/28951) by behowell@microsoft.com)
+- `@fluentui/react-utilities`
+  - feat: create a new useAnimationFrame hook ([PR #28948](https://github.com/microsoft/fluentui/pull/28948) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-card`
+  - docs: improve storybook and examples to better align with design guidelines ([PR #28969](https://github.com/microsoft/fluentui/pull/28969) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - expose useDataGridContext_unstable etc. contexts ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by email not defined)
+- `@fluentui/react-jsx-runtime`
+  - chore: decrease bundle size & adds fixtures ([PR #28962](https://github.com/microsoft/fluentui/pull/28962) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - fix(react-popover): Only apply modal attributes if the PopoverSurface traps focus. ([PR #28613](https://github.com/microsoft/fluentui/pull/28613) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - expose useDataGridContext_unstable etc. contexts ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by email not defined)
+- `@fluentui/react-utilities`
+  - fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click ([PR #28765](https://github.com/microsoft/fluentui/pull/28765) by yuanboxue@microsoft.com)
+
+## [9.29.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.5)
+
+Wed, 23 Aug 2023 12:01:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.4..@fluentui/react-components_v9.29.5)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - fix: added cursor style in AccordionHeader for AccordionItem disabled state ([PR #28850](https://github.com/microsoft/fluentui/pull/28850) by kakrookaran@gmail.com)
+- `@fluentui/react-utilities`
+  - bugfix: ensure interop between assertSlots and old API ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by bernardo.sunderhus@gmail.com)
+
+## [9.29.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.4)
+
+Mon, 21 Aug 2023 11:38:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.3..@fluentui/react-components_v9.29.4)
+
+### Patches
+
+- `@fluentui/react-breadcrumb-preview`
+  - fix: breadcrumb spacing ([PR #28883](https://github.com/microsoft/fluentui/pull/28883) by vkozlova@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: Make year picker react to go to today. ([PR #28907](https://github.com/microsoft/fluentui/pull/28907) by esteban.230@hotmail.com)
+- `@fluentui/react-menu`
+  - fix: make MenuItem with long content grow its height ([PR #28675](https://github.com/microsoft/fluentui/pull/28675) by yuanboxue@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: make event listners passive ([PR #28839](https://github.com/microsoft/fluentui/pull/28839) by olfedias@microsoft.com)
+  - chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+- `@fluentui/react-search-preview`
+  - chore: migrate to new slots API ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags-preview`
+  - chore: add documentation ([PR #28899](https://github.com/microsoft/fluentui/pull/28899) by yuanboxue@microsoft.com)
+  - fix: use `:active` selector for pressed style instead of `:hover:active` ([PR #28884](https://github.com/microsoft/fluentui/pull/28884) by yuanboxue@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+  - fix: stabilize `handleActionsRef` created by TreeItem ([PR #28896](https://github.com/microsoft/fluentui/pull/28896) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - fix: rename values of position prop from left/right to start/end ([PR #28905](https://github.com/microsoft/fluentui/pull/28905) by marcosvmmoura@gmail.com)
+- `@fluentui/react-infobutton`
+  - fix: Cursor should be pointer when hovering the button to show it's a button. ([PR #28893](https://github.com/microsoft/fluentui/pull/28893) by esteban.230@hotmail.com)
+
+## [9.29.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.3)
+
+Thu, 17 Aug 2023 13:49:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.2..@fluentui/react-components_v9.29.3)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - bugfix: headless flat tree itemType manual definition ([PR #28898](https://github.com/microsoft/fluentui/pull/28898) by bernardo.sunderhus@gmail.com)
+
+## [9.29.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.2)
+
+Wed, 16 Aug 2023 17:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.1..@fluentui/react-components_v9.29.2)
+
+### Patches
+
+- `@fluentui/react-components`
+  - feat: stable release react-tree ([PR #28845](https://github.com/microsoft/fluentui/pull/28845) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-jsx-runtime`
+  - chore: release stable version ([PR #28880](https://github.com/microsoft/fluentui/pull/28880) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags-preview`
+  - fix: tag changes hover pointer only when hovering dismiss icon ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by yuanboxue@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: stable release ([PR #28845](https://github.com/microsoft/fluentui/pull/28845) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - Fix: Ensure scrollViewRef is merged with container ref ([PR #28829](https://github.com/microsoft/fluentui/pull/28829) by mifraser@microsoft.com)
+
+## [9.29.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.1)
+
+Wed, 16 Aug 2023 11:38:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.29.0..@fluentui/react-components_v9.29.1)
+
+### Minor changes
+
+- `@fluentui/react-breadcrumb-preview`
+  - removed iconPosition prop from the Breadcrumb ([PR #28846](https://github.com/microsoft/fluentui/pull/28846) by vkozlova@microsoft.com)
+- `@fluentui/react-tags-preview`
+  - BREAKING CHANGE: use JSX children for InteractionTag's action buttons ([PR #28739](https://github.com/microsoft/fluentui/pull/28739) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb-preview`
+  - Added CY tests for Breacrumb with Menu and Overflow ([PR #28790](https://github.com/microsoft/fluentui/pull/28790) by vkozlova@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - chore: changes tsconfig target to ES2019 ([PR #28848](https://github.com/microsoft/fluentui/pull/28848) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-jsx-runtime`
+  - feat: supports new automatic JSX runtime ([PR #28810](https://github.com/microsoft/fluentui/pull/28810) by bernardo.sunderhus@gmail.com)
+
+## [9.29.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.29.0)
+
+Mon, 14 Aug 2023 21:22:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.28.1..@fluentui/react-components_v9.29.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: re-export `resolvePositioningShorthand` from @fluentui/react-positioning ([PR #28843](https://github.com/microsoft/fluentui/pull/28843) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tabs`
+  - Defer tabs rectangle computation only when previousSelectedValue is defined ([PR #28749](https://github.com/microsoft/fluentui/pull/28749) by nasirvi@microsoft.com)
 
 ## [9.28.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.28.1)
 

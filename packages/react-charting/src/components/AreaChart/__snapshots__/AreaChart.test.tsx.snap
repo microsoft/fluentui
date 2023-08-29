@@ -3150,7 +3150,7 @@ exports[`AreaChart snapShot testing renders enabledLegendsWrapLines correctly 1`
 </div>
 `;
 
-exports[`AreaChart snapShot testing renders hideLegend hhh correctly 1`] = `
+exports[`AreaChart snapShot testing renders hideLegend correctly 1`] = `
 <div
   className=
 

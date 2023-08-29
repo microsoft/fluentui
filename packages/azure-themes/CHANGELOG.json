@@ -2,6 +2,81 @@
   "name": "@fluentui/azure-themes",
   "entries": [
     {
+      "date": "Mon, 28 Aug 2023 07:36:25 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.33",
+      "version": "8.6.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.111.1",
+            "commit": "5d42a5f3e0515660da3f8dbe1de82a109191dd79"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Aug 2023 07:35:37 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.32",
+      "version": "8.6.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.111.0",
+            "commit": "846a45467d7e70f3960950b6eb42d3a1d3cef2e5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Aug 2023 07:33:35 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.31",
+      "version": "8.6.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "30805892+Jacqueline-ms@users.noreply.github.com",
+            "package": "@fluentui/azure-themes",
+            "commit": "7b1585f0bfd58428c5511262b5fb97686b481812",
+            "comment": "Updated focus state border for detailslist"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 07:36:23 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.30",
+      "version": "8.6.30",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.110.15",
+            "commit": "0c71b67bb41fdc2de8c3c547e77646a4b2ab36e9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Aug 2023 07:35:26 GMT",
+      "tag": "@fluentui/azure-themes_v8.6.29",
+      "version": "8.6.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/azure-themes",
+            "comment": "Bump @fluentui/react to v8.110.14",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 07:34:50 GMT",
       "tag": "@fluentui/azure-themes_v8.6.28",
       "version": "8.6.28",

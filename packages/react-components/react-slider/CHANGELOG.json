@@ -2,6 +2,114 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Thu, 24 Aug 2023 10:26:35 GMT",
+      "tag": "@fluentui/react-slider_v9.1.34",
+      "version": "9.1.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.1.21",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.2",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.12.4",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.12.0",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:49 GMT",
+      "tag": "@fluentui/react-slider_v9.1.33",
+      "version": "9.1.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.1.20",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.1",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.12.3",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.11.2",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 17:41:08 GMT",
+      "tag": "@fluentui/react-slider_v9.1.32",
+      "version": "9.1.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.1.19",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 11:38:33 GMT",
+      "tag": "@fluentui/react-slider_v9.1.31",
+      "version": "9.1.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.1.18",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:26 GMT",
       "tag": "@fluentui/react-slider_v9.1.30",
       "version": "9.1.30",

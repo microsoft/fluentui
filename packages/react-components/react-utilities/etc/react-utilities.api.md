@@ -295,6 +295,9 @@ export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'childr
 };
 
 // @internal
+export function useAnimationFrame(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+
+// @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
 // @internal (undocumented)
@@ -331,6 +334,7 @@ export type UseOnClickOrScrollOutsideOptions = {
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
     contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
+    disabledFocusOnIframe?: boolean;
     callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
@@ -350,7 +354,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
-export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
+export function useTimeout(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
 
 // (No @packageDocumentation comment for this package)
 

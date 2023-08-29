@@ -2,6 +2,21 @@
   "name": "@fluentui/foundation-legacy",
   "entries": [
     {
+      "date": "Fri, 18 Aug 2023 07:35:26 GMT",
+      "tag": "@fluentui/foundation-legacy_v8.2.44",
+      "version": "8.2.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/foundation-legacy",
+            "comment": "Bump @fluentui/style-utilities to v8.9.17",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jul 2023 07:36:53 GMT",
       "tag": "@fluentui/foundation-legacy_v8.2.43",
       "version": "8.2.43",

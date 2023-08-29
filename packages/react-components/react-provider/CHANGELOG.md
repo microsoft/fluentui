@@ -1,8 +1,57 @@
 # Change Log - @fluentui/react-provider
 
-This log was last generated on Fri, 11 Aug 2023 12:14:26 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:35 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.21)
+
+Thu, 24 Aug 2023 10:26:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.20..@fluentui/react-provider_v9.7.21)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.12.4 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.2 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+
+## [9.7.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.20)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.19..@fluentui/react-provider_v9.7.20)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.12.3 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.1 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [9.7.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.19)
+
+Mon, 21 Aug 2023 11:38:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.18..@fluentui/react-provider_v9.7.19)
+
+### Patches
+
+- chore: fix lint warnings ([PR #28889](https://github.com/microsoft/fluentui/pull/28889) by seanmonahan@microsoft.com)
+
+## [9.7.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.18)
+
+Wed, 16 Aug 2023 17:41:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.17..@fluentui/react-provider_v9.7.18)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0 ([PR #28885](https://github.com/microsoft/fluentui/pull/28885) by beachball)
+
+## [9.7.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.17)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-provider_v9.7.16..@fluentui/react-provider_v9.7.17)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16 ([PR #28791](https://github.com/microsoft/fluentui/pull/28791) by beachball)
 
 ## [9.7.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-provider_v9.7.16)
 

@@ -31,7 +31,7 @@ describe('Drawer', () => {
 
       return (
         <>
-          <ControlledDrawer position="right" open={open} />
+          <ControlledDrawer position="end" open={open} />
           <button id="button" onClick={() => setOpen(true)}>
             Open
           </button>

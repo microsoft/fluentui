@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Fri, 11 Aug 2023 12:14:26 GMT and should not be manually modified.
+This log was last generated on Thu, 24 Aug 2023 10:26:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.2)
+
+Thu, 24 Aug 2023 10:26:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.1..@fluentui/react-jsx-runtime_v9.0.2)
+
+### Patches
+
+- chore: decrease bundle size & adds fixtures ([PR #28962](https://github.com/microsoft/fluentui/pull/28962) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.12.0 ([PR #28973](https://github.com/microsoft/fluentui/pull/28973) by beachball)
+
+## [9.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.1)
+
+Wed, 23 Aug 2023 12:01:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0..@fluentui/react-jsx-runtime_v9.0.1)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.11.2 ([PR #28957](https://github.com/microsoft/fluentui/pull/28957) by beachball)
+
+## [9.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0)
+
+Wed, 16 Aug 2023 17:41:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.16..@fluentui/react-jsx-runtime_v9.0.0)
+
+### Patches
+
+- chore: release stable version ([PR #28880](https://github.com/microsoft/fluentui/pull/28880) by bernardo.sunderhus@gmail.com)
+
+## [9.0.0-alpha.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.16)
+
+Wed, 16 Aug 2023 11:38:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.0-alpha.15..@fluentui/react-jsx-runtime_v9.0.0-alpha.16)
+
+### Changes
+
+- feat: supports new automatic JSX runtime ([PR #28810](https://github.com/microsoft/fluentui/pull/28810) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.0-alpha.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.0-alpha.15)
 

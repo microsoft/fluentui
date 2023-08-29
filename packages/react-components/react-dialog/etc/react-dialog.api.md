@@ -12,6 +12,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
+import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -129,7 +130,7 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 export type DialogSurfaceElement = HTMLElement;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
@@ -138,7 +139,7 @@ export type DialogSurfaceSlots = {
 };
 
 // @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;

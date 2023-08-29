@@ -7,7 +7,7 @@ import {
   TreeItemLayout,
   useHeadlessFlatTree_unstable,
   HeadlessFlatTreeItemProps,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import {
   Button,
   Menu,
@@ -105,13 +105,13 @@ export const FlatTree = () => {
   const focusTargetAttribute = useRestoreFocusTarget();
 
   return (
-    <Tree {...flatTree.getTreeProps()} aria-label="Tree">
+    <Tree {...flatTree.getTreeProps()} aria-label="Flat Tree">
       {Array.from(flatTree.items(), flatTreeItem => {
         const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (
           <Menu key={flatTreeItem.value} positioning="below-end" openOnContext>
             <MenuTrigger disableButtonEnhancement>
-              <TreeItem aria-description="has context menu" {...focusTargetAttribute} {...treeItemProps}>
+              <TreeItem aria-description="has actions" {...focusTargetAttribute} {...treeItemProps}>
                 <TreeItemLayout actions={<ActionsExample />}>{content}</TreeItemLayout>
               </TreeItem>
             </MenuTrigger>
@@ -134,9 +134,11 @@ export const FlatTree = () => {
 FlatTree.parameters = {
   docs: {
     description: {
-      story: `The \`FlatTree\` component enables a more efficient and flexible way to manage tree structures by representing them in a flattened format. Unlike nested trees, flat trees simplify many common tasks such as searching or adding/removing items, and they are essential for supporting features like virtualization.
+      story: `
+The \`FlatTree\` component is a simplified version of \`Tree\` that is meant to be used together with the \`useHeadlessFlatTree_unstable\` hook. It enables a more efficient and flexible way to manage tree structures by representing them in a flattened format. Unlike nested trees, flat trees simplify many common tasks such as searching or adding/removing items, and they are essential for supporting features like virtualization.
 
-If you need to utilize a nested tree with \`FlatTree\`, simply convert it to the flat format using the \`flattenTree\` helper.`,
+If you need to utilize a nested tree with \`FlatTree\`, simply convert it to the flat format using the \`flattenTree\` helper.
+`,
     },
   },
 };

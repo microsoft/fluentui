@@ -2,6 +2,325 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 24 Aug 2023 10:26:32 GMT",
+      "tag": "@fluentui/react-components_v9.30.0",
+      "version": "9.30.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "44789c103b2c4a05c026c72f4a594a291fdb0141",
+            "comment": "docs: improve storybook and examples to better align with design guidelines"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-components",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5",
+            "comment": "expose useDataGridContext_unstable etc. contexts"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "d7f04c2b9e5b36267f7d822fe493fc57cf5bc492",
+            "comment": "chore: decrease bundle size & adds fixtures"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8919d6c7e807cbfdb9c46f292fbb76cd908dc708",
+            "comment": "fix(react-popover): Only apply modal attributes if the PopoverSurface traps focus."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-table",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5",
+            "comment": "expose useDataGridContext_unstable etc. contexts"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "192b74335ed4d99dbcbeeab5aa2075409e911e1a",
+            "comment": "fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "afcfb2ebe322e2a8e204ac192e68f48f1164107f",
+            "comment": "feat: Export DataGridContextProvider."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "afcfb2ebe322e2a8e204ac192e68f48f1164107f",
+            "comment": "feat: Export DataGridContextProvider."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "45b2bea5f7bd1c8a453ce37726818f572afe0ab0",
+            "comment": "feat: Add documentKeyboardEvent to OnVisibleChangeData when Tooltip is hidden via Escape"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "148d5fa771ea9eb1f5a96f817782e76484070ec3",
+            "comment": "feat: create a new useAnimationFrame hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:48 GMT",
+      "tag": "@fluentui/react-components_v9.29.5",
+      "version": "9.29.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a8256f19f7cda7695b1de3c6b37768933bec7e4f",
+            "comment": "fix: added cursor style in AccordionHeader for AccordionItem disabled state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc",
+            "comment": "bugfix: ensure interop between assertSlots and old API"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8329d0a01d1b421aa10b6e993f75a0d61294fb06",
+            "comment": "chore: adds tsconfig.cy.json file to root of the package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Aug 2023 11:38:00 GMT",
+      "tag": "@fluentui/react-components_v9.29.4",
+      "version": "9.29.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "039d87ed8c63c1bcfbf7d4c4a6fa61ac92f838bd",
+            "comment": "fix: breadcrumb spacing"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "d73590f34a41a22776a0bc2c41391b589531e679",
+            "comment": "fix: Make year picker react to go to today."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f042ed0d53377114375be20bd87f81a97e04e22c",
+            "comment": "fix: make MenuItem with long content grow its height"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "89bd803c8433397784d62a4172a988240a779596",
+            "comment": "fix: make event listners passive"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34",
+            "comment": "chore: migrate to new slots API"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "ad2fe1f95bbd2c9a053e9a058ccabc7e153b413c",
+            "comment": "chore: add documentation"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "55e07ffc8d180554fb027841e7d2a89637cefcb3",
+            "comment": "fix: use `:active` selector for pressed style instead of `:hover:active`"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3d6b8e8646a5dc6fe6c05fcbf50fefd0e61db92c",
+            "comment": "fix: stabilize `handleActionsRef` created by TreeItem"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "768de13c5e30222f64b2cc453bc4b134a6e90712",
+            "comment": "fix: rename values of position prop from left/right to start/end"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "7899bcf885c6599dcfe23cddb532c954b25aca79",
+            "comment": "fix: Cursor should be pointer when hovering the button to show it's a button."
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "40cd99729f234f5c705ade1cbca7c5a75e454e9e",
+            "comment": "doc: adds drag & drop example"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Aug 2023 13:49:56 GMT",
+      "tag": "@fluentui/react-components_v9.29.3",
+      "version": "9.29.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ccd513e9b7c3179bef3588d183be1e3e4b9d7f7d",
+            "comment": "bugfix: headless flat tree itemType manual definition"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 17:41:07 GMT",
+      "tag": "@fluentui/react-components_v9.29.2",
+      "version": "9.29.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "566f22496db20046fbc9ab898580ccf64600fb6b",
+            "comment": "feat: stable release react-tree"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "7e2ba9c3e9e9e426e18bc5861fd84211400780ac",
+            "comment": "chore: release stable version"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3",
+            "comment": "fix: tag changes hover pointer only when hovering dismiss icon"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "566f22496db20046fbc9ab898580ccf64600fb6b",
+            "comment": "feat: stable release"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "e40f1181983bbf4b0926cd15fb8dbc7a9e3188a3",
+            "comment": "Fix: Ensure scrollViewRef is merged with container ref"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 11:38:32 GMT",
+      "tag": "@fluentui/react-components_v9.29.1",
+      "version": "9.29.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "b6082a65fa8424cf646c88fa028e15b747871b7d",
+            "comment": "Added CY tests for Breacrumb with Menu and Overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "d4bde491437d4574dce6210c6e24a10dcbd0b229",
+            "comment": "chore: changes tsconfig target to ES2019"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "a3e1a603ac387bff5d5c7367ed58ab2c511d8c3c",
+            "comment": "removed iconPosition prop from the Breadcrumb"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "a0cf8651e27d09ce9a76a3be0c993ab24a96a80e",
+            "comment": "BREAKING CHANGE: use JSX children for InteractionTag's action buttons"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "d40ea6e1d43cd21d1404d9c71018d822958c6644",
+            "comment": "feat: supports new automatic JSX runtime"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Aug 2023 21:22:22 GMT",
+      "tag": "@fluentui/react-components_v9.29.0",
+      "version": "9.29.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6d3e683056ba52fc1df923d1c23d24abaa840fba",
+            "comment": "feat: re-export `resolvePositioningShorthand` from @fluentui/react-positioning"
+          }
+        ],
+        "patch": [
+          {
+            "author": "nasirvi@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b180b6512aa21887ab78d4910503506ab8e35e6b",
+            "comment": "Defer tabs rectangle computation only when previousSelectedValue is defined"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:24 GMT",
       "tag": "@fluentui/react-components_v9.28.1",
       "version": "9.28.1",

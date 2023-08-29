@@ -49,48 +49,15 @@ const useRootStyles = makeStyles({
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
   outline: {
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForeground2,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
 
   rounded: {
@@ -231,6 +198,34 @@ const useDismissIconStyles = makeStyles({
     paddingRight: tagSpacingExtraSmall,
     fontSize: extraSmallIconSize,
   },
+
+  filled: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
+  outline: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
+  brand: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
 });
 
 export const usePrimaryTextStyles = makeStyles({
@@ -263,6 +258,43 @@ export const usePrimaryTextStyles = makeStyles({
   },
 });
 
+/**
+ * Styles for root slot under windows high contrast mode when Tag is with secondary text.
+ * Tag's primary text has negative margin that covers the border. Pseudo element is used to draw the border.
+ */
+export const useTagWithSecondaryTextContrastStyles = makeStyles({
+  rounded: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        content: '""',
+        ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+        position: 'absolute',
+        top: '-1px',
+        left: '-1px',
+        right: '-1px',
+        bottom: '-1px',
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+    },
+  },
+  circular: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        content: '""',
+        ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+        position: 'absolute',
+        top: '-1px',
+        left: '-1px',
+        right: '-1px',
+        bottom: '-1px',
+        ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      },
+    },
+  },
+});
+
 export const useSecondaryTextStyles = makeStyles({
   base: {
     ...shorthands.gridArea('secondary'),
@@ -288,6 +320,8 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextStyles = useSecondaryTextStyles();
 
+  const tagWithSecondaryTextContrastStyles = useTagWithSecondaryTextContrastStyles();
+
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
@@ -301,6 +335,8 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
     !state.dismissIcon && rootWithoutDismissStyles[size],
+
+    state.secondaryText && tagWithSecondaryTextContrastStyles[shape],
 
     state.root.className,
   );
@@ -340,6 +376,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       tagClassNames.dismissIcon,
       dismissIconStyles.base,
       dismissIconStyles[size],
+      !state.disabled && dismissIconStyles[appearance],
       state.dismissIcon.className,
     );
   }

@@ -183,7 +183,9 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
       background: (
         <img
           className={TilesListExampleStyles.tileImage}
-          src={`//via.placeholder.com/${Math.round(backgroundSize.width)}x${Math.round(backgroundSize.height)}`}
+          src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+          height={Math.round(backgroundSize.height)}
+          width={Math.round(backgroundSize.width)}
         />
       ),
     });

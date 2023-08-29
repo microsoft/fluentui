@@ -2,6 +2,159 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Thu, 24 Aug 2023 10:26:35 GMT",
+      "tag": "@fluentui/react-menu_v9.12.10",
+      "version": "9.12.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-aria to v9.3.32",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.30",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.3.9",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.9.7",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.12.4",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.12.0",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.2",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:49 GMT",
+      "tag": "@fluentui/react-menu_v9.12.9",
+      "version": "9.12.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-aria to v9.3.31",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.29",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-portal to v9.3.8",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.9.6",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-tabster to v9.12.3",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-utilities to v9.11.2",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.1",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Aug 2023 11:38:01 GMT",
+      "tag": "@fluentui/react-menu_v9.12.8",
+      "version": "9.12.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f042ed0d53377114375be20bd87f81a97e04e22c",
+            "comment": "fix: make MenuItem with long content grow its height"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-positioning to v9.9.5",
+            "commit": "55e07ffc8d180554fb027841e7d2a89637cefcb3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 17:41:08 GMT",
+      "tag": "@fluentui/react-menu_v9.12.7",
+      "version": "9.12.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0",
+            "commit": "b331b368030e157e0ff38a59c9d4aaf1d01d9b6a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 11:38:33 GMT",
+      "tag": "@fluentui/react-menu_v9.12.6",
+      "version": "9.12.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-menu",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.0-alpha.16",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 11 Aug 2023 12:14:26 GMT",
       "tag": "@fluentui/react-menu_v9.12.5",
       "version": "9.12.5",

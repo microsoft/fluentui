@@ -11,6 +11,7 @@ import {
 import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
+import { mergeStyles } from '../../Styling';
 import { TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
@@ -420,11 +421,14 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
     const divProps = getNativeProps(inputProps!, divProperties);
+    // Need to merge styles so the provided styles win over the default ones. This is due to the classnames having the
+    // same specificity.
+    const readOnlyTextFieldClassName = mergeStyles(divProps.className, classNames.readOnlyTextField);
 
     // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
     // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
     return (
-      <div {...divProps} className={css(divProps.className, classNames.readOnlyTextField)} tabIndex={tabIndex || 0}>
+      <div {...divProps} className={readOnlyTextFieldClassName} tabIndex={tabIndex || 0}>
         {formattedDate || (
           // Putting the placeholder in a separate span fixes specificity issues for the text color
           <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>

@@ -11,13 +11,11 @@ import type { BreadcrumbItemState, BreadcrumbItemSlots } from './BreadcrumbItem.
  */
 export const renderBreadcrumbItem_unstable = (state: BreadcrumbItemState) => {
   assertSlots<BreadcrumbItemSlots>(state);
-  const { iconOnly, iconPosition } = state;
 
   return (
     <state.root>
-      {iconPosition !== 'after' && state.icon && <state.icon />}
-      {!iconOnly && state.root.children}
-      {iconPosition === 'after' && state.icon && <state.icon />}
+      {state.icon && <state.icon />}
+      {state.root.children}
     </state.root>
   );
 };
