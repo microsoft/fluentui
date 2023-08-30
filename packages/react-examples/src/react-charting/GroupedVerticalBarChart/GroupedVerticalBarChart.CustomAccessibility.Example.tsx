@@ -50,9 +50,9 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             color: getColorFromToken(DataVizPalette.color10),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '33%',
+            yAxisCalloutData: '29%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
+              ariaLabel: 'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 29%',
             },
           },
           {
@@ -80,9 +80,9 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             color: getColorFromToken(DataVizPalette.color10),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '33%',
+            yAxisCalloutData: '29%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group series 2 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
+              ariaLabel: 'Group series 2 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 29%',
             },
           },
           {
@@ -110,9 +110,9 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             color: getColorFromToken(DataVizPalette.color10),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '14%',
+            yAxisCalloutData: '13%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group series 3 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 14%',
+              ariaLabel: 'Group series 3 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 13%',
             },
           },
           {
@@ -140,9 +140,9 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             color: getColorFromToken(DataVizPalette.color10),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '33%',
+            yAxisCalloutData: '29%',
             callOutAccessibilityData: {
-              ariaLabel: 'Group series 4 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
+              ariaLabel: 'Group series 4 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 29%',
             },
           },
           {

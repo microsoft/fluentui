@@ -68,10 +68,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Oranges',
         color: DefaultPalette.accent,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '10%',
+        yAxisCalloutData: '4%',
         lineData: {
           y: 7000,
-          yAxisCalloutData: '34%',
+          yAxisCalloutData: '3%',
         },
       },
       {
@@ -80,9 +80,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Dogs',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '21%',
         lineData: {
           y: 30000,
+          yAxisCalloutData: '12%',
         },
       },
       {
@@ -91,10 +92,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Apples',
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '37%',
+        yAxisCalloutData: '12%',
         lineData: {
           y: 3000,
-          yAxisCalloutData: '43%',
+          yAxisCalloutData: '1%',
         },
       },
 
@@ -104,7 +105,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Bananas',
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '88%',
+        yAxisCalloutData: '5%',
       },
       {
         x: 52000,
@@ -112,9 +113,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Giraffes',
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '71%',
+        yAxisCalloutData: '18%',
         lineData: {
           y: 30000,
+          yAxisCalloutData: '12%',
         },
       },
       {
@@ -123,9 +125,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Cats',
         color: DefaultPalette.blueDark,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '12%',
         lineData: {
           y: 5000,
+          yAxisCalloutData: '2%',
         },
       },
       {
@@ -134,9 +137,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Elephants',
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '87%',
+        yAxisCalloutData: '8%',
         lineData: {
           y: 16000,
+          yAxisCalloutData: '7%',
         },
       },
       {
@@ -145,10 +149,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         legend: 'Monkeys',
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '33%',
+        yAxisCalloutData: '19%',
         lineData: {
           y: 40000,
-          yAxisCalloutData: '45%',
+          yAxisCalloutData: '16%',
         },
       },
     ];
