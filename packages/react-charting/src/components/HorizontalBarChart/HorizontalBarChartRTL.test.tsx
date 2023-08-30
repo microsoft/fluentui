@@ -167,6 +167,18 @@ describe('Horizontal bar chart - Subcomponent bar', () => {
   );
 
   testWithWait(
+    'Should render the bars right side value with percentage value when chartDataMode is percentage',
+    HorizontalBarChart,
+    { data: chartPoints, chartDataMode: 'percentage' },
+    container => {
+      // Assert
+      expect(screen.queryByText('10%')).not.toBeNull();
+      expect(screen.queryByText('5%')).not.toBeNull();
+      expect(screen.queryByText('59%')).not.toBeNull();
+    },
+  );
+
+  testWithWait(
     'Should show the custom data on right side of the chart',
     HorizontalBarChart,
     {
