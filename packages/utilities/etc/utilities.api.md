@@ -22,6 +22,8 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
+import type { ShadowConfig } from '@fluentui/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -1014,6 +1016,16 @@ export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISett
 // @public
 export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
+// Warning: (ae-forgotten-export) The symbol "MergeStylesRootProviderProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MergeStylesRootProvider_unstable: React_2.FC<MergeStylesRootProviderProps>;
+
+// Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootProviderProps" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const MergeStylesShadowRootProvider_unstable: React_2.FC<MergeStylesShadowRootProviderProps>;
+
 // @public
 export function modalize(target: HTMLElement): () => void;
 
@@ -1240,6 +1252,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
 export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
     __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
     __noStyleOverride__: boolean;
+    __shadowConfig__?: ShadowConfig;
 };
 
 // @public
@@ -1262,6 +1275,9 @@ export const trProperties: Record<string, number>;
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
+
+// @public
+export const useAdoptedStylesheet_unstable: (stylesheetKey: string) => boolean;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
