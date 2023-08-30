@@ -132,8 +132,8 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           legend: 'single point',
           data: [
             {
-              x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282000,
+              x: new Date('2020-03-05T12:00:00.000Z'),
+              y: 232000,
             },
           ],
           color: DataVizPalette.color5,

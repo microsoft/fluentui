@@ -72,7 +72,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
         },
       },
       {
-        name: 'Meta Data2',
+        name: 'Data Point2',
         series: [
           {
             key: 'series1',
