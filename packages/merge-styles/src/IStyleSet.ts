@@ -1,5 +1,6 @@
 import { IStyle } from './IStyle';
 import { IStyleFunctionOrObject, IStyleFunction } from './IStyleFunction';
+import { ShadowConfig } from './shadowConfig';
 
 /**
  * @deprecated Use `Exclude` provided by TypeScript instead.
@@ -33,7 +34,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = { [key: string]: 
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any> };
-};
+} & IShadowConfig;
 
 /**
  * A concatenated style set differs from `IStyleSet` in that subComponentStyles will always be a style function.
@@ -43,7 +44,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
   [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
   subComponentStyles?: { [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any> };
-};
+} & IShadowConfig;
 
 /**
  * A processed style set is one which the set of styles associated with each area has been converted
@@ -58,4 +59,8 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
       TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never
     >;
   };
+} & IShadowConfig;
+
+type IShadowConfig = {
+  __shadowConfig__?: ShadowConfig;
 };
