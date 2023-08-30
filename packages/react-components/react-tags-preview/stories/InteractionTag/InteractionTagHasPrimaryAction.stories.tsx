@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip } from '@fluentui/react-components';
+import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip, Link } from '@fluentui/react-components';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { bundleIcon, HeartFilled, HeartRegular } from '@fluentui/react-icons';
 
@@ -24,6 +24,7 @@ export const HasPrimaryAction = () => {
           <InteractionTagPrimary hasSecondaryAction>golden retriever</InteractionTagPrimary>
         </PopoverTrigger>
         <PopoverSurface className={styles.popover}>
+          <Link href="https://en.wikipedia.org/wiki/Golden_Retriever">Find out more on wiki</Link>
           <ul>
             <li>Size: Medium to large-sized dog breed. </li>
             <li>Coat: Luxurious double coat with a dense, water-repellent outer layer and a soft, dense undercoat.</li>
