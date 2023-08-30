@@ -11,10 +11,11 @@ import { useBrowserTimer } from './useBrowserTimer';
  */
 export function useAnimationFrame() {
   const isDOM = canUseDOM();
+  const noop = () => 0;
 
   // TODO: figure it out a way to not call global.requestAnimationFrame and instead infer window from some context
-  const setAnimationFrame = isDOM ? requestAnimationFrame : setTimeout;
-  const clearAnimationFrame = isDOM ? cancelAnimationFrame : clearTimeout;
+  const setAnimationFrame = isDOM ? requestAnimationFrame : noop;
+  const clearAnimationFrame = isDOM ? cancelAnimationFrame : noop;
 
   return useBrowserTimer(setAnimationFrame, clearAnimationFrame);
 }
