@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add typescript types",
+  "packageName": "@fluentui/jest-serializer-merge-styles",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
