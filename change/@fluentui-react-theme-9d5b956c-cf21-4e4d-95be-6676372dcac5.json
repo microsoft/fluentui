@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Export brand colors",
+  "packageName": "@fluentui/react-theme",
+  "email": "tigeroakes@microsoft.com",
+  "dependentChangeType": "patch"
+}
