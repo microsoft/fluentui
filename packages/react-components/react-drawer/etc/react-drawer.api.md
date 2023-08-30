@@ -128,7 +128,7 @@ export type DrawerInlineSlots = {
 };
 
 // @public
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & DrawerBaseState & Pick<DrawerInlineProps, 'separator'>;
+export type DrawerInlineState = Required<ComponentState<DrawerInlineSlots> & DrawerBaseState & Pick<DrawerInlineProps, 'separator'>>;
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
@@ -145,10 +145,10 @@ export type DrawerOverlaySlots = DialogSurfaceSlots & {
 };
 
 // @public
-export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & DrawerBaseState & {
+export type DrawerOverlayState = Required<Omit<ComponentState<DrawerOverlaySlots>, 'backdrop'> & DrawerBaseState & {
     dialog: DialogProps;
     backdropMotion: MotionState<HTMLDivElement>;
-};
+}>;
 
 // @public
 export type DrawerProps = ComponentProps<DrawerSlots> & {
