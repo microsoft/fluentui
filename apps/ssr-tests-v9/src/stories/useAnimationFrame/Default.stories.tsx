@@ -11,5 +11,5 @@ export const DefaultOpen = () => {
     return () => clearAnimationFrame();
   }, [setAnimationFrame]);
 
-  return visible ? <div></div> : null;
+  return visible ? <div>Test the renderization</div> : null;
 };
