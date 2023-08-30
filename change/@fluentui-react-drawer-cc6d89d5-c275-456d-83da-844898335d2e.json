@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat: add motion for Drawer",
+  "packageName": "@fluentui/react-drawer",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

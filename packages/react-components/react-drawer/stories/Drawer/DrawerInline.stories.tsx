@@ -7,6 +7,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.border('2px', 'solid', '#ccc'),
     ...shorthands.overflow('hidden'),
+
     display: 'flex',
     height: '480px',
     backgroundColor: '#fff',
@@ -15,10 +16,25 @@ const useStyles = makeStyles({
   content: {
     ...shorthands.flex(1),
     ...shorthands.padding('16px'),
+    ...shorthands.overflow('auto'),
+
+    position: 'relative',
+  },
+
+  buttons: {
+    ...shorthands.flex(1),
+    ...shorthands.padding('16px'),
+
+    position: 'sticky',
+    top: '-16px',
+    right: '-16px',
+    left: '-16px',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
     columnGap: tokens.spacingHorizontalXS,
+    backgroundColor: '#fff',
+    transitionDuration: tokens.durationFast,
   },
 });
 
@@ -52,13 +68,23 @@ export const Inline = () => {
       </DrawerInline>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-          Toggle left
-        </Button>
+        <div className={styles.buttons}>
+          <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
+            {leftOpen ? 'Close' : 'Open'} left
+          </Button>
 
-        <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-          Toggle right
-        </Button>
+          <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
+            {rightOpen ? 'Close' : 'Open'} right
+          </Button>
+        </div>
+
+        {Array.from({ length: 100 }, (_, i) => (
+          <p key={i}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatem similique reiciendis, ipsa
+            accusamus distinctio dolorum quisquam, tenetur minima animi autem nobis. Molestias totam natus, deleniti nam
+            itaque placeat quisquam!
+          </p>
+        ))}
       </div>
 
       <DrawerInline position="end" open={rightOpen}>

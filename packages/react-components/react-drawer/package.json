@@ -37,6 +37,7 @@
   "dependencies": {
     "@fluentui/react-dialog": "^9.6.0",
     "@fluentui/react-jsx-runtime": "^9.0.3",
+    "@fluentui/react-motion-preview": "^0.1.0",
     "@fluentui/react-shared-contexts": "^9.7.2",
     "@fluentui/react-theme": "^9.1.11",
     "@fluentui/react-utilities": "^9.13.0",
