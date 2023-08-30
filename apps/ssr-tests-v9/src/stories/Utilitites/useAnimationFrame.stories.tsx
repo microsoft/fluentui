@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useAnimationFrame } from '@fluentui/react-utilities';
 
-export const DefaultOpen = () => {
+export const Default = () => {
   const [setAnimationFrame, clearAnimationFrame] = useAnimationFrame();
   const [visible, setVisible] = React.useState(false);
 

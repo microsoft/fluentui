@@ -1,4 +1,4 @@
-export { DefaultOpen } from './Default.stories';
+export { Default } from './useAnimationFrame.stories';
 
 export default {
   title: 'Utilities/useAnimationFrame',
