@@ -62,9 +62,9 @@ export const Dismiss = () => {
   const styles = useStyles();
   return (
     <div className={styles.container}>
-      with Tag:
+      Example with Tag:
       <DismissWithTags />
-      with InteractionTag:
+      Example with InteractionTag:
       <DismissWithInteractionTags />
     </div>
   );
