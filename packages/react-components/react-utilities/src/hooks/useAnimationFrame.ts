@@ -1,6 +1,8 @@
 import { canUseDOM } from '../ssr/canUseDOM';
 import { useBrowserTimer } from './useBrowserTimer';
 
+const noop = () => 0;
+
 /**
  * @internal
  * Helper to manage a browser requestAnimationFrame.
@@ -11,7 +13,6 @@ import { useBrowserTimer } from './useBrowserTimer';
  */
 export function useAnimationFrame() {
   const isDOM = canUseDOM();
-  const noop = () => 0;
 
   // TODO: figure it out a way to not call global.requestAnimationFrame and instead infer window from some context
   const setAnimationFrame = isDOM ? requestAnimationFrame : noop;
