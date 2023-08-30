@@ -116,7 +116,11 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
               ? styleFunctionOrObject(styleProps)
               : styleFunctionOrObject) as IStyleSet<TStyleSet>,
           ],
-          { rtl: !!rtl, specificityMultiplier: options.useStaticStyles ? DEFAULT_SPECIFICITY_MULTIPLIER : undefined },
+          {
+            shadowConfig: (styleFunctionOrObject as StyleFunction<TStyleProps, TStyleSet>).__shadowConfig__,
+            rtl: !!rtl,
+            specificityMultiplier: options.useStaticStyles ? DEFAULT_SPECIFICITY_MULTIPLIER : undefined,
+          },
         );
       }
 
