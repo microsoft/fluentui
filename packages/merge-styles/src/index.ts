@@ -39,4 +39,7 @@ export { setRTL } from './StyleOptionsState';
 
 export type { ObjectOnly } from './ObjectOnly';
 
+export { GLOBAL_STYLESHEET_KEY } from './shadowConfig';
+export type { ShadowConfig } from './shadowConfig';
+
 import './version';
