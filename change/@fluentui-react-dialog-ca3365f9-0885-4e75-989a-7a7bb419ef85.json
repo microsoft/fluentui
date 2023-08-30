@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: fixes DialogActions position on breakpoint",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
