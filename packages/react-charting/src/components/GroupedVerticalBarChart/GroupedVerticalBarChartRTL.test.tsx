@@ -157,8 +157,6 @@ const chartPoints = [
   },
 ];
 
-const maxBarGap = 5;
-
 describe('Grouped Vertical bar chart rendering', () => {
   testWithoutWait(
     'Should render the grouped vertical bar chart with numeric x-axis data',
@@ -222,44 +220,6 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
       expect(getByClass(container, /barLabel/i)).toHaveLength(0);
     },
   );
-
-  // testWithWait(
-  //   'Should render the bar with the given bar corner radius',
-  //   GroupedVerticalBarChart,
-  //   { data: chartPoints, barCornerRadius: 6 },
-  //   container => {
-  //     // Assert
-  //     const curvedBar = screen.queryByText('a 6 6');
-  //     expect(curvedBar).toHaveLength(1);
-  //   },
-  // );
-
-  // testWithWait(
-  //   'Should render the bar with the given maximum bar gap',
-  //   GroupedVerticalBarChart,
-  //   { data: chartPoints, barGapMax: maxBarGap },
-  //   container => {
-  //     // Assert
-  //     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-  //     expect(bars).toHaveLength(6);
-  //     const firstBarYvalue = Number(bars[1].getAttribute('x'));
-  //     const firstBarHeight = Number(bars[1].getAttribute('width'));
-  //     const secondBarYvalue = Number(bars[0].getAttribute('x'));
-  //     expect(firstBarYvalue! + firstBarHeight + maxBarGap).toEqual(secondBarYvalue!);
-  //   },
-  // );
-
-  // testWithWait(
-  //   'Should set minimum bar height',
-  //   GroupedVerticalBarChart,
-  //   { data: chartPoints, barMinimumHeight: 100 },
-  //   container => {
-  //     // Legends have 'rect' as a part of their classname
-  //     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-  //     // Assert
-  //     expect(bars[3].getAttribute('height')).toEqual('100');
-  //   },
-  // );
 });
 
 describe('Grouped vertical bar chart - Subcomponent Legends', () => {
@@ -274,6 +234,20 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(legends).toHaveLength(0);
     },
   );
+
+  // testWithWait(
+  //   'Should render the legends with the specified colors',
+  //   GroupedVerticalBarChart,
+  //   { data: chartPoints },
+  //   container => {
+  //     // colors mentioned in the data points itself
+  //     // Assert
+  //     const legends = getByClass(container, /rect-/i);
+  //     expect(legends).toHaveLength(2);
+  //     expect(legends[0]).toHaveStyle('background-color: #00bcf2');
+  //     expect(legends[1]).toHaveStyle('background-color: #0078d4');
+  //   },
+  // );
 
   testWithoutWait(
     'Should reduce the opacity of the other bars on mouse over a bar legend',
@@ -427,7 +401,7 @@ describe('Grouped Vertical Bar chart rendering', () => {
   });
 });
 
-describe('Grouped vertical bar chart - Subcomponent xAxis Labels', () => {
+describe('Grouped vertical bar chart - Subcomponent Labels', () => {
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     GroupedVerticalBarChart,
@@ -451,6 +425,38 @@ describe('Grouped vertical bar chart - Subcomponent xAxis Labels', () => {
       expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
     },
   );
+
+  testWithWait(
+    'Should render the xAxis label based on noOfCharsToTruncate',
+    GroupedVerticalBarChart,
+    { data: chartPoints, showXAxisLablesTooltip: true, noOfCharsToTruncate: 3 },
+    container => {
+      // Assert
+      expect(getById(container, /showDots/i)).toHaveLength(3);
+      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Met...');
+    },
+  );
+
+  testWithWait(
+    'Should render the xAxis and yAxis with specified tick count',
+    GroupedVerticalBarChart,
+    { data: chartPoints, yAxisTickCount: 5 },
+    container => {
+      // Assert
+      expect(getByClass(container, /tick/i)).toHaveLength(9);
+    },
+  );
+
+  // testWithWait(
+  //   'Should render the xAxis with custom accessibility',
+  //   GroupedVerticalBarChart,
+  //   { data: chartPoints, wrapXAxisLables: true },
+  //   container => {
+  //     // Assert
+  //     screen.debug(container, 5000000);
+  //     expect(getById(container, /WordBreakId/i)).toHaveLength(8);
+  //   },
+  // );
 });
 
 describe('Grouped vertical bar chart - Screen resolution', () => {

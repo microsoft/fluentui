@@ -1503,7 +1503,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_95"
+    id="chart_107"
     role="presentation"
   >
     <div
@@ -1515,7 +1515,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone96"
+      data-focuszone-id="FocusZone108"
     >
       <svg
         focusable="false"
@@ -1549,7 +1549,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_95"
+          id="xAxisGElementchart_107"
           transform="translate(0, -35)"
         />
         <g
@@ -1577,7 +1577,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_95"
+          id="yAxisGElementchart_107"
           transform="translate(40, 0)"
         />
         <g>
@@ -1735,7 +1735,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone97"
+                data-focuszone-id="FocusZone109"
                 role="listbox"
               >
                 <div
@@ -1949,7 +1949,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_101"
+    id="chart_113"
     role="presentation"
   >
     <div
@@ -1961,7 +1961,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone102"
+      data-focuszone-id="FocusZone114"
     >
       <svg
         focusable="false"
@@ -1995,7 +1995,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_101"
+          id="xAxisGElementchart_113"
           transform="translate(0, -35)"
         />
         <g
@@ -2023,7 +2023,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_101"
+          id="yAxisGElementchart_113"
           transform="translate(40, 0)"
         />
         <g>
@@ -2181,7 +2181,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone103"
+                data-focuszone-id="FocusZone115"
                 role="listbox"
               >
                 <div
@@ -7629,7 +7629,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_110"
+      id="chart_122"
       role="presentation"
     >
       <div
@@ -7641,7 +7641,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone111"
+        data-focuszone-id="FocusZone123"
       >
         <svg
           focusable="false"
@@ -7675,7 +7675,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_110"
+            id="xAxisGElementchart_122"
             transform="translate(0, -35)"
           />
           <g
@@ -7703,7 +7703,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_110"
+            id="yAxisGElementchart_122"
             transform="translate(40, 0)"
           />
           <g>
@@ -7861,7 +7861,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone112"
+                  data-focuszone-id="FocusZone124"
                   role="listbox"
                 >
                   <div
