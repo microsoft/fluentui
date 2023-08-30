@@ -356,7 +356,7 @@ import { Settings } from '@fluentui/utilities';
 import { SettingsFunction } from '@fluentui/utilities';
 import { setVirtualParent } from '@fluentui/utilities';
 import { setWarningCallback } from '@fluentui/utilities';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import { ShadowConfig } from '@fluentui/merge-styles';
 import { shallowCompare } from '@fluentui/utilities';
 import { SharedColors } from '@fluentui/theme';
 import { shouldWrapFocus } from '@fluentui/utilities';
@@ -2728,6 +2728,8 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
 
 // @public (undocumented)
 export interface IButtonStyles {
+    // (undocumented)
+    __shadowConfig__?: ShadowConfig;
     description?: IStyle;
     descriptionChecked?: IStyle;
     descriptionDisabled?: IStyle;
@@ -8686,6 +8688,8 @@ export interface ISpinButtonStyleProps {
 
 // @public (undocumented)
 export interface ISpinButtonStyles {
+    // (undocumented)
+    __shadowConfig__?: ShadowConfig;
     arrowButtonsContainer: IStyle;
     icon: IStyle;
     input: IStyle;
@@ -9321,6 +9325,8 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
 
 // @public (undocumented)
 export interface ITextFieldStyles {
+    // (undocumented)
+    __shadowConfig__?: ShadowConfig;
     description: IStyle;
     errorMessage: IStyle;
     field: IStyle;

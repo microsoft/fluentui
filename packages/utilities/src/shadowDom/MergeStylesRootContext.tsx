@@ -1,13 +1,8 @@
 import * as React from 'react';
-import { EventMap, Stylesheet } from '@fluentui/merge-styles';
+import { Stylesheet } from '@fluentui/merge-styles';
 import { getWindow } from '../dom';
 
 declare global {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  interface Window {
-    __mergeStylesAdoptedStyleSheets__?: EventMap<string, Stylesheet>;
-  }
-
   // eslint-disable-next-line @typescript-eslint/naming-convention
   interface DocumentOrShadowRoot {
     /** [MDN Reference](https://developer.mozilla.org/docs/Web/API/Document/adoptedStyleSheets) */
@@ -65,29 +60,25 @@ export const MergeStylesRootProvider_unstable: React.FC<MergeStylesRootProviderP
       return;
     }
 
-    if (!win.__mergeStylesAdoptedStyleSheets__) {
-      win.__mergeStylesAdoptedStyleSheets__ = new EventMap<string, Stylesheet>();
-    }
-
-    win.__mergeStylesAdoptedStyleSheets__.on('add-sheet', sheetHandler);
+    Stylesheet.onAddConstructableStyleSheet(sheetHandler);
 
     return () => {
-      win?.__mergeStylesAdoptedStyleSheets__ && win.__mergeStylesAdoptedStyleSheets__.off('add-sheet', sheetHandler);
+      Stylesheet.offAddConstructableStyleSheet(sheetHandler);
     };
   }, [win, sheetHandler]);
 
   // Read stylesheets from window on mount
   React.useEffect(() => {
-    if (!win || !win.__mergeStylesAdoptedStyleSheets__) {
+    if (!win) {
       return;
     }
 
     let changed = false;
     const next = new Map<string, Stylesheet>(stylesheets);
-    win.__mergeStylesAdoptedStyleSheets__.forEach((sheet, key) => {
+    Stylesheet.forEachAdoptedStyleSheet((sheet, key) => {
       next.set(key, sheet);
       changed = true;
-    });
+    }, win);
 
     if (changed) {
       setStylesheets(next);

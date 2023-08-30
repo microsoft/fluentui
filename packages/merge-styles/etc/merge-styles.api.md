@@ -60,7 +60,10 @@ export class EventMap<K, V> {
 // @public
 export function fontFace(font: IFontFace): void;
 
-// Warning: (ae-forgotten-export) The symbol "IStylesheetKey" needs to be exported by the entry point index.d.ts
+// @public (undocumented)
+export const GLOBAL_STYLESHEET_KEY = "__global__";
+
+// Warning: (ae-forgotten-export) The symbol "IShadowConfig" needs to be exported by the entry point index.d.ts
 //
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
@@ -69,7 +72,7 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunction<any, any>;
     };
-} & IStylesheetKey;
+} & IShadowConfig;
 
 // @public
 export interface ICSPSettings {
@@ -101,7 +104,7 @@ export const InjectionMode: {
     none: 0;
     insertNode: 1;
     appendChild: 2;
-    unstable_constructibleStylesheet: 3;
+    constructableStylesheet: 3;
     insertNodeAndConstructableStylesheet: 4;
     appedChildAndConstructableStylesheet: 5;
 };
@@ -116,7 +119,7 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     subComponentStyles: {
         [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never>;
     };
-} & IStylesheetKey;
+} & IShadowConfig;
 
 // @public
 export interface IRawFontStyle {
@@ -468,7 +471,7 @@ export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet> = {
     subComponentStyles?: {
         [P in keyof TStyleSet['subComponentStyles']]: IStyleFunctionOrObject<any, any>;
     };
-} & IStylesheetKey;
+} & IShadowConfig;
 
 // @public
 export interface IStyleSheetConfig {
@@ -533,7 +536,10 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TS
 export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>): IProcessedStyleSet<any>;
+
+// @public (undocumented)
+export function mergeStyleSets(shadowConfig: ShadowConfig, ...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
 export function mergeStyleSets(shadowConfig: ShadowConfig, ...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
@@ -550,6 +556,13 @@ export { Omit_2 as Omit }
 // @public
 export function setRTL(isRTL: boolean): void;
 
+// @public (undocumented)
+export type ShadowConfig = {
+    stylesheetKey: string;
+    inShadow: boolean;
+    window?: Window;
+};
+
 // @public
 export class Stylesheet {
     constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string);
@@ -557,27 +570,41 @@ export class Stylesheet {
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
+    get counter(): number;
+    // (undocumented)
+    static forEachAdoptedStyleSheet(callback: (value: Stylesheet, key: string, map: Map<string, Stylesheet>) => void, srcWindow?: Window): void;
+    // (undocumented)
     getAdoptableStyleSheet(): CSSStyleSheet | undefined;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
     };
-    static getInstance({ stylesheetKey, inShadow }?: ShadowConfig): Stylesheet;
+    static getInstance(shadowConfig?: ShadowConfig): Stylesheet;
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
+    // (undocumented)
+    static offAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
+    // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
+    //
+    // (undocumented)
+    static onAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
     onInsertRule(callback: Function): Function;
     onReset(callback: Function): Function;
+    // (undocumented)
+    static projectStylesToWindow(targetWindow: Window, srcWindow?: Window): void;
     reset(): void;
     // (undocumented)
     resetKeys(): void;
     serialize(): string;
+    // (undocumented)
+    setAdoptableStyleSheet(sheet: CSSStyleSheet): void;
     setConfig(config?: IStyleSheetConfig): void;
 }
 
 // Warnings were encountered during analysis:
 //
-// lib/IStyleSet.d.ts:53:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+// lib/IStyleSet.d.ts:54:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

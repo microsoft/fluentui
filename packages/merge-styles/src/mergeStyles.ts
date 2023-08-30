@@ -26,10 +26,12 @@ export function mergeCss(
   shadowConfig?: ShadowConfig,
 ): string {
   const styleArgs = args instanceof Array ? args : [args];
+  const opts = options || {};
+  const { shadowConfig } = opts;
   const { classes, objects } = extractStyleParts(shadowConfig, styleArgs);
 
   if (objects.length) {
-    classes.push(styleToClassName(options || {}, shadowConfig, objects));
+    classes.push(styleToClassName(opts, objects));
   }
 
   return classes.join(' ');

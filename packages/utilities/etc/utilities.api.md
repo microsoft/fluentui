@@ -22,7 +22,7 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import type { ShadowConfig } from '@fluentui/merge-styles';
 import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public
@@ -1252,6 +1252,7 @@ export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TSt
 export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyleProps, TStyleSet> & {
     __cachedInputs__: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
     __noStyleOverride__: boolean;
+    __shadowConfig__?: ShadowConfig;
 };
 
 // @public
@@ -1276,7 +1277,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export const useAdoptedStylesheet_unstable: (stylesheetKey: string, adopteGlobally?: boolean) => boolean;
+export const useAdoptedStylesheet_unstable: (stylesheetKey: string) => boolean;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;

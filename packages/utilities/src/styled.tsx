@@ -5,8 +5,10 @@ import {
   useHasMergeStylesShadowRootContext,
 } from './shadowDom/MergeStylesShadowRootContext';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
-import type { IStyleSet, IStyleFunctionOrObject } from '@fluentui/merge-styles';
-import { ShadowConfig } from '@fluentui/merge-styles/lib/mergeStyleSets';
+import type { IStyleSet, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
+import { getWindow } from './dom/getWindow';
+// eslint-disable-next-line
+import { useWindow } from '@fluentui/react-window-provider';
 
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
   styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
@@ -33,6 +35,9 @@ export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyl
 
   /** True if no styles prop or styles from Customizer is passed to wrapped component. */
   __noStyleOverride__: boolean;
+
+  /** Shadow DOM configuration object */
+  __shadowConfig__?: ShadowConfig;
 };
 
 /**
@@ -100,12 +105,19 @@ export function styled<
     const { styles: customizedStyles, dir, ...rest } = settings;
     const additionalProps = getProps ? getProps(props) : undefined;
 
+    const win = useWindow() ?? getWindow();
     const inShadow = useHasMergeStylesShadowRootContext();
-    const shadowDom = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow });
-    if (shadowDom.current.stylesheetKey !== scope || shadowDom.current.inShadow !== inShadow) {
-      shadowDom.current = {
+    const shadowConfig = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow });
+    if (
+      shadowConfig.current.stylesheetKey !== scope ||
+      shadowConfig.current.inShadow !== inShadow ||
+      shadowConfig.current.window !== win
+      // false
+    ) {
+      shadowConfig.current = {
         stylesheetKey: scope,
         inShadow,
+        window: win,
       };
     }
 
@@ -139,25 +151,11 @@ export function styled<
       // styles.current.__inShadow__ = inShadow;
     }
 
+    styles.current.__shadowConfig__ = shadowConfig.current;
+
     useAdoptedStylesheet_unstable(scope);
 
-    // const inShadow = useAdoptedStylesheet_unstable(stylesheetKey);
-    // if (styles.current) {
-    //   // eslint-disable-next-line
-    //   // @ts-ignore
-    //   styles.current.__stylesheetKey__ = inShadow ? stylesheetKey : undefined;
-    // }
-
-    return (
-      <Component
-        ref={forwardedRef}
-        {...rest}
-        {...additionalProps}
-        {...props}
-        shadowDom={shadowDom.current}
-        styles={styles.current}
-      />
-    );
+    return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });
   // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
   // able to drop IE 11 support and compile with ES6 libs

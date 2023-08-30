@@ -6,6 +6,7 @@ import { IConcatenatedStyleSet, IProcessedStyleSet, IStyleSet } from './IStyleSe
 import { getStyleOptions } from './StyleOptionsState';
 import { applyRegistration, styleToRegistration } from './styleToClassName';
 import { ObjectOnly } from './ObjectOnly';
+import { isShadowConfig, ShadowConfig } from './shadowConfig';
 
 export type ShadowConfig = {
   stylesheetKey: string;
@@ -82,7 +83,14 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(
+  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
+): IProcessedStyleSet<any>;
+
+export function mergeStyleSets(
+  shadowConfig: ShadowConfig,
+  ...styleSets: Array<IStyleSet | undefined | false | null>
+): IProcessedStyleSet<any>;
 
 export function mergeStyleSets(
   shadowConfig: ShadowConfig,
@@ -97,16 +105,17 @@ export function mergeStyleSets(
  *
  * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any> {
+export function mergeStyleSets(
+  ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
+): IProcessedStyleSet<any> {
   let shadowConfig: ShadowConfig | undefined = undefined;
   let sets = styleSets;
-  const first = styleSets[0];
-  if (first && first.hasOwnProperty('stylesheetKey')) {
+  if (isShadowConfig(styleSets[0])) {
     shadowConfig = styleSets[0] as ShadowConfig;
     sets = styleSets.slice(1);
   }
 
-  return mergeCssSets(styleSets as any, getStyleOptions(), shadowConfig);
+  return mergeCssSets(sets as any, { ...getStyleOptions(), shadowConfig });
 }
 
 /**
@@ -212,6 +221,7 @@ export function mergeCssSets(
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 
   const styleSet = styleSets[0];
+  const { shadowConfig } = options || {};
 
   if (!styleSet && styleSets.length <= 1) {
     return { subComponentStyles: {} } as any;

@@ -1,6 +1,6 @@
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { Stylesheet } from './Stylesheet';
-import { ShadowConfig } from './mergeStyleSets';
+import { ShadowConfig } from './shadowConfig';
 
 /**
  * Separates the classes and style objects. Any classes that are pre-registered

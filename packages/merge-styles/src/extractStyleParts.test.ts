@@ -1,6 +1,6 @@
 import { extractStyleParts } from './extractStyleParts';
 import { mergeCss } from './mergeStyles';
-import { ShadowConfig } from './mergeStyleSets';
+import { ShadowConfig } from './shadowConfig';
 import { Stylesheet, InjectionMode } from './Stylesheet';
 
 const _stylesheet: Stylesheet = Stylesheet.getInstance();
