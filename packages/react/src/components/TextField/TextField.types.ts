@@ -2,6 +2,7 @@ import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory TextField}
@@ -395,6 +396,8 @@ export interface ITextFieldStyles {
    * Styling for reveal password icon
    */
   revealIcon: IStyle;
+
+  __shadowConfig__?: ShadowConfig;
 }
 
 /**
