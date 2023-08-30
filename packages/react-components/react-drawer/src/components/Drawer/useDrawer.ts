@@ -17,16 +17,21 @@ import { DrawerInline } from '../DrawerInline/DrawerInline';
 export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
   const { type = 'overlay' } = props;
 
+  const elementType = type === 'overlay' ? DrawerOverlay : DrawerInline;
+
   return {
     components: {
-      root: type === 'overlay' ? DrawerOverlay : DrawerInline,
+      root: elementType,
     },
 
-    root: slot.always(props, {
-      defaultProps: {
+    root: slot.always<DrawerProps>(
+      slot.resolveShorthand({
         ref,
-      } as DrawerProps,
-      elementType: type === 'overlay' ? DrawerOverlay : DrawerInline,
-    }),
+        ...props,
+      }),
+      {
+        elementType,
+      },
+    ),
   };
 };

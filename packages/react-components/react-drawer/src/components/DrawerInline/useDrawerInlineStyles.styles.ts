@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useDrawerBaseStyles } from '../../util/useDrawerBaseStyles.styles';
 import { tokens } from '@fluentui/react-theme';
+
+import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
+import { drawerCSSVars, useDrawerBaseClassNames } from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
   root: 'fui-DrawerInline',
@@ -12,17 +13,35 @@ export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
+const separatorValues = ['1px', 'solid', tokens.colorNeutralBackground3] as const;
+const useDrawerRootStyles = makeStyles({
   root: {
     position: 'relative',
+    opacity: 0,
+    transitionProperty: 'opacity, transform',
+    willChange: 'opacity, transform',
   },
 
   /* Separator */
   separatorStart: {
-    ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
+    ...shorthands.borderRight(...separatorValues),
   },
   separatorEnd: {
-    ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
+    ...shorthands.borderLeft(...separatorValues),
+  },
+
+  /* Positioning */
+  start: {
+    transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
+  },
+  end: {
+    transform: `translate3D(var(${drawerCSSVars.drawerSizeVar}), 0, 0)`,
+  },
+
+  /* Visible */
+  visible: {
+    opacity: 1,
+    transform: `translate3D(0, 0, 0)`,
   },
 });
 
@@ -30,24 +49,24 @@ const useStyles = makeStyles({
  * Apply styling to the DrawerInline slots based on the state
  */
 export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): DrawerInlineState => {
-  const baseStyles = useDrawerBaseStyles();
-  const styles = useStyles();
+  const baseClassNames = useDrawerBaseClassNames(state);
+  const rootStyles = useDrawerRootStyles();
 
   const separatorClass = React.useMemo(() => {
     if (!state.separator) {
       return undefined;
     }
 
-    return state.position === 'start' ? styles.separatorStart : styles.separatorEnd;
-  }, [state.position, state.separator, styles.separatorEnd, styles.separatorStart]);
+    return state.position === 'start' ? rootStyles.separatorStart : rootStyles.separatorEnd;
+  }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
 
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
-    baseStyles.root,
-    styles.root,
-    state.size && baseStyles[state.size],
-    state.position && baseStyles[state.position],
+    baseClassNames,
+    rootStyles.root,
     separatorClass,
+    rootStyles[state.position],
+    state.motion.active && rootStyles.visible,
     state.root.className,
   );
 
