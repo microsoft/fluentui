@@ -24,10 +24,12 @@ export function mergeCss(
   options?: IStyleOptions,
 ): string {
   const styleArgs = args instanceof Array ? args : [args];
-  const { classes, objects } = extractStyleParts(styleArgs);
+  const opts = options || {};
+  const { shadowConfig } = opts;
+  const { classes, objects } = extractStyleParts(shadowConfig, styleArgs);
 
   if (objects.length) {
-    classes.push(styleToClassName(options || {}, objects));
+    classes.push(styleToClassName(opts, objects));
   }
 
   return classes.join(' ');
