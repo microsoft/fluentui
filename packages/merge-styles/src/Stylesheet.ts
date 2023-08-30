@@ -2,6 +2,8 @@
 // globals in stylesheets will be addressed as part of shadow DOM work.
 // See: https://github.com/microsoft/fluentui/issues/28058
 import { IStyle } from './IStyle';
+import { DEFAULT_SHADOW_CONFIG, GLOBAL_STYLESHEET_KEY, ShadowConfig } from './shadowConfig';
+import { EventHandler, EventMap } from './EventMap';
 
 export const InjectionMode = {
   /**
@@ -18,6 +20,21 @@ export const InjectionMode = {
    * Appends rules using appendChild.
    */
   appendChild: 2 as 2,
+
+  /**
+   * Inserts rules into constructable stylesheets.
+   */
+  constructableStylesheet: 3 as 3,
+
+  /**
+   * Same as `insertNode` and `constructableStylesheet`
+   */
+  insertNodeAndConstructableStylesheet: 4 as 4,
+
+  /**
+   * Same as `appendChild` and `constructableStylesheet`
+   */
+  appedChildAndConstructableStylesheet: 5 as 5,
 };
 
 export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
@@ -91,11 +108,21 @@ export interface ISerializedStylesheet {
 }
 
 const STYLESHEET_SETTING = '__stylesheet__';
+
+const ADOPTED_STYLESHEETS = '__mergeStylesAdoptedStyleSheets__';
+
 /**
  * MSIE 11 doesn't cascade styles based on DOM ordering, but rather on the order that each style node
  * is created. As such, to maintain consistent priority, IE11 should reuse a single style node.
  */
 const REUSE_STYLE_NODE = typeof navigator !== 'undefined' && /rv:11.0/.test(navigator.userAgent);
+
+const SUPPORTS_CONSTRUCTIBLE_STYLESHEETS = typeof window !== 'undefined' && 'CSSStyleSheet' in window;
+
+export type AdoptableStylesheet = {
+  fluentSheet: Stylesheet;
+  adoptedSheet: CSSStyleSheet;
+};
 
 let _global: (Window | {}) & {
   [STYLESHEET_SETTING]?: Stylesheet;
@@ -103,6 +130,7 @@ let _global: (Window | {}) & {
     mergeStyles?: IStyleSheetConfig;
     serializedStylesheet?: ISerializedStylesheet;
   };
+  [ADOPTED_STYLESHEETS]?: EventMap<string, Stylesheet>;
 } = {};
 
 // Grab window.
@@ -117,6 +145,8 @@ try {
 
 let _stylesheet: Stylesheet | undefined;
 
+let constructableStyleSheetCounter = 0;
+
 /**
  * Represents the state of styles registered in the page. Abstracts
  * the surface for adding styles to the stylesheet, exposes helpers
@@ -127,10 +157,14 @@ let _stylesheet: Stylesheet | undefined;
 export class Stylesheet {
   private _lastStyleElement?: HTMLStyleElement;
   private _styleElement?: HTMLStyleElement;
+
+  private _constructibleSheet?: CSSStyleSheet;
+  private _stylesheetKey?: string;
+
   private _rules: string[] = [];
   private _preservedRules: string[] = [];
   private _config: IStyleSheetConfig;
-  private _counter = 0;
+  private _styleCounter = 0;
   private _keyToClassName: { [key: string]: string } = {};
   private _onInsertRuleCallbacks: Function[] = [];
   private _onResetCallbacks: Function[] = [];
@@ -139,35 +173,158 @@ export class Stylesheet {
   /**
    * Gets the singleton instance.
    */
-  public static getInstance(): Stylesheet {
-    _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
+  public static getInstance(shadowConfig?: ShadowConfig): Stylesheet {
+    const { stylesheetKey, inShadow, window: win } = shadowConfig ?? DEFAULT_SHADOW_CONFIG;
+    const global = (win ?? _global) as typeof _global;
+
+    if (stylesheetKey && inShadow) {
+      _stylesheet = global[ADOPTED_STYLESHEETS]?.get(stylesheetKey);
+    } else {
+      _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
+    }
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
-      const fabricConfig = _global?.FabricConfig || {};
+      const fabricConfig = global?.FabricConfig || {};
+      if (inShadow) {
+        fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
+        fabricConfig.mergeStyles.injectionMode = InjectionMode.constructableStylesheet;
+      }
 
-      const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
+      const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet, stylesheetKey);
       _stylesheet = stylesheet;
-      _global[STYLESHEET_SETTING] = stylesheet;
+      if (stylesheetKey) {
+        if (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY) {
+          if (!global[ADOPTED_STYLESHEETS]) {
+            global[ADOPTED_STYLESHEETS] = new EventMap();
+          }
+          global[ADOPTED_STYLESHEETS]!.set(stylesheetKey, stylesheet);
+          (global as Window).requestAnimationFrame?.(() => {
+            global[ADOPTED_STYLESHEETS]!.raise('add-sheet', { key: stylesheetKey, sheet: stylesheet });
+          });
+        }
+
+        if (stylesheetKey === GLOBAL_STYLESHEET_KEY) {
+          global[STYLESHEET_SETTING] = stylesheet;
+        }
+      } else {
+        global[STYLESHEET_SETTING] = stylesheet;
+      }
     }
 
     return _stylesheet;
   }
 
-  constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet) {
+  public static projectStylesToWindow(targetWindow: Window, srcWindow?: Window): void {
+    const global = (srcWindow ?? _global) as typeof _global;
+    const clone = new EventMap<string, Stylesheet>();
+
+    // TODO: add support for <style> tags
+    global[ADOPTED_STYLESHEETS]?.forEach((value, key) => {
+      const srcSheet = value.getAdoptableStyleSheet();
+      if (!srcSheet) {
+        return;
+      }
+
+      const constructableSheet = new (targetWindow as Window & typeof globalThis).CSSStyleSheet();
+
+      for (let i = 0; i < srcSheet.cssRules.length; i++) {
+        const rule = srcSheet.cssRules[i];
+        constructableSheet.insertRule(rule.cssText);
+      }
+
+      const serialized = JSON.parse(value.serialize());
+      const stylesheet = new Stylesheet(
+        {
+          injectionMode: InjectionMode.constructableStylesheet,
+        },
+        serialized,
+        key,
+      );
+
+      stylesheet.setAdoptableStyleSheet(constructableSheet);
+      clone.set(key, stylesheet);
+    });
+
+    (targetWindow as typeof _global)[ADOPTED_STYLESHEETS] = clone;
+  }
+
+  public static onAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void {
+    const global = (targetWindow ?? _global) as typeof _global;
+
+    if (!global[ADOPTED_STYLESHEETS]) {
+      global[ADOPTED_STYLESHEETS] = new EventMap();
+    }
+
+    global[ADOPTED_STYLESHEETS]!.on('add-sheet', callback);
+  }
+
+  public static offAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void {
+    const global = (targetWindow ?? _global) as typeof _global;
+
+    if (!global[ADOPTED_STYLESHEETS]) {
+      return;
+    }
+
+    global[ADOPTED_STYLESHEETS]!.off('add-sheet', callback);
+  }
+
+  public static forEachAdoptedStyleSheet(
+    callback: (value: Stylesheet, key: string, map: Map<string, Stylesheet>) => void,
+    srcWindow?: Window,
+  ): void {
+    const global = (srcWindow ?? _global) as typeof _global;
+
+    if (!global[ADOPTED_STYLESHEETS]) {
+      return;
+    }
+
+    global[ADOPTED_STYLESHEETS]!.forEach(callback);
+  }
+
+  constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string) {
+    // If there is no document we won't have an element to inject into.
+    const defaultInjectionMode = typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode;
     this._config = {
-      // If there is no document we won't have an element to inject into.
-      injectionMode: typeof document === 'undefined' ? InjectionMode.none : InjectionMode.insertNode,
+      injectionMode: defaultInjectionMode,
       defaultPrefix: 'css',
       namespace: undefined,
       cspSettings: undefined,
       ...config,
     };
 
+    // Need to add a adoptedStyleSheets polyfill
+    if (!SUPPORTS_CONSTRUCTIBLE_STYLESHEETS && this._config.injectionMode === InjectionMode.constructableStylesheet) {
+      this._config.injectionMode = defaultInjectionMode;
+    }
+
+    // When something is inserted globally, outside of a shadow context
+    // we proably still need to adopt it in the shadow context
+    if (stylesheetKey === GLOBAL_STYLESHEET_KEY) {
+      if (this._config.injectionMode === InjectionMode.insertNode) {
+        this._config.injectionMode = InjectionMode.insertNodeAndConstructableStylesheet;
+      } else if (this._config.injectionMode === InjectionMode.appedChildAndConstructableStylesheet) {
+        this._config.injectionMode = InjectionMode.appedChildAndConstructableStylesheet;
+      }
+    }
+
     this._classNameToArgs = serializedStylesheet?.classNameToArgs ?? this._classNameToArgs;
-    this._counter = serializedStylesheet?.counter ?? this._counter;
+    // Come back to this
+    if (this._config.injectionMode !== InjectionMode.constructableStylesheet) {
+      this._styleCounter = serializedStylesheet?.counter ?? this._styleCounter;
+    }
     this._keyToClassName = this._config.classNameCache ?? serializedStylesheet?.keyToClassName ?? this._keyToClassName;
     this._preservedRules = serializedStylesheet?.preservedRules ?? this._preservedRules;
     this._rules = serializedStylesheet?.rules ?? this._rules;
+
+    this._stylesheetKey = stylesheetKey;
+  }
+
+  public getAdoptableStyleSheet(): CSSStyleSheet | undefined {
+    return this._constructibleSheet;
+  }
+
+  public setAdoptableStyleSheet(sheet: CSSStyleSheet): void {
+    this._constructibleSheet = sheet;
   }
 
   /**
@@ -287,28 +444,48 @@ export class Stylesheet {
    */
   public insertRule(rule: string, preserve?: boolean): void {
     const { injectionMode } = this._config;
-    const element = injectionMode !== InjectionMode.none ? this._getStyleElement() : undefined;
+
+    let element: HTMLStyleElement | undefined = undefined;
+    let constructableSheet: CSSStyleSheet | undefined = undefined;
+
+    if (injectionMode === InjectionMode.insertNode || injectionMode === InjectionMode.appendChild) {
+      element = this._getStyleElement();
+    } else if (injectionMode === InjectionMode.constructableStylesheet) {
+      constructableSheet = this._getConstructableStylesheet();
+    } else if (
+      injectionMode === InjectionMode.insertNodeAndConstructableStylesheet ||
+      injectionMode === InjectionMode.appedChildAndConstructableStylesheet
+    ) {
+      element = this._getStyleElement();
+      constructableSheet = this._getConstructableStylesheet();
+    }
 
     if (preserve) {
       this._preservedRules.push(rule);
     }
 
-    if (element) {
+    if (element || constructableSheet) {
       switch (injectionMode) {
         case InjectionMode.insertNode:
-          const { sheet } = element!;
+          this._insertNode(element, rule);
+          break;
 
-          try {
-            (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
-          } catch (e) {
-            // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
-            // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
-            // which could be slower and bulkier.
-          }
+        case InjectionMode.insertNodeAndConstructableStylesheet:
+          this._insertNode(element, rule);
+          this._insertRuleIntoSheet(constructableSheet, rule);
           break;
 
         case InjectionMode.appendChild:
-          element.appendChild(document.createTextNode(rule));
+          element && (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
+          break;
+
+        case InjectionMode.appedChildAndConstructableStylesheet:
+          element && (element as HTMLStyleElement).appendChild(document.createTextNode(rule));
+          this._insertRuleIntoSheet(constructableSheet, rule);
+          break;
+
+        case InjectionMode.constructableStylesheet:
+          this._insertRuleIntoSheet(constructableSheet, rule);
           break;
       }
     } else {
@@ -350,6 +527,54 @@ export class Stylesheet {
     this._keyToClassName = {};
   }
 
+  public get counter(): number {
+    return this._counter;
+  }
+
+  private get _counter(): number {
+    return this._config.injectionMode === InjectionMode.constructableStylesheet
+      ? constructableStyleSheetCounter
+      : this._styleCounter;
+  }
+
+  private set _counter(value: number) {
+    if (this._config.injectionMode === InjectionMode.constructableStylesheet) {
+      constructableStyleSheetCounter = value;
+    } else {
+      this._styleCounter = value;
+    }
+  }
+
+  private _insertNode(element: HTMLStyleElement | undefined, rule: string): void {
+    if (!element) {
+      return;
+    }
+
+    const { sheet } = element! as HTMLStyleElement;
+
+    try {
+      (sheet as CSSStyleSheet).insertRule(rule, (sheet as CSSStyleSheet).cssRules.length);
+    } catch (e) {
+      // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
+      // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
+      // which could be slower and bulkier.
+    }
+  }
+
+  private _insertRuleIntoSheet(sheet: CSSStyleSheet | undefined, rule: string): void {
+    if (!sheet) {
+      return;
+    }
+
+    try {
+      sheet!.insertRule(rule, sheet!.cssRules.length);
+    } catch (e) {
+      // The browser will throw exceptions on unsupported rules (such as a moz prefix in webkit.)
+      // We need to swallow the exceptions for this scenario, otherwise we'd need to filter
+      // which could be slower and bulkier.
+    }
+  }
+
   private _getStyleElement(): HTMLStyleElement | undefined {
     if (!this._styleElement && typeof document !== 'undefined') {
       this._styleElement = this._createStyleElement();
@@ -370,6 +595,10 @@ export class Stylesheet {
     let nodeToInsertBefore: Node | null = null;
 
     styleElement.setAttribute('data-merge-styles', 'true');
+
+    if (this._stylesheetKey === GLOBAL_STYLESHEET_KEY) {
+      styleElement.setAttribute('data-merge-styles-global', 'true');
+    }
 
     const { cspSettings } = this._config;
     if (cspSettings) {
@@ -395,6 +624,19 @@ export class Stylesheet {
     this._lastStyleElement = styleElement;
 
     return styleElement;
+  }
+
+  private _getConstructableStylesheet(): CSSStyleSheet {
+    if (!this._constructibleSheet) {
+      this._constructibleSheet = this._createConstructableStylesheet();
+    }
+
+    return this._constructibleSheet;
+  }
+
+  private _createConstructableStylesheet(): CSSStyleSheet {
+    const sheet = new CSSStyleSheet();
+    return sheet;
   }
 
   private _findPlaceholderStyleTag(): Element | null {
