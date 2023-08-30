@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Small Button now uses token for its border radius",
-  "packageName": "@fluentui/react-button",
-  "email": "mehars.6925@gmail.com",
-  "dependentChangeType": "patch"
-}

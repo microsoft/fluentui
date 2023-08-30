@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add IconDirectionProvider to FluentProvider",
-  "packageName": "@fluentui/react-provider",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}
