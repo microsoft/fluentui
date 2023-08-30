@@ -5,6 +5,7 @@ import type { IIconProps } from '../../Icon';
 import type { ITheme, IStyle } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory SpinButton}
@@ -298,6 +299,8 @@ export interface ISpinButtonStyles {
    * Styles for the arrowButtonsContainer
    */
   arrowButtonsContainer: IStyle;
+
+  __shadowConfig__?: ShadowConfig;
 }
 
 /**
