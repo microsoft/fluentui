@@ -15,7 +15,7 @@
     "storybook": "start-storybook",
     "test": "jest --passWithNoTests",
     "type-check": "tsc -b tsconfig.json",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./src/stories/**/*.stories.tsx\""
   },
   "dependencies": {
     "@fluentui/react-components": "*"
