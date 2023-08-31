@@ -1,7 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import { assertSlots } from '@fluentui/react-utilities';
 import { Transition } from 'react-transition-group';
 import type { ToastContainerState, ToastContainerSlots, ToastContainerContextValues } from './ToastContainer.types';
