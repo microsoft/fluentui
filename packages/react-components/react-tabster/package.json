@@ -35,7 +35,7 @@
     "@fluentui/react-theme": "^9.1.11",
     "@fluentui/react-utilities": "^9.13.0",
     "@griffel/react": "^1.5.14",
-    "@swc/helpers": "^0.4.14",
+    "@swc/helpers": "^0.5.1",
     "keyborg": "^2.0.0",
     "tabster": "^4.7.0"
   },

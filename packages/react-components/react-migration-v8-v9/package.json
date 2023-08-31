@@ -32,14 +32,14 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.37",
-    "@fluentui/react": "^8.111.1",
+    "@fluentui/fluent2-theme": "^8.107.38",
+    "@fluentui/react": "^8.111.2",
     "@fluentui/react-components": "^9.30.1",
     "@fluentui/react-icons": "^2.0.207",
     "@fluentui/react-theme": "^9.1.11",
     "@fluentui/react-utilities": "^9.13.0",
     "@griffel/react": "^1.5.14",
-    "@swc/helpers": "^0.4.14"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
