@@ -58,9 +58,6 @@ export const styles = css`
     row-gap: ${spacingVerticalM};
     column-gap: ${spacingHorizontalM};
     padding: ${spacingVerticalM} ${spacingHorizontalM};
-    row-gap: 12px;
-    column-gap: 12px;
-    padding: 12px;
     box-sizing: border-box;
   }
 
