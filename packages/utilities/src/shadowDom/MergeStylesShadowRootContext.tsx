@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { GLOBAL_STYLESHEET_KEY } from '@fluentui/merge-styles';
+import { FocusRectsProvider } from '../FocusRectsProvider';
 import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
@@ -36,11 +37,16 @@ export const MergeStylesShadowRootProvider_unstable: React.FC<MergeStylesShadowR
       shadowRoot,
     };
   }, [shadowRoot]);
+  const focusProviderRef = React.useRef<HTMLDivElement>(null);
 
   return (
     <MergeStylesShadowRootContext.Provider value={value} {...props}>
       <GlobalStyles />
-      {props.children}
+      <FocusRectsProvider providerRef={focusProviderRef}>
+        <div className="ms-MergeStylesShadowRootProvider" ref={focusProviderRef}>
+          {props.children}
+        </div>
+      </FocusRectsProvider>
     </MergeStylesShadowRootContext.Provider>
   );
 };
