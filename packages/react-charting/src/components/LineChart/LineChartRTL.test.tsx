@@ -7,6 +7,8 @@ import { ILineChartPoints, LineChart } from './index';
 import { mergeStyles } from '@fluentui/merge-styles';
 
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { LineChartBase } from './LineChart.base';
+import { IChartProps, ILineChartDataPoint } from '../../index';
 
 const beforeAll = () => {
   jest.spyOn(Date.prototype, 'toLocaleString').mockReturnValue('08/25/2023');
@@ -26,6 +28,7 @@ const basicPoints: ILineChartPoints[] = [
       { x: 40, y: 80 },
     ],
     color: 'red',
+    onLegendClick: () => {},
   },
   {
     legend: 'metaData2',
@@ -45,7 +48,7 @@ const basicPoints: ILineChartPoints[] = [
   },
 ];
 
-const basicChartPoints = {
+export const basicChartPoints = {
   chartTitle: 'LineChart',
   lineChartData: basicPoints,
 };
@@ -177,40 +180,6 @@ const chartPointsWithGaps = {
   lineChartData: pointsWithGaps,
 };
 
-describe('Line chart rendering', () => {
-  testWithoutWait(
-    'Should render the Line chart with numeric x-axis data',
-    LineChart,
-    { data: basicChartPoints },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-  );
-
-  testWithoutWait(
-    'Should render the Line chart with date x-axis data',
-    LineChart,
-    { data: dateChartPoints },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-    undefined,
-    beforeAll,
-  );
-
-  testWithoutWait(
-    'Should render the Line chart with points in multiple shapes',
-    LineChart,
-    { data: basicChartPoints, allowMultipleShapesForPoints: true },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-  );
-});
-
 const simplePoints = {
   chartTitle: 'Line Chart',
   lineChartData: [
@@ -336,6 +305,182 @@ const eventAnnotationProps = {
   mergedLabel: (count: number) => `${count} events`,
 };
 
+const getData = () => {
+  const data: ILineChartDataPoint[] = [];
+  const startdate = new Date('2020-03-01T00:00:00.000Z');
+  for (let i = 0; i < 10000; i++) {
+    data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: 500000 });
+  }
+
+  return data;
+};
+
+const getData2 = () => {
+  const data: ILineChartDataPoint[] = [];
+  const startdate = new Date('2020-03-01T00:00:00.000Z');
+  for (let i = 1000; i < 9000; i++) {
+    data.push({ x: new Date(startdate).setHours(startdate.getHours() + i), y: getY(i) });
+  }
+
+  return data;
+};
+
+const getY = (i: number) => {
+  let res: number = 0;
+  const newN = i % 1000;
+  if (newN < 500) {
+    res = newN * newN;
+  } else {
+    res = 1000000 - newN * newN;
+  }
+
+  return res;
+};
+
+const getDataDate = () => {
+  const data: ILineChartDataPoint[] = [];
+  const startdate = new Date('2020-03-01T00:00:00.000Z');
+  for (let i = 0; i < 10000; i++) {
+    data.push({ x: new Date(new Date(startdate).setHours(startdate.getHours() + i)), y: 500000 });
+  }
+
+  return data;
+};
+
+const getData2Date = () => {
+  const data: ILineChartDataPoint[] = [];
+  const startdate = new Date('2020-03-01T00:00:00.000Z');
+  for (let i = 1000; i < 9000; i++) {
+    data.push({ x: new Date(new Date(startdate).setHours(startdate.getHours() + i)), y: getYDate(i) });
+  }
+
+  return data;
+};
+
+const getYDate = (i: number) => {
+  let res: number = 0;
+  const newN = i % 1000;
+  if (newN < 500) {
+    res = newN * newN;
+  } else {
+    res = 1000000 - newN * newN;
+  }
+
+  return res;
+};
+
+const largeData: IChartProps = {
+  chartTitle: 'Line Chart',
+  lineChartData: [
+    {
+      legend: 'From_Legacy_to_O365',
+      data: getData(),
+      color: DefaultPalette.blue,
+      onLineClick: () => {},
+      hideNonActiveDots: true,
+      lineOptions: {
+        lineBorderWidth: '4',
+      },
+    },
+    {
+      legend: 'All',
+      data: getData2(),
+      color: DefaultPalette.green,
+      lineOptions: {
+        lineBorderWidth: '4',
+      },
+    },
+    {
+      legend: 'single point',
+      data: [
+        {
+          x: new Date('2020-03-05T00:00:00.000Z'),
+          y: 282000,
+        },
+      ],
+      color: DefaultPalette.yellow,
+    },
+  ],
+};
+
+const largeDataDate: IChartProps = {
+  chartTitle: 'Line Chart',
+  lineChartData: [
+    {
+      legend: 'From_Legacy_to_O365',
+      data: getDataDate(),
+      color: DefaultPalette.blue,
+      onLineClick: () => {},
+      hideNonActiveDots: true,
+      lineOptions: {
+        lineBorderWidth: '4',
+      },
+    },
+    {
+      legend: 'All',
+      data: getData2Date(),
+      color: DefaultPalette.green,
+      lineOptions: {
+        lineBorderWidth: '4',
+      },
+    },
+    {
+      legend: 'single point',
+      data: [
+        {
+          x: new Date('2020-03-05T00:00:00.000Z'),
+          y: 282000,
+        },
+      ],
+      color: DefaultPalette.yellow,
+    },
+  ],
+};
+
+describe('Line chart rendering', () => {
+  testWithoutWait(
+    'Should render the Line chart with numeric x-axis data',
+    LineChart,
+    { data: basicChartPoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Line chart with date x-axis data',
+    LineChart,
+    { data: dateChartPoints },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+    undefined,
+    beforeAll,
+  );
+
+  testWithoutWait(
+    'Should render the Line chart with points in multiple shapes',
+    LineChart,
+    { data: basicChartPoints, allowMultipleShapesForPoints: true },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+
+  testWithoutWait(
+    'Should render the Line chart with large data',
+    LineChart,
+    { data: largeData, optimizeLargeData: true },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
+});
+
 describe('Line chart - Subcomponent line', () => {
   testWithoutWait(
     'Should render the lines with the specified colors',
@@ -387,6 +532,7 @@ describe('Line chart - Subcomponent legend', () => {
     LineChart,
     { data: basicChartPoints },
     container => {
+      jest.spyOn(LineChartBase.prototype as any, '_handleChartMouseLeave').mockImplementation(() => {});
       const legend = screen.queryByText('metaData1');
       expect(legend).toBeDefined();
       fireEvent.mouseOver(legend!);
@@ -441,7 +587,7 @@ describe('Line chart - Subcomponent legend', () => {
   );
 
   testWithoutWait(
-    'Should select muultiple legends on single mouse click on different legends',
+    'Should select multiple legends on single mouse click on different legends',
     LineChart,
     {
       data: basicChartPoints,
@@ -467,7 +613,7 @@ describe('Line chart - Subcomponent legend', () => {
   );
 
   testWithoutWait(
-    'Should select muultiple color fill bar legends',
+    'Should select multiple color fill bar legends',
     LineChart,
     {
       data: basicChartPoints,
@@ -507,6 +653,190 @@ describe('Line chart - Subcomponent legend', () => {
       expect(getById(container, /toolTipcallout/i)).toHaveLength(0);
     },
   );
+
+  test('Should invoke the handler on mouse out of line points', () => {
+    const handleMouseOut = jest.spyOn(LineChartBase.prototype as any, '_handleMouseOut').mockImplementation(() => {});
+    jest.spyOn(LineChartBase.prototype as any, '_handleChartMouseLeave').mockImplementation(() => {});
+    const { container } = render(<LineChart data={basicChartPoints} />);
+    const points = getById(container, /circle/i);
+    expect(points).toHaveLength(6);
+    fireEvent.mouseOut(points[0]);
+    // Assert
+    expect(handleMouseOut).toHaveBeenCalled();
+  });
+
+  test('Should invoke the handler on focus on line points', () => {
+    const handleFocus = jest.spyOn(LineChartBase.prototype as any, '_handleFocus');
+    const { container } = render(<LineChart data={basicChartPoints} />);
+    const points = getById(container, /circle/i);
+    expect(points).toHaveLength(6);
+    fireEvent.focus(points[0]);
+    // Assert
+    expect(handleFocus).toHaveBeenCalled();
+  });
+
+  test('Should invoke the handler on mouse over large dataset - Numeric xAxis', () => {
+    const onMouseOverLargeDataset = jest.spyOn(LineChartBase.prototype as any, '_onMouseOverLargeDataset');
+    const { container } = render(<LineChart data={largeData} optimizeLargeData={true} />);
+    const paths = getById(container, /lineID/i);
+    expect(paths).toHaveLength(2);
+    fireEvent.mouseOver(paths[0]);
+    // Assert
+    expect(onMouseOverLargeDataset).toHaveBeenCalled();
+  });
+
+  test('Should invoke the handler on mouse over large dataset - Date xAxis', () => {
+    const onMouseOverLargeDataset = jest.spyOn(LineChartBase.prototype as any, '_onMouseOverLargeDataset');
+    const { container } = render(<LineChart data={largeDataDate} optimizeLargeData={true} />);
+    const paths = getById(container, /lineID/i);
+    expect(paths).toHaveLength(2);
+    fireEvent.mouseOver(paths[0]);
+    // Assert
+    expect(onMouseOverLargeDataset).toHaveBeenCalled();
+  });
+
+  test('Should select all line legends and clear all if all are selected', () => {
+    const handleMultipleLineLegendSelectionAction = jest.spyOn(
+      LineChartBase.prototype as any,
+      '_handleMultipleLineLegendSelectionAction',
+    );
+    render(
+      <LineChart
+        data={basicChartPoints}
+        legendProps={{
+          allowFocusOnLegends: true,
+          canSelectMultipleLegends: true,
+        }}
+      />,
+    );
+    const clearMultipleLegendSelections = jest.spyOn(LineChartBase.prototype as any, '_clearMultipleLegendSelections');
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    expect(legends).toHaveLength(3);
+    expect(legends[0]).toBeDefined();
+    fireEvent.click(legends[0]!);
+    expect(legends[1]).toBeDefined();
+    fireEvent.click(legends[1]!);
+    expect(legends[2]).toBeDefined();
+    fireEvent.click(legends[2]!);
+    const legendsAfterClick = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    // Assert
+    expect(handleMultipleLineLegendSelectionAction).toHaveBeenCalled();
+    expect(clearMultipleLegendSelections).toHaveBeenCalled();
+    expect(legendsAfterClick[0]).toHaveAttribute('aria-selected', 'false');
+    expect(legendsAfterClick[1]).toHaveAttribute('aria-selected', 'false');
+    expect(legendsAfterClick[2]).toHaveAttribute('aria-selected', 'false');
+  });
+
+  test('Should select all legends including colorFillBars and line legends and clear all if all are selected', () => {
+    const handleMultipleColorFillBarLegendSelectionAction = jest.spyOn(
+      LineChartBase.prototype as any,
+      '_handleMultipleColorFillBarLegendSelectionAction',
+    );
+    const clearMultipleLegendSelections = jest.spyOn(LineChartBase.prototype as any, '_clearMultipleLegendSelections');
+    render(
+      <LineChart
+        data={basicChartPoints}
+        colorFillBars={colorFillBarData}
+        legendProps={{ allowFocusOnLegends: true, canSelectMultipleLegends: true }}
+      />,
+    );
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    expect(legends).toHaveLength(5);
+    expect(legends[0]).toBeDefined();
+    fireEvent.click(legends[0]!);
+    expect(legends[1]).toBeDefined();
+    fireEvent.click(legends[1]!);
+    expect(legends[2]).toBeDefined();
+    fireEvent.click(legends[2]!);
+    expect(legends[3]).toBeDefined();
+    fireEvent.click(legends[3]!);
+    expect(legends[4]).toBeDefined();
+    fireEvent.click(legends[4]!);
+    const legendsAfterClick = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    // Assert
+    expect(handleMultipleColorFillBarLegendSelectionAction).toHaveBeenCalled();
+    expect(clearMultipleLegendSelections).toHaveBeenCalled();
+    expect(legendsAfterClick[0]).toHaveAttribute('aria-selected', 'false');
+    expect(legendsAfterClick[1]).toHaveAttribute('aria-selected', 'false');
+    expect(legendsAfterClick[2]).toHaveAttribute('aria-selected', 'false');
+    expect(legendsAfterClick[3]).toHaveAttribute('aria-selected', 'false');
+    expect(legendsAfterClick[4]).toHaveAttribute('aria-selected', 'false');
+  });
+
+  test('Should select one colorfillbar legends on single click and deselect on double click and clear all selections', () => {
+    const handleMultipleColorFillBarLegendSelectionAction = jest.spyOn(
+      LineChartBase.prototype as any,
+      '_handleMultipleColorFillBarLegendSelectionAction',
+    );
+    const clearMultipleLegendSelections = jest.spyOn(LineChartBase.prototype as any, '_clearMultipleLegendSelections');
+    render(
+      <LineChart
+        data={basicChartPoints}
+        colorFillBars={colorFillBarData}
+        legendProps={{ allowFocusOnLegends: true, canSelectMultipleLegends: true }}
+      />,
+    );
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    expect(legends).toHaveLength(5);
+    expect(legends[4]).toBeDefined();
+    fireEvent.click(legends[4]!);
+    const legendsAfterClick = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    // Assert
+    expect(handleMultipleColorFillBarLegendSelectionAction).toHaveBeenCalled();
+    expect(legendsAfterClick[4]).toHaveAttribute('aria-selected', 'true');
+    fireEvent.click(legends[4]!);
+    expect(handleMultipleColorFillBarLegendSelectionAction).toHaveBeenCalled();
+    expect(clearMultipleLegendSelections).toHaveBeenCalled();
+    expect(legendsAfterClick[4]).toHaveAttribute('aria-selected', 'false');
+  });
+
+  test('Should select one line legends on single click and deselect on double click and clear all selections', () => {
+    const handleMultipleLineLegendSelectionAction = jest.spyOn(
+      LineChartBase.prototype as any,
+      '_handleMultipleLineLegendSelectionAction',
+    );
+    const clearMultipleLegendSelections = jest.spyOn(LineChartBase.prototype as any, '_clearMultipleLegendSelections');
+    render(
+      <LineChart
+        data={basicChartPoints}
+        legendProps={{
+          allowFocusOnLegends: true,
+          canSelectMultipleLegends: true,
+        }}
+      />,
+    );
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    expect(legends).toHaveLength(3);
+    expect(legends[0]).toBeDefined();
+    fireEvent.click(legends[0]!);
+    const legendsAfterClick = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    // Assert
+    expect(handleMultipleLineLegendSelectionAction).toHaveBeenCalled();
+    expect(legendsAfterClick[0]).toHaveAttribute('aria-selected', 'true');
+    fireEvent.click(legends[0]!);
+    expect(handleMultipleLineLegendSelectionAction).toHaveBeenCalled();
+    expect(clearMultipleLegendSelections).toHaveBeenCalled();
+    expect(legendsAfterClick[0]).toHaveAttribute('aria-selected', 'false');
+  });
+
+  test('Should invoke the handler for mouse over colorFillBars legends', () => {
+    const handleChartMouseLeave = jest
+      .spyOn(LineChartBase.prototype as any, '_handleChartMouseLeave')
+      .mockImplementation(() => {});
+    render(
+      <LineChart
+        data={basicChartPoints}
+        colorFillBars={colorFillBarData}
+        legendProps={{ allowFocusOnLegends: true, canSelectMultipleLegends: true }}
+      />,
+    );
+    const legends = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'button');
+    expect(legends).toHaveLength(5);
+    expect(legends[4]).toBeDefined();
+    fireEvent.mouseOver(legends[4]!);
+    // Assert
+    expect(handleChartMouseLeave).toHaveBeenCalled();
+  });
 });
 
 describe('Line chart - Subcomponent Time Range', () => {

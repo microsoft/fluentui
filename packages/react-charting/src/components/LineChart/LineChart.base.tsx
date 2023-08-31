@@ -337,6 +337,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     );
   }
 
+  public injectIndexPropertyInLineChartData() {
+    return this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+  }
+
+  public checkInGap(pointIndex: number, gaps: ILineChartGap[], currentGapIndex: number) {
+    return this._checkInGap(pointIndex, gaps, currentGapIndex);
+  }
+
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
     return lineChartData
@@ -1028,11 +1036,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     this._refArray.push({ index: legendTitle, refElement: element });
   }
 
-  private _onMouseOverLargeDataset = (
+  private _onMouseOverLargeDataset(
     linenumber: number,
     lineHeight: number,
     mouseEvent: React.MouseEvent<SVGRectElement | SVGPathElement | SVGCircleElement>,
-  ) => {
+  ) {
     mouseEvent.persist();
     const { data } = this.props;
     const { lineChartData } = data;
@@ -1129,16 +1137,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         activeLine: linenumber,
       });
     }
-  };
+  }
 
-  private _handleFocus = (
+  private _handleFocus(
     lineId: string,
     x: number | Date,
 
     xAxisCalloutData: string | undefined,
     circleId: string,
     xAxisCalloutAccessibilityData?: IAccessibilityProps,
-  ) => {
+  ) {
     this._uniqueCallOutID = circleId;
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
     const xVal = x instanceof Date ? x.getTime() : x;
@@ -1169,7 +1177,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         activePoint: circleId,
       });
     }
-  };
+  }
 
   private _handleHover = (
     x: number | Date,
@@ -1230,18 +1238,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     return {};
   };
 
-  private _handleMouseOut = () => {
+  private _handleMouseOut() {
     d3Select(`#${this._verticalLine}`).attr('visibility', 'hidden');
-  };
+  }
 
-  private _handleChartMouseLeave = () => {
+  private _handleChartMouseLeave() {
     this._uniqueCallOutID = null;
     this.setState({
       isCalloutVisible: false,
       activePoint: '',
       activeLine: null,
     });
-  };
+  }
 
   private _handleLegendClick = (
     lineChartItem: LineChartDataWithIndex | IColorFillBarsProps,
@@ -1252,7 +1260,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
     }
   };
 
-  private _handleMultipleLineLegendSelectionAction = (selectedLine: LineChartDataWithIndex) => {
+  private _handleMultipleLineLegendSelectionAction(selectedLine: LineChartDataWithIndex) {
     const selectedLineIndex = this.state.selectedLegendPoints.reduce((acc, line, index) => {
       if (acc > -1 || line.legend !== selectedLine.legend) {
         return acc;
@@ -1293,9 +1301,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     const selectedLegendTitlesToPass = selectedLines.map((line: LineChartDataWithIndex) => line.legend);
     this._handleLegendClick(selectedLine, selectedLegendTitlesToPass);
-  };
+  }
 
-  private _handleMultipleColorFillBarLegendSelectionAction = (selectedColorFillBar: IColorFillBarsProps) => {
+  private _handleMultipleColorFillBarLegendSelectionAction(selectedColorFillBar: IColorFillBarsProps) {
     const selectedColorFillBarIndex = this.state.selectedColorBarLegend.reduce((acc, colorFillBar, index) => {
       if (acc > -1 || colorFillBar.legend !== selectedColorFillBar.legend) {
         return acc;
@@ -1339,15 +1347,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       (colorFillBar: IColorFillBarsProps) => colorFillBar.legend,
     );
     this._handleLegendClick(selectedColorFillBar, selectedLegendTitlesToPass);
-  };
+  }
 
-  private _clearMultipleLegendSelections = () => {
+  private _clearMultipleLegendSelections() {
     this.setState({
       selectedColorBarLegend: [],
       selectedLegendPoints: [],
       isSelectedLegend: false,
     });
-  };
+  }
 
   /**
    * This function checks if the given legend is highlighted or not.
