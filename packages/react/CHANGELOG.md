@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 28 Aug 2023 07:36:25 GMT and should not be manually modified.
+This log was last generated on Thu, 31 Aug 2023 07:36:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.111.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.111.2)
+
+Thu, 31 Aug 2023 07:36:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.111.1..@fluentui/react_v8.111.2)
+
+### Patches
+
+- Keytip: Make keytip data align with which instance is visible (for duplicate registrations) ([PR #28992](https://github.com/microsoft/fluentui/pull/28992) by jspurlin@microsoft.com)
 
 ## [8.111.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.111.1)
 
