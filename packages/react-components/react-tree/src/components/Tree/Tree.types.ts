@@ -6,8 +6,8 @@ import type { TreeItemValue } from '../TreeItem/TreeItem.types';
 import { CheckboxProps } from '@fluentui/react-checkbox';
 import { RadioProps } from '@fluentui/react-radio';
 
-export type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
-export type SingleSelectValue = NonNullable<RadioProps['checked']>;
+type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
+type SingleSelectValue = NonNullable<RadioProps['checked']>;
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
@@ -31,6 +31,7 @@ export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
 export type TreeOpenChangeData = {
   open: boolean;
+  openItems: Set<TreeItemValue>;
   value: TreeItemValue;
   target: HTMLElement;
 } & (
@@ -45,6 +46,7 @@ export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
 export type TreeCheckedChangeData = {
   value: TreeItemValue;
+  checkedItems: Map<TreeItemValue, TreeSelectionValue>;
   target: HTMLElement;
   event: React.ChangeEvent<HTMLElement>;
   type: 'Change';
@@ -86,9 +88,8 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    */
   openItems?: Iterable<TreeItemValue>;
   /**
-   * This refers to a list of ids of opened tree items.
-   * Default value for the uncontrolled state of open tree items.
-   * These property is ignored for subtrees.
+   * This refers to a list of ids of default opened items.
+   * This property is ignored for subtrees.
    */
   defaultOpenItems?: Iterable<TreeItemValue>;
   /**
@@ -110,8 +111,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * @param event - a React's Synthetic event
    * @param data - A data object with relevant information,
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+  onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 
   /**
    * This refers to the selection mode of the tree.
@@ -128,12 +128,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * These property is ignored for subtrees.
    */
   checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
-  /**
-   * This refers to a list of ids of checked tree items, or a list of tuples of ids and checked state.
-   * Default value for the uncontrolled state of checked tree items.
-   * These property is ignored for subtrees.
-   */
-  defaultCheckedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
   /**
    * Callback fired when the component changes value from checked state.
    * These property is ignored for subtrees.

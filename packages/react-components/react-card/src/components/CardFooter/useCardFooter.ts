@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { CardFooterProps, CardFooterState } from './CardFooter.types';
 
 /**
@@ -20,10 +20,13 @@ export const useCardFooter_unstable = (props: CardFooterProps, ref: React.Ref<HT
       action: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    action: resolveShorthand(action),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    action: slot.optional(action, { elementType: 'div' }),
   };
 };

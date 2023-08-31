@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-alert",
-  "version": "9.0.0-beta.59",
+  "version": "9.0.0-beta.71",
   "description": "An alert component to display brief messages",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,21 +33,21 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.5.13",
-    "@fluentui/react-button": "^9.3.24",
+    "@fluentui/react-avatar": "^9.5.25",
+    "@fluentui/react-button": "^9.3.34",
     "@fluentui/react-icons": "^2.0.207",
-    "@fluentui/react-tabster": "^9.10.0",
-    "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.10.1",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.12",
-    "@griffel/react": "^1.5.7",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-tabster": "^9.12.5",
+    "@fluentui/react-theme": "^9.1.11",
+    "@fluentui/react-utilities": "^9.13.0",
+    "@fluentui/react-jsx-runtime": "^9.0.3",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

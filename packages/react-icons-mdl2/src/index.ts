@@ -1689,6 +1689,7 @@ export { default as ViewOriginalIcon } from './components/ViewOriginalIcon';
 export { default as VisuallyImpairedIcon } from './components/VisuallyImpairedIcon';
 export { default as VisualsFolderIcon } from './components/VisualsFolderIcon';
 export { default as VisualsStoreIcon } from './components/VisualsStoreIcon';
+export { default as VivaEngageIcon } from './components/VivaEngageIcon';
 export { default as VoicemailForwardIcon } from './components/VoicemailForwardIcon';
 export { default as VoicemailIRMIcon } from './components/VoicemailIRMIcon';
 export { default as VoicemailReplyIcon } from './components/VoicemailReplyIcon';

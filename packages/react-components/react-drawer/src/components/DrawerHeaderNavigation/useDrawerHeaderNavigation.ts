@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { DrawerHeaderNavigationProps, DrawerHeaderNavigationState } from './DrawerHeaderNavigation.types';
 
 /**
@@ -20,9 +20,12 @@ export const useDrawerHeaderNavigation_unstable = (
       root: 'nav',
     },
 
-    root: getNativeElementProps('nav', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('nav', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'nav' },
+    ),
   };
 };

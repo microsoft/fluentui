@@ -2,6 +2,1579 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 29 Aug 2023 12:57:33 GMT",
+      "tag": "@fluentui/react-components_v9.30.1",
+      "version": "9.30.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mehars.6925@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "5d42a5f3e0515660da3f8dbe1de82a109191dd79",
+            "comment": "fix: Small Button now uses token for its border radius"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "727a5dfc487ff37a26fa37226319dbe80eb02fcb",
+            "comment": "fix: CardHeader grid layout ignoring line-height of content"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "0bd698a9813c095fd77d5be957bd63a4ecc627d1",
+            "comment": "fix: Improve visuals when Table/DataGrid overflows it's parent"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "a37c90201e40ee2b5cfa4372355788c244060e56",
+            "comment": "fix: tag with secondary text has no top border under windows high contrast"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "1f13e55593905c2a04cf39f580b79fd44ccd2eba",
+            "comment": "fix: use regular icon for dismiss"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "17f08ac2e61d5f569067e78832096a54c3966d0b",
+            "comment": "fix: `useOnClickOutside` should invoke callback on clicking scrollbar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "3ef92a485889eee5010ed32b8fc1ec1d8127cc44",
+            "comment": "feat: adds mountNode to DialogSurface API"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "18e53d3c9dd88b9a71ad55e01da9a11e6a25295f",
+            "comment": "feat: create react-motion-preview package with useMotion hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "2147e3d60a21ff7ded34b27a19f3d5313533e910",
+            "comment": "feat: add closeOnIframeFocus prop to Popover"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "ecaa08385bb0e25eafe87e3fb4424cb9139eea2d",
+            "comment": "feat: Add IconDirectionProvider to FluentProvider"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "3ef92a485889eee5010ed32b8fc1ec1d8127cc44",
+            "comment": "feat: adds mountNode to Toaster API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2147e3d60a21ff7ded34b27a19f3d5313533e910",
+            "comment": "feat: add disabledFocusOnIframe for useOnClickOutside()"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "0e33d8ebd9aecc1efe0cc664288ec433a8878ff8",
+            "comment": "fix(react-infobutton): Making InfoButton's PopoverSurface inline by default."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 24 Aug 2023 10:26:32 GMT",
+      "tag": "@fluentui/react-components_v9.30.0",
+      "version": "9.30.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "44789c103b2c4a05c026c72f4a594a291fdb0141",
+            "comment": "docs: improve storybook and examples to better align with design guidelines"
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-components",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5",
+            "comment": "expose useDataGridContext_unstable etc. contexts"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "d7f04c2b9e5b36267f7d822fe493fc57cf5bc492",
+            "comment": "chore: decrease bundle size & adds fixtures"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "8919d6c7e807cbfdb9c46f292fbb76cd908dc708",
+            "comment": "fix(react-popover): Only apply modal attributes if the PopoverSurface traps focus."
+          },
+          {
+            "author": "email not defined",
+            "package": "@fluentui/react-table",
+            "commit": "3f6c5a749ef403c06b9c9e753df9afbb84a2ecb5",
+            "comment": "expose useDataGridContext_unstable etc. contexts"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "192b74335ed4d99dbcbeeab5aa2075409e911e1a",
+            "comment": "fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "afcfb2ebe322e2a8e204ac192e68f48f1164107f",
+            "comment": "feat: Export DataGridContextProvider."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "afcfb2ebe322e2a8e204ac192e68f48f1164107f",
+            "comment": "feat: Export DataGridContextProvider."
+          },
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "45b2bea5f7bd1c8a453ce37726818f572afe0ab0",
+            "comment": "feat: Add documentKeyboardEvent to OnVisibleChangeData when Tooltip is hidden via Escape"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "148d5fa771ea9eb1f5a96f817782e76484070ec3",
+            "comment": "feat: create a new useAnimationFrame hook"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 12:01:48 GMT",
+      "tag": "@fluentui/react-components_v9.29.5",
+      "version": "9.29.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "a8256f19f7cda7695b1de3c6b37768933bec7e4f",
+            "comment": "fix: added cursor style in AccordionHeader for AccordionItem disabled state"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f94b6d05d7642563cb96e2718402fbbbab65cbbc",
+            "comment": "bugfix: ensure interop between assertSlots and old API"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8329d0a01d1b421aa10b6e993f75a0d61294fb06",
+            "comment": "chore: adds tsconfig.cy.json file to root of the package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 21 Aug 2023 11:38:00 GMT",
+      "tag": "@fluentui/react-components_v9.29.4",
+      "version": "9.29.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "039d87ed8c63c1bcfbf7d4c4a6fa61ac92f838bd",
+            "comment": "fix: breadcrumb spacing"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "d73590f34a41a22776a0bc2c41391b589531e679",
+            "comment": "fix: Make year picker react to go to today."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f042ed0d53377114375be20bd87f81a97e04e22c",
+            "comment": "fix: make MenuItem with long content grow its height"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "89bd803c8433397784d62a4172a988240a779596",
+            "comment": "fix: make event listners passive"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34",
+            "comment": "chore: migrate to new slots API"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "ad2fe1f95bbd2c9a053e9a058ccabc7e153b413c",
+            "comment": "chore: add documentation"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "55e07ffc8d180554fb027841e7d2a89637cefcb3",
+            "comment": "fix: use `:active` selector for pressed style instead of `:hover:active`"
+          },
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8696dd12dc1ade100d82e8a5cfa01dd737fd9c2e",
+            "comment": "chore: fix lint warnings"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3d6b8e8646a5dc6fe6c05fcbf50fefd0e61db92c",
+            "comment": "fix: stabilize `handleActionsRef` created by TreeItem"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "768de13c5e30222f64b2cc453bc4b134a6e90712",
+            "comment": "fix: rename values of position prop from left/right to start/end"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "7899bcf885c6599dcfe23cddb532c954b25aca79",
+            "comment": "fix: Cursor should be pointer when hovering the button to show it's a button."
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "40cd99729f234f5c705ade1cbca7c5a75e454e9e",
+            "comment": "doc: adds drag & drop example"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 17 Aug 2023 13:49:56 GMT",
+      "tag": "@fluentui/react-components_v9.29.3",
+      "version": "9.29.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ccd513e9b7c3179bef3588d183be1e3e4b9d7f7d",
+            "comment": "bugfix: headless flat tree itemType manual definition"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 17:41:07 GMT",
+      "tag": "@fluentui/react-components_v9.29.2",
+      "version": "9.29.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "566f22496db20046fbc9ab898580ccf64600fb6b",
+            "comment": "feat: stable release react-tree"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "7e2ba9c3e9e9e426e18bc5861fd84211400780ac",
+            "comment": "chore: release stable version"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "70fb3a013a466af6f5918b7301761b14dc46cea3",
+            "comment": "fix: tag changes hover pointer only when hovering dismiss icon"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "566f22496db20046fbc9ab898580ccf64600fb6b",
+            "comment": "feat: stable release"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "e40f1181983bbf4b0926cd15fb8dbc7a9e3188a3",
+            "comment": "Fix: Ensure scrollViewRef is merged with container ref"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 16 Aug 2023 11:38:32 GMT",
+      "tag": "@fluentui/react-components_v9.29.1",
+      "version": "9.29.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "b6082a65fa8424cf646c88fa028e15b747871b7d",
+            "comment": "Added CY tests for Breacrumb with Menu and Overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "d4bde491437d4574dce6210c6e24a10dcbd0b229",
+            "comment": "chore: changes tsconfig target to ES2019"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "a3e1a603ac387bff5d5c7367ed58ab2c511d8c3c",
+            "comment": "removed iconPosition prop from the Breadcrumb"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "a0cf8651e27d09ce9a76a3be0c993ab24a96a80e",
+            "comment": "BREAKING CHANGE: use JSX children for InteractionTag's action buttons"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "d40ea6e1d43cd21d1404d9c71018d822958c6644",
+            "comment": "feat: supports new automatic JSX runtime"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 14 Aug 2023 21:22:22 GMT",
+      "tag": "@fluentui/react-components_v9.29.0",
+      "version": "9.29.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "6d3e683056ba52fc1df923d1c23d24abaa840fba",
+            "comment": "feat: re-export `resolvePositioningShorthand` from @fluentui/react-positioning"
+          }
+        ],
+        "patch": [
+          {
+            "author": "nasirvi@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b180b6512aa21887ab78d4910503506ab8e35e6b",
+            "comment": "Defer tabs rectangle computation only when previousSelectedValue is defined"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Aug 2023 12:14:24 GMT",
+      "tag": "@fluentui/react-components_v9.28.1",
+      "version": "9.28.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "b52b54415c4d663885710fc113166be24d810742",
+            "comment": "fix: flickering in Overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "9509e950254d838cdfe3718a775ba5c78cb8f11a",
+            "comment": "chore(react-migration-v0-v9): migrate to new slot API"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b52b54415c4d663885710fc113166be24d810742",
+            "comment": "fix: flickering in Overflow"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "c736e39f1e07e013cc4a700eaa6cdcd6ae02127c",
+            "comment": "chore(react-tabs): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f9f2b69201c81811e8e4ce23f971d6174127d0ca",
+            "comment": "chore: tests for slot.resolveShorthand behavior"
+          }
+        ],
+        "minor": [
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "227120f07b98c30bb5bca06738d980f7fac81b91",
+            "comment": "feat: Added mountNode to DatePicker compat."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "742ae8f17c984b1e0098785c457e35f5a8054438",
+            "comment": "chore(react-virtualizer): migrate to new slot API"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 09 Aug 2023 13:16:47 GMT",
+      "tag": "@fluentui/react-components_v9.28.0",
+      "version": "9.28.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "6247214bde5df11e951247f0a6d1278cc98490ea",
+            "comment": "fix: inaccurate calculation of size"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "405adc0f15862c74784dd7576ca6d22b47adf012",
+            "comment": "bugfix: Breaking Change, onHeaderClick erroneously removed"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "d740ac698cb7e8c3332e21f6466896f3f2763ae3",
+            "comment": "chore(cxe-coastal): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-aria",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "ae895389be847075d79e5638d7ecc39a949d24f4",
+            "comment": "fix: disabled BreadcrumbLink shouldn't be focusable"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "d5ece238df797e84a59affc6162b0fa5cc46649d",
+            "comment": "chore(cxe-prg): migrate to new slot API"
+          },
+          {
+            "author": "andrew.enger48@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "7b3e20f10ff8ebb698f1831644ef6239810ca256",
+            "comment": "fix: Button icon no longer rendering off-center with falsy children."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "kakrookaran@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "1a1a7eb3753e07f1bd0485c6843f093ca1372779",
+            "comment": "fix: updated styles to icon fill on hover only for subtle and transparent variant of button"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-card",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "d5ece238df797e84a59affc6162b0fa5cc46649d",
+            "comment": "chore(cxe-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "d740ac698cb7e8c3332e21f6466896f3f2763ae3",
+            "comment": "chore(cxe-coastal): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "d740ac698cb7e8c3332e21f6466896f3f2763ae3",
+            "comment": "chore(cxe-coastal): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-divider",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "d5ece238df797e84a59affc6162b0fa5cc46649d",
+            "comment": "chore(cxe-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-image",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-input",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-input",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-label",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-link",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "6247214bde5df11e951247f0a6d1278cc98490ea",
+            "comment": "fix: inaccurate calculation of size"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-persona",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-select",
+            "commit": "d740ac698cb7e8c3332e21f6466896f3f2763ae3",
+            "comment": "chore(cxe-coastal): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-slider",
+            "commit": "d740ac698cb7e8c3332e21f6466896f3f2763ae3",
+            "comment": "chore(cxe-coastal): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "d740ac698cb7e8c3332e21f6466896f3f2763ae3",
+            "comment": "chore(cxe-coastal): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-switch",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "d5ece238df797e84a59affc6162b0fa5cc46649d",
+            "comment": "chore(cxe-prg): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-textarea",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d5ece238df797e84a59affc6162b0fa5cc46649d",
+            "comment": "chore(cxe-prg): migrate to new slot API"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "796e4426c50ede34b30e2dc2392328dcbadc2702",
+            "comment": "chore(cxe-red): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "3df6e4cf274b9811b7a279d9f611d8a6c20fdab8",
+            "comment": "feat(tokens): add durationGentle"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "253798f25326e92ba19b313c47a9c9530af12526",
+            "comment": "feat: implements nested tree selection"
+          },
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b921cbb92c4e023b06577c2e10f5f7e44f25c64d",
+            "comment": "Docs(react-tree): Improve docs and stories"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "89eb2bacdda1886336d91704da2ed6bb7327e349",
+            "comment": "bugfix: headless tree should respect itemType"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "e615f12c54c8a4acad49930a02c3b703fd64692b",
+            "comment": "chore(teams-prg): migrate to new slot API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "b090c0339983847a62b9dc6187d08dc8c4b1d55f",
+            "comment": "chore: Update Griffel to latest version"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "3df6e4cf274b9811b7a279d9f611d8a6c20fdab8",
+            "comment": "feat: add durationGentle"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "9cbdee42cb343bcbcac670aa33ae3cae4947680e",
+            "comment": "chore: re-export slot and assertSlots methods"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "96652c3d4bd3b27a86a04b7a8e36f31cf26b969f",
+            "comment": "feat: Export useEventCallback and mergeCallbacks"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 08:52:55 GMT",
+      "tag": "@fluentui/react-components_v9.27.4",
+      "version": "9.27.4",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "192666b54cb365f4c958f46c3e097b597ebd94fc",
+            "comment": "feat: make AccordionItemValue generic"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "ede28fe6d1d1ce394c6f019bd424ec8b14ca9d12",
+            "comment": "feat: Added an icon for BreadcrumbItem"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "feat(tokens): Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "495a08579f2d16f082f2b18c299f1a647906b236",
+            "comment": "feat: Adds ignoreDefaultKeydown for useFocusableGroup"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "495a08579f2d16f082f2b18c299f1a647906b236",
+            "comment": "feat: Add extra keyboard behaviour for multi toast scenario"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "6a8afe2b7becaf1b10cbc9ae98b39d352b8c7026",
+            "comment": "feat: implement new slot methods (slot and assertSlots)"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "d445789f33a50255a6a51548d7282a482bc78a0b",
+            "comment": "fix: made BreadcrumbButton consistent with other items"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "44b128284cf90386b75dfba7336e4950428820bf",
+            "comment": "bugfix: disable menu opening if contextmenu event is prevented"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "6a8afe2b7becaf1b10cbc9ae98b39d352b8c7026",
+            "comment": "chore: update createElement to support new slot methods"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "feat(tokens): Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "141424a604b98ea762cfa375fe78df8c9e6bdec8",
+            "comment": "feat(tokens): add status color tokens"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "8f41df31be3a4bc203c496eb1183884d30e12031",
+            "comment": "bugfix: renames content slot to main"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "a5aa130c959a79a9c4cffcffdb9253e8d1ce4d0a",
+            "comment": "feat: converts actions to be a toolbar"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "141424a604b98ea762cfa375fe78df8c9e6bdec8",
+            "comment": "feat: add status color tokens"
+          },
+          {
+            "author": "miroslav.stastny@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "01cc58f793345482d293c6837db64f85f552562d",
+            "comment": "Add colorBrandStroke2Contrast and colorNeutralStrokeAlpha2"
+          }
+        ],
+        "none": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "4b802ba3745dde01c68224329c1414f077faa1db",
+            "comment": "chore: adds bundle size metrics"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Aug 2023 13:04:24 GMT",
+      "tag": "@fluentui/react-components_v9.27.3",
+      "version": "9.27.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "66117c3488dacab0baa7505a97edb308b8ec81b0",
+            "comment": "fix: revert menuItem focus ring back to border"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "2ddd2ef27e8f1421d095a2ba600d417af98a7b22",
+            "comment": "feat(FluentProvider): emit errors on duplicate IDs"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "ed5421e62b010bfb8cb368757c2c34baccb0076e",
+            "comment": "feat: release preview package"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 01 Aug 2023 10:17:19 GMT",
+      "tag": "@fluentui/react-components_v9.27.2",
+      "version": "9.27.2",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "0c693a82d2d6e3c52012d53fdd40af42397fc5cf",
+            "comment": "Accordion - export AccordionHeaderContextProvider"
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "50392ee3cdec1975dff5e496da6241d37acb11b2",
+            "comment": "Added portal slot to Combobox and Dropdown"
+          },
+          {
+            "author": "eysjiang@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "937b241d624114c181ea1521d0d4ead1068ddfa3",
+            "comment": "adds Announce context"
+          }
+        ],
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "9250428d00e7e2909a0e3bae667c6ef0044ea67e",
+            "comment": "fix: use css outline for MenuItem focus ring instead of pseudo element"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "412d815f88863bde8bb16abc8fd9c4140a37f1f5",
+            "comment": "fix: autoSize causing maximum positioning update"
+          },
+          {
+            "author": "chassunc@microsoft.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "c6d2ace26c19b4c8102c77baf8f66ffeb36149f8",
+            "comment": "Remove margin from Icon in ToolbarButton when vertical prop is passed"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "d4b3feec354590939a340460bea62f4e39d38a74",
+            "comment": "bugfix: Tree, vertical spacing of branches and children is inconsistent"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f9e014b3919f00068940b0dd94980f6d542eff68",
+            "comment": "feat: adds openItems and checkedItems to tree callback data"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "2f795af17bf0cf844e0cc59c5d2f2418a00c9594",
+            "comment": "chore: improves internal headless signature"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 27 Jul 2023 10:34:13 GMT",
+      "tag": "@fluentui/react-components_v9.27.1",
+      "version": "9.27.1",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43",
+            "comment": "feat: update style to prevent double scrollbar"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "d2d8068110a9a7f71f417a40ee5f2db0ed1c40b9",
+            "comment": "feat: simplify autoSize options to make 'always'/'height-always'/'width-always' equivalent to true/'height'/'width'."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "e59b4b305eb656c5af005fefbfa2b1f69afcdc43",
+            "comment": "feat: update maxSize middleware to apply height/width when overflow"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "0e9c438b78e58f346f61b15224c7b0020e4fe73e",
+            "comment": "bugfix: makes selector slot required when selection mode is defined"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 25 Jul 2023 13:29:15 GMT",
+      "tag": "@fluentui/react-components_v9.27.0",
+      "version": "9.27.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "d8493a92520cacac29e9fe341a17d3595bc48343",
+            "comment": "fix: Overflow update should run show/hide steps twice"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "e7e522f452c4090c7f4426082efac571e8141a8e",
+            "comment": "fix: updated readme, replaced MenuItem with MenuItemLink"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "312d1b36e432de1850ad94e454959a342a12b19c",
+            "comment": "fix: spacing in BreadcrumbButton and Link, added more examples to the stories"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-checkbox",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "c017e880f238c1f113ff7ff6e28560d77e7ea46b",
+            "comment": "feat: exports FlatTree"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "fix: Focus should restore to a DialogTrigger outside of a Dialog"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-field",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "refactor: Remove custom focus code in favour of useRestoreFocus hooks"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "d8493a92520cacac29e9fe341a17d3595bc48343",
+            "comment": "fix: Overflow update should run show/hide steps twice"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-radio",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-select",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-spinbutton",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-switch",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "038d8f703f43ea290412001c94179ee5d1dac4d2",
+            "comment": "28456"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "1082207b08959996cd736725735cadc01d0849b0",
+            "comment": "chore: Update react-icons version to pick up fowardref change."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "0d4d0ef8daebaf5b6ebbcce17e64e35488864e0e",
+            "comment": "chore: moves slots from TreeItem to TreeItemLayout"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "c017e880f238c1f113ff7ff6e28560d77e7ea46b",
+            "comment": "feat: creates FlatTree component"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "feat: Export useRestoreFocusTarget and useRestoreFocusSource"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "39cf021c60171b8e56a64637ef046478c686d625",
+            "comment": "Table/DataGrid: Improve keyboard column resizing experience"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "c0c62f9383781f0dbebd800eaa2c64ef761075a2",
+            "comment": "feat: Implement useRestoreFocusSource and useRestoreFocusTarget based on the tabster restorer API"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:24 GMT",
       "tag": "@fluentui/react-components_v9.26.2",
       "version": "9.26.2",

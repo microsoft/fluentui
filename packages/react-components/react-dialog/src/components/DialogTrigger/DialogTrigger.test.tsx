@@ -56,7 +56,7 @@ describe('DialogTrigger', () => {
     expect(ref.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          data-tabster="{\\"deloser\\":{}}"
+          data-tabster="{\\"restorer\\":{\\"type\\":1}}"
         >
           Trigger
         </button>,
@@ -85,7 +85,7 @@ describe('DialogTrigger', () => {
     expect(cb.mock.calls[0]).toMatchInlineSnapshot(`
       Array [
         <button
-          data-tabster="{\\"deloser\\":{}}"
+          data-tabster="{\\"restorer\\":{\\"type\\":1}}"
         >
           Trigger
         </button>,

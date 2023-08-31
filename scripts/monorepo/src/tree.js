@@ -1,4 +1,4 @@
-const { workspaceRoot } = require('@nrwl/devkit');
+const { workspaceRoot } = require('@nx/devkit');
 const { FsTree, flushChanges } = require('nx/src/generators/tree');
 
 const tree = new FsTree(workspaceRoot, false);

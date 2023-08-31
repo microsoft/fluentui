@@ -7,10 +7,12 @@ import {
   DrawerHeaderTitle,
 } from '@fluentui/react-drawer';
 import { Button, Toolbar, ToolbarGroup, ToolbarButton, makeStyles } from '@fluentui/react-components';
-import { Dismiss24Regular } from '@fluentui/react-icons';
-import { ArrowClockwise24Regular } from '@fluentui/react-icons';
-import { Settings24Regular } from '@fluentui/react-icons';
-import { ArrowLeft24Regular } from '@fluentui/react-icons';
+import {
+  Dismiss24Regular,
+  ArrowClockwise24Regular,
+  Settings24Regular,
+  ArrowLeft24Regular,
+} from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
   toolbar: {
@@ -25,7 +27,7 @@ export const WithNavigation = () => {
 
   return (
     <div>
-      <DrawerOverlay position="left" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <DrawerOverlay position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>

@@ -16,6 +16,11 @@ import {
   Avatar,
   Input,
   useId,
+  Menu,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
 } from '@fluentui/react-components';
 import {
   DocumentPdfRegular,
@@ -156,49 +161,62 @@ export const ResizableColumnsUncontrolled = () => {
         <label htmlFor={inputId}>First column width: </label>
         <Input type="number" id={inputId} onChange={onWidthChange} value={inputValue ? inputValue.toString() : ''} />
       </p>
-      <Table sortable aria-label="Table with sort" ref={tableRef}>
-        <TableHeader>
-          <TableRow>
-            {columns.map(column => (
-              <TableHeaderCell
-                key={column.columnId}
-                {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
-              >
-                {column.renderHeaderCell()}
-              </TableHeaderCell>
-            ))}
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {rows.map(({ item }) => (
-            <TableRow key={item.file.label}>
-              <TableCell {...columnSizing_unstable.getTableCellProps('file')}>
-                <TableCellLayout truncate media={item.file.icon}>
-                  {item.file.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing_unstable.getTableCellProps('author')}>
-                <TableCellLayout
-                  truncate
-                  media={
-                    <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
-                  }
-                >
-                  {item.author.label}
-                </TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdated')}>
-                <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
-              </TableCell>
-              <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdate')}>
-                <TableCellLayout truncate media={item.lastUpdate.icon}>
-                  {item.lastUpdate.label}
-                </TableCellLayout>
-              </TableCell>
+      <div style={{ overflowX: 'auto' }}>
+        <Table sortable aria-label="Table with sort" ref={tableRef} {...columnSizing_unstable.getTableProps()}>
+          <TableHeader>
+            <TableRow>
+              {columns.map(column => (
+                <Menu openOnContext key={column.columnId}>
+                  <MenuTrigger>
+                    <TableHeaderCell
+                      key={column.columnId}
+                      {...columnSizing_unstable.getTableHeaderCellProps(column.columnId)}
+                    >
+                      {column.renderHeaderCell()}
+                    </TableHeaderCell>
+                  </MenuTrigger>
+                  <MenuPopover>
+                    <MenuList>
+                      <MenuItem onClick={columnSizing_unstable.enableKeyboardMode(column.columnId)}>
+                        Keyboard Column Resizing
+                      </MenuItem>
+                    </MenuList>
+                  </MenuPopover>
+                </Menu>
+              ))}
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHeader>
+          <TableBody>
+            {rows.map(({ item }) => (
+              <TableRow key={item.file.label}>
+                <TableCell {...columnSizing_unstable.getTableCellProps('file')}>
+                  <TableCellLayout truncate media={item.file.icon}>
+                    {item.file.label}
+                  </TableCellLayout>
+                </TableCell>
+                <TableCell {...columnSizing_unstable.getTableCellProps('author')}>
+                  <TableCellLayout
+                    truncate
+                    media={
+                      <Avatar name={item.author.label} badge={{ status: item.author.status as PresenceBadgeStatus }} />
+                    }
+                  >
+                    {item.author.label}
+                  </TableCellLayout>
+                </TableCell>
+                <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdated')}>
+                  <TableCellLayout truncate>{item.lastUpdated.label}</TableCellLayout>
+                </TableCell>
+                <TableCell {...columnSizing_unstable.getTableCellProps('lastUpdate')}>
+                  <TableCellLayout truncate media={item.lastUpdate.icon}>
+                    {item.lastUpdate.label}
+                  </TableCellLayout>
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
     </>
   );
 };
@@ -216,6 +234,9 @@ ResizableColumnsUncontrolled.parameters = {
         '',
         'Options can be passed to the plugin to define minimum, default and optimal ',
         '(in a controlled scenario) width of the column.',
+        '',
+        'To make features like column resizing work with keyboard navigation, the `Menu` component is used to provide',
+        ' a context menu for the header cells, which allows the user to access advanced Table features.',
         '',
         'To learn about how to control widths from the parent, please see the example below.',
       ].join('\n'),

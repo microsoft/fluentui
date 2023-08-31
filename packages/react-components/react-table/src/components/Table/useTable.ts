@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { TableProps, TableState } from './Table.types';
 
 /**
@@ -18,11 +18,14 @@ export const useTable_unstable = (props: TableProps, ref: React.Ref<HTMLElement>
     components: {
       root: rootComponent,
     },
-    root: getNativeElementProps(rootComponent, {
-      ref,
-      role: rootComponent === 'div' ? 'table' : undefined,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps(rootComponent, {
+        ref,
+        role: rootComponent === 'div' ? 'table' : undefined,
+        ...props,
+      }),
+      { elementType: rootComponent },
+    ),
     size: props.size ?? 'medium',
     noNativeElements: props.noNativeElements ?? false,
     sortable: props.sortable ?? false,

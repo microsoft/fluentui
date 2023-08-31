@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
 import { DrawerOverlay } from '../DrawerOverlay/DrawerOverlay';
@@ -17,16 +17,21 @@ import { DrawerInline } from '../DrawerInline/DrawerInline';
 export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
   const { type = 'overlay' } = props;
 
+  const elementType = type === 'overlay' ? DrawerOverlay : DrawerInline;
+
   return {
     components: {
-      root: type === 'overlay' ? DrawerOverlay : DrawerInline,
+      root: elementType,
     },
 
-    root: resolveShorthand(props, {
-      required: true,
-      defaultProps: {
+    root: slot.always<DrawerProps>(
+      slot.resolveShorthand({
         ref,
-      } as DrawerProps,
-    }),
+        ...props,
+      }),
+      {
+        elementType,
+      },
+    ),
   };
 };

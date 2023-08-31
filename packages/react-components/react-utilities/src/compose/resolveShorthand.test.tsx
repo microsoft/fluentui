@@ -43,7 +43,7 @@ describe('resolveShorthand', () => {
     const props: TestProps = { slotA };
     const resolvedProps = resolveShorthand(props.slotA);
 
-    expect(resolvedProps).toEqual(slotA);
+    expect(resolvedProps).toEqual({});
     expect(resolvedProps).not.toBe(slotA);
   });
 

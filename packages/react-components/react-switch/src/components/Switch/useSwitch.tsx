@@ -3,7 +3,7 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { CircleFilled } from '@fluentui/react-icons';
 import { Label } from '@fluentui/react-label';
 import { useFocusWithin } from '@fluentui/react-tabster';
-import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import type { SwitchProps, SwitchState } from './Switch.types';
 
 /**
@@ -29,52 +29,26 @@ export const useSwitch_unstable = (props: SwitchProps, ref: React.Ref<HTMLInputE
 
   const id = useId('switch-', nativeProps.primary.id);
 
-  const root = resolveShorthand(props.root, {
+  const root = slot.always(props.root, {
     defaultProps: { ref: useFocusWithin<HTMLDivElement>(), ...nativeProps.root },
-    required: true,
+    elementType: 'div',
   });
-
-  const indicator = resolveShorthand(props.indicator, {
-    defaultProps: {
-      'aria-hidden': true,
-      children: <CircleFilled />,
-    },
-    required: true,
+  const indicator = slot.always(props.indicator, {
+    defaultProps: { 'aria-hidden': true, children: <CircleFilled /> },
+    elementType: 'div',
   });
-
-  const input = resolveShorthand(props.input, {
-    defaultProps: {
-      checked,
-      defaultChecked,
-      id,
-      ref,
-      role: 'switch',
-      type: 'checkbox',
-      ...nativeProps.primary,
-    },
-    required: true,
+  const input = slot.always(props.input, {
+    defaultProps: { checked, defaultChecked, id, ref, role: 'switch', type: 'checkbox', ...nativeProps.primary },
+    elementType: 'input',
   });
   input.onChange = mergeCallbacks(input.onChange, ev => onChange?.(ev, { checked: ev.currentTarget.checked }));
-
-  const label = resolveShorthand(props.label, {
-    defaultProps: {
-      disabled,
-      htmlFor: id,
-      required,
-      size: 'medium',
-    },
+  const label = slot.optional(props.label, {
+    defaultProps: { disabled, htmlFor: id, required, size: 'medium' },
+    elementType: Label,
   });
-
   return {
-    labelPosition,
-
-    //Slots definition
-    components: {
-      root: 'div',
-      indicator: 'div',
-      input: 'input',
-      label: Label,
-    },
+    labelPosition, //Slots definition
+    components: { root: 'div', indicator: 'div', input: 'input', label: Label },
 
     root,
     indicator,

@@ -2,8 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "isolatedModules": false,
-    "types": ["node", "cypress", "cypress-storybook/cypress", "cypress-real-events"],
-    "lib": ["ES2019", "dom"]
+    "types": ["node", "cypress", "cypress-storybook/cypress", "cypress-real-events"]
   },
-  "include": ["src/**/*.cy.ts", "src/**/*.cy.tsx"]
+  "include": ["**/*.cy.ts", "**/*.cy.tsx"]
 }

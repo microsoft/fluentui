@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -24,73 +24,38 @@ const mediumIconSize = '20px';
 const smallIconSize = '16px';
 const extraSmallIconSize = '12px';
 
+const useRootBaseClassName = makeResetStyles({
+  // reset default button style:
+  fontFamily: 'inherit',
+  padding: '0px',
+  appearance: 'button',
+  textAlign: 'unset',
+
+  display: 'inline-grid',
+  alignItems: 'center',
+  gridTemplateAreas: `
+  "media primary   dismissIcon"
+  "media secondary dismissIcon"
+  `,
+  boxSizing: 'border-box',
+  width: 'fit-content',
+
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+});
+
 const useRootStyles = makeStyles({
-  base: {
-    // TODO use makeResetStyle when styles are settled
-
-    // reset default button style:
-    fontFamily: 'inherit',
-    ...shorthands.padding(0),
-    appearance: 'button',
-    textAlign: 'unset',
-
-    display: 'inline-grid',
-    alignItems: 'center',
-    gridTemplateAreas: `
-    "media primary   dismissIcon"
-    "media secondary dismissIcon"
-    `,
-    boxSizing: 'border-box',
-    width: 'fit-content',
-
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-  },
-
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
   outline: {
     backgroundColor: tokens.colorSubtleBackground,
     color: tokens.colorNeutralForeground2,
     ...shorthands.borderColor(tokens.colorNeutralStroke1),
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
-    ':hover': {
-      cursor: 'pointer',
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
-    },
-    ':hover:active': {
-      [`& .${tagClassNames.dismissIcon}`]: {
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
-    },
   },
 
   rounded: {
@@ -215,6 +180,16 @@ const useDismissIconStyles = makeStyles({
   base: {
     ...shorthands.gridArea('dismissIcon'),
     display: 'flex',
+
+    // windows high contrast:
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Highlight',
+      },
+      ':active': {
+        color: 'Highlight',
+      },
+    },
   },
   medium: {
     paddingLeft: tokens.spacingHorizontalXS,
@@ -230,6 +205,34 @@ const useDismissIconStyles = makeStyles({
     paddingLeft: tokens.spacingHorizontalXXS,
     paddingRight: tagSpacingExtraSmall,
     fontSize: extraSmallIconSize,
+  },
+
+  filled: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
+  outline: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+  },
+  brand: {
+    ':hover': {
+      cursor: 'pointer',
+      color: tokens.colorCompoundBrandForeground1Hover,
+    },
+    ':active': {
+      color: tokens.colorCompoundBrandForeground1Pressed,
+    },
   },
 });
 
@@ -263,20 +266,56 @@ export const usePrimaryTextStyles = makeStyles({
   },
 });
 
-export const useSecondaryTextStyles = makeStyles({
-  base: {
-    ...shorthands.gridArea('secondary'),
-    paddingLeft: tokens.spacingHorizontalXXS,
-    paddingRight: tokens.spacingHorizontalXXS,
-    ...typographyStyles.caption2,
-    whiteSpace: 'nowrap',
+/**
+ * Styles for root slot under windows high contrast mode when Tag is with secondary text.
+ * Tag's primary text has negative margin that covers the border. Pseudo element is used to draw the border.
+ */
+export const useTagWithSecondaryTextContrastStyles = makeStyles({
+  rounded: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        content: '""',
+        ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+        position: 'absolute',
+        top: '-1px',
+        left: '-1px',
+        right: '-1px',
+        bottom: '-1px',
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+    },
   },
+  circular: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        content: '""',
+        ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+        position: 'absolute',
+        top: '-1px',
+        left: '-1px',
+        right: '-1px',
+        bottom: '-1px',
+        ...shorthands.borderRadius(tokens.borderRadiusCircular),
+      },
+    },
+  },
+});
+
+export const useSecondaryTextBaseClassName = makeResetStyles({
+  gridArea: 'secondary',
+  paddingLeft: tokens.spacingHorizontalXXS,
+  paddingRight: tokens.spacingHorizontalXXS,
+  ...typographyStyles.caption2,
+  whiteSpace: 'nowrap',
 });
 
 /**
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
@@ -286,14 +325,16 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const mediaStyles = useMediaStyles();
   const dismissIconStyles = useDismissIconStyles();
   const primaryTextStyles = usePrimaryTextStyles();
-  const secondaryTextStyles = useSecondaryTextStyles();
+  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
+
+  const tagWithSecondaryTextContrastStyles = useTagWithSecondaryTextContrastStyles();
 
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
 
-    rootStyles.base,
+    rootBaseClassName,
 
     state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],
@@ -301,6 +342,8 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
     !state.dismissIcon && rootWithoutDismissStyles[size],
+
+    state.secondaryText && tagWithSecondaryTextContrastStyles[shape],
 
     state.root.className,
   );
@@ -331,7 +374,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       tagClassNames.secondaryText,
-      secondaryTextStyles.base,
+      secondaryTextBaseClassName,
       state.secondaryText.className,
     );
   }
@@ -340,6 +383,7 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
       tagClassNames.dismissIcon,
       dismissIconStyles.base,
       dismissIconStyles[size],
+      !state.disabled && dismissIconStyles[appearance],
       state.dismissIcon.className,
     );
   }

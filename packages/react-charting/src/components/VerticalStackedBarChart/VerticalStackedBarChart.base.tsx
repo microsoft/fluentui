@@ -68,7 +68,6 @@ export interface IVerticalStackedBarChartState extends IBasestate {
   activeXAxisDataPoint: number | string;
   callOutAccessibilityData?: IAccessibilityProps;
   calloutLegend: string;
-  emptyChart?: boolean;
 }
 export class VerticalStackedBarChartBase extends React.Component<
   IVerticalStackedBarChartProps,
@@ -91,6 +90,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _calloutAnchorPoint: IVSChartDataPoint | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
+  private _emptyChartId: string;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -107,11 +107,6 @@ export class VerticalStackedBarChartBase extends React.Component<
       yCalloutValue: '',
       activeXAxisDataPoint: '',
       calloutLegend: '',
-      emptyChart: !(
-        this.props.data &&
-        this.props.data.length > 0 &&
-        this.props.data.filter(item => item.chartData.length === 0).length === 0
-      ),
     };
     warnDeprecations(COMPONENT_NAME, props, {
       colors: 'IVSChartDataPoint.color',
@@ -120,18 +115,13 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    if (
-      this.props.data &&
-      this.props.data.length &&
-      !this.props.data.filter((item: IVerticalStackedChartProps) => item.xAxisPoint === undefined).length
-    ) {
+    if (this._isChartEmpty()) {
       this._adjustProps();
       this._dataset = this._createDataSetLayer();
-    } else {
-      this.state = { ...this.state, emptyChart: true };
     }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
     this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._emptyChartId = getId('_VSBC_empty');
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -146,7 +136,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   public render(): React.ReactNode {
-    if (!this.state.emptyChart) {
+    if (!this._isChartEmpty()) {
       this._adjustProps();
       const _isHavingLines = this.props.data.some(
         (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
@@ -231,7 +221,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       );
     }
     return (
-      <div id={getId('_VSBC_')} role={'alert'} style={{ opacity: '0' }} aria-label={'Graph has no data to display'} />
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
+      />
     );
   }
 
@@ -1042,4 +1037,12 @@ export class VerticalStackedBarChartBase extends React.Component<
       right: this.margins.right! + this._domainMargin,
     };
   };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.chartData.length === 0).length === 0
+    );
+  }
 }

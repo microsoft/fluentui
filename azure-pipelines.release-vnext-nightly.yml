@@ -56,7 +56,7 @@ jobs:
       - script: |
           date=$(date +"%Y%m%d-%H%M")
           #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
-          yarn nx workspace-generator version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
+          yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
           git add .
           git commit -m "bump nightly versions"
           yarn change --type prerelease --message "Release nightly v9" --dependent-change-type "prerelease"

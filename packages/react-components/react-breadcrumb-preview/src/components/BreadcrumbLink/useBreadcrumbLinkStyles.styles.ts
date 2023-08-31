@@ -22,6 +22,7 @@ const useStyles = makeStyles({
   root: {
     display: 'flex',
     alignItems: 'center',
+    textWrap: 'nowrap',
   },
   icon: {
     display: 'flex',
@@ -30,18 +31,18 @@ const useStyles = makeStyles({
   },
   small: {
     height: '24px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.caption1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
   },
   medium: {
     height: '32px',
-    ...shorthands.padding(tokens.spacingHorizontalSNudge),
     ...typographyStyles.body1,
+    ...shorthands.padding(tokens.spacingHorizontalSNudge),
   },
   large: {
     height: '40px',
-    ...shorthands.padding(tokens.spacingHorizontalS),
     ...typographyStyles.body2,
+    ...shorthands.padding(tokens.spacingHorizontalS),
   },
   overflow: {
     ...shorthands.padding(tokens.spacingHorizontalSNudge),

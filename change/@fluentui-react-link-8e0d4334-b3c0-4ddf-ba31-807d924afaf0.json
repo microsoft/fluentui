@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: migrate package to use JSX importSource",
+  "packageName": "@fluentui/react-link",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

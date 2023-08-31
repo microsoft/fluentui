@@ -1,5 +1,14 @@
-import { makeStyles, shorthands } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
+
+import { DrawerBaseState } from './DrawerBase.types';
+
+/**
+ * CSS variable names used internally for uniform styling in Drawer.
+ */
+export const drawerCSSVars = {
+  drawerSizeVar: '--fui-Drawer--size',
+};
 
 /**
  * Styles for the root slot
@@ -11,6 +20,7 @@ export const useDrawerBaseStyles = makeStyles({
     ...shorthands.borderRadius(0),
     ...shorthands.border(0),
 
+    width: `var(${drawerCSSVars.drawerSizeVar})`,
     maxWidth: '100vw',
     height: 'auto',
     boxSizing: 'border-box',
@@ -21,28 +31,70 @@ export const useDrawerBaseStyles = makeStyles({
     backgroundColor: tokens.colorNeutralBackground1,
   },
 
+  /* Motion */
+  entering: {
+    transitionTimingFunction: tokens.curveDecelerateMid,
+  },
+  exiting: {
+    transitionTimingFunction: tokens.curveAccelerateMin,
+  },
+  reducedMotion: {
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.001ms',
+    },
+  },
+
   /* Positioning */
-  left: {
+  start: {
     left: 0,
     right: 'auto',
   },
-  right: {
+  end: {
     right: 0,
     left: 'auto',
   },
 
   /* Sizes */
   small: {
-    width: '320px',
+    [drawerCSSVars.drawerSizeVar]: '320px',
   },
   medium: {
-    width: '592px',
+    [drawerCSSVars.drawerSizeVar]: '592px',
   },
   large: {
-    width: '940px',
+    [drawerCSSVars.drawerSizeVar]: '940px',
   },
   full: {
-    width: '100vw',
-    maxWidth: '100vw',
+    [drawerCSSVars.drawerSizeVar]: '100vw',
   },
 });
+
+export const useDrawerDurationStyles = makeStyles({
+  small: {
+    transitionDuration: tokens.durationGentle,
+  },
+  medium: {
+    transitionDuration: tokens.durationSlow,
+  },
+  large: {
+    transitionDuration: tokens.durationSlower,
+  },
+  full: {
+    transitionDuration: tokens.durationUltraSlow,
+  },
+});
+
+export const useDrawerBaseClassNames = ({ position, size, motion }: DrawerBaseState) => {
+  const baseStyles = useDrawerBaseStyles();
+  const durationStyles = useDrawerDurationStyles();
+
+  return mergeClasses(
+    baseStyles.root,
+    baseStyles[position],
+    durationStyles[size],
+    baseStyles[size],
+    baseStyles.reducedMotion,
+    motion.type === 'entering' && baseStyles.entering,
+    motion.type === 'exiting' && baseStyles.exiting,
+  );
+};

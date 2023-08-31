@@ -2,13 +2,18 @@ import * as React from 'react';
 import { AccordionPanel } from './AccordionPanel';
 import * as renderer from 'react-test-renderer';
 import { isConformant } from '../../testing/isConformant';
-import { AccordionItemContext } from '../AccordionItem';
+import { AccordionItemProvider } from '../../contexts/accordionItem';
+import { mockAccordionItemContextValue } from '../../testing/mockContextValue';
 
 describe('AccordionPanel', () => {
   const Wrapper: React.FC = props => (
-    <AccordionItemContext.Provider value={{ open: true, disabled: false, onHeaderClick: () => undefined }}>
+    <AccordionItemProvider
+      value={mockAccordionItemContextValue({
+        open: true,
+      })}
+    >
       {props.children}
-    </AccordionItemContext.Provider>
+    </AccordionItemProvider>
   );
 
   isConformant({

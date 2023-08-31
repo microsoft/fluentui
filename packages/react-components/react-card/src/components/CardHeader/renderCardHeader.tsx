@@ -1,23 +1,21 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { CardHeaderSlots, CardHeaderState } from './CardHeader.types';
 
 /**
  * Render the final JSX of CardHeader.
  */
 export const renderCardHeader_unstable = (state: CardHeaderState) => {
-  const { slots, slotProps } = getSlotsNext<CardHeaderSlots>(state);
+  assertSlots<CardHeaderSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.image && <slots.image {...slotProps.image} />}
-      <slots.header {...slotProps.header} />
-      {slots.description && <slots.description {...slotProps.description} />}
-      {slots.action && <slots.action {...slotProps.action} />}
-    </slots.root>
+    <state.root>
+      {state.image && <state.image />}
+      <state.header />
+      {state.description && <state.description />}
+      {state.action && <state.action />}
+    </state.root>
   );
 };

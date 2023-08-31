@@ -1,10 +1,10 @@
 import fs from 'fs';
-import fsExtra from 'fs-extra';
 import path from 'path';
-import tmp from 'tmp';
 
-import { sh } from '@fluentui/scripts-utils';
 import { workspaceRoot } from '@fluentui/scripts-monorepo';
+import { sh } from '@fluentui/scripts-utils';
+import fsExtra from 'fs-extra';
+import tmp from 'tmp';
 
 // Clean up created files/folders on exit, even after exceptions
 // (will not catch SIGINT on windows)
@@ -61,7 +61,7 @@ export async function shEcho(cmd: string, cwd?: string) {
 
 /**
  * Generates a folder of files based on provided templates.
- * This is similar to nx `@nrwl/devkit#generateFiles` without templating and ability to run on virtual FS
+ * This is similar to nx `@nx/devkit#generateFiles` without templating and ability to run on virtual FS
  *
  * @example
  * ```typescript

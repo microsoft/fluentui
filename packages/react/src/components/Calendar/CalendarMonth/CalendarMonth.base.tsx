@@ -159,12 +159,12 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
 
   const classNames = getClassNames(styles, {
     theme: theme!,
-    className: className,
+    className,
     hasHeaderClickCallback: !!props.onHeaderSelect || !yearPickerHidden,
     highlightCurrent: highlightCurrentMonth,
     highlightSelected: highlightSelectedMonth,
-    animateBackwards: animateBackwards,
-    animationDirection: animationDirection,
+    animateBackwards,
+    animationDirection,
   });
 
   if (isYearPickerVisible) {
@@ -183,6 +183,7 @@ export const CalendarMonthBase: React.FunctionComponent<ICalendarMonthProps> = p
         selectedYear={
           selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined
         }
+        navigatedYear={navigatedDate.getFullYear()}
         onRenderYear={onRenderYear}
         strings={yearStrings}
         componentRef={calendarYearRef}

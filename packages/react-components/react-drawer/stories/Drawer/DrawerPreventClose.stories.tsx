@@ -8,7 +8,7 @@ export const PreventClose = () => {
 
   return (
     <div>
-      <DrawerOverlay position="right" open={open} modalType="alert">
+      <DrawerOverlay position="end" open={open} modalType="alert">
         <DrawerHeader>
           <DrawerHeaderTitle
             action={

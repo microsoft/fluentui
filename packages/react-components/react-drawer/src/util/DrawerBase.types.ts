@@ -1,10 +1,12 @@
+import { MotionShorthand, MotionState } from '@fluentui/react-motion-preview';
+
 export type DrawerBaseProps = {
   /**
    * Position of the drawer.
    *
-   * @default 'left'
+   * @default 'start'
    */
-  position?: 'left' | 'right';
+  position?: 'start' | 'end';
 
   /**
    * Size of the drawer.
@@ -23,7 +25,7 @@ export type DrawerBaseProps = {
    *
    * @default false
    */
-  open?: boolean;
+  open?: MotionShorthand<HTMLDivElement>;
 
   /**
    * Default value for the uncontrolled open state of the Drawer.
@@ -31,4 +33,8 @@ export type DrawerBaseProps = {
    * @default false
    */
   defaultOpen?: boolean;
+};
+
+export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {
+  motion: MotionState<HTMLDivElement>;
 };

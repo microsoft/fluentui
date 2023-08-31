@@ -10,7 +10,7 @@ import {
   Body1,
   mergeClasses,
 } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -88,7 +88,7 @@ const CardExample = ({ className, ...props }: CardProps) => {
         image={<img className={styles.logo} src={resolveAsset('app_logo.svg')} alt="App name logo" />}
         header={<Text weight="semibold">App Name</Text>}
         description={<Caption1 className={styles.caption}>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
       />
 
       <p className={styles.text}>

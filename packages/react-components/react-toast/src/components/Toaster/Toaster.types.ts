@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import type { PortalProps } from '@fluentui/react-portal';
 import { ToasterOptions } from '../../state/types';
 import { Announce, AriaLiveProps } from '../AriaLive';
 
@@ -21,7 +22,8 @@ export type ToasterSlotsInternal = ToasterSlots & {
  * Toaster Props
  */
 export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> &
-  Partial<ToasterOptions> & {
+  Partial<ToasterOptions> &
+  Pick<PortalProps, 'mountNode'> & {
     /**
      * User override API for aria-live narration for toasts
      */
@@ -33,6 +35,7 @@ export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> &
  */
 export type ToasterState = ComponentState<ToasterSlotsInternal> &
   Pick<AriaLiveProps, 'announceRef'> &
+  Pick<PortalProps, 'mountNode'> &
   Pick<Required<ToasterProps>, 'announce'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
