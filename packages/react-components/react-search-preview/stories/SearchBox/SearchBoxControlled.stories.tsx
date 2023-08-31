@@ -26,7 +26,7 @@ export const Controlled = () => {
       validationState={valid ? 'none' : 'warning'}
       validationMessage={valid ? '' : 'Input is limited to 20 characters.'}
     >
-      <SearchBox value={value} onChange={onChange} onDismis={onDismiss} />
+      <SearchBox value={value} onChange={onChange} onDismiss={onDismiss} />
     </Field>
   );
 };
