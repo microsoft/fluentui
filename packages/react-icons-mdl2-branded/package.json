@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-icons-mdl2-branded",
-  "version": "1.2.50",
+  "version": "1.2.51",
   "description": "Branded SVG icons from the MDL2 icon set",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

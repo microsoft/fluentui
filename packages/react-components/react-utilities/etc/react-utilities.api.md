@@ -334,6 +334,7 @@ export type UseOnClickOrScrollOutsideOptions = {
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
     contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
+    disabledFocusOnIframe?: boolean;
     callback: (ev: MouseEvent | TouchEvent) => void;
 };
 

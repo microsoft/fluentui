@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Thu, 24 Aug 2023 10:26:32 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2023 12:57:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.33)
+
+Tue, 29 Aug 2023 12:57:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.32..@fluentui/react-card_v9.0.33)
+
+### Patches
+
+- fix: CardHeader grid layout ignoring line-height of content ([PR #28968](https://github.com/microsoft/fluentui/pull/28968) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-tabster to v9.12.5 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-utilities to v9.13.0 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.3 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
 
 ## [9.0.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.32)
 

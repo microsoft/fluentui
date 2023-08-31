@@ -30,7 +30,7 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Medium dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary aria-label={`Medium, dismiss`} />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
 
         <InteractionTag shape="circular">
@@ -48,7 +48,7 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary aria-label={`Small, dismiss`} />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
 
         <InteractionTag size="small" shape="circular">
@@ -66,7 +66,7 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Extra Small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary aria-label={`Extra-small, dismiss`} />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
 
         <InteractionTag size="extra-small" shape="circular">
