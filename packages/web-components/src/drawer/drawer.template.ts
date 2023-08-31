@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ref, when } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
 import type { Drawer } from './drawer.js';
 
 /**
@@ -9,49 +9,44 @@ import type { Drawer } from './drawer.js';
 export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
   return html<T>`
     <template
-      role="${x => (x.modal ? 'dialog' : 'complementary')}"
       ?open="${x => x.open}"
       ?modal="${x => x.modal}"
+      ?hidden="${x => !x.open}"
       control-size="${x => x.controlSize}"
       position="${x => x.position}"
-      focus-target="${x => x.focusTarget}"
-      aria-disabled="${x => x.ariaDisabled}"
+      role="${x => (x.modal ? 'dialog' : 'complementary')}"
+      tabindex="${x => (x.open ? '0' : '-1')}"
       aria-hidden="${x => (x.open ? 'false' : 'true')}"
       aria-label="${x => x.ariaLabel}"
-      ?trap-focus="${x => x.trapFocus}"
-      tabindex="${x => (x.open ? '0' : '-1')}"
+      aria-labelledby="${x => x.ariaLabelledby}"
+      aria-describedby="${x => x.ariaDescribedby}"
       aria-modal="${x => (x.modal ? 'true' : 'false')}"
+      @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
     >
-      <div class="root" part="root">
-        <slot name="icon"></slot>
-        <div
-          class="drawer"
-          part="drawer"
-          aria-modal="${x => (x.modal ? 'true' : 'false')}"
-          aria-describedby="${x => x.ariaDescribedby}"
-          aria-labelledby="${x => x.ariaLabelledby}"
-          aria-label="${x => x.ariaLabel}"
-          ${ref('drawer')}
-        >
-          ${when(
-            x => x.toolbar,
-            html<T>`
-              <div class="toolbar" part="toolbar">
-                <slot name="toolbar"></slot>
-              </div>
-            `,
-          )}
+      <div
+        class="overlay"
+        part="overlay"
+        ?hidden="${x => !x.modal || !x.open}"
+        aria-hidden="${x => !x.modal || !x.open}"
+        role="presentation"
+      ></div>
+      <div class="root" part="root" ${ref('root')}>
+        <slot name="start"></slot>
+        <div class="header-container">
+          <div class="buttons" part="buttons">
+            <slot name="buttons"></slot>
+          </div>
           <div class="header" part="header">
             <slot name="header"></slot>
           </div>
-          <div class="content" part="content">
-            <slot></slot>
-          </div>
-          <div class="actions" part="actions">
-            <slot name="actions"></slot>
-          </div>
         </div>
-        ${when(x => x.modal && x.open, html<T>` <div class="overlay" part="overlay" role="presentation"></div> `)}
+        <div class="content" part="content" ${ref('content')}>
+          <slot></slot>
+        </div>
+        <div class="footer" part="footer">
+          <slot name="footer"></slot>
+        </div>
+        <slot name="end"></slot>
       </div>
     </template>
   `;

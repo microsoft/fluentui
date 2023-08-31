@@ -4,6 +4,8 @@ import {
   colorBackgroundOverlay,
   colorNeutralBackground1,
   colorNeutralForeground1,
+  colorStrokeFocus1,
+  colorStrokeFocus2,
   colorTransparentStroke,
   curveAccelerateMid,
   curveDecelerateMid,
@@ -16,7 +18,6 @@ import {
   lineHeightBase300,
   lineHeightBase500,
   shadow64,
-  spacingHorizontalL,
   spacingHorizontalS,
   spacingHorizontalXXL,
   spacingVerticalL,
@@ -30,33 +31,63 @@ import {
  */
 export const styles = css`
   ${display('flex')}
-
   :host {
+    width: 592px;
+  }
+  :host([control-size='small']) {
+    width: 320px;
+  }
+  :host([control-size='large']) {
+    width: 940px;
+  }
+
+  :host(:focus-visible) .root:after {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    cursor: pointer;
+    outline: none;
+    border: 2px solid ${colorStrokeFocus1};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
+  }
+
+  .root {
     position: fixed;
     left: auto;
-    right: 0; /* Use the CSS custom property */
+    right: 0;
     top: 0;
-    height: 100%;
-    z-index: 1;
+    z-index: 2;
     overflow-x: hidden;
     overflow-y: auto;
-    width: 0;
-    transition: width ${durationNormal} ${curveDecelerateMid};
+    height: 100%;
+    width: inherit;
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     font-family: ${fontFamilyBase};
     font-weight: ${fontWeightRegular};
     color: ${colorNeutralForeground1};
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    display: grid;
+    grid-template-rows: min-content 1fr min-content;
+    row-gap: ${spacingVerticalS};
+    background: ${colorNeutralBackground1};
+    transform: translateX(100%);
+    transition: transform ${durationNormal} ${curveDecelerateMid};
   }
 
-  :host([data-context='drawer-switcher']) {
-    right: 32px;
+  :host([position='left']) .root {
+    right: auto;
+    left: 0;
+    margin-left: 0;
+    column-gap: ${spacingHorizontalS};
+    transform: translateX(-100%);
   }
 
-  :host([open]) {
-    width: var(--drawer-width);
-    transition: width ${durationNormal} ${curveAccelerateMid};
+  :host([open][position='left']) .root,
+  :host([open]) .root {
+    transform: translateX(0);
+    transition: transform ${durationNormal} ${curveAccelerateMid};
+    box-shadow: ${shadow64};
   }
 
   ::slotted([slot='header']),
@@ -68,81 +99,35 @@ export const styles = css`
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
     background-color: ${colorBackgroundOverlay};
+    width: 100vw;
+    height: 100vh;
+    background-color: ${colorBackgroundOverlay};
+    z-index: 1;
   }
 
-  .root {
-    width: 100%;
-    position: relative;
-  }
-
-  .header {
-    height: 32px;
+  .header-container {
+    padding: ${spacingVerticalS} ${spacingHorizontalXXL};
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
-    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
+    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL} 0;
+    row-gap: ${spacingVerticalS};
   }
 
-  .close {
-    background: none;
-    color: inherit;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-  }
-
-  .actions {
-    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL};
-  }
-
-  .drawer {
-    display: grid;
-    grid-template-rows: 64px auto 72px;
-    display: grid;
-    height: 100%;
-    width: 100%;
-    position: relative;
-    background: ${colorNeutralBackground1};
-    z-index: 1;
-    box-shadow: -4px 0px 8px rgba(0, 0, 0, 0.12), 0px 32px 64px rgba(0, 0, 0, 0.14), 0px 0px 0px rgba(0, 0, 0, 0);
-  }
-
-  :host([toolbar]) .drawer {
-    grid-template-rows: 56px 34px auto 72px;
-  }
-
-  :host([toolbar]) .header {
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL};
-  }
-
-  .toolbar {
-    padding: ${spacingVerticalL} ${spacingHorizontalL};
-    height: 32px;
-    display: flex;
-    align-items: center;
-  }
-
-  .content {
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingVerticalXXL};
-  }
-
-  ::slotted([slot='actions']) {
+  .footer {
     display: flex;
     flex-direction: row;
     column-gap: ${spacingHorizontalS};
+    padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
+    border-top: ${strokeWidthThin} solid var(--overflow-border, ${colorTransparentStroke});
   }
-
-  :host([position='left']) {
-    right: auto;
-    left: 0;
-    margin-left: 0;
-    column-gap: ${spacingHorizontalS};
+  .content {
+    flex-grow: 1;
+    position: relative;
+    padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingVerticalXXL};
+    overflow-y: auto;
   }
 `;

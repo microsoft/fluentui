@@ -2,9 +2,8 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
-import './define.js';
-import '../text/define.js';
 import { DrawerPosition, DrawerSize } from './drawer.options.js';
+import './define.js';
 
 type DrawerStoryArgs = Args & FluentDrawer;
 type DrawerStoryMeta = Meta<DrawerStoryArgs>;
@@ -65,34 +64,26 @@ const settings16Regular = html`<svg
   ></path>
 </svg>`;
 
-const toggleDrawer = (drawerID: string, containerID: string) => {
-  const drawer = document.getElementById(drawerID) as FluentDrawer;
-  const main = document.getElementById(containerID) as HTMLElement;
-  drawer.addEventListener('open', (event: any) => {
-    if (event.detail.open) {
-      let marginSize;
-      switch (event.detail.controlSize) {
-        case 'small':
-          marginSize = 320;
-          break;
-        case 'medium':
-          marginSize = 592;
-          break;
-        case 'large':
-          marginSize = 940;
-          break;
-        default:
-          marginSize = event.detail.controlSize;
-      }
+setTimeout(() => {
+  const drawer = document.getElementById('drawer-push-content') as FluentDrawer;
+  const container = document.getElementById('drawer-push-content-container') as FluentDrawer;
+
+  drawer.addEventListener('openChanged', (event: any) => {
+    if (drawer.open) {
       if (event.detail.position === DrawerPosition.left) {
-        main.style.marginLeft = `${marginSize}px`;
+        container.style.marginLeft = `${event.detail.controlSize}px`;
       } else {
-        main.style.marginRight = `${marginSize}px`;
+        container.style.marginRight = `${event.detail.controlSize}px`;
       }
-    } else {
-      main.style.margin = '0px';
+    } else if (!drawer.open) {
+      container.style.margin = '0';
     }
   });
+}, 3000); // 1000 milliseconds =
+
+const toggleDrawer = (drawerID: string) => {
+  console.log(drawerID);
+  const drawer = document.getElementById(drawerID) as FluentDrawer;
   drawer.toggleDrawer();
 };
 
@@ -117,39 +108,57 @@ const storyTemplate = html<DrawerStoryArgs>`
       }
     </style>
     <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-      <div id="main" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+      <div id="toggle-default" style="display: flex; justify-content: center; align-items: center; height: 100%;">
         <fluent-button appearance="primary" @click="${() =>
-          toggleDrawer('drawer-playground', 'main')}">Toggle Drawer</fluent-button>
+          toggleDrawer('drawer-default')}">Toggle Drawer</fluent-button>
       </div>
       <div>
         <fluent-drawer
-          id="drawer-playground"
+          id="drawer-default"
           ?open="${x => x.open}"
           position="${x => x.position}"
-          trap-focus="${x => x.trapFocus}"
-          control-size="${x => x.controlSize}"
           modal="${x => x.modal}"
+          control-size="${x => x.controlSize}"
         >
+        <div slot="buttons">
+          <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+            <div style="display: flex">
+              <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0" aria-label="back">
+              ${arrowLeft16Regular}
+              </fluent-button>
+            </div>
+            <div style="display: flex">
+              <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
+                  ${arrowClockwise16Regular}
+                </fluent-button>
+                <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
+                  ${settings16Regular}
+                </fluent-button>
+
+                <fluent-button @click=${() =>
+                  hideDrawer(
+                    'drawer-playground',
+                  )} appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
+                ${dismissed16Regular}
+                </fluent-button>
+            </div>
+          </div>
+        </div>
           <div slot="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-              <fluent-text font="base" size="500" weight="semibold">Header</fluent-text>
-              <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0" @click="${() =>
-                hideDrawer('drawer-playground')}" aria-label="close">
-                ${dismissed16Regular}
-              </fluent-button>
+              <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Header</h1></fluent-text>
             </div>
           </div>
           <div style="display: flex; row-gap: 16px; flex-direction: column;">
             <fluent-text>
-              The drawer gives users a quick entry point to configuration and information. It should be used when
-              retaining context is beneficial to users.
+              The drawer gives users a quick entry point to configuration and information. It should be used when retaining context is beneficial to users. An overlay is optional depending on whether or not interacting with the backgroun d content is beneficial to the user's context/scenario. An overlay makes the drawer blocking and signifies that the users full attention is required when making configurations.
             </fluent-text>
             <div>
-              <fluent-label>Name</fluent-label>
+              <fluent-label>First Name</fluent-label>
               <fluent-text-input id="abc" type="text"></fluent-text-input>
             </div>
             <div>
-              <fluent-label>Key</fluent-label>
+              <fluent-label>Last Name</fluent-label>
               <fluent-text-input id="def" type="text" /></fluent-text-input>
             </div>
             <div>
@@ -165,8 +174,8 @@ const storyTemplate = html<DrawerStoryArgs>`
                 Activate option
               </fluent-switch>
             </div>
-          </div>
-          <div slot="actions">
+        </div>
+          <div slot="footer">
             <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
             <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
           </div>
@@ -181,6 +190,7 @@ export default {
   args: {
     disabled: false,
     position: DrawerPosition.right,
+    width: undefined,
     open: false,
     trapFocus: false,
     modal: false,
@@ -207,19 +217,6 @@ export default {
       table: {
         type: {
           summary: 'Determines if drawer is a modal or not',
-        },
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
-    trapFocus: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Sets whether the drawer traps focus or not',
         },
         defaultValue: {
           summary: false,
@@ -262,8 +259,12 @@ export const Drawer = renderComponent(storyTemplate).bind({});
 export const PositionLeft = renderComponent(html<DrawerStoryArgs>`
 <div>
     <style>
-      div.docs-story > div:first-child {
+      div.docs-story > div:first-child,
+      #docs-root .innerZoomElementWrapper > div > div {
         height: 38em;
+        padding: 0;
+      }
+      #docs-root .innerZoomElementWrapper > div {
         padding: 0;
       }
       .toolbar-button {
@@ -284,43 +285,26 @@ export const PositionLeft = renderComponent(html<DrawerStoryArgs>`
         >
           <div slot="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-            <fluent-text font="base" size="500" weight="semibold">Drawer Position left</fluent-text>
-              <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
+            <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Position Left</h1></fluent-text>
+              <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0" aria-label="close">
                 ${dismissed16Regular}
               </fluent-button>
             </div>
           </div>
           <div style="display: flex; row-gap: 16px; flex-direction: column;">
-
-          <fluent-text>
-            The drawer gives users a quick entry point to configuration and information. It should be used when
-            retaining context is beneficial to users.
-          </fluent-text>
-            <div>
-          <fluent-label>First Name</fluent-label>
-          <fluent-text-input id="abc" type="text"></fluent-text-input>
+            <fluent-text font="base" size="300" weight="regular" as="p">
+              <p>
+                The drawer component offers flexible positioning options to suit your layout needs. By using the position attribute, you can easily place the drawer on either side of the screen. The attribute accepts values of type DrawerPosition, which includes two options: 'left' and 'right'. The default position of the Drawer is 'right'.
+              </p>
+            </fluent-text>
+            <fluent-text font="monospace" size="300" weight="regular">
+              <code>
+                position="left"
+              </code>
+            </fluent-text>
           </div>
-
-          <div>
-
-          <fluent-label>Last Name</fluent-label>
-          <fluent-text-input id="def" type="text" /></fluent-text-input>
           </div>
-
-          <div>
-
-          <fluent-label>Email</fluent-label>
-          <fluent-text-input id="ghi" type="text" /></fluent-text-input>
-          </div>
-
-          <div>
-
-          <fluent-label>Phone Number</fluent-label>
-          <fluent-text-input id="jkl" type="text" /></fluent-text-input>
-          </div>
-
-          </div>
-          <div slot="actions">
+          <div slot="footer">
             <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
             <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
           </div>
@@ -330,274 +314,326 @@ export const PositionLeft = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
-export const DrawerControlSizeSmall = renderComponent(html<DrawerStoryArgs>`
+export const DrawerPushContent = renderComponent(html<DrawerStoryArgs>`
     <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-
-        <fluent-drawer
-          id="drawer-small"
-          control-size="small"
-          open
+      <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <div id="drawer-push-content-container" style="display: flex; flex-direction: column; justify-content: flex-start; row-gap: 8px; align-items: flex-start; height: 100%;">
+          <fluent-button appearance="primary" @click="${() =>
+            toggleDrawer('drawer-push-content')}">Toggle Drawer</fluent-button>
+        </div>
+      </div>
+    <div>
+    <fluent-drawer id="drawer-push-content" control-size="small">
+      <div slot="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Small</h1></fluent-text>
+          <fluent-button
+            class="toolbar-button"
+            appearance="transparent"
+            icon-only
+            size="small"
+            tabindex="0"
+            aria-label="close"
+          >
+            ${dismissed16Regular}
+          </fluent-button>
+        </div>
+      </div>
+      <div style="display: flex; row-gap: 16px; flex-direction: column;">
+        <fluent-text font="base" size="300" weight="regular" as="p">
+          <p>
+            The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="small" in the component.</fluent-text>
+          </p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code>
+            control=size="small"
+          </code>
+        </fluent-text>
+      </div>
+      <div slot="footer">
+        <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+        <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+      </div>
+    </fluent-drawer>
+    <fluent-drawer
+          id="drawer-size--medium"
         >
           <div slot="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-            <fluent-text font="base" size="500" weight="semibold">Drawer Small</fluent-text>
+            <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Medium</h1></fluent-text>
             <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
                 ${dismissed16Regular}
               </fluent-button>
             </div>
           </div>
           <div style="display: flex; row-gap: 16px; flex-direction: column;">
-
-          <fluent-text>
-          To apply a custom number value for the control-size attribute in the Drawer component, you can simply assign the desired number to the property. The control-size attribute accepts either a predefined DrawerSize value (such as "small", "medium", or "large") or a numeric value.
-          </fluent-text>
-            <div>
-          <fluent-label>First Name</fluent-label>
-          <fluent-text-input id="abc" type="text"></fluent-text-input>
+            <fluent-text font="base" size="300" weight="regular" as="p">
+              <p>
+                The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="medium" in the component.</fluent-text>
+              </p>
+            </fluent-text>
+            <fluent-text font="monospace" size="300" weight="regular">
+              <code>
+                control=size="medium"
+              </code>
+            </fluent-text>
           </div>
-
-          <div>
-
-          <fluent-label>Last Name</fluent-label>
-          <fluent-text-input id="def" type="text" /></fluent-text-input>
-          </div>
-
-          <div>
-
-          <fluent-label>Email</fluent-label>
-          <fluent-text-input id="ghi" type="text" /></fluent-text-input>
-          </div>
-
-          <div>
-
-          <fluent-label>Phone Number</fluent-label>
-          <fluent-text-input id="jkl" type="text" /></fluent-text-input>
-          </div>
-
-          </div>
-          <div slot="actions">
+          <div slot="footer">
             <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
             <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
           </div>
         </fluent-drawer>
-      </div>
-`);
-
-export const DrawerControlSizeMedium = renderComponent(html<DrawerStoryArgs>`
-    <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-
         <fluent-drawer
-          id="drawer-medium"
-          open
-        >
-          <div slot="header">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-            <fluent-text font="base" size="500" weight="semibold">Drawer Medium</fluent-text>
-            <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
-                ${dismissed16Regular}
-              </fluent-button>
-            </div>
-          </div>
-          <div style="display: flex; row-gap: 16px; flex-direction: column;">
-
-          <fluent-text>
-          To apply a custom number value for the control-size attribute in the Drawer component, you can simply assign the desired number to the property. The control-size attribute accepts either a predefined DrawerSize value (such as "small", "medium", or "large") or a numeric value.
-          </fluent-text>
-            <div>
-          <fluent-label>First Name</fluent-label>
-          <fluent-text-input id="abc" type="text"></fluent-text-input>
-          </div>
-
-          <div>
-
-          <fluent-label>Last Name</fluent-label>
-          <fluent-text-input id="def" type="text" /></fluent-text-input>
-          </div>
-
-          <div>
-
-          <fluent-label>Email</fluent-label>
-          <fluent-text-input id="ghi" type="text" /></fluent-text-input>
-          </div>
-
-          <div>
-
-          <fluent-label>Phone Number</fluent-label>
-          <fluent-text-input id="jkl" type="text" /></fluent-text-input>
-          </div>
-
-          </div>
-          <div slot="actions">
-            <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
-            <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
-          </div>
-        </fluent-drawer>
-      </div>
-`);
-
-export const DrawerControlSizeLarge = renderComponent(html<DrawerStoryArgs>`
-    <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-
-        <fluent-drawer
-          id="drawer-large"
+          id="drawer-size--large"
           control-size="large"
-          open
         >
           <div slot="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-            <fluent-text font="base" size="500" weight="semibold">Drawer Large</fluent-text>
+              <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Large</h1></fluent-text>
               <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
                 ${dismissed16Regular}
               </fluent-button>
             </div>
           </div>
 
-          <fluent-text style="margin-bottom: 20px; display: block;">
-          To apply a custom number value for the control-size attribute in the Drawer component, you can simply assign the desired number to the property. The control-size attribute accepts either a predefined DrawerSize value (such as "small", "medium", or "large") or a numeric value.
-          </fluent-text>
-          <div style="display: grid; grid-template-columns: 1fr 1fr; row-gap: 16px; flex-direction: row;">
-            <div style="display: flex; row-gap: 16px; flex-direction: column;">
-              <div>
-                <fluent-label>First Name</fluent-label>
-                <fluent-text-input id="abc" type="text"></fluent-text-input>
-              </div>
-
-              <div>
-                <fluent-label>Last Name</fluent-label>
-                <fluent-text-input id="def" type="text" /></fluent-text-input>
-              </div>
-
-              <div>
-                <fluent-label>Email</fluent-label>
-                <fluent-text-input id="ghi" type="text" /></fluent-text-input>
-              </div>
-
-              <div>
-                <fluent-label>Phone Number</fluent-label>
-                <fluent-text-input id="jkl" type="text" /></fluent-text-input>
-              </div>
-
-            </div>
-            <div style="display: flex; row-gap: 16px; flex-direction: column;">
-              <div>
-                <fluent-label>Address</fluent-label>
-                <fluent-text-input id="mno" type="text"></fluent-text-input>
-              </div>
-
-              <div>
-                <fluent-label>Secondary Address</fluent-label>
-                <fluent-text-input id="pqr" type="text" /></fluent-text-input>
-              </div>
-              <div>
-                  <fluent-radio-group>
-                    <fluent-label slot="label">Please select an option</fluent-label>
-                    <fluent-radio value="1">Option 1</fluent-radio>
-                    <fluent-radio value="2">Option 2</fluent-radio>
-                    <fluent-radio value="3">Option 3</fluent-radio>
-                  </fluent-radio-group>
-              </div>
-            </div>
+          <div style="display: flex; row-gap: 16px; flex-direction: column; margin-bottom: 12px;">
+            <fluent-text font="base" size="300" weight="regular" as="p">
+              <p>
+                The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="medium" in the component.</fluent-text>
+              </p>
+            </fluent-text>
+            <fluent-text font="monospace" size="300" weight="regular">
+              <code>
+                control=size="medium"
+              </code>
+            </fluent-text>
           </div>
-          <div slot="actions">
+          <div slot="footer">
             <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
             <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
           </div>
         </fluent-drawer>
+  </div>
+`);
+
+export const DrawerControlSize = renderComponent(html<DrawerStoryArgs>`
+    <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
+      <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+        <div id="drawer-sizes" style="display: flex; flex-direction: column; justify-content: flex-start; row-gap: 8px; align-items: flex-start; height: 100%;">
+          <fluent-button appearance="primary" @click="${() =>
+            toggleDrawer('drawer-size--small', 'drawer-sizes')}">Small</fluent-button>
+          <fluent-button appearance="primary" @click="${() =>
+            toggleDrawer('drawer-size--medium', 'drawer-sizes')}">Medium</fluent-button>
+          <fluent-button appearance="primary" @click="${() =>
+            toggleDrawer('drawer-size--large', 'drawer-sizes')}">Large</fluent-button>
+        </div>
       </div>
+    <div>
+    <fluent-drawer id="drawer-size--small" control-size="small">
+      <div slot="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Small</h1></fluent-text>
+          <fluent-button
+            class="toolbar-button"
+            appearance="transparent"
+            icon-only
+            size="small"
+            tabindex="0"
+            aria-label="close"
+          >
+            ${dismissed16Regular}
+          </fluent-button>
+        </div>
+      </div>
+      <div style="display: flex; row-gap: 16px; flex-direction: column;">
+        <fluent-text font="base" size="300" weight="regular" as="p">
+          <p>
+            The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="small" in the component.</fluent-text>
+          </p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code>
+            control=size="small"
+          </code>
+        </fluent-text>
+      </div>
+      <div slot="footer">
+        <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+        <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+      </div>
+    </fluent-drawer>
+    <fluent-drawer
+          id="drawer-size--medium"
+        >
+          <div slot="header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Medium</h1></fluent-text>
+            <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
+                ${dismissed16Regular}
+              </fluent-button>
+            </div>
+          </div>
+          <div style="display: flex; row-gap: 16px; flex-direction: column;">
+            <fluent-text font="base" size="300" weight="regular" as="p">
+              <p>
+                The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="medium" in the component.</fluent-text>
+              </p>
+            </fluent-text>
+            <fluent-text font="monospace" size="300" weight="regular">
+              <code>
+                control=size="medium"
+              </code>
+            </fluent-text>
+          </div>
+          <div slot="footer">
+            <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+            <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+          </div>
+        </fluent-drawer>
+        <fluent-drawer
+          id="drawer-size--large"
+          control-size="large"
+        >
+          <div slot="header">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+              <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Large</h1></fluent-text>
+              <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
+                ${dismissed16Regular}
+              </fluent-button>
+            </div>
+          </div>
+
+          <div style="display: flex; row-gap: 16px; flex-direction: column; margin-bottom: 12px;">
+            <fluent-text font="base" size="300" weight="regular" as="p">
+              <p>
+                The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="medium" in the component.</fluent-text>
+              </p>
+            </fluent-text>
+            <fluent-text font="monospace" size="300" weight="regular">
+              <code>
+                control=size="medium"
+              </code>
+            </fluent-text>
+          </div>
+          <div slot="footer">
+            <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+            <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+          </div>
+        </fluent-drawer>
+  </div>
 `);
 
 export const DrawerWithCustomSize = renderComponent(html`
-    <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-        <fluent-drawer
-          id="drawer-custom-size"
-          open
-          control-size="500"
-        >
-          <div slot="header">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-            <fluent-text font="base" size="500" weight="semibold">Drawer with Custom Size</fluent-text>
-              <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
-                ${dismissed16Regular}
-              </fluent-button>
-            </div>
-          </div>
-          <div style="display: flex; row-gap: 16px; flex-direction: column;">
-            <fluent-text>
-            To apply a custom number value for the control-size attribute in the Drawer component, you can simply assign the desired number to the property. The control-size attribute accepts either a predefined DrawerSize value (such as "small", "medium", or "large") or a numeric value.            </fluent-text>
-            <div>
-              <fluent-label>First Name</fluent-label>
-              <fluent-text-input id="abc" type="text"></fluent-text-input>
-            </div>
-            <div>
-              <fluent-label>Last Name</fluent-label>
-              <fluent-text-input id="def" type="text" /></fluent-text-input>
-            </div>
-            <div>
-              <fluent-label>Email</fluent-label>
-              <fluent-text-input id="ghi" type="text" /></fluent-text-input>
-            </div>
-            <div>
-              <fluent-label>Phone Number</fluent-label>
-              <fluent-text-input id="jkl" type="text" /></fluent-text-input>
-            </div>
-          </div>
-          <div slot="actions">
-            <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
-            <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
-          </div>
-        </fluent-drawer>
-      </div>
-`);
-
-export const DrawerWithToolbar = renderComponent(html`
-<div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
-    <fluent-drawer
-      id="drawer-toolbar"
-      open
-      toolbar
-    >
-      <div slot="toolbar">
-        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
-            <div style="display: flex">
-              <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0" aria-label="back">
-              ${arrowLeft16Regular}
-              </fluent-button>
-            </div>
-            <div style="display: flex">
-              <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
-                  ${arrowClockwise16Regular}
-                </fluent-button>
-                <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
-                  ${settings16Regular}
-                </fluent-button>
-
-                <fluent-button appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
-                ${dismissed16Regular}
-                </fluent-button>
-            </div>
-        </div>
-      </div>
+  <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
+    <fluent-drawer id="drawer-custom-size" open style="width: 400px;">
       <div slot="header">
         <div style="display: flex; justify-content: space-between; align-items: center;">
-          <fluent-text font="base" size="500" weight="semibold">Drawer with Toolbar</fluent-text>
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Custom Size</h1></fluent-text>
+          <fluent-button
+            class="toolbar-button"
+            appearance="transparent"
+            icon-only
+            size="small"
+            tabindex="0"
+            aria-label="close"
+          >
+            ${dismissed16Regular}
+          </fluent-button>
         </div>
       </div>
       <div style="display: flex; row-gap: 16px; flex-direction: column;">
         <fluent-text>
-            The toolbar attribute in the Drawer component enables the presence of a toolbar within the drawer. When the toolbar attribute is set to true, a toolbar section is displayed at the top of the drawer, allowing the inclusion of additional controls, actions, or information specific to the drawer's content.
-            The toolbar provides a convenient space for placing buttons, icons, or other interactive elements that can enhance user interactions or provide quick access to specific features or functionalities within the drawer.
-            By utilizing the toolbar attribute, you can enhance the usability and flexibility of the Drawer component by incorporating a dedicated section for toolbar-related content, promoting a clean and organized user interface.
+          The drawer component offers flexibility in its design by allowing you to set a custom width. You can easily
+          adjust the width of the drawer by modifying its CSS width property. This feature enables you to tailor the
+          drawer's dimensions to better fit the content it holds or to align with your overall design scheme. Simply set
+          the width property in your CSS to your desired value, and the drawer will adjust accordingly.
         </fluent-text>
-        <div>
-          <fluent-label>First Name</fluent-label>
-          <fluent-text-input id="abc" type="text"></fluent-text-input>
-        </div>
-        <div>
-          <fluent-label>Last Name</fluent-label>
-          <fluent-text-input id="def" type="text" /></fluent-text-input>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code> style="width: 400px;" </code>
+        </fluent-text>
+      </div>
+      <div slot="footer">
+        <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+        <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+      </div>
+    </fluent-drawer>
+  </div>
+`);
+
+export const DrawerWithTopNav = renderComponent(html`
+  <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
+    <fluent-drawer id="drawer-topnav" open>
+      <div slot="buttons">
+        <div style="display: flex; justify-content: space-between; align-items: center; width: 100%;">
+          <div style="display: flex">
+            <fluent-button
+              appearance="transparent"
+              icon-only
+              size="small"
+              class="toolbar-button"
+              tabindex="0"
+              aria-label="back"
+            >
+              ${arrowLeft16Regular}
+            </fluent-button>
+          </div>
+          <div style="display: flex">
+            <fluent-button
+              appearance="transparent"
+              icon-only
+              size="small"
+              class="toolbar-button"
+              tabindex="0"
+              aria-label="close"
+            >
+              ${arrowClockwise16Regular}
+            </fluent-button>
+            <fluent-button
+              appearance="transparent"
+              icon-only
+              size="small"
+              class="toolbar-button"
+              tabindex="0"
+              aria-label="close"
+            >
+              ${settings16Regular}
+            </fluent-button>
+
+            <fluent-button
+              @click=${() => hideDrawer('drawer-playground')}
+              appearance="transparent"
+              icon-only
+              size="small"
+              class="toolbar-button"
+              tabindex="0"
+              aria-label="close"
+            >
+              ${dismissed16Regular}
+            </fluent-button>
+          </div>
         </div>
       </div>
-      <div slot="actions">
+      <div slot="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"
+            ><h1>Drawer with Top Navigation</h1></fluent-text
+          >
+        </div>
+      </div>
+      <div style="display: flex; row-gap: 16px; flex-direction: column;">
+        <fluent-text size="300" font="base">
+          The top navigation of the drawer component features an optional slot named "buttons," providing users with the
+          flexibility to insert custom elements. Whether you want to add action buttons, icons, or other interactive
+          elements, this slot allows you to extend the drawer's functionality and appearance to better suit your
+          application's needs. Simply populate the "buttons" slot with your desired elements, and they will appear in
+          the top navigation area of the drawer.
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code>slot="buttons"</code>
+        </fluent-text>
+      </div>
+      <div slot="footer">
         <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
         <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
       </div>
@@ -606,15 +642,49 @@ export const DrawerWithToolbar = renderComponent(html`
 `);
 
 export const DrawerAsModal = renderComponent(html`
+  <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
+    <fluent-drawer id="drawer-modal" modal open>
+      <div slot="header">
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer as Modal</h1></fluent-text>
+          <fluent-button
+            class="toolbar-button"
+            appearance="transparent"
+            icon-only
+            size="small"
+            tabindex="0"
+            aria-label="close"
+          >
+            ${dismissed16Regular}
+          </fluent-button>
+        </div>
+      </div>
+      <div style="display: flex; row-gap: 16px; flex-direction: column;">
+        <fluent-text>
+          Rendering the Drawer as a modal enables a blocking overlay that signifies that the users full attention is
+          required when making configurations.
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code>modal</code>
+        </fluent-text>
+      </div>
+      <div slot="footer">
+        <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
+        <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
+      </div>
+    </fluent-drawer>
+  </div>
+`);
+
+export const DrawerWithOverflowContent = renderComponent(html`
     <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
         <fluent-drawer
           id="drawer-modal"
-          modal
           open
         >
           <div slot="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-            <fluent-text font="base" size="500" weight="semibold">Drawer as Modal</fluent-text>
+            <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer with Overflow Content</h1></fluent-text>
               <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
                 ${dismissed16Regular}
               </fluent-button>
@@ -622,8 +692,9 @@ export const DrawerAsModal = renderComponent(html`
           </div>
           <div style="display: flex; row-gap: 16px; flex-direction: column;">
             <fluent-text>
-              Rendering the Drawer as a modal enables a blocking overlay that signifies that the users full attention is required when making configurations.
-            </fluent-text>
+              When the content section of the drawer contains more information than can fit within its designated area, a scrollbar automatically appears to facilitate easy navigation through the overflowing content. Additionally, a dynamic border is added to the footer of the drawer. This border serves as a visual separator between the content and footer sections, enhancing the user experience by clearly delineating these two areas.
+             </fluent-text>
+            <fluent-text size="400" weight="bold" as="h2"><h2>Personal Info</h2></fluent-text>
             <div>
               <fluent-label>First Name</fluent-label>
               <fluent-text-input id="abc" type="text"></fluent-text-input>
@@ -632,6 +703,7 @@ export const DrawerAsModal = renderComponent(html`
               <fluent-label>Last Name</fluent-label>
               <fluent-text-input id="def" type="text" /></fluent-text-input>
             </div>
+            <fluent-text size="400" weight="bold" as="h2"><h2>Contact Details</h2></fluent-text>
             <div>
               <fluent-label>Email</fluent-label>
               <fluent-text-input id="ghi" type="text" /></fluent-text-input>
@@ -640,8 +712,17 @@ export const DrawerAsModal = renderComponent(html`
               <fluent-label>Phone Number</fluent-label>
               <fluent-text-input id="jkl" type="text" /></fluent-text-input>
             </div>
+            <fluent-text size="400" weight="bold" as="h2"><h2>Account Settings</h2></fluent-text>
+            <div>
+              <fluent-label>Username</fluent-label>
+              <fluent-text-input id="ghi" type="text" /></fluent-text-input>
+            </div>
+            <div>
+              <fluent-label>Password</fluent-label>
+              <fluent-text-input id="jkl" type="password" /></fluent-text-input>
+            </div>
           </div>
-          <div slot="actions">
+          <div slot="footer">
             <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
             <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
           </div>
