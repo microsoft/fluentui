@@ -15,56 +15,43 @@ The Fluent WC3 Drawer extends `FASTElement`
 ### Template
 
 ```html
-    <template
-      role="complementary"
+ <template
       ?open="${x => x.open}"
+      ?modal="${x => x.modal}"
+      control-size="${x => x.controlSize}"
       position="${x => x.position}"
-      focus-target="${x => x.focusTarget}"
+      role="${x => (x.modal ? 'dialog' : 'complementary')}"
+      tabindex="${x => (x.open ? '0' : '-1')}"
       aria-disabled="${x => x.ariaDisabled}"
       aria-hidden="${x => (x.open ? 'false' : 'true')}"
       aria-label="${x => x.ariaLabel}"
-      trap-focus="${x => x.trapFocus}"
-      tabindex="${x => (x.open ? '0' : '-1')}"
+      aria-labelledby="${x => x.ariaLabelledby}"
       aria-modal="${x => (x.modal ? 'true' : 'false')}"
     >
+      <div
+        class="overlay"
+        part="overlay"
+        ?hidden="${x => !x.modal || !x.open}"
+        aria-hidden="${x => !x.modal || !x.open}"
+        role="presentation"
+      ></div>
       <div class="root" part="root">
-        <div
-          class="drawer"
-          part="drawer"
-          aria-modal="${x => (x.modal ? 'true' : 'false')}"
-          aria-describedby="${x => x.ariaDescribedby}"
-          aria-labelledby="${x => x.ariaLabelledby}"
-          aria-label="${x => x.ariaLabel}"
-          ${ref('drawer')}
-        >
-          ${when(
-            x => x.toolbar,
-            html<T>`
-              <div class="toolbar" part="toolbar">
-                <slot name="toolbar"></slot>
-              </div>
-            `
-          )}
+        <slot name="start"></slot>
+        <div class="header-container">
+          <div class="buttons" part="buttons">
+            <slot name="buttons"></slot>
+          </div>
           <div class="header" part="header">
             <slot name="header"></slot>
           </div>
-          <div class="content" part="content">
-            <slot></slot>
-          </div>
-          <div class="actions" part="actions">
-            <slot name="actions"></slot>
-          </div>
         </div>
-        ${when(
-          x => x.modal && x.open,
-          html<T>`
-            <div
-              class="overlay"
-              part="overlay"
-              role="presentation"
-            ></div>
-          `
-        )}
+        <div class="content" part="content" ${ref('content')}>
+          <slot></slot>
+        </div>
+        <div class="footer" part="footer">
+          <slot name="footer"></slot>
+        </div>
+        <slot name="end"></slot>
       </div>
     </template>
 ```
@@ -75,25 +62,6 @@ The Fluent WC3 Drawer extends `FASTElement`
 | ---------------- | ------------------------ | -------------------- |
 | `DrawerPosition` | `type of DrawerPosition` | Positions for Drawer |
 | `DrawerSize`     | `type of DrawerSize`     | Sizes for Drawer     |
-
-### **Fields**
-
-| Name                     | Privacy | Type             | Default                | Description                                                                       | Inherited From                                                               |
-| ------------------------ | ------- | ---------------- | ---------------------- | --------------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --- |
-| `_drawer`                | private | `HTMLElement     | undefined`             | `undefined`                                                                       | Private field representing the drawer element.                               |     |
-| `hasInteracted`          | private | `boolean`        | `false`                | Private field ndicating whether the drawer has been interacted with.              |                                                                              |
-| `previousActiveElement ` | private | `HTMLElement     | undefined`             | `undefined`                                                                       | Private field storing the previous active element before opening the drawer. |     |
-| `trapFocus`              |         | `boolean`        | `false`                | Determines whether the focus should be trapped within the drawer when it is open. |                                                                              |
-| `drawer`                 |         | `HTMLElement     | undefined`             | `undefined`                                                                       | The Drawer element.                                                          |     |
-| `open`                   |         | `boolean`        | `false`                | Indicates whether the drawer is open or closed.                                   |                                                                              |
-| `modal`                  |         | `boolean`        | `false`                | Determines whether the drawer should be displayed as modal or non-modal.          |                                                                              |
-| `position`               |         | `DrawerPosition` | `DrawerPosition.right` | Sets the position of the drawer (left/right).                                     |                                                                              |
-| `drawerSize`             |         | `DrawerSize`     | `DrawerSize.medium`    | Sets the control size of the drawer (small/medium/large).                         |                                                                              |
-| `ariaLabelledby`         |         | `string          | undefined`             | `undefined`                                                                       | Sets the aria-labelledby attribute of the drawer.                            |     |
-| `ariaDescribedby`        |         | `string          | undefined`             | `undefined`                                                                       | Sets the aria-describedby attribute of the drawer.                           |     |
-| `toolbar`                |         | `boolean`        | `false`                | Indicates the presence of the toolbar.                                            |                                                                              |
-| `focusTarget`            |         | `string          | undefined`             | `undefined`                                                                       | The element to receive focus when the drawer opens.                          |     |
-| `previousActiveElement`  |         | `HTMLElement     | undefined`             | `undefined`                                                                       | Stores the previous active element before opening the drawer.                |     |
 
 ### **Properties**
 
@@ -115,16 +83,12 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 | Name               | Field           |
 | ------------------ | --------------- |
-| `trap-focus`       | trapFocus       |
-| `drawer`           | drawer          |
 | `open`             | open            |
 | `modal`            | modal           |
 | `position`         | position        |
 | `control-size`     | controlSize     |
 | `aria-labelledby`  | ariaLabelledby  |
 | `aria-describedby` | ariaDescribedby |
-| `toolbar`          | toolbar         |
-| `focus-target`     | focusTarget     |
 
 ### **Events**
 
