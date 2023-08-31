@@ -11,8 +11,32 @@ import {
   keyPageDown,
   keyPageUp,
 } from '@microsoft/fast-web-utilities';
-import { CalendarFilter, CalendarType, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
+import { CalendarFilter, CalendarType, DateAdjustment, DaysOfWeek, FirstWeekOfYear } from './calendar.options.js';
 import { FluentDateFormatter, NUM_DAYS_IN_WEEK, NUM_YEARS_IN_DECADE } from './date-formatter.js';
+
+/**
+ * The CSS animation class for the first row on a datagrid
+ * @private
+ */
+const FirstRowAnimated = 'first-transition-row-animated';
+
+/**
+ * The CSS animation class for the first row on a datagrid
+ * @private
+ */
+const LastRowAnimated = 'last-transition-row-animated';
+
+/**
+ * The CSS animation class for the first row on a datagrid
+ * @private
+ */
+const RowAnimatedUp = 'animated-up';
+
+/**
+ * The CSS animation class for the first row on a datagrid
+ * @private
+ */
+const RowAnimatedDown = 'animated-down';
 
 /**
  * Month picker information needed for rendering
@@ -213,7 +237,6 @@ export class Calendar extends FASTCalendar {
       Updates.enqueue(() => {
         const el = this.getNavigatedDayElement();
         el.tabIndex = 0;
-        el.focus();
       });
     }
 
@@ -316,6 +339,11 @@ export class Calendar extends FASTCalendar {
 
     this.monthPickerYear = year;
     this.yearPickerDecade = year - (year % 10);
+
+    Updates.enqueue(() => {
+      const el = this.getNavigatedDayElement();
+      el.focus();
+    });
   }
 
   /**
@@ -470,8 +498,6 @@ export class Calendar extends FASTCalendar {
     } else {
       this.selectedDates = `${month}-${day}-${year}`;
     }
-
-    console.log(this.selectedDates);
   }
 
   /**
@@ -553,7 +579,7 @@ export class Calendar extends FASTCalendar {
       case keyArrowRight: {
         event.preventDefault();
         // Update navigatedDate
-        this.navigatedDate.setDate(date.day + 1);
+        this.navigatedDate.setDate(date.day + DateAdjustment.NextDay);
 
         // Update the month on the calendar if reached the end of the current month
         if (currentCell.getAttribute('grid-column') == '7' && this.navigatedDate.getMonth() + 1 != this.month) {
@@ -564,7 +590,7 @@ export class Calendar extends FASTCalendar {
       }
       case keyArrowLeft: {
         event.preventDefault();
-        this.navigatedDate.setDate(date.day - 1);
+        this.navigatedDate.setDate(date.day + DateAdjustment.PreviousDay);
 
         if (currentCell.getAttribute('grid-column') == '1' && this.navigatedDate.getMonth() + 1 != this.month) {
           this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
@@ -574,7 +600,7 @@ export class Calendar extends FASTCalendar {
       }
       case keyArrowDown: {
         event.preventDefault();
-        this.navigatedDate.setDate(date.day + 7);
+        this.navigatedDate.setDate(date.day + DateAdjustment.NextWeek);
 
         // Update the month on the calendar if the new navigatedDate is not in the current month and cannot be found on the DOM
         if (this.navigatedDate.getMonth() + 1 != this.month && this.getNavigatedDayElement() === undefined) {
@@ -585,7 +611,7 @@ export class Calendar extends FASTCalendar {
       }
       case keyArrowUp: {
         event.preventDefault();
-        this.navigatedDate.setDate(date.day - 7);
+        this.navigatedDate.setDate(date.day + DateAdjustment.PreviousWeek);
         if (this.navigatedDate.getMonth() + 1 != this.month && this.getNavigatedDayElement() === undefined) {
           this.handleSwitchMonth(this.navigatedDate.getMonth() + 1, this.navigatedDate.getFullYear());
           return true;
@@ -745,16 +771,16 @@ export class Calendar extends FASTCalendar {
     Updates.enqueue(() => {
       const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
 
-      rows?.forEach(row => row.classList.add('animated-up'));
+      rows?.forEach(row => row.classList.add(RowAnimatedUp));
 
       const firstTransitionRow = this.shadowRoot?.querySelector('.week-days')?.nextElementSibling as HTMLElement;
 
-      firstTransitionRow.classList.add('first-transition-row-animated');
+      firstTransitionRow.classList.add(FirstRowAnimated);
 
       //The timeout for the animation is set to the duration of the CSS animation as specified in the stylesheet
       setTimeout(() => {
-        firstTransitionRow.classList.remove('first-transition-row-animated');
-        rows?.forEach(row => row.classList.remove('animated-up'));
+        firstTransitionRow.classList.remove(FirstRowAnimated);
+        rows?.forEach(row => row.classList.remove(RowAnimatedUp));
       }, 367);
     });
   }
@@ -767,17 +793,17 @@ export class Calendar extends FASTCalendar {
     Updates.enqueue(() => {
       const rows = this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.week'));
 
-      rows?.forEach(row => row.classList.add('animated-down'));
+      rows?.forEach(row => row.classList.add(RowAnimatedDown));
 
       const lastTransitionRow = this.shadowRoot?.querySelector('.week-days')?.parentElement
         ?.lastElementChild as HTMLElement;
 
-      lastTransitionRow.classList.add('last-transition-row-animated');
+      lastTransitionRow.classList.add(LastRowAnimated);
 
       //The timeout for the animation is set to the duration of the CSS animation as specified in the stylesheet
       setTimeout(() => {
-        lastTransitionRow.classList.remove('last-transition-row-animated');
-        rows?.forEach(row => row.classList.remove('animated-down'));
+        lastTransitionRow.classList.remove(LastRowAnimated);
+        rows?.forEach(row => row.classList.remove(RowAnimatedDown));
       }, 367);
     });
   }
@@ -793,17 +819,17 @@ export class Calendar extends FASTCalendar {
         this.shadowRoot && Array.from(this.shadowRoot?.querySelectorAll('.secondary-panel-row'));
 
       if (direction === 'previous') {
-        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-up'));
+        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add(RowAnimatedUp));
       } else if (direction === 'next') {
-        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add('animated-down'));
+        secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.add(RowAnimatedDown));
       }
 
       //The timeout for the animation is set to the duration of the CSS animation as specified in the stylesheet
       setTimeout(() => {
         if (direction === 'previous') {
-          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-up'));
+          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove(RowAnimatedUp));
         } else if (direction === 'next') {
-          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove('animated-down'));
+          secondaryPanelRows?.forEach(secondaryPanelRow => secondaryPanelRow.classList.remove(RowAnimatedDown));
         }
       }, 367);
     });

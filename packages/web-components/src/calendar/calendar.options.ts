@@ -73,4 +73,21 @@ export const FirstWeekOfYear = {
  */
 export type FirstWeekOfYear = ValuesOf<typeof FirstWeekOfYear>;
 
+/**
+ * Enum that defines when the first week of the year should start
+ * @public
+ */
+export const DateAdjustment = {
+  NextDay: 1,
+  PreviousDay: -1,
+  NextWeek: 7,
+  PreviousWeek: -7,
+} as const;
+
+/**
+ * First week of the year can start on the first day, first full week, or first four day week
+ * @public
+ */
+export type DateAdjustment = ValuesOf<typeof DateAdjustment>;
+
 export { CalendarOptions };
