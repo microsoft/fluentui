@@ -36,7 +36,7 @@
   "dependencies": {
     "@fluentui/react-portal-compat-context": "^9.0.6",
     "@fluentui/react-tabster": "^9.12.5",
-    "@swc/helpers": "^0.4.14"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@fluentui/react-components": "^9.30.1",
