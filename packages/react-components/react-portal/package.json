@@ -36,7 +36,7 @@
     "@fluentui/react-tabster": "^9.12.5",
     "@fluentui/react-utilities": "^9.13.0",
     "@griffel/react": "^1.5.14",
-    "@swc/helpers": "^0.4.14",
+    "@swc/helpers": "^0.5.1",
     "use-disposable": "^1.0.1"
   },
   "peerDependencies": {
