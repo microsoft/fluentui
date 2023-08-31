@@ -1,7 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import { AvatarGroupProvider } from '../../contexts/AvatarGroupContext';
 import { AvatarGroupContextValues } from '../AvatarGroup/AvatarGroup.types';
 
