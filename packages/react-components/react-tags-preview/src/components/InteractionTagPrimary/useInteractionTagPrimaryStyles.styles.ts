@@ -43,6 +43,16 @@ const useRootBaseClassName = makeResetStyles({
     ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
     zIndex: 1,
   }),
+
+  // windows high contrast:
+  '@media (forced-colors: active)': {
+    ':hover': {
+      backgroundColor: 'HighlightText',
+    },
+    ':active': {
+      backgroundColor: 'HighlightText',
+    },
+  },
 });
 
 const useRootStyles = makeStyles({
