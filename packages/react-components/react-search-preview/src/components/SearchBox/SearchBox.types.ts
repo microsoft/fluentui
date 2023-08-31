@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { InputProps, InputSlots, InputState } from '@fluentui/react-input';
 
 export type SearchBoxSlots = InputSlots & {
-  // Last element in the input, within the input border
+  /** Last element in the input, within the input border */
   dismiss?: Slot<'span'>;
 };
 
@@ -14,7 +14,13 @@ export type SearchBoxProps = Omit<
   // `children` is unsupported. The rest of these native props have customized definitions.
   'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
 > &
-  InputProps;
+  InputProps & {
+    /**
+     * Callback for when the clear/dismiss button is clicked. *Should* be handled when `value` is controlled by the
+     * consumer so that the consumer may reset `value` respectively.
+     * */
+    onDismiss?: () => void;
+  };
 
 /**
  * State used in rendering SearchBox
