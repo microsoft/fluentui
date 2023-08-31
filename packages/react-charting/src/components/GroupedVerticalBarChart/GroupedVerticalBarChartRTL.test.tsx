@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { screen, fireEvent, act } from '@testing-library/react';
-import { queryAllByAttribute, render, waitFor } from '@testing-library/react';
+import { render, waitFor } from '@testing-library/react';
 import { emptyChartPoints } from './GroupedVerticalBarChart.test';
 import { GroupedVerticalBarChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
@@ -546,7 +546,6 @@ describe('Grouped Vertical Bar chart rendering', () => {
   test('Should re-render the Grouped Vertical Bar chart with data', async () => {
     // Arrange
     const { container, rerender } = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
     // Assert
     expect(container).toMatchSnapshot();
     expect(getById(container, /_GVBC_empty/i)).toHaveLength(1);
