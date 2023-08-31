@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: tag with secondary text has no top border under windows high contrast",
+  "comment": "fix: remember last focused element in TagGroup",
   "packageName": "@fluentui/react-tags-preview",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"

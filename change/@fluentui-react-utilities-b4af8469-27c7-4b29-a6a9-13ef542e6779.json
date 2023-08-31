@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use timeout instead of requestAnimationFrame for ssr",
+  "packageName": "@fluentui/react-utilities",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

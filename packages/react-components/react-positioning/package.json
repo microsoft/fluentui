@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-positioning",
-  "version": "9.9.7",
+  "version": "9.9.8",
   "description": "A react wrapper around Popper.js for Fluent UI",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
     "@floating-ui/dom": "^1.2.0",
     "@fluentui/react-shared-contexts": "^9.7.2",
     "@fluentui/react-theme": "^9.1.11",
-    "@fluentui/react-utilities": "^9.12.0",
+    "@fluentui/react-utilities": "^9.13.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.4.14"
   },

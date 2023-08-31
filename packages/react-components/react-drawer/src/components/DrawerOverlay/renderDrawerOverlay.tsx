@@ -10,6 +10,10 @@ import { Dialog } from '@fluentui/react-dialog';
  * Render the final JSX of DrawerOverlay
  */
 export const renderDrawerOverlay_unstable = (state: DrawerOverlayState) => {
+  if (!state.motion.canRender) {
+    return null;
+  }
+
   assertSlots<DrawerOverlaySlots>(state);
 
   return (
