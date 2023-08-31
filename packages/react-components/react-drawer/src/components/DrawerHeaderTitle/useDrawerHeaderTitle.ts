@@ -1,7 +1,24 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, resolveShorthand } from '@fluentui/react-utilities';
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
-import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+
+const getHeadingSlot = (props: DrawerHeaderTitleProps) => {
+  let heading = resolveShorthand(props.heading);
+
+  if (!heading) {
+    heading = {
+      children: props.children,
+    };
+  }
+
+  return slot.optional(getNativeElementProps(heading.as ?? 'h2', heading), {
+    defaultProps: {
+      children: heading.children || props.children,
+    },
+    renderByDefault: true,
+    elementType: 'h2',
+  });
+};
 
 /**
  * Create the state required to render DrawerHeaderTitle.
@@ -16,33 +33,23 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  const { root: heading, action, components: titleComponents } = useDialogTitle_unstable(props, ref);
-
   return {
     components: {
       root: 'div',
-      heading: titleComponents.root,
-      action: titleComponents.action,
+      heading: 'h2',
+      action: 'div',
     },
 
     root: slot.always(
       getNativeElementProps('div', {
-        ref,
         ...props,
+        ref,
       }),
       { elementType: 'div' },
     ),
-    heading: slot.optional(props.heading, {
-      renderByDefault: true,
-      defaultProps: {
-        ...heading,
-        className: undefined, // remove className from heading
-      },
-      elementType: titleComponents.root,
-    }),
+    heading: getHeadingSlot(props),
     action: slot.optional(props.action, {
-      defaultProps: action,
-      elementType: titleComponents.action,
+      elementType: 'div',
     }),
   };
 };
