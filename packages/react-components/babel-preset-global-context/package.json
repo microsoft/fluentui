@@ -36,7 +36,7 @@
     "@babel/template": "^7.12.13",
     "@babel/traverse": "^7.12.13",
     "@emotion/hash": "^0.8.0",
-    "@swc/helpers": "^0.4.14",
+    "@swc/helpers": "^0.5.1",
     "find-up": "^5.0.0"
   },
   "peerDependencies": {
