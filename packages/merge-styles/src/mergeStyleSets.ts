@@ -8,11 +8,6 @@ import { applyRegistration, styleToRegistration } from './styleToClassName';
 import { ObjectOnly } from './ObjectOnly';
 import { isShadowConfig, ShadowConfig } from './shadowConfig';
 
-export type ShadowConfig = {
-  stylesheetKey: string;
-  inShadow: boolean;
-};
-
 /**
  * Takes in one or more style set objects, each consisting of a set of areas,
  * each which will produce a class name. Using this is analogous to calling
@@ -85,11 +80,6 @@ export function mergeStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  */
 export function mergeStyleSets(
   ...styleSets: Array<IStyleSet | undefined | false | null | ShadowConfig>
-): IProcessedStyleSet<any>;
-
-export function mergeStyleSets(
-  shadowConfig: ShadowConfig,
-  ...styleSets: Array<IStyleSet | undefined | false | null>
 ): IProcessedStyleSet<any>;
 
 export function mergeStyleSets(
@@ -216,7 +206,6 @@ export function mergeCssSets<TStyleSet>(
 export function mergeCssSets(
   styleSets: Array<IStyleSet | undefined | false | null>,
   options?: IStyleOptions,
-  shadowConfig?: ShadowConfig,
 ): IProcessedStyleSet<any> {
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
 

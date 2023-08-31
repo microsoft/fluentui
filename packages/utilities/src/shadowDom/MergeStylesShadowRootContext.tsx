@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
-import { FocusRectsProvider } from '../FocusRectsProvider';
-
 import { GLOBAL_STYLESHEET_KEY } from '@fluentui/merge-styles';
+import { FocusRectsProvider } from '../FocusRectsProvider';
+import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
 /**
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */
