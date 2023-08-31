@@ -5,10 +5,42 @@ import { emptyChartPoints } from './GroupedVerticalBarChart.test';
 import { GroupedVerticalBarChart } from './index';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { getByClass, getById, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
-import { IVSChartDataPoint } from '../../index';
+import { IGroupedVerticalBarChartData, IVSChartDataPoint } from '../../index';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
 
+const accessibilityDataPoints: IGroupedVerticalBarChartData[] = [
+  {
+    name: 'Metadata info multi lines text Completed',
+    series: [
+      {
+        key: 'series1',
+        data: 33000,
+        color: DefaultPalette.blueLight,
+        legend: 'MetaData1',
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '33%',
+        callOutAccessibilityData: {
+          ariaLabel: 'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
+        },
+      },
+      {
+        key: 'series2',
+        data: 44000,
+        color: DefaultPalette.blue,
+        legend: 'MetaData4',
+        xAxisCalloutData: '2020/04/30',
+        yAxisCalloutData: '44%',
+        callOutAccessibilityData: {
+          ariaLabel: 'Bar series 2 of 2 x-Axis 2020/04/30 MetaData4 44%',
+        },
+      },
+    ],
+    stackCallOutAccessibilityData: {
+      ariaLabel: 'Group series 1 of 4 x-Axis 2020/04/30 MetaData1 33% MetaData4 44%',
+    },
+  },
+];
 const chartDataWithNumaricXAxis = [
   {
     name: '2000',
@@ -19,6 +51,9 @@ const chartDataWithNumaricXAxis = [
         xAxisCalloutData: '2020/04/30',
         color: DefaultPalette.accent,
         legend: 'MetaData1',
+        callOutAccessibilityData: {
+          ariaLabel: 'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
+        },
       },
       {
         key: 'series2',
@@ -177,23 +212,19 @@ describe('Grouped Vertical bar chart rendering', () => {
       expect(container).toMatchSnapshot();
     },
   );
+
+  testWithWait(
+    'Should render the vertical bar chart with string x-axis data with given container width and bar width',
+    GroupedVerticalBarChart,
+    { data: chartPoints, width: 1000, barWidth: 1 },
+    container => {
+      // Assert
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Grouped vertical bar chart - Subcomponent bar', () => {
-  // testWithWait(
-  //   'Should render the bar with the given width',
-  //   GroupedVerticalBarChart,
-  //   { data: chartPoints, barwidth: 5, width: 400 },
-  //   container => {
-  //     // Assert
-  //     const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
-  //     expect(bars).toHaveLength(6);
-  //     expect(bars[0].getAttribute('width')).toEqual('5');
-  //     expect(bars[1].getAttribute('width')).toEqual('5');
-  //     expect(bars[2].getAttribute('width')).toEqual('5');
-  //   },
-  // );
-
   testWithWait(
     'Should render the bars with the specified colors',
     GroupedVerticalBarChart,
@@ -220,6 +251,20 @@ describe('Grouped vertical bar chart - Subcomponent bar', () => {
       expect(getByClass(container, /barLabel/i)).toHaveLength(0);
     },
   );
+
+  testWithWait(
+    'Should render the with custom accessibility data',
+    GroupedVerticalBarChart,
+    { data: accessibilityDataPoints },
+    container => {
+      // Assert
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      expect(bars[0]).toHaveAttribute(
+        'aria-label',
+        'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
+      );
+    },
+  );
 });
 
 describe('Grouped vertical bar chart - Subcomponent Legends', () => {
@@ -234,20 +279,6 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       expect(legends).toHaveLength(0);
     },
   );
-
-  // testWithWait(
-  //   'Should render the legends with the specified colors',
-  //   GroupedVerticalBarChart,
-  //   { data: chartPoints },
-  //   container => {
-  //     // colors mentioned in the data points itself
-  //     // Assert
-  //     const legends = getByClass(container, /rect-/i);
-  //     expect(legends).toHaveLength(2);
-  //     expect(legends[0]).toHaveStyle('background-color: #00bcf2');
-  //     expect(legends[1]).toHaveStyle('background-color: #0078d4');
-  //   },
-  // );
 
   testWithoutWait(
     'Should reduce the opacity of the other bars on mouse over a bar legend',
@@ -267,6 +298,33 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
     },
   );
 
+  testWithoutWait(
+    'Should update the opacity of the other bars on mouse move from one bar legend to another bar legend',
+    GroupedVerticalBarChart,
+    { data: chartPoints },
+    container => {
+      const legends = getByClass(container, /legend-/i);
+      fireEvent.mouseOver(legends[0]);
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      // Assert
+      expect(bars[0]).toHaveAttribute('opacity', '');
+      expect(bars[1]).toHaveAttribute('opacity', '0.1');
+      expect(bars[2]).toHaveAttribute('opacity', '');
+      expect(bars[3]).toHaveAttribute('opacity', '0.1');
+      expect(bars[4]).toHaveAttribute('opacity', '');
+      expect(bars[5]).toHaveAttribute('opacity', '0.1');
+      fireEvent.mouseOver(legends[1]);
+      const updatedBars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      // Assert
+      expect(updatedBars[0]).toHaveAttribute('opacity', '0.1');
+      expect(updatedBars[1]).toHaveAttribute('opacity', '');
+      expect(updatedBars[2]).toHaveAttribute('opacity', '0.1');
+      expect(updatedBars[3]).toHaveAttribute('opacity', '');
+      expect(updatedBars[4]).toHaveAttribute('opacity', '0.1');
+      expect(updatedBars[5]).toHaveAttribute('opacity', '');
+    },
+  );
+
   testWithWait(
     'Should select legend on single mouse click on legends',
     GroupedVerticalBarChart,
@@ -279,7 +337,6 @@ describe('Grouped vertical bar chart - Subcomponent Legends', () => {
       );
       const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
       // Assert
-      screen.debug(container, 50000000);
       expect(legendsAfterClickEvent[0]).toHaveAttribute('aria-selected', 'true');
       expect(legendsAfterClickEvent[1]).toHaveAttribute('aria-selected', 'false');
       expect(bars[0]).toHaveAttribute('opacity', '');
@@ -383,25 +440,28 @@ describe('Grouped vertical bar chart - Subcomponent callout', () => {
   );
 });
 
-describe('Grouped Vertical Bar chart rendering', () => {
-  test('Should re-render the Grouped Vertical Bar chart with data', async () => {
-    // Arrange
-    const { container, rerender } = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
-    const getById = queryAllByAttribute.bind(null, 'id');
-    // Assert
-    expect(container).toMatchSnapshot();
-    expect(getById(container, /_GVBC_empty/i)).toHaveLength(1);
-    // Act
-    rerender(<GroupedVerticalBarChart data={chartPoints} />);
-    await waitFor(() => {
-      // Assert
-      expect(container).toMatchSnapshot();
-      expect(getById(container, /_GVBC_empty/i)).toHaveLength(0);
-    });
-  });
-});
-
 describe('Grouped vertical bar chart - Subcomponent Labels', () => {
+  testWithWait(
+    'Should render the xAxis label based on noOfCharsToTruncate',
+    GroupedVerticalBarChart,
+    { data: chartPoints, showXAxisLablesTooltip: true, noOfCharsToTruncate: 3 },
+    container => {
+      // Assert
+      expect(getById(container, /showDots/i)).toHaveLength(3);
+      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Met...');
+    },
+  );
+
+  testWithWait(
+    'Should show rotated x-axis labels',
+    GroupedVerticalBarChart,
+    { data: chartPoints, rotateXAxisLables: true },
+    container => {
+      // Assert
+      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
+    },
+  );
+
   testWithWait(
     'Should show the x-axis labels tooltip when hovered',
     GroupedVerticalBarChart,
@@ -417,27 +477,6 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
   );
 
   testWithWait(
-    'Should show rotated x-axis labels',
-    GroupedVerticalBarChart,
-    { data: chartPoints, rotateXAxisLables: true },
-    container => {
-      // Assert
-      expect(getByClass(container, /tick/i)[0].getAttribute('transform')).toContain('rotate(-45)');
-    },
-  );
-
-  testWithWait(
-    'Should render the xAxis label based on noOfCharsToTruncate',
-    GroupedVerticalBarChart,
-    { data: chartPoints, showXAxisLablesTooltip: true, noOfCharsToTruncate: 3 },
-    container => {
-      // Assert
-      expect(getById(container, /showDots/i)).toHaveLength(3);
-      expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Met...');
-    },
-  );
-
-  testWithWait(
     'Should render the xAxis and yAxis with specified tick count',
     GroupedVerticalBarChart,
     { data: chartPoints, yAxisTickCount: 5 },
@@ -446,17 +485,6 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
       expect(getByClass(container, /tick/i)).toHaveLength(9);
     },
   );
-
-  // testWithWait(
-  //   'Should render the xAxis with custom accessibility',
-  //   GroupedVerticalBarChart,
-  //   { data: chartPoints, wrapXAxisLables: true },
-  //   container => {
-  //     // Assert
-  //     screen.debug(container, 5000000);
-  //     expect(getById(container, /WordBreakId/i)).toHaveLength(8);
-  //   },
-  // );
 });
 
 describe('Grouped vertical bar chart - Screen resolution', () => {
@@ -511,5 +539,23 @@ describe('Vertical stacked bar chart - Theme', () => {
     );
     // Assert
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('Grouped Vertical Bar chart rendering', () => {
+  test('Should re-render the Grouped Vertical Bar chart with data', async () => {
+    // Arrange
+    const { container, rerender } = render(<GroupedVerticalBarChart data={emptyChartPoints} />);
+    const getById = queryAllByAttribute.bind(null, 'id');
+    // Assert
+    expect(container).toMatchSnapshot();
+    expect(getById(container, /_GVBC_empty/i)).toHaveLength(1);
+    // Act
+    rerender(<GroupedVerticalBarChart data={chartPoints} />);
+    await waitFor(() => {
+      // Assert
+      expect(container).toMatchSnapshot();
+      expect(getById(container, /_GVBC_empty/i)).toHaveLength(0);
+    });
   });
 });
