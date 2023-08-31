@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix(react-infobutton): Making InfoButton's PopoverSurface inline by default.",
-  "packageName": "@fluentui/react-infobutton",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

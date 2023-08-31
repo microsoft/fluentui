@@ -27,7 +27,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@swc/helpers": "^0.4.14",
+    "@swc/helpers": "^0.5.1",
     "@types/dedent": "0.7.0",
     "codesandbox-import-utils": "2.2.3",
     "dedent": "0.7.0"

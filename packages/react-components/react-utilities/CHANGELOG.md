@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 24 Aug 2023 10:26:34 GMT and should not be manually modified.
+This log was last generated on Tue, 29 Aug 2023 12:57:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.0)
+
+Tue, 29 Aug 2023 12:57:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.12.0..@fluentui/react-utilities_v9.13.0)
+
+### Minor changes
+
+- feat: add disabledFocusOnIframe for useOnClickOutside() ([PR #28881](https://github.com/microsoft/fluentui/pull/28881) by olfedias@microsoft.com)
+
+### Patches
+
+- fix: `useOnClickOutside` should invoke callback on clicking scrollbar ([PR #28965](https://github.com/microsoft/fluentui/pull/28965) by yuanboxue@microsoft.com)
 
 ## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.12.0)
 

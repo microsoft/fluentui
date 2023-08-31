@@ -6,7 +6,7 @@ import type { DrawerInlineProps } from './DrawerInline.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
- * DrawerInline is often used for navigation that is not dissmissable. As it is on the same level as
+ * DrawerInline is often used for navigation that is not dismissible. As it is on the same level as
  * the main surface, users can still interact with other UI elements.
  */
 export const DrawerInline: ForwardRefComponent<DrawerInlineProps> = React.forwardRef((props, ref) => {

@@ -12,7 +12,13 @@ const useStyles = makeStyles({
     backgroundColor: '#fff',
   },
 
-  drawerResizer: {
+  drawer: {
+    willChange: 'width',
+    transitionProperty: 'width',
+    transitionDuration: '16.666ms', // 60fps
+  },
+
+  resizer: {
     ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground5),
 
     width: '8px',
@@ -28,7 +34,7 @@ const useStyles = makeStyles({
     },
   },
 
-  drawerResizing: {
+  resizerActive: {
     borderRightWidth: '4px',
     borderRightColor: tokens.colorNeutralBackground5Pressed,
   },
@@ -42,6 +48,7 @@ const useStyles = makeStyles({
 export const Resizable = () => {
   const styles = useStyles();
 
+  const animationFrame = React.useRef<number>(0);
   const sidebarRef = React.useRef<HTMLDivElement>(null);
   const [isResizing, setIsResizing] = React.useState(false);
   const [sidebarWidth, setSidebarWidth] = React.useState(320);
@@ -51,7 +58,7 @@ export const Resizable = () => {
 
   const resize = React.useCallback(
     ({ clientX }) => {
-      requestAnimationFrame(() => {
+      animationFrame.current = requestAnimationFrame(() => {
         if (isResizing && sidebarRef.current) {
           setSidebarWidth(clientX - sidebarRef.current.getBoundingClientRect().left);
         }
@@ -65,6 +72,7 @@ export const Resizable = () => {
     window.addEventListener('mouseup', stopResizing);
 
     return () => {
+      cancelAnimationFrame(animationFrame.current);
       window.removeEventListener('mousemove', resize);
       window.removeEventListener('mouseup', stopResizing);
     };
@@ -72,11 +80,14 @@ export const Resizable = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline open ref={sidebarRef} style={{ width: `${sidebarWidth}px` }} onMouseDown={e => e.preventDefault()}>
-        <div
-          className={mergeClasses(styles.drawerResizer, isResizing && styles.drawerResizing)}
-          onMouseDown={startResizing}
-        />
+      <DrawerInline
+        open
+        ref={sidebarRef}
+        className={styles.drawer}
+        style={{ width: `${sidebarWidth}px` }}
+        onMouseDown={e => e.preventDefault()}
+      >
+        <div className={mergeClasses(styles.resizer, isResizing && styles.resizerActive)} onMouseDown={startResizing} />
 
         <DrawerHeader>
           <DrawerHeaderTitle>Default Drawer</DrawerHeaderTitle>

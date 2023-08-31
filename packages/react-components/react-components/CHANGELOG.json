@@ -2,6 +2,103 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 29 Aug 2023 12:57:33 GMT",
+      "tag": "@fluentui/react-components_v9.30.1",
+      "version": "9.30.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "mehars.6925@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "5d42a5f3e0515660da3f8dbe1de82a109191dd79",
+            "comment": "fix: Small Button now uses token for its border radius"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "727a5dfc487ff37a26fa37226319dbe80eb02fcb",
+            "comment": "fix: CardHeader grid layout ignoring line-height of content"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "0bd698a9813c095fd77d5be957bd63a4ecc627d1",
+            "comment": "fix: Improve visuals when Table/DataGrid overflows it's parent"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "a37c90201e40ee2b5cfa4372355788c244060e56",
+            "comment": "fix: tag with secondary text has no top border under windows high contrast"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "1f13e55593905c2a04cf39f580b79fd44ccd2eba",
+            "comment": "fix: use regular icon for dismiss"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "17f08ac2e61d5f569067e78832096a54c3966d0b",
+            "comment": "fix: `useOnClickOutside` should invoke callback on clicking scrollbar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "3ef92a485889eee5010ed32b8fc1ec1d8127cc44",
+            "comment": "feat: adds mountNode to DialogSurface API"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "18e53d3c9dd88b9a71ad55e01da9a11e6a25295f",
+            "comment": "feat: create react-motion-preview package with useMotion hook"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "2147e3d60a21ff7ded34b27a19f3d5313533e910",
+            "comment": "feat: add closeOnIframeFocus prop to Popover"
+          },
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "ecaa08385bb0e25eafe87e3fb4424cb9139eea2d",
+            "comment": "feat: Add IconDirectionProvider to FluentProvider"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "3ef92a485889eee5010ed32b8fc1ec1d8127cc44",
+            "comment": "feat: adds mountNode to Toaster API"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "2147e3d60a21ff7ded34b27a19f3d5313533e910",
+            "comment": "feat: add disabledFocusOnIframe for useOnClickOutside()"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "0e33d8ebd9aecc1efe0cc664288ec433a8878ff8",
+            "comment": "fix(react-infobutton): Making InfoButton's PopoverSurface inline by default."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Aug 2023 10:26:32 GMT",
       "tag": "@fluentui/react-components_v9.30.0",
       "version": "9.30.0",
