@@ -25,11 +25,22 @@ describe('DrawerHeaderTitle', () => {
 
   it('should render different heading when provided', () => {
     mountFluent(
-      <DrawerHeaderTitle id="drawer-title" heading="h1">
+      <DrawerHeaderTitle id="drawer-title" heading={{ as: 'h1' }}>
         Content
       </DrawerHeaderTitle>,
     );
 
     cy.get('#drawer-title').contains('h1', 'Content');
+  });
+
+  it('should render action when provided', () => {
+    mountFluent(
+      <DrawerHeaderTitle id="drawer-title" action={<button>Action</button>}>
+        Content
+      </DrawerHeaderTitle>,
+    );
+
+    cy.get('#drawer-title').contains('h2', 'Content');
+    cy.get('#drawer-title').contains('button', 'Action');
   });
 });
