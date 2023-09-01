@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-empty-function */
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
@@ -917,7 +918,7 @@ describe('Line chart - Subcomponent Event', () => {
   testWithWait(
     'Should render events with defined data',
     LineChart,
-    { data: simplePoints, eventAnnotationProps: eventAnnotationProps, tickValues: tickValues, tickFormat: '%m/%d' },
+    { data: simplePoints, eventAnnotationProps, tickValues, tickFormat: '%m/%d' },
     container => {
       // Arrange
       const event = screen.queryByText('3 events');
