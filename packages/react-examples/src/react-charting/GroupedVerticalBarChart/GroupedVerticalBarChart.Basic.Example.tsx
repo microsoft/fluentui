@@ -194,7 +194,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             showYAxisGridLines
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
-            barwidth={50}
+            barwidth={this.state.barwidth}
             hideLabels={this.state.hideLabels}
           />
         </div>
