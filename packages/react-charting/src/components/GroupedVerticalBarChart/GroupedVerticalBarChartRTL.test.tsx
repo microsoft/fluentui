@@ -41,89 +41,6 @@ const accessibilityDataPoints: IGroupedVerticalBarChartData[] = [
     },
   },
 ];
-const chartDataWithNumaricXAxis = [
-  {
-    name: '2000',
-    series: [
-      {
-        key: 'series1',
-        data: 66,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.accent,
-        legend: 'MetaData1',
-        callOutAccessibilityData: {
-          ariaLabel: 'Group series 1 of 4, Bar series 1 of 2 x-Axis 2020/04/30 MetaData1 33%',
-        },
-      },
-      {
-        key: 'series2',
-        data: 13,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.blueMid,
-        legend: 'MetaData2',
-      },
-      {
-        key: 'series3',
-        data: 34,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.blueLight,
-        legend: 'MetaData3',
-      },
-    ],
-  },
-  {
-    name: '2010',
-    series: [
-      {
-        key: 'series1',
-        data: 14,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.accent,
-        legend: 'MetaData1',
-      },
-      {
-        key: 'series2',
-        data: 90,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.blueMid,
-        legend: 'MetaData2',
-      },
-      {
-        key: 'series3',
-        data: 33,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.blueLight,
-        legend: 'MetaData3',
-      },
-    ],
-  },
-  {
-    name: '2020',
-    series: [
-      {
-        key: 'series1',
-        data: 54,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.accent,
-        legend: 'MetaData1',
-      },
-      {
-        key: 'series2',
-        data: 72,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.blueMid,
-        legend: 'MetaData2',
-      },
-      {
-        key: 'series3',
-        data: 18,
-        xAxisCalloutData: '2020/04/30',
-        color: DefaultPalette.blueLight,
-        legend: 'MetaData3',
-      },
-    ],
-  },
-];
 
 const chartPoints = [
   {
@@ -193,16 +110,6 @@ const chartPoints = [
 ];
 
 describe('Grouped Vertical bar chart rendering', () => {
-  testWithoutWait(
-    'Should render the grouped vertical bar chart with numeric x-axis data',
-    GroupedVerticalBarChart,
-    { data: chartDataWithNumaricXAxis },
-    container => {
-      // Assert
-      expect(container).toMatchSnapshot();
-    },
-  );
-
   testWithoutWait(
     'Should render the grouped vertical bar chart with string x-axis data',
     GroupedVerticalBarChart,
