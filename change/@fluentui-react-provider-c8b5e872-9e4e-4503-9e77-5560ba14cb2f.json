@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add createCSSRuleFromTheme() to create CSS from themes",
+  "packageName": "@fluentui/react-provider",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}

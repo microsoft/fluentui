@@ -15,6 +15,7 @@ export {
 } from '@griffel/react';
 export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
 export {
+  createCSSRuleFromTheme,
   FluentProvider,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
