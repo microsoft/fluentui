@@ -206,6 +206,11 @@ export const styles = css`
     display: flex;
     column-gap: ${spacingHorizontalNone};
   }
+  :host fluent-button svg.navicon-svg {
+    font-size: 16px;
+    height: 16px;
+    width: 16px;
+  }
   :host .navicon-up,
   .navicon-down {
     padding: ${spacingVerticalXS};
