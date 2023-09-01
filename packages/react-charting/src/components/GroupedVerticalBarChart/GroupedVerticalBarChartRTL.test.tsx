@@ -388,6 +388,7 @@ describe('Grouped vertical bar chart - Subcomponent Labels', () => {
     GroupedVerticalBarChart,
     { data: chartPoints, yAxisTickCount: 5 },
     container => {
+      // total tick count = x tick count + y tick count
       // Assert
       expect(getByClass(container, /tick/i)).toHaveLength(9);
     },
@@ -465,3 +466,18 @@ describe('Grouped Vertical Bar chart rendering', () => {
     });
   });
 });
+
+testWithWait(
+  'Should render the bar with the given width',
+  GroupedVerticalBarChart,
+  { data: accessibilityDataPoints, barwidth: 16 },
+  async container => {
+    // bar width not working as expected in the test so logged bug for same: Bug 9158
+    // Assert
+    // await new Promise((r) => setTimeout(r, 2000));
+    const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+    await new Promise(r => setTimeout(r, 5000));
+    expect(bars[0].getAttribute('width')).toEqual('16');
+    expect(bars[1].getAttribute('width')).toEqual('16');
+  },
+);
