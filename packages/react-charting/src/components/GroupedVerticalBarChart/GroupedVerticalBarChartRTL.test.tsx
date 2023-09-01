@@ -216,7 +216,7 @@ describe('Grouped Vertical bar chart rendering', () => {
   testWithWait(
     'Should render the vertical bar chart with string x-axis data with given container width and bar width',
     GroupedVerticalBarChart,
-    { data: chartPoints, width: 1000, barWidth: 1 },
+    { data: chartPoints, width: 1000, barWidth: 16 },
     container => {
       // Assert
       expect(container).toMatchSnapshot();
@@ -501,7 +501,7 @@ describe('Grouped vertical bar chart - Screen resolution', () => {
   testWithWait(
     'Should remain unchanged on zoom in',
     GroupedVerticalBarChart,
-    { data: chartPoints, rotateXAxisLables: true, width: 300, height: 300 },
+    { data: chartPoints, width: 300, height: 300 },
     container => {
       global.innerWidth = window.innerWidth / 2;
       global.innerHeight = window.innerHeight / 2;
@@ -516,7 +516,7 @@ describe('Grouped vertical bar chart - Screen resolution', () => {
   testWithWait(
     'Should remain unchanged on zoom out',
     GroupedVerticalBarChart,
-    { data: chartPoints, rotateXAxisLables: true, width: 300, height: 300 },
+    { data: chartPoints, width: 300, height: 300 },
     container => {
       global.innerWidth = window.innerWidth * 2;
       global.innerHeight = window.innerHeight * 2;
