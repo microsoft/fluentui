@@ -261,6 +261,15 @@ describe('Area chart rendering', () => {
     undefined,
     beforeAll,
   );
+
+  testWithoutWait(
+    'Should render the area chart with numeric x-axis data with perf optimization enabled',
+    AreaChart,
+    { data: chartData, enablePerfOptimization: true },
+    container => {
+      expect(container).toMatchSnapshot();
+    },
+  );
 });
 
 describe('Area chart - Subcomponent Area', () => {
@@ -270,6 +279,33 @@ describe('Area chart - Subcomponent Area', () => {
     expect(areas[0].getAttribute('fill')).toEqual('green');
     expect(areas[1].getAttribute('fill')).toEqual('yellow');
     expect(areas[2].getAttribute('fill')).toEqual('blue');
+  });
+
+  testWithWait('Should invoke the handler on click on a data point', AreaChart, { data: chartData }, container => {
+    const handleDataPointClick = jest.spyOn(AreaChartBase.prototype as any, '_onDataPointClick');
+    const points = getById(container, /circle/i);
+    expect(points).toHaveLength(30);
+    fireEvent.click(points[0]);
+    // Assert
+    expect(handleDataPointClick).toHaveBeenCalled();
+  });
+
+  testWithWait('Should invoke the handler on focus on a data point', AreaChart, { data: chartData }, container => {
+    const handleDataPointFocus = jest.spyOn(AreaChartBase.prototype as any, '_handleFocus');
+    const points = getById(container, /circle/i);
+    expect(points).toHaveLength(30);
+    fireEvent.focus(points[0]);
+    // Assert
+    expect(handleDataPointFocus).toHaveBeenCalled();
+  });
+
+  testWithWait('Should invoke the handler on blur on a data point', AreaChart, { data: chartData }, container => {
+    const handleBlur = jest.spyOn(AreaChartBase.prototype as any, '_handleBlur').mockImplementation(() => {});
+    const points = getById(container, /circle/i);
+    expect(points).toHaveLength(30);
+    fireEvent.blur(points[0]);
+    // Assert
+    expect(handleBlur).toHaveBeenCalled();
   });
 });
 
@@ -290,8 +326,17 @@ describe('Area chart - Subcomponent legend', () => {
     },
   );
 
+  testWithoutWait('Should invoke the handler on mouse leave from legend', AreaChart, { data: chartData }, container => {
+    const handleLegendLeave = jest.spyOn(AreaChartBase.prototype as any, '_onLegendLeave');
+    const legend = screen.queryByText('legend1');
+    expect(legend).toBeDefined();
+    fireEvent.mouseLeave(legend!);
+    // Assert
+    expect(handleLegendLeave).toHaveBeenCalled();
+  });
+
   testWithoutWait(
-    'Should reduce opacity of the other lines in Area chat and opacity should be zero for selected Area',
+    'Should reduce opacity of the other lines in Area chart and opacity should be zero for selected Area',
     AreaChart,
     { data: chartData },
     container => {
@@ -359,9 +404,22 @@ describe('Area chart - Subcomponent legend', () => {
 
 describe('Area chart - Subcomponent callout', () => {
   testWithWait(
-    'Should show the callout over the area on mouse over',
+    'Should show the callout over the area on mouse over - Numeric xAxis',
     AreaChart,
     { data: chartData, calloutProps: { doNotLayer: true } },
+    container => {
+      // Arrange
+      const areas = getById(container, /graph-areaChart/i);
+      fireEvent.mouseOver(areas[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+    },
+  );
+
+  testWithWait(
+    'Should show the callout over the area on mouse over - Date xAxis',
+    AreaChart,
+    { data: chartDataWithDates, calloutProps: { doNotLayer: true } },
     container => {
       // Arrange
       const areas = getById(container, /graph-areaChart/i);

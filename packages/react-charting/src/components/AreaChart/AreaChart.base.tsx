@@ -579,12 +579,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     );
   };
 
-  private _onDataPointClick = (func: (() => void) | undefined) => {
+  private _onDataPointClick(func: (() => void) | undefined) {
     if (func) {
       func();
     }
     this.setState({ isCircleClicked: true });
-  };
+  }
 
   private _getOpacity = (legend: string): number => {
     if (!this._isMultiStackChart) {
@@ -858,7 +858,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       : [];
   };
 
-  private _handleFocus = (lineIndex: number, pointIndex: number, circleId: string) => {
+  private _handleFocus(lineIndex: number, pointIndex: number, circleId: string) {
     const { x, y, xAxisCalloutData } = this.props.data.lineChartData![lineIndex].data[pointIndex];
     const formattedDate = x instanceof Date ? x.toLocaleString() : x;
     const modifiedXVal = x instanceof Date ? x.getTime() : x;
@@ -876,9 +876,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       dataPointCalloutProps: found,
       activePoint: circleId,
     });
-  };
+  }
 
-  private _handleBlur = () => {
+  private _handleBlur() {
     this.setState({
       refSelected: null,
       isCalloutVisible: false,
@@ -888,7 +888,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       dataPointCalloutProps: undefined,
       activePoint: '',
     });
-  };
+  }
 
   private _getAriaLabel(lineIndex: number, pointIndex: number): string {
     const line = this.props.data.lineChartData![lineIndex];
