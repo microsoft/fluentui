@@ -1,8 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsxFrag Fragment */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement, Fragment } from '@fluentui/react-jsx-runtime';
 import { assertSlots } from '@fluentui/react-utilities';
 import { Portal } from '@fluentui/react-portal';
 import type { ToasterState, ToasterSlotsInternal } from './Toaster.types';

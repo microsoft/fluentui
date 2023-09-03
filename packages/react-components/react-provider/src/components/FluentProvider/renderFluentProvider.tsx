@@ -1,7 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 import { canUseDOM, assertSlots } from '@fluentui/react-utilities';
 import { TextDirectionProvider } from '@griffel/react';
 import {

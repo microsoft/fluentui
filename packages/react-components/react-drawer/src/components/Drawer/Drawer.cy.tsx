@@ -8,8 +8,6 @@ import { Drawer } from './Drawer';
 import { drawerOverlayClassNames } from '../DrawerOverlay';
 import { drawerInlineClassNames } from '../DrawerInline';
 
-const getDrawerSelector = (className: string) => `.${className}`;
-
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
@@ -21,13 +19,13 @@ describe('Drawer', () => {
     it('should render DrawerOverlay by default', () => {
       mountFluent(<Drawer id="drawer" open />);
 
-      cy.get(getDrawerSelector(drawerOverlayClassNames.root)).should('exist');
+      cy.get(`.${drawerOverlayClassNames.root}`).should('exist');
     });
 
     it('should render DrawerInline when type is `inline`', () => {
       mountFluent(<Drawer id="drawer" type="inline" open />);
 
-      cy.get(getDrawerSelector(drawerInlineClassNames.root)).should('exist');
+      cy.get(`.${drawerInlineClassNames.root}`).should('exist');
     });
   });
 });
