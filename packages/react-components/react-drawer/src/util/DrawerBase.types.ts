@@ -35,6 +35,6 @@ export type DrawerBaseProps = {
   defaultOpen?: boolean;
 };
 
-export type DrawerBaseState = {
+export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {
   motion: MotionState<HTMLDivElement>;
 };

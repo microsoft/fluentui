@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useAnimationFrame, useTimeout, usePrevious, useFirstMount } from '@fluentui/react-utilities';
 
+import { useReducedMotion } from './useReducedMotion';
 import { getMotionDuration } from '../utils/dom-style';
 import type { HTMLElementWithStyledMap } from '../utils/dom-style';
 
@@ -98,10 +99,11 @@ function useMotionPresence<Element extends HTMLElement>(
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
 
+  const isReducedMotion = useReducedMotion();
   const isFirstReactRender = useFirstMount();
   const isFirstDOMRender = useFirstMountCondition(!!currentElement);
   const isInitiallyPresent = React.useRef<boolean>(presence).current;
-  const disableAnimation = isFirstDOMRender && isInitiallyPresent && !animateOnFirstMount;
+  const disableAnimation = isReducedMotion || (isFirstDOMRender && isInitiallyPresent && !animateOnFirstMount);
 
   const ref: React.RefCallback<HTMLElementWithStyledMap<Element>> = React.useCallback(node => {
     if (!node) {

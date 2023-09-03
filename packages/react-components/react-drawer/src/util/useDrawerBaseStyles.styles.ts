@@ -1,9 +1,7 @@
-import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
-import { useMotionStyles } from '@fluentui/react-motion-preview';
 
-import { DrawerBaseProps, DrawerBaseState } from './DrawerBase.types';
+import { DrawerBaseState } from './DrawerBase.types';
 
 /**
  * CSS variable names used internally for uniform styling in Drawer.
@@ -39,6 +37,11 @@ export const useDrawerBaseStyles = makeStyles({
   },
   exiting: {
     transitionTimingFunction: tokens.curveAccelerateMin,
+  },
+  reducedMotion: {
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.001ms',
+    },
   },
 
   /* Positioning */
@@ -81,21 +84,17 @@ export const useDrawerDurationStyles = makeStyles({
   },
 });
 
-export const useDrawerBaseClassNames = (
-  { position, size, motion }: DrawerBaseState & DrawerBaseProps,
-  baseStyles: ReturnType<typeof useDrawerBaseStyles>,
-) => {
-  const motionClasses = React.useMemo(() => {
-    return mergeClasses(
-      motion.type === 'entering' && baseStyles.entering,
-      motion.type === 'exiting' && baseStyles.exiting,
-    );
-  }, [baseStyles.entering, baseStyles.exiting, motion.type]);
+export const useDrawerBaseClassNames = ({ position, size, motion }: DrawerBaseState) => {
+  const baseStyles = useDrawerBaseStyles();
+  const durationStyles = useDrawerDurationStyles();
 
   return mergeClasses(
     baseStyles.root,
-    position && baseStyles[position],
-    size && baseStyles[size],
-    useMotionStyles(motion, motionClasses),
+    baseStyles[position],
+    durationStyles[size],
+    baseStyles[size],
+    baseStyles.reducedMotion,
+    motion.type === 'entering' && baseStyles.entering,
+    motion.type === 'exiting' && baseStyles.exiting,
   );
 };

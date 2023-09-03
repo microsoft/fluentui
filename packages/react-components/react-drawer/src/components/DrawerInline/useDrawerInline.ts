@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, useControllableState, slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useMotionFromSlot } from '@fluentui/react-motion-preview';
+import { useMotion } from '@fluentui/react-motion-preview';
+
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
-import { useBaseDrawerDefaultProps } from '../../util/useBaseDrawerDefaultProps';
+import { useDrawerDefaultProps } from '../../util/useDrawerDefaultProps';
 
 /**
  * Create the state required to render DrawerInline.
@@ -17,7 +18,7 @@ export const useDrawerInline_unstable = (
   props: DrawerInlineProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerInlineState => {
-  const { size, position, ...defaultProps } = useBaseDrawerDefaultProps(props);
+  const { size, position, ...defaultProps } = useDrawerDefaultProps(props);
   const { separator = false } = props;
 
   const [open] = useControllableState({
@@ -26,7 +27,7 @@ export const useDrawerInline_unstable = (
     initialState: false,
   });
 
-  const [drawerProps, drawerMotion] = useMotionFromSlot<DrawerInlineProps, HTMLDivElement>(props, open);
+  const motion = useMotion<HTMLDivElement>(open);
 
   return {
     components: {
@@ -35,15 +36,15 @@ export const useDrawerInline_unstable = (
 
     root: slot.always(
       getNativeElementProps('div', {
-        ...drawerProps,
-        ref: useMergedRefs(ref, drawerMotion.ref),
+        ...props,
+        ref: useMergedRefs(ref, motion.ref),
       }),
       { elementType: 'div' },
     ),
 
-    motion: drawerMotion,
     size,
     position,
     separator,
+    motion,
   };
 };

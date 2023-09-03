@@ -7,6 +7,7 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.border('2px', 'solid', '#ccc'),
     ...shorthands.overflow('hidden'),
+
     display: 'flex',
     height: '480px',
     backgroundColor: '#fff',
@@ -15,6 +16,19 @@ const useStyles = makeStyles({
   content: {
     ...shorthands.flex(1),
     ...shorthands.padding('16px'),
+    ...shorthands.overflow('auto'),
+
+    position: 'relative',
+  },
+
+  buttons: {
+    ...shorthands.flex(1),
+    ...shorthands.padding('16px'),
+
+    position: 'sticky',
+    top: '-16px',
+    right: '-16px',
+    left: '-16px',
     display: 'flex',
     flexDirection: 'column',
     rowGap: tokens.spacingHorizontalXS,
@@ -27,6 +41,8 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems: 'flex-start',
     columnGap: tokens.spacingHorizontalXS,
+    backgroundColor: '#fff',
+    transitionDuration: tokens.durationFast,
   },
 });
 
@@ -62,19 +78,21 @@ export const Inline = () => {
       <div className={styles.content}>
         <div className={styles.buttons}>
           <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-            Toggle left
+            {leftOpen ? 'Close' : 'Open'} left
           </Button>
 
           <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-            Toggle right
+            {rightOpen ? 'Close' : 'Open'} right
           </Button>
         </div>
 
-        <div style={{ width: '100%' }}>
-          {Array.from({ length: 2000 }, (_, i) => (
-            <p key={i}>Page content</p>
-          ))}
-        </div>
+        {Array.from({ length: 100 }, (_, i) => (
+          <p key={i}>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatem similique reiciendis, ipsa
+            accusamus distinctio dolorum quisquam, tenetur minima animi autem nobis. Molestias totam natus, deleniti nam
+            itaque placeat quisquam!
+          </p>
+        ))}
       </div>
 
       <DrawerInline position="end" open={rightOpen}>

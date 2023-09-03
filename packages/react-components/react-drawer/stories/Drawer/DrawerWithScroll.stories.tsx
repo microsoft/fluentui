@@ -5,12 +5,14 @@ import { Button, makeStyles, tokens } from '@fluentui/react-components';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
+    flexWrap: 'wrap',
     rowGap: tokens.spacingHorizontalXXL,
     columnGap: tokens.spacingHorizontalXXL,
   },
 
   drawer: {
     height: '400px',
+    minWidth: '320px',
   },
 });
 

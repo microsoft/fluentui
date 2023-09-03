@@ -109,9 +109,10 @@ export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
       if (!parentItem) {
         if (process.env.NODE_ENV === 'development') {
           // eslint-disable-next-line no-console
-          console.error(
-            `HeadlessTree: item ${props.value} is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized, parents should come before children`,
-          );
+          console.error(/* #__DE-INDENT__ */ `
+            @fluentui/react-tree [createHeadlessTree]:
+            TreeItem "${props.value}" is wrongly positioned, did you properly ordered provided item props? make sure provided items are organized, parents should come before children
+          `);
         }
         return;
       }
@@ -179,7 +180,10 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
     getTreeItemProps: () => {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error('HeadlessTree: internal error, trying to access treeitem props from invalid root element');
+        console.error(/* #__DE-INDENT__ */ `
+          @fluentui/react-tree [createHeadlessTree]:
+          Internal error, trying to access treeitem props from invalid root element
+        `);
       }
       return {
         id: headlessTreeRootId,
@@ -194,14 +198,20 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
     get index() {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error('HeadlessTree: internal error, trying to access treeitem props from invalid root element');
+        console.error(/* #__DE-INDENT__ */ `
+          @fluentui/react-tree [createHeadlessTree]:
+          Internal error, trying to access treeitem props from invalid root element
+        `);
       }
       return -1;
     },
     get position() {
       if (process.env.NODE_ENV !== 'production') {
         // eslint-disable-next-line no-console
-        console.error('HeadlessTree: internal error, trying to access treeitem props from invalid root element');
+        console.error(/* #__DE-INDENT__ */ `
+          @fluentui/react-tree [createHeadlessTree]:
+          Internal error, trying to access treeitem props from invalid root element
+        `);
       }
       return -1;
     },

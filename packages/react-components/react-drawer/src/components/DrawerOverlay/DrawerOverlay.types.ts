@@ -17,9 +17,10 @@ export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> &
 /**
  * State used in rendering DrawerOverlay
  */
-export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> &
-  Omit<DrawerBaseProps, 'open' | 'defaultOpen'> &
-  DrawerBaseState & {
-    dialog: DialogProps;
-    backdropMotion: MotionState<HTMLDivElement>;
-  };
+export type DrawerOverlayState = Required<
+  Omit<ComponentState<DrawerOverlaySlots>, 'backdrop'> &
+    DrawerBaseState & {
+      dialog: DialogProps;
+      backdropMotion: MotionState<HTMLDivElement>;
+    }
+>;

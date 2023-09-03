@@ -12,7 +12,7 @@ export type DrawerSlots = {
 /**
  * Drawer Props
  */
-export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
+export type DrawerProps = ComponentProps<DrawerSlots> & {
   /**
    * Type of the drawer.
    * @default overlay

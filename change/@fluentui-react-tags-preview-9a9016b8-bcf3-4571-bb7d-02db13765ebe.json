@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: use regular icon for dismiss",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

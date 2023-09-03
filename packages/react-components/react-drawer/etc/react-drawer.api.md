@@ -11,7 +11,6 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { DialogProps } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
-import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { MotionShorthand } from '@fluentui/react-motion-preview';
 import { MotionState } from '@fluentui/react-motion-preview';
@@ -97,15 +96,13 @@ export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
 export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
 
 // @public
-export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
-    children: React_2.ReactNode | undefined;
-};
+export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots>;
 
 // @public (undocumented)
 export type DrawerHeaderTitleSlots = {
     root: Slot<'div'>;
-    heading?: DialogTitleSlots['root'];
-    action?: DialogTitleSlots['action'];
+    heading?: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
+    action?: Slot<'div'>;
 };
 
 // @public
@@ -128,7 +125,7 @@ export type DrawerInlineSlots = {
 };
 
 // @public
-export type DrawerInlineState = ComponentState<DrawerInlineSlots> & Omit<DrawerInlineProps, 'open' | 'defaultOpen'> & DrawerBaseState;
+export type DrawerInlineState = Required<ComponentState<DrawerInlineSlots> & DrawerBaseState & Pick<DrawerInlineProps, 'separator'>>;
 
 // @public
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
@@ -145,13 +142,13 @@ export type DrawerOverlaySlots = DialogSurfaceSlots & {
 };
 
 // @public
-export type DrawerOverlayState = ComponentState<DrawerOverlaySlots> & Omit<DrawerBaseProps, 'open' | 'defaultOpen'> & DrawerBaseState & {
+export type DrawerOverlayState = Required<Omit<ComponentState<DrawerOverlaySlots>, 'backdrop'> & DrawerBaseState & {
     dialog: DialogProps;
     backdropMotion: MotionState<HTMLDivElement>;
-};
+}>;
 
 // @public
-export type DrawerProps = ComponentProps<Partial<DrawerSlots>> & {
+export type DrawerProps = ComponentProps<DrawerSlots> & {
     type?: 'inline' | 'overlay';
 };
 

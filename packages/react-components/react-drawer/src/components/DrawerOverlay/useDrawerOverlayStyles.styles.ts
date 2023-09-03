@@ -2,15 +2,9 @@ import * as React from 'react';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useMotionStyles } from '@fluentui/react-motion-preview';
 
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
-import {
-  useDrawerBaseClassNames,
-  useDrawerBaseStyles,
-  drawerCSSVars,
-  useDrawerDurationStyles,
-} from '../../util/useDrawerBaseStyles.styles';
+import { useDrawerBaseClassNames, drawerCSSVars, useDrawerDurationStyles } from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
@@ -25,18 +19,10 @@ const useDrawerRootStyles = makeStyles({
     position: 'fixed',
     top: 0,
     bottom: 0,
-    boxShadow: tokens.shadow64,
-  },
-});
-
-/**
- * Styles for the root slot when motion is enabled
- */
-const useDrawerRootMotionStyles = makeStyles({
-  root: {
-    transitionProperty: 'transform, box-shadow',
-    willChange: 'transform, box-shadow',
+    opacity: 0,
     boxShadow: '0px transparent',
+    transitionProperty: 'transform, box-shadow, opacity',
+    willChange: 'transform, box-shadow, opacity',
   },
 
   /* Positioning */
@@ -49,6 +35,7 @@ const useDrawerRootMotionStyles = makeStyles({
 
   /* Visible */
   visible: {
+    opacity: 1,
     transform: 'translate3D(0, 0, 0)',
     boxShadow: tokens.shadow64,
   },
@@ -61,11 +48,11 @@ const useBackdropMotionStyles = makeStyles({
   backdrop: {
     opacity: 0,
     transitionProperty: 'opacity',
-    transitionTimingFunction: tokens.curveLinear,
+    transitionTimingFunction: tokens.curveEasyEase,
     willChange: 'opacity',
   },
 
-  backdropVisible: {
+  visible: {
     opacity: 1,
   },
 });
@@ -74,43 +61,30 @@ const useBackdropMotionStyles = makeStyles({
  * Apply styling to the DrawerOverlay slots based on the state
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
-  const baseStyles = useDrawerBaseStyles();
-  const durationStyles = useDrawerDurationStyles();
+  const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
-  const rootMotionStyles = useDrawerRootMotionStyles();
   const backdropMotionStyles = useBackdropMotionStyles();
+  const durationStyles = useDrawerDurationStyles();
 
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
-  const motionClasses = useMotionStyles(
-    state.motion,
-    mergeClasses(
-      state.position && rootMotionStyles[state.position],
-      state.size && durationStyles[state.size],
-      state.motion.isActive() && rootMotionStyles.visible,
-      state.root.className,
-    ),
-  );
-
-  const backdropMotionClasses = useMotionStyles(
-    state.backdropMotion,
-    mergeClasses(
-      backdropMotionStyles.backdrop,
-      state.backdropMotion.isActive() && backdropMotionStyles.backdropVisible,
-      state.size && durationStyles[state.size],
-    ),
-  );
-
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
-    useDrawerBaseClassNames(state, baseStyles),
+    baseClassNames,
     rootStyles.root,
-    motionClasses,
+    rootStyles[state.position],
+    state.motion.active && rootStyles.visible,
     state.root.className,
   );
 
   if (backdrop) {
-    backdrop.className = mergeClasses(drawerOverlayClassNames.backdrop, backdropMotionClasses, backdrop.className);
+    backdrop.className = mergeClasses(
+      drawerOverlayClassNames.backdrop,
+      backdropMotionStyles.backdrop,
+      durationStyles[state.size],
+      state.backdropMotion.active && backdropMotionStyles.visible,
+      backdrop.className,
+    );
   }
 
   return state;

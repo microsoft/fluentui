@@ -2,6 +2,21 @@
   "name": "@fluentui/react-icons-mdl2-branded",
   "entries": [
     {
+      "date": "Tue, 29 Aug 2023 07:44:31 GMT",
+      "tag": "@fluentui/react-icons-mdl2-branded_v1.2.51",
+      "version": "1.2.51",
+      "comments": {
+        "patch": [
+          {
+            "author": "ololubek@microsoft.com",
+            "package": "@fluentui/react-icons-mdl2-branded",
+            "commit": "7d000380a0fe32769a17ed3cb14d91e2db51be4b",
+            "comment": "feat: Add VivaEngageIcon to package."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 18 Aug 2023 07:35:26 GMT",
       "tag": "@fluentui/react-icons-mdl2-branded_v1.2.50",
       "version": "1.2.50",

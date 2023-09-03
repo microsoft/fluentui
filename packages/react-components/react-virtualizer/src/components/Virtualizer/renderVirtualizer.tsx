@@ -1,11 +1,10 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import * as React from 'react';
 import type { VirtualizerSlots, VirtualizerState } from './Virtualizer.types';
 import type { ReactNode } from 'react';
 
-import { createElement } from '@fluentui/react-jsx-runtime';
 import { assertSlots } from '@fluentui/react-utilities';
 
 export const renderVirtualizer_unstable = (state: VirtualizerState) => {

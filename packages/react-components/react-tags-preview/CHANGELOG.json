@@ -2,6 +2,57 @@
   "name": "@fluentui/react-tags-preview",
   "entries": [
     {
+      "date": "Tue, 29 Aug 2023 12:57:35 GMT",
+      "tag": "@fluentui/react-tags-preview_v0.2.5",
+      "version": "0.2.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "a37c90201e40ee2b5cfa4372355788c244060e56",
+            "comment": "fix: tag with secondary text has no top border under windows high contrast"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "1f13e55593905c2a04cf39f580b79fd44ccd2eba",
+            "comment": "fix: use regular icon for dismiss"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-aria to v9.3.33",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-avatar to v9.5.25",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.3",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.12.5",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tags-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.13.0",
+            "commit": "f40ca42c8392904750bf1ef24826d273d1a5b4d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 24 Aug 2023 10:26:35 GMT",
       "tag": "@fluentui/react-tags-preview_v0.2.4",
       "version": "0.2.4",

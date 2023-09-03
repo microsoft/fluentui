@@ -28,7 +28,6 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const motion = useMotion(open);
-  const isVisible = motion.canRender();
 
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
     onOpenChange?.(data.event, data);
@@ -40,7 +39,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   });
 
-  const focusRef = useFocusFirstElement(isVisible, modalType);
+  const focusRef = useFocusFirstElement(motion.canRender, modalType);
   const disableBodyScroll = useDisableBodyScroll();
   const isBodyScrollLocked = Boolean(open && modalType !== 'non-modal');
 
@@ -61,7 +60,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     components: {},
     inertTrapFocus,
     modalType,
-    content: isVisible ? content : null,
+    content: motion.canRender ? content : null,
     trigger,
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),
@@ -82,10 +81,11 @@ function childrenToTriggerAndContent(
   if (process.env.NODE_ENV !== 'production') {
     if (childrenArray.length !== 1 && childrenArray.length !== 2) {
       // eslint-disable-next-line no-console
-      console.warn(
-        'Dialog must contain at least one child <DialogSurface/>,\n' +
-          'and at most two children <DialogTrigger/> <DialogSurface/> (in this order)',
-      );
+      console.warn(/* #__DE-INDENT__ */ `
+        @fluentui/react-dialog [useDialog]:
+        Dialog must contain at least one child <DialogSurface/>,
+        and at most two children <DialogTrigger/> <DialogSurface/> (in this order).
+      `);
     }
   }
   switch (childrenArray.length) {

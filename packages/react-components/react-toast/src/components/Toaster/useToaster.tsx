@@ -23,7 +23,7 @@ import { useToastAnnounce } from './useToastAnnounce';
  * @param props - props from this instance of Toaster
  */
 export const useToaster_unstable = (props: ToasterProps): ToasterState => {
-  const { offset, announce: announceProp, ...rest } = props;
+  const { offset, announce: announceProp, mountNode, ...rest } = props;
   const announceRef = React.useRef<Announce>(() => null);
   const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus, closeAllToasts } =
     useToaster<HTMLDivElement>(rest);
@@ -71,6 +71,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   };
   return {
     dir,
+    mountNode,
     components: { root: 'div', bottomStart: 'div', bottomEnd: 'div', topStart: 'div', topEnd: 'div' },
     root: slot.always(rootProps, { elementType: 'div' }),
     bottomStart: usePositionSlot(TOAST_POSITIONS.bottomStart),

@@ -63,7 +63,7 @@ export const useDialogSurface_unstable = (
   const [backdropProps, backdropMotion] = useMotionFromSlot(props.backdrop, open);
 
   const backdrop =
-    motion.canRender() && modalType !== 'non-modal'
+    motion.canRender && modalType !== 'non-modal'
       ? slot.optional(backdropProps, {
           defaultProps: {
             'aria-hidden': 'true',
@@ -80,6 +80,7 @@ export const useDialogSurface_unstable = (
   return {
     components: { backdrop: 'div', root: 'div' },
     backdrop,
+    mountNode: props.mountNode,
     root: slot.always(
       getNativeElementProps(props.as ?? 'div', {
         tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150

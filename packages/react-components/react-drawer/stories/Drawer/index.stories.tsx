@@ -19,6 +19,7 @@ export { Position } from './DrawerPosition.stories';
 export { Size } from './DrawerSize.stories';
 export { CustomSize } from './DrawerCustomSize.stories';
 export { Separator } from './DrawerSeparator.stories';
+export { WithTitle } from './DrawerWithTitle.stories';
 export { WithNavigation } from './DrawerWithNavigation.stories';
 export { WithScroll } from './DrawerWithScroll.stories';
 export { DisabledTransition } from './DrawerDisabledTransition.stories';

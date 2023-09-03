@@ -15,6 +15,7 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
 import { MotionShorthand } from '@fluentui/react-motion-preview';
 import { MotionState } from '@fluentui/react-motion-preview';
+import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -132,7 +133,7 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 export type DialogSurfaceElement = HTMLElement;
 
 // @public
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
 
 // @public (undocumented)
 export type DialogSurfaceSlots = {
@@ -142,9 +143,9 @@ export type DialogSurfaceSlots = {
 
 // @public
 export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
-    motion: MotionState_2<DialogSurfaceElement>;
-    backdropMotion: MotionState_2<DialogSurfaceElement>;
-};
+    motion: MotionState<DialogSurfaceElement>;
+    backdropMotion: MotionState<DialogSurfaceElement>;
+} & Pick<PortalProps, 'mountNode'>;
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;

@@ -1,16 +1,10 @@
 import * as React from 'react';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useMotionStyles } from '@fluentui/react-motion-preview';
 import { tokens } from '@fluentui/react-theme';
 
 import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
-import {
-  drawerCSSVars,
-  useDrawerBaseClassNames,
-  useDrawerBaseStyles,
-  useDrawerDurationStyles,
-} from '../../util/useDrawerBaseStyles.styles';
+import { drawerCSSVars, useDrawerBaseClassNames } from '../../util/useDrawerBaseStyles.styles';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
   root: 'fui-DrawerInline',
@@ -19,31 +13,29 @@ export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
 /**
  * Styles for the root slot
  */
+const separatorValues = ['1px', 'solid', tokens.colorNeutralBackground3] as const;
 const useDrawerRootStyles = makeStyles({
   root: {
     position: 'relative',
-  },
-
-  /* Separator */
-  separatorStart: {
-    ...shorthands.borderRight('1px', 'solid', tokens.colorNeutralBackground3),
-  },
-  separatorEnd: {
-    ...shorthands.borderLeft('1px', 'solid', tokens.colorNeutralBackground3),
-  },
-});
-
-const useDrawerMotionStyles = makeStyles({
-  root: {
     opacity: 0,
     transitionProperty: 'opacity, transform',
     willChange: 'opacity, transform',
   },
+
+  /* Separator */
+  separatorStart: {
+    ...shorthands.borderRight(...separatorValues),
+  },
+  separatorEnd: {
+    ...shorthands.borderLeft(...separatorValues),
+  },
+
+  /* Positioning */
   start: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
   },
   end: {
-    transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar})), 0, 0)`,
+    transform: `translate3D(var(${drawerCSSVars.drawerSizeVar}), 0, 0)`,
   },
 
   /* Visible */
@@ -57,10 +49,8 @@ const useDrawerMotionStyles = makeStyles({
  * Apply styling to the DrawerInline slots based on the state
  */
 export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): DrawerInlineState => {
-  const baseStyles = useDrawerBaseStyles();
-  const durationStyles = useDrawerDurationStyles();
+  const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
-  const rootMotionStyles = useDrawerMotionStyles();
 
   const separatorClass = React.useMemo(() => {
     if (!state.separator) {
@@ -70,22 +60,13 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
     return state.position === 'start' ? rootStyles.separatorStart : rootStyles.separatorEnd;
   }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
 
-  const motionClasses = useMotionStyles(
-    state.motion,
-    mergeClasses(
-      rootMotionStyles.root,
-      state.size && durationStyles[state.size],
-      state.position && !state.motion.isActive() && rootMotionStyles[state.position],
-      state.motion.isActive() && rootMotionStyles.visible,
-    ),
-  );
-
   state.root.className = mergeClasses(
     drawerInlineClassNames.root,
-    useDrawerBaseClassNames(state, baseStyles),
+    baseClassNames,
     rootStyles.root,
     separatorClass,
-    motionClasses,
+    rootStyles[state.position],
+    state.motion.active && rootStyles.visible,
     state.root.className,
   );
 

@@ -106,7 +106,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   const motionClasses = useMotionStyles(
     state.motion,
     mergeClasses(
-      state.motion.isActive() && surfaceStyles.visible,
+      state.motion.active && surfaceStyles.visible,
       state.motion.type === 'entering' && surfaceStyles.entering,
       state.motion.type === 'exiting' && surfaceStyles.exiting,
     ),
@@ -114,7 +114,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
 
   const backdropMotionClasses = useMotionStyles(
     state.backdropMotion,
-    mergeClasses(state.backdropMotion.isActive() && backdropStyles.visible),
+    mergeClasses(state.backdropMotion.active && backdropStyles.visible),
   );
 
   state.root.className = mergeClasses(
