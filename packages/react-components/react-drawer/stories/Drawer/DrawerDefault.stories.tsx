@@ -39,8 +39,6 @@ export const Default = () => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [type, setType] = React.useState<DrawerType>('overlay');
 
-  const onClick = () => setIsOpen(type === 'inline' ? !isOpen : true);
-
   return (
     <div className={styles.root}>
       <Drawer type={type} separator open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
