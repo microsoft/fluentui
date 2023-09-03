@@ -24,12 +24,42 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_2"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -43,6 +73,21 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
               width: 0px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_3"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(0, -20)"
         >
@@ -336,7 +381,7 @@ exports[`DonutChart - mouse events Should render callout correctly on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -660,12 +705,42 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_2"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -679,6 +754,21 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
               width: 0px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_3"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(0, -20)"
         >
@@ -890,7 +980,7 @@ exports[`DonutChart - mouse events Should render customized callout on mouseover
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1214,12 +1304,42 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone27"
+    data-focuszone-id="FocusZone39"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_36"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -1233,6 +1353,21 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_37"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(100, 100)"
         >
@@ -1252,7 +1387,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              id="_Pie_25first20000"
+              id="_Pie_35first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1294,7 +1429,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              id="_Pie_25second39000"
+              id="_Pie_35second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1336,7 +1471,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_25third45000"
+              id="_Pie_35third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1362,6 +1497,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
               45.0k
             </text>
           </g>
+          
         </g>
       </svg>
     </div>
@@ -1415,7 +1551,7 @@ exports[`DonutChart snapShot testing Should render arc labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone28"
+              data-focuszone-id="FocusZone40"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1736,12 +1872,42 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone46"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_43"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -1755,6 +1921,21 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_44"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(100, 100)"
         >
@@ -1774,7 +1955,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M0.6,-59.997A60,60,0,0,1,56.068,-21.363L0,0Z"
               data-is-focusable={true}
-              id="_Pie_30first20000"
+              id="_Pie_42first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1816,7 +1997,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M56.484,-20.237A60,60,0,0,1,-24.404,54.813L0,0Z"
               data-is-focusable={true}
-              id="_Pie_30second39000"
+              id="_Pie_42second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1858,7 +2039,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   }
               d="M-25.495,54.314A60,60,0,0,1,-0.6,-59.997L0,0Z"
               data-is-focusable={true}
-              id="_Pie_30third45000"
+              id="_Pie_42third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -1884,6 +2065,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
               43%
             </text>
           </g>
+          
         </g>
       </svg>
     </div>
@@ -1937,7 +2119,7 @@ exports[`DonutChart snapShot testing Should render arc labels in percentage form
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone47"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2258,12 +2440,42 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_2"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -2277,6 +2489,21 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_3"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(100, 100)"
         >
@@ -2358,6 +2585,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -2411,7 +2639,7 @@ exports[`DonutChart snapShot testing renders DonutChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2732,12 +2960,42 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone25"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_22"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -2751,6 +3009,21 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_23"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(100, 100)"
         >
@@ -2770,7 +3043,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_15first20000"
+              id="_Pie_21first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2796,7 +3069,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_15second39000"
+              id="_Pie_21second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2822,7 +3095,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_15third45000"
+              id="_Pie_21third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -2832,6 +3105,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -2885,7 +3159,7 @@ exports[`DonutChart snapShot testing renders enabledLegendsWrapLines correctly 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone18"
+              data-focuszone-id="FocusZone26"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3206,12 +3480,42 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone12"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_9"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -3225,6 +3529,21 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_10"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(100, 100)"
         >
@@ -3244,7 +3563,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_6first20000"
+              id="_Pie_8first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3270,7 +3589,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_6second39000"
+              id="_Pie_8second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3296,7 +3615,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_6third45000"
+              id="_Pie_8third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3306,6 +3625,7 @@ exports[`DonutChart snapShot testing renders hideLegend correctly 1`] = `
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -3340,12 +3660,42 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone18"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_15"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -3359,6 +3709,21 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_16"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(100, 100)"
         >
@@ -3378,7 +3743,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_10first20000"
+              id="_Pie_14first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3404,7 +3769,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_10second39000"
+              id="_Pie_14second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3430,7 +3795,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_10third45000"
+              id="_Pie_14third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3440,6 +3805,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
               role="img"
             />
           </g>
+          
         </g>
       </svg>
     </div>
@@ -3493,7 +3859,7 @@ exports[`DonutChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone19"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3814,12 +4180,42 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
         &:focus {
           outline: none;
         }
-    data-focuszone-id="FocusZone22"
+    data-focuszone-id="FocusZone32"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <div>
+      <div
+        className=
+
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background: #ffffff;
+              border-radius: 2px;
+              display: flex;
+              flex-direction: column;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              padding-bottom: 8px;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 8px;
+              pointer-events: none;
+              position: absolute;
+              text-align: center;
+              top: 0px;
+            }
+        id="_Donut_tooltip_29"
+        style={
+          Object {
+            "display": "none",
+            "position": "absolute",
+          }
+        }
+      />
       <svg
         aria-label="Stacked Bar chart example"
         className=
@@ -3833,6 +4229,21 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
               width: 200px;
             }
       >
+        <rect
+          className=
+
+              {
+                display: flex;
+                fill: transparent;
+                flex-direction: column;
+                height: 100%;
+                text-align: center;
+                width: 100%;
+              }
+          id="_Rect_tooltip_30"
+          onMouseMove={[Function]}
+          onMouseOut={[Function]}
+        />
         <g
           transform="translate(100, 100)"
         >
@@ -3852,7 +4263,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M1,-99.995A100,100,0,0,1,93.447,-35.604L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20first20000"
+              id="_Pie_28first20000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3878,7 +4289,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M94.14,-33.728A100,100,0,0,1,-40.673,91.355L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20second39000"
+              id="_Pie_28second39000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3904,7 +4315,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   }
               d="M-42.492,90.523A100,100,0,0,1,-1,-99.995L0,0Z"
               data-is-focusable={true}
-              id="_Pie_20third45000"
+              id="_Pie_28third45000"
               onBlur={[Function]}
               onFocus={[Function]}
               onMouseLeave={[Function]}
@@ -3927,6 +4338,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                 }
             data-is-focusable={true}
             dominantBaseline="middle"
+            id="Donut_center_text"
             textAnchor="middle"
             y={5}
           >
@@ -3985,7 +4397,7 @@ exports[`DonutChart snapShot testing renders value inside onf the pie 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone23"
+              data-focuszone-id="FocusZone33"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

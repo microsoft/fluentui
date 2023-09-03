@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as shape from 'd3-shape';
 import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
@@ -25,6 +26,10 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     return null;
   }
 
+  public constructor(props: IArcProps) {
+    super(props);
+  }
+
   public updateChart(newProps: IArcProps): void {
     _updateChart(newProps);
   }
@@ -40,6 +45,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
     const id = this.props.uniqText! + this.props.data!.data.legend!.replace(/\s+/, '') + this.props.data!.data.data;
     const opacity: number =
       this.props.activeArc === this.props.data!.data.legend || this.props.activeArc === '' ? 1 : 0.1;
+
     return (
       <g ref={this.currentRef}>
         {!!focusedArcId && focusedArcId === id && (

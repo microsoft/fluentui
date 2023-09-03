@@ -80,6 +80,7 @@ export class Pie extends React.Component<IPieProps, {}> {
         {this.props.valueInsideDonut && (
           <text
             y={5}
+            id="Donut_center_text"
             textAnchor="middle"
             dominantBaseline="middle"
             className={classNames.insideDonutString}
@@ -97,7 +98,11 @@ export class Pie extends React.Component<IPieProps, {}> {
       theme: this.props.theme!,
     });
 
-    wrapTextInsideDonut(classNames.insideDonutString, this.props.innerRadius! * 2 - TEXT_PADDING);
+    wrapTextInsideDonut(
+      classNames.insideDonutString,
+      this.props.innerRadius! * 2 - TEXT_PADDING,
+      this.props.valueInsideDonut!.toString(),
+    );
   }
 
   private _focusCallback = (data: IChartDataPoint, id: string, e: SVGPathElement): void => {

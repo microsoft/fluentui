@@ -6,6 +6,7 @@ import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
 export interface IExampleState {
   dynamicData: IChartDataPoint[];
+  dynamicInnerText: string;
   hideLabels: boolean;
   showLabelsInPercent: boolean;
   innerRadius: number;
@@ -25,6 +26,16 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     [DefaultPalette.neutralTertiary, DefaultPalette.neutralSecondary, DefaultPalette.neutralPrimary],
   ];
 
+  private _innerText = [
+    '39,000',
+    'Incomprehensibilities',
+    'Tasks are incomprehensible',
+    'It is done',
+    'Handling central text overflow and adding tooltip for donut charts',
+    'Incomprehensibilities happen for texts that are not truncated',
+    '53 やるべきことが残っている',
+  ];
+
   constructor(props: IDonutChartProps) {
     super(props);
     this.state = {
@@ -34,6 +45,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
         { legend: 'third', data: 30, color: '#4f67ed' },
         { legend: 'fourth', data: 10, color: '#ae8c00' },
       ],
+      dynamicInnerText: '39,000',
       hideLabels: false,
       showLabelsInPercent: false,
       innerRadius: 35,
@@ -41,6 +53,7 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
 
     this._changeData = this._changeData.bind(this);
     this._changeColors = this._changeColors.bind(this);
+    this._changeInnerText = this._changeInnerText.bind(this);
   }
 
   public render(): JSX.Element {
@@ -67,11 +80,13 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
           legendProps={{
             allowFocusOnLegends: true,
           }}
+          valueInsideDonut={this.state.dynamicInnerText}
           hideLabels={this.state.hideLabels}
           showLabelsInPercent={this.state.showLabelsInPercent}
         />
         <DefaultButton text="Change data" onClick={this._changeData} />
         <DefaultButton text="Change colors" onClick={this._changeColors} />
+        <DefaultButton text="Change inner text" onClick={this._changeInnerText} />
       </div>
     );
   }
@@ -98,12 +113,22 @@ export class DonutChartDynamicExample extends React.Component<IDonutChartProps, 
     });
   }
 
+  private _changeInnerText(): void {
+    this.setState({
+      dynamicInnerText: this._randomInnerText(),
+    });
+  }
+
   private _randomY(max = 300): number {
     return Math.floor(Math.random() * max + 5);
   }
 
   private _randomColor(index: number): string {
     return this._colors[index][Math.floor(Math.random() * this._colors[index].length)];
+  }
+
+  private _randomInnerText(): string {
+    return this._innerText[Math.floor(Math.random() * this._innerText.length)];
   }
 
   private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {

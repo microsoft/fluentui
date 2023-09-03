@@ -1,7 +1,7 @@
 import { axisRight as d3AxisRight, axisBottom as d3AxisBottom, axisLeft as d3AxisLeft, Axis as D3Axis } from 'd3-axis';
 import { max as d3Max, min as d3Min } from 'd3-array';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime, scaleBand as d3ScaleBand } from 'd3-scale';
-import { select as d3Select, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
+import { select as d3Select, Selection, event as d3Event, selectAll as d3SelectAll } from 'd3-selection';
 import { format as d3Format } from 'd3-format';
 import * as d3TimeFormat from 'd3-time-format';
 import {
@@ -1369,11 +1369,12 @@ export function rotateXAxisLabels(rotateLabelProps: IRotateLabelProps) {
   return Math.floor(maxHeight / 1.414); // Compute maxHeight/tanInverse(45) to get the vertical height of labels.
 }
 
-export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
+export function wrapTextInsideDonut(selectorClass: string, maxWidth: number, val: string) {
   let idx: number = 0;
+
   d3SelectAll(`.${selectorClass}`).each(function () {
     const text = d3Select(this);
-    const words = text.text().split(/\s+/).reverse();
+    const words = val.split(/\s+/).reverse();
     let word: string = '';
     let line: string[] = [];
     let lineNumber: number = 0;
@@ -1388,24 +1389,98 @@ export function wrapTextInsideDonut(selectorClass: string, maxWidth: number) {
       .attr('y', y)
       .attr('dy', lineNumber++ * lineHeight + 'em');
 
+    // Determine the length of a line
+    const lineLength = tspan.node()!.getBoundingClientRect().y;
+
+    // Determine the ellipsis length for word truncation
+    const ellipsis = '...';
+    tspan.text(ellipsis);
+    const ellipsisLength = tspan.node()!.getComputedTextLength();
+    tspan.text(null);
     while ((word = words.pop()!)) {
       line.push(word);
       tspan.text(line.join(' ') + ' ');
-      if (tspan.node()!.getComputedTextLength() > maxWidth && line.length > 1) {
+      // Determine if wrapping is required
+      // If yes, append a new line only if it does not exceed the max height
+      // here, max width = max height, so maxWidth is reused to check max height
+      if (
+        tspan.node()!.getComputedTextLength() > maxWidth &&
+        line.length > 1 &&
+        tspan.node()!.getBoundingClientRect().y < maxWidth
+      ) {
         line.pop();
         tspan.text(line.join(' ') + ' ');
-        line = [word];
-        tspan = text
-          .append('tspan')
-          .attr('id', `WordBreakId-${idx}-${lineNumber}`)
-          .attr('x', 0)
-          .attr('y', y)
-          .attr('dy', lineNumber++ * lineHeight + 'em')
-          .text(word);
+        // append a line only if the line is within the max height
+        // else truncate horizontally and break
+        if (tspan.node()!.getBoundingClientRect().y + lineLength < maxWidth) {
+          line = [word];
+          tspan = text
+            .append('tspan')
+            .attr('id', `WordBreakId-${idx}-${lineNumber}`)
+            .attr('x', 0)
+            .attr('y', y)
+            .attr('dy', lineNumber++ * lineHeight + 'em')
+            .text(word);
+        } else {
+          truncateHorizontally(tspan, line, maxWidth, ellipsisLength);
+          break;
+        }
+      }
+      // Determine if truncation is required vertically
+      // If yes, remove the last line, append ellipsis
+      // to the last word of the previous line (truncate horizontally) and break
+      if (tspan.node()!.getBoundingClientRect().y > maxWidth && line.length >= 1) {
+        line.pop();
+        tspan.text(line.join(' '));
+        truncateHorizontally(tspan, line, maxWidth, ellipsisLength);
+        break;
+      }
+      // Determine if truncation is required horizontally
+      if (tspan.node()!.getComputedTextLength() > maxWidth && line.length >= 1) {
+        truncateHorizontally(tspan, line, maxWidth, ellipsisLength);
+        break;
       }
     }
     idx += 1;
   });
+}
+
+function truncateHorizontally(
+  tspan: Selection<SVGTSpanElement, unknown, null, undefined>,
+  line: string[],
+  maxWidth: number,
+  ellipsisLength: number,
+) {
+  const ellipsis = '...';
+  let lastWord = '';
+  // atleast 3 chars to remove ('...')
+  // may require more removal based on the locale alphabets
+  const truncateCount = 4;
+  // Truncate till the text fits in the maximum allowable width
+  while (tspan.node()!.getComputedTextLength() > maxWidth - ellipsisLength) {
+    lastWord = line.pop()!;
+    if (lastWord !== undefined && lastWord.length >= truncateCount) {
+      // slice last 4 chars (last char + '...') from current lastword
+      const sliceWords = lastWord.slice(0, -truncateCount);
+      if (sliceWords !== '') {
+        line.pop();
+        line = line.concat(sliceWords + ellipsis);
+        tspan.text(line.join(' '));
+      } else {
+        line.pop();
+        tspan.text(line.join(' ') + ellipsis);
+      }
+    } else {
+      break;
+    }
+  }
+  if (!isTextTruncated(tspan.text())) {
+    tspan.text(line.join(' ') + ellipsis);
+  }
+}
+
+export function isTextTruncated(text: string): boolean {
+  return text.slice(-3) === '...';
 }
 
 export function formatValueWithSIPrefix(value: number) {
