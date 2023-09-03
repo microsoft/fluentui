@@ -87,7 +87,7 @@ storiesOf('react-charting/StackedBarChart', module)
       const chartTitle = 'Stacked bar chart 2nd example';
 
       const data: IChartProps = {
-        chartTitle,
+        chartTitle: chartTitle,
         chartData: points,
       };
 
