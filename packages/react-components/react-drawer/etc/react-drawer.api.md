@@ -11,7 +11,6 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import { DialogProps } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
-import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { MotionShorthand } from '@fluentui/react-motion-preview';
 import { MotionState } from '@fluentui/react-motion-preview';
@@ -97,15 +96,13 @@ export const DrawerHeaderTitle: ForwardRefComponent<DrawerHeaderTitleProps>;
 export const drawerHeaderTitleClassNames: SlotClassNames<DrawerHeaderTitleSlots>;
 
 // @public
-export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
-    children: React_2.ReactNode | undefined;
-};
+export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots>;
 
 // @public (undocumented)
 export type DrawerHeaderTitleSlots = {
     root: Slot<'div'>;
-    heading?: DialogTitleSlots['root'];
-    action?: DialogTitleSlots['action'];
+    heading?: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
+    action?: Slot<'div'>;
 };
 
 // @public

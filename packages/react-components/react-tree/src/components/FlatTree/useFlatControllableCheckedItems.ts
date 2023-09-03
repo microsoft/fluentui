@@ -33,7 +33,10 @@ export function createNextFlatCheckedItems(
   if (!treeItem) {
     if (process.env.NODE_ENV !== 'production') {
       // eslint-disable-next-line no-console
-      console.error(`useHeadlessFlatTree: tree item ${data.value} not found`);
+      console.error(/* #__DE-INDENT__ */ `
+        @fluentui/react-tree [useHeadlessFlatTree]:
+        Tree item ${data.value} not found.
+      `);
     }
     return previousCheckedItems;
   }
