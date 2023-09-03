@@ -30,14 +30,6 @@ const useStyles = makeStyles({
     right: '-16px',
     left: '-16px',
     display: 'flex',
-    flexDirection: 'column',
-    rowGap: tokens.spacingHorizontalXS,
-  },
-
-  buttons: {
-    ...shorthands.flex(1),
-    ...shorthands.padding('16px'),
-    display: 'flex',
     justifyContent: 'center',
     alignItems: 'flex-start',
     columnGap: tokens.spacingHorizontalXS,
