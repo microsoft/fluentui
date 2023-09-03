@@ -95,7 +95,8 @@ export const MotionDisabled = () => {
 MotionDisabled.parameters = {
   docs: {
     description: {
-      story: 'To disable the transition, you can use the `transitionDuration` prop on the `Drawer` component.',
+      story:
+        'To disable the Drawer transition animation, you can use a custom style to set `transitionDuration` to `0ms`.',
     },
   },
 };

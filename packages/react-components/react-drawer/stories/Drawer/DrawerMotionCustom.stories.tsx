@@ -145,6 +145,7 @@ MotionCustom.parameters = {
       story: [
         'Drawer components have transition animations built-in. However, you can customize the animation by using the `useMotion` hook.',
         'The hook returns properties that can be used to determine the state of the animation, and can be passed to the `open` prop of the drawer.',
+        'With this, you can create your own custom CSS animation and apply it to the drawer.',
       ].join('\n'),
     },
   },
