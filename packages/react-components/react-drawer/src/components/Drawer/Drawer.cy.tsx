@@ -2,8 +2,10 @@ import * as React from 'react';
 import { mount } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
-import { Drawer, DrawerProps } from '@fluentui/react-drawer';
 import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+
+import { Drawer } from './Drawer';
+import type { DrawerProps } from './Drawer.types';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
