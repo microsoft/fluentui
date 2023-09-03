@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import * as React from 'react';
 
 export type DrawerHeaderTitleSlots = {
   root: Slot<'div'>;
