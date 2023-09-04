@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Adding unit tests for Area Chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "none"
+}
