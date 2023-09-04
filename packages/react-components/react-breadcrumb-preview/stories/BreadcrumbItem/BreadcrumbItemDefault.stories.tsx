@@ -1,14 +1,6 @@
 import * as React from 'react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbDivider,
-  truncateBreadcrumbLongName,
-  truncateBreadcrumLongTooltip,
-  isTruncatableBreadcrumbContent,
-} from '@fluentui/react-breadcrumb-preview';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider } from '@fluentui/react-breadcrumb-preview';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
-import { Tooltip } from '@fluentui/react-components';
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
 type Item = {
