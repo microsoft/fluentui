@@ -5,7 +5,10 @@ import Frame from 'react-frame-component';
 
 import { useOnClickOutside } from './useOnClickOutside';
 
-const OutsideClickExample: React.FC<{ useShadowDOM: boolean; onOutsideClick: () => void }> = props => {
+const OutsideClickExample: React.FC<{
+  useShadowDOM: boolean;
+  onOutsideClick: () => void;
+}> = props => {
   const innerRef = React.useRef<HTMLDivElement>(null);
 
   useOnClickOutside({
@@ -141,6 +144,52 @@ describe('useOnClickOutside', () => {
       .trigger('mousemove')
       .trigger('mouseup')
       .trigger('click')
+      .then(() => {
+        expect(onOutsideClick).to.not.be.called;
+      });
+  });
+
+  it('should not call callback when right-clicking on trigger and mouseup outside of trigger', () => {
+    // mimic popover that opens on context.
+    // `useOnClickOutside` is only enabled when popover is open.
+    // When right click mouse down happens in the trigger, a contextmenu event is immediately fired and `useOnClickOutside` is enabled.
+    // If the mouseup happens outside, it should not call the callback.
+    const onOutsideClick = cy.spy();
+
+    const TestComponent = () => {
+      const [open, setOpen] = React.useState(false);
+      const toggleOpen: React.MouseEventHandler<HTMLButtonElement> = e => {
+        e.preventDefault();
+        setOpen(v => !v);
+      };
+      const triggerRef = React.useRef(null);
+      const popoverRef = React.useRef(null);
+      useOnClickOutside({
+        element: document,
+        callback: onOutsideClick,
+        refs: [triggerRef, popoverRef],
+        disabled: !open,
+      });
+
+      return (
+        <>
+          <button ref={triggerRef} id="context-trigger" onContextMenu={toggleOpen}>
+            context trigger
+          </button>
+          {open && <div ref={popoverRef}>popover</div>}
+          <button id="outside-button">outside button</button>
+        </>
+      );
+    };
+    mount(<TestComponent />);
+
+    cy.get('#context-trigger')
+      .trigger('mousedown', { which: 3 })
+      .trigger('contextmenu')
+      .trigger('mousemove')
+      .get('#outside-button')
+      .trigger('mousemove')
+      .trigger('mouseup')
       .then(() => {
         expect(onOutsideClick).to.not.be.called;
       });
