@@ -430,7 +430,7 @@ describe('Area chart - Subcomponent callout', () => {
   );
 
   testWithWait(
-    'Should show the stacked callout over the are on mouse over',
+    'Should show the stacked callout over the area on mouse over',
     AreaChart,
     { data: chartData, calloutProps: { doNotLayer: true } },
     container => {

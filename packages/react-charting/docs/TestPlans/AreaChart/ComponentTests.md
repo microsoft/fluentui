@@ -18,11 +18,12 @@
 |             - With EnabledLegendsWrapLines set to “true”              |    Should enable the legends to wrap lines if there is not enough space to show all legends on a single line    |    Enzyme     |
 |              - With ShowXAxisLablesTooltip set to “true”              |                         Should truncate x axis labels and show tooltip on x axis labels                         |    Enzyme     |
 |                 - With WrapXAxisLables set to “true”                  |                                         Should wrap x axis label values                                         |    Enzyme     |
-|                  - With yAxisTickFormat set to “%d”                   |                      <p>Should render the y-axis ticks in the format specified</p><p></p>                       |    Enzyme     |
+|                  - With yAxisTickFormat set to “%d”                   |                                                                                                                 |    Enzyme     |
 |                          - With single point                          |                                    Should render Area chat with single point                                    |    Enzyme     |
 |                         - With Default color                          |                         Should render with default colors when line color not provided                          |    Enzyme     |
 |                        - With specific colors                         |                                    Should render areas with specified colors                                    |      RTL      |
 |                - With optimizeLargeData set to “true”                 |                            Should not render circles when optimizeLargeData is true                             |    Enzyme     |
+|              - With enablePerfOptimization set to “true”              |              Should render the area chart with numeric x-axis data with perf optimization enabled               |      RTL      |
 |                      Test 2: Basic props testing                      |                                                                                                                 |               |
 |                    - HideLegend prop set to “true”                    |                                 Should not mount legend when hideLegend is true                                 |    Enzyme     |
 |                   - HideLegend prop set to “false”                    |                                  Should mount legend when hideLegend is false                                   |    Enzyme     |
@@ -42,16 +43,21 @@
 |     Test 5: Render empty chart aria label div when chart is empty     |                                                                                                                 |               |
 |               - Area chart mounted with non-empty data                |                                     No empty chart aria label div rendered                                      |    Enzyme     |
 |                 - Area chart mounted with empty data                  |                                       Empty chart aria label div rendered                                       |    Enzyme     |
+|                       - A data point is clicked                       |                               Should invoke the handler on click on a data point                                |      RTL      |
+|                       - A data point is focused                       |                               Should invoke the handler on focus on a data point                                |      RTL      |
+|                       - A data point is blurred                       |                               Should invoke the handler on focus on a data point                                |      RTL      |
 |                   Test 6: [Sub-Component]: Legends                    |                                                                                                                 |               |
 |                    - Hover mouse over area legends                    |                                  Should reduce the opacity of the other Areas                                   |      RTL      |
 |                    - Hover mouse over area legends                    | Should reduce the opacity of the other lines in area chart and opacity of the selected area line should be zero |      RTL      |
 |                    - Hover mouse over area legends                    |                                 Should reduce the opacity of the other legends                                  |      RTL      |
 |                    - Single mouse click on legends                    |                         Should select legend on single mouse click on respective legend                         |      RTL      |
 |                    - Double mouse click on legends                    |                        Should deselect legend on double mouse click on respective legend                        |      RTL      |
+|                       - Mouse leave from legend                       |                              Should invoke the handler on mouse leave from legend                               |      RTL      |
 |                   Test 7: [Sub-Component]: Callout                    |                                                                                                                 |               |
-|                   - Hover mouse over a single area                    |                                 Should show the default callout over that Area                                  |      RTL      |
+|                   - Hover mouse over a single area                    |                         Should show the default callout over that Area – Numeric xAxis                          |      RTL      |
 |                   - Hover mouse over a stacked area                   |                             Should show the default stacked callout over that Area                              |      RTL      |
 |         - Specify custom callout and hover mouse over a Area          |                                  Should show the custom callout over that Area                                  |      RTL      |
+|                 - Mouse over on Area – Numeric xAxis                  |                        Should show the callout over the area on mouse over - Date xAxis                         |      RTL      |
 |                Test 8: [Sub-Component]: x-axis labels                 |                                                                                                                 |               |
 |                       - Truncate x-axis labels                        |                               Should show the x-axis labels tooltip when hovered                                |      RTL      |
 |                        - Rotate x-axis labels                         |                                  Should rotate the x-axis labels by 39 degrees                                  |      RTL      |
