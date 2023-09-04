@@ -73,6 +73,14 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
   });
 
   React.useEffect(() => {
+    refs.every(ref => ref.current?.addEventListener('mousedown', handleMouseDown, true));
+
+    return () => {
+      refs.every(ref => ref.current?.removeEventListener('mousedown', handleMouseDown, true));
+    };
+  }, [handleMouseDown, refs]);
+
+  React.useEffect(() => {
     if (disabled) {
       return;
     }
@@ -95,7 +103,6 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     // use capture phase because React can update DOM before the event bubbles to the document
     element?.addEventListener('touchstart', conditionalHandler, true);
     element?.addEventListener('mouseup', conditionalHandler, true);
-    element?.addEventListener('mousedown', handleMouseDown, true);
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
     timeoutId.current = window.setTimeout(() => {
@@ -105,7 +112,6 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     return () => {
       element?.removeEventListener('touchstart', conditionalHandler, true);
       element?.removeEventListener('mouseup', conditionalHandler, true);
-      element?.removeEventListener('mousedown', handleMouseDown, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;
