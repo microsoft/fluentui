@@ -1,8 +1,7 @@
-import { screen, fireEvent, render } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
 import { AreaChart } from './index';
 
 import { getById, testWithoutWait } from '../../utilities/TestUtility.test';
-import React = require('react');
 import { DarkTheme } from '@fluentui/theme-samples';
 
 const chart1Points = [
