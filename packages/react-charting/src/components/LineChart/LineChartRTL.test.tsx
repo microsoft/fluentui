@@ -791,7 +791,7 @@ describe('Line chart - Subcomponent legend', () => {
     expect(legendsAfterClick[4]).toHaveAttribute('aria-selected', 'false');
   });
 
-  test('Should select one line legends on single click and deselect on double click and clear all selections', () => {
+  test('Should select one line legend on single click and deselect on double click and clear all selections', () => {
     const handleMultipleLineLegendSelectionAction = jest.spyOn(
       LineChartBase.prototype as any,
       '_handleMultipleLineLegendSelectionAction',
