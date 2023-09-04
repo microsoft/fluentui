@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: `useOnClickOutside` checks if mouseDown happens inside regardless of `disable` option",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
