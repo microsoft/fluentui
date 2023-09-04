@@ -150,7 +150,10 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console
-      console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
+      console.warn(/* #__DE-INDENT__ */ `
+        @fluentui/react-tree [useRootTree]:
+        Tree must have either a \`aria-label\` or \`aria-labelledby\` property defined
+      `);
     }
   }
 }
