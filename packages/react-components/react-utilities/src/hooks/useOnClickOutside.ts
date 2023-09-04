@@ -73,10 +73,10 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
   });
 
   React.useEffect(() => {
-    refs.every(ref => ref.current?.addEventListener('mousedown', handleMouseDown, true));
+    refs.forEach(ref => ref.current?.addEventListener('mousedown', handleMouseDown, true));
 
     return () => {
-      refs.every(ref => ref.current?.removeEventListener('mousedown', handleMouseDown, true));
+      refs.forEach(ref => ref.current?.removeEventListener('mousedown', handleMouseDown, true));
     };
   }, [handleMouseDown, refs]);
 

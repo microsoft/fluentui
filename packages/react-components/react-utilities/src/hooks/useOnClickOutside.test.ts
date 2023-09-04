@@ -6,7 +6,8 @@ describe('useOnClickOutside', () => {
     jest.useRealTimers();
   });
 
-  const supportedEvents = ['mouseup', 'touchstart', 'fuiframefocus', 'mousedown'];
+  const supportedEvents = ['mouseup', 'touchstart', 'fuiframefocus'];
+  const supportedEventsWhenDisabled = ['mousedown'];
 
   it.each(supportedEvents)('should add %s listener', event => {
     // Arrange
@@ -31,6 +32,26 @@ describe('useOnClickOutside', () => {
     // Assert
     expect(element.removeEventListener).toHaveBeenCalledTimes(supportedEvents.length);
     expect(element.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
+  });
+
+  it.each(supportedEventsWhenDisabled)('should add and cleanup %s listener when disabled', event => {
+    // Arrange
+    const element = { addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown as Document;
+    const refs = [
+      { current: { addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown as HTMLElement },
+      { current: { addEventListener: jest.fn(), removeEventListener: jest.fn() } as unknown as HTMLElement },
+    ];
+
+    // Act
+    const { unmount } = renderHook(() => useOnClickOutside({ disabled: true, element, callback: jest.fn(), refs }));
+    unmount();
+
+    // Assert
+    expect(element.addEventListener).toHaveBeenCalledTimes(0);
+    refs.forEach(ref => {
+      expect(ref.current.addEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
+      expect(ref.current.removeEventListener).toHaveBeenCalledWith(event, expect.anything(), true);
+    });
   });
 
   it('should not add or remove event listeners when disabled', () => {
