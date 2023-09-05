@@ -90,9 +90,9 @@ const chartPointsWithAxisToolTip: IHorizontalBarChartWithAxisDataPoint[] = [
   },
 ];
 
-describe('Horizontal bar chart rendering', () => {
+describe('Horizontal bar chart with axis rendering', () => {
   testWithoutWait(
-    'Should render the Horizontal bar chart with axis legend with numaric yaxis data',
+    'Should render the Horizontal bar chart with axis with numaric yaxis data',
     HorizontalBarChartWithAxis,
     { data: chartPoints },
     container => {
@@ -102,7 +102,7 @@ describe('Horizontal bar chart rendering', () => {
   );
 
   testWithoutWait(
-    'Should render the Horizontal bar chart with axis legend with string yaxis data',
+    'Should render the Horizontal bar chart with axis with string yaxis data',
     HorizontalBarChartWithAxis,
     { data: chartPointsWithStringYAxis },
     container => {
@@ -157,16 +157,6 @@ describe('Horizontal bar chart with axis - Subcomponent bar', () => {
       expect(bars[1].getAttribute('height')).toEqual('50');
       expect(bars[2].getAttribute('height')).toEqual('50');
       expect(bars[3].getAttribute('height')).toEqual('50');
-    },
-  );
-
-  testWithWait(
-    'Should render the bars with labels hidden',
-    HorizontalBarChartWithAxis,
-    { data: chartPoints, hideLabels: true },
-    container => {
-      // Assert
-      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
     },
   );
 });
@@ -285,6 +275,29 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
       fireEvent.mouseOver(bars[0]);
       // Assert
       expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      const xAxisCallOutData = getByClass(container, /calloutContentX/i);
+      expect(xAxisCallOutData).toBeDefined();
+      expect(xAxisCallOutData[0].textContent).toEqual('2020/04/30 ');
+    },
+  );
+
+  testWithWait(
+    'Should show the callout properly when mouse moves from one bar to another bar',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsWithStringYAxis, calloutProps: { doNotLayer: true } },
+    container => {
+      // Arrange
+      const bars = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'rect');
+      fireEvent.mouseOver(bars[0]);
+      // Assert
+      expect(getById(container, /toolTipcallout/i)).toBeDefined();
+      const xAxisCallOutData = getByClass(container, /calloutContentX/i);
+      expect(xAxisCallOutData).toBeDefined();
+      expect(xAxisCallOutData[0].textContent).toEqual('String One ');
+      fireEvent.mouseOver(bars[1]);
+      const xAxisCallOutDataFoSecondBar = getByClass(container, /calloutContentX/i);
+      expect(xAxisCallOutDataFoSecondBar).toBeDefined();
+      expect(xAxisCallOutDataFoSecondBar[0].textContent).toEqual('String Two ');
     },
   );
 
@@ -351,6 +364,18 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
       expect(yAxisCallOutData[0].textContent).toEqual('1,000');
     },
   );
+});
+
+describe('Horizontal bar chart with axis - Subcomponent Labels', () => {
+  testWithWait(
+    'Should render the bars with labels hidden',
+    HorizontalBarChartWithAxis,
+    { data: chartPoints, hideLabels: true },
+    container => {
+      // Assert
+      expect(getByClass(container, /barLabel/i)).toHaveLength(0);
+    },
+  );
 
   testWithWait(
     'Should show y axis label tooltip when showYAxisLablesTooltip is true',
@@ -358,9 +383,21 @@ describe('Horizontal bar chart with axis - Subcomponent callout', () => {
     { data: chartPointsWithStringYAxis, showYAxisLablesTooltip: true },
     async container => {
       await new Promise(resolve => setTimeout(resolve));
-      // Arrange
+      // Assert
       expect(getById(container, /showDots/i)).toHaveLength(4);
       expect(getById(container, /showDots/i)[0]!.textContent!).toEqual('Stri...');
+    },
+  );
+
+  testWithWait(
+    'Should expand y axis label when showYAxisLables is true',
+    HorizontalBarChartWithAxis,
+    { data: chartPointsWithStringYAxis, showYAxisLables: true },
+    async container => {
+      await new Promise(resolve => setTimeout(resolve));
+      // Assert
+      expect(screen.queryByText('String One')).not.toBeNull();
+      expect(screen.queryByText('String Two')).not.toBeNull();
     },
   );
 });
@@ -413,12 +450,6 @@ describe('Horizontal bar chart with axis - Screen resolution', () => {
 });
 
 describe('Horizontal bar chart with axis - Theme', () => {
-  beforeEach(() => {
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
-  });
-  afterEach(() => {
-    jest.spyOn(global.Math, 'random').mockRestore();
-  });
   test('Should reflect theme change', () => {
     // Arrange
     const { container } = render(
