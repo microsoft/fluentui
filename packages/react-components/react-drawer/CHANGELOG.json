@@ -2,6 +2,51 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Tue, 05 Sep 2023 15:39:03 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.22",
+      "version": "9.0.0-beta.22",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91",
+            "comment": "refactor: organize code imports"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c6a8055e413d7efca7c968e11b70638f869b610a",
+            "comment": "test: add e2e tests for base Drawer components"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-dialog to v9.6.2",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.5",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-motion-preview to v0.2.1",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-drawer",
+            "comment": "Bump @fluentui/react-utilities to v9.13.2",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Sep 2023 13:29:22 GMT",
       "tag": "@fluentui/react-drawer_v9.0.0-beta.21",
       "version": "9.0.0-beta.21",

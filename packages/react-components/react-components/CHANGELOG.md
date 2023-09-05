@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 05 Sep 2023 13:28:54 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 15:39:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.30.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.3)
+
+Tue, 05 Sep 2023 15:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.30.2..@fluentui/react-components_v9.30.3)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - fix: `useOnScrollOutside` should invoke callback on dragging scrollbar ([PR #29062](https://github.com/microsoft/fluentui/pull/29062) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - refactor: organize code imports ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by marcosvmmoura@gmail.com)
+  - test: add e2e tests for base Drawer components ([PR #29029](https://github.com/microsoft/fluentui/pull/29029) by marcosvmmoura@gmail.com)
 
 ## [9.30.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.2)
 

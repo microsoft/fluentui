@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 05 Sep 2023 13:29:11 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 15:39:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.2)
+
+Tue, 05 Sep 2023 15:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.1..@fluentui/react-utilities_v9.13.2)
+
+### Patches
+
+- fix: `useOnScrollOutside` should invoke callback on dragging scrollbar ([PR #29062](https://github.com/microsoft/fluentui/pull/29062) by yuanboxue@microsoft.com)
 
 ## [9.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.1)
 

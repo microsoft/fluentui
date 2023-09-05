@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-toast
 
-This log was last generated on Tue, 05 Sep 2023 13:29:09 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 15:39:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.2.2)
+
+Tue, 05 Sep 2023 15:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toast_v9.2.1..@fluentui/react-toast_v9.2.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.35 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.5 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-portal to v9.3.12 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-tabster to v9.12.7 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-utilities to v9.13.2 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
 
 ## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-toast_v9.2.1)
 

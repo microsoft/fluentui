@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "refactor: organize code imports",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

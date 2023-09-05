@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Tue, 05 Sep 2023 13:28:56 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 15:39:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.2.1)
+
+Tue, 05 Sep 2023 15:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.2.0..@fluentui/react-motion-preview_v0.2.1)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.5 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-utilities to v9.13.2 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.2.0)
 

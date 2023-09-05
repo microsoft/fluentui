@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Tue, 05 Sep 2023 13:29:22 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 15:39:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.22)
+
+Tue, 05 Sep 2023 15:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.21..@fluentui/react-drawer_v9.0.0-beta.22)
+
+### Changes
+
+- refactor: organize code imports ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by marcosvmmoura@gmail.com)
+- test: add e2e tests for base Drawer components ([PR #29029](https://github.com/microsoft/fluentui/pull/29029) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.6.2 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.5 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-motion-preview to v0.2.1 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-utilities to v9.13.2 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
 
 ## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.21)
 

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 05 Sep 2023 15:39:03 GMT",
+      "tag": "@fluentui/react-components_v9.30.3",
+      "version": "9.30.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91",
+            "comment": "refactor: organize code imports"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "c6a8055e413d7efca7c968e11b70638f869b610a",
+            "comment": "test: add e2e tests for base Drawer components"
+          }
+        ],
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e1a882487376a105505801ff30bbb9dc103c73f2",
+            "comment": "fix: `useOnScrollOutside` should invoke callback on dragging scrollbar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Sep 2023 13:28:54 GMT",
       "tag": "@fluentui/react-components_v9.30.2",
       "version": "9.30.2",
