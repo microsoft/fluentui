@@ -22,12 +22,22 @@ export const Dismiss = () => {
 
   return (
     <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
-      {visibleTags.map(tag => (
-        <InteractionTag value={tag.value} key={tag.value}>
-          <InteractionTagPrimary hasSecondaryAction>{tag.children}</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="remove" />
-        </InteractionTag>
-      ))}
+      {visibleTags.map(tag => {
+        const primaryId = `dismiss-primary-${tag.value}`;
+        const secondaryId = `dismiss-secondary-${tag.value}`;
+        return (
+          <InteractionTag value={tag.value} key={tag.value}>
+            <InteractionTagPrimary id={primaryId} hasSecondaryAction>
+              {tag.children}
+            </InteractionTagPrimary>
+            <InteractionTagSecondary
+              id={secondaryId}
+              aria-label="remove"
+              aria-labelledby={`${primaryId} ${secondaryId}`}
+            />
+          </InteractionTag>
+        );
+      })}
     </TagGroup>
   );
 };
