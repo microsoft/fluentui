@@ -1,20 +1,20 @@
 import { ValuesOf } from '@microsoft/fast-foundation';
 
 /**
- * The control size variations for the card component
+ * The size variations for the card component
  * @public
  */
-export const CardControlSize = {
+export const CardSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
 } as const;
 
 /**
- * The types for card control size
+ * The types for card size
  * @public
  */
-export type CardControlSize = ValuesOf<typeof CardControlSize>;
+export type CardSize = ValuesOf<typeof CardSize>;
 
 /**
  * The appearance variations for the card component

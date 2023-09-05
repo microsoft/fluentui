@@ -4,7 +4,7 @@ import { renderComponent } from '../helpers.stories.js';
 import { Checkbox } from '../checkbox/checkbox.js';
 import type { Card as FluentCard } from './card.js';
 import './define.js';
-import { CardAppearance, CardControlSize } from './card.options.js';
+import { CardAppearance, CardSize } from './card.options.js';
 
 type CardStoryArgs = Args & FluentCard;
 type CardStoryMeta = Meta<CardStoryArgs>;
@@ -69,7 +69,7 @@ setTimeout(() => {
 const cardTemplate = html<CardStoryArgs>`
   <style>
     #anchor--components-card--appearance .css-jspizm,
-    #anchor--components-card--control-size .css-jspizm {
+    #anchor--components-card--size .css-jspizm {
       height: 34em;
     }
     .card--width-320 {
@@ -95,7 +95,7 @@ const cardTemplate = html<CardStoryArgs>`
       id="card"
       style="width: 360px;"
       appearance="${x => x.appearance}"
-      control-size="${x => x.controlSize}"
+      size="${x => x.size}"
       ?interactive="${x => x.interactive}"
       ?disabled="${x => x.disabled}"
     >
@@ -147,7 +147,7 @@ export default {
   title: 'Components/Card',
   args: {
     appearance: CardAppearance.filled,
-    controlSize: CardControlSize.medium,
+    size: CardSize.medium,
     interactive: false,
     disabled: false,
   },
@@ -158,8 +158,8 @@ export default {
         type: 'select',
       },
     },
-    controlSize: {
-      options: Object.values(CardControlSize),
+    size: {
+      options: Object.values(CardSize),
       control: {
         type: 'select',
       },
@@ -258,7 +258,7 @@ export const ControlSize = renderComponent(html<CardStoryArgs>`
       <fluent-text align="start" font="base" size="400" weight="bold">
         <span>Orientation Vertical Sizes</span>
       </fluent-text>
-      <fluent-card control-size="small" style="width: 360px;">
+      <fluent-card size="small" style="width: 360px;">
         <div slot="header">
           <div style="display: grid; grid-template-columns: min-content 1fr min-content; align-items: center;">
             <div style="width: 40px; height: 40px; margin-right: var(--card--size)">
@@ -288,7 +288,7 @@ export const ControlSize = renderComponent(html<CardStoryArgs>`
           </fluent-text>
         </div>
       </fluent-card>
-      <fluent-card control-size="medium" style="width: 360px;">
+      <fluent-card size="medium" style="width: 360px;">
         <div slot="header">
           <div style="display: grid; grid-template-columns: min-content 1fr min-content; align-items: center;">
             <div style="width: 40px; height: 40px; margin-right: var(--card--size)">
@@ -318,7 +318,7 @@ export const ControlSize = renderComponent(html<CardStoryArgs>`
           </fluent-text>
         </div>
       </fluent-card>
-      <fluent-card control-size="large" style="width: 360px;">
+      <fluent-card size="large" style="width: 360px;">
         <div slot="header">
           <div style="display: grid; grid-template-columns: min-content 1fr min-content; align-items: center;">
             <div style="width: 40px; height: 40px; margin-right: var(--card--size)">
@@ -353,7 +353,7 @@ export const ControlSize = renderComponent(html<CardStoryArgs>`
       <fluent-text align="start" font="semibold" size="400" weight="bold">
         <span>Orientation Horizontal Sizes</span>
       </fluent-text>
-      <fluent-card orientation="horizontal" control-size="small" style="width: 360px;">
+      <fluent-card orientation="horizontal" size="small" style="width: 360px;">
         <div slot="header">
           <div style="width: 40px; height: 40px;">
             <fluent-image shape="square" fit="contain" style="display: block">
@@ -384,7 +384,7 @@ export const ControlSize = renderComponent(html<CardStoryArgs>`
         </div>
       </fluent-card>
 
-      <fluent-card orientation="horizontal" control-size="medium" style="width: 360px;">
+      <fluent-card orientation="horizontal" size="medium" style="width: 360px;">
         <div slot="header">
           <div style="width: 40px; height: 40px;">
             <fluent-image shape="square" fit="contain" style="display: block">
@@ -414,7 +414,7 @@ export const ControlSize = renderComponent(html<CardStoryArgs>`
           </div>
         </div>
       </fluent-card>
-      <fluent-card orientation="horizontal" control-size="large" style="width: 360px;">
+      <fluent-card orientation="horizontal" size="large" style="width: 360px;">
         <div slot="header">
           <div style="width: 40px; height: 40px;">
             <fluent-image shape="square" fit="contain" style="display: block">

@@ -14,9 +14,8 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
       ?disabled="${x => x.disabled}"
       orientation="${x => x.orientation}"
       appearance="${x => x.appearance}"
-      control-size="${x => x.controlSize}"
-      aria-selected="${x => x.selected}"
-      aria-disabled="${x => x.disabled}"
+      size="${x => x.size}"
+      tabindex="${x => (!x.disabled && x.interactive ? 0 : null)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >

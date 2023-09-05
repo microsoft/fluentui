@@ -74,12 +74,12 @@ export const styles = css`
     cursor: pointer;
   }
 
-  :host([control-size='small']) {
+  :host([size='small']) {
     row-gap: ${spacingVerticalS};
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalS} ${spacingHorizontalS};
   }
-  :host([control-size='large']) {
+  :host([size='large']) {
     row-gap: ${spacingVerticalL};
     column-gap: ${spacingHorizontalL};
     padding: ${spacingVerticalL} ${spacingHorizontalL};

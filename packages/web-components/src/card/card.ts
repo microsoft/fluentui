@@ -1,7 +1,7 @@
 import { attr, css, ElementStyles, observable } from '@microsoft/fast-element';
 import { FASTCard, StartEndOptions } from '@microsoft/fast-foundation';
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
-import { CardAppearance, CardControlSize, CardOrientation } from './card.options.js';
+import { CardAppearance, CardOrientation, CardSize } from './card.options.js';
 
 /**
  * Card configuration options
@@ -50,13 +50,13 @@ export class Card extends FASTCard {
   public orientation?: CardOrientation;
 
   /**
-   * @property controlSize
+   * @property size
    * @default medium
    * @remarks
    * Determines the size of the card
    */
-  @attr({ attribute: 'control-size' })
-  public controlSize?: CardControlSize;
+  @attr({ attribute: 'size' })
+  public size?: CardSize;
 
   /**
    * @property interactive
@@ -67,6 +67,16 @@ export class Card extends FASTCard {
   @observable
   @attr({ mode: 'boolean' })
   public interactive: boolean = false;
+
+  /**
+   * @property selectable
+   * @default false
+   * @remarks
+   * Determines whether card is selectable
+   */
+  @observable
+  @attr({ mode: 'boolean' })
+  public selectable: boolean = false;
 
   /**
    * @property disabled
@@ -136,19 +146,19 @@ export class Card extends FASTCard {
    * @internal
    */
   protected updateComputedStylesheet(): void {
-    // Determine the pixel value based on the controlSize attribute
+    // Determine the pixel value based on the size attribute
     let sizeValue;
     let borderRadiusValue;
-    switch (this.controlSize) {
-      case CardControlSize.small:
+    switch (this.size) {
+      case CardSize.small:
         sizeValue = '8px';
         borderRadiusValue = '2px';
         break;
-      case CardControlSize.medium:
+      case CardSize.medium:
         sizeValue = '12px';
         borderRadiusValue = '4px';
         break;
-      case CardControlSize.large:
+      case CardSize.large:
         sizeValue = '16px';
         borderRadiusValue = '8px';
         break;
