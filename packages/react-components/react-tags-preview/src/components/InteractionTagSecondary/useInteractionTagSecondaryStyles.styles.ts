@@ -34,6 +34,16 @@ const useRootBaseClassName = makeResetStyles({
   borderLeftColor: tokens.colorNeutralStroke1,
   borderTopLeftRadius: tokens.borderRadiusNone,
   borderBottomLeftRadius: tokens.borderRadiusNone,
+
+  // windows high contrast:
+  '@media (forced-colors: active)': {
+    ':hover': {
+      backgroundColor: 'HighlightText',
+    },
+    ':active': {
+      backgroundColor: 'HighlightText',
+    },
+  },
 });
 
 const useRootStyles = makeStyles({

@@ -180,6 +180,16 @@ const useDismissIconStyles = makeStyles({
   base: {
     ...shorthands.gridArea('dismissIcon'),
     display: 'flex',
+
+    // windows high contrast:
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Highlight',
+      },
+      ':active': {
+        color: 'Highlight',
+      },
+    },
   },
   medium: {
     paddingLeft: tokens.spacingHorizontalXS,

@@ -47,10 +47,11 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
           elementType: typedState.components[slotName] as React.ComponentType<{}>,
         }) as ComponentState<Slots>[keyof ComponentState<Slots>];
         // eslint-disable-next-line no-console
-        console.warn(
-          `${assertSlots.name} warning: state.${slotName} is not a slot.\n` +
-            `Be sure to create slots properly by using 'slot.always' or 'slot.optional'.`,
-        );
+        console.warn(/** #__DE-INDENT__ */ `
+          @fluentui/react-utilities [${assertSlots.name}]:
+          "state.${slotName}" is not a slot!
+          Be sure to create slots properly by using "slot.always" or "slot.optional".
+        `);
       } else {
         // This means a slot is being declared by using resolveShorthand on the state hook,
         // but the render method is using the new `assertSlots` method. That scenario can be solved by simply updating the slot element with the proper element type
@@ -58,10 +59,12 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
         if (elementType !== typedState.components[slotName]) {
           slotElement[SLOT_ELEMENT_TYPE_SYMBOL] = typedState.components[slotName] as React.ComponentType<{}>;
           // eslint-disable-next-line no-console
-          console.warn(
-            `${assertSlots.name} warning: state.${slotName} element type differs from state.components.${slotName}, ${elementType} !== ${typedState.components[slotName]}. \n` +
-              `Be sure to create slots properly by using 'slot.always' or 'slot.optional' with the correct elementType`,
-          );
+          console.warn(/** #__DE-INDENT__ */ `
+            @fluentui/react-utilities [${assertSlots.name}]:
+            "state.${slotName}" element type differs from "state.components.${slotName}",
+            ${elementType} !== ${typedState.components[slotName]}.
+            Be sure to create slots properly by using "slot.always" or "slot.optional" with the correct elementType.
+          `);
         }
       }
     }

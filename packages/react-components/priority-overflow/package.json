@@ -29,7 +29,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@swc/helpers": "^0.4.14"
+    "@swc/helpers": "^0.5.1"
   },
   "beachball": {
     "disallowedChangeTypes": [
