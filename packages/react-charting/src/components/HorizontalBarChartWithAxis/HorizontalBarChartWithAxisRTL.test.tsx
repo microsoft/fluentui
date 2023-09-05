@@ -1,4 +1,4 @@
-import { render, screen, fireEvent, act, waitFor, getByText } from '@testing-library/react';
+import { render, screen, fireEvent, act } from '@testing-library/react';
 import * as React from 'react';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
