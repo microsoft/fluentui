@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: remove -apple-system from font stack as it is no longer necessary and causing errors",
+  "packageName": "@fluentui/theme",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}
