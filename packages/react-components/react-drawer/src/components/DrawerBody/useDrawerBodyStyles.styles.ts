@@ -1,7 +1,8 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import type { DrawerBodySlots, DrawerBodyState } from './DrawerBody.types';
-import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import type { DrawerBodySlots, DrawerBodyState } from './DrawerBody.types';
 
 export const drawerBodyClassNames: SlotClassNames<DrawerBodySlots> = {
   root: 'fui-DrawerBody',
