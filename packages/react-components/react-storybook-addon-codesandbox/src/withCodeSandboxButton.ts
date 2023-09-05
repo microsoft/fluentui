@@ -27,7 +27,7 @@ const displayToolState = (selector: string, context: StoryContext) => {
   exportLink.style.setProperty('background', 'white');
   exportLink.style.setProperty(
     'font-family',
-    '"Nunito Sans",-apple-system,".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif',
+    '"Nunito Sans",".SFNSText-Regular","San Francisco",BlinkMacSystemFont,"Segoe UI","Helvetica Neue",Helvetica,Arial,sans-serif',
   );
   exportLink.style.setProperty('font-weight', '700');
   exportLink.style.setProperty('font-size', '12px');
