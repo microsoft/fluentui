@@ -1,4 +1,11 @@
+import { canUseDOM } from '../ssr/canUseDOM';
 import { useBrowserTimer } from './useBrowserTimer';
+
+const setAnimationFrameNoop = (callback: FrameRequestCallback) => {
+  callback(0);
+  return 0;
+};
+const cancelAnimationFrameNoop = (handle: number) => handle;
 
 /**
  * @internal
@@ -9,6 +16,11 @@ import { useBrowserTimer } from './useBrowserTimer';
  * @returns A pair of [requestAnimationFrame, cancelAnimationFrame] that are stable between renders.
  */
 export function useAnimationFrame() {
+  const isDOM = canUseDOM();
+
   // TODO: figure it out a way to not call global.requestAnimationFrame and instead infer window from some context
-  return useBrowserTimer(requestAnimationFrame, cancelAnimationFrame);
+  const setAnimationFrame = isDOM ? requestAnimationFrame : setAnimationFrameNoop;
+  const clearAnimationFrame = isDOM ? cancelAnimationFrame : cancelAnimationFrameNoop;
+
+  return useBrowserTimer(setAnimationFrame, clearAnimationFrame);
 }

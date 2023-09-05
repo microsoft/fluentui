@@ -1,8 +1,56 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 23 Aug 2023 12:01:49 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 15:39:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.2)
+
+Tue, 05 Sep 2023 15:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.1..@fluentui/react-utilities_v9.13.2)
+
+### Patches
+
+- fix: `useOnScrollOutside` should invoke callback on dragging scrollbar ([PR #29062](https://github.com/microsoft/fluentui/pull/29062) by yuanboxue@microsoft.com)
+
+## [9.13.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.1)
+
+Tue, 05 Sep 2023 13:29:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.0..@fluentui/react-utilities_v9.13.1)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- chore: adds swc-plugin-de-indent-template-literal to remove indentation of consoles ([PR #29040](https://github.com/microsoft/fluentui/pull/29040) by bernardo.sunderhus@gmail.com)
+- fix: use timeout instead of requestAnimationFrame for ssr ([PR #29015](https://github.com/microsoft/fluentui/pull/29015) by marcosvmmoura@gmail.com)
+- bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.4 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.0)
+
+Tue, 29 Aug 2023 12:57:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.12.0..@fluentui/react-utilities_v9.13.0)
+
+### Minor changes
+
+- feat: add disabledFocusOnIframe for useOnClickOutside() ([PR #28881](https://github.com/microsoft/fluentui/pull/28881) by olfedias@microsoft.com)
+
+### Patches
+
+- fix: `useOnClickOutside` should invoke callback on clicking scrollbar ([PR #28965](https://github.com/microsoft/fluentui/pull/28965) by yuanboxue@microsoft.com)
+
+## [9.12.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.12.0)
+
+Thu, 24 Aug 2023 10:26:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.11.2..@fluentui/react-utilities_v9.12.0)
+
+### Minor changes
+
+- feat: create a new useAnimationFrame hook ([PR #28948](https://github.com/microsoft/fluentui/pull/28948) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- fix: `useOnClickOutside` should consider text selection starting inside and finishing outside as an inside click ([PR #28765](https://github.com/microsoft/fluentui/pull/28765) by yuanboxue@microsoft.com)
 
 ## [9.11.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.11.2)
 

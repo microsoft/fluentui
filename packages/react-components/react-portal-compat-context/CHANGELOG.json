@@ -2,6 +2,27 @@
   "name": "@fluentui/react-portal-compat-context",
   "entries": [
     {
+      "date": "Tue, 05 Sep 2023 13:28:59 GMT",
+      "tag": "@fluentui/react-portal-compat-context_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-portal-compat-context",
+            "commit": "eea6d93a62249ba4fba3347fb291c67ee1a3fb24",
+            "comment": "bumps react peer dependencies to v16.14.0"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 11:12:30 GMT",
       "tag": "@fluentui/react-portal-compat-context_v9.0.6",
       "version": "9.0.6",

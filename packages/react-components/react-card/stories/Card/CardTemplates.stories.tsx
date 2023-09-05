@@ -17,7 +17,7 @@ import {
   CheckmarkCircle16Regular,
   CircleHalfFill16Regular,
   Comment16Regular,
-  MoreHorizontal20Filled,
+  MoreHorizontal20Regular,
 } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
@@ -71,9 +71,9 @@ const resolveAsset = (asset: string) => {
   return `${ASSET_URL}${asset}`;
 };
 
-const excelLogo = resolveAsset('excel_logo.svg');
-const wordLogo = resolveAsset('word_logo.svg');
-const powerpointLogoURL = resolveAsset('powerpoint_logo.svg');
+const excelLogo = resolveAsset('xlsx.png');
+const wordLogo = resolveAsset('docx.png');
+const powerpointLogoURL = resolveAsset('pptx.png');
 
 export const Templates = () => {
   const styles = useStyles();
@@ -155,7 +155,7 @@ export const Templates = () => {
             image={{ as: 'img', src: powerpointLogoURL, alt: 'PowerPoint app logo' }}
             header={<Text weight="semibold">Team Offsite 2020</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Presentations</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} />}
           />
         </Card>
 
@@ -164,7 +164,7 @@ export const Templates = () => {
             image={{ as: 'img', src: excelLogo, alt: 'Excel app logo' }}
             header={<Text weight="semibold">Team Budget</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} />}
           />
         </Card>
 
@@ -173,7 +173,7 @@ export const Templates = () => {
             image={{ as: 'img', src: wordLogo, alt: 'Word app logo' }}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} />}
           />
         </Card>
       </div>
