@@ -1,4 +1,5 @@
 const configHelpers = require('../utils/configHelpers');
+const { react: restrictedGlobals } = require('./restricted-globals');
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -28,17 +29,7 @@ module.exports = {
     '@griffel/hook-naming': 'error',
     '@griffel/no-shorthands': 'error',
     '@griffel/styles-file': 'error',
-    'no-restricted-globals': [
-      'error',
-      {
-        name: 'window',
-        message: 'Get a reference to `window` via context.',
-      },
-      {
-        name: 'document',
-        message: 'Get a reference to `document` via context.',
-      },
-    ],
+    'no-restricted-globals': restrictedGlobals,
     /**
      * react eslint rules
      * @see https://github.com/yannickcr/eslint-plugin-react

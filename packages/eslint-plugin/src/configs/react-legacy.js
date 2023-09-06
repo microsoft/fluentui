@@ -1,6 +1,7 @@
 // @ts-check
 
 const path = require('path');
+const { reactLegacy: restrictedGlobals } = require('./restricted-globals');
 
 /** @type {import("eslint").Linter.Config} */
 module.exports = {
@@ -9,6 +10,7 @@ module.exports = {
   rules: {
     'jsdoc/check-tag-names': 'off',
     '@griffel/no-shorthands': 'off',
+    'no-restricted-globals': restrictedGlobals,
   },
   overrides: [],
 };
