@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: internal type update with @fluentui/react-conformance version bump",
+  "packageName": "@fluentui/react-conformance-griffel",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "none"
+}
