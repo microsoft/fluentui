@@ -38,6 +38,7 @@
     "@fluentui/react-search-preview": "*",
     "@fluentui/react-motion-preview": "*",
     "@griffel/react": "^1.5.14",
+    "@microsoft/applicationinsights-web": "^3",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",

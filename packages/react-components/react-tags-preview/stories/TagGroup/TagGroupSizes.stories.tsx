@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {
   TagGroup,
-  Tag,
   InteractionTag,
   InteractionTagPrimary,
   InteractionTagSecondary,
@@ -27,17 +26,21 @@ export const Sizes = () => {
         <div key={size}>
           {`${size}: `}
           <TagGroup size={size} aria-label={`${size} tag group example`}>
-            <Tag dismissible media={<Avatar name="Katri Athokas" />}>
-              {size}
-            </Tag>
-            <Tag icon={<CalendarMonthRegular />} shape="circular" dismissible>
-              {size}
-            </Tag>
             <InteractionTag>
-              <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
+              <InteractionTagPrimary media={<Avatar name="Katri Athokas" />}>{size}</InteractionTagPrimary>
+            </InteractionTag>
+            <InteractionTag shape="circular">
+              <InteractionTagPrimary icon={<CalendarMonthRegular />}>{size}</InteractionTagPrimary>
+            </InteractionTag>
+            <InteractionTag>
+              <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction id={`${size}-primary`}>
                 {size}
               </InteractionTagPrimary>
-              <InteractionTagSecondary aria-label="remove" />
+              <InteractionTagSecondary
+                id={`${size}-secondary`}
+                aria-label="remove"
+                aria-labelledby={`${size}-primary ${size}-secondary`}
+              />
             </InteractionTag>
           </TagGroup>
         </div>

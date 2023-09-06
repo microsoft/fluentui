@@ -91,8 +91,10 @@ export const Offset = () => {
         </Field>
         <Field label="Toast position" className={styles.positions}>
           <RadioGroup value={position} onChange={(e, data) => setPosition(data.value as ToastPosition)}>
+            <Radio label="bottom" value="bottom" />
             <Radio label="bottom-start" value="bottom-start" />
             <Radio label="bottom-end" value="bottom-end" />
+            <Radio label="top" value="top" />
             <Radio label="top-start" value="top-start" />
             <Radio label="top-end" value="top-end" />
           </RadioGroup>

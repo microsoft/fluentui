@@ -48,6 +48,7 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
   const arrowNavigationProps = useArrowNavigationGroup({
     circular: true,
     axis: 'both',
+    memorizeCurrent: true,
   });
 
   return {

@@ -1,9 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsxFrag React.Fragment */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import * as React from 'react';
-import { createElement } from '@fluentui/react-jsx-runtime';
 import { Portal } from '@fluentui/react-portal';
 import { assertSlots } from '@fluentui/react-utilities';
 import type { DatePickerSlots, DatePickerState } from './DatePicker.types';
