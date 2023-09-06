@@ -219,7 +219,7 @@ export const BreadcrumbWithTooltip = () => {
     <>
       <h3>Interactive Breadcrumb with a tooltip</h3>
       <BreadcrumbWithTooltipExample aria-label="interactive-breadcrumb-with-tooltip" />
-      <h2>Breadcrumb with long names</h2>
+      <h3>Breadcrumb with long names</h3>
       <Breadcrumb aria-label="breadcrumb-with-long-names">
         {itemsWithLongNames.map(item => renderItem(item, itemsLength === item.key))}
       </Breadcrumb>
