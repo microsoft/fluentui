@@ -46,5 +46,17 @@ export const useToasterStyles_unstable = (state: ToasterState): ToasterState => 
     Object.assign(state.topEnd.style, getPositionStyles(TOAST_POSITIONS.topEnd, state.dir, state.offset));
   }
 
+  if (state.top) {
+    state.top.className = className;
+    state.top.style ??= {};
+    Object.assign(state.top.style, getPositionStyles(TOAST_POSITIONS.top, state.dir, state.offset));
+  }
+
+  if (state.bottom) {
+    state.bottom.className = className;
+    state.bottom.style ??= {};
+    Object.assign(state.bottom.style, getPositionStyles(TOAST_POSITIONS.bottom, state.dir, state.offset));
+  }
+
   return state;
 };

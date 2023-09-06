@@ -69,15 +69,26 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
       elementType: 'div',
     });
   };
+
   return {
     dir,
     mountNode,
-    components: { root: 'div', bottomStart: 'div', bottomEnd: 'div', topStart: 'div', topEnd: 'div' },
+    components: {
+      root: 'div',
+      bottomStart: 'div',
+      bottomEnd: 'div',
+      topStart: 'div',
+      topEnd: 'div',
+      top: 'div',
+      bottom: 'div',
+    },
     root: slot.always(rootProps, { elementType: 'div' }),
     bottomStart: usePositionSlot(TOAST_POSITIONS.bottomStart),
     bottomEnd: usePositionSlot(TOAST_POSITIONS.bottomEnd),
     topStart: usePositionSlot(TOAST_POSITIONS.topStart),
     topEnd: usePositionSlot(TOAST_POSITIONS.topEnd),
+    top: usePositionSlot(TOAST_POSITIONS.top),
+    bottom: usePositionSlot(TOAST_POSITIONS.bottom),
     announceRef,
     offset,
     announce: announceProp ?? announce,
