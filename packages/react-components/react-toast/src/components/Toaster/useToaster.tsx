@@ -23,7 +23,7 @@ import { useToastAnnounce } from './useToastAnnounce';
  * @param props - props from this instance of Toaster
  */
 export const useToaster_unstable = (props: ToasterProps): ToasterState => {
-  const { offset, announce: announceProp, mountNode, ...rest } = props;
+  const { offset, announce: announceProp, mountNode, inline = false, ...rest } = props;
   const announceRef = React.useRef<Announce>(() => null);
   const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus, closeAllToasts } =
     useToaster<HTMLDivElement>(rest);
@@ -93,5 +93,6 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     offset,
     announce: announceProp ?? announce,
     renderAriaLive: !announceProp,
+    inline,
   };
 };

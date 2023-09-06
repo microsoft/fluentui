@@ -16,6 +16,24 @@ export const renderToaster_unstable = (state: ToasterState) => {
   const hasToasts =
     !!state.bottomStart || !!state.bottomEnd || !!state.topStart || !!state.topEnd || !!state.top || !!state.bottom;
 
+  if (state.inline) {
+    return (
+      <>
+        {renderAriaLive ? <AriaLive announceRef={announceRef} /> : null}
+        {hasToasts ? (
+          <>
+            {state.bottom ? <state.bottom /> : null}
+            {state.bottomStart ? <state.bottomStart /> : null}
+            {state.bottomEnd ? <state.bottomEnd /> : null}
+            {state.topStart ? <state.topStart /> : null}
+            {state.topEnd ? <state.topEnd /> : null}
+            {state.top ? <state.top /> : null}
+          </>
+        ) : null}
+      </>
+    );
+  }
+
   return (
     <>
       {renderAriaLive ? <AriaLive announceRef={announceRef} /> : null}
