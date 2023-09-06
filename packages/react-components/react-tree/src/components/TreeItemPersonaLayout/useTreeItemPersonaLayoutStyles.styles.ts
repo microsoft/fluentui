@@ -151,7 +151,7 @@ export const useTreeItemPersonaLayoutStyles_unstable = (
   const expandIconStyles = useExpandIconStyles();
   const mainStyles = useMainStyles();
 
-  const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
+  const itemType = useTreeItemContext_unstable(ctx => ctx.itemType) ?? 'leaf';
 
   state.root.className = mergeClasses(
     treeItemPersonaLayoutClassNames.root,

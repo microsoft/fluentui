@@ -1,11 +1,11 @@
-import { TreeNavigationData_unstable } from './Tree.types';
-import { nextTypeAheadElement } from '../../utils/nextTypeAheadElement';
-import { treeDataTypes } from '../../utils/tokens';
-import { treeItemFilter } from '../../utils/treeItemFilter';
-import { useRovingTabIndex } from '../../hooks/useRovingTabIndexes';
-import { HTMLElementWalker } from '../../utils/createHTMLElementWalker';
+import { TreeNavigationData_unstable } from '../components/Tree/Tree.types';
+import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
+import { treeDataTypes } from '../utils/tokens';
+import { treeItemFilter } from '../utils/treeItemFilter';
+import { useRovingTabIndex } from './useRovingTabIndexes';
+import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
 
-export function useTreeNavigation() {
+export function useNestedTreeNavigation() {
   const { rove, initialize } = useRovingTabIndex(treeItemFilter);
 
   const getNextElement = (data: TreeNavigationData_unstable, treeItemWalker: HTMLElementWalker) => {

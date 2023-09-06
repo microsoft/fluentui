@@ -1,5 +1,5 @@
-import type { HeadlessFlatTreeItemProps } from '../FlatTree';
 import { TreeItemProps, TreeItemValue } from '../TreeItem';
+import { HeadlessFlatTreeItemProps } from '../utils/HeadlessFlatTree/types';
 import * as React from 'react';
 
 /**

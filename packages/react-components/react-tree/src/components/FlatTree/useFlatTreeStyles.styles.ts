@@ -17,6 +17,8 @@ const useStyles = makeStyles({
 
 export const useFlatTreeStyles_unstable = (state: FlatTreeState): FlatTreeState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(flatTreeClassNames.root, styles.root, state.root.className);
+  if (state.level === 1) {
+    state.root.className = mergeClasses(flatTreeClassNames.root, styles.root, state.root.className);
+  }
   return state;
 };

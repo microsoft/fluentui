@@ -1,7 +1,6 @@
-import type { ComponentProps, SelectionMode } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, SelectionMode } from '@fluentui/react-utilities';
 import type {
   TreeSlots,
-  TreeState,
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeNavigationData_unstable,
@@ -11,8 +10,13 @@ import type {
   TreeSelectionValue,
 } from '../Tree/index';
 import type { TreeItemValue } from '../TreeItem/index';
+import type { TreeContextValue } from '../../contexts';
 
-export { TreeSlots as FlatTreeSlots, TreeState as FlatTreeState };
+export type FlatTreeSlots = TreeSlots;
+
+export type FlatTreeContextValues = {
+  tree: TreeContextValue;
+};
 
 export type FlatTreeProps = ComponentProps<TreeSlots> & {
   /**
@@ -34,6 +38,12 @@ export type FlatTreeProps = ComponentProps<TreeSlots> & {
    * These property is ignored for subtrees.
    */
   openItems?: Iterable<TreeItemValue>;
+  /**
+   * This refers to a list of ids of default opened items.
+   * This property is ignored for subtrees.
+   */
+  defaultOpenItems?: Iterable<TreeItemValue>;
+
   /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.
@@ -80,3 +90,8 @@ export type FlatTreeProps = ComponentProps<TreeSlots> & {
    */
   onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
+
+export type FlatTreeState = ComponentState<FlatTreeSlots> &
+  TreeContextValue & {
+    open: boolean;
+  };

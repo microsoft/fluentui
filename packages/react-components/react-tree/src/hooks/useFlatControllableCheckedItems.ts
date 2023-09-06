@@ -1,14 +1,14 @@
-import { useControllableState } from '@fluentui/react-utilities';
-import { TreeItemValue } from '../../TreeItem';
-import { ImmutableMap } from '../../utils/ImmutableMap';
 import * as React from 'react';
-import type { HeadlessTree, HeadlessTreeItemProps } from '../../utils/createHeadlessTree';
-import { createCheckedItems } from '../../utils/createCheckedItems';
-import type { TreeCheckedChangeData } from '../Tree/Tree.types';
-import { HeadlessFlatTreeOptions } from './useHeadlessFlatTree';
+import { useControllableState } from '@fluentui/react-utilities';
+import { ImmutableMap } from '../utils/ImmutableMap';
+import { createCheckedItems } from '../utils/createCheckedItems';
+import type { TreeItemValue } from '../components/TreeItem/TreeItem.types';
+import type { TreeCheckedChangeData } from '../components/Tree/Tree.types';
+import type { HeadlessTree, HeadlessTreeItemProps } from '../utils/HeadlessTree';
+import type { HeadlessRootFlatTreeOptions } from '../utils/HeadlessFlatTree';
 
 export function useFlatControllableCheckedItems<Props extends HeadlessTreeItemProps>(
-  props: Pick<HeadlessFlatTreeOptions, 'checkedItems' | 'defaultCheckedItems' | 'selectionMode'>,
+  props: Pick<HeadlessRootFlatTreeOptions, 'checkedItems' | 'defaultCheckedItems' | 'selectionMode'>,
   headlessTree: HeadlessTree<Props>,
 ) {
   return useControllableState({
@@ -71,7 +71,7 @@ export function createNextFlatCheckedItems(
 }
 
 function initializeCheckedItems(
-  props: Pick<HeadlessFlatTreeOptions, 'selectionMode' | 'defaultCheckedItems'>,
+  props: Pick<HeadlessRootFlatTreeOptions, 'selectionMode' | 'defaultCheckedItems'>,
   headlessTree: HeadlessTree<HeadlessTreeItemProps>,
 ) {
   if (!props.selectionMode) {

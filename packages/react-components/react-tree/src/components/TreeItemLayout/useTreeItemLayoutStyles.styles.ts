@@ -181,7 +181,7 @@ export const useTreeItemLayoutStyles_unstable = (state: TreeItemLayoutState): Tr
 
   const size = useTreeContext_unstable(ctx => ctx.size);
   const appearance = useTreeContext_unstable(ctx => ctx.appearance);
-  const itemType = useTreeItemContext_unstable(ctx => ctx.itemType);
+  const itemType = useTreeItemContext_unstable(ctx => ctx.itemType) ?? 'leaf';
 
   root.className = mergeClasses(
     treeItemLayoutClassNames.root,

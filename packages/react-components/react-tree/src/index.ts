@@ -28,20 +28,29 @@ export {
   useFlatTreeStyles_unstable,
   useFlatTreeContextValues_unstable,
   renderFlatTree_unstable,
-  useHeadlessFlatTree_unstable,
 } from './FlatTree';
 
+export type { FlatTreeSlots, FlatTreeProps, FlatTreeState, FlatTreeContextValues } from './FlatTree';
+
+export { useHeadlessFlatTree_unstable } from './utils/HeadlessFlatTree';
 export type {
-  FlatTreeSlots,
-  FlatTreeProps,
-  FlatTreeState,
-  HeadlessFlatTree,
   HeadlessFlatTreeItem,
-  HeadlessFlatTreeOptions,
   HeadlessFlatTreeItemProps,
-} from './FlatTree';
+  HeadlessFlatTree,
+  HeadlessFlatTreeOptions,
+  HeadlessRootFlatTree,
+  HeadlessRootFlatTreeOptions,
+  HeadlessSubFlatTree,
+  HeadlessSubFlatTreeOptions,
+} from './utils/HeadlessFlatTree';
 
-export { TreeProvider, useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider } from './contexts';
+export {
+  TreeProvider,
+  useTreeContext_unstable,
+  useSubtreeContext_unstable,
+  useTreeItemContext_unstable,
+  TreeItemProvider,
+} from './contexts';
 export type { TreeContextValue, TreeItemContextValue } from './contexts';
 
 export { treeItemLevelToken } from './utils/tokens';
@@ -54,7 +63,19 @@ export {
   useTreeItemContextValues_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemProps, TreeItemState, TreeItemSlots, TreeItemValue } from './TreeItem';
+export type {
+  TreeItemProps,
+  TreeItemState,
+  TreeItemSlots,
+  TreeItemValue,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
+  TreeItemType,
+  TreeItemCSSProperties,
+} from './TreeItem';
+
+export { FlatTreeItem } from './FlatTreeItem';
+export type { FlatTreeItemProps } from './FlatTreeItem';
 
 export {
   TreeItemLayout,

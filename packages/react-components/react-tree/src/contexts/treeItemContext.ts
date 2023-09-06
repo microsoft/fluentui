@@ -1,10 +1,14 @@
 import * as React from 'react';
 import { Context, ContextSelector, createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { TreeItemType, TreeItemValue } from '../TreeItem';
-import { headlessTreeRootId } from '../utils/createHeadlessTree';
 import { TreeSelectionValue } from '../Tree';
+import { headlessTreeRootId } from '../utils/tokens';
 
 export type TreeItemContextValue = {
+  value: TreeItemValue;
+  open: boolean;
+  itemType: TreeItemType;
+  checked: TreeSelectionValue;
   isActionsVisible: boolean;
   isAsideVisible: boolean;
   selectionRef: React.Ref<HTMLInputElement>;
@@ -12,24 +16,20 @@ export type TreeItemContextValue = {
   expandIconRef: React.Ref<HTMLDivElement>;
   layoutRef: React.Ref<HTMLDivElement>;
   subtreeRef: React.Ref<HTMLDivElement>;
-  itemType: TreeItemType;
-  value: TreeItemValue;
-  open: boolean;
-  checked: TreeSelectionValue;
 };
 
 const defaultContextValue: TreeItemContextValue = {
   value: headlessTreeRootId,
-  selectionRef: React.createRef(),
-  layoutRef: React.createRef(),
-  subtreeRef: React.createRef(),
-  actionsRef: React.createRef(),
-  expandIconRef: React.createRef(),
+  open: false,
+  itemType: 'leaf',
+  checked: false,
   isActionsVisible: false,
   isAsideVisible: false,
-  itemType: 'leaf',
-  open: false,
-  checked: false,
+  selectionRef: React.createRef(),
+  actionsRef: React.createRef(),
+  expandIconRef: React.createRef(),
+  layoutRef: React.createRef(),
+  subtreeRef: React.createRef(),
 };
 
 export const TreeItemContext: Context<TreeItemContextValue | undefined> = createContext<

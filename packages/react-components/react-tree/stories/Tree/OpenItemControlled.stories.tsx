@@ -1,21 +1,20 @@
 import * as React from 'react';
 import {
   Tree,
-  TreeItemValue,
   TreeItem,
   TreeItemLayout,
-  TreeOpenChangeData,
-  TreeOpenChangeEvent,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
 } from '@fluentui/react-components';
 
-export const OpenItemsControlled = () => {
-  const [openItems, setOpenItems] = React.useState<Iterable<TreeItemValue>>([]);
-  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    setOpenItems(data.openItems);
+export const OpenItemControlled = () => {
+  const [open, setOpen] = React.useState(true);
+  const handleOpenChange = (event: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => {
+    setOpen(data.open);
   };
   return (
-    <Tree aria-label="Open Items Controlled" openItems={openItems} onOpenChange={handleOpenChange}>
-      <TreeItem itemType="branch" value="tree-item-1">
+    <Tree aria-label="Open Item Controlled">
+      <TreeItem open={open} onOpenChange={handleOpenChange} itemType="branch" value="tree-item-1">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>
           <TreeItem itemType="leaf">
@@ -46,11 +45,12 @@ export const OpenItemsControlled = () => {
   );
 };
 
-OpenItemsControlled.parameters = {
+OpenItemControlled.parameters = {
   docs: {
     description: {
       story: `
-You can control the open/closed state of \`TreeItem\` components with the Tree component's \`openItems\` prop and \`onOpenChange\` callback. \`openItems\` takes an [iterable](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Iteration_protocols#the_iterable_protocol) (like an array or a set) of open IDs, and \`onOpenChange\` updates it as items are opened or closed.
+You can also control the open/closed state of a single \`TreeItem\` component directly. This will override the internal value
+of \`openItems\` in favor of the \`open\` property.
       `,
     },
   },

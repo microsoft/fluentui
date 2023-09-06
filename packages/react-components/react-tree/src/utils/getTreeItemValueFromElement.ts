@@ -1,6 +1,5 @@
 import type { TreeItemValue } from '../TreeItem';
-
-export const dataTreeItemValueAttrName = 'data-fui-tree-item-value';
+import { dataTreeItemValueAttrName } from './tokens';
 
 export const getTreeItemValueFromElement = (element: HTMLElement) => {
   return element.getAttribute(dataTreeItemValueAttrName) as TreeItemValue | null;

@@ -1,10 +1,10 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
-import type { TreeContextValue } from '../../contexts/treeContext';
+import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
-import { CheckboxProps } from '@fluentui/react-checkbox';
-import { RadioProps } from '@fluentui/react-radio';
+import type { CheckboxProps } from '@fluentui/react-checkbox';
+import type { RadioProps } from '@fluentui/react-radio';
 
 type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
 type SingleSelectValue = NonNullable<RadioProps['checked']>;
@@ -15,7 +15,12 @@ export type TreeSlots = {
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export type TreeNavigationData_unstable = { target: HTMLElement; value: TreeItemValue } & (
+export type TreeNavigationData_unstable = {
+  target: HTMLElement;
+  value: TreeItemValue;
+  preventInternals: boolean;
+  parentValue: TreeItemValue | undefined;
+} & (
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
@@ -64,7 +69,7 @@ export type TreeCheckedChangeData = {
 export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
 export type TreeContextValues = {
-  tree: TreeContextValue;
+  tree: TreeContextValue | SubtreeContextValue;
 };
 
 export type TreeProps = ComponentProps<TreeSlots> & {
@@ -142,7 +147,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 /**
  * State used in rendering Tree
  */
-export type TreeState = ComponentState<TreeSlots> &
-  TreeContextValue & {
-    open: boolean;
-  };
+export type TreeState = ComponentState<TreeSlots> & {
+  open: boolean;
+} & (TreeContextValue | SubtreeContextValue);

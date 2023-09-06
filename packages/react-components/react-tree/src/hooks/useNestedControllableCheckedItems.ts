@@ -1,8 +1,8 @@
 import * as React from 'react';
-import type { TreeCheckedChangeData, TreeProps } from './Tree.types';
-import { ImmutableMap } from '../../utils/ImmutableMap';
-import { createCheckedItems } from '../../utils/createCheckedItems';
-import { TreeItemValue } from '../TreeItem/TreeItem.types';
+import type { TreeCheckedChangeData, TreeProps } from '../components/Tree/Tree.types';
+import { ImmutableMap } from '../utils/ImmutableMap';
+import { createCheckedItems } from '../utils/createCheckedItems';
+import { TreeItemValue } from '../components/TreeItem/TreeItem.types';
 
 export function useNestedCheckedItems(props: Pick<TreeProps, 'checkedItems'>) {
   return React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);

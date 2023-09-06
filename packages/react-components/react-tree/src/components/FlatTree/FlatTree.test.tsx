@@ -8,12 +8,13 @@ describe('FlatTree', () => {
     Component: FlatTree,
     displayName: 'FlatTree',
     disabledTests: ['consistent-callback-args'],
+    requiredProps: { 'aria-setsize': 0 },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
-    const result = render(<FlatTree>Default FlatTree</FlatTree>);
+    const result = render(<FlatTree aria-setsize={0}>Default FlatTree</FlatTree>);
     expect(result.container).toMatchSnapshot();
   });
 });

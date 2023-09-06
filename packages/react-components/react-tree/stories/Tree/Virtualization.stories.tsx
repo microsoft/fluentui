@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  TreeProps,
-  TreeItem,
+  FlatTreeProps,
+  FlatTreeItem,
   TreeItemLayout,
   TreeProvider,
   TreeSlots,
@@ -40,7 +40,7 @@ const defaultItems: ItemProps[] = [
   })),
 ];
 
-type FixedSizeTreeProps = Omit<TreeProps, 'children'> & {
+type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
   listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
 };
 
@@ -76,39 +76,40 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
   const flatTreeItem = props.data[props.index];
   const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
   return (
-    <TreeItem {...treeItemProps} style={props.style}>
+    <FlatTreeItem {...treeItemProps} style={props.style}>
       <TreeItemLayout>{content}</TreeItemLayout>
-    </TreeItem>
+    </FlatTreeItem>
   );
 };
 
 export const Virtualization = () => {
-  const virtualTree = useHeadlessFlatTree_unstable(defaultItems);
-  const listRef = React.useRef<FixedSizeList>(null);
-  const items = React.useMemo(() => Array.from(virtualTree.items()), [virtualTree]);
-
   /**
    * Since navigation is not possible due to the fact that not all items are rendered,
    * we need to scroll to the next item and then invoke navigation.
    */
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-    event.preventDefault();
-    const nextItem = virtualTree.getNextNavigableItem(items, data);
+    // Prevents the internal behavior
+    data.preventInternals = true;
+    const nextItem = headlessTree.getNextNavigableItem(items, data);
     if (!nextItem) {
       return;
     }
     // if the next item is not rendered, scroll to it and try to navigate again
-    if (!virtualTree.getElementFromItem(nextItem)) {
+    if (!headlessTree.getElementFromItem(nextItem)) {
       listRef.current?.scrollToItem(nextItem.index);
-      return requestAnimationFrame(() => virtualTree.navigate(data));
+      return requestAnimationFrame(() => headlessTree.navigate(data));
     }
     // if the next item is rendered, navigate to it
-    virtualTree.navigate(data);
+    headlessTree.navigate(data);
   };
+
+  const headlessTree = useHeadlessFlatTree_unstable(defaultItems, { onNavigation: handleNavigation });
+  const listRef = React.useRef<FixedSizeList>(null);
+  const items = React.useMemo(() => Array.from(headlessTree.items()), [headlessTree]);
 
   return (
     <FixedSizeTree
-      {...virtualTree.getTreeProps()}
+      {...headlessTree.getTreeProps()}
       listProps={{
         ref: listRef,
         height: 300,
@@ -118,7 +119,6 @@ export const Virtualization = () => {
         width: 300,
         children: FixedSizeTreeItem,
       }}
-      onNavigation={handleNavigation}
       aria-label="Virtualization"
     />
   );
