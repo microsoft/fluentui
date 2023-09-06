@@ -20,6 +20,22 @@ export const getPositionStyles = (position: ToastPosition, dir: 'rtl' | 'ltr', o
   const end = dir === 'ltr' ? 'right' : 'left';
 
   switch (position) {
+    case 'top':
+      Object.assign(positionStyles, {
+        top: vertical,
+        left: `calc(50% + ${horizontal}px)`,
+        transform: 'translateX(-50%)',
+      });
+      break;
+
+    case 'bottom':
+      Object.assign(positionStyles, {
+        bottom: vertical,
+        left: `calc(50% + ${horizontal}px)`,
+        transform: 'translateX(-50%)',
+      });
+      break;
+
     case 'top-start':
       Object.assign(positionStyles, {
         top: vertical,
