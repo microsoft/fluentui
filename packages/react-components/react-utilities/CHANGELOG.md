@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 05 Sep 2023 15:39:03 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.3)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.2..@fluentui/react-utilities_v9.13.3)
+
+### Patches
+
+- Revert fix: `useOnClickOutside` should invoke callback on clicking scrollbar ([PR #29065](https://github.com/microsoft/fluentui/pull/29065) by yuanboxue@microsoft.com)
 
 ## [9.13.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.2)
 

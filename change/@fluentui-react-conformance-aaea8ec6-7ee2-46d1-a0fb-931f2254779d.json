@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add option `disableTypeTests` to disable tests that require TypeScript information",
-  "packageName": "@fluentui/react-conformance",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

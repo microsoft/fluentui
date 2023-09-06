@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: styling for BreadcrumbItem",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
