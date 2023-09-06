@@ -38,6 +38,7 @@
     "@fluentui/react-icons": "^2.0.207",
     "@fluentui/react-label": "^9.1.29",
     "@fluentui/react-popover": "^9.7.18",
+    "@fluentui/react-portal": "^9.3.9",
     "@fluentui/react-tabster": "^9.12.4",
     "@fluentui/react-theme": "^9.1.11",
     "@fluentui/react-utilities": "^9.12.0",
