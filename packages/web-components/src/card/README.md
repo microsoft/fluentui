@@ -30,7 +30,7 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 
 | Name              | Description                | Type                                                                                                  |
 | ----------------- | -------------------------- | ----------------------------------------------------------------------------------------------------- |
-| `cardControlSize` | Control sizes for the Card | `{ small: "small", medium: "medium", large: "large" }`                                                |
+| `cardSize`        | Control sizes for the Card | `{ small: "small", medium: "medium", large: "large" }`                                                |
 | `cardAppearance`  | Appearances for the Card   | `{ filled: "filled", filledAlternative: "filled-alternative", outline: "outline", subtle: "subtle" }` |
 | `cardOrientation` | Orientations for the Card  | `{ horizontal: "horizontal", vertical: "vertical" }`                                                  |
 
@@ -74,19 +74,37 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 |                   | the default slot                                                                                                                                                            |
 | `footer`          | the footer slot                                                                                                                                                             |
 
-# Proposals
+# Proposal for Interactive and Selectable Card Implementation
 
 The Fluent UI Card component can exhibit "selectable" and "interactive" behaviors.
 
 These behaviors can exist independently or in tandem, leading to four possible states for a Card:
 
-1. Non-interactive and Non-selectable: The Card acts purely as a content container, with no response to user interactions.
+<hr />
 
-2. Interactive and Non-selectable: The Card is responsive to user interactions, such as clicks, but does not have a selection state. This behavior is typically used for Cards that perform an action when clicked, but do not need to indicate a selected or unselected state.
+1. **Non-interactive and Non-selectable:** The Card acts purely as a content container, with no response to user interactions.
 
-3. Non-interactive and Selectable: The Card does not respond to general user interactions, but it can change its state or appearance to indicate selection, typically through a checkbox or similar control.
+![image](https://github.com/microsoft/fluentui/assets/11062709/6de3c96a-71b4-45b5-84e2-587c01f96e47)
 
-4. Interactive and Selectable: The Card responds to user interactions and can also change its state or appearance to indicate selection. In this case, a user interaction such as a click can not only triggers an action but also toggles the selection state.
+<hr />
+
+2. **Interactive and Non-selectable:** The Card is responsive to user interactions, such as clicks, but does not have a selection state. This behavior is typically used for Cards that perform an action when clicked, but do not need to indicate a selected or unselected state.
+
+![image](https://github.com/microsoft/fluentui/assets/11062709/5124cb7e-a26a-44cf-9e66-4997d6c2a908)
+
+<hr />
+
+3. **Non-interactive and Selectable:** The Card does not respond to general user interactions, but it can change its state or appearance to indicate selection, typically through a checkbox or similar control.
+
+![image](https://github.com/microsoft/fluentui/assets/11062709/2eb178b2-f417-429d-943e-f7923cc91acd)
+
+<hr />
+
+4. **Interactive and Selectable:** The Card responds to user interactions and can also change its state or appearance to indicate selection. In this case, a user interaction such as a click can not only triggers an action but also toggles the selection state.
+
+![image](https://github.com/microsoft/fluentui/assets/11062709/1dca9c90-909c-42ed-a44a-62854ac87a44)
+
+<hr />
 
 # Selectable Proposal
 
@@ -119,7 +137,7 @@ The component will be equipped with logic to detect the presence of an element i
 - Scenario 1: If an element is passed through the floating-action slot, the internal checkbox will not be rendered, giving precedence to the user's custom input.
 - Scenario 2: If no element is passed through the floating-action slot and the selectable attribute is present, the internal checkbox will be rendered, ensuring the card remains form-connected.
 
-### Proposed Deltas
+## Proposed Deltas
 
 **Selected Props v.s Selectable Attribute**
 
@@ -138,12 +156,12 @@ public selectable: boolean = false;
 
 This change simplifies the API and makes it more intuitive to use.
 
-### Benefits
+## Benefits
 
 - Flexibility: This approach allows users to either use the default internal checkbox or to provide their custom element through the floating-action slot, catering to a wider variety of use cases.
 - Form Connectivity: Ensures that the card component maintains form connectivity in scenarios where the selectable attribute is utilized, without necessitating manual checkbox integration.
 
-### Considerations
+## Considerations
 
 Documentation: Clear documentation would be required to guide users on how to effectively use the floating-action slot and selectable attribute in tandem.
 
