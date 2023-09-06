@@ -1,0 +1,1382 @@
+diff --git a/node_modules/tabster/dist/tabster.esm.js b/node_modules/tabster/dist/tabster.esm.js
+index 207e3c7..067dce0 100644
+--- a/node_modules/tabster/dist/tabster.esm.js
++++ b/node_modules/tabster/dist/tabster.esm.js
+@@ -732,10 +732,20 @@ class TabsterPart {
+  */
+ 
+ class DummyInput {
+-  constructor(getWindow, isOutside, props, element) {
++  constructor(getWindow, isOutside, props, element, fixedTarget) {
+     var _a;
+ 
+     this._focusIn = e => {
++      if (this._fixedTarget) {
++        const target = this._fixedTarget.get();
++
++        if (target) {
++          nativeFocus(target);
++        }
++
++        return;
++      }
++
+       const input = this.input;
+ 
+       if (this.onFocusIn && input) {
+@@ -745,6 +755,10 @@ class DummyInput {
+     };
+ 
+     this._focusOut = e => {
++      if (this._fixedTarget) {
++        return;
++      }
++
+       this.useDefaultAction = false;
+       const input = this.input;
+ 
+@@ -771,6 +785,7 @@ class DummyInput {
+     this.isFirst = props.isFirst;
+     this.isOutside = isOutside;
+     this._isPhantom = (_a = props.isPhantom) !== null && _a !== void 0 ? _a : false;
++    this._fixedTarget = fixedTarget;
+     input.addEventListener("focusin", this._focusIn);
+     input.addEventListener("focusout", this._focusOut);
+     input.__tabsterDummyContainer = element;
+@@ -805,6 +820,7 @@ class DummyInput {
+       return;
+     }
+ 
++    delete this._fixedTarget;
+     delete this.onFocusIn;
+     delete this.onFocusOut;
+     delete this.input;
+@@ -886,7 +902,7 @@ class DummyInputManager {
+     return ret;
+   }
+ 
+-  static moveWithPhantomDummy(tabster, element, moveOutside, isBackward) {
++  static moveWithPhantomDummy(tabster, element, moveOutOfElement, isBackward) {
+     const dummy = new DummyInput(tabster.getWindow, true, {
+       isPhantom: true,
+       isFirst: true
+@@ -894,23 +910,28 @@ class DummyInputManager {
+     const input = dummy.input;
+ 
+     if (input) {
+-      const parent = element.parentElement;
+-
+-      if (parent) {
+-        let insertBefore = moveOutside && !isBackward || !moveOutside && isBackward ? element.nextElementSibling : element;
++      let parent;
++      let insertBefore;
+ 
+-        if (insertBefore) {
+-          if (isBackward) {
+-            const beforeBefore = insertBefore.previousElementSibling;
++      if (moveOutOfElement) {
++        parent = element.parentElement;
+ 
+-            if (beforeBefore && beforeBefore.__tabsterDummyContainer) {
+-              insertBefore = beforeBefore;
+-            }
+-          } else if (insertBefore.__tabsterDummyContainer) {
+-            insertBefore = insertBefore.nextElementSibling;
+-          }
++        if (isBackward) {
++          insertBefore = element;
++        } else {
++          insertBefore = element.nextElementSibling;
+         }
++      } else {
++        if (isBackward) {
++          parent = element;
++          insertBefore = element.firstElementChild;
++        } else {
++          parent = element.parentElement;
++          insertBefore = element;
++        }
++      }
+ 
++      if (parent) {
+         parent.insertBefore(input, insertBefore);
+         DummyInputManager._lastPhantomFrom = element;
+         tabster.getWindow().setTimeout(() => {
+@@ -921,6 +942,20 @@ class DummyInputManager {
+     }
+   }
+ 
++  static addPhantomDummyWithTarget(tabster, anchor, isBackward, element) {
++    var _a;
++
++    const dummy = new DummyInput(tabster.getWindow, true, {
++      isPhantom: true,
++      isFirst: true
++    }, undefined, new WeakHTMLElement(tabster.getWindow, element));
++    const input = dummy.input;
++
++    if (input) {
++      (_a = anchor.parentElement) === null || _a === void 0 ? void 0 : _a.insertBefore(input, isBackward ? anchor : anchor.nextElementSibling);
++    }
++  }
++
+ }
+ 
+ function setDummyInputDebugValue(dummy, wrappers) {
+@@ -1904,7 +1939,24 @@ class RootAPI {
+ 
+     if (!element.ownerDocument) {
+       return undefined;
+-    } // Normally, the initialization starts on the next tick after the tabster
++    }
++
++    const getParent = child => {
++      var _a;
++
++      if (!child) {
++        return null;
++      } // @ts-ignore
++
++
++      const virtualParent = (_a = child._virtual) === null || _a === void 0 ? void 0 : _a.parent;
++
++      if (virtualParent) {
++        return virtualParent;
++      }
++
++      return child.parentElement;
++    }; // Normally, the initialization starts on the next tick after the tabster
+     // instance creation. However, if the application starts using it before
+     // the next tick, we need to make sure the initialization is done.
+ 
+@@ -1915,38 +1967,38 @@ class RootAPI {
+     let modalizer;
+     let groupper;
+     let mover;
+-    let isExcludedFromMover = false;
+-    let isGroupperFirst;
++    let excludedFromMover = false;
++    let groupperBeforeMover;
+     let modalizerInGroupper;
+-    let isRtl;
++    let dirRightToLeft;
+     let uncontrolled;
+-    let curElement = element;
++    let curElement = options.referenceElement || element;
+     const ignoreKeydown = {};
+ 
+     while (curElement && (!root || checkRtl)) {
+       const tabsterOnElement = getTabsterOnElement(tabster, curElement);
+ 
+-      if (checkRtl && isRtl === undefined) {
++      if (checkRtl && dirRightToLeft === undefined) {
+         const dir = curElement.dir;
+ 
+         if (dir) {
+-          isRtl = dir.toLowerCase() === "rtl";
++          dirRightToLeft = dir.toLowerCase() === "rtl";
+         }
+       }
+ 
+       if (!tabsterOnElement) {
+-        curElement = curElement.parentElement;
++        curElement = getParent(curElement);
+         continue;
+       }
+ 
+       const tagName = curElement.tagName;
+ 
+-      if (tabsterOnElement.uncontrolled || tagName === "IFRAME" || tagName === "WEBVIEW") {
+-        uncontrolled = curElement;
++      if ((tabsterOnElement.uncontrolled || tagName === "IFRAME" || tagName === "WEBVIEW") && uncontrolled === undefined) {
++        uncontrolled = true;
+       }
+ 
+       if (!mover && ((_a = tabsterOnElement.focusable) === null || _a === void 0 ? void 0 : _a.excludeFromMover) && !groupper) {
+-        isExcludedFromMover = true;
++        excludedFromMover = true;
+       }
+ 
+       const curModalizer = tabsterOnElement.modalizer;
+@@ -1973,7 +2025,7 @@ class RootAPI {
+ 
+       if (!mover && curMover && (!modalizer || curModalizer) && (!curGroupper || curElement !== element)) {
+         mover = curMover;
+-        isGroupperFirst = !!groupper && groupper !== curGroupper;
++        groupperBeforeMover = !!groupper && groupper !== curGroupper;
+       }
+ 
+       if (tabsterOnElement.root) {
+@@ -1984,7 +2036,11 @@ class RootAPI {
+         Object.assign(ignoreKeydown, tabsterOnElement.focusable.ignoreKeydown);
+       }
+ 
+-      curElement = curElement.parentElement;
++      if (!uncontrolled && (mover || groupper || modalizer)) {
++        uncontrolled = false;
++      }
++
++      curElement = getParent(curElement);
+     } // No root element could be found, try to get an auto root
+ 
+ 
+@@ -2000,7 +2056,7 @@ class RootAPI {
+     }
+ 
+     if (groupper && !mover) {
+-      isGroupperFirst = true;
++      groupperBeforeMover = true;
+     }
+ 
+     if (process.env.NODE_ENV === 'development' && !root) {
+@@ -2016,11 +2072,11 @@ class RootAPI {
+       modalizer,
+       groupper,
+       mover,
+-      isGroupperFirst,
++      groupperBeforeMover,
+       modalizerInGroupper,
+-      isRtl: checkRtl ? !!isRtl : undefined,
++      rtl: checkRtl ? !!dirRightToLeft : undefined,
+       uncontrolled,
+-      isExcludedFromMover,
++      excludedFromMover,
+       ignoreKeydown: shouldIgnoreKeydown
+     } : undefined;
+   }
+@@ -2576,7 +2632,6 @@ class Deloser extends TabsterPart {
+     if (this._tabster.keyboardNavigation.isNavigatingWithKeyboard()) {
+       const first = this._tabster.focusable.findFirst({
+         container: element,
+-        ignoreUncontrolled: true,
+         useActiveModalizer: true
+       });
+ 
+@@ -4164,47 +4219,46 @@ class FocusableAPI {
+     return false;
+   }
+ 
+-  findFirst(options) {
++  findFirst(options, out) {
+     return this.findElement({ ...options
+-    });
++    }, out);
+   }
+ 
+-  findLast(options) {
++  findLast(options, out) {
+     return this.findElement({
+       isBackward: true,
+       ...options
+-    });
++    }, out);
+   }
+ 
+-  findNext(options) {
++  findNext(options, out) {
+     return this.findElement({ ...options
+-    });
++    }, out);
+   }
+ 
+-  findPrev(options) {
+-    return this.findElement({
+-      isBackward: true,
+-      ...options
+-    });
++  findPrev(options, out) {
++    return this.findElement({ ...options,
++      isBackward: true
++    }, out);
+   }
+ 
+-  findDefault(options) {
++  findDefault(options, out) {
+     return this.findElement({ ...options,
+       acceptCondition: el => this._tabster.focusable.isFocusable(el, options.includeProgrammaticallyFocusable) && !!this.getProps(el).isDefault
+-    }) || null;
++    }, out) || null;
+   }
+ 
+   findAll(options) {
+     return this._findElements(true, options) || [];
+   }
+ 
+-  findElement(options) {
+-    const found = this._findElements(false, options);
++  findElement(options, out) {
++    const found = this._findElements(false, options, out);
+ 
+     return found ? found[0] : found;
+   }
+ 
+-  _findElements(findAll, options) {
++  _findElements(findAll, options, out) {
+     var _a, _b, _c;
+ 
+     const {
+@@ -4212,23 +4266,29 @@ class FocusableAPI {
+       currentElement = null,
+       includeProgrammaticallyFocusable,
+       useActiveModalizer,
+-      ignoreUncontrolled,
+       ignoreAccessibility,
+       modalizerId,
+       isBackward,
+-      onUncontrolled,
+       onElement
+     } = options;
++
++    if (!out) {
++      out = {};
++    }
++
+     const elements = [];
+     let {
+       acceptCondition
+     } = options;
++    let hasCustomCondition = true;
+ 
+     if (!container) {
+       return null;
+     }
+ 
+     if (!acceptCondition) {
++      hasCustomCondition = false;
++
+       acceptCondition = el => this._tabster.focusable.isFocusable(el, includeProgrammaticallyFocusable, false, ignoreAccessibility);
+     }
+ 
+@@ -4238,8 +4298,8 @@ class FocusableAPI {
+       from: currentElement || container,
+       isBackward,
+       acceptCondition,
++      hasCustomCondition,
+       includeProgrammaticallyFocusable,
+-      ignoreUncontrolled,
+       ignoreAccessibility,
+       cachedGrouppers: {}
+     };
+@@ -4250,7 +4310,9 @@ class FocusableAPI {
+     }
+ 
+     const prepareForNextElement = shouldContinueIfNotFound => {
+-      const foundElement = acceptElementState.foundElement;
++      var _a;
++
++      const foundElement = acceptElementState.foundElement || acceptElementState.foundBackward;
+ 
+       if (foundElement) {
+         elements.push(foundElement);
+@@ -4260,6 +4322,7 @@ class FocusableAPI {
+         if (foundElement) {
+           acceptElementState.found = false;
+           delete acceptElementState.foundElement;
++          delete acceptElementState.foundBackward;
+           delete acceptElementState.fromCtx;
+           acceptElementState.from = foundElement;
+ 
+@@ -4270,10 +4333,18 @@ class FocusableAPI {
+ 
+         return !!(foundElement || shouldContinueIfNotFound);
+       } else {
++        if (foundElement && out && ((_a = RootAPI.getTabsterContext(this._tabster, foundElement)) === null || _a === void 0 ? void 0 : _a.uncontrolled)) {
++          out.uncontrolled = true;
++        }
++
+         return !!(shouldContinueIfNotFound && !foundElement);
+       }
+     };
+ 
++    if (!currentElement) {
++      out.outOfDOMOrder = true;
++    }
++
+     if (currentElement) {
+       walker.currentNode = currentElement;
+     } else if (isBackward) {
+@@ -4284,47 +4355,46 @@ class FocusableAPI {
+       }
+ 
+       if (this._acceptElement(lastChild, acceptElementState) === NodeFilter.FILTER_ACCEPT && !prepareForNextElement(true)) {
++        if (acceptElementState.skippedFocusable) {
++          out.outOfDOMOrder = true;
++        }
++
+         return elements;
+       }
+ 
+       walker.currentNode = lastChild;
+     }
+ 
+-    let foundElement;
+-
+     do {
+-      foundElement = (isBackward ? walker.previousNode() : walker.nextNode()) || undefined;
++      if (isBackward) {
++        walker.previousNode();
++      } else {
++        walker.nextNode();
++      }
+     } while (prepareForNextElement());
+ 
+-    if (!findAll) {
+-      const nextUncontrolled = acceptElementState.nextUncontrolled;
+-
+-      if (nextUncontrolled) {
+-        if (onUncontrolled) {
+-          onUncontrolled(nextUncontrolled);
+-        }
+-
+-        if (foundElement) {
+-          // We have an uncontrolled area and there is a controlled element after it.
+-          // Return undefined for the default Tab action.
+-          return undefined;
+-        } else {
+-          // Otherwise, return null to moveOutWithDefaultAction().
+-          return null;
+-        }
+-      }
++    if (acceptElementState.skippedFocusable) {
++      out.outOfDOMOrder = true;
+     }
+ 
+     return elements.length ? elements : null;
+   }
+ 
+   _acceptElement(element, state) {
+-    var _a, _b, _c, _d, _e;
++    var _a, _b, _c, _d;
+ 
+     if (state.found) {
+       return NodeFilter.FILTER_ACCEPT;
+     }
+ 
++    const foundBackward = state.foundBackward;
++
++    if (foundBackward && (element === foundBackward || !foundBackward.contains(element))) {
++      state.found = true;
++      state.foundElement = foundBackward;
++      return NodeFilter.FILTER_ACCEPT;
++    }
++
+     const container = state.container;
+ 
+     if (element === container) {
+@@ -4339,14 +4409,8 @@ class FocusableAPI {
+       return NodeFilter.FILTER_REJECT;
+     }
+ 
+-    let lastToIgnore = state.lastToIgnore;
+-
+-    if (lastToIgnore) {
+-      if (lastToIgnore.contains(element)) {
+-        return NodeFilter.FILTER_REJECT;
+-      } else {
+-        lastToIgnore = state.lastToIgnore = undefined;
+-      }
++    if ((_a = state.rejectElementsFrom) === null || _a === void 0 ? void 0 : _a.contains(element)) {
++      return NodeFilter.FILTER_REJECT;
+     }
+ 
+     const ctx = state.currentCtx = RootAPI.getTabsterContext(this._tabster, element); // Tabster is opt in, if it is not managed, don't try and get do anything special
+@@ -4355,27 +4419,21 @@ class FocusableAPI {
+       return NodeFilter.FILTER_SKIP;
+     }
+ 
+-    if (state.ignoreUncontrolled) {
+-      if (shouldIgnoreFocus(element)) {
+-        return NodeFilter.FILTER_SKIP;
++    if (shouldIgnoreFocus(element)) {
++      if (this._tabster.focusable.isFocusable(element, undefined, true, true)) {
++        state.skippedFocusable = true;
+       }
+-    } else if (ctx.uncontrolled && !state.nextUncontrolled && this._tabster.focusable.isFocusable(element, undefined, true, true)) {
+-      if (!ctx.groupper && !ctx.mover) {
+-        if (((_a = ctx.modalizer) === null || _a === void 0 ? void 0 : _a.userId) === ((_b = this._tabster.modalizer) === null || _b === void 0 ? void 0 : _b.activeId)) {
+-          if (this.isVisible(ctx.uncontrolled)) {
+-            state.nextUncontrolled = ctx.uncontrolled;
+-          }
+ 
+-          return NodeFilter.FILTER_REJECT;
+-        }
+-      }
+-    } // We assume iframes are focusable because native tab behaviour would tab inside
++      return NodeFilter.FILTER_SKIP;
++    } // We assume iframes are focusable because native tab behaviour would tab inside.
++    // But we do it only during the standard search when there is no custom accept
++    // element condition.
+ 
+ 
+-    if (element.tagName === "IFRAME" || element.tagName === "WEBVIEW") {
+-      if (((_c = ctx.modalizer) === null || _c === void 0 ? void 0 : _c.userId) === ((_d = this._tabster.modalizer) === null || _d === void 0 ? void 0 : _d.activeId)) {
++    if (!state.hasCustomCondition && (element.tagName === "IFRAME" || element.tagName === "WEBVIEW")) {
++      if (((_b = ctx.modalizer) === null || _b === void 0 ? void 0 : _b.userId) === ((_c = this._tabster.modalizer) === null || _c === void 0 ? void 0 : _c.activeId)) {
+         state.found = true;
+-        state.lastToIgnore = state.foundElement = element;
++        state.rejectElementsFrom = state.foundElement = element;
+         return NodeFilter.FILTER_ACCEPT;
+       } else {
+         return NodeFilter.FILTER_REJECT;
+@@ -4383,6 +4441,10 @@ class FocusableAPI {
+     }
+ 
+     if (!state.ignoreAccessibility && !this.isAccessible(element)) {
++      if (this.isFocusable(element, false, true, true)) {
++        state.skippedFocusable = true;
++      }
++
+       return NodeFilter.FILTER_REJECT;
+     }
+ 
+@@ -4396,14 +4458,18 @@ class FocusableAPI {
+     const fromMover = fromCtx === null || fromCtx === void 0 ? void 0 : fromCtx.mover;
+     let groupper = ctx.groupper;
+     let mover = ctx.mover;
+-    result = (_e = this._tabster.modalizer) === null || _e === void 0 ? void 0 : _e.acceptElement(element, state);
++    result = (_d = this._tabster.modalizer) === null || _d === void 0 ? void 0 : _d.acceptElement(element, state);
++
++    if (result !== undefined) {
++      state.skippedFocusable = true;
++    }
+ 
+     if (result === undefined && (groupper || mover || fromMover)) {
+       const groupperElement = groupper === null || groupper === void 0 ? void 0 : groupper.getElement();
+       const fromMoverElement = fromMover === null || fromMover === void 0 ? void 0 : fromMover.getElement();
+       let moverElement = mover === null || mover === void 0 ? void 0 : mover.getElement();
+ 
+-      if (moverElement && fromMoverElement && container.contains(fromMoverElement) && (!groupperElement || !mover || fromMoverElement.contains(groupperElement))) {
++      if (moverElement && (fromMoverElement === null || fromMoverElement === void 0 ? void 0 : fromMoverElement.contains(moverElement)) && container.contains(fromMoverElement) && (!groupperElement || !mover || fromMoverElement.contains(groupperElement))) {
+         mover = fromMover;
+         moverElement = fromMoverElement;
+       }
+@@ -4435,11 +4501,23 @@ class FocusableAPI {
+ 
+     if (result === undefined) {
+       result = state.acceptCondition(element) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP;
++
++      if (result === NodeFilter.FILTER_SKIP && this.isFocusable(element, false, true, true)) {
++        state.skippedFocusable = true;
++      }
+     }
+ 
+     if (result === NodeFilter.FILTER_ACCEPT && !state.found) {
+-      state.found = true;
+-      state.foundElement = element;
++      if (state.isBackward) {
++        // When TreeWalker goes backwards, it visits the container first,
++        // then it goes inside. So, if the container is accepted, we remember it,
++        // but allowing the TreeWalker to check inside.
++        state.foundBackward = element;
++        result = NodeFilter.FILTER_SKIP;
++      } else {
++        state.found = true;
++        state.foundElement = element;
++      }
+     }
+ 
+     return result;
+@@ -4504,8 +4582,6 @@ class FocusedElementState extends Subscribable {
+     };
+ 
+     this._onKeyDown = e => {
+-      var _a, _b, _c, _d, _e, _f;
+-
+       if (e.keyCode !== Keys.Tab || e.ctrlKey) {
+         return;
+       }
+@@ -4525,78 +4601,30 @@ class FocusedElementState extends Subscribable {
+       }
+ 
+       const isBackward = e.shiftKey;
+-      const next = FocusedElementState.findNextTabbable(tabster, ctx, undefined, currentElement, isBackward, undefined, true);
+-      let nextElement;
+-
+-      if (next) {
+-        let uncontrolled = next.uncontrolled;
+-
+-        if (uncontrolled) {
+-          const isGroupperFirst = ctx.isGroupperFirst;
+-          let moveOutside = false;
+-
+-          if (isGroupperFirst !== undefined) {
+-            const groupper = (_a = ctx.groupper) === null || _a === void 0 ? void 0 : _a.getElement();
+-            const mover = (_b = ctx.mover) === null || _b === void 0 ? void 0 : _b.getElement();
+-            let moveFrom;
+-
+-            if (isGroupperFirst && groupper && uncontrolled.contains(groupper)) {
+-              moveFrom = groupper;
+-            } else if (!isGroupperFirst && mover && uncontrolled.contains(mover)) {
+-              moveFrom = mover;
+-            }
+-
+-            if (moveFrom) {
+-              uncontrolled = moveFrom;
+-              moveOutside = true;
+-            }
+-          }
+-
+-          if (uncontrolled && ctx.uncontrolled !== uncontrolled) {
+-            // We have met an uncontrolled area, just allow default action.
+-            DummyInputManager.moveWithPhantomDummy(this._tabster, uncontrolled, moveOutside, isBackward);
+-          }
++      const next = FocusedElementState.findNextTabbable(tabster, ctx, undefined, currentElement, undefined, isBackward, true);
++      const nextElement = next === null || next === void 0 ? void 0 : next.element;
+ 
++      if (nextElement) {
++        if (ctx.uncontrolled && controlTab) {
++          // We are in uncontrolled zone. We allow whatever controls it to move
++          // focus, but we add a phantom dummy to make sure the focus is moved
++          // to the correct place if the uncontrolled zone allows default action.
++          // We only need that in the controlled mode, because in uncontrolled
++          // mode we have dummy inputs around everything that redirects focus.
++          DummyInputManager.addPhantomDummyWithTarget(tabster, currentElement, isBackward, nextElement);
+           return;
+         }
+ 
+-        nextElement = next.element;
+-      }
++        if (next.uncontrolled || nextElement.tagName === "IFRAME") {
++          // For iframes and uncontrolled zones we always want to use default action to
++          // move focus into.
++          DummyInputManager.moveWithPhantomDummy(this._tabster, nextElement, false, isBackward);
++          return;
++        }
+ 
+-      if (nextElement) {
+-        const preventDefault = () => {
++        if (controlTab || (next === null || next === void 0 ? void 0 : next.outOfDOMOrder)) {
+           e.preventDefault();
+           e.stopImmediatePropagation();
+-        }; // For iframes just allow normal Tab behaviour
+-
+-
+-        if (!controlTab) {
+-          const lastMoverOrGroupper = next === null || next === void 0 ? void 0 : next.lastMoverOrGroupper;
+-          let outOfDOMOrder = next === null || next === void 0 ? void 0 : next.outOfDOMOrder;
+-
+-          if (!outOfDOMOrder && currentElement.compareDocumentPosition(nextElement) & (isBackward ? document.DOCUMENT_POSITION_FOLLOWING : document.DOCUMENT_POSITION_PRECEDING)) {
+-            outOfDOMOrder = true;
+-          }
+-
+-          if (outOfDOMOrder) {
+-            // The next element is out of DOM order (for example because of a trapped groupper),
+-            // do not let the browser to move focus.
+-            preventDefault();
+-            nativeFocus(nextElement);
+-          } else if (lastMoverOrGroupper) {
+-            (_c = lastMoverOrGroupper.dummyManager) === null || _c === void 0 ? void 0 : _c.moveOutWithDefaultAction(isBackward);
+-          } else if (ctx.modalizer) {
+-            const nextElementCtx = RootAPI.getTabsterContext(tabster, nextElement);
+-
+-            if ((!nextElementCtx || ctx.root.uid !== nextElementCtx.root.uid || !((_d = nextElementCtx.modalizer) === null || _d === void 0 ? void 0 : _d.isActive())) && ctx.modalizer.triggerFocusEvent(ModalizerBeforeFocusOutEventName, true)) {
+-              preventDefault();
+-            } else if (!((_e = ctx.modalizer.getElement()) === null || _e === void 0 ? void 0 : _e.contains(nextElement))) {
+-              preventDefault();
+-              (_f = ctx.modalizer.dummyManager) === null || _f === void 0 ? void 0 : _f.moveOut(isBackward);
+-            }
+-          }
+-        } else if (nextElement.tagName !== "IFRAME") {
+-          preventDefault();
+           nativeFocus(nextElement);
+         }
+       } else {
+@@ -4710,46 +4738,19 @@ class FocusedElementState extends Subscribable {
+   }
+ 
+   getFirstOrLastTabbable(isFirst, props) {
+-    const tabsterFocusable = this._tabster.focusable;
++    var _a;
++
+     const {
+       container,
+       ignoreAccessibility
+     } = props;
+-    let uncontrolled;
+     let toFocus;
+ 
+     if (container) {
+       const ctx = RootAPI.getTabsterContext(this._tabster, container);
+ 
+       if (ctx) {
+-        let next = FocusedElementState.findNextTabbable(this._tabster, ctx, container, undefined, !isFirst, undefined, ignoreAccessibility);
+-
+-        if (next) {
+-          toFocus = next.element;
+-          uncontrolled = next.uncontrolled;
+-
+-          while (!toFocus && uncontrolled) {
+-            if (tabsterFocusable.isFocusable(uncontrolled, false, true, true)) {
+-              toFocus = uncontrolled;
+-            } else {
+-              toFocus = tabsterFocusable[isFirst ? "findFirst" : "findLast"]({
+-                container: uncontrolled,
+-                ignoreUncontrolled: true,
+-                ignoreAccessibility,
+-                useActiveModalizer: true
+-              });
+-            }
+-
+-            if (!toFocus) {
+-              next = FocusedElementState.findNextTabbable(this._tabster, ctx, uncontrolled, undefined, !isFirst, undefined, ignoreAccessibility);
+-
+-              if (next) {
+-                toFocus = next.element;
+-                uncontrolled = next.uncontrolled;
+-              }
+-            }
+-          }
+-        }
++        toFocus = (_a = FocusedElementState.findNextTabbable(this._tabster, ctx, container, undefined, undefined, !isFirst, ignoreAccessibility)) === null || _a === void 0 ? void 0 : _a.element;
+       }
+     }
+ 
+@@ -4864,7 +4865,7 @@ class FocusedElementState extends Subscribable {
+     }
+   }
+ 
+-  static findNextTabbable(tabster, ctx, container, currentElement, isBackward, ignoreUncontrolled, ignoreAccessibility) {
++  static findNextTabbable(tabster, ctx, container, currentElement, referenceElement, isBackward, ignoreAccessibility) {
+     const actualContainer = container || ctx.root.getElement();
+ 
+     if (!actualContainer) {
+@@ -4884,40 +4885,41 @@ class FocusedElementState extends Subscribable {
+       delete FocusedElementState._isTabbingTimer;
+       FocusedElementState.isTabbing = false;
+     }, 0);
++    const modalizer = ctx.modalizer;
++    const groupper = ctx.groupper;
++    const mover = ctx.mover;
+ 
+-    const callFindNext = (what, cur) => {
+-      next = what.findNextTabbable(cur || currentElement, isBackward, ignoreUncontrolled, ignoreAccessibility);
+-      const lastMoverOrGroupper = next === null || next === void 0 ? void 0 : next.lastMoverOrGroupper;
++    const callFindNext = what => {
++      var _a;
++
++      next = what.findNextTabbable(currentElement, referenceElement, isBackward, ignoreAccessibility);
+ 
+-      if (lastMoverOrGroupper && !(next === null || next === void 0 ? void 0 : next.element) && !(next === null || next === void 0 ? void 0 : next.uncontrolled)) {
+-        // Handling nested Movers and Grouppers. If not found in the current one,
+-        // try the parent one.
+-        const lastMoverOrGroupperElement = lastMoverOrGroupper.getElement();
+-        const parentElement = lastMoverOrGroupperElement === null || lastMoverOrGroupperElement === void 0 ? void 0 : lastMoverOrGroupperElement.parentElement;
+-        const parentCtx = parentElement && RootAPI.getTabsterContext(tabster, parentElement);
++      if (currentElement && !(next === null || next === void 0 ? void 0 : next.element)) {
++        const parentElement = what !== modalizer && ((_a = what.getElement()) === null || _a === void 0 ? void 0 : _a.parentElement);
++
++        if (parentElement) {
++          const parentCtx = RootAPI.getTabsterContext(tabster, currentElement, {
++            referenceElement: parentElement
++          });
+ 
+-        if (parentCtx) {
+-          const isGroupperFirst = parentCtx.isGroupperFirst;
+-          const parentMoverOrGroupper = isGroupperFirst ? parentCtx.groupper : parentCtx.mover;
++          if (parentCtx) {
++            const currentScopeElement = what.getElement();
++            const newCurrent = isBackward ? currentScopeElement : currentScopeElement && getLastChild(currentScopeElement) || currentScopeElement;
+ 
+-          if (parentMoverOrGroupper) {
+-            const newCurrent = isBackward ? lastMoverOrGroupperElement : getLastChild(lastMoverOrGroupperElement);
+-            callFindNext(parentMoverOrGroupper, newCurrent);
++            if (newCurrent) {
++              next = FocusedElementState.findNextTabbable(tabster, parentCtx, container, newCurrent, parentElement, isBackward, ignoreAccessibility);
+ 
+-            if (next) {
+-              next.outOfDOMOrder = true;
++              if (next) {
++                next.outOfDOMOrder = true;
++              }
+             }
+           }
+         }
+       }
+     };
+ 
+-    const modalizer = ctx.modalizer;
+-    const groupper = ctx.groupper;
+-    const mover = ctx.mover;
+-
+     if (groupper && mover) {
+-      callFindNext(ctx.isGroupperFirst ? groupper : mover);
++      callFindNext(ctx.groupperBeforeMover ? groupper : mover);
+     } else if (groupper) {
+       callFindNext(groupper);
+     } else if (mover) {
+@@ -4925,63 +4927,22 @@ class FocusedElementState extends Subscribable {
+     } else if (modalizer) {
+       callFindNext(modalizer);
+     } else {
+-      let uncontrolled;
+-
+-      const onUncontrolled = el => {
+-        uncontrolled = el;
+-      };
+-
+-      const nextElement = isBackward ? tabster.focusable.findPrev({
+-        container: actualContainer,
+-        currentElement,
+-        onUncontrolled,
+-        ignoreUncontrolled,
+-        ignoreAccessibility,
+-        useActiveModalizer: true
+-      }) : tabster.focusable.findNext({
++      const findProps = {
+         container: actualContainer,
+         currentElement,
+-        onUncontrolled,
+-        ignoreUncontrolled,
++        referenceElement,
+         ignoreAccessibility,
+         useActiveModalizer: true
+-      });
++      };
++      const findPropsOut = {};
++      const nextElement = tabster.focusable[isBackward ? "findPrev" : "findNext"](findProps, findPropsOut);
+       next = {
+-        element: uncontrolled ? undefined : nextElement,
+-        uncontrolled
++        element: nextElement,
++        outOfDOMOrder: findPropsOut.outOfDOMOrder,
++        uncontrolled: findPropsOut.uncontrolled
+       };
+     }
+ 
+-    const lastMoverOrGroupper = next === null || next === void 0 ? void 0 : next.lastMoverOrGroupper;
+-    const lastMoverOrGroupperElement = lastMoverOrGroupper === null || lastMoverOrGroupper === void 0 ? void 0 : lastMoverOrGroupper.getElement();
+-
+-    if (lastMoverOrGroupperElement) {
+-      next = null;
+-      const adjacentElement = getAdjacentElement(lastMoverOrGroupperElement, isBackward);
+-
+-      if (adjacentElement) {
+-        const adjacentCtx = RootAPI.getTabsterContext(tabster, adjacentElement, {
+-          checkRtl: true
+-        });
+-
+-        if (adjacentCtx) {
+-          let adjacentFrom = getAdjacentElement(adjacentElement, !isBackward);
+-
+-          if (adjacentFrom) {
+-            if (!isBackward) {
+-              adjacentFrom = getLastChild(adjacentFrom) || adjacentFrom;
+-            }
+-
+-            next = FocusedElementState.findNextTabbable(tabster, adjacentCtx, actualContainer, adjacentFrom, isBackward, ignoreUncontrolled, ignoreAccessibility);
+-
+-            if (next && !next.lastMoverOrGroupper) {
+-              next.lastMoverOrGroupper = lastMoverOrGroupper;
+-            }
+-          }
+-        }
+-      }
+-    }
+-
+     return next;
+   }
+ 
+@@ -5008,10 +4969,10 @@ class GroupperDummyManager extends DummyInputManager {
+ 
+         if (ctx) {
+           let next;
+-          next = (_a = groupper.findNextTabbable(relatedTarget || undefined, isBackward, true, true)) === null || _a === void 0 ? void 0 : _a.element;
++          next = (_a = groupper.findNextTabbable(relatedTarget || undefined, undefined, isBackward, true)) === null || _a === void 0 ? void 0 : _a.element;
+ 
+           if (!next) {
+-            next = (_b = FocusedElementState.findNextTabbable(tabster, ctx, undefined, dummyInput.isOutside ? input : getAdjacentElement(container, !isBackward), isBackward, true, true)) === null || _b === void 0 ? void 0 : _b.element;
++            next = (_b = FocusedElementState.findNextTabbable(tabster, ctx, undefined, dummyInput.isOutside ? input : getAdjacentElement(container, !isBackward), undefined, isBackward, true)) === null || _b === void 0 ? void 0 : _b.element;
+           }
+ 
+           if (next) {
+@@ -5054,7 +5015,7 @@ class Groupper extends TabsterPart {
+     delete this._first;
+   }
+ 
+-  findNextTabbable(currentElement, isBackward, ignoreUncontrolled, ignoreAccessibility) {
++  findNextTabbable(currentElement, referenceElement, isBackward, ignoreAccessibility) {
+     var _a;
+ 
+     const groupperElement = this.getElement();
+@@ -5068,7 +5029,7 @@ class Groupper extends TabsterPart {
+     if (!this._shouldTabInside && currentElement && groupperElement.contains(currentElement) && !currentIsDummy) {
+       return {
+         element: undefined,
+-        lastMoverOrGroupper: this
++        outOfDOMOrder: true
+       };
+     }
+ 
+@@ -5077,54 +5038,46 @@ class Groupper extends TabsterPart {
+     if (!currentElement || !groupperElement.contains(currentElement) || currentIsDummy) {
+       return {
+         element: groupperFirstFocusable,
+-        lastMoverOrGroupper: groupperFirstFocusable ? undefined : this
++        outOfDOMOrder: true
+       };
+     }
+ 
+     const tabster = this._tabster;
+     let next = null;
+-    let uncontrolled;
+-
+-    const onUncontrolled = el => {
+-      uncontrolled = el;
+-    };
++    let outOfDOMOrder = false;
++    let uncontrolled = false;
+ 
+     if (this._shouldTabInside && groupperFirstFocusable) {
+-      next = isBackward ? tabster.focusable.findPrev({
++      const findProps = {
+         container: groupperElement,
+         currentElement,
+-        onUncontrolled,
+-        ignoreUncontrolled,
++        referenceElement,
+         ignoreAccessibility,
+         useActiveModalizer: true
+-      }) : tabster.focusable.findNext({
+-        container: groupperElement,
+-        currentElement,
+-        onUncontrolled,
+-        ignoreUncontrolled,
+-        ignoreAccessibility,
+-        useActiveModalizer: true
+-      });
++      };
++      const findPropsOut = {};
++      next = tabster.focusable[isBackward ? "findPrev" : "findNext"](findProps, findPropsOut);
++      outOfDOMOrder = !!findPropsOut.outOfDOMOrder;
++      uncontrolled = !!findPropsOut.uncontrolled;
+ 
+-      if (!uncontrolled && !next && this._props.tabbability === GroupperTabbabilities.LimitedTrapFocus) {
++      if (!next && this._props.tabbability === GroupperTabbabilities.LimitedTrapFocus) {
+         next = isBackward ? tabster.focusable.findLast({
+           container: groupperElement,
+-          ignoreUncontrolled: true,
+           ignoreAccessibility,
+           useActiveModalizer: true
+         }) : tabster.focusable.findFirst({
+           container: groupperElement,
+-          ignoreUncontrolled: true,
+           ignoreAccessibility,
+           useActiveModalizer: true
+         });
++        outOfDOMOrder = true;
+       }
+     }
+ 
+     return {
+       element: next,
+       uncontrolled,
+-      lastMoverOrGroupper: next || uncontrolled ? undefined : this
++      outOfDOMOrder
+     };
+   }
+ 
+@@ -5181,7 +5134,6 @@ class Groupper extends TabsterPart {
+       if (!first) {
+         first = this._tabster.focusable.findFirst({
+           container: groupperElement,
+-          ignoreUncontrolled: true,
+           useActiveModalizer: true
+         }) || undefined;
+ 
+@@ -5209,7 +5161,7 @@ class Groupper extends TabsterPart {
+     const parentElement = (_a = this.getElement()) === null || _a === void 0 ? void 0 : _a.parentElement;
+     const parentCtx = parentElement && RootAPI.getTabsterContext(this._tabster, parentElement);
+     const parentCtxGroupper = parentCtx === null || parentCtx === void 0 ? void 0 : parentCtx.groupper;
+-    const parentGroupper = (parentCtx === null || parentCtx === void 0 ? void 0 : parentCtx.isGroupperFirst) ? parentCtxGroupper : undefined;
++    const parentGroupper = (parentCtx === null || parentCtx === void 0 ? void 0 : parentCtx.groupperBeforeMover) ? parentCtxGroupper : undefined;
+     let parentGroupperElement;
+ 
+     const getIsActive = groupper => {
+@@ -5233,6 +5185,7 @@ class Groupper extends TabsterPart {
+ 
+       if (!getIsActive(parentGroupper) && parentGroupperElement && state.container !== parentGroupperElement && state.container.contains(parentGroupperElement)) {
+         // Do not fall into a child groupper of inactive parent groupper if it's in the scope of the search.
++        state.skippedFocusable = true;
+         return NodeFilter.FILTER_REJECT;
+       }
+     }
+@@ -5248,11 +5201,13 @@ class Groupper extends TabsterPart {
+           }
+ 
+           if (parentGroupperElement && !getIsActive(parentCtxGroupper) && state.container.contains(parentGroupperElement) && parentGroupperElement !== state.container) {
++            state.skippedFocusable = true;
+             return NodeFilter.FILTER_REJECT;
+           }
+         }
+ 
+         if (groupperElement !== element && groupperElement.contains(element)) {
++          state.skippedFocusable = true;
+           return NodeFilter.FILTER_REJECT;
+         }
+ 
+@@ -5266,7 +5221,8 @@ class Groupper extends TabsterPart {
+         }
+ 
+         if (first && state.acceptCondition(first)) {
+-          state.lastToIgnore = groupperElement;
++          state.rejectElementsFrom = groupperElement;
++          state.skippedFocusable = true;
+ 
+           if (first !== state.from) {
+             state.found = true;
+@@ -5583,7 +5539,7 @@ class ModalizerDummyManager extends DummyInputManager {
+         const ctx = RootAPI.getTabsterContext(tabster, dummyContainer || input);
+ 
+         if (ctx) {
+-          toFocus = (_c = FocusedElementState.findNextTabbable(tabster, ctx, container, input, isBackward, true, true)) === null || _c === void 0 ? void 0 : _c.element;
++          toFocus = (_c = FocusedElementState.findNextTabbable(tabster, ctx, container, input, undefined, isBackward, true)) === null || _c === void 0 ? void 0 : _c.element;
+         }
+ 
+         if (toFocus) {
+@@ -5680,7 +5636,7 @@ class Modalizer extends TabsterPart {
+     return !!((_a = this.getElement()) === null || _a === void 0 ? void 0 : _a.contains(element));
+   }
+ 
+-  findNextTabbable(currentElement, isBackward, ignoreUncontrolled, ignoreAccessibility) {
++  findNextTabbable(currentElement, referenceElement, isBackward, ignoreAccessibility) {
+     var _a, _b;
+ 
+     const modalizerElement = this.getElement();
+@@ -5691,37 +5647,39 @@ class Modalizer extends TabsterPart {
+ 
+     const tabster = this._tabster;
+     let next = null;
+-    let uncontrolled;
+-
+-    const onUncontrolled = el => {
+-      uncontrolled = el;
+-    };
+-
++    let outOfDOMOrder = false;
++    let uncontrolled = false;
+     const container = currentElement && ((_a = RootAPI.getRoot(tabster, currentElement)) === null || _a === void 0 ? void 0 : _a.getElement());
+ 
+     if (container) {
+-      next = tabster.focusable[isBackward ? "findPrev" : "findNext"]({
++      const findProps = {
+         container,
+         currentElement,
+-        onUncontrolled,
+-        ignoreUncontrolled,
++        referenceElement,
+         ignoreAccessibility,
+         useActiveModalizer: true
+-      });
++      };
++      const findPropsOut = {};
++      next = tabster.focusable[isBackward ? "findPrev" : "findNext"](findProps, findPropsOut);
+ 
+-      if (!uncontrolled && !next && this._props.isTrapped && ((_b = tabster.modalizer) === null || _b === void 0 ? void 0 : _b.activeId)) {
++      if (!next && this._props.isTrapped && ((_b = tabster.modalizer) === null || _b === void 0 ? void 0 : _b.activeId)) {
+         next = tabster.focusable[isBackward ? "findLast" : "findFirst"]({
+           container,
+-          ignoreUncontrolled: true,
+           ignoreAccessibility,
+           useActiveModalizer: true
+-        });
++        }, findPropsOut);
++        outOfDOMOrder = true;
++      } else {
++        outOfDOMOrder = !!findPropsOut.outOfDOMOrder;
+       }
++
++      uncontrolled = !!findPropsOut.uncontrolled;
+     }
+ 
+     return {
+       element: next,
+-      uncontrolled
++      uncontrolled,
++      outOfDOMOrder
+     };
+   }
+ 
+@@ -6059,7 +6017,13 @@ class ModalizerAPI {
+       }
+     }
+ 
+-    return modalizerUserId === (currentModalizer === null || currentModalizer === void 0 ? void 0 : currentModalizer.userId) || !modalizerUserId && (currentModalizer === null || currentModalizer === void 0 ? void 0 : currentModalizer.getProps().isAlwaysAccessible) ? undefined : NodeFilter.FILTER_SKIP;
++    const ret = modalizerUserId === (currentModalizer === null || currentModalizer === void 0 ? void 0 : currentModalizer.userId) || !modalizerUserId && (currentModalizer === null || currentModalizer === void 0 ? void 0 : currentModalizer.getProps().isAlwaysAccessible) ? undefined : NodeFilter.FILTER_SKIP;
++
++    if (ret !== undefined) {
++      state.skippedFocusable = true;
++    }
++
++    return ret;
+   }
+ 
+   _hiddenUpdate() {
+@@ -6208,7 +6172,6 @@ class ModalizerAPI {
+     if (container) {
+       let toFocus = this._tabster.focusable.findFirst({
+         container,
+-        ignoreUncontrolled: true,
+         useActiveModalizer: true
+       });
+ 
+@@ -6216,7 +6179,6 @@ class ModalizerAPI {
+         if (outsideElement.compareDocumentPosition(toFocus) & document.DOCUMENT_POSITION_PRECEDING) {
+           toFocus = this._tabster.focusable.findLast({
+             container,
+-            ignoreUncontrolled: true,
+             useActiveModalizer: true
+           });
+ 
+@@ -6262,7 +6224,7 @@ class MoverDummyManager extends DummyInputManager {
+         let toFocus;
+ 
+         if (ctx) {
+-          toFocus = (_a = FocusedElementState.findNextTabbable(this._tabster, ctx, undefined, input, !dummyInput.isFirst, true)) === null || _a === void 0 ? void 0 : _a.element;
++          toFocus = (_a = FocusedElementState.findNextTabbable(this._tabster, ctx, undefined, input, undefined, !dummyInput.isFirst, true)) === null || _a === void 0 ? void 0 : _a.element;
+         }
+ 
+         const memorized = (_b = this._getMemorized()) === null || _b === void 0 ? void 0 : _b.get();
+@@ -6437,7 +6399,7 @@ class Mover extends TabsterPart {
+     return ((_a = this._current) === null || _a === void 0 ? void 0 : _a.get()) || null;
+   }
+ 
+-  findNextTabbable(currentElement, isBackward, ignoreUncontrolled, ignoreAccessibility) {
++  findNextTabbable(currentElement, referenceElement, isBackward, ignoreAccessibility) {
+     var _a;
+ 
+     const container = this.getElement();
+@@ -6447,37 +6409,28 @@ class Mover extends TabsterPart {
+       return null;
+     }
+ 
+-    const tabster = this._tabster;
+-    const focusable = tabster.focusable;
+     let next = null;
+-    let uncontrolled;
+-
+-    const onUncontrolled = el => {
+-      uncontrolled = el;
+-    };
++    let outOfDOMOrder = false;
++    let uncontrolled = false;
+ 
+     if (this._props.tabbable || currentIsDummy || currentElement && !container.contains(currentElement)) {
+-      next = isBackward ? focusable.findPrev({
+-        currentElement,
+-        container,
+-        onUncontrolled,
+-        ignoreUncontrolled,
+-        ignoreAccessibility,
+-        useActiveModalizer: true
+-      }) : focusable.findNext({
++      const findProps = {
+         currentElement,
++        referenceElement,
+         container,
+-        onUncontrolled,
+-        ignoreUncontrolled,
+         ignoreAccessibility,
+         useActiveModalizer: true
+-      });
++      };
++      const findPropsOut = {};
++      next = this._tabster.focusable[isBackward ? "findPrev" : "findNext"](findProps, findPropsOut);
++      outOfDOMOrder = !!findPropsOut.outOfDOMOrder;
++      uncontrolled = !!findPropsOut.uncontrolled;
+     }
+ 
+     return {
+       element: next,
+       uncontrolled,
+-      lastMoverOrGroupper: next || uncontrolled ? undefined : this
++      outOfDOMOrder
+     };
+   }
+ 
+@@ -6485,7 +6438,7 @@ class Mover extends TabsterPart {
+     var _a, _b, _c;
+ 
+     if (!FocusedElementState.isTabbing) {
+-      return ((_a = state.currentCtx) === null || _a === void 0 ? void 0 : _a.isExcludedFromMover) ? NodeFilter.FILTER_REJECT : undefined;
++      return ((_a = state.currentCtx) === null || _a === void 0 ? void 0 : _a.excludedFromMover) ? NodeFilter.FILTER_REJECT : undefined;
+     }
+ 
+     const {
+@@ -6509,7 +6462,6 @@ class Mover extends TabsterPart {
+       if (!found && hasDefault) {
+         found = this._tabster.focusable.findDefault({
+           container: moverElement,
+-          ignoreUncontrolled: true,
+           useActiveModalizer: true
+         });
+       }
+@@ -6517,7 +6469,6 @@ class Mover extends TabsterPart {
+       if (!found && visibilityAware) {
+         found = this._tabster.focusable.findElement({
+           container: moverElement,
+-          ignoreUncontrolled: true,
+           useActiveModalizer: true,
+           isBackward: state.isBackward,
+           acceptCondition: el => {
+@@ -6533,7 +6484,8 @@ class Mover extends TabsterPart {
+       if (found) {
+         state.found = true;
+         state.foundElement = found;
+-        state.lastToIgnore = moverElement;
++        state.rejectElementsFrom = moverElement;
++        state.skippedFocusable = true;
+         return NodeFilter.FILTER_ACCEPT;
+       }
+     }
+@@ -6848,14 +6800,14 @@ class MoverAPI {
+         checkRtl: true
+       });
+ 
+-      if (!ctx || !ctx.mover || ctx.isExcludedFromMover || ctx.ignoreKeydown(event)) {
++      if (!ctx || !ctx.mover || ctx.excludedFromMover || ctx.ignoreKeydown(event)) {
+         return;
+       }
+ 
+       const mover = ctx.mover;
+       const container = mover.getElement();
+ 
+-      if (ctx.isGroupperFirst) {
++      if (ctx.groupperBeforeMover) {
+         const groupper = ctx.groupper;
+ 
+         if (groupper && !groupper.isActive(true)) {
+@@ -6895,7 +6847,7 @@ class MoverAPI {
+         focusedElementX2 = Math.floor(focusedElementRect.right);
+       }
+ 
+-      if (ctx.isRtl) {
++      if (ctx.rtl) {
+         if (keyCode === Keys.Right) {
+           keyCode = Keys.Left;
+         } else if (keyCode === Keys.Left) {
+@@ -6919,7 +6871,6 @@ class MoverAPI {
+         } else if (!next && isCyclic) {
+           next = focusable.findFirst({
+             container,
+-            ignoreUncontrolled: true,
+             useActiveModalizer: true
+           });
+         }
+@@ -6939,7 +6890,6 @@ class MoverAPI {
+         } else if (!next && isCyclic) {
+           next = focusable.findLast({
+             container,
+-            ignoreUncontrolled: true,
+             useActiveModalizer: true
+           });
+         }
+@@ -6948,7 +6898,6 @@ class MoverAPI {
+           focusable.findElement({
+             container,
+             currentElement: focused,
+-            ignoreUncontrolled: true,
+             useActiveModalizer: true,
+             isBackward: true,
+             acceptCondition: el => {
+@@ -6971,7 +6920,6 @@ class MoverAPI {
+         } else {
+           next = focusable.findFirst({
+             container,
+-            ignoreUncontrolled: true,
+             useActiveModalizer: true
+           });
+         }
+@@ -6980,7 +6928,6 @@ class MoverAPI {
+           focusable.findElement({
+             container,
+             currentElement: focused,
+-            ignoreUncontrolled: true,
+             useActiveModalizer: true,
+             acceptCondition: el => {
+               var _a;
+@@ -7002,7 +6949,6 @@ class MoverAPI {
+         } else {
+           next = focusable.findLast({
+             container,
+-            ignoreUncontrolled: true,
+             useActiveModalizer: true
+           });
+         }
+@@ -8387,7 +8333,7 @@ class RestorerAPI {
+     };
+ 
+     this._onFocusIn = element => {
+-      var _a, _b;
++      var _a;
+ 
+       if (!element) {
+         return;
+@@ -8397,18 +8343,9 @@ class RestorerAPI {
+ 
+       if (((_a = tabsterAttribute === null || tabsterAttribute === void 0 ? void 0 : tabsterAttribute.restorer) === null || _a === void 0 ? void 0 : _a.getProps().type) !== RestorerTypes.Target) {
+         return;
+-      } // Don't duplicate the top of history
+-
+-
+-      if (((_b = this._history[this._history.length - 1]) === null || _b === void 0 ? void 0 : _b.deref()) === element) {
+-        return;
+       }
+ 
+-      if (this._history.length > HISOTRY_DEPTH) {
+-        this._history.shift();
+-      }
+-
+-      this._history.push(new WeakRef(element));
++      this._addToHistory(element);
+     };
+ 
+     this._restoreFocus = source => {
+@@ -8417,7 +8354,7 @@ class RestorerAPI {
+ 
+       const doc = this._getWindow().document;
+ 
+-      if (doc.activeElement !== document.body) {
++      if (doc.activeElement !== doc.body) {
+         return;
+       }
+ 
+@@ -8459,8 +8396,29 @@ class RestorerAPI {
+     }
+   }
+ 
++  _addToHistory(element) {
++    var _a; // Don't duplicate the top of history
++
++
++    if (((_a = this._history[this._history.length - 1]) === null || _a === void 0 ? void 0 : _a.deref()) === element) {
++      return;
++    }
++
++    if (this._history.length > HISOTRY_DEPTH) {
++      this._history.shift();
++    }
++
++    this._history.push(new WeakRef(element));
++  }
++
+   createRestorer(element, props) {
+-    return new Restorer(this._tabster, element, props);
++    const restorer = new Restorer(this._tabster, element, props); // Focus might already be on a restorer target when it gets created so the focusin will not do anything
++
++    if (props.type === RestorerTypes.Target && element.ownerDocument.activeElement === element) {
++      this._addToHistory(element);
++    }
++
++    return restorer;
+   }
+ 
+ }
+@@ -8493,7 +8451,7 @@ class TabsterCore {
+     this._forgetMemorizedElements = [];
+     this._wrappers = new Set();
+     this._initQueue = [];
+-    this._version = "4.7.0";
++    this._version = "5.0.0-canary.0";
+     this._noop = false;
+ 
+     this.getWindow = () => {
