@@ -20,7 +20,7 @@ export type TreeContextValue = {
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
   | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'>
-  | TreeNavigationData_unstable
+  | OmitWithoutExpanding<TreeNavigationData_unstable, 'preventInternals'>
   | OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'>
 );
 

@@ -17,6 +17,7 @@ export { Actions } from './TreeActions.stories';
 // FUNCTIONAL EXAMPLES
 export { DefaultOpen } from './TreeDefaultOpen.stories';
 export { OpenItemsControlled } from './OpenItemsControlled.stories';
+export { OpenItemControlled } from './OpenItemControlled.stories';
 export { CustomizingInteraction } from './TreeCustomizingInteraction.stories';
 export { InlineStylingTreeItemLevel } from './TreeInlineStylingTreeItemLevel.stories';
 export { FlatTree } from './FlatTree.stories';

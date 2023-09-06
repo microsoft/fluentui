@@ -866,6 +866,8 @@ import { TreeItemLayoutProps } from '@fluentui/react-tree';
 import { TreeItemLayoutSlots } from '@fluentui/react-tree';
 import { TreeItemLayoutState } from '@fluentui/react-tree';
 import { treeItemLevelToken } from '@fluentui/react-tree';
+import { TreeItemOpenChangeData } from '@fluentui/react-tree';
+import { TreeItemOpenChangeEvent } from '@fluentui/react-tree';
 import { TreeItemPersonaLayout } from '@fluentui/react-tree';
 import { treeItemPersonaLayoutClassNames } from '@fluentui/react-tree';
 import { TreeItemPersonaLayoutProps } from '@fluentui/react-tree';
@@ -2897,6 +2899,10 @@ export { TreeItemLayoutSlots }
 export { TreeItemLayoutState }
 
 export { treeItemLevelToken }
+
+export { TreeItemOpenChangeData }
+
+export { TreeItemOpenChangeEvent }
 
 export { TreeItemPersonaLayout }
 
