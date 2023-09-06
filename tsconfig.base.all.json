@@ -122,6 +122,7 @@
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
+      "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/src/index.ts"],
       "@fluentui/react-nav-preview": ["packages/react-components/react-nav-preview/src/index.ts"],
       "@fluentui/react-overflow": ["packages/react-components/react-overflow/src/index.ts"],
       "@fluentui/react-persona": ["packages/react-components/react-persona/src/index.ts"],
@@ -160,8 +161,7 @@
       "@fluentui/react-virtualizer": ["packages/react-components/react-virtualizer/src/index.ts"],
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
-      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/src/index.ts"]
+      "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"]
     }
   }
 }

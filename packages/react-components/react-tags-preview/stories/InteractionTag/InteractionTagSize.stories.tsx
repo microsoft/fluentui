@@ -27,10 +27,18 @@ export const Size = () => {
         </InteractionTag>
 
         <InteractionTag>
-          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+          <InteractionTagPrimary
+            media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
+            hasSecondaryAction
+            id="medium-primary"
+          >
             Medium dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary aria-label={`Medium, dismiss`} />
+          <InteractionTagSecondary
+            aria-label="dismiss"
+            aria-labelledby="medium-primary medium-secondary"
+            id="medium-secondary"
+          />
         </InteractionTag>
 
         <InteractionTag shape="circular">
@@ -45,10 +53,18 @@ export const Size = () => {
         </InteractionTag>
 
         <InteractionTag size="small">
-          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+          <InteractionTagPrimary
+            media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
+            hasSecondaryAction
+            id="small-primary"
+          >
             Small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary aria-label={`Small, dismiss`} />
+          <InteractionTagSecondary
+            aria-label="dismiss"
+            aria-labelledby="small-primary small-secondary"
+            id="small-secondary"
+          />
         </InteractionTag>
 
         <InteractionTag size="small" shape="circular">
@@ -63,10 +79,18 @@ export const Size = () => {
         </InteractionTag>
 
         <InteractionTag size="extra-small">
-          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+          <InteractionTagPrimary
+            media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
+            hasSecondaryAction
+            id="extra-small-primary"
+          >
             Extra Small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary aria-label={`Extra-small, dismiss`} />
+          <InteractionTagSecondary
+            aria-label="dismiss"
+            aria-labelledby="extra-small-primary extra-small-secondary"
+            id="extra-small-secondary"
+          />
         </InteractionTag>
 
         <InteractionTag size="extra-small" shape="circular">

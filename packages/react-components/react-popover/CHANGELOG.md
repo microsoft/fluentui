@@ -1,8 +1,59 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Thu, 24 Aug 2023 10:26:33 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 15:39:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.2)
+
+Tue, 05 Sep 2023 15:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.1..@fluentui/react-popover_v9.8.2)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.35 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.33 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-portal to v9.3.12 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-positioning to v9.9.10 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-tabster to v9.12.7 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-utilities to v9.13.2 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.5 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+
+## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.1)
+
+Tue, 05 Sep 2023 13:28:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.0..@fluentui/react-popover_v9.8.1)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/keyboard-keys to v9.0.4 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-aria to v9.3.34 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.32 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-portal to v9.3.11 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-positioning to v9.9.9 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.7.3 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-tabster to v9.12.6 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-theme to v9.1.12 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-utilities to v9.13.1 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.4 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.0)
+
+Tue, 29 Aug 2023 12:57:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.7.18..@fluentui/react-popover_v9.8.0)
+
+### Minor changes
+
+- feat: add closeOnIframeFocus prop to Popover ([PR #28881](https://github.com/microsoft/fluentui/pull/28881) by olfedias@microsoft.com)
+- Bump @fluentui/react-aria to v9.3.33 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.31 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-portal to v9.3.10 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-positioning to v9.9.8 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-tabster to v9.12.5 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-utilities to v9.13.0 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.3 ([PR #29005](https://github.com/microsoft/fluentui/pull/29005) by beachball)
 
 ## [9.7.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.7.18)
 

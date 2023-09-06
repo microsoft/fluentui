@@ -26,6 +26,8 @@ const useStyles = makeStyles({
     gridColumnEnd: 4,
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       gridColumnStart: 1,
+      gridRowStart: 4,
+      gridRowEnd: 'auto',
     },
   },
   gridPositionStart: {
@@ -34,6 +36,8 @@ const useStyles = makeStyles({
     gridColumnEnd: 2,
     [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
       gridColumnEnd: 4,
+      gridRowStart: 3,
+      gridRowEnd: 'auto',
     },
   },
   fluidStart: {

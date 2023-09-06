@@ -13,6 +13,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { JSXElementConstructor } from 'react';
+import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
 import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -70,7 +71,7 @@ export const Toaster: React_2.FC<ToasterProps>;
 export const toasterClassNames: SlotClassNames<ToasterSlots>;
 
 // @public
-export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & {
+export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & Pick<PortalProps, 'mountNode'> & {
     announce?: Announce;
 };
 
@@ -80,7 +81,7 @@ export type ToasterSlots = {
 };
 
 // @public
-export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<Required<ToasterProps>, 'announce'> & {
+export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<PortalProps, 'mountNode'> & Pick<Required<ToasterProps>, 'announce'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
     dir: 'rtl' | 'ltr';

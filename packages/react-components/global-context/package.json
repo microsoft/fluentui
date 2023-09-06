@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/global-context",
-  "version": "9.0.0-beta.37",
+  "version": "9.0.0-beta.40",
   "description": "Extension of React createContext to be a true singleton on the global scope",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,15 +32,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-context-selector": "^9.1.30",
-    "@fluentui/react-utilities": "^9.12.0",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-context-selector": "^9.1.33",
+    "@fluentui/react-utilities": "^9.13.2",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0",
     "scheduler": "^0.19.0 || ^0.20.0"
   },
   "beachball": {
