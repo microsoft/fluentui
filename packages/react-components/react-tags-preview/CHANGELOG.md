@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-tags-preview
 
-This log was last generated on Tue, 05 Sep 2023 15:39:04 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.8)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.7..@fluentui/react-tags-preview_v0.2.8)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.36 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-avatar to v9.5.28 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.6 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-tabster to v9.12.8 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+- Bump @fluentui/react-utilities to v9.13.3 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
 
 ## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.7)
 

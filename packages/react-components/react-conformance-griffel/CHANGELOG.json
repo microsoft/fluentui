@@ -2,6 +2,29 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8582884f9000d15185fe7b074c6fde00d84e961c",
+            "comment": "chore: internal type update with @fluentui/react-conformance version bump"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.18.0",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Sep 2023 13:29:19 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.3",
       "version": "9.0.3",

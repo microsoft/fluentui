@@ -13,17 +13,20 @@ export const renderToaster_unstable = (state: ToasterState) => {
   const { announceRef, renderAriaLive } = state;
   assertSlots<ToasterSlotsInternal>(state);
 
-  const hasToasts = !!state.bottomStart || !!state.bottomEnd || !!state.topStart || !!state.topEnd;
+  const hasToasts =
+    !!state.bottomStart || !!state.bottomEnd || !!state.topStart || !!state.topEnd || !!state.top || !!state.bottom;
 
   return (
     <>
       {renderAriaLive ? <AriaLive announceRef={announceRef} /> : null}
       {hasToasts ? (
         <Portal mountNode={state.mountNode}>
+          {state.bottom ? <state.bottom /> : null}
           {state.bottomStart ? <state.bottomStart /> : null}
           {state.bottomEnd ? <state.bottomEnd /> : null}
           {state.topStart ? <state.topStart /> : null}
           {state.topEnd ? <state.topEnd /> : null}
+          {state.top ? <state.top /> : null}
         </Portal>
       ) : null}
     </>

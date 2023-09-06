@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-context-selector
 
-This log was last generated on Tue, 05 Sep 2023 15:39:04 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.1.34)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-context-selector_v9.1.33..@fluentui/react-context-selector_v9.1.34)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.13.3 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
 
 ## [9.1.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-context-selector_v9.1.33)
 
