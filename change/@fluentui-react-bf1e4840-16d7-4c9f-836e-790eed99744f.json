@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "remove UPP that's no longer being experimented",
+  "packageName": "@fluentui/react",
+  "email": "litong@microsoft.com",
+  "dependentChangeType": "patch"
+}
