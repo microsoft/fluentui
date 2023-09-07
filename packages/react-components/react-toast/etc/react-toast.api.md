@@ -117,7 +117,7 @@ export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | To
 export type ToastPoliteness = 'assertive' | 'polite';
 
 // @public (undocumented)
-export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'top' | 'bottom';
 
 // @public
 export type ToastProps = ComponentProps<ToastSlots> & {

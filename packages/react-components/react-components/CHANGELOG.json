@@ -2,6 +2,43 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 06 Sep 2023 13:31:30 GMT",
+      "tag": "@fluentui/react-components_v9.30.4",
+      "version": "9.30.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "183be238902878610b9a0aaacd1eae98480e7387",
+            "comment": "fix: styling for BreadcrumbItem"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "42ed56cff2ef6c21fb2d5805d77c370dc3036ebe",
+            "comment": "Revert fix: `useOnClickOutside` should invoke callback on clicking scrollbar"
+          }
+        ],
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "8582884f9000d15185fe7b074c6fde00d84e961c",
+            "comment": "feat: add option `disableTypeTests` to disable tests that require TypeScript information"
+          }
+        ],
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "8582884f9000d15185fe7b074c6fde00d84e961c",
+            "comment": "chore: internal type update with @fluentui/react-conformance version bump"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Sep 2023 15:39:03 GMT",
       "tag": "@fluentui/react-components_v9.30.3",
       "version": "9.30.3",

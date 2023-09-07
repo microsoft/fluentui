@@ -16,6 +16,8 @@ export type ToasterSlotsInternal = ToasterSlots & {
   bottomStart?: Slot<'div'>;
   topEnd?: Slot<'div'>;
   topStart?: Slot<'div'>;
+  top?: Slot<'div'>;
+  bottom?: Slot<'div'>;
 };
 
 /**
