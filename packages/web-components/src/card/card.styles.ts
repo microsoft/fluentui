@@ -15,6 +15,7 @@ import {
   colorNeutralStroke1Hover,
   colorNeutralStroke1Pressed,
   colorNeutralStroke1Selected,
+  colorStrokeFocus2,
   colorSubtleBackground,
   colorSubtleBackgroundHover,
   colorSubtleBackgroundPressed,
@@ -27,6 +28,7 @@ import {
   colorTransparentStrokeDisabled,
   colorTransparentStrokeInteractive,
   fontFamilyBase,
+  shadow2,
   shadow4,
   shadow8,
   spacingHorizontalL,
@@ -35,6 +37,7 @@ import {
   spacingVerticalL,
   spacingVerticalM,
   spacingVerticalS,
+  strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 
@@ -42,7 +45,7 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('flex')}
+  ${display('inline-block')}
 
   :host {
     font-family: ${fontFamilyBase};
@@ -58,50 +61,55 @@ export const styles = css`
     box-sizing: border-box;
   }
 
-  .root {
+  :host:focus-visible {
+    border-color: ${colorTransparentStroke};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+  }
+
+  .control {
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: 5px;
+  }
+  .content {
     display: grid;
     row-gap: ${spacingVerticalM};
     column-gap: ${spacingHorizontalM};
     padding: ${spacingVerticalM} ${spacingHorizontalM};
   }
 
-  .control {
-    position: absolute;
-    top: 5px;
-    right: 5px;
-  }
-
-  :host([disabled]) {
-    background: ${colorNeutralBackgroundDisabled};
-    border: ${strokeWidthThin} solid ${colorTransparentStrokeDisabled};
-    shadow: ${shadow4};
-    cursor: not-allowed;
-    pointer-events: none;
-  }
-  :host([selected]) {
-    background: ${colorNeutralBackground1Selected};
-    border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
-    cursor: pointer;
-  }
-
-  :host([size='small']) .root {
+  :host([size='small']) .content {
     row-gap: ${spacingVerticalS};
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalS} ${spacingHorizontalS};
   }
-  :host([size='large']) .root {
+  :host([size='large']) .content {
     row-gap: ${spacingVerticalL};
     column-gap: ${spacingHorizontalL};
     padding: ${spacingVerticalL} ${spacingHorizontalL};
   }
 
-  :host([orientation='horizontal']) .root {
+  :host([orientation='horizontal']) .content {
     grid-template-rows: unset;
     row-gap: unset;
-    grid-template-columns: min-content auto;
+    grid-template-columns: auto 1fr;
     align-items: center;
-    padding: 0 var(--card-size) 0 0;
-    width: 100%;
+  }
+
+  :host([appearance='filled-alternative']) {
+    background: ${colorNeutralBackground2};
+  }
+  :host([appearance='outline']) {
+    background: ${colorTransparentBackground};
+    border-color: ${colorNeutralStroke1};
+    box-shadow: none;
+  }
+  :host([appearance='subtle']) {
+    background: ${colorSubtleBackground};
+    border-color: ${colorTransparentStroke};
+    box-shadow: none;
   }
 
   :host([interactive]) {
@@ -109,65 +117,66 @@ export const styles = css`
   }
   :host([interactive]:active) {
     background: ${colorNeutralBackground1Pressed};
-    border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
+    border-color: ${colorTransparentStrokeInteractive};
   }
   :host([interactive]:hover) {
     background: ${colorNeutralBackground1Hover};
-    border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
+    border-color: ${colorTransparentStrokeInteractive};
     box-shadow: ${shadow8};
-  }
-
-  :host([appearance='filled-alternative']) {
-    background: ${colorNeutralBackground2};
-  }
-
-  :host([appearance='filled-alternative'][selected]) {
-    background: ${colorNeutralBackground2Selected};
-    border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
   }
   :host([interactive][appearance='filled-alternative']:hover) {
     background: ${colorNeutralBackground2Hover};
-    border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
   }
   :host([interactive][appearance='filled-alternative']:active) {
     background: ${colorNeutralBackground2Pressed};
-    border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
-  }
-
-  :host([appearance='outline']) {
-    background: ${colorTransparentBackground};
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1};
-  }
-
-  :host([appearance='outline'][selected]) {
-    background: ${colorTransparentBackgroundSelected};
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1Selected};
   }
   :host([interactive][appearance='outline']:hover) {
     background: ${colorTransparentBackgroundHover};
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1Hover};
+    border-color: ${colorNeutralStroke1Hover};
+    box-shadow: none;
   }
   :host([interactive][appearance='outline']:active) {
     background: ${colorTransparentBackgroundPressed};
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1Pressed};
-  }
-
-  :host([appearance='subtle']) {
-    background: ${colorSubtleBackground};
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
-    box-shadow: none;
-  }
-
-  :host([appearance='subtle'][selected]) {
-    background: ${colorSubtleBackgroundSelected};
-    border: ${strokeWidthThin} solid ${colorNeutralStroke1Selected};
+    border-color: ${colorNeutralStroke1Pressed};
   }
   :host([interactive][appearance='subtle']:hover) {
     background: ${colorSubtleBackgroundHover};
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    border-color: ${colorTransparentStrokeInteractive};
+    box-shadow: none;
   }
   :host([interactive][appearance='subtle']:active) {
     background: ${colorSubtleBackgroundPressed};
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+  }
+
+  :host([selected]) {
+    background: ${colorNeutralBackground1Selected};
+    border-color: ${colorTransparentStrokeInteractive};
+    cursor: pointer;
+  }
+  :host([appearance='subtle'][selected]) {
+    background: ${colorSubtleBackgroundSelected};
+    border-color: ${colorNeutralStroke1Selected};
+  }
+  :host([appearance='outline'][selected]) {
+    background: ${colorTransparentBackgroundSelected};
+    border-color: ${colorNeutralStroke1Selected};
+  }
+  :host([appearance='filled-alternative'][selected]) {
+    background: ${colorNeutralBackground2Selected};
+  }
+
+  :host([disabled]) {
+    background: ${colorNeutralBackgroundDisabled};
+    border-color: ${colorTransparentStrokeDisabled};
+    cursor: not-allowed;
+    pointer-events: none;
+    box-shadow: ${shadow2};
+  }
+  :host([disabled][appearance='subtle']),
+  :host([disabled][appearance='outline']) {
+    box-shadow: none;
+  }
+  :host([disabled][appearance='outline']) {
+    background: ${colorTransparentBackground};
   }
 `;

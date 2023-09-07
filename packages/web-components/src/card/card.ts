@@ -38,28 +38,19 @@ export class Card extends FASTCard {
   public internalCheckbox?: FluentCheckbox;
 
   /**
-   * @property labelledby;
-   * @default undefined
+   * See {@link https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA13} for more information
+   * @public
    * @remarks
-   * This property is used to specify the ID of another element in the same document that labels the card.
+   * HTML Attribute: aria-labelledby
    */
   @attr
-  public labelledby?: string;
+  public ariaLabelledby?: string;
 
   /**
-   * @property label;
-   * @default undefined
-   * @remarks
-   * A string that corresponds to the ID of another element in the DOM that serves as the label for the internal checkbox element.
-   */
-  @attr
-  public label?: string;
-
-  /**
-   * @property orientation;
+   * @property appearance;
    * @default filled
    * @remarks
-   * Determines the orientation of the card
+   * Determines the appearance of the card
    */
   @attr
   public appearance?: CardAppearance;
@@ -141,8 +132,6 @@ export class Card extends FASTCard {
 
   /**
    * Toggles the selection state of the card.
-   * If a boolean value is provided, it sets the selection state to that value.
-   * Otherwise, it inverts the current selection state.
    *
    * @param checked - Optional boolean value to set the selection state.
    */
@@ -157,7 +146,6 @@ export class Card extends FASTCard {
 
   /**
    * Updates the state of the internal checkbox to match the selection state of the card.
-   * If the internal checkbox is not present, it sets the 'checked' attribute of the first element in the floating action slot.
    */
   public updateInternalCheckboxState(): void {
     if (this.internalCheckbox && !this.floatingActionSlot.length && this.selectable) {
@@ -196,7 +184,7 @@ export class Card extends FASTCard {
   }
 
   /**
-   * Handle the checked state of the Card when interactive
+   * Handle the checked state of the Card when interactive and selectable
    *
    * @param e - the mouse event
    * @internal
@@ -208,7 +196,7 @@ export class Card extends FASTCard {
   }
 
   /**
-   * Handle keyboard interaction for the select.
+   * Handle keyboard interaction for the card.
    *
    * @param e - the keyboard event
    * @internal

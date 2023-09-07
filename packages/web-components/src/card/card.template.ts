@@ -18,27 +18,21 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
       tabindex="${x => (!x.disabled && x.interactive ? 0 : null)}"
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
+      aria-labelledby="${x => x.ariaLabelledby}"
+      aria-describedby="${x => x.ariaLabelledby}"
+      aria-label="${x => x.ariaLabel}"
     >
       <div class="control" part="control">
         <slot name="floating-action" part="floating-action" ${slotted('floatingActionSlot')}></slot>
         ${when(
           x => x.selectable && !x.floatingActionSlot.length,
           html<T>`
-            <fluent-checkbox
-              ${ref('internalCheckbox')}
-              aria-labelledby="${x => x.labelledby}"
-              aria-label="${x => x.label}"
-              ?checked="${x => x.selected}"
-              hidden
-            ></fluent-checkbox>
+            <fluent-checkbox ${ref('internalCheckbox')} ?checked="${x => x.selected}" hidden></fluent-checkbox>
           `,
         )}
       </div>
-      <div class="root">
-        <slot name="card-preview" part="card-preview"></slot>
-        <slot name="header"></slot>
+      <div class="content">
         <slot></slot>
-        <slot name="footer"></slot>
       </div>
     </template>
   `;
