@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Remove UnifiedPeoplePicker from react-experiments",
+  "packageName": "@fluentui/react-experiments",
+  "email": "litong@microsoft.com",
+  "dependentChangeType": "patch"
+}
