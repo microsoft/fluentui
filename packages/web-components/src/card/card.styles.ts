@@ -42,7 +42,7 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('grid')}
+  ${display('flex')}
 
   :host {
     font-family: ${fontFamilyBase};
@@ -55,39 +55,53 @@ export const styles = css`
     margin: auto;
     overflow: hidden;
     box-shadow: ${shadow4};
-    row-gap: ${spacingVerticalM};
-    column-gap: ${spacingHorizontalM};
-    padding: ${spacingVerticalM} ${spacingHorizontalM};
     box-sizing: border-box;
   }
 
-  :host([aria-disabled='true']) {
+  .root {
+    display: grid;
+    row-gap: ${spacingVerticalM};
+    column-gap: ${spacingHorizontalM};
+    padding: ${spacingVerticalM} ${spacingHorizontalM};
+  }
+
+  .control {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  :host([disabled]) {
     background: ${colorNeutralBackgroundDisabled};
     border: ${strokeWidthThin} solid ${colorTransparentStrokeDisabled};
     shadow: ${shadow4};
     cursor: not-allowed;
     pointer-events: none;
   }
-  :host([aria-selected='true']) {
+  :host([selected]) {
     background: ${colorNeutralBackground1Selected};
     border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
     cursor: pointer;
   }
 
-  :host([size='small']) {
+  :host([size='small']) .root {
     row-gap: ${spacingVerticalS};
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalS} ${spacingHorizontalS};
   }
-  :host([size='large']) {
+  :host([size='large']) .root {
     row-gap: ${spacingVerticalL};
     column-gap: ${spacingHorizontalL};
     padding: ${spacingVerticalL} ${spacingHorizontalL};
   }
 
-  :host([orientation='horizontal']) {
+  :host([orientation='horizontal']) .root {
     grid-template-rows: unset;
-    grid-template-columns: min-content 1fr;
+    row-gap: unset;
+    grid-template-columns: min-content auto;
+    align-items: center;
+    padding: 0 var(--card-size) 0 0;
+    width: 100%;
   }
 
   :host([interactive]) {
@@ -97,7 +111,7 @@ export const styles = css`
     background: ${colorNeutralBackground1Pressed};
     border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
   }
-  :host([interactive]:hover:not([appearance='subtle'])) {
+  :host([interactive]:hover) {
     background: ${colorNeutralBackground1Hover};
     border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
     box-shadow: ${shadow8};
@@ -107,7 +121,7 @@ export const styles = css`
     background: ${colorNeutralBackground2};
   }
 
-  :host([appearance='filled-alternative'][aria-selected='true']) {
+  :host([appearance='filled-alternative'][selected]) {
     background: ${colorNeutralBackground2Selected};
     border: ${strokeWidthThin} solid ${colorTransparentStrokeInteractive};
   }
@@ -125,7 +139,7 @@ export const styles = css`
     border: ${strokeWidthThin} solid ${colorNeutralStroke1};
   }
 
-  :host([appearance='outline'][aria-selected='true']) {
+  :host([appearance='outline'][selected]) {
     background: ${colorTransparentBackgroundSelected};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1Selected};
   }
@@ -144,7 +158,7 @@ export const styles = css`
     box-shadow: none;
   }
 
-  :host([appearance='subtle'][aria-selected='true']) {
+  :host([appearance='subtle'][selected]) {
     background: ${colorSubtleBackgroundSelected};
     border: ${strokeWidthThin} solid ${colorNeutralStroke1Selected};
   }
@@ -155,10 +169,5 @@ export const styles = css`
   :host([interactive][appearance='subtle']:active) {
     background: ${colorSubtleBackgroundPressed};
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
-  }
-  .floating-action {
-    position: absolute;
-    top: 0;
-    right: 0;
   }
 `;

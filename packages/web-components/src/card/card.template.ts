@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, when } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref, slotted, when } from '@microsoft/fast-element';
 import type { Card } from './card.js';
 
 /**
@@ -19,9 +19,27 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
       @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
       @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
     >
-      <slot name="header"></slot>
-      <slot></slot>
-      <slot name="footer"></slot>
+      <div class="control" part="control">
+        <slot name="floating-action" part="floating-action" ${slotted('floatingActionSlot')}></slot>
+        ${when(
+          x => x.selectable && !x.floatingActionSlot.length,
+          html<T>`
+            <fluent-checkbox
+              ${ref('internalCheckbox')}
+              aria-labelledby="${x => x.labelledby}"
+              aria-label="${x => x.label}"
+              ?checked="${x => x.selected}"
+              hidden
+            ></fluent-checkbox>
+          `,
+        )}
+      </div>
+      <div class="root">
+        <slot name="card-preview" part="card-preview"></slot>
+        <slot name="header"></slot>
+        <slot></slot>
+        <slot name="footer"></slot>
+      </div>
     </template>
   `;
 }

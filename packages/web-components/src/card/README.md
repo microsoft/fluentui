@@ -1,8 +1,6 @@
 # Card
 
-A `Card` is a container that holds information and actions related to a single concept or object, like a document or a contact.
-
-A `Card` can give information prominence and create predictable patterns. While they're very flexible, it's important to use them consistently for particular use cases across experiences.
+A flexible content container that extends the functionality of FASTCard. It offers additional features such as selectable states and orientation settings. It can be customized further with various appearances and sizes.
 
 ## **Design Spec**
 
@@ -38,32 +36,36 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 
 ### **Events**
 
-| Name                | Type | Description                                                       | Inherited From |
-| ------------------- | ---- | ----------------------------------------------------------------- | -------------- |
-| `onSelectionChange` |      | Emits a custom event when the selected state changes              |                |
-| `onClick`           |      | Emits an onclick event when the card is `interactive` and clicked |                |
+| Name                | Type | Description                                          | Inherited From |
+| ------------------- | ---- | ---------------------------------------------------- | -------------- |
+| `onSelectionChange` |      | Emits a custom event when the selected state changes |                |
 
 <br />
 
 ### **Attributes**
 
-| Name              | Type                                                                     | Default    | Description                                                                      |
-| ----------------- | ------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------- |
-| `orientation`     | `horizontal, veritcal`                                                   | `vertical` | Orientation of the card                                                          |
-| `size`            | `small, medium, large`                                                   | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
-| `scale`           | `fixed, auto-width, auto-height, auto, fluid-width, fluid-height, fluid` | `auto`     | Manages how the card handles it's scaling depending on the content               |
-| `appearance`      | `filled, filled-alternative, outline, subtle`                            | `filled`   | Sets the appearance of the card                                                  |
-| `selected`        | `boolean`                                                                | `false`    | Set to `true` if card is selected                                                |
-| `defaultSelected` | `boolean`                                                                | `false`    | Set to `true` if card is selected                                                |
-| `disabled`        | `boolean`                                                                | `false`    | Determines whether card is disabled                                              |
-| `selectable`      | `boolean`                                                                | `false`    | Determines whether card is selectable                                            |
-| `interactive`     | `boolean`                                                                | `false`    | Determines whether card is interactive                                           |
+| Name          | Type                                                                     | Default    | Description                                                                      |
+| ------------- | ------------------------------------------------------------------------ | ---------- | -------------------------------------------------------------------------------- |
+| `orientation` | `horizontal, veritcal`                                                   | `vertical` | Orientation of the card                                                          |
+| `size`        | `small, medium, large`                                                   | `medium`   | Define the minimum size of the card. Smaller sizes only apply to horizontal card |
+| `scale`       | `fixed, auto-width, auto-height, auto, fluid-width, fluid-height, fluid` | `auto`     | Manages how the card handles it's scaling depending on the content               |
+| `appearance`  | `filled, filled-alternative, outline, subtle`                            | `filled`   | Sets the appearance of the card                                                  |
+| `selected`    | `boolean`                                                                | `false`    | Set to `true` if card is selected                                                |
+| `disabled`    | `boolean`                                                                | `false`    | Determines whether card is disabled                                              |
+| `selectable`  | `boolean`                                                                | `false`    | Determines whether card is selectable                                            |
+| `interactive` | `boolean`                                                                | `false`    | Determines whether card is interactive                                           |
 
 ### **Methods**
 
-| Name                | Description                                     |
-| ------------------- | ----------------------------------------------- |
-| `onSelectionChange` | Callback called when the card selection changes |
+| Name                                            | Description                                                                                                                                                                                                     |
+| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `onSelectionChange`                             | Callback called when the card selection changes                                                                                                                                                                 |
+| `sizeChanged(prev: string, next: string)`       | Triggered when the size of the card changes, updating the computed stylesheet accordingly.                                                                                                                      |
+| `selectedChanged(prev: boolean, next: boolean)` | Emits an event when the selected state of the card changes.                                                                                                                                                     |
+| `toggleCardSelection(checked?: boolean)`        | Toggles the selection state of the card. If a boolean value is provided, it sets the selection state to that value. Otherwise, it inverts the current selection state.                                          |
+| `updateInternalCheckboxState()`                 | Updates the state of the internal checkbox to match the selection state of the card. If the internal checkbox is not present, it sets the 'checked' attribute of the first element in the floating action slot. |
+| `clickHandler(e: MouseEvent)`                   | Handles mouse interaction with the card                                                                                                                                                                         |
+| `keydownHandler(e: KeyboardEvent)`              | Handles keyboard interaction with the card                                                                                                                                                                      |
 
 ### **Slots**
 
@@ -73,6 +75,14 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 | `header`          | the header slot                                                                                                                                                             |
 |                   | the default slot                                                                                                                                                            |
 | `footer`          | the footer slot                                                                                                                                                             |
+| `start`           | the slot for content at the start of the card                                                                                                                               |
+| `end`             | the slot for content at the end of the card                                                                                                                                 |
+
+### **CSS Variables**
+
+| Name          | Description                                                                         |
+| ------------- | ----------------------------------------------------------------------------------- |
+| `--card-size` | The size of the card is used to set vertical and horizontal spacing within the card |
 
 # Proposal for Interactive and Selectable Card Implementation
 

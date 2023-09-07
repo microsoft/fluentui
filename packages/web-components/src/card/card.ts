@@ -1,13 +1,8 @@
 import { attr, css, ElementStyles, observable } from '@microsoft/fast-element';
-import { FASTCard, StartEndOptions } from '@microsoft/fast-foundation';
+import { FASTCard } from '@microsoft/fast-foundation';
 import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
+import { Checkbox as FluentCheckbox } from '../checkbox/index.js';
 import { CardAppearance, CardOrientation, CardSize } from './card.options.js';
-
-/**
- * Card configuration options
- * @public
- */
-export type CardOptions = StartEndOptions<Card>;
 
 /**
  * @class Card component
@@ -18,7 +13,6 @@ export type CardOptions = StartEndOptions<Card>;
 export class Card extends FASTCard {
   public connectedCallback(): void {
     super.connectedCallback();
-    this.setInteractive();
     this.updateComputedStylesheet();
   }
 
@@ -30,6 +24,36 @@ export class Card extends FASTCard {
    * Stores the computed stylesheet for the card
    */
   private computedStylesheet?: ElementStyles;
+
+  /**
+   * A reference to the floating action slot
+   */
+  @observable
+  public floatingActionSlot: HTMLElement[] = [];
+
+  /**
+   * A reference to the internal checkbox
+   */
+  @observable
+  public internalCheckbox?: FluentCheckbox;
+
+  /**
+   * @property labelledby;
+   * @default undefined
+   * @remarks
+   * This property is used to specify the ID of another element in the same document that labels the card.
+   */
+  @attr
+  public labelledby?: string;
+
+  /**
+   * @property label;
+   * @default undefined
+   * @remarks
+   * A string that corresponds to the ID of another element in the DOM that serves as the label for the internal checkbox element.
+   */
+  @attr
+  public label?: string;
 
   /**
    * @property orientation;
@@ -102,7 +126,7 @@ export class Card extends FASTCard {
    * @remarks
    * Updates the computed stylesheet when the size of the card changes
    */
-  public sizeChanged(prev: boolean | undefined, next: boolean): void {
+  public sizeChanged(prev: string, next: string): void {
     this.updateComputedStylesheet();
   }
 
@@ -111,32 +135,33 @@ export class Card extends FASTCard {
    * @remarks
    * Emits an event when the selected state of the card changes
    */
-  public selectedChanged = (): void => {
+  public selectedChanged = (prev: boolean, next: boolean): void => {
     this.$emit('onSelectionChanged', this.selected);
   };
 
   /**
-   * @method interactiveChanged
-   * @remarks
-   * Updates the focusable state of the card when the interactive state changes
+   * Toggles the selection state of the card.
+   * If a boolean value is provided, it sets the selection state to that value.
+   * Otherwise, it inverts the current selection state.
+   *
+   * @param checked - Optional boolean value to set the selection state.
    */
-  public interactiveChanged = (): void => {
-    this.setInteractive();
-  };
+  public toggleCardSelection(checked?: boolean): void {
+    if (checked) {
+      this.selected = checked;
+    } else {
+      this.selected = !this.selected;
+    }
+    this.updateInternalCheckboxState();
+  }
 
   /**
-   * @method setFocusable
-   * @remarks
-   * Sets the tabindex attribute based on the interactive state of the card
-   * @internal
+   * Updates the state of the internal checkbox to match the selection state of the card.
+   * If the internal checkbox is not present, it sets the 'checked' attribute of the first element in the floating action slot.
    */
-  public setInteractive(): void {
-    if (this.interactive) {
-      this.setAttribute('tabindex', '0');
-      this.setAttribute('aria-selected', this.selected ? 'true' : 'false');
-    } else {
-      this.removeAttribute('tabindex');
-      this.removeAttribute('aria-selected');
+  public updateInternalCheckboxState(): void {
+    if (this.internalCheckbox && !this.floatingActionSlot.length && this.selectable) {
+      this.internalCheckbox.checked = this.selected;
     }
   }
 
@@ -146,37 +171,27 @@ export class Card extends FASTCard {
    * @internal
    */
   protected updateComputedStylesheet(): void {
-    // Determine the pixel value based on the size attribute
     let sizeValue;
-    let borderRadiusValue;
     switch (this.size) {
       case CardSize.small:
         sizeValue = '8px';
-        borderRadiusValue = '2px';
         break;
       case CardSize.medium:
         sizeValue = '12px';
-        borderRadiusValue = '4px';
         break;
       case CardSize.large:
         sizeValue = '16px';
-        borderRadiusValue = '8px';
         break;
       default:
         sizeValue = '12px';
-        borderRadiusValue = '4px';
         break;
     }
 
-    this.$fastController.removeStyles(this.computedStylesheet);
-
     this.computedStylesheet = css`
       :host {
-        --card--size: ${sizeValue};
-        --card--border-radius: ${borderRadiusValue};
+        --card-size: ${sizeValue};
       }
     `;
-
     this.$fastController.addStyles(this.computedStylesheet);
   }
 
@@ -187,8 +202,8 @@ export class Card extends FASTCard {
    * @internal
    */
   public clickHandler(e: MouseEvent): boolean | void {
-    if (!this.disabled && this.interactive) {
-      this.selected = !this.selected;
+    if (!this.disabled && this.interactive && this.selectable) {
+      this.toggleCardSelection();
     }
   }
 
@@ -205,8 +220,8 @@ export class Card extends FASTCard {
       case keyEnter:
       case keySpace: {
         e.preventDefault();
-        if (!this.disabled && this.interactive) {
-          this.selected = !this.selected;
+        if (!this.disabled && this.interactive && this.selectable) {
+          this.toggleCardSelection();
         }
         break;
       }
