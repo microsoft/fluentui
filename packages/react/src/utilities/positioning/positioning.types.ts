@@ -50,6 +50,14 @@ export interface IPositionProps {
   directionalHintFixed?: boolean;
 
   /**
+   * If true the position will only change to a side on the same axis (top <-> bottom, left <-> right)
+   * as the `directionalHint` when attempting to fit the callout within bounds
+   * (i.e. if `directionalHint=DirectionalHint.topLeftEdge`, the position will be top or bottom)
+   * If `directionalHintFixed` is provided, this prop will be ignored
+   */
+  edgeAxisFixed?: boolean;
+
+  /**
    * If true the positioning logic will prefer flipping edges over nudging the rectangle to fit within bounds,
    * thus making sure the element align perfectly with target.
    */

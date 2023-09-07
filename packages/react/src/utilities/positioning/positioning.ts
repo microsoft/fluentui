@@ -222,18 +222,29 @@ function _flipToFit(
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
   gap: number = 0,
+  _edgeAxisFixed?: boolean,
 ): IElementPosition {
-  const directions: RectangleEdge[] = [
-    RectangleEdge.left,
-    RectangleEdge.right,
-    RectangleEdge.bottom,
-    RectangleEdge.top,
-  ];
+  const directions: RectangleEdge[] = [RectangleEdge.bottom, RectangleEdge.top];
   // In RTL page, RectangleEdge.right has a higher priority than RectangleEdge.left, so the order should be updated.
   if (getRTL()) {
     directions[0] *= -1;
     directions[1] *= -1;
   }
+
+  // If edgeAxisFixed, remove edges on axes other than positionData edge axis from directions
+  // (top and bottom are one axis, left and right are the other axis)
+  /*if (edgeAxisFixed) {
+    switch (positionData.targetEdge) {
+      case RectangleEdge.bottom:
+      case RectangleEdge.top:
+        directions.splice(0, 2);
+        break;
+      case RectangleEdge.left:
+      case RectangleEdge.right:
+        directions.splice(2, 2)
+    }
+  }*/
+
   let currentEstimate = rect;
   let currentEdge = positionData.targetEdge;
   let currentAlignment = positionData.alignmentEdge;
@@ -245,7 +256,8 @@ function _flipToFit(
 
   // Keep switching sides until one is found with enough space.
   // If all sides don't fit then return the unmodified element.
-  for (let i = 0; i < 4; i++) {
+  const directionCount = directions.length;
+  for (let i = 0; i < directionCount; i++) {
     if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
       // update least-bad edges
       const currentOOBDegree = _getOutOfBoundsDegree(currentEstimate, bounding);
@@ -327,6 +339,7 @@ function _adjustFitWithinBounds(
   gap: number = 0,
   directionalHintFixed?: boolean,
   coverTarget?: boolean,
+  edgeAxisFixed?: boolean,
 ): IElementPosition {
   const { alignmentEdge, alignTargetEdge } = positionData;
   let elementEstimate: IElementPosition = {
@@ -339,9 +352,9 @@ function _adjustFitWithinBounds(
     elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
   }
   const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
-  // if directionalHintFixed is specified, we need to force the target edge to not change
+  // if directionalHintFixed or edgeAxisFixed is specified, we need to force the target edge to not change
   // we need *-1 because targetEdge refers to the target's edge; the callout edge is the opposite
-  const fixedEdge = directionalHintFixed ? -elementEstimate.targetEdge : undefined;
+  const fixedEdge = edgeAxisFixed || directionalHintFixed ? -elementEstimate.targetEdge : undefined;
 
   if (outOfBounds.length > 0) {
     if (alignTargetEdge) {
@@ -632,6 +645,7 @@ function _positionElementWithinBounds(
   gap: number,
   directionalHintFixed?: boolean,
   coverTarget?: boolean,
+  edgeAxisFixed?: boolean,
 ): IElementPosition {
   const estimatedElementPosition: Rectangle = _estimatePosition(
     elementToPosition,
@@ -655,6 +669,7 @@ function _positionElementWithinBounds(
       gap,
       directionalHintFixed,
       coverTarget,
+      edgeAxisFixed,
     );
   }
 }
@@ -835,6 +850,7 @@ function _positionElementRelative(
     gap,
     props.directionalHintFixed,
     props.coverTarget,
+    props.edgeAxisFixed,
   );
   return { ...positionedElement, targetRectangle: targetRect };
 }
