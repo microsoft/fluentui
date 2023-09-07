@@ -1,6 +1,7 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { DrawerOverlayProps } from '../DrawerOverlay/DrawerOverlay.types';
-import { DrawerInlineProps } from '../DrawerInline/DrawerInline.types';
+
+import type { DrawerOverlayProps } from '../DrawerOverlay';
+import type { DrawerInlineProps } from '../DrawerInline';
 
 export type DrawerSlots = {
   /**

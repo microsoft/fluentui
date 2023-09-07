@@ -190,6 +190,31 @@ export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
 // @public (undocumented)
 export const treeItemLevelToken: "--fluent-TreeItem--level";
 
+// @public (undocumented)
+export type TreeItemOpenChangeData = {
+    open: boolean;
+    value: TreeItemValue;
+    target: HTMLElement;
+} & ({
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'ExpandIconClick';
+} | {
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'Click';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof Enter;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowRight;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowLeft;
+});
+
+// @public (undocumented)
+export type TreeItemOpenChangeEvent = TreeItemOpenChangeData['event'];
+
 // @public
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
 
@@ -217,6 +242,8 @@ export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlo
 export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
     itemType: TreeItemType;
     value?: TreeItemValue;
+    open?: boolean;
+    onOpenChange?: (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => void;
 };
 
 // @public (undocumented)

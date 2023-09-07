@@ -2,8 +2,8 @@ import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 
 import type { DrawerProps, DrawerState } from './Drawer.types';
-import { DrawerOverlay } from '../DrawerOverlay/DrawerOverlay';
-import { DrawerInline } from '../DrawerInline/DrawerInline';
+import { DrawerOverlay } from '../DrawerOverlay';
+import { DrawerInline } from '../DrawerInline';
 
 /**
  * Create the state required to render Drawer.

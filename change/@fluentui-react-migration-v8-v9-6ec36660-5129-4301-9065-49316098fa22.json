@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bumps react peer dependencies to v16.14.0",
-  "packageName": "@fluentui/react-migration-v8-v9",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

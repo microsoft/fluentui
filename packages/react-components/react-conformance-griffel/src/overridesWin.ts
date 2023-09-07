@@ -1,4 +1,4 @@
-import type { IsConformantOptions, ConformanceTest, TestOptions } from '@fluentui/react-conformance';
+import type { IsConformantOptions, BaseConformanceTest, TestOptions } from '@fluentui/react-conformance';
 import './matchers/index';
 
 export const OVERRIDES_WIN_TEST_NAME = 'make-styles-overrides-win';
@@ -28,7 +28,7 @@ async function getReactComponent(
  * A conformance test for mergeClasses() that ensures that a classname from props is passed as a last param,
  * i.e. ensures that user's overrides have higher priority.
  */
-export const overridesWin: ConformanceTest = (componentInfo, testInfo) => {
+export const overridesWin: BaseConformanceTest = testInfo => {
   const testOptions = testInfo.testOptions as
     | (TestOptions & { [OVERRIDES_WIN_TEST_NAME]?: OverridesWinTestOptions })
     | undefined;
