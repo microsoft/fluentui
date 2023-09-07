@@ -1,5 +1,5 @@
 import { memoizeFunction } from '../../Utilities';
-import { mergeStyles } from '../../Styling';
+import { mergeStylesShadow } from '../../Styling';
 import type { IComboBoxStyles, IComboBoxOptionStyles } from './ComboBox.types';
 
 export interface IComboBoxClassNames {
@@ -33,6 +33,8 @@ export const getClassNames = memoizeFunction(
     allowFreeForm: boolean,
     hasErrorMessage: boolean,
   ): IComboBoxClassNames => {
+    const mergeStyles = mergeStylesShadow(styles.__shadowConfig__);
+
     return {
       container: mergeStyles('ms-ComboBox-container', className, styles.container),
       label: mergeStyles(styles.label, disabled && styles.labelDisabled),
@@ -66,6 +68,7 @@ export const getClassNames = memoizeFunction(
 
 export const getComboBoxOptionClassNames = memoizeFunction(
   (styles: Partial<IComboBoxOptionStyles>): IComboBoxOptionClassNames => {
+    const mergeStyles = mergeStylesShadow(styles.__shadowConfig__);
     return {
       optionText: mergeStyles('ms-ComboBox-optionText', styles.optionText),
       root: mergeStyles('ms-ComboBox-option', styles.root, {

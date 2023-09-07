@@ -1,8 +1,15 @@
 import { extractStyleParts } from './extractStyleParts';
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { IStyleOptions } from './IStyleOptions';
+import { ShadowConfig } from './shadowConfig';
 import { getStyleOptions } from './StyleOptionsState';
 import { styleToClassName } from './styleToClassName';
+
+// export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
+// export function mergeStyles(
+//   shadowConfig: ShadowConfig,
+//   ...args: (IStyle | IStyleBaseArray | false | null | undefined)[]
+// ): string;
 
 /**
  * Concatenation helper, which can merge class names together. Skips over falsey values.
@@ -12,6 +19,13 @@ import { styleToClassName } from './styleToClassName';
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string {
   return mergeCss(args, getStyleOptions());
 }
+
+export const mergeStylesShadow = (shadowConfig?: ShadowConfig) => {
+  const options = { ...getStyleOptions(), shadowConfig };
+  return (...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string => {
+    return mergeCss(args, options);
+  };
+};
 
 /**
  * Concatenation helper, which can merge class names together. Skips over falsey values.

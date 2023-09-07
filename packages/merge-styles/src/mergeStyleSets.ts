@@ -220,6 +220,8 @@ export function mergeCssSets(
       if (styleSetArea === 'subComponentStyles') {
         classNameSet.subComponentStyles = (concatenatedStyleSet as IConcatenatedStyleSet<any>).subComponentStyles || {};
         continue;
+      } else if (styleSetArea === '__shadowConfig__') {
+        continue;
       }
 
       const styles: IStyle = (concatenatedStyleSet as any)[styleSetArea];

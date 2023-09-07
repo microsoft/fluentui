@@ -20,7 +20,7 @@ export type {
   IRawStyleBase,
 } from './IRawStyleBase';
 
-export { mergeStyles, mergeCss } from './mergeStyles';
+export { mergeStyles, mergeStylesShadow, mergeCss } from './mergeStyles';
 
 export { mergeStyleSets, mergeCssSets } from './mergeStyleSets';
 

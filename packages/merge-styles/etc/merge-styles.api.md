@@ -80,9 +80,6 @@ export const InjectionMode: {
     none: 0;
     insertNode: 1;
     appendChild: 2;
-    constructableStylesheet: 3;
-    insertNodeAndConstructableStylesheet: 4;
-    appedChildAndConstructableStylesheet: 5;
 };
 
 // @public (undocumented)
@@ -413,7 +410,7 @@ export interface ISerializedStylesheet {
     // (undocumented)
     classNameToArgs: Stylesheet['_classNameToArgs'];
     // (undocumented)
-    counter: Stylesheet['_counter'];
+    counter: Stylesheet['_styleCounter'];
     // (undocumented)
     keyToClassName: Stylesheet['_keyToClassName'];
     // (undocumented)
@@ -455,11 +452,17 @@ export interface IStyleSheetConfig {
         [key: string]: string;
     };
     cspSettings?: ICSPSettings;
+    // (undocumented)
+    currentStylesheetKey?: string;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
+    // (undocumented)
+    inShadow?: boolean;
     namespace?: string;
     // @deprecated
     onInsertRule?: (rule: string) => void;
+    // (undocumented)
+    ownerWindow?: Window;
     rtl?: boolean;
 }
 
@@ -517,6 +520,9 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet | undefined | false
 export function mergeStyleSets(shadowConfig: ShadowConfig, ...styleSets: Array<IStyleSet | undefined | false | null>): IProcessedStyleSet<any>;
 
 // @public (undocumented)
+export const mergeStylesShadow: (shadowConfig?: ShadowConfig) => (...args: (IStyle | IStyleBaseArray | false | null | undefined)[]) => string;
+
+// @public (undocumented)
 export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
@@ -537,16 +543,16 @@ export type ShadowConfig = {
 
 // @public
 export class Stylesheet {
-    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string);
+    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
+    // (undocumented)
+    addAdoptableStyleSheet(key: string, sheet: CSSStyleSheet): void;
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
-    get counter(): number;
+    forEachAdoptedStyleSheet(callback: (value: CSSStyleSheet, key: string, map: Map<string, CSSStyleSheet>) => void): void;
     // (undocumented)
-    static forEachAdoptedStyleSheet(callback: (value: Stylesheet, key: string, map: Map<string, Stylesheet>) => void, srcWindow?: Window): void;
-    // (undocumented)
-    getAdoptableStyleSheet(): CSSStyleSheet | undefined;
+    getAdoptableStyleSheet(key: string): CSSStyleSheet;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
@@ -556,21 +562,19 @@ export class Stylesheet {
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
     // (undocumented)
-    static offAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
+    offAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
     // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    static onAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
+    onAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
     onInsertRule(callback: Function): Function;
     onReset(callback: Function): Function;
     // (undocumented)
-    static projectStylesToWindow(targetWindow: Window, srcWindow?: Window): void;
+    projectStylesToWindow(targetWindow: Window): void;
     reset(): void;
     // (undocumented)
     resetKeys(): void;
     serialize(): string;
-    // (undocumented)
-    setAdoptableStyleSheet(sheet: CSSStyleSheet): void;
     setConfig(config?: IStyleSheetConfig): void;
 }
 
