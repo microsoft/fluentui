@@ -2,12 +2,12 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import type { Checkbox as FluentCheckbox } from '../checkbox/checkbox.js';
-import type { Card as FluentCard } from '../card/card.js';
 import '../card/define.js';
 import './define.js';
 import '../card-footer/define.js';
 import '../card-preview/define.js';
 import { CardAppearance, CardSize } from '../card/card.options.js';
+import type { Card as FluentCard } from './card.js';
 
 type CardStoryArgs = Args & FluentCard;
 type CardStoryMeta = Meta<CardStoryArgs>;
@@ -146,8 +146,10 @@ const cardTemplate = html<CardStoryArgs>`
         </fluent-image>
       </fluent-card-preview>
       <fluent-card-footer>
-        <fluent-button icon>${iconReply}Reply</fluent-button>
-        <fluent-button icon>${iconShare}Share</fluent-button>
+        <div>
+          <fluent-button icon>${iconReply}Reply</fluent-button>
+          <fluent-button icon>${iconShare}Share</fluent-button>
+        </div>
       </fluent-card-footer>
     </fluent-card>
   </div>
@@ -285,39 +287,6 @@ export const Orientation = renderComponent(html<CardStoryArgs>`
         </fluent-text>
       </fluent-card>
     </div>
-  </div>
-`);
-
-export const Footer = renderComponent(html<CardStoryArgs>`
-  <div class="container-center">
-    <fluent-card id="card-footer" class="card--width-360">
-      <fluent-card-header>
-        <fluent-image class="image-size-40" block slot="image" shape="square">
-          <img
-            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
-          />
-        </fluent-image>
-        <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-          <span>Card with Footer</span>
-        </fluent-text>
-        <fluent-text block size="200" font="base" weight="regular" block slot="description">
-          <span>Fluent Card</span>
-        </fluent-text>
-        <fluent-button slot="end" size="small" icon-only appearance="transparent" aria-label="actions example button">
-          ${iconEllipsis}
-        </fluent-button>
-      </fluent-card-header>
-      <fluent-text block size="300" font="base" weight="regular">
-        <span
-          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae urna maximus, faucibus augue at, lacinia
-          ipsum.</span
-        >
-      </fluent-text>
-      <fluent-card-footer>
-        <fluent-button icon>${iconReply}Reply</fluent-button>
-        <fluent-button icon>${iconShare}Share</fluent-button>
-      </fluent-card-footer>
-    </fluent-card>
   </div>
 `);
 

@@ -8,5 +8,7 @@ export const styles = css`
   ${display('flex')}
   :host {
     column-gap: var(--card-size, 12px);
+    display: grid;
+    grid-template-columns: 1fr auto;
   }
 `;

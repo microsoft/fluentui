@@ -9,6 +9,7 @@ export function cardFooterTemplate<T extends CardFooter>(): ElementViewTemplate<
   return html<T>`
     <template>
       <slot></slot>
+      <slot name="action"></slot>
     </template>
   `;
 }
