@@ -1,5 +1,5 @@
 {
-  "type": "minor",
+  "type": "major",
   "comment": "feat: removed breadcrumb-link component",
   "packageName": "@fluentui/react-breadcrumb-preview",
   "email": "vkozlova@microsoft.com",
