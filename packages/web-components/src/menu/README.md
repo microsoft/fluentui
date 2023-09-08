@@ -133,5 +133,5 @@ Creating a menu component that can be used to display a list of options or actio
 
 | Fluent UI React 9 | Fluent Web Components | Description of difference                                                                                                                                        |
 | ----------------- | --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `hasIcons`        |                       | React implementation requires user to pass the `hasIcons` to align menu items with icons. The web components implimentation aligns content by default.           |
-| `hasCheckmarks`   |                       | React implementation requires user to pass the `hasCheckmarks` to align menu items with checkmarks. The web components implimentation aligns content by default. |
+| `hasIcons`        |                       | React implementation requires user to pass the `hasIcons` to align menu items with icons. The web components implementation aligns content by default.           |
+| `hasCheckmarks`   |                       | React implementation requires user to pass the `hasCheckmarks` to align menu items with checkmarks. The web components implementation aligns content by default. |
