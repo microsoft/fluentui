@@ -247,6 +247,9 @@ function _flipToFit(
       case RectangleEdge.left:
       case RectangleEdge.right:
         directions.splice(2, 2);
+        break;
+      default:
+        break;
     }
   }
 
@@ -263,8 +266,7 @@ function _flipToFit(
   // If all sides don't fit then return the unmodified element.
   const directionCount = directions.length;
   for (let i = 0; i < directionCount; i++) {
-    if (i !== 2) {
-      //!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
+    if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
       // update least-bad edges
       const currentOOBDegree = _getOutOfBoundsDegree(currentEstimate, bounding);
       if (!oobDegree || currentOOBDegree < oobDegree) {
@@ -298,12 +300,7 @@ function _flipToFit(
   }
 
   // nothing fits, use least-bad option
-  currentEstimate = _estimatePosition(
-    rect,
-    target,
-    { targetEdge: bestEdge, alignmentEdge: bestAlignment, alignTargetEdge: true },
-    gap,
-  );
+  currentEstimate = _estimatePosition(rect, target, { targetEdge: bestEdge, alignmentEdge: bestAlignment }, gap);
   return {
     elementRectangle: currentEstimate,
     targetEdge: bestEdge,
