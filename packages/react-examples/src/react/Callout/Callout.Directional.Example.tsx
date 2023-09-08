@@ -81,6 +81,7 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
           onDismiss={toggleIsCalloutVisible}
           directionalHint={directionalHint}
           setInitialFocus
+          edgeAxisFixed
         >
           <Text block variant="xLarge" className={styles.title} id={labelId}>
             Callout title here
@@ -113,6 +114,51 @@ const DIRECTION_OPTIONS: IDropdownOption[] = [
   { key: DirectionalHint.rightTopEdge, text: 'Right top edge' },
   { key: DirectionalHint.rightCenter, text: 'Right center' },
   { key: DirectionalHint.rightBottomEdge, text: 'Right bottom edge' },
+
+  { key: 'a', text: 'Top left edge' },
+  { key: 'b', text: 'Top center' },
+  { key: 'c', text: 'Top right edge' },
+  { key: 'd', text: 'Top auto edge' },
+  { key: 'e', text: 'Bottom left edge' },
+  { key: 'f', text: 'Bottom center' },
+  { key: 'g', text: 'Bottom right edge' },
+  { key: 'h', text: 'Bottom auto edge' },
+  { key: 'i', text: 'Left top edge' },
+  { key: 'j', text: 'Left center' },
+  { key: 'k', text: 'Left bottom edge' },
+  { key: 'l', text: 'Right top edge' },
+  { key: 'm', text: 'Right center' },
+  { key: 'n', text: 'Right bottom edge' },
+
+  { key: 'o', text: 'Top left edge' },
+  { key: 'p', text: 'Top center' },
+  { key: 'q', text: 'Top right edge' },
+  { key: 'r', text: 'Top auto edge' },
+  { key: 's', text: 'Bottom left edge' },
+  { key: 't', text: 'Bottom center' },
+  { key: 'u', text: 'Bottom right edge' },
+  { key: 'v', text: 'Bottom auto edge' },
+  { key: 'w', text: 'Left top edge' },
+  { key: 'x', text: 'Left center' },
+  { key: 'y', text: 'Left bottom edge' },
+  { key: 'z', text: 'Right top edge' },
+  { key: 'aa', text: 'Right center' },
+  { key: 'bb', text: 'Right bottom edge' },
+
+  { key: 'cc', text: 'Top left edge' },
+  { key: 'dd', text: 'Top center' },
+  { key: 'ee', text: 'Top right edge' },
+  { key: 'ff', text: 'Top auto edge' },
+  { key: 'gg', text: 'Bottom left edge' },
+  { key: 'hh', text: 'Bottom center' },
+  { key: 'ii', text: 'Bottom right edge' },
+  { key: 'jj', text: 'Bottom auto edge' },
+  { key: 'kk', text: 'Left top edge' },
+  { key: 'll', text: 'Left center' },
+  { key: 'mm', text: 'Left bottom edge' },
+  { key: 'nn', text: 'Right top edge' },
+  { key: 'oo', text: 'Right center' },
+  { key: 'pp', text: 'Right bottom edge' },
 ];
 
 const styles = mergeStyleSets({

@@ -612,7 +612,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
       calloutWidth = dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0);
     }
 
-    return isSmall ? (
+    return false ? (
       <Panel
         closeButtonAriaLabel="Close"
         focusTrapZoneProps={focusTrapZoneProps}
@@ -641,6 +641,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
         onScroll={this._onScroll}
         onPositioned={this._onPositioned}
         edgeAxisFixed
+        alignTargetEdge
       >
         {this._renderFocusableList(props)}
       </Callout>
