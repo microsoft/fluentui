@@ -54,7 +54,14 @@ export {
   useTreeItemContextValues_unstable,
   useTreeItem_unstable,
 } from './TreeItem';
-export type { TreeItemProps, TreeItemState, TreeItemSlots, TreeItemValue } from './TreeItem';
+export type {
+  TreeItemProps,
+  TreeItemState,
+  TreeItemSlots,
+  TreeItemValue,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
+} from './TreeItem';
 
 export {
   TreeItemLayout,

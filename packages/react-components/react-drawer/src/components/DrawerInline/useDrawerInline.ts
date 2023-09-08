@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useControllableState, useMergedRefs } from '@fluentui/react-utilities';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
-import { useDrawerDefaultProps } from '../../util/useDrawerDefaultProps';
+import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 
 /**
  * Create the state required to render DrawerInline.

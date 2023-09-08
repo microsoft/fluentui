@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-portal-compat-context
 
-This log was last generated on Fri, 12 May 2023 20:27:35 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 13:28:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.7)
+
+Tue, 05 Sep 2023 13:28:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat-context_v9.0.6..@fluentui/react-portal-compat-context_v9.0.7)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat-context_v9.0.6)
 
