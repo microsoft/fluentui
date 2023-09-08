@@ -41,41 +41,6 @@ const BreadcrumbSampleWithButton = (props: BreadcrumbProps) => (
   </>
 );
 
-const BreadcrumbSampleWithLink = (props: BreadcrumbProps) => (
-  <>
-    <p tabIndex={0} id="before">
-      Before
-    </p>
-
-    <Breadcrumb {...props} id="breadcrumb">
-      <BreadcrumbItem>
-        <BreadcrumbButton as="a" href="#" id="breadcrumb-link-1">
-          Item 1
-        </BreadcrumbButton>
-      </BreadcrumbItem>
-      <BreadcrumbItem>
-        <BreadcrumbButton as="a" href="#" id="breadcrumb-link-2">
-          Item 2
-        </BreadcrumbButton>
-      </BreadcrumbItem>
-      <BreadcrumbItem>
-        <BreadcrumbButton as="a" href="#" id="breadcrumb-link-3" disabled>
-          Item 3
-        </BreadcrumbButton>
-      </BreadcrumbItem>
-      <BreadcrumbItem>
-        <BreadcrumbButton as="a" href="#" id="breadcrumb-link-4" current>
-          Item 4
-        </BreadcrumbButton>
-      </BreadcrumbItem>
-    </Breadcrumb>
-
-    <p tabIndex={0} id="after">
-      After
-    </p>
-  </>
-);
-
 const NonInteractiveBreadcrumbSample = (props: BreadcrumbProps) => (
   <>
     <p tabIndex={0} id="before">
