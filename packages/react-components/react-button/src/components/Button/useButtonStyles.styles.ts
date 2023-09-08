@@ -207,17 +207,17 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
-        color: 'Canvas',
+        color: 'Highlight',
 
         [`& .${buttonClassNames.icon}`]: {
-          color: 'Canvas',
+          color: 'Highlight',
         },
       },
       ':hover:active': {
-        color: 'Canvas',
+        color: 'Highlight',
 
         [`& .${buttonClassNames.icon}`]: {
-          color: 'Canvas',
+          color: 'Highlight',
         },
       },
     },
