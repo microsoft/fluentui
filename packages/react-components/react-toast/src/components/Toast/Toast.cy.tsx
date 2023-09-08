@@ -733,4 +733,34 @@ describe('Toast', () => {
 
     cy.get(`.${toastContainerClassNames.root}`).should('not.exist').get('#make').should('be.focused');
   });
+
+  it('should render toasts in DOM order', () => {
+    const Example = () => {
+      const { dispatchToast } = useToastController();
+      const onClick = () => {
+        dispatchToast(
+          <Toast>
+            <ToastTitle>This is a toast</ToastTitle>
+          </Toast>,
+        );
+      };
+
+      return (
+        <>
+          <button onClick={onClick}>Make toast</button>
+          <div id="container">
+            <Toaster inline />
+          </div>
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get('button')
+      .click()
+      .get(`#container .${toastClassNames.root}`)
+      .should('exist')
+      .get(`body .${toastClassNames.root}`)
+      .should('not.exist');
+  });
 });

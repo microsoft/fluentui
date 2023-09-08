@@ -12,7 +12,6 @@ import { ButtonState } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { LinkProps } from '@fluentui/react-link';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -80,28 +79,6 @@ export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required
 };
 
 // @public
-export const BreadcrumbLink: ForwardRefComponent<BreadcrumbLinkProps>;
-
-// @public (undocumented)
-export const breadcrumbLinkClassNames: SlotClassNames<BreadcrumbLinkSlots>;
-
-// @public
-export type BreadcrumbLinkProps = ComponentProps<BreadcrumbLinkSlots> & Pick<LinkProps, 'appearance' | 'disabled'> & {
-    current?: boolean;
-    overflow?: boolean;
-    size?: 'small' | 'medium' | 'large';
-};
-
-// @public (undocumented)
-export type BreadcrumbLinkSlots = {
-    root: LinkProps;
-    icon?: Slot<'span'>;
-};
-
-// @public
-export type BreadcrumbLinkState = ComponentState<BreadcrumbLinkSlots> & Partial<Omit<BreadcrumbLinkProps, 'size'>> & Required<Pick<BreadcrumbLinkProps, 'size'>>;
-
-// @public
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     appearance?: 'transparent' | 'subtle';
     focusMode?: 'arrow' | 'tab';
@@ -150,9 +127,6 @@ export const renderBreadcrumbDivider_unstable: (state: BreadcrumbDividerState) =
 // @public
 export const renderBreadcrumbItem_unstable: (state: BreadcrumbItemState) => JSX.Element;
 
-// @public
-export const renderBreadcrumbLink_unstable: (state: BreadcrumbLinkState) => JSX.Element;
-
 // @public (undocumented)
 export const truncateBreadcrumbLongName: (content: string, maxLength?: number) => string;
 
@@ -179,12 +153,6 @@ export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React
 
 // @public
 export const useBreadcrumbItemStyles_unstable: (state: BreadcrumbItemState) => BreadcrumbItemState;
-
-// @public
-export const useBreadcrumbLink_unstable: (props: BreadcrumbLinkProps, ref: React_2.Ref<HTMLAnchorElement | HTMLButtonElement>) => BreadcrumbLinkState;
-
-// @public
-export const useBreadcrumbLinkStyles_unstable: (state: BreadcrumbLinkState) => BreadcrumbLinkState;
 
 // @public
 export const useBreadcrumbStyles_unstable: (state: BreadcrumbState) => BreadcrumbState;
