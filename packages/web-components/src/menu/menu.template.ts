@@ -5,6 +5,9 @@ export function menuTemplate<T extends Menu>(): ElementViewTemplate<T> {
   return html<T>`
     <template
       ?open-on-hover="${x => x.openOnHover}"
+      ?open-on-context="${x => x.openOnContext}"
+      ?close-on-scroll="${x => x.closeOnScroll}"
+      ?persist-on-item-click="${x => x.persistOnItemClick}"
       @keydown="${(x, c) => x.handleMenuKeydown(c.event as KeyboardEvent)}"
     >
       <slot name="trigger" ${slotted({ property: 'slottedTriggers', filter: elements() })}></slot>

@@ -6,7 +6,7 @@
 
 ## **Design Spec**
 
-[Link to Menu Design Spec in Figma](https://www.figma.com/file/xyz12345/Menu?node-id=2%3A476)
+There is no design spec for the `Menu` component as the `Menu` has no visual styles. The design spec for the `MenuList` can be found at [Fluent MenuList Spec](https://www.figma.com/file/jFWrkFq61GDdOhPlsz6AtX/Menu?type=design&node-id=2-39&mode=design&t=RQguhK8xTpmR2MFe-0)
 
 <br />
 
@@ -34,29 +34,56 @@ Creating a menu component that can be used to display a list of options or actio
 
 ### **Fields**
 
-| Name            | Privacy | Type            | Default | Description                                          |
-| --------------- | ------- | --------------- | ------- | ---------------------------------------------------- |
-| `menu`          | public  | `HTMLElement[]` |         | The menu element(s) to be displayed                  |
-| `trigger`       | public  | `HTMLElement[]` |         | The trigger element(s) for opening/closing menu      |
-| `open`          | public  | `boolean`       | `false` | Specifies if the menu is open or closed              |
-| `menuContainer` | public  | `HTMLElement`   |         | The container element for the menu items             |
-| `openOnHover`   | public  | `boolean`       | `false` | Sets whether the menu opens on hover of menu trigger |
+| Name                 | Privacy | Type            | Default | Description                                                                            |
+| -------------------- | ------- | --------------- | ------- | -------------------------------------------------------------------------------------- |
+| `menu`               | public  | `HTMLElement[]` |         | The menu element(s) to be displayed                                                    |
+| `trigger`            | public  | `HTMLElement[]` |         | The trigger element(s) for opening/closing menu                                        |
+| `open`               | public  | `boolean`       | `false` | Specifies if the menu is open or closed                                                |
+| `menuContainer`      | public  | `HTMLElement`   |         | The container element for the menu items                                               |
+| `openOnHover`        | public  | `boolean`       | `false` | Sets whether the menu opens on hover of menu trigger                                   |
+| `openOnContext`      | public  | `boolean`       | `false` | Opens the menu on right click (context menu), removes all other menu open interactions |
+| `closeOnScroll`      | public  | `boolean`       | `false` | Close when scroll outside of it                                                        |
+| `persistOnItemClick` | public  | `boolean`       | `false` | Determines if the menu open state should persis on click of menu item                  |
 
 <br />
 
 ### **Methods**
 
-- `setPositioning()`: Calculates and applies the positioning of the menu list based on available viewport space.
-- `focus()`: Focuses the first item in the menu.
+| Name                        | Privacy   | Description                                                                                | Parameters                             | Return |
+| --------------------------- | --------- | ------------------------------------------------------------------------------------------ | -------------------------------------- | ------ |
+| `setComponent`              | public    | ets the trigger and menu list elements and adds event listeners.                           |                                        | void   |
+| `setPositioning`            | protected | Calculates and applies the positioning of the menu list based on available viewport space. |                                        | void   |
+| `toggleMenu`                | public    | Toggles the open state of the menu.                                                        |                                        | void   |
+| `closeMenu`                 | public    | Closes the menu.                                                                           |                                        | void   |
+| `openMenu`                  | public    | Opens the menu.                                                                            | `e?: Event`                            | void   |
+| `focusMenuList`             | public    | Focuses on the menu list.                                                                  |                                        | void   |
+| `focusTrigger`              | public    | Focuses on the menu trigger.                                                               |                                        | void   |
+| `openChanged`               | public    | Called whenever the open state changes. Emits `onOpenChange` event.                        | `newValue: boolean, oldValue: boolean` | void   |
+| `openOnHoverChanged`        | public    | Called whenever the 'openOnHover' property changes.                                        | `newValue: boolean, oldValue: boolean` | void   |
+| `persistOnItemClickChanged` | public    | Called whenever the 'persisitOnItem' property changes.                                     | `newValue: boolean, oldValue: boolean` | void   |
+| `openOnContextChanged`      | public    | Called whenever the 'openOnContext' property changes.                                      | `newValue: boolean, oldValue: boolean` | void   |
+| `handleMenuKeydown`         | public    | Handles keyboard interaction for the menu.                                                 | `e: KeyboardEvent`                     | void   |
+| `handleTriggerKeydown`      | public    | Handles keyboard interaction for the menu trigger.                                         | `e: KeyboardEvent`                     | void   |
+
+<br />
+
+### **Events**
+
+| Name           | Type | Description                                                 |
+| -------------- | ---- | ----------------------------------------------------------- |
+| `onOpenChange` |      | emits custom `onOpenChange` event when opened state changes |
 
 <br />
 
 ### **Attributes**
 
-| Name            | Field       |
-| --------------- | ----------- |
-| `open`          | open        |
-| `open-on-hover` | openOnHover |
+| Name                    | Field              |
+| ----------------------- | ------------------ |
+| `open`                  | open               |
+| `open-on-hover`         | openOnHover        |
+| `open-on-context`       | openOnContext      |
+| `close-on-scroll`       | closeOnScroll      |
+| `persist-on-item-click` | persistOnItemClick |
 
 <br />
 

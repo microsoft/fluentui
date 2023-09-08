@@ -17,6 +17,30 @@ export class Menu extends FASTElement {
   public openOnHover?: boolean = false;
 
   /**
+   * Determines if the menu should open on right click.
+   * @public
+   */
+  @observable
+  @attr({ attribute: 'open-on-context', mode: 'boolean' })
+  public openOnContext?: boolean = false;
+
+  /**
+   * Determines if the menu should close on scroll.
+   * @public
+   */
+  @observable
+  @attr({ attribute: 'close-on-scroll', mode: 'boolean' })
+  public closeOnScroll?: boolean = false;
+
+  /**
+   * Determines if the menu open state should persis on click of menu item
+   * @public
+   */
+  @observable
+  @attr({ attribute: 'persist-on-item-click', mode: 'boolean' })
+  public persistOnItemClick?: boolean = false;
+
+  /**
    * Defines whether the menu is open or not.
    * @public
    */
@@ -116,14 +140,23 @@ export class Menu extends FASTElement {
    */
   public closeMenu = () => {
     this.open = false;
+    if (this.closeOnScroll) {
+      document.removeEventListener('scroll', this.closeMenu);
+    }
   };
 
   /**
    * Opens the menu.
    * @public
    */
-  public openMenu = () => {
+  public openMenu = (e?: Event) => {
     this.open = true;
+    if (e && this.openOnContext) {
+      e.preventDefault();
+    }
+    if (this.closeOnScroll) {
+      document.addEventListener('scroll', this.closeMenu);
+    }
   };
 
   /**
@@ -167,7 +200,7 @@ export class Menu extends FASTElement {
       }
     }
     this.cleanup?.();
-    this.$emit('changed', { open: newValue });
+    this.$emit('onOpenChange', { open: newValue });
   }
 
   /**
@@ -182,6 +215,36 @@ export class Menu extends FASTElement {
       this._trigger?.addEventListener('mouseover', this.openMenu);
     } else {
       this._trigger?.removeEventListener('mouseover', this.openMenu);
+    }
+  }
+
+  /**
+   * Called whenever the 'persistOnItemClick' property changes.
+   * Adds or removes a 'click' event listener to the menu list based on the new value.
+   * @public
+   * @param {boolean} oldValue - The previous value of 'persistOnItemClick'.
+   * @param {boolean} newValue - The new value of 'persistOnItemClick'.
+   */
+  public persistOnItemClickChanged(oldValue: boolean, newValue: boolean): void {
+    if (!newValue) {
+      this._menuList?.addEventListener('click', this.closeMenu);
+    } else {
+      this._menuList?.removeEventListener('click', this.closeMenu);
+    }
+  }
+
+  /**
+   * Called whenever the 'openOnContext' property changes.
+   * Adds or removes a 'contextmenu' event listener to the trigger based on the new value.
+   * @public
+   * @param {boolean} oldValue - The previous value of 'openOnContext'.
+   * @param {boolean} newValue - The new value of 'openOnContext'.
+   */
+  public openOnContextChanged(oldValue: boolean, newValue: boolean): void {
+    if (newValue) {
+      this._trigger?.addEventListener('contextmenu', this.openMenu);
+    } else {
+      this._trigger?.removeEventListener('contextmenu', this.openMenu);
     }
   }
 
@@ -241,10 +304,16 @@ export class Menu extends FASTElement {
    */
   private addListeners(): void {
     document.addEventListener('click', this.handleDocumentClick);
-    this._trigger?.addEventListener('click', this.toggleMenu);
     this._trigger?.addEventListener('keydown', this.handleTriggerKeydown);
+    if (!this.persistOnItemClick) {
+      this._menuList?.addEventListener('click', this.closeMenu);
+    }
     if (this.openOnHover) {
       this._trigger?.addEventListener('mouseover', this.openMenu);
+    } else if (this.openOnContext) {
+      this._trigger?.addEventListener('contextmenu', this.openMenu);
+    } else {
+      this._trigger?.addEventListener('click', this.toggleMenu);
     }
   }
 
@@ -256,10 +325,17 @@ export class Menu extends FASTElement {
    */
   private removeListeners(): void {
     document.removeEventListener('click', this.handleDocumentClick);
-    this._trigger?.removeEventListener('click', this.toggleMenu);
     this._trigger?.removeEventListener('keydown', this.handleTriggerKeydown);
+    if (!this.persistOnItemClick) {
+      this._menuList?.removeEventListener('click', this.closeMenu);
+    }
     if (this.openOnHover) {
       this._trigger?.removeEventListener('mouseover', this.openMenu);
+    }
+    if (this.openOnContext) {
+      this._trigger?.removeEventListener('contextmenu', this.openMenu);
+    } else {
+      this._trigger?.removeEventListener('click', this.toggleMenu);
     }
   }
 
