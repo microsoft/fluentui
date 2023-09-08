@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: use makeResetStyles to reduce classNames",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

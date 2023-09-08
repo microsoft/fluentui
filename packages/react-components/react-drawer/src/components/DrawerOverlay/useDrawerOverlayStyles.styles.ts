@@ -4,7 +4,11 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
-import { useDrawerBaseClassNames, drawerCSSVars, useDrawerDurationStyles } from '../../util/useDrawerBaseStyles.styles';
+import {
+  drawerCSSVars,
+  useDrawerBaseClassNames,
+  useDrawerDurationStyles,
+} from '../../shared/useDrawerBaseStyles.styles';
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',

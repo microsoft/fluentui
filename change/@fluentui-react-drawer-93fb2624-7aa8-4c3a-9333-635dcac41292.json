@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: refactor DrawerHeaderTitle slot creation while keeping the same API",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

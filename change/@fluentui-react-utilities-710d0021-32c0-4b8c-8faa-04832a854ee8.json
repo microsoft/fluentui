@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: adds swc-plugin-de-indent-template-literal to remove indentation of consoles",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

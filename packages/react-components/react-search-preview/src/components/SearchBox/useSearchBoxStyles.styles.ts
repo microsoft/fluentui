@@ -71,6 +71,7 @@ const useDismissClassName = makeResetStyles({
   // special case styling for icons (most common case) to ensure they're centered vertically
   // size: medium (default)
   '> svg': { fontSize: '20px' },
+  cursor: 'pointer',
 });
 
 const useDismissStyles = makeStyles({

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Wed, 09 Aug 2023 13:17:11 GMT and should not be manually modified.
+This log was last generated on Tue, 05 Sep 2023 13:29:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.9)
+
+Tue, 05 Sep 2023 13:29:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.8..@fluentui/tokens_v1.0.0-alpha.9)
+
+### Changes
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
 
 ## [1.0.0-alpha.8](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.8)
 
