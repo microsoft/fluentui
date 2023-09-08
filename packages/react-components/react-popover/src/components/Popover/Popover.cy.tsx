@@ -541,4 +541,31 @@ describe('Popover', () => {
         .should('have.length', 2);
     });
   });
+
+  describe('Without trapFocus', () => {
+    it('should restore focus on close', () => {
+      mount(
+        <Popover>
+          <PopoverTrigger>
+            <button id="trigger">trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button id="button">button</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('#trigger')
+        .click()
+        .get(popoverContentSelector)
+        .should('exist')
+        .get('#button')
+        .focus()
+        .type('{esc}')
+        .get(popoverContentSelector)
+        .should('not.exist')
+        .get('#trigger')
+        .should('have.focus');
+    });
+  });
 });
