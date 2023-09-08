@@ -23,6 +23,8 @@
     "type-check": "tsc -b tsconfig.json",
     "storybook": "start-storybook",
     "start": "yarn storybook",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
   },
   "devDependencies": {
@@ -36,6 +38,7 @@
     "@fluentui/react-icons": "^2.0.207",
     "@fluentui/react-label": "^9.1.33",
     "@fluentui/react-popover": "^9.8.3",
+    "@fluentui/react-portal": "^9.3.13",
     "@fluentui/react-tabster": "^9.12.8",
     "@fluentui/react-theme": "^9.1.12",
     "@fluentui/react-utilities": "^9.13.3",
