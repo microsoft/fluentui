@@ -2739,12 +2739,12 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone147"
+        data-focuszone-id="FocusZone166"
       >
         <svg
           focusable="false"
           height="436"
-          id="sankeyChart146"
+          id="sankeyChart165"
           width="864"
         >
           <g
@@ -2763,7 +2763,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             <g>
               <defs>
                 <lineargradient
-                  id="gradient-link130-0"
+                  id="gradient-link149-0"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -2784,7 +2784,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 d="M172,36C455.5,36,455.5,36,739,36L739,273.538C455.5,273.538,455.5,273.538,172,273.538Z"
                 data-is-focusable="true"
                 fill-opacity="1"
-                id="link144"
+                id="link163"
                 role="img"
                 stroke="#757575"
                 stroke-opacity="1"
@@ -2795,7 +2795,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
             <g>
               <defs>
                 <lineargradient
-                  id="gradient-link130-1"
+                  id="gradient-link149-1"
                   x1="0%"
                   x2="100%"
                   y1="0%"
@@ -2816,7 +2816,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 d="M172,281.538C455.5,281.538,455.5,281.538,739,281.538L739,430C455.5,430,455.5,430,172,430Z"
                 data-is-focusable="true"
                 fill-opacity="1"
-                id="link145"
+                id="link164"
                 role="img"
                 stroke="#757575"
                 stroke-opacity="1"
@@ -2836,14 +2836,14 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                 }
           >
             <g
-              id="nodeGElement134"
+              id="nodeGElement153"
             >
               <rect
                 aria-label="node192.168.42.72with weight80"
                 data-is-focusable="true"
                 fill="#757575"
                 height="237.53846153846155"
-                id="nodeBar133"
+                id="nodeBar152"
                 opacity="1"
                 role="img"
                 stroke="#4B3867"
@@ -2876,7 +2876,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     fill="#FFFFFF"
                     font-size="10"
                     font-weight="regular"
-                    id="nodeBar133-name"
+                    id="nodeBar152-name"
                     text-anchor="start"
                     x="48"
                     y="36"
@@ -2900,14 +2900,14 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               </g>
             </g>
             <g
-              id="nodeGElement137"
+              id="nodeGElement156"
             >
               <rect
                 aria-label="node172.152.48.13with weight50"
                 data-is-focusable="true"
                 fill="#8764B8"
                 height="148.46153846153845"
-                id="nodeBar136"
+                id="nodeBar155"
                 opacity="1"
                 role="img"
                 stroke="#4B3867"
@@ -2940,7 +2940,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     fill="#FFFFFF"
                     font-size="10"
                     font-weight="regular"
-                    id="nodeBar136-name"
+                    id="nodeBar155-name"
                     text-anchor="start"
                     x="48"
                     y="281.53846153846155"
@@ -2964,14 +2964,14 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               </g>
             </g>
             <g
-              id="nodeGElement140"
+              id="nodeGElement159"
             >
               <rect
                 aria-label="node124.360.55.1with weight80"
                 data-is-focusable="true"
                 fill="#757575"
                 height="237.53846153846155"
-                id="nodeBar139"
+                id="nodeBar158"
                 opacity="1"
                 role="img"
                 stroke="#4B3867"
@@ -3004,7 +3004,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     fill="#FFFFFF"
                     font-size="10"
                     font-weight="regular"
-                    id="nodeBar139-name"
+                    id="nodeBar158-name"
                     text-anchor="start"
                     x="739"
                     y="36"
@@ -3028,14 +3028,14 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
               </g>
             </g>
             <g
-              id="nodeGElement143"
+              id="nodeGElement162"
             >
               <rect
                 aria-label="node192.564.10.2with weight50"
                 data-is-focusable="true"
                 fill="#8764B8"
                 height="148.46153846153845"
-                id="nodeBar142"
+                id="nodeBar161"
                 opacity="1"
                 role="img"
                 stroke="#4B3867"
@@ -3068,7 +3068,7 @@ exports[`Sankey chart - Theme Should reflect theme change 1`] = `
                     fill="#FFFFFF"
                     font-size="10"
                     font-weight="regular"
-                    id="nodeBar142-name"
+                    id="nodeBar161-name"
                     text-anchor="start"
                     x="739"
                     y="281.53846153846155"
