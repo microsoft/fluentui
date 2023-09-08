@@ -146,6 +146,14 @@ const _cloneCSSStyleSheet = (srcSheet: CSSStyleSheet, targetSheet: CSSStyleSheet
   return targetSheet;
 };
 
+const getDocument = () => {
+  return typeof document === 'undefined' ? undefined : document;
+};
+
+const getWindow = () => {
+  return typeof window === 'undefined' ? undefined : window;
+};
+
 /**
  * Represents the state of styles registered in the page. Abstracts
  * the surface for adding styles to the stylesheet, exposes helpers
@@ -176,12 +184,12 @@ export class Stylesheet {
 
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
-    const doc = win?.document ?? document;
+    const doc = win?.document ?? getDocument();
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== doc)) {
       const fabricConfig = global?.FabricConfig || {};
       fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
-      fabricConfig.mergeStyles.ownerWindow = fabricConfig.mergeStyles.ownerWindow ?? win ?? window;
+      fabricConfig.mergeStyles.ownerWindow = fabricConfig.mergeStyles.ownerWindow ?? win ?? getWindow();
       fabricConfig.mergeStyles.inShadow = fabricConfig.mergeStyles.inShadow ?? inShadow;
       fabricConfig.mergeStyles.currentStylesheetKey = fabricConfig.mergeStyles.currentStylesheetKey ?? stylesheetKey;
 
@@ -189,11 +197,14 @@ export class Stylesheet {
       _stylesheet = stylesheet;
     }
     if (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY) {
-      _stylesheet.addAdoptableStyleSheet(stylesheetKey, _makeCSSStyleSheet(win ?? window));
+      const sheetWindow = win ?? getWindow();
+      if (sheetWindow) {
+        _stylesheet.addAdoptableStyleSheet(stylesheetKey, _makeCSSStyleSheet(sheetWindow));
+      }
     }
 
     _stylesheet.setConfig({
-      ownerWindow: win ?? window,
+      ownerWindow: win ?? getWindow(),
       inShadow,
       currentStylesheetKey: stylesheetKey ?? GLOBAL_STYLESHEET_KEY,
     });
