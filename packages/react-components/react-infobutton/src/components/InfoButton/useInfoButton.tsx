@@ -64,7 +64,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         size: popoverSizeMap[size],
         withArrow: true,
       },
-      elementType: Popover as React.FC<Partial<PopoverProps>>,
+      elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
     }),
     info: slot.always(props.info, {
       defaultProps: {
