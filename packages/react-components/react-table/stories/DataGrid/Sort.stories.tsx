@@ -177,7 +177,9 @@ Sort.parameters = {
   docs: {
     description: {
       story: [
-        'To enable sorting, the `sortable` prop needs to be set. The API surface is directly',
+        'To enable sorting, the `sortable` prop needs to be set. ',
+        'Column definitions without a `compare` function will not be sortable.',
+        ' The API surface is directly',
         'equivalent to the usage of `useTableFeatures`.',
         '',
         '> Due to screen reader support, the sort status might not be announced once a sortable column header',
