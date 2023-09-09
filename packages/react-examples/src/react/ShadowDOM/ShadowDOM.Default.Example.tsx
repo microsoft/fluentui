@@ -13,6 +13,7 @@ import {
   Icon,
   MergeStylesRootProvider_unstable,
   MergeStylesShadowRootProvider_unstable,
+  Callout,
 } from '@fluentui/react';
 // eslint-disable-next-line
 import { WindowProvider } from '@fluentui/react-window-provider';
@@ -29,6 +30,34 @@ export interface IButtonExampleProps {
 
 // Example formatting
 const stackTokens: IStackTokens = { childrenGap: 10 };
+
+const TestLayer: React.FC = () => {
+  const [showCallout, setShowCallout] = React.useState(false);
+
+  return (
+    <>
+      {/* eslint-disable-next-line react/jsx-no-bind */}
+      <DefaultButton id="callout-button" text="Show callout" onClick={() => setShowCallout(!showCallout)} />
+      {showCallout && (
+        <Callout
+          role="dialog"
+          gapSpace={0}
+          target={`#callout-button`}
+          // eslint-disable-next-line react/jsx-no-bind
+          onDismiss={() => setShowCallout(false)}
+          setInitialFocus
+          styles={{ root: { padding: '1rem' } }}
+        >
+          <Text as="h1" block>
+            Callout shows up next to target within shadow DOM as expected. Default layer host is also created within the
+            corresponding shadow DOM if no layer host is provided. Note that if providing a custom layer host, it must
+            be in the same shadow DOM as the target.
+          </Text>
+        </Callout>
+      )}
+    </>
+  );
+};
 
 type TestCompProps = {
   inShadow: boolean;
@@ -79,6 +108,7 @@ const TestComp: React.FC<TestCompProps> = ({ inShadow }) => {
           <TrainSolidIcon />
         </Stack>
       </Stack>
+      <TestLayer />
     </Stack>
   );
 };
