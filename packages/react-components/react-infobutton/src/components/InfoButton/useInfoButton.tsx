@@ -1,6 +1,14 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
-import { getNativeElementProps, mergeCallbacks, useControllableState, slot } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  mergeCallbacks,
+  useControllableState,
+  slot,
+  useMergedRefs,
+  isHTMLElement,
+} from '@fluentui/react-utilities';
+import { elementContains } from '@fluentui/react-portal';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -56,7 +64,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         size: popoverSizeMap[size],
         withArrow: true,
       },
-      elementType: Popover as React.FC<Partial<PopoverProps>>,
+      elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
     }),
     info: slot.always(props.info, {
       defaultProps: {
@@ -75,6 +83,25 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
 
   state.popover.open = popoverOpen;
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (e, data) => setPopoverOpen(data.open));
+
+  const focusOutRef = React.useCallback(
+    (el: HTMLDivElement) => {
+      if (!el) {
+        return;
+      }
+
+      el.addEventListener('focusout', e => {
+        const nextFocused = e.relatedTarget;
+
+        if (isHTMLElement(nextFocused) && !elementContains(el, nextFocused)) {
+          setPopoverOpen(false);
+        }
+      });
+    },
+    [setPopoverOpen],
+  );
+
+  state.info.ref = useMergedRefs(state.info.ref, focusOutRef);
 
   return state;
 };

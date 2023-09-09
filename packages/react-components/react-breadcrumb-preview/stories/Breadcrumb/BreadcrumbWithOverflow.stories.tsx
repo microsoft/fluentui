@@ -235,7 +235,7 @@ const BreadcrumbControlledOverflowExample = () => {
 
   return (
     <div className={mergeClasses(styles.example, styles.horizontal)}>
-      <Overflow padding={40}>
+      <Overflow>
         <Breadcrumb>
           {startDisplayedItems.map((item: ButtonItem) => renderButton(item, false))}
           <ControlledOverflowMenu

@@ -17,11 +17,13 @@ const useStyles = makeStyles({
     alignItems: 'center',
     color: tokens.colorNeutralForeground2,
     boxSizing: 'border-box',
+    textWrap: 'nowrap',
   },
   icon: {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
-    ...shorthands.padding(tokens.spacingHorizontalXS),
+    justifyContent: 'center',
+    marginRight: tokens.spacingHorizontalXS,
   },
   small: {
     height: '24px',

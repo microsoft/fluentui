@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
-import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
-import { useDrawerDefaultProps } from '../../util/useDrawerDefaultProps';
 import { useMotion } from '@fluentui/react-motion-preview';
+
+import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
+import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
 
 /**
  * Create the state required to render DrawerOverlay.

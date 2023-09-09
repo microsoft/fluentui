@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Tue, 05 Sep 2023 13:29:13 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.9",
+      "version": "1.0.0-alpha.9",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/tokens",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Aug 2023 13:17:11 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.8",
       "version": "1.0.0-alpha.8",

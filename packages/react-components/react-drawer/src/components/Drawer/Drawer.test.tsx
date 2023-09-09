@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { Drawer } from './Drawer';
-import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
-import { DrawerProps } from './Drawer.types';
+
+import { isConformant } from '../../testing/isConformant';
+import { Drawer } from './Drawer';
+import type { DrawerProps } from './Drawer.types';
 
 describe('Drawer', () => {
   const testid = 'test';
