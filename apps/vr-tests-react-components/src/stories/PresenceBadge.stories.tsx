@@ -20,17 +20,22 @@ storiesOf('PresenceBadge Converged - status', module).addStory(
   { includeRtl: true },
 );
 
-storiesOf('PresenceBadge Converged - OOF status', module).addStory(
-  'default',
-  () => (
-    <div style={{ display: 'flex', gap: 10 }}>
-      {statuses.map(status => (
-        <PresenceBadge status={status} key={status} outOfOffice />
-      ))}
-    </div>
-  ),
-  { includeRtl: true },
-);
+storiesOf('PresenceBadge Converged - OOF status', module)
+  .addDecorator(TestWrapperDecorator)
+  .addDecorator(story => (
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
+  ))
+  .addStory(
+    'default',
+    () => (
+      <div style={{ display: 'flex', gap: 10 }}>
+        {statuses.map(status => (
+          <PresenceBadge status={status} key={status} outOfOffice />
+        ))}
+      </div>
+    ),
+    { includeRtl: true },
+  );
 
 storiesOf('PresenceBadge Converged - sizes', module).addStory(
   'default',
