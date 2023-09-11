@@ -22,38 +22,39 @@ export const Selector: React.FC = () => {
           <AccordionPanel>
             <Checkbox label="Is interactive?" onChange={(ev, data) => setInteractive(data.checked)} />
             {interactive && (
-              <RadioGroup
-                value={composition}
-                onChange={(_, data) => setComposition(data.value)}
-                aria-label="Single or group element"
-              >
-                <Radio value="single" label="Single element" />
-                <Radio value="group" label="Group of elements" />
-              </RadioGroup>
-            )}
-
-            {interactive && composition === 'single' && (
               <>
-                <Checkbox
-                  label="Navigate to page on activation?"
-                  onChange={(ev, data) => {
-                    setNavigableToPage(data.checked);
-                    // when uncheck take away from array
-                    decisionProps.current.push('navigableToPage');
-                  }}
-                />
-                <Checkbox
-                  label="Can be toggled?"
-                  onChange={(ev, data) => {
-                    setToggle(data.checked);
-                    // when uncheck take away from array
-                    decisionProps.current.push('toggle');
-                    console.log('test');
-                  }}
-                />
+                <RadioGroup
+                  value={composition}
+                  onChange={(_, data) => setComposition(data.value)}
+                  aria-label="Single or group element"
+                >
+                  <Radio value="single" label="Single element" />
+                  <Radio value="group" label="Group of elements" />
+                </RadioGroup>
+
+                {composition === 'single' && (
+                  <>
+                    <Checkbox
+                      label="Navigate to page on activation?"
+                      onChange={(ev, data) => {
+                        setNavigableToPage(data.checked);
+                        // when uncheck take away from array
+                        decisionProps.current.push('navigableToPage');
+                      }}
+                    />
+                    <Checkbox
+                      label="Can be toggled?"
+                      onChange={(ev, data) => {
+                        setToggle(data.checked);
+                        // when uncheck take away from array
+                        decisionProps.current.push('toggle');
+                        console.log('test');
+                      }}
+                    />
+                  </>
+                )}
               </>
             )}
-
             {/* <Checkbox label="Group of elements" /> */}
           </AccordionPanel>
         </AccordionItem>
