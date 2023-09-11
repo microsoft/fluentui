@@ -137,7 +137,7 @@ const storyTemplate = html<DrawerStoryArgs>`
 
                 <fluent-button @click=${() =>
                   hideDrawer(
-                    'drawer-playground',
+                    'drawer-default',
                   )} appearance="transparent" icon-only size="small" class="toolbar-button" tabindex="0"  aria-label="close">
                 ${dismissed16Regular}
                 </fluent-button>
@@ -318,12 +318,11 @@ export const DrawerPushContent = renderComponent(html<DrawerStoryArgs>`
     <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
       <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
         <div id="drawer-push-content-container" style="display: flex; flex-direction: column; justify-content: flex-start; row-gap: 8px; align-items: flex-start; height: 100%;">
-          <fluent-button appearance="primary" @click="${() =>
-            toggleDrawer('drawer-push-content')}">Toggle Drawer</fluent-button>
+          <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-size--push')}">Small</fluent-button>
         </div>
       </div>
     <div>
-    <fluent-drawer id="drawer-push-content" control-size="small">
+    <fluent-drawer id="drawer-size--push">
       <div slot="header">
         <div style="display: flex; justify-content: space-between; align-items: center;">
           <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Small</h1></fluent-text>
@@ -334,6 +333,7 @@ export const DrawerPushContent = renderComponent(html<DrawerStoryArgs>`
             size="small"
             tabindex="0"
             aria-label="close"
+            @click="${() => hideDrawer('drawer-size--small')}"
           >
             ${dismissed16Regular}
           </fluent-button>
@@ -356,64 +356,6 @@ export const DrawerPushContent = renderComponent(html<DrawerStoryArgs>`
         <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
       </div>
     </fluent-drawer>
-    <fluent-drawer
-          id="drawer-size--medium"
-        >
-          <div slot="header">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-            <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Medium</h1></fluent-text>
-            <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
-                ${dismissed16Regular}
-              </fluent-button>
-            </div>
-          </div>
-          <div style="display: flex; row-gap: 16px; flex-direction: column;">
-            <fluent-text font="base" size="300" weight="regular" as="p">
-              <p>
-                The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="medium" in the component.</fluent-text>
-              </p>
-            </fluent-text>
-            <fluent-text font="monospace" size="300" weight="regular">
-              <code>
-                control=size="medium"
-              </code>
-            </fluent-text>
-          </div>
-          <div slot="footer">
-            <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
-            <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
-          </div>
-        </fluent-drawer>
-        <fluent-drawer
-          id="drawer-size--large"
-          control-size="large"
-        >
-          <div slot="header">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-              <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Large</h1></fluent-text>
-              <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
-                ${dismissed16Regular}
-              </fluent-button>
-            </div>
-          </div>
-
-          <div style="display: flex; row-gap: 16px; flex-direction: column; margin-bottom: 12px;">
-            <fluent-text font="base" size="300" weight="regular" as="p">
-              <p>
-                The control-size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify control-size="medium" in the component.</fluent-text>
-              </p>
-            </fluent-text>
-            <fluent-text font="monospace" size="300" weight="regular">
-              <code>
-                control=size="medium"
-              </code>
-            </fluent-text>
-          </div>
-          <div slot="footer">
-            <fluent-button tabindex="0" appearance="primary">Primary</fluent-button>
-            <fluent-button tabindex="0" appearance="secondary">Secondary</fluent-button>
-          </div>
-        </fluent-drawer>
   </div>
 `);
 
@@ -421,12 +363,10 @@ export const DrawerControlSize = renderComponent(html<DrawerStoryArgs>`
     <div style="height: 38em; transform: scale(1); overflow-y: hidden; overflow-x: hidden;">
       <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
         <div id="drawer-sizes" style="display: flex; flex-direction: column; justify-content: flex-start; row-gap: 8px; align-items: flex-start; height: 100%;">
+          <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-size--small')}">Small</fluent-button>
           <fluent-button appearance="primary" @click="${() =>
-            toggleDrawer('drawer-size--small', 'drawer-sizes')}">Small</fluent-button>
-          <fluent-button appearance="primary" @click="${() =>
-            toggleDrawer('drawer-size--medium', 'drawer-sizes')}">Medium</fluent-button>
-          <fluent-button appearance="primary" @click="${() =>
-            toggleDrawer('drawer-size--large', 'drawer-sizes')}">Large</fluent-button>
+            toggleDrawer('drawer-size--medium')}">Medium</fluent-button>
+          <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-size--large')}">Large</fluent-button>
         </div>
       </div>
     <div>
@@ -441,6 +381,7 @@ export const DrawerControlSize = renderComponent(html<DrawerStoryArgs>`
             size="small"
             tabindex="0"
             aria-label="close"
+            @click="${() => hideDrawer('drawer-size--small')}"
           >
             ${dismissed16Regular}
           </fluent-button>
@@ -469,7 +410,15 @@ export const DrawerControlSize = renderComponent(html<DrawerStoryArgs>`
           <div slot="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
             <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Medium</h1></fluent-text>
-            <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
+            <fluent-button
+            class="toolbar-button"
+            appearance="transparent"
+            icon-only
+            size="small"
+            tabindex="0"
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-size--medium')}"
+            >
                 ${dismissed16Regular}
               </fluent-button>
             </div>
@@ -498,7 +447,15 @@ export const DrawerControlSize = renderComponent(html<DrawerStoryArgs>`
           <div slot="header">
             <div style="display: flex; justify-content: space-between; align-items: center;">
               <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Large</h1></fluent-text>
-              <fluent-button class="toolbar-button" appearance="transparent" icon-only size="small" tabindex="0"aria-label="close">
+              <fluent-button
+              class="toolbar-button"
+              appearance="transparent"
+              icon-only
+              size="small"
+              tabindex="0"
+              aria-label="close"
+              @click="${() => hideDrawer('drawer-size--large')}"
+              >
                 ${dismissed16Regular}
               </fluent-button>
             </div>
