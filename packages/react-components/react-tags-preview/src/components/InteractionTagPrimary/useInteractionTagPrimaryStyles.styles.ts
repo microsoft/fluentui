@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -8,7 +8,8 @@ import {
   useIconStyles,
   useMediaStyles,
   usePrimaryTextStyles,
-  useSecondaryTextStyles,
+  useSecondaryTextBaseClassName,
+  useTagWithSecondaryTextContrastStyles,
 } from '../Tag/useTagStyles.styles';
 
 export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots> = {
@@ -19,34 +20,42 @@ export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrima
   secondaryText: 'fui-InteractionTagPrimary__secondaryText',
 };
 
-const useRootStyles = makeStyles({
-  base: {
-    // TODO use makeResetStyle when styles are settled
+const useRootBaseClassName = makeResetStyles({
+  // reset default button style:
+  color: 'inherit',
+  fontFamily: 'inherit',
+  padding: '0px',
+  borderStyle: 'none',
+  appearance: 'button',
+  textAlign: 'unset',
+  backgroundColor: 'transparent',
 
-    // reset default button style:
-    color: 'inherit',
-    fontFamily: 'inherit',
-    ...shorthands.padding(0),
-    ...shorthands.borderStyle('none'),
-    appearance: 'button',
-    textAlign: 'unset',
-    backgroundColor: 'transparent',
+  display: 'inline-grid',
+  height: '100%',
+  alignItems: 'center',
+  gridTemplateAreas: `
+  "media primary  "
+  "media secondary"
+  `,
 
-    display: 'inline-grid',
-    height: '100%',
-    alignItems: 'center',
-    gridTemplateAreas: `
-    "media primary  "
-    "media secondary"
-    `,
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+  ...createCustomFocusIndicatorStyle({
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    zIndex: 1,
+  }),
 
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      zIndex: 1,
-    }),
+  // windows high contrast:
+  '@media (forced-colors: active)': {
+    ':hover': {
+      backgroundColor: 'HighlightText',
+    },
+    ':active': {
+      backgroundColor: 'HighlightText',
+    },
   },
+});
 
+const useRootStyles = makeStyles({
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
@@ -179,6 +188,7 @@ const useRootWithSecondaryActionStyles = makeStyles({
 export const useInteractionTagPrimaryStyles_unstable = (
   state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryState => {
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   const rootDisabledAppearances = useRootDisabledAppearances();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
@@ -187,14 +197,16 @@ export const useInteractionTagPrimaryStyles_unstable = (
   const iconStyles = useIconStyles();
   const mediaStyles = useMediaStyles();
   const primaryTextStyles = usePrimaryTextStyles();
-  const secondaryTextStyles = useSecondaryTextStyles();
+  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
+
+  const tagWithSecondaryTextContrastStyles = useTagWithSecondaryTextContrastStyles();
 
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     interactionTagPrimaryClassNames.root,
 
-    rootStyles.base,
+    rootBaseClassName,
     state.disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],
@@ -202,6 +214,8 @@ export const useInteractionTagPrimaryStyles_unstable = (
     !state.media && !state.icon && rootWithoutMediaStyles[size],
     state.hasSecondaryAction && rootWithSecondaryActionStyles.base,
     state.hasSecondaryAction && rootWithSecondaryActionStyles[size],
+
+    state.secondaryText && tagWithSecondaryTextContrastStyles[shape],
 
     state.root.className,
   );
@@ -237,7 +251,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       interactionTagPrimaryClassNames.secondaryText,
-      secondaryTextStyles.base,
+      secondaryTextBaseClassName,
       state.secondaryText.className,
     );
   }

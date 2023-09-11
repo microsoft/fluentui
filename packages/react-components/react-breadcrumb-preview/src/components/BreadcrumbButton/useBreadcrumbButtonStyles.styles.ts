@@ -29,6 +29,7 @@ const useStyles = makeStyles({
   root: {
     minWidth: 'unset',
     textWrap: 'nowrap',
+    ...shorthands.border('none'),
   },
   small: {
     height: '24px',
@@ -73,6 +74,7 @@ const useIconStyles = makeStyles({
     height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
     lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
     width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
+    marginRight: tokens.spacingHorizontalXS,
   },
   small: {
     [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',

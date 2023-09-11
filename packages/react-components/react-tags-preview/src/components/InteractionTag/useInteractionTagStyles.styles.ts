@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InteractionTagSlots, InteractionTagState } from './InteractionTag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
@@ -7,14 +7,14 @@ export const interactionTagClassNames: SlotClassNames<InteractionTagSlots> = {
   root: 'fui-InteractionTag',
 };
 
-const useRootStyles = makeStyles({
-  base: {
-    display: 'inline-flex',
-    alignItems: 'center',
-    boxSizing: 'border-box',
-    width: 'fit-content',
-  },
+const useRootBaseClassName = makeResetStyles({
+  display: 'inline-flex',
+  alignItems: 'center',
+  boxSizing: 'border-box',
+  width: 'fit-content',
+});
 
+const useRootStyles = makeStyles({
   rounded: shorthands.borderRadius(tokens.borderRadiusMedium),
   circular: shorthands.borderRadius(tokens.borderRadiusCircular),
 
@@ -33,13 +33,14 @@ const useRootStyles = makeStyles({
  * Apply styling to the InteractionTag slots based on the state
  */
 export const useInteractionTagStyles_unstable = (state: InteractionTagState): InteractionTagState => {
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
 
   const { shape, size } = state;
 
   state.root.className = mergeClasses(
     interactionTagClassNames.root,
-    rootStyles.base,
+    rootBaseClassName,
     rootStyles[shape],
     rootStyles[size],
     state.root.className,

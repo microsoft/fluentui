@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
-import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import type { InteractionTagSecondaryProps, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
 import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
-
-const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
 /**
  * Create the state required to render InteractionTagSecondary.
@@ -47,7 +45,7 @@ export const useInteractionTagSecondary_unstable = (
 
     root: slot.always(
       getNativeElementProps('button', {
-        children: <DismissIcon />,
+        children: <DismissRegular />,
         type: 'button',
         disabled,
         ref,

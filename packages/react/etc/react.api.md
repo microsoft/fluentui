@@ -8789,6 +8789,8 @@ export interface IStackItemTokens {
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ElementType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    // @deprecated
+    doNotRenderFalsyValues?: boolean;
     enableScopedSelectors?: boolean;
     // @deprecated
     gap?: number | string;

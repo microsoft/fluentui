@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbButton } from '../BreadcrumbButton/BreadcrumbButton';
 import { BreadcrumbItem } from '../BreadcrumbItem/BreadcrumbItem';
-import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink';
 import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
 import { isConformant } from '../../testing/isConformant';
 
@@ -87,11 +86,11 @@ describe('Breadcrumb', () => {
       </div>
     `);
   });
-  it('renders with a large BreadcrumbLink', () => {
+  it('renders with `a` tag', () => {
     const result = render(
       <Breadcrumb>
         <BreadcrumbItem>
-          <BreadcrumbLink>Link 1</BreadcrumbLink>
+          <BreadcrumbButton as="a">Link 1</BreadcrumbButton>
         </BreadcrumbItem>
       </Breadcrumb>,
     );
@@ -108,12 +107,14 @@ describe('Breadcrumb', () => {
             <li
               class="fui-BreadcrumbItem"
             >
-              <button
-                class="fui-Link fui-BreadcrumbLink"
+              <a
+                class="fui-Button fui-BreadcrumbButton"
+                role="button"
+                tabindex="0"
                 type="button"
               >
                 Link 1
-              </button>
+              </a>
             </li>
           </ol>
         </nav>

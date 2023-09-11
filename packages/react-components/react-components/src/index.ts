@@ -1017,6 +1017,10 @@ export {
   TableRowIdContextProvider,
   useTableRowIdContext,
   useTableColumnSizing_unstable,
+  ColumnIdContextProvider,
+  useColumnIdContext,
+  TableHeaderContextProvider,
+  useIsInTableHeader,
 } from '@fluentui/react-table';
 
 export type {
@@ -1268,6 +1272,8 @@ export type {
   TreeItemSlots,
   TreeItemState,
   TreeItemValue,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,

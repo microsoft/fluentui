@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "feat: removed breadcrumb-link component",
+  "packageName": "@fluentui/react-breadcrumb-preview",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}

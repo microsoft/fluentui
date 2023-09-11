@@ -12,7 +12,7 @@ describe('TreeItem', () => {
     getTargetElement(renderResult, attr) {
       return renderResult.container.querySelector(`.${treeItemClassNames.root}`) ?? renderResult.container;
     },
-    disabledTests: ['component-has-static-classnames-object'],
+    disabledTests: ['component-has-static-classnames-object', 'consistent-callback-args'],
     testOptions: {
       'has-static-classnames': [
         {
