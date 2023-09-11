@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Match OOF icon mapping to v8.",
+  "packageName": "@fluentui/react-badge",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
