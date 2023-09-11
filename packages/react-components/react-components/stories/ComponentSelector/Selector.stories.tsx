@@ -1,28 +1,64 @@
 import * as React from 'react';
 
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
-
+import { Checkbox, RadioGroup, Radio } from '@fluentui/react-components';
+import type { CheckboxProps } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
 export const Selector: React.FC = () => {
+  const [interactive, setInteractive] = React.useState<CheckboxProps['checked']>(false);
+  const [composition, setComposition] = React.useState<string | undefined>(undefined);
+  const [toggle, setToggle] = React.useState<CheckboxProps['checked']>(false);
+  const [navigableToPage, setNavigableToPage] = React.useState<CheckboxProps['checked']>(false);
+  const decisionProps = React.useRef<string[]>([]);
+
   return (
     <Scenario pageTitle="Component Selector">
       <h1>Component Selector</h1>
+
       <Accordion multiple>
         <AccordionItem value="faq1">
-          <AccordionHeader as="h2">
-            What's the difference between 32-bit and 64-bit versions of Windows?
-          </AccordionHeader>
+          <AccordionHeader as="h2">How the desired UI looks like?</AccordionHeader>
           <AccordionPanel>
-            <p>
-              The terms 32-bit and 64-bit refer to the way a computer's processor (also called a CPU) handles
-              information. The 64-bit version of Windows handles large amounts of random access memory (RAM) more
-              effectively than a 32-bit system. Not all devices can run the 64-bit versions of Windows.
-            </p>
+            <Checkbox label="Is interactive?" onChange={(ev, data) => setInteractive(data.checked)} />
+            {interactive && (
+              <RadioGroup
+                value={composition}
+                onChange={(_, data) => setComposition(data.value)}
+                aria-label="Single or group element"
+              >
+                <Radio value="single" label="Single element" />
+                <Radio value="group" label="Group of elements" />
+              </RadioGroup>
+            )}
+
+            {interactive && composition === 'single' && (
+              <>
+                <Checkbox
+                  label="Navigate to page on activation?"
+                  onChange={(ev, data) => {
+                    setNavigableToPage(data.checked);
+                    // when uncheck take away from array
+                    decisionProps.current.push('navigableToPage');
+                  }}
+                />
+                <Checkbox
+                  label="Can be toggled?"
+                  onChange={(ev, data) => {
+                    setToggle(data.checked);
+                    // when uncheck take away from array
+                    decisionProps.current.push('toggle');
+                    console.log('test');
+                  }}
+                />
+              </>
+            )}
+
+            {/* <Checkbox label="Group of elements" /> */}
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="faq2">
-          <AccordionHeader as="h2">How do I tell if my computer can run a 64-bit version of Windows?</AccordionHeader>
+          <AccordionHeader as="h2">What do you expect from keyboard navigation?</AccordionHeader>
           <AccordionPanel>
             <p>If you have a Windows operating system installed, open File Explorer or This PC.</p>
             <ol>
@@ -40,7 +76,7 @@ export const Selector: React.FC = () => {
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="faq3">
-          <AccordionHeader as="h2">How do I find my Windows product key?</AccordionHeader>
+          <AccordionHeader as="h2">What do you expect from screen reader behavior?</AccordionHeader>
           <AccordionPanel>
             <p>
               The product key is located inside the product packaging, on the receipt or confirmation page for a digital
