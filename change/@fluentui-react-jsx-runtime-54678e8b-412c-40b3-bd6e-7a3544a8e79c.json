@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: make /jsx-runtime compatible with Webpack 4",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
