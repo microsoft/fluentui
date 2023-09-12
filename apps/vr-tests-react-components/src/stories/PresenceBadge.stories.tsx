@@ -22,9 +22,6 @@ storiesOf('PresenceBadge Converged - status', module).addStory(
 
 storiesOf('PresenceBadge Converged - OOF status', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-  ))
   .addStory(
     'default',
     () => (
