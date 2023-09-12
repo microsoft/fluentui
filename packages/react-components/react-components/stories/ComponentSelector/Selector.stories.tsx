@@ -78,12 +78,25 @@ export const Selector: React.FC = () => {
     });
   };
 
-  const updateDecisions = (name: string, value: boolean | string) => {
+  const updateDecisions = (
+    name: string,
+    value: boolean | string,
+    modifySelectedDecisions = true,
+    decisionsToRemove = undefined,
+  ) => {
     decisionState[name] = value;
     setDecisionState({ ...decisionState });
 
+    if (!modifySelectedDecisions) {
+      return;
+    }
     if (value) {
       selectedDecisions.current.push(name);
+      if (decisionsToRemove) {
+        // In future, more than one decision to remove might be needed
+        const index = selectedDecisions.current.indexOf(decisionsToRemove);
+        selectedDecisions.current.splice(index, 1);
+      }
     } else {
       const index = selectedDecisions.current.indexOf(name);
       selectedDecisions.current.splice(index, 1);
@@ -102,7 +115,7 @@ export const Selector: React.FC = () => {
             <RadioGroup
               value={decisionState.interactive as string}
               onChange={(event, data) => {
-                updateDecisions('interactive', data.value);
+                updateDecisions('interactive', data.value, false);
               }}
               aria-labelledby="interactivity"
             >
@@ -118,7 +131,7 @@ export const Selector: React.FC = () => {
                   className={classes.secondLevel}
                   value={decisionState.composition as string}
                   onChange={(event, data) => {
-                    updateDecisions('composition', data.value);
+                    updateDecisions('composition', data.value, false);
                   }}
                   aria-labelledby="Composition"
                 >
