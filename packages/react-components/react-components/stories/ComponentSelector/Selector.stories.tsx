@@ -4,6 +4,16 @@ import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@flue
 import { Checkbox, RadioGroup, Radio, Label, CheckboxProps, makeStyles } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
+import {
+  AccordionDef,
+  CheckboxDef,
+  DataGridDef,
+  DataGridBaseDef,
+  DataGridTabbableDef,
+  MenuBaseDef,
+  MenuCheckboxDef,
+} from './components-definitions/index';
+
 const useStyles = makeStyles({
   secondLevel: { 'margin-left': '30px' },
   thirdLevel: { 'margin-left': '60px' },
@@ -18,6 +28,42 @@ export const Selector: React.FC = () => {
   const [toggle, setToggle] = React.useState<CheckboxProps['checked']>(false);
   const [navigableToPage, setNavigableToPage] = React.useState<CheckboxProps['checked']>(false);
   const decisionProps = React.useRef<string[]>([]);
+  const componentsDefinition = React.useRef<any>([]);
+  componentsDefinition.current.push(
+    AccordionDef,
+    CheckboxDef,
+    DataGridDef,
+    DataGridBaseDef,
+    DataGridTabbableDef,
+    MenuBaseDef,
+    MenuCheckboxDef,
+  );
+
+  const mergeBaseObjects = () => {
+    componentsDefinition.current.forEach(definition => {
+      for (const key in definition) {
+        if (key === 'extends') {
+          const value = definition[key];
+          // find definition which is based one
+          const baseDefiniton = componentsDefinition.current.find(def => def.name === value);
+          // create new object not delete name of base definition for others usage
+          const temporaryObject = JSON.parse(JSON.stringify(baseDefiniton));
+          delete temporaryObject.name;
+          Object.assign(definition, temporaryObject);
+        }
+      }
+    });
+  };
+
+  const cleanUpBaseObjects = () => {
+    componentsDefinition.current.forEach((definition, index) => {
+      // just check the name if includes "Base",
+      // in future would be better detection based on prop, like: "abstract": "true"
+      if (definition.name.includes('Base')) {
+        componentsDefinition.current.splice(index, 1);
+      }
+    });
+  };
 
   const updateDecisionProps = (isChecked: boolean | string, valueOfCheckbox: string) => {
     if (isChecked) {
