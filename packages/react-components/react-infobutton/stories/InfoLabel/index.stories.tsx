@@ -2,6 +2,7 @@ import { InfoLabel } from '@fluentui/react-infobutton';
 
 import descriptionMd from './InfoLabelDescription.md';
 import bestPracticesMd from './InfoLabelBestPractices.md';
+import patternDecision from './InfoLabelPatternDecision.md';
 
 export { Default } from './InfoLabelDefault.stories';
 export { Required } from './InfoLabelRequired.stories';
@@ -14,7 +15,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd, patternDecision].join('\n'),
       },
     },
   },
