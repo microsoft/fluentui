@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2023 08:51:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.5)
+
+Tue, 12 Sep 2023 08:51:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.4..@fluentui/react-table_v9.8.5)
+
+### Patches
+
+- fix: DataGrid Headers look weird on Safari ([PR #28588](https://github.com/microsoft/fluentui/pull/28588) by mehars.6925@gmail.com)
+- Bump @fluentui/react-avatar to v9.5.29 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.39 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-radio to v9.1.39 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-tabster to v9.12.9 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.7 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
 
 ## [9.8.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.4)
 

@@ -2,6 +2,53 @@
   "name": "@fluentui/react-breadcrumb-preview",
   "entries": [
     {
+      "date": "Tue, 12 Sep 2023 08:51:31 GMT",
+      "tag": "@fluentui/react-breadcrumb-preview_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "major": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "c3602be284955eee64945320ed87abb2b9e716c8",
+            "comment": "feat: removed breadcrumb-link component"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.38",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-link to v9.1.17",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.12.9",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.7",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "1cc078ada94cfe929c0aa8d60ea100cea370795d",
+            "comment": "fix: icon spacing in Breadcrumb"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:30 GMT",
       "tag": "@fluentui/react-breadcrumb-preview_v0.3.8",
       "version": "0.3.8",

@@ -2,6 +2,27 @@
   "name": "@fluentui/react-tooltip",
   "entries": [
     {
+      "date": "Tue, 12 Sep 2023 08:51:34 GMT",
+      "tag": "@fluentui/react-tooltip_v9.3.5",
+      "version": "9.3.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.7",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tooltip",
+            "comment": "Bump @fluentui/react-portal to v9.3.14",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/react-tooltip_v9.3.4",
       "version": "9.3.4",

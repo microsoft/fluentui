@@ -2,6 +2,33 @@
   "name": "@fluentui/react-search-preview",
   "entries": [
     {
+      "date": "Tue, 12 Sep 2023 08:51:33 GMT",
+      "tag": "@fluentui/react-search-preview_v0.1.16",
+      "version": "0.1.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "syphe@outlook.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "a3b86c6b8ec35354ebe2e49896c5cd36ddae80f3",
+            "comment": "Adds pointer as cursor when hovering on SearchBox clear button"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-input to v9.4.36",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-search-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.7",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/react-search-preview_v0.1.15",
       "version": "0.1.15",

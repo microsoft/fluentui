@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabs
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2023 08:51:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.40)
+
+Tue, 12 Sep 2023 08:51:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabs_v9.3.39..@fluentui/react-tabs_v9.3.40)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.7 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-tabster to v9.12.9 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
 
 ## [9.3.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabs_v9.3.39)
 
