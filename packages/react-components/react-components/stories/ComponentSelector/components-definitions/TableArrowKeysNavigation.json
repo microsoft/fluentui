@@ -1,0 +1,7 @@
+{
+  "name": "DataGrid",
+  "link": "https://react.fluentui.dev/?path=/docs/components-table--default#cell-navigation",
+  "extends": "TableBase",
+  "navigationByArrowKeys": "true",
+  "exampleName": "Cell Navigation"
+}

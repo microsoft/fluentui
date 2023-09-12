@@ -1,7 +1,14 @@
 export { default as AccordionDef } from './Accordion.json';
 export { default as CheckboxDef } from './Checkbox.json';
-export { default as DataGridDef } from './DataGrid.json';
-export { default as DataGridBaseDef } from './DataGridBase.json';
-export { default as DataGridTabbableDef } from './DataGridTabbable.json';
+export { default as TableBaseDef } from './TableBase.json';
+export { default as TableTabbableDef } from './TableTabbable.json';
+export { default as TableArrowKeysNavigationDef } from './TableArrowKeysNavigation.json';
 export { default as MenuBaseDef } from './MenuBase.json';
 export { default as MenuCheckboxDef } from './MenuCheckbox.json';
+export { default as MenuItemDef } from './MenuItem.json';
+export { default as MenuRadioDef } from './MenuRadio.json';
+export { default as MenuSubmenuDef } from './MenuSubmenu.json';
+export { default as SplitButtonDef } from './SplitButton.json';
+export { default as ToggleButtonDef } from './ToggleButton.json';
+export { default as ButtonBaseDef } from './ButtonBase.json';
+export { default as LinkDef } from './Link.json';

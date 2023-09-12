@@ -1,0 +1,7 @@
+{
+  "name": "Table",
+  "exampleName": "Cell Actions",
+  "link": "https://react.fluentui.dev/?path=/docs/components-table--default#cell-actions",
+  "navigationByTabKey": "true",
+  "extends": "TableBase"
+}

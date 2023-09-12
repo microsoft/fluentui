@@ -1,17 +1,32 @@
 import * as React from 'react';
 
-import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
+import {
+  Accordion,
+  AccordionHeader,
+  AccordionItem,
+  AccordionPanel,
+  Link,
+  Text,
+  Divider,
+} from '@fluentui/react-components';
 import { Checkbox, RadioGroup, Radio, Label, makeStyles } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
 import {
   AccordionDef,
   CheckboxDef,
-  DataGridDef,
-  DataGridBaseDef,
-  DataGridTabbableDef,
+  TableArrowKeysNavigationDef,
+  TableBaseDef,
+  TableTabbableDef,
   MenuBaseDef,
   MenuCheckboxDef,
+  MenuItemDef,
+  MenuRadioDef,
+  MenuSubmenuDef,
+  SplitButtonDef,
+  ToggleButtonDef,
+  ButtonBaseDef,
+  LinkDef,
 } from './components-definitions/index';
 
 const decisionRadioValues: Record<string, string[]> = {
@@ -44,17 +59,6 @@ export const Selector: React.FC = () => {
   });
 
   const selectedDecisions = React.useRef<string[]>([]);
-  const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
-  componentsDefinitions.current.push(
-    AccordionDef,
-    CheckboxDef,
-    DataGridDef,
-    DataGridBaseDef,
-    DataGridTabbableDef,
-    MenuBaseDef,
-    MenuCheckboxDef,
-  );
-
   const mergeBaseObjects = () => {
     componentsDefinitions.current.forEach(definition => {
       for (const key in definition) {
@@ -79,6 +83,49 @@ export const Selector: React.FC = () => {
         componentsDefinitions.current.splice(index, 1);
       }
     });
+  };
+
+  const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
+  if (componentsDefinitions.current.length === 0) {
+    componentsDefinitions.current.push(
+      AccordionDef,
+      CheckboxDef,
+      TableArrowKeysNavigationDef,
+      TableBaseDef,
+      TableTabbableDef,
+      MenuBaseDef,
+      MenuCheckboxDef,
+      MenuItemDef,
+      MenuRadioDef,
+      MenuSubmenuDef,
+      SplitButtonDef,
+      ToggleButtonDef,
+      ButtonBaseDef,
+      LinkDef,
+    );
+    mergeBaseObjects();
+    cleanUpBaseObjects();
+  }
+
+  const getComponent = () => {
+    const suitableComponents = [];
+
+    componentsDefinitions.current.forEach(definition => {
+      const keysInDefinitions = Object.keys(definition);
+
+      const matching = [];
+      selectedDecisions.current.forEach(decision => {
+        if (keysInDefinitions.indexOf(decision) >= 0) {
+          matching.push('matched');
+        }
+      });
+
+      if (selectedDecisions.current.length === matching.length) {
+        console.log('fully matched');
+        suitableComponents.push(definition);
+      }
+    });
+    return suitableComponents;
   };
 
   const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
@@ -202,10 +249,24 @@ export const Selector: React.FC = () => {
         </AccordionItem>
       </Accordion>
 
-      <h2>Matching components</h2>
+      <h2 id="matching-heading">Matching components</h2>
       {selectedDecisions.current.length > 0 && (
-        <div className={classes.forthLevel} tabIndex={0}>
-          Available component(s): {JSON.stringify(selectedDecisions.current)}
+        <div role="group" aria-labelledby="matching-heading">
+          {getComponent().map(component => {
+            return (
+              <div key="component">
+                <Text weight="semibold">
+                  Component name:{' '}
+                  <Link target="_blank" inline href={component.link}>
+                    {component.name}{' '}
+                  </Link>
+                </Text>
+                <br />
+                <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
+                <Divider appearance="strong" />
+              </div>
+            );
+          })}
         </div>
       )}
     </Scenario>
