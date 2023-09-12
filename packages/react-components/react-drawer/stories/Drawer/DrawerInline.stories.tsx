@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
-import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
+import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -11,6 +11,10 @@ const useStyles = makeStyles({
     display: 'flex',
     height: '480px',
     backgroundColor: '#fff',
+  },
+
+  flexColumn: {
+    flexDirection: 'column',
   },
 
   content: {
@@ -43,51 +47,79 @@ export const Inline = () => {
 
   const [leftOpen, setLeftOpen] = React.useState(false);
   const [rightOpen, setRightOpen] = React.useState(false);
+  const [bottomOpen, setBottomOpen] = React.useState(false);
 
   return (
-    <div className={styles.root}>
-      <DrawerInline open={leftOpen}>
-        <DrawerHeader>
-          <DrawerHeaderTitle
-            action={
-              <Button
-                appearance="subtle"
-                aria-label="Close"
-                icon={<Dismiss24Regular />}
-                onClick={() => setLeftOpen(false)}
-              />
-            }
-          >
-            Left Inline Drawer
-          </DrawerHeaderTitle>
-        </DrawerHeader>
+    <div className={mergeClasses(styles.root, styles.flexColumn)}>
+      <div className={styles.root}>
+        <DrawerInline open={leftOpen}>
+          <DrawerHeader>
+            <DrawerHeaderTitle
+              action={
+                <Button
+                  appearance="subtle"
+                  aria-label="Close"
+                  icon={<Dismiss24Regular />}
+                  onClick={() => setLeftOpen(false)}
+                />
+              }
+            >
+              Left Inline Drawer
+            </DrawerHeaderTitle>
+          </DrawerHeader>
 
-        <DrawerBody>
-          <p>Drawer content</p>
-        </DrawerBody>
-      </DrawerInline>
+          <DrawerBody>
+            <p>Drawer content</p>
+          </DrawerBody>
+        </DrawerInline>
 
-      <div className={styles.content}>
-        <div className={styles.buttons}>
-          <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-            {leftOpen ? 'Close' : 'Open'} left
-          </Button>
+        <div className={styles.content}>
+          <div className={styles.buttons}>
+            <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
+              {leftOpen ? 'Close' : 'Open'} left
+            </Button>
 
-          <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-            {rightOpen ? 'Close' : 'Open'} right
-          </Button>
+            <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
+              {rightOpen ? 'Close' : 'Open'} right
+            </Button>
+
+            <Button appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
+              {bottomOpen ? 'Close' : 'Open'} bottom
+            </Button>
+          </div>
+
+          {Array.from({ length: 100 }, (_, i) => (
+            <p key={i}>
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatem similique reiciendis, ipsa
+              accusamus distinctio dolorum quisquam, tenetur minima animi autem nobis. Molestias totam natus, deleniti
+              nam itaque placeat quisquam!
+            </p>
+          ))}
         </div>
 
-        {Array.from({ length: 100 }, (_, i) => (
-          <p key={i}>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Tempore voluptatem similique reiciendis, ipsa
-            accusamus distinctio dolorum quisquam, tenetur minima animi autem nobis. Molestias totam natus, deleniti nam
-            itaque placeat quisquam!
-          </p>
-        ))}
+        <DrawerInline position="end" open={rightOpen}>
+          <DrawerHeader>
+            <DrawerHeaderTitle
+              action={
+                <Button
+                  appearance="subtle"
+                  aria-label="Close"
+                  icon={<Dismiss24Regular />}
+                  onClick={() => setRightOpen(false)}
+                />
+              }
+            >
+              Right Inline Drawer
+            </DrawerHeaderTitle>
+          </DrawerHeader>
+
+          <DrawerBody>
+            <p>Drawer content</p>
+          </DrawerBody>
+        </DrawerInline>
       </div>
 
-      <DrawerInline position="end" open={rightOpen}>
+      <DrawerInline position="bottom" open={bottomOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -95,11 +127,11 @@ export const Inline = () => {
                 appearance="subtle"
                 aria-label="Close"
                 icon={<Dismiss24Regular />}
-                onClick={() => setRightOpen(false)}
+                onClick={() => setBottomOpen(false)}
               />
             }
           >
-            Right Inline Drawer
+            Bottom Inline Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 

@@ -53,6 +53,12 @@ export const useDrawerBaseStyles = makeStyles({
     right: 0,
     left: 'auto',
   },
+  bottom: {
+    bottom: 0,
+    top: 'auto',
+    height: 'calc(100vh - 188px)',
+    width: '100vw',
+  },
 
   /* Sizes */
   small: {

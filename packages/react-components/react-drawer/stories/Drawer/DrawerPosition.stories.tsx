@@ -28,6 +28,11 @@ export const Position = () => {
     setIsOpen(true);
   }, []);
 
+  const onClickBottomButton = React.useCallback(() => {
+    setPosition('bottom');
+    setIsOpen(true);
+  }, []);
+
   return (
     <div>
       <DrawerOverlay position={position} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
@@ -42,7 +47,7 @@ export const Position = () => {
               />
             }
           >
-            {position === 'start' ? 'Left' : 'Right'} Drawer
+            {position === 'start' ? 'Left' : position === 'end' ? 'Right' : 'Bottom'} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
@@ -59,6 +64,10 @@ export const Position = () => {
         <Button appearance="primary" onClick={onClickRightButton}>
           Open right
         </Button>
+
+        <Button appearance="primary" onClick={onClickBottomButton}>
+          Open Bottom
+        </Button>
       </div>
     </div>
   );
@@ -68,7 +77,7 @@ Position.parameters = {
   docs: {
     description: {
       story: [
-        'When a Drawer is invoked, it slides in from either the left or right side of the screen.',
+        'When a Drawer is invoked, it slides in from either the left or right side, or bottom of the screen.',
         'This can be specified by the `position` prop.',
       ].join('\n'),
     },
