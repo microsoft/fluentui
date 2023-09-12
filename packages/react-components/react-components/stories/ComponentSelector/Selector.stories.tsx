@@ -14,6 +14,10 @@ import {
   MenuCheckboxDef,
 } from './components-definitions/index';
 
+const decisionRadioValues: Record<string, string[]> = {
+  navigationBy: ['navigationByArrowKeys', 'navigationByTabKey'],
+};
+
 const useStyles = makeStyles({
   secondLevel: { 'margin-left': '30px' },
   thirdLevel: { 'margin-left': '60px' },
@@ -31,8 +35,7 @@ export const Selector: React.FC = () => {
     navigableToPage: false,
 
     // Keyboard navigation
-    navigationByArrowKeys: false,
-    navigationByTabKey: false,
+    navigationBy: undefined,
     innerNavigationAfterEnter: false,
     nestedNavigation: false,
 
@@ -78,12 +81,7 @@ export const Selector: React.FC = () => {
     });
   };
 
-  const updateDecisions = (
-    name: string,
-    value: boolean | string,
-    modifySelectedDecisions = true,
-    decisionsToRemove = undefined,
-  ) => {
+  const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
     decisionState[name] = value;
     setDecisionState({ ...decisionState });
 
@@ -91,11 +89,19 @@ export const Selector: React.FC = () => {
       return;
     }
     if (value) {
-      selectedDecisions.current.push(name);
-      if (decisionsToRemove) {
-        // In future, more than one decision to remove might be needed
-        const index = selectedDecisions.current.indexOf(decisionsToRemove);
-        selectedDecisions.current.splice(index, 1);
+      if (name in decisionRadioValues) {
+        // Remove the props other than the value from selected decisions
+        decisionRadioValues[name].forEach(prop => {
+          if (prop !== value) {
+            const index = selectedDecisions.current.indexOf(prop);
+            selectedDecisions.current.splice(index, 1);
+          }
+        });
+
+        // The value is the name of the prop we want to push into selected decisions
+        selectedDecisions.current.push(value as string);
+      } else {
+        selectedDecisions.current.push(name);
       }
     } else {
       const index = selectedDecisions.current.indexOf(name);
@@ -173,7 +179,22 @@ export const Selector: React.FC = () => {
         </AccordionItem>
         <AccordionItem value="keyboardNavigation">
           <AccordionHeader as="h2">What do you expect from keyboard navigation?</AccordionHeader>
-          <AccordionPanel></AccordionPanel>
+          <AccordionPanel>
+            <Label className={classes.thirdLevel} id="navigationBy">
+              Navigation by
+            </Label>
+            <RadioGroup
+              className={classes.secondLevel}
+              value={decisionState.navigationBy as string}
+              onChange={(event, data) => {
+                updateDecisions('navigationBy', data.value);
+              }}
+              aria-labelledby="navigationBy"
+            >
+              <Radio value="navigationByArrowKeys" label="Arrow keys" />
+              <Radio value="navigationByTabKey" label="Tab key" />
+            </RadioGroup>
+          </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="screenReader">
           <AccordionHeader as="h2">What do you expect from screen reader behavior?</AccordionHeader>
