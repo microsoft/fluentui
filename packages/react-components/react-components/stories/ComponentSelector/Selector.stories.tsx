@@ -12,6 +12,15 @@ export const Selector: React.FC = () => {
   const [navigableToPage, setNavigableToPage] = React.useState<CheckboxProps['checked']>(false);
   const decisionProps = React.useRef<string[]>([]);
 
+  const updateDecisionProps = (isChecked, valueOfCheckbox) => {
+    if (isChecked) {
+      decisionProps.current.push(valueOfCheckbox);
+    } else {
+      const index = decisionProps.current.indexOf(valueOfCheckbox);
+      decisionProps.current.splice(index, 1);
+    }
+  };
+
   return (
     <Scenario pageTitle="Component Selector">
       <h1>Component Selector</h1>
@@ -39,15 +48,14 @@ export const Selector: React.FC = () => {
                       onChange={(ev, data) => {
                         setNavigableToPage(data.checked);
                         // when uncheck take away from array
-                        decisionProps.current.push('navigableToPage');
+                        updateDecisionProps(data.checked, 'navigableToPage');
                       }}
                     />
                     <Checkbox
                       label="Can be toggled?"
                       onChange={(ev, data) => {
                         setToggle(data.checked);
-                        // when uncheck take away from array
-                        decisionProps.current.push('toggle');
+                        updateDecisionProps(data.checked, 'toggle');
                         console.log('test');
                       }}
                     />
@@ -55,6 +63,7 @@ export const Selector: React.FC = () => {
                 )}
               </>
             )}
+            {decisionProps.current.length > 0 && JSON.stringify(decisionProps.current)}
             {/* <Checkbox label="Group of elements" /> */}
           </AccordionPanel>
         </AccordionItem>
