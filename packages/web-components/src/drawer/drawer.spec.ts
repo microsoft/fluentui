@@ -32,25 +32,25 @@ test.describe('Drawer', () => {
   test('should reflect size attribute', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-          <fluent-drawer control-size="medium"></fluent-drawer>
+          <fluent-drawer size="medium"></fluent-drawer>
       `;
     });
 
-    await expect(element).toHaveAttribute('control-size', 'medium');
-    await expect(element).toHaveJSProperty('controlSize', 'medium');
+    await expect(element).toHaveAttribute('size', 'medium');
+    await expect(element).toHaveJSProperty('size', 'medium');
 
     await element.evaluate((node: Drawer) => {
-      node.controlSize = 'small';
+      node.size = 'small';
     });
 
-    await expect(element).toHaveAttribute('control-size', 'small');
-    await expect(element).toHaveJSProperty('controlSize', 'small');
+    await expect(element).toHaveAttribute('size', 'small');
+    await expect(element).toHaveJSProperty('size', 'small');
 
     await element.evaluate((node: Drawer) => {
-      node.controlSize = 'large';
+      node.size = 'large';
     });
-    await expect(element).toHaveAttribute('control-size', 'large');
-    await expect(element).toHaveJSProperty('controlSize', 'large');
+    await expect(element).toHaveAttribute('size', 'large');
+    await expect(element).toHaveJSProperty('size', 'large');
   });
 
   test('should reflect position attribute', async () => {
@@ -359,7 +359,7 @@ test.describe('Drawer', () => {
       element.evaluate(
         node =>
           new Promise(resolve => {
-            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.controlSize));
+            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.size));
           }),
       ),
       await element.evaluate((node: Drawer) => {
@@ -371,7 +371,7 @@ test.describe('Drawer', () => {
 
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer control-size="small"></fluent-drawer>
+            <fluent-drawer size="small"></fluent-drawer>
         `;
     });
 
@@ -379,7 +379,7 @@ test.describe('Drawer', () => {
       element.evaluate(
         node =>
           new Promise(resolve => {
-            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.controlSize));
+            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.size));
           }),
       ),
       await element.evaluate((node: Drawer) => {
@@ -391,7 +391,7 @@ test.describe('Drawer', () => {
 
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer control-size="large"></fluent-drawer>
+            <fluent-drawer size="large"></fluent-drawer>
         `;
     });
 
@@ -399,7 +399,7 @@ test.describe('Drawer', () => {
       element.evaluate(
         node =>
           new Promise(resolve => {
-            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.controlSize));
+            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.size));
           }),
       ),
       await element.evaluate((node: Drawer) => {
@@ -419,7 +419,7 @@ test.describe('Drawer', () => {
       element.evaluate(
         node =>
           new Promise(resolve => {
-            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.controlSize));
+            node.addEventListener('openChanged', (event: Event) => resolve((event as CustomEvent).detail.size));
           }),
       ),
       await element.evaluate((node: Drawer) => {

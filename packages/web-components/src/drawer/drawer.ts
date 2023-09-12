@@ -6,7 +6,7 @@ import { DrawerPosition, DrawerSize } from './drawer.options.js';
 export interface OpenEvent {
   open: boolean;
   position?: string;
-  controlSize?: DrawerSize | number;
+  size?: DrawerSize | number;
 }
 
 export class Drawer extends FASTElement {
@@ -68,14 +68,14 @@ export class Drawer extends FASTElement {
   public position?: DrawerPosition;
 
   /**
-   * Sets the control size of the drawer (small/medium/large).
+   * Sets the size of the drawer (small/medium/large).
    * @public
    * @remarks
-   * HTML Attribute: control-size
+   * HTML Attribute: size
    * @defaultValue medium
    */
-  @attr({ attribute: 'control-size' })
-  public controlSize?: DrawerSize;
+  @attr({ attribute: 'size' })
+  public size?: DrawerSize;
 
   /**
    * Sets the aria-labelledby attribute of the drawer.
@@ -124,34 +124,37 @@ export class Drawer extends FASTElement {
   }
 
   /**
+   * Returns the size of the drawer based on its current size property.
+   *
+   * @returns {number} - The size of the drawer. It returns specific pixel values for 'small', 'medium', and 'large' sizes. For other sizes, it returns the computed width of the drawer.
+   */
+  get sizeValue(): number {
+    switch (this.size) {
+      case 'small':
+        return 320;
+      case 'medium':
+        return 592;
+      case 'large':
+        return 940;
+      default:
+        return parseFloat(window.getComputedStyle(this).width);
+    }
+  }
+
+  /**
    * Handles changes to the `open` property.
    * @param prev - The previous value of `open`.
    * @param next - The new value of `open`.
    * @remarks
-   * This method is invoked when the `open` property changes and is responsible for updating the focus and emitting the `change` event.
+   * This method is invoked when the `open` property changes and is responsible for emitting the `openChanged` event.
    * @internal
    */
   public openChanged(prev: boolean, next: boolean): void {
     if (this.$fastController.isConnected) {
-      let controlSize;
-      switch (this.controlSize) {
-        case 'small':
-          controlSize = 320;
-          break;
-        case 'medium':
-          controlSize = 592;
-          break;
-        case 'large':
-          controlSize = 940;
-          break;
-      }
-      if (!controlSize) {
-        controlSize = parseFloat(window.getComputedStyle(this).width);
-      }
       const eventDetail: OpenEvent = {
         open: this.open,
         position: this.position ? this.position : 'right',
-        controlSize: controlSize,
+        size: this.sizeValue,
       };
       const event = new CustomEvent<OpenEvent>('openChanged', {
         detail: eventDetail,

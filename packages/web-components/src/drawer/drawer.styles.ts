@@ -18,6 +18,7 @@ import {
   lineHeightBase300,
   lineHeightBase500,
   shadow64,
+  spacingHorizontalL,
   spacingHorizontalS,
   spacingHorizontalXXL,
   spacingVerticalL,
@@ -30,17 +31,18 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('flex')}
+  ${display('inline-flex')}
+
   :host {
+    position: fixed;
     width: 592px;
   }
-  :host([control-size='small']) {
+  :host([size='small']) {
     width: 320px;
   }
-  :host([control-size='large']) {
+  :host([size='large']) {
     width: 940px;
   }
-
   :host(:focus-visible) .root:after {
     content: '';
     position: absolute;
@@ -71,10 +73,9 @@ export const styles = css`
     grid-template-rows: min-content 1fr min-content;
     row-gap: ${spacingVerticalS};
     background: ${colorNeutralBackground1};
-    transform: translateX(100%);
     transition: transform ${durationNormal} ${curveDecelerateMid};
+    transform: translateX(100%);
   }
-
   :host([position='left']) .root {
     right: auto;
     left: 0;
@@ -82,17 +83,11 @@ export const styles = css`
     column-gap: ${spacingHorizontalS};
     transform: translateX(-100%);
   }
-
   :host([open][position='left']) .root,
   :host([open]) .root {
     transform: translateX(0);
     transition: transform ${durationNormal} ${curveAccelerateMid};
     box-shadow: ${shadow64};
-  }
-
-  ::slotted([slot='header']),
-  ::slotted([slot='toolbar']) {
-    width: 100%;
   }
 
   .overlay {
@@ -105,29 +100,39 @@ export const styles = css`
     background-color: ${colorBackgroundOverlay};
     z-index: 1;
   }
-
   .header-container {
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL};
+    padding-top: ${spacingVerticalXXL};
     display: flex;
     flex-direction: column;
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
-    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL} 0;
+    padding-top: var(--spacingVerticalXXL);
     row-gap: ${spacingVerticalS};
   }
+  .content {
+    flex-grow: 1;
+    position: relative;
+    padding: 0 ${spacingHorizontalXXL} ${spacingVerticalXXL};
+    overflow-y: auto;
+  }
 
-  .footer {
+  ::slotted([slot='navigation']) {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 1fr;
+    column-gap: ${spacingHorizontalS};
+    padding: 0 ${spacingHorizontalL};
+    justify-content: flex-start;
+  }
+  ::slotted([slot='header']) {
+    padding: 0 var(--spacingHorizontalL) 0 var(--spacingHorizontalXXL);
+  }
+  ::slotted([slot='footer']) {
     display: flex;
     flex-direction: row;
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
     border-top: ${strokeWidthThin} solid var(--overflow-border, ${colorTransparentStroke});
-  }
-  .content {
-    flex-grow: 1;
-    position: relative;
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingVerticalXXL};
-    overflow-y: auto;
   }
 `;

@@ -11,8 +11,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <template
       ?open="${x => x.open}"
       ?modal="${x => x.modal}"
-      ?hidden="${x => !x.open}"
-      control-size="${x => x.controlSize}"
+      size="${x => x.size}"
       position="${x => x.position}"
       role="${x => (x.modal ? 'dialog' : 'complementary')}"
       tabindex="${x => (x.open ? '0' : '-1')}"
@@ -33,19 +32,13 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       <div class="root" part="root" ${ref('root')}>
         <slot name="start"></slot>
         <div class="header-container">
-          <div class="buttons" part="buttons">
-            <slot name="buttons"></slot>
-          </div>
-          <div class="header" part="header">
-            <slot name="header"></slot>
-          </div>
+          <slot name="navigation"></slot>
+          <slot name="header"></slot>
         </div>
         <div class="content" part="content" ${ref('content')}>
           <slot></slot>
         </div>
-        <div class="footer" part="footer">
-          <slot name="footer"></slot>
-        </div>
+        <slot name="footer"></slot>
         <slot name="end"></slot>
       </div>
     </template>
