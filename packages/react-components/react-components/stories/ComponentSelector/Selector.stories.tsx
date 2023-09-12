@@ -4,6 +4,7 @@ import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@flue
 import { Checkbox, RadioGroup, Radio } from '@fluentui/react-components';
 import type { CheckboxProps } from '@fluentui/react-components';
 import { Scenario } from './utils';
+import * as AccordionProp from './component-attributes/Accordion.json';
 
 export const Selector: React.FC = () => {
   const [interactive, setInteractive] = React.useState<CheckboxProps['checked']>(false);
@@ -12,7 +13,7 @@ export const Selector: React.FC = () => {
   const [navigableToPage, setNavigableToPage] = React.useState<CheckboxProps['checked']>(false);
   const decisionProps = React.useRef<string[]>([]);
 
-  const updateDecisionProps = (isChecked, valueOfCheckbox) => {
+  const updateDecisionProps = (isChecked: boolean | string, valueOfCheckbox: string) => {
     if (isChecked) {
       decisionProps.current.push(valueOfCheckbox);
     } else {
