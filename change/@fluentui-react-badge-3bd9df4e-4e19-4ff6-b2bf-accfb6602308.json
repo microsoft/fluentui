@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Match OOF icon mapping to v8.",
+  "comment": "fix: Presence badge should show Out of Office icon for Away+OOF and Offline+OOF statuses.",
   "packageName": "@fluentui/react-badge",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"

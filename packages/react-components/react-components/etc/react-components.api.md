@@ -468,11 +468,22 @@ import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { presenceAvailableFilled } from '@fluentui/react-badge';
+import { presenceAvailableRegular } from '@fluentui/react-badge';
+import { presenceAwayFilled } from '@fluentui/react-badge';
+import { presenceAwayRegular } from '@fluentui/react-badge';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { presenceBlockedRegular } from '@fluentui/react-badge';
+import { presenceBusyFilled } from '@fluentui/react-badge';
+import { presenceDndFilled } from '@fluentui/react-badge';
+import { presenceDndRegular } from '@fluentui/react-badge';
+import { presenceOfflineRegular } from '@fluentui/react-badge';
+import { presenceOofRegular } from '@fluentui/react-badge';
+import { presenceUnknownRegular } from '@fluentui/react-badge';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -2104,6 +2115,14 @@ export { PositioningShorthandValue }
 
 export { PositioningVirtualElement }
 
+export { presenceAvailableFilled }
+
+export { presenceAvailableRegular }
+
+export { presenceAwayFilled }
+
+export { presenceAwayRegular }
+
 export { PresenceBadge }
 
 export { presenceBadgeClassNames }
@@ -2113,6 +2132,20 @@ export { PresenceBadgeProps }
 export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
+
+export { presenceBlockedRegular }
+
+export { presenceBusyFilled }
+
+export { presenceDndFilled }
+
+export { presenceDndRegular }
+
+export { presenceOfflineRegular }
+
+export { presenceOofRegular }
+
+export { presenceUnknownRegular }
 
 export { ProgressBar }
 
