@@ -1,0 +1,6 @@
+{
+  "name": "MenuItem",
+  "link": "https://react.fluentui.dev/?path=/docs/components-menu-menu--default#radio-items",
+  "extends": "MenuBase",
+  "requiredNodes": ["menuitem"]
+}

@@ -1,0 +1,7 @@
+{
+  "name": "MenuSubmenu",
+  "link": "https://react.fluentui.dev/?path=/docs/components-menu-menu--default#nested-submenus",
+  "extends": "MenuBase",
+  "requiredNodes": ["menuitem", "menuitemradio", "menuitemcheckbox"],
+  "nested": "true"
+}
