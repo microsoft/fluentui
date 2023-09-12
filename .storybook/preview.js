@@ -48,9 +48,13 @@ export const parameters = {
       'react-dom': '^17',
       // necessary when using typescript in CodeSandbox
       'react-scripts': 'latest',
+      // necessary for FluentProvider:
+      '@fluentui/react-components': '^9.0.0',
+      // Pin @swc/helpers - in 0.4.36 it uses dependency alias which is not supported by CodeSandbox.
+      // Remove this pinned version when @swc/helpers will be upgraded https://github.com/microsoft/fluentui/issues/28919
+      '@swc/helpers': '0.4.35',
     },
     optionalDependencies: {
-      '@fluentui/react-components': '^9.0.0', // necessary for FluentProvider
       '@fluentui/react-icons': 'latest',
     },
     indexTsx: dedent`

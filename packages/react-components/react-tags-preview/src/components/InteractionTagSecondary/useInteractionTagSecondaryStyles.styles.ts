@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InteractionTagSecondarySlots, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -12,31 +12,41 @@ const mediumIconSize = '20px';
 const smallIconSize = '16px';
 const extraSmallIconSize = '12px';
 
-const useRootStyles = makeStyles({
-  base: {
-    // reset default button style:
-    color: 'inherit',
-    fontFamily: 'inherit',
-    ...shorthands.padding(0),
-    ...shorthands.borderStyle('none'),
-    appearance: 'button',
-    textAlign: 'unset',
-    backgroundColor: 'transparent',
+const useRootBaseClassName = makeResetStyles({
+  // reset default button style:
+  color: 'inherit',
+  fontFamily: 'inherit',
+  padding: '0px',
+  borderStyle: 'none',
+  appearance: 'button',
+  textAlign: 'unset',
+  backgroundColor: 'transparent',
 
-    display: 'flex',
-    height: '100%',
-    alignItems: 'center',
+  display: 'flex',
+  height: '100%',
+  alignItems: 'center',
 
-    ...createCustomFocusIndicatorStyle(shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2)),
+  ...createCustomFocusIndicatorStyle(shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2)),
 
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
 
-    // divider:
-    borderLeftColor: tokens.colorNeutralStroke1,
-    borderTopLeftRadius: tokens.borderRadiusNone,
-    borderBottomLeftRadius: tokens.borderRadiusNone,
+  // divider:
+  borderLeftColor: tokens.colorNeutralStroke1,
+  borderTopLeftRadius: tokens.borderRadiusNone,
+  borderBottomLeftRadius: tokens.borderRadiusNone,
+
+  // windows high contrast:
+  '@media (forced-colors: active)': {
+    ':hover': {
+      backgroundColor: 'HighlightText',
+    },
+    ':active': {
+      backgroundColor: 'HighlightText',
+    },
   },
+});
 
+const useRootStyles = makeStyles({
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
@@ -45,7 +55,7 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Hover,
       color: tokens.colorNeutralForeground2BrandHover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2BrandPressed,
     },
@@ -59,7 +69,7 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundHover,
       color: tokens.colorNeutralForeground2BrandHover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground2BrandPressed,
     },
@@ -73,7 +83,7 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackground2Hover,
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
@@ -130,6 +140,7 @@ const useRootDisabledStyles = makeStyles({
 export const useInteractionTagSecondaryStyles_unstable = (
   state: InteractionTagSecondaryState,
 ): InteractionTagSecondaryState => {
+  const rootBaseClassName = useRootBaseClassName();
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
 
@@ -137,7 +148,7 @@ export const useInteractionTagSecondaryStyles_unstable = (
 
   state.root.className = mergeClasses(
     interactionTagSecondaryClassNames.root,
-    rootStyles.base,
+    rootBaseClassName,
     state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
     rootStyles[shape],
     rootStyles[size],

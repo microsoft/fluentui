@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
-import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
@@ -15,8 +15,6 @@ const tagAvatarShapeMap = {
   rounded: 'square',
   circular: 'circular',
 } as const;
-
-const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
 /**
  * Create the state required to render Tag.
@@ -97,7 +95,8 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     dismissIcon: slot.optional(props.dismissIcon, {
       renderByDefault: dismissible,
       defaultProps: {
-        children: <DismissIcon />,
+        children: <DismissRegular />,
+        role: 'img',
       },
       elementType: 'span',
     }),

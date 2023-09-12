@@ -992,9 +992,11 @@ export {
   useDataGridBody_unstable,
   renderDataGridBody_unstable,
   DataGrid,
+  DataGridContextProvider,
   dataGridClassNames,
   useDataGridStyles_unstable,
   useDataGrid_unstable,
+  useDataGridContext_unstable,
   renderDataGrid_unstable,
   useDataGridContextValues_unstable,
   DataGridHeader,
@@ -1015,6 +1017,10 @@ export {
   TableRowIdContextProvider,
   useTableRowIdContext,
   useTableColumnSizing_unstable,
+  ColumnIdContextProvider,
+  useColumnIdContext,
+  TableHeaderContextProvider,
+  useIsInTableHeader,
 } from '@fluentui/react-table';
 
 export type {
@@ -1266,6 +1272,8 @@ export type {
   TreeItemSlots,
   TreeItemState,
   TreeItemValue,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,

@@ -97,14 +97,15 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   );
 
   const positioningRefs = usePopoverRefs(initialState);
-
   const { targetDocument } = useFluent();
+
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
     disabled: !open,
+    disabledFocusOnIframe: !(props.closeOnIframeFocus ?? true),
   });
 
   // only close on scroll for context, or when closeOnScroll is specified

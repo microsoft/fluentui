@@ -16,6 +16,7 @@ import type { TriggerProps } from '@fluentui/react-utilities';
 // @public
 export type OnVisibleChangeData = {
     visible: boolean;
+    documentKeyboardEvent?: KeyboardEvent;
 };
 
 // @public

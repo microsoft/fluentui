@@ -471,6 +471,8 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
+    // (undocumented)
     get cursorLocation(): number | null;
     // (undocumented)
     static defaultProps: {
@@ -8800,6 +8802,8 @@ export interface IStackItemTokens {
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ElementType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    // @deprecated
+    doNotRenderFalsyValues?: boolean;
     enableScopedSelectors?: boolean;
     // @deprecated
     gap?: number | string;

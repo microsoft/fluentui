@@ -7,52 +7,77 @@ import {
   InteractionTagPrimary,
   InteractionTagSecondary,
 } from '@fluentui/react-tags-preview';
+import { makeStyles } from '@fluentui/react-components';
 
-export const Dismiss = () => {
-  const defaultItems = [
-    {
-      value: '1',
-      tag: (
-        <Tag dismissible value="1" key="1" aria-label="Tag1, remove">
-          Tag 1
-        </Tag>
-      ),
-    },
-    {
-      value: '2',
-      tag: (
-        <Tag dismissible value="2" key="2" aria-label="Tag2, remove">
-          Tag 2
-        </Tag>
-      ),
-    },
-    {
-      value: 'foo',
-      tag: (
-        <InteractionTag value="foo" key="foo">
-          <InteractionTagPrimary hasSecondaryAction>Foo</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="Foo, remove" />
-        </InteractionTag>
-      ),
-    },
-    {
-      value: 'bar',
-      tag: (
-        <InteractionTag value="bar" key="bar">
-          <InteractionTagPrimary hasSecondaryAction>Bar</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="Bar, remove" />
-        </InteractionTag>
-      ),
-    },
-  ];
+const initialTags = [
+  { value: '1', children: 'Tag 1' },
+  { value: '2', children: 'Tag 2' },
+  { value: '3', children: 'Tag 3' },
+];
 
-  const [items, setItems] = React.useState(defaultItems);
-
+const DismissWithTags = () => {
+  const [visibleTags, setVisibleTags] = React.useState(initialTags);
   const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
-    setItems([...items].filter(item => item.value !== dismissedTagValue));
+    setVisibleTags([...visibleTags].filter(tag => tag.value !== dismissedTagValue));
   };
 
-  return <TagGroup onDismiss={removeItem}>{items.map(item => item.tag)}</TagGroup>;
+  return (
+    <TagGroup onDismiss={removeItem} aria-label="TagGroup example with dismissible Tags">
+      {visibleTags.map(tag => (
+        <Tag dismissible dismissIcon={{ 'aria-label': 'remove' }} value={tag.value} key={tag.value}>
+          {tag.children}
+        </Tag>
+      ))}
+    </TagGroup>
+  );
+};
+
+const DismissWithInteractionTags = () => {
+  const [visibleTags, setVisibleTags] = React.useState(initialTags);
+  const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
+    setVisibleTags([...visibleTags].filter(tag => tag.value !== dismissedTagValue));
+  };
+
+  return (
+    <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
+      {visibleTags.map(tag => {
+        const primaryId = `dismiss-primary-${tag.value}`;
+        const secondaryId = `dismiss-secondary-${tag.value}`;
+        return (
+          <InteractionTag value={tag.value} key={tag.value}>
+            <InteractionTagPrimary id={primaryId} hasSecondaryAction>
+              {tag.children}
+            </InteractionTagPrimary>
+            <InteractionTagSecondary
+              id={secondaryId}
+              aria-label="remove"
+              aria-labelledby={`${primaryId} ${secondaryId}`}
+            />
+          </InteractionTag>
+        );
+      })}
+    </TagGroup>
+  );
+};
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '10px',
+  },
+});
+
+export const Dismiss = () => {
+  const styles = useStyles();
+  return (
+    <div className={styles.container}>
+      Example with Tag:
+      <DismissWithTags />
+      Example with InteractionTag:
+      <DismissWithInteractionTags />
+    </div>
+  );
 };
 
 Dismiss.storyName = 'Dismiss';
