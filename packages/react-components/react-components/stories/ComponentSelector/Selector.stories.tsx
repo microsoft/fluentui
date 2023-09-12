@@ -1,13 +1,19 @@
 import * as React from 'react';
 
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
-import { Checkbox, RadioGroup, Radio } from '@fluentui/react-components';
-import type { CheckboxProps } from '@fluentui/react-components';
+import { Checkbox, RadioGroup, Radio, Label, CheckboxProps, makeStyles } from '@fluentui/react-components';
 import { Scenario } from './utils';
-import * as AccordionProp from './component-attributes/Accordion.json';
+
+const useStyles = makeStyles({
+  secondLevel: { 'margin-left': '30px' },
+  thirdLevel: { 'margin-left': '60px' },
+  forthLevel: { 'margin-left': '90px' },
+});
 
 export const Selector: React.FC = () => {
-  const [interactive, setInteractive] = React.useState<CheckboxProps['checked']>(false);
+  const classes = useStyles();
+  // const [interactive, setInteractive] = React.useState<CheckboxProps['checked']>(false);
+  const [interactive, setInteractive] = React.useState<string | undefined>(undefined);
   const [composition, setComposition] = React.useState<string | undefined>(undefined);
   const [toggle, setToggle] = React.useState<CheckboxProps['checked']>(false);
   const [navigableToPage, setNavigableToPage] = React.useState<CheckboxProps['checked']>(false);
@@ -28,22 +34,34 @@ export const Selector: React.FC = () => {
 
       <Accordion multiple>
         <AccordionItem value="faq1">
-          <AccordionHeader as="h2">How the desired UI looks like?</AccordionHeader>
+          <AccordionHeader as="h2">How the desired UI behaves?</AccordionHeader>
           <AccordionPanel>
-            <Checkbox label="Is interactive?" onChange={(ev, data) => setInteractive(data.checked)} />
-            {interactive && (
+            <Label id="interactivity"> Interactivity </Label>
+            <RadioGroup
+              value={interactive}
+              onChange={(_, data) => setInteractive(data.value)}
+              aria-labelledby="interactivity"
+            >
+              <Radio value="interactive" label="Is interactive?" />
+              <Radio value="static" label="Is static?" />
+            </RadioGroup>
+            {interactive === 'interactive' && (
               <>
+                <Label className={classes.secondLevel} id="Composition">
+                  Composition
+                </Label>
                 <RadioGroup
+                  className={classes.secondLevel}
                   value={composition}
                   onChange={(_, data) => setComposition(data.value)}
-                  aria-label="Single or group element"
+                  aria-labelledby="Composition"
                 >
                   <Radio value="single" label="Single element" />
                   <Radio value="group" label="Group of elements" />
                 </RadioGroup>
 
                 {composition === 'single' && (
-                  <>
+                  <div className={classes.thirdLevel}>
                     <Checkbox
                       label="Navigate to page on activation?"
                       onChange={(ev, data) => {
@@ -57,14 +75,31 @@ export const Selector: React.FC = () => {
                       onChange={(ev, data) => {
                         setToggle(data.checked);
                         updateDecisionProps(data.checked, 'toggle');
-                        console.log('test');
                       }}
                     />
-                  </>
+                    <Checkbox
+                      label="Has multiple actions?"
+                      onChange={(ev, data) => {
+                        setToggle(data.checked);
+                        updateDecisionProps(data.checked, 'multipleActions');
+                      }}
+                    />
+                    <Checkbox
+                      label="Opens menu?"
+                      onChange={(ev, data) => {
+                        setToggle(data.checked);
+                        updateDecisionProps(data.checked, 'opensMenu');
+                      }}
+                    />
+                  </div>
                 )}
               </>
             )}
-            {decisionProps.current.length > 0 && JSON.stringify(decisionProps.current)}
+            {decisionProps.current.length > 0 && (
+              <div className={classes.forthLevel} tabIndex={0}>
+                Available component(s): {JSON.stringify(decisionProps.current)}
+              </div>
+            )}
             {/* <Checkbox label="Group of elements" /> */}
           </AccordionPanel>
         </AccordionItem>
