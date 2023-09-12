@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
-import { Checkbox, RadioGroup, Radio, Label, CheckboxProps, makeStyles } from '@fluentui/react-components';
+import { Checkbox, RadioGroup, Radio, Label, makeStyles } from '@fluentui/react-components';
 import { Scenario } from './utils';
 
 import {
@@ -22,14 +22,27 @@ const useStyles = makeStyles({
 
 export const Selector: React.FC = () => {
   const classes = useStyles();
-  // const [interactive, setInteractive] = React.useState<CheckboxProps['checked']>(false);
-  const [interactive, setInteractive] = React.useState<string | undefined>(undefined);
-  const [composition, setComposition] = React.useState<string | undefined>(undefined);
-  const [toggle, setToggle] = React.useState<CheckboxProps['checked']>(false);
-  const [navigableToPage, setNavigableToPage] = React.useState<CheckboxProps['checked']>(false);
-  const decisionProps = React.useRef<string[]>([]);
-  const componentsDefinition = React.useRef<any>([]);
-  componentsDefinition.current.push(
+
+  const [decisionState, setDecisionState] = React.useState<Record<string, boolean | string | undefined>>({
+    // UI behavior
+    interactive: undefined,
+    composition: undefined,
+    toggle: false,
+    navigableToPage: false,
+
+    // Keyboard navigation
+    navigationByArrowKeys: false,
+    navigationByTabKey: false,
+    innerNavigationAfterEnter: false,
+    nestedNavigation: false,
+
+    // Screen reader
+    narratePosition: false,
+  });
+
+  const selectedDecisions = React.useRef<string[]>([]);
+  const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
+  componentsDefinitions.current.push(
     AccordionDef,
     CheckboxDef,
     DataGridDef,
@@ -40,14 +53,14 @@ export const Selector: React.FC = () => {
   );
 
   const mergeBaseObjects = () => {
-    componentsDefinition.current.forEach(definition => {
+    componentsDefinitions.current.forEach(definition => {
       for (const key in definition) {
         if (key === 'extends') {
           const value = definition[key];
           // find definition which is based one
-          const baseDefiniton = componentsDefinition.current.find(def => def.name === value);
+          const baseDefinition = componentsDefinitions.current.find(def => def.name === value);
           // create new object not delete name of base definition for others usage
-          const temporaryObject = JSON.parse(JSON.stringify(baseDefiniton));
+          const temporaryObject = JSON.parse(JSON.stringify(baseDefinition));
           delete temporaryObject.name;
           Object.assign(definition, temporaryObject);
         }
@@ -56,21 +69,24 @@ export const Selector: React.FC = () => {
   };
 
   const cleanUpBaseObjects = () => {
-    componentsDefinition.current.forEach((definition, index) => {
+    componentsDefinitions.current.forEach((definition, index) => {
       // just check the name if includes "Base",
       // in future would be better detection based on prop, like: "abstract": "true"
       if (definition.name.includes('Base')) {
-        componentsDefinition.current.splice(index, 1);
+        componentsDefinitions.current.splice(index, 1);
       }
     });
   };
 
-  const updateDecisionProps = (isChecked: boolean | string, valueOfCheckbox: string) => {
-    if (isChecked) {
-      decisionProps.current.push(valueOfCheckbox);
+  const updateDecisions = (name: string, value: boolean | string) => {
+    decisionState[name] = value;
+    setDecisionState({ ...decisionState });
+
+    if (value) {
+      selectedDecisions.current.push(name);
     } else {
-      const index = decisionProps.current.indexOf(valueOfCheckbox);
-      decisionProps.current.splice(index, 1);
+      const index = selectedDecisions.current.indexOf(name);
+      selectedDecisions.current.splice(index, 1);
     }
   };
 
@@ -79,105 +95,85 @@ export const Selector: React.FC = () => {
       <h1>Component Selector</h1>
 
       <Accordion multiple>
-        <AccordionItem value="faq1">
+        <AccordionItem value="uiBehavior">
           <AccordionHeader as="h2">How the desired UI behaves?</AccordionHeader>
           <AccordionPanel>
             <Label id="interactivity"> Interactivity </Label>
             <RadioGroup
-              value={interactive}
-              onChange={(_, data) => setInteractive(data.value)}
+              value={decisionState.interactive as string}
+              onChange={(event, data) => {
+                updateDecisions('interactive', data.value);
+              }}
               aria-labelledby="interactivity"
             >
               <Radio value="interactive" label="Is interactive?" />
               <Radio value="static" label="Is static?" />
             </RadioGroup>
-            {interactive === 'interactive' && (
+            {decisionState.interactive === 'interactive' && (
               <>
                 <Label className={classes.secondLevel} id="Composition">
                   Composition
                 </Label>
                 <RadioGroup
                   className={classes.secondLevel}
-                  value={composition}
-                  onChange={(_, data) => setComposition(data.value)}
+                  value={decisionState.composition as string}
+                  onChange={(event, data) => {
+                    updateDecisions('composition', data.value);
+                  }}
                   aria-labelledby="Composition"
                 >
                   <Radio value="single" label="Single element" />
                   <Radio value="group" label="Group of elements" />
                 </RadioGroup>
 
-                {composition === 'single' && (
+                {decisionState.composition === 'single' && (
                   <div className={classes.thirdLevel}>
                     <Checkbox
                       label="Navigate to page on activation?"
-                      onChange={(ev, data) => {
-                        setNavigableToPage(data.checked);
-                        // when uncheck take away from array
-                        updateDecisionProps(data.checked, 'navigableToPage');
+                      onChange={(event, data) => {
+                        updateDecisions('navigableToPage', data.checked);
                       }}
                     />
                     <Checkbox
                       label="Can be toggled?"
-                      onChange={(ev, data) => {
-                        setToggle(data.checked);
-                        updateDecisionProps(data.checked, 'toggle');
+                      onChange={(event, data) => {
+                        updateDecisions('toggle', data.checked);
                       }}
                     />
                     <Checkbox
                       label="Has multiple actions?"
-                      onChange={(ev, data) => {
-                        setToggle(data.checked);
-                        updateDecisionProps(data.checked, 'multipleActions');
+                      onChange={(event, data) => {
+                        updateDecisions('multipleActions', data.checked);
                       }}
                     />
                     <Checkbox
                       label="Opens menu?"
-                      onChange={(ev, data) => {
-                        setToggle(data.checked);
-                        updateDecisionProps(data.checked, 'opensMenu');
+                      onChange={(event, data) => {
+                        updateDecisions('opensMenu', data.checked);
                       }}
                     />
                   </div>
                 )}
               </>
             )}
-            {decisionProps.current.length > 0 && (
-              <div className={classes.forthLevel} tabIndex={0}>
-                Available component(s): {JSON.stringify(decisionProps.current)}
-              </div>
-            )}
-            {/* <Checkbox label="Group of elements" /> */}
           </AccordionPanel>
         </AccordionItem>
-        <AccordionItem value="faq2">
+        <AccordionItem value="keyboardNavigation">
           <AccordionHeader as="h2">What do you expect from keyboard navigation?</AccordionHeader>
-          <AccordionPanel>
-            <p>If you have a Windows operating system installed, open File Explorer or This PC.</p>
-            <ol>
-              <li>Right click on This PC or Computer in the navigation pane and select Properties.</li>
-              <li>
-                In the System information screen, find the System type entry. This will indicate what type of processor
-                your device has.
-              </li>
-            </ol>
-            <p>
-              If you do not have an operating system installed, you should refer to the documentation that came with the
-              device. Most device and processor manufacturers also provide information regarding processor capabilities
-              on their websites.
-            </p>
-          </AccordionPanel>
+          <AccordionPanel></AccordionPanel>
         </AccordionItem>
-        <AccordionItem value="faq3">
+        <AccordionItem value="screenReader">
           <AccordionHeader as="h2">What do you expect from screen reader behavior?</AccordionHeader>
-          <AccordionPanel>
-            <p>
-              The product key is located inside the product packaging, on the receipt or confirmation page for a digital
-              purchase or in a confirmation e-mail that shows you purchased Windows. If you purchased a digital copy
-              from Microsoft Store, you can locate your product key in your Account under Digital Content.
-            </p>
-          </AccordionPanel>
+          <AccordionPanel></AccordionPanel>
         </AccordionItem>
       </Accordion>
+
+      <h2>Matching components</h2>
+      {selectedDecisions.current.length > 0 && (
+        <div className={classes.forthLevel} tabIndex={0}>
+          Available component(s): {JSON.stringify(selectedDecisions.current)}
+        </div>
+      )}
     </Scenario>
   );
 };
