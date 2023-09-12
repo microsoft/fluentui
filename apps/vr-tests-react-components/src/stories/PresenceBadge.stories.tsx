@@ -27,7 +27,7 @@ storiesOf('PresenceBadge Converged - OOF status', module)
     () => (
       <div style={{ display: 'flex', gap: 10 }}>
         {statuses.map(status => (
-          <PresenceBadge status={status} key={status} outOfOffice />
+          <PresenceBadge size="extra-large" status={status} key={status} outOfOffice />
         ))}
       </div>
     ),
