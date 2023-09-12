@@ -18,6 +18,9 @@ export const LinkStyles = (props: ILinkStyleProps): Partial<ILinkStyles> => {
           '&:active': {
             color: semanticColors.linkHovered,
           },
+          '&:focus': {
+            outline: '0 !important', //outline and border cannot both be active or border looks 2x width on focus. There is another target that has more specificity (.ms-Fabric--isFocusVisible .root-663:focus) that I am unable to target from here, therefore had to use important.
+          },
         },
       },
     ],
