@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, StoryWright } from 'storywright';
-import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
 
 const statuses = ['available', 'away', 'busy', 'do-not-disturb', 'offline', 'out-of-office', 'unknown'] as const;
 const sizes = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as const;
@@ -23,9 +23,9 @@ storiesOf('PresenceBadge Converged - status', module).addStory(
 storiesOf('PresenceBadge Converged - OOF status', module).addStory(
   'default',
   () => (
-    <div style={{ display: 'flex', width: '500px', gap: 10 }}>
+    <div style={{ display: 'flex', gap: 10 }}>
       {statuses.map(status => (
-        <PresenceBadge size="extra-large" status={status} key={status} outOfOffice />
+        <PresenceBadge status={status} key={status} outOfOffice />
       ))}
     </div>
   ),
