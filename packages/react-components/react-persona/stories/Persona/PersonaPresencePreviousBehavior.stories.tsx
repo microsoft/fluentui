@@ -65,8 +65,9 @@ PresencePreviousBehavior.parameters = {
   docs: {
     description: {
       story: `PresenceBadge maps its presence to the behavior in v8. If the previous behavior is desired, it is
-       possible to override the icon and className to match the previous behavior. Note that Persona maps to a smaller
-       size such as huge -> large and medium -> small. As the size prop shows, Persona doesn't support the tiny size.`,
+       possible to override the icon and className to match it. Note that Persona maps to one size
+        smaller, such as \`huge\` to \`large\` and \`medium\` to \`small\`. As the size prop shows, Persona does not
+        support tiny.`,
     },
   },
 };

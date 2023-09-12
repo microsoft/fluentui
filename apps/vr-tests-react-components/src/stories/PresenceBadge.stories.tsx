@@ -3,7 +3,7 @@ import * as React from 'react';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { tokens } from '@fluentui/react-theme';
 import { Steps, StoryWright } from 'storywright';
-import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
 const statuses = ['available', 'away', 'busy', 'do-not-disturb', 'offline', 'out-of-office', 'unknown'] as const;
 const sizes = ['tiny', 'extra-small', 'small', 'medium', 'large', 'extra-large'] as const;
@@ -21,7 +21,7 @@ storiesOf('PresenceBadge Converged - status', module).addStory(
 );
 
 storiesOf('PresenceBadge Converged - OOF status', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
