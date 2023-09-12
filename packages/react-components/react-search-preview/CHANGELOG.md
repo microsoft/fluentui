@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-search-preview
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2023 08:51:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.1.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.16)
+
+Tue, 12 Sep 2023 08:51:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-search-preview_v0.1.15..@fluentui/react-search-preview_v0.1.16)
+
+### Patches
+
+- Adds pointer as cursor when hovering on SearchBox clear button ([PR #29039](https://github.com/microsoft/fluentui/pull/29039) by syphe@outlook.com)
+- Bump @fluentui/react-input to v9.4.36 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.7 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
 
 ## [0.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-search-preview_v0.1.15)
 

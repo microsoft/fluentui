@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: subtle mode hover style is now visible in windows HCM.",
-  "packageName": "@fluentui/react-button",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}
