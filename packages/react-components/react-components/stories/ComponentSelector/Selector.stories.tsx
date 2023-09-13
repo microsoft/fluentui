@@ -173,7 +173,7 @@ export const Selector: React.FC = () => {
             <RadioGroup
               value={decisionState.interactive as string}
               onChange={(event, data) => {
-                updateDecisions('interactive', data.value, false);
+                updateDecisions('interactive', data.value);
               }}
               aria-labelledby="interactivity"
             >
