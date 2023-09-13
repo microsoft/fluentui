@@ -12,3 +12,4 @@ export { default as SplitButtonDef } from './SplitButton.json';
 export { default as ToggleButtonDef } from './ToggleButton.json';
 export { default as ButtonBaseDef } from './ButtonBase.json';
 export { default as LinkDef } from './Link.json';
+export { default as TextDef } from './Text.json';

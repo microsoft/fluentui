@@ -27,6 +27,7 @@ import {
   ToggleButtonDef,
   ButtonBaseDef,
   LinkDef,
+  TextDef,
 } from './components-definitions/index';
 
 const decisionRadioValues: Record<string, string[]> = {
@@ -102,6 +103,7 @@ export const Selector: React.FC = () => {
       ToggleButtonDef,
       ButtonBaseDef,
       LinkDef,
+      TextDef,
     );
     mergeBaseObjects();
     cleanUpBaseObjects();
@@ -178,9 +180,10 @@ export const Selector: React.FC = () => {
               <Radio value="interactive" label="Is interactive?" />
               <Radio value="static" label="Is static?" />
             </RadioGroup>
+            {/* START interactive section */}
             {decisionState.interactive === 'interactive' && (
               <>
-                <Label className={classes.secondLevel} id="Composition">
+                {/* <Label className={classes.secondLevel} id="Composition">
                   Composition
                 </Label>
                 <RadioGroup
@@ -193,10 +196,12 @@ export const Selector: React.FC = () => {
                 >
                   <Radio value="single" label="Single element" />
                   <Radio value="group" label="Group of elements" />
-                </RadioGroup>
+                </RadioGroup> */}
 
-                {decisionState.composition === 'single' && (
-                  <div className={classes.thirdLevel}>
+                {/* {decisionState.composition === 'single' && ( */}
+                <div className={classes.thirdLevel}>
+                  <div>
+                    <Text weight="semibold">Choose from actions: </Text>
                     <Checkbox
                       label="Navigate to page on activation?"
                       onChange={(event, data) => {
@@ -222,33 +227,92 @@ export const Selector: React.FC = () => {
                       }}
                     />
                   </div>
-                )}
+                  <div>
+                    <Text weight="semibold">Choose from appearance: </Text>
+                    <Checkbox
+                      label="Single column"
+                      onChange={(event, data) => {
+                        updateDecisions('singleColumn', data.checked);
+                      }}
+                    />
+                    <Checkbox
+                      label="Columns and rows"
+                      onChange={(event, data) => {
+                        updateDecisions('columnsAndRows', data.checked);
+                      }}
+                    />
+                    <Checkbox
+                      label="Hierarchical"
+                      onChange={(event, data) => {
+                        updateDecisions('hierarchical', data.checked);
+                      }}
+                    />
+                  </div>
+                </div>
+                {/* )} */}
               </>
+            )}
+            {/* END interactive section */}
+            {decisionState.interactive === 'static' && (
+              <div className={classes.thirdLevel}>
+                <Text weight="semibold">Choose from appearance: </Text>
+                <Checkbox
+                  label="Single column"
+                  onChange={(event, data) => {
+                    updateDecisions('singleColumn', data.checked);
+                  }}
+                />
+                <Checkbox
+                  label="Columns and rows"
+                  onChange={(event, data) => {
+                    updateDecisions('columnsAndRows', data.checked);
+                  }}
+                />
+                <Checkbox
+                  label="Text/Heading"
+                  onChange={(event, data) => {
+                    updateDecisions('textOrHeading', data.checked);
+                  }}
+                />
+              </div>
             )}
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="keyboardNavigation">
           <AccordionHeader as="h2">What do you expect from keyboard navigation?</AccordionHeader>
           <AccordionPanel>
-            <Label className={classes.thirdLevel} id="navigationBy">
-              Navigation by
-            </Label>
-            <RadioGroup
-              className={classes.secondLevel}
-              value={decisionState.navigationBy as string}
-              onChange={(event, data) => {
-                updateDecisions('navigationBy', data.value);
-              }}
-              aria-labelledby="navigationBy"
-            >
-              <Radio value="navigationByArrowKeys" label="Arrow keys" />
-              <Radio value="navigationByTabKey" label="Tab key" />
-            </RadioGroup>
+            {decisionState.interactive === 'interactive' ? (
+              <>
+                <Label id="navigationBy">Navigation by</Label>
+                <RadioGroup
+                  value={decisionState.navigationBy as string}
+                  onChange={(event, data) => {
+                    updateDecisions('navigationBy', data.value);
+                  }}
+                  aria-labelledby="navigationBy"
+                >
+                  <Radio value="navigationByArrowKeys" label="Arrow keys" />
+                  <Radio value="navigationByTabKey" label="Tab key" />
+                </RadioGroup>
+              </>
+            ) : (
+              <Text weight="semibold" className={classes.thirdLevel}>
+                Keybord navigation is available only in interactive mode.
+              </Text>
+            )}
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem value="screenReader">
           <AccordionHeader as="h2">What do you expect from screen reader behavior?</AccordionHeader>
-          <AccordionPanel></AccordionPanel>
+          <AccordionPanel>
+            <Checkbox
+              className={classes.thirdLevel}
+              label="Screen reader narrates position"
+              onChange={(event, data) => {
+                updateDecisions('narratesPosition', data.checked);
+              }}
+            />
+          </AccordionPanel>
         </AccordionItem>
       </Accordion>
 
@@ -266,6 +330,11 @@ export const Selector: React.FC = () => {
                 </Text>
                 <br />
                 <Text weight="semibold">Example:</Text> {component.exampleName ? component.exampleName : 'Default'}
+                {component.note && (
+                  <div>
+                    <Text weight="semibold">Note:</Text> <Text>{component.note}</Text>
+                  </div>
+                )}
                 <Divider appearance="strong" />
               </div>
             );
