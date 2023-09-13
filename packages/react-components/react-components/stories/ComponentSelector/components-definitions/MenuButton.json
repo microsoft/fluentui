@@ -1,0 +1,6 @@
+{
+  "name": "MenuButton",
+  "link": "https://react.fluentui.dev/?path=/docs/components-button-menubutton--default",
+  "extends": "ButtonBase",
+  "opensMenu": "tru"
+}

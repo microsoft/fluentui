@@ -13,6 +13,7 @@ import { Checkbox, RadioGroup, Radio, Label, makeStyles } from '@fluentui/react-
 import { Scenario, removeFromArray } from './utils';
 
 import {
+  ListBaseDef,
   AccordionDef,
   CheckboxDef,
   TableArrowKeysNavigationDef,
@@ -28,6 +29,14 @@ import {
   ButtonBaseDef,
   LinkDef,
   TextDef,
+  TableNoNavigationDef,
+  ListDef,
+  ListNavigableDef,
+  TreeDef,
+  TreeSelectionDef,
+  TreeBaseDef,
+  MenuButtonDef,
+  TabListDef,
 } from './components-definitions/index';
 
 const decisionRadioValues: Record<string, string[]> = {
@@ -52,6 +61,11 @@ export const Selector = () => {
       // composition: undefined,
       toggle: false,
       navigableToPage: false,
+      columnsAndRows: false,
+      singleColumn: false,
+      hierarchical: false,
+      opensMenu: false,
+      multipleActions: false,
     },
 
     keyboardNavigation: {
@@ -110,6 +124,7 @@ export const Selector = () => {
   const componentsDefinitions = React.useRef<Record<string, any>[]>([]);
   if (componentsDefinitions.current.length === 0) {
     componentsDefinitions.current.push(
+      ListBaseDef,
       AccordionDef,
       CheckboxDef,
       TableArrowKeysNavigationDef,
@@ -125,6 +140,14 @@ export const Selector = () => {
       ButtonBaseDef,
       LinkDef,
       TextDef,
+      TableNoNavigationDef,
+      ListDef,
+      ListNavigableDef,
+      TreeDef,
+      TreeSelectionDef,
+      TreeBaseDef,
+      MenuButtonDef,
+      TabListDef,
     );
     mergeBaseObjects();
     cleanUpBaseObjects();

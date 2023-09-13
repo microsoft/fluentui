@@ -1,4 +1,5 @@
 {
   "name": "TableBase",
-  "columnsAndRows": "true"
+  "columnsAndRows": "true",
+  "narratesPosition": "true"
 }
