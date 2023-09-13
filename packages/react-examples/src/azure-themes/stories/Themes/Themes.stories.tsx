@@ -35,7 +35,7 @@ import { SpinButtonBasicExample } from '../components/SpinButton.stories';
 import { DatePickerBasicExample } from '../components/defaultDatePicker';
 import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.stories';
 import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
-import { SpinnerBasicExample } from '../components/spinner.stories.tsx';
+import { SpinnerBasicExample } from '../components/spinner.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
