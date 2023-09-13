@@ -10,7 +10,7 @@ import {
   Divider,
 } from '@fluentui/react-components';
 import { Checkbox, RadioGroup, Radio, Label, makeStyles } from '@fluentui/react-components';
-import { Scenario } from './utils';
+import { Scenario, removeFromArray } from './utils';
 
 import {
   AccordionDef,
@@ -41,26 +41,46 @@ const useStyles = makeStyles({
   forthLevel: { 'margin-left': '90px' },
 });
 
-export const Selector: React.FC = () => {
+export const Selector = () => {
   const classes = useStyles();
 
-  const [decisionState, setDecisionState] = React.useState<Record<string, boolean | string | undefined>>({
-    // UI behavior
-    interactive: undefined,
-    // composition: undefined,
-    toggle: false,
-    navigableToPage: false,
+  const [decisionState, setDecisionState] = React.useState<
+    Record<string, Record<string, boolean | string | undefined>>
+  >({
+    uiBehavior: {
+      interaction: undefined,
+      // composition: undefined,
+      toggle: false,
+      navigableToPage: false,
+    },
 
-    // Keyboard navigation
-    navigationBy: undefined,
-    innerNavigationAfterEnter: false,
-    nestedNavigation: false,
+    keyboardNavigation: {
+      navigationBy: 'notSpecified',
+      innerNavigationAfterEnter: false,
+      nestedNavigation: false,
+    },
 
-    // Screen reader
-    narratePosition: false,
+    screenReader: {
+      narratePosition: false,
+    },
   });
 
   const selectedDecisions = React.useRef<string[]>([]);
+
+  const getDecisionCategory = React.useCallback(
+    (name: string) => {
+      for (let category in decisionState) {
+        for (let item in decisionState[category]) {
+          if (item === name) {
+            return category;
+          }
+        }
+      }
+      return undefined;
+    },
+    [decisionState],
+  );
+
   const mergeBaseObjects = () => {
     componentsDefinitions.current.forEach(definition => {
       for (const key in definition) {
@@ -111,7 +131,7 @@ export const Selector: React.FC = () => {
   }
 
   const getComponent = () => {
-    const suitableComponents = [];
+    const suitableComponents: any[] = [];
 
     componentsDefinitions.current.forEach(definition => {
       const keysInDefinitions = Object.keys(definition);
@@ -132,33 +152,45 @@ export const Selector: React.FC = () => {
   };
 
   const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
-    decisionState[name] = value;
+    const category = getDecisionCategory(name) as string;
+    decisionState[category][name] = value;
     setDecisionState({ ...decisionState });
 
+    // Currently not in use, but might be useful in future to have options which do not modify the selected decisions
     if (!modifySelectedDecisions) {
       return;
     }
+
     if (value) {
+      // Determine if the option is a radio as opposed to checkbox
       if (name in decisionRadioValues) {
+        // Clear all the properties in this category
+        for (let nameToRemove in decisionState[category]) {
+          if (nameToRemove in decisionRadioValues) {
+            decisionRadioValues[nameToRemove].forEach(item => {
+              removeFromArray(selectedDecisions.current, item);
+            });
+          } else {
+            removeFromArray(selectedDecisions.current, nameToRemove);
+          }
+        }
+
         // Remove the props other than the value from selected decisions
         decisionRadioValues[name].forEach(prop => {
           if (prop !== value) {
-            const index = selectedDecisions.current.indexOf(prop);
-            // index can be -1, in this case it remove item in array anyway
-            if (index >= 0) {
-              selectedDecisions.current.splice(index, 1);
-            }
+            removeFromArray(selectedDecisions.current, prop);
           }
         });
 
         // The value is the name of the prop we want to push into selected decisions
-        selectedDecisions.current.push(value as string);
+        if (decisionRadioValues[name].includes(value as string)) {
+          selectedDecisions.current.push(value as string);
+        }
       } else {
         selectedDecisions.current.push(name);
       }
     } else {
-      const index = selectedDecisions.current.indexOf(name);
-      selectedDecisions.current.splice(index, 1);
+      removeFromArray(selectedDecisions.current, name);
     }
   };
 
@@ -172,7 +204,7 @@ export const Selector: React.FC = () => {
           <AccordionPanel>
             <Label id="interactivity"> Interactivity </Label>
             <RadioGroup
-              value={decisionState.interaction as string}
+              value={decisionState.uiBehavior.interaction as string}
               onChange={(event, data) => {
                 updateDecisions('interaction', data.value);
               }}
@@ -182,7 +214,7 @@ export const Selector: React.FC = () => {
               <Radio value="static" label="Is static?" />
             </RadioGroup>
             {/* START interactive section */}
-            {decisionState.interaction === 'interactive' && (
+            {decisionState.uiBehavior.interaction === 'interactive' && (
               <>
                 {/* <Label className={classes.secondLevel} id="Composition">
                   Composition
@@ -258,7 +290,7 @@ export const Selector: React.FC = () => {
               </>
             )}
             {/* END interactive section */}
-            {decisionState.interaction === 'static' && (
+            {decisionState.uiBehavior.interaction === 'static' && (
               <div className={classes.thirdLevel}>
                 <Text id="chooseFromAppearance-label" weight="semibold">
                   Choose from appearance:{' '}
@@ -290,11 +322,11 @@ export const Selector: React.FC = () => {
         <AccordionItem value="keyboardNavigation">
           <AccordionHeader as="h2">What do you expect from keyboard navigation?</AccordionHeader>
           <AccordionPanel>
-            {decisionState.interaction === 'interactive' ? (
+            {decisionState.uiBehavior.interaction === 'interactive' ? (
               <>
                 <Label id="navigationBy">Navigation by</Label>
                 <RadioGroup
-                  value={decisionState.navigationBy as string}
+                  value={decisionState.keyboardNavigation.navigationBy as string}
                   onChange={(event, data) => {
                     updateDecisions('navigationBy', data.value);
                   }}
@@ -302,6 +334,7 @@ export const Selector: React.FC = () => {
                 >
                   <Radio value="navigationByArrowKeys" label="Arrow keys" />
                   <Radio value="navigationByTabKey" label="Tab key" />
+                  <Radio value="notSpecified" label="Not specified" />
                 </RadioGroup>
               </>
             ) : (
