@@ -2,5 +2,6 @@
   "name": "Text",
   "link": "https://react.fluentui.dev/?path=/docs/components-link--default",
   "note": "Use the 'as' prop to change text to heading.",
-  "textOrHeading": "true"
+  "textOrHeading": "true",
+  "static": "true"
 }

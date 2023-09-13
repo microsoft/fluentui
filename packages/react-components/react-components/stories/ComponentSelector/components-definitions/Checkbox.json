@@ -3,5 +3,6 @@
   "link": "https://react.fluentui.dev/?path=/docs/components-checkbox--default",
   "tabbable": "true",
   "toggle": "true",
-  "navigationByTabKey": "true"
+  "navigationByTabKey": "true",
+  "interactive": "true"
 }

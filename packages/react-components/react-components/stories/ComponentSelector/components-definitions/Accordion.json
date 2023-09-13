@@ -3,5 +3,6 @@
   "link": "https://react.fluentui.dev/?path=/docs/components-accordion--default",
   "expandable": "true",
   "tabbable": "true",
-  "navigationByTabKey": "true"
+  "navigationByTabKey": "true",
+  "interactive": "true"
 }

@@ -3,5 +3,6 @@
   "exampleName": "Cell Actions",
   "link": "https://react.fluentui.dev/?path=/docs/components-table--default#cell-actions",
   "navigationByTabKey": "true",
-  "extends": "TableBase"
+  "extends": "TableBase",
+  "interactive": "true"
 }

@@ -1,4 +1,5 @@
 {
   "name": "ButtonBase",
-  "navigationByTabKey": "true"
+  "navigationByTabKey": "true",
+  "interactive": "true"
 }

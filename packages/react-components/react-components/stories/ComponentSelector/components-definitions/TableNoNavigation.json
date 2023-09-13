@@ -1,0 +1,6 @@
+{
+  "name": "Table",
+  "link": "https://react.fluentui.dev/?path=/docs/components-table--default",
+  "extends": "TableBase",
+  "static": "true"
+}

@@ -2,5 +2,6 @@
   "name": "Link",
   "link": "https://react.fluentui.dev/?path=/docs/components-link--default",
   "navigableToPage": "true",
-  "navigationByTabKey": "true"
+  "navigationByTabKey": "true",
+  "interactive": "true"
 }
