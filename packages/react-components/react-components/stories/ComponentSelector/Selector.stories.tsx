@@ -32,6 +32,7 @@ import {
 
 const decisionRadioValues: Record<string, string[]> = {
   navigationBy: ['navigationByArrowKeys', 'navigationByTabKey'],
+  interaction: ['interactive', 'static'],
 };
 
 const useStyles = makeStyles({
@@ -46,7 +47,7 @@ export const Selector: React.FC = () => {
   const [decisionState, setDecisionState] = React.useState<Record<string, boolean | string | undefined>>({
     // UI behavior
     interactive: undefined,
-    composition: undefined,
+    // composition: undefined,
     toggle: false,
     navigableToPage: false,
 
@@ -165,15 +166,15 @@ export const Selector: React.FC = () => {
     <Scenario pageTitle="Component Selector">
       <h1>Component Selector</h1>
 
-      <Accordion multiple>
+      <Accordion multiple defaultOpenItems="uiBehavior">
         <AccordionItem value="uiBehavior">
           <AccordionHeader as="h2">How the desired UI behaves?</AccordionHeader>
           <AccordionPanel>
             <Label id="interactivity"> Interactivity </Label>
             <RadioGroup
-              value={decisionState.interactive as string}
+              value={decisionState.interaction as string}
               onChange={(event, data) => {
-                updateDecisions('interactive', data.value);
+                updateDecisions('interaction', data.value);
               }}
               aria-labelledby="interactivity"
             >
@@ -181,7 +182,7 @@ export const Selector: React.FC = () => {
               <Radio value="static" label="Is static?" />
             </RadioGroup>
             {/* START interactive section */}
-            {decisionState.interactive === 'interactive' && (
+            {decisionState.interaction === 'interactive' && (
               <>
                 {/* <Label className={classes.secondLevel} id="Composition">
                   Composition
@@ -190,7 +191,7 @@ export const Selector: React.FC = () => {
                   className={classes.secondLevel}
                   value={decisionState.composition as string}
                   onChange={(event, data) => {
-                    updateDecisions('composition', data.value, false);
+                    updateDecisions('composition', data.value);
                   }}
                   aria-labelledby="Composition"
                 >
@@ -253,7 +254,7 @@ export const Selector: React.FC = () => {
               </>
             )}
             {/* END interactive section */}
-            {decisionState.interactive === 'static' && (
+            {decisionState.interaction === 'static' && (
               <div className={classes.thirdLevel}>
                 <Text weight="semibold">Choose from appearance: </Text>
                 <Checkbox
@@ -281,7 +282,7 @@ export const Selector: React.FC = () => {
         <AccordionItem value="keyboardNavigation">
           <AccordionHeader as="h2">What do you expect from keyboard navigation?</AccordionHeader>
           <AccordionPanel>
-            {decisionState.interactive === 'interactive' ? (
+            {decisionState.interaction === 'interactive' ? (
               <>
                 <Label id="navigationBy">Navigation by</Label>
                 <RadioGroup
@@ -317,7 +318,7 @@ export const Selector: React.FC = () => {
       </Accordion>
 
       <h2 id="matching-heading">Matching components</h2>
-      {selectedDecisions.current.length > 0 && (
+      {selectedDecisions.current.length > 0 ? (
         <div role="group" aria-labelledby="matching-heading">
           {getComponent().map(component => {
             return (
@@ -340,6 +341,8 @@ export const Selector: React.FC = () => {
             );
           })}
         </div>
+      ) : (
+        <Text>No components found</Text>
       )}
     </Scenario>
   );
