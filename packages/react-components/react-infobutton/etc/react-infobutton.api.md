@@ -31,7 +31,7 @@ export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'di
 // @public (undocumented)
 export type InfoButtonSlots = {
     root: NonNullable<Slot<'button'>>;
-    popover: NonNullable<Slot<Partial<PopoverProps>>>;
+    popover: NonNullable<Slot<Partial<Omit<PopoverProps, 'openOnHover'>>>>;
     info: NonNullable<Slot<typeof PopoverSurface>>;
 };
 

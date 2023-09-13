@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavLinkGroup renders a default state 1`] = `
+<div>
+  <div
+    class="fui-NavLinkGroup"
+  >
+    Default NavLinkGroup
+  </div>
+</div>
+`;

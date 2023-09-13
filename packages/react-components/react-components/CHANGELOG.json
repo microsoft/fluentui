@@ -2,6 +2,111 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 12 Sep 2023 08:51:31 GMT",
+      "tag": "@fluentui/react-components_v9.31.0",
+      "version": "9.31.0",
+      "comments": {
+        "major": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "c3602be284955eee64945320ed87abb2b9e716c8",
+            "comment": "feat: removed breadcrumb-link component"
+          }
+        ],
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "1cc078ada94cfe929c0aa8d60ea100cea370795d",
+            "comment": "fix: icon spacing in Breadcrumb"
+          },
+          {
+            "author": "tristan.watanabe@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "3241bc93cbf65105b6843c2fc9e5b82e6c5d20bc",
+            "comment": "fix: subtle mode hover style is now visible in windows HCM."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335",
+            "comment": "fix: make /jsx-runtime compatible with Webpack 4"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "cbcc41cab55eb19e12faf363d0c96adb45ee2cb0",
+            "comment": "bugfix: fix missing .d.ts types on build"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "bb8a191dbdd562a2ef077c1bd5fa3dbfd00f0fdf",
+            "comment": "fix: don't apply modalizer attributes when focus trap isn't configured"
+          },
+          {
+            "author": "syphe@outlook.com",
+            "package": "@fluentui/react-search-preview",
+            "commit": "a3b86c6b8ec35354ebe2e49896c5cd36ddae80f3",
+            "comment": "Adds pointer as cursor when hovering on SearchBox clear button"
+          },
+          {
+            "author": "mehars.6925@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "6752d6080a6e382c9fcc64163d9b4ea642b8367e",
+            "comment": "fix: DataGrid Headers look weird on Safari"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "bb8a191dbdd562a2ef077c1bd5fa3dbfd00f0fdf",
+            "comment": "fix: don't apply modalizer attributes when focus trap isn't configured"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "0342bde74ce8d88cfefea0cd5915c5d3b4e74121",
+            "comment": "feat: react-tree allows control of individual tree item open state"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "3ed4c7108eea13edd4da142df951a887c904bf02",
+            "comment": "feat(Toaster): Adds `inline` prop"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b",
+            "comment": "feat: Add center aligned positions for Toast"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "0342bde74ce8d88cfefea0cd5915c5d3b4e74121",
+            "comment": "feat: react-tree allows control of individual tree item open state"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "634979cbc69ae97e39baf2f4143dab6caa3a6968",
+            "comment": "feat(react-infobutton): Removing openOnHover from popover props and adding details about the infobutton pattern."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "92866ff4f0aaf175696e97f29474de19bb904ba6",
+            "comment": "fix: Popover should close when tabbing out of the surface."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:30 GMT",
       "tag": "@fluentui/react-components_v9.30.4",
       "version": "9.30.4",
