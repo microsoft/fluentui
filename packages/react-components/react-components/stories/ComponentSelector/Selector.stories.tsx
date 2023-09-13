@@ -202,31 +202,35 @@ export const Selector: React.FC = () => {
                 {/* {decisionState.composition === 'single' && ( */}
                 <div className={classes.thirdLevel}>
                   <div>
-                    <Text weight="semibold">Choose from actions: </Text>
-                    <Checkbox
-                      label="Navigate to page on activation?"
-                      onChange={(event, data) => {
-                        updateDecisions('navigableToPage', data.checked);
-                      }}
-                    />
-                    <Checkbox
-                      label="Can be toggled?"
-                      onChange={(event, data) => {
-                        updateDecisions('toggle', data.checked);
-                      }}
-                    />
-                    <Checkbox
-                      label="Has multiple actions?"
-                      onChange={(event, data) => {
-                        updateDecisions('multipleActions', data.checked);
-                      }}
-                    />
-                    <Checkbox
-                      label="Opens menu?"
-                      onChange={(event, data) => {
-                        updateDecisions('opensMenu', data.checked);
-                      }}
-                    />
+                    <Text id="chooseFromActions-label" weight="semibold">
+                      Choose from actions:{' '}
+                    </Text>
+                    <div role="group" aria-labelledby="chooseFromActions-label">
+                      <Checkbox
+                        label="Navigate to page on activation?"
+                        onChange={(event, data) => {
+                          updateDecisions('navigableToPage', data.checked);
+                        }}
+                      />
+                      <Checkbox
+                        label="Can be toggled?"
+                        onChange={(event, data) => {
+                          updateDecisions('toggle', data.checked);
+                        }}
+                      />
+                      <Checkbox
+                        label="Has multiple actions?"
+                        onChange={(event, data) => {
+                          updateDecisions('multipleActions', data.checked);
+                        }}
+                      />
+                      <Checkbox
+                        label="Opens menu?"
+                        onChange={(event, data) => {
+                          updateDecisions('opensMenu', data.checked);
+                        }}
+                      />
+                    </div>
                   </div>
                   <div>
                     <Text weight="semibold">Choose from appearance: </Text>
@@ -256,25 +260,29 @@ export const Selector: React.FC = () => {
             {/* END interactive section */}
             {decisionState.interaction === 'static' && (
               <div className={classes.thirdLevel}>
-                <Text weight="semibold">Choose from appearance: </Text>
-                <Checkbox
-                  label="Single column"
-                  onChange={(event, data) => {
-                    updateDecisions('singleColumn', data.checked);
-                  }}
-                />
-                <Checkbox
-                  label="Columns and rows"
-                  onChange={(event, data) => {
-                    updateDecisions('columnsAndRows', data.checked);
-                  }}
-                />
-                <Checkbox
-                  label="Text/Heading"
-                  onChange={(event, data) => {
-                    updateDecisions('textOrHeading', data.checked);
-                  }}
-                />
+                <Text id="chooseFromAppearance-label" weight="semibold">
+                  Choose from appearance:{' '}
+                </Text>
+                <div role="group" aria-labelledby="chooseFromAppearance-label">
+                  <Checkbox
+                    label="Single column"
+                    onChange={(event, data) => {
+                      updateDecisions('singleColumn', data.checked);
+                    }}
+                  />
+                  <Checkbox
+                    label="Columns and rows"
+                    onChange={(event, data) => {
+                      updateDecisions('columnsAndRows', data.checked);
+                    }}
+                  />
+                  <Checkbox
+                    label="Text/Heading"
+                    onChange={(event, data) => {
+                      updateDecisions('textOrHeading', data.checked);
+                    }}
+                  />
+                </div>
               </div>
             )}
           </AccordionPanel>
