@@ -141,7 +141,10 @@ export const Selector: React.FC = () => {
         decisionRadioValues[name].forEach(prop => {
           if (prop !== value) {
             const index = selectedDecisions.current.indexOf(prop);
-            selectedDecisions.current.splice(index, 1);
+            // index can be -1, in this case it remove item in array anyway
+            if (index >= 0) {
+              selectedDecisions.current.splice(index, 1);
+            }
           }
         });
 
