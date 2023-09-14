@@ -48,6 +48,7 @@ const useStyles = makeStyles({
   secondLevel: { 'margin-left': '30px' },
   thirdLevel: { 'margin-left': '60px' },
   forthLevel: { 'margin-left': '90px' },
+  foundMessage: { 'margin-bottom': '10px' },
 });
 
 export const Selector = () => {
@@ -411,9 +412,11 @@ export const Selector = () => {
       <h2 id="matching-heading">Matching components</h2>
       {selectedDecisions.current.length > 0 ? (
         <div role="group" aria-labelledby="matching-heading">
-          <Text as="h3" weight="bold">
-            Found {getComponent().length} component(s).{' '}
-          </Text>
+          <div className={classes.foundMessage}>
+            <Text as="h3" weight="bold">
+              Found {getComponent().length} component(s).{' '}
+            </Text>
+          </div>
           {getComponent().map((component, index) => {
             return (
               <div key={`component-${index}}`}>
