@@ -1,37 +1,39 @@
-import { ElementViewTemplate, html, ref } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref, when } from '@microsoft/fast-element';
 import type { Drawer } from './drawer.js';
 
 /**
  * The template for the Drawer component.
  * @public
  */
-
 export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
   return html<T>`
-    <template
-      ?open="${x => x.open}"
-      ?modal="${x => x.modal}"
-      size="${x => x.size}"
-      position="${x => x.position}"
-      role="${x => (x.modal ? 'dialog' : 'complementary')}"
-      tabindex="${x => (x.open ? '0' : '-1')}"
-      aria-hidden="${x => (x.open ? 'false' : 'true')}"
-      aria-label="${x => x.ariaLabel}"
-      aria-labelledby="${x => x.ariaLabelledby}"
-      aria-describedby="${x => x.ariaDescribedby}"
-      aria-modal="${x => (x.modal ? 'true' : 'false')}"
-      @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
-    >
+    <template ?inert="${x => !x.open}" ?open="${x => x.open}" size="${x => x.size}" position="${x => x.position}">
+      ${when(
+        x => x.modal,
+        html<T>`
+          <div
+            class="overlay"
+            part="overlay"
+            role="presentation"
+            ?hidden="${x => !x.open}"
+            @click="${x => x.hide()}"
+          ></div>
+        `,
+      )}
       <div
-        class="overlay"
-        part="overlay"
-        ?hidden="${x => !x.modal || !x.open}"
-        aria-hidden="${x => !x.modal || !x.open}"
-        role="presentation"
-      ></div>
-      <div class="root" part="root" ${ref('root')}>
+        class="drawer"
+        part="drawer"
+        role="${x => (x.modal ? 'dialog' : 'complementary')}"
+        tabindex="${x => (x.open ? '0' : '-1')}"
+        aria-label="${x => x.ariaLabel}"
+        aria-labelledby="${x => x.ariaLabelledby}"
+        aria-describedby="${x => x.ariaDescribedby}"
+        aria-modal="${x => (x.modal ? 'true' : 'false')}"
+        @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
+        ${ref('drawer')}
+      >
         <slot name="start"></slot>
-        <div class="header-container">
+        <div class="header">
           <slot name="navigation"></slot>
           <slot name="header"></slot>
         </div>

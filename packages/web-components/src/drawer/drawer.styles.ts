@@ -1,5 +1,4 @@
 import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
 import {
   colorBackgroundOverlay,
   colorNeutralBackground1,
@@ -24,6 +23,7 @@ import {
   spacingVerticalL,
   spacingVerticalS,
   spacingVerticalXXL,
+  strokeWidthThick,
   strokeWidthThin,
 } from '../theme/design-tokens.js';
 
@@ -31,11 +31,12 @@ import {
  * @public
  */
 export const styles = css`
-  ${display('inline-flex')}
-
   :host {
-    position: fixed;
     width: 592px;
+  }
+  :host([position='left']) {
+    left: 0;
+    right: unset;
   }
   :host([size='small']) {
     width: 320px;
@@ -43,19 +44,9 @@ export const styles = css`
   :host([size='large']) {
     width: 940px;
   }
-  :host(:focus-visible) .root:after {
-    content: '';
-    position: absolute;
-    inset: 0px;
-    cursor: pointer;
-    outline: none;
-    border: 2px solid ${colorStrokeFocus1};
-    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
-  }
 
-  .root {
+  .drawer {
     position: fixed;
-    left: auto;
     right: 0;
     top: 0;
     z-index: 2;
@@ -76,18 +67,26 @@ export const styles = css`
     transition: transform ${durationNormal} ${curveDecelerateMid};
     transform: translateX(100%);
   }
-  :host([position='left']) .root {
+  :host([position='left']) .drawer {
     right: auto;
     left: 0;
-    margin-left: 0;
     column-gap: ${spacingHorizontalS};
     transform: translateX(-100%);
   }
-  :host([open][position='left']) .root,
-  :host([open]) .root {
+  :host([open][position='left']) .drawer,
+  :host([open]) .drawer {
     transform: translateX(0);
-    transition: transform ${durationNormal} ${curveAccelerateMid};
+    animation: slide-in ${durationNormal} ${curveAccelerateMid};
     box-shadow: ${shadow64};
+  }
+  .drawer:focus-visible:after {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    cursor: pointer;
+    outline: none;
+    border: ${strokeWidthThick} solid ${colorStrokeFocus1};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
   }
 
   .overlay {
@@ -97,19 +96,20 @@ export const styles = css`
     background-color: ${colorBackgroundOverlay};
     width: 100vw;
     height: 100vh;
-    background-color: ${colorBackgroundOverlay};
     z-index: 1;
+    cursor: pointer;
   }
-  .header-container {
+
+  .header {
     padding-top: ${spacingVerticalXXL};
     display: flex;
     flex-direction: column;
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
-    padding-top: var(--spacingVerticalXXL);
     row-gap: ${spacingVerticalS};
   }
+
   .content {
     flex-grow: 1;
     position: relative;
@@ -126,7 +126,10 @@ export const styles = css`
     justify-content: flex-start;
   }
   ::slotted([slot='header']) {
-    padding: 0 var(--spacingHorizontalL) 0 var(--spacingHorizontalXXL);
+    padding: 0 ${spacingHorizontalL} 0 ${spacingHorizontalXXL};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   ::slotted([slot='footer']) {
     display: flex;
@@ -134,5 +137,14 @@ export const styles = css`
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
     border-top: ${strokeWidthThin} solid var(--overflow-border, ${colorTransparentStroke});
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
   }
 `;
