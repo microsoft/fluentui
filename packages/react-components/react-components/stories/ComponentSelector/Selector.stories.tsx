@@ -411,7 +411,7 @@ export const Selector = () => {
       <h2 id="matching-heading">Matching components</h2>
       {selectedDecisions.current.length > 0 ? (
         <div role="group" aria-labelledby="matching-heading">
-          <Text as="h3" weight="semibold">
+          <Text as="h3" weight="bold">
             Found {getComponent().length} component(s).{' '}
           </Text>
           {getComponent().map((component, index) => {
