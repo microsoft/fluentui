@@ -176,6 +176,8 @@ export const Selector = () => {
     return suitableComponents;
   };
 
+  const foundComponents = getComponent();
+
   //Following useMemo wasn't call when I tick checkbox
   // const suitableComponents = React.useMemo(() => {
   //   const suitableComponents: any[] = [];
@@ -414,10 +416,10 @@ export const Selector = () => {
         <div role="group" aria-labelledby="matching-heading">
           <div className={classes.foundMessage}>
             <Text as="h3" weight="bold">
-              Found {getComponent().length} component(s).{' '}
+              Found {foundComponents.length} component(s).{' '}
             </Text>
           </div>
-          {getComponent().map((component, index) => {
+          {foundComponents.map((component, index) => {
             return (
               <div key={`component-${index}}`}>
                 <Text weight="semibold">
