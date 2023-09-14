@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Tue, 12 Sep 2023 08:51:32 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.8)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.7..@fluentui/react-jsx-runtime_v9.0.8)
+
+### Patches
+
+- fix: strip comments for JSX pragma ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by olfedias@microsoft.com)
 
 ## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.7)
 
