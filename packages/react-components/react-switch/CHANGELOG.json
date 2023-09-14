@@ -2,6 +2,33 @@
   "name": "@fluentui/react-switch",
   "entries": [
     {
+      "date": "Thu, 14 Sep 2023 16:44:47 GMT",
+      "tag": "@fluentui/react-switch_v9.1.40",
+      "version": "9.1.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-field to v9.1.27",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.8",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-switch",
+            "comment": "Bump @fluentui/react-label to v9.1.35",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Sep 2023 08:51:34 GMT",
       "tag": "@fluentui/react-switch_v9.1.39",
       "version": "9.1.39",
