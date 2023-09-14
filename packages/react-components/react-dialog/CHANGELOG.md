@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Tue, 12 Sep 2023 08:51:34 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.6.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.5)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.6.4..@fluentui/react-dialog_v9.6.5)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.8 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
 
 ## [9.6.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.6.4)
 

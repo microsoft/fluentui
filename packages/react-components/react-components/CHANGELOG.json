@@ -2,6 +2,21 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 14 Sep 2023 16:44:47 GMT",
+      "tag": "@fluentui/react-components_v9.31.1",
+      "version": "9.31.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473",
+            "comment": "fix: strip comments for JSX pragma"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 12 Sep 2023 08:51:31 GMT",
       "tag": "@fluentui/react-components_v9.31.0",
       "version": "9.31.0",

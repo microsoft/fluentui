@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 12 Sep 2023 08:51:31 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.31.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.31.1)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.31.0..@fluentui/react-components_v9.31.1)
+
+### Patches
+
+- `@fluentui/react-jsx-runtime`
+  - fix: strip comments for JSX pragma ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by olfedias@microsoft.com)
 
 ## [9.31.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.31.0)
 
