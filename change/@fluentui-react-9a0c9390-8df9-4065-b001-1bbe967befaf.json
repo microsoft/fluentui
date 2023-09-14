@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Allow html attributes on split buttons",
+  "packageName": "@fluentui/react",
+  "email": "tabrumle@microsoft.com",
+  "dependentChangeType": "patch"
+}

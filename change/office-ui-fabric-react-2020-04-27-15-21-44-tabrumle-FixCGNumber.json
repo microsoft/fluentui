@@ -1,8 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add logic to cap the number we show in the facepile descrtiptive overflow at 99 to prevent text overflow",
-  "packageName": "office-ui-fabric-react",
-  "email": "tabrumle@microsoft.com",
-  "dependentChangeType": "patch",
-  "date": "2020-04-27T22:21:44.177Z"
-}
