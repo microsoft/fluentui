@@ -175,6 +175,28 @@ export const Selector = () => {
     return suitableComponents;
   };
 
+  //Following useMemo wasn't call when I tick checkbox
+  // const suitableComponents = React.useMemo(() => {
+  //   const suitableComponents: any[] = [];
+
+  //   componentsDefinitions.current.forEach(definition => {
+  //     const keysInDefinitions = Object.keys(definition);
+
+  //     const matching = [];
+  //     selectedDecisions.current.forEach(decision => {
+  //       if (keysInDefinitions.indexOf(decision) >= 0) {
+  //         matching.push('matched');
+  //       }
+  //     });
+
+  //     if (selectedDecisions.current.length === matching.length) {
+  //       console.log('fully matched');
+  //       suitableComponents.push(definition);
+  //     }
+  //   });
+  //   return suitableComponents;
+  // }, [selectedDecisions]);
+
   const updateDecisions = (name: string, value: boolean | string, modifySelectedDecisions = true) => {
     const category = getDecisionCategory(name) as string;
     decisionState[category][name] = value;
@@ -289,25 +311,29 @@ export const Selector = () => {
                     </div>
                   </div>
                   <div>
-                    <Text weight="semibold">Choose from appearance: </Text>
-                    <Checkbox
-                      label="Single column"
-                      onChange={(event, data) => {
-                        updateDecisions('singleColumn', data.checked);
-                      }}
-                    />
-                    <Checkbox
-                      label="Columns and rows"
-                      onChange={(event, data) => {
-                        updateDecisions('columnsAndRows', data.checked);
-                      }}
-                    />
-                    <Checkbox
-                      label="Hierarchical"
-                      onChange={(event, data) => {
-                        updateDecisions('hierarchical', data.checked);
-                      }}
-                    />
+                    <Text id="chooseFromAppearance-label" weight="semibold">
+                      Choose from appearance:{' '}
+                    </Text>
+                    <div role="group" aria-labelledby="chooseFromAppearance-label">
+                      <Checkbox
+                        label="Single column"
+                        onChange={(event, data) => {
+                          updateDecisions('singleColumn', data.checked);
+                        }}
+                      />
+                      <Checkbox
+                        label="Columns and rows"
+                        onChange={(event, data) => {
+                          updateDecisions('columnsAndRows', data.checked);
+                        }}
+                      />
+                      <Checkbox
+                        label="Hierarchical"
+                        onChange={(event, data) => {
+                          updateDecisions('hierarchical', data.checked);
+                        }}
+                      />
+                    </div>
                   </div>
                 </div>
                 {/* )} */}
@@ -385,9 +411,12 @@ export const Selector = () => {
       <h2 id="matching-heading">Matching components</h2>
       {selectedDecisions.current.length > 0 ? (
         <div role="group" aria-labelledby="matching-heading">
-          {getComponent().map(component => {
+          <Text as="h3" weight="semibold">
+            Found {getComponent().length} component(s).{' '}
+          </Text>
+          {getComponent().map((component, index) => {
             return (
-              <div key="component">
+              <div key={`component-${index}}`}>
                 <Text weight="semibold">
                   Component name:{' '}
                   <Link target="_blank" inline href={component.link}>
@@ -407,7 +436,7 @@ export const Selector = () => {
           })}
         </div>
       ) : (
-        <Text>No components found</Text>
+        <Text>Select proper attribute(s) above.</Text>
       )}
     </Scenario>
   );
