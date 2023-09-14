@@ -66,6 +66,7 @@ export const Selector = () => {
       hierarchical: false,
       opensMenu: false,
       multipleActions: false,
+      textOrHeading: false,
     },
 
     keyboardNavigation: {
@@ -75,7 +76,7 @@ export const Selector = () => {
     },
 
     screenReader: {
-      narratePosition: false,
+      narratesPosition: false,
     },
   });
 
