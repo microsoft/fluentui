@@ -15,13 +15,13 @@ import { Accessibility } from '@fluentui/accessibility';
 import { ShorthandValue, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useAccessibility,
   useFluentContext,
   useUnhandledProps,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface SegmentProps
@@ -48,7 +48,7 @@ export const segmentClassName = 'ui-segment';
 /**
  * A Segment visually groups related content.
  */
-export const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStaticProps<SegmentProps> = props => {
+export const Segment = React.forwardRef<HTMLDivElement, SegmentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Segment.displayName, context.telemetry);
   setStart();
@@ -81,6 +81,7 @@ export const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStat
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -91,7 +92,7 @@ export const Segment: ComponentWithAs<'div', SegmentProps> & FluentComponentStat
 
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SegmentProps> & FluentComponentStaticProps<SegmentProps>;
 
 Segment.displayName = 'Segment';
 

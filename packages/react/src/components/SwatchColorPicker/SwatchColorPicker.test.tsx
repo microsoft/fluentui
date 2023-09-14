@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { mount } from 'enzyme';
 import { SwatchColorPicker } from './SwatchColorPicker';
 import { resetIds } from '@fluentui/utilities';
@@ -63,14 +63,25 @@ describe('SwatchColorPicker', () => {
     expectNodes(wrapper, '[aria-posinset]', 0);
   });
 
+  it('Uses radio semantics if cell count is less than or equal to column count', () => {
+    const wrapper = mount(
+      <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0], DEFAULT_OPTIONS[1], DEFAULT_OPTIONS[2]]} columnCount={3} />,
+    );
+
+    expectNodes(wrapper, 'table[role="grid"]', 0);
+    expectNodes(wrapper, 'table[role="radiogroup"]', 1);
+    expectNodes(wrapper, 'button[role="gridcell"]', 0);
+    expectNodes(wrapper, 'button[role="radio"]', 3);
+  });
+
   it('Can execute a cell in non-collapsable swatch color picker ', () => {
     const onChange = jest.fn();
     const wrapper = mount(<SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onChange={onChange} columnCount={4} />);
 
     expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer', 1);
-    expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="gridcell"]', 1);
+    expectNodes(wrapper, '.ms-swatchColorPickerBodyContainer [role="radio"]', 1);
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(1).simulate('click');
+    wrapper.find('.ms-swatchColorPickerBodyContainer [role="radio"]').at(1).simulate('click');
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
@@ -80,7 +91,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellHovered={onHover} columnCount={4} />,
     );
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('mouseenter');
+    wrapper.find('.ms-swatchColorPickerBodyContainer [role="radio"]').at(0).simulate('mouseenter');
     expect(onHover).toHaveBeenCalledTimes(1);
   });
 
@@ -90,7 +101,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker colorCells={[DEFAULT_OPTIONS[0]]} onCellFocused={onFocus} columnCount={4} />,
     );
 
-    wrapper.find('.ms-swatchColorPickerBodyContainer [role="gridcell"]').at(0).simulate('focus');
+    wrapper.find('.ms-swatchColorPickerBodyContainer [role="radio"]').at(0).simulate('focus');
     expect(onFocus).toHaveBeenCalledTimes(1);
   });
 
@@ -117,7 +128,7 @@ describe('SwatchColorPicker', () => {
 
     const tableElements = findNodes(wrapper, '.ms-Button');
     expect(tableElements.length).toEqual(2);
-    expect(tableElements.at(0).prop('aria-selected')).toEqual(true);
+    expect(tableElements.at(0).prop('aria-checked')).toEqual(true);
   });
 
   it('Can clear the selectedID if controlled', () => {
@@ -132,8 +143,8 @@ describe('SwatchColorPicker', () => {
     expect(tableElements.length).toEqual(2);
 
     // Verify initial id is selected
-    expect(tableElements.at(0).prop('aria-selected')).toEqual(true);
-    expect(tableElements.at(1).prop('aria-selected')).toEqual(false);
+    expect(tableElements.at(0).prop('aria-checked')).toEqual(true);
+    expect(tableElements.at(1).prop('aria-checked')).toEqual(false);
 
     // Update the props to set selected to undefined
     wrapper.setProps({ selectedId: undefined });
@@ -142,8 +153,8 @@ describe('SwatchColorPicker', () => {
     expect(tableElements.length).toEqual(2);
 
     // Verify nothing is selected
-    expect(tableElements.at(0).prop('aria-selected')).toEqual(false);
-    expect(tableElements.at(1).prop('aria-selected')).toEqual(false);
+    expect(tableElements.at(0).prop('aria-checked')).toEqual(false);
+    expect(tableElements.at(1).prop('aria-checked')).toEqual(false);
   });
 
   it('Cannot clear the selectedID if uncontrolled', () => {

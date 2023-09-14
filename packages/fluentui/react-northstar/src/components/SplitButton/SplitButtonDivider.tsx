@@ -8,7 +8,7 @@ import {
   useFluentContext,
   useUnhandledProps,
   useStyles,
-  ComponentWithAs,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 import {
@@ -42,8 +42,7 @@ export const SplitButtonDividerClassName = 'ui-splitButtonDivider';
 /**
  * A SplitButtonDivider visually segments content.
  */
-export const SplitButtonDivider: ComponentWithAs<'div', SplitButtonDividerProps> &
-  FluentComponentStaticProps<SplitButtonDividerProps> = props => {
+export const SplitButtonDivider = React.forwardRef<HTMLDivElement, SplitButtonDividerProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButtonDivider.displayName, context.telemetry);
   setStart();
@@ -73,13 +72,15 @@ export const SplitButtonDivider: ComponentWithAs<'div', SplitButtonDividerProps>
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     />
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonDividerProps> &
+  FluentComponentStaticProps<SplitButtonDividerProps>;
 
 SplitButtonDivider.displayName = 'SplitButtonDivider';
 

@@ -321,9 +321,9 @@ const ToolbarExampleMenuShorthand = () => {
               key: 'group',
               kind: 'group',
               items: [
-                { key: 'bookmark', icon: <BookmarkIcon /> },
+                { key: 'bookmark', title: 'bookmark', icon: <BookmarkIcon /> },
                 { key: 'divider', kind: 'divider' },
-                { key: 'chat', icon: <ChatIcon /> },
+                { key: 'chat', title: 'chat', icon: <ChatIcon /> },
               ],
             },
             {

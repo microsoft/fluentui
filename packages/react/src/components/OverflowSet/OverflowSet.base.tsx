@@ -12,10 +12,10 @@ const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject
   React.useImperativeHandle(
     props.componentRef,
     (): IOverflowSet => ({
-      focus: (): boolean => {
+      focus: (_forceIntoFirstElement?: boolean, bypassHiddenElements?: boolean): boolean => {
         let focusSucceeded = false;
         if (divContainer.current) {
-          focusSucceeded = focusFirstChild(divContainer.current);
+          focusSucceeded = focusFirstChild(divContainer.current, bypassHiddenElements);
         }
         return focusSucceeded;
       },

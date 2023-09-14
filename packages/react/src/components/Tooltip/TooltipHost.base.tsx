@@ -18,6 +18,7 @@ import { TooltipDelay } from './Tooltip.types';
 import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
 
 export interface ITooltipHostState {
+  /** @deprecated No longer used internally */
   isAriaPlaceholderRendered: boolean;
   isTooltipVisible: boolean;
 }
@@ -77,14 +78,33 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       className,
     });
 
-    const { isAriaPlaceholderRendered, isTooltipVisible } = this.state;
+    const { isTooltipVisible } = this.state;
     const tooltipId = id || this._defaultTooltipId;
-    const isContentPresent = !!(
-      content ||
-      (tooltipProps && tooltipProps.onRenderContent && tooltipProps.onRenderContent())
-    );
-    const showTooltip = isTooltipVisible && isContentPresent;
-    const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && isContentPresent ? tooltipId : undefined;
+
+    const tooltipRenderProps = {
+      id: `${tooltipId}--tooltip`,
+      content,
+      targetElement: this._getTargetElement(),
+      directionalHint,
+      directionalHintForRTL,
+      calloutProps: assign({}, calloutProps, {
+        onDismiss: this._hideTooltip,
+        onFocus: this._onTooltipContentFocus,
+        onMouseEnter: this._onTooltipMouseEnter,
+        onMouseLeave: this._onTooltipMouseLeave,
+      }),
+      onMouseEnter: this._onTooltipMouseEnter,
+      onMouseLeave: this._onTooltipMouseLeave,
+      ...getNativeProps(this.props, divProperties, ['id']), // Make sure we use the id above
+      ...tooltipProps,
+    };
+
+    // Get the content of the tooltip for use in the hidden div used for screen readers
+    const tooltipContent = tooltipProps?.onRenderContent
+      ? tooltipProps.onRenderContent(tooltipRenderProps, props => (props?.content ? <>{props.content}</> : null))
+      : content;
+    const showTooltip = isTooltipVisible && !!tooltipContent;
+    const ariaDescribedBy = setAriaDescribedBy && isTooltipVisible && !!tooltipContent ? tooltipId : undefined;
 
     return (
       <div
@@ -100,29 +120,10 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
         aria-describedby={ariaDescribedBy}
       >
         {children}
-        {showTooltip && (
-          <Tooltip
-            id={tooltipId}
-            content={content}
-            targetElement={this._getTargetElement()}
-            directionalHint={directionalHint}
-            directionalHintForRTL={directionalHintForRTL}
-            calloutProps={assign({}, calloutProps, {
-              onDismiss: this._hideTooltip,
-              onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave,
-            })}
-            onMouseEnter={this._onTooltipMouseEnter}
-            onMouseLeave={this._onTooltipMouseLeave}
-            {...getNativeProps(this.props, divProperties)}
-            {...tooltipProps}
-          />
-        )}
-        {isAriaPlaceholderRendered && (
-          <div id={tooltipId} role="none" style={hiddenContentStyle as React.CSSProperties}>
-            {content}
-          </div>
-        )}
+        {showTooltip && <Tooltip {...tooltipRenderProps} />}
+        <div hidden={true} id={tooltipId} style={hiddenContentStyle as React.CSSProperties}>
+          {tooltipContent}
+        </div>
       </div>
     );
   }
@@ -174,6 +175,16 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     this._onTooltipMouseEnter(ev);
   };
 
+  private _onTooltipContentFocus = (ev: React.FocusEvent<HTMLElement>) => {
+    if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
+      TooltipHostBase._currentVisibleTooltip.dismiss();
+    }
+    TooltipHostBase._currentVisibleTooltip = this;
+
+    this._clearDismissTimer();
+    this._clearOpenTimer();
+  };
+
   private _onTooltipBlur = (ev: React.FocusEvent<HTMLElement>) => {
     // The focused element gets a blur event when the document loses focus
     // (e.g. switching tabs in the browser), but we don't want to show the
@@ -183,7 +194,9 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     // See https://github.com/microsoft/fluentui/issues/13541
     this._ignoreNextFocusEvent = document?.activeElement === ev.target;
 
-    this._hideTooltip();
+    this._dismissTimerId = this._async.setTimeout(() => {
+      this._hideTooltip();
+    }, 0);
   };
 
   // Show Tooltip
@@ -211,7 +224,6 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     this._clearOpenTimer();
 
     if (delay !== TooltipDelay.zero) {
-      this.setState({ isAriaPlaceholderRendered: true });
       const delayTime = this._getDelayTime(delay!); // non-null assertion because we set it in `defaultProps`
 
       this._openTimerId = this._async.setTimeout(() => {
@@ -268,7 +280,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   private _toggleTooltip = (isTooltipVisible: boolean): void => {
     if (this.state.isTooltipVisible !== isTooltipVisible) {
       this.setState(
-        { isAriaPlaceholderRendered: false, isTooltipVisible },
+        { isTooltipVisible },
         () => this.props.onTooltipToggle && this.props.onTooltipToggle(isTooltipVisible),
       );
     }

@@ -13,6 +13,13 @@ import { getSubTitle } from '../../../utilities/index';
 import { ControlsPageProps } from './ControlsPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
+const webPlatformBanner = {
+  banner: {
+    title: 'Fluent UI v9',
+    message: 'Check out the all new [Fluent UI version 9](https://react.fluentui.dev)!',
+  },
+};
+
 const ControlsPageBase: React.FunctionComponent<IPageProps<Platforms>> = props => {
   const { platform } = props;
   return (
@@ -20,21 +27,22 @@ const ControlsPageBase: React.FunctionComponent<IPageProps<Platforms>> = props =
       {...props}
       title="Controls"
       platform={platform}
-      subTitle={getSubTitle(platform)}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...(props.platform === Platforms.web && webPlatformBanner)}
+      subTitle={getSubTitle(platform!)}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
       showSideRail={false}
       versionSwitcherDefinition={platform === Platforms.web ? SiteDefinition.versionSwitcherDefinition : undefined}
-      {...ControlsPageProps[platform]}
+      {...ControlsPageProps[platform!]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   const controls = SiteDefinition.pages.filter(page => page.title === 'Controls')[0].platforms;
-  const platformControls: INavPage[] = controls[platform];
+  const platformControls: INavPage[] | undefined = controls![platform];
 
   if (platformControls) {
-    let sections: IPageSectionProps<Platforms>[] = platformControls
+    let sections = platformControls
       .filter(page => !page.isHiddenFromMainNav && page.isCategory)
       .map(
         category =>
@@ -55,39 +63,46 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               </ul>
             ),
           },
-      );
+      ) as IPageSectionProps<Platforms>[];
 
-    _otherControlsRequestSections(platform) !== undefined && sections.push(_otherControlsRequestSections(platform));
+    const _otherControlsRequestSectionsValue = _otherControlsRequestSections(platform);
+
+    _otherControlsRequestSectionsValue !== undefined && sections.push(_otherControlsRequestSectionsValue);
     return sections;
   }
 }
 
-function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<Platforms> {
+function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<Platforms> | undefined {
   switch (platform) {
     case 'web':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
+        content:
+          require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string,
       };
     case 'ios':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
+        content:
+          require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string,
       };
     case 'android':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
+        content:
+          require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string,
       };
     case 'mac':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
+        content:
+          require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/mac/ControlsRequest.md') as string,
       };
     case 'cross':
       return {
         sectionName: "Need a control you don't see here?",
-        content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/cross/ControlsRequest.md') as string,
+        content:
+          require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Overviews/ControlsPage/docs/cross/ControlsRequest.md') as string,
       };
   }
   return undefined;

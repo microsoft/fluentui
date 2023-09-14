@@ -45,6 +45,7 @@ export interface IStackItemProps
   extends IStackItemSlots,
     IStyleableComponentProps<IStackItemProps, IStackItemTokens, IStackItemStyles>,
     React.HTMLAttributes<HTMLElement> {
+  children?: React.ReactNode;
   /**
    * Defines a CSS class name used to style the StackItem.
    */
@@ -77,6 +78,13 @@ export interface IStackItemProps
    * @defaultvalue true
    */
   verticalFill?: boolean;
+
+  /**
+   * Defines the initial main size of the StackItem, setting the size of the content box unless otherwise set with
+   * box-sizing.
+   * @defaultvalue auto
+   */
+  basis?: React.CSSProperties['flexBasis'];
 
   /**
    * Defines order of the StackItem.

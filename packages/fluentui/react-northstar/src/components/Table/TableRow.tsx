@@ -1,6 +1,5 @@
 import { Accessibility, tableRowBehavior, GridRowBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   mergeVariablesOverrides,
   useAccessibility,
@@ -8,6 +7,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -53,7 +53,7 @@ export type TableRowStylesProps = Pick<TableRowProps, 'header' | 'compact'>;
 /**
  * Component represents a single row in a tabular structure
  */
-export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentStaticProps<TableRowProps> = props => {
+export const TableRow = React.forwardRef<HTMLDivElement, TableRowProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TableRow.displayName, context.telemetry);
   setStart();
@@ -116,6 +116,7 @@ export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentSt
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
+            ref,
             ...unhandledProps,
           })}
         >
@@ -127,7 +128,7 @@ export const TableRow: ComponentWithAs<'div', TableRowProps> & FluentComponentSt
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TableRowProps> & FluentComponentStaticProps<TableRowProps>;
 
 TableRow.displayName = 'TableRow';
 

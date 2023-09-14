@@ -18,7 +18,9 @@ export const ButtonActionExample: React.FunctionComponent<IButtonExampleProps> =
       <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={disabled} checked={false}>
         Create account
       </ActionButton>
-
+      <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={true} checked={false}>
+        Disabled
+      </ActionButton>
       <ActionButton iconProps={addFriendIcon} allowDisabledFocus disabled={disabled} checked={true}>
         Button checked
       </ActionButton>

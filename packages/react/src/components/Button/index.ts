@@ -10,4 +10,5 @@ export * from './MessageBarButton/MessageBarButton';
 export * from './PrimaryButton/PrimaryButton';
 export * from './IconButton/IconButton';
 export * from './SplitButton/SplitButton.classNames';
+export { ButtonGlobalClassNames } from './BaseButton.classNames';
 export type { IButtonClassNames } from './BaseButton.classNames';

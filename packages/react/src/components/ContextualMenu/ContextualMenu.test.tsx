@@ -1,14 +1,15 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 import * as renderer from 'react-test-renderer';
-import { CalloutContent } from '../Callout/CalloutContent';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { ContextualMenuItemType } from './ContextualMenu.types';
 import { DefaultButton } from '../../Button';
 import { resetIds } from '@fluentui/utilities';
+import { createTestContainer } from '@fluentui/test-utilities';
 import { isConformant } from '../../common/isConformant';
 import type {
   IContextualMenuProps,
@@ -37,17 +38,16 @@ describe('ContextualMenu', () => {
   isConformant({
     Component: ContextualMenu,
     displayName: 'ContextualMenu',
-    targetComponent: CalloutContent,
+    getTargetElement: (result, attr) =>
+      attr === 'className'
+        ? // className goes on a FocusZone inside the callout
+          result.baseElement.querySelector('[data-focuszone-id]')!
+        : // generally the CalloutContent's root element gets native props and ref
+          (result.baseElement.getElementsByClassName('ms-Callout-container')[0] as HTMLElement),
     requiredProps: {
       hidden: false,
       items: [{ text: 'test', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' }],
     },
-    // TODO: ContextualMenu handles ref but doesn't pass:
-    // expect(rootRef.current?.getAttribute).toBeDefined();
-    //
-    // This test failure likely stems from Callout as it experiences the same error. The failing test should be
-    // further investigated and re-enabled in a future pull request.
-    disabledTests: ['component-handles-ref', 'component-handles-classname'],
   });
 
   it('allows setting aria-label per ContextualMenuItem', () => {
@@ -470,7 +470,7 @@ describe('ContextualMenu', () => {
               className: 'SubMenuClass',
             },
           ],
-          onDismiss: onDismiss,
+          onDismiss,
         },
       },
     ];
@@ -588,8 +588,10 @@ describe('ContextualMenu', () => {
       },
     ];
 
+    const testContainer = createTestContainer();
+
     ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+      ReactDOM.render(<ContextualMenu items={items} />, testContainer);
     });
 
     const menuItems = document.querySelectorAll('button.ms-ContextualMenu-link') as NodeListOf<HTMLButtonElement>;
@@ -740,6 +742,61 @@ describe('ContextualMenu', () => {
     expect(menuItems.length).toEqual(10);
   });
 
+  it('calculates index and total of menu items correctly', () => {
+    const items: IContextualMenuItem[] = [
+      { key: 'header', text: 'header', itemType: ContextualMenuItemType.Header },
+      { key: '1', text: 'One' },
+      { key: 'divider', itemType: ContextualMenuItemType.Divider },
+      { key: '2', text: 'Two' },
+    ];
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+    });
+
+    const menuItems = document.querySelectorAll('li button');
+    const total = menuItems[0].getAttribute('aria-setsize');
+    const index1 = menuItems[0].getAttribute('aria-posinset');
+    const index2 = menuItems[1].getAttribute('aria-posinset');
+
+    expect(total).toBe('2');
+    expect(index1).toBe('1');
+    expect(index2).toBe('2');
+  });
+
+  it('calculates index and total of menu items in a section correctly', () => {
+    const items: IContextualMenuItem[] = [
+      {
+        key: 'section1',
+        itemType: ContextualMenuItemType.Section,
+        sectionProps: {
+          topDivider: true,
+          bottomDivider: true,
+          title: 'Actions',
+          items: [
+            { key: 'header', text: 'header', itemType: ContextualMenuItemType.Header },
+            { key: '1', text: 'One' },
+            { key: 'divider', itemType: ContextualMenuItemType.Divider },
+            { key: '2', text: 'Two' },
+          ],
+        },
+      },
+    ];
+
+    ReactTestUtils.act(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+    });
+
+    const menuItems = document.querySelectorAll('li button');
+    const total = menuItems[0].getAttribute('aria-setsize');
+    const index1 = menuItems[0].getAttribute('aria-posinset');
+    const index2 = menuItems[1].getAttribute('aria-posinset');
+
+    expect(total).toBe('2');
+    expect(index1).toBe('1');
+    expect(index2).toBe('2');
+  });
+
   describe('with links', () => {
     const testUrl = 'http://test.com';
     let items: IContextualMenuItem[];
@@ -849,8 +906,10 @@ describe('ContextualMenu', () => {
       },
     ];
 
+    const testContainer = createTestContainer();
+
     ReactTestUtils.act(() => {
-      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+      ReactDOM.render(<ContextualMenu items={items} />, testContainer);
     });
 
     ReactTestUtils.act(() => {
@@ -968,13 +1027,13 @@ describe('ContextualMenu', () => {
   describe('ContextualMenu snapshot', () => {
     it('ContextualMenu should be present in DOM when hidden (snapshot)', () => {
       // Mock createPortal to capture its component hierarchy in snapshot output.
-      const ReactDOM = require('react-dom');
-      const createPortal = ReactDOM.createPortal;
-      ReactTestUtils.act(() => {
-        ReactDOM.createPortal = jest.fn(element => {
-          return element;
-        });
-      });
+
+      const createPortalMock = (children => {
+        return children;
+      }) as typeof ReactDOM.createPortal;
+
+      jest.spyOn(ReactDOM, 'createPortal').mockImplementation(createPortalMock);
+
       const buttonRef = React.createRef<IButton>();
       const component = renderer.create(
         <DefaultButton
@@ -1003,9 +1062,10 @@ describe('ContextualMenu', () => {
       buttonRef.current!.openMenu();
       buttonRef.current!.dismissMenu();
       const tree = component.toJSON();
+
       expect(tree).toMatchSnapshot();
 
-      ReactDOM.createPortal = createPortal;
+      jest.resetAllMocks();
     });
   });
 
@@ -1095,14 +1155,14 @@ describe('ContextualMenu', () => {
     });
 
     it('Menu should correctly return focus to previously focused element when dismissed and document has focus', () => {
-      const temp = ReactTestUtils.renderIntoDocument<HTMLDivElement>(
-        <div>
-          <DefaultButton menuProps={{ items: menu }} text="but" id="btn" />
-        </div>,
-      ) as HTMLElement;
+      const testContainer = createTestContainer();
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<DefaultButton menuProps={{ items: menu }} text="but" id="btn" />, testContainer);
+      });
 
       // Get and make sure that the button is the active element
-      const btn = temp.querySelector('#btn')! as HTMLElement;
+      const btn = testContainer.querySelector('#btn')! as HTMLElement;
       expect(btn).not.toEqual(null);
       btn.focus();
       expect(document.activeElement).toEqual(btn);

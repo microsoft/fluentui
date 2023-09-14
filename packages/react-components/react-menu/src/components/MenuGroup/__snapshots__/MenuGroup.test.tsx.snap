@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MenuGroup renders a default state 1`] = `
+<div
+  aria-labelledby="menu-group1"
+  className="fui-MenuGroup"
+  role="group"
+>
+  Default MenuGroup
+</div>
+`;

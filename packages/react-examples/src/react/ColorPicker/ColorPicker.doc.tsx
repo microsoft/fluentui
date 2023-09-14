@@ -3,7 +3,8 @@ import { ColorPickerBasicExample } from './ColorPicker.Basic.Example';
 
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
-const ColorPickerBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ColorPicker/ColorPicker.Basic.Example.tsx') as string;
+const ColorPickerBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ColorPicker/ColorPicker.Basic.Example.tsx') as string;
 export const ColorPickerPageProps: IDocPageProps = {
   title: 'ColorPicker',
   componentName: 'ColorPicker',

@@ -13,11 +13,8 @@ import {
   accentFillActive,
   accentFillHover,
   accentFillRest,
-  bodyFont,
   designUnit,
   disabledOpacity,
-  fillColor,
-  focusStrokeOuter,
   foregroundOnAccentRest,
   neutralFillInputAltActive,
   neutralFillInputAltFocus,
@@ -28,9 +25,9 @@ import {
   neutralStrokeStrongHover,
   neutralStrokeStrongRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentTight } from '../styles/focus';
 
 export const radioStyles: (context: ElementDefinitionContext, definition: RadioOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -41,7 +38,6 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       --input-size: calc((${heightNumber} / 2) + ${designUnit});
       align-items: center;
       outline: none;
-      margin: calc(${designUnit} * 1px) 0;
       ${
         /*
          * Chromium likes to select label text or the default slot when
@@ -61,7 +57,6 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
       border-radius: 50%;
       border: calc(${strokeWidth} * 1px) solid ${neutralStrokeStrongRest};
       background: ${neutralFillInputAltRest};
-      outline: none;
       cursor: pointer;
     }
 
@@ -71,15 +66,13 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     }
 
     .label {
-      font-family: ${bodyFont};
+      ${typeRampBase}
       color: ${neutralForegroundRest};
       ${
         /* Need to discuss with Brian how HorizontalSpacingNumber can work. https://github.com/microsoft/fast/issues/2766 */ ''
       } padding-inline-start: calc(${designUnit} * 2px + 2px);
       margin-inline-end: calc(${designUnit} * 2px + 2px);
       cursor: pointer;
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
     }
 
     .control,
@@ -113,9 +106,8 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     }
 
     :host(:${focusVisible}) .control {
-      box-shadow: 0 0 0 1px ${fillColor}, 0 0 0 3px ${focusStrokeOuter};
+      ${focusTreatmentTight}
       background: ${neutralFillInputAltFocus};
-      border-color: ${focusStrokeOuter};
     }
 
     :host(.checked) .control {
@@ -151,49 +143,42 @@ export const radioStyles: (context: ElementDefinitionContext, definition: RadioO
     forcedColorsStylesheetBehavior(
       css`
         .control {
-          forced-color-adjust: none;
+          background: ${SystemColors.Field};
           border-color: ${SystemColors.FieldText};
-          background: ${SystemColors.Field};
         }
-        :host(:not(.disabled)) .control:hover,
-        .control:active {
+        :host(:not(.disabled):hover) .control,
+        :host(:not(.disabled):active) .control {
           border-color: ${SystemColors.Highlight};
-          background: ${SystemColors.Field};
         }
         :host(:${focusVisible}) .control {
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
+          forced-color-adjust: none;
+          background: ${SystemColors.Field};
+          outline-color: ${SystemColors.FieldText};
         }
-        :host(.checked:${focusVisible}:not(.disabled)) .control {
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
-        }
-        :host(.checked:not(.disabled)) .control:hover,
-        .control:active {
+        :host(.checked:not(.disabled):hover) .control,
+        :host(.checked:not(.disabled):active) .control {
           border-color: ${SystemColors.Highlight};
           background: ${SystemColors.Highlight};
         }
         :host(.checked) slot[name='checked-indicator'] {
           fill: ${SystemColors.Highlight};
         }
-        :host(.checked) .control:hover slot[name='checked-indicator'] {
+        :host(.checked:hover) .control slot[name='checked-indicator'] {
           fill: ${SystemColors.HighlightText};
         }
         :host(.disabled) {
-          forced-color-adjust: none;
           opacity: 1;
         }
         :host(.disabled) .label {
           color: ${SystemColors.GrayText};
         }
         :host(.disabled) .control,
-        :host(.checked.disabled) .control:hover,
-        .control:active {
+        :host(.checked.disabled) .control {
           background: ${SystemColors.Field};
           border-color: ${SystemColors.GrayText};
         }
         :host(.disabled) slot[name='checked-indicator'],
-        :host(.checked.disabled) .control:hover slot[name='checked-indicator'] {
+        :host(.checked.disabled) slot[name='checked-indicator'] {
           fill: ${SystemColors.GrayText};
         }
       `,

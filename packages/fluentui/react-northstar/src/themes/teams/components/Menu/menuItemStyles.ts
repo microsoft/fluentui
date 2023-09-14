@@ -6,6 +6,7 @@ import { getColorScheme } from '../../colors';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { menuItemIconClassName } from '../../../../components/Menu/MenuItemIcon';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -39,8 +40,15 @@ export const getFocusedStyles = ({
       background: colors.backgroundFocus,
     }),
 
+    // primary styles
+    ...(primary &&
+      !vertical &&
+      !underlined && {
+        color: v.primaryWrapperColorFocus,
+      }),
+
     ...(vertical && {
-      background: v.verticalBackgroundColorFocus,
+      background: 'inherit',
       color: v.colorFocus || colors.foregroundFocus,
       border: `${pxToRem(1)} solid transparent`,
       padding: pxToRem(1),
@@ -175,17 +183,12 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
-
-        ...(underlined && {
+        ...((underlined || vertical) && {
           ...getBorderFocusStyles({ variables: siteVariables }),
           ':focus-visible': {
             ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
             borderColor: v.borderColorActive,
           },
-        }),
-
-        ...(vertical && {
-          ...getBorderFocusStyles({ variables: siteVariables, borderRadius: 0 }),
         }),
       }),
 
@@ -199,6 +202,14 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
 
         ...(underlined && { color: v.underlinedColorHover }),
 
+        ...(!disabled &&
+          !primary &&
+          vertical && {
+            [`&>.${menuItemIconClassName}`]: {
+              color: v.subMenuIconColor,
+              ...getIconFillOrOutlineStyles({ outline: false }),
+            },
+          }),
         ...(!disabled && {
           ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
           ...(primary

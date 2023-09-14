@@ -10,13 +10,13 @@ export const SpinnerPage: React.FunctionComponent<IControlsPageProps> = props =>
     <ControlsAreaPage
       {...props}
       title="Spinner"
-      {...SpinnerPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...SpinnerPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [
@@ -24,7 +24,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Implementation',
           editUrl:
             'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SpinnerPage/docs/ios/SpinnerImplementation.md') as string,
         },
       ];
     case 'android':
@@ -33,7 +34,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           sectionName: 'Implementation',
           editUrl:
             'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SpinnerPage/docs/android/SpinnerImplementation.md') as string,
         },
       ];
   }

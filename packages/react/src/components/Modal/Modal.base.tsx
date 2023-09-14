@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
   classNamesFunction,
+  css,
   allowScrollOnElement,
   allowOverscrollOnElement,
   getPropsWithDefaults,
@@ -59,6 +60,7 @@ const DEFAULT_PROPS: Partial<IModalProps> = {
   isDarkOverlay: true,
   className: '',
   containerClassName: '',
+  enableAriaHiddenSiblings: true,
 };
 
 const getClassNames = classNamesFunction<IModalStyleProps, IModalStyles>();
@@ -101,8 +103,10 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       scrollableContentClassName,
       elementToFocusOnDismiss,
       firstFocusableSelector,
+      focusTrapZoneProps,
       forceFocusInsideTrap,
-      ignoreExternalFocusing,
+      // eslint-disable-next-line deprecation/deprecation
+      disableRestoreFocus = props.ignoreExternalFocusing,
       isBlocking,
       isAlert,
       isClickableOutsideFocusTrap,
@@ -122,17 +126,20 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       isModeless,
       dragOptions,
       onDismissed,
+      // eslint-disable-next-line deprecation/deprecation
       enableAriaHiddenSiblings,
+      popupProps,
     } = props;
 
     const rootRef = React.useRef<HTMLDivElement>(null);
     const focusTrapZone = React.useRef<IFocusTrapZone>(null);
+    const focusTrapZoneRef = useMergedRefs(focusTrapZone, focusTrapZoneProps?.componentRef);
     const focusTrapZoneElm = React.useRef<HTMLDivElement>(null);
     const mergedRef = useMergedRefs(rootRef, ref);
 
     const modalResponsiveMode = useResponsiveMode(mergedRef);
 
-    const focusTrapZoneId = useId('ModalFocusTrapZone');
+    const focusTrapZoneId = useId('ModalFocusTrapZone', focusTrapZoneProps?.id);
 
     const win = useWindow();
 
@@ -177,7 +184,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       eventBubblingEnabled: false,
       ...layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
-      insertFirst: isModeless,
+      insertFirst: layerProps?.insertFirst || isModeless,
       className: classNames.layer,
     };
 
@@ -271,6 +278,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       // We need a global handleKeyDown event when we are in the move mode so that we can
       // handle the key presses and the components inside the modal do not get the events
       const handleKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
+        // eslint-disable-next-line deprecation/deprecation
         if (ev.altKey && ev.ctrlKey && ev.keyCode === KeyCodes.space) {
           // CTRL + ALT + SPACE is handled during keyUp
           ev.preventDefault();
@@ -278,10 +286,13 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           return;
         }
 
-        if (isModalMenuOpen && (ev.altKey || ev.keyCode === KeyCodes.escape)) {
+        // eslint-disable-next-line deprecation/deprecation
+        const newLocal = ev.altKey || ev.keyCode === KeyCodes.escape;
+        if (isModalMenuOpen && newLocal) {
           setModalMenuClose();
         }
 
+        // eslint-disable-next-line deprecation/deprecation
         if (internalState.isInKeyboardMoveMode && (ev.keyCode === KeyCodes.escape || ev.keyCode === KeyCodes.enter)) {
           internalState.isInKeyboardMoveMode = false;
           ev.preventDefault();
@@ -292,6 +303,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
           let handledEvent = true;
           const delta = getMoveDelta(ev);
 
+          // eslint-disable-next-line deprecation/deprecation
           switch (ev.keyCode) {
             /* eslint-disable no-fallthrough */
             case KeyCodes.escape:
@@ -341,7 +353,8 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       };
     };
 
-    const handleExitKeyboardMoveMode = () => {
+    const handleExitKeyboardMoveMode = (ev: React.FocusEvent<HTMLDivElement>) => {
+      focusTrapZoneProps?.onBlur?.(ev);
       internalState.lastSetCoordinates = ZERO;
       internalState.isInKeyboardMoveMode = false;
       internalState.disposeOnKeyDown?.();
@@ -351,6 +364,7 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
       const handleKeyUp = (ev: React.KeyboardEvent<HTMLElement>): void => {
         // Needs to handle the CTRL + ALT + SPACE key during keyup due to FireFox bug:
         // https://bugzilla.mozilla.org/show_bug.cgi?id=1220143
+        // eslint-disable-next-line deprecation/deprecation
         if (ev.altKey && ev.ctrlKey && ev.keyCode === KeyCodes.space) {
           if (elementContains(internalState.scrollableContent, ev.target as HTMLElement)) {
             toggleModalMenuOpen();
@@ -404,18 +418,22 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
 
     const modalContent = (
       <FocusTrapZone
+        {...focusTrapZoneProps}
         id={focusTrapZoneId}
         ref={focusTrapZoneElm}
-        componentRef={focusTrapZone}
-        className={classNames.main}
-        elementToFocusOnDismiss={elementToFocusOnDismiss}
-        isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
-        ignoreExternalFocusing={ignoreExternalFocusing}
-        forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
-        firstFocusableSelector={firstFocusableSelector}
-        focusPreviouslyFocusedInnerElement
+        componentRef={focusTrapZoneRef}
+        className={css(classNames.main, focusTrapZoneProps?.className)}
+        elementToFocusOnDismiss={focusTrapZoneProps?.elementToFocusOnDismiss ?? elementToFocusOnDismiss}
+        isClickableOutsideFocusTrap={
+          focusTrapZoneProps?.isClickableOutsideFocusTrap ?? (isModeless || isClickableOutsideFocusTrap || !isBlocking)
+        }
+        disableRestoreFocus={focusTrapZoneProps?.disableRestoreFocus ?? disableRestoreFocus}
+        forceFocusInsideTrap={(focusTrapZoneProps?.forceFocusInsideTrap ?? forceFocusInsideTrap) && !isModeless}
+        // eslint-disable-next-line deprecation/deprecation
+        firstFocusableSelector={focusTrapZoneProps?.firstFocusableSelector || firstFocusableSelector}
+        focusPreviouslyFocusedInnerElement={focusTrapZoneProps?.focusPreviouslyFocusedInnerElement ?? true}
         onBlur={internalState.isInKeyboardMoveMode ? handleExitKeyboardMoveMode : undefined}
-        enableAriaHiddenSiblings={enableAriaHiddenSiblings}
+        // enableAriaHiddenSiblings is handled by the Popup
       >
         {dragOptions && internalState.isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -452,11 +470,15 @@ export const ModalBase: React.FunctionComponent<IModalProps> = React.forwardRef<
         <Layer ref={mergedRef} {...mergedLayerProps}>
           <Popup
             role={isAlertRole ? 'alertdialog' : 'dialog'}
-            aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
-            shouldRestoreFocus={!ignoreExternalFocusing}
+            shouldRestoreFocus={!disableRestoreFocus}
+            // Modeless modals shouldn't hide siblings.
+            // Popup will automatically handle this based on the aria-modal setting.
+            enableAriaHiddenSiblings={enableAriaHiddenSiblings}
+            aria-modal={!isModeless}
+            {...popupProps}
           >
             <div className={classNames.root} role={!isModeless ? 'document' : undefined}>
               {!isModeless && (

@@ -2,8 +2,8 @@
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "dist",
-    "target": "es5",
-    "module": "commonjs",
+    "target": "ES2019",
+    "module": "CommonJS",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -14,9 +14,10 @@
     "strict": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
+    "lib": ["ES2019", "DOM"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["custom-global"]
+    "types": ["custom-global"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

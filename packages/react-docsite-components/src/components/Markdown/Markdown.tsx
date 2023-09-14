@@ -1,5 +1,7 @@
 import * as React from 'react';
-import MarkdownToJsx, { MarkdownProps as MarkdownToJsxProps } from 'markdown-to-jsx';
+import type MarkdownComponentType from 'markdown-to-jsx';
+import type { MarkdownToJSX } from 'markdown-to-jsx';
+import * as MarkdownModule from 'markdown-to-jsx';
 import { Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 import { DisplayToggle } from '../DisplayToggle/index';
@@ -11,7 +13,14 @@ import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMark
 import { MarkdownLink } from './MarkdownLink';
 import { MarkdownPre } from './MarkdownPre';
 
-const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
+// This is to work around inconsistency between the way markdown-to-jsx declares its types
+// (as having a default export) and the way it actually builds its files (for its cjs `main` file,
+// assigning to module.exports and not setting a default export)
+const MarkdownComponent: typeof MarkdownComponentType =
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (MarkdownModule as any).default || (MarkdownModule as any);
+
+const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = () => {
   const imageStyles: Partial<IImageStyles> = {
     root: {
       maxWidth: '100%',
@@ -33,94 +42,92 @@ const MarkdownBase: React.FunctionComponent<IMarkdownProps> = props => {
 
   return (
     <div className={classNames.root}>
-      <MarkdownToJsx {...getMarkdownProps(classNames.subComponentStyles, props)}>{children}</MarkdownToJsx>
+      <MarkdownComponent options={{ overrides: getOverrides(classNames.subComponentStyles, props) }}>
+        {children as string}
+      </MarkdownComponent>
     </div>
   );
 };
 MarkdownBase.displayName = 'Markdown';
 
-function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles, props: IMarkdownProps): MarkdownToJsxProps {
+function getOverrides(subComponentStyles: IMarkdownSubComponentStyles, props: IMarkdownProps): MarkdownToJSX.Overrides {
   return {
-    options: {
-      overrides: {
-        h1: {
-          component: MarkdownHeader,
-          props: { styles: subComponentStyles.header },
-        },
-        h2: {
-          component: MarkdownHeader,
-          props: { as: 'h2', styles: subComponentStyles.header },
-        },
-        h3: {
-          component: MarkdownHeader,
-          props: { as: 'h3', styles: subComponentStyles.header },
-        },
-        h4: {
-          component: MarkdownHeader,
-          props: { as: 'h4', styles: subComponentStyles.header },
-        },
-        h5: {
-          component: MarkdownHeader,
-          props: { as: 'h5', styles: subComponentStyles.header },
-        },
-        h6: {
-          component: MarkdownHeader,
-          props: { as: 'h6', styles: subComponentStyles.header },
-        },
-        code: {
-          component: MarkdownCode,
-          props: { styles: subComponentStyles.code },
-        },
-        p: {
-          component: MarkdownParagraph,
-          props: { styles: subComponentStyles.paragraph },
-        },
-        pre: {
-          component: MarkdownPre,
-          props: { enableRenderHtmlBlock: props.enableRenderHtmlBlock },
-        },
-        a: {
-          component: MarkdownLink,
-          props: { className: 'ms-mdLink', styles: subComponentStyles.link },
-        },
-        img: {
-          component: Image,
-          props: { className: 'ms-mdImage', styles: subComponentStyles.image },
-        },
-        button: {
-          component: DefaultButton,
-          props: { className: 'ms-mdButton', styles: subComponentStyles.button },
-        },
-        table: {
-          component: MDTable.MarkdownTable,
-          props: { styles: subComponentStyles.table },
-        },
-        thead: {
-          component: MDTable.MarkdownTHead,
-          props: { styles: subComponentStyles.table },
-        },
-        tbody: {
-          component: MDTable.MarkdownTBody,
-          props: { styles: subComponentStyles.table },
-        },
-        tr: {
-          component: MDTable.MarkdownTr,
-          props: { styles: subComponentStyles.table },
-        },
-        th: {
-          component: MDTable.MarkdownCell,
-          props: { as: 'th', styles: subComponentStyles.table },
-        },
-        td: {
-          component: MDTable.MarkdownCell,
-          props: { as: 'td', styles: subComponentStyles.table },
-        },
-        DisplayToggle: {
-          component: DisplayToggle,
-        },
-        ...props.overrides,
-      },
+    h1: {
+      component: MarkdownHeader,
+      props: { styles: subComponentStyles.header },
     },
+    h2: {
+      component: MarkdownHeader,
+      props: { as: 'h2', styles: subComponentStyles.header },
+    },
+    h3: {
+      component: MarkdownHeader,
+      props: { as: 'h3', styles: subComponentStyles.header },
+    },
+    h4: {
+      component: MarkdownHeader,
+      props: { as: 'h4', styles: subComponentStyles.header },
+    },
+    h5: {
+      component: MarkdownHeader,
+      props: { as: 'h5', styles: subComponentStyles.header },
+    },
+    h6: {
+      component: MarkdownHeader,
+      props: { as: 'h6', styles: subComponentStyles.header },
+    },
+    code: {
+      component: MarkdownCode,
+      props: { styles: subComponentStyles.code },
+    },
+    p: {
+      component: MarkdownParagraph,
+      props: { styles: subComponentStyles.paragraph },
+    },
+    pre: {
+      component: MarkdownPre,
+      props: { enableRenderHtmlBlock: props.enableRenderHtmlBlock },
+    },
+    a: {
+      component: MarkdownLink,
+      props: { className: 'ms-mdLink', styles: subComponentStyles.link },
+    },
+    img: {
+      component: Image,
+      props: { className: 'ms-mdImage', styles: subComponentStyles.image },
+    },
+    button: {
+      component: DefaultButton,
+      props: { className: 'ms-mdButton', styles: subComponentStyles.button },
+    },
+    table: {
+      component: MDTable.MarkdownTable,
+      props: { styles: subComponentStyles.table },
+    },
+    thead: {
+      component: MDTable.MarkdownTHead,
+      props: { styles: subComponentStyles.table },
+    },
+    tbody: {
+      component: MDTable.MarkdownTBody,
+      props: { styles: subComponentStyles.table },
+    },
+    tr: {
+      component: MDTable.MarkdownTr,
+      props: { styles: subComponentStyles.table },
+    },
+    th: {
+      component: MDTable.MarkdownCell,
+      props: { as: 'th', styles: subComponentStyles.table },
+    },
+    td: {
+      component: MDTable.MarkdownCell,
+      props: { as: 'td', styles: subComponentStyles.table },
+    },
+    DisplayToggle: {
+      component: DisplayToggle,
+    },
+    ...props.overrides,
   };
 }
 

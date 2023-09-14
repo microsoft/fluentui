@@ -22,6 +22,11 @@ export interface CarouselVariables {
   paddleHeight: string;
 
   paddleIndicatorSize: string;
+
+  focusBorderRadius: string;
+  focusBorderWidth: string;
+  focusInnerBorderColor: string;
+  focusBorderZIndex: string;
 }
 
 export const carouselVariables = (siteVars): CarouselVariables => ({
@@ -46,4 +51,9 @@ export const carouselVariables = (siteVars): CarouselVariables => ({
   paddleHeight: pxToRem(32),
 
   paddleIndicatorSize: pxToRem(16),
+
+  focusBorderRadius: siteVars.borderRadiusMedium,
+  focusBorderWidth: siteVars.borderWidth,
+  focusInnerBorderColor: siteVars.focusInnerBorderColor,
+  focusBorderZIndex: siteVars.zIndexes.foreground,
 });

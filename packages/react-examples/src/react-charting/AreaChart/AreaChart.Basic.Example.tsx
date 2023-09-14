@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
 import { IAreaChartProps, ChartHoverCard } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 
 interface IAreaChartBasicState {
@@ -142,7 +141,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       {
         legend: 'legend1',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: '#0099BC',
       },
     ];
 
@@ -155,10 +154,27 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Basic"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Basic"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
+
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
         <div style={rootStyle}>
           <AreaChart
@@ -167,6 +183,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
             width={this.state.width}
             data={chartData}
             showYAxisGridLines={true}
+            enablePerfOptimization={true}
             // eslint-disable-next-line react/jsx-no-bind
             onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
               props && this.state.isCalloutselected ? (

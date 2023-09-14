@@ -23,7 +23,7 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
       ...(vertical && {
         flexDirection: 'column',
         backgroundColor: v.verticalBackgroundColor,
-        padding: `${pxToRem(8)} 0`,
+        padding: `${pxToRem(8)} ${pxToRem(4)}`,
         ...(submenu && {
           boxShadow: v.verticalBoxShadow,
         }),
@@ -40,6 +40,9 @@ export const menuStyles: ComponentSlotStylesPrepared<MenuStylesProps, MenuVariab
           // primary has hardcoded grey border color
           border: `${v.borderWidth} solid ${primary ? v.primaryBorderColor : v.borderColor || colors.border}`,
           borderRadius: siteVariables.borderRadiusMedium,
+          ...(submenu && {
+            borderColor: v.subMenuBorderColor,
+          }),
         }),
       ...(underlined && {
         borderBottom: `${v.underlinedBottomBorderWidth} solid ${v.underlinedBorderColor}`,

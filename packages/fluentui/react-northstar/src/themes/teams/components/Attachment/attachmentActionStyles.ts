@@ -11,7 +11,10 @@ export const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActio
   root: ({ props: p, variables: v, theme }): ICSSInJSStyle => {
     const { siteVariables } = theme;
     const iconFilledStyles = getIconFillOrOutlineStyles({ outline: false });
-    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables });
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: siteVariables,
+      borderRadius: v.actionFocusBorderRadius,
+    });
 
     return {
       height: v.actionHeight,
@@ -91,17 +94,9 @@ export const attachmentActionStyles: ComponentSlotStylesPrepared<AttachmentActio
       width: v.actionLoaderSize,
       height: v.actionLoaderSize,
     },
-    [`& .${loaderSlotClassNames.svg}`]: {
-      ':before': {
-        animationName: {
-          to: {
-            transform: `translate3d(0, ${v.actionLoaderSvgAnimationHeight}, 0)`,
-          },
-        },
-        borderWidth: v.actionLoaderBorderSize,
-        width: v.actionLoaderSize,
-        height: v.actionLoaderSvgHeight,
-      },
+    [`& .${loaderSlotClassNames.indicator} > svg`]: {
+      width: v.actionLoaderSize,
+      height: v.actionLoaderSvgHeight,
     },
 
     ...(p.hasContent && {

@@ -1151,6 +1151,7 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * Defines how the browser distributes space between and around flex items
    * along the main-axis of their container.
+   *
    * See CSS justify-content property
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
@@ -1163,6 +1164,34 @@ export interface IRawStyleBase extends IRawFontStyle {
     | 'space-around'
     | 'space-evenly'
     | 'stretch'
+    | string;
+
+  /**
+   * This property specifies the default justify-self for all of the child boxes (including anonymous boxes)
+   * participating in this box’s formatting context.
+   *
+   * See CSS jusitfy-items property
+   * https://www.w3.org/TR/css-align-3/#justify-items-property
+   */
+  justifyItems?:
+    | ICSSRule
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowAndSelfPositionRule
+    | 'left'
+    | 'right'
+    // prefixed with <overflow-position> value 'safe'
+    | 'safe left'
+    | 'safe right'
+    // prefixed with <overflow-position> value 'unsafe'
+    | 'unsafe left'
+    | 'unsafe right'
+    // legacy values
+    | 'legacy'
+    | 'legacy left'
+    | 'legacy right'
+    | 'legacy center'
     | string;
 
   /**
@@ -1239,9 +1268,41 @@ export interface IRawStyleBase extends IRawFontStyle {
   margin?: ICSSRule | ICSSPixelUnitRule;
 
   /**
+   * The margin-block-end CSS property defines the logical block end margin of an element, which maps to a physical
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The margin-block-start CSS property defines the logical block start margin of an element, which maps to a physical
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
    * margin-bottom sets the bottom margin of an element.
    */
   marginBottom?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The margin-inline-end CSS property defines the logical inline end margin of an element, which maps to a physical
+   * margin depending on the element's writing mode, directionality, and text orientation. It corresponds to the
+   * margin-top, margin-right, margin-bottom or margin-left property depending on the values defined for writing-mode,
+   * direction, and text-orientation.
+   */
+  marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+
+  /**
+   * The margin-inline-start CSS property defines the logical inline start margin of an element, which maps to a
+   * physical margin depending on the element's writing mode, directionality, and text orientation. It corresponds to
+   * the margin-top, margin-right, margin-bottom, or margin-left property depending on the values defined for
+   * writing-mode, direction, and text-orientation.
+   */
+  marginInlineStart?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * margin-left sets the left margin of an element.
@@ -1602,6 +1663,51 @@ export interface IRawStyleBase extends IRawFontStyle {
    * appearance as if viewed toward the bottom right angle.
    */
   perspectiveOrigin?: ICSSRule | string;
+
+  /**
+   * This shorthand property sets both the align-content and justify-content properties in one declaration.
+   * The first value is assigned to align-content. The second value is assigned to justify-content; if omitted, it is
+   * copied from the first value, unless that value is a <baseline-position> in which case it is defaulted to start.
+   *
+   * See CSS place-content property
+   * https://www.w3.org/TR/css-align-3/#place-content
+   */
+  placeContent?:
+    | ICSSRule
+    | 'normal'
+    | 'space-between'
+    | 'space-around'
+    | 'space-evenly'
+    | 'stretch'
+    | ICSSOverflowAndSelfPositionRule
+    | string;
+
+  /**
+   * This shorthand property sets both the align-items and justify-items properties in a single declaration.
+   * The first value is assigned to align-items. The second value is assigned to justify-items; if omitted, it is
+   * copied from the first value.
+   *
+   * See CSS place-items property
+   * https://www.w3.org/TR/css-align-3/#place-items-property
+   */
+  placeItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
+
+  /**
+   * This shorthand property sets both the align-self and justify-self properties in a single declaration.
+   * The first value is assigned to align-self. The second value is assigned to justify-self; if omitted, it is copied
+   * from the first value.
+   *
+   * See CSS place-self property
+   * https://www.w3.org/TR/css-align-3/#place-self-property
+   */
+  placeSelf?:
+    | ICSSRule
+    | 'auto'
+    | 'normal'
+    | 'stretch'
+    | ICSSBaselinePositionRule
+    | ICSSOverflowAndSelfPositionRule
+    | string;
 
   /**
    * The pointer-events property allows you to control whether an element can be the

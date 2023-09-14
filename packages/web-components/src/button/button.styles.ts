@@ -2,13 +2,13 @@ import { css, ElementStyles } from '@microsoft/fast-element';
 import {
   disabledCursor,
   ElementDefinitionContext,
-  forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
   AccentButtonStyles,
   baseButtonStyles,
   LightweightButtonStyles,
+  NeutralButtonStyles,
   OutlineButtonStyles,
   StealthButtonStyles,
 } from '../styles/';
@@ -23,20 +23,23 @@ export const buttonStyles: (
   definition: FoundationElementDefinition,
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
-    :host([disabled]) {
-      opacity: ${disabledOpacity};
+    :host(${interactivitySelector}) .control {
+      cursor: pointer;
+    }
+
+    :host(${nonInteractivitySelector}) .control {
       cursor: ${disabledCursor};
+    }
+
+    @media (forced-colors: none) {
+      :host(${nonInteractivitySelector}) .control {
+        opacity: ${disabledOpacity};
+      }
     }
 
     ${baseButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)}
   `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        :host([disabled]) {
-          opacity: 1;
-        }
-      `,
-    ),
+    appearanceBehavior('neutral', NeutralButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
     appearanceBehavior('accent', AccentButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
     appearanceBehavior('lightweight', LightweightButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
     appearanceBehavior('outline', OutlineButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),

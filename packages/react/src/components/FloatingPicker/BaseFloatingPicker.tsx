@@ -19,15 +19,15 @@ export interface IBaseFloatingPickerState {
 
 export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   extends React.Component<P, IBaseFloatingPickerState>
-  implements IBaseFloatingPicker {
+  implements IBaseFloatingPicker
+{
   protected selection: Selection;
 
   protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
   protected suggestionsControl: React.RefObject<SuggestionsControl<T>> = React.createRef();
-  protected SuggestionsControlOfProperType: new (
-    props: ISuggestionsControlProps<T>,
-  ) => SuggestionsControl<T> = SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
+  protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> =
+    SuggestionsControl as new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T>;
   protected currentPromise: PromiseLike<T[]>;
   protected isComponentMounted: boolean = false;
 
@@ -72,7 +72,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString,
+        queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -207,21 +207,18 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
   }
 
   protected updateSuggestionsList(suggestions: T[] | PromiseLike<T[]>): void {
-    const suggestionsArray: T[] = suggestions as T[];
-    const suggestionsPromiseLike: PromiseLike<T[]> = suggestions as PromiseLike<T[]>;
-
     // Check to see if the returned value is an array, if it is then just pass it into the next function.
     // If the returned value is not an array then check to see if it's a promise or PromiseLike.
     // If it is then resolve it asynchronously.
-    if (Array.isArray(suggestionsArray)) {
-      this.updateSuggestions(suggestionsArray, true /*forceUpdate*/);
-    } else if (suggestionsPromiseLike && suggestionsPromiseLike.then) {
+    if (Array.isArray(suggestions)) {
+      this.updateSuggestions(suggestions, true /*forceUpdate*/);
+    } else if (suggestions && (suggestions as PromiseLike<T[]>).then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
-      promise.then((newSuggestions: T[]) => {
+      this.currentPromise = suggestions;
+      suggestions.then((newSuggestions: T[]) => {
         // Only update if the next promise has not yet resolved and
         // the floating picker is still mounted.
-        if (promise === this.currentPromise && this.isComponentMounted) {
+        if (suggestions === this.currentPromise && this.isComponentMounted) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
       });
@@ -284,7 +281,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
         if (
           this.props.onRemoveSuggestion &&
           this.suggestionsControl.current &&
-          this.suggestionsControl.current.hasSuggestionSelected &&
+          this.suggestionsControl.current.hasSuggestionSelected() &&
           this.suggestionsControl.current.currentSuggestion &&
           ev.shiftKey
         ) {
@@ -337,13 +334,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>>
 
   private _onValidateInput = (): void => {
     if (this.state.queryString && this.props.onValidateInput && this.props.createGenericItem) {
-      const itemToConvert: ISuggestionModel<T> = (this.props.createGenericItem as (
-        input: string,
-        isValid: boolean,
-      ) => ISuggestionModel<T>)(
-        this.state.queryString,
-        (this.props.onValidateInput as (input: string) => boolean)(this.state.queryString),
-      );
+      const itemToConvert: ISuggestionModel<T> = (
+        this.props.createGenericItem as (input: string, isValid: boolean) => ISuggestionModel<T>
+      )(this.state.queryString, (this.props.onValidateInput as (input: string) => boolean)(this.state.queryString));
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this.onChange(convertedItems[0].item);
     }

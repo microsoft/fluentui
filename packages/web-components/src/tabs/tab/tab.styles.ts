@@ -9,27 +9,21 @@ import {
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
 import {
-  bodyFont,
   controlCornerRadius,
   density,
   designUnit,
-  focusStrokeOuter,
-  focusStrokeWidth,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../../design-tokens';
+import { typeRampBase } from '../../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../../styles/focus';
 
 export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
     css`
       ${display('inline-flex')} :host {
         box-sizing: border-box;
-        font-family: ${bodyFont};
-        font-size: ${typeRampBaseFontSize};
-        font-weight: 400;
-        line-height: ${typeRampBaseLineHeight};
+        ${typeRampBase}
         height: calc((${heightNumber} + (${designUnit} * 2)) * 1px);
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         color: ${neutralForegroundRest};
@@ -39,7 +33,6 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
         justify-content: center;
         grid-row: 1 / 3;
         cursor: pointer;
-        outline: none;
       }
 
       :host([aria-selected='true']) {
@@ -52,8 +45,7 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
       }
 
       :host(:${focusVisible}) {
-        border-color: ${focusStrokeOuter};
-        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset;
+        ${focusTreatmentBase}
       }
 
       :host(.vertical) {
@@ -84,18 +76,18 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
           :host(:hover),
           :host(.vertical:hover),
           :host([aria-selected='true']:hover) {
-            background: ${SystemColors.Highlight};
-            color: ${SystemColors.HighlightText};
+            background: transparent;
+            color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host([aria-selected='true']) {
-            background: ${SystemColors.HighlightText};
+            background: transparent;
             color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host(:${focusVisible}) {
-            border-color: ${SystemColors.ButtonText};
-            box-shadow: none;
+            background: transparent;
+            outline-color: ${SystemColors.ButtonText};
           }
         `,
       ),

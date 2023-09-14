@@ -16,7 +16,6 @@ import {
 } from '../../utils/date-time-utilities';
 
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -24,6 +23,7 @@ import {
   useTelemetry,
   useUnhandledProps,
   useAutoControlled,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 import { CalendarIcon } from '@fluentui/react-icons-northstar';
@@ -33,7 +33,7 @@ import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { ComponentEventHandler, FluentComponentStaticProps, ShorthandValue } from '../../types';
-import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps } from '../../utils';
+import { commonPropTypes, createShorthand, createShorthandFactory, UIComponentProps, format } from '../../utils';
 import { Button } from '../Button/Button';
 import { Input, InputProps } from '../Input/Input';
 import { Popup, PopupProps } from '../Popup/Popup';
@@ -46,7 +46,6 @@ import { DatepickerCalendarHeaderCell } from './DatepickerCalendarHeaderCell';
 import { DatepickerCalendarGrid } from './DatepickerCalendarGrid';
 import { DatepickerCalendarGridRow } from './DatepickerCalendarGridRow';
 import { validateDate } from './validateDate';
-import { format } from '@uifabric/utilities';
 
 export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStrings>, Partial<IDatepickerOptions> {
   /** Accessibility behavior if overridden by the user. */
@@ -101,6 +100,14 @@ export interface DatepickerProps extends UIComponentProps, Partial<ICalendarStri
   /** Controls the calendar's open state. */
   calendarOpenState?: boolean;
 
+  /**
+   * Called on change of the open state.
+   *
+   * @param event - React's original SyntheticEvent.
+   * @param data - All props and proposed value.
+   */
+  onCalendarOpenStateChange?: ComponentEventHandler<DatepickerProps>;
+
   /** Initial 'selectedDate' value. */
   defaultSelectedDate?: Date;
 
@@ -149,18 +156,7 @@ const formatRestrictedInput = (restrictedOptions: IRestrictedDatesOptions, local
  * @accessibilityIssues
  * [NVDA - Aria-selected is not narrated for the gridcell](https://github.com/nvaccess/nvda/issues/11986)
  */
-export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
-  FluentComponentStaticProps<DatepickerProps> & {
-    Calendar: typeof DatepickerCalendar;
-    CalendarHeader: typeof DatepickerCalendarHeader;
-    CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
-    CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
-    CalendarCell: typeof DatepickerCalendarCell;
-    CalendarCellButton: typeof DatepickerCalendarCellButton;
-    CalendarGrid: typeof DatepickerCalendarGrid;
-    CalendarGridRow: typeof DatepickerCalendarGridRow;
-    Input: typeof Input;
-  } = props => {
+export const Datepicker = React.forwardRef<HTMLDivElement, DatepickerProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Datepicker.displayName, context.telemetry);
   setStart();
@@ -182,7 +178,6 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     isRequiredErrorMessage: props.isRequiredErrorMessage,
     invalidInputErrorMessage: props.invalidInputErrorMessage,
     isOutOfBoundsErrorMessage: props.isOutOfBoundsErrorMessage,
-    goToToday: props.goToToday,
     openCalendarTitle: props.openCalendarTitle,
     inputPlaceholder: props.inputPlaceholder,
     prevMonthAriaLabel: props.prevMonthAriaLabel,
@@ -266,6 +261,21 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
       : '',
   );
 
+  const trySetOpenState = (
+    newValue: boolean,
+    event:
+      | React.SyntheticEvent
+      | React.KeyboardEvent
+      | React.MouseEvent
+      | KeyboardEvent
+      | MouseEvent
+      | TouchEvent
+      | WheelEvent,
+  ) => {
+    setOpenState(newValue);
+    _.invoke(props, 'onCalendarOpenStateChange', event, { ...props, ...{ calendarOpenState: newValue } });
+  };
+
   const calendarOptions: IDayGridOptions = {
     selectedDate,
     navigatedDate: !!selectedDate && !error ? selectedDate : props.today ?? new Date(),
@@ -287,10 +297,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     actionHandlers: {
       open: e => {
         if (allowManualInput) {
-          setOpenState(!openState);
+          trySetOpenState(!openState, e);
         } else {
           // Keep popup open in case we can only enter the date through calendar.
-          setOpenState(true);
+          trySetOpenState(true, e);
         }
 
         e.preventDefault();
@@ -299,6 +309,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     mapPropsToBehavior: () => ({
       'aria-invalid': ariaInvalid,
       'aria-labelledby': ariaLabelledby,
+      allowManualInput,
     }),
     rtl: context.rtl,
   });
@@ -321,7 +332,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     onDateChange: (e, itemProps) => {
       const targetDay = itemProps.value;
       setSelectedDate(targetDay.originalDate);
-      setOpenState(false);
+      trySetOpenState(false, e);
       setError('');
       setFormattedDate(valueFormatter(targetDay.originalDate));
 
@@ -337,10 +348,10 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   const overrideInputProps = (predefinedProps: InputProps): InputProps => ({
     onClick: (e): void => {
       if (allowManualInput) {
-        setOpenState(!openState);
+        trySetOpenState(!openState, e);
       } else {
         // Keep popup open in case we can only enter the date through calendar.
-        setOpenState(true);
+        trySetOpenState(true, e);
       }
 
       _.invoke(predefinedProps, 'onClick', e, predefinedProps);
@@ -393,6 +404,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -426,7 +438,7 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
           onOpenChange: (e, { open }) => {
             // In case the event is a click on input, we ignore such events as it should be directly handled by input.
             if (!(e.type === 'click' && e.target === inputRef?.current)) {
-              setOpenState(open);
+              trySetOpenState(open, e);
               _.invoke(predefinedProps, 'onOpenChange', e, { open });
             }
           },
@@ -436,7 +448,18 @@ export const Datepicker: ComponentWithAs<'div', DatepickerProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerProps> &
+  FluentComponentStaticProps<DatepickerProps> & {
+    Calendar: typeof DatepickerCalendar;
+    CalendarHeader: typeof DatepickerCalendarHeader;
+    CalendarHeaderAction: typeof DatepickerCalendarHeaderAction;
+    CalendarHeaderCell: typeof DatepickerCalendarHeaderCell;
+    CalendarCell: typeof DatepickerCalendarCell;
+    CalendarCellButton: typeof DatepickerCalendarCellButton;
+    CalendarGrid: typeof DatepickerCalendarGrid;
+    CalendarGridRow: typeof DatepickerCalendarGridRow;
+    Input: typeof Input;
+  };
 
 Datepicker.displayName = 'Datepicker';
 
@@ -454,6 +477,7 @@ Datepicker.propTypes = {
   fallbackToLastCorrectDateOnBlur: PropTypes.bool,
   defaultCalendarOpenState: PropTypes.bool,
   calendarOpenState: PropTypes.bool,
+  onCalendarOpenStateChange: PropTypes.func,
 
   selectedDate: PropTypes.instanceOf(Date),
   defaultSelectedDate: PropTypes.instanceOf(Date),
@@ -488,7 +512,6 @@ Datepicker.propTypes = {
   isRequiredErrorMessage: PropTypes.string,
   invalidInputErrorMessage: PropTypes.string,
   isOutOfBoundsErrorMessage: PropTypes.string,
-  goToToday: PropTypes.string,
   openCalendarTitle: PropTypes.string,
   inputPlaceholder: PropTypes.string,
   prevMonthAriaLabel: PropTypes.string,

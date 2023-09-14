@@ -11,11 +11,9 @@ import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles/size';
 import {
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
   designUnit,
   disabledOpacity,
-  focusStrokeOuter,
   focusStrokeWidth,
   neutralFillSecondaryActive,
   neutralFillSecondaryHover,
@@ -25,9 +23,11 @@ import {
   neutralFillStealthHover,
   neutralFillStealthRest,
   neutralForegroundRest,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
+  strokeWidth,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
+import { DirectionalStyleSheetBehavior } from '../styles/direction';
 
 export const optionStyles: (
   context: ElementDefinitionContext,
@@ -36,22 +36,18 @@ export const optionStyles: (
   css`
     ${display('inline-flex')} :host {
       position: relative;
-      font-family: ${bodyFont};
+      ${typeRampBase}
       background: ${neutralFillStealthRest};
       border-radius: calc(${controlCornerRadius} * 1px);
-      border: calc(${focusStrokeWidth} * 1px) solid transparent;
+      border: calc(${strokeWidth} * 1px) solid transparent;
       box-sizing: border-box;
       color: ${neutralForegroundRest};
       cursor: pointer;
       fill: currentcolor;
-      font-size: ${typeRampBaseFontSize};
       height: calc(${heightNumber} * 1px);
-      line-height: ${typeRampBaseLineHeight};
-      margin: 0 calc(${designUnit} * 1px);
-      outline: none;
       overflow: hidden;
       align-items: center;
-      padding: 0 calc(${designUnit} * 2.25px);
+      padding: 0 calc(((${designUnit} * 3) - ${strokeWidth} - 1) * 1px);
       user-select: none;
       white-space: nowrap;
     }
@@ -60,7 +56,7 @@ export const optionStyles: (
       content: '';
       display: block;
       position: absolute;
-      left: 0;
+      left: calc((${focusStrokeWidth} - ${strokeWidth}) * 1px);
       top: calc((${heightNumber} / 4) - ${focusStrokeWidth} * 1px);
       width: 3px;
       height: calc((${heightNumber} / 2) * 1px);
@@ -86,7 +82,7 @@ export const optionStyles: (
     }
 
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
+      ${focusTreatmentBase}
       background: ${neutralFillStealthFocus};
     }
 
@@ -136,26 +132,38 @@ export const optionStyles: (
       margin-inline-end: 1ch;
     }
   `.withBehaviors(
+    new DirectionalStyleSheetBehavior(null, css`
+      :host::before {
+        right: calc((${focusStrokeWidth} - ${strokeWidth}) * 1px);
+      }
+    `),
     forcedColorsStylesheetBehavior(
       css`
         :host {
-          border-color: transparent;
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.ButtonFace};
           color: ${SystemColors.ButtonText};
-          forced-color-adjust: none;
         }
-
-        :host(:not([aria-selected='true']):hover),
-        :host([aria-selected='true']) {
+        :host(:not([disabled]):not([aria-selected="true"]):hover),
+        :host(:not([disabled])[aria-selected="true"]:hover),
+        :host([aria-selected="true"]) {
+          forced-color-adjust: none;
           background: ${SystemColors.Highlight};
           color: ${SystemColors.HighlightText};
         }
-
+        :host(:not([disabled]):active)::before,
+        :host([aria-selected='true'])::before {
+          background: ${SystemColors.HighlightText};
+        }
         :host([disabled]),
         :host([disabled]:not([aria-selected='true']):hover) {
           background: ${SystemColors.Canvas};
           color: ${SystemColors.GrayText};
           fill: currentcolor;
           opacity: 1;
+        }
+        :host(:${focusVisible}) {
+          outline-color: ${SystemColors.CanvasText};
         }
       `,
     ),

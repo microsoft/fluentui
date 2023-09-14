@@ -1,22 +1,22 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright, Steps } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecoratorTall } from '../utilities/index';
 import { Slider, ThemeProvider } from '@fluentui/react';
 
 storiesOf('Slider', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
     <ThemeProvider>
-      <Screener
-        steps={new Screener.Steps()
+      <StoryWright
+        steps={new Steps()
           .snapshot('default', { cropTo: '.testWrapper' })
           .hover('.ms-Slider-line')
           .snapshot('hover', { cropTo: '.testWrapper' })
           .end()}
       >
         {story()}
-      </Screener>
+      </StoryWright>
     </ThemeProvider>
   ))
   .addStory(

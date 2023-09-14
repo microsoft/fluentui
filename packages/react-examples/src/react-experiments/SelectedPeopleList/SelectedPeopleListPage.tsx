@@ -7,25 +7,32 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { SelectedPeopleListBasicExample } from './SelectedPeopleList.Basic.Example';
-const SelectedPeopleListBasicExampleCode = require('!raw-loader?esModule=false!./SelectedPeopleList.Basic.Example') as string;
+const SelectedPeopleListBasicExampleCode =
+  require('!raw-loader?esModule=false!./SelectedPeopleList.Basic.Example') as string;
 
 import { SelectedPeopleListBasicDragDropExample } from './SelectedPeopleList.Basic.DragDrop.Example';
-const SelectedPeopleListBasicDragDropExampleCode = require('!raw-loader?esModule=false!./SelectedPeopleList.Basic.DragDrop.Example') as string;
+const SelectedPeopleListBasicDragDropExampleCode =
+  require('!raw-loader?esModule=false!./SelectedPeopleList.Basic.DragDrop.Example') as string;
 
 import { SelectedPeopleListDragDropBetweenWellsExample } from './SelectedPeopleList.DragDropBetweenWells.Example';
-const SelectedPeopleListDragDropBetweenWellsExampleCode = require('!raw-loader?esModule=false!./SelectedPeopleList.DragDropBetweenWells.Example') as string;
+const SelectedPeopleListDragDropBetweenWellsExampleCode =
+  require('!raw-loader?esModule=false!./SelectedPeopleList.DragDropBetweenWells.Example') as string;
 
 import { SelectedPeopleListWithEditInContextMenuExample } from './SelectedPeopleList.WithEditInContextMenu.Example';
-const SelectedPeopleListWithEditInContextMenuExampleCode = require('!raw-loader?esModule=false!./SelectedPeopleList.WithEditInContextMenu.Example') as string;
+const SelectedPeopleListWithEditInContextMenuExampleCode =
+  require('!raw-loader?esModule=false!./SelectedPeopleList.WithEditInContextMenu.Example') as string;
 
 import { SelectedPeopleListWithGroupExpandExample } from './SelectedPeopleList.WithGroupExpand.Example';
-const SelectedPeopleListWithGroupExpandExampleCode = require('!raw-loader?esModule=false!./SelectedPeopleList.WithGroupExpand.Example') as string;
+const SelectedPeopleListWithGroupExpandExampleCode =
+  require('!raw-loader?esModule=false!./SelectedPeopleList.WithGroupExpand.Example') as string;
 
 import { SelectedPeopleListWithEditExample } from './SelectedPeopleList.WithEdit.Example';
-const SelectedPeopleListWithEditExampleCode = require('!raw-loader?esModule=false!./SelectedPeopleList.WithEdit.Example') as string;
+const SelectedPeopleListWithEditExampleCode =
+  require('!raw-loader?esModule=false!./SelectedPeopleList.WithEdit.Example') as string;
 
 import { SelectedPeopleListWithContextMenuExample } from './SelectedPeopleList.WithContextMenu.Example';
-const SelectedPeopleListWithContextMenuExampleCode = require('!raw-loader?esModule=false!./SelectedPeopleList.WithContextMenu.Example') as string;
+const SelectedPeopleListWithContextMenuExampleCode =
+  require('!raw-loader?esModule=false!./SelectedPeopleList.WithContextMenu.Example') as string;
 
 export class SelectedPeopleListPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

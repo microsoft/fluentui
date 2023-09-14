@@ -1,12 +1,13 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { isNil } from 'lodash';
 
-import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensityContext';
+import { ChatDensity, defaultChatDensity } from '../../../../components/Chat/chatDensity';
 import { chatMessageSlotClassNames, ChatMessageStylesProps } from '../../../../components/Chat/ChatMessage';
 import { pxToRem } from '../../../../utils';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
 import { chatMessageStylesComfy } from './chatMessageStylesComfy';
 import { chatMessageStylesCompact } from './chatMessageStylesCompact';
+import { chatMessageStylesComfyRefresh } from './chatMessageStylesComfyRefresh';
 import { ChatMessageVariables } from './chatMessageVariables';
 
 const displayActionMenu = (overlayZIndex: ICSSInJSStyle['zIndex']): ICSSInJSStyle => ({
@@ -27,7 +28,13 @@ const chatMessageDensityStyles: Record<
   compact: chatMessageStylesCompact,
 };
 
-const getChatMessageDensityStyles = (density: ChatDensity = defaultChatDensity) => chatMessageDensityStyles[density];
+const getChatMessageVariantStyles = (props: ChatMessageStylesProps) => {
+  const density = props.density || defaultChatDensity;
+  if (props.layout === 'refresh' && density === 'comfy') {
+    return chatMessageStylesComfyRefresh;
+  }
+  return chatMessageDensityStyles[density];
+};
 
 export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesProps, ChatMessageVariables> = {
   root: (componentStyleFunctionParam): ICSSInJSStyle => {
@@ -36,6 +43,10 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       variables: v,
       theme: { siteVariables },
     } = componentStyleFunctionParam;
+
+    if (p.layout === 'refresh' && p.density === 'comfy') {
+      return chatMessageStylesComfyRefresh.root(componentStyleFunctionParam);
+    }
     return {
       borderRadius: v.borderRadius,
       display: 'inline-block',
@@ -59,11 +70,12 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
           }),
         }),
 
-      ...getChatMessageDensityStyles(p.density).root?.(componentStyleFunctionParam),
+      ...getChatMessageVariantStyles(p).root?.(componentStyleFunctionParam),
     };
   },
 
-  actionMenu: ({ props: p, variables: v }): ICSSInJSStyle => {
+  actionMenu: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p, variables: v } = componentStyleFunctionParam;
     const defaultShowActionMenu = p.hasActionMenu && (p.focused || p.showActionMenu);
     const showActionMenu = isNil(v.showActionMenu) ? defaultShowActionMenu : v.showActionMenu;
 
@@ -80,40 +92,25 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       opacity: 0,
       width: 0,
       ...(showActionMenu && displayActionMenu(v.overlayZIndex)),
+      ...getChatMessageVariantStyles(p).actionMenu?.(componentStyleFunctionParam),
     };
   },
 
   author: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
-    return getChatMessageDensityStyles(p.density).author?.(componentStyleFunctionParam);
+    return getChatMessageVariantStyles(p).author?.(componentStyleFunctionParam);
   },
 
   compactBody: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
-    return getChatMessageDensityStyles(p.density).compactBody?.(componentStyleFunctionParam);
+    return getChatMessageVariantStyles(p).compactBody?.(componentStyleFunctionParam);
   },
 
   timestamp: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
     return {
       display: 'inline-block',
-      ...getChatMessageDensityStyles(p.density).timestamp?.(componentStyleFunctionParam),
-    };
-  },
-
-  content: (componentStyleFunctionParam): ICSSInJSStyle => {
-    const { props: p, variables: v } = componentStyleFunctionParam;
-    return {
-      color: v.contentColor,
-      display: 'block',
-      '& a': {
-        outline: 'none',
-        color: p.mine ? v.linkColorMine : v.linkColor,
-        ':focus': {
-          textDecoration: 'underline',
-        },
-      },
-      ...getChatMessageDensityStyles(p.density).content?.(componentStyleFunctionParam),
+      ...getChatMessageVariantStyles(p).timestamp?.(componentStyleFunctionParam),
     };
   },
 
@@ -129,12 +126,33 @@ export const chatMessageStyles: ComponentSlotStylesPrepared<ChatMessageStylesPro
       width: 'auto',
       zIndex: v.zIndex,
       '& > :first-child': { display: 'inline-flex' },
-      ...getChatMessageDensityStyles(p.density).badge?.(componentStyleFunctionParam),
+      ...getChatMessageVariantStyles(p).badge?.(componentStyleFunctionParam),
+    };
+  },
+
+  body: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+    return {
+      ...getChatMessageVariantStyles(p).body?.(componentStyleFunctionParam),
+    };
+  },
+
+  bubble: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+    return {
+      ...getChatMessageVariantStyles(p).bubble?.(componentStyleFunctionParam),
+    };
+  },
+
+  bubbleInset: (componentStyleFunctionParam): ICSSInJSStyle => {
+    const { props: p } = componentStyleFunctionParam;
+    return {
+      ...getChatMessageVariantStyles(p).bubbleInset?.(componentStyleFunctionParam),
     };
   },
 
   reactionGroup: (componentStyleFunctionParam): ICSSInJSStyle => {
     const { props: p } = componentStyleFunctionParam;
-    return getChatMessageDensityStyles(p.density).reactionGroup?.(componentStyleFunctionParam);
+    return getChatMessageVariantStyles(p).reactionGroup?.(componentStyleFunctionParam);
   },
 };

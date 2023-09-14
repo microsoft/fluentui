@@ -1,12 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PopperJs from '@popperjs/core';
@@ -57,8 +57,7 @@ export const tooltipContentClassName = 'ui-tooltip__content';
 /**
  * A TooltipContent contains the content of a Tooltip component.
  */
-export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
-  FluentComponentStaticProps<TooltipContentProps> = props => {
+export const TooltipContent = React.forwardRef<HTMLDivElement, TooltipContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TooltipContent.displayName, context.telemetry);
   setStart();
@@ -106,6 +105,7 @@ export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ...unhandledProps,
       })}
@@ -120,7 +120,8 @@ export const TooltipContent: ComponentWithAs<'div', TooltipContentProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TooltipContentProps> &
+  FluentComponentStaticProps<TooltipContentProps>;
 
 TooltipContent.displayName = 'TooltipContent';
 

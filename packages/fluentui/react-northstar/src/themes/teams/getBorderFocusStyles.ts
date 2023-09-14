@@ -22,6 +22,7 @@ type BorderFocusStyles = CSSBorderStyles & {
   focusInnerBorderWidth?: string;
   focusOuterBorderWidth?: string;
   borderPadding?: string | BorderPadding;
+  zIndex?: string;
 };
 const defaultColor = 'transparent';
 /**
@@ -38,6 +39,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' |
     borderPadding,
     focusInnerBorderWidth = sv.focusInnerBorderWidth || sv.borderWidth,
     focusOuterBorderWidth = sv.focusOuterBorderWidth || sv.borderWidth,
+    zIndex = sv.zIndexes.foreground,
   } = args;
   const defaultPreudoStyles: React.CSSProperties = {
     content: '""',
@@ -59,7 +61,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' |
       ':before': {
         ...defaultPreudoStyles,
         borderWidth: focusInnerBorderWidth,
-        zIndex: sv.zIndexes.foreground,
+        zIndex,
         borderColor: focusInnerBorderColor,
         top: borderPadding == null ? '0' : `-${borderPaddingTop}`,
         bottom: borderPadding == null ? '0' : `-${borderPaddingBottom}`,
@@ -69,7 +71,7 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' |
       ':after': {
         ...defaultPreudoStyles,
         borderWidth: focusOuterBorderWidth,
-        zIndex: sv.zIndexes.foreground,
+        zIndex,
         borderColor: focusOuterBorderColor,
         top:
           borderPadding == null
@@ -87,6 +89,14 @@ export const getBorderFocusStyles = (args: BorderFocusStyles): Record<':focus' |
           borderPadding == null
             ? `-${focusInnerBorderWidth}`
             : `calc(0px - ${borderPaddingRight} - ${focusInnerBorderWidth})`,
+      },
+      '@media(forced-colors: active)': {
+        ':before': {
+          borderColor: 'Highlight',
+        },
+        ':after': {
+          borderColor: 'Highlight',
+        },
       },
     },
   };

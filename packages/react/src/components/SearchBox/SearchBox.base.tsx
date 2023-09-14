@@ -23,6 +23,7 @@ const useComponentRef = (
     componentRef,
     () => ({
       focus: () => inputElementRef.current?.focus(),
+      blur: () => inputElementRef.current?.blur(),
       hasFocus: () => hasFocus,
     }),
     [inputElementRef, hasFocus],
@@ -61,18 +62,25 @@ export const SearchBoxBase: React.FunctionComponent<ISearchBoxProps> = React.for
   } = props;
 
   const [hasFocus, setHasFocus] = React.useState(false);
+
+  const prevChangeTimestamp = React.useRef<number | undefined>();
   const [uncastValue, setValue] = useControllableValue(
     props.value,
     defaultValue,
-    React.useCallback(
-      (ev: React.ChangeEvent<HTMLInputElement> | undefined) => {
-        onChange?.(ev, ev?.target.value);
-        onChanged?.(ev?.target.value);
-      },
-      [onChange, onChanged],
-    ),
+    (ev: React.ChangeEvent<HTMLInputElement> | undefined, newValue: string) => {
+      if (ev && ev.timeStamp === prevChangeTimestamp.current) {
+        // For historical reasons, SearchBox handles both onInput and onChange (we can't modify this
+        // outside a major version due to potential to break partners' tests and possibly apps).
+        // Only call props.onChange for one of the events.
+        return;
+      }
+      prevChangeTimestamp.current = ev?.timeStamp;
+      onChange?.(ev, newValue);
+      onChanged?.(newValue);
+    },
   );
   const value = String(uncastValue);
+
   const rootElementRef = React.useRef<HTMLDivElement>(null);
   const inputElementRef = React.useRef<HTMLInputElement>(null);
   const mergedRootRef = useMergedRefs(rootElementRef, forwardedRef);

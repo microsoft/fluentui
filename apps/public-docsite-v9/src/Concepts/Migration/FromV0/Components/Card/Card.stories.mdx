@@ -1,0 +1,227 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Card Migration/Card" />
+
+# Card Migration
+
+## Overview
+
+Before:
+
+```tsx
+import { Card } from '@fluentui/react-northstar';
+const Component = () => <Card>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Card>;
+```
+
+After:
+
+```tsx
+import { Card } from '@fluentui/react-components/unstable';
+const Component = () => <Card>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Card>;
+```
+
+## How to migrate props:
+
+| Card props        | migration guide                                                                                                                             |
+| ----------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
+| as, className     | keep it as is                                                                                                                               |
+| variables, styles | see Migrate `style` overrides in this document                                                                                              |
+| accessibility     | see [migrate-custom-accessibility.md](?path=/docs/concepts-migrating-from-v0-custom-accessibility--page). Also check the focusMode new prop |
+| centered          | REMOVED: see Migrate `centered` prop in this document                                                                                       |
+| compact           | use `size="small"`                                                                                                                          |
+| disabled          | REMOVED: No equivalent functionality. Can be created by overriding the styles.                                                              |
+| elevated          | REMOVED: All cards are now elevated by default. To change that, use the `appearance` property.                                              |
+| expandable        | REMOVED: No equivalent functionality.                                                                                                       |
+| fluid             | REMOVED: see Migrate `fluid` prop in this document                                                                                          |
+| ghost             | use `appearance="subtle"`                                                                                                                   |
+| inverted          | use `appearance="filled-alternative"`                                                                                                       |
+| size              | keep it as is. Values: `small`, `medium`(default) and `large`                                                                               |
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Card } from '@fluentui/react-northstar';
+
+export const Component = () => <Card variables={{ isActionCard: true }} />;
+
+// in Card-styles.ts
+export const CardStyles1 = {
+  root: ({ variables: { isActionCard } }) => ({
+    ...(isActionCard && {
+      color: colors.grey['250'],
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Card } from '@fluentui/react-components/unstable';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+
+  return <Card className={classes.actionCard}></Card>;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, tokens } from '@fluentui/react-components/unstable';
+
+export const useStyles = makeStyles({
+  actionCard: {
+    color: colors.colorNeutralForeground1,
+  },
+});
+```
+
+### Example for migrate namespaced styles, with conditional styles via `variableProps`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Card, useUIProviderContext } from '@fluentui/react-northstar';
+
+export const Component = props => {
+  const { vars } = useUIProviderContext();
+  const { enableUsingChatListGroupTitleAsHeader } = props;
+  return (
+    <Card
+      variables={vars('flyout', [
+        {
+          name: 'filterCard',
+          props: {
+            enableUsingChatListGroupTitleAsHeader,
+          },
+        },
+      ])}
+    />
+  );
+};
+
+// in Card-namespace-flyout.ts
+export default {
+  root: {
+    filterCard: ({ variableProps: { enableUsingChatListGroupTitleAsHeader } }) => ({
+      ...(enableUsingChatListGroupTitleAsHeader && {
+        height: '3rem',
+        width: '8rem',
+        minWidth: '8rem',
+      }),
+    }),
+  },
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Card, mergeClasses } from '@fluentui/react-components/unstable';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = props => {
+  const classes = useStyles();
+
+  return (
+    <Card
+      className={mergeClasses(props.enableUsingChatListGroupTitleAsHeader && classes.chatListGroupTitleAsHeader)}
+    ></Card>
+  );
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components/unstable';
+
+export const useStyles = makeStyles({
+  chatListGroupTitleAsHeader: {
+    height: '3rem',
+    width: '8rem',
+    minWidth: '8rem',
+  },
+});
+```
+
+## Migrate `centered` prop
+
+Can be achieved by overriding the styles of the Card component.
+
+Before:
+
+```tsx
+import { Card } from '@fluentui/react-northstar';
+
+const Component = () => <Card centered>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Card>;
+```
+
+After:
+
+```tsx
+import * as React from 'react';
+import { makeStyles } from '@fluentui/react-components/unstable';
+import { Card } from '@fluentui/react-components/unstable';
+
+const useStyles = makeStyles({
+  centeredCard: {
+    justifyItems: 'center',
+  },
+});
+
+export const CenteredCard = () => {
+  const styles = useStyles();
+
+  return (
+    <Card className={styles.centeredCard}>
+      <p>Lorem ipsum dolor sit amet.</p>
+    </Card>
+  );
+};
+```
+
+## Migrate `size` prop
+
+All cards are fluid by default. To change that, use a parent container with a defined size.
+
+Before:
+
+```tsx
+import { Card } from '@fluentui/react-northstar';
+
+const Component = () => <Card size="large">Lorem ipsum, dolor sit amet consectetur adipisicing elit.</Card>;
+```
+
+After:
+
+```jsx
+import * as React from 'react';
+import { makeStyles } from '@fluentui/react-components/unstable';
+import { Card } from '@fluentui/react-components/unstable';
+
+const useStyles = makeStyles({
+  parent: {
+    width: '500px',
+  },
+});
+
+export const SizedCard = () => {
+  const styles = useStyles();
+
+  return (
+    <div className={styles.parent}>
+      <Card>
+        <p>Lorem ipsum dolor sit amet.</p>
+      </Card>
+    </div>
+  );
+};
+```

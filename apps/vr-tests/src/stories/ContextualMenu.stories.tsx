@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { ContextualMenu, ContextualMenuItemType, IContextualMenuItem } from '@fluentui/react';
 import { DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -279,10 +279,10 @@ const itemsWithSubmenuHrefs: IContextualMenuItem[] = [
 ];
 
 storiesOf('ContextualMenu', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-Layer' })
         .hover('.ms-ContextualMenu-linkContent')
         .snapshot('hover', { cropTo: '.ms-Layer' })
@@ -292,7 +292,7 @@ storiesOf('ContextualMenu', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => <ContextualMenu items={items} />)
   .addStory('With icons', () => <ContextualMenu items={itemsWithIcons} />)
@@ -306,9 +306,10 @@ storiesOf('ContextualMenu', module)
   ));
 
 storiesOf('ContextualMenu', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .click('#button')
         .snapshot('menu opened', { cropTo: '.ms-Layer' })
         .hover('#parent')
@@ -320,7 +321,7 @@ storiesOf('ContextualMenu', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('With submenus with hrefs', () => (
     <DefaultButton

@@ -52,7 +52,7 @@ export type StyleFunction<TStyleProps, TStyleSet> = IStyleFunctionOrObject<TStyl
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
   TStyleProps,
-  TStyleSet extends IStyleSet<TStyleSet>
+  TStyleSet extends IStyleSet<TStyleSet>,
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -64,7 +64,7 @@ export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TRef = unknown
+  TRef = unknown,
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -76,7 +76,7 @@ export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet> & React.RefAttributes<TRef>,
   TStyleProps,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TRef = unknown
+  TRef = unknown,
 >(
   Component: React.ComponentClass<TComponentProps> | React.FunctionComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
@@ -97,21 +97,24 @@ export function styled<
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
-    if (!styles.current || customizedStyles !== cache[1] || props.styles !== cache[2]) {
+    const propStyles = props.styles;
+    if (!styles.current || customizedStyles !== cache[1] || propStyles !== cache[2]) {
       // Using styled components as the Component arg will result in nested styling arrays.
+      // The function can be cached and in order to prevent the props from being retained within it's closure
+      // we pass in just the styles and not the entire props
       const concatenatedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> = (styleProps: TStyleProps) =>
-        concatStyleSetsWithProps(styleProps, baseStyles, customizedStyles, props.styles);
+        concatStyleSetsWithProps(styleProps, baseStyles, customizedStyles, propStyles);
 
       // The __cachedInputs__ array is attached to the function and consumed by the
       // classNamesFunction as a list of keys to include for memoizing classnames.
       (concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>).__cachedInputs__ = [
         baseStyles,
         customizedStyles,
-        props.styles,
+        propStyles,
       ];
 
       (concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>).__noStyleOverride__ =
-        !customizedStyles && !props.styles;
+        !customizedStyles && !propStyles;
 
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
     }

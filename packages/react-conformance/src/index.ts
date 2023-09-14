@@ -1,2 +1,2 @@
 export { isConformant } from './isConformant';
-export * from './types';
+export type { BaseConformanceTest, ConformanceTest, IsConformantOptions, TestObject, TestOptions } from './types';

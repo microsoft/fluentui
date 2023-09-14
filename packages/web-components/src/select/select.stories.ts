@@ -6,9 +6,9 @@ export default {
   component: fluentSelect,
   argTypes: {
     appearance: {
-      options: ['filled', 'outlined', 'stealth'],
+      options: ['filled', 'outline', 'stealth'],
       control: { type: 'radio' },
-      defaultValue: 'outlined',
+      defaultValue: 'outline',
     },
     disabled: {
       control: { type: 'boolean' },

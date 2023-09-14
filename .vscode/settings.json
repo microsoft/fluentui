@@ -32,6 +32,7 @@
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
+    ".yarn/releases": true,
     "common/temp": true,
     "**/node_modules": true,
     "**/lib": true,
@@ -44,9 +45,11 @@
   },
   "editor.rulers": [120],
   "eslint.workingDirectories": [{ "mode": "auto" }], // infer working directory based on .eslintrc/package.json location
+  "eslint.validate": ["json"],
   "files.associations": {
     "**/package.json.hbs": "json",
-    "**/*.json.hbs": "jsonc"
+    "**/*.json.hbs": "jsonc",
+    "CODEOWNERS": "ini"
   },
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -71,5 +74,6 @@
   "typescript.preferences.importModuleSpecifier": "relative",
   "typescript.preferences.importModuleSpecifierEnding": "index",
   "typescript.tsdk": "./node_modules/typescript/lib",
-  "typescript.reportStyleChecksAsWarnings": false
+  "typescript.reportStyleChecksAsWarnings": false,
+  "cSpell.words": ["beachball", "borderless", "fluentui", "griffel", "spinbutton", "tabster"]
 }

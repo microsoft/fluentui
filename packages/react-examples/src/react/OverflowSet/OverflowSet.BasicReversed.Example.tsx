@@ -7,7 +7,7 @@ const noOp = () => undefined;
 
 const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
   return (
-    <Link role="menuitem" styles={{ root: { marginRight: 10 } }} onClick={item.onClick}>
+    <Link styles={{ root: { marginRight: 10 } }} onClick={item.onClick}>
       {item.name}
     </Link>
   );
@@ -24,7 +24,6 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
   };
   return (
     <IconButton
-      role="menuitem"
       title="More options"
       styles={buttonStyles}
       menuIconProps={{ iconName: 'More' }}
@@ -36,7 +35,6 @@ const onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element =
 export const OverflowSetBasicReversedExample: React.FunctionComponent = () => (
   <OverflowSet
     aria-label="Basic Menu Example"
-    role="menubar"
     items={[
       {
         key: 'item3',

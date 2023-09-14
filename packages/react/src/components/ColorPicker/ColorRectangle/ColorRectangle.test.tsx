@@ -17,15 +17,17 @@ describe('ColorRectangle', () => {
   const colorRectRef = (ref: ColorRectangleBase | null) => {
     colorRectangle = ref;
   };
-  const getBoundingClientRect = (size: number, offset: number = 0) => (): DOMRect =>
-    ({
-      left: offset,
-      top: offset,
-      right: size + offset,
-      bottom: size + offset,
-      width: size,
-      height: size,
-    } as DOMRect);
+  const getBoundingClientRect =
+    (size: number, offset: number = 0) =>
+    (): DOMRect =>
+      ({
+        left: offset,
+        top: offset,
+        right: size + offset,
+        bottom: size + offset,
+        width: size,
+        height: size,
+      } as DOMRect);
 
   afterEach(() => {
     if (wrapper) {

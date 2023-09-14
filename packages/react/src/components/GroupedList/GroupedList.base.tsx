@@ -57,6 +57,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       compact,
       groups,
       listProps,
+      items,
     };
 
     let shouldForceUpdates = false;
@@ -73,17 +74,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       // If there are any props not passed explicitly to `List` which have an impact on the behavior of `onRenderCell`,
       // these need to 'force-update' this component by revving the version. Otherwise, the List might render with stale
       // data.
-      shouldForceUpdates = true;
-    }
-
-    if (groups !== previousState.groups) {
-      nextState = {
-        ...nextState,
-        groups,
-      };
-    }
-
-    if (selectionMode !== previousState.selectionMode || compact !== previousState.compact) {
       shouldForceUpdates = true;
     }
 
@@ -149,7 +139,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
-      compact: compact,
+      compact,
     });
 
     const { shouldEnterInnerZone = this._isInnerZoneKeystroke } = focusZoneProps;

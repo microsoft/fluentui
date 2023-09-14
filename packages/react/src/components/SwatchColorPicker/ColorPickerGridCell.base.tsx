@@ -69,6 +69,7 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
     item,
     // eslint-disable-next-line deprecation/deprecation
     idPrefix = props.id,
+    isRadio,
     selected = false,
     disabled = false,
     styles,
@@ -99,16 +100,40 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
   });
 
   // Render the core of a color cell
-  const onRenderColorOption = (colorOption: IColorCellProps): JSX.Element => {
+  const renderColorOption = (colorOption: IColorCellProps): JSX.Element => {
     const svgClassName = classNames.svg;
 
     // Build an SVG for the cell with the given shape and color properties
+    // Include role="img" and aria-label here for better virtual cursor accessibility,
+    // and for a VoiceOver bug where it skips grid cells that lack inner content
     return (
-      <svg className={svgClassName} viewBox="0 0 20 20" fill={getColorFromString(colorOption.color as string)?.str}>
+      <svg
+        className={svgClassName}
+        role="img"
+        aria-label={colorOption.label}
+        viewBox="0 0 20 20"
+        fill={getColorFromString(colorOption.color as string)?.str}
+      >
         {circle ? <circle cx="50%" cy="50%" r="50%" /> : <rect width="100%" height="100%" />}
       </svg>
     );
   };
+
+  const onRenderItem = (option: IColorCellProps): JSX.Element => {
+    const { onRenderColorCellContent = renderColorOption } = props;
+    return onRenderColorCellContent(option, renderColorOption) as JSX.Element;
+  };
+
+  const cellSemantics = isRadio
+    ? {
+        role: 'radio',
+        'aria-checked': selected,
+        selected: undefined,
+      }
+    : {
+        role: 'gridcell',
+        selected,
+      };
 
   return (
     <ButtonGridCell
@@ -116,10 +141,9 @@ export const ColorPickerGridCellBase: React.FunctionComponent<IColorPickerGridCe
       id={`${idPrefix}-${item.id}-${item.index}`}
       key={item.id}
       disabled={disabled}
-      role={'gridcell'}
+      {...cellSemantics}
       // eslint-disable-next-line react/jsx-no-bind
-      onRenderItem={onRenderColorOption}
-      selected={selected}
+      onRenderItem={onRenderItem}
       onClick={onClick}
       onHover={onHover}
       onFocus={onFocus}

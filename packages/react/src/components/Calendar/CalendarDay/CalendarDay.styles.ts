@@ -1,4 +1,11 @@
-import { normalize, FontSizes, FontWeights, getFocusStyle, AnimationStyles } from '@fluentui/style-utilities';
+import {
+  normalize,
+  FontSizes,
+  FontWeights,
+  getFocusStyle,
+  AnimationStyles,
+  HighContrastSelector,
+} from '@fluentui/style-utilities';
 import type { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 
 export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
@@ -10,6 +17,10 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       '&, &:disabled, & button': {
         color: palette.neutralTertiaryAlt,
         pointerEvents: 'none',
+      },
+      [HighContrastSelector]: {
+        color: 'GrayText',
+        forcedColorAdjust: 'none',
       },
     },
   };
@@ -96,6 +107,6 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         },
       },
     ],
-    disabledStyle: disabledStyle,
+    disabledStyle,
   };
 };

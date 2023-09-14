@@ -36,7 +36,6 @@ exports[`DetailsList handles paged updates to items within groups 1`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -302,7 +301,6 @@ exports[`DetailsList handles paged updates to items within groups 2`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -584,7 +582,6 @@ exports[`DetailsList handles updates to items and groups 1`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={9}
       role="grid"
     >
@@ -952,7 +949,6 @@ exports[`DetailsList handles updates to items and groups 2`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={9}
       role="grid"
     >
@@ -1320,7 +1316,6 @@ exports[`DetailsList handles updates to items and groups 3`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -1602,7 +1597,6 @@ exports[`DetailsList handles updates to items and groups 4`] = `
   >
     <div
       aria-colcount={5}
-      aria-readonly="true"
       aria-rowcount={7}
       role="grid"
     >
@@ -1725,13 +1719,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D1
+                                  A1
                                 </div>
                                 <div>
-                                  E1
+                                  B1
                                 </div>
                                 <div>
-                                  F1
+                                  C1
                                 </div>
                               </div>
                             </div>
@@ -1743,13 +1737,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D2
+                                  A2
                                 </div>
                                 <div>
-                                  E2
+                                  B2
                                 </div>
                                 <div>
-                                  F2
+                                  C2
                                 </div>
                               </div>
                             </div>
@@ -1804,13 +1798,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D3
+                                  A3
                                 </div>
                                 <div>
-                                  E3
+                                  B3
                                 </div>
                                 <div>
-                                  F3
+                                  C3
                                 </div>
                               </div>
                             </div>
@@ -1822,13 +1816,13 @@ exports[`DetailsList handles updates to items and groups 4`] = `
                             >
                               <div>
                                 <div>
-                                  D4
+                                  A4
                                 </div>
                                 <div>
-                                  E4
+                                  B4
                                 </div>
                                 <div>
-                                  F4
+                                  C4
                                 </div>
                               </div>
                             </div>
@@ -1883,7 +1877,6 @@ exports[`DetailsList renders List correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -1935,7 +1928,6 @@ exports[`DetailsList renders List correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -2116,7 +2108,7 @@ exports[`DetailsList renders List correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -2162,7 +2154,7 @@ exports[`DetailsList renders List correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -2180,7 +2172,6 @@ exports[`DetailsList renders List correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -2241,6 +2232,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2369,7 +2362,6 @@ exports[`DetailsList renders List correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -2430,6 +2422,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2558,7 +2552,6 @@ exports[`DetailsList renders List correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={4}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -2619,6 +2612,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2871,7 +2866,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
   >
     <div
       aria-colcount={6}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -2923,7 +2917,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -3104,7 +3097,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -3150,7 +3143,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -3168,9 +3161,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
-            aria-describedby="header1-column_key_0-tooltip"
-            aria-labelledby="header1-column_key_0-name"
+            aria-label="column_0"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3230,6 +3221,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3301,33 +3294,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_0-tooltip"
-          >
-            column_0
-          </label>
           <div
-            aria-colindex={3}
-            aria-describedby="header1-column_key_1-tooltip"
-            aria-labelledby="header1-column_key_1-name"
+            aria-label="column_1"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3387,6 +3355,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3458,33 +3428,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_1-tooltip"
-          >
-            column_1
-          </label>
           <div
-            aria-colindex={4}
-            aria-describedby="header1-column_key_2-tooltip"
-            aria-labelledby="header1-column_key_2-name"
+            aria-label="column_2"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3544,6 +3489,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3615,33 +3562,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_2-tooltip"
-          >
-            column_2
-          </label>
           <div
-            aria-colindex={5}
-            aria-describedby="header1-column_key_3-tooltip"
-            aria-labelledby="header1-column_key_3-name"
+            aria-label="column_3"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3701,6 +3623,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3772,33 +3696,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_3-tooltip"
-          >
-            column_3
-          </label>
           <div
-            aria-colindex={6}
-            aria-describedby="header1-column_key_4-tooltip"
-            aria-labelledby="header1-column_key_4-name"
+            aria-label="column_4"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -3858,6 +3757,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3929,29 +3830,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_4-tooltip"
-          >
-            column_4
-          </label>
         </div>
       </div>
       <div
@@ -4078,7 +3956,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -4130,7 +4007,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -4311,7 +4187,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -4357,7 +4233,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -4375,7 +4251,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -4436,6 +4311,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4564,7 +4441,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -4625,6 +4501,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4753,7 +4631,6 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={4}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -4814,6 +4691,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5067,7 +4946,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -5119,7 +4997,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -5300,7 +5177,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -5346,7 +5223,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -5364,7 +5241,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -5425,6 +5301,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5553,7 +5431,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -5614,6 +5491,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5742,7 +5621,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={4}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -5803,6 +5681,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6055,7 +5935,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
   >
     <div
       aria-colcount={6}
-      aria-readonly="true"
       aria-rowcount={6}
       role="grid"
     >
@@ -6107,7 +5986,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           role="row"
         >
           <div
-            aria-colindex={1}
             aria-labelledby="header1-checkTooltip"
             className=
                 ms-DetailsHeader-cell
@@ -6288,7 +6166,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                           vertical-align: middle;
                           width: 18px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           color: WindowText;
                         }
                     data-icon-name="CircleRing"
@@ -6334,7 +6212,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                         &:hover {
                           opacity: 1;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           -ms-high-contrast-adjust: none;
                           forced-color-adjust: none;
                         }
@@ -6352,9 +6230,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             </span>
           </div>
           <div
-            aria-colindex={2}
-            aria-describedby="header1-column_key_0-tooltip"
-            aria-labelledby="header1-column_key_0-name"
+            aria-label="column_0"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6414,6 +6290,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6485,36 +6363,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_0-tooltip"
-          >
-            column_0
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={3}
-            aria-describedby="header1-column_key_1-tooltip"
-            aria-labelledby="header1-column_key_1-name"
+            aria-label="column_1"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6574,6 +6427,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6645,36 +6500,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_1-tooltip"
-          >
-            column_1
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={4}
-            aria-describedby="header1-column_key_2-tooltip"
-            aria-labelledby="header1-column_key_2-name"
+            aria-label="column_2"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6734,6 +6564,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6805,36 +6637,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_2-tooltip"
-          >
-            column_2
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={5}
-            aria-describedby="header1-column_key_3-tooltip"
-            aria-labelledby="header1-column_key_3-name"
+            aria-label="column_3"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -6894,6 +6701,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6965,36 +6774,11 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_3-tooltip"
-          >
-            column_3
-          </label>
           <span>
             |
           </span>
           <div
-            aria-colindex={6}
-            aria-describedby="header1-column_key_4-tooltip"
-            aria-labelledby="header1-column_key_4-name"
+            aria-label="column_4"
             aria-sort="none"
             className=
                 ms-DetailsHeader-cell
@@ -7054,6 +6838,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7125,29 +6911,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
               </span>
             </span>
           </div>
-          <label
-            className=
-
-                {
-                  border: 0px;
-                  height: 1px;
-                  margin-bottom: -1px;
-                  margin-left: -1px;
-                  margin-right: -1px;
-                  margin-top: -1px;
-                  overflow: hidden;
-                  padding-bottom: 0px;
-                  padding-left: 0px;
-                  padding-right: 0px;
-                  padding-top: 0px;
-                  position: absolute;
-                  white-space: nowrap;
-                  width: 1px;
-                }
-            id="header1-column_key_4-tooltip"
-          >
-            column_4
-          </label>
           <span>
             |
           </span>
@@ -7276,7 +7039,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
   >
     <div
       aria-colcount={4}
-      aria-readonly="true"
       aria-rowcount={8}
       role="grid"
     >
@@ -7411,9 +7173,28 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             >
               
             </i>
+            <span
+              className=
+
+                  {
+                    border: 0px;
+                    height: 1px;
+                    margin-bottom: -1px;
+                    margin-left: -1px;
+                    margin-right: -1px;
+                    margin-top: -1px;
+                    overflow: hidden;
+                    padding-bottom: 0px;
+                    padding-left: 0px;
+                    padding-right: 0px;
+                    padding-top: 0px;
+                    position: absolute;
+                    white-space: nowrap;
+                    width: 1px;
+                  }
+            />
           </div>
           <div
-            aria-colindex={1}
             aria-labelledby="header1-key-name"
             aria-sort="none"
             className=
@@ -7474,6 +7255,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7602,7 +7385,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={2}
             aria-labelledby="header1-name-name"
             aria-sort="none"
             className=
@@ -7663,6 +7445,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7791,7 +7575,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             role="button"
           />
           <div
-            aria-colindex={3}
             aria-labelledby="header1-value-name"
             aria-sort="none"
             className=
@@ -7852,6 +7635,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -8060,7 +7845,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-expanded={true}
                         aria-labelledby="GroupHeader5"
-                        aria-level={1}
                         aria-rowindex={2}
                         className=
                             ms-GroupHeader
@@ -8110,7 +7894,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               opacity: 0;
                             }
                         data-is-focusable={true}
-                        onClick={[Function]}
+                        data-selection-index={0}
+                        data-selection-span={2}
                         onKeyUp={[Function]}
                         role="row"
                         style={Object {}}
@@ -8177,6 +7962,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     color: #605e5c;
                                     cursor: default;
                                     display: flex;
+                                    flex-shrink: 0;
                                     font-size: 12px;
                                     height: 48px;
                                     justify-content: center;
@@ -8209,6 +7995,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     background-color: #e1dfdd;
                                   }
                               data-is-focusable={false}
+                              data-selection-disabled={true}
                               onClick={[Function]}
                               type="button"
                             >
@@ -8243,11 +8030,14 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   font-size: 16px;
                                   font-weight: 600;
                                   outline: 0px;
+                                  overflow: hidden;
                                   padding-left: 12px;
                                   text-overflow: ellipsis;
                                   white-space: nowrap;
                                 }
+                            data-selection-invoke={true}
                             id="GroupHeader5"
+                            onClick={[Function]}
                             role="gridcell"
                           >
                             <span>
@@ -8292,317 +8082,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={3}
-                                aria-selected={false}
-                                className=
-                                    ms-FocusZone
-                                    ms-DetailsRow
-                                    is-contentUnselectable
-                                    &:focus {
-                                      outline: none;
-                                    }
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      animation-duration: 0.367s;
-                                      animation-fill-mode: both;
-                                      animation-name: keyframes from{opacity:0;}to{opacity:1;};
-                                      animation-timing-function: cubic-bezier(.1,.25,.75,.9);
-                                      background: #ffffff;
-                                      border-bottom: 1px solid #f3f2f1;
-                                      box-sizing: border-box;
-                                      color: #605e5c;
-                                      cursor: default;
-                                      display: inline-flex;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 12px;
-                                      font-weight: 400;
-                                      min-height: 42px;
-                                      min-width: 100%;
-                                      outline: transparent;
-                                      padding-bottom: 0px;
-                                      padding-left: 0px;
-                                      padding-right: 0px;
-                                      padding-top: 0px;
-                                      position: relative;
-                                      text-align: left;
-                                      user-select: none;
-                                      vertical-align: top;
-                                      white-space: nowrap;
-                                    }
-                                    &::-moz-focus-inner {
-                                      border: 0;
-                                    }
-                                    .ms-Fabric--isFocusVisible &:focus:after {
-                                      border: 1px solid #605e5c;
-                                      bottom: 1px;
-                                      content: "";
-                                      left: 1px;
-                                      outline: 1px solid #ffffff;
-                                      position: absolute;
-                                      right: 1px;
-                                      top: 1px;
-                                      z-index: 1;
-                                    }
-                                    .ms-List-cell:first-child &:before {
-                                      display: none;
-                                    }
-                                    &:hover {
-                                      background: #f3f2f1;
-                                      color: #323130;
-                                    }
-                                    &:hover .is-row-header {
-                                      color: #201f1e;
-                                    }
-                                    &:hover .ms-DetailsRow-cell > .ms-Link {
-                                      color: #004578;
-                                    }
-                                    &:hover .ms-DetailsRow-check {
-                                      opacity: 1;
-                                    }
-                                    .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
-                                      opacity: 1;
-                                    }
-                                    & .ms-GroupSpacer {
-                                      flex-grow: 0;
-                                      flex-shrink: 0;
-                                    }
-                                data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone8"
-                                data-is-focusable={true}
-                                data-item-index={0}
-                                data-selection-index={0}
-                                data-selection-touch-invoke={true}
-                                id="row0-0"
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                onMouseDownCapture={[Function]}
-                                role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
-                              >
-                                <span
-                                  className="ms-GroupSpacer"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "display": "inline-block",
-                                      "width": 36,
-                                    }
-                                  }
-                                />
-                                <div
-                                  className=
-                                      ms-DetailsRow-fields
-                                      {
-                                        align-items: stretch;
-                                        display: flex;
-                                      }
-                                  data-automationid="DetailsRowFields"
-                                  role="presentation"
-                                >
-                                  <div
-                                    aria-colindex={2}
-                                    aria-readonly={true}
-                                    className=
-                                        ms-DetailsRow-cell
-                                        {
-                                          box-sizing: border-box;
-                                          display: inline-block;
-                                          min-height: 42px;
-                                          outline: transparent;
-                                          overflow: hidden;
-                                          padding-bottom: 11px;
-                                          padding-left: 12px;
-                                          padding-top: 11px;
-                                          position: relative;
-                                          text-overflow: ellipsis;
-                                          vertical-align: top;
-                                          white-space: nowrap;
-                                        }
-                                        &::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        .ms-Fabric--isFocusVisible &:focus:after {
-                                          border: 1px solid #605e5c;
-                                          bottom: 0px;
-                                          content: "";
-                                          left: 0px;
-                                          outline: 1px solid #ffffff;
-                                          position: absolute;
-                                          right: 0px;
-                                          top: 0px;
-                                          z-index: 1;
-                                        }
-                                        & > button {
-                                          max-width: 100%;
-                                        }
-                                        & [data-is-focusable='true'] {
-                                          outline: transparent;
-                                          position: relative;
-                                        }
-                                        & [data-is-focusable='true']::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        {
-                                          padding-right: 8px;
-                                        }
-                                    data-automation-key="key"
-                                    data-automationid="DetailsRowCell"
-                                    role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
-                                  >
-                                    0
-                                  </div>
-                                  <div
-                                    aria-colindex={3}
-                                    aria-readonly={true}
-                                    className=
-                                        ms-DetailsRow-cell
-                                        {
-                                          box-sizing: border-box;
-                                          display: inline-block;
-                                          min-height: 42px;
-                                          outline: transparent;
-                                          overflow: hidden;
-                                          padding-bottom: 11px;
-                                          padding-left: 12px;
-                                          padding-top: 11px;
-                                          position: relative;
-                                          text-overflow: ellipsis;
-                                          vertical-align: top;
-                                          white-space: nowrap;
-                                        }
-                                        &::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        .ms-Fabric--isFocusVisible &:focus:after {
-                                          border: 1px solid #605e5c;
-                                          bottom: 0px;
-                                          content: "";
-                                          left: 0px;
-                                          outline: 1px solid #ffffff;
-                                          position: absolute;
-                                          right: 0px;
-                                          top: 0px;
-                                          z-index: 1;
-                                        }
-                                        & > button {
-                                          max-width: 100%;
-                                        }
-                                        & [data-is-focusable='true'] {
-                                          outline: transparent;
-                                          position: relative;
-                                        }
-                                        & [data-is-focusable='true']::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        {
-                                          padding-right: 8px;
-                                        }
-                                    data-automation-key="name"
-                                    data-automationid="DetailsRowCell"
-                                    role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
-                                  >
-                                    Item 0
-                                  </div>
-                                  <div
-                                    aria-colindex={4}
-                                    aria-readonly={true}
-                                    className=
-                                        ms-DetailsRow-cell
-                                        {
-                                          box-sizing: border-box;
-                                          display: inline-block;
-                                          min-height: 42px;
-                                          outline: transparent;
-                                          overflow: hidden;
-                                          padding-bottom: 11px;
-                                          padding-left: 12px;
-                                          padding-top: 11px;
-                                          position: relative;
-                                          text-overflow: ellipsis;
-                                          vertical-align: top;
-                                          white-space: nowrap;
-                                        }
-                                        &::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        .ms-Fabric--isFocusVisible &:focus:after {
-                                          border: 1px solid #605e5c;
-                                          bottom: 0px;
-                                          content: "";
-                                          left: 0px;
-                                          outline: 1px solid #ffffff;
-                                          position: absolute;
-                                          right: 0px;
-                                          top: 0px;
-                                          z-index: 1;
-                                        }
-                                        & > button {
-                                          max-width: 100%;
-                                        }
-                                        & [data-is-focusable='true'] {
-                                          outline: transparent;
-                                          position: relative;
-                                        }
-                                        & [data-is-focusable='true']::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        {
-                                          padding-right: 8px;
-                                        }
-                                    data-automation-key="value"
-                                    data-automationid="DetailsRowCell"
-                                    role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
-                                  >
-                                    0
-                                  </div>
-                                </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
-                              </div>
-                            </div>
-                            <div
-                              className="ms-List-cell"
-                              data-automationid="ListCell"
-                              data-list-index={1}
-                              role="presentation"
-                            >
-                              <div
-                                aria-level={2}
-                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -8680,19 +8160,14 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone9"
                                 data-is-focusable={true}
-                                data-item-index={1}
-                                data-selection-index={1}
+                                data-item-index={0}
+                                data-selection-index={0}
                                 data-selection-touch-invoke={true}
-                                id="row0-1"
+                                id="row0-0"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -8715,8 +8190,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8769,11 +8242,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                     }
                                   >
-                                    1
+                                    0
                                   </div>
                                   <div
-                                    aria-colindex={3}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8826,11 +8297,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                     }
                                   >
-                                    Item 1
+                                    Item 0
                                   </div>
                                   <div
-                                    aria-colindex={4}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -8883,597 +8352,19 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       }
                                     }
                                   >
-                                    1
+                                    0
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div
-                  className="ms-List-page"
-                  role="presentation"
-                  style={Object {}}
-                >
-                  <div
-                    className="ms-List-cell"
-                    data-automationid="ListCell"
-                    data-list-index={1}
-                    role="presentation"
-                  >
-                    <div
-                      className=
-                          ms-GroupedList-group
-                          {
-                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
-                          }
-                      role="presentation"
-                    >
-                      <div
-                        aria-expanded={true}
-                        aria-labelledby="GroupHeader7"
-                        aria-level={1}
-                        aria-rowindex={5}
-                        className=
-                            ms-GroupHeader
-                            {
-                              -moz-osx-font-smoothing: grayscale;
-                              -webkit-font-smoothing: antialiased;
-                              border-bottom: 1px solid #ffffff;
-                              cursor: default;
-                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                              font-size: 14px;
-                              font-weight: 400;
-                              outline: transparent;
-                              position: relative;
-                              user-select: none;
-                            }
-                            &::-moz-focus-inner {
-                              border: 0;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus:after {
-                              border: 1px solid #ffffff;
-                              bottom: 1px;
-                              content: "";
-                              left: 1px;
-                              outline: 1px solid #605e5c;
-                              position: absolute;
-                              right: 1px;
-                              top: 1px;
-                              z-index: 1;
-                            }
-                            &:hover {
-                              background: #f3f2f1;
-                              color: #201f1e;
-                            }
-                            &:hover .ms-GroupHeader-check {
-                              opacity: 1;
-                            }
-                            .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
-                              opacity: 1;
-                            }
-                            & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
-                              opacity: 1;
-                              transform: rotate(0.2deg) scale(1);
-                              transition-delay: 0.367s;
-                              transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
-                            }
-                            .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
-                              opacity: 0;
-                            }
-                        data-is-focusable={true}
-                        onClick={[Function]}
-                        onKeyUp={[Function]}
-                        role="row"
-                        style={Object {}}
-                      >
-                        <div
-                          className=
-
-                              {
-                                align-items: center;
-                                display: flex;
-                                height: 48px;
-                              }
-                          role="presentation"
-                        >
-                          <div
-                            className=
-                                ms-GroupHeader-dropIcon
-                                {
-                                  color: #605e5c;
-                                  font-size: 20px;
-                                  left: -26px;
-                                  opacity: 0;
-                                  position: absolute;
-                                  transform-origin: 10px 10px;
-                                  transform: rotate(0.2deg) scale(0.65);
-                                  transition: transform 0.267s cubic-bezier(0.600, -0.280, 0.735, 0.045), opacity 0.467s cubic-bezier(0.390, 0.575, 0.565, 1.000);
-                                }
-                                .ms-Icon--Tag {
-                                  position: absolute;
-                                }
-                            role="presentation"
-                          >
-                            <i
-                              aria-hidden={true}
-                              className=
-
-                                  {
-                                    -moz-osx-font-smoothing: grayscale;
-                                    -webkit-font-smoothing: antialiased;
-                                    display: inline-block;
-                                    font-family: "FabricMDL2Icons";
-                                    font-style: normal;
-                                    font-weight: normal;
-                                    speak: none;
-                                  }
-                              data-icon-name="Tag"
-                            >
-                              
-                            </i>
-                          </div>
-                          <div
-                            role="gridcell"
-                          >
-                            <button
-                              aria-expanded={true}
-                              aria-label="expand collapse group"
-                              className=
-                                  ms-GroupHeader-expand
-                                  {
-                                    align-items: center;
-                                    background-color: transparent;
-                                    background: none;
-                                    border: none;
-                                    color: #605e5c;
-                                    cursor: default;
-                                    display: flex;
-                                    font-size: 12px;
-                                    height: 48px;
-                                    justify-content: center;
-                                    outline: transparent;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                    position: relative;
-                                    width: 36px;
-                                  }
-                                  &::-moz-focus-inner {
-                                    border: 0;
-                                  }
-                                  .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #ffffff;
-                                    bottom: 1px;
-                                    content: "";
-                                    left: 1px;
-                                    outline: 1px solid #605e5c;
-                                    position: absolute;
-                                    right: 1px;
-                                    top: 1px;
-                                    z-index: 1;
-                                  }
-                                  &:hover {
-                                    background-color: #edebe9;
-                                  }
-                                  &:active {
-                                    background-color: #e1dfdd;
-                                  }
-                              data-is-focusable={false}
-                              onClick={[Function]}
-                              type="button"
-                            >
-                              <i
-                                aria-hidden={true}
-                                className=
-
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      display: inline-block;
-                                      font-family: "FabricMDL2Icons-3";
-                                      font-style: normal;
-                                      font-weight: normal;
-                                      speak: none;
-                                      transform-origin: 50% 50%;
-                                      transform: rotate(90deg);
-                                      transition: transform .1s linear;
-                                    }
-                                data-icon-name="ChevronRightMed"
-                              >
-                                
-                              </i>
-                            </button>
-                          </div>
-                          <div
-                            aria-colspan={3}
-                            className=
-                                ms-GroupHeader-title
-                                {
-                                  cursor: pointer;
-                                  font-size: 16px;
-                                  font-weight: 600;
-                                  outline: 0px;
-                                  padding-left: 12px;
-                                  text-overflow: ellipsis;
-                                  white-space: nowrap;
-                                }
-                            id="GroupHeader7"
-                            role="gridcell"
-                          >
-                            <span>
-                              Group 1
-                            </span>
-                            <span
-                              className=
-
-                                  {
-                                    padding-bottom: 0px;
-                                    padding-left: 4px;
-                                    padding-right: 4px;
-                                    padding-top: 0px;
-                                  }
-                            >
-                              (
-                              3
-                              )
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                      <div
-                        aria-label="Group 1"
-                        className="ms-List"
-                        id="GroupedListSection6"
-                        role="rowgroup"
-                      >
-                        <div
-                          className="ms-List-surface"
-                          role="presentation"
-                        >
-                          <div
-                            className="ms-List-page"
-                            role="presentation"
-                            style={Object {}}
-                          >
-                            <div
-                              className="ms-List-cell"
-                              data-automationid="ListCell"
-                              data-list-index={2}
-                              role="presentation"
-                            >
-                              <div
-                                aria-level={2}
-                                aria-rowindex={6}
-                                aria-selected={false}
-                                className=
-                                    ms-FocusZone
-                                    ms-DetailsRow
-                                    is-contentUnselectable
-                                    &:focus {
-                                      outline: none;
-                                    }
-                                    {
-                                      -moz-osx-font-smoothing: grayscale;
-                                      -webkit-font-smoothing: antialiased;
-                                      animation-duration: 0.367s;
-                                      animation-fill-mode: both;
-                                      animation-name: keyframes from{opacity:0;}to{opacity:1;};
-                                      animation-timing-function: cubic-bezier(.1,.25,.75,.9);
-                                      background: #ffffff;
-                                      border-bottom: 1px solid #f3f2f1;
-                                      box-sizing: border-box;
-                                      color: #605e5c;
-                                      cursor: default;
-                                      display: inline-flex;
-                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                      font-size: 12px;
-                                      font-weight: 400;
-                                      min-height: 42px;
-                                      min-width: 100%;
-                                      outline: transparent;
-                                      padding-bottom: 0px;
-                                      padding-left: 0px;
-                                      padding-right: 0px;
-                                      padding-top: 0px;
-                                      position: relative;
-                                      text-align: left;
-                                      user-select: none;
-                                      vertical-align: top;
-                                      white-space: nowrap;
-                                    }
-                                    &::-moz-focus-inner {
-                                      border: 0;
-                                    }
-                                    .ms-Fabric--isFocusVisible &:focus:after {
-                                      border: 1px solid #605e5c;
-                                      bottom: 1px;
-                                      content: "";
-                                      left: 1px;
-                                      outline: 1px solid #ffffff;
-                                      position: absolute;
-                                      right: 1px;
-                                      top: 1px;
-                                      z-index: 1;
-                                    }
-                                    .ms-List-cell:first-child &:before {
-                                      display: none;
-                                    }
-                                    &:hover {
-                                      background: #f3f2f1;
-                                      color: #323130;
-                                    }
-                                    &:hover .is-row-header {
-                                      color: #201f1e;
-                                    }
-                                    &:hover .ms-DetailsRow-cell > .ms-Link {
-                                      color: #004578;
-                                    }
-                                    &:hover .ms-DetailsRow-check {
-                                      opacity: 1;
-                                    }
-                                    .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
-                                      opacity: 1;
-                                    }
-                                    & .ms-GroupSpacer {
-                                      flex-grow: 0;
-                                      flex-shrink: 0;
-                                    }
-                                data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone10"
-                                data-is-focusable={true}
-                                data-item-index={2}
-                                data-selection-index={2}
-                                data-selection-touch-invoke={true}
-                                id="row0-2"
-                                onFocus={[Function]}
-                                onKeyDown={[Function]}
-                                onMouseDownCapture={[Function]}
-                                role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
-                              >
-                                <span
-                                  className="ms-GroupSpacer"
-                                  role="gridcell"
-                                  style={
-                                    Object {
-                                      "display": "inline-block",
-                                      "width": 36,
-                                    }
-                                  }
-                                />
-                                <div
-                                  className=
-                                      ms-DetailsRow-fields
-                                      {
-                                        align-items: stretch;
-                                        display: flex;
-                                      }
-                                  data-automationid="DetailsRowFields"
-                                  role="presentation"
-                                >
-                                  <div
-                                    aria-colindex={2}
-                                    aria-readonly={true}
-                                    className=
-                                        ms-DetailsRow-cell
-                                        {
-                                          box-sizing: border-box;
-                                          display: inline-block;
-                                          min-height: 42px;
-                                          outline: transparent;
-                                          overflow: hidden;
-                                          padding-bottom: 11px;
-                                          padding-left: 12px;
-                                          padding-top: 11px;
-                                          position: relative;
-                                          text-overflow: ellipsis;
-                                          vertical-align: top;
-                                          white-space: nowrap;
-                                        }
-                                        &::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        .ms-Fabric--isFocusVisible &:focus:after {
-                                          border: 1px solid #605e5c;
-                                          bottom: 0px;
-                                          content: "";
-                                          left: 0px;
-                                          outline: 1px solid #ffffff;
-                                          position: absolute;
-                                          right: 0px;
-                                          top: 0px;
-                                          z-index: 1;
-                                        }
-                                        & > button {
-                                          max-width: 100%;
-                                        }
-                                        & [data-is-focusable='true'] {
-                                          outline: transparent;
-                                          position: relative;
-                                        }
-                                        & [data-is-focusable='true']::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        {
-                                          padding-right: 8px;
-                                        }
-                                    data-automation-key="key"
-                                    data-automationid="DetailsRowCell"
-                                    role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
-                                  >
-                                    2
-                                  </div>
-                                  <div
-                                    aria-colindex={3}
-                                    aria-readonly={true}
-                                    className=
-                                        ms-DetailsRow-cell
-                                        {
-                                          box-sizing: border-box;
-                                          display: inline-block;
-                                          min-height: 42px;
-                                          outline: transparent;
-                                          overflow: hidden;
-                                          padding-bottom: 11px;
-                                          padding-left: 12px;
-                                          padding-top: 11px;
-                                          position: relative;
-                                          text-overflow: ellipsis;
-                                          vertical-align: top;
-                                          white-space: nowrap;
-                                        }
-                                        &::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        .ms-Fabric--isFocusVisible &:focus:after {
-                                          border: 1px solid #605e5c;
-                                          bottom: 0px;
-                                          content: "";
-                                          left: 0px;
-                                          outline: 1px solid #ffffff;
-                                          position: absolute;
-                                          right: 0px;
-                                          top: 0px;
-                                          z-index: 1;
-                                        }
-                                        & > button {
-                                          max-width: 100%;
-                                        }
-                                        & [data-is-focusable='true'] {
-                                          outline: transparent;
-                                          position: relative;
-                                        }
-                                        & [data-is-focusable='true']::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        {
-                                          padding-right: 8px;
-                                        }
-                                    data-automation-key="name"
-                                    data-automationid="DetailsRowCell"
-                                    role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
-                                  >
-                                    Item 2
-                                  </div>
-                                  <div
-                                    aria-colindex={4}
-                                    aria-readonly={true}
-                                    className=
-                                        ms-DetailsRow-cell
-                                        {
-                                          box-sizing: border-box;
-                                          display: inline-block;
-                                          min-height: 42px;
-                                          outline: transparent;
-                                          overflow: hidden;
-                                          padding-bottom: 11px;
-                                          padding-left: 12px;
-                                          padding-top: 11px;
-                                          position: relative;
-                                          text-overflow: ellipsis;
-                                          vertical-align: top;
-                                          white-space: nowrap;
-                                        }
-                                        &::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        .ms-Fabric--isFocusVisible &:focus:after {
-                                          border: 1px solid #605e5c;
-                                          bottom: 0px;
-                                          content: "";
-                                          left: 0px;
-                                          outline: 1px solid #ffffff;
-                                          position: absolute;
-                                          right: 0px;
-                                          top: 0px;
-                                          z-index: 1;
-                                        }
-                                        & > button {
-                                          max-width: 100%;
-                                        }
-                                        & [data-is-focusable='true'] {
-                                          outline: transparent;
-                                          position: relative;
-                                        }
-                                        & [data-is-focusable='true']::-moz-focus-inner {
-                                          border: 0;
-                                        }
-                                        {
-                                          padding-right: 8px;
-                                        }
-                                    data-automation-key="value"
-                                    data-automationid="DetailsRowCell"
-                                    role="gridcell"
-                                    style={
-                                      Object {
-                                        "width": 120,
-                                      }
-                                    }
-                                  >
-                                    2
-                                  </div>
-                                </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                             <div
                               className="ms-List-cell"
                               data-automationid="ListCell"
-                              data-list-index={3}
+                              data-list-index={1}
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
-                                aria-rowindex={7}
+                                aria-rowindex={4}
                                 aria-selected={false}
                                 className=
                                     ms-FocusZone
@@ -9551,19 +8442,14 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 data-automationid="DetailsRow"
                                 data-focuszone-id="FocusZone11"
                                 data-is-focusable={true}
-                                data-item-index={3}
-                                data-selection-index={3}
+                                data-item-index={1}
+                                data-selection-index={1}
                                 data-selection-touch-invoke={true}
-                                id="row0-3"
+                                id="row0-1"
                                 onFocus={[Function]}
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -9586,8 +8472,828 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
-                                    aria-readonly={true}
+                                    className=
+                                        ms-DetailsRow-cell
+                                        {
+                                          box-sizing: border-box;
+                                          display: inline-block;
+                                          min-height: 42px;
+                                          outline: transparent;
+                                          overflow: hidden;
+                                          padding-bottom: 11px;
+                                          padding-left: 12px;
+                                          padding-top: 11px;
+                                          position: relative;
+                                          text-overflow: ellipsis;
+                                          vertical-align: top;
+                                          white-space: nowrap;
+                                        }
+                                        &::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        & > button {
+                                          max-width: 100%;
+                                        }
+                                        & [data-is-focusable='true'] {
+                                          outline: transparent;
+                                          position: relative;
+                                        }
+                                        & [data-is-focusable='true']::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        {
+                                          padding-right: 8px;
+                                        }
+                                    data-automation-key="key"
+                                    data-automationid="DetailsRowCell"
+                                    role="gridcell"
+                                    style={
+                                      Object {
+                                        "width": 120,
+                                      }
+                                    }
+                                  >
+                                    1
+                                  </div>
+                                  <div
+                                    className=
+                                        ms-DetailsRow-cell
+                                        {
+                                          box-sizing: border-box;
+                                          display: inline-block;
+                                          min-height: 42px;
+                                          outline: transparent;
+                                          overflow: hidden;
+                                          padding-bottom: 11px;
+                                          padding-left: 12px;
+                                          padding-top: 11px;
+                                          position: relative;
+                                          text-overflow: ellipsis;
+                                          vertical-align: top;
+                                          white-space: nowrap;
+                                        }
+                                        &::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        & > button {
+                                          max-width: 100%;
+                                        }
+                                        & [data-is-focusable='true'] {
+                                          outline: transparent;
+                                          position: relative;
+                                        }
+                                        & [data-is-focusable='true']::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        {
+                                          padding-right: 8px;
+                                        }
+                                    data-automation-key="name"
+                                    data-automationid="DetailsRowCell"
+                                    role="gridcell"
+                                    style={
+                                      Object {
+                                        "width": 120,
+                                      }
+                                    }
+                                  >
+                                    Item 1
+                                  </div>
+                                  <div
+                                    className=
+                                        ms-DetailsRow-cell
+                                        {
+                                          box-sizing: border-box;
+                                          display: inline-block;
+                                          min-height: 42px;
+                                          outline: transparent;
+                                          overflow: hidden;
+                                          padding-bottom: 11px;
+                                          padding-left: 12px;
+                                          padding-top: 11px;
+                                          position: relative;
+                                          text-overflow: ellipsis;
+                                          vertical-align: top;
+                                          white-space: nowrap;
+                                        }
+                                        &::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        & > button {
+                                          max-width: 100%;
+                                        }
+                                        & [data-is-focusable='true'] {
+                                          outline: transparent;
+                                          position: relative;
+                                        }
+                                        & [data-is-focusable='true']::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        {
+                                          padding-right: 8px;
+                                        }
+                                    data-automation-key="value"
+                                    data-automationid="DetailsRowCell"
+                                    role="gridcell"
+                                    style={
+                                      Object {
+                                        "width": 120,
+                                      }
+                                    }
+                                  >
+                                    1
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div
+                  className="ms-List-page"
+                  role="presentation"
+                  style={Object {}}
+                >
+                  <div
+                    className="ms-List-cell"
+                    data-automationid="ListCell"
+                    data-list-index={1}
+                    role="presentation"
+                  >
+                    <div
+                      className=
+                          ms-GroupedList-group
+                          {
+                            transition: background-color 0.267s cubic-bezier(0.445, 0.050, 0.550, 0.950);
+                          }
+                      role="presentation"
+                    >
+                      <div
+                        aria-expanded={true}
+                        aria-labelledby="GroupHeader7"
+                        aria-rowindex={5}
+                        className=
+                            ms-GroupHeader
+                            {
+                              -moz-osx-font-smoothing: grayscale;
+                              -webkit-font-smoothing: antialiased;
+                              border-bottom: 1px solid #ffffff;
+                              cursor: default;
+                              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                              font-size: 14px;
+                              font-weight: 400;
+                              outline: transparent;
+                              position: relative;
+                              user-select: none;
+                            }
+                            &::-moz-focus-inner {
+                              border: 0;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus:after {
+                              border: 1px solid #ffffff;
+                              bottom: 1px;
+                              content: "";
+                              left: 1px;
+                              outline: 1px solid #605e5c;
+                              position: absolute;
+                              right: 1px;
+                              top: 1px;
+                              z-index: 1;
+                            }
+                            &:hover {
+                              background: #f3f2f1;
+                              color: #201f1e;
+                            }
+                            &:hover .ms-GroupHeader-check {
+                              opacity: 1;
+                            }
+                            .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
+                              opacity: 1;
+                            }
+                            & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
+                              opacity: 1;
+                              transform: rotate(0.2deg) scale(1);
+                              transition-delay: 0.367s;
+                              transition: transform 0.467s cubic-bezier(0.075, 0.820, 0.165, 1.000) opacity 0.167s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+                            }
+                            .ms-GroupedList-group.is-dropping .ms-GroupHeader-check {
+                              opacity: 0;
+                            }
+                        data-is-focusable={true}
+                        data-selection-index={2}
+                        data-selection-span={3}
+                        onKeyUp={[Function]}
+                        role="row"
+                        style={Object {}}
+                      >
+                        <div
+                          className=
+
+                              {
+                                align-items: center;
+                                display: flex;
+                                height: 48px;
+                              }
+                          role="presentation"
+                        >
+                          <div
+                            className=
+                                ms-GroupHeader-dropIcon
+                                {
+                                  color: #605e5c;
+                                  font-size: 20px;
+                                  left: -26px;
+                                  opacity: 0;
+                                  position: absolute;
+                                  transform-origin: 10px 10px;
+                                  transform: rotate(0.2deg) scale(0.65);
+                                  transition: transform 0.267s cubic-bezier(0.600, -0.280, 0.735, 0.045), opacity 0.467s cubic-bezier(0.390, 0.575, 0.565, 1.000);
+                                }
+                                .ms-Icon--Tag {
+                                  position: absolute;
+                                }
+                            role="presentation"
+                          >
+                            <i
+                              aria-hidden={true}
+                              className=
+
+                                  {
+                                    -moz-osx-font-smoothing: grayscale;
+                                    -webkit-font-smoothing: antialiased;
+                                    display: inline-block;
+                                    font-family: "FabricMDL2Icons";
+                                    font-style: normal;
+                                    font-weight: normal;
+                                    speak: none;
+                                  }
+                              data-icon-name="Tag"
+                            >
+                              
+                            </i>
+                          </div>
+                          <div
+                            role="gridcell"
+                          >
+                            <button
+                              aria-expanded={true}
+                              aria-label="expand collapse group"
+                              className=
+                                  ms-GroupHeader-expand
+                                  {
+                                    align-items: center;
+                                    background-color: transparent;
+                                    background: none;
+                                    border: none;
+                                    color: #605e5c;
+                                    cursor: default;
+                                    display: flex;
+                                    flex-shrink: 0;
+                                    font-size: 12px;
+                                    height: 48px;
+                                    justify-content: center;
+                                    outline: transparent;
+                                    padding-bottom: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    padding-top: 0px;
+                                    position: relative;
+                                    width: 36px;
+                                  }
+                                  &::-moz-focus-inner {
+                                    border: 0;
+                                  }
+                                  .ms-Fabric--isFocusVisible &:focus:after {
+                                    border: 1px solid #ffffff;
+                                    bottom: 1px;
+                                    content: "";
+                                    left: 1px;
+                                    outline: 1px solid #605e5c;
+                                    position: absolute;
+                                    right: 1px;
+                                    top: 1px;
+                                    z-index: 1;
+                                  }
+                                  &:hover {
+                                    background-color: #edebe9;
+                                  }
+                                  &:active {
+                                    background-color: #e1dfdd;
+                                  }
+                              data-is-focusable={false}
+                              data-selection-disabled={true}
+                              onClick={[Function]}
+                              type="button"
+                            >
+                              <i
+                                aria-hidden={true}
+                                className=
+
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      display: inline-block;
+                                      font-family: "FabricMDL2Icons-3";
+                                      font-style: normal;
+                                      font-weight: normal;
+                                      speak: none;
+                                      transform-origin: 50% 50%;
+                                      transform: rotate(90deg);
+                                      transition: transform .1s linear;
+                                    }
+                                data-icon-name="ChevronRightMed"
+                              >
+                                
+                              </i>
+                            </button>
+                          </div>
+                          <div
+                            aria-colspan={3}
+                            className=
+                                ms-GroupHeader-title
+                                {
+                                  cursor: pointer;
+                                  font-size: 16px;
+                                  font-weight: 600;
+                                  outline: 0px;
+                                  overflow: hidden;
+                                  padding-left: 12px;
+                                  text-overflow: ellipsis;
+                                  white-space: nowrap;
+                                }
+                            data-selection-invoke={true}
+                            id="GroupHeader7"
+                            onClick={[Function]}
+                            role="gridcell"
+                          >
+                            <span>
+                              Group 1
+                            </span>
+                            <span
+                              className=
+
+                                  {
+                                    padding-bottom: 0px;
+                                    padding-left: 4px;
+                                    padding-right: 4px;
+                                    padding-top: 0px;
+                                  }
+                            >
+                              (
+                              3
+                              )
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        aria-label="Group 1"
+                        className="ms-List"
+                        id="GroupedListSection6"
+                        role="rowgroup"
+                      >
+                        <div
+                          className="ms-List-surface"
+                          role="presentation"
+                        >
+                          <div
+                            className="ms-List-page"
+                            role="presentation"
+                            style={Object {}}
+                          >
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={2}
+                              role="presentation"
+                            >
+                              <div
+                                aria-rowindex={6}
+                                aria-selected={false}
+                                className=
+                                    ms-FocusZone
+                                    ms-DetailsRow
+                                    is-contentUnselectable
+                                    &:focus {
+                                      outline: none;
+                                    }
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      animation-duration: 0.367s;
+                                      animation-fill-mode: both;
+                                      animation-name: keyframes from{opacity:0;}to{opacity:1;};
+                                      animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+                                      background: #ffffff;
+                                      border-bottom: 1px solid #f3f2f1;
+                                      box-sizing: border-box;
+                                      color: #605e5c;
+                                      cursor: default;
+                                      display: inline-flex;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 12px;
+                                      font-weight: 400;
+                                      min-height: 42px;
+                                      min-width: 100%;
+                                      outline: transparent;
+                                      padding-bottom: 0px;
+                                      padding-left: 0px;
+                                      padding-right: 0px;
+                                      padding-top: 0px;
+                                      position: relative;
+                                      text-align: left;
+                                      user-select: none;
+                                      vertical-align: top;
+                                      white-space: nowrap;
+                                    }
+                                    &::-moz-focus-inner {
+                                      border: 0;
+                                    }
+                                    .ms-Fabric--isFocusVisible &:focus:after {
+                                      border: 1px solid #605e5c;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      outline: 1px solid #ffffff;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                      z-index: 1;
+                                    }
+                                    .ms-List-cell:first-child &:before {
+                                      display: none;
+                                    }
+                                    &:hover {
+                                      background: #f3f2f1;
+                                      color: #323130;
+                                    }
+                                    &:hover .is-row-header {
+                                      color: #201f1e;
+                                    }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
+                                    }
+                                    &:hover .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
+                                    .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
+                                    }
+                                data-automationid="DetailsRow"
+                                data-focuszone-id="FocusZone13"
+                                data-is-focusable={true}
+                                data-item-index={2}
+                                data-selection-index={2}
+                                data-selection-touch-invoke={true}
+                                id="row0-2"
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                onMouseDownCapture={[Function]}
+                                role="row"
+                              >
+                                <span
+                                  className="ms-GroupSpacer"
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "display": "inline-block",
+                                      "width": 36,
+                                    }
+                                  }
+                                />
+                                <div
+                                  className=
+                                      ms-DetailsRow-fields
+                                      {
+                                        align-items: stretch;
+                                        display: flex;
+                                      }
+                                  data-automationid="DetailsRowFields"
+                                  role="presentation"
+                                >
+                                  <div
+                                    className=
+                                        ms-DetailsRow-cell
+                                        {
+                                          box-sizing: border-box;
+                                          display: inline-block;
+                                          min-height: 42px;
+                                          outline: transparent;
+                                          overflow: hidden;
+                                          padding-bottom: 11px;
+                                          padding-left: 12px;
+                                          padding-top: 11px;
+                                          position: relative;
+                                          text-overflow: ellipsis;
+                                          vertical-align: top;
+                                          white-space: nowrap;
+                                        }
+                                        &::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        & > button {
+                                          max-width: 100%;
+                                        }
+                                        & [data-is-focusable='true'] {
+                                          outline: transparent;
+                                          position: relative;
+                                        }
+                                        & [data-is-focusable='true']::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        {
+                                          padding-right: 8px;
+                                        }
+                                    data-automation-key="key"
+                                    data-automationid="DetailsRowCell"
+                                    role="gridcell"
+                                    style={
+                                      Object {
+                                        "width": 120,
+                                      }
+                                    }
+                                  >
+                                    2
+                                  </div>
+                                  <div
+                                    className=
+                                        ms-DetailsRow-cell
+                                        {
+                                          box-sizing: border-box;
+                                          display: inline-block;
+                                          min-height: 42px;
+                                          outline: transparent;
+                                          overflow: hidden;
+                                          padding-bottom: 11px;
+                                          padding-left: 12px;
+                                          padding-top: 11px;
+                                          position: relative;
+                                          text-overflow: ellipsis;
+                                          vertical-align: top;
+                                          white-space: nowrap;
+                                        }
+                                        &::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        & > button {
+                                          max-width: 100%;
+                                        }
+                                        & [data-is-focusable='true'] {
+                                          outline: transparent;
+                                          position: relative;
+                                        }
+                                        & [data-is-focusable='true']::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        {
+                                          padding-right: 8px;
+                                        }
+                                    data-automation-key="name"
+                                    data-automationid="DetailsRowCell"
+                                    role="gridcell"
+                                    style={
+                                      Object {
+                                        "width": 120,
+                                      }
+                                    }
+                                  >
+                                    Item 2
+                                  </div>
+                                  <div
+                                    className=
+                                        ms-DetailsRow-cell
+                                        {
+                                          box-sizing: border-box;
+                                          display: inline-block;
+                                          min-height: 42px;
+                                          outline: transparent;
+                                          overflow: hidden;
+                                          padding-bottom: 11px;
+                                          padding-left: 12px;
+                                          padding-top: 11px;
+                                          position: relative;
+                                          text-overflow: ellipsis;
+                                          vertical-align: top;
+                                          white-space: nowrap;
+                                        }
+                                        &::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        .ms-Fabric--isFocusVisible &:focus:after {
+                                          border: 1px solid #605e5c;
+                                          bottom: 0px;
+                                          content: "";
+                                          left: 0px;
+                                          outline: 1px solid #ffffff;
+                                          position: absolute;
+                                          right: 0px;
+                                          top: 0px;
+                                          z-index: 1;
+                                        }
+                                        & > button {
+                                          max-width: 100%;
+                                        }
+                                        & [data-is-focusable='true'] {
+                                          outline: transparent;
+                                          position: relative;
+                                        }
+                                        & [data-is-focusable='true']::-moz-focus-inner {
+                                          border: 0;
+                                        }
+                                        {
+                                          padding-right: 8px;
+                                        }
+                                    data-automation-key="value"
+                                    data-automationid="DetailsRowCell"
+                                    role="gridcell"
+                                    style={
+                                      Object {
+                                        "width": 120,
+                                      }
+                                    }
+                                  >
+                                    2
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            <div
+                              className="ms-List-cell"
+                              data-automationid="ListCell"
+                              data-list-index={3}
+                              role="presentation"
+                            >
+                              <div
+                                aria-rowindex={7}
+                                aria-selected={false}
+                                className=
+                                    ms-FocusZone
+                                    ms-DetailsRow
+                                    is-contentUnselectable
+                                    &:focus {
+                                      outline: none;
+                                    }
+                                    {
+                                      -moz-osx-font-smoothing: grayscale;
+                                      -webkit-font-smoothing: antialiased;
+                                      animation-duration: 0.367s;
+                                      animation-fill-mode: both;
+                                      animation-name: keyframes from{opacity:0;}to{opacity:1;};
+                                      animation-timing-function: cubic-bezier(.1,.25,.75,.9);
+                                      background: #ffffff;
+                                      border-bottom: 1px solid #f3f2f1;
+                                      box-sizing: border-box;
+                                      color: #605e5c;
+                                      cursor: default;
+                                      display: inline-flex;
+                                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                      font-size: 12px;
+                                      font-weight: 400;
+                                      min-height: 42px;
+                                      min-width: 100%;
+                                      outline: transparent;
+                                      padding-bottom: 0px;
+                                      padding-left: 0px;
+                                      padding-right: 0px;
+                                      padding-top: 0px;
+                                      position: relative;
+                                      text-align: left;
+                                      user-select: none;
+                                      vertical-align: top;
+                                      white-space: nowrap;
+                                    }
+                                    &::-moz-focus-inner {
+                                      border: 0;
+                                    }
+                                    .ms-Fabric--isFocusVisible &:focus:after {
+                                      border: 1px solid #605e5c;
+                                      bottom: 1px;
+                                      content: "";
+                                      left: 1px;
+                                      outline: 1px solid #ffffff;
+                                      position: absolute;
+                                      right: 1px;
+                                      top: 1px;
+                                      z-index: 1;
+                                    }
+                                    .ms-List-cell:first-child &:before {
+                                      display: none;
+                                    }
+                                    &:hover {
+                                      background: #f3f2f1;
+                                      color: #323130;
+                                    }
+                                    &:hover .is-row-header {
+                                      color: #201f1e;
+                                    }
+                                    &:hover .ms-DetailsRow-cell > .ms-Link {
+                                      color: #004578;
+                                    }
+                                    &:hover .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
+                                    .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                                      opacity: 1;
+                                    }
+                                    & .ms-GroupSpacer {
+                                      flex-grow: 0;
+                                      flex-shrink: 0;
+                                    }
+                                data-automationid="DetailsRow"
+                                data-focuszone-id="FocusZone15"
+                                data-is-focusable={true}
+                                data-item-index={3}
+                                data-selection-index={3}
+                                data-selection-touch-invoke={true}
+                                id="row0-3"
+                                onFocus={[Function]}
+                                onKeyDown={[Function]}
+                                onMouseDownCapture={[Function]}
+                                role="row"
+                              >
+                                <span
+                                  className="ms-GroupSpacer"
+                                  role="gridcell"
+                                  style={
+                                    Object {
+                                      "display": "inline-block",
+                                      "width": 36,
+                                    }
+                                  }
+                                />
+                                <div
+                                  className=
+                                      ms-DetailsRow-fields
+                                      {
+                                        align-items: stretch;
+                                        display: flex;
+                                      }
+                                  data-automationid="DetailsRowFields"
+                                  role="presentation"
+                                >
+                                  <div
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9643,8 +9349,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     3
                                   </div>
                                   <div
-                                    aria-colindex={3}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9700,8 +9404,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 3
                                   </div>
                                   <div
-                                    aria-colindex={4}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9757,21 +9459,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     3
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                             <div
@@ -9781,7 +9468,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                               role="presentation"
                             >
                               <div
-                                aria-level={2}
                                 aria-rowindex={8}
                                 aria-selected={false}
                                 className=
@@ -9858,7 +9544,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone12"
+                                data-focuszone-id="FocusZone17"
                                 data-is-focusable={true}
                                 data-item-index={4}
                                 data-selection-index={4}
@@ -9868,11 +9554,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -9895,8 +9576,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   role="presentation"
                                 >
                                   <div
-                                    aria-colindex={2}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -9952,8 +9631,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     4
                                   </div>
                                   <div
-                                    aria-colindex={3}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -10009,8 +9686,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     Item 4
                                   </div>
                                   <div
-                                    aria-colindex={4}
-                                    aria-readonly={true}
                                     className=
                                         ms-DetailsRow-cell
                                         {
@@ -10066,21 +9741,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     4
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                           </div>

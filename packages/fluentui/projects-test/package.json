@@ -1,13 +1,15 @@
 {
   "name": "@fluentui/projects-test",
-  "version": "0.59.0",
+  "version": "0.66.4",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-northstar": "^0.59.0"
+    "@fluentui/react-northstar": "*"
   },
   "devDependencies": {
-    "@fluentui/scripts": "^1.0.0"
+    "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-projects-test": "*"
   },
   "publishConfig": {
     "access": "public"
@@ -16,6 +18,6 @@
     "build": "gulp bundle:package:no-umd",
     "lint": "eslint --ext .js,.ts,.tsx .",
     "lint:fix": "yarn lint --fix",
-    "test": "node -r @fluentui/scripts/babel/register src/index.ts"
+    "test": "node -r @fluentui/scripts-babel/register src/index.ts"
   }
 }

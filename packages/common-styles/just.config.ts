@@ -1,5 +1,5 @@
-import { preset, task, series } from '@fluentui/scripts';
+import { preset, task, series } from '@fluentui/scripts-tasks';
 
 preset();
 
-task('build', series('clean', 'copy')).cached();
+task('build', series('clean', 'copy')).cached!();

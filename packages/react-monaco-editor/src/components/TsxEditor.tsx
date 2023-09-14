@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as monaco from '@fluentui/monaco-editor';
-import { LanguageServiceDefaultsImpl as TypescriptDefaults } from '@fluentui/monaco-editor/monaco-typescript.d';
 import { getWindow } from '@fluentui/react/lib/Utilities';
 import { transpileAndEval } from '../transpiler/transpile';
 import { Editor } from './Editor';
@@ -11,7 +10,7 @@ import type { IMonacoTextModel, ICompilerOptions, IPackageGroup } from '../inter
 import type { IEditorProps } from './Editor.types';
 
 const typescript = monaco.languages.typescript;
-const typescriptDefaults = typescript.typescriptDefaults as TypescriptDefaults;
+const typescriptDefaults = typescript.typescriptDefaults;
 
 const filePrefix = 'file:///';
 const filename = filePrefix + 'main.tsx';

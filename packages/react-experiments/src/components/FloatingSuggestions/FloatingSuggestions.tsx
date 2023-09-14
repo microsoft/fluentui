@@ -19,7 +19,8 @@ export interface IFloatingSuggestionsState {
 
 export class FloatingSuggestions<TItem>
   extends React.Component<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
-  implements IFloatingSuggestions<TItem> {
+  implements IFloatingSuggestions<TItem>
+{
   private root = React.createRef<HTMLDivElement>();
   private suggestionStore: SuggestionsStore<TItem>;
   private suggestionsControl: React.RefObject<SuggestionsControl<TItem>> = React.createRef();
@@ -69,7 +70,7 @@ export class FloatingSuggestions<TItem>
   public onQueryStringChanged = (queryString: string): void => {
     if (queryString !== this.state.queryString) {
       this.setState({
-        queryString: queryString,
+        queryString,
       });
 
       if (this.props.onInputChanged) {
@@ -175,13 +176,13 @@ export class FloatingSuggestions<TItem>
     // If it is then resolve it asynchronously.
     if (Array.isArray(suggestions)) {
       this.updateSuggestions(suggestions, true /*forceUpdate*/);
-    } else if (suggestions && suggestions.then) {
+    } else if (suggestions && (suggestions as PromiseLike<TItem[]>).then) {
       // Ensure that the promise will only use the callback if it was the most recent one.
-      const promise: PromiseLike<TItem[]> = (this.currentPromise = suggestions);
-      promise.then((newSuggestions: TItem[]) => {
+      this.currentPromise = suggestions;
+      suggestions.then((newSuggestions: TItem[]) => {
         // Only update if the next promise has not yet resolved and
         // the floating picker is still mounted.
-        if (promise === this.currentPromise && this.isComponentMounted) {
+        if (suggestions === this.currentPromise && this.isComponentMounted) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
       });
@@ -191,8 +192,8 @@ export class FloatingSuggestions<TItem>
   private _renderSuggestions(): JSX.Element | null {
     // Express this as 2 separate statements instead of a single one, because `undefined` isn't filtered out of the type
     // when using `|| SuggestionsControl`
-    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined = this
-      .props.onRenderSuggestionControl;
+    let TypedSuggestionsControl: React.ComponentType<IFloatingSuggestionsInnerSuggestionProps<TItem>> | undefined =
+      this.props.onRenderSuggestionControl;
     if (TypedSuggestionsControl === undefined) {
       TypedSuggestionsControl = SuggestionsControl;
     }
@@ -277,9 +278,8 @@ export class FloatingSuggestions<TItem>
       case KeyCodes.del:
         if (
           this.props.onRemoveSuggestion &&
-          this.suggestionsControl.current &&
-          this.suggestionsControl.current.hasSuggestionSelected &&
-          this.suggestionsControl.current.currentSuggestion &&
+          this.suggestionsControl.current?.hasSuggestionSelected &&
+          this.suggestionsControl.current?.currentSuggestion &&
           ev.shiftKey
         ) {
           this.props.onRemoveSuggestion(this.suggestionsControl.current.currentSuggestion!.item);

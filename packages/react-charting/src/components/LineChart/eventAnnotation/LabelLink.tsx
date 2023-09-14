@@ -2,6 +2,8 @@ import * as React from 'react';
 import { Callout, FocusZone, FocusZoneDirection, List } from '@fluentui/react';
 import { IEventAnnotation } from '../../../types/IEventAnnotation';
 import { Textbox } from './Textbox';
+import { ITheme } from '@fluentui/react/lib/Styling';
+import { getColorFromToken } from '../../../utilities/colors';
 
 export interface ILineDef extends IEventAnnotation {
   x: number;
@@ -20,7 +22,8 @@ interface ILabelLinkProps {
   textWidth: number;
   textLineHeight: number;
   textFontSize: string;
-  textColor: string;
+  textColor: string | undefined;
+  theme: ITheme | undefined;
   mergedLabel: (count: number) => string;
 }
 
@@ -56,18 +59,19 @@ export const LabelLink: React.FunctionComponent<ILabelLinkProps> = props => {
   }
 
   let text: string;
-  let fill: string | undefined;
+  const fill: string | undefined = props.textColor
+    ? getColorFromToken(props.textColor, props.theme?.isInverted)
+    : props.theme?.palette.black;
+
   if (props.labelDef.aggregatedIdx.length === 1) {
     text = props.lineDefs[props.labelDef.aggregatedIdx[0]].event;
-    fill = props.textColor;
   } else {
     text = props.mergedLabel(props.labelDef.aggregatedIdx.length);
-    fill = props.textColor;
   }
 
   return (
     <>
-      <g ref={gRef} onClick={onClick} data-is-focusable={true} style={{ cursor: 'pointer' }}>
+      <g ref={gRef} onClick={onClick} data-is-focusable={false} style={{ cursor: 'pointer' }}>
         <Textbox
           text={text}
           x={props.labelDef.x}

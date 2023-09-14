@@ -126,8 +126,8 @@ const carouselItems = [
 
 const CarouselExample = () => (
   <Carousel
-    ariaRoleDescription="carousel"
-    ariaLabel="Portrait collection"
+    aria-roledescription="carousel"
+    aria-label="Portrait collection"
     thumbnails
     navigation={{
       'aria-label': 'people portraits',

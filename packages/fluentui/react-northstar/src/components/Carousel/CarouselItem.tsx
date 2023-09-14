@@ -14,13 +14,13 @@ import {
 import { screenReaderContainerStyles } from '../../utils/accessibility/Styles/accessibilityStyles';
 import { FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   useAccessibility,
   useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface CarouselItemSlotClassNames {
@@ -59,8 +59,7 @@ export const carouselItemSlotClassNames: CarouselItemSlotClassNames = {
  * @accessibility
  * Implements [ARIA Carousel](https://www.w3.org/WAI/tutorials/carousels/structure/) design pattern.
  */
-export const CarouselItem: ComponentWithAs<'div', CarouselItemProps> &
-  FluentComponentStaticProps<CarouselItemProps> = props => {
+export const CarouselItem = React.forwardRef<HTMLDivElement, CarouselItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselItem.displayName, context.telemetry);
   setStart();
@@ -109,6 +108,7 @@ export const CarouselItem: ComponentWithAs<'div', CarouselItemProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -122,7 +122,8 @@ export const CarouselItem: ComponentWithAs<'div', CarouselItemProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselItemProps> &
+  FluentComponentStaticProps<CarouselItemProps>;
 
 CarouselItem.displayName = 'CarouselItem';
 

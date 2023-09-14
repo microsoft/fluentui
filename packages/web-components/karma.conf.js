@@ -33,7 +33,7 @@ module.exports = function (config) {
     basePath,
     browserDisconnectTimeout: 10000,
     processKillTimeout: 10000,
-    frameworks: ['source-map-support', 'mocha'],
+    frameworks: ['source-map-support', 'mocha', 'webpack'],
     plugins: [
       require('karma-mocha'),
       require('karma-mocha-reporter'),
@@ -65,19 +65,16 @@ module.exports = function (config) {
         hints: false,
       },
       optimization: {
-        namedModules: false,
-        namedChunks: false,
         nodeEnv: false,
         usedExports: true,
         flagIncludedChunks: false,
-        occurrenceOrder: false,
         sideEffects: true,
         concatenateModules: true,
         splitChunks: {
           name: false,
         },
         runtimeChunk: false,
-        noEmitOnErrors: false,
+        emitOnErrors: true,
         checkWasmTypes: false,
         minimize: false,
       },
@@ -89,12 +86,10 @@ module.exports = function (config) {
           },
           {
             test: /\.js$/,
+            enforce: 'pre',
             use: [
               {
                 loader: 'source-map-loader',
-                options: {
-                  enforce: 'pre',
-                },
               },
             ],
           },

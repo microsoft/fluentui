@@ -27,7 +27,7 @@ export const ScrollToMode = {
 /**
  * {@docCategory List}
  */
-export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
+export type ScrollToMode = (typeof ScrollToMode)[keyof typeof ScrollToMode];
 
 /**
  * Props passed to the render override for the list root.
@@ -138,6 +138,21 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * are complex.
    */
   onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
+
+  /**
+   * Method to call when trying to render an item conditionally.
+   *
+   * When this method returns `null` the cell will be skipped in the render.
+   *
+   * This prop is mutually exclusive with `onRenderCell` and when `onRenderCellConditional` is set,
+   * `onRenderCell` will not be called.
+   *
+   * @param item - The data associated with the cell that is being rendered.
+   * @param index - The index of the cell being rendered.
+   * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells
+   * are complex.
+   */
+  onRenderCellConditional?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode | null;
 
   /**
    * Optional callback invoked when List rendering completed.
@@ -264,6 +279,13 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * This is a performance optimization to let List skip a render cycle by not updating its scrolling state.
    */
   ignoreScrollingState?: boolean;
+
+  /**
+   * Whether to render the list earlier than the default.
+   * Use this in scenarios where the list is contained in a FocusZone or FocusTrapZone
+   * as in a Dialog.
+   */
+  renderEarly?: boolean;
 }
 
 /**

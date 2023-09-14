@@ -27,7 +27,7 @@ export const useSetTimeout = (): UseSetTimeoutReturnType => {
   // Return wrapper which will auto cleanup.
   return useConst({
     setTimeout: (func: () => void, duration: number): number => {
-      const id = (setTimeout(func, duration) as unknown) as number;
+      const id = setTimeout(func, duration) as unknown as number;
 
       timeoutIds[id] = 1;
 

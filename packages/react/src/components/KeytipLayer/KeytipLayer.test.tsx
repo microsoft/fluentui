@@ -24,6 +24,7 @@ describe('KeytipLayer', () => {
 
   const keytipIdC = KTP_FULL_PREFIX + 'c';
   const uniqueIdC = '2';
+  const uniqueIdC2 = '22';
   const keytipC: IKeytipProps = {
     content: 'C',
     keySequences: ['c'],
@@ -315,6 +316,15 @@ describe('KeytipLayer', () => {
         layerValue.processInput('2');
         // E2 should be triggered
         expect(nodeE2.onExecute).toBeCalled();
+      });
+      it('Process a node with no matching visible element and is a submenu in an overflow', () => {
+        // Make C2 a submenu in an overflow
+        const onExecuteC2: jest.Mock = jest.fn();
+        ktpTree.addNode({ ...keytipC, hasOverflowSubMenu: true, onExecute: onExecuteC2 }, uniqueIdC2);
+        ktpTree.currentKeytip = ktpTree.root;
+        layerValue.processInput('c');
+        // C2 should be triggered
+        expect(onExecuteC2).toBeCalled();
       });
     });
   });

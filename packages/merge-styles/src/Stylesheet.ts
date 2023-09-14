@@ -17,7 +17,7 @@ export const InjectionMode = {
   appendChild: 2 as 2,
 };
 
-export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
+export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 /**
  * CSP settings for the stylesheet
@@ -104,7 +104,10 @@ let _global: (Window | {}) & {
 
 // Grab window.
 try {
-  _global = window || {};
+  // Why the cast?
+  // if compiled/type checked in same program with `@fluentui/font-icons-mdl2` which extends `Window` on global
+  // ( check packages/font-icons-mdl2/src/index.ts ) the definitions don't match! Thus the need of this extra assertion
+  _global = (window || {}) as typeof _global;
 } catch {
   /* leave as blank object */
 }
@@ -361,6 +364,7 @@ export class Stylesheet {
   private _createStyleElement(): HTMLStyleElement {
     const head: HTMLHeadElement = document.head;
     const styleElement = document.createElement('style');
+    let nodeToInsertBefore: Node | null = null;
 
     styleElement.setAttribute('data-merge-styles', 'true');
 
@@ -373,16 +377,18 @@ export class Stylesheet {
     if (this._lastStyleElement) {
       // If the `nextElementSibling` is null, then the insertBefore will act as a regular append.
       // https://developer.mozilla.org/en-US/docs/Web/API/Node/insertBefore#Syntax
-      head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
+      nodeToInsertBefore = this._lastStyleElement.nextElementSibling;
     } else {
       const placeholderStyleTag: Element | null = this._findPlaceholderStyleTag();
 
       if (placeholderStyleTag) {
-        head!.insertBefore(styleElement, placeholderStyleTag.nextElementSibling);
+        nodeToInsertBefore = placeholderStyleTag.nextElementSibling;
       } else {
-        head!.insertBefore(styleElement, head.childNodes[0]);
+        nodeToInsertBefore = head.childNodes[0];
       }
     }
+
+    head!.insertBefore(styleElement, head!.contains(nodeToInsertBefore) ? nodeToInsertBefore : null);
     this._lastStyleElement = styleElement;
 
     return styleElement;

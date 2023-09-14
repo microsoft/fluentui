@@ -1,12 +1,12 @@
 import { Accessibility, statusBehavior, StatusBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStyles,
   useTelemetry,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -42,7 +42,7 @@ export const statusClassName = 'ui-status';
  * @accessibility
  * Implements [ARIA img](https://www.w3.org/TR/wai-aria-1.1/#img) role.
  */
-export const Status: ComponentWithAs<'span', StatusProps> & FluentComponentStaticProps = props => {
+export const Status = React.forwardRef<HTMLSpanElement, StatusProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Status.displayName, context.telemetry);
   setStart();
@@ -79,12 +79,14 @@ export const Status: ComponentWithAs<'span', StatusProps> & FluentComponentStati
   });
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })}>{iconElement}</ElementType>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })}>
+      {iconElement}
+    </ElementType>
   );
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, StatusProps> & FluentComponentStaticProps;
 
 Status.displayName = 'Status';
 Status.propTypes = {
@@ -95,12 +97,18 @@ Status.propTypes = {
   color: PropTypes.string,
   icon: customPropTypes.shorthandAllowingChildren,
   size: customPropTypes.size,
-  state: PropTypes.oneOf(['success', 'info', 'warning', 'error', 'unknown']),
+  state: PropTypes.oneOf<'success' | 'info' | 'warning' | 'error' | 'unknown'>([
+    'success',
+    'info',
+    'warning',
+    'error',
+    'unknown',
+  ]),
 };
 Status.handledProps = Object.keys(Status.propTypes) as any;
 Status.defaultProps = {
   accessibility: statusBehavior,
-  as: 'span',
+  as: 'span' as const,
   size: 'medium',
   state: 'unknown',
 };

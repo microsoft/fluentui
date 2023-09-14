@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-conformance-griffel",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/react-components/react-conformance-griffel/src",
+  "tags": ["vNext", "platform:node"],
+  "implicitDependencies": []
+}

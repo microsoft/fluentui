@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`migrate-converged-pkg generator jest config updates should setup new local jest config which extends from root  1`] = `
+"const { createV8Config: createConfig } = require('@fluentui/scripts/jest');
+const path = require('path');
+
+const config = createConfig({
+setupFiles: ['./config/tests.js'],
+snapshotSerializers: ['@griffel/jest-serializer'],
+});
+
+module.exports = config;"
+`;
+
+exports[`migrate-converged-pkg generator storybook updates should remove @ts-ignore pragmas from all stories 1`] = `
+"import * as Implementation from './index';
+export const Foo = (props: FooProps) => { return <div>Foo</div>; }\\\\n
+
+
+
+import { Button } from '@fluentui/react-button';
+
+
+
+import { Text } from '@fluentui/react-text';"
+`;

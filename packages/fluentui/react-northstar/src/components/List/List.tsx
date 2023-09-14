@@ -1,6 +1,5 @@
 import { Accessibility, listBehavior, ListBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,6 +7,7 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as _ from 'lodash';
@@ -89,16 +89,7 @@ export const listClassName = 'ui-list';
  * [JAWS - Listbox options are not reachable in Virtual Cursor PC mode #517](https://github.com/FreedomScientific/VFO-standards-support/issues/517)
  * [JAWS - Aria-selected is not narrated for the single-select listbox, when selection is NOT moved with focus #440](https://github.com/FreedomScientific/VFO-standards-support/issues/440)
  */
-export const List: ComponentWithAs<'ul', ListProps> &
-  FluentComponentStaticProps<ListProps> & {
-    Item: typeof ListItem;
-    ItemContent: typeof ListItemContent;
-    ItemContentMedia: typeof ListItemContentMedia;
-    ItemEndMedia: typeof ListItemEndMedia;
-    ItemHeader: typeof ListItemHeader;
-    ItemHeaderMedia: typeof ListItemHeaderMedia;
-    ItemMedia: typeof ListItemMedia;
-  } = props => {
+export const List = React.forwardRef<HTMLUListElement, ListProps & { as: React.ReactNode }>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(List.displayName, context.telemetry);
   setStart();
@@ -178,6 +169,7 @@ export const List: ComponentWithAs<'ul', ListProps> &
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -190,7 +182,16 @@ export const List: ComponentWithAs<'ul', ListProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, ListProps> &
+  FluentComponentStaticProps<ListProps> & {
+    Item: typeof ListItem;
+    ItemContent: typeof ListItemContent;
+    ItemContentMedia: typeof ListItemContentMedia;
+    ItemEndMedia: typeof ListItemEndMedia;
+    ItemHeader: typeof ListItemHeader;
+    ItemHeaderMedia: typeof ListItemHeaderMedia;
+    ItemMedia: typeof ListItemMedia;
+  };
 
 List.displayName = 'List';
 

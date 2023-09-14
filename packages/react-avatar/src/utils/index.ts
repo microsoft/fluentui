@@ -1,1 +1,0 @@
-export { getInitials } from './getInitials';

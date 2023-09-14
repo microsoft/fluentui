@@ -1,9 +1,7 @@
-import * as React from 'react';
 import { Sticky } from './Sticky';
-import type { IRefObject } from '../../Utilities';
+import type { IReactProps, IRefObject } from '../../Utilities';
 
-// eslint-disable-next-line deprecation/deprecation
-export interface IStickyProps extends React.Props<Sticky> {
+export interface IStickyProps extends IReactProps<Sticky> {
   /**
    * Gets ref to component interface.
    */

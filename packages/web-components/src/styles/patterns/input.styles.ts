@@ -3,14 +3,12 @@ import {
   DesignToken,
   disabledCursor,
   ElementDefinitionContext,
-  focusVisible,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { Swatch } from '../../color/swatch';
 import {
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
   disabledOpacity,
   focusStrokeWidth,
@@ -18,6 +16,7 @@ import {
   neutralFillInputHover,
   neutralFillInputRecipe,
   neutralFillInputRest,
+  neutralFillSecondaryFocus,
   neutralFillSecondaryHover,
   neutralFillSecondaryRecipe,
   neutralFillSecondaryRest,
@@ -27,10 +26,10 @@ import {
   neutralStrokeInputRest,
   neutralStrokeRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../../design-tokens';
+import { typeRampBase } from '../patterns/type-ramp';
 import { heightNumber } from '../size';
+import { focusTreatmentBase } from '../focus';
 
 const placeholderRest = DesignToken.create<Swatch>('input-placeholder-rest').withDefault((target: HTMLElement) => {
   const baseRecipe = neutralFillInputRecipe.getValueFor(target);
@@ -61,34 +60,31 @@ const filledPlaceholderHover = DesignToken.create<Swatch>('input-filled-placehol
 );
 
 /**
+ * The base styles for input controls, without `appearance` visual differences.
+ * 
  * @internal
  */
-export const inputStyles: (
+export const baseInputStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
 ) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
 ) => css`
   :host {
-    font-family: ${bodyFont};
-    font-size: ${typeRampBaseFontSize};
-    line-height: ${typeRampBaseLineHeight};
+    ${typeRampBase}
     color: ${neutralForegroundRest};
     fill: currentcolor;
-    outline: none;
     user-select: none;
     position: relative;
   }
 
-  ${rootSelector} {
+  ${logicalControlSelector} {
     box-sizing: border-box;
     position: relative;
     color: inherit;
-    background: padding-box linear-gradient(${neutralFillInputRest}, ${neutralFillInputRest}),
-      border-box ${neutralStrokeInputRest};
     border: calc(${strokeWidth} * 1px) solid transparent;
     border-radius: calc(${controlCornerRadius} * 1px);
     height: calc(${heightNumber} * 1px);
@@ -99,12 +95,6 @@ export const inputStyles: (
 
   .control {
     width: 100%;
-  }
-
-  .control:hover,
-  .control:${focusVisible},
-  .control:disabled,
-  .control:active {
     outline: none;
   }
 
@@ -112,8 +102,7 @@ export const inputStyles: (
     display: block;
     color: ${neutralForegroundRest};
     cursor: pointer;
-    font-size: ${typeRampBaseFontSize};
-    line-height: ${typeRampBaseLineHeight};
+    ${typeRampBase}
     margin-bottom: 4px;
   }
 
@@ -122,25 +111,9 @@ export const inputStyles: (
     visibility: hidden;
   }
 
-  :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
-    background: padding-box linear-gradient(${neutralFillInputHover}, ${neutralFillInputHover}),
-      border-box ${neutralStrokeInputHover};
-  }
-
-  :host(:not([disabled]):focus-within) ${rootSelector} {
-    background: padding-box linear-gradient(${neutralFillInputFocus}, ${neutralFillInputFocus}),
-      border-box ${neutralStrokeInputRest};
-  }
-
-  .control::placeholder {
-    color: ${placeholderRest};
-  }
-
-  :host(:hover:not([disabled]):not(:focus-within)) .control::placeholder {
-    color: ${placeholderHover};
-  }
-
-  :host([disabled]) ${rootSelector}, :host([readonly]) ${rootSelector}, :host([disabled]) .label,
+  :host([disabled]) ${logicalControlSelector},
+  :host([readonly]) ${logicalControlSelector},
+  :host([disabled]) .label,
   :host([readonly]) .label,
   :host([disabled]) .control,
   :host([readonly]) .control {
@@ -150,86 +123,135 @@ export const inputStyles: (
   :host([disabled]) {
     opacity: ${disabledOpacity};
   }
-
-  :host([disabled]) ${rootSelector} {
-    background: padding-box linear-gradient(${neutralFillInputRest}, ${neutralFillInputRest}),
-      border-box ${neutralStrokeRest};
-  }
 `;
 
 /**
+ * The styles for active and focus interactions for input controls.
+ * 
  * @internal
  */
 export const inputStateStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
 ) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
 ) => css`
-  :host(:not([disabled]):active)::after {
-    left: 50%;
-    width: 40%;
-    transform: translateX(-50%);
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
+  @media (forced-colors: none) {
+    :host(:not([disabled]):active)::after {
+      left: 50%;
+      width: 40%;
+      transform: translateX(-50%);
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
-  :host(:not([disabled]):focus-within)::after {
-    left: 0;
-    width: 100%;
-    transform: none;
-  }
+    :host(:not([disabled]):focus-within)::after {
+      left: 0;
+      width: 100%;
+      transform: none;
+    }
 
-  :host(:not([disabled]):active)::after,
-  :host(:not([disabled]):focus-within:not(:active))::after {
-    content: '';
-    position: absolute;
-    height: 100%;
-    bottom: 0;
-    border-bottom: calc(${focusStrokeWidth} * 1px) solid ${accentFillRest};
-    border-bottom-left-radius: calc(${controlCornerRadius} * 1px);
-    border-bottom-right-radius: calc(${controlCornerRadius} * 1px);
-    z-index: 2;
-    transition: all 300ms cubic-bezier(0.1, 0.9, 0.2, 1);
+    :host(:not([disabled]):active)::after,
+    :host(:not([disabled]):focus-within:not(:active))::after {
+      content: '';
+      position: absolute;
+      height: calc(${focusStrokeWidth} * 1px);
+      bottom: 0;
+      border-bottom: calc(${focusStrokeWidth} * 1px) solid ${accentFillRest};
+      border-bottom-left-radius: calc(${controlCornerRadius} * 1px);
+      border-bottom-right-radius: calc(${controlCornerRadius} * 1px);
+      z-index: 2;
+      transition: all 300ms cubic-bezier(0.1, 0.9, 0.2, 1);
+    }
   }
 `;
 
 /**
+ * The visual styles for inputs with `appearance='outline'`.
+ * 
+ * @internal
+ */
+ export const inputOutlineStyles: (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+  logicalControlSelector: string,
+  interactivitySelector?: string,
+) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: FoundationElementDefinition,
+  logicalControlSelector: string,
+  interactivitySelector: string = ':not([disabled]):not(:focus-within)',
+) => css`
+  ${logicalControlSelector} {
+    background: padding-box linear-gradient(${neutralFillInputRest}, ${neutralFillInputRest}),
+      border-box ${neutralStrokeInputRest};
+  }
+
+  :host(${interactivitySelector}:hover) ${logicalControlSelector} {
+    background: padding-box linear-gradient(${neutralFillInputHover}, ${neutralFillInputHover}),
+      border-box ${neutralStrokeInputHover};
+  }
+
+  :host(:not([disabled]):focus-within) ${logicalControlSelector} {
+    background: padding-box linear-gradient(${neutralFillInputFocus}, ${neutralFillInputFocus}),
+      border-box ${neutralStrokeInputRest};
+  }
+  
+  :host([disabled]) ${logicalControlSelector} {
+    background: padding-box linear-gradient(${neutralFillInputRest}, ${neutralFillInputRest}),
+      border-box ${neutralStrokeRest};
+  }
+
+  .control::placeholder {
+    color: ${placeholderRest};
+  }
+
+  :host(${interactivitySelector}:hover) .control::placeholder {
+    color: ${placeholderHover};
+  }
+`;
+
+/**
+ * The visual styles for inputs with `appearance='filled'`.
+ * 
  * @internal
  */
 export const inputFilledStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
+  interactivitySelector?: string,
 ) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
+  interactivitySelector: string = ':not([disabled]):not(:focus-within)',
 ) => css`
-  :host ${rootSelector} {
+  ${logicalControlSelector} {
     background: ${neutralFillSecondaryRest};
-    border-color: transparent;
   }
 
-  :host(:hover:not([disabled]):not(:focus-within)) ${rootSelector} {
+  :host(${interactivitySelector}:hover) ${logicalControlSelector} {
     background: ${neutralFillSecondaryHover};
-    border-color: transparent;
+  }
+
+  :host(:not([disabled]):focus-within) ${logicalControlSelector} {
+    background: ${neutralFillSecondaryFocus};
+  }
+
+  :host([disabled]) ${logicalControlSelector} {
+    background: ${neutralFillSecondaryRest};
   }
 
   .control::placeholder {
     color: ${filledPlaceholderRest};
   }
 
-  :host(:hover:not([disabled]):not(:focus-within)) .control::placeholder {
+  :host(${interactivitySelector}:hover) .control::placeholder {
     color: ${filledPlaceholderHover};
-  }
-
-  :host(:focus-within:not([disabled])) ${rootSelector} {
-    border-color: transparent;
-    box-shadow: none;
   }
 `;
 
@@ -239,73 +261,51 @@ export const inputFilledStyles: (
 export const inputForcedColorStyles: (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
+  interactivitySelector?: string,
 ) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: FoundationElementDefinition,
-  rootSelector: string,
+  logicalControlSelector: string,
+  interactivitySelector: string = ':not([disabled]):not(:focus-within)',
 ) => css`
-  ${rootSelector} {
-    forced-color-adjust: none;
+  :host {
+    color: ${SystemColors.ButtonText};
+  }
+
+  ${logicalControlSelector} {
     background: ${SystemColors.ButtonFace};
     border-color: ${SystemColors.ButtonText};
   }
-  :host(:hover:not([disabled])) ${rootSelector} {
+
+  :host(${interactivitySelector}:hover) ${logicalControlSelector},
+  :host(:not([disabled]):focus-within) ${logicalControlSelector} {
+    border-color: ${SystemColors.Highlight};
+  }
+
+  :host([disabled]) ${logicalControlSelector} {
+    opacity: 1;
     background: ${SystemColors.ButtonFace};
-    border-color: ${SystemColors.Highlight};
+    border-color: ${SystemColors.GrayText};
   }
-  :host(:focus-within:not([disabled])) ${rootSelector} {
-    border-color: ${SystemColors.Highlight};
-    box-shadow: 0 0 0 1px ${SystemColors.Highlight} inset;
+
+  .control::placeholder,
+  :host(${interactivitySelector}:hover) .control::placeholder {
+    color: ${SystemColors.CanvasText};
   }
-  .control,
-  ::placeholder,
-  ::-webkit-input-placeholder {
-    color: ${SystemColors.FieldText};
+
+  :host(:not([disabled]):focus) ${logicalControlSelector} {
+    ${focusTreatmentBase}
+    outline-color: ${SystemColors.Highlight};
   }
+
   :host([disabled]) {
     opacity: 1;
-  }
-  :host([disabled]) ${rootSelector} {
-    border-color: ${SystemColors.GrayText};
-    background: ${SystemColors.Field};
-  }
-  :host([disabled]) ::placeholder,
-  :host([disabled]) ::-webkit-input-placeholder,
-  :host([disabled]) .label {
     color: ${SystemColors.GrayText};
   }
-`;
 
-/**
- * @internal
- */
-export const inputFilledForcedColorStyles: (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-  rootSelector: string,
-) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: FoundationElementDefinition,
-  rootSelector: string,
-) => css`
-  :host
-    ${rootSelector},
-    :host(:hover:not([disabled]))
-    ${rootSelector},
-    :host(:active:not([disabled]))
-    ${rootSelector},
-    :host(:focus-within:not([disabled]))
-    ${rootSelector} {
-    background: ${SystemColors.Field};
-    border-color: ${SystemColors.FieldText};
-  }
-  :host(:not([disabled]):active)::after,
-  :host(:not([disabled]):focus-within:not(:active))::after {
-    border-bottom-color: ${SystemColors.Highlight};
-  }
-  :host([disabled]) ${rootSelector} {
-    border-color: ${SystemColors.GrayText};
-    background: ${SystemColors.Field};
+  :host([disabled]) ::placeholder,
+  :host([disabled]) ::-webkit-input-placeholder {
+    color: ${SystemColors.GrayText};
   }
 `;

@@ -3,6 +3,8 @@ import { PivotItem } from './PivotItem';
 import type { IStyle, ITheme } from '@fluentui/style-utilities';
 import type { IStyleFunctionOrObject } from '@fluentui/utilities';
 import type { IFocusZoneProps } from '../../FocusZone';
+import type { IComponentAs } from '../../Utilities';
+import type { IButtonProps } from '../../Button';
 
 /**
  * {@docCategory Pivot}
@@ -69,6 +71,11 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
   linkFormat?: PivotLinkFormatType;
 
   /**
+   * Aria label for the overflow button, used if `overflowBehavior` is "menu".
+   */
+  overflowAriaLabel?: string;
+
+  /**
    * Overflow behavior when there is not enough room to display all of the links/tabs
    * * none: Pivot links will overflow the container and may not be visible
    * * menu: Display an overflow menu that contains the tabs that don't fit
@@ -76,6 +83,11 @@ export interface IPivotProps extends React.HTMLAttributes<HTMLDivElement>, React
    * @default none
    */
   overflowBehavior?: 'none' | 'menu';
+
+  /**
+   * Custom component for the overflow button.
+   */
+  overflowButtonAs?: IComponentAs<IButtonProps>;
 
   /**
    * Whether to skip rendering the tabpanel with the content of the selected tab.

@@ -1,10 +1,10 @@
 import { Customizations, getWindow } from '@fluentui/utilities';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
-import { createTheme } from '@fluentui/theme/lib/createTheme';
+import { createTheme } from '@fluentui/theme';
 import type { ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import type { IRawStyle } from '@fluentui/merge-styles';
 
-export { createTheme } from '@fluentui/theme/lib/createTheme';
+export { createTheme } from '@fluentui/theme';
 
 let _theme: ITheme = createTheme({});
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];

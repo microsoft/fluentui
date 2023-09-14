@@ -76,6 +76,7 @@ Next, create a `webpack.config.js` file in the root of your project folder with 
 
 ```js
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const path = require('path');
 
 module.exports = function (env, { mode }) {
   const production = mode === 'production';
@@ -87,6 +88,7 @@ module.exports = function (env, { mode }) {
     },
     output: {
       filename: 'bundle.js',
+      publicPath: '/',
     },
     resolve: {
       extensions: ['.ts', '.js'],
@@ -95,9 +97,13 @@ module.exports = function (env, { mode }) {
     devServer: {
       port: 9000,
       historyApiFallback: true,
-      writeToDisk: true,
       open: !process.env.CI,
-      lazy: false,
+      devMiddleware: {
+        writeToDisk: true,
+      },
+      static: {
+        directory: path.join(__dirname, './'),
+      },
     },
     plugins: [new CleanWebpackPlugin()],
     module: {
@@ -154,9 +160,9 @@ With all the basic pieces in place, let's run our app in dev mode with `npm run 
 First, open your `src/main.ts` file and add the following code:
 
 ```ts
-import { provideFluentDesignSystem, fastCard, fastButton } from '@fluentui/web-components';
+import { provideFluentDesignSystem, fluentCard, fluentButton } from '@fluentui/web-components';
 
-provideFluentDesignSystem().register(fastCard(), fastButton());
+provideFluentDesignSystem().register(fluentCard(), fluentButton());
 ```
 
 This code uses the Fluent Design System to register the `<fluent-card>` and `<fluent-button>` components. Once you save, the dev server will rebuild and refresh your browser. However, you still won't see anything. To get some UI showing up, we need to write some HTML that uses our components. Replace the contents of the `<body>` in your `index.html` file with the following markup:

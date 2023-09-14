@@ -3,5 +3,5 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { AnnouncedSearchResultsPageProps } from './AnnouncedSearchResultsPage.doc';
 
 export const AnnouncedSearchResultsPage: React.FunctionComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...AnnouncedSearchResultsPageProps[props.platform]} />;
+  return <ControlsAreaPage {...props} {...AnnouncedSearchResultsPageProps[props.platform!]} />;
 };

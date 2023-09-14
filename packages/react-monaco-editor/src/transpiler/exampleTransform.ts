@@ -87,10 +87,10 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
 
   let lines = [code];
 
-  // Generate Fabric wrapper stuff for the component if appropriate
+  // Generate ThemeProvider wrapper stuff for the component if appropriate
   let finalComponent = component;
   if (identifiersByGlobal.FluentUIReact) {
-    // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed),
+    // If this is a Fluent UI React example, wrap in a <ThemeProvider> (adding an import for that if needed),
     // and initialize icons in case the example uses them.
     finalComponent = component + 'Wrapper';
 

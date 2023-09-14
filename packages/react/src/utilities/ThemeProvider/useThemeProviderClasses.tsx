@@ -5,6 +5,7 @@ import { makeStyles } from './makeStyles';
 import type { ThemeProviderState } from './ThemeProvider.types';
 import type { Theme } from '@fluentui/theme';
 
+// eslint-disable-next-line deprecation/deprecation
 const useThemeProviderStyles = makeStyles((theme: Theme) => {
   const { semanticColors, fonts } = theme;
 

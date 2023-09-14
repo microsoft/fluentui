@@ -15,13 +15,13 @@ import {
 import { Accessibility } from '@fluentui/accessibility';
 import { Reaction, ReactionProps } from './Reaction';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useFluentContext,
   useAccessibility,
   useTelemetry,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface ReactionGroupProps extends UIComponentProps, ChildrenComponentProps, ContentComponentProps {
@@ -41,8 +41,7 @@ export type ReactionGroupStylesProps = never;
 /**
  * A ReactionGroup groups multiple Reaction elements.
  */
-export const ReactionGroup: ComponentWithAs<'div', ReactionGroupProps> &
-  FluentComponentStaticProps<ReactionGroupProps> = props => {
+export const ReactionGroup = React.forwardRef<HTMLDivElement, ReactionGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ReactionGroup.displayName, context.telemetry);
   setStart();
@@ -70,6 +69,7 @@ export const ReactionGroup: ComponentWithAs<'div', ReactionGroupProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children, content] })}
@@ -91,7 +91,8 @@ export const ReactionGroup: ComponentWithAs<'div', ReactionGroupProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ReactionGroupProps> &
+  FluentComponentStaticProps<ReactionGroupProps>;
 
 ReactionGroup.displayName = 'ReactionGroup';
 

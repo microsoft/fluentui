@@ -1,4 +1,4 @@
-import { SELECTION_CHANGE, SelectionMode } from './Selection.types';
+import { SELECTION_CHANGE, SelectionMode, SELECTION_ITEMS_CHANGE } from './Selection.types';
 import { EventGroup } from '../EventGroup';
 import type { IObjectWithKey, ISelection } from './Selection.types';
 
@@ -7,6 +7,7 @@ import type { IObjectWithKey, ISelection } from './Selection.types';
  */
 export interface ISelectionOptions<TItem = IObjectWithKey> {
   onSelectionChanged?: () => void;
+  onItemsChanged?: () => void;
   /** Custom logic to generate item keys. Required if `TItem` does not have a `key` property. */
   getKey?: (item: TItem, index?: number) => string | number;
   canSelectItem?: (item: TItem, index?: number) => boolean;
@@ -42,6 +43,7 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
   private _keyToIndexMap!: { [key: string]: number };
   private _anchoredIndex: number;
   private _onSelectionChanged: (() => void) | undefined;
+  private _onItemsChanged: (() => void) | undefined;
   private _hasChanged!: boolean;
   private _unselectableIndices!: { [index: string]: boolean };
   private _unselectableCount: number;
@@ -57,8 +59,14 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       ? [] | [ISelectionOptions<TItem>] // Then the arguments can be empty or have the options without `getKey`
       : [ISelectionOptionsWithRequiredGetKey<TItem>] // Otherwise, arguments require options with `getKey`.
   ) {
-    const { onSelectionChanged, getKey, canSelectItem = () => true, items, selectionMode = SelectionMode.multiple } =
-      options[0] || ({} as ISelectionOptions<TItem>);
+    const {
+      onSelectionChanged,
+      onItemsChanged,
+      getKey,
+      canSelectItem = () => true,
+      items,
+      selectionMode = SelectionMode.multiple,
+    } = options[0] || ({} as ISelectionOptions<TItem>);
 
     this.mode = selectionMode;
 
@@ -70,7 +78,9 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     this._unselectableCount = 0;
 
     this._onSelectionChanged = onSelectionChanged;
+    this._onItemsChanged = onItemsChanged;
     this._canSelectItem = canSelectItem;
+    this._keyToIndexMap = {};
 
     this._isModal = false;
 
@@ -141,6 +151,8 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     // Reset the unselectable count.
     this._unselectableCount = 0;
 
+    let haveItemsChanged = false;
+
     // Build lookup table for quick selection evaluation.
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
@@ -149,6 +161,10 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
         const key = this.getKey(item, i);
 
         if (key) {
+          if (!haveItemsChanged && (!(key in this._keyToIndexMap) || this._keyToIndexMap[key] !== i)) {
+            haveItemsChanged = true;
+          }
+
           newKeyToIndexMap[key] = i;
         }
       }
@@ -191,6 +207,15 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
       hasSelectionChanged = true;
     }
 
+    if (!haveItemsChanged) {
+      for (const key of Object.keys(this._keyToIndexMap)) {
+        if (!(key in newKeyToIndexMap)) {
+          haveItemsChanged = true;
+          break;
+        }
+      }
+    }
+
     this._exemptedIndices = newExemptedIndicies;
     this._exemptedCount = newExemptedCount;
     this._keyToIndexMap = newKeyToIndexMap;
@@ -200,6 +225,17 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
 
     if (hasSelectionChanged) {
       this._updateCount();
+    }
+
+    if (haveItemsChanged) {
+      EventGroup.raise(this, SELECTION_ITEMS_CHANGE);
+
+      if (this._onItemsChanged) {
+        this._onItemsChanged();
+      }
+    }
+
+    if (hasSelectionChanged) {
       this._change();
     }
 
@@ -250,6 +286,12 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     }
 
     return this._selectedIndices;
+  }
+
+  public getItemIndex(key: string): number {
+    const index = this._keyToIndexMap[key];
+
+    return index ?? -1;
   }
 
   public isRangeSelected(fromIndex: number, count: number): boolean {
@@ -373,8 +415,68 @@ export class Selection<TItem = IObjectWithKey> implements ISelection<TItem> {
     this.setChangeEvents(true);
   }
 
+  public setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void {
+    if (this.mode === SelectionMode.none) {
+      return;
+    }
+
+    // Clamp the index.
+    fromIndex = Math.min(Math.max(0, fromIndex), this._items.length - 1);
+
+    // Clamp the range.
+    count = Math.min(Math.max(0, count), this._items.length - fromIndex);
+
+    // No-op on out of bounds selections.
+    if (fromIndex < 0 || fromIndex >= this._items.length || count === 0) {
+      return;
+    }
+
+    this.setChangeEvents(false);
+
+    const anchorIndex = this._anchoredIndex || 0;
+    let startIndex = fromIndex;
+    const endIndex = fromIndex + count - 1;
+
+    const newAnchorIndex = anchorIndex >= endIndex ? startIndex : endIndex;
+
+    for (; startIndex <= endIndex; startIndex++) {
+      this.setIndexSelected(startIndex, isSelected, shouldAnchor ? startIndex === newAnchorIndex : false);
+    }
+
+    this.setChangeEvents(true);
+  }
+
   public selectToKey(key: string, clearSelection?: boolean): void {
     this.selectToIndex(this._keyToIndexMap[key], clearSelection);
+  }
+
+  public selectToRange(fromIndex: number, count: number, clearSelection?: boolean): void {
+    if (this.mode === SelectionMode.none) {
+      return;
+    }
+
+    if (this.mode === SelectionMode.single) {
+      if (count === 1) {
+        this.setIndexSelected(fromIndex, true, true);
+      }
+      return;
+    }
+
+    const anchorIndex = this._anchoredIndex || 0;
+    let startIndex = Math.min(fromIndex, anchorIndex);
+    const endIndex = Math.max(fromIndex + count - 1, anchorIndex);
+
+    this.setChangeEvents(false);
+
+    if (clearSelection) {
+      this._setAllSelected(false, true);
+    }
+
+    for (; startIndex <= endIndex; startIndex++) {
+      this.setIndexSelected(startIndex, true, false);
+    }
+
+    this.setChangeEvents(true);
   }
 
   public selectToIndex(index: number, clearSelection?: boolean): void {

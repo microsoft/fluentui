@@ -1,10 +1,8 @@
 import * as React from 'react';
 import * as monaco from '@fluentui/monaco-editor';
-import { TypeScriptWorker } from '@fluentui/monaco-editor/monaco-typescript.d';
 import { getWindow } from '@fluentui/react/lib/Utilities';
 import { transformExample } from './exampleTransform';
 import { _getErrorMessages } from './transpileHelpers';
-import type { EmitOutput } from '@fluentui/monaco-editor/monaco-typescript.d';
 import type { IMonacoTextModel, IBasicPackageGroup, ITransformedCode, ITransformedExample } from '../interfaces/index';
 
 const win = getWindow() as
@@ -23,9 +21,9 @@ export function transpile(model: IMonacoTextModel): Promise<ITransformedCode> {
   const filename = model.uri.toString();
   return monaco.languages.typescript
     .getTypeScriptWorker()
-    .then((getWorker: (uri: monaco.Uri) => Promise<TypeScriptWorker>) => getWorker(model.uri))
+    .then(getWorker => getWorker(model.uri))
     .then(worker => {
-      return worker.getEmitOutput(filename).then((output: EmitOutput) => {
+      return worker.getEmitOutput(filename).then(output => {
         // Get diagnostics to find out if there were any syntax errors (there's also getSemanticDiagnostics
         // for type errors etc, but it may be better to allow the user to just find and fix those
         // via intellisense rather than blocking compilation, since they may be non-fatal)
@@ -74,36 +72,32 @@ export function transpileAndEval(
 ): Promise<ITransformedExample> {
   const exampleTs = model.getValue();
   return transpile(model)
-    .then(
-      (transpileOutput: ITransformedCode): ITransformedExample => {
-        if (transpileOutput.error) {
-          return transpileOutput;
-        }
+    .then((transpileOutput: ITransformedCode): ITransformedExample => {
+      if (transpileOutput.error) {
+        return transpileOutput;
+      }
 
-        /* eslint-disable no-eval */
-        const transformedExample = transformExample({
-          tsCode: exampleTs,
-          jsCode: transpileOutput.output,
-          returnFunction: true,
-          supportedPackages,
-        });
-        if (transformedExample.output) {
-          return {
-            ...transformedExample,
-            // Pass in the right React in case there's a different global one on the page...
-            component: eval(transformedExample.output)(React),
-          };
-        } else {
-          return { error: transformedExample.error || 'Unknown error transforming example' };
-        }
-      },
-    )
-    .catch(
-      (err: string | Error): ITransformedExample => {
-        // Log the error to the console so people can see the full stack/etc if they want
-        // eslint-disable-next-line no-console
-        console.error(err);
-        return { error: typeof err === 'string' ? err : err.message };
-      },
-    );
+      /* eslint-disable no-eval */
+      const transformedExample = transformExample({
+        tsCode: exampleTs,
+        jsCode: transpileOutput.output,
+        returnFunction: true,
+        supportedPackages,
+      });
+      if (transformedExample.output) {
+        return {
+          ...transformedExample,
+          // Pass in the right React in case there's a different global one on the page...
+          component: eval(transformedExample.output)(React),
+        };
+      } else {
+        return { error: transformedExample.error || 'Unknown error transforming example' };
+      }
+    })
+    .catch((err: string | Error): ITransformedExample => {
+      // Log the error to the console so people can see the full stack/etc if they want
+      // eslint-disable-next-line no-console
+      console.error(err);
+      return { error: typeof err === 'string' ? err : err.message };
+    });
 }

@@ -1,73 +1,74 @@
 const path = require('path');
 const fs = require('fs');
-const { TsconfigPathsPlugin } = require('tsconfig-paths-webpack-plugin');
+
+const { loadWorkspaceAddon, registerTsPaths, registerRules, rules } = require('@fluentui/scripts-storybook');
+
+const tsConfigPath = path.resolve(__dirname, '../tsconfig.base.json');
 
 /**
- *  @callback StorybookWebpackConfig
- *  @param {import("webpack").Configuration} config
- *  @param {{configType: 'DEVELOPMENT' | 'PRODUCTION'}} options - change the build configuration. 'PRODUCTION' is used when building the static version of storybook.
- *  @returns {import("webpack").Configuration}
- */
-
-/**
- *  @typedef {{
- *    check:boolean;
- *    checkOptions: Record<string,unknown>;
- *    reactDocgen: string | boolean;
- *    reactDocgenTypescriptOptions: Record<string,unknown>
- *  }} StorybookTsConfig
- */
-
-/**
- *  @typedef {{
- *    stories: string[];
- *    addons: string[];
- *    typescript: StorybookTsConfig;
- *    babel: (options:Record<string,unknown>)=>Promise<Record<string,unknown>>;
- *    webpackFinal: StorybookWebpackConfig;
- *    core: {builder:'webpack5'};
- *    previewHead: (head: string) => string
- * }} StorybookConfig
- */
-
-/**
- * @typedef  {{loader: string; options: { [index: string]: any }}} LoaderObjectDef
+ * @typedef {import('@storybook/core-common').StorybookConfig} StorybookBaseConfig
+ *
+ * @typedef {{
+ *   babel: (options: Record<string, unknown>) => Promise<Record<string, unknown>>;
+ *   previewHead: (head: string) => string;
+ * }} StorybookExtraConfig
+ *
+ * @typedef {StorybookBaseConfig &
+ *   Required<Pick<StorybookBaseConfig, 'stories' | 'addons' | 'webpackFinal'>> &
+ *   StorybookExtraConfig
+ * } StorybookConfig
  */
 
 const previewHeadTemplate = fs.readFileSync(path.resolve(__dirname, 'preview-head-template.html'), 'utf8');
 
 module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
+  features: {
+    // Enables code splitting
+    storyStoreV7: true,
+  },
   stories: [],
   addons: [
-    '@storybook/addon-essentials',
-    '@storybook/addon-a11y',
-    '@storybook/addon-knobs/preset',
-    'storybook-addon-performance',
-    'storybook-addon-export-to-codesandbox',
-  ],
-  webpackFinal: config => {
-    const tsPaths = new TsconfigPathsPlugin({
-      configFile: path.resolve(__dirname, '../tsconfig.base.json'),
-    });
-
-    if (config.resolve) {
-      config.resolve.plugins ? config.resolve.plugins.push(tsPaths) : (config.resolve.plugins = [tsPaths]);
-    }
-
-    if (config.module && config.module.rules) {
-      overrideDefaultBabelLoader(/** @type {import("webpack").RuleSetRule[]} */ (config.module.rules));
-
-      config.module.rules.unshift({
-        test: /\.stories\.tsx$/,
-        exclude: /node_modules/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            plugins: [require('storybook-addon-export-to-codesandbox').babelPlugin],
+    {
+      name: 'storybook-addon-swc',
+      options: /** @type {import('storybook-addon-swc').StoryBookAddonSwcOptions} */ ({
+        swcLoaderOptions: {
+          jsc: {
+            target: 'es2019',
+            parser: {
+              syntax: 'typescript',
+              tsx: true,
+              decorators: true,
+              dynamicImport: true,
+            },
+            transform: {
+              decoratorMetadata: true,
+              legacyDecorator: true,
+            },
+            keepClassNames: true,
+            externalHelpers: true,
+            loose: true,
           },
         },
-      });
-    }
+        swcMinifyOptions: { mangle: false },
+      }),
+    },
+    '@storybook/addon-essentials',
+    '@storybook/addon-a11y',
+    '@storybook/addon-links',
+    '@storybook/addon-knobs/preset',
+    'storybook-addon-performance',
+
+    // external custom addons
+
+    // internal monorepo custom addons
+
+    /**  @see ../packages/react-components/react-storybook-addon */
+    loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath }),
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-codesandbox', { tsConfigPath }),
+  ],
+  webpackFinal: config => {
+    registerTsPaths({ config, configFile: tsConfigPath });
+    registerRules({ config, rules: [rules.codesandboxRule] });
 
     if ((process.env.CI || process.env.TF_BUILD || process.env.LAGE_PACKAGE_NAME) && config.plugins) {
       // Disable ProgressPlugin in PR/CI builds to reduce log verbosity (warnings and errors are still logged)
@@ -78,6 +79,8 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
   },
   core: {
     builder: 'webpack5',
+    lazyCompilation: true,
+    disableTelemetry: true,
   },
   /**
    * Programmatically enhance previewHead as inheriting just static file `preview-head.html` doesn't work in monorepo
@@ -85,35 +88,3 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
    */
   previewHead: head => head + previewHeadTemplate,
 });
-
-/**
- * This is a temporary quick-fix solution. Remove this once we'll came up with robust solution - @see https://github.com/microsoft/fluentui/issues/18775
- *
- * Note: this function mutates rules argument
- *
- * @param {import("webpack").RuleSetRule[]} rules
- */
-function overrideDefaultBabelLoader(rules) {
-  const customLoaderPath = path.resolve(__dirname, './custom-loader.js');
-  const ruleIdx = rules.findIndex(rule => {
-    return String(/** @type {import("webpack").RuleSetRule}*/ (rule).test) === '/\\.(mjs|tsx?|jsx?)$/';
-  });
-
-  const rule = /** @type {import("webpack").RuleSetRule}*/ (rules[ruleIdx]);
-
-  if (!Array.isArray(rule.use)) {
-    throw new Error('storybook webpack rules changed');
-  }
-
-  const loaderIdx = rule.use.findIndex(loaderConfig => {
-    return /** @type {LoaderObjectDef} */ (loaderConfig).loader.includes('babel-loader');
-  });
-
-  const loader = /** @type {LoaderObjectDef}*/ (rule.use[loaderIdx]);
-
-  if (!Object.prototype.hasOwnProperty.call(loader, 'options')) {
-    throw new Error('storybook webpack rules changed');
-  }
-
-  loader.options.customize = customLoaderPath;
-}

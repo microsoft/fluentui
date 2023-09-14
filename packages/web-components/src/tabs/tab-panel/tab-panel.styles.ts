@@ -1,6 +1,7 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { bodyFont, density, designUnit, typeRampMinus1FontSize, typeRampMinus1LineHeight } from '../../design-tokens';
+import { density, designUnit } from '../../design-tokens';
+import { typeRampBase } from '../../styles/patterns/type-ramp';
 
 export const tabPanelStyles: (
   context: ElementDefinitionContext,
@@ -8,10 +9,7 @@ export const tabPanelStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) => css`
   ${display('block')} :host {
     box-sizing: border-box;
-    font-family: ${bodyFont};
-    font-size: ${typeRampMinus1FontSize};
-    font-weight: 400;
-    line-height: ${typeRampMinus1LineHeight};
+    ${typeRampBase}
     padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
   }
 `;

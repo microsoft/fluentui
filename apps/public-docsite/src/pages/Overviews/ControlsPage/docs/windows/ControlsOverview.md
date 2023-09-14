@@ -4,4 +4,4 @@ To build Fluent experiences on Windows using WinUI controls, please see our [Win
 
 ### Fluent UI React Native
 
-To build Fluent experiences on Windows using Fluent UI React Native, please see our [Cross-platform Controls page](#/controls/crossplatform).
+To build Fluent experiences on Windows using Fluent UI React Native, please see our [Cross-platform Controls page](#/controls/cross).

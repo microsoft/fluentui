@@ -1,0 +1,147 @@
+import { Meta, Source } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Developer/Theming" />
+
+# Theming
+
+The Fluent UI Theme is represented by a set of tokens. Each token resolves to a single value which can be assigned to a CSS property.
+
+```tsx
+const exampleTheme = {
+  borderRadiusSmall: '2px',
+  //...
+  colorNeutralForeground2: '#424242',
+};
+```
+
+You can browse all the available tokens in **[Theme](/docs/theme-colors--page)** section of the docs.
+
+## How theme is applied
+
+No matter what theme is used, the component styles are always the same. The only way to change the component styling is through theme tokens which can be used in style values.
+
+Those tokens are resolved to CSS variables. The `FluentProvider` component is responsible for setting the values of the CSS variables in DOM and changing them when the theme changes. When the theme is switched, only the variables are changed, all styles remain the same.
+
+Place a `<FluentProvider />` at the root of your app and pass a theme to the `theme` prop. The provider will render a `div` and set all tokens as CSS variables on that element. The provider also propagates CCS variables to React portals created with [Portal component](?path=/docs/components-portal--default).
+
+```jsx
+import { FluentProvider, teamsLightTheme } from '@fluentui/react-components';
+
+export const AppRoot = ({children}) => (
+  <FluentProvider theme={teamsLightTheme}>
+    {children}
+  </FluentProvider>,
+);
+```
+
+Import `tokens` to style a component using `makeStyles`
+
+```jsx
+import { tokens } from '@fluentui/react-theme';
+
+const useStyles = makeStyles({
+  root: { display: 'flex' },
+  rootPrimary: { color: tokens.colorNeutralForeground3 },
+});
+
+export Component = props => {
+  const classes = useStyles();
+
+  return <div className={mergeClasses('ui-component', classes.root, props.primary && classes.rootPrimary)} />;
+}
+```
+
+For more details, see [Styling components](?path=/docs/concepts-developer-styling-components--page).
+
+### Do not use CSS variables directly
+
+**⚠ Never use theme CSS variables directly!** The CSS variables implementation of the theme is internal to the library. We might eventually decide to change the variable names, hash them or even use direct values instead of some variables. Always use the `tokens` to access the theme.
+
+## Available themes
+
+Fluent UI currently exports following themes:
+
+- Web Light (`webLightTheme`)
+- Web Dark (`webDarkTheme`)
+- Teams Light (`teamsLightTheme`)
+- Teams Dark (`teamsDarkTheme`)
+- Teams High Contrast (`teamsHighContrastTheme`)
+
+### High contrast themes
+
+⚠ Do not use High Contrast themes! All Fluent UI components support Windows High Contrast mode automatically regardless of the active theme.
+Windows high contrast mode is the recommended high contrast platform for all customers using Fluent UI.
+
+Hardcoded High Contrast themes are considered legacy, to be used only in applications which explicitly support those.
+
+## Customizing the theme
+
+Applications can customize a theme in multiple ways.
+
+### Custom Brand ramp
+
+The brand ramp is a color ramp going from dark to light colors:
+
+<img src={require('../../public/brand-ramp-example.png')} alt="Example of a brand ramp" />
+
+A theme is derived from a brand ramp. To use a theme with a custom brand ramp, instead of importing a predefined theme, you can use theme factory functions.
+
+The following factory functions are available:
+
+- `createLightTheme()`
+- `createDarkTheme()`
+- `createTeamsDarkTheme()`
+- `createHighContrastTheme()`
+
+```tsx
+import { BrandVariants, createLightTheme, createDarkTheme } from '@fluentui/react-components';
+
+const customBrandRamp: BrandVariants = {
+  10: '#008',
+  //...
+  160: '#88F',
+};
+
+export const customLightTheme = createLightTheme(customBrandRamp);
+export const customDarkTheme = createDarkTheme(customBrandRamp);
+```
+
+### Overriding existing tokens
+
+⚠️ If the existing tokens do not fulfill your needs, you should talk to your designer instead of overriding tokens.
+
+A theme is a flat object containing `{ [token name]: CSS value }` pairs. You can copy the object and overwrite any tokens you wish.
+
+```tsx
+import { webLightTheme, Theme } from '@fluentui/react-components';
+
+export const customLightTheme: Theme = {
+  ...webLightTheme,
+  colorNeutralForeground1: '#555', // overriden token
+};
+```
+
+### Extending theme with new tokens
+
+Similarly to overriding existing tokens, you can add custom tokens as well.
+
+⚠ Components which use custom tokens cannot be shared between applications. Keep in mind that any application which uses a component with custom tokens must also add the custom tokens to its own themes. Instead of adding custom tokens inside potentially reusable components, you should talk to design.
+
+```tsx
+import { webLightTheme, Theme } from '@fluentui/react-components';
+
+export const customLightTheme: Theme & { customSpacingVerticalHuge: string } = {
+  ...webLightTheme,
+  customSpacingVerticalHuge: '128px',
+};
+```
+
+To use the tokens in styles, one is supposed to import `tokens`. Obviously that object would not contain any custom tokens. For that reason you can use `themeToTokensObject()` utility which will create the tokens object with the custom tokens.
+
+⚠ Keep in mind that the object generated by the `themeToTokensObject()` will contain all the tokens and will not be tree-shakeable.
+
+```tsx
+import { themeToTokensObject } from '@fluentui/react-components';
+
+export const customTokens = themeToTokensObject(customLightTheme);
+```

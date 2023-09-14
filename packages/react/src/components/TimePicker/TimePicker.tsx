@@ -1,30 +1,41 @@
 import * as React from 'react';
 import { KeyCodes } from '../../Utilities';
-import { TimeConstants, addMinutes, formatTimeString, ceilMinuteToIncrement } from '@fluentui/date-time-utilities';
+import {
+  TimeConstants,
+  addMinutes,
+  formatTimeString,
+  ceilMinuteToIncrement,
+  getDateFromTimeSelection,
+} from '@fluentui/date-time-utilities';
 import { ComboBox } from '../../ComboBox';
+import { format } from '../../Utilities';
 import type { IComboBox, IComboBoxOption } from '../../ComboBox';
 import type { ITimePickerProps, ITimeRange, ITimePickerStrings } from './TimePicker.types';
+import { useControllableValue, useConst } from '@fluentui/react-hooks';
 
-const REGEX_SHOW_SECONDS_HOUR_12 = /((1[0-2]|0?[1-9]):([0-5][0-9]):(?:[0-5]\d) ?([AaPp][Mm]))$/;
-const REGEX_HIDE_SECONDS_HOUR_12 = /((1[0-2]|0?[1-9]):([0-5][0-9]) ?([AaPp][Mm]))$/;
-const REGEX_SHOW_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d):(?:[0-5]\d)$/;
-const REGEX_HIDE_SECONDS_HOUR_24 = /([0-9]|0[0-9]|1[0-9]|2[0-3]):(?:[0-5]\d)$/;
+const REGEX_SHOW_SECONDS_HOUR_12 = /^((1[0-2]|0?[1-9]):([0-5][0-9]):([0-5][0-9])\s([AaPp][Mm]))$/;
+const REGEX_HIDE_SECONDS_HOUR_12 = /^((1[0-2]|0?[1-9]):[0-5][0-9]\s([AaPp][Mm]))$/;
+const REGEX_SHOW_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
+const REGEX_HIDE_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
 
 const TIME_LOWER_BOUND = 0;
 const TIME_UPPER_BOUND = 23;
 
 const getDefaultStrings = (useHour12: boolean, showSeconds: boolean): ITimePickerStrings => {
-  let errorMessageToDisplay = '';
   const hourUnits = useHour12 ? '12-hour' : '24-hour';
-  showSeconds
-    ? (errorMessageToDisplay = `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm:ss A.`)
-    : (errorMessageToDisplay = `TimePicker format must be valid and in the ${hourUnits} ` + `format hh:mm A.`);
+  const timeFormat = `hh:mm${showSeconds ? ':ss' : ''}${useHour12 ? ' AP' : ''}`;
+  const invalidInputErrorMessage = `Enter a valid time in the ${hourUnits} format: ${timeFormat}`;
+  const timeOutOfBoundsErrorMessage = `Please enter a time within the range of {0} and {1}`;
 
   return {
-    invalidInputErrorMessage: errorMessageToDisplay,
+    invalidInputErrorMessage,
+    timeOutOfBoundsErrorMessage,
   };
 };
 
+/**
+ * {@docCategory TimePicker}
+ */
 export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   label,
   increments = 30,
@@ -33,42 +44,69 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
   useHour12 = false,
   timeRange,
   strings = getDefaultStrings(useHour12, showSeconds),
+  defaultValue,
+  value,
+  dateAnchor,
+  onChange,
   onFormatDate,
   onValidateUserInput,
-  onChange,
+  onValidationResult,
   ...rest
 }: ITimePickerProps) => {
-  const [userText, setUserText] = React.useState<string>('');
+  const [comboBoxText, setComboBoxText] = React.useState<string>('');
+  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined | null>();
   const [errorMessage, setErrorMessage] = React.useState<string>('');
 
+  const fallbackDateAnchor = useConst(new Date());
+
+  const [selectedTime, setSelectedTime] = useControllableValue(value, defaultValue);
+
   const optionsCount = getDropdownOptionsCount(increments, timeRange);
+
+  const internalDateAnchor = dateAnchor || value || defaultValue || fallbackDateAnchor;
+
+  const dateStartAnchor = React.useMemo(
+    () => getDateAnchor(internalDateAnchor, 'start', increments, timeRange),
+    [internalDateAnchor, increments, timeRange],
+  );
+
+  const dateEndAnchor = React.useMemo(
+    () => getDateAnchor(internalDateAnchor, 'end', increments, timeRange),
+    [internalDateAnchor, increments, timeRange],
+  );
 
   const timePickerOptions: IComboBoxOption[] = React.useMemo(() => {
     const optionsList = Array(optionsCount);
     for (let i = 0; i < optionsCount; i++) {
       optionsList[i] = 0;
     }
-    const defaultTime = generateDefaultTime(increments, timeRange);
 
     return optionsList.map((_, index) => {
-      const option = addMinutes(defaultTime, increments * index);
+      const option: Date = addMinutes(dateStartAnchor, increments * index);
       option.setSeconds(0);
-      const optionText = onFormatDate ? onFormatDate(option) : formatTimeString(option, showSeconds, useHour12);
+      const formattedTimeString = formatTimeString(option, showSeconds, useHour12);
+      const optionText = onFormatDate ? onFormatDate(option) : formattedTimeString;
       return {
-        key: optionText,
+        key: formattedTimeString,
         text: optionText,
+        data: option,
       };
     });
-  }, [timeRange, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
+  }, [dateStartAnchor, increments, optionsCount, showSeconds, onFormatDate, useHour12]);
 
-  const [selectedKey, setSelectedKey] = React.useState<string | number | undefined>(timePickerOptions[0].key);
+  React.useEffect(() => {
+    if (selectedTime && !isNaN(selectedTime.valueOf())) {
+      const formattedTimeString = formatTimeString(selectedTime, showSeconds, useHour12);
+      const comboboxOption = timePickerOptions.find((option: IComboBoxOption) => option.key === formattedTimeString);
+      setSelectedKey(comboboxOption?.key);
+      setComboBoxText(comboboxOption ? comboboxOption.text : formattedTimeString);
+    } else {
+      setSelectedKey(null);
+    }
+  }, [selectedTime, timePickerOptions, onFormatDate, showSeconds, useHour12]);
 
   const onInputChange = React.useCallback(
-    (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string): void => {
-      if (onChange) {
-        onChange(event, option, index, value);
-      }
-
+    (ev: React.FormEvent<IComboBox>, option?: IComboBoxOption, _index?: number, input?: string): void => {
       const validateUserInput = (userInput: string): string => {
         let errorMessageToDisplay = '';
         let regex: RegExp;
@@ -79,55 +117,90 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
         }
         if (!regex.test(userInput)) {
           errorMessageToDisplay = strings.invalidInputErrorMessage;
+        } else if (timeRange && strings.timeOutOfBoundsErrorMessage) {
+          const optionDate: Date = getDateFromTimeSelection(useHour12, dateStartAnchor, userInput);
+          if (optionDate < dateStartAnchor || optionDate > dateEndAnchor) {
+            errorMessageToDisplay = format(
+              strings.timeOutOfBoundsErrorMessage,
+              dateStartAnchor.toString(),
+              dateEndAnchor.toString(),
+            );
+          }
         }
         return errorMessageToDisplay;
       };
 
-      const key = option?.key;
-      let updatedUserText = '';
       let errorMessageToDisplay = '';
-      if (value) {
+      if (input) {
         if (allowFreeform && !option) {
           if (!onFormatDate) {
             // Validate only if user did not add onFormatDate
-            errorMessageToDisplay = validateUserInput(value);
+            errorMessageToDisplay = validateUserInput(input);
           } else {
             // Use user provided validation if onFormatDate is provided
             if (onValidateUserInput) {
-              errorMessageToDisplay = onValidateUserInput(value);
+              errorMessageToDisplay = onValidateUserInput(input);
             }
           }
         }
-        updatedUserText = value;
-      } else if (option) {
-        updatedUserText = option.text;
       }
 
+      if (onValidationResult && errorMessage !== errorMessageToDisplay) {
+        // only call onValidationResult if stored errorMessage state value is different from latest error message
+        onValidationResult(ev, { errorMessage: errorMessageToDisplay });
+      }
+
+      let changedTime: Date;
+      if (errorMessageToDisplay || (input !== undefined && !input.length)) {
+        const timeSelection = input || option?.text || '';
+        setComboBoxText(timeSelection);
+        setSelectedTime(errorMessageToDisplay ? new Date('invalid') : undefined);
+        changedTime = new Date('invalid');
+      } else {
+        let updatedTime;
+        if (option?.data instanceof Date) {
+          updatedTime = option.data;
+        } else {
+          const timeSelection = (option?.key as string) || input || '';
+          updatedTime = getDateFromTimeSelection(useHour12, dateStartAnchor, timeSelection);
+        }
+        setSelectedTime(updatedTime);
+        changedTime = updatedTime;
+      }
+
+      onChange?.(ev, changedTime);
       setErrorMessage(errorMessageToDisplay);
-      setUserText(updatedUserText);
-      setSelectedKey(key);
     },
     [
+      timeRange,
+      dateStartAnchor,
+      dateEndAnchor,
       allowFreeform,
       onFormatDate,
       onValidateUserInput,
       showSeconds,
       useHour12,
-      onChange,
       strings.invalidInputErrorMessage,
+      strings.timeOutOfBoundsErrorMessage,
+      setSelectedTime,
+      onValidationResult,
+      onChange,
+      errorMessage,
     ],
   );
 
   const evaluatePressedKey = (event: React.KeyboardEvent<IComboBox>) => {
+    // eslint-disable-next-line deprecation/deprecation
+    const charCode = event.charCode;
     if (
       !onFormatDate &&
       // Only permit input of digits, space, colon, A/P/M characters
       !(
-        (event.charCode >= KeyCodes.zero && event.charCode <= KeyCodes.colon) ||
-        event.charCode === KeyCodes.space ||
-        event.charCode === KeyCodes.a ||
-        event.charCode === KeyCodes.m ||
-        event.charCode === KeyCodes.p
+        (charCode >= KeyCodes.zero && charCode <= KeyCodes.colon) ||
+        charCode === KeyCodes.space ||
+        charCode === KeyCodes.a ||
+        charCode === KeyCodes.m ||
+        charCode === KeyCodes.p
       )
     ) {
       event.preventDefault();
@@ -143,13 +216,37 @@ export const TimePicker: React.FunctionComponent<ITimePickerProps> = ({
       errorMessage={errorMessage}
       options={timePickerOptions}
       onChange={onInputChange}
-      text={userText}
+      text={comboBoxText}
       //eslint-disable-next-line
       onKeyPress={evaluatePressedKey}
+      useComboBoxAsMenuWidth
     />
   );
 };
 TimePicker.displayName = 'TimePicker';
+
+const getDateAnchor = (
+  internalDateAnchor: Date,
+  startEnd: 'start' | 'end',
+  increments: number,
+  timeRange?: ITimeRange,
+) => {
+  const clampedDateAnchor = new Date(internalDateAnchor.getTime());
+  if (timeRange) {
+    const clampedTimeRange = clampTimeRange(timeRange);
+    const timeRangeHours = startEnd === 'start' ? clampedTimeRange.start : clampedTimeRange.end;
+    if (clampedDateAnchor.getHours() !== timeRangeHours) {
+      clampedDateAnchor.setHours(timeRangeHours);
+    }
+  } else if (startEnd === 'end') {
+    clampedDateAnchor.setDate(clampedDateAnchor.getDate() + 1);
+  }
+  clampedDateAnchor.setMinutes(0);
+  clampedDateAnchor.setSeconds(0);
+  clampedDateAnchor.setMilliseconds(0);
+
+  return ceilMinuteToIncrement(clampedDateAnchor, increments);
+};
 
 const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   return {
@@ -158,17 +255,7 @@ const clampTimeRange = (timeRange: ITimeRange): ITimeRange => {
   };
 };
 
-const generateDefaultTime = (increments: number, timeRange: ITimeRange | undefined) => {
-  const newDefaultTime = new Date();
-  if (timeRange) {
-    const clampedTimeRange = clampTimeRange(timeRange);
-    newDefaultTime.setHours(clampedTimeRange.start);
-  }
-
-  return ceilMinuteToIncrement(newDefaultTime, increments);
-};
-
-const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange | undefined) => {
+const getHoursInRange = (timeRange: ITimeRange | undefined) => {
   let hoursInRange = TimeConstants.HoursInOneDay;
   if (timeRange) {
     const clampedTimeRange = clampTimeRange(timeRange);
@@ -178,5 +265,11 @@ const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange | und
       hoursInRange = timeRange.end - timeRange.start;
     }
   }
+
+  return hoursInRange;
+};
+
+const getDropdownOptionsCount = (increments: number, timeRange: ITimeRange | undefined) => {
+  const hoursInRange = getHoursInRange(timeRange);
   return Math.floor((TimeConstants.MinutesInOneHour * hoursInRange) / increments);
 };

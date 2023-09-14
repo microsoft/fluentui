@@ -88,6 +88,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       cacheKey: this._computeCacheKey({
         primaryItems: [...items],
         overflow: overflowItems && overflowItems.length > 0,
+        farItems,
       }),
     };
 
@@ -192,7 +193,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSX.Element => {
     const ButtonAs = this.props.buttonAs as IComponentAs<ICommandBarItemProps> | undefined;
     const CommandBarButtonAs = item.commandBarButtonAs as IComponentAs<ICommandBarItemProps> | undefined;
-    const DefaultButtonAs = (CommandBarButton as {}) as IComponentAs<ICommandBarItemProps>;
+    const DefaultButtonAs = CommandBarButton as {} as IComponentAs<ICommandBarItemProps>;
 
     // The prop types between these three possible implementations overlap enough that a force-cast is safe.
     let Type = DefaultButtonAs;
@@ -248,8 +249,12 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     return <OverflowButtonType {...(overflowProps as IButtonProps)} />;
   };
 
-  private _computeCacheKey(data: { primaryItems?: ICommandBarItemProps[]; overflow?: boolean }): string {
-    const { primaryItems, overflow } = data;
+  private _computeCacheKey(data: {
+    primaryItems?: ICommandBarItemProps[];
+    overflow?: boolean;
+    farItems?: ICommandBarItemProps[];
+  }): string {
+    const { primaryItems, overflow, farItems } = data;
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
@@ -257,13 +262,15 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     const primaryKey = primaryItems && primaryItems.reduce(returnKey, '');
     const overflowKey = overflow ? 'overflow' : '';
+    const farKey = farItems && farItems.reduce(returnKey, '');
 
-    return [primaryKey, overflowKey].join('');
+    return [primaryKey, overflowKey, farKey].join('');
   }
 
   private _onReduceData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { shiftOnReduce, onDataReduced } = this.props;
     let { primaryItems, overflowItems, cacheKey } = data;
+    const { farItems } = data;
 
     // Use first item if shiftOnReduce, otherwise use last item
     const movedItem = primaryItems[shiftOnReduce ? 0 : primaryItems.length - 1];
@@ -275,7 +282,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
       const newData = { ...data, primaryItems, overflowItems };
-      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0 });
+      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0, farItems });
 
       if (onDataReduced) {
         onDataReduced(movedItem);
@@ -292,6 +299,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     const { shiftOnReduce, onDataGrown } = this.props;
     const { minimumOverflowItems } = data;
     let { primaryItems, overflowItems, cacheKey } = data;
+    const { farItems } = data;
     const movedItem = overflowItems[0];
 
     // Make sure that moved item exists and is not one of the original overflow items
@@ -303,7 +311,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
       const newData = { ...data, primaryItems, overflowItems };
-      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0 });
+      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0, farItems });
 
       if (onDataGrown) {
         onDataGrown(movedItem);

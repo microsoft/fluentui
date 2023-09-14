@@ -1,0 +1,414 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Toolbar Migration" />
+
+# Toolbar Migration
+
+## Overview:
+
+Before:
+
+```tsx
+import { Toolbar } from '@fluentui/react-northstar';
+const Component = () => (
+  <Toolbar
+    aria-label="Default"
+    items={[
+      {
+        icon: (
+          <BoldIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'bold',
+        kind: 'toggle',
+        active: state.bold,
+        title: 'Toggle bold',
+      },
+      {
+        icon: (
+          <ItalicIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'italic',
+        kind: 'toggle',
+        active: state.italic,
+        title: 'Toggle italic',
+      },
+      {
+        icon: (
+          <UnderlineIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'underline',
+        kind: 'toggle',
+        active: state.underline,
+        title: 'Toggle underline',
+      },
+      {
+        key: 'divider-1',
+        kind: 'divider',
+      },
+      {
+        icon: (
+          <FontSizeIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'font-size',
+        title: 'Font size',
+      },
+      {
+        icon: (
+          <RemoveFormatIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'remove-format',
+        title: 'Remove formatting',
+      },
+      {
+        key: 'divider-2',
+        kind: 'divider',
+      },
+      {
+        icon: (
+          <OutdentIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'outdent',
+        title: 'Outdent',
+      },
+      {
+        icon: (
+          <IndentIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'indent',
+        title: 'Indent',
+      },
+      {
+        key: 'divider-3',
+        kind: 'divider',
+      },
+      {
+        icon: (
+          <MoreIcon
+            {...{
+              outline: true,
+            }}
+          />
+        ),
+        key: 'more',
+        active: state.more,
+        title: 'More',
+        menu: [
+          {
+            key: 'quote',
+            content: 'Quote',
+            icon: <QuoteIcon />,
+          },
+          {
+            key: 'link',
+            content: 'Link',
+            icon: <LinkIcon />,
+            disabled: true,
+          },
+          {
+            key: 'code',
+            content: 'Code snippet',
+            icon: <CodeSnippetIcon />,
+          },
+        ],
+      },
+    ]}
+  />
+);
+```
+
+After:
+
+```tsx
+import { Toolbar, ToolbarToggleButton, ToolbarDivider, ToolbarButton } from '@fluentui/react-components';
+
+export const Component = () => {
+  <Toolbar>
+    <ToolbarToggleButton name="text" value="bold" icon={<TextBoldRegular />} />
+    <ToolbarToggleButton name="text" value="italic" icon={<TextItalicRegular />} />
+    <ToolbarToggleButton name="text" value="underline" icon={<TextUnderlineRegular />} />
+    <ToolbarDivider />
+    <ToolbarButton icon={<FontIncreaseRegular />} />
+    <ToolbarButton icon={<TextFontRegular />} />
+    <ToolbarDivider />
+    <ToolbarButton icon={<AlignLeftRegular />} />
+    <ToolbarButton icon={<AlignCenterHorizontalRegular />} />
+    <ToolbarDivider />
+    <Menu>
+      <MenuTrigger>
+        <ToolbarButton aria-label="More" icon={<MoreHorizontalFilled />} />
+      </MenuTrigger>
+
+      <MenuPopover>
+        <MenuList>
+          <MenuItem>New </MenuItem>
+          <MenuItem>New Window</MenuItem>
+          <MenuItem disabled>Open File</MenuItem>
+          <MenuItem>Open Folder</MenuItem>
+        </MenuList>
+      </MenuPopover>
+    </Menu>
+  </Toolbar>;
+};
+```
+
+## Controlled
+
+V0 only allows to set an item active in a controlled way through `active` property in a toolbar item. V9 Toolbar doesn't need that by default by can also be controlled.
+
+V9 Controlled:
+
+```javascript
+import {
+  Toolbar,
+  ToolbarToggleButton,
+  ToolbarDivider,
+  ToolbarButton
+} from '@fluentui/react-components';
+
+
+
+const Component = () => {
+  const [checkedValues, setCheckedValues] = React.useState<Record<string, string[]>>({
+    textOptions: ['bold', 'italic'],
+  });
+  const onChange: ToolbarProps['onCheckedValueChange'] = (e, { name, checkedItems }) => {
+    setCheckedValues(s => {
+      return s ? { ...s, [name]: checkedItems } : { [name]: checkedItems };
+    });
+  };
+
+  return (
+    <Toolbar checkedValues={checkedValues} onCheckedValueChange={onChange}>
+      <ToolbarToggleButton aria-label="Bold" icon={<TextBold24Regular />} name="textOptions" value="bold" />
+      <ToolbarToggleButton aria-label="Italic" icon={<TextItalic24Regular />} name="textOptions" value="italic" />
+      <ToolbarToggleButton
+        aria-label="Underline"
+        icon={<TextUnderline24Regular />}
+        name="textOptions"
+        value="underline"
+      />
+    </Toolbar>
+  );
+}
+```
+
+## How to migrate props:
+
+| `Toolbar` props           | migrate guide                                                                                                                                           |
+| ------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| as, className             | keep it as is                                                                                                                                           |
+| variables, styles, design | see [Migrate style overrides](#./Migrate-style-overrides) in this document                                                                              |
+| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page)                                                |
+| content                   | see [Migrate content prop](#./Migrate-`content`-prop) in this document                                                                                  |
+| ref, key                  | keep it as is                                                                                                                                           |
+| getOverflowItems          | REMOVED: Use @fluentui/react-overflow to render overflow items                                                                                          |
+| items                     | REMOVED: Only supports children API                                                                                                                     |
+| onOverflow                | use `isOverflowing` from `useOverflowMenu` from @fluentui/react-overflow. See [migrate overflow props](#migrate-%60overflow%60-props)                   |
+| onOverflowOpenChange      | REMOVED: handle the needed changes in the overflow component. See [migrate overflow props](#migrate-%60overflow%60-props)                               |
+| overflow                  | REMOVED: Use @fluentui/react-overflow                                                                                                                   |
+| overflowItem              | REMOVED: Should be implemented in the Overflow component that is using `useOverflowMenu`. See [migrate overflow props](#migrate-%60overflow%60-props)   |
+| overflowOpen              | REMOVED: Should be handled by the component that will be using `useOverflowMenu`                                                                        |
+| overflowSentinel          | REMOVED: Can be set as `padding` in the `Overflow` component from @fluentui/react-overflow. See [migrate overflow props](#migrate-%60overflow%60-props) |
+
+| `ToolbarItem` props | migrate guide                                                                                                       |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| as, className       | keep it as is                                                                                                       |
+| content             | see [Migrate content prop](#./Migrate-`content`-prop) in this document                                              |
+| variables, styles   | see [Migrate style overrides](#./Migrate-style-overrides) in this document                                          |
+| accessibility       | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page)            |
+| circular            | replace with `shape="circular"`                                                                                     |
+| disabled            | keep it as is                                                                                                       |
+| disabledFocusable   | keep it as is                                                                                                       |
+| fluid               | replace with `block`                                                                                                |
+| icon                | keep it as is.                                                                                                      |
+| menu                | REMOVED: use `@fluentui/react-menu`                                                                                 |
+| menuOpen            | REMOVED: use `@fluentui/react-menu`                                                                                 |
+| onMenuOpenChange    | REMOVED: use `@fluentui/react-menu`                                                                                 |
+| popup               | REMOVED: use `@fluentui/react-popover`, [see example](?path=/docs/preview-components-toolbar--default#with-popover) |
+| wrapper             | REMOVED                                                                                                             |
+
+`ToolbarCustomItem` in V9 is replaced by direct adding the content as `Toolbar` children.
+
+V0
+
+```javascript
+<Toolbar aria-label="Default">
+  <ToolbarCustomItem content={<MyFacyButton>Click Here</MyFacyButton>} />
+</Toolbar>
+```
+
+V9
+
+```javascript
+<Toolbar aria-label="Default">
+  <MyFacyButton>Click Here</MyFacyButton>
+</Toolbar>
+```
+
+Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/toolbar-migration-fluentui-iyhl1j)
+
+---
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Toolbar } from '@fluentui/react-components';
+
+export const Component = () => <Toolbar variables={{ fluid: true }} items={[{ content: 'item 1' }]} />;
+
+// in toolbar-button-styles.ts
+export const toolbarStyles = {
+  root: ({ variables: { fluid } }) => ({
+    ...(fluid && {
+      width: '100%',
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+import { Toolbar, ToolbarButton } from '@fluentui/react-components';
+
+export const Component = () => {
+  const classes = useStyles();
+  return (
+    <Toolbar className={classes.breakoutRoomsAssignmentToolbar}>
+      <ToolbarButton>Italic</ToolbarButton>
+    </Toolbar>
+  );
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  breakoutRoomsAssignmentToolbar: {
+    width: '100%',
+  },
+});
+```
+
+### Example for migrate namespaced styles, with conditional styles via `variableProps`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Toolbar, useUIProviderContext } from '@fluentui/react-components';
+
+export const Component = props => {
+  const { vars } = useUIProviderContext();
+  const { isLive } = props;
+  return <Toolbar items={['1']} variables={{ isLive: true }} />;
+};
+
+// in toolbar-styles.ts
+export default {
+  root: ({ variables: { isLive } }) => ({
+    ...(isLive && {
+      height: '100%',
+      alignItems: 'center',
+      color: isLive ? colorSchemeSilver.foreground1 : 'inherit',
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+import { Toolbar, Button, mergeClasses } from '@fluentui/react-components';
+
+export const Component = props => {
+  const classes = useStyles();
+  const { isLive } = props;
+  return (
+    <Toolbar className={mergeClasses(classes.tabItemToolbar, isLive && classes.liveTabItemToolbar)}>
+      <ToolbarButton>Italic</ToolbarButton>
+    </Toolbar>
+  );
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, shorthands, tokens } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  tabItemToolbar: {
+    height: '100%',
+    display: 'inline-flex',
+    alignItems: 'center',
+    color: 'inherit',
+  },
+  liveTabItemToolbar: {
+    color: tokens.colorPaletteSilverForeground1,
+  },
+});
+```
+
+## Migrate `overflow` props
+
+Before:
+
+```tsx
+import { Toolbar } from '@fluentui/react-components';
+const Component = () => (
+  <Toolbar
+    aria-label="Toolbar overflow menu"
+    items={toolbarItems}
+    overflow
+    overflowOpen={overflowOpen}
+    overflowItem={{
+      title: 'More',
+    }}
+    onOverflowOpenChange={(e, { overflowOpen }) => {
+      setOverflowOpen(overflowOpen);
+    }}
+    getOverflowItems={startIndex => itemData.slice(startIndex)}
+  />
+);
+```
+
+After:
+
+See [Toolbar Overflow Items example](https://react.fluentui.dev/docs/preview-components-toolbar--default#overflow-items)

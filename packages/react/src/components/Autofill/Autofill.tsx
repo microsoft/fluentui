@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { Async, getNativeProps, initializeComponentRef, inputProperties, isIE11, KeyCodes } from '../../Utilities';
+import {
+  Async,
+  getDocument,
+  getNativeProps,
+  initializeComponentRef,
+  inputProperties,
+  isIE11,
+  KeyCodes,
+} from '../../Utilities';
+import { WindowContext } from '@fluentui/react-window-provider';
 import type { IAutofill, IAutofillProps } from './Autofill.types';
 
 export interface IAutofillState {
@@ -23,6 +32,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
   public static defaultProps = {
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[],
   };
+  // need to check WindowContext to get the provided document
+  public static contextType = WindowContext;
 
   private _inputElement = React.createRef<HTMLInputElement>();
   private _autoFillEnabled = true;
@@ -95,7 +106,11 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
       return;
     }
 
+    const document = this.context?.window.document || getDocument(this._inputElement.current);
+    const isFocused = this._inputElement.current && this._inputElement.current === document?.activeElement;
+
     if (
+      isFocused &&
       this._autoFillEnabled &&
       this.value &&
       suggestedDisplayValue &&
@@ -107,8 +122,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         shouldSelectFullRange = shouldSelectFullInputValueInComponentDidUpdate();
       }
 
-      if (shouldSelectFullRange && this._inputElement.current) {
-        this._inputElement.current.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
+      if (shouldSelectFullRange) {
+        this._inputElement.current!.setSelectionRange(0, suggestedDisplayValue.length, SELECTION_BACKWARD);
       } else {
         while (
           differenceIndex < this.value.length &&
@@ -116,8 +131,8 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         ) {
           differenceIndex++;
         }
-        if (differenceIndex > 0 && this._inputElement.current) {
-          this._inputElement.current.setSelectionRange(
+        if (differenceIndex > 0) {
+          this._inputElement.current!.setSelectionRange(
             differenceIndex,
             suggestedDisplayValue.length,
             SELECTION_BACKWARD,
@@ -240,7 +255,9 @@ export class Autofill extends React.Component<IAutofillProps, IAutofillState> im
         case KeyCodes.left:
         case KeyCodes.right:
           if (this._autoFillEnabled) {
-            this.setState({ inputValue: this.props.suggestedDisplayValue || '' });
+            this.setState(prev => ({
+              inputValue: this.props.suggestedDisplayValue || prev.inputValue,
+            }));
             this._autoFillEnabled = false;
           }
           break;

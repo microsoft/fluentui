@@ -1,7 +1,6 @@
 import { Accessibility, loaderBehavior, LoaderBehaviorProps } from '@fluentui/accessibility';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
-  ComponentWithAs,
   ShorthandConfig,
   useTelemetry,
   useFluentContext,
@@ -9,6 +8,7 @@ import {
   useUnhandledProps,
   useStyles,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -26,7 +26,6 @@ import { Text, TextProps } from '../Text/Text';
 export interface LoaderSlotClassNames {
   indicator: string;
   label: string;
-  svg: string;
 }
 
 export interface LoaderProps extends UIComponentProps {
@@ -67,7 +66,6 @@ export const loaderClassName = 'ui-loader';
 export const loaderSlotClassNames: LoaderSlotClassNames = {
   indicator: `${loaderClassName}__indicator`,
   label: `${loaderClassName}__label`,
-  svg: `${loaderClassName}__svg`,
 };
 
 export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | 'size' | 'secondary'>;
@@ -78,27 +76,12 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
  * @accessibility
  * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
  */
-export const Loader: ComponentWithAs<'div', LoaderProps> &
-  FluentComponentStaticProps<LoaderProps> & {
-    shorthandConfig: ShorthandConfig<LoaderProps>;
-  } = props => {
+export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
   setStart();
-  const {
-    delay,
-    secondary,
-    label,
-    indicator,
-    svg,
-    inline,
-    labelPosition,
-    className,
-    design,
-    styles,
-    variables,
-    size,
-  } = props;
+  const { delay, secondary, label, indicator, inline, labelPosition, className, design, styles, variables, size } =
+    props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Loader.handledProps, props);
@@ -145,14 +128,18 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
     return () => clearTimeout(delayTimer.current);
   }, [delay]);
 
-  const svgElement = Box.create(svg, {
-    defaultProps: () => ({ className: loaderSlotClassNames.svg, styles: resolvedStyles.svg }),
-  });
+  const svgElement = (
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" className={classes.svg}>
+      <circle className={classes.svgTrack} />
+      <circle className={classes.svgTail} />
+    </svg>
+  );
 
   const element = visible && (
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -176,7 +163,10 @@ export const Loader: ComponentWithAs<'div', LoaderProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, LoaderProps> &
+  FluentComponentStaticProps<LoaderProps> & {
+    shorthandConfig: ShorthandConfig<LoaderProps>;
+  };
 
 Loader.displayName = 'Loader';
 

@@ -19,7 +19,6 @@ import { Text, TextProps } from '../Text/Text';
 import { ButtonGroup, ButtonGroupProps } from '../Button/ButtonGroup';
 import { AlertDismissAction, AlertDismissActionProps } from './AlertDismissAction';
 import {
-  ComponentWithAs,
   useAccessibility,
   getElementType,
   useStyles,
@@ -27,6 +26,7 @@ import {
   useFluentContext,
   useUnhandledProps,
   useAutoControlled,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface AlertSlotClassNames {
@@ -123,10 +123,7 @@ export const alertSlotClassNames: AlertSlotClassNames = {
  * @accessibility
  * Implements [ARIA Alert](https://www.w3.org/TR/wai-aria-practices-1.1/#alert) design pattern.
  */
-export const Alert: ComponentWithAs<'div', AlertProps> &
-  FluentComponentStaticProps<AlertProps> & {
-    DismissAction: typeof AlertDismissAction;
-  } = props => {
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Alert.displayName, context.telemetry);
   setStart();
@@ -274,6 +271,7 @@ export const Alert: ComponentWithAs<'div', AlertProps> &
       {...getA11yProps('root', {
         className: classes.root,
         onFocus: handleFocus,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -284,7 +282,10 @@ export const Alert: ComponentWithAs<'div', AlertProps> &
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, AlertProps> &
+  FluentComponentStaticProps<AlertProps> & {
+    DismissAction: typeof AlertDismissAction;
+  };
 
 Alert.defaultProps = {
   accessibility: alertBehavior,

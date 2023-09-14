@@ -52,7 +52,7 @@ function keywordNodeToPrimitive(node: ts.Node): null | string | undefined {
 /**
  * Converts AST node with "LiteralType" that has "*Keyword" kind to a primitive value.
  */
-function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boolean {
+function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boolean | string {
   if (node.kind === ts.SyntaxKind.NullKeyword) {
     return null;
   }
@@ -65,8 +65,13 @@ function literalNodeToPrimitive(node: ts.LiteralTypeNode['literal']): null | boo
     return true;
   }
 
+  if (node.kind === ts.SyntaxKind.StringLiteral) {
+    return node.getText();
+  }
+
   throw new Error(
-    'Unexpected kind of node is passed, this could be a bug or an unhandled scenario. Please report it if it happens',
+    `Unexpected kind of node is passed (${node.kind}), this could be a bug or an unhandled scenario. ` +
+      `Please report it if it happens.`,
   );
 }
 
@@ -116,7 +121,7 @@ function typeToString(typeChecker: ts.TypeChecker, type: ts.Type): ArgumentValue
     return type.intrinsicName;
   }
 
-  if (type.symbol) {
+  if (type.symbol?.declarations?.length) {
     const firstDeclaration = type.symbol.declarations[0];
     const fileName = firstDeclaration.parent.getSourceFile().fileName;
 
@@ -322,7 +327,7 @@ const findPropertySignature = (
         const statementType = typeChecker.getTypeFromTypeNode(statement.type);
         const property = typeChecker.getPropertyOfType(statementType, propertyName);
 
-        if (property && ts.isPropertySignature(property.valueDeclaration)) {
+        if (property?.valueDeclaration && ts.isPropertySignature(property.valueDeclaration)) {
           return property.valueDeclaration;
         }
       } else {
@@ -401,7 +406,7 @@ export function getCallbackArguments(
     const typeAtLocation = typeChecker.getTypeAtLocation(propertySignature.type);
     const typeDeclarations = typeAtLocation.symbol.declarations;
 
-    if (typeDeclarations.length !== 1) {
+    if (typeDeclarations?.length !== 1) {
       throw new Error(
         [
           `A definition for "${typeName}.${propertyName}" has multiple declarations, it's not expected.`,

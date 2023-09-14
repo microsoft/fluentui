@@ -10,15 +10,15 @@ const transparentColorStyle: ICSSInJSStyle = {
   borderBottomColor: 'transparent',
 };
 
-const transparentColorStyleObj: ICSSInJSStyle = {
+const createTransparentColorStyleObj = (): ICSSInJSStyle => ({
   ...transparentColorStyle,
-  ':hover': transparentColorStyle,
-  ':active': transparentColorStyle,
+  ':hover': { ...transparentColorStyle },
+  ':active': { ...transparentColorStyle },
   ':focus': {
     ...transparentColorStyle,
-    ':active': transparentColorStyle,
+    ':active': { ...transparentColorStyle },
   },
-};
+});
 
 const getWidth = (p: DropdownStylesProps, v: DropdownVariables): string => {
   if (p.fluid) {
@@ -99,7 +99,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
         getBorderFocusStyles({ variables: siteVariables })[':focus-visible']),
     }),
     ...(p.inline && {
-      ...transparentColorStyleObj,
+      ...createTransparentColorStyleObj(),
       alignItems: 'center',
     }),
     ...(p.inverted && {
@@ -156,7 +156,7 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
       overflow: 'hidden',
       boxShadow: 'none',
       minHeight: pxToRem(32),
-      ...transparentColorStyleObj,
+      ...createTransparentColorStyleObj(),
       margin: '0',
       justifyContent: 'left',
       padding: v.comboboxPaddingButton,
@@ -172,10 +172,10 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
           height: '100%',
         }),
       }),
-      ...transparentColorStyleObj,
+      ...createTransparentColorStyleObj(),
       ':focus': {
         color: v.color,
-        ...transparentColorStyleObj,
+        ...createTransparentColorStyleObj(),
       },
       ':focus-visible': {
         color: v.color,
@@ -223,18 +223,6 @@ export const dropdownStyles: ComponentSlotStylesPrepared<DropdownStylesProps, Dr
       boxShadow: v.listBoxShadow,
       padding: v.listPadding,
     }),
-  }),
-
-  loadingMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.loadingMessageBackgroundColor,
-  }),
-
-  noResultsMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.noResultsMessageBackgroundColor,
-  }),
-
-  headerMessage: ({ variables: v }): ICSSInJSStyle => ({
-    backgroundColor: v.headerMessageBackgroundColor,
   }),
 
   toggleIndicator: ({ props: p, variables: v }) => ({

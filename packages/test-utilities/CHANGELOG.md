@@ -1,8 +1,62 @@
 # Change Log - @fluentui/test-utilities
 
-This log was last generated on Tue, 03 Aug 2021 07:39:30 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:00 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.3.4)
+
+Fri, 05 May 2023 18:14:00 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.3.3..@fluentui/test-utilities_v8.3.4)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+
+## [8.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.3.3)
+
+Tue, 02 May 2023 22:20:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.3.0..@fluentui/test-utilities_v8.3.3)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+
+## [8.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.3.0)
+
+Wed, 01 Mar 2023 07:45:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.2.5..@fluentui/test-utilities_v8.3.0)
+
+### Minor changes
+
+- feat: move private test/ helpers from utilities package to make test pass with jest 28 ([PR #26958](https://github.com/microsoft/fluentui/pull/26958) by martinhochel@microsoft.com)
+
+## [8.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.2.3)
+
+Thu, 20 Oct 2022 07:43:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.2.1..@fluentui/test-utilities_v8.2.3)
+
+### Patches
+
+- chore: Bump react peer dependency to react 18. ([PR #25278](https://github.com/microsoft/fluentui/pull/25278) by mgodbolt@microsoft.com)
+
+## [8.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.2.0)
+
+Thu, 16 Dec 2021 07:26:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.1.0..@fluentui/test-utilities_v8.2.0)
+
+### Minor changes
+
+- Simplify safeMount attach API ([PR #21032](https://github.com/microsoft/fluentui/pull/21032) by elcraig@microsoft.com)
+
+## [8.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.1.0)
+
+Wed, 15 Dec 2021 07:31:28 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/test-utilities_v8.0.8..@fluentui/test-utilities_v8.1.0)
+
+### Minor changes
+
+- feat: improve test utilities ([PR #20716](https://github.com/microsoft/fluentui/pull/20716) by martinhochel@microsoft.com)
 
 ## [8.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/test-utilities_v8.0.8)
 

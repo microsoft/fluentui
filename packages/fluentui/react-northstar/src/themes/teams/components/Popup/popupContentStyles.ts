@@ -47,7 +47,6 @@ export const popupContentStyles: ComponentSlotStylesPrepared<PopupContentStylesP
     borderRadius: v.borderRadius,
 
     padding: v.padding,
-    transform: 'rotate(360deg)',
 
     ...(p.pointing && {
       pointerEvents: 'all',

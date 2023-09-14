@@ -14,8 +14,8 @@ export const ColorsNeutralsPage: React.FunctionComponent<IStylesPageProps> = pro
   return (
     <StylesAreaPage
       {...props}
-      {...ColorsNeutralsPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...ColorsNeutralsPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };

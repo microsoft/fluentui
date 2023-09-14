@@ -4,9 +4,12 @@ import { ActivityItemBasicExample } from './ActivityItem.Basic.Example';
 import { ActivityItemPersonaExample } from './ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './ActivityItem.Compact.Example';
 
-const ActivityItemBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Basic.Example.tsx') as string;
-const ActivityItemPersonaExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Persona.Example.tsx') as string;
-const ActivityItemCompactExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Compact.Example.tsx') as string;
+const ActivityItemBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Basic.Example.tsx') as string;
+const ActivityItemPersonaExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Persona.Example.tsx') as string;
+const ActivityItemCompactExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ActivityItem/ActivityItem.Compact.Example.tsx') as string;
 
 export const ActivityItemPageProps: IDocPageProps = {
   title: 'ActivityItem',

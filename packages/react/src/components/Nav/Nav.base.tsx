@@ -49,15 +49,13 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     initializeComponentRef(this);
     this.state = {
       isGroupCollapsed: {},
-      // TODO: consider removing
-      // eslint-disable-next-line react/no-unused-state
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey,
     };
   }
 
   public render(): JSX.Element | null {
-    const { styles, groups, className, isOnTop, theme } = this.props;
+    const { styles, groups, className, isOnTop, role = 'navigation', theme } = this.props;
 
     if (!groups) {
       return null;
@@ -68,8 +66,8 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, { theme: theme!, className, isOnTop, groups });
 
     return (
-      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone}>
-        <nav role="navigation" className={classNames.root} aria-label={this.props.ariaLabel}>
+      <FocusZone direction={FocusZoneDirection.vertical} componentRef={this._focusZone} {...this.props.focusZoneProps}>
+        <nav role={role} className={classNames.root} aria-label={this.props.ariaLabel}>
           {groupElements}
         </nav>
       </FocusZone>
@@ -161,7 +159,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     let finalExpandBtnAriaLabel = '';
     if (link.links && link.links.length > 0) {
       if (link.collapseAriaLabel || link.expandAriaLabel) {
-        finalExpandBtnAriaLabel = link.isExpanded ? link.collapseAriaLabel! : link.expandAriaLabel!;
+        // still respect link.collapseAriaLabel, even though it's deprecated in favor of expandAriaLabel
+        const collapseAriaLabel = link.collapseAriaLabel ?? link.expandAriaLabel;
+
+        finalExpandBtnAriaLabel = link.isExpanded ? collapseAriaLabel! : link.expandAriaLabel!;
       } else {
         // TODO remove when `expandButtonAriaLabel` is removed. This is not an ideal concatenation for localization.
         finalExpandBtnAriaLabel = expandButtonAriaLabel ? `${link.name} ${expandButtonAriaLabel}` : link.name;
@@ -261,7 +262,10 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups,
     });
 
-    const label = (isExpanded ? group.collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
+    // respect deprecated collapseAriaLabel, but default to expandAriaLabel for both states
+    // eslint-disable-next-line deprecation/deprecation
+    const collapseAriaLabel = group.collapseAriaLabel ?? group.expandAriaLabel;
+    const label = (isExpanded ? collapseAriaLabel : group.expandAriaLabel) || expandButtonAriaLabel;
 
     const { onHeaderClick } = group;
 
@@ -284,7 +288,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       group.onHeaderClick(ev, this._isGroupExpanded(group));
     }
 
-    this._toggleCollapsed(group);
+    if (group.isExpanded === undefined) {
+      this._toggleCollapsed(group);
+    }
 
     if (ev) {
       ev.preventDefault();
@@ -301,7 +307,6 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
     if (!ev.defaultPrevented) {
       link.isExpanded = !link.isExpanded;
-      // eslint-disable-next-line react/no-unused-state
       this.setState({ isLinkExpandStateChanged: true });
     }
 
@@ -387,6 +392,9 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   }
 
   private _isGroupExpanded(group: INavLinkGroup): boolean {
+    if (group.isExpanded !== undefined) {
+      return group.isExpanded;
+    }
     if (group.name && this.state.isGroupCollapsed.hasOwnProperty(group.name)) {
       return !this.state.isGroupCollapsed[group.name];
     }

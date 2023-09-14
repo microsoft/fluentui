@@ -37,7 +37,7 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
       },
       hasErrorMessage && [
         {
-          borderWidth: StyleConstants.borderWidthError,
+          borderWidth: StyleConstants.borderWidth,
         },
         focused && {
           borderColor: semanticColors.focusBorder,
@@ -81,6 +81,17 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
       disabled && {
         color: semanticColors.primaryButtonTextDisabled,
         backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+        selectors: {
+          '::placeholder': {
+            color: semanticColors.disabledBodyText,
+          },
+          ':-ms-input-placeholder': {
+            color: semanticColors.disabledBodyText,
+          },
+          '::-webkit-input-placeholder': {
+            color: semanticColors.disabledBodyText,
+          },
+        },
       },
     ],
     errorMessage: {

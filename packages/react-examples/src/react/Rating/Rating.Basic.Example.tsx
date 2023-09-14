@@ -1,9 +1,11 @@
 import * as React from 'react';
 import { Rating, RatingSize } from '@fluentui/react';
 
-const getRatingComponentAriaLabel = (label: string) => (rating: number, maxRating: number): string => {
-  return `${label} rating value is ${rating} of ${maxRating}`;
-};
+const getRatingComponentAriaLabel =
+  (label: string) =>
+  (rating: number, maxRating: number): string => {
+    return `${label} rating value is ${rating} of ${maxRating}`;
+  };
 
 export const RatingBasicExample: React.FunctionComponent = () => {
   return (

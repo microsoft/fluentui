@@ -41,6 +41,12 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   calendar: {
     extensions: ['ical', 'icalendar', 'ics', 'ifb', 'vcs'],
   },
+  classifier: {
+    extensions: ['classifier'],
+  },
+  clipchamp: {
+    extensions: ['clipchamp'],
+  },
   code: {
     extensions: [
       'abap',
@@ -256,9 +262,12 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   csv: {
     extensions: ['csv'],
   },
+  designer: {
+    extensions: ['design'],
+  },
   desktopfolder: {},
   docset: {},
-  documentfolder: {},
+  documentsfolder: {},
   docx: {
     extensions: ['doc', 'docm', 'docx', 'docb'],
   },
@@ -271,23 +280,28 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   exe: {
     extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'],
   },
+  favoritesfolder: {},
   folder: {},
   font: {
     extensions: ['ttf', 'otf', 'woff'],
   },
-  fluid: {
-    extensions: ['b', 'fluid'],
-  },
   form: {},
   genericfile: {},
   html: {
-    extensions: ['htm', 'html', 'mht'],
+    extensions: ['htm', 'html', 'mht', 'mhtml'],
+  },
+  ipynb: {
+    extensions: ['nnb', 'ipynb'],
   },
   link: {
     extensions: ['lnk', 'link', 'url', 'website', 'webloc'],
   },
   linkedfolder: {},
   listitem: {},
+  loop: {
+    extensions: ['fluid', 'loop', 'note'],
+  },
+  loopworkspace: {},
   officescript: {
     extensions: ['osts'],
   },
@@ -331,10 +345,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   },
   multiple: {},
   one: {
-    // This represents a single Fluid Note, or a partial exported section/page of a notebook.
-    extensions: ['note', 'one'],
+    // This is a partial OneNote page or section export. Not whole notebooks, see "onetoc"
+    extensions: ['one'],
   },
   onetoc: {
+    // This is an entire OneNote notebook.
     extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'], // This represents a complete, logical notebook.
   },
   pbiapp: {},
@@ -405,17 +420,17 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['pub'],
   },
   spo: {
-    extensions: ['aspx', 'classifier'],
+    extensions: ['aspx'],
   },
   sponews: {},
   spreadsheet: {
     extensions: ['odc', 'ods', 'gsheet', 'numbers', 'tsv'],
   },
-  stream: {},
   rtf: {
     extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'],
   },
   sharedfolder: {},
+  playlist: {},
   sway: {},
   sysfile: {
     extensions: [
@@ -531,7 +546,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['vst', 'vstm', 'vstx', 'vsx'],
   },
   whiteboard: {
-    extensions: ['whiteboard'],
+    extensions: ['whiteboard', 'wbtx'],
   },
   xlsx: {
     extensions: ['xlc', 'xls', 'xlsb', 'xlsm', 'xlsx', 'xlw'],

@@ -25,7 +25,16 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
     const { siteVariables } = theme;
     const { borderWidth } = siteVariables;
 
-    const borderFocusStyles = getBorderFocusStyles({ variables: siteVariables, borderPadding: borderWidth });
+    const borderFocusStyles = getBorderFocusStyles({
+      variables: {
+        borderRadius: v.focusBorderRadius,
+        borderWidth: v.focusBorderWidth,
+        focusInnerBorderColor: v.focusInnerBorderColor,
+        focusOuterBorderColor: v.focusOuterBorderColor,
+        zIndexes: { foreground: v.focusBorderZIndex },
+      },
+      borderPadding: borderWidth,
+    });
 
     return {
       height: v.paddleHeight,
@@ -48,7 +57,9 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       ...(p.hidden && {
         visibility: 'hidden',
       }),
-
+      ...(p.disableClickableNav && {
+        cursor: 'default',
+      }),
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
         [`& .${carouselPaddleSlotClassNames.content}`]: {

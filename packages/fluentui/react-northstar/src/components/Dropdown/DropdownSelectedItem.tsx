@@ -22,13 +22,13 @@ import { createShorthandFactory, commonPropTypes } from '../../utils';
 import { Image, ImageProps } from '../Image/Image';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  ComponentWithAs,
   useUnhandledProps,
   useStyles,
   useFluentContext,
   useTelemetry,
   getElementType,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface DropdownSelectedItemSlotClassNames {
@@ -54,6 +54,9 @@ export interface DropdownSelectedItemProps extends UIComponentProps<DropdownSele
 
   /** Image of the selected item. */
   image?: ShorthandValue<ImageProps>;
+
+  /** A dropdown selected item can show that it cannot be interacted with. */
+  disabled?: boolean;
 
   /**
    * Called on selected item click.
@@ -92,13 +95,12 @@ export type DropdownSelectedItemStylesProps = { hasImage: boolean };
 /**
  * A DropdownSelectedItem represents a selected item of 'multiple-selection' Dropdown.
  */
-export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemProps> &
-  FluentComponentStaticProps<DropdownSelectedItemProps> = props => {
+export const DropdownSelectedItem = React.forwardRef<HTMLSpanElement, DropdownSelectedItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSelectedItem.displayName, context.telemetry);
   setStart();
 
-  const { active, header, icon, image, className, design, styles, variables } = props;
+  const { active, header, icon, image, className, design, styles, variables, disabled } = props;
 
   const itemRef = React.useRef<HTMLElement>();
   const ElementType = getElementType(props);
@@ -137,21 +139,25 @@ export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemP
   );
 
   const handleClick = (e: React.SyntheticEvent) => {
+    if (disabled) return;
     _.invoke(props, 'onClick', e, props);
   };
 
   const handleKeyDown = (e: React.SyntheticEvent) => {
+    if (disabled) return;
     _.invoke(props, 'onKeyDown', e, props);
   };
 
   const handleIconOverrides = iconProps => ({
     ...iconProps,
     onClick: (e: React.SyntheticEvent, iconProps: BoxProps) => {
+      if (disabled) return;
       e.stopPropagation();
       _.invoke(props, 'onRemove', e, iconProps);
       _.invoke(props, 'onClick', e, iconProps);
     },
     onKeyDown: (e: React.KeyboardEvent, iconProps: BoxProps) => {
+      if (disabled) return;
       e.stopPropagation();
       if (getCode(e) === keyboardKey.Enter) {
         _.invoke(props, 'onRemove', e, iconProps);
@@ -194,6 +200,7 @@ export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemP
           className: classes.root,
           onClick: handleClick,
           onKeyDown: handleKeyDown,
+          ref,
           ...unhandledProps,
         })}
       >
@@ -206,7 +213,8 @@ export const DropdownSelectedItem: ComponentWithAs<'span', DropdownSelectedItemP
 
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, DropdownSelectedItemProps> &
+  FluentComponentStaticProps<DropdownSelectedItemProps>;
 
 DropdownSelectedItem.displayName = 'DropdownSelectedItem';
 

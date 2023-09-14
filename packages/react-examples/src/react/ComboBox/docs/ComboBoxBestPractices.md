@@ -6,6 +6,7 @@
 
 - Use single words or shortened statements as options.
 - Don't use punctuation at the end of options.
+- ComboBox does not support any interactive content aside from the options themselves.
 
 ### Accessibility
 

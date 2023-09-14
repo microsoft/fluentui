@@ -46,7 +46,7 @@ export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
 export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
-    asyncPlaceholder?: "symbol" | "object" | "input" | "progress" | "select" | "a" | "abbr" | "address" | "area" | "article" | "aside" | "audio" | "b" | "base" | "bdi" | "bdo" | "blockquote" | "body" | "br" | "button" | "canvas" | "caption" | "cite" | "code" | "col" | "colgroup" | "data" | "datalist" | "dd" | "del" | "details" | "dfn" | "dialog" | "div" | "dl" | "dt" | "em" | "embed" | "fieldset" | "figcaption" | "figure" | "footer" | "form" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "head" | "header" | "hgroup" | "hr" | "html" | "i" | "iframe" | "img" | "ins" | "kbd" | "label" | "legend" | "li" | "link" | "main" | "map" | "mark" | "menu" | "meta" | "meter" | "nav" | "noscript" | "ol" | "optgroup" | "option" | "output" | "p" | "param" | "picture" | "pre" | "q" | "rp" | "rt" | "ruby" | "s" | "samp" | "script" | "section" | "slot" | "small" | "source" | "span" | "strong" | "style" | "sub" | "summary" | "sup" | "table" | "tbody" | "td" | "template" | "textarea" | "tfoot" | "th" | "thead" | "time" | "title" | "tr" | "track" | "u" | "ul" | "var" | "video" | "wbr" | "big" | React_2.FunctionComponent<any> | React_2.ComponentClass<any, any> | "keygen" | "menuitem" | "noindex" | "webview" | "svg" | "animate" | "animateMotion" | "animateTransform" | "circle" | "clipPath" | "defs" | "desc" | "ellipse" | "feBlend" | "feColorMatrix" | "feComponentTransfer" | "feComposite" | "feConvolveMatrix" | "feDiffuseLighting" | "feDisplacementMap" | "feDistantLight" | "feDropShadow" | "feFlood" | "feFuncA" | "feFuncB" | "feFuncG" | "feFuncR" | "feGaussianBlur" | "feImage" | "feMerge" | "feMergeNode" | "feMorphology" | "feOffset" | "fePointLight" | "feSpecularLighting" | "feSpotLight" | "feTile" | "feTurbulence" | "filter" | "foreignObject" | "g" | "image" | "line" | "linearGradient" | "marker" | "mask" | "metadata" | "mpath" | "path" | "pattern" | "polygon" | "polyline" | "radialGradient" | "rect" | "stop" | "switch" | "text" | "textPath" | "tspan" | "use" | "view" | undefined;
+    asyncPlaceholder?: React_2.ElementType<any> | undefined;
 }> & React_2.RefAttributes<React_2.ElementType<TProps>>>;
 
 // @public
@@ -126,6 +126,9 @@ export const buttonProperties: Record<string, number>;
 export function calculatePrecision(value: number | string): number;
 
 // @public
+export function canUseDOM(): boolean;
+
+// @public
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
@@ -147,7 +150,7 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createMemoizer<F extends (input: any) => any>(getValue: F): F;
 
 // @public
-export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (((instance: TType | TValue | null) => void) | React_2.RefObject<TType | TValue | null> | null | undefined)[]) => (newValue: TType | TValue | null) => void;
+export const createMergedRef: <TType, TValue = null>(value?: TValue | undefined) => (...newRefs: (React_2.Ref<TType | TValue | null> | undefined)[]) => (newValue: TType | TValue | null) => void;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 //
@@ -291,12 +294,24 @@ export function focusAsync(element: HTMLElement | {
 } | undefined | null): void;
 
 // @public
-export function focusFirstChild(rootElement: HTMLElement): boolean;
+export function focusFirstChild(rootElement: HTMLElement, bypassHiddenElements?: boolean): boolean;
 
 // @public
 export const FocusRects: React_2.FunctionComponent<{
     rootRef?: React_2.RefObject<HTMLElement>;
 }>;
+
+// @public (undocumented)
+export const FocusRectsContext: React_2.Context<IFocusRectsContext | undefined>;
+
+// @public (undocumented)
+export const FocusRectsProvider: React_2.FC<FocusRectsProviderProps>;
+
+// @public (undocumented)
+export type FocusRectsProviderProps = {
+    providerRef: React_2.RefObject<HTMLElement>;
+    layerRoot?: boolean;
+};
 
 // @public
 export function format(s: string, ...values: any[]): string;
@@ -320,6 +335,9 @@ export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTML
 
 // @public
 export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+
+// @public
+export function getFirstVisibleElementFromSelector(selector: string): Element | undefined;
 
 // @public
 export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
@@ -346,7 +364,7 @@ export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes
 export function getNativeProps<T extends Record<string, any>>(props: Record<string, any>, allowedPropNames: string[] | Record<string, number>, excludedPropNames?: string[]): T;
 
 // @public
-export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean, bypassHiddenElements?: boolean): HTMLElement | null;
 
 export { getParent }
 
@@ -502,6 +520,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
     settings: ISettings | ISettingsFunction;
     scopedSettings: ISettings | ISettingsFunction;
 }> & {
+    children?: React_2.ReactNode;
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
 };
 
@@ -514,7 +533,7 @@ export interface IDeclaredEventsByName {
 }
 
 // @public
-export interface IDelayedRenderProps extends React_2.Props<{}> {
+export interface IDelayedRenderProps extends IReactProps<{}> {
     delay?: number;
 }
 
@@ -585,6 +604,14 @@ export interface IFitContentToBoundsOptions {
     mode: FitMode;
 }
 
+// @public (undocumented)
+export type IFocusRectsContext = {
+    readonly providerRef: React_2.RefObject<HTMLElement>;
+    readonly registeredProviders: React_2.RefObject<HTMLElement>[];
+    readonly registerProvider: (ref: React_2.RefObject<HTMLElement>) => void;
+    readonly unregisterProvider: (ref: React_2.RefObject<HTMLElement>) => void;
+};
+
 // @public
 export const iframeProperties: Record<string, number>;
 
@@ -649,6 +676,16 @@ export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyl
     styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 }
 
+// @public (undocumented)
+export interface IReactProps<T> {
+    // (undocumented)
+    children?: React_2.ReactNode | undefined;
+    // (undocumented)
+    key?: React_2.Key | undefined;
+    // (undocumented)
+    ref?: React_2.LegacyRef<T> | undefined;
+}
+
 // @public
 export interface IRectangle {
     // (undocumented)
@@ -692,6 +729,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     count: number;
     // (undocumented)
+    getItemIndex?(key: string): number;
+    // (undocumented)
     getItems(): TItem[];
     // (undocumented)
     getSelectedCount(): number;
@@ -716,6 +755,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange?(index: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -727,6 +768,8 @@ export interface ISelection<TItem = IObjectWithKey> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal?(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected?(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -744,6 +787,8 @@ export interface ISelectionOptions<TItem = IObjectWithKey> {
     getKey?: (item: TItem, index?: number) => string | number;
     // (undocumented)
     items?: TItem[];
+    // (undocumented)
+    onItemsChanged?: () => void;
     // (undocumented)
     onSelectionChanged?: () => void;
     // (undocumented)
@@ -764,6 +809,9 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 
 // @public
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
+
+// @public
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1003,7 +1051,7 @@ export { portalContainsElement }
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
 
-// @public
+// @public @deprecated
 export function raiseClick(target: Element): void;
 
 // @public
@@ -1027,6 +1075,9 @@ export type RefObject<T> = {
     (component: T | null): void;
     current: T | null;
 };
+
+// @public
+export function removeDirectionalKeyCode(which: number): void;
 
 // @public
 export function removeIndex<T>(array: T[], index: number): T[];
@@ -1056,6 +1107,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     canSelectItem(item: TItem, index?: number): boolean;
     count: number;
     // (undocumented)
+    getItemIndex(key: string): number;
+    // (undocumented)
     getItems(): TItem[];
     // (undocumented)
     getKey(item: TItem, index?: number): string;
@@ -1082,6 +1135,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     // (undocumented)
     selectToKey(key: string, clearSelection?: boolean): void;
     // (undocumented)
+    selectToRange(fromIndex: number, count: number, clearSelection?: boolean): void;
+    // (undocumented)
     setAllSelected(isAllSelected: boolean): void;
     // (undocumented)
     setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
@@ -1092,6 +1147,8 @@ class Selection_2<TItem = IObjectWithKey> implements ISelection<TItem> {
     setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     setModal(isModal: boolean): void;
+    // (undocumented)
+    setRangeSelected(fromIndex: number, count: number, isSelected: boolean, shouldAnchor: boolean): void;
     // (undocumented)
     toggleAllSelected(): void;
     // (undocumented)
@@ -1105,6 +1162,9 @@ export { Selection_2 as Selection }
 
 // @public (undocumented)
 export const SELECTION_CHANGE = "change";
+
+// @public (undocumented)
+export const SELECTION_ITEMS_CHANGE = "items-change";
 
 // @public (undocumented)
 export enum SelectionDirection {
@@ -1132,7 +1192,7 @@ export const selectProperties: Record<string, number>;
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
-export function setFocusVisibility(enabled: boolean, target?: Element): void;
+export function setFocusVisibility(enabled: boolean, target?: Element, registeredProviders?: React_2.RefObject<HTMLElement>[]): void;
 
 // @public
 export function setLanguage(language: string, persistenceType?: 'localStorage' | 'sessionStorage' | 'none'): void;
@@ -1150,7 +1210,7 @@ export { setPortalAttribute }
 // @public
 export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
 
-// @public
+// @public @deprecated
 export function setSSR(isEnabled: boolean): void;
 
 // @public @deprecated (undocumented)
@@ -1208,6 +1268,9 @@ export function useCustomizationSettings(properties: string[], scopeName?: strin
 
 // @public
 export function useFocusRects(rootRef?: React_2.RefObject<HTMLElement>): void;
+
+// @public
+export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
 
 // @public
 export function values<T>(obj: any): T[];

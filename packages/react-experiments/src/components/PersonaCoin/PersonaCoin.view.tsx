@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
 import { PersonaPresence } from '../../utilities/factoryComponents';

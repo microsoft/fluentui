@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
 import { DetailsHeaderBase } from './DetailsHeader.base';
-import { getStyles } from './DetailsHeader.styles';
+import { getDetailsHeaderStyles } from './DetailsHeader.styles';
 import type {
   IDetailsHeaderProps,
   IDetailsHeaderBaseProps,
@@ -13,6 +13,6 @@ export const DetailsHeader: React.FunctionComponent<IDetailsHeaderBaseProps> = s
   IDetailsHeaderBaseProps,
   IDetailsHeaderStyleProps,
   IDetailsHeaderStyles
->(DetailsHeaderBase, getStyles, undefined, { scope: 'DetailsHeader' });
+>(DetailsHeaderBase, getDetailsHeaderStyles, undefined, { scope: 'DetailsHeader' });
 
 export type { IDetailsHeaderProps, IDetailsHeaderBaseProps };

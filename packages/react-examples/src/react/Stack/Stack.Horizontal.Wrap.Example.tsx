@@ -27,7 +27,7 @@ export const HorizontalStackWrapExample: React.FunctionComponent = () => {
   };
 
   return (
-    <Stack tokens={sectionStackTokens}>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
       <Slider
         label="Change the stack width to see how child items wrap onto multiple rows:"
         min={1}
@@ -38,7 +38,7 @@ export const HorizontalStackWrapExample: React.FunctionComponent = () => {
         onChange={setStackWidth}
       />
 
-      <Stack horizontal wrap styles={stackStyles} tokens={wrapStackTokens}>
+      <Stack enableScopedSelectors horizontal wrap styles={stackStyles} tokens={wrapStackTokens}>
         <span style={itemStyles}>1</span>
         <span style={itemStyles}>2</span>
         <span style={itemStyles}>3</span>

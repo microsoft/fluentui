@@ -10,6 +10,7 @@ export function getQueryParam(name: string, url?: string): string | null {
   url = url || (win ? win.location.href : '');
   // Manually get the query string in case it's after the hash (possible with hash routing)
   const queryIndex = url.indexOf('?');
+  // eslint-disable-next-line deprecation/deprecation
   const query = queryIndex !== -1 ? url.substr(queryIndex) : '';
 
   const regex = new RegExp(`[?&]${name}(=([^&#]*)|&|#|$)`);

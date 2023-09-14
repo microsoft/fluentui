@@ -4,11 +4,14 @@ export interface TooltipContentVariables {
   boxShadow: string;
 
   borderRadius: string;
+  borderColor: string;
   borderSize: string;
+  borderStyle: string;
   padding: string;
 
   maxWidth: string;
 
+  svgPointer: boolean;
   pointerMargin: string;
   pointerGap: string;
   pointerWidth: string;
@@ -25,14 +28,17 @@ export interface TooltipContentVariables {
 }
 
 export const tooltipContentVariables = (siteVars: any): TooltipContentVariables => ({
-  boxShadow: siteVars.shadowLevel2,
+  boxShadow: siteVars.shadow8,
 
   borderRadius: siteVars.borderRadiusMedium,
-  borderSize: '1px',
+  borderColor: 'transparent',
+  borderSize: '0px',
+  borderStyle: 'none',
   padding: `${pxToRem(5)} ${pxToRem(12)} ${pxToRem(7)} ${pxToRem(12)}`,
 
-  maxWidth: pxToRem(246),
+  maxWidth: pxToRem(240),
 
+  svgPointer: true,
   pointerMargin: pxToRem(6),
   pointerGap: pxToRem(5),
   pointerWidth: pxToRem(16),

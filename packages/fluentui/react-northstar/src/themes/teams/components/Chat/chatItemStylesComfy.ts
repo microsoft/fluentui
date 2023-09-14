@@ -16,7 +16,7 @@ export const chatItemStylesComfy: ComponentSlotStylesPrepared<ChatItemStylesProp
   }),
 
   gutter: ({ props: p, variables: v }): ICSSInJSStyle => ({
-    marginTop: v.gutterMargin,
+    marginTop: p.layout === 'refresh' ? v.gutterMarginComfyRefresh : v.gutterMargin,
     [p.contentPosition === 'end' ? 'right' : 'left']: 0,
   }),
 

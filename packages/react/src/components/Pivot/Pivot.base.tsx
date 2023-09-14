@@ -47,7 +47,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
       result.links.push({
         headerText: linkText,
         ...pivotItemProps,
-        itemKey: itemKey,
+        itemKey,
       });
       result.keyToIndexMapping[itemKey] = index;
       result.keyToTabIdMapping[itemKey] = getTabId(props, pivotId, itemKey, index);
@@ -70,7 +70,16 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
 
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, focusZoneProps } = props;
+    const {
+      componentRef,
+      theme,
+      linkSize,
+      linkFormat,
+      overflowBehavior,
+      overflowAriaLabel,
+      focusZoneProps,
+      overflowButtonAs,
+    } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
     const nameProps = {
@@ -130,9 +139,21 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
       // Adding space supplementary for icon
       contentString += link.itemIcon ? ' xx' : '';
+
+      const itemSemantics =
+        link.role && link.role !== 'tab'
+          ? {
+              role: link.role,
+            }
+          : {
+              role: 'tab',
+              'aria-selected': isSelected,
+            };
+
       return (
         <CommandButton
           {...headerButtonProps}
+          {...itemSemantics}
           id={tabId}
           key={itemKey}
           className={css(className, isSelected && classNames.linkIsSelected)}
@@ -141,8 +162,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
           aria-label={link.ariaLabel}
-          role={link.role || 'tab'}
-          aria-selected={isSelected}
           name={link.headerText}
           keytipProps={link.keytipProps}
           data-content={contentString}
@@ -247,6 +266,8 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           .slice(overflowIndex)
           .filter(link => link.itemKey !== renderedSelectedKey)
           .map((link, index) => {
+            link.role = 'menuitem';
+
             return {
               key: link.itemKey || `${overflowIndex + index}`,
               onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
@@ -257,6 +278,7 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       pinnedIndex: renderedSelectedIndex,
     });
 
+    const OverflowButton = overflowButtonAs ? overflowButtonAs : CommandButton;
     return (
       <div ref={ref} {...divProps}>
         <FocusZone
@@ -269,12 +291,14 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
         >
           {items}
           {overflowBehavior === 'menu' && (
-            <CommandButton
+            <OverflowButton
               className={css(classNames.link, classNames.overflowMenuButton)}
               elementRef={overflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
+              ariaLabel={overflowAriaLabel}
+              role="tab"
             />
           )}
         </FocusZone>

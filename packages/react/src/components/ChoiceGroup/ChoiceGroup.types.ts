@@ -51,7 +51,7 @@ export interface IChoiceGroupProps
    * The key of the selected option. If you provide this, you must maintain selection
    * state by observing onChange events and passing a new value in when changed.
    */
-  selectedKey?: string | number;
+  selectedKey?: string | number | null;
 
   /**
    * A callback for receiving a notification when the choice has been changed.
@@ -96,12 +96,12 @@ export interface IChoiceGroupOption extends Omit<React.InputHTMLAttributes<HTMLE
   /**
    * Used to customize option rendering.
    */
-  onRenderField?: IRenderFunction<IChoiceGroupOptionProps>;
+  onRenderField?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
 
   /**
    * Used to customize label rendering.
    */
-  onRenderLabel?: IRenderFunction<IChoiceGroupOptionProps>;
+  onRenderLabel?: IRenderFunction<IChoiceGroupOption & IChoiceGroupOptionProps>;
 
   /**
    * Props for an icon to display with this option.

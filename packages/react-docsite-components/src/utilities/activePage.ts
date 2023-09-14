@@ -1,65 +1,77 @@
 import { INavPage } from '../components/Nav/index';
-import { removeAnchorLink } from './removeAnchorLink';
-import { getDocument } from '@fluentui/react/lib/Utilities';
+import { getNormalizedPath, normalizePath } from './getNormalizedPath';
+import { ISiteDefinition } from './SiteDefinition.types';
 
-const doc = getDocument();
-const _urlResolver = doc && doc.createElement('a');
-
-export function isPageActive(componentUrl: string): boolean {
-  if (!componentUrl || !_urlResolver) {
-    return false;
+/**
+ * Returns whether the given page URL or hash route is active.
+ * Non-hash URLs are assumed to be external and therefore never active since the current component
+ * implementations in this package assume hash routing in many places.
+ * @param pageUrl URL or hash route for a page
+ * @param currentPath Optional current normalized path (optimization if calling this multiple times)
+ */
+export function isPageActive(pageUrl: string, currentPath?: string): boolean {
+  if (pageUrl[0] !== '#') {
+    return false; // external link => can't be active
   }
-
-  _urlResolver.href = componentUrl || '';
-  const target: string = _urlResolver.href;
-
-  const exact = location.protocol + '//' + location.host + location.pathname;
-  if (exact === target) {
-    return true;
-  }
-
-  return removeAnchorLink(location.href) === target;
+  currentPath = currentPath || getNormalizedPath();
+  return normalizePath(pageUrl) === currentPath;
 }
 
+/**
+ * Returns whether the given page or a child (for the current platform, if provided) is active.
+ * @param page Page to check
+ * @param platform Current platform
+ * @param currentPath Optional current normalized path (optimization if calling this multiple times)
+ */
 export function hasActiveChild<TPlatforms extends string = string>(
   page: INavPage<TPlatforms>,
   platform?: TPlatforms,
+  currentPath?: string,
 ): boolean {
-  if (!page) {
-    return false;
+  return !!getActivePage(page, platform, currentPath);
+}
+
+/**
+ * Checks if any of the pages in the object (either site definition or nav page) are active or have
+ * an active child (for the current platform, if provided), and returns the active page if found.
+ * @param parent Page or site definition to check
+ * @param platform Current platform
+ * @param currentPath Optional current normalized path (optimization if calling this multiple times)
+ */
+export function getActivePage<TPlatforms extends string = string>(
+  parent: INavPage<TPlatforms> | ISiteDefinition<TPlatforms>,
+  platform?: TPlatforms,
+  currentPath?: string,
+): INavPage<TPlatforms> | undefined {
+  if (!parent) {
+    return undefined;
   }
 
-  if (page.url && isPageActive(page.url)) {
-    return true;
+  if (_isPage(parent) && isPageActive(parent.url!, currentPath)) {
+    return parent;
   }
 
-  let _hasActiveChild = false;
   let pages: INavPage[] = [];
 
-  const platformPages = platform && page.platforms && page.platforms[platform];
+  const platformPages = platform && parent.platforms && parent.platforms[platform];
   if (platformPages) {
     pages = pages.concat(platformPages as INavPage<TPlatforms>[]);
   }
 
-  if (page.pages) {
-    pages = pages.concat(page.pages);
+  if (parent.pages) {
+    pages = pages.concat(parent.pages);
   }
 
-  if (pages.length > 0) {
-    for (const childPage of pages) {
-      if (childPage.url && isPageActive(childPage.url)) {
-        _hasActiveChild = true;
-        break;
-      }
-
-      if ((platform && childPage.platforms && childPage.platforms[platform]) || childPage.pages) {
-        _hasActiveChild = hasActiveChild(childPage);
-        if (_hasActiveChild) {
-          break;
-        }
-      }
+  for (const childPage of pages) {
+    const activePage = getActivePage(childPage, platform, currentPath);
+    if (activePage) {
+      return activePage;
     }
   }
+}
 
-  return _hasActiveChild;
+function _isPage<TPlatforms extends string = string>(
+  parent: INavPage<TPlatforms> | ISiteDefinition<TPlatforms>,
+): parent is INavPage<TPlatforms> {
+  return !!(parent as INavPage).url;
 }

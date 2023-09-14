@@ -1,18 +1,40 @@
 import * as React from 'react';
 import type { IBaseProps, ISize } from '@fluentui/react/lib/Utilities';
 import type { ISelection } from '@fluentui/react/lib/Selection';
+import { IRenderFunction } from '../../Utilities';
+
+export interface ITileLayout {
+  foregroundSize?: ISize | undefined;
+  backgroundSize?: ISize | undefined;
+}
 
 export type TileSize = keyof {
   small: 'small';
   large: 'large';
 };
 
-export interface ITileForegroundProps {
-  foregroundSize?: ISize;
+export interface ITileStateProps extends ITileLayout {
+  isSelected?: boolean;
 }
 
-export interface ITileBackgroundProps {
-  backgroundSize?: ISize;
+export interface ITileForegroundProps extends ITileStateProps {
+  foreground: JSX.Element | null;
+  hideForeground: boolean;
+  className?: string;
+}
+
+export interface ITileBackgroundProps extends ITileStateProps {
+  background: JSX.Element | null;
+  hideBackground: boolean;
+  className?: string;
+}
+
+export interface ITileNameplateProps extends ITileStateProps {
+  isSelected?: boolean;
+  itemName?: React.ReactNode;
+  itemActivity?: React.ReactNode;
+  nameplateOnlyOnHover?: boolean;
+  className?: string;
 }
 
 export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpanElement | HTMLAnchorElement> {
@@ -49,9 +71,17 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
    */
   itemActivity?: React.ReactNode;
   /**
+   * Full override for rendering the nameplace, which shows the name and activity.
+   */
+  onRenderNameplate?: IRenderFunction<ITileNameplateProps>;
+  /**
    * Content to render as the full-size background of the tile.
    */
-  background?: React.ReactNode | ((backgroundProps: ITileBackgroundProps) => JSX.Element);
+  background?: React.ReactNode | ((backgroundProps: ITileLayout) => JSX.Element | null);
+  /**
+   * Full override for rendering the background.
+   */
+  onRenderBackground?: IRenderFunction<ITileBackgroundProps>;
   /**
    * Whether or not to frame the background.
    */
@@ -64,7 +94,11 @@ export interface ITileProps extends IBaseProps, React.AllHTMLAttributes<HTMLSpan
   /**
    * Content to render as the foreground of the tile, bounded by padding and the nameplate.
    */
-  foreground?: React.ReactNode | ((foregroundProps: ITileForegroundProps) => JSX.Element);
+  foreground?: React.ReactNode | ((foregroundProps: ITileLayout) => JSX.Element | null);
+  /**
+   * Full override for rendering the foreground.
+   */
+  onRenderForeground?: IRenderFunction<ITileForegroundProps>;
   /**
    * Whether or not to frame the foreground.
    */

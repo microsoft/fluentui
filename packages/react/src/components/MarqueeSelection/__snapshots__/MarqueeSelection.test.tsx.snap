@@ -20,7 +20,7 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
           right: 0px;
           top: 0px;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           background-color: transparent;
           background: none;
         }
@@ -35,7 +35,7 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
           position: absolute;
           z-index: 10;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           border-color: Highlight;
         }
     style="left: 0px; top: 0px; width: 100px; height: 100px;"
@@ -53,7 +53,7 @@ exports[`MarqueeSelection renders MarqueeSelection correctly 1`] = `
             right: 0px;
             top: 0px;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             background-color: transparent;
             background: none;
           }

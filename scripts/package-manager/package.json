@@ -1,0 +1,14 @@
+{
+  "name": "@fluentui/scripts-package-manager",
+  "version": "0.0.1",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "format": "prettier -w --ignore-path ../../.prettierignore .",
+    "format:check": "yarn format -c",
+    "lint": "eslint --ext .ts,.js .",
+    "test": "jest --passWithNoTests",
+    "type-check": "tsc -b tsconfig.json"
+  },
+  "dependencies": {}
+}

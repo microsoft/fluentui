@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "jsx": "react",
+    "isolatedModules": false,
+    "types": ["node", "cypress", "cypress-real-events"],
+    "lib": ["ES2019", "dom"]
+  },
+  "include": ["./src/**/*.cy.ts", "./src/**/*.cy.tsx"]
+}

@@ -2,8 +2,13 @@
 
 exports[`PeoplePicker renders correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
@@ -48,7 +53,6 @@ exports[`PeoplePicker renders correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -67,9 +71,7 @@ exports[`PeoplePicker renders correctly 1`] = `
           }
     >
       <input
-        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
-        aria-controls=""
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"
@@ -98,6 +100,9 @@ exports[`PeoplePicker renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -107,7 +112,7 @@ exports[`PeoplePicker renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
@@ -119,7 +124,7 @@ exports[`PeoplePicker renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
@@ -131,7 +136,7 @@ exports[`PeoplePicker renders correctly 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
         data-lpignore={true}
@@ -161,8 +166,13 @@ exports[`PeoplePicker renders correctly 1`] = `
 
 exports[`PeoplePicker renders correctly with preselected items 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
@@ -207,7 +217,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -274,9 +283,11 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               &:hover {
                 background: #edebe9;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
               }
+          data-selection-index={0}
+          onClick={[Function]}
           role="listitem"
         >
           <div
@@ -392,7 +403,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           }
                       onError={[Function]}
                       onLoad={[Function]}
-                      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-female.png"
                     />
                   </div>
                   <div
@@ -414,7 +425,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           top: auto;
                           width: 8px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           background-color: Highlight;
                           border-color: Window;
                         }
@@ -468,6 +479,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     Annie Lindqvist
+                    <div
+                      hidden={true}
+                      id="tooltip2"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Annie Lindqvist
+                    </div>
                   </div>
                 </div>
                 <div
@@ -498,6 +527,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     Designer
+                    <div
+                      hidden={true}
+                      id="tooltip3"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Designer
+                    </div>
                   </div>
                 </div>
                 <div
@@ -528,6 +575,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     In a meeting
+                    <div
+                      hidden={true}
+                      id="tooltip4"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      In a meeting
+                    </div>
                   </div>
                 </div>
                 <div
@@ -558,6 +623,24 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     role="none"
                   >
                     Available at 4:00pm
+                    <div
+                      hidden={true}
+                      id="tooltip5"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Available at 4:00pm
+                    </div>
                   </div>
                 </div>
               </div>
@@ -609,14 +692,14 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -626,7 +709,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   background: #c8c6c4;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -635,7 +718,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   color: #005a9e;
                 }
             data-is-focusable={true}
-            data-selection-index={0}
             id="id__9"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -698,9 +780,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
         </div>
       </span>
       <input
-        aria-activedescendant="sug-noResultsFound"
         aria-autocomplete="both"
-        aria-controls=""
         aria-describedby="selected-items-id__0"
         aria-expanded={false}
         aria-haspopup="listbox"
@@ -730,6 +810,9 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             &::-ms-clear {
               display: none;
             }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
             &::placeholder {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -739,7 +822,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
@@ -751,7 +834,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
@@ -763,7 +846,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
         data-lpignore={true}

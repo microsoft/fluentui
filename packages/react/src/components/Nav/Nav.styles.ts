@@ -195,22 +195,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         padding: 0,
         margin: 0,
       },
-      isSelected && {
-        color: palette.themePrimary,
-        backgroundColor: palette.neutralLighterAlt,
-        selectors: {
-          '&:after': {
-            borderLeft: `2px solid ${palette.themePrimary}`,
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            pointerEvents: 'none',
-          },
-        },
-      },
     ],
     chevronIcon: [
       classNames.chevronIcon,

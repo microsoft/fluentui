@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table renders a default state 1`] = `
+<div>
+  <table
+    class="fui-Table"
+  >
+    <tbody>
+      <tr>
+        <td>
+          Cell
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table renders as div if \`noNativeElements\` is set 1`] = `
+<div>
+  <div
+    class="fui-Table"
+    role="table"
+  >
+    <div
+      class="fui-TableBody"
+      role="rowgroup"
+    >
+      <div
+        class="fui-TableRow"
+        role="row"
+      >
+        <div
+          class="fui-TableCell"
+          role="cell"
+        >
+          Cell
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

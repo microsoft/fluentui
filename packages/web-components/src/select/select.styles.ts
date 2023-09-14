@@ -17,86 +17,43 @@ import {
   designUnit,
   disabledOpacity,
   fillColor,
-  focusStrokeOuter,
-  focusStrokeWidth,
   layerCornerRadius,
-  neutralFillActive,
-  neutralFillHover,
-  neutralFillRest,
-  neutralFillSecondaryActive,
-  neutralFillSecondaryHover,
-  neutralFillSecondaryRest,
-  neutralFillStealthActive,
-  neutralFillStealthHover,
-  neutralFillStealthRest,
   neutralForegroundRest,
-  neutralStrokeControlActive,
-  neutralStrokeControlHover,
-  neutralStrokeControlRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
+import { inputFilledStyles, inputForcedColorStyles, NeutralButtonStyles, StealthButtonStyles } from '../styles';
 
-export const selectFilledStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
+const logicalControlSelector: string = '.control';
+const interactivitySelector: string = ':not([disabled]):not([open])';
+const nonInteractivitySelector: string = '[disabled]';
+
+/**
+ * The base styles for a select and combobox, without `appearance` visual differences.
+ * 
+ * @internal
+ */
+export const baseSelectStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: SelectOptions,
-) => css`
-  :host {
-    background: ${neutralFillSecondaryRest};
-    border-color: transparent;
-  }
-
-  :host(:not([disabled]):not([open]):hover) {
-    background: ${neutralFillSecondaryHover};
-    border-color: transparent;
-  }
-
-  :host(:not([disabled]):not([open]):active) {
-    background: ${neutralFillSecondaryActive};
-    border-color: transparent;
-  }
-`;
-
-export const selectStealthStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
-  context: ElementDefinitionContext,
-  definition: SelectOptions,
-) => css`
-  :host {
-    background: ${neutralFillStealthRest};
-    border-color: transparent;
-  }
-
-  :host(:not([disabled]):not([open]):hover) {
-    background: ${neutralFillStealthHover};
-    border-color: transparent;
-  }
-
-  :host(:not([disabled]):not([open]):active) {
-    background: ${neutralFillStealthActive};
-    border-color: transparent;
-  }
-`;
-
-export const selectStyles = (context, definition) =>
+) =>
   css`
-    ${display('inline-flex')} :host {
-      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
-        border-box ${neutralStrokeControlRest};
-      border: calc(${strokeWidth} * 1px) solid transparent;
+    ${display('inline-flex')}
+    
+    :host {
       border-radius: calc(${controlCornerRadius} * 1px);
       box-sizing: border-box;
       color: ${neutralForegroundRest};
       fill: currentcolor;
       font-family: ${bodyFont};
-      height: calc(${heightNumber} * 1px);
       position: relative;
       user-select: none;
       min-width: 250px;
       vertical-align: top;
     }
 
-    :host .listbox {
+    .listbox {
       box-shadow: ${elevationShadowFlyout};
       background: ${fillColor};
       border-radius: calc(${layerCornerRadius} * 1px);
@@ -105,54 +62,40 @@ export const selectStyles = (context, definition) =>
       flex-direction: column;
       left: 0;
       max-height: calc(var(--max-height) - (${heightNumber} * 1px));
-      padding: calc(${designUnit} * 1px) 0;
+      padding: calc((${designUnit} - ${strokeWidth} ) * 1px);
       overflow-y: auto;
       position: absolute;
       width: 100%;
       z-index: 1;
       margin: 1px 0;
+      border: calc(${strokeWidth} * 1px) solid transparent;
     }
 
-    :host .listbox[hidden] {
+    .listbox[hidden] {
       display: none;
     }
 
-    :host .control {
+    .control {
+      border: calc(${strokeWidth} * 1px) solid transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
+      height: calc(${heightNumber} * 1px);
       align-items: center;
       box-sizing: border-box;
       cursor: pointer;
       display: flex;
-      font-size: ${typeRampBaseFontSize};
-      font-family: inherit;
+      ${typeRampBase}
       min-height: 100%;
-      line-height: ${typeRampBaseLineHeight};
       padding: 0 calc(${designUnit} * 2.25px);
       width: 100%;
     }
 
-    :host(:not([disabled]):not([open]):hover) {
-      background: padding-box linear-gradient(${neutralFillHover}, ${neutralFillHover}),
-        border-box ${neutralStrokeControlHover};
-    }
-
-    :host(:not([disabled]):not([open]):active) {
-      background: padding-box linear-gradient(${neutralFillActive}, ${neutralFillActive}),
-        border-box ${neutralStrokeControlActive};
-    }
-
     :host(:${focusVisible}) {
-      border-color: ${focusStrokeOuter};
-      outline: none;
-      box-shadow: 0 0 0 1px inset ${focusStrokeOuter};
-    }
-
-    :host([disabled]) {
-      cursor: ${disabledCursor};
-      opacity: ${disabledOpacity};
+      ${focusTreatmentBase}
     }
 
     :host([disabled]) .control {
       cursor: ${disabledCursor};
+      opacity: ${disabledOpacity};
       user-select: none;
     }
 
@@ -203,62 +146,36 @@ export const selectStyles = (context, definition) =>
     ::slotted([role='option']) {
       flex: 0 0 auto;
     }
-  `.withBehaviors(
-    appearanceBehavior('filled', selectFilledStyles(context, definition)),
-    appearanceBehavior('stealth', selectStealthStyles(context, definition)),
-    forcedColorsStylesheetBehavior(
-      css`
-        :host([disabled]) {
-          border-color: ${SystemColors.GrayText};
-          background-color: ${SystemColors.ButtonFace};
-          color: ${SystemColors.GrayText};
-          opacity: 1;
-          forced-color-adjust: none;
-        }
+  `;
+  
+/**
+ * @internal
+ */
+export const baseSelectForcedColorStyles: (
+  context: ElementDefinitionContext,
+  definition: SelectOptions
+) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: SelectOptions,
+) =>
+  css`
+    :host([open]) .listbox {
+      background: ${SystemColors.ButtonFace};
+      border-color: ${SystemColors.CanvasText};
+    }
+  `;
 
-        :host([disabled]:hover) {
-          background: ${SystemColors.ButtonFace};
-        }
-
-        :host([disabled]) .control {
-          color: ${SystemColors.GrayText};
-          border-color: ${SystemColors.GrayText};
-        }
-
-        :host(:not([disabled]):hover) {
-          background: ${SystemColors.ButtonFace};
-          border-color: ${SystemColors.Highlight};
-        }
-
-        :host(:${focusVisible}) {
-          forced-color-adjust: none;
-          background: ${SystemColors.ButtonFace};
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 1px inset ${SystemColors.Highlight};
-          color: ${SystemColors.ButtonText};
-          fill: currentcolor;
-        }
-
-        :host([open]) .listbox {
-          background: ${SystemColors.ButtonFace};
-          border: 1px solid ${SystemColors.ButtonText};
-        }
-
-        :host(:${focusVisible}) ::slotted([aria-selected="true"][role="option"]:not([disabled])) {
-          background: ${SystemColors.Highlight};
-          border-color: ${SystemColors.ButtonText};
-          box-shadow: 0 0 0 calc(${focusStrokeWidth} * 1px) inset ${SystemColors.HighlightText};
-          color: ${SystemColors.HighlightText};
-          fill: currentcolor;
-        }
-
-        ::slotted([role='option']:not([aria-selected='true']):not([disabled]):hover) {
-          forced-color-adjust: none;
-          color: ${SystemColors.ButtonText};
-          background: ${SystemColors.ButtonFace};
-          border-color: ${SystemColors.Highlight};
-          box-shadow: none;
-        }
-      `,
+export const selectStyles: (context: ElementDefinitionContext, definition: SelectOptions) => ElementStyles = (
+  context: ElementDefinitionContext,
+  definition: SelectOptions,
+) =>
+  baseSelectStyles(context, definition)
+  .withBehaviors(
+    appearanceBehavior('outline', NeutralButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    appearanceBehavior('filled',
+      inputFilledStyles(context, definition, logicalControlSelector, interactivitySelector)
+      .withBehaviors(forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector, interactivitySelector)))
     ),
+    appearanceBehavior('stealth', StealthButtonStyles(context, definition, interactivitySelector, nonInteractivitySelector)),
+    forcedColorsStylesheetBehavior(baseSelectForcedColorStyles(context, definition))
   );

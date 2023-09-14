@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { IVSChartDataPoint, IVerticalStackedChartProps, VerticalStackedBarChart } from '@fluentui/react-charting';
+import {
+  IVSChartDataPoint,
+  IVerticalStackedChartProps,
+  VerticalStackedBarChart,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 
@@ -8,6 +13,7 @@ interface IVerticalStackedBarState {
   height: number;
   barGapMax: number;
   showLine: boolean;
+  hideLabels: boolean;
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -18,6 +24,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       height: 350,
       showLine: true,
       barGapMax: 2,
+      hideLabels: false,
     };
   }
   public render(): JSX.Element {
@@ -34,6 +41,9 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
   private _onShowLineChange = (ev: React.FormEvent<HTMLElement>, checked: boolean): void => {
     this.setState({ showLine: checked });
   };
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
+  };
 
   private _basicExample(): JSX.Element {
     const { showLine } = this.state;
@@ -41,7 +51,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 40,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '40%',
       },
@@ -65,7 +75,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 30,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '30%',
       },
@@ -89,7 +99,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 44,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '44%',
       },
@@ -113,7 +123,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       {
         legend: 'Metadata1',
         data: 88,
-        color: DefaultPalette.accent,
+        color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
         yAxisCalloutData: '88%',
       },
@@ -140,7 +150,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
 
         ...(showLine && {
           lineData: [
-            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 42, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -149,7 +159,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         chartData: secondChartPoints,
         xAxisPoint: 20,
         ...(showLine && {
-          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magenta }],
+          lineData: [{ y: 33, legend: 'Supported Builds', color: DefaultPalette.magentaLight }],
         }),
       },
       {
@@ -157,7 +167,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 40,
         ...(showLine && {
           lineData: [
-            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 60, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 20, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -167,7 +177,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 60,
         ...(showLine && {
           lineData: [
-            { y: 41, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 41, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 10, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -177,7 +187,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         xAxisPoint: 80,
         ...(showLine && {
           lineData: [
-            { y: 100, legend: 'Supported Builds', color: DefaultPalette.magenta },
+            { y: 100, legend: 'Supported Builds', color: DefaultPalette.magentaLight },
             { y: 70, legend: 'Recommended Builds', color: DefaultPalette.redDark },
           ],
         }),
@@ -188,27 +198,53 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       },
     ];
 
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
-        <label>BarGapMax:</label>
+        <label htmlFor="changeWidth_Basic">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          id="changeWidth_Basic"
+          onChange={this._onWidthChange}
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight_Basic">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight_Basic"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
+        <label htmlFor="changeBarGapMax_Basic">BarGapMax:</label>
         <input
           type="range"
           value={this.state.barGapMax}
           min={0}
           max={10}
+          id="changeBarGapMax_Basic"
           onChange={e => this.setState({ barGapMax: +e.target.value })}
+          aria-valuetext={`ChangebarGapMaxSlider${this.state.barGapMax}`}
         />
         <Checkbox
           label="show the lines (hide or show the lines)"
           checked={this.state.showLine}
           onChange={this._onShowLineChange}
           styles={{ root: { marginTop: '20px' } }}
+        />
+        <Checkbox
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onHideLabelsCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
         />
         <div style={rootStyle}>
           <VerticalStackedBarChart
@@ -218,9 +254,11 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
             data={data}
             height={this.state.height}
             width={this.state.width}
+            lineOptions={lineOptions}
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            hideLabels={this.state.hideLabels}
           />
         </div>
       </>

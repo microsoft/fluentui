@@ -339,7 +339,8 @@ describe('DetailsHeader', () => {
     );
 
     const selectAllCheckBoxAriaLabelledBy = component
-      .find('[aria-colindex=1]')
+      .find('[role="columnheader"]')
+      .at(0)
       .getDOMNode()
       .getAttribute('aria-labelledby');
 
@@ -361,7 +362,8 @@ describe('DetailsHeader', () => {
     );
 
     const selectAllColumnAriaLabelledBy = component
-      .find('[aria-colindex=1]')
+      .find('[role="columnheader"]')
+      .at(0)
       .getDOMNode()
       .getAttribute('aria-labelledby');
 
@@ -387,17 +389,17 @@ describe('DetailsHeader', () => {
     );
 
     const detailsColNotDraggable = component.find('[draggable=false]').getElements();
-    const detailsColNotDraggableA = component.find('[aria-colindex=2]').getElement();
-    const detailsColNotDraggableF = component.find('[aria-colindex=7]').getElement();
+    const detailsColNotDraggableA = component.find('[role="columnheader"]').at(1).getElement();
+    const detailsColNotDraggableF = component.find('[role="columnheader"]').at(6).getElement();
 
     expect(detailsColNotDraggable[0]).toEqual(detailsColNotDraggableA);
     expect(detailsColNotDraggable[1]).toEqual(detailsColNotDraggableF);
 
     const detailsColDraggable = component.find('[draggable=true]').getElements();
-    const detailsColDraggableB = component.find('[aria-colindex=3]').getElement();
-    const detailsColDraggableC = component.find('[aria-colindex=4]').getElement();
-    const detailsColDraggableD = component.find('[aria-colindex=5]').getElement();
-    const detailsColDraggableE = component.find('[aria-colindex=6]').getElement();
+    const detailsColDraggableB = component.find('[role="columnheader"]').at(2).getElement();
+    const detailsColDraggableC = component.find('[role="columnheader"]').at(3).getElement();
+    const detailsColDraggableD = component.find('[role="columnheader"]').at(4).getElement();
+    const detailsColDraggableE = component.find('[role="columnheader"]').at(5).getElement();
 
     expect(detailsColDraggable[0]).toEqual(detailsColDraggableB);
     expect(detailsColDraggable[1]).toEqual(detailsColDraggableC);
@@ -419,7 +421,7 @@ describe('DetailsHeader', () => {
       />,
     );
 
-    const detailsColSourceA = component.find('[aria-colindex=2]').getDOMNode();
+    const detailsColSourceA = component.find('[role="columnheader"]').at(1).getDOMNode();
     const header: any = headerRef.current!;
 
     // try dragging first frozen column a
@@ -430,7 +432,7 @@ describe('DetailsHeader', () => {
     expect(header._dragDropHelper._dragData).toBe(undefined);
     expect(detailsColSourceA.classList.item(4)).toBe(null);
 
-    const detailsColSourceF = component.find('[aria-colindex=7]').getDOMNode();
+    const detailsColSourceF = component.find('[role="columnheader"]').at(6).getDOMNode();
 
     // try dragging last frozen column e
     _RaiseEvent(detailsColSourceF, _MOUSEDOWN, 950);
@@ -455,7 +457,7 @@ describe('DetailsHeader', () => {
       />,
     );
 
-    const detailsColSourceB = component.find('[aria-colindex=3]').getDOMNode();
+    const detailsColSourceB = component.find('[role="columnheader"]').at(2).getDOMNode();
     const header: any = headerRef.current!;
 
     // raise mouse down and dragstart on column b
@@ -493,11 +495,11 @@ describe('DetailsHeader', () => {
     );
 
     // moving column c and dragover from a to f
-    const detailsColSourceC = component.find('[aria-colindex=4]').getDOMNode();
-    const detailsColTargetB = component.find('[aria-colindex=3]').getDOMNode();
-    const detailsColTargetD = component.find('[aria-colindex=5]').getDOMNode();
-    const detailsColTargetE = component.find('[aria-colindex=6]').getDOMNode();
-    const detailsColTargetF = component.find('[aria-colindex=7]').getDOMNode();
+    const detailsColSourceC = component.find('[role="columnheader"]').at(3).getDOMNode();
+    const detailsColTargetB = component.find('[role="columnheader"]').at(2).getDOMNode();
+    const detailsColTargetD = component.find('[role="columnheader"]').at(4).getDOMNode();
+    const detailsColTargetE = component.find('[role="columnheader"]').at(5).getDOMNode();
+    const detailsColTargetF = component.find('[role="columnheader"]').at(6).getDOMNode();
     const header: any = headerRef.current!;
 
     // do a mousedown and dragstart on source column c
@@ -611,8 +613,8 @@ describe('DetailsHeader', () => {
     );
 
     // moving column e to between a and b (abcdef -> aebcdf)
-    const detailsColSourceE = component.find('[aria-colindex=6]').getDOMNode();
-    let detailsColTarget = component.find('[aria-colindex=3]').getDOMNode();
+    const detailsColSourceE = component.find('[role="columnheader"]').at(5).getDOMNode();
+    let detailsColTarget = component.find('[role="columnheader"]').at(2).getDOMNode();
     const header: any = headerRef.current!;
 
     // do a mousedown and dragstart on source column e
@@ -639,8 +641,8 @@ describe('DetailsHeader', () => {
     expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // try moving column c after frozen column f (abcdef -> abdecf)
-    let detailsColSourceC = component.find('[aria-colindex=4]').getDOMNode();
-    detailsColTarget = component.find('[aria-colindex=7]').getDOMNode();
+    let detailsColSourceC = component.find('[role="columnheader"]').at(3).getDOMNode();
+    detailsColTarget = component.find('[role="columnheader"]').at(6).getDOMNode();
 
     // do a mousedown and dragstart on source column c
     _RaiseEvent(detailsColSourceC, _MOUSEDOWN, 490);
@@ -666,8 +668,8 @@ describe('DetailsHeader', () => {
     expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // source and target column are the same
-    detailsColSourceC = component.find('[aria-colindex=4]').getDOMNode();
-    detailsColTarget = component.find('[aria-colindex=4]').getDOMNode();
+    detailsColSourceC = component.find('[role="columnheader"]').at(3).getDOMNode();
+    detailsColTarget = component.find('[role="columnheader"]').at(3).getDOMNode();
     _RaiseEvent(detailsColSourceC, _MOUSEDOWN, 490);
     _RaiseEvent(detailsColSourceC, _DRAGSTART, 490);
 

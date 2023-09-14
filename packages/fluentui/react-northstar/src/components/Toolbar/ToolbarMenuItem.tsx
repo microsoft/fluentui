@@ -119,7 +119,9 @@ export interface ToolbarMenuItemProps extends UIComponentProps, ChildrenComponen
   wrapper?: ShorthandValue<BoxProps>;
 }
 
-export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled'> & { hasContent: boolean };
+export type ToolbarMenuItemStylesProps = Pick<ToolbarMenuItemProps, 'disabled' | 'disabledFocusable'> & {
+  hasContent: boolean;
+};
 
 export interface ToolbarMenuItemSlotClassNames {
   wrapper: string;
@@ -169,9 +171,9 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
     const itemRef = React.useRef<HTMLElement>();
     const menuRef = React.useRef<HTMLElement>();
 
-    const { menuSlot } = (useContextSelectors(ToolbarMenuContext, {
+    const { menuSlot } = useContextSelectors(ToolbarMenuContext, {
       menuSlot: v => v.slots.menu,
-    }) as unknown) as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+    }) as unknown as ToolbarItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
     const parentVariables = React.useContext(ToolbarVariablesContext);
     const mergedVariables = mergeVariablesOverrides(parentVariables, variables);
@@ -213,7 +215,8 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
       className: composeOptions.className,
       composeOptions,
       mapPropsToStyles: () => ({
-        disabled: disabled || disabledFocusable,
+        disabled,
+        disabledFocusable,
         hasContent: !!content,
       }),
       mapPropsToInlineStyles: () => ({
@@ -413,7 +416,12 @@ export const ToolbarMenuItem = compose<'button', ToolbarMenuItemProps, ToolbarMe
                     </ToolbarVariablesProvider>
                   </Popper>
                 </Ref>
-                <EventListener listener={outsideClickHandler(getRefs)} target={context.target} type="click" />
+                <EventListener
+                  capture={true}
+                  listener={outsideClickHandler(getRefs)}
+                  target={context.target}
+                  type="click"
+                />
               </>
             );
           }}

@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FluentProvider renders a default state 1`] = `
+<div
+  className="fui-FluentProvider fui-FluentProvider1"
+  dir="ltr"
+>
+  Default FluentProvider
+</div>
+`;

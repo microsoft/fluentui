@@ -16,6 +16,7 @@
 
   user-select: none;
 
+  &.invokable:hover,
   &.selectable:hover {
     background-color: $ms-color-neutralLighter;
 
@@ -61,6 +62,7 @@
   &.hasBackgroundFrame {
     box-shadow: 0 1px 3px 1px rgba(1, 1, 0, 0.05);
 
+    &.invokable:hover,
     &.selectable:hover {
       outline: 1px solid $ms-color-neutralTertiaryAlt;
     }
@@ -189,7 +191,7 @@
   }
 
   .tile.selected &,
-  .tile:hover &,
+  .tile.selectable:hover &,
   .tile.showCheck & {
     opacity: 1;
   }
@@ -274,7 +276,7 @@
 
     transition: color 0.2s linear;
 
-    .link:hover & {
+    .tile.invokable .link:hover & {
       text-decoration: underline;
 
       .isFluentStyling & {
@@ -450,12 +452,12 @@
 
   &:hover,
   &.selected {
-    .name.onlyOnHover {
+    .onlyOnHover .name {
       opacity: 1;
       transform: translateY(0px);
     }
 
-    .activity.onlyOnHover {
+    .onlyOnHover .activity {
       opacity: 1;
       transform: translateY(0px);
     }

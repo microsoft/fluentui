@@ -16,10 +16,8 @@ export const progressRingStyles: (
   css`
     ${display('flex')} :host {
       align-items: center;
-      outline: none;
       height: calc(${heightNumber} * 1px);
       width: calc(${heightNumber} * 1px);
-      margin: calc(${heightNumber} * 1px) 0;
     }
 
     .progress {
@@ -79,17 +77,15 @@ export const progressRingStyles: (
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
-        .indeterminate-indicator-1,
-        .determinate {
-          stroke: ${SystemColors.FieldText};
-        }
         .background {
           stroke: ${SystemColors.Field};
         }
-        :host(.paused) .indeterminate-indicator-1 {
-          stroke: ${SystemColors.Field};
+        .determinate,
+        .indeterminate-indicator-1 {
+          stroke: ${SystemColors.ButtonText};
         }
-        :host(.paused) .determinate {
+        :host(.paused) .determinate,
+        :host(.paused) .indeterminate-indicator-1 {
           stroke: ${SystemColors.GrayText};
         }
       `,

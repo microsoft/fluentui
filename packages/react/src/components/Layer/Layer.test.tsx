@@ -2,8 +2,11 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
+import { FocusRectsProvider, IsFocusVisibleClassName } from '../../Utilities';
 import { mount } from 'enzyme';
 import { safeCreate } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
+import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 const ReactDOM = require('react-dom');
 
@@ -259,5 +262,61 @@ describe('Layer', () => {
 
     // The 1 time is for when it was mounted
     expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('sets focus visibility className from parent context', () => {
+    const parentFocusEl = document.createElement('div');
+    parentFocusEl.classList.add(IsFocusVisibleClassName);
+    const parentFocusRef = { current: parentFocusEl };
+    const FocusProviderTest = () => (
+      <div id="app">
+        <FocusRectsProvider providerRef={parentFocusRef}>
+          <div id="parent">
+            <Layer hostId="focusTest" fabricProps={{ className: 'innerFocusProvider' }}>
+              content
+            </Layer>
+          </div>
+        </FocusRectsProvider>
+        <LayerHost id="focusTest" />
+      </div>
+    );
+
+    const appElement = document.createElement('div');
+
+    try {
+      document.body.appendChild(appElement);
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<FocusProviderTest />, appElement);
+      });
+
+      const focusProvider = appElement.querySelector('.innerFocusProvider');
+      expect(focusProvider).toBeTruthy();
+      expect(focusProvider?.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
+    } finally {
+      ReactDOM.unmountComponentAtNode(appElement);
+      appElement.remove();
+    }
+  });
+
+  describe('compat', () => {
+    it('calls "register" from "react-portal-compat"', () => {
+      const unregister = jest.fn();
+      const register = jest.fn().mockImplementation(() => unregister);
+
+      const { unmount } = render(
+        <PortalCompatContextProvider value={register}>
+          <Layer>
+            <div id="sample" />
+          </Layer>
+        </PortalCompatContextProvider>,
+      );
+
+      expect(register).toHaveBeenCalledTimes(1);
+      expect(register).toHaveBeenCalledWith(expect.any(HTMLElement));
+
+      unmount();
+      expect(unregister).toHaveBeenCalledTimes(1);
+    });
   });
 });

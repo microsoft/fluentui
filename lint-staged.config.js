@@ -1,6 +1,6 @@
 // @ts-check
 
-const { prettierSupportedFileExtensionsByContext } = require('@fluentui/scripts/prettier');
+const { prettierSupportedFileExtensionsByContext } = require('@fluentui/scripts-prettier');
 
 const commands = {
   format: 'prettier --write',

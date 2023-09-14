@@ -1,17 +1,15 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, FabricDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TooltipHost } from '@fluentui/react';
 
 storiesOf('Tooltip', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps().hover('.ms-TooltipHost').wait(200).snapshot('default').end()}
-    >
+    <StoryWright steps={new Steps().hover('.ms-TooltipHost').wait(200).snapshot('default').end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Default', () => (
     <TooltipHost content="This is the tooltip" id="myID" calloutProps={{ gapSpace: 0 }}>
@@ -20,10 +18,10 @@ storiesOf('Tooltip', module)
   ));
 
 storiesOf('Tooltip - Multiple', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .hover('#outerTooltip')
         .wait(200)
         .snapshot('hover outer')
@@ -33,7 +31,7 @@ storiesOf('Tooltip - Multiple', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Two Tooltips', () => (
     <div>

@@ -1,12 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -30,8 +30,7 @@ export const cardHeaderClassName = 'ui-card__header';
 /**
  * A CardHeader is used to display data in Card header.
  */
-export const CardHeader: ComponentWithAs<'div', CardHeaderProps> &
-  FluentComponentStaticProps<CardHeaderProps> = props => {
+export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardHeader.displayName, context.telemetry);
   setStart();
@@ -60,6 +59,7 @@ export const CardHeader: ComponentWithAs<'div', CardHeaderProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -68,7 +68,7 @@ export const CardHeader: ComponentWithAs<'div', CardHeaderProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardHeaderProps> & FluentComponentStaticProps<CardHeaderProps>;
 
 CardHeader.displayName = 'CardHeader';
 

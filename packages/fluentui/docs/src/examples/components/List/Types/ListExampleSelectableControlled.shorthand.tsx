@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { Box, List, Image } from '@fluentui/react-northstar';
 
-class SelectableListControlledExample extends React.Component<any, any> {
-  state = { selectedIndex: -1 };
+const SelectableListControlledExample: React.FunctionComponent = () => {
+  const [selectedIndex, setSelectedIndex] = React.useState<number>(-1);
 
-  items = [
+  const items = [
     {
       key: 'robert',
       media: (
@@ -32,25 +32,23 @@ class SelectableListControlledExample extends React.Component<any, any> {
     },
   ];
 
-  render() {
-    return (
-      <Box
-        styles={({ theme: { siteVariables } }) => ({
-          backgroundColor: siteVariables.colorScheme.default.background4,
-        })}
-      >
-        <List
-          selectable
-          selectedIndex={this.state.selectedIndex}
-          onSelectedIndexChange={(e, newProps) => {
-            alert(`List is requested to change its selectedIndex state to "${newProps.selectedIndex}"`);
-            this.setState({ selectedIndex: newProps.selectedIndex });
-          }}
-          items={this.items}
-        />
-      </Box>
-    );
-  }
-}
+  return (
+    <Box
+      styles={({ theme: { siteVariables } }) => ({
+        backgroundColor: siteVariables.colorScheme.default.background4,
+      })}
+    >
+      <List
+        selectable
+        selectedIndex={selectedIndex}
+        onSelectedIndexChange={(e, newProps) => {
+          alert(`List is requested to change its selectedIndex state to "${newProps.selectedIndex}"`);
+          setSelectedIndex(newProps.selectedIndex);
+        }}
+        items={items}
+      />
+    </Box>
+  );
+};
 
 export default SelectableListControlledExample;

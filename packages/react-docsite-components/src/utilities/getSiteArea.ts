@@ -1,15 +1,16 @@
 import { INavPage } from '../components/Nav/index';
+import { getNormalizedPath, normalizePath } from './getNormalizedPath';
 import { removeAnchorLink } from './removeAnchorLink';
 
 /**
  * Retrieves the current top level page name defined in the pages array from the window URL or the passed hash.
  * @param pages - Array of pages.
- * @param hash - The hash.
+ * @param hashOrUrl - The hash or new URL, if getting the area for something besides the current page
  */
-export function getSiteArea(pages?: INavPage[], hash: string = location.hash): string {
-  hash = removeAnchorLink(hash).split('?')[0];
+export function getSiteArea(pages?: INavPage[], hashOrUrl?: string): string {
+  hashOrUrl = hashOrUrl ? normalizePath(removeAnchorLink(hashOrUrl)) : getNormalizedPath();
   // Get the first level from the URL as a fallback. "#/controls/web/button" would be "controls"
-  const topLevel = hash.indexOf('#/') > -1 ? hash.split('#/')[1].split('/')[0] : '';
+  const topLevel = hashOrUrl.indexOf('#/') > -1 ? hashOrUrl.split('#/')[1].split('/')[0] : '';
   const urlRegex = new RegExp(`\^#/${topLevel}\\b`);
   let area = topLevel;
   if (pages) {

@@ -8,8 +8,8 @@ import { createListItems, IExampleItem } from '@fluentui/example-data';
 import { mergeStyleSets, getTheme, normalize } from '@fluentui/react/lib/Styling';
 import { useConst } from '@fluentui/react-hooks';
 
-const evenItemHeight = 25;
-const oddItemHeight = 50;
+const evenItemHeight = 50;
+const oddItemHeight = 25;
 const numberOfItemsOnPage = 10;
 const theme = getTheme();
 const dropdownOptions = [
@@ -26,14 +26,14 @@ const styles = mergeStyleSets({
     border: '1px solid #CCC',
     marginTop: 20,
     selectors: {
-      '.ms-List-cell:nth-child(odd)': {
-        height: 50,
-        lineHeight: 50,
-        background: theme.palette.neutralLighter,
+      '.ms-List-cell .odd': {
+        height: oddItemHeight,
+        lineHeight: oddItemHeight,
       },
-      '.ms-List-cell:nth-child(even)': {
-        height: 25,
-        lineHeight: 25,
+      '.ms-List-cell .even': {
+        height: evenItemHeight,
+        lineHeight: evenItemHeight,
+        background: theme.palette.neutralLighter,
       },
     },
   },
@@ -52,7 +52,7 @@ const styles = mergeStyleSets({
 
 const onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
   return (
-    <div data-is-focusable>
+    <div data-is-focusable className={index % 2 === 0 ? 'even' : 'odd'}>
       <div className={styles.itemContent}>
         {index} &nbsp; {item.name}
       </div>

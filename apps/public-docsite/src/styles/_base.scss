@@ -35,6 +35,24 @@
     border: none;
   }
 
+  // Remove dotted outline added by MWF's main.css
+  body [contentEditable=true]:focus,
+  body [tabindex]:focus,
+  a[href]:not(.c-uhff-link):focus, // Remove link focus outline from all links but the UHF ones
+  body area[href]:focus,
+  body button:focus,
+  body iframe:focus,
+  body input:focus,
+  body select:focus,
+  body textarea:focus {
+    outline: none;
+  }
+
+  // Return the outline on the 'back to top' button
+  .back-to-top a[href]:focus {
+    @include focus-border(-2px);
+  }
+
   // Example card headers
   .ExampleCard-title {
     @include ms-fontSize-20;
@@ -96,7 +114,7 @@
   // and #flightPicker element which creates accessibility issues.
   // Hide #socialMediaContainer element which holds the footer with social media links
   // and #signInPrompt element which contains the sign in modal
-  a.m-back-to-top,
+  [href="#mainContent"],
   #flightPicker,
   #socialMediaContainer,
   #signInPrompt {

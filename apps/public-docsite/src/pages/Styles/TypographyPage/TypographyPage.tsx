@@ -24,13 +24,13 @@ export const TypographyPage: React.FunctionComponent<IStylesPageProps> = props =
   return (
     <StylesAreaPage
       {...props}
-      {...TypographyPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...TypographyPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'web':
       return [
@@ -65,12 +65,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: `${baseUrl}/web/TypographyImplementation.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyImplementation.md') as string,
         },
         {
           sectionName: 'Customization',
           editUrl: `${baseUrl}/web/TypographyCustomization.md`,
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/TypographyPage/docs/web/TypographyCustomization.md') as string,
         },
       ];
   }
@@ -88,7 +90,7 @@ function _renderWeightsTable(weights: ITableRowProps[]) {
       ]}
       rows={weights}
       formatter={(column, row) => {
-        const content = row[column.data];
+        const content = row[column.data!];
         switch (column.title) {
           case 'Weight':
             return `${row.name} (${row.weight})`;
@@ -124,7 +126,7 @@ function _renderSizesTable(sizes: ITableColumnProps[]) {
       ]}
       rows={sizes}
       formatter={(column, row) => {
-        const content = row[column.data];
+        const content = row[column.data!];
         switch (column.title) {
           case 'Core class':
             return <MarkdownCode>ms-fontSize-{row.size}</MarkdownCode>;

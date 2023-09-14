@@ -1,14 +1,13 @@
 import * as React from 'react';
-import * as renderer from 'react-test-renderer';
+import { render, act } from '@testing-library/react';
 
-import { mount } from 'enzyme';
 import { Dialog } from './Dialog';
 import { DialogBase } from './Dialog.base';
 import { DialogContent } from './DialogContent';
 import { DialogType } from './DialogContent.types'; // for express fluent assertions
 import { resetIds, setWarningCallback } from '@fluentui/utilities';
-import { act } from 'react-dom/test-utils';
 import { isConformant } from '../../common/isConformant';
+import { expectNoHiddenParents } from '../../common/testUtilities';
 
 describe('Dialog', () => {
   beforeEach(() => {
@@ -19,18 +18,19 @@ describe('Dialog', () => {
     resetIds();
   });
 
-  afterEach(() => {
-    jest.useRealTimers();
+  isConformant({
+    Component: Dialog,
+    displayName: 'Dialog',
+    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
   });
 
-  it('renders Dialog correctly', () => {
-    const component = renderer.create(<DialogContent />);
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+  it('renders DialogContent correctly', () => {
+    const { container } = render(<DialogContent />);
+    expect(container).toMatchSnapshot();
   });
 
-  it('renders Dialog with a jsx title', () => {
-    const component = renderer.create(
+  it('respects a jsx title', () => {
+    const { queryByText } = render(
       <DialogContent
         type={DialogType.normal}
         title={
@@ -41,12 +41,13 @@ describe('Dialog', () => {
         }
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+
+    expect(queryByText('I am span 1')).toBeTruthy();
+    expect(queryByText('I am span 2')).toBeTruthy();
   });
 
-  it('renders DialogContent with titleProps', () => {
-    const component = renderer.create(
+  it('respects titleProps', () => {
+    const { getByTitle } = render(
       <DialogContent
         type={DialogType.normal}
         title="sample title"
@@ -58,219 +59,213 @@ describe('Dialog', () => {
         }}
       />,
     );
-    const tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
-  });
 
-  isConformant({
-    Component: Dialog,
-    displayName: 'Dialog',
-    disabledTests: ['component-handles-ref', 'component-has-root-ref', 'component-handles-classname'],
+    const title = getByTitle('tooltip');
+    expect(title.getAttribute('aria-level')).toBe('3');
+    expect(title.className).toMatch(/\btitle_class\b/);
   });
 
   it('Fires dismissed after closing', () => {
-    act(() => {
-      jest.useFakeTimers();
-    });
-    let dismissedCalled = false;
+    jest.useFakeTimers();
+    const onDismissed = jest.fn();
 
-    const handleDismissed = () => {
-      dismissedCalled = true;
-    };
+    const { queryByRole, rerender } = render(<DialogBase hidden={false} modalProps={{ onDismissed }} />);
 
-    const wrapper = mount(<DialogBase hidden={false} modalProps={{ onDismissed: handleDismissed }} />);
+    expect(queryByRole('dialog')).toBeTruthy();
 
-    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
-    act(() => {
-      wrapper.setProps({ hidden: true });
-      wrapper.update();
-    });
+    rerender(<DialogBase hidden modalProps={{ onDismissed }} />);
 
     act(() => {
       jest.runAllTimers();
     });
-    expect(document.querySelector('[role="dialog"]')).toBeNull();
-    expect(dismissedCalled).toEqual(true);
-    wrapper.unmount();
+
+    expect(queryByRole('dialog')).toBeFalsy();
+    expect(onDismissed).toHaveBeenCalledTimes(1);
+
+    jest.useRealTimers();
   });
 
   it('deprecated isOpen controls open state of the dialog', () => {
-    setWarningCallback(() => {
-      /* suppress deprecation warning as error */
-    });
+    // suppress deprecation warning as error
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
+    jest.useFakeTimers();
+    const onDismissed = jest.fn();
 
-    act(() => {
-      jest.useFakeTimers();
-    });
-    let dismissedCalled = false;
+    const { queryByRole, rerender } = render(<DialogBase isOpen modalProps={{ onDismissed }} />);
 
-    const handleDismissed = () => {
-      dismissedCalled = true;
-    };
-    const wrapper = mount(<DialogBase isOpen={true} modalProps={{ onDismissed: handleDismissed }} />);
+    expect(queryByRole('dialog')).toBeTruthy();
 
-    expect(document.querySelector('[role="dialog"]')).not.toBeNull();
-    act(() => {
-      wrapper.setProps({ isOpen: false });
-      wrapper.update();
-    });
+    rerender(<DialogBase isOpen={false} modalProps={{ onDismissed }} />);
 
     act(() => {
       jest.runAllTimers();
     });
-    expect(document.querySelector('[role="dialog"]')).toBeNull();
-    expect(dismissedCalled).toEqual(true);
-    act(() => {
-      wrapper.unmount();
-    });
+
+    expect(queryByRole('dialog')).toBeFalsy();
+    expect(onDismissed).toHaveBeenCalledTimes(1);
+
+    jest.useRealTimers();
     setWarningCallback();
   });
 
   it('Properly attaches auto-generated aria attributes IDs', () => {
-    const wrapper = mount(
+    const { getByRole } = render(
       <DialogBase
         hidden={false}
-        modalProps={{
-          onDismissed: () => {
-            /* no-op */
-          },
-        }}
         dialogContentProps={{
-          type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext',
-          titleProps: { 'aria-level': 3 },
         }}
       />,
     );
 
-    const dialogHTML = document.querySelector('[role="dialog"]');
-    expect(dialogHTML).not.toBeNull();
+    const dialogHTML = getByRole('dialog');
 
-    const labelledby = dialogHTML!.getAttribute('aria-labelledby');
-    expect(labelledby).toMatch(/Dialog[\d+]+-title/);
-    expect(document.getElementById(labelledby!)).not.toBeNull();
+    const labelledby = dialogHTML.getAttribute('aria-labelledby')!;
+    expect(labelledby).toMatch(/Dialog\d+-title/);
+    expect(document.getElementById(labelledby)).not.toBeNull();
 
-    expect(dialogHTML!.getAttribute('aria-describedby')).toMatch(/Dialog[\d+]+-subText/);
-    wrapper.unmount();
+    expect(dialogHTML.getAttribute('aria-describedby')).toMatch(/Dialog\d+-subText/);
   });
 
   it('Properly attaches IDs when aria-describedby is passed', () => {
     const subTextAriaId = 'subtextariaid';
-    const wrapper = mount(
+    const { getByRole } = render(
       <DialogBase
         hidden={false}
         modalProps={{
-          onDismissed: () => {
-            /* no-op */
-          },
           subtitleAriaId: subTextAriaId,
         }}
         dialogContentProps={{
-          type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext',
         }}
       />,
     );
 
-    const dialogHTML = document.querySelector('[role="dialog"]');
-    expect(dialogHTML).not.toBeNull();
-    expect(dialogHTML!.getAttribute('aria-labelledby')).toMatch(/Dialog[\d+]+-title/);
-    expect(dialogHTML!.getAttribute('aria-describedby')).toEqual(subTextAriaId);
-    wrapper.unmount();
+    const dialogHTML = getByRole('dialog');
+    expect(dialogHTML.getAttribute('aria-labelledby')).toMatch(/Dialog\d+-title/);
+    expect(dialogHTML.getAttribute('aria-describedby')).toEqual(subTextAriaId);
   });
 
   it('Properly attaches IDs when aria-labelledby is passed', () => {
     const titleAriaId = 'titleariaid';
-    const wrapper = mount(
+    const { getByRole } = render(
       <DialogBase
         hidden={false}
         modalProps={{
-          onDismissed: () => {
-            /* no-op */
-          },
-          titleAriaId: titleAriaId,
+          titleAriaId,
         }}
         dialogContentProps={{
-          type: DialogType.normal,
           title: 'sample title',
           subText: 'Sample subtext',
         }}
       />,
     );
 
-    const dialogHTML = document.querySelector('[role="dialog"]');
-    expect(dialogHTML).not.toBeNull();
-    expect(dialogHTML!.getAttribute('aria-labelledby')).toEqual(titleAriaId);
-    expect(dialogHTML!.getAttribute('aria-describedby')).toMatch(/Dialog[\d+]+-subText/);
-    wrapper.unmount();
+    const dialogHTML = getByRole('dialog');
+    expect(dialogHTML.getAttribute('aria-labelledby')).toEqual(titleAriaId);
+    expect(dialogHTML.getAttribute('aria-describedby')).toMatch(/Dialog\d+-subText/);
   });
 
-  describe('Dialog Title Id', () => {
+  it('deprecated titleId prop should be used if titleProps.id is not passed', () => {
+    // Prevent warn deprecations from failing test
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
+
+    const titleId = 'title_id';
+    render(
+      <DialogBase
+        hidden={false}
+        dialogContentProps={{
+          titleId,
+          title: 'sample title',
+        }}
+      />,
+    );
+
+    const dialogTitle = document.getElementById(titleId);
+    expect(dialogTitle).toBeTruthy();
+
+    setWarningCallback();
+  });
+
+  it('deprecated titleId prop should not be used if titleProps.id is undefined', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
+
+    const titleId = 'title_id';
+    render(
+      <DialogBase
+        hidden={false}
+        dialogContentProps={{
+          titleId,
+          title: 'sample title',
+          titleProps: { id: undefined },
+        }}
+      />,
+    );
+
+    const dialogTitle = document.getElementById(titleId);
+    expect(dialogTitle).toBeFalsy();
+
+    setWarningCallback();
+  });
+
+  it('titleProps.id should be used if deprecated titleId is also passed', () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    setWarningCallback(() => {});
+
+    const titleId = 'title_id';
+    render(
+      <DialogBase
+        hidden={false}
+        dialogContentProps={{
+          titleId: `${titleId}_deprecated`,
+          title: 'sample title',
+          titleProps: { id: titleId },
+        }}
+      />,
+    );
+
+    const dialogTitle = document.getElementById(titleId);
+    expect(dialogTitle).toBeTruthy();
+
+    setWarningCallback();
+  });
+
+  describe('enableAriaHiddenSiblings', () => {
+    // These tests cover functionality inherited from Modal: when the dialog is open, all siblings
+    // outside the *content's* DOM tree should be hidden. The content is rendered in a portal
+    // (not under the same div as the rest of the React-rendered elements), so to test that a
+    // sibling element gets properly hidden, the sibling must be attached directly to document.body.
+    let sibling: HTMLElement;
+
     beforeEach(() => {
-      // Prevent warn deprecations from failing test
-      setWarningCallback(() => {
-        /* no-op */
-      });
+      sibling = document.createElement('div');
+      sibling.textContent = 'sibling';
+      document.body.appendChild(sibling);
     });
 
-    afterEach(() => setWarningCallback());
-
-    it('deprecated titleId prop should be set if titleProps.id is not passed', () => {
-      const titleId = 'title_id';
-      const wrapper = mount(
-        <DialogBase
-          hidden={false}
-          dialogContentProps={{
-            titleId,
-            type: DialogType.normal,
-            title: 'sample title',
-          }}
-        />,
-      );
-
-      const dialogTitle = document.getElementById(titleId);
-      expect(dialogTitle).not.toBeNull();
-      wrapper.unmount();
+    afterEach(() => {
+      sibling.remove();
     });
 
-    it('deprecated titleId prop should not be set if titleProps.id is undefined', () => {
-      const titleId = 'title_id';
-      const wrapper = mount(
-        <DialogBase
-          hidden={false}
-          dialogContentProps={{
-            titleId,
-            type: DialogType.normal,
-            title: 'sample title',
-            titleProps: { id: undefined },
-          }}
-        />,
-      );
+    it('hides siblings when open', () => {
+      const { getByText } = render(<Dialog hidden={false}>content</Dialog>);
 
-      const dialogTitle = document.getElementById(titleId);
-      expect(dialogTitle).toBeNull();
-      wrapper.unmount();
+      expectNoHiddenParents(getByText('content'));
+
+      expect(getByText('sibling').getAttribute('aria-hidden')).toBe('true');
     });
 
-    it('titleProps.id should be set if deprecated titleId is also passed', () => {
-      const titleId = 'title_id';
-      const wrapper = mount(
-        <DialogBase
-          hidden={false}
-          dialogContentProps={{
-            titleId: `${titleId}_deprecated`,
-            type: DialogType.normal,
-            title: 'sample title',
-            titleProps: { id: titleId },
-          }}
-        />,
-      );
+    it('does not hide siblings when closed', () => {
+      const { queryByText } = render(<Dialog hidden>content</Dialog>);
 
-      const dialogTitle = document.getElementById(titleId);
-      expect(dialogTitle).not.toBeNull();
-      wrapper.unmount();
+      expect(queryByText('content')).toBeFalsy(); // verify it's closed
+
+      expectNoHiddenParents(queryByText('sibling')!);
     });
   });
 });

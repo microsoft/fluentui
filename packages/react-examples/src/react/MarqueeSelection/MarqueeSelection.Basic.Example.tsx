@@ -15,7 +15,7 @@ const PHOTOS: IPhoto[] = createArray(250, (index: number) => {
   const randomWidth = 50 + Math.floor(Math.random() * 150);
   return {
     key: index,
-    url: `http://via.placeholder.com/${randomWidth}x100`,
+    url: `https://fabricweb.azureedge.net/fabric-website/placeholders/${randomWidth}x100.png`,
     width: randomWidth,
     height: 100,
   };

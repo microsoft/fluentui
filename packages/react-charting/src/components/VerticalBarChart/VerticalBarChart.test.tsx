@@ -6,6 +6,7 @@ import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '../../index';
 import { IVerticalBarChartState, VerticalBarChartBase } from './VerticalBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the VerticalBarChart to be tested.
 let wrapper: ReactWrapper<IVerticalBarChartProps, IVerticalBarChartState, VerticalBarChartBase> | undefined;
@@ -28,7 +29,7 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints = [
+export const chartPoints = [
   {
     x: 0,
     y: 10000,
@@ -94,6 +95,12 @@ describe('VerticalBarChart snapShot testing', () => {
 
   it('renders yAxisTickFormat correctly', () => {
     const component = renderer.create(<VerticalBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render bar labels', () => {
+    const component = renderer.create(<VerticalBarChart data={chartPoints} hideLabels={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -181,6 +188,89 @@ describe('Render calling with respective to props', () => {
     };
     const component = mount(<VerticalBarChart {...props} />);
     component.setProps({ ...props, hideTooltip: true });
+    expect(renderMock).toHaveBeenCalledTimes(2);
+    renderMock.mockRestore();
+  });
+});
+
+describe('VerticalBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', async () => {
+    wrapper = mount(
+      <VerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+    );
+
+    // Wait for the chart to be resized
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+
+    wrapper.find('rect').at(1).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render customized callout on mouseover', async () => {
+    wrapper = mount(
+      <VerticalBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        enabledLegendsWrapLines
+        onRenderCalloutPerDataPoint={(props: IVerticalBarChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(
+      <VerticalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+    );
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<VerticalBarChart data={[]} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
+  });
+});
+
+describe('Render empty chart calling with respective to props', () => {
+  it('No prop changes', () => {
+    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
+    const props = {
+      data: chartPoints,
+    };
+    const component = mount(<VerticalBarChart {...props} />);
+    component.setProps({ ...props });
+    expect(renderMock).toHaveBeenCalledTimes(2);
+    renderMock.mockRestore();
+  });
+
+  it('Prop changes', () => {
+    const renderMock = jest.spyOn(VerticalBarChartBase.prototype, 'render');
+    const props = {
+      data: [],
+    };
+    const component = mount(<VerticalBarChart {...props} />);
+    component.setProps({ ...props, data: chartPoints });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });

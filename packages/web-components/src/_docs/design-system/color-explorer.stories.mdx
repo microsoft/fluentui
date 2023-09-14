@@ -1,0 +1,16 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+import { App, init } from './color-explorer';
+
+<Meta title="Design System/Color Explorer" />
+
+## Color Explorer
+
+This tool illustrates how the Adaptive Color system works using recipes to evaluate colors relative to their background context.
+All components are styled using these recipes and will adjust accordingly.
+
+Note that while hex values are provided, they should not be used in code aside from specifying the base colors used to create each palette.
+They may be used for legacy frameworks that don't support the color model to match the visuals from the web components.
+
+export const temp = init();
+
+<app-main neutral-color="#808080" accent-color="#0078D4"></app-main>

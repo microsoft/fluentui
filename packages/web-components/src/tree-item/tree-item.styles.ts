@@ -18,7 +18,6 @@ import {
   density,
   designUnit,
   disabledOpacity,
-  focusStrokeOuter,
   focusStrokeWidth,
   neutralFillSecondaryRecipe,
   neutralFillSecondaryRest,
@@ -28,10 +27,10 @@ import {
   neutralFillStealthRest,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
 import { Swatch } from '../color/swatch';
+import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
 
 const ltr = css`
   .expand-collapse-button svg {
@@ -97,14 +96,6 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       --tree-item-nested-width: 0;
     }
 
-    :host(:focus) > .positioning-region {
-      outline: none;
-    }
-
-    :host(:focus) .content-region {
-      outline: none;
-    }
-
     .positioning-region {
       display: flex;
       position: relative;
@@ -116,8 +107,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     }
 
     :host(:${focusVisible}) .positioning-region {
-      border-color: ${focusStrokeOuter};
-      box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter} inset;
+      ${focusTreatmentBase}
     }
 
     .positioning-region::before {
@@ -142,9 +132,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       width: 100%;
       height: calc(${heightNumber} * 1px);
       margin-inline-start: calc(${designUnit} * 2px + 8px);
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-      font-weight: 400;
+      ${typeRampBase}
     }
 
     .items {
@@ -159,7 +147,6 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       background: none;
       border: none;
       border-radius: calc(${controlCornerRadius} * 1px);
-      outline: none;
       ${
         /* Width and Height should be based off calc(glyph-size-number + (design-unit * 4) * 1px) -
             update when density story is figured out */ ''
@@ -248,34 +235,42 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
     forcedColorsStylesheetBehavior(
       css`
         :host {
-          forced-color-adjust: none;
-          border-color: transparent;
-          background: ${SystemColors.Field};
-          color: ${SystemColors.FieldText};
+          color: ${SystemColors.ButtonText};
+        }
+        .positioning-region {
+          border-color: ${SystemColors.ButtonFace};
+          background: ${SystemColors.ButtonFace};
         }
         :host(:not([disabled])) .positioning-region:hover,
-        :host([selected]) .positioning-region {
+        :host(:not([disabled])) .positioning-region:active,
+        :host(:not([disabled])[selected]) .positioning-region {
           background: ${SystemColors.Highlight};
         }
         :host .positioning-region:hover .content-region,
         :host([selected]) .positioning-region .content-region {
+          forced-color-adjust: none;
           color: ${SystemColors.HighlightText};
         }
+        :host([disabled][selected]) .positioning-region .content-region {
+          color: ${SystemColors.GrayText};
+        }
         :host([selected])::after {
-          background: ${SystemColors.Field};
+          background: ${SystemColors.HighlightText};
         }
         :host(:${focusVisible}) .positioning-region {
-          border-color: ${SystemColors.FieldText};
-          box-shadow: 0 0 0 2px inset ${SystemColors.Field};
+          forced-color-adjust: none;
+          outline-color: ${SystemColors.ButtonFace};
         }
+        :host([disabled]),
         :host([disabled]) .content-region,
         :host([disabled]) .positioning-region:hover .content-region {
           opacity: 1;
           color: ${SystemColors.GrayText};
         }
-        :host(.nested) .expand-collapse-button:hover {
-          background: ${SystemColors.Field};
-          fill: ${SystemColors.FieldText};
+        :host(.nested) .expand-collapse-button:hover,
+        :host(:not([disabled])[selected]) .expand-collapse-button:hover {
+          background: ${SystemColors.ButtonFace};
+          fill: ${SystemColors.ButtonText};
         }
       `,
     ),

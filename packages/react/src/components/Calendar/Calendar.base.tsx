@@ -149,9 +149,8 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
   (propsWithoutDefaults, forwardedRef) => {
     const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
 
-    const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] = useDateState(
-      props,
-    );
+    const [selectedDate, navigatedDay, navigatedMonth, onDateSelected, navigateDay, navigateMonth] =
+      useDateState(props);
     const [isMonthPickerVisible, isDayPickerVisible, toggleDayMonthPickerVisibility] = useVisibilityState(props);
     const [dayPicker, monthPicker, focusOnNextUpdate] = useFocusLogic(props, isDayPickerVisible, isMonthPickerVisible);
 
@@ -281,6 +280,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       minDate,
       maxDate,
       restrictedDates,
+      id,
       className,
       showCloseButton,
       allFocusable,
@@ -301,14 +301,14 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
     const classes = getClassNames(styles, {
       theme: theme!,
       className,
-      isMonthPickerVisible: isMonthPickerVisible,
-      isDayPickerVisible: isDayPickerVisible,
-      monthPickerOnly: monthPickerOnly,
-      showMonthPickerAsOverlay: showMonthPickerAsOverlay,
-      overlaidWithButton: overlaidWithButton,
+      isMonthPickerVisible,
+      isDayPickerVisible,
+      monthPickerOnly,
+      showMonthPickerAsOverlay,
+      overlaidWithButton,
       overlayedWithButton: overlaidWithButton,
-      showGoToToday: showGoToToday,
-      showWeekNumbers: showWeekNumbers,
+      showGoToToday,
+      showWeekNumbers,
     });
 
     let todayDateString: string = '';
@@ -317,15 +317,16 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
       todayDateString = format(strings!.todayDateFormatString, dateTimeFormatter.formatMonthDayYear(today, strings!));
     }
     if (dateTimeFormatter && strings!.selectedDateFormatString) {
-      selectedDateString = format(
-        strings!.selectedDateFormatString,
-        dateTimeFormatter.formatMonthDayYear(selectedDate, strings!),
-      );
+      const dateStringFormatter = monthPickerOnly
+        ? dateTimeFormatter.formatMonthYear
+        : dateTimeFormatter.formatMonthDayYear;
+      selectedDateString = format(strings!.selectedDateFormatString, dateStringFormatter(selectedDate, strings!));
     }
     const selectionAndTodayString = selectedDateString + ', ' + todayDateString;
 
     return (
       <div
+        id={id}
         ref={forwardedRef}
         role="group"
         aria-label={selectionAndTodayString}
@@ -397,7 +398,7 @@ export const CalendarBase: React.FunctionComponent<ICalendarProps> = React.forwa
 );
 CalendarBase.displayName = 'CalendarBase';
 
-function getShowMonthPickerAsOverlay(props: ICalendarProps) {
+function getShowMonthPickerAsOverlay({ showMonthPickerAsOverlay, isDayPickerVisible }: ICalendarProps) {
   const win = getWindow();
-  return props.showMonthPickerAsOverlay || (win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
+  return showMonthPickerAsOverlay || (isDayPickerVisible && win && win.innerWidth <= MIN_SIZE_FORCE_OVERLAY);
 }

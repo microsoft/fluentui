@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory SwatchColorPicker}
@@ -21,6 +21,13 @@ export interface IColorPickerGridCellProps {
    * Prefix for this cell's ID. Will be required in a future version once `id` is removed.
    */
   idPrefix?: string;
+
+  /**
+   * If true, uses radio semantics for the color cell.
+   * This should be set to true for cells within a single-row colorpicker.
+   * @defaultvalue false
+   */
+  isRadio?: boolean;
 
   /**
    * Tooltip and aria label for this item
@@ -80,11 +87,11 @@ export interface IColorPickerGridCellProps {
   /**
    * Handler for when a color cell is clicked.
    */
-  onClick?: (item: IColorCellProps) => void;
+  onClick?: (item: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>) => void;
 
-  onHover?: (item?: IColorCellProps) => void;
+  onHover?: (item?: IColorCellProps, event?: React.MouseEvent<HTMLButtonElement>) => void;
 
-  onFocus?: (item: IColorCellProps) => void;
+  onFocus?: (item: IColorCellProps, event?: React.FormEvent<HTMLButtonElement>) => void;
 
   /**
    * Custom styles for the component.
@@ -106,6 +113,11 @@ export interface IColorPickerGridCellProps {
   onWheel?: (ev: React.MouseEvent<HTMLButtonElement>) => void;
 
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
+
+  /**
+   * Custom render function for rendering internal content of the color cell.
+   */
+  onRenderColorCellContent?: IRenderFunction<IColorCellProps>;
 }
 
 /**
@@ -131,6 +143,11 @@ export interface IColorCellProps {
    * Index for this option
    */
   index?: number;
+
+  /**
+   * Determines if this individual cell is disabled
+   */
+  disabled?: boolean;
 }
 
 /**

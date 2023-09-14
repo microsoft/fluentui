@@ -3,14 +3,14 @@ import { ISiteDefinition, LoadingComponent } from '@fluentui/react-docsite-compo
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 import { platforms } from './SiteDefinition.platforms';
+import { cdnUrl } from '../utilities/cdn';
 import { SiteGlobals } from '@fluentui/public-docsite-setup';
 
 declare const window: Window & SiteGlobals;
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
   siteTitle: 'Fluent UI',
-  siteLogoSource:
-    'https://static2.sharepointonline.com/files/fabric/fabric-website/images/microsoftfluentui-logo-rgb_no-padding.svg',
+  siteLogoSource: `${cdnUrl}/fabric-website/images/microsoftfluentui-logo-rgb_no-padding.svg`,
   platforms,
   pages: [
     {
@@ -49,7 +49,8 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/examples/announced/', to: '#/controls/web/announced/' },
     { from: /#\/components/, to: '#/controls/web' },
     { from: '#/styles/animation', to: '#/styles/web/motion' },
-    { from: '#/styles/brand-icons', to: '#/styles/web/office-brand-icons' },
+    { from: '#/styles/brand-icons', to: '#/styles/web/m365-product-icons' },
+    { from: '#/styles/web/office-brand-icons', to: '#/styles/web/m365-product-icons' },
     { from: '#/styles/colors', to: '#/styles/web/colors/theme-slots' },
     { from: '#/styles/icons', to: '#/styles/web/icons' },
     { from: '#/styles/layout', to: '#/styles/web/layout' },
@@ -61,15 +62,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/web/fluent-theme', to: '#/controls/web/themes' },
     { from: '#/examples', to: '#/controls/web' },
   ],
-  messageBars: [
-    {
-      path: '#',
-      text: <span>Fluent UI React version 8 is now available.</span>,
-      linkText: 'Learn more',
-      linkUrl: 'https://github.com/microsoft/fluentui/wiki/Version-8-release-notes',
-      sessionStoragePrefix: 'FluentUI8',
-    },
-  ],
+  messageBars: [],
   // This is defined by loadSite() from @fluentui/public-docsite-setup
   versionSwitcherDefinition: window.__versionSwitcherDefinition,
 };

@@ -17,7 +17,8 @@
     "preserveConstEnums": true,
     "lib": ["es6", "dom"],
     "types": [],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "isolatedModules": true
   },
   "include": ["src"]
 }

@@ -8,7 +8,7 @@ import type { IWithResponsiveModeState } from '../../ResponsiveMode';
 import type { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import type { IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import type { ICSSRule, ICSSPixelUnitRule } from '@fluentui/merge-styles/lib/IRawStyleBase';
+import type { ICSSRule, ICSSPixelUnitRule } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory Dialog}
@@ -23,6 +23,7 @@ export interface IDialogProps
     // eslint-disable-next-line deprecation/deprecation
     IWithResponsiveModeState,
     IAccessiblePopupProps {
+  children?: React.ReactNode;
   /**
    * @deprecated Unused, returns no value
    */

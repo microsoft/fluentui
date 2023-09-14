@@ -6,36 +6,27 @@ import {
   NumberFieldOptions,
 } from '@microsoft/fast-foundation';
 import {
-  inputFilledForcedColorStyles,
+  baseInputStyles,
   inputFilledStyles,
   inputForcedColorStyles,
+  inputOutlineStyles,
   inputStateStyles,
-  inputStyles,
 } from '../styles/index';
 import { appearanceBehavior } from '../utilities/behaviors';
 import { designUnit } from '../design-tokens';
 
-export const numberFieldFilledStyles: (
+const logicalControlSelector: string = '.root';
+
+export const numberFieldStyles: (context: ElementDefinitionContext, definition: NumberFieldOptions) => ElementStyles = (
   context: ElementDefinitionContext,
   definition: NumberFieldOptions,
-) => ElementStyles = (context: ElementDefinitionContext, definition: NumberFieldOptions) =>
-  css`
-    ${inputFilledStyles(context, definition, '.root')}
-  `.withBehaviors(
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputFilledForcedColorStyles(context, definition, '.root')}
-      `,
-    ),
-  );
-
-export const numberFieldStyles = (context, definition) =>
+) =>
   css`
     ${display('inline-block')}
 
-    ${inputStyles(context, definition, '.root')}
+    ${baseInputStyles(context, definition, logicalControlSelector)}
 
-    ${inputStateStyles(context, definition, '.root')}
+    ${inputStateStyles(context, definition, logicalControlSelector)}
 
     .root {
       display: flex;
@@ -95,10 +86,7 @@ export const numberFieldStyles = (context, definition) =>
       padding-top: 3px;
     }
   `.withBehaviors(
-    appearanceBehavior('filled', numberFieldFilledStyles(context, definition)),
-    forcedColorsStylesheetBehavior(
-      css`
-        ${inputForcedColorStyles(context, definition, '.root')}
-      `,
-    ),
+    appearanceBehavior('outline', inputOutlineStyles(context, definition, logicalControlSelector)),
+    appearanceBehavior('filled', inputFilledStyles(context, definition, logicalControlSelector)),
+    forcedColorsStylesheetBehavior(inputForcedColorStyles(context, definition, logicalControlSelector)),
   );

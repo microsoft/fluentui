@@ -3,13 +3,13 @@ import { FluentComponentStaticProps } from '../../types';
 import { Accessibility } from '@fluentui/accessibility';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  ComponentWithAs,
   useTelemetry,
   useStyles,
   getElementType,
   useUnhandledProps,
   useFluentContext,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 
@@ -29,7 +29,7 @@ export const cardBodyClassName = 'ui-card__body';
 /**
  * A CardBody is used to display data in Card body.
  */
-export const CardBody: ComponentWithAs<'div', CardBodyProps> & FluentComponentStaticProps<CardBodyProps> = props => {
+export const CardBody = React.forwardRef<HTMLDivElement, CardBodyProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardBody.displayName, context.telemetry);
   setStart();
@@ -58,6 +58,7 @@ export const CardBody: ComponentWithAs<'div', CardBodyProps> & FluentComponentSt
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -66,7 +67,7 @@ export const CardBody: ComponentWithAs<'div', CardBodyProps> & FluentComponentSt
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardBodyProps> & FluentComponentStaticProps<CardBodyProps>;
 
 CardBody.displayName = 'CardBody';
 

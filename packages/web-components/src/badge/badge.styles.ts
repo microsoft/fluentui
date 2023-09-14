@@ -2,16 +2,15 @@ import { css, ElementStyles } from '@microsoft/fast-element';
 import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
 import {
   accentFillRest,
-  bodyFont,
   controlCornerRadius,
   designUnit,
   foregroundOnAccentRest,
   neutralFillSecondaryRest,
   neutralForegroundRest,
   strokeWidth,
-  typeRampMinus1FontSize,
   typeRampMinus1LineHeight,
 } from '../design-tokens';
+import { typeRampMinus1 } from '../styles/patterns/type-ramp';
 
 export const badgeStyles: (
   context: ElementDefinitionContext,
@@ -20,9 +19,7 @@ export const badgeStyles: (
   css`
     ${display('inline-block')} :host {
       box-sizing: border-box;
-      font-family: ${bodyFont};
-      font-size: ${typeRampMinus1FontSize};
-      line-height: ${typeRampMinus1LineHeight};
+      ${typeRampMinus1};
     }
 
     .control {

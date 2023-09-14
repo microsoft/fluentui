@@ -16,6 +16,7 @@ export const Transition = props => {
     onExiting,
     onExited,
     children,
+    nodeRef,
     ...rest
   } = props;
 

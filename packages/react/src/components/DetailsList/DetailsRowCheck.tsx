@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { css, styled, classNamesFunction, composeRenderFunction, getNativeElementProps } from '../../Utilities';
 import { Check } from '../../Check';
-import { getStyles } from './DetailsRowCheck.styles';
+import { getDetailsRowCheckStyles } from './DetailsRowCheck.styles';
 import { SelectionMode } from '../../Selection';
 import type {
   IDetailsRowCheckProps,
@@ -89,7 +89,7 @@ function _fastDefaultCheckboxRender(checkboxProps: IDetailsCheckboxProps) {
 
 export const DetailsRowCheck = styled<IDetailsRowCheckProps, IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>(
   DetailsRowCheckBase,
-  getStyles,
+  getDetailsRowCheckStyles,
   undefined,
   { scope: 'DetailsRowCheck' },
   true,

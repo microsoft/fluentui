@@ -13,4 +13,9 @@
   .ms-Panel {
     z-index: 600;
   }
+
+  // Prevent icons to align in the middle
+  .ms-HomePage-cardIcon svg {
+    vertical-align: unset;
+  }
 }

@@ -29,7 +29,8 @@ const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollableP
 
 export class ScrollablePaneBase
   extends React.Component<IScrollablePaneProps, IScrollablePaneState>
-  implements IScrollablePane {
+  implements IScrollablePane
+{
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -106,7 +107,7 @@ export class ScrollablePaneBase
         // If the scrollbar height changed, update state so it's postioned correctly below sticky footer
         if (scrollbarHeight !== this.state.scrollbarHeight) {
           this.setState({
-            scrollbarHeight: scrollbarHeight,
+            scrollbarHeight,
           });
         }
 
@@ -187,7 +188,7 @@ export class ScrollablePaneBase
   }
 
   public render(): JSX.Element {
-    const { className, scrollContainerFocus, scrollContainerAriaLabel, theme, styles } = this.props;
+    const { className, scrollContainerFocus, scrollContainerAriaLabel, theme, styles, onScroll } = this.props;
     const { stickyTopHeight, stickyBottomHeight } = this.state;
     const classNames = getClassNames(styles!, {
       theme: theme!,
@@ -200,11 +201,26 @@ export class ScrollablePaneBase
           role: 'group',
           tabIndex: 0,
           'aria-label': scrollContainerAriaLabel,
+          onScroll,
         }
-      : {};
+      : {
+          onScroll,
+        };
 
     return (
-      <div {...getNativeProps(this.props, divProperties)} ref={this._root} className={classNames.root}>
+      <div
+        {...getNativeProps(
+          {
+            ...this.props,
+          },
+          divProperties,
+          // on React 17 onScroll is not being invoked on root element,
+          // as a fix this method will be provided to the container element
+          ['onScroll'],
+        )}
+        ref={this._root}
+        className={classNames.root}
+      >
         <div
           ref={this._stickyAboveRef}
           className={classNames.stickyAbove}
@@ -298,8 +314,8 @@ export class ScrollablePaneBase
     });
 
     this.setState({
-      stickyTopHeight: stickyTopHeight,
-      stickyBottomHeight: stickyBottomHeight,
+      stickyTopHeight,
+      stickyBottomHeight,
     });
   };
 
@@ -450,7 +466,7 @@ export class ScrollablePaneBase
 
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
     return {
-      height: height,
+      height,
       ...(getRTL(this.props.theme)
         ? {
             right: '0',

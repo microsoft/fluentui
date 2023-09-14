@@ -3,7 +3,10 @@ import {
   unstable_calculateAnimationTimeout as calculateAnimationTimeout,
   useFluentContext,
   useTelemetry,
+  useMergedRefs,
+  ForwardRefComponent,
 } from '@fluentui/react-bindings';
+import { Ref } from '@fluentui/react-component-ref';
 import cx from 'classnames';
 import * as _ from 'lodash';
 import * as PropTypes from 'prop-types';
@@ -15,7 +18,10 @@ import { childrenExist, commonPropTypes, ChildrenComponentProps } from '../../ut
 import { ComponentEventHandler } from '../../types';
 import { useAnimationStyles } from './useAnimationStyles';
 
-export type AnimationChildrenProp = (props: { classes: string }) => React.ReactNode;
+export type AnimationChildrenProp = (props: {
+  classes: string;
+  state: 'unmounted' | 'exited' | 'entering' | 'entered' | 'exiting';
+}) => React.ReactNode;
 
 export interface AnimationProps extends ChildrenComponentProps<AnimationChildrenProp | React.ReactChild> {
   /** Additional CSS class name(s) to apply.  */
@@ -139,28 +145,29 @@ export interface AnimationProps extends ChildrenComponentProps<AnimationChildren
 /**
  * An Animation provides animation effects to rendered elements.
  */
-export const Animation: React.FC<AnimationProps> & {
-  handledProps: (keyof AnimationProps)[];
-} = props => {
+export const Animation = React.forwardRef<HTMLDivElement, AnimationProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Animation.displayName, context.telemetry);
   setStart();
 
   const { appear, children, className, mountOnEnter, timeout, visible, unmountOnExit } = props;
 
-  const handleAnimationEvent = (
-    event: 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited',
-  ) => () => {
-    _.invoke(props, event, null, props);
-  };
+  const handleAnimationEvent =
+    (event: 'onEnter' | 'onEntering' | 'onEntered' | 'onExit' | 'onExiting' | 'onExited') => () => {
+      _.invoke(props, event, null, props);
+    };
 
-  const { className: animationClasses, animationDuration, animationDelay } = useAnimationStyles(
-    Animation.displayName,
-    props,
-  );
+  const {
+    className: animationClasses,
+    animationDuration,
+    animationDelay,
+  } = useAnimationStyles(Animation.displayName, props);
   const timeoutResult = timeout || calculateAnimationTimeout(animationDuration, animationDelay) || 0;
 
   const unhandledProps = useUnhandledProps(Animation.handledProps, props);
+
+  const nodeRef = React.useRef();
+  const mergedRef = useMergedRefs(ref, nodeRef);
 
   if (_.isNil(children)) {
     setEnd();
@@ -172,6 +179,7 @@ export const Animation: React.FC<AnimationProps> & {
 
   const element = (
     <Transition
+      nodeRef={nodeRef}
       in={visible}
       appear={appear}
       mountOnEnter={mountOnEnter}
@@ -186,15 +194,26 @@ export const Animation: React.FC<AnimationProps> & {
       {...unhandledProps}
       className={!isChildrenFunction ? cx(animationClasses, className, (child as any)?.props?.className) : ''}
     >
-      {isChildrenFunction
-        ? () => (children as AnimationChildrenProp)({ classes: cx(animationClasses, className) })
-        : child}
+      {isChildrenFunction ? (
+        // @ts-ignore - @types/react-transition-group doesn't actually include this API, nor is it documented
+        ({ state }) => {
+          const childWithClasses = (children as AnimationChildrenProp)({
+            classes: cx(animationClasses, className, (child as any)?.props?.className),
+            state,
+          }) as React.ReactElement;
+          return childWithClasses ? <Ref innerRef={mergedRef}>{childWithClasses}</Ref> : childWithClasses;
+        }
+      ) : (
+        <Ref innerRef={mergedRef}>
+          {React.cloneElement(child, { className: cx(animationClasses, className, (child as any)?.props?.className) })}
+        </Ref>
+      )}
     </Transition>
   );
   setEnd();
 
   return element;
-};
+}) as ForwardRefComponent<AnimationProps>;
 
 Animation.displayName = 'Animation';
 

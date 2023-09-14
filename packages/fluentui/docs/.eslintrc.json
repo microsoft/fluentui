@@ -3,7 +3,12 @@
   "overrides": [
     {
       // These files don't have actual dependencies
-      "files": ["src/examples/**/*.steps.ts", "src/examples/**/commonScreenerSteps.ts"],
+      "files": [
+        "src/vr-tests/**/*.stories.tsx",
+        "src/vr-tests/**/*.stories.ts",
+        "src/vr-tests/**/*.tsx",
+        "src/vr-tests/**/*.ts"
+      ],
       "rules": {
         "import/no-extraneous-dependencies": "off"
       }

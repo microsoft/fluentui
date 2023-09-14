@@ -3,11 +3,14 @@ import { ScaleTime } from 'd3-scale';
 import { findIndex } from '@fluentui/react/lib/Utilities';
 import { ILineDef, LabelLink, ILabelDef } from './LabelLink';
 import { IEventsAnnotationProps } from '../LineChart.types';
+import { ITheme } from '@fluentui/react/lib/Styling';
+import { getColorFromToken } from '../../../utilities/colors';
 
 interface IEventsAnnotationExtendProps extends IEventsAnnotationProps {
   scale: ScaleTime<number, number>;
   chartYBottom: number;
   chartYTop: number;
+  theme: ITheme | undefined;
 }
 
 export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendProps> = props => {
@@ -23,21 +26,18 @@ export const EventsAnnotation: React.FunctionComponent<IEventsAnnotationExtendPr
 
   lineDefs.sort((e1, e2) => +e1.date - +e2.date);
 
+  const fill: string | undefined = props.strokeColor
+    ? getColorFromToken(props.strokeColor, props.theme?.isInverted)
+    : props.theme?.palette.black;
+
   const lines = uniqBy(lineDefs, x => x.date.toString()).map((x, i) => (
-    <line
-      key={i}
-      x1={x.x}
-      x2={x.x}
-      y1={lineTopY}
-      y2={props.chartYBottom}
-      stroke={props.strokeColor}
-      strokeDasharray="8"
-    />
+    <line key={i} x1={x.x} x2={x.x} y1={lineTopY} y2={props.chartYBottom} stroke={fill} strokeDasharray="8" />
   ));
 
   const labelLinks = calculateLabels(lineDefs, textWidth + textPadding, axisRange[1], axisRange[0]).map((x, i) => (
     <LabelLink
       key={i}
+      theme={props.theme}
       {...{
         lineDefs,
         labelDef: x,

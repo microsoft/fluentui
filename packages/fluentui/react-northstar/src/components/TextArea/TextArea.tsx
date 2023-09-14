@@ -5,7 +5,6 @@ import * as React from 'react';
 import * as PropTypes from 'prop-types';
 import { UIComponentProps, ChildrenComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import {
-  ComponentWithAs,
   useAutoControlled,
   getElementType,
   useTelemetry,
@@ -13,6 +12,7 @@ import {
   useFluentContext,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface TextAreaProps extends UIComponentProps, ChildrenComponentProps {
@@ -66,8 +66,7 @@ export const textAreaClassName = 'ui-textarea';
  * [NVDA - No announcement of maxlength](https://github.com/nvaccess/nvda/issues/7910)
  * [JAWS - textarea - no announcement of maxlength](https://github.com/FreedomScientific/VFO-standards-support/issues/300)
  */
-export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
-  FluentComponentStaticProps<TextAreaProps> = props => {
+export const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TextArea.displayName, context.telemetry);
 
@@ -124,6 +123,7 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
         className: classes.root,
         value,
         disabled,
+        ref,
         onChange: handleChange,
         ...unhandledProps,
       })}
@@ -131,7 +131,8 @@ export const TextArea: ComponentWithAs<'textarea', TextAreaProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'textarea', HTMLTextAreaElement, TextAreaProps> &
+  FluentComponentStaticProps<TextAreaProps>;
 
 TextArea.displayName = 'TextArea';
 

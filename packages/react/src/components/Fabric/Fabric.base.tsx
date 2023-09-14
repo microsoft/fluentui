@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
-  getNativeProps,
-  divProperties,
   classNamesFunction,
+  divProperties,
   getDocument,
-  memoizeFunction,
+  getNativeProps,
   getRTL,
+  memoizeFunction,
   Customizer,
-  useFocusRects,
+  FocusRectsProvider,
 } from '../../Utilities';
 import { createTheme } from '../../Styling';
 import { useMergedRefs } from '@fluentui/react-hooks';
@@ -39,13 +39,12 @@ export const FabricBase: React.FunctionComponent<IFabricProps> = React.forwardRe
 
     const classNames = getClassNames(styles, {
       theme: theme!,
-      applyTheme: applyTheme,
+      applyTheme,
       className,
     });
 
-    const rootElement = React.useRef<HTMLDivElement | null>(null);
+    const rootElement = React.useRef<HTMLDivElement>(null);
     useApplyThemeToBody(applyThemeToBody, classNames, rootElement);
-    useFocusRects(rootElement);
 
     return <>{useRenderedContent(props, classNames, rootElement, ref)}</>;
   },
@@ -55,7 +54,7 @@ FabricBase.displayName = 'FabricBase';
 function useRenderedContent(
   props: IFabricProps,
   { root }: IProcessedStyleSet<IFabricStyles>,
-  rootElement: React.RefObject<HTMLDivElement | undefined>,
+  rootElement: React.RefObject<HTMLDivElement>,
   ref: React.Ref<HTMLDivElement>,
 ) {
   const { as: Root = 'div', dir, theme } = props;
@@ -63,7 +62,11 @@ function useRenderedContent(
 
   const { rootDir, needsTheme } = getDir(props);
 
-  let renderedContent = <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />;
+  let renderedContent = (
+    <FocusRectsProvider providerRef={rootElement}>
+      <Root dir={rootDir} {...divProps} className={root} ref={useMergedRefs(rootElement, ref)} />
+    </FocusRectsProvider>
+  );
 
   // Create the contextual theme if component direction does not match parent direction.
   if (needsTheme) {

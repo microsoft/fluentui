@@ -75,18 +75,25 @@ export interface ISwatchColorPickerProps extends React.RefAttributes<HTMLElement
    * Callback for when the user hovers over a color cell.
    * If `id` and `color` are unspecified, cells are no longer being hovered.
    */
-  onCellHovered?: (id?: string, color?: string) => void;
+  onCellHovered?: (id?: string, color?: string, event?: React.MouseEvent<HTMLButtonElement>) => void;
 
   /**
    * Callback for when the user focuses a color cell.
    * If `id` and `color` are unspecified, cells are no longer being focused.
    */
-  onCellFocused?: (id?: string, color?: string) => void;
+  onCellFocused?: (id?: string, color?: string, event?: React.FormEvent<HTMLButtonElement>) => void;
 
   /**
-   * Custom render function for the color cell
+   * Custom render function for the color cell.
+   * This can replace the entire button element, including the default focus and hover states.
    */
   onRenderColorCell?: IRenderFunction<IColorCellProps>;
+
+  /**
+   * Custom render function for inner content of the color cell.
+   * This will retain the cell's default button behavior and overrides just the inner content.
+   */
+  onRenderColorCellContent?: IRenderFunction<IColorCellProps>;
 
   /**
    * Whether the control is disabled.

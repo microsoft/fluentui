@@ -15,8 +15,4 @@ export const treeViewStyles: (
     min-width: fit-content;
     font-size: 0;
   }
-
-  :host:focus-visible {
-    outline: none;
-  }
 `;

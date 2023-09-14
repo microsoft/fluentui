@@ -2,12 +2,13 @@ import * as React from 'react';
 
 import { isConformant } from 'test/specs/commonTests';
 import { Carousel, CarouselProps, carouselSlotClassNames } from 'src/components/Carousel/Carousel';
+import { getAnimationName } from 'src/components/Carousel/utils';
 import { Button } from 'src/components/Button/Button';
 import { carouselNavigationClassName } from 'src/components/Carousel/CarouselNavigation';
 import { carouselNavigationItemClassName } from 'src/components/Carousel/CarouselNavigationItem';
 import { Text } from 'src/components/Text/Text';
 import { ReactWrapper, CommonWrapper } from 'enzyme';
-import { findIntrinsicElement, mountWithProvider } from 'test/utils';
+import { createTestContainer, findIntrinsicElement, mountWithProvider } from 'test/utils';
 
 const buttonName = 'button-to-test';
 
@@ -34,13 +35,14 @@ const items = [
   },
 ];
 
-function renderCarousel(props?: CarouselProps): ReactWrapper {
+function renderCarousel(props?: CarouselProps, attachTo?: HTMLElement): ReactWrapper {
   return mountWithProvider(
     <Carousel
       items={items}
       getItemPositionText={(index: number, length: number) => `${index + 1} of ${length}`}
       {...props}
     />,
+    { attachTo },
   );
 }
 
@@ -57,8 +59,6 @@ const getNavigationNavigationWrapper = (wrapper: ReactWrapper): CommonWrapper =>
 const getNavigationNavigationItemAtIndexWrapper = (wrapper: ReactWrapper, index: number): CommonWrapper =>
   findIntrinsicElement(wrapper, `.${carouselNavigationItemClassName}`).at(index);
 const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `#${buttonName}`);
-
-jest.useFakeTimers();
 
 describe('Carousel', () => {
   isConformant(Carousel, {
@@ -213,23 +213,27 @@ describe('Carousel', () => {
     });
 
     it('next should be focused on last slide transition if pagination and not circular', () => {
-      const wrapper = renderCarousel({ defaultActiveIndex: 1 });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const wrapper = renderCarousel({ defaultActiveIndex: 1 }, testContainer);
       const paddleNext = getPaddleNextWrapper(wrapper);
       const paddlePrevios = getPaddlePreviousWrapper(wrapper);
 
       paddlePrevios.simulate('keydown', { key: 'Enter' });
 
       expect(document.activeElement).toEqual(paddleNext.getDOMNode());
+      removeTestContainer();
     });
 
     it('previous should be focused on first slide transition if pagination and not circular', () => {
-      const wrapper = renderCarousel({ defaultActiveIndex: 2 });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const wrapper = renderCarousel({ defaultActiveIndex: 2 }, testContainer);
       const paddleNext = getPaddleNextWrapper(wrapper);
       const paddlePrevios = getPaddlePreviousWrapper(wrapper);
 
       paddleNext.simulate('keydown', { key: 'Enter' });
 
       expect(document.activeElement).toEqual(paddlePrevios.getDOMNode());
+      removeTestContainer();
     });
   });
 
@@ -237,6 +241,8 @@ describe('Carousel', () => {
     const navigation = {
       items: items.map(item => ({ key: item.key, icon: { name: 'icon-circle' } })),
     };
+
+    jest.useFakeTimers();
 
     afterEach(() => {
       jest.runAllTimers();
@@ -262,12 +268,14 @@ describe('Carousel', () => {
     });
 
     it('should show and focus the appropriate slide when clicked', () => {
-      const wrapper = renderCarousel({ navigation });
+      const { testContainer, removeTestContainer } = createTestContainer();
+      const wrapper = renderCarousel({ navigation }, testContainer);
       const secondNavigationItemWrapper = getNavigationNavigationItemAtIndexWrapper(wrapper, 1);
 
       secondNavigationItemWrapper.simulate('click');
       jest.runAllTimers();
       expect(document.activeElement.firstElementChild.innerHTML).toEqual('item2');
+      removeTestContainer();
     });
 
     it('should show no pagination if getItemPositionText is not passed', () => {
@@ -275,6 +283,87 @@ describe('Carousel', () => {
       const paginationWrapper = getPaginationWrapper(wrapper);
 
       expect(paginationWrapper.exists()).toBe(false);
+    });
+  });
+
+  describe('animation', () => {
+    const animationEnterFromPrev = 'animationEnterFromPrev';
+    const animationEnterFromNext = 'animationEnterFromNext';
+    const animationExitToPrev = 'animationExitToPrev';
+    const animationExitToNext = 'animationExitToNext';
+
+    it('should return animation for exiting left when item is not active', () => {
+      expect(
+        getAnimationName({
+          active: false,
+          dir: 'start',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationExitToPrev);
+    });
+
+    it('should return animation for exiting right when item is not active', () => {
+      expect(
+        getAnimationName({
+          active: false,
+          dir: 'end',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationExitToNext);
+    });
+
+    it('should return animation for enter from left when item is active', () => {
+      expect(
+        getAnimationName({
+          active: true,
+          dir: 'end',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationEnterFromPrev);
+    });
+
+    it('should return animation for enter from right when item is active', () => {
+      expect(
+        getAnimationName({
+          active: true,
+          dir: 'start',
+          animationEnterFromPrev,
+          animationEnterFromNext,
+          animationExitToPrev,
+          animationExitToNext,
+        }),
+      ).toBe(animationEnterFromNext);
+    });
+  });
+
+  describe('focus zone "visible" attribute', () => {
+    it('should has data-is-visible=false when previous paddle is hidden', () => {
+      const wrapper = renderCarousel({ defaultActiveIndex: 0 });
+      const paddlePrevios = getPaddlePreviousWrapper(wrapper).getDOMNode();
+      const paddleNext = getPaddleNextWrapper(wrapper).getDOMNode();
+
+      expect(paddlePrevios).toHaveAttribute('data-is-visible');
+      expect(paddlePrevios.getAttribute('data-is-visible')).toEqual('false');
+      expect(paddleNext).not.toHaveAttribute('data-is-visible');
+    });
+
+    it('should has data-is-visible=false when next paddle is hidden', () => {
+      const wrapper = renderCarousel({ defaultActiveIndex: 3 });
+      const paddleNext = getPaddleNextWrapper(wrapper).getDOMNode();
+      const paddlePrevios = getPaddlePreviousWrapper(wrapper).getDOMNode();
+
+      expect(paddleNext).toHaveAttribute('data-is-visible');
+      expect(paddleNext.getAttribute('data-is-visible')).toEqual('false');
+      expect(paddlePrevios).not.toHaveAttribute('data-is-visible');
     });
   });
 });
