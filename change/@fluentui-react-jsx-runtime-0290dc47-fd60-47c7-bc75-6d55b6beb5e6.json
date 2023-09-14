@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: strip comments for JSX pragma",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
