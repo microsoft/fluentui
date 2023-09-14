@@ -167,6 +167,7 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem, onItemClick } = this.props;
 
     const itemProps: IContextualMenuItem = {
+      ...item,
       key: item.key,
       disabled: isItemDisabled(item) || item.primaryDisabled,
       /* eslint-disable deprecation/deprecation */
