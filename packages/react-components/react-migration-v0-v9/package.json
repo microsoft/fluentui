@@ -33,7 +33,7 @@
     "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
-    "@fluentui/react-icons": "^2.0.207",
+    "@fluentui/react-icons": "^2.0.216",
     "@fluentui/react-theme": "^9.1.12",
     "@fluentui/react-utilities": "^9.13.3",
     "@fluentui/react-jsx-runtime": "^9.0.8",
