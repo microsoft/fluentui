@@ -176,4 +176,11 @@ describe('Text', () => {
       text-align: ${expectedValue};
     `);
   });
+
+  it('renders without default styling', () => {
+    const { getByText } = render(<Text disableDefaultStyling={true}>Test</Text>);
+
+    const textElement = getByText('Test');
+    expect(textElement).toHaveClass('fui-Text', { exact: true });
+  });
 });
