@@ -32,7 +32,6 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
         @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
         ${ref('drawer')}
       >
-        <slot name="start"></slot>
         <div class="header">
           <slot name="navigation"></slot>
           <slot name="header"></slot>
@@ -40,8 +39,9 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
         <div class="content" part="content" ${ref('content')}>
           <slot></slot>
         </div>
-        <slot name="footer"></slot>
-        <slot name="end"></slot>
+        <div class="footer" part="footer">
+          <slot name="footer"></slot>
+        </div>
       </div>
     </template>
   `;

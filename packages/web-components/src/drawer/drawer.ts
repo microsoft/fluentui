@@ -13,14 +13,14 @@ export interface OpenEvent {
 export class Drawer extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
-    document.addEventListener('keydown', this.handleDocumentKeydown);
+    this.drawer!.addEventListener('animationend', this.focusFirstElement);
     this.updateTrapFocus();
     this.setOverflowStyles();
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    document.removeEventListener('keydown', this.handleDocumentKeydown);
+    this.drawer!.removeEventListener('animationend', this.focusFirstElement);
     this.updateTrapFocus(false);
   }
 
@@ -40,7 +40,7 @@ export class Drawer extends FASTElement {
    * HTML Attribute: drawer
    */
   @observable
-  public drawer?: HTMLDivElement;
+  public drawer?: HTMLElement;
 
   /**
    * Indicates whether the drawer is open or closed.
@@ -108,8 +108,8 @@ export class Drawer extends FASTElement {
    * @remarks
    * HTML Attribute: no-focus-trap
    */
-  @attr({ attribute: 'no-focus-trap', mode: 'boolean' })
-  public noFocusTrap: boolean = false;
+  @attr({ attribute: 'trap-focus', mode: 'boolean' })
+  public trapFocus: boolean = false;
 
   /**
    * Indicates whether the drawer is currently trapping focus.
@@ -123,6 +123,9 @@ export class Drawer extends FASTElement {
    */
   public show(): void {
     this.open = true;
+    if (this.trapFocus) {
+      this.updateTrapFocus();
+    }
   }
 
   /**
@@ -131,6 +134,9 @@ export class Drawer extends FASTElement {
    */
   public hide(): void {
     this.open = false;
+    if (this.trapFocus) {
+      this.updateTrapFocus(false);
+    }
   }
 
   /**
@@ -181,17 +187,16 @@ export class Drawer extends FASTElement {
       const event = new CustomEvent<OpenEvent>('openChanged', {
         detail: eventDetail,
       });
-      this.open ? this.updateTrapFocus() : this.updateTrapFocus(false);
       this.dispatchEvent(event);
     }
   }
 
   /**
-   * Handles changes to the `noFocusTrap` property.
+   * Handles changes to the `trapFocus` property.
    * If the component is connected, it updates the focus trap.
    * @internal
    */
-  protected noFocusTrapChanged = (): void => {
+  protected trapFocusedChanged = (): void => {
     if (this.$fastController.isConnected) {
       this.updateTrapFocus();
     }
@@ -220,54 +225,18 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * Handles the focus event on the document.
+   * Handles focusing out of the drawer.
    * If the event is not prevented and the focus should be forced on the target element,
    * it focuses on the first element and prevents the default behavior.
    *
    * @param e - The Event object.
    * @internal
    */
-  private handleDocumentFocus = (e: Event): void => {
+  private handleDrawerFocusOut = (e: Event): void => {
     if (!e.defaultPrevented && this.shouldForceFocus(e.target as HTMLElement)) {
       this.focusFirstElement();
       e.preventDefault();
     }
-  };
-
-  /**
-   * Handles the tab key down event.
-   * If the drawer is open and focus trapping is not disabled, it focuses on the first or last element in the tab queue depending on whether the shift key is pressed.
-   * If the tab queue only contains one element, it keeps the focus on that element.
-   *
-   * @param e - The KeyboardEvent object.
-   * @internal
-   */
-  private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (this.noFocusTrap || !this.open) {
-      return;
-    }
-
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-
-    if (bounds.length === 0) {
-      return;
-    }
-
-    if (bounds.length === 1) {
-      bounds[0].focus();
-      e.preventDefault();
-      return;
-    }
-
-    if (e.shiftKey && e.target === bounds[0]) {
-      bounds[bounds.length - 1].focus();
-      e.preventDefault();
-    } else if (!e.shiftKey && e.target === bounds[bounds.length - 1]) {
-      bounds[0].focus();
-      e.preventDefault();
-    }
-
-    return;
   };
 
   /**
@@ -289,12 +258,10 @@ export class Drawer extends FASTElement {
    */
   private focusFirstElement = (): void => {
     const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-    if (bounds.length > 0 && isTabbable(bounds[0])) {
+    if (bounds.length > 0) {
       bounds[0].focus();
-    } else {
-      if (this.drawer instanceof HTMLDivElement) {
-        this.drawer!.focus();
-      }
+    } else if (this.drawer instanceof HTMLElement) {
+      this.drawer!.focus();
     }
   };
 
@@ -308,7 +275,12 @@ export class Drawer extends FASTElement {
    */
   private shouldForceFocus = (currentFocusElement: Element | null): boolean => {
     const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-    return this.isTrappingFocus && !this.contains(currentFocusElement) && currentFocusElement !== bounds[0];
+    return (
+      this.isTrappingFocus &&
+      this.contains(currentFocusElement) &&
+      currentFocusElement === bounds[bounds.length - 1] &&
+      currentFocusElement !== bounds[0]
+    );
   };
 
   /**
@@ -319,7 +291,7 @@ export class Drawer extends FASTElement {
    * @internal
    */
   private shouldTrapFocus = (): boolean => {
-    return !this.noFocusTrap && this.open;
+    return this.trapFocus && this.open;
   };
 
   /**
@@ -335,20 +307,10 @@ export class Drawer extends FASTElement {
 
     if (shouldTrapFocus && !this.isTrappingFocus) {
       this.isTrappingFocus = true;
-      // Add an event listener for focusin events if we are trapping focus
-      document.addEventListener('focusin', this.handleDocumentFocus);
-      this.drawer!.addEventListener('animationend', this.focusFirstElement);
-
-      Updates.enqueue(() => {
-        if (this.shouldForceFocus(document.activeElement)) {
-          this.focusFirstElement();
-        }
-      });
+      this.addEventListener('focusout', this.handleDrawerFocusOut);
     } else if (!shouldTrapFocus && this.isTrappingFocus) {
       this.isTrappingFocus = false;
-      // remove event listener if we are not trapping focus
-      document.removeEventListener('focusin', this.handleDocumentFocus);
-      this.drawer!.removeEventListener('animationend', this.focusFirstElement);
+      this.removeEventListener('focusout', this.handleDrawerFocusOut);
     }
   };
 
@@ -401,32 +363,7 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * Handles the keydown event on the document.
-   * If the drawer is open and the key pressed is either the escape key or the tab key,
-   * it performs the corresponding action and prevents the default behavior.
-   *
-   * @param e - The KeyboardEvent object.
-   * @internal
-   */
-  public handleDocumentKeydown = (e: KeyboardEvent): void => {
-    if (!e.defaultPrevented && this.open) {
-      switch (e.key) {
-        case keyEscape:
-          // If the escape key is pressed, hide the drawer and prevent the default behavior.
-          this.hide();
-          e.preventDefault();
-          break;
-
-        case keyTab:
-          // If the tab key is pressed, handle the tab key down event.
-          this.handleTabKeyDown(e);
-          break;
-      }
-    }
-  };
-
-  /**
-   * Handles the keydown event on the document.
+   * Handles the keydown event on the drawer.
    * @param e - The KeyboardEvent object.
    * @internal
    */

@@ -67,18 +67,22 @@ export const styles = css`
     transition: transform ${durationNormal} ${curveDecelerateMid};
     transform: translateX(100%);
   }
+  :host([open]) .drawer {
+    transform: translateX(0);
+    animation: slide-in-right ${durationNormal} ${curveAccelerateMid};
+    box-shadow: ${shadow64};
+  }
+
   :host([position='left']) .drawer {
-    right: auto;
     left: 0;
     column-gap: ${spacingHorizontalS};
     transform: translateX(-100%);
   }
-  :host([open][position='left']) .drawer,
-  :host([open]) .drawer {
+  :host([position='left'][open]) .drawer {
     transform: translateX(0);
-    animation: slide-in ${durationNormal} ${curveAccelerateMid};
-    box-shadow: ${shadow64};
+    animation: slide-in-left ${durationNormal} ${curveAccelerateMid};
   }
+
   .drawer:focus-visible:after {
     content: '';
     position: absolute;
@@ -139,9 +143,18 @@ export const styles = css`
     border-top: ${strokeWidthThin} solid var(--overflow-border, ${colorTransparentStroke});
   }
 
-  @keyframes slide-in {
+  @keyframes slide-in-right {
     from {
       transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes slide-in-left {
+    from {
+      transform: translateX(-100%);
     }
     to {
       transform: translateX(0);

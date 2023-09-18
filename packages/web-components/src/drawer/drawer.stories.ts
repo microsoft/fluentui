@@ -64,26 +64,6 @@ const settings20Regular = html`<svg
   ></path>
 </svg>`;
 
-setTimeout(() => {
-  const drawer = document.getElementById('drawer-push') as FluentDrawer;
-  const container = document.getElementById('dummy-content-container') as FluentDrawer;
-
-  drawer.addEventListener('openChanged', (event: any) => {
-    if (drawer.open) {
-      if (event.detail.position === DrawerPosition.left) {
-        container.style.transition = `transform 200ms cubic-bezier(0.7,0,1,0.5)`;
-        container.style.transform = `translateX(${event.detail.size}px)`;
-      } else {
-        container.style.transition = `transform 200ms cubic-bezier(0.7,0,1,0.5)`;
-        container.style.transform = `translateX(-${event.detail.size}px)`;
-      }
-    } else if (!drawer.open) {
-      container.style.transition = `transform 200ms cubic-bezier(0.1,0.9,0.2,1)`;
-      container.style.transform = 'translateX(0)';
-    }
-  });
-}, 3000);
-
 const toggleDrawer = (drawerID: string, containerID?: string) => {
   const drawer = document.getElementById(drawerID) as FluentDrawer;
   if (containerID) {
@@ -134,76 +114,70 @@ const storyTemplate = html<DrawerStoryArgs>`
       .flex {
         display: flex;
       }
-      .button-container {
+      .toggle-button-container {
         display: flex;
-        justify-content: flex-start;
+        justify-content: center;
         padding: 12px;
       }
     </style>
     <div class="story-container">
-      <div id="toggle-default" class="button-container">
-        <fluent-button appearance="primary" @click="${() =>
-          toggleDrawer('drawer-default')}">Toggle Drawer</fluent-button>
-      </div>
-      <div>
-        <fluent-drawer
-          id="drawer-default"
-          ?open="${x => x.open}"
-          ?no-focus-trap="${x => x.noFocusTrap}"
-          position="${x => x.position}"
-          modal="${x => x.modal}"
-          size="${x => x.size}"
-          aria-labelledby="one"
-        >
-          <div slot="navigation">
-            <fluent-button appearance="transparent" icon-only size="medium" size  aria-label="back">
-            ${arrowLeft20Regular}
-            </fluent-button>
-            <fluent-button appearance="transparent" icon-only size="medium" size   aria-label="close">
-              ${arrowClockwise20Regular}
-            </fluent-button>
-            <fluent-button appearance="transparent" icon-only size="medium" size   aria-label="close">
-              ${settings20Regular}
-            </fluent-button>
+      <fluent-drawer
+        style="width: ${x => x.styleWidth}px;"
+        position="${x => x.position}"
+        modal="${x => x.modal}"
+        size="${x => x.size}"
+        open
 
-            <fluent-button @click=${() =>
-              hideDrawer('drawer-default')} appearance="transparent" icon-only size="medium" size   aria-label="close">
-            ${dismissed20Regular}
-            </fluent-button>
-          </div>
-          <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Header</h1></fluent-text>
-          <div class="content-container flex">
-            <fluent-text>
-              The drawer gives users a quick entry point to configuration and information. It should be used when retaining context is beneficial to users. An overlay is optional depending on whether or not interacting with the backgroun d content is beneficial to the user's context/scenario. An overlay makes the drawer blocking and signifies that the users full attention is required when making configurations.
-            </fluent-text>
-            <div>
-              <fluent-label>First Name</fluent-label>
-              <fluent-text-input id="abc" type="text"></fluent-text-input>
-            </div>
-            <div>
-              <fluent-label>Last Name</fluent-label>
-              <fluent-text-input id="def" type="text" /></fluent-text-input>
-            </div>
-            <div>
-              <fluent-radio-group>
-                <fluent-label slot="label">Please select an option</fluent-label>
-                <fluent-radio value="1">Option 1</fluent-radio>
-                <fluent-radio value="2">Option 2</fluent-radio>
-                <fluent-radio value="3">Option 3</fluent-radio>
-              </fluent-radio-group>
-            </div>
-            <div>
-              <fluent-switch label-position="after" value="Enable option">
-                Activate option
-              </fluent-switch>
-            </div>
+        id="drawer-default"
+      >
+        <div slot="navigation">
+          <fluent-button appearance="transparent" icon-only size="medium" size  aria-label="back">
+          ${arrowLeft20Regular}
+          </fluent-button>
+          <fluent-button appearance="transparent" icon-only size="medium" size   aria-label="close">
+            ${arrowClockwise20Regular}
+          </fluent-button>
+          <fluent-button appearance="transparent" icon-only size="medium" size   aria-label="close">
+            ${settings20Regular}
+          </fluent-button>
+
+          <fluent-button @click=${() =>
+            hideDrawer('drawer-default')} appearance="transparent" icon-only size="medium" size   aria-label="close">
+          ${dismissed20Regular}
+          </fluent-button>
         </div>
-          <div slot="footer">
-            <fluent-button  appearance="primary">Primary</fluent-button>
-            <fluent-button  appearance="secondary">Secondary</fluent-button>
+        <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Header</h1></fluent-text>
+        <div class="content-container flex">
+          <fluent-text>
+            The drawer gives users a quick entry point to configuration and information. It should be used when retaining context is beneficial to users. An overlay is optional depending on whether or not interacting with the backgroun d content is beneficial to the user's context/scenario. An overlay makes the drawer blocking and signifies that the users full attention is required when making configurations.
+          </fluent-text>
+          <div>
+            <fluent-label>First Name</fluent-label>
+            <fluent-text-input id="abc" type="text"></fluent-text-input>
           </div>
-        </fluent-drawer>
+          <div>
+            <fluent-label>Last Name</fluent-label>
+            <fluent-text-input id="def" type="text" /></fluent-text-input>
+          </div>
+          <div>
+            <fluent-radio-group>
+              <fluent-label slot="label">Please select an option</fluent-label>
+              <fluent-radio value="1">Option 1</fluent-radio>
+              <fluent-radio value="2">Option 2</fluent-radio>
+              <fluent-radio value="3">Option 3</fluent-radio>
+            </fluent-radio-group>
+          </div>
+          <div>
+            <fluent-switch label-position="after" value="Enable option">
+              Activate option
+            </fluent-switch>
+          </div>
       </div>
+        <div slot="footer">
+          <fluent-button  appearance="primary">Primary</fluent-button>
+          <fluent-button  appearance="secondary">Secondary</fluent-button>
+        </div>
+      </fluent-drawer>
     </div>
   </div>
 `;
@@ -212,39 +186,11 @@ export default {
   title: 'Components/Drawer',
   args: {
     position: DrawerPosition.right,
-    width: undefined,
     open: false,
-    noFocusTrap: true,
     modal: false,
-    size: 'medium',
+    styleWidth: undefined,
   },
   argTypes: {
-    open: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Sets the open state of drawer',
-        },
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
-    noFocusTrap: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Sets whether the drawer should trap focus',
-        },
-        defaultValue: {
-          summary: false,
-        },
-      },
-    },
     modal: {
       control: {
         type: 'boolean',
@@ -286,6 +232,9 @@ export default {
         },
       },
     },
+    styleWidth: {
+      control: 'number',
+    },
   },
 } as DrawerStoryMeta;
 
@@ -294,12 +243,9 @@ export const Drawer = renderComponent(storyTemplate).bind({});
 export const Position = renderComponent(html<DrawerStoryArgs>`
   <div class="story-container">
     <div>
-      <fluent-drawer id="drawer-left" position="left" open no-focus-trap style="width: 350px;">
+      <fluent-drawer id="drawer-left" position="left" open size="small">
         <div slot="header">
           <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Position Left</h1></fluent-text>
-          <fluent-button size appearance="transparent" icon-only size="medium" aria-label="close">
-            ${dismissed20Regular}
-          </fluent-button>
         </div>
         <div class="content-container flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
@@ -315,12 +261,9 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
           </fluent-text>
         </div>
       </fluent-drawer>
-      <fluent-drawer id="drawer-right" open no-focus-trap style="width: 350px;">
+      <fluent-drawer id="drawer-right" open size="small">
         <div slot="header">
           <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Position Right</h1></fluent-text>
-          <fluent-button size appearance="transparent" icon-only size="medium" aria-label="close">
-            ${dismissed20Regular}
-          </fluent-button>
         </div>
         <div class="content-container flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
@@ -331,15 +274,33 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
               'right'.
             </p>
           </fluent-text>
+          <fluent-text font="monospace" size="300" weight="regular">
+            <code>default</code>
+          </fluent-text>
         </div>
       </fluent-drawer>
     </div>
   </div>
 `);
 
+setTimeout(() => {
+  const drawer = document.getElementById('drawer-push') as FluentDrawer;
+  const container = document.getElementById('push-content-container') as FluentDrawer;
+
+  drawer.addEventListener('openChanged', (event: any) => {
+    if (drawer.open) {
+      container.style.transition = `transform 200ms cubic-bezier(0.7,0,1,0.5)`;
+      container.style.transform = `translateX(-${event.detail.size}px)`;
+    } else if (!drawer.open) {
+      container.style.transition = `transform 200ms cubic-bezier(0.1,0.9,0.2,1)`;
+      container.style.transform = 'translateX(0)';
+    }
+  });
+}, 1000);
+
 export const PushContent = renderComponent(html<DrawerStoryArgs>`
   <style>
-    .dummy-content-container {
+    .push-content-container {
       padding: 4px;
       width: 300px;
       height: 100%;
@@ -349,7 +310,7 @@ export const PushContent = renderComponent(html<DrawerStoryArgs>`
       position: relative;
       align-items: center;
     }
-    .dummy-content {
+    .push-content {
       border: 2px solid var(--colorNeutralStroke1);
       display: grid;
       grid-template-rows: min-content auto min-content;
@@ -361,8 +322,8 @@ export const PushContent = renderComponent(html<DrawerStoryArgs>`
     }
   </style>
   <div class="story-container grid">
-    <div class="dummy-content-container" id="dummy-content-container">
-      <div class="dummy-content">
+    <div class="push-content-container" id="push-content-container">
+      <div class="push-content">
         <fluent-text font="base" size="500" weight="bold" as="h1" block>
           <h1>Content to be Pushed</h1>
         </fluent-text>
@@ -376,7 +337,7 @@ export const PushContent = renderComponent(html<DrawerStoryArgs>`
         </div>
       </div>
     </div>
-    <fluent-drawer id="drawer-push" style="width: 360px;" no-focus-trap>
+    <fluent-drawer id="drawer-push">
       <div slot="header">
         <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Push Content</h1></fluent-text>
         <fluent-button
@@ -392,8 +353,8 @@ export const PushContent = renderComponent(html<DrawerStoryArgs>`
       <div class="content-container flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
-            The openChanged event details provide critical information about the drawer's current state, including
-            whether it is open or closed, its position (either left or right of the screen), and its width.
+            The <code>openChanged</code> event details provide critical information about the drawer's current state,
+            including whether it is open or closed, its position (either left or right of the screen), and its width.
           </p>
         </fluent-text>
       </div>
@@ -414,7 +375,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
     </div>
   </div>
   <div id="drawer-sizes-container">
-    <fluent-drawer id="drawer-size--small" size="small" no-focus-trap>
+    <fluent-drawer id="drawer-size--small" size="small" >
       <div slot="header">
           <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Small</h1></fluent-text>
           <fluent-button
@@ -446,7 +407,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
         <fluent-button  appearance="secondary">Secondary</fluent-button>
       </div>
     </fluent-drawer>
-    <fluent-drawer id="drawer-size--medium" no-focus-trap>
+    <fluent-drawer id="drawer-size--medium" >
       <div slot="header">
           <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Control Size Medium</h1></fluent-text>
           <fluent-button
@@ -468,9 +429,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
           </p>
         </fluent-text>
         <fluent-text font="monospace" size="300" weight="regular">
-          <code>
-            size="medium"
-          </code>
+            <code>default</code>
         </fluent-text>
       </div>
       <div slot="footer">
@@ -479,7 +438,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       </div>
     </fluent-drawer>
     <fluent-drawer
-      no-focus-trap
+
       id="drawer-size--large"
       size="large"
     >
@@ -497,16 +456,14 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
             ${dismissed20Regular}
           </fluent-button>
         </div>
-      <div class="content-container">
+      <div class="content-container flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
             The size attribute provides a way to adjust the drawer's dimensions to fit your design. This attribute takes values of type DrawerSize, which includes several predefined options like 'small', 'medium', and 'large'. To set the drawer to a compact size, simply specify size="medium" in the component.</fluent-text>
           </p>
         </fluent-text>
         <fluent-text font="monospace" size="300" weight="regular">
-          <code>
-            size="medium"
-          </code>
+            <code>size="large"</code>
         </fluent-text>
       </div>
       <div slot="footer">
@@ -518,14 +475,62 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
 </div>
 `);
 
+export const Focus = renderComponent(html<DrawerStoryArgs>`
+  <div class="story-container">
+    <div style="display: flex; justify-content: flex-start; align-items: flex-start; height: 100%; padding: 15px;">
+      <div
+        style="display: flex; flex-direction: column; justify-content: flex-start; row-gap: 8px; align-items: flex-start; height: 100%;"
+      >
+        <fluent-button
+          appearance="primary"
+          @click="${() => toggleDrawer('drawer-focus--trap', 'drawer-focus-container')}"
+          >Trap Focus</fluent-button
+        >
+      </div>
+    </div>
+    <div id="drawer-focus-container">
+      <fluent-drawer id="drawer-focus--trap" trap-focus>
+        <div slot="header">
+          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Trap Focus</h1></fluent-text>
+          <fluent-button
+            size
+            appearance="transparent"
+            icon-only
+            size="medium"
+            aria-label="close"
+            @click="${() => hideDrawer('drawer-focus--trap')}"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+        </div>
+        <div class="content-container flex">
+          <fluent-text font="base" size="300" weight="regular" as="p">
+            <p>
+              The <code>trap-focus</code> attribute provides a mechanism to manage the focus behavior within the drawer
+              component. When this attribute is set to true, it enables a focus trap within the drawer, ensuring that
+              the keyboard focus remains within the confines of the drawer while it is open. This can be beneficial in
+              scenarios where you want to prevent users from interacting with other parts of the page until the drawer
+              is closed. To enable the focus trap, simply specify <code>trap-focus</code> in the component.
+            </p>
+          </fluent-text>
+          <fluent-text font="monospace" size="300" weight="regular">
+            <code> trap-focus </code>
+          </fluent-text>
+        </div>
+        <div slot="footer">
+          <fluent-button appearance="primary">Primary</fluent-button>
+          <fluent-button appearance="secondary">Secondary</fluent-button>
+        </div>
+      </fluent-drawer>
+    </div>
+  </div>
+`);
+
 export const CustomSize = renderComponent(html`
   <div class="story-container">
-    <fluent-drawer id="drawer-custom-size" open style="width: 400px;" no-focus-trap>
+    <fluent-drawer id="drawer-custom-size" open style="width: 400px;">
       <div slot="header">
         <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Custom Size</h1></fluent-text>
-        <fluent-button size appearance="transparent" icon-only size="medium" aria-label="close">
-          ${dismissed20Regular}
-        </fluent-button>
       </div>
       <div class="content-container flex">
         <fluent-text>
@@ -548,27 +553,28 @@ export const CustomSize = renderComponent(html`
 
 export const TopNavigation = renderComponent(html`
   <div class="story-container">
-    <fluent-drawer id="drawer-top-navigation" open no-focus-trap>
+    <fluent-drawer id="drawer-top-navigation" open>
       <div slot="navigation">
-        <div class="content-container flex">
-          <div class="flex">
-            <fluent-button appearance="transparent" icon-only size="medium" size aria-label="back">
-              ${arrowLeft20Regular}
-            </fluent-button>
-          </div>
-          <div class="flex">
-            <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
-              ${arrowClockwise20Regular}
-            </fluent-button>
-            <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
-              ${settings20Regular}
-            </fluent-button>
+        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="back">
+          ${arrowLeft20Regular}
+        </fluent-button>
+        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
+          ${arrowClockwise20Regular}
+        </fluent-button>
+        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
+          ${settings20Regular}
+        </fluent-button>
 
-            <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
-              ${dismissed20Regular}
-            </fluent-button>
-          </div>
-        </div>
+        <fluent-button
+          @click=${() => hideDrawer('drawer-default')}
+          appearance="transparent"
+          icon-only
+          size="medium"
+          size
+          aria-label="close"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
       </div>
       <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"
         ><h1>Drawer with Top Navigation</h1></fluent-text
@@ -595,12 +601,12 @@ export const TopNavigation = renderComponent(html`
 
 export const Modal = renderComponent(html`
   <div class="story-container">
-    <div id="toggle-modal" class="button-container">
+    <div id="toggle-modal" class="toggle-button-container">
       <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-modal')}"
         >Toggle Modal Drawer</fluent-button
       >
     </div>
-    <fluent-drawer id="drawer-modal" modal no-focus-trap>
+    <fluent-drawer id="drawer-modal" modal>
       <div slot="header">
         <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer as Modal</h1></fluent-text>
         <fluent-button
@@ -634,16 +640,11 @@ export const Modal = renderComponent(html`
 export const OverflowContent = renderComponent(html`
     <div class="story-container">
         <fluent-drawer
-          id="drawer-modal"
-          no-focus-trap
+          id="drawer-overflow"
+
           open
         >
-          <div slot="header">
-            <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer with Overflow Content</h1></fluent-text>
-              <fluent-button size appearance="transparent" icon-only size="medium" aria-label="close">
-                ${dismissed20Regular}
-              </fluent-button>
-            </div>
+          <fluent-text slot="header" font="base" size="500" weight="semibold" as="h1"><h1>Drawer with Overflow Content</h1></fluent-text>
           <div class="content-container flex">
             <fluent-text>
               When the content section of the drawer contains more information than can fit within its designated area, a scrollbar automatically appears to facilitate easy navigation through the overflowing content. Additionally, a dynamic border is added to the footer of the drawer. This border serves as a visual separator between the content and footer sections, enhancing the user experience by clearly delineating these two areas.

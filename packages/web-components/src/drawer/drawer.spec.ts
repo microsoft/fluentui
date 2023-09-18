@@ -219,7 +219,7 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', false);
   });
 
-  test('closeDrawer method should close drawer', async () => {
+  test('hide method should close drawer', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-drawer open></fluent-drawer>
@@ -230,14 +230,14 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', true);
 
     await element.evaluate((node: Drawer) => {
-      node.closeDrawer();
+      node.hide();
     });
 
     await expect(element).not.toHaveAttribute('open', '');
     await expect(element).toHaveJSProperty('open', false);
   });
 
-  test('openDrawer method should open drawer', async () => {
+  test('show method should open drawer', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
               <fluent-drawer ></fluent-drawer>
@@ -248,7 +248,7 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', false);
 
     await element.evaluate((node: Drawer) => {
-      node.openDrawer();
+      node.show();
     });
 
     await expect(element).toHaveAttribute('open', '');
@@ -328,7 +328,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.openDrawer();
+        node.show();
       }),
     ]);
 
@@ -342,7 +342,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.closeDrawer();
+        node.hide();
       }),
     ]);
     expect(isOpen2).not.toEqual(true);
@@ -363,7 +363,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.openDrawer();
+        node.show();
       }),
     ]);
 
@@ -383,7 +383,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.openDrawer();
+        node.show();
       }),
     ]);
 
@@ -403,7 +403,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.openDrawer();
+        node.show();
       }),
     ]);
 
@@ -423,7 +423,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.openDrawer();
+        node.show();
       }),
     ]);
 
