@@ -89,6 +89,7 @@ const useIconStyles = makeStyles({
     [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
   },
 });
+
 /**
  * Apply styling to the BreadcrumbButton slots based on the state
  */

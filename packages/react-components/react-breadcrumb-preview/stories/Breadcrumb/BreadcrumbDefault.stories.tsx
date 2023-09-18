@@ -44,8 +44,8 @@ function renderButton(item: Item) {
   const isLastItem = items.length - 1 === item.key;
   return (
     <React.Fragment key={`item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>
-        <BreadcrumbButton>{item.value}</BreadcrumbButton>
+      <BreadcrumbItem>
+        <BreadcrumbButton current={isLastItem}>{item.value}</BreadcrumbButton>
       </BreadcrumbItem>
       {!isLastItem && <BreadcrumbDivider />}
     </React.Fragment>
