@@ -47,7 +47,7 @@ Dismiss.parameters = {
   docs: {
     description: {
       story:
-        'An InteractionTag can have a secondary action that is usually dismiss. TagGroup can handle dismiss for a collection of tags.',
+        'An InteractionTag can have a secondary action that is usually dismiss. TagGroup can handle dismiss for a collection of tags. Ensure that focus is properly managed when all tags have been dismissed.',
     },
   },
 };
