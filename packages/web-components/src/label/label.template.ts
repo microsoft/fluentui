@@ -8,7 +8,7 @@ import { Label } from './label.js';
 export function labelTemplate<T extends Label>(): ElementViewTemplate<T> {
   return html<T>`
     <slot></slot>
-    <span part="asterisk" class="asterisk" size=${x => x.size} ?hidden="${x => !x.required}">*</span>
+    <span part="asterisk" class="asterisk" ?hidden="${x => !x.required}">*</span>
   `;
 }
 
