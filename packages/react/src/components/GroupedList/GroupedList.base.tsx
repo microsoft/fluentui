@@ -105,8 +105,10 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
+    const groupIndex = this._getGroupIndexFromItemIndex(index);
+    const scrollIndex = groupIndex > -1 ? groupIndex : index;
     if (this._list.current) {
-      this._list.current.scrollToIndex(index, measureItem, scrollToMode);
+      this._list.current.scrollToIndex(scrollIndex, measureItem, scrollToMode);
     }
   }
 
@@ -403,5 +405,23 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       }
       this._isSomeGroupExpanded = newIsSomeGroupExpanded;
     }
+  }
+
+  private _getGroupIndexFromItemIndex(itemIndex: number): number {
+    const { groups } = this.state;
+
+    if (!groups) {
+      return -1;
+    }
+
+    for (let groupIndex = 0; groupIndex < groups.length; groupIndex++) {
+      const group = groups[groupIndex];
+
+      if (itemIndex >= group.startIndex && itemIndex < group.startIndex + group.count) {
+        return groupIndex;
+      }
+    }
+
+    return -1;
   }
 }
