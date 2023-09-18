@@ -171,8 +171,6 @@ export class Drawer extends FASTElement {
 
   /**
    * Handles changes to the `open` property.
-   * @param prev - The previous value of `open`.
-   * @param next - The new value of `open`.
    * @remarks
    * This method is invoked when the `open` property changes and is responsible for emitting the `openChanged` event.
    * @internal
@@ -226,7 +224,6 @@ export class Drawer extends FASTElement {
    * If the event is not prevented and the focus should be forced on the target element,
    * it focuses on the first element and prevents the default behavior.
    *
-   * @param e - The Event object.
    * @internal
    */
   private handleDrawerFocusOut = (e: Event): void => {
@@ -240,7 +237,6 @@ export class Drawer extends FASTElement {
    * Returns the bounds of the tab queue.
    * The tab queue is a collection of elements that are focusable.
    *
-   * @returns {(HTMLElement | SVGElement)[]} - The bounds of the tab queue.
    * @internal
    */
   private getTabQueueBounds = (): (HTMLElement | SVGElement)[] => {
@@ -267,7 +263,6 @@ export class Drawer extends FASTElement {
    * Focus is forced if the drawer is trapping focus, the current focus element is not contained within the drawer, and the current focus element is not the first element in the tab queue.
    *
    * @param currentFocusElement - The current focus element.
-   * @returns {boolean} - True if focus should be forced, false otherwise.
    * @internal
    */
   private shouldForceFocus = (currentFocusElement: Element | null): boolean => {
@@ -284,7 +279,6 @@ export class Drawer extends FASTElement {
    * Determines if focus should be trapped within the drawer.
    * Focus is trapped if the drawer is open and focus trapping is not disabled.
    *
-   * @returns {boolean} - True if focus should be trapped, false otherwise.
    * @internal
    */
   private shouldTrapFocus = (): boolean => {
@@ -314,9 +308,6 @@ export class Drawer extends FASTElement {
   /**
    * Reduce a collection to only its focusable elements.
    *
-   * @param elements - Collection of elements to reduce
-   * @param element - The current element
-   *
    * @internal
    */
   private static reduceTabbableItems(elements: HTMLElement[], element: FASTElement): HTMLElement[] {
@@ -338,8 +329,6 @@ export class Drawer extends FASTElement {
   /**
    * Test if element is focusable fast element
    *
-   * @param element - The element to check
-   *
    * @internal
    */
   private static isFocusableFastElement(element: FASTElement): boolean {
@@ -348,8 +337,6 @@ export class Drawer extends FASTElement {
 
   /**
    * Test if the element has a focusable shadow
-   *
-   * @param element - The element to check
    *
    * @internal
    */
@@ -361,7 +348,6 @@ export class Drawer extends FASTElement {
 
   /**
    * Handles the keydown event on the drawer.
-   * @param e - The KeyboardEvent object.
    * @internal
    */
   public handleKeyDown(e: KeyboardEvent): boolean | void {

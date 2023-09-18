@@ -63,17 +63,17 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 ### **Properties**
 
-| Name | Type | Default | Description | Inherited From |
-| ----------------- | ----------------------------------- | ------------------- | --------------------------------------------------------------------------------- | -------------- | | |
-| `trapFocus` | `boolean` | `false` | Determines whether the focus should be trapped within the drawer when it is open. | |
-| `drawer` | `HTMLElement \| undefined` | `undefined` | Reference to the drawer element. | |
-| `content` | `HTMLElement \| undefined` | `undefined` | Reference to `.content` element | |
-| `open` | `boolean` | `false` | Indicates whether the drawer is open or closed. | |
-| `modal` | `boolean` | `false` | Determines whether the drawer should be displayed as modal or non-modal. | |
-| `position` | `DrawerPosition \| undefined` | `undefined` | Sets the position of the drawer (left/right). | |
-| `size` | `DrawerSize \| number \| undefined` | `DrawerSize.medium` | Sets the control size of the drawer. | |
-| `ariaLabelledby` | `string \| undefined` | `undefined` | Sets the aria-labelledby attribute of the drawer. | |
-| `ariaDescribedby` | `string \| undefined` | `undefined` | Sets the aria-describedby attribute of the drawer. | |
+| Name              | Type                                | Default             | Description                                                                       |
+| ----------------- | ----------------------------------- | ------------------- | --------------------------------------------------------------------------------- |
+| `trapFocus`       | `boolean`                           | `false`             | Determines whether the focus should be trapped within the drawer when it is open. |
+| `drawer`          | `HTMLElement \| undefined`          | `undefined`         | Reference to the drawer element.                                                  |
+| `content`         | `HTMLElement \| undefined`          | `undefined`         | Reference to `.content` element                                                   |
+| `open`            | `boolean`                           | `false`             | Indicates whether the drawer is open or closed.                                   |
+| `modal`           | `boolean`                           | `false`             | Determines whether the drawer should be displayed as modal or non-modal.          |
+| `position`        | `DrawerPosition \| undefined`       | `undefined`         | Sets the position of the drawer (left/right).                                     |
+| `size`            | `DrawerSize \| number \| undefined` | `DrawerSize.medium` | Sets the control size of the drawer.                                              |
+| `ariaLabelledby`  | `string \| undefined`               | `undefined`         | Sets the aria-labelledby attribute of the drawer.                                 |
+| `ariaDescribedby` | `string \| undefined`               | `undefined`         | Sets the aria-describedby attribute of the drawer.                                |
 
 ### **Attributes**
 
@@ -96,26 +96,15 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 ### **Methods**
 
-| Name                     | Privacy   | Description                                                                          |
-| ------------------------ | --------- | ------------------------------------------------------------------------------------ |
-| `show`                   | public    | Shows the drawer.                                                                    |
-| `hide`                   | public    | Hides the drawer.                                                                    |
-| `toggleDrawer`           | public    | Toggles the state of the drawer (open/closed).                                       |
-| `handleDocumentKeydown`  | public    | Handles the keydown event on the document.                                           |
-| `handleKeyDown`          | public    | Handles the keydown event on the drawer.                                             |
-| `openChanged`            | protected | Handles changes to the `open` property.                                              |
-| `noFocusTrapChanged`     | protected | Handles changes to the `noFocusTrap` property.                                       |
-| `handleDocumentFocus`    | private   | Handles the focus event on the document.                                             |
-| `handleTabKeyDown`       | private   | Handles the keydown event when the Tab key is pressed.                               |
-| `getTabQueueBounds`      | private   | Retrieves the tabbable elements within the drawer.                                   |
-| `focusFirstElement`      | private   | Focuses the first element within the drawer.                                         |
-| `shouldForceFocus`       | private   | Determines whether the current focused element should force focus within the drawer. |
-| `shouldTrapFocus`        | private   | Determines whether the focus should be trapped within the drawer.                    |
-| `updateTrapFocus`        | private   | Updates the trapping focus behavior based on the current state.                      |
-| `reduceTabbableItems`    | private   | Reduces the tabbable items within an element.                                        |
-| `isFocusableFastElement` | private   | Checks if a FAST Element is focusable.                                               |
-| `hasTabbableShadow`      | private   | Checks if a FAST Element's shadow DOM has any tabbable elements.                     |
-| `setOverflowStyles`      | private   | Sets the `--overflow-border` css variable when content overflows container           |
+| Name                    | Privacy   | Description                                    |
+| ----------------------- | --------- | ---------------------------------------------- |
+| `show`                  | public    | Shows the drawer.                              |
+| `hide`                  | public    | Hides the drawer.                              |
+| `toggleDrawer`          | public    | Toggles the state of the drawer (open/closed). |
+| `handleDocumentKeydown` | public    | Handles the keydown event on the document.     |
+| `handleKeyDown`         | public    | Handles the keydown event on the drawer.       |
+| `openChanged`           | protected | Handles changes to the `open` property.        |
+| `noFocusTrapChanged`    | protected | Handles changes to the `noFocusTrap` property. |
 
 ### **Slots**
 
@@ -126,13 +115,23 @@ The Fluent WC3 Drawer extends `FASTElement`
 |              | The default slot for the main content  |
 | `footer`     | The slot for the footer                |
 
+### **CSS Variables**
+
+| Name                | Description                           |
+| ------------------- | ------------------------------------- |
+| `--overflow-border` | Used to set the overflow border color |
+
 ## **Accessiblity**
 
 ### **WAI-ARIA Roles, States, and Properties**
 
-- `role = "complementary"`
+- `role="complementary"`
 
-  - The drawer component should have a role of "complementary" to indicate its supplementary content role.
+  - The drawer component should have a role of "complementary" by default to indicate its supplementary content role.
+
+- `role="dialog"`
+
+  - The drawer component should have a role of "dialog" when rendered as a modal.
 
 - `aria-disabled`
 
