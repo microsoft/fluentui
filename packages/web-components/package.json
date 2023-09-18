@@ -71,6 +71,10 @@
       "types": "./dist/dts/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
     },
+    "./menu.js": {
+      "types": "./dist/dts/menu/define.d.ts",
+      "default": "./dist/esm/menu/define.js"
+    },
     "./menu-list.js": {
       "types": "./dist/dts/menu-list/define.d.ts",
       "default": "./dist/esm/menu-list/define.js"
