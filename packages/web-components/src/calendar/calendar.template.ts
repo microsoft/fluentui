@@ -122,6 +122,7 @@ export function secondaryPanelCellTemplate(
  * @param todayMonth - a numeric representation for today's month
  * @param todayYear - a numeric representation for today's year
  * @returns - The secondary panel row template for month picker or year picker
+ *
  * @public
  */
 export function secondaryPanelRowTemplate(
