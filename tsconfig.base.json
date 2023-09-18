@@ -54,6 +54,7 @@
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
+      "@fluentui/react-message-bar-preview": ["packages/react-components/react-message-bar-preview/src/index.ts"],
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
       "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/src/index.ts"],

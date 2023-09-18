@@ -1,8 +1,314 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Tue, 29 Aug 2023 12:57:33 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.31.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.31.1)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.31.0..@fluentui/react-components_v9.31.1)
+
+### Patches
+
+- `@fluentui/react-jsx-runtime`
+  - fix: strip comments for JSX pragma ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by olfedias@microsoft.com)
+
+## [9.31.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.31.0)
+
+Tue, 12 Sep 2023 08:51:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.30.4..@fluentui/react-components_v9.31.0)
+
+### Major changes
+
+- `@fluentui/react-breadcrumb-preview`
+  - feat: removed breadcrumb-link component ([PR #29112](https://github.com/microsoft/fluentui/pull/29112) by vkozlova@microsoft.com)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: react-tree allows control of individual tree item open state ([PR #29081](https://github.com/microsoft/fluentui/pull/29081) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-toast`
+  - feat(Toaster): Adds `inline` prop ([PR #29085](https://github.com/microsoft/fluentui/pull/29085) by lingfan.gao@microsoft.com)
+  - feat: Add center aligned positions for Toast ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by lingfan.gao@microsoft.com)
+- `@fluentui/react-tree`
+  - feat: react-tree allows control of individual tree item open state ([PR #29081](https://github.com/microsoft/fluentui/pull/29081) by bernardo.sunderhus@gmail.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb-preview`
+  - fix: icon spacing in Breadcrumb ([PR #29096](https://github.com/microsoft/fluentui/pull/29096) by vkozlova@microsoft.com)
+- `@fluentui/react-button`
+  - fix: subtle mode hover style is now visible in windows HCM. ([PR #29116](https://github.com/microsoft/fluentui/pull/29116) by tristan.watanabe@gmail.com)
+- `@fluentui/react-jsx-runtime`
+  - fix: make /jsx-runtime compatible with Webpack 4 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by olfedias@microsoft.com)
+  - bugfix: fix missing .d.ts types on build ([PR #29092](https://github.com/microsoft/fluentui/pull/29092) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - fix: don't apply modalizer attributes when focus trap isn't configured ([PR #29110](https://github.com/microsoft/fluentui/pull/29110) by lingfangao@hotmail.com)
+- `@fluentui/react-search-preview`
+  - Adds pointer as cursor when hovering on SearchBox clear button ([PR #29039](https://github.com/microsoft/fluentui/pull/29039) by syphe@outlook.com)
+- `@fluentui/react-table`
+  - fix: DataGrid Headers look weird on Safari ([PR #28588](https://github.com/microsoft/fluentui/pull/28588) by mehars.6925@gmail.com)
+- `@fluentui/react-tabster`
+  - fix: don't apply modalizer attributes when focus trap isn't configured ([PR #29110](https://github.com/microsoft/fluentui/pull/29110) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - feat(react-infobutton): Removing openOnHover from popover props and adding details about the infobutton pattern. ([PR #29120](https://github.com/microsoft/fluentui/pull/29120) by esteban.230@hotmail.com)
+  - fix: Popover should close when tabbing out of the surface. ([PR #28913](https://github.com/microsoft/fluentui/pull/28913) by esteban.230@hotmail.com)
+
+## [9.30.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.4)
+
+Wed, 06 Sep 2023 13:31:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.30.3..@fluentui/react-components_v9.30.4)
+
+### Minor changes
+
+- `@fluentui/react-conformance`
+  - feat: add option `disableTypeTests` to disable tests that require TypeScript information ([PR #28988](https://github.com/microsoft/fluentui/pull/28988) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb-preview`
+  - fix: styling for BreadcrumbItem ([PR #29059](https://github.com/microsoft/fluentui/pull/29059) by vkozlova@microsoft.com)
+- `@fluentui/react-utilities`
+  - Revert fix: `useOnClickOutside` should invoke callback on clicking scrollbar ([PR #29065](https://github.com/microsoft/fluentui/pull/29065) by yuanboxue@microsoft.com)
+
+## [9.30.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.3)
+
+Tue, 05 Sep 2023 15:39:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.30.2..@fluentui/react-components_v9.30.3)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - fix: `useOnScrollOutside` should invoke callback on dragging scrollbar ([PR #29062](https://github.com/microsoft/fluentui/pull/29062) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - refactor: organize code imports ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by marcosvmmoura@gmail.com)
+  - test: add e2e tests for base Drawer components ([PR #29029](https://github.com/microsoft/fluentui/pull/29029) by marcosvmmoura@gmail.com)
+
+## [9.30.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.2)
+
+Tue, 05 Sep 2023 13:28:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.30.1..@fluentui/react-components_v9.30.2)
+
+### Minor changes
+
+- `@fluentui/react-motion-preview`
+  - feat: create useReducedMotion and apply to useMotion to skip all motion calculations ([PR #29014](https://github.com/microsoft/fluentui/pull/29014) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-motion-preview`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-overflow`
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-persona`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-popover`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-portal`
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-portal-compat`
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-portal-compat-context`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-positioning`
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-progress`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-provider`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-search-preview`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-select`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-skeleton`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-slider`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinbutton`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinner`
+  - feat: Update Spinner appearance token to colorBrandStroke2Contrast ([PR #29008](https://github.com/microsoft/fluentui/pull/29008) by ololubek@microsoft.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-switch`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-table`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tabs`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tabster`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags-preview`
+  - fix: add style for windows high contrast ([PR #29035](https://github.com/microsoft/fluentui/pull/29035) by yuanboxue@microsoft.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: use makeResetStyles to reduce classNames ([PR #29022](https://github.com/microsoft/fluentui/pull/29022) by yuanboxue@microsoft.com)
+  - fix: remember last focused element in TagGroup ([PR #29023](https://github.com/microsoft/fluentui/pull/29023) by yuanboxue@microsoft.com)
+- `@fluentui/react-text`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-textarea`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-theme`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-toast`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-toolbar`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tooltip`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tree`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: adds swc-plugin-de-indent-template-literal to remove indentation of consoles ([PR #29040](https://github.com/microsoft/fluentui/pull/29040) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-utilities`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: adds swc-plugin-de-indent-template-literal to remove indentation of consoles ([PR #29040](https://github.com/microsoft/fluentui/pull/29040) by bernardo.sunderhus@gmail.com)
+  - fix: use timeout instead of requestAnimationFrame for ssr ([PR #29015](https://github.com/microsoft/fluentui/pull/29015) by marcosvmmoura@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/keyboard-keys`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/priority-overflow`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-accordion`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-aria`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-avatar`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-badge`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-breadcrumb-preview`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-card`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-checkbox`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-combobox`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-conformance`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-conformance-griffel`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-context-selector`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-datepicker-compat`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-dialog`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: adds swc-plugin-de-indent-template-literal to remove indentation of consoles ([PR #29040](https://github.com/microsoft/fluentui/pull/29040) by bernardo.sunderhus@gmail.com)
+  - bugfix: fixes DialogActions position on breakpoint ([PR #29021](https://github.com/microsoft/fluentui/pull/29021) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-divider`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-field`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-image`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-input`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-jsx-runtime`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-label`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-link`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-migration-v0-v9`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-migration-v8-v9`
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-theme-sass`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-virtualizer`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/tokens`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/babel-preset-global-context`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- `@fluentui/global-context`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - bumps react peer dependencies to v16.14.0 ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-alert`
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-drawer`
+  - fix: refactor DrawerHeaderTitle slot creation while keeping the same API ([PR #29042](https://github.com/microsoft/fluentui/pull/29042) by marcosvmmoura@gmail.com)
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+  - test: add simple renderization tests for sub components ([PR #29043](https://github.com/microsoft/fluentui/pull/29043) by marcosvmmoura@gmail.com)
+  - feat: add motion for Drawer ([PR #28999](https://github.com/microsoft/fluentui/pull/28999) by marcosvmmoura@gmail.com)
+- `@fluentui/react-infobutton`
+  - chore: migrate package to use JSX importSource ([PR #28959](https://github.com/microsoft/fluentui/pull/28959) by bernardo.sunderhus@gmail.com)
+  - bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
 
 ## [9.30.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.30.1)
 

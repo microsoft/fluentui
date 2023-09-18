@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-conformance
 
-This log was last generated on Thu, 20 Jul 2023 18:27:27 GMT and should not be manually modified.
+This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.18.0)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.17.2..@fluentui/react-conformance_v0.18.0)
+
+### Minor changes
+
+- feat: add option `disableTypeTests` to disable tests that require TypeScript information ([PR #28988](https://github.com/microsoft/fluentui/pull/28988) by yuanboxue@microsoft.com)
+
+## [0.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.2)
+
+Tue, 05 Sep 2023 13:29:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-conformance_v0.17.1..@fluentui/react-conformance_v0.17.2)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
 
 ## [0.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-conformance_v0.17.1)
 

@@ -1273,6 +1273,8 @@ export type {
   TreeItemSlots,
   TreeItemState,
   TreeItemValue,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,

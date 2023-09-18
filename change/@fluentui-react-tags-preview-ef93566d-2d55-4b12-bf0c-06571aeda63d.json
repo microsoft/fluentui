@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remember last focused element in TagGroup",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
