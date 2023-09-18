@@ -249,6 +249,21 @@ export class Menu extends FASTElement {
   }
 
   /**
+   * Called whenever the 'closeOnScroll' property changes.
+   * Adds or removes a 'closeOnScroll' event listener to the trigger based on the new value.
+   * @public
+   * @param {boolean} oldValue - The previous value of 'closeOnScroll'.
+   * @param {boolean} newValue - The new value of 'closeOnScroll'.
+   */
+  public closeOnScrollChanged(oldValue: boolean, newValue: boolean): void {
+    if (newValue) {
+      document.addEventListener('scroll', this.closeMenu);
+    } else {
+      document.removeEventListener('scroll', this.closeMenu);
+    }
+  }
+
+  /**
    * The task to set the positioning of the menu.
    * @protected
    */
