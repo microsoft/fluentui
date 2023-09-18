@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "breaking-change: removes deprecated method from accordion item context",
+  "packageName": "@fluentui/react-accordion",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

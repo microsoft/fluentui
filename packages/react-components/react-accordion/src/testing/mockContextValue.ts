@@ -21,9 +21,6 @@ export function mockAccordionItemContextValue(
     open: false,
     disabled: false,
     value: undefined,
-    onHeaderClick() {
-      /* noop */
-    },
     ...partialValue,
   };
 }
