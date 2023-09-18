@@ -1,8 +1,31 @@
 # Change Log - @fluentui/react-switch
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.40)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.39..@fluentui/react-switch_v9.1.40)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.27 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.8 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+- Bump @fluentui/react-label to v9.1.35 ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by beachball)
+
+## [9.1.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.39)
+
+Tue, 12 Sep 2023 08:51:34 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-switch_v9.1.38..@fluentui/react-switch_v9.1.39)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.26 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.7 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-label to v9.1.34 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
+- Bump @fluentui/react-tabster to v9.12.9 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by beachball)
 
 ## [9.1.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-switch_v9.1.38)
 

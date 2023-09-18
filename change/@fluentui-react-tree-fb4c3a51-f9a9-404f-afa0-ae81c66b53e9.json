@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat: react-tree allows control of individual tree item open state",
+  "type": "patch",
+  "comment": "chore: stop using global document on HTMLElementWalker",
   "packageName": "@fluentui/react-tree",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
