@@ -39,14 +39,14 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     value = id,
   } = props;
 
-  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+  const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
     if (!ev.defaultPrevented) {
       handleTagDismiss?.(ev, value);
     }
   });
 
-  const handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+  const dismissOnKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
       handleTagDismiss?.(ev, value);
@@ -72,13 +72,24 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
-        ref,
-        ...props,
-        id,
-        onClick: handleClick,
-        onKeyDown: handleKeyDown,
-      }),
+      getNativeElementProps(
+        'button',
+        dismissible
+          ? {
+              ref,
+              ...props,
+              id,
+              // onClick handler is added only when dismissible is true: this is because Voice Over + Safari will announce 'clickable' if a click handler is attached.
+              // We don't want 'clickable' announcement when Tag is a simple span and not dismissible.
+              onClick: dismissOnClick,
+              onKeyDown: dismissOnKeyDown,
+            }
+          : {
+              ref,
+              ...props,
+              id,
+            },
+      ),
       { elementType: dismissible ? 'button' : 'span' },
     ),
 
