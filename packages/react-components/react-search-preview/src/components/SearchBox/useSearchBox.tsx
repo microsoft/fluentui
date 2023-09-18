@@ -51,10 +51,7 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
       dismiss.onClick?.(event);
     }
     setValue('');
-
-    if (props.onDismiss) {
-      props.onDismiss();
-    }
+    props.onDismiss?.(event, {});
   });
 
   const inputState = useInput_unstable(

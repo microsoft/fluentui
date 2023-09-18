@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { InputProps, InputSlots, InputState } from '@fluentui/react-input';
 
@@ -19,7 +20,7 @@ export type SearchBoxProps = Omit<
      * Callback for when the clear/dismiss button is clicked. *Should* be handled when `value` is controlled by the
      * consumer so that the consumer may reset `value` respectively.
      * */
-    onDismiss?: () => void;
+    onDismiss?: (event: React.MouseEvent<HTMLSpanElement>, data: SearchBoxDismissData) => void;
   };
 
 /**
@@ -31,3 +32,5 @@ export type SearchBoxState = ComponentState<SearchBoxSlots> &
   Required<Pick<SearchBoxProps, 'disabled'>> & {
     focused: boolean;
   };
+
+type SearchBoxDismissData = {};
