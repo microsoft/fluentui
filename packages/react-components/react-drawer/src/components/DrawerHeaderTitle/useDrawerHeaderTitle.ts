@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
-import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 
 /**
  * @internal
