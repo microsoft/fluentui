@@ -1,7 +1,7 @@
 {
-  "type": "patch",
-  "comment": "fix: Presence badge should show Out of Office icon for Away+OOF and Offline+OOF statuses.",
+  "type": "minor",
+  "comment": "feat: Presence badge should show Out of Office icon for Away+OOF and Offline+OOF statuses and export presence icon maps.",
   "packageName": "@fluentui/react-badge",
-  "email": "esteban.230@hotmail.com",
+  "email": "estebanmu@microsoft.com",
   "dependentChangeType": "patch"
 }
