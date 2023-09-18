@@ -3,7 +3,7 @@ import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbB
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useIconStyles } from '../../utils/sharedStyles.styles';
+import { useIconStyles } from '../../shared/useIconStyles.styles';
 
 /**
  * Static CSS class names used internally for the component slots.

@@ -2,7 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
-import { useIconStyles } from '../../utils/sharedStyles.styles';
+import { useIconStyles } from '../../shared/useIconStyles.styles';
 
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
   root: 'fui-BreadcrumbItem',
