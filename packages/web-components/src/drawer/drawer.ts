@@ -1,10 +1,10 @@
 import { attr, css, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { keyEscape, keyTab } from '@microsoft/fast-web-utilities';
+import { keyEscape } from '@microsoft/fast-web-utilities';
 import { isTabbable } from 'tabbable';
 import { colorNeutralStroke1, colorTransparentStroke } from '../theme/design-tokens.js';
 import { DrawerPosition, DrawerSize } from './drawer.options.js';
 
-export interface OpenEvent {
+export interface DrawerOpenChangedEvent {
   open: boolean;
   position?: string;
   size?: DrawerSize | number;
@@ -179,15 +179,12 @@ export class Drawer extends FASTElement {
    */
   protected openChanged(prev: boolean, next: boolean): void {
     if (this.$fastController.isConnected) {
-      const eventDetail: OpenEvent = {
+      const eventDetail: DrawerOpenChangedEvent = {
         open: this.open,
         position: this.position ? this.position : 'right',
         size: this.sizeValue,
       };
-      const event = new CustomEvent<OpenEvent>('openChanged', {
-        detail: eventDetail,
-      });
-      this.dispatchEvent(event);
+      this.$emit('openChanged', eventDetail);
     }
   }
 
