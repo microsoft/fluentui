@@ -76,7 +76,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
         ref,
         ...props,
         id,
-        // onClick handler is added only when dismissible is true: this is because Voice Over + Safari will announce 'clickable' if a click handler is attached.
+        // onClick handler is added only when dismissible is true: this is because Voice Over + Safari and NVDA + Chrome will announce 'clickable' if a click handler is attached.
         // We don't want 'clickable' announcement when Tag is a simple span and not dismissible.
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
