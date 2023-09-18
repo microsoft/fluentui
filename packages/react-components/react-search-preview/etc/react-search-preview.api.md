@@ -27,7 +27,7 @@ export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 
 // @public
 export type SearchBoxProps = Omit<ComponentProps<Partial<SearchBoxSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & InputProps & {
-    onDismiss?: () => void;
+    onDismiss?: (event: React_2.MouseEvent<HTMLSpanElement>, data: SearchBoxDismissData) => void;
 };
 
 // @public (undocumented)
