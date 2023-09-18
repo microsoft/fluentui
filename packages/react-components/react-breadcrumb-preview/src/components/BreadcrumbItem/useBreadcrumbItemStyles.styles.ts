@@ -20,9 +20,10 @@ const useStyles = makeStyles({
     textWrap: 'nowrap',
   },
   icon: {
-    display: 'flex',
+    display: 'inline-flex',
     alignItems: 'center',
-    ...shorthands.padding(tokens.spacingHorizontalXS),
+    justifyContent: 'center',
+    marginRight: tokens.spacingHorizontalXS,
   },
   small: {
     height: '24px',

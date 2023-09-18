@@ -1,0 +1,3 @@
+# Ignore build output for /jsx-runtime & /jsx-dev-runtime paths
+/jsx-runtime
+/jsx-dev-runtime

@@ -32,7 +32,7 @@ jobs:
 
       - bash: |
           postPolicy="true";
-          response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
+          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
             parsedResponse=${response/*"access_token"/}
             token=${parsedResponse:3:${#parsedResponse}-5}
             curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
@@ -60,6 +60,8 @@ jobs:
         env:
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
@@ -94,7 +96,7 @@ jobs:
 
       - bash: |
           postPolicy="true";
-          response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
+          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
             parsedResponse=${response/*"access_token"/}
             token=${parsedResponse:3:${#parsedResponse}-5}
             curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
@@ -122,6 +124,8 @@ jobs:
         env:
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
           VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
@@ -157,7 +161,7 @@ jobs:
 
       - bash: |
           postPolicy="true";
-          response=$(curl --request POST 'https://login.microsoftonline.com/72f988bf-86f1-41af-91ab-2d7cd011db47/oauth2/token' --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id=288a69b6-760d-4c1f-ad6d-0183b5e5740f' --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
+          response=$(curl --request POST ${VR_APP_CLIENT_URL} --header 'Content-Type: application/x-www-form-urlencoded' --data-urlencode 'grant_type=client_credentials' --data-urlencode 'client_id='${VR_APP_CLIENT_ID} --data-urlencode 'client_secret='${VR_APPROVAL_CLIENT_SECRET} )
             parsedResponse=${response/*"access_token"/}
             token=${parsedResponse:3:${#parsedResponse}-5}
             curl --location --request POST 'https://vrapprovalfunction-prod.azurewebsites.net/api/policyStateV2' \
@@ -184,6 +188,8 @@ jobs:
         displayName: 'Call policy State Api'
         env:
           VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_CLIENT_URL: $(VR_APP_CLIENT_URL)
 
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
