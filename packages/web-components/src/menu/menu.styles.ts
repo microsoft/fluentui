@@ -7,6 +7,7 @@ import {} from '../theme/design-tokens.js';
 export const styles = css`
   :host {
     position: relative;
+    z-index: var(--z-index-menu, 1);
   }
   .positioning-container {
     position: fixed;

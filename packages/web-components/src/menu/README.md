@@ -96,6 +96,14 @@ Creating a menu component that can be used to display a list of options or actio
 
 <br />
 
+### **CSS Variables**
+
+| Name           | Description                     |
+| -------------- | ------------------------------- |
+| `z-index-menu` | Used to set z-index of the Menu |
+
+<br />
+
 ### **Template**
 
 ```html
