@@ -18,6 +18,7 @@ import { useSubtree } from '../../hooks/useSubtree';
 import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
 import { treeItemFilter } from '../../utils/treeItemFilter';
 import { useTreeNavigation } from './useTreeNavigation';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
   const isSubtree = useTreeContext_unstable(ctx => ctx.level > 0);
@@ -32,14 +33,15 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   const checkedItems = useNestedCheckedItems(props);
   const { navigate, initialize } = useTreeNavigation();
   const walkerRef = React.useRef<HTMLElementWalker>();
+  const { targetDocument } = useFluent_unstable();
   const initializeWalker = React.useCallback(
     (root: HTMLElement | null) => {
-      if (root) {
-        walkerRef.current = createHTMLElementWalker(root, treeItemFilter);
+      if (root && targetDocument) {
+        walkerRef.current = createHTMLElementWalker(root, targetDocument, treeItemFilter);
         initialize(walkerRef.current);
       }
     },
-    [initialize],
+    [initialize, targetDocument],
   );
 
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
