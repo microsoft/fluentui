@@ -16,10 +16,11 @@ export type DrawerSlots = {
 export type DrawerProps = ComponentProps<DrawerSlots> & {
   /**
    * Type of the drawer.
-   * @default overlay
    *
    * - 'overlay' - Drawer is hidden by default and can be opened by clicking on the trigger.
    * - 'inline' - Drawer is stacked with the content
+   *
+   * @default overlay
    */
   type?: 'inline' | 'overlay';
 };
