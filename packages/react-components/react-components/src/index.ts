@@ -246,6 +246,17 @@ export {
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
   usePresenceBadgeStyles_unstable,
+  presenceAwayRegular,
+  presenceAwayFilled,
+  presenceAvailableRegular,
+  presenceAvailableFilled,
+  presenceBlockedRegular,
+  presenceBusyFilled,
+  presenceDndRegular,
+  presenceDndFilled,
+  presenceOofRegular,
+  presenceOfflineRegular,
+  presenceUnknownRegular,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,

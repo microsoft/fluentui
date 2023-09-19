@@ -5,6 +5,17 @@ export {
   presenceBadgeClassNames,
   usePresenceBadgeStyles_unstable,
   usePresenceBadge_unstable,
+  presenceAwayRegular,
+  presenceAwayFilled,
+  presenceAvailableRegular,
+  presenceAvailableFilled,
+  presenceBlockedRegular,
+  presenceBusyFilled,
+  presenceDndRegular,
+  presenceDndFilled,
+  presenceOofRegular,
+  presenceOfflineRegular,
+  presenceUnknownRegular,
 } from './PresenceBadge';
 export type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge';
 export {
