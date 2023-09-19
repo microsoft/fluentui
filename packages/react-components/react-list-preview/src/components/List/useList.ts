@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
-import type { ListProps, ListState } from './List.types';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
+import { ListLayout, ListProps, ListState } from './List.types';
 
 /**
  * Create the state required to render List.
@@ -12,20 +13,35 @@ import type { ListProps, ListState } from './List.types';
  * @param ref - reference to root HTMLElement of List
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>): ListState => {
+  const {
+    layout = ListLayout.Vertical,
+    focusableItems = false,
+    focusable = false,
+    customArrowNavigationOptions,
+  } = props;
+
+  const arrowNavigationAttributes = useArrowNavigationGroup({
+    axis: layout === ListLayout.Grid ? 'grid-linear' : 'both',
+    memorizeCurrent: true,
+    ...(customArrowNavigationOptions || {}),
+  });
+
   return {
-    // TODO add appropriate props/defaults
     components: {
-      // TODO add each slot's element type or component
       root: 'div',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
       getNativeElementProps('div', {
         ref,
+        role: 'list',
+        tabIndex: focusable ? 0 : undefined,
+        ...arrowNavigationAttributes,
         ...props,
       }),
       { elementType: 'div' },
     ),
+    layout,
+    // context:
+    focusableItems,
   };
 };

@@ -1,4 +1,12 @@
-export { List, listClassNames, renderList_unstable, useListStyles_unstable, useList_unstable } from './List';
+export {
+  List,
+  listClassNames,
+  renderList_unstable,
+  useListStyles_unstable,
+  useList_unstable,
+  ListLayout,
+} from './List';
+
 export type { ListProps, ListSlots, ListState } from './List';
 export {
   ListItem,
@@ -8,3 +16,5 @@ export {
   useListItem_unstable,
 } from './ListItem';
 export type { ListItemProps, ListItemSlots, ListItemState } from './ListItem';
+
+export { useListFeatures, useListSelection } from './hooks';

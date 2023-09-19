@@ -1,7 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { Button } from '@fluentui/react-button';
 
 export type ListItemSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div', 'li' | 'dt' | 'dd'>>;
+  button?: Slot<typeof Button>;
 };
 
 /**

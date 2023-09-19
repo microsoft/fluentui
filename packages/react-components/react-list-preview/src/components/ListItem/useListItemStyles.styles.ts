@@ -1,11 +1,12 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { ListItemSlots, ListItemState } from './ListItem.types';
+import { tokens } from '@fluentui/react-theme';
 
 export const listItemClassNames: SlotClassNames<ListItemSlots> = {
   root: 'fui-ListItem',
-  // TODO: add class names for all slots on ListItemSlots.
-  // Should be of the form `<slotName>: 'fui-ListItem__<slotName>`
+  button: 'fui-ListItem__button',
 };
 
 /**
@@ -13,10 +14,20 @@ export const listItemClassNames: SlotClassNames<ListItemSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...createCustomFocusIndicatorStyle(
+      {
+        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+      },
+      { selector: 'focus' },
+    ),
   },
-
-  // TODO add additional classes for different states and/or slots
+  button: {
+    display: 'block',
+    width: '100%',
+    textAlign: 'left',
+    ...shorthands.padding(0),
+  },
 });
 
 /**
@@ -26,8 +37,9 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   const styles = useStyles();
   state.root.className = mergeClasses(listItemClassNames.root, styles.root, state.root.className);
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
+  if (state.button) {
+    state.button.className = mergeClasses(listItemClassNames.button, styles.button, state.button?.className);
+  }
 
   return state;
 };

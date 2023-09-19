@@ -33,7 +33,9 @@
   "dependencies": {
     "@fluentui/react-jsx-runtime": "^9.0.3",
     "@fluentui/react-theme": "^9.1.11",
+    "@fluentui/react-tabster": "^9.12.5",
     "@fluentui/react-utilities": "^9.13.0",
+    "@fluentui/react-button": "^9.3.34",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
