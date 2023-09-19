@@ -26,7 +26,7 @@ module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookCon
         backgrounds: false,
         viewport: false,
         toolbars: false,
-        actions: false,
+        actions: true,
       },
     },
   ],
@@ -38,8 +38,8 @@ module.exports = /** @type {Omit<import('../../../.storybook/main').StorybookCon
     config.plugins = config.plugins ?? [];
 
     config.resolve.extensionAlias = {
-      '.js': ['.ts', '.js'],
-      '.mjs': ['.mts', '.mjs'],
+      '.js': ['.js', '.ts'],
+      '.mjs': ['.mjs', '.mts'],
     };
     config.resolve.extensions.push(...['.ts', '.js']);
     config.resolve.plugins.push(tsPaths);
