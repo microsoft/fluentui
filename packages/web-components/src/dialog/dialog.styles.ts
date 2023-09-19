@@ -13,11 +13,8 @@ import {
   lineHeightBase500,
   shadow64,
   spacingHorizontalS,
-  spacingHorizontalXL,
-  spacingHorizontalXS,
   spacingHorizontalXXL,
   spacingVerticalS,
-  spacingVerticalXS,
   spacingVerticalXXL,
   strokeWidthThin,
 } from '@fluentui/web-components';
@@ -52,6 +49,7 @@ export const styles = css`
     bottom: 0;
     left: 0;
     right: 0;
+    z-index: var(--dialog-elevation, 9999);
   }
 
   .control {
@@ -75,11 +73,12 @@ export const styles = css`
 
   .root {
     box-sizing: border-box;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
-    grid-template-columns: auto 1fr 76px;
+    display: flex;
+    row-gap: 8px;
+    flex-direction: column;
     overflow: unset;
     max-height: calc(100vh - 48px);
+    padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
   }
 
   :host([alert]) .root,
@@ -93,35 +92,20 @@ export const styles = css`
   }
 
   .header {
-    grid-column: 1 / 3;
-    grid-row: 1 / 1;
-    padding-bottom: ${spacingVerticalXS};
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
     font-family: ${fontFamilyBase};
-    padding: ${spacingVerticalXXL} ${spacingHorizontalXS} ${spacingVerticalXS} ${spacingHorizontalXXL};
     color: ${colorNeutralForeground1};
     margin-bottom: ${spacingVerticalS};
-    display: inline-block;
     height: fit-content;
-  }
-
-  .close {
-    align-self: start;
-    justify-self: end;
-    grid-column-start: 3;
-    grid-row-end: 1;
-    grid-row-start: 1;
-    padding: ${spacingVerticalXXL} ${spacingHorizontalXL} ${spacingVerticalS} ${spacingHorizontalXXL};
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    column-gap: 8px;
   }
 
   .content {
-    grid-row-end: 2;
-    grid-row-start: 2;
-    grid-column-start: 1;
-    grid-column-end: 4;
-    padding: 0 ${spacingHorizontalXXL};
     vertical-align: top;
     min-height: 32px;
     color: ${colorNeutralForeground1};
@@ -133,21 +117,16 @@ export const styles = css`
     box-sizing: border-box;
   }
 
-  .actions {
+  .footer {
     display: flex;
     flex-direction: row;
-    padding: ${spacingVerticalS} ${spacingHorizontalXXL} ${spacingHorizontalXXL} ${spacingHorizontalXXL};
+    justify-content: flex-end;
+    align-items: center;
     height: fit-content;
     column-gap: ${spacingHorizontalS};
     box-sizing: border-box;
-    grid-column-start: 2;
-    grid-row-start: 3;
-    justify-self: end;
-    grid-column-end: 4;
     row-gap: ${spacingHorizontalS};
     column-gap: ${spacingVerticalS};
-    grid-template-columns: 1fr 1fr auto;
-    grid-template-rows: auto 1fr auto;
   }
 
   @media screen and (max-width: 480px) {
@@ -156,7 +135,7 @@ export const styles = css`
       width: 100vw;
     }
 
-    .actions {
+    .footer {
       display: flex;
       grid-column-start: 1;
       flex-direction: column;
@@ -165,7 +144,7 @@ export const styles = css`
       justify-self: stretch;
       width: 100%;
     }
-    ::slotted([slot='actions']) {
+    ::slotted([slot='footer']) {
       width: 100%;
     }
   }
