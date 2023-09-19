@@ -5,7 +5,7 @@ import { TagGroupContextProvider } from '../../contexts/tagGroupContext';
 import { useTag_unstable } from './useTag';
 
 describe('useTag_unstable', () => {
-  it('should not attach event handler for non-dismissible tag', () => {
+  it.each([true, false])('should %s attach event handler for tag when dismissible:$dismissible', dismissible => {
     const ref = React.createRef<HTMLElement>();
     const wrapper: React.FC = ({ children }) => (
       <TagGroupContextProvider
@@ -18,7 +18,11 @@ describe('useTag_unstable', () => {
       </TagGroupContextProvider>
     );
 
-    const { result } = renderHook(() => useTag_unstable({}, ref), { wrapper });
-    expect(result.current.root.onClick).toBeUndefined();
+    const { result } = renderHook(() => useTag_unstable({ dismissible }, ref), { wrapper });
+    if (dismissible) {
+      expect(result.current.root.onClick).toBeDefined();
+    } else {
+      expect(result.current.root.onClick).toBeUndefined();
+    }
   });
 });
