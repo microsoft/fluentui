@@ -90,6 +90,8 @@ export const styles = css`
     transition-property: background, border, color;
     transition-timing-function: ${curveEasyEase};
     cursor: pointer;
+    min-width: inherit;
+    min-height: inherit;
     width: inherit;
   }
 
