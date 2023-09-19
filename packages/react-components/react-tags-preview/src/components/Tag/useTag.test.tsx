@@ -5,8 +5,9 @@ import { TagGroupContextProvider } from '../../contexts/tagGroupContext';
 import { useTag_unstable } from './useTag';
 
 describe('useTag_unstable', () => {
-  it.each([true, false])('should %s attach event handler for tag when dismissible:$dismissible', dismissible => {
-    // onClick handler is added only when dismissible is true: this is because Voice Over + Safari and NVDA + Chrome will announce 'clickable' if a click handler is attached.
+  it.each([true, false])('should %s attach click event handler for tag when dismissible:$dismissible', dismissible => {
+    // onClick handler should be added only when dismissible is true.
+    // This is because Voice Over + Safari and NVDA + Chrome will announce 'clickable' if a click handler is attached.
     // We don't want 'clickable' announcement when Tag is a simple span and not dismissible.
 
     const ref = React.createRef<HTMLElement>();
