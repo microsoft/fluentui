@@ -80,7 +80,7 @@ export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): Br
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], styles.icon, state.icon.className);
   }
 
   return state;
