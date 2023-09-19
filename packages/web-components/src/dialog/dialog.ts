@@ -3,7 +3,6 @@ import { FASTDialog } from '@microsoft/fast-foundation';
 
 /**
  * Dialog component that extends the FASTDialog class.
- * It provides additional functionality for handling alerts and emitting events on hidden state changes.
  *
  * @public
  * @extends FASTDialog
@@ -31,15 +30,5 @@ export class Dialog extends FASTDialog {
     super.dismiss();
     if (this.alert) return;
     this.hidden = true;
-  }
-
-  /**
-   * Event handler for the hiddenChanged event.
-   * Emits the onHiddenChange event with the current hidden state.
-   *
-   * @public
-   */
-  public hiddenChanged() {
-    this.$emit('onHiddenChange', this.hidden);
   }
 }
