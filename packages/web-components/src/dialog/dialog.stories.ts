@@ -36,11 +36,6 @@ const openDialog = (e: Event, id: string) => {
 };
 
 const dialogTemplate = html<DialogStoryArgs>`
-  <style>
-    ::part(positioning-region) {
-      z-index: 9999;
-    }
-  </style>
   <div>
     <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
     <fluent-dialog
@@ -50,7 +45,7 @@ const dialogTemplate = html<DialogStoryArgs>`
       ?no-focus-trap=${x => x.noFocusTrap}
       hidden
     >
-      <fluent-text slot="header">Dialog</fluent-text>
+      <fluent-text slot="title">Dialog</fluent-text>
       <fluent-button
         appearance="transparent"
         icon-only
@@ -59,7 +54,7 @@ const dialogTemplate = html<DialogStoryArgs>`
       >
         ${dismissed16Regular}
       </fluent-button>
-      <fluent-text as="p" font="base" size="300" weight="regular" block>
+      <fluent-text as="p" font="base" size="300" weight="regular">
         <p>
           The Dialog component is a window overlaid on either the primary window or another dialog window. Windows under
           a modal dialog are inert. That is, users cannot interact with content outside an active dialog window.
@@ -67,10 +62,10 @@ const dialogTemplate = html<DialogStoryArgs>`
       </fluent-text>
       <br />
       <fluent-text><code>fluent-dialog</code></fluent-text>
-      <fluent-button slot="footer" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
-        >Close Drawer</fluent-button
+      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
+        >Close Dialog</fluent-button
       >
-      <fluent-button slot="footer">Do Something</fluent-button>
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `;
@@ -80,21 +75,11 @@ export default {
   args: {
     modal: false,
     alert: false,
-    hidden: false,
     noFocusTrap: false,
   },
   argTypes: {
-    hidden: {
-      description: 'Sets the visibility of the dialog',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-      control: 'boolean',
-    },
     modal: {
-      description: 'Renders dialog as an modal',
+      description: 'Renders dialog as a modal',
       table: {
         defaultValue: {
           summary: false,
@@ -129,7 +114,7 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-modal')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-modal" modal hidden>
-      <div slot="header">Modal</div>
+      <div slot="title">Modal</div>
       <div>
         A modal is a type of dialog that temporarily halts the main workflow to convey a significant message or require
         user interaction. By default, interactions such as clicking outside the dialog or pressing the Escape key will
@@ -137,10 +122,10 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
       </div>
       <br />
       <fluent-text><code>fluent-dialog modal</code></fluent-text>
-      <fluent-button slot="footer" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
-        >Close Drawer</fluent-button
+      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
+        >Close Dialog</fluent-button
       >
-      <fluent-button slot="footer">Do Something</fluent-button>
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -149,17 +134,17 @@ export const Alert = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-alert')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-alert" alert hidden>
-      <div slot="header">Alert</div>
+      <div slot="title">Alert</div>
       <div>
         An alert is a type of modal-dialog that interrupts the user's workflow to communicate an important message and
         acquire a response. By default clicking on backdrop and pressing Escape will not dismiss an alert Dialog.
       </div>
       <br />
       <fluent-text><code>fluent-dialog alert</code></fluent-text>
-      <fluent-button slot="footer" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
-        >Close Drawer</fluent-button
+      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
+        >Close Dialog</fluent-button
       >
-      <fluent-button slot="footer">Do Something</fluent-button>
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -168,7 +153,7 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-longcontent')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-longcontent" hidden>
-      <div slot="header">Scrolling Long Content</div>
+      <div slot="title">Scrolling Long Content</div>
       <fluent-button
         appearance="transparent"
         icon-only
@@ -219,12 +204,12 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
         gravida.
       </div>
       <fluent-button
-        slot="footer"
+        slot="actions"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
-        >Close Drawer</fluent-button
+        >Close Dialog</fluent-button
       >
-      <fluent-button slot="footer">Do Something</fluent-button>
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -233,7 +218,7 @@ export const NoFocusTrap = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-nofocustrap')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-nofocustrap" no-focus-trap hidden>
-      <div slot="header">No Focus Trap</div>
+      <div slot="title">No Focus Trap</div>
       <fluent-button
         appearance="transparent"
         icon-only
@@ -250,12 +235,12 @@ export const NoFocusTrap = renderComponent(html<DialogStoryArgs>`
       <fluent-text><code>fluent-dialog no-focus-trap</code></fluent-text>
 
       <fluent-button
-        slot="footer"
+        slot="actions"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-nofocustrap')}"
-        >Close Drawer</fluent-button
+        >Close Dialog</fluent-button
       >
-      <fluent-button slot="footer">Do Something</fluent-button>
+      <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);

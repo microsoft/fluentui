@@ -24,7 +24,7 @@ export const template: ElementViewTemplate<Dialog> = html`
     >
       <div class="root" part="root">
         <div class="header" part="header">
-          <slot name="header"></slot>
+          <slot name="title"></slot>
           <slot name="close"></slot>
         </div>
 
@@ -32,7 +32,7 @@ export const template: ElementViewTemplate<Dialog> = html`
           <slot></slot>
         </div>
         <div class="footer" part="footer">
-          <slot name="footer"></slot>
+          <slot name="actions"></slot>
         </div>
       </div>
     </div>
