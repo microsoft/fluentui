@@ -67,6 +67,7 @@ export const styles = css`
     vertical-align: middle;
     min-width: 96px;
     min-height: 32px;
+    width: auto;
   }
 
   :host .control {
