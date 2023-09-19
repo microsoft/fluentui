@@ -84,7 +84,8 @@ Dismiss.storyName = 'Dismiss';
 Dismiss.parameters = {
   docs: {
     description: {
-      story: 'A TagGroup contains a collection of Tag/InteractionTag that can be dismissed',
+      story:
+        'A TagGroup contains a collection of Tag/InteractionTag that can be dismissed. Ensure that focus is properly managed when all tags have been dismissed.',
     },
   },
 };
