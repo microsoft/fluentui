@@ -31,7 +31,7 @@ storiesOf('Menu Converged - basic', module)
 
         <MenuPopover>
           <MenuList>
-            <MenuItem icon={<CutRegular />}>Cut</MenuItem>
+            <MenuItem icon={<EditRegular />}>Cut</MenuItem>
             <MenuItem icon={<EditRegular />}>Edit</MenuItem>
             <MenuItem icon={<ClipboardPasteRegular />}>Paste</MenuItem>
           </MenuList>
