@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: trigger manual version bump after broken release",
-  "packageName": "@fluentui/react-drawer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
