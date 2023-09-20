@@ -685,6 +685,7 @@ import { Subtitle2 } from '@fluentui/react-text';
 import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Subtitle2Stronger } from '@fluentui/react-text';
 import { subtitle2StrongerClassNames } from '@fluentui/react-text';
+import { SubtreeContextValue } from '@fluentui/react-tree';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -1107,6 +1108,7 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useSubtreeContext_unstable } from '@fluentui/react-tree';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -2556,6 +2558,8 @@ export { Subtitle2Stronger }
 
 export { subtitle2StrongerClassNames }
 
+export { SubtreeContextValue }
+
 export { Switch }
 
 export { switchClassNames }
@@ -3399,6 +3403,8 @@ export { useSpinnerStyles_unstable }
 export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
+
+export { useSubtreeContext_unstable }
 
 export { useSwitch_unstable }
 

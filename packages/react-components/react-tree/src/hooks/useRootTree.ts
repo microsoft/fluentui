@@ -35,7 +35,7 @@ export function useRootTree(
   >,
 
   ref: React.Ref<HTMLElement>,
-): Omit<TreeState, 'treeType'> {
+): Omit<Extract<TreeState, { contextType: 'root' }>, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
@@ -88,6 +88,7 @@ export function useRootTree(
     components: {
       root: 'div',
     },
+    contextType: 'root',
     selectionMode,
     open: true,
     appearance,

@@ -7,7 +7,7 @@ import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { treeItemFilter } from '../../utils/treeItemFilter';
 import { ExtractSlotProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TreeNavigationData_unstable, TreeNavigationEvent_unstable } from '../Tree/Tree.types';
-import { useTreeContext_unstable } from '../../contexts/treeContext';
+import { useTreeContext_unstable, defaultTreeContextValue } from '../../contexts/treeContext';
 import { useSubtree } from '../../hooks/useSubtree';
 
 export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLElement>) => FlatTreeState = (
@@ -62,8 +62,8 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
   }
   return {
     ...useSubtree(props, ref),
+    ...defaultTreeContextValue,
     open: false,
-    treeType: 'flat',
     components: { root: React.Fragment },
     root: slot.always<ExtractSlotProps<FlatTreeSlots['root']>>(undefined, { elementType: React.Fragment }),
   };
