@@ -20,7 +20,6 @@ export const defaultTableState: TableFeaturesState<unknown> = {
   getRowId: () => '',
   items: [],
   columns: [],
-  getSortableColumns: () => [],
   // eslint-disable-next-line @typescript-eslint/naming-convention
   columnSizing_unstable: defaultColumnSizingState,
   tableRef: React.createRef<HTMLDivElement>(),
@@ -32,8 +31,6 @@ export function useTableFeatures<TItem>(
 ): TableFeaturesState<TItem> {
   const { items, getRowId, columns } = options;
 
-  const getSortableColumns = () => columns.filter(c => c.compare.length !== 0);
-
   const getRows = <TRowState extends TableRowData<TItem>>(
     rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
   ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
@@ -43,7 +40,6 @@ export function useTableFeatures<TItem>(
     items,
     columns,
     getRows,
-    getSortableColumns,
     selection: defaultTableSelectionState,
     sort: defaultTableSortState as TableSortState<TItem>,
     // eslint-disable-next-line @typescript-eslint/naming-convention

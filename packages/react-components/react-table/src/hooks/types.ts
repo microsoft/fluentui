@@ -122,10 +122,6 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
   ) => TRowState[];
 
   /**
-   * The columns which satisfy sorting criteria
-   */
-  getSortableColumns: () => TableColumnDefinition<TItem>[];
-  /**
    * State and actions to manage row selection
    */
   selection: TableSelectionState;

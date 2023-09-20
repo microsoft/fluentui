@@ -17,12 +17,7 @@ export const useDataGridBody_unstable = (props: DataGridBodyProps, ref: React.Re
   const { sortable } = useTableContext();
   const getRows = useDataGridContext_unstable(ctx => ctx.getRows);
   const sort = useDataGridContext_unstable(ctx => ctx.sort.sort);
-  const sortableColums = useDataGridContext_unstable(ctx => ctx.getSortableColumns)();
-  // ColumnId context not valid here.
-  const gridSortable =
-    sortable || sortableColums.find(c => c.columnId === 'clickedColumnId found from context') !== undefined;
-  // If current sort clicked column exists in sortable or sort prop applied on grid, apply sort.
-  const rows = gridSortable ? sort(getRows()) : getRows();
+  const rows = sortable ? sort(getRows()) : getRows();
 
   const baseState = useTableBody_unstable({ ...props, children: null, as: 'div' }, ref);
   return {

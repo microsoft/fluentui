@@ -5,6 +5,7 @@ import { useTableHeaderCell_unstable } from '../TableHeaderCell/useTableHeaderCe
 import { useDataGridContext_unstable } from '../../contexts/dataGridContext';
 import { useColumnIdContext } from '../../contexts/columnIdContext';
 import { useTableContext } from '../../contexts/tableContext';
+import { isColumnSortable } from '../../utils/isColumnSortable';
 
 /**
  * Create the state required to render DataGridHeaderCell.
@@ -19,12 +20,20 @@ export const useDataGridHeaderCell_unstable = (
   props: DataGridHeaderCellProps,
   ref: React.Ref<HTMLElement>,
 ): DataGridHeaderCellState => {
-  let { sortable = false } = props;
   const columnId = useColumnIdContext();
   const { sortable: gridSortable } = useTableContext();
   const toggleColumnSort = useDataGridContext_unstable(ctx => ctx.sort.toggleColumnSort);
-  const columns = useDataGridContext_unstable(ctx => ctx.columns);
-  sortable = gridSortable || columns.find(c => c.columnId === columnId)?.compare.length !== 0;
+
+  const sortable = useDataGridContext_unstable(ctx => {
+    const columnSortable = !!ctx.columns.find(c => c.columnId === columnId && isColumnSortable(c));
+    if (!gridSortable) {
+      // if the grid is not sortable - disable sorting on all columns
+      return false;
+    }
+
+    return columnSortable;
+  });
+
   const sortDirection = useDataGridContext_unstable(ctx =>
     sortable ? ctx.sort.getSortDirection(columnId) : undefined,
   );
