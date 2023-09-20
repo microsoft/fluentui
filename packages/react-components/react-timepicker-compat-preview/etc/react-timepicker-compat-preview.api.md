@@ -4,6 +4,39 @@
 
 ```ts
 
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
+
+// @public
+export const renderTimePicker_unstable: (state: TimePickerState) => JSX.Element;
+
+// @public
+export const TimePicker: ForwardRefComponent<TimePickerProps>;
+
+// @public (undocumented)
+export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
+
+// @public
+export type TimePickerProps = ComponentProps<TimePickerSlots> & {};
+
+// @public (undocumented)
+export type TimePickerSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TimePickerState = ComponentState<TimePickerSlots>;
+
+// @public
+export const useTimePicker_unstable: (props: TimePickerProps, ref: React_2.Ref<HTMLElement>) => TimePickerState;
+
+// @public
+export const useTimePickerStyles_unstable: (state: TimePickerState) => TimePickerState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
