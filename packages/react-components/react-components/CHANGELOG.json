@@ -2,6 +2,145 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 20 Sep 2023 14:59:51 GMT",
+      "tag": "@fluentui/react-components_v9.32.0",
+      "version": "9.32.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "54f2d12c318d44326f91d9db9ef7855e48de4520",
+            "comment": "feat: adds treeType to tree context"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "97568b1abb279974b96c47afc32418bd5386166d",
+            "comment": "creates FlatTreeItem component"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "48153fef6aa6ba63abfdfad25fb76dea13395b94",
+            "comment": "feat: add createCSSRuleFromTheme() to create CSS from themes"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "921694374c78c37ecf18d7bb99000bb0bb67551b",
+            "comment": "feat: add custom styling hooks for Drawer subcomponents"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "921694374c78c37ecf18d7bb99000bb0bb67551b",
+            "comment": "feat: add custom styling hooks for Drawer subcomponents"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "da657356c4f4b0c3fbaa9076ef9d0dbf4e603523",
+            "comment": "feat: exports contexts"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "97568b1abb279974b96c47afc32418bd5386166d",
+            "comment": "feat: creates FlatTreeItem component"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "0e79aed647914f7978da5f93c4fa833c9d20d443",
+            "comment": "feat: Export presence icons to let users override the new behavior in PresenceBadge."
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "48153fef6aa6ba63abfdfad25fb76dea13395b94",
+            "comment": "feat: export createCSSRuleFromTheme() function"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "da657356c4f4b0c3fbaa9076ef9d0dbf4e603523",
+            "comment": "feat: exports contexts from react-dialog"
+          },
+          {
+            "author": "estebanmu@microsoft.com",
+            "package": "@fluentui/react-badge",
+            "commit": "0e79aed647914f7978da5f93c4fa833c9d20d443",
+            "comment": "feat: Presence badge should show Out of Office icon for Away+OOF and Offline+OOF statuses and export presence icon maps."
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "464d9b8df31cd09782e6f5b29db5ab8fad9ce9c2",
+            "comment": "chore: stop using global document on HTMLElementWalker"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "1e2ab4016c440153eac5482a0d733aa3fffc21ee",
+            "comment": "chore: add cypress tests"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "4976455d91695bc93383831cdda347f722db80aa",
+            "comment": "fix: remove onClick handler for non-dismissible Tag to prevent screen readers announce 'clickable'"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "a75b72e4468919fd6b70caeb15d9b141e97a5cb7",
+            "comment": "fix: only rerun hook for the dependencies triggered by parent components"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "cd66e978f89f12e267759a194971ac2ebe46edef",
+            "comment": "fix: static children problem on render function"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b824db72aac6f6b849aa0e77a32a11b8c5d8c3db",
+            "comment": "chore: useFocusFirstElement warns only in development"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "a181040854c8e009347403b2e3fa2ed4ddb7602c",
+            "comment": "fix/added CSS variables to BreadcrumbItem icon"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab",
+            "comment": "fix: fix memory leak caused by context assignment"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "921694374c78c37ecf18d7bb99000bb0bb67551b",
+            "comment": "feat: add custom styling hooks for Drawer subcomponents"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "511e4f01926df45099a342fe9db949739f91dd5b",
+            "comment": "fix: use dialog id for drawer title heading element"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Sep 2023 16:44:47 GMT",
       "tag": "@fluentui/react-components_v9.31.1",
       "version": "9.31.1",
