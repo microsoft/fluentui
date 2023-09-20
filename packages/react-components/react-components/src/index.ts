@@ -822,6 +822,8 @@ export {
   useDialogContentStyles_unstable,
   useDialogContent_unstable,
   renderDialogContent_unstable,
+  useDialogContext_unstable,
+  useDialogSurfaceContext_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -850,6 +852,8 @@ export type {
   DialogContentProps,
   DialogContentSlots,
   DialogContentState,
+  DialogContextValue,
+  DialogSurfaceContextValue,
 } from '@fluentui/react-dialog';
 
 export {
