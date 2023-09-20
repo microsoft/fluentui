@@ -153,6 +153,7 @@ import { CounterBadge } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
+import { createCSSRuleFromTheme } from '@fluentui/react-provider';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
@@ -1490,6 +1491,8 @@ export { counterBadgeClassNames }
 export { CounterBadgeProps }
 
 export { CounterBadgeState }
+
+export { createCSSRuleFromTheme }
 
 export { createCustomFocusIndicatorStyle }
 
