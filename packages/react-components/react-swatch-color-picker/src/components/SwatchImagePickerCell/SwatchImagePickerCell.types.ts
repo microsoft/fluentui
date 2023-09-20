@@ -11,7 +11,6 @@ export type SwatchImagePickerCellProps = ComponentProps<SwatchImagePickerCellSlo
     // TODO make base type
     shape?: 'circular' | 'square';
     size?: 'small' | 'medium' | 'large';
-    selected?: boolean; // if this color is selected
     disabled?: boolean;
     uri: string;
     id?: string | number; // TODO make it required

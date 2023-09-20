@@ -9,6 +9,7 @@ const SwatchPickerContext = React.createContext<SwatchPickerContextValue | undef
 export const swatchPickerDefaultValue: SwatchPickerContextValue = {
   shape: 'square',
   size: 'medium',
+  selectedId: 0,
 };
 
 /**

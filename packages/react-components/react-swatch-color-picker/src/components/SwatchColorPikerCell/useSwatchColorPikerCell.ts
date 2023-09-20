@@ -17,18 +17,17 @@ export const useSwatchColorPikerCell_unstable = (
   props: SwatchColorPikerCellProps,
   ref: React.Ref<HTMLInputElement>,
 ): SwatchColorPikerCellState => {
-  const { color, ...rest } = props;
-  const { shape, size } = useSwatchPickerContext_unstable();
-
+  const { color, disabled = false, id, ...rest } = props;
+  const { shape, size, selectedId } = useSwatchPickerContext_unstable();
   const radio = useRadio_unstable(props, ref);
+  console.log(selectedId, ' selected id');
+
+  const selected = selectedId === props.value;
   return {
     components: {
-      // TODO add each slot's element type or component
       root: 'span',
       input: 'input',
     },
-    // TODO add appropriate slots, for example:
-    // mySlot: resolveShorthand(props.mySlot),
     root: getNativeElementProps('input', {
       ref,
       ...rest,
@@ -39,5 +38,7 @@ export const useSwatchColorPikerCell_unstable = (
     color,
     shape,
     size,
+    selected,
+    disabled,
   };
 };

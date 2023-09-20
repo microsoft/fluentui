@@ -17,7 +17,6 @@ export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots
   Pick<RadioProps, 'name' | 'value'> & {
     shape?: 'circular' | 'square';
     size?: 'small' | 'medium' | 'large';
-    selected?: boolean; // if this color is selected
     disabled?: boolean;
     color: string;
     id?: string | number; // TODO make it required
@@ -27,5 +26,7 @@ export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots
  * State used in rendering SwatchColorPikerCell
  */
 export type SwatchColorPikerCellState = ComponentState<SwatchColorPikerCellSlots> &
-  Required<Pick<SwatchColorPikerCellProps, 'name' | 'value' | 'onChange'>> &
-  Partial<Omit<SwatchColorPikerCellProps, 'name' | 'value' | 'onChange'>>;
+  Required<Pick<SwatchColorPikerCellProps, 'name' | 'value' | 'onChange' | 'disabled'>> &
+  Partial<Omit<SwatchColorPikerCellProps, 'name' | 'value' | 'onChange' | 'disabled'>> & {
+    selected?: boolean;
+  };

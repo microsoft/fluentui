@@ -20,31 +20,6 @@ const useStyles = makeStyles({
     '&:hover': {
       ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
     },
-    [`& ~ .${swatchColorPikerCellClassNames.input}`]: {
-      opacity: 1,
-      '&:checked': {
-        opacity: 1,
-        backgroundColor: 'red',
-      },
-    },
-    '&:enabled:checked': {
-      ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
-      boxShadow: 'inset 0 0 0 2px white',
-
-      // ':hover': {
-      //   [`& ~ .${radioClassNames.indicator}`]: {
-      //     borderColor: tokens.colorCompoundBrandStrokeHover,
-      //     color: tokens.colorCompoundBrandForeground1Hover,
-      //   },
-      // },
-
-      // ':hover:active': {
-      //   [`& ~ .${radioClassNames.indicator}`]: {
-      //     borderColor: tokens.colorCompoundBrandStrokePressed,
-      //     color: tokens.colorCompoundBrandForeground1Pressed,
-      //   },
-      // },
-    },
   },
   input: {
     cursor: 'pointer',
@@ -70,6 +45,9 @@ const useStyles = makeStyles({
     width: '50px',
     height: '50px',
   },
+  selected: {
+    ...shorthands.border('2px', 'solid', tokens.colorBrandForeground2),
+  },
 });
 
 /**
@@ -79,11 +57,13 @@ export const useSwatchColorPikerCellStyles_unstable = (state: SwatchColorPikerCe
   const styles = useStyles();
   const shape = state.shape === 'circular' ? styles.circular : styles.square;
   const size = state.size || 'medium';
+  const selectedStyle = state.selected ? styles.selected : '';
   state.root.className = mergeClasses(
     swatchColorPikerCellClassNames.root,
     styles.root,
     shape,
     styles[size],
+    selectedStyle,
     state.root.className,
   );
 

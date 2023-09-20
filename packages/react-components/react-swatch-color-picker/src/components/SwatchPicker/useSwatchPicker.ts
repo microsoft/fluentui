@@ -2,6 +2,7 @@ import * as React from 'react';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
 import { RadioGroup, useRadioGroup_unstable } from '@fluentui/react-components';
+import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render SwatchPicker.
@@ -17,6 +18,13 @@ export const useSwatchPicker_unstable = (
   ref: React.Ref<HTMLDivElement>,
 ): SwatchPickerState => {
   const { layout = 'row', size = 'medium', shape = 'square', ...rest } = props;
+
+  const selectedId = props.value;
+  const focusAttributes = useArrowNavigationGroup({
+    circular: true,
+    axis: 'grid', //'horizontal',
+    memorizeCurrent: true,
+  });
   return {
     // TODO add appropriate props/defaults
     // components: {
@@ -38,6 +46,7 @@ export const useSwatchPicker_unstable = (
     // }),
     ...useRadioGroup_unstable(
       {
+        ...focusAttributes,
         ...rest,
       },
       ref,
@@ -45,5 +54,6 @@ export const useSwatchPicker_unstable = (
     layout,
     size,
     shape,
+    selectedId,
   };
 };
