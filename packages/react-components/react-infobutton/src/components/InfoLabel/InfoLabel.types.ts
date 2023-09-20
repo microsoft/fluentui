@@ -22,6 +22,7 @@ export type InfoLabelSlots = {
    *
    * It is not typically necessary to use this prop. The content can be set using the `info` prop of the InfoLabel.
    */
+  // eslint-disable-next-line deprecation/deprecation
   infoButton: Slot<typeof InfoButton>;
 };
 

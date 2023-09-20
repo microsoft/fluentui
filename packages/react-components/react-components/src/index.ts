@@ -387,6 +387,14 @@ export {
 } from '@fluentui/react-divider';
 export type { DividerProps, DividerSlots, DividerState } from '@fluentui/react-divider';
 export {
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+} from '@fluentui/react-infobutton';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infobutton';
+export {
   Input,
   inputClassNames,
   renderInput_unstable,

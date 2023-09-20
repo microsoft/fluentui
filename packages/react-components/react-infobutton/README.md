@@ -1,29 +1,25 @@
 # @fluentui/react-infobutton
 
-**React Infobutton components for [Fluent UI React](https://react.fluentui.dev/)**
-
-## STATUS: WIP 🚧
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+**React InfoLabel components for [Fluent UI React](https://react.fluentui.dev/)**
 
 ## Usage
 
-To import InfoButton:
+To import InfoLabel:
 
 ```js
-import { InfoButton } from '@fluentui/react-infobutton';
+import { InfoLabel } from '@fluentui/react-components';
 ```
 
-Once the InfoButton component graduates to a production release, the component will be available at:
+or directly from its package:
 
 ```js
-import { InfoButton } from '@fluentui/react-components';
+import { InfoLabel } from '@fluentui/react-infobutton';
 ```
 
 ### Examples
 
 ```jsx
-const InfoButtonExample = () => {
-  return <InfoButton content="This is an InfoButton's content." />;
+const InfoLabelExample = () => {
+  return <InfoLabel info="This is example information for an InfoLabel">Example Label</InfoLabel>;
 };
 ```

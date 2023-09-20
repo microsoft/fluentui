@@ -312,6 +312,11 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { InfoLabel } from '@fluentui/react-infobutton';
+import { infoLabelClassNames } from '@fluentui/react-infobutton';
+import { InfoLabelProps } from '@fluentui/react-infobutton';
+import { InfoLabelSlots } from '@fluentui/react-infobutton';
+import { InfoLabelState } from '@fluentui/react-infobutton';
 import { Input } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
 import { InputOnChangeData } from '@fluentui/react-input';
@@ -548,6 +553,7 @@ import { renderField_unstable } from '@fluentui/react-field';
 import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
@@ -1011,6 +1017,8 @@ import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInfoLabel_unstable } from '@fluentui/react-infobutton';
+import { useInfoLabelStyles_unstable } from '@fluentui/react-infobutton';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useIsInTableHeader } from '@fluentui/react-table';
@@ -1810,6 +1818,16 @@ export { ImageSlots }
 
 export { ImageState }
 
+export { InfoLabel }
+
+export { infoLabelClassNames }
+
+export { InfoLabelProps }
+
+export { InfoLabelSlots }
+
+export { InfoLabelState }
+
 export { Input }
 
 export { inputClassNames }
@@ -2281,6 +2299,8 @@ export { renderFlatTree_unstable }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderInfoLabel_unstable }
 
 export { renderInput_unstable }
 
@@ -3207,6 +3227,10 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useInfoLabel_unstable }
+
+export { useInfoLabelStyles_unstable }
 
 export { useInput_unstable }
 
