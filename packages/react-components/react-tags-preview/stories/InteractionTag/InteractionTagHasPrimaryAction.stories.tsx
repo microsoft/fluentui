@@ -19,7 +19,7 @@ export const HasPrimaryAction = () => {
   const toggleSecondary = () => setLiked(v => !v);
   return (
     <InteractionTag>
-      <Popover>
+      <Popover trapFocus>
         <PopoverTrigger>
           <InteractionTagPrimary hasSecondaryAction id="golden-retriever-primary">
             golden retriever

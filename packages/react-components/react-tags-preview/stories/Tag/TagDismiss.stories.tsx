@@ -29,7 +29,7 @@ Dismiss.parameters = {
   docs: {
     description: {
       story:
-        'A tag can have a dismiss icon and become focusable. TagGroup can handle dismiss for a collection of tags.',
+        'A tag can have a dismiss icon and become focusable. TagGroup can handle dismiss for a collection of tags. Ensure that focus is properly managed when all tags have been dismissed.',
     },
   },
 };

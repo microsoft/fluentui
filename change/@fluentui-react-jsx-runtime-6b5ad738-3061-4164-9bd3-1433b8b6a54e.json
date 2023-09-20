@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "bugfix: fix missing .d.ts types on build",
+  "comment": "fix: static children problem on render function",
   "packageName": "@fluentui/react-jsx-runtime",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Avatar } from '@fluentui/react-components';
+import story from './InteractionTagMedia.md';
 
 import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-tags-preview';
 
@@ -15,7 +16,7 @@ Media.storyName = 'Media';
 Media.parameters = {
   docs: {
     description: {
-      story: 'An InteractionTag can render a media, for example an Avatar.',
+      story,
     },
   },
 };
