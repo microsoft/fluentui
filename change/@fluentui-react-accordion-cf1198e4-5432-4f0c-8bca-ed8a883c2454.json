@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: fix memory leak caused by context assignment",
+  "packageName": "@fluentui/react-accordion",
+  "email": "olfedias@microsoft.com",
+  "dependentChangeType": "patch"
+}
