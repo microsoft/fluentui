@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { SwatchPicker, SwatchPickerProps, SwatchColorPikerCell } from '@fluentui/react-swatch-color-picker';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import { makeStyles, shorthands, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
 
 const customStyles = makeStyles({
   root: {
@@ -61,6 +61,25 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
           <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.color} color={item.color} />
         ))}
       </SwatchPicker>
+      <h2>With popover</h2>
+      <Popover>
+        <PopoverTrigger disableButtonEnhancement>
+          <Button>Popover trigger</Button>
+        </PopoverTrigger>
+
+        <PopoverSurface>
+          <SwatchPicker
+            layout="grid"
+            value={color}
+            onChange={(_, data) => setColor(data.value)}
+            aria-labelledby="colors"
+          >
+            {colors.map(item => (
+              <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.color} color={item.color} />
+            ))}
+          </SwatchPicker>
+        </PopoverSurface>
+      </Popover>
       <h2>custom cell</h2>
       <SwatchPicker layout="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
         {colors.map(item => (
