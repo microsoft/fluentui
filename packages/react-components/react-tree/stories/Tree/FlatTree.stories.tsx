@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
-  FlatTree as Tree,
-  TreeItem,
+  FlatTree,
+  FlatTreeItem,
   // flattenTree_unstable,
   // TreeItemProps,
   TreeItemLayout,
@@ -100,20 +100,20 @@ const ActionsExample = () => (
   </>
 );
 
-export const FlatTree = () => {
+export const FlatTreeStory = () => {
   const flatTree = useHeadlessFlatTree_unstable(flatTreeItems);
   const focusTargetAttribute = useRestoreFocusTarget();
 
   return (
-    <Tree {...flatTree.getTreeProps()} aria-label="Flat Tree">
+    <FlatTree {...flatTree.getTreeProps()} aria-label="Flat Tree">
       {Array.from(flatTree.items(), flatTreeItem => {
         const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (
           <Menu key={flatTreeItem.value} positioning="below-end" openOnContext>
             <MenuTrigger disableButtonEnhancement>
-              <TreeItem aria-description="has actions" {...focusTargetAttribute} {...treeItemProps}>
+              <FlatTreeItem aria-description="has actions" {...focusTargetAttribute} {...treeItemProps}>
                 <TreeItemLayout actions={<ActionsExample />}>{content}</TreeItemLayout>
-              </TreeItem>
+              </FlatTreeItem>
             </MenuTrigger>
             <MenuPopover>
               <MenuList>
@@ -127,11 +127,11 @@ export const FlatTree = () => {
           </Menu>
         );
       })}
-    </Tree>
+    </FlatTree>
   );
 };
 
-FlatTree.parameters = {
+FlatTreeStory.parameters = {
   docs: {
     description: {
       story: `

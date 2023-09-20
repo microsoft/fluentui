@@ -278,6 +278,8 @@ import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlattenTreeItem } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
 import { flatTreeClassNames } from '@fluentui/react-tree';
+import { FlatTreeItem } from '@fluentui/react-tree';
+import { FlatTreeItemProps } from '@fluentui/react-tree';
 import { FlatTreeProps } from '@fluentui/react-tree';
 import { FlatTreeSlots } from '@fluentui/react-tree';
 import { FlatTreeState } from '@fluentui/react-tree';
@@ -1738,6 +1740,10 @@ export { FlattenTreeItem }
 export { FlatTree }
 
 export { flatTreeClassNames }
+
+export { FlatTreeItem }
+
+export { FlatTreeItemProps }
 
 export { FlatTreeProps }
 
