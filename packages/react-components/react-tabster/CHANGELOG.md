@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Tue, 12 Sep 2023 08:51:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.12.9)
+
+Tue, 12 Sep 2023 08:51:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.12.8..@fluentui/react-tabster_v9.12.9)
+
+### Patches
+
+- fix: don't apply modalizer attributes when focus trap isn't configured ([PR #29110](https://github.com/microsoft/fluentui/pull/29110) by lingfangao@hotmail.com)
 
 ## [9.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.12.8)
 

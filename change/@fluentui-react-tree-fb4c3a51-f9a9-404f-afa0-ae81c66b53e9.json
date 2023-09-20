@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: stop using global document on HTMLElementWalker",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

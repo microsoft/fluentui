@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: react-tree allows control of individual tree item open state",
+  "comment": "feat: creates FlatTreeItem component",
   "packageName": "@fluentui/react-components",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

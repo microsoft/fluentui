@@ -2,6 +2,42 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Thu, 14 Sep 2023 16:44:47 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.8",
+      "version": "9.0.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "bad33fa7f241bc772b5bc4c6ee624d6ff6b4a473",
+            "comment": "fix: strip comments for JSX pragma"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Sep 2023 08:51:32 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "6fa505d282299778ee9c160ab91f2f510e2d4335",
+            "comment": "fix: make /jsx-runtime compatible with Webpack 4"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "cbcc41cab55eb19e12faf363d0c96adb45ee2cb0",
+            "comment": "bugfix: fix missing .d.ts types on build"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.6",
       "version": "9.0.6",

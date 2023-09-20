@@ -1,15 +1,5 @@
-import { preset, task, series, copyTask } from '@fluentui/scripts-tasks';
-import * as path from 'path';
+import { preset, task, series } from '@fluentui/scripts-tasks';
 
 preset();
 
-function copyDts() {
-  const packageDir = process.cwd();
-
-  return copyTask({
-    paths: [path.resolve(packageDir, 'src/jsx-runtime.d.ts'), path.resolve(packageDir, 'src/jsx-dev-runtime.d.ts')],
-    dest: path.resolve(packageDir, 'dist'),
-  });
-}
-
-task('build', series('build:react-components', copyDts)).cached?.();
+task('build', series('build:react-components', 'copy')).cached?.();

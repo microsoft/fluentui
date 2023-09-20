@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: react-tree allows control of individual tree item open state",
+  "comment": "feat: adds treeType to tree context",
   "packageName": "@fluentui/react-tree",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

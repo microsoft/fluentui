@@ -226,6 +226,7 @@ import { dialogContentClassNames } from '@fluentui/react-dialog';
 import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
+import { DialogContextValue } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
@@ -233,6 +234,7 @@ import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
 import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+import { DialogSurfaceContextValue } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
@@ -276,6 +278,8 @@ import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlattenTreeItem } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
 import { flatTreeClassNames } from '@fluentui/react-tree';
+import { FlatTreeItem } from '@fluentui/react-tree';
+import { FlatTreeItemProps } from '@fluentui/react-tree';
 import { FlatTreeProps } from '@fluentui/react-tree';
 import { FlatTreeSlots } from '@fluentui/react-tree';
 import { FlatTreeState } from '@fluentui/react-tree';
@@ -468,11 +472,22 @@ import { PositioningProps } from '@fluentui/react-positioning';
 import { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningShorthandValue } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
+import { presenceAvailableFilled } from '@fluentui/react-badge';
+import { presenceAvailableRegular } from '@fluentui/react-badge';
+import { presenceAwayFilled } from '@fluentui/react-badge';
+import { presenceAwayRegular } from '@fluentui/react-badge';
 import { PresenceBadge } from '@fluentui/react-badge';
 import { presenceBadgeClassNames } from '@fluentui/react-badge';
 import { PresenceBadgeProps } from '@fluentui/react-badge';
 import { PresenceBadgeState } from '@fluentui/react-badge';
 import { PresenceBadgeStatus } from '@fluentui/react-badge';
+import { presenceBlockedRegular } from '@fluentui/react-badge';
+import { presenceBusyFilled } from '@fluentui/react-badge';
+import { presenceDndFilled } from '@fluentui/react-badge';
+import { presenceDndRegular } from '@fluentui/react-badge';
+import { presenceOfflineRegular } from '@fluentui/react-badge';
+import { presenceOofRegular } from '@fluentui/react-badge';
+import { presenceUnknownRegular } from '@fluentui/react-badge';
 import { ProgressBar } from '@fluentui/react-progress';
 import { progressBarClassNames } from '@fluentui/react-progress';
 import { ProgressBarProps } from '@fluentui/react-progress';
@@ -962,7 +977,9 @@ import { useDialogBody_unstable } from '@fluentui/react-dialog';
 import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContent_unstable } from '@fluentui/react-dialog';
 import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
@@ -1620,6 +1637,8 @@ export { DialogContentSlots }
 
 export { DialogContentState }
 
+export { DialogContextValue }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
@@ -1633,6 +1652,8 @@ export { DialogState }
 export { DialogSurface }
 
 export { dialogSurfaceClassNames }
+
+export { DialogSurfaceContextValue }
 
 export { DialogSurfaceProps }
 
@@ -1719,6 +1740,10 @@ export { FlattenTreeItem }
 export { FlatTree }
 
 export { flatTreeClassNames }
+
+export { FlatTreeItem }
+
+export { FlatTreeItemProps }
 
 export { FlatTreeProps }
 
@@ -2104,6 +2129,14 @@ export { PositioningShorthandValue }
 
 export { PositioningVirtualElement }
 
+export { presenceAvailableFilled }
+
+export { presenceAvailableRegular }
+
+export { presenceAwayFilled }
+
+export { presenceAwayRegular }
+
 export { PresenceBadge }
 
 export { presenceBadgeClassNames }
@@ -2113,6 +2146,20 @@ export { PresenceBadgeProps }
 export { PresenceBadgeState }
 
 export { PresenceBadgeStatus }
+
+export { presenceBlockedRegular }
+
+export { presenceBusyFilled }
+
+export { presenceDndFilled }
+
+export { presenceDndRegular }
+
+export { presenceOfflineRegular }
+
+export { presenceOofRegular }
+
+export { presenceUnknownRegular }
 
 export { ProgressBar }
 
@@ -3092,7 +3139,11 @@ export { useDialogContent_unstable }
 
 export { useDialogContentStyles_unstable }
 
+export { useDialogContext_unstable }
+
 export { useDialogSurface_unstable }
+
+export { useDialogSurfaceContext_unstable }
 
 export { useDialogSurfaceStyles_unstable }
 

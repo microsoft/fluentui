@@ -1,6 +1,6 @@
 {
-  "type": "major",
-  "comment": "feat: removed breadcrumb-link component",
+  "type": "patch",
+  "comment": "fix/added CSS variables to BreadcrumbItem icon",
   "packageName": "@fluentui/react-breadcrumb-preview",
   "email": "vkozlova@microsoft.com",
   "dependentChangeType": "patch"

@@ -109,10 +109,13 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useDataGridHeaderCellStyles_unstable: (state: unknown) => void;
         useDataGridSelectionCellStyles_unstable: (state: unknown) => void;
         useDrawerStyles_unstable: (state: unknown) => void;
-        useDrawerBodyStyles_unstable: (state: unknown) => void;
+        useDrawerInlineStyles_unstable: (state: unknown) => void;
+        useDrawerOverlayStyles_unstable: (state: unknown) => void;
         useDrawerHeaderStyles_unstable: (state: unknown) => void;
-        useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
         useDrawerHeaderNavigationStyles_unstable: (state: unknown) => void;
+        useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
+        useDrawerBodyStyles_unstable: (state: unknown) => void;
+        useDrawerFooterStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

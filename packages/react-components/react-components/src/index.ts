@@ -246,6 +246,17 @@ export {
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
   usePresenceBadgeStyles_unstable,
+  presenceAwayRegular,
+  presenceAwayFilled,
+  presenceAvailableRegular,
+  presenceAvailableFilled,
+  presenceBlockedRegular,
+  presenceBusyFilled,
+  presenceDndRegular,
+  presenceDndFilled,
+  presenceOofRegular,
+  presenceOfflineRegular,
+  presenceUnknownRegular,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,
@@ -811,6 +822,8 @@ export {
   useDialogContentStyles_unstable,
   useDialogContent_unstable,
   renderDialogContent_unstable,
+  useDialogContext_unstable,
+  useDialogSurfaceContext_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -839,6 +852,8 @@ export type {
   DialogContentProps,
   DialogContentSlots,
   DialogContentState,
+  DialogContextValue,
+  DialogSurfaceContextValue,
 } from '@fluentui/react-dialog';
 
 export {
@@ -1212,6 +1227,7 @@ export type {
 
 export {
   FlatTree,
+  FlatTreeItem,
   Tree,
   TreeItem,
   TreeItemLayout,
@@ -1253,6 +1269,7 @@ export type {
   FlatTreeSlots,
   FlatTreeState,
   FlattenTreeItem,
+  FlatTreeItemProps,
   HeadlessFlatTree,
   HeadlessFlatTreeItem,
   HeadlessFlatTreeItemProps,
@@ -1272,12 +1289,12 @@ export type {
   TreeItemSlots,
   TreeItemState,
   TreeItemValue,
-  TreeItemOpenChangeData,
-  TreeItemOpenChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
   TreeProps,
   TreeSelectionValue,
   TreeSlots,
