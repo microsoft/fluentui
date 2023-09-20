@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline, DrawerProps } from '@fluentui/react-drawer';
 import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -42,6 +42,48 @@ const useStyles = makeStyles({
   },
 });
 
+type DrawerInlineExampleProps = {
+  open: boolean;
+  setOpen: (open: boolean) => void;
+  position: DrawerProps['position'];
+};
+
+const setButtonText = (open: boolean, position: DrawerProps['position']) => {
+  switch (position) {
+    case 'start':
+      return `${open ? 'Close' : 'Open'} left`;
+
+    case 'end':
+      return `${open ? 'Close' : 'Open'} right`;
+
+    case 'bottom':
+      return `${open ? 'Close' : 'Open'} bottom`;
+
+    default:
+      return undefined;
+  }
+};
+
+const DrawerInlineExample: React.FC<DrawerInlineExampleProps> = ({ open, setOpen, position }) => {
+  return (
+    <DrawerInline open={open} position={position}>
+      <DrawerHeader>
+        <DrawerHeaderTitle
+          action={
+            <Button appearance="subtle" aria-label="Close" icon={<Dismiss24Regular />} onClick={() => setOpen(false)} />
+          }
+        >
+          {position} Inline Drawer
+        </DrawerHeaderTitle>
+      </DrawerHeader>
+
+      <DrawerBody>
+        <p>Drawer content</p>
+      </DrawerBody>
+    </DrawerInline>
+  );
+};
+
 export const Inline = () => {
   const styles = useStyles();
 
@@ -52,39 +94,20 @@ export const Inline = () => {
   return (
     <div className={mergeClasses(styles.root, styles.flexColumn)}>
       <div className={styles.root}>
-        <DrawerInline open={leftOpen}>
-          <DrawerHeader>
-            <DrawerHeaderTitle
-              action={
-                <Button
-                  appearance="subtle"
-                  aria-label="Close"
-                  icon={<Dismiss24Regular />}
-                  onClick={() => setLeftOpen(false)}
-                />
-              }
-            >
-              Left Inline Drawer
-            </DrawerHeaderTitle>
-          </DrawerHeader>
-
-          <DrawerBody>
-            <p>Drawer content</p>
-          </DrawerBody>
-        </DrawerInline>
+        <DrawerInlineExample open={leftOpen} setOpen={setLeftOpen} position="start" />
 
         <div className={styles.content}>
           <div className={styles.buttons}>
             <Button appearance="primary" onClick={() => setLeftOpen(!leftOpen)}>
-              {leftOpen ? 'Close' : 'Open'} left
+              {setButtonText(leftOpen, 'start')}
             </Button>
 
             <Button appearance="primary" onClick={() => setRightOpen(!rightOpen)}>
-              {rightOpen ? 'Close' : 'Open'} right
+              {setButtonText(rightOpen, 'end')}
             </Button>
 
             <Button appearance="primary" onClick={() => setBottomOpen(!bottomOpen)}>
-              {bottomOpen ? 'Close' : 'Open'} bottom
+              {setButtonText(bottomOpen, 'bottom')}
             </Button>
           </div>
 
@@ -96,49 +119,10 @@ export const Inline = () => {
             </p>
           ))}
         </div>
-
-        <DrawerInline position="end" open={rightOpen}>
-          <DrawerHeader>
-            <DrawerHeaderTitle
-              action={
-                <Button
-                  appearance="subtle"
-                  aria-label="Close"
-                  icon={<Dismiss24Regular />}
-                  onClick={() => setRightOpen(false)}
-                />
-              }
-            >
-              Right Inline Drawer
-            </DrawerHeaderTitle>
-          </DrawerHeader>
-
-          <DrawerBody>
-            <p>Drawer content</p>
-          </DrawerBody>
-        </DrawerInline>
+        <DrawerInlineExample open={rightOpen} setOpen={setRightOpen} position="end" />
       </div>
 
-      <DrawerInline position="bottom" open={bottomOpen}>
-        <DrawerHeader>
-          <DrawerHeaderTitle
-            action={
-              <Button
-                appearance="subtle"
-                aria-label="Close"
-                icon={<Dismiss24Regular />}
-                onClick={() => setBottomOpen(false)}
-              />
-            }
-          >
-            Bottom Inline Drawer
-          </DrawerHeaderTitle>
-        </DrawerHeader>
-
-        <DrawerBody>
-          <p>Drawer content</p>
-        </DrawerBody>
-      </DrawerInline>
+      <DrawerInlineExample open={bottomOpen} setOpen={setBottomOpen} position="bottom" />
     </div>
   );
 };

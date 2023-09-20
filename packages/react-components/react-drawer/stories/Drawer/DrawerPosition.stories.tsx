@@ -12,6 +12,22 @@ const useStyles = makeStyles({
   },
 });
 
+const setTitle = (position: DrawerProps['position']) => {
+  switch (position) {
+    case 'start':
+      return 'Left';
+
+    case 'end':
+      return 'Right';
+
+    case 'bottom':
+      return 'Bottom';
+
+    default:
+      return undefined;
+  }
+};
+
 export const Position = () => {
   const styles = useStyles();
 
@@ -47,7 +63,7 @@ export const Position = () => {
               />
             }
           >
-            {position === 'start' ? 'Left' : position === 'end' ? 'Right' : 'Bottom'} Drawer
+            {setTitle(position)} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 

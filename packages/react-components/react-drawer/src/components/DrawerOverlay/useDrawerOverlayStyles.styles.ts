@@ -37,7 +37,7 @@ const useDrawerRootStyles = makeStyles({
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * 1), 0, 0)`,
   },
   bottom: {
-    transform: `translate3D(0, calc(100vh - 188px), 0)`,
+    transform: `translate3D(0, var(${drawerCSSVars.drawerSizeVar}), 0)`,
     top: 'auto',
   },
 

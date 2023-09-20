@@ -41,7 +41,7 @@ const useDrawerRootStyles = makeStyles({
     transform: `translate3D(var(${drawerCSSVars.drawerSizeVar}), 0, 0)`,
   },
   bottom: {
-    transform: `translate3D(0, calc(100% - 188px), 0)`,
+    transform: `translate3D(0, var(${drawerCSSVars.drawerSizeVar}), 0)`,
     width: '100%',
   },
 
@@ -64,11 +64,19 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
       return undefined;
     }
 
-    return state.position === 'start'
-      ? rootStyles.separatorStart
-      : state.position === 'end'
-      ? rootStyles.separatorEnd
-      : rootStyles.separatorBottom;
+    switch (state.position) {
+      case 'start':
+        return rootStyles.separatorStart;
+
+      case 'end':
+        return rootStyles.separatorEnd;
+
+      case 'bottom':
+        return rootStyles.separatorBottom;
+
+      default:
+        return undefined;
+    }
   }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart, rootStyles.separatorBottom]);
 
   state.root.className = mergeClasses(
