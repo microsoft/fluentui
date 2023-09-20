@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tags-preview
 
-This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2023 14:59:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.11)
+
+Wed, 20 Sep 2023 14:59:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.10..@fluentui/react-tags-preview_v0.2.11)
+
+### Patches
+
+- chore: add cypress tests ([PR #29166](https://github.com/microsoft/fluentui/pull/29166) by yuanboxue@microsoft.com)
+- fix: remove onClick handler for non-dismissible Tag to prevent screen readers announce 'clickable' ([PR #29165](https://github.com/microsoft/fluentui/pull/29165) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.31 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.9 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-tabster to v9.12.10 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
 
 ## [0.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.10)
 

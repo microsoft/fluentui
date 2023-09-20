@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2023 14:59:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.2.5)
+
+Wed, 20 Sep 2023 14:59:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.2.4..@fluentui/react-motion-preview_v0.2.5)
+
+### Patches
+
+- fix: only rerun hook for the dependencies triggered by parent components ([PR #29167](https://github.com/microsoft/fluentui/pull/29167) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.9 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
 
 ## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.2.4)
 

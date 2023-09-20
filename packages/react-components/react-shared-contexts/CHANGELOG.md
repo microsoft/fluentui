@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 05 Sep 2023 13:29:02 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2023 14:59:52 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.8.0)
+
+Wed, 20 Sep 2023 14:59:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.7.3..@fluentui/react-shared-contexts_v9.8.0)
+
+### Minor changes
+
+- feat: add custom styling hooks for Drawer subcomponents ([PR #29041](https://github.com/microsoft/fluentui/pull/29041) by marcosvmmoura@gmail.com)
 
 ## [9.7.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.7.3)
 

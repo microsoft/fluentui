@@ -2,6 +2,27 @@
   "name": "@fluentui/react-field",
   "entries": [
     {
+      "date": "Wed, 20 Sep 2023 14:59:53 GMT",
+      "tag": "@fluentui/react-field_v9.1.28",
+      "version": "9.1.28",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.9",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-field",
+            "comment": "Bump @fluentui/react-label to v9.1.36",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 14 Sep 2023 16:44:47 GMT",
       "tag": "@fluentui/react-field_v9.1.27",
       "version": "9.1.27",

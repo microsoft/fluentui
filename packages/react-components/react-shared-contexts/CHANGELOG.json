@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Wed, 20 Sep 2023 14:59:52 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.8.0",
+      "version": "9.8.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "921694374c78c37ecf18d7bb99000bb0bb67551b",
+            "comment": "feat: add custom styling hooks for Drawer subcomponents"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Sep 2023 13:29:02 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.7.3",
       "version": "9.7.3",
