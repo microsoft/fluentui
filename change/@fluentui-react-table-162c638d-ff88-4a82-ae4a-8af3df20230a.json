@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: potential memory leak by using nullish coalescing",
+  "packageName": "@fluentui/react-table",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

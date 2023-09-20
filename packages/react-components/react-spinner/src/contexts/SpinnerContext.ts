@@ -18,4 +18,6 @@ export const SpinnerContextProvider = SpinnerContext.Provider;
 /**
  * @internal
  */
-export const useSpinnerContext = () => React.useContext(SpinnerContext) ?? SpinnerContextDefaultValue;
+export const useSpinnerContext = () => {
+  return React.useContext(SpinnerContext) ?? SpinnerContextDefaultValue;
+};

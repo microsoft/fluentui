@@ -21,4 +21,6 @@ export const AvatarContextProvider = avatarContext.Provider;
 /**
  * @internal
  */
-export const useAvatarContext = () => React.useContext(avatarContext) ?? avatarContextDefaultValue;
+export const useAvatarContext = () => {
+  return React.useContext(avatarContext) ?? avatarContextDefaultValue;
+};

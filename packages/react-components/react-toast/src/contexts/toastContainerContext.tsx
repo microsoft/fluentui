@@ -18,5 +18,6 @@ const toastContainerContextDefaultValue: ToastContainerContextValue = {
 const ToastContainerContext = React.createContext<ToastContainerContextValue | undefined>(undefined);
 
 export const ToastContainerContextProvider = ToastContainerContext.Provider;
-export const useToastContainerContext = () =>
-  React.useContext(ToastContainerContext) ?? toastContainerContextDefaultValue;
+export const useToastContainerContext = () => {
+  return React.useContext(ToastContainerContext) ?? toastContainerContextDefaultValue;
+};

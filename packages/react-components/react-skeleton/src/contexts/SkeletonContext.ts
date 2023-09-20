@@ -11,4 +11,6 @@ const skeletonContextDefaultValue: SkeletonContextValue = {};
 
 export const SkeletonContextProvider = SkeletonContext.Provider;
 
-export const useSkeletonContext = () => React.useContext(SkeletonContext) ?? skeletonContextDefaultValue;
+export const useSkeletonContext = () => {
+  return React.useContext(SkeletonContext) ?? skeletonContextDefaultValue;
+};

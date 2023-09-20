@@ -27,4 +27,6 @@ export const CardProvider = cardContext.Provider;
 /**
  * @internal
  */
-export const useCardContext_unstable = () => React.useContext(cardContext) ?? cardContextDefaultValue;
+export const useCardContext_unstable = () => {
+  return React.useContext(cardContext) ?? cardContextDefaultValue;
+};

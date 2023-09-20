@@ -10,4 +10,6 @@ export const tableContextDefaultValue: TableContextValue = {
 };
 
 export const TableContextProvider = tableContext.Provider;
-export const useTableContext = () => React.useContext(tableContext) ?? tableContextDefaultValue;
+export const useTableContext = () => {
+  return React.useContext(tableContext) ?? tableContextDefaultValue;
+};

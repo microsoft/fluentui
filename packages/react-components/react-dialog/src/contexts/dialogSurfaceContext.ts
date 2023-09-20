@@ -8,4 +8,6 @@ export const DialogSurfaceContext = createContext<DialogSurfaceContextValue | un
 
 export const DialogSurfaceProvider = DialogSurfaceContext.Provider;
 
-export const useDialogSurfaceContext_unstable = () => useContext(DialogSurfaceContext) ?? defaultContextValue;
+export const useDialogSurfaceContext_unstable = () => {
+  return useContext(DialogSurfaceContext) ?? defaultContextValue;
+};

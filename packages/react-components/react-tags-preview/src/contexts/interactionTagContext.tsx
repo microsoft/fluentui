@@ -24,5 +24,6 @@ export type InteractionTagContextValue<Value = string> = Required<
 
 export const InteractionTagContextProvider = InteractionTagContext.Provider;
 
-export const useInteractionTagContext_unstable = () =>
-  React.useContext(InteractionTagContext) ?? interactionTagContextDefaultValue;
+export const useInteractionTagContext_unstable = () => {
+  return React.useContext(InteractionTagContext) ?? interactionTagContextDefaultValue;
+};

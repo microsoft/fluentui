@@ -8,5 +8,6 @@ const MenuTriggerContext = React.createContext<boolean | undefined>(undefined) a
 const menuTriggerContextDefaultValue = false;
 
 export const MenuTriggerContextProvider = MenuTriggerContext.Provider;
-export const useMenuTriggerContext_unstable = () =>
-  React.useContext(MenuTriggerContext) ?? menuTriggerContextDefaultValue;
+export const useMenuTriggerContext_unstable = () => {
+  return React.useContext(MenuTriggerContext) ?? menuTriggerContextDefaultValue;
+};

@@ -15,4 +15,6 @@ export type TagGroupContextValue = Required<Pick<TagGroupState, 'handleTagDismis
 
 export const TagGroupContextProvider = TagGroupContext.Provider;
 
-export const useTagGroupContext_unstable = () => React.useContext(TagGroupContext) ?? tagGroupContextDefaultValue;
+export const useTagGroupContext_unstable = () => {
+  return React.useContext(TagGroupContext) ?? tagGroupContextDefaultValue;
+};
