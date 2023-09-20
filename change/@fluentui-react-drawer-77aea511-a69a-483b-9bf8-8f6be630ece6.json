@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: use dialog id for drawer title heading element",
+  "packageName": "@fluentui/react-drawer",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
