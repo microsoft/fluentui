@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Release InfoLabel to stable.",
+  "packageName": "@fluentui/react-components",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
