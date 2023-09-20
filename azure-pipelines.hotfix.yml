@@ -58,9 +58,9 @@ jobs:
         workingDirectory: 'packages/react'
 
       - ${{ if ne(parameters.isTestRun, true) }}:
-        - script: |
-            npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
-          displayName: Publish new version
+          - script: |
+              npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
+            displayName: Publish new version
 
       - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
         displayName: 📒 Generate Manifest
