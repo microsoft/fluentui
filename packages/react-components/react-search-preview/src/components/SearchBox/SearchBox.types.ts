@@ -33,4 +33,8 @@ export type SearchBoxState = ComponentState<SearchBoxSlots> &
     focused: boolean;
   };
 
-type SearchBoxDismissData = {};
+/** Data type required for the onDismiss callback. */
+export type SearchBoxDismissData = {
+  /** The user action that caused the search box to be cleared */
+  reason: 'button';
+};
