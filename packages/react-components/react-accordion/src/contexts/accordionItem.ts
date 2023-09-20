@@ -27,5 +27,6 @@ const accordionItemContextDefaultValue: AccordionItemContextValue<unknown> = {
 
 export const { Provider: AccordionItemProvider } = AccordionItemContext;
 
-export const useAccordionItemContext_unstable = () =>
-  React.useContext(AccordionItemContext) ?? accordionItemContextDefaultValue;
+export const useAccordionItemContext_unstable = () => {
+  return React.useContext(AccordionItemContext) ?? accordionItemContextDefaultValue;
+};
