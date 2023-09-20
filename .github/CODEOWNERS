@@ -243,7 +243,7 @@ packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopi
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-message-bar-preview @microsoft/teams-prg
-packages/react-components/react-rating-preview @microsoft/cxe-red
+packages/react-components/react-rating-preview @microsoft/cxe-red @tomi-msft 
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
