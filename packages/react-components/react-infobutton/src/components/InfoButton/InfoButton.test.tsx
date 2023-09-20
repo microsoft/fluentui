@@ -24,6 +24,7 @@ const getPopoverSurfaceElement = (result: RenderResult) => {
 
 describe('InfoButton', () => {
   isConformant({
+    // eslint-disable-next-line deprecation/deprecation
     Component: InfoButton,
     displayName: 'InfoButton',
     requiredProps: {
