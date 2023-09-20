@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Link } from '@fluentui/react-components';
-import { InfoLabel, InfoLabelProps } from '@fluentui/react-components/unstable';
+import { InfoLabel, InfoLabelProps } from '@fluentui/react-components';
 
 export const Default = (props: Partial<InfoLabelProps>) => (
   <InfoLabel
