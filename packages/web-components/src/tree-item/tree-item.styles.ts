@@ -6,6 +6,7 @@ import {
   ElementDefinitionContext,
   focusVisible,
   forcedColorsStylesheetBehavior,
+  TreeItem,
   TreeItemOptions,
 } from '@microsoft/fast-foundation';
 import { SystemColors } from '@microsoft/fast-web-utilities';
@@ -226,7 +227,7 @@ export const treeItemStyles: (context: ElementDefinitionContext, definition: Tre
       border-radius: calc(${controlCornerRadius} * 1px);
     }
 
-    ::slotted(fluent-tree-item) {
+    ::slotted(${context.tagFor(TreeItem)}) {
       --tree-item-nested-width: 1em;
       --expand-collapse-button-nested-width: calc(${heightNumber} * -1px);
     }
