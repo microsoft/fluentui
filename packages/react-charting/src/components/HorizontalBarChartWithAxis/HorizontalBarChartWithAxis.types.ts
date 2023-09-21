@@ -66,6 +66,12 @@ export interface IHorizontalBarChartWithAxisProps extends ICartesianChartProps {
    *@default false
    *Used for showing complete y axis lables   */
   showYAxisLables?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default false
+   */
+  enableReflow?: boolean;
 }
 
 export interface IHorizontalBarChartWithAxisStyleProps extends ICartesianChartStyleProps {

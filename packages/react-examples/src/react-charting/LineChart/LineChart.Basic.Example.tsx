@@ -187,6 +187,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
             xAxisTickCount={10}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
             enablePerfOptimization={true}
+            enableReflow={true}
           />
         </div>
       </>

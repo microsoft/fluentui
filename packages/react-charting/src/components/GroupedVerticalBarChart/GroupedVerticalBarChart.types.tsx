@@ -86,6 +86,12 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * @default false
    */
   hideLabels?: boolean;
+
+  /**
+   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
+   * @default false
+   */
+  enableReflow?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {}

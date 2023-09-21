@@ -106,6 +106,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
               ) : null
             }
             enablePerfOptimization={true}
+            enableReflow={true}
           />
         </div>
       </>
