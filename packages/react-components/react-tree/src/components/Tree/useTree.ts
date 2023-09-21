@@ -25,7 +25,7 @@ export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>):
   // as isSubTree is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return isSubtree ? useSubtree(props, ref) : useNestedRootTree(props, ref);
+  return isSubtree ? { ...useSubtree(props, ref), treeType: 'nested' } : useNestedRootTree(props, ref);
 };
 
 function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
@@ -71,15 +71,18 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
     },
   );
 
-  return useRootTree(
-    {
-      ...props,
-      openItems,
-      checkedItems,
-      onOpenChange: handleOpenChange,
-      onNavigation: handleNavigation,
-      onCheckedChange: handleCheckedChange,
-    },
-    useMergedRefs(ref, initializeWalker),
-  );
+  return {
+    treeType: 'nested',
+    ...useRootTree(
+      {
+        ...props,
+        openItems,
+        checkedItems,
+        onOpenChange: handleOpenChange,
+        onNavigation: handleNavigation,
+        onCheckedChange: handleCheckedChange,
+      },
+      useMergedRefs(ref, initializeWalker),
+    ),
+  };
 }

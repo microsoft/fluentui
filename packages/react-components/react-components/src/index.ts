@@ -15,6 +15,7 @@ export {
 } from '@griffel/react';
 export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
 export {
+  createCSSRuleFromTheme,
   FluentProvider,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
@@ -1227,6 +1228,7 @@ export type {
 
 export {
   FlatTree,
+  FlatTreeItem,
   Tree,
   TreeItem,
   TreeItemLayout,
@@ -1268,6 +1270,7 @@ export type {
   FlatTreeSlots,
   FlatTreeState,
   FlattenTreeItem,
+  FlatTreeItemProps,
   HeadlessFlatTree,
   HeadlessFlatTreeItem,
   HeadlessFlatTreeItemProps,
@@ -1287,12 +1290,12 @@ export type {
   TreeItemSlots,
   TreeItemState,
   TreeItemValue,
-  TreeItemOpenChangeData,
-  TreeItemOpenChangeEvent,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
   TreeProps,
   TreeSelectionValue,
   TreeSlots,
