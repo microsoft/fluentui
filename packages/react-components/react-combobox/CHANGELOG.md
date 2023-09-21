@@ -1,8 +1,35 @@
 # Change Log - @fluentui/react-combobox
 
-This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2023 17:47:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.5.16)
+
+Wed, 20 Sep 2023 17:47:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.5.15..@fluentui/react-combobox_v9.5.16)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.1.29 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.10 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-portal to v9.3.16 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-positioning to v9.9.13 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.1 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+
+## [9.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.5.15)
+
+Wed, 20 Sep 2023 14:59:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-combobox_v9.5.14..@fluentui/react-combobox_v9.5.15)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.28 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.9 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-portal to v9.3.15 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-positioning to v9.9.12 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
 
 ## [9.5.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-combobox_v9.5.14)
 

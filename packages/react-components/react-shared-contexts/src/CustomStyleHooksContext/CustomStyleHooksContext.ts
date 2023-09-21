@@ -90,10 +90,13 @@ export type CustomStyleHooksContextValue = Partial<{
   useDataGridHeaderCellStyles_unstable: CustomStyleHook;
   useDataGridSelectionCellStyles_unstable: CustomStyleHook;
   useDrawerStyles_unstable: CustomStyleHook;
-  useDrawerBodyStyles_unstable: CustomStyleHook;
+  useDrawerInlineStyles_unstable: CustomStyleHook;
+  useDrawerOverlayStyles_unstable: CustomStyleHook;
   useDrawerHeaderStyles_unstable: CustomStyleHook;
-  useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
   useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+  useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+  useDrawerBodyStyles_unstable: CustomStyleHook;
+  useDrawerFooterStyles_unstable: CustomStyleHook;
 }>;
 
 /**
