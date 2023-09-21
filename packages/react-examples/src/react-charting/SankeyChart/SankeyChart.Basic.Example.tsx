@@ -106,11 +106,6 @@ export class SankeyChartBasicExample extends React.Component<{}, ISankeyChartBas
           },
           {
             source: 3,
-            target: 4,
-            value: 4,
-          },
-          {
-            source: 3,
             target: 5,
             value: 4,
           },
