@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove onClick handler for non-dismissible Tag to prevent screen readers announce 'clickable'",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

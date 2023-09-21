@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat: exports contexts",
+  "type": "patch",
+  "comment": "chore: adds CSS containment to DialogSurface",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
