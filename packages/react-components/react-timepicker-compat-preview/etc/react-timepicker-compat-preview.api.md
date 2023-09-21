@@ -6,7 +6,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { IComboBox } from '@fluentui/react';
+import type { IComboBoxProps } from '@fluentui/react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
@@ -14,8 +15,8 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 // @public
 export const renderTimePicker_unstable: (state: TimePickerState) => JSX.Element;
 
-// @public
-export const TimePicker: ForwardRefComponent<TimePickerProps>;
+// @public (undocumented)
+export const TimePicker: React_2.FunctionComponent<ITimePickerProps>;
 
 // @public (undocumented)
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
