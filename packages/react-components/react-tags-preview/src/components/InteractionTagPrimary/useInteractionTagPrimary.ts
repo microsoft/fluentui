@@ -27,7 +27,7 @@ export const useInteractionTagPrimary_unstable = (
   props: InteractionTagPrimaryProps,
   ref: React.Ref<HTMLElement>,
 ): InteractionTagPrimaryState => {
-  const { appearance, disabled, shape, size } = useInteractionTagContext_unstable();
+  const { appearance, disabled, interactionTagPrimaryId, shape, size } = useInteractionTagContext_unstable();
   const { hasSecondaryAction = false } = props;
 
   return {
@@ -51,6 +51,7 @@ export const useInteractionTagPrimary_unstable = (
       getNativeElementProps('button', {
         ref,
         disabled,
+        id: interactionTagPrimaryId,
         ...props,
       }),
       { elementType: 'button' },

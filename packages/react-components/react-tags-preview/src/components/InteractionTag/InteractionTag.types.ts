@@ -57,4 +57,9 @@ export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTa
      * Event handler from TagGroup context that allows TagGroup to dismiss the tag
      */
     handleTagDismiss: TagDismissHandler<Value>;
+
+    /**
+     * id to assign to InteractionTagPrimary
+     */
+    interactionTagPrimaryId: string;
   };
