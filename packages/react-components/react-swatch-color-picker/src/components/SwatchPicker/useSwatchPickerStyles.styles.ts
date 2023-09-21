@@ -4,8 +4,6 @@ import type { SwatchPickerSlots, SwatchPickerState } from './SwatchPicker.types'
 
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
   root: 'fui-SwatchPicker',
-  // TODO: add class names for all slots on SwatchPickerSlots.
-  // Should be of the form `<slotName>: 'fui-SwatchPicker__<slotName>`
 };
 
 /**
@@ -16,17 +14,15 @@ const useStyles = makeStyles({
   row: {
     display: 'flex',
     flexDirection: 'row',
-    rowGap: '10px',
+    columnGap: '2px',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: '30px 30px 30px',
-    gridTemplateRows: '30px 30px 30px',
-    columnGap: '10px',
-    rowGap: '10px',
+    // gridTemplateColumns: `repeat(3, 30px)`,
+    gridTemplateColumns: `repeat(auto-fit, 30px)`,
+    columnGap: '2px',
+    rowGap: '2px',
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**

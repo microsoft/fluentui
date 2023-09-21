@@ -56,18 +56,20 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
         ))}
       </SwatchPicker>
       <h2>grid</h2>
-      <SwatchPicker layout="grid" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
-        {colors.map(item => (
-          <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.color} color={item.color} />
-        ))}
-      </SwatchPicker>
+      <div style={{ width: '100px' }}>
+        <SwatchPicker layout="grid" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
+          {colors.map(item => (
+            <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.color} color={item.color} />
+          ))}
+        </SwatchPicker>
+      </div>
       <h2>With popover</h2>
       <Popover>
         <PopoverTrigger disableButtonEnhancement>
           <Button>Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface style={{ width: '150px' }}>
           <SwatchPicker
             layout="grid"
             value={color}
