@@ -112,7 +112,7 @@ export type DialogOpenChangeData = {
 export type DialogOpenChangeEvent = DialogOpenChangeData['event'];
 
 // @public
-export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void | boolean;
 
 // @public (undocumented)
 export type DialogProps = ComponentProps<Partial<DialogSlots>> & {

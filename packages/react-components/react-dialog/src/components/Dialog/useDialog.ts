@@ -27,11 +27,11 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
   });
 
   const requestOpenChange = useEventCallback((data: DialogOpenChangeData) => {
-    onOpenChange?.(data.event, data);
+    const isInternalsAllowed = onOpenChange?.(data.event, data) ?? true;
 
     // if user prevents default then do not change state value
     // otherwise updates state value and trigger reference to the element that caused the opening
-    if (!data.event.isDefaultPrevented()) {
+    if (isInternalsAllowed && !data.event.isDefaultPrevented()) {
       setOpen(data.open);
     }
   });

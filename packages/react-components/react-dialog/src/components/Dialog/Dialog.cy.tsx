@@ -1,3 +1,6 @@
+/// <reference types="cypress" />
+/// <reference types="cypress-real-events" />
+
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 
@@ -658,5 +661,41 @@ describe('Dialog', () => {
     cy.get('#close-first-dialog-btn').should('exist').realClick();
     cy.get('#second-dialog').should('not.exist');
     cy.get('#first-dialog').should('not.exist');
+  });
+  it('should be able to stop uncontrolled dialog from closing', () => {
+    mount(
+      <Dialog
+        onOpenChange={(e, data) => {
+          if (data.type === 'escapeKeyDown') {
+            return false;
+          }
+        }}
+      >
+        <DialogTrigger disableButtonEnhancement>
+          <Button id={dialogTriggerOpenId}>Open dialog</Button>
+        </DialogTrigger>
+        <DialogSurface>
+          <DialogBody>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogContent>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogContent>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button appearance="primary">Do Something</Button>
+            </DialogActions>
+          </DialogBody>
+        </DialogSurface>
+      </Dialog>,
+    );
+    cy.get(dialogTriggerOpenSelector).realClick();
+    cy.focused().realType('{esc}');
+    cy.get(dialogSurfaceSelector).should('exist');
   });
 });

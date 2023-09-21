@@ -29,11 +29,15 @@ export type DialogModalType = 'modal' | 'non-modal' | 'alert';
 /**
  * Callback fired when the component changes value from open state.
  *
+ * If a boolean is returned, it will be used to indicate if the opening should be allowed.
+ * If false, the opening will be prevented.
+ * If true or undefined, the opening will be allowed.
+ *
  * @param event - a React's Synthetic event or a KeyboardEvent in case of `documentEscapeKeyDown`
  * @param data - A data object with relevant information,
  * such as open value and type of interaction that created the event
  */
-export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void;
+export type DialogOpenChangeEventHandler = (event: DialogOpenChangeEvent, data: DialogOpenChangeData) => void | boolean;
 
 export type DialogContextValues = {
   dialog: DialogContextValue;

@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: allows user to opt-out of uncontrolled open changes",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
