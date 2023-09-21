@@ -46,7 +46,7 @@ export const Default = () => {
           <SwatchColorPikerCell
             name="color"
             value={swatch.swatch}
-            color={swatch.swatch}
+            swatch={swatch.swatch}
             id={swatch.id}
             label={swatch.label}
           />
@@ -57,7 +57,7 @@ export const Default = () => {
           <SwatchColorPikerCell
             name="color"
             value={swatch.swatch}
-            color={swatch.swatch}
+            swatch={swatch.swatch}
             id={swatch.id}
             label={swatch.label}
           />
@@ -76,7 +76,7 @@ export const Default = () => {
             <SwatchColorPikerCell
               name="color"
               value={swatch.swatch}
-              color={swatch.swatch}
+              swatch={swatch.swatch}
               id={swatch.id}
               aria-label={swatch.label}
             />

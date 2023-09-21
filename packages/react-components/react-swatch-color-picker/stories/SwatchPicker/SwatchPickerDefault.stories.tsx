@@ -84,35 +84,35 @@ const colorsLarge = [
   },
   {
     id: 8,
-    swatch: 'red',
+    swatch: '#a43',
   },
   {
     id: 9,
-    swatch: 'rgb(189, 255, 104)',
+    swatch: '#ff7',
   },
   {
     id: 10,
-    swatch: 'rgba(189, 255, 104,.4)',
+    swatch: '#ad5',
   },
   {
     id: 11,
-    swatch: '#f09',
+    swatch: '#f49',
   },
   {
     id: 12,
-    swatch: 'yellow',
+    swatch: 'pink',
   },
   {
     id: 13,
-    swatch: 'cyan',
+    swatch: '#f56',
   },
   {
     id: 14,
-    swatch: 'purple',
+    swatch: 'green',
   },
   {
     id: 15,
-    swatch: 'magenta',
+    swatch: 'blue',
   },
 ];
 
@@ -124,14 +124,14 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
       <h2>row</h2>
       <SwatchPicker layout="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
         {colors.map(item => (
-          <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} color={item.swatch} />
+          <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} swatch={item.swatch} />
         ))}
       </SwatchPicker>
       <h2>grid</h2>
       <div style={{ width: '100px' }}>
         <SwatchPicker layout="grid" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
           {colors.map(item => (
-            <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} color={item.swatch} />
+            <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} swatch={item.swatch} />
           ))}
         </SwatchPicker>
       </div>
@@ -149,7 +149,7 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
             aria-labelledby="colors"
           >
             {colors.map(item => (
-              <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} color={item.swatch} />
+              <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} swatch={item.swatch} />
             ))}
           </SwatchPicker>
         </PopoverSurface>
@@ -163,7 +163,7 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
         style={{ gridTemplateColumns: `repeat(4, 30px)` }}
       >
         {colorsLarge.map(item => (
-          <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} color={item.swatch} />
+          <SwatchColorPikerCell key={item.id} id={item.id} name="color" value={item.swatch} swatch={item.swatch} />
         ))}
       </SwatchPicker>
       <h2>custom cell</h2>
@@ -180,7 +180,7 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
             key={item.id}
             name="color"
             value={item.swatch}
-            color={item.swatch}
+            swatch={item.swatch}
             className={styles.root}
           />
         ))}

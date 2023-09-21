@@ -18,7 +18,7 @@ export type SwatchColorPikerCellProps = ComponentProps<SwatchColorPikerCellSlots
     shape?: 'circular' | 'square';
     size?: 'small' | 'medium' | 'large';
     disabled?: boolean;
-    color: string;
+    swatch: string;
     id?: string | number; // TODO make it required
   };
 

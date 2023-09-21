@@ -45,7 +45,7 @@ export const Default = () => {
             case 'color':
             case 'gradient':
             default:
-              return <SwatchColorPikerCell name="swatch" value={item.id} color={item.swatch} />;
+              return <SwatchColorPikerCell name="swatch" value={item.id} swatch={item.swatch} />;
             case 'image':
               return <SwatchImagePickerCell name="swatch" value={item.id} uri={item.swatch} />;
           }
