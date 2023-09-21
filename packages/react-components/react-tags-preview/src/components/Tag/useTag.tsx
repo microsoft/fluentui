@@ -72,7 +72,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
+      getNativeElementProps(dismissible ? 'button' : 'span', {
         ref,
         ...props,
         id,
