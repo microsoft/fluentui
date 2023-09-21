@@ -69,7 +69,7 @@ const storyTemplate = html<AccordionStoryArgs>`
       block=${x => x.block}
       ?disabled=${x => x.disabled}
     >
-      <span slot="heading">Accordion Header 1</span>
+      <span slot="heading">Accordion Header 2</span>
       Accordion Panel 2
     </fluent-accordion-item>
     <fluent-accordion-item
@@ -79,7 +79,7 @@ const storyTemplate = html<AccordionStoryArgs>`
       block=${x => x.block}
       ?disabled=${x => x.disabled}
     >
-      <span slot="heading">Accordion Header 1</span>
+      <span slot="heading">Accordion Header 3</span>
       Accordion Panel 3
     </fluent-accordion-item>
   </fluent-accordion>
