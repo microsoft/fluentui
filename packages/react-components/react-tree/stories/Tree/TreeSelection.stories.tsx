@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   FlatTree,
-  TreeItem,
+  FlatTreeItem,
   TreeItemLayout,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
@@ -36,9 +36,9 @@ export const Selection = () => {
       {Array.from(flatTree.items(), flatTreeItem => {
         const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (
-          <TreeItem {...treeItemProps} key={flatTreeItem.value}>
+          <FlatTreeItem {...treeItemProps} key={flatTreeItem.value}>
             <TreeItemLayout>{content}</TreeItemLayout>
-          </TreeItem>
+          </FlatTreeItem>
         );
       })}
     </FlatTree>

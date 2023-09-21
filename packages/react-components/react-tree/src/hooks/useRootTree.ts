@@ -35,7 +35,7 @@ export function useRootTree(
   >,
 
   ref: React.Ref<HTMLElement>,
-): TreeState {
+): Omit<TreeState, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
