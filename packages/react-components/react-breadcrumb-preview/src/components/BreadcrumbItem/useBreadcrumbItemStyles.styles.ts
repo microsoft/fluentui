@@ -2,6 +2,7 @@ import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbItemSlots, BreadcrumbItemState } from './BreadcrumbItem.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { useIconStyles } from '../../shared/useIconStyles.styles';
 
 export const breadcrumbItemClassNames: SlotClassNames<BreadcrumbItemSlots> = {
   root: 'fui-BreadcrumbItem',
@@ -54,27 +55,6 @@ const useStyles = makeStyles({
   },
 });
 
-const useIconStyles = makeStyles({
-  small: {
-    fontSize: '12px',
-    height: '12px',
-    lineHeight: tokens.lineHeightBase200,
-    width: '12px',
-  },
-  medium: {
-    fontSize: '16px',
-    height: '16px',
-    lineHeight: tokens.lineHeightBase400,
-    width: '16px',
-  },
-  large: {
-    fontSize: '20px',
-    height: '20px',
-    lineHeight: tokens.lineHeightBase600,
-    width: '20px',
-  },
-});
-
 /**
  * Apply styling to the BreadcrumbItem slots based on the state
  */
@@ -100,7 +80,7 @@ export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): Br
   );
 
   if (state.icon) {
-    state.icon.className = mergeClasses(iconStyles[state.size], styles.icon, state.icon.className);
+    state.icon.className = mergeClasses(iconStyles.base, iconStyles[state.size], styles.icon, state.icon.className);
   }
 
   return state;

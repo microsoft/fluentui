@@ -157,6 +157,7 @@ packages/react-examples/src/react-charting @microsoft/charting-team
 packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
 packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react-icons-mdl2-branded @microsoft/cxe-red @microsoft/cxe-coastal
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg

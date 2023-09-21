@@ -4,7 +4,6 @@ import {
   presenceAvailableFilled,
   presenceAvailableRegular,
   presenceAwayFilled,
-  presenceAwayRegular,
   presenceBlockedRegular,
   presenceBusyFilled,
   presenceDndFilled,
@@ -21,7 +20,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
     case 'available':
       return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
     case 'away':
-      return outOfOffice ? presenceAwayRegular[size] : presenceAwayFilled[size];
+      return outOfOffice ? presenceOofRegular[size] : presenceAwayFilled[size];
     case 'blocked':
       return presenceBlockedRegular[size];
     case 'busy':
@@ -29,7 +28,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
     case 'do-not-disturb':
       return outOfOffice ? presenceDndRegular[size] : presenceDndFilled[size];
     case 'offline':
-      return presenceOfflineRegular[size];
+      return outOfOffice ? presenceOofRegular[size] : presenceOfflineRegular[size];
     case 'out-of-office':
       return presenceOofRegular[size];
     case 'unknown':

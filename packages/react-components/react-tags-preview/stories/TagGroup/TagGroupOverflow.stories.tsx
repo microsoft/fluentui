@@ -43,6 +43,7 @@ const defaultItems: DefaultItem[] = names.map(name => ({
   children: name,
   media: (
     <Avatar
+      aria-hidden="true" // use aria-hidden because InteractionTag contains information in the avatar
       name={name}
       badge={{
         status: 'available',

@@ -3,6 +3,7 @@ import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbB
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { useButtonStyles_unstable } from '@fluentui/react-button';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { useIconStyles } from '../../shared/useIconStyles.styles';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -10,14 +11,6 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots> = {
   root: 'fui-BreadcrumbButton',
   icon: 'fui-BreadcrumbButton__icon',
-};
-
-/**
- * CSS variable names used internally for styling in the Breadcrumb.
- */
-export const breadcrumbCSSVars = {
-  breadcrumbIconSizeVar: '--fui-Breadcrumb--icon-size',
-  breadcrumbIconLineHeightVar: '--fui-Breadcrumb--icon-line-height',
 };
 
 const defaultButtonStyles = {
@@ -68,27 +61,6 @@ const useStyles = makeStyles({
   },
 });
 
-const useIconStyles = makeStyles({
-  base: {
-    fontSize: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    height: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    lineHeight: `var(${breadcrumbCSSVars.breadcrumbIconLineHeightVar})`,
-    width: `var(${breadcrumbCSSVars.breadcrumbIconSizeVar})`,
-    marginRight: tokens.spacingHorizontalXS,
-  },
-  small: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '12px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase200,
-  },
-  medium: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '16px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase400,
-  },
-  large: {
-    [breadcrumbCSSVars.breadcrumbIconSizeVar]: '20px',
-    [breadcrumbCSSVars.breadcrumbIconLineHeightVar]: tokens.lineHeightBase600,
-  },
-});
 /**
  * Apply styling to the BreadcrumbButton slots based on the state
  */

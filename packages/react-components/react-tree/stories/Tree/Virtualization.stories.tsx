@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-  TreeProps,
-  TreeItem,
+  FlatTreeProps,
+  FlatTreeItem,
   TreeItemLayout,
   TreeProvider,
-  TreeSlots,
+  FlatTreeSlots,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   useFlatTree_unstable,
@@ -40,7 +40,7 @@ const defaultItems: ItemProps[] = [
   })),
 ];
 
-type FixedSizeTreeProps = Omit<TreeProps, 'children'> & {
+type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
   listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
 };
 
@@ -51,7 +51,7 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   const state = useFlatTree_unstable(props, ref);
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
-  const { slots, slotProps } = getSlots<TreeSlots>(state);
+  const { slots, slotProps } = getSlots<FlatTreeSlots>(state);
   const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
     if (instance) {
       // This element stays between the tree and treeitem
@@ -76,9 +76,9 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
   const flatTreeItem = props.data[props.index];
   const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
   return (
-    <TreeItem {...treeItemProps} style={props.style}>
+    <FlatTreeItem {...treeItemProps} style={props.style}>
       <TreeItemLayout>{content}</TreeItemLayout>
-    </TreeItem>
+    </FlatTreeItem>
   );
 };
 

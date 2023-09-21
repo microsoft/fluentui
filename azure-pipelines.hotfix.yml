@@ -4,6 +4,11 @@ trigger: none
 
 name: '$(targetNpmVersion) ($(Rev:r))'
 
+parameters:
+  - name: isTestRun
+    type: boolean
+    default: false
+
 variables:
   - template: .devops/templates/variables.yml
   - group: InfoSec-SecurityResults
@@ -52,9 +57,10 @@ jobs:
         displayName: 'Create tarball'
         workingDirectory: 'packages/react'
 
-      - script: |
-          npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
-        displayName: Publish new version
+      - ${{ if ne(parameters.isTestRun, true) }}:
+          - script: |
+              npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
+            displayName: Publish new version
 
       - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
         displayName: 📒 Generate Manifest
