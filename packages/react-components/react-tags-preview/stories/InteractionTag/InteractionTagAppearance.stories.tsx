@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles } from '@fluentui/react-components';
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
@@ -15,14 +15,35 @@ export const Appearance = () => {
   const styles = useContainerStyles();
   return (
     <div className={styles.container}>
-      <InteractionTag icon={<CalendarMonth />} dismissible>
-        filled
+      <InteractionTag>
+        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction id="filled-primary">
+          filled
+        </InteractionTagPrimary>
+        <InteractionTagSecondary
+          aria-label="remove"
+          aria-labelledby="filled-primary filled-secondary"
+          id="filled-secondary"
+        />
       </InteractionTag>
-      <InteractionTag appearance="outline" icon={<CalendarMonth />} dismissible>
-        outline
+      <InteractionTag appearance="outline">
+        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction id="outline-primary">
+          outline
+        </InteractionTagPrimary>
+        <InteractionTagSecondary
+          aria-label="remove"
+          aria-labelledby="outline-primary outline-secondary"
+          id="outline-secondary"
+        />
       </InteractionTag>
-      <InteractionTag appearance="brand" icon={<CalendarMonth />} dismissible>
-        brand
+      <InteractionTag appearance="brand">
+        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction id="brand-primary">
+          brand
+        </InteractionTagPrimary>
+        <InteractionTagSecondary
+          aria-label="remove"
+          aria-labelledby="brand-primary brand-secondary"
+          id="brand-secondary"
+        />
       </InteractionTag>
     </div>
   );

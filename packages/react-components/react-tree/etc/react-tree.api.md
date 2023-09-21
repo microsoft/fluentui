@@ -22,7 +22,7 @@ import type { End } from '@fluentui/keyboard-keys';
 import type { Enter } from '@fluentui/keyboard-keys';
 import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import { FC } from 'react';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { ForwardRefComponent } from '@fluentui/react-utilities';
 import type { Home } from '@fluentui/keyboard-keys';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
@@ -48,13 +48,24 @@ export const FlatTree: ForwardRefComponent<FlatTreeProps>;
 // @public (undocumented)
 export const flatTreeClassNames: SlotClassNames<TreeSlots>;
 
+// @public
+export const FlatTreeItem: ForwardRefComponent<FlatTreeItemProps>;
+
+// @public
+export type FlatTreeItemProps = TreeItemProps & {
+    value: TreeItemValue;
+    'aria-level': number;
+    'aria-setsize': number;
+    'aria-posinset': number;
+};
+
 // @public (undocumented)
 export type FlatTreeProps = ComponentProps<TreeSlots> & {
     appearance?: 'subtle' | 'subtle-alpha' | 'transparent';
     size?: 'small' | 'medium';
     openItems?: Iterable<TreeItemValue>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
-    onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
     selectionMode?: SelectionMode_2;
     checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
     onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
@@ -62,7 +73,7 @@ export type FlatTreeProps = ComponentProps<TreeSlots> & {
 
 // @public
 export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
-    getTreeProps(): Required<Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable' | 'checkedItems' | 'onCheckedChange'>> & {
+    getTreeProps(): Required<Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation' | 'checkedItems' | 'onCheckedChange'>> & {
         ref: React_2.Ref<HTMLDivElement>;
         openItems: ImmutableSet<TreeItemValue>;
     };
@@ -79,7 +90,7 @@ export type HeadlessFlatTreeItem<Props extends HeadlessFlatTreeItemProps> = Head
 export type HeadlessFlatTreeItemProps = HeadlessTreeItemProps;
 
 // @public (undocumented)
-export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'> & Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
+export type HeadlessFlatTreeOptions = Pick<FlatTreeProps, 'onOpenChange' | 'onNavigation' | 'selectionMode' | 'onCheckedChange'> & Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
     defaultCheckedItems?: TreeProps['checkedItems'];
 };
 
@@ -124,6 +135,7 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
 export type TreeContextValue = {
+    treeType: 'nested' | 'flat';
     level: number;
     selectionMode: 'none' | SelectionMode_2;
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
@@ -190,6 +202,31 @@ export type TreeItemLayoutState = ComponentState<TreeItemLayoutSlots> & {
 // @public (undocumented)
 export const treeItemLevelToken: "--fluent-TreeItem--level";
 
+// @public (undocumented)
+export type TreeItemOpenChangeData = {
+    open: boolean;
+    value: TreeItemValue;
+    target: HTMLElement;
+} & ({
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'ExpandIconClick';
+} | {
+    event: React_2.MouseEvent<HTMLElement>;
+    type: 'Click';
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof Enter;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowRight;
+} | {
+    event: React_2.KeyboardEvent<HTMLElement>;
+    type: typeof ArrowLeft;
+});
+
+// @public (undocumented)
+export type TreeItemOpenChangeEvent = TreeItemOpenChangeData['event'];
+
 // @public
 export const TreeItemPersonaLayout: ForwardRefComponent<TreeItemPersonaLayoutProps>;
 
@@ -217,6 +254,8 @@ export type TreeItemPersonaLayoutState = ComponentState<TreeItemPersonaLayoutSlo
 export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
     itemType: TreeItemType;
     value?: TreeItemValue;
+    open?: boolean;
+    onOpenChange?: (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => void;
 };
 
 // @public (undocumented)
@@ -304,7 +343,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
     openItems?: Iterable<TreeItemValue>;
     defaultOpenItems?: Iterable<TreeItemValue>;
     onOpenChange?(event: TreeOpenChangeEvent, data: TreeOpenChangeData): void;
-    onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+    onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
     selectionMode?: SelectionMode_2;
     checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
     onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;

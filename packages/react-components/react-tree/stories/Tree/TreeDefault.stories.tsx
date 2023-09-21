@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
 export const Default = () => {
   return (
-    <Tree aria-label="Tree">
+    <Tree aria-label="Default">
       <TreeItem itemType="branch">
         <TreeItemLayout>level 1, item 1</TreeItemLayout>
         <Tree>

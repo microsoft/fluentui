@@ -20,6 +20,7 @@ import {
 } from '../Tree/Tree.types';
 import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
 import { treeItemFilter } from '../../utils/treeItemFilter';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 
 export type HeadlessFlatTreeItemProps = HeadlessTreeItemProps;
 export type HeadlessFlatTreeItem<Props extends HeadlessFlatTreeItemProps> = HeadlessTreeItem<Props>;
@@ -41,7 +42,7 @@ export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
    * `openItems`, `onOpenChange`, `onNavigation_unstable` and `ref`
    */
   getTreeProps(): Required<
-    Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation_unstable' | 'checkedItems' | 'onCheckedChange'>
+    Pick<FlatTreeProps, 'openItems' | 'onOpenChange' | 'onNavigation' | 'checkedItems' | 'onCheckedChange'>
   > & {
     ref: React.Ref<HTMLDivElement>;
     openItems: ImmutableSet<TreeItemValue>;
@@ -93,7 +94,7 @@ export type HeadlessFlatTree<Props extends HeadlessFlatTreeItemProps> = {
 
 export type HeadlessFlatTreeOptions = Pick<
   FlatTreeProps,
-  'onOpenChange' | 'onNavigation_unstable' | 'selectionMode' | 'onCheckedChange'
+  'onOpenChange' | 'onNavigation' | 'selectionMode' | 'onCheckedChange'
 > &
   Pick<TreeProps, 'defaultOpenItems' | 'openItems' | 'checkedItems'> & {
     defaultCheckedItems?: TreeProps['checkedItems'];
@@ -119,15 +120,16 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
   const [openItems, setOpenItems] = useControllableOpenItems(options);
   const [checkedItems, setCheckedItems] = useFlatControllableCheckedItems(options, headlessTree);
   const { initialize, navigate } = useFlatTreeNavigation(headlessTree);
+  const { targetDocument } = useFluent_unstable();
   const walkerRef = React.useRef<HTMLElementWalker>();
   const initializeWalker = React.useCallback(
     (root: HTMLElement | null) => {
-      if (root) {
-        walkerRef.current = createHTMLElementWalker(root, treeItemFilter);
+      if (root && targetDocument) {
+        walkerRef.current = createHTMLElementWalker(root, targetDocument, treeItemFilter);
         initialize(walkerRef.current);
       }
     },
-    [initialize],
+    [initialize, targetDocument],
   );
 
   const treeRef = React.useRef<HTMLDivElement>(null);
@@ -151,7 +153,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
 
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-      options.onNavigation_unstable?.(event, data);
+      options.onNavigation?.(event, data);
       if (walkerRef.current) {
         navigate(data, walkerRef.current);
       }
@@ -196,8 +198,7 @@ export function useHeadlessFlatTree_unstable<Props extends HeadlessTreeItemProps
       checkedItems,
       onOpenChange: handleOpenChange,
       onCheckedChange: handleCheckedChange,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      onNavigation_unstable: handleNavigation,
+      onNavigation: handleNavigation,
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [openItems, checkedItems],

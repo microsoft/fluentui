@@ -6,6 +6,7 @@ import { ImmutableMap } from '../utils/ImmutableMap';
 import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
+  treeType: 'nested' | 'flat';
   level: number;
   selectionMode: 'none' | SelectionMode;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
@@ -20,7 +21,7 @@ export type TreeContextValue = {
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
   | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'>
-  | TreeNavigationData_unstable
+  | OmitWithoutExpanding<TreeNavigationData_unstable, 'preventInternals'>
   | OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'>
 );
 
@@ -28,6 +29,7 @@ export type TreeItemRequest = { itemType: TreeItemType } & (
 type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unknown ? Omit<P, K> : P;
 
 const defaultContextValue: TreeContextValue = {
+  treeType: 'nested',
   level: 0,
   selectionMode: 'none',
   openItems: ImmutableSet.empty,

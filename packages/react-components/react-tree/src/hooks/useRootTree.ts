@@ -29,13 +29,13 @@ export function useRootTree(
     | 'checkedItems'
     | 'onOpenChange'
     | 'onCheckedChange'
-    | 'onNavigation_unstable'
+    | 'onNavigation'
     | 'aria-label'
     | 'aria-labelledby'
   >,
 
   ref: React.Ref<HTMLElement>,
-): TreeState {
+): Omit<TreeState, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
@@ -45,10 +45,17 @@ export function useRootTree(
   const requestOpenChange = (data: TreeOpenChangeData) => props.onOpenChange?.(data.event, data);
 
   const requestCheckedChange = (data: TreeCheckedChangeData) => props.onCheckedChange?.(data.event, data);
+
   const requestNavigation = (data: TreeNavigationData_unstable) => {
-    props.onNavigation_unstable?.(data.event, data);
-    if (data.type === treeDataTypes.ArrowDown || data.type === treeDataTypes.ArrowUp) {
-      data.event.preventDefault();
+    props.onNavigation?.(data.event, data);
+    switch (data.type) {
+      case treeDataTypes.ArrowDown:
+      case treeDataTypes.ArrowUp:
+      case treeDataTypes.Home:
+      case treeDataTypes.End:
+        // stop the default behavior of the event
+        // which is to scroll the page
+        data.event.preventDefault();
     }
   };
 
@@ -143,7 +150,10 @@ function warnIfNoProperPropsRootTree(props: Pick<TreeProps, 'aria-label' | 'aria
   if (process.env.NODE_ENV === 'development') {
     if (!props['aria-label'] && !props['aria-labelledby']) {
       // eslint-disable-next-line no-console
-      console.warn('Tree must have either a `aria-label` or `aria-labelledby` property defined');
+      console.warn(/* #__DE-INDENT__ */ `
+        @fluentui/react-tree [useRootTree]:
+        Tree must have either a \`aria-label\` or \`aria-labelledby\` property defined
+      `);
     }
   }
 }

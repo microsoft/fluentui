@@ -1,14 +1,16 @@
 import * as React from 'react';
 import {
+  isResolvedShorthand,
   mergeCallbacks,
-  resolveShorthand,
+  slot,
   useControllableState,
   useEventCallback,
   useMergedRefs,
 } from '@fluentui/react-utilities';
-import { Input, InputState } from '@fluentui/react-input';
-import type { SearchBoxProps, SearchBoxState } from './SearchBox.types';
+import { useInput_unstable } from '@fluentui/react-input';
 import { DismissRegular, SearchRegular } from '@fluentui/react-icons';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
+import type { SearchBoxSlots, SearchBoxProps, SearchBoxState } from './SearchBox.types';
 
 /**
  * Create the state required to render SearchBox.
@@ -42,67 +44,76 @@ export const useSearchBox_unstable = (props: SearchBoxProps, ref: React.Ref<HTML
     setFocused(!!searchBoxRootRef.current?.contains(ev.relatedTarget));
   });
 
-  const state: SearchBoxState = {
-    components: {
-      root: Input,
-      dismiss: 'span',
-      contentAfter: 'span',
-    },
+  const rootProps = slot.resolveShorthand(root);
 
-    root: {
-      ref: useMergedRefs(searchBoxRef, ref),
+  const handleDismissClick = useEventCallback((event: React.MouseEvent<HTMLSpanElement>) => {
+    if (isResolvedShorthand(dismiss)) {
+      dismiss.onClick?.(event);
+    }
+    setValue('');
+  });
+
+  const inputState = useInput_unstable(
+    {
       type: 'search',
-      input: {}, // defining here to have access in styles hook
-
       disabled,
       size,
       value,
-
-      contentBefore: resolveShorthand(contentBefore, {
+      root: slot.always<ExtractSlotProps<SearchBoxSlots['root']>>(
+        {
+          ...rootProps,
+          ref: useMergedRefs(rootProps?.ref, searchBoxRootRef),
+          onFocus: useEventCallback(mergeCallbacks(rootProps?.onFocus, onFocus)),
+          onBlur: useEventCallback(mergeCallbacks(rootProps?.onBlur, onBlur)),
+        },
+        {
+          elementType: 'span',
+        },
+      ),
+      contentBefore: slot.optional(contentBefore, {
+        renderByDefault: true,
         defaultProps: {
           children: <SearchRegular />,
         },
-        required: true, // TODO need to allow users to remove
+        elementType: 'span',
       }),
-
+      contentAfter: slot.optional(contentAfter, {
+        renderByDefault: true,
+        elementType: 'span',
+      }),
       ...inputProps,
-
-      root: resolveShorthand(root, {
-        required: true,
-      }),
-
       onChange: useEventCallback(ev => {
         const newValue = ev.target.value;
         props.onChange?.(ev, { value: newValue });
         setValue(newValue);
       }),
     },
-    dismiss: resolveShorthand(dismiss, {
+    useMergedRefs(searchBoxRef, ref),
+  );
+
+  const state: SearchBoxState = {
+    ...inputState,
+    components: {
+      ...inputState.components,
+      dismiss: 'span',
+    },
+    dismiss: slot.optional(dismiss, {
       defaultProps: {
         children: <DismissRegular />,
         role: 'button',
         'aria-label': 'clear',
         tabIndex: -1,
       },
-      required: true,
+      renderByDefault: true,
+      elementType: 'span',
     }),
-    contentAfter: resolveShorthand(contentAfter, {
-      required: true,
-    }),
-
     disabled,
     focused,
     size,
   };
 
-  const searchBoxRoot = state.root.root as InputState['root'];
-  searchBoxRoot.ref = useMergedRefs(searchBoxRoot.ref, searchBoxRootRef);
-  searchBoxRoot.onFocus = useEventCallback(mergeCallbacks(searchBoxRoot.onFocus, onFocus));
-  searchBoxRoot.onBlur = useEventCallback(mergeCallbacks(searchBoxRoot.onBlur, onBlur));
-
-  const onDismissClick = useEventCallback(mergeCallbacks(state.dismiss?.onClick, () => setValue('')));
   if (state.dismiss) {
-    state.dismiss.onClick = onDismissClick;
+    state.dismiss.onClick = handleDismissClick;
   }
 
   return state;

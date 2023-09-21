@@ -2,6 +2,21 @@
   "name": "@fluentui/react-theme-sass",
   "entries": [
     {
+      "date": "Tue, 05 Sep 2023 13:29:09 GMT",
+      "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.16",
+      "version": "9.0.0-alpha.16",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-theme-sass",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 09 Aug 2023 13:17:08 GMT",
       "tag": "@fluentui/react-theme-sass_v9.0.0-alpha.15",
       "version": "9.0.0-alpha.15",

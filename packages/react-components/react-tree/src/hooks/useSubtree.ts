@@ -9,11 +9,13 @@ import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-util
  * @param props - props from this instance of tree
  * @param ref - reference to root HTMLElement of tree
  */
-export function useSubtree(props: Pick<TreeProps, 'appearance' | 'size'>, ref: React.Ref<HTMLElement>): TreeState {
+export function useSubtree(
+  props: Pick<TreeProps, 'appearance' | 'size'>,
+  ref: React.Ref<HTMLElement>,
+): Omit<TreeState, 'treeType'> {
   const contextAppearance = useTreeContext_unstable(ctx => ctx.appearance);
   const contextSize = useTreeContext_unstable(ctx => ctx.size);
   const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);
-  const value = useTreeItemContext_unstable(ctx => ctx.value);
 
   const { appearance = contextAppearance ?? 'subtle', size = contextSize ?? 'medium' } = props;
 
@@ -23,7 +25,7 @@ export function useSubtree(props: Pick<TreeProps, 'appearance' | 'size'>, ref: R
   const checkedItems = useTreeContext_unstable(ctx => ctx.checkedItems);
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
 
-  const open = openItems.has(value);
+  const open = useTreeItemContext_unstable(ctx => ctx.open);
 
   return {
     open,

@@ -15,6 +15,7 @@ export {
 } from '@griffel/react';
 export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
 export {
+  createCSSRuleFromTheme,
   FluentProvider,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
@@ -246,6 +247,17 @@ export {
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
   usePresenceBadgeStyles_unstable,
+  presenceAwayRegular,
+  presenceAwayFilled,
+  presenceAvailableRegular,
+  presenceAvailableFilled,
+  presenceBlockedRegular,
+  presenceBusyFilled,
+  presenceDndRegular,
+  presenceDndFilled,
+  presenceOofRegular,
+  presenceOfflineRegular,
+  presenceUnknownRegular,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,
@@ -770,6 +782,7 @@ export type {
   TooltipTriggerProps,
 } from '@fluentui/react-tooltip';
 
+export { resolvePositioningShorthand } from '@fluentui/react-positioning';
 export type {
   PositioningProps,
   PositioningShorthand,
@@ -810,6 +823,8 @@ export {
   useDialogContentStyles_unstable,
   useDialogContent_unstable,
   renderDialogContent_unstable,
+  useDialogContext_unstable,
+  useDialogSurfaceContext_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -838,6 +853,8 @@ export type {
   DialogContentProps,
   DialogContentSlots,
   DialogContentState,
+  DialogContextValue,
+  DialogSurfaceContextValue,
 } from '@fluentui/react-dialog';
 
 export {
@@ -991,9 +1008,11 @@ export {
   useDataGridBody_unstable,
   renderDataGridBody_unstable,
   DataGrid,
+  DataGridContextProvider,
   dataGridClassNames,
   useDataGridStyles_unstable,
   useDataGrid_unstable,
+  useDataGridContext_unstable,
   renderDataGrid_unstable,
   useDataGridContextValues_unstable,
   DataGridHeader,
@@ -1014,6 +1033,10 @@ export {
   TableRowIdContextProvider,
   useTableRowIdContext,
   useTableColumnSizing_unstable,
+  ColumnIdContextProvider,
+  useColumnIdContext,
+  TableHeaderContextProvider,
+  useIsInTableHeader,
 } from '@fluentui/react-table';
 
 export type {
@@ -1202,3 +1225,79 @@ export type {
   ToastFooterState,
   ToastFooterSlots,
 } from '@fluentui/react-toast';
+
+export {
+  FlatTree,
+  FlatTreeItem,
+  Tree,
+  TreeItem,
+  TreeItemLayout,
+  TreeItemPersonaLayout,
+  TreeItemProvider,
+  TreeProvider,
+  flatTreeClassNames,
+  flattenTree_unstable,
+  renderFlatTree_unstable,
+  renderTreeItemLayout_unstable,
+  renderTreeItemPersonaLayout_unstable,
+  renderTreeItem_unstable,
+  renderTree_unstable,
+  treeClassNames,
+  treeItemClassNames,
+  treeItemLayoutClassNames,
+  treeItemLevelToken,
+  treeItemPersonaLayoutClassNames,
+  useFlatTreeContextValues_unstable,
+  useFlatTreeStyles_unstable,
+  useFlatTree_unstable,
+  useHeadlessFlatTree_unstable,
+  useTreeContextValues_unstable,
+  useTreeContext_unstable,
+  useTreeItemContextValues_unstable,
+  useTreeItemContext_unstable,
+  useTreeItemLayoutStyles_unstable,
+  useTreeItemLayout_unstable,
+  useTreeItemPersonaLayoutStyles_unstable,
+  useTreeItemPersonaLayout_unstable,
+  useTreeItemStyles_unstable,
+  useTreeItem_unstable,
+  useTreeStyles_unstable,
+  useTree_unstable,
+} from '@fluentui/react-tree';
+
+export type {
+  FlatTreeProps,
+  FlatTreeSlots,
+  FlatTreeState,
+  FlattenTreeItem,
+  FlatTreeItemProps,
+  HeadlessFlatTree,
+  HeadlessFlatTreeItem,
+  HeadlessFlatTreeItemProps,
+  HeadlessFlatTreeOptions,
+  TreeCheckedChangeData,
+  TreeCheckedChangeEvent,
+  TreeContextValue,
+  TreeContextValues,
+  TreeItemContextValue,
+  TreeItemLayoutProps,
+  TreeItemLayoutSlots,
+  TreeItemLayoutState,
+  TreeItemPersonaLayoutProps,
+  TreeItemPersonaLayoutSlots,
+  TreeItemPersonaLayoutState,
+  TreeItemProps,
+  TreeItemSlots,
+  TreeItemState,
+  TreeItemValue,
+  TreeNavigationData_unstable,
+  TreeNavigationEvent_unstable,
+  TreeOpenChangeData,
+  TreeOpenChangeEvent,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
+  TreeProps,
+  TreeSelectionValue,
+  TreeSlots,
+  TreeState,
+} from '@fluentui/react-tree';

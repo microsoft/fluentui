@@ -1,11 +1,12 @@
 import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
-import { useTreeContext_unstable } from '../../contexts/index';
-import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
+import { useTreeContext_unstable } from '../../contexts/index';
+import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 
 /**
  * Create the state required to render TreeItem.
@@ -17,6 +18,11 @@ import { treeDataTypes } from '../../utils/tokens';
  * @param ref - reference to root HTMLElement of TreeItem
  */
 export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
+  const treeType = useTreeContext_unstable(ctx => ctx.treeType);
+  if (treeType === 'flat') {
+    warnIfNoProperPropsFlatTreeItem(props);
+  }
+  const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
   const contextLevel = useTreeContext_unstable(ctx => ctx.level);
 
   // note, if the value is not externally provided,
@@ -25,14 +31,12 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   const { onClick, onKeyDown, as = 'div', itemType = 'leaf', 'aria-level': level = contextLevel, ...rest } = props;
 
-  const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
-
   const [isActionsVisible, setActionsVisible] = React.useState(false);
   const [isAsideVisible, setAsideVisible] = React.useState(true);
 
-  const handleActionsRef = (actionsElement: HTMLDivElement | null) => {
+  const handleActionsRef = React.useCallback((actionsElement: HTMLDivElement | null) => {
     setAsideVisible(actionsElement === null);
-  };
+  }, []);
 
   const actionsRef = React.useRef<HTMLDivElement>(null);
   const expandIconRef = React.useRef<HTMLDivElement>(null);
@@ -40,7 +44,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   const subtreeRef = React.useRef<HTMLDivElement>(null);
   const selectionRef = React.useRef<HTMLInputElement>(null);
 
-  const open = useTreeContext_unstable(ctx => ctx.openItems.has(value));
+  const open = useTreeContext_unstable(ctx => props.open ?? ctx.openItems.has(value));
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
   const checked = useTreeContext_unstable(ctx => ctx.checkedItems.get(value) ?? false);
 
@@ -61,13 +65,21 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     if (isEventFromSelection) {
       return;
     }
-    const isFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
-    requestTreeResponse({
-      event,
-      value,
-      itemType,
-      target: event.currentTarget,
-      type: isFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
+    const isEventFromExpandIcon = expandIconRef.current && elementContains(expandIconRef.current, event.target as Node);
+
+    ReactDOM.unstable_batchedUpdates(() => {
+      const data = {
+        event,
+        value,
+        open: !open,
+        target: event.currentTarget,
+        type: isEventFromExpandIcon ? treeDataTypes.ExpandIconClick : treeDataTypes.Click,
+      } as const;
+      props.onOpenChange?.(event, data);
+      requestTreeResponse({
+        ...data,
+        itemType,
+      });
     });
   });
 
@@ -84,19 +96,81 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
           event.preventDefault();
         }
         return;
+      case treeDataTypes.Enter: {
+        const data = {
+          value,
+          event,
+          open: !open,
+          type: event.key,
+          target: event.currentTarget,
+        } as const;
+        props.onOpenChange?.(event, data);
+        return requestTreeResponse({
+          ...data,
+          itemType,
+        });
+      }
       case treeDataTypes.End:
       case treeDataTypes.Home:
-      case treeDataTypes.Enter:
       case treeDataTypes.ArrowUp:
       case treeDataTypes.ArrowDown:
-      case treeDataTypes.ArrowLeft:
+        return requestTreeResponse({
+          event,
+          value,
+          itemType,
+          type: event.key,
+          target: event.currentTarget,
+        });
+      case treeDataTypes.ArrowLeft: {
+        // do not navigate to parent if the item is on the top level
+        if (level === 1 && !open) {
+          return;
+        }
+        const data = {
+          value,
+          event,
+          open: !open,
+          type: event.key,
+          target: event.currentTarget,
+        } as const;
+        if (open) {
+          props.onOpenChange?.(event, data);
+        }
+        return requestTreeResponse({
+          ...data,
+          itemType,
+        });
+      }
       case treeDataTypes.ArrowRight:
-        return requestTreeResponse({ event, target: event.currentTarget, value, itemType, type: event.key });
+        // do not navigate or open if the item is a leaf
+        if (itemType === 'leaf') {
+          return;
+        }
+        const data = {
+          value,
+          event,
+          open: !open,
+          type: event.key,
+          target: event.currentTarget,
+        } as const;
+        if (!open) {
+          props.onOpenChange?.(event, data);
+        }
+        return requestTreeResponse({
+          ...data,
+          itemType,
+        });
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
     if (isTypeAheadCharacter) {
-      requestTreeResponse({ event, target: event.currentTarget, value, itemType, type: treeDataTypes.TypeAhead });
+      requestTreeResponse({
+        event,
+        target: event.currentTarget,
+        value,
+        itemType,
+        type: treeDataTypes.TypeAhead,
+      });
     }
   });
 
@@ -142,7 +216,6 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     });
   });
 
-  const isBranch = itemType === 'branch';
   return {
     value,
     open,
@@ -162,15 +235,17 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     root: slot.always(
       getNativeElementProps(as, {
         tabIndex: -1,
+        [dataTreeItemValueAttrName]: value,
         ...rest,
         ref,
         role: 'treeitem',
         'aria-level': level,
-        [dataTreeItemValueAttrName]: value,
-        'aria-checked':
-          selectionMode === 'multiselect' ? (checked === 'mixed' ? undefined : checked ?? false) : undefined,
-        'aria-selected': selectionMode === 'single' ? checked : undefined,
-        'aria-expanded': isBranch ? open : undefined,
+        'aria-checked': selectionMode === 'multiselect' ? checked : undefined,
+        // aria-selected is required according to WAI-ARIA spec
+        // https://www.w3.org/TR/wai-aria-1.1/#treeitem
+        // Casting: when selectionMode is 'single', checked is a boolean
+        'aria-selected': selectionMode === 'single' ? (checked as boolean) : 'false',
+        'aria-expanded': itemType === 'branch' ? open : undefined,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
         onMouseOver: handleActionsVisible,
@@ -182,4 +257,24 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       { elementType: 'div' },
     ),
   };
+}
+
+function warnIfNoProperPropsFlatTreeItem(props: Pick<TreeItemProps, 'aria-setsize' | 'aria-posinset' | 'aria-level'>) {
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      props['aria-posinset'] === undefined ||
+      props['aria-setsize'] === undefined ||
+      props['aria-level'] === undefined
+    ) {
+      // eslint-disable-next-line no-console
+      console.error(/** #__DE-INDENT__ */ `
+        @fluentui/react-tree [${useTreeItem_unstable.name}]:
+        A flat treeitem must have "aria-posinset", "aria-setsize", "aria-level" to ensure a11y and navigation.
+
+        - "aria-posinset": the position of this treeitem in the current level of the tree.
+        - "aria-setsize": the number of siblings in this level of the tree.
+        - "aria-level": the current level of the treeitem.
+      `);
+    }
+  }
 }

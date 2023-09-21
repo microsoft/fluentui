@@ -389,7 +389,7 @@ function _randomFileIcon(): { docType: string; url: string } {
   const docType: string = FILE_ICONS[Math.floor(Math.random() * FILE_ICONS.length)].name;
   return {
     docType,
-    url: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/assets/item-types/16/${docType}.svg`,
+    url: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/16/${docType}.svg`,
   };
 }
 

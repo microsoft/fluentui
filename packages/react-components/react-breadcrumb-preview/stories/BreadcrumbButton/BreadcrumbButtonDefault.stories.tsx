@@ -19,63 +19,125 @@ type Item = {
     onClick?: () => void;
     icon?: ButtonProps['icon'];
     disabled?: boolean;
-    iconPosition?: 'before' | 'after';
+  };
+  linkProps?: {
+    'aria-label'?: string;
+    href?: string;
+    icon?: ButtonProps['icon'];
+    disabled?: boolean;
   };
 };
 
 const buttonItems: Item[] = [
   {
     key: 0,
-    item: 'Item 0',
+    item: 'Button',
     buttonProps: {
-      onClick: () => console.log('item 0 was clicked'),
+      onClick: () => window.open('https://react.fluentui.dev/?path=/docs/components-button-button--default', '_blank'),
     },
   },
   {
     key: 1,
+    item: 'Breadcrumb',
     buttonProps: {
       icon: <CalendarMonth />,
       'aria-label': 'Item 1',
-      onClick: () => console.log('item 1 was clicked'),
+      disabled: true,
     },
   },
   {
     key: 2,
-    item: 'Item 2',
+    item: 'Card',
     buttonProps: {
       icon: <GridDots20Regular />,
-      onClick: () => console.log('item 2 was clicked'),
+      onClick: () => window.open('https://react.fluentui.dev/?path=/docs/components-card-card--default', '_blank'),
     },
   },
   {
     key: 3,
-    item: 'Item 3',
+    item: 'Checkbox',
     buttonProps: {
-      onClick: () => console.log('item 3 was clicked'),
+      onClick: () => window.open('https://react.fluentui.dev/?path=/docs/components-checkbox--default', '_blank'),
     },
   },
   {
     key: 4,
-    item: 'Item 4',
+    item: 'DataGrid',
     buttonProps: {
       icon: <CalendarMonth />,
-      iconPosition: 'after',
-      onClick: () => console.log('item 4 was clicked'),
+      onClick: () => window.open('https://react.fluentui.dev/?path=/docs/components-datagrid--default', '_blank'),
     },
   },
   {
     key: 5,
-    item: 'Item 5',
+    item: 'Drawer',
     buttonProps: {
       disabled: true,
-      onClick: () => console.log('item 5 was clicked'),
     },
   },
   {
     key: 6,
-    item: 'Item 6',
+    item: 'Dropdown',
     buttonProps: {
-      onClick: () => console.log('item 6 was clicked'),
+      onClick: () => window.open('https://react.fluentui.dev/?path=/docs/components-dropdown--default', '_blank'),
+    },
+  },
+];
+
+const linkItems: Item[] = [
+  {
+    key: 0,
+    item: 'Default',
+    linkProps: {
+      href: 'https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--default',
+    },
+  },
+  {
+    key: 1,
+    item: 'Size',
+    linkProps: {
+      icon: <CalendarMonth />,
+      'aria-label': 'Item 1',
+      href: 'https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-size',
+      disabled: true,
+    },
+  },
+  {
+    key: 2,
+    item: 'Overflow',
+    linkProps: {
+      icon: <GridDots20Regular />,
+      href: 'https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-with-overflow',
+    },
+  },
+  {
+    key: 3,
+    item: 'Tooltip',
+    linkProps: {
+      href: 'https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-with-tooltip',
+    },
+  },
+  {
+    key: 4,
+    item: 'Focus Mode',
+    linkProps: {
+      icon: <CalendarMonth />,
+      href: 'https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-focus-mode',
+    },
+  },
+  {
+    key: 5,
+    item: 'BreadcrumbButton',
+    linkProps: {
+      disabled: true,
+      href: 'https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb-breadcrumbbutton--default',
+    },
+  },
+  {
+    key: 6,
+    item: 'BreadcrumbItem',
+    linkProps: {
+      href: 'https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb-breadcrumbitem--default',
     },
   },
 ];
@@ -96,16 +158,24 @@ function renderButton(el: Item, isLastItem: boolean = false) {
     </React.Fragment>
   );
 }
+function renderLink(el: Item, isLastItem: boolean = false) {
+  return (
+    <React.Fragment key={`${el.key}-link`}>
+      <BreadcrumbItem>
+        <BreadcrumbButton {...el.linkProps} current={isLastItem} as="a">
+          {el.item}
+        </BreadcrumbButton>
+      </BreadcrumbItem>
+      {!isLastItem && <BreadcrumbDivider />}
+    </React.Fragment>
+  );
+}
 export const Default = () => {
   const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
   return (
     <>
       <Label>Appearance (see the difference on `hover`)</Label>
-      <RadioGroup
-        aria-labelledby="breadcrumb-appearance"
-        value={appearance}
-        onChange={(_, data) => setAppearance(data.value as BreadcrumbProps['appearance'])}
-      >
+      <RadioGroup value={appearance} onChange={(_, data) => setAppearance(data.value as BreadcrumbProps['appearance'])}>
         <Radio value="transparent" label="Transparent" />
         <Radio value="subtle" label="Subtle" />
       </RadioGroup>
@@ -117,6 +187,10 @@ export const Default = () => {
       </Breadcrumb>
       <Breadcrumb aria-label="Large breadcrumb with BreadcrumbButton" size="large" appearance={appearance}>
         {buttonItems.map(el => renderButton(el, el.key === buttonItems.length - 1))}
+      </Breadcrumb>
+      <h3>BreadcrumbButton with `href` attribute</h3>
+      <Breadcrumb aria-label="BreadcrumbButton with href" size="large" appearance={appearance}>
+        {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
       </Breadcrumb>
     </>
   );

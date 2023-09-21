@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Caption1, Text, tokens, Subtitle1 } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -39,8 +39,8 @@ const useStyles = makeStyles({
 
   headerImage: {
     ...shorthands.borderRadius('4px'),
-    maxWidth: '42px',
-    maxHeight: '42px',
+    maxWidth: '44px',
+    maxHeight: '44px',
   },
 
   caption: {
@@ -76,7 +76,7 @@ export const Orientation = () => {
             image={<img className={styles.headerImage} src={resolveAsset('app_logo.svg')} alt="App Name Document" />}
             header={<Text weight="semibold">App Name</Text>}
             description={<Caption1 className={styles.caption}>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
           />
 
           <p className={styles.text}>
@@ -98,7 +98,7 @@ export const Orientation = () => {
           <CardHeader
             header={<Text weight="semibold">App Name</Text>}
             description={<Caption1 className={styles.caption}>Developer</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
           />
         </Card>
       </section>

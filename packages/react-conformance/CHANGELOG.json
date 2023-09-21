@@ -2,6 +2,36 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/react-conformance_v0.18.0",
+      "version": "0.18.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "8582884f9000d15185fe7b074c6fde00d84e961c",
+            "comment": "feat: add option `disableTypeTests` to disable tests that require TypeScript information"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:29:19 GMT",
+      "tag": "@fluentui/react-conformance_v0.17.2",
+      "version": "0.17.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 20 Jul 2023 18:27:27 GMT",
       "tag": "@fluentui/react-conformance_v0.17.1",
       "version": "0.17.1",

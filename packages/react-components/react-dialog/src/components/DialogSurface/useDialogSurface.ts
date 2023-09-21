@@ -71,6 +71,7 @@ export const useDialogSurface_unstable = (
   return {
     components: { backdrop: 'div', root: 'div' },
     backdrop,
+    mountNode: props.mountNode,
     root: slot.always(
       getNativeElementProps(props.as ?? 'div', {
         tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150

@@ -22,10 +22,20 @@ export type TreeItemLayoutSlots = {
    * by default renders a chevron icon to indicate opening and closing
    */
   expandIcon?: Slot<'div'>;
+  /**
+   * Aside content is normally used to render a badge or other non-actionable content
+   * It is aria-hidden by default and is only meant to be used as visual aid.
+   */
   aside?: Slot<'div'>;
   /**
-   * actionable elements are normally buttons, menus, or other focusable elements.
+   * Actionable elements are normally buttons, menus, or other focusable elements.
    * Those elements are only visibly available if the given tree item is currently active.
+   *
+   * `actions` and `aside` slots are positioned on the exact same spot,
+   * so they won't be visible at the same time.
+   * `aside` slot is visible by default meanwhile `actions` slot are only visible when the tree item is active.
+   *
+   * `actions` slot supports a `visible` prop to force visibility of the actions.
    */
   actions?: Slot<
     ExtractSlotProps<

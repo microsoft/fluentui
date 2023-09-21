@@ -7,7 +7,7 @@ import {
   Markdown,
 } from '@fluentui/react-docsite-components';
 
-import { MultiStackedBarChartExample } from './MultiStackedBarChart.Example';
+import { MultiStackedBarChartBasicExample } from './MultiStackedBarChart.Example';
 import { MultiStackedBarChartWithPlaceholderExample } from './MultiStackedBarChartWithPlaceHolder.Example';
 import { MultiStackedBarChartVariantExample } from './MultiStackedBarChart.Variant.Example';
 
@@ -27,7 +27,7 @@ export class MultiStackedBarChartPage extends React.Component<IComponentDemoPage
         exampleCards={
           <>
             <ExampleCard title="Multi Stacked Bar Chart" code={MultiStackedBarChartExampleCode}>
-              <MultiStackedBarChartExample />
+              <MultiStackedBarChartBasicExample />
             </ExampleCard>
             <ExampleCard
               title="Multi Stacked Bar Chart With Placeholder"

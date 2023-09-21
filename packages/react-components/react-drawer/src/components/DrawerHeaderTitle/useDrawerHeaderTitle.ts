@@ -1,7 +1,27 @@
 import * as React from 'react';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
-import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+
+import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
+
+/**
+ * @internal
+ * Create the shorthand for the heading element.
+ * @param props - props from this instance of DrawerHeaderTitle
+ */
+const useHeadingProps = ({ children, heading }: DrawerHeaderTitleProps) => {
+  const resolvedHeading = slot.resolveShorthand(heading) || {};
+  const { root: titleProps } = useDialogTitle_unstable(resolvedHeading, React.createRef());
+
+  return slot.optional(titleProps, {
+    defaultProps: {
+      ...titleProps,
+      children,
+    },
+    renderByDefault: true,
+    elementType: 'h2',
+  });
+};
 
 /**
  * Create the state required to render DrawerHeaderTitle.
@@ -16,13 +36,13 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  const { root: heading, action, components: titleComponents } = useDialogTitle_unstable(props, ref);
+  const headingProps = useHeadingProps(props);
 
   return {
     components: {
       root: 'div',
-      heading: titleComponents.root,
-      action: titleComponents.action,
+      heading: 'h2',
+      action: 'div',
     },
 
     root: slot.always(
@@ -32,17 +52,9 @@ export const useDrawerHeaderTitle_unstable = (
       }),
       { elementType: 'div' },
     ),
-    heading: slot.optional(props.heading, {
-      renderByDefault: true,
-      defaultProps: {
-        ...heading,
-        className: undefined, // remove className from heading
-      },
-      elementType: titleComponents.root,
-    }),
+    heading: headingProps,
     action: slot.optional(props.action, {
-      defaultProps: action,
-      elementType: titleComponents.action,
+      elementType: 'div',
     }),
   };
 };

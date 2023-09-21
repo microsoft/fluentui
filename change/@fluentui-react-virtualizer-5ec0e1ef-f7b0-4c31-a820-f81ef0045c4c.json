@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore(react-virtualizer): migrate to new slot API",
-  "packageName": "@fluentui/react-virtualizer",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
-import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
-import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
+import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
 
 const tagAvatarSizeMap = {
   medium: 28,
@@ -16,8 +16,6 @@ const tagAvatarShapeMap = {
   circular: 'circular',
 } as const;
 
-const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
-
 /**
  * Create the state required to render Tag.
  *
@@ -28,27 +26,27 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * @param ref - reference to root HTMLElement of Tag
  */
 export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
-  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
 
   const {
     appearance = 'filled',
     disabled = false,
-    dismissible = contextDismissible,
+    dismissible = false,
     shape = 'rounded',
     size = contextSize,
     value = id,
   } = props;
 
-  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+  const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
     if (!ev.defaultPrevented) {
       handleTagDismiss?.(ev, value);
     }
   });
 
-  const handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+  const dismissOnKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
       handleTagDismiss?.(ev, value);
@@ -78,8 +76,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
         ref,
         ...props,
         id,
-        onClick: handleClick,
-        onKeyDown: handleKeyDown,
+        ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
       { elementType: dismissible ? 'button' : 'span' },
     ),
@@ -97,7 +94,8 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     dismissIcon: slot.optional(props.dismissIcon, {
       renderByDefault: dismissible,
       defaultProps: {
-        children: <DismissIcon />,
+        children: <DismissRegular />,
+        role: 'img',
       },
       elementType: 'span',
     }),

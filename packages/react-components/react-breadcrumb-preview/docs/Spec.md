@@ -68,16 +68,14 @@ const BreadcrumbExampleIconDivider = props => (
 
 ### Components
 
-| Purpose                                                                | Fabric     | Northstar         | Matching? |
-| ---------------------------------------------------------------------- | ---------- | ----------------- | --------- |
-| Breadcrumb is a component that indicates the path of the current page  | Breadcrumb | Breadcrumb        | ⚠️        |
-| BreadcrumbItem an actionable item within a Breadcrumb                  |            | BreadcrumbItem    | ❌        |
-| BreadcrumbDivider divides BreadcrumbItem components within Breadcrumb  |            | BreadcrumbDivider | ❌        |
-| An BreadcrumbLink represents a anchor to be used inside the Breadcrumb |            | BreadcrumbLink    | ❌        |
+| Purpose                                                               | Fabric     | Northstar         | Matching? |
+| --------------------------------------------------------------------- | ---------- | ----------------- | --------- |
+| Breadcrumb is a component that indicates the path of the current page | Breadcrumb | Breadcrumb        | ⚠️        |
+| BreadcrumbItem an actionable item within a Breadcrumb                 |            | BreadcrumbItem    | ❌        |
+| BreadcrumbDivider divides BreadcrumbItem components within Breadcrumb |            | BreadcrumbDivider | ❌        |
+| BreadcrumbLink represents a anchor to be used inside the Breadcrumb   |            | BreadcrumbLink    | ❌        |
 
 ## Sample Code
-
-By default BreadcrumbButton should be used.
 
 ```jsx
 const BreadcrumbV9Example = props => (
@@ -115,12 +113,12 @@ Breadcrumb can be:
 
 - Non-clickable element which is BreadcrumbItem component.
 - Button - BreadcrumbButton component.
-- Link - BreadcrumbLink component.
+- Link - BreadcrumbButton component with `as="a"` and `href` attributes.
 - Dropdown menu - can be added by a partner using JSX composition.
 
 ### Icon
 
-Breadcrumb items can have icons. If you need an icon for an interactive item, use it inside BreadcrumButton or BreadcrumbLink.
+Breadcrumb items can have icons. If you need an icon for an interactive item, use it inside BreadcrumButton.
 For non-interactive items use the icon inside BreadcrumbItem.
 
 ### Size
@@ -141,13 +139,12 @@ Dropdown contains collapsed items.
 
 ### Components
 
-| Component         | Purpose                                                                  |
-| ----------------- | ------------------------------------------------------------------------ |
-| Breadcrumb        | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements.  |
-| BreadcrumbDivider | Divider component                                                        |
-| BreadcrumbItem    | `li` element. Can contain BreadcrumbButton or BreadcrumbLink components. |
-| BreadcrumbLink    | Breadcrumb Link                                                          |
-| BreadcrumbButton  | Breadcrumb Button                                                        |
+| Component         | Purpose                                                                 |
+| ----------------- | ----------------------------------------------------------------------- |
+| Breadcrumb        | Wrapper for the Breadcrumb component. Contains `nav` and `ol` elements. |
+| BreadcrumbDivider | Divider component                                                       |
+| BreadcrumbItem    | `li` element. Can contain BreadcrumbButton component.                   |
+| BreadcrumbButton  | Breadcrumb Button                                                       |
 
 ### Breadcrumb
 
@@ -172,13 +169,12 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property     | Values                     | Default       | Purpose                          |
-| ------------ | -------------------------- | ------------- | -------------------------------- |
-| appearance   | `transparent`, `subtle`    | `transparent` | Sets appearance                  |
-| dividerType  | `chevron`, `slash`         | `chevron`     | Sets type of divider             |
-| focusMode    | `tab`, `arrow`             | `tab`         | Sets focus mode                  |
-| iconPosition | `before`, `after`          | `before`      | Sets icon position for all items |
-| size         | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb   |
+| Property    | Values                     | Default       | Purpose                        |
+| ----------- | -------------------------- | ------------- | ------------------------------ |
+| appearance  | `transparent`, `subtle`    | `transparent` | Sets appearance                |
+| dividerType | `chevron`, `slash`         | `chevron`     | Sets type of divider           |
+| focusMode   | `tab`, `arrow`             | `tab`         | Sets focus mode                |
+| size        | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 
@@ -188,12 +184,9 @@ Dropdown contains collapsed items.
 
 BreadcrumbItem can be:
 
-- Button - BreadcrumbButton component is used inside BreadcrumbItem.
-- Link - BreadcrumbLink is used inside BreadcrumbItem.
+- Button/Link - BreadcrumbButton component is used inside BreadcrumbItem.
 - Non-clickable content (text and/or icon).
 - Dropdown Menu
-
-It can contain a tooltip.
 
 #### DOM
 
@@ -237,9 +230,9 @@ Usage
   </BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem>
-  <BreadcrumbLink href="#">
-    Item 3
-  <BreadcrumbLink>
+  <BreadcrumbButton href="#" as="a">
+    Item 2
+  </BreadcrumbButton>
 </BreadcrumbItem>
 ```
 
@@ -253,10 +246,7 @@ Usage
 
 ```jsx
 <BreadcrumbItem>
-  <BreadcrumbButton icon={<IconComponent />} iconPosition="after">Item</BreadcrumbButton>
-</BreadcrumbItem>
-<BreadcrumbItem>
-  <BreadcrumbLink icon={<IconComponent />}>Item</BreadcrumbLink>
+  <BreadcrumbButton icon={<IconComponent />}>Item</BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem icon={<IconComponent />}>
   Item
@@ -306,25 +296,14 @@ The slash divider is only used in a small breadcrumb.
 <BreadcrumbButton onClick={() => console.log('smth...')}>Button Item</BreadcrumbButton>
 ```
 
-Under the hood @fluentui/react-button component is used.
-
-### BreadcrumbLink
-
-```jsx
-<BreadcrumbLink href="#">
-  Link Item
-<BreadcrumbLink>
-```
-
 #### API
 
-| Property     | Values            | Default  | Purpose                |
-| ------------ | ----------------- | -------- | ---------------------- |
-| current      | boolean           | false    | Indicates current page |
-| icon         | _slot_            |          | Sets icon              |
-| iconPosition | `before`, `after` | `before` | Sets icon position     |
+| Property | Values  | Default | Purpose                |
+| -------- | ------- | ------- | ---------------------- |
+| current  | boolean | false   | Indicates current page |
+| icon     | _slot_  |         | Sets icon              |
 
-For Link @fluentui/react-link component is used.
+Under the hood @fluentui/react-button component is used.
 
 ## Behaviors
 
@@ -399,7 +378,6 @@ It should be done by the partners using JSX composition.
 For Menu `@fluentui/react-menu` component should be used.
 
 `maxDisplayedItems` and `overflowIndex` are part of `partitionBreadcrumbItems` which is helper in Breadcrumb utils.
-For non-clickable items tooltip is shown instead of overflow menu.
 
 #### Truncate long names:
 
@@ -410,10 +388,6 @@ Currently truncation of long names should be done by partners. It's recommended 
 #### Breadcrumb item as Button
 
 ![Breadcrumb item as Button](./assets/button-beadcrumb.png)
-
-#### Breadcrumb item as Link
-
-![Breadcrumb item as Link](./assets/link-beadcrumb.png)
 
 Breadcrumb can have the folloing states:
 
@@ -439,6 +413,9 @@ Tooltip is shown `onHover` on collapsed menu or items with long names.
 ![Breadcrumb Tooltip](./assets/breadcrumb-tooltip.png)
 
 Tooltipls can be multiline. It is recommended to use content no longer than 80 symbols.
+Interactive items have tooltips when their names are longer than 30 symbols.
+Non-interactive Breadcrumb runs the entire available space where the control is placed.
+If the space is limited, the string will truncate the end of it.
 
 ### Keyboard
 
