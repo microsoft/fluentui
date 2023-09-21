@@ -550,8 +550,14 @@ export type {
   IGroupedListSectionProps,
   IGroupedListSectionState,
   IGroupedListState,
+  IGroupedListV2,
   IGroupedListV2Props,
   IGroupedListV2State,
+  IITemGroupedItem,
+  IShowAllGroupedItem,
+  IFooterGroupedItem,
+  IHeaderGroupedItem,
+  IGroupedItem,
 } from './GroupedList';
 export {
   ExpandingCard,

@@ -5951,6 +5951,12 @@ export { IFontStyles }
 
 export { IFontWeight }
 
+// @public
+export type IFooterGroupedItem = {
+    type: 'footer';
+    group: IGroup;
+};
+
 export { iframeProperties }
 
 // @public
@@ -6027,6 +6033,9 @@ export interface IGroupDividerProps {
     theme?: ITheme;
     viewport?: IViewport;
 }
+
+// @public
+export type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
 
 // @public (undocumented)
 export interface IGroupedList extends IList {
@@ -6137,7 +6146,16 @@ export interface IGroupedListStyles {
 }
 
 // @public (undocumented)
+export interface IGroupedListV2 {
+    // (undocumented)
+    getStartItemIndexInView(): number;
+    // (undocumented)
+    scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+}
+
+// @public (undocumented)
 export interface IGroupedListV2Props extends IGroupedListProps {
+    groupedListRef?: React_2.Ref<IGroupedListV2>;
     groupExpandedVersion?: {};
     listRef?: React_2.Ref<List>;
     onRenderCell: (nestingDepth?: number, item?: any, index?: number, group?: IGroup) => React_2.ReactNode;
@@ -6275,6 +6293,14 @@ export interface IGroupSpacerStyles {
     // (undocumented)
     root: IStyle;
 }
+
+// @public
+export type IHeaderGroupedItem = {
+    type: 'header';
+    group: IGroup;
+    groupId: string;
+    groupIndex: number;
+};
 
 // @public (undocumented)
 export interface IHoverCard {
@@ -6475,6 +6501,14 @@ export interface IInputProps extends React_2.InputHTMLAttributes<HTMLInputElemen
     'aria-label'?: string;
     defaultVisibleValue?: string;
 }
+
+// @public
+export type IITemGroupedItem = {
+    type: 'item';
+    group: IGroup;
+    item: any;
+    itemIndex: number;
+};
 
 // @public (undocumented)
 export interface IKeytipConfig {
@@ -6772,8 +6806,8 @@ export interface IListProps<T = any> extends React_2.HTMLAttributes<List<T> | HT
     componentRef?: IRefObject<IList>;
     getItemCountForPage?: (itemIndex?: number, visibleRect?: IRectangle) => number;
     getKey?: (item: T, index?: number) => string;
-    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
-    getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
+    getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number, items?: T[]) => number;
+    getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle, items?: T[]) => IPageSpecification;
     getPageStyle?: (page: IPage<T>) => any;
     ignoreScrollingState?: boolean;
     items?: T[];
@@ -8542,6 +8576,12 @@ export interface IShimmerStyles {
     shimmerGradient?: IStyle;
     shimmerWrapper?: IStyle;
 }
+
+// @public
+export type IShowAllGroupedItem = {
+    type: 'showAll';
+    group: IGroup;
+};
 
 export { isIE11 }
 
