@@ -113,7 +113,7 @@ export type TagDismissData<Value = TagValue> = {
 };
 
 // @public (undocumented)
-export type TagDismissEvent = React.MouseEvent | React.KeyboardEvent;
+export type TagDismissEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public (undocumented)
 export type TagDismissHandler<Value = TagValue> = (e: TagDismissEvent, data: TagDismissData<Value>) => void;
