@@ -4,6 +4,7 @@ import { renderTagGroup_unstable } from './renderTagGroup';
 import { useTagGroupStyles_unstable } from './useTagGroupStyles.styles';
 import type { TagGroupProps } from './TagGroup.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useTagGroupContextValues_unstable } from './useTagGroupContextValues';
 
 /**
@@ -14,6 +15,9 @@ export const TagGroup: ForwardRefComponent<TagGroupProps> = React.forwardRef((pr
   const state = useTagGroup_unstable(props, ref);
 
   useTagGroupStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useTagGroupStyles_unstable')(state);
+
   return renderTagGroup_unstable(state, useTagGroupContextValues_unstable(state));
 });
 

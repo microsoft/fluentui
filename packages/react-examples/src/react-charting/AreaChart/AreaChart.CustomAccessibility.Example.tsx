@@ -176,6 +176,7 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
         </div>
       </>
