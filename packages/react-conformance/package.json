@@ -19,6 +19,12 @@
     "generate-api": "just-scripts generate-api",
     "type-check": "just-scripts type-check"
   },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
+  },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-jest": "*",
