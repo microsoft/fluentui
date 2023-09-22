@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { Button, makeStyles } from '@fluentui/react-components';
-import { usePrevious } from '@fluentui/react-utilities';
 import {
   InteractionTag,
   InteractionTagPrimary,
