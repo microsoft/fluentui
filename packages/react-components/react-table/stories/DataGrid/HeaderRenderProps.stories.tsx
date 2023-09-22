@@ -152,7 +152,7 @@ const columns: TableColumnDefinition<Item, HeaderRenderProps>[] = [
   }),
 ];
 
-export const SingleSelect = () => {
+export const HeaderRenderProps = () => {
   const defaultSelectedItems = React.useMemo(() => new Set([1]), []);
   const [isBold, { toggle }] = useBoolean(false);
 
@@ -175,15 +175,4 @@ export const SingleSelect = () => {
       </DataGrid>
     </>
   );
-};
-
-SingleSelect.parameters = {
-  docs: {
-    description: {
-      story: [
-        'To enable selection, the `selectionMode` prop needs to be set. The API surface is directly',
-        'equivalent to the usage of `useTableFeatures`.',
-      ].join('\n'),
-    },
-  },
 };
