@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider } from '@fluentui/react-breadcrumb-preview';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
+import breadcrumbItemBestPractices from './BreadcrumbItemBestPractices.md';
+import breadcrumbItemDescription from './BreadcrumbItemDescription.md';
+
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
 type Item = {
@@ -44,7 +47,7 @@ function renderItem(item: Item) {
   );
 }
 
-export const Default = () => {
+export const BreadcrumbItemExample = () => {
   return (
     <>
       <h2>BreadcrumbItem with overflow</h2>
@@ -59,4 +62,13 @@ export const Default = () => {
       </Breadcrumb>
     </>
   );
+};
+
+BreadcrumbItemExample.parameters = {
+  docs: {
+    description: {
+      breadcrumbItemDescription,
+      breadcrumbItemBestPractices,
+    },
+  },
 };

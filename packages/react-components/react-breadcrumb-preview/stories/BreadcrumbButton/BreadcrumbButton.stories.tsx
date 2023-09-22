@@ -8,6 +8,8 @@ import {
 } from '@fluentui/react-breadcrumb-preview';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular, GridDots20Regular } from '@fluentui/react-icons';
 import { ButtonProps, RadioGroup, Radio, Label } from '@fluentui/react-components';
+import breadcrumbButtonDescription from './BreadcrumbButtonDescription.md';
+import breadcrumbButtonBestPractices from './BreadcrumbButtonBestPractices.md';
 
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
@@ -170,7 +172,7 @@ function renderLink(el: Item, isLastItem: boolean = false) {
     </React.Fragment>
   );
 }
-export const Default = () => {
+export const BreadcrumbButtonExample = () => {
   const [appearance, setAppearance] = React.useState('transparent' as BreadcrumbProps['appearance']);
   return (
     <>
@@ -194,4 +196,13 @@ export const Default = () => {
       </Breadcrumb>
     </>
   );
+};
+
+BreadcrumbButtonExample.parameters = {
+  docs: {
+    description: {
+      breadcrumbButtonDescription,
+      breadcrumbButtonBestPractices,
+    },
+  },
 };
