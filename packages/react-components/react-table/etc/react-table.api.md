@@ -33,10 +33,10 @@ export type CellRenderFunction<TItem = unknown, UItem = unknown> = (column: Tabl
 export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined>;
 
 // @public
-export function createTableColumn<TItem, UItem>(options: CreateTableColumnOptions<TItem, UItem>): {
+export function createTableColumn<TItem, UItem = unknown>(options: CreateTableColumnOptions<TItem, UItem>): {
     columnId: TableColumnId;
     renderCell: (item: TItem) => ReactNode;
-    renderHeaderCell: (item?: UItem | undefined) => ReactNode;
+    renderHeaderCell: (props?: UItem | undefined) => ReactNode;
     compare: (a: TItem, b: TItem) => number;
 };
 
@@ -123,7 +123,7 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
 
 // @public
-export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
+export type DataGridHeaderCellProps<UItem = unknown> = Omit<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
@@ -157,14 +157,14 @@ export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'c
 };
 
 // @public
-export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
+export const DataGridRow: ForwardRefComponent<DataGridRowProps> & (<TItem, UItem = unknown>(props: DataGridRowProps<TItem, UItem>) => JSX.Element);
 
 // @public (undocumented)
 export const dataGridRowClassNames: SlotClassNames<DataGridRowSlots>;
 
 // @public
-export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
-    children: CellRenderFunction<TItem>;
+export type DataGridRowProps<TItem = unknown, UItem = unknown> = Omit<TableRowProps, 'children'> & Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
+    children: CellRenderFunction<TItem, UItem>;
 };
 
 // @public (undocumented)
@@ -357,7 +357,7 @@ export const tableClassName = "fui-Table";
 export const tableClassNames: SlotClassNames<TableSlots>;
 
 // @public (undocumented)
-export interface TableColumnDefinition<TItem, UItem> {
+export interface TableColumnDefinition<TItem, UItem = unknown> {
     // (undocumented)
     columnId: TableColumnId;
     // (undocumented)
@@ -365,7 +365,7 @@ export interface TableColumnDefinition<TItem, UItem> {
     // (undocumented)
     renderCell: (item: TItem) => React_2.ReactNode;
     // (undocumented)
-    renderHeaderCell: (item?: UItem) => React_2.ReactNode;
+    renderHeaderCell: (props?: UItem) => React_2.ReactNode;
 }
 
 // @public (undocumented)
