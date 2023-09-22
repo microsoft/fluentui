@@ -23,14 +23,14 @@ export const useInteractionTagSecondary_unstable = (
   const onClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props?.onClick?.(ev);
     if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
 
   const onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
 

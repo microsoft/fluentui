@@ -1,12 +1,13 @@
 import * as React from 'react';
 import { InteractionTagState } from '../components/InteractionTag/index';
+import { TagDismissHandler } from '../utils/types';
 
 export const InteractionTagContext = React.createContext<InteractionTagContextValue | undefined>(undefined);
 
 const interactionTagContextDefaultValue: InteractionTagContextValue = {
   appearance: 'filled',
   disabled: false,
-  handleTagDismiss: () => null,
+  handleTagDismiss: () => ({}),
   shape: 'rounded',
   size: 'medium',
   value: '',
@@ -17,7 +18,7 @@ const interactionTagContextDefaultValue: InteractionTagContextValue = {
  */
 export type InteractionTagContextValue<Value = string> = Required<
   Pick<InteractionTagState, 'appearance' | 'disabled' | 'shape' | 'size'> & {
-    handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
+    handleTagDismiss: TagDismissHandler<Value>;
     value?: Value;
   }
 >;
