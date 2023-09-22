@@ -15,14 +15,14 @@ export interface OnSelectionChangeData {
   selectedItems: Set<TableRowId>;
 }
 
-export interface CreateTableColumnOptions<TItem> extends Partial<TableColumnDefinition<TItem>> {
+export interface CreateTableColumnOptions<TItem, UItem> extends Partial<TableColumnDefinition<TItem, UItem>> {
   columnId: TableColumnId;
 }
 
-export interface TableColumnDefinition<TItem> {
+export interface TableColumnDefinition<TItem, UItem> {
   columnId: TableColumnId;
   compare: (a: TItem, b: TItem) => number;
-  renderHeaderCell: () => React.ReactNode;
+  renderHeaderCell: (item?: UItem) => React.ReactNode;
   renderCell: (item: TItem) => React.ReactNode;
 }
 
@@ -112,7 +112,7 @@ export interface TableRowData<TItem> {
   rowId: TableRowId;
 }
 
-export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
+export interface TableFeaturesState<TItem, UItem> extends Pick<UseTableFeaturesOptions<TItem, UItem>, 'items' | 'getRowId'> {
   /**
    * The row data for rendering
    * @param rowEnhancer - Enhances the row with extra user data
@@ -132,7 +132,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
   /**
    * Table columns
    */
-  columns: TableColumnDefinition<TItem>[];
+  columns: TableColumnDefinition<TItem, UItem>[];
   /**
    * State and actions to manage column resizing
    */
@@ -160,13 +160,13 @@ export interface UseTableSortOptions {
   onSortChange?(e: React.SyntheticEvent, state: SortState): void;
 }
 
-export interface UseTableFeaturesOptions<TItem> {
-  columns: TableColumnDefinition<TItem>[];
+export interface UseTableFeaturesOptions<TItem, UItem> {
+  columns: TableColumnDefinition<TItem, UItem>[];
   items: TItem[];
   getRowId?: (item: TItem) => TableRowId;
 }
 
-export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+export type TableFeaturePlugin = <TItem, UItem>(tableState: TableFeaturesState<TItem, UItem>) => TableFeaturesState<TItem, UItem>;
 
 export interface ColumnWidthState {
   columnId: TableColumnId;
