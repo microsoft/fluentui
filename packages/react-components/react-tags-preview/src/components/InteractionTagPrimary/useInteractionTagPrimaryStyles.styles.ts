@@ -9,7 +9,6 @@ import {
   useMediaStyles,
   usePrimaryTextStyles,
   useSecondaryTextBaseClassName,
-  useTagWithSecondaryTextContrastStyles,
 } from '../Tag/useTagStyles.styles';
 
 export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots> = {
