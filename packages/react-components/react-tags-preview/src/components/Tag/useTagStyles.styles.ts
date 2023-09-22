@@ -270,19 +270,20 @@ export const usePrimaryTextStyles = makeStyles({
  * Styles for root slot under windows high contrast mode when Tag is with secondary text.
  * Tag's primary text has negative margin that covers the border. Pseudo element is used to draw the border.
  */
-export const useTagWithSecondaryTextContrastStyles = makeStyles({
+const useTagWithSecondaryTextContrastStyles = makeStyles({
   rounded: {
     '@media (forced-colors: active)': {
       position: 'relative',
       '::before': {
         content: '""',
-        ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+        ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
         position: 'absolute',
         top: '-1px',
         left: '-1px',
         right: '-1px',
         bottom: '-1px',
-        ...shorthands.borderRadius(tokens.borderRadiusMedium),
+        borderTopLeftRadius: tokens.borderRadiusMedium,
+        borderTopRightRadius: tokens.borderRadiusMedium,
       },
     },
   },
@@ -291,7 +292,9 @@ export const useTagWithSecondaryTextContrastStyles = makeStyles({
       position: 'relative',
       '::before': {
         content: '""',
-        ...shorthands.border(tokens.strokeWidthThin, 'solid'),
+        ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+        ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
+        ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
         position: 'absolute',
         top: '-1px',
         left: '-1px',

@@ -185,6 +185,56 @@ const useRootWithSecondaryActionStyles = makeStyles({
   },
 });
 
+/**
+ * Styles for root slot under windows high contrast mode when Tag is with secondary text.
+ * Tag's primary text has negative margin that covers the border. Pseudo element is used to draw the border.
+ */
+const useRootWithSecondaryTextContrastStyles = makeStyles({
+  rounded: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        content: '""',
+        ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+        position: 'absolute',
+        top: '-1px',
+        left: '-1px',
+        right: '-1px',
+        bottom: '-1px',
+        borderTopLeftRadius: tokens.borderRadiusMedium,
+        borderTopRightRadius: tokens.borderRadiusMedium,
+      },
+    },
+  },
+  circular: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        content: '""',
+        ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+        ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
+        position: 'absolute',
+        top: '-1px',
+        left: '-1px',
+        right: '-1px',
+        bottom: '-1px',
+        borderTopLeftRadius: tokens.borderRadiusCircular,
+        borderBottomLeftRadius: tokens.borderRadiusCircular,
+      },
+    },
+  },
+  circularWithoutSecondaryAction: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+        borderTopRightRadius: tokens.borderRadiusCircular,
+        borderBottomRightRadius: tokens.borderRadiusCircular,
+      },
+    },
+  },
+});
+
 export const useInteractionTagPrimaryStyles_unstable = (
   state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryState => {
@@ -199,7 +249,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
 
-  const tagWithSecondaryTextContrastStyles = useTagWithSecondaryTextContrastStyles();
+  const tagWithSecondaryTextContrastStyles = useRootWithSecondaryTextContrastStyles();
 
   const { shape, size, appearance } = state;
 
@@ -216,6 +266,10 @@ export const useInteractionTagPrimaryStyles_unstable = (
     state.hasSecondaryAction && rootWithSecondaryActionStyles[size],
 
     state.secondaryText && tagWithSecondaryTextContrastStyles[shape],
+    state.secondaryText &&
+      shape === 'circular' &&
+      !state.hasSecondaryAction &&
+      tagWithSecondaryTextContrastStyles.circularWithoutSecondaryAction,
 
     state.root.className,
   );
