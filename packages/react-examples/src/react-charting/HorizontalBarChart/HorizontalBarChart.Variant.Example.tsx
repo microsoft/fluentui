@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { HorizontalBarChart, HorizontalBarChartVariant, IChartProps } from '@fluentui/react-charting';
+import { ChartDataMode, HorizontalBarChart, HorizontalBarChartVariant, IChartProps } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IHBCVariantExampleState {
   hideLabels: boolean;
+  chartMode: ChartDataMode;
 }
 
 export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVariantExampleState> {
@@ -13,6 +15,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
 
     this.state = {
       hideLabels: false,
+      chartMode: 'default',
     };
   }
 
@@ -108,10 +111,21 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           onChange={this._onCheckChange}
           styles={{ root: { marginBottom: '20px' } }}
         />
+        <Toggle
+          label="Show chart mode in percentage"
+          onText="Chart mode in percentage"
+          offText="Chart mode default"
+          onChange={this._onChangeChartMode}
+        />
         <HorizontalBarChart
           data={data}
-          variant={HorizontalBarChartVariant.AbsoluteScale}
+          variant={
+            this.state.chartMode !== 'percentage'
+              ? HorizontalBarChartVariant.AbsoluteScale
+              : HorizontalBarChartVariant.PartToWhole
+          }
           hideLabels={this.state.hideLabels}
+          chartDataMode={this.state.chartMode}
         />
       </>
     );
@@ -119,5 +133,9 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
 
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideLabels: checked });
+  };
+
+  private _onChangeChartMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ chartMode: checked ? ('percentage' as ChartDataMode) : ('default' as ChartDataMode) });
   };
 }
