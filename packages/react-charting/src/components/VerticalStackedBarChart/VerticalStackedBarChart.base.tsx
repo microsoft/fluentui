@@ -454,7 +454,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return dataset;
   }
 
-  private _getMargins = (margins: IMargins) => {
+  public _getMargins = (margins: IMargins) => {
     this.margins = margins;
   };
 
@@ -1010,7 +1010,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
-  private _getDomainMargins = (containerWidth: number): IMargins => {
+  public _getDomainMargins = (containerWidth: number): IMargins => {
     if (this._xAxisType !== XAxisTypes.NumericAxis) {
       /** Total width available to render the bars */
       const totalWidth =
