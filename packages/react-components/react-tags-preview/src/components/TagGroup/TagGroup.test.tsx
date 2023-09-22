@@ -8,6 +8,11 @@ describe('TagGroup', () => {
   isConformant({
     Component: TagGroup,
     displayName: 'TagGroup',
+    testOptions: {
+      'consistent-callback-args': {
+        ignoreProps: ['onDismiss'], // onDismiss uses generics, this test does not support that
+      },
+    },
   });
 
   it('should invoke onDismiss when clicking on children Tag', () => {
