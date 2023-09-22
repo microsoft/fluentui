@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Adding optional props to the render function for column headers in react-table",
+  "packageName": "@fluentui/react-table",
+  "email": "msnyder@microsoft.com",
+  "dependentChangeType": "patch"
+}
