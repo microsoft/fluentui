@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { Tag, TagGroup, TagGroupProps } from '@fluentui/react-tags-preview';
 import { Button, makeStyles } from '@fluentui/react-components';
-import { usePrevious } from '@fluentui/react-utilities';
 
 const useStyles = makeStyles({
   container: {
@@ -23,22 +22,20 @@ const initialTags = [
 /**
  * focus management for the reset button
  */
-const useResetExample = (visibleTags: typeof initialTags) => {
+const useResetExample = (visibleTagsLength: number) => {
   const resetButtonRef = React.useRef<HTMLButtonElement>(null);
   const firstTagRef = React.useRef<HTMLButtonElement>(null);
 
+  const prevVisibleTagsLengthRef = React.useRef<number>(visibleTagsLength);
   React.useEffect(() => {
-    if (visibleTags.length === 0) {
+    if (visibleTagsLength === 0) {
       resetButtonRef.current?.focus();
-    }
-  }, [visibleTags.length]);
-
-  const prevVisibleTags = usePrevious(visibleTags);
-  React.useEffect(() => {
-    if (visibleTags.length && prevVisibleTags?.length === 0) {
+    } else if (prevVisibleTagsLengthRef.current === 0) {
       firstTagRef.current?.focus();
     }
-  }, [prevVisibleTags?.length, visibleTags.length]);
+
+    prevVisibleTagsLengthRef.current = visibleTagsLength;
+  }, [visibleTagsLength]);
 
   return { firstTagRef, resetButtonRef };
 };
@@ -49,7 +46,7 @@ export const Dismiss = () => {
     setVisibleTags([...visibleTags].filter(tag => tag.value !== value));
   };
   const resetItems = () => setVisibleTags(initialTags);
-  const { firstTagRef, resetButtonRef } = useResetExample(visibleTags);
+  const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
 
   const styles = useStyles();
 
