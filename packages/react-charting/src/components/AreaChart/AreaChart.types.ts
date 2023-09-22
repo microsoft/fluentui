@@ -59,12 +59,6 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Optimize area chart rendering for large data set.
    */
   optimizeLargeData?: boolean;
-
-  /**
-   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default false
-   */
-  enableReflow?: boolean;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}

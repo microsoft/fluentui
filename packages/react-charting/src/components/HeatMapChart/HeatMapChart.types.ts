@@ -104,12 +104,6 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
-
-  /**
-   * Prop to disable shrinking of the chart beyond a certain limit and enable scrolling when the chart overflows
-   * @default false
-   */
-  enableReflow?: boolean;
 }
 export interface IHeatMapChartStyleProps extends ICartesianChartStyleProps {}
 export interface IHeatMapChartStyles {
