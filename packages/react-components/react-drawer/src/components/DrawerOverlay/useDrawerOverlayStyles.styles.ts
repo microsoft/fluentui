@@ -6,6 +6,7 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
 import {
   drawerCSSVars,
+  getDrawerDefaultStyles,
   useDrawerBaseClassNames,
   useDrawerDurationStyles,
 } from '../../shared/useDrawerBaseStyles.styles';
@@ -20,6 +21,7 @@ export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
  */
 const useDrawerRootStyles = makeStyles({
   root: {
+    ...getDrawerDefaultStyles(),
     position: 'fixed',
     top: 0,
     bottom: 0,
