@@ -42,14 +42,14 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
   const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
     if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, { dismissedTagValue: value });
+      handleTagDismiss?.(ev, { value });
     }
   });
 
   const dismissOnKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, { dismissedTagValue: value });
+      handleTagDismiss?.(ev, { value });
     }
   });
 

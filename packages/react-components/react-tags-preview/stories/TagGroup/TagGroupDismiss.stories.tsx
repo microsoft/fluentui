@@ -17,8 +17,8 @@ const initialTags = [
 
 const DismissWithTags = () => {
   const [visibleTags, setVisibleTags] = React.useState(initialTags);
-  const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
-    setVisibleTags([...visibleTags].filter(tag => tag.value !== dismissedTagValue));
+  const removeItem: TagGroupProps['onDismiss'] = (_e, { value }) => {
+    setVisibleTags([...visibleTags].filter(tag => tag.value !== value));
   };
 
   return (
@@ -34,8 +34,8 @@ const DismissWithTags = () => {
 
 const DismissWithInteractionTags = () => {
   const [visibleTags, setVisibleTags] = React.useState(initialTags);
-  const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
-    setVisibleTags([...visibleTags].filter(tag => tag.value !== dismissedTagValue));
+  const removeItem: TagGroupProps['onDismiss'] = (_e, { value }) => {
+    setVisibleTags([...visibleTags].filter(tag => tag.value !== value));
   };
 
   return (

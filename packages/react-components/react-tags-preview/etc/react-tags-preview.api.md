@@ -109,7 +109,7 @@ export const tagClassNames: SlotClassNames<TagSlots>;
 
 // @public (undocumented)
 export type TagDismissData<Value = TagValue> = {
-    dismissedTagValue: Value;
+    value: Value;
 };
 
 // @public (undocumented)

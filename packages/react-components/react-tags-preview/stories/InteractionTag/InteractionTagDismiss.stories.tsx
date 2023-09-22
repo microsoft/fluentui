@@ -16,8 +16,8 @@ const initialTags = [
 
 export const Dismiss = () => {
   const [visibleTags, setVisibleTags] = React.useState(initialTags);
-  const removeItem: TagGroupProps['onDismiss'] = (_e, { dismissedTagValue }) => {
-    setVisibleTags([...visibleTags].filter(tag => tag.value !== dismissedTagValue));
+  const removeItem: TagGroupProps['onDismiss'] = (_e, { value }) => {
+    setVisibleTags([...visibleTags].filter(tag => tag.value !== value));
   };
 
   return (

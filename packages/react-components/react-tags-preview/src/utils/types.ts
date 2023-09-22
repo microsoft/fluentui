@@ -7,7 +7,7 @@ export type TagSize = 'extra-small' | 'small' | 'medium';
 export type TagValue = string;
 
 export type TagDismissData<Value = TagValue> = {
-  dismissedTagValue: Value;
+  value: Value;
 };
 
 export type TagDismissEvent = React.MouseEvent | React.KeyboardEvent;
