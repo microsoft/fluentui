@@ -13,7 +13,7 @@ import { defaultColumnSizingState } from './useTableColumnSizing';
 
 const defaultRowEnhancer: RowEnhancer<unknown, TableRowData<unknown>> = row => row;
 
-export const defaultTableState: TableFeaturesState<unknown> = {
+export const defaultTableState: TableFeaturesState<unknown, unknown> = {
   selection: defaultTableSelectionState,
   sort: defaultTableSortState,
   getRows: () => [],
@@ -25,17 +25,17 @@ export const defaultTableState: TableFeaturesState<unknown> = {
   tableRef: React.createRef<HTMLDivElement>(),
 };
 
-export function useTableFeatures<TItem>(
-  options: UseTableFeaturesOptions<TItem>,
+export function useTableFeatures<TItem, UItem>(
+  options: UseTableFeaturesOptions<TItem, UItem>,
   plugins: TableFeaturePlugin[] = [],
-): TableFeaturesState<TItem> {
+): TableFeaturesState<TItem, UItem> {
   const { items, getRowId, columns } = options;
 
   const getRows = <TRowState extends TableRowData<TItem>>(
     rowEnhancer = defaultRowEnhancer as RowEnhancer<TItem, TRowState>,
   ) => items.map((item, i) => rowEnhancer({ item, rowId: getRowId?.(item) ?? i }));
 
-  const initialState: TableFeaturesState<TItem> = {
+  const initialState: TableFeaturesState<TItem, UItem> = {
     getRowId,
     items,
     columns,

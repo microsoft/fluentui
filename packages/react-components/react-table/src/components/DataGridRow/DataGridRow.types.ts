@@ -13,8 +13,8 @@ export type DataGridRowSlots = TableRowSlots & {
   selectionCell?: Slot<typeof TableSelectionCell>;
 };
 
-export type CellRenderFunction<TItem = unknown> = (
-  column: TableColumnDefinition<TItem>,
+export type CellRenderFunction<TItem = unknown, UItem = unknown> = (
+  column: TableColumnDefinition<TItem, UItem>,
   dataGridContextValue: DataGridContextValue,
 ) => React.ReactNode;
 
@@ -33,6 +33,6 @@ export type DataGridRowState = TableRowState &
   ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    columnDefs: TableColumnDefinition<any>[];
+    columnDefs: TableColumnDefinition<any, any>[];
     dataGridContextValue: DataGridContextValue;
   };

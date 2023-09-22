@@ -20,16 +20,16 @@ export const defaultTableSortState: TableSortState<unknown> = {
   toggleColumnSort: noop,
 };
 
-export function useTableSort<TItem>(options: UseTableSortOptions) {
+export function useTableSort<TItem, UItem>(options: UseTableSortOptions) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableFeaturesState<TItem>) => useTableSortState(tableState, options);
+  return (tableState: TableFeaturesState<TItem, UItem>) => useTableSortState(tableState, options);
 }
 
-export function useTableSortState<TItem>(
-  tableState: TableFeaturesState<TItem>,
+export function useTableSortState<TItem, UItem>(
+  tableState: TableFeaturesState<TItem, UItem>,
   options: UseTableSortOptions,
-): TableFeaturesState<TItem> {
+): TableFeaturesState<TItem, UItem> {
   const { columns } = tableState;
   const { sortState, defaultSortState, onSortChange } = options;
 
