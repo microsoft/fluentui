@@ -271,7 +271,6 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
             }}
             getCalloutDescriptionMessage={this._calculateCalloutDescription}
             enablePerfOptimization={true}
-            enableReflow={true}
           />
         </div>
       </>

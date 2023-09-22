@@ -234,7 +234,6 @@ export class LineChartEventsExample extends React.Component<{}, ILineChartEvents
           height={this.state.height}
           width={this.state.width}
           enablePerfOptimization={true}
-          enableReflow={true}
         />
       </div>
     );
