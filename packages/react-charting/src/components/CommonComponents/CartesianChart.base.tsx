@@ -163,6 +163,45 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     cancelAnimationFrame(this._reqID);
   }
 
+  public shouldComponentUpdate(nextProps: Readonly<IModifiedCartesianChartProps>): boolean {
+    let isUpdate: boolean = false;
+    if (nextProps.xAxisTitle === undefined && nextProps.yAxisTitle === undefined) {
+      this.margins = {
+        top: nextProps.margins?.top ?? 20,
+        bottom: nextProps.margins?.bottom ?? 35,
+        right: this._isRtl
+          ? nextProps.margins?.left ?? 40
+          : nextProps.margins?.right ?? nextProps?.secondaryYScaleOptions
+          ? 40
+          : 20,
+        left: this._isRtl
+          ? nextProps.margins?.right ?? nextProps?.secondaryYScaleOptions
+            ? 40
+            : 20
+          : nextProps.margins?.left ?? 40,
+      };
+      isUpdate = true;
+    }
+    if (nextProps.xAxisTitle !== undefined && nextProps.xAxisTitle !== '') {
+      this.margins.bottom! = nextProps.margins?.bottom ?? 55;
+      isUpdate = true;
+    }
+    if (nextProps.yAxisTitle !== undefined && nextProps.yAxisTitle !== '') {
+      this.margins.left! = this._isRtl
+        ? nextProps.margins?.right ?? nextProps?.secondaryYAxistitle
+          ? 60
+          : 40
+        : nextProps.margins?.left ?? 60;
+      this.margins.right! = this._isRtl
+        ? nextProps.margins?.left ?? 60
+        : nextProps.margins?.right ?? nextProps?.secondaryYAxistitle
+        ? 60
+        : 40;
+      isUpdate = true;
+    }
+    return isUpdate;
+  }
+
   public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();

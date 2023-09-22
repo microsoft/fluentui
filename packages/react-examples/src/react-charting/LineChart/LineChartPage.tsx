@@ -15,6 +15,7 @@ import { LineChartCustomAccessibilityExample } from './LineChart.CustomAccessibi
 import { LineChartGapsExample } from './LineChart.Gaps.Example';
 import { LineChartLargeDataExample } from './LineChart.LargeData.Example';
 import { LineChartCustomLocaleDateAxisExample } from './LineChart.CustomLocaleDateAxis.Example';
+import { LineChartAxisTitleExample } from './LineChart.AxisTitle.Example';
 
 const LineChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.Basic.Example.tsx') as string;
@@ -32,6 +33,8 @@ const LineChartLargeDataExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.LargeData.Example.tsx') as string;
 const LineChartCustomLocaleDateAxisExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.CustomLocaleDateAxis.Example.tsx') as string;
+const LineChartAxisTitleExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/LineChart.AxisTitle.Example.tsx') as string;
 
 // All line charts locale is impacted.
 
@@ -66,6 +69,9 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             </ExampleCard>
             <ExampleCard title="LineChart custom date axis locale" code={LineChartCustomLocaleDateAxisExampleCode}>
               <LineChartCustomLocaleDateAxisExample />
+            </ExampleCard>
+            <ExampleCard title="LineChart axis title" code={LineChartAxisTitleExampleCode}>
+              <LineChartAxisTitleExample />
             </ExampleCard>
           </div>
         }
