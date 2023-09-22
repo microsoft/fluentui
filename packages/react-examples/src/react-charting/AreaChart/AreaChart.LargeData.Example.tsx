@@ -211,6 +211,7 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
               allowFocusOnLegends: true,
             }}
             optimizeLargeData
+            enableReflow={true}
           />
         </div>
       </>

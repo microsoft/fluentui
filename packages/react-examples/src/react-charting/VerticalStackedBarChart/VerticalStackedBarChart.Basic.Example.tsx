@@ -259,6 +259,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
               allowFocusOnLegends: true,
             }}
             hideLabels={this.state.hideLabels}
+            enableReflow={true}
           />
         </div>
       </>
