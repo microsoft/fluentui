@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: icon spacing in Breadcrumb",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

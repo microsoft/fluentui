@@ -1,8 +1,45 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2023 17:47:38 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.10)
+
+Wed, 20 Sep 2023 17:47:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.9..@fluentui/react-jsx-runtime_v9.0.10)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+
+## [9.0.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.9)
+
+Wed, 20 Sep 2023 14:59:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.8..@fluentui/react-jsx-runtime_v9.0.9)
+
+### Patches
+
+- fix: static children problem on render function ([PR #29162](https://github.com/microsoft/fluentui/pull/29162) by bernardo.sunderhus@gmail.com)
+
+## [9.0.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.8)
+
+Thu, 14 Sep 2023 16:44:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.7..@fluentui/react-jsx-runtime_v9.0.8)
+
+### Patches
+
+- fix: strip comments for JSX pragma ([PR #29145](https://github.com/microsoft/fluentui/pull/29145) by olfedias@microsoft.com)
+
+## [9.0.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.7)
+
+Tue, 12 Sep 2023 08:51:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.6..@fluentui/react-jsx-runtime_v9.0.7)
+
+### Patches
+
+- fix: make /jsx-runtime compatible with Webpack 4 ([PR #29129](https://github.com/microsoft/fluentui/pull/29129) by olfedias@microsoft.com)
+- bugfix: fix missing .d.ts types on build ([PR #29092](https://github.com/microsoft/fluentui/pull/29092) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.6)
 

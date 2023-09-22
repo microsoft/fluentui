@@ -18,6 +18,10 @@ import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromEleme
  * @param ref - reference to root HTMLElement of TreeItem
  */
 export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDivElement>): TreeItemState {
+  const treeType = useTreeContext_unstable(ctx => ctx.treeType);
+  if (treeType === 'flat') {
+    warnIfNoProperPropsFlatTreeItem(props);
+  }
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
   const contextLevel = useTreeContext_unstable(ctx => ctx.level);
 
@@ -253,4 +257,24 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       { elementType: 'div' },
     ),
   };
+}
+
+function warnIfNoProperPropsFlatTreeItem(props: Pick<TreeItemProps, 'aria-setsize' | 'aria-posinset' | 'aria-level'>) {
+  if (process.env.NODE_ENV !== 'production') {
+    if (
+      props['aria-posinset'] === undefined ||
+      props['aria-setsize'] === undefined ||
+      props['aria-level'] === undefined
+    ) {
+      // eslint-disable-next-line no-console
+      console.error(/** #__DE-INDENT__ */ `
+        @fluentui/react-tree [${useTreeItem_unstable.name}]:
+        A flat treeitem must have "aria-posinset", "aria-setsize", "aria-level" to ensure a11y and navigation.
+
+        - "aria-posinset": the position of this treeitem in the current level of the tree.
+        - "aria-setsize": the number of siblings in this level of the tree.
+        - "aria-level": the current level of the treeitem.
+      `);
+    }
+  }
 }
