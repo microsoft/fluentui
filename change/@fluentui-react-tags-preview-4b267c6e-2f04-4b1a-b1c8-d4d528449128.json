@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "chore: add cypress tests",
+  "type": "minor",
+  "comment": "feat: add custom style hooks for tag components",
   "packageName": "@fluentui/react-tags-preview",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"

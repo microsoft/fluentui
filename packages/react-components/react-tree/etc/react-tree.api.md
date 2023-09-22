@@ -135,6 +135,7 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
 export type TreeContextValue = {
+    treeType: 'nested' | 'flat';
     level: number;
     selectionMode: 'none' | SelectionMode_2;
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';

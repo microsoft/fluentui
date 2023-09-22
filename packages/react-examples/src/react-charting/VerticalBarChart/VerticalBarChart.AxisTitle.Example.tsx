@@ -227,6 +227,7 @@ export class VerticalBarChartAxisTitleExample extends React.Component<IVerticalB
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
+            enableReflow={true}
           />
         </div>
       </>
