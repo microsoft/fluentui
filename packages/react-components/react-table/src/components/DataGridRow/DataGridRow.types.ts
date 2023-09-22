@@ -21,9 +21,9 @@ export type CellRenderFunction<TItem = unknown, UItem = unknown> = (
 /**
  * DataGridRow Props
  */
-export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> &
+export type DataGridRowProps<TItem = unknown, UItem = unknown> = Omit<TableRowProps, 'children'> &
   Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
-    children: CellRenderFunction<TItem>;
+    children: CellRenderFunction<TItem, UItem>;
   };
 
 /**

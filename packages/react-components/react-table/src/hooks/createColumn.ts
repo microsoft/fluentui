@@ -25,7 +25,7 @@ const defaultRenderHeaderCell = () => {
  * @param options - column definition options
  * @returns - column definition with defaults
  */
-export function createTableColumn<TItem, UItem>(options: CreateTableColumnOptions<TItem, UItem>) {
+export function createTableColumn<TItem, UItem = unknown>(options: CreateTableColumnOptions<TItem, UItem>) {
   const {
     columnId,
     renderCell = defaultRenderCell,

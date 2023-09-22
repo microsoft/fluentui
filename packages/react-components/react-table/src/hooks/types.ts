@@ -19,10 +19,10 @@ export interface CreateTableColumnOptions<TItem, UItem> extends Partial<TableCol
   columnId: TableColumnId;
 }
 
-export interface TableColumnDefinition<TItem, UItem> {
+export interface TableColumnDefinition<TItem, UItem = unknown> {
   columnId: TableColumnId;
   compare: (a: TItem, b: TItem) => number;
-  renderHeaderCell: (item?: UItem) => React.ReactNode;
+  renderHeaderCell: (props?: UItem) => React.ReactNode;
   renderCell: (item: TItem) => React.ReactNode;
 }
 
@@ -112,7 +112,8 @@ export interface TableRowData<TItem> {
   rowId: TableRowId;
 }
 
-export interface TableFeaturesState<TItem, UItem> extends Pick<UseTableFeaturesOptions<TItem, UItem>, 'items' | 'getRowId'> {
+export interface TableFeaturesState<TItem, UItem>
+  extends Pick<UseTableFeaturesOptions<TItem, UItem>, 'items' | 'getRowId'> {
   /**
    * The row data for rendering
    * @param rowEnhancer - Enhances the row with extra user data
@@ -166,7 +167,9 @@ export interface UseTableFeaturesOptions<TItem, UItem> {
   getRowId?: (item: TItem) => TableRowId;
 }
 
-export type TableFeaturePlugin = <TItem, UItem>(tableState: TableFeaturesState<TItem, UItem>) => TableFeaturesState<TItem, UItem>;
+export type TableFeaturePlugin = <TItem, UItem>(
+  tableState: TableFeaturesState<TItem, UItem>,
+) => TableFeaturesState<TItem, UItem>;
 
 export interface ColumnWidthState {
   columnId: TableColumnId;
