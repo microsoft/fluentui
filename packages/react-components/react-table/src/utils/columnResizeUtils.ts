@@ -14,8 +14,8 @@ const DEFAULT_MIN_WIDTH = 100;
  * @returns
  */
 
-export function columnDefinitionsToState<T>(
-  columns: TableColumnDefinition<T>[],
+export function columnDefinitionsToState<T, U>(
+  columns: TableColumnDefinition<T, U>[],
   state: ColumnWidthState[] = [],
   columnSizingOptions: TableColumnSizingOptions = {},
 ): ColumnWidthState[] {

@@ -23,7 +23,7 @@ export type DataGridContextValues = TableContextValues & {
 // Use any here since we can't know the user types
 // The user is responsible for narrowing the type downstream
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type DataGridContextValue = TableFeaturesState<any> & {
+export type DataGridContextValue = TableFeaturesState<any, any> & {
   /**
    * How focus navigation will work in the datagrid
    * @default cell
@@ -93,7 +93,7 @@ export type DataGridProps = TableProps &
 /**
  * State used in rendering DataGrid
  */
-export type DataGridState = TableState & { tableState: TableFeaturesState<unknown> } & Pick<
+export type DataGridState = TableState & { tableState: TableFeaturesState<unknown, unknown> } & Pick<
     DataGridContextValue,
     | 'focusMode'
     | 'selectableRows'
