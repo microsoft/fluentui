@@ -6,6 +6,7 @@ export {
   useRadioGroup_unstable,
 } from './RadioGroup';
 export type {
+  RadioGroupImperativeRef,
   RadioGroupContextValue,
   RadioGroupContextValues,
   RadioGroupOnChangeData,

@@ -601,6 +601,7 @@ export {
   useRadioStyles_unstable,
 } from '@fluentui/react-radio';
 export type {
+  RadioGroupImperativeRef,
   RadioGroupContextValue,
   RadioGroupContextValues,
   RadioGroupOnChangeData,

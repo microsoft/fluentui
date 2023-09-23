@@ -1,6 +1,13 @@
 import * as React from 'react';
 import { useFieldControlProps_unstable } from '@fluentui/react-field';
-import { getNativeElementProps, isHTMLElement, useEventCallback, useId, slot } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  isHTMLElement,
+  useEventCallback,
+  useId,
+  slot,
+  useMergedRefs,
+} from '@fluentui/react-utilities';
 import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
 /**
@@ -18,7 +25,34 @@ export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HT
 
   const generatedName = useId('radiogroup-');
 
-  const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange, required } = props;
+  const {
+    name = generatedName,
+    value,
+    defaultValue,
+    disabled,
+    imperativeRef,
+    layout = 'vertical',
+    onChange,
+    required,
+  } = props;
+
+  const rootRef = useMergedRefs(ref);
+
+  React.useImperativeHandle(
+    imperativeRef,
+    () => ({
+      focusSelected: () => {
+        if (rootRef.current) {
+          const target =
+            rootRef.current.querySelector<HTMLElement>('input[type=radio]:enabled:checked') ||
+            rootRef.current.querySelector<HTMLElement>('input[type=radio]:enabled');
+
+          target?.focus();
+        }
+      },
+    }),
+    [rootRef],
+  );
 
   return {
     layout,
@@ -31,7 +65,7 @@ export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HT
       root: 'div',
     },
     root: {
-      ref,
+      ref: rootRef,
       role: 'radiogroup',
       ...slot.always(getNativeElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']), {
         elementType: 'div',

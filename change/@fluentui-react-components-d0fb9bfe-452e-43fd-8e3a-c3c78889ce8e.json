@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add RadioGroup focusSelected API",
+  "packageName": "@fluentui/react-components",
+  "email": "behowell@microsoft.com",
+  "dependentChangeType": "patch"
+}

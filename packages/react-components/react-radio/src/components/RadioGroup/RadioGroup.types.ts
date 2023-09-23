@@ -51,6 +51,11 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
    * Require a selection in this group. Adds the `required` prop to all child Radio items.
    */
   required?: boolean;
+
+  /**
+   * Ref to the imperative API for RadioGroup. Allows setting focus to the selected radio item.
+   */
+  imperativeRef?: React.Ref<RadioGroupImperativeRef>;
 };
 
 /**
@@ -61,6 +66,17 @@ export type RadioGroupOnChangeData = {
    * The value of the newly selected Radio item.
    */
   value: string;
+};
+
+/**
+ * Imperative API for RadioGroup.
+ */
+export type RadioGroupImperativeRef = {
+  /**
+   * Calls focus() on the selected radio item inside this RadioGroup.
+   * If none are selected, calls focus() on the first radio item.
+   */
+  focusSelected: () => void;
 };
 
 /**
