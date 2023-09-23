@@ -120,6 +120,7 @@ export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<
   getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(
     rowEnhancer?: RowEnhancer<TItem, TRowState>,
   ) => TRowState[];
+
   /**
    * State and actions to manage row selection
    */

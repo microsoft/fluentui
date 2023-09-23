@@ -210,6 +210,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
         </div>
       </>
