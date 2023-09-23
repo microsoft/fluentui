@@ -36,7 +36,7 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.4",
     "@fluentui/react-field": "^9.1.29",
-    "@fluentui/react-icons": "^2.0.207",
+    "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-jsx-runtime": "^9.0.10",
     "@fluentui/react-shared-contexts": "^9.8.1",
     "@fluentui/react-theme": "^9.1.12",
