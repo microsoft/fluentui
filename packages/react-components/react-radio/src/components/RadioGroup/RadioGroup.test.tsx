@@ -5,6 +5,7 @@ import { Field } from '@fluentui/react-field';
 import { isConformant } from '../../testing/isConformant';
 import { Radio } from '../../Radio';
 import { RadioGroup } from './RadioGroup';
+import { RadioGroupImperativeRef } from './RadioGroup.types';
 
 describe('RadioGroup', () => {
   isConformant({
@@ -278,5 +279,42 @@ describe('RadioGroup', () => {
     expect(radiogroup.getAttribute('aria-labelledby')).toEqual(label.id);
     expect(radiogroup.getAttribute('aria-describedby')).toEqual(message.id);
     expect(radiogroup.getAttribute('aria-required')).toEqual('true');
+  });
+
+  it('focuses the selected radio item when focusSelected is called', () => {
+    const groupRef = React.createRef<RadioGroupImperativeRef>();
+
+    const { getByDisplayValue } = render(
+      <RadioGroup imperativeRef={groupRef}>
+        <Radio value="a" />
+        <Radio value="selectedItem" checked />
+        <Radio value="c" />
+      </RadioGroup>,
+    );
+
+    expect(document.activeElement).not.toBe(getByDisplayValue('selectedItem'));
+
+    groupRef.current?.focusSelected();
+
+    expect(document.activeElement).toBe(getByDisplayValue('selectedItem'));
+  });
+
+  it('focuses the first enabled radio item when focusSelected is called and there is no selected item', () => {
+    const groupRef = React.createRef<RadioGroupImperativeRef>();
+
+    const { getByDisplayValue } = render(
+      <RadioGroup imperativeRef={groupRef}>
+        <Radio value="a" disabled />
+        <Radio value="b" disabled />
+        <Radio value="firstEnabledItem" />
+        <Radio value="d" />
+      </RadioGroup>,
+    );
+
+    expect(document.activeElement).not.toBe(getByDisplayValue('firstEnabledItem'));
+
+    groupRef.current?.focusSelected();
+
+    expect(document.activeElement).toBe(getByDisplayValue('firstEnabledItem'));
   });
 });
