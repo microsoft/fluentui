@@ -8,7 +8,7 @@ import type { DrawerOverlayState, DrawerOverlayInternalSlots } from './DrawerOve
  * Render the final JSX of DrawerOverlay
  */
 export const renderDrawerOverlay_unstable = (state: DrawerOverlayState) => {
-  if (!state.dialog || !state.motion.canRender) {
+  if (!state.motion.canRender) {
     return null;
   }
 

@@ -1,17 +1,27 @@
-import { DialogProps, DialogSurfaceProps, DialogSurfaceSlots } from '@fluentui/react-dialog';
+import type { DialogProps } from '@fluentui/react-dialog';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { MotionState } from '@fluentui/react-motion-preview';
 
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
+import { DrawerOverlaySurfaceProps } from '../DrawerOverlaySurface/DrawerOverlaySurface.types';
 
 /**
  * DrawerOverlay slots
  */
-export type DrawerOverlaySlots = DialogSurfaceSlots & {
+export type DrawerOverlaySlots = {
   /**
    * Slot for the root element.
    */
-  root: Slot<DialogSurfaceProps>;
+  root: Slot<DrawerOverlaySurfaceProps>;
+
+  /**
+   * Dimmed background of drawer.
+   * The default backdrop is rendered as a `<div>` with styling.
+   * This slot expects a `<div>` element which will replace the default backdrop.
+   * The backdrop should have `aria-hidden="true"`.
+   *
+   */
+  backdrop?: Slot<'div'>;
 };
 
 /**
@@ -37,6 +47,9 @@ export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> &
 export type DrawerOverlayState = Omit<ComponentState<DrawerOverlayInternalSlots>, 'backdrop'> &
   Required<
     DrawerBaseState & {
+      /**
+       * Motion state for the drawer backdrop.
+       */
       backdropMotion: MotionState<HTMLDivElement>;
     }
   >;

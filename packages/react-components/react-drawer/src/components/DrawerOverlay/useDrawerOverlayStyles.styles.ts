@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -19,18 +19,17 @@ export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
 /**
  * Styles for the root slot
  */
+const useDrawerResetStyles = makeResetStyles({
+  ...drawerDefaultStyles,
+  position: 'fixed',
+  top: 0,
+  bottom: 0,
+  opacity: 0,
+  boxShadow: '0px transparent',
+  transitionProperty: 'transform, box-shadow, opacity',
+  willChange: 'transform, box-shadow, opacity',
+});
 const useDrawerRootStyles = makeStyles({
-  root: {
-    ...drawerDefaultStyles,
-    position: 'fixed',
-    top: 0,
-    bottom: 0,
-    opacity: 0,
-    boxShadow: '0px transparent',
-    transitionProperty: 'transform, box-shadow, opacity',
-    willChange: 'transform, box-shadow, opacity',
-  },
-
   /* Positioning */
   start: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
@@ -68,6 +67,7 @@ const useBackdropMotionStyles = makeStyles({
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
   const baseClassNames = useDrawerBaseClassNames(state);
+  const resetStyles = useDrawerResetStyles();
   const rootStyles = useDrawerRootStyles();
   const backdropMotionStyles = useBackdropMotionStyles();
   const durationStyles = useDrawerDurationStyles();
@@ -77,7 +77,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
     baseClassNames,
-    rootStyles.root,
+    resetStyles,
     rootStyles[state.position],
     state.motion.active && rootStyles.visible,
     state.root.className,
