@@ -7,7 +7,18 @@ import {
   InteractionTagPrimary,
   InteractionTagSecondary,
 } from '@fluentui/react-tags-preview';
-import { makeStyles } from '@fluentui/react-components';
+import { Button, makeStyles } from '@fluentui/react-components';
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    rowGap: '10px',
+  },
+  resetButton: {
+    width: 'fit-content',
+  },
+});
 
 const initialTags = [
   { value: '1', children: 'Tag 1' },
@@ -15,20 +26,64 @@ const initialTags = [
   { value: '3', children: 'Tag 3' },
 ];
 
+/**
+ * focus management for the reset button
+ */
+const useResetExample = (visibleTagsLength: number) => {
+  const resetButtonRef = React.useRef<HTMLButtonElement>(null);
+  const firstTagRef = React.useRef<HTMLButtonElement>(null);
+
+  const prevVisibleTagsLengthRef = React.useRef<number>(visibleTagsLength);
+  React.useEffect(() => {
+    if (visibleTagsLength === 0) {
+      resetButtonRef.current?.focus();
+    } else if (prevVisibleTagsLengthRef.current === 0) {
+      firstTagRef.current?.focus();
+    }
+
+    prevVisibleTagsLengthRef.current = visibleTagsLength;
+  }, [visibleTagsLength]);
+
+  return { firstTagRef, resetButtonRef };
+};
+
 const DismissWithTags = () => {
   const [visibleTags, setVisibleTags] = React.useState(initialTags);
   const removeItem: TagGroupProps['onDismiss'] = (_e, { value }) => {
     setVisibleTags([...visibleTags].filter(tag => tag.value !== value));
   };
+  const resetItems = () => setVisibleTags(initialTags);
+  const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
+
+  const styles = useStyles();
 
   return (
-    <TagGroup onDismiss={removeItem} aria-label="TagGroup example with dismissible Tags">
-      {visibleTags.map(tag => (
-        <Tag dismissible dismissIcon={{ 'aria-label': 'remove' }} value={tag.value} key={tag.value}>
-          {tag.children}
-        </Tag>
-      ))}
-    </TagGroup>
+    <>
+      {visibleTags.length !== 0 && (
+        <TagGroup onDismiss={removeItem} aria-label="TagGroup example with dismissible Tags">
+          {visibleTags.map((tag, index) => (
+            <Tag
+              dismissible
+              dismissIcon={{ 'aria-label': 'remove' }}
+              value={tag.value}
+              key={tag.value}
+              ref={index === 0 ? firstTagRef : null}
+            >
+              {tag.children}
+            </Tag>
+          ))}
+        </TagGroup>
+      )}
+      <Button
+        onClick={resetItems}
+        ref={resetButtonRef}
+        disabled={visibleTags.length !== 0}
+        className={styles.resetButton}
+        size="small"
+      >
+        Reset the example
+      </Button>
+    </>
   );
 };
 
@@ -37,26 +92,37 @@ const DismissWithInteractionTags = () => {
   const removeItem: TagGroupProps['onDismiss'] = (_e, { value }) => {
     setVisibleTags([...visibleTags].filter(tag => tag.value !== value));
   };
+  const resetItems = () => setVisibleTags(initialTags);
+  const { firstTagRef, resetButtonRef } = useResetExample(visibleTags.length);
+
+  const styles = useStyles();
 
   return (
-    <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
-      {visibleTags.map(tag => (
-        <InteractionTag value={tag.value} key={tag.value}>
-          <InteractionTagPrimary hasSecondaryAction>{tag.children}</InteractionTagPrimary>
-          <InteractionTagSecondary aria-label="remove" />
-        </InteractionTag>
-      ))}
-    </TagGroup>
+    <>
+      {visibleTags.length !== 0 && (
+        <TagGroup onDismiss={removeItem} aria-label="Dismiss example">
+          {visibleTags.map((tag, index) => (
+            <InteractionTag value={tag.value} key={tag.value}>
+              <InteractionTagPrimary hasSecondaryAction ref={index === 0 ? firstTagRef : null}>
+                {tag.children}
+              </InteractionTagPrimary>
+              <InteractionTagSecondary aria-label="remove" />
+            </InteractionTag>
+          ))}
+        </TagGroup>
+      )}
+      <Button
+        onClick={resetItems}
+        ref={resetButtonRef}
+        disabled={visibleTags.length !== 0}
+        className={styles.resetButton}
+        size="small"
+      >
+        Reset the example
+      </Button>
+    </>
   );
 };
-
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    flexDirection: 'column',
-    rowGap: '10px',
-  },
-});
 
 export const Dismiss = () => {
   const styles = useStyles();
