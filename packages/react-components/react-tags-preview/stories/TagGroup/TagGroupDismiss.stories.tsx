@@ -116,7 +116,7 @@ const DismissWithInteractionTags = () => {
         disabled={visibleTags.length !== 0}
         className={styles.resetButton}
       >
-        Reset Dismiss InteractionTag Example
+        Reset the example
       </Button>
     </>
   );
