@@ -24,5 +24,5 @@ export type DrawerOverlaySurfaceState = ComponentState<DrawerOverlaySurfaceSlots
   /**
    * Whether the drawer is nested inside another drawer.
    */
-  isNestedDrawer: boolean;
+  nested: boolean;
 };

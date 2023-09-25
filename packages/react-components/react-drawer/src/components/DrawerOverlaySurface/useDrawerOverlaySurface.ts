@@ -22,11 +22,11 @@ export const useDrawerOverlaySurface_unstable = (
 ): DrawerOverlaySurfaceState => {
   const dialogSurfaceState = useDialogSurface_unstable(props, ref);
   const dialogSurfaceContextValues = useDialogSurfaceContextValues_unstable(dialogSurfaceState);
-  const isNestedDrawer = useDialogContext_unstable(ctx => ctx.isNestedDialog);
+  const nested = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
   return {
     ...dialogSurfaceState,
     dialogSurfaceContextValues,
-    isNestedDrawer,
+    nested,
   };
 };

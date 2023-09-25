@@ -44,7 +44,7 @@ export const useDrawerOverlaySurfaceStyles_unstable = (state: DrawerOverlaySurfa
   if (state.backdrop) {
     state.backdrop.className = mergeClasses(
       backdropResetStyles,
-      state.isNestedDrawer && backdropStyles.nested,
+      state.nested && backdropStyles.nested,
       state.backdrop.className,
     );
   }
