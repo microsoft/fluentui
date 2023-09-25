@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, slot, useId } from '@fluentui/react-utilities';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { DismissRegular } from '@fluentui/react-icons';
 import type { InteractionTagSecondaryProps, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
@@ -18,7 +18,10 @@ export const useInteractionTagSecondary_unstable = (
   props: InteractionTagSecondaryProps,
   ref: React.Ref<HTMLElement>,
 ): InteractionTagSecondaryState => {
-  const { appearance, disabled, handleTagDismiss, shape, size, value } = useInteractionTagContext_unstable();
+  const { appearance, disabled, handleTagDismiss, interactionTagPrimaryId, shape, size, value } =
+    useInteractionTagContext_unstable();
+
+  const id = useId('fui-InteractionTagSecondary-', props.id);
 
   const onClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props?.onClick?.(ev);
@@ -49,7 +52,9 @@ export const useInteractionTagSecondary_unstable = (
         type: 'button',
         disabled,
         ref,
+        'aria-labelledby': `${interactionTagPrimaryId} ${id}`,
         ...props,
+        id,
         onClick,
         onKeyDown,
       }),
