@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { TagSlots, TagState } from './Tag.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
@@ -24,7 +24,7 @@ const mediumIconSize = '20px';
 const smallIconSize = '16px';
 const extraSmallIconSize = '12px';
 
-const useRootBaseClassName = makeResetStyles({
+const baseStyles: GriffelResetStyle = {
   // reset default button style:
   fontFamily: 'inherit',
   padding: '0px',
@@ -41,6 +41,65 @@ const useRootBaseClassName = makeResetStyles({
   width: 'fit-content',
 
   border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+};
+
+const useRootRoundedBaseClassName = makeResetStyles({
+  ...baseStyles,
+
+  borderRadius: tokens.borderRadiusMedium,
+  ...createCustomFocusIndicatorStyle({
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+  }),
+
+  /**
+   * Pseudo element to draw the border for windows high contrast mode -
+   * when Tag is with secondary text, primary text has negative margin that covers the border.
+   */
+  '@media (forced-colors: active)': {
+    position: 'relative',
+    '::before': {
+      content: '""',
+      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      position: 'absolute',
+      top: '-1px',
+      left: '-1px',
+      right: '-1px',
+      bottom: '-1px',
+      borderTopLeftRadius: tokens.borderRadiusMedium,
+      borderTopRightRadius: tokens.borderRadiusMedium,
+    },
+  },
+});
+
+const useRootCircularBaseClassName = makeResetStyles({
+  ...baseStyles,
+
+  borderRadius: tokens.borderRadiusCircular,
+  ...createCustomFocusIndicatorStyle({
+    ...shorthands.borderRadius(tokens.borderRadiusCircular),
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+  }),
+
+  /**
+   * Pseudo element to draw the border for windows high contrast mode -
+   * when Tag is with secondary text, primary text has negative margin that covers the border.
+   */
+  '@media (forced-colors: active)': {
+    position: 'relative',
+    '::before': {
+      content: '""',
+      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
+      ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+      position: 'absolute',
+      top: '-1px',
+      left: '-1px',
+      right: '-1px',
+      bottom: '-1px',
+      borderRadius: tokens.borderRadiusCircular,
+    },
+  },
 });
 
 const useRootStyles = makeStyles({
@@ -56,21 +115,6 @@ const useRootStyles = makeStyles({
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
     color: tokens.colorBrandForeground2,
-  },
-
-  rounded: {
-    ...shorthands.borderRadius(tokens.borderRadiusMedium),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusMedium),
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-    }),
-  },
-  circular: {
-    ...shorthands.borderRadius(tokens.borderRadiusCircular),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-    }),
   },
 
   medium: {
@@ -266,46 +310,6 @@ export const usePrimaryTextStyles = makeStyles({
   },
 });
 
-/**
- * Styles for root slot under windows high contrast mode when Tag is with secondary text.
- * Tag's primary text has negative margin that covers the border. Pseudo element is used to draw the border.
- */
-const useTagWithSecondaryTextContrastStyles = makeStyles({
-  rounded: {
-    '@media (forced-colors: active)': {
-      position: 'relative',
-      '::before': {
-        content: '""',
-        ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
-        position: 'absolute',
-        top: '-1px',
-        left: '-1px',
-        right: '-1px',
-        bottom: '-1px',
-        borderTopLeftRadius: tokens.borderRadiusMedium,
-        borderTopRightRadius: tokens.borderRadiusMedium,
-      },
-    },
-  },
-  circular: {
-    '@media (forced-colors: active)': {
-      position: 'relative',
-      '::before': {
-        content: '""',
-        ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
-        ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
-        ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
-        position: 'absolute',
-        top: '-1px',
-        left: '-1px',
-        right: '-1px',
-        bottom: '-1px',
-        ...shorthands.borderRadius(tokens.borderRadiusCircular),
-      },
-    },
-  },
-});
-
 export const useSecondaryTextBaseClassName = makeResetStyles({
   gridArea: 'secondary',
   paddingLeft: tokens.spacingHorizontalXXS,
@@ -318,7 +322,9 @@ export const useSecondaryTextBaseClassName = makeResetStyles({
  * Apply styling to the Tag slots based on the state
  */
 export const useTagStyles_unstable = (state: TagState): TagState => {
-  const rootBaseClassName = useRootBaseClassName();
+  const rootRoundedBaseClassName = useRootRoundedBaseClassName();
+  const rootCircularBaseClassName = useRootCircularBaseClassName();
+
   const rootStyles = useRootStyles();
   const rootDisabledStyles = useRootDisabledStyles();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
@@ -330,23 +336,18 @@ export const useTagStyles_unstable = (state: TagState): TagState => {
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
 
-  const tagWithSecondaryTextContrastStyles = useTagWithSecondaryTextContrastStyles();
-
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     tagClassNames.root,
 
-    rootBaseClassName,
+    shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
 
     state.disabled ? rootDisabledStyles[appearance] : rootStyles[appearance],
-    rootStyles[shape],
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
     !state.dismissIcon && rootWithoutDismissStyles[size],
-
-    state.secondaryText && tagWithSecondaryTextContrastStyles[shape],
 
     state.root.className,
   );
