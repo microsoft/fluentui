@@ -1,32 +1,53 @@
 import * as React from 'react';
-import { makeStyles, Button, Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-components';
+import {
+  Button,
+  Popover,
+  PopoverSurface,
+  PopoverTrigger,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  MenuPopover,
+  MenuTrigger,
+} from '@fluentui/react-components';
 import type { PopoverProps } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  contentHeader: {
-    marginTop: '0',
-  },
-});
-
 const ExampleContent = () => {
-  const styles = useStyles();
   return (
     <div>
-      <h3 className={styles.contentHeader}>Popover content</h3>
+      <h3>Popover content</h3>
 
+      <Button>test inside</Button>
       <div>This is some popover content</div>
+      <Menu>
+        <MenuTrigger disableButtonEnhancement>
+          <MenuButton>Example</MenuButton>
+        </MenuTrigger>
+
+        <MenuPopover>
+          <MenuList>
+            <MenuItem>Item a</MenuItem>
+            <MenuItem>Item b</MenuItem>
+          </MenuList>
+        </MenuPopover>
+      </Menu>
     </div>
   );
 };
 
-export const Default = (props: PopoverProps) => (
-  <Popover {...props}>
-    <PopoverTrigger disableButtonEnhancement>
-      <Button>Popover trigger</Button>
-    </PopoverTrigger>
-
-    <PopoverSurface>
-      <ExampleContent />
-    </PopoverSurface>
-  </Popover>
-);
+export const Default = (props: PopoverProps) => {
+  return (
+    <>
+      <Popover trapFocus>
+        <PopoverTrigger>
+          <Button id="btn1-trigger">Popover trigger</Button>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <ExampleContent />
+        </PopoverSurface>
+      </Popover>
+      <Button id="btn2-bottom">test2222</Button>
+    </>
+  );
+};
