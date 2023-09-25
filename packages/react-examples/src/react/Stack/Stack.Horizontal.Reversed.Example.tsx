@@ -37,23 +37,37 @@ const clickableStackTokens: IStackTokens = {
 
 export const HorizontalStackReversedExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={containerStackTokens}>
+    <Stack enableScopedSelectors tokens={containerStackTokens}>
       <span>Default horizontal stack</span>
-      <Stack horizontal reversed disableShrink styles={stackStyles}>
+      <Stack enableScopedSelectors horizontal reversed disableShrink styles={stackStyles}>
         <span>Item One</span>
         <span>Item Two</span>
         <span>Item Three</span>
       </Stack>
 
       <span>Horizontal gap between items</span>
-      <Stack horizontal reversed disableShrink styles={stackStyles} tokens={horizontalGapStackTokens}>
+      <Stack
+        enableScopedSelectors
+        horizontal
+        reversed
+        disableShrink
+        styles={stackStyles}
+        tokens={horizontalGapStackTokens}
+      >
         <span>Item One</span>
         <span>Item Two</span>
         <span>Item Three</span>
       </Stack>
 
       <span>Item alignments</span>
-      <Stack horizontal reversed disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentsStackTokens}>
+      <Stack
+        enableScopedSelectors
+        horizontal
+        reversed
+        disableShrink
+        styles={itemAlignmentsStackStyles}
+        tokens={itemAlignmentsStackTokens}
+      >
         <Stack.Item align="auto" styles={stackItemStyles}>
           <span>Auto-aligned item</span>
         </Stack.Item>
@@ -75,7 +89,7 @@ export const HorizontalStackReversedExample: React.FunctionComponent = () => {
       </Stack>
 
       <span>Clickable stack</span>
-      <Stack horizontal onClick={_onClick} styles={stackStyles} tokens={clickableStackTokens}>
+      <Stack enableScopedSelectors horizontal onClick={_onClick} styles={stackStyles} tokens={clickableStackTokens}>
         <span>Click inside this box</span>
       </Stack>
     </Stack>

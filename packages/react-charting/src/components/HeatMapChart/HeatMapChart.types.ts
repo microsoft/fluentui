@@ -11,6 +11,10 @@ import { IHeatMapChartData } from '../../types/IDataPoint';
 
 export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<keyof ICartesianChartProps, 'styles'>> {
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+  /**
    * data to provide for Heat Map
    */
   data: IHeatMapChartData[];
@@ -95,6 +99,11 @@ export interface IHeatMapChartProps extends Pick<ICartesianChartProps, Exclude<k
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IHeatMapChartStyleProps, IHeatMapChartStyles>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 export interface IHeatMapChartStyleProps extends ICartesianChartStyleProps {}
 export interface IHeatMapChartStyles {

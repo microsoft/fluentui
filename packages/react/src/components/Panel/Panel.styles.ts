@@ -1,4 +1,4 @@
-import { IPanelStyleProps, IPanelStyles, PanelType } from './Panel.types';
+import { PanelType } from './Panel.types';
 import {
   AnimationClassNames,
   AnimationVariables,
@@ -9,9 +9,10 @@ import {
   ScreenWidthMinXLarge,
   ScreenWidthMinXXLarge,
   ScreenWidthMinUhfMobile,
-  IStyle,
   IconFontSizes,
 } from '../../Styling';
+import type { IPanelStyleProps, IPanelStyles } from './Panel.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Panel',
@@ -257,10 +258,19 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     commands: [
       classNames.commands,
       {
-        marginTop: 18,
+        // Ensures that the sticky header always has a background to prevent overlaps on scroll.
+        backgroundColor: semanticColors.bodyBackground,
+        paddingTop: 18,
+        selectors: {
+          [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
+            position: 'sticky',
+            top: 0,
+            zIndex: 1,
+          },
+        },
       },
       hasCustomNavigation && {
-        marginTop: 'inherit',
+        paddingTop: 'inherit',
       },
     ],
     navigation: [
@@ -317,6 +327,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       isFooterAtBottom && {
         flexGrow: 1,
+        display: 'inherit',
+        flexDirection: 'inherit',
       },
     ],
     content: [
@@ -324,6 +336,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       sharedPaddingStyles,
       {
         paddingBottom: 20,
+      },
+      isFooterAtBottom && {
+        selectors: {
+          [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
+            flexGrow: 1,
+          },
+        },
       },
     ],
     footer: [
@@ -333,9 +352,15 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexShrink: 0,
         borderTop: '1px solid transparent',
         transition: `opacity ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction2}`,
+        selectors: {
+          [`@media (min-height: ${ScreenWidthMinMedium}px)`]: {
+            position: 'sticky',
+            bottom: 0,
+          },
+        },
       },
       isFooterSticky && {
-        background: semanticColors.bodyBackground,
+        backgroundColor: semanticColors.bodyBackground,
         borderTopColor: semanticColors.variantBorder,
       },
     ],

@@ -82,7 +82,7 @@ exports[`MaskedTextField renders correctly 1`] = `
           &:hover {
             border-color: #323130;
           }
-          @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
             -ms-high-contrast-adjust: none;
             border-color: Highlight;
             forced-color-adjust: none;
@@ -131,44 +131,29 @@ exports[`MaskedTextField renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background: Window;
               color: WindowText;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
               color: GrayText;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
               color: GrayText;
             }
             &::-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #605e5c;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&::-ms-input-placeholder {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
               color: GrayText;
             }
         id="TextField0"

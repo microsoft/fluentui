@@ -1,7 +1,7 @@
 import { ITheme, IStyle } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 import { IDataPoint } from '../../types/IDataPoint';
-export { IDataPoint } from '../../types/IDataPoint';
+export type { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}
 
 export interface IPieChartProps {
@@ -49,6 +49,11 @@ export interface IPieChartProps {
    * Width of line stroke
    */
   strokeWidth?: number;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> &

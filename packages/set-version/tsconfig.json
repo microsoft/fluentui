@@ -3,7 +3,7 @@
     "target": "es5",
     "outDir": "lib",
     "module": "commonjs",
-    "lib": ["es5", "dom"],
+    "lib": ["ES5", "ES2015.Collection", "ES2015.Iterable", "dom"],
     "declaration": true,
     "sourceMap": true,
     "importHelpers": true,
@@ -11,6 +11,7 @@
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
+    "isolatedModules": true,
     "types": ["jest"]
   },
   "include": ["src"]

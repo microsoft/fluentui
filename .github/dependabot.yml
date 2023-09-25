@@ -1,0 +1,13 @@
+version: 2
+updates:
+  # Weekly updates for devDependencies.
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+      schedule: 'tuesday'
+      time: '09:00'
+    allow:
+      - dependency-type: 'development'
+    open-pull-requests-limit: 6
+    versioning-strategy: increase

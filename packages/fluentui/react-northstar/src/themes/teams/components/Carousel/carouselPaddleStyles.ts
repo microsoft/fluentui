@@ -57,7 +57,9 @@ export const carouselPaddleStyles: ComponentSlotStylesPrepared<CarouselPaddleSty
       ...(p.hidden && {
         visibility: 'hidden',
       }),
-
+      ...(p.disableClickableNav && {
+        cursor: 'default',
+      }),
       ':hover': {
         ...getIconFillOrOutlineStyles({ outline: false }),
         [`& .${carouselPaddleSlotClassNames.content}`]: {

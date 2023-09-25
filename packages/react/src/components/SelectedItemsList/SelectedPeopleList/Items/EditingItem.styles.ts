@@ -1,5 +1,5 @@
 import { getGlobalClassNames, getTheme } from '../../../../Styling';
-import { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps } from './EditingItem.types';
+import type { IEditingSelectedPeopleItemStyles, IEditingSelectedPeopleItemStylesProps } from './EditingItem.types';
 
 const GlobalClassNames = {
   root: 'ms-EditingItem',

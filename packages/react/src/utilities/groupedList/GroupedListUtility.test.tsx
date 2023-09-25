@@ -1,5 +1,5 @@
-import { IGroup } from '../../components/GroupedList/GroupedList.types';
 import { GetGroupCount } from './GroupedListUtility';
+import type { IGroup } from '../../components/GroupedList/GroupedList.types';
 
 const G = (children: IGroup[] = []): IGroup => {
   return { key: 'Key', name: 'Group', startIndex: 0, count: 0, children };

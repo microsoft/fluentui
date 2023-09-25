@@ -2,7 +2,6 @@ import {
   ApiDeclaredItem,
   ExcerptToken,
   IExcerptTokenRange,
-  ApiItemKind,
   ApiPropertySignature,
   ApiMethodSignature,
   ApiEnumMember,
@@ -10,6 +9,7 @@ import {
   ApiProperty,
   ApiConstructor,
   ApiMethod,
+  ApiItemKind,
 } from '@microsoft/api-extractor-model';
 import { ICollectedData } from './types-private';
 import { ITableRowJson, IEnumTableRowJson } from './types';
@@ -23,8 +23,9 @@ import {
 
 export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiItem): ITableRowJson | undefined {
   let tableRowJson: ITableRowJson | undefined;
+  const apiKind = apiItem.kind as unknown as ApiItemKind;
 
-  switch (apiItem.kind) {
+  switch (apiKind) {
     case ApiItemKind.Property:
     case ApiItemKind.PropertySignature: {
       const apiProperty = apiItem as ApiPropertySignature | ApiProperty;
@@ -50,7 +51,7 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
         apiMethod.excerpt.tokenRange,
       );
 
-      if (apiMethod.kind === ApiItemKind.Constructor) {
+      if ((apiMethod.kind as unknown as ApiItemKind) === ApiItemKind.Constructor) {
         // The constructor is similar to a method, but we have to manually add the name.
         tableRowJson.name = 'constructor';
       }
@@ -67,7 +68,7 @@ export function createTableRowJson(collectedData: ICollectedData, apiItem: ApiIt
   // (item.excerpt.text). It's required if there's no ? after the name.
   if (
     tableRowJson &&
-    (apiItem.kind === ApiItemKind.PropertySignature || apiItem.kind === ApiItemKind.MethodSignature) &&
+    (apiKind === ApiItemKind.PropertySignature || apiKind === ApiItemKind.MethodSignature) &&
     /^\w+[:(]/.test((apiItem as ApiDeclaredItem).excerpt.text)
   ) {
     tableRowJson.required = true;

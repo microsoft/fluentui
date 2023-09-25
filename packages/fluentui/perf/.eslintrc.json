@@ -1,6 +1,7 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react-northstar"],
   "rules": {
+    "import/no-extraneous-dependencies": ["error", { "devDependencies": true, "packageDir": [".", "../../.."] }],
     "no-console": "off"
   },
   "root": true

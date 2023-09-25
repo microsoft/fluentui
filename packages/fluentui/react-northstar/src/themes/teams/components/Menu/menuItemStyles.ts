@@ -6,6 +6,7 @@ import { getColorScheme } from '../../colors';
 import { getIconFillOrOutlineStyles } from '../../getIconFillOrOutlineStyles';
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { getBorderFocusStyles } from '../../getBorderFocusStyles';
+import { menuItemIconClassName } from '../../../../components/Menu/MenuItemIcon';
 
 export const verticalPillsBottomMargin = pxToRem(5);
 export const horizontalPillsRightMargin = pxToRem(8);
@@ -39,21 +40,20 @@ export const getFocusedStyles = ({
       background: colors.backgroundFocus,
     }),
 
+    // primary styles
+    ...(primary &&
+      !vertical &&
+      !underlined && {
+        color: v.primaryWrapperColorFocus,
+      }),
+
     ...(vertical && {
-      border: `solid 1px ${v.borderColorFocus}`,
-      outline: `solid 1px ${v.outlineColorFocus}`,
-      margin: pxToRem(1),
-      background: v.verticalBackgroundColorFocus,
+      background: 'inherit',
       color: v.colorFocus || colors.foregroundFocus,
+      border: `${pxToRem(1)} solid transparent`,
+      padding: pxToRem(1),
 
       ...(primary && { color: v.color }),
-
-      ...(active && {
-        color: v.colorActive,
-        background: v.backgroundColorActive || colors.backgroundActive,
-
-        ...(primary && { color: colors.foregroundFocus }),
-      }),
     }),
   };
 };
@@ -183,7 +183,7 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
               ...(underlined && { fontWeight: 700 }),
               ...(underlined && active && underlinedItem(v.colorActive)),
             }),
-        ...(underlined && {
+        ...((underlined || vertical) && {
           ...getBorderFocusStyles({ variables: siteVariables }),
           ':focus-visible': {
             ...getBorderFocusStyles({ variables: siteVariables })[':focus-visible'],
@@ -202,6 +202,14 @@ export const menuItemStyles: ComponentSlotStylesPrepared<MenuItemStylesProps, Me
 
         ...(underlined && { color: v.underlinedColorHover }),
 
+        ...(!disabled &&
+          !primary &&
+          vertical && {
+            [`&>.${menuItemIconClassName}`]: {
+              color: v.subMenuIconColor,
+              ...getIconFillOrOutlineStyles({ outline: false }),
+            },
+          }),
         ...(!disabled && {
           ...(iconOnly && getIconFillOrOutlineStyles({ outline: false })),
           ...(primary

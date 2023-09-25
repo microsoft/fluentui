@@ -16,14 +16,3 @@ import { withStrictMode } from '@fluentui/storybook';
 
 addDecorator(withStrictMode);
 ```
-
-### Decorator: withThemeProvider
-
-This adds Theme knob which allows selecting different theme to provide to components via `ThemeProvider`.
-
-```js
-import { addDecorator } from '@storybook/react';
-import { withThemeProvider } from '@fluentui/storybook';
-
-addDecorator(withThemeProvider);
-```

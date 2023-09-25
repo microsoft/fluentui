@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IButtonProps } from '../../Button';
-import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IIconProps } from '../../Icon';
+import type { IButtonProps } from '../../Button';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
+import type { IIconProps } from '../../Icon';
 
 /**
  * {@docCategory SearchBox}
@@ -12,6 +12,11 @@ export interface ISearchBox {
    * Sets focus inside the search input box.
    */
   focus(): void;
+
+  /**
+   * Blurs focus from the search input box.
+   */
+  blur(): void;
 
   /**
    * Returns whether or not the SearchBox has focus

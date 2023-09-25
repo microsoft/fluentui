@@ -1,6 +1,7 @@
 import { ICON_SIZES, DEFAULT_BASE_URL } from './initializeFileTypeIcons';
-import { DEFAULT_ICON_SIZE, FileTypeIconSize } from './getFileTypeIconProps';
+import { DEFAULT_ICON_SIZE } from './getFileTypeIconProps';
 import { getFileTypeIconAsHTMLString } from './getFileTypeIconAsHTMLString';
+import type { FileTypeIconSize } from './getFileTypeIconProps';
 
 // Currently this test file only covers the default device pixel ratio, i.e 1
 const getExpectedHTMLElement = (iconSize: FileTypeIconSize, suffix: string, expectedExt: string) => {
@@ -90,10 +91,8 @@ describe('Returns correct element for custom CDN url', () => {
         size: 96,
         extension: 'docx',
       },
-      'https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/',
+      'https://example-base-url/assets/item-types-fluent/',
     );
-    expect(elm).toEqual(
-      '<img src="https://spoprod-a.akamaihd.net/files/fabric/assets/item-types-fluent/96/docx.svg" alt="" />',
-    );
+    expect(elm).toEqual('<img src="https://example-base-url/assets/item-types-fluent/96/docx.svg" alt="" />');
   });
 });

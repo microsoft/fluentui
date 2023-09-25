@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/naming-convention */
-
-import { IRawStyle } from '@fluentui/merge-styles';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 /**
  * Fluent UI font set.

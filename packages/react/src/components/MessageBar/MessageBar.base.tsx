@@ -2,8 +2,9 @@ import * as React from 'react';
 import { DelayedRender, classNamesFunction, getNativeProps, htmlElementProperties, css } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
-import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
+import { MessageBarType } from './MessageBar.types';
 import { useId, useBoolean } from '@fluentui/react-hooks';
+import type { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles } from './MessageBar.types';
 
 const ICON_MAP = {
   [MessageBarType.info]: 'Info',
@@ -49,6 +50,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     actions,
     className,
     children,
+    // eslint-disable-next-line deprecation/deprecation
     overflowButtonAriaLabel,
     dismissIconProps,
     styles,
@@ -61,6 +63,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     messageBarIconProps,
     role,
     delayedRender = true,
+    expandButtonProps,
   } = props;
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(props, htmlElementProperties, [
@@ -73,9 +76,9 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
     messageBarType: messageBarType || MessageBarType.info,
     onDismiss: onDismiss !== undefined,
     actions: actions !== undefined,
-    truncated: truncated,
-    isMultiline: isMultiline,
-    expandSingleLine: expandSingleLine,
+    truncated,
+    isMultiline,
+    expandSingleLine,
     className,
   });
 
@@ -132,6 +135,7 @@ export const MessageBarBase: React.FunctionComponent<IMessageBarProps> = React.f
                 iconProps={expandIconProps}
                 ariaLabel={overflowButtonAriaLabel}
                 aria-expanded={expandSingleLine}
+                {...expandButtonProps}
               />
             </div>
           )

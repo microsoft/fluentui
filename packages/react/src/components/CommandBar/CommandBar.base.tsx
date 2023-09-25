@@ -3,25 +3,28 @@ import {
   classNamesFunction,
   css,
   nullRender,
-  IComponentAs,
   getNativeProps,
   divProperties,
   composeComponentAs,
   initializeComponentRef,
 } from '../../Utilities';
-import {
+import { OverflowSet } from '../../OverflowSet';
+import { ResizeGroup } from '../../ResizeGroup';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { CommandBarButton } from '../../Button';
+import { TooltipHost } from '../../Tooltip';
+import { getCommandButtonStyles } from './CommandBar.styles';
+import type { IComponentAs } from '../../Utilities';
+import type {
   ICommandBar,
   ICommandBarItemProps,
   ICommandBarProps,
   ICommandBarStyleProps,
   ICommandBarStyles,
 } from './CommandBar.types';
-import { IOverflowSet, OverflowSet } from '../../OverflowSet';
-import { IResizeGroup, ResizeGroup } from '../../ResizeGroup';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { CommandBarButton, IButtonProps } from '../../Button';
-import { TooltipHost } from '../../Tooltip';
-import { getCommandButtonStyles } from './CommandBar.styles';
+import type { IOverflowSet } from '../../OverflowSet';
+import type { IResizeGroup } from '../../ResizeGroup';
+import type { IButtonProps } from '../../Button';
 
 const getClassNames = classNamesFunction<ICommandBarStyleProps, ICommandBarStyles>();
 
@@ -85,6 +88,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       cacheKey: this._computeCacheKey({
         primaryItems: [...items],
         overflow: overflowItems && overflowItems.length > 0,
+        farItems,
       }),
     };
 
@@ -118,16 +122,20 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   }
 
   private _onRenderData = (data: ICommandBarData): JSX.Element => {
+    const { ariaLabel, primaryGroupAriaLabel, farItemsGroupAriaLabel } = this.props;
+    const hasSecondSet = data.farItems && data.farItems.length > 0;
+
     return (
       <FocusZone
         className={css(this._classNames.root)}
         direction={FocusZoneDirection.horizontal}
         role={'menubar'}
-        aria-label={this.props.ariaLabel}
+        aria-label={ariaLabel}
       >
         {/*Primary Items*/}
         <OverflowSet
-          role="none"
+          role={hasSecondSet ? 'group' : 'none'}
+          aria-label={hasSecondSet ? primaryGroupAriaLabel : undefined}
           componentRef={this._overflowSet}
           className={css(this._classNames.primarySet)}
           items={data.primaryItems}
@@ -137,9 +145,10 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
         />
 
         {/*Secondary Items*/}
-        {data.farItems && data.farItems.length > 0 && (
+        {hasSecondSet && (
           <OverflowSet
-            role="none"
+            role="group"
+            aria-label={farItemsGroupAriaLabel}
             className={css(this._classNames.secondarySet)}
             items={data.farItems}
             onRenderItem={this._onRenderItem}
@@ -172,7 +181,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     if (item.iconOnly && (itemText !== undefined || item.tooltipHostProps)) {
       return (
-        <TooltipHost content={itemText} {...item.tooltipHostProps}>
+        <TooltipHost role="none" content={itemText} setAriaDescribedBy={false} {...item.tooltipHostProps}>
           {this._commandButton(item, commandButtonProps)}
         </TooltipHost>
       );
@@ -184,7 +193,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
   private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSX.Element => {
     const ButtonAs = this.props.buttonAs as IComponentAs<ICommandBarItemProps> | undefined;
     const CommandBarButtonAs = item.commandBarButtonAs as IComponentAs<ICommandBarItemProps> | undefined;
-    const DefaultButtonAs = (CommandBarButton as {}) as IComponentAs<ICommandBarItemProps>;
+    const DefaultButtonAs = CommandBarButton as {} as IComponentAs<ICommandBarItemProps>;
 
     // The prop types between these three possible implementations overlap enough that a force-cast is safe.
     let Type = DefaultButtonAs;
@@ -240,8 +249,12 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     return <OverflowButtonType {...(overflowProps as IButtonProps)} />;
   };
 
-  private _computeCacheKey(data: { primaryItems?: ICommandBarItemProps[]; overflow?: boolean }): string {
-    const { primaryItems, overflow } = data;
+  private _computeCacheKey(data: {
+    primaryItems?: ICommandBarItemProps[];
+    overflow?: boolean;
+    farItems?: ICommandBarItemProps[];
+  }): string {
+    const { primaryItems, overflow, farItems } = data;
     const returnKey = (acc: string, current: ICommandBarItemProps): string => {
       const { cacheKey = current.key } = current;
       return acc + cacheKey;
@@ -249,13 +262,15 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
 
     const primaryKey = primaryItems && primaryItems.reduce(returnKey, '');
     const overflowKey = overflow ? 'overflow' : '';
+    const farKey = farItems && farItems.reduce(returnKey, '');
 
-    return [primaryKey, overflowKey].join('');
+    return [primaryKey, overflowKey, farKey].join('');
   }
 
   private _onReduceData = (data: ICommandBarData): ICommandBarData | undefined => {
     const { shiftOnReduce, onDataReduced } = this.props;
     let { primaryItems, overflowItems, cacheKey } = data;
+    const { farItems } = data;
 
     // Use first item if shiftOnReduce, otherwise use last item
     const movedItem = primaryItems[shiftOnReduce ? 0 : primaryItems.length - 1];
@@ -267,7 +282,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       primaryItems = shiftOnReduce ? primaryItems.slice(1) : primaryItems.slice(0, -1);
 
       const newData = { ...data, primaryItems, overflowItems };
-      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0 });
+      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0, farItems });
 
       if (onDataReduced) {
         onDataReduced(movedItem);
@@ -284,6 +299,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
     const { shiftOnReduce, onDataGrown } = this.props;
     const { minimumOverflowItems } = data;
     let { primaryItems, overflowItems, cacheKey } = data;
+    const { farItems } = data;
     const movedItem = overflowItems[0];
 
     // Make sure that moved item exists and is not one of the original overflow items
@@ -295,7 +311,7 @@ export class CommandBarBase extends React.Component<ICommandBarProps, {}> implem
       primaryItems = shiftOnReduce ? [movedItem, ...primaryItems] : [...primaryItems, movedItem];
 
       const newData = { ...data, primaryItems, overflowItems };
-      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0 });
+      cacheKey = this._computeCacheKey({ primaryItems, overflow: overflowItems.length > 0, farItems });
 
       if (onDataGrown) {
         onDataGrown(movedItem);

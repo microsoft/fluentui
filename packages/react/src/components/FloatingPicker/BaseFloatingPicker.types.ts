@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { ISuggestionModel, ISuggestionItemProps } from '../../Pickers';
-import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-import { IRefObject } from '../../Utilities';
-import { ICalloutProps } from '../Callout/Callout.types';
+import type { ISuggestionModel, ISuggestionItemProps } from '../../Pickers';
+import type { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
+import type { IRefObject } from '../../Utilities';
+import type { ICalloutProps } from '../Callout/Callout.types';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */

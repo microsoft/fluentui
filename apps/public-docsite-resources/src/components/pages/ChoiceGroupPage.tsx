@@ -4,7 +4,7 @@ import { ChoiceGroupPageProps } from '@fluentui/react-examples/lib/react/ChoiceG
 
 export const ChoiceGroupPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/ChoiceGroup.page.json')}
+    jsonDocs={require('../../../dist/api/react/ChoiceGroup.page.json')}
     {...{ ...ChoiceGroupPageProps, ...props }}
   />
 );

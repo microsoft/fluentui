@@ -285,5 +285,46 @@ export default () => (
       previous={{ name: 'Accessibility', url: 'accessibility' }}
       next={{ name: 'Theming Examples', url: 'theming-examples' }}
     />
+    <Header as="h2" content="Windows High Contrast mode" />
+
+    <p>
+      This library was originally built as the design system for the Microsoft Teams application. Due to legacy reasons,
+      there was no support for Windows High Contrast Mode. Since version `0.61.0`, there is official support for high
+      contrast mode. However, high contrast mode is supported through a separate theme that must be passed to the{' '}
+      <NavLink to="components/provider">Provider</NavLink> at the root of your app. Below is an example of how you could
+      use the dedicated high contrast (aka forced colors) theme.
+    </p>
+
+    <ExampleSnippet
+      value={`
+          import React from 'react';
+          import { Provider, teamsForcedColorsTheme, teamsV2Theme, Button } from '@fluentui/react-northstar';
+
+          const HighConstrastExample = () => {
+            React.useEffect(() => {
+              const match = window.matchMedia("(forced-colors: active)");
+              if (match.matches) {
+                setTheme(teamsForcedColorsTheme);
+              }
+
+              // Listen to changes in OS theme
+              match.addEventListener("change", (ev) => {
+                  if (ev.matches) {
+                    setTheme(teamsForcedColorsTheme);
+                  } else {
+                    console.log("setting standard theme");
+                    setTheme(teamsV2Theme);
+                  }
+              });
+            }, []);
+
+            return (
+              <Provider theme={theme}>
+                <Button content="Click here" />
+              </Provider>
+            );
+          }
+      `}
+    />
   </DocPage>
 );

@@ -1,4 +1,4 @@
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 import { pxToRem, stringLiteralsArray } from '../../../../utils';
 import { ItemType } from '../../../types';
 import { TeamsSchemeMappingWithAreas } from '../../types';
@@ -13,13 +13,13 @@ export interface DividerVariables {
   textColor: string;
   textFontSize: string;
   textLineHeight: string;
-  importantFontWeight: FontWeightProperty;
+  importantFontWeight: Property.FontWeight;
   dividerPadding: string;
 }
 
 export const dividerVariables = (siteVars: any): DividerVariables => ({
   colorScheme: pickValuesFromColorScheme(siteVars.colorScheme, dividerColorAreas),
-  dividerColor: siteVars.colors.grey[150],
+  dividerColor: siteVars.colorScheme.brand.border,
   textColor: siteVars.colors.grey[450],
   textFontSize: siteVars.fontSizeSmall,
   textLineHeight: siteVars.lineHeightSmall,

@@ -1,47 +1,92 @@
 # @fluentui/react-conformance
 
-**React Conformance testing API for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
+A tool used to run standardized tests which follow [Fluent UI React's](https://developer.microsoft.com/en-us/fluentui) component guidelines. It also can be extended and allows for adding your own conformance tests.
 
-####Note: this API is currently unstable, it is a work in progress.
+## Configuration
 
-This API checks if the given component complies with the current testsas well as allowing you to add your own tests.
+### isConformant ( base configuration )
 
-## isConformant
+Add isConformant within your package and configure any globally applied test options.
 
 ```
-    function isConformant(
-        Component: React.ComponentType,
-        options: IsConformantOptions,
-        extraTests?: ConformanceTest[] | undefined
-    ): void
+my-proj/
+├─ common/
+│  ├─ isConformant.ts 👈
+├─ src/
+├─ node_modules/
+├─ package.json
 ```
-
-Function to test if the component is compliant with the given set of tests. If needed, use the `extraTests` argument to add any needed tests.
-
-###Example
 
 ```jsx
-import { isConformant } from '@react-conformance/isConformant';
+import { isConformant as baseIsConformant } from '@fluentui/react-conformance';
+import type { IsConformantOptions } from '@fluentui/react-conformance';
+
+export function isConformant<TProps = {}>(
+  testInfo: Omit<IsConformantOptions<TProps>, 'componentPath'> & { componentPath?: string },
+) {
+  const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+    componentPath: require.main?.filename.replace('.test', ''),
+    // 👆 Put any required test options here ( ex: componentPath, asPropHandlesRef, ... )
+  };
+
+  baseIsConformant(defaultOptions, testInfo);
+}
+```
+
+### isConformant ( running tests )
+
+Within your component's test file:
+
+```
+my-proj/
+├─ common/
+├─ src/
+│  ├─ components
+│  │  ├─ Foo
+│  │  │  ├─ ...
+│  │  │  ├─ Foo.test 👈
+├─ node_modules/
+├─ package.json
+```
+
+Import the isConformant file that you just created:
+
+```jsx
+import { isConformant } from '../../common/isConformant';
 
 describe('Foo', () => {
-  it('is conformant', () => {
-    isConformant(
-      Foo,
-      {
-        /* options */
-      },
-      [
-        /* extra tests */
-      ],
-    );
+  isConformant({
+    Component: Foo,
+    displayName: 'Foo',
+    disabledTests: [],
+    // 👆 For tests that don't fit the guidelines of your component you can disable them.
   });
 });
 ```
 
-##Tests running by default
+### isConformant with React Portals
 
-| Test | Description |
-| ---- | ----------- |
-| ...  | ...         |
-| ...  | ...         |
-| ...  | ...         |
+By default `isConformant` inspects a component's immediate parent container. Because React Portals are typically rendered outside this container components using Portals will fail conformance. For example the `component-has-static-classnames-object` tests inspect the rendered DOM for certain class names but, with default settings, will fail for anything rendered into a Portal.
+
+Portals can be inspected by providing a `getTargetElement` function to `isConformant`.
+
+```jsx
+
+// Assume that `Foo` is a component that renders a Portal.
+// It takes a prop called `idForPortal` that renders the
+// provided id in the Portal, allowing it to be looked up
+// via `getPortalElement()`.
+
+const getPortalElement = (result, attr) => {
+  return result.baseElement.querySelector("#portal-id");
+};
+
+describe('Foo', () => {
+  isConformant({
+    Component: Foo,
+    displayName: 'Foo'
+    requiredProps: { idForPortal: "portal-id" },
+    getTargetElement: getPortalElement
+  });
+});
+```

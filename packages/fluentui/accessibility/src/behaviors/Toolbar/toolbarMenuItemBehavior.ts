@@ -14,15 +14,33 @@ import { menuItemBehavior, MenuItemBehaviorProps } from '../Menu/menuItemBehavio
  * Adds attribute 'aria-describedby' based on the property 'aria-describedby' to 'root' slot.
  * Adds attribute 'aria-expanded=true' based on the property 'menuOpen' if the component has 'hasMenu' property to 'root' slot.
  * Adds attribute 'aria-haspopup=true' to 'root' slot if 'hasMenu' property is set.
- * Adds attribute 'aria-disabled=true' based on the property 'disabled'. This can be overriden by providing 'aria-disabled' property directly to the component.
  * Triggers 'performClick' action with 'Enter' or 'Spacebar' on 'root'.
  * Triggers 'closeMenuAndFocusTrigger' action with 'Escape' on 'wrapper'.
  * Triggers 'closeAllMenusAndFocusNextParentItem' action with 'ArrowRight' on 'wrapper'.
  * Triggers 'closeMenu' action with 'ArrowLeft' on 'wrapper'.
  * Triggers 'openMenu' action with 'ArrowRight' on 'wrapper'.
+ * Adds attribute 'disabled=true' based on the property 'disabled'.
+ * Adds attribute 'aria-disabled=true' based on the property 'disabledFocusable'.
  */
 export const toolbarMenuItemBehavior: Accessibility<ToolbarMenuItemBehaviorProps> = props => {
-  return menuItemBehavior({ ...props, vertical: true });
+  const defaultBehaviors = menuItemBehavior({
+    ...props,
+    vertical: true,
+  });
+
+  return {
+    ...defaultBehaviors,
+    attributes: {
+      ...defaultBehaviors.attributes,
+      root: {
+        ...defaultBehaviors.attributes.root,
+        disabled: props.disabled,
+        'aria-disabled': props.disabledFocusable,
+      },
+    },
+  };
 };
 
-export type ToolbarMenuItemBehaviorProps = Omit<MenuItemBehaviorProps, 'vertical'>;
+export type ToolbarMenuItemBehaviorProps = Omit<MenuItemBehaviorProps, 'vertical'> & {
+  disabledFocusable?: boolean;
+};

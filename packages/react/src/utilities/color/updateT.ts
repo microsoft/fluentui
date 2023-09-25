@@ -1,6 +1,6 @@
-import { IColor } from './interfaces';
 import { _rgbaOrHexString } from './_rgbaOrHexString';
 import { MAX_COLOR_ALPHA } from './consts';
+import type { IColor } from './interfaces';
 
 /**
  * Gets a color with the given transparency value and the same other components as `color`.

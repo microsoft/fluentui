@@ -4,7 +4,7 @@ import {
   FontWeights,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
-import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
+import type { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 const DEFAULT_PILL_WIDTH = 40;
 const DEFAULT_PILL_HEIGHT = 20;
@@ -93,6 +93,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         display: 'flex',
         alignItems: 'center',
         padding: '0 3px',
+        overflow: 'visible',
       },
       !disabled && [
         !checked && {

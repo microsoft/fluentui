@@ -1,10 +1,9 @@
-import { IPickerItemProps } from '../../../Pickers';
-
-import { IExtendedPersonaProps } from '../../../SelectedItemsList';
-import { IPersonaProps } from '../../../Persona';
 import './ExtendedPeoplePicker.scss';
 import { BaseExtendedPicker } from '../BaseExtendedPicker';
-import { IBaseExtendedPickerProps } from '../BaseExtendedPicker.types';
+import type { IPickerItemProps } from '../../../Pickers';
+import type { IExtendedPersonaProps } from '../../../SelectedItemsList';
+import type { IPersonaProps } from '../../../Persona';
+import type { IBaseExtendedPickerProps } from '../BaseExtendedPicker.types';
 
 /**
  * {@docCategory ExtendedPeoplePicker}

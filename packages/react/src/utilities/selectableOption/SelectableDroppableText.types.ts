@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IRefObject, IRenderFunction } from '../../Utilities';
-import { ICalloutProps } from '../../Callout';
-import { IPanelProps } from '../../Panel';
-import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
+import type { IRefObject, IRenderFunction } from '../../Utilities';
+import type { ICalloutProps } from '../../Callout';
+import type { IPanelProps } from '../../Panel';
+import type { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 
 /**
  * - `TComponent` - Component used for reference properties, such as `componentRef`.
@@ -83,8 +83,8 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement>
   onRenderItem?: IRenderFunction<ISelectableOption>;
 
   /**
-   * Optional custom renderer for normal options only.
-   * Use `onRenderItem` to control rendering for separators and headers as well.
+   * Optional custom renderer for normal and header options only.
+   * Use `onRenderItem` to control rendering for separators as well.
    */
   onRenderOption?: IRenderFunction<ISelectableOption>;
 

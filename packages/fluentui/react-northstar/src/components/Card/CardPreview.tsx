@@ -1,6 +1,6 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -33,8 +33,7 @@ export const cardPreviewClassName = 'ui-card__preview';
 /**
  * A CardPreview is used to display data Card preview.
  */
-export const CardPreview: ComponentWithAs<'div', CardPreviewProps> &
-  FluentComponentStaticProps<CardPreviewProps> = props => {
+export const CardPreview = React.forwardRef<HTMLDivElement, CardPreviewProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardPreview.displayName, context.telemetry);
   setStart();
@@ -63,6 +62,7 @@ export const CardPreview: ComponentWithAs<'div', CardPreviewProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -71,7 +71,8 @@ export const CardPreview: ComponentWithAs<'div', CardPreviewProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardPreviewProps> &
+  FluentComponentStaticProps<CardPreviewProps>;
 
 CardPreview.displayName = 'CardPreview';
 

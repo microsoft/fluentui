@@ -54,6 +54,8 @@ import fluentRadioDefinition from './radio/radio.vscode.definition.json';
 export { fluentRadioDefinition };
 import fluentRadioGroupDefinition from './radio-group/radio-group.vscode.definition.json';
 export { fluentRadioGroupDefinition };
+import fluentSearchDefinition from './search/search.vscode.definition.json';
+export { fluentSearchDefinition };
 import fluentSelectDefinition from './select/select.vscode.definition.json';
 export { fluentSelectDefinition };
 import fluentSkeletonDefinition from './skeleton/skeleton.vscode.definition.json';
@@ -74,8 +76,6 @@ import fluentTextAreaDefinition from './text-area/text-area.vscode.definition.js
 export { fluentTextAreaDefinition };
 import fluentTextFieldDefinition from './text-field/text-field.vscode.definition.json';
 export { fluentTextFieldDefinition };
-import fluentToolbarDefinition from './toolbar/toolbar.vscode.definition.json';
-export { fluentToolbarDefinition };
 import fluentTooltipDefinition from './tooltip/tooltip.vscode.definition.json';
 export { fluentTooltipDefinition };
 import fluentTreeItemDefinition from './tree-item/tree-item.vscode.definition.json';

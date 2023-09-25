@@ -1,4 +1,4 @@
-import { ITheme, IStyle } from '@fluentui/style-utilities';
+import type { ITheme, IStyle } from '@fluentui/style-utilities';
 
 export interface IFloatingSuggestionsHeaderFooterProps {
   renderItem: () => JSX.Element;

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/api-extractor/v7/api-extractor.schema.json",
+  "extends": "@fluentui/scripts-api-extractor/api-extractor.common.v-next.json",
+  "mainEntryPointFilePath": "<projectFolder>/../../../dist/out-tsc/types/packages/react-components/<unscopedPackageName>/src/unstable/index.d.ts",
+  "apiReport": {
+    "enabled": true,
+    "reportFileName": "<unscopedPackageName>.unstable.api.md"
+  },
+  "dtsRollup": {
+    "enabled": true,
+    "untrimmedFilePath": "<projectFolder>/dist/unstable.d.ts"
+  }
+}

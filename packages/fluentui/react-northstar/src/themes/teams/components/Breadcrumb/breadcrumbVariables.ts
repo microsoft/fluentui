@@ -1,5 +1,5 @@
 import { pxToRem } from '../../../../utils';
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 
 export interface BreadcrumbVariables {
   dividerMargin?: string;
@@ -9,7 +9,7 @@ export interface BreadcrumbVariables {
   fontSizeLarge?: string;
 
   // Breadcrumb Item
-  itemCurrentFontWeight?: FontWeightProperty;
+  itemCurrentFontWeight?: Property.FontWeight;
 
   // Breadcrumb Link
   linkPaddingTop: string;

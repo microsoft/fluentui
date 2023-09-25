@@ -73,13 +73,14 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               border-radius: 2px;
               box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
               box-sizing: border-box;
+              display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               outline: transparent;
               position: absolute;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -105,13 +106,14 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
                 overflow-x: hidden;
                 overflow-y: hidden;
                 position: relative;
+                width: 100%;
               }
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "maxHeight": undefined,
+              "maxHeight": "100%",
               "outline": "none",
               "overflowY": "hidden",
             }
@@ -123,6 +125,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           >
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -150,6 +153,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
             </div>
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -240,13 +244,14 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               border-radius: 2px;
               box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
               box-sizing: border-box;
+              display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               outline: transparent;
               position: absolute;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               border-color: WindowText;
               border-style: solid;
               border-width: 1px;
@@ -272,13 +277,14 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
                 overflow-x: hidden;
                 overflow-y: auto;
                 position: relative;
+                width: 100%;
               }
           onKeyDown={[Function]}
           onMouseDown={[Function]}
           onMouseUp={[Function]}
           style={
             Object {
-              "maxHeight": undefined,
+              "maxHeight": "100%",
               "outline": "none",
               "overflowY": undefined,
             }
@@ -290,6 +296,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           >
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {
@@ -315,6 +322,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
             </div>
             <div
               aria-hidden={true}
+              data-is-focus-trap-zone-bumper={true}
               data-is-visible={true}
               style={
                 Object {

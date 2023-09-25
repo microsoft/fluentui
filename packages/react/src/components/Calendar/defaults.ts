@@ -1,5 +1,6 @@
-import { ICalendarNavigationIcons } from './Calendar.types';
-import { ICalendarStrings, DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
+import { DEFAULT_CALENDAR_STRINGS } from '@fluentui/date-time-utilities';
+import type { ICalendarNavigationIcons } from './Calendar.types';
+import type { ICalendarStrings } from '@fluentui/date-time-utilities';
 
 export const defaultCalendarStrings: ICalendarStrings = DEFAULT_CALENDAR_STRINGS;
 

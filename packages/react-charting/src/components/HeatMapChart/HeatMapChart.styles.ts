@@ -1,3 +1,4 @@
+import { FontWeights } from '@fluentui/react/lib/Styling';
 import { IHeatMapChartStyleProps, IHeatMapChartStyles } from './HeatMapChart.types';
 
 export const getHeatMapChartStyles = (props: IHeatMapChartStyleProps): IHeatMapChartStyles => {
@@ -9,6 +10,7 @@ export const getHeatMapChartStyles = (props: IHeatMapChartStyleProps): IHeatMapC
       {
         pointerEvents: 'none',
         fill: theme.palette.white,
+        fontWeight: FontWeights.semibold,
       },
     ],
     subComponentStyles: {

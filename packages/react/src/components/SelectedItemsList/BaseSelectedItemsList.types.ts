@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { IPickerItemProps, ISuggestionModel, ValidationState } from '../../Pickers';
+import { ValidationState } from '../../Pickers';
 import { Selection } from '../../Selection';
-import { IRefObject } from '../../Utilities';
+import type { IPickerItemProps, ISuggestionModel } from '../../Pickers';
+import type { IRefObject } from '../../Utilities';
 
 export interface IBaseSelectedItemsList<T> {
   /** Gets the current value of the input. */

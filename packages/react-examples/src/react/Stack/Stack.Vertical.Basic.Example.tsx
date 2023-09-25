@@ -32,16 +32,16 @@ const clickableStackTokens: IStackTokens = {
 
 export const VerticalStackBasicExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={containerStackTokens}>
+    <Stack enableScopedSelectors tokens={containerStackTokens}>
       <span>Default vertical stack</span>
-      <Stack styles={stackStyles}>
+      <Stack enableScopedSelectors styles={stackStyles}>
         <span>Item One</span>
         <span>Item Two</span>
         <span>Item Three</span>
       </Stack>
 
       <span>Ordered stack</span>
-      <Stack styles={stackStyles}>
+      <Stack enableScopedSelectors styles={stackStyles}>
         <Stack.Item order={2}>
           <span>Item One</span>
         </Stack.Item>
@@ -54,14 +54,14 @@ export const VerticalStackBasicExample: React.FunctionComponent = () => {
       </Stack>
 
       <span>Vertical gap between items</span>
-      <Stack styles={stackStyles} tokens={verticalGapStackTokens}>
+      <Stack enableScopedSelectors styles={stackStyles} tokens={verticalGapStackTokens}>
         <span>Item One</span>
         <span>Item Two</span>
         <span>Item Three</span>
       </Stack>
 
       <span>Item alignments</span>
-      <Stack styles={stackStyles} tokens={itemAlignmentsStackTokens}>
+      <Stack enableScopedSelectors styles={stackStyles} tokens={itemAlignmentsStackTokens}>
         <Stack.Item align="auto" styles={stackItemStyles}>
           <span>Auto-aligned item</span>
         </Stack.Item>
@@ -83,7 +83,7 @@ export const VerticalStackBasicExample: React.FunctionComponent = () => {
       </Stack>
 
       <span>Clickable vertical stack</span>
-      <Stack onClick={_onClick} styles={stackStyles} tokens={clickableStackTokens}>
+      <Stack enableScopedSelectors onClick={_onClick} styles={stackStyles} tokens={clickableStackTokens}>
         <span>Click inside this box</span>
       </Stack>
     </Stack>

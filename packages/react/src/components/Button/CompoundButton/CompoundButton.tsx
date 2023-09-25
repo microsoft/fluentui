@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { BaseButton } from '../BaseButton';
 import { customizable } from '../../../Utilities';
-import { IButtonProps } from '../Button.types';
 import { getStyles } from './CompoundButton.styles';
+import type { IButtonProps } from '../Button.types';
 
 /**
  * {@docCategory Button}

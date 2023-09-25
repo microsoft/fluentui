@@ -7,15 +7,14 @@ Use a standalone spinner when you need a progress indicator on an existing surfa
 For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the `HUD`.
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
-
 ### Activity Indicator
 
-<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_spinner_01_light.png?text=LightMode" />
-<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_spinner_01_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_spinner_01_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_spinner_01_dark.png?text=DarkMode" />
 
 ### HUD
 
-<img className="off" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_hud_01_light.png?text=LightMode" />
-<img className="on" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/updated/img_hud_01_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_hud_01_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_hud_01_dark.png?text=DarkMode" />
 
 </DisplayToggle>

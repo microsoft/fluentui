@@ -1,6 +1,4 @@
 import './version';
-
-export { ISvgIconProps } from './utils/SvgIcon.types';
 export { default as createSvgIcon } from './utils/createSvgIcon';
 
 export { default as AcceptIcon } from './components/AcceptIcon';
@@ -1691,6 +1689,7 @@ export { default as ViewOriginalIcon } from './components/ViewOriginalIcon';
 export { default as VisuallyImpairedIcon } from './components/VisuallyImpairedIcon';
 export { default as VisualsFolderIcon } from './components/VisualsFolderIcon';
 export { default as VisualsStoreIcon } from './components/VisualsStoreIcon';
+export { default as VivaEngageIcon } from './components/VivaEngageIcon';
 export { default as VoicemailForwardIcon } from './components/VoicemailForwardIcon';
 export { default as VoicemailIRMIcon } from './components/VoicemailIRMIcon';
 export { default as VoicemailReplyIcon } from './components/VoicemailReplyIcon';
@@ -1738,3 +1737,4 @@ export { default as ZoomIcon } from './components/ZoomIcon';
 export { default as ZoomInIcon } from './components/ZoomInIcon';
 export { default as ZoomOutIcon } from './components/ZoomOutIcon';
 export { default as ZoomToFitIcon } from './components/ZoomToFitIcon';
+export type { ISvgIconProps } from './utils/SvgIcon.types';

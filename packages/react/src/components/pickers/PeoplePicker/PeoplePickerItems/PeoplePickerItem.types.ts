@@ -1,9 +1,10 @@
-import { IStyle, ITheme } from '../../../../Styling';
-import { IStyleFunctionOrObject } from '../../../../Utilities';
-import { IPersonaProps, IPersonaStyleProps, IPersonaCoinStyleProps } from '../../../../Persona';
-import { IPickerItemProps } from '../../PickerItem.types';
-import { IContextualMenuItem } from '../../../../ContextualMenu';
-import { ValidationState, IBasePickerSuggestionsProps } from '../../BasePicker.types';
+import { ValidationState } from '../../BasePicker.types';
+import type { IStyle, ITheme } from '../../../../Styling';
+import type { IStyleFunctionOrObject } from '../../../../Utilities';
+import type { IPersonaProps, IPersonaStyleProps, IPersonaCoinStyleProps } from '../../../../Persona';
+import type { IPickerItemProps } from '../../PickerItem.types';
+import type { IContextualMenuItem } from '../../../../ContextualMenu';
+import type { IBasePickerSuggestionsProps } from '../../BasePicker.types';
 
 /**
  * Common props in between IPeoplePickerItemSelectedProps, IPeoplePickerItemWithMenuProps and

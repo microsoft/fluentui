@@ -1,5 +1,5 @@
-import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from '@fluentui/react';
 import { DarkTheme } from '../DarkCustomizations';
+import type { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from '@fluentui/react';
 
 export const PeoplePickerItemStyles = (
   props: IPeoplePickerItemSelectedStyleProps,

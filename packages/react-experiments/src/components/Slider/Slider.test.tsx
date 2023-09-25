@@ -5,9 +5,9 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 
 import { mount } from 'enzyme';
 import { Slider } from './Slider';
-import { ISlider } from './Slider.types';
 import { ONKEYDOWN_TIMEOUT_DURATION } from './Slider.base';
 import { KeyCodes } from '../../Utilities';
+import type { ISlider } from './Slider.types';
 
 /* eslint-disable deprecation/deprecation */
 

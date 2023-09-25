@@ -6,7 +6,7 @@ import { mount } from 'enzyme';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { TooltipBase } from './Tooltip.base';
-import { ICalloutProps } from '../../Callout';
+import type { ICalloutProps } from '../../Callout';
 
 const defaultCalloutProps: ICalloutProps = {
   isBeakVisible: true,
@@ -51,7 +51,7 @@ describe('Tooltip', () => {
 
     const directionalHint = DirectionalHint.bottomLeftEdge;
     const directionalHintForRTL = DirectionalHint.topRightEdge;
-    const targetElement = (ReactTestUtils.renderIntoDocument(<div />) as unknown) as HTMLElement;
+    const targetElement = ReactTestUtils.renderIntoDocument(<div />) as unknown as HTMLElement;
     let onRenderCalled = false;
 
     const component = mount(

@@ -1,14 +1,14 @@
-import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import {
   AnimationVariables,
   getGlobalClassNames,
   HighContrastSelector,
-  IStyle,
   normalize,
   FontWeights,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import type { IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import type { IStyle } from '@fluentui/style-utilities';
 
 const globalClassNames = {
   count: 'ms-Pivot-count',
@@ -56,14 +56,6 @@ const getLinkStyles = (
         ':focus': {
           outline: 'none',
         },
-        [`.${IsFocusVisibleClassName} &:focus`]: {
-          outline: `1px solid ${semanticColors.focusBorder}`,
-        },
-        [`.${IsFocusVisibleClassName} &:focus:after`]: {
-          content: 'attr(data-content)',
-          position: 'relative',
-          border: 0,
-        },
       },
     },
     !isLinkInOverflowMenu && [
@@ -74,6 +66,15 @@ const getLinkStyles = (
         marginRight: 8,
         textAlign: 'center',
         selectors: {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            outline: `1px solid ${semanticColors.focusBorder}`,
+          },
+
+          [`.${IsFocusVisibleClassName} &:focus:after`]: {
+            content: 'attr(data-content)',
+            position: 'relative',
+            border: 0,
+          },
           ':before': {
             backgroundColor: 'transparent',
             bottom: 0,
@@ -110,7 +111,7 @@ const getLinkStyles = (
 
           selectors: {
             ':focus': {
-              outlineOffset: '-1px',
+              outlineOffset: '-2px',
             },
             [`.${IsFocusVisibleClassName} &:focus::before`]: {
               height: 'auto',
@@ -144,7 +145,7 @@ const getLinkStyles = (
                   backgroundColor: semanticColors.primaryButtonBackgroundHovered,
                   color: semanticColors.primaryButtonText,
                 },
-                '&:active': {
+                ':active': {
                   backgroundColor: semanticColors.primaryButtonBackgroundPressed,
                   color: semanticColors.primaryButtonText,
                 },
@@ -155,6 +156,9 @@ const getLinkStyles = (
                   ...getHighContrastNoAdjustStyle(),
                 },
               },
+            },
+            [`.${IsFocusVisibleClassName} &.${classNames.linkIsSelected}:focus`]: {
+              outlineColor: semanticColors.primaryButtonText,
             },
           },
         },

@@ -234,6 +234,7 @@ export const inputProperties = toObjectMap(buttonProperties, [
   'max', // input, meter
   'maxLength', // input, textarea
   'min', // input, meter
+  'minLength', // input, textarea
   'multiple', // input, select
   'pattern', // input
   'placeholder', // input, textarea
@@ -258,6 +259,7 @@ export const textAreaProperties = toObjectMap(buttonProperties, [
   'dirname', // input, textarea
   'form', // button, fieldset, input, label, meter, object, output, select, textarea
   'maxLength', // input, textarea
+  'minLength', // input, textarea
   'placeholder', // input, textarea
   'readOnly', // input, textarea
   'required', // input, select, textarea

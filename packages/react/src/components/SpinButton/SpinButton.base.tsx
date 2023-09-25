@@ -12,9 +12,10 @@ import {
   divProperties,
 } from '../../Utilities';
 import { getArrowButtonStyles } from './SpinButton.styles';
-import { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles, KeyboardSpinDirection } from './SpinButton.types';
+import { KeyboardSpinDirection } from './SpinButton.types';
 import { Position } from '../../Positioning';
 import { useAsync, useControllableValue, useWarnings, useId, usePrevious } from '@fluentui/react-hooks';
+import type { ISpinButtonProps, ISpinButtonStyleProps, ISpinButtonStyles } from './SpinButton.types';
 
 interface ISpinButtonInternalState {
   spinningByMouse?: boolean;
@@ -247,7 +248,7 @@ export const SpinButtonBase: React.FunctionComponent<ISpinButtonProps> = React.f
         // Edge case: if intermediateValue is set, this means that the user was editing the input
         // text and then started spinning (either with mouse or keyboard). We need to validate and
         // call onChange before starting to spin.
-        if (ev.type === 'keydown') {
+        if (ev.type === 'keydown' || ev.type === 'mousedown') {
           // For the arrow keys, we have to manually trigger validation.
           // (For the buttons, validation will happen automatically since the input's onBlur will
           // be triggered after mousedown on the button completes.)

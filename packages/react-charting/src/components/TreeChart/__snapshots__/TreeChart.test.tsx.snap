@@ -1,0 +1,3191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TreeChart snapshot testing renders treechart three layer compact composition correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone2"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
+  >
+    <svg
+      className="svgTree"
+      height={640}
+      width={1430}
+    >
+      <g
+        className="svgNode"
+      >
+        <rect
+          aria-label="nodeId: 0 
+nodeMainText: Root Node
+subText subtext Root Node"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#0099BC"
+          tabIndex={0}
+          width={225}
+          x={602.5}
+          y={10}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={42.608695652173914}
+          textAnchor="middle"
+          x={715}
+        >
+          Root Node 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={715}
+          >
+            subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 1 
+nodeMainText: Child 1
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #484644;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          dy={156.08695652173913}
+          textAnchor="middle"
+          x={321.25}
+        >
+          Child 1 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #000000;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                }
+            dy="1.4em"
+            x={321.25}
+          >
+            100% 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 2 
+nodeMainText: leaf1
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={208.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={260}
+        >
+          leaf1 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={260}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 3 
+nodeMainText: leaf2
+subText undefined Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={331.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #000000;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+              }
+          dy={300.7608695652174}
+          textAnchor="middle"
+          x={382.5}
+        >
+          leaf2 
+        </text>
+        <rect
+          aria-label="nodeId: 4 
+nodeMainText: leaf3
+subText The subtext is as follows: sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={208.75}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={260}
+        >
+          leaf3 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={260}
+          >
+            The subtext is as follows: sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 5 
+nodeMainText: leaf4
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={331.25}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={382.5}
+        >
+          leaf4 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={382.5}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 6 
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #000000;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+              }
+          dy={170.76086956521738}
+          textAnchor="middle"
+          x={583.75}
+        >
+          Child 2 is the child name 
+        </text>
+        <rect
+          aria-label="nodeId: 7 
+nodeMainText: leaf5
+subText sub Parent info parentId: 6
+      Child 2 is the child name
+      undefined"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={102.5}
+          x={471.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={522.5}
+        >
+          leaf5 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={522.5}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 8 
+nodeMainText: leaf6
+subText sub Parent info parentId: 6
+      Child 2 is the child name
+      undefined"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={102.5}
+          x={593.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={645}
+        >
+          leaf6 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={645}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 9 
+nodeMainText: Child 3
+subText The subtext is as follows: subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={225}
+          x={733.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={162.6086956521739}
+          textAnchor="middle"
+          x={846.25}
+        >
+          Child 3 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={846.25}
+          >
+            The subtext is as follows: subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 10 
+nodeMainText: leaf7
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={102.5}
+          x={733.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={785}
+        >
+          leaf7 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={785}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 11 
+nodeMainText: leaf8
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={102.5}
+          x={856.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={907.5}
+        >
+          leaf8 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={907.5}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 12 
+nodeMainText: leaf9
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={102.5}
+          x={733.75}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={785}
+        >
+          leaf9 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={785}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 13 
+nodeMainText: Child 4
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={225}
+          x={996.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #484644;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          dy={156.08695652173913}
+          textAnchor="middle"
+          x={1108.75}
+        >
+          Child 4 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #000000;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                }
+            dy="1.4em"
+            x={1108.75}
+          >
+            90% 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 14 
+nodeMainText: leaf10
+subText sub Parent info parentId: 13
+      Child 4
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={225}
+          x={996.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={1108.75}
+        >
+          leaf10 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={1108.75}
+          >
+            sub 
+          </tspan>
+        </text>
+      </g>
+      <g
+        className="svgLink"
+      >
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M208.75,110 H1221.25 M715,110
+    V85.21739130434783"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M321.25,205.2173913043478 V230
+    H208.75 H433.75"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M583.75,205.2173913043478 V230
+    H471.25 H696.25"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M846.25,205.2173913043478 V230
+    H733.75 H958.75"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M1108.75,205.2173913043478 V230
+    H996.25 H1221.25"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`TreeChart snapshot testing renders treechart three layer long composition correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone1"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
+  >
+    <svg
+      className="svgTree"
+      height={640}
+      width={1430}
+    >
+      <g
+        className="svgNode"
+      >
+        <rect
+          aria-label="nodeId: 0 
+nodeMainText: Root Node
+subText subtext Root Node"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#0099BC"
+          tabIndex={0}
+          width={225}
+          x={602.5}
+          y={10}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={42.608695652173914}
+          textAnchor="middle"
+          x={715}
+        >
+          Root Node 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={715}
+          >
+            subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 1 
+nodeMainText: Child 1
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #484644;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          dy={156.08695652173913}
+          textAnchor="middle"
+          x={321.25}
+        >
+          Child 1 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #000000;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                }
+            dy="1.4em"
+            x={321.25}
+          >
+            100% 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 2 
+nodeMainText: leaf1
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={321.25}
+        >
+          leaf1 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={321.25}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 3 
+nodeMainText: leaf2
+subText undefined Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #000000;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+              }
+          dy={385.9782608695652}
+          textAnchor="middle"
+          x={321.25}
+        >
+          leaf2 
+        </text>
+        <rect
+          aria-label="nodeId: 4 
+nodeMainText: leaf3
+subText The subtext is as follows: sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={430.4347826086956}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={463.04347826086956}
+          textAnchor="middle"
+          x={321.25}
+        >
+          leaf3 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={321.25}
+          >
+            The subtext is as follows: sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 5 
+nodeMainText: leaf4
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={515.6521739130435}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={548.2608695652174}
+          textAnchor="middle"
+          x={321.25}
+        >
+          leaf4 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={321.25}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 6 
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #000000;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+              }
+          dy={170.76086956521738}
+          textAnchor="middle"
+          x={583.75}
+        >
+          Child 2 is the child name 
+        </text>
+        <rect
+          aria-label="nodeId: 7 
+nodeMainText: leaf5
+subText sub Parent info parentId: 6
+      Child 2 is the child name
+      undefined"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={583.75}
+        >
+          leaf5 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={583.75}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 8 
+nodeMainText: leaf6
+subText sub Parent info parentId: 6
+      Child 2 is the child name
+      undefined"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={583.75}
+        >
+          leaf6 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={583.75}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 9 
+nodeMainText: Child 3
+subText The subtext is as follows: subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={225}
+          x={733.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={162.6086956521739}
+          textAnchor="middle"
+          x={846.25}
+        >
+          Child 3 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={846.25}
+          >
+            The subtext is as follows: subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 10 
+nodeMainText: leaf7
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={225}
+          x={733.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={846.25}
+        >
+          leaf7 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={846.25}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 11 
+nodeMainText: leaf8
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={225}
+          x={733.75}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={846.25}
+        >
+          leaf8 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={846.25}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 12 
+nodeMainText: leaf9
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={225}
+          x={733.75}
+          y={430.4347826086956}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={463.04347826086956}
+          textAnchor="middle"
+          x={846.25}
+        >
+          leaf9 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={846.25}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 13 
+nodeMainText: Child 4
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={225}
+          x={996.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #484644;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          dy={156.08695652173913}
+          textAnchor="middle"
+          x={1108.75}
+        >
+          Child 4 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #000000;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                }
+            dy="1.4em"
+            x={1108.75}
+          >
+            90% 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 14 
+nodeMainText: leaf10
+subText sub Parent info parentId: 13
+      Child 4
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={225}
+          x={996.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={1108.75}
+        >
+          leaf10 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={1108.75}
+          >
+            sub 
+          </tspan>
+        </text>
+      </g>
+      <g
+        className="svgLink"
+      >
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M208.75,110 H1221.25 M715,110
+    V85.21739130434783"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M321.25,205.2173913043478 V230
+    H208.75 H433.75"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M583.75,205.2173913043478 V230
+    H471.25 H696.25"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M846.25,205.2173913043478 V230
+    H733.75 H958.75"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M1108.75,205.2173913043478 V230
+    H996.25 H1221.25"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`TreeChart snapshot testing renders treechart three layer without composition correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone3"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
+  >
+    <svg
+      className="svgTree"
+      height={640}
+      width={1430}
+    >
+      <g
+        className="svgNode"
+      >
+        <rect
+          aria-label="nodeId: 0 
+nodeMainText: Root Node
+subText subtext Root Node"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#0099BC"
+          tabIndex={0}
+          width={225}
+          x={602.5}
+          y={10}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={42.608695652173914}
+          textAnchor="middle"
+          x={715}
+        >
+          Root Node 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={715}
+          >
+            subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 1 
+nodeMainText: Child 1
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #484644;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          dy={156.08695652173913}
+          textAnchor="middle"
+          x={321.25}
+        >
+          Child 1 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #000000;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                }
+            dy="1.4em"
+            x={321.25}
+          >
+            100% 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 2 
+nodeMainText: leaf1
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={208.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={260}
+        >
+          leaf1 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={260}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 3 
+nodeMainText: leaf2
+subText undefined Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={331.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #000000;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+              }
+          dy={300.7608695652174}
+          textAnchor="middle"
+          x={382.5}
+        >
+          leaf2 
+        </text>
+        <rect
+          aria-label="nodeId: 4 
+nodeMainText: leaf3
+subText The subtext is as follows: sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={208.75}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={260}
+        >
+          leaf3 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={260}
+          >
+            The subtext is as follows: sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 5 
+nodeMainText: leaf4
+subText sub Parent info parentId: 1
+      Child 1
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={102.5}
+          x={331.25}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={382.5}
+        >
+          leaf4 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={382.5}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 6 
+nodeMainText: Child 2 is the child name
+subText undefined Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #000000;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 20px;
+                font-weight: 600;
+              }
+          dy={170.76086956521738}
+          textAnchor="middle"
+          x={583.75}
+        >
+          Child 2 is the child name 
+        </text>
+        <rect
+          aria-label="nodeId: 7 
+nodeMainText: leaf5
+subText sub Parent info parentId: 6
+      Child 2 is the child name
+      undefined"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={583.75}
+        >
+          leaf5 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={583.75}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 8 
+nodeMainText: leaf6
+subText sub Parent info parentId: 6
+      Child 2 is the child name
+      undefined"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={583.75}
+        >
+          leaf6 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={583.75}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 9 
+nodeMainText: Child 3
+subText The subtext is as follows: subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={225}
+          x={733.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={162.6086956521739}
+          textAnchor="middle"
+          x={846.25}
+        >
+          Child 3 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={846.25}
+          >
+            The subtext is as follows: subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 10 
+nodeMainText: leaf7
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={102.5}
+          x={733.75}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={785}
+        >
+          leaf7 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={785}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 11 
+nodeMainText: leaf8
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={102.5}
+          x={856.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={907.5}
+        >
+          leaf8 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={907.5}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 12 
+nodeMainText: leaf9
+subText sub Parent info parentId: 9
+      Child 3
+      The subtext is as follows: subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={102.5}
+          x={733.75}
+          y={345.2173913043478}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={377.82608695652175}
+          textAnchor="middle"
+          x={785}
+        >
+          leaf9 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={785}
+          >
+            sub 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 13 
+nodeMainText: Child 4
+subText subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={225}
+          x={996.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: #484644;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+              }
+          dy={156.08695652173913}
+          textAnchor="middle"
+          x={1108.75}
+        >
+          Child 4 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #000000;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 20px;
+                  font-weight: 600;
+                }
+            dy="1.4em"
+            x={1108.75}
+          >
+            90% 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 14 
+nodeMainText: leaf10
+subText sub Parent info parentId: 13
+      Child 4
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={225}
+          x={996.25}
+          y={260}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={292.60869565217394}
+          textAnchor="middle"
+          x={1108.75}
+        >
+          leaf10 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={1108.75}
+          >
+            sub 
+          </tspan>
+        </text>
+      </g>
+      <g
+        className="svgLink"
+      >
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M208.75,110 H1221.25 M715,110
+    V85.21739130434783"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M321.25,205.2173913043478 V230
+    H208.75 H433.75"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M583.75,205.2173913043478 V230
+    H471.25 H696.25"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M846.25,205.2173913043478 V230
+    H733.75 H958.75"
+        />
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M1108.75,205.2173913043478 V230
+    H996.25 H1221.25"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`TreeChart snapshot testing renders treechart two layer correctly 1`] = `
+<div
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
+  data-focuszone-id="FocusZone0"
+  onFocus={[Function]}
+  onKeyDown={[Function]}
+  onMouseDownCapture={[Function]}
+>
+  <div
+    className=
+        ms-TreeChart
+        {
+          l1: 20px;
+          l2: 32px;
+          m: 16px;
+          overflow: scroll;
+          s1: 8px;
+          s2: 4px;
+        }
+  >
+    <svg
+      className="svgTree"
+      height={640}
+      width={1430}
+    >
+      <g
+        className="svgNode"
+      >
+        <rect
+          aria-label="nodeId: 0 
+nodeMainText: Root Node
+subText subtext Root Node"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#0099BC"
+          tabIndex={0}
+          width={225}
+          x={602.5}
+          y={10}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={42.608695652173914}
+          textAnchor="middle"
+          x={715}
+        >
+          Root Node 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={715}
+          >
+            subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 1 
+nodeMainText: Child 1
+subText Subtext val is subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#4F6BED"
+          tabIndex={0}
+          width={225}
+          x={208.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={162.6086956521739}
+          textAnchor="middle"
+          x={321.25}
+        >
+          Child 1 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={321.25}
+          >
+            Subtext val is subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 2 
+nodeMainText: Child 2
+subText Subtext val is subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#881798"
+          tabIndex={0}
+          width={225}
+          x={471.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={162.6086956521739}
+          textAnchor="middle"
+          x={583.75}
+        >
+          Child 2 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={583.75}
+          >
+            Subtext val is subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 3 
+nodeMainText: Child 3
+subText Subtext val is subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#AE8C00"
+          tabIndex={0}
+          width={225}
+          x={733.75}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={162.6086956521739}
+          textAnchor="middle"
+          x={846.25}
+        >
+          Child 3 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={846.25}
+          >
+            Subtext val is subtext 
+          </tspan>
+        </text>
+        <rect
+          aria-label="nodeId: 4 
+nodeMainText: Child 4
+subText Subtext val is subtext Parent info parentId: 0
+      Root Node
+      subtext"
+          className=
+
+              {
+                fill: white;
+                padding-bottom: 10px;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 10px;
+                rx: 2px;
+                stroke-width: 2px;
+              }
+          data-is-focusable={true}
+          height={65.21739130434783}
+          role="text"
+          stroke="#FF00FF"
+          tabIndex={0}
+          width={225}
+          x={996.25}
+          y={130}
+        />
+        <text
+          className=
+
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                fill: black;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 18px;
+                font-weight: 400;
+              }
+          dy={162.6086956521739}
+          textAnchor="middle"
+          x={1108.75}
+        >
+          Child 4 
+          <tspan
+            className=
+
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  fill: #484644;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                }
+            dy="1.4em"
+            x={1108.75}
+          >
+            Subtext val is subtext 
+          </tspan>
+        </text>
+      </g>
+      <g
+        className="svgLink"
+      >
+        <path
+          className=
+
+              {
+                fill: none;
+                stroke-width: 2px;
+                stroke: #A1A1A1;
+              }
+          d="M208.75,110 H1221.25 M715,110
+    V85.21739130434783"
+        />
+      </g>
+    </svg>
+  </div>
+</div>
+`;

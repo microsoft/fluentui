@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { styled } from '../../../Utilities';
 import { ChoiceGroupOptionBase } from './ChoiceGroupOption.base';
-import {
+import { getStyles } from './ChoiceGroupOption.styles';
+import type {
   IChoiceGroupOptionProps,
   IChoiceGroupOptionStyleProps,
   IChoiceGroupOptionStyles,
 } from './ChoiceGroupOption.types';
-import { getStyles } from './ChoiceGroupOption.styles';
 
 export const ChoiceGroupOption: React.FunctionComponent<IChoiceGroupOptionProps> = styled<
   IChoiceGroupOptionProps,

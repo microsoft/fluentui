@@ -44,7 +44,6 @@ exports[`DetailsHeader can render 1`] = `
   role="row"
 >
   <div
-    aria-colindex={1}
     aria-labelledby="header0-checkTooltip"
     className=
         ms-DetailsHeader-cell
@@ -225,7 +224,7 @@ exports[`DetailsHeader can render 1`] = `
                   vertical-align: middle;
                   width: 18px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   color: WindowText;
                 }
             data-icon-name="CircleRing"
@@ -271,7 +270,7 @@ exports[`DetailsHeader can render 1`] = `
                 &:hover {
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   forced-color-adjust: none;
                 }
@@ -289,7 +288,6 @@ exports[`DetailsHeader can render 1`] = `
     </span>
   </div>
   <div
-    aria-colindex={2}
     aria-labelledby="header0-a-name"
     aria-sort="none"
     className=
@@ -347,8 +345,11 @@ exports[`DetailsHeader can render 1`] = `
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="a"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -369,7 +370,6 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-haspopup={false}
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -400,7 +400,6 @@ exports[`DetailsHeader can render 1`] = `
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header0-a"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -479,7 +478,6 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-colindex={3}
     aria-labelledby="header0-b-name"
     aria-sort="ascending"
     className=
@@ -538,8 +536,11 @@ exports[`DetailsHeader can render 1`] = `
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="b"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -560,7 +561,6 @@ exports[`DetailsHeader can render 1`] = `
           }
     >
       <span
-        aria-haspopup={false}
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -591,7 +591,6 @@ exports[`DetailsHeader can render 1`] = `
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header0-b"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -701,7 +700,6 @@ exports[`DetailsHeader can render 1`] = `
     role="button"
   />
   <div
-    aria-colindex={4}
     aria-labelledby="header0-c-name"
     aria-sort="none"
     className=
@@ -759,8 +757,11 @@ exports[`DetailsHeader can render 1`] = `
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="c"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -782,7 +783,7 @@ exports[`DetailsHeader can render 1`] = `
     >
       <span
         aria-expanded={false}
-        aria-haspopup={true}
+        aria-haspopup="menu"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -813,7 +814,6 @@ exports[`DetailsHeader can render 1`] = `
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header0-c"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -969,7 +969,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
   role="row"
 >
   <div
-    aria-colindex={1}
     aria-labelledby="header2-checkTooltip"
     className=
         ms-DetailsHeader-cell
@@ -1077,7 +1076,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     </span>
   </div>
   <div
-    aria-colindex={2}
     aria-labelledby="header2-a-name"
     aria-sort="none"
     className=
@@ -1135,8 +1133,11 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="a"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -1157,7 +1158,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           }
     >
       <span
-        aria-haspopup={false}
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1188,7 +1188,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header2-a"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1267,7 +1266,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     role="button"
   />
   <div
-    aria-colindex={3}
     aria-labelledby="header2-b-name"
     aria-sort="ascending"
     className=
@@ -1326,8 +1324,11 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="b"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -1348,7 +1349,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           }
     >
       <span
-        aria-haspopup={false}
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1379,7 +1379,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header2-b"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1489,7 +1488,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     role="button"
   />
   <div
-    aria-colindex={4}
     aria-labelledby="header2-c-name"
     aria-sort="none"
     className=
@@ -1547,8 +1545,11 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="c"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -1570,7 +1571,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
     >
       <span
         aria-expanded={false}
-        aria-haspopup={true}
+        aria-haspopup="menu"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -1601,7 +1602,6 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header2-c"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -1757,7 +1757,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
   role="row"
 >
   <div
-    aria-colindex={1}
     aria-labelledby="header6-checkTooltip"
     className=
         ms-DetailsHeader-cell
@@ -1939,7 +1938,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                   vertical-align: middle;
                   width: 18px;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   color: WindowText;
                 }
             data-icon-name="CircleRing"
@@ -1985,7 +1984,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
                 &:hover {
                   opacity: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   forced-color-adjust: none;
                 }
@@ -2027,7 +2026,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     Toggle selection for all items
   </label>
   <div
-    aria-colindex={2}
     aria-labelledby="header6-a-name"
     aria-sort="none"
     className=
@@ -2085,8 +2083,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="a"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -2107,7 +2108,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-haspopup={false}
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2138,7 +2138,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header6-a"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -2217,9 +2216,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="button"
   />
   <div
-    aria-colindex={3}
     aria-describedby="header6-b-tooltip"
-    aria-labelledby="header6-b-name"
+    aria-label="Click to sort."
     aria-sort="ascending"
     className=
         ms-DetailsHeader-cell
@@ -2277,8 +2275,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="b"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -2299,7 +2300,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           }
     >
       <span
-        aria-haspopup={false}
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2330,7 +2330,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header6-b"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -2402,9 +2401,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           white-space: nowrap;
           width: 1px;
         }
+    hidden={true}
     id="header6-b-tooltip"
   >
-    Click to sort.
     Sorted up.
   </label>
   <div
@@ -2464,9 +2463,8 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     role="button"
   />
   <div
-    aria-colindex={4}
     aria-describedby="header6-c-tooltip"
-    aria-labelledby="header6-c-name"
+    aria-label="Click to sort, filter, or group."
     aria-sort="none"
     className=
         ms-DetailsHeader-cell
@@ -2524,8 +2522,11 @@ exports[`DetailsHeader renders accessible labels 1`] = `
         }
     data-automationid="ColumnsHeaderColumn"
     data-is-draggable={false}
+    data-is-focusable="true"
     data-item-key="c"
     draggable={false}
+    onBlur={[Function]}
+    onFocus={[Function]}
     role="columnheader"
     style={
       Object {
@@ -2547,7 +2548,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
     >
       <span
         aria-expanded={false}
-        aria-haspopup={true}
+        aria-haspopup="menu"
         className=
             ms-DetailsHeader-cellTitle
             {
@@ -2578,7 +2579,6 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               top: 1px;
               z-index: 1;
             }
-        data-is-focusable={true}
         id="header6-c"
         onClick={[Function]}
         onContextMenu={[Function]}
@@ -2710,9 +2710,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           white-space: nowrap;
           width: 1px;
         }
+    hidden={true}
     id="header6-c-tooltip"
   >
-    Click to sort, filter, or group.
     Filtered.
     Grouped.
   </label>

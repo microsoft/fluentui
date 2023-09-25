@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IGroupSpacerProps } from './GroupSpacer.types';
+import type { IGroupSpacerProps } from './GroupSpacer.types';
 
 export const SPACER_WIDTH = 36;
 

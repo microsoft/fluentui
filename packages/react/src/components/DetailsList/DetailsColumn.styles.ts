@@ -1,7 +1,8 @@
-import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle, FontWeights } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, FontWeights } from '../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
+import type { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   isActionable: 'is-actionable',
@@ -24,7 +25,7 @@ const GlobalClassNames = {
   nearIcon: 'ms-DetailsColumn-nearIcon',
 };
 
-export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles => {
+export const getDetailsColumnStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles => {
   const {
     theme,
     headerClassName,
@@ -189,7 +190,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
 
     accessibleLabel: hiddenContentStyle,
 
-    borderWhileDragging: borderWhileDragging,
+    borderWhileDragging,
 
     noBorderWhileDragging: [borderAfterDragOrDrop, { transition: `outline ${transitionDurationDrag}ms ease` }],
 

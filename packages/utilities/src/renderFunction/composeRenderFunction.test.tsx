@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
-import { IRenderFunction } from '../IRenderFunction';
 import { composeRenderFunction } from './composeRenderFunction';
+import type { IRenderFunction } from '../IRenderFunction';
 
 interface IExampleProps {
   value: string;

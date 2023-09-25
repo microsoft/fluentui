@@ -1,20 +1,14 @@
 {
+  "extends": "../../tsconfig.base.v8.json",
   "compilerOptions": {
     "target": "es5",
     "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
     "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "moduleResolution": "node",
     "preserveConstEnums": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
-    "lib": ["es6", "dom"],
-    "types": ["webpack-env"],
-    "skipLibCheck": true
+    "lib": ["ES2015", "DOM"],
+    "types": ["webpack-env", "node"]
   },
   "include": ["src"]
 }

@@ -1,5 +1,5 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
-import { IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
+import type { IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 
 const GlobalClassNames = {
   root: 'ms-PlainCard-root',

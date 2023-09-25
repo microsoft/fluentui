@@ -11,6 +11,7 @@ import {
   IVerticalStackedChartProps,
 } from '../../index';
 import { IVerticalStackedBarChartState, VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
+import toJson from 'enzyme-to-json';
 
 // Wrapper of the VerticalStackedBarChart to be tested.
 let wrapper:
@@ -69,10 +70,21 @@ const secondChartPoints: IVSChartDataPoint[] = [
   },
 ];
 
-const chartPoints: IVerticalStackedChartProps[] = [
+export const chartPoints: IVerticalStackedChartProps[] = [
   { chartData: firstChartPoints, xAxisPoint: 0 },
   { chartData: secondChartPoints, xAxisPoint: 20 },
 ];
+
+const chartPoints2: IVerticalStackedChartProps[] = [
+  { chartData: firstChartPoints, xAxisPoint: 0, lineData: [{ y: 15, legend: 'Line1', color: DefaultPalette.yellow }] },
+  {
+    chartData: secondChartPoints,
+    xAxisPoint: 20,
+    lineData: [{ y: 30, legend: 'Line1', color: DefaultPalette.yellow }],
+  },
+];
+
+export const emptyChartPoints: IVerticalStackedChartProps[] = [{ chartData: [], xAxisPoint: 0 }];
 
 describe('VerticalStackedBarChart snapShot testing', () => {
   it('renders VerticalStackedBarChart correctly', () => {
@@ -119,6 +131,12 @@ describe('VerticalStackedBarChart snapShot testing', () => {
 
   it('renders yAxisTickFormat correctly', () => {
     const component = renderer.create(<VerticalStackedBarChart data={chartPoints} yAxisTickFormat={'/%d'} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render bar labels', () => {
+    const component = renderer.create(<VerticalStackedBarChart data={chartPoints} hideLabels={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -225,5 +243,99 @@ describe('Render calling with respective to props', () => {
     component.setProps({ ...props, hideTooltip: true });
     expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
+  });
+});
+
+describe('VerticalStackedBarChart - mouse events', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+
+  it('Should render callout correctly on mouseover', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+    );
+
+    // Wait for the chart to be resized
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+
+    wrapper.find('rect').at(0).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render callout correctly on mousemove', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} enabledLegendsWrapLines />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(2).simulate('mousemove');
+    const html1 = wrapper.html();
+    wrapper.find('rect').at(3).simulate('mousemove');
+    const html2 = wrapper.html();
+    expect(html1).not.toBe(html2);
+  });
+
+  it('Should render customized callout on mouseover', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart
+        data={chartPoints}
+        calloutProps={{ doNotLayer: true }}
+        enabledLegendsWrapLines
+        onRenderCalloutPerDataPoint={(props: IVSChartDataPoint) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should render customized callout per stack on mouseover', async () => {
+    wrapper = mount(
+      <VerticalStackedBarChart
+        data={chartPoints2}
+        calloutProps={{ doNotLayer: true }}
+        enabledLegendsWrapLines
+        onRenderCalloutPerStack={(props: IVerticalStackedChartProps) =>
+          props ? (
+            <div>
+              <pre>{JSON.stringify(props, null, 2)}</pre>
+            </div>
+          ) : null
+        }
+      />,
+    );
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
+    wrapper.find('rect').at(0).simulate('mouseover');
+    const tree = toJson(wrapper, { mode: 'deep' });
+    expect(tree).toMatchSnapshot();
+  });
+});
+
+describe('Render empty chart aria label div when chart is empty', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<VerticalStackedBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<VerticalStackedBarChart data={emptyChartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

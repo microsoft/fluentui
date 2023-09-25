@@ -17,13 +17,13 @@ import {
 import { ShorthandValue, ComponentEventHandler, FluentComponentStaticProps } from '../../types';
 import { Box, BoxProps } from '../Box/Box';
 import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useFluentContext,
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface CarouselNavigationItemSlotClassNames {
@@ -67,10 +67,16 @@ export interface CarouselNavigationItemProps extends UIComponentProps, ChildrenC
   vertical?: boolean;
 
   thumbnails?: boolean;
+
+  /** A navigation may be clickable */
+  disableClickableNav?: boolean;
 }
 
 export type CarouselNavigationItemStylesProps = Required<
-  Pick<CarouselNavigationItemProps, 'thumbnails' | 'vertical' | 'active' | 'iconOnly' | 'primary'>
+  Pick<
+    CarouselNavigationItemProps,
+    'thumbnails' | 'vertical' | 'active' | 'iconOnly' | 'primary' | 'disableClickableNav'
+  >
 > & {
   hasContent: boolean;
   hasIndicator: boolean;
@@ -85,8 +91,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
 /**
  * A CarouselItem is an actionable item within a Carousel.
  */
-export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationItemProps> &
-  FluentComponentStaticProps<CarouselNavigationItemProps> = props => {
+export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNavigationItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
@@ -104,6 +109,7 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
     design,
     styles,
     variables,
+    disableClickableNav,
   } = props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(CarouselNavigationItem.handledProps, props);
@@ -130,6 +136,7 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
         iconOnly,
         primary,
         hasIndicator: !!indicator,
+        disableClickableNav,
       }),
       mapPropsToInlineStyles: () => ({
         className,
@@ -176,6 +183,7 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
         onBlur: handleBlur,
         onFocus: handleFocus,
         onClick: handleClick,
+        ref,
         ...unhandledProps,
       })}
       {...rtlTextContainer.getAttributes({ forElements: [children] })}
@@ -187,7 +195,8 @@ export const CarouselNavigationItem: ComponentWithAs<'li', CarouselNavigationIte
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, CarouselNavigationItemProps> &
+  FluentComponentStaticProps<CarouselNavigationItemProps>;
 
 CarouselNavigationItem.displayName = 'CarouselNavigationItem';
 
@@ -202,6 +211,7 @@ CarouselNavigationItem.propTypes = {
   secondary: customPropTypes.every([customPropTypes.disallow(['primary']), PropTypes.bool]),
   vertical: PropTypes.bool,
   thumbnails: PropTypes.bool,
+  disableClickableNav: PropTypes.bool,
 };
 
 CarouselNavigationItem.handledProps = Object.keys(CarouselNavigationItem.propTypes) as any;

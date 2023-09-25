@@ -1,6 +1,7 @@
 import { css, ElementStyles } from '@microsoft/fast-element';
-import { display, ElementDefinitionContext, FoundationElementDefinition } from '@microsoft/fast-foundation';
-import { controlCornerRadius, neutralFillRest } from '../design-tokens';
+import { display, ElementDefinitionContext, forcedColorsStylesheetBehavior, FoundationElementDefinition } from '@microsoft/fast-foundation';
+import { SystemColors } from "@microsoft/fast-web-utilities";
+import { controlCornerRadius, neutralFillSecondaryHover, neutralFillSecondaryRest } from '../design-tokens';
 
 export const skeletonStyles: (
   context: ElementDefinitionContext,
@@ -8,7 +9,7 @@ export const skeletonStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     ${display('block')} :host {
-      --skeleton-fill-default: #e1dfdd;
+      --skeleton-fill-default: ${neutralFillSecondaryRest};
       overflow: hidden;
       width: 100%;
       position: relative;
@@ -16,7 +17,7 @@ export const skeletonStyles: (
       --skeleton-animation-gradient-default: linear-gradient(
         270deg,
         var(--skeleton-fill, var(--skeleton-fill-default)) 0%,
-        #f3f2f1 51.13%,
+        ${neutralFillSecondaryHover} 51%,
         var(--skeleton-fill, var(--skeleton-fill-default)) 100%
       );
       --skeleton-animation-timing-default: ease-in-out;
@@ -50,7 +51,7 @@ export const skeletonStyles: (
       background-image: var(--skeleton-animation-gradient, var(--skeleton-animation-gradient-default));
       background-size: 0px 0px / 90% 100%;
       background-repeat: no-repeat;
-      background-color: var(--skeleton-animation-fill, ${neutralFillRest});
+      background-color: var(--skeleton-animation-fill, ${neutralFillSecondaryRest});
       animation: shimmer 2s infinite;
       animation-timing-function: var(--skeleton-animation-timing, var(--skeleton-timing-default));
       animation-direction: normal;
@@ -74,4 +75,12 @@ export const skeletonStyles: (
         transform: translateX(100%);
       }
     }
-  `;
+  `.withBehaviors(
+    forcedColorsStylesheetBehavior(
+      css`
+        :host{
+          background-color: ${SystemColors.CanvasText};
+        }
+      `
+    )
+  );

@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from './KeytipLayer.types';
 import { getLayerStyles } from './KeytipLayer.styles';
-import { Keytip, IKeytipProps } from '../../Keytip';
+import { Keytip } from '../../Keytip';
 import { Layer } from '../../Layer';
 import {
   classNamesFunction,
@@ -13,22 +12,22 @@ import {
   Async,
   initializeComponentRef,
   KeyCodes,
+  isElementVisibleAndNotHidden,
 } from '../../Utilities';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
 import { KeytipTree } from './KeytipTree';
-import { IKeytipTreeNode } from './IKeytipTreeNode';
 import {
   ktpTargetFromId,
   ktpTargetFromSequences,
   sequencesToID,
   mergeOverflows,
 } from '../../utilities/keytips/KeytipUtils';
-import {
-  transitionKeysContain,
-  KeytipTransitionModifier,
-  IKeytipTransitionKey,
-} from '../../utilities/keytips/IKeytipTransitionKey';
+import { transitionKeysContain } from '../../utilities/keytips/IKeytipTransitionKey';
 import { KeytipEvents, KTP_LAYER_ID, KTP_ARIA_SEPARATOR } from '../../utilities/keytips/KeytipConstants';
+import type { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } from './KeytipLayer.types';
+import type { IKeytipProps } from '../../Keytip';
+import type { IKeytipTreeNode } from './IKeytipTreeNode';
+import type { KeytipTransitionModifier, IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -199,7 +198,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     } else if (transitionKeysContain(this.props.keytipStartSequences!, transitionKey) && !currKtp) {
       // If key sequence is in 'entry sequences' and currentKeytip is null, we enter keytip mode
       this._keyHandled = true;
-      this._enterKeytipMode();
+      this._enterKeytipMode(transitionKey);
       this._warnIfDuplicateKeytips();
     }
   }
@@ -287,7 +286,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   /**
    * Enters keytip mode for this layer
    */
-  private _enterKeytipMode(): void {
+  private _enterKeytipMode(transitionKey?: IKeytipTransitionKey): void {
     if (this._keytipManager.shouldEnterKeytipMode) {
       if (this._keytipManager.delayUpdatingKeytipChange) {
         this._buildTree();
@@ -300,7 +299,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
       this._setInKeytipMode(true /* inKeytipMode */);
 
       if (this.props.onEnterKeytipMode) {
-        this.props.onEnterKeytipMode();
+        this.props.onEnterKeytipMode(transitionKey);
       }
     }
   }
@@ -378,9 +377,22 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
         keytipId = sequencesToID(mergeOverflows(keytip.keySequences, keytip.overflowSetSequence));
       }
       seenIds[keytipId] = seenIds[keytipId] ? seenIds[keytipId] + 1 : 1;
-      return keytip.visible && seenIds[keytipId] === 1;
+
+      // Return true only if the keytip is visible and the corresponding target is also visible
+      return keytip.visible && this._isKeytipInstanceTargetVisible(keytip.keySequences, seenIds[keytipId]);
     });
   }
+
+  private _isKeytipInstanceTargetVisible = (keySequences: string[], instanceCount: number): boolean => {
+    const targetSelector = ktpTargetFromSequences(keySequences);
+    const matchingElements = document.querySelectorAll(targetSelector);
+
+    // If there are multiple elements for the keytip sequence, return true if the element instance
+    // that corresponds to the keytip instance is visible, otherwise return if there is only one instance
+    return matchingElements.length > 1 && instanceCount <= matchingElements.length
+      ? isElementVisibleAndNotHidden(matchingElements[instanceCount - 1] as HTMLElement)
+      : instanceCount === 1;
+  };
 
   private _onDismiss = (ev?: React.MouseEvent<HTMLElement>): void => {
     // if we are in keytip mode, then exit keytip mode
@@ -655,7 +667,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
    * @param inKeytipMode - Boolean so set whether we are in keytip mode or not
    */
   private _setInKeytipMode = (inKeytipMode: boolean): void => {
-    this.setState({ inKeytipMode: inKeytipMode });
+    this.setState({ inKeytipMode });
     this._keytipManager.inKeytipMode = inKeytipMode;
   };
 

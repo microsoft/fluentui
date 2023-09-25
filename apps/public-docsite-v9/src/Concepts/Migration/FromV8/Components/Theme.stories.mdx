@@ -1,0 +1,119 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Theme Migration" />
+
+# Theme Migration
+
+There are several important differences between v8 and v9 in how style and theme are managed.
+During the migration process, you will likely have components from both versions side-by-side.
+
+You may decide you want components to all look like v8, all look like v9, or be OK with a mixture but from the same color palette.
+
+## Approach differences
+
+### ThemeProvider -> FluentProvider
+
+ThemeProvider sets theme values on the React context for use in CSS-in-JS.
+FluentProvider applies theme values as CSS variables.
+
+This change from CSS-in-JS themes to CSS variable themes is the biggest difference between v8 and v9 themes and styles.
+Beyond consistency with the latest Fluent Design system, this change provides significant performance improvements and reduction of bundle sizes.
+
+#### Portals
+
+To be use v9 components inside v8 components like `Panel` & `Callout`, please enable [portal compatibility](?path=/docs/concepts-migration-from-v8-troubleshooting--page).
+
+### Theme (v8) => Theme (v9)
+
+Although they have different property structures, v8 and v9 `Theme` types both define the values for colors, fonts, layout, and effects.
+
+Both use branded set of colors to generate different theme instances.
+In v8 themes are seeded with `IPalette` along with some hard-coded colors.
+In v9, themes are seeded with `BrandVariants` along with the set of global colors.
+
+### IPalette -> BrandVariants
+
+`IPalette` consists of 12 neutral colors, 9 theme colors, and 28 shared colors.
+`BrandVariants` consists of a ramp of 16 theme colors.
+
+### Theme.ComponentStyles -> tokens
+
+v8 has a set of semantic colors that apply to specific parts of controls.
+For example, `buttonBackgroundHovered`.
+These component styles are used through a theme parameter when creating style objects.
+
+v9 provides a collection of global tokens and alias tokens.
+The global tokens define specific color, layout, and effect values but aren't used directly when applying theme styles in the code.
+The alias tokens define general purpose color, layout, and effect values useful across many types of controls.
+For example, 'colorNeutralBackground1Hover'.
+A component like button would use this token when styling the background in the hover state.
+
+### CSS-in-JS style objects -> makeStyles
+
+In v8, custom styles were created by defining style objects in Javascript.
+The types of style objects mapped closely to the structural hierarchy of the particular component.
+Style objects could be built by parameterized functions taking theme object or other state to produce the result at runtime.
+
+In v9, makeStyles helps define static styles that can be optimized at build time.
+The makeStyles function returns a hook that can be used during component render.
+
+### mergeStyles -> mergeClasses
+
+In v8, mergeStyles combines a set of style objects to return a merged style object.
+The ordering of the parameters determines which styles overwrote preceding styles.
+
+In v9, mergeClasses takes a list of class names from makeStyles and returns the class names optimized for de-duping and minimal bundle size.
+
+### styles -> className
+
+In v8, the styles prop was provided on each Fluent UI component.
+Callers could pass a style object to customize the style of a component.
+
+In v9, there is no custom prop for styling. The React className prop is used.
+Callers pass class names just like they would in any React code.
+Class names are built using makeStyles and mergeClasses.
+
+## Creating compatible themes
+
+When you have v8 and v9 components running side-by-side, you will need to apply both a v8 theme and a v9 theme.
+Add a v9 `FluentProvider` each place you have a v8 `ThemeProvider`.
+Pass each their respective theme instances.
+
+### Default themes
+
+If you are using the default light or dark theme from v8, you can use the v9 `webLightTheme` or `webDarkTheme`.
+This will give you pretty close consistency especially if you have moved to v9 for all of one component type.
+
+For example, if all your buttons are v9 buttons then users likely won't notice small color differences between button and input components.
+If you have a mixture of v8 and v9 buttons then the differences are more noticeable.
+
+### Custom themes
+
+Both v8 and v9 have helper methods for creating custom themes.
+If you have custom v8 themes, you can define v9 themes with similar color sets.
+
+You can do this by mapping the theme colors from the `IPalette` to the `BrandVariants`.
+There are 7 more values in the `BrandVariants`, so you will need to expand the color set.
+
+If this is too tedious a process, you can use shim methods to more easily create compatible themes.
+
+### Compatible themes
+
+If you want to minimize visual differences, you can make the themes more alike.
+
+We recommend by making your v8 theme look more like v9.
+You can do this through the [`createv8Theme`](https://github.com/microsoft/fluentui/blob/master/apps/public-docsite-v9/src/shims/ThemeShim/v8ThemeShim.ts) shim function.
+This function takes a v9 theme and brand variants to produce a v8 theme with matching styles.
+
+In the case you want to keep things looking like v8 for now, you have a couple of options.
+
+You can use the [`createBrandVariants`](https://github.com/microsoft/fluentui/blob/master/apps/public-docsite-v9/src/shims/ThemeShim/v9BrandVariantsShim.ts) shim function.
+This function takes a v8 `IPalette` and returns a `BrandVariants` you can use to create a v9 theme.
+The brand colors are created from the palette using one of the available interpolation algorithms.
+This is a good approach when you are concerned only about color compatibility.
+
+You can use the [`createv9Theme`](https://github.com/microsoft/fluentui/blob/master/apps/public-docsite-v9/src/shims/ThemeShim/v9ThemeShim.ts) shim function.
+This function takes a v8 theme and returns a v9 theme with as closely matching styles as possible.
+
+> Important: Shim code is not published as a package.
+> You will need to bring any shim code into your project in order to use it.

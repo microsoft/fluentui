@@ -1,8 +1,5 @@
-import { preset, task, series } from '@fluentui/scripts';
-import { generateJsonTask } from './tasks/generateJsonTask';
+import { preset, task } from '@fluentui/scripts-tasks';
 
 preset();
 
-task('generate-json', generateJsonTask);
-
-task('build', series('build:node-lib', 'generate-json')).cached();
+task('build', 'build:node-lib').cached!();

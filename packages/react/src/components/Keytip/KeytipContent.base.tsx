@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
-import { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
+import type { IKeytipProps, IKeytipStyleProps, IKeytipStyles } from './Keytip.types';
 
 /**
  * A component corresponding the content rendered inside the callout of the keytip component.

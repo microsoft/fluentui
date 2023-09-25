@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   DetailsList,
   DetailsListLayoutMode,
@@ -220,10 +220,10 @@ const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentC
 const cropTo = { cropTo: '.testWrapper' };
 
 storiesOf('Sticky breadcrumb and sticky details list header', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', cropTo)
         .executeScript(`${getElement}.scrollTop = 5`)
         .snapshot(
@@ -243,7 +243,7 @@ storiesOf('Sticky breadcrumb and sticky details list header', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('ScrollablePane Sticky Breadcrumb Details List', () => (
     <ScrollablePaneStickyBreadcrumbExample />

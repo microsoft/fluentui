@@ -1,0 +1,150 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox renders a custom indicator 1`] = `
+<div>
+  <span
+    class="fui-Checkbox"
+  >
+    <input
+      class="fui-Checkbox__input"
+      id="checkbox-1"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-Checkbox__indicator"
+    >
+      <span
+        id="indicator"
+      />
+    </div>
+    <label
+      class="fui-Label fui-Checkbox__label"
+      for="checkbox-1"
+    >
+      Custom indicator
+    </label>
+  </span>
+</div>
+`;
+
+exports[`Checkbox renders a default state 1`] = `
+<div>
+  <span
+    class="fui-Checkbox"
+  >
+    <input
+      class="fui-Checkbox__input"
+      id="checkbox-1"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-Checkbox__indicator"
+    />
+  </span>
+</div>
+`;
+
+exports[`Checkbox renders checked 1`] = `
+<div>
+  <span
+    class="fui-Checkbox"
+  >
+    <input
+      checked=""
+      class="fui-Checkbox__input"
+      id="checkbox-1"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-Checkbox__indicator"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="12"
+        viewBox="0 0 12 12"
+        width="12"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    <label
+      class="fui-Label fui-Checkbox__label"
+      for="checkbox-1"
+    >
+      Checked Checkbox
+    </label>
+  </span>
+</div>
+`;
+
+exports[`Checkbox renders mixed 1`] = `
+<div>
+  <span
+    class="fui-Checkbox"
+  >
+    <input
+      class="fui-Checkbox__input"
+      id="checkbox-1"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-Checkbox__indicator"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="12"
+        viewBox="0 0 12 12"
+        width="12"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M2 4c0-1.1.9-2 2-2h4a2 2 0 0 1 2 2v4a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V4Z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    <label
+      class="fui-Label fui-Checkbox__label"
+      for="checkbox-1"
+    >
+      Mixed Checkbox
+    </label>
+  </span>
+</div>
+`;
+
+exports[`Checkbox renders with a label 1`] = `
+<div>
+  <span
+    class="fui-Checkbox"
+  >
+    <input
+      class="fui-Checkbox__input"
+      id="checkbox-1"
+      type="checkbox"
+    />
+    <div
+      aria-hidden="true"
+      class="fui-Checkbox__indicator"
+    />
+    <label
+      class="fui-Label fui-Checkbox__label"
+      for="checkbox-1"
+    >
+      Unchecked Checkbox
+    </label>
+  </span>
+</div>
+`;

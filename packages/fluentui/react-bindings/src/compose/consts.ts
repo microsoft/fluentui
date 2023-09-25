@@ -12,14 +12,14 @@ export interface ShorthandConfig<TProps> {
 
 export type PropsOfElement<
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs
+  E extends keyof JSX.IntrinsicElements | React.JSXElementConstructor<any> | ComponentWithAs,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
 > = E extends { __PRIVATE_PROPS: any }
   ? E['__PRIVATE_PROPS']
   : JSX.LibraryManagedAttributes<E, React.ComponentPropsWithRef<E>>;
 
 export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = 'div', TProps = {}> = (<
-  TExtendedElementType extends React.ElementType = TElementType
+  TExtendedElementType extends React.ElementType = TElementType,
 >(
   props: Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
 ) => JSX.Element) & {
@@ -42,7 +42,7 @@ export type ComponentWithAs<TElementType extends keyof JSX.IntrinsicElements = '
 export type ForwardRefWithAs<
   TElementType extends keyof JSX.IntrinsicElements = 'div',
   TRef extends HTMLElement = HTMLElement,
-  TProps = {}
+  TProps = {},
 > = (<TExtendedElementType extends React.ElementType = TElementType>(
   props: React.RefAttributes<TRef> &
     Omit<PropsOfElement<TExtendedElementType>, 'as' | keyof TProps> & { as?: TExtendedElementType } & TProps,
@@ -84,7 +84,7 @@ export type ComposeRenderFunction<
   TElementType extends React.ElementType = 'div',
   TProps = {},
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  _TState = TProps
+  _TState = TProps,
 > = (
   props: TProps,
   ref: React.Ref<TElementType extends keyof HTMLElementTagNameMap ? HTMLElementTagNameMap[TElementType] : TElementType>,
@@ -97,7 +97,7 @@ export type ComposeOptions<
   TInputStylesProps = {},
   TParentProps = {},
   TParentStylesProps = {},
-  TState = TParentProps & TInputProps
+  TState = TParentProps & TInputProps,
 > = {
   className?: string;
 
@@ -125,7 +125,7 @@ export type MergePropsResult<
   TState extends GenericDictionary,
   TSlots = GenericDictionary,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  TSlotProps = { [key in keyof TSlots]: any }
+  TSlotProps = { [key in keyof TSlots]: any },
 > = {
   state: TState;
   slots: TSlots;
@@ -208,7 +208,7 @@ export type ObjectSlotProp<TProps extends GenericDictionary> = TProps & {
 
 export type SlotProp<TProps> =
   | React.ReactChild
-  | React.ReactNodeArray
+  | React.ReactNode[]
   | React.ReactPortal
   | boolean
   | null
@@ -243,4 +243,13 @@ export const defaultMappedProps: Record<string, string> = {
   iframe: 'src',
   img: 'src',
   input: 'type',
+};
+
+/**
+ * React.ForwardRef with static props
+ */
+export type ForwardRefComponent<TProps> = React.ForwardRefExoticComponent<
+  TProps & React.RefAttributes<HTMLInputElement>
+> & {
+  handledProps: (keyof TProps)[];
 };

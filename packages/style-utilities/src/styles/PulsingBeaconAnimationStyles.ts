@@ -1,4 +1,5 @@
-import { IRawStyle, keyframes } from '@fluentui/merge-styles';
+import { keyframes } from '@fluentui/merge-styles';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 const DEFAULT_DURATION = '14s';
 const DEFAULT_DELAY = '2s';

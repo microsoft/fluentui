@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { initializeComponentRef } from '../../Utilities';
 import { hiddenContentStyle } from '../../Styling';
-import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
-import { IStickyProps, StickyPositionType } from './Sticky.types';
+import { ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
+import { StickyPositionType } from './Sticky.types';
+import type { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
+import type { IStickyProps } from './Sticky.types';
 
 export interface IStickyState {
   isStickyTop: boolean;
@@ -190,7 +192,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
 
   public setDistanceFromTop(container: HTMLDivElement): void {
     const distanceFromTop = this._getNonStickyDistanceFromTop(container);
-    this.setState({ distanceFromTop: distanceFromTop });
+    this.setState({ distanceFromTop });
   }
 
   private _getContext = (): IScrollablePaneContext => this.context;
@@ -240,8 +242,8 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
             this.nonStickyContent.firstElementChild.clientWidth);
       }
       return {
-        height: height,
-        width: width,
+        height,
+        width,
       };
     } else {
       return {};
@@ -279,8 +281,8 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
 
       this.setState({
         isStickyTop: this.canStickyTop && isStickyTop,
-        isStickyBottom: isStickyBottom,
-        distanceFromTop: distanceFromTop,
+        isStickyBottom,
+        distanceFromTop,
       });
     }
   };

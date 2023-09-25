@@ -1,23 +1,13 @@
 import * as React from 'react';
+import { TextField, Stack, Checkbox, SearchBox, Link, Label, Text, ThemeProvider } from '@fluentui/react';
 import {
-  Customizer as DeprecatedCustomizer,
-  TextField,
-  Stack,
-  Checkbox,
-  SearchBox,
-  Link,
-  Label,
-  Text,
-  ThemeProvider,
-} from '@fluentui/react';
-import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
-import {
-  AzureCustomizationsLight,
-  AzureCustomizationsDark,
-  AzureCustomizationsHighContrastLight,
-  AzureCustomizationsHighContrastDark,
+  AzureThemeLight,
+  AzureThemeDark,
+  AzureThemeHighContrastLight,
+  AzureThemeHighContrastDark,
 } from '@fluentui/azure-themes';
-import { ButtonCommandBarExample } from '../components/commandBarButton.stories';
+import { DefaultButton, CompoundButton, PrimaryButton } from '@fluentui/react/lib/Button';
+import { CommandBarSplitDisabledExample } from '../components/commandBarButton.stories';
 import { ButtonSplitExample } from '../components/splitButton.stories';
 import { ButtonIconExample } from '../components/iconButton.stories';
 import { ButtonIconWithTooltipExample } from '../components/iconTooltip.stories';
@@ -40,10 +30,11 @@ import { PivotBasicExample } from '../components/Pivots.stories';
 import { TeachingBubbleBasicExample } from '../components/TeachingBubble.stories';
 import { MessageBarBasicExample } from '../components/messageBar.stories';
 import { TooltipBasicExample } from '../components/tooltip.stories';
-
-// Workaround to prevent errors on usage of Customizer, without disabling all deprecation checks
-// eslint-disable-next-line deprecation/deprecation
-const Customizer = DeprecatedCustomizer;
+import { SliderBasicExample } from '../components/slider.stories';
+import { SpinButtonBasicExample } from '../components/SpinButton.stories';
+import { DatePickerBasicExample } from '../components/defaultDatePicker';
+import { ProgressIndicatorBasicExample } from '../components/ProgressIndicator.stories';
+import { CalendarInlineMultidayDayViewExample } from '../components/CalendarInlineMultidayDayView.stories';
 
 const Example = () => (
   <Stack gap={8} horizontalAlign="center" style={{ maxWidth: 1000 }}>
@@ -62,6 +53,13 @@ const Example = () => (
       <CompoundButton secondaryText="secondary text." text="CompoundButton" />
       <DefaultButton primary={true} text="Default button as primary" />
       <DefaultButton primary={true} disabled={true} text="Default w/ primary disabled" />
+      <Label>Danger buttons (both primary and default)</Label>
+      <DefaultButton className="danger" text="danger defaultbutton" />
+      <PrimaryButton className="danger" text="danger primarybutton" />
+
+      <Label>Tag buttons (both primary and default)</Label>
+      <DefaultButton className="tag" text="tag defaultbutton" />
+      <PrimaryButton className="tag" text="tag primarybutton" />
       <Label>Disabled Buttons</Label>
       <DefaultButton disabled text="DefaultButton disabled" />
       <PrimaryButton disabled text="PrimaryButton disabled" />
@@ -70,11 +68,11 @@ const Example = () => (
       <Label disabled>I am a disabled label</Label>
       <Label>Icon Buttons</Label>
       <ButtonIconExample checked={false} />
-      <ButtonCommandBarExample />
+      <Label>CommandBarSplitDisabledExample</Label>
+      <CommandBarSplitDisabledExample />
       <ButtonIconWithTooltipExample />
       <ButtonContextualMenuExample />
       <ButtonActionExample />
-
       <Label>Toggle button</Label>
       <ButtonToggleExample />
       <ButtonSplitExample checked={false} />
@@ -92,8 +90,20 @@ const Example = () => (
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Slider</Label>
+      <SliderBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Progress Indicator</Label>
+      <ProgressIndicatorBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label className="section">DatePicker</Label>
+      <DatePickerBasicExample />
       <DatePickerBoundedExample />
+      <CalendarInlineMultidayDayViewExample />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
@@ -112,6 +122,17 @@ const Example = () => (
       <Checkbox label="Checked checkbox (uncontrolled)" defaultChecked />
       <Checkbox label="Disabled checkbox" disabled />
       <Checkbox label="Disabled checked checkbox" disabled defaultChecked />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Checkbox label="Indeterminate checkbox (uncontrolled)" defaultIndeterminate />
+      <Checkbox
+        label="Indeterminate checkbox which defaults to true when clicked (uncontrolled)"
+        defaultIndeterminate
+        defaultChecked={true}
+      />
+      <Checkbox label="Disabled indeterminate checkbox" disabled defaultIndeterminate />
+      <Checkbox label="Indeterminate checkbox (controlled)" indeterminate={true} />
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
@@ -139,6 +160,11 @@ const Example = () => (
     </Stack>
 
     <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
+      <Label>Spin button example</Label>
+      <SpinButtonBasicExample />
+    </Stack>
+
+    <Stack gap={8} horizontalAlign="center" style={{ marginTop: 40 }}>
       <Label>Misc</Label>
       <ActivityItemBasicExample />
       <ChoiceGroupBasicExample />
@@ -150,33 +176,25 @@ const Example = () => (
 );
 
 export const Light = () => (
-  <Customizer {...AzureCustomizationsLight}>
-    <ThemeProvider applyTo="body">
-      <Example />
-    </ThemeProvider>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeLight} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const Dark = () => (
-  <Customizer {...AzureCustomizationsDark}>
-    <ThemeProvider applyTo="body">
-      <Example />
-    </ThemeProvider>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeDark} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const HighContrastLight = () => (
-  <Customizer {...AzureCustomizationsHighContrastLight}>
-    <ThemeProvider applyTo="body">
-      <Example />
-    </ThemeProvider>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeHighContrastLight} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );
 
 export const HighContrastDark = () => (
-  <Customizer {...AzureCustomizationsHighContrastDark}>
-    <ThemeProvider applyTo="body">
-      <Example />
-    </ThemeProvider>
-  </Customizer>
+  <ThemeProvider theme={AzureThemeHighContrastDark} applyTo="body">
+    <Example />
+  </ThemeProvider>
 );

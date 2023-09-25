@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { KeytipDataOptions } from './KeytipData.types';
 import { useKeytipData } from './useKeytipData';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
+import type { KeytipDataOptions } from './KeytipData.types';
 
 describe('usePrevious', () => {
   let keytipManagerRegisterSpy: jest.SpyInstance;

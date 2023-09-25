@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IFabricProps } from '../../Fabric';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Layer}
@@ -70,6 +71,11 @@ export interface ILayerProps extends React.HTMLAttributes<HTMLDivElement>, React
    * By default, the layer will be appended at the end to the host
    */
   insertFirst?: boolean;
+
+  /**
+   * Props bag to forward to the Fabric component to allow customization of its behavior.
+   */
+  fabricProps?: IFabricProps;
 }
 
 /**

@@ -13,7 +13,7 @@ export default class ComponentProps extends React.Component<any, any> {
     props: PropTypes.arrayOf(PropTypes.object).isRequired,
   };
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     const { displayName } = this.props;
 
     this.setState({
@@ -22,7 +22,7 @@ export default class ComponentProps extends React.Component<any, any> {
     scrollToAnchor();
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { displayName } = nextProps;
 
     this.setState({

@@ -87,10 +87,13 @@ ReactDOM.render(<FooExample />, document.getElementById('fake'))",
 }
 `;
 
-exports[`example transform handles examples with custom supportedPackages and Fabric 1`] = `
+exports[`example transform handles examples with custom supportedPackages and Fluent 1`] = `
 Object {
-  "output": "const { Stack } = window.Fabric;
+  "output": "const { Stack, ThemeProvider, initializeIcons } = window.FluentUIReact;
 const { FooLabel } = window.Foo;
+
+// Initialize icons in case this example uses them
+initializeIcons();
 
 const FooExample = () => {
   return (
@@ -99,7 +102,9 @@ const FooExample = () => {
     </Stack>
   );
 };
-ReactDOM.render(<FooExample />, document.getElementById('fake'))",
+
+const FooExampleWrapper = () => <ThemeProvider><FooExample /></ThemeProvider>;
+ReactDOM.render(<FooExampleWrapper />, document.getElementById('fake'))",
 }
 `;
 

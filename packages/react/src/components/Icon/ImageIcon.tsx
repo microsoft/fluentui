@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { IImageIconProps } from './Icon.types';
 import { Image } from '../Image/Image';
 import { css, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { classNames, MS_ICON } from './Icon.styles';
+import type { IImageIconProps } from './Icon.types';
 
 /**
  * Fast icon component which only supports images (not font glyphs) and can't be targeted by customizations.

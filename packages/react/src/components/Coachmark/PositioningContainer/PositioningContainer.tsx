@@ -1,32 +1,19 @@
 import * as React from 'react';
-import { IPositioningContainerProps } from './PositioningContainer.types';
 import { getClassNames } from './PositioningContainer.styles';
 import { ZIndexes } from '../../../Styling';
 import { Layer } from '../../../Layer';
 
 // Utilites/Helpers
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import {
-  Point,
-  IRectangle,
-  css,
-  elementContains,
-  focusFirstChild,
-  EventGroup,
-  getPropsWithDefaults,
-} from '../../../Utilities';
+import { css, elementContains, focusFirstChild, EventGroup, getPropsWithDefaults } from '../../../Utilities';
 
-import {
-  getMaxHeight,
-  positionElement,
-  IPositionedData,
-  IPositionProps,
-  IPosition,
-  RectangleEdge,
-} from '../../../Positioning';
+import { getMaxHeight, positionElement, RectangleEdge } from '../../../Positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 import { useMergedRefs, useAsync, useTarget } from '@fluentui/react-hooks';
+import type { IPositioningContainerProps } from './PositioningContainer.types';
+import type { Point, IRectangle } from '../../../Utilities';
+import type { IPositionedData, IPositionProps, IPosition } from '../../../Positioning';
 
 const OFF_SCREEN_STYLE = { opacity: 0 };
 
@@ -47,30 +34,26 @@ const DEFAULT_PROPS = {
   directionalHint: DirectionalHint.bottomAutoEdge,
 };
 
-function useCachedBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
+function useBounds(props: IPositioningContainerProps, targetWindow: Window | undefined) {
   /** The bounds used when determining if and where the PositioningContainer should be placed. */
-  const positioningBounds = React.useRef<IRectangle>();
 
-  const getCachedBounds = (): IRectangle => {
-    if (!positioningBounds.current) {
-      let currentBounds = props.bounds;
+  const getBounds = (): IRectangle => {
+    let currentBounds = props.bounds;
 
-      if (!currentBounds) {
-        currentBounds = {
-          top: 0 + props.minPagePadding!,
-          left: 0 + props.minPagePadding!,
-          right: targetWindow!.innerWidth - props.minPagePadding!,
-          bottom: targetWindow!.innerHeight - props.minPagePadding!,
-          width: targetWindow!.innerWidth - props.minPagePadding! * 2,
-          height: targetWindow!.innerHeight - props.minPagePadding! * 2,
-        };
-      }
-      positioningBounds.current = currentBounds;
+    if (!currentBounds) {
+      currentBounds = {
+        top: 0 + props.minPagePadding!,
+        left: 0 + props.minPagePadding!,
+        right: targetWindow!.innerWidth - props.minPagePadding!,
+        bottom: targetWindow!.innerHeight - props.minPagePadding!,
+        width: targetWindow!.innerWidth - props.minPagePadding! * 2,
+        height: targetWindow!.innerHeight - props.minPagePadding! * 2,
+      };
     }
-    return positioningBounds.current;
+    return currentBounds;
   };
 
-  return getCachedBounds;
+  return getBounds;
 }
 
 function usePositionState(
@@ -209,35 +192,44 @@ function useAutoDismissEvents(
 ) {
   const async = useAsync();
 
-  const onResize = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
-    if (onDismiss) {
-      onDismiss(ev);
-    } else {
-      updateAsyncPosition();
-    }
-  };
+  const onResize = React.useCallback(
+    (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
+      if (onDismiss) {
+        onDismiss(ev);
+      } else {
+        updateAsyncPosition();
+      }
+    },
+    [onDismiss, updateAsyncPosition],
+  );
 
-  const dismissOnScroll = (ev: Event): void => {
-    if (positions && !preventDismissOnScroll) {
-      dismissOnLostFocus(ev);
-    }
-  };
+  const dismissOnLostFocus = React.useCallback(
+    (ev: Event): void => {
+      const target = ev.target as HTMLElement;
+      const clickedOutsideCallout = positionedHost.current && !elementContains(positionedHost.current, target);
 
-  const dismissOnLostFocus = (ev: Event): void => {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = positionedHost.current && !elementContains(positionedHost.current, target);
+      if (
+        (!targetRef.current && clickedOutsideCallout) ||
+        (ev.target !== targetWindow &&
+          clickedOutsideCallout &&
+          ((targetRef.current as MouseEvent).stopPropagation ||
+            !targetRef.current ||
+            (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
+      ) {
+        onResize(ev);
+      }
+    },
+    [onResize, positionedHost, targetRef, targetWindow],
+  );
 
-    if (
-      (!targetRef.current && clickedOutsideCallout) ||
-      (ev.target !== targetWindow &&
-        clickedOutsideCallout &&
-        ((targetRef.current as MouseEvent).stopPropagation ||
-          !targetRef.current ||
-          (target !== targetRef.current && !elementContains(targetRef.current as HTMLElement, target))))
-    ) {
-      onResize(ev);
-    }
-  };
+  const dismissOnScroll = React.useCallback(
+    (ev: Event): void => {
+      if (positions && !preventDismissOnScroll) {
+        dismissOnLostFocus(ev);
+      }
+    },
+    [dismissOnLostFocus, positions, preventDismissOnScroll],
+  );
 
   React.useEffect(() => {
     const events = new EventGroup({});
@@ -254,7 +246,7 @@ function useAutoDismissEvents(
 
     return () => events.dispose();
     // eslint-disable-next-line react-hooks/exhaustive-deps -- should only run on mount
-  }, []);
+  }, [dismissOnScroll]);
 }
 
 export function useHeightOffset(
@@ -264,8 +256,10 @@ export function useHeightOffset(
   /**
    * Tracks the current height offset and updates during
    * the height animation when props.finalHeight is specified.
+   * State stored as object to ensure re-render even if the value does not change.
+   *  See https://github.com/microsoft/fluentui/issues/23545
    */
-  const [heightOffset, setHeightOffset] = React.useState<number>(0);
+  const [heightOffset, setHeightOffset] = React.useState<{ value: number }>({ value: 0 });
   const async = useAsync();
   const setHeightOffsetTimer = React.useRef<number>(0);
 
@@ -282,7 +276,7 @@ export function useHeightOffset(
         const cardCurrHeight: number = positioningContainerMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-        setHeightOffset(heightOffset + scrollDiff);
+        setHeightOffset({ value: heightOffset.value + scrollDiff });
 
         if (positioningContainerMainElem.offsetHeight < finalHeight) {
           setHeightOffsetEveryFrame();
@@ -296,14 +290,14 @@ export function useHeightOffset(
   // eslint-disable-next-line react-hooks/exhaustive-deps -- should only re-run if finalHeight changes
   React.useEffect(setHeightOffsetEveryFrame, [finalHeight]);
 
-  return heightOffset;
+  return heightOffset.value;
 }
 
 export const PositioningContainer: React.FunctionComponent<IPositioningContainerProps> = React.forwardRef<
   HTMLDivElement,
   IPositioningContainerProps
 >((propsWithoutDefaults, forwardedRef) => {
-  const props = getPropsWithDefaults(DEFAULT_PROPS, propsWithoutDefaults);
+  const props = getPropsWithDefaults<IPositioningContainerProps>(DEFAULT_PROPS, propsWithoutDefaults);
 
   // @TODO rename to reflect the name of this class
   const contentHost = React.useRef<HTMLDivElement>(null);
@@ -314,7 +308,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
   const rootRef = useMergedRefs(forwardedRef, positionedHost);
 
   const [targetRef, targetWindow] = useTarget(props.target, positionedHost);
-  const getCachedBounds = useCachedBounds(props, targetWindow);
+  const getCachedBounds = useBounds(props, targetWindow);
   const [positions, updateAsyncPosition] = usePositionState(
     props,
     positionedHost,
@@ -374,7 +368,7 @@ export const PositioningContainer: React.FunctionComponent<IPositioningContainer
     </div>
   );
 
-  return doNotLayer ? content : <Layer>{content}</Layer>;
+  return doNotLayer ? content : <Layer {...props.layerProps}>{content}</Layer>;
 });
 PositioningContainer.displayName = 'PositioningContainer';
 

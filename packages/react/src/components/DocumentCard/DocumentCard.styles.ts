@@ -1,10 +1,10 @@
 import { getGlobalClassNames, getInputFocusStyle } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
-import { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 import { DocumentCardPreviewGlobalClassNames as previewClassNames } from './DocumentCardPreview.styles';
 import { DocumentCardActivityGlobalClassNames as activityClassNames } from './DocumentCardActivity.styles';
 import { DocumentCardTitleGlobalClassNames as titleClassNames } from './DocumentCardTitle.styles';
 import { DocumentCardLocationGlobalClassNames as locationClassNames } from './DocumentCardLocation.styles';
+import type { IDocumentCardStyleProps, IDocumentCardStyles } from './DocumentCard.types';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCard',

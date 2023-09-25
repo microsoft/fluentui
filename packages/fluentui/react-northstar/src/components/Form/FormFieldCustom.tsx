@@ -41,8 +41,7 @@ export type FormFieldCustomStylesProps = Required<Pick<FormFieldCustomProps, 'ty
 /**
  * A FormFieldCustom represents a Form element containing a label and an input.
  */
-export const FormFieldCustom: React.FC<FormFieldCustomProps> &
-  FluentComponentStaticProps<FormFieldCustomProps> = props => {
+export const FormFieldCustom = React.forwardRef<HTMLDivElement, FormFieldCustomProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(FormFieldCustom.displayName, context.telemetry);
   setStart();
@@ -77,6 +76,7 @@ export const FormFieldCustom: React.FC<FormFieldCustomProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -85,7 +85,7 @@ export const FormFieldCustom: React.FC<FormFieldCustomProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as React.FC<FormFieldCustomProps> & FluentComponentStaticProps<FormFieldCustomProps>;
 
 FormFieldCustom.displayName = 'FormFieldCustom';
 

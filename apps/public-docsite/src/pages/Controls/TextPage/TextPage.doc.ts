@@ -6,7 +6,7 @@ const related: ISideRailLink[] = [
   { text: 'Web Text', url: '#/controls/web/text' },
   { text: 'iOS Text', url: '#/controls/ios/text' },
   { text: 'Android Text', url: '#/controls/android/text' },
-  { text: 'Cross-platform Text', url: '#/controls/crossplatform/text' },
+  { text: 'Cross-platform Text', url: '#/controls/cross/text' },
 ];
 const componentUrl =
   'https://github.com/microsoft/fluentui/tree/master/apps/public-docsite/src/pages/Controls/TextPage';
@@ -17,18 +17,22 @@ export const TextPageProps: TFabricPlatformPageProps = {
     related,
   },
   ios: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/ios/TextOverview.md') as string,
     related,
     componentUrl,
   },
   android: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/android/TextOverview.md') as string,
     related,
     componentUrl,
   },
   cross: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextOverview.md') as string,
-    usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextUsage.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextOverview.md') as string,
+    usage:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/TextPage/docs/cross/TextUsage.md') as string,
     related,
     componentUrl,
   },

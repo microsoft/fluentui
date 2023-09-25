@@ -1,9 +1,8 @@
 import * as React from 'react';
-
-import { IStyle, ITheme } from '../../../Styling';
-import { IStyleFunctionOrObject } from '../../../Utilities';
-import { IPickerItemProps } from '../PickerItem.types';
-import { IBasePickerProps } from '../BasePicker.types';
+import type { IStyle, ITheme } from '../../../Styling';
+import type { IStyleFunctionOrObject } from '../../../Utilities';
+import type { IPickerItemProps } from '../PickerItem.types';
+import type { IBasePickerProps } from '../BasePicker.types';
 
 /**
  * TagPickerItem item interface.

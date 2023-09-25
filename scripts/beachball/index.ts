@@ -1,13 +1,3 @@
-import { BeachballConfig } from 'beachball';
-import { renderHeader, renderEntry } from './customRenderers';
+export {};
 
-export const config: BeachballConfig = {
-  disallowedChangeTypes: ['major', 'prerelease'],
-  tag: 'latest',
-  changelog: {
-    customRenderers: {
-      renderHeader,
-      renderEntry,
-    },
-  },
-};
+throw new Error('no public API is available');

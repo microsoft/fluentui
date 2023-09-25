@@ -1,15 +1,14 @@
 import * as React from 'react';
 import {
-  ISettingsMap,
-  IWarnControlledUsageParams,
   warn,
   warnControlledUsage,
   warnConditionallyRequiredProps,
   warnDeprecations,
   warnMutuallyExclusive,
-} from '@fluentui/utilities/lib/warn';
+} from '@fluentui/utilities';
 import { usePrevious } from './usePrevious';
 import { useConst } from './useConst';
+import type { ISettingsMap, IWarnControlledUsageParams } from '@fluentui/utilities';
 
 export interface IWarningOptions<P> {
   /** Name of the component */

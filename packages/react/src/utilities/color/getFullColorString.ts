@@ -1,6 +1,6 @@
-import { IColor } from './interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from './consts';
 import { hsv2hex } from './hsv2hex';
+import type { IColor } from './interfaces';
 
 /**
  * Converts a color hue to an HTML color string (with # prefix).

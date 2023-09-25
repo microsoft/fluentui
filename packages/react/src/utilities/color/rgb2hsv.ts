@@ -1,5 +1,5 @@
-import { IHSV } from './interfaces';
 import { MAX_COLOR_RGB } from './consts';
+import type { IHSV } from './interfaces';
 
 /** Converts RGB components to an HSV color. */
 export function rgb2hsv(r: number, g: number, b: number): IHSV {

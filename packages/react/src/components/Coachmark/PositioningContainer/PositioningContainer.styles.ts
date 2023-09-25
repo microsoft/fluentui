@@ -1,5 +1,6 @@
 import { memoizeFunction } from '../../../Utilities';
-import { mergeStyleSets, focusClear, IStyle, HighContrastSelector } from '../../../Styling';
+import { mergeStyleSets, focusClear, HighContrastSelector } from '../../../Styling';
+import type { IStyle } from '../../../Styling';
 
 export interface IPositioningContainerStyles {
   /**
@@ -20,34 +21,32 @@ export interface IPositioningContainerNames {
   beakCurtain?: string;
 }
 
-export const getClassNames = memoizeFunction(
-  (): IPositioningContainerNames => {
-    return mergeStyleSets({
-      root: [
-        {
-          position: 'absolute',
-          boxSizing: 'border-box',
-          border: '1px solid ${}',
-          selectors: {
-            [HighContrastSelector]: {
-              border: '1px solid WindowText',
-            },
+export const getClassNames = memoizeFunction((): IPositioningContainerNames => {
+  return mergeStyleSets({
+    root: [
+      {
+        position: 'absolute',
+        boxSizing: 'border-box',
+        border: '1px solid ${}',
+        selectors: {
+          [HighContrastSelector]: {
+            border: '1px solid WindowText',
           },
         },
-        focusClear(),
-      ],
-      container: {
-        position: 'relative',
       },
-      main: {
-        backgroundColor: '#ffffff',
-        overflowX: 'hidden',
-        overflowY: 'hidden',
-        position: 'relative',
-      },
-      overFlowYHidden: {
-        overflowY: 'hidden',
-      },
-    });
-  },
-);
+      focusClear(),
+    ],
+    container: {
+      position: 'relative',
+    },
+    main: {
+      backgroundColor: '#ffffff',
+      overflowX: 'hidden',
+      overflowY: 'hidden',
+      position: 'relative',
+    },
+    overFlowYHidden: {
+      overflowY: 'hidden',
+    },
+  });
+});

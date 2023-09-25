@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { classNamesFunction, DelayedRender, getNativeProps, divProperties } from '../../Utilities';
-import { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 import { ShimmerElementsGroup } from './ShimmerElementsGroup/ShimmerElementsGroup';
 import { useSetTimeout, useConst } from '@fluentui/react-hooks';
+import type { IShimmerProps, IShimmerStyleProps, IShimmerStyles } from './Shimmer.types';
 
 const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 const COMPONENT_NAME = 'Shimmer';
@@ -25,6 +25,7 @@ export const ShimmerBase: React.FunctionComponent<IShimmerProps> = React.forward
       ariaLabel,
       shimmerColors,
       isDataLoaded = false,
+      improveCSSPerformance,
     } = props;
 
     const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
@@ -36,6 +37,7 @@ export const ShimmerBase: React.FunctionComponent<IShimmerProps> = React.forward
       transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL,
       shimmerColor: shimmerColors && shimmerColors.shimmer,
       shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave,
+      improveCSSPerformance: improveCSSPerformance || !customElementsGroup,
     });
 
     const internalState = useConst({

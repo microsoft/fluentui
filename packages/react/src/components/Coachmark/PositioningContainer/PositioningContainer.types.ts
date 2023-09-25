@@ -1,9 +1,10 @@
 import * as React from 'react';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
-import { IPositionedData } from '../../../Positioning';
-import { ReactNode } from 'react';
-import { Target } from '@fluentui/react-hooks';
+import type { IRefObject, IBaseProps, Point, IRectangle } from '../../../Utilities';
+import type { IPositionedData } from '../../../Positioning';
+import type { ReactNode } from 'react';
+import type { Target } from '@fluentui/react-hooks';
+import type { ILayerProps } from '../../../Layer';
 
 /**
  * {@docCategory Coachmark}
@@ -121,6 +122,11 @@ export interface IPositioningContainerProps
    * @defaultvalue null
    */
   className?: string;
+
+  /**
+   * Defines an optional set of props to be passed through to Layer
+   */
+  layerProps?: ILayerProps;
 
   /**
    * Optional callback when the layer content has mounted.

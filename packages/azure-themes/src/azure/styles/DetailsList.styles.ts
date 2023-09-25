@@ -17,9 +17,8 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
     circle: [
       {
         fontSize: 0,
-        paddingTop: 1,
         paddingLeft: 1,
-        borderRadius: 2,
+        borderRadius: StyleConstants.borderRadius,
         color: semanticColors.listBackground,
         backgroundColor: semanticColors.listBackground,
         borderColor: semanticColors.ButtonBorderFocus,
@@ -29,8 +28,8 @@ export const CheckStyles = (props: ICheckStyleProps): Partial<ICheckStyles> => {
     ],
     check: [
       {
-        left: 2.5,
-        top: 1.5,
+        left: 1.8,
+        top: 0.5,
       },
       checked && {
         color: semanticColors.inputText,
@@ -50,11 +49,6 @@ export const DetailsListStyles = (props: IDetailsListStyleProps): Partial<IDetai
   return {
     root: {
       borderTop: StyleConstants.borderNone,
-      selectors: {
-        '.ms-DetailsRow-check': {
-          opacity: 1,
-        },
-      },
     },
     headerWrapper: {
       selectors: {
@@ -115,33 +109,29 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
         borderColor: extendedSemanticColors.rowBorder,
         color: semanticColors.listText,
         fontSize: theme.fonts.medium.fontSize,
-        borderBottom: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
         selectors: {
-          '.ms-DetailsRow-check': {
-            opacity: 1,
+          '&.ms-DetailsRow': {
+            borderBottom: `1px solid ${extendedSemanticColors.listItemBackgroundSelected}`,
           },
         },
       },
       !isSelected && [
         {
           background: semanticColors.listBackground,
-          color: semanticColors.listText,
-          textDecoration: extendedSemanticColors.listUnderline,
           selectors: {
             ':hover': {
               backgroundColor: semanticColors.listItemBackgroundHovered,
-              textDecorationColor: semanticColors.buttonTextHovered,
               selectors: {
-                '.ms-DetailsRow-cell': {
-                  color: semanticColors.buttonTextHovered,
-                },
                 '.ms-Check-check': {
                   color: extendedSemanticColors.checkBoxCheckHover,
                 },
+                '.ms-Link': {
+                  color: extendedSemanticColors.listLinkRowHovered,
+                },
+                '.ms-Link:hover': {
+                  color: extendedSemanticColors.listLinkHovered,
+                },
               },
-            },
-            ':after': {
-              border: `1px solid ${extendedSemanticColors.listItemBackgroundSelected} !important`,
             },
             ':focus': {
               backgroundColor: extendedSemanticColors.rowFocus,
@@ -153,7 +143,11 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
         {
           backgroundColor: extendedSemanticColors.listItemBackgroundSelected,
           textDecoration: extendedSemanticColors.listUnderline,
+          fontWeight: StyleConstants.fontWeightRegular,
           selectors: {
+            '.ms-DetailsRow-cell': {
+              fontWeight: StyleConstants.fontWeightRegular,
+            },
             '.ms-Check-circle': {
               backgroundColor: extendedSemanticColors.checkboxBackgroundChecked,
               borderColor: extendedSemanticColors.checkBoxCheck,
@@ -161,11 +155,14 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
             '.ms-Check-check': {
               color: extendedSemanticColors.checkBoxCheck,
             },
+            '.ms-Link': {
+              color: extendedSemanticColors.listLinkRowSelected,
+            },
             ':hover': {
               background: extendedSemanticColors.listItemBackgroundSelectedHovered,
               selectors: {
-                '.ms-DetailsRow-cell': {
-                  color: semanticColors.buttonTextHovered,
+                '.ms-Link': {
+                  color: extendedSemanticColors.listLinkRowSelectedHovered,
                 },
                 '.ms-Check-circle': {
                   backgroundColor: extendedSemanticColors.checkboxBackgroundHovered,
@@ -175,11 +172,6 @@ export const DetailsRowStyles = (props: IDetailsRowStyleProps): Partial<IDetails
           },
         },
       ],
-    ],
-    cell: [
-      {
-        color: semanticColors.listText,
-      },
     ],
   };
 };

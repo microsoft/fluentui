@@ -2,12 +2,12 @@ import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
 import { mount } from 'enzyme';
-
-import { ICalloutProps } from '../../Callout';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { assign } from '../../Utilities';
 import { TooltipHost } from './TooltipHost';
-import { ITooltipProps, TooltipDelay } from './Tooltip.types';
+import { TooltipDelay } from './Tooltip.types';
+import type { ICalloutProps } from '../../Callout';
+import type { ITooltipProps } from './Tooltip.types';
 
 describe('TooltipHost', () => {
   it('renders correctly', () => {
@@ -61,7 +61,7 @@ describe('TooltipHost', () => {
       />,
     );
 
-    component.find('div').simulate('mouseenter');
+    component.find('.ms-TooltipHost').simulate('mouseenter');
 
     const tooltip = component.find('TooltipBase');
 
@@ -104,9 +104,29 @@ describe('TooltipHost', () => {
     );
 
     // simulate mouse enter to trigger use of calloutProps
-    component.find('div').simulate('mouseenter');
+    component.find('.ms-TooltipHost').simulate('mouseenter');
 
     expect(onTooltipToggleCalled).toEqual(true);
     expect(calloutPropsBefore).toEqual(calloutProps);
+  });
+
+  it('uses onRenderContent for description text', () => {
+    const tooltipProps = {
+      onRenderContent: () => <span>test</span>,
+    };
+
+    const component = mount(<TooltipHost content={'should not be used'} id="tooltipId" tooltipProps={tooltipProps} />);
+    const descriptionText = component.find('#tooltipId').at(0).text();
+    expect(descriptionText).toEqual('test');
+  });
+
+  it('passes props and render function to onRenderContent', () => {
+    const tooltipProps: ITooltipProps = {
+      onRenderContent: (props, render) => render?.({ ...props, content: props?.content + ' suffix' }) || null,
+    };
+
+    const component = mount(<TooltipHost content={'prefix'} id="tooltipId" tooltipProps={tooltipProps} />);
+    const descriptionText = component.find('#tooltipId').at(0).text();
+    expect(descriptionText).toEqual('prefix suffix');
   });
 });

@@ -1,3 +1,4 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import * as renderer from 'react-test-renderer';
 import { composed, resolveSlots } from './composed';

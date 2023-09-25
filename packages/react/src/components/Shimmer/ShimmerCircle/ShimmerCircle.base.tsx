@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../../Utilities';
-import { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
+import type { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerCircleStyleProps, IShimmerCircleStyles>();
 

@@ -2,22 +2,25 @@ import * as React from 'react';
 import { hasSubmenu, getIsChecked } from '../../utilities/contextualMenu/index';
 import { getRTL, initializeComponentRef } from '../../Utilities';
 import { Icon } from '../../Icon';
-import { IContextualMenuItemProps, IContextualMenuItemRenderFunctions } from './ContextualMenuItem.types';
+import type { IContextualMenuItemProps, IContextualMenuItemRenderFunctions } from './ContextualMenuItem.types';
+
+const defaultIconRenderer = (props: IContextualMenuItemProps) => {
+  const { item, classNames } = props;
+  const { iconProps } = item;
+  return <Icon {...iconProps} className={classNames.icon} />;
+};
 
 const renderItemIcon = (props: IContextualMenuItemProps) => {
-  const { item, hasIcons, classNames } = props;
-
-  const { iconProps } = item;
-
+  const { item, hasIcons } = props;
   if (!hasIcons) {
     return null;
   }
 
   if (item.onRenderIcon) {
-    return item.onRenderIcon(props);
+    return item.onRenderIcon(props, defaultIconRenderer);
   }
 
-  return <Icon {...iconProps} className={classNames.icon} />;
+  return defaultIconRenderer(props);
 };
 
 const renderCheckMarkIcon = ({ onCheckmarkClick, item, classNames }: IContextualMenuItemProps) => {

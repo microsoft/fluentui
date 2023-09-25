@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useWindow, useDocument, WindowProvider } from './WindowProvider';
-import { safeMount } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
 
 describe('WindowProvider', () => {
   let lastWindow: Window | undefined;
@@ -14,17 +14,17 @@ describe('WindowProvider', () => {
   };
 
   it('can provide defaults for node', () => {
-    safeMount(<Foo />);
+    render(<Foo />);
 
     expect(lastWindow).toBe(window);
     expect(lastDocument).toBe(document);
   });
 
   it('can override defaults', () => {
-    const mockDocument = ({} as unknown) as Document;
-    const mockWindow = ({ document: mockDocument } as unknown) as Window;
+    const mockDocument = {} as unknown as Document;
+    const mockWindow = { document: mockDocument } as unknown as Window;
 
-    safeMount(
+    render(
       <WindowProvider window={mockWindow}>
         <Foo />
       </WindowProvider>,

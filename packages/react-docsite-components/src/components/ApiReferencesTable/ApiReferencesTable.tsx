@@ -25,8 +25,6 @@ import { Markdown } from '../Markdown/index';
 import { codeFontFamily } from '../CodeSnippet/CodeSnippet.styles';
 import { titleCase } from '../../utilities/string';
 
-// TODO: remove
-export { IApiReferencesTableProps };
 export type IApiReferencesTableState = {};
 
 /** @internal */
@@ -273,34 +271,32 @@ const columnNames: { [K in IApiDetailsListProps['itemKind']]: ApiListFieldName[]
 
 function _getColumns(props: IApiDetailsListProps): IColumn[] {
   const { itemKind, tokenResolver } = props;
-  return columnNames[itemKind].map(
-    (fieldName: ApiListFieldName): IColumn => {
-      const [minWidth, maxWidth] = columnWidths[fieldName];
+  return columnNames[itemKind].map((fieldName: ApiListFieldName): IColumn => {
+    const [minWidth, maxWidth] = columnWidths[fieldName];
 
-      return {
-        name: fieldName === 'defaultValue' ? 'Default value' : titleCase(fieldName),
-        fieldName,
-        key: fieldName,
-        minWidth,
-        maxWidth,
-        isCollapsible: false,
-        isResizable: true,
-        isMultiline: fieldName !== 'name' && fieldName !== 'value',
-        isRowHeader: fieldName === 'name',
-        columnActionsMode: ColumnActionsMode.disabled,
-        onRender: (item: IApiInterfaceProperty | IApiEnumProperty | IMethod) => {
-          if (fieldName === 'type' || fieldName === 'signature') {
-            const typeTokens = (item as IMethod | IApiInterfaceProperty).typeTokens;
-            if (typeTokens && typeTokens.length > 0) {
-              return <Text variant="small">{_renderLinkTokens(tokenResolver, typeTokens)}</Text>;
-            }
-            return undefined;
+    return {
+      name: fieldName === 'defaultValue' ? 'Default value' : titleCase(fieldName),
+      fieldName,
+      key: fieldName,
+      minWidth,
+      maxWidth,
+      isCollapsible: false,
+      isResizable: true,
+      isMultiline: fieldName !== 'name' && fieldName !== 'value',
+      isRowHeader: fieldName === 'name',
+      columnActionsMode: ColumnActionsMode.disabled,
+      onRender: (item: IApiInterfaceProperty | IApiEnumProperty | IMethod) => {
+        if (fieldName === 'type' || fieldName === 'signature') {
+          const typeTokens = (item as IMethod | IApiInterfaceProperty).typeTokens;
+          if (typeTokens && typeTokens.length > 0) {
+            return <Text variant="small">{_renderLinkTokens(tokenResolver, typeTokens)}</Text>;
           }
-          return _renderCell(item, fieldName);
-        },
-      };
-    },
-  );
+          return undefined;
+        }
+        return _renderCell(item, fieldName);
+      },
+    };
+  });
 }
 
 function _renderCell(

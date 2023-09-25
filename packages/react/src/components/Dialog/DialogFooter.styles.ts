@@ -1,5 +1,5 @@
-import { IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
 import { getGlobalClassNames } from '../../Styling';
+import type { IDialogFooterStyleProps, IDialogFooterStyles } from './DialogFooter.types';
 
 const GlobalClassNames = {
   actions: 'ms-Dialog-actions',
@@ -26,6 +26,7 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
         selectors: {
           '.ms-Button': {
             lineHeight: 'normal',
+            verticalAlign: 'middle',
           },
         },
       },
@@ -42,9 +43,11 @@ export const getStyles = (props: IDialogFooterStyleProps): IDialogFooterStyles =
     actionsRight: [
       classNames.actionsRight,
       {
-        textAlign: 'right',
-        marginRight: '-4px',
+        alignItems: 'center',
+        display: 'flex',
         fontSize: '0',
+        justifyContent: 'flex-end',
+        marginRight: '-4px',
       },
     ],
   };

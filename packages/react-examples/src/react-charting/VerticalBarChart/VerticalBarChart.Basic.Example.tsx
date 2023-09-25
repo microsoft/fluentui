@@ -1,5 +1,10 @@
 import * as React from 'react';
-import { VerticalBarChart, IVerticalBarChartProps, IVerticalBarChartDataPoint } from '@fluentui/react-charting';
+import {
+  VerticalBarChart,
+  IVerticalBarChartProps,
+  IVerticalBarChartDataPoint,
+  ILineChartLineOptions,
+} from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
@@ -10,6 +15,7 @@ interface IVerticalChartState {
   height: number;
   isCalloutselected: boolean;
   useSingleColor: boolean;
+  hideLabels: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -25,6 +31,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       height: 350,
       isCalloutselected: false,
       useSingleColor: false,
+      hideLabels: false,
     };
   }
 
@@ -48,6 +55,9 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   };
   private _onCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ useSingleColor: checked });
+  };
+  private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.setState({ hideLabels: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -142,14 +152,33 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
         },
       },
     ];
+
+    const lineOptions: ILineChartLineOptions = { lineBorderWidth: '2' };
+
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
 
     return (
       <>
-        <label>change Width:</label>
-        <input type="range" value={this.state.width} min={200} max={1000} onChange={this._onWidthChange} />
-        <label>change Height:</label>
-        <input type="range" value={this.state.height} min={200} max={1000} onChange={this._onHeightChange} />
+        <label htmlFor="changeWidth">Change Width:</label>
+        <input
+          type="range"
+          value={this.state.width}
+          min={200}
+          max={1000}
+          onChange={this._onWidthChange}
+          id="changeWidth"
+          aria-valuetext={`ChangeWidthSlider${this.state.width}`}
+        />
+        <label htmlFor="changeHeight">Change Height:</label>
+        <input
+          type="range"
+          value={this.state.height}
+          min={200}
+          max={1000}
+          id="changeHeight"
+          onChange={this._onHeightChange}
+          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+        />
         <ChoiceGroup options={options} defaultSelectedKey="basicExample" onChange={this._onChange} label="Pick one" />
         <Checkbox
           label="use single color(This will have only one color)"
@@ -157,21 +186,31 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onCheckChange}
           styles={{ root: { marginTop: '20px' } }}
         />
+        <Checkbox
+          label="Hide labels"
+          checked={this.state.hideLabels}
+          onChange={this._onHideLabelsCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
         <div style={rootStyle}>
           <VerticalBarChart
+            culture={window.navigator.language}
+            chartTitle="Vertical bar chart basic example "
             data={points}
             width={this.state.width}
             useSingleColor={this.state.useSingleColor}
             height={this.state.height}
-            chartLabel={'Basic Chart with Numeric Axes'}
             lineLegendText={'just line'}
             lineLegendColor={'brown'}
+            lineOptions={lineOptions}
             {...(this.state.isCalloutselected && {
               onRenderCalloutPerDataPoint: (
                 props: IVerticalBarChartDataPoint,
                 defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
+            hideLabels={this.state.hideLabels}
+            enableReflow={true}
           />
         </div>
       </>

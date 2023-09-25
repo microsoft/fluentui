@@ -1,5 +1,6 @@
-import { IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
-import { IRawStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import type { IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
+import type { IRawStyle } from '../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerGap-root',

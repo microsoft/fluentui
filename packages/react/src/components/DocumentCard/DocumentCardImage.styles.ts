@@ -1,4 +1,4 @@
-import { IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
+import type { IDocumentCardImageStyleProps, IDocumentCardImageStyles } from './DocumentCardImage.types';
 
 const centeredIconSize = '42px';
 const cornerIconSize = '32px';

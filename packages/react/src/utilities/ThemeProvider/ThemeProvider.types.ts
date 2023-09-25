@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Theme, PartialTheme } from '@fluentui/theme';
-import { ICustomizerContext } from '@fluentui/utilities';
+import type { Theme, PartialTheme } from '@fluentui/theme';
+import type { ICustomizerContext } from '@fluentui/utilities';
 
 /* eslint-disable @typescript-eslint/naming-convention */
 

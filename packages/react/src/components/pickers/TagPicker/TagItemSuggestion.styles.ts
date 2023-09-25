@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../../Styling';
-import { ITagItemSuggestionStyleProps, ITagItemSuggestionStyles } from './TagPicker.types';
+import type { ITagItemSuggestionStyleProps, ITagItemSuggestionStyles } from './TagPicker.types';
 
 const GlobalClassNames = {
   suggestionTextOverflow: 'ms-TagItem-TextOverflow',

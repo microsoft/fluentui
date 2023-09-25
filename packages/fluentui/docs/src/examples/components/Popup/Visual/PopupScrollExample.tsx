@@ -69,7 +69,7 @@ const LoremParagraph = () => (
 const PopupWithTrapFocus = () => {
   return (
     <Popup
-      trigger={<Button content="Show popup" title="PopupWithTrapFocus" />}
+      trigger={<Button content="Show popup" title="Show popup with focus" />}
       content={<Button content="Click me!" />}
       trapFocus={{
         firstFocusableSelector: `.${buttonClassName}`,
@@ -90,7 +90,7 @@ const ControlledPopupWithFocus = () => {
 
   return (
     <Popup
-      trigger={<Button content="Show controlled popup" title="ControlledPopupWithFocus" />}
+      trigger={<Button content="Show controlled popup" title="Show controlled popup" />}
       open={open}
       onOpenChange={(e, { open }) => {
         setOpen(open);
@@ -119,7 +119,7 @@ const InlineControlledPopupWithFocus = () => {
 
   return (
     <Popup
-      trigger={<Button content="Show controlled popup" title="InlineControlledPopupWithFocus" />}
+      trigger={<Button content="Show controlled popup" title="Show controlled popup inline" />}
       open={open}
       inline
       onOpenChange={(e, { open }) => {

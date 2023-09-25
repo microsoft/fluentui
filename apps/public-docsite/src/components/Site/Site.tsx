@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, ThemeProvider, Async } from '@fluentui/react';
+import { css, ThemeProvider, Async, on } from '@fluentui/react';
 import {
   baseDefinition,
   EventNames,
@@ -11,6 +11,7 @@ import {
   trackEvent,
   trackPageView,
   IWithPlatformProps,
+  TopBanner,
   TopNav,
   ScrollBars,
   INavPage,
@@ -18,9 +19,10 @@ import {
   PlatformBar,
   TPlatformPages,
   jumpToAnchor,
-  removeAnchorLink,
+  getNormalizedPath,
   SiteMessageBar,
   getQueryParam,
+  getActivePage,
 } from '@fluentui/react-docsite-components/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppThemes } from './AppThemes';
@@ -28,6 +30,7 @@ import { AppThemesContext, extractAnchorLink } from '@fluentui/react-docsite-com
 import { getItem, setItem } from '@fluentui/utilities/lib/sessionStorage';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
+import { cdnUrl } from '../../utilities/cdn';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
@@ -43,8 +46,9 @@ export interface ISiteState<TPlatforms extends string = string> {
   pagePlatforms?: TPlatformPages<TPlatforms>;
   /** Pages currently shown in the left nav */
   activePages?: INavPage<TPlatforms>[];
-  /** Current active route, excluding any anchor link within the page */
+  /** Current normalized active route, excluding any anchor link within the page */
   pagePath?: string;
+  /** Map from top-level page area (controls, styles, etc) to active platform */
   activePlatforms: { [topLevelPage: string]: TPlatforms };
 }
 
@@ -57,6 +61,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
   };
 
   private _async: Async;
+  private _disposables: Function[];
   private _jumpInterval: number | undefined;
   private _isStrict: boolean;
 
@@ -64,6 +69,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     super(props);
 
     this._async = new Async();
+    this._disposables = [() => this._async.dispose()];
 
     this._isStrict = getQueryParam('strict') === 'all';
 
@@ -92,7 +98,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     let platform = 'default' as TPlatforms;
 
     // If current page doesn't have pages for the active platform, switch to its first platform.
-    if (Object.keys(navData.pagePlatforms).length > 0 && navData.activePages.length === 0) {
+    if (Object.keys(navData.pagePlatforms!).length > 0 && navData.activePages!.length === 0) {
       const firstPlatform = getPageFirstPlatform(getSiteArea(siteDefinition.pages), siteDefinition);
       const currentPage = getSiteArea(siteDefinition.pages);
       platform = firstPlatform;
@@ -113,13 +119,12 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     // Set the initial state with navigation data.
     this.setState({ ...(this._getNavData() as ISiteState<TPlatforms>) }, this._setActivePlatforms);
     // Handle hash routing
-    window.addEventListener('hashchange', this._handleRouteChange);
+    this._disposables.push(on(window, 'hashchange', this._handleRouteChange));
     this._handleRouteChange();
   }
 
   public componentWillUnmount(): void {
-    this._async.dispose();
-    window.removeEventListener('hashchange', this._handleRouteChange);
+    this._disposables.forEach(dispose => dispose());
   }
 
   public UNSAFE_componentWillReceiveProps(nextProps: ISiteProps): void {
@@ -139,7 +144,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     const { siteDefinition } = this.props;
 
     // If current page doesn't have pages for the active platform, switch to its first platform.
-    if (Object.keys(pagePlatforms).length > 0 && activePages.length === 0) {
+    if (Object.keys(pagePlatforms!).length > 0 && activePages!.length === 0) {
       const firstPlatform = getPageFirstPlatform(getSiteArea(siteDefinition.pages), siteDefinition);
       this._onPlatformChanged(firstPlatform);
     }
@@ -156,6 +161,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     const SiteContent = () => (
       <div key="site" className={styles.siteRoot}>
         {this._renderTopNav()}
+        {this._renderTopBanner()}
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
@@ -165,7 +171,6 @@ export class Site<TPlatforms extends string = string> extends React.Component<
             data-app-content-div="true"
             // This needs to be programmatically focusable for "jump to main content" functionality
             tabIndex={-1}
-            role="main"
           >
             {childrenWithPlatform}
           </div>
@@ -328,6 +333,10 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     }
   };
 
+  private _renderTopBanner = (): JSX.Element | undefined => {
+    return <TopBanner cdnUrl={cdnUrl} />;
+  };
+
   private _renderPlatformPicker = (): JSX.Element | null => {
     const { siteDefinition } = this.props;
     const { hasPlatformPicker, platform, pagePlatforms } = this.state;
@@ -345,22 +354,19 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     return null;
   };
 
-  private _renderPlatformBar = (): JSX.Element | undefined => {
+  private _renderPlatformBar = (): JSX.Element | null => {
     const { siteDefinition } = this.props;
     const { platform, pagePlatforms, hasPlatformPicker } = this.state;
 
-    return (
-      hasPlatformPicker &&
-      Object.keys(pagePlatforms).length > 0 && (
-        <PlatformBar
-          activePlatform={platform}
-          onPlatformClick={this._onPlatformChanged}
-          pagePlatforms={pagePlatforms}
-          platforms={siteDefinition.platforms}
-          innerWidth={appMaximumWidthLg}
-        />
-      )
-    );
+    return hasPlatformPicker && Object.keys(pagePlatforms!).length > 0 ? (
+      <PlatformBar
+        activePlatform={platform}
+        onPlatformClick={this._onPlatformChanged}
+        pagePlatforms={pagePlatforms}
+        platforms={siteDefinition.platforms!}
+        innerWidth={appMaximumWidthLg}
+      />
+    ) : null;
   };
 
   /**
@@ -460,21 +466,9 @@ export class Site<TPlatforms extends string = string> extends React.Component<
     const { siteDefinition } = this.props;
     const { platforms } = siteDefinition;
 
-    const newPagePath = removeAnchorLink(location.hash);
+    const newPagePath = getNormalizedPath();
     // Top level path (Controls, Get started or Styles)
-    let newPageTopLevel = '';
-
-    switch (newPagePath.split('/')[1]) {
-      case 'controls':
-        newPageTopLevel = 'Controls';
-        break;
-      case 'get-started':
-        newPageTopLevel = 'Get started';
-        break;
-      case 'styles':
-        newPageTopLevel = 'Styles';
-        break;
-    }
+    const siteArea = getSiteArea(siteDefinition.pages);
 
     if (prevPagePath === newPagePath) {
       // Must have been a change to the anchor only (not the route).
@@ -483,17 +477,21 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       return;
     }
 
-    const platformKeys = platforms && (Object.keys(platforms) as TPlatforms[]);
-    if (platformKeys && platformKeys.length > 0) {
-      // Test if the target platform has changed on each hashchange to avoid costly forEach below.
-      const targetPlatform = activePlatforms[newPageTopLevel] || platform;
-      const targetPlatformRegex = new RegExp(`/${targetPlatform}\\b`);
+    let currPlatform: TPlatforms | undefined;
+    const platformKeys = Object.keys(platforms || {}) as TPlatforms[];
+    if (platformKeys.length > 0) {
+      const prevPlatform = activePlatforms[siteArea] || platform;
+      const prevPlatformRegex = new RegExp(`/${prevPlatform}\\b`);
 
-      if (!targetPlatformRegex.test(newPagePath)) {
+      if (prevPlatformRegex.test(newPagePath)) {
+        // the platform didn't change
+        currPlatform = prevPlatform;
+      } else {
         for (const key of platformKeys) {
           // If the user navigates directly to a platform-specific page, set the active platform to that of the new page
-          const isNewPlatform = new RegExp(`/${key}`, 'gi');
-          if (isNewPlatform.test(newPagePath)) {
+          const newPlatformRegex = new RegExp(`/${key}(?![a-z])`, 'gi');
+          if (newPlatformRegex.test(newPagePath)) {
+            currPlatform = key;
             this._onPlatformChanged(key);
             break;
           }
@@ -501,9 +499,20 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       }
     }
 
+    const activePageName = getActivePage(siteDefinition, currPlatform, newPagePath)?.title;
+    // Example: Fluent UI - Controls - React - Button
+    document.title = [
+      siteDefinition.siteTitle,
+      siteArea,
+      currPlatform && platforms![currPlatform]?.name,
+      activePageName !== siteArea && activePageName,
+    ]
+      .filter(Boolean)
+      .join(' - ');
+
     // @TODO: investigate using real page name.
     trackPageView('FabricPage', newPagePath, {
-      currentArea: getSiteArea(siteDefinition.pages),
+      currentArea: siteArea,
       previousPage: prevPagePath,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
       currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
@@ -526,7 +535,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<
       this._jumpInterval = this._async.setInterval(() => {
         const el = document.getElementById(anchor);
         if (el || Date.now() - start > 1000) {
-          this._async.clearInterval(this._jumpInterval);
+          this._async.clearInterval(this._jumpInterval!);
           this._jumpInterval = undefined;
           if (el) {
             jumpToAnchor(anchor);

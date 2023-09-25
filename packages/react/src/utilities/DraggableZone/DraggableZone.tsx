@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IDraggableZoneProps, ICoordinates, IDragData } from './DraggableZone.types';
 import { getClassNames } from './DraggableZone.styles';
 import { on } from '../../Utilities';
+import type { IDraggableZoneProps, ICoordinates, IDragData } from './DraggableZone.types';
 
 export interface IDraggableZoneState {
   isDragging: boolean;
@@ -264,6 +264,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     }
 
     const matchesSelectorFn: Function =
+      // eslint-disable-next-line deprecation/deprecation
       element.matches || element.webkitMatchesSelector || (element as any).msMatchesSelector; /* for IE */
 
     if (!matchesSelectorFn) {

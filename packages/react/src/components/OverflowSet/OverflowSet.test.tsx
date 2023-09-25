@@ -1,17 +1,17 @@
 import { shallow } from 'enzyme';
 import { ReactWrapper, mount } from 'enzyme';
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { CommandBarButton } from '../../Button';
-import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
 import { arraysEqual, find } from '../../Utilities';
-import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from '../../Keytips';
+import { KeytipManager, ktpTargetFromId } from '../../Keytips';
 import { OverflowSet } from './OverflowSet';
-import { IOverflowSetItemProps } from './OverflowSet.types';
 import * as path from 'path';
 import { isConformant } from '../../common/isConformant';
+import type { IKeytipProps, IUniqueKeytip } from '../../Keytips';
+import type { IOverflowSetItemProps } from './OverflowSet.types';
 
 function getKeytip(keytipManager: KeytipManager, keySequences: string[]): IKeytipProps | undefined {
   const ktp = find(

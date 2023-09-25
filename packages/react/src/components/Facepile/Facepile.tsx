@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { IFacepileProps, IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 import { FacepileBase } from './Facepile.base';
 import { styles } from './Facepile.styles';
+import type { IFacepileProps, IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
 
 /**
  * The Facepile shows a list of faces or initials in a horizontal lockup. Each circle represents a person.

@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { BaseButton, IButtonProps } from '../../Button';
+import { BaseButton } from '../../Button';
 import { customizable, nullRender } from '../../Utilities';
 import { getStyles } from './FacepileButton.styles';
+import type { IButtonProps } from '../../Button';
 
 @customizable('FacepileButton', ['theme', 'styles'], true)
 export class FacepileButton extends React.Component<IButtonProps, {}> {

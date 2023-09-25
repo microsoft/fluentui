@@ -1,9 +1,10 @@
+/** @jsxRuntime classic */
 /** @jsx withSlots */
 import * as React from 'react';
 import { Icon, Text } from '@fluentui/react';
 import { getNativeProps, buttonProperties } from '@fluentui/react/lib/Utilities';
 import { withSlots, getSlots } from '@fluentui/foundation-legacy';
-import {
+import type {
   ICollapsibleSectionTitleComponent,
   ICollapsibleSectionTitleProps,
   ICollapsibleSectionTitleSlots,

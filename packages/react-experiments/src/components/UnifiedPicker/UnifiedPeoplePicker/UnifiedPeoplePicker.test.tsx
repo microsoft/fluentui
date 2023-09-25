@@ -1,11 +1,14 @@
 import * as React from 'react';
 import { mount, ReactWrapper } from 'enzyme';
 import { create } from 'react-test-renderer';
-import { IPersonaProps } from '@fluentui/react/lib/Persona';
 import { UnifiedPeoplePicker } from './UnifiedPeoplePicker';
-import { IFloatingSuggestionItem, IFloatingPeopleSuggestionsProps } from '../../../FloatingPeopleSuggestionsComposite';
 import { people, mru } from '@fluentui/example-data';
-import { ISelectedPeopleListProps } from '../../../SelectedItemsList';
+import type { IPersonaProps } from '@fluentui/react/lib/Persona';
+import type {
+  IFloatingSuggestionItem,
+  IFloatingPeopleSuggestionsProps,
+} from '../../../FloatingPeopleSuggestionsComposite';
+import type { ISelectedPeopleListProps } from '../../../SelectedItemsList';
 
 type InputElementWrapper = ReactWrapper<React.InputHTMLAttributes<any>, any>;
 

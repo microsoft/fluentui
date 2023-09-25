@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../Styling';
-import { IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
+import type { IDocumentCardActionsStyleProps, IDocumentCardActionsStyles } from './DocumentCardActions.types';
 
 const ACTION_SIZE = 34;
 const HORIZONTAL_PADDING = 12;

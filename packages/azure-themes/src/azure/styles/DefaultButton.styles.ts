@@ -13,34 +13,75 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       height: StyleConstants.inputControlHeight,
       padding: '0px 16px',
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
-      color: semanticColors.buttonText,
       selectors: {
+        // danger button
+        '&.danger': {
+          outlineColor: extendedSemanticColors.ButtonBackgroundDanger,
+          borderColor: extendedSemanticColors.ButtonBorderDanger,
+          backgroundColor: extendedSemanticColors.ButtonBackgroundDanger,
+          color: extendedSemanticColors.ButtonBackgroundDangerText,
+          selectors: {
+            ':hover': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
+              borderColor: `${extendedSemanticColors.ButtonBorderDangerHovered} !important`,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundDangerHovered,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+            ':active': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              borderColor: `${extendedSemanticColors.ButtonBorderDangerPressed} !important`,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+            ':focus': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              borderColor: extendedSemanticColors.ButtonBorderDangerPressed,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundDangerPressed,
+              color: extendedSemanticColors.ButtonBackgroundDangerTextHovered,
+            },
+          },
+        },
+        // tag button
+        '&.tag': {
+          outlineColor: extendedSemanticColors.ButtonBackgroundTag,
+          borderColor: `${extendedSemanticColors.ButtonBorderTag} !important`,
+          backgroundColor: extendedSemanticColors.ButtonBackgroundTag,
+          color: extendedSemanticColors.ButtonBackgroundTagText,
+          selectors: {
+            ':hover': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundTagHovered,
+              borderColor: `${extendedSemanticColors.ButtonBorderTagHovered} !important`,
+              backgroundColor: extendedSemanticColors.ButtonBackgroundTagHovered,
+              color: extendedSemanticColors.ButtonBackgroundTagTextHovered,
+            },
+            ':active': {
+              outlineColor: extendedSemanticColors.ButtonBackgroundTagPressed,
+              borderColor: extendedSemanticColors.ButtonBorderTagPressed,
+              backgroundColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              color: extendedSemanticColors.ButtonBackgroundTagTextHovered,
+            },
+            ':focus': {
+              outlineColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              borderColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              backgroundColor: `${extendedSemanticColors.ButtonBackgroundTagPressed} !important`,
+              color: `${extendedSemanticColors.ButtonBackgroundTagTextHovered} !important`,
+            },
+          },
+        },
         // standard button
         '&.is-expanded': {
           color: semanticColors.buttonTextHovered,
           borderColor: semanticColors.inputBorderHovered,
         },
-        '&.ms-Button--primary.is-disabled': {
-          backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
-          color: semanticColors.primaryButtonTextDisabled,
-          border: `${StyleConstants.borderWidth} solid
-          ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
-        },
         '&.ms-Button--primary': {
-          backgroundColor: semanticColors.primaryButtonBackground,
           height: StyleConstants.inputControlHeight,
           padding: '0px 16px',
-          color: semanticColors.primaryButtonText,
           border: `${StyleConstants.borderWidth} solid ${semanticColors.primaryButtonBorder}`,
           selectors: {
             ':hover': {
-              backgroundColor: semanticColors.primaryButtonBackgroundHovered,
-              color: semanticColors.primaryButtonTextHovered,
               borderColor: semanticColors.primaryButtonBackgroundHovered,
             },
             ':active': {
-              backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-              color: semanticColors.primaryButtonTextPressed,
               borderColor: semanticColors.primaryButtonBackgroundPressed,
             },
             ':focus': {
@@ -50,12 +91,11 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
             },
           },
         },
+        '&.ms-Button--primary.is-disabled': {
+          border: `${StyleConstants.borderWidth} solid
+          ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
+        },
       },
-    },
-    rootDisabled: {
-      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
-      color: semanticColors.primaryButtonTextDisabled,
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     rootFocused: {
       selectors: {
@@ -68,28 +108,21 @@ export const DefaultButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       fill: semanticColors.buttonTextHovered,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
     },
-    rootHovered: {
-      backgroundColor: semanticColors.buttonBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
-    },
-    rootPressed: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
-      color: semanticColors.buttonTextHovered,
-    },
     rootChecked: {
-      backgroundColor: semanticColors.buttonBackgroundPressed,
       border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.inputBorderPressed}`,
-      color: semanticColors.buttonTextHovered,
     },
     rootCheckedHovered: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
-      backgroundColor: semanticColors.buttonBackgroundHovered,
-      color: semanticColors.buttonTextHovered,
     },
     rootCheckedPressed: {
       backgroundColor: semanticColors.buttonBackgroundPressed,
       border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       color: semanticColors.buttonTextHovered,
+    },
+    rootDisabled: {
+      backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
+      color: semanticColors.primaryButtonTextDisabled,
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
     },
     splitButtonContainer: {
       selectors: {

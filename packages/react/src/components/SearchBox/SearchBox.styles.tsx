@@ -2,13 +2,13 @@ import {
   HighContrastSelector,
   AnimationVariables,
   normalize,
-  IStyle,
   getPlaceholderStyles,
   getGlobalClassNames,
   getInputFocusStyle,
 } from '../../Styling';
-import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 import { getRTL } from '../../Utilities';
+import type { IStyle } from '../../Styling';
+import type { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 const GlobalClassNames = {
   root: 'ms-SearchBox',
@@ -77,6 +77,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
             },
             [`:hover .${classNames.icon}`]: {
               opacity: 0,
+              pointerEvents: 'none',
             },
           },
         },
@@ -167,6 +168,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
       },
       hasFocus && {
         opacity: 0,
+        pointerEvents: 'none',
       },
       !disableAnimation && {
         transition: `opacity ${AnimationVariables.durationValue1} 0s`,

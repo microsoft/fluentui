@@ -1,19 +1,20 @@
 import * as React from 'react';
 
 import { classNamesFunction, css } from '../../Utilities';
-import { IProcessedStyleSet } from '../../Styling';
 import { SelectionMode } from '../../Selection';
 import { DetailsList } from './DetailsList';
-import { IDetailsRowProps } from './DetailsRow.types';
-import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../../Shimmer';
-import {
+import { Shimmer, ShimmerElementsGroup, ShimmerElementType } from '../../Shimmer';
+import { CheckboxVisibility } from './DetailsList.types';
+
+import { DEFAULT_CELL_STYLE_PROPS, DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
+import type { IProcessedStyleSet } from '../../Styling';
+import type { IDetailsRowProps } from './DetailsRow.types';
+import type { IShimmerElement } from '../../Shimmer';
+import type {
   IShimmeredDetailsListProps,
   IShimmeredDetailsListStyleProps,
   IShimmeredDetailsListStyles,
 } from './ShimmeredDetailsList.types';
-import { CheckboxVisibility } from './DetailsList.types';
-
-import { DEFAULT_CELL_STYLE_PROPS, DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 
 const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>();
 

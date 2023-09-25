@@ -1,12 +1,12 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
@@ -29,8 +29,7 @@ export const cardFooterClassName = 'ui-card__footer';
 /**
  * A CardFooter is used to display data in Card component footer
  */
-export const CardFooter: ComponentWithAs<'div', CardFooterProps> &
-  FluentComponentStaticProps<CardFooterProps> = props => {
+export const CardFooter = React.forwardRef<HTMLDivElement, CardFooterProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardFooter.displayName, context.telemetry);
   setStart();
@@ -59,6 +58,7 @@ export const CardFooter: ComponentWithAs<'div', CardFooterProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
       })}
     >
@@ -67,7 +67,7 @@ export const CardFooter: ComponentWithAs<'div', CardFooterProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardFooterProps> & FluentComponentStaticProps<CardFooterProps>;
 
 CardFooter.displayName = 'CardFooter';
 

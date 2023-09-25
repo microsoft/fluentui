@@ -1,18 +1,19 @@
 import * as React from 'react';
 import { classNamesFunction, memoizeFunction } from '../../../Utilities';
-import { IRawStyle } from '../../../Styling';
-import {
+import { ShimmerElementType, ShimmerElementsDefaultHeights } from '../Shimmer.types';
+import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
+import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
+import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
+import type { IRawStyle } from '../../../Styling';
+import type {
   IShimmerElementsGroupProps,
   IShimmerElementsGroupStyleProps,
   IShimmerElementsGroupStyles,
 } from './ShimmerElementsGroup.types';
-import { ShimmerElementType, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
-import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
-import { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';
-import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
-import { IShimmerGapStyles } from '../ShimmerGap/ShimmerGap.types';
-import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
-import { IShimmerCircleStyles } from '../ShimmerCircle/ShimmerCircle.types';
+import type { IShimmerElement } from '../Shimmer.types';
+import type { IShimmerLineStyles } from '../ShimmerLine/ShimmerLine.types';
+import type { IShimmerGapStyles } from '../ShimmerGap/ShimmerGap.types';
+import type { IShimmerCircleStyles } from '../ShimmerCircle/ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
@@ -36,7 +37,7 @@ export const ShimmerElementsGroupBase: React.FunctionComponent<IShimmerElementsG
   });
 
   return (
-    <div style={{ width: width }} className={classNames.root}>
+    <div style={{ width }} className={classNames.root}>
       {getRenderedElements(shimmerElements, backgroundColor, rowHeight)}
     </div>
   );
@@ -111,7 +112,7 @@ const getElementStyles = memoizeFunction(
           };
         case ShimmerElementType.gap:
           return {
-            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor: backgroundColor },
+            root: { ...borderStyle, borderColor: backgroundColor, backgroundColor },
           };
         case ShimmerElementType.line:
           return {

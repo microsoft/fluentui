@@ -5,13 +5,12 @@ import {
   elementContains,
   focusFirstChild,
   getDocument,
-  IRectangle,
   KeyCodes,
   getRTL,
   EventGroup,
   getPropsWithDefaults,
 } from '../../Utilities';
-import { IPositionedData, RectangleEdge, getOppositeEdge } from '../../Positioning';
+import { RectangleEdge, getOppositeEdge } from '../../Positioning';
 
 // Component Dependencies
 import { PositioningContainer } from './PositioningContainer/index';
@@ -19,11 +18,14 @@ import { Beak, BEAK_HEIGHT, BEAK_WIDTH } from './Beak/Beak';
 import { DirectionalHint } from '../../common/DirectionalHint';
 
 // Coachmark
-import { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useAsync, useOnEvent, useSetTimeout, useWarnings } from '@fluentui/react-hooks';
-import { IBeakProps } from './Beak/Beak.types';
+import type { IRectangle } from '../../Utilities';
+import type { IPositionedData } from '../../Positioning';
+import type { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
+import type { ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
+import type { IBeakProps } from './Beak/Beak.types';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -245,6 +247,7 @@ function useProximityHandlers(
   props: ICoachmarkProps,
   translateAnimationContainer: React.RefObject<HTMLDivElement>,
   openCoachmark: () => void,
+  setBounds: (bounds: IRectangle | undefined) => void,
 ) {
   const { setTimeout, clearTimeout } = useSetTimeout();
 
@@ -283,6 +286,7 @@ function useProximityHandlers(
           timeoutIds.push(
             setTimeout((): void => {
               setTargetElementRect();
+              setBounds(getBounds(props.isPositionForced, props.positioningContainerProps));
             }, 100),
           );
         });
@@ -415,13 +419,20 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
   const [isCollapsed, openCoachmark] = useCollapsedState(props, entityInnerHostElementRef);
   const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
   const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(props, entityInnerHostElementRef);
+  const [bounds, setBounds] = React.useState<IRectangle | undefined>(
+    getBounds(props.isPositionForced, props.positioningContainerProps),
+  );
   const alertText = useAriaAlert(props);
   const entityHost = useAutoFocus(props);
 
   useListeners(props, translateAnimationContainer, openCoachmark);
   useComponentRef(props);
-  useProximityHandlers(props, translateAnimationContainer, openCoachmark);
+  useProximityHandlers(props, translateAnimationContainer, openCoachmark, setBounds);
   useDeprecationWarning(props);
+
+  React.useEffect(() => {
+    setBounds(getBounds(props.isPositionForced, props.positioningContainerProps));
+  }, [props.isPositionForced, props.positioningContainerProps]);
 
   const {
     beaconColorOne,
@@ -473,7 +484,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
       finalHeight={finalHeight}
       ref={forwardedRef}
       onPositioned={onPositioned}
-      bounds={getBounds(props)}
+      bounds={bounds}
       {...positioningContainerProps}
     >
       <div className={classNames.root}>
@@ -525,7 +536,10 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 });
 CoachmarkBase.displayName = COMPONENT_NAME;
 
-function getBounds({ isPositionForced, positioningContainerProps }: ICoachmarkProps): IRectangle | undefined {
+function getBounds(
+  isPositionForced?: boolean,
+  positioningContainerProps?: IPositioningContainerProps,
+): IRectangle | undefined {
   if (isPositionForced) {
     // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
     // to the window x-axis to have auto positioning work correctly.
@@ -558,6 +572,7 @@ function getBounds({ isPositionForced, positioningContainerProps }: ICoachmarkPr
 }
 
 function isInsideElement(
+  // eslint-disable-next-line deprecation/deprecation
   targetElementRect: ClientRect,
   mouseX: number,
   mouseY: number,

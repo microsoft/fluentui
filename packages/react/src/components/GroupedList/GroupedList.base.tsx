@@ -1,21 +1,22 @@
 import * as React from 'react';
-import { IProcessedStyleSet } from '../../Styling';
-import {
+import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
+import { GroupedListSection } from './GroupedListSection';
+import { List, ScrollToMode } from '../../List';
+import { SelectionMode } from '../../Selection';
+import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
   IGroupedList,
   IGroupedListProps,
   IGroup,
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
-import { initializeComponentRef, classNamesFunction, KeyCodes, getRTLSafeKeyCode, css } from '../../Utilities';
-import { GroupedListSection } from './GroupedListSection';
-import { List, ScrollToMode, IListProps } from '../../List';
-import { SelectionMode } from '../../Selection';
-import { DEFAULT_ROW_HEIGHTS } from '../DetailsList/DetailsRow.styles';
-import { IGroupHeaderProps } from './GroupHeader';
-import { IGroupShowAllProps } from './GroupShowAll.styles';
-import { IGroupFooterProps } from './GroupFooter.types';
-import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import type { IListProps } from '../../List';
+import type { IGroupHeaderProps } from './GroupHeader';
+import type { IGroupShowAllProps } from './GroupShowAll.styles';
+import type { IGroupFooterProps } from './GroupFooter.types';
 
 const getClassNames = classNamesFunction<IGroupedListStyleProps, IGroupedListStyles>();
 const { rowHeight: ROW_HEIGHT, compactRowHeight: COMPACT_ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
@@ -56,6 +57,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       compact,
       groups,
       listProps,
+      items,
     };
 
     let shouldForceUpdates = false;
@@ -72,17 +74,6 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
       // If there are any props not passed explicitly to `List` which have an impact on the behavior of `onRenderCell`,
       // these need to 'force-update' this component by revving the version. Otherwise, the List might render with stale
       // data.
-      shouldForceUpdates = true;
-    }
-
-    if (groups !== previousState.groups) {
-      nextState = {
-        ...nextState,
-        groups,
-      };
-    }
-
-    if (selectionMode !== previousState.selectionMode || compact !== previousState.compact) {
       shouldForceUpdates = true;
     }
 
@@ -148,7 +139,7 @@ export class GroupedListBase extends React.Component<IGroupedListProps, IGrouped
     this._classNames = getClassNames(styles, {
       theme: theme!,
       className,
-      compact: compact,
+      compact,
     });
 
     const { shouldEnterInnerZone = this._isInnerZoneKeystroke } = focusZoneProps;

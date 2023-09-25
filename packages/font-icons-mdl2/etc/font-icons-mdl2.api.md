@@ -3613,8 +3613,10 @@ export const enum IconNames {
 }
 
 // @public (undocumented)
-export function initializeIcons(baseUrl?: string, options?: IIconOptions): void;
+export type IconNamesInput = keyof typeof IconNames;
 
+// @public (undocumented)
+export function initializeIcons(baseUrl?: string, options?: IIconOptions): void;
 
 // (No @packageDocumentation comment for this package)
 

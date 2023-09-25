@@ -1,6 +1,4 @@
 export {
-  IElementPosition,
-  IElementPositionInfo,
   getBoundsFromTargetWindow,
   getMaxHeight,
   getOppositeEdge,
@@ -9,3 +7,4 @@ export {
   positionElement,
 } from './positioning';
 export * from './positioning.types';
+export type { IElementPosition, IElementPositionInfo } from './positioning';

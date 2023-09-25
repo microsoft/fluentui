@@ -27,6 +27,7 @@ const Types = () => (
       <ComponentExample examplePath="components/Provider/Types/ProviderExampleScrollbar" />
       <ComponentExample examplePath="components/Provider/Types/ProviderExampleStyles" />
       <ComponentExample examplePath="components/Provider/Types/ProviderExampleRendererFelaPluginFallbackValue" />
+      <ComponentExample examplePath="components/Provider/Types/ProviderExampleFocusBorder" />
     </NonPublicSection>
   </>
 );

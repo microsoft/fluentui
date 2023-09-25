@@ -1,14 +1,11 @@
 // @ts-check
-import { createElement } from 'react';
+import * as React from 'react';
 import { setAddon } from '@storybook/react';
 import { setRTL } from '@fluentui/react/lib/Utilities';
-
-const defaultConfig = {
-  rtl: false,
-};
+import { ThemeProvider } from '@fluentui/react';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 /**
- *
  * @deprecated https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-setaddon
  *
  * TODO: rework this to be conformant with Component Story Format
@@ -20,19 +17,26 @@ const defaultConfig = {
  *
  * Adds a story with different configuration options.
  * By default, only adds a story in LTR.
- * The config parameter can be used to add the story RTL
- *  in addition to LTR.
- * In future, this can add a story with additional configurations
- *  such as theming.
+ * The config parameter can be used to add the story RTL in addition to LTR.
+ * In future, this can add a story with additional configurations such as theming.
  */
 setAddon({
-  addStory(storyName, storyFn, config = defaultConfig) {
+  /**
+   * @type {import('../src/utilities/types').ExtendedStoryApi['addStory']}
+   * @this {import('../src/utilities/types').ExtendedStoryApi}
+   */
+  addStory(storyName, storyFn, config = {}) {
     this.add(storyName, context => {
       setRTL(false);
       return storyFn(context);
     });
-
-    if (config.rtl) {
+    if (config.includeDarkMode) {
+      this.add(storyName + ' - Dark Mode', context => {
+        setRTL(false);
+        return <ThemeProvider theme={DarkTheme}>{storyFn(context)}</ThemeProvider>;
+      });
+    }
+    if (config.includeRtl) {
       this.add(storyName + ' - RTL', context => {
         setRTL(true);
         return storyFn(context);
@@ -43,23 +47,4 @@ setAddon({
   },
 });
 
-/**
- * @type {import('@storybook/react').Meta['decorators']}
- */
-export const decorators = [removeCanvasInlineStyles];
-
-/**
- * Temporary solution to remove inline styles injected by new default SB layout (https://storybook.js.org/docs/react/configure/story-layout)
- * TODO - remove this once we migrate to SB 6.1
- * @see https://github.com/storybookjs/storybook/issues/12041#issuecomment-717177177
- * @param {Parameters<import('@storybook/react').Meta['decorators'][number]>[0]} Story
- */
-function removeCanvasInlineStyles(Story) {
-  document.body.removeAttribute('style');
-  return createElement(Story);
-}
-
-// For static storybook per https://github.com/screener-io/screener-storybook#testing-with-static-storybook-app
-if (typeof window === 'object') {
-  /** @type {*} */ (window).__screener_storybook__ = require('@storybook/react').getStorybook;
-}
+export const parameters = { layout: 'none' };

@@ -1,6 +1,6 @@
-import { IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
+import type { IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
 
-export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDetailsListStyles => {
+export const getShimmeredDetailsListStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDetailsListStyles => {
   const { theme } = props;
   const { palette } = theme;
 

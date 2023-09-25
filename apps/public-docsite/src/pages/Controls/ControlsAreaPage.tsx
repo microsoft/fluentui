@@ -7,7 +7,14 @@ import { IPageJson } from '@fluentui/react/lib/common/DocPage.types';
 
 export interface IControlsPageProps extends IPageProps<Platforms> {}
 
-const apiRequireContext = require.context('@fluentui/api-docs/lib/pages/', true, /^(?!references).*/);
+const apiRequireContext = require.context('@fluentui/public-docsite-resources/dist/api/', true, /^(?!references).*/);
+
+const webPlatformBanner = {
+  banner: {
+    title: 'Fluent UI v9',
+    message: 'Check out the all new [Fluent UI version 9](https://react.fluentui.dev)!',
+  },
+};
 
 const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = props => {
   let jsonDocs: IPageJson;
@@ -22,9 +29,10 @@ const ControlsAreaPageBase: React.FunctionComponent<IControlsPageProps> = props 
   }
   return (
     <Page
-      subTitle={getSubTitle(props.platform)}
-      jsonDocs={jsonDocs}
+      subTitle={getSubTitle(props.platform!)}
+      jsonDocs={jsonDocs!}
       {...props}
+      {...(props.platform === Platforms.web && webPlatformBanner)}
       versionSwitcherDefinition={
         props.platform === Platforms.web ? SiteDefinition.versionSwitcherDefinition : undefined
       }

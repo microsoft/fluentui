@@ -1,5 +1,6 @@
 import { GlobalSettings, warn } from '@fluentui/utilities';
-import { IRawStyle, IFontFace, fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
+import { fontFace, mergeStyles, Stylesheet } from '@fluentui/merge-styles';
+import type { IRawStyle, IFontFace } from '@fluentui/merge-styles';
 
 export interface IIconSubset {
   fontFace?: IFontFace;
@@ -218,7 +219,7 @@ export function setIconOptions(options: Partial<IIconOptions>): void {
 }
 
 let _missingIcons: string[] = [];
-let _missingIconsTimer: number | undefined = undefined;
+let _missingIconsTimer: ReturnType<typeof setTimeout> | undefined = undefined;
 
 function _warnDuplicateIcon(iconName: string): void {
   const options = _iconSettings.__options;

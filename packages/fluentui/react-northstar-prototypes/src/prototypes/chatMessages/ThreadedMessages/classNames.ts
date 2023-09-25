@@ -4,13 +4,14 @@ import {
   chatItemSlotClassNames,
   chatItemClassName,
   chatMessageClassName,
+  chatMessageContentClassName,
 } from '@fluentui/react-northstar';
 
 const classNames = {
   threadedMessage: {
     thread: `${chatMessageClassName}__thread`,
     threadBody: `${chatMessageClassName}__thread-body`,
-    innerContent: `${chatMessageSlotClassNames.content}-inner`,
+    innerContent: `${chatMessageContentClassName}-inner`,
     author: `${chatMessageSlotClassNames.author}-inner`,
     timestamp: `${chatMessageSlotClassNames.timestamp}-inner`,
   },

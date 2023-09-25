@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
 import { ResponsiveMode } from '../../ResponsiveMode';
 import { RectangleEdge } from '../../Positioning';
-import { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
-import { ILabelStyleProps, ILabelStyles } from '../../Label';
-import { IPanelStyleProps, IPanelStyles } from '../../Panel';
+import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
+import type { ICheckboxStyleProps, ICheckboxStyles } from '../../Checkbox';
+import type { ILabelStyleProps, ILabelStyles } from '../../Label';
+import type { IPanelStyleProps, IPanelStyles } from '../../Panel';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../SelectableOption';
 
@@ -18,6 +18,11 @@ export interface IDropdown {
    * All selected options
    */
   readonly selectedOptions: IDropdownOption[];
+
+  /**
+   * An imperative handle to dismiss the popup if it is open
+   */
+  dismissMenu: () => void;
 
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
@@ -245,8 +250,14 @@ export interface IDropdownStyles {
   /** Refers to the dropdown separator. */
   dropdownDivider: IStyle;
 
+  /** Style for dropdown separator when hidden. */
+  dropdownDividerHidden: IStyle;
+
   /** Refers to the individual dropdown items that are being rendered as a header. */
   dropdownItemHeader: IStyle;
+
+  /** Style for dropdown header when hidden. */
+  dropdownItemHeaderHidden: IStyle;
 
   /**
    * Refers to the panel that hosts the Dropdown options in small viewports.

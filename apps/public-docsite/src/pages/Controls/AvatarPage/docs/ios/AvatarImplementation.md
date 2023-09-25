@@ -4,7 +4,7 @@
 
 ### Source code
 
-[AvatarView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/People%20Picker/AvatarView.swift)
+[AvatarView](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Avatar/AvatarView.swift)
 
 ### Sample code
 

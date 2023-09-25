@@ -1,0 +1,21 @@
+name: Triage Bot
+on:
+  issues:
+    types:
+      - opened
+
+jobs:
+  triage-issue:
+    runs-on: ubuntu-latest
+
+    permissions:
+      issues: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/github-script@v6
+        with:
+          script: |
+            const config = require('./.github/triage-bot.config.json');
+            const run = require('./scripts/triage-bot');
+            await run({github,context,core,config});

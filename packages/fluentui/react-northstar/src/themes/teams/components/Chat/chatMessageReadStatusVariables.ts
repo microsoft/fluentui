@@ -1,15 +1,15 @@
 import { pxToRem } from '../../../../utils';
 
 export interface ChatMessageReadStatusVariables {
-  rightPoistion?: string;
-  rightPositionCompact: string;
-  bottomPoistion?: string;
+  bottomPosition?: string;
   bottomPositionCompact: string;
+  color?: string;
+  rightPosition?: string;
 }
 
 export const chatMessageReadStatusVariables = (siteVars): ChatMessageReadStatusVariables => ({
-  rightPoistion: pxToRem(-24),
-  rightPositionCompact: pxToRem(-16),
-  bottomPoistion: pxToRem(0),
-  bottomPositionCompact: pxToRem(2),
+  bottomPosition: '0',
+  bottomPositionCompact: pxToRem(-1), // Offset border around compact message
+  color: siteVars.colorScheme.brand.foreground1,
+  rightPosition: pxToRem(-17),
 });

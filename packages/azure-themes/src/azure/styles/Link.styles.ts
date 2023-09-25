@@ -13,14 +13,9 @@ export const LinkStyles = (props: ILinkStyleProps): Partial<ILinkStyles> => {
         textDecoration: extendedSemanticColors.listUnderline,
         selectors: {
           '&:active, &:hover, &:active:hover': {
-            backgroundColor: extendedSemanticColors.linkBackgroundHovered,
             color: semanticColors.linkHovered,
           },
           '&:active': {
-            backgroundColor: extendedSemanticColors.linkBackgroundHovered,
-            border: `${extendedSemanticColors.choiceGroupContainerBorder}
-              ${extendedSemanticColors.linkBorderStyle}
-              ${extendedSemanticColors.linkHovered}`,
             color: semanticColors.linkHovered,
           },
         },

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IComponentAs, IComponentAsProps } from '../IComponentAs';
 import { createMemoizer } from '../memoize';
+import type { IComponentAs, IComponentAsProps } from '../IComponentAs';
 
 interface IComposeComponentAs {
   <TProps>(outer: IComponentAs<TProps>): (inner: IComponentAs<TProps>) => IComponentAs<TProps>;

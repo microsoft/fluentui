@@ -1,5 +1,5 @@
-import { IRawStyle } from '@fluentui/merge-styles';
-import { ITheme, ISemanticColors, IPalette } from '../interfaces/index';
+import type { IRawStyle } from '@fluentui/merge-styles';
+import type { ITheme, ISemanticColors, IPalette } from '../interfaces/index';
 
 interface IRGB {
   r: number;

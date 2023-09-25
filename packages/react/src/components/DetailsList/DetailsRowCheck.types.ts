@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import { SelectionMode } from '../../Selection';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
 /**
  * {@docCategory DetailsList}
@@ -35,6 +36,11 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
    * Can this checkbox be selectable
    */
   canSelect: boolean;
+
+  /**
+   * Selection mode
+   */
+  selectionMode?: SelectionMode;
 
   /**
    * Is this in compact mode?

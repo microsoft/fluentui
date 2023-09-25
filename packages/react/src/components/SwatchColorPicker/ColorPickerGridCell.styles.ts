@@ -1,6 +1,6 @@
 import { IsFocusVisibleClassName } from '../../Utilities';
 import { HighContrastSelector, getFocusStyle } from '../../Styling';
-import { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
+import type { IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
 // Size breakpoint when the default border width changes from 2px to 4px.
 const CELL_BORDER_BREAKPOINT = 24;
@@ -57,8 +57,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         userSelect: 'none',
         borderRadius: 0,
         border: 'none',
-        height: height,
-        width: width,
+        height,
+        width,
         verticalAlign: 'top',
       },
       !circle && {
@@ -95,8 +95,8 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
         selectors: {
           ['&:hover::before']: {
             content: '""',
-            height: height,
-            width: width,
+            height,
+            width,
             position: 'absolute',
             top: -calculatedBorderWidth,
             left: -calculatedBorderWidth,

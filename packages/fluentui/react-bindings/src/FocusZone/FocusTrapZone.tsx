@@ -16,6 +16,7 @@ import {
   HIDDEN_FROM_ACC_TREE,
 } from './focusUtilities';
 import { FocusTrapZoneProps } from './FocusTrapZone.types';
+import { handleRef } from '@fluentui/react-component-ref';
 
 /** FocusTrapZone is used to trap the focus in any html element placed in body
  *  and hide other elements outside of Focus Trap Zone from accessibility tree.
@@ -56,6 +57,8 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     disableFirstFocus: PropTypes.bool,
     focusPreviouslyFocusedInnerElement: PropTypes.bool,
     focusTriggerOnOutsideClick: PropTypes.bool,
+    preventScrollOnRestoreFocus: PropTypes.bool,
+    innerRef: PropTypes.any,
   };
 
   static defaultProps: FocusTrapZoneProps = {
@@ -120,6 +123,11 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     delete this._previouslyFocusedElementOutsideTrapZone;
   }
 
+  handleRef = (element: HTMLElement) => {
+    this.createRef(element);
+    handleRef(this.props.innerRef, element);
+  };
+
   render(): JSX.Element {
     const { className, forceFocusInsideTrapOnOutsideFocus, ariaLabelledBy, disabled = false } = this.props;
     const unhandledProps = getUnhandledProps(_.keys(FocusTrapZone.propTypes) as any, this.props);
@@ -140,7 +148,7 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
         <ElementType
           {...unhandledProps}
           className={className}
-          ref={this.createRef}
+          ref={this.handleRef}
           aria-labelledby={ariaLabelledBy}
           onKeyDown={this._onKeyboardHandler}
           onFocusCapture={this._onFocusCapture}
@@ -210,9 +218,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
       return;
     }
 
-    const currentBumper = (isFirstBumper === this._hasFocus
-      ? this._lastBumper.current
-      : this._firstBumper.current) as HTMLElement;
+    const currentBumper = (
+      isFirstBumper === this._hasFocus ? this._lastBumper.current : this._firstBumper.current
+    ) as HTMLElement;
 
     const nextFocusable =
       isFirstBumper === this._hasFocus
@@ -229,9 +237,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
     }
   };
 
-  _focusAsync(element: HTMLElement): void {
+  _focusAsync(element: HTMLElement, options?: FocusOptions): void {
     if (!this._isBumper(element)) {
-      focusAsync(element);
+      focusAsync(element, options);
     }
   }
 
@@ -278,7 +286,9 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
       // @ts-ignore
       (this._root.current.contains(activeElement) || activeElement === doc.body)
     ) {
-      this._focusAsync(this._previouslyFocusedElementOutsideTrapZone);
+      this._focusAsync(this._previouslyFocusedElementOutsideTrapZone, {
+        preventScroll: this.props.preventScrollOnRestoreFocus,
+      });
     }
 
     // if last active focus trap zone is going to be released - show previously hidden content in accessibility tree
@@ -287,12 +297,14 @@ export class FocusTrapZone extends React.Component<FocusTrapZoneProps, {}> {
 
     if (!lastActiveFocusTrap) {
       this._showContentInAccessibilityTree();
-    } else if (
-      lastActiveFocusTrap._root.current &&
-      lastActiveFocusTrap._root.current.hasAttribute(HIDDEN_FROM_ACC_TREE)
-    ) {
-      lastActiveFocusTrap._root.current.removeAttribute(HIDDEN_FROM_ACC_TREE);
-      lastActiveFocusTrap._root.current.removeAttribute('aria-hidden');
+    } else if (lastActiveFocusTrap._root.current) {
+      let element = lastActiveFocusTrap._root.current;
+      // aria hidden attributes are added to direct children of body. It can be the focusTrapZone root itself, or its parent
+      while (element.parentElement && element.parentElement !== doc?.body) {
+        element = element.parentElement;
+      }
+      element.removeAttribute(HIDDEN_FROM_ACC_TREE);
+      element.removeAttribute('aria-hidden');
     }
   };
 

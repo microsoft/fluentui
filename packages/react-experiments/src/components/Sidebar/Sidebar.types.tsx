@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { IButtonProps, IButtonStyles } from '@fluentui/react/lib/Button';
-import { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
-import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
-import { IComponentAs } from '@fluentui/react/lib/Utilities';
-import { IRefObject } from '@fluentui/react/lib/Utilities';
 import { SidebarColors } from './Sidebar.styles';
+import type { IButtonProps, IButtonStyles } from '@fluentui/react/lib/Button';
+import type { IContextualMenuItem } from '@fluentui/react/lib/ContextualMenu';
+import type { IStyle, ITheme } from '@fluentui/react/lib/Styling';
+import type { IComponentAs, IRefObject } from '@fluentui/react/lib/Utilities';
 
 export interface ISidebar {
   /**

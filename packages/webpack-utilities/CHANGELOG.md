@@ -1,8 +1,44 @@
 # Change Log - @fluentui/webpack-utilities
 
-This log was last generated on Fri, 09 Jul 2021 07:39:31 GMT and should not be manually modified.
+This log was last generated on Fri, 05 May 2023 18:14:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.1.15](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.15)
+
+Fri, 05 May 2023 18:14:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.1.14..@fluentui/webpack-utilities_v8.1.15)
+
+### Patches
+
+- fix: explicitly ship dist/ folder. ([PR #27769](https://github.com/microsoft/fluentui/pull/27769) by tristan.watanabe@gmail.com)
+
+## [8.1.14](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.14)
+
+Tue, 02 May 2023 22:20:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.1.10..@fluentui/webpack-utilities_v8.1.14)
+
+### Patches
+
+- fix: update npmignore files to fix npm8/node16 regression with how npm publish works. ([PR #27745](https://github.com/microsoft/fluentui/pull/27745) by tristan.watanabe@gmail.com)
+
+## [8.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.5)
+
+Wed, 11 Aug 2021 07:34:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.1.4..@fluentui/webpack-utilities_v8.1.5)
+
+### Patches
+
+- bump loader-utils to 2.0.0 ([PR #19256](https://github.com/microsoft/fluentui/pull/19256) by olfedias@microsoft.com)
+
+## [8.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.4)
+
+Tue, 03 Aug 2021 07:39:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/webpack-utilities_v8.1.3..@fluentui/webpack-utilities_v8.1.4)
+
+### Patches
+
+- Bump @fluentui/eslint-plugin to v1.3.3 ([PR #19169](https://github.com/microsoft/fluentui/pull/19169) by behowell@microsoft.com)
 
 ## [8.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/webpack-utilities_v8.1.3)
 

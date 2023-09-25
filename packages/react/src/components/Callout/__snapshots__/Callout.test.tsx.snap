@@ -1,67 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Callout renders Callout correctly 1`] = `
-<div
-  className=
-      ms-Callout-container
-      {
-        position: relative;
-      }
->
+<div>
   <div
-    className=
-        ms-Callout
+    class=
+        ms-Callout-container
         {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          border-radius: 2px;
-          box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-          box-sizing: border-box;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          outline: transparent;
-          position: absolute;
+          position: relative;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
-          border-color: WindowText;
-          border-style: solid;
-          border-width: 1px;
-        }
-        &::-moz-focus-inner {
-          border: 0px;
-        }
-    style={
-      Object {
-        "filter": "opacity(0)",
-        "opacity": 0,
-        "pointerEvents": "none",
-      }
-    }
-    tabIndex={-1}
   >
     <div
-      className=
-          ms-Callout-main
+      class=
+          ms-Callout
           {
-            background-color: #ffffff;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             border-radius: 2px;
-            overflow-x: hidden;
-            overflow-y: auto;
-            position: relative;
+            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+            box-sizing: border-box;
+            display: flex;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            outline: transparent;
+            position: absolute;
           }
-      onKeyDown={[Function]}
-      onMouseDown={[Function]}
-      onMouseUp={[Function]}
-      style={
-        Object {
-          "maxHeight": 752,
-          "outline": "none",
-          "overflowY": undefined,
-        }
-      }
+          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+            border-color: WindowText;
+            border-style: solid;
+            border-width: 1px;
+          }
+          &::-moz-focus-inner {
+            border: 0px;
+          }
+      style="opacity: 0; filter: opacity(0); pointer-events: none;"
+      tabindex="-1"
     >
-      Content
+      <div
+        class=
+            ms-Callout-main
+            {
+              background-color: #ffffff;
+              border-radius: 2px;
+              overflow-x: hidden;
+              overflow-y: auto;
+              position: relative;
+              width: 100%;
+            }
+        style="outline: none; max-height: 100%;"
+      >
+        Content
+      </div>
     </div>
   </div>
 </div>

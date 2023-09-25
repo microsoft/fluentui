@@ -8,14 +8,12 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
 
   public render(): JSX.Element {
     const points: IChartDataPoint[] = [
-      { legend: 'first', data: 20000, color: '#E5E5E5', xAxisCalloutData: '2020/04/30' },
+      { legend: 'first', data: 20000, color: '#DADADA', xAxisCalloutData: '2020/04/30' },
       { legend: 'second', data: 39000, color: '#0078D4', xAxisCalloutData: '2020/04/20' },
     ];
 
-    const chartTitle = 'Stacked Bar chart example';
-
     const data: IChartProps = {
-      chartTitle: chartTitle,
+      chartTitle: 'Donut chart custom callout example',
       chartData: points,
     };
     return (
@@ -24,7 +22,7 @@ export class DonutChartCustomCalloutExample extends React.Component<IDonutChartP
         innerRadius={55}
         href={'https://developer.microsoft.com/en-us/'}
         legendsOverflowText={'overflow Items'}
-        hideLegend={true}
+        hideLegend={false}
         height={220}
         width={176}
         valueInsideDonut={39000}

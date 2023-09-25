@@ -3,18 +3,20 @@
  */
 
 import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { IButtonStyles } from '@fluentui/react/lib/Button';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ScrollablePane } from '@fluentui/react/lib/ScrollablePane';
-import { concatStyleSets, ITheme } from '@fluentui/react/lib/Styling';
+import { concatStyleSets } from '@fluentui/react/lib/Styling';
 import { KeyCodes, initializeComponentRef, FocusRects } from '@fluentui/react/lib/Utilities';
 import * as React from 'react';
 import { Accordion } from '../BAFAccordion/Accordion';
-import { getSidebarClassNames, ISidebarClassNames } from './Sidebar.classNames';
+import { getSidebarClassNames } from './Sidebar.classNames';
 import { getButtonColoredStyles, getSidebarStyles, SidebarColors } from './Sidebar.styles';
-import { ISidebar, ISidebarItemProps, ISidebarProps } from './Sidebar.types';
 import { SidebarButton } from './SidebarButton';
 import { getSidebarChildrenStyles } from './SidebarButton.styles';
+import type { IButtonStyles } from '@fluentui/react/lib/Button';
+import type { ITheme } from '@fluentui/react/lib/Styling';
+import type { ISidebarClassNames } from './Sidebar.classNames';
+import type { ISidebar, ISidebarItemProps, ISidebarProps } from './Sidebar.types';
 
 export interface ISidebarState {
   // whether the sidebar is currently collapsed or not.
@@ -51,16 +53,8 @@ export class Sidebar extends React.Component<ISidebarProps, ISidebarState> imple
   }
 
   public render(): JSX.Element {
-    const {
-      theme,
-      styles,
-      collapseButtonStyles,
-      className,
-      collapseButtonAriaLabel,
-      footerItems,
-      id,
-      items,
-    } = this.props;
+    const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } =
+      this.props;
 
     this._theme = theme!;
     this._colors = this.props.colors !== undefined ? this.props.colors : SidebarColors.Light;

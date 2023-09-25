@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import {
   IColumn,
   DetailsListLayoutMode,
@@ -114,32 +114,32 @@ const _columnReorderProps = {
 };
 
 storiesOf('DetailsHeader', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=2]')
+        .hover('[data-item-key=a]')
         .snapshot('hoverFrozenFirst', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=3]')
+        .hover('[data-item-key=b]')
         .snapshot('hoverDraggable', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=7]')
+        .hover('[data-item-key=f]')
         .snapshot('hoverFrozenLast', { cropTo: '.ms-DetailsHeader' })
-        .hover('[aria-colindex=3]')
+        .hover('[data-item-key=b]')
         .executeScript(dndScript)
         // simulate a drag on column 'b' to render the border
         .cssAnimations(false)
-        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[aria-colindex="5"]', false)`)
+        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[data-item-key="d"]', false)`)
         .snapshot('borderWhileDragging')
         // do a dragover on 'd' to render the drop hint
-        .hover('[aria-colindex=5]')
+        .hover('[data-item-key=d]')
         .cssAnimations(true)
-        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[aria-colindex="5"]', true)`)
+        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[data-item-key="d"]', true)`)
         .snapshot('dropHint')
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
 
   .addStory('Root', () => (

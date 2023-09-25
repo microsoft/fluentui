@@ -10,6 +10,10 @@ import {
 
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
+  /**
    * Data to render in the chart.
    */
   data: IGroupedVerticalBarChartData[];
@@ -65,6 +69,23 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
    * Define a custom callout renderer for a stack
    */
   onRenderCalloutPerDataPoint?: IRenderFunction<IGVBarChartSeriesPoint>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * To display multi stack callout or single callout
+   * @default false
+   */
+  isCalloutForStack?: boolean;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {}
@@ -74,4 +95,9 @@ export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
 }

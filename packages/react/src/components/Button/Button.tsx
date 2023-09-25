@@ -1,12 +1,13 @@
 import * as React from 'react';
 
 import { warn } from '../../Utilities';
-import { ButtonType, IButtonProps } from './Button.types';
+import { ButtonType } from './Button.types';
 import { DefaultButton } from './DefaultButton/DefaultButton';
 import { ActionButton } from './ActionButton/ActionButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { IconButton } from './IconButton/IconButton';
 import { PrimaryButton } from './PrimaryButton/PrimaryButton';
+import type { IButtonProps } from './Button.types';
 
 /**
  * This class is deprecated. Use the individual *Button components instead.

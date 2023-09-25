@@ -1,6 +1,14 @@
 {
-  "packages": ["apps/*", "packages/*", "scripts", "packages/fluentui/*"],
-  "npmClient": "yarn",
-  "useWorkspaces": true,
-  "version": "0.0.0"
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json",
+  "version": "0.0.0",
+  "packages": [
+    "apps/*",
+    "packages/*",
+    "packages/react-components/*",
+    "scripts/*",
+    "packages/fluentui/*",
+    "tools/*",
+    "typings"
+  ],
+  "npmClient": "yarn"
 }

@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { classNamesFunction, initializeComponentRef, KeyCodes } from '../../../Utilities';
-import { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 import { CardCallout } from '../CardCallout/CardCallout';
+import type { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 
 const getClassNames = classNamesFunction<IPlainCardStyleProps, IPlainCardStyles>();
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IFloatingSuggestionsHeaderFooterProps } from '../../FloatingSuggestionsComposite/FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import type { IFloatingSuggestionsHeaderFooterProps } from '../../FloatingSuggestionsComposite/FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 export interface IUseFloatingSuggestionItems<T> {
   focusItemIndex: number;

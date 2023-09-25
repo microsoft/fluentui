@@ -1,6 +1,5 @@
 import { Accessibility, sliderBehavior, SliderBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
@@ -8,6 +7,7 @@ import {
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import { handleRef, Ref } from '@fluentui/react-component-ref';
 import * as customPropTypes from '@fluentui/react-proptypes';
@@ -126,7 +126,7 @@ export const sliderSlotClassNames: SliderSlotClassNames = {
  * [Slider - JAWS narrates slider value twice when using PageUp / PageDown](https://github.com/FreedomScientific/VFO-standards-support/issues/220)
  * [Slider - JAWS narrates current and new value in vertical slider](https://github.com/FreedomScientific/VFO-standards-support/issues/219)
  */
-export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStaticProps = props => {
+export const Slider = React.forwardRef<HTMLInputElement, SliderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Slider.displayName, context.telemetry);
   setStart();
@@ -159,7 +159,12 @@ export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStat
       value: value as string,
     }),
   });
-  const { min: numericMin, max: numericMax, value: numericValue, valueAsPercentage } = processInputValues({
+  const {
+    min: numericMin,
+    max: numericMax,
+    value: numericValue,
+    valueAsPercentage,
+  } = processInputValues({
     min,
     max,
     value: state.value || '',
@@ -229,7 +234,7 @@ export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStat
   });
 
   const element = (
-    <ElementType {...getA11Props('root', { className: classes.root, ...restProps })}>
+    <ElementType {...getA11Props('root', { className: classes.root, ref, ...restProps })}>
       <div
         {...getA11Props('inputWrapper', {
           className: cx(sliderSlotClassNames.inputWrapper, classes.inputWrapper),
@@ -259,7 +264,7 @@ export const Slider: ComponentWithAs<'input', SliderProps> & FluentComponentStat
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'input', HTMLInputElement, SliderProps> & FluentComponentStaticProps;
 
 Slider.displayName = 'Slider';
 

@@ -4,12 +4,12 @@ import {
   forcedColorsStylesheetBehavior,
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
-import { neutralFillRest, neutralStrokeDividerRest, strokeWidth } from '../design-tokens';
+import { fillColor, neutralStrokeDividerRest, strokeWidth } from '../design-tokens';
 
 export const dataGridRowStyles: (
   context: ElementDefinitionContext,
-  defintion: FoundationElementDefinition,
-) => ElementStyles = (context: ElementDefinitionContext, defintion: FoundationElementDefinition) =>
+  definition: FoundationElementDefinition,
+) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host {
       display: grid;
@@ -23,7 +23,7 @@ export const dataGridRowStyles: (
     }
 
     :host(.sticky-header) {
-      background: ${neutralFillRest};
+      background: ${fillColor};
       position: sticky;
       top: 0;
     }

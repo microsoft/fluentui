@@ -1,22 +1,7 @@
-import * as T from '@babel/types';
-import { NodePath } from '@babel/traverse';
+import type { PluginTarget } from '@babel/core';
 
-export type BabelPluginArguments = {
-  types: typeof T;
-};
+export interface BabelPresetOptions {
+  tsBaseConfigPath: string;
+}
 
-type BabelPluginVisitorFunction<T> = (path: NodePath<T>) => void;
-type BabelPluginVisitor<T> =
-  | BabelPluginVisitorFunction<T>
-  | {
-      exit: BabelPluginVisitorFunction<T>;
-    };
-
-export type BabelPlugin = (
-  options: BabelPluginArguments,
-) => {
-  visitor: {
-    // This type is extendable, feel to add own visitor types.
-    ImportDeclaration: BabelPluginVisitor<T.ImportDeclaration>;
-  };
-};
+export type BabelPluginItem = [PluginTarget, Record<string, unknown>];

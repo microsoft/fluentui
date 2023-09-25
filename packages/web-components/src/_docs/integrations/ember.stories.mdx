@@ -1,0 +1,107 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Integrations/Ember" />
+
+Fluent UI Web Components and Ember work great together.
+
+## Setting up the Ember project
+
+First, you'll need to make sure that you have Node.js installed. You can learn more and download that [on the official site](https://nodejs.org/).
+
+With Node.js installed, you can run the following command to install the Ember CLI:
+
+```shell
+npm install -g ember-cli
+```
+
+With the CLI installed, you have access to the `ember` command-line interface. This can be used to create a new Ember project. For example, to create a new Ember App named "fluent-ember", you would use the following command:
+
+```shell
+ember new fluent-ember --lang en
+```
+
+When the CLI completes, you should have a basic runnable Ember application.
+
+## Configuring packages
+
+Next, we'll install the Fluent UI Web Component packages, along with supporting libraries. To do that, run this command from your new project folder:
+
+```shell
+npm install --save @fluentui/web-components @microsoft/fast-element lodash-es
+```
+
+## Using the components
+
+With all the pieces in place, let's run our app in dev mode with `npm start`. The Ember CLI should build your project and make it available on localhost. Right now, it displays a basic welcome message, since we haven't added any code or interesting HTML. Let's change that.
+
+First, open your `app/app.js` file and add the following code:
+
+```ts
+import { provideFluentDesignSystem, fluentCard, fluentButton, fluentTextField } from '@fluentui/web-components';
+
+provideFluentDesignSystem().register(fluentCard(), fluentButton(), fluentTextField());
+```
+
+This code uses the Fluent Design System to register the `<fluent-card>`, `<fluent-button>`, and `<fluent-text-field>` components. Once you save, the dev server will rebuild and refresh your browser. However, you still won't see anything. Open your `application.hbs` file and replace the `<WelcomePage />` component with the following HTML and then save again.
+
+```html
+    <h2>Fluent Ember</h2>
+    <fluent-text-field placeholder="Enter Some Text"></fluent-text-field>
+    <fluent-button appearance="accent">Click Me</fluent-button>
+  </fluent-card>
+```
+
+Now you should see the Fluent UI Web Components displayed in your Ember application.
+
+Next, let's improve this by refactoring it into a component. Stop the CLI and run the following command to scaffold a new Ember component that will be called `fluent-demo`.
+
+```ts
+ember generate component fluent-demo
+```
+
+Copy your original HTML above and use it to replace the HTML in your `app/components/fluent-demo.hbs` file. Next replace that same HTML in `templates/application.hbs` file with the following Ember component use:
+
+```html
+<FluentDemo />
+```
+
+Run `npm start` again and you should see the same output, but now we have moved our web components into a `fluentDemo` Ember component.
+
+Let's take it a little further. Create a `fluent-demo.js` file in the same folder as your `fluent-demo.hbs` file and paste the following code:
+
+```js
+import Component from '@glimmer/component';
+import { action } from '@ember/object';
+import { tracked } from '@glimmer/tracking';
+
+export default class FluentDemoComponent extends Component {
+  @tracked exampleTextField = '';
+
+  @action
+  onClick() {
+    console.log(this.exampleTextField);
+  }
+
+  @action
+  onInput(event) {
+    this.exampleTextField = event.target.value;
+  }
+}
+```
+
+Next, update the `fluent-demo.hbs` file with the following HTML:
+
+```html
+<fluent-card>
+  <h2>fluent Ember</h2>
+  <fluent-text-field placeholder="Enter Some Text"
+                   value="{{this.exampleTextField}}"
+                   {{on "input" this.onInput}}
+  ></fluent-text-field>
+  <fluent-button appearance="accent" {{on "click" this.onClick}}>Click Me</fluent-button>
+</fluent-card>
+```
+
+With this code in place, you now have Fluent UI Web Components fully binding to data and handling user interactions, all from inside an Ember component.
+
+Congratulations! You're now set up to use Fluent and Ember!

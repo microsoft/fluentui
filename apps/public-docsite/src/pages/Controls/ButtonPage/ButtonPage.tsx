@@ -58,21 +58,22 @@ export class ButtonPage extends React.Component<
       <ControlsAreaPage
         {...this.props}
         title="Button"
-        {...buttonPageProps[this.props.platform]}
+        {...buttonPageProps[this.props.platform!]}
         exampleKnobs={this.renderKnobs()}
-        otherSections={this._otherSections(this.props.platform) as IPageSectionProps[]}
+        otherSections={this._otherSections(this.props.platform!) as IPageSectionProps[]}
       />
     );
   }
 
-  private _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+  private _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
     switch (platform) {
       case 'ios':
         return [
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/ios/ButtonImplementation.md',
-            content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string,
+            content:
+              require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string,
           },
         ];
 
@@ -81,7 +82,8 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/android/ButtonImplementation.md',
-            content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string,
+            content:
+              require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string,
           },
         ];
       case 'windows':
@@ -96,7 +98,8 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/mac/ButtonImplementation.md',
-            content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonImplementation.md') as string,
+            content:
+              require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonImplementation.md') as string,
           },
         ];
       case 'cross':

@@ -1,4 +1,5 @@
 {
   "extends": ["plugin:@fluentui/eslint-plugin/react--legacy"],
-  "root": true
+  "root": true,
+  "ignorePatterns": ["esm/**"]
 }

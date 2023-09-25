@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
-import { IGroupDividerProps } from './GroupedList.types';
-import { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type { IGroupDividerProps } from './GroupedList.types';
+import type { IStyle, ITheme } from '../../Styling';
 
 /**
  * {@docCategory GroupedList}

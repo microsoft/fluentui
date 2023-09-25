@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IMonacoTextModel, IPackageGroup, ITransformedExample } from '../interfaces/index';
+import type { IMonacoTextModel, IPackageGroup, ITransformedExample } from '../interfaces/index';
 
 export interface IEditorWrapperProps {
   /**

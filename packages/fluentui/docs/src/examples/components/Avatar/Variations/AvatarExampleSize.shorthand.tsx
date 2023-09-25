@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Avatar, Grid, SizeValue } from '@fluentui/react-northstar';
+import { Avatar, Grid, AvatarSizeValue } from '@fluentui/react-northstar';
 import { AcceptIcon, UserFriendsIcon } from '@fluentui/react-icons-northstar';
 
 const statusProps = {
@@ -10,7 +10,9 @@ const statusProps = {
 
 const AvatarExampleSizeShorthand = () => (
   <Grid columns="80px 1fr">
-    {(['smallest', 'smaller', 'small', 'medium', 'large', 'larger', 'largest'] as SizeValue[]).map(size => (
+    {(
+      ['smallest', 'smaller', 'small', 'medium', 'medium-large', 'large', 'larger', 'largest'] as AvatarSizeValue[]
+    ).map(size => (
       <React.Fragment key={size}>
         <strong>{size}</strong>
         <div>

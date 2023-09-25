@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true,
+    "moduleResolution": "node",
+    "module": "ESNext",
+    "esModuleInterop": true
+  },
+  "include": ["src", "scenarios", "webpack", "scripts"]
+}

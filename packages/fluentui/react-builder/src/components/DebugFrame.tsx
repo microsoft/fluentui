@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { CloneDebugButton, LevelUpDebugButton, TrashDebugButton, MoveDebugButton } from './DebugButtons';
+import { CloneDebugButton, LevelUpDebugButton, TrashDebugButton } from './DebugButtons';
 
 export type DebugFrameProps = {
   target;
   selector;
   componentName?;
+  componentAccessibilityErrors?;
   onClone?;
   onDelete?;
   onMove?;
@@ -16,6 +17,7 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
   target,
   selector,
   componentName,
+  componentAccessibilityErrors,
   onClone,
   onDelete,
   onMove,
@@ -86,42 +88,43 @@ export const DebugFrame: React.FunctionComponent<DebugFrameProps> = ({
     return () => cancelAnimationFrame(animationFrameId.current);
   }, [target, selector, animationFrameId, setFramePosition, isTopElement]);
 
+  const hasAccessibilityErrors = componentAccessibilityErrors.length !== 0;
   const styles: React.CSSProperties = {
     position: 'absolute',
     padding: '2px 4px',
     margin: '-1px 0 0 -1px',
     left: 0,
     whiteSpace: 'nowrap',
-    background: '#ffc65c',
-    border: '1px solid #ffc65c',
     pointerEvents: 'initial',
 
+    background: hasAccessibilityErrors ? '#FA1B00' : `#ffc65c`,
+    border: hasAccessibilityErrors ? '#1px solid #FA1B00' : `1px solid #ffc65c`,
     display: 'flex',
     alignItems: 'flex-end',
     zIndex: 99999998,
   };
+
+  const iconStyles: React.CSSProperties = {
+    position: 'fixed',
+    padding: 0,
+    margin: 0,
+
+    background: hasAccessibilityErrors ? '#FA1B0011' : `#ffc65c11`,
+    border: hasAccessibilityErrors ? '#1px solid #FA1B00ccc' : `1px solid #ffc65ccc`,
+    color: hasAccessibilityErrors ? '#FFFFF0' : '#ffff',
+    zIndex: 99999998,
+    userSelect: 'none',
+  };
+
   isTopElement ? (styles['top'] = '100%') : (styles['bottom'] = '100%');
 
   return (
-    <pre
-      ref={frameRef}
-      style={{
-        position: 'fixed',
-        padding: 0,
-        margin: 0,
-
-        background: '#ffc65c11',
-        border: '1px solid #ffc65ccc',
-        color: '#444',
-        zIndex: 99999998,
-        userSelect: 'none',
-      }}
-    >
+    <pre ref={frameRef} style={iconStyles}>
       <div style={{ width: '100%', height: '100%' }} draggable={true} onDragStart={handleMove} />
       <div style={styles}>
         <span style={{ fontWeight: 'bold' }}>{componentName}</span>
+
         <LevelUpDebugButton onClick={handleGoToParent} />
-        <MoveDebugButton onClick={handleMove} />
         <CloneDebugButton onClick={handleClone} />
         <TrashDebugButton onClick={handleDelete} />
       </div>

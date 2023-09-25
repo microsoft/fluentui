@@ -1,4 +1,10 @@
-import { AnimationVariables, IRawStyle, getTheme, HighContrastSelector } from '@fluentui/react/lib/Styling';
+import {
+  AnimationVariables,
+  IRawStyle,
+  getTheme,
+  getFocusStyle,
+  HighContrastSelector,
+} from '@fluentui/react/lib/Styling';
 import { IStyleFunction } from '@fluentui/react/lib/Utilities';
 import { IDropdownStyles } from '@fluentui/react/lib/Dropdown';
 import { IButtonStyles } from '@fluentui/react/lib/Button';
@@ -67,7 +73,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         alignItems: 'center',
         display: 'flex',
         height: 40,
-        width: 150,
+        width: 200,
         selectors: {
           [`&.${globalClassNames.themeDropdown}:focus`]: {
             borderColor: theme.palette.neutralDark,
@@ -79,11 +85,21 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     ],
   };
 
+  const buttonHighContrastFocus = {
+    left: -1,
+    top: -1,
+    bottom: 1,
+    right: -1,
+    outlineColor: 'Highlight',
+    borderColor: 'Highlight',
+  };
+
   const buttonStyles: Partial<IButtonStyles> = {
     root: [
       sharedToggleButtonStyles,
       { lineHeight: '1' }, // quotes prevent interpretation as px
       globalClassNames.codeButton,
+      getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
     ],
     label: {
       color: theme.palette.neutralDark,

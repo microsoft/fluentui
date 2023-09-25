@@ -11,7 +11,7 @@ export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleSty
     padding: '.5rem 0',
     cursor: p.disabled ? 'default' : 'pointer',
   }),
-  contentWrapper: ({ props: p }) => ({
+  contentWrapper: ({ props: p, variables: v }) => ({
     display: 'grid',
     gridTemplateColumns: 'auto',
     msGridColumns: 'auto',
@@ -20,6 +20,10 @@ export const accordionTitleStyles: ComponentSlotStylesPrepared<AccordionTitleSty
       gridTemplateColumns: 'auto 1fr',
       msGridColumns: 'auto 1fr',
     }),
+    ':focus-visible': {
+      borderRadius: v.focusBorderRadius,
+      outline: `${v.focusBorderWidth} solid ${v.focusBorderColor}`,
+    },
   }),
   indicator: ({ props: p, variables: v, rtl }) => ({
     alignItems: 'center',

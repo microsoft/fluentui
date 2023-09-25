@@ -2,9 +2,8 @@ import * as React from 'react';
 import { useCallback } from 'react';
 import { classNamesFunction } from '../../Utilities';
 import { Link } from '../../Link';
-import { IGroupShowAllProps } from './GroupShowAll.types';
-import { IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 import { GroupSpacer } from './GroupSpacer';
+import type { IGroupShowAllProps, IGroupShowAllStyleProps, IGroupShowAllStyles } from './GroupShowAll.types';
 
 const getClassNames = classNamesFunction<IGroupShowAllStyleProps, IGroupShowAllStyles>();
 

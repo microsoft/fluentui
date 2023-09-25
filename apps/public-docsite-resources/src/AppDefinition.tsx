@@ -10,7 +10,7 @@ const propertiesTableMargins = mergeStyles({
 });
 
 function loadReferences(): IAppLink[] {
-  const requireContext = require.context('@fluentui/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
+  const requireContext = require.context('../dist/api/references', false, /\w+\.page\.json$/);
 
   return requireContext.keys().map(pagePath => {
     const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
@@ -210,6 +210,27 @@ export const AppDefinition: IAppDefinition = {
               name: 'DetailsList - SimpleGrouped',
               url: '#/examples/detailslist/grouped',
             },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardDragDropPage')
+                .DetailsListKeyboardDragDropPage,
+              key: 'DetailsList - Keyboard Column Reorder & Resize',
+              name: 'DetailsList - Keyboard Column Reorder & Resize',
+              url: '#/examples/detailslist/keyboardcolumnreorderresize',
+            },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListKeyboardOverridesPage')
+                .DetailsListKeyboardOverridesPage,
+              key: 'DetailsList - Keyboard Overrides',
+              name: 'DetailsList - Keyboard Overrides',
+              url: '#/examples/detailslist/keyboardoverrides',
+            },
+            {
+              component: require<any>('./components/pages/DetailsList/DetailsListProportionalColumnsPage')
+                .DetailsListProportionalColumnsPage,
+              key: 'DetailsList - Proportional Columns',
+              name: 'DetailsList - Proportional Columns',
+              url: '#/examples/detailslist/proportionalcolumns',
+            },
           ],
         },
         {
@@ -363,6 +384,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/pivot',
         },
         {
+          component: require<any>('./components/pages/PopupPage').PopupPage,
+          key: 'Popup',
+          name: 'Popup',
+          url: '#/examples/Popup',
+        },
+        {
           component: require<any>('./components/pages/ProgressIndicatorPage').ProgressIndicatorPage,
           key: 'ProgressIndicator',
           name: 'ProgressIndicator',
@@ -457,6 +484,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TextField',
           name: 'TextField',
           url: '#/examples/textfield',
+        },
+        {
+          component: require<any>('./components/pages/TimePickerPage').TimePickerPage,
+          key: 'TimePicker',
+          name: 'TimePicker',
+          url: '#/examples/timepicker',
         },
         {
           component: require<any>('./components/pages/TogglePage').TogglePage,

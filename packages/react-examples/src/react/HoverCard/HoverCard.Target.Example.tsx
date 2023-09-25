@@ -73,6 +73,7 @@ const KeyCellWithHoverCard: React.FunctionComponent<{ item: IExampleItem }> = ({
     onRenderExpandedCard,
     renderData: item,
     directionalHint: DirectionalHint.rightTopEdge,
+    directionalHintFixed: false,
     gapSpace: 16,
     calloutProps: {
       isBeakVisible: true,

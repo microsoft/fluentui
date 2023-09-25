@@ -19,9 +19,9 @@ import {
   correctHSV,
   correctHex,
   clamp,
-  IColor,
 } from './colors';
 import { updateT } from './updateT';
+import type { IColor } from './colors';
 
 describe('color utilities', () => {
   const testColor: IColor = {

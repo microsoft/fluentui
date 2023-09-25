@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { KeytipDataOptions } from './KeytipData.types';
 import { DATAKTP_TARGET, DATAKTP_EXECUTE_TARGET, DATAKTP_ARIA_TARGET } from '../../utilities/keytips/index';
 import { useKeytipData } from './useKeytipData';
+import type { KeytipDataOptions } from './KeytipData.types';
 
 /**
  * Hook that creates a ref which is used for passing to Keytip target element.

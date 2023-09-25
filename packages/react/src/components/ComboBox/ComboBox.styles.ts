@@ -1,50 +1,45 @@
 import {
   FontWeights,
-  IRawStyle,
-  ITheme,
   concatStyleSets,
   getFocusStyle,
   HighContrastSelector,
-  IStyle,
   getPlaceholderStyles,
   hiddenContentStyle,
   getInputFocusStyle,
   getHighContrastNoAdjustStyle,
 } from '../../Styling';
-import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
-
-import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
+import type { IRawStyle, ITheme, IStyle } from '../../Styling';
+import type { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
+import type { IButtonStyles } from '../../Button';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;
 const ComboBoxCaretDownWidth = 32;
 const ComboBoxOptionHeight = 36;
 
-const getDisabledStyles = memoizeFunction(
-  (theme: ITheme): IRawStyle => {
-    const { semanticColors } = theme;
+const getDisabledStyles = memoizeFunction((theme: ITheme): IRawStyle => {
+  const { semanticColors } = theme;
 
-    return {
-      backgroundColor: semanticColors.disabledBackground,
-      color: semanticColors.disabledText,
-      cursor: 'default',
-      selectors: {
-        ':after': {
-          borderColor: semanticColors.disabledBackground,
-        },
-        [HighContrastSelector]: {
-          color: 'GrayText',
-          selectors: {
-            ':after': {
-              borderColor: 'GrayText',
-            },
+  return {
+    backgroundColor: semanticColors.disabledBackground,
+    color: semanticColors.disabledText,
+    cursor: 'default',
+    selectors: {
+      ':after': {
+        borderColor: semanticColors.disabledBackground,
+      },
+      [HighContrastSelector]: {
+        color: 'GrayText',
+        selectors: {
+          ':after': {
+            borderColor: 'GrayText',
           },
         },
       },
-    };
-  },
-);
+    },
+  };
+});
 
 const listOptionHighContrastStyles: IRawStyle = {
   selectors: {
@@ -74,6 +69,7 @@ export const getOptionStyles = memoizeFunction(
     customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
     isPending?: boolean,
     isHidden?: boolean,
+    isSelected?: boolean,
   ): Partial<IComboBoxOptionStyles> => {
     const { palette, semanticColors } = theme;
 
@@ -111,10 +107,12 @@ export const getOptionStyles = memoizeFunction(
               border: 'none',
               borderColor: 'Background',
             },
-            '&.ms-Checkbox': {
-              display: 'flex',
-              alignItems: 'center',
-            },
+            ...(!isHidden && {
+              '&.ms-Checkbox': {
+                display: 'flex',
+                alignItems: 'center',
+              },
+            }),
             '&.ms-Button--command:hover:active': {
               backgroundColor: option.backgroundPressedColor,
             },
@@ -123,6 +121,24 @@ export const getOptionStyles = memoizeFunction(
             },
           },
         },
+        isSelected
+          ? [
+              {
+                backgroundColor: 'transparent',
+                color: option.textSelectedColor,
+                selectors: {
+                  ':hover': [
+                    {
+                      backgroundColor: option.backgroundHoveredColor,
+                    },
+                    listOptionHighContrastStyles,
+                  ],
+                },
+              },
+              getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),
+              listOptionHighContrastStyles,
+            ]
+          : [],
       ],
       rootHovered: {
         backgroundColor: option.backgroundHoveredColor,
@@ -131,22 +147,6 @@ export const getOptionStyles = memoizeFunction(
       rootFocused: {
         backgroundColor: option.backgroundHoveredColor,
       },
-      rootChecked: [
-        {
-          backgroundColor: 'transparent',
-          color: option.textSelectedColor,
-          selectors: {
-            ':hover': [
-              {
-                backgroundColor: option.backgroundHoveredColor,
-              },
-              listOptionHighContrastStyles,
-            ],
-          },
-        },
-        getFocusStyle(theme, { inset: -1, isFocusedOnly: false }),
-        listOptionHighContrastStyles,
-      ],
       rootDisabled: {
         color: option.textDisabledColor,
         cursor: 'default',

@@ -1,13 +1,14 @@
 import * as React from 'react';
 
 import { Async, EventGroup, classNamesFunction } from '../../Utilities';
-import {
+import { initializeComponentRef } from '@fluentui/utilities';
+import type {
   IDocumentCardTitleProps,
   IDocumentCardTitleStyleProps,
   IDocumentCardTitleStyles,
 } from './DocumentCardTitle.types';
-import { IProcessedStyleSet } from '../../Styling';
-import { initializeComponentRef } from '@fluentui/utilities';
+import type { IProcessedStyleSet } from '../../Styling';
+import { DocumentCardContext } from './DocumentCard.base';
 
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 
@@ -91,22 +92,42 @@ export class DocumentCardTitleBase extends React.Component<IDocumentCardTitlePro
 
     if (shouldTruncate && truncatedTitleFirstPiece && truncatedTitleSecondPiece) {
       return (
-        <div className={this._classNames.root} ref={this._titleElement} title={title}>
-          {truncatedTitleFirstPiece}
-          &hellip;
-          {truncatedTitleSecondPiece}
-        </div>
+        <DocumentCardContext.Consumer>
+          {({ role, tabIndex }) => {
+            return (
+              <div
+                className={this._classNames.root}
+                ref={this._titleElement}
+                title={title}
+                tabIndex={tabIndex}
+                role={role}
+              >
+                {truncatedTitleFirstPiece}
+                &hellip;
+                {truncatedTitleSecondPiece}
+              </div>
+            );
+          }}
+        </DocumentCardContext.Consumer>
       );
     } else {
       return (
-        <div
-          className={this._classNames.root}
-          ref={this._titleElement}
-          title={title}
-          style={this._needMeasurement ? { whiteSpace: 'nowrap' } : undefined}
-        >
-          {title}
-        </div>
+        <DocumentCardContext.Consumer>
+          {({ role, tabIndex }) => {
+            return (
+              <div
+                className={this._classNames.root}
+                ref={this._titleElement}
+                title={title}
+                tabIndex={tabIndex}
+                role={role}
+                style={this._needMeasurement ? { whiteSpace: 'nowrap' } : undefined}
+              >
+                {title}
+              </div>
+            );
+          }}
+        </DocumentCardContext.Consumer>
       );
     }
   }

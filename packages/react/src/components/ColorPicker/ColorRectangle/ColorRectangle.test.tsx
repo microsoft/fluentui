@@ -3,10 +3,12 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { ColorRectangle } from './ColorRectangle';
-import { ColorRectangleBase, IColorRectangleState, _getNewColor } from './ColorRectangle.base';
-import { IColorRectangleProps } from './ColorRectangle.types';
-import { getColorFromString, IColor } from '../../../utilities/color/colors';
+import { ColorRectangleBase, _getNewColor } from './ColorRectangle.base';
+import { getColorFromString } from '../../../utilities/color/colors';
 import { KeyCodes } from '../../../Utilities';
+import type { IColorRectangleState } from './ColorRectangle.base';
+import type { IColorRectangleProps } from './ColorRectangle.types';
+import type { IColor } from '../../../utilities/color/colors';
 
 describe('ColorRectangle', () => {
   let wrapper: ReactWrapper<IColorRectangleProps, IColorRectangleState, ColorRectangleBase> | undefined;
@@ -15,15 +17,17 @@ describe('ColorRectangle', () => {
   const colorRectRef = (ref: ColorRectangleBase | null) => {
     colorRectangle = ref;
   };
-  const getBoundingClientRect = (size: number, offset: number = 0) => (): DOMRect =>
-    ({
-      left: offset,
-      top: offset,
-      right: size + offset,
-      bottom: size + offset,
-      width: size,
-      height: size,
-    } as DOMRect);
+  const getBoundingClientRect =
+    (size: number, offset: number = 0) =>
+    (): DOMRect =>
+      ({
+        left: offset,
+        top: offset,
+        right: size + offset,
+        bottom: size + offset,
+        width: size,
+        height: size,
+      } as DOMRect);
 
   afterEach(() => {
     if (wrapper) {

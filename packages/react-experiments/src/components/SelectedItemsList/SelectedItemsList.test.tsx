@@ -2,8 +2,8 @@ import * as React from 'react';
 import { create } from 'react-test-renderer';
 
 import { SelectedItemsList } from './SelectedItemsList';
-import { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
 import { mount } from 'enzyme';
+import type { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
 
 export interface ISimple {
   key: string;

@@ -1,8 +1,5 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRectangle, Point } from '../../Utilities';
-
-// eslint-disable-next-line deprecation/deprecation
-export { Point, IPoint } from '../../Utilities';
+import type { IRectangle, Point } from '../../Utilities';
 
 export enum RectangleEdge {
   top = 1,
@@ -95,6 +92,7 @@ export interface ICalloutPositionedInfo extends IPositionedData {
 
 export interface ICalloutBeakPositionedInfo extends IPositionedData {
   closestEdge: RectangleEdge;
+  hideBeak?: boolean;
 }
 
 /**
@@ -124,3 +122,6 @@ export interface IRelativePositions {
   directionalClassName: string;
   submenuDirection: DirectionalHint;
 }
+
+// eslint-disable-next-line deprecation/deprecation
+export type { Point, IPoint } from '../../Utilities';

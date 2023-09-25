@@ -3,10 +3,11 @@ import * as renderer from 'react-test-renderer';
 import { mount, ReactWrapper } from 'enzyme';
 
 import { ColorSlider } from './ColorSlider';
-import { ColorSliderBase, IColorSliderState } from './ColorSlider.base';
-import { IColorSliderProps } from './ColorSlider.types';
+import { ColorSliderBase } from './ColorSlider.base';
 import { KeyCodes } from '../../../Utilities';
 import { MAX_COLOR_HUE, MAX_COLOR_ALPHA } from '../../../utilities/color';
+import type { IColorSliderState } from './ColorSlider.base';
+import type { IColorSliderProps } from './ColorSlider.types';
 
 describe('ColorSlider', () => {
   let wrapper: ReactWrapper<IColorSliderProps, IColorSliderState, ColorSliderBase> | undefined;

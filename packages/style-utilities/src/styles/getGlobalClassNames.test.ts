@@ -1,7 +1,7 @@
 import { getGlobalClassNames } from './getGlobalClassNames';
 import { createTheme } from './theme';
 import { Stylesheet } from '@fluentui/merge-styles';
-import { ITheme } from '../interfaces/index';
+import type { ITheme } from '../interfaces/index';
 
 const styleSheet = Stylesheet.getInstance();
 

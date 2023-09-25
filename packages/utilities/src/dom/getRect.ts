@@ -1,4 +1,5 @@
-import { IRectangle } from '../IRectangle';
+import type { IRectangle } from '../IRectangle';
+
 /**
  * Helper to get bounding client rect. Passing in window will get the window size.
  *

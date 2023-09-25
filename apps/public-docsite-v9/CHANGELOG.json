@@ -1,0 +1,1304 @@
+{
+  "name": "@fluentui/public-docsite-v9",
+  "entries": [
+    {
+      "date": "Thu, 22 Sep 2022 07:43:45 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.96.1",
+            "commit": "483f160617f1037e672fe74b8e52abfee9378517"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 20 Sep 2022 07:47:16 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "undefined": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-components to v9.3.0",
+            "commit": "ead191a8368bf64ecabffce5ea0e02565f449a95"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "ead191a8368bf64ecabffce5ea0e02565f449a95"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 19 Sep 2022 07:47:30 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.96.0",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-components to v9.3.0",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "2420757404f54aba8e92cdbc41965a6fdbce8a3d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 16 Sep 2022 07:37:32 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.95.1",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-components to v9.3.0",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "9077e0a7d3911096a3337d76ec65591d191a780a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 15 Sep 2022 19:15:27 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.95.0",
+            "commit": "682ead9953a1d519133193033aafe392173009f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-components to v9.3.0",
+            "commit": "682ead9953a1d519133193033aafe392173009f5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react-theme to v9.1.0",
+            "commit": "682ead9953a1d519133193033aafe392173009f5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 13 Sep 2022 07:41:03 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.94.4",
+            "commit": "a40ef34fa6d1122bdfdb708f79b90de9edb2827d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 08 Sep 2022 20:52:16 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.94.3",
+            "commit": "38bd1c146cb2e635bc181cda1b2f11b17a07c4c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 07 Sep 2022 07:54:43 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.94.2",
+            "commit": "2f740624c4e43d6bfe1b488e9d479c95ed71da09"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 05 Sep 2022 07:38:30 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.94.1",
+            "commit": "f9f7d0fb7506d2af70af355a26d7a44b49df5f58"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 02 Sep 2022 07:48:53 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.94.0",
+            "commit": "330aa6b960d371456667aae70cccbf116ed58cef"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Sep 2022 07:48:11 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.93.1",
+            "commit": "53de352ec2079a333b712028364bca9632714050"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 29 Aug 2022 07:44:38 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.93.0",
+            "commit": "a3081ce8cb9aef65dd64fe9328b84959d7b0e665"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 26 Aug 2022 07:39:58 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.92.1",
+            "commit": "744f8e5ccf138ef8c893929c77a1e85f484415d4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 25 Aug 2022 07:41:03 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.92.0",
+            "commit": "4f36c51b9bde0c98b43da00ad13366a0cc0383cf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 16:36:06 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.91.1",
+            "commit": "5c15d8495a026efaa56e5d5444b211a5cb5280fe"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 24 Aug 2022 07:44:42 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.91.0",
+            "commit": "c868d64e3c84449d5e3d1235a5ef49f9eb0ec487"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 23 Aug 2022 07:22:50 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.90.2",
+            "commit": "d07e579fa3a6af05ee4ac036060653b098a92b37"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 22 Aug 2022 07:44:26 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.90.1",
+            "commit": "5cb75a709fca139572428f6c7a2a0cecd256005b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 23:39:31 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.90.0",
+            "commit": "26f5df2c7cce9569862f582581cd1ae863f48f84"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 18 Aug 2022 07:48:48 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.89.0",
+            "commit": "045c66e2a2142e3d2380da05a9aa60b54de6888c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 15 Aug 2022 07:39:41 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.88.0",
+            "commit": "a66448342c1f3e6a6911404486aef904529988c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 12 Aug 2022 07:48:19 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.87.2",
+            "commit": "3c64ba573517fb3293fa6d0039cd92c18ddf2159"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Aug 2022 20:28:21 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.87.1",
+            "commit": "0ee609e7c8cc71d6c0af34d81fd59fe2c9b9cf0d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 08 Aug 2022 07:39:33 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.87.0",
+            "commit": "1e8c83109fbe238c250862aa4ab773e9fff7d70d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 04 Aug 2022 07:42:13 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.86.4",
+            "commit": "d46a0242d4bda3f8f9a4b29c0179e74adf758539"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 18:04:49 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.86.3",
+            "commit": "cf05f807eb6f240b6bb774bdae43639fa43339b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 02 Aug 2022 07:44:44 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.86.2",
+            "commit": "1293f53f79ea1dc7429f77e174b2dfdaffa99558"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 01 Aug 2022 07:39:03 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.86.1",
+            "commit": "c2aac77c5bb857523be462eb31491a23f584b475"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Jul 2022 07:41:56 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.86.0",
+            "commit": "c69f9bd19610cbceb4ecf8243b5d49afea4634d7"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Jul 2022 07:41:18 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.85.1",
+            "commit": "d02dcc168ab47640fa503b05a142c9b32f555c3f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Jul 2022 07:37:43 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.85.0",
+            "commit": "e2694f89edb0aa2ee86e7e0c6c9b6354e99eabf5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Jul 2022 07:39:35 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.84.0",
+            "commit": "8d120219d3605abf8feff95eaff52ab01851618e"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Jul 2022 07:36:56 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.83.1",
+            "commit": "3a4adc9678288e62d86487b84c6e3a4ce55cfae5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 22 Jul 2022 07:54:16 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.83.0",
+            "commit": "cc1dc504692525db9106e00dc65133ecfcfc35fa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Jul 2022 07:49:17 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.82.2",
+            "commit": "4ddf5a7467dc9540f21c4968495dd9a09afb69bc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Jul 2022 07:42:27 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.82.1",
+            "commit": "ce3a133444131aa479d4810d3e49d9dcd7944b33"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Jul 2022 07:41:07 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.82.0",
+            "commit": "f9a1a8126248eb74cab4be7a8a3e56112548ae84"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Jul 2022 20:03:48 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.81.1",
+            "commit": "7989de0234d8faaba0e6d4fa945d6d70827696f3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Jul 2022 07:45:35 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.81.0",
+            "commit": "6ff3fb3cfb5d81d3db822f675a4ab0fb8be9559a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Jul 2022 07:41:00 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.80.0",
+            "commit": "04c6ba7bdaacaee87bc4c918f53363de63ea1742"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 08 Jul 2022 07:36:29 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.79.0",
+            "commit": "7a1737f0db893a5c623c30d81745f8e41c9ef79b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 07 Jul 2022 07:37:21 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.78.1",
+            "commit": "63ab03fa7a9b3d02204147ea5356b8f78751df42"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Jul 2022 07:38:24 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.78.0",
+            "commit": "33c89d8c4bfcd1b50a7aa23e70eedde6e9cb08df"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 30 Jun 2022 07:40:48 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.77.3",
+            "commit": "c0c292a7f35103752b40f2872d31e83b77f7a053"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 28 Jun 2022 07:39:04 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.77.2",
+            "commit": "b10503dfbec04dd309a44cffecbcf47456b4ee1f"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 24 Jun 2022 07:43:32 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.77.1",
+            "commit": "70b75890a1d902972081ed67e7b912bd86b85411"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 20 Jun 2022 07:45:13 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.77.0",
+            "commit": "83db0242a04d4b28906166f92ec7585208d3cd94"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 17 Jun 2022 07:41:59 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.76.1",
+            "commit": "eab5e8113a378cdf539632a9a3bd716901b2cdaa"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jun 2022 21:38:03 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.76.0",
+            "commit": "e08c7f046fbae53b15b033bce6b9daa102ce9f9c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 15 Jun 2022 07:40:22 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.75.1",
+            "commit": "d00ad919213921fe60f2e77dc862e50e19bcec66"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 14 Jun 2022 07:52:11 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.75.0",
+            "commit": "3c3bd1fd66dd8d717c3a56cb2204681f9907e64c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Jun 2022 07:39:08 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.74.0",
+            "commit": "7581977dbf55ea586280985c407c38ea58e54121"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 10 Jun 2022 07:46:14 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.73.0",
+            "commit": "2adc0f24b2ab21395e788c80bec9d57760591450"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Jun 2022 07:45:28 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.72.3",
+            "commit": "960f5354ba3d3e1d2ff7267ea1c70c2eddeb80de"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 07 Jun 2022 07:48:04 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.72.2",
+            "commit": "4a812370ec9dac9991e75288c9b150d38e96beeb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Jun 2022 07:38:04 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.72.1",
+            "commit": "91fbffdab2aed4c6bc84500e76a9a355a72f2ea0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Jun 2022 07:38:24 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.72.0",
+            "commit": "0f0e6ad066a52cdd3c4156ecb033413e0a92411d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 30 May 2022 07:44:13 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.71.1",
+            "commit": "b01ac1a166a8dc67a6c53409d9fe86977517bae6"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 27 May 2022 07:39:11 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.71.0",
+            "commit": "c55c7d9d1141ae09542a78970416a8bbb344f623"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 25 May 2022 07:44:28 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.70.0",
+            "commit": "2c84c4f1ad43819325ee0aafa57d42a1f8239113"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 24 May 2022 07:47:26 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.69.0",
+            "commit": "48230861e5b0a67085c3d5674d2f68c6523b9540"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 May 2022 07:42:16 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.68.4",
+            "commit": "9eafb7e633a288685f6584f699ea3c42c6096f43"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 May 2022 07:41:27 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.68.3",
+            "commit": "ac42b59c728d923fc87cd11b3e99774933912d98"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 May 2022 07:45:01 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.68.2",
+            "commit": "73f592de5bace4132289e64b1df78e9cc4b31a25"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 May 2022 07:36:55 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.68.1",
+            "commit": "0826467f3012391d16e04b79631ced492ee292c3"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 May 2022 07:45:35 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.68.0",
+            "commit": "bcafc0d8c2fdaa68473a317b6d179c5534257602"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 May 2022 07:42:47 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.67.4",
+            "commit": "c2e1a598fae230d33d0c4fc0b9fe0300984c775b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 May 2022 07:37:42 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.67.3",
+            "commit": "6b3b09b6f05e6a17a578a65fc36b606e3004efe9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Apr 2022 07:39:56 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.67.2",
+            "commit": "5f27c51743f22f08741a75c2c10032a02afdf6fb"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 27 Apr 2022 07:43:07 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.67.1",
+            "commit": "9845fe2750b801da0741adb167ca66e396804486"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Apr 2022 07:37:25 GMT",
+      "tag": "@fluentui/public-docsite-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/public-docsite-v9",
+            "comment": "Bump @fluentui/react to v8.67.0",
+            "commit": "9b558cf266817f6499fece14e71bd90e98385a6b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 21 Apr 2022 07:36:48 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.66.2",
+            "commit": "14bee91b201e71123a60558f983be2398262fb44"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Apr 2022 07:39:23 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.66.1",
+            "commit": "4b81713ae85eb859fd0b597e7ae81979589a28dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.7",
+            "commit": "4b81713ae85eb859fd0b597e7ae81979589a28dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 19 Apr 2022 21:39:15 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.66.0",
+            "commit": "959aac722b7a9a4d8d4240e1235dde4694eb3c2d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.0.0-rc.7",
+            "commit": "959aac722b7a9a4d8d4240e1235dde4694eb3c2d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 18 Apr 2022 07:38:04 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.65.1",
+            "commit": "dea5b27d1cb4892ee6a13d716a1cee232b7e39d9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 15 Apr 2022 07:42:48 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.65.0",
+            "commit": "96f083e62a0e0db802904430b5a1d31657eff028"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 14 Apr 2022 07:38:11 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.64.4",
+            "commit": "df18b862d5f9cd3bd1780b3cc6a44b4f7c9fda19"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Apr 2022 07:39:33 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.64.3",
+            "commit": "72fa867ab6b084656b53c8f644df74b31077ae15"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 11 Apr 2022 07:40:58 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.64.2",
+            "commit": "09dc74f8c3586eb7320b8ae296621acd6ebe3505"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Apr 2022 07:34:58 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.64.1",
+            "commit": "3690657ff5d10c2ab954554943a8fa1fe5866d8d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 04 Apr 2022 20:01:04 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.64.0",
+            "commit": "ddbf6041c6d19d952e2779550d4fd03f4c9869cf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Mar 2022 07:38:07 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.63.1",
+            "commit": "1cdf7704eb322c7bb621c9dd6188f75928c6532a"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 30 Mar 2022 07:38:55 GMT",
+      "tag": "@fluentui/upgrade-examples-v8-v9_v1.0.0",
+      "version": "1.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/upgrade-examples-v8-v9",
+            "comment": "Bump @fluentui/react to v8.63.0",
+            "commit": "d7387b454501a9271b7ab2e75c6dd097bbbbb1bc"
+          }
+        ]
+      }
+    }
+  ]
+}

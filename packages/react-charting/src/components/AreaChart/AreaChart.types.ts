@@ -15,7 +15,7 @@ import {
   IChildProps,
 } from '../CommonComponents/CartesianChart.types';
 
-export { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
+export type { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
 export interface IAreaChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -43,6 +43,22 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * Define a custom callout renderer for a stack; default is to render per data point
    */
   onRenderCalloutPerStack?: IRenderFunction<ICustomizedCalloutData>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * @default false
+   * The prop used to enable the perf optimization
+   */
+  enablePerfOptimization?: boolean;
+
+  /*
+   * Optimize area chart rendering for large data set.
+   */
+  optimizeLargeData?: boolean;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}

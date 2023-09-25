@@ -1,10 +1,12 @@
 import * as React from 'react';
-import { Icon, IIconProps } from '@fluentui/react/lib/Icon';
+import { Icon } from '@fluentui/react/lib/Icon';
 import { css } from '@fluentui/react/lib/Utilities';
-import { Signal, ISignalProps } from './Signal';
+import { Signal } from './Signal';
 import * as SignalsStyles from './Signals.scss';
 import * as SignalStyles from './Signal.scss';
 import { getRTL } from '../../Utilities';
+import type { IIconProps } from '@fluentui/react/lib/Icon';
+import type { ISignalProps } from './Signal';
 
 export * from './Signal';
 export * from './SignalField';

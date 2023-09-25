@@ -5,7 +5,7 @@ import { SearchBoxPageProps } from '@fluentui/react-examples/lib/react/SearchBox
 
 export const SearchBoxPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/SearchBox.page.json')}
+    jsonDocs={require('../../../dist/api/react/SearchBox.page.json')}
     {...{ ...SearchBoxPageProps, ...props }}
   />
 );

@@ -17,13 +17,11 @@ export const TextFieldPrefixAndSuffixExample: React.FunctionComponent = () => {
         <TextField // prettier-ignore
           label="With prefix"
           prefix="https://"
-          ariaLabel="Example text field with https:// prefix"
         />
         <TextField // prettier-ignore
           label="Disabled with prefix"
           prefix="https://"
           disabled
-          ariaLabel="Example text field with https:// prefix"
         />
       </Stack>
 
@@ -31,15 +29,9 @@ export const TextFieldPrefixAndSuffixExample: React.FunctionComponent = () => {
         <TextField // prettier-ignore
           label="With suffix"
           suffix=".com"
-          ariaLabel="Example text field with .com suffix"
         />
 
-        <TextField
-          label="With prefix and suffix"
-          prefix="https://"
-          suffix=".com"
-          ariaLabel="Example text field with https:// prefix and .com suffix"
-        />
+        <TextField label="With prefix and suffix" prefix="https://" suffix=".com" />
       </Stack>
     </Stack>
   );

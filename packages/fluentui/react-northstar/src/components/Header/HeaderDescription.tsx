@@ -14,13 +14,13 @@ import {
 
 import { FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   useTelemetry,
   useFluentContext,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface HeaderDescriptionProps
@@ -40,8 +40,7 @@ export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>
 /**
  * A HeaderDescription provides more detailed information about the Header.
  */
-export const HeaderDescription: ComponentWithAs<'p', HeaderDescriptionProps> &
-  FluentComponentStaticProps<HeaderDescriptionProps> = props => {
+export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDescriptionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HeaderDescription.displayName, context.telemetry);
   setStart();
@@ -72,6 +71,7 @@ export const HeaderDescription: ComponentWithAs<'p', HeaderDescriptionProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
       })}
@@ -81,7 +81,8 @@ export const HeaderDescription: ComponentWithAs<'p', HeaderDescriptionProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'p', HTMLParagraphElement, HeaderDescriptionProps> &
+  FluentComponentStaticProps<HeaderDescriptionProps>;
 
 HeaderDescription.displayName = 'HeaderDescription';
 

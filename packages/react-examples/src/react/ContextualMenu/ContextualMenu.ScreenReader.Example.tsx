@@ -20,7 +20,6 @@ export const ContextualMenuScreenReaderExample: React.FunctionComponent = () => 
       href: 'https://bing.com',
       text: 'New',
       target: '_blank',
-      ariaLabel: 'New. Press enter or right arrow keys to open submenu.',
       ariaDescription: 'Additional information about new item',
     },
     {
@@ -42,7 +41,6 @@ export const ContextualMenuScreenReaderExample: React.FunctionComponent = () => 
         ],
       },
       text: 'Share',
-      ariaLabel: 'Share. Press enter, space or right arrow keys to open submenu.',
       ariaDescription: 'Additional information about share item',
     },
     {
@@ -66,7 +64,6 @@ export const ContextualMenuScreenReaderExample: React.FunctionComponent = () => 
         ],
       },
       text: 'Share w/ Split',
-      ariaLabel: 'Share w/ Split. Press enter or space keys to trigger action. Press right arrow key to open submenu.',
       ariaDescription: 'Additional information about share split item',
     },
   ];

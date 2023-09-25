@@ -36,6 +36,7 @@ export class Badge extends FoundationBadge {
  */
 export const fluentBadge = Badge.compose({
   baseName: 'badge',
+  baseClass: FoundationBadge,
   template,
   styles,
 });

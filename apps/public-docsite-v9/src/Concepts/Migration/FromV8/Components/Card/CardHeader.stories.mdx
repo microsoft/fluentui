@@ -1,0 +1,59 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Card Migration/CardHeader" />
+
+# CardHeader Migration
+
+Fluent UI v8 provides the `DocumentCardDetails`, `DocumentCardTitle`, and `DocumentCardActivity` components that can be used anywhere inside the `DocumentCard`. Fluent UI v9 provides a more consistent and opinionated `CardHeader` component that can be used to group information.
+
+## How to migrate
+
+`DocumentCardDetails` => `CardHeader` <br />
+`DocumentCardTitle` => No equivalent, but can be achieved with a `Text` component <br />
+`DocumentCardActivity` with `activity` prop => `CardHeader` with `description` prop <br />
+`DocumentCardActivity` with `people` prop => `CardHeader` with `image` and `header` props <br />
+
+Before:
+
+```tsx
+import {
+  DocumentCard,
+  DocumentCardDetails,
+  DocumentCardTitle,
+  DocumentCardActivity,
+} from '@fluentui/react/lib/DocumentCard';
+import { TestImages } from '@fluentui/example-data';
+
+const Component = () => (
+  <DocumentCard>
+    <DocumentCardDetails>
+      <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" shouldTruncate />
+      <DocumentCardActivity
+        activity="Created a few minutes ago"
+        people={{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }}
+      />
+    </DocumentCardDetails>
+  </DocumentCard>
+);
+```
+
+After:
+
+```jsx
+import * as React from 'react';
+import { Text, Caption1 } from '@fluentui/react-components';
+import { Card, CardHeader } from '@fluentui/react-card/unstable';
+
+export const Component = () => {
+  return (
+    <Card>
+      <Text size={400}>Revenue stream proposal fiscal year 2016 version02.pptx</Text>
+      <CardHeader
+        image={<img src="powerpoint_logo.svg" />}
+        header={<Text weight="bold">Annie Lindqvist</Text>}
+        description={<Caption1>Created a few minutes ago</Caption1>}
+      />
+    </Card>
+  );
+};
+```

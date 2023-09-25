@@ -1,5 +1,6 @@
-import { IKeytipTransitionKey, transitionKeysAreEqual, transitionKeysContain } from './IKeytipTransitionKey';
+import { transitionKeysAreEqual, transitionKeysContain } from './IKeytipTransitionKey';
 import { KeyCodes } from '@fluentui/utilities';
+import type { IKeytipTransitionKey } from './IKeytipTransitionKey';
 
 describe('IKeytipTransitionKey', () => {
   describe('transitionKeysAreEqual', () => {

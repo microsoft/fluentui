@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISelectedItemProps } from '../SelectedItemsList.types';
+import type { ISelectedItemProps } from '../SelectedItemsList.types';
 
 type CopyableItemWrappedComponent<T> = React.ComponentType<ISelectedItemProps<T>>;
 
@@ -26,6 +26,7 @@ export const CopyableItem = <T extends any>(
           // Try to copy the text directly to the clipboard
           copyInput.value = copyText;
           copyInput.select();
+          // eslint-disable-next-line deprecation/deprecation
           if (!document.execCommand('copy')) {
             // The command failed. Fallback to the method below.
             throw new Error();

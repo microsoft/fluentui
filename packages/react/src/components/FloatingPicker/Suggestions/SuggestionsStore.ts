@@ -1,5 +1,5 @@
-import { ISuggestionModel, ITag } from '../../../Pickers';
-import { IPersonaProps } from '../../../Persona';
+import type { ISuggestionModel, ITag } from '../../../Pickers';
+import type { IPersonaProps } from '../../../Persona';
 
 export type SuggestionsStoreOptions<T> = {
   getAriaLabel?: (item: T) => string;
@@ -52,7 +52,7 @@ export class SuggestionsStore<T> {
         ariaLabel:
           this.getAriaLabel !== undefined
             ? this.getAriaLabel(suggestion)
-            : ((suggestion as any) as ITag).name ||
+            : (suggestion as any as ITag).name ||
               (<IPersonaProps>suggestion).text ||
               // eslint-disable-next-line deprecation/deprecation
               (<IPersonaProps>suggestion).primaryText,

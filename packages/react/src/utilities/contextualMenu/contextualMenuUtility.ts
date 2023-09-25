@@ -1,4 +1,4 @@
-import { IContextualMenuItem } from '../../index';
+import type { IContextualMenuItem } from '../../index';
 
 /**
  * Determines the effective checked state of a menu item.
@@ -26,6 +26,7 @@ export function getIsChecked(item: IContextualMenuItem): boolean | null {
 }
 
 export function hasSubmenu(item: IContextualMenuItem): boolean {
+  // eslint-disable-next-line deprecation/deprecation
   return !!(item.subMenuProps || item.items);
 }
 

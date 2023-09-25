@@ -23,7 +23,9 @@ describe('Loader', () => {
 
       expect(wrapper.find(selector).exists()).toBe(false);
 
-      act(jest.runAllTimers);
+      act(() => {
+        jest.runAllTimers();
+      });
       wrapper.update();
       expect(wrapper.find(selector).exists()).toBe(true);
     });

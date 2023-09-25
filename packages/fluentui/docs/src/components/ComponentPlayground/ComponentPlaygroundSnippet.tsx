@@ -13,7 +13,7 @@ const ComponentPlaygroundSnippet: React.FunctionComponent<ComponentPlaygroundSni
   const { element, component, ...rest } = props;
 
   if (process.env.NODE_ENV !== 'production') {
-    if (typeof component === 'function' && !!component.prototype.isReactComponent) {
+    if (typeof component === 'function' && !!component.prototype?.isReactComponent) {
       throw new Error('We can handle only functional components as root component.');
     }
 

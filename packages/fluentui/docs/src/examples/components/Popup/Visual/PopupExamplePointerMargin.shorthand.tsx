@@ -8,21 +8,33 @@ const PopupExamplePointerMargin = () => (
       content="Sample popup"
       open
       pointing
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="center"
       content="Sample popup"
       open
       pointing
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="end"
       content="Sample popup"
       open
       pointing
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
 
     <Popup
@@ -31,7 +43,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="below"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="center"
@@ -39,7 +55,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="below"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="end"
@@ -47,7 +67,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="below"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
 
     <Popup
@@ -56,7 +80,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="before"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="center"
@@ -64,7 +92,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="before"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="bottom"
@@ -72,7 +104,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="before"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
 
     <Popup
@@ -81,7 +117,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="after"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="center"
@@ -89,7 +129,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="after"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
     <Popup
       align="bottom"
@@ -97,7 +141,11 @@ const PopupExamplePointerMargin = () => (
       open
       pointing
       position="after"
-      trigger={<Box styles={{ border: '2px solid green' }}>X</Box>}
+      trigger={
+        <Box role="button" styles={{ border: '2px solid green' }}>
+          X
+        </Box>
+      }
     />
   </Grid>
 );

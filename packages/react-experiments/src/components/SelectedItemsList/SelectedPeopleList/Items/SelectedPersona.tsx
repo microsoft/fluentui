@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { styled, classNamesFunction, IStyleFunctionOrObject, css, EventGroup } from '@fluentui/react/lib/Utilities';
-import { Persona, IPersonaProps, PersonaSize } from '@fluentui/react/lib/Persona';
-import { ISelectedItemProps } from '../../SelectedItemsList.types';
+import { styled, classNamesFunction, css, EventGroup } from '@fluentui/react/lib/Utilities';
+import { Persona, PersonaSize } from '@fluentui/react/lib/Persona';
 import { getStyles } from './SelectedPersona.styles';
-import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
-import { ITheme, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { IconButton } from '@fluentui/react/lib/Button';
-import { IDragDropOptions } from '@fluentui/react/lib/DragDrop';
 import { useId } from '@fluentui/react-hooks';
+import type { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import type { IPersonaProps } from '@fluentui/react/lib/Persona';
+import type { ISelectedItemProps } from '../../SelectedItemsList.types';
+import type { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
+import type { ITheme, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
+import type { IDragDropOptions } from '@fluentui/react/lib/DragDrop';
 
 const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPersonaStyles>();
 

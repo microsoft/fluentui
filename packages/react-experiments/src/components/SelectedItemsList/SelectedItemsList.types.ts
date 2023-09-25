@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { IPickerItemProps } from '@fluentui/react/lib/Pickers';
-import { IRefObject } from '@fluentui/react/lib/Utilities';
-import { IDragDropEvents, IDragDropHelper } from '@fluentui/react/lib/DragDrop';
+import type { IPickerItemProps } from '@fluentui/react/lib/Pickers';
+import type { IRefObject } from '@fluentui/react/lib/Utilities';
+import type { IDragDropEvents, IDragDropHelper } from '@fluentui/react/lib/DragDrop';
+
 export interface ISelectedItemsList<T> {
   /**
    * Current value of the input
@@ -58,7 +59,7 @@ export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
 }
 
 export type BaseSelectedItem = {
-  key?: React.Key;
+  key?: React.Key | null;
 };
 
 // Type T is the type of the item that is displayed

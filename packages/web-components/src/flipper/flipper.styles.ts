@@ -10,17 +10,17 @@ import {
 import { SystemColors } from '@microsoft/fast-web-utilities';
 import { heightNumber } from '../styles';
 import {
+  controlCornerRadius,
+  designUnit,
   disabledOpacity,
-  focusStrokeOuter,
-  neutralFillStealthActive,
-  neutralFillStealthHover,
-  neutralFillStealthRest,
-  neutralForegroundRest,
-  neutralStrokeActive,
-  neutralStrokeHover,
-  neutralStrokeRest,
+  neutralFillRest,
+  neutralFillStrongActive,
+  neutralFillStrongHover,
+  neutralFillStrongRest,
+  neutralStrokeControlRest,
   strokeWidth,
 } from '../design-tokens';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const flipperStyles: (context: ElementDefinitionContext, definition: FlipperOptions) => ElementStyles = (
   context: ElementDefinitionContext,
@@ -28,70 +28,44 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
 ) =>
   css`
     ${display('inline-flex')} :host {
-      width: calc(${heightNumber} * 1px);
-      height: calc(${heightNumber} * 1px);
+      height: calc((${heightNumber} + ${designUnit}) * 1px);
       justify-content: center;
       align-items: center;
-      margin: 0;
-      position: relative;
       fill: currentcolor;
-      color: ${neutralForegroundRest};
-      background: transparent;
-      border: none;
-      outline: none;
+      color: ${neutralFillStrongRest};
+      background: padding-box linear-gradient(${neutralFillRest}, ${neutralFillRest}),
+        border-box ${neutralStrokeControlRest};
+      box-sizing: border-box;
+      border: calc(${strokeWidth} * 1px) solid transparent;
+      border-radius: calc(${controlCornerRadius} * 1px);
       padding: 0;
-    }
-
-    :host::before {
-      content: '';
-      opacity: 0.8;
-      background: ${neutralFillStealthRest};
-      border: calc(${strokeWidth} * 1px) solid ${neutralStrokeRest};
-      border-radius: 50%;
-      position: absolute;
-      top: 0;
-      right: 0;
-      left: 0;
-      bottom: 0;
-      transition: all 0.1s ease-in-out;
-    }
-
-    .next,
-    .previous {
-      position: relative;
-      ${
-        /* Glyph size and margin-left is temporary -
-            replace when adaptive typography is figured out */ ''
-      } width: 16px;
-      height: 16px;
     }
 
     :host(.disabled) {
       opacity: ${disabledOpacity};
       cursor: ${disabledCursor};
+      pointer-events: none;
     }
 
-    :host(:hover) {
+    .next,
+    .previous {
+      display: flex;
+    }
+
+    :host(:not(.disabled):hover) {
       cursor: pointer;
     }
 
-    :host(:hover)::before {
-      background: ${neutralFillStealthHover};
-      border-color: ${neutralStrokeHover};
+    :host(:not(.disabled):hover) {
+      color: ${neutralFillStrongHover};
+    }
+
+    :host(:not(.disabled):active) {
+      color: ${neutralFillStrongActive};
     }
 
     :host(:${focusVisible}) {
-      outline: none;
-    }
-
-    :host(:${focusVisible})::before {
-      box-shadow: 0 0 0 1px ${focusStrokeOuter} inset;
-      border-color: ${focusStrokeOuter};
-    }
-
-    :host(:active)::before {
-      background: ${neutralFillStealthActive};
-      border-color: ${neutralStrokeActive};
+      ${focusTreatmentBase}
     }
 
     :host::-moz-focus-inner {
@@ -101,48 +75,35 @@ export const flipperStyles: (context: ElementDefinitionContext, definition: Flip
     forcedColorsStylesheetBehavior(
       css`
         :host {
-          background: ${SystemColors.Canvas};
+          background: ${SystemColors.ButtonFace};
+          border-color: ${SystemColors.ButtonText};
         }
         :host .next,
         :host .previous {
           color: ${SystemColors.ButtonText};
           fill: currentcolor;
         }
-        :host::before {
-          background: ${SystemColors.Canvas};
-          border-color: ${SystemColors.ButtonText};
-        }
-        :host(:hover)::before {
-          forced-color-adjust: none;
+        :host(:not(.disabled):hover) {
           background: ${SystemColors.Highlight};
-          border-color: ${SystemColors.ButtonText};
-          opacity: 1;
         }
-        :host(:hover) .next,
-        :host(:hover) .previous {
-          forced-color-adjust: none;
+        :host(:not(.disabled):hover) .next,
+        :host(:not(.disabled):hover) .previous {
           color: ${SystemColors.HighlightText};
           fill: currentcolor;
         }
         :host(.disabled) {
           opacity: 1;
         }
-        :host(.disabled)::before,
-        :host(.disabled:hover)::before,
+        :host(.disabled),
         :host(.disabled) .next,
-        :host(.disabled) .previous,
-        :host(.disabled:hover) .next,
-        :host(.disabled:hover) .previous {
-          forced-color-adjust: none;
-          background: ${SystemColors.Canvas};
+        :host(.disabled) .previous {
           border-color: ${SystemColors.GrayText};
           color: ${SystemColors.GrayText};
-          fill: ${SystemColors.GrayText};
+          fill: currentcolor;
         }
-        :host(:${focusVisible})::before {
+        :host(:${focusVisible}) {
           forced-color-adjust: none;
-          border-color: ${SystemColors.Highlight};
-          box-shadow: 0 0 0 2px ${SystemColors.Field}, 0 0 0 4px ${SystemColors.FieldText};
+          outline-color: ${SystemColors.Highlight};
         }
       `,
     ),

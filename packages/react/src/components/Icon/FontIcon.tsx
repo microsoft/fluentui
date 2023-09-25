@@ -1,9 +1,9 @@
 import * as React from 'react';
-
-import { IFontIconProps } from './Icon.types';
 import { classNames, MS_ICON } from './Icon.styles';
 import { css, getNativeProps, htmlElementProperties, memoizeFunction } from '../../Utilities';
-import { getIcon, IIconRecord, IIconSubsetRecord } from '../../Styling';
+import { getIcon } from '../../Styling';
+import type { IFontIconProps } from './Icon.types';
+import type { IIconRecord, IIconSubsetRecord } from '../../Styling';
 
 export interface IIconContent {
   children?: string | JSX.Element;

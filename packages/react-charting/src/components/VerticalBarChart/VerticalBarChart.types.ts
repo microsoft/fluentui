@@ -6,6 +6,7 @@ import {
   ICartesianChartStyles,
   IVerticalBarChartDataPoint,
 } from '../../index';
+import { ILineChartLineOptions } from '../../types/index';
 
 export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
@@ -27,6 +28,11 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Colors from which to select the color of each bar.
    */
   colors?: string[];
+
+  /**
+   * chart title for the chart
+   */
+  chartTitle?: string;
 
   /**
    * Legend text for the line datapoint in the chart
@@ -52,6 +58,27 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IVerticalBarChartStyleProps, IVerticalBarChartStyles>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * it's padding between bar's or lines in the graph
+   */
+  xAxisPadding?: number;
+
+  /**
+   * options for the line drawn
+   */
+  lineOptions?: ILineChartLineOptions;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
@@ -108,4 +135,9 @@ export interface IVerticalBarChartStyles extends ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
 }

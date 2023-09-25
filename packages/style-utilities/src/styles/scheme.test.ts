@@ -1,8 +1,8 @@
 import { getThemedContext } from './scheme';
 import { createTheme } from './theme';
-import { ISchemeNames, ITheme } from '../interfaces/index';
 import { loadTheme } from './theme';
-import { ICustomizerContext } from '@fluentui/utilities';
+import type { ISchemeNames, ITheme } from '../interfaces/index';
+import type { ICustomizerContext } from '@fluentui/utilities';
 
 describe('getSchemedCustomizations', () => {
   const testSchemeName = 'soft';

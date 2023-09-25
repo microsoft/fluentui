@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { ISettings, Customizations } from './Customizations';
+import { Customizations } from './Customizations';
 import { CustomizerContext } from './CustomizerContext';
+import type { ISettings } from './Customizations';
 
 /**
  * Hook to get Customizations settings from Customizations singleton or CustomizerContext.

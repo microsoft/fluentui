@@ -56,7 +56,7 @@ export const HorizontalStackWrapNestedExample: React.FunctionComponent = () => {
   };
 
   return (
-    <Stack tokens={sectionStackTokens}>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
       <Slider
         label="Change the stack width to see how child items wrap onto multiple rows:"
         min={1}
@@ -67,8 +67,8 @@ export const HorizontalStackWrapNestedExample: React.FunctionComponent = () => {
         onChange={setStackWidth}
       />
 
-      <Stack horizontal wrap styles={containerStackStyles} tokens={wrapStackTokens}>
-        <Stack horizontal wrap styles={firstStackStyles} tokens={firstStackTokens}>
+      <Stack enableScopedSelectors horizontal wrap styles={containerStackStyles} tokens={wrapStackTokens}>
+        <Stack enableScopedSelectors horizontal wrap styles={firstStackStyles} tokens={firstStackTokens}>
           <span style={firstStackItemStyles}>1</span>
           <span style={firstStackItemStyles}>2</span>
           <span style={firstStackItemStyles}>3</span>
@@ -78,13 +78,13 @@ export const HorizontalStackWrapNestedExample: React.FunctionComponent = () => {
           <span style={firstStackItemStyles}>7</span>
         </Stack>
 
-        <Stack horizontal wrap styles={secondStackStyles} tokens={secondStackTokens}>
+        <Stack enableScopedSelectors horizontal wrap styles={secondStackStyles} tokens={secondStackTokens}>
           <span style={secondStackItemStyles}>1</span>
           <span style={secondStackItemStyles}>2</span>
           <span style={secondStackItemStyles}>3</span>
         </Stack>
 
-        <Stack horizontal wrap styles={thirdStackStyles}>
+        <Stack enableScopedSelectors horizontal wrap styles={thirdStackStyles}>
           <span style={thirdStackItemStyles}>1</span>
           <span style={thirdStackItemStyles}>2</span>
           <span style={thirdStackItemStyles}>3</span>

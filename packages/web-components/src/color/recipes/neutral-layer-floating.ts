@@ -1,11 +1,10 @@
 import { Palette } from '../palette';
 import { Swatch } from '../swatch';
-import { baseLayerLuminanceSwatch } from '../utilities/base-layer-luminance';
+import { neutralLayer1Index } from './neutral-layer-1';
 
 /**
  * @internal
  */
-export function neutralLayerFloating(palette: Palette, relativeLuminance: number, layerDelta: number): Swatch {
-  const cardIndex = palette.closestIndexOf(baseLayerLuminanceSwatch(relativeLuminance)) - layerDelta;
-  return palette.get(cardIndex - layerDelta);
+export function neutralLayerFloating(palette: Palette, baseLayerLuminance: number, layerDelta: number): Swatch {
+  return palette.get(neutralLayer1Index(palette, baseLayerLuminance) + layerDelta);
 }

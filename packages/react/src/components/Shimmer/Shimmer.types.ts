@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * Shimmer component props.
@@ -53,6 +53,11 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement>, Rea
    * Defines an object with possible colors to pass for Shimmer customization used on different backgrounds.
    */
   shimmerColors?: IShimmerColors;
+
+  /**
+   * Only use if `customElementsGroup` has a single parent `div`. If a custom element is not provided, defaults to true.
+   */
+  improveCSSPerformance?: boolean;
 }
 
 /**
@@ -157,6 +162,9 @@ export interface IShimmerStyleProps {
 
   /** Tip color of the shimmer wave which gradually gets from and to `shimmerColor`. */
   shimmerWaveColor?: string;
+
+  /** Boolean flag to apply a more efficient CSS selector */
+  improveCSSPerformance?: boolean;
 }
 
 /**

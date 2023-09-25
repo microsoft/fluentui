@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ITeachingBubble } from '../../TeachingBubble';
-import { Target } from '@fluentui/react-hooks';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { ITeachingBubble } from '../../TeachingBubble';
+import type { Target } from '@fluentui/react-hooks';
 
 /**
  * {@docCategory Coachmark}

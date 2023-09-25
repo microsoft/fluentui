@@ -1,0 +1,291 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Button Migration" />
+
+# Button Migration
+
+## Overview:
+
+To help with the migration we also offer a mixin that [can be checked here](/docs/migration-shims-v0-buttonmixins--disabled-cursor)
+
+Before:
+
+```tsx
+import { Button } from '@fluentui/react-northstar';
+const Component = () => <Button content="Here is Button" />;
+```
+
+After:
+
+```tsx
+import { Button } from '@fluentui/react-components';
+const Component = () => <Button>Here is Button</Button>;
+```
+
+## How to migrate props:
+
+| Button props      | migrate guide                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------- |
+| as, className     | keep it as is                                                                                            |
+| content           | see Migrate content prop in this document                                                                |
+| variables, styles | see Migrate style overrides in this document                                                             |
+| accessibility     | see [migrate-custom-accessibility.md](?path=/docs/concepts-migrating-from-v0-custom-accessibility--page) |
+| circular          | replace with `shape="circular"`                                                                          |
+| disabled          | keep it as is                                                                                            |
+| disabledFocusable | keep it as is                                                                                            |
+| flat              | REMOVED: it's a default view now, we're moving away from shadows                                         |
+| fluid             | REMOVED: use styles to set width to 100% and flex grow to 1                                              |
+| icon              | keep it as is. See Button + Icon integration in this document                                            |
+| iconOnly          | REMOVED: see Migrate iconOnly prop in this document                                                      |
+| iconPosition      | keep it as is                                                                                            |
+| inverted          | REMOVED: use styles and color tokens to set a proper styling \*                                          |
+| loader, loading   | REMOVED: see Migrate loading and loader props in this document                                           |
+| primary           | use `appearance="primary"`                                                                               |
+| secondary         | REMOVED: the button appears with the default style                                                       |
+| size              | keep it as is. Values: `small`, `medium`(default) and `large`                                            |
+| text              | use `appearance="transparent"`                                                                           |
+| tinted            | REMOVED: use Default button instead                                                                      |
+
+\* this may be changed
+Here is comparison for both versions: [Sandbox](https://codesandbox.io/s/exciting-liskov-y5u5hy?file=/example.tsx)
+
+---
+
+## Migrate `content` prop
+
+Move `content` to JSX children.
+
+Before:
+
+```tsx
+import { Button } from '@fluentui/react-northstar';
+const Component = () => <Button content="Button content" />;
+```
+
+After:
+
+```tsx
+import { Button } from '@fluentui/react-components';
+const Component = () => <Button>Button content</Button>;
+```
+
+## Migrate style overrides
+
+⚠️ **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migrating-from-v0-custom-style-overrides--page).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Button } from '@fluentui/react-northstar';
+
+export const Component = () => <Button variables={{ isActionButton: true }} />;
+
+// in button-styles.ts
+export const buttonStyles1 = {
+  root: ({ variables: { isActionButton } }) => ({
+    ...(isActionButton && {
+      color: colors.grey['250'],
+    }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Button } from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+  return <Button className={classes.actionButton}></Button>;
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, tokens } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  actionButton: {
+    color: colors.colorNeutralForeground1,
+  },
+});
+```
+
+### Example for migrate namespaced styles, with conditional styles via `variableProps`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Button, useUIProviderContext } from '@fluentui/react-northstar';
+
+export const Component = props => {
+  const { vars } = useUIProviderContext();
+  const { enableUsingChatListGroupTitleAsHeader } = props;
+  return (
+    <Button
+      variables={vars('flyout', [
+        {
+          name: 'filterButton',
+          props: {
+            enableUsingChatListGroupTitleAsHeader,
+          },
+        },
+      ])}
+    />
+  );
+};
+
+// in button-namespace-flyout.ts
+export default {
+  root: {
+    filterButton: ({ variableProps: { enableUsingChatListGroupTitleAsHeader } }) => ({
+      ...(enableUsingChatListGroupTitleAsHeader && {
+        height: '2rem',
+        width: '2rem',
+        minWidth: '2rem',
+      }),
+    }),
+  },
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Button, mergeClasses } from '@fluentui/react-components';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = props => {
+  const classes = useStyles();
+
+  return (
+    <Button
+      className={mergeClasses(props.enableUsingChatListGroupTitleAsHeader && classes.chatListGroupTitleAsHeader)}
+    ></Button>
+  );
+};
+
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  chatListGroupTitleAsHeader: {
+    height: '32px',
+    width: '32px',
+    minWidth: '32px',
+  },
+});
+```
+
+### Migrate `iconOnly` prop
+
+Before:
+
+```tsx
+import { Button } from '@fluentui/react-northstar';
+const Component1 = () => <Button icon={<TeamCreateIcon />} iconOnly />;
+const Component2 = () => <Button icon={<TeamCreateIcon />} iconOnly text />;
+```
+
+After:
+
+```tsx
+import { Button } from '@fluentui/react-components';
+import { PeopleTeamAdd } from '@fluentui/react-components-icons';
+const Component1 = () => <Button icon={<PeopleTeamAdd />} />;
+const Component2 = () => <Button icon={<PeopleTeamAdd />} appearance="transparent" />;
+```
+
+### Button + Icon integration
+
+During migration it's possible to have different cases for Button + Icon usage, when you need to use v0 + v9 versions together.
+
+**Usage with v9 Button:**
+
+```tsx
+import { CalendarMonth } from '@fluentui/react-components-icons';
+import { Button } from '@fluentui/react-components';
+
+const Component = () => <Button icon={<CalendarMonth />}>Calendar</Button>;
+```
+
+**Usage with v0 Button:**
+
+For usage v9 Icon with v0 Button it's required to add additional styles to keep similar behaviour:
+
+```tsx
+import { CalendarMonth } from '@fluentui/react-components-icons';
+import { buttonMigrationStyles } from '@fluentui/react-components';
+import { Button, useUIProviderContext } from '@fluentui/react-northstar';
+
+const Component = () => {
+  const { vars } = useUIProviderContext();
+  return <Button variables={vars('flyout', ['filterButton'])} icon={<CalendarMonth />} content="Calendar" />;
+};
+
+// in button-namespace-flyout.ts
+import { buttonMigrationStyles } from '@fluentui/react-components';
+
+export default {
+  root: {
+    filterButton: () => ({
+      ...buttonMigrationStyles.V9Icon(),
+    }),
+  },
+};
+```
+
+**v0 Icon + v9 Button:**
+
+```tsx
+import { CalendarIcon } from '@fluentui/react-icons-northstar';
+import { Button, makeStyles } from '@fluentui/react-components';
+import { buttonMigrationStyles } from '@fluentui/react-components';
+
+const useButtonStyles = makeStyles({
+  v0IconStyle: {
+    ...buttonMigrationStyles.v0Icon(),
+  },
+});
+
+const Component = () => {
+  const classes = useButtonStyles();
+  return (
+    <Button className={classes.v0IconStyle} icon={<CalendarIcon />}>
+      Calendar
+    </Button>
+  );
+};
+```
+
+Live example is here: https://codesandbox.io/s/button-icon-migration-lkt6o5?file=/example.tsx
+
+### Migrate `loading` and `loader` props
+
+Props `loading` and `loader` were removed. To replace old functionality can be used this method:
+
+Before:
+
+```tsx
+import { Button } from '@fluentui/react-northstar';
+const Component = () => <Button loading content="Loading" />;
+```
+
+After:
+
+```tsx
+import { Button } from '@fluentui/react-components';
+import { Loader } from '@fluentui/react-northstar';
+const Component = () => (
+  <Button>
+    <Loader size="smallest" />
+    Loading
+  </Button>
+);
+```

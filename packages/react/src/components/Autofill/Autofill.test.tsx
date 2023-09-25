@@ -4,10 +4,12 @@ import * as React from 'react';
 
 import * as ReactTestUtils from 'react-dom/test-utils';
 
-import { IRefObject, KeyCodes } from '../../Utilities';
-import { Autofill, IAutofillState, IAutofill, IAutofillProps } from './index';
+import { KeyCodes } from '../../Utilities';
+import { Autofill } from './index';
 import { ReactWrapper, mount } from 'enzyme';
 import { mockEvent } from '../../common/testUtilities';
+import type { IRefObject } from '../../Utilities';
+import type { IAutofillState, IAutofill, IAutofillProps } from './index';
 
 describe('Autofill', () => {
   let autofill: Autofill;

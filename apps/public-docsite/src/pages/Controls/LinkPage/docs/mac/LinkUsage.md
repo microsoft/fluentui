@@ -2,8 +2,8 @@ The Link control is implemented as a stylized NSButton, and thus inherits all of
 
 <DisplayToggle onText="Dark" offText="Light" label="Theme switcher">
 
-<img className="off" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Link/link_light.png?text=LightMode" />
-<img className="on" src="https://static2.sharepointonline.com/files/fabric-cdn-prod_20200701.001/fabric-website/images/controls/macos/Link/link_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002-cdn-prod_20200701.001/fabric-website/images/controls/macos/Link/link_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002-cdn-prod_20200701.001/fabric-website/images/controls/macos/Link/link_dark.png?text=DarkMode" />
 
 ### Default configuration
 

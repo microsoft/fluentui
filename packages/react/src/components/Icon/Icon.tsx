@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-import { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
 import { IconBase } from './Icon.base';
 import { getStyles } from './Icon.styles';
+import type { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
 
 /**
  * Legacy Icon component which can be targeted by customization. It's recommended to use `FontIcon`

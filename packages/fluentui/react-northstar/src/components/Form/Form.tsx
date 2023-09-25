@@ -15,13 +15,13 @@ import {
 import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import { FormField, FormFieldProps } from './FormField';
 import {
-  ComponentWithAs,
   useTelemetry,
   getElementType,
   useUnhandledProps,
   useStyles,
   useFluentContext,
   useAccessibility,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface FormProps extends UIComponentProps, ChildrenComponentProps {
@@ -54,7 +54,7 @@ export type FormStylesProps = never;
 /**
  * A Form is used to collect, oprionally validate, and submit the user input, in a structured way.
  */
-export const Form: ComponentWithAs<'form', FormProps> & FluentComponentStaticProps<FormProps> = props => {
+export const Form = React.forwardRef<HTMLFormElement, FormProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Form.displayName, context.telemetry);
   setStart();
@@ -96,6 +96,7 @@ export const Form: ComponentWithAs<'form', FormProps> & FluentComponentStaticPro
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -107,7 +108,7 @@ export const Form: ComponentWithAs<'form', FormProps> & FluentComponentStaticPro
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'form', HTMLFormElement, FormProps> & FluentComponentStaticProps<FormProps>;
 
 Form.displayName = 'Form';
 
@@ -121,7 +122,7 @@ Form.propTypes = {
 };
 
 Form.defaultProps = {
-  as: 'form',
+  as: 'form' as const,
 };
 
 Form.handledProps = Object.keys(Form.propTypes) as any;

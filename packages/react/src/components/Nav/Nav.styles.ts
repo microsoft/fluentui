@@ -1,5 +1,3 @@
-import { INavStyleProps, INavStyles } from './Nav.types';
-import { IButtonStyles } from '../../Button';
 import {
   AnimationClassNames,
   getFocusStyle,
@@ -8,6 +6,8 @@ import {
   HighContrastSelector,
   FontWeights,
 } from '../../Styling';
+import type { INavStyleProps, INavStyles } from './Nav.types';
+import type { IButtonStyles } from '../../Button';
 
 const GlobalClassNames = {
   root: 'ms-Nav',
@@ -194,22 +194,6 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
         zIndex: ZIndexes.Nav,
         padding: 0,
         margin: 0,
-      },
-      isSelected && {
-        color: palette.themePrimary,
-        backgroundColor: palette.neutralLighterAlt,
-        selectors: {
-          '&:after': {
-            borderLeft: `2px solid ${palette.themePrimary}`,
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            pointerEvents: 'none',
-          },
-        },
       },
     ],
     chevronIcon: [

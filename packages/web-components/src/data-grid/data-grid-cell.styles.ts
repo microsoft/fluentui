@@ -7,15 +7,14 @@ import {
   FoundationElementDefinition,
 } from '@microsoft/fast-foundation';
 import {
-  bodyFont,
   controlCornerRadius,
   designUnit,
-  focusStrokeOuter,
+  focusStrokeWidth,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../design-tokens';
+import { typeRampBase } from '../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../styles/focus';
 
 export const dataGridCellStyles: (
   context: ElementDefinitionContext,
@@ -23,13 +22,10 @@ export const dataGridCellStyles: (
 ) => ElementStyles = (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
   css`
     :host {
-      padding: calc(${designUnit} * 1px) calc(${designUnit} * 3px);
+      padding: calc((${designUnit} + ${focusStrokeWidth} - ${strokeWidth}) * 1px) calc(((${designUnit} * 3) + ${focusStrokeWidth} - ${strokeWidth}) * 1px);
       color: ${neutralForegroundRest};
       box-sizing: border-box;
-      font-family: ${bodyFont};
-      font-size: ${typeRampBaseFontSize};
-      line-height: ${typeRampBaseLineHeight};
-      font-weight: 400;
+      ${typeRampBase}
       border: transparent calc(${strokeWidth} * 1px) solid;
       overflow: hidden;
       white-space: nowrap;
@@ -41,23 +37,19 @@ export const dataGridCellStyles: (
     }
 
     :host(:${focusVisible}) {
-      border: ${focusStrokeOuter} calc(${strokeWidth} * 1px) solid;
-      color: ${neutralForegroundRest};
+      ${focusTreatmentBase}
     }
   `.withBehaviors(
     forcedColorsStylesheetBehavior(
       css`
         :host {
           forced-color-adjust: none;
-          border-color: transparent;
           background: ${SystemColors.Field};
           color: ${SystemColors.FieldText};
         }
 
         :host(:${focusVisible}) {
-          border-color: ${SystemColors.FieldText};
-          box-shadow: 0 0 0 2px inset ${SystemColors.Field};
-          color: ${SystemColors.FieldText};
+          outline-color: ${SystemColors.FieldText};
         }
       `,
     ),

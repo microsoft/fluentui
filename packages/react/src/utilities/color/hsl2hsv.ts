@@ -1,4 +1,4 @@
-import { IHSV } from './interfaces';
+import type { IHSV } from './interfaces';
 
 /** Converts HSL components to an HSV color. */
 export function hsl2hsv(h: number, s: number, l: number): IHSV {
@@ -6,8 +6,8 @@ export function hsl2hsv(h: number, s: number, l: number): IHSV {
   const v = l + s;
 
   return {
-    h: h,
+    h,
     s: v === 0 ? 0 : ((2 * s) / v) * 100,
-    v: v,
+    v,
   };
 }

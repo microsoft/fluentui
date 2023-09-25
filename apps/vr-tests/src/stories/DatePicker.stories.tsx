@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorFixedWidth } from '../utilities/index';
+import { TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { Fabric, IDatePickerProps, DatePicker } from '@fluentui/react';
 
 const customDayClass = 'test-dayCell';
@@ -27,10 +27,10 @@ const commonProps: Partial<IDatePickerProps> = {
 };
 
 storiesOf('DatePicker', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-DatePicker')
         .snapshot('hover datepicker', { cropTo: '.testWrapper' })
@@ -44,7 +44,7 @@ storiesOf('DatePicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',
@@ -53,7 +53,7 @@ storiesOf('DatePicker', module)
         <DatePicker {...commonProps} />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Placeholder', () => (
     <Fabric>
@@ -82,10 +82,10 @@ storiesOf('DatePicker', module)
   ));
 
 storiesOf('DatePicker - No Month Option', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-DatePicker')
         .snapshot('hover datepicker', { cropTo: '.testWrapper' })
@@ -97,7 +97,7 @@ storiesOf('DatePicker - No Month Option', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Show Month as Overlay and no Go To Today', () => (
     <Fabric>
@@ -106,10 +106,10 @@ storiesOf('DatePicker - No Month Option', module)
   ));
 
 storiesOf('DatePicker - Disabled', module)
-  .addDecorator(FabricDecoratorFixedWidth)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-DatePicker')
         .snapshot('hover datepicker', { cropTo: '.testWrapper' })
@@ -119,7 +119,7 @@ storiesOf('DatePicker - Disabled', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Without Label', () => (
     <Fabric>

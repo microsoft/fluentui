@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { ChicletXsmall } from './ChicletXsmall';
 import { ChicletCard } from './ChicletCard';
-import { IChicletCardProps } from './ChicletCard.types';
+import type { IChicletCardProps } from './ChicletCard.types';
 
 describe('Chiclet', () => {
   it('renders Xsmall chiclet with a title, icon, onClick, and url', () => {

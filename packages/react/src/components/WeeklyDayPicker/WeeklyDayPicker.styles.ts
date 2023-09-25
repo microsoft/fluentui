@@ -1,6 +1,6 @@
-import { IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 import { normalize, FontSizes, getFocusStyle, getGlobalClassNames } from '@fluentui/style-utilities';
 import { IsFocusVisibleClassName } from '@fluentui/utilities';
+import type { IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles } from './WeeklyDayPicker.types';
 
 const GlobalClassNames = {
   root: 'ms-WeeklyDayPicker-root',

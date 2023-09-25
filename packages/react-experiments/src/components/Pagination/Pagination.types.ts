@@ -1,6 +1,6 @@
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRefObject, IRenderFunction } from '../../Utilities';
-import { IIconProps } from '@fluentui/react/lib/Icon';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRefObject, IRenderFunction } from '../../Utilities';
+import type { IIconProps } from '@fluentui/react/lib/Icon';
 
 export interface IPaginationProps {
   /**

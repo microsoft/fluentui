@@ -9,35 +9,29 @@ import {
 } from '@microsoft/fast-foundation';
 import { heightNumber } from '../../styles';
 import {
-  bodyFont,
   controlCornerRadius,
   density,
   designUnit,
-  focusStrokeOuter,
-  focusStrokeWidth,
   neutralForegroundRest,
   strokeWidth,
-  typeRampBaseFontSize,
-  typeRampBaseLineHeight,
 } from '../../design-tokens';
+import { typeRampBase } from '../../styles/patterns/type-ramp';
+import { focusTreatmentBase } from '../../styles/focus';
 
 export const tabStyles: (context: ElementDefinitionContext, definition: FoundationElementDefinition) => ElementStyles =
   (context: ElementDefinitionContext, definition: FoundationElementDefinition) =>
     css`
       ${display('inline-flex')} :host {
         box-sizing: border-box;
-        font-family: ${bodyFont};
-        font-size: ${typeRampBaseFontSize};
-        font-weight: 400;
-        line-height: ${typeRampBaseLineHeight};
-        height: calc(${heightNumber} * 1px);
+        ${typeRampBase}
+        height: calc((${heightNumber} + (${designUnit} * 2)) * 1px);
         padding: 0 calc((6 + (${designUnit} * 2 * ${density})) * 1px);
         color: ${neutralForegroundRest};
         border-radius: calc(${controlCornerRadius} * 1px);
         border: calc(${strokeWidth} * 1px) solid transparent;
         align-items: center;
         justify-content: center;
-        grid-row: 1;
+        grid-row: 1 / 3;
         cursor: pointer;
       }
 
@@ -51,18 +45,12 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
       }
 
       :host(:${focusVisible}) {
-        outline: none;
-        border: calc(${strokeWidth} * 1px) solid ${focusStrokeOuter};
-        box-shadow: 0 0 0 calc((${focusStrokeWidth} - ${strokeWidth}) * 1px) ${focusStrokeOuter};
-      }
-
-      :host(:focus) {
-        outline: none;
+        ${focusTreatmentBase}
       }
 
       :host(.vertical) {
-        justify-content: end;
-        grid-column: 2;
+        justify-content: start;
+        grid-column: 1 / 3;
       }
 
       :host(.vertical[aria-selected='true']) {
@@ -88,18 +76,18 @@ export const tabStyles: (context: ElementDefinitionContext, definition: Foundati
           :host(:hover),
           :host(.vertical:hover),
           :host([aria-selected='true']:hover) {
-            background: ${SystemColors.Highlight};
-            color: ${SystemColors.HighlightText};
+            background: transparent;
+            color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host([aria-selected='true']) {
-            background: ${SystemColors.HighlightText};
+            background: transparent;
             color: ${SystemColors.Highlight};
             fill: currentcolor;
           }
           :host(:${focusVisible}) {
-            border-color: ${SystemColors.ButtonText};
-            box-shadow: none;
+            background: transparent;
+            outline-color: ${SystemColors.ButtonText};
           }
         `,
       ),

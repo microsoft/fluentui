@@ -1,10 +1,11 @@
 /*!
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
-
-import { IButtonStyles } from '@fluentui/react/lib/Button';
-import { memoizeFunction, ITheme, concatStyleSets } from '@fluentui/react';
-import { ISidebarStyles, SidebarStylingConstants } from './Sidebar.types';
+import { memoizeFunction, concatStyleSets } from '@fluentui/react';
+import { SidebarStylingConstants } from './Sidebar.types';
+import type { IButtonStyles } from '@fluentui/react/lib/Button';
+import type { ITheme } from '@fluentui/react';
+import type { ISidebarStyles } from './Sidebar.types';
 
 export const sidebarFonts = {
   segoeUiSemibold:

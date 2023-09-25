@@ -3,13 +3,13 @@ import { Accessibility, pillIconBehavior } from '@fluentui/accessibility';
 import * as PropTypes from 'prop-types';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
   childrenExist,
@@ -53,7 +53,7 @@ export const pillIconClassName = 'ui-pill__icon';
 /**
  * A PillIcon allows user set an icon.
  */
-export const PillIcon: ComponentWithAs<'span', PillIconProps> & FluentComponentStaticProps<PillIconProps> = props => {
+export const PillIcon = React.forwardRef<HTMLSpanElement, PillIconProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillIcon.displayName, context.telemetry);
   setStart();
@@ -90,11 +90,11 @@ export const PillIcon: ComponentWithAs<'span', PillIconProps> & FluentComponentS
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, PillIconProps> & FluentComponentStaticProps<PillIconProps>;
 
 PillIcon.defaultProps = {
   accessibility: pillIconBehavior,
-  as: 'span',
+  as: 'span' as const,
 };
 
 PillIcon.displayName = 'PillIcon';
@@ -102,7 +102,7 @@ PillIcon.displayName = 'PillIcon';
 PillIcon.propTypes = {
   ...commonPropTypes.createCommon(),
   selectable: PropTypes.bool,
-  size: PropTypes.oneOf(['small', 'smaller', 'medium']),
+  size: PropTypes.oneOf<'small' | 'smaller' | 'medium'>(['small', 'smaller', 'medium']),
   image: customPropTypes.shorthandAllowingChildren,
 };
 

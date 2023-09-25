@@ -7,7 +7,8 @@ const componentUrl =
 export const MotionPageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Styles/MotionPage/docs/web/MotionOverview.md') as string,
     componentUrl,
   },
 };

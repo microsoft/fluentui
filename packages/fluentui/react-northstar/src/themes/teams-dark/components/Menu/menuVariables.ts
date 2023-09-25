@@ -33,7 +33,6 @@ export const menuVariables = (siteVars: any): Partial<MenuVariables> => ({
   activeUnderlinedBorderBottomColor: siteVars.colors.white,
   activeUnderlinedPrimaryColor: siteVars.colors.brand[400],
 
-  verticalBackgroundColorFocus: siteVars.colors.grey[550],
   iconOnlyColorActive: siteVars.colors.brand[400],
   iconOnlyColorFocus: siteVars.colors.brand[400],
   iconOnlyColorHover: siteVars.colors.brand[400],
@@ -45,7 +44,8 @@ export const menuVariables = (siteVars: any): Partial<MenuVariables> => ({
   wrapperBackgroundColorFocus: siteVars.colors.brand[400],
   underlinedWrapperColorHover: siteVars.colors.white,
 
-  primaryWrapperColorFocus: siteVars.colors.white,
+  primaryWrapperColorFocus: siteVars.colors.black,
+  primaryWrapperColor: siteVars.colors.white,
   primaryWrapperBackgroundColorFocus: siteVars.colors.brand[400],
 
   indicatorColor: siteVars.colors.grey[250],

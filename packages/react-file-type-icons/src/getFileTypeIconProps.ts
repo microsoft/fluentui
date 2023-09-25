@@ -1,5 +1,6 @@
 import { FileTypeIconMap } from './FileTypeIconMap';
-import { FileIconType, FileIconTypeInput } from './FileIconType';
+import { FileIconType } from './FileIconType';
+import type { FileIconTypeInput } from './FileIconType';
 
 let _extensionToIconName: { [key: string]: string };
 
@@ -11,11 +12,15 @@ const LIST_ITEM = 'listitem';
 const LIST = 'splist';
 const MULTIPLE_ITEMS = 'multiple';
 const NEWS = 'sponews';
-const STREAM = 'stream';
+const STREAM = 'video';
 const DESKTOP_FOLDER = 'desktopfolder';
-const DOCUMENTS_FOLDER = 'documentfolder';
+const DOCUMENTS_FOLDER = 'documentsfolder';
 const PICTURES_FOLDER = 'picturesfolder';
 const LINKED_FOLDER = 'linkedfolder';
+const FORM = 'form';
+const SWAY = 'sway';
+const PLAYLIST = 'playlist';
+const LOOP_WORKSPACE = 'loopworkspace';
 
 export const DEFAULT_ICON_SIZE: FileTypeIconSize = 16;
 export type FileTypeIconSize = 16 | 20 | 24 | 32 | 40 | 48 | 64 | 96;
@@ -129,6 +134,18 @@ export function getFileTypeIconNameFromExtensionOrType(
         break;
       case FileIconType.list:
         iconBaseName = LIST;
+        break;
+      case FileIconType.form:
+        iconBaseName = FORM;
+        break;
+      case FileIconType.sway:
+        iconBaseName = SWAY;
+        break;
+      case FileIconType.playlist:
+        iconBaseName = PLAYLIST;
+        break;
+      case FileIconType.loopworkspace:
+        iconBaseName = LOOP_WORKSPACE;
         break;
     }
   }

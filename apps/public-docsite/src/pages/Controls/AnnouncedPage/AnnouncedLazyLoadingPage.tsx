@@ -3,5 +3,5 @@ import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { AnnouncedLazyLoadingPageProps } from './AnnouncedLazyLoadingPage.doc';
 
 export const AnnouncedLazyLoadingPage: React.FunctionComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...AnnouncedLazyLoadingPageProps[props.platform]} />;
+  return <ControlsAreaPage {...props} {...AnnouncedLazyLoadingPageProps[props.platform!]} />;
 };

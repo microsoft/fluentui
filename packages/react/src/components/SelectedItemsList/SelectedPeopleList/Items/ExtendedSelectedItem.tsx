@@ -2,8 +2,8 @@ import * as React from 'react';
 import { IconButton } from '../../../../Button';
 import { css, getId, initializeComponentRef } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
-import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import * as stylesImport from './ExtendedSelectedItem.scss';
+import type { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 
 const styles: any = stylesImport;
 
@@ -18,7 +18,6 @@ export class ExtendedSelectedItem extends React.Component<ISelectedPeopleItemPro
     super(props);
 
     initializeComponentRef(this);
-    // eslint-disable-next-line react/no-unused-state
     this.state = { contextualMenuVisible: false };
   }
 

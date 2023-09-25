@@ -36,6 +36,23 @@ export interface IDonutChartProps extends ICartesianChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
+
+  /**
+   * Prop to show the arc labels in percentage format
+   * @default false
+   */
+  showLabelsInPercent?: boolean;
+
+  /**
+   * Prop to hide the arc labels
+   * @default true
+   */
+  hideLabels?: boolean;
 }
 
 export interface IDonutChartStyleProps extends ICartesianChartStyleProps {}

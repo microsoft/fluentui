@@ -4,6 +4,7 @@
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
+    "lib": ["ES5", "DOM", "ES2015.Collection", "ES2015.Iterable"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -15,8 +16,8 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
-    "types": ["jest"]
+    "types": ["jest"],
+    "isolatedModules": true
   },
   "include": ["src"]
 }

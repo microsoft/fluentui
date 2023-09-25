@@ -1,4 +1,4 @@
-import { Ref } from '@fluentui/react-component-ref';
+import { handleRef } from '@fluentui/react-component-ref';
 import { callable } from '@fluentui/styles';
 import * as React from 'react';
 import * as PropTypes from 'prop-types';
@@ -16,6 +16,7 @@ export class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
   static propTypes = {
     as: PropTypes.elementType,
     firstFocusableSelector: PropTypes.oneOfType([PropTypes.func, PropTypes.string]),
+    innerRef: PropTypes.any,
   };
 
   static handledProps = _.keys(AutoFocusZone.propTypes) as any;
@@ -29,9 +30,15 @@ export class AutoFocusZone extends React.Component<AutoFocusZoneProps> {
     const ElementType = getElementType(this.props);
 
     return (
-      <Ref innerRef={this.root}>
-        <ElementType {...unhandledProps}>{this.props.children}</ElementType>
-      </Ref>
+      <ElementType
+        ref={(element: HTMLElement) => {
+          handleRef(this.root, element);
+          handleRef(this.props.innerRef, element);
+        }}
+        {...unhandledProps}
+      >
+        {this.props.children}
+      </ElementType>
     );
   }
 

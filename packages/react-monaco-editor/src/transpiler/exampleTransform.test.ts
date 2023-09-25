@@ -1,8 +1,9 @@
-import { transformExample, ITransformExampleParams } from './exampleTransform';
+import { transformExample } from './exampleTransform';
 import * as fs from 'fs';
 import * as path from 'path';
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
-import { IBasicPackageGroup } from '../interfaces/packageGroup';
+import type { ITransformExampleParams } from './exampleTransform';
+import type { IBasicPackageGroup } from '../interfaces/packageGroup';
 
 describe('example transform', () => {
   function transformFile(file: string, options: Partial<ITransformExampleParams> & { useJs?: boolean } = {}) {
@@ -92,22 +93,29 @@ describe('example transform', () => {
   });
 
   const fooGroup: IBasicPackageGroup = { globalName: 'Foo', packages: [{ packageName: 'foo' }] };
-  const fabricGroup: IBasicPackageGroup = {
-    globalName: 'Fabric',
+  const fluentGroup: IBasicPackageGroup = {
+    globalName: 'FluentUIReact',
     packages: [{ packageName: '@fluentui/react' }],
   };
 
   it('handles examples with custom supportedPackages', () => {
     const result = transformFile('customPackages.txt', { supportedPackages: [fooGroup] });
     expect(result.output).toBeTruthy();
-    expect(result.output).not.toContain('Fabric');
+    expect(result.output).not.toContain('FluentUIReact');
+    expect(result.output).not.toContain('ThemeProvider');
+    expect(result.output).not.toContain('initializeIcons');
     expect(result.output).not.toContain('<FooExampleWrapper');
     expect(result).toMatchSnapshot();
   });
 
-  it('handles examples with custom supportedPackages and Fabric', () => {
-    const result = transformFile('customPackagesFabric.txt', { supportedPackages: [fooGroup, fabricGroup] });
+  it('handles examples with custom supportedPackages and Fluent', () => {
+    const result = transformFile('customPackagesFluent.txt', { supportedPackages: [fooGroup, fluentGroup] });
     expect(result.output).toBeTruthy();
+    expect(result.output).toContain(', initializeIcons');
+    expect(result.output).toContain(', ThemeProvider');
+    expect(result.output).toContain('initializeIcons()');
+    expect(result.output).toContain('<ThemeProvider>');
+    expect(result.output).toContain('FooExampleWrapper');
     expect(result).toMatchSnapshot();
   });
 });

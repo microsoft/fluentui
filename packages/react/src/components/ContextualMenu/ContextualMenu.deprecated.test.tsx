@@ -1,12 +1,13 @@
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes, setWarningCallback } from '../../Utilities';
-import { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItemType } from './ContextualMenu.types';
 import { mount } from 'enzyme';
-import { IMenuItemClassNames, getItemClassNames } from './ContextualMenu.classNames';
+import { getItemClassNames } from './ContextualMenu.classNames';
 import { createTheme } from '../../Styling';
+import type { IContextualMenuProps, IContextualMenuItem } from './ContextualMenu.types';
+import type { IMenuItemClassNames } from './ContextualMenu.classNames';
 
 let customClassNames: () => IMenuItemClassNames;
 

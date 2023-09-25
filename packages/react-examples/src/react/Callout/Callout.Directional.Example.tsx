@@ -72,6 +72,7 @@ export const CalloutDirectionalExample: React.FunctionComponent = () => {
         <Callout
           ariaLabelledBy={labelId}
           ariaDescribedBy={descriptionId}
+          role="dialog"
           className={styles.callout}
           gapSpace={gapSpace}
           target={`#${buttonId}`}

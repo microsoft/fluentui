@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore(react-image): migrate to new SB controlls setup",
-  "packageName": "@fluentui/react-image",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { setRTL } from '../../../Utilities';
 import { PersonaCoin } from './PersonaCoin';
-import { wrapPersona } from '../Persona.test';
+import { wrapPersona } from '../test-utils';
 
 const testImage1x1 =
   'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';

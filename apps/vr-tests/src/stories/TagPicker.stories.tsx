@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { StoryWright, Steps, Keys } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, modifyDeprecatedDecoratorStyles } from '../utilities/index';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
 import { TagPicker, Fabric, ITag } from '@fluentui/react';
 
 const testTags: ITag[] = [
@@ -26,27 +26,28 @@ const getTextFromItem = (item: ITag) => item.name;
 
 const getList = () => testTags;
 
-// Pickers that are 'disabled' are added before the Screener decorator because css classes for
+// Pickers that are 'disabled' are added before the StoryWright decorator because css classes for
 // suggestion items won't exist
 storiesOf('TagPicker', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />);
 
 storiesOf('TagPicker', module)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .click('.ms-BasePicker-input')
         .setValue('.ms-BasePicker-input', 'a')
         .snapshot('Open Suggestion Menu', { cropTo: '.testWrapper' })
         .hover('.ms-Suggestions-item')
         .snapshot('Suggestion Menu Item Hover', { cropTo: '.testWrapper' })
-        .keys('.ms-BasePicker-input', Screener.Keys.upArrow)
+        .keys('.ms-BasePicker-input', Keys.upArrow)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Root', () => (
     <TagPicker
@@ -78,18 +79,15 @@ storiesOf('TagPicker', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 storiesOf('TagPicker', module)
-  // FIXME: SB6 duplicates same story ID decorators
-  // This is a temporary fix until we migrate to CSF format duplication problem
-  // - previously this used FabricDecoratorFixedWidth
-  .addDecorator(modifyDeprecatedDecoratorStyles({ mode: 'fixed' }))
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('With long tag', () => (
     // This example MUST be inside a narrow container which forces the tag to overflow
@@ -107,10 +105,10 @@ storiesOf('TagPicker', module)
   ));
 
 storiesOf('TagItem', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .hover('.ms-TagItem')
         .snapshot('Tag Item Hover', { cropTo: '.testWrapper' })
@@ -123,7 +121,7 @@ storiesOf('TagItem', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Selected',
@@ -142,5 +140,5 @@ storiesOf('TagItem', module)
         />
       </Fabric>
     ),
-    { rtl: true },
+    { includeRtl: true },
   );

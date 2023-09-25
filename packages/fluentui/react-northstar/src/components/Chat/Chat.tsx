@@ -1,6 +1,6 @@
 import { Accessibility, chatBehavior, ChatBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -22,7 +22,8 @@ import {
   rtlTextContainer,
   UIComponentProps,
 } from '../../utils';
-import { ChatDensity, ChatDensityContextProvider, defaultChatDensity } from './chatDensityContext';
+import { ChatContextProvider, ChatContextValue } from './chatContext';
+import { ChatDensity, defaultChatDensity } from './chatDensity';
 import { ChatItem, ChatItemProps } from './ChatItem';
 import { ChatMessage } from './ChatMessage';
 import { ChatMessageDetails } from './ChatMessageDetails';
@@ -53,14 +54,7 @@ export const chatSlotClassNames: ChatSlotClassNames = {
 /**
  * A Chat displays messages from a conversation between multiple users.
  */
-export const Chat: ComponentWithAs<'ul', ChatProps> &
-  FluentComponentStaticProps<ChatProps> & {
-    Item: typeof ChatItem;
-    Message: typeof ChatMessage;
-    MessageDetails: typeof ChatMessageDetails;
-    MessageReadStatus: typeof ChatMessageReadStatus;
-    MessageHeader: typeof ChatMessageHeader;
-  } = props => {
+export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
@@ -86,15 +80,26 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Chat.handledProps, props);
 
+  const childBehaviors = accessibility && (accessibility as Accessibility<ChatProps>)(props).childBehaviors;
+
+  const contextProps: ChatContextValue = {
+    density,
+    behaviors: {
+      item: childBehaviors?.item,
+      message: childBehaviors?.message,
+    },
+  };
+
   const element = getA11Props.unstable_wrapWithFocusZone(
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
     >
-      <ChatDensityContextProvider value={density}>
+      <ChatContextProvider value={contextProps}>
         {childrenExist(children)
           ? children
           : _.map(items, item =>
@@ -102,13 +107,20 @@ export const Chat: ComponentWithAs<'ul', ChatProps> &
                 defaultProps: () => ({ className: chatSlotClassNames.item }),
               }),
             )}
-      </ChatDensityContextProvider>
+      </ChatContextProvider>
     </ElementType>,
   );
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, ChatProps> &
+  FluentComponentStaticProps<ChatProps> & {
+    Item: typeof ChatItem;
+    Message: typeof ChatMessage;
+    MessageDetails: typeof ChatMessageDetails;
+    MessageReadStatus: typeof ChatMessageReadStatus;
+    MessageHeader: typeof ChatMessageHeader;
+  };
 
 Chat.displayName = 'Chat';
 

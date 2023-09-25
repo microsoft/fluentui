@@ -1,0 +1,21 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2019",
+    "noEmit": true,
+    "isolatedModules": true,
+    "importHelpers": true,
+    "jsx": "react",
+    "noUnusedLocals": true,
+    "preserveConstEnums": true,
+    "skipLibCheck": true
+  },
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}

@@ -1,10 +1,12 @@
 export interface IAzureSemanticColors {
   background: string;
   statusBar: {
-    link: string;
+    link: {
+      rest: string;
+      hover: string;
+    };
     background: {
-      default: string;
-      okay: string;
+      success: string;
       error: string;
       warning: string;
       information: string;
@@ -19,12 +21,12 @@ export interface IAzureSemanticColors {
       upsell: string;
     };
     icon: {
-      default: string;
-      okay: string;
+      success: string;
       error: string;
       warning: string;
       information: string;
       upsell: string;
+      disabled: string;
     };
   };
   text: {
@@ -38,7 +40,6 @@ export interface IAzureSemanticColors {
     disabled: string;
     hyperlink: string;
     hyperlinkHovered: string;
-    hyperlinkBackgroundHovered: string;
     success: string;
     error: string;
     placeholder: string;
@@ -69,6 +70,23 @@ export interface IAzureSemanticColors {
   disabledButton: {
     background: string;
     text: string;
+  };
+  dangerButton: {
+    rest: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    hover: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    pressed: {
+      text: string;
+      background: string;
+      border: string;
+    };
   };
   secondaryButton: {
     rest: {
@@ -127,6 +145,15 @@ export interface IAzureSemanticColors {
     };
     focus: string;
   };
+  dropDown: {
+    background: {
+      rest: string;
+      hover: string;
+    };
+    text: {
+      hovered: string;
+    };
+  };
   item: {
     hover: string;
     select: string;
@@ -135,6 +162,23 @@ export interface IAzureSemanticColors {
   shimmer: {
     primary: string;
     secondary: string;
+  };
+  tagButton: {
+    rest: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    hover: {
+      text: string;
+      background: string;
+      border: string;
+    };
+    pressed: {
+      text: string;
+      background: string;
+      border: string;
+    };
   };
   toggle: {
     disabled: {
@@ -167,6 +211,20 @@ export interface IAzureSemanticColors {
       };
     };
   };
+  dataColor: {
+    dataColor1: string;
+    dataColor2: string;
+    dataColor3: string;
+    dataColor4: string;
+    dataColor5: string;
+    dataColor6: string;
+    dataColor7: string;
+    dataColor8: string;
+    dataColor9: string;
+    dataColor10: string;
+    noData1: string;
+    noData2: string;
+  };
   datePicker: {
     rest: {
       selected: string;
@@ -179,6 +237,11 @@ export interface IAzureSemanticColors {
   detailsRow: {
     border: string;
     focus: string;
+    hoveredLink: string;
+    hoveredRowLink: string;
+    hoveredBackground: string;
+    selectedLink: string;
+    selectedHoveredLink: string;
   };
   radioButton: {
     circle: {
@@ -205,6 +268,28 @@ export interface IAzureSemanticColors {
     };
     hover: {
       primaryButtonBackground: string;
+    };
+  };
+  slider: {
+    activeBackground: string;
+    activeBackgroundHovered: string;
+    inactiveBackgroundHovered: string;
+    activeDisabledBackground: string;
+    inactiveDisabledBackground: string;
+    activeBackgroundPressed: string;
+  };
+  calendar: {
+    background: string;
+    text: {
+      rest: string;
+      hover: string;
+      disabled: string;
+      outside: string;
+    };
+    button: {
+      border: string;
+      selected: string;
+      hover: string;
     };
   };
 }

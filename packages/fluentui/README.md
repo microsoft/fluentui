@@ -1,6 +1,14 @@
 # Fluent UI - React Northstar ([docs](https://aka.ms/fluent-ui))
 
-This is the new home for `@fluentui/react-northstar` and related packages which were migrated from the [`microsoft/fluent-ui-react` repo][1].
+[![npm version](https://img.shields.io/npm/v/@fluentui/react-northstar?style=flat-square)](https://www.npmjs.com/package/@fluentui/react-northstar)
+
+This is the home for `@fluentui/react-northstar` and related packages which were migrated from the [`microsoft/fluent-ui-react` repo][1].
+
+**Status**
+
+Fluent UI React Northstar has been superseded by Fluent UI React Components v9. For more details about migration to Fluent UI React Components v9, see [Migration documentation][5].
+
+**Versioning**
 
 > Since the `@fluentui/react-northstar` packages are on version 0.x, note that:
 >
@@ -16,8 +24,8 @@ This is the new home for `@fluentui/react-northstar` and related packages which 
 - [Issues](#issues)
 - [Documentation and usage examples](#documentation-and-usage-examples)
 - [FAQs](#faqs)
-  - [Why the move?](#why-the-move)
-  - [Why the separate folder?](#why-the-separate-folder)
+  - [What is the future of Fluent UI React Northstar?](#what-is-the-future-of-fluent-ui-react-northstar)
+  - [How can we migrate to Fluent UI React Components v9?](#how-can-we-migrate-to-fluent-ui-react-components-v9)
   - [What's happening with Teams support?](#whats-happening-with-teams-support)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
@@ -29,6 +37,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for a step-by-step setup and development 
 ## Issues
 
 If you need to [file an issue][3], please note in the title or description that it refers to `@fluentui/react-northstar`.
+List of [active issues][4]
 
 ## Documentation and usage examples
 
@@ -36,18 +45,20 @@ See the doc site at https://aka.ms/fluent-ui.
 
 ## FAQs
 
-### Why the move?
+### What is the future of Fluent UI React Northstar?
 
-We're in the process of converging UI projects at Microsoft under the "Fluent UI" banner to simplify the dev story. In the process, we're making performance improvements and enabling greater interoperability of these components across more places and platforms at Microsoft.
+The future of `@fluentui/react-northstar` is called `@fluentui/react-components`. It builds on top of many base principles that were present in Northstar, streamlines the API and brings significantly improved performance.
 
-### Why the separate folder?
+### How can we migrate to Fluent UI React Components v9?
 
-These packages remain in a separate folder while we work on converging the build systems and certain other details, but they will eventually move directly under `packages` (or `apps`) next to the other packages.
+Please see the [Migration documentation][5].
 
 ### What's happening with Teams support?
 
-`@fluentui/react-northstar v0.x.x` (formerly `@fluentui/react v0.x.x`) has been the official set of components for Teams. This is still the case and no support is being dropped.
+`@fluentui/react-northstar v0.x.x` (formerly `@fluentui/react v0.x.x`) has been the official set of components for Teams. This is still the case and no support is being dropped. New features will only be added to Fluent UI React Components v9.
 
 [1]: https://github.com/microsoft/fluent-ui-react
 [2]: https://github.com/microsoft/fluentui/blob/master/packages/fluentui/CHANGELOG.md
 [3]: https://github.com/microsoft/fluentui/issues/new/choose
+[4]: https://github.com/microsoft/fluentui/issues?q=is%3Aissue+is%3Aopen+label%3A%22Fluent+UI+react-northstar+%28v0%29%22
+[5]: https://react.fluentui.dev/?path=/docs/concepts-migration-overview--page

@@ -1,14 +1,17 @@
 import * as React from 'react';
 import { useControllableValue, useId } from '@fluentui/react-hooks';
 import { classNamesFunction, css, divProperties, getNativeProps, getRTL, KeyCodes, warn } from '@fluentui/utilities';
-import { CommandButton, IButton } from '../../Button';
+import { CommandButton } from '../../Button';
 import { useOverflow } from '../../utilities/useOverflow';
-import { FocusZone, IFocusZone, FocusZoneDirection } from '../../FocusZone';
-import { DirectionalHint, IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { DirectionalHint } from '../ContextualMenu/ContextualMenu.types';
 import { Icon } from '../Icon/Icon';
-import { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
 import { PivotItem } from './PivotItem';
-import { IPivotItemProps } from './PivotItem.types';
+import type { IButton } from '../../Button';
+import type { IFocusZone } from '../../FocusZone';
+import type { IContextualMenuProps } from '../ContextualMenu/ContextualMenu.types';
+import type { IPivot, IPivotProps, IPivotStyleProps, IPivotStyles } from './Pivot.types';
+import type { IPivotItemProps } from './PivotItem.types';
 
 const getClassNames = classNamesFunction<IPivotStyleProps, IPivotStyles>();
 
@@ -44,7 +47,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
       result.links.push({
         headerText: linkText,
         ...pivotItemProps,
-        itemKey: itemKey,
+        itemKey,
       });
       result.keyToIndexMapping[itemKey] = index;
       result.keyToTabIdMapping[itemKey] = getTabId(props, pivotId, itemKey, index);
@@ -56,7 +59,7 @@ const getLinkItems = (props: IPivotProps, pivotId: string): PivotLinkCollection 
 };
 
 const isPivotItem = (item: React.ReactNode): item is PivotItem => {
-  return ((item as React.ReactElement)?.type as React.ComponentType)?.name === PivotItem.name;
+  return React.isValidElement(item) && (item.type as React.ComponentType)?.name === PivotItem.name;
 };
 
 export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<HTMLDivElement, IPivotProps>(
@@ -67,10 +70,26 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
 
     const [selectedKey, setSelectedKey] = useControllableValue(props.selectedKey, props.defaultSelectedKey);
 
-    const { componentRef, theme, linkSize, linkFormat, overflowBehavior, focusZoneProps } = props;
+    const {
+      componentRef,
+      theme,
+      linkSize,
+      linkFormat,
+      overflowBehavior,
+      overflowAriaLabel,
+      focusZoneProps,
+      overflowButtonAs,
+    } = props;
 
     let classNames: { [key in keyof IPivotStyles]: string };
-    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties);
+    const nameProps = {
+      'aria-label': props['aria-label'],
+      'aria-labelledby': props['aria-labelledby'],
+    };
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(props, divProperties, [
+      'aria-label',
+      'aria-labelledby',
+    ]);
 
     let linkCollection = getLinkItems(props, pivotId);
 
@@ -120,9 +139,21 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
       contentString += link.itemCount ? ' (' + link.itemCount + ')' : '';
       // Adding space supplementary for icon
       contentString += link.itemIcon ? ' xx' : '';
+
+      const itemSemantics =
+        link.role && link.role !== 'tab'
+          ? {
+              role: link.role,
+            }
+          : {
+              role: 'tab',
+              'aria-selected': isSelected,
+            };
+
       return (
         <CommandButton
           {...headerButtonProps}
+          {...itemSemantics}
           id={tabId}
           key={itemKey}
           className={css(className, isSelected && classNames.linkIsSelected)}
@@ -131,8 +162,6 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
           // eslint-disable-next-line react/jsx-no-bind
           onKeyDown={(ev: React.KeyboardEvent<HTMLElement>) => onKeyDown(itemKey!, ev)}
           aria-label={link.ariaLabel}
-          role={link.role || 'tab'}
-          aria-selected={isSelected}
           name={link.headerText}
           keytipProps={link.keytipProps}
           data-content={contentString}
@@ -233,32 +262,43 @@ export const PivotBase: React.FunctionComponent<IPivotProps> = React.forwardRef<
         elements.forEach(({ ele, isOverflowing }) => (ele.dataset.isOverflowing = `${isOverflowing}`));
 
         // Update the menu items
-        overflowMenuProps.items = linkCollection.links.slice(overflowIndex).map((link, index) => ({
-          key: link.itemKey || `${overflowIndex + index}`,
-          onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
-        }));
+        overflowMenuProps.items = linkCollection.links
+          .slice(overflowIndex)
+          .filter(link => link.itemKey !== renderedSelectedKey)
+          .map((link, index) => {
+            link.role = 'menuitem';
+
+            return {
+              key: link.itemKey || `${overflowIndex + index}`,
+              onRender: () => renderPivotLink(linkCollection, link, renderedSelectedKey, classNames.linkInMenu),
+            };
+          });
       },
       rtl: getRTL(theme),
       pinnedIndex: renderedSelectedIndex,
     });
 
+    const OverflowButton = overflowButtonAs ? overflowButtonAs : CommandButton;
     return (
-      <div role="toolbar" {...divProps} ref={ref}>
+      <div ref={ref} {...divProps}>
         <FocusZone
           componentRef={focusZoneRef}
           role="tablist"
+          {...nameProps}
           direction={FocusZoneDirection.horizontal}
           {...focusZoneProps}
           className={css(classNames.root, focusZoneProps?.className)}
         >
           {items}
           {overflowBehavior === 'menu' && (
-            <CommandButton
+            <OverflowButton
               className={css(classNames.link, classNames.overflowMenuButton)}
               elementRef={overflowMenuButtonRef}
               componentRef={overflowMenuButtonComponentRef}
               menuProps={overflowMenuProps}
               menuIconProps={{ iconName: 'More', style: { color: 'inherit' } }}
+              ariaLabel={overflowAriaLabel}
+              role="tab"
             />
           )}
         </FocusZone>

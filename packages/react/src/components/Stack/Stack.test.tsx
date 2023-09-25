@@ -1,10 +1,12 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { Fabric } from '../../Fabric';
 import { isConformant } from '../../common/isConformant';
 import { Stack } from './Stack';
+import type { IStackProps } from './Stack.types';
 
 const sampleClass = mergeStyles({
   background: 'red',
@@ -15,7 +17,6 @@ describe('Stack', () => {
     Component: Stack,
     displayName: 'Stack',
     useDefaultExport: true,
-    skipAsPropTests: false,
     // Problem: Ref is not supported
     // Solution: Convert to FunctionComponent and support using forwardRef
     disabledTests: ['component-handles-ref', 'component-has-root-ref'],
@@ -224,11 +225,37 @@ describe('Stack', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders vertical Stack with StackItems inside a React.Fragment correctly', () => {
+    const component = renderer.create(
+      <Stack>
+        <>
+          <Stack.Item>Item 1</Stack.Item>
+          <Stack.Item>Item 2</Stack.Item>
+        </>
+      </Stack>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders horizontal Stack with shrinking StackItems correctly', () => {
     const component = renderer.create(
       <Stack horizontal>
         <Stack.Item>Item 1</Stack.Item>
         <Stack.Item>Item 2</Stack.Item>
+      </Stack>,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders horizontal Stack with StackItems inside a React.Fragment correctly', () => {
+    const component = renderer.create(
+      <Stack horizontal>
+        <>
+          <Stack.Item>Item 1</Stack.Item>
+          <Stack.Item>Item 2</Stack.Item>
+        </>
       </Stack>,
     );
     const tree = component.toJSON();
@@ -308,5 +335,19 @@ describe('Stack', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('respects the className passed in an inner Stack', () => {
+    const customClassName = 'custom';
+    const CustomStack = (props: IStackProps) => <Stack className={customClassName} {...props} />;
+
+    const { getByText } = render(
+      <Stack>
+        <CustomStack>Inner Stack</CustomStack>
+      </Stack>,
+    );
+
+    const innerStack = getByText('Inner Stack');
+    expect(innerStack.classList.contains(customClassName)).toBe(true);
   });
 });

@@ -3,13 +3,13 @@
  * This utility module is used with theming. Given a color to shade, whether the theme is inverted
  * (i.e. is a dark color), and the desired shade enum, this will return an appropriate shade of that color.
  */
-import { IHSV, IColor } from './interfaces';
 import { MAX_COLOR_RGB } from './consts';
 import { assign } from '../../Utilities';
 import { clamp } from './clamp';
 import { getColorFromRGBA } from './getColorFromRGBA';
 import { hsv2hsl } from './hsv2hsl';
 import { hsv2rgb } from './hsv2rgb';
+import type { IHSV, IColor } from './interfaces';
 
 // Soften: to get closer to the background color's luminance
 // (softening with a white background would be lightening, with black it'd be darkening)

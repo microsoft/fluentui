@@ -1,7 +1,7 @@
-import { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 import { renderThemeProvider as render } from './renderThemeProvider';
 import { useThemeProviderState } from './useThemeProviderState';
 import { getPropsWithDefaults } from '@fluentui/utilities';
+import type { ThemeProviderProps, ThemeProviderState } from './ThemeProvider.types';
 
 /**
  * Returns the ThemeProvider render function and calculated state, given user input, ref, and

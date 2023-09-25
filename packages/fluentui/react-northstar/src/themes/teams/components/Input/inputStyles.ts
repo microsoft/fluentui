@@ -1,7 +1,7 @@
 import { ComponentSlotStylesPrepared, ICSSInJSStyle } from '@fluentui/styles';
 import { InputStylesProps } from '../../../../components/Input/Input';
 import { InputVariables } from './inputVariables';
-import { PositionProperty } from 'csstype';
+import { Property } from 'csstype';
 import { pxToRem } from '../../../../utils';
 
 export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVariables> = {
@@ -84,7 +84,7 @@ export const inputStyles: ComponentSlotStylesPrepared<InputStylesProps, InputVar
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    position: v.iconPosition as PositionProperty,
+    position: v.iconPosition as Property.Position,
     top: 0,
     bottom: 0,
     ...(p.error && { color: v.colorError }),

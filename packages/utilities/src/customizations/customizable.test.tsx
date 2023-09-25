@@ -5,7 +5,7 @@ import { mount } from 'enzyme';
 import { customizable } from './customizable';
 import { Customizations } from './Customizations';
 import { Customizer } from './Customizer';
-import { IStyle } from '@fluentui/merge-styles';
+import type { IStyle } from '@fluentui/merge-styles';
 
 @customizable('Foo', ['field'])
 class Foo extends React.Component<{ field?: string }, {}> {

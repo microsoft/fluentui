@@ -1,5 +1,5 @@
 import { getFocusStyle, hiddenContentStyle, HighContrastSelector, getGlobalClassNames } from '../../Styling';
-import { IRatingStyleProps, IRatingStyles } from './Rating.types';
+import type { IRatingStyleProps, IRatingStyles } from './Rating.types';
 
 const GlobalClassNames = {
   root: 'ms-RatingStar-root',
@@ -17,7 +17,7 @@ const GlobalClassNames = {
 
 function _getColorWithHighContrast(color: string, highContrastColor: string) {
   return {
-    color: color,
+    color,
     selectors: {
       [HighContrastSelector]: {
         color: highContrastColor,

@@ -1,6 +1,7 @@
-import { ISliderStyleProps, ISliderStyles } from './Slider.types';
-import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle, IRawStyle } from '../../Styling';
+import { getGlobalClassNames, HighContrastSelector, AnimationVariables, getFocusStyle } from '../../Styling';
 import { getRTL } from '@fluentui/utilities';
+import type { ISliderStyleProps, ISliderStyles } from './Slider.types';
+import type { IRawStyle } from '../../Styling';
 
 /* eslint-disable deprecation/deprecation */
 

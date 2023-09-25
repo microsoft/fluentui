@@ -1,16 +1,16 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecoratorTall } from '../utilities/index';
 import { Breadcrumb } from '@fluentui/react';
 
 const noOp = () => undefined;
 
 storiesOf('Breadcrumb', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -35,7 +35,7 @@ storiesOf('Breadcrumb', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory(
     'Root',
@@ -52,7 +52,7 @@ storiesOf('Breadcrumb', module)
         maxDisplayedItems={3}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory(
     'Button',
@@ -69,14 +69,15 @@ storiesOf('Breadcrumb', module)
         maxDisplayedItems={3}
       />
     ),
-    { rtl: true },
+    { includeRtl: true },
   );
 
 // Stories for hovering over actionable and non-actionable items
 storiesOf('Breadcrumb', module)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .hover('.ms-Breadcrumb-list li:nth-child(2)')
         .snapshot('actionable hover', { cropTo: '.testWrapper' })
         .hover('.ms-Breadcrumb-list li:nth-child(3)')
@@ -91,7 +92,7 @@ storiesOf('Breadcrumb', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('Hovering items', () => (
     <Breadcrumb

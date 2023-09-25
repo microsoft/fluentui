@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../../Utilities';
-import { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
+import type { IShimmerGapProps, IShimmerGapStyleProps, IShimmerGapStyles } from './ShimmerGap.types';
 
 const getClassNames = classNamesFunction<IShimmerGapStyleProps, IShimmerGapStyles>();
 
@@ -18,9 +18,6 @@ export const ShimmerGapBase: React.FunctionComponent<IShimmerGapProps> = props =
   });
 
   return (
-    <div
-      style={{ width: width, minWidth: typeof width === 'number' ? `${width}px` : 'auto' }}
-      className={classNames.root}
-    />
+    <div style={{ width, minWidth: typeof width === 'number' ? `${width}px` : 'auto' }} className={classNames.root} />
   );
 };

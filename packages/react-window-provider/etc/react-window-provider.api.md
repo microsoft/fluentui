@@ -21,8 +21,8 @@ export const WindowProvider: React_2.FunctionComponent<WindowProviderProps>;
 // @public
 export type WindowProviderProps = {
     window: Window | undefined;
+    children?: React_2.ReactNode;
 };
-
 
 // (No @packageDocumentation comment for this package)
 

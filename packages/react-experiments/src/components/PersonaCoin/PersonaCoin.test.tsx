@@ -1,12 +1,11 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
-
-import { IPersonaCoinComponent } from './PersonaCoin.types';
 import { PersonaCoin } from './index';
 import { Icon, Image, Text } from '@fluentui/react';
 import { setRTL } from '../../Utilities';
 import { PersonaTestImages } from '../../common/TestImages';
+import type { IPersonaCoinComponent } from './PersonaCoin.types';
 
 const testPersonaCoinStyles: IPersonaCoinComponent['styles'] = {
   root: 'test-cn-root',

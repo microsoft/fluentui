@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../Styling';
-import { IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
+import type { IDocumentCardStatusStyleProps, IDocumentCardStatusStyles } from './DocumentCardStatus.types';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCardDetails',

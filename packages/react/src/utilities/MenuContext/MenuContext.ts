@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MinimalMenuProps } from './types';
+import type { MinimalMenuProps } from './types';
 
 export const MenuContext = React.createContext<MinimalMenuProps>({});
 

@@ -1,5 +1,5 @@
-import { Point } from './Point';
-import { ISize } from './ISize';
+import type { Point } from './Point';
+import type { ISize } from './ISize';
 
 /**
  * Determines the distance between two points.

@@ -1,5 +1,5 @@
-import { IDatePickerStyleProps, IDatePickerStyles } from '@fluentui/react';
 import { DarkTheme } from '../DarkCustomizations';
+import type { IDatePickerStyleProps, IDatePickerStyles } from '@fluentui/react';
 
 export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {
   const { disabled } = props;

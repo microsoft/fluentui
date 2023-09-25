@@ -1,6 +1,7 @@
-import { IDetailsItemProps } from './DetailsRow.types';
-import { IColumn } from './DetailsList.types';
-import { ISelection, SelectionMode } from '../../Selection';
+import { SelectionMode } from '../../Selection';
+import type { IDetailsItemProps } from './DetailsRow.types';
+import type { IColumn } from './DetailsList.types';
+import type { ISelection } from '../../Selection';
 
 /**
  * {@docCategory DetailsList}

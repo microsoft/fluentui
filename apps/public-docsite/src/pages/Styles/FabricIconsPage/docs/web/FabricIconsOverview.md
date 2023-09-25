@@ -1,7 +1,7 @@
-Fluent UI uses a custom font for its iconography. This font contains glyphs that you can scale, color, and style in any way. There are also mirrored icons available for right-to-left localization. You can also download and install the icon font to use it with various design apps like Sketch, Figma, or Adobe XD.
+Fluent UI primarily uses a custom font for its iconography, released under the [Microsoft Fabric Assets License](https://aka.ms/fluentui-assets-license). As of Fluent UI React version 8, an SVG-based version of the same icon set is available under the MIT license.
 
-**This page is about the general-use monoline icons. See the [brand icons page](#/styles/web/office-brand-icons) for multi-color product icons and the [file type icons page](#/styles/web/file-type-icons) for document icons.**
+**This page is about the general-use monoline icons. See the [product icons page](#/styles/web/m365-product-icons) for multi-color product icons and the [file type icons page](#/styles/web/file-type-icons) for document icons.**
 
 ### When should I use Fluent UI icons?
 
-It is recommended to use Fluent UI icons for command bars, navigation or status indicators. If you need icons to represent Office apps, see the [Office brand icons page](#/styles/web/office-brand-icons) . If you are representing files or digital content, see the [file type icons page](#/styles/web/file-type-icons).
+It is recommended to use Fluent UI icons for command bars, navigation or status indicators. If you need icons to represent Microsoft 365 apps, see the [Microsoft 365 product icons page](#/styles/web/m365-product-icons). If you are representing files or digital content, see the [file type icons page](#/styles/web/file-type-icons).

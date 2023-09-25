@@ -1,10 +1,8 @@
 import * as React from 'react';
-import { ISuggestionModel } from '@fluentui/react/lib/Pickers';
-import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
-
-import { ISuggestionsCoreProps } from './Suggestions/Suggestions.types';
+import type { ISuggestionModel } from '@fluentui/react/lib/Pickers';
+import type { ISuggestionsControlProps, ISuggestionsCoreProps } from './Suggestions/Suggestions.types';
+import type { IBaseProps } from '@fluentui/react/lib/Utilities';
 
 export interface IFloatingSuggestions<TItem> {
   /** Whether the suggestions are shown */

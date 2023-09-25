@@ -1,17 +1,11 @@
-import { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
-import {
-  getGlobalClassNames,
-  getFocusStyle,
-  IStyle,
-  AnimationVariables,
-  FontWeights,
-  IconFontSizes,
-} from '../../Styling';
+import { getGlobalClassNames, getFocusStyle, AnimationVariables, FontWeights, IconFontSizes } from '../../Styling';
 import { getRTL, IsFocusVisibleClassName } from '../../Utilities';
 import { DEFAULT_CELL_STYLE_PROPS } from '../DetailsList/DetailsRow.styles';
 import { CHECK_CELL_WIDTH } from '../DetailsList/DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as EXPAND_BUTTON_WIDTH } from './GroupSpacer';
+import type { IGroupHeaderStyleProps, IGroupHeaderStyles } from './GroupHeader.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-GroupHeader',
@@ -153,6 +147,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       checkExpandResetStyles,
       {
         display: 'flex',
+        flexShrink: 0,
         alignItems: 'center',
         justifyContent: 'center',
         fontSize: fonts.small.fontSize,
@@ -195,6 +190,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
         outline: 0,
         whiteSpace: 'nowrap',
         textOverflow: 'ellipsis',
+        overflow: 'hidden',
       },
     ],
     dropIcon: [

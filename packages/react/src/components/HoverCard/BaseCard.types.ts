@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle, ITheme } from '../../Styling';
-import { ICalloutProps } from '../../Callout';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { ICalloutProps } from '../../Callout';
 
 /**
  * Interface containing props common for all types of cards.

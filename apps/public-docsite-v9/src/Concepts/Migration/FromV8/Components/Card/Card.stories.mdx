@@ -1,0 +1,86 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v8/Components/Card Migration/Card" />
+
+# Card Migration
+
+Fluent UI v8 provides the `DocumentCard` component and it's variants. Fluent UI v9 provides a `Card` control, but has a different API. `Card` is more generic is less opinionated about its content.
+
+This table maps `DocumentCard` v8 props to the `Card` v9 equivalent.
+
+| v8            | v9        | Notes                                    |
+| ------------- | --------- | ---------------------------------------- |
+| className     | className |                                          |
+| componentRef  | ref       |                                          |
+| onClick       | onClick   |                                          |
+| onClickHref   | n/a       | Can be implemented using `onClick`       |
+| onClickTarget | n/a       | Can be implemented using `onClick`       |
+| role          | role      |                                          |
+| styles        | className |                                          |
+| theme         | n/a       | Use `FluentProvider` to customize themes |
+| type          | n/a       | see Migrate `type` prop in this document |
+
+## Migrate `type` prop
+
+The `type` prop is no longer supported. To migrate, the property `orientation="horizontal"` can be used to achieve the same effect.
+
+Before:
+
+```tsx
+import {
+  DocumentCard,
+  DocumentCardActivity,
+  DocumentCardDetails,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  DocumentCardType,
+} from '@fluentui/react/lib/DocumentCard';
+import { TestImages } from '@fluentui/example-data';
+
+const previewImage = {
+  name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
+  linkProps: {
+    href: 'http://bing.com',
+    target: '_blank',
+  },
+  previewImageSrc: TestImages.documentPreview,
+  iconSrc: TestImages.iconPpt,
+  width: 144,
+};
+
+const Component = () => (
+  <DocumentCard type={DocumentCardType.compact}>
+    <DocumentCardPreview previewImages={[previewImage]} />
+    <DocumentCardDetails>
+      <DocumentCardTitle title="Revenue stream proposal fiscal year 2016 version02.pptx" />
+      <DocumentCardActivity activity="Created a few minutes ago" />
+    </DocumentCardDetails>
+  </DocumentCard>
+);
+```
+
+After:
+
+```tsx
+import * as React from 'react';
+import { Text, Avatar, Caption1 } from '@fluentui/react-components';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-card/unstable';
+
+export const SizedCard = () => {
+  const styles = useStyles();
+
+  return (
+    <Card size="small" orientation="horizontal">
+      <CardPreview>
+        <img src="logo.svg" alt="Company Logo" />
+      </CardPreview>
+
+      <CardHeader
+        image={<Avatar badge={{ status: 'available' }} image={{ src: 'avatar.svg' }} />}
+        header={<Text weight="semibold">Strategy 2021</Text>}
+        description={<Caption1>https://aka.ms/fluentui</Caption1>}
+      />
+    </Card>
+  );
+};
+```

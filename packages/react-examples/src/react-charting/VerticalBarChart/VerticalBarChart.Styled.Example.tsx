@@ -51,6 +51,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
         />
         <div style={{ width: '800px', height: '400px' }}>
           <VerticalBarChart
+            chartTitle="Vertical bar chart styled example "
             data={points}
             width={800}
             height={400}
@@ -59,6 +60,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
             yAxisTickCount={6}
             colors={customColors}
             hideLegend={true}
+            enableReflow={true}
           />
         </div>
       </>

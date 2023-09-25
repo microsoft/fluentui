@@ -4,9 +4,16 @@ exports[`BasePicker renders correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -24,12 +31,10 @@ exports[`BasePicker renders correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className="ms-BasePicker-text"
     >
       <input
         aria-autocomplete="both"
-        aria-controls=""
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"
@@ -64,9 +69,16 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
 <div
   className="ms-BasePicker"
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -84,12 +96,10 @@ exports[`BasePicker renders with inputProps supply classnames correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className="ms-BasePicker-text"
     >
       <input
         aria-autocomplete="both"
-        aria-controls=""
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"

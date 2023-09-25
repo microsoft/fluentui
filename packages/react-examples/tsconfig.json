@@ -18,7 +18,8 @@
     "skipLibCheck": true,
     "lib": ["es5", "dom", "es2015.promise"],
     "typeRoots": ["../../node_modules/@types", "../../typings"],
-    "types": ["jest", "webpack-env", "custom-global", "node"],
+    "types": ["webpack-env", "custom-global", "node", "cypress", "cypress-storybook/cypress", "cypress-real-events"],
+    "isolatedModules": true,
     "paths": {
       "@fluentui/react-examples/lib/*": ["./src/*"],
       "@fluentui/react-examples": ["./src"]

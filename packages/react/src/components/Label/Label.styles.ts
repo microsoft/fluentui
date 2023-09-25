@@ -1,5 +1,5 @@
 import { HighContrastSelector, FontWeights, getHighContrastNoAdjustStyle } from '../../Styling';
-import { ILabelStyleProps, ILabelStyles } from './Label.types';
+import type { ILabelStyleProps, ILabelStyles } from './Label.types';
 
 export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
   const { theme, className, disabled, required } = props;

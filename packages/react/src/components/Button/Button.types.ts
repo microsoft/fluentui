@@ -1,13 +1,14 @@
 import * as React from 'react';
 import { BaseButton } from './BaseButton';
 import { Button } from './Button';
-import { IButtonClassNames } from './BaseButton.classNames';
-import { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
-import { IRefObject, IRenderFunction, KeyCodes, IComponentAs } from '../../Utilities';
-import { IContextualMenuProps } from '../../ContextualMenu';
-import { IIconProps } from '../../Icon';
-import { IStyle, ITheme } from '../../Styling';
-import { IKeytipProps } from '../../Keytip';
+import { KeyCodes } from '../../Utilities';
+import type { IButtonClassNames } from './BaseButton.classNames';
+import type { ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
+import type { IRefObject, IRenderFunction, IComponentAs } from '../../Utilities';
+import type { IContextualMenuProps } from '../../ContextualMenu';
+import type { IIconProps } from '../../Icon';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IKeytipProps } from '../../Keytip';
 
 /**
  * {@docCategory Button}
@@ -30,6 +31,8 @@ export interface IButton {
    *
    * @param shouldFocusOnContainer - override to the ContextualMenu `shouldFocusOnContainer` prop.
    * BaseButton implementation defaults to `undefined`.
+   * Avoid using `shouldFocusOnContainer` as it breaks the default focus behaviour when using
+   * assistive technologies.
    * @param shouldFocusOnMount - override to the ContextualMenu `shouldFocusOnMount` prop.
    * BaseButton implementation defaults to `true`.
    */
@@ -100,7 +103,7 @@ export interface IButtonProps
   theme?: ITheme;
 
   /**
-   * Whether the button is checked
+   * Whether the button is checked. Should be used with the `toggle` attribute when creating a standalone on/off button.
    */
   checked?: boolean;
 
@@ -329,7 +332,7 @@ export interface IButtonProps
    * Style for the description text if applicable (for compound buttons).
    * @deprecated Use `secondaryText` instead.
    */
-  description?: IStyle;
+  description?: string;
 
   /**
    * yet unknown docs

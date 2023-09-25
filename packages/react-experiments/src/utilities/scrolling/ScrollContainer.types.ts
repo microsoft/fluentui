@@ -1,4 +1,4 @@
-import { IBaseProps } from '@fluentui/react/lib/Utilities';
+import type { IBaseProps } from '@fluentui/react/lib/Utilities';
 
 export interface IScrollContainerProps extends IBaseProps {
   /**

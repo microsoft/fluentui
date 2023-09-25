@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory VerticalDivider}

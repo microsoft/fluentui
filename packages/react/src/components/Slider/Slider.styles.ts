@@ -1,4 +1,3 @@
-import { ISliderStyleProps, ISliderStyles } from './Slider.types';
 import {
   getGlobalClassNames,
   HighContrastSelector,
@@ -6,6 +5,7 @@ import {
   getFocusStyle,
 } from '@fluentui/style-utilities';
 import { getRTL } from '@fluentui/utilities';
+import type { ISliderStyleProps, ISliderStyles } from './Slider.types';
 
 const GlobalClassNames = {
   root: 'ms-Slider',
@@ -27,7 +27,7 @@ const GlobalClassNames = {
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme, vertical, disabled, showTransitions, showValue, ranged } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   /** Tokens:
@@ -35,9 +35,9 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
    *   The word "inactive" in the token refers to the unselected section of the slider */
   const pressedActiveSectionColor = semanticColors.inputBackgroundCheckedHovered;
   const hoveredActiveSectionColor = semanticColors.inputBackgroundChecked;
-  const hoveredPressedinactiveSectionColor = semanticColors.inputPlaceholderBackgroundChecked;
-  const restActiveSectionColor = semanticColors.smallInputBorder;
-  const restInactiveSectionColor = semanticColors.disabledBorder;
+  const hoveredPressedinactiveSectionColor = palette.neutralSecondaryAlt;
+  const restActiveSectionColor = palette.neutralPrimary;
+  const restInactiveSectionColor = palette.neutralSecondaryAlt;
 
   const disabledActiveSectionColor = semanticColors.disabledText;
   const disabledInactiveSectionColor = semanticColors.disabledBackground;

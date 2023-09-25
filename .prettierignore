@@ -1,59 +1,45 @@
 # generated or imported files
-.git
 package-deps.json
 CHANGELOG.*
-fabric-icons-*
 version.ts
-dndSim.js
-packages/monaco-editor/esm
-monaco-typescript.d.ts
 *.api.md
 api-report.md
 *.scss.ts
 _*.scss
 yarn.lock
 
-# folders of generated files
-lib
+# generated folders
+node_modules
+# looks like prettier doesn't process this file as advertised
+**/lib/**
+!tools/**/lib/**
 lib-amd
 lib-esm
 lib-commonjs
 dist
-node_modules
+temp
 common/changes
 common/scripts
 coverage
 etc
 change
 __snapshots__
+.yarn/
 
 # package specific files
+apps/vr-tests/dndSim.js
+packages/monaco-editor/esm
+packages/font-icons-mdl2/**/fabric-icons-*
+packages/fluentui/**/componentInfo
+packages/fluentui/docs/src/behaviorMenu.json
+packages/fluentui/docs/src/exampleMenus
+packages/fluentui/docs/src/exampleSources
+packages/fluentui/ability-attributes/src/schema.ts
 packages/web-components/src/**/*.styles.ts
 packages/web-components/**/*.spec.ts
 packages/web-components/src/default-palette.ts
 
-# no supported formatter/formatting not relevant
-CODEOWNERS
-LICENSE
-gitignore
-.browserslistrc
-.eslintcache
-.eslintignore
-.gitattributes
-.gitignore
-.npm*
-.prettierignore
-*.ejs
-*.ico
-*.jpg
-*.log
-*.png
-*.sh
-*.svg
-*.txt
-.gitkeep
-*__tmpl__
-*__template__
-
 # template files which actually follow a different language's formatting
 *.hbs
+
+CODEOWNERS

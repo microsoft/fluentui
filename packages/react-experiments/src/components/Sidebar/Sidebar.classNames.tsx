@@ -4,7 +4,7 @@
 
 import { mergeStyleSets } from '@fluentui/react/lib/Styling';
 import { memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { ISidebarStyles } from './Sidebar.types';
+import type { ISidebarStyles } from './Sidebar.types';
 
 export interface ISidebarClassNames {
   root?: string;

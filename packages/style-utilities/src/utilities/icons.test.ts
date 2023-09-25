@@ -1,4 +1,5 @@
-import { registerIcons, unregisterIcons, registerIconAlias, getIcon, IIconSubset } from './icons';
+import { registerIcons, unregisterIcons, registerIconAlias, getIcon } from './icons';
+import type { IIconSubset } from './icons';
 
 const fakeIconList = ['FakeIcon1', 'FakeIcon2', 'FakeIcon3', 'FakeIcon4'];
 const fakeIconSubSet: IIconSubset = {

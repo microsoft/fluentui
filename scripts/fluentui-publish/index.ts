@@ -3,9 +3,9 @@ import * as path from 'path';
 import * as fs from 'fs';
 import { argv } from 'yargs';
 
-import { findGitRoot } from '../monorepo/index';
+import { findGitRoot, PackageJson } from '@fluentui/scripts-monorepo';
 
-export function fluentuiLernaPublish(bumpType, skipConfirm = false, npmTagForCanary = 'beta') {
+function fluentuiLernaPublish(bumpType: 'patch' | 'minor' | 'canary', skipConfirm = false, npmTagForCanary = 'beta') {
   const gitRoot = findGitRoot();
   const fluentRoot = path.resolve(gitRoot, 'packages', 'fluentui');
 
@@ -91,7 +91,7 @@ const execCommandSync = (cwd: string, command: string, args: string[]) => {
   return result.stdout;
 };
 
-export function fluentuiPostPublishValidation() {
+function fluentuiPostPublishValidation() {
   const gitRoot = findGitRoot();
 
   const branch = execCommandSync(gitRoot, 'git', ['branch', '--show-current']);
@@ -99,7 +99,7 @@ export function fluentuiPostPublishValidation() {
   execCommandSync(gitRoot, 'git', ['reset', '--hard', `origin/${branch}`]); // sometimes lerna add gitHead in package.json after release
 
   // sync fluent version
-  execCommandSync(gitRoot, 'yarn', ['syncpack:fix']);
+  execCommandSync(gitRoot, 'yarn', ['syncpack fix-mismatches']);
   const gitStatus = execCommandSync(gitRoot, 'git', ['status', '--porcelain', `\\*package.json`]);
   if (gitStatus.length !== 0) {
     execCommandSync(gitRoot, 'git', ['add', `\\*package.json`]);
@@ -108,23 +108,23 @@ export function fluentuiPostPublishValidation() {
   }
 
   // make sure there's no more than one fluent versions
-  execCommandSync(gitRoot, 'yarn', ['syncpack:list']);
+  execCommandSync(gitRoot, 'yarn', ['syncpack', 'list-mismatches']);
 }
 
 // pack all public fluent ui packages, used by ci to store nightly built artifacts
-export function packFluentTarballs() {
+function packFluentTarballs() {
   const gitRoot = findGitRoot();
   const fluentRoot = path.resolve(findGitRoot(), 'packages', 'fluentui');
 
   const TODAY = new Date().toISOString().split('T')[0]; // yyyy-mm-dd
 
-  const fluentPackages = JSON.parse(
+  const fluentPackages: Array<{ name: string; private?: boolean; location: string }> = JSON.parse(
     execCommandSync(fluentRoot, '../../node_modules/.bin/lerna', ['ls', '--json']).toString(),
   );
   const fluentPackagesNames = fluentPackages.map(pkg => pkg.name);
 
-  const replaceDepVersionWithNightlyUrl = packageLocation => {
-    const packageJson = require(`${packageLocation}/package.json`);
+  const replaceDepVersionWithNightlyUrl = (packageLocation: string) => {
+    const packageJson: PackageJson = require(`${packageLocation}/package.json`);
     packageJson.version = `0.0.0-nightly+${TODAY}`;
     const dependencies = packageJson.dependencies || {};
 
@@ -161,9 +161,12 @@ export function packFluentTarballs() {
   execCommandSync(gitRoot, 'git', ['checkout', '-f']);
 }
 
+/**
+ * publish CLI for @fluentui/react-northstar
+ */
 function run() {
   const task = argv._[0];
-  const skipConfirm = !!argv['yes'];
+  const skipConfirm = !!argv.yes;
   const tag = argv['dist-tag'] as string;
 
   switch (task) {

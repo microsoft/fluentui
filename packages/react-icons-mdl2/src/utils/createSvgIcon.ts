@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { css, getNativeProps, htmlElementProperties } from '@fluentui/utilities';
 import * as classes from './SvgIcon.scss';
-import { ISvgIconProps } from './SvgIcon.types';
-import { SvgIconCreateFnParams } from './types';
 import { useIconSubset } from '@fluentui/react-icon-provider';
+import type { ISvgIconProps } from './SvgIcon.types';
+import type { SvgIconCreateFnParams } from './types';
 
 const createSvgIcon = <TProps = {}>({ svg, displayName }: SvgIconCreateFnParams<TProps>) => {
   const Component: React.FC<React.HTMLAttributes<HTMLSpanElement> & TProps & ISvgIconProps> = props => {

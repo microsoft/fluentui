@@ -1,15 +1,15 @@
-import { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
 import {
   normalize,
   FontSizes,
   FontWeights,
   getFocusStyle,
-  IRawStyle,
   AnimationStyles,
   HighContrastSelector,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
+import type { ICalendarPickerStyleProps, ICalendarPickerStyles } from './CalendarPicker.types';
+import type { IRawStyle } from '@fluentui/style-utilities';
 
 export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyles => {
   const {
@@ -56,6 +56,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         fontWeight: FontWeights.semibold,
         fontFamily: 'inherit',
         textAlign: 'left',
+        color: 'inherit',
         backgroundColor: 'transparent',
         flexGrow: 1,
         padding: '0 4px 0 10px',
@@ -230,6 +231,10 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         '&, &:disabled, & button': {
           color: palette.neutralTertiaryAlt,
           pointerEvents: 'none',
+        },
+        [HighContrastSelector]: {
+          color: 'GrayText',
+          forcedColorAdjust: 'none',
         },
       },
     },

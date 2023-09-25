@@ -14,7 +14,7 @@ variables:
 
   - template: .devops/templates/variables.yml
 
-pool: 'Self Host Ubuntu'
+pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: BuildTestLint
@@ -26,36 +26,46 @@ jobs:
       - task: Bash@3
         inputs:
           filePath: yarn-ci.sh
-        displayName: yarn
+        displayName: yarn (install packages)
 
       - script: |
-          yarn checkchange
-        displayName: check change
+          yarn nx run @fluentui/workspace-plugin:check-graph
+          yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
+          yarn nx g @fluentui/workspace-plugin:normalize-package-dependencies --verify
+
+        displayName: Workspace lint
 
       - script: |
-          yarn nx workspace-lint
-        displayName: nx:workspace-lint
+          # @fluentui/api-docs is used within apps/public-docsite-resources/just.config.ts, thus it needs to be build in advance
+          yarn workspace @fluentui/api-docs build
+          # @fluentui/digest is used within packages/fluentui/perf-test-northstar/just.config.ts, thus it needs to be build in advance
+          yarn workspace @fluentui/digest build
+          yarn tsc -p ./tsconfig.json
+        displayName: Type-check just.config.ts files
 
-      # TODO: re-enable after web-components updates prettier
-      # - script: |
-      #     if [[ -n "$(targetBranch)" ]]; then
-      #       yarn format --since $(targetBranch) --check
-      #     else
-      #       yarn format --all --check
-      #     fi
-      #   displayName: check formatting
+      - script: |
+          yarn check:installed-dependencies-versions
+        displayName: 'check packages: installed dependencies versions'
+
+      - script: |
+          if [[ -n "$(targetBranch)" ]]; then
+            yarn format --since $(targetBranch) --check
+          else
+            yarn format --all --check
+          fi
+        displayName: check formatting
 
       ## Danger.js checks for Fluent UI N*
       - script: |
-          yarn danger ci
+          DANGER_DISABLE_TRANSPILATION="true" yarn danger ci
         displayName: danger
         condition: eq(variables.isPR, true)
         env:
           DANGER_GITHUB_API_TOKEN: $(DANGER_GITHUB_API_TOKEN)
 
       - script: |
-          yarn buildci --no-cache $(sinceArg)
-        displayName: build, test, lint
+          yarn buildci $(sinceArg)
+        displayName: build, test, lint, test-ssr
 
       - template: .devops/templates/cleanup.yml
 
@@ -73,13 +83,34 @@ jobs:
 
       # this also builds FUI N* docs if appropriate
       - script: |
-          yarn bundle --no-cache $(sinceArg)
+          yarn bundle  $(sinceArg)
         displayName: bundle
+
+      - script: |
+          yarn lage build-storybook  --verbose $(sinceArg)
+        displayName: build Storybooks
 
       ## This runs regardless of scope, the app will adapt to the scope as well
       - script: |
           yarn workspace @fluentui/pr-deploy-site generate:site
         displayName: generate PR Deploy Site
+
+      - bash: |
+          mkdir -p apps/pr-deploy-site/sbom
+        displayName: 📒 Create dir for manifest Deploy-Site
+
+      - task: ManifestGeneratorTask@0
+        displayName: 📒 Generate Manifest Deploy-Site
+        inputs:
+          BuildDropPath: apps/pr-deploy-site/dist
+          ManifestDirPath: 'apps/pr-deploy-site/sbom'
+          Verbosity: Verbose
+
+      - task: PublishPipelineArtifact@1
+        displayName: 📒 Publish Manifest Deploy-Site
+        inputs:
+          artifactName: SBom-Deploy-Site-$(System.JobAttempt)
+          targetPath: apps/pr-deploy-site/sbom
 
       - task: AzureUpload@2
         displayName: Upload PR deploy site
@@ -100,68 +131,8 @@ jobs:
           # This MUST have a trailing slash, or the links to PR deploy site assets won't work
           githubTargetLink: $(deployUrl)/
 
-      # only run e2e tests when converged storybook is published by scoping to the converged suite package
       - script: |
-          yarn e2e $(sinceArg) --scope @fluentui/react-components
+          yarn e2e $(sinceArg)
         displayName: Cypress E2E tests
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: ScreenerNorthstar
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: |
-          yarn workspace @fluentui/docs vr:build
-        displayName: build FUI N* VR Test
-        env:
-          SCREENER_BUILD: 1
-
-      - task: AzureUpload@2
-        displayName: Upload N* VR test site
-        inputs:
-          azureSubscription: $(azureSubscription)
-          BlobPrefix: $(deployBasePath)/react-northstar-screener
-          CacheControl: 'public, max-age=600000'
-          ContainerName: '$web'
-          SourcePath: 'packages/fluentui/docs/dist'
-          storage: $(azureStorage)
-
-      - script: yarn workspace @fluentui/docs vr:test
-        displayName: start FUI N* VR Test
-        env:
-          SCREENER_ENDPOINT: $(screenerApiUri)
-          SCREENER_PROXY_ENDPOINT: $(screenerProxyUri)
-          SCREENER_API_KEY: $(screener.key)
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: Screener
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: |
-          yarn build --to @fluentui/babel-make-styles --verbose --no-cache
-        displayName: build Babel plugin
-
-      - script: |
-          yarn lage screener --to vr-tests --debug --verbose --no-cache
-        displayName: run VR Test
-        env:
-          SCREENER_API_KEY: $(screener.key)
 
       - template: .devops/templates/cleanup.yml

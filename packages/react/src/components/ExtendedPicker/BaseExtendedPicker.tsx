@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { KeyCodes, css, initializeComponentRef } from '../../Utilities';
 import { Autofill } from '../../Autofill';
-import { IInputProps } from '../../Pickers';
 import * as stylesImport from './BaseExtendedPicker.scss';
-import { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
-import { IBaseFloatingPickerProps, BaseFloatingPicker } from '../../FloatingPicker';
-import { BaseSelectedItemsList, IBaseSelectedItemsListProps } from '../../SelectedItemsList';
+import { BaseFloatingPicker } from '../../FloatingPicker';
+import { BaseSelectedItemsList } from '../../SelectedItemsList';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Selection, SelectionMode, SelectionZone } from '../../Selection';
+import type { IInputProps } from '../../Pickers';
+import type { IBaseExtendedPickerProps, IBaseExtendedPicker } from './BaseExtendedPicker.types';
+import type { IBaseFloatingPickerProps } from '../../FloatingPicker';
+import type { IBaseSelectedItemsListProps } from '../../SelectedItemsList';
 
 const styles: any = stylesImport;
 
@@ -17,7 +19,8 @@ export interface IBaseExtendedPickerState<T> {
 
 export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
   extends React.Component<P, IBaseExtendedPickerState<T>>
-  implements IBaseExtendedPicker<T> {
+  implements IBaseExtendedPicker<T>
+{
   public floatingPicker = React.createRef<BaseFloatingPicker<T, IBaseFloatingPickerProps<T>>>();
   public selectedItemsList = React.createRef<BaseSelectedItemsList<T, IBaseSelectedItemsListProps<T>>>();
 
@@ -199,7 +202,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>>
       if (
         this.input.current &&
         !this.input.current.isValueSelected &&
-        this.input.current.inputElement === document.activeElement &&
+        this.input.current.inputElement === ev.currentTarget.ownerDocument.activeElement &&
         (this.input.current as Autofill).cursorLocation === 0
       ) {
         if (this.floatingPicker.current) {

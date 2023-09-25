@@ -1,4 +1,4 @@
-import { IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
+import type { IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
 
 export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => {
   const { className, theme, alphaType } = props;
@@ -55,6 +55,7 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         height: 48,
         margin: '0 0 0 8px',
         border: '1px solid #c8c6c4',
+        forcedColorAdjust: 'none',
       },
     ],
     flexContainer: {

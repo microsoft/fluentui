@@ -16,7 +16,6 @@ import {
 import { RadioGroupItem, RadioGroupItemProps } from './RadioGroupItem';
 import { ComponentEventHandler, ShorthandCollection, FluentComponentStaticProps } from '../../types';
 import {
-  ComponentWithAs,
   useAutoControlled,
   useTelemetry,
   useFluentContext,
@@ -24,6 +23,7 @@ import {
   useUnhandledProps,
   useAccessibility,
   useStyles,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 
 export interface RadioGroupProps extends UIComponentProps, ChildrenComponentProps {
@@ -62,10 +62,7 @@ export type RadioGroupStylesProps = Required<Pick<RadioGroupProps, 'vertical'>>;
  * @accessibilityIssues
  * [JAWS narrates instruction message on each radio in radiogroup](https://github.com/FreedomScientific/VFO-standards-support/issues/473)
  */
-export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
-  FluentComponentStaticProps<RadioGroupProps> & {
-    Item: typeof RadioGroupItem;
-  } = props => {
+export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroup.displayName, context.telemetry);
   setStart();
@@ -197,6 +194,7 @@ export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...unhandledProps,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
       })}
@@ -207,7 +205,10 @@ export const RadioGroup: ComponentWithAs<'div', RadioGroupProps> &
 
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupProps> &
+  FluentComponentStaticProps<RadioGroupProps> & {
+    Item: typeof RadioGroupItem;
+  };
 
 RadioGroup.displayName = 'RadioGroup';
 

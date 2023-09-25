@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { DefaultButton } from '../DefaultButton/DefaultButton';
 import { customizable, nullRender } from '../../../Utilities';
-import { IButtonProps } from '../Button.types';
 import { getStyles } from './MessageBarButton.styles';
+import type { IButtonProps } from '../Button.types';
 
 /**
  * {@docCategory MessageBar}

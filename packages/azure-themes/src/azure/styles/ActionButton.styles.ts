@@ -16,19 +16,17 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
   return {
     root: {
       fontSize: theme.fonts.medium.fontSize,
+      height: StyleConstants.commandBarHeight,
       backgroundColor: semanticColors.buttonBackground,
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorder}`,
       color: semanticColors.buttonText,
       ...iconColor(extendedSemanticColors.iconButtonFill),
     },
     rootDisabled: {
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       color: semanticColors.primaryButtonTextDisabled,
       ...iconColor(semanticColors.primaryButtonTextDisabled),
     },
     rootHovered: {
-      border: `${StyleConstants.borderWidth} solid ${semanticColors.inputBorderHovered}`,
       backgroundColor: semanticColors.buttonBackgroundHovered,
       color: semanticColors.buttonTextHovered,
       selectors: {
@@ -38,7 +36,6 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       },
     },
     rootPressed: {
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.inputBorderPressed}`,
       backgroundColor: semanticColors.buttonBackgroundPressed,
       color: semanticColors.buttonTextPressed,
       selectors: {
@@ -46,6 +43,9 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
           ...iconColor(extendedSemanticColors.iconButtonFillHovered),
         },
       },
+    },
+    rootFocused: {
+      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.inputBorderPressed}`,
     },
     rootChecked: {
       border: `${StyleConstants.borderWidth} solid ${semanticColors.buttonTextPressed}`,

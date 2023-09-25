@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Customizations } from './Customizations';
-import { CustomizerContext, ICustomizerContext } from './CustomizerContext';
+import { CustomizerContext } from './CustomizerContext';
 import { mergeCustomizations } from './mergeCustomizations';
-import { ICustomizerProps } from './Customizer.types';
+import type { ICustomizerContext } from './CustomizerContext';
+import type { ICustomizerProps } from './Customizer.types';
 
 /**
  * The Customizer component allows for default props to be mixed into components which

@@ -1,5 +1,5 @@
-import { IDatePickerStrings } from './DatePicker.types';
 import { defaultCalendarStrings } from '../../Calendar';
+import type { IDatePickerStrings } from './DatePicker.types';
 
 export const defaultDatePickerStrings: IDatePickerStrings = {
   ...defaultCalendarStrings,

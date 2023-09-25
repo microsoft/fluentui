@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { Accessibility, PillGroupBehavior, PillGroupBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import {
   UIComponentProps,
@@ -33,7 +33,7 @@ export const pillGroupClassName = 'ui-pills';
 /**
  * A PillGroup can be used as container for Pill.
  */
-export const PillGroup: ComponentWithAs<'div', PillGroupProps> & FluentComponentStaticProps<PillGroupProps> = props => {
+export const PillGroup = React.forwardRef<HTMLDivElement, PillGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(PillGroup.displayName, context.telemetry);
   setStart();
@@ -66,6 +66,7 @@ export const PillGroup: ComponentWithAs<'div', PillGroupProps> & FluentComponent
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -77,7 +78,7 @@ export const PillGroup: ComponentWithAs<'div', PillGroupProps> & FluentComponent
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, PillGroupProps> & FluentComponentStaticProps<PillGroupProps>;
 
 PillGroup.displayName = 'PillGroup';
 

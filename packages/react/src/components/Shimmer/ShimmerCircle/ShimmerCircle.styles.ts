@@ -1,5 +1,6 @@
-import { IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
-import { getGlobalClassNames, HighContrastSelector, IRawStyle } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
+import type { IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
+import type { IRawStyle } from '../../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerCircle-root',

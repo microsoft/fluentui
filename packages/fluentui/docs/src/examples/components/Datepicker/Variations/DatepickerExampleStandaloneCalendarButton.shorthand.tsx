@@ -10,7 +10,7 @@ const DatepickerExampleStandaloneCalendarButton = () => {
       today={new Date(2020, 7, 30, 0, 0, 0, 0)}
       buttonOnly
       popup={{
-        trigger: <Button title="Open calendar" content="Click to Open " />,
+        trigger: <Button title="Click to Open" content="Click to Open" />,
       }}
     />
   );

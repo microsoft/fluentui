@@ -1,12 +1,12 @@
 import * as React from 'react';
-import {
+import type {
   IFloatingSuggestionOnRenderItemProps,
   IFloatingSuggestionItemProps,
   IFloatingSuggestionItem,
 } from '../FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IRenderFunction } from '@fluentui/utilities';
-import { IStyle } from '@fluentui/style-utilities';
-import { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import type { IRenderFunction } from '@fluentui/utilities';
+import type { IStyle } from '@fluentui/style-utilities';
+import type { IFloatingSuggestionsHeaderFooterProps } from '../FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
 
 export interface IFloatingSuggestionsListProps<T> {
   suggestionItems: IFloatingSuggestionItem<T>[];

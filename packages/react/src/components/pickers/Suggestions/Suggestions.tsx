@@ -1,28 +1,20 @@
 import * as React from 'react';
 
-import {
-  initializeComponentRef,
-  KeyCodes,
-  classNamesFunction,
-  IStyleFunctionOrObject,
-  css,
-  styled,
-} from '../../../Utilities';
-import { IProcessedStyleSet } from '../../../Styling';
-import { CommandButton, IButton } from '../../../Button';
-import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import { initializeComponentRef, KeyCodes, classNamesFunction, css, styled } from '../../../Utilities';
+import { CommandButton } from '../../../Button';
+import { Spinner } from '../../../Spinner';
 import { Announced } from '../../../Announced';
-import {
-  ISuggestionsProps,
-  SuggestionActionType,
-  ISuggestionsStyleProps,
-  ISuggestionsStyles,
-} from './Suggestions.types';
+import { SuggestionActionType } from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
-import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
-
 import * as stylesImport from './Suggestions.scss';
+import type { IStyleFunctionOrObject } from '../../../Utilities';
+import type { IProcessedStyleSet } from '../../../Styling';
+import type { IButton } from '../../../Button';
+import type { ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
+import type { ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
+import type { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+
 const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsStyleProps, ISuggestionsStyles>();
@@ -35,7 +27,9 @@ const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItem
   SuggestionsItem,
   suggestionsItemStyles,
   undefined,
-  { scope: 'SuggestionItem' },
+  {
+    scope: 'SuggestionItem',
+  },
 );
 
 /**
@@ -78,6 +72,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     const {
       forceResolveText,
       mostRecentlyUsedHeaderText,
+      searchForMoreIcon,
       searchForMoreText,
       className,
       moreSuggestionsAvailable,
@@ -98,6 +93,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       theme,
       styles,
       suggestionsListId,
+      suggestionsContainerAriaLabel,
     } = this.props;
 
     // TODO
@@ -146,10 +142,21 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     // TODO: cleanup after refactor of pickers to composition pattern and remove SASS support.
     const spinnerClassNameOrStyles = styles
       ? { styles: spinnerStyles }
-      : { className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner) };
+      : {
+          className: css('ms-Suggestions-spinner', legacyStyles.suggestionsSpinner),
+        };
 
     const noResults = () => {
-      return noResultsFoundText ? <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div> : null;
+      const defaultRender = () => {
+        return <div className={this._classNames.noSuggestions}>{noResultsFoundText}</div>;
+      };
+
+      return (
+        // This ID can be used by the parent to set aria-activedescendant to this
+        <div id="sug-noResultsFound" role="option">
+          {onRenderNoResultFound ? onRenderNoResultFound(undefined, defaultRender) : defaultRender()}
+        </div>
+      );
     };
 
     // MostRecently Used text should supercede the header text if it's there and available.
@@ -164,8 +171,6 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
     }
 
     const hasNoSuggestions = (!suggestions || !suggestions.length) && !isLoading;
-    const divProps: React.HtmlHTMLAttributes<HTMLDivElement> =
-      hasNoSuggestions || isLoading ? { role: 'dialog', id: suggestionsListId } : {};
 
     const forceResolveId =
       this.state.selectedActionType === SuggestionActionType.forceResolve ? 'sug-selectedAction' : undefined;
@@ -173,7 +178,12 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       this.state.selectedActionType === SuggestionActionType.searchMore ? 'sug-selectedAction' : undefined;
 
     return (
-      <div className={this._classNames.root} {...divProps}>
+      <div
+        className={this._classNames.root}
+        aria-label={suggestionsContainerAriaLabel || headerText}
+        id={suggestionsListId}
+        role="listbox"
+      >
         <Announced message={this._getAlertText()} aria-live="polite" />
 
         {headerText ? <div className={this._classNames.title}>{headerText}</div> : null}
@@ -188,25 +198,22 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
             {forceResolveText}
           </CommandButton>
         )}
-        {isLoading && <Spinner {...spinnerClassNameOrStyles} label={loadingText} />}
-        {hasNoSuggestions
-          ? onRenderNoResultFound
-            ? onRenderNoResultFound(undefined, noResults)
-            : noResults()
-          : this._renderSuggestions()}
+        {isLoading && <Spinner {...spinnerClassNameOrStyles} ariaLabel={loadingText} label={loadingText} />}
+        {hasNoSuggestions ? noResults() : this._renderSuggestions()}
         {searchForMoreText && moreSuggestionsAvailable && (
           <CommandButton
             componentRef={this._searchForMoreButton}
             className={this._classNames.searchForMoreButton}
-            iconProps={{ iconName: 'Search' }}
+            iconProps={searchForMoreIcon || { iconName: 'Search' }}
             id={searchForMoreId}
             onClick={this._getMoreResults}
             data-automationid={'sug-searchForMore'}
+            role={'option'}
           >
             {searchForMoreText}
           </CommandButton>
         )}
-        {isSearching ? <Spinner {...spinnerClassNameOrStyles} label={searchingText} /> : null}
+        {isSearching ? <Spinner {...spinnerClassNameOrStyles} ariaLabel={searchingText} label={searchingText} /> : null}
         {footerTitle && !moreSuggestionsAvailable && !isMostRecentlyUsedVisible && !isSearching ? (
           <div className={this._classNames.title}>{footerTitle(this.props)}</div>
         ) : null}
@@ -346,7 +353,16 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   }
 
   private _getAlertText = () => {
-    const { isLoading, isSearching, suggestions, suggestionsAvailableAlertText, noResultsFoundText } = this.props;
+    const {
+      isLoading,
+      isSearching,
+      suggestions,
+      suggestionsAvailableAlertText,
+      noResultsFoundText,
+      isExtendedLoading,
+      loadingText,
+    } = this.props;
+
     if (!isLoading && !isSearching) {
       if (suggestions.length > 0) {
         return suggestionsAvailableAlertText || '';
@@ -354,22 +370,20 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       if (noResultsFoundText) {
         return noResultsFoundText;
       }
+    } else if (isLoading && isExtendedLoading) {
+      return loadingText || '';
     }
     return '';
   };
 
   private _renderSuggestions(): JSX.Element | null {
     const {
-      isMostRecentlyUsedVisible,
-      mostRecentlyUsedHeaderText,
       onRenderSuggestion,
       removeSuggestionAriaLabel,
       suggestionsItemClassName,
       resultsMaximumNumber,
       showRemoveButtons,
-      suggestionsContainerAriaLabel,
-      suggestionsHeaderText,
-      suggestionsListId,
+      removeButtonIconProps,
     } = this.props;
 
     let { suggestions } = this.props;
@@ -396,20 +410,8 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
       return null;
     }
 
-    // MostRecently Used text should supercede the header text if it's there and available.
-    let headerText: string | undefined = suggestionsHeaderText;
-    if (isMostRecentlyUsedVisible && mostRecentlyUsedHeaderText) {
-      headerText = mostRecentlyUsedHeaderText;
-    }
-
     return (
-      <div
-        className={this._classNames.suggestionsContainer}
-        id={suggestionsListId}
-        ref={this._scrollContainer}
-        role="listbox"
-        aria-label={suggestionsContainerAriaLabel || headerText}
-      >
+      <div className={this._classNames.suggestionsContainer} ref={this._scrollContainer} role="presentation">
         {suggestions.map((suggestion, index) => (
           <div
             ref={suggestion.selected ? this._selectedElement : undefined}
@@ -425,6 +427,7 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
               removeButtonAriaLabel={removeSuggestionAriaLabel}
               onRemoveItem={this._onRemoveTypedSuggestionsItem(suggestion.item, index)}
               id={'sug-' + index}
+              removeButtonIconProps={removeButtonIconProps}
             />
           </div>
         ))}
@@ -435,6 +438,9 @@ export class Suggestions<T> extends React.Component<ISuggestionsProps<T>, ISugge
   private _getMoreResults = (): void => {
     if (this.props.onGetMoreResults) {
       this.props.onGetMoreResults();
+
+      // Reset selected action type as it will be of type SuggestionActionType.none after more results are gotten
+      this.setState({ selectedActionType: SuggestionActionType.none });
     }
   };
 

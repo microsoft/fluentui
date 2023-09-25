@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { ICalloutProps } from '@fluentui/react/lib/Callout';
-import { IStyle } from '@fluentui/style-utilities';
-import {
+import type { ICalloutProps } from '@fluentui/react/lib/Callout';
+import type { IStyle } from '@fluentui/style-utilities';
+import type {
   IFloatingSuggestionItemProps,
   IFloatingSuggestionOnRenderItemProps,
   IFloatingSuggestionItem,
 } from './FloatingSuggestionsItem/FloatingSuggestionsItem.types';
-import { IRenderFunction, IRefObject } from '@fluentui/utilities';
-import { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import type { IRenderFunction, IRefObject } from '@fluentui/utilities';
+import type { IFloatingSuggestionsHeaderFooterProps } from './FloatingSuggestionsHeaderFooterItem/FloatingSuggestionsHeaderFooterItem.types';
+import type { Target } from '@fluentui/react-hooks';
 
 /**
  * FloatingSuggestions component props
@@ -67,7 +68,7 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * Target element here callout should be mounted
    * Pass the element current value to position the callout
    */
-  targetElement: HTMLInputElement | undefined | null;
+  targetElement: HTMLInputElement | Target | undefined | null;
   /**
    * Callout width
    */
@@ -158,6 +159,12 @@ export interface IBaseFloatingSuggestionsProps<T> {
    * A callback for when the floating suggestions are hidden (on dismiss or selection)
    */
   onSuggestionsHidden?: () => void;
+
+  /**
+   * Gap space for the callout
+   * Will be set to 5 if this prop is not set
+   */
+  gapSpace?: number;
 }
 
 export interface IBaseFloatingPickerHeaderFooterProps {

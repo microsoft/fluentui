@@ -1,4 +1,4 @@
-import { FontWeightProperty } from 'csstype';
+import { Property } from 'csstype';
 import { ICSSInJSStyle, ComponentSlotStylesPrepared } from '@fluentui/styles';
 import { ReactionStylesProps, reactionSlotClassNames } from '../../../../components/Reaction/Reaction';
 import { pxToRem } from '../../../../utils';
@@ -19,7 +19,7 @@ export const reactionStyles: ComponentSlotStylesPrepared<ReactionStylesProps, Re
     ':hover': {
       color: v.meReacting ? v.meReactingColorHover : v.otherReactingColorHover,
       [contentClassNameSelector]: {
-        fontWeight: v.fontWeightHover as FontWeightProperty,
+        fontWeight: v.fontWeightHover as Property.FontWeight,
       },
     },
     position: 'relative',

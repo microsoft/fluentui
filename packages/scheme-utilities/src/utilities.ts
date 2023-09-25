@@ -1,5 +1,5 @@
-import { ITheme } from '@fluentui/theme';
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from './variants';
+import type { ITheme } from '@fluentui/theme';
 
 /**
  * Add all variants to provided theme as elements of the theme's scheme property.

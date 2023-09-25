@@ -1,10 +1,10 @@
 import { getRTL, getInitials } from '../../../Utilities';
 import { BaseFloatingPicker } from '../BaseFloatingPicker';
-import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.types';
 import { SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
-import { IPersonaProps } from '../../../Persona';
 import './PeoplePicker.scss';
-import { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../Pickers';
+import type { IBaseFloatingPickerProps } from '../BaseFloatingPicker.types';
+import type { IPersonaProps } from '../../../Persona';
+import type { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../Pickers';
 
 /**
  * {@docCategory FloatingPeoplePicker}
@@ -29,7 +29,7 @@ export function createItem(name: string, isValid: boolean): ISuggestionModel<IPe
     key: name,
     primaryText: name,
     imageInitials: '!',
-    isValid: isValid,
+    isValid,
   };
 
   if (!isValid) {

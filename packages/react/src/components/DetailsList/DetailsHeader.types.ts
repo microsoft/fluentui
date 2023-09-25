@@ -1,13 +1,15 @@
 import * as React from 'react';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { CollapseAllVisibility } from '../../GroupedList';
-import { ITheme, IStyle } from '../../Styling';
 import { DetailsHeaderBase } from './DetailsHeader.base';
-import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
-import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
-import { ISelection, SelectionMode } from '../../Selection';
-import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IDetailsColumnRenderTooltipProps } from './DetailsColumn.types';
+import { DetailsListLayoutMode, ColumnDragEndLocation } from './DetailsList.types';
+import { SelectionMode } from '../../Selection';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IColumn, IColumnReorderOptions } from './DetailsList.types';
+import type { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
+import type { ISelection } from '../../Selection';
+import type { IDetailsCheckboxProps } from './DetailsRowCheck.types';
+import type { IDetailsColumnRenderTooltipProps } from './DetailsColumn.types';
 
 /**
  * {@docCategory DetailsList}

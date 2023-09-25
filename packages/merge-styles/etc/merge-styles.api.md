@@ -51,6 +51,9 @@ export interface ICSPSettings {
 }
 
 // @public (undocumented)
+export type ICSSPixelUnitRule = string | number;
+
+// @public (undocumented)
 export type ICSSRule = 'initial' | 'inherit' | 'unset';
 
 // @public
@@ -75,7 +78,7 @@ export const InjectionMode: {
 };
 
 // @public (undocumented)
-export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
+export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
@@ -91,7 +94,6 @@ export interface IRawFontStyle {
     font?: ICSSRule | string;
     fontFamily?: ICSSRule | string;
     fontKerning?: ICSSRule | string;
-    // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
     fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
     fontSizeAdjust?: ICSSRule | 'none' | number | string;
@@ -241,6 +243,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     hyphenateLimitZone?: ICSSRule | string;
     hyphens?: ICSSRule | string;
     justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | string;
+    justifyItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | 'legacy' | 'legacy left' | 'legacy right' | 'legacy center' | string;
     justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right' | string;
     left?: ICSSRule | ICSSPixelUnitRule;
     letterSpacing?: ICSSRule | string;
@@ -250,7 +253,11 @@ export interface IRawStyleBase extends IRawFontStyle {
     listStylePosition?: ICSSRule | string;
     listStyleType?: ICSSRule | string;
     margin?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginBlockStart?: ICSSRule | ICSSPixelUnitRule;
     marginBottom?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+    marginInlineStart?: ICSSRule | ICSSPixelUnitRule;
     marginLeft?: ICSSRule | ICSSPixelUnitRule;
     marginRight?: ICSSRule | ICSSPixelUnitRule;
     marginTop?: ICSSRule | ICSSPixelUnitRule;
@@ -303,6 +310,9 @@ export interface IRawStyleBase extends IRawFontStyle {
     pauseBefore?: ICSSRule | string;
     perspective?: ICSSRule | string;
     perspectiveOrigin?: ICSSRule | string;
+    placeContent?: ICSSRule | 'normal' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch' | ICSSOverflowAndSelfPositionRule | string;
+    placeItems?: ICSSRule | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
+    placeSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | string;
     pointerEvents?: ICSSRule | string;
     position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
     quotes?: ICSSRule | string;
@@ -391,6 +401,20 @@ export interface IRawStyleBase extends IRawFontStyle {
 }
 
 // @public
+export interface ISerializedStylesheet {
+    // (undocumented)
+    classNameToArgs: Stylesheet['_classNameToArgs'];
+    // (undocumented)
+    counter: Stylesheet['_counter'];
+    // (undocumented)
+    keyToClassName: Stylesheet['_keyToClassName'];
+    // (undocumented)
+    preservedRules: Stylesheet['_preservedRules'];
+    // (undocumented)
+    rules: Stylesheet['_rules'];
+}
+
+// @public
 export type IStyle = IStyleBase | IStyleBaseArray;
 
 // @public (undocumented)
@@ -426,6 +450,7 @@ export interface IStyleSheetConfig {
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
     namespace?: string;
+    // @deprecated
     onInsertRule?: (rule: string) => void;
     rtl?: boolean;
 }
@@ -446,17 +471,17 @@ export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | fa
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
-    TStyleSet1 | false | null | undefined,
-    TStyleSet2 | false | null | undefined,
-    TStyleSet3 | false | null | undefined
+TStyleSet1 | false | null | undefined,
+TStyleSet2 | false | null | undefined,
+TStyleSet3 | false | null | undefined
 ], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
-    TStyleSet1 | false | null | undefined,
-    TStyleSet2 | false | null | undefined,
-    TStyleSet3 | false | null | undefined,
-    TStyleSet4 | false | null | undefined
+TStyleSet1 | false | null | undefined,
+TStyleSet2 | false | null | undefined,
+TStyleSet3 | false | null | undefined,
+TStyleSet4 | false | null | undefined
 ], options?: IStyleOptions): IProcessedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
@@ -487,7 +512,6 @@ export type ObjectOnly<TArg> = TArg extends {} ? TArg : {};
 //
 // @public @deprecated (undocumented)
 type Omit_2<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
-
 export { Omit_2 as Omit }
 
 // @public
@@ -495,7 +519,7 @@ export function setRTL(isRTL: boolean): void;
 
 // @public
 export class Stylesheet {
-    constructor(config?: IStyleSheetConfig);
+    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
@@ -507,13 +531,14 @@ export class Stylesheet {
     getRules(includePreservedRules?: boolean): string;
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
-    onReset(callback: () => void): void;
+    onInsertRule(callback: Function): Function;
+    onReset(callback: Function): Function;
     reset(): void;
     // (undocumented)
     resetKeys(): void;
+    serialize(): string;
     setConfig(config?: IStyleSheetConfig): void;
-    }
-
+}
 
 // Warnings were encountered during analysis:
 //

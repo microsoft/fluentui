@@ -1,6 +1,6 @@
-import { IRGB } from './interfaces';
 import { MAX_COLOR_ALPHA } from './consts';
 import { hsl2rgb } from './hsl2rgb';
+import type { IRGB } from './interfaces';
 
 /**
  * Converts a valid CSS color string to an RGB color.

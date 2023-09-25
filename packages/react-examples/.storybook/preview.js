@@ -2,102 +2,52 @@ import * as React from 'react';
 import { initializeIcons } from '@fluentui/font-icons-mdl2';
 import { configure, addParameters, addDecorator } from '@storybook/react';
 import 'cypress-storybook/react';
-import { withInfo } from '@storybook/addon-info';
 import { withPerformance } from 'storybook-addon-performance';
-import { withFluentProvider, withKeytipLayer, withStrictMode } from '@fluentui/storybook';
+import { withKeytipLayer, withStrictMode } from '@fluentui/storybook';
 
-/**
- * "PACKAGE_NAME" placeholder is being replaced by webpack loader - @link {./preview.loader}
- * @type {string}
- */
-const packageNamePlaceholder = 'PACKAGE_NAME';
-const storyOrder = [
-  'Concepts/Introduction',
-  'Concepts/Developer/Quick Start',
-  'Concepts/Developer/Styling Components',
-  'Concepts',
-  'Theme',
-  'Components',
-  'Migrations/Flex/Overview',
-];
+initializeIcons();
 
-addDecorator(withInfo);
+// This API is deprecated (in favor of `export const decorators = []`) but the new way appears not
+// to work when using the legacy configure() API
 addDecorator(withPerformance);
+addDecorator(withStrictMode);
 addDecorator(withKeytipLayer);
-addCustomDecorators();
 
+// This API is deprecated (in favor of `export const parameters = {}`) but same issue as above
 addParameters({
-  a11y: {
+  a11y: /** @type {import('@storybook/addon-a11y').A11yParameters} */ ({
     manual: true,
-  },
+  }),
 });
 
+// This API is deprecated and will no longer work in storybook 7 or with storyStoreV7.
+// https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-configure
+// The selective loading functionality currently implemented by preview-loader can be more easily
+// handled by just settings `stories: [/*glob*/]` in main.js, but it's unclear if a replacement is
+// available for transforming files before loading as stories.
 configure(loadStories, module);
 
-export const parameters = {
-  options: {
-    storySort: {
-      order: storyOrder,
-    },
-  },
-};
-
-// ================================
-//          Helpers
-// ================================
-
-/**
- * Add various storybook decorators narrowed by package name.
- *
- * NOTE:
- *  - this is a temporary workaround until we migrate to new storybook 6 APIs -> old `addDecorator` duplicates rendered decorators
- *  - source of this function is interpolated during runtime with webpack
- *
- */
-function addCustomDecorators() {
-  /**
-   * @type {Set<import('@storybook/react').DecoratorFn>}
-   */
-  const customDecorators = new Set();
-
-  if (['react-cards', 'react-checkbox', 'react-tabs', 'react-toggle'].includes(packageNamePlaceholder)) {
-    initializeIcons();
-    customDecorators.add(withStrictMode);
-  }
-
-  if (['react-button', 'react-components', 'react-tooltip'].includes(packageNamePlaceholder)) {
-    customDecorators.add(withFluentProvider).add(withStrictMode);
-  }
-
-  customDecorators.forEach(decorator => addDecorator(decorator));
-}
-
-/**
- *
- * @param {string} storyName
- */
-function getStoryOrder(storyName) {
-  for (let i = 0; i < storyOrder.length; i++) {
-    if (storyName.startsWith(storyOrder[i])) {
-      return i;
-    }
-  }
-  return storyOrder.length;
-}
+// ==========================================================
+//   Helpers for loading examples in component story format
+// ==========================================================
 
 /**
  * @typedef {{
  *   default: { title: string };
- *   [subStoryName: string]: React.FunctionComponent | { title: string };
- * }} Story
+ *   [storyName: string]: React.FunctionComponent | { title: string };
+ * }} StoryGroup - Group of stories for a particular component (follows component story format)
+ *
+ * @typedef {{
+ *   [exportName: string]: React.ComponentType;
+ * }} ExampleModule - A loaded `*.Example.tsx` or `*.stories.tsx` file, exporting an example component
  */
 
 /**
- * @typedef {{ [exportName: string]: React.ComponentType }} ComponentModule
+ * Read the `*.Example.tsx` and/or `*.stories.tsx` files for the current package `start-storybook`
+ * is running in and generate a list of stories in component story format.
  */
-
 function loadStories() {
-  /** @type {Map<string, Story>} */
+  /** @type {Map<string, StoryGroup>} */
   const stories = new Map();
 
   /** @type {__WebpackModuleApi.RequireContext[]} */
@@ -106,132 +56,70 @@ function loadStories() {
     require.context('../src/PACKAGE_NAME', true, /\.(Example|stories)\.tsx$/),
   ];
 
-  if (packageNamePlaceholder === 'react' || packageNamePlaceholder === 'react-components') {
-    // For suite package storybooks, also show the examples of re-exported component packages.
-    // preview-loader will replace REACT_ DEPS with the actual list.
-    contexts.push(
-      require.context('../src', true, /(REACT_DEPS|PACKAGE_NAME)\/\w+\/[\w.]+\.(Example|stories)\.(tsx|mdx)$/),
-    );
-  }
+  // This will be replaced with the actual package name by the custom webpack loader ./preview-loader.js
+  // (note: for some reason the replacement doesn't work if the const is outside the function)
+  const packageNamePlaceholder = /** @type {string} */ ('PACKAGE_NAME');
 
-  // @TODO
-  // - this is a temporary solution until all converged packages use new storybook configuration
-  // - after new config is in place remove this whole IF
-  if (packageNamePlaceholder === 'react-components') {
-    // include package collocated stories within react-components
-    contexts.push(require.context('../../', true, /(REACT_DEPS)\/src\/[\w./]+\.(Example|stories)\.(tsx|mdx)$/));
+  if (packageNamePlaceholder === 'react') {
+    // For @fluentui/react's storybook, also include examples from @fluentui/react-focus
+    contexts.push(require.context('../src/react-focus', true, /\.(Example|stories)\.tsx$/));
   }
 
   for (const req of contexts) {
     req.keys().forEach(key => {
-      generateStoriesFromExamples(key, stories, req);
+      generateStoriesForExampleFile(key, stories, req);
     });
   }
 
   // convert stories Set to array
-  const sorted = [...stories.values()].sort((s1, s2) => {
-    const order1 = getStoryOrder(s1.default.title);
-    const order2 = getStoryOrder(s2.default.title);
-    if (order1 < order2) {
-      // the lowest order goes first
-      return -1;
-    }
-    if (order1 > order2) {
-      return 1;
-    }
-    return s1.default.title > s2.default.title ? 1 : -1;
-  });
+  const sorted = [...stories.values()].sort((s1, s2) => (s1.default.title > s2.default.title ? 1 : -1));
+
   return sorted;
 }
 
 /**
+ * Generate stories (usually one story) for a `*.Example.tsx` or `*.stories.tsx` file
  * @param {string} key - key for the module in require.context (the relative path to the module
  * from the root path passed to require.context)
- * @param {Map<string, Story>} stories
+ * @param {Map<string, StoryGroup>} stories - mapping from component path (`Components/<ComponentName>`) to stories
  * @param {__WebpackModuleApi.RequireContext} req
  */
-function generateStoriesFromExamples(key, stories, req) {
-  // Depending on the starting point of the context, and the package layout, the key will be like one of these:
+function generateStoriesForExampleFile(key, stories, req) {
+  // The key will be like this:
   //   ./ComponentName/ComponentName.Something.Example.tsx
-  //   ./package-name/ComponentName/ComponentName.Something.Example.tsx
-  //   ./package-name/src/.../ComponentName.stories.tsx - @TODO remove this line after new storybook setup has been applied for all converged packages
-  const segments = key.split('/');
-
-  if (segments.length < 3) {
-    console.warn(`Invalid storybook context location found: key: ${key} | segments: ${segments}`);
+  // group 1: component name
+  const pathParts = key.match(/\/(\w+)\/[\w.]+$/);
+  if (!pathParts) {
+    console.error(`Invalid path found in storybook require.context: "${key}"`);
     return;
   }
 
-  const isCollocatedStory = segments.includes('src');
+  const componentName = pathParts[1];
+  const componentPath = `Components/${componentName}`;
 
-  if (key.endsWith('.mdx') || isCollocatedStory) {
-    // opt out of the custom naming for mdx and collocated, use meta information
-
-    const content = req(key);
-    if (content.default) {
-      stories.set(key, req(key));
-    } else {
-      console.warn(`No default export in ${key} - stories ignored`);
-    }
-    return;
-  }
-
-  const componentName = generateComponentName(segments);
-
-  if (!stories.has(componentName)) {
-    stories.set(componentName, {
+  if (!stories.has(componentPath)) {
+    stories.set(componentPath, {
+      // A default "export" with a title is required by component story format
       default: {
-        title: 'Components/' + componentName,
+        title: componentPath,
       },
     });
   }
 
-  const storyName = segments.slice(-1)[0].replace('.tsx', '').replace(/\./g, '_');
+  const storyGroup = /** @type {StoryGroup} */ (stories.get(componentPath));
+  const exampleModule = /** @type {(key: string) => ExampleModule} */ (req)(key);
 
-  const story = stories.get(componentName);
-  const exampleModule = /** @type {(key: string) => ComponentModule} */ (req)(key);
-
-  if (!story) {
-    console.warn(`No stories for component: ${componentName}`);
-    return;
-  }
-
-  for (let moduleExport of Object.keys(exampleModule)) {
-    const ExampleComponent = exampleModule[moduleExport];
-    const subStoryName = moduleExport || storyName;
+  for (const [exportName, ExampleComponent] of Object.entries(exampleModule)) {
+    const storyName = exportName.replace(componentName, '').replace(/Example$/, '');
 
     if (typeof ExampleComponent === 'function') {
       if (ExampleComponent.prototype.render) {
-        // class component
-        story[subStoryName] = () => React.createElement(ExampleComponent);
+        // class component -- make a wrapper function component
+        storyGroup[storyName] = () => React.createElement(ExampleComponent);
       } else {
         // function component
-        story[subStoryName] = /** @type {React.FunctionComponent} */ (ExampleComponent);
+        storyGroup[storyName] = /** @type {React.FunctionComponent} */ (ExampleComponent);
       }
     }
-  }
-
-  /**
-   *
-   * @param {string[]} segments
-   * @returns {string} component name
-   */
-  function generateComponentName(segments) {
-    /**
-     * ./ComponentName/ComponentName.Something.Example.tsx
-     */
-    const isReactExamplesStory = segments.length === 3;
-
-    if (isReactExamplesStory) {
-      // ./ComponentName/ComponentName.Something.Example.tsx
-      //  ↓↓↓
-      // [., ComponentName, ComponentName.Something.Example.tsx]
-      return segments[1];
-    }
-
-    // .package-name/ComponentName/ComponentName.Something.Example.tsx
-    //  ↓↓↓
-    // [., package-name, ComponentName, ComponentName.Something.Example.tsx]
-    return segments[2];
   }
 }

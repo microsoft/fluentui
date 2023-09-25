@@ -1,14 +1,17 @@
-import { IColumn } from './DetailsList.types';
-import { ICellStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { IDetailsListProps } from './DetailsList';
-import { IDetailsRowProps } from './DetailsRow';
+import type { IColumn } from './DetailsList.types';
+import type { ICellStyleProps, IDetailsRowStyles } from './DetailsRow.types';
+import type { IDetailsListProps } from './DetailsList';
+import type { IDetailsRowProps } from './DetailsRow';
 
 /**
  * Extended column render props.
  *
  * {@docCategory DetailsList}
  */
-export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn' | 'getCellValueKey'> &
+export type IOverrideColumnRenderProps = Pick<
+  IDetailsListProps,
+  'onRenderItemColumn' | 'getCellValueKey' | 'onRenderField'
+> &
   Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 /**
@@ -51,6 +54,11 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
       'isMultiline' | 'isRowHeader' | 'cell' | 'cellAnimation' | 'cellPadded' | 'cellUnpadded' | 'fields'
     >]: string;
   };
+
+  /**
+   * Whether or not the details row is in a selected state.
+   */
+  isSelected?: boolean;
 
   /**
    * Id for the current row's row-header

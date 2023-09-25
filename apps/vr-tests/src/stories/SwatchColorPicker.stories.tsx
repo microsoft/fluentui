@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { SwatchColorPicker, ISwatchColorPickerProps } from '@fluentui/react';
 
 const props: ISwatchColorPickerProps = {
@@ -15,10 +15,10 @@ const props: ISwatchColorPickerProps = {
   ],
 };
 storiesOf('SwatchColorPicker', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.testWrapper' })
         .executeScript(
           "document.getElementsByClassName('testWrapper')[0].classList.add('ms-Fabric--isFocusVisible')",
@@ -42,9 +42,9 @@ storiesOf('SwatchColorPicker', module)
         .end()}
     >
       {story()}
-    </Screener>
+    </StoryWright>
   ))
-  .addStory('Circle', () => <SwatchColorPicker {...props} />, { rtl: true })
+  .addStory('Circle', () => <SwatchColorPicker {...props} />, { includeRtl: true })
   .addStory('Circle over 24px size', () => (
     <SwatchColorPicker {...props} cellHeight={35} cellWidth={35} />
   ))

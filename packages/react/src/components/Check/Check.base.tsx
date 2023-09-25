@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { ICheckProps } from './Check.types';
 import { Icon, FontIcon } from '../../Icon';
 import { classNamesFunction } from '../../Utilities';
-import { ICheckStyleProps, ICheckStyles } from './Check.types';
+import type { ICheckProps, ICheckStyleProps, ICheckStyles } from './Check.types';
 
 const getClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
 

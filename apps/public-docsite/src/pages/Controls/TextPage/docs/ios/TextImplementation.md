@@ -4,7 +4,7 @@
 
 ### Source code
 
-[Label](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Controls/Label.swift)
+[Label](https://github.com/microsoft/fluentui-apple/blob/main/ios/FluentUI/Label/Label.swift)
 
 ### Sample code
 

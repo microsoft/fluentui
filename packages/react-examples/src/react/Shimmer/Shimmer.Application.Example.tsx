@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { createListItems, IExampleItem } from '@fluentui/example-data';
-import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from '@fluentui/react/lib/index';
+import { IColumn, buildColumns, SelectionMode, Toggle, IListProps } from '@fluentui/react';
 import { ShimmeredDetailsList } from '@fluentui/react/lib/ShimmeredDetailsList';
 import { useSetInterval, useConst } from '@fluentui/react-hooks';
 
@@ -50,7 +50,7 @@ const randomFileIcon = (): { docType: string; url: string } => {
   const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
   return {
     docType,
-    url: `https://static2.sharepointonline.com/files/fabric/assets/item-types/16/${docType}.svg`,
+    url: `https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/assets/item-types/16/${docType}.svg`,
   };
 };
 

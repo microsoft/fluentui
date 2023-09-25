@@ -1,19 +1,20 @@
 import { Accessibility, AccessibilityAttributes, imageBehavior, ImageBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useUnhandledProps,
   useAccessibility,
   useFluentContext,
   useStyles,
   useTelemetry,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
-import { UIComponentProps, commonPropTypes, createShorthandFactory, SizeValue } from '../../utils';
+import { UIComponentProps, commonPropTypes, createShorthandFactory } from '../../utils';
 import { FluentComponentStaticProps } from '../../types';
 import { imageClassName } from '../Image/Image';
+import { AvatarSizeValue } from './Avatar';
 
 export interface AvatarImageProps extends UIComponentProps, ImageBehaviorProps {
   /** Alternative text. */
@@ -37,7 +38,7 @@ export interface AvatarImageProps extends UIComponentProps, ImageBehaviorProps {
   src?: string;
 
   /** Size multiplier. */
-  size?: SizeValue;
+  size?: AvatarSizeValue;
 }
 
 export type AvatarImageStylesProps = Pick<AvatarImageProps, 'avatar' | 'circular' | 'fluid' | 'size'>;
@@ -46,8 +47,7 @@ export const avatarImageClassName = imageClassName;
 /**
  * An AvatarImage is a graphic representation used by Avatar.
  */
-export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
-  FluentComponentStaticProps<AvatarImageProps> = props => {
+export const AvatarImage = React.forwardRef<HTMLImageElement, AvatarImageProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarImage.displayName, context.telemetry);
   setStart();
@@ -94,12 +94,13 @@ export const AvatarImage: ComponentWithAs<'img', AvatarImageProps> &
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(AvatarImage.handledProps, props);
 
-  const result = <ElementType {...getA11Props('root', { className: classes.root, ...unhandledProps })} />;
+  const result = <ElementType {...getA11Props('root', { className: classes.root, ref, ...unhandledProps })} />;
 
   setEnd();
 
   return result;
-};
+}) as unknown as ForwardRefWithAs<'img', HTMLImageElement, AvatarImageProps> &
+  FluentComponentStaticProps<AvatarImageProps>;
 
 AvatarImage.displayName = 'AvatarImage';
 AvatarImage.defaultProps = {

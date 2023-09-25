@@ -1,15 +1,8 @@
-import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
-import { ICalloutContentStyleProps } from '../../Callout';
-import {
-  AnimationVariables,
-  FontWeights,
-  getFocusStyle,
-  getGlobalClassNames,
-  GlobalClassNames,
-  IStyle,
-  keyframes,
-} from '../../Styling';
+import { AnimationVariables, FontWeights, getFocusStyle, getGlobalClassNames, keyframes } from '../../Styling';
 import { memoizeFunction } from '../../Utilities';
+import type { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from './TeachingBubble.types';
+import type { ICalloutContentStyleProps } from '../../Callout';
+import type { GlobalClassNames, IStyle } from '../../Styling';
 
 const globalClassNames = {
   root: 'ms-TeachingBubble',

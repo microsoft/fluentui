@@ -51,19 +51,19 @@ const themedExtraLargeStackTokens: IStackTokens = {
 
 export const HorizontalStackSpacingExample: React.FunctionComponent = () => {
   return (
-    <Stack tokens={sectionStackTokens}>
-      <Stack horizontal disableShrink horizontalAlign="space-between">
-        <Stack>
+    <Stack enableScopedSelectors tokens={sectionStackTokens}>
+      <Stack enableScopedSelectors horizontal disableShrink horizontalAlign="space-between">
+        <Stack enableScopedSelectors>
           <span>Numerical spacing</span>
-          <Stack horizontal styles={stackStyles} tokens={numericalSpacingStackTokens}>
+          <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={numericalSpacingStackTokens}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Custom spacing</span>
-          <Stack horizontal styles={stackStyles} tokens={customSpacingStackTokens}>
+          <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={customSpacingStackTokens}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
@@ -71,26 +71,26 @@ export const HorizontalStackSpacingExample: React.FunctionComponent = () => {
         </Stack>
       </Stack>
 
-      <Stack horizontal disableShrink horizontalAlign="space-between">
-        <Stack>
+      <Stack enableScopedSelectors horizontal disableShrink horizontalAlign="space-between">
+        <Stack enableScopedSelectors>
           <span>Themed spacing (extra small)</span>
-          <Stack horizontal styles={stackStyles} tokens={themedExtraSmallStackTokens}>
+          <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={themedExtraSmallStackTokens}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Themed spacing (small)</span>
-          <Stack horizontal styles={stackStyles} tokens={themedSmallStackTokens}>
+          <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={themedSmallStackTokens}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Themed spacing (medium)</span>
-          <Stack horizontal styles={stackStyles} tokens={themedMediumStackTokens}>
+          <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={themedMediumStackTokens}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
@@ -98,18 +98,18 @@ export const HorizontalStackSpacingExample: React.FunctionComponent = () => {
         </Stack>
       </Stack>
 
-      <Stack horizontal horizontalAlign="space-between">
-        <Stack>
+      <Stack enableScopedSelectors horizontal horizontalAlign="space-between">
+        <Stack enableScopedSelectors>
           <span>Themed spacing (large)</span>
-          <Stack horizontal styles={stackStyles} tokens={themedLargeStackTokens}>
+          <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={themedLargeStackTokens}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>
           </Stack>
         </Stack>
-        <Stack>
+        <Stack enableScopedSelectors>
           <span>Themed spacing (extra large)</span>
-          <Stack horizontal styles={stackStyles} tokens={themedExtraLargeStackTokens}>
+          <Stack enableScopedSelectors horizontal styles={stackStyles} tokens={themedExtraLargeStackTokens}>
             <span style={itemStyles}>1</span>
             <span style={itemStyles}>2</span>
             <span style={itemStyles}>3</span>

@@ -1,12 +1,12 @@
 import { Accessibility, treeBehavior, TreeBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   useTelemetry,
   useUnhandledProps,
   getElementType,
   useAccessibility,
   useStyles,
   useFluentContext,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -86,6 +86,8 @@ export interface TreeProps extends UIComponentProps, ChildrenComponentProps {
 
   /** Whether or not tree items are selectable. */
   selectable?: boolean;
+
+  unstyled?: boolean;
 }
 
 export const treeClassName = 'ui-tree';
@@ -103,12 +105,11 @@ export type TreeStylesProps = never;
  * [Aria compliant trees are read as empty tables](https://bugs.chromium.org/p/chromium/issues/detail?id=1048770)
  * [VoiceOver narrates "selected false" for DOM with role=option and no aria-selected attribute](http://www.openradar.me/FB8050959)
  * [VoiceOver does not support Aria 1.2 listbox role owning unselectable group role](http://www.openradar.me/FB8050958)
+ * [Tree as table in Mac > VoiceOver narrates " no selection " when user navigates to tree/table](https://bugs.chromium.org/p/chromium/issues/detail?id=1273538)
+ * [Tree as table in Mac > VoiceOver narrates " 0 items enclosed " when user navigates to expaded treeitem](https://bugs.chromium.org/p/chromium/issues/detail?id=1273540)
+ * [Tree as table in Mac > VoiceOver doesn't narrate aria-labelledby element on treeitem](https://bugs.chromium.org/p/chromium/issues/detail?id=1273544)
  */
-export const Tree: ComponentWithAs<'div', TreeProps> &
-  FluentComponentStaticProps<TreeProps> & {
-    Item: typeof TreeItem;
-    Title: typeof TreeTitle;
-  } = props => {
+export const Tree = React.forwardRef<HTMLDivElement, TreeProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Tree.displayName, context.telemetry);
   setStart();
@@ -135,6 +136,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
       variables,
     }),
     rtl: context.rtl,
+    unstyled: props.unstyled,
   });
 
   const {
@@ -197,6 +199,7 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
         <ElementType
           {...getA11yProps('root', {
             className: classes.root,
+            ref,
             ...rtlTextContainer.getAttributes({ forElements: [children] }),
             ...unhandledProps,
           })}
@@ -208,7 +211,11 @@ export const Tree: ComponentWithAs<'div', TreeProps> &
   );
   setEnd();
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TreeProps> &
+  FluentComponentStaticProps<TreeProps> & {
+    Item: typeof TreeItem;
+    Title: typeof TreeTitle;
+  };
 
 Tree.displayName = 'Tree';
 
@@ -222,6 +229,7 @@ Tree.propTypes = {
   defaultSelectedItemIds: customPropTypes.collectionShorthand,
   exclusive: PropTypes.bool,
   selectable: PropTypes.bool,
+  unstyled: PropTypes.bool,
   items: customPropTypes.collectionObjectShorthand,
   onActiveItemIdsChange: PropTypes.func,
   onSelectedItemIdsChange: PropTypes.func,

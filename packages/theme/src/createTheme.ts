@@ -3,8 +3,8 @@ import { DefaultEffects } from './effects/index';
 import { DefaultFontStyles } from './fonts/index';
 import { mergeThemes } from './mergeThemes';
 import { DefaultSpacing } from './spacing/index';
-import { PartialTheme, Theme } from './types/index';
 import { makeSemanticColors } from './utilities/makeSemanticColors';
+import type { PartialTheme, Theme } from './types/index';
 
 /**
  * Creates a custom theme definition.

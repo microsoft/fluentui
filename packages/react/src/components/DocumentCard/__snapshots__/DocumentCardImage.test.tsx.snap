@@ -49,7 +49,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
       onError={[Function]}
       onLoad={[Function]}
       role="presentation"
-      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview2.png"
+      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/document-preview2.png"
     />
   </div>
   <div

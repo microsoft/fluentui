@@ -21,9 +21,9 @@ import {
   FollowedSignal,
   NotFollowedSignal,
 } from '@fluentui/react-experiments';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/index';
+import { TestWrapperDecorator } from '../utilities/index';
 import { Fabric } from '@fluentui/react';
 
 interface ISignalExampleProps {
@@ -44,11 +44,11 @@ const SignalExample: React.FunctionComponent<ISignalExampleProps> = (
 };
 
 storiesOf('Signals', module)
-  .addDecorator(FabricDecorator)
+  .addDecorator(TestWrapperDecorator)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
-    </Screener>
+    </StoryWright>
   ))
   .addStory('You checked out', () => (
     <SignalExample name="You checked out" signal={<YouCheckedOutSignal />} />

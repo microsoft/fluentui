@@ -1,5 +1,12 @@
-import { getGlobalClassNames, getInputFocusStyle, hiddenContentStyle, HighContrastSelector } from '../../Styling';
-import { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import {
+  getGlobalClassNames,
+  getInputFocusStyle,
+  getPlaceholderStyles,
+  hiddenContentStyle,
+  HighContrastSelector,
+} from '../../Styling';
+import type { IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-BasePicker',
@@ -19,6 +26,29 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
+  // placeholder style constants
+  const placeholderStyles: IStyle = [
+    fonts.medium,
+    {
+      color: semanticColors.inputPlaceholderText,
+      opacity: 1,
+      selectors: {
+        [HighContrastSelector]: {
+          color: 'GrayText',
+        },
+      },
+    },
+  ];
+
+  const disabledPlaceholderStyles: IStyle = {
+    color: semanticColors.disabledText,
+    selectors: {
+      [HighContrastSelector]: {
+        color: 'GrayText',
+      },
+    },
+  };
+
   // The following lines are to create a semi-transparent color overlay for the disabled state with designer's approval.
   // @todo: investigate the performance cost of the calculation below and apply if negligible.
   //   Replacing with a static color for now.
@@ -27,7 +57,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   const disabledOverlayColor = 'rgba(218, 218, 218, 0.29)';
 
   return {
-    root: [classNames.root, className],
+    root: [classNames.root, className, { position: 'relative' }],
     text: [
       classNames.text,
       {
@@ -98,8 +128,13 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
           '::-ms-clear': {
             display: 'none',
           },
+          '&:placeholder-shown': {
+            textOverflow: 'ellipsis',
+          },
         },
       },
+      getPlaceholderStyles(placeholderStyles),
+      disabled && getPlaceholderStyles(disabledPlaceholderStyles),
       inputClassName,
     ],
     screenReaderText: hiddenContentStyle,

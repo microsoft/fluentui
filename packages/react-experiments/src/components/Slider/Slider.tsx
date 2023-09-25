@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { styled } from '../../Utilities';
-
-import { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
-
 import { SliderBase } from './Slider.base';
 import { getStyles } from './Slider.styles';
+import type { ISliderProps, ISliderStyleProps, ISliderStyles } from './Slider.types';
 
 /* eslint-disable deprecation/deprecation */
 

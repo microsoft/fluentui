@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { Customizations } from './Customizations';
 import { hoistStatics } from '../hoistStatics';
-import { CustomizerContext, ICustomizerContext } from './CustomizerContext';
+import { CustomizerContext } from './CustomizerContext';
 import { concatStyleSets } from '@fluentui/merge-styles';
+import type { ICustomizerContext } from './CustomizerContext';
 
 export function customizable(
   scope: string,

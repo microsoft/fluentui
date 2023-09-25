@@ -1,12 +1,12 @@
 import { Accessibility, GridBehaviorProps } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
   getElementType,
   useAccessibility,
   useStyles,
   useFluentContext,
   useTelemetry,
   useUnhandledProps,
+  ForwardRefWithAs,
 } from '@fluentui/react-bindings';
 import * as customPropTypes from '@fluentui/react-proptypes';
 import * as PropTypes from 'prop-types';
@@ -43,7 +43,7 @@ export type GridStylesProps = Pick<GridProps, 'columns' | 'rows'>;
 /**
  * A Grid is a layout component that harmonizes negative space, by controlling both the row and column alignment.
  */
-export const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProps<GridProps> = props => {
+export const Grid = React.forwardRef<HTMLDivElement, GridProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Grid.displayName, context.telemetry);
   setStart();
@@ -74,6 +74,7 @@ export const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProp
     <ElementType
       {...getA11yProps('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children, content] }),
         ...unhandledProps,
       })}
@@ -84,7 +85,7 @@ export const Grid: ComponentWithAs<'div', GridProps> & FluentComponentStaticProp
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, GridProps> & FluentComponentStaticProps<GridProps>;
 
 Grid.displayName = 'Grid';
 

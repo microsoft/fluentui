@@ -1,7 +1,6 @@
 import {
   DocExcerpt,
   DocInlineTag,
-  DocNodeKind,
   DocSection,
   DocComment,
   DocPlainText,
@@ -12,6 +11,7 @@ import {
   DocNodeContainer,
   DocCodeSpan,
   DocBlock,
+  DocNodeKind,
 } from '@microsoft/tsdoc';
 import { ApiItem, ApiModel, ExcerptToken, IExcerptTokenRange } from '@microsoft/api-extractor-model';
 import { ILinkToken } from './types';

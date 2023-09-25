@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Label renders a custom asterisk 1`] = `
+<body>
+  <div>
+    <label
+      class="fui-Label"
+      data-testid="label-id"
+    >
+      I'm a label
+      <span
+        aria-hidden="true"
+        class="fui-Label__required"
+      >
+        foo
+      </span>
+    </label>
+  </div>
+</body>
+`;
+
+exports[`Label renders a default state 1`] = `
+<div>
+  <label
+    class="fui-Label"
+  >
+    Default Label
+  </label>
+</div>
+`;

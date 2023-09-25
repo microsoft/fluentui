@@ -1,6 +1,6 @@
 import { FontSizes } from '@fluentui/react/lib/Styling';
 import { HighContrastSelector } from '@fluentui/react/lib/Styling';
-import { ISelectedPersonaStyleProps, ISelectedPersonaStyles } from './SelectedPersona.types';
+import type { ISelectedPersonaStyleProps, ISelectedPersonaStyles } from './SelectedPersona.types';
 
 export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaStyles => {
   const { theme: maybeTheme, isSelected, isValid, buttonSize } = props;

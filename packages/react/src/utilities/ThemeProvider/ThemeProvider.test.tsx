@@ -1,10 +1,12 @@
 import * as React from 'react';
+import * as ReactTestUtils from 'react-dom/test-utils';
 import { ThemeProvider } from './ThemeProvider';
 import * as renderer from 'react-test-renderer';
 import { useTheme } from './useTheme';
 import { mount } from 'enzyme';
-import { createTheme, Theme, PartialTheme } from '@fluentui/theme';
+import { createTheme } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
+import type { Theme, PartialTheme } from '@fluentui/theme';
 
 const lightTheme: PartialTheme = {
   semanticColors: {
@@ -64,7 +66,9 @@ describe('ThemeProvider', () => {
     expect(themeProvider1.getAttribute('dir')).toBe('ltr');
     expect(themeProvider2.getAttribute('dir')).toBe(null);
 
-    wrapper.unmount();
+    ReactTestUtils.act(() => {
+      wrapper.unmount();
+    });
   });
 
   it('renders a div with styling', () => {
@@ -131,7 +135,9 @@ describe('ThemeProvider', () => {
 
     expect(document.body).toMatchSnapshot();
 
-    wrapper.unmount();
+    ReactTestUtils.act(() => {
+      wrapper.unmount();
+    });
 
     expect(document.body.className).toBe('');
 

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../Utilities';
-import { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separator.types';
+import type { ISeparatorProps, ISeparatorStyles, ISeparatorStyleProps } from './Separator.types';
 
 const getClassNames = classNamesFunction<ISeparatorStyleProps, ISeparatorStyles>();
 
@@ -13,8 +13,8 @@ export const SeparatorBase: React.FunctionComponent<ISeparatorProps> = React.for
   const classNames = getClassNames(styles!, {
     theme: theme!,
     className,
-    alignContent: alignContent,
-    vertical: vertical,
+    alignContent,
+    vertical,
   });
 
   return (

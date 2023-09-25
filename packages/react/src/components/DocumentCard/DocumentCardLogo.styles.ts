@@ -1,5 +1,5 @@
 import { getGlobalClassNames } from '../../Styling';
-import { IDocumentCardLogoStyleProps, IDocumentCardLogoStyles } from './DocumentCardLogo.types';
+import type { IDocumentCardLogoStyleProps, IDocumentCardLogoStyles } from './DocumentCardLogo.types';
 
 const GlobalClassNames = {
   root: 'ms-DocumentCardLogo',

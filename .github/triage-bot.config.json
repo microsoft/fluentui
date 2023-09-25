@@ -1,0 +1,21 @@
+{
+  "$schema": "../scripts/triage-bot/triage-bot.schema.json",
+  "params": [
+    {
+      "keyword": "(@fluentui/react-northstar)",
+      "labels": ["Fluent UI react-northstar (v0)", "Needs: Triage :mag:"],
+      "assignees": []
+    },
+    { "keyword": "(@fluentui/react)", "labels": ["Fluent UI react (v8)", "Needs: Triage :mag:"], "assignees": [] },
+    {
+      "keyword": "(@fluentui/react-components)",
+      "labels": ["Fluent UI react-components (v9)", "Needs: Triage :mag:"],
+      "assignees": []
+    },
+    {
+      "keyword": "(@fluentui/web-components)",
+      "labels": ["web-components"],
+      "assignees": ["chrisdholt"]
+    }
+  ]
+}

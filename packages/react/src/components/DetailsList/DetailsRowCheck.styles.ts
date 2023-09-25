@@ -1,8 +1,8 @@
 import { getGlobalClassNames, getFocusStyle } from '../../Styling';
-import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 import { HEADER_HEIGHT } from './DetailsHeader.styles';
 import { CheckGlobalClassNames } from '../../components/Check/Check.styles';
+import type { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow-check',
@@ -12,7 +12,7 @@ const GlobalClassNames = {
 
 export const CHECK_CELL_WIDTH = 48;
 
-export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
+export const getDetailsRowCheckStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
   const { theme, className, isHeader, selected, anySelected, canSelect, compact, isVisible } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const { rowHeight, compactRowHeight } = DEFAULT_ROW_HEIGHTS;
@@ -41,7 +41,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         backgroundColor: 'transparent',
         border: 'none',
         opacity: isCheckVisible ? 1 : 0,
-        height: height,
+        height,
         width: CHECK_CELL_WIDTH,
         padding: 0,
         margin: 0,

@@ -3,6 +3,7 @@ import { TooltipContentStylesProps } from '../../../../components/Tooltip/Toolti
 import { TooltipContentVariables } from './tooltipContentVariables';
 import { getContainerStyles, getPointerStyles } from '../../getPointerStyles';
 import { pointerSvgUrl } from '../../pointerSvgUrl';
+import { pxToRem } from '../../../../utils';
 
 export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentStylesProps, TooltipContentVariables> = {
   root: ({ props: p, variables: v }): ICSSInJSStyle => ({
@@ -32,9 +33,9 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
     height: v.pointerHeight,
 
     ...getPointerStyles({
-      backgroundColor: v.backgroundColor,
+      backgroundColor: p.subtle ? v.subtleBackgroundColor : v.backgroundColor,
       borderSize: v.borderSize,
-      borderColor: 'transparent',
+      borderColor: p.subtle ? v.subtleBorderColor : v.borderColor,
       gap: v.pointerGap,
       padding: v.pointerMargin,
       height: v.pointerHeight,
@@ -42,18 +43,29 @@ export const tooltipContentStyles: ComponentSlotStylesPrepared<TooltipContentSty
 
       placement: p.basePlacement,
       rtl,
-      svg: pointerSvgUrl(v.backgroundColor),
+      svg: v.svgPointer ? pointerSvgUrl(p.subtle ? v.subtleBackgroundColor : v.backgroundColor) : undefined,
     }),
   }),
   content: ({ props: p, variables: v }): ICSSInJSStyle => ({
     display: 'block',
+    fontSize: pxToRem(12),
     padding: v.padding,
     textAlign: 'left',
-
+    lineHeight: pxToRem(16),
     color: v.color,
     background: v.backgroundColor,
     borderRadius: v.borderRadius,
+    borderStyle: v.borderStyle,
+    borderColor: v.borderColor,
     boxShadow: v.boxShadow,
+
+    ...(p.subtle && {
+      background: v.subtleBackgroundColor,
+      color: v.subtleForegroundColor,
+      borderStyle: 'solid',
+      borderWidth: v.borderSize,
+      borderColor: v.subtleBorderColor,
+    }),
 
     ...(p.pointing && {
       pointerEvents: 'all',

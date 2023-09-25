@@ -2,8 +2,11 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
+import { FocusRectsProvider, IsFocusVisibleClassName } from '../../Utilities';
 import { mount } from 'enzyme';
 import { safeCreate } from '@fluentui/test-utilities';
+import { render } from '@testing-library/react';
+import { PortalCompatContextProvider } from '@fluentui/react-portal-compat-context';
 
 const ReactDOM = require('react-dom');
 
@@ -208,5 +211,112 @@ describe('Layer', () => {
     targetContent.simulate('mouseleave', eventObject('mouseleave'));
 
     expect(stopPropagationCount).toEqual(0);
+  });
+
+  it('raises on onLayerDidMount when mounted', () => {
+    const onLayerDidMountSpy = jest.fn();
+
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const createPortal = ReactDOM.createPortal;
+
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>, component => {
+      expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
+      ReactDOM.createPortal = createPortal;
+    });
+  });
+
+  it('DOM is ready when onLayerDidMount raised', () => {
+    const onLayerDidMountSpy = jest.fn();
+
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const createPortal = ReactDOM.createPortal;
+
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(
+      <div>
+        <Layer onLayerDidMount={onLayerDidMountSpy}>
+          <button>Content</button>
+        </Layer>
+      </div>,
+      component => {
+        expect(component.root.findByType('button')).toBeDefined();
+        ReactDOM.createPortal = createPortal;
+      },
+    );
+  });
+
+  it('does not raise onLayerDidMount when unmounted', () => {
+    const onLayerDidMountSpy = jest.fn();
+
+    // Mock createPortal to capture its component hierarchy in snapshot output.
+    const createPortal = ReactDOM.createPortal;
+
+    ReactDOM.createPortal = jest.fn(element => element);
+
+    safeCreate(<Layer onLayerDidMount={onLayerDidMountSpy}>Content</Layer>, component => {
+      ReactDOM.createPortal = createPortal;
+    });
+
+    // The 1 time is for when it was mounted
+    expect(onLayerDidMountSpy).toHaveBeenCalledTimes(1);
+  });
+
+  it('sets focus visibility className from parent context', () => {
+    const parentFocusEl = document.createElement('div');
+    parentFocusEl.classList.add(IsFocusVisibleClassName);
+    const parentFocusRef = { current: parentFocusEl };
+    const FocusProviderTest = () => (
+      <div id="app">
+        <FocusRectsProvider providerRef={parentFocusRef}>
+          <div id="parent">
+            <Layer hostId="focusTest" fabricProps={{ className: 'innerFocusProvider' }}>
+              content
+            </Layer>
+          </div>
+        </FocusRectsProvider>
+        <LayerHost id="focusTest" />
+      </div>
+    );
+
+    const appElement = document.createElement('div');
+
+    try {
+      document.body.appendChild(appElement);
+
+      ReactTestUtils.act(() => {
+        ReactDOM.render(<FocusProviderTest />, appElement);
+      });
+
+      const focusProvider = appElement.querySelector('.innerFocusProvider');
+      expect(focusProvider).toBeTruthy();
+      expect(focusProvider?.classList.contains(IsFocusVisibleClassName)).toBeTruthy();
+    } finally {
+      ReactDOM.unmountComponentAtNode(appElement);
+      appElement.remove();
+    }
+  });
+
+  describe('compat', () => {
+    it('calls "register" from "react-portal-compat"', () => {
+      const unregister = jest.fn();
+      const register = jest.fn().mockImplementation(() => unregister);
+
+      const { unmount } = render(
+        <PortalCompatContextProvider value={register}>
+          <Layer>
+            <div id="sample" />
+          </Layer>
+        </PortalCompatContextProvider>,
+      );
+
+      expect(register).toHaveBeenCalledTimes(1);
+      expect(register).toHaveBeenCalledWith(expect.any(HTMLElement));
+
+      unmount();
+      expect(unregister).toHaveBeenCalledTimes(1);
+    });
   });
 });

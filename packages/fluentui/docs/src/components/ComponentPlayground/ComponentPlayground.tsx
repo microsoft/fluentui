@@ -15,7 +15,6 @@ const unsupportedComponents = [
   'Animation',
   'Box',
   'Carousel',
-  'Chat',
   'Dropdown',
   'Flex',
   'Form',
@@ -46,7 +45,7 @@ const ComponentPlayground: React.FunctionComponent<ComponentPlaygroundProps> = p
   if (playgroundPath) {
     const component: React.FC = examplePlaygroundContext(playgroundPath).default;
 
-    return <ComponentPlaygroundTemplate component={component} />;
+    return <ComponentPlaygroundTemplate component={component} fluid={props.componentName === 'Chat'} />;
   }
 
   // This is intentional, `playgroundPath` will not change during execution

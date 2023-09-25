@@ -1,6 +1,6 @@
 import { Accessibility } from '@fluentui/accessibility';
 import {
-  ComponentWithAs,
+  ForwardRefWithAs,
   getElementType,
   useAccessibility,
   useFluentContext,
@@ -22,8 +22,10 @@ import {
   UIComponentProps,
 } from '../../utils';
 import { Box, BoxProps } from '../Box/Box';
-import { ChatDensity, useChatDensityContext } from './chatDensityContext';
+import { useChatContextSelectors } from './chatContext';
+import { ChatDensity } from './chatDensity';
 import { ChatItemContextProvider } from './chatItemContext';
+import type { ChatMessageLayout } from './ChatMessage';
 
 export interface ChatItemSlotClassNames {
   message: string;
@@ -54,31 +56,45 @@ export interface ChatItemProps extends UIComponentProps, ChildrenComponentProps 
 
   /** Chat items can have a message. */
   message?: ShorthandValue<BoxProps>;
+
+  /** Chat items can render with different layouts. */
+  unstable_layout?: ChatMessageLayout;
 }
 
-export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density'>;
+export type ChatItemStylesProps = Pick<ChatItemProps, 'attached' | 'contentPosition' | 'density'> & {
+  layout: ChatMessageLayout;
+};
 
 /**
  * A ChatItem is container for single entity in Chat (e.g. message, notification, etc).
  */
-export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentStaticProps<ChatItemProps> = props => {
+export const ChatItem = React.forwardRef<HTMLLIElement, ChatItemProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatItem.displayName, context.telemetry);
   setStart();
 
-  const chatDensity = useChatDensityContext();
+  const chatProps = useChatContextSelectors({
+    density: v => v.density,
+    accessibility: v => v.behaviors.item,
+  });
+  const props = {
+    ...chatProps,
+    ...inputProps,
+  };
+
   const {
     accessibility,
     attached,
     children,
     className,
     contentPosition,
-    density = chatDensity,
+    density,
     design,
     gutter,
     message,
     styles,
     variables,
+    unstable_layout: layout = 'default',
   } = props;
 
   const getA11Props = useAccessibility(accessibility, {
@@ -88,6 +104,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
   const { classes, styles: resolvedStyles } = useStyles<ChatItemStylesProps>(ChatItem.displayName, {
     className: chatItemClassName,
     mapPropsToStyles: () => ({
+      layout,
       attached,
       contentPosition,
       density,
@@ -133,6 +150,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
     <ElementType
       {...getA11Props('root', {
         className: classes.root,
+        ref,
         ...rtlTextContainer.getAttributes({ forElements: [children] }),
         ...unhandledProps,
       })}
@@ -143,7 +161,7 @@ export const ChatItem: ComponentWithAs<'li', ChatItemProps> & FluentComponentSta
   setEnd();
 
   return element;
-};
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, ChatItemProps> & FluentComponentStaticProps<ChatItemProps>;
 
 ChatItem.displayName = 'ChatItem';
 
@@ -159,6 +177,7 @@ ChatItem.propTypes = {
   density: PropTypes.oneOf<ChatDensity>(['comfy', 'compact']),
   gutter: customPropTypes.itemShorthand,
   message: customPropTypes.itemShorthand,
+  unstable_layout: PropTypes.oneOf(['default', 'refresh']),
 };
 ChatItem.handledProps = Object.keys(ChatItem.propTypes) as any;
 

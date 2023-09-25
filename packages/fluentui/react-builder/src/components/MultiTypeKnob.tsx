@@ -11,11 +11,12 @@ export const MultiTypeKnob: React.FunctionComponent<{
   label: string;
   types: ('boolean' | 'number' | 'string' | 'literal')[];
   value: any;
+  onPropUpdate: (value: any) => void;
   onChange: (value: any) => void;
   onRemoveProp: () => void;
   options: string[];
   required: boolean;
-}> = ({ label, types, value, onChange, onRemoveProp, options, required }) => {
+}> = ({ label, types, value, onChange, onPropUpdate, onRemoveProp, options, required }) => {
   const defaultType = types[0];
   const [type, setType] = React.useState(defaultType);
 
@@ -41,7 +42,7 @@ export const MultiTypeKnob: React.FunctionComponent<{
           ))
         )}
       </div>
-      {knob && knob({ options, value, onChange, id: propId })}
+      {knob && knob({ options, value, onChange, onPropUpdate, id: propId })}
       {type === 'boolean' && <label htmlFor={propId}> {label}</label>}
       {!required && type === 'literal' && value && (
         <button
@@ -68,32 +69,41 @@ export const knobs = {
     <input id={id} type="checkbox" checked={!!value} onChange={e => onChange(!!e.target.checked)} />
   ),
 
-  number: ({ value, onChange, id }) => (
+  number: ({ value, onChange, onPropUpdate, id }) => (
     <input
       id={id}
       style={{ width: '100%' }}
       type="number"
       value={Number(value)}
       onChange={e => onChange(Number(e.target.value))}
+      onBlur={e => onPropUpdate(Number(e.target.value))}
     />
   ),
 
-  string: ({ value, onChange, id }) => (
-    <input id={id} style={{ width: '100%' }} value={String(value)} onChange={e => onChange(e.target.value)} />
+  string: ({ value, onChange, onPropUpdate, id }) => (
+    <input
+      id={id}
+      style={{ width: '100%' }}
+      value={String(value)}
+      onChange={e => onChange(e.target.value)}
+      onBlur={e => onPropUpdate(e.target.value)}
+    />
   ),
 
   literal: ({ options, value, onChange, id }) => (
     <select id={id} onChange={e => onChange(e.target.value)} value={value}>
-      {options?.map((
-        opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
-      ) => (
-        <option key={opt} value={opt}>
-          {opt}
-        </option>
-      ))}
+      {options?.map(
+        (
+          opt, // FIXME the optional is workaround for showing `Dialog` props when selected from component tree
+        ) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ),
+      )}
     </select>
   ),
 
-  ReactText: ({ value, onChange, id }) => knobs.string({ value, onChange, id }),
-  'React.ElementType': ({ value, onChange, id }) => knobs.string({ value, onChange, id }),
+  ReactText: ({ value, onChange, onPropUpdate, id }) => knobs.string({ value, onChange, onPropUpdate, id }),
+  'React.ElementType': ({ value, onChange, onPropUpdate, id }) => knobs.string({ value, onChange, onPropUpdate, id }),
 };

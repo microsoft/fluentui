@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IIconSubset } from '@fluentui/style-utilities';
-import { IconProviderProps } from './IconProvider.types';
+import type { IIconSubset } from '@fluentui/style-utilities';
+import type { IconProviderProps } from './IconProvider.types';
 
 /**
  * Context for providing the IconSubset.

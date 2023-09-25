@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "Button: Migrate to new dx",
-  "packageName": "@fluentui/react-button",
-  "email": "tristan.watanabe@gmail.com",
-  "dependentChangeType": "patch"
-}

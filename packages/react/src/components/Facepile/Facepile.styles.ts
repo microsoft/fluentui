@@ -1,6 +1,6 @@
-import { IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
-
-import { IStyle, hiddenContentStyle, HighContrastSelector, getFocusStyle, getGlobalClassNames } from '../../Styling';
+import { hiddenContentStyle, HighContrastSelector, getFocusStyle, getGlobalClassNames } from '../../Styling';
+import type { IFacepileStyleProps, IFacepileStyles } from './Facepile.types';
+import type { IStyle } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Facepile',

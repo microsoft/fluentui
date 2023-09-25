@@ -2,11 +2,40 @@
 
 exports[`PeoplePicker renders correctly 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -24,7 +53,6 @@ exports[`PeoplePicker renders correctly 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -44,7 +72,6 @@ exports[`PeoplePicker renders correctly 1`] = `
     >
       <input
         aria-autocomplete="both"
-        aria-controls=""
         aria-expanded={false}
         aria-haspopup="listbox"
         autoCapitalize="off"
@@ -73,6 +100,45 @@ exports[`PeoplePicker renders correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
+            &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
+            }
         data-lpignore={true}
         id="combobox-id__0"
         onBlur={[Function]}
@@ -100,11 +166,40 @@ exports[`PeoplePicker renders correctly 1`] = `
 
 exports[`PeoplePicker renders correctly with preselected items 1`] = `
 <div
-  className="ms-BasePicker"
+  className=
+      ms-BasePicker
+      {
+        position: relative;
+      }
   onBlur={[Function]}
+  onClick={[Function]}
   onFocus={[Function]}
   onKeyDown={[Function]}
 >
+  <div
+    aria-live="assertive"
+    className=
+
+        {
+          border: 0px;
+          height: 1px;
+          margin-bottom: -1px;
+          margin-left: -1px;
+          margin-right: -1px;
+          margin-top: -1px;
+          overflow: hidden;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+          position: absolute;
+          white-space: nowrap;
+          width: 1px;
+        }
+    id="selected-suggestion-alert-id__0"
+  >
+    
+  </div>
   <span
     hidden={true}
     id="selected-items-id__0-label"
@@ -122,7 +217,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
     role="presentation"
   >
     <div
-      aria-owns=""
       className=
           ms-BasePicker-text
           {
@@ -189,9 +283,11 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               &:hover {
                 background: #edebe9;
               }
-              @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+              @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                 border: 1px solid WindowText;
               }
+          data-selection-index={0}
+          onClick={[Function]}
           role="listitem"
         >
           <div
@@ -307,7 +403,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           }
                       onError={[Function]}
                       onLoad={[Function]}
-                      src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+                      src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-female.png"
                     />
                   </div>
                   <div
@@ -329,7 +425,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           top: auto;
                           width: 8px;
                         }
-                        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                           background-color: Highlight;
                           border-color: Window;
                         }
@@ -380,8 +476,27 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     Annie Lindqvist
+                    <div
+                      hidden={true}
+                      id="tooltip2"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Annie Lindqvist
+                    </div>
                   </div>
                 </div>
                 <div
@@ -409,8 +524,27 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     Designer
+                    <div
+                      hidden={true}
+                      id="tooltip3"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Designer
+                    </div>
                   </div>
                 </div>
                 <div
@@ -438,8 +572,27 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     In a meeting
+                    <div
+                      hidden={true}
+                      id="tooltip4"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      In a meeting
+                    </div>
                   </div>
                 </div>
                 <div
@@ -467,8 +620,27 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     onKeyDown={[Function]}
                     onMouseEnter={[Function]}
                     onMouseLeave={[Function]}
+                    role="none"
                   >
                     Available at 4:00pm
+                    <div
+                      hidden={true}
+                      id="tooltip5"
+                      style={
+                        Object {
+                          "border": 0,
+                          "height": 1,
+                          "margin": -1,
+                          "overflow": "hidden",
+                          "padding": 0,
+                          "position": "absolute",
+                          "whiteSpace": "nowrap",
+                          "width": 1,
+                        }
+                      }
+                    >
+                      Available at 4:00pm
+                    </div>
                   </div>
                 </div>
               </div>
@@ -520,14 +692,14 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   top: 2px;
                   z-index: 1;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
                   bottom: -2px;
                   left: -2px;
                   outline-color: ButtonText;
                   right: -2px;
                   top: -2px;
                 }
-                &:active > * {
+                &:active > span {
                   left: 0px;
                   position: relative;
                   top: 0px;
@@ -537,7 +709,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   background: #c8c6c4;
                   color: #201f1e;
                 }
-                @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                   border-color: Highlight;
                   color: Highlight;
                 }
@@ -546,7 +718,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   color: #005a9e;
                 }
             data-is-focusable={true}
-            data-selection-index={0}
             id="id__9"
             onClick={[Function]}
             onKeyDown={[Function]}
@@ -571,26 +742,36 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               <i
                 aria-hidden={true}
                 className=
+                    ms-Icon
                     ms-Button-icon
+                    {
+                      display: inline-block;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      display: inline-block;
-                      flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
-                      font-size: 12px;
                       font-style: normal;
                       font-weight: normal;
+                      speak: none;
+                    }
+                    {
+                      flex-shrink: 0;
+                      font-size: 12px;
                       height: 16px;
                       line-height: 16px;
                       margin-bottom: 0;
                       margin-left: 4px;
                       margin-right: 4px;
                       margin-top: 0;
-                      speak: none;
                       text-align: center;
                     }
                 data-icon-name="Cancel"
+                style={
+                  Object {
+                    "fontFamily": "\\"FabricMDL2Icons\\"",
+                  }
+                }
               >
                 
               </i>
@@ -600,7 +781,6 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
       </span>
       <input
         aria-autocomplete="both"
-        aria-controls=""
         aria-describedby="selected-items-id__0"
         aria-expanded={false}
         aria-haspopup="listbox"
@@ -629,6 +809,45 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             }
             &::-ms-clear {
               display: none;
+            }
+            &:placeholder-shown {
+              text-overflow: ellipsis;
+            }
+            &::placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::placeholder {
+              color: GrayText;
+            }
+            &:-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:-ms-input-placeholder {
+              color: GrayText;
+            }
+            &::-ms-input-placeholder {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              color: #605e5c;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&::-ms-input-placeholder {
+              color: GrayText;
             }
         data-lpignore={true}
         id="combobox-id__0"

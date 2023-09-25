@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { IRefObject, IRenderFunction, KeyCodes, IStyleFunctionOrObject } from '../../../Utilities';
-import { IPersonaProps } from '../../Persona/Persona.types';
-import { IStyle, ITheme } from '../../../Styling';
-import { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
-import { ISuggestionItemProps } from './SuggestionsItem.types';
-
+import { KeyCodes } from '../../../Utilities';
+import type { IReactProps, IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../../Utilities';
+import type { IPersonaProps } from '../../Persona/Persona.types';
+import type { IStyle, ITheme } from '../../../Styling';
+import type { ISpinnerStyleProps } from '../../Spinner/Spinner.types';
+import type { ISuggestionItemProps } from './SuggestionsItem.types';
+import { IIconProps } from '../../Icon/Icon.types';
 /**
  * Suggestions component.
  * {@docCategory Pickers}
@@ -38,8 +39,7 @@ export interface ISuggestions<T> {
  * Type T is the type of the items that are displayed.
  * {@docCategory Pickers}
  */
-// eslint-disable-next-line deprecation/deprecation
-export interface ISuggestionsProps<T> extends React.Props<any> {
+export interface ISuggestionsProps<T> extends IReactProps<any> {
   /**
    * Optional callback to access the ISuggestions interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -75,6 +75,11 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
    * The text that should appear at the top of the most recently used box.
    */
   mostRecentlyUsedHeaderText?: string;
+
+  /**
+   * The icon that appears indicating to the user that they can search for more results.
+   */
+  searchForMoreIcon?: IIconProps;
 
   /**
    * The text that appears indicating to the user that they can search for more results.
@@ -140,6 +145,11 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   isLoading?: boolean;
 
   /**
+   * Used to indicate whether or not the suggestions are taking an extended amount of time to load.
+   */
+  isExtendedLoading?: boolean;
+
+  /**
    * Used to indicate whether or not the component is searching for more results.
    */
   isSearching?: boolean;
@@ -179,11 +189,13 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 
   /**
    * A renderer that adds an element at the end of the suggestions list it has more items than resultsMaximumNumber.
+   * This should not include interactive elements as the footer is not focusable.
    */
   resultsFooterFull?: (props: ISuggestionsProps<T>) => JSX.Element;
 
   /**
    * A renderer that adds an element at the end of the suggestions list it has fewer items than resultsMaximumNumber.
+   * This should not include interactive elements as the footer is not focusable.
    */
   resultsFooter?: (props: ISuggestionsProps<T>) => JSX.Element;
 
@@ -223,6 +235,12 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;
+
+  /**
+   *  Props for the icon used in the item's remove button.
+   *  @defaultvalue `{ iconName:'Cancel' }`
+   */
+  removeButtonIconProps?: IIconProps;
 }
 
 /**

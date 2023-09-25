@@ -1,5 +1,6 @@
+import { SVGProps } from 'react';
 import { LegendShape } from '../components/Legends/Legends.types';
-
+import * as d3Sankey from 'd3-sankey';
 export interface IBasestate {
   _width?: number;
   _height?: number;
@@ -103,7 +104,7 @@ export interface IChartDataPoint {
   onClick?: VoidFunction;
 
   /**
-   * color for the legend in the chart
+   * Color for the legend in the chart. If not provided, it will fallback on the default color palette.
    */
   color?: string;
 
@@ -174,6 +175,57 @@ export interface IVerticalBarChartDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+}
+
+export interface IHorizontalBarChartWithAxisDataPoint {
+  /**
+   * Dependent value of the data point, rendered along the x-axis.
+   */
+  x: number;
+
+  /**
+   * Independent value of the data point, rendered along the y-axis.
+   * If y is a number, then each y-coordinate is plotted at its y-coordinate.
+   * If y is a string, then the data is evenly spaced along the y-axis.
+   */
+  y: number | string;
+
+  /**
+   * Legend text for the datapoint in the chart
+   */
+  legend?: string;
+
+  /**
+   * color for the legend in the chart
+   */
+  color?: string;
+
+  /**
+   * Callout data for x axis
+   * This is an optional prop, If haven;t given legend will take
+   */
+  xAxisCalloutData?: string;
+
+  /**
+   * Callout data for y axis
+   * This is an optional prop, If haven't given data will take
+   */
+  yAxisCalloutData?: string;
+
+  /**
+   * onClick action for each datapoint in the chart
+   */
+  onClick?: VoidFunction;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineDataInVerticalBarChart {
@@ -184,6 +236,11 @@ export interface ILineDataInVerticalBarChart {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 export interface ILineChartDataPoint {
@@ -218,6 +275,16 @@ export interface ILineChartDataPoint {
    * Whether to hide callout data for the point.
    */
   hideCallout?: boolean;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
+
+  /**
+   * X axis Accessibility data for callout
+   */
+  xAxisCalloutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineChartGap {
@@ -232,7 +299,7 @@ export interface ILineChartGap {
   endIndex: number;
 }
 
-export interface ILineChartLineOptions {
+export interface ILineChartLineOptions extends SVGProps<SVGPathElement> {
   /**
    * Width of the line/stroke.
    * Overrides the strokeWidth set on ICartesianChartProps level.
@@ -295,7 +362,12 @@ export interface ILineChartPoints {
   /**
    * color for the legend in the chart
    */
-  color: string;
+  color?: string;
+
+  /**
+   * opacity for chart fill color
+   */
+  opacity?: number;
 
   /**
    * options for the line drawn
@@ -342,7 +414,46 @@ export interface IChartProps {
    * data for the points in the line chart
    */
   lineChartData?: ILineChartPoints[];
+
+  /**
+   * data for the points in the line chart
+   */
+  SankeyChartData?: ISankeyChartData;
+
+  /**
+   * data for the points in the line chart
+   */
+  pointOptions?: SVGProps<SVGCircleElement>;
+
+  /**
+   * data for the dotted line on hovering the point
+   */
+  pointLineOptions?: SVGProps<SVGLineElement>;
 }
+
+export interface ISankeyChartData {
+  nodes: SNode[];
+  links: SLink[];
+}
+
+interface ISNodeExtra {
+  nodeId: number | string;
+  name: string;
+  color?: string;
+  borderColor?: string;
+  actualValue?: number;
+  layer?: number;
+}
+
+interface ISLinkExtra {
+  source: number;
+  target: number;
+  value: number;
+  unnormalizedValue?: number;
+}
+
+export type SNode = d3Sankey.SankeyNode<ISNodeExtra, ISLinkExtra>;
+export type SLink = d3Sankey.SankeyLink<ISNodeExtra, ISLinkExtra>;
 
 export interface IAccessibilityProps {
   /**
@@ -388,6 +499,11 @@ export interface IVSChartDataPoint {
    * This is an optional prop, If haven't given data will take
    */
   yAxisCalloutData?: string;
+
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IVerticalStackedChartProps {
@@ -410,6 +526,10 @@ export interface IVerticalStackedChartProps {
    * line data to render lines on stacked bar chart
    */
   lineData?: ILineDataInVerticalStackedBarChart[];
+  /**
+   * Accessibility data for Whole stack callout
+   */
+  stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface ILineDataInVerticalStackedBarChart {
@@ -421,6 +541,11 @@ export interface ILineDataInVerticalStackedBarChart {
    */
   data?: number;
   yAxisCalloutData?: string;
+  /**
+   * Whether to use the secondary y scale or not
+   * False by default.
+   */
+  useSecondaryYScale?: boolean;
 }
 
 export interface IGVBarChartSeriesPoint {
@@ -477,6 +602,11 @@ export interface IGroupedVerticalBarChartData {
    * Data points for Grouped vertical bar chart
    */
   series: IGVBarChartSeriesPoint[];
+
+  /**
+   * Accessibility data for Group Bars Stack Callout
+   */
+  stackCallOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IGVDataPoint {
@@ -524,6 +654,10 @@ export interface IHeatMapChartDataPoint {
    * onClick action for each datapoint in the chart
    */
   onClick?: VoidFunction;
+  /**
+   * Accessibility data for callout
+   */
+  callOutAccessibilityData?: IAccessibilityProps;
 }
 
 export interface IHeatMapChartData {

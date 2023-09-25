@@ -1,8 +1,8 @@
 import * as monaco from '@fluentui/monaco-editor';
 import * as React from 'react';
-import { IEditorProps } from './Editor.types';
 import { CODE_FONT_FAMILY, DEFAULT_WIDTH, DEFAULT_HEIGHT } from './consts';
-import { IMonacoTextModel } from '../interfaces/index';
+import type { IEditorProps } from './Editor.types';
+import type { IMonacoTextModel } from '../interfaces/index';
 
 /**
  * Language-agnostic wrapper for a Monaco editor instance.

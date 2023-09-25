@@ -1,5 +1,5 @@
-import { IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
 import { getGlobalClassNames } from '../../../Styling';
+import type { IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
 
 const GlobalClassNames = {
   root: 'ms-ShimmerElementsGroup-root',

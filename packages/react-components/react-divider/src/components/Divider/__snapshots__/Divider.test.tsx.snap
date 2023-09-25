@@ -1,0 +1,211 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Divider renders a brand appearance 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Brand
+  </div>
+</div>
+`;
+
+exports[`Divider renders a default divider 1`] = `
+<div
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a divider with a different color 1`] = `
+<div
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a divider with content 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Default Divider
+  </div>
+</div>
+`;
+
+exports[`Divider renders a divider with inset 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Inset
+  </div>
+</div>
+`;
+
+exports[`Divider renders a horizontal divider with a fixed width 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+  style={
+    Object {
+      "width": 100,
+    }
+  }
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    fixed 100px width
+  </div>
+</div>
+`;
+
+exports[`Divider renders a strong appearance 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Strong
+  </div>
+</div>
+`;
+
+exports[`Divider renders a subtle appearance 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Subtle
+  </div>
+</div>
+`;
+
+exports[`Divider renders a vertical divider 1`] = `
+<div
+  aria-orientation="vertical"
+  className="fui-Divider"
+  role="separator"
+/>
+`;
+
+exports[`Divider renders a vertical divider with a fixed height 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="vertical"
+  className="fui-Divider"
+  role="separator"
+  style={
+    Object {
+      "height": 100,
+    }
+  }
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    fixed 100px height
+  </div>
+</div>
+`;
+
+exports[`Divider renders a vertical divider with content 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="vertical"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Vertical
+  </div>
+</div>
+`;
+
+exports[`Divider renders content center aligned 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Center
+  </div>
+</div>
+`;
+
+exports[`Divider renders content end aligned 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    End
+  </div>
+</div>
+`;
+
+exports[`Divider renders content start aligned 1`] = `
+<div
+  aria-labelledby="divider-1"
+  aria-orientation="horizontal"
+  className="fui-Divider"
+  role="separator"
+>
+  <div
+    className="fui-Divider__wrapper"
+    id="divider-1"
+  >
+    Start
+  </div>
+</div>
+`;

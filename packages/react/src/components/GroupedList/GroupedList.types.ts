@@ -1,16 +1,16 @@
 import * as React from 'react';
 import { GroupedListBase } from './GroupedList.base';
-import { IList, IListProps } from '../../List';
-import { IFocusZoneProps } from '../../FocusZone';
-import { IRefObject, IRenderFunction } from '../../Utilities';
-import { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../DragDrop';
-import { ISelection, SelectionMode } from '../../Selection';
-import { IViewport } from '../../utilities/decorators/withViewport';
-import { ITheme, IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IGroupHeaderProps } from './GroupHeader.types';
-import { IGroupShowAllProps } from './GroupShowAll.types';
-import { IGroupFooterProps } from './GroupFooter.types';
+import { SelectionMode } from '../../Selection';
+import type { IList, IListProps } from '../../List';
+import type { IFocusZoneProps } from '../../FocusZone';
+import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import type { IDragDropContext, IDragDropEvents, IDragDropHelper } from '../../DragDrop';
+import type { ISelection } from '../../Selection';
+import type { IViewport } from '../../utilities/decorators/withViewport';
+import type { ITheme, IStyle } from '../../Styling';
+import type { IGroupHeaderProps } from './GroupHeader.types';
+import type { IGroupShowAllProps } from './GroupShowAll.types';
+import type { IGroupFooterProps } from './GroupFooter.types';
 
 /**
  * {@docCategory GroupedList}
@@ -283,10 +283,13 @@ export interface IGroupDividerProps {
   /** Defines the number of columns a group header needs to span in the case of a grid or treegrid */
   ariaColSpan?: number;
 
-  /** Defines the number of items in the current set of listitems or treeitems */
+  /** Defines an element's nesting depth in the current set of treeitems */
+  ariaLevel?: number;
+
+  /** Defines the number of items in the current set of treeitems */
   ariaSetSize?: number;
 
-  /** Defines an element's number or position in the current set of listitems or treeitems */
+  /** Defines an element's number or position in the current set of treeitems */
   ariaPosInSet?: number;
 
   /** Defines the number of items in the current set of grid items */
@@ -341,6 +344,8 @@ export interface IGroupDividerProps {
 
   /** Override which allows the caller to provider a custom renderer for the GroupHeader title. */
   onRenderTitle?: IRenderFunction<IGroupHeaderProps>;
+  /** Override which allows the caller to provide a custom renderer for just the name. */
+  onRenderName?: IRenderFunction<IGroupHeaderProps>;
 
   /** Props for expand/collapse button
    * @deprecated Use {@link IGroupHeaderProps.expandButtonProps} instead.

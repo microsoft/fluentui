@@ -1,17 +1,17 @@
-import { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
 import {
   FontSizes,
   FontWeights,
   getFocusStyle,
   getGlobalClassNames,
   AnimationStyles,
-  IRawStyle,
   keyframes,
   HighContrastSelector,
   getHighContrastNoAdjustStyle,
 } from '@fluentui/style-utilities';
 import { DateRangeType } from '@fluentui/date-time-utilities';
 import { AnimationDirection } from '../Calendar/Calendar.types';
+import type { ICalendarDayGridStyleProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
+import type { IRawStyle } from '@fluentui/style-utilities';
 
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
@@ -98,58 +98,69 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         width: 226,
       },
     ],
-    dayCell: {
-      margin: 0,
-      padding: 0,
-      width: 28,
-      height: 28,
-      lineHeight: 28,
-      fontSize: FontSizes.small,
-      fontWeight: FontWeights.regular,
-      color: palette.neutralPrimary,
-      cursor: 'pointer',
-      position: 'relative',
-      selectors: {
-        [HighContrastSelector]: {
-          color: 'WindowText',
-          backgroundColor: 'Window',
-          zIndex: 0,
-          ...getHighContrastNoAdjustStyle(),
-        },
-        ['&.' + classNames.hoverStyle]: {
-          backgroundColor: palette.neutralLighter,
-          selectors: {
-            [HighContrastSelector]: {
-              zIndex: 3,
-              backgroundColor: 'Window',
-              outline: '1px solid Highlight',
+    dayCell: [
+      getFocusStyle(theme, { inset: -3 }),
+      {
+        margin: 0,
+        padding: 0,
+        width: 28,
+        height: 28,
+        lineHeight: 28,
+        fontSize: FontSizes.small,
+        fontWeight: FontWeights.regular,
+        color: palette.neutralPrimary,
+        cursor: 'pointer',
+        position: 'relative',
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'WindowText',
+            backgroundColor: 'transparent',
+            zIndex: 0,
+            ...getHighContrastNoAdjustStyle(),
+          },
+          ['&.' + classNames.hoverStyle]: {
+            backgroundColor: palette.neutralLighter,
+            selectors: {
+              [HighContrastSelector]: {
+                zIndex: 3,
+                backgroundColor: 'Window',
+                outline: '1px solid Highlight',
+              },
             },
           },
-        },
-        ['&.' + classNames.pressedStyle]: {
-          backgroundColor: palette.neutralLight,
-          selectors: {
-            [HighContrastSelector]: {
-              borderColor: 'Highlight',
-              color: 'Highlight',
-              backgroundColor: 'Window',
+          ['&.' + classNames.pressedStyle]: {
+            backgroundColor: palette.neutralLight,
+            selectors: {
+              [HighContrastSelector]: {
+                borderColor: 'Highlight',
+                color: 'Highlight',
+                backgroundColor: 'Window',
+              },
             },
           },
-        },
-        ['&.' + classNames.pressedStyle + '.' + classNames.hoverStyle]: {
-          selectors: {
-            [HighContrastSelector]: {
-              backgroundColor: 'Window',
-              outline: '1px solid Highlight',
+          ['&.' + classNames.pressedStyle + '.' + classNames.hoverStyle]: {
+            selectors: {
+              [HighContrastSelector]: {
+                backgroundColor: 'Window',
+                outline: '1px solid Highlight',
+              },
             },
           },
         },
       },
-    },
+    ],
     daySelected: [
       dateRangeType !== DateRangeType.Month && {
         backgroundColor: palette.neutralLight + '!important',
         selectors: {
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            bottom: 0,
+            left: 0,
+            right: 0,
+          },
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
             backgroundColor: palette.neutralLight + '!important',
             [HighContrastSelector]: {
@@ -186,29 +197,26 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       color: palette.neutralSecondary,
       fontWeight: FontWeights.regular,
     },
-    dayButton: [
-      getFocusStyle(theme, { inset: -2 }),
-      {
-        width: 24,
-        height: 24,
-        lineHeight: 24,
-        fontSize: FontSizes.small,
-        fontWeight: 'inherit',
-        borderRadius: 2,
-        border: 'none',
-        padding: 0,
-        color: 'inherit',
-        backgroundColor: 'transparent',
-        cursor: 'pointer',
-        overflow: 'visible', // explicitly specify for IE11
-        selectors: {
-          span: {
-            height: 'inherit',
-            lineHeight: 'inherit',
-          },
+    dayButton: {
+      width: 24,
+      height: 24,
+      lineHeight: 24,
+      fontSize: FontSizes.small,
+      fontWeight: 'inherit',
+      borderRadius: 2,
+      border: 'none',
+      padding: 0,
+      color: 'inherit',
+      backgroundColor: 'transparent',
+      cursor: 'pointer',
+      overflow: 'visible', // explicitly specify for IE11
+      selectors: {
+        span: {
+          height: 'inherit',
+          lineHeight: 'inherit',
         },
       },
-    ],
+    },
     dayIsToday: {
       backgroundColor: palette.themePrimary + '!important',
       borderRadius: '100%',
@@ -285,6 +293,26 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     },
     bottomLeftCornerDate: {
       borderBottomLeftRadius: '2px',
+    },
+    datesAbove: {
+      '&::before': {
+        borderTop: `1px solid ${palette.neutralSecondary}`,
+      },
+    },
+    datesBelow: {
+      '&::before': {
+        borderBottom: `1px solid ${palette.neutralSecondary}`,
+      },
+    },
+    datesLeft: {
+      '&::before': {
+        borderLeft: `1px solid ${palette.neutralSecondary}`,
+      },
+    },
+    datesRight: {
+      '&::before': {
+        borderRight: `1px solid ${palette.neutralSecondary}`,
+      },
     },
   };
 };

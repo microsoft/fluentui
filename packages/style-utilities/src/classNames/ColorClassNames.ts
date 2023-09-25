@@ -1,6 +1,7 @@
-import { IRawStyle, mergeStyles } from '@fluentui/merge-styles';
+import { mergeStyles } from '@fluentui/merge-styles';
 import { DefaultPalette } from '../styles/DefaultPalette';
 import { getTheme } from '../styles/index';
+import type { IRawStyle } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory IColorClassNames}

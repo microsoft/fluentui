@@ -22,6 +22,9 @@ export interface INavProps<TPlatforms extends string = string> {
    */
   onSearchBoxClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
 
+  /**
+   * Category title to show in the search box. If not given, section is not searchable.
+   */
   searchablePageTitle?: string;
 }
 
@@ -32,7 +35,7 @@ export interface INavPage<TPlatform extends string = string> extends Pick<IRoute
   title: string;
 
   /**
-   * URL for this page, relative to the site's root. Undefined for categories.
+   * Hash route or full external URL for this page. Undefined for categories.
    */
   url?: string;
 
@@ -96,9 +99,4 @@ export interface INavPage<TPlatform extends string = string> extends Pick<IRoute
    * full width of the page.
    */
   isContentFullBleed?: boolean;
-}
-
-export enum NavSortType {
-  alphabetized = 'alphabetized',
-  categories = 'categories',
 }

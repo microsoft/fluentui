@@ -17,6 +17,9 @@
             },
             {
               "name": "outline"
+            },
+            {
+              "name": "stealth"
             }
           ],
           "default": "outline",

@@ -1,13 +1,8 @@
 import fs from 'fs';
 import path from 'path';
-import {
-  IDiagnostic,
-  _getLineStarts,
-  _getErrorLineInfo,
-  _getErrorMessages,
-  _supportedPackageToGlobalMap,
-} from './transpileHelpers';
+import { _getLineStarts, _getErrorLineInfo, _getErrorMessages, _supportedPackageToGlobalMap } from './transpileHelpers';
 import { SUPPORTED_PACKAGES } from '../utilities/defaultSupportedPackages';
+import type { IDiagnostic } from './transpileHelpers';
 
 // Real diagnostics copied from loading ./examples/class.txt in the editor while type checking wasn't set up
 const exampleLines = fs.readFileSync(path.join(__dirname, 'examples/class.txt')).toString().split(/\r?\n/g);
@@ -19,52 +14,10 @@ const diagnostics: IDiagnostic[] = [
   { start: 225, length: 32, messageText: "JSX element implicitly has type 'any'.", code: 7026, category: 1 },
 ];
 const lineStarts = [
-  0,
-  32,
-  93,
-  94,
-  166,
-  199,
-  212,
-  251,
-  271,
-  298,
-  336,
-  354,
-  374,
-  393,
-  452,
-  511,
-  570,
-  581,
-  594,
-  601,
-  605,
-  607,
+  0, 32, 93, 94, 166, 199, 212, 251, 271, 298, 336, 354, 374, 393, 452, 511, 570, 581, 594, 601, 605, 607,
 ];
 const lineStartsCRLF = [
-  0,
-  33,
-  95,
-  97,
-  170,
-  204,
-  218,
-  258,
-  279,
-  307,
-  346,
-  365,
-  386,
-  406,
-  466,
-  526,
-  586,
-  598,
-  612,
-  620,
-  625,
-  628,
+  0, 33, 95, 97, 170, 204, 218, 258, 279, 307, 346, 365, 386, 406, 466, 526, 586, 598, 612, 620, 625, 628,
 ];
 
 describe('_getLineStarts', () => {
@@ -128,18 +81,23 @@ describe('_getErrorMessages', () => {
 
 describe('_supportedPackageToGlobalMap', () => {
   it('works', () => {
-    expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toEqual({
-      '@fluentui/example-data': 'FluentUIExampleData',
-      '@fluentui/font-icons-mdl2': 'FluentUIReact',
-      '@fluentui/foundation-legacy': 'FluentUIReact',
-      '@fluentui/merge-styles': 'FluentUIReact',
-      '@fluentui/react': 'FluentUIReact',
-      '@fluentui/date-time-utilities': 'FluentUIReact',
-      '@fluentui/react-focus': 'FluentUIReact',
-      '@fluentui/react-hooks': 'FluentUIReactHooks',
-      '@fluentui/style-utilities': 'FluentUIReact',
-      '@fluentui/utilities': 'FluentUIReact',
-    });
+    expect(_supportedPackageToGlobalMap(SUPPORTED_PACKAGES)).toMatchInlineSnapshot(`
+      Object {
+        "@fluentui/date-time-utilities": "FluentUIReact",
+        "@fluentui/dom-utilities": "FluentUIReact",
+        "@fluentui/example-data": "FluentUIExampleData",
+        "@fluentui/font-icons-mdl2": "FluentUIReact",
+        "@fluentui/foundation-legacy": "FluentUIReact",
+        "@fluentui/merge-styles": "FluentUIReact",
+        "@fluentui/react": "FluentUIReact",
+        "@fluentui/react-focus": "FluentUIReact",
+        "@fluentui/react-hooks": "FluentUIReactHooks",
+        "@fluentui/react-window-provider": "FluentUIReact",
+        "@fluentui/style-utilities": "FluentUIReact",
+        "@fluentui/theme": "FluentUIReact",
+        "@fluentui/utilities": "FluentUIReact",
+      }
+    `);
   });
 
   it('is memoized', () => {

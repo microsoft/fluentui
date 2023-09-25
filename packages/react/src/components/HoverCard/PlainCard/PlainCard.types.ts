@@ -1,5 +1,5 @@
-import { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from '../BaseCard.types';
-import { IRenderFunction } from '../../../Utilities';
+import type { IBaseCardProps, IBaseCardStyles, IBaseCardStyleProps } from '../BaseCard.types';
+import type { IRenderFunction } from '../../../Utilities';
 
 /**
  * {@docCategory HoverCard}

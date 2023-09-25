@@ -11,15 +11,24 @@ import { TextFieldPrefixAndSuffixExample } from './TextField.PrefixAndSuffix.Exa
 import { TextFieldStyledExample } from './TextField.Styled.Example';
 import { TextFieldMaskedExample } from './TextField.Masked.Example';
 
-const TextFieldBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Basic.Example.tsx') as string;
-const TextFieldBorderlessExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Borderless.Example.tsx') as string;
-const TextFieldCustomRenderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.CustomRender.Example.tsx') as string;
-const TextFieldErrorMessageExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.ErrorMessage.Example.tsx') as string;
-const TextFieldMultilineExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Multiline.Example.tsx') as string;
-const TextFieldControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Controlled.Example.tsx') as string;
-const TextFieldPrefixAndSuffixExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.PrefixAndSuffix.Example.tsx') as string;
-const TextFieldStyledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Styled.Example.tsx') as string;
-const TextFieldMaskedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Masked.Example.tsx') as string;
+const TextFieldBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Basic.Example.tsx') as string;
+const TextFieldBorderlessExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Borderless.Example.tsx') as string;
+const TextFieldCustomRenderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.CustomRender.Example.tsx') as string;
+const TextFieldErrorMessageExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.ErrorMessage.Example.tsx') as string;
+const TextFieldMultilineExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Multiline.Example.tsx') as string;
+const TextFieldControlledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Controlled.Example.tsx') as string;
+const TextFieldPrefixAndSuffixExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.PrefixAndSuffix.Example.tsx') as string;
+const TextFieldStyledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Styled.Example.tsx') as string;
+const TextFieldMaskedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/TextField/TextField.Masked.Example.tsx') as string;
 
 export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',

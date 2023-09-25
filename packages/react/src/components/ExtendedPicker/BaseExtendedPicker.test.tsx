@@ -2,11 +2,13 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as ReactDOM from 'react-dom';
 import * as renderer from 'react-test-renderer';
-import { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
 import { BaseExtendedPicker } from './BaseExtendedPicker';
-import { IBaseFloatingPickerProps, BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
-import { IBaseSelectedItemsListProps, ISelectedItemProps, BaseSelectedItemsList } from '../../SelectedItemsList';
+import { BaseFloatingPicker, SuggestionsStore } from '../FloatingPicker/index';
+import { BaseSelectedItemsList } from '../../SelectedItemsList';
 import { KeyCodes } from '../../Utilities';
+import type { IBaseExtendedPickerProps } from './BaseExtendedPicker.types';
+import type { IBaseFloatingPickerProps } from '../FloatingPicker/index';
+import type { IBaseSelectedItemsListProps, ISelectedItemProps } from '../../SelectedItemsList';
 
 function onResolveSuggestions(text: string): ISimple[] {
   return [
@@ -56,7 +58,7 @@ const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple
 };
 
 const floatingPickerProps = {
-  onResolveSuggestions: onResolveSuggestions,
+  onResolveSuggestions,
   onRenderSuggestionsItem: basicSuggestionRenderer,
   suggestionsStore: new SuggestionsStore<ISimple>(),
 };
@@ -257,19 +259,19 @@ describe('Pickers', () => {
 
       // precondition check
       expect(picker.floatingPicker.current).toBeTruthy();
-      expect(picker.floatingPicker.current!.suggestions).toEqual([
-        jasmine.objectContaining({
-          item: jasmine.objectContaining({
+      expect(picker.floatingPicker.current!.suggestions).toMatchObject([
+        {
+          item: {
             name: 'black',
             key: 'black',
-          }),
-        }),
-        jasmine.objectContaining({
-          item: jasmine.objectContaining({
+          },
+        },
+        {
+          item: {
             name: 'blue',
             key: 'blue',
-          }),
-        }),
+          },
+        },
       ]);
 
       // act
@@ -277,10 +279,10 @@ describe('Pickers', () => {
 
       // assert
       expect(picker.items).toEqual([
-        jasmine.objectContaining({
+        {
           name: 'black',
           key: 'black',
-        }),
+        },
       ]);
     });
 

@@ -131,10 +131,10 @@ export interface MenuItemProps
     | ShorthandValue<MenuProps & { popper?: PopperShorthandProps }>
     | ShorthandCollection<MenuItemProps, MenuShorthandKinds>;
 
-  /** Indicates if the menu inside the item is open. */
+  /** Indicates if the menu inside the item is open if the activeIndex is also the item's index. */
   menuOpen?: boolean;
 
-  /** Default menu open */
+  /** Default menu open if the activeIndex is also the item's index */
   defaultMenuOpen?: boolean;
 
   /** Callback for setting the current menu item as active element in the menu. */
@@ -180,19 +180,19 @@ export const menuItemSlotClassNames: MenuItemSlotClassNames = {
 /**
  * A MenuItem is an actionable item within a Menu.
  */
-export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
+export const MenuItem = React.forwardRef<HTMLAnchorElement, MenuItemProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuItem.displayName, context.telemetry);
   setStart();
 
-  const parentProps = (useContextSelectors(MenuContext, {
+  const parentProps = useContextSelectors(MenuContext, {
     active: v => v.activeIndex === inputProps.index,
     onItemClick: v => v.onItemClick,
     onItemSelect: v => v.onItemSelect,
     variables: v => v.variables,
     slotProps: v => v.slotProps.item,
     accessibility: v => v.behaviors.item,
-  }) as unknown) as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
+  }) as unknown as MenuItemSubscribedValue; // TODO: we should improve typings for the useContextSelectors
 
   const props = {
     ...parentProps.slotProps,
@@ -224,6 +224,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
     styles,
     variables,
     on,
+    index,
   } = props;
 
   const [menu, positioningProps] = partitionPopperPropsFromShorthand(props.menu);
@@ -322,7 +323,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
 
   const performClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (menu) {
-      if (doesNodeContainClick(menuRef.current, (e as unknown) as MouseEvent, context.target)) {
+      if (doesNodeContainClick(menuRef.current, e as unknown as MouseEvent, context.target)) {
         // submenu was clicked => close it and propagate
         trySetMenuOpen(false, e, () => focusAsync(itemRef.current));
       } else {
@@ -353,7 +354,6 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
 
   const handleFocus = (e: React.FocusEvent) => {
     setIsFromKeyboard(isEventFromKeyboard());
-
     _.invoke(props, 'onFocus', e, props);
   };
 
@@ -398,6 +398,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   const openMenu = (e: React.MouseEvent | React.KeyboardEvent) => {
     if (menu && !menuOpen) {
       trySetMenuOpen(true, e);
+      _.invoke(parentProps, 'onItemSelect', e, index);
       _.invoke(props, 'onActiveChanged', e, { ...props, active: true });
       e.stopPropagation();
       e.preventDefault();
@@ -412,7 +413,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
           setWhatInputSource(context.target, 'mouse');
           trySetMenuOpen(true, e);
           _.invoke(props, 'onMouseEnter', e, props);
-          _.invoke(parentProps, 'onItemSelect', e, props.index);
+          _.invoke(parentProps, 'onItemSelect', e, index);
         },
         onMouseLeave: e => {
           trySetMenuOpen(false, e);
@@ -505,7 +506,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
         setWhatInputSource(context.target, 'mouse');
         trySetMenuOpen(true, e);
         _.invoke(predefinedProps, 'onMouseEnter', e, props);
-        _.invoke(parentProps, 'onItemSelect', e, props.index);
+        _.invoke(parentProps, 'onItemSelect', e, index);
       },
       onMouseLeave: e => {
         trySetMenuOpen(false, e);
@@ -515,7 +516,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
   });
 
   const maybeSubmenu =
-    menu && active && menuOpen ? (
+    menu && menuOpen ? (
       <>
         <Ref innerRef={menuRef}>
           <Popper
@@ -584,7 +585,7 @@ export const MenuItem = (React.forwardRef<HTMLAnchorElement, MenuItemProps>((inp
 
   setEnd();
   return menuItemInner;
-}) as unknown) as ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
+}) as unknown as ForwardRefWithAs<'a', HTMLAnchorElement, MenuItemProps> & FluentComponentStaticProps<MenuItemProps>;
 
 MenuItem.displayName = 'MenuItem';
 

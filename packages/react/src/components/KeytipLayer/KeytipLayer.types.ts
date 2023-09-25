@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IStyle } from '../../Styling';
-import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle } from '../../Styling';
+import type { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
 
 /**
  * {@docCategory Keytips}
@@ -48,8 +48,9 @@ export interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
 
   /**
    * Callback function triggered when keytip mode is entered
+   * @param transitionKey - The key sequence that triggered keytip mode, if any.
    */
-  onEnterKeytipMode?: () => void;
+  onEnterKeytipMode?: (transitionKey?: IKeytipTransitionKey) => void;
 
   /**
    * (Optional) Call to provide customized styling.

@@ -1,7 +1,7 @@
-import { IColor } from './interfaces';
 import { hsv2rgb } from './hsv2rgb';
 import { rgb2hex } from './rgb2hex';
 import { _rgbaOrHexString } from './_rgbaOrHexString';
+import type { IColor } from './interfaces';
 
 /**
  * Gets a color with the same saturation and value as `color` and the other components updated

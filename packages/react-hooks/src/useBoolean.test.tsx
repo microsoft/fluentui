@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { act } from 'react-dom/test-utils';
 import { mount } from 'enzyme';
-import { useBoolean, IUseBooleanCallbacks } from './useBoolean';
+import { useBoolean } from './useBoolean';
 import { validateHookValueNotChanged } from './testUtilities';
+import type { IUseBooleanCallbacks } from './useBoolean';
 
 describe('useBoolean', () => {
   it('respects initial value', () => {

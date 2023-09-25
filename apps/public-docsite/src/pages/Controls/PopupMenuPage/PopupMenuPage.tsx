@@ -13,20 +13,21 @@ export const PopupMenuPage: React.FunctionComponent<IControlsPageProps> = props 
     <ControlsAreaPage
       {...props}
       title="Popup Menu"
-      {...PopupMenuPageProps[platform]}
-      otherSections={_otherSections(platform) as IPageSectionProps[]}
+      {...PopupMenuPageProps[platform!]}
+      otherSections={_otherSections(platform!) as IPageSectionProps[]}
     />
   );
 };
 
-function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
+function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | undefined {
   switch (platform) {
     case 'ios':
       return [
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/PopupMenuImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/ios/PopupMenuImplementation.md') as string,
         },
       ];
     case 'android':
@@ -34,7 +35,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/PopupMenuImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PopupMenuPage/docs/android/PopupMenuImplementation.md') as string,
         },
       ];
   }

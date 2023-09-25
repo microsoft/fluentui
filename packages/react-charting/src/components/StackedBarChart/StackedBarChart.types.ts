@@ -125,6 +125,11 @@ export interface IStackedBarChartProps {
    * props for the callout in the chart
    */
   calloutProps?: Partial<ICalloutProps>;
+
+  /**
+   * The prop used to define the culture to localized the numbers
+   */
+  culture?: string;
 }
 
 export interface IStackedBarChartStyleProps {
@@ -187,6 +192,11 @@ export interface IStackedBarChartStyleProps {
    * the ratio position for the target triangle
    */
   targetRatio?: number;
+
+  /**
+   * prop to check if benchmark data or target data is provided
+   */
+  showTriangle?: boolean;
 }
 
 export interface IStackedBarChartStyles {
@@ -204,6 +214,11 @@ export interface IStackedBarChartStyles {
    * Style for the chart Title.
    */
   chartTitle: IStyle;
+
+  /**
+   * Style for left side text of the chart title
+   */
+  chartTitleLeft: IStyle;
 
   /**
    * Style for the legend container div

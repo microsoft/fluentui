@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { divProperties, getNativeProps } from '../../Utilities';
 import { classNamesFunction } from '../../Utilities';
-import { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
+import type { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
 const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
   // Label is used a lot by other components.

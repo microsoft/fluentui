@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ProgressIndicatorBase } from './ProgressIndicator.base';
-import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
 /**
  * {@docCategory ProgressIndicator}
@@ -27,6 +27,12 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
    * Label to display above the control. May be a string or React virtual elements.
    */
   label?: React.ReactNode;
+
+  /**
+   * Add screen-reader-only label text to the progressbar.
+   * Prefer `label`, and use this only when other text or visual context provides a visible label
+   */
+  ariaLabel?: string;
 
   /**
    * Text describing or supplementing the operation. May be a string or React virtual elements.

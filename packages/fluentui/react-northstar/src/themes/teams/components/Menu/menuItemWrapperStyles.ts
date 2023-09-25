@@ -29,7 +29,6 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
       on,
     } = props;
     const colors = getColorScheme(v.colorScheme, null, primary);
-
     return {
       color: 'inherit',
       lineHeight: 1,
@@ -73,45 +72,47 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
           boxShadow: `-1px 0 0 0 ${primary ? v.primaryBorderColor : v.borderColor || colors.border} inset`,
         }),
 
-      // active styles
-      ...(active && {
-        color: v.wrapperColorActive,
-
-        ...(!underlined &&
-          on !== 'hover' && {
-            background: v.backgroundColorActive || colors.backgroundActive,
-
-            ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
-            ...(!iconOnly &&
-              primary && {
-                color: colors.foregroundActive,
-              }),
-          }),
-
-        ...(underlined && {
-          color: v.activeUnderlinedWrapperColor,
+      // primary styles
+      ...(primary &&
+        !vertical &&
+        !underlined && {
+          color: v.primaryWrapperColor,
         }),
 
-        ...(pointing &&
-          vertical && {
-            '::before': {
-              content: `''`,
-              position: 'absolute',
-              width: pxToRem(3),
-              height: `calc(100% + ${pxToRem(4)})`,
-              top: pxToRem(-2),
-              backgroundColor: v.pointingIndicatorBackgroundColor,
-
-              ...(isFromKeyboard && { display: 'none' }),
-              ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) }),
-            },
+      // active styles
+      ...(active &&
+        !vertical && {
+          color: v.wrapperColorActive,
+          ...(!underlined && {
+            background: v.backgroundColorActive,
           }),
 
-        ...(pointing &&
-          !vertical && {
-            ...pointingBeak({ props, variables: v, colors }),
+          ...(primary &&
+            !vertical &&
+            !underlined && {
+              color: v.primaryWrapperColor,
+            }),
+
+          ...(!underlined &&
+            on !== 'hover' && {
+              background: v.backgroundColorActive || colors.backgroundActive,
+
+              ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
+              ...(!iconOnly &&
+                primary && {
+                  color: colors.foregroundActive,
+                }),
+            }),
+
+          ...(underlined && {
+            color: v.activeUnderlinedWrapperColor,
           }),
-      }),
+
+          ...(pointing &&
+            !vertical && {
+              ...pointingBeak({ props, variables: v, colors }),
+            }),
+        }),
 
       ...(isFromKeyboard && {
         color: v.wrapperColorFocus,
@@ -130,6 +131,34 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
         }),
       }),
 
+      ...(active && {
+        '[data-tabs="true"]': {
+          ...(!underlined && {
+            background: v.backgroundColorActive || colors.backgroundActive,
+
+            ...(iconOnly && { background: v.activeIconOnlyWrapperBackgroundColor }),
+            ...(!iconOnly &&
+              primary && {
+                color: colors.foregroundActive,
+              }),
+          }),
+          ...(pointing &&
+            vertical && {
+              '::before': {
+                content: `''`,
+                position: 'absolute',
+                width: pxToRem(3),
+                height: `calc(100% + ${pxToRem(4)})`,
+                top: pxToRem(-2),
+                backgroundColor: v.pointingIndicatorBackgroundColor,
+
+                ...(isFromKeyboard && { display: 'none' }),
+                ...(pointing === 'end' ? { right: pxToRem(-2) } : { left: pxToRem(-2) }),
+              },
+            }),
+        },
+      }),
+
       // hover styles
       ':hover': {
         color: v.wrapperColorHover,
@@ -142,6 +171,7 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
         ...(vertical && {
           color: v.wrapperColorHover,
           background: v.backgroundColorHover || colors.backgroundHover,
+          borderRadius: pxToRem(4),
         }),
 
         ...(primary && {
@@ -170,6 +200,7 @@ export const menuItemWrapperStyles: ComponentSlotStylesPrepared<MenuItemWrapperS
       },
 
       ...(iconOnly && {
+        borderRadius: v.iconOnlyBorderRadius,
         display: 'flex',
       }),
 

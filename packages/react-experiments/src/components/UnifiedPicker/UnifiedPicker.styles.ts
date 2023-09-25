@@ -1,4 +1,5 @@
-import { getGlobalClassNames, getTheme, IStyle } from '@fluentui/style-utilities';
+import { getGlobalClassNames, getTheme } from '@fluentui/style-utilities';
+import type { IStyle } from '@fluentui/style-utilities';
 
 export interface IUnifiedPickerStyleProps {}
 

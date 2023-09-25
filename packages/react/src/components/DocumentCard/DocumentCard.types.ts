@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory DocumentCard}
@@ -125,4 +125,12 @@ export interface IDocumentCardStyleProps {
  */
 export interface IDocumentCardStyles {
   root: IStyle;
+}
+
+/**
+ * {@docCategory DocumentCard}
+ */
+export interface IDocumentCardContext {
+  role?: string;
+  tabIndex?: number;
 }

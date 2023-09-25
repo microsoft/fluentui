@@ -2,11 +2,6 @@ import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
 import {
-  IChoiceGroupOptionProps,
-  IChoiceGroupOptionStyleProps,
-  IChoiceGroupOptionStyles,
-} from './ChoiceGroupOption.types';
-import {
   classNamesFunction,
   getNativeProps,
   inputProperties,
@@ -14,6 +9,11 @@ import {
   composeRenderFunction,
   getPropsWithDefaults,
 } from '../../../Utilities';
+import type {
+  IChoiceGroupOptionProps,
+  IChoiceGroupOptionStyleProps,
+  IChoiceGroupOptionStyles,
+} from './ChoiceGroupOption.types';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
@@ -73,7 +73,7 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
       ? composeRenderFunction(props.onRenderLabel, defaultOnRenderLabel)
       : defaultOnRenderLabel;
 
-    const label = onRenderLabel(props);
+    const label = onRenderLabel({ ...props, key: props.itemKey });
 
     return (
       <label htmlFor={id} className={classNames.field}>
@@ -102,7 +102,7 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
   const { onRenderField = defaultOnRenderField } = props;
 
   const onChange = (evt: React.FormEvent<HTMLInputElement>): void => {
-    props.onChange?.(evt, props);
+    props.onChange?.(evt, { ...props, key: props.itemKey });
   };
 
   const onBlur = (evt: React.FocusEvent<HTMLElement>) => {
@@ -110,7 +110,7 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
   };
 
   const onFocus = (evt: React.FocusEvent<HTMLElement>) => {
-    props.onFocus?.(evt, props);
+    props.onFocus?.(evt, { ...props, key: props.itemKey });
   };
 
   return (
@@ -130,7 +130,7 @@ export const ChoiceGroupOptionBase: React.FunctionComponent<IChoiceGroupOptionPr
           onFocus={onFocus}
           onBlur={onBlur}
         />
-        {onRenderField(props, defaultOnRenderField)}
+        {onRenderField({ ...props, key: props.itemKey }, defaultOnRenderField)}
       </div>
     </div>
   );

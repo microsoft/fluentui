@@ -22,13 +22,13 @@ export const CalloutBasicExample: React.FunctionComponent = () => {
           className={styles.callout}
           ariaLabelledBy={labelId}
           ariaDescribedBy={descriptionId}
-          role="alertdialog"
+          role="dialog"
           gapSpace={0}
           target={`#${buttonId}`}
           onDismiss={toggleIsCalloutVisible}
           setInitialFocus
         >
-          <Text block variant="xLarge" className={styles.title} id={labelId}>
+          <Text as="h1" block variant="xLarge" className={styles.title} id={labelId}>
             Callout title here
           </Text>
           <Text block variant="small" id={descriptionId}>
@@ -50,6 +50,7 @@ const styles = mergeStyleSets({
   },
   callout: {
     width: 320,
+    maxWidth: '90%',
     padding: '20px 24px',
   },
   title: {

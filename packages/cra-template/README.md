@@ -2,7 +2,14 @@
 
 **Create React App for [Fluent UI React](https://developer.microsoft.com/en-us/fluentui)**
 
-[Create React App](https://create-react-app.dev/) template for FluentUI Web.
+[Create React App](https://create-react-app.dev/) template for `@fluentui/react`.
+
+<!--
+NOTES:
+- The template has a devDep on @fluentui/react to ensure that the package is built in PR/CI
+  before the template's tests run
+- See template.json for the actual list of deps installed when the template is used
+-->
 
 ## Available scripts within the template
 

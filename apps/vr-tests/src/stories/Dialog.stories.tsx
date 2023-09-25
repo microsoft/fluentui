@@ -1,7 +1,7 @@
 import * as React from 'react';
-import Screener from 'screener-storybook/src/screener';
+import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
-import { FabricDecoratorTall } from '../utilities/index';
+import { TestWrapperDecoratorTall } from '../utilities/index';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react';
 import { PrimaryButton, DefaultButton } from '@fluentui/react/lib/Button';
 
@@ -19,16 +19,16 @@ const text = {
 };
 
 storiesOf('Dialog', module)
-  .addDecorator(FabricDecoratorTall)
+  .addDecorator(TestWrapperDecoratorTall)
   .addDecorator(story =>
     // prettier-ignore
-    <Screener
-      steps={new Screener.Steps()
+    <StoryWright
+      steps={new Steps()
         .snapshot('default', { cropTo: '.ms-Dialog-main' })
         .end()}
     >
       {story()}
-    </Screener>,
+    </StoryWright>,
   )
   .addStory(
     'Root',
@@ -41,7 +41,7 @@ storiesOf('Dialog', module)
         {footer}
       </Dialog>
     ),
-    { rtl: true },
+    { includeRtl: true },
   )
   .addStory('Wide Dialog', () => (
     <Dialog

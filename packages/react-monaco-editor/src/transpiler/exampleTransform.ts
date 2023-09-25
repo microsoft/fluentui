@@ -2,7 +2,8 @@ import * as React from 'react';
 import { getWindow } from '@fluentui/react/lib/Utilities';
 import { tryParseExample, IMPORT_REGEX } from './exampleParser';
 import { _supportedPackageToGlobalMap } from './transpileHelpers';
-import { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
+import type { IBasicPackageGroup, ITransformedCode } from '../interfaces/index';
+
 // Don't reference anything importing Monaco in this file to avoid pulling Monaco into the
 // main bundle or breaking tests!
 
@@ -86,10 +87,10 @@ export function transformExample(params: ITransformExampleParams): ITransformedC
 
   let lines = [code];
 
-  // Generate Fabric wrapper stuff for the component if appropriate
+  // Generate ThemeProvider wrapper stuff for the component if appropriate
   let finalComponent = component;
   if (identifiersByGlobal.FluentUIReact) {
-    // If this is a Fabric example, wrap in a <Fabric> (and add an import for that if needed),
+    // If this is a Fluent UI React example, wrap in a <ThemeProvider> (adding an import for that if needed),
     // and initialize icons in case the example uses them.
     finalComponent = component + 'Wrapper';
 

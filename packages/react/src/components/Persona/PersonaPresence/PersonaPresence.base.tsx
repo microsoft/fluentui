@@ -1,15 +1,10 @@
 import * as React from 'react';
 import { classNamesFunction } from '../../../Utilities';
 import { Icon } from '../../../Icon';
-import {
-  IPersonaPresenceProps,
-  IPersonaPresenceStyleProps,
-  IPersonaPresenceStyles,
-  PersonaPresence as PersonaPresenceEnum,
-  PersonaSize,
-} from '../Persona.types';
+import { PersonaPresence as PersonaPresenceEnum, PersonaSize } from '../Persona.types';
 import { sizeBoolean } from '../PersonaConsts';
 import { useMergedRefs } from '@fluentui/react-hooks';
+import type { IPersonaPresenceProps, IPersonaPresenceStyleProps, IPersonaPresenceStyles } from '../Persona.types';
 
 const coinSizeFontScaleFactor = 6;
 const coinSizePresenceScaleFactor = 3;

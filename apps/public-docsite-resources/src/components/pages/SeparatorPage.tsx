@@ -5,7 +5,7 @@ import { DemoPage } from '../DemoPage';
 
 export const SeparatorPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('@fluentui/api-docs/lib/pages/react/Separator.page.json')}
+    jsonDocs={require('../../../dist/api/react/Separator.page.json')}
     {...{ ...SeparatorPageProps, ...props }}
   />
 );

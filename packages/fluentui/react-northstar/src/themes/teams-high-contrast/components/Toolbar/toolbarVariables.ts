@@ -16,7 +16,6 @@ export const toolbarVariables = (siteVars: any): Partial<ToolbarVariables> => ({
   ),
 
   borderWidth: '0',
-  borderRadius: undefined,
 
   menuBoxShadow: undefined,
 });

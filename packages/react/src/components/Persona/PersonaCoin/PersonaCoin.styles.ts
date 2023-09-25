@@ -1,6 +1,7 @@
-import { IPersonaCoinStyleProps, IPersonaCoinStyles, PersonaSize } from '../Persona.types';
+import { PersonaSize } from '../Persona.types';
 import { HighContrastSelector, FontWeights, getGlobalClassNames, getHighContrastNoAdjustStyle } from '../../../Styling';
 import { sizeBoolean, sizeToPixels } from '../PersonaConsts';
+import type { IPersonaCoinStyleProps, IPersonaCoinStyles } from '../Persona.types';
 
 const GlobalClassNames = {
   coin: 'ms-Persona-coin',

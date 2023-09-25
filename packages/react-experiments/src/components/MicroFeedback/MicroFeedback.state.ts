@@ -1,5 +1,5 @@
-import { IMicroFeedbackComponent, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
 import { useCallback, useRef, useState } from 'react';
+import type { IMicroFeedbackComponent, IMicroFeedbackViewProps, VoteType } from './MicroFeedback.types';
 
 export type IMicroFeedbackState = Pick<
   IMicroFeedbackViewProps,
@@ -62,7 +62,7 @@ export const useMicroFeedbackState: IMicroFeedbackComponent['state'] = props => 
     setIsThanksVisible(true);
 
     // Hide the Thanks message after 2 seconds
-    setTimerHandle((setTimeout(hideThanksMessage, 2000) as unknown) as number);
+    setTimerHandle(setTimeout(hideThanksMessage, 2000) as unknown as number);
   }, [hideThanksMessage]);
 
   const viewProps: IMicroFeedbackViewProps = {

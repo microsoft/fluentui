@@ -1,5 +1,5 @@
-import { IRenderFunction } from '../IRenderFunction';
 import { createMemoizer } from '../memoize';
+import type { IRenderFunction } from '../IRenderFunction';
 
 interface IRenderFunctionComposer {
   <TProps>(outer: IRenderFunction<TProps>): (inner: IRenderFunction<TProps>) => IRenderFunction<TProps>;

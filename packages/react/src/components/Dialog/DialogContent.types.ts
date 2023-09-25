@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DialogContentBase } from './DialogContent.base';
-import { IButtonProps } from '../../Button';
 import { ResponsiveMode } from '../../ResponsiveMode';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IButtonProps } from '../../Button';
+import type { IStyle, ITheme } from '../../Styling';
+import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Dialog}
@@ -14,6 +14,8 @@ export interface IDialogContent {}
  * {@docCategory Dialog}
  */
 export interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
+  children?: React.ReactNode;
+
   /**
    * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

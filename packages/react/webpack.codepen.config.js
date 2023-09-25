@@ -1,5 +1,4 @@
-const resources = require('../../scripts/webpack/webpack-resources');
-const getResolveAlias = require('../../scripts/webpack/getResolveAlias');
+const { getResolveAlias, resources } = require('@fluentui/scripts-webpack');
 
 module.exports = resources.createServeConfig({
   entry: './src/index.bundle.ts',

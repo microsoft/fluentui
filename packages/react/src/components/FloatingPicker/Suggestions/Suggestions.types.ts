@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { ISuggestionModel, ISuggestionItemProps } from '../../../Pickers';
-import { IPersonaProps } from '../../../Persona';
-import { IRefObject } from '../../../Utilities';
+import type { ISuggestionModel, ISuggestionItemProps } from '../../../Pickers';
+import type { IPersonaProps } from '../../../Persona';
+import type { IRefObject } from '../../../Utilities';
 
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**

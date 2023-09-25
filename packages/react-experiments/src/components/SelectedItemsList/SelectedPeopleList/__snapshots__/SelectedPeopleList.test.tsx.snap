@@ -25,24 +25,24 @@ Array [
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -98,19 +98,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -118,7 +118,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -127,7 +127,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -279,7 +279,7 @@ Array [
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
@@ -327,10 +327,10 @@ Array [
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -346,52 +346,29 @@ Array [
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                role="none"
               >
                 Person A
+                <div
+                  hidden={true}
+                  id="tooltip4"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person A
+                </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>
@@ -440,19 +417,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -460,7 +437,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -469,7 +446,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -556,24 +533,24 @@ Array [
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -629,19 +606,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -649,7 +626,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -658,7 +635,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -810,7 +787,7 @@ Array [
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
@@ -858,10 +835,10 @@ Array [
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -877,52 +854,29 @@ Array [
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                role="none"
               >
                 Person B
+                <div
+                  hidden={true}
+                  id="tooltip12"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person B
+                </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>
@@ -971,19 +925,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -991,7 +945,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1000,7 +954,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1092,24 +1046,24 @@ Array [
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -1165,19 +1119,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -1185,7 +1139,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1194,7 +1148,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1346,7 +1300,7 @@ Array [
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
@@ -1394,10 +1348,10 @@ Array [
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -1413,52 +1367,29 @@ Array [
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                role="none"
               >
                 Person A
+                <div
+                  hidden={true}
+                  id="tooltip20"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person A
+                </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>
@@ -1507,19 +1438,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -1527,7 +1458,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1536,7 +1467,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1623,24 +1554,24 @@ Array [
         &:hover {
           background: #deecf9;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
           background: Highlight;
           border: 1px solid ButtonText;
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-content {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-content {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover .ms-PickerItem-removeButton {
           color: HighlightText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
           -ms-high-contrast-adjust: none;
           background: ButtonFace;
           border: 1px solid ButtonText;
           color: ButtonText;
         }
-        @media screen and (-ms-high-contrast: active), (forced-colors: active){& .ms-PickerItem-removeButton {
+        @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& .ms-PickerItem-removeButton {
           color: ButtonText;
         }
     data-is-focusable={true}
@@ -1696,19 +1627,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -1716,7 +1647,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -1725,7 +1656,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }
@@ -1877,7 +1808,7 @@ Array [
                       height: 32px;
                       line-height: 32px;
                     }
-                    @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                       -ms-high-contrast-adjust: none;
                       background-color: Window !important;
                       border: 1px solid WindowText;
@@ -1925,10 +1856,10 @@ Array [
                   &:hover {
                     color: #005a9e;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
                     color: inherit;
                   }
-                  @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+                  @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                     color: inherit;
                   }
               dir="auto"
@@ -1944,52 +1875,29 @@ Array [
                 onKeyDown={[Function]}
                 onMouseEnter={[Function]}
                 onMouseLeave={[Function]}
+                role="none"
               >
                 Person B
+                <div
+                  hidden={true}
+                  id="tooltip28"
+                  style={
+                    Object {
+                      "border": 0,
+                      "height": 1,
+                      "margin": -1,
+                      "overflow": "hidden",
+                      "padding": 0,
+                      "position": "absolute",
+                      "whiteSpace": "nowrap",
+                      "width": 1,
+                    }
+                  }
+                >
+                  Person B
+                </div>
               </div>
             </div>
-            <div
-              className=
-                  ms-Persona-secondaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 12px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-tertiaryText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
-            <div
-              className=
-                  ms-Persona-optionalText
-                  {
-                    color: #605e5c;
-                    display: none;
-                    font-size: 14px;
-                    font-weight: 400;
-                    overflow: hidden;
-                    text-overflow: ellipsis;
-                    white-space: nowrap;
-                  }
-              dir="auto"
-            />
           </div>
         </div>
       </div>
@@ -2038,19 +1946,19 @@ Array [
               top: 2px;
               z-index: 1;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
               bottom: -2px;
               left: -2px;
               outline-color: ButtonText;
               right: -2px;
               top: -2px;
             }
-            &:active > * {
+            &:active > span {
               left: 0px;
               position: relative;
               top: 0px;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){& {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
               background-color: inherit;
               color: inherit;
             }
@@ -2058,7 +1966,7 @@ Array [
               background-color: #c7e0f4;
               color: #005a9e;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:hover {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:hover {
               background: inherit;
               border-color: Highlight;
               color: inherit;
@@ -2067,7 +1975,7 @@ Array [
               background-color: #106ebe;
               color: #ffffff;
             }
-            @media screen and (-ms-high-contrast: active), (forced-colors: active){&:active {
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){&:active {
               background: inherit;
               color: inherit;
             }

@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Icon } from '../../Icon';
 import { Image } from '../../Image';
 import { Link } from '../../Link';
-import { IProcessedStyleSet } from '../../Styling';
 import { classNamesFunction, css, initializeComponentRef } from '../../Utilities';
-import {
+import type { IProcessedStyleSet } from '../../Styling';
+import type {
   IDocumentCardPreviewImage,
   IDocumentCardPreviewProps,
   IDocumentCardPreviewStyleProps,
@@ -69,10 +69,7 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
 
     if (previewIconProps) {
       return (
-        <div
-          className={css(this._classNames.previewIcon, previewIconContainerClass)}
-          style={{ width: width, height: height }}
-        >
+        <div className={css(this._classNames.previewIcon, previewIconContainerClass)} style={{ width, height }}>
           <Icon {...previewIconProps} />
         </div>
       );
@@ -131,7 +128,8 @@ export class DocumentCardPreviewBase extends React.Component<IDocumentCardPrevie
         <Link
           className={this._classNames.fileListLink}
           // eslint-disable-next-line deprecation/deprecation
-          {...(file.linkProps, { href: (file.linkProps && file.linkProps.href) || file.url })}
+          href={file.url}
+          {...file.linkProps}
         >
           {file.name}
         </Link>

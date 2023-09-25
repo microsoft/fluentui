@@ -1,4 +1,5 @@
-import { FileIconType, FileIconTypeInput } from './FileIconType';
+import { FileIconType } from './FileIconType';
+import type { FileIconTypeInput } from './FileIconType';
 
 let allFileTypeIconValues: FileIconType | undefined;
 

@@ -1,5 +1,5 @@
-import { IStyle, ITheme } from '@fluentui/style-utilities';
 import { AnimationDirection } from '../Calendar.types';
+import type { IStyle, ITheme } from '@fluentui/style-utilities';
 
 /**
  * {@docCategory Calendar}

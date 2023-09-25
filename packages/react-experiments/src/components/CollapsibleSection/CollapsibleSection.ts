@@ -2,8 +2,8 @@ import * as React from 'react';
 import { CollapsibleSectionView } from './CollapsibleSection.view';
 import { useCollapsibleSectionState } from './CollapsibleSection.state';
 import { collapsibleSectionStyles } from './CollapsibleSection.styles';
-import { ICollapsibleSectionProps } from './CollapsibleSection.types';
 import { createComponent } from '@fluentui/foundation-legacy';
+import type { ICollapsibleSectionProps } from './CollapsibleSection.types';
 
 export const CollapsibleSection: React.FunctionComponent<ICollapsibleSectionProps> = createComponent(
   CollapsibleSectionView,

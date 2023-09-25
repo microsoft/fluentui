@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { css, findIndex } from '@fluentui/utilities';
 import { DAYS_IN_WEEK } from '@fluentui/date-time-utilities';
-import { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
-import { IProcessedStyleSet } from '@fluentui/style-utilities';
-import { IDayInfo } from './CalendarDayGrid.base';
+import type { ICalendarDayGridProps, ICalendarDayGridStyles } from './CalendarDayGrid.types';
+import type { IProcessedStyleSet } from '@fluentui/style-utilities';
+import type { IDayInfo } from './CalendarDayGrid.base';
 
 export interface ICalendarDayMonthHeaderRowProps extends ICalendarDayGridProps {
   weeks: IDayInfo[][];
@@ -25,7 +25,7 @@ export const CalendarMonthHeaderRow: React.FunctionComponent<ICalendarDayMonthHe
       {showWeekNumbers && <th className={classNames.dayCell} />}
       {dayLabels.map((val: string, index: number) => {
         const i = (index + firstDayOfWeek) % DAYS_IN_WEEK;
-        const label = index === firstOfMonthIndex ? strings.days[i] + ' ' + dayLabels[i] : strings.days[i];
+        const label = strings.days[i];
         return (
           <th
             className={css(classNames.dayCell, classNames.weekDayLabelCell)}

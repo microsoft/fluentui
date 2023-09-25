@@ -1,12 +1,27 @@
-#### Pull request checklist
+<!--
+Thank you for submitting a pull request!
 
-- [ ] Addresses an existing issue: Fixes #0000
-- [ ] Include a change request file using `$ yarn change`
+Please verify that:
+* [ ] Code is up-to-date with the `master` branch
+* [ ] Your changes are covered by tests (if possible)
+* [ ] You've run `yarn change` locally
 
-#### Description of changes
 
-(give an overview)
+PR flow tips:
+* [ ] Try to start with a Draft PR
+* [ ] Once you're ready (ideally the pipeline is passing) promote your PR to Ready for Review. This step will auto-assign reviewers for your PR.
+-->
 
-#### Focus areas to test
+## Previous Behavior
 
-(optional)
+<!-- This is the behavior we have today -->
+
+## New Behavior
+
+<!-- This is the behavior we should expect with the changes in this PR -->
+
+## Related Issue(s)
+
+<!-- Please link the issue being fixed so it gets closed when this is merged. -->
+
+- Fixes #

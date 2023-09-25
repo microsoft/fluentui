@@ -1,19 +1,21 @@
 import * as React from 'react';
-import {
+import { TilesGridMode } from './TilesList.types';
+import { List, ScrollToMode } from '@fluentui/react/lib/List';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
+import { css, FocusRects, composeRenderFunction } from '@fluentui/react/lib/Utilities';
+import * as TilesListStylesModule from './TilesList.scss';
+import { Shimmer } from '@fluentui/react/lib/Shimmer';
+import type {
   ITilesListProps,
   ITilesGridItem,
   ITilesGridSegment,
-  TilesGridMode,
   ITileSize,
   ITilesGridItemCellProps,
   ITilesListRowProps,
   ITilesListRootProps,
 } from './TilesList.types';
-import { List, IPageProps, ScrollToMode, IListOnRenderRootProps } from '@fluentui/react/lib/List';
-import { FocusZone, FocusZoneDirection } from '@fluentui/react/lib/FocusZone';
-import { css, IRenderFunction, IRectangle, FocusRects, composeRenderFunction } from '@fluentui/react/lib/Utilities';
-import * as TilesListStylesModule from './TilesList.scss';
-import { Shimmer } from '@fluentui/react/lib/Shimmer';
+import type { IPageProps, IListOnRenderRootProps } from '@fluentui/react/lib/List';
+import type { IRenderFunction, IRectangle } from '@fluentui/react/lib/Utilities';
 
 const TilesListStyles: any = TilesListStylesModule;
 

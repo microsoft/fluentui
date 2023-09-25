@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
-import { ICalendarNavigationIcons, AnimationDirection } from '../Calendar.types';
-import { ITheme } from '@fluentui/style-utilities';
-import { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
+import { AnimationDirection } from '../Calendar.types';
+import type { IBaseProps, IRefObject, IStyleFunctionOrObject } from '@fluentui/utilities';
+import type { ICalendarNavigationIcons } from '../Calendar.types';
+import type { ITheme } from '@fluentui/style-utilities';
+import type { ICalendarPickerStyleProps, ICalendarPickerStyles } from '../CalendarPicker/CalendarPicker.types';
 
 /**
  * {@docCategory Calendar}

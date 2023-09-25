@@ -1,15 +1,17 @@
 import * as React from 'react';
 import { initializeComponentRef, on } from '@fluentui/react/lib/Utilities';
 import { IRouteProps } from './Route';
+import { getNormalizedPath, normalizePath } from '../getNormalizedPath';
 
 export interface IRouterProps {
   /**
    * Gets the component ref.
    */
   componentRef?: () => void;
-
+  /** @deprecated unused */
   replaceState?: boolean;
   children?: React.ReactNode;
+  /** @deprecated unused */
   onNewRouteLoaded?: () => void;
 }
 
@@ -25,7 +27,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     this._disposables = [];
     initializeComponentRef(this);
     this.state = {
-      path: this._getPath(),
+      path: getNormalizedPath(),
     };
   }
 
@@ -33,7 +35,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     this._disposables.push(
       on(window, 'hashchange', () => {
         // Don't update unless the route itself (not an anchor link) actually changed
-        const path = this._getPath();
+        const path = getNormalizedPath();
         if (path !== this.state.path) {
           this.setState({ path });
         }
@@ -47,24 +49,6 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
 
   public render() {
     return this._resolveRoute();
-  }
-
-  private _getPath(): string {
-    let path = location.hash;
-    const hashIndex = path.lastIndexOf('#');
-    const questionMarkIndex = path.indexOf('?');
-
-    // Look for the start of a query in the currentPath, then strip out the query to find the correct page to render
-    if (questionMarkIndex > -1) {
-      path = path.substr(0, questionMarkIndex);
-    }
-
-    // If the hash has a second # (for an anchor), strip that out since it's not used for routing
-    if (hashIndex > 0) {
-      path = path.substr(0, hashIndex);
-    }
-
-    return _normalizePath(path);
   }
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -82,7 +66,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
         continue;
       }
       // Use this route if it has no path, or if the path matches the current path (from the hash)
-      const routePath = _normalizePath(route.props.path);
+      const routePath = normalizePath(route.props.path);
       if (!routePath || routePath === path) {
         let { component } = route.props;
 
@@ -126,12 +110,4 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
 
     return null;
   }
-}
-
-/** Normalize path for comparison: strip any trailing slash and convert to lowercase */
-function _normalizePath(path?: string): string {
-  if (path && path.slice(-1) === '/') {
-    path = path.slice(0, -1);
-  }
-  return (path || '').toLowerCase();
 }
