@@ -46,17 +46,23 @@ export const useDrawerOverlay_unstable = (
     },
   );
 
-  const dialog = slot.optional(props.dialog, {
-    elementType: Dialog,
-    renderByDefault: true,
-    defaultProps: {
+  const dialog = slot.always(
+    {
       open: true,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
       modalType,
+      /*
+       * children is not needed here because we construct the children in the render function,
+       * but it's required by DialogProps
+       */
+      children: null as unknown as JSX.Element,
     },
-  });
+    {
+      elementType: Dialog,
+    },
+  );
 
   return {
     components: {

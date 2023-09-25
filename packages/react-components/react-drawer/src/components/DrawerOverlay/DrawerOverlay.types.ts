@@ -4,13 +4,24 @@ import type { MotionState } from '@fluentui/react-motion-preview';
 
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
 
+/**
+ * DrawerOverlay slots
+ */
 export type DrawerOverlaySlots = DialogSurfaceSlots & {
+  /**
+   * Slot for the root element.
+   */
   root: Slot<DialogSurfaceProps>;
+};
 
+/**
+ * DrawerOverlay internal slots for when using with composition API
+ */
+export type DrawerOverlayInternalSlots = DrawerOverlaySlots & {
   /**
    * Slot for the dialog component that wraps the drawer.
    */
-  dialog?: Slot<DialogProps>;
+  dialog: Slot<DialogProps>;
 };
 
 /**
@@ -23,7 +34,7 @@ export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> &
 /**
  * State used in rendering DrawerOverlay
  */
-export type DrawerOverlayState = Omit<ComponentState<DrawerOverlaySlots>, 'backdrop'> &
+export type DrawerOverlayState = Omit<ComponentState<DrawerOverlayInternalSlots>, 'backdrop'> &
   Required<
     DrawerBaseState & {
       backdropMotion: MotionState<HTMLDivElement>;

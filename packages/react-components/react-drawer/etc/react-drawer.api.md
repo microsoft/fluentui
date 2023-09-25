@@ -131,19 +131,18 @@ export type DrawerInlineState = Required<ComponentState<DrawerInlineSlots> & Dra
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
 
 // @public (undocumented)
-export const drawerOverlayClassNames: Omit<SlotClassNames<DrawerOverlaySlots>, 'dialog'>;
+export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots>;
 
 // @public
 export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;
 
-// @public (undocumented)
+// @public
 export type DrawerOverlaySlots = DialogSurfaceSlots & {
     root: Slot<DialogSurfaceProps>;
-    dialog?: Slot<DialogProps>;
 };
 
 // @public
-export type DrawerOverlayState = Omit<ComponentState<DrawerOverlaySlots>, 'backdrop'> & Required<DrawerBaseState & {
+export type DrawerOverlayState = Omit<ComponentState<DrawerOverlayInternalSlots>, 'backdrop'> & Required<DrawerBaseState & {
     backdropMotion: MotionState<HTMLDivElement>;
 }>;
 
