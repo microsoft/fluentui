@@ -42,16 +42,6 @@ const baseStyles: GriffelResetStyle = {
     ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
     zIndex: 1,
   }),
-
-  // windows high contrast:
-  '@media (forced-colors: active)': {
-    ':hover': {
-      backgroundColor: 'HighlightText',
-    },
-    ':active': {
-      backgroundColor: 'HighlightText',
-    },
-  },
 };
 
 const useRootRoundedBaseClassName = makeResetStyles({
@@ -132,6 +122,14 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
     },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
+    },
   },
   outline: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -162,6 +160,14 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
     },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
+    },
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
@@ -174,6 +180,14 @@ const useRootStyles = makeStyles({
     ':active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
       color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
     },
   },
 
