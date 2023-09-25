@@ -39,6 +39,7 @@
     "@fluentui/react-jsx-runtime": "^9.0.10",
     "@fluentui/react-motion-preview": "^0.2.6",
     "@fluentui/react-shared-contexts": "^9.8.1",
+    "@fluentui/react-tabster": "^9.12.11",
     "@fluentui/react-theme": "^9.1.12",
     "@fluentui/react-utilities": "^9.13.3",
     "@griffel/react": "^1.5.14",

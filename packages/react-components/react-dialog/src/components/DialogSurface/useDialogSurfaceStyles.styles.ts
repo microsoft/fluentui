@@ -31,9 +31,6 @@ const useStyles = makeStyles({
     ...shorthands.margin('auto'),
     ...shorthands.borderStyle('none'),
     ...shorthands.overflow('unset'),
-    '&::backdrop': {
-      backgroundColor: 'rgba(0, 0, 0, 0.4)',
-    },
     position: 'fixed',
     height: 'fit-content',
     maxWidth: '600px',
@@ -53,13 +50,8 @@ const useStyles = makeStyles({
     backgroundColor: 'rgba(0, 0, 0, 0.4)',
     ...shorthands.inset('0px'),
   },
-  nestedDialogBackdrop: {
+  nested: {
     backgroundColor: 'transparent',
-  },
-  nestedNativeDialogBackdrop: {
-    '&::backdrop': {
-      backgroundColor: 'transparent',
-    },
   },
 });
 
@@ -74,14 +66,13 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
     dialogSurfaceClassNames.root,
     styles.root,
     styles.focusOutline,
-    isNestedDialog && styles.nestedNativeDialogBackdrop,
     state.root.className,
   );
   if (state.backdrop) {
     state.backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       styles.backdrop,
-      isNestedDialog && styles.nestedDialogBackdrop,
+      isNestedDialog && styles.nested,
       state.backdrop.className,
     );
   }
