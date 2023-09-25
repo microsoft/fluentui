@@ -37,7 +37,7 @@ export const useDataGridRow_unstable = (props: DataGridRowProps, ref: React.Ref<
   const dataGridContextValue = useDataGridContext_unstable(ctx => ctx);
 
   const onClick = useEventCallback((e: React.MouseEvent<HTMLTableRowElement>) => {
-    if (selectable && !isHeader) {
+    if (selectable && !isHeader && !e.defaultPrevented) {
       toggleRow(e, rowId);
     }
 

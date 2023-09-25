@@ -7,9 +7,6 @@
 import * as React_2 from 'react';
 
 // @public
-export function elementContains(parent: Node | null, child: Node | null): boolean;
-
-// @public
 export const Portal: React_2.FC<PortalProps>;
 
 // @public (undocumented)
@@ -29,9 +26,6 @@ export type PortalState = Pick<PortalProps, 'children'> & {
 
 // @public
 export const renderPortal_unstable: (state: PortalState) => React_2.ReactElement;
-
-// @public
-export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
 export const usePortal_unstable: (props: PortalProps) => PortalState;
