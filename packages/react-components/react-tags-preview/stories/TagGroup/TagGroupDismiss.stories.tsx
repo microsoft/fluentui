@@ -116,6 +116,7 @@ const DismissWithInteractionTags = () => {
         ref={resetButtonRef}
         disabled={visibleTags.length !== 0}
         className={styles.resetButton}
+        size="small"
       >
         Reset the example
       </Button>
