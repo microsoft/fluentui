@@ -8,7 +8,7 @@ import { useDrawerFooterStyles_unstable } from './useDrawerFooterStyles.styles';
 import type { DrawerFooterProps } from './DrawerFooter.types';
 
 /**
- * DrawerFooter component - TODO: add more docs
+ * DrawerFooter provides a structured footer for the drawer component.
  */
 export const DrawerFooter: ForwardRefComponent<DrawerFooterProps> = React.forwardRef((props, ref) => {
   const state = useDrawerFooter_unstable(props, ref);
