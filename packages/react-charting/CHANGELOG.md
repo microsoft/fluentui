@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 11 Sep 2023 07:35:28 GMT and should not be manually modified.
+This log was last generated on Mon, 25 Sep 2023 07:36:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.17.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.17.8)
+
+Mon, 25 Sep 2023 07:36:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.17.7..@fluentui/react-charting_v5.17.8)
+
+### Patches
+
+- Enable reflow for all cartesian chart examples ([PR #29229](https://github.com/microsoft/fluentui/pull/29229) by kumarkshitij@microsoft.com)
 
 ## [5.17.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.17.7)
 

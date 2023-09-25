@@ -165,7 +165,8 @@
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
       "@fluentui/react-timepicker-compat-preview": [
         "packages/react-components/react-timepicker-compat-preview/src/index.ts"
-      ]
+      ],
+      "@fluentui/react-rating-preview": ["packages/react-components/react-rating-preview/src/index.ts"]
     }
   }
 }
