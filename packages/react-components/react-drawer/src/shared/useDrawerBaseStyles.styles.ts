@@ -13,7 +13,7 @@ export const drawerCSSVars = {
 /**
  * Default shared styles for the Drawer component
  */
-export const getDrawerDefaultStyles = (): GriffelStyle => ({
+export const drawerDefaultStyles: GriffelStyle = {
   ...shorthands.padding(0),
   ...shorthands.overflow('hidden'),
   ...shorthands.borderRadius(0),
@@ -28,7 +28,7 @@ export const getDrawerDefaultStyles = (): GriffelStyle => ({
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
   backgroundColor: tokens.colorNeutralBackground1,
-});
+};
 
 /**
  * Shared dynamic styles for the Drawer component

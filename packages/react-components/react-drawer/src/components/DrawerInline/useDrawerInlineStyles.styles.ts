@@ -4,18 +4,14 @@ import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
 import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
-import {
-  drawerCSSVars,
-  getDrawerDefaultStyles,
-  useDrawerBaseClassNames,
-} from '../../shared/useDrawerBaseStyles.styles';
+import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from '../../shared/useDrawerBaseStyles.styles';
 
 export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
   root: 'fui-DrawerInline',
 };
 
 const useDrawerResetStyles = makeResetStyles({
-  ...getDrawerDefaultStyles(),
+  ...drawerDefaultStyles,
   position: 'relative',
   opacity: 0,
   transitionProperty: 'opacity, transform',
