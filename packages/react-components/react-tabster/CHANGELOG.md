@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2023 17:47:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.12.11)
+
+Wed, 20 Sep 2023 17:47:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.12.10..@fluentui/react-tabster_v9.12.11)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.8.1 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+
+## [9.12.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.12.10)
+
+Wed, 20 Sep 2023 14:59:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.12.9..@fluentui/react-tabster_v9.12.10)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+
+## [9.12.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.12.9)
+
+Tue, 12 Sep 2023 08:51:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.12.8..@fluentui/react-tabster_v9.12.9)
+
+### Patches
+
+- fix: don't apply modalizer attributes when focus trap isn't configured ([PR #29110](https://github.com/microsoft/fluentui/pull/29110) by lingfangao@hotmail.com)
 
 ## [9.12.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.12.8)
 

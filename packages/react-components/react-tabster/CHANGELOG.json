@@ -2,6 +2,57 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Wed, 20 Sep 2023 17:47:44 GMT",
+      "tag": "@fluentui/react-tabster_v9.12.11",
+      "version": "9.12.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.8.1",
+            "commit": "41d0ed0376ad79f1f5f5c4c7487515a1c6be35f0"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 20 Sep 2023 14:59:53 GMT",
+      "tag": "@fluentui/react-tabster_v9.12.10",
+      "version": "9.12.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.8.0",
+            "commit": "c60d4e7169457535c8d23701f6b951d1fff478ab"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 12 Sep 2023 08:51:33 GMT",
+      "tag": "@fluentui/react-tabster_v9.12.9",
+      "version": "9.12.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "bb8a191dbdd562a2ef077c1bd5fa3dbfd00f0fdf",
+            "comment": "fix: don't apply modalizer attributes when focus trap isn't configured"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/react-tabster_v9.12.8",
       "version": "9.12.8",
