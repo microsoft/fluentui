@@ -78,7 +78,7 @@ export const Dismiss = () => {
         className={styles.resetButton}
         size="small"
       >
-        Reset Dismiss Example
+        Reset the example
       </Button>
     </div>
   );
