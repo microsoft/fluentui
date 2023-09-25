@@ -1,58 +1,62 @@
-const path = require('path');
-
-const { Project } = require('@lerna/project');
-
-const { PackageGraph } = require('@lerna/package-graph');
-
-const findGitRoot = require('./findGitRoot');
+const { utils: lernaUtils } = require('./lerna-utils');
 
 /**
  *
- * @param {string[]} rootPackages
- * @param {Map<any,any>} projectGraph
- * @param {string[]} packageList
+ * @param {string[]} packageNames
+ * @param {import('./lerna-utils').ProjectGraphWithPackages} projectGraph
+ * @param {{dependenciesOnly?:boolean}} options
+ * @param {string[]} _packagesList
  * @returns
  */
-function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
-  rootPackages.forEach(packageName => {
-    packageList.push(packageName);
+function getPackageDependencyGraph(
+  packageNames,
+  projectGraph,
+  options = { dependenciesOnly: false },
+  _packagesList = [],
+) {
+  packageNames.forEach(packageName => {
+    _packagesList.push(packageName);
 
-    flattenPackageGraph([...projectGraph.get(packageName).localDependencies.keys()], projectGraph, packageList);
+    if (!projectGraph.localPackageDependencies[packageName]) {
+      return;
+    }
+
+    const localDepsTargets = /** @type {string[]}*/ (
+      projectGraph.localPackageDependencies[packageName]
+        .map(localDepDefinition => {
+          if (options.dependenciesOnly && localDepDefinition.dependencyCollection) {
+            return localDepDefinition.dependencyCollection === 'dependencies' ? localDepDefinition.target : undefined;
+          }
+
+          return localDepDefinition.target;
+        })
+        .filter(Boolean)
+    );
+
+    getPackageDependencyGraph(localDepsTargets, projectGraph, options, _packagesList);
   });
 
-  return packageList.sort().filter((v, i, a) => a.indexOf(v) === i);
+  return _packagesList.sort().filter((v, i, a) => a.indexOf(v) === i);
 }
 
 /**
  * Returns all the dependencies of a given package name
- * @param {string} packageName including `@fluentui/` prefix
- * @param {Object} options
- * @param {boolean} [options.dev] include dev dependencies
- * @param {boolean} [options.production] include production dependencies
+ * @param {string | string[]} packageName - including `@fluentui/` prefix
  */
-async function getDependencies(packageName, options = { production: true }) {
-  const lernaProject = new Project(path.resolve(findGitRoot(), 'packages'));
-  const projectPackages = await lernaProject.getPackages();
+async function getDependencies(packageName) {
+  const packagesToProcess = Array.isArray(packageName) ? packageName : [packageName];
+  const { projectGraph } = await lernaUtils.detectProjects();
 
-  const allDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages));
-  const productionDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages, 'dependencies'));
+  const allDepsGraph = getPackageDependencyGraph(packagesToProcess, projectGraph);
+  const depsGraph = getPackageDependencyGraph(packagesToProcess, projectGraph, { dependenciesOnly: true });
+  const devDepsGraph = allDepsGraph.filter(dep => !depsGraph.includes(dep));
 
-  const devDependencies = allDepsGraph.filter(dep => !productionDepsGraph.includes(dep));
-
-  /**
-   * @type {string[]}
-   */
-  let res = [];
-
-  if (options.dev) {
-    res = res.concat(devDependencies);
-  }
-
-  if (options.production) {
-    res = res.concat(productionDepsGraph);
-  }
-
-  return res;
+  return {
+    dependencies: depsGraph,
+    devDependencies: devDepsGraph,
+    all: allDepsGraph,
+    projectGraph,
+  };
 }
 
-module.exports = getDependencies;
+exports.getDependencies = getDependencies;
