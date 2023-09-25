@@ -19,4 +19,4 @@ For a truncated label or a label that’s likely to truncate in some langua
 
 ### Accessibility
 
-- Don't add tooltips to unfocusable or disabled controls. Screen readers can't consistently access or read tooltips associated with elements that can't receive focus or are disabled. Consider having the information statically available on the page or through a "help"-style toggle button.
+- Don't add tooltips to unfocusable or disabled controls. People using the keyboard or screen readers can't consistently access or read tooltips associated with elements that can't receive focus or are disabled. Consider having the information statically available on the page or through a "help"-style toggle button.
