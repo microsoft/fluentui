@@ -80,7 +80,7 @@ const DismissWithTags = () => {
         disabled={visibleTags.length !== 0}
         className={styles.resetButton}
       >
-        Reset Dismiss Tag Example
+        Reset the example
       </Button>
     </>
   );
