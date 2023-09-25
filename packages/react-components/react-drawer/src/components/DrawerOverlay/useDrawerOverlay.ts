@@ -26,15 +26,17 @@ export const useDrawerOverlay_unstable = (
   const drawerMotion = useMotion<HTMLDivElement>(open);
   const backdropMotion = useMotion<HTMLDivElement>(open);
 
-  const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
+  const backdropProps = slot.resolveShorthand(props.backdrop);
+  const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
+  const backdropRefs = useMergedRefs(backdropMotion.ref, backdropProps?.ref);
 
   const root = slot.always(
     {
       ...props,
       backdrop: hasCustomBackdrop
         ? {
-            ...slot.resolveShorthand(props.backdrop),
-            ref: backdropMotion.ref,
+            ...backdropProps,
+            ref: backdropRefs,
           }
         : null,
     },
