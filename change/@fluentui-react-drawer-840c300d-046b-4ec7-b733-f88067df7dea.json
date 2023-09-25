@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "fix: make dialog slot internal to be used for composition only",
+  "comment": "feat: make dialog slot internal to be used for composition only",
   "packageName": "@fluentui/react-drawer",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
