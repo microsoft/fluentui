@@ -5,6 +5,7 @@ import { renderInteractionTagPrimary_unstable } from './renderInteractionTagPrim
 import { useInteractionTagPrimaryStyles_unstable } from './useInteractionTagPrimaryStyles.styles';
 import type { InteractionTagPrimaryProps } from './InteractionTagPrimary.types';
 import { useTagAvatarContextValues_unstable } from '../../utils';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * InteractionTagPrimary component - used as the first child of the `InteractionTag` component.
@@ -14,6 +15,9 @@ export const InteractionTagPrimary: ForwardRefComponent<InteractionTagPrimaryPro
   const state = useInteractionTagPrimary_unstable(props, ref);
 
   useInteractionTagPrimaryStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useInteractionTagPrimaryStyles_unstable')(state);
+
   return renderInteractionTagPrimary_unstable(state, useTagAvatarContextValues_unstable(state));
 });
 

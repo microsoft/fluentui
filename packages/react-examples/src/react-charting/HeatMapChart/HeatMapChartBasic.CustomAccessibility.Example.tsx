@@ -392,6 +392,7 @@ export class HeatMapChartCustomAccessibilityExample extends React.Component<{}, 
             height={this.state.height}
             domainValuesForColorScale={[0, 600]}
             rangeValuesForColorScale={['lightblue', 'darkblue']}
+            enableReflow={true}
           />
         </div>
       </>

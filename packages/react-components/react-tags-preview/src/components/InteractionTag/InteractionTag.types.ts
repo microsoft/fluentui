@@ -1,7 +1,6 @@
-import * as React from 'react';
 import { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { InteractionTagContextValue } from '../../contexts/interactionTagContext';
-import { TagAppearance, TagShape, TagSize } from '../../utils/types';
+import { TagAppearance, TagShape, TagSize, TagValue, TagDismissHandler } from '../../utils/types';
 
 export type InteractionTagContextValues = {
   interactionTag: InteractionTagContextValue;
@@ -14,7 +13,7 @@ export type InteractionTagSlots = {
 /**
  * InteractionTag Props
  */
-export type InteractionTagProps<Value = string> = ComponentProps<Partial<InteractionTagSlots>> & {
+export type InteractionTagProps<Value = TagValue> = ComponentProps<Partial<InteractionTagSlots>> & {
   /**
    * An InteractionTag can have filled, outlined or brand experience.
    *
@@ -52,10 +51,15 @@ export type InteractionTagProps<Value = string> = ComponentProps<Partial<Interac
 /**
  * State used in rendering InteractionTag
  */
-export type InteractionTagState<Value = string> = ComponentState<InteractionTagSlots> &
+export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTagSlots> &
   Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
     /**
      * Event handler from TagGroup context that allows TagGroup to dismiss the tag
      */
-    handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
+    handleTagDismiss: TagDismissHandler<Value>;
+
+    /**
+     * id to assign to InteractionTagPrimary
+     */
+    interactionTagPrimaryId: string;
   };

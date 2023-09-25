@@ -33,14 +33,10 @@ export const Sizes = () => {
               <InteractionTagPrimary icon={<CalendarMonthRegular />}>{size}</InteractionTagPrimary>
             </InteractionTag>
             <InteractionTag>
-              <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction id={`${size}-primary`}>
+              <InteractionTagPrimary icon={<CalendarMonthRegular />} hasSecondaryAction>
                 {size}
               </InteractionTagPrimary>
-              <InteractionTagSecondary
-                id={`${size}-secondary`}
-                aria-label="remove"
-                aria-labelledby={`${size}-primary ${size}-secondary`}
-              />
+              <InteractionTagSecondary aria-label="remove" />
             </InteractionTag>
           </TagGroup>
         </div>
