@@ -500,6 +500,7 @@ import { RadioGroup } from '@fluentui/react-radio';
 import { radioGroupClassNames } from '@fluentui/react-radio';
 import { RadioGroupContextValue } from '@fluentui/react-radio';
 import { RadioGroupContextValues } from '@fluentui/react-radio';
+import { RadioGroupImperativeRef } from '@fluentui/react-radio';
 import { RadioGroupOnChangeData } from '@fluentui/react-radio';
 import { RadioGroupProps } from '@fluentui/react-radio';
 import { RadioGroupProvider } from '@fluentui/react-radio';
@@ -2185,6 +2186,8 @@ export { radioGroupClassNames }
 export { RadioGroupContextValue }
 
 export { RadioGroupContextValues }
+
+export { RadioGroupImperativeRef }
 
 export { RadioGroupOnChangeData }
 
