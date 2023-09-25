@@ -35,6 +35,11 @@ export type RadioGroupContextValues = {
 };
 
 // @public
+export type RadioGroupImperativeRef = {
+    focusSelected: () => void;
+};
+
+// @public
 export type RadioGroupOnChangeData = {
     value: string;
 };
@@ -48,6 +53,7 @@ export type RadioGroupProps = Omit<ComponentProps<Partial<RadioGroupSlots>>, 'on
     layout?: 'vertical' | 'horizontal' | 'horizontal-stacked';
     disabled?: boolean;
     required?: boolean;
+    imperativeRef?: React_2.Ref<RadioGroupImperativeRef>;
 };
 
 // @public (undocumented)
