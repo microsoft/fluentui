@@ -1,4 +1,4 @@
-import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -9,7 +9,6 @@ import {
   useMediaStyles,
   usePrimaryTextStyles,
   useSecondaryTextBaseClassName,
-  useTagWithSecondaryTextContrastStyles,
 } from '../Tag/useTagStyles.styles';
 
 export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots> = {
@@ -20,7 +19,7 @@ export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrima
   secondaryText: 'fui-InteractionTagPrimary__secondaryText',
 };
 
-const useRootBaseClassName = makeResetStyles({
+const baseStyles: GriffelResetStyle = {
   // reset default button style:
   color: 'inherit',
   fontFamily: 'inherit',
@@ -51,6 +50,71 @@ const useRootBaseClassName = makeResetStyles({
     },
     ':active': {
       backgroundColor: 'HighlightText',
+    },
+  },
+};
+
+const useRootRoundedBaseClassName = makeResetStyles({
+  ...baseStyles,
+  borderRadius: tokens.borderRadiusMedium,
+
+  /**
+   * Pseudo element to draw the border for windows high contrast mode -
+   * when Tag is with secondary text, primary text has negative margin that covers the border.
+   */
+  '@media (forced-colors: active)': {
+    position: 'relative',
+    '::before': {
+      content: '""',
+      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      position: 'absolute',
+      top: '-1px',
+      left: '-1px',
+      right: '-1px',
+      bottom: '-1px',
+      borderTopLeftRadius: tokens.borderRadiusMedium,
+      borderTopRightRadius: tokens.borderRadiusMedium,
+    },
+  },
+});
+
+const useRootCircularBaseClassName = makeResetStyles({
+  ...baseStyles,
+  borderRadius: tokens.borderRadiusCircular,
+
+  /**
+   * Pseudo element to draw the border for windows high contrast mode -
+   * when Tag is with secondary text, primary text has negative margin that covers the border.
+   */
+  '@media (forced-colors: active)': {
+    position: 'relative',
+    '::before': {
+      content: '""',
+      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
+      position: 'absolute',
+      top: '-1px',
+      left: '-1px',
+      right: '-1px',
+      bottom: '-1px',
+      borderTopLeftRadius: tokens.borderRadiusCircular,
+      borderBottomLeftRadius: tokens.borderRadiusCircular,
+    },
+  },
+});
+
+/**
+ * Style override for pseudo element that draws the border for windows high contrast mode
+ */
+const useRootCircularContrastStyles = makeStyles({
+  withoutSecondaryAction: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+        borderTopRightRadius: tokens.borderRadiusCircular,
+        borderBottomRightRadius: tokens.borderRadiusCircular,
+      },
     },
   },
 });
@@ -112,9 +176,6 @@ const useRootStyles = makeStyles({
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
-
-  rounded: shorthands.borderRadius(tokens.borderRadiusMedium),
-  circular: shorthands.borderRadius(tokens.borderRadiusCircular),
 
   medium: {
     paddingRight: '7px',
@@ -188,7 +249,8 @@ const useRootWithSecondaryActionStyles = makeStyles({
 export const useInteractionTagPrimaryStyles_unstable = (
   state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryState => {
-  const rootBaseClassName = useRootBaseClassName();
+  const rootRoundedBaseClassName = useRootRoundedBaseClassName();
+  const rootCircularBaseClassName = useRootCircularBaseClassName();
   const rootStyles = useRootStyles();
   const rootDisabledAppearances = useRootDisabledAppearances();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
@@ -199,23 +261,23 @@ export const useInteractionTagPrimaryStyles_unstable = (
   const primaryTextStyles = usePrimaryTextStyles();
   const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
 
-  const tagWithSecondaryTextContrastStyles = useTagWithSecondaryTextContrastStyles();
+  const rootCircularContrastStyles = useRootCircularContrastStyles();
 
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     interactionTagPrimaryClassNames.root,
 
-    rootBaseClassName,
+    shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
+
+    shape === 'circular' && !state.hasSecondaryAction && rootCircularContrastStyles.withoutSecondaryAction,
+
     state.disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
-    rootStyles[shape],
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
     state.hasSecondaryAction && rootWithSecondaryActionStyles.base,
     state.hasSecondaryAction && rootWithSecondaryActionStyles[size],
-
-    state.secondaryText && tagWithSecondaryTextContrastStyles[shape],
 
     state.root.className,
   );
