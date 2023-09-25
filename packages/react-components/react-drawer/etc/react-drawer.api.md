@@ -8,9 +8,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DialogProps } from '@fluentui/react-dialog';
-import { DialogSurfaceProps } from '@fluentui/react-dialog';
-import { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import type { DialogProps } from '@fluentui/react-dialog';
+import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { MotionShorthand } from '@fluentui/react-motion-preview';
 import { MotionState } from '@fluentui/react-motion-preview';
@@ -137,8 +136,9 @@ export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots>;
 export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;
 
 // @public
-export type DrawerOverlaySlots = DialogSurfaceSlots & {
-    root: Slot<DialogSurfaceProps>;
+export type DrawerOverlaySlots = {
+    root: Slot<DrawerOverlaySurfaceProps>;
+    backdrop?: Slot<'div'>;
 };
 
 // @public
