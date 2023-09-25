@@ -74,7 +74,7 @@ export const Dismiss = () => {
         disabled={visibleTags.length !== 0}
         className={styles.resetButton}
       >
-        Reset Dismiss Example
+        Reset the example
       </Button>
     </div>
   );
