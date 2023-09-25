@@ -14,7 +14,7 @@ describe('useTag_unstable', () => {
     const wrapper: React.FC = ({ children }) => (
       <TagGroupContextProvider
         value={{
-          handleTagDismiss: () => null,
+          handleTagDismiss: () => ({}),
           size: 'medium',
         }}
       >

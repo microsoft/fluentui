@@ -47,4 +47,12 @@ export {
 export type { TagGroupProps, TagGroupSlots, TagGroupState } from './TagGroup';
 
 export { useTagAvatarContextValues_unstable } from './utils';
-export type { TagAppearance, TagShape, TagSize } from './utils/types';
+export type {
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissData,
+  TagDismissEvent,
+  TagDismissHandler,
+} from './utils/types';
