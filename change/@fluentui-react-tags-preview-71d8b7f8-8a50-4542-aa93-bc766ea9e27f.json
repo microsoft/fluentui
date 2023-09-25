@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: update handleTagDismiss type",
+  "packageName": "@fluentui/react-tags-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

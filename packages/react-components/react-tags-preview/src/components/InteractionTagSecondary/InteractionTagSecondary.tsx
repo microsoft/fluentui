@@ -4,6 +4,7 @@ import { useInteractionTagSecondary_unstable } from './useInteractionTagSecondar
 import { renderInteractionTagSecondary_unstable } from './renderInteractionTagSecondary';
 import { useInteractionTagSecondaryStyles_unstable } from './useInteractionTagSecondaryStyles.styles';
 import type { InteractionTagSecondaryProps } from './InteractionTagSecondary.types';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * InteractionTagSecondary component - used as the second child of the `InteractionTag` component and provides the secondary action, which is dismiss by default.
@@ -13,6 +14,9 @@ export const InteractionTagSecondary: ForwardRefComponent<InteractionTagSecondar
     const state = useInteractionTagSecondary_unstable(props, ref);
 
     useInteractionTagSecondaryStyles_unstable(state);
+
+    useCustomStyleHook_unstable('useInteractionTagSecondaryStyles_unstable')(state);
+
     return renderInteractionTagSecondary_unstable(state);
   },
 );

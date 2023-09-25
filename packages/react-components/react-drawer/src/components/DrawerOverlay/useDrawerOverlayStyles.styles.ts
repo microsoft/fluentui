@@ -11,7 +11,7 @@ import {
   useDrawerDurationStyles,
 } from '../../shared/useDrawerBaseStyles.styles';
 
-export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
+export const drawerOverlayClassNames: Omit<SlotClassNames<DrawerOverlaySlots>, 'dialog'> = {
   root: 'fui-DrawerOverlay',
   backdrop: 'fui-DrawerOverlay__backdrop',
 };

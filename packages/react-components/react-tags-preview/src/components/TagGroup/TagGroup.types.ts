@@ -1,6 +1,5 @@
-import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TagSize } from '../../utils/types';
+import { TagSize, TagValue, TagDismissHandler } from '../../utils/types';
 import { TagGroupContextValue } from '../../contexts/tagGroupContext';
 
 export type TagGroupContextValues = {
@@ -11,18 +10,14 @@ export type TagGroupSlots = {
   root: Slot<'div'>;
 };
 
-export type TagGroupDismissData = {
-  dismissedTagValue: string;
-};
-
 /**
  * TagGroup Props
  */
-export type TagGroupProps = ComponentProps<TagGroupSlots> & {
+export type TagGroupProps<Value = TagValue> = ComponentProps<TagGroupSlots> & {
   /**
    * Callback for when a tag is dismissed
    */
-  onDismiss?: (e: React.MouseEvent | React.KeyboardEvent, data: TagGroupDismissData) => void;
+  onDismiss?: TagDismissHandler<Value>;
 
   size?: TagSize;
 };
@@ -30,7 +25,7 @@ export type TagGroupProps = ComponentProps<TagGroupSlots> & {
 /**
  * State used in rendering TagGroup
  */
-export type TagGroupState<Value = string> = ComponentState<TagGroupSlots> &
+export type TagGroupState<Value = TagValue> = ComponentState<TagGroupSlots> &
   Required<Pick<TagGroupProps, 'size'>> & {
-    handleTagDismiss: (e: React.MouseEvent | React.KeyboardEvent, value: Value) => void;
+    handleTagDismiss: TagDismissHandler<Value>;
   };

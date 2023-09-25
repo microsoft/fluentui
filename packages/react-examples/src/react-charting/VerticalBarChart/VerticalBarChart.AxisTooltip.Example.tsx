@@ -69,6 +69,7 @@ export class VerticalBarChartTooltipExample extends React.Component<{}, IVertica
             hideTooltip={false}
             showXAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
             wrapXAxisLables={this.state.selectedCallout === 'WrapTickValues' ? true : false}
+            enableReflow={true}
           />
         </div>
       </>

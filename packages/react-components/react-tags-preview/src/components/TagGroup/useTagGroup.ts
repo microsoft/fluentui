@@ -21,8 +21,8 @@ export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLEl
   const { targetDocument } = useFluent();
   const { findNextFocusable, findPrevFocusable } = useFocusFinders();
 
-  const handleTagDismiss = useEventCallback((e: React.MouseEvent | React.KeyboardEvent, id: string) => {
-    onDismiss?.(e, { dismissedTagValue: id });
+  const handleTagDismiss: TagGroupState['handleTagDismiss'] = useEventCallback((e, data) => {
+    onDismiss?.(e, data);
 
     // set focus after tag dismiss
     const activeElement = targetDocument?.activeElement;
