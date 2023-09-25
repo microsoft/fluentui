@@ -19,8 +19,8 @@ export const useDrawerOverlay_unstable = (
   props: DrawerOverlayProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
-  const { open, defaultOpen, size, position } = useDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
+  const { open, size, position } = useDrawerDefaultProps(props);
+  const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
 
   const drawerMotion = useMotion<HTMLDivElement>(open);
   const backdropMotion = useMotion<HTMLDivElement>(open);

@@ -81,6 +81,7 @@ export type InteractionTagSlots = {
 // @public
 export type InteractionTagState<Value = TagValue> = ComponentState<InteractionTagSlots> & Required<Pick<InteractionTagProps, 'appearance' | 'disabled' | 'shape' | 'size' | 'value'>> & {
     handleTagDismiss: TagDismissHandler<Value>;
+    interactionTagPrimaryId: string;
 };
 
 // @public

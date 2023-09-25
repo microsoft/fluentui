@@ -29,34 +29,16 @@ export const Shape = () => {
       </InteractionTag>
 
       <InteractionTag>
-        <InteractionTagPrimary
-          icon={<CalendarMonthRegular />}
-          secondaryText="Secondary text"
-          hasSecondaryAction
-          id="rounded-primary"
-        >
+        <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
           Rounded
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="rounded-primary rounded-secondary"
-          id="rounded-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
       <InteractionTag shape="circular">
-        <InteractionTagPrimary
-          icon={<CalendarMonthRegular />}
-          secondaryText="Secondary text"
-          hasSecondaryAction
-          id="circular-primary"
-        >
+        <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
           Circular
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="circular-primary circular-secondary"
-          id="circular-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
     </div>
   );

@@ -17,8 +17,8 @@ export type DrawerOverlaySlots = DialogSurfaceSlots & {
  * DrawerOverlay Props
  */
 export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> &
-  DrawerBaseProps &
-  Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
+  Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> &
+  DrawerBaseProps;
 
 /**
  * State used in rendering DrawerOverlay

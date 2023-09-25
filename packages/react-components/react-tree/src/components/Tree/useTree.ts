@@ -34,6 +34,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   const { navigate, initialize } = useTreeNavigation();
   const walkerRef = React.useRef<HTMLElementWalker>();
   const { targetDocument } = useFluent_unstable();
+
   const initializeWalker = React.useCallback(
     (root: HTMLElement | null) => {
       if (root && targetDocument) {
@@ -65,7 +66,7 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
       props.onNavigation?.(event, data);
-      if (walkerRef.current) {
+      if (walkerRef.current && !event.isDefaultPrevented()) {
         navigate(data, walkerRef.current);
       }
     },

@@ -55,6 +55,10 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
    */
   open?: boolean;
   onOpenChange?: (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => void;
+  /**
+   * This property is inferred through context on a nested tree, and required for a flat tree.
+   */
+  parentValue?: TreeItemValue;
 };
 
 /**
