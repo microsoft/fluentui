@@ -9,7 +9,6 @@ import { TreeChartThreeLayerExample } from './TreeChart.ThreeLayer.Example';
 import { TreeChartThreeLayerCompactDocSiteExample } from './TreeChart.ThreeLayerCompactDocSite.Example';
 import { TreeChartThreeLayerDocSiteExample } from './TreeChart.ThreeLayerDocSite.Example';
 
-
 const TreeChartTwoLayerExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.TwoLayer.Example.tsx') as string;
 const TreeChartThreeLayerLongExampleCode =
@@ -18,10 +17,10 @@ const TreeChartThreeLayerCompactExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerCompact.Example.tsx') as string;
 const TreeChartThreeLayerExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayer.Example.tsx') as string;
-  const TreeChartThreeLayerCompactDocSiteExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerCompactDocSite.Example') as string;
-  const TreeChartThreeLayerDocSiteExampleCode =
-  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerDocSite.Example') as string;
+const TreeChartThreeLayerCompactDocSiteExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerCompactDocSite.Example.tsx') as string;
+const TreeChartThreeLayerDocSiteExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/TreeChart/TreeChart.ThreeLayerDocSite.Example.tsx') as string;
 
 export const TreeChartPageProps: IDocPageProps = {
   title: 'TreeChart',
