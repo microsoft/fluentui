@@ -1,5 +1,3 @@
-// @ts-check
-
 require('./register').register();
 
 const { config: sharedConfig } = require('./shared.config');
