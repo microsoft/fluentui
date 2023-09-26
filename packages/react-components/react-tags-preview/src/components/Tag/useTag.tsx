@@ -53,6 +53,8 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     }
   });
 
+  const elementType = dismissible ? 'button' : 'span';
+
   return {
     appearance,
     avatarShape: tagAvatarShapeMap[shape],
@@ -63,7 +65,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     size,
 
     components: {
-      root: dismissible ? 'button' : 'span',
+      root: elementType,
       media: 'span',
       icon: 'span',
       primaryText: 'span',
@@ -72,13 +74,13 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
+      getNativeElementProps(elementType, {
         ref,
         ...props,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
-      { elementType: dismissible ? 'button' : 'span' },
+      { elementType },
     ),
 
     media: slot.optional(props.media, { elementType: 'span' }),

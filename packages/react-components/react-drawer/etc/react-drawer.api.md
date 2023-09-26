@@ -134,7 +134,7 @@ export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
 export const drawerOverlayClassNames: Omit<SlotClassNames<DrawerOverlaySlots>, 'dialog'>;
 
 // @public
-export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & DrawerBaseProps & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus'>;
+export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;
 
 // @public (undocumented)
 export type DrawerOverlaySlots = DialogSurfaceSlots & {
