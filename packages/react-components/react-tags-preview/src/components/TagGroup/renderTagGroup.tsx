@@ -1,6 +1,6 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-import { createElement } from '@fluentui/react-jsx-runtime';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
 import { assertSlots } from '@fluentui/react-utilities';
 import type { TagGroupState, TagGroupSlots, TagGroupContextValues } from './TagGroup.types';
 import { TagGroupContextProvider } from '../../contexts/tagGroupContext';

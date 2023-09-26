@@ -1,6 +1,8 @@
+import * as React from 'react';
 import { SLOT_ELEMENT_TYPE_SYMBOL } from './constants';
 import { isSlot } from './isSlot';
 import { ComponentState, ExtractSlotProps, SlotComponentType, SlotPropsRecord } from './types';
+import { slot } from './index';
 
 type SlotComponents<Slots extends SlotPropsRecord> = {
   [K in keyof Slots]: SlotComponentType<ExtractSlotProps<Slots[K]>>;
@@ -37,18 +39,32 @@ export function assertSlots<Slots extends SlotPropsRecord>(state: unknown): asse
       if (slotElement === undefined) {
         continue;
       }
+      // this means a slot is being declared without using, slot.always or slot.optional or even resolveShorthand on the state hook,
+      // but the render method is using the new `assertSlots` method. That scenario can be solved by simply updating the slot element with the proper element type
+      // FIXME: this slot will still fail to support child render function scenario
       if (!isSlot(slotElement)) {
-        throw new Error(
-          `${assertSlots.name} error: state.${slotName} is not a slot.\n` +
-            `Be sure to create slots properly by using 'slot.always' or 'slot.optional'.`,
-        );
+        typedState[slotName as keyof ComponentState<Slots>] = slot.always(slotElement, {
+          elementType: typedState.components[slotName] as React.ComponentType<{}>,
+        }) as ComponentState<Slots>[keyof ComponentState<Slots>];
+        // eslint-disable-next-line no-console
+        console.warn(/** #__DE-INDENT__ */ `
+          @fluentui/react-utilities [${assertSlots.name}]:
+          "state.${slotName}" is not a slot!
+          Be sure to create slots properly by using "slot.always" or "slot.optional".
+        `);
       } else {
+        // This means a slot is being declared by using resolveShorthand on the state hook,
+        // but the render method is using the new `assertSlots` method. That scenario can be solved by simply updating the slot element with the proper element type
         const { [SLOT_ELEMENT_TYPE_SYMBOL]: elementType } = slotElement;
         if (elementType !== typedState.components[slotName]) {
-          throw new TypeError(
-            `${assertSlots.name} error: state.${slotName} element type differs from state.components.${slotName}, ${elementType} !== ${typedState.components[slotName]}. \n` +
-              `Be sure to create slots properly by using 'slot.always' or 'slot.optional' with the correct elementType`,
-          );
+          slotElement[SLOT_ELEMENT_TYPE_SYMBOL] = typedState.components[slotName] as React.ComponentType<{}>;
+          // eslint-disable-next-line no-console
+          console.warn(/** #__DE-INDENT__ */ `
+            @fluentui/react-utilities [${assertSlots.name}]:
+            "state.${slotName}" element type differs from "state.components.${slotName}",
+            ${elementType} !== ${typedState.components[slotName]}.
+            Be sure to create slots properly by using "slot.always" or "slot.optional" with the correct elementType.
+          `);
         }
       }
     }

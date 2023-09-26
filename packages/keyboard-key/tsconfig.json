@@ -4,7 +4,7 @@
     "outDir": "dist",
     "target": "es5",
     "module": "commonjs",
-    "lib": ["ES5", "ES2015.Collection", "DOM"],
+    "lib": ["ES5", "DOM", "ES2015.Collection", "ES2015.Iterable"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,

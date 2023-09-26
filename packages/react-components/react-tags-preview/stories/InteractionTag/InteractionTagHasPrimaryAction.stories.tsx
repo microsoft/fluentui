@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip } from '@fluentui/react-components';
+import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip, Link } from '@fluentui/react-components';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
 import { bundleIcon, HeartFilled, HeartRegular } from '@fluentui/react-icons';
 
@@ -19,11 +19,12 @@ export const HasPrimaryAction = () => {
   const toggleSecondary = () => setLiked(v => !v);
   return (
     <InteractionTag>
-      <Popover>
+      <Popover trapFocus>
         <PopoverTrigger>
           <InteractionTagPrimary hasSecondaryAction>golden retriever</InteractionTagPrimary>
         </PopoverTrigger>
         <PopoverSurface className={styles.popover}>
+          <Link href="https://en.wikipedia.org/wiki/Golden_Retriever">Find out more on wiki</Link>
           <ul>
             <li>Size: Medium to large-sized dog breed. </li>
             <li>Coat: Luxurious double coat with a dense, water-repellent outer layer and a soft, dense undercoat.</li>
@@ -32,7 +33,7 @@ export const HasPrimaryAction = () => {
           </ul>
         </PopoverSurface>
       </Popover>
-      <Tooltip content={liked ? 'unlike' : 'I like this'} relationship="label">
+      <Tooltip content={liked ? 'unlike' : 'like'} relationship="label">
         <InteractionTagSecondary onClick={toggleSecondary}>
           <HeartIcon filled={liked} />
         </InteractionTagSecondary>

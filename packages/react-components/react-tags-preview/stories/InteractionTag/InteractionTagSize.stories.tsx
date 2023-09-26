@@ -20,20 +20,25 @@ export const Size = () => {
   const styles = useContainerStyles();
   return (
     <div className={styles.outerWrapper}>
+      {/* medium */}
       <div className={styles.innerWrapper}>
         <InteractionTag>
           <InteractionTagPrimary>Medium</InteractionTagPrimary>
         </InteractionTag>
+
         <InteractionTag>
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Medium dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
+
         <InteractionTag shape="circular">
           <InteractionTagPrimary icon={<CalendarMonthRegular />}>Medium circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
+
+      {/* small */}
       <div className={styles.innerWrapper}>
         <InteractionTag size="small">
           <InteractionTagPrimary>Small</InteractionTagPrimary>
@@ -43,12 +48,15 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
+
         <InteractionTag size="small" shape="circular">
           <InteractionTagPrimary icon={<CalendarMonthRegular />}>Small circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
+
+      {/* extra-small */}
       <div className={styles.innerWrapper}>
         <InteractionTag size="extra-small">
           <InteractionTagPrimary>Extra Small</InteractionTagPrimary>
@@ -58,8 +66,9 @@ export const Size = () => {
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Extra Small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
+
         <InteractionTag size="extra-small" shape="circular">
           <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra Small circular</InteractionTagPrimary>
         </InteractionTag>

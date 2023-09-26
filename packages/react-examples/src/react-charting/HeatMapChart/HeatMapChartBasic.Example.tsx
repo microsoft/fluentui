@@ -332,6 +332,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             height={this.state.height}
             domainValuesForColorScale={[0, 600]}
             rangeValuesForColorScale={['lightblue', 'darkblue']}
+            enableReflow={true}
           />
         </div>
       </>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-  TreeProps,
-  TreeItem,
+  FlatTreeProps,
+  FlatTreeItem,
   TreeItemLayout,
   TreeProvider,
-  TreeSlots,
+  FlatTreeSlots,
   TreeNavigationData_unstable,
   TreeNavigationEvent_unstable,
   useFlatTree_unstable,
@@ -13,7 +13,7 @@ import {
   useFlatTreeContextValues_unstable,
   HeadlessFlatTreeItem,
   useHeadlessFlatTree_unstable,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { FixedSizeList, FixedSizeListProps, ListChildComponentProps } from 'react-window';
 import { ForwardRefComponent, getSlots } from '@fluentui/react-components';
 
@@ -40,7 +40,7 @@ const defaultItems: ItemProps[] = [
   })),
 ];
 
-type FixedSizeTreeProps = Omit<TreeProps, 'children'> & {
+type FixedSizeTreeProps = Omit<FlatTreeProps, 'children'> & {
   listProps: FixedSizeListProps & { ref?: React.Ref<FixedSizeList> };
 };
 
@@ -51,7 +51,7 @@ const FixedSizeTree: ForwardRefComponent<FixedSizeTreeProps> = React.forwardRef(
   const state = useFlatTree_unstable(props, ref);
   useFlatTreeStyles_unstable(state);
   const contextValues = useFlatTreeContextValues_unstable(state);
-  const { slots, slotProps } = getSlots<TreeSlots>(state);
+  const { slots, slotProps } = getSlots<FlatTreeSlots>(state);
   const handleOuterRef = React.useCallback((instance: HTMLElement | null) => {
     if (instance) {
       // This element stays between the tree and treeitem
@@ -76,39 +76,38 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
   const flatTreeItem = props.data[props.index];
   const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
   return (
-    <TreeItem {...treeItemProps} style={props.style}>
+    <FlatTreeItem {...treeItemProps} style={props.style}>
       <TreeItemLayout>{content}</TreeItemLayout>
-    </TreeItem>
+    </FlatTreeItem>
   );
 };
 
 export const Virtualization = () => {
-  const virtualTree = useHeadlessFlatTree_unstable(defaultItems);
+  const headlessTree = useHeadlessFlatTree_unstable(defaultItems);
   const listRef = React.useRef<FixedSizeList>(null);
-  const items = React.useMemo(() => Array.from(virtualTree.items()), [virtualTree]);
+  const items = React.useMemo(() => Array.from(headlessTree.items()), [headlessTree]);
 
   /**
    * Since navigation is not possible due to the fact that not all items are rendered,
    * we need to scroll to the next item and then invoke navigation.
    */
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-    event.preventDefault();
-    const nextItem = virtualTree.getNextNavigableItem(items, data);
+    const nextItem = headlessTree.getNextNavigableItem(items, data);
     if (!nextItem) {
       return;
     }
     // if the next item is not rendered, scroll to it and try to navigate again
-    if (!virtualTree.getElementFromItem(nextItem)) {
+    if (!headlessTree.getElementFromItem(nextItem)) {
+      event.preventDefault(); // preventing default disables internal navigation.
       listRef.current?.scrollToItem(nextItem.index);
-      return requestAnimationFrame(() => virtualTree.navigate(data));
+      // waiting for the next animation frame to allow the list to be scrolled
+      return requestAnimationFrame(() => headlessTree.navigate(data));
     }
-    // if the next item is rendered, navigate to it
-    virtualTree.navigate(data);
   };
 
   return (
     <FixedSizeTree
-      {...virtualTree.getTreeProps()}
+      {...headlessTree.getTreeProps()}
       listProps={{
         ref: listRef,
         height: 300,

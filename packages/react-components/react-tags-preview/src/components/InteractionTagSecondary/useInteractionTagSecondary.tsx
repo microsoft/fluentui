@@ -1,11 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getNativeElementProps, useEventCallback, slot, useId } from '@fluentui/react-utilities';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
-import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
+import { DismissRegular } from '@fluentui/react-icons';
 import type { InteractionTagSecondaryProps, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
 import { useInteractionTagContext_unstable } from '../../contexts/interactionTagContext';
-
-const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
 
 /**
  * Create the state required to render InteractionTagSecondary.
@@ -20,19 +18,22 @@ export const useInteractionTagSecondary_unstable = (
   props: InteractionTagSecondaryProps,
   ref: React.Ref<HTMLElement>,
 ): InteractionTagSecondaryState => {
-  const { appearance, disabled, handleTagDismiss, shape, size, value } = useInteractionTagContext_unstable();
+  const { appearance, disabled, handleTagDismiss, interactionTagPrimaryId, shape, size, value } =
+    useInteractionTagContext_unstable();
+
+  const id = useId('fui-InteractionTagSecondary-', props.id);
 
   const onClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props?.onClick?.(ev);
     if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
 
   const onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
 
@@ -47,11 +48,13 @@ export const useInteractionTagSecondary_unstable = (
 
     root: slot.always(
       getNativeElementProps('button', {
-        children: <DismissIcon />,
+        children: <DismissRegular />,
         type: 'button',
         disabled,
         ref,
+        'aria-labelledby': `${interactionTagPrimaryId} ${id}`,
         ...props,
+        id,
         onClick,
         onKeyDown,
       }),

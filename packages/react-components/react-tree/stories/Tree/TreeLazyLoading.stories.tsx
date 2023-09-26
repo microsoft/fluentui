@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
-  FlatTree as Tree,
-  TreeItem,
+  FlatTree,
+  FlatTreeItem,
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
   TreeItemValue,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 import { makeStyles, Spinner, shorthands } from '@fluentui/react-components';
 
 interface Result {
@@ -107,21 +107,21 @@ export const LazyLoading = () => {
   const treeProps = flatTree.getTreeProps();
   return (
     <>
-      <Tree {...treeProps} aria-label="Lazy Loading">
+      <FlatTree {...treeProps} aria-label="Lazy Loading">
         {Array.from(flatTree.items(), item => {
           const { name, ...itemProps } = item.getTreeItemProps();
           const { isLoading = false } = trees[item.value as 'people' | 'planets' | 'starships'] ?? {};
           return (
-            <TreeItem
+            <FlatTreeItem
               key={item.value}
               {...itemProps}
               ref={item.value === itemToFocusValue ? itemToFocusRef : undefined}
             >
               <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>{name}</TreeItemLayout>
-            </TreeItem>
+            </FlatTreeItem>
           );
         })}
-      </Tree>
+      </FlatTree>
       <AriaLive content={ariaMessage} />
     </>
   );

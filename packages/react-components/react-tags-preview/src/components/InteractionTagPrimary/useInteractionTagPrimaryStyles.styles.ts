@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelResetStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { InteractionTagPrimarySlots, InteractionTagPrimaryState } from './InteractionTagPrimary.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
@@ -8,7 +8,7 @@ import {
   useIconStyles,
   useMediaStyles,
   usePrimaryTextStyles,
-  useSecondaryTextStyles,
+  useSecondaryTextBaseClassName,
 } from '../Tag/useTagStyles.styles';
 
 export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrimarySlots> = {
@@ -19,34 +19,97 @@ export const interactionTagPrimaryClassNames: SlotClassNames<InteractionTagPrima
   secondaryText: 'fui-InteractionTagPrimary__secondaryText',
 };
 
-const useRootStyles = makeStyles({
-  base: {
-    // TODO use makeResetStyle when styles are settled
+const baseStyles: GriffelResetStyle = {
+  // reset default button style:
+  color: 'inherit',
+  fontFamily: 'inherit',
+  padding: '0px',
+  borderStyle: 'none',
+  appearance: 'button',
+  textAlign: 'unset',
+  backgroundColor: 'transparent',
 
-    // reset default button style:
-    color: 'inherit',
-    fontFamily: 'inherit',
-    ...shorthands.padding(0),
-    ...shorthands.borderStyle('none'),
-    appearance: 'button',
-    textAlign: 'unset',
-    backgroundColor: 'transparent',
+  display: 'inline-grid',
+  height: '100%',
+  alignItems: 'center',
+  gridTemplateAreas: `
+  "media primary  "
+  "media secondary"
+  `,
 
-    display: 'inline-grid',
-    height: '100%',
-    alignItems: 'center',
-    gridTemplateAreas: `
-    "media primary  "
-    "media secondary"
-    `,
+  border: `${tokens.strokeWidthThin} solid ${tokens.colorTransparentStroke}`,
+  ...createCustomFocusIndicatorStyle({
+    ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
+    zIndex: 1,
+  }),
+};
 
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
-    ...createCustomFocusIndicatorStyle({
-      ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
-      zIndex: 1,
-    }),
+const useRootRoundedBaseClassName = makeResetStyles({
+  ...baseStyles,
+  borderRadius: tokens.borderRadiusMedium,
+
+  /**
+   * Pseudo element to draw the border for windows high contrast mode -
+   * when Tag is with secondary text, primary text has negative margin that covers the border.
+   */
+  '@media (forced-colors: active)': {
+    position: 'relative',
+    '::before': {
+      content: '""',
+      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      position: 'absolute',
+      top: '-1px',
+      left: '-1px',
+      right: '-1px',
+      bottom: '-1px',
+      borderTopLeftRadius: tokens.borderRadiusMedium,
+      borderTopRightRadius: tokens.borderRadiusMedium,
+    },
   },
+});
 
+const useRootCircularBaseClassName = makeResetStyles({
+  ...baseStyles,
+  borderRadius: tokens.borderRadiusCircular,
+
+  /**
+   * Pseudo element to draw the border for windows high contrast mode -
+   * when Tag is with secondary text, primary text has negative margin that covers the border.
+   */
+  '@media (forced-colors: active)': {
+    position: 'relative',
+    '::before': {
+      content: '""',
+      ...shorthands.borderTop(tokens.strokeWidthThin, 'solid'),
+      ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid'),
+      position: 'absolute',
+      top: '-1px',
+      left: '-1px',
+      right: '-1px',
+      bottom: '-1px',
+      borderTopLeftRadius: tokens.borderRadiusCircular,
+      borderBottomLeftRadius: tokens.borderRadiusCircular,
+    },
+  },
+});
+
+/**
+ * Style override for pseudo element that draws the border for windows high contrast mode
+ */
+const useRootCircularContrastStyles = makeStyles({
+  withoutSecondaryAction: {
+    '@media (forced-colors: active)': {
+      position: 'relative',
+      '::before': {
+        ...shorthands.borderRight(tokens.strokeWidthThin, 'solid'),
+        borderTopRightRadius: tokens.borderRadiusCircular,
+        borderBottomRightRadius: tokens.borderRadiusCircular,
+      },
+    },
+  },
+});
+
+const useRootStyles = makeStyles({
   filled: {
     backgroundColor: tokens.colorNeutralBackground3,
     color: tokens.colorNeutralForeground2,
@@ -55,9 +118,17 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Hover,
       color: tokens.colorNeutralForeground2Hover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2Pressed,
+    },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
     },
   },
   outline: {
@@ -77,7 +148,7 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground2Pressed,
 
@@ -89,6 +160,14 @@ const useRootStyles = makeStyles({
         display: 'none',
       },
     },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
+    },
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
@@ -98,14 +177,19 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorBrandBackground2Hover,
       color: tokens.colorCompoundBrandForeground1Hover,
     },
-    ':hover:active': {
+    ':active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
       color: tokens.colorCompoundBrandForeground1Pressed,
     },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
+    },
   },
-
-  rounded: shorthands.borderRadius(tokens.borderRadiusMedium),
-  circular: shorthands.borderRadius(tokens.borderRadiusCircular),
 
   medium: {
     paddingRight: '7px',
@@ -179,6 +263,8 @@ const useRootWithSecondaryActionStyles = makeStyles({
 export const useInteractionTagPrimaryStyles_unstable = (
   state: InteractionTagPrimaryState,
 ): InteractionTagPrimaryState => {
+  const rootRoundedBaseClassName = useRootRoundedBaseClassName();
+  const rootCircularBaseClassName = useRootCircularBaseClassName();
   const rootStyles = useRootStyles();
   const rootDisabledAppearances = useRootDisabledAppearances();
   const rootWithoutMediaStyles = useRootWithoutMediaStyles();
@@ -187,16 +273,20 @@ export const useInteractionTagPrimaryStyles_unstable = (
   const iconStyles = useIconStyles();
   const mediaStyles = useMediaStyles();
   const primaryTextStyles = usePrimaryTextStyles();
-  const secondaryTextStyles = useSecondaryTextStyles();
+  const secondaryTextBaseClassName = useSecondaryTextBaseClassName();
+
+  const rootCircularContrastStyles = useRootCircularContrastStyles();
 
   const { shape, size, appearance } = state;
 
   state.root.className = mergeClasses(
     interactionTagPrimaryClassNames.root,
 
-    rootStyles.base,
+    shape === 'rounded' ? rootRoundedBaseClassName : rootCircularBaseClassName,
+
+    shape === 'circular' && !state.hasSecondaryAction && rootCircularContrastStyles.withoutSecondaryAction,
+
     state.disabled ? rootDisabledAppearances[appearance] : rootStyles[appearance],
-    rootStyles[shape],
     rootStyles[size],
 
     !state.media && !state.icon && rootWithoutMediaStyles[size],
@@ -237,7 +327,7 @@ export const useInteractionTagPrimaryStyles_unstable = (
   if (state.secondaryText) {
     state.secondaryText.className = mergeClasses(
       interactionTagPrimaryClassNames.secondaryText,
-      secondaryTextStyles.base,
+      secondaryTextBaseClassName,
       state.secondaryText.className,
     );
   }

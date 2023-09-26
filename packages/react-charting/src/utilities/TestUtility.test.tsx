@@ -11,11 +11,13 @@ export const testWithoutWait = (
   component: any,
   props: any,
   testFunction: (container: HTMLElement) => void,
-  testFunctionBeforeWait?: () => void,
+  testFunctionAfterRender?: () => void,
+  beforeAllFunction?: () => void,
 ) => {
   test(description, () => {
+    beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
-    testFunctionBeforeWait !== undefined && testFunctionBeforeWait();
+    testFunctionAfterRender !== undefined && testFunctionAfterRender();
     testFunction(container);
   });
 };
@@ -26,9 +28,13 @@ export const testWithWait = (
   component: any,
   props: any,
   testFunction: (container: HTMLElement) => void,
+  testFunctionAfterRender?: () => void,
+  beforeAllFunction?: () => void,
 ) => {
   test(description, async () => {
+    beforeAllFunction !== undefined && beforeAllFunction();
     const { container } = render(React.createElement(component, (props = { ...props })));
+    testFunctionAfterRender !== undefined && testFunctionAfterRender();
     await waitFor(() => {
       testFunction(container);
     });

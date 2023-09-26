@@ -15,6 +15,7 @@ export {
 } from '@griffel/react';
 export type { GriffelStyle, GriffelRenderer, GriffelResetStyle } from '@griffel/react';
 export {
+  createCSSRuleFromTheme,
   FluentProvider,
   fluentProviderClassNames,
   renderFluentProvider_unstable,
@@ -246,6 +247,17 @@ export {
   useCounterBadgeStyles_unstable,
   usePresenceBadge_unstable,
   usePresenceBadgeStyles_unstable,
+  presenceAwayRegular,
+  presenceAwayFilled,
+  presenceAvailableRegular,
+  presenceAvailableFilled,
+  presenceBlockedRegular,
+  presenceBusyFilled,
+  presenceDndRegular,
+  presenceDndFilled,
+  presenceOofRegular,
+  presenceOfflineRegular,
+  presenceUnknownRegular,
 } from '@fluentui/react-badge';
 export type {
   BadgeProps,
@@ -811,6 +823,8 @@ export {
   useDialogContentStyles_unstable,
   useDialogContent_unstable,
   renderDialogContent_unstable,
+  useDialogContext_unstable,
+  useDialogSurfaceContext_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -839,6 +853,8 @@ export type {
   DialogContentProps,
   DialogContentSlots,
   DialogContentState,
+  DialogContextValue,
+  DialogSurfaceContextValue,
 } from '@fluentui/react-dialog';
 
 export {
@@ -992,9 +1008,11 @@ export {
   useDataGridBody_unstable,
   renderDataGridBody_unstable,
   DataGrid,
+  DataGridContextProvider,
   dataGridClassNames,
   useDataGridStyles_unstable,
   useDataGrid_unstable,
+  useDataGridContext_unstable,
   renderDataGrid_unstable,
   useDataGridContextValues_unstable,
   DataGridHeader,
@@ -1015,6 +1033,10 @@ export {
   TableRowIdContextProvider,
   useTableRowIdContext,
   useTableColumnSizing_unstable,
+  ColumnIdContextProvider,
+  useColumnIdContext,
+  TableHeaderContextProvider,
+  useIsInTableHeader,
 } from '@fluentui/react-table';
 
 export type {
@@ -1206,6 +1228,7 @@ export type {
 
 export {
   FlatTree,
+  FlatTreeItem,
   Tree,
   TreeItem,
   TreeItemLayout,
@@ -1247,6 +1270,7 @@ export type {
   FlatTreeSlots,
   FlatTreeState,
   FlattenTreeItem,
+  FlatTreeItemProps,
   HeadlessFlatTree,
   HeadlessFlatTreeItem,
   HeadlessFlatTreeItemProps,
@@ -1270,6 +1294,8 @@ export type {
   TreeNavigationEvent_unstable,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
+  TreeItemOpenChangeData,
+  TreeItemOpenChangeEvent,
   TreeProps,
   TreeSelectionValue,
   TreeSlots,

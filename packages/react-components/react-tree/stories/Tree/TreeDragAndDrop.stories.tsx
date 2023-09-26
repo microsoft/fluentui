@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {
-  FlatTree as Tree,
-  TreeItem,
+  FlatTree,
+  FlatTreeItem,
   TreeItemLayout,
   useHeadlessFlatTree_unstable,
   HeadlessFlatTreeItemProps,
-  TreeItemProps,
-} from '@fluentui/react-tree';
+  FlatTreeItemProps,
+} from '@fluentui/react-components';
 
 import {
   DndContext,
@@ -43,16 +43,16 @@ const sortItems = (array: FlatItem[], from: number, to: number) => {
   return newArray;
 };
 
-const SortableTreeItem = ({ children, value, ...rest }: TreeItemProps) => {
+const SortableTreeItem = ({ children, value, ...rest }: FlatTreeItemProps) => {
   const { attributes, isDragging, listeners, setNodeRef, transform, transition } = useSortable({
     id: value as UniqueIdentifier,
   });
   const style = { transform: CSS.Transform.toString(transform), transition, zIndex: isDragging ? 1 : 0 };
 
   return (
-    <TreeItem ref={setNodeRef} value={value} style={style} {...attributes} {...listeners} {...rest}>
+    <FlatTreeItem ref={setNodeRef} value={value} style={style} {...attributes} {...listeners} {...rest}>
       {children}
-    </TreeItem>
+    </FlatTreeItem>
   );
 };
 
@@ -79,7 +79,7 @@ export const DragAndDrop = () => {
   return (
     <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
       <SortableContext items={sortableItems} strategy={verticalListSortingStrategy}>
-        <Tree aria-label="Drag And Drop" {...virtualTree.getTreeProps()}>
+        <FlatTree aria-label="Drag And Drop" {...virtualTree.getTreeProps()}>
           {Array.from(virtualTree.items(), item => {
             const { layout, ...itemProps } = item.getTreeItemProps();
             return item.itemType === 'leaf' ? (
@@ -87,12 +87,12 @@ export const DragAndDrop = () => {
                 <TreeItemLayout>{layout}</TreeItemLayout>
               </SortableTreeItem>
             ) : (
-              <TreeItem {...itemProps} key={item.value}>
+              <FlatTreeItem {...itemProps} key={item.value}>
                 <TreeItemLayout>{layout}</TreeItemLayout>
-              </TreeItem>
+              </FlatTreeItem>
             );
           })}
-        </Tree>
+        </FlatTree>
       </SortableContext>
     </DndContext>
   );

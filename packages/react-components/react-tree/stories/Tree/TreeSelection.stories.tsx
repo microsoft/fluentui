@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {
   FlatTree,
-  TreeItem,
+  FlatTreeItem,
   TreeItemLayout,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
-} from '@fluentui/react-tree';
+} from '@fluentui/react-components';
 
 const SELECTION_MODE = 'multiselect'; // change to "single" for single selection
 
@@ -36,9 +36,9 @@ export const Selection = () => {
       {Array.from(flatTree.items(), flatTreeItem => {
         const { content, ...treeItemProps } = flatTreeItem.getTreeItemProps();
         return (
-          <TreeItem {...treeItemProps} key={flatTreeItem.value}>
+          <FlatTreeItem {...treeItemProps} key={flatTreeItem.value}>
             <TreeItemLayout>{content}</TreeItemLayout>
-          </TreeItem>
+          </FlatTreeItem>
         );
       })}
     </FlatTree>

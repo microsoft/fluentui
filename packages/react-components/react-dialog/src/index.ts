@@ -65,3 +65,12 @@ export {
   renderDialogContent_unstable,
 } from './DialogContent';
 export type { DialogContentProps, DialogContentSlots, DialogContentState } from './DialogContent';
+
+export {
+  useDialogContext_unstable,
+  useDialogSurfaceContext_unstable,
+  DialogProvider,
+  DialogSurfaceProvider,
+} from './contexts/index';
+
+export type { DialogContextValue, DialogSurfaceContextValue } from './contexts/index';

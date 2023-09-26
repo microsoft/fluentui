@@ -35,16 +35,27 @@ const points: IChartDataPoint[] = [
   { legend: 'third', data: 45000, color: '#DADADA', xAxisCalloutData: '2020/04/25' },
 ];
 
+const pointsNoColors: IChartDataPoint[] = [
+  { legend: 'first', data: 20000, xAxisCalloutData: '2020/04/30' },
+  { legend: 'second', data: 39000, xAxisCalloutData: '2020/04/20' },
+  { legend: 'third', data: 45000, xAxisCalloutData: '2020/04/25' },
+];
+
 const chartTitle = 'Stacked Bar chart example';
 
 export const chartPoints: IChartProps = {
-  chartTitle: chartTitle,
+  chartTitle,
   chartData: points,
 };
 
 export const emptyChartPoints: IChartProps = {
-  chartTitle: chartTitle,
+  chartTitle,
   chartData: [],
+};
+
+export const noColorsChartPoints: IChartProps = {
+  chartTitle,
+  chartData: pointsNoColors,
 };
 
 describe('DonutChart snapShot testing', () => {
@@ -52,6 +63,17 @@ describe('DonutChart snapShot testing', () => {
     const component = renderer.create(<DonutChart data={chartPoints} innerRadius={55} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders DonutChart correctly without color points', () => {
+    const chartPointColor = points[0].color;
+    delete points[0].color;
+
+    const component = renderer.create(<DonutChart data={noColorsChartPoints} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+
+    points[0].color = chartPointColor;
   });
 
   it('renders hideLegend correctly', () => {

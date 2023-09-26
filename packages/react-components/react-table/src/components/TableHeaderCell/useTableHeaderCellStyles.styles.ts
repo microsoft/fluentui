@@ -64,7 +64,6 @@ const useStyles = makeStyles({
     ...shorthands.overflow('visible'),
     ...shorthands.padding(0),
     ...shorthands.borderStyle('none'),
-    WebkitAppearance: 'button',
     textAlign: 'unset',
   },
 

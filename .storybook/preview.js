@@ -48,9 +48,10 @@ export const parameters = {
       'react-dom': '^17',
       // necessary when using typescript in CodeSandbox
       'react-scripts': 'latest',
+      // necessary for FluentProvider:
+      '@fluentui/react-components': '^9.0.0',
     },
     optionalDependencies: {
-      '@fluentui/react-components': '^9.0.0', // necessary for FluentProvider
       '@fluentui/react-icons': 'latest',
     },
     indexTsx: dedent`
