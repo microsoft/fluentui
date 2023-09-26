@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use makeResetStyles for base dialog components styles",
+  "packageName": "@fluentui/react-dialog",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
