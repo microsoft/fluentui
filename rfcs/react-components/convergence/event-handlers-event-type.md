@@ -1,4 +1,4 @@
-# RFC: Standardize Event Handlers Event Typing
+# RFC: Extending Event Handlers Event Typing
 
 This RFC proposes solutions to enhance event typing within callbacks.
 
