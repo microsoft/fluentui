@@ -1,19 +1,11 @@
 import * as React from 'react';
 
-import {
-  Button,
-  Menu,
-  MenuTrigger,
-  MenuList,
-  MenuItem,
-  MenuPopover,
-  useRestoreFocusTarget,
-} from '@fluentui/react-components';
+import { Button, Menu, MenuTrigger, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
 
 export const Default = () => (
-  <Menu openOnContext>
+  <Menu>
     <MenuTrigger disableButtonEnhancement>
-      <Button {...useRestoreFocusTarget()}>Toggle menu</Button>
+      <Button>Toggle menu</Button>
     </MenuTrigger>
 
     <MenuPopover>
