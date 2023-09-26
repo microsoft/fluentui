@@ -112,7 +112,7 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           styles={{ root: { marginBottom: '20px' } }}
         />
         <Toggle
-          label="Show chart mode in percentage"
+          label="Show labels as percentage"
           onText="Chart mode in percentage"
           offText="Chart mode default"
           onChange={this._onChangeChartMode}

@@ -130,7 +130,7 @@ export class HorizontalBarChartBasicExample extends React.Component<
     return (
       <>
         <Toggle
-          label="Show chart mode in percentage"
+          label="Show labels as percentage"
           onText="Chart mode in percentage"
           offText="Chart mode default"
           onChange={this._onChangeChartMode}
