@@ -21,6 +21,7 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
 const useStyles = makeStyles({
   focusOutline: createFocusOutlineStyle(),
   root: {
+    contain: 'content',
     display: 'block',
     userSelect: 'unset',
     visibility: 'unset',

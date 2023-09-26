@@ -1,8 +1,37 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
+This log was last generated on Wed, 20 Sep 2023 17:47:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.8)
+
+Wed, 20 Sep 2023 17:47:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.7..@fluentui/react-table_v9.8.8)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.32 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.42 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-radio to v9.1.42 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.1 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-tabster to v9.12.11 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.10 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+
+## [9.8.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.7)
+
+Wed, 20 Sep 2023 14:59:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.8.6..@fluentui/react-table_v9.8.7)
+
+### Patches
+
+- Bump @fluentui/react-avatar to v9.5.31 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.41 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-radio to v9.1.41 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-tabster to v9.12.10 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.9 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
 
 ## [9.8.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.8.6)
 

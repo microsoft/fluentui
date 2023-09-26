@@ -26,8 +26,6 @@ describe('DrawerHeaderTitle', () => {
     disabledTests: ['component-has-static-classnames-object'],
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<DrawerHeaderTitle>Default DrawerHeaderTitle</DrawerHeaderTitle>);
     expect(result.container).toMatchInlineSnapshot(`

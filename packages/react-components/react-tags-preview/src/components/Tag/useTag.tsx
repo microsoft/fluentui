@@ -39,19 +39,21 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     value = id,
   } = props;
 
-  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+  const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
     if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
 
-  const handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+  const dismissOnKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
+
+  const elementType = dismissible ? 'button' : 'span';
 
   return {
     appearance,
@@ -63,7 +65,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     size,
 
     components: {
-      root: dismissible ? 'button' : 'span',
+      root: elementType,
       media: 'span',
       icon: 'span',
       primaryText: 'span',
@@ -72,14 +74,13 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
+      getNativeElementProps(elementType, {
         ref,
         ...props,
         id,
-        onClick: handleClick,
-        onKeyDown: handleKeyDown,
+        ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
-      { elementType: dismissible ? 'button' : 'span' },
+      { elementType },
     ),
 
     media: slot.optional(props.media, { elementType: 'span' }),

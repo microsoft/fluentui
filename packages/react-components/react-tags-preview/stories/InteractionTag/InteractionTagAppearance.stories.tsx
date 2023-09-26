@@ -16,34 +16,22 @@ export const Appearance = () => {
   return (
     <div className={styles.container}>
       <InteractionTag>
-        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction id="filled-primary">
+        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           filled
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="filled-primary filled-secondary"
-          id="filled-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
       <InteractionTag appearance="outline">
-        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction id="outline-primary">
+        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           outline
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="outline-primary outline-secondary"
-          id="outline-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
       <InteractionTag appearance="brand">
-        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction id="brand-primary">
+        <InteractionTagPrimary icon={<CalendarMonth />} hasSecondaryAction>
           brand
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="brand-primary brand-secondary"
-          id="brand-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
     </div>
   );

@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
-import { DialogProps, DialogSurface, DialogSurfaceProps } from '@fluentui/react-dialog';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
+import { Dialog, DialogSurface } from '@fluentui/react-dialog';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
@@ -19,19 +19,19 @@ export const useDrawerOverlay_unstable = (
   props: DrawerOverlayProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
-  const { open, defaultOpen, size, position } = useDrawerDefaultProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
+  const { open, size, position } = useDrawerDefaultProps(props);
+  const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
 
   const drawerMotion = useMotion<HTMLDivElement>(open);
   const backdropMotion = useMotion<HTMLDivElement>(open);
 
   const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
 
-  const root = slot.always<DialogSurfaceProps>(
-    getNativeElementProps('div', {
+  const root = slot.always(
+    {
       ...props,
       ref: useMergedRefs(ref, drawerMotion.ref),
-    }),
+    },
     {
       elementType: DialogSurface,
       defaultProps: {
@@ -46,28 +46,28 @@ export const useDrawerOverlay_unstable = (
     },
   );
 
-  const dialog = slot.always(
-    {
+  const dialog = slot.optional(props.dialog, {
+    elementType: Dialog,
+    renderByDefault: true,
+    defaultProps: {
       open: true,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
       modalType,
-    } as DialogProps,
-    {
-      elementType: 'div',
     },
-  );
+  });
 
   return {
     components: {
       root: DialogSurface,
+      dialog: Dialog,
       backdrop: 'div',
     },
 
     root,
-
     dialog,
+
     size,
     position,
     motion: drawerMotion,
