@@ -40,7 +40,7 @@ export const useDialogTitle_unstable = (props: DialogTitleProps, ref: React.Ref<
           <DialogTrigger disableButtonEnhancement action="close">
             <button
               type="button"
-              className={internalStyles.button}
+              className={internalStyles}
               // TODO: find a better way to add internal labels
               aria-label="close"
             >

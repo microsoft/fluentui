@@ -26,7 +26,7 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
 
 // @public
-export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'appearance' | 'size'> & Pick<ButtonProps, 'disabled'> & {
+export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'appearance' | 'size'> & Pick<ButtonProps, 'disabled' | 'disabledFocusable'> & {
     current?: boolean;
 };
 

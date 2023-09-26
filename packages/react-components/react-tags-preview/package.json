@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-tags-preview",
   "version": "0.2.12",
-  "description": "React components for building web experiences",
+  "description": "Fluent UI Tag component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
