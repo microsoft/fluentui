@@ -4,39 +4,6 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
-import type { SlotClassNames } from '@fluentui/react-utilities';
-
-// @public
-export const Messagebar: ForwardRefComponent<MessagebarProps>;
-
-// @public (undocumented)
-export const messagebarClassNames: SlotClassNames<MessagebarSlots>;
-
-// @public
-export type MessagebarProps = ComponentProps<MessagebarSlots> & {};
-
-// @public (undocumented)
-export type MessagebarSlots = {
-    root: Slot<'div'>;
-};
-
-// @public
-export type MessagebarState = ComponentState<MessagebarSlots>;
-
-// @public
-export const renderMessagebar_unstable: (state: MessagebarState) => JSX.Element;
-
-// @public
-export const useMessagebar_unstable: (props: MessagebarProps, ref: React_2.Ref<HTMLElement>) => MessagebarState;
-
-// @public
-export const useMessagebarStyles_unstable: (state: MessagebarState) => MessagebarState;
-
 // (No @packageDocumentation comment for this package)
 
 ```
