@@ -8,16 +8,8 @@ export type SubtreeContextValue = {
 /**
  * @internal
  */
-export const defaultSubTreeContextValue: SubtreeContextValue = {
+const defaultSubTreeContextValue: SubtreeContextValue = {
   level: 0,
-  contextType: 'subtree',
-};
-
-/**
- * @internal
- */
-export const defaultRootTreeContextValue: SubtreeContextValue = {
-  level: 1,
   contextType: 'subtree',
 };
 

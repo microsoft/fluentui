@@ -7,7 +7,7 @@ import type {
   TreeState,
 } from '../Tree';
 import * as React from 'react';
-import { TreeItemRequest } from '../contexts/treeContext';
+import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
 import { createOpenItems } from '../utils/createOpenItems';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
@@ -35,7 +35,7 @@ export function useRootTree(
   >,
 
   ref: React.Ref<HTMLElement>,
-): Omit<Extract<TreeState, { contextType: 'root' }>, 'treeType'> {
+): Omit<TreeState & TreeContextValue, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;

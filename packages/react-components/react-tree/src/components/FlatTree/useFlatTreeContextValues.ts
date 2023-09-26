@@ -5,7 +5,7 @@ export const useFlatTreeContextValues_unstable = (state: FlatTreeState): FlatTre
   const {
     openItems,
     level,
-    contextType: type,
+    contextType,
     treeType,
     checkedItems,
     selectionMode,
@@ -24,7 +24,7 @@ export const useFlatTreeContextValues_unstable = (state: FlatTreeState): FlatTre
     appearance,
     checkedItems,
     selectionMode,
-    contextType: type,
+    contextType,
     level,
     requestTreeResponse,
   };

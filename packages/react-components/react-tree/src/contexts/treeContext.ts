@@ -6,7 +6,7 @@ import { ImmutableMap } from '../utils/ImmutableMap';
 import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
-  contextType: 'root';
+  contextType?: 'root';
   level: number;
   treeType: 'nested' | 'flat';
   selectionMode: 'none' | SelectionMode;
@@ -35,7 +35,7 @@ type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unk
 /**
  * @internal
  */
-export const defaultTreeContextValue: TreeContextValue = {
+const defaultTreeContextValue: TreeContextValue = {
   level: 0,
   contextType: 'root',
   treeType: 'nested',

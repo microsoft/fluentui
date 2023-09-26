@@ -146,7 +146,7 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
 export type TreeContextValue = {
-    contextType: 'root';
+    contextType?: 'root';
     level: number;
     treeType: 'nested' | 'flat';
     selectionMode: 'none' | SelectionMode_2;
@@ -364,7 +364,10 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 };
 
 // @public (undocumented)
-export const TreeProvider: React_2.MemoExoticComponent<(props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>) => JSX.Element>;
+export const TreeProvider: {
+    (props: React_2.ProviderProps<TreeContextValue | SubtreeContextValue>): JSX.Element;
+    displayName: string;
+};
 
 // @public (undocumented)
 export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;

@@ -7,7 +7,7 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
     const {
       openItems,
       level,
-      contextType: type,
+      contextType,
       treeType,
       checkedItems,
       selectionMode,
@@ -26,7 +26,7 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
       appearance,
       checkedItems,
       selectionMode,
-      contextType: type,
+      contextType,
       level,
       requestTreeResponse,
     };
@@ -34,7 +34,7 @@ export function useTreeContextValues_unstable(state: TreeState): TreeContextValu
     return { tree };
   }
   return {
-    // level is statically determined by the context
+    // contextType is statically determined by the context
     // eslint-disable-next-line react-hooks/rules-of-hooks
     tree: React.useMemo(() => ({ level: state.level, contextType: 'subtree' }), [state.level]),
   };

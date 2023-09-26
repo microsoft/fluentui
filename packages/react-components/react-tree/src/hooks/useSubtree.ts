@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { TreeProps, TreeState } from '../Tree';
-import { useTreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
+import { SubtreeContextValue, useTreeContext_unstable, useTreeItemContext_unstable } from '../contexts/index';
 import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 
 /**
@@ -12,7 +12,7 @@ import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-util
 export function useSubtree(
   props: Pick<TreeProps, 'appearance' | 'size'>,
   ref: React.Ref<HTMLElement>,
-): Omit<Extract<TreeState, { contextType: 'subtree' }>, 'treeType'> {
+): Omit<TreeState & SubtreeContextValue, 'treeType'> {
   const subtreeRef = useTreeItemContext_unstable(ctx => ctx.subtreeRef);
 
   const parentLevel = useTreeContext_unstable(ctx => ctx.level);

@@ -1,14 +1,16 @@
 import * as React from 'react';
 import { useRootTree } from '../../hooks/useRootTree';
-import { FlatTreeProps, FlatTreeSlots, FlatTreeState } from './FlatTree.types';
+import { FlatTreeProps, FlatTreeState } from './FlatTree.types';
 import { useFlatTreeNavigation } from './useFlatTreeNavigation';
 import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { treeItemFilter } from '../../utils/treeItemFilter';
-import { ExtractSlotProps, slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TreeNavigationData_unstable, TreeNavigationEvent_unstable } from '../Tree/Tree.types';
-import { useTreeContext_unstable, defaultTreeContextValue } from '../../contexts/treeContext';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useSubtree } from '../../hooks/useSubtree';
+import { ImmutableSet } from '../../utils/ImmutableSet';
+import { ImmutableMap } from '../../utils/ImmutableMap';
 
 export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLElement>) => FlatTreeState = (
   props,
@@ -62,9 +64,23 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
   }
   return {
     ...useSubtree(props, ref),
-    ...defaultTreeContextValue,
+    // ------ defaultTreeContextValue
+    level: 0,
+    contextType: 'root',
+    treeType: 'nested',
+    selectionMode: 'none',
+    openItems: ImmutableSet.empty,
+    checkedItems: ImmutableMap.empty,
+    requestTreeResponse: noop,
+    appearance: 'subtle',
+    size: 'medium',
+    // ------ defaultTreeContextValue
     open: false,
     components: { root: React.Fragment },
-    root: slot.always<ExtractSlotProps<FlatTreeSlots['root']>>(undefined, { elementType: React.Fragment }),
+    root: slot.always(props, { elementType: React.Fragment }),
   };
+}
+
+function noop() {
+  /* do nothing */
 }

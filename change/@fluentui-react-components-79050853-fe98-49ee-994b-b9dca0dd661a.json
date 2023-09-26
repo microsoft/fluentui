@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: creates SubtreeContext",
+  "comment": "feat: export SubtreeContext from @fluentui/react-tree",
   "packageName": "@fluentui/react-components",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
