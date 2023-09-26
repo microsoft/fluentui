@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: update PresenceBadge to use resizable icons",
+  "packageName": "@fluentui/react-badge",
+  "email": "ololubek@microsoft.com",
+  "dependentChangeType": "patch"
+}
