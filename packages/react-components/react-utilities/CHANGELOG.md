@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Tue, 26 Sep 2023 15:31:40 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.5)
+
+Tue, 26 Sep 2023 17:49:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.4..@fluentui/react-utilities_v9.13.5)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.6 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
 
 ## [9.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.4)
 

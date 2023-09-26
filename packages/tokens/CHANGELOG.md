@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Tue, 26 Sep 2023 15:31:40 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.11](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.11)
+
+Tue, 26 Sep 2023 17:49:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.10..@fluentui/tokens_v1.0.0-alpha.11)
+
+### Changes
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
 
 ## [1.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.10)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Tue, 26 Sep 2023 15:32:06 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.7)
+
+Tue, 26 Sep 2023 17:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.6..@fluentui/priority-overflow_v9.1.7)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
 
 ## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.6)
 

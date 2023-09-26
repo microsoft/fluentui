@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-theme-sass
 
-This log was last generated on Tue, 26 Sep 2023 15:31:43 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.18)
+
+Tue, 26 Sep 2023 17:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-theme-sass_v9.0.0-alpha.17..@fluentui/react-theme-sass_v9.0.0-alpha.18)
+
+### Changes
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
 
 ## [9.0.0-alpha.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-theme-sass_v9.0.0-alpha.17)
 

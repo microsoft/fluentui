@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Tue, 26 Sep 2023 15:32:07 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.6)
+
+Tue, 26 Sep 2023 17:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.5..@fluentui/keyboard-keys_v9.0.6)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
 
 ## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.5)
 

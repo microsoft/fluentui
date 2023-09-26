@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-textarea
 
-This log was last generated on Tue, 26 Sep 2023 15:31:44 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:13 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.41)
+
+Tue, 26 Sep 2023 17:49:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-textarea_v9.3.40..@fluentui/react-textarea_v9.3.41)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-field to v9.1.31 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.1 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-theme to v9.1.14 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-utilities to v9.13.5 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.12 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
 
 ## [9.3.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-textarea_v9.3.40)
 
