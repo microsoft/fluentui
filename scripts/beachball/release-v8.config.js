@@ -1,11 +1,9 @@
 // @ts-check
 
-if (process.env.NODE_ENV !== 'test') {
-  require('../ts-node/register');
-}
+require('./register').register();
 
-const { getConfig } = require('./utils');
 const { config: sharedConfig } = require('./shared.config');
+const { getConfig } = require('./utils');
 
 const { scope } = getConfig({ version: 'v8' });
 
