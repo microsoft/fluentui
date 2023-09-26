@@ -11,6 +11,7 @@
     "node": "^16.18.1 || ^18.0.0"
   },
   "scripts": {
+    "dedupe": "npx yarn-deduplicate --strategy fewer",
     "build": "lage build --verbose",
     "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components",
     "build:fluentui:docs": "gulp build:docs",
