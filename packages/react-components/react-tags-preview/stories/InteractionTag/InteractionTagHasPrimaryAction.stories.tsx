@@ -21,9 +21,7 @@ export const HasPrimaryAction = () => {
     <InteractionTag>
       <Popover trapFocus>
         <PopoverTrigger>
-          <InteractionTagPrimary hasSecondaryAction id="golden-retriever-primary">
-            golden retriever
-          </InteractionTagPrimary>
+          <InteractionTagPrimary hasSecondaryAction>golden retriever</InteractionTagPrimary>
         </PopoverTrigger>
         <PopoverSurface className={styles.popover}>
           <Link href="https://en.wikipedia.org/wiki/Golden_Retriever">Find out more on wiki</Link>
@@ -36,11 +34,7 @@ export const HasPrimaryAction = () => {
         </PopoverSurface>
       </Popover>
       <Tooltip content={liked ? 'unlike' : 'like'} relationship="label">
-        <InteractionTagSecondary
-          onClick={toggleSecondary}
-          aria-labelledby="golden-retriever-primary golden-retriever-secondary"
-          id="golden-retriever-secondary"
-        >
+        <InteractionTagSecondary onClick={toggleSecondary}>
           <HeartIcon filled={liked} />
         </InteractionTagSecondary>
       </Tooltip>

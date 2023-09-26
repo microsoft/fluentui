@@ -14,49 +14,22 @@ export const Disabled = () => {
   return (
     <div className={styles.container}>
       <InteractionTag disabled>
-        <InteractionTagPrimary
-          secondaryText="appearance=filled"
-          icon={<CalendarMonthRegular />}
-          hasSecondaryAction
-          id="disabled-filled-primary"
-        >
+        <InteractionTagPrimary secondaryText="appearance=filled" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="disabled-filled-primary disabled-filled-secondary"
-          id="disabled-filled-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
       <InteractionTag disabled appearance="outline">
-        <InteractionTagPrimary
-          secondaryText="appearance=outline"
-          icon={<CalendarMonthRegular />}
-          hasSecondaryAction
-          id="disabled-outline-primary"
-        >
+        <InteractionTagPrimary secondaryText="appearance=outline" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="disabled-outline-primary disabled-outline-secondary"
-          id="disabled-outline-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
       <InteractionTag disabled appearance="brand">
-        <InteractionTagPrimary
-          secondaryText="appearance=brand"
-          icon={<CalendarMonthRegular />}
-          hasSecondaryAction
-          id="disabled-brand-primary"
-        >
+        <InteractionTagPrimary secondaryText="appearance=brand" icon={<CalendarMonthRegular />} hasSecondaryAction>
           disabled
         </InteractionTagPrimary>
-        <InteractionTagSecondary
-          aria-label="remove"
-          aria-labelledby="disabled-brand-primary disabled-brand-secondary"
-          id="disabled-brand-secondary"
-        />
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
     </div>
   );

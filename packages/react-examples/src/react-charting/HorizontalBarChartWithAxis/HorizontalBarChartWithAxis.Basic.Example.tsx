@@ -141,6 +141,7 @@ export class HorizontalBarChartWithAxisBasicExample extends React.Component<
                 defaultRender: IRenderFunction<IHorizontalBarChartWithAxisDataPoint>,
               ) => (props ? defaultRender(props) : null),
             })}
+            enableReflow={true}
           />
         </div>
       </>

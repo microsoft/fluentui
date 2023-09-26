@@ -28,13 +28,6 @@ export type DrawerBaseProps = {
    * @default false
    */
   open?: MotionShorthand<HTMLDivElement>;
-
-  /**
-   * Default value for the uncontrolled open state of the Drawer.
-   *
-   * @default false
-   */
-  defaultOpen?: boolean;
 };
 
 export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {

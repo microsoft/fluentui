@@ -153,6 +153,7 @@ import { CounterBadge } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
+import { createCSSRuleFromTheme } from '@fluentui/react-provider';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
@@ -278,6 +279,8 @@ import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlattenTreeItem } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
 import { flatTreeClassNames } from '@fluentui/react-tree';
+import { FlatTreeItem } from '@fluentui/react-tree';
+import { FlatTreeItemProps } from '@fluentui/react-tree';
 import { FlatTreeProps } from '@fluentui/react-tree';
 import { FlatTreeSlots } from '@fluentui/react-tree';
 import { FlatTreeState } from '@fluentui/react-tree';
@@ -1489,6 +1492,8 @@ export { CounterBadgeProps }
 
 export { CounterBadgeState }
 
+export { createCSSRuleFromTheme }
+
 export { createCustomFocusIndicatorStyle }
 
 export { CreateCustomFocusIndicatorStyleOptions }
@@ -1738,6 +1743,10 @@ export { FlattenTreeItem }
 export { FlatTree }
 
 export { flatTreeClassNames }
+
+export { FlatTreeItem }
+
+export { FlatTreeItemProps }
 
 export { FlatTreeProps }
 

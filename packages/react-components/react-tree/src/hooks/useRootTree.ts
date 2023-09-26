@@ -7,11 +7,11 @@ import type {
   TreeState,
 } from '../Tree';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
 import { TreeItemRequest } from '../contexts/treeContext';
 import { createOpenItems } from '../utils/createOpenItems';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
+import { createNextOpenItems } from './useControllableOpenItems';
 
 /**
  * Create the state required to render the root level tree.
@@ -35,14 +35,20 @@ export function useRootTree(
   >,
 
   ref: React.Ref<HTMLElement>,
-): TreeState {
+): Omit<TreeState, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
   const openItems = React.useMemo(() => createOpenItems(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
-  const requestOpenChange = (data: TreeOpenChangeData) => props.onOpenChange?.(data.event, data);
+  const requestOpenChange = (data: TreeOpenChangeData) => {
+    const nextOpenItems = createNextOpenItems(data, openItems);
+    props.onOpenChange?.(data.event, {
+      ...data,
+      openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
+    });
+  };
 
   const requestCheckedChange = (data: TreeCheckedChangeData) => props.onCheckedChange?.(data.event, data);
 
@@ -60,65 +66,21 @@ export function useRootTree(
   };
 
   const requestTreeResponse = useEventCallback((request: TreeItemRequest) => {
-    switch (request.type) {
-      case treeDataTypes.Click:
-      case treeDataTypes.ExpandIconClick: {
-        return ReactDOM.unstable_batchedUpdates(() => {
-          requestOpenChange({
-            ...request,
-            open: request.itemType === 'branch' && !openItems.has(request.value),
-            openItems: openItems.dangerouslyGetInternalSet_unstable(),
-          });
-          requestNavigation({ ...request, type: treeDataTypes.Click });
-        });
-      }
-      case treeDataTypes.ArrowRight: {
-        if (request.itemType === 'leaf') {
-          return;
-        }
-        const open = openItems.has(request.value);
-        if (!open) {
-          return requestOpenChange({
-            ...request,
-            open: true,
-            openItems: openItems.dangerouslyGetInternalSet_unstable(),
-          });
-        }
+    switch (request.requestType) {
+      case 'navigate':
         return requestNavigation(request);
-      }
-      case treeDataTypes.Enter: {
-        const open = openItems.has(request.value);
+      case 'open':
         return requestOpenChange({
           ...request,
-          open: request.itemType === 'branch' && !open,
+          open: request.itemType === 'branch' && !openItems.has(request.value),
           openItems: openItems.dangerouslyGetInternalSet_unstable(),
         });
-      }
-      case treeDataTypes.ArrowLeft: {
-        const open = openItems.has(request.value);
-        if (open && request.itemType === 'branch') {
-          return requestOpenChange({
-            ...request,
-            open: false,
-            type: treeDataTypes.ArrowLeft,
-            openItems: openItems.dangerouslyGetInternalSet_unstable(),
-          });
-        }
-        return requestNavigation({ ...request, type: treeDataTypes.ArrowLeft });
-      }
-      case treeDataTypes.End:
-      case treeDataTypes.Home:
-      case treeDataTypes.ArrowUp:
-      case treeDataTypes.ArrowDown:
-      case treeDataTypes.TypeAhead:
-        return requestNavigation({ ...request, target: request.event.currentTarget });
-      case treeDataTypes.Change: {
+      case 'selection':
         return requestCheckedChange({
           ...request,
           selectionMode: selectionMode as SelectionMode,
           checkedItems: checkedItems.dangerouslyGetInternalMap_unstable(),
         } as TreeCheckedChangeData);
-      }
     }
   });
 
