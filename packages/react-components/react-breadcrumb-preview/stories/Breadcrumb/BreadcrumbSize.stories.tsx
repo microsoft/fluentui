@@ -1,12 +1,5 @@
 import * as React from 'react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbDivider,
-  BreadcrumbProps,
-  BreadcrumbButton,
-} from '@fluentui/react-breadcrumb-preview';
-import { RadioGroup, Radio, Label } from '@fluentui/react-components';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbButton } from '@fluentui/react-breadcrumb-preview';
 
 type Item = {
   key: number;
@@ -31,22 +24,12 @@ const items: Item[] = [
   },
 ];
 
-function renderItem(item: Item, size: BreadcrumbProps['size']) {
-  const isLastItem = items.length - 1 === item.key;
-  return (
-    <React.Fragment key={`${size}-item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>{item.value}</BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
-
 function renderButton(item: Item) {
   const isLastItem = items.length - 1 === item.key;
   return (
     <React.Fragment key={`button-item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>
-        <BreadcrumbButton>{item.value}</BreadcrumbButton>
+      <BreadcrumbItem>
+        <BreadcrumbButton current={isLastItem}>{item.value}</BreadcrumbButton>
       </BreadcrumbItem>
       {!isLastItem && <BreadcrumbDivider />}
     </React.Fragment>
@@ -54,25 +37,20 @@ function renderButton(item: Item) {
 }
 
 export const BreadcrumbSize = () => {
-  const [dividerType, setDividerType] = React.useState('chevron' as BreadcrumbProps['dividerType']);
   return (
     <>
-      Only small breadcrumbs can have `slash` divider.
       <h3>Small</h3>
-      <Label>Divider type</Label>
-      <RadioGroup
-        aria-labelledby="radio-group-divider"
-        value={dividerType}
-        onChange={(_, data) => setDividerType(data.value as BreadcrumbProps['dividerType'])}
-      >
-        <Radio value="slash" label="Slash" />
-        <Radio value="chevron" label="Chevron" />
-      </RadioGroup>
-      <h4>Non-interactive item</h4>
-      <Breadcrumb aria-label="Small breadcrumb example with slashes" size="small" dividerType={dividerType}>
-        {items.map(item => renderItem(item, 'small'))}
+      <h4>Non-interactive Breadcrumb</h4>
+      <Breadcrumb aria-label="Small non-interactive breadcrumb" size="small">
+        <BreadcrumbItem>Item 1</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>Item 2</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>Item 3</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem current>Item 4</BreadcrumbItem>
       </Breadcrumb>
-      <h4>Breadcrumb with buttons</h4>
+      <h4>Interactive Breadcrumbs</h4>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">
         {items.map(item => renderButton(item))}
       </Breadcrumb>
@@ -86,4 +64,12 @@ export const BreadcrumbSize = () => {
       </Breadcrumb>
     </>
   );
+};
+
+BreadcrumbSize.parameters = {
+  docs: {
+    description: {
+      story: 'BreadcrumbButton and BreadcrumbItem have the same sizes except `small`.',
+    },
+  },
 };

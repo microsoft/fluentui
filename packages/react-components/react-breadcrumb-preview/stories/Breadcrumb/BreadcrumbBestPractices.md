@@ -7,13 +7,18 @@
 
 - Place Breadcrumbs at the top of a page, above a list of items, or above the main content of a page.
 - Provide label to the Breadcrumb component using `aria-label` or `aria-labelledby` prop.
-- `aria-current="page"` should be used in the current BreadcrumbItem, to indicate which page is currently displayed. If the BreadcrumbItem representing the current page is not a link, `aria-current` is optional.
+- Put `current` attribute to the last item.
+- Use `aria-current="page"` in the current BreadcrumbButton, to indicate which page is currently displayed.
+- For BreadcrumbItem `aria-current="page"` is optional because it's a non-interactive item.
 - Use `slash` dividers only for small and non-interactive breadcrums.
+- Long names must be truncated and the whole name should be shown in the tooltip.
 
 ### Don't
 
 - Don't use Breadcrumbs as a primary way to navigate an app or site.
 - Avoid using custom dividers.
 - Do not wrap breadcrumb items.
+- Last items shouldn't be interactive.
+- Don't show overflow menu for non-interactive collapsed items. Tooltip shold be shown instead.
 
 </details>

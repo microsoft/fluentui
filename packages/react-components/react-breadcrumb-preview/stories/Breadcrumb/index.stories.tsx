@@ -3,14 +3,14 @@ import { Breadcrumb, BreadcrumbButton, BreadcrumbItem, BreadcrumbDivider } from 
 import descriptionMd from './BreadcrumbDescription.md';
 import bestPracticesMd from './BreadcrumbBestPractices.md';
 export { Default } from './BreadcrumbDefault.stories';
-export { BreadcrumbButtonExample } from '../BreadcrumbButton/BreadcrumbButton.stories';
+export { BreadcrumbButtonAppearanceSubtle } from '../BreadcrumbButton/BreadcrumbButtonAppearanceSubtle.stories';
 export { BreadcrumbButtonWithHrefAttribute } from '../BreadcrumbButton/BreadcrumbButtonWithHrefAttribute.stories';
-export { BreadcrumbItemExample } from '../BreadcrumbItem/BreadcrumbItemExample.stories';
-export { BreadcrumbDividerExample } from '../BreadcrumbDivider/BreadcrumbDivider.stories';
+export { BreadcrumbItemExample } from '../BreadcrumbItem/BreadcrumbItem.stories';
+export { BreadcrumbSlashDivider } from '../BreadcrumbDivider/BreadcrumbSlashDivider.stories';
 export { BreadcrumbSize } from './BreadcrumbSize.stories';
+export { FocusModeArrow } from './BreadcrumbFocusMode.stories';
 export { BreadcrumbWithOverflow } from './BreadcrumbWithOverflow.stories';
 export { BreadcrumbWithTooltip } from './BreadcrumbWithTooltip.stories';
-export { BreadcrumbFocusMode } from './BreadcrumbFocusMode.stories';
 
 import { ComponentMeta } from '@storybook/react';
 
