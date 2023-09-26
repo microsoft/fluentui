@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-toolbar
 
-This log was last generated on Wed, 20 Sep 2023 17:47:45 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.43)
+
+Tue, 26 Sep 2023 15:31:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-toolbar_v9.1.42..@fluentui/react-toolbar_v9.1.43)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/react-button to v9.3.42 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-divider to v9.2.38 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.35 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-radio to v9.1.43 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-tabster to v9.13.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.1.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-toolbar_v9.1.42)
 

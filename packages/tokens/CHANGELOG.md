@@ -1,8 +1,17 @@
 # Change Log - @fluentui/tokens
 
-This log was last generated on Tue, 05 Sep 2023 13:29:13 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.0.0-alpha.10](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.10)
+
+Tue, 26 Sep 2023 15:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/tokens_v1.0.0-alpha.9..@fluentui/tokens_v1.0.0-alpha.10)
+
+### Changes
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
 
 ## [1.0.0-alpha.9](https://github.com/microsoft/fluentui/tree/@fluentui/tokens_v1.0.0-alpha.9)
 

@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:40 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.4)
+
+Tue, 26 Sep 2023 15:31:40 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.13.3..@fluentui/react-utilities_v9.13.4)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.5 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.13.3)
 

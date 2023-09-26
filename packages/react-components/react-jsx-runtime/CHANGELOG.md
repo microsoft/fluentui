@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Wed, 20 Sep 2023 17:47:38 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.11)
+
+Tue, 26 Sep 2023 15:31:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.10..@fluentui/react-jsx-runtime_v9.0.11)
+
+### Patches
+
+- bugfix: react dev runtime call is missing source parameter ([PR #29295](https://github.com/microsoft/fluentui/pull/29295) by bernardo.sunderhus@gmail.com)
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.0.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.10)
 

@@ -2,6 +2,33 @@
   "name": "@fluentui/react-jsx-runtime",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 15:31:57 GMT",
+      "tag": "@fluentui/react-jsx-runtime_v9.0.11",
+      "version": "9.0.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "3f9051784f483097b0c711495a61b0e634d880d6",
+            "comment": "bugfix: react dev runtime call is missing source parameter"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-jsx-runtime",
+            "comment": "Bump @fluentui/react-utilities to v9.13.4",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Sep 2023 17:47:38 GMT",
       "tag": "@fluentui/react-jsx-runtime_v9.0.10",
       "version": "9.0.10",

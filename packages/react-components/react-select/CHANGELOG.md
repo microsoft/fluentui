@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Wed, 20 Sep 2023 17:47:42 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.40)
+
+Tue, 26 Sep 2023 15:31:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.39..@fluentui/react-select_v9.1.40)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- Bump @fluentui/react-field to v9.1.30 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.1.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.39)
 
