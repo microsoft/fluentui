@@ -9,6 +9,7 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IRenderFunction } from '@fluentui/react/lib/Utilities';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IVerticalChartState {
   width: number;
@@ -16,6 +17,7 @@ interface IVerticalChartState {
   isCalloutselected: boolean;
   useSingleColor: boolean;
   hideLabels: boolean;
+  showAxisTitles: boolean;
 }
 
 const options: IChoiceGroupOption[] = [
@@ -32,6 +34,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
       isCalloutselected: false,
       useSingleColor: false,
       hideLabels: false,
+      showAxisTitles: true,
     };
   }
 
@@ -58,6 +61,10 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
   };
   private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideLabels: checked });
+  };
+  private _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.forceUpdate();
+    this.setState({ showAxisTitles: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -192,6 +199,14 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onHideLabelsCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
+        <Toggle
+          label="Toggle Axis titles"
+          onText="Show axis titles"
+          offText="Hide axis titles"
+          checked={this.state.showAxisTitles}
+          onChange={this._onToggleAxisTitlesCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
         <div style={rootStyle}>
           <VerticalBarChart
             culture={window.navigator.language}
@@ -211,6 +226,8 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
             })}
             hideLabels={this.state.hideLabels}
             enableReflow={true}
+            yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
+            xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
           />
         </div>
       </>

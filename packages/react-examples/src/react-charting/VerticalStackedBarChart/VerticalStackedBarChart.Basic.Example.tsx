@@ -7,6 +7,7 @@ import {
 } from '@fluentui/react-charting';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
+import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface IVerticalStackedBarState {
   width: number;
@@ -14,6 +15,7 @@ interface IVerticalStackedBarState {
   barGapMax: number;
   showLine: boolean;
   hideLabels: boolean;
+  showAxisTitles: boolean;
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -25,6 +27,7 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       showLine: true,
       barGapMax: 2,
       hideLabels: false,
+      showAxisTitles: true,
     };
   }
   public render(): JSX.Element {
@@ -43,6 +46,10 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
   };
   private _onHideLabelsCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ hideLabels: checked });
+  };
+  private _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.forceUpdate();
+    this.setState({ showAxisTitles: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -246,6 +253,14 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           onChange={this._onHideLabelsCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
+        <Toggle
+          label="Toggle Axis titles"
+          onText="Show axis titles"
+          offText="Hide axis titles"
+          checked={this.state.showAxisTitles}
+          onChange={this._onToggleAxisTitlesCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
         <div style={rootStyle}>
           <VerticalStackedBarChart
             culture={window.navigator.language}
@@ -260,6 +275,8 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
             }}
             hideLabels={this.state.hideLabels}
             enableReflow={true}
+            yAxisTitle={this.state.showAxisTitles ? 'Variation of number of sales' : undefined}
+            xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
           />
         </div>
       </>
