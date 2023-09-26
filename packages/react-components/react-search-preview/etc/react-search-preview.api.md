@@ -9,6 +9,7 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { InputOnChangeData } from '@fluentui/react-input';
 import type { InputProps } from '@fluentui/react-input';
 import type { InputSlots } from '@fluentui/react-input';
 import type { InputState } from '@fluentui/react-input';
@@ -27,7 +28,7 @@ export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 
 // @public
 export type SearchBoxProps = Omit<ComponentProps<Partial<SearchBoxSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & InputProps & {
-    onDismiss?: (event: React_2.MouseEvent<HTMLSpanElement>, data: SearchBoxDismissData) => void;
+    onChange?: (event: SearchBoxChangeEvent, data: InputOnChangeData) => void;
 };
 
 // @public (undocumented)
