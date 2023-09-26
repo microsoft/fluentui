@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Context menu close should restore focus",
+  "packageName": "@fluentui/react-menu",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
