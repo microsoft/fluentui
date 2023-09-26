@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-spinner
 
-This log was last generated on Wed, 20 Sep 2023 17:47:43 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.18)
+
+Tue, 26 Sep 2023 15:31:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-spinner_v9.3.17..@fluentui/react-spinner_v9.3.18)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-label to v9.1.38 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.3.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-spinner_v9.3.17)
 

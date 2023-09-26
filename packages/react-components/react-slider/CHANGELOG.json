@@ -2,6 +2,57 @@
   "name": "@fluentui/react-slider",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 15:31:50 GMT",
+      "tag": "@fluentui/react-slider_v9.1.43",
+      "version": "9.1.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-slider",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-field to v9.1.30",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.11",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.9.0",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-tabster to v9.13.0",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-theme to v9.1.13",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-slider",
+            "comment": "Bump @fluentui/react-utilities to v9.13.4",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 20 Sep 2023 17:47:42 GMT",
       "tag": "@fluentui/react-slider_v9.1.42",
       "version": "9.1.42",

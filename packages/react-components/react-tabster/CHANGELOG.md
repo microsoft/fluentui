@@ -1,8 +1,24 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 20 Sep 2023 17:47:44 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.13.0)
+
+Tue, 26 Sep 2023 15:31:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.12.11..@fluentui/react-tabster_v9.13.0)
+
+### Minor changes
+
+- feat: adds suffixes to selectors on focus creator methods ([PR #29209](https://github.com/microsoft/fluentui/pull/29209) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
 
 ## [9.12.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.12.11)
 

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: improve performance of CSS classes",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

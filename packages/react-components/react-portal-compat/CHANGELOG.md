@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Wed, 20 Sep 2023 17:47:40 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:31:53 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.93](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.93)
+
+Tue, 26 Sep 2023 15:31:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.92..@fluentui/react-portal-compat_v9.0.93)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/react-portal-compat-context to v9.0.8 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-tabster to v9.13.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-components to v9.32.2 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.0.92](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.92)
 

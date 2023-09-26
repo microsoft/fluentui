@@ -2,6 +2,21 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 15:31:40 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.10",
+      "version": "1.0.0-alpha.10",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 05 Sep 2023 13:29:13 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.9",
       "version": "1.0.0-alpha.9",

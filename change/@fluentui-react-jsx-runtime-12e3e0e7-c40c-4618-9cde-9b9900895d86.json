@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: react dev runtime call is missing source parameter",
-  "packageName": "@fluentui/react-jsx-runtime",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

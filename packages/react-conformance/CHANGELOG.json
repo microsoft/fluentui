@@ -2,6 +2,21 @@
   "name": "@fluentui/react-conformance",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 15:32:03 GMT",
+      "tag": "@fluentui/react-conformance_v0.18.1",
+      "version": "0.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/react-conformance_v0.18.0",
       "version": "0.18.0",
