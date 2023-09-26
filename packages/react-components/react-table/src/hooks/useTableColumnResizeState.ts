@@ -16,21 +16,21 @@ import {
   getColumnWidth,
 } from '../utils/columnResizeUtils';
 
-type ComponentState<T> = {
-  columns: TableColumnDefinition<T>[];
+type ComponentState<T, U> = {
+  columns: TableColumnDefinition<T, U>[];
   containerWidth: number;
   columnWidthState: ColumnWidthState[];
   columnSizingOptions: TableColumnSizingOptions | undefined;
 };
 
-type ColumnResizeStateAction<T> =
+type ColumnResizeStateAction<T, U> =
   | {
       type: 'CONTAINER_WIDTH_UPDATED';
       containerWidth: number;
     }
   | {
       type: 'COLUMNS_UPDATED';
-      columns: TableColumnDefinition<T>[];
+      columns: TableColumnDefinition<T, U>[];
     }
   | {
       type: 'COLUMN_SIZING_OPTIONS_UPDATED';
@@ -43,8 +43,8 @@ type ColumnResizeStateAction<T> =
     };
 
 const createReducer =
-  <T>() =>
-  (state: ComponentState<T>, action: ColumnResizeStateAction<T>): ComponentState<T> => {
+  <T, U>() =>
+  (state: ComponentState<T, U>, action: ColumnResizeStateAction<T, U>): ComponentState<T, U> => {
     switch (action.type) {
       case 'CONTAINER_WIDTH_UPDATED':
         return {
@@ -91,14 +91,14 @@ const createReducer =
     }
   };
 
-export function useTableColumnResizeState<T>(
-  columns: TableColumnDefinition<T>[],
+export function useTableColumnResizeState<T, U>(
+  columns: TableColumnDefinition<T, U>[],
   containerWidth: number,
   params: UseTableColumnSizingParams = {},
 ): ColumnResizeState {
   const { onColumnResize, columnSizingOptions } = params;
 
-  const reducer = React.useMemo(() => createReducer<T>(), []);
+  const reducer = React.useMemo(() => createReducer<T, U>(), []);
 
   const [state, dispatch] = React.useReducer(reducer, {
     columns,

@@ -10,7 +10,7 @@ import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
  * DataGridRow component
  */
 export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
-  (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element) = React.forwardRef((props, ref) => {
+  (<TItem, UItem = unknown>(props: DataGridRowProps<TItem, UItem>) => JSX.Element) = React.forwardRef((props, ref) => {
   const state = useDataGridRow_unstable(props, ref);
 
   useDataGridRowStyles_unstable(state);
@@ -18,6 +18,7 @@ export const DataGridRow: ForwardRefComponent<DataGridRowProps> &
   useCustomStyleHook_unstable('useDataGridRowStyles_unstable')(state);
 
   return renderDataGridRow_unstable(state);
-}) as ForwardRefComponent<DataGridRowProps> & (<TItem>(props: DataGridRowProps<TItem>) => JSX.Element);
+}) as ForwardRefComponent<DataGridRowProps> &
+  (<TItem, UItem = unknown>(props: DataGridRowProps<TItem, UItem>) => JSX.Element);
 
 DataGridRow.displayName = 'DataGridRow';

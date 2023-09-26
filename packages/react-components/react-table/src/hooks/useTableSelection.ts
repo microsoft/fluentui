@@ -17,16 +17,16 @@ export const defaultTableSelectionState: TableSelectionState = {
   selectionMode: 'multiselect',
 };
 
-export function useTableSelection<TItem>(options: SelectionHookParams) {
+export function useTableSelection<TItem, UItem>(options: SelectionHookParams) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableFeaturesState<TItem>) => useTableSelectionState(tableState, options);
+  return (tableState: TableFeaturesState<TItem, UItem>) => useTableSelectionState(tableState, options);
 }
 
-export function useTableSelectionState<TItem>(
-  tableState: TableFeaturesState<TItem>,
+export function useTableSelectionState<TItem, UItem>(
+  tableState: TableFeaturesState<TItem, UItem>,
   options: SelectionHookParams,
-): TableFeaturesState<TItem> {
+): TableFeaturesState<TItem, UItem> {
   const { items, getRowId } = tableState;
   const { selectionMode: selectionMode, defaultSelectedItems, selectedItems, onSelectionChange } = options;
 

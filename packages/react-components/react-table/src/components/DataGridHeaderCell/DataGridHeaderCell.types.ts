@@ -9,7 +9,7 @@ export type DataGridHeaderCellSlots = TableHeaderCellSlots;
 /**
  * DataGridHeaderCell Props
  */
-export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
+export type DataGridHeaderCellProps<UItem = unknown> = Omit<TableHeaderCellProps, 'sortable'>;
 
 /**
  * State used in rendering DataGridHeaderCell

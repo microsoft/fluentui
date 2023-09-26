@@ -13,17 +13,17 @@ export type DataGridRowSlots = TableRowSlots & {
   selectionCell?: Slot<typeof TableSelectionCell>;
 };
 
-export type CellRenderFunction<TItem = unknown> = (
-  column: TableColumnDefinition<TItem>,
+export type CellRenderFunction<TItem = unknown, UItem = unknown> = (
+  column: TableColumnDefinition<TItem, UItem>,
   dataGridContextValue: DataGridContextValue,
 ) => React.ReactNode;
 
 /**
  * DataGridRow Props
  */
-export type DataGridRowProps<TItem = unknown> = Omit<TableRowProps, 'children'> &
+export type DataGridRowProps<TItem = unknown, UItem = unknown> = Omit<TableRowProps, 'children'> &
   Omit<ComponentProps<DataGridRowSlots>, 'children'> & {
-    children: CellRenderFunction<TItem>;
+    children: CellRenderFunction<TItem, UItem>;
   };
 
 /**
@@ -33,6 +33,6 @@ export type DataGridRowState = TableRowState &
   ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    columnDefs: TableColumnDefinition<any>[];
+    columnDefs: TableColumnDefinition<any, any>[];
     dataGridContextValue: DataGridContextValue;
   };

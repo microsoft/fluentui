@@ -24,10 +24,10 @@ export const defaultColumnSizingState: TableColumnSizingState = {
   enableKeyboardMode: () => () => null,
 };
 
-export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams) {
+export function useTableColumnSizing_unstable<TItem, UItem>(params?: UseTableColumnSizingParams) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return (tableState: TableFeaturesState<TItem>) => useTableColumnSizingState(tableState, params);
+  return (tableState: TableFeaturesState<TItem, UItem>) => useTableColumnSizingState(tableState, params);
 }
 
 function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
@@ -42,10 +42,10 @@ function getColumnStyles(column: ColumnWidthState): React.CSSProperties {
   };
 }
 
-function useTableColumnSizingState<TItem>(
-  tableState: TableFeaturesState<TItem>,
+function useTableColumnSizingState<TItem, UItem>(
+  tableState: TableFeaturesState<TItem, UItem>,
   params?: UseTableColumnSizingParams,
-): TableFeaturesState<TItem> {
+): TableFeaturesState<TItem, UItem> {
   const { columns } = tableState;
 
   // Gets the container width
