@@ -1,38 +1,39 @@
 import * as React from 'react';
 import { slot } from '@fluentui/react-utilities';
 import {
-  presenceAvailableFilled,
-  presenceAvailableRegular,
-  presenceAwayFilled,
-  presenceBlockedRegular,
-  presenceBusyFilled,
-  presenceDndFilled,
-  presenceDndRegular,
-  presenceOfflineRegular,
-  presenceOofRegular,
-  presenceUnknownRegular,
-} from './presenceIcons';
+  PresenceAvailableFilled,
+  PresenceAvailableRegular,
+  PresenceAwayFilled,
+  PresenceBlockedRegular,
+  PresenceBusyFilled,
+  PresenceDndFilled,
+  PresenceDndRegular,
+  PresenceOfflineRegular,
+  PresenceOofRegular,
+  PresenceUnknownRegular,
+} from '@fluentui/react-icons';
+
 import { useBadge_unstable } from '../Badge/index';
 import type { PresenceBadgeProps, PresenceBadgeState } from './PresenceBadge.types';
 
 const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, size: PresenceBadgeState['size']) => {
   switch (status) {
     case 'available':
-      return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
+      return outOfOffice ? PresenceAvailableRegular : PresenceAvailableFilled;
     case 'away':
-      return outOfOffice ? presenceOofRegular[size] : presenceAwayFilled[size];
+      return outOfOffice ? PresenceOofRegular : PresenceAwayFilled;
     case 'blocked':
-      return presenceBlockedRegular[size];
+      return PresenceBlockedRegular;
     case 'busy':
-      return outOfOffice ? presenceUnknownRegular[size] : presenceBusyFilled[size];
+      return outOfOffice ? PresenceUnknownRegular : PresenceBusyFilled;
     case 'do-not-disturb':
-      return outOfOffice ? presenceDndRegular[size] : presenceDndFilled[size];
+      return outOfOffice ? PresenceDndRegular : PresenceDndFilled;
     case 'offline':
-      return outOfOffice ? presenceOofRegular[size] : presenceOfflineRegular[size];
+      return outOfOffice ? PresenceOofRegular : PresenceOfflineRegular;
     case 'out-of-office':
-      return presenceOofRegular[size];
+      return PresenceOofRegular;
     case 'unknown':
-      return presenceUnknownRegular[size];
+      return PresenceUnknownRegular;
   }
 };
 
