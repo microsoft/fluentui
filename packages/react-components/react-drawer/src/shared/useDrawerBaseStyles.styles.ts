@@ -59,8 +59,6 @@ const useDrawerStyles = makeStyles({
   bottom: {
     bottom: 0,
     top: 'auto',
-    height: `var(${drawerCSSVars.drawerSizeVar})`,
-    width: '100vw',
   },
 
   /* Sizes */
