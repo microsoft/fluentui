@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: bump swc core to mitigate transpilation memory leaks",
-  "packageName": "@fluentui/react-migration-v0-v9",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

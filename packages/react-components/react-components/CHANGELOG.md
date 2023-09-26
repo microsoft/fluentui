@@ -1,8 +1,209 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 20 Sep 2023 17:47:33 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:55:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.32.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.32.2)
+
+Tue, 26 Sep 2023 15:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.32.1..@fluentui/react-components_v9.32.2)
+
+### Minor changes
+
+- `@fluentui/react-tree`
+  - feat: FlatTree supports navigation without useHeadlessFlatTree ([PR #29091](https://github.com/microsoft/fluentui/pull/29091) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tags-preview`
+  - feat: set default aria-labelledby on InteractionTagSecondary ([PR #29234](https://github.com/microsoft/fluentui/pull/29234) by yuanboxue@microsoft.com)
+  - fix: update handleTagDismiss type ([PR #29240](https://github.com/microsoft/fluentui/pull/29240) by yuanboxue@microsoft.com)
+  - feat: add custom style hooks for tag components ([PR #29237](https://github.com/microsoft/fluentui/pull/29237) by yuanboxue@microsoft.com)
+- `@fluentui/react-tabster`
+  - feat: adds suffixes to selectors on focus creator methods ([PR #29209](https://github.com/microsoft/fluentui/pull/29209) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-table`
+  - feat: add sorting on individual columns ([PR #29196](https://github.com/microsoft/fluentui/pull/29196) by kakrookaran@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - feat: add custom style hooks for tag components ([PR #29237](https://github.com/microsoft/fluentui/pull/29237) by yuanboxue@microsoft.com)
+- `@fluentui/react-provider`
+  - feat: add custom style hooks for tag components ([PR #29237](https://github.com/microsoft/fluentui/pull/29237) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-utilities`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-toolbar`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-tooltip`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-textarea`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-theme`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-tags-preview`
+  - fix: remove double curve from dismissible circular InteractionTag on windows high contrast ([PR #29261](https://github.com/microsoft/fluentui/pull/29261) by yuanboxue@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - fix: useTag `getNativeElementProps` should conditionally use 'button' or 'span' ([PR #29236](https://github.com/microsoft/fluentui/pull/29236) by yuanboxue@microsoft.com)
+  - chore: update props descriptions ([PR #29287](https://github.com/microsoft/fluentui/pull/29287) by yuanboxue@microsoft.com)
+  - fix: remove hover color for disabled InteractionTag under windows high contrast ([PR #29275](https://github.com/microsoft/fluentui/pull/29275) by yuanboxue@microsoft.com)
+- `@fluentui/react-text`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-tabster`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-table`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-tabs`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-switch`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-spinner`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-spinbutton`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-skeleton`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-slider`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-select`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-search-preview`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-radio`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-provider`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-positioning`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-progress`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-portal-compat-context`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-portal`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-persona`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-popover`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-motion-preview`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-overflow`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v8-v9`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-migration-v0-v9`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: Context menu close should restore focus ([PR #29290](https://github.com/microsoft/fluentui/pull/29290) by lingfangao@hotmail.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-label`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-link`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-jsx-runtime`
+  - bugfix: react dev runtime call is missing source parameter ([PR #29295](https://github.com/microsoft/fluentui/pull/29295) by bernardo.sunderhus@gmail.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-input`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-field`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-image`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-dialog`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - chore: adds CSS containment to DialogSurface ([PR #29213](https://github.com/microsoft/fluentui/pull/29213) by bernardo.sunderhus@gmail.com)
+  - fix: use makeResetStyles for base dialog components styles ([PR #29280](https://github.com/microsoft/fluentui/pull/29280) by marcosvmmoura@gmail.com)
+  - doc: updates documentation on alert dialog escape dismiss ([PR #29211](https://github.com/microsoft/fluentui/pull/29211) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-divider`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-conformance-griffel`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-context-selector`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-components`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-conformance`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-combobox`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-checkbox`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-card`
+  - fix: sync controllable state for selectable cards ([PR #29276](https://github.com/microsoft/fluentui/pull/29276) by marcosvmmoura@gmail.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-breadcrumb-preview`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - fix: used makeResetStyles instead of makeStyles ([PR #29278](https://github.com/microsoft/fluentui/pull/29278) by vkozlova@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-button`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/react-badge`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-aria`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-avatar`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/priority-overflow`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-accordion`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/keyboard-keys`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-virtualizer`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-theme-sass`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-infobutton`
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: improve performance of CSS classes ([PR #29263](https://github.com/microsoft/fluentui/pull/29263) by marcosvmmoura@gmail.com)
+  - feat: add dialog slot ([PR #29217](https://github.com/microsoft/fluentui/pull/29217) by marcosvmmoura@gmail.com)
+  - fix: resolve technical debts ([PR #29272](https://github.com/microsoft/fluentui/pull/29272) by marcosvmmoura@gmail.com)
+  - fix: use context to fetch dialog id ([PR #29273](https://github.com/microsoft/fluentui/pull/29273) by marcosvmmoura@gmail.com)
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - fix: remove defaultOpen prop from DrawerInline as it had no effect ([PR #29274](https://github.com/microsoft/fluentui/pull/29274) by marcosvmmoura@gmail.com)
+- `@fluentui/react-alert`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+  - chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- `@fluentui/global-context`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- `@fluentui/babel-preset-global-context`
+  - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
 
 ## [9.32.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.32.1)
 

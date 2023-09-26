@@ -1,8 +1,18 @@
 # Change Log - @fluentui/babel-preset-global-context
 
-This log was last generated on Wed, 06 Sep 2023 13:31:31 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:56:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.42)
+
+Tue, 26 Sep 2023 15:56:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.41..@fluentui/babel-preset-global-context_v9.0.0-beta.42)
+
+### Changes
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/global-context to v9.0.0-beta.42 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.41)
 

@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Wed, 20 Sep 2023 17:47:37 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:56:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.28)
+
+Tue, 26 Sep 2023 15:56:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.27..@fluentui/react-drawer_v9.0.0-beta.28)
+
+### Changes
+
+- fix: improve performance of CSS classes ([PR #29263](https://github.com/microsoft/fluentui/pull/29263) by marcosvmmoura@gmail.com)
+- feat: add dialog slot ([PR #29217](https://github.com/microsoft/fluentui/pull/29217) by marcosvmmoura@gmail.com)
+- fix: resolve technical debts ([PR #29272](https://github.com/microsoft/fluentui/pull/29272) by marcosvmmoura@gmail.com)
+- fix: use context to fetch dialog id ([PR #29273](https://github.com/microsoft/fluentui/pull/29273) by marcosvmmoura@gmail.com)
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- fix: remove defaultOpen prop from DrawerInline as it had no effect ([PR #29274](https://github.com/microsoft/fluentui/pull/29274) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.7.2 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-motion-preview to v0.2.7 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.27)
 

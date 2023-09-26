@@ -1,8 +1,17 @@
 # Change Log - @fluentui/keyboard-keys
 
-This log was last generated on Tue, 05 Sep 2023 13:29:14 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:56:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.5)
+
+Tue, 26 Sep 2023 15:56:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/keyboard-keys_v9.0.4..@fluentui/keyboard-keys_v9.0.5)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
 
 ## [9.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/keyboard-keys_v9.0.4)
 

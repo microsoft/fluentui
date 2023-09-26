@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-image
 
-This log was last generated on Wed, 20 Sep 2023 17:47:37 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 15:56:19 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.35)
+
+Tue, 26 Sep 2023 15:56:19 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-image_v9.1.34..@fluentui/react-image_v9.1.35)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 
 ## [9.1.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-image_v9.1.34)
 

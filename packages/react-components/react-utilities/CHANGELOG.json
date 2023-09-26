@@ -2,6 +2,27 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 15:56:02 GMT",
+      "tag": "@fluentui/react-utilities_v9.13.4",
+      "version": "9.13.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-utilities",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.5",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/react-utilities_v9.13.3",
       "version": "9.13.3",

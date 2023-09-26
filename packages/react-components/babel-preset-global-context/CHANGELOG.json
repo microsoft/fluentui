@@ -2,6 +2,27 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 15:56:27 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.42",
+      "version": "9.0.0-beta.42",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.42",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.41",
       "version": "9.0.0-beta.41",

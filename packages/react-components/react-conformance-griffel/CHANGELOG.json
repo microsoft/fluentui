@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 15:56:22 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.5",
+      "version": "9.0.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.18.1",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 06 Sep 2023 13:31:31 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.4",
       "version": "9.0.4",
