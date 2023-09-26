@@ -4,6 +4,7 @@ import descriptionMd from './BreadcrumbDescription.md';
 import bestPracticesMd from './BreadcrumbBestPractices.md';
 export { Default } from './BreadcrumbDefault.stories';
 export { BreadcrumbButtonExample } from '../BreadcrumbButton/BreadcrumbButton.stories';
+export { BreadcrumbButtonWithHrefAttribute } from '../BreadcrumbButton/BreadcrumbButtonWithHrefAttribute.stories';
 export { BreadcrumbItemExample } from '../BreadcrumbItem/BreadcrumbItemExample.stories';
 export { BreadcrumbDividerExample } from '../BreadcrumbDivider/BreadcrumbDivider.stories';
 export { BreadcrumbSize } from './BreadcrumbSize.stories';
