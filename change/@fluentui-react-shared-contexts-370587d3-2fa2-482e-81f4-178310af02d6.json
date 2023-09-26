@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: trigger manual version bump after broken release",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

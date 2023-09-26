@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: trigger manual version bump after broken release",
+  "packageName": "@fluentui/react-theme-sass",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
