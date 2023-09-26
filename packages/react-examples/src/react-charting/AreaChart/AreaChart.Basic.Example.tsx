@@ -193,6 +193,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                 />
               ) : null
             }
+            enableReflow={true}
           />
         </div>
       </>

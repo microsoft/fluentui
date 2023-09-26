@@ -122,6 +122,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
                 />
               ) : null
             }
+            enableReflow={true}
           />
         </div>
       </>

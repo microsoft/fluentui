@@ -119,6 +119,11 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
         useDrawerBodyStyles_unstable: (state: unknown) => void;
         useDrawerFooterStyles_unstable: (state: unknown) => void;
+        useInteractionTagStyles_unstable: (state: unknown) => void;
+        useInteractionTagPrimaryStyles_unstable: (state: unknown) => void;
+        useInteractionTagSecondaryStyles_unstable: (state: unknown) => void;
+        useTagStyles_unstable: (state: unknown) => void;
+        useTagGroupStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

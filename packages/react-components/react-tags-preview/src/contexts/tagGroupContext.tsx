@@ -4,7 +4,7 @@ import { TagGroupState } from '../components/TagGroup/index';
 export const TagGroupContext = React.createContext<TagGroupContextValue | undefined>(undefined);
 
 const tagGroupContextDefaultValue: TagGroupContextValue = {
-  handleTagDismiss: () => null,
+  handleTagDismiss: () => ({}),
   size: 'medium',
 };
 

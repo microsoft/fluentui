@@ -60,6 +60,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
             yAxisTickCount={6}
             colors={customColors}
             hideLegend={true}
+            enableReflow={true}
           />
         </div>
       </>
