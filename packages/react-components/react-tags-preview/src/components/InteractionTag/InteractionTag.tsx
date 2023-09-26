@@ -5,6 +5,7 @@ import { useInteractionTagStyles_unstable } from './useInteractionTagStyles.styl
 import { useInteractionTagContextValues_unstable } from './useInteractionTagContextValues';
 import type { InteractionTagProps } from './InteractionTag.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * InteractionTag component - a visual representation of an attribute with primary and secondary actions.
@@ -14,6 +15,9 @@ export const InteractionTag: ForwardRefComponent<InteractionTagProps> = React.fo
   const state = useInteractionTag_unstable(props, ref);
 
   useInteractionTagStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useInteractionTagStyles_unstable')(state);
+
   return renderInteractionTag_unstable(state, useInteractionTagContextValues_unstable(state));
 });
 

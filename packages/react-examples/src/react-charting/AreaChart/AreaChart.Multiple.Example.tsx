@@ -215,6 +215,7 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
         </div>
       </>

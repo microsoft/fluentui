@@ -214,6 +214,7 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
               ) => (props ? defaultRender(props) : null),
             })}
             hideLabels={this.state.hideLabels}
+            enableReflow={true}
           />
         </div>
       </>

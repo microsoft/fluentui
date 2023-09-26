@@ -338,6 +338,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
               getColorFromToken(DataVizPalette.error),
               getColorFromToken(DataVizPalette.highError),
             ]}
+            enableReflow={true}
           />
         </div>
       </>

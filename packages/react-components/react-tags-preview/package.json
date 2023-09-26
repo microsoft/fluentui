@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-tags-preview",
   "version": "0.2.12",
-  "description": "React components for building web experiences",
+  "description": "Fluent UI Tag component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -39,7 +39,7 @@
     "@fluentui/keyboard-keys": "^9.0.4",
     "@fluentui/react-aria": "^9.3.36",
     "@fluentui/react-avatar": "^9.5.32",
-    "@fluentui/react-icons": "^2.0.207",
+    "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-jsx-runtime": "^9.0.10",
     "@fluentui/react-shared-contexts": "^9.8.1",
     "@fluentui/react-tabster": "^9.12.11",

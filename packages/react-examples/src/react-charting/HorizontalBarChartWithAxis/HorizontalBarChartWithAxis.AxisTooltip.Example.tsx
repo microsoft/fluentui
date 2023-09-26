@@ -57,6 +57,7 @@ export class HorizontalBarChartWithAxisTooltipExample extends React.Component<{}
             width={650}
             hideLegend={true}
             hideTooltip={false}
+            enableReflow={true}
           />
         </div>
       </>

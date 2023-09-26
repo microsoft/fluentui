@@ -77,6 +77,7 @@ export class HorizontalBarChartWithAxisStringAxisTooltipExample extends React.Co
             hideTooltip={false}
             showYAxisLablesTooltip={this.state.selectedCallout === 'showTooltip' ? true : false}
             showYAxisLables={this.state.selectedCallout === 'expandYAxisLabels' ? true : false}
+            enableReflow={true}
           />
         </div>
       </>
