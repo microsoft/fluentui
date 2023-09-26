@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { InputProps, InputSlots, InputState } from '@fluentui/react-input';
+import type { InputOnChangeData, InputProps, InputSlots, InputState } from '@fluentui/react-input';
 
 export type SearchBoxSlots = InputSlots & {
   /** Last element in the input, within the input border */
@@ -17,10 +17,12 @@ export type SearchBoxProps = Omit<
 > &
   InputProps & {
     /**
-     * Callback for when the clear/dismiss button is clicked. *Should* be handled when `value` is controlled by the
-     * consumer so that the consumer may reset `value` respectively.
-     * */
-    onDismiss?: (event: React.MouseEvent<HTMLSpanElement>, data: SearchBoxDismissData) => void;
+     * Overload of onChange callback.
+     * Will be traditionally supplied with a React.ChangeEvent<HTMLInputElement> for usual character entry.
+     * When the dismiss button is clicked, this will be called with an event of type React.MouseEvent<HTMLSpanElement>
+     * and an empty string as the `value` property of the data parameter
+     */
+    onChange?: (event: SearchBoxChangeEvent, data: InputOnChangeData) => void;
   };
 
 /**
@@ -38,3 +40,6 @@ export type SearchBoxDismissData = {
   /** The user action that caused the search box to be cleared */
   reason: 'button';
 };
+
+/** Overloaded onChange event type, used to merge functionality of regular text entry and the dismiss button */
+export type SearchBoxChangeEvent = React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLSpanElement>;

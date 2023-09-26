@@ -16,17 +16,13 @@ export const Controlled = () => {
     }
   };
 
-  const onDismiss = React.useCallback(() => {
-    setValue('');
-  }, [setValue]);
-
   return (
     <Field
       label="Controlled SearchBox limiting the value to 20 characters"
       validationState={valid ? 'none' : 'warning'}
       validationMessage={valid ? '' : 'Input is limited to 20 characters.'}
     >
-      <SearchBox value={value} onChange={onChange} onDismiss={onDismiss} />
+      <SearchBox value={value} onChange={onChange} />
     </Field>
   );
 };
