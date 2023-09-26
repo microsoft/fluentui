@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add custom style hooks for tag components",
+  "packageName": "@fluentui/react-provider",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

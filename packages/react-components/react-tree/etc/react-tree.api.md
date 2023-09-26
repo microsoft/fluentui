@@ -135,6 +135,7 @@ export const treeClassNames: SlotClassNames<TreeSlots>;
 
 // @public (undocumented)
 export type TreeContextValue = {
+    treeType: 'nested' | 'flat';
     level: number;
     selectionMode: 'none' | SelectionMode_2;
     appearance: 'subtle' | 'subtle-alpha' | 'transparent';
@@ -255,6 +256,7 @@ export type TreeItemProps = ComponentProps<Partial<TreeItemSlots>> & {
     value?: TreeItemValue;
     open?: boolean;
     onOpenChange?: (e: TreeItemOpenChangeEvent, data: TreeItemOpenChangeData) => void;
+    parentValue?: TreeItemValue;
 };
 
 // @public (undocumented)
@@ -280,6 +282,7 @@ export type TreeItemValue = string | number;
 export type TreeNavigationData_unstable = {
     target: HTMLElement;
     value: TreeItemValue;
+    parentValue: TreeItemValue | undefined;
 } & ({
     event: React_2.MouseEvent<HTMLElement>;
     type: 'Click';

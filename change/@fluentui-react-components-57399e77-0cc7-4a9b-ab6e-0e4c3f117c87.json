@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: exports contexts from react-dialog",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

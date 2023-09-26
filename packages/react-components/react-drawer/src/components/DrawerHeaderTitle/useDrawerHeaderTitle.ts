@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
-import { useDialogTitle_unstable } from '@fluentui/react-dialog';
+import { useDialogContext_unstable } from '@fluentui/react-dialog';
 
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
 
@@ -10,12 +10,11 @@ import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHea
  * @param props - props from this instance of DrawerHeaderTitle
  */
 const useHeadingProps = ({ children, heading }: DrawerHeaderTitleProps) => {
-  const resolvedHeading = slot.resolveShorthand(heading) || {};
-  const { root: titleProps } = useDialogTitle_unstable(resolvedHeading, React.createRef());
+  const id = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
-  return slot.optional(titleProps, {
+  return slot.optional(heading, {
     defaultProps: {
-      ...titleProps,
+      id,
       children,
     },
     renderByDefault: true,

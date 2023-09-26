@@ -212,6 +212,7 @@ export class VerticalBarChartAxisTitleExample extends React.Component<IVerticalB
               ) => (props ? defaultRender(props) : null),
             })}
             hideLabels={this.state.hideLabels}
+            enableReflow={true}
           />
         </div>
       </>

@@ -135,14 +135,14 @@ export class HorizontalBarChartBasicExample extends React.Component<
           offText="Chart mode default"
           onChange={this._onChangeChartMode}
         />
-        <HorizontalBarChart
-          culture={window.navigator.language}
-          data={data}
-          hideRatio={hideRatio}
-          width={600}
-          chartDataMode={this.state.chartMode}
-        />
-        ;
+        <div style={{ maxWidth: 600 }}>
+          <HorizontalBarChart
+            culture={window.navigator.language}
+            data={data}
+            hideRatio={hideRatio}
+            chartDataMode={this.state.chartMode}
+          />
+        </div>
       </>
     );
   }

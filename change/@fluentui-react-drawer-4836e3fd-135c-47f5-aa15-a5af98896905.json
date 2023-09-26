@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add custom styling hooks for Drawer subcomponents",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

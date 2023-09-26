@@ -83,32 +83,31 @@ const FixedSizeTreeItem = (props: FixedSizeTreeItemProps) => {
 };
 
 export const Virtualization = () => {
-  const virtualTree = useHeadlessFlatTree_unstable(defaultItems);
+  const headlessTree = useHeadlessFlatTree_unstable(defaultItems);
   const listRef = React.useRef<FixedSizeList>(null);
-  const items = React.useMemo(() => Array.from(virtualTree.items()), [virtualTree]);
+  const items = React.useMemo(() => Array.from(headlessTree.items()), [headlessTree]);
 
   /**
    * Since navigation is not possible due to the fact that not all items are rendered,
    * we need to scroll to the next item and then invoke navigation.
    */
   const handleNavigation = (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-    event.preventDefault();
-    const nextItem = virtualTree.getNextNavigableItem(items, data);
+    const nextItem = headlessTree.getNextNavigableItem(items, data);
     if (!nextItem) {
       return;
     }
     // if the next item is not rendered, scroll to it and try to navigate again
-    if (!virtualTree.getElementFromItem(nextItem)) {
+    if (!headlessTree.getElementFromItem(nextItem)) {
+      event.preventDefault(); // preventing default disables internal navigation.
       listRef.current?.scrollToItem(nextItem.index);
-      return requestAnimationFrame(() => virtualTree.navigate(data));
+      // waiting for the next animation frame to allow the list to be scrolled
+      return requestAnimationFrame(() => headlessTree.navigate(data));
     }
-    // if the next item is rendered, navigate to it
-    virtualTree.navigate(data);
   };
 
   return (
     <FixedSizeTree
-      {...virtualTree.getTreeProps()}
+      {...headlessTree.getTreeProps()}
       listProps={{
         ref: listRef,
         height: 300,

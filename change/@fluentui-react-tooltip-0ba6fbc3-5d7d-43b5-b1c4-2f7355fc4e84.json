@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: bump swc core to mitigate transpilation memory leaks",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}

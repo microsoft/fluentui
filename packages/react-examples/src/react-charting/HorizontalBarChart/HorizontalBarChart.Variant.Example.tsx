@@ -117,16 +117,18 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           offText="Chart mode default"
           onChange={this._onChangeChartMode}
         />
-        <HorizontalBarChart
-          data={data}
-          variant={
-            this.state.chartMode !== 'percentage'
-              ? HorizontalBarChartVariant.AbsoluteScale
-              : HorizontalBarChartVariant.PartToWhole
-          }
-          hideLabels={this.state.hideLabels}
-          chartDataMode={this.state.chartMode}
-        />
+        <div style={{ maxWidth: 600 }}>
+          <HorizontalBarChart
+            data={data}
+            variant={
+              this.state.chartMode !== 'percentage'
+                ? HorizontalBarChartVariant.AbsoluteScale
+                : HorizontalBarChartVariant.PartToWhole
+            }
+            hideLabels={this.state.hideLabels}
+            chartDataMode={this.state.chartMode}
+          />
+        </div>
       </>
     );
   }

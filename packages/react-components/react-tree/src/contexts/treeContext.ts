@@ -6,6 +6,7 @@ import { ImmutableMap } from '../utils/ImmutableMap';
 import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
+  treeType: 'nested' | 'flat';
   level: number;
   selectionMode: 'none' | SelectionMode;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
@@ -19,15 +20,16 @@ export type TreeContextValue = {
 };
 
 export type TreeItemRequest = { itemType: TreeItemType } & (
-  | OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'>
-  | OmitWithoutExpanding<TreeNavigationData_unstable, 'preventInternals'>
-  | OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'>
+  | (OmitWithoutExpanding<TreeOpenChangeData, 'open' | 'openItems'> & { requestType: 'open' })
+  | (TreeNavigationData_unstable & { requestType: 'navigate' })
+  | (OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'> & { requestType: 'selection' })
 );
 
 // helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit
 type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unknown ? Omit<P, K> : P;
 
 const defaultContextValue: TreeContextValue = {
+  treeType: 'nested',
   level: 0,
   selectionMode: 'none',
   openItems: ImmutableSet.empty,
