@@ -24,7 +24,7 @@ export const useMessageBarTitle_unstable = (
         ref,
         ...props,
       }),
-      { elementType: 'div' },
+      { elementType: 'span' },
     ),
   };
 };
