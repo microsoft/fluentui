@@ -4,6 +4,67 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import type { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import * as React_2 from 'react';
+import type { Slot } from '@fluentui/react-utilities';
+
+// @public
+export const MessageBar: ForwardRefComponent<MessageBarProps>;
+
+// @public
+export type MessageBarProps = ComponentProps<MessageBarSlots> & {
+    multiline?: boolean;
+    intent?: 'info' | 'success' | 'warning' | 'error';
+};
+
+// @public (undocumented)
+export type MessageBarSlots = {
+    root: Slot<'div'>;
+    icon?: Slot<'div'>;
+    action?: Slot<'div'>;
+    actions?: Slot<'div'>;
+    body?: Slot<'div'>;
+};
+
+// @public
+export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'multiline' | 'body' | 'intent'>>;
+
+// @public
+export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
+
+// @public
+export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots> & {};
+
+// @public (undocumented)
+export type MessageBarTitleSlots = {
+    root: Slot<'span'>;
+};
+
+// @public
+export type MessageBarTitleState = ComponentState<MessageBarTitleSlots>;
+
+// @public
+export const renderMessageBar_unstable: (state: MessageBarState) => JSX.Element;
+
+// @public
+export const renderMessageBarTitle_unstable: (state: MessageBarTitleState) => JSX.Element;
+
+// @public
+export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLElement>) => MessageBarState;
+
+// @public
+export const useMessageBarStyles_unstable: (state: MessageBarState) => MessageBarState;
+
+// @public
+export const useMessageBarTitle_unstable: (props: MessageBarTitleProps, ref: React_2.Ref<HTMLElement>) => MessageBarTitleState;
+
+// @public
+export const useMessageBarTitleStyles_unstable: (state: MessageBarTitleState) => MessageBarTitleState;
+
 // (No @packageDocumentation comment for this package)
 
 ```
