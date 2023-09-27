@@ -11,7 +11,7 @@
 - Use `aria-current="page"` in the current BreadcrumbButton, to indicate which page is currently displayed.
 - For BreadcrumbItem `aria-current="page"` is optional because it's a non-interactive item.
 - Use `slash` dividers only for small and non-interactive breadcrums.
-- Long names must be truncated and the whole name should be shown in the tooltip.
+- If long items are truncated, add a Tooltip to display the full text.
 
 ### Don't
 
