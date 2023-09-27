@@ -18,8 +18,8 @@ const metadata: ComponentMeta<typeof Breadcrumb> = {
   title: 'Preview Components/Breadcrumb',
   component: Breadcrumb,
   subcomponents: {
-    BreadcrumbButton,
     BreadcrumbItem,
+    BreadcrumbButton,
     BreadcrumbDivider,
   },
   parameters: {
