@@ -62,6 +62,7 @@ const useMultilineStyles = makeStyles({
     justifyContent: 'end',
     marginTop: tokens.spacingVerticalMNudge,
     marginBottom: tokens.spacingVerticalS,
+    marginRight: '0px',
   },
 });
 
