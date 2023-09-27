@@ -12,9 +12,9 @@ import { interactionTagSecondaryClassNames } from '../InteractionTagSecondary/us
  * before being passed to renderTagGroup_unstable.
  *
  * @param props - props from this instance of TagGroup
- * @param ref - reference to root HTMLElement of TagGroup
+ * @param ref - reference to root HTMLDivElement of TagGroup
  */
-export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLElement>): TagGroupState => {
+export const useTagGroup_unstable = (props: TagGroupProps, ref: React.Ref<HTMLDivElement>): TagGroupState => {
   const { onDismiss, size = 'medium' } = props;
 
   const innerRef = React.useRef<HTMLElement>();

@@ -23,9 +23,9 @@ const tagAvatarShapeMap = {
  * before being passed to renderTag_unstable.
  *
  * @param props - props from this instance of Tag
- * @param ref - reference to root HTMLElement of Tag
+ * @param ref - reference to root HTMLSpanElement or HTMLButtonElement of Tag
  */
-export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
+export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
   const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
