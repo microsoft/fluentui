@@ -61,8 +61,14 @@ function _processStackChildren(
   let childrenArray = React.Children.toArray(children);
 
   childrenArray = React.Children.map(childrenArray, child => {
-    if (!child || !React.isValidElement(child)) {
+    if (!child) {
       return doNotRenderFalsyValues ? null : child;
+    }
+
+    // We need to allow children that aren't falsy values, but not valid elements since they could be
+    // a string like <Stack>{'sample string'}</Stack>
+    if (!React.isValidElement(child)) {
+      return child;
     }
 
     if (child.type === React.Fragment) {
