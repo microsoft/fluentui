@@ -22,6 +22,7 @@ export {
   useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
   useFluentProviderStyles_unstable,
+  useFluentProviderThemeStyleTag,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
