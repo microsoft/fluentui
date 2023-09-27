@@ -12,8 +12,6 @@ describe('MessageBar', () => {
         {
           props: {
             icon: 'Icon',
-            actions: 'Actions',
-            secondaryActions: 'Actions',
           },
         },
       ],

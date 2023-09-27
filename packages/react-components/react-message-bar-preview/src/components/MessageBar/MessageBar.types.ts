@@ -1,23 +1,25 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { MessageBarContextValue } from '../../contexts/messageBarContext';
 
 export type MessageBarSlots = {
   root: Slot<'div'>;
   icon?: Slot<'div'>;
-  actions?: Slot<'div'>;
-  secondaryActions?: Slot<'div'>;
-  body?: Slot<'div'>;
+};
+
+export type MessageBarContextValues = {
+  messageBar: MessageBarContextValue;
 };
 
 /**
  * MessageBar Props
  */
-export type MessageBarProps = ComponentProps<MessageBarSlots> & {
-  multiline?: boolean;
-  intent?: 'info' | 'success' | 'warning' | 'error';
-};
+export type MessageBarProps = ComponentProps<MessageBarSlots> &
+  Pick<MessageBarContextValue, 'layout'> & {
+    multiline?: boolean;
+    intent?: 'info' | 'success' | 'warning' | 'error';
+  };
 
 /**
  * State used in rendering MessageBar
  */
-export type MessageBarState = ComponentState<MessageBarSlots> &
-  Required<Pick<MessageBarProps, 'multiline' | 'body' | 'intent'>>;
+export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>>;

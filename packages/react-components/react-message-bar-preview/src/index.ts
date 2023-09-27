@@ -17,3 +17,26 @@ export {
 } from './MessageBarTitle';
 
 export type { MessageBarTitleProps, MessageBarTitleSlots, MessageBarTitleState } from './MessageBarTitle';
+
+export {
+  MessageBarActions,
+  useMessageBarActionsStyles_unstable,
+  useMessageBarActions_unstable,
+  renderMessageBarActions_unstable,
+  messageBarActionsClassNames,
+} from './MessageBarActions';
+
+export type { MessageBarActionsProps, MessageBarActionsSlots, MessageBarActionsState } from './MessageBarActions';
+
+export {
+  MessageBarBody,
+  useMessageBarBodyStyles_unstable,
+  useMessageBarBody_unstable,
+  renderMessageBarBody_unstable,
+  messageBarBodyClassNames,
+} from './MessageBarBody';
+
+export type { MessageBarBodyProps, MessageBarBodySlots, MessageBarBodyState } from './MessageBarBody';
+
+export { MessageBarContextProvider, useMessageBarContext } from './contexts/messageBarContext';
+export type { MessageBarContextValue } from './contexts/messageBarContext';

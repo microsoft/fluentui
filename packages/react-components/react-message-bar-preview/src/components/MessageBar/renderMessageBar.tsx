@@ -2,33 +2,21 @@
 /** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
-import type { MessageBarState, MessageBarSlots } from './MessageBar.types';
-import { ButtonContextProvider } from '@fluentui/react-button';
+import type { MessageBarState, MessageBarSlots, MessageBarContextValues } from './MessageBar.types';
+import { MessageBarContextProvider } from '../../contexts/messageBarContext';
 
 /**
  * Render the final JSX of MessageBar
  */
-export const renderMessageBar_unstable = (state: MessageBarState) => {
+export const renderMessageBar_unstable = (state: MessageBarState, contexts: MessageBarContextValues) => {
   assertSlots<MessageBarSlots>(state);
 
   return (
-    <state.root>
-      {state.icon && <state.icon />}
-      <state.body />
-      <ButtonContextProvider value={{ size: 'small' }}>
-        {state.multiline ? (
-          <>
-            {state.actions && <state.actions />}
-            {state.secondaryActions && <state.secondaryActions />}
-          </>
-        ) : (
-          <>
-            {state.secondaryActions && <state.secondaryActions />}
-            {state.secondaryActions && <state.secondaryActions />}
-            {state.actions && <state.actions />}
-          </>
-        )}
-      </ButtonContextProvider>
-    </state.root>
+    <MessageBarContextProvider value={contexts.messageBar}>
+      <state.root>
+        {state.icon && <state.icon />}
+        {state.root.children}
+      </state.root>
+    </MessageBarContextProvider>
   );
 };

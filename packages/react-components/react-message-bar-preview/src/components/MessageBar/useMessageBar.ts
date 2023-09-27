@@ -13,15 +13,12 @@ import { getIntentIcon } from './getIntentIcon';
  * @param ref - reference to root HTMLElement of MessageBar
  */
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLElement>): MessageBarState => {
-  const { multiline = false, intent = 'info' } = props;
+  const { layout = 'singleline', intent = 'info' } = props;
 
   return {
     components: {
       root: 'div',
       icon: 'div',
-      actions: 'div',
-      secondaryActions: 'div',
-      body: 'div',
     },
     root: slot.always(
       getNativeElementProps('div', {
@@ -31,15 +28,12 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
       { elementType: 'div' },
     ),
 
-    body: slot.always(props.body ?? {}, { elementType: 'div', defaultProps: { children: props.children } }),
     icon: slot.optional(props.icon, {
       renderByDefault: true,
       elementType: 'div',
       defaultProps: { children: getIntentIcon(intent) },
     }),
-    actions: slot.optional(props.actions, { renderByDefault: false, elementType: 'div' }),
-    secondaryActions: slot.optional(props.secondaryActions, { renderByDefault: false, elementType: 'div' }),
-    multiline,
+    layout,
     intent,
   };
 };

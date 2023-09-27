@@ -1,14 +1,11 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
-import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
 
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
   icon: 'fui-MessageBar__icon',
-  actions: 'fui-MessageBar__actions',
-  secondaryActions: 'fui-MessageBar__secondaryActions',
-  body: 'fui-MessageBar__body',
 };
 
 const useRootBaseStyles = makeResetStyles({
@@ -29,23 +26,6 @@ const useIconBaseStyles = makeResetStyles({
   fontSize: tokens.fontSizeBase500,
   marginRight: tokens.spacingHorizontalS,
   color: tokens.colorNeutralForeground3,
-});
-
-const useActionBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('actions'),
-});
-
-const useSecondaryActionsBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('secondaryActions'),
-  display: 'flex',
-  alignItems: 'center',
-  columnGap: tokens.spacingHorizontalM,
-  marginRight: tokens.spacingHorizontalM,
-});
-
-const useBodyBaseStyles = makeResetStyles({
-  ...typographyStyles.body1,
-  ...shorthands.gridArea('body'),
 });
 
 const useMultilineStyles = makeStyles({
@@ -105,21 +85,16 @@ const useRootIntentStyles = makeStyles({
 export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBarState => {
   const rootBaseStyles = useRootBaseStyles();
   const iconBaseStyles = useIconBaseStyles();
-  const actionsBaseStyles = useActionBaseStyles();
-  const secondaryActionsBaseStyles = useSecondaryActionsBaseStyles();
-  const bodyBaseStyles = useBodyBaseStyles();
   const multilineStyles = useMultilineStyles();
   const iconIntentStyles = useIconIntentStyles();
   const rootIntntStyles = useRootIntentStyles();
   state.root.className = mergeClasses(
     messageBarClassNames.root,
     rootBaseStyles,
-    state.multiline && multilineStyles.rootMultiline,
+    state.layout === 'multiline' && multilineStyles.rootMultiline,
     rootIntntStyles[state.intent],
     state.root.className,
   );
-
-  state.body.className = mergeClasses(messageBarClassNames.body, bodyBaseStyles, state.body.className);
 
   if (state.icon) {
     state.icon.className = mergeClasses(
@@ -127,23 +102,6 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
       iconBaseStyles,
       iconIntentStyles[state.intent],
       state.icon.className,
-    );
-  }
-
-  if (state.actions) {
-    state.actions.className = mergeClasses(
-      messageBarClassNames.secondaryActions,
-      actionsBaseStyles,
-      state.actions.className,
-    );
-  }
-
-  if (state.secondaryActions) {
-    state.secondaryActions.className = mergeClasses(
-      messageBarClassNames.actions,
-      secondaryActionsBaseStyles,
-      state.multiline && multilineStyles.secondaryActionsMultiline,
-      state.secondaryActions.className,
     );
   }
 

@@ -4,6 +4,7 @@ import { useMessageBar_unstable } from './useMessageBar';
 import { renderMessageBar_unstable } from './renderMessageBar';
 import { useMessageBarStyles_unstable } from './useMessageBarStyles.styles';
 import type { MessageBarProps } from './MessageBar.types';
+import { useMessageBarContextValue_unstable } from './useMessageBarContextValues';
 
 /**
  * MessageBar component
@@ -12,7 +13,7 @@ export const MessageBar: ForwardRefComponent<MessageBarProps> = React.forwardRef
   const state = useMessageBar_unstable(props, ref);
 
   useMessageBarStyles_unstable(state);
-  return renderMessageBar_unstable(state);
+  return renderMessageBar_unstable(state, useMessageBarContextValue_unstable(state));
 });
 
 MessageBar.displayName = 'MessageBar';
