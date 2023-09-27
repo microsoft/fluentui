@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Treat false values separate from values that aren't valid elements in stack.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
