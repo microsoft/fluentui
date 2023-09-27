@@ -35,11 +35,5 @@ export type SearchBoxState = ComponentState<SearchBoxSlots> &
     focused: boolean;
   };
 
-/** Data type required for the onDismiss callback. */
-export type SearchBoxDismissData = {
-  /** The user action that caused the search box to be cleared */
-  reason: 'button';
-};
-
 /** Overloaded onChange event type, used to merge functionality of regular text entry and the dismiss button */
 export type SearchBoxChangeEvent = React.ChangeEvent<HTMLInputElement> | React.MouseEvent<HTMLSpanElement>;
