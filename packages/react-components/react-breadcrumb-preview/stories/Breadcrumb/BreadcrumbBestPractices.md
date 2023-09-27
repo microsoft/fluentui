@@ -18,7 +18,7 @@
 - Don't use Breadcrumbs as a primary way to navigate an app or site.
 - Avoid using custom dividers.
 - Do not wrap breadcrumb items.
-- Last items shouldn't be interactive.
+- The last item shouldn't be interactive.
 - Don't show overflow menu for non-interactive collapsed items. Tooltip shold be shown instead.
 
 </details>
