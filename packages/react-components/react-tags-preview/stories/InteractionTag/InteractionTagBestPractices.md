@@ -16,4 +16,4 @@
 
 - Don't use `InteractionTag` for tags without a primary action. Use `Tag` in such cases.
 
-- Don't use `media` together with `icon`.
+- Don't use `media` together with `icon` on one InteractionTag.
