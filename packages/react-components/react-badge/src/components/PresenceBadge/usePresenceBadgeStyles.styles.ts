@@ -82,18 +82,12 @@ const useStyles = makeStyles({
   'extra-small': {
     aspectRatio: '1',
     width: '10px',
-    backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
     '& svg': {
       fontSize: '10px',
     },
   },
   small: {
-    aspectRatio: '1',
-    width: '12px',
-    backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
-    '& svg': {
-      fontSize: '12px',
-    },
+    fontSize: '12px',
   },
   medium: {
     aspectRatio: '1',
