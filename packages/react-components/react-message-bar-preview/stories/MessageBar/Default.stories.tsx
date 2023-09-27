@@ -6,25 +6,22 @@ import { MessageBar, MessageBarTitle } from '@fluentui/react-message-bar-preview
 const intents = ['info', 'warning', 'error', 'success'] as const;
 
 export const Default = () => (
-  <>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
     {intents.map(intent => (
-      <>
-        <MessageBar
-          key={intent}
-          intent={intent}
-          actions={<Button aria-label="dismiss" icon={<DismissRegular />} appearance="transparent" />}
-          secondaryActions={
-            <>
-              <Button>Action</Button>
-              <Button>Action</Button>
-            </>
-          }
-        >
-          <MessageBarTitle>Descriptive title</MessageBarTitle>
-          Message providing information to the user with actionable insights. <Link>Link</Link>
-        </MessageBar>
-        <br />
-      </>
+      <MessageBar
+        key={intent}
+        intent={intent}
+        actions={<Button aria-label="dismiss" icon={<DismissRegular />} appearance="transparent" />}
+        secondaryActions={
+          <>
+            <Button>Action</Button>
+            <Button>Action</Button>
+          </>
+        }
+      >
+        <MessageBarTitle>Descriptive title</MessageBarTitle>
+        Message providing information to the user with actionable insights. <Link>Link</Link>
+      </MessageBar>
     ))}
-  </>
+  </div>
 );
