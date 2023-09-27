@@ -6,7 +6,7 @@ import { useMessageBarTitleStyles_unstable } from './useMessageBarTitleStyles.st
 import type { MessageBarTitleProps } from './MessageBarTitle.types';
 
 /**
- * MessageBarTitle component - TODO: add more docs
+ * MessageBarTitle component
  */
 export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps> = React.forwardRef((props, ref) => {
   const state = useMessageBarTitle_unstable(props, ref);
