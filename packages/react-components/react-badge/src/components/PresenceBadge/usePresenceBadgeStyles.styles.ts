@@ -80,36 +80,19 @@ const useStyles = makeStyles({
     },
   },
   'extra-small': {
-    aspectRatio: '1',
-    width: '10px',
-    '& svg': {
-      fontSize: '10px',
-    },
+    fontSize: '10px',
   },
   small: {
     fontSize: '12px',
   },
   medium: {
-    aspectRatio: '1',
-    width: '16px',
-    backgroundClip: 'unset', // tiny icons have a border less than 1px wide, and can't use the backgroundClip fix
-    '& svg': {
-      fontSize: '16px',
-    },
+    fontSize: '16px',
   },
   large: {
-    aspectRatio: '1',
-    width: '20px',
-    '& svg': {
-      fontSize: '20px',
-    },
+    fontSize: '20px',
   },
   'extra-large': {
-    aspectRatio: '1',
-    width: '28px',
-    '& svg': {
-      fontSize: '28px',
-    },
+    fontSize: '28px',
   },
 });
 
