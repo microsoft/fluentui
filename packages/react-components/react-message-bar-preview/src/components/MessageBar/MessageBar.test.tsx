@@ -7,6 +7,17 @@ describe('MessageBar', () => {
   isConformant({
     Component: MessageBar,
     displayName: 'MessageBar',
+    testOptions: {
+      'has-static-classnames': [
+        {
+          props: {
+            icon: 'Icon',
+            actions: 'Actions',
+            action: 'Action',
+          },
+        },
+      ],
+    },
   });
 
   // TODO add more tests here, and create visual regression tests in /apps/vr-tests
