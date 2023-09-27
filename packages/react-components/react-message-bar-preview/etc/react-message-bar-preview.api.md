@@ -11,9 +11,13 @@ import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export const MessageBar: ForwardRefComponent<MessageBarProps>;
+
+// @public (undocumented)
+export const messageBarClassNames: SlotClassNames<MessageBarSlots>;
 
 // @public
 export type MessageBarProps = ComponentProps<MessageBarSlots> & {
@@ -25,8 +29,8 @@ export type MessageBarProps = ComponentProps<MessageBarSlots> & {
 export type MessageBarSlots = {
     root: Slot<'div'>;
     icon?: Slot<'div'>;
-    action?: Slot<'div'>;
     actions?: Slot<'div'>;
+    secondaryActions?: Slot<'div'>;
     body?: Slot<'div'>;
 };
 
@@ -35,6 +39,9 @@ export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<Me
 
 // @public
 export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
+
+// @public (undocumented)
+export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots>;
 
 // @public
 export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots> & {};

@@ -6,15 +6,15 @@ import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
   icon: 'fui-MessageBar__icon',
-  action: 'fui-MessageBar__action',
   actions: 'fui-MessageBar__actions',
+  secondaryActions: 'fui-MessageBar__secondaryActions',
   body: 'fui-MessageBar__body',
 };
 
 const useRootBaseStyles = makeResetStyles({
   display: 'grid',
   gridTemplateColumns: 'auto 1fr auto auto',
-  gridTemplateAreas: '"icon body actions action"',
+  gridTemplateAreas: '"icon body secondaryActions actions"',
   ...shorthands.padding('0', tokens.spacingHorizontalM),
   ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
   ...shorthands.borderRadius(tokens.borderRadiusMedium),
@@ -32,11 +32,11 @@ const useIconBaseStyles = makeResetStyles({
 });
 
 const useActionBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('action'),
+  ...shorthands.gridArea('actions'),
 });
 
-const useActionsBaseStyles = makeResetStyles({
-  ...shorthands.gridArea('actions'),
+const useSecondaryActionsBaseStyles = makeResetStyles({
+  ...shorthands.gridArea('secondaryActions'),
   display: 'flex',
   alignItems: 'center',
   columnGap: tokens.spacingHorizontalM,
@@ -53,12 +53,12 @@ const useMultilineStyles = makeStyles({
     paddingTop: tokens.spacingVerticalMNudge,
     gridTemplateColumns: 'auto 1fr auto',
     gridTemplateAreas: `
-      "icon body action"
-      "actions actions actions"
+      "icon body actions"
+      "secondaryActions secondaryActions secondaryActions"
     `,
   },
 
-  actionsMultiline: {
+  secondaryActionsMultiline: {
     justifyContent: 'end',
     marginTop: tokens.spacingVerticalMNudge,
     marginBottom: tokens.spacingVerticalS,
@@ -105,8 +105,8 @@ const useRootIntentStyles = makeStyles({
 export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBarState => {
   const rootBaseStyles = useRootBaseStyles();
   const iconBaseStyles = useIconBaseStyles();
-  const actionBaseStyles = useActionBaseStyles();
-  const actionsBaseStyles = useActionsBaseStyles();
+  const actionsBaseStyles = useActionBaseStyles();
+  const secondaryActionsBaseStyles = useSecondaryActionsBaseStyles();
   const bodyBaseStyles = useBodyBaseStyles();
   const multilineStyles = useMultilineStyles();
   const iconIntentStyles = useIconIntentStyles();
@@ -130,16 +130,20 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
     );
   }
 
-  if (state.action) {
-    state.action.className = mergeClasses(messageBarClassNames.actions, actionBaseStyles, state.action.className);
-  }
-
   if (state.actions) {
     state.actions.className = mergeClasses(
-      messageBarClassNames.action,
+      messageBarClassNames.secondaryActions,
       actionsBaseStyles,
-      state.multiline && multilineStyles.actionsMultiline,
       state.actions.className,
+    );
+  }
+
+  if (state.secondaryActions) {
+    state.secondaryActions.className = mergeClasses(
+      messageBarClassNames.actions,
+      secondaryActionsBaseStyles,
+      state.multiline && multilineStyles.secondaryActionsMultiline,
+      state.secondaryActions.className,
     );
   }
 

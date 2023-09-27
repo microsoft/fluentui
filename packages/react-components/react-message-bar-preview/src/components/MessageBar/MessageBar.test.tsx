@@ -13,7 +13,7 @@ describe('MessageBar', () => {
           props: {
             icon: 'Icon',
             actions: 'Actions',
-            action: 'Action',
+            secondaryActions: 'Actions',
           },
         },
       ],

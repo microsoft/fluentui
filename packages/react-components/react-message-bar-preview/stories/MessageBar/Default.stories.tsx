@@ -12,8 +12,8 @@ export const Default = () => (
         <MessageBar
           key={intent}
           intent={intent}
-          action={<Button aria-label="dismiss" icon={<DismissRegular />} appearance="transparent" />}
-          actions={
+          actions={<Button aria-label="dismiss" icon={<DismissRegular />} appearance="transparent" />}
+          secondaryActions={
             <>
               <Button>Action</Button>
               <Button>Action</Button>

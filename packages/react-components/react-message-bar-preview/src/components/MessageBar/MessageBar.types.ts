@@ -3,8 +3,8 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 export type MessageBarSlots = {
   root: Slot<'div'>;
   icon?: Slot<'div'>;
-  action?: Slot<'div'>;
   actions?: Slot<'div'>;
+  secondaryActions?: Slot<'div'>;
   body?: Slot<'div'>;
 };
 

@@ -18,14 +18,14 @@ export const renderMessageBar_unstable = (state: MessageBarState) => {
       <ButtonContextProvider value={{ size: 'small' }}>
         {state.multiline ? (
           <>
-            {state.action && <state.action />}
             {state.actions && <state.actions />}
+            {state.secondaryActions && <state.secondaryActions />}
           </>
         ) : (
           <>
+            {state.secondaryActions && <state.secondaryActions />}
+            {state.secondaryActions && <state.secondaryActions />}
             {state.actions && <state.actions />}
-            {state.actions && <state.actions />}
-            {state.action && <state.action />}
           </>
         )}
       </ButtonContextProvider>

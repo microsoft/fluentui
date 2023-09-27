@@ -19,8 +19,8 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     components: {
       root: 'div',
       icon: 'div',
-      action: 'div',
       actions: 'div',
+      secondaryActions: 'div',
       body: 'div',
     },
     root: slot.always(
@@ -37,8 +37,8 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
       elementType: 'div',
       defaultProps: { children: getIntentIcon(intent) },
     }),
-    action: slot.optional(props.action, { renderByDefault: false, elementType: 'div' }),
     actions: slot.optional(props.actions, { renderByDefault: false, elementType: 'div' }),
+    secondaryActions: slot.optional(props.secondaryActions, { renderByDefault: false, elementType: 'div' }),
     multiline,
     intent,
   };
