@@ -119,11 +119,12 @@ describe('SearchBox', () => {
     expect(onClick).toHaveBeenCalledTimes(1);
   });
 
-  it('invokes `onDismiss` when the dismiss button is clicked', () => {
-    const onDismissClick = jest.fn();
-    renderedComponent = render(<SearchBox defaultValue="hello" onDismiss={onDismissClick} />);
+  it('invokes `onChange` when the dismiss button is clicked', () => {
+    const onChange = jest.fn();
+    renderedComponent = render(<SearchBox defaultValue="hello" onChange={onChange} />);
 
     userEvent.click(renderedComponent.getByRole('button'));
-    expect(onDismissClick).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(onChange).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ value: '' }));
   });
 });
