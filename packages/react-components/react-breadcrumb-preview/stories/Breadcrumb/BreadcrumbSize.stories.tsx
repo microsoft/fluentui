@@ -50,7 +50,7 @@ export const BreadcrumbSize = () => {
         <BreadcrumbDivider />
         <BreadcrumbItem current>Item 4</BreadcrumbItem>
       </Breadcrumb>
-      <h4>Interactive Breadcrumbs</h4>
+      <h4>Interactive Breadcrumb</h4>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">
         {items.map(item => renderButton(item))}
       </Breadcrumb>
@@ -69,7 +69,9 @@ export const BreadcrumbSize = () => {
 BreadcrumbSize.parameters = {
   docs: {
     description: {
-      story: 'BreadcrumbButton and BreadcrumbItem have the same sizes except `small`.',
+      story:
+        'Breadcrumb `size` can be `"small"`, `"medium"` (default), or `"large"`. ' +
+        'Note: BreadcrumbButton and BreadcrumbItem have different spacing in "small" size.',
     },
   },
 };
