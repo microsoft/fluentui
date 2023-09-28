@@ -13,9 +13,9 @@ export type SearchBoxSlots = InputSlots & {
 export type SearchBoxProps = Omit<
   ComponentProps<Partial<SearchBoxSlots>, 'input'>,
   // `children` is unsupported. The rest of these native props have customized definitions.
-  'children' | 'defaultValue' | 'size' | 'type' | 'value'
+  'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'
 > &
-  InputProps & {
+  Omit<InputProps, 'onChange'> & {
     /**
      * Custom onChange callback.
      * Will be traditionally supplied with a React.ChangeEvent<HTMLInputElement> for usual character entry.
