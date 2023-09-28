@@ -10,11 +10,11 @@ import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
  * before being passed to renderInteractionTag_unstable.
  *
  * @param props - props from this instance of InteractionTag
- * @param ref - reference to root HTMLElement of InteractionTag
+ * @param ref - reference to root HTMLDivElement of InteractionTag
  */
 export const useInteractionTag_unstable = (
   props: InteractionTagProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): InteractionTagState => {
   const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 

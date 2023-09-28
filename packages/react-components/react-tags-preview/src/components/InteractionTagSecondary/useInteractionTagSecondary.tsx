@@ -12,11 +12,11 @@ import { useInteractionTagContext_unstable } from '../../contexts/interactionTag
  * before being passed to renderInteractionTagSecondary_unstable.
  *
  * @param props - props from this instance of InteractionTagSecondary
- * @param ref - reference to root HTMLElement of InteractionTagSecondary
+ * @param ref - reference to root HTMLButtonElement of InteractionTagSecondary
  */
 export const useInteractionTagSecondary_unstable = (
   props: InteractionTagSecondaryProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLButtonElement>,
 ): InteractionTagSecondaryState => {
   const { appearance, disabled, handleTagDismiss, interactionTagPrimaryId, shape, size, value } =
     useInteractionTagContext_unstable();

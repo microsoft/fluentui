@@ -59,18 +59,18 @@ export const Size = () => {
       {/* extra-small */}
       <div className={styles.innerWrapper}>
         <InteractionTag size="extra-small">
-          <InteractionTagPrimary>Extra Small</InteractionTagPrimary>
+          <InteractionTagPrimary>Extra small</InteractionTagPrimary>
         </InteractionTag>
 
         <InteractionTag size="extra-small">
           <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
-            Extra Small dismissible
+            Extra small dismissible
           </InteractionTagPrimary>
           <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
 
         <InteractionTag size="extra-small" shape="circular">
-          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra Small circular</InteractionTagPrimary>
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra small circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
     </div>
