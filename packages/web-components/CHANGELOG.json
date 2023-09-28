@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 28 Sep 2023 04:18:49 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.3",
+      "version": "3.0.0-beta.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brian.christopher.brady@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "980b0d394322fd6a11ea85d57721e928ca4803a5",
+            "comment": "feat(menu): adds menu web component"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 28 Aug 2023 04:19:02 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.2",
       "version": "3.0.0-beta.2",
