@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: add custom style hooks for tag components",
+  "comment": "chore: properly type ref in state hook",
   "packageName": "@fluentui/react-tags-preview",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"

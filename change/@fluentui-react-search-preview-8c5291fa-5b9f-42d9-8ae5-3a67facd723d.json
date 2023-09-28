@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Update react-icons version to pick up IconDirectionContextProvider updated export",
-  "packageName": "@fluentui/react-search-preview",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

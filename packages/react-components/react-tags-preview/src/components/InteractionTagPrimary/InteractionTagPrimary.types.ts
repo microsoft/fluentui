@@ -8,10 +8,13 @@ export type InteractionTagPrimarySlots = {
   root: NonNullable<Slot<'button'>>;
 
   /**
-   * Slot for an icon or other visual element
+   * Slot for a visual element, usually an avatar
    */
   media?: Slot<'span'>;
 
+  /**
+   * Slot for an icon
+   */
   icon?: Slot<'span'>;
 
   /**

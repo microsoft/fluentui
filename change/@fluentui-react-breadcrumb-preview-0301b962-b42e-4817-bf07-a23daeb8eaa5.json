@@ -1,6 +1,6 @@
 {
-  "type": "patch",
-  "comment": "fix: used makeResetStyles instead of makeStyles",
+  "type": "minor",
+  "comment": "fix: exported BreadcrumbProvider and useBreadcrumbContext",
   "packageName": "@fluentui/react-breadcrumb-preview",
   "email": "vkozlova@microsoft.com",
   "dependentChangeType": "patch"
