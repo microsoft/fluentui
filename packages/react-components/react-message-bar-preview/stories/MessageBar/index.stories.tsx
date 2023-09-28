@@ -4,7 +4,8 @@ import descriptionMd from './MessageBarDescription.md';
 import bestPracticesMd from './MessageBarBestPractices.md';
 
 export { Default } from './Default.stories';
-export { Multiline } from './Multiline.stories';
+export { Reflow } from './Reflow.stories';
+export { ManualLayout } from './ManualLayout.stories';
 
 export default {
   title: 'Preview Components/MessageBar',

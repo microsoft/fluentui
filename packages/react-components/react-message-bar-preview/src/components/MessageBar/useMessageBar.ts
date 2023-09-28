@@ -1,7 +1,8 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
+import { useMessageBarReflow } from './useMessageBarReflow';
 
 /**
  * Create the state required to render MessageBar.
@@ -13,7 +14,15 @@ import { getIntentIcon } from './getIntentIcon';
  * @param ref - reference to root HTMLElement of MessageBar
  */
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLElement>): MessageBarState => {
-  const { layout = 'singleline', intent = 'info' } = props;
+  const { intent = 'info' } = props;
+  let { layout = 'auto' } = props;
+
+  const autoReflow = layout === 'auto';
+  const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
+
+  if (autoReflow) {
+    layout = reflowing ? 'multiline' : 'singleline';
+  }
 
   return {
     components: {
@@ -22,7 +31,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     },
     root: slot.always(
       getNativeElementProps('div', {
-        ref,
+        ref: useMergedRefs(ref, reflowRef),
         ...props,
       }),
       { elementType: 'div' },
