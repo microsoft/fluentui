@@ -107,10 +107,18 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerInlineStyles_unstable: CustomStyleHook;
+    useDrawerOverlayStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
-    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerFooterStyles_unstable: CustomStyleHook;
+    useInteractionTagStyles_unstable: CustomStyleHook;
+    useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+    useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+    useTagStyles_unstable: CustomStyleHook;
+    useTagGroupStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -199,10 +207,18 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerInlineStyles_unstable: CustomStyleHook;
+    useDrawerOverlayStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
-    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerFooterStyles_unstable: CustomStyleHook;
+    useInteractionTagStyles_unstable: CustomStyleHook;
+    useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+    useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+    useTagStyles_unstable: CustomStyleHook;
+    useTagGroupStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -291,10 +307,18 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerInlineStyles_unstable: CustomStyleHook;
+    useDrawerOverlayStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
-    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+    useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+    useDrawerBodyStyles_unstable: CustomStyleHook;
+    useDrawerFooterStyles_unstable: CustomStyleHook;
+    useInteractionTagStyles_unstable: CustomStyleHook;
+    useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+    useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+    useTagStyles_unstable: CustomStyleHook;
+    useTagGroupStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

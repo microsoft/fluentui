@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip, Link } from '@fluentui/react-components';
 import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
-import { bundleIcon, HeartFilled, HeartRegular } from '@fluentui/react-icons';
-
-const HeartIcon = bundleIcon(HeartFilled, HeartRegular);
 
 const useStyles = makeStyles({
   popover: {
@@ -15,15 +12,11 @@ const useStyles = makeStyles({
 
 export const HasPrimaryAction = () => {
   const styles = useStyles();
-  const [liked, setLiked] = React.useState(false);
-  const toggleSecondary = () => setLiked(v => !v);
   return (
     <InteractionTag>
       <Popover trapFocus>
         <PopoverTrigger>
-          <InteractionTagPrimary hasSecondaryAction id="golden-retriever-primary">
-            golden retriever
-          </InteractionTagPrimary>
+          <InteractionTagPrimary hasSecondaryAction>Golden retriever</InteractionTagPrimary>
         </PopoverTrigger>
         <PopoverSurface className={styles.popover}>
           <Link href="https://en.wikipedia.org/wiki/Golden_Retriever">Find out more on wiki</Link>
@@ -35,14 +28,8 @@ export const HasPrimaryAction = () => {
           </ul>
         </PopoverSurface>
       </Popover>
-      <Tooltip content={liked ? 'unlike' : 'like'} relationship="label">
-        <InteractionTagSecondary
-          onClick={toggleSecondary}
-          aria-labelledby="golden-retriever-primary golden-retriever-secondary"
-          id="golden-retriever-secondary"
-        >
-          <HeartIcon filled={liked} />
-        </InteractionTagSecondary>
+      <Tooltip content="dismiss" relationship="label">
+        <InteractionTagSecondary />
       </Tooltip>
     </InteractionTag>
   );

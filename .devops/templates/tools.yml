@@ -1,10 +1,11 @@
 # Install versions of Node and Yarn required by build pipelines.
 steps:
-  - task: NodeTool@0
+  - task: UseNode@1
     inputs:
-      versionSpec: '16.18.1'
+      version: '16.18.1'
       checkLatest: false
     displayName: 'Install Node.js'
+    retryCountOnTaskFailure: 3
 
   - script: |
       npm i -g yarn@1

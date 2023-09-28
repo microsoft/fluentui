@@ -1,8 +1,18 @@
 # Change Log - @fluentui/azure-themes
 
-This log was last generated on Thu, 31 Aug 2023 07:36:22 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Sep 2023 07:37:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.35](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.35)
+
+Thu, 28 Sep 2023 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/azure-themes_v8.6.34..@fluentui/azure-themes_v8.6.35)
+
+### Patches
+
+- Updating azure colors in lighttheme to maintain detailslist focus row bug fix and introduce spinner bug fix, resulting from accent color vs focus color  ([PR #29133](https://github.com/microsoft/fluentui/pull/29133) by 30805892+Jacqueline-ms@users.noreply.github.com)
+- Bump @fluentui/react to v8.111.3 ([PR #29321](https://github.com/microsoft/fluentui/pull/29321) by beachball)
 
 ## [8.6.34](https://github.com/microsoft/fluentui/tree/@fluentui/azure-themes_v8.6.34)
 

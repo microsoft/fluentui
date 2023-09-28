@@ -34,16 +34,6 @@ const useRootBaseClassName = makeResetStyles({
   borderLeftColor: tokens.colorNeutralStroke1,
   borderTopLeftRadius: tokens.borderRadiusNone,
   borderBottomLeftRadius: tokens.borderRadiusNone,
-
-  // windows high contrast:
-  '@media (forced-colors: active)': {
-    ':hover': {
-      backgroundColor: 'HighlightText',
-    },
-    ':active': {
-      backgroundColor: 'HighlightText',
-    },
-  },
 });
 
 const useRootStyles = makeStyles({
@@ -59,6 +49,14 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorNeutralBackground3Pressed,
       color: tokens.colorNeutralForeground2BrandPressed,
     },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
+    },
   },
   outline: {
     backgroundColor: tokens.colorSubtleBackground,
@@ -73,6 +71,14 @@ const useRootStyles = makeStyles({
       backgroundColor: tokens.colorSubtleBackgroundPressed,
       color: tokens.colorNeutralForeground2BrandPressed,
     },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
+    },
   },
   brand: {
     backgroundColor: tokens.colorBrandBackground2,
@@ -86,6 +92,14 @@ const useRootStyles = makeStyles({
     ':active': {
       backgroundColor: tokens.colorBrandBackground2Pressed,
       color: tokens.colorCompoundBrandForeground1Pressed,
+    },
+    '@media (forced-colors: active)': {
+      ':hover': {
+        backgroundColor: 'HighlightText',
+      },
+      ':active': {
+        backgroundColor: 'HighlightText',
+      },
     },
   },
 

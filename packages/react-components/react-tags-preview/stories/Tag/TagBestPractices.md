@@ -12,4 +12,4 @@
 
 - Don't change the interaction on a `Tag` because it should only be dismissible. Instead, use `InteractionTag` if you need a different type of interaction.
 
-- Don't use `media` together with `icon`.
+- Don't use `media` together with `icon` on one Tag.
