@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Thu, 31 Aug 2023 07:36:22 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Sep 2023 07:37:17 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.111.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.111.3)
+
+Thu, 28 Sep 2023 07:37:17 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.111.2..@fluentui/react_v8.111.3)
+
+### Patches
+
+- Update ensuresuggestionmodel to use passed object ariaLabel property for generated suggestionmodel aria label override ([PR #28004](https://github.com/microsoft/fluentui/pull/28004) by daneuber@microsoft.com)
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- fix: Treat false values separate from values that aren't valid elements in stack. ([PR #29321](https://github.com/microsoft/fluentui/pull/29321) by esteban.230@hotmail.com)
 
 ## [8.111.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.111.2)
 

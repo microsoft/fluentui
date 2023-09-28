@@ -8,10 +8,13 @@ export type TagSlots = {
   root: NonNullable<Slot<'button', 'span'>>;
 
   /**
-   * Slot for an icon or other visual element
+   * Slot for a visual element, usually an avatar
    */
   media?: Slot<'span'>;
 
+  /**
+   * Slot for an icon
+   */
   icon?: Slot<'span'>;
 
   /**
@@ -24,6 +27,9 @@ export type TagSlots = {
    */
   secondaryText?: Slot<'span'>;
 
+  /**
+   * Slot for the dismiss icon
+   */
   dismissIcon?: Slot<'span'>;
 };
 

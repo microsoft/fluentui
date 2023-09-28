@@ -153,6 +153,7 @@ import { CounterBadge } from '@fluentui/react-badge';
 import { counterBadgeClassNames } from '@fluentui/react-badge';
 import { CounterBadgeProps } from '@fluentui/react-badge';
 import { CounterBadgeState } from '@fluentui/react-badge';
+import { createCSSRuleFromTheme } from '@fluentui/react-provider';
 import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import { CreateCustomFocusIndicatorStyleOptions } from '@fluentui/react-tabster';
 import { createDarkTheme } from '@fluentui/react-theme';
@@ -226,6 +227,7 @@ import { dialogContentClassNames } from '@fluentui/react-dialog';
 import { DialogContentProps } from '@fluentui/react-dialog';
 import { DialogContentSlots } from '@fluentui/react-dialog';
 import { DialogContentState } from '@fluentui/react-dialog';
+import { DialogContextValue } from '@fluentui/react-dialog';
 import { DialogOpenChangeData } from '@fluentui/react-dialog';
 import { DialogOpenChangeEvent } from '@fluentui/react-dialog';
 import { DialogProps } from '@fluentui/react-dialog';
@@ -233,6 +235,7 @@ import { DialogSlots } from '@fluentui/react-dialog';
 import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
 import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
+import { DialogSurfaceContextValue } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
@@ -276,6 +279,8 @@ import { flattenTree_unstable } from '@fluentui/react-tree';
 import { FlattenTreeItem } from '@fluentui/react-tree';
 import { FlatTree } from '@fluentui/react-tree';
 import { flatTreeClassNames } from '@fluentui/react-tree';
+import { FlatTreeItem } from '@fluentui/react-tree';
+import { FlatTreeItemProps } from '@fluentui/react-tree';
 import { FlatTreeProps } from '@fluentui/react-tree';
 import { FlatTreeSlots } from '@fluentui/react-tree';
 import { FlatTreeState } from '@fluentui/react-tree';
@@ -973,7 +978,9 @@ import { useDialogBody_unstable } from '@fluentui/react-dialog';
 import { useDialogBodyStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContent_unstable } from '@fluentui/react-dialog';
 import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
+import { useDialogContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
@@ -1485,6 +1492,8 @@ export { CounterBadgeProps }
 
 export { CounterBadgeState }
 
+export { createCSSRuleFromTheme }
+
 export { createCustomFocusIndicatorStyle }
 
 export { CreateCustomFocusIndicatorStyleOptions }
@@ -1631,6 +1640,8 @@ export { DialogContentSlots }
 
 export { DialogContentState }
 
+export { DialogContextValue }
+
 export { DialogOpenChangeData }
 
 export { DialogOpenChangeEvent }
@@ -1644,6 +1655,8 @@ export { DialogState }
 export { DialogSurface }
 
 export { dialogSurfaceClassNames }
+
+export { DialogSurfaceContextValue }
 
 export { DialogSurfaceProps }
 
@@ -1730,6 +1743,10 @@ export { FlattenTreeItem }
 export { FlatTree }
 
 export { flatTreeClassNames }
+
+export { FlatTreeItem }
+
+export { FlatTreeItemProps }
 
 export { FlatTreeProps }
 
@@ -3125,7 +3142,11 @@ export { useDialogContent_unstable }
 
 export { useDialogContentStyles_unstable }
 
+export { useDialogContext_unstable }
+
 export { useDialogSurface_unstable }
+
+export { useDialogSurfaceContext_unstable }
 
 export { useDialogSurfaceStyles_unstable }
 

@@ -20,7 +20,7 @@ export const Disabled = () => {
         dismissible
         dismissIcon={{ 'aria-label': 'remove' }}
       >
-        disabled
+        Disabled
       </Tag>
       <Tag
         disabled
@@ -30,7 +30,7 @@ export const Disabled = () => {
         dismissible
         dismissIcon={{ 'aria-label': 'remove' }}
       >
-        disabled
+        Disabled
       </Tag>
       <Tag
         disabled
@@ -40,7 +40,7 @@ export const Disabled = () => {
         dismissible
         dismissIcon={{ 'aria-label': 'remove' }}
       >
-        disabled
+        Disabled
       </Tag>
     </div>
   );

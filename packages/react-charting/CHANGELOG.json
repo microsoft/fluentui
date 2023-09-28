@@ -2,6 +2,42 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 28 Sep 2023 07:37:17 GMT",
+      "tag": "@fluentui/react-charting_v5.17.9",
+      "version": "5.17.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.112",
+            "commit": "8630debc5da0c8bce0330578c69015704a49b7f8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.111.3",
+            "commit": "8630debc5da0c8bce0330578c69015704a49b7f8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 25 Sep 2023 07:36:44 GMT",
+      "tag": "@fluentui/react-charting_v5.17.8",
+      "version": "5.17.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "0327a2d37ae2b10127ee8133355d993fade18648",
+            "comment": "Enable reflow for all cartesian chart examples"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 11 Sep 2023 07:35:28 GMT",
       "tag": "@fluentui/react-charting_v5.17.7",
       "version": "5.17.7",

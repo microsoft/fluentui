@@ -27,18 +27,10 @@ export const Size = () => {
         </InteractionTag>
 
         <InteractionTag>
-          <InteractionTagPrimary
-            media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
-            hasSecondaryAction
-            id="medium-primary"
-          >
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Medium dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary
-            aria-label="dismiss"
-            aria-labelledby="medium-primary medium-secondary"
-            id="medium-secondary"
-          />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
 
         <InteractionTag shape="circular">
@@ -53,18 +45,10 @@ export const Size = () => {
         </InteractionTag>
 
         <InteractionTag size="small">
-          <InteractionTagPrimary
-            media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
-            hasSecondaryAction
-            id="small-primary"
-          >
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
             Small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary
-            aria-label="dismiss"
-            aria-labelledby="small-primary small-secondary"
-            id="small-secondary"
-          />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
 
         <InteractionTag size="small" shape="circular">
@@ -75,26 +59,18 @@ export const Size = () => {
       {/* extra-small */}
       <div className={styles.innerWrapper}>
         <InteractionTag size="extra-small">
-          <InteractionTagPrimary>Extra Small</InteractionTagPrimary>
+          <InteractionTagPrimary>Extra small</InteractionTagPrimary>
         </InteractionTag>
 
         <InteractionTag size="extra-small">
-          <InteractionTagPrimary
-            media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}
-            hasSecondaryAction
-            id="extra-small-primary"
-          >
-            Extra Small dismissible
+          <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />} hasSecondaryAction>
+            Extra small dismissible
           </InteractionTagPrimary>
-          <InteractionTagSecondary
-            aria-label="dismiss"
-            aria-labelledby="extra-small-primary extra-small-secondary"
-            id="extra-small-secondary"
-          />
+          <InteractionTagSecondary aria-label="dismiss" />
         </InteractionTag>
 
         <InteractionTag size="extra-small" shape="circular">
-          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra Small circular</InteractionTagPrimary>
+          <InteractionTagPrimary icon={<CalendarMonthRegular />}>Extra small circular</InteractionTagPrimary>
         </InteractionTag>
       </div>
     </div>

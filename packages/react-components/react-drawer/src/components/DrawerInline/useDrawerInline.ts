@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useControllableState, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
@@ -18,14 +18,8 @@ export const useDrawerInline_unstable = (
   props: DrawerInlineProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerInlineState => {
-  const { size, position, ...defaultProps } = useDrawerDefaultProps(props);
+  const { size, position, open } = useDrawerDefaultProps(props);
   const { separator = false } = props;
-
-  const [open] = useControllableState({
-    state: defaultProps.open,
-    defaultState: defaultProps.defaultOpen,
-    initialState: false,
-  });
 
   const motion = useMotion<HTMLDivElement>(open);
 
