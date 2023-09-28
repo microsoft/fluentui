@@ -195,16 +195,18 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               },
             }}
             // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={props =>
-              props ? (
-                <ChartHoverCard
-                  XValue={props.xAxisCalloutData}
-                  Legend={props.legend}
-                  YValue={`${props.yAxisCalloutData || props.data} h`}
-                  color={props.color}
-                />
-              ) : null
-            }
+            {...(this.state.selectedCallout === 'singleCallout' && {
+              onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
+                return props ? (
+                  <ChartHoverCard
+                    XValue={props.xAxisCalloutData}
+                    Legend={props.legend}
+                    YValue={`${props.yAxisCalloutData || props.data} h`}
+                    color={props.color}
+                  />
+                ) : null;
+              },
+            })}
             svgProps={{
               'aria-label': 'Example chart with metadata per month',
             }}
