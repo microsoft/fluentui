@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix for bug 9136 and 7997",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
