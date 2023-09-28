@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Updating azure colors in lighttheme to maintain detailslist focus row bug fix and introduce spinner bug fix, resulting from accent color vs focus color ",
-  "packageName": "@fluentui/azure-themes",
-  "email": "30805892+Jacqueline-ms@users.noreply.github.com",
-  "dependentChangeType": "patch"
-}
