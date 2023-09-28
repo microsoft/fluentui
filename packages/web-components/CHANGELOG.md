@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Mon, 28 Aug 2023 04:19:02 GMT and should not be manually modified.
+This log was last generated on Thu, 28 Sep 2023 04:18:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.3)
+
+Thu, 28 Sep 2023 04:18:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.2..@fluentui/web-components_v3.0.0-beta.3)
+
+### Changes
+
+- feat(menu): adds menu web component ([PR #27906](https://github.com/microsoft/fluentui/pull/27906) by brian.christopher.brady@gmail.com)
 
 ## [3.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.2)
 
