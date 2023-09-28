@@ -204,6 +204,7 @@ export class GroupedVerticalBarChartCustomAccessibilityExample extends React.Com
             showYAxisGridLines
             wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
+            enableReflow={true}
           />
         </div>
       </>

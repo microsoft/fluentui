@@ -23,9 +23,9 @@ const tagAvatarShapeMap = {
  * before being passed to renderTag_unstable.
  *
  * @param props - props from this instance of Tag
- * @param ref - reference to root HTMLElement of Tag
+ * @param ref - reference to root HTMLSpanElement or HTMLButtonElement of Tag
  */
-export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
+export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
   const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
@@ -42,16 +42,18 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
   const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
     if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
 
   const dismissOnKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
+
+  const elementType = dismissible ? 'button' : 'span';
 
   return {
     appearance,
@@ -63,7 +65,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     size,
 
     components: {
-      root: dismissible ? 'button' : 'span',
+      root: elementType,
       media: 'span',
       icon: 'span',
       primaryText: 'span',
@@ -72,13 +74,13 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
+      getNativeElementProps(elementType, {
         ref,
         ...props,
         id,
         ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
       }),
-      { elementType: dismissible ? 'button' : 'span' },
+      { elementType },
     ),
 
     media: slot.optional(props.media, { elementType: 'span' }),
