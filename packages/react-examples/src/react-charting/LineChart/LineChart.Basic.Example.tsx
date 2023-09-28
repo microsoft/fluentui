@@ -187,22 +187,40 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           onChange={this._onToggleAxisTitlesCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
-        <div style={rootStyle}>
-          <LineChart
-            culture={window.navigator.language}
-            data={data}
-            legendsOverflowText={'Overflow Items'}
-            yMinValue={200}
-            yMaxValue={301}
-            height={this.state.height}
-            width={this.state.width}
-            xAxisTickCount={10}
-            allowMultipleShapesForPoints={this.state.allowMultipleShapes}
-            enablePerfOptimization={true}
-            yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}
-            xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
-          />
-        </div>
+        {this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <LineChart
+              culture={window.navigator.language}
+              data={data}
+              legendsOverflowText={'Overflow Items'}
+              yMinValue={200}
+              yMaxValue={301}
+              height={this.state.height}
+              width={this.state.width}
+              xAxisTickCount={10}
+              allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+              enablePerfOptimization={true}
+              yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}
+              xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
+            />
+          </div>
+        )}
+        {!this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <LineChart
+              culture={window.navigator.language}
+              data={data}
+              legendsOverflowText={'Overflow Items'}
+              yMinValue={200}
+              yMaxValue={301}
+              height={this.state.height}
+              width={this.state.width}
+              xAxisTickCount={10}
+              allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+              enablePerfOptimization={true}
+            />
+          </div>
+        )}
       </>
     );
   }

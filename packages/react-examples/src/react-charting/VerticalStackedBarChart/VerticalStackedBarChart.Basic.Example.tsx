@@ -16,6 +16,7 @@ interface IVerticalStackedBarState {
   showLine: boolean;
   hideLabels: boolean;
   showAxisTitles: boolean;
+  margins: {};
 }
 
 export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVerticalStackedBarState> {
@@ -28,10 +29,17 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
       barGapMax: 2,
       hideLabels: false,
       showAxisTitles: true,
+      margins: {
+        top: 20,
+        bottom: 55,
+        right: 40,
+        left: 60,
+      },
     };
   }
+
   public render(): JSX.Element {
-    return <div>{this._basicExample()}</div>;
+    return <div key={'id_VBC'}>{this._basicExample()}</div>;
   }
 
   private _onWidthChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -48,8 +56,28 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
     this.setState({ hideLabels: checked });
   };
   private _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
-    this.forceUpdate();
-    this.setState({ showAxisTitles: checked });
+    this.setState({
+      showAxisTitles: checked,
+    });
+    if (checked) {
+      this.setState({
+        margins: {
+          top: 20,
+          bottom: 55,
+          right: 40,
+          left: 60,
+        },
+      });
+    } else {
+      this.setState({
+        margins: {
+          top: 20,
+          bottom: 35,
+          right: 20,
+          left: 40,
+        },
+      });
+    }
   };
 
   private _basicExample(): JSX.Element {
@@ -261,24 +289,46 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
           onChange={this._onToggleAxisTitlesCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
-        <div style={rootStyle}>
-          <VerticalStackedBarChart
-            culture={window.navigator.language}
-            chartTitle="Vertical stacked bar chart basic example"
-            barGapMax={this.state.barGapMax}
-            data={data}
-            height={this.state.height}
-            width={this.state.width}
-            lineOptions={lineOptions}
-            legendProps={{
-              allowFocusOnLegends: true,
-            }}
-            hideLabels={this.state.hideLabels}
-            enableReflow={true}
-            yAxisTitle={this.state.showAxisTitles ? 'Variation of number of sales' : undefined}
-            xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
-          />
-        </div>
+        {this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <VerticalStackedBarChart
+              culture={window.navigator.language}
+              chartTitle="Vertical stacked bar chart basic example"
+              barGapMax={this.state.barGapMax}
+              data={data}
+              height={this.state.height}
+              width={this.state.width}
+              margins={this.state.margins}
+              lineOptions={lineOptions}
+              legendProps={{
+                allowFocusOnLegends: true,
+              }}
+              hideLabels={this.state.hideLabels}
+              enableReflow={true}
+              yAxisTitle={this.state.showAxisTitles ? 'Variation of number of sales' : undefined}
+              xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
+            />
+          </div>
+        )}
+        {!this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <VerticalStackedBarChart
+              culture={window.navigator.language}
+              chartTitle="Vertical stacked bar chart basic example"
+              barGapMax={this.state.barGapMax}
+              data={data}
+              height={this.state.height}
+              width={this.state.width}
+              margins={this.state.margins}
+              lineOptions={lineOptions}
+              legendProps={{
+                allowFocusOnLegends: true,
+              }}
+              hideLabels={this.state.hideLabels}
+              enableReflow={true}
+            />
+          </div>
+        )}
       </>
     );
   }

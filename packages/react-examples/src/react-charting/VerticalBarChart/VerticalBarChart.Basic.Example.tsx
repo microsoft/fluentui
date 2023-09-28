@@ -207,29 +207,54 @@ export class VerticalBarChartBasicExample extends React.Component<IVerticalBarCh
           onChange={this._onToggleAxisTitlesCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
-        <div style={rootStyle}>
-          <VerticalBarChart
-            culture={window.navigator.language}
-            chartTitle="Vertical bar chart basic example "
-            data={points}
-            width={this.state.width}
-            useSingleColor={this.state.useSingleColor}
-            height={this.state.height}
-            lineLegendText={'just line'}
-            lineLegendColor={'brown'}
-            lineOptions={lineOptions}
-            {...(this.state.isCalloutselected && {
-              onRenderCalloutPerDataPoint: (
-                props: IVerticalBarChartDataPoint,
-                defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
-              ) => (props ? defaultRender(props) : null),
-            })}
-            hideLabels={this.state.hideLabels}
-            enableReflow={true}
-            yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
-            xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
-          />
-        </div>
+        {this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <VerticalBarChart
+              culture={window.navigator.language}
+              chartTitle="Vertical bar chart basic example "
+              data={points}
+              width={this.state.width}
+              useSingleColor={this.state.useSingleColor}
+              height={this.state.height}
+              lineLegendText={'just line'}
+              lineLegendColor={'brown'}
+              lineOptions={lineOptions}
+              {...(this.state.isCalloutselected && {
+                onRenderCalloutPerDataPoint: (
+                  props: IVerticalBarChartDataPoint,
+                  defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+                ) => (props ? defaultRender(props) : null),
+              })}
+              hideLabels={this.state.hideLabels}
+              enableReflow={true}
+              yAxisTitle={this.state.showAxisTitles ? 'Different categories of animals and fruits' : undefined}
+              xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
+            />
+          </div>
+        )}
+        {!this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <VerticalBarChart
+              culture={window.navigator.language}
+              chartTitle="Vertical bar chart basic example "
+              data={points}
+              width={this.state.width}
+              useSingleColor={this.state.useSingleColor}
+              height={this.state.height}
+              lineLegendText={'just line'}
+              lineLegendColor={'brown'}
+              lineOptions={lineOptions}
+              {...(this.state.isCalloutselected && {
+                onRenderCalloutPerDataPoint: (
+                  props: IVerticalBarChartDataPoint,
+                  defaultRender: IRenderFunction<IVerticalBarChartDataPoint>,
+                ) => (props ? defaultRender(props) : null),
+              })}
+              hideLabels={this.state.hideLabels}
+              enableReflow={true}
+            />
+          </div>
+        )}
       </>
     );
   }

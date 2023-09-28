@@ -192,30 +192,56 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
           onChange={this._onToggleAxisTitlesCheckChange}
           styles={{ root: { marginTop: '10px' } }}
         />
-        <div style={rootStyle}>
-          <AreaChart
-            culture={window.navigator.language}
-            height={this.state.height}
-            width={this.state.width}
-            data={chartData}
-            showYAxisGridLines={true}
-            enablePerfOptimization={true}
-            // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
-              props && this.state.isCalloutselected ? (
-                <ChartHoverCard
-                  XValue={props.x.toString()}
-                  Legend={'Custom Legend'}
-                  YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
-                  color={'red'}
-                />
-              ) : null
-            }
-            enableReflow={true}
-            yAxisTitle={this.state.showAxisTitles ? 'Variation of stock market prices' : undefined}
-            xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
-          />
-        </div>
+        {this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <AreaChart
+              culture={window.navigator.language}
+              height={this.state.height}
+              width={this.state.width}
+              data={chartData}
+              showYAxisGridLines={true}
+              enablePerfOptimization={true}
+              // eslint-disable-next-line react/jsx-no-bind
+              onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+                props && this.state.isCalloutselected ? (
+                  <ChartHoverCard
+                    XValue={props.x.toString()}
+                    Legend={'Custom Legend'}
+                    YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
+                    color={'red'}
+                  />
+                ) : null
+              }
+              enableReflow={true}
+              yAxisTitle={this.state.showAxisTitles ? 'Variation of stock market prices' : undefined}
+              xAxisTitle={this.state.showAxisTitles ? 'Number of days' : undefined}
+            />
+          </div>
+        )}
+        {!this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <AreaChart
+              culture={window.navigator.language}
+              height={this.state.height}
+              width={this.state.width}
+              data={chartData}
+              showYAxisGridLines={true}
+              enablePerfOptimization={true}
+              // eslint-disable-next-line react/jsx-no-bind
+              onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
+                props && this.state.isCalloutselected ? (
+                  <ChartHoverCard
+                    XValue={props.x.toString()}
+                    Legend={'Custom Legend'}
+                    YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
+                    color={'red'}
+                  />
+                ) : null
+              }
+              enableReflow={true}
+            />
+          </div>
+        )}
       </>
     );
   }
