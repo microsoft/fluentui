@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat(menu): adds menu web component",
-  "packageName": "@fluentui/web-components",
-  "email": "brian.christopher.brady@gmail.com",
-  "dependentChangeType": "patch"
-}
