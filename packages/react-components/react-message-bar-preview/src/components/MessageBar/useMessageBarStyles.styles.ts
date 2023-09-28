@@ -11,7 +11,7 @@ export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
 const useRootBaseStyles = makeResetStyles({
   whiteSpace: 'nowrap',
   display: 'grid',
-  gridTemplateColumns: 'auto 2fr auto auto',
+  gridTemplateColumns: 'auto 1fr auto auto',
   gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
   ...shorthands.padding('0', tokens.spacingHorizontalM),
