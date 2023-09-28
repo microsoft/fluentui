@@ -59,12 +59,11 @@ export const MessageBarContextProvider: React_2.Provider<MessageBarContextValue 
 
 // @public (undocumented)
 export type MessageBarContextValue = {
-    layout?: 'multiline' | 'singleline';
+    layout?: 'multiline' | 'singleline' | 'auto';
 };
 
 // @public
 export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<MessageBarContextValue, 'layout'> & {
-    multiline?: boolean;
     intent?: 'info' | 'success' | 'warning' | 'error';
 };
 
