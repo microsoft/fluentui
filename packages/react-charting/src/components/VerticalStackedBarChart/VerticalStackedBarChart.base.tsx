@@ -62,6 +62,11 @@ enum CircleVisbility {
   hide = 'hidden',
 }
 
+type CalloutAnchorPointType = {
+  xAxisDataPoint: string;
+  chartDataPoint: IVSChartDataPoint;
+};
+
 export interface IVerticalStackedBarChartState extends IBasestate {
   dataPointCalloutProps?: IVSChartDataPoint;
   stackCalloutProps?: IVerticalStackedChartProps;
@@ -87,7 +92,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
-  private _calloutAnchorPoint: IVSChartDataPoint | null;
+  private _calloutAnchorPoint: CalloutAnchorPointType | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _emptyChartId: string;
@@ -593,8 +598,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
-    if (this._calloutAnchorPoint !== point) {
-      this._calloutAnchorPoint = point;
+    if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
+      this._calloutAnchorPoint = {
+        chartDataPoint: point,
+        xAxisDataPoint: xAxisPoint,
+      };
       this.setState({
         refSelected,
         /**
