@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: focusAsync still works even if past animationFrame fails to run",
+  "packageName": "@fluentui/utilities",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
