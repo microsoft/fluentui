@@ -497,7 +497,7 @@ export function focusAsync(element: HTMLElement | { focus: () => void } | undefi
 
       // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
       animationId = win.requestAnimationFrame(() => {
-        element.focus();
+        element && element.focus();
 
         // We are done focusing for this frame, so reset the queued focus element
         animationId = undefined;
