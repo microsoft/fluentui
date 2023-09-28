@@ -27,7 +27,7 @@ export const SearchBox: ForwardRefComponent<SearchBoxProps>;
 export const searchBoxClassNames: SlotClassNames<SearchBoxSlots>;
 
 // @public
-export type SearchBoxProps = Omit<ComponentProps<Partial<SearchBoxSlots>, 'input'>, 'children' | 'defaultValue' | 'size' | 'type' | 'value'> & InputProps & {
+export type SearchBoxProps = Omit<ComponentProps<Partial<SearchBoxSlots>, 'input'>, 'children' | 'defaultValue' | 'onChange' | 'size' | 'type' | 'value'> & Omit<InputProps, 'onChange'> & {
     onChange?: (event: SearchBoxChangeEvent, data: InputOnChangeData) => void;
 };
 
