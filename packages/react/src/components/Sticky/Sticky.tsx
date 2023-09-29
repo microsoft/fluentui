@@ -7,6 +7,7 @@ import type { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.ty
 import type { IStickyProps } from './Sticky.types';
 import { getScrollUtils } from './util/scroll';
 import type { ScrollUtils } from './util/scroll';
+import { isLessThanInRange } from './util/comparison';
 
 export interface IStickyState {
   isStickyTop: boolean;
@@ -15,7 +16,7 @@ export interface IStickyState {
 }
 
 // Pixels
-const SCROLL_TOP_RANGE = 1;
+const COMPARISON_RANGE = 1;
 
 export class Sticky extends React.Component<IStickyProps, IStickyState> {
   public static defaultProps: IStickyProps = {
@@ -265,15 +266,15 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
 
       if (this.canStickyTop) {
         const distanceToStickTop = distanceFromTop - this._getStickyDistanceFromTop();
-        isStickyTop =
-          distanceToStickTop < Math.round(this._scrollUtils.getScrollTopInRange(container, SCROLL_TOP_RANGE));
+        const containerScrollTop = container.scrollTop;
+        isStickyTop = isLessThanInRange(distanceToStickTop, containerScrollTop, 1);
       }
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance
       // from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= distanceFromTop) {
         isStickyBottom =
-          distanceFromTop - this._scrollUtils.getScrollTopInRange(container, SCROLL_TOP_RANGE) >=
+          distanceFromTop - this._scrollUtils.getScrollTopInRange(container, COMPARISON_RANGE) >=
           this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
 
