@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix a11y issue and add tooltip to pagination buttons.",
+  "comment": "fix(Pagination) Add tooltips to pagination buttons.",
   "packageName": "@fluentui/react-experiments",
   "email": "amreladawy@mirosoft.com",
   "dependentChangeType": "patch"
