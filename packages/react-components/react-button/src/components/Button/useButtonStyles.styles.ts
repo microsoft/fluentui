@@ -332,6 +332,9 @@ const useRootDisabledStyles = makeStyles({
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
       },
+      [`&:disabled .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
+      },
     },
 
     ':hover:active': {
