@@ -174,19 +174,19 @@ export type TagState = ComponentState<TagSlots> & Required<Pick<TagProps, 'appea
 export type TagValue = string;
 
 // @public
-export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLElement>) => InteractionTagState;
+export const useInteractionTag_unstable: (props: InteractionTagProps, ref: React_2.Ref<HTMLDivElement>) => InteractionTagState;
 
 // @public (undocumented)
 export function useInteractionTagContextValues_unstable(state: InteractionTagState): InteractionTagContextValues;
 
 // @public
-export const useInteractionTagPrimary_unstable: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLElement>) => InteractionTagPrimaryState;
+export const useInteractionTagPrimary_unstable: (props: InteractionTagPrimaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagPrimaryState;
 
 // @public (undocumented)
 export const useInteractionTagPrimaryStyles_unstable: (state: InteractionTagPrimaryState) => InteractionTagPrimaryState;
 
 // @public
-export const useInteractionTagSecondary_unstable: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLElement>) => InteractionTagSecondaryState;
+export const useInteractionTagSecondary_unstable: (props: InteractionTagSecondaryProps, ref: React_2.Ref<HTMLButtonElement>) => InteractionTagSecondaryState;
 
 // @public (undocumented)
 export const useInteractionTagSecondaryStyles_unstable: (state: InteractionTagSecondaryState) => InteractionTagSecondaryState;
@@ -195,13 +195,13 @@ export const useInteractionTagSecondaryStyles_unstable: (state: InteractionTagSe
 export const useInteractionTagStyles_unstable: (state: InteractionTagState) => InteractionTagState;
 
 // @public
-export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLElement>) => TagState;
+export const useTag_unstable: (props: TagProps, ref: React_2.Ref<HTMLSpanElement | HTMLButtonElement>) => TagState;
 
 // @public (undocumented)
 export function useTagAvatarContextValues_unstable(state: UseTagAvatarContextValuesOptions): TagAvatarContextValues;
 
 // @public
-export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLElement>) => TagGroupState;
+export const useTagGroup_unstable: (props: TagGroupProps, ref: React_2.Ref<HTMLDivElement>) => TagGroupState;
 
 // @public (undocumented)
 export function useTagGroupContextValues_unstable(state: TagGroupState): TagGroupContextValues;
