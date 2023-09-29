@@ -1,30 +1,38 @@
-import * as React from 'react';
-import { IconButton } from '@fluentui/react/lib/Button';
-import { initializeComponentRef, classNamesFunction } from '../../Utilities';
-import { PageNumber } from './PageNumber';
-import { ComboBox } from '@fluentui/react/lib/ComboBox';
-import { TooltipHost } from '@fluentui/react/lib/Tooltip';
-import { DirectionalHint } from '@fluentui/react/lib/Callout';
-import type { IPaginationProps, IPaginationString, IPaginationStyleProps, IPaginationStyles } from './Pagination.types';
-import type { IComboBoxOption, IComboBox } from '@fluentui/react/lib/ComboBox';
-import type { IProcessedStyleSet } from '../../Styling';
+import * as React from "react";
+import { IconButton } from "@fluentui/react/lib/Button";
+import { initializeComponentRef, classNamesFunction } from "../../Utilities";
+import { PageNumber } from "./PageNumber";
+import { ComboBox } from "@fluentui/react/lib/ComboBox";
+import { TooltipHost } from "@fluentui/react/lib/Tooltip";
+import { DirectionalHint } from "@fluentui/react/lib/Callout";
+import type {
+  IPaginationProps,
+  IPaginationString,
+  IPaginationStyleProps,
+  IPaginationStyles,
+} from "./Pagination.types";
+import type { IComboBoxOption, IComboBox } from "@fluentui/react/lib/ComboBox";
+import type { IProcessedStyleSet } from "../../Styling";
 
-const getClassNames = classNamesFunction<IPaginationStyleProps, IPaginationStyles>();
+const getClassNames = classNamesFunction<
+  IPaginationStyleProps,
+  IPaginationStyles
+>();
 
 const DEFAULT_STRINGS: IPaginationString = {
-  of: 'of',
-  divider: '-',
+  of: "of",
+  divider: "-",
 };
 
 export class PaginationBase extends React.Component<IPaginationProps> {
   public static defaultProps: Partial<IPaginationProps> = {
     selectedPageIndex: 0,
-    format: 'comboBox',
+    format: "comboBox",
     numberOfPageButton: 5,
-    previousPageIconProps: { iconName: 'CaretSolidLeft' },
-    nextPageIconProps: { iconName: 'CaretSolidRight' },
-    firstPageIconProps: { iconName: 'Previous' },
-    lastPageIconProps: { iconName: 'Next' },
+    previousPageIconProps: { iconName: "CaretSolidLeft" },
+    nextPageIconProps: { iconName: "CaretSolidRight" },
+    firstPageIconProps: { iconName: "Previous" },
+    lastPageIconProps: { iconName: "Next" },
     strings: DEFAULT_STRINGS,
   };
 
@@ -66,7 +74,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     const canFirst = selectedPageIndex !== 0;
     const canLast = selectedPageIndex !== pageCount - 1;
 
-    if (format === 'comboBox') {
+    if (format === "comboBox") {
       const scaleOptions: IComboBoxOption[] = [];
 
       for (let i = 0; i < this.props.pageCount; i++) {
@@ -117,7 +125,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
 
     return (
       <div className={this._classNames.root}>
-        <div>
+        <div  role="radiogroup">
           <IconButton
             iconProps={this.props.firstPageIconProps}
             onClick={this._handleFirstPage}
@@ -150,7 +158,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
             }}
           />
           <TooltipHost
-            content={`${pageAriaLabel ? pageAriaLabel + ' ' : ''}${pageCount}`}
+            content={`${pageAriaLabel ? pageAriaLabel + " " : ""}${pageCount}`}
             directionalHint={DirectionalHint.bottomCenter}
           >
             <IconButton
@@ -178,7 +186,11 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     this._handleSelectedPage(this.props.pageCount - 1);
   };
 
-  private _onComboBoxChange = (event: React.FormEvent<IComboBox>, option: IComboBoxOption, index: number) => {
+  private _onComboBoxChange = (
+    event: React.FormEvent<IComboBox>,
+    option: IComboBoxOption,
+    index: number
+  ) => {
     if (option !== undefined) {
       this._handleSelectedPage(index);
     }
@@ -203,12 +215,20 @@ export class PaginationBase extends React.Component<IPaginationProps> {
   };
 
   private _pageElement(index: number): JSX.Element {
-    const { pageAriaLabel, pageCount, selectedPageIndex, selectedAriaLabel, strings } = this.props;
+    const {
+      pageAriaLabel,
+      pageCount,
+      selectedPageIndex,
+      selectedAriaLabel,
+      strings,
+    } = this.props;
     const isSelected = index === selectedPageIndex;
-    let ariaLabel = pageAriaLabel && `${pageAriaLabel} ${index + 1} ${strings!.of} ${pageCount}`;
+    let ariaLabel =
+      pageAriaLabel &&
+      `${pageAriaLabel} ${index + 1} ${strings!.of} ${pageCount}`;
 
     if (isSelected) {
-      ariaLabel = ariaLabel + ' ' + selectedAriaLabel;
+      ariaLabel = ariaLabel + " " + selectedAriaLabel;
     }
 
     return (
@@ -250,19 +270,31 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     return pageList;
   }
 
-  private _renderVisibleItemLabel = (props: IPaginationProps): JSX.Element | null => {
+  private _renderVisibleItemLabel = (
+    props: IPaginationProps
+  ): JSX.Element | null => {
     if (props.onRenderVisibleItemLabel) {
-      return <div className={this._classNames.visibleItemLabel}>{props.onRenderVisibleItemLabel(props)}</div>;
+      return (
+        <div className={this._classNames.visibleItemLabel}>
+          {props.onRenderVisibleItemLabel(props)}
+        </div>
+      );
     }
 
     if (props.itemsPerPage && props.totalItemCount) {
       const leftItemIndex = props.selectedPageIndex! * props.itemsPerPage + 1;
-      const rightItemsIndex = Math.min((props.selectedPageIndex! + 1) * props.itemsPerPage, props.totalItemCount);
-      const visibleItemLabel = `${leftItemIndex} ${props.strings!.divider} ${rightItemsIndex} ${props.strings!.of} ${
+      const rightItemsIndex = Math.min(
+        (props.selectedPageIndex! + 1) * props.itemsPerPage,
         props.totalItemCount
-      }`;
+      );
+      const visibleItemLabel = `${leftItemIndex} ${
+        props.strings!.divider
+      } ${rightItemsIndex} ${props.strings!.of} ${props.totalItemCount}`;
       return (
-        <div className={this._classNames.visibleItemLabel} aria-label={visibleItemLabel}>
+        <div
+          className={this._classNames.visibleItemLabel}
+          aria-label={visibleItemLabel}
+        >
           {visibleItemLabel}
         </div>
       );
