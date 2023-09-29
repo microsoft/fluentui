@@ -11,6 +11,10 @@ import { MessageBarContextProvider } from '../../contexts/messageBarContext';
 export const renderMessageBar_unstable = (state: MessageBarState, contexts: MessageBarContextValues) => {
   assertSlots<MessageBarSlots>(state);
 
+  if (!state.motionState.canRender) {
+    return null;
+  }
+
   return (
     <MessageBarContextProvider value={contexts.messageBar}>
       <state.root>
