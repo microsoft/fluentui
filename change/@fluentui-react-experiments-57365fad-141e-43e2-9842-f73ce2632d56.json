@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Add role for the pagiation buttons and the parent control",
+  "comment": "fix(Pagination): Add role for the pagiation buttons and the parent control",
   "packageName": "@fluentui/react-experiments",
   "email": "amreladawy@mirosoft.com",
   "dependentChangeType": "patch"
