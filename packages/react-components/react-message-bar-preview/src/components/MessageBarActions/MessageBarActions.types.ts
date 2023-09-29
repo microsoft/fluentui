@@ -9,7 +9,7 @@ export type MessageBarActionsSlots = {
 /**
  * MessageBarActions Props
  */
-export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots> & {};
+export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots>;
 
 /**
  * State used in rendering MessageBarActions

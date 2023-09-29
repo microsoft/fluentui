@@ -7,7 +7,7 @@ export type MessageBarBodySlots = {
 /**
  * MessageBarBody Props
  */
-export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots> & {};
+export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots>;
 
 /**
  * State used in rendering MessageBarBody

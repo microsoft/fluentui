@@ -102,6 +102,10 @@ export type CustomStyleHooksContextValue = Partial<{
   useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
   useTagStyles_unstable: CustomStyleHook;
   useTagGroupStyles_unstable: CustomStyleHook;
+  useBreadcrumbStyles_unstable: CustomStyleHook;
+  useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+  useBreadcrumbItemStyles_unstable: CustomStyleHook;
+  useBreadcrumbDividerStyles_unstable: CustomStyleHook;
 }>;
 
 /**
