@@ -76,7 +76,7 @@ const lightExtendedSemanticColors: Partial<IExtendedSemanticColors> = {
   dropdownTextHovered: LightSemanticColors.dropDown.text.hovered,
   errorBackground: LightSemanticColors.controlOutlines.error,
   errorText: LightSemanticColors.text.error,
-  focusBorder: LightSemanticColors.controlOutlines.accent,
+  focusBorder: LightSemanticColors.controlOutlines.focus,
   inputBackground: LightSemanticColors.background,
   inputBorder: LightSemanticColors.secondaryButton.rest.border,
   inputBorderHovered: LightSemanticColors.controlOutlines.hover,
