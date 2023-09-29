@@ -32,7 +32,6 @@ const useStyles = makeStyles({
   },
 });
 
-const intents = ['info', 'success', 'warning', 'error'] as const;
 export const Reflow = () => {
   const styles = useStyles();
   const [compact, setCompact] = React.useState(true);
@@ -44,18 +43,16 @@ export const Reflow = () => {
         onChange={(_, { checked }) => setCompact(checked)}
       />
       <div className={mergeClasses(styles.resizableArea, compact && styles.compact)}>
-        {intents.map(intent => (
-          <MessageBar key={intent} intent={intent}>
-            <MessageBarBody>
-              <MessageBarTitle>Descriptive title</MessageBarTitle>
-              Message providing information to the user with actionable insights. <Link>Link</Link>
-            </MessageBarBody>
-            <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}>
-              <Button>Action</Button>
-              <Button>Action</Button>
-            </MessageBarActions>
-          </MessageBar>
-        ))}
+        <MessageBar intent="success">
+          <MessageBarBody>
+            <MessageBarTitle>Descriptive title</MessageBarTitle>
+            Message providing information to the user with actionable insights. <Link>Link</Link>
+          </MessageBarBody>
+          <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}>
+            <Button>Action</Button>
+            <Button>Action</Button>
+          </MessageBarActions>
+        </MessageBar>
       </div>
     </>
   );

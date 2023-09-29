@@ -14,15 +14,12 @@ import { useMessageBarReflow } from './useMessageBarReflow';
  * @param ref - reference to root HTMLElement of MessageBar
  */
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLElement>): MessageBarState => {
-  const { intent = 'info' } = props;
-  let { layout = 'auto' } = props;
+  const { layout = 'auto', intent = 'info' } = props;
 
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
 
-  if (autoReflow) {
-    layout = reflowing ? 'multiline' : 'singleline';
-  }
+  const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
 
   return {
     components: {
@@ -42,7 +39,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
       elementType: 'div',
       defaultProps: { children: getIntentIcon(intent) },
     }),
-    layout,
+    layout: computedLayout,
     intent,
   };
 };

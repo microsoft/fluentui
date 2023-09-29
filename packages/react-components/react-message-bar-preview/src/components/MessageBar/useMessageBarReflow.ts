@@ -12,7 +12,18 @@ export function useMessageBarReflow(enabled: boolean = false) {
   const handleResize: ResizeObserverCallback = React.useCallback(
     entries => {
       // Resize observer is only owned by this component - one resize observer entry expected
-      // No need to support mutliple fragments -  one border box entry expected
+      // No need to support mutliple fragments - one border box entry expected
+      if (process.env.NODE_ENV !== 'production' && entries.length > 1) {
+        // eslint-disable-next-line no-console
+        console.error(
+          [
+            'useMessageBarReflow: Resize observer should only have one entry. ',
+            'If multiple entries are observed, the first entry will be used.',
+            'This is a bug, please report it to the Fluent UI team.',
+          ].join(' '),
+        );
+      }
+
       const entry = entries[0];
       const borderBoxSize = entry?.borderBoxSize[0];
       if (!borderBoxSize || !entry) {
@@ -26,30 +37,27 @@ export function useMessageBarReflow(enabled: boolean = false) {
         return;
       }
 
-      let nextReflowing = reflowingRef.current;
+      let nextReflowing: boolean | undefined;
 
-      if (!reflowingRef.current) {
+      // No easy way to really determine when the single line layout will fit
+      // Just keep try to set single line layout as long as the size is growing
+      // Will cause flickering when size is being adjusted gradually (i.e. drag) - but this should not be a common case
+      if (reflowingRef.current) {
+        if (prevInlineSizeRef.current < inlineSize) {
+          nextReflowing = false;
+        }
+      } else {
         const scrollWidth = target.scrollWidth;
         if (inlineSize < scrollWidth) {
           nextReflowing = true;
         }
       }
 
-      // No easy way to really determine when the single line layout will fit
-      // Just keep try to set single line layout as long as the size is growing
-      // Will cause flickering when size is being adjusted gradually (i.e drag) - but this should not be a common case
-      if (reflowingRef.current) {
-        if (prevInlineSizeRef.current < inlineSize) {
-          nextReflowing = false;
-        }
-      }
-
-      if (reflowingRef.current !== nextReflowing) {
+      prevInlineSizeRef.current = inlineSize;
+      if (typeof nextReflowing !== 'undefined' && reflowingRef.current !== nextReflowing) {
         reflowingRef.current = nextReflowing;
         forceUpdate();
       }
-
-      prevInlineSizeRef.current = inlineSize;
     },
     [forceUpdate],
   );
@@ -60,6 +68,8 @@ export function useMessageBarReflow(enabled: boolean = false) {
         return;
       }
 
+      resizeObserverRef.current?.disconnect();
+
       const win = targetDocument.defaultView;
       const resizeObserver = new win.ResizeObserver(handleResize);
       resizeObserverRef.current = resizeObserver;
@@ -67,6 +77,12 @@ export function useMessageBarReflow(enabled: boolean = false) {
     },
     [targetDocument, handleResize, enabled],
   );
+
+  React.useEffect(() => {
+    return () => {
+      resizeObserverRef.current?.disconnect();
+    };
+  }, []);
 
   return { ref, reflowing: reflowingRef.current };
 }
