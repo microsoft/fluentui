@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix(Pagination): Add role for the pagiation buttons and the parent control",
+  "comment": "fix(Pagination): Add radio role for the pagination buttons and radiogroup role for the parent div",
   "packageName": "@fluentui/react-experiments",
   "email": "amreladawy@mirosoft.com",
   "dependentChangeType": "patch"
