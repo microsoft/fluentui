@@ -117,7 +117,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
 
     return (
       <div className={this._classNames.root}>
-        <div role="radiogroup">
+        <div>
           <IconButton
             iconProps={this.props.firstPageIconProps}
             onClick={this._handleFirstPage}

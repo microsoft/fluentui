@@ -14,7 +14,7 @@ export class PageNumber extends React.Component<IPageNumberProps, {}> {
       <DefaultButton
         key={page}
         onClick={this._onClick}
-        aria-checked={selected}
+        aria-selected={selected}
         aria-label={ariaLabel}
         styles={{ root: className }}
         role="radio"
