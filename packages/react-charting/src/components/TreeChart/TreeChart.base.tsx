@@ -477,7 +477,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
 
   constructor(props: ITreeProps) {
     super(props);
-    this._margin = { top: 30, right: 20, bottom: 30, left: 50 };
+    this._margin = { top: 30, right: 130, bottom: 30, left: 50 };
     this._width = this.props.width || 1500;
     this._height = this.props.height || 700;
     this._treeData = this.props.treeData;
