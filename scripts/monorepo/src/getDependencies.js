@@ -1,9 +1,9 @@
-const { utils: lernaUtils } = require('./lerna-utils');
+const lernaUtils = require('lerna/utils');
 
 /**
  *
  * @param {string[]} packageNames
- * @param {import('./lerna-utils').ProjectGraphWithPackages} projectGraph
+ * @param {lernaUtils.ProjectGraphWithPackages} projectGraph
  * @param {{dependenciesOnly?:boolean}} options
  * @param {string[]} _packagesList
  * @returns
