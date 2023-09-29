@@ -23,7 +23,7 @@ export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
 export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>;
 
 // @public
-export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots> & {};
+export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots>;
 
 // @public (undocumented)
 export type MessageBarActionsSlots = {
@@ -41,7 +41,7 @@ export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
 export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots>;
 
 // @public
-export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots> & {};
+export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots>;
 
 // @public (undocumented)
 export type MessageBarBodySlots = {
@@ -83,7 +83,7 @@ export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
 export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots>;
 
 // @public
-export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots> & {};
+export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots>;
 
 // @public (undocumented)
 export type MessageBarTitleSlots = {
