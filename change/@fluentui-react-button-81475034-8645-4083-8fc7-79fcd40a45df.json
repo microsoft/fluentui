@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "docs: Adding example of how to pass on click to primaryActionButton slot in the Default story for SplitButton.",
+  "packageName": "@fluentui/react-button",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "none"
+}
