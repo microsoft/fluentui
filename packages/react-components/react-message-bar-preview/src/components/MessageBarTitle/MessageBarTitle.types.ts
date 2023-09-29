@@ -7,7 +7,7 @@ export type MessageBarTitleSlots = {
 /**
  * MessageBarTitle Props
  */
-export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots> & {};
+export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots>;
 
 /**
  * State used in rendering MessageBarTitle

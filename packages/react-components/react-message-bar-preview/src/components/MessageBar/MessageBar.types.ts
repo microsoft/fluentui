@@ -15,7 +15,6 @@ export type MessageBarContextValues = {
  */
 export type MessageBarProps = ComponentProps<MessageBarSlots> &
   Pick<MessageBarContextValue, 'layout'> & {
-    multiline?: boolean;
     intent?: 'info' | 'success' | 'warning' | 'error';
   };
 

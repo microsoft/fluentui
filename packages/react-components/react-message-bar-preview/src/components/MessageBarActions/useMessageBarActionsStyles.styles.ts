@@ -14,7 +14,6 @@ export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>
 const useRootBaseStyles = makeResetStyles({
   ...shorthands.gridArea('secondaryActions'),
   display: 'flex',
-  alignItems: 'center',
   columnGap: tokens.spacingHorizontalM,
   marginRight: tokens.spacingHorizontalM,
 });

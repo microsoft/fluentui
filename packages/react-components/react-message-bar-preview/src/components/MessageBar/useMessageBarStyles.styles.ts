@@ -9,8 +9,10 @@ export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
+  whiteSpace: 'nowrap',
   display: 'grid',
   gridTemplateColumns: 'auto 1fr auto auto',
+  gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
   ...shorthands.padding('0', tokens.spacingHorizontalM),
   ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
@@ -30,6 +32,8 @@ const useIconBaseStyles = makeResetStyles({
 
 const useMultilineStyles = makeStyles({
   rootMultiline: {
+    whiteSpace: 'normal',
+    alignItems: 'start',
     paddingTop: tokens.spacingVerticalMNudge,
     gridTemplateColumns: 'auto 1fr auto',
     gridTemplateAreas: `
