@@ -124,6 +124,10 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useInteractionTagSecondaryStyles_unstable: (state: unknown) => void;
         useTagStyles_unstable: (state: unknown) => void;
         useTagGroupStyles_unstable: (state: unknown) => void;
+        useBreadcrumbStyles_unstable: (state: unknown) => void;
+        useBreadcrumbButtonStyles_unstable: (state: unknown) => void;
+        useBreadcrumbItemStyles_unstable: (state: unknown) => void;
+        useBreadcrumbDividerStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
