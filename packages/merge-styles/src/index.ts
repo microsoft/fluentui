@@ -39,4 +39,8 @@ export { setRTL } from './StyleOptionsState';
 
 export type { ObjectOnly } from './ObjectOnly';
 
+export function newApiForTest() {
+  return 'hello test I do work in cloud!';
+}
+
 import './version';

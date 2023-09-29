@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore(merge-styles): add new api",
+  "packageName": "@fluentui/merge-styles",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
