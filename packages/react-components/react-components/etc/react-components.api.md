@@ -1002,6 +1002,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
+import { useFluentProviderThemeStyleTag } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -3189,6 +3190,8 @@ export { useFluentProvider_unstable }
 export { useFluentProviderContextValues_unstable }
 
 export { useFluentProviderStyles_unstable }
+
+export { useFluentProviderThemeStyleTag }
 
 export { useFocusableGroup }
 
