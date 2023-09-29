@@ -9,6 +9,7 @@ import {
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { Escape } from '@fluentui/keyboard-keys';
+import { useFocusFinders } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render DialogSurface.
@@ -29,6 +30,31 @@ export const useDialogSurface_unstable = (
   const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
+
+  const { findFirstFocusable } = useFocusFinders();
+
+  const hasTabIndexProps = props.hasOwnProperty('tabIndex');
+
+  const dialogRefCallback = React.useCallback(
+    (dialog: HTMLElement | null) => {
+      if (
+        dialog &&
+        findFirstFocusable(dialog) === null &&
+        // validating props.tabIndex here allows us to let the user override the tabindex behavior
+        // in cases like lazy loading, where although there are no focusable children at mount time, there may be later.
+        !hasTabIndexProps
+      ) {
+        /**
+         * tabindex -1 is necessary is the dialog has no focusable children
+         * https://github.com/microsoft/fluentui/issues/25150
+         * But it may be problematic otherwise
+         * https://github.com/microsoft/fluentui/issues/28404
+         */
+        dialog.setAttribute('tabindex', '-1');
+      }
+    },
+    [findFirstFocusable, hasTabIndexProps],
+  );
 
   const handledBackdropClick = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (isResolvedShorthand(props.backdrop)) {
@@ -81,7 +107,7 @@ export const useDialogSurface_unstable = (
         ...props,
         ...modalAttributes,
         onKeyDown: handleKeyDown,
-        ref: useMergedRefs(ref, dialogRef),
+        ref: useMergedRefs(ref, dialogRef, dialogRefCallback),
       }),
       { elementType: 'div' },
     ),
