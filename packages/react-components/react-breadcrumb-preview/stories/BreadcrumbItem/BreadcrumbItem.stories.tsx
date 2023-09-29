@@ -12,7 +12,7 @@ export const BreadcrumbItemExample = () => {
         <BreadcrumbDivider />
         <BreadcrumbItem>Item 1</BreadcrumbItem>
         <BreadcrumbDivider />
-        <BreadcrumbItem>Item 2</BreadcrumbItem>
+        <BreadcrumbItem current>Item 2</BreadcrumbItem>
       </Breadcrumb>
     </>
   );

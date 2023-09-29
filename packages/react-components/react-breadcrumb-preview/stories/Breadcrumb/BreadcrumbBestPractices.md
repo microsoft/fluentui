@@ -19,6 +19,5 @@
 - Avoid using custom dividers.
 - Do not wrap breadcrumb items.
 - The last item shouldn't be interactive.
-- Don't show overflow menu for non-interactive collapsed items. Tooltip shold be shown instead.
 
 </details>
