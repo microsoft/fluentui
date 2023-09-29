@@ -56,6 +56,11 @@ const threeLayerChart = {
 export class TreeChartThreeLayerDocSiteExample extends React.Component<{}, ITreeState> {
   constructor(props: ITreeProps) {
     super(props);
+    this.state = {
+      _height: 460,
+      _width: 800,
+      _layoutWidth: 65,
+    };
   }
   public render(): JSX.Element {
     return <div>{this._createTreeChart()}</div>;
@@ -78,7 +83,12 @@ export class TreeChartThreeLayerDocSiteExample extends React.Component<{}, ITree
           onChange={this._onWidthChange}
           aria-valuetext={`ChangeWidthSlider${this.state?._layoutWidth}`}
         />
-        <TreeChart treeData={threeLayerChart} layoutWidth={this.state?._layoutWidth} width={800} height={550} />
+        <TreeChart
+          treeData={threeLayerChart}
+          layoutWidth={this.state?._layoutWidth}
+          width={this.state._width}
+          height={this.state._height}
+        />
       </>
     );
   }

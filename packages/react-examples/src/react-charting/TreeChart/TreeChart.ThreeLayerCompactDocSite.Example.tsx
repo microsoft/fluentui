@@ -54,6 +54,11 @@ const threeLayerChart = {
 export class TreeChartThreeLayerCompactDocSiteExample extends React.Component<{}, ITreeState> {
   constructor(props: ITreeProps) {
     super(props);
+    this.state = {
+      _height: 460,
+      _width: 800,
+      _layoutWidth: 65,
+    };
   }
 
   public render(): JSX.Element {
@@ -82,8 +87,8 @@ export class TreeChartThreeLayerCompactDocSiteExample extends React.Component<{}
           composition={NodesComposition.compact}
           treeTraversal={TreeTraverse.levelOrder}
           layoutWidth={this.state?._layoutWidth}
-          width={800}
-          height={550}
+          width={this.state._width}
+          height={this.state._height}
         />
       </>
     );
