@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Icon in disabled Button shouldn't change color on hover",
+  "packageName": "@fluentui/react-button",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
