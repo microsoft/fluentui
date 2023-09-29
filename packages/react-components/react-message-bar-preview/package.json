@@ -34,6 +34,7 @@
     "@fluentui/react-button": "^9.3.43",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-jsx-runtime": "^9.0.12",
+    "@fluentui/react-shared-contexts": "^9.9.1",
     "@fluentui/react-theme": "^9.1.14",
     "@fluentui/react-utilities": "^9.13.5",
     "@griffel/react": "^1.5.14",

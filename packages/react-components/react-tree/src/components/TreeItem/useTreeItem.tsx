@@ -5,7 +5,7 @@ import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
-import { useTreeContext_unstable, useTreeItemContext_unstable } from '../../contexts/index';
+import { useTreeContext_unstable, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 
 /**
@@ -23,7 +23,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     warnIfNoProperPropsFlatTreeItem(props);
   }
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
-  const contextLevel = useTreeContext_unstable(ctx => ctx.level);
+  const { level: contextLevel } = useSubtreeContext_unstable();
   const parentValue = useTreeItemContext_unstable(ctx => props.parentValue ?? ctx.value);
 
   // note, if the value is not externally provided,

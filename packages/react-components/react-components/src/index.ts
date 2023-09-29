@@ -22,6 +22,7 @@ export {
   useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
   useFluentProviderStyles_unstable,
+  useFluentProviderThemeStyleTag,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
@@ -1253,6 +1254,7 @@ export {
   useHeadlessFlatTree_unstable,
   useTreeContextValues_unstable,
   useTreeContext_unstable,
+  useSubtreeContext_unstable,
   useTreeItemContextValues_unstable,
   useTreeItemContext_unstable,
   useTreeItemLayoutStyles_unstable,
@@ -1278,6 +1280,7 @@ export type {
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeContextValue,
+  SubtreeContextValue,
   TreeContextValues,
   TreeItemContextValue,
   TreeItemLayoutProps,

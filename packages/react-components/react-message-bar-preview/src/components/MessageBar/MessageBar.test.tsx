@@ -4,6 +4,21 @@ import { isConformant } from '../../testing/isConformant';
 import { MessageBar } from './MessageBar';
 
 describe('MessageBar', () => {
+  beforeAll(() => {
+    // https://github.com/jsdom/jsdom/issues/3368
+    global.ResizeObserver = class ResizeObserver {
+      public observe() {
+        // do nothing
+      }
+      public unobserve() {
+        // do nothing
+      }
+      public disconnect() {
+        // do nothing
+      }
+    };
+  });
+
   isConformant({
     Component: MessageBar,
     displayName: 'MessageBar',

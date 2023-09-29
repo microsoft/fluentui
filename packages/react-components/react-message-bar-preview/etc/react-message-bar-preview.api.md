@@ -23,7 +23,7 @@ export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps>;
 export const messageBarActionsClassNames: SlotClassNames<MessageBarActionsSlots>;
 
 // @public
-export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots> & {};
+export type MessageBarActionsProps = ComponentProps<MessageBarActionsSlots>;
 
 // @public (undocumented)
 export type MessageBarActionsSlots = {
@@ -41,7 +41,7 @@ export const MessageBarBody: ForwardRefComponent<MessageBarBodyProps>;
 export const messageBarBodyClassNames: SlotClassNames<MessageBarBodySlots>;
 
 // @public
-export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots> & {};
+export type MessageBarBodyProps = ComponentProps<MessageBarBodySlots>;
 
 // @public (undocumented)
 export type MessageBarBodySlots = {
@@ -59,12 +59,11 @@ export const MessageBarContextProvider: React_2.Provider<MessageBarContextValue 
 
 // @public (undocumented)
 export type MessageBarContextValue = {
-    layout?: 'multiline' | 'singleline';
+    layout?: 'multiline' | 'singleline' | 'auto';
 };
 
 // @public
 export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<MessageBarContextValue, 'layout'> & {
-    multiline?: boolean;
     intent?: 'info' | 'success' | 'warning' | 'error';
 };
 
@@ -84,7 +83,7 @@ export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
 export const messageBarTitleClassNames: SlotClassNames<MessageBarTitleSlots>;
 
 // @public
-export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots> & {};
+export type MessageBarTitleProps = ComponentProps<MessageBarTitleSlots>;
 
 // @public (undocumented)
 export type MessageBarTitleSlots = {

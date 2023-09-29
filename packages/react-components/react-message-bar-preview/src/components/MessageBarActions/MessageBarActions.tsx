@@ -6,7 +6,7 @@ import { useMessageBarActionsStyles_unstable } from './useMessageBarActionsStyle
 import type { MessageBarActionsProps } from './MessageBarActions.types';
 
 /**
- * MessageBarActions component - TODO: add more docs
+ * MessageBarActions component
  */
 export const MessageBarActions: ForwardRefComponent<MessageBarActionsProps> = React.forwardRef((props, ref) => {
   const state = useMessageBarActions_unstable(props, ref);

@@ -10,10 +10,5 @@ import type { MessageBarTitleState, MessageBarTitleSlots } from './MessageBarTit
 export const renderMessageBarTitle_unstable = (state: MessageBarTitleState) => {
   assertSlots<MessageBarTitleSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return (
-    <>
-      <state.root />
-    </>
-  );
+  return <state.root />;
 };
