@@ -1,14 +1,12 @@
 import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
-  colorBackgroundOverlay,
   colorNeutralBackground1,
   colorNeutralForeground1,
+  colorNeutralStroke2,
   colorStrokeFocus1,
   colorStrokeFocus2,
   colorTransparentStroke,
-  curveAccelerateMid,
-  curveDecelerateMid,
-  durationNormal,
   fontFamilyBase,
   fontSizeBase300,
   fontSizeBase500,
@@ -22,6 +20,7 @@ import {
   spacingHorizontalXXL,
   spacingVerticalL,
   spacingVerticalS,
+  spacingVerticalXL,
   spacingVerticalXXL,
   strokeWidthThick,
   strokeWidthThin,
@@ -31,29 +30,94 @@ import {
  * @public
  */
 export const styles = css`
+  ${display('block')}
+
   :host {
-    width: 592px;
-  }
-  :host([position='left']) {
+    position: fixed;
+    height: 100%;
+    width: auto;
+    outline: none;
+    top: 0;
     left: 0;
-    right: unset;
+    z-index: var(--drawer-elevation, 1000);
   }
-  :host([size='small']) {
+
+  :host([position='end']) {
+    right: 0;
+    left: unset;
+  }
+
+  :host([type='inline']) .dialog,
+  :host([type='inline']) {
+    position: relative;
+  }
+
+  :host([size='small']) dialog {
     width: 320px;
   }
-  :host([size='large']) {
+
+  :host([size='large']) dialog {
     width: 940px;
   }
 
-  .drawer {
-    position: fixed;
-    right: 0;
+  :host([size='full']) dialog {
+    width: 100%;
+  }
+
+  :host([position='end']) dialog {
+    margin-right: 0;
+    margin-left: auto;
+  }
+
+  :host([position='end']) dialog {
+    right: 0px;
+  }
+
+  :host([modal-type='non-modal']) dialog::backdrop {
+    display: none;
+  }
+
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+  }
+
+  dialog {
+    color: inherit;
+    font: inherit;
+    background-color: transparent;
     top: 0;
-    z-index: 2;
-    overflow-x: hidden;
-    overflow-y: auto;
+    bottom: 0;
+    border-radius: 0;
+    border: 1px solid ${colorTransparentStroke};
     height: 100%;
-    width: inherit;
+    margin-left: 0;
+    margin-right: auto;
+    padding: 0;
+    max-width: none;
+    max-height: none;
+    overflow: hidden;
+    width: var(--drawer-size, 592px);
+  }
+
+  :host([type='overlay']) .drawer {
+    box-shadow: ${shadow64};
+  }
+
+  :host([separator]) .drawer {
+    border-right-color: ${colorNeutralStroke2};
+    border-left-color: ${colorTransparentStroke};
+  }
+
+  :host([separator][position='end']) .drawer {
+    border-right-color: ${colorTransparentStroke};
+    border-left-color: ${colorNeutralStroke2};
+  }
+
+  .drawer {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
     font-size: ${fontSizeBase300};
     line-height: ${lineHeightBase300};
     font-family: ${fontFamilyBase};
@@ -62,56 +126,27 @@ export const styles = css`
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     display: grid;
     grid-template-rows: min-content 1fr min-content;
-    row-gap: ${spacingVerticalS};
     background: ${colorNeutralBackground1};
-    transition: transform ${durationNormal} ${curveDecelerateMid};
-    transform: translateX(100%);
-  }
-  :host([open]) .drawer {
-    transform: translateX(0);
-    animation: slide-in-right ${durationNormal} ${curveAccelerateMid};
-    box-shadow: ${shadow64};
-  }
-
-  :host([position='left']) .drawer {
-    left: 0;
-    column-gap: ${spacingHorizontalS};
-    transform: translateX(-100%);
-  }
-  :host([position='left'][open]) .drawer {
-    transform: translateX(0);
-    animation: slide-in-left ${durationNormal} ${curveAccelerateMid};
-  }
-
-  .drawer:focus-visible:after {
-    content: '';
+    width: inherit;
+    padding-top: ${spacingVerticalXL};
     position: absolute;
-    inset: 0px;
-    cursor: pointer;
-    outline: none;
-    border: ${strokeWidthThick} solid ${colorStrokeFocus1};
-    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
-  }
-
-  .overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: ${colorBackgroundOverlay};
-    width: 100vw;
-    height: 100vh;
-    z-index: 1;
-    cursor: pointer;
+    width: inherit;
   }
 
   .header {
-    padding-top: ${spacingVerticalXXL};
+    padding: 0 0 ${spacingVerticalS};
     display: flex;
     flex-direction: column;
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
-    row-gap: ${spacingVerticalS};
+  }
+
+  .title {
+    padding: 0 ${spacingHorizontalL} 0 ${spacingHorizontalXXL};
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   .content {
@@ -128,13 +163,9 @@ export const styles = css`
     column-gap: ${spacingHorizontalS};
     padding: 0 ${spacingHorizontalL};
     justify-content: flex-start;
+    margin-bottom: ${spacingVerticalS};
   }
-  ::slotted([slot='header']) {
-    padding: 0 ${spacingHorizontalL} 0 ${spacingHorizontalXXL};
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+
   ::slotted([slot='footer']) {
     display: flex;
     flex-direction: row;
@@ -143,21 +174,79 @@ export const styles = css`
     border-top: ${strokeWidthThin} solid var(--overflow-border, ${colorTransparentStroke});
   }
 
-  @keyframes slide-in-right {
-    from {
-      transform: translateX(100%);
+  .dialog:focus-visible:after {
+    content: '';
+    position: absolute;
+    inset: 0px;
+    cursor: pointer;
+    outline: none;
+    border: ${strokeWidthThick} solid ${colorStrokeFocus1};
+    box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
+  }
+
+  .dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    inset: 0;
+  }
+
+  .dialog.animating::backdrop {
+    animation: drawer-fade;
+    animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
+    animation-duration: 250ms;
+  }
+
+  .dialog.closing::backdrop {
+    animation-direction: reverse;
+  }
+
+  :host .dialog.animating .drawer {
+    animation: drawer-slide-in-start;
+    animation-timing-function: cubic-bezier(0.7, 0, 1, 0.5);
+    animation-duration: 250ms;
+  }
+
+  :host .dialog.closing .drawer {
+    animation-direction: reverse;
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-duration: 250ms;
+  }
+
+  :host([position='end']) .dialog.animating .drawer {
+    animation: drawer-slide-in-end;
+    animation-timing-function: cubic-bezier(0.7, 0, 1, 0.5);
+    animation-duration: 250ms;
+  }
+
+  :host([position='end']) .dialog.closing .drawer {
+    animation-direction: reverse;
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+    animation-duration: 250ms;
+  }
+
+  @keyframes drawer-fade {
+    0% {
+      opacity: 0;
     }
-    to {
-      transform: translateX(0);
+    100% {
+      opacity: 1;
     }
   }
 
-  @keyframes slide-in-left {
-    from {
-      transform: translateX(-100%);
+  @keyframes drawer-slide-in-start {
+    0% {
+      transform: translate(-100%);
     }
-    to {
-      transform: translateX(0);
+    100% {
+      transform: translate(0%);
+    }
+  }
+
+  @keyframes drawer-slide-in-end {
+    0% {
+      transform: translate(100%);
+    }
+    100% {
+      transform: translate(0%);
     }
   }
 `;

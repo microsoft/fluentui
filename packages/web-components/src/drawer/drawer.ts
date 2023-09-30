@@ -1,26 +1,26 @@
 import { attr, css, FASTElement, observable, Updates } from '@microsoft/fast-element';
-import { keyEscape } from '@microsoft/fast-web-utilities';
 import { isTabbable } from 'tabbable';
-import { colorNeutralStroke1, colorTransparentStroke } from '../theme/design-tokens.js';
-import { DrawerPosition, DrawerSize } from './drawer.options.js';
-
-export interface DrawerOpenChangedEvent {
-  open: boolean;
-  position?: string;
-  size?: DrawerSize | number;
-}
+import { eventAnimationEnd, keyEscape, keyTab } from '@microsoft/fast-web-utilities';
+import { colorNeutralStroke1, colorTransparentStroke } from '../index.js';
+import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 export class Drawer extends FASTElement {
+  private closing: boolean = false;
+
   public connectedCallback(): void {
     super.connectedCallback();
-    this.drawer!.addEventListener('animationend', this.focusFirstElement);
-    this.updateTrapFocus();
-    this.setOverflowStyles();
+    document.addEventListener('keydown', this.handleDocumentKeydown);
+
+    Updates.enqueue(() => {
+      this.updateTrapFocus();
+      this.setComponent();
+    });
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.drawer!.removeEventListener('animationend', this.focusFirstElement);
+    document.removeEventListener('keydown', this.handleDocumentKeydown);
+
     this.updateTrapFocus(false);
   }
 
@@ -34,43 +34,85 @@ export class Drawer extends FASTElement {
   public content?: HTMLElement;
 
   /**
+   * The dialog element.
+   * @public
+   *
+   */
+  @observable
+  public dialog!: HTMLDialogElement;
+
+  /**
    * The drawer element.
    * @public
-   * @remarks
-   * HTML Attribute: drawer
+   *
    */
   @observable
-  public drawer?: HTMLElement;
+  public drawer!: HTMLDivElement;
 
   /**
-   * Indicates whether the drawer is open or closed.
+   * Determines whether the drawer should be displayed as modal, non-modal, or alert.
+   * When in modal or alert mode, an overlay is applied over the rest of the view.
    * @public
    * @remarks
-   * HTML Attribute: open
+   * HTML Attribute: modalType
    */
-  @observable
-  @attr({ mode: 'boolean' })
-  public open: boolean = false;
+  @attr({ attribute: 'modal-type' })
+  public modalType: DrawerModalType = DrawerModalType.modal;
+
+  @attr({ attribute: 'aria-labelledby' })
+  public ariaLabelledby?: string;
+
+  @attr({ attribute: 'aria-describedby' })
+  public ariaDescribedby?: string;
 
   /**
-   * Determines whether the drawer should be displayed as modal or non-modal.
-   * When in modal mode, an overlay is applied over the rest of the view.
+   * Enables standard behavior according to the HTML dialog spec where the focus trap involves setting outside elements inert.
    * @public
    * @remarks
-   * HTML Attribute: modal
+   * HTML Attribute: modalType
    */
-  @attr({ mode: 'boolean' })
-  public modal: boolean = false;
+  @attr({ attribute: 'inert-trap-focus', mode: 'boolean' })
+  public inertTrapFocus: boolean = false;
 
   /**
-   * Sets the position of the drawer (left/right).
+   * Sets the type of the drawer (overlay/inline).
+   * @public
+   * @remarks
+   * HTML Attribute: type
+   * @defaultValue overlay
+   */
+  @attr
+  public type?: DrawerType = DrawerType.overlay;
+
+  /**
+   * Sets the position of the drawer (start/end).
    * @public
    * @remarks
    * HTML Attribute: position
-   * @defaultValue right
+   * @defaultValue end
    */
   @attr
   public position?: DrawerPosition;
+
+  /**
+   * Determines whether the drawer should be open by default.
+   * @public
+   * @remarks
+   * HTML Attribute: open-default
+   * @defaultValue false
+   */
+  @attr({ attribute: 'open-default', mode: 'boolean' })
+  public openDefault: boolean = false;
+
+  /**
+   * Determines whether the drawer has a separator line.
+   * @public
+   * @remarks
+   * HTML Attribute: separator
+   * @defaultValue false
+   */
+  @attr({ mode: 'boolean' })
+  public separator: boolean = false;
 
   /**
    * Sets the size of the drawer (small/medium/large).
@@ -83,33 +125,13 @@ export class Drawer extends FASTElement {
   public size?: DrawerSize;
 
   /**
-   * Sets the aria-labelledby attribute of the drawer.
+   * Getter for the open state of the drawer.
    * @public
-   * @remarks
-   * HTML Attribute: aria-labelledby
+   * @returns {boolean} - Returns true if the drawer is open, false otherwise.
    */
-  @attr({ attribute: 'aria-labelledby' })
-  public ariaLabelledby?: string;
-
-  /**
-   * Sets the aria-describedby attribute of the drawer.
-   * @public
-   * @remarks
-   * HTML Attribute: aria-describedby
-   */
-  @attr({ attribute: 'aria-describedby' })
-  public ariaDescribedby?: string;
-
-  /**
-   * Indicates that the drawer should not trap focus.
-   *
-   * @public
-   * @defaultValue - true
-   * @remarks
-   * HTML Attribute: no-focus-trap
-   */
-  @attr({ attribute: 'trap-focus', mode: 'boolean' })
-  public trapFocus: boolean = false;
+  public get open(): boolean {
+    return this.dialog.open;
+  }
 
   /**
    * Indicates whether the drawer is currently trapping focus.
@@ -118,71 +140,206 @@ export class Drawer extends FASTElement {
   private isTrappingFocus: boolean = false;
 
   /**
-   * Shows the drawer.
+   * Sets the component state based on the `openDefault` property.
+   * If `openDefault` is true and the drawer is not open, it opens the drawer.
    * @public
    */
-  public show(): void {
-    this.open = true;
-    if (this.trapFocus) {
-      this.updateTrapFocus();
-    }
-  }
-
-  /**
-   * Hides the drawer.
-   * @public
-   */
-  public hide(): void {
-    this.open = false;
-    if (this.trapFocus) {
-      this.updateTrapFocus(false);
-    }
-  }
-
-  /**
-   * Toggles the state of the drawer (open/closed).
-   * @public
-   */
-  public toggleDrawer(): void {
-    if (this.open) {
-      this.hide();
-    } else {
+  public setComponent(): void {
+    if (this.openDefault && !this.open) {
       this.show();
     }
   }
 
   /**
-   * Returns the size of the drawer based on its current size property.
-   *
-   * @returns {number} - The size of the drawer. It returns specific pixel values for 'small', 'medium', and 'large' sizes. For other sizes, it returns the computed width of the drawer.
+   * Opens the drawer if it is not already open.
+   * @public
    */
-  get sizeValue(): number {
-    switch (this.size) {
-      case 'small':
-        return 320;
-      case 'medium':
-        return 592;
-      case 'large':
-        return 940;
-      default:
-        return parseFloat(window.getComputedStyle(this).width);
+  public async show(): Promise<void> {
+    this.openDialog();
+  }
+
+  /**
+   * Closes the drawer if it is open.
+   * @public
+   */
+  public close(): void {
+    this.closeDialog();
+  }
+
+  /**
+   * Opens the dialog based on the drawer type and modal type.
+   * Triggers the opening animation and updates the overflow styles and focus trap if necessary.
+   * @private
+   */
+  private openDialog(): void {
+    if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal) {
+      this.dialog.show();
+    } else {
+      this.dialog.showModal();
+    }
+    this.closing = false;
+    this.triggerAnimation();
+
+    Updates.enqueue(() => {
+      this.setOverflowStyles();
+      if (this.inertTrapFocus) {
+        this.updateTrapFocus(true);
+      }
+    });
+    this.$emit('onOpenChange', { open: true });
+  }
+
+  /**
+   * Closes the dialog if it is open.
+   * Triggers the closing animation.
+   * @private
+   */
+  private closeDialog(): void {
+    this.closing = true;
+    this.triggerAnimation();
+  }
+
+  /**
+   * Triggers the opening or closing animation on the dialog.
+   * Adds an event listener for the animation end event.
+   * @private
+   */
+  private triggerAnimation(): void {
+    this.dialog.classList.add('animating');
+    if (this.closing) {
+      this.dialog.classList.add('closing');
+    }
+
+    this.dialog.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
+  }
+
+  /**
+   * Handles the end of the animation.
+   * @private
+   *
+   */
+  private animationEndHandler(): void {
+    this.dialog.removeEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
+    this.dialog.classList.remove('animating');
+    if (this.closing) {
+      this.dialog.classList.remove('closing');
+      this.dialog.close();
+      this.$emit('onOpenChange', { open: false });
+      this.closing = false;
     }
   }
 
   /**
-   * Handles changes to the `open` property.
-   * @remarks
-   * This method is invoked when the `open` property changes and is responsible for emitting the `openChanged` event.
+   * Handles the keydown event on the document.
+   * If the Tab key is pressed, it calls the handleTabKeyDown function.
+   *
+   * @param {KeyboardEvent} e - The keyboard event.
+   * @private
+   */
+  private handleDocumentKeydown = (e: KeyboardEvent): void => {
+    if (!e.defaultPrevented && this.open) {
+      switch (e.key) {
+        case keyTab:
+          this.handleTabKeyDown(e);
+          break;
+      }
+    }
+  };
+
+  /**
+   * Handles the keydown event.
+   *
+   * @public
+   * @param {KeyboardEvent} e - The keyboard event.
+   * @returns {boolean | void} - Returns true by default, void if the key is Escape.
+   */
+  public handleKeydown = (e: KeyboardEvent): boolean | void => {
+    if (e.defaultPrevented) {
+      return;
+    }
+    switch (e.key) {
+      case keyEscape:
+        if (this.modalType !== DrawerModalType.alert) {
+          this.close();
+          this.$emit('dismiss');
+        }
+        break;
+      default:
+        return true;
+    }
+  };
+
+  /**
    * @internal
    */
-  protected openChanged(prev: boolean, next: boolean): void {
-    if (this.$fastController.isConnected) {
-      const eventDetail: DrawerOpenChangedEvent = {
-        open: this.open,
-        position: this.position ? this.position : 'right',
-        size: this.sizeValue,
-      };
-      this.$emit('openChanged', eventDetail);
+  public handleClick(event: Event): boolean {
+    event.preventDefault();
+    if (this.open && this.modalType !== DrawerModalType.alert && event.target === this.dialog) {
+      this.close();
+      this.$emit('dismiss');
+    }
+    return true;
+  }
+
+  /**
+   * Handles the Tab key down event.
+   * If the drawer is not open or focus trapping is disabled, it does nothing.
+   * Otherwise, it gets the bounds of the tab queue and focuses on the appropriate element based on the current focus and whether the Shift key is pressed.
+   *
+   * @param {KeyboardEvent} e - The keyboard event.
+   * @private
+   */
+  private handleTabKeyDown = (e: KeyboardEvent): void => {
+    if (!this.inertTrapFocus || !this.open) {
+      return;
+    }
+
+    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
+
+    if (bounds.length === 0) {
+      return;
+    }
+
+    if (bounds.length === 1) {
+      bounds[0].focus();
+      e.preventDefault();
+      return;
+    }
+
+    if (e.shiftKey && e.target === bounds[0]) {
+      bounds[bounds.length - 1].focus();
+      e.preventDefault();
+    } else if (!e.shiftKey && e.target === bounds[bounds.length - 1]) {
+      bounds[0].focus();
+      e.preventDefault();
+    }
+
+    return;
+  };
+
+  /**
+   * A function that calls the animation end handler.
+   * @private
+   */
+  private readonly animationEndHandlerFunction = (): void => this.animationEndHandler();
+
+  /**
+   * Sets the overflow styles
+   * @internal
+   */
+  private setOverflowStyles(): void {
+    if (this.content && this.content.scrollHeight > this.content.clientHeight - 32) {
+      this.$fastController.addStyles(css`
+        :host {
+          --overflow-border: ${colorNeutralStroke1};
+        }
+      `);
+    } else {
+      this.$fastController.addStyles(css`
+        :host {
+          --overflow-border: ${colorTransparentStroke};
+        }
+      `);
     }
   }
 
@@ -191,33 +348,11 @@ export class Drawer extends FASTElement {
    * If the component is connected, it updates the focus trap.
    * @internal
    */
-  protected trapFocusedChanged = (): void => {
+  protected inertTrapFocusChanged = (): void => {
     if (this.$fastController.isConnected) {
       this.updateTrapFocus();
     }
   };
-
-  /**
-   * Sets the overflow styles
-   * @internal
-   */
-  private setOverflowStyles(): void {
-    Updates.enqueue(() => {
-      if (this.content && this.content.scrollHeight > this.content.clientHeight) {
-        this.$fastController.addStyles(css`
-          :host {
-            --overflow-border: ${colorNeutralStroke1};
-          }
-        `);
-      } else {
-        this.$fastController.addStyles(css`
-          :host {
-            --overflow-border: ${colorTransparentStroke};
-          }
-        `);
-      }
-    });
-  }
 
   /**
    * Handles focusing out of the drawer.
@@ -253,8 +388,8 @@ export class Drawer extends FASTElement {
     const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
     if (bounds.length > 0) {
       bounds[0].focus();
-    } else if (this.drawer instanceof HTMLElement) {
-      this.drawer!.focus();
+    } else if (this.dialog instanceof HTMLElement) {
+      this.dialog!.focus();
     }
   };
 
@@ -282,7 +417,7 @@ export class Drawer extends FASTElement {
    * @internal
    */
   private shouldTrapFocus = (): boolean => {
-    return this.trapFocus && this.open;
+    return this.inertTrapFocus && this.open;
   };
 
   /**
@@ -298,10 +433,10 @@ export class Drawer extends FASTElement {
 
     if (shouldTrapFocus && !this.isTrappingFocus) {
       this.isTrappingFocus = true;
-      this.addEventListener('focusout', this.handleDrawerFocusOut);
+      this.dialog.addEventListener('focusout', this.handleDrawerFocusOut);
     } else if (!shouldTrapFocus && this.isTrappingFocus) {
       this.isTrappingFocus = false;
-      this.removeEventListener('focusout', this.handleDrawerFocusOut);
+      this.dialog.removeEventListener('focusout', this.handleDrawerFocusOut);
     }
   };
 
@@ -344,24 +479,5 @@ export class Drawer extends FASTElement {
     return Array.from(element.shadowRoot?.querySelectorAll('*') ?? []).some(x => {
       return isTabbable(x);
     });
-  }
-
-  /**
-   * Handles the keydown event on the drawer.
-   * @internal
-   */
-  public handleKeyDown(e: KeyboardEvent): boolean | void {
-    if (e.defaultPrevented) {
-      return;
-    }
-    const key = e.key;
-    switch (key) {
-      case keyEscape:
-        e.preventDefault();
-        this.blur();
-        this.hide();
-      default:
-        return true;
-    }
   }
 }

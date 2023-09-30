@@ -4,8 +4,8 @@ import { ValuesOf } from '@microsoft/fast-foundation';
  * A drawer can be positioned on the left or right side of the viewport.
  */
 export const DrawerPosition = {
-  left: 'left',
-  right: 'right',
+  start: 'start',
+  end: 'end',
 } as const;
 
 /**
@@ -21,6 +21,7 @@ export const DrawerSize = {
   small: 'small',
   medium: 'medium',
   large: 'large',
+  full: 'full',
 } as const;
 
 /**
@@ -28,3 +29,32 @@ export const DrawerSize = {
  * @public
  */
 export type DrawerSize = ValuesOf<typeof DrawerSize>;
+
+/**
+ * A drawer can be different sizes
+ */
+export const DrawerModalType = {
+  alert: 'alert',
+  modal: 'modal',
+  nonModal: 'non-modal',
+} as const;
+
+/**
+ * The size of the drawer.
+ * @public
+ */
+export type DrawerModalType = ValuesOf<typeof DrawerModalType>;
+
+/**
+ * A drawer can be different sizes
+ */
+export const DrawerType = {
+  overlay: 'overlay',
+  inline: 'inline',
+} as const;
+
+/**
+ * The size of the drawer.
+ * @public
+ */
+export type DrawerType = ValuesOf<typeof DrawerType>;

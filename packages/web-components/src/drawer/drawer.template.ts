@@ -7,34 +7,35 @@ import type { Drawer } from './drawer.js';
  */
 export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
   return html<T>`
-    <template ?inert="${x => !x.open}" ?open="${x => x.open}" size="${x => x.size}" position="${x => x.position}">
-      ${when(
-        x => x.modal,
-        html<T>`
-          <div
-            class="overlay"
-            part="overlay"
-            role="presentation"
-            ?hidden="${x => !x.open}"
-            @click="${x => x.hide()}"
-          ></div>
-        `,
-      )}
-      <div
-        class="drawer"
-        part="drawer"
-        role="${x => (x.modal ? 'dialog' : 'complementary')}"
-        tabindex="${x => (x.open ? '0' : '-1')}"
-        aria-label="${x => x.ariaLabel}"
-        aria-labelledby="${x => x.ariaLabelledby}"
-        aria-describedby="${x => x.ariaDescribedby}"
-        aria-modal="${x => (x.modal ? 'true' : 'false')}"
-        @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
-        ${ref('drawer')}
-      >
+    <dialog
+      class="dialog"
+      part="dialog"
+      role="${x => (x.modalType !== 'non-modal' || x.type === 'inline' ? 'dialog' : 'complementary')}"
+      aria-modal="${x => (x.modalType === 'non-modal' ? 'false' : 'true')}"
+      aria-describedby="${x => x.ariaDescribedby}"
+      aria-labelledby="${x => x.ariaLabelledby}"
+      aria-label="${x => x.ariaLabel}"
+      ?inert-trap-focus="${x => x.inertTrapFocus}"
+      ?hidden="${x => x.hidden}"
+      ?open-default="${x => x.openDefault}"
+      ?separator="${x => x.separator}"
+      size="${x => x.size}"
+      position="${x => x.position}"
+      modal-type="${x => x.modalType}"
+      type="${x => x.type}"
+      @keydown="${(x, c) => x.handleKeydown(c.event as KeyboardEvent)}"
+      @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
+      ${ref('dialog')}
+    >
+      <div class="drawer" ${ref('drawer')}>
         <div class="header">
-          <slot name="navigation"></slot>
-          <slot name="header"></slot>
+          <nav class="navigation">
+            <slot name="navigation"></slot>
+          </nav>
+          <div class="title">
+            <slot name="title"></slot>
+            <slot name="action"></slot>
+          </div>
         </div>
         <div class="content" part="content" ${ref('content')}>
           <slot></slot>
@@ -43,7 +44,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
           <slot name="footer"></slot>
         </div>
       </div>
-    </template>
+    </dialog>
   `;
 }
 
