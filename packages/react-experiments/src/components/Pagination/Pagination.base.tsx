@@ -118,10 +118,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     return (
       <div className={this._classNames.root}>
         <div>
-          <TooltipHost
-            content={firstPageAriaLabel}
-            directionalHint={DirectionalHint.bottomCenter}
-          >
+          <TooltipHost content={firstPageAriaLabel} directionalHint={DirectionalHint.bottomCenter}>
             <IconButton
               iconProps={this.props.firstPageIconProps}
               onClick={this._handleFirstPage}
@@ -132,11 +129,8 @@ export class PaginationBase extends React.Component<IPaginationProps> {
                 rootDisabled: this._classNames.previousNextPageDisabled,
               }}
             />
-            </TooltipHost>
-          <TooltipHost
-            content={previousPageAriaLabel}
-            directionalHint={DirectionalHint.bottomCenter}
-          >
+          </TooltipHost>
+          <TooltipHost content={previousPageAriaLabel} directionalHint={DirectionalHint.bottomCenter}>
             <IconButton
               iconProps={this.props.previousPageIconProps}
               onClick={this._handlePreviousPage}
@@ -147,12 +141,9 @@ export class PaginationBase extends React.Component<IPaginationProps> {
                 rootDisabled: this._classNames.previousNextPageDisabled,
               }}
             />
-            </TooltipHost>
+          </TooltipHost>
           {this._pageList()}
-          <TooltipHost
-            content={nextPageAriaLabel}
-            directionalHint={DirectionalHint.bottomCenter}
-          >
+          <TooltipHost content={nextPageAriaLabel} directionalHint={DirectionalHint.bottomCenter}>
             <IconButton
               iconProps={this.props.nextPageIconProps}
               onClick={this._handleNextPage}
@@ -163,7 +154,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
                 rootDisabled: this._classNames.previousNextPageDisabled,
               }}
             />
-            </TooltipHost>
+          </TooltipHost>
           <TooltipHost
             content={`${pageAriaLabel ? pageAriaLabel + ' ' : ''}${pageCount}`}
             directionalHint={DirectionalHint.bottomCenter}
