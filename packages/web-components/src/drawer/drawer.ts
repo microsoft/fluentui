@@ -59,9 +59,21 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'modal-type' })
   public modalType: DrawerModalType = DrawerModalType.modal;
 
+  /**
+   * The ID of the element that labels the drawer.
+   * @public
+   * @remarks
+   * HTML Attribute: aria-labelledby
+   */
   @attr({ attribute: 'aria-labelledby' })
   public ariaLabelledby?: string;
 
+  /**
+   * The ID of the element that describes the drawer.
+   * @public
+   * @remarks
+   * HTML Attribute: aria-describedby
+   */
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
