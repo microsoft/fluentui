@@ -11,7 +11,9 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
         list-style: none;
       }
 >
-  <div>
+  <div
+    role="radiogroup"
+  >
     <button
       aria-disabled={true}
       aria-label="first page"
@@ -271,8 +273,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={true}
       aria-label="page 1 of 10 selected"
-      aria-selected={true}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -359,6 +361,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -377,8 +380,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 2 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -465,6 +468,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -483,8 +487,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 3 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -571,6 +575,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -589,8 +594,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 4 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -677,6 +682,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
@@ -695,8 +701,8 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       </span>
     </button>
     <button
+      aria-checked={false}
       aria-label="page 5 of 10"
-      aria-selected={false}
       className=
           ms-Button
           ms-Pagination-pageNumber
@@ -783,6 +789,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
       onKeyUp={[Function]}
       onMouseDown={[Function]}
       onMouseUp={[Function]}
+      role="radio"
       type="button"
     >
       <span
