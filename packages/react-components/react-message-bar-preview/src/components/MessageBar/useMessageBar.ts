@@ -19,7 +19,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
-  const transitionClassName = useMessageBarTransitionContext();
+  const { className: transitionClassName, nodeRef } = useMessageBarTransitionContext();
 
   return {
     components: {
@@ -28,7 +28,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     },
     root: slot.always(
       getNativeElementProps('div', {
-        ref: useMergedRefs(ref, reflowRef),
+        ref: useMergedRefs(ref, reflowRef, nodeRef),
         ...props,
       }),
       { elementType: 'div' },

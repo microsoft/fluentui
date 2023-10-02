@@ -1,19 +1,27 @@
 import * as React from 'react';
 
-const messageBarContext = React.createContext<string | undefined>(undefined);
+export type MessageBarTransitionContextValue = {
+  className: string;
+  nodeRef: React.Ref<HTMLDivElement | null>;
+};
+
+const messageBarTransitionContext = React.createContext<MessageBarTransitionContextValue | undefined>(undefined);
 
 /**
  * @internal
  */
-export const messageBarContextDefaultValue = '';
+export const messageBarTransitionContextDefaultValue: MessageBarTransitionContextValue = {
+  className: '',
+  nodeRef: React.createRef<HTMLDivElement | null>(),
+};
 
 /**
  * Context to pass animation className to MessageBar components
  * @internal
  */
-export const MessageBarTransitionContextProvider = messageBarContext.Provider;
+export const MessageBarTransitionContextProvider = messageBarTransitionContext.Provider;
 /**
  * @internal
  */
 export const useMessageBarTransitionContext = () =>
-  React.useContext(messageBarContext) ?? messageBarContextDefaultValue;
+  React.useContext(messageBarTransitionContext) ?? messageBarTransitionContextDefaultValue;
