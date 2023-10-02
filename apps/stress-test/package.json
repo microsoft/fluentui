@@ -15,9 +15,9 @@
     "@fluentui/react-icons": "^2.0.175",
     "@microsoft/fast-element": "^1.10.4",
     "afterframe": "1.0.2",
+    "random-seedable": "1.0.8",
     "react": "17.0.2",
-    "react-dom": "17.0.2",
-    "random-seedable": "1.0.8"
+    "react-dom": "17.0.2"
   },
   "devDependencies": {
     "@fluentui/scripts-tasks": "*"

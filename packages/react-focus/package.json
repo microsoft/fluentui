@@ -27,13 +27,13 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-conformance": "*",
-    "@fluentui/test-utilities": "^8.2.6",
     "@fluentui/jest-serializer-merge-styles": "^8.0.23",
+    "@fluentui/react-conformance": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-webpack": "*",
+    "@fluentui/test-utilities": "^8.2.6"
   },
   "dependencies": {
     "@fluentui/keyboard-key": "^0.4.5",

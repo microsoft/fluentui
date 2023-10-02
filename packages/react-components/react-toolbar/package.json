@@ -35,12 +35,12 @@
   },
   "dependencies": {
     "@fluentui/react-button": "^9.2.3",
-    "@fluentui/react-divider": "^9.1.14",
-    "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-utilities": "^9.5.2",
     "@fluentui/react-context-selector": "^9.1.8",
+    "@fluentui/react-divider": "^9.1.14",
     "@fluentui/react-radio": "^9.0.24",
     "@fluentui/react-tabster": "^9.5.1",
+    "@fluentui/react-theme": "^9.1.5",
+    "@fluentui/react-utilities": "^9.5.2",
     "@griffel/react": "^1.5.2",
     "tslib": "^2.1.0"
   },

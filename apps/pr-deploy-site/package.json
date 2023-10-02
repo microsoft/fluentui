@@ -13,7 +13,7 @@
   "license": "MIT",
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-monorepo": "*"
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-tasks": "*"
   }
 }

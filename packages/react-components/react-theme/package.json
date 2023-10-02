@@ -30,8 +30,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "tslib": "^2.1.0",
-    "@fluentui/tokens": "1.0.0-alpha.2"
+    "@fluentui/tokens": "1.0.0-alpha.2",
+    "tslib": "^2.1.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

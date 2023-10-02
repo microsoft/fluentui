@@ -153,6 +153,7 @@
     "test-firefox:verbose": "karma start karma.conf.cjs --browsers=FirefoxHeadless --single-run --coverage --reporter=mocha"
   },
   "devDependencies": {
+    "@microsoft/api-extractor": "7.31.2",
     "@storybook/html": "6.5.15",
     "@types/chai": "4.3.3",
     "@types/chai-spies": "1.0.3",
@@ -176,15 +177,14 @@
     "karma-sourcemap-loader": "0.3.8",
     "karma-webpack": "5.0.0",
     "mocha": "7.2.0",
-    "@microsoft/api-extractor": "7.31.2",
     "rimraf": "^3.0.2",
     "typescript": "4.7.4"
   },
   "dependencies": {
+    "@fluentui/tokens": "1.0.0-alpha.2",
     "@microsoft/fast-element": "^2.0.0-beta.23",
     "@microsoft/fast-foundation": "^3.0.0-alpha.27",
     "@microsoft/fast-web-utilities": "^6.0.0",
-    "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
   },
   "beachball": {

@@ -30,20 +30,20 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.5",
     "@fluentui/react-provider": "^9.3.3",
+    "@fluentui/react-theme": "^9.1.5",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
     "@storybook/addons": "^6.5.15",
     "@storybook/api": "^6.5.15",
     "@storybook/components": "^6.5.15",
     "@storybook/core-events": "^6.5.15",
-    "@storybook/theming": "^6.5.15"
+    "@storybook/theming": "^6.5.15",
+    "@types/react": ">=16.8.0 <19.0.0",
+    "@types/react-dom": ">=16.8.0 <19.0.0",
+    "react": ">=16.8.0 <19.0.0",
+    "react-dom": ">=16.8.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

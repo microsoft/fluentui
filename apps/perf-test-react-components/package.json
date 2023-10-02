@@ -17,7 +17,6 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@griffel/core": "^1.9.0",
     "@fluentui/react-avatar": "^9.3.3",
     "@fluentui/react-button": "^9.2.3",
     "@fluentui/react-field": "9.0.0-alpha.19",
@@ -26,6 +25,7 @@
     "@fluentui/react-provider": "^9.3.3",
     "@fluentui/react-spinbutton": "^9.1.2",
     "@fluentui/react-theme": "^9.1.5",
+    "@griffel/core": "^1.9.0",
     "@microsoft/load-themed-styles": "^1.10.26",
     "flamegrill": "0.2.0",
     "lodash": "^4.17.15",

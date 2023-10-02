@@ -30,10 +30,10 @@
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
     "@fluentui/react-conformance-griffel": "9.0.0-beta.19",
-    "es6-weak-map": "^2.0.2",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
-    "@fluentui/scripts-tasks": "*"
+    "@fluentui/scripts-tasks": "*",
+    "es6-weak-map": "^2.0.2"
   },
   "dependencies": {
     "@fluentui/react-badge": "^9.0.24",

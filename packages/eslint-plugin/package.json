@@ -28,8 +28,8 @@
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "fs-extra": "^8.1.0",
-    "minimatch": "^3.0.4",
-    "jju": "^1.4.0"
+    "jju": "^1.4.0",
+    "minimatch": "^3.0.4"
   },
   "peerDependencies": {
     "eslint": "^7.0.0",

@@ -31,11 +31,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/theme": "^2.6.22",
     "@fluentui/merge-styles": "^8.5.6",
     "@fluentui/set-version": "^8.2.5",
+    "@fluentui/theme": "^2.6.22",
     "@fluentui/utilities": "^8.13.6",
+    "@microsoft/load-themed-styles": "^1.10.26",
     "tslib": "^2.1.0"
   },
   "exports": {

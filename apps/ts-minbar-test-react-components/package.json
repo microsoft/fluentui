@@ -12,7 +12,7 @@
     "test": "ts-node --swc ./src/index.ts"
   },
   "devDependencies": {
-    "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-projects-test": "*"
+    "@fluentui/scripts-projects-test": "*",
+    "@fluentui/scripts-tasks": "*"
   }
 }

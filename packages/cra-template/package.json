@@ -19,7 +19,7 @@
   ],
   "devDependencies": {
     "@fluentui/react": "^8.105.6",
-    "@fluentui/scripts-projects-test": "*",
-    "@fluentui/scripts-monorepo": "*"
+    "@fluentui/scripts-monorepo": "*",
+    "@fluentui/scripts-projects-test": "*"
   }
 }
