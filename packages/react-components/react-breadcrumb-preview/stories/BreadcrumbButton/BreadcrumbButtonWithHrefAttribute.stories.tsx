@@ -60,16 +60,20 @@ const linkItems: Item[] = [
 ];
 
 function renderLink(el: Item, isLastItem: boolean = false) {
-  return (
-    <React.Fragment key={`${el.key}-link`}>
-      <BreadcrumbItem>
-        <BreadcrumbButton {...el.linkProps} current={isLastItem} as="a">
-          {el.item}
-        </BreadcrumbButton>
-      </BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
+  if (!isLastItem) {
+    return (
+      <React.Fragment key={`${el.key}-link`}>
+        <BreadcrumbItem>
+          <BreadcrumbButton {...el.linkProps} as="a">
+            {el.item}
+          </BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+      </React.Fragment>
+    );
+  } else {
+    return <BreadcrumbItem current={true} key={el.key}>{el.item}</BreadcrumbItem>;
+  }
 }
 export const BreadcrumbButtonWithHrefAttribute = () => {
   return (
