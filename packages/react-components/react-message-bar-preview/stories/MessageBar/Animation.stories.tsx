@@ -38,7 +38,6 @@ export const Animation = () => {
     const intentPos = Math.floor(Math.random() * intents.length);
     const newEntry = {
       intent: intents[intentPos],
-      visible: true,
       id: counterRef.current++,
     };
 
@@ -51,8 +50,7 @@ export const Animation = () => {
 
   const dismiss = (id: number) => () => {
     setMessages(s => {
-      const newState = s.map(entry => ({ ...entry }));
-      return newState.filter(entry => entry.id !== id);
+      return s.filter(entry => entry.id !== id);
     });
   };
 

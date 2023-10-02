@@ -48,12 +48,10 @@ export const Dismiss = () => {
 
   const dismiss = (id: number) => () => {
     setMessages(s => {
-      const newState = s.map(entry => ({ ...entry }));
-      return newState.filter(entry => entry.id !== id);
+      return s.filter(entry => entry.id !== id);
     });
   };
 
-  console.log(messages.length);
   return (
     <>
       <Button onClick={prepend}>Notify</Button>
