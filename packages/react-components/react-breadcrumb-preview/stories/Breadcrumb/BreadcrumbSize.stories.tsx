@@ -52,7 +52,7 @@ export const BreadcrumbSize = () => {
       </Breadcrumb>
       <h4>Interactive Breadcrumb</h4>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">
-        {items.map(item => renderButton(item))}
+        {items.map(renderButton)}
       </Breadcrumb>
       <h3>Medium</h3>
       <Breadcrumb aria-label="Medium breadcrumb example with buttons" size="medium">
