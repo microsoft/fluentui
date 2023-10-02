@@ -545,7 +545,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x as number);
-      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x}>
           <rect
