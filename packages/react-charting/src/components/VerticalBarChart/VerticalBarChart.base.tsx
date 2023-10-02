@@ -111,6 +111,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       d3Max(this._points, (point: IVerticalBarChartDataPoint) => point.y)!,
       this.props.yMaxValue || 0,
     );
+    // const minVisibleValue=0
     const legendBars: JSX.Element = this._getLegendData(this._points, this.props.theme!.palette);
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -536,11 +537,17 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         shouldHighlight: shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
-      if (barHeight < 1) {
+      // console.log(yBarScale(point.y))
+      let adjustedBarHeight = 0;
+      if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
+      } else if (barHeight <= 1) {
+        adjustedBarHeight = 1;
+      } else {
+        adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x as number);
-      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x}>
           <rect
