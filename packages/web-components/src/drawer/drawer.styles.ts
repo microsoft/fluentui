@@ -7,6 +7,9 @@ import {
   colorStrokeFocus1,
   colorStrokeFocus2,
   colorTransparentStroke,
+  curveAccelerateMin,
+  curveDecelerateMid,
+  durationNormal,
   fontFamilyBase,
   fontSizeBase300,
   fontSizeBase500,
@@ -201,26 +204,26 @@ export const styles = css`
 
   :host .dialog.animating .drawer {
     animation: drawer-slide-in-start;
-    animation-timing-function: cubic-bezier(0.7, 0, 1, 0.5);
-    animation-duration: 250ms;
+    animation-timing-function: ${curveDecelerateMid};
+    animation-duration: ${durationNormal};
   }
 
   :host .dialog.closing .drawer {
     animation-direction: reverse;
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-    animation-duration: 250ms;
+    animation-timing-function: ${curveAccelerateMin};
+    animation-duration: ${durationNormal};
   }
 
   :host([position='end']) .dialog.animating .drawer {
     animation: drawer-slide-in-end;
-    animation-timing-function: cubic-bezier(0.7, 0, 1, 0.5);
-    animation-duration: 250ms;
+    animation-timing-function: ${curveDecelerateMid};
+    animation-duration: ${durationNormal};
   }
 
   :host([position='end']) .dialog.closing .drawer {
     animation-direction: reverse;
-    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
-    animation-duration: 250ms;
+    animation-timing-function: ${curveAccelerateMin};
+    animation-duration: ${durationNormal};
   }
 
   @keyframes drawer-fade {
@@ -234,19 +237,19 @@ export const styles = css`
 
   @keyframes drawer-slide-in-start {
     0% {
-      transform: translate(-100%);
+      transform: translate3D(-100%, 0, 0);
     }
     100% {
-      transform: translate(0%);
+      transform: translate3D(0%, 0, 0);
     }
   }
 
   @keyframes drawer-slide-in-end {
     0% {
-      transform: translate(100%);
+      transform: translate3D(100%, 0, 0);
     }
     100% {
-      transform: translate(0%);
+      transform: translate3D(0%, 0, 0);
     }
   }
 `;
