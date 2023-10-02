@@ -536,7 +536,6 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         shouldHighlight: shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
-      // console.log(yBarScale(point.y))
       let adjustedBarHeight = 0;
       if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
@@ -546,7 +545,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x as number);
-      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
+      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
       return (
         <g key={point.x}>
           <rect
