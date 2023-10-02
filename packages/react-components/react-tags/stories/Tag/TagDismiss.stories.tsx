@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tag, TagGroup, TagGroupProps } from '@fluentui/react-tags-preview';
+import { Tag, TagGroup, TagGroupProps } from '@fluentui/react-tags';
 import { Button, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

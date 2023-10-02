@@ -7,7 +7,7 @@ import {
   InteractionTag,
   InteractionTagPrimary,
   InteractionTagPrimaryProps,
-} from '@fluentui/react-tags-preview';
+} from '@fluentui/react-tags';
 import {
   makeStyles,
   shorthands,

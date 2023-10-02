@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Popover, PopoverTrigger, PopoverSurface, makeStyles, Tooltip, Link } from '@fluentui/react-components';
-import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 
 const useStyles = makeStyles({
   popover: {

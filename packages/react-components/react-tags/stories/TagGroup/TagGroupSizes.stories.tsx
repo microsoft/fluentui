@@ -5,7 +5,7 @@ import {
   InteractionTagPrimary,
   InteractionTagSecondary,
   TagSize,
-} from '@fluentui/react-tags-preview';
+} from '@fluentui/react-tags';
 import { Avatar, makeStyles } from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 

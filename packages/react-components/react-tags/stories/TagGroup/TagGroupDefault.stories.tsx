@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { TagGroup, InteractionTag, InteractionTagPrimary, Tag } from '@fluentui/react-tags-preview';
+import { TagGroup, InteractionTag, InteractionTagPrimary, Tag } from '@fluentui/react-tags';
 import { makeStyles } from '@fluentui/react-components';
 
 const WithTags = () => (

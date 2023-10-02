@@ -14,7 +14,7 @@ export { Appearance } from './TagAppearance.stories';
 export { Disabled } from './TagDisabled.stories';
 
 export default {
-  title: 'Preview Components/Tag/Tag',
+  title: 'Tag/Tag',
   component: Tag,
   parameters: {
     docs: {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { Tag } from '@fluentui/react-tags-preview';
+import { Tag } from '@fluentui/react-tags';
 
 export const Icon = () => <Tag icon={<CalendarMonthRegular />}>Primary text</Tag>;
 

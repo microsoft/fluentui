@@ -1,4 +1,4 @@
-import { InteractionTag } from '@fluentui/react-tags-preview';
+import { InteractionTag } from '@fluentui/react-tags';
 
 console.log(InteractionTag);
 

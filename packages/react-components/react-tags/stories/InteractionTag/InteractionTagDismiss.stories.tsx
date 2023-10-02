@@ -6,7 +6,7 @@ import {
   InteractionTagSecondary,
   TagGroup,
   TagGroupProps,
-} from '@fluentui/react-tags-preview';
+} from '@fluentui/react-tags';
 
 const useStyles = makeStyles({
   container: {

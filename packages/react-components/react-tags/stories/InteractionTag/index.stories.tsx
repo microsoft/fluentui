@@ -15,7 +15,7 @@ export { Disabled } from './InteractionTagDisabled.stories';
 export { HasPrimaryAction } from './InteractionTagHasPrimaryAction.stories';
 
 export default {
-  title: 'Preview Components/Tag/InteractionTag',
+  title: 'Tag/InteractionTag',
   component: InteractionTag,
   subcomponents: {
     InteractionTagPrimary,

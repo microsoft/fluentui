@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-tags-preview';
+import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-tags';
 
 export const SecondaryText = () => (
   <InteractionTag>
