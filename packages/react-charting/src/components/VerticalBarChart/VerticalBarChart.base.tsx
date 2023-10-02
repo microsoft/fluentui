@@ -539,8 +539,8 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       let adjustedBarHeight = 0;
       if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
-      } else if (barHeight <= 1) {
-        adjustedBarHeight = 1;
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
       } else {
         adjustedBarHeight = barHeight;
       }
@@ -555,7 +555,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             y={yPoint}
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip}
-            height={barHeight}
+            height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
             }}
