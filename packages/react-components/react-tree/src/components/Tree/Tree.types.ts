@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
-import type { TreeContextValue } from '../../contexts';
+import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
 import { CheckboxProps } from '@fluentui/react-checkbox';
@@ -68,7 +68,7 @@ export type TreeCheckedChangeData = {
 export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
 export type TreeContextValues = {
-  tree: TreeContextValue;
+  tree: TreeContextValue | SubtreeContextValue;
 };
 
 export type TreeProps = ComponentProps<TreeSlots> & {
@@ -146,7 +146,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 /**
  * State used in rendering Tree
  */
-export type TreeState = ComponentState<TreeSlots> &
-  TreeContextValue & {
-    open: boolean;
-  };
+export type TreeState = ComponentState<TreeSlots> & {
+  open: boolean;
+} & (TreeContextValue | SubtreeContextValue);

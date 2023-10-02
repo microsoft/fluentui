@@ -27,6 +27,8 @@
 #### Change files (no owner)
 /change
 
+/.github/ @microsoft/fluentui-react-build
+
 #### Build folders
 /.codesandbox @microsoft/fluentui-react-build
 /.devcontainer @microsoft/fluentui-react-build

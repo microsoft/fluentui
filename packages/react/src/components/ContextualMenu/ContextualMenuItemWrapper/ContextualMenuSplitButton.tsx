@@ -8,6 +8,8 @@ import {
   Async,
   EventGroup,
   getId,
+  composeComponentAs,
+  IComponentAs,
 } from '../../../Utilities';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { getSplitButtonVerticalDividerClassNames } from '../ContextualMenu.classNames';
@@ -19,6 +21,7 @@ import type { IContextualMenuItem } from '../ContextualMenu.types';
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import type { IKeytipProps } from '../../../Keytip';
 import type { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
+import { IContextualMenuItemProps } from '../ContextualMenuItem.types';
 
 export interface IContextualMenuSplitButtonState {}
 
@@ -214,14 +217,17 @@ export class ContextualMenuSplitButton extends ContextualMenuItemWrapper {
     index: number,
     keytipAttributes: any,
   ) {
-    const {
-      contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem,
-      onItemMouseLeave,
-      onItemMouseDown,
-      openSubMenu,
-      dismissSubMenu,
-      dismissMenu,
-    } = this.props;
+    const { onItemMouseLeave, onItemMouseDown, openSubMenu, dismissSubMenu, dismissMenu } = this.props;
+
+    let ChildrenRenderer: IComponentAs<IContextualMenuItemProps> = ContextualMenuItem;
+
+    if (this.props.item.contextualMenuItemAs) {
+      ChildrenRenderer = composeComponentAs(this.props.item.contextualMenuItemAs, ChildrenRenderer);
+    }
+
+    if (this.props.contextualMenuItemAs) {
+      ChildrenRenderer = composeComponentAs(this.props.contextualMenuItemAs, ChildrenRenderer);
+    }
 
     const itemProps: IContextualMenuItem = {
       onClick: this._onIconItemClick,

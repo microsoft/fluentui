@@ -21,11 +21,11 @@ const avatarShapeMap = {
  * before being passed to renderInteractionTagPrimary_unstable.
  *
  * @param props - props from this instance of InteractionTagPrimary
- * @param ref - reference to root HTMLElement of InteractionTagPrimary
+ * @param ref - reference to root HTMLButtonElement of InteractionTagPrimary
  */
 export const useInteractionTagPrimary_unstable = (
   props: InteractionTagPrimaryProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLButtonElement>,
 ): InteractionTagPrimaryState => {
   const { appearance, disabled, interactionTagPrimaryId, shape, size } = useInteractionTagContext_unstable();
   const { hasSecondaryAction = false } = props;

@@ -40,6 +40,9 @@ export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> & Omit
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots>;
 
 // @public
+export type BreadcrumbContextValue = Required<Pick<BreadcrumbProps, 'appearance' | 'dividerType' | 'size'>>;
+
+// @public
 export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
 
 // @public (undocumented)
@@ -85,6 +88,9 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     dividerType?: 'chevron' | 'slash';
     size?: 'small' | 'medium' | 'large';
 };
+
+// @internal (undocumented)
+export const BreadcrumbProvider: React_2.Provider<Required<Pick<BreadcrumbProps, "size" | "appearance" | "dividerType">> | undefined>;
 
 // @public (undocumented)
 export type BreadcrumbSlots = {
@@ -141,6 +147,9 @@ export const useBreadcrumbButton_unstable: (props: BreadcrumbButtonProps, ref: R
 
 // @public
 export const useBreadcrumbButtonStyles_unstable: (state: BreadcrumbButtonState) => BreadcrumbButtonState;
+
+// @internal (undocumented)
+export const useBreadcrumbContext_unstable: () => Required<Pick<BreadcrumbProps, "size" | "appearance" | "dividerType">>;
 
 // @public
 export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;
