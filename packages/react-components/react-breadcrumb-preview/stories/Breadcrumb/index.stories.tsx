@@ -3,10 +3,9 @@ import { Breadcrumb, BreadcrumbButton, BreadcrumbItem, BreadcrumbDivider } from 
 import descriptionMd from './BreadcrumbDescription.md';
 import bestPracticesMd from './BreadcrumbBestPractices.md';
 export { Default } from './BreadcrumbDefault.stories';
-export { BreadcrumbItemExample } from '../BreadcrumbItem/BreadcrumbItem.stories';
-export { BreadcrumbButtonAppearanceSubtle } from '../BreadcrumbButton/BreadcrumbButtonAppearanceSubtle.stories';
-export { BreadcrumbButtonWithHrefAttribute } from '../BreadcrumbButton/BreadcrumbButtonWithHrefAttribute.stories';
-export { BreadcrumbSlashDivider } from '../BreadcrumbDivider/BreadcrumbSlashDivider.stories';
+export { BreadcrumbButtonAppearanceSubtle } from './BreadcrumbButtonAppearanceSubtle.stories';
+export { BreadcrumbButtonWithHrefAttribute } from './BreadcrumbButtonWithHrefAttribute.stories';
+export { BreadcrumbSlashDivider } from './BreadcrumbSlashDivider.stories';
 export { BreadcrumbSize } from './BreadcrumbSize.stories';
 export { FocusModeArrow } from './BreadcrumbFocusMode.stories';
 export { BreadcrumbWithOverflow } from './BreadcrumbWithOverflow.stories';

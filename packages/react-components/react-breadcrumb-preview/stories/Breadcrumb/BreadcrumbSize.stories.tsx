@@ -1,45 +1,11 @@
 import * as React from 'react';
 import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbButton } from '@fluentui/react-breadcrumb-preview';
-
-type Item = {
-  key: number;
-  value: string;
-};
-const items: Item[] = [
-  {
-    key: 0,
-    value: 'Item 1',
-  },
-  {
-    key: 1,
-    value: 'Item 2',
-  },
-  {
-    key: 2,
-    value: 'Item 3',
-  },
-  {
-    key: 3,
-    value: 'Item 4',
-  },
-];
-
-function renderButton(item: Item, index: number) {
-  const isLastItem = items.length - 1 === index;
-  return (
-    <React.Fragment key={`button-item-${item.key}`}>
-      <BreadcrumbItem>
-        <BreadcrumbButton current={isLastItem}>{item.value}</BreadcrumbButton>
-      </BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
+import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
+const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 
 export const BreadcrumbSize = () => {
   return (
     <>
-      <h3>Small</h3>
       <h4>Non-interactive Breadcrumb</h4>
       <Breadcrumb aria-label="Small non-interactive breadcrumb" size="small">
         <BreadcrumbItem>Item 1</BreadcrumbItem>
@@ -52,15 +18,49 @@ export const BreadcrumbSize = () => {
       </Breadcrumb>
       <h4>Interactive Breadcrumb</h4>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">
-        {items.map(renderButton)}
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 1</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton icon={<CalendarMonth />}>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 3</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem current>Item 4</BreadcrumbItem>
       </Breadcrumb>
-      <h3>Medium</h3>
       <Breadcrumb aria-label="Medium breadcrumb example with buttons" size="medium">
-        {items.map(item => renderButton(item))}
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 1</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton icon={<CalendarMonth />}>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 3</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem current>Item 4</BreadcrumbItem>
       </Breadcrumb>
-      <h3>Large</h3>
       <Breadcrumb aria-label="Large breadcrumb example with buttons" size="large">
-        {items.map(item => renderButton(item))}
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 1</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton icon={<CalendarMonth />}>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 3</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem current>Item 4</BreadcrumbItem>
       </Breadcrumb>
     </>
   );
