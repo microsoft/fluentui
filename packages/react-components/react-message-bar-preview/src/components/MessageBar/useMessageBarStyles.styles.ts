@@ -91,12 +91,14 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   const iconBaseStyles = useIconBaseStyles();
   const multilineStyles = useMultilineStyles();
   const iconIntentStyles = useIconIntentStyles();
-  const rootIntntStyles = useRootIntentStyles();
+  const rootIntentStyles = useRootIntentStyles();
+
   state.root.className = mergeClasses(
     messageBarClassNames.root,
     rootBaseStyles,
     state.layout === 'multiline' && multilineStyles.rootMultiline,
-    rootIntntStyles[state.intent],
+    rootIntentStyles[state.intent],
+    state.transitionClassName,
     state.root.className,
   );
 
