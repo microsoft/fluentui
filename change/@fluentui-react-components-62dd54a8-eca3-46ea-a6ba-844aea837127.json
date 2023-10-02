@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "feat: export SubtreeContext from @fluentui/react-tree",
+  "comment": "feat: exports getIntrinsicElementProps method",
   "packageName": "@fluentui/react-components",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

@@ -2,6 +2,85 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 02 Oct 2023 08:56:03 GMT",
+      "tag": "@fluentui/react-components_v9.33.0",
+      "version": "9.33.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "825527266f96ba80b865c072af9889360573b887",
+            "comment": "fix: exported BreadcrumbProvider and useBreadcrumbContext"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "03466e42548781a9f80a3859c13eda0e8bd33a6b",
+            "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b7c4075ba6978c8435ce9942f6f04179a2f3be33",
+            "comment": "feat: export SubtreeContext from @fluentui/react-tree"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "bfa0ec8c423bc3d44b41c28d543c6bdabde3c468",
+            "comment": "feat: export useFluentProviderThemeStyleTag"
+          },
+          {
+            "author": "msnyder@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d58a480cbe6de091979c053daaa1c4853a734498",
+            "comment": "feat; Add optional parameter to Table column renderHeaderCell callback"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "6e692ab6be8e4169807a15ec1d2787cd29e64715",
+            "comment": "chore: properly type ref in state hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b7c4075ba6978c8435ce9942f6f04179a2f3be33",
+            "comment": "feat: creates SubtreeContext"
+          }
+        ],
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d54dc8a1c10f8123413fe018e607cee9cffe2199",
+            "comment": "docs: Adding example of how to pass on click to primaryActionButton slot in the Default story for SplitButton."
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "18ddec93bdb85a009bc1392058c52b2ea336340e",
+            "comment": "fix: handle multiple classes in PortalCompatProvider"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "03466e42548781a9f80a3859c13eda0e8bd33a6b",
+            "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "03466e42548781a9f80a3859c13eda0e8bd33a6b",
+            "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Sep 2023 17:49:00 GMT",
       "tag": "@fluentui/react-components_v9.32.3",
       "version": "9.32.3",

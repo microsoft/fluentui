@@ -98,6 +98,7 @@ export {
 } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
+  getIntrinsicElementProps,
   getPartitionedNativeProps,
   getSlots,
   slot,

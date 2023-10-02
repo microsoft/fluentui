@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Tue, 26 Sep 2023 17:49:07 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2023 08:56:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.21)
+
+Mon, 02 Oct 2023 08:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.20..@fluentui/react-menu_v9.12.21)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.3.19 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-positioning to v9.9.16 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-tabster to v9.13.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
 
 ## [9.12.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.20)
 
