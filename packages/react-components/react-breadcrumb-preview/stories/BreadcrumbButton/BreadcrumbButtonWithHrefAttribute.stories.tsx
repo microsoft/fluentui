@@ -74,7 +74,7 @@ function renderLink(el: Item, isLastItem: boolean = false) {
 export const BreadcrumbButtonWithHrefAttribute = () => {
   return (
     <Breadcrumb aria-label="BreadcrumbButton with href attribute">
-      {linkItems.map(el => renderLink(el, el.key === linkItems.length - 1))}
+      {linkItems.map((el, index) => renderLink(el, index === linkItems.length - 1))}
     </Breadcrumb>
   );
 };
