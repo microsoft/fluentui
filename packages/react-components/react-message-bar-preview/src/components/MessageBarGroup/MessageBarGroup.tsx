@@ -6,7 +6,7 @@ import { useMessageBarGroupStyles_unstable } from './useMessageBarGroupStyles.st
 import type { MessageBarGroupProps } from './MessageBarGroup.types';
 
 /**
- * MessageBarGroup component - TODO: add more docs
+ * MessageBarGroup component
  */
 export const MessageBarGroup: ForwardRefComponent<MessageBarGroupProps> = React.forwardRef((props, ref) => {
   const state = useMessageBarGroup_unstable(props, ref);
