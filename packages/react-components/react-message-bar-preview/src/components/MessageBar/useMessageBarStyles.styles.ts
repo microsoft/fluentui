@@ -2,7 +2,6 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { MessageBarSlots, MessageBarState } from './MessageBar.types';
-import { MotionType } from '../../../../react-motion-preview/src/index';
 
 export const messageBarClassNames: SlotClassNames<MessageBarSlots> = {
   root: 'fui-MessageBar',
@@ -22,8 +21,6 @@ const useRootBaseStyles = makeResetStyles({
   minHeight: '36px',
   boxSizing: 'border-box',
   backgroundColor: tokens.colorNeutralBackground3,
-  animationFillMode: 'forwards',
-  animationDuration: tokens.durationNormal,
 });
 
 const useIconBaseStyles = makeResetStyles({
@@ -86,32 +83,6 @@ const useRootIntentStyles = makeStyles({
   },
 });
 
-const useMotionStyles = makeStyles({
-  enter: {
-    animationName: {
-      from: {
-        opacity: 0,
-        transform: 'translateY(-100%)',
-      },
-      to: {
-        opacity: 1,
-        transform: 'translateY(0)',
-      },
-    },
-  },
-
-  exit: {
-    animationName: {
-      from: {
-        opacity: 1,
-      },
-      to: {
-        opacity: 0,
-      },
-    },
-  },
-});
-
 /**
  * Apply styling to the MessageBar slots based on the state
  */
@@ -121,17 +92,13 @@ export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBar
   const multilineStyles = useMultilineStyles();
   const iconIntentStyles = useIconIntentStyles();
   const rootIntentStyles = useRootIntentStyles();
-  const motionStyles = useMotionStyles();
-
-  const shouldExit = (type: MotionType) => ['exiting', 'exited'].includes(type);
 
   state.root.className = mergeClasses(
     messageBarClassNames.root,
     rootBaseStyles,
     state.layout === 'multiline' && multilineStyles.rootMultiline,
     rootIntentStyles[state.intent],
-    shouldExit(state.motionState.type) && motionStyles.exit,
-    state.animate === 'both' && !shouldExit(state.motionState.type) && motionStyles.enter,
+    state.transitionClassName,
     state.root.className,
   );
 

@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { Button, Link, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
-import { MessageBar, MessageBarActions, MessageBarTitle, MessageBarBody } from '@fluentui/react-message-bar-preview';
+import {
+  MessageBar,
+  MessageBarActions,
+  MessageBarTitle,
+  MessageBarBody,
+  MessageBarGroup,
+} from '@fluentui/react-message-bar-preview';
 
 const useStyles = makeStyles({
   container: {
@@ -20,7 +26,6 @@ const intents = ['info', 'warning', 'error', 'success'] as const;
 interface Entry {
   intent: (typeof intents)[number];
   id: number;
-  visible: boolean;
 }
 
 export const Dismiss = () => {
@@ -31,7 +36,6 @@ export const Dismiss = () => {
     const intentPos = Math.floor(Math.random() * intents.length);
     const newEntry = {
       intent: intents[intentPos],
-      visible: true,
       id: counterRef.current++,
     };
 
@@ -39,47 +43,24 @@ export const Dismiss = () => {
   };
 
   const clear = () => {
-    setMessages(s => {
-      return s.map(entry => {
-        return {
-          ...entry,
-          visible: false,
-        };
-      });
-    });
+    setMessages([]);
   };
 
-  const onDismiss = (id: number) => () => {
+  const dismiss = (id: number) => () => {
     setMessages(s => {
       const newState = s.map(entry => ({ ...entry }));
       return newState.filter(entry => entry.id !== id);
     });
   };
 
-  const dismiss = (id: number) => () => {
-    setMessages(s => {
-      return s.map(entry => {
-        return {
-          ...entry,
-          visible: entry.id === id ? false : entry.visible,
-        };
-      });
-    });
-  };
-
+  console.log(messages.length);
   return (
     <>
       <Button onClick={prepend}>Notify</Button>
       <Button onClick={clear}>Clear</Button>
-      <div className={styles.container}>
-        {messages.map(({ intent, visible, id }) => (
-          <MessageBar
-            key={`${intent}-${id}`}
-            intent={intent}
-            visible={visible}
-            onDismiss={onDismiss(id)}
-            animate="exit-only"
-          >
+      <MessageBarGroup className={styles.container}>
+        {messages.map(({ intent, id }) => (
+          <MessageBar key={`${intent}-${id}`} intent={intent}>
             <MessageBarBody>
               <MessageBarTitle>Descriptive title</MessageBarTitle>
               Message providing information to the user with actionable insights. <Link>Link</Link>
@@ -89,7 +70,7 @@ export const Dismiss = () => {
             />
           </MessageBar>
         ))}
-      </div>
+      </MessageBarGroup>
     </>
   );
 };

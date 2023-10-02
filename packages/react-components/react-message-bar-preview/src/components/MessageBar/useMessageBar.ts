@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
-import { useMotion } from '@fluentui/react-motion-preview';
 import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
 import { useMessageBarReflow } from './useMessageBarReflow';
+import { useMessageBarTransitionContext } from '../../contexts/messageBarTransitionContext';
 
 /**
  * Create the state required to render MessageBar.
@@ -15,17 +15,11 @@ import { useMessageBarReflow } from './useMessageBarReflow';
  * @param ref - reference to root HTMLElement of MessageBar
  */
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLElement>): MessageBarState => {
-  const { layout = 'auto', intent = 'info', visible = true, onDismiss, animate = 'exit-only' } = props;
+  const { layout = 'auto', intent = 'info' } = props;
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
-  const motionState = useMotion(visible, { animateOnFirstMount: true });
-
-  React.useEffect(() => {
-    if (motionState.type === 'exited' && onDismiss) {
-      onDismiss();
-    }
-  }, [motionState.type, onDismiss]);
+  const transitionClassName = useMessageBarTransitionContext();
 
   return {
     components: {
@@ -34,7 +28,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     },
     root: slot.always(
       getNativeElementProps('div', {
-        ref: useMergedRefs(ref, reflowRef, motionState.ref),
+        ref: useMergedRefs(ref, reflowRef),
         ...props,
       }),
       { elementType: 'div' },
@@ -47,7 +41,6 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     }),
     layout: computedLayout,
     intent,
-    motionState,
-    animate,
+    transitionClassName,
   };
 };

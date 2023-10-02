@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { MotionState } from '@fluentui/react-motion-preview';
 import type { MessageBarContextValue } from '../../contexts/messageBarContext';
 
 export type MessageBarSlots = {
@@ -17,15 +16,12 @@ export type MessageBarContextValues = {
 export type MessageBarProps = ComponentProps<MessageBarSlots> &
   Pick<MessageBarContextValue, 'layout'> & {
     intent?: 'info' | 'success' | 'warning' | 'error';
-    visible?: boolean;
-    animate?: 'exit-only' | 'both';
-    onDismiss?: () => void;
   };
 
 /**
  * State used in rendering MessageBar
  */
 export type MessageBarState = ComponentState<MessageBarSlots> &
-  Required<Pick<MessageBarProps, 'layout' | 'intent' | 'animate'>> & {
-    motionState: MotionState;
+  Required<Pick<MessageBarProps, 'layout' | 'intent'>> & {
+    transitionClassName: string;
   };

@@ -6,7 +6,8 @@ import {
   MessageBarActions,
   MessageBarTitle,
   MessageBarBody,
-  MessageBarProps,
+  MessageBarGroup,
+  MessageBarGroupProps,
 } from '@fluentui/react-message-bar-preview';
 
 const useStyles = makeStyles({
@@ -26,13 +27,12 @@ const intents = ['info', 'warning', 'error', 'success'] as const;
 interface Entry {
   intent: (typeof intents)[number];
   id: number;
-  visible: boolean;
 }
 
 export const Animation = () => {
   const styles = useStyles();
   const counterRef = React.useRef(0);
-  const [animate, setAnimate] = React.useState<MessageBarProps['animate']>('exit-only');
+  const [animate, setAnimate] = React.useState<MessageBarGroupProps['animate']>('exit-only');
   const [messages, setMessages] = React.useState<Entry[]>([]);
   const prepend = () => {
     const intentPos = Math.floor(Math.random() * intents.length);
@@ -46,31 +46,13 @@ export const Animation = () => {
   };
 
   const clear = () => {
-    setMessages(s => {
-      return s.map(entry => {
-        return {
-          ...entry,
-          visible: false,
-        };
-      });
-    });
-  };
-
-  const onDismiss = (id: number) => () => {
-    setMessages(s => {
-      const newState = s.map(entry => ({ ...entry }));
-      return newState.filter(entry => entry.id !== id);
-    });
+    setMessages([]);
   };
 
   const dismiss = (id: number) => () => {
     setMessages(s => {
-      return s.map(entry => {
-        return {
-          ...entry,
-          visible: entry.id === id ? false : entry.visible,
-        };
-      });
+      const newState = s.map(entry => ({ ...entry }));
+      return newState.filter(entry => entry.id !== id);
     });
   };
 
@@ -79,20 +61,14 @@ export const Animation = () => {
       <Button onClick={prepend}>Notify</Button>
       <Button onClick={clear}>Clear</Button>
       <Field label="Select animation type">
-        <RadioGroup value={animate} onChange={(_, { value }) => setAnimate(value as MessageBarProps['animate'])}>
+        <RadioGroup value={animate} onChange={(_, { value }) => setAnimate(value as MessageBarGroupProps['animate'])}>
           <Radio label="exit-only" value="exit-only" />
           <Radio label="both" value="both" />
         </RadioGroup>
       </Field>
-      <div className={styles.container}>
-        {messages.map(({ intent, visible, id }) => (
-          <MessageBar
-            key={`${intent}-${id}`}
-            intent={intent}
-            visible={visible}
-            onDismiss={onDismiss(id)}
-            animate={animate}
-          >
+      <MessageBarGroup animate={animate} className={styles.container}>
+        {messages.map(({ intent, id }) => (
+          <MessageBar key={`${intent}-${id}`} intent={intent}>
             <MessageBarBody>
               <MessageBarTitle>Descriptive title</MessageBarTitle>
               Message providing information to the user with actionable insights. <Link>Link</Link>
@@ -102,7 +78,7 @@ export const Animation = () => {
             />
           </MessageBar>
         ))}
-      </div>
+      </MessageBarGroup>
     </>
   );
 };
