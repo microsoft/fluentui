@@ -24,8 +24,8 @@ const items: Item[] = [
   },
 ];
 
-function renderButton(item: Item) {
-  const isLastItem = items.length - 1 === item.key;
+function renderButton(item: Item, index: number) {
+  const isLastItem = items.length - 1 === index;
   return (
     <React.Fragment key={`button-item-${item.key}`}>
       <BreadcrumbItem>
