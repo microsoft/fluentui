@@ -15,34 +15,35 @@ The Fluent WC3 Drawer extends `FASTElement`
 ### Template
 
 ```html
-   <template ?inert="${x => !x.open}" ?open="${x => x.open}" size="${x => x.size}" position="${x => x.position}">
-      ${when(
-        x => x.modal,
-        html<T>`
-          <div
-            class="overlay"
-            part="overlay"
-            role="presentation"
-            ?hidden="${x => !x.open}"
-            @click="${x => x.hide()}"
-          ></div>
-        `,
-      )}
-      <div
-        class="drawer"
-        part="drawer"
-        role="${x => (x.modal ? 'dialog' : 'complementary')}"
-        tabindex="${x => (x.open ? '0' : '-1')}"
-        aria-label="${x => x.ariaLabel}"
-        aria-labelledby="${x => x.ariaLabelledby}"
-        aria-describedby="${x => x.ariaDescribedby}"
-        aria-modal="${x => (x.modal ? 'true' : 'false')}"
-        @keydown="${(x, c) => x.handleKeyDown(c.event as KeyboardEvent)}"
-        ${ref('drawer')}
-      >
+  <dialog
+      class="dialog"
+      part="dialog"
+      role="${x => (x.modalType !== 'non-modal' || x.type === 'inline' ? 'dialog' : 'complementary')}"
+      aria-modal="${x => (x.modalType === 'non-modal' ? 'false' : 'true')}"
+      aria-describedby="${x => x.ariaDescribedby}"
+      aria-labelledby="${x => x.ariaLabelledby}"
+      aria-label="${x => x.ariaLabel}"
+      ?inert-trap-focus="${x => x.inertTrapFocus}"
+      ?hidden="${x => x.hidden}"
+      ?open-default="${x => x.openDefault}"
+      ?separator="${x => x.separator}"
+      size="${x => x.size}"
+      position="${x => x.position}"
+      modal-type="${x => x.modalType}"
+      type="${x => x.type}"
+      @keydown="${(x, c) => x.handleKeydown(c.event as KeyboardEvent)}"
+      @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
+      ${ref('dialog')}
+    >
+      <div class="drawer" ${ref('drawer')}>
         <div class="header">
-          <slot name="navigation"></slot>
-          <slot name="header"></slot>
+          <nav class="navigation">
+            <slot name="navigation"></slot>
+          </nav>
+          <div class="title">
+            <slot name="title"></slot>
+            <slot name="action"></slot>
+          </div>
         </div>
         <div class="content" part="content" ${ref('content')}>
           <slot></slot>
@@ -51,69 +52,54 @@ The Fluent WC3 Drawer extends `FASTElement`
           <slot name="footer"></slot>
         </div>
       </div>
-    </template>
+    </dialog>
 ```
 
 ### **Variables**
 
-| Name             | Type                     | Description          |
-| ---------------- | ------------------------ | -------------------- |
-| `DrawerPosition` | `type of DrawerPosition` | Positions for Drawer |
-| `DrawerSize`     | `type of DrawerSize`     | Sizes for Drawer     |
-
-### **Properties**
-
-| Name              | Type                                | Default             | Description                                                                       |
-| ----------------- | ----------------------------------- | ------------------- | --------------------------------------------------------------------------------- |
-| `trapFocus`       | `boolean`                           | `false`             | Determines whether the focus should be trapped within the drawer when it is open. |
-| `drawer`          | `HTMLElement \| undefined`          | `undefined`         | Reference to the drawer element.                                                  |
-| `content`         | `HTMLElement \| undefined`          | `undefined`         | Reference to `.content` element                                                   |
-| `open`            | `boolean`                           | `false`             | Indicates whether the drawer is open or closed.                                   |
-| `modal`           | `boolean`                           | `false`             | Determines whether the drawer should be displayed as modal or non-modal.          |
-| `position`        | `DrawerPosition \| undefined`       | `undefined`         | Sets the position of the drawer (left/right).                                     |
-| `size`            | `DrawerSize \| number \| undefined` | `DrawerSize.medium` | Sets the control size of the drawer.                                              |
-| `ariaLabelledby`  | `string \| undefined`               | `undefined`         | Sets the aria-labelledby attribute of the drawer.                                 |
-| `ariaDescribedby` | `string \| undefined`               | `undefined`         | Sets the aria-describedby attribute of the drawer.                                |
+| Name              | Type                            | Description            |
+| ----------------- | ------------------------------- | ---------------------- |
+| `DrawerPosition`  | `start` `end`                   | Positions for Drawer   |
+| `DrawerSize`      | `small` `medium` `large` `full` | Sizes for Drawer       |
+| `DrawerModalType` | `modal` `non-modal` `alert`     | Modal types for Drawer |
+| `DrawerType`      | `overlay` `inline`              | Types for Drawer       |
 
 ### **Attributes**
 
-| Name               | Field           |
-| ------------------ | --------------- |
-| `open`             | open            |
-| `modal`            | modal           |
-| `position`         | position        |
-| `size`             | size            |
-| `trap-focus`       | trapFocus       |
-| `aria-labelledby`  | ariaLabelledby  |
-| `aria-label`       | ariaLabel       |
-| `aria-describedby` | ariaDescribedby |
+| Name               | Type                                | Default             | Description                                                                       |
+| ------------------ | ----------------------------------- | ------------------- | --------------------------------------------------------------------------------- |
+| `inert-trap-focus` | `boolean`                           | `false`             | Determines whether the focus should be trapped within the drawer when it is open. |
+| `modal-type`       | `modal` `non-modal` `alert`         | `modal`             | Determines whether the drawer should be displayed as modal, non-modal, or alert.  |
+| `type`             | `overlay` `inline`                  | `false`             | Determines whether the drawer should be displayed inline or as an overlay         |
+| `position`         | `DrawerPosition \| undefined`       | `start`             | Sets the position of the drawer (left/right).                                     |
+| `size`             | `DrawerSize \| number \| undefined` | `DrawerSize.medium` | Sets the control size of the drawer.                                              |
+| `open-default`     | `boolean`                           | `false`             | Sets the drawer to be open by default.                                            |
+| `aria-labelledby`  | `string \| undefined`               | `undefined`         | Sets the aria-labelledby attribute of the drawer.                                 |
+| `aria-describedby` | `string \| undefined`               | `undefined`         | Sets the aria-describedby attribute of the drawer.                                |
+| `aria-label`       | `string \| undefined`               | `undefined`         | Sets the aria-label attribute of the drawer.                                      |
 
 ### **Events**
 
-| Name          | Type                     | Description                                |
-| ------------- | ------------------------ | ------------------------------------------ |
-| `openChanged` | `CustomEvent<OpenEvent>` | Fires when the drawer is opened or closed. |
+| Name          | Type          | Description                                |
+| ------------- | ------------- | ------------------------------------------ |
+| `openChanged` | `CustomEvent` | Fires when the drawer is opened or closed. |
+| `dismiss`     | `CustomEvent` | Fires when the drawer is dismissed.        |
 
 ### **Methods**
 
-| Name                    | Privacy   | Description                                    |
-| ----------------------- | --------- | ---------------------------------------------- |
-| `show`                  | public    | Shows the drawer.                              |
-| `hide`                  | public    | Hides the drawer.                              |
-| `toggleDrawer`          | public    | Toggles the state of the drawer (open/closed). |
-| `handleDocumentKeydown` | public    | Handles the keydown event on the document.     |
-| `handleKeyDown`         | public    | Handles the keydown event on the drawer.       |
-| `openChanged`           | protected | Handles changes to the `open` property.        |
-| `noFocusTrapChanged`    | protected | Handles changes to the `noFocusTrap` property. |
+| Name    | Privacy | Description       |
+| ------- | ------- | ----------------- |
+| `show`  | public  | Shows the drawer. |
+| `close` | public  | Hides the drawer. |
 
 ### **Slots**
 
-| Name         | Description                            |
-| ------------ | -------------------------------------- |
-| `navigation` | The slot for header navigation content |
-| `header`     | The slot for the header content        |
-|              | The default slot for the main content  |
-| `footer`     | The slot for the footer                |
+| Name     | Description                           |
+| -------- | ------------------------------------- |
+| `title`  | The slot for title                    |
+| `action` | The slot for the action content       |
+|          | The default slot for the main content |
+| `footer` | The slot for the footer               |
 
 ### **CSS Variables**
 
@@ -149,6 +135,10 @@ The Fluent WC3 Drawer extends `FASTElement`
 
   - The `aria-hidden` attribute should be set to indicate whether the drawer is hidden or visible. When the drawer is hidden, `aria-hidden="true"`, and when visible, `aria-hidden="false"`.
 
+- `aria-label`
+
+  - The `aria-label` attribute should be used to label the drawer.
+
 - `aria-describedby`
 
   - The `aria-describedby` attribute should be used to associate the drawer with an element that provides a description of its purpose or content.
@@ -156,3 +146,13 @@ The Fluent WC3 Drawer extends `FASTElement`
 - `aria-labelledby`
 
   - The `aria-labelledby` attribute should be used to associate the drawer with an element that serves as its accessible label or title.
+
+### **Fluent Web Component v3 v.s Fluent React 9**
+
+<br />
+
+**Component and Slot Mapping**
+
+| Fluent UI React 9 | Fluent Web Components 3 |
+| ----------------- | ----------------------- |
+| `<>`              | `<fluent-button>`       |
