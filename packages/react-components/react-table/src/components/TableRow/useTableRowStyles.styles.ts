@@ -44,6 +44,7 @@ const useStyles = makeStyles({
     ),
     ...createCustomFocusIndicatorStyle(
       {
+        zIndex: 2,
         ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
@@ -57,7 +58,7 @@ const useStyles = makeStyles({
   noAppearanceFocusWithin: {
     ...createCustomFocusIndicatorStyle(
       {
-        backgroundColor: tokens.colorSubtleBackgroundHover,
+        // backgroundColor: tokens.colorSubtleBackgroundHover,
       },
       { selector: 'focus-within' },
     ),
