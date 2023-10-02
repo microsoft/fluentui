@@ -340,7 +340,7 @@ export class Drawer extends FASTElement {
    * @internal
    */
   private setOverflowStyles(): void {
-    if (this.content && this.content.scrollHeight > this.content.clientHeight - 32) {
+    if (this.content && this.content.scrollHeight > this.content.clientHeight) {
       this.$fastController.addStyles(css`
         :host {
           --overflow-border: ${colorNeutralStroke1};
