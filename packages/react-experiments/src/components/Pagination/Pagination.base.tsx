@@ -117,7 +117,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
 
     return (
       <div className={this._classNames.root}>
-        <div>
+        <div role="radiogroup">
           <TooltipHost content={firstPageAriaLabel} directionalHint={DirectionalHint.bottomCenter}>
             <IconButton
               iconProps={this.props.firstPageIconProps}
