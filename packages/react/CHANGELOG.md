@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Fri, 29 Sep 2023 07:45:30 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2023 07:36:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.112.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.0)
+
+Mon, 02 Oct 2023 07:36:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.111.4..@fluentui/react_v8.112.0)
+
+### Minor changes
+
+- Add contextualMenuItemAs and contextualMenuItemWrapperAs to ContextualMenuItem ([PR #27907](https://github.com/microsoft/fluentui/pull/27907) by tmichon@microsoft.com)
 
 ## [8.111.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.111.4)
 

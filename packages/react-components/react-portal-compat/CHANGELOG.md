@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-portal-compat
 
-This log was last generated on Tue, 26 Sep 2023 17:49:09 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2023 08:56:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.95](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.95)
+
+Mon, 02 Oct 2023 08:56:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-portal-compat_v9.0.94..@fluentui/react-portal-compat_v9.0.95)
+
+### Patches
+
+- fix: handle multiple classes in PortalCompatProvider ([PR #29351](https://github.com/microsoft/fluentui/pull/29351) by olfedias@microsoft.com)
+- Bump @fluentui/react-tabster to v9.13.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-components to v9.33.0 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
 
 ## [9.0.94](https://github.com/microsoft/fluentui/tree/@fluentui/react-portal-compat_v9.0.94)
 

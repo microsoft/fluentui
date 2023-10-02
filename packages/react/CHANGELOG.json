@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 02 Oct 2023 07:36:46 GMT",
+      "tag": "@fluentui/react_v8.112.0",
+      "version": "8.112.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d3ea7d93b6d01f3355651d9635e3f0197dc208ea",
+            "comment": "Add contextualMenuItemAs and contextualMenuItemWrapperAs to ContextualMenuItem"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 29 Sep 2023 07:45:30 GMT",
       "tag": "@fluentui/react_v8.111.4",
       "version": "8.111.4",

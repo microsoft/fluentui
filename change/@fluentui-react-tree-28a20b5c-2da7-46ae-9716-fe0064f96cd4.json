@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat: creates SubtreeContext",
+  "type": "patch",
+  "comment": "chore: replace makeStyles with makeResetStyles",
   "packageName": "@fluentui/react-tree",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
