@@ -7,8 +7,6 @@ import {
   InteractionTag,
   InteractionTagPrimary,
   InteractionTagPrimaryProps,
-} from '@fluentui/react-tags';
-import {
   makeStyles,
   shorthands,
   Menu,

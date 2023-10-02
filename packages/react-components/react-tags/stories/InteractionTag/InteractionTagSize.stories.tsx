@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Avatar, makeStyles } from '@fluentui/react-components';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+  Avatar,
+  makeStyles,
+} from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-
-import { InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 
 const useContainerStyles = makeStyles({
   innerWrapper: {

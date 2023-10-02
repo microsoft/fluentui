@@ -1,4 +1,4 @@
-import { TagGroup } from '@fluentui/react-tags';
+import { TagGroup } from '@fluentui/react-components';
 
 import descriptionMd from './TagGroupDescription.md';
 import bestPracticesMd from './TagGroupBestPractices.md';

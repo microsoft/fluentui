@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tag } from '@fluentui/react-tags';
+import { Tag } from '@fluentui/react-components';
 
 export const SecondaryText = () => <Tag secondaryText="Secondary text">Primary text</Tag>;
 

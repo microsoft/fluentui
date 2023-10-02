@@ -1,12 +1,13 @@
 import * as React from 'react';
-import { Button, makeStyles } from '@fluentui/react-components';
 import {
   InteractionTag,
   InteractionTagPrimary,
   InteractionTagSecondary,
   TagGroup,
   TagGroupProps,
-} from '@fluentui/react-tags';
+  Button,
+  makeStyles,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

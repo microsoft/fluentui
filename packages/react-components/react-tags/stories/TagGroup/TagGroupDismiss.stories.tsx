@@ -6,8 +6,9 @@ import {
   TagGroupProps,
   InteractionTagPrimary,
   InteractionTagSecondary,
-} from '@fluentui/react-tags';
-import { Button, makeStyles } from '@fluentui/react-components';
+  Button,
+  makeStyles,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

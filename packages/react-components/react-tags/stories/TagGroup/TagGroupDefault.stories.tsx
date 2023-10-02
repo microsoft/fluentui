@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { TagGroup, InteractionTag, InteractionTagPrimary, Tag } from '@fluentui/react-tags';
-import { makeStyles } from '@fluentui/react-components';
+import { TagGroup, InteractionTag, InteractionTagPrimary, Tag, makeStyles } from '@fluentui/react-components';
 
 const WithTags = () => (
   <TagGroup aria-label="Simple tag group with Tag" role="list">

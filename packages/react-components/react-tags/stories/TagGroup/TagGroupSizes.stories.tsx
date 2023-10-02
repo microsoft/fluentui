@@ -5,8 +5,9 @@ import {
   InteractionTagPrimary,
   InteractionTagSecondary,
   TagSize,
-} from '@fluentui/react-tags';
-import { Avatar, makeStyles } from '@fluentui/react-components';
+  Avatar,
+  makeStyles,
+} from '@fluentui/react-components';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({

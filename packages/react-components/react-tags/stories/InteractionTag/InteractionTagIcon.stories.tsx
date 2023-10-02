@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { CalendarMonthRegular } from '@fluentui/react-icons';
-import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-tags';
+import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-components';
 
 export const Icon = () => (
   <InteractionTag>

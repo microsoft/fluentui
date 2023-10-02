@@ -1,8 +1,6 @@
 import * as React from 'react';
-import { Avatar } from '@fluentui/react-components';
+import { InteractionTag, InteractionTagPrimary, Avatar } from '@fluentui/react-components';
 import story from './InteractionTagMedia.md';
-
-import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-tags';
 
 export const Media = () => (
   <InteractionTag>
