@@ -6038,7 +6038,7 @@ export interface IGroupDividerProps {
 }
 
 // @public
-export type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
+export type IGroupedItem = IItemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
 
 // @public (undocumented)
 export interface IGroupedList extends IList {
@@ -6506,7 +6506,7 @@ export interface IInputProps extends React_2.InputHTMLAttributes<HTMLInputElemen
 }
 
 // @public
-export type IITemGroupedItem = {
+export type IItemGroupedItem = {
     type: 'item';
     group: IGroup;
     item: any;
