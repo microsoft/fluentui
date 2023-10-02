@@ -1069,7 +1069,9 @@ describe('Context menu', () => {
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
-      .should('not.exist');
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
   });
 
   it('should close on scroll outside', () => {
@@ -1081,6 +1083,21 @@ describe('Context menu', () => {
       .get('body')
       .trigger('wheel')
       .get(menuSelector)
-      .should('not.exist');
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
+  });
+
+  it('should restore focus on escape', () => {
+    mount(<ContextMenuExample />);
+    cy.get(menuTriggerSelector)
+      .rightclick()
+      .get(menuSelector)
+      .should('exist')
+      .focused()
+      .type('{esc}')
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
   });
 });

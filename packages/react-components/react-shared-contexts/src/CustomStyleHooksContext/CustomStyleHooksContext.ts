@@ -97,6 +97,15 @@ export type CustomStyleHooksContextValue = Partial<{
   useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
   useDrawerBodyStyles_unstable: CustomStyleHook;
   useDrawerFooterStyles_unstable: CustomStyleHook;
+  useInteractionTagStyles_unstable: CustomStyleHook;
+  useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+  useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+  useTagStyles_unstable: CustomStyleHook;
+  useTagGroupStyles_unstable: CustomStyleHook;
+  useBreadcrumbStyles_unstable: CustomStyleHook;
+  useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+  useBreadcrumbItemStyles_unstable: CustomStyleHook;
+  useBreadcrumbDividerStyles_unstable: CustomStyleHook;
 }>;
 
 /**

@@ -10,15 +10,17 @@ import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
  * before being passed to renderInteractionTag_unstable.
  *
  * @param props - props from this instance of InteractionTag
- * @param ref - reference to root HTMLElement of InteractionTag
+ * @param ref - reference to root HTMLDivElement of InteractionTag
  */
 export const useInteractionTag_unstable = (
   props: InteractionTagProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): InteractionTagState => {
   const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
-  const id = useId('fui-Tag', props.id);
+  const id = useId('fui-InteractionTag-', props.id);
+
+  const interactionTagPrimaryId = useId('fui-InteractionTagPrimary-');
 
   const { appearance = 'filled', disabled = false, shape = 'rounded', size = contextSize, value = id } = props;
 
@@ -26,6 +28,7 @@ export const useInteractionTag_unstable = (
     appearance,
     disabled,
     handleTagDismiss,
+    interactionTagPrimaryId,
     shape,
     size,
     value,

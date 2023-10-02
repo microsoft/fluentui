@@ -196,6 +196,7 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
             barwidth={this.state.barwidth}
             hideLabels={this.state.hideLabels}
+            enableReflow={true}
           />
         </div>
       </>
