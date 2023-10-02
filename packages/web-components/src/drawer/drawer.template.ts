@@ -19,6 +19,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       ?hidden="${x => x.hidden}"
       ?open-default="${x => x.openDefault}"
       ?separator="${x => x.separator}"
+      ?open="${x => x.open}"
       size="${x => x.size}"
       position="${x => x.position}"
       modal-type="${x => x.modalType}"

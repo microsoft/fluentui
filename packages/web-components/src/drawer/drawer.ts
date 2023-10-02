@@ -10,6 +10,9 @@ export class Drawer extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
     document.addEventListener('keydown', this.handleDocumentKeydown);
+    if (this.responsive) {
+      this.addEventListener('click', this.handleOverlayClick);
+    }
 
     Updates.enqueue(() => {
       this.updateTrapFocus();
@@ -20,9 +23,18 @@ export class Drawer extends FASTElement {
   public disconnectedCallback(): void {
     super.disconnectedCallback();
     document.removeEventListener('keydown', this.handleDocumentKeydown);
-
+    if (this.responsive) {
+      this.removeEventListener('click', this.handleOverlayClick);
+    }
     this.updateTrapFocus(false);
   }
+
+  public handleOverlayClick = (e: MouseEvent): void => {
+    console.log('handleOverlayClick');
+    if (this.responsive && e.target !== this.drawer) {
+      this.close();
+    }
+  };
 
   /**
    * The content container.
@@ -127,6 +139,16 @@ export class Drawer extends FASTElement {
   public separator: boolean = false;
 
   /**
+   * Determines whether drawer should change types at specific.
+   * @public
+   * @remarks
+   * HTML Attribute: responsive
+   * @defaultValue false
+   */
+  @attr({ mode: 'boolean' })
+  public responsive: boolean = false;
+
+  /**
    * Sets the size of the drawer (small/medium/large).
    * @public
    * @remarks
@@ -137,12 +159,30 @@ export class Drawer extends FASTElement {
   public size?: DrawerSize;
 
   /**
-   * Getter for the open state of the drawer.
+   * Sets the open state of the drawer
    * @public
-   * @returns {boolean} - Returns true if the drawer is open, false otherwise.
+   * @remarks
+   * HTML Attribute: open
+   * @defaultValue false
    */
-  public get open(): boolean {
-    return this.dialog.open;
+  @attr({ mode: 'boolean' })
+  public open: boolean = false;
+
+  /**
+   * Handles changes to the `open` property.
+   * If the new value is true and the old value is false, it opens the drawer.
+   * If the new value is false and the old value is true, it closes the drawer.
+   *
+   * @param oldValue - The old value of the `open` property.
+   * @param newValue - The new value of the `open` property.
+   * @public
+   */
+  public openChanged(oldValue: boolean, newValue: boolean): void {
+    if (newValue && !oldValue) {
+      this.show();
+    } else if (!newValue && oldValue) {
+      this.close();
+    }
   }
 
   /**
@@ -167,7 +207,9 @@ export class Drawer extends FASTElement {
    * @public
    */
   public async show(): Promise<void> {
-    this.openDialog();
+    if (!this.open) {
+      this.openDialog();
+    }
   }
 
   /**
@@ -175,7 +217,9 @@ export class Drawer extends FASTElement {
    * @public
    */
   public close(): void {
-    this.closeDialog();
+    if (this.open) {
+      this.closeDialog();
+    }
   }
 
   /**
@@ -184,7 +228,8 @@ export class Drawer extends FASTElement {
    * @private
    */
   private openDialog(): void {
-    if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal) {
+    this.open = true;
+    if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal || this.responsive) {
       this.dialog.show();
     } else {
       this.dialog.showModal();
@@ -208,7 +253,9 @@ export class Drawer extends FASTElement {
    */
   private closeDialog(): void {
     this.closing = true;
-    this.triggerAnimation();
+    Updates.enqueue(() => {
+      this.triggerAnimation();
+    });
   }
 
   /**
@@ -217,12 +264,12 @@ export class Drawer extends FASTElement {
    * @private
    */
   private triggerAnimation(): void {
-    this.dialog.classList.add('animating');
+    this.classList.add('animating');
     if (this.closing) {
-      this.dialog.classList.add('closing');
+      this.classList.add('closing');
     }
 
-    this.dialog.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
+    this.drawer.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
   }
 
   /**
@@ -231,11 +278,12 @@ export class Drawer extends FASTElement {
    *
    */
   private animationEndHandler(): void {
-    this.dialog.removeEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
-    this.dialog.classList.remove('animating');
+    this.drawer.removeEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
+    this.classList.remove('animating');
     if (this.closing) {
-      this.dialog.classList.remove('closing');
+      this.classList.remove('closing');
       this.dialog.close();
+      this.open = false;
       this.$emit('onOpenChange', { open: false });
       this.closing = false;
     }
@@ -343,13 +391,13 @@ export class Drawer extends FASTElement {
     if (this.content && this.content.scrollHeight > this.content.clientHeight) {
       this.$fastController.addStyles(css`
         :host {
-          --overflow-border: ${colorNeutralStroke1};
+          --drawer-overflow-border: ${colorNeutralStroke1};
         }
       `);
     } else {
       this.$fastController.addStyles(css`
         :host {
-          --overflow-border: ${colorTransparentStroke};
+          ---drawer-overflow-border: ${colorTransparentStroke};
         }
       `);
     }

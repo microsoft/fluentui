@@ -103,9 +103,10 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 ### **CSS Variables**
 
-| Name                | Description                           |
-| ------------------- | ------------------------------------- |
-| `--overflow-border` | Used to set the overflow border color |
+| Name                       | Description                           |
+| -------------------------- | ------------------------------------- |
+| `--drawer-overflow-border` | Used to set the overflow border color |
+| `--drawer-size`            | Used to set the overflow border color |
 
 ## **Accessiblity**
 
@@ -153,6 +154,9 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 **Component and Slot Mapping**
 
-| Fluent UI React 9 | Fluent Web Components 3 |
-| ----------------- | ----------------------- |
-| `<>`              | `<fluent-button>`       |
+| Fluent UI React 9          | Fluent Web Components 3 |
+| -------------------------- | ----------------------- |
+| `<DrawerHeaderTitle>`      | `slot="title"`          |
+| `<DrawerBody> `            | `default slot`          |
+| `<DrawerHeaderNavigation>` | `slot="navigation"`     |
+| `<DrawerFooter>`           | `slot="footer"`         |

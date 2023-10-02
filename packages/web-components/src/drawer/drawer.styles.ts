@@ -38,6 +38,7 @@ export const styles = css`
   :host {
     position: fixed;
     height: 100%;
+    max-height: 100vh;
     width: auto;
     outline: none;
     top: 0;
@@ -50,7 +51,7 @@ export const styles = css`
     left: unset;
   }
 
-  :host([type='inline']) .dialog,
+  :host([type='inline']) dialog,
   :host([type='inline']) {
     position: relative;
   }
@@ -96,9 +97,11 @@ export const styles = css`
     margin-left: 0;
     margin-right: auto;
     padding: 0;
-    max-width: none;
-    max-height: none;
-    overflow: hidden;
+    max-width: 100vh;
+    max-height: 100vh;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    box-shadow: var(--shadow64);
     width: var(--drawer-size, 592px);
   }
 
@@ -174,10 +177,10 @@ export const styles = css`
     flex-direction: row;
     column-gap: ${spacingHorizontalS};
     padding: ${spacingVerticalL} ${spacingHorizontalXXL} ${spacingVerticalXXL};
-    border-top: ${strokeWidthThin} solid var(--overflow-border, ${colorTransparentStroke});
+    border-top: ${strokeWidthThin} solid var(--drawer-overflow-border, ${colorTransparentStroke});
   }
 
-  .dialog:focus-visible:after {
+  dialog:focus-visible:after {
     content: '';
     position: absolute;
     inset: 0px;
@@ -187,40 +190,40 @@ export const styles = css`
     box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
   }
 
-  .dialog::backdrop {
+  dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.4);
     inset: 0;
   }
 
-  .dialog.animating::backdrop {
+  :host(.animating) dialog::backdrop {
     animation: drawer-fade;
     animation-timing-function: cubic-bezier(0.33, 0, 0.67, 1);
     animation-duration: 250ms;
   }
 
-  .dialog.closing::backdrop {
+  :host(.closing) dialog::backdrop {
     animation-direction: reverse;
   }
 
-  :host .dialog.animating .drawer {
+  :host(.animating) .drawer {
     animation: drawer-slide-in-start;
     animation-timing-function: ${curveDecelerateMid};
     animation-duration: ${durationNormal};
   }
 
-  :host .dialog.closing .drawer {
+  :host(.closing) .drawer {
     animation-direction: reverse;
     animation-timing-function: ${curveAccelerateMin};
     animation-duration: ${durationNormal};
   }
 
-  :host([position='end']) .dialog.animating .drawer {
+  :host([position='end'].animating) .drawer {
     animation: drawer-slide-in-end;
     animation-timing-function: ${curveDecelerateMid};
     animation-duration: ${durationNormal};
   }
 
-  :host([position='end']) .dialog.closing .drawer {
+  :host([position='end'].closing) .drawer {
     animation-direction: reverse;
     animation-timing-function: ${curveAccelerateMin};
     animation-duration: ${durationNormal};

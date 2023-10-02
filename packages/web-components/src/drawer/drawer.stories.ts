@@ -137,18 +137,7 @@ const storyTemplate = html<DrawerStoryArgs>`
         padding: 0;
       }
       .full-height,
-      #story--components-drawer--inline > div,
-      #story--components-drawer--overlay-no-modal > div,
-      #story--components-drawer--position > div,
-      #story--components-drawer--custom-size > div,
-      #story--components-drawer--with-navigation > div,
-      #story--components-drawer--content-overflow-separator > div,
-      #story--components-drawer--size > div,
-      #story--components-drawer--with-title-and-action > div,
-      #story--components-drawer--inert-trap-focus > div,
-      #story--components-drawer--overlay > div,
-      #story--components-drawer--overlay-non-modal > div,
-      #story--components-drawer--drawer > div {
+      .innerZoomElementWrapper > div > div > div {
         height: 100%;
       }
       .justify-sbdocs-content {
@@ -205,7 +194,6 @@ const storyTemplate = html<DrawerStoryArgs>`
           ?inert-trap-focus="${x => x.inertTrapFocus}"
           ?separator="${x => x.separator}"
           autofocus
-          resizable
         >
           <div slot="navigation">
             <fluent-button appearance="transparent" icon-only size="medium" aria-label="back">
