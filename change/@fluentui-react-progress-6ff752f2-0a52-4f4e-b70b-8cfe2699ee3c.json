@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Updated slots to be required in ProgressBarState",
+  "packageName": "@fluentui/react-progress",
+  "email": "gcox@microsoft.com",
+  "dependentChangeType": "patch"
+}
