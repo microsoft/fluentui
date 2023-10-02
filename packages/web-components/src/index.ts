@@ -11,6 +11,7 @@ export * from './divider/index.js';
 export * from './drawer/index.js';
 export * from './image/index.js';
 export * from './label/index.js';
+export * from './menu/index.js';
 export * from './menu-button/index.js';
 export * from './menu-item/index.js';
 export * from './menu-list/index.js';
