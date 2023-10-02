@@ -1,4 +1,4 @@
-import { Tag } from '@fluentui/react-tags-preview';
+import { Tag } from '@fluentui/react-tags';
 
 import descriptionMd from './TagDescription.md';
 import bestPracticesMd from './TagBestPractices.md';

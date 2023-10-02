@@ -18,7 +18,7 @@ Mon, 02 Oct 2023 08:56:05 GMT
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.3.1)
 
-Tue, 26 Sep 2023 17:49:13 GMT 
+Tue, 26 Sep 2023 17:49:13 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.3.0..@fluentui/react-tags-preview_v0.3.1)
 
 ### Patches
@@ -35,7 +35,7 @@ Tue, 26 Sep 2023 17:49:13 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.3.0)
 
-Tue, 26 Sep 2023 15:31:45 GMT 
+Tue, 26 Sep 2023 15:31:45 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.12..@fluentui/react-tags-preview_v0.3.0)
 
 ### Minor changes
@@ -63,7 +63,7 @@ Tue, 26 Sep 2023 15:31:45 GMT
 
 ## [0.2.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.12)
 
-Wed, 20 Sep 2023 17:47:44 GMT 
+Wed, 20 Sep 2023 17:47:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.11..@fluentui/react-tags-preview_v0.2.12)
 
 ### Patches
@@ -76,7 +76,7 @@ Wed, 20 Sep 2023 17:47:44 GMT
 
 ## [0.2.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.11)
 
-Wed, 20 Sep 2023 14:59:51 GMT 
+Wed, 20 Sep 2023 14:59:51 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.10..@fluentui/react-tags-preview_v0.2.11)
 
 ### Patches
@@ -90,7 +90,7 @@ Wed, 20 Sep 2023 14:59:51 GMT
 
 ## [0.2.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.10)
 
-Thu, 14 Sep 2023 16:44:47 GMT 
+Thu, 14 Sep 2023 16:44:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.9..@fluentui/react-tags-preview_v0.2.10)
 
 ### Patches
@@ -100,7 +100,7 @@ Thu, 14 Sep 2023 16:44:47 GMT
 
 ## [0.2.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.9)
 
-Tue, 12 Sep 2023 08:51:34 GMT 
+Tue, 12 Sep 2023 08:51:34 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.8..@fluentui/react-tags-preview_v0.2.9)
 
 ### Patches
@@ -111,7 +111,7 @@ Tue, 12 Sep 2023 08:51:34 GMT
 
 ## [0.2.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.8)
 
-Wed, 06 Sep 2023 13:31:31 GMT 
+Wed, 06 Sep 2023 13:31:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.7..@fluentui/react-tags-preview_v0.2.8)
 
 ### Patches
@@ -124,7 +124,7 @@ Wed, 06 Sep 2023 13:31:31 GMT
 
 ## [0.2.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.7)
 
-Tue, 05 Sep 2023 15:39:04 GMT 
+Tue, 05 Sep 2023 15:39:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.6..@fluentui/react-tags-preview_v0.2.7)
 
 ### Patches
@@ -137,7 +137,7 @@ Tue, 05 Sep 2023 15:39:04 GMT
 
 ## [0.2.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.6)
 
-Tue, 05 Sep 2023 13:29:06 GMT 
+Tue, 05 Sep 2023 13:29:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.5..@fluentui/react-tags-preview_v0.2.6)
 
 ### Patches
@@ -158,7 +158,7 @@ Tue, 05 Sep 2023 13:29:06 GMT
 
 ## [0.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.5)
 
-Tue, 29 Aug 2023 12:57:35 GMT 
+Tue, 29 Aug 2023 12:57:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.4..@fluentui/react-tags-preview_v0.2.5)
 
 ### Patches
@@ -173,7 +173,7 @@ Tue, 29 Aug 2023 12:57:35 GMT
 
 ## [0.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.4)
 
-Thu, 24 Aug 2023 10:26:35 GMT 
+Thu, 24 Aug 2023 10:26:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.3..@fluentui/react-tags-preview_v0.2.4)
 
 ### Patches
@@ -186,7 +186,7 @@ Thu, 24 Aug 2023 10:26:35 GMT
 
 ## [0.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.3)
 
-Wed, 23 Aug 2023 12:01:49 GMT 
+Wed, 23 Aug 2023 12:01:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.2..@fluentui/react-tags-preview_v0.2.3)
 
 ### Patches
@@ -199,7 +199,7 @@ Wed, 23 Aug 2023 12:01:49 GMT
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.2)
 
-Mon, 21 Aug 2023 11:38:02 GMT 
+Mon, 21 Aug 2023 11:38:02 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.1..@fluentui/react-tags-preview_v0.2.2)
 
 ### Patches
@@ -210,7 +210,7 @@ Mon, 21 Aug 2023 11:38:02 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.1)
 
-Wed, 16 Aug 2023 17:41:08 GMT 
+Wed, 16 Aug 2023 17:41:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.2.0..@fluentui/react-tags-preview_v0.2.1)
 
 ### Patches
@@ -221,7 +221,7 @@ Wed, 16 Aug 2023 17:41:08 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.2.0)
 
-Wed, 16 Aug 2023 11:38:33 GMT 
+Wed, 16 Aug 2023 11:38:33 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.1.3..@fluentui/react-tags-preview_v0.2.0)
 
 ### Minor changes
@@ -232,7 +232,7 @@ Wed, 16 Aug 2023 11:38:33 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.1.3)
 
-Fri, 11 Aug 2023 12:14:26 GMT 
+Fri, 11 Aug 2023 12:14:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.1.2..@fluentui/react-tags-preview_v0.1.3)
 
 ### Patches
@@ -245,7 +245,7 @@ Fri, 11 Aug 2023 12:14:26 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.1.2)
 
-Wed, 09 Aug 2023 13:17:06 GMT 
+Wed, 09 Aug 2023 13:17:06 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.1.1..@fluentui/react-tags-preview_v0.1.2)
 
 ### Patches
@@ -261,7 +261,7 @@ Wed, 09 Aug 2023 13:17:06 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.1.1)
 
-Fri, 04 Aug 2023 08:52:58 GMT 
+Fri, 04 Aug 2023 08:52:58 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.1.0..@fluentui/react-tags-preview_v0.1.1)
 
 ### Patches

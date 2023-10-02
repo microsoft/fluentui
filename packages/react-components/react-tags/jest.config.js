@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-tags-preview',
+  displayName: 'react-tags',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

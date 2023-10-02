@@ -1,8 +1,6 @@
-# @fluentui/react-tags-preview
+# @fluentui/react-tags
 
 **React Tags components for [Fluent UI React](https://react.fluentui.dev/)**
-
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
 - `Tag` provides visual representation of an attribute, person or asset.
 - `InteractionTag` follows the same characteristics as `Tag`, but with the added functionality of having a primary interaction.
