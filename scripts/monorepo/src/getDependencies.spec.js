@@ -10,12 +10,95 @@ describe(`#getDependencies`, () => {
   it(`should return package/s dependency tree array for all,devDeps and production dependencies`, async () => {
     const deps = await getDependencies(packageName);
 
-    expect(deps.dependencies).toEqual(expect.arrayContaining(['@fluentui/tokens', '@fluentui/react-theme']));
-    expect(deps.devDependencies).toEqual(
-      expect.arrayContaining(['@fluentui/react-conformance', '@fluentui/scripts-utils']),
-    );
+    expect(deps.dependencies).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
+          "name": "@fluentui/react-text",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
+          "name": "@fluentui/react-shared-contexts",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/react-theme",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/tokens",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
+          "name": "@fluentui/react-utilities",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/keyboard-keys",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": true,
+          "name": "@fluentui/react-jsx-runtime",
+        },
+      ]
+    `);
 
-    expect(deps.all).toEqual([...deps.dependencies, ...deps.devDependencies].sort());
+    expect(deps.devDependencies).toMatchInlineSnapshot(`
+      Array [
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/eslint-plugin",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/scripts-api-extractor",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/scripts-tasks",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/scripts-monorepo",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/scripts-utils",
+        },
+        Object {
+          "dependencyType": "dependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/scripts-prettier",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/react-conformance",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/scripts-jest",
+        },
+        Object {
+          "dependencyType": "devDependencies",
+          "isTopLevel": false,
+          "name": "@fluentui/react-conformance-griffel",
+        },
+      ]
+    `);
   });
 
   it(`should provide similar api like 'new Project(root).getPackages()'`, async () => {

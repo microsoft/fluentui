@@ -3,9 +3,15 @@
 // This errors in strict ts check mode.
 
 /// <reference path="../../../typings/lerna/index.d.ts" />
-export declare function getDependencies(packageName: string | string[]): Promise<{
-  dependencies: string[];
-  devDependencies: string[];
-  all: string[];
+export declare function getDependencies(packageName: string): Promise<{
+  dependencies: Dependency[];
+  devDependencies: Dependency[];
+  all: Dependency[];
   projectGraph: import('lerna/utils').ProjectGraphWithPackages;
 }>;
+
+type Dependency = {
+  name: string;
+  isTopLevel: boolean;
+  dependencyType: import('lerna/utils').ProjectGraphWorkspacePackageDependency['dependencyCollection'];
+};

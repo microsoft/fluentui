@@ -19,9 +19,9 @@ async function copyNotices() {
 
   console.log(`NOTICE.txt exists in ${noticeFilePath}`);
 
-  const dependencyNames = (await monorepo.getDependencies('@fluentui/react-components')).dependencies;
-  const copyLocations = dependencyNames.map(dependencyName =>
-    path.resolve(monorepo.findGitRoot(), 'packages', dependencyName.replace('@fluentui/', ''), 'NOTICE.txt'),
+  const dependencies = (await monorepo.getDependencies('@fluentui/react-components')).dependencies;
+  const copyLocations = dependencies.map(dep =>
+    path.resolve(monorepo.findGitRoot(), 'packages', dep.name.replace('@fluentui/', ''), 'NOTICE.txt'),
   );
 
   console.log(`reading ${noticeFilePath}`);

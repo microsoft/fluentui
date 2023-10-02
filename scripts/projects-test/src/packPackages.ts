@@ -38,9 +38,13 @@ export async function packProjectPackages(
 
   logger(`✔️ Used lerna config: ${workspaceRoot}`);
 
-  const { dependencies: requiredPackages, projectGraph } = await getDependencies(rootPackages);
+  if (rootPackages.length > 1) {
+    throw new Error('illegal API, we support only 1 package from now one!');
+  }
 
-  logger(`✔️ Following packages will be packed:${requiredPackages.map(p => `\n${' '.repeat(30)}- ${p}`)}`);
+  const { dependencies: requiredPackages, projectGraph } = await getDependencies(rootPackages[0]);
+
+  logger(`✔️ Following packages will be packed:${requiredPackages.map(pkg => `\n${' '.repeat(30)}- ${pkg.name}`)}`);
 
   const tmpDirectory = createTempDir('project-packed-');
   logger(`✔️ Temporary directory for packed packages was created: ${tmpDirectory}`);
@@ -49,7 +53,8 @@ export async function packProjectPackages(
   await shEcho('npm --version', tmpDirectory);
 
   await Promise.all(
-    requiredPackages.map(async packageName => {
+    requiredPackages.map(async project => {
+      const packageName = project.name;
       const packageInfo = projectGraph.nodes[packageName].package;
       if (!packageInfo) {
         throw new Error(`Package ${packageName} doesn't exist`);
@@ -61,7 +66,7 @@ export async function packProjectPackages(
       if (!fs.existsSync(entryPointPath)) {
         throw new Error(
           `Package ${packageName} does not appear to have been built yet. Please ensure that root package(s) ` +
-            `${rootPackages.join(', ')} are listed in devDependencies of the package running the test.`,
+            `${rootPackages.join(', ')} are listed in dependencies of the package running the test.`,
         );
       }
 
