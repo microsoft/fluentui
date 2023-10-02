@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-migration-v0-v9
 
-This log was last generated on Tue, 26 Sep 2023 17:49:07 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2023 08:56:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.0.37)
+
+Mon, 02 Oct 2023 08:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v0-v9_v9.0.36..@fluentui/react-migration-v0-v9_v9.0.37)
+
+### Patches
+
+- Bump @fluentui/react-components to v9.33.0 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
 
 ## [9.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v0-v9_v9.0.36)
 

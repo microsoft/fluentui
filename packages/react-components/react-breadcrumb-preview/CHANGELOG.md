@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-breadcrumb-preview
 
-This log was last generated on Tue, 26 Sep 2023 17:49:03 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2023 08:56:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.1.0)
+
+Mon, 02 Oct 2023 08:56:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.0.5..@fluentui/react-breadcrumb-preview_v1.1.0)
+
+### Minor changes
+
+- fix: exported BreadcrumbProvider and useBreadcrumbContext ([PR #29315](https://github.com/microsoft/fluentui/pull/29315) by vkozlova@microsoft.com)
+- feat: add custom styling hooks for Breadcrumb component and its sub-components ([PR #29318](https://github.com/microsoft/fluentui/pull/29318) by vkozlova@microsoft.com)
+- Bump @fluentui/react-button to v9.3.44 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-link to v9.1.23 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-tabster to v9.13.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
 
 ## [1.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.0.5)
 
