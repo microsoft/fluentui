@@ -19,13 +19,15 @@ export const useMessageBarGroup_unstable = (
     React.Children.forEach(props.children, c => {
       if (!React.isValidElement(c) || c.type === React.Fragment) {
         throw new Error(
-          "MessageBarGroup: children must be valid React elements. Please ensure you're not using fragments. ",
+          "MessageBarGroup: children must be valid MessageBar components. Please ensure you're not using fragments. ",
         );
       }
     });
   }
 
-  const children = React.Children.map(props.children ?? [], c => (React.isValidElement(c) ? c : null));
+  const children = React.Children.map(props.children ?? [], c =>
+    React.isValidElement(c) && c.type !== React.Fragment ? c : null,
+  ).filter(Boolean);
 
   return {
     components: {
