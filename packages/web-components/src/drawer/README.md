@@ -74,6 +74,7 @@ The Fluent WC3 Drawer extends `FASTElement`
 | `position`         | `DrawerPosition \| undefined`       | `start`             | Sets the position of the drawer (left/right).                                     |
 | `size`             | `DrawerSize \| number \| undefined` | `DrawerSize.medium` | Sets the control size of the drawer.                                              |
 | `open-default`     | `boolean`                           | `false`             | Sets the drawer to be open by default.                                            |
+| `open`             | `boolean`                           | `false`             | Sets the drawer to be open.                                                       |
 | `aria-labelledby`  | `string \| undefined`               | `undefined`         | Sets the aria-labelledby attribute of the drawer.                                 |
 | `aria-describedby` | `string \| undefined`               | `undefined`         | Sets the aria-describedby attribute of the drawer.                                |
 | `aria-label`       | `string \| undefined`               | `undefined`         | Sets the aria-label attribute of the drawer.                                      |
@@ -156,6 +157,8 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 | Fluent UI React 9          | Fluent Web Components 3 |
 | -------------------------- | ----------------------- |
+| `<DrawerOverlay>`          | `type="overlay"`        |
+| `<DrawerInline>`           | `type="inline"`         |
 | `<DrawerHeaderTitle>`      | `slot="title"`          |
 | `<DrawerBody> `            | `default slot`          |
 | `<DrawerHeaderNavigation>` | `slot="navigation"`     |

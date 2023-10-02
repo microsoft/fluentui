@@ -193,7 +193,6 @@ const storyTemplate = html<DrawerStoryArgs>`
           type="${x => x.type}"
           ?inert-trap-focus="${x => x.inertTrapFocus}"
           ?separator="${x => x.separator}"
-          autofocus
         >
           <div slot="navigation">
             <fluent-button appearance="transparent" icon-only size="medium" aria-label="back">
