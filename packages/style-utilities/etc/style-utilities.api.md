@@ -42,7 +42,6 @@ import { ITheme } from '@fluentui/theme';
 import { keyframes } from '@fluentui/merge-styles';
 import { mergeStyles } from '@fluentui/merge-styles';
 import { mergeStyleSets } from '@fluentui/merge-styles';
-import { mergeStylesShadow } from '@fluentui/merge-styles';
 import { registerDefaultFontFaces } from '@fluentui/theme';
 import { Stylesheet } from '@fluentui/merge-styles';
 
@@ -261,8 +260,6 @@ export function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 export { mergeStyles }
 
 export { mergeStyleSets }
-
-export { mergeStylesShadow }
 
 // @public (undocumented)
 export const normalize: IRawStyle;

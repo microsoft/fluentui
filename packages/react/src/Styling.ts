@@ -59,7 +59,6 @@ export {
   loadTheme,
   mergeStyleSets,
   mergeStyles,
-  mergeStylesShadow,
   noWrap,
   normalize,
   registerIconAlias,

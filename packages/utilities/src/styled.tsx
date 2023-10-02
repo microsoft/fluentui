@@ -108,7 +108,7 @@ export function styled<
     const win = useWindow() ?? getWindow();
 
     const inShadow = useHasMergeStylesShadowRootContext();
-    const shadowConfig = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow });
+    const shadowConfig = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow, __isShadowConfig__: true });
     if (
       shadowConfig.current.stylesheetKey !== scope ||
       shadowConfig.current.inShadow !== inShadow ||
@@ -118,6 +118,7 @@ export function styled<
         stylesheetKey: scope,
         inShadow,
         window: win,
+        __isShadowConfig__: true,
       };
     }
 

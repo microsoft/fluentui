@@ -77,7 +77,12 @@ export const MergeStylesRootProvider_unstable: React.FC<MergeStylesRootProviderP
 
     let changed = false;
     const next = new Map<string, CSSStyleSheet>(stylesheets);
-    const sheet = Stylesheet.getInstance({ window: win, inShadow: false, stylesheetKey: GLOBAL_STYLESHEET_KEY });
+    const sheet = Stylesheet.getInstance({
+      window: win,
+      inShadow: false,
+      stylesheetKey: GLOBAL_STYLESHEET_KEY,
+      __isShadowConfig__: true,
+    });
     sheet.forEachAdoptedStyleSheet((adoptedSheet, key) => {
       next.set(key, adoptedSheet);
       changed = true;

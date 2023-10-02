@@ -7,7 +7,6 @@ export {
   keyframes,
   mergeStyleSets,
   mergeStyles,
-  mergeStylesShadow,
 } from '@fluentui/merge-styles';
 export type {
   IFontFace,
