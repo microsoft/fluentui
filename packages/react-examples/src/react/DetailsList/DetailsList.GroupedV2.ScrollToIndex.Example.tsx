@@ -265,7 +265,6 @@ export const DetailsListGroupedV2ScrollToIndexExample: React.FC = () => {
           onChange={onChangeText}
         />
       </div>
-      {/* <div className={containerClassName} data-is-scrollable> */}
 
       <DetailsList
         componentRef={root}

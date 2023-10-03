@@ -553,7 +553,7 @@ export type {
   IGroupedListV2,
   IGroupedListV2Props,
   IGroupedListV2State,
-  IITemGroupedItem,
+  IItemGroupedItem,
   IShowAllGroupedItem,
   IFooterGroupedItem,
   IHeaderGroupedItem,

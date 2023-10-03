@@ -23,7 +23,7 @@ import type {
 import type {
   IGroupedListV2,
   IGroupedListV2Props,
-  IITemGroupedItem,
+  IItemGroupedItem,
   IShowAllGroupedItem,
   IFooterGroupedItem,
   IHeaderGroupedItem,
@@ -328,7 +328,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
             typeof measureItem === 'function'
               ? (itemIndex: number): number => {
                   if (listView[itemIndex]?.type === 'item') {
-                    return measureItem((listView[itemIndex] as IITemGroupedItem).itemIndex);
+                    return measureItem((listView[itemIndex] as IItemGroupedItem).itemIndex);
                   }
 
                   return 0;

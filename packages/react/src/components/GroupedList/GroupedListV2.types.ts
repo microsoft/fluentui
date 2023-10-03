@@ -37,7 +37,7 @@ export interface IGroupedListV2 {
 /**
  * An item rendered in a GroupedList.
  */
-export type IITemGroupedItem = {
+export type IItemGroupedItem = {
   type: 'item';
   group: IGroup;
   item: any;
@@ -73,4 +73,4 @@ export type IHeaderGroupedItem = {
 /**
  * Union of GroupedList item types.
  */
-export type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
+export type IGroupedItem = IItemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
