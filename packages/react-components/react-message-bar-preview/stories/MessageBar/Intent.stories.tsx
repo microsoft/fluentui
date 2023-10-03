@@ -16,7 +16,7 @@ export const Intent = () => (
     {intents.map(intent => (
       <MessageBar key={intent} intent={intent}>
         <MessageBarBody>
-          <MessageBarTitle>Descriptive title</MessageBarTitle>
+          <MessageBarTitle>{intent}</MessageBarTitle>
           Message providing information to the user with actionable insights. <Link>Link</Link>
         </MessageBarBody>
         <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}>
