@@ -23,7 +23,7 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 ### **Basic Implemenation**
 
 ```html
-<fluent-drawer>
+<fluent-dialog>
   <!-- Header -->
   <fluent-text slot="title">Dialog</fluent-text>
   <fluent-button slot="close"><svg></svg></fluent-button>
@@ -32,7 +32,7 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
   <!-- Footer/Actions -->
   <fluent-button slot="actions">Do Something</fluent-button>
-</fluent-drawer>
+</fluent-dialog>
 ```
 
 ### **Attributes**
