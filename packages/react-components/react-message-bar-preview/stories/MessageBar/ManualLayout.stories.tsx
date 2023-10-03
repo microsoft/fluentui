@@ -30,3 +30,14 @@ export const ManualLayout = () => {
     </>
   );
 };
+
+ManualLayout.parameters = {
+  docs: {
+    description: {
+      story: [
+        "It's possible to opt out of automatic reflow with the `layout` prop. This can be useful if an application",
+        'has an existing responsive design mechanism.',
+      ].join('\n'),
+    },
+  },
+};

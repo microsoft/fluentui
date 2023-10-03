@@ -6,7 +6,7 @@ export {
   messageBarClassNames,
 } from './MessageBar';
 
-export type { MessageBarProps, MessageBarSlots, MessageBarState } from './MessageBar';
+export type { MessageBarProps, MessageBarSlots, MessageBarState, MessageBarIntent } from './MessageBar';
 
 export {
   MessageBarTitle,
