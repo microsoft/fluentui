@@ -95,12 +95,12 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
 
   ...createCustomFocusIndicatorStyle({
-    borderColor: tokens.colorTransparentStroke,
+    borderColor: tokens.colorStrokeFocus2,
     borderRadius: tokens.borderRadiusMedium,
+    borderWidth: '1px',
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
+    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
+      inset
     `,
     zIndex: 1,
   }),
@@ -445,8 +445,12 @@ const useRootFocusStyles = makeStyles({
 
   // Primary styles
   primary: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
-    boxShadow: `${tokens.shadow2}, 0 0 0 2px ${tokens.colorStrokeFocus2}`,
+    ...shorthands.borderColor(tokens.colorStrokeFocus2),
+    boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
+    ':hover': {
+      boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+      ...shorthands.borderColor(tokens.colorStrokeFocus2),
+    },
   }),
 
   // Size variations
