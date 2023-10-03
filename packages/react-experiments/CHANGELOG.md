@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-experiments
 
-This log was last generated on Mon, 02 Oct 2023 07:36:47 GMT and should not be manually modified.
+This log was last generated on Tue, 03 Oct 2023 07:46:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.14.110](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.110)
+
+Tue, 03 Oct 2023 07:46:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-experiments_v8.14.109..@fluentui/react-experiments_v8.14.110)
+
+### Patches
+
+- fix(Pagination) Add tooltips to pagination buttons. ([PR #29155](https://github.com/microsoft/fluentui/pull/29155) by amreladawy@mirosoft.com)
+- fix(Pagination): Add radio role for the pagination buttons and radiogroup role for the parent div ([PR #29349](https://github.com/microsoft/fluentui/pull/29349) by amreladawy@mirosoft.com)
 
 ## [8.14.109](https://github.com/microsoft/fluentui/tree/@fluentui/react-experiments_v8.14.109)
 

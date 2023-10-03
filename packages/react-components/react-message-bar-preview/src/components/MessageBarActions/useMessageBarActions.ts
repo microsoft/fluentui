@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { MessageBarActionsProps, MessageBarActionsState } from './MessageBarActions.types';
 import { useMessageBarContext } from '../../contexts/messageBarContext';
 
@@ -16,7 +16,7 @@ export const useMessageBarActions_unstable = (
   props: MessageBarActionsProps,
   ref: React.Ref<HTMLElement>,
 ): MessageBarActionsState => {
-  const { layout = 'singleline' } = useMessageBarContext();
+  const { layout = 'singleline', actionsRef } = useMessageBarContext();
   return {
     components: {
       root: 'div',
@@ -25,7 +25,7 @@ export const useMessageBarActions_unstable = (
     containerAction: slot.optional(props.containerAction, { renderByDefault: false, elementType: 'div' }),
     root: slot.always(
       getNativeElementProps('div', {
-        ref,
+        ref: useMergedRefs(ref, actionsRef),
         ...props,
       }),
       { elementType: 'div' },

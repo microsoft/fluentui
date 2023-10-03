@@ -67,6 +67,7 @@
     "@fluentui/react-table": "^9.10.0",
     "@fluentui/react-tabs": "^9.3.46",
     "@fluentui/react-tabster": "^9.13.2",
+    "@fluentui/react-tags": "9.0.0-alpha.0",
     "@fluentui/react-textarea": "^9.3.42",
     "@fluentui/react-theme": "^9.1.14",
     "@fluentui/react-toast": "^9.3.6",

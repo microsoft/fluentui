@@ -230,7 +230,7 @@ packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags-preview @microsoft/cxe-red @microsoft/teams-prg
+packages/react-components/react-tags @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @geoffcoxmsft
