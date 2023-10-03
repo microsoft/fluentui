@@ -10,6 +10,11 @@ import * as React_2 from 'react';
 export function getDefaultMotionState<Element extends HTMLElement>(): MotionState<Element>;
 
 // @public (undocumented)
+export type MotionClassNames = {
+    [key in MotionStylesKeys]?: string;
+};
+
+// @public (undocumented)
 export type MotionOptions = {
     animateOnFirstMount?: boolean;
 };
@@ -31,8 +36,14 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
 // @public (undocumented)
 export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 
+// @internal
+export function useIsMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>): shorthand is MotionState<Element>;
+
 // @public
 export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: MotionOptions): MotionState<Element>;
+
+// @public (undocumented)
+export const useMotionClassNames: (motion: MotionState, motionStyles: MotionClassNames) => string;
 
 // (No @packageDocumentation comment for this package)
 

@@ -89,6 +89,7 @@ function useMotionPresence<Element extends HTMLElement>(
   const [active, setActive] = React.useState<boolean>(!animateOnFirstMount && presence);
 
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setTickTimeout, clearTickTimeout] = useTimeout();
   const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
@@ -107,10 +108,22 @@ function useMotionPresence<Element extends HTMLElement>(
     setCurrentElement(node);
   }, []);
 
+  const nextTick = React.useCallback(
+    (cb: () => void) => {
+      setTickTimeout(() => setAnimationFrame(cb), 0);
+
+      return () => {
+        clearTickTimeout();
+        cancelAnimationFrame();
+      };
+    },
+    [cancelAnimationFrame, clearTickTimeout, setAnimationFrame, setTickTimeout],
+  );
+
   const onFinished = React.useCallback(() => {
     setType(presence ? 'entered' : 'exited');
-    setAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
-  }, [presence, setAnimationFrame]);
+    nextTick(() => setType(presence ? 'idle' : 'unmounted'));
+  }, [nextTick, presence]);
 
   React.useEffect(() => {
     if (isFirstReactRender) {
@@ -138,13 +151,13 @@ function useMotionPresence<Element extends HTMLElement>(
     /*
      * Wait for the next frame to ensure the element is rendered and the animation can start.
      */
-    setAnimationFrame(() => {
+    nextTick(() => {
       setActive(presence);
 
       /*
        * Wait for the next frame to ensure the animation has started.
        */
-      setAnimationFrame(() => {
+      nextTick(() => {
         const duration = getMotionDuration(currentElement);
 
         if (duration === 0) {
@@ -161,13 +174,10 @@ function useMotionPresence<Element extends HTMLElement>(
       });
     });
 
-    return () => {
-      cancelAnimationFrame();
-      clearAnimationTimeout();
-    };
+    return () => clearAnimationTimeout();
     /*
      * Only tracks dependencies that are either not stable or are used in the callbacks
-     * This is to avoid re-running the effect on every render, especially when the element is not rendered
+     * This is to avoid re-running the effect on every render, especially when the DOM element is not rendered
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentElement, disableAnimation, onFinished, presence]);
@@ -209,10 +219,10 @@ export function useMotion<Element extends HTMLElement>(
 ): MotionState<Element> {
   /**
    * Heads up!
-   * This hook returns a Motion but also accepts Motion as an argument.
-   * In case the hook is called with a Motion as argument, we don't need to perform the expensive computation of the
-   * motion state and can just return the motion value as is. This is intentional as it allows others to use the hook
-   * on their side without having to worry about the performance impact of the hook.
+   * This hook returns a `MotionState` but also accepts `MotionState` as an argument.
+   * In case the hook is called with a `MotionState` as argument, we don't need to perform the expensive computation of
+   * the motion state and can just return the motion value as is. This is intentional as it allows others to use the
+   * hook on their side without having to worry about the performance impact of the hook.
    */
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
