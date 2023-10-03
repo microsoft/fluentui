@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Pagination) Add tooltips to pagination buttons.",
+  "packageName": "@fluentui/react-experiments",
+  "email": "amreladawy@mirosoft.com",
+  "dependentChangeType": "patch"
+}

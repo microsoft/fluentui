@@ -118,37 +118,43 @@ export class PaginationBase extends React.Component<IPaginationProps> {
     return (
       <div className={this._classNames.root}>
         <div role="radiogroup">
-          <IconButton
-            iconProps={this.props.firstPageIconProps}
-            onClick={this._handleFirstPage}
-            disabled={!canFirst}
-            aria-label={firstPageAriaLabel}
-            styles={{
-              icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled,
-            }}
-          />
-          <IconButton
-            iconProps={this.props.previousPageIconProps}
-            onClick={this._handlePreviousPage}
-            disabled={!canPrevious}
-            aria-label={previousPageAriaLabel}
-            styles={{
-              icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled,
-            }}
-          />
+          <TooltipHost content={firstPageAriaLabel} directionalHint={DirectionalHint.bottomCenter}>
+            <IconButton
+              iconProps={this.props.firstPageIconProps}
+              onClick={this._handleFirstPage}
+              disabled={!canFirst}
+              aria-label={firstPageAriaLabel}
+              styles={{
+                icon: this._classNames.previousNextPage,
+                rootDisabled: this._classNames.previousNextPageDisabled,
+              }}
+            />
+          </TooltipHost>
+          <TooltipHost content={previousPageAriaLabel} directionalHint={DirectionalHint.bottomCenter}>
+            <IconButton
+              iconProps={this.props.previousPageIconProps}
+              onClick={this._handlePreviousPage}
+              disabled={!canPrevious}
+              aria-label={previousPageAriaLabel}
+              styles={{
+                icon: this._classNames.previousNextPage,
+                rootDisabled: this._classNames.previousNextPageDisabled,
+              }}
+            />
+          </TooltipHost>
           {this._pageList()}
-          <IconButton
-            iconProps={this.props.nextPageIconProps}
-            onClick={this._handleNextPage}
-            disabled={!canNext}
-            aria-label={nextPageAriaLabel}
-            styles={{
-              icon: this._classNames.previousNextPage,
-              rootDisabled: this._classNames.previousNextPageDisabled,
-            }}
-          />
+          <TooltipHost content={nextPageAriaLabel} directionalHint={DirectionalHint.bottomCenter}>
+            <IconButton
+              iconProps={this.props.nextPageIconProps}
+              onClick={this._handleNextPage}
+              disabled={!canNext}
+              aria-label={nextPageAriaLabel}
+              styles={{
+                icon: this._classNames.previousNextPage,
+                rootDisabled: this._classNames.previousNextPageDisabled,
+              }}
+            />
+          </TooltipHost>
           <TooltipHost
             content={`${pageAriaLabel ? pageAriaLabel + ' ' : ''}${pageCount}`}
             directionalHint={DirectionalHint.bottomCenter}
