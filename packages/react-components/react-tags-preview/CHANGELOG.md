@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-tags-preview
 
-This log was last generated on Tue, 26 Sep 2023 17:49:13 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2023 08:56:05 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.4.0)
+
+Mon, 02 Oct 2023 08:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tags-preview_v0.3.1..@fluentui/react-tags-preview_v0.4.0)
+
+### Minor changes
+
+- chore: properly type ref in state hook ([PR #29316](https://github.com/microsoft/fluentui/pull/29316) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-avatar to v9.5.35 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-tabster to v9.13.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-tags-preview_v0.3.1)
 
