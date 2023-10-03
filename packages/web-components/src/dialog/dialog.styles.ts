@@ -51,8 +51,8 @@ export const styles = css`
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     z-index: 2;
     margin: auto auto;
-    width: 100%;
-    max-width: 600px;
+    max-width: 100%;
+    width: 100vw;
     border-radius: ${borderRadiusXLarge};
     box-shadow: ${shadow64};
     max-height: 100vh;
@@ -109,33 +109,37 @@ export const styles = css`
 
   .footer {
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    height: fit-content;
-    column-gap: ${spacingHorizontalS};
-    box-sizing: border-box;
-    row-gap: ${spacingHorizontalS};
-    column-gap: ${spacingVerticalS};
+    grid-column-start: 1;
+    flex-direction: column;
+    max-width: 100vw;
+    padding-top: ${spacingVerticalXXL};
+    justify-self: stretch;
+    width: 100%;
+    row-gap: ${spacingVerticalS};
   }
 
-  @media screen and (max-width: 480px) {
-    .control {
-      max-width: 100%;
-      width: 100vw;
-    }
+  ::slotted([slot='actions']) {
+    width: 100%;
+  }
 
+  @media screen and (min-width: 480px) {
+    ::slotted([slot='actions']) {
+      width: fit-content;
+    }
+    .control {
+      max-width: 600px;
+      width: 100%;
+    }
     .footer {
       display: flex;
-      grid-column-start: 1;
-      flex-direction: column;
-      max-width: 100vw;
-      padding-top: ${spacingVerticalXXL};
-      justify-self: stretch;
-      width: 100%;
-    }
-    ::slotted([slot='footer']) {
-      width: 100%;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+      height: fit-content;
+      column-gap: ${spacingHorizontalS};
+      box-sizing: border-box;
+      row-gap: ${spacingHorizontalS};
+      column-gap: ${spacingVerticalS};
     }
   }
 `;
