@@ -23,7 +23,6 @@ const useRootBaseStyles = makeResetStyles({
   minHeight: '32px',
   boxSizing: 'border-box',
   ...shorthands.gridArea('layout'),
-  ...shorthands.borderRadius(tokens.borderRadiusMedium),
   ':active': {
     color: tokens.colorNeutralForeground2Pressed,
     backgroundColor: tokens.colorSubtleBackgroundPressed,

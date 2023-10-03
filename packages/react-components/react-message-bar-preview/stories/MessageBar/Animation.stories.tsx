@@ -8,10 +8,12 @@ import {
   MessageBarBody,
   MessageBarGroup,
   MessageBarGroupProps,
+  MessageBarIntent,
 } from '@fluentui/react-message-bar-preview';
 
 const useStyles = makeStyles({
   container: {
+    ...shorthands.padding(tokens.spacingHorizontalMNudge),
     display: 'flex',
     flexDirection: 'column',
     marginTop: '10px',
@@ -22,17 +24,17 @@ const useStyles = makeStyles({
   },
 });
 
-const intents = ['info', 'warning', 'error', 'success'] as const;
+const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
 interface Entry {
-  intent: (typeof intents)[number];
+  intent: MessageBarIntent;
   id: number;
 }
 
 export const Animation = () => {
   const styles = useStyles();
   const counterRef = React.useRef(0);
-  const [animate, setAnimate] = React.useState<MessageBarGroupProps['animate']>('exit-only');
+  const [animate, setAnimate] = React.useState<MessageBarGroupProps['animate']>('both');
   const [messages, setMessages] = React.useState<Entry[]>([]);
   const prepend = () => {
     const intentPos = Math.floor(Math.random() * intents.length);
@@ -60,8 +62,8 @@ export const Animation = () => {
       <Button onClick={clear}>Clear</Button>
       <Field label="Select animation type">
         <RadioGroup value={animate} onChange={(_, { value }) => setAnimate(value as MessageBarGroupProps['animate'])}>
-          <Radio label="exit-only" value="exit-only" />
           <Radio label="both" value="both" />
+          <Radio label="exit-only" value="exit-only" />
         </RadioGroup>
       </Field>
       <MessageBarGroup animate={animate} className={styles.container}>
@@ -79,4 +81,16 @@ export const Animation = () => {
       </MessageBarGroup>
     </>
   );
+};
+
+Animation.parameters = {
+  docs: {
+    description: {
+      story: [
+        'Enter animations are also handled within the `MessageBarGroup`. However avoid entry animations for MessageBar',
+        'components on page load. However, MessageBar components that are mounted during the lifecycle of an',
+        'app can use enter animations.',
+      ].join('\n'),
+    },
+  },
 };
