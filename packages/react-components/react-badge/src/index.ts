@@ -5,16 +5,27 @@ export {
   presenceBadgeClassNames,
   usePresenceBadgeStyles_unstable,
   usePresenceBadge_unstable,
+  /** @deprecated */
   presenceAwayRegular,
+  /** @deprecated */
   presenceAwayFilled,
+  /** @deprecated */
   presenceAvailableRegular,
+  /** @deprecated */
   presenceAvailableFilled,
+  /** @deprecated */
   presenceBlockedRegular,
+  /** @deprecated */
   presenceBusyFilled,
+  /** @deprecated */
   presenceDndRegular,
+  /** @deprecated */
   presenceDndFilled,
+  /** @deprecated */
   presenceOofRegular,
+  /** @deprecated */
   presenceOfflineRegular,
+  /** @deprecated */
   presenceUnknownRegular,
 } from './PresenceBadge';
 export type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge';
