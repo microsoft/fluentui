@@ -8,6 +8,10 @@ import { ILegendsProps } from '../Legends/index';
 export interface IStackedBarChart {}
 import { IChartProps, IChartDataPoint } from './index';
 
+/**
+ * IStackedBarChartProps for StackedBarchart component.
+ * {@docCategory StackedBarChart}
+ */
 export interface IStackedBarChartProps {
   /**
    * Data to render in the chart.

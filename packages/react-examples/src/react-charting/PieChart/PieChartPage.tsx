@@ -5,6 +5,7 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   PropertiesTableSet,
+  Markdown,
 } from '@fluentui/react-docsite-components';
 
 import { PieChartBasicExample } from './PieChart.Basic.Example';
@@ -37,6 +38,16 @@ export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
               require<string>('!raw-loader?esModule=false!@fluentui/react-charting/src/components/PieChart/PieChart.types.ts'),
             ]}
           />
+        }
+        overview={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/PieChart/docs/PieChartOverview.md')}
+          </Markdown>
+        }
+        bestPractices={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/PieChart/docs/PieChartBestPractices.md')}
+          </Markdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />

@@ -10,7 +10,7 @@ export class StackedBarChartCustomAccessibilityExample extends React.Component<{
         data: 3000000,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '99%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1 of 1 2020/04/30 40%' },
       },
       { legend: 'second', data: 1, color: DefaultPalette.green },

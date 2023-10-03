@@ -16,6 +16,11 @@ import {
 } from '../CommonComponents/index';
 
 export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
+
+/**
+ * ILineChartProps properties for line chart.
+ * {@docCategory LineChart}
+ */
 export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.

@@ -11,7 +11,7 @@ export class SankeyChartInboxExample extends React.Component<{}, ISankeyChartBas
   constructor(props: ISankeyChartProps) {
     super(props);
     this.state = {
-      width: 912,
+      width: 820,
       height: 400,
     };
   }

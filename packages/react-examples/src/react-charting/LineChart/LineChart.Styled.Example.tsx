@@ -6,8 +6,8 @@ import {
   LineChart,
   ChartHoverCard,
   ICustomizedCalloutData,
+  DataVizPalette,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface IStyledLineChartExampleState {
   width: number;
@@ -49,7 +49,7 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
         lineOptions: {
           lineBorderWidth: '4',
         },
-        color: DefaultPalette.blue,
+        color: DataVizPalette.color10,
       },
     ];
 
