@@ -89,9 +89,12 @@ export type MessageBarGroupState = ComponentState<MessageBarGroupSlots> & Pick<M
     children: React_2.ReactElement[];
 };
 
+// @public (undocumented)
+export type MessageBarIntent = 'info' | 'success' | 'warning' | 'error';
+
 // @public
 export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<Partial<MessageBarContextValue>, 'layout'> & {
-    intent?: 'info' | 'success' | 'warning' | 'error';
+    intent?: MessageBarIntent;
     politeness?: 'assertive' | 'polite';
 };
 

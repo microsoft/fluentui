@@ -7,10 +7,12 @@ import {
   MessageBarTitle,
   MessageBarBody,
   MessageBarGroup,
+  MessageBarIntent,
 } from '@fluentui/react-message-bar-preview';
 
 const useStyles = makeStyles({
   container: {
+    ...shorthands.padding(tokens.spacingHorizontalMNudge),
     display: 'flex',
     flexDirection: 'column',
     marginTop: '10px',
@@ -21,10 +23,10 @@ const useStyles = makeStyles({
   },
 });
 
-const intents = ['info', 'warning', 'error', 'success'] as const;
+const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
 interface Entry {
-  intent: (typeof intents)[number];
+  intent: MessageBarIntent;
   id: number;
 }
 
@@ -71,4 +73,16 @@ export const Dismiss = () => {
       </MessageBarGroup>
     </>
   );
+};
+
+Dismiss.parameters = {
+  docs: {
+    description: {
+      story: [
+        'MessageBar components should be used in a `MessageBarGroup` when possible to enable exit animations.',
+        'Once inside a `MessageBarGroup` component, the default exit animation will trigger automatically when the',
+        'component is unmounted from DOM.',
+      ].join('\n'),
+    },
+  },
 };
