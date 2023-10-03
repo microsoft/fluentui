@@ -72,7 +72,11 @@ function renderLink(el: Item, isLastItem: boolean = false) {
       </React.Fragment>
     );
   } else {
-    return <BreadcrumbItem current={true} key={el.key}>{el.item}</BreadcrumbItem>;
+    return (
+      <BreadcrumbItem current={true} key={el.key}>
+        {el.item}
+      </BreadcrumbItem>
+    );
   }
 }
 export const BreadcrumbButtonWithHrefAttribute = () => {
