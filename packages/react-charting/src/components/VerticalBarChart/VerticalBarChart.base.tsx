@@ -601,11 +601,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const barHeight: number = Math.max(yBarScale(point.y), 0);
-      if (barHeight < 1) {
+      let adjustedBarHeight = 0;
+      if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
+      } else {
+        adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x);
-      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}>
           <rect
@@ -613,7 +618,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
-            height={barHeight}
+            height={adjustedBarHeight}
             aria-label={this._getAriaLabel(point)}
             role="img"
             ref={(e: SVGRectElement) => {
