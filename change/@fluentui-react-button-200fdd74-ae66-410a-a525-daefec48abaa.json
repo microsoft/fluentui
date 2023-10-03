@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fix: Button focus borders were extending past bounding box causing overlap, focus border is now inset",
+  "packageName": "@fluentui/react-button",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}
