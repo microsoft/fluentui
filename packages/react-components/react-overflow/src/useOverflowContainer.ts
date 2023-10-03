@@ -36,6 +36,8 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     canUseDOM() ? createOverflowManager() : null,
   );
 
+  const [bindings, setBindings] = React.useState(() => createReactBindings(overflowManager));
+
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
       return;
@@ -51,6 +53,8 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
         onUpdateOverflow: updateOverflowItems ?? (() => undefined),
       });
 
+      setBindings(createReactBindings(overflowManager));
+
       return () => {
         overflowManager.disconnect();
       };
@@ -65,57 +69,9 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     onUpdateItemVisibility,
   ]);
 
-  const registerItem = React.useCallback(
-    (item: OverflowItemEntry) => {
-      overflowManager?.addItem(item);
-      item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
-
-      return () => {
-        item.element.removeAttribute(DATA_OVERFLOWING);
-        item.element.removeAttribute(DATA_OVERFLOW_ITEM);
-        overflowManager?.removeItem(item.id);
-      };
-    },
-    [overflowManager],
-  );
-
-  const registerDivider = React.useCallback(
-    (divider: OverflowDividerEntry) => {
-      const el = divider.element;
-      overflowManager?.addDivider(divider);
-      el && el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
-
-      return () => {
-        divider.groupId && overflowManager?.removeDivider(divider.groupId);
-        el.removeAttribute(DATA_OVERFLOW_DIVIDER);
-      };
-    },
-    [overflowManager],
-  );
-
-  const updateOverflow = React.useCallback(() => {
-    overflowManager?.update();
-  }, [overflowManager]);
-
-  const registerOverflowMenu = React.useCallback(
-    (el: HTMLElement) => {
-      overflowManager?.addOverflowMenu(el);
-      el.setAttribute(DATA_OVERFLOW_MENU, '');
-
-      return () => {
-        overflowManager?.removeOverflowMenu();
-        el.removeAttribute(DATA_OVERFLOW_MENU);
-      };
-    },
-    [overflowManager],
-  );
-
   return {
+    ...bindings,
     containerRef,
-    registerItem,
-    updateOverflow,
-    registerOverflowMenu,
-    registerDivider,
   };
 };
 
@@ -126,3 +82,41 @@ export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visibl
     item.element.setAttribute(DATA_OVERFLOWING, '');
   }
 };
+
+const createReactBindings = (overflowManager: OverflowManager | null) => ({
+  registerItem: (item: OverflowItemEntry) => {
+    overflowManager?.addItem(item);
+    item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
+
+    return () => {
+      item.element.removeAttribute(DATA_OVERFLOWING);
+      item.element.removeAttribute(DATA_OVERFLOW_ITEM);
+      overflowManager?.removeItem(item.id);
+    };
+  },
+
+  registerDivider: (divider: OverflowDividerEntry) => {
+    const el = divider.element;
+    overflowManager?.addDivider(divider);
+    el && el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
+
+    return () => {
+      divider.groupId && overflowManager?.removeDivider(divider.groupId);
+      el.removeAttribute(DATA_OVERFLOW_DIVIDER);
+    };
+  },
+
+  registerOverflowMenu: (el: HTMLElement) => {
+    overflowManager?.addOverflowMenu(el);
+    el.setAttribute(DATA_OVERFLOW_MENU, '');
+
+    return () => {
+      overflowManager?.removeOverflowMenu();
+      el.removeAttribute(DATA_OVERFLOW_MENU);
+    };
+  },
+
+  updateOverflow: () => {
+    overflowManager?.update();
+  },
+});
