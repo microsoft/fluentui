@@ -67,7 +67,8 @@ export const styles = css`
     vertical-align: middle;
     min-width: 96px;
     min-height: 32px;
-    width: auto;
+    width: any;
+    height: any;
   }
 
   :host .control {
@@ -94,6 +95,7 @@ export const styles = css`
     min-width: inherit;
     min-height: inherit;
     width: inherit;
+    height: inherit;
   }
 
   .content {
