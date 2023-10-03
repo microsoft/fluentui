@@ -4,11 +4,7 @@ import descriptionMd from './MessageBarDescription.md';
 import bestPracticesMd from './MessageBarBestPractices.md';
 
 export { Default } from './Default.stories';
-export { Intent } from './Intent.stories';
-export { Dismiss } from './Dismiss.stories';
-export { Animation } from './Animation.stories';
-export { Reflow } from './Reflow.stories';
-export { ManualLayout } from './ManualLayout.stories';
+export { A11yTest } from './A11yTest.stories';
 
 export default {
   title: 'Preview Components/MessageBar',
