@@ -42,6 +42,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     root: slot.always(
       getNativeElementProps('div', {
         ref: useMergedRefs(ref, reflowRef, nodeRef),
+        role: 'group',
         ...props,
       }),
       { elementType: 'div' },
