@@ -142,18 +142,18 @@ export const styles = css`
     margin-inline-start: var(--icon-spacing);
   }
 
-  :host([icon-only]) .control {
+  :host([icon-only]) {
     min-width: 32px;
     max-width: 32px;
   }
 
   :host([size='small']) {
     --icon-spacing: ${spacingHorizontalXS};
+    min-height: 24px;
+    min-width: 64px;
   }
 
   :host([size='small']) .control {
-    min-height: 24px;
-    min-width: 64px;
     padding: 0 ${spacingHorizontalS};
     border-radius: ${borderRadiusSmall};
     font-size: ${fontSizeBase200};
@@ -161,20 +161,23 @@ export const styles = css`
     font-weight: ${fontWeightRegular};
   }
 
-  :host([size='small'][icon-only]) .control {
+  :host([size='small'][icon-only]) {
     min-width: 24px;
     max-width: 24px;
   }
 
-  :host([size='large']) .control {
+  :host([size='large']) {
     min-height: 40px;
+  }
+
+  :host([size='large']) .control {
     border-radius: ${borderRadiusLarge};
     padding: 0 ${spacingHorizontalL};
     font-size: ${fontSizeBase400};
     line-height: ${lineHeightBase400};
   }
 
-  :host([size='large'][icon-only]) .control {
+  :host([size='large'][icon-only]) {
     min-width: 40px;
     max-width: 40px;
   }
