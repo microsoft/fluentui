@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/web-components",
   "description": "A library of Fluent Web Components",
-  "version": "3.0.0-alpha.29",
+  "version": "3.0.0-beta.2",
   "author": {
     "name": "Microsoft",
     "url": "https://discord.gg/FcSNfg4"
@@ -23,113 +23,117 @@
       "types": "./dist/dts/index.d.ts",
       "default": "./dist/esm/index.js"
     },
-    "./accordion": {
-      "types": "./dist/esm/accordion/define.d.ts",
+    "./accordion.js": {
+      "types": "./dist/dts/accordion/define.d.ts",
       "default": "./dist/esm/accordion/define.js"
     },
-    "./accordion-item": {
-      "types": "./dist/esm/accordion-item/define.d.ts",
+    "./accordion-item.js": {
+      "types": "./dist/dts/accordion-item/define.d.ts",
       "default": "./dist/esm/accordion-item/define.js"
     },
-    "./anchor-button": {
-      "types": "./dist/esm/anchor-button/define.d.ts",
+    "./anchor-button.js": {
+      "types": "./dist/dts/anchor-button/define.d.ts",
       "default": "./dist/esm/anchor-button/define.js"
     },
-    "./avatar": {
-      "types": "./dist/esm/avatar/define.d.ts",
+    "./avatar.js": {
+      "types": "./dist/dts/avatar/define.d.ts",
       "default": "./dist/esm/avatar/define.js"
     },
-    "./badge": {
-      "types": "./dist/esm/badge/define.d.ts",
+    "./badge.js": {
+      "types": "./dist/dts/badge/define.d.ts",
       "default": "./dist/esm/badge/define.js"
     },
-    "./button": {
-      "types": "./dist/esm/button/define.d.ts",
+    "./button.js": {
+      "types": "./dist/dts/button/define.d.ts",
       "default": "./dist/esm/button/define.js"
     },
-    "./checkbox": {
-      "types": "./dist/esm/checkbox/define.d.ts",
+    "./checkbox.js": {
+      "types": "./dist/dts/checkbox/define.d.ts",
       "default": "./dist/esm/checkbox/define.js"
     },
-    "./compound-button": {
-      "types": "./dist/esm/compound-button/define.d.ts",
+    "./compound-button.js": {
+      "types": "./dist/dts/compound-button/define.d.ts",
       "default": "./dist/esm/compound-button/define.js"
     },
-    "./counter-badge": {
-      "types": "./dist/esm/counter-badge/define.d.ts",
+    "./counter-badge.js": {
+      "types": "./dist/dts/counter-badge/define.d.ts",
       "default": "./dist/esm/counter-badge/define.js"
     },
-    "./divider": {
-      "types": "./dist/esm/divider/define.d.ts",
+    "./divider.js": {
+      "types": "./dist/dts/divider/define.d.ts",
       "default": "./dist/esm/divider/define.js"
     },
-    "./image": {
-      "types": "./dist/esm/image/define.d.ts",
+    "./image.js": {
+      "types": "./dist/dts/image/define.d.ts",
       "default": "./dist/esm/image/define.js"
     },
-    "./label": {
-      "types": "./dist/esm/label/define.d.ts",
+    "./label.js": {
+      "types": "./dist/dts/label/define.d.ts",
       "default": "./dist/esm/label/define.js"
     },
-    "./menu-list": {
-      "types": "./dist/esm/menu-list/define.d.ts",
+    "./menu-list.js": {
+      "types": "./dist/dts/menu-list/define.d.ts",
       "default": "./dist/esm/menu-list/define.js"
     },
-    "./menu-button": {
-      "types": "./dist/esm/menu-button/define.d.ts",
+    "./menu-button.js": {
+      "types": "./dist/dts/menu-button/define.d.ts",
       "default": "./dist/esm/menu-button/define.js"
     },
-    "./menu-item": {
-      "types": "./dist/esm/menu-item/define.d.ts",
+    "./menu-item.js": {
+      "types": "./dist/dts/menu-item/define.d.ts",
       "default": "./dist/esm/menu-item/define.js"
     },
-    "./progress-bar": {
-      "types": "./dist/esm/progress-bar/define.d.ts",
+    "./progress-bar.js": {
+      "types": "./dist/dts/progress-bar/define.d.ts",
       "default": "./dist/esm/progress-bar/define.js"
     },
-    "./radio": {
-      "types": "./dist/esm/radio/define.d.ts",
+    "./radio.js": {
+      "types": "./dist/dts/radio/define.d.ts",
       "default": "./dist/esm/radio/define.js"
     },
-    "./radio-group": {
-      "types": "./dist/esm/radio-group/define.d.ts",
+    "./radio-group.js": {
+      "types": "./dist/dts/radio-group/define.d.ts",
       "default": "./dist/esm/radio-group/define.js"
     },
-    "./slider": {
-      "types": "./dist/esm/slider/define.d.ts",
+    "./slider.js": {
+      "types": "./dist/dts/slider/define.d.ts",
       "default": "./dist/esm/slider/define.js"
     },
-    "./spinner": {
-      "types": "./dist/esm/spinner/define.d.ts",
+    "./spinner.js": {
+      "types": "./dist/dts/spinner/define.d.ts",
       "default": "./dist/esm/spinner/define.js"
     },
-    "./switch": {
-      "types": "./dist/esm/switch/define.d.ts",
+    "./switch.js": {
+      "types": "./dist/dts/switch/define.d.ts",
       "default": "./dist/esm/switch/define.js"
     },
-    "./tab": {
-      "types": "./dist/esm/tab/define.d.ts",
+    "./tab.js": {
+      "types": "./dist/dts/tab/define.d.ts",
       "default": "./dist/esm/tab/define.js"
     },
-    "./tabs": {
-      "types": "./dist/esm/tabs/define.d.ts",
+    "./tabs.js": {
+      "types": "./dist/dts/tabs/define.d.ts",
       "default": "./dist/esm/tabs/define.js"
     },
-    "./tab-panel": {
-      "types": "./dist/esm/tab-panel/define.d.ts",
+    "./tab-panel.js": {
+      "types": "./dist/dts/tab-panel/define.d.ts",
       "default": "./dist/esm/tab-panel/define.js"
     },
-    "./text": {
-      "types": "./dist/esm/text/define.d.ts",
+    "./text.js": {
+      "types": "./dist/dts/text/define.d.ts",
       "default": "./dist/esm/text/define.js"
     },
-    "./text-input": {
-      "types": "./dist/esm/text-input/define.d.ts",
+    "./text-input.js": {
+      "types": "./dist/dts/text-input/define.d.ts",
       "default": "./dist/esm/text-input/define.js"
     },
-    "./toggle-button": {
-      "types": "./dist/esm/toggle-button/define.d.ts",
+    "./toggle-button.js": {
+      "types": "./dist/dts/toggle-button/define.d.ts",
       "default": "./dist/esm/toggle-button/define.js"
+    },
+    "./theme.js": {
+      "types": "./dist/dts/theme/index.d.ts",
+      "default": "./dist/esm/theme/index.js"
     }
   },
   "sideEffects": [
@@ -187,8 +191,8 @@
     "typescript": "4.7.4"
   },
   "dependencies": {
-    "@microsoft/fast-element": "2.0.0-beta.25",
-    "@microsoft/fast-foundation": "3.0.0-alpha.29",
+    "@microsoft/fast-element": "2.0.0-beta.26",
+    "@microsoft/fast-foundation": "3.0.0-alpha.31",
     "@microsoft/fast-web-utilities": "^6.0.0",
     "@fluentui/tokens": "1.0.0-alpha.2",
     "tslib": "^2.1.0"
@@ -199,6 +203,6 @@
       "minor",
       "patch"
     ],
-    "tag": "alpha"
+    "tag": "beta"
   }
 }

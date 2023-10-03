@@ -1,8 +1,44 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Tue, 15 Aug 2023 04:16:11 GMT and should not be manually modified.
+This log was last generated on Mon, 28 Aug 2023 04:19:02 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [3.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.2)
+
+Mon, 28 Aug 2023 04:19:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-beta.1..@fluentui/web-components_v3.0.0-beta.2)
+
+### Changes
+
+- Fixed pathing to types for package exports ([PR #28986](https://github.com/microsoft/fluentui/pull/28986) by mmansour@microsoft.com)
+
+## [3.0.0-beta.1](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-beta.1)
+
+Fri, 25 Aug 2023 04:19:39 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.31..@fluentui/web-components_v3.0.0-beta.1)
+
+### Changes
+
+- Bump version to beta ([PR #28976](https://github.com/microsoft/fluentui/pull/28976) by miroslav.stastny@microsoft.com)
+
+## [3.0.0-alpha.31](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.31)
+
+Wed, 23 Aug 2023 04:18:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.30..@fluentui/web-components_v3.0.0-alpha.31)
+
+### Changes
+
+- feat(web-components): add explicit named exports for design tokens and package export path for theme utils ([PR #28952](https://github.com/microsoft/fluentui/pull/28952) by chhol@microsoft.com)
+
+## [3.0.0-alpha.30](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.30)
+
+Tue, 22 Aug 2023 04:17:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v3.0.0-alpha.29..@fluentui/web-components_v3.0.0-alpha.30)
+
+### Changes
+
+- feat(web-components): update core component files to use foundation export paths and update package exports to include extensions ([PR #28912](https://github.com/microsoft/fluentui/pull/28912) by chhol@microsoft.com)
 
 ## [3.0.0-alpha.29](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v3.0.0-alpha.29)
 
