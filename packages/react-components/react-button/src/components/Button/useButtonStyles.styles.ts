@@ -332,7 +332,7 @@ const useRootDisabledStyles = makeStyles({
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
       },
-      [`&:disabled .${buttonClassNames.icon}`]: {
+      [`& .${buttonClassNames.icon}`]: {
         color: tokens.colorNeutralForegroundDisabled,
       },
     },
