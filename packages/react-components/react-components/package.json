@@ -76,6 +76,7 @@
     "@fluentui/react-utilities": "^9.13.5",
     "@fluentui/react-text": "^9.3.37",
     "@fluentui/react-virtualizer": "9.0.0-alpha.46",
+    "@fluentui/react-message-bar-preview": "0.0.0",
     "@fluentui/react-tree": "^9.4.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
