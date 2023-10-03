@@ -33,10 +33,7 @@ export const styles = css`
 
   .overlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: ${colorBackgroundOverlay};
     touch-action: none;
   }
@@ -45,10 +42,7 @@ export const styles = css`
     display: flex;
     justify-content: center;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
     z-index: var(--dialog-elevation, 9999);
   }
 
@@ -65,10 +59,7 @@ export const styles = css`
     height: fit-content;
     overflow: unset;
     position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    inset: 0;
   }
 
   .root {
@@ -98,7 +89,6 @@ export const styles = css`
     font-family: ${fontFamilyBase};
     color: ${colorNeutralForeground1};
     margin-bottom: ${spacingVerticalS};
-    height: fit-content;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;

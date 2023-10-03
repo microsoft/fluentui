@@ -10,7 +10,7 @@
 
 Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implementation but not direct parity.
 
-## Superclass: `FASTDialog`
+## Superclass: [FASTDialog](https://github.com/microsoft/fast/tree/master/packages/web-components/fast-foundation/src/dialog)
 
 ## Class: `Dialog`
 
@@ -20,42 +20,19 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
 `<fluent-dialog></fluent-dialog>`
 
-### **Template**
+### **Basic Implemenation**
 
-```ts
-export const template: ElementViewTemplate<Dialog> = html`
-  <div class="positioning-region" part="positioning-region">
-    ${when(
-      x => x.modal || x.alert,
-      html` <div class="overlay" part="overlay" role="presentation" @click="${x => x.dismiss()}"></div> `,
-    )}
-    <div
-      role="${x => (x.alert ? 'alertdialog' : 'dialog')}"
-      tabindex="-1"
-      class="control"
-      part="control"
-      aria-modal="${x => (x.modal ? x.modal : void 0)}"
-      aria-describedby="${x => x.ariaDescribedby}"
-      aria-labelledby="${x => x.ariaLabelledby}"
-      aria-label="${x => x.ariaLabel}"
-      ${ref('dialog')}
-    >
-      <div class="root" part="root">
-        <div class="header" part="header">
-          <slot name="title"></slot>
-          <slot name="close"></slot>
-        </div>
+```html
+<fluent-drawer>
+  <!-- Header -->
+  <fluent-text slot="title">Dialog</fluent-text>
+  <fluent-button slot="close"><svg></svg></fluent-button>
+  <!-- Default Content -->
+  <fluent-text>Content</fluent-text>
 
-        <div class="content" part="content">
-          <slot></slot>
-        </div>
-        <div class="footer" part="footer">
-          <slot name="actions"></slot>
-        </div>
-      </div>
-    </div>
-  </div>
-`;
+  <!-- Footer/Actions -->
+  <fluent-button slot="actions">Do Something</fluent-button>
+</fluent-drawer>
 ```
 
 ### **Attributes**
@@ -85,12 +62,12 @@ export const template: ElementViewTemplate<Dialog> = html`
 
 ### **Slots**
 
-| Name      | Description              |
-| --------- | ------------------------ |
-| `title`   | slot for title content   |
-| `close`   | slot for close button    |
-|           | default slot for content |
-| `actions` | slot for actions content |
+| Name      | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| `title`   | slot for title content                                     |
+| `close`   | slot for close button                                      |
+|           | default slot for content rendered between title and footer |
+| `actions` | slot for actions content                                   |
 
 ### **CSS Variables**
 
@@ -108,7 +85,7 @@ export const template: ElementViewTemplate<Dialog> = html`
 | ----------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `<Dialog>`        | `<fluent-dialog>`        | tag name                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
 | `<DialogTrigger>` | methods: `hide() show()` | In the React version of our components, a "DialogTrigger" component is utilized as part of a composite component of Dialog. The DialogTrigger component provides functionality for toggling the visibility of the Dialog component. <br /> In the Web Component version does not include a dialog trigger. Instead, it expects the user to directly access methods on the Dialog class or utilize CSS to control the visibility of the dialog component. |
-| `<DialogSurface>` | `.overlay`               | In the React version of our components, the DialogSurface component is used as part of the composite Dialog component to represent the dimmed background of the dialog. <br /> In the Web Component version utilizes an HTML element with a class of ".overlay" as part of the Dialog component to achieve the same effect of a dimmed background for the dialog.                                                                                        |
+| `<DialogSurface>` | `.overlay`               | In the React version of our components, the DialogSurface component is used as part of the composite Dialog component to represent the dimmed background of the dialog. <br /> The Web Component version utilizes an HTML element with a class of ".overlay" as part of the Dialog component to achieve the same effect of a dimmed background for the dialog.                                                                                           |
 | `<DialogTitle>`   | `slot: title`            | In the React version of our components, the <DialogTitle> component is used to implement the title of the dialog. <br /> In the Web Component version, the title is provided through the title slot.                                                                                                                                                                                                                                                     |
 | `<DialogActions>` | `slot: actions `         | In the React version of our components, the <DialogActions> component is used to implement the actions within the dialog. <br /> In the Web Component version, actions are passsed through the `actions` slot                                                                                                                                                                                                                                            |
 
