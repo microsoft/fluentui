@@ -2,6 +2,268 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 02 Oct 2023 07:36:46 GMT",
+      "tag": "@fluentui/react_v8.112.0",
+      "version": "8.112.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d3ea7d93b6d01f3355651d9635e3f0197dc208ea",
+            "comment": "Add contextualMenuItemAs and contextualMenuItemWrapperAs to ContextualMenuItem"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Sep 2023 07:45:30 GMT",
+      "tag": "@fluentui/react_v8.111.4",
+      "version": "8.111.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.45",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.25",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.32",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.30",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.18",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.36",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.19",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Sep 2023 07:37:17 GMT",
+      "tag": "@fluentui/react_v8.111.3",
+      "version": "8.111.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "daneuber@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f8efd29441bb2377380d77e682f01474296dd5d2",
+            "comment": "Update ensuresuggestionmodel to use passed object ariaLabel property for generated suggestionmodel aria label override"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "8630debc5da0c8bce0330578c69015704a49b7f8",
+            "comment": "fix: Treat false values separate from values that aren't valid elements in stack."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 31 Aug 2023 07:36:22 GMT",
+      "tag": "@fluentui/react_v8.111.2",
+      "version": "8.111.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "jspurlin@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "82204cf731a3cbe3382a612ce105b62f2f915f10",
+            "comment": "Keytip: Make keytip data align with which instance is visible (for duplicate registrations)"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 28 Aug 2023 07:36:25 GMT",
+      "tag": "@fluentui/react_v8.111.1",
+      "version": "8.111.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "chebbim106@gmail.com",
+            "package": "@fluentui/react",
+            "commit": "773de21a4cf2e064c491c86c6d1492c846e4fc7a",
+            "comment": "fix(AutoFill): Do not clear input when pressing left arrow after typing."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 25 Aug 2023 07:35:36 GMT",
+      "tag": "@fluentui/react_v8.111.0",
+      "version": "8.111.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "makopch@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "7f699be51bb04a28c418eaa927f10cad4fbb341f",
+            "comment": "Revert \"Keytips: Align keytipData with visible instance for dupes (#28522)\""
+          },
+          {
+            "author": "mingyuanyu@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0dfca34f7aabc1ee0c087a1dfcc4d55b6880c883",
+            "comment": "fix: Add displayName to dialog footer and content"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "846a45467d7e70f3960950b6eb42d3a1d3cef2e5",
+            "comment": "feat(Stack): Add deprecated flag to render null when receiving a falsy value."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 23 Aug 2023 07:36:23 GMT",
+      "tag": "@fluentui/react_v8.110.15",
+      "version": "8.110.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "0c71b67bb41fdc2de8c3c547e77646a4b2ab36e9",
+            "comment": "fix: Autofill looks up owner document for inputElement"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 18 Aug 2023 07:35:24 GMT",
+      "tag": "@fluentui/react_v8.110.14",
+      "version": "8.110.14",
+      "comments": {
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "67b93043888f980623a863c56655b061ad6bce91",
+            "comment": "docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN."
+          }
+        ],
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "669c13cc90c399d2e0e727be721f868c6c6e2932",
+            "comment": "chore: fix all lint warnings for @fluentui/react"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "63595d2d015cea78d78c2b6a8438a3eec12477ed",
+            "comment": "fix(DatePicker): readOnlyTextField styles should win over textfield's default styles."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "d73590f34a41a22776a0bc2c41391b589531e679",
+            "comment": "fix(DatePicker): Make year picker react to go to today."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.44",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.24",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.31",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.17",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.35",
+            "commit": "d7743e64df7a0b0bd607cf9df3667203eda49e34"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 11 Aug 2023 07:34:49 GMT",
+      "tag": "@fluentui/react_v8.110.13",
+      "version": "8.110.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "77950274f90b3b0921e8d24d6a29ec530099512d",
+            "comment": "Pass-through pointer events in Details Row focus rects"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 04 Aug 2023 07:35:28 GMT",
+      "tag": "@fluentui/react_v8.110.12",
+      "version": "8.110.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "behowell@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "1d1aa7cc05cf1bee98e2dbebdd9a5040544379f1",
+            "comment": "fix(TimePicker): Selection now works in locales that don't use \"am\"/\"pm\" in their time format"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 25 Jul 2023 07:44:53 GMT",
       "tag": "@fluentui/react_v8.110.11",
       "version": "8.110.11",

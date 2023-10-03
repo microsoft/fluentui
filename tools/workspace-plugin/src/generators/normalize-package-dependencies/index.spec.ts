@@ -10,7 +10,7 @@ import {
   readProjectConfiguration,
   updateJson,
 } from '@nx/devkit';
-import * as chalk from 'chalk';
+import chalk from 'chalk';
 
 import generator from './index';
 import { PackageJson } from '../../types';

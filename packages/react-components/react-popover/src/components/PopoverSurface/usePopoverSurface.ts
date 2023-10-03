@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { usePopoverContext_unstable } from '../../popoverContext';
 import type { PopoverSurfaceProps, PopoverSurfaceState } from './PopoverSurface.types';
@@ -44,13 +44,16 @@ export const usePopoverSurface_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, contentRef),
-      role: trapFocus ? 'dialog' : 'group',
-      'aria-modal': trapFocus ? true : undefined,
-      ...modalAttributes,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref: useMergedRefs(ref, contentRef),
+        role: trapFocus ? 'dialog' : 'group',
+        'aria-modal': trapFocus ? true : undefined,
+        ...modalAttributes,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 
   const {

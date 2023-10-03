@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { SLOT_ELEMENT_TYPE_SYMBOL, SLOT_RENDER_FUNCTION_SYMBOL } from './constants';
 
 export type SlotRenderFunction<Props> = (
   Component: React.ElementType<Props>,
@@ -214,13 +215,20 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 type ObscureEventName = 'onLostPointerCaptureCapture';
 
 /**
- * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ * Infers the element type from props that are declared using ComponentProps.
  */
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
+export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
   ? Required<Props>[ObscureEventName] extends React.PointerEventHandler<infer Element>
-    ? React.ForwardRefExoticComponent<Props & React.RefAttributes<Element>>
+    ? Element
     : never
   : never;
+
+/**
+ * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ */
+export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
+  Props & React.RefAttributes<InferredElementRefType<Props>>
+>;
 // A definition like this would also work, but typescript is more likely to unnecessarily expand
 // the props type with this version (and it's likely much more expensive to evaluate)
 // export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>
@@ -232,4 +240,25 @@ export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
  */
 export type SlotClassNames<Slots> = {
   [SlotName in keyof Slots]-?: string;
+};
+
+/**
+ * A definition of a slot, as a component, very similar to how a React component is declared,
+ * but with some additional metadata that is used to determine how to render the slot.
+ */
+export type SlotComponentType<Props extends UnknownSlotProps> = Props & {
+  /**
+   * **NOTE**: Slot components are not callable.
+   */
+  (props: React.PropsWithChildren<{}>): React.ReactElement | null;
+  /**
+   * @internal
+   */
+  [SLOT_RENDER_FUNCTION_SYMBOL]?: SlotRenderFunction<Props>;
+  /**
+   * @internal
+   */
+  [SLOT_ELEMENT_TYPE_SYMBOL]:
+    | React.ComponentType<Props>
+    | (Props extends AsIntrinsicElement<infer As> ? As : keyof JSX.IntrinsicElements);
 };

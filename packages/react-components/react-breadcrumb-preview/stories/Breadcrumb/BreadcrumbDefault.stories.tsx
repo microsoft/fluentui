@@ -5,19 +5,19 @@ import {
   BreadcrumbDivider,
   BreadcrumbProps,
   BreadcrumbButton,
-  BreadcrumbLink,
+  BreadcrumbItemProps,
 } from '@fluentui/react-breadcrumb-preview';
+import { CalendarMonthFilled, CalendarMonthRegular, bundleIcon } from '@fluentui/react-icons';
 import { RadioGroup, Radio, Label, ButtonProps } from '@fluentui/react-components';
+
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
+
 type Item = {
   key: number;
   value: string;
-  buttonProps?: {
-    'aria-label'?: string;
-    icon?: ButtonProps['icon'];
-    disabled?: boolean;
-    iconPosition?: 'before' | 'after';
-  };
+  icon?: ButtonProps['icon'] | BreadcrumbItemProps['icon'];
 };
+
 const items: Item[] = [
   {
     key: 0,
@@ -26,6 +26,7 @@ const items: Item[] = [
   {
     key: 1,
     value: 'Item 2',
+    icon: <CalendarMonth />,
   },
   {
     key: 2,
@@ -41,7 +42,9 @@ function renderItem(item: Item) {
   const isLastItem = items.length - 1 === item.key;
   return (
     <React.Fragment key={`item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>{item.value}</BreadcrumbItem>
+      <BreadcrumbItem icon={item.icon} current={isLastItem}>
+        {item.value}
+      </BreadcrumbItem>
       {!isLastItem && <BreadcrumbDivider />}
     </React.Fragment>
   );
@@ -51,20 +54,10 @@ function renderButton(item: Item) {
   const isLastItem = items.length - 1 === item.key;
   return (
     <React.Fragment key={`item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>
-        <BreadcrumbButton>{item.value}</BreadcrumbButton>
-      </BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
-
-function renderLink(item: Item) {
-  const isLastItem = items.length - 1 === item.key;
-  return (
-    <React.Fragment key={`item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>
-        <BreadcrumbLink>{item.value}</BreadcrumbLink>
+      <BreadcrumbItem>
+        <BreadcrumbButton icon={item.icon} current={isLastItem}>
+          {item.value}
+        </BreadcrumbButton>
       </BreadcrumbItem>
       {!isLastItem && <BreadcrumbDivider />}
     </React.Fragment>
@@ -97,16 +90,14 @@ export const Default = () => {
             value={breadcrumbType}
             onChange={(_, data) => setBreadcrumbType(data.value)}
           >
-            <Radio value="item" label="Item" />
+            <Radio value="item" label="Non-interactive item" />
             <Radio value="button" label="Button" />
-            <Radio value="link" label="Link" />
           </RadioGroup>
         </div>
       </div>
       <Breadcrumb aria-label="Small Breadcrumb" size={size}>
         {breadcrumbType === 'item' && items.map(item => renderItem(item))}
         {breadcrumbType === 'button' && items.map(item => renderButton(item))}
-        {breadcrumbType === 'link' && items.map(item => renderLink(item))}
       </Breadcrumb>
     </>
   );

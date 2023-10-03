@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: delegate focus outline to layout components",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

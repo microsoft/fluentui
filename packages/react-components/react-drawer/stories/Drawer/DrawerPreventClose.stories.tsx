@@ -8,7 +8,7 @@ export const PreventClose = () => {
 
   return (
     <div>
-      <DrawerOverlay position="right" open={open} modalType="alert">
+      <DrawerOverlay position="end" open={open} modalType="alert">
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -40,7 +40,7 @@ PreventClose.parameters = {
   docs: {
     description: {
       story: [
-        'By setting the `modalType` prop to `alert`, the Drawer will not be closable by clicking outside nor using the "ESC" key.',
+        'By setting the `modalType` prop to `alert` and not providing an onOpenChange handler, the Drawer will not be closable by clicking outside nor using the "ESC" key.',
         'This is useful for scenarios where the user must interact with the Drawer before continuing, when opening a Drawer is a critical action or when multiple Drawers are open at the same time.',
       ].join('\n'),
     },

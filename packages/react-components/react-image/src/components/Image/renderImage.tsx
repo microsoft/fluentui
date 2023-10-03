@@ -1,9 +1,7 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import { ImageSlots, ImageState } from './Image.types';
 
 /**
@@ -11,7 +9,7 @@ import { ImageSlots, ImageState } from './Image.types';
  * Given the state of an image, renders it.
  */
 export const renderImage_unstable = (state: ImageState) => {
-  const { slots, slotProps } = getSlotsNext<ImageSlots>(state);
+  assertSlots<ImageSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

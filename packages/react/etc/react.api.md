@@ -471,6 +471,8 @@ export class Autofill extends React_2.Component<IAutofillProps, IAutofillState> 
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
+    static contextType: React_2.Context<WindowProviderProps>;
+    // (undocumented)
     get cursorLocation(): number | null;
     // (undocumented)
     static defaultProps: {
@@ -4096,6 +4098,9 @@ export interface IContextualMenuItem {
     checked?: boolean;
     className?: string;
     componentRef?: IRefObject<IContextualMenuRenderItem>;
+    contextualMenuItemAs?: IComponentAs<IContextualMenuItemProps>;
+    // Warning: (ae-forgotten-export) The symbol "IContextualMenuItemWrapperProps" needs to be exported by the entry point index.d.ts
+    contextualMenuItemWrapperAs?: IComponentAs<IContextualMenuItemWrapperProps>;
     customOnRenderListLength?: number;
     data?: any;
     disabled?: boolean;
@@ -4244,14 +4249,14 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, React
     className?: string;
     // @deprecated
     componentRef?: IRefObject<IContextualMenu>;
-    contextualMenuItemAs?: React_2.ComponentClass<IContextualMenuItemProps> | React_2.FunctionComponent<IContextualMenuItemProps>;
+    contextualMenuItemAs?: IComponentAs<IContextualMenuItemProps>;
     coverTarget?: boolean;
     delayUpdateFocusOnHover?: boolean;
     directionalHint?: DirectionalHint;
     directionalHintFixed?: boolean;
     directionalHintForRTL?: DirectionalHint;
     doNotLayer?: boolean;
-    focusZoneAs?: React_2.ComponentClass<IFocusZoneProps> | React_2.FunctionComponent<IFocusZoneProps>;
+    focusZoneAs?: IComponentAs<IFocusZoneProps>;
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // @deprecated
@@ -8787,6 +8792,8 @@ export interface IStackItemTokens {
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ElementType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    // @deprecated
+    doNotRenderFalsyValues?: boolean;
     enableScopedSelectors?: boolean;
     // @deprecated
     gap?: number | string;

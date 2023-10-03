@@ -5,7 +5,7 @@ import * as React from 'react';
 export type ToastId = string;
 export type ToasterId = string;
 
-export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'top' | 'bottom';
 export type ToastPoliteness = 'assertive' | 'polite';
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
 export type ToastIntent = 'info' | 'success' | 'error' | 'warning';

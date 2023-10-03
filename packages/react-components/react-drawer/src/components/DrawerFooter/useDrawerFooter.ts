@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+
 import type { DrawerFooterProps, DrawerFooterState } from './DrawerFooter.types';
 
 /**
@@ -17,9 +18,12 @@ export const useDrawerFooter_unstable = (props: DrawerFooterProps, ref: React.Re
       root: 'footer',
     },
 
-    root: getNativeElementProps('footer', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('footer', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'footer' },
+    ),
   };
 };

@@ -43,6 +43,11 @@ async function swcTransform(options: Options) {
       outputPath,
     });
 
+    // Strip @jsx comments, see https://github.com/microsoft/fluentui/issues/29126
+    const resultCode = result.code
+      .replace('/** @jsxRuntime automatic */', '')
+      .replace('/** @jsxImportSource @fluentui/react-jsx-runtime */', '');
+
     const compiledFilePath = path.resolve(packageRoot, fileName.replace(`${sourceRootDirName}`, outputPath));
 
     //Create directory folder for new compiled file(s) to live in.
@@ -50,7 +55,7 @@ async function swcTransform(options: Options) {
 
     const compiledFilePathJS = `${compiledFilePath.replace(tsFileExtensionRegex, '.js')}`;
 
-    await fs.promises.writeFile(compiledFilePathJS, result.code);
+    await fs.promises.writeFile(compiledFilePathJS, resultCode);
     if (result.map) {
       await fs.promises.writeFile(`${compiledFilePathJS}.map`, result.map);
     }

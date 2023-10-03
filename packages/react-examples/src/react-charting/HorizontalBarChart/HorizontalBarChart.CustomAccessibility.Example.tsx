@@ -126,5 +126,9 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
     },
   ];
 
-  return <HorizontalBarChart data={data} width={600} />;
+  return (
+    <div style={{ maxWidth: 600 }}>
+      <HorizontalBarChart data={data} />
+    </div>
+  );
 };

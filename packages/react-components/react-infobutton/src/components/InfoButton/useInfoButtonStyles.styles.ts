@@ -43,6 +43,7 @@ const useButtonStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
       color: tokens.colorNeutralForeground2BrandHover,
+      cursor: 'pointer',
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline-flex',

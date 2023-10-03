@@ -1,0 +1,7 @@
+{
+  "description": "Separate entrypoint for /jsx-dev-runtime",
+  "main": "../lib-commonjs/jsx-dev-runtime.js",
+  "module": "../lib/jsx-dev-runtime.js",
+  "typings": "../dist/jsx-dev-runtime.d.ts",
+  "sideEffects": false
+}

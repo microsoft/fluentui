@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot } from '@fluentui/react-utilities';
 import type { TableCellActionsProps, TableCellActionsState } from './TableCellActions.types';
 
 /**
@@ -19,10 +19,13 @@ export const useTableCellActions_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getNativeElementProps('div', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     visible: props.visible ?? false,
   };
 };

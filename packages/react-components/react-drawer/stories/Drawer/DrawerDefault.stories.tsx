@@ -63,8 +63,8 @@ export const Default = () => {
       </Drawer>
 
       <div className={styles.content}>
-        <Button appearance="primary" onClick={() => setIsOpen(true)}>
-          Open
+        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
+          {type === 'inline' ? 'Toggle' : 'Open'}
         </Button>
 
         <div className={styles.field}>

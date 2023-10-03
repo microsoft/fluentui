@@ -1,3 +1,6 @@
+/// <reference types="cypress" />
+/// <reference types="cypress-real-events" />
+
 import * as React from 'react';
 import { mount as mountBase } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
@@ -18,7 +21,7 @@ const mount = (element: JSX.Element) => {
 
 const TreeTest: React.FC<TreeProps> = props => {
   return (
-    <Tree id="baseTree" aria-label="Tree" {...props}>
+    <Tree id="tree" aria-label="Tree" {...props}>
       {props.children ?? (
         <>
           <TreeItem itemType="branch" value="item1" data-testid="item1">
@@ -55,7 +58,7 @@ const TreeTest: React.FC<TreeProps> = props => {
 };
 TreeTest.displayName = 'Tree';
 
-describe(TreeTest.displayName!, () => {
+describe('Tree', () => {
   it('should have all but first level items hidden', () => {
     mount(<TreeTest />);
     cy.get('[data-testid="item1__item1"]').should('not.exist');
@@ -111,7 +114,7 @@ describe(TreeTest.displayName!, () => {
     });
     it('should not expand/collapse item on actions click', () => {
       mount(
-        <TreeTest id="baseTree" aria-label="Tree">
+        <TreeTest id="tree" aria-label="Tree">
           <TreeItem itemType="branch" value="item1" data-testid="item1">
             <TreeItemLayout actions={<Button id="action">action!</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
@@ -154,7 +157,7 @@ describe(TreeTest.displayName!, () => {
     });
     it('should focus on actions when pressing tab key', () => {
       mount(
-        <TreeTest id="baseTree" aria-label="Tree">
+        <TreeTest id="tree" aria-label="Tree">
           <TreeItem itemType="branch" value="item1" data-testid="item1">
             <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
@@ -173,7 +176,7 @@ describe(TreeTest.displayName!, () => {
     });
     it('should not expand/collapse item on actions Enter/Space key', () => {
       mount(
-        <TreeTest id="baseTree" aria-label="Tree">
+        <TreeTest id="tree" aria-label="Tree">
           <TreeItem itemType="branch" value="item1" data-testid="item1">
             <TreeItemLayout actions={<Button id="action">action</Button>}>level 1, item 1</TreeItemLayout>
             <Tree>
@@ -199,7 +202,7 @@ describe(TreeTest.displayName!, () => {
       cy.document().realPress('Tab');
       cy.get('[data-testid="item1"]').should('be.focused');
     });
-    it('should focus out of baseTree when pressing tab key inside baseTree.', () => {
+    it('should focus out of tree when pressing tab key inside tree.', () => {
       mount(<TreeTest />);
       cy.focused().should('not.exist');
       cy.document().realPress('Tab');
@@ -234,6 +237,132 @@ describe(TreeTest.displayName!, () => {
         cy.get('[data-testid="item2__item1__item1"]').should('be.focused').realPress('{home}');
         cy.get('[data-testid="item1"]').should('be.focused');
       });
+    });
+  });
+
+  describe('Control open state per item', () => {
+    it('should remain open when opening/closing a controlled item', () => {
+      const OpenItemControlled = () => {
+        return (
+          <Tree aria-label="Open Item Controlled">
+            <TreeItem open itemType="branch" value="tree-item-1" data-testid="tree-item-1">
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem value="tree-item-1-1" data-testid="tree-item-1-1" itemType="leaf">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem value="tree-tem-1-2" data-testid="tree-tem-1-2" itemType="leaf">
+                  <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                </TreeItem>
+                <TreeItem value="tree-item-1-3" data-testid="tree-item-1-3" itemType="leaf">
+                  <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="branch" value="tree-item-2" data-testid="tree-item-2">
+              <TreeItemLayout>level 1, item 2</TreeItemLayout>
+              <Tree>
+                <TreeItem value="tree-item-2-1" data-testid="tree-item-2-1" itemType="branch">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <Tree>
+                    <TreeItem itemType="leaf">
+                      <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                    </TreeItem>
+                  </Tree>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        );
+      };
+      mount(<OpenItemControlled />);
+      cy.get('[data-testid="tree-item-1"]').should('exist');
+      cy.get('[data-testid="tree-item-2"]').should('exist');
+      cy.get('[data-testid="tree-item-2-1"]').should('not.exist');
+      cy.get('[data-testid="tree-item-1-1"]').should('exist');
+      cy.get('[data-testid="tree-item-1"]').realClick();
+      cy.get('[data-testid="tree-item-1-1"]').should('exist');
+    });
+    it('should remain closed when opening/closing a controlled item', () => {
+      const OpenItemControlled = () => {
+        return (
+          <Tree aria-label="Open Item Controlled">
+            <TreeItem open={false} itemType="branch" data-testid="tree-item-1" value="tree-item-1">
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-1-1" value="tree-item-1-1" itemType="leaf">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-tem-1-2" value="tree-tem-1-2" itemType="leaf">
+                  <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-item-1-3" value="tree-item-1-3" itemType="leaf">
+                  <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="branch" data-testid="tree-item-2" value="tree-item-2">
+              <TreeItemLayout>level 1, item 2</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-2-1" value="tree-item-2-1" itemType="branch">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <Tree>
+                    <TreeItem data-testid="tree-item-2-1-1" value="tree-item-2-1-1" itemType="leaf">
+                      <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                    </TreeItem>
+                  </Tree>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        );
+      };
+      mount(<OpenItemControlled />);
+      cy.get('[data-testid="tree-item-1"]').should('exist');
+      cy.get('[data-testid="tree-item-1-1"]').should('not.exist');
+      cy.get('[data-testid="tree-item-1"]').realClick();
+      cy.get('[data-testid="tree-item-1-1"]').should('not.exist');
+    });
+    it('should not affect other items open state when opening/closing a controlled item', () => {
+      const OpenItemControlled = () => {
+        return (
+          <Tree aria-label="Open Item Controlled">
+            <TreeItem open={false} itemType="branch" data-testid="tree-item-1" value="tree-item-1">
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-1-1" value="tree-item-1-1" itemType="leaf">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-tem-1-2" value="tree-tem-1-2" itemType="leaf">
+                  <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-item-1-3" value="tree-item-1-3" itemType="leaf">
+                  <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem open={true} itemType="branch" data-testid="tree-item-2" value="tree-item-2">
+              <TreeItemLayout>level 1, item 2</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-2-1" value="tree-item-2-1" itemType="branch">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <Tree>
+                    <TreeItem data-testid="tree-item-2-1-1" value="tree-item-2-1-1" itemType="leaf">
+                      <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                    </TreeItem>
+                  </Tree>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        );
+      };
+      mount(<OpenItemControlled />);
+      cy.get('[data-testid="tree-item-2"]').should('exist');
+      cy.get('[data-testid="tree-item-2-1"]').should('exist');
+      cy.get('[data-testid="tree-item-2-1-1"]').should('not.exist');
+      cy.get('[data-testid="tree-item-2-1"]').realClick();
+      cy.get('[data-testid="tree-item-2-1-1"]').should('exist');
     });
   });
 });

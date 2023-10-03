@@ -1,8 +1,53 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Tue, 25 Jul 2023 13:29:15 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.7)
+
+Tue, 26 Sep 2023 17:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.6..@fluentui/priority-overflow_v9.1.7)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.6)
+
+Tue, 26 Sep 2023 15:32:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.5..@fluentui/priority-overflow_v9.1.6)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+
+## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.5)
+
+Tue, 05 Sep 2023 13:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.4..@fluentui/priority-overflow_v9.1.5)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+
+## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.4)
+
+Fri, 11 Aug 2023 12:14:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.3..@fluentui/priority-overflow_v9.1.4)
+
+### Patches
+
+- fix: flickering in Overflow ([PR #28767](https://github.com/microsoft/fluentui/pull/28767) by vkozlova@microsoft.com)
+
+## [9.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.3)
+
+Wed, 09 Aug 2023 13:16:48 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.2..@fluentui/priority-overflow_v9.1.3)
+
+### Patches
+
+- fix: inaccurate calculation of size ([PR #28728](https://github.com/microsoft/fluentui/pull/28728) by vkozlova@microsoft.com)
 
 ## [9.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.2)
 

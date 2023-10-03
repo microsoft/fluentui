@@ -739,6 +739,24 @@ export function createYAxisLabels(
   });
 }
 
+export const wrapContent = (content: string, id: string, maxWidth: number) => {
+  const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
+  textElement.text(content);
+  if (!textElement.node()) {
+    return false;
+  }
+
+  let isOverflowing = false;
+  let textLength = textElement.node()!.getComputedTextLength();
+  while (textLength > maxWidth && content.length > 0) {
+    content = content.slice(0, -1);
+    textElement.text(content + '...');
+    isOverflowing = true;
+    textLength = textElement.node()!.getComputedTextLength();
+  }
+  return isOverflowing;
+};
+
 /**
  * Calculates the width of the longest axis label in pixels
  */
@@ -1110,8 +1128,28 @@ export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.y)!;
-  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.y)!;
+  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y > point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
+  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y < point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
 
   return { startValue: yMin, endValue: yMax };
 }

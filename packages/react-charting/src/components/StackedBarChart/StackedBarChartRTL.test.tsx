@@ -7,7 +7,7 @@ import {
   testScreenResolutionChanges,
   testWithWait,
   testWithoutWait,
-} from '../../utilities/TestUtility';
+} from '../../utilities/TestUtility.test';
 import { StackedBarChart } from './StackedBarChart';
 import { DefaultPalette, ThemeProvider } from '@fluentui/react';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';

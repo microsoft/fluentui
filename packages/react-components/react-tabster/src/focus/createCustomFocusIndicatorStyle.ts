@@ -11,8 +11,13 @@ export interface CreateCustomFocusIndicatorStyleOptions {
    * Control if the indicator appears when the corresponding element is focused,
    * or any child is focused within the corresponding element.
    * @default 'focus'
+   * @alias selectorType
    */
   selector?: 'focus' | 'focus-within';
+  /**
+   * Customizes the selector provided based on the selector type.
+   */
+  customizeSelector?: (selector: string) => string;
   /**
    * Enables the browser default outline style
    * @deprecated The custom focus indicator no longer affects outline styles. Outline is overridden
@@ -30,14 +35,19 @@ export interface CreateCustomFocusIndicatorStyleOptions {
  */
 export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(
   style: TStyle,
-  { selector = defaultOptions.selector }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
+  {
+    selector: selectorType = defaultOptions.selector,
+    customizeSelector = defaultOptions.customizeSelector,
+  }: CreateCustomFocusIndicatorStyleOptions = defaultOptions,
 ): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle {
-  return {
-    ...(selector === 'focus' && {
-      [`&[${FOCUS_VISIBLE_ATTR}]`]: style,
-    }),
-    ...(selector === 'focus-within' && {
-      [`&[${FOCUS_WITHIN_ATTR}]:${selector}`]: style,
-    }),
-  };
+  return { [customizeSelector(createBaseSelector(selectorType))]: style };
+}
+
+function createBaseSelector(selectorType: 'focus' | 'focus-within'): string {
+  switch (selectorType) {
+    case 'focus':
+      return `&[${FOCUS_VISIBLE_ATTR}]`;
+    case 'focus-within':
+      return `&[${FOCUS_WITHIN_ATTR}]:focus-within`;
+  }
 }

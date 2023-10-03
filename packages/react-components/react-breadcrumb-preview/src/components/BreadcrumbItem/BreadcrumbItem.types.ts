@@ -3,6 +3,11 @@ import type { BreadcrumbProps } from '../Breadcrumb';
 
 export type BreadcrumbItemSlots = {
   root: Slot<'li'>;
+
+  /**
+   * Icon that renders before the `children`.
+   */
+  icon?: Slot<'span'>;
 };
 
 /**
@@ -22,4 +27,9 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> &
  * State used in rendering BreadcrumbItem
  */
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
-  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>>;
+  Required<Pick<BreadcrumbItemProps, 'size' | 'current'>> & {
+    /**
+     * Defines whether item is interactive or not.
+     */
+    isInteractive?: boolean;
+  };
