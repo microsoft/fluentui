@@ -20,7 +20,7 @@ export type HeadlessTreeItem<Props extends HeadlessTreeItemProps> = {
   parentValue: TreeItemValue | undefined;
   itemType: TreeItemType;
   getTreeItemProps(): Required<Pick<Props, 'value' | 'aria-setsize' | 'aria-level' | 'aria-posinset' | 'itemType'>> &
-    Omit<Props, 'parentValue'>;
+    Props;
 };
 
 /**
@@ -122,6 +122,7 @@ export function createHeadlessTree<Props extends HeadlessTreeItemProps>(
         value: props.value,
         getTreeItemProps: () => ({
           ...propsWithoutParentValue,
+          parentValue,
           'aria-level': item.level,
           'aria-posinset': item.position,
           'aria-setsize': parentItem.childrenValues.length,
@@ -187,6 +188,7 @@ function createHeadlessTreeRootItem(): HeadlessTreeItem<HeadlessTreeItemProps> {
       }
       return {
         id: headlessTreeRootId,
+        parentValue: undefined,
         value: headlessTreeRootId,
         'aria-setsize': -1,
         'aria-level': -1,

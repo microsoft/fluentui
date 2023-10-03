@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -11,12 +11,8 @@ export const drawerHeaderNavigationClassNames: SlotClassNames<DrawerHeaderNaviga
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    ...shorthands.margin(`calc(${tokens.spacingVerticalS} * -1)`, `calc(${tokens.spacingHorizontalL} * -1)`),
-
-    order: 0,
-  },
+const useStyles = makeResetStyles({
+  ...shorthands.margin(`calc(${tokens.spacingVerticalS} * -1)`, `calc(${tokens.spacingHorizontalL} * -1)`),
 });
 
 /**
@@ -27,7 +23,7 @@ export const useDrawerHeaderNavigationStyles_unstable = (
 ): DrawerHeaderNavigationState => {
   const styles = useStyles();
 
-  state.root.className = mergeClasses(drawerHeaderNavigationClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(drawerHeaderNavigationClassNames.root, styles, state.root.className);
 
   return state;
 };

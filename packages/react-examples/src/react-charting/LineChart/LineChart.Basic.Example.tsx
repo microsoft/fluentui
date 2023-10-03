@@ -7,6 +7,7 @@ interface ILineChartBasicState {
   width: number;
   height: number;
   allowMultipleShapes: boolean;
+  showAxisTitles: boolean;
 }
 
 export class LineChartBasicExample extends React.Component<{}, ILineChartBasicState> {
@@ -16,6 +17,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
       width: 700,
       height: 300,
       allowMultipleShapes: false,
+      showAxisTitles: true,
     };
   }
 
@@ -31,6 +33,10 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
   };
   private _onShapeChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
     this.setState({ allowMultipleShapes: checked });
+  };
+  private _onToggleAxisTitlesCheckChange = (ev: React.MouseEvent<HTMLElement>, checked: boolean) => {
+    this.forceUpdate();
+    this.setState({ showAxisTitles: checked });
   };
 
   private _basicExample(): JSX.Element {
@@ -143,7 +149,6 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
-    const margins = { left: 35, top: 20, bottom: 35, right: 20 };
 
     return (
       <>
@@ -174,21 +179,48 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           onChange={this._onShapeChange}
           checked={this.state.allowMultipleShapes}
         />
-        <div style={rootStyle}>
-          <LineChart
-            culture={window.navigator.language}
-            data={data}
-            legendsOverflowText={'Overflow Items'}
-            yMinValue={200}
-            yMaxValue={301}
-            height={this.state.height}
-            width={this.state.width}
-            margins={margins}
-            xAxisTickCount={10}
-            allowMultipleShapesForPoints={this.state.allowMultipleShapes}
-            enablePerfOptimization={true}
-          />
-        </div>
+        <Toggle
+          label="Toggle Axis titles"
+          onText="Show axis titles"
+          offText="Hide axis titles"
+          checked={this.state.showAxisTitles}
+          onChange={this._onToggleAxisTitlesCheckChange}
+          styles={{ root: { marginTop: '10px' } }}
+        />
+        {this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <LineChart
+              culture={window.navigator.language}
+              data={data}
+              legendsOverflowText={'Overflow Items'}
+              yMinValue={200}
+              yMaxValue={301}
+              height={this.state.height}
+              width={this.state.width}
+              xAxisTickCount={10}
+              allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+              enablePerfOptimization={true}
+              yAxisTitle={this.state.showAxisTitles ? 'Different categories of mail flow' : undefined}
+              xAxisTitle={this.state.showAxisTitles ? 'Values of each category' : undefined}
+            />
+          </div>
+        )}
+        {!this.state.showAxisTitles && (
+          <div style={rootStyle}>
+            <LineChart
+              culture={window.navigator.language}
+              data={data}
+              legendsOverflowText={'Overflow Items'}
+              yMinValue={200}
+              yMaxValue={301}
+              height={this.state.height}
+              width={this.state.width}
+              xAxisTickCount={10}
+              allowMultipleShapesForPoints={this.state.allowMultipleShapes}
+              enablePerfOptimization={true}
+            />
+          </div>
+        )}
       </>
     );
   }
