@@ -9,7 +9,7 @@ export { Sizes } from './TagGroupSizes.stories';
 export { WithOverflow } from './TagGroupOverflow.stories';
 
 export default {
-  title: 'Tag/TagGroup',
+  title: 'Components/Tag/TagGroup',
   component: TagGroup,
   parameters: {
     docs: {
