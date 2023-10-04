@@ -1,12 +1,13 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
+import { keyEnter, keySpace } from '@microsoft/fast-web-utilities';
 import { renderComponent } from '../helpers.stories.js';
 import type { Checkbox as FluentCheckbox } from '../checkbox/checkbox.js';
 import '../card/define.js';
 import './define.js';
 import '../card-footer/define.js';
 import '../card-preview/define.js';
-import { CardAppearance, CardSize } from '../card/card.options.js';
+import { CardAppearance, CardFocusMode, CardSize } from '../card/card.options.js';
 import type { Card as FluentCard } from './card.js';
 
 type CardStoryArgs = Args & FluentCard;
@@ -55,6 +56,34 @@ const iconEllipsis = html` <svg
     fill="currentColor"
   ></path>
 </svg>`;
+
+let count = 0;
+const increaseCount = (e: Event) => {
+  const textContainer = document.getElementById('text-container');
+  count++;
+  if (textContainer) {
+    textContainer.innerText = `${count}`;
+  }
+};
+
+setTimeout(() => {
+  const card = document.getElementById('card-interactive') as FluentCard;
+  card.addEventListener('keydown', (e: KeyboardEvent) => {
+    const key = e.key;
+    if (key == keyEnter || key == keySpace) {
+      e.preventDefault();
+      increaseCount(e);
+    }
+  });
+}, 1500);
+
+const toggleFloatingActionWithInteractiveSelectable = (event: Event) => {
+  const card = document.getElementById('card-interactive-selectable-floating-action') as FluentCard;
+  const checkbox = card.querySelector('[role="checkbox"]') as FluentCheckbox;
+  if (checkbox && card) {
+    checkbox.checked = card.selected;
+  }
+};
 
 const cardTemplate = html<CardStoryArgs>`
   <style>
@@ -106,11 +135,11 @@ const cardTemplate = html<CardStoryArgs>`
       id="card-default"
       style="width: 690px;"
       appearance="${x => x.appearance}"
-      orientation="${x => x.orientation}"
       size="${x => x.size}"
       ?interactive="${x => x.interactive}"
       ?selectable="${x => x.selectable}"
       ?disabled="${x => x.disabled}"
+      trap-focus
     >
       <fluent-card-header>
         <fluent-image
@@ -147,9 +176,11 @@ const cardTemplate = html<CardStoryArgs>`
       </fluent-card-preview>
       <fluent-card-footer>
         <div>
-          <fluent-button icon>${iconReply}Reply</fluent-button>
-          <fluent-button icon>${iconShare}Share</fluent-button>
+          <fluent-button ?disabled="${x => x.disabled}" icon>${iconReply}Reply</fluent-button>
+          <fluent-button ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
         </div>
+        <fluent-button slot="action" ?disabled="${x =>
+          x.disabled}" icon-only appearance="transparent">${iconEllipsis}</fluent-button>
       </fluent-card-footer>
     </fluent-card>
   </div>
@@ -175,6 +206,14 @@ export default {
       options: Object.values(CardSize),
       control: {
         type: 'select',
+      },
+      table: {
+        type: {
+          summary: 'Sets the size of card',
+        },
+        defaultValue: {
+          summary: 'medium',
+        },
       },
     },
     disabled: {
@@ -516,7 +555,7 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Filled Interactive</span>
+            <span>Appearance Filled Alternative Interactive</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
             <span>Fluent Card</span>
@@ -596,15 +635,6 @@ export const SelectableWithFloatingAction = renderComponent(html<CardStoryArgs>`
   </div>
 `);
 
-let count = 0;
-const increaseCount = () => {
-  const textContainer = document.getElementById('text-container');
-  count++;
-  if (textContainer) {
-    textContainer.innerText = `${count}`;
-  }
-};
-
 export const Interactive = renderComponent(html<CardStoryArgs>`
   <div class="container-center">
     <fluent-text size="400" weight="semibold"
@@ -662,14 +692,6 @@ export const SelectableInteractive = renderComponent(html<CardStoryArgs>`
   </div>
 `);
 
-const toggleFloatingActionWithInteractiveSelectable = (event: Event) => {
-  const card = document.getElementById('card-interactive-selectable-floating-action') as FluentCard;
-  const checkbox = card.querySelector('[role="checkbox"]') as FluentCheckbox;
-  if (checkbox && card) {
-    checkbox.checked = card.selected;
-  }
-};
-
 export const SelectableInteractiveWithFloatingAction = renderComponent(html<CardStoryArgs>`
   <div class="container-center">
     <fluent-card
@@ -679,7 +701,7 @@ export const SelectableInteractiveWithFloatingAction = renderComponent(html<Card
       id="card-interactive-selectable-floating-action"
       class="card--width-360"
     >
-      <fluent-checkbox slot="floating-action" id="floating-action-checkbox"></fluent-checkbox>
+      <fluent-checkbox tabindex="-1" slot="floating-action" id="floating-action-checkbox"></fluent-checkbox>
       <fluent-card-header>
         <fluent-image class="image-size-40" block slot="image" shape="square">
           <img

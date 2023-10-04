@@ -12,27 +12,39 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
       ?interactive="${x => x.interactive}"
       ?selected="${x => x.selected}"
       ?disabled="${x => x.disabled}"
+      ?trap-focus="${x => x.trapFocus}"
       orientation="${x => x.orientation}"
       appearance="${x => x.appearance}"
       size="${x => x.size}"
-      tabindex="${x => (!x.disabled && x.interactive ? 0 : null)}"
-      @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
-      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
-      aria-labelledby="${x => x.ariaLabelledby}"
-      aria-describedby="${x => x.ariaLabelledby}"
-      aria-label="${x => x.ariaLabel}"
     >
-      <div class="control" part="control">
-        <slot name="floating-action" part="floating-action" ${slotted('floatingActionSlot')}></slot>
-        ${when(
-          x => x.selectable && !x.floatingActionSlot.length,
-          html<T>`
-            <fluent-checkbox ${ref('internalCheckbox')} ?checked="${x => x.selected}" hidden></fluent-checkbox>
+      <div
+        class="card"
+        part="card"
+        tabindex="${x => ((!x.disabled && x.interactive) || x.trapFocus ? 0 : null)}"
+        @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
+        @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
+        aria-labelledby="${x => x.ariaLabelledby}"
+        aria-describedby="${x => x.ariaLabelledby}"
+        aria-label="${x => x.ariaLabel}"
+        ${ref('card')}
+      >
+        <div class="control" part="control">
+          <slot
+            tabindex="${x => (x.interactive ? -1 : 0)}"
+            name="floating-action"
+            part="floating-action"
+            ${slotted('floatingActionSlot')}
+          ></slot>
+          ${when(
+            x => x.selectable && !x.floatingActionSlot.length,
+            html<T>`
+            <input type="checkbox" ${ref('internalCheckbox')} ?checked="${x => x.selected}" hidden></input>
           `,
-        )}
-      </div>
-      <div class="content">
-        <slot></slot>
+          )}
+        </div>
+        <div class="content">
+          <slot></slot>
+        </div>
       </div>
     </template>
   `;
