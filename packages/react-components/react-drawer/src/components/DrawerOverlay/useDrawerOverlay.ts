@@ -5,7 +5,7 @@ import { useMotion } from '@fluentui/react-motion-preview';
 
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
-import { DrawerOverlaySurface } from '../DrawerOverlaySurface/DrawerOverlaySurface';
+import { DrawerOverlaySurface } from './DrawerOverlaySurface';
 
 /**
  * Create the state required to render DrawerOverlay.
@@ -26,19 +26,17 @@ export const useDrawerOverlay_unstable = (
   const drawerMotion = useMotion<HTMLDivElement>(open);
   const backdropMotion = useMotion<HTMLDivElement>(open);
 
-  const backdropProps = slot.resolveShorthand(props.backdrop);
-  const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
-  const backdropRefs = useMergedRefs(backdropMotion.ref, backdropProps?.ref);
+  const backdropInnerProps = slot.resolveShorthand(props.backdrop);
+  const hasCustomBackdrop = modalType !== 'non-modal' && backdropInnerProps !== null;
 
+  const backdropProps = {
+    ...backdropInnerProps,
+    ref: useMergedRefs(backdropMotion.ref, backdropInnerProps?.ref),
+  };
   const root = slot.always(
     {
       ...props,
-      backdrop: hasCustomBackdrop
-        ? {
-            ...backdropProps,
-            ref: backdropRefs,
-          }
-        : null,
+      backdrop: hasCustomBackdrop ? backdropProps : null,
     },
     {
       elementType: DrawerOverlaySurface,
