@@ -2,6 +2,114 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 04 Oct 2023 07:38:36 GMT",
+      "tag": "@fluentui/react_v8.112.1",
+      "version": "8.112.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ae696837f6b0c07c285787a7a28626bac1b5014c",
+            "comment": "fix: GroupedListV2 scrollToIndex scrolls to correct index"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Oct 2023 07:36:46 GMT",
+      "tag": "@fluentui/react_v8.112.0",
+      "version": "8.112.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "tmichon@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "d3ea7d93b6d01f3355651d9635e3f0197dc208ea",
+            "comment": "Add contextualMenuItemAs and contextualMenuItemWrapperAs to ContextualMenuItem"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Sep 2023 07:45:30 GMT",
+      "tag": "@fluentui/react_v8.111.4",
+      "version": "8.111.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/foundation-legacy to v8.2.45",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/font-icons-mdl2 to v8.5.25",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-focus to v8.8.32",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/react-hooks to v8.6.30",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/style-utilities to v8.9.18",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/theme to v2.6.36",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react",
+            "comment": "Bump @fluentui/utilities to v8.13.19",
+            "commit": "9fd9f701eed4171caf6ffa42e4d68bcb5d88fea9"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 28 Sep 2023 07:37:17 GMT",
+      "tag": "@fluentui/react_v8.111.3",
+      "version": "8.111.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "daneuber@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "f8efd29441bb2377380d77e682f01474296dd5d2",
+            "comment": "Update ensuresuggestionmodel to use passed object ariaLabel property for generated suggestionmodel aria label override"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react",
+            "commit": "8630debc5da0c8bce0330578c69015704a49b7f8",
+            "comment": "fix: Treat false values separate from values that aren't valid elements in stack."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 31 Aug 2023 07:36:22 GMT",
       "tag": "@fluentui/react_v8.111.2",
       "version": "8.111.2",

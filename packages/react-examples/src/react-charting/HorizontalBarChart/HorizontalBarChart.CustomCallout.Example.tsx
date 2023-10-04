@@ -113,36 +113,37 @@ export const HorizontalBarChartCustomCalloutExample: React.FunctionComponent<{}>
   ];
 
   return (
-    <HorizontalBarChart
-      data={data}
-      hideRatio={hideRatio}
-      calloutProps={{
-        directionalHint: DirectionalHint.topAutoEdge,
-      }}
-      // eslint-disable-next-line react/jsx-no-bind
-      barChartCustomData={(props: IChartProps) => {
-        const chartData: IChartDataPoint = props!.chartData![0];
-        const x = chartData.horizontalBarChartdata!.x;
-        const y = chartData.horizontalBarChartdata!.y;
-        return (
-          <div>
-            <span style={{ fontWeight: 'bold' }}>{d3.format('.2s')(x)}</span>
-            <span>{`/${d3.format('.2s')(y)} hours`}</span>
-          </div>
-        );
-      }}
-      // eslint-disable-next-line react/jsx-no-bind
-      onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
-        props ? (
-          <ChartHoverCard
-            XValue={props.xAxisCalloutData}
-            Legend={props.legend}
-            YValue={`${props.yAxisCalloutData || props.horizontalBarChartdata?.y} h`}
-            color={props.color}
-          />
-        ) : null
-      }
-      width={600}
-    />
+    <div style={{ maxWidth: 600 }}>
+      <HorizontalBarChart
+        data={data}
+        hideRatio={hideRatio}
+        calloutProps={{
+          directionalHint: DirectionalHint.topAutoEdge,
+        }}
+        // eslint-disable-next-line react/jsx-no-bind
+        barChartCustomData={(props: IChartProps) => {
+          const chartData: IChartDataPoint = props!.chartData![0];
+          const x = chartData.horizontalBarChartdata!.x;
+          const y = chartData.horizontalBarChartdata!.y;
+          return (
+            <div>
+              <span style={{ fontWeight: 'bold' }}>{d3.format('.2s')(x)}</span>
+              <span>{`/${d3.format('.2s')(y)} hours`}</span>
+            </div>
+          );
+        }}
+        // eslint-disable-next-line react/jsx-no-bind
+        onRenderCalloutPerHorizontalBar={(props: IChartDataPoint) =>
+          props ? (
+            <ChartHoverCard
+              XValue={props.xAxisCalloutData}
+              Legend={props.legend}
+              YValue={`${props.yAxisCalloutData || props.horizontalBarChartdata?.y} h`}
+              color={props.color}
+            />
+          ) : null
+        }
+      />
+    </div>
   );
 };

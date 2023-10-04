@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-message-bar-preview",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.0",
   "description": "New fluentui react package",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,11 +30,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "^9.0.10",
-    "@fluentui/react-theme": "^9.1.12",
-    "@fluentui/react-utilities": "^9.13.3",
+    "@fluentui/react-button": "^9.3.45",
+    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-jsx-runtime": "^9.0.13",
+    "@fluentui/react-shared-contexts": "^9.9.2",
+    "@fluentui/react-theme": "^9.1.14",
+    "@fluentui/react-utilities": "^9.14.0",
     "@griffel/react": "^1.5.14",
-    "@swc/helpers": "^0.5.1"
+    "@swc/helpers": "^0.5.1",
+    "react-transition-group": "^4.4.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",

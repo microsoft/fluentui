@@ -113,11 +113,13 @@ export class HorizontalBarChartVariantExample extends React.Component<{}, IHBCVa
           onChange={this._onCheckChange}
           styles={{ root: { marginBottom: '20px' } }}
         />
-        <HorizontalBarChart
-          data={data}
-          variant={HorizontalBarChartVariant.AbsoluteScale}
-          hideLabels={this.state.hideLabels}
-        />
+        <div style={{ maxWidth: 600 }}>
+          <HorizontalBarChart
+            data={data}
+            variant={HorizontalBarChartVariant.AbsoluteScale}
+            hideLabels={this.state.hideLabels}
+          />
+        </div>
       </>
     );
   }

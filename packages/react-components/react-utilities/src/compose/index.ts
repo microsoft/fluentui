@@ -8,6 +8,7 @@ export * from './constants';
 export * from './getSlotsNext';
 export * from './isSlot';
 export * from './assertSlots';
+export * from './getIntrinsicElementProps';
 
 export { slot };
 export type { SlotOptions } from './slot';

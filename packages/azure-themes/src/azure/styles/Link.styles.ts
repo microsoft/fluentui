@@ -18,6 +18,9 @@ export const LinkStyles = (props: ILinkStyleProps): Partial<ILinkStyles> => {
           '&:active': {
             color: semanticColors.linkHovered,
           },
+          '&:focus': {
+            outline: '0 !important',
+          },
         },
       },
     ],

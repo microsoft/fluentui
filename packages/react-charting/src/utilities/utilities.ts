@@ -1128,8 +1128,28 @@ export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.y)!;
-  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.y)!;
+  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y > point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
+  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y < point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
 
   return { startValue: yMin, endValue: yMax };
 }

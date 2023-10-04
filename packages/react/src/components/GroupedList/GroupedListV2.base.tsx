@@ -20,7 +20,15 @@ import type {
   IGroupedListStyleProps,
   IGroupedListStyles,
 } from './GroupedList.types';
-import type { IGroupedListV2Props } from './GroupedListV2.types';
+import type {
+  IGroupedListV2,
+  IGroupedListV2Props,
+  IItemGroupedItem,
+  IShowAllGroupedItem,
+  IFooterGroupedItem,
+  IHeaderGroupedItem,
+  IGroupedItem,
+} from './GroupedListV2.types';
 import { GroupHeader } from './GroupHeader';
 import { GroupShowAll } from './GroupShowAll';
 import { GroupFooter } from './GroupFooter';
@@ -37,32 +45,6 @@ export interface IGroupedListV2State {
   version: {};
   groupExpandedVersion: {};
 }
-
-type IITemGroupedItem = {
-  type: 'item';
-  group: IGroup;
-  item: any;
-  itemIndex: number;
-};
-
-type IShowAllGroupedItem = {
-  type: 'showAll';
-  group: IGroup;
-};
-
-type IFooterGroupedItem = {
-  type: 'footer';
-  group: IGroup;
-};
-
-type IHeaderGroupedItem = {
-  type: 'header';
-  group: IGroup;
-  groupId: string;
-  groupIndex: number;
-};
-
-type IGroupedItem = IITemGroupedItem | IShowAllGroupedItem | IFooterGroupedItem | IHeaderGroupedItem;
 
 type FlattenItems = (
   groups: IGroup[] | undefined,
@@ -90,7 +72,6 @@ const flattenItems: FlattenItems = (groups, items, memoItems, getGroupItemLimit)
 
   let index = 0;
 
-  // const stack: IGroup[] = [];
   const stack: GroupStackItem[] = [];
   let j = groups.length - 1;
   while (j >= 0) {
@@ -268,6 +249,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     groups,
     onGroupExpandStateChanged,
 
+    listProps,
     className,
     usePageCache,
     onShouldVirtualize,
@@ -278,7 +260,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
     rootListProps = {},
     onRenderCell,
     viewport,
-    listRef,
+    groupedListRef,
     groupExpandedVersion,
     version: versionFromProps,
   } = props;
@@ -298,6 +280,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
   const events = React.useRef<EventGroup>();
   const flatList = React.useRef<IGroupedItem[]>([]);
   const isSomeGroupExpanded = React.useRef<boolean>(computeIsSomeGroupExpanded(groups));
+  const listRef = React.useRef<List>(null);
 
   const [version, setVersion] = React.useState({});
   const [toggleVersion, setToggleVersion] = React.useState({});
@@ -318,6 +301,49 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
       };
     },
     [listView],
+  );
+
+  React.useImperativeHandle(
+    groupedListRef,
+    () => {
+      let indexMap: number[] | undefined;
+
+      return {
+        scrollToIndex: (
+          index: number,
+          measureItem?: (itemIndex: number) => number,
+          scrollToMode?: ScrollToMode,
+        ): void => {
+          indexMap =
+            indexMap ??
+            listView.reduce((map, item, listIndex) => {
+              if (item.type === 'item') {
+                map[item.itemIndex] = listIndex;
+              }
+              return map;
+            }, [] as number[]);
+
+          const scrollIndex = indexMap[index];
+          const measure =
+            typeof measureItem === 'function'
+              ? (itemIndex: number): number => {
+                  if (listView[itemIndex]?.type === 'item') {
+                    return measureItem((listView[itemIndex] as IItemGroupedItem).itemIndex);
+                  }
+
+                  return 0;
+                }
+              : undefined;
+
+          listRef.current?.scrollToIndex(scrollIndex, measure, scrollToMode);
+        },
+
+        getStartItemIndexInView: (): number => {
+          return listRef.current?.getStartItemIndexInView() || 0;
+        },
+      };
+    },
+    [listView, listRef],
   );
 
   React.useEffect(() => {
@@ -491,6 +517,7 @@ export const GroupedListV2FC: React.FC<IGroupedListV2Props> = props => {
         getPageSpecification={getPageSpecification}
         version={version}
         getKey={getKey}
+        {...listProps}
         {...rootListProps}
       />
     </FocusZone>
@@ -530,7 +557,7 @@ export class GroupedListV2Wrapper
   implements IGroupedList
 {
   public static displayName: string = 'GroupedListV2';
-  private _list = React.createRef<List>();
+  private _groupedList = React.createRef<IGroupedListV2>();
 
   public static getDerivedStateFromProps(
     nextProps: IGroupedListV2Props,
@@ -570,17 +597,15 @@ export class GroupedListV2Wrapper
   }
 
   public scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void {
-    if (this._list.current) {
-      this._list.current.scrollToIndex(index, measureItem, scrollToMode);
-    }
+    this._groupedList.current?.scrollToIndex(index, measureItem, scrollToMode);
   }
 
   public getStartItemIndexInView(): number {
-    return this._list.current?.getStartItemIndexInView() || 0;
+    return this._groupedList.current?.getStartItemIndexInView() || 0;
   }
 
   public render(): JSX.Element {
-    return <GroupedListV2FC {...this.props} {...this.state} listRef={this._list} />;
+    return <GroupedListV2FC {...this.props} {...this.state} groupedListRef={this._groupedList} />;
   }
 
   public forceUpdate() {
