@@ -4,6 +4,9 @@ import type { MessageBarContextValue } from '../../contexts/messageBarContext';
 
 export type MessageBarActionsSlots = {
   root: Slot<'div'>;
+  /**
+   * Generally the 'Dismiss' button for the MessageBar
+   */
   containerAction?: Slot<'div'>;
 };
 

@@ -57,3 +57,14 @@ export const Reflow = () => {
     </>
   );
 };
+
+Reflow.parameters = {
+  docs: {
+    description: {
+      story: [
+        'The `MessageBar` will reflow by default once the body content wraps to a second line. This changes the layout',
+        'of the actions in the MessageBar. ',
+      ].join('\n'),
+    },
+  },
+};
