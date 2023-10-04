@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
@@ -252,7 +252,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     isAsideVisible,
     isActionsVisible,
     root: slot.always(
-      getNativeElementProps(as, {
+      getIntrinsicElementProps(as, {
         tabIndex: -1,
         [dataTreeItemValueAttrName]: value,
         ...rest,
@@ -272,7 +272,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         onMouseOut: handleActionsInvisible,
         onBlur: handleActionsInvisible,
         onChange: handleChange,
-      }),
+      } as const),
       { elementType: 'div' },
     ),
   };
