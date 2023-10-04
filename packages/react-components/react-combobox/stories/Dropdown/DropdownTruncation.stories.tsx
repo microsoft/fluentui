@@ -65,7 +65,7 @@ TruncatedValue.parameters = {
   docs: {
     description: {
       story:
-        'The Dropdown button slot can be customized to render child JSX, which can be used to truncate the value text.',
+        'The Dropdown button slot can be customized to render child JSX, which can be used to truncate the selected value text.',
     },
   },
 };
