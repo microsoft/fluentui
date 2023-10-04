@@ -59,7 +59,7 @@
     "@fluentui/react-switch": "*",
     "@fluentui/react-table": "*",
     "@fluentui/react-tabs": "*",
-    "@fluentui/react-tags": ">=9.0.0-alpha",
+    "@fluentui/react-tags": "*",
     "@fluentui/react-text": "*",
     "@fluentui/react-textarea": "*",
     "@fluentui/react-theme": "*",

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import { ArrowUpRegular, ArrowDownRegular } from '@fluentui/react-icons';
 import { useARIAButtonShorthand } from '@fluentui/react-aria';
@@ -37,12 +37,15 @@ export const useTableHeaderCell_unstable = (
       aside: 'span',
     },
     root: slot.always(
-      getNativeElementProps(rootComponent, {
-        ref: useMergedRefs(ref, useFocusWithin()),
+      getIntrinsicElementProps(rootComponent, {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, useFocusWithin()) as React.Ref<HTMLDivElement>,
         role: rootComponent === 'div' ? 'columnheader' : undefined,
         'aria-sort': sortable ? props.sortDirection ?? 'none' : undefined,
         ...props,
-      }),
+      } as const),
       { elementType: rootComponent },
     ),
     aside: slot.optional(props.aside, { elementType: 'span' }),

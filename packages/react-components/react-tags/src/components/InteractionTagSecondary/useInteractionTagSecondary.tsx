@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, slot, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, slot, useId } from '@fluentui/react-utilities';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
 import { DismissRegular } from '@fluentui/react-icons';
 import type { InteractionTagSecondaryProps, InteractionTagSecondaryState } from './InteractionTagSecondary.types';
@@ -47,7 +47,7 @@ export const useInteractionTagSecondary_unstable = (
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
+      getIntrinsicElementProps('button', {
         children: <DismissRegular />,
         type: 'button',
         disabled,

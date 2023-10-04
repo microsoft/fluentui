@@ -69,6 +69,74 @@ export const Default = () => {
   const [breadcrumbType, setBreadcrumbType] = React.useState('item');
   return (
     <>
+      <Breadcrumb aria-label="Small Breadcrumb" size={size}>
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 1</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton current>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+      </Breadcrumb>
+      <Breadcrumb aria-label="Small Breadcrumb" size={size}>
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 1</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem current>Item 4</BreadcrumbItem>
+      </Breadcrumb>
+      Interactive
+      <Breadcrumb aria-label="Small Breadcrumb" size="small">
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 1</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem current>Item 4</BreadcrumbItem>
+      </Breadcrumb>
+      <Breadcrumb aria-label="Small Breadcrumb" size="small">
+        <BreadcrumbItem>Item 1</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>Item 2</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>Item 2</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem current>Item 4</BreadcrumbItem>
+      </Breadcrumb>
+      <Breadcrumb aria-label="Small Breadcrumb" size="small">
+        <BreadcrumbItem>Item 1</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>Item 2</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>Item 2</BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton current>Item 2</BreadcrumbButton>
+        </BreadcrumbItem>
+      </Breadcrumb>
       <h2>Playground</h2>
       <div style={{ display: 'flex', flexGrow: 2 }}>
         <div>
@@ -96,6 +164,10 @@ export const Default = () => {
         </div>
       </div>
       <Breadcrumb aria-label="Small Breadcrumb" size={size}>
+        {renderItem({
+          key: 1000,
+          value: 'This is another test',
+        })}
         {breadcrumbType === 'item' && items.map(item => renderItem(item))}
         {breadcrumbType === 'button' && items.map(item => renderButton(item))}
       </Breadcrumb>

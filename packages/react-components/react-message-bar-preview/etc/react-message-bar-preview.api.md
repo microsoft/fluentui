@@ -144,16 +144,16 @@ export const renderMessageBarGroup_unstable: (state: MessageBarGroupState) => JS
 export const renderMessageBarTitle_unstable: (state: MessageBarTitleState) => JSX.Element;
 
 // @public
-export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLElement>) => MessageBarState;
+export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarState;
 
 // @public
-export const useMessageBarActions_unstable: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLElement>) => MessageBarActionsState;
+export const useMessageBarActions_unstable: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarActionsState;
 
 // @public
 export const useMessageBarActionsStyles_unstable: (state: MessageBarActionsState) => MessageBarActionsState;
 
 // @public
-export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLElement>) => MessageBarBodyState;
+export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;
 
 // @public
 export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => MessageBarBodyState;
@@ -162,7 +162,7 @@ export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => M
 export const useMessageBarContext: () => MessageBarContextValue;
 
 // @public
-export const useMessageBarGroup_unstable: (props: MessageBarGroupProps, ref: React_2.Ref<HTMLElement>) => MessageBarGroupState;
+export const useMessageBarGroup_unstable: (props: MessageBarGroupProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarGroupState;
 
 // @public
 export const useMessageBarGroupStyles_unstable: (state: MessageBarGroupState) => MessageBarGroupState;

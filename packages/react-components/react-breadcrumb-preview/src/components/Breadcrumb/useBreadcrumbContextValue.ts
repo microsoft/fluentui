@@ -1,12 +1,31 @@
 import * as React from 'react';
-import type { BreadcrumbContextValues, BreadcrumbState } from './Breadcrumb.types';
+import type { BreadcrumbContextValues, BreadcrumbItem, BreadcrumbState } from './Breadcrumb.types';
 
 export function useBreadcrumbContextValues_unstable(state: BreadcrumbState): BreadcrumbContextValues {
   const { appearance, dividerType, size } = state;
+  const [items, setItems] = React.useState<BreadcrumbContextValues['items']>(new Set());
 
-  const breadcrumb = React.useMemo(() => {
-    return { appearance, dividerType, size };
-  }, [appearance, dividerType, size]);
+  const registerItem = React.useCallback((item: BreadcrumbItem) => {
+    setItems(prevItems => {
+      const newItems = new Set(prevItems);
 
-  return { breadcrumb };
+      newItems.add(item);
+
+      return newItems;
+    });
+  }, []);
+
+  const removeItem = React.useCallback((item: BreadcrumbItem) => {
+    setItems(prevItems => {
+      const newItems = new Set(prevItems);
+
+      newItems.delete(item);
+
+      return newItems;
+    });
+  }, []);
+
+  const hasInteractiveItems = React.useMemo(() => [...items].some(item => item.type === 'button'), [items]);
+
+  return { appearance, dividerType, size, items, registerItem, removeItem, hasInteractiveItems };
 }
