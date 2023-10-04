@@ -41,6 +41,8 @@ import type {
 import type { IButtonStyles } from '../../Button';
 import type { ICalloutProps } from '../../Callout';
 import { getChildren } from '@fluentui/utilities';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 export interface IComboBoxState {
   /** The open state */
@@ -243,6 +245,8 @@ function findFirstDescendant(element: HTMLElement, match: (element: HTMLElement)
 
 @customizable('ComboBox', ['theme', 'styles'], true)
 class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBoxState> implements IComboBox {
+  public static contextType = WindowContext;
+
   /** The input aspect of the combo box */
   private _autofill = React.createRef<IAutofill>();
 
@@ -368,6 +372,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       this._async.setTimeout(() => this._scrollIntoView(), 0);
     }
 
+    const doc = getDocumentEx(this.context);
     // if an action is taken that put focus in the ComboBox
     // and If we are open or we are just closed, shouldFocusAfterClose is set,
     // but we are not the activeElement set focus on the input
@@ -378,7 +383,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           !isOpen &&
           this._focusInputAfterClose &&
           this._autofill.current &&
-          document.activeElement !== this._autofill.current.inputElement))
+          doc.activeElement !== this._autofill.current.inputElement))
     ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
@@ -1225,7 +1230,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = document.activeElement as Element;
+      relatedTarget = getDocumentEx(this.context).activeElement as Element;
     }
 
     if (relatedTarget) {

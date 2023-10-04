@@ -130,6 +130,10 @@ export interface IScrollablePaneContext {
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
   };
+  window: Window | undefined;
 }
 
-export const ScrollablePaneContext = React.createContext<IScrollablePaneContext>({ scrollablePane: undefined });
+export const ScrollablePaneContext = React.createContext<IScrollablePaneContext>({
+  scrollablePane: undefined,
+  window: undefined,
+});

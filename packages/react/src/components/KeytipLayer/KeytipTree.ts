@@ -122,9 +122,15 @@ export class KeytipTree {
    *
    * @param keySequence - string to match
    * @param currentKeytip - The keytip whose children will try to match
+   * @param doc - The document for DOM operations
    * @returns The node that exactly matched the keySequence, or undefined if none matched
    */
-  public getExactMatchedNode(keySequence: string, currentKeytip: IKeytipTreeNode): IKeytipTreeNode | undefined {
+  public getExactMatchedNode(
+    keySequence: string,
+    currentKeytip: IKeytipTreeNode,
+    // eslint-disable-next-line no-restricted-globals
+    doc: Document = document,
+  ): IKeytipTreeNode | undefined {
     const possibleNodes = this.getNodes(currentKeytip.children);
     const matchingNodes = possibleNodes.filter((node: IKeytipTreeNode) => {
       return this._getNodeSequence(node) === keySequence && !node.disabled;
@@ -149,7 +155,7 @@ export class KeytipTree {
     const overflowSetSequence = node.overflowSetSequence;
     const fullKeySequences = overflowSetSequence ? mergeOverflows(keySequences, overflowSetSequence) : keySequences;
     const keytipTargetSelector = ktpTargetFromSequences(fullKeySequences);
-    const potentialTargetElements = document.querySelectorAll(keytipTargetSelector);
+    const potentialTargetElements = doc.querySelectorAll(keytipTargetSelector);
 
     // If we have less nodes than the potential target elements,
     // we won't be able to map element to node, return the first node.

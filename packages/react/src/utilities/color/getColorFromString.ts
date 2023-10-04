@@ -10,8 +10,12 @@ import type { IColor } from './interfaces';
  * Alpha defaults to 100 if not specified in `inputColor`.
  * Returns undefined if the color string is invalid/not recognized.
  */
-export function getColorFromString(inputColor: string): IColor | undefined {
-  const color = cssColor(inputColor);
+export function getColorFromString(
+  inputColor: string,
+  // eslint-disable-next-line no-restricted-globals
+  doc: Document = document,
+): IColor | undefined {
+  const color = cssColor(inputColor, doc);
 
   if (!color) {
     return;

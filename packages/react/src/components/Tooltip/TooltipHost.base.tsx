@@ -16,6 +16,8 @@ import { TooltipOverflowMode } from './TooltipHost.types';
 import { Tooltip } from './Tooltip';
 import { TooltipDelay } from './Tooltip.types';
 import type { ITooltipHostProps, ITooltipHostStyles, ITooltipHostStyleProps, ITooltipHost } from './TooltipHost.types';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx } from '../../utilities/dom';
 
 export interface ITooltipHostState {
   /** @deprecated No longer used internally */
@@ -29,6 +31,8 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   public static defaultProps = {
     delay: TooltipDelay.medium,
   };
+
+  public static contextType = WindowContext;
 
   private static _currentVisibleTooltip: ITooltipHost | undefined;
 
@@ -192,7 +196,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
     // checking if the blurred element is still the document's activeElement,
     // and ignoring when it next gets focus back.
     // See https://github.com/microsoft/fluentui/issues/13541
-    this._ignoreNextFocusEvent = document?.activeElement === ev.target;
+    this._ignoreNextFocusEvent = getDocumentEx(this.context)?.activeElement === ev.target;
 
     this._dismissTimerId = this._async.setTimeout(() => {
       this._hideTooltip();

@@ -28,6 +28,8 @@ import type { IKeytipLayerProps, IKeytipLayerStyles, IKeytipLayerStyleProps } fr
 import type { IKeytipProps } from '../../Keytip';
 import type { IKeytipTreeNode } from './IKeytipTreeNode';
 import type { KeytipTransitionModifier, IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionKey';
+import { WindowContext } from '@fluentui/react-window-provider';
+import { getDocumentEx, getWindowEx } from '../../utilities/dom';
 
 export interface IKeytipLayerState {
   inKeytipMode: boolean;
@@ -62,6 +64,8 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     keytipReturnSequences: [defaultReturnSequence],
     content: '',
   };
+
+  public static contextType = WindowContext;
 
   private _events: EventGroup;
   private _async: Async;
@@ -134,12 +138,13 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
 
   public componentDidMount(): void {
     // Add window listeners
-    this._events.on(window, 'mouseup', this._onDismiss, true /* useCapture */);
-    this._events.on(window, 'pointerup', this._onDismiss, true /* useCapture */);
-    this._events.on(window, 'resize', this._onDismiss);
-    this._events.on(window, 'keydown', this._onKeyDown, true /* useCapture */);
-    this._events.on(window, 'keypress', this._onKeyPress, true /* useCapture */);
-    this._events.on(window, 'scroll', this._onDismiss, true /* useCapture */);
+    const win = getWindowEx(this.context);
+    this._events.on(win, 'mouseup', this._onDismiss, true /* useCapture */);
+    this._events.on(win, 'pointerup', this._onDismiss, true /* useCapture */);
+    this._events.on(win, 'resize', this._onDismiss);
+    this._events.on(win, 'keydown', this._onKeyDown, true /* useCapture */);
+    this._events.on(win, 'keypress', this._onKeyPress, true /* useCapture */);
+    this._events.on(win, 'scroll', this._onDismiss, true /* useCapture */);
 
     // Add keytip listeners
     this._events.on(this._keytipManager, KeytipEvents.ENTER_KEYTIP_MODE, this._enterKeytipMode);
@@ -384,8 +389,9 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
   }
 
   private _isKeytipInstanceTargetVisible = (keySequences: string[], instanceCount: number): boolean => {
+    const doc = getDocumentEx(this.context);
     const targetSelector = ktpTargetFromSequences(keySequences);
-    const matchingElements = document.querySelectorAll(targetSelector);
+    const matchingElements = doc.querySelectorAll(targetSelector);
 
     // If there are multiple elements for the keytip sequence, return true if the element instance
     // that corresponds to the keytip instance is visible, otherwise return if there is only one instance

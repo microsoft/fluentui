@@ -8,7 +8,12 @@ export const getStyles = (props: ITooltipStyleProps): ITooltipStyles => {
   // The math here is done to account for the 45 degree rotation of the beak
   // and sub-pixel rounding that differs across browsers, which is more noticeable when
   // the device pixel ratio is larger
-  const tooltipGapSpace = -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace) + 1 / window.devicePixelRatio;
+  const tooltipGapSpace =
+    -(Math.sqrt((beakWidth * beakWidth) / 2) + gapSpace) +
+    1 /
+      // There isn't really a great way to pass in a `window` reference here so disabling the line rule
+      // eslint-disable-next-line no-restricted-globals
+      window.devicePixelRatio;
 
   return {
     root: [

@@ -1,5 +1,5 @@
 // @ts-check
-
+const configHelpers = require('../utils/configHelpers');
 const path = require('path');
 const { reactLegacy: restrictedGlobals } = require('./restricted-globals');
 
@@ -12,5 +12,14 @@ module.exports = {
     '@griffel/no-shorthands': 'off',
     'no-restricted-globals': restrictedGlobals,
   },
-  overrides: [],
+  overrides: [
+    {
+      // Test overrides
+      files: [...configHelpers.testFiles],
+      rules: {
+        'no-restricted-globals': 'off',
+        'react/jsx-no-bind': 'off',
+      },
+    },
+  ],
 };
