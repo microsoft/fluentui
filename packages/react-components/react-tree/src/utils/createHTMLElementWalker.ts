@@ -16,10 +16,11 @@ export type HTMLElementFilter = (element: HTMLElement) => number;
 
 export function createHTMLElementWalker(
   root: HTMLElement,
+  targetDocument: Document,
   filter: HTMLElementFilter = () => NodeFilter.FILTER_ACCEPT,
 ): HTMLElementWalker {
   let temporaryFilter: HTMLElementFilter | undefined;
-  const treeWalker = document.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
+  const treeWalker = targetDocument.createTreeWalker(root, NodeFilter.SHOW_ELEMENT, {
     acceptNode(node: Node) {
       if (!isHTMLElement(node)) {
         return NodeFilter.FILTER_REJECT;

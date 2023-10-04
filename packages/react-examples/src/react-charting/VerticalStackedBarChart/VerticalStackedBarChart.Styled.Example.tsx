@@ -206,6 +206,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
             svgProps={{
               'aria-label': 'Example chart with metadata per month',
             }}
+            enableReflow={true}
           />
         </div>
       </>

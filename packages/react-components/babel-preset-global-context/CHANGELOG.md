@@ -1,8 +1,56 @@
 # Change Log - @fluentui/babel-preset-global-context
 
-This log was last generated on Tue, 29 Aug 2023 12:57:36 GMT and should not be manually modified.
+This log was last generated on Tue, 26 Sep 2023 17:49:01 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.43](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.43)
+
+Tue, 26 Sep 2023 17:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.42..@fluentui/babel-preset-global-context_v9.0.0-beta.43)
+
+### Changes
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/global-context to v9.0.0-beta.43 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.0.0-beta.42](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.42)
+
+Tue, 26 Sep 2023 15:32:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.41..@fluentui/babel-preset-global-context_v9.0.0-beta.42)
+
+### Changes
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- Bump @fluentui/global-context to v9.0.0-beta.42 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+## [9.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.41)
+
+Wed, 06 Sep 2023 13:31:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.40..@fluentui/babel-preset-global-context_v9.0.0-beta.41)
+
+### Changes
+
+- Bump @fluentui/global-context to v9.0.0-beta.41 ([PR #29080](https://github.com/microsoft/fluentui/pull/29080) by beachball)
+
+## [9.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.40)
+
+Tue, 05 Sep 2023 15:39:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.39..@fluentui/babel-preset-global-context_v9.0.0-beta.40)
+
+### Changes
+
+- Bump @fluentui/global-context to v9.0.0-beta.40 ([PR #29055](https://github.com/microsoft/fluentui/pull/29055) by beachball)
+
+## [9.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.39)
+
+Tue, 05 Sep 2023 13:29:13 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/babel-preset-global-context_v9.0.0-beta.38..@fluentui/babel-preset-global-context_v9.0.0-beta.39)
+
+### Changes
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/global-context to v9.0.0-beta.39 ([PR #29056](https://github.com/microsoft/fluentui/pull/29056) by beachball)
 
 ## [9.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/babel-preset-global-context_v9.0.0-beta.38)
 
