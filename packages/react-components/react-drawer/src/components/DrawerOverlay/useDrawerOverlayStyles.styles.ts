@@ -29,6 +29,7 @@ const useDrawerResetStyles = makeResetStyles({
   transitionProperty: 'transform, box-shadow, opacity',
   willChange: 'transform, box-shadow, opacity',
 });
+
 const useDrawerRootStyles = makeStyles({
   /* Positioning */
   start: {
@@ -49,7 +50,7 @@ const useDrawerRootStyles = makeStyles({
 /**
  * Styles for the backdrop slot
  */
-const useBackdropMotionStyles = makeStyles({
+const useBackdropStyles = makeStyles({
   backdrop: {
     opacity: 0,
     transitionProperty: 'opacity',
@@ -69,7 +70,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   const baseClassNames = useDrawerBaseClassNames(state);
   const resetStyles = useDrawerResetStyles();
   const rootStyles = useDrawerRootStyles();
-  const backdropMotionStyles = useBackdropMotionStyles();
+  const backdropStyles = useBackdropStyles();
   const durationStyles = useDrawerDurationStyles();
 
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
@@ -86,9 +87,9 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   if (backdrop) {
     backdrop.className = mergeClasses(
       drawerOverlayClassNames.backdrop,
-      backdropMotionStyles.backdrop,
+      backdropStyles.backdrop,
       durationStyles[state.size],
-      state.backdropMotion.active && backdropMotionStyles.visible,
+      state.backdropMotion.active && backdropStyles.visible,
       backdrop.className,
     );
   }
