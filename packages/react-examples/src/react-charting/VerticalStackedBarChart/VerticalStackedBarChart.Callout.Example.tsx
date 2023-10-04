@@ -291,6 +291,7 @@ export class VerticalStackedBarChartCalloutExample extends React.Component<{}, I
             })}
             allowHoverOnLegend={false}
             barWidth={this.state.barWidth}
+            enableReflow={true}
           />
         </div>
       </>

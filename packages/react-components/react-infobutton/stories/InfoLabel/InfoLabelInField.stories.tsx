@@ -1,21 +1,33 @@
 import * as React from 'react';
 
-import { Field, Input, LabelProps } from '@fluentui/react-components';
+import { Field, Input, LabelProps, makeStyles } from '@fluentui/react-components';
 import { InfoLabel } from '@fluentui/react-components';
 
-export const InField = () => (
-  <Field
-    label={{
-      children: (_: unknown, props: LabelProps) => (
-        <InfoLabel {...props} info="Example info">
-          Field with info label
-        </InfoLabel>
-      ),
-    }}
-  >
-    <Input />
-  </Field>
-);
+const useStyles = makeStyles({
+  infoLabelSurface: {
+    // Since we render the Popover inline and Input uses position: relative, we need to set a zIndex. If we don't,
+    // the Popover surface will render behind the input. See #27891 for more details.
+    zIndex: 1,
+  },
+});
+
+export const InField = () => {
+  const styles = useStyles();
+
+  return (
+    <Field
+      label={{
+        children: (_: unknown, props: LabelProps) => (
+          <InfoLabel {...props} info={{ children: 'Example info', className: styles.infoLabelSurface }}>
+            Field with info label
+          </InfoLabel>
+        ),
+      }}
+    >
+      <Input />
+    </Field>
+  );
+};
 
 InField.storyName = 'In a Field';
 InField.parameters = {

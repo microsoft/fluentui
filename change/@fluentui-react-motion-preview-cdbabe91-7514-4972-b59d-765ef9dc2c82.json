@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: only rerun hook for the dependencies triggered by parent components",
-  "packageName": "@fluentui/react-motion-preview",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

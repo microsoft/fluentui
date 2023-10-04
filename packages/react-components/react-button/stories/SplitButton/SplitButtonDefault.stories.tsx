@@ -2,10 +2,20 @@ import * as React from 'react';
 import { Menu, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton } from '@fluentui/react-components';
 import type { MenuButtonProps } from '@fluentui/react-components';
 
+const onClick = () => alert('Primary action button clicked.');
+
+const primaryActionButtonProps = {
+  onClick,
+};
+
 export const Default = () => (
   <Menu positioning="below-end">
     <MenuTrigger disableButtonEnhancement>
-      {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Example</SplitButton>}
+      {(triggerProps: MenuButtonProps) => (
+        <SplitButton menuButton={triggerProps} primaryActionButton={primaryActionButtonProps}>
+          Example
+        </SplitButton>
+      )}
     </MenuTrigger>
 
     <MenuPopover>

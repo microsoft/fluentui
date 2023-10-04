@@ -1,8 +1,76 @@
 # Change Log - @fluentui/react-badge
 
-This log was last generated on Thu, 14 Sep 2023 16:44:47 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2023 08:45:47 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.5)
+
+Wed, 04 Oct 2023 08:45:47 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.4..@fluentui/react-badge_v9.2.5)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.13 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-utilities to v9.14.0 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+
+## [9.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.4)
+
+Mon, 02 Oct 2023 08:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.3..@fluentui/react-badge_v9.2.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.9.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+
+## [9.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.3)
+
+Tue, 26 Sep 2023 17:49:02 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.2..@fluentui/react-badge_v9.2.3)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.12 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.1 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-theme to v9.1.14 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+- Bump @fluentui/react-utilities to v9.13.5 ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by beachball)
+
+## [9.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.2)
+
+Tue, 26 Sep 2023 15:32:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.1..@fluentui/react-badge_v9.2.2)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+- chore: Update react-icons version to pick up IconDirectionContextProvider updated export ([PR #29151](https://github.com/microsoft/fluentui/pull/29151) by ololubek@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.0 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-theme to v9.1.13 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+- Bump @fluentui/react-utilities to v9.13.4 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
+
+## [9.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.1)
+
+Wed, 20 Sep 2023 17:47:35 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.2.0..@fluentui/react-badge_v9.2.1)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by martinhochel@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.10 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.1 ([PR #29197](https://github.com/microsoft/fluentui/pull/29197) by beachball)
+
+## [9.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.2.0)
+
+Wed, 20 Sep 2023 14:59:53 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-badge_v9.1.36..@fluentui/react-badge_v9.2.0)
+
+### Minor changes
+
+- feat: Presence badge should show Out of Office icon for Away+OOF and Offline+OOF statuses and export presence icon maps. ([PR #29131](https://github.com/microsoft/fluentui/pull/29131) by estebanmu@microsoft.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.9 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.8.0 ([PR #29193](https://github.com/microsoft/fluentui/pull/29193) by beachball)
 
 ## [9.1.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-badge_v9.1.36)
 

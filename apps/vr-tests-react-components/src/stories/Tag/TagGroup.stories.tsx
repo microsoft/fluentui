@@ -1,11 +1,5 @@
 import * as React from 'react';
-import {
-  TagGroup,
-  Tag,
-  InteractionTag,
-  InteractionTagPrimary,
-  InteractionTagSecondary,
-} from '@fluentui/react-tags-preview';
+import { TagGroup, Tag, InteractionTag, InteractionTagPrimary, InteractionTagSecondary } from '@fluentui/react-tags';
 import { ComponentMeta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { withStoryWrightSteps } from '../../utilities';

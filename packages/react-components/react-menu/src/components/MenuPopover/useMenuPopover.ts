@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ArrowLeft, Tab, ArrowRight, Escape } from '@fluentui/keyboard-keys';
-import { getNativeElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { MenuPopoverProps, MenuPopoverState } from './MenuPopover.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { dispatchMenuEnterEvent } from '../../utils/index';
@@ -61,22 +61,25 @@ export const useMenuPopover_unstable = (props: MenuPopoverProps, ref: React.Ref<
   const mountNode = useMenuContext_unstable(context => context.mountNode);
 
   const rootProps = slot.always(
-    getNativeElementProps('div', {
+    getIntrinsicElementProps('div', {
       role: 'presentation',
       ...restoreFocusSourceAttributes,
       ...props,
-      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef),
+      // FIXME:
+      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      ref: useMergedRefs(ref, popoverRef, mouseOverListenerCallbackRef) as React.Ref<HTMLDivElement>,
     }),
     { elementType: 'div' },
   );
   const { onMouseEnter: onMouseEnterOriginal, onKeyDown: onKeyDownOriginal } = rootProps;
-  rootProps.onMouseEnter = useEventCallback((event: React.MouseEvent<HTMLElement>) => {
+  rootProps.onMouseEnter = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
     if (openOnHover) {
       setOpen(event, { open: true, keyboard: false, type: 'menuPopoverMouseEnter', event });
     }
     onMouseEnterOriginal?.(event);
   });
-  rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLElement>) => {
+  rootProps.onKeyDown = useEventCallback((event: React.KeyboardEvent<HTMLDivElement>) => {
     const key = event.key;
     if (key === Escape || (isSubmenu && key === CloseArrowKey)) {
       if (open && popoverRef.current?.contains(event.target as HTMLElement)) {

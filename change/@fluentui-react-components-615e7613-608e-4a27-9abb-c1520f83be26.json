@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: export createCSSRuleFromTheme() function",
-  "packageName": "@fluentui/react-components",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}
