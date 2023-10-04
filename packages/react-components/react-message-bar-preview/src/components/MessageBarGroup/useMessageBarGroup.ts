@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { MessageBarGroupProps, MessageBarGroupState } from './MessageBarGroup.types';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render MessageBarGroup.
@@ -13,7 +13,7 @@ import { getNativeElementProps, slot } from '@fluentui/react-utilities';
  */
 export const useMessageBarGroup_unstable = (
   props: MessageBarGroupProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): MessageBarGroupState => {
   if (process.env.NODE_ENV !== 'production') {
     React.Children.forEach(props.children, c => {
@@ -35,7 +35,7 @@ export const useMessageBarGroup_unstable = (
     },
 
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref,
         ...props,
       }),

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MessageBarTitleProps, MessageBarTitleState } from './MessageBarTitle.types';
 
 /**
@@ -20,7 +20,7 @@ export const useMessageBarTitle_unstable = (
       root: 'span',
     },
     root: slot.always(
-      getNativeElementProps('span', {
+      getIntrinsicElementProps('span', {
         ref,
         ...props,
       }),

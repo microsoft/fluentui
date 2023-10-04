@@ -1,4 +1,4 @@
-import { SelectionMode, getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { SelectionMode, getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type {
   TreeCheckedChangeData,
   TreeNavigationData_unstable,
@@ -20,20 +20,7 @@ import { createNextOpenItems } from './useControllableOpenItems';
  * @param ref - reference to root HTMLElement of tree
  */
 export function useRootTree(
-  props: Pick<
-    TreeProps,
-    | 'selectionMode'
-    | 'appearance'
-    | 'size'
-    | 'openItems'
-    | 'checkedItems'
-    | 'onOpenChange'
-    | 'onCheckedChange'
-    | 'onNavigation'
-    | 'aria-label'
-    | 'aria-labelledby'
-  >,
-
+  props: TreeProps,
   ref: React.Ref<HTMLElement>,
 ): Omit<TreeState & TreeContextValue, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
@@ -98,8 +85,11 @@ export function useRootTree(
     checkedItems,
     requestTreeResponse,
     root: slot.always(
-      getNativeElementProps('div', {
-        ref,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
         role: 'tree',
         'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         ...props,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { DismissRegular } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
@@ -74,7 +74,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement 
     },
 
     root: slot.always(
-      getNativeElementProps(elementType, {
+      getIntrinsicElementProps(elementType, {
         ref,
         ...props,
         id,
