@@ -24,6 +24,7 @@ export const useDialogSurface_unstable = (
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
+  const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const open = useDialogContext_unstable(ctx => ctx.open);
@@ -71,6 +72,7 @@ export const useDialogSurface_unstable = (
   return {
     components: { backdrop: 'div', root: 'div' },
     backdrop,
+    isNestedDialog,
     mountNode: props.mountNode,
     root: slot.always(
       getIntrinsicElementProps('div', {

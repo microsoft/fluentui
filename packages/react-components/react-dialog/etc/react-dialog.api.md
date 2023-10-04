@@ -166,7 +166,7 @@ export type DialogSurfaceSlots = {
 };
 
 // @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Partial<Pick<DialogContextValue, 'isNestedDialog'>> & Pick<PortalProps, 'mountNode'>;
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
