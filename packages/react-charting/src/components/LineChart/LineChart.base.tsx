@@ -218,30 +218,17 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       prevProps.data !== this.props.data
     ) {
       this._points = this._injectIndexPropertyInLineChartData(this.props.data.lineChartData);
+      this._points = this._sortChartData(this._points);
       this._calloutPoints = calloutData(this._points) || [];
     }
   }
 
   public render(): JSX.Element {
-    // eslint-disable-next-line @fluentui/max-len
-    const {
-      tickValues,
-      tickFormat,
-      eventAnnotationProps,
-      legendProps,
-      data,
-      disableSortByXValues = false,
-    } = this.props;
+    const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
-
-    if (disableSortByXValues === false) {
-      points.forEach(point => {
-        point.data.sort(this._sortByXValues);
-      });
-    }
 
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
       points = this.state.selectedLegendPoints.length >= 1 ? this.state.selectedLegendPoints : this._points;
@@ -355,6 +342,16 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   //Comparator function to sort by x values
   private _sortByXValues = (dataItem1: ILineChartDataPoint, dataItem2: ILineChartDataPoint): number => {
     return dataItem1.x.valueOf() - dataItem2.x.valueOf();
+  };
+
+  private _sortChartData = (points: LineChartDataWithIndex[]): LineChartDataWithIndex[] => {
+    const { disableSortByXValues = false } = this.props;
+    if (disableSortByXValues === false) {
+      points.forEach(point => {
+        point.data.sort(this._sortByXValues);
+      });
+    }
+    return points;
   };
 
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
@@ -565,6 +562,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
     const lines: JSX.Element[] = [];
+    this._points.forEach(point => {
+      point.data.sort(this._sortByXValues);
+    });
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
