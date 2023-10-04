@@ -5,27 +5,27 @@ export {
   presenceBadgeClassNames,
   usePresenceBadgeStyles_unstable,
   usePresenceBadge_unstable,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceAwayRegular,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceAwayFilled,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceAvailableRegular,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceAvailableFilled,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceBlockedRegular,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceBusyFilled,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceDndRegular,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceDndFilled,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceOofRegular,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceOfflineRegular,
-  /** @deprecated */
+  // eslint-disable-next-line deprecation/deprecation
   presenceUnknownRegular,
 } from './PresenceBadge';
 export type { PresenceBadgeProps, PresenceBadgeState, PresenceBadgeStatus } from './PresenceBadge';
