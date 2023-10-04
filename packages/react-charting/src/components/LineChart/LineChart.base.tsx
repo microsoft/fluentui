@@ -223,7 +223,15 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public render(): JSX.Element {
-    const { tickValues, tickFormat, eventAnnotationProps, legendProps, data, disableSortByXValues } = this.props;
+    // eslint-disable-next-line @fluentui/max-len
+    const {
+      tickValues,
+      tickFormat,
+      eventAnnotationProps,
+      legendProps,
+      data,
+      disableSortByXValues = false,
+    } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
     const isXAxisDateType = getXAxisType(this._points);
