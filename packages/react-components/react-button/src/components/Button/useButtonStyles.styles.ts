@@ -318,6 +318,9 @@ const useRootDisabledStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
 
     cursor: 'not-allowed',
+    [`& .${buttonClassNames.icon}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -331,6 +334,9 @@ const useRootDisabledStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
@@ -346,6 +352,9 @@ const useRootDisabledStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
   },
