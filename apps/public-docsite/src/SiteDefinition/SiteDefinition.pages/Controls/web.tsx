@@ -107,6 +107,9 @@ export const categories: { [name: string]: ICategory } = {
     ScrollablePane: {},
     Tooltip: {},
   },
+  Charts: {
+    PieChart: {},
+  },
   Utilities: {
     Announced: {
       subPages: {
