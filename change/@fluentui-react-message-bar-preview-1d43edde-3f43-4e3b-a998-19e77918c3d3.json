@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps",
+  "packageName": "@fluentui/react-message-bar-preview",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
