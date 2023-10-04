@@ -229,7 +229,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
-
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
       points = this.state.selectedLegendPoints.length >= 1 ? this.state.selectedLegendPoints : this._points;
       this._calloutPoints = calloutData(points);
@@ -562,9 +561,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
   private _createLines(xElement: SVGElement, containerHeight: number): JSX.Element[] {
     const lines: JSX.Element[] = [];
-    this._points.forEach(point => {
-      point.data.sort(this._sortByXValues);
-    });
     if (this.state.isSelectedLegend) {
       this._points = this.state.selectedLegendPoints;
     } else {
