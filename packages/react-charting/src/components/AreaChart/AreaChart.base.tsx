@@ -146,10 +146,12 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         isShowCalloutPending: false,
       });
     }
+    this.props.data.lineChartData = this._sortChartData(this.props.data.lineChartData!);
   }
 
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
+      this.props.data.lineChartData = this._sortChartData(this.props.data.lineChartData!);
       const { lineChartData, chartTitle } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
@@ -232,6 +234,17 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       />
     );
   }
+
+  private _sortByXValues = (dataItem1: ILineChartDataPoint, dataItem2: ILineChartDataPoint): number => {
+    return dataItem1.x.valueOf() - dataItem2.x.valueOf();
+  };
+
+  private _sortChartData = (points: ILineChartPoints[]): ILineChartPoints[] => {
+    points.forEach(point => {
+      point.data.sort(this._sortByXValues);
+    });
+    return points;
+  };
 
   private _getMargins = (margins: IMargins) => {
     this.margins = margins;
