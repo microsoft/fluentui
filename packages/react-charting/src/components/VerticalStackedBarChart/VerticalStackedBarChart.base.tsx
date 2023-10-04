@@ -810,14 +810,8 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-        let adjustedBarHeight = 0;
-        // For stacked charts, even zero values should be depicted graphically as the data class exists
         if (barHeight < 0) {
           return <React.Fragment key={index + indexNumber}> </React.Fragment>;
-        } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
-          adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
-        } else {
-          adjustedBarHeight = barHeight;
         }
         return (
           <rect
@@ -826,7 +820,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
-            height={adjustedBarHeight}
+            height={barHeight}
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
