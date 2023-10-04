@@ -28,7 +28,7 @@ function assertMotionStyles(styles: MotionClassNames): asserts styles is MotionC
         'unmounted',
       ];
 
-      /* This means the style provided has a prop that is now allowed as a motion style */
+      /* This means the style provided has a prop that is not allowed as a motion style */
       if (!allowedTypes.includes(key)) {
         // eslint-disable-next-line no-console
         console.warn(
