@@ -1,5 +1,8 @@
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
 import * as React from 'react';
-import { getNativeElementProps, mergeClasses, Slot, ComponentProps } from '@fluentui/react-components';
+import { getIntrinsicElementProps, mergeClasses, Slot, ComponentProps, slot } from '@fluentui/react-components';
 import { useSizeStyles, useStyles, useWeightStyles } from './StyledText.styles';
 
 export type StyledTextSlots = {
@@ -107,7 +110,6 @@ const sizeMap: Record<string, 'base100' | 'base200' | 'base300' | 'base400' | 'b
 export const StyledText = React.forwardRef<HTMLSpanElement, StyledTextProps>((props, ref) => {
   const {
     align,
-    as: Component = 'span',
     atMention,
     disabled,
     error,
@@ -122,39 +124,42 @@ export const StyledText = React.forwardRef<HTMLSpanElement, StyledTextProps>((pr
 
   const dir = typeof props.children === 'string' ? 'auto' : undefined;
 
-  const rootProps = getNativeElementProps(Component, {
-    ref,
-    ...props,
-  });
-
   const sizeStyles = useSizeStyles();
   const weightStyles = useWeightStyles();
   const styles = useStyles();
 
   const size = props.size ? sizeMap[props.size] : props.size;
-  const className = mergeClasses(
-    styledTextClassName,
-    size && sizeStyles[size],
-    weight && weightStyles[weight],
-    wrap === false && styles.nowrap,
-    truncate && styles.truncate,
-    align === 'center' && styles.alignCenter,
-    align === 'end' && styles.alignEnd,
-    align === 'justify' && styles.alignJustify,
 
-    atMention && styles.mention,
-    atMention === 'me' && styles.mentionMe,
-    disabled && styles.disabled,
-    error && styles.error,
-    important && styles.important,
-    success && styles.success,
-    temporary && styles.temporary,
-    timestamp && styles.timestamp,
+  const RootSlot = slot.always(
+    getIntrinsicElementProps('span', {
+      ref,
+      ...props,
+      dir,
+      className: mergeClasses(
+        styledTextClassName,
+        size && sizeStyles[size],
+        weight && weightStyles[weight],
+        wrap === false && styles.nowrap,
+        truncate && styles.truncate,
+        align === 'center' && styles.alignCenter,
+        align === 'end' && styles.alignEnd,
+        align === 'justify' && styles.alignJustify,
 
-    props.className,
+        atMention && styles.mention,
+        atMention === 'me' && styles.mentionMe,
+        disabled && styles.disabled,
+        error && styles.error,
+        important && styles.important,
+        success && styles.success,
+        temporary && styles.temporary,
+        timestamp && styles.timestamp,
+        props.className,
+      ),
+    }),
+    { elementType: 'span' },
   );
 
-  return <Component dir={dir} {...rootProps} className={className} />;
+  return <RootSlot />;
 });
 
 StyledText.displayName = 'StyledText';

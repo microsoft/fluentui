@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: creates getIntrinsicElementProps to replace getNativeElementProps on slots creation",
-  "packageName": "@fluentui/react-utilities",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

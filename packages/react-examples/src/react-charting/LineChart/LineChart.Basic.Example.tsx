@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
 interface ILineChartBasicState {
@@ -92,7 +91,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
               onDataPointClick: () => alert('click on 218000'),
             },
           ],
-          color: DefaultPalette.blue,
+          color: DataVizPalette.color3,
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -130,7 +129,7 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
               y: 298000,
             },
           ],
-          color: DefaultPalette.green,
+          color: DataVizPalette.color4,
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -139,11 +138,11 @@ export class LineChartBasicExample extends React.Component<{}, ILineChartBasicSt
           legend: 'single point',
           data: [
             {
-              x: new Date('2020-03-05T00:00:00.000Z'),
-              y: 282000,
+              x: new Date('2020-03-05T12:00:00.000Z'),
+              y: 232000,
             },
           ],
-          color: DefaultPalette.yellow,
+          color: DataVizPalette.color5,
         },
       ],
     };

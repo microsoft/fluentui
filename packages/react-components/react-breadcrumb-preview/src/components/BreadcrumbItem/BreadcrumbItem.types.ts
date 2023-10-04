@@ -32,4 +32,8 @@ export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
      * Defines whether item is interactive or not.
      */
     isInteractive?: boolean;
+    /**
+     * Defines whether Breadcrumb type is interactive or not.
+     */
+    hasInteractiveItems?: boolean;
   };

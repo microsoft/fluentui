@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: replace makeStyles with makeResetStyles",
+  "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps",
   "packageName": "@fluentui/react-tree",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"
