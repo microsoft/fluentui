@@ -78,6 +78,12 @@ export interface ILineChartProps extends ICartesianChartProps {
   culture?: string;
 
   /**
+   * The prop used to override default sorting of data by its X values
+   * @default false
+   */
+  disableSortByXValues?: boolean;
+
+  /**
    * @default false
    * The prop used to enable the perf optimization
    */

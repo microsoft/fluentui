@@ -223,11 +223,18 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   }
 
   public render(): JSX.Element {
-    const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
+    const { tickValues, tickFormat, eventAnnotationProps, legendProps, data, disableSortByXValues } = this.props;
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
 
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
+
+    if (disableSortByXValues === false) {
+      points.forEach(point => {
+        point.data.sort(this._sortByXValues);
+      });
+    }
+
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
       points = this.state.selectedLegendPoints.length >= 1 ? this.state.selectedLegendPoints : this._points;
       this._calloutPoints = calloutData(points);
@@ -336,6 +343,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       />
     );
   }
+
+  //Comparator function to sort by x values
+  private _sortByXValues = (dataItem1: ILineChartDataPoint, dataItem2: ILineChartDataPoint): number => {
+    return dataItem1.x.valueOf() - dataItem2.x.valueOf();
+  };
 
   private _injectIndexPropertyInLineChartData = (lineChartData?: ILineChartPoints[]): LineChartDataWithIndex[] | [] => {
     const { allowMultipleShapesForPoints = false } = this.props;
