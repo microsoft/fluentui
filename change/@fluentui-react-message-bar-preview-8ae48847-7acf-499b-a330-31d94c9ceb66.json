@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release preview package",
-  "packageName": "@fluentui/react-message-bar-preview",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

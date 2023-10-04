@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: initial release",
-  "packageName": "@fluentui/react-tags",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

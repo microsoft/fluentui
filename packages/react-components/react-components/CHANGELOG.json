@@ -2,6 +2,77 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Wed, 04 Oct 2023 08:45:45 GMT",
+      "tag": "@fluentui/react-components_v9.34.0",
+      "version": "9.34.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "764314f0644f7de360536a955442c06470406c5b",
+            "comment": "Fix: Button focus borders were extending past bounding box causing overlap, focus border is now inset"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "44fc4425708d04018dbfa0875f453df324068fd7",
+            "comment": "fix: Icon in disabled Button shouldn't change color on hover or pressed."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "e0d871e6236b9ef86b8566daf7c8ba61a7325b1f",
+            "comment": "fix: Updated slots to be required in ProgressBarState"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "eb4533eee19eba7b7177e9938e5c5fd642f0e691",
+            "comment": "chore: replace makeStyles with makeResetStyles"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3b210c90f667620c54a8b85b99bf33888afa1f57",
+            "comment": "chore: delegate focus outline to layout components"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "f61033d77d6852838c580bfa7379d026128c2dbb",
+            "comment": "feat: exports getIntrinsicElementProps method"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e81fd717e06cab9d563e32a721fdf07346d084f9",
+            "comment": "feat: release Tag component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "b93332889af6fc14d25bcfe50ed0c56d988c10f8",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "e81fd717e06cab9d563e32a721fdf07346d084f9",
+            "comment": "feat: initial release"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f61033d77d6852838c580bfa7379d026128c2dbb",
+            "comment": "feat: creates getIntrinsicElementProps to replace getNativeElementProps on slots creation"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Oct 2023 08:56:03 GMT",
       "tag": "@fluentui/react-components_v9.33.0",
       "version": "9.33.0",
