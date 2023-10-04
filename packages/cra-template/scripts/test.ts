@@ -12,7 +12,6 @@ import {
   prepareCreateReactApp,
   TempPaths,
 } from '@fluentui/scripts-projects-test';
-import { findGitRoot } from '@fluentui/scripts-monorepo';
 
 // This test is sort of like `packages/fluentui/projects-test/src/createReactApp.ts`, but it uses
 // a custom local template rather than making a generic TS project and adding our project as a dep.
@@ -42,7 +41,7 @@ function verifyVersion() {
  * Instead, pack up the locally-built packages and make a copy of the template which references them.
  */
 async function prepareTemplate(logger: Function, tempPaths: TempPaths) {
-  await packProjectPackages(logger, findGitRoot(), ['@fluentui/react']);
+  await packProjectPackages(logger, ['@fluentui/react']);
 
   const templatePath = path.join(tempPaths.root, 'cra-template');
 

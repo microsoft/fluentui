@@ -1,6 +1,6 @@
 import path from 'path';
 
-import { getDependencies, workspaceRoot } from '@fluentui/scripts-monorepo';
+import { getDependencies } from '@fluentui/scripts-monorepo';
 import { sh } from '@fluentui/scripts-utils';
 import fs from 'fs-extra';
 
@@ -24,19 +24,13 @@ export async function addResolutionPathsForProjectPackages(testProjectDir: strin
   fs.writeJSONSync(jsonPath, json, { spaces: 2 });
 }
 
-export async function packProjectPackages(
-  logger: Function,
-  lernaRoot: string,
-  rootPackages: string[],
-): Promise<PackedPackages> {
+export async function packProjectPackages(logger: Function, rootPackages: string[]): Promise<PackedPackages> {
   if (packedPackages) {
     logger(`✔️ Packages already packed`);
     return packedPackages;
   }
 
   packedPackages = {};
-
-  logger(`✔️ Used lerna config: ${workspaceRoot}`);
 
   if (rootPackages.length > 1) {
     throw new Error('illegal API, we support only 1 package from now one!');
