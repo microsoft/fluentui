@@ -8,7 +8,7 @@ export function listScrollParents(node: HTMLElement): HTMLElement[] {
     const scrollParent = getScrollParent(cur);
 
     if (node.ownerDocument.body === scrollParent) {
-      scrollParents.push(cur);
+      scrollParents.push(scrollParent);
       break;
     }
 
