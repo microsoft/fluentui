@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Consider all parents as scroll parents",
+  "packageName": "@fluentui/react-positioning",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

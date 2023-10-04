@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-progress
 
-This log was last generated on Tue, 26 Sep 2023 17:49:09 GMT and should not be manually modified.
+This log was last generated on Wed, 04 Oct 2023 08:45:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.1.43)
+
+Wed, 04 Oct 2023 08:45:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.1.42..@fluentui/react-progress_v9.1.43)
+
+### Patches
+
+- fix: Updated slots to be required in ProgressBarState ([PR #29366](https://github.com/microsoft/fluentui/pull/29366) by gcox@microsoft.com)
+- Bump @fluentui/react-field to v9.1.33 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.13 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+- Bump @fluentui/react-utilities to v9.14.0 ([commit](https://github.com/microsoft/fluentui/commit/67b6cc6534e684ed32704dc6c0faee632bb840dc) by beachball)
+
+## [9.1.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.1.42)
+
+Mon, 02 Oct 2023 08:56:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-progress_v9.1.41..@fluentui/react-progress_v9.1.42)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.32 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.9.2 ([PR #29301](https://github.com/microsoft/fluentui/pull/29301) by beachball)
 
 ## [9.1.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-progress_v9.1.41)
 

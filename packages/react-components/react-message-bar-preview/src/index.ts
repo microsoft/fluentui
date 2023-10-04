@@ -6,7 +6,7 @@ export {
   messageBarClassNames,
 } from './MessageBar';
 
-export type { MessageBarProps, MessageBarSlots, MessageBarState } from './MessageBar';
+export type { MessageBarProps, MessageBarSlots, MessageBarState, MessageBarIntent } from './MessageBar';
 
 export {
   MessageBarTitle,
@@ -40,3 +40,12 @@ export type { MessageBarBodyProps, MessageBarBodySlots, MessageBarBodyState } fr
 
 export { MessageBarContextProvider, useMessageBarContext } from './contexts/messageBarContext';
 export type { MessageBarContextValue } from './contexts/messageBarContext';
+export {
+  MessageBarGroup,
+  useMessageBarGroupStyles_unstable,
+  useMessageBarGroup_unstable,
+  renderMessageBarGroup_unstable,
+  messageBarGroupClassNames,
+} from './MessageBarGroup';
+
+export type { MessageBarGroupProps, MessageBarGroupSlots, MessageBarGroupState } from './MessageBarGroup';

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Tue, 26 Sep 2023 17:49:11 GMT and should not be manually modified.
+This log was last generated on Mon, 02 Oct 2023 08:56:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.9.2)
+
+Mon, 02 Oct 2023 08:56:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.9.1..@fluentui/react-shared-contexts_v9.9.2)
+
+### Patches
+
+- feat: add custom styling hooks for Breadcrumb component and its sub-components ([PR #29318](https://github.com/microsoft/fluentui/pull/29318) by vkozlova@microsoft.com)
 
 ## [9.9.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.9.1)
 

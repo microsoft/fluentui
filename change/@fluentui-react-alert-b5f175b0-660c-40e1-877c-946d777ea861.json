@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps",
+  "packageName": "@fluentui/react-alert",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

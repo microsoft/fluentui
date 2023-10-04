@@ -6,6 +6,7 @@
 
 /// <reference types="react" />
 
+import type { ButtonContextValue } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -59,12 +60,42 @@ export const MessageBarContextProvider: React_2.Provider<MessageBarContextValue 
 
 // @public (undocumented)
 export type MessageBarContextValue = {
-    layout?: 'multiline' | 'singleline' | 'auto';
+    layout: 'multiline' | 'singleline' | 'auto';
+    actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
+    bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
 };
 
 // @public
-export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<MessageBarContextValue, 'layout'> & {
-    intent?: 'info' | 'success' | 'warning' | 'error';
+export const MessageBarGroup: ForwardRefComponent<MessageBarGroupProps>;
+
+// @public (undocumented)
+export const messageBarGroupClassNames: SlotClassNames<MessageBarGroupSlots>;
+
+// @public
+export type MessageBarGroupProps = ComponentProps<MessageBarGroupSlots> & {
+    children: React_2.ReactElement[] | React_2.ReactElement;
+    animate?: 'exit-only' | 'both';
+};
+
+// @public (undocumented)
+export type MessageBarGroupSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type MessageBarGroupState = ComponentState<MessageBarGroupSlots> & Pick<MessageBarGroupProps, 'animate'> & {
+    enterStyles: string;
+    exitStyles: string;
+    children: React_2.ReactElement[];
+};
+
+// @public (undocumented)
+export type MessageBarIntent = 'info' | 'success' | 'warning' | 'error';
+
+// @public
+export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<Partial<MessageBarContextValue>, 'layout'> & {
+    intent?: MessageBarIntent;
+    politeness?: 'assertive' | 'polite';
 };
 
 // @public (undocumented)
@@ -74,7 +105,11 @@ export type MessageBarSlots = {
 };
 
 // @public
-export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>>;
+export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>> & {
+    transitionClassName: string;
+    actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
+    bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
+};
 
 // @public
 export const MessageBarTitle: ForwardRefComponent<MessageBarTitleProps>;
@@ -97,31 +132,40 @@ export type MessageBarTitleState = ComponentState<MessageBarTitleSlots>;
 export const renderMessageBar_unstable: (state: MessageBarState, contexts: MessageBarContextValues) => JSX.Element;
 
 // @public
-export const renderMessageBarActions_unstable: (state: MessageBarActionsState) => JSX.Element;
+export const renderMessageBarActions_unstable: (state: MessageBarActionsState, contexts: MessageBarActionsContextValues) => JSX.Element;
 
 // @public
 export const renderMessageBarBody_unstable: (state: MessageBarBodyState) => JSX.Element;
 
 // @public
+export const renderMessageBarGroup_unstable: (state: MessageBarGroupState) => JSX.Element;
+
+// @public
 export const renderMessageBarTitle_unstable: (state: MessageBarTitleState) => JSX.Element;
 
 // @public
-export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLElement>) => MessageBarState;
+export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarState;
 
 // @public
-export const useMessageBarActions_unstable: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLElement>) => MessageBarActionsState;
+export const useMessageBarActions_unstable: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarActionsState;
 
 // @public
 export const useMessageBarActionsStyles_unstable: (state: MessageBarActionsState) => MessageBarActionsState;
 
 // @public
-export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLElement>) => MessageBarBodyState;
+export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;
 
 // @public
 export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => MessageBarBodyState;
 
 // @public (undocumented)
 export const useMessageBarContext: () => MessageBarContextValue;
+
+// @public
+export const useMessageBarGroup_unstable: (props: MessageBarGroupProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarGroupState;
+
+// @public
+export const useMessageBarGroupStyles_unstable: (state: MessageBarGroupState) => MessageBarGroupState;
 
 // @public
 export const useMessageBarStyles_unstable: (state: MessageBarState) => MessageBarState;

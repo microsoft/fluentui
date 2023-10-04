@@ -1,29 +1,13 @@
-import { GriffelStyle, makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import {
-  MEDIA_QUERY_BREAKPOINT_SELECTOR,
-  SURFACE_BORDER_WIDTH,
-  SURFACE_PADDING,
-  useDialogContext_unstable,
-} from '../../contexts';
+import { MEDIA_QUERY_BREAKPOINT_SELECTOR, SURFACE_BORDER_WIDTH, SURFACE_PADDING } from '../../contexts';
 import type { DialogSurfaceSlots, DialogSurfaceState } from './DialogSurface.types';
 
 export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots> = {
   root: 'fui-DialogSurface',
   backdrop: 'fui-DialogSurface__backdrop',
-};
-
-/**
- * Generic reusable backdrop styles
- */
-export const backdropStyles: GriffelStyle = {
-  backgroundColor: 'rgba(0, 0, 0, 0.4)',
-};
-
-const nestedDialogBackdropStyles: GriffelStyle = {
-  backgroundColor: 'transparent',
 };
 
 /**
@@ -53,17 +37,14 @@ const useRootResetStyles = makeResetStyles({
   backgroundColor: tokens.colorNeutralBackground1,
   color: tokens.colorNeutralForeground1,
 
-  '&::backdrop': backdropStyles,
-
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',
   },
 });
 
-const useStyles = makeStyles({
-  nestedDialogBackdrop: nestedDialogBackdropStyles,
-  nestedNativeDialogBackdrop: {
-    '&::backdrop': nestedDialogBackdropStyles,
+const useBackdropStyles = makeStyles({
+  nestedDialogBackdrop: {
+    backgroundColor: 'transparent',
   },
 });
 
@@ -72,7 +53,7 @@ const useStyles = makeStyles({
  */
 const useBackdropResetStyles = makeResetStyles({
   ...shorthands.inset('0px'),
-  ...backdropStyles,
+  backgroundColor: 'rgba(0, 0, 0, 0.4)',
   position: 'fixed',
 });
 
@@ -81,22 +62,16 @@ const useBackdropResetStyles = makeResetStyles({
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
   const surfaceResetStyles = useRootResetStyles();
-  const styles = useStyles();
+  const styles = useBackdropStyles();
   const backdropResetStyles = useBackdropResetStyles();
-  const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
 
-  state.root.className = mergeClasses(
-    dialogSurfaceClassNames.root,
-    surfaceResetStyles,
-    isNestedDialog && styles.nestedNativeDialogBackdrop,
-    state.root.className,
-  );
+  state.root.className = mergeClasses(dialogSurfaceClassNames.root, surfaceResetStyles, state.root.className);
 
   if (state.backdrop) {
     state.backdrop.className = mergeClasses(
       dialogSurfaceClassNames.backdrop,
       backdropResetStyles,
-      isNestedDialog && styles.nestedDialogBackdrop,
+      state.isNestedDialog && styles.nestedDialogBackdrop,
       state.backdrop.className,
     );
   }
