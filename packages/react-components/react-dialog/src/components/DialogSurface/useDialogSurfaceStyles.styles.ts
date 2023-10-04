@@ -56,7 +56,7 @@ const useRootResetStyles = makeResetStyles({
 
 const useStyles = makeStyles({
   nestedDialogBackdrop: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
   },
 });
 
