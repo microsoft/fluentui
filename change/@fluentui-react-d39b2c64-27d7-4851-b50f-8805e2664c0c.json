@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: GroupedListV2 scrollToIndex scrolls to correct index",
-  "packageName": "@fluentui/react",
-  "email": "seanmonahan@microsoft.com",
-  "dependentChangeType": "patch"
-}
