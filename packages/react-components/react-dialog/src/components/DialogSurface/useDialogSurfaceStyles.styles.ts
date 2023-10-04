@@ -71,15 +71,16 @@ const useRootStyles = makeStyles({
 const useRootMotionStyles = makeStyles({
   root: {
     opacity: 0,
-    transform: 'scale(0.85) translate3D(0, 10%, 0)',
-    transitionDuration: tokens.durationNormal,
+    boxShadow: '0px 0px 0px 0px rgba(0, 0, 0, 0.1)',
+    transform: 'scale(0.85) translateZ(0)',
+    transitionDuration: tokens.durationGentle,
     transitionProperty: 'opacity, transform, box-shadow',
   },
 
   visible: {
     boxShadow: tokens.shadow64,
     opacity: 1,
-    transform: 'scale(1) translate3D(0, 0, 0)',
+    transform: 'scale(1) translateZ(0)',
   },
 
   entering: {
@@ -102,7 +103,7 @@ const useBackdropResetStyles = makeResetStyles({
 
 const useBackdropMotionStyles = makeStyles({
   backdrop: {
-    transitionDuration: tokens.durationNormal,
+    transitionDuration: tokens.durationGentle,
     transitionTimingFunction: tokens.curveLinear,
     transitionProperty: 'opacity',
     willChange: 'opacity',
@@ -128,6 +129,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
     dialogSurfaceClassNames.root,
     surfaceResetStyles,
     isNestedDialog && styles.nestedNativeDialogBackdrop,
+    motionStyles.root,
     state.motion.active && motionStyles.visible,
     state.motion.type === 'entering' && motionStyles.entering,
     state.motion.type === 'exiting' && motionStyles.exiting,
@@ -139,7 +141,8 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
       dialogSurfaceClassNames.backdrop,
       backdropResetStyles,
       isNestedDialog && styles.nestedDialogBackdrop,
-      state.backdropMotion.active && backdropMotionStyles.visible,
+      backdropMotionStyles.backdrop,
+      state.motion.active && backdropMotionStyles.visible,
       state.backdrop.className,
     );
   }

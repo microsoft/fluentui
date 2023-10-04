@@ -45,12 +45,6 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
    * Useful to apply CSS transitions when the element is mounted and ready to be animated.
    */
   active: boolean;
-
-  /**
-   * Indicates whether the component has internal motion.
-   * Useful to avoid applying internal motion when the component is being overridden by a parent.
-   */
-  hasInternalMotion: boolean;
 };
 
 export type MotionShorthandValue = boolean;
@@ -184,7 +178,6 @@ function useMotionPresence<Element extends HTMLElement>(
       type,
       active,
       canRender: type !== 'unmounted',
-      hasInternalMotion: true,
     }),
     // No need to add ref to the deps array as it is stable
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -201,7 +194,6 @@ export function getDefaultMotionState<Element extends HTMLElement>(): MotionStat
     type: 'unmounted',
     active: false,
     canRender: false,
-    hasInternalMotion: true,
   };
 }
 
@@ -223,7 +215,7 @@ export function useMotion<Element extends HTMLElement>(
    * on their side without having to worry about the performance impact of the hook.
    */
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useIsMotion(shorthand) ? { ...shorthand, hasInternalMotion: false } : useMotionPresence(shorthand, options);
+  return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
 }
 
 const stringifyShorthand = <Element extends HTMLElement>(value: MotionShorthand<Element>) => {

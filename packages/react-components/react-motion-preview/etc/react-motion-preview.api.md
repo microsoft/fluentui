@@ -4,7 +4,6 @@
 
 ```ts
 
-import { MotionState as MotionState_2 } from '@fluentui/react-motion-preview';
 import * as React_2 from 'react';
 import { SlotShorthandValue } from '@fluentui/react-utilities';
 import { UnknownSlotProps } from '@fluentui/react-utilities';
@@ -29,7 +28,6 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
     type: MotionType;
     canRender: boolean;
     active: boolean;
-    hasInternalMotion: boolean;
 };
 
 // @public (undocumented)
@@ -49,9 +47,6 @@ export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthan
 
 // @internal
 export function useMotionFromSlot<Props extends UnknownSlotProps, Element extends HTMLElement>(props: Props | SlotShorthandValue | undefined | null, shorthand: MotionShorthand<Element>, options?: MotionOptions): [Props, MotionState<Element>];
-
-// @public (undocumented)
-export function useMotionStyles(motion: MotionState_2, classNames: string): string;
 
 // (No @packageDocumentation comment for this package)
 

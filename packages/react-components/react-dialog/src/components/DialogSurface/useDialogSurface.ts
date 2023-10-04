@@ -9,7 +9,6 @@ import {
 import { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { Escape } from '@fluentui/keyboard-keys';
-import { useMotionFromSlot } from '@fluentui/react-motion-preview';
 
 /**
  * Create the state required to render DialogSurface.
@@ -28,7 +27,6 @@ export const useDialogSurface_unstable = (
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const motion = useDialogContext_unstable(ctx => ctx.motion);
-  const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
@@ -60,14 +58,11 @@ export const useDialogSurface_unstable = (
     }
   });
 
-  const [backdropProps, backdropMotion] = useMotionFromSlot(props.backdrop, open);
-
   const backdrop =
     motion.canRender && modalType !== 'non-modal'
-      ? slot.optional(backdropProps, {
+      ? slot.optional(props.backdrop, {
           defaultProps: {
             'aria-hidden': 'true',
-            ref: backdropMotion.ref as React.Ref<HTMLDivElement>,
           },
           elementType: 'div',
         })
@@ -96,6 +91,5 @@ export const useDialogSurface_unstable = (
     ),
 
     motion,
-    backdropMotion,
   };
 };

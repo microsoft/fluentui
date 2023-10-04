@@ -36,7 +36,7 @@ export type DialogSurfaceContextValues = {
 /**
  * State used in rendering DialogSurface
  */
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & {
-  motion: MotionState<DialogSurfaceElement>;
-  backdropMotion: MotionState<DialogSurfaceElement>;
-} & Pick<PortalProps, 'mountNode'>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
+  Pick<PortalProps, 'mountNode'> & {
+    motion: MotionState<DialogSurfaceElement>;
+  };
