@@ -1100,8 +1100,19 @@ const MultiScrollParent = () => {
       <button id="scroll" onClick={scroll}>
         scroll
       </button>
-      <div ref={scrollContainerRef} style={{ border: '2px dashed green', height: 300, width: 400, overflow: 'auto' }}>
-        <div style={{ height: 5000, width: 300, position: 'relative' }}>
+      <div
+        ref={scrollContainerRef}
+        style={{
+          border: '2px dashed green',
+          height: 300,
+          width: 400,
+          overflow: 'auto',
+          display: 'grid',
+          gridTemplateColumns: '350px auto',
+          gridTemplateRows: '800px',
+        }}
+      >
+        <div style={{ position: 'relative' }}>
           <div
             style={{
               overflow: 'auto',
@@ -1117,6 +1128,11 @@ const MultiScrollParent = () => {
             </button>
           </div>
         </div>
+        <div
+          style={{
+            backgroundImage: 'linear-gradient(to bottom, #ffffff, #b9b9b9, #777777, #3b3b3b, #000000)',
+          }}
+        />
       </div>
       <div ref={containerRef} style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white' }}>
         Popover
