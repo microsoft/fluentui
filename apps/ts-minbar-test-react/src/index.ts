@@ -7,7 +7,6 @@ import {
   log,
   shEcho,
   TempPaths,
-  workspaceRoot,
   generateFiles,
 } from '@fluentui/scripts-projects-test';
 
