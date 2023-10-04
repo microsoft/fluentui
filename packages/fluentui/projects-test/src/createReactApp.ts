@@ -33,7 +33,7 @@ export async function createReactApp() {
 
   logger('STEP 2. Add Fluent UI dependency to test project..');
 
-  const packedPackages = await packProjectPackages(logger, ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, '@fluentui/react-northstar');
   await addResolutionPathsForProjectPackages(testAppPathRoot);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, testAppPathRoot);

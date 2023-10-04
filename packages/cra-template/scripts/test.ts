@@ -45,7 +45,7 @@ function verifyVersion() {
  * Instead, pack up the locally-built packages and make a copy of the template which references them.
  */
 async function prepareTemplate(logger: Function, tempPaths: TempPaths) {
-  await packProjectPackages(logger, ['@fluentui/react']);
+  await packProjectPackages(logger, '@fluentui/react');
 
   const templatePath = path.join(tempPaths.root, 'cra-template');
 

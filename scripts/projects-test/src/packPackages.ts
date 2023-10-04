@@ -24,7 +24,7 @@ export async function addResolutionPathsForProjectPackages(testProjectDir: strin
   fs.writeJSONSync(jsonPath, json, { spaces: 2 });
 }
 
-export async function packProjectPackages(logger: Function, rootPackages: string[]): Promise<PackedPackages> {
+export async function packProjectPackages(logger: Function, project: string): Promise<PackedPackages> {
   if (packedPackages) {
     logger(`✔️ Packages already packed`);
     return packedPackages;
@@ -32,19 +32,15 @@ export async function packProjectPackages(logger: Function, rootPackages: string
 
   packedPackages = {};
 
-  if (rootPackages.length > 1) {
-    throw new Error('illegal API, we support only 1 package from now one!');
-  }
-
-  const { dependencies: requiredPackages, projectGraph } = await getDependencies(rootPackages[0]);
+  const { dependencies: projectDependencies, projectGraph } = await getDependencies(project);
   // add provided package to be packaged
-  requiredPackages.unshift({
-    name: rootPackages[0],
+  projectDependencies.unshift({
+    name: project,
     dependencyType: 'dependencies',
     isTopLevel: true,
   });
 
-  logger(`✔️ Following packages will be packed:${requiredPackages.map(pkg => `\n${' '.repeat(30)}- ${pkg.name}`)}`);
+  logger(`✔️ Following packages will be packed:${projectDependencies.map(pkg => `\n${' '.repeat(30)}- ${pkg.name}`)}`);
 
   const tmpDirectory = createTempDir('project-packed-');
   logger(`✔️ Temporary directory for packed packages was created: ${tmpDirectory}`);
@@ -53,8 +49,8 @@ export async function packProjectPackages(logger: Function, rootPackages: string
   await shEcho('npm --version', tmpDirectory);
 
   await Promise.all(
-    requiredPackages.map(async project => {
-      const packageName = project.name;
+    projectDependencies.map(async projectConfig => {
+      const packageName = projectConfig.name;
       const packageInfo = projectGraph.nodes[packageName].package;
       if (!packageInfo) {
         throw new Error(`Package ${packageName} doesn't exist`);
@@ -65,8 +61,8 @@ export async function packProjectPackages(logger: Function, rootPackages: string
       const entryPointPath = packageMain ? path.join(packagePath, packageMain) : '';
       if (!fs.existsSync(entryPointPath)) {
         throw new Error(
-          `Package ${packageName} does not appear to have been built yet. Please ensure that root package(s) ` +
-            `${rootPackages.join(', ')} are listed in dependencies of the package running the test.`,
+          `Package ${packageName} does not appear to have been built yet.` +
+            `Please ensure that package:"${project}" has properly defined dependencies in its package.json`,
         );
       }
 
