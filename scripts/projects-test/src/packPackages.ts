@@ -37,6 +37,12 @@ export async function packProjectPackages(logger: Function, rootPackages: string
   }
 
   const { dependencies: requiredPackages, projectGraph } = await getDependencies(rootPackages[0]);
+  // add provided package to be packaged
+  requiredPackages.unshift({
+    name: rootPackages[0],
+    dependencyType: 'dependencies',
+    isTopLevel: true,
+  });
 
   logger(`✔️ Following packages will be packed:${requiredPackages.map(pkg => `\n${' '.repeat(30)}- ${pkg.name}`)}`);
 

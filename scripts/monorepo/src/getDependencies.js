@@ -65,17 +65,10 @@ function collectDependencies(
  * @param {string} packageName - including `@fluentui/` prefix
  */
 async function getDependencies(packageName) {
-  const selfDependencyDefinition = /** @type const */ ({
-    name: packageName,
-    dependencyType: 'dependencies',
-    isTopLevel: true,
-  });
   const { projectGraph } = await lernaUtils.detectProjects();
 
   const allDepsGraph = collectDependencies(packageName, projectGraph, { shallow: false, dependenciesOnly: false });
-  allDepsGraph.unshift(selfDependencyDefinition);
   const depsGraph = collectDependencies(packageName, projectGraph, { shallow: false, dependenciesOnly: true });
-  depsGraph.unshift(selfDependencyDefinition);
   const devDepsGraph = allDepsGraph.filter(anyDep => !depsGraph.find(prodDep => prodDep.name === anyDep.name));
 
   return {

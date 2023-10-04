@@ -15,11 +15,6 @@ describe(`#getDependencies`, () => {
         Object {
           "dependencyType": "dependencies",
           "isTopLevel": true,
-          "name": "@fluentui/react-text",
-        },
-        Object {
-          "dependencyType": "dependencies",
-          "isTopLevel": true,
           "name": "@fluentui/react-shared-contexts",
         },
         Object {
