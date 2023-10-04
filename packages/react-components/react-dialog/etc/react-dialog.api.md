@@ -145,6 +145,11 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 // @public (undocumented)
 export type DialogSurfaceContextValue = boolean;
 
+// @public (undocumented)
+export type DialogSurfaceContextValues = {
+    dialogSurface: DialogSurfaceContextValue;
+};
+
 // @public
 export type DialogSurfaceElement = HTMLElement;
 
@@ -253,6 +258,9 @@ export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2
 
 // @public (undocumented)
 export const useDialogSurfaceContext_unstable: () => boolean;
+
+// @public (undocumented)
+export function useDialogSurfaceContextValues_unstable(state: DialogSurfaceState): DialogSurfaceContextValues;
 
 // @public
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;
