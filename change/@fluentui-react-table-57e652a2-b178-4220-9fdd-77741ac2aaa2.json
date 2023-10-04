@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add sorting on individual columns",
-  "packageName": "@fluentui/react-table",
-  "email": "kakrookaran@gmail.com",
-  "dependentChangeType": "patch"
-}

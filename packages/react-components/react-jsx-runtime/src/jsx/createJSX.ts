@@ -21,5 +21,5 @@ export const createJSX =
     if (isSlot<Props>(type)) {
       return slotRuntime(type, overrideProps, key, source, self);
     }
-    return runtime(type, overrideProps, key);
+    return runtime(type, overrideProps, key, source, self);
   };
