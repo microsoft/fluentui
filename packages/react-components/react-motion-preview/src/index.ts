@@ -1,4 +1,4 @@
-export { getDefaultMotionState, useIsMotion, useMotion, useMotionClassNames } from './hooks';
+export { getDefaultMotionState, useMotion, useMotionClassNames } from './hooks';
 export type {
   MotionOptions,
   MotionShorthand,
