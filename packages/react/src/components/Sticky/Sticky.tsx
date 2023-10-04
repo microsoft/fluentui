@@ -267,7 +267,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       if (this.canStickyTop) {
         const distanceToStickTop = distanceFromTop - this._getStickyDistanceFromTop();
         const containerScrollTop = container.scrollTop;
-        isStickyTop = isLessThanInRange(distanceToStickTop, containerScrollTop, 1);
+        isStickyTop = isLessThanInRange(distanceToStickTop, containerScrollTop, COMPARISON_RANGE);
       }
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance
