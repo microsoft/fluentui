@@ -58,11 +58,26 @@ const iconEllipsis = html` <svg
 </svg>`;
 
 let count = 0;
-const increaseCount = (e: Event) => {
+const increaseCount = () => {
   const textContainer = document.getElementById('text-container');
   count++;
   if (textContainer) {
     textContainer.innerText = `${count}`;
+  }
+};
+const handleKeyboardEvent = (e: KeyboardEvent) => {
+  const key = e.key;
+  switch (key) {
+    case keyEnter:
+    case keySpace:
+      {
+        console.log('asdf');
+        increaseCount();
+        e.preventDefault();
+      }
+      break;
+    default:
+      return true;
   }
 };
 
@@ -139,7 +154,7 @@ const cardTemplate = html<CardStoryArgs>`
       ?interactive="${x => x.interactive}"
       ?selectable="${x => x.selectable}"
       ?disabled="${x => x.disabled}"
-      trap-focus
+      focus-mode="${x => x.focusMode}"
     >
       <fluent-card-header>
         <fluent-image
@@ -149,6 +164,7 @@ const cardTemplate = html<CardStoryArgs>`
           shape="square"
         >
           <img  src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/avatar_elvia.svg" />
+
         </fluent-image>
         <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
           <span>Elvia Atkins</span>
@@ -157,6 +173,8 @@ const cardTemplate = html<CardStoryArgs>`
         <fluent-text block size="200" font="base" weight="regular" block slot="description">
           <span>5h ago - About us - Overview</span>
         </fluent-text>
+        <fluent-button tabindex="0" slot="action" ?disabled="${x =>
+          x.disabled}" icon-only appearance="transparent">${iconEllipsis}</fluent-button>
       </fluent-card-header>
       <fluent-card-preview class="card-preview-vertical">
         <fluent-image
@@ -176,11 +194,10 @@ const cardTemplate = html<CardStoryArgs>`
       </fluent-card-preview>
       <fluent-card-footer>
         <div>
-          <fluent-button ?disabled="${x => x.disabled}" icon>${iconReply}Reply</fluent-button>
-          <fluent-button ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
+          <fluent-button tabindex="0" ?disabled="${x => x.disabled}" icon>${iconReply}Reply</fluent-button>
+          <fluent-button tabindex="0" ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
         </div>
-        <fluent-button slot="action" ?disabled="${x =>
-          x.disabled}" icon-only appearance="transparent">${iconEllipsis}</fluent-button>
+
       </fluent-card-footer>
     </fluent-card>
   </div>
@@ -213,6 +230,20 @@ export default {
         },
         defaultValue: {
           summary: 'medium',
+        },
+      },
+    },
+    focusMode: {
+      options: Object.values(CardFocusMode),
+      control: {
+        type: 'select',
+      },
+      table: {
+        type: {
+          summary: 'Sets the focus mode of card',
+        },
+        defaultValue: {
+          summary: 'off',
         },
       },
     },
@@ -644,6 +675,7 @@ export const Interactive = renderComponent(html<CardStoryArgs>`
       orientation="horizontal"
       interactive
       @click="${increaseCount}"
+      @keydown="${handleKeyboardEvent}"
       class="card--width-360"
       id="card-interactive"
     >
