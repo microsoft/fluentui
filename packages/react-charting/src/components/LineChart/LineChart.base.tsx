@@ -225,8 +225,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
   public render(): JSX.Element {
     const { tickValues, tickFormat, eventAnnotationProps, legendProps, data } = this.props;
-    this._points = this._sortChartData(this._points);
     this._points = this._injectIndexPropertyInLineChartData(data.lineChartData);
+    this._points = this._sortChartData(this._points);
     const isXAxisDateType = getXAxisType(this._points);
     let points = this._points;
     if (legendProps && !!legendProps.canSelectMultipleLegends) {
