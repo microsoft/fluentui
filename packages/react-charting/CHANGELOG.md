@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 04 Oct 2023 07:38:36 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2023 07:36:20 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.18.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.0)
+
+Thu, 05 Oct 2023 07:36:20 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.17.12..@fluentui/react-charting_v5.18.0)
+
+### Minor changes
+
+- Minimum height of non zero positive values set to 1% of Max barHeight ([PR #29359](https://github.com/microsoft/fluentui/pull/29359) by shubhabrata08@gmail.com)
+
+### Patches
+
+- Prepare charting package for publishing to fluent docsite ([PR #29210](https://github.com/microsoft/fluentui/pull/29210) by atishay.jain@microsoft.com)
+- Fix overlapping bars in single group ([PR #29347](https://github.com/microsoft/fluentui/pull/29347) by kumarkshitij@microsoft.com)
 
 ## [5.17.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.17.12)
 

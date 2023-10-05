@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix overlapping bars in single group",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}

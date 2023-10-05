@@ -2,6 +2,35 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 05 Oct 2023 07:36:20 GMT",
+      "tag": "@fluentui/react-charting_v5.18.0",
+      "version": "5.18.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e27181b1511f48817de41bffe4a1b4bb7941464d",
+            "comment": "Prepare charting package for publishing to fluent docsite"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "26881a0cb2cee952b14df917b1b6843cc24affa9",
+            "comment": "Fix overlapping bars in single group"
+          }
+        ],
+        "minor": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b4611f7230fa90d1f01ab92ded39ebe2f02298f3",
+            "comment": "Minimum height of non zero positive values set to 1% of Max barHeight"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Oct 2023 07:38:36 GMT",
       "tag": "@fluentui/react-charting_v5.17.12",
       "version": "5.17.12",

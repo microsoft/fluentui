@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Prepare charting package for publishing to fluent docsite",
-  "packageName": "@fluentui/react-charting",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}
