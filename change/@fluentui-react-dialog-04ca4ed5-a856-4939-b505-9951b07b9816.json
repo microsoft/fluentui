@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: expose dialog surface context values",
-  "packageName": "@fluentui/react-dialog",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
