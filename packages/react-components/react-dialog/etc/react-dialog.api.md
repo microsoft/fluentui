@@ -145,6 +145,11 @@ export const dialogSurfaceClassNames: SlotClassNames<DialogSurfaceSlots>;
 // @public (undocumented)
 export type DialogSurfaceContextValue = boolean;
 
+// @public (undocumented)
+export type DialogSurfaceContextValues = {
+    dialogSurface: DialogSurfaceContextValue;
+};
+
 // @public
 export type DialogSurfaceElement = HTMLElement;
 
@@ -161,7 +166,7 @@ export type DialogSurfaceSlots = {
 };
 
 // @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Partial<Pick<DialogContextValue, 'isNestedDialog'>> & Pick<PortalProps, 'mountNode'>;
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;
@@ -253,6 +258,9 @@ export const useDialogSurface_unstable: (props: DialogSurfaceProps, ref: React_2
 
 // @public (undocumented)
 export const useDialogSurfaceContext_unstable: () => boolean;
+
+// @public (undocumented)
+export function useDialogSurfaceContextValues_unstable(state: DialogSurfaceState): DialogSurfaceContextValues;
 
 // @public
 export const useDialogSurfaceStyles_unstable: (state: DialogSurfaceState) => DialogSurfaceState;

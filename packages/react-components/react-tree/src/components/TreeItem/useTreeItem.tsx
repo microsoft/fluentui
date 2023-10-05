@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
-import { useTreeContext_unstable } from '../../contexts/index';
+import { useTreeContext_unstable, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
 import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 
 /**
@@ -23,13 +23,26 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     warnIfNoProperPropsFlatTreeItem(props);
   }
   const requestTreeResponse = useTreeContext_unstable(ctx => ctx.requestTreeResponse);
-  const contextLevel = useTreeContext_unstable(ctx => ctx.level);
+  const { level: contextLevel } = useSubtreeContext_unstable();
+  const parentValue = useTreeItemContext_unstable(ctx => props.parentValue ?? ctx.value);
 
   // note, if the value is not externally provided,
   // then selection and expansion will not work properly
   const value = useId('fuiTreeItemValue-', props.value?.toString());
 
-  const { onClick, onKeyDown, as = 'div', itemType = 'leaf', 'aria-level': level = contextLevel, ...rest } = props;
+  const {
+    onClick,
+    onKeyDown,
+    onMouseOver,
+    onFocus,
+    onMouseOut,
+    onBlur,
+    onChange,
+    as = 'div',
+    itemType = 'leaf',
+    'aria-level': level = contextLevel,
+    ...rest
+  } = props;
 
   const [isActionsVisible, setActionsVisible] = React.useState(false);
   const [isAsideVisible, setAsideVisible] = React.useState(true);
@@ -79,6 +92,14 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       requestTreeResponse({
         ...data,
         itemType,
+        requestType: 'open',
+      });
+      requestTreeResponse({
+        ...data,
+        itemType,
+        parentValue,
+        requestType: 'navigate',
+        type: treeDataTypes.Click,
       });
     });
   });
@@ -93,31 +114,23 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       case Space:
         if (selectionMode !== 'none') {
           selectionRef.current?.click();
+          // Prevents the page from scrolling down when the spacebar is pressed
           event.preventDefault();
         }
         return;
       case treeDataTypes.Enter: {
-        const data = {
-          value,
-          event,
-          open: !open,
-          type: event.key,
-          target: event.currentTarget,
-        } as const;
-        props.onOpenChange?.(event, data);
-        return requestTreeResponse({
-          ...data,
-          itemType,
-        });
+        return event.currentTarget.click();
       }
       case treeDataTypes.End:
       case treeDataTypes.Home:
       case treeDataTypes.ArrowUp:
       case treeDataTypes.ArrowDown:
         return requestTreeResponse({
+          requestType: 'navigate',
           event,
           value,
           itemType,
+          parentValue,
           type: event.key,
           target: event.currentTarget,
         });
@@ -139,6 +152,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         return requestTreeResponse({
           ...data,
           itemType,
+          parentValue,
+          requestType: open ? 'open' : 'navigate',
         });
       }
       case treeDataTypes.ArrowRight:
@@ -159,46 +174,72 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         return requestTreeResponse({
           ...data,
           itemType,
+          parentValue,
+          requestType: open ? 'navigate' : 'open',
         });
     }
     const isTypeAheadCharacter =
       event.key.length === 1 && event.key.match(/\w/) && !event.altKey && !event.ctrlKey && !event.metaKey;
     if (isTypeAheadCharacter) {
       requestTreeResponse({
+        requestType: 'navigate',
         event,
         target: event.currentTarget,
         value,
         itemType,
         type: treeDataTypes.TypeAhead,
+        parentValue,
       });
     }
   });
 
-  const handleActionsVisible = useEventCallback((event: React.FocusEvent | React.MouseEvent) => {
+  const setActionsVisibleIfNotFromSubtree = React.useCallback((event: React.SyntheticEvent<HTMLDivElement>) => {
     const isTargetFromSubtree = Boolean(
       subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
     );
     if (!isTargetFromSubtree) {
       setActionsVisible(true);
     }
+  }, []);
+  const setActionsInvisibleIfNotFromSubtree = React.useCallback(
+    (event: React.MouseEvent<HTMLDivElement> | React.FocusEvent<HTMLDivElement>) => {
+      const isTargetFromSubtree = Boolean(
+        subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
+      );
+      const isRelatedTargetFromActions = Boolean(
+        actionsRef.current && elementContains(actionsRef.current, event.relatedTarget as Node),
+      );
+      if (isRelatedTargetFromActions) {
+        return setActionsVisible(true);
+      }
+      if (!isTargetFromSubtree) {
+        return setActionsVisible(false);
+      }
+    },
+    [],
+  );
+
+  const handleMouseOver = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    onMouseOver?.(event);
+    setActionsVisibleIfNotFromSubtree(event);
   });
 
-  const handleActionsInvisible = useEventCallback((event: React.FocusEvent | React.MouseEvent) => {
-    const isTargetFromSubtree = Boolean(
-      subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
-    );
-    const isRelatedTargetFromActions = Boolean(
-      actionsRef.current && elementContains(actionsRef.current, event.relatedTarget as Node),
-    );
-    if (isRelatedTargetFromActions) {
-      return setActionsVisible(true);
-    }
-    if (!isTargetFromSubtree) {
-      return setActionsVisible(false);
-    }
+  const handleFocus = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    onFocus?.(event);
+    setActionsVisibleIfNotFromSubtree(event);
+  });
+
+  const handleMouseOut = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    onMouseOut?.(event);
+    setActionsInvisibleIfNotFromSubtree(event);
+  });
+  const handleBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    onBlur?.(event);
+    setActionsInvisibleIfNotFromSubtree(event);
   });
 
   const handleChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event);
     if (event.isDefaultPrevented()) {
       return;
     }
@@ -207,6 +248,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       return;
     }
     requestTreeResponse({
+      requestType: 'selection',
       event,
       value,
       itemType,
@@ -233,7 +275,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     isAsideVisible,
     isActionsVisible,
     root: slot.always(
-      getNativeElementProps(as, {
+      getIntrinsicElementProps(as, {
         tabIndex: -1,
         [dataTreeItemValueAttrName]: value,
         ...rest,
@@ -248,32 +290,37 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         'aria-expanded': itemType === 'branch' ? open : undefined,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
-        onMouseOver: handleActionsVisible,
-        onFocus: handleActionsVisible,
-        onMouseOut: handleActionsInvisible,
-        onBlur: handleActionsInvisible,
+        onMouseOver: handleMouseOver,
+        onFocus: handleFocus,
+        onMouseOut: handleMouseOut,
+        onBlur: handleBlur,
         onChange: handleChange,
-      }),
+      } as const),
       { elementType: 'div' },
     ),
   };
 }
 
-function warnIfNoProperPropsFlatTreeItem(props: Pick<TreeItemProps, 'aria-setsize' | 'aria-posinset' | 'aria-level'>) {
+function warnIfNoProperPropsFlatTreeItem(
+  props: Pick<TreeItemProps, 'aria-setsize' | 'aria-posinset' | 'aria-level' | 'parentValue'>,
+) {
   if (process.env.NODE_ENV !== 'production') {
     if (
       props['aria-posinset'] === undefined ||
       props['aria-setsize'] === undefined ||
-      props['aria-level'] === undefined
+      props['aria-level'] === undefined ||
+      (props.parentValue === undefined && props['aria-level'] !== 1)
     ) {
       // eslint-disable-next-line no-console
       console.error(/** #__DE-INDENT__ */ `
         @fluentui/react-tree [${useTreeItem_unstable.name}]:
-        A flat treeitem must have "aria-posinset", "aria-setsize", "aria-level" to ensure a11y and navigation.
+        A flat treeitem must have "aria-posinset", "aria-setsize", "aria-level"
+        and "parentValue" (if "aria-level" > 1) to ensure a11y and navigation.
 
         - "aria-posinset": the position of this treeitem in the current level of the tree.
         - "aria-setsize": the number of siblings in this level of the tree.
         - "aria-level": the current level of the treeitem.
+        - "parentValue": the "value" property of the parent item of this item.
       `);
     }
   }

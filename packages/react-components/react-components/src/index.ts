@@ -22,6 +22,7 @@ export {
   useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
   useFluentProviderStyles_unstable,
+  useFluentProviderThemeStyleTag,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
@@ -97,6 +98,7 @@ export {
 } from '@fluentui/react-shared-contexts';
 export {
   getNativeElementProps,
+  getIntrinsicElementProps,
   getPartitionedNativeProps,
   getSlots,
   slot,
@@ -825,6 +827,7 @@ export {
   renderDialogContent_unstable,
   useDialogContext_unstable,
   useDialogSurfaceContext_unstable,
+  useDialogSurfaceContextValues_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -855,6 +858,7 @@ export type {
   DialogContentState,
   DialogContextValue,
   DialogSurfaceContextValue,
+  DialogSurfaceContextValues,
 } from '@fluentui/react-dialog';
 
 export {
@@ -1253,6 +1257,7 @@ export {
   useHeadlessFlatTree_unstable,
   useTreeContextValues_unstable,
   useTreeContext_unstable,
+  useSubtreeContext_unstable,
   useTreeItemContextValues_unstable,
   useTreeItemContext_unstable,
   useTreeItemLayoutStyles_unstable,
@@ -1278,6 +1283,7 @@ export type {
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeContextValue,
+  SubtreeContextValue,
   TreeContextValues,
   TreeItemContextValue,
   TreeItemLayoutProps,
@@ -1301,3 +1307,59 @@ export type {
   TreeSlots,
   TreeState,
 } from '@fluentui/react-tree';
+
+export {
+  Tag,
+  renderTag_unstable,
+  tagClassNames,
+  useTagStyles_unstable,
+  useTag_unstable,
+  InteractionTag,
+  renderInteractionTag_unstable,
+  interactionTagClassNames,
+  useInteractionTagStyles_unstable,
+  useInteractionTag_unstable,
+  useInteractionTagContextValues_unstable,
+  InteractionTagPrimary,
+  interactionTagPrimaryClassNames,
+  renderInteractionTagPrimary_unstable,
+  useInteractionTagPrimaryStyles_unstable,
+  useInteractionTagPrimary_unstable,
+  InteractionTagSecondary,
+  renderInteractionTagSecondary_unstable,
+  interactionTagSecondaryClassNames,
+  useInteractionTagSecondaryStyles_unstable,
+  useInteractionTagSecondary_unstable,
+  TagGroup,
+  renderTagGroup_unstable,
+  tagGroupClassNames,
+  useTagGroupStyles_unstable,
+  useTagGroup_unstable,
+  useTagGroupContextValues_unstable,
+  useTagAvatarContextValues_unstable,
+} from '@fluentui/react-tags';
+export type {
+  TagProps,
+  TagSlots,
+  TagState,
+  InteractionTagProps,
+  InteractionTagSlots,
+  InteractionTagState,
+  InteractionTagPrimaryContextValues,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryState,
+  InteractionTagSecondaryProps,
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryState,
+  TagGroupProps,
+  TagGroupSlots,
+  TagGroupState,
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissData,
+  TagDismissEvent,
+  TagDismissHandler,
+} from '@fluentui/react-tags';
