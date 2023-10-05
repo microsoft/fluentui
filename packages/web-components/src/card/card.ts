@@ -1,7 +1,7 @@
 import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { FASTCard } from '@microsoft/fast-foundation';
 import { isTabbable } from 'tabbable';
-import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
+import { keyEnter, keyEscape, keySpace } from '@microsoft/fast-web-utilities';
 import { Checkbox as FluentCheckbox } from '../checkbox/index.js';
 import { CardAppearance, CardFocusMode, CardOrientation, CardSize } from './card.options.js';
 
@@ -51,24 +51,6 @@ export class Card extends FASTCard {
    */
   @observable
   public internalCheckbox?: FluentCheckbox;
-
-  /**
-   * See {@link https://www.w3.org/WAI/WCAG21/Techniques/aria/ARIA13} for more information
-   * @public
-   * @remarks
-   * HTML Attribute: aria-labelledby
-   */
-  @attr
-  public ariaLabelledby?: string;
-
-  /**
-   * See {@link https://www.w3.org/TR/WCAG20-TECHS/ARIA1.html} for more information
-   * @public
-   * @remarks
-   * HTML Attribute: aria-describedby
-   */
-  @attr
-  public ariaDescribedby?: string;
 
   /**
    * @property appearance;
@@ -260,26 +242,25 @@ export class Card extends FASTCard {
     const key = e.key;
     switch (key) {
       case keyEnter:
-      case keySpace:
-        {
-          if (e.target !== e.currentTarget) {
-            return true;
-          }
-          if ((e.target === e.currentTarget && this.interactive) || this.selectable) {
-            this.toggleCardSelection();
-            e.preventDefault();
-          } else if (
-            (e.target === e.currentTarget && this.focusMode === CardFocusMode.noTab) ||
-            this.focusMode === CardFocusMode.tabExit
-          ) {
-            e.preventDefault();
-            Updates.enqueue(() => {
-              this.root.inert = false;
-              this.focusFirstElement();
-            });
-          }
+      case keySpace: {
+        if (e.target !== e.currentTarget) {
+          return true;
         }
-        break;
+        if ((e.target === e.currentTarget && this.interactive) || this.selectable) {
+          e.preventDefault();
+          this.toggleCardSelection();
+        } else if (
+          (e.target === e.currentTarget && this.focusMode === CardFocusMode.noTab) ||
+          this.focusMode === CardFocusMode.tabExit
+        ) {
+          e.preventDefault();
+          Updates.enqueue(() => {
+            this.root.inert = false;
+            this.focusFirstElement();
+          });
+        }
+        return true;
+      }
       case keyEscape:
         if (this.focusMode === 'no-tab') {
           this.card.focus();
