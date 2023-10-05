@@ -58,7 +58,7 @@ export class PaginationBase extends React.Component<IPaginationProps> {
 
     this._classNames = getClassNames(styles!, {
       theme: theme!,
-      format,
+      format: format,
     });
 
     const canPrevious = selectedPageIndex! > 0;
