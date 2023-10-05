@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useAnnounce_unstable } from '@fluentui/react-shared-contexts';
 import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
@@ -25,6 +25,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
   const actionsRef = React.useRef<HTMLDivElement | null>(null);
   const bodyRef = React.useRef<HTMLDivElement | null>(null);
   const { announce } = useAnnounce_unstable();
+  const titleId = useId();
 
   React.useEffect(() => {
     const bodyMessage = bodyRef.current?.textContent;
@@ -42,6 +43,8 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     root: slot.always(
       getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, reflowRef, nodeRef),
+        role: 'group',
+        'aria-labelledby': titleId,
         ...props,
       }),
       { elementType: 'div' },
@@ -57,5 +60,6 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     transitionClassName,
     actionsRef,
     bodyRef,
+    titleId,
   };
 };
