@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(useTableColumnSizing): Removes the measuring div and measures parent",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

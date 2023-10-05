@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: create useMotionClassNames hook",
-  "packageName": "@fluentui/react-motion-preview",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
