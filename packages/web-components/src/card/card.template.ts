@@ -24,6 +24,9 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
         tabindex="${x => x.tabIndex}"
         @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
         @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
+        aria-label="${x => x.ariaLabel}"
+        aria-labelledby="${x => x.ariaLabelledby}"
+        aria-describedby="${x => x.ariaDescribedby}"
         ${ref('card')}
       >
         <div class="root" part="root" ${ref('root')}>

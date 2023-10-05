@@ -47,12 +47,6 @@ export class Card extends FASTCard {
   public floatingActionSlot: HTMLElement[] = [];
 
   /**
-   * A reference to the internal checkbox
-   */
-  @observable
-  public internalCheckbox?: FluentCheckbox;
-
-  /**
    * @property appearance;
    * @default filled
    * @remarks
@@ -110,15 +104,6 @@ export class Card extends FASTCard {
   public disabled: boolean = false;
 
   /**
-   * @property inert
-   * @default false
-   * @remarks
-   * Determines whether card focus is inert
-   */
-  @attr({ mode: 'boolean' })
-  public inert: boolean = false;
-
-  /**
    * @property selected
    * @default false
    * @remarks
@@ -127,6 +112,24 @@ export class Card extends FASTCard {
   @observable
   @attr({ mode: 'boolean' })
   public selected: boolean = false;
+
+  /**
+   * The id of the element describing the dialog.
+   * @public
+   * @remarks
+   * HTML Attribute: aria-describedby
+   */
+  @attr({ attribute: 'aria-describedby' })
+  public ariaDescribedby?: string;
+
+  /**
+   * The id of the element labeling the dialog.
+   * @public
+   * @remarks
+   * HTML Attribute: aria-labelledby
+   */
+  @attr({ attribute: 'aria-labelledby' })
+  public ariaLabelledby?: string;
 
   /**
    * @remarks
@@ -179,7 +182,7 @@ export class Card extends FASTCard {
    * @private
    */
   private setComponent(): void {
-    if (this.focusMode === 'no-tab' || this.focusMode === 'tab-exit' || this.disabled) {
+    if (this.focusMode === CardFocusMode.noTab || this.focusMode === CardFocusMode.tabExit || this.disabled) {
       this.root.inert = true;
     }
   }
@@ -246,12 +249,12 @@ export class Card extends FASTCard {
         if (e.target !== e.currentTarget) {
           return true;
         }
-        if ((e.target === e.currentTarget && this.interactive) || this.selectable) {
+        if (e.target === e.currentTarget && this.interactive && this.selectable) {
           e.preventDefault();
           this.toggleCardSelection();
         } else if (
-          (e.target === e.currentTarget && this.focusMode === CardFocusMode.noTab) ||
-          this.focusMode === CardFocusMode.tabExit
+          e.target === e.currentTarget &&
+          (this.focusMode === CardFocusMode.noTab || this.focusMode === CardFocusMode.tabExit)
         ) {
           e.preventDefault();
           Updates.enqueue(() => {
@@ -262,7 +265,7 @@ export class Card extends FASTCard {
         return true;
       }
       case keyEscape:
-        if (this.focusMode === 'no-tab') {
+        if (this.focusMode === CardFocusMode.noTab) {
           this.card.focus();
           this.root.inert = true;
           e.preventDefault();

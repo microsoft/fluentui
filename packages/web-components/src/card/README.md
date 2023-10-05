@@ -30,11 +30,6 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 
 ```html
 <fluent-card orientation="horizontal">
-  <fluent-card-preview></fluent-card-preview>
-  <fluent-card-header></fluent-card-header>
-</fluent-card>
-
-<fluent-card orientation="horizontal">
   <fluent-card-preview>
     <fluent-image block shape="square">
       <img />
@@ -62,6 +57,11 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
     <fluent-button slot="action" icon-only><svg></svg></fluent-button>
   </fluent-card-header>
   <fluent-text>More Content</fluent-text>
+  <fluent-card-footer>
+    <fluent-button appearance="primary">Button</fluent-button>
+    <fluent-button>Button</fluent-button>
+    <fluent-button slot="action" icon-only><svg></svg></fluent-button>
+  </fluent-card-footer>
 </fluent-card>
 ```
 
