@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add e2e test for useOnScrollOutside",
+  "packageName": "@fluentui/react-utilities",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

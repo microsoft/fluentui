@@ -6,6 +6,7 @@ import { AnnounceProvider_unstable } from '@fluentui/react-shared-contexts';
 import { MessageBarBody } from '../MessageBarBody/MessageBarBody';
 import { MessageBarTitle } from '../MessageBarTitle/MessageBarTitle';
 import { MessageBarActions } from '../MessageBarActions/MessageBarActions';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('MessageBar', () => {
   beforeAll(() => {
@@ -21,6 +22,10 @@ describe('MessageBar', () => {
         // do nothing
       }
     };
+  });
+
+  beforeEach(() => {
+    resetIdsForTests();
   });
 
   isConformant({

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MessageBarTitleProps, MessageBarTitleState } from './MessageBarTitle.types';
+import { useMessageBarContext } from '../../contexts/messageBarContext';
 
 /**
  * Create the state required to render MessageBarTitle.
@@ -15,6 +16,8 @@ export const useMessageBarTitle_unstable = (
   props: MessageBarTitleProps,
   ref: React.Ref<HTMLElement>,
 ): MessageBarTitleState => {
+  const { titleId } = useMessageBarContext();
+
   return {
     components: {
       root: 'span',
@@ -22,6 +25,7 @@ export const useMessageBarTitle_unstable = (
     root: slot.always(
       getIntrinsicElementProps('span', {
         ref,
+        id: titleId,
         ...props,
       }),
       { elementType: 'span' },

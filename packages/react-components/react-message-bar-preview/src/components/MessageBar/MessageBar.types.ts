@@ -1,6 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { MessageBarContextValue } from '../../contexts/messageBarContext';
-import * as React from 'react';
 
 export type MessageBarSlots = {
   root: Slot<'div'>;
@@ -32,8 +31,7 @@ export type MessageBarProps = ComponentProps<MessageBarSlots> &
  * State used in rendering MessageBar
  */
 export type MessageBarState = ComponentState<MessageBarSlots> &
-  Required<Pick<MessageBarProps, 'layout' | 'intent'>> & {
+  Required<Pick<MessageBarProps, 'layout' | 'intent'>> &
+  Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
     transitionClassName: string;
-    actionsRef: React.MutableRefObject<HTMLDivElement | null>;
-    bodyRef: React.MutableRefObject<HTMLDivElement | null>;
   };

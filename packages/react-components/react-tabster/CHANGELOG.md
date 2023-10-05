@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 04 Oct 2023 08:45:47 GMT and should not be manually modified.
+This log was last generated on Thu, 05 Oct 2023 15:25:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.13.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.13.4)
+
+Thu, 05 Oct 2023 15:25:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.13.3..@fluentui/react-tabster_v9.13.4)
+
+### Patches
+
+- chore: adds comments on createCustomFocusIndicatorStyle to explain that the default outline style is not removed ([PR #29336](https://github.com/microsoft/fluentui/pull/29336) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.14.1 ([PR #29412](https://github.com/microsoft/fluentui/pull/29412) by beachball)
 
 ## [9.13.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.13.3)
 

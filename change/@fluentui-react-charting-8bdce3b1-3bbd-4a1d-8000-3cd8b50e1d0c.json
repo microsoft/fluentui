@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Minimum height of non zero positive values set to 1% of Max barHeight",
-  "packageName": "@fluentui/react-charting",
-  "email": "shubhabrata08@gmail.com",
-  "dependentChangeType": "patch"
-}
