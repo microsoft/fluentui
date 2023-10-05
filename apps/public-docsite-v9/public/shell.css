@@ -47,6 +47,11 @@
   background: transparent;
 }
 
+/* Set position fixed to create a layer and prevent iframe from jumping when context overflows */
+[role='main'] {
+  position: fixed;
+}
+
 /* remove box shadow style from storybooks wrapper div */
 [role='main'] > div {
   box-shadow: none;
