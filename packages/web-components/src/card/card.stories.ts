@@ -65,21 +65,6 @@ const increaseCount = () => {
     textContainer.innerText = `${count}`;
   }
 };
-const handleKeyboardEvent = (e: KeyboardEvent) => {
-  const key = e.key;
-  switch (key) {
-    case keyEnter:
-    case keySpace:
-      {
-        console.log('asdf');
-        increaseCount();
-        e.preventDefault();
-      }
-      break;
-    default:
-      return true;
-  }
-};
 
 setTimeout(() => {
   const card = document.getElementById('card-interactive') as FluentCard;
@@ -87,10 +72,10 @@ setTimeout(() => {
     const key = e.key;
     if (key == keyEnter || key == keySpace) {
       e.preventDefault();
-      increaseCount(e);
+      increaseCount();
     }
   });
-}, 1500);
+}, 2000);
 
 const toggleFloatingActionWithInteractiveSelectable = (event: Event) => {
   const card = document.getElementById('card-interactive-selectable-floating-action') as FluentCard;
@@ -121,20 +106,33 @@ const cardTemplate = html<CardStoryArgs>`
     }
     .flex {
       display: flex;
-    }
-    .container-center {
-      padding: 48px 24px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin: auto;
       row-gap: 12px;
+      column-gap: 12px;
     }
-    .card-preview-vertical {
+    .column {
+      flex-direction: column;
+    }
+    .center {
+      justify-content: center;
+      align-items: center;
+    }
+    .align-center {
+      align-items: center;
+    }
+    .align-start {
+      align-items: flex-start;
+    }
+    .space-around {
+      justify-content: space-around;
+    }
+    .full-width {
       margin: 0 calc(var(--card-size) * -1);
     }
-    .card-preview-horizontal {
+    .full-height {
       margin: calc(var(--card-size) * -1) 0 calc(var(--card-size) * -1) calc(var(--card-size) * -1);
+    }
+    .cover {
+      margin: calc(var(--card-size) * -1);
     }
     .logo {
       height: 32px;
@@ -145,7 +143,7 @@ const cardTemplate = html<CardStoryArgs>`
     }
   </style>
   </script>
-  <div class="container-center">
+  <div class="container center flex column">
   <fluent-card
       id="card-default"
       style="width: 690px;"
@@ -176,7 +174,7 @@ const cardTemplate = html<CardStoryArgs>`
         <fluent-button tabindex="0" slot="action" ?disabled="${x =>
           x.disabled}" icon-only appearance="transparent">${iconEllipsis}</fluent-button>
       </fluent-card-header>
-      <fluent-card-preview class="card-preview-vertical">
+      <fluent-card-preview class="full-width">
         <fluent-image
           block
           shape="square"
@@ -288,13 +286,10 @@ export const Card = renderComponent(cardTemplate).bind({});
 /** Attribute Stories **/
 
 export const Orientation = renderComponent(html<CardStoryArgs>`
-  <div class="flex">
-    <div class="container-center">
-      <fluent-text align="start" font="base" size="300" weight="bold">
-        <span>Horizontal</span>
-      </fluent-text>
+  <div class="flex space-around align-center">
+    <div class="align-start flex column">
       <fluent-card orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -303,10 +298,10 @@ export const Orientation = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Filled</span>
+            <span>Horizontal</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Orientation</span>
           </fluent-text>
           <fluent-button
             slot="action"
@@ -321,10 +316,7 @@ export const Orientation = renderComponent(html<CardStoryArgs>`
         </fluent-card-header>
       </fluent-card>
     </div>
-    <div class="container-center">
-      <fluent-text align="start" font="base" size="300" weight="bold">
-        <span>Vertical</span>
-      </fluent-text>
+    <div class="align-start flex column">
       <fluent-card class="card--width-360">
         <fluent-card-header>
           <fluent-image class="image-size-40" block slot="image" shape="square">
@@ -333,10 +325,10 @@ export const Orientation = renderComponent(html<CardStoryArgs>`
             />
           </fluent-image>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Filled</span>
+            <span>Vertical</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Orientation</span>
           </fluent-text>
           <fluent-button
             slot="action"
@@ -355,13 +347,21 @@ export const Orientation = renderComponent(html<CardStoryArgs>`
             lacinia ipsum.</span
           >
         </fluent-text>
+        <fluent-card-footer>
+          <div>
+            <fluent-button appearance="primary" tabindex="0" ?disabled="${x => x.disabled}" icon
+              >${iconReply}Reply</fluent-button
+            >
+            <fluent-button tabindex="0" ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
+          </div>
+        </fluent-card-footer>
       </fluent-card>
     </div>
   </div>
 `);
 
 export const Size = renderComponent(html<CardStoryArgs>`
-  <div class="container-center">
+  <div class="container center flex column">
     <fluent-card size="small" class="card--width-360">
       <fluent-card-header>
         <fluent-image class="image-size-40" block slot="image" shape="square">
@@ -370,10 +370,10 @@ export const Size = renderComponent(html<CardStoryArgs>`
           />
         </fluent-image>
         <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-          <span>Size Small</span>
+          <span>Small</span>
         </fluent-text>
         <fluent-text block size="200" font="base" weight="regular" block slot="description">
-          <span>Fluent Card</span>
+          <span>Fluent Card Size</span>
         </fluent-text>
       </fluent-card-header>
       <div>
@@ -393,10 +393,10 @@ export const Size = renderComponent(html<CardStoryArgs>`
           />
         </fluent-image>
         <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-          <span>Size Medium</span>
+          <span>Medium</span>
         </fluent-text>
         <fluent-text block size="200" font="base" weight="regular" block slot="description">
-          <span>Fluent Card</span>
+          <span>Fluent Card Size</span>
         </fluent-text>
       </fluent-card-header>
       <div>
@@ -416,10 +416,10 @@ export const Size = renderComponent(html<CardStoryArgs>`
           />
         </fluent-image>
         <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-          <span>Size Large</span>
+          <span>Large</span>
         </fluent-text>
         <fluent-text block size="200" font="base" weight="regular" block slot="description">
-          <span>Fluent Card</span>
+          <span>Fluent Card Size</span>
         </fluent-text>
       </fluent-card-header>
       <div>
@@ -435,13 +435,13 @@ export const Size = renderComponent(html<CardStoryArgs>`
 `);
 
 export const Appearance = renderComponent(html<CardStoryArgs>`
-  <div class="flex">
-    <div class="container-center">
+  <div class="flex space-around">
+    <div class="container align-start flex column">
       <fluent-text align="start" font="semibold" size="400" weight="bold">
         <span>Non-interactive Appearances</span>
       </fluent-text>
       <fluent-card orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -450,7 +450,7 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Filled</span>
+            <span>Filled</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
             <span>Fluent Card</span>
@@ -468,7 +468,7 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-header>
       </fluent-card>
       <fluent-card appearance="filled-alternative" orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -477,10 +477,10 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Filled Alternative</span>
+            <span>Filled Alternative</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Appearance</span>
           </fluent-text>
           <fluent-button
             slot="action"
@@ -495,7 +495,7 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-header>
       </fluent-card>
       <fluent-card appearance="outline" orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -504,10 +504,10 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Outline</span>
+            <span>Outline</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Appearance</span>
           </fluent-text>
           <fluent-button
             slot="action"
@@ -522,7 +522,7 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-header>
       </fluent-card>
       <fluent-card appearance="subtle" orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -531,10 +531,10 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Subtle</span>
+            <span>Subtle</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Appearance</span>
           </fluent-text>
           <fluent-button
             slot="action"
@@ -549,12 +549,12 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-header>
       </fluent-card>
     </div>
-    <div class="container-center">
+    <div class="container align-start flex column">
       <fluent-text align="start" font="semibold" size="400" weight="bold">
         <span>Interactive + Selectable Appearances</span>
       </fluent-text>
       <fluent-card interactive selectable orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -563,21 +563,21 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Filled Interactive</span>
+            <span>Filled Interactive</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Appearance</span>
           </fluent-text>
         </fluent-card-header>
       </fluent-card>
       <fluent-card
+        appearance="filled-alternative"
         interactive
         selectable
-        appearance="filled-alternative"
         orientation="horizontal"
         class="card--width-360"
       >
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -586,15 +586,15 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Filled Alternative Interactive</span>
+            <span>Filled Alternative Interactive</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Appearance</span>
           </fluent-text>
         </fluent-card-header>
       </fluent-card>
       <fluent-card interactive selectable appearance="outline" orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -603,15 +603,15 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Outline Interactive</span>
+            <span>Outline Interactive</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Appearance</span>
           </fluent-text>
         </fluent-card-header>
       </fluent-card>
       <fluent-card interactive selectable appearance="subtle" orientation="horizontal" class="card--width-360">
-        <fluent-card-preview class="card-preview-horizontal">
+        <fluent-card-preview class="full-height">
           <fluent-image class="image-size-64" block shape="square" fit="cover">
             <img
               src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -620,10 +620,10 @@ export const Appearance = renderComponent(html<CardStoryArgs>`
         </fluent-card-preview>
         <fluent-card-header>
           <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-            <span>Appearance Subtle Interactive</span>
+            <span>Subtle Interactive</span>
           </fluent-text>
           <fluent-text block size="200" font="base" weight="regular" block slot="description">
-            <span>Fluent Card</span>
+            <span>Fluent Card Appearance</span>
           </fluent-text>
         </fluent-card-header>
       </fluent-card>
@@ -640,14 +640,14 @@ const toggleSelectionWithFloatingAction = () => {
 };
 
 export const SelectableWithFloatingAction = renderComponent(html<CardStoryArgs>`
-  <div class="container-center">
+  <div class="container center flex column">
     <fluent-card orientation="horizontal" selectable id="card-selectable-not-interactive" class="card--width-360">
       <fluent-checkbox
         @change="${toggleSelectionWithFloatingAction}"
         id="card-selectable-checkbox"
         slot="floating-action"
       ></fluent-checkbox>
-      <fluent-card-preview class="card-preview-horizontal">
+      <fluent-card-preview class="full-height">
         <fluent-image class="image-size-64" block shape="square">
           <img
             src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -667,7 +667,7 @@ export const SelectableWithFloatingAction = renderComponent(html<CardStoryArgs>`
 `);
 
 export const Interactive = renderComponent(html<CardStoryArgs>`
-  <div class="container-center">
+  <div class="container center flex column">
     <fluent-text size="400" weight="semibold"
       ><span>Card click <span id="text-container">0</span> times</span></fluent-text
     >
@@ -675,11 +675,10 @@ export const Interactive = renderComponent(html<CardStoryArgs>`
       orientation="horizontal"
       interactive
       @click="${increaseCount}"
-      @keydown="${handleKeyboardEvent}"
       class="card--width-360"
       id="card-interactive"
     >
-      <fluent-card-preview class="card-preview-horizontal">
+      <fluent-card-preview class="full-height">
         <fluent-image class="image-size-64" block shape="square">
           <img
             src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/app_logo.svg"
@@ -699,7 +698,7 @@ export const Interactive = renderComponent(html<CardStoryArgs>`
 `);
 
 export const SelectableInteractive = renderComponent(html<CardStoryArgs>`
-  <div class="container-center">
+  <div class="container center flex column">
     <fluent-card id="card-selectable-interactive" selectable interactive class="card--width-360">
       <fluent-card-header>
         <fluent-image class="image-size-40" block slot="image" shape="square">
@@ -725,7 +724,7 @@ export const SelectableInteractive = renderComponent(html<CardStoryArgs>`
 `);
 
 export const SelectableInteractiveWithFloatingAction = renderComponent(html<CardStoryArgs>`
-  <div class="container-center">
+  <div class="container center flex">
     <fluent-card
       @onSelectionChanged="${toggleFloatingActionWithInteractiveSelectable}"
       interactive
@@ -753,6 +752,201 @@ export const SelectableInteractiveWithFloatingAction = renderComponent(html<Card
           ipsum.</span
         >
       </fluent-text>
+    </fluent-card>
+  </div>
+`);
+
+export const FocusMode = renderComponent(html<CardStoryArgs>`
+  <div class="container align-start flex column">
+    <fluent-text as="h4" align="start" font="base" size="500" weight="bold" align="start">
+      <h4>'off' (Default)</h4>
+    </fluent-text>
+    <fluent-text as="p" align="start" font="base" size="300" align="start">
+      <p>The card might still be focusable, but the card won't manage the focus of its contents or be focusable.</p>
+    </fluent-text>
+    <fluent-card id="card-off" style="width: 420px" size="medium" focus-mode="off">
+      <fluent-card-preview class="cover">
+        <fluent-image block shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/sales_template.png"
+          />
+        </fluent-image>
+      </fluent-card-preview>
+      <fluent-card-header>
+        <fluent-image class="image-size-40" block slot="image" shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/pptx.png"
+          />
+        </fluent-image>
+        <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
+          <span>App Name</span>
+          <fluent-text align="start" font="base" size="300" weight="regular"><span>mentioned you</span></fluent-text>
+        </fluent-text>
+        <fluent-text block size="200" font="base" weight="regular" block slot="description">
+          <span>Developer</span>
+        </fluent-text>
+        <fluent-button tabindex="0" slot="action" ?disabled="${x => x.disabled}" icon-only appearance="transparent"
+          >${iconEllipsis}</fluent-button
+        >
+      </fluent-card-header>
+      <fluent-text block size="300" font="base" weight="regular">
+        <span
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae urna maximus, faucibus augue at, lacinia
+          ipsum.</span
+        >
+      </fluent-text>
+      <fluent-card-footer>
+        <div>
+          <fluent-button appearance="primary" tabindex="0" ?disabled="${x => x.disabled}" icon
+            >${iconReply}Reply</fluent-button
+          >
+          <fluent-button tabindex="0" ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
+        </div>
+      </fluent-card-footer>
+    </fluent-card>
+    <br />
+    <fluent-text as="h4" align="start" font="base" size="500" weight="bold" align="start">
+      <h4>'no-tab'</h4>
+    </fluent-text>
+    <fluent-text as="p" align="start" font="base" size="300" align="start">
+      <p>
+        The Card will be focusable and trap the focus. You can use Tab to navigate between the contents and escaping
+        focus only by pressing the Esc key.
+      </p>
+    </fluent-text>
+    <fluent-card id="card-no-tab" style="width: 420px" size="medium" focus-mode="no-tab">
+      <fluent-card-preview class="cover">
+        <fluent-image block shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/sales_template.png"
+          />
+        </fluent-image>
+      </fluent-card-preview>
+      <fluent-card-header>
+        <fluent-image class="image-size-40" block slot="image" shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/pptx.png"
+          />
+        </fluent-image>
+        <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
+          <span>App Name</span>
+          <fluent-text align="start" font="base" size="300" weight="regular"><span>mentioned you</span></fluent-text>
+        </fluent-text>
+        <fluent-text block size="200" font="base" weight="regular" block slot="description">
+          <span>Developer</span>
+        </fluent-text>
+        <fluent-button tabindex="0" slot="action" ?disabled="${x => x.disabled}" icon-only appearance="transparent"
+          >${iconEllipsis}</fluent-button
+        >
+      </fluent-card-header>
+      <fluent-text block size="300" font="base" weight="regular">
+        <span
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae urna maximus, faucibus augue at, lacinia
+          ipsum.</span
+        >
+      </fluent-text>
+      <fluent-card-footer>
+        <div>
+          <fluent-button appearance="primary" tabindex="0" ?disabled="${x => x.disabled}" icon
+            >${iconReply}Reply</fluent-button
+          >
+          <fluent-button tabindex="0" ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
+        </div>
+      </fluent-card-footer>
+    </fluent-card>
+    <br />
+    <fluent-text as="h4" align="start" font="base" size="500" weight="bold" align="start">
+      <h4>'tab-exit'</h4>
+    </fluent-text>
+    <fluent-text as="p" align="start" font="base" size="300" align="start">
+      <p>The Card will be focusable and trap the focus, but release it on an Esc or Tab key press.</p>
+    </fluent-text>
+    <fluent-card id="card-tab-exit" style="width: 420px" size="medium" focus-mode="tab-exit">
+      <fluent-card-preview class="cover">
+        <fluent-image block shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/sales_template.png"
+          />
+        </fluent-image>
+      </fluent-card-preview>
+      <fluent-card-header>
+        <fluent-image class="image-size-40" block slot="image" shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/pptx.png"
+          />
+        </fluent-image>
+        <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
+          <span>App Name</span>
+          <fluent-text align="start" font="base" size="300" weight="regular"><span>mentioned you</span></fluent-text>
+        </fluent-text>
+        <fluent-text block size="200" font="base" weight="regular" block slot="description">
+          <span>Developer</span>
+        </fluent-text>
+        <fluent-button tabindex="0" slot="action" ?disabled="${x => x.disabled}" icon-only appearance="transparent"
+          >${iconEllipsis}</fluent-button
+        >
+      </fluent-card-header>
+      <fluent-text block size="300" font="base" weight="regular">
+        <span
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae urna maximus, faucibus augue at, lacinia
+          ipsum.</span
+        >
+      </fluent-text>
+      <fluent-card-footer>
+        <div>
+          <fluent-button appearance="primary" tabindex="0" ?disabled="${x => x.disabled}" icon
+            >${iconReply}Reply</fluent-button
+          >
+          <fluent-button tabindex="0" ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
+        </div>
+      </fluent-card-footer>
+    </fluent-card>
+    <br />
+    <fluent-text as="h4" align="start" font="base" size="500" weight="bold" align="start">
+      <h4>'tab-only'</h4>
+    </fluent-text>
+    <fluent-text as="p" align="start" font="base" size="300" align="start">
+      <p>The Card will not trap focus but will still be focusable and allow Tab navigation of its contents.</p>
+    </fluent-text>
+    <fluent-card id="card-tab-only" style="width: 420px" size="medium" focus-mode="tab-only">
+      <fluent-card-preview class="cover">
+        <fluent-image block shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/sales_template.png"
+          />
+        </fluent-image>
+      </fluent-card-preview>
+      <fluent-card-header>
+        <fluent-image class="image-size-40" block slot="image" shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/pptx.png"
+          />
+        </fluent-image>
+        <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
+          <span>App Name</span>
+          <fluent-text align="start" font="base" size="300" weight="regular"><span>mentioned you</span></fluent-text>
+        </fluent-text>
+        <fluent-text block size="200" font="base" weight="regular" block slot="description">
+          <span>Developer</span>
+        </fluent-text>
+        <fluent-button tabindex="0" slot="action" ?disabled="${x => x.disabled}" icon-only appearance="transparent"
+          >${iconEllipsis}</fluent-button
+        >
+      </fluent-card-header>
+      <fluent-text block size="300" font="base" weight="regular">
+        <span
+          >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae urna maximus, faucibus augue at, lacinia
+          ipsum.</span
+        >
+      </fluent-text>
+      <fluent-card-footer>
+        <div>
+          <fluent-button appearance="primary" tabindex="0" ?disabled="${x => x.disabled}" icon
+            >${iconReply}Reply</fluent-button
+          >
+          <fluent-button tabindex="0" ?disabled="${x => x.disabled}" icon>${iconShare}Share</fluent-button>
+        </div>
+      </fluent-card-footer>
     </fluent-card>
   </div>
 `);
