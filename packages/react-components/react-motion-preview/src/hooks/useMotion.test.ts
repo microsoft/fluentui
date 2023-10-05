@@ -64,6 +64,15 @@ describe('useMotion', () => {
   });
 
   describe('when motion is received', () => {
+    it('should sync presence value with canRender', () => {
+      const { result, rerender } = renderHookWithRef(false);
+
+      expect(result.current.canRender).toBe(false);
+      rerender(true);
+
+      expect(result.current.canRender).toBe(true);
+    });
+
     it('should return default values when presence is false', () => {
       const defaultState = getDefaultMotionState();
       const { result } = renderHookWithRef(getDefaultMotionState());
