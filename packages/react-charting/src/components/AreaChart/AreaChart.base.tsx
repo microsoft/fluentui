@@ -138,7 +138,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._emptyChartId = getId('_AreaChart_empty');
   }
 
-  public componentDidUpdate() {
+  public componentDidUpdate(prevProps: IAreaChartProps): void {
     if (this.state.isShowCalloutPending) {
       this.setState({
         refSelected: `#${this._highlightedCircleId}`,
@@ -146,12 +146,13 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         isShowCalloutPending: false,
       });
     }
-    this.props.data.lineChartData = this._sortChartData(this.props.data.lineChartData!);
+    if (prevProps.data.lineChartData !== this.props.data.lineChartData) {
+      this.props.data.lineChartData = this._sortChartData(this.props.data.lineChartData!);
+    }
   }
 
   public render(): JSX.Element {
     if (!this._isChartEmpty()) {
-      this.props.data.lineChartData = this._sortChartData(this.props.data.lineChartData!);
       const { lineChartData, chartTitle } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
@@ -243,6 +244,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     points.forEach(point => {
       point.data.sort(this._sortByXValues);
     });
+    console.log('yay');
     return points;
   };
 

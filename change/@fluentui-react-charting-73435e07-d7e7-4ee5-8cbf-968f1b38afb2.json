@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "Added default sorting feature for data in line charts by x values. The feature can be overridden by optional prop disableSortByXValues",
-  "packageName": "@fluentui/react-charting",
-  "email": "shubhabrata08@gmail.com",
-  "dependentChangeType": "patch"
-}
