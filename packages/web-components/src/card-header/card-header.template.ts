@@ -14,7 +14,9 @@ export function cardHeaderTemplate<T extends CardHeader>(): ElementViewTemplate<
         <slot name="header"></slot>
         <slot name="description"></slot>
       </div>
+      <slot></slot>
       <slot name="action"></slot>
+      <slot name="end"></slot>
     </template>
   `;
 }

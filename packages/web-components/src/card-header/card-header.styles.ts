@@ -1,6 +1,6 @@
 import { css } from '@microsoft/fast-element';
 import { display } from '@microsoft/fast-foundation';
-import { fontSizeBase300, fontWeightBold, spacingHorizontalM, spacingVerticalM } from '../theme/design-tokens.js';
+import { fontSizeBase300, fontWeightBold } from '../theme/design-tokens.js';
 
 /** Card Header styles
  * @public
