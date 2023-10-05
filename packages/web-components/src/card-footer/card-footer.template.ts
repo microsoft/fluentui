@@ -8,8 +8,12 @@ import type { CardFooter } from './card-footer.js';
 export function cardFooterTemplate<T extends CardFooter>(): ElementViewTemplate<T> {
   return html<T>`
     <template>
-      <slot></slot>
-      <slot name="action"></slot>
+      <div class="content" part="content">
+        <slot></slot>
+      </div>
+      <div class="action">
+        <slot name="action"></slot>
+      </div>
     </template>
   `;
 }

@@ -71,13 +71,10 @@ const cardFooterTemplate = html<CardFooterStoryArgs>`
   </script>
   <div class="container-center">
       <fluent-card-footer style="width: 360px;">
-        <div>
-          <fluent-button icon>${iconReply}Reply</fluent-button>
-          <fluent-button icon>${iconShare}Share</fluent-button>
-        </div>
+        <fluent-button icon>${iconReply}Reply</fluent-button>
+        <fluent-button icon>${iconShare}Share</fluent-button>
         <fluent-button
             slot="action"
-            ?disabled="${x => x.disabled}"
             size="small"
             icon-only
             appearance="transparent"

@@ -7,8 +7,12 @@ import { display } from '@microsoft/fast-foundation';
 export const styles = css`
   ${display('flex')}
   :host {
-    column-gap: var(--card-size, 12px);
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr min-content;
+  }
+
+  .content {
+    display: flex;
+    column-gap: var(--card-size, 12px);
   }
 `;
