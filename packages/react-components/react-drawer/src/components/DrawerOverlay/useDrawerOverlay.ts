@@ -68,7 +68,6 @@ export const useDrawerOverlay_unstable = (
     components: {
       root: DrawerOverlaySurface,
       dialog: Dialog,
-      backdrop: 'div',
     },
 
     root,

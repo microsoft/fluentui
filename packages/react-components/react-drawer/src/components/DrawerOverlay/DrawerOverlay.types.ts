@@ -13,15 +13,6 @@ export type DrawerOverlaySlots = {
    * Slot for the root element.
    */
   root: Slot<DrawerOverlaySurfaceProps>;
-
-  /**
-   * Dimmed background of drawer.
-   * The default backdrop is rendered as a `<div>` with styling.
-   * This slot expects a `<div>` element which will replace the default backdrop.
-   * The backdrop should have `aria-hidden="true"`.
-   *
-   */
-  backdrop?: Slot<'div'>;
 };
 
 /**

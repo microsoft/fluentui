@@ -13,7 +13,6 @@ import {
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
-  backdrop: 'fui-DrawerOverlay__backdrop',
 };
 
 /**
@@ -86,7 +85,6 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
 
   if (backdrop) {
     backdrop.className = mergeClasses(
-      drawerOverlayClassNames.backdrop,
       backdropStyles.backdrop,
       durationStyles[state.size],
       state.backdropMotion.active && backdropStyles.visible,
