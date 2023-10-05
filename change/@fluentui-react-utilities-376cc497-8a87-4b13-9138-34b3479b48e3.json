@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Revert fix: useOnScrollOutside should invoke callback on dragging scrollbar ",
+  "comment": "Revert fix: useOnScrollOutside should invoke callback on dragging scrollbar",
   "packageName": "@fluentui/react-utilities",
   "email": "yuanboxue@microsoft.com",
   "dependentChangeType": "patch"
