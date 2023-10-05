@@ -62,7 +62,7 @@ enum CircleVisbility {
   hide = 'hidden',
 }
 
-type CalloutAnchorPointType = {
+type CalloutAnchorPointData = {
   xAxisDataPoint: string;
   chartDataPoint: IVSChartDataPoint;
 };
@@ -92,7 +92,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
-  private _calloutAnchorPoint: CalloutAnchorPointType | null;
+  private _calloutAnchorPoint: CalloutAnchorPointData | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _emptyChartId: string;

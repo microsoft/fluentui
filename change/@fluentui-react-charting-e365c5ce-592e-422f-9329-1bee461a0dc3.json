@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fix for bug 9136 and 7997",
+  "comment": "Fix for bug 9136 and 7997 Fixing the issue of Going from stack callout to single callout and back to stack callout still shows the single callout. Also this consist of Fix for if the bar y value is same, the single callout does not move from the first instance where the callout was shown",
   "packageName": "@fluentui/react-charting",
   "email": "ankityadav@microsoft.com",
   "dependentChangeType": "patch"
