@@ -49,7 +49,11 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 
 ```html
 <fluent-card orientation="vertical">
-  <fluent-card-preview></fluent-card-preview>
+  <fluent-card-preview>
+    <fluent-image block shape="square">
+      <img />
+    </fluent-image>
+  </fluent-card-preview>
   <fluent-card-header>
     <fluent-image slot="image"><img /></fluent-image>
     <fluent-text slot="header">Header Text</fluent-text>
@@ -57,6 +61,27 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
     <fluent-button slot="action" icon-only><svg></svg></fluent-button>
   </fluent-card-header>
   <fluent-text>More Content</fluent-text>
+  <fluent-card-footer>
+    <fluent-button appearance="primary">Button</fluent-button>
+    <fluent-button>Button</fluent-button>
+    <fluent-button slot="action" icon-only><svg></svg></fluent-button>
+  </fluent-card-footer>
+</fluent-card>
+```
+
+```html
+<fluent-card orientation="vertical">
+  <fluent-card-header>
+    <fluent-image slot="image"><img /></fluent-image>
+    <fluent-text slot="header">Header Text</fluent-text>
+    <fluent-text slot="description">Description Text</fluent-text>
+    <fluent-button slot="action" icon-only><svg></svg></fluent-button>
+  </fluent-card-header>
+  <fluent-card-preview>
+    <fluent-image block shape="square">
+      <img />
+    </fluent-image>
+  </fluent-card-preview>
   <fluent-card-footer>
     <fluent-button appearance="primary">Button</fluent-button>
     <fluent-button>Button</fluent-button>
@@ -120,9 +145,12 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 
 ### **CSS Variables**
 
-| Name          | Description                                                                         |
-| ------------- | ----------------------------------------------------------------------------------- |
-| `--card-size` | The size of the card is used to set vertical and horizontal spacing within the card |
+| Name               | Description                                                                         |
+| ------------------ | ----------------------------------------------------------------------------------- |
+| `--card-size`      | The size of the card is used to set vertical and horizontal spacing within the card |
+| `--card-width`     | Used to set the width of the card                                                   |
+| `--card-height`    | Used to set the height of the card                                                  |
+| `--card-elevation` | Used to set the z-index of the card                                                 |
 
 # Proposal for Interactive and Selectable Card Implementation
 

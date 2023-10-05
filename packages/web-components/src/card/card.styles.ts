@@ -58,6 +58,9 @@ export const styles = css`
     overflow: hidden;
     box-shadow: ${shadow4};
     box-sizing: border-box;
+    width: var(--card-width, 360px);
+    height: var(--card-height, fit-content);
+    z-index: var(--card-elevation, 1);
   }
 
   :host:focus-visible {
@@ -113,6 +116,7 @@ export const styles = css`
 
   :host([interactive]) {
     cursor: pointer;
+    user-select: none;
   }
   :host([interactive]:active) {
     background: ${colorNeutralBackground1Pressed};
