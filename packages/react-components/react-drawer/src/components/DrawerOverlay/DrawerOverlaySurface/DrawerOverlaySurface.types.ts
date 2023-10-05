@@ -1,4 +1,4 @@
-import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import type { DialogSurfaceSlots, DialogSurfaceState } from '@fluentui/react-dialog';
 import type { ComponentProps, ComponentState } from '@fluentui/react-utilities';
 
 /**
@@ -14,9 +14,4 @@ export type DrawerOverlaySurfaceProps = ComponentProps<DrawerOverlaySurfaceSlots
 /**
  * State used in rendering DrawerOverlaySurface
  */
-export type DrawerOverlaySurfaceState = ComponentState<DrawerOverlaySurfaceSlots> & {
-  /**
-   * Whether the drawer is nested inside another drawer.
-   */
-  nested: boolean;
-};
+export type DrawerOverlaySurfaceState = ComponentState<DrawerOverlaySurfaceSlots> & DialogSurfaceState;

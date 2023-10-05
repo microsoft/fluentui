@@ -1,14 +1,13 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import {
-  useDialogContext_unstable,
   useDialogSurface_unstable,
   useDialogSurfaceContextValues_unstable,
   renderDialogSurface_unstable,
 } from '@fluentui/react-dialog';
 
 import { useDrawerOverlaySurfaceStyles_unstable } from './useDrawerOverlaySurfaceStyles.styles';
-import type { DrawerOverlaySurfaceProps, DrawerOverlaySurfaceState } from './DrawerOverlaySurface.types';
+import type { DrawerOverlaySurfaceProps } from './DrawerOverlaySurface.types';
 
 /**
  * @internal
@@ -17,14 +16,10 @@ import type { DrawerOverlaySurfaceProps, DrawerOverlaySurfaceState } from './Dra
 export const DrawerOverlaySurface: ForwardRefComponent<DrawerOverlaySurfaceProps> = React.forwardRef((props, ref) => {
   const dialogSurfaceState = useDialogSurface_unstable(props, ref);
   const dialogSurfaceContextValues = useDialogSurfaceContextValues_unstable(dialogSurfaceState);
-  const state: DrawerOverlaySurfaceState = {
-    ...dialogSurfaceState,
-    nested: useDialogContext_unstable(ctx => ctx.isNestedDialog),
-  };
 
-  useDrawerOverlaySurfaceStyles_unstable(state);
+  useDrawerOverlaySurfaceStyles_unstable(dialogSurfaceState);
 
-  return renderDialogSurface_unstable(state, dialogSurfaceContextValues);
+  return renderDialogSurface_unstable(dialogSurfaceState, dialogSurfaceContextValues);
 });
 
 DrawerOverlaySurface.displayName = 'DrawerOverlaySurface';
