@@ -62,7 +62,6 @@ const cardHeaderTemplate = html<CardHeaderStoryArgs>`
         </fluent-text>
         <fluent-button
             slot="action"
-            ?disabled="${x => x.disabled}"
             size="small"
             icon-only
             appearance="transparent"
