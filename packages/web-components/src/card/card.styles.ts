@@ -55,7 +55,6 @@ export const styles = css`
     position: relative;
     max-width: 100%;
     height: fit-content;
-    margin: auto;
     overflow: hidden;
     box-shadow: ${shadow4};
     box-sizing: border-box;
