@@ -63,6 +63,7 @@ export type MessageBarContextValue = {
     layout: 'multiline' | 'singleline' | 'auto';
     actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
     bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
+    titleId: string;
 };
 
 // @public
@@ -105,10 +106,8 @@ export type MessageBarSlots = {
 };
 
 // @public
-export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>> & {
+export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>> & Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
     transitionClassName: string;
-    actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
-    bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
 };
 
 // @public
