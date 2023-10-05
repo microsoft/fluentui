@@ -344,7 +344,10 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   };
 
   private _sortChartData = (points: LineChartDataWithIndex[]): LineChartDataWithIndex[] => {
-    const { disableSortByXValues = false } = this.props;
+    const { disableSortByXValues = false, optimizeLargeData = false } = this.props;
+    if (optimizeLargeData === true) {
+      return points;
+    }
     if (disableSortByXValues === false) {
       points.forEach(point => {
         point.data.sort(this._sortByXValues);

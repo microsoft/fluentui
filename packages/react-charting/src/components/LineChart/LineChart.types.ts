@@ -74,6 +74,7 @@ export interface ILineChartProps extends ICartesianChartProps {
    * Optimize line chart rendering for large data set. If this prop is enabled, line chart
    * can easily render over 10K datapoints with multiple lines smoothly.
    * This rendering mechanism does not support gaps in lines.
+   * This might however disable the inbuilt sorting of data by x values
    */
   optimizeLargeData?: boolean;
 
