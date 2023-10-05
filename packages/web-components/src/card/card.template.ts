@@ -1,4 +1,4 @@
-import { ElementViewTemplate, html, ref, slotted, when } from '@microsoft/fast-element';
+import { ElementViewTemplate, html, ref, slotted } from '@microsoft/fast-element';
 import type { Card } from './card.js';
 
 /**
