@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useAnnounce_unstable } from '@fluentui/react-shared-contexts';
 import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
@@ -15,7 +15,7 @@ import { useMessageBarTransitionContext } from '../../contexts/messageBarTransit
  * @param props - props from this instance of MessageBar
  * @param ref - reference to root HTMLElement of MessageBar
  */
-export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLElement>): MessageBarState => {
+export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLDivElement>): MessageBarState => {
   const { layout = 'auto', intent = 'info', politeness } = props;
   const computedPolitness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
   const autoReflow = layout === 'auto';
@@ -40,7 +40,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
       icon: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, reflowRef, nodeRef),
         ...props,
       }),

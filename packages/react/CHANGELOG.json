@@ -2,6 +2,21 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Wed, 04 Oct 2023 07:38:36 GMT",
+      "tag": "@fluentui/react_v8.112.1",
+      "version": "8.112.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "ae696837f6b0c07c285787a7a28626bac1b5014c",
+            "comment": "fix: GroupedListV2 scrollToIndex scrolls to correct index"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Oct 2023 07:36:46 GMT",
       "tag": "@fluentui/react_v8.112.0",
       "version": "8.112.0",

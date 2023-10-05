@@ -1,6 +1,6 @@
 {
-  "type": "minor",
-  "comment": "feat: exports getIntrinsicElementProps method",
+  "type": "patch",
+  "comment": "chore: re-exports DialogSurface context types and hooks",
   "packageName": "@fluentui/react-components",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

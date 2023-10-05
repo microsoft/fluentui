@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adds comments on createCustomFocusIndicatorStyle to explain that the default outline style is not removed",
+  "packageName": "@fluentui/react-tabster",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

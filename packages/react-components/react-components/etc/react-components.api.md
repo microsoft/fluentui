@@ -236,6 +236,7 @@ import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
 import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
 import { DialogSurfaceContextValue } from '@fluentui/react-dialog';
+import { DialogSurfaceContextValues } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
@@ -1021,6 +1022,7 @@ import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceContext_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceContextValues_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
@@ -1712,6 +1714,8 @@ export { DialogSurface }
 export { dialogSurfaceClassNames }
 
 export { DialogSurfaceContextValue }
+
+export { DialogSurfaceContextValues }
 
 export { DialogSurfaceProps }
 
@@ -3282,6 +3286,8 @@ export { useDialogContext_unstable }
 export { useDialogSurface_unstable }
 
 export { useDialogSurfaceContext_unstable }
+
+export { useDialogSurfaceContextValues_unstable }
 
 export { useDialogSurfaceStyles_unstable }
 

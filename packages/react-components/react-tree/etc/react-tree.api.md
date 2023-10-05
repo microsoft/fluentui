@@ -336,7 +336,14 @@ export type TreeOpenChangeData = {
 } | {
     event: React_2.MouseEvent<HTMLElement>;
     type: 'Click';
-} | {
+}
+/**
+* @deprecated
+* Use `type: 'Click'` instead of Enter,
+* an enter press will trigger a click event, which will trigger an open change,
+* so there is no need to have a separate type for it.
+*/
+| {
     event: React_2.KeyboardEvent<HTMLElement>;
     type: typeof Enter;
 } | {
