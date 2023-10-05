@@ -2,7 +2,6 @@ import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@mic
 import { FASTCard } from '@microsoft/fast-foundation';
 import { isTabbable } from 'tabbable';
 import { keyEnter, keyEscape, keySpace } from '@microsoft/fast-web-utilities';
-import { Checkbox as FluentCheckbox } from '../checkbox/index.js';
 import { CardAppearance, CardFocusMode, CardOrientation, CardSize } from './card.options.js';
 
 /**
