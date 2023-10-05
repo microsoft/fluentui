@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: DetailsList columns render correctly when the list is wider than the viewport",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
