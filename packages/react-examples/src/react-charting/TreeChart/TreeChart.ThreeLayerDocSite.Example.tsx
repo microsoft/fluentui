@@ -88,6 +88,7 @@ export class TreeChartThreeLayerDocSiteExample extends React.Component<{}, ITree
           layoutWidth={this.state?._layoutWidth}
           width={this.state._width}
           height={this.state._height}
+          margins={{ top: 30, right: 130, bottom: 30, left: 50 }}
         />
       </>
     );
