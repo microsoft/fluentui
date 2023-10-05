@@ -138,7 +138,6 @@ export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & Pick<Dialo
 // @public
 export type DrawerOverlaySlots = {
     root: Slot<DrawerOverlaySurfaceProps>;
-    backdrop?: Slot<'div'>;
 };
 
 // @public
