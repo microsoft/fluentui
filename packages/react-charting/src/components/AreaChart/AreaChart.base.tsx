@@ -244,7 +244,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     points.forEach(point => {
       point.data.sort(this._sortByXValues);
     });
-    console.log('yay');
     return points;
   };
 
