@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: exports getIntrinsicElementProps method",
-  "packageName": "@fluentui/react-components",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

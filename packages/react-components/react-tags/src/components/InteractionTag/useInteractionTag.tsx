@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { InteractionTagProps, InteractionTagState } from './InteractionTag.types';
 import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
 
@@ -38,7 +38,7 @@ export const useInteractionTag_unstable = (
     },
 
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref,
         ...props,
         id,

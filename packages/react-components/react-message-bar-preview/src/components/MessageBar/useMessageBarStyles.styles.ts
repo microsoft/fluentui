@@ -30,7 +30,7 @@ const useIconBaseStyles = makeResetStyles({
   color: tokens.colorNeutralForeground3,
 });
 
-const useMultilineStyles = makeStyles({
+const useStyles = makeStyles({
   rootMultiline: {
     whiteSpace: 'normal',
     alignItems: 'start',
@@ -47,6 +47,10 @@ const useMultilineStyles = makeStyles({
     marginTop: tokens.spacingVerticalMNudge,
     marginBottom: tokens.spacingVerticalS,
     marginRight: '0px',
+  },
+
+  square: {
+    ...shorthands.borderRadius(0),
   },
 });
 
@@ -89,14 +93,15 @@ const useRootIntentStyles = makeStyles({
 export const useMessageBarStyles_unstable = (state: MessageBarState): MessageBarState => {
   const rootBaseStyles = useRootBaseStyles();
   const iconBaseStyles = useIconBaseStyles();
-  const multilineStyles = useMultilineStyles();
   const iconIntentStyles = useIconIntentStyles();
   const rootIntentStyles = useRootIntentStyles();
+  const styles = useStyles();
 
   state.root.className = mergeClasses(
     messageBarClassNames.root,
     rootBaseStyles,
-    state.layout === 'multiline' && multilineStyles.rootMultiline,
+    state.layout === 'multiline' && styles.rootMultiline,
+    state.shape === 'square' && styles.square,
     rootIntentStyles[state.intent],
     state.transitionClassName,
     state.root.className,

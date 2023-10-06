@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { MessageBarBodyProps, MessageBarBodyState } from './MessageBarBody.types';
 import { useMessageBarContext } from '../../contexts/messageBarContext';
 
@@ -14,7 +14,7 @@ import { useMessageBarContext } from '../../contexts/messageBarContext';
  */
 export const useMessageBarBody_unstable = (
   props: MessageBarBodyProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): MessageBarBodyState => {
   const { bodyRef } = useMessageBarContext();
   return {
@@ -22,7 +22,7 @@ export const useMessageBarBody_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, bodyRef),
         ...props,
       }),
