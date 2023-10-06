@@ -236,6 +236,7 @@ import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
 import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
 import { DialogSurfaceContextValue } from '@fluentui/react-dialog';
+import { DialogSurfaceContextValues } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
@@ -295,6 +296,7 @@ import { FontFamilyTokens } from '@fluentui/react-theme';
 import { FontSizeTokens } from '@fluentui/react-theme';
 import { FontWeightTokens } from '@fluentui/react-theme';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { getNativeElementProps } from '@fluentui/react-utilities';
 import { getPartitionedNativeProps } from '@fluentui/react-utilities';
 import { getSlots } from '@fluentui/react-utilities';
@@ -318,6 +320,22 @@ import { InputOnChangeData } from '@fluentui/react-input';
 import { InputProps } from '@fluentui/react-input';
 import { InputSlots } from '@fluentui/react-input';
 import { InputState } from '@fluentui/react-input';
+import { InteractionTag } from '@fluentui/react-tags';
+import { interactionTagClassNames } from '@fluentui/react-tags';
+import { InteractionTagPrimary } from '@fluentui/react-tags';
+import { interactionTagPrimaryClassNames } from '@fluentui/react-tags';
+import { InteractionTagPrimaryContextValues } from '@fluentui/react-tags';
+import { InteractionTagPrimaryProps } from '@fluentui/react-tags';
+import { InteractionTagPrimarySlots } from '@fluentui/react-tags';
+import { InteractionTagPrimaryState } from '@fluentui/react-tags';
+import { InteractionTagProps } from '@fluentui/react-tags';
+import { InteractionTagSecondary } from '@fluentui/react-tags';
+import { interactionTagSecondaryClassNames } from '@fluentui/react-tags';
+import { InteractionTagSecondaryProps } from '@fluentui/react-tags';
+import { InteractionTagSecondarySlots } from '@fluentui/react-tags';
+import { InteractionTagSecondaryState } from '@fluentui/react-tags';
+import { InteractionTagSlots } from '@fluentui/react-tags';
+import { InteractionTagState } from '@fluentui/react-tags';
 import { Label } from '@fluentui/react-label';
 import { labelClassNames } from '@fluentui/react-label';
 import { LabelProps } from '@fluentui/react-label';
@@ -549,6 +567,9 @@ import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
 import { renderInput_unstable } from '@fluentui/react-input';
+import { renderInteractionTag_unstable } from '@fluentui/react-tags';
+import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
+import { renderInteractionTagSecondary_unstable } from '@fluentui/react-tags';
 import { renderLabel_unstable } from '@fluentui/react-label';
 import { renderLink_unstable } from '@fluentui/react-link';
 import { renderListbox_unstable } from '@fluentui/react-combobox';
@@ -595,6 +616,8 @@ import { renderTableResizeHandle_unstable } from '@fluentui/react-table';
 import { renderTableRow_unstable } from '@fluentui/react-table';
 import { renderTableSelectionCell_unstable } from '@fluentui/react-table';
 import { renderTabList_unstable } from '@fluentui/react-tabs';
+import { renderTag_unstable } from '@fluentui/react-tags';
+import { renderTagGroup_unstable } from '@fluentui/react-tags';
 import { renderText_unstable } from '@fluentui/react-text';
 import { renderTextarea_unstable } from '@fluentui/react-textarea';
 import { renderToast_unstable } from '@fluentui/react-toast';
@@ -685,6 +708,7 @@ import { Subtitle2 } from '@fluentui/react-text';
 import { subtitle2ClassNames } from '@fluentui/react-text';
 import { Subtitle2Stronger } from '@fluentui/react-text';
 import { subtitle2StrongerClassNames } from '@fluentui/react-text';
+import { SubtreeContextValue } from '@fluentui/react-tree';
 import { Switch } from '@fluentui/react-switch';
 import { switchClassNames } from '@fluentui/react-switch';
 import { SwitchOnChangeData } from '@fluentui/react-switch';
@@ -773,6 +797,23 @@ import { TabRegisterData } from '@fluentui/react-tabs';
 import { TabSlots } from '@fluentui/react-tabs';
 import { TabState } from '@fluentui/react-tabs';
 import { TabValue } from '@fluentui/react-tabs';
+import { Tag } from '@fluentui/react-tags';
+import { TagAppearance } from '@fluentui/react-tags';
+import { tagClassNames } from '@fluentui/react-tags';
+import { TagDismissData } from '@fluentui/react-tags';
+import { TagDismissEvent } from '@fluentui/react-tags';
+import { TagDismissHandler } from '@fluentui/react-tags';
+import { TagGroup } from '@fluentui/react-tags';
+import { tagGroupClassNames } from '@fluentui/react-tags';
+import { TagGroupProps } from '@fluentui/react-tags';
+import { TagGroupSlots } from '@fluentui/react-tags';
+import { TagGroupState } from '@fluentui/react-tags';
+import { TagProps } from '@fluentui/react-tags';
+import { TagShape } from '@fluentui/react-tags';
+import { TagSize } from '@fluentui/react-tags';
+import { TagSlots } from '@fluentui/react-tags';
+import { TagState } from '@fluentui/react-tags';
+import { TagValue } from '@fluentui/react-tags';
 import { teamsDarkTheme } from '@fluentui/react-theme';
 import { teamsHighContrastTheme } from '@fluentui/react-theme';
 import { teamsLightTheme } from '@fluentui/react-theme';
@@ -981,6 +1022,7 @@ import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceContext_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceContextValues_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
@@ -1002,6 +1044,7 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 import { useFluentProvider_unstable } from '@fluentui/react-provider';
 import { useFluentProviderContextValues_unstable } from '@fluentui/react-provider';
 import { useFluentProviderStyles_unstable } from '@fluentui/react-provider';
+import { useFluentProviderThemeStyleTag } from '@fluentui/react-provider';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { UseFocusableGroupOptions } from '@fluentui/react-tabster';
 import { useFocusFinders } from '@fluentui/react-tabster';
@@ -1013,6 +1056,13 @@ import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
+import { useInteractionTag_unstable } from '@fluentui/react-tags';
+import { useInteractionTagContextValues_unstable } from '@fluentui/react-tags';
+import { useInteractionTagPrimary_unstable } from '@fluentui/react-tags';
+import { useInteractionTagPrimaryStyles_unstable } from '@fluentui/react-tags';
+import { useInteractionTagSecondary_unstable } from '@fluentui/react-tags';
+import { useInteractionTagSecondaryStyles_unstable } from '@fluentui/react-tags';
+import { useInteractionTagStyles_unstable } from '@fluentui/react-tags';
 import { useIsInTableHeader } from '@fluentui/react-table';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useIsOverflowGroupVisible } from '@fluentui/react-overflow';
@@ -1107,6 +1157,7 @@ import { useSpinner_unstable } from '@fluentui/react-spinner';
 import { useSpinnerStyles_unstable } from '@fluentui/react-spinner';
 import { useSplitButton_unstable } from '@fluentui/react-button';
 import { useSplitButtonStyles_unstable } from '@fluentui/react-button';
+import { useSubtreeContext_unstable } from '@fluentui/react-tree';
 import { useSwitch_unstable } from '@fluentui/react-switch';
 import { useSwitchStyles_unstable } from '@fluentui/react-switch';
 import { useTab_unstable } from '@fluentui/react-tabs';
@@ -1143,6 +1194,12 @@ import { useTabListContext_unstable } from '@fluentui/react-tabs';
 import { useTabListContextValues_unstable } from '@fluentui/react-tabs';
 import { useTabListStyles_unstable } from '@fluentui/react-tabs';
 import { useTabStyles_unstable } from '@fluentui/react-tabs';
+import { useTag_unstable } from '@fluentui/react-tags';
+import { useTagAvatarContextValues_unstable } from '@fluentui/react-tags';
+import { useTagGroup_unstable } from '@fluentui/react-tags';
+import { useTagGroupContextValues_unstable } from '@fluentui/react-tags';
+import { useTagGroupStyles_unstable } from '@fluentui/react-tags';
+import { useTagStyles_unstable } from '@fluentui/react-tags';
 import { useText_unstable } from '@fluentui/react-text';
 import { useTextarea_unstable } from '@fluentui/react-textarea';
 import { useTextareaStyles_unstable } from '@fluentui/react-textarea';
@@ -1658,6 +1715,8 @@ export { dialogSurfaceClassNames }
 
 export { DialogSurfaceContextValue }
 
+export { DialogSurfaceContextValues }
+
 export { DialogSurfaceProps }
 
 export { DialogSurfaceSlots }
@@ -1776,6 +1835,8 @@ export { FontWeightTokens }
 
 export { ForwardRefComponent }
 
+export { getIntrinsicElementProps }
+
 export { getNativeElementProps }
 
 export { getPartitionedNativeProps }
@@ -1821,6 +1882,38 @@ export { InputProps }
 export { InputSlots }
 
 export { InputState }
+
+export { InteractionTag }
+
+export { interactionTagClassNames }
+
+export { InteractionTagPrimary }
+
+export { interactionTagPrimaryClassNames }
+
+export { InteractionTagPrimaryContextValues }
+
+export { InteractionTagPrimaryProps }
+
+export { InteractionTagPrimarySlots }
+
+export { InteractionTagPrimaryState }
+
+export { InteractionTagProps }
+
+export { InteractionTagSecondary }
+
+export { interactionTagSecondaryClassNames }
+
+export { InteractionTagSecondaryProps }
+
+export { InteractionTagSecondarySlots }
+
+export { InteractionTagSecondaryState }
+
+export { InteractionTagSlots }
+
+export { InteractionTagState }
 
 export { Label }
 
@@ -2284,6 +2377,12 @@ export { renderImage_unstable }
 
 export { renderInput_unstable }
 
+export { renderInteractionTag_unstable }
+
+export { renderInteractionTagPrimary_unstable }
+
+export { renderInteractionTagSecondary_unstable }
+
 export { renderLabel_unstable }
 
 export { renderLink_unstable }
@@ -2375,6 +2474,10 @@ export { renderTableRow_unstable }
 export { renderTableSelectionCell_unstable }
 
 export { renderTabList_unstable }
+
+export { renderTag_unstable }
+
+export { renderTagGroup_unstable }
 
 export { renderText_unstable }
 
@@ -2556,6 +2659,8 @@ export { Subtitle2Stronger }
 
 export { subtitle2StrongerClassNames }
 
+export { SubtreeContextValue }
+
 export { Switch }
 
 export { switchClassNames }
@@ -2731,6 +2836,40 @@ export { TabSlots }
 export { TabState }
 
 export { TabValue }
+
+export { Tag }
+
+export { TagAppearance }
+
+export { tagClassNames }
+
+export { TagDismissData }
+
+export { TagDismissEvent }
+
+export { TagDismissHandler }
+
+export { TagGroup }
+
+export { tagGroupClassNames }
+
+export { TagGroupProps }
+
+export { TagGroupSlots }
+
+export { TagGroupState }
+
+export { TagProps }
+
+export { TagShape }
+
+export { TagSize }
+
+export { TagSlots }
+
+export { TagState }
+
+export { TagValue }
 
 export { teamsDarkTheme }
 
@@ -3148,6 +3287,8 @@ export { useDialogSurface_unstable }
 
 export { useDialogSurfaceContext_unstable }
 
+export { useDialogSurfaceContextValues_unstable }
+
 export { useDialogSurfaceStyles_unstable }
 
 export { useDialogTitle_unstable }
@@ -3190,6 +3331,8 @@ export { useFluentProviderContextValues_unstable }
 
 export { useFluentProviderStyles_unstable }
 
+export { useFluentProviderThemeStyleTag }
+
 export { useFocusableGroup }
 
 export { UseFocusableGroupOptions }
@@ -3211,6 +3354,20 @@ export { useImageStyles_unstable }
 export { useInput_unstable }
 
 export { useInputStyles_unstable }
+
+export { useInteractionTag_unstable }
+
+export { useInteractionTagContextValues_unstable }
+
+export { useInteractionTagPrimary_unstable }
+
+export { useInteractionTagPrimaryStyles_unstable }
+
+export { useInteractionTagSecondary_unstable }
+
+export { useInteractionTagSecondaryStyles_unstable }
+
+export { useInteractionTagStyles_unstable }
 
 export { useIsInTableHeader }
 
@@ -3400,6 +3557,8 @@ export { useSplitButton_unstable }
 
 export { useSplitButtonStyles_unstable }
 
+export { useSubtreeContext_unstable }
+
 export { useSwitch_unstable }
 
 export { useSwitchStyles_unstable }
@@ -3471,6 +3630,18 @@ export { useTabListContextValues_unstable }
 export { useTabListStyles_unstable }
 
 export { useTabStyles_unstable }
+
+export { useTag_unstable }
+
+export { useTagAvatarContextValues_unstable }
+
+export { useTagGroup_unstable }
+
+export { useTagGroupContextValues_unstable }
+
+export { useTagGroupStyles_unstable }
+
+export { useTagStyles_unstable }
 
 export { useText_unstable }
 

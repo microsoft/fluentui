@@ -110,7 +110,7 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
 
   state.info.className = mergeClasses(
     infoButtonClassNames.info,
-    size === 'large' && popoverSurfaceStyles.large,
+    size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
     state.info.className,
   );
 
