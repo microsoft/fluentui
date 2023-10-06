@@ -68,7 +68,12 @@ export const Dismiss = () => {
             </MessageBarBody>
             <MessageBarActions
               containerAction={
-                <Button onClick={() => dismissMessage(id)} appearance="transparent" icon={<DismissRegular />} />
+                <Button
+                  onClick={() => dismissMessage(id)}
+                  aria-label="dismiss"
+                  appearance="transparent"
+                  icon={<DismissRegular />}
+                />
               }
             />
           </MessageBar>

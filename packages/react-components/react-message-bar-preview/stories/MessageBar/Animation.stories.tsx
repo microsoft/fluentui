@@ -91,7 +91,12 @@ export const Animation = () => {
             </MessageBarBody>
             <MessageBarActions
               containerAction={
-                <Button onClick={() => dismissMessage(id)} appearance="transparent" icon={<DismissRegular />} />
+                <Button
+                  onClick={() => dismissMessage(id)}
+                  aria-label="dismiss"
+                  appearance="transparent"
+                  icon={<DismissRegular />}
+                />
               }
             />
           </MessageBar>
@@ -108,6 +113,9 @@ Animation.parameters = {
         'Enter animations are also handled within the `MessageBarGroup`. However avoid entry animations for MessageBar',
         'components on page load. However, MessageBar components that are mounted during the lifecycle of an',
         'app can use enter animations.',
+        '',
+        '> ⚠️ Animation will only function if the only children of `MessageBarGroup` are `MessageBar` components.',
+        'Do not wrap `MessageBar` with other components. This is a known limitation we are actively working on.',
       ].join('\n'),
     },
   },
