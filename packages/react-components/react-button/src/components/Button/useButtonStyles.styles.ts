@@ -461,9 +461,9 @@ const useRootFocusStyles = makeStyles({
   // Primary styles
   primary: createCustomFocusIndicatorStyle({
     ...shorthands.borderColor(tokens.colorStrokeFocus2),
-    boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
+    boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
     ':hover': {
-      boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+      boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
       ...shorthands.borderColor(tokens.colorStrokeFocus2),
     },
   }),
