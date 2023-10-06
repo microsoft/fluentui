@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@fluentui/react-utilities": "^9.15.0",
+    "react-is": "^17.0.2",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
