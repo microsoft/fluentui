@@ -8,6 +8,7 @@ describe('shadowConfig', () => {
       isShadowConfig({
         stylesheetKey: 'foo',
         inShadow: true,
+        __isShadowConfig__: true,
       }),
     ).toBe(true);
 
@@ -15,6 +16,7 @@ describe('shadowConfig', () => {
       isShadowConfig({
         stylesheetKey: 'cats',
         inShadow: false,
+        __isShadowConfig__: true,
       }),
     ).toBe(true);
 
@@ -23,6 +25,7 @@ describe('shadowConfig', () => {
         stylesheetKey: GLOBAL_STYLESHEET_KEY,
         inShadow: false,
         window: {},
+        __isShadowConfig__: true,
       }),
     ).toBe(true);
 
@@ -31,6 +34,7 @@ describe('shadowConfig', () => {
         stylesheetKey: 'Button',
         inShadow: true,
         window: {},
+        __isShadowConfig__: true,
       }),
     ).toBe(true);
 
@@ -39,6 +43,16 @@ describe('shadowConfig', () => {
         stylesheetKey: GLOBAL_STYLESHEET_KEY,
         inShadow: true,
         window: undefined,
+        __isShadowConfig__: true,
+      }),
+    ).toBe(true);
+
+    expect(
+      isShadowConfig({
+        stylesheetKey: 'something',
+        inShadow: true,
+        cats: 'are the best',
+        __isShadowConfig__: true,
       }),
     ).toBe(true);
   });

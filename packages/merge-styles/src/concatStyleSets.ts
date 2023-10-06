@@ -2,6 +2,7 @@ import { IStyleSet, IConcatenatedStyleSet } from './IStyleSet';
 import { IStyleBase, IStyle } from './IStyle';
 import { IStyleFunctionOrObject } from './IStyleFunction';
 import { ObjectOnly } from './ObjectOnly';
+import { ShadowConfig, isShadowConfig } from './shadowConfig';
 
 /**
  * Combine a set of styles together (but does not register css classes).
@@ -17,7 +18,7 @@ export function concatStyleSets<TStyleSet>(
  * @param styleSet2 - The second style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2>(
-  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
   styleSet2: TStyleSet2 | false | null | undefined,
 ): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
@@ -28,7 +29,7 @@ export function concatStyleSets<TStyleSet1, TStyleSet2>(
  * @param styleSet3 - The third style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(
-  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
 ): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
@@ -41,7 +42,7 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(
  * @param styleSet4 - The fourth style set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
-  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
@@ -58,7 +59,7 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(
  * @param styleSet5 - The fifth set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(
-  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
@@ -81,7 +82,7 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, 
  * @param styleSet6 - The sixth set to be concatenated.
  */
 export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(
-  styleSet1: TStyleSet1 | false | null | undefined,
+  styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig,
   styleSet2: TStyleSet2 | false | null | undefined,
   styleSet3: TStyleSet3 | false | null | undefined,
   styleSet4: TStyleSet4 | false | null | undefined,
@@ -100,14 +101,24 @@ export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, 
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any>;
+export function concatStyleSets(
+  ...styleSets: (IStyleSet | false | null | undefined | ShadowConfig)[]
+): IConcatenatedStyleSet<any>;
 
 /**
  * Combine a set of styles together (but does not register css classes).
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
-export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any> {
-  if (styleSets && styleSets.length === 1 && styleSets[0] && !(styleSets[0] as IStyleSet).subComponentStyles) {
+export function concatStyleSets(
+  ...styleSets: (IStyleSet | false | null | undefined | ShadowConfig)[]
+): IConcatenatedStyleSet<any> {
+  if (
+    styleSets &&
+    styleSets.length === 1 &&
+    styleSets[0] &&
+    !(styleSets[0] as IStyleSet).subComponentStyles &&
+    !isShadowConfig(styleSets[0])
+  ) {
     return styleSets[0] as IConcatenatedStyleSet<any>;
   }
 
@@ -117,7 +128,7 @@ export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefi
   const workingSubcomponentStyles: { [key: string]: Array<IStyleFunctionOrObject<any, any>> } = {};
 
   for (const currentSet of styleSets) {
-    if (currentSet) {
+    if (currentSet && !isShadowConfig(currentSet)) {
       for (const prop in currentSet) {
         if (currentSet.hasOwnProperty(prop)) {
           if (prop === 'subComponentStyles' && currentSet.subComponentStyles !== undefined) {
