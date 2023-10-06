@@ -3,7 +3,7 @@ import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
-import { FocusZone, FocusZoneDirection, IFocusZoneProps } from '@fluentui/react-focus';
+import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import {
   ICartesianChartStyles,
   ICartesianChartStyleProps,
@@ -458,7 +458,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       this.state._removalValueForTextTuncate! -
       this.titleMargin;
     /**
-     * We have use the {@link IFocusZoneProps#defaultTabbableElement } to fix
+     * We have use the {@link defaultTabbableElement } to fix
      * the Focus not landing on chart while tabbing, instead  goes to legend.
      * This issue is observed in Area, line chart after performance optimization done in the PR {@link https://github.com/microsoft/fluentui/pull/27721 }
      * This issue is observed in Bar charts after the changes done by FocusZone team in the PR: {@link https://github.com/microsoft/fluentui/pull/24175 }
@@ -468,10 +468,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
      * But now after the above PR : they are attaching the
      * listeners to the FocusZone elements instead of the window. So in the first render cycle in Bar charts
      * bars are not created as in the first render cycle the size of the chart container is not known( or is 0)
-     * which creates bars of height 0 so instead we do not create any bars {@link https://vscode.dev/github/ankityadav4/fluentui/blob/bug-8860/packages/react-charting/src/components/VerticalBarChart/VerticalBarChart.base.tsx#L539} and instead return empty fragments.
+     * which creates bars of height 0 so instead we do not create any bars  and instead return empty fragments.
      *
      * We have tried 2 Approaches to fix the issue:
-     * 1. Using the {@link IFocusZoneProps#elementRef} property of FocusZone where we dispatch event for tab keydown
+     * 1. Using the {@link elementRef} property of FocusZone where we dispatch event for tab keydown
      *    after the second render cycle which triggers an update of the tab index in FocusZone.
      *    But this is a hacky solution and not a proper fix and also elementRef is deprecated.
      * 2. Using the default tabbable element to fix the issue.
