@@ -8,7 +8,7 @@ import type { InfoButtonProps } from './InfoButton.types';
 /**
  * InfoButtons provide a way to display additional information about a form field or an area in the UI.
  *
- * @deprecated Use `InfoLabel` instead.
+ * @deprecated Use {@link InfoLabel} instead.
  */
 export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef((props, ref) => {
   const state = useInfoButton_unstable(props, ref);
