@@ -62,6 +62,7 @@ export function customizable(
                         stylesheetKey: scope,
                         inShadow,
                         window: win,
+                        __isShadowConfig__: true,
                       };
                     }
 

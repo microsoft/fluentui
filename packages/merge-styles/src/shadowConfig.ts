@@ -2,6 +2,7 @@ export type ShadowConfig = {
   stylesheetKey: string;
   inShadow: boolean;
   window?: Window;
+  __isShadowConfig__: true;
 };
 
 export const GLOBAL_STYLESHEET_KEY = '__global__';
@@ -10,6 +11,7 @@ export const DEFAULT_SHADOW_CONFIG: ShadowConfig = {
   stylesheetKey: GLOBAL_STYLESHEET_KEY,
   inShadow: false,
   window: undefined,
+  __isShadowConfig__: true,
 } as const;
 
 export const isShadowConfig = (obj: unknown): obj is ShadowConfig => {
@@ -17,16 +19,5 @@ export const isShadowConfig = (obj: unknown): obj is ShadowConfig => {
     return false;
   }
 
-  const config = obj as ShadowConfig;
-  const numKeys = Object.keys(config).length;
-
-  if (typeof config.stylesheetKey !== 'string' || typeof config.inShadow !== 'boolean') {
-    return false;
-  }
-
-  if (numKeys === 3) {
-    return typeof config.window === 'undefined' || !!(config.window && typeof config.window === 'object');
-  }
-
-  return true;
+  return (obj as ShadowConfig).__isShadowConfig__ === true;
 };

@@ -3915,6 +3915,8 @@ export interface IComboBoxOptionClassNames {
 
 // @public (undocumented)
 export interface IComboBoxOptionStyles extends IButtonStyles {
+    // (undocumented)
+    __shadowConfig__?: ShadowConfig;
     optionText: IStyle;
     optionTextWrapper: IStyle;
 }
@@ -3970,6 +3972,8 @@ export interface IComboBoxState {
 
 // @public (undocumented)
 export interface IComboBoxStyles {
+    // (undocumented)
+    __shadowConfig__?: ShadowConfig;
     callout: IStyle;
     container: IStyle;
     divider: IStyle;

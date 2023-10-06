@@ -23,7 +23,6 @@ import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
 import type { ShadowConfig } from '@fluentui/merge-styles';
-import { Stylesheet } from '@fluentui/merge-styles';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;

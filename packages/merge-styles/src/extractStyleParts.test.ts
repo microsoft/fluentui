@@ -11,7 +11,7 @@ let shadowConfig: ShadowConfig;
 describe('extractStyleParts', () => {
   beforeEach(() => {
     _stylesheet.reset();
-    shadowConfig = { stylesheetKey: '__globalTest__', inShadow: false };
+    shadowConfig = { stylesheetKey: '__globalTest__', inShadow: false, __isShadowConfig__: true };
   });
 
   it('can extract classes and objects', () => {
