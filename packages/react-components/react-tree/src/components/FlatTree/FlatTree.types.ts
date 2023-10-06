@@ -1,7 +1,6 @@
-import type { ComponentProps, SelectionMode } from '@fluentui/react-utilities';
+import type { ComponentProps, ComponentState, SelectionMode } from '@fluentui/react-utilities';
 import type {
   TreeSlots,
-  TreeState,
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeNavigationData_unstable,
@@ -11,8 +10,13 @@ import type {
   TreeSelectionValue,
 } from '../Tree/index';
 import type { TreeItemValue } from '../TreeItem/index';
+import type { TreeContextValue } from '../../contexts';
 
-export { TreeSlots as FlatTreeSlots, TreeState as FlatTreeState };
+export type FlatTreeSlots = TreeSlots;
+
+export type FlatTreeContextValues = {
+  tree: TreeContextValue;
+};
 
 export type FlatTreeProps = ComponentProps<TreeSlots> & {
   /**
@@ -53,8 +57,7 @@ export type FlatTreeProps = ComponentProps<TreeSlots> & {
    * @param event - a React's Synthetic event
    * @param data - A data object with relevant information,
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+  onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 
   /**
    * This refers to the selection mode of the tree.
@@ -81,3 +84,8 @@ export type FlatTreeProps = ComponentProps<TreeSlots> & {
    */
   onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
+
+export type FlatTreeState = ComponentState<FlatTreeSlots> &
+  TreeContextValue & {
+    open: boolean;
+  };

@@ -1,16 +1,18 @@
 import * as React from 'react';
 import { DrawerInline, DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerFooter } from '@fluentui/react-drawer';
-import { Button, makeStyles } from '@fluentui/react-components';
+import { Button, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    rowGap: '24px',
-    columnGap: '24px',
+    flexWrap: 'wrap',
+    rowGap: tokens.spacingHorizontalXXL,
+    columnGap: tokens.spacingHorizontalXXL,
   },
 
   drawer: {
     height: '400px',
+    minWidth: '320px',
   },
 });
 

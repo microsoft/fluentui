@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: Use caption 1 when size is small or medium.",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -25,17 +25,18 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots>;
 // @public
 export type InfoButtonProps = Omit<ComponentProps<Partial<InfoButtonSlots>>, 'disabled'> & {
     size?: 'small' | 'medium' | 'large';
+    inline?: boolean;
 };
 
 // @public (undocumented)
 export type InfoButtonSlots = {
     root: NonNullable<Slot<'button'>>;
-    popover: NonNullable<Slot<Partial<PopoverProps>>>;
+    popover: NonNullable<Slot<Partial<Omit<PopoverProps, 'openOnHover'>>>>;
     info: NonNullable<Slot<typeof PopoverSurface>>;
 };
 
 // @public
-export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'size'>>;
+export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'inline' | 'size'>>;
 
 // @public
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;

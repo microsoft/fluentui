@@ -1,6 +1,6 @@
 import type * as React from 'react';
 import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
-import type { TreeContextValue } from '../../contexts/treeContext';
+import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
 import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
 import type { TreeItemValue } from '../TreeItem/TreeItem.types';
 import { CheckboxProps } from '@fluentui/react-checkbox';
@@ -15,7 +15,11 @@ export type TreeSlots = {
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export type TreeNavigationData_unstable = { target: HTMLElement; value: TreeItemValue } & (
+export type TreeNavigationData_unstable = {
+  target: HTMLElement;
+  value: TreeItemValue;
+  parentValue: TreeItemValue | undefined;
+} & (
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
@@ -37,6 +41,12 @@ export type TreeOpenChangeData = {
 } & (
   | { event: React.MouseEvent<HTMLElement>; type: 'ExpandIconClick' }
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
+  /**
+   * @deprecated
+   * Use `type: 'Click'` instead of Enter,
+   * an enter press will trigger a click event, which will trigger an open change,
+   * so there is no need to have a separate type for it.
+   */
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof Enter }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowLeft }
@@ -64,7 +74,7 @@ export type TreeCheckedChangeData = {
 export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
 
 export type TreeContextValues = {
-  tree: TreeContextValue;
+  tree: TreeContextValue | SubtreeContextValue;
 };
 
 export type TreeProps = ComponentProps<TreeSlots> & {
@@ -111,8 +121,7 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * @param event - a React's Synthetic event
    * @param data - A data object with relevant information,
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+  onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
 
   /**
    * This refers to the selection mode of the tree.
@@ -143,7 +152,6 @@ export type TreeProps = ComponentProps<TreeSlots> & {
 /**
  * State used in rendering Tree
  */
-export type TreeState = ComponentState<TreeSlots> &
-  TreeContextValue & {
-    open: boolean;
-  };
+export type TreeState = ComponentState<TreeSlots> & {
+  open: boolean;
+} & (TreeContextValue | SubtreeContextValue);

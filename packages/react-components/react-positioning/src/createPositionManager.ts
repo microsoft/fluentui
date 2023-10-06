@@ -1,8 +1,9 @@
 import { computePosition } from '@floating-ui/dom';
 import type { Middleware, Placement, Strategy } from '@floating-ui/dom';
 import type { PositionManager, TargetElement } from './types';
-import { debounce, writeArrowUpdates, writeContainerUpdates, getScrollParent } from './utils';
+import { debounce, writeArrowUpdates, writeContainerUpdates } from './utils';
 import { isHTMLElement } from '@fluentui/react-utilities';
+import { listScrollParents } from './utils/listScrollParents';
 
 interface PositionManagerOptions {
   /**
@@ -67,13 +68,13 @@ export function createPositionManager(options: PositionManagerOptions): Position
     }
 
     if (isFirstUpdate) {
-      scrollParents.add(getScrollParent(container));
+      listScrollParents(container).forEach(scrollParent => scrollParents.add(scrollParent));
       if (isHTMLElement(target)) {
-        scrollParents.add(getScrollParent(target));
+        listScrollParents(target).forEach(scrollParent => scrollParents.add(scrollParent));
       }
 
       scrollParents.forEach(scrollParent => {
-        scrollParent.addEventListener('scroll', updatePosition);
+        scrollParent.addEventListener('scroll', updatePosition, { passive: true });
       });
 
       isFirstUpdate = false;
@@ -127,10 +128,11 @@ export function createPositionManager(options: PositionManagerOptions): Position
     scrollParents.forEach(scrollParent => {
       scrollParent.removeEventListener('scroll', updatePosition);
     });
+    scrollParents.clear();
   };
 
   if (targetWindow) {
-    targetWindow.addEventListener('scroll', updatePosition);
+    targetWindow.addEventListener('scroll', updatePosition, { passive: true });
     targetWindow.addEventListener('resize', updatePosition);
   }
 

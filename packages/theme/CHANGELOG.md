@@ -1,8 +1,26 @@
 # Change Log - @fluentui/theme
 
-This log was last generated on Wed, 28 Jun 2023 07:37:30 GMT and should not be manually modified.
+This log was last generated on Fri, 29 Sep 2023 07:45:30 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.6.36](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.36)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.35..@fluentui/theme_v2.6.36)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.19 ([PR #29313](https://github.com/microsoft/fluentui/pull/29313) by beachball)
+
+## [2.6.35](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.35)
+
+Fri, 18 Aug 2023 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/theme_v2.6.34..@fluentui/theme_v2.6.35)
+
+### Patches
+
+- docs: Updating version of CDN used and replacing usage of via.placeholder.com with SVG from CDN. ([PR #28895](https://github.com/microsoft/fluentui/pull/28895) by Humberto.Morimoto@microsoft.com)
 
 ## [2.6.34](https://github.com/microsoft/fluentui/tree/@fluentui/theme_v2.6.34)
 

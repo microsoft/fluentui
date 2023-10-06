@@ -12,19 +12,20 @@ import type {
 } from './Tree.types';
 import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
 import { createNextNestedCheckedItems, useNestedCheckedItems } from './useNestedControllableCheckedItems';
-import { useTreeContext_unstable } from '../../contexts/treeContext';
+import { useSubtreeContext_unstable } from '../../contexts/subtreeContext';
 import { useRootTree } from '../../hooks/useRootTree';
 import { useSubtree } from '../../hooks/useSubtree';
 import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
 import { treeItemFilter } from '../../utils/treeItemFilter';
 import { useTreeNavigation } from './useTreeNavigation';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
-  const isSubtree = useTreeContext_unstable(ctx => ctx.level > 0);
-  // as isSubTree is static, this doesn't break rule of hooks
+  const { level } = useSubtreeContext_unstable();
+  // as level is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return isSubtree ? useSubtree(props, ref) : useNestedRootTree(props, ref);
+  return level > 0 ? useSubtree(props, ref) : useNestedRootTree(props, ref);
 };
 
 function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
@@ -32,14 +33,16 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   const checkedItems = useNestedCheckedItems(props);
   const { navigate, initialize } = useTreeNavigation();
   const walkerRef = React.useRef<HTMLElementWalker>();
+  const { targetDocument } = useFluent_unstable();
+
   const initializeWalker = React.useCallback(
     (root: HTMLElement | null) => {
-      if (root) {
-        walkerRef.current = createHTMLElementWalker(root, treeItemFilter);
+      if (root && targetDocument) {
+        walkerRef.current = createHTMLElementWalker(root, targetDocument, treeItemFilter);
         initialize(walkerRef.current);
       }
     },
-    [initialize],
+    [initialize, targetDocument],
   );
 
   const handleOpenChange = useEventCallback((event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
@@ -62,23 +65,25 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
   });
   const handleNavigation = useEventCallback(
     (event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable) => {
-      props.onNavigation_unstable?.(event, data);
-      if (walkerRef.current) {
+      props.onNavigation?.(event, data);
+      if (walkerRef.current && !event.isDefaultPrevented()) {
         navigate(data, walkerRef.current);
       }
     },
   );
 
-  return useRootTree(
-    {
-      ...props,
-      openItems,
-      checkedItems,
-      onOpenChange: handleOpenChange,
-      // eslint-disable-next-line @typescript-eslint/naming-convention
-      onNavigation_unstable: handleNavigation,
-      onCheckedChange: handleCheckedChange,
-    },
-    useMergedRefs(ref, initializeWalker),
-  );
+  return {
+    treeType: 'nested',
+    ...useRootTree(
+      {
+        ...props,
+        openItems,
+        checkedItems,
+        onOpenChange: handleOpenChange,
+        onNavigation: handleNavigation,
+        onCheckedChange: handleCheckedChange,
+      },
+      useMergedRefs(ref, initializeWalker),
+    ),
+  };
 }

@@ -46,13 +46,16 @@ export type FluentTriggerComponent = {
 };
 
 // @public
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<Element>> : never : never;
+export type ForwardRefComponent<Props> = React_2.ForwardRefExoticComponent<Props & React_2.RefAttributes<InferredElementRefType<Props>>>;
 
 // @public
 export function getEventClientCoords(event: TouchOrMouseEvent): {
     clientX: number;
     clientY: number;
 };
+
+// @public
+export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => OmitWithoutExpanding<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
 
 // @public
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
@@ -92,6 +95,9 @@ export function getTriggerChild<TriggerChildProps>(children: TriggerProps<Trigge
 
 // @public
 export const IdPrefixProvider: React_2.Provider<string | undefined>;
+
+// @public
+export type InferredElementRefType<Props> = ObscureEventName extends keyof Props ? Required<Props>[ObscureEventName] extends React_2.PointerEventHandler<infer Element> ? Element : never : never;
 
 // @internal
 export function isFluentTrigger(element: React_2.ReactElement): element is React_2.ReactElement<TriggerProps>;
@@ -295,6 +301,9 @@ export type UnknownSlotProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'childr
 };
 
 // @internal
+export function useAnimationFrame(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
+
+// @internal
 export const useControllableState: <State>(options: UseControllableStateOptions<State>) => [State, React_2.Dispatch<React_2.SetStateAction<State>>];
 
 // @internal (undocumented)
@@ -331,6 +340,7 @@ export type UseOnClickOrScrollOutsideOptions = {
     refs: React_2.MutableRefObject<HTMLElement | undefined | null>[];
     contains?(parent: HTMLElement | null, child: HTMLElement): boolean;
     disabled?: boolean;
+    disabledFocusOnIframe?: boolean;
     callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
@@ -350,7 +360,7 @@ export function useScrollbarWidth(options: UseScrollbarWidthOptions): number | u
 export function useSelection(params: SelectionHookParams): readonly [Set<SelectionItemId>, SelectionMethods];
 
 // @internal
-export function useTimeout(): readonly [(fn: () => void, delay: number) => void, () => void];
+export function useTimeout(): readonly [(fn: () => void, delay?: number | undefined) => number, () => void];
 
 // (No @packageDocumentation comment for this package)
 

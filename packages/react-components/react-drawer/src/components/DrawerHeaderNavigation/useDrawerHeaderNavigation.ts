@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+
 import type { DrawerHeaderNavigationProps, DrawerHeaderNavigationState } from './DrawerHeaderNavigation.types';
 
 /**

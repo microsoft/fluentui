@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: re-export `resolvePositioningShorthand` from @fluentui/react-positioning",
-  "packageName": "@fluentui/react-components",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

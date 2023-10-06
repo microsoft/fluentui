@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {
   ExtractSlotProps,
-  getNativeElementProps,
+  getIntrinsicElementProps,
   isResolvedShorthand,
   useMergedRefs,
   slot,
@@ -26,7 +26,7 @@ export const useTreeItemLayout_unstable = (
   props: TreeItemLayoutProps,
   ref: React.Ref<HTMLElement>,
 ): TreeItemLayoutState => {
-  const { main, iconAfter, iconBefore, as = 'span' } = props;
+  const { main, iconAfter, iconBefore } = props;
 
   const layoutRef = useTreeItemContext_unstable(ctx => ctx.layoutRef);
   const selectionMode = useTreeContext_unstable(ctx => ctx.selectionMode);
@@ -81,13 +81,24 @@ export const useTreeItemLayout_unstable = (
       selector: (selectionMode === 'multiselect' ? Checkbox : Radio) as React.ElementType<CheckboxProps | RadioProps>,
     },
     buttonContextValue: { size: 'small' },
-    root: slot.always(getNativeElementProps(as, { ...props, ref: useMergedRefs(ref, layoutRef) }), {
-      elementType: 'div',
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ...props,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, layoutRef) as React.Ref<HTMLDivElement>,
+      }),
+      {
+        elementType: 'div',
+      },
+    ),
     iconBefore: slot.optional(iconBefore, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
     main: slot.always(main, { elementType: 'div' }),
     iconAfter: slot.optional(iconAfter, { defaultProps: { 'aria-hidden': true }, elementType: 'div' }),
-    aside: isAsideVisible ? slot.optional(props.aside, { elementType: 'div' }) : undefined,
+    aside: isAsideVisible
+      ? slot.optional(props.aside, { defaultProps: { 'aria-hidden': true }, elementType: 'div' })
+      : undefined,
     actions,
     expandIcon,
     selector: slot.optional(props.selector, {

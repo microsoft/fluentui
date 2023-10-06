@@ -95,12 +95,12 @@ const useRootBaseClassName = makeResetStyles({
   // Focus styles
 
   ...createCustomFocusIndicatorStyle({
-    borderColor: tokens.colorTransparentStroke,
+    borderColor: tokens.colorStrokeFocus2,
     borderRadius: tokens.borderRadiusMedium,
+    borderWidth: '1px',
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    boxShadow: `
-      ${tokens.shadow4},
-      0 0 0 2px ${tokens.colorStrokeFocus2}
+    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
+      inset
     `,
     zIndex: 1,
   }),
@@ -207,17 +207,17 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
-        color: 'Canvas',
+        color: 'Highlight',
 
         [`& .${buttonClassNames.icon}`]: {
-          color: 'Canvas',
+          color: 'Highlight',
         },
       },
       ':hover:active': {
-        color: 'Canvas',
+        color: 'Highlight',
 
         [`& .${buttonClassNames.icon}`]: {
-          color: 'Canvas',
+          color: 'Highlight',
         },
       },
     },
@@ -281,7 +281,7 @@ const useRootStyles = makeStyles({
     minWidth: '64px',
     ...shorthands.padding(buttonSpacingSmall, tokens.spacingHorizontalS),
 
-    ...shorthands.borderRadius(buttonSpacingSmall),
+    ...shorthands.borderRadius(tokens.borderRadiusMedium),
 
     fontSize: tokens.fontSizeBase200,
     fontWeight: tokens.fontWeightRegular,
@@ -318,6 +318,9 @@ const useRootDisabledStyles = makeStyles({
     color: tokens.colorNeutralForegroundDisabled,
 
     cursor: 'not-allowed',
+    [`& .${buttonClassNames.icon}`]: {
+      color: tokens.colorNeutralForegroundDisabled,
+    },
 
     ':hover': {
       backgroundColor: tokens.colorNeutralBackgroundDisabled,
@@ -331,6 +334,9 @@ const useRootDisabledStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
 
@@ -346,6 +352,9 @@ const useRootDisabledStyles = makeStyles({
       },
       [`& .${iconRegularClassName}`]: {
         display: 'inline',
+      },
+      [`& .${buttonClassNames.icon}`]: {
+        color: tokens.colorNeutralForegroundDisabled,
       },
     },
   },
@@ -445,8 +454,12 @@ const useRootFocusStyles = makeStyles({
 
   // Primary styles
   primary: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor(tokens.colorNeutralForegroundOnBrand),
-    boxShadow: `${tokens.shadow2}, 0 0 0 2px ${tokens.colorStrokeFocus2}`,
+    ...shorthands.borderColor(tokens.colorStrokeFocus2),
+    boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
+    ':hover': {
+      boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+      ...shorthands.borderColor(tokens.colorStrokeFocus2),
+    },
   }),
 
   // Size variations

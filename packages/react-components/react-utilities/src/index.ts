@@ -6,6 +6,7 @@ export {
   assertSlots,
   resolveShorthand,
   isResolvedShorthand,
+  getIntrinsicElementProps,
   SLOT_ELEMENT_TYPE_SYMBOL,
   SLOT_RENDER_FUNCTION_SYMBOL,
 } from './compose/index';
@@ -25,11 +26,13 @@ export type {
   UnknownSlotProps,
   SlotComponentType,
   SlotOptions,
+  InferredElementRefType,
 } from './compose/index';
 
 export {
   IdPrefixProvider,
   resetIdsForTests,
+  useAnimationFrame,
   useControllableState,
   useEventCallback,
   useFirstMount,
