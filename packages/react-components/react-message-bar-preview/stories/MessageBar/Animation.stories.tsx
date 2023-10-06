@@ -12,7 +12,11 @@ import {
 } from '@fluentui/react-message-bar-preview';
 
 const useStyles = makeStyles({
-  container: {
+  controlsContainer: {
+    display: 'flex',
+    flexDirection: 'row',
+  },
+  messageBarGroup: {
     ...shorthands.padding(tokens.spacingHorizontalMNudge),
     display: 'flex',
     flexDirection: 'column',
@@ -22,11 +26,20 @@ const useStyles = makeStyles({
     ...shorthands.overflow('auto'),
     ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
   },
+  field: {
+    flexGrow: 1,
+    alignItems: 'center',
+    gridTemplateColumns: 'max-content auto',
+  },
+  buttonGroup: {
+    display: 'flex',
+    ...shorthands.gap('5px'),
+  },
 });
 
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
-interface Entry {
+interface ExampleMessage {
   intent: MessageBarIntent;
   id: number;
 }
@@ -34,39 +47,42 @@ interface Entry {
 export const Animation = () => {
   const styles = useStyles();
   const counterRef = React.useRef(0);
+
   const [animate, setAnimate] = React.useState<MessageBarGroupProps['animate']>('both');
-  const [messages, setMessages] = React.useState<Entry[]>([]);
-  const prepend = () => {
-    const intentPos = Math.floor(Math.random() * intents.length);
-    const newEntry = {
-      intent: intents[intentPos],
-      id: counterRef.current++,
-    };
+  const [messages, setMessages] = React.useState<ExampleMessage[]>([]);
 
-    setMessages(s => [newEntry, ...s]);
-  };
+  const addMessage = () => {
+    const intent = intents[Math.floor(Math.random() * intents.length)];
+    const newMessage = { intent, id: counterRef.current++ };
 
-  const clear = () => {
-    setMessages([]);
+    setMessages(s => [newMessage, ...s]);
   };
-
-  const dismiss = (id: number) => () => {
-    setMessages(s => {
-      return s.filter(entry => entry.id !== id);
-    });
-  };
+  const clearMessages = () => setMessages([]);
+  const dismissMessage = (messageId: number) => setMessages(s => s.filter(entry => entry.id !== messageId));
 
   return (
-    <>
-      <Button onClick={prepend}>Notify</Button>
-      <Button onClick={clear}>Clear</Button>
-      <Field label="Select animation type">
-        <RadioGroup value={animate} onChange={(_, { value }) => setAnimate(value as MessageBarGroupProps['animate'])}>
-          <Radio label="both" value="both" />
-          <Radio label="exit-only" value="exit-only" />
-        </RadioGroup>
-      </Field>
-      <MessageBarGroup animate={animate} className={styles.container}>
+    <div>
+      <div className={styles.controlsContainer}>
+        <Field className={styles.field} label="Select animation type:" orientation="horizontal">
+          <RadioGroup
+            layout="horizontal"
+            onChange={(_, { value }) => setAnimate(value as MessageBarGroupProps['animate'])}
+            value={animate}
+          >
+            <Radio label="both" value="both" />
+            <Radio label="exit-only" value="exit-only" />
+          </RadioGroup>
+        </Field>
+
+        <div className={styles.buttonGroup}>
+          <Button appearance="primary" onClick={addMessage}>
+            Add message
+          </Button>
+          <Button onClick={clearMessages}>Clear</Button>
+        </div>
+      </div>
+
+      <MessageBarGroup animate={animate} className={styles.messageBarGroup}>
         {messages.map(({ intent, id }) => (
           <MessageBar key={`${intent}-${id}`} intent={intent}>
             <MessageBarBody>
@@ -74,12 +90,14 @@ export const Animation = () => {
               Message providing information to the user with actionable insights. <Link>Link</Link>
             </MessageBarBody>
             <MessageBarActions
-              containerAction={<Button onClick={dismiss(id)} appearance="transparent" icon={<DismissRegular />} />}
+              containerAction={
+                <Button onClick={() => dismissMessage(id)} appearance="transparent" icon={<DismissRegular />} />
+              }
             />
           </MessageBar>
         ))}
       </MessageBarGroup>
-    </>
+    </div>
   );
 };
 

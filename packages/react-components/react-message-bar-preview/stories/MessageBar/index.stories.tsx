@@ -5,7 +5,8 @@ import bestPracticesMd from './MessageBarBestPractices.md';
 
 export { Default } from './Default.stories';
 export { Intent } from './Intent.stories';
-export { Shapes } from './Shapes.stories';
+export { Shape } from './Shape.stories';
+export { Actions } from './Actions.stories';
 export { Dismiss } from './Dismiss.stories';
 export { Animation } from './Animation.stories';
 export { Reflow } from './Reflow.stories';
