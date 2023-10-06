@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 06 Oct 2023 07:37:00 GMT",
+      "tag": "@fluentui/react-charting_v5.18.1",
+      "version": "5.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7d84045d929d54c01f2fca7439356817212c2905",
+            "comment": "Fix for bug 9136 and 7997 Fixing the issue of Going from stack callout to single callout and back to stack callout still shows the single callout. Also this consist of Fix for if the bar y value is same, the single callout does not move from the first instance where the callout was shown"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Oct 2023 07:36:20 GMT",
       "tag": "@fluentui/react-charting_v5.18.0",
       "version": "5.18.0",
