@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stylesheet } from '@fluentui/merge-styles';
+import { GLOBAL_STYLESHEET_KEY, Stylesheet } from '@fluentui/merge-styles';
 import { getWindow } from '../dom';
 
 declare global {
@@ -14,7 +14,7 @@ declare global {
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */
 export type MergeStylesRootContextValue = {
-  stylesheets: Map<string, Stylesheet>;
+  stylesheets: Map<string, CSSStyleSheet>;
 };
 
 const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>({
@@ -25,7 +25,7 @@ const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>(
  * NOTE: This API is unstable and subject to breaking change or removal without notice.
  */
 export type MergeStylesRootProviderProps = {
-  stylesheets?: Map<string, Stylesheet>;
+  stylesheets?: Map<string, CSSStyleSheet>;
   window?: Window;
 };
 
@@ -39,11 +39,11 @@ export const MergeStylesRootProvider_unstable: React.FC<MergeStylesRootProviderP
   ...props
 }) => {
   const win = userWindow ?? getWindow();
-  const [stylesheets, setStylesheets] = React.useState<Map<string, Stylesheet>>(() => userSheets ?? new Map());
+  const [stylesheets, setStylesheets] = React.useState<Map<string, CSSStyleSheet>>(() => userSheets ?? new Map());
 
   const sheetHandler = React.useCallback(({ key, sheet }) => {
     setStylesheets(prev => {
-      const next = new Map<string, Stylesheet>(prev);
+      const next = new Map<string, CSSStyleSheet>(prev);
       next.set(key, sheet);
       return next;
     });
@@ -60,10 +60,12 @@ export const MergeStylesRootProvider_unstable: React.FC<MergeStylesRootProviderP
       return;
     }
 
-    Stylesheet.onAddConstructableStyleSheet(sheetHandler);
+    const sheet = Stylesheet.getInstance();
+
+    sheet.onAddConstructableStyleSheet(sheetHandler);
 
     return () => {
-      Stylesheet.offAddConstructableStyleSheet(sheetHandler);
+      sheet.offAddConstructableStyleSheet(sheetHandler);
     };
   }, [win, sheetHandler]);
 
@@ -74,11 +76,17 @@ export const MergeStylesRootProvider_unstable: React.FC<MergeStylesRootProviderP
     }
 
     let changed = false;
-    const next = new Map<string, Stylesheet>(stylesheets);
-    Stylesheet.forEachAdoptedStyleSheet((sheet, key) => {
-      next.set(key, sheet);
+    const next = new Map<string, CSSStyleSheet>(stylesheets);
+    const sheet = Stylesheet.getInstance({
+      window: win,
+      inShadow: false,
+      stylesheetKey: GLOBAL_STYLESHEET_KEY,
+      __isShadowConfig__: true,
+    });
+    sheet.forEachAdoptedStyleSheet((adoptedSheet, key) => {
+      next.set(key, adoptedSheet);
       changed = true;
-    }, win);
+    });
 
     if (changed) {
       setStylesheets(next);

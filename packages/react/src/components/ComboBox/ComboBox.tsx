@@ -1581,7 +1581,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const isChecked: boolean = this._isOptionChecked(item.index);
     const isIndeterminate: boolean = this._isOptionIndeterminate(item.index);
     const optionStyles = this._getCurrentOptionStyles(item);
-    const optionClassNames = getComboBoxOptionClassNames(this._getCurrentOptionStyles(item));
+    const optionClassNames = getComboBoxOptionClassNames(optionStyles);
     const title = item.title;
 
     const getOptionComponent = () => {
@@ -2449,7 +2449,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(
+    const optionStyles = getOptionStyles(
       this.props.theme!,
       customStylesForAllOptions,
       customStylesForCurrentOption,
@@ -2457,6 +2457,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       item.hidden,
       this._isOptionHighlighted(item.index),
     );
+
+    // TODO: fix this for multi-window scenarios
+    optionStyles.__shadowConfig__ = this.props.styles?.__shadowConfig__;
+    return optionStyles;
   }
 
   /**
