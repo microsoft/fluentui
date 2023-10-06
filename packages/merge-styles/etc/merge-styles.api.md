@@ -8,22 +8,22 @@
 export function concatStyleSets<TStyleSet>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2>(styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5>(styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5>>;
 
 // @public
-export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5> & ObjectOnly<TStyleSet6>>;
+export function concatStyleSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4, TStyleSet5, TStyleSet6>(styleSet1: TStyleSet1 | false | null | undefined | ShadowConfig, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<ObjectOnly<TStyleSet1> & ObjectOnly<TStyleSet2> & ObjectOnly<TStyleSet3> & ObjectOnly<TStyleSet4> & ObjectOnly<TStyleSet5> & ObjectOnly<TStyleSet6>>;
 
 // @public
-export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined)[]): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet | false | null | undefined | ShadowConfig)[]): IConcatenatedStyleSet<any>;
 
 // @public
 export function concatStyleSetsWithProps<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(styleProps: TStyleProps, ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]): DeepPartial<TStyleSet>;
@@ -80,9 +80,6 @@ export const InjectionMode: {
     none: 0;
     insertNode: 1;
     appendChild: 2;
-    constructableStylesheet: 3;
-    insertNodeAndConstructableStylesheet: 4;
-    appedChildAndConstructableStylesheet: 5;
 };
 
 // @public (undocumented)
@@ -413,7 +410,7 @@ export interface ISerializedStylesheet {
     // (undocumented)
     classNameToArgs: Stylesheet['_classNameToArgs'];
     // (undocumented)
-    counter: Stylesheet['_counter'];
+    counter: Stylesheet['_styleCounter'];
     // (undocumented)
     keyToClassName: Stylesheet['_keyToClassName'];
     // (undocumented)
@@ -455,11 +452,17 @@ export interface IStyleSheetConfig {
         [key: string]: string;
     };
     cspSettings?: ICSPSettings;
+    // (undocumented)
+    currentStylesheetKey?: string;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
+    // (undocumented)
+    inShadow?: boolean;
     namespace?: string;
     // @deprecated
     onInsertRule?: (rule: string) => void;
+    // (undocumented)
+    ownerWindow?: Window;
     rtl?: boolean;
 }
 
@@ -469,24 +472,24 @@ export function keyframes(timeline: IKeyframes): string;
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
 //
 // @public
-export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[], options?: IStyleOptions): string;
+export function mergeCss(args: (IStyle | IStyleBaseArray | false | null | undefined | ShadowConfig) | (IStyle | IStyleBaseArray | false | null | undefined | ShadowConfig)[], options?: IStyleOptions): string;
 
 // @public
 export function mergeCssSets<TStyleSet>(styleSets: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
 
 // @public
-export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeCssSets<TStyleSet1, TStyleSet2>(styleSets: [TStyleSet1 | false | null | undefined | ShadowConfig, TStyleSet2 | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3>(styleSets: [
-TStyleSet1 | false | null | undefined,
+TStyleSet1 | false | null | undefined | ShadowConfig,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined
 ], options?: IStyleOptions): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
 export function mergeCssSets<TStyleSet1, TStyleSet2, TStyleSet3, TStyleSet4>(styleSets: [
-TStyleSet1 | false | null | undefined,
+TStyleSet1 | false | null | undefined | ShadowConfig,
 TStyleSet2 | false | null | undefined,
 TStyleSet3 | false | null | undefined,
 TStyleSet4 | false | null | undefined
@@ -495,8 +498,11 @@ TStyleSet4 | false | null | undefined
 // @public
 export function mergeCssSets<TStyleSet>(styleSet: [TStyleSet | false | null | undefined], options?: IStyleOptions): IProcessedStyleSet<TStyleSet>;
 
-// @public
+// @public (undocumented)
 export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
+
+// @public (undocumented)
+export function mergeStyles(shadowConfig: ShadowConfig, ...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
 
 // @public
 export function mergeStyleSets<TStyleSet>(styleSet: TStyleSet | false | null | undefined): IProcessedStyleSet<ObjectOnly<TStyleSet>>;
@@ -533,20 +539,21 @@ export type ShadowConfig = {
     stylesheetKey: string;
     inShadow: boolean;
     window?: Window;
+    __isShadowConfig__: true;
 };
 
 // @public
 export class Stylesheet {
-    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet, stylesheetKey?: string);
+    constructor(config?: IStyleSheetConfig, serializedStylesheet?: ISerializedStylesheet);
+    // (undocumented)
+    addAdoptableStyleSheet(key: string, sheet: CSSStyleSheet): void;
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
     classNameFromKey(key: string): string | undefined;
     // (undocumented)
-    get counter(): number;
+    forEachAdoptedStyleSheet(callback: (value: CSSStyleSheet, key: string, map: Map<string, CSSStyleSheet>) => void): void;
     // (undocumented)
-    static forEachAdoptedStyleSheet(callback: (value: Stylesheet, key: string, map: Map<string, Stylesheet>) => void, srcWindow?: Window): void;
-    // (undocumented)
-    getAdoptableStyleSheet(): CSSStyleSheet | undefined;
+    getAdoptableStyleSheet(key: string): CSSStyleSheet;
     getClassName(displayName?: string): string;
     getClassNameCache(): {
         [key: string]: string;
@@ -556,21 +563,19 @@ export class Stylesheet {
     insertedRulesFromClassName(className: string): string[] | undefined;
     insertRule(rule: string, preserve?: boolean): void;
     // (undocumented)
-    static offAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
+    offAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
     // Warning: (ae-forgotten-export) The symbol "EventHandler" needs to be exported by the entry point index.d.ts
     //
     // (undocumented)
-    static onAddConstructableStyleSheet(callback: EventHandler<Stylesheet>, targetWindow?: Window): void;
+    onAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void;
     onInsertRule(callback: Function): Function;
     onReset(callback: Function): Function;
     // (undocumented)
-    static projectStylesToWindow(targetWindow: Window, srcWindow?: Window): void;
+    projectStylesToWindow(targetWindow: Window): void;
     reset(): void;
     // (undocumented)
     resetKeys(): void;
     serialize(): string;
-    // (undocumented)
-    setAdoptableStyleSheet(sheet: CSSStyleSheet): void;
     setConfig(config?: IStyleSheetConfig): void;
 }
 
