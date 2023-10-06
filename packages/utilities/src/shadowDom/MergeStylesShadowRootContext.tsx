@@ -62,19 +62,14 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
   children,
 }) => {
   useAdoptedStylesheet_unstable(GLOBAL_STYLESHEET_KEY);
-  // useAdoptedStylesheet_unstable('IconButton');
-  // useAdoptedStylesheet_unstable('Fabric');
   useAdoptedStylesheet_unstable(stylesheetKey);
 
   const inShadow = useHasMergeStylesShadowRootContext();
 
   return children(inShadow);
-
-  // return <>{children}</>;
 };
 
 const GlobalStyles: React.FC = props => {
-  // useAdoptedStylesheet_unstable('@fluentui/style-utilities', true);
   useAdoptedStylesheet_unstable(GLOBAL_STYLESHEET_KEY);
   return null;
 };
@@ -92,8 +87,7 @@ export const useAdoptedStylesheet_unstable = (stylesheetKey: string): boolean =>
   }
 
   if (shadowCtx.shadowRoot && !shadowCtx.stylesheets.has(stylesheetKey)) {
-    const stylesheet = rootMergeStyles.get(stylesheetKey);
-    const adoptableStyleSheet = stylesheet?.getAdoptableStyleSheet();
+    const adoptableStyleSheet = rootMergeStyles.get(stylesheetKey);
     if (adoptableStyleSheet) {
       shadowCtx.stylesheets.set(stylesheetKey, adoptableStyleSheet);
       shadowCtx.shadowRoot.adoptedStyleSheets = [...shadowCtx.shadowRoot.adoptedStyleSheets, adoptableStyleSheet];

@@ -33,10 +33,13 @@ export const getClassNames = memoizeFunction(
     allowFreeForm: boolean,
     hasErrorMessage: boolean,
   ): IComboBoxClassNames => {
+    // const mergeStyles = mergeStylesShadow(styles.__shadowConfig__);
+
     return {
-      container: mergeStyles('ms-ComboBox-container', className, styles.container),
-      label: mergeStyles(styles.label, disabled && styles.labelDisabled),
+      container: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-container', className, styles.container),
+      label: mergeStyles(styles.__shadowConfig__, styles.label, disabled && styles.labelDisabled),
       root: mergeStyles(
+        styles.__shadowConfig__,
         'ms-ComboBox',
         hasErrorMessage ? styles.rootError : isOpen && 'is-open',
         required && 'is-required',
@@ -52,20 +55,25 @@ export const getClassNames = memoizeFunction(
         },
         disabled && ['is-disabled', styles.rootDisabled],
       ),
-      input: mergeStyles('ms-ComboBox-Input', styles.input, disabled && styles.inputDisabled),
-      errorMessage: mergeStyles(styles.errorMessage),
-      callout: mergeStyles('ms-ComboBox-callout', styles.callout),
-      optionsContainerWrapper: mergeStyles('ms-ComboBox-optionsContainerWrapper', styles.optionsContainerWrapper),
-      optionsContainer: mergeStyles('ms-ComboBox-optionsContainer', styles.optionsContainer),
-      header: mergeStyles('ms-ComboBox-header', styles.header),
-      divider: mergeStyles('ms-ComboBox-divider', styles.divider),
-      screenReaderText: mergeStyles(styles.screenReaderText),
+      input: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-Input', styles.input, disabled && styles.inputDisabled),
+      errorMessage: mergeStyles(styles.__shadowConfig__, styles.errorMessage),
+      callout: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-callout', styles.callout),
+      optionsContainerWrapper: mergeStyles(
+        styles.__shadowConfig__,
+        'ms-ComboBox-optionsContainerWrapper',
+        styles.optionsContainerWrapper,
+      ),
+      optionsContainer: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-optionsContainer', styles.optionsContainer),
+      header: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-header', styles.header),
+      divider: mergeStyles(styles.__shadowConfig__, 'ms-ComboBox-divider', styles.divider),
+      screenReaderText: mergeStyles(styles.__shadowConfig__, styles.screenReaderText),
     };
   },
 );
 
 export const getComboBoxOptionClassNames = memoizeFunction(
   (styles: Partial<IComboBoxOptionStyles>): IComboBoxOptionClassNames => {
+    // const mergeStyles = mergeStylesShadow(styles.__shadowConfig__);
     return {
       optionText: mergeStyles('ms-ComboBox-optionText', styles.optionText),
       root: mergeStyles('ms-ComboBox-option', styles.root, {
@@ -75,7 +83,7 @@ export const getComboBoxOptionClassNames = memoizeFunction(
           ':active': styles.rootPressed,
         },
       }),
-      optionTextWrapper: mergeStyles(styles.optionTextWrapper),
+      optionTextWrapper: mergeStyles(styles.__shadowConfig__, styles.optionTextWrapper),
     };
   },
 );
