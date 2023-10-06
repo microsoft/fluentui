@@ -82,7 +82,7 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
       return {
         xAxis: {
           selectors: {
-            text: { fill: 'black', fontSize: '10px' },
+            text: { fontSize: '10px' },
           },
         },
         chart: {
