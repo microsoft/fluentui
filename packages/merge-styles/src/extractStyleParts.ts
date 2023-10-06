@@ -1,6 +1,6 @@
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { Stylesheet } from './Stylesheet';
-import { ShadowConfig } from './shadowConfig';
+import { ShadowConfig, isShadowConfig } from './shadowConfig';
 
 /**
  * Separates the classes and style objects. Any classes that are pre-registered
@@ -18,7 +18,10 @@ export function extractStyleParts(
   const stylesheet = Stylesheet.getInstance(shadowConfig);
 
   function _processArgs(argsList: (IStyle | IStyle[])[]): void {
-    for (const arg of argsList) {
+    // for (const arg of argsList) {
+    const startIndex = isShadowConfig(argsList[0]) ? 1 : 0;
+    for (let i = startIndex; i < argsList.length; i++) {
+      const arg = argsList[i];
       if (arg) {
         if (typeof arg === 'string') {
           if (arg.indexOf(' ') >= 0) {
