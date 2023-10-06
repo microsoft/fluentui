@@ -614,7 +614,7 @@ describe('Screen resolution', () => {
   testWithWait(
     'Should remain unchanged on zoom in',
     LineChart,
-    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 30, disableSortByXValues: true },
+    { data: basicChartPoints, rotateXAxisLables: true, width: 300, height: 300, disableSortByXValues: true },
     container => {
       // Arrange
       global.innerWidth = window.innerWidth / 2;
