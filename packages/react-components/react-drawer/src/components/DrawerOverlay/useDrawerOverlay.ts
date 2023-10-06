@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { slot, useMergedRefs } from '@fluentui/react-utilities';
-import { Dialog, DialogSurface } from '@fluentui/react-dialog';
+import { Dialog } from '@fluentui/react-dialog';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
+import { DrawerOverlaySurface } from './DrawerOverlaySurface';
 
 /**
  * Create the state required to render DrawerOverlay.
@@ -25,44 +26,48 @@ export const useDrawerOverlay_unstable = (
   const drawerMotion = useMotion<HTMLDivElement>(open);
   const backdropMotion = useMotion<HTMLDivElement>(open);
 
-  const hasCustomBackdrop = modalType !== 'non-modal' && props.backdrop !== null;
+  const backdropInnerProps = slot.resolveShorthand(props.backdrop);
+  const hasCustomBackdrop = modalType !== 'non-modal' && backdropInnerProps !== null;
 
+  const backdropProps = {
+    ...backdropInnerProps,
+    ref: useMergedRefs(backdropMotion.ref, backdropInnerProps?.ref),
+  };
   const root = slot.always(
     {
       ...props,
-      ref: useMergedRefs(ref, drawerMotion.ref),
+      backdrop: hasCustomBackdrop ? backdropProps : null,
     },
     {
-      elementType: DialogSurface,
+      elementType: DrawerOverlaySurface,
       defaultProps: {
-        backdrop: slot.optional(props.backdrop, {
-          elementType: 'div',
-          renderByDefault: hasCustomBackdrop,
-          defaultProps: {
-            ref: backdropMotion.ref,
-          },
-        }),
+        ref: useMergedRefs(ref, drawerMotion.ref),
       },
     },
   );
 
-  const dialog = slot.optional(props.dialog, {
-    elementType: Dialog,
-    renderByDefault: true,
-    defaultProps: {
+  const dialog = slot.always(
+    {
       open: true,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
       modalType,
+      /*
+       * children is not needed here because we construct the children in the render function,
+       * but it's required by DialogProps
+       */
+      children: null as unknown as JSX.Element,
     },
-  });
+    {
+      elementType: Dialog,
+    },
+  );
 
   return {
     components: {
-      root: DialogSurface,
+      root: DrawerOverlaySurface,
       dialog: Dialog,
-      backdrop: 'div',
     },
 
     root,
