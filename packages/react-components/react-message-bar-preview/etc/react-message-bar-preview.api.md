@@ -63,6 +63,7 @@ export type MessageBarContextValue = {
     layout: 'multiline' | 'singleline' | 'auto';
     actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
     bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
+    titleId: string;
 };
 
 // @public
@@ -96,6 +97,7 @@ export type MessageBarIntent = 'info' | 'success' | 'warning' | 'error';
 export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<Partial<MessageBarContextValue>, 'layout'> & {
     intent?: MessageBarIntent;
     politeness?: 'assertive' | 'polite';
+    shape?: 'square' | 'rounded';
 };
 
 // @public (undocumented)
@@ -105,10 +107,8 @@ export type MessageBarSlots = {
 };
 
 // @public
-export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>> & {
+export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent' | 'shape'>> & Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
     transitionClassName: string;
-    actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
-    bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
 };
 
 // @public

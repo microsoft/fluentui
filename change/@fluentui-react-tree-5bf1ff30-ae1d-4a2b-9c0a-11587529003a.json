@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: ensure TreeItem emits events properly",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

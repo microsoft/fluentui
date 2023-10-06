@@ -34,9 +34,8 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
         container.current.remove();
       }
 
-      if (el) {
-        container.current = targetDocument.createElement('div');
-        el.insertAdjacentElement('beforebegin', container.current);
+      if (el?.parentElement) {
+        container.current = el.parentElement;
         resizeObserver.observe(container.current);
         handleResize();
       }

@@ -40,6 +40,7 @@
     "@fluentui/react-label": "*",
     "@fluentui/react-link": "*",
     "@fluentui/react-menu": "*",
+    "@fluentui/react-message-bar-preview": "*",
     "@fluentui/react-persona": "*",
     "@fluentui/react-popover": "*",
     "@fluentui/react-portal": "*",

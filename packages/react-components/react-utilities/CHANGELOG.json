@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Thu, 05 Oct 2023 15:25:34 GMT",
+      "tag": "@fluentui/react-utilities_v9.14.1",
+      "version": "9.14.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d",
+            "comment": "Revert fix: useOnScrollOutside should invoke callback on dragging scrollbar"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Oct 2023 08:45:47 GMT",
       "tag": "@fluentui/react-utilities_v9.14.0",
       "version": "9.14.0",

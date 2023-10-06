@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: exports DialogSurface context types and hooks",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

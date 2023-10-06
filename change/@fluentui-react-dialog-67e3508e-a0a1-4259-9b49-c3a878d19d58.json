@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: removes context hooks invocations from styles hook",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
