@@ -1,6 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { tokens } from '@fluentui/react-theme';
 
 import type { DrawerOverlaySurfaceSlots, DrawerOverlaySurfaceState } from './DrawerOverlaySurface.types';
 
@@ -27,7 +28,7 @@ const useBackdropResetStyles = makeResetStyles({
 
 const useBackdropStyles = makeStyles({
   nested: {
-    backgroundColor: 'transparent',
+    backgroundColor: tokens.colorTransparentBackground,
   },
 });
 

@@ -24,7 +24,7 @@ const useDrawerResetStyles = makeResetStyles({
   top: 0,
   bottom: 0,
   opacity: 0,
-  boxShadow: '0px transparent',
+  boxShadow: `0px ${tokens.colorTransparentBackground}`,
   transitionProperty: 'transform, box-shadow, opacity',
   willChange: 'transform, box-shadow, opacity',
 });
