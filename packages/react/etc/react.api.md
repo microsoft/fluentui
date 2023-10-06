@@ -2170,7 +2170,7 @@ export interface IActivityItemProps extends React_2.AllHTMLAttributes<HTMLElemen
 }
 
 // @public (undocumented)
-export interface IActivityItemStyles {
+export interface IActivityItemStyles extends IShadowDomStyle {
     activityContent?: IStyle;
     activityPersona?: IStyle;
     activityText?: IStyle;
