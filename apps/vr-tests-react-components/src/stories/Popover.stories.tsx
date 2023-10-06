@@ -3,7 +3,7 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Popover, PopoverSurface, PopoverTrigger } from '@fluentui/react-popover';
 import { tokens } from '@fluentui/react-theme';
-import { TestWrapperDecorator } from '../utilities/index';
+import { TestWrapperDecorator, TestWrapperDecoratorFixedWidth } from '../utilities/index';
 
 const PopoverPositioning: React.FC = () => {
   const positions = [
@@ -59,7 +59,7 @@ storiesOf('Popover Converged', module)
   .addStory('positioning', () => <PopoverPositioning />, { includeRtl: true, includeHighContrast: true });
 
 storiesOf('Popover Converged', module)
-  .addDecorator(TestWrapperDecorator)
+  .addDecorator(TestWrapperDecoratorFixedWidth)
   .addDecorator(story => (
     <StoryWright steps={new Steps().click('#show-popover').snapshot('PopoverSurface focused').end()}>
       {story()}
@@ -90,35 +90,24 @@ storiesOf('Popover Converged', module)
       </Popover>
     );
   })
-  .addStory('when rendering inline, it should not render behind relatively positioned elements', () => {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
-        <Popover inline>
-          <PopoverTrigger>
-            <button id="show-popover">Show Popover</button>
-          </PopoverTrigger>
-          <PopoverSurface
-            tabIndex={-1}
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              maxWidth: '300px',
-              maxHeight: '300px',
-              overflowY: 'scroll',
-            }}
-          >
-            <span>{sampleText}</span>
-          </PopoverSurface>
-        </Popover>
-        <input style={{ position: 'relative' }} />
-      </div>
-    );
-  });
+  .addStory('when rendering inline, it should not render behind relatively positioned elements', () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+      }}
+    >
+      <Popover inline>
+        <PopoverTrigger>
+          <button id="show-popover">Show Popover</button>
+        </PopoverTrigger>
+        <PopoverSurface>
+          <span>Sample PopoverSurface text</span>
+        </PopoverSurface>
+      </Popover>
+      <input style={{ position: 'relative' }} />
+    </div>
+  ));
 
 const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
  et dolore magna aliqua. Felis donec et odio pellentesque diam volutpat commodo sed. In pellentesque massa placerat duis
