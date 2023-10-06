@@ -13,6 +13,11 @@ export type DrawerOverlaySlots = {
    * Slot for the root element.
    */
   root: Slot<DrawerOverlaySurfaceProps>;
+
+  /**
+   * Slot for the backdrop element.
+   */
+  backdrop: Slot<'div'>;
 };
 
 /**

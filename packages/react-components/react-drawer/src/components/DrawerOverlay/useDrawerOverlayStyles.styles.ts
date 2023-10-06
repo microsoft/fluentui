@@ -2,6 +2,7 @@ import * as React from 'react';
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
 import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
 import {
@@ -13,12 +14,14 @@ import {
 
 export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
   root: 'fui-DrawerOverlay',
+  backdrop: 'fui-DrawerOverlay__backdrop',
 };
 
 /**
  * Styles for the root slot
  */
 const useDrawerResetStyles = makeResetStyles({
+  ...createFocusOutlineStyle(),
   ...drawerDefaultStyles,
   position: 'fixed',
   top: 0,
@@ -85,6 +88,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
 
   if (backdrop) {
     backdrop.className = mergeClasses(
+      drawerOverlayClassNames.backdrop,
       backdropStyles.backdrop,
       durationStyles[state.size],
       state.backdropMotion.active && backdropStyles.visible,
