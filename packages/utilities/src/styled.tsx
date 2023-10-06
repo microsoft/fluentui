@@ -106,18 +106,19 @@ export function styled<
     const additionalProps = getProps ? getProps(props) : undefined;
 
     const win = useWindow() ?? getWindow();
+
     const inShadow = useHasMergeStylesShadowRootContext();
-    const shadowConfig = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow });
+    const shadowConfig = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow, __isShadowConfig__: true });
     if (
       shadowConfig.current.stylesheetKey !== scope ||
       shadowConfig.current.inShadow !== inShadow ||
       shadowConfig.current.window !== win
-      // false
     ) {
       shadowConfig.current = {
         stylesheetKey: scope,
         inShadow,
         window: win,
+        __isShadowConfig__: true,
       };
     }
 

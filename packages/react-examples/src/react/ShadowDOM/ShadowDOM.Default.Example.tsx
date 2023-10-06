@@ -13,6 +13,9 @@ import {
   Icon,
   MergeStylesRootProvider_unstable,
   MergeStylesShadowRootProvider_unstable,
+  ComboBox,
+  IComboBoxOption,
+  SelectableOptionMenuItemType,
 } from '@fluentui/react';
 // eslint-disable-next-line
 import { WindowProvider } from '@fluentui/react-window-provider';
@@ -30,6 +33,22 @@ export interface IButtonExampleProps {
 // Example formatting
 const stackTokens: IStackTokens = { childrenGap: 10 };
 
+const options: IComboBoxOption[] = [
+  { key: 'Header1', text: 'First heading', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'A', text: 'Option A' },
+  { key: 'B', text: 'Option B' },
+  { key: 'C', text: 'Option C' },
+  { key: 'D', text: 'Option D' },
+  { key: 'divider', text: '-', itemType: SelectableOptionMenuItemType.Divider },
+  { key: 'Header2', text: 'Second heading', itemType: SelectableOptionMenuItemType.Header },
+  { key: 'E', text: 'Option E' },
+  { key: 'F', text: 'Option F', disabled: true },
+  { key: 'G', text: 'Option G' },
+  { key: 'H', text: 'Option H' },
+  { key: 'I', text: 'Option I' },
+  { key: 'J', text: 'Option J' },
+];
+
 type TestCompProps = {
   inShadow: boolean;
 };
@@ -42,6 +61,7 @@ const TestComp: React.FC<TestCompProps> = ({ inShadow }) => {
     setDisabled(!disabled);
   };
 
+  // return <PrimaryButton text="Primary shadow" allowDisabledFocus disabled={disabled} />;
   return (
     <Stack tokens={stackTokens}>
       <Text variant="large">{label}</Text>
@@ -51,6 +71,13 @@ const TestComp: React.FC<TestCompProps> = ({ inShadow }) => {
       <Checkbox label="Checkbox" disabled={disabled} />
       <TextField label="TextField" disabled={disabled} />
       <TextField label="TextField2" disabled={disabled} />
+      <ComboBox
+        multiSelect={true}
+        defaultSelectedKey="C"
+        label="Basic single-select ComboBox"
+        options={options}
+        disabled={disabled}
+      />
       {/* eslint-disable-next-line */}
       <Checkbox label="Disable controls" checked={disabled} onChange={onClick} />
       <Stack tokens={{ childrenGap: 5 }}>
@@ -90,7 +117,9 @@ const TestWindow: React.FC = () => {
       return;
     }
 
-    Stylesheet.projectStylesToWindow(childWindow, window);
+    // childWindow.__SENTINAL__ = 'child';
+
+    Stylesheet.getInstance().projectStylesToWindow(childWindow);
 
     const childRoot = childWindow.document.body.appendChild(childWindow.document.createElement('div'));
     ReactDOM.render(
@@ -108,7 +137,7 @@ const TestWindow: React.FC = () => {
 };
 
 type ShadowProps = {
-  window: Window;
+  window?: Window;
 };
 
 const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
@@ -128,18 +157,11 @@ const Shadow: React.FC<ShadowProps> = ({ window, children }) => {
 };
 
 export const ShadowDOMDefaultExample: React.FunctionComponent = () => {
-  const [shadowRootEl, setShadowRootEl] = React.useState<HTMLElement | null>(null);
-
   return (
     <>
-      <MergeStylesRootProvider_unstable>
-        <root.div className="shadow-root" delegatesFocus ref={setShadowRootEl}>
-          <MergeStylesShadowRootProvider_unstable shadowRoot={shadowRootEl?.shadowRoot}>
-            <TestComp inShadow={true} />
-          </MergeStylesShadowRootProvider_unstable>
-        </root.div>
-      </MergeStylesRootProvider_unstable>
-      {/* <TestComp inShadow={false} /> */}
+      <Shadow>
+        <TestComp inShadow={false} />
+      </Shadow>
       <TestWindow />
     </>
   );
