@@ -17,11 +17,11 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
           overflow: hidden;
           width: 100%;
         }
-    id="chart_21"
+    id="chart_22"
     role="presentation"
   >
     <div
-      id="defaultTabbableElement_46"
+      id="defaultTabbableElement_23"
     />
     <div
       class=
@@ -32,7 +32,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone22"
+      data-focuszone-id="FocusZone24"
     >
       <svg
         aria-label="LineChart"
@@ -67,7 +67,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_21"
+          id="xAxisGElementchart_22"
           transform="translate(0, -35)"
         />
         <g
@@ -95,12 +95,12 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_21"
+          id="yAxisGElementchart_22"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine15"
+            id="verticalLine16"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -111,7 +111,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
           />
           <g>
             <line
-              id="borderID14_0_1"
+              id="borderID15_0_1"
               opacity="1"
               stroke="#ffffff"
               stroke-linecap="round"
@@ -122,7 +122,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="17.884615384615383"
             />
             <line
-              id="borderID14_0_2"
+              id="borderID15_0_2"
               opacity="1"
               stroke="#ffffff"
               stroke-linecap="round"
@@ -133,7 +133,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="-3.2692307692307736"
             />
             <line
-              id="borderID14_0_3"
+              id="borderID15_0_3"
               opacity="1"
               stroke="#ffffff"
               stroke-linecap="round"
@@ -144,7 +144,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="17.884615384615383"
             />
             <line
-              id="borderID14_0_4"
+              id="borderID15_0_4"
               opacity="1"
               stroke="#ffffff"
               stroke-linecap="round"
@@ -155,7 +155,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="-3.2692307692307736"
             />
             <line
-              id="borderID14_0_5"
+              id="borderID15_0_5"
               opacity="1"
               stroke="#ffffff"
               stroke-linecap="round"
@@ -166,7 +166,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="17.884615384615383"
             />
             <line
-              id="lineID13_0_1"
+              id="lineID14_0_1"
               opacity="1"
               stroke="#637cef"
               stroke-linecap="round"
@@ -177,7 +177,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="17.884615384615383"
             />
             <line
-              id="lineID13_0_2"
+              id="lineID14_0_2"
               opacity="1"
               stroke="#637cef"
               stroke-linecap="round"
@@ -188,7 +188,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="-3.2692307692307736"
             />
             <line
-              id="lineID13_0_3"
+              id="lineID14_0_3"
               opacity="1"
               stroke="#637cef"
               stroke-linecap="round"
@@ -199,7 +199,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="17.884615384615383"
             />
             <line
-              id="lineID13_0_4"
+              id="lineID14_0_4"
               opacity="1"
               stroke="#637cef"
               stroke-linecap="round"
@@ -210,7 +210,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               y2="-3.2692307692307736"
             />
             <line
-              id="lineID13_0_5"
+              id="lineID14_0_5"
               opacity="1"
               stroke="#637cef"
               stroke-linecap="round"
@@ -229,7 +229,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
      "
               data-is-focusable="true"
               fill="#637cef"
-              id="circle12_0_1"
+              id="circle13_0_1"
               opacity="1"
               role="img"
               stroke="#637cef"
@@ -245,7 +245,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
      "
               data-is-focusable="true"
               fill="#637cef"
-              id="circle12_0_2"
+              id="circle13_0_2"
               opacity="1"
               role="img"
               stroke="#637cef"
@@ -261,7 +261,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
      "
               data-is-focusable="true"
               fill="#637cef"
-              id="circle12_0_3"
+              id="circle13_0_3"
               opacity="1"
               role="img"
               stroke="#637cef"
@@ -277,7 +277,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
      "
               data-is-focusable="true"
               fill="#637cef"
-              id="circle12_0_4"
+              id="circle13_0_4"
               opacity="1"
               role="img"
               stroke="#637cef"
@@ -293,7 +293,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
      "
               data-is-focusable="true"
               fill="#637cef"
-              id="circle12_0_5"
+              id="circle13_0_5"
               opacity="1"
               role="img"
               stroke="#637cef"
@@ -309,7 +309,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
      "
               data-is-focusable="true"
               fill="#637cef"
-              id="circle12_0_55L"
+              id="circle13_0_55L"
               opacity="1"
               role="img"
               stroke="#637cef"
@@ -357,7 +357,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone23"
+                data-focuszone-id="FocusZone25"
                 role="listbox"
               >
                 <div
@@ -489,6 +489,9 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
     role="presentation"
   >
     <div
+      id="defaultTabbableElement_10"
+    />
+    <div
       class=
           ms-FocusZone
           &:focus {
@@ -497,7 +500,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone10"
+      data-focuszone-id="FocusZone11"
     >
       <svg
         aria-label="LineChart"
@@ -745,7 +748,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone11"
+                data-focuszone-id="FocusZone12"
                 role="listbox"
               >
                 <div
@@ -1045,9 +1048,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           overflow: hidden;
           width: 100%;
         }
-    id="chart_33"
+    id="chart_35"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_36"
+    />
     <div
       class=
           ms-FocusZone
@@ -1057,7 +1063,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone34"
+      data-focuszone-id="FocusZone37"
     >
       <svg
         aria-label="LineChart"
@@ -1092,7 +1098,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_33"
+          id="xAxisGElementchart_35"
           transform="translate(0, -35)"
         />
         <g
@@ -1120,12 +1126,12 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_33"
+          id="yAxisGElementchart_35"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine27"
+            id="verticalLine29"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -1136,7 +1142,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
           />
           <g>
             <line
-              id="lineID25_2_1"
+              id="lineID27_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -1153,7 +1159,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L-20 -11.291217391304343 Z"
               data-is-focusable="true"
               fill="yellow"
-              id="circle24_2_1"
+              id="circle26_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1167,7 +1173,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      L16 18.60008695652174 Z"
               data-is-focusable="true"
               fill="yellow"
-              id="circle24_2_11L"
+              id="circle26_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1175,7 +1181,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <line
-              id="lineID25_1_1"
+              id="lineID27_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -1194,7 +1200,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      Z"
               data-is-focusable="true"
               fill="green"
-              id="circle24_1_1"
+              id="circle26_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -1210,7 +1216,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      Z"
               data-is-focusable="true"
               fill="green"
-              id="circle24_1_11L"
+              id="circle26_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -1218,7 +1224,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <line
-              id="lineID25_0_1"
+              id="lineID27_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -1237,7 +1243,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      "
               data-is-focusable="true"
               fill="red"
-              id="circle24_0_1"
+              id="circle26_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -1253,7 +1259,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
      "
               data-is-focusable="true"
               fill="red"
-              id="circle24_0_11L"
+              id="circle26_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -1301,7 +1307,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone35"
+                data-focuszone-id="FocusZone38"
                 role="listbox"
               >
                 <div
@@ -1607,9 +1613,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_233"
+    id="chart_250"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_251"
+    />
     <div
       class=
           ms-FocusZone
@@ -1619,7 +1628,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone234"
+      data-focuszone-id="FocusZone252"
     >
       <svg
         aria-label="LineChart"
@@ -1654,7 +1663,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_233"
+          id="xAxisGElementchart_250"
           transform="translate(0, -35)"
         />
         <g
@@ -1682,12 +1691,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_233"
+          id="yAxisGElementchart_250"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine227"
+            id="verticalLine244"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -1698,7 +1707,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           />
           <g>
             <line
-              id="lineID225_2_1"
+              id="lineID242_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -1717,7 +1726,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle224_2_1"
+              id="circle241_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1733,7 +1742,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle224_2_11L"
+              id="circle241_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -1741,7 +1750,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID225_1_1"
+              id="lineID242_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -1760,7 +1769,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle224_1_1"
+              id="circle241_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -1776,7 +1785,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle224_1_11L"
+              id="circle241_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -1784,7 +1793,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID225_0_1"
+              id="lineID242_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -1803,7 +1812,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle224_0_1"
+              id="circle241_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -1819,7 +1828,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle224_0_11L"
+              id="circle241_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -1867,7 +1876,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone235"
+                data-focuszone-id="FocusZone253"
                 role="listbox"
               >
                 <div
@@ -2167,9 +2176,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_245"
+    id="chart_263"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_264"
+    />
     <div
       class=
           ms-FocusZone
@@ -2179,7 +2191,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone246"
+      data-focuszone-id="FocusZone265"
     >
       <svg
         aria-label="LineChart"
@@ -2214,7 +2226,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_245"
+          id="xAxisGElementchart_263"
           transform="translate(0, -35)"
         />
         <g
@@ -2242,12 +2254,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_245"
+          id="yAxisGElementchart_263"
           transform="translate(40, 0)"
         />
         <g>
           <line
-            id="verticalLine239"
+            id="verticalLine257"
             stroke="#323130"
             stroke-dasharray="5,5"
             visibility="hidden"
@@ -2258,7 +2270,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           />
           <g>
             <line
-              id="lineID237_2_1"
+              id="lineID255_2_1"
               opacity="1"
               stroke="yellow"
               stroke-linecap="round"
@@ -2277,7 +2289,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle236_2_1"
+              id="circle254_2_1"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -2293,7 +2305,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="yellow"
-              id="circle236_2_11L"
+              id="circle254_2_11L"
               opacity="1"
               role="img"
               stroke="yellow"
@@ -2301,7 +2313,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID237_1_1"
+              id="lineID255_1_1"
               opacity="1"
               stroke="green"
               stroke-linecap="round"
@@ -2320,7 +2332,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle236_1_1"
+              id="circle254_1_1"
               opacity="1"
               role="img"
               stroke="green"
@@ -2336,7 +2348,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="green"
-              id="circle236_1_11L"
+              id="circle254_1_11L"
               opacity="1"
               role="img"
               stroke="green"
@@ -2344,7 +2356,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <line
-              id="lineID237_0_1"
+              id="lineID255_0_1"
               opacity="1"
               stroke="red"
               stroke-linecap="round"
@@ -2363,7 +2375,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle236_0_1"
+              id="circle254_0_1"
               opacity="1"
               role="img"
               stroke="red"
@@ -2379,7 +2391,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
      "
               data-is-focusable="true"
               fill="red"
-              id="circle236_0_11L"
+              id="circle254_0_11L"
               opacity="1"
               role="img"
               stroke="red"
@@ -2427,7 +2439,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone247"
+                data-focuszone-id="FocusZone266"
                 role="listbox"
               >
                 <div
@@ -2740,9 +2752,12 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_260"
+      id="chart_279"
       role="presentation"
     >
+      <div
+        id="defaultTabbableElement_280"
+      />
       <div
         class=
             ms-FocusZone
@@ -2752,7 +2767,7 @@ exports[`Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone261"
+        data-focuszone-id="FocusZone281"
       >
         <svg
           aria-label="LineChart"
@@ -2787,7 +2802,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_260"
+            id="xAxisGElementchart_279"
             transform="translate(0, -35)"
           />
           <g
@@ -2815,12 +2830,12 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_260"
+            id="yAxisGElementchart_279"
             transform="translate(40, 0)"
           />
           <g>
             <line
-              id="verticalLine254"
+              id="verticalLine273"
               stroke="#323130"
               stroke-dasharray="5,5"
               visibility="hidden"
@@ -2831,7 +2846,7 @@ exports[`Should reflect theme change 1`] = `
             />
             <g>
               <line
-                id="lineID252_2_1"
+                id="lineID271_2_1"
                 opacity="1"
                 stroke="yellow"
                 stroke-linecap="round"
@@ -2850,7 +2865,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle251_2_1"
+                id="circle270_2_1"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2866,7 +2881,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle251_2_11L"
+                id="circle270_2_11L"
                 opacity="1"
                 role="img"
                 stroke="yellow"
@@ -2874,7 +2889,7 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <line
-                id="lineID252_1_1"
+                id="lineID271_1_1"
                 opacity="1"
                 stroke="green"
                 stroke-linecap="round"
@@ -2893,7 +2908,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle251_1_1"
+                id="circle270_1_1"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2909,7 +2924,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="green"
-                id="circle251_1_11L"
+                id="circle270_1_11L"
                 opacity="1"
                 role="img"
                 stroke="green"
@@ -2917,7 +2932,7 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <line
-                id="lineID252_0_1"
+                id="lineID271_0_1"
                 opacity="1"
                 stroke="red"
                 stroke-linecap="round"
@@ -2936,7 +2951,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle251_0_1"
+                id="circle270_0_1"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -2952,7 +2967,7 @@ exports[`Should reflect theme change 1`] = `
      "
                 data-is-focusable="true"
                 fill="red"
-                id="circle251_0_11L"
+                id="circle270_0_11L"
                 opacity="1"
                 role="img"
                 stroke="red"
@@ -3000,7 +3015,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone262"
+                  data-focuszone-id="FocusZone282"
                   role="listbox"
                 >
                   <div
