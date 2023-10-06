@@ -1,8 +1,15 @@
 import { extractStyleParts } from './extractStyleParts';
 import { IStyle, IStyleBaseArray } from './IStyle';
 import { IStyleOptions } from './IStyleOptions';
+import { isShadowConfig, ShadowConfig } from './shadowConfig';
 import { getStyleOptions } from './StyleOptionsState';
 import { styleToClassName } from './styleToClassName';
+
+export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
+export function mergeStyles(
+  shadowConfig: ShadowConfig,
+  ...args: (IStyle | IStyleBaseArray | false | null | undefined)[]
+): string;
 
 /**
  * Concatenation helper, which can merge class names together. Skips over falsey values.
@@ -20,12 +27,15 @@ export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | 
  * @public
  */
 export function mergeCss(
-  args: (IStyle | IStyleBaseArray | false | null | undefined) | (IStyle | IStyleBaseArray | false | null | undefined)[],
+  args:
+    | (IStyle | IStyleBaseArray | false | null | undefined | ShadowConfig)
+    | (IStyle | IStyleBaseArray | false | null | undefined | ShadowConfig)[],
   options?: IStyleOptions,
 ): string {
   const styleArgs = args instanceof Array ? args : [args];
   const opts = options || {};
-  const { shadowConfig } = opts;
+  const shadowConfig = isShadowConfig(styleArgs[0]) ? (styleArgs[0] as ShadowConfig) : opts.shadowConfig;
+  opts.shadowConfig = shadowConfig;
   const { classes, objects } = extractStyleParts(shadowConfig, styleArgs);
 
   if (objects.length) {
