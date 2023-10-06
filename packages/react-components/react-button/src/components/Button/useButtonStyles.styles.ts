@@ -18,6 +18,9 @@ const buttonSpacingMedium = '5px';
 const buttonSpacingLarge = '8px';
 const buttonSpacingLargeWithIcon = '7px';
 
+// Firefox has a box shadow offset at some zoom levels, this will ensure the boxShadow is always uniform
+const boxShadowStrokeWidthThinMoz = `calc(${tokens.strokeWidthThin} + 0.5px)`;
+
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
   boxSizing: 'border-box',
@@ -104,6 +107,17 @@ const useRootBaseClassName = makeResetStyles({
     `,
     zIndex: 1,
   }),
+  // Firefox box shadow w/ stroke balanced
+  '@supports (-moz-appearance:button)': {
+    ...createCustomFocusIndicatorStyle({
+      borderColor: tokens.colorStrokeFocus2,
+      borderRadius: tokens.borderRadiusMedium,
+      borderWidth: '1px',
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+      boxShadow: `inset 0px 0px 0px  ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}`,
+      zIndex: 1,
+    }),
+  },
 });
 
 const useIconBaseClassName = makeResetStyles({
