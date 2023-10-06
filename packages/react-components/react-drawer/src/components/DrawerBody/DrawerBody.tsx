@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+
 import { useDrawerBody_unstable } from './useDrawerBody';
 import { renderDrawerBody_unstable } from './renderDrawerBody';
 import { useDrawerBodyStyles_unstable } from './useDrawerBodyStyles.styles';
 import type { DrawerBodyProps } from './DrawerBody.types';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DrawerBody provides with a container for the main content of a Drawer.

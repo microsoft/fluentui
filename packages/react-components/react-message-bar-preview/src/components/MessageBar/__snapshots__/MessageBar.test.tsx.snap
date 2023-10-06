@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBar renders a default state 1`] = `
+<div>
+  <div
+    aria-labelledby="fui-1"
+    class="fui-MessageBar"
+    role="group"
+  >
+    <div
+      class="fui-MessageBar__icon"
+    >
+      <svg
+        aria-hidden="true"
+        class=""
+        fill="currentColor"
+        height="1em"
+        viewBox="0 0 20 20"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M18 10a8 8 0 1 0-16 0 8 8 0 0 0 16 0ZM9.5 8.91a.5.5 0 0 1 1 0V13.6a.5.5 0 0 1-1 0V8.9Zm-.25-2.16a.75.75 0 1 1 1.5 0 .75.75 0 0 1-1.5 0Z"
+          fill="currentColor"
+        />
+      </svg>
+    </div>
+    Default MessageBar
+  </div>
+</div>
+`;

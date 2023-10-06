@@ -6,6 +6,10 @@ import { IChartProps, IChartDataPoint } from './index';
 
 export interface IDonutChart {}
 
+/**
+ * IDonutChartProps for Donutchart component.
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
