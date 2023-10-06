@@ -89,6 +89,35 @@ storiesOf('Popover Converged', module)
         </PopoverSurface>
       </Popover>
     );
+  })
+  .addStory('when rendering inline, it should not render behind relatively positioned elements', () => {
+    return (
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+        }}
+      >
+        <Popover inline>
+          <PopoverTrigger>
+            <button id="show-popover">Show Popover</button>
+          </PopoverTrigger>
+          <PopoverSurface
+            tabIndex={-1}
+            style={{
+              display: 'flex',
+              flexDirection: 'column',
+              maxWidth: '300px',
+              maxHeight: '300px',
+              overflowY: 'scroll',
+            }}
+          >
+            <span>{sampleText}</span>
+          </PopoverSurface>
+        </Popover>
+        <input style={{ position: 'relative' }} />
+      </div>
+    );
   });
 
 const sampleText = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
