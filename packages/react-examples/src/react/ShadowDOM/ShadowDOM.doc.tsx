@@ -61,7 +61,7 @@ import { ShadowDOMTextFieldExample } from './ShadowDOM.TextField.Example';
 import { ShadowDOMTimePickerExample } from './ShadowDOM.TimePicker.Example';
 import { ShadowDOMToggleExample } from './ShadowDOM.Toggle.Example';
 import { ShadowDOMTooltipExample } from './ShadowDOM.Tooltip.Example';
-import { ShadowDOMWeeklyPickerExample } from './ShadowDOM.WeeklyDayPicker.Example';
+import { ShadowDOMWeeklyDayPickerExample } from './ShadowDOM.WeeklyDayPicker.Example';
 import { ShadowDOMChildWindowExample } from './ShadowDOM.ChildWindow.Example';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
@@ -251,7 +251,7 @@ const ShadowDOMToggleExampleCode =
 const ShadowDOMTooltipExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.Tooltip.Example.tsx') as string;
 
-const ShadowDOMWeeklyPickerExampleCode =
+const ShadowDOMWeeklyDayPickerExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/ShadowDOM/ShadowDOM.WeeklyPicker.Example.tsx') as string;
 
 const ShadowDOMChildWindowExampleCode =
@@ -578,8 +578,8 @@ export const ShadowDOMPageProps = (): IDocPageProps => ({
     },
     {
       title: 'WeeklyPicker',
-      code: ShadowDOMWeeklyPickerExampleCode,
-      view: <ShadowDOMWeeklyPickerExample />,
+      code: ShadowDOMWeeklyDayPickerExampleCode,
+      view: <ShadowDOMWeeklyDayPickerExample />,
     },
     {
       title: 'Child Window',
