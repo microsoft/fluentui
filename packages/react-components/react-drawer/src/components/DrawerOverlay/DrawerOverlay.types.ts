@@ -3,12 +3,17 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { MotionState } from '@fluentui/react-motion-preview';
 
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
-import { DrawerOverlaySurfaceSlots } from './DrawerOverlaySurface';
+import { DrawerOverlaySurfaceProps } from './DrawerOverlaySurface';
 
 /**
  * DrawerOverlay slots
  */
-export type DrawerOverlaySlots = DrawerOverlaySurfaceSlots;
+export type DrawerOverlaySlots = {
+  /**
+   * Slot for the root element.
+   */
+  root: Slot<DrawerOverlaySurfaceProps>;
+};
 
 /**
  * DrawerOverlay internal slots for when using with composition API

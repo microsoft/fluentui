@@ -4,7 +4,8 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
-import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
+import type { DrawerOverlayState } from './DrawerOverlay.types';
+import { DrawerOverlaySurfaceSlots } from './DrawerOverlaySurface/DrawerOverlaySurface.types';
 import {
   drawerCSSVars,
   drawerDefaultStyles,
@@ -12,7 +13,7 @@ import {
   useDrawerDurationStyles,
 } from '../../shared/useDrawerBaseStyles.styles';
 
-export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySlots> = {
+export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySurfaceSlots> = {
   root: 'fui-DrawerOverlay',
   backdrop: 'fui-DrawerOverlay__backdrop',
 };
