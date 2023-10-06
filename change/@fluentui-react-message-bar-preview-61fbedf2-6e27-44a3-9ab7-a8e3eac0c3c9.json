@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "https://github.com/microsoft/fluentui/issues/29408",
+  "packageName": "@fluentui/react-message-bar-preview",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
