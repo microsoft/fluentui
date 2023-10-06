@@ -22,7 +22,7 @@ const buttonSpacingLargeWithIcon = '7px';
  * this will ensure the boxShadow is always uniform
  * without affecting other browser platforms
  */
-const boxShadowStrokeWidthThinMoz = `calc(${tokens.strokeWidthThin} + 0.25px)`;
+const boxShadowStrokeWidthThin = `calc(${tokens.strokeWidthThin} + 0.25px)`;
 
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
@@ -105,7 +105,7 @@ const useRootBaseClassName = makeResetStyles({
     borderRadius: tokens.borderRadiusMedium,
     borderWidth: '1px',
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}
+    boxShadow: `0 0 0 ${boxShadowStrokeWidthThin} ${tokens.colorStrokeFocus2}
       inset
     `,
     zIndex: 1,
