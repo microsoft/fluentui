@@ -16,7 +16,7 @@ import { useMessageBarTransitionContext } from '../../contexts/messageBarTransit
  * @param ref - reference to root HTMLElement of MessageBar
  */
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLDivElement>): MessageBarState => {
-  const { layout = 'auto', intent = 'info', politeness } = props;
+  const { layout = 'auto', intent = 'info', politeness, shape = 'rounded' } = props;
   const computedPolitness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
@@ -61,5 +61,6 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     actionsRef,
     bodyRef,
     titleId,
+    shape,
   };
 };

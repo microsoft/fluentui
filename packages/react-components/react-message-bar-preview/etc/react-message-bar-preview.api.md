@@ -97,6 +97,7 @@ export type MessageBarIntent = 'info' | 'success' | 'warning' | 'error';
 export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<Partial<MessageBarContextValue>, 'layout'> & {
     intent?: MessageBarIntent;
     politeness?: 'assertive' | 'polite';
+    shape?: 'square' | 'rounded';
 };
 
 // @public (undocumented)
@@ -106,7 +107,7 @@ export type MessageBarSlots = {
 };
 
 // @public
-export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>> & Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
+export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent' | 'shape'>> & Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
     transitionClassName: string;
 };
 

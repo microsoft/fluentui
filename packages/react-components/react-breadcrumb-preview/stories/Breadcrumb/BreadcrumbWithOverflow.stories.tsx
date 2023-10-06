@@ -2,7 +2,6 @@ import * as React from 'react';
 import {
   ButtonProps,
   makeStyles,
-  mergeClasses,
   shorthands,
   tokens,
   Button,
@@ -40,10 +39,8 @@ type ButtonItem = {
   key: number;
   item?: string;
   buttonProps?: {
-    onClick?: () => void;
     icon?: ButtonProps['icon'];
     disabled?: boolean;
-    iconPosition?: 'before' | 'after';
   };
 };
 
@@ -51,62 +48,44 @@ const buttonItems: ButtonItem[] = [
   {
     key: 0,
     item: 'Item 0',
-    buttonProps: {
-      onClick: () => console.log('item 0 was clicked'),
-    },
   },
   {
     key: 1,
     item: 'Item 1',
     buttonProps: {
       icon: <CalendarMonth />,
-      onClick: () => console.log('item 1 was clicked'),
     },
   },
   {
     key: 2,
     item: 'Item 2',
-    buttonProps: {
-      onClick: () => console.log('item 2 was clicked'),
-    },
   },
   {
     key: 3,
     item: 'Item 3',
-    buttonProps: {
-      onClick: () => console.log('item 3 was clicked'),
-    },
   },
   {
     key: 4,
     item: 'Item 4',
-    buttonProps: {
-      onClick: () => console.log('item 4 was clicked'),
-    },
   },
   {
     key: 5,
     item: 'Item 5',
     buttonProps: {
       icon: <CalendarMonthRegular />,
-      iconPosition: 'after',
-      onClick: () => console.log('item 5 was clicked'),
+      disabled: true,
     },
   },
   {
     key: 6,
     item: 'Item 6',
     buttonProps: {
-      onClick: () => console.log('item 6 was clicked'),
       disabled: true,
     },
   },
   {
     key: 7,
     item: 'Item 7',
-    buttonProps: {
-      onClick: () => console.log('item 7 was clicked'),
-    },
   },
 ];
 
@@ -125,8 +104,6 @@ const useExampleStyles = makeStyles({
     ...shorthands.overflow('hidden'),
     ...shorthands.padding('5px'),
     zIndex: 0, //stop the browser resize handle from piercing the overflow menu
-  },
-  horizontal: {
     height: 'fit-content',
     minWidth: '150px',
     resize: 'horizontal',
@@ -234,7 +211,7 @@ const BreadcrumbControlledOverflowExample = () => {
     });
 
   return (
-    <div className={mergeClasses(styles.example, styles.horizontal)}>
+    <div className={styles.example}>
       <Overflow>
         <Breadcrumb>
           {startDisplayedItems.map((item: ButtonItem) => renderButton(item, false))}
