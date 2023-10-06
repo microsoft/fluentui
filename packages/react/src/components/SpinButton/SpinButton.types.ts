@@ -2,10 +2,9 @@ import * as React from 'react';
 import { Position } from '../../Positioning';
 import type { IButtonStyles, IButtonProps } from '../../Button';
 import type { IIconProps } from '../../Icon';
-import type { ITheme, IStyle } from '../../Styling';
+import type { ITheme, IStyle, IShadowDomStyle } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
 import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory SpinButton}
@@ -264,7 +263,7 @@ export interface ISpinButtonProps extends React.HTMLAttributes<HTMLDivElement>, 
 /**
  * {@docCategory SpinButton}
  */
-export interface ISpinButtonStyles {
+export interface ISpinButtonStyles extends IShadowDomStyle {
   /**
    * Styles for the root of the component.
    */
@@ -299,8 +298,6 @@ export interface ISpinButtonStyles {
    * Styles for the arrowButtonsContainer
    */
   arrowButtonsContainer: IStyle;
-
-  __shadowConfig__?: ShadowConfig;
 }
 
 /**

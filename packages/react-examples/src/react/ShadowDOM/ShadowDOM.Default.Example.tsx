@@ -160,7 +160,7 @@ export const ShadowDOMDefaultExample: React.FunctionComponent = () => {
   return (
     <>
       <Shadow>
-        <TestComp inShadow={false} />
+        <TestComp inShadow={true} />
       </Shadow>
       <TestWindow />
     </>
