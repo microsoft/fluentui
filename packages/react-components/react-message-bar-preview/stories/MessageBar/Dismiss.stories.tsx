@@ -11,7 +11,7 @@ import {
 } from '@fluentui/react-message-bar-preview';
 
 const useStyles = makeStyles({
-  container: {
+  messageBarGroup: {
     ...shorthands.padding(tokens.spacingHorizontalMNudge),
     display: 'flex',
     flexDirection: 'column',
@@ -21,44 +21,45 @@ const useStyles = makeStyles({
     ...shorthands.overflow('auto'),
     ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
   },
+  buttonGroup: {
+    display: 'flex',
+    justifyContent: 'end',
+    ...shorthands.gap('5px'),
+  },
 });
 
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
-interface Entry {
+interface ExampleMessage {
   intent: MessageBarIntent;
   id: number;
 }
 
 export const Dismiss = () => {
   const styles = useStyles();
+
   const counterRef = React.useRef(0);
-  const [messages, setMessages] = React.useState<Entry[]>([]);
-  const prepend = () => {
-    const intentPos = Math.floor(Math.random() * intents.length);
-    const newEntry = {
-      intent: intents[intentPos],
-      id: counterRef.current++,
-    };
+  const [messages, setMessages] = React.useState<ExampleMessage[]>([]);
 
-    setMessages(s => [newEntry, ...s]);
-  };
+  const addMessage = () => {
+    const intent = intents[Math.floor(Math.random() * intents.length)];
+    const newMessage = { intent, id: counterRef.current++ };
 
-  const clear = () => {
-    setMessages([]);
+    setMessages(s => [newMessage, ...s]);
   };
-
-  const dismiss = (id: number) => () => {
-    setMessages(s => {
-      return s.filter(entry => entry.id !== id);
-    });
-  };
+  const clearMessages = () => setMessages([]);
+  const dismissMessage = (messageId: number) => setMessages(s => s.filter(entry => entry.id !== messageId));
 
   return (
     <>
-      <Button onClick={prepend}>Notify</Button>
-      <Button onClick={clear}>Clear</Button>
-      <MessageBarGroup className={styles.container}>
+      <div className={styles.buttonGroup}>
+        <Button appearance="primary" onClick={addMessage}>
+          Add message
+        </Button>
+        <Button onClick={clearMessages}>Clear</Button>
+      </div>
+
+      <MessageBarGroup className={styles.messageBarGroup}>
         {messages.map(({ intent, id }) => (
           <MessageBar key={`${intent}-${id}`} intent={intent}>
             <MessageBarBody>
@@ -66,7 +67,9 @@ export const Dismiss = () => {
               Message providing information to the user with actionable insights. <Link>Link</Link>
             </MessageBarBody>
             <MessageBarActions
-              containerAction={<Button onClick={dismiss(id)} appearance="transparent" icon={<DismissRegular />} />}
+              containerAction={
+                <Button onClick={() => dismissMessage(id)} appearance="transparent" icon={<DismissRegular />} />
+              }
             />
           </MessageBar>
         ))}
