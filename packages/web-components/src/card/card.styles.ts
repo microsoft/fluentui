@@ -50,7 +50,7 @@ export const styles = css`
   :host {
     font-family: ${fontFamilyBase};
     background: ${colorNeutralBackground1};
-    outline: ${strokeWidthThin} solid ${colorTransparentStroke};
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
     border-radius: ${borderRadiusMedium};
     position: relative;
     max-width: 100%;
@@ -63,7 +63,7 @@ export const styles = css`
     z-index: var(--card-elevation, 1);
   }
 
-  :host:focus-visible {
+  .card:focus-visible::after {
     border: ${strokeWidthThick} solid ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
@@ -105,64 +105,64 @@ export const styles = css`
   }
   :host([appearance='outline']) {
     background: ${colorTransparentBackground};
-    outline-color: ${colorNeutralStroke1};
+    border-color: ${colorNeutralStroke1};
     box-shadow: none;
   }
   :host([appearance='subtle']) {
     background: ${colorSubtleBackground};
-    outline-color: ${colorTransparentStroke};
+    border-color: ${colorTransparentStroke};
     box-shadow: none;
   }
 
-  :host([interactive]) {
+  :host([selectable]) {
     cursor: pointer;
     user-select: none;
   }
-  :host([interactive]:hover) {
+  :host([selectable]:hover) {
     background: ${colorNeutralBackground1Hover};
-    outline-color: ${colorTransparentStrokeInteractive};
+    border-color: ${colorTransparentStrokeInteractive};
     box-shadow: ${shadow8};
   }
-  :host([interactive]:active) {
+  :host([selectable]:active) {
     background: ${colorNeutralBackground1Pressed};
-    outline-color: ${colorTransparentStrokeInteractive};
+    border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([interactive][appearance='filled-alternative']:hover) {
+  :host([selectable][appearance='filled-alternative']:hover) {
     background: ${colorNeutralBackground2Hover};
   }
-  :host([interactive][appearance='filled-alternative']:active) {
+  :host([selectable][appearance='filled-alternative']:active) {
     background: ${colorNeutralBackground2Pressed};
   }
-  :host([interactive][appearance='outline']:hover) {
+  :host([selectable][appearance='outline']:hover) {
     background: ${colorTransparentBackgroundHover};
-    outline-color: ${colorNeutralStroke1Hover};
+    border-color: ${colorNeutralStroke1Hover};
     box-shadow: none;
   }
-  :host([interactive][appearance='outline']:active) {
+  :host([selectable][appearance='outline']:active) {
     background: ${colorTransparentBackgroundPressed};
-    outline-color: ${colorNeutralStroke1Pressed};
+    border-color: ${colorNeutralStroke1Pressed};
   }
-  :host([interactive][appearance='subtle']:hover) {
+  :host([selectable][appearance='subtle']:hover) {
     background: ${colorSubtleBackgroundHover};
-    outline-color: ${colorTransparentStrokeInteractive};
+    border-color: ${colorTransparentStrokeInteractive};
     box-shadow: none;
   }
-  :host([interactive][appearance='subtle']:active) {
+  :host([selectable][appearance='subtle']:active) {
     background: ${colorSubtleBackgroundPressed};
   }
 
   :host([selected]) {
     background: ${colorNeutralBackground1Selected};
-    outline-color: ${colorTransparentStrokeInteractive};
+    border-color: ${colorTransparentStrokeInteractive};
     cursor: pointer;
   }
   :host([appearance='subtle'][selected]) {
     background: ${colorSubtleBackgroundSelected};
-    outline-color: ${colorNeutralStroke1Selected};
+    border-color: ${colorNeutralStroke1Selected};
   }
   :host([appearance='outline'][selected]) {
     background: ${colorTransparentBackgroundSelected};
-    outline-color: ${colorNeutralStroke1Selected};
+    border-color: ${colorNeutralStroke1Selected};
   }
   :host([appearance='filled-alternative'][selected]) {
     background: ${colorNeutralBackground2Selected};
@@ -170,7 +170,7 @@ export const styles = css`
 
   :host([disabled]) {
     background: ${colorNeutralBackgroundDisabled};
-    outline-color: ${colorTransparentStrokeDisabled};
+    border-color: ${colorTransparentStrokeDisabled};
     cursor: not-allowed;
     pointer-events: none;
     box-shadow: ${shadow2};

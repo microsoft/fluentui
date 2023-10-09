@@ -43,7 +43,7 @@ export class Card extends FASTCard {
    * A reference to the floating action slot
    */
   @observable
-  public floatingActionSlot: HTMLElement[] = [];
+  public floatingActionSlot?: HTMLElement;
 
   /**
    * @property appearance;
@@ -72,16 +72,6 @@ export class Card extends FASTCard {
   @observable
   @attr({ attribute: 'size' })
   public size?: CardSize;
-
-  /**
-   * @property interactive
-   * @default false
-   * @remarks
-   * Determines whether card is interactable
-   */
-  @observable
-  @attr({ mode: 'boolean' })
-  public interactive: boolean = false;
 
   /**
    * @property selectable
@@ -226,7 +216,7 @@ export class Card extends FASTCard {
     if (this.disabled) {
       return;
     }
-    if (!this.disabled && this.interactive && this.selectable) {
+    if (this.selectable) {
       this.toggleCardSelection();
     }
   }
@@ -239,7 +229,7 @@ export class Card extends FASTCard {
    */
   public keydownHandler(e: KeyboardEvent): boolean | void {
     if (this.disabled) {
-      return;
+      return true;
     }
     const key = e.key;
     switch (key) {
@@ -248,7 +238,7 @@ export class Card extends FASTCard {
         if (e.target !== e.currentTarget) {
           return true;
         }
-        if (e.target === e.currentTarget && this.interactive && this.selectable) {
+        if (e.target === e.currentTarget && this.selectable) {
           e.preventDefault();
           this.toggleCardSelection();
         } else if (
@@ -343,14 +333,14 @@ export class Card extends FASTCard {
   };
 
   /**
-   * Getter for the tabIndex property.
-   * @returns {number} - The tabIndex value.
+   * Determines if the card is focusable.
+   * @returns {boolean} - True if the card is focusable, false otherwise.
    */
-  get tabIndex(): number {
-    if (this.disabled || (this.focusMode === 'off' && !this.interactive)) {
-      return -1;
+  get isFocusable(): boolean {
+    if (this.disabled || this.focusMode === 'off') {
+      return false;
     } else {
-      return 0;
+      return true;
     }
   }
 
