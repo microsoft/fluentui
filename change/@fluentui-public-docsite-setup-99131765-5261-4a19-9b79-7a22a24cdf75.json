@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: lint errors",
+  "packageName": "@fluentui/public-docsite-setup",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

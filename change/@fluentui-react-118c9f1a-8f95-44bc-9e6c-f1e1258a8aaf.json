@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: use `document` and `window` globals from context",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
