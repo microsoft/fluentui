@@ -980,7 +980,7 @@ export function clamp(value: number, max: number, min?: number): number;
 export { classNamesFunction }
 
 // @public
-export function cleanupDefaultLayerHost(doc: Document): void;
+export function cleanupDefaultLayerHost(doc: Document, shadowRoot?: ShadowRoot | null): void;
 
 // @public (undocumented)
 export const Coachmark: React_2.FunctionComponent<ICoachmarkProps>;
@@ -1160,7 +1160,7 @@ export function correctRGB(color: IRGB): IRGB;
 export { createArray }
 
 // @public
-export function createDefaultLayerHost(doc: Document): Node | null;
+export function createDefaultLayerHost(doc: Document, shadowRoot?: ShadowRoot | null): Node | null;
 
 export { createFontStyles }
 
