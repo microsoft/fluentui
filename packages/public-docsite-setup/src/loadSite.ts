@@ -186,7 +186,7 @@ function loadSiteInternal(options: {
 
   // This is used by the example editor in 7+ (but having it defined in 5-6 is harmless)
   window.MonacoConfig = {
-    baseUrl: baseUrl,
+    baseUrl,
     useMinified,
     crossDomain: true,
   };
@@ -214,10 +214,12 @@ function getParameterByName(name: string) {
 }
 
 function loadScript(src: string, onLoad?: () => void, onError?: () => void) {
+  // eslint-disable-next-line no-restricted-globals
   const script = document.createElement('script');
   script.src = src;
   script.onload = onLoad || null;
   script.onerror = onError || null;
 
+  // eslint-disable-next-line no-restricted-globals
   document.head.appendChild(script);
 }
