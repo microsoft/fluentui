@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: lint exception comment",
+  "packageName": "@fluentui/set-version",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "none"
+}
