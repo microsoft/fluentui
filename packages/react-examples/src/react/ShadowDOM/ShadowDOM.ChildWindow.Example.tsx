@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {
+  Callout,
   DefaultButton,
   PrimaryButton,
   Checkbox,
@@ -47,6 +48,34 @@ const options: IComboBoxOption[] = [
   { key: 'J', text: 'Option J' },
 ];
 
+const TestLayer: React.FC = () => {
+  const [showCallout, setShowCallout] = React.useState(false);
+
+  return (
+    <>
+      {/* eslint-disable-next-line react/jsx-no-bind */}
+      <DefaultButton id="callout-button" text="Show callout" onClick={() => setShowCallout(!showCallout)} />
+      {showCallout && (
+        <Callout
+          role="dialog"
+          gapSpace={0}
+          target={`#callout-button`}
+          // eslint-disable-next-line react/jsx-no-bind
+          onDismiss={() => setShowCallout(false)}
+          setInitialFocus
+          styles={{ root: { padding: '1rem' } }}
+        >
+          <Text as="h1" block>
+            Callout shows up next to target within shadow DOM as expected. Default layer host is also created within the
+            corresponding shadow DOM if no layer host is provided. Note that if providing a custom layer host, it must
+            be in the same shadow DOM as the target.
+          </Text>
+        </Callout>
+      )}
+    </>
+  );
+};
+
 type TestCompProps = {
   inShadow: boolean;
 };
@@ -77,6 +106,7 @@ const TestComp: React.FC<TestCompProps> = ({ inShadow }) => {
 
       {/* eslint-disable-next-line */}
       <Checkbox label="Disable controls" checked={disabled} onChange={onClick} />
+      <TestLayer />
       <Stack tokens={{ childrenGap: 5 }}>
         <Text>FontIcons</Text>
         <Stack horizontal tokens={{ childrenGap: 5 }}>
