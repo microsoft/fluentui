@@ -6,6 +6,7 @@ const packagesCache: { [name: string]: string } = {};
 let _win: Window | undefined = undefined;
 
 try {
+  // eslint-disable-next-line no-restricted-globals
   _win = window;
 } catch (e) {
   /* no-op */
