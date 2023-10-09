@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: allow `document` and `window` globals to be passed in where needed.",
+  "packageName": "@fluentui/react-focus",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
