@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add shape prop to MessageBar",
-  "packageName": "@fluentui/react-message-bar-preview",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

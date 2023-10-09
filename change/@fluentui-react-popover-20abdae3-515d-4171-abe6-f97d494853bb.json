@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Add zIndex=1 to PopoverSurface when rendering inline to avoid elements positioned relative to render on top of it.",
-  "packageName": "@fluentui/react-popover",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
