@@ -60,6 +60,7 @@ describe('react-component generator', () => {
     expect(tree.read(joinPathFragments(componentRootPath, 'MyOne.tsx'), 'utf-8')).toMatchInlineSnapshot(`
       "import * as React from 'react';
       import type { ForwardRefComponent } from '@fluentui/react-utilities';
+      import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
       import { useMyOne_unstable } from './useMyOne';
       import { renderMyOne_unstable } from './renderMyOne';
       import { useMyOneStyles_unstable } from './useMyOneStyles.styles';
@@ -73,6 +74,9 @@ describe('react-component generator', () => {
           const state = useMyOne_unstable(props, ref);
 
           useMyOneStyles_unstable(state);
+          useMyOneStyles_unstable(state);
+          // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
+          useCustomStyleHook_unstable('useMyOneStyles_unstable')(state);
           return renderMyOne_unstable(state);
         }
       );
