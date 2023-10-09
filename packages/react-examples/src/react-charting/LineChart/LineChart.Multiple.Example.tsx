@@ -68,11 +68,11 @@ export class LineChartMultipleExample extends React.Component<{}, ILineChartMult
       {
         data: [
           { x: new Date('2018/01/01'), y: 10, xAxisCalloutData: '2018/01/01', yAxisCalloutData: '10%' },
-          { x: new Date('2018/02/01'), y: 30, xAxisCalloutData: '2018/01/15', yAxisCalloutData: '18%' },
-          { x: new Date('2018/03/01'), y: 10, xAxisCalloutData: '2018/01/28', yAxisCalloutData: '24%' },
-          { x: new Date('2018/04/01'), y: 30, xAxisCalloutData: '2018/02/01', yAxisCalloutData: '25%' },
-          { x: new Date('2018/05/01'), y: 10, xAxisCalloutData: '2018/03/01', yAxisCalloutData: '15%' },
-          { x: new Date('2018/06/01'), y: 30, xAxisCalloutData: '2018/03/15', yAxisCalloutData: '30%' },
+          { x: new Date('2018/02/01'), y: 30, xAxisCalloutData: '2018/02/01', yAxisCalloutData: '18%' },
+          { x: new Date('2018/03/01'), y: 10, xAxisCalloutData: '2018/03/01', yAxisCalloutData: '24%' },
+          { x: new Date('2018/04/01'), y: 30, xAxisCalloutData: '2018/04/01', yAxisCalloutData: '25%' },
+          { x: new Date('2018/05/01'), y: 10, xAxisCalloutData: '2018/05/01', yAxisCalloutData: '15%' },
+          { x: new Date('2018/06/01'), y: 30, xAxisCalloutData: '2018/06/01', yAxisCalloutData: '30%' },
         ],
         legend: 'First',
         lineOptions: {

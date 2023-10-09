@@ -1,10 +1,18 @@
-import { MessageBar, MessageBarGroup } from '@fluentui/react-message-bar-preview';
+import {
+  MessageBar,
+  MessageBarGroup,
+  MessageBarBody,
+  MessageBarTitle,
+  MessageBarActions,
+} from '@fluentui/react-message-bar-preview';
 
 import descriptionMd from './MessageBarDescription.md';
 import bestPracticesMd from './MessageBarBestPractices.md';
 
 export { Default } from './Default.stories';
 export { Intent } from './Intent.stories';
+export { Shape } from './Shape.stories';
+export { Actions } from './Actions.stories';
 export { Dismiss } from './Dismiss.stories';
 export { Animation } from './Animation.stories';
 export { Reflow } from './Reflow.stories';
@@ -15,6 +23,9 @@ export default {
   component: MessageBar,
   subcomponents: {
     MessageBarGroup,
+    MessageBarBody,
+    MessageBarTitle,
+    MessageBarActions,
   },
   parameters: {
     docs: {

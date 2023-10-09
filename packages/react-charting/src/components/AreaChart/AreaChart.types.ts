@@ -16,6 +16,11 @@ import {
 } from '../CommonComponents/CartesianChart.types';
 
 export type { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
+
+/**
+ * IAreaChartProps properties for area chart.
+ * {@docCategory AreaChart}
+ */
 export interface IAreaChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.

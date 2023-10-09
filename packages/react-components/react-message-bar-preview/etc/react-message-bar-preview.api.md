@@ -63,6 +63,7 @@ export type MessageBarContextValue = {
     layout: 'multiline' | 'singleline' | 'auto';
     actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
     bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
+    titleId: string;
 };
 
 // @public
@@ -96,6 +97,7 @@ export type MessageBarIntent = 'info' | 'success' | 'warning' | 'error';
 export type MessageBarProps = ComponentProps<MessageBarSlots> & Pick<Partial<MessageBarContextValue>, 'layout'> & {
     intent?: MessageBarIntent;
     politeness?: 'assertive' | 'polite';
+    shape?: 'square' | 'rounded';
 };
 
 // @public (undocumented)
@@ -105,10 +107,8 @@ export type MessageBarSlots = {
 };
 
 // @public
-export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent'>> & {
+export type MessageBarState = ComponentState<MessageBarSlots> & Required<Pick<MessageBarProps, 'layout' | 'intent' | 'shape'>> & Pick<MessageBarContextValue, 'actionsRef' | 'bodyRef' | 'titleId'> & {
     transitionClassName: string;
-    actionsRef: React_2.MutableRefObject<HTMLDivElement | null>;
-    bodyRef: React_2.MutableRefObject<HTMLDivElement | null>;
 };
 
 // @public
@@ -144,16 +144,16 @@ export const renderMessageBarGroup_unstable: (state: MessageBarGroupState) => JS
 export const renderMessageBarTitle_unstable: (state: MessageBarTitleState) => JSX.Element;
 
 // @public
-export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLElement>) => MessageBarState;
+export const useMessageBar_unstable: (props: MessageBarProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarState;
 
 // @public
-export const useMessageBarActions_unstable: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLElement>) => MessageBarActionsState;
+export const useMessageBarActions_unstable: (props: MessageBarActionsProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarActionsState;
 
 // @public
 export const useMessageBarActionsStyles_unstable: (state: MessageBarActionsState) => MessageBarActionsState;
 
 // @public
-export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLElement>) => MessageBarBodyState;
+export const useMessageBarBody_unstable: (props: MessageBarBodyProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarBodyState;
 
 // @public
 export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => MessageBarBodyState;
@@ -162,7 +162,7 @@ export const useMessageBarBodyStyles_unstable: (state: MessageBarBodyState) => M
 export const useMessageBarContext: () => MessageBarContextValue;
 
 // @public
-export const useMessageBarGroup_unstable: (props: MessageBarGroupProps, ref: React_2.Ref<HTMLElement>) => MessageBarGroupState;
+export const useMessageBarGroup_unstable: (props: MessageBarGroupProps, ref: React_2.Ref<HTMLDivElement>) => MessageBarGroupState;
 
 // @public
 export const useMessageBarGroupStyles_unstable: (state: MessageBarGroupState) => MessageBarGroupState;

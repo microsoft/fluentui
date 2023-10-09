@@ -31,12 +31,11 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
       // cleanup previous container
       if (container.current) {
         resizeObserver.unobserve(container.current);
-        container.current.remove();
       }
 
-      if (el) {
-        container.current = targetDocument.createElement('div');
-        el.insertAdjacentElement('beforebegin', container.current);
+      container.current = undefined;
+      if (el?.parentElement) {
+        container.current = el.parentElement;
         resizeObserver.observe(container.current);
         handleResize();
       }

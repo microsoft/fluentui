@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getNativeElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
@@ -30,7 +30,19 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
   // then selection and expansion will not work properly
   const value = useId('fuiTreeItemValue-', props.value?.toString());
 
-  const { onClick, onKeyDown, as = 'div', itemType = 'leaf', 'aria-level': level = contextLevel, ...rest } = props;
+  const {
+    onClick,
+    onKeyDown,
+    onMouseOver,
+    onFocus,
+    onMouseOut,
+    onBlur,
+    onChange,
+    as = 'div',
+    itemType = 'leaf',
+    'aria-level': level = contextLevel,
+    ...rest
+  } = props;
 
   const [isActionsVisible, setActionsVisible] = React.useState(false);
   const [isAsideVisible, setAsideVisible] = React.useState(true);
@@ -102,23 +114,12 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
       case Space:
         if (selectionMode !== 'none') {
           selectionRef.current?.click();
+          // Prevents the page from scrolling down when the spacebar is pressed
           event.preventDefault();
         }
         return;
       case treeDataTypes.Enter: {
-        const data = {
-          value,
-          event,
-          open: !open,
-          type: event.key,
-          target: event.currentTarget,
-        } as const;
-        props.onOpenChange?.(event, data);
-        return requestTreeResponse({
-          ...data,
-          itemType,
-          requestType: 'open',
-        });
+        return event.currentTarget.click();
       }
       case treeDataTypes.End:
       case treeDataTypes.Home:
@@ -192,31 +193,53 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     }
   });
 
-  const handleActionsVisible = useEventCallback((event: React.FocusEvent | React.MouseEvent) => {
+  const setActionsVisibleIfNotFromSubtree = React.useCallback((event: React.SyntheticEvent<HTMLDivElement>) => {
     const isTargetFromSubtree = Boolean(
       subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
     );
     if (!isTargetFromSubtree) {
       setActionsVisible(true);
     }
+  }, []);
+  const setActionsInvisibleIfNotFromSubtree = React.useCallback(
+    (event: React.MouseEvent<HTMLDivElement> | React.FocusEvent<HTMLDivElement>) => {
+      const isTargetFromSubtree = Boolean(
+        subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
+      );
+      const isRelatedTargetFromActions = Boolean(
+        actionsRef.current && elementContains(actionsRef.current, event.relatedTarget as Node),
+      );
+      if (isRelatedTargetFromActions) {
+        return setActionsVisible(true);
+      }
+      if (!isTargetFromSubtree) {
+        return setActionsVisible(false);
+      }
+    },
+    [],
+  );
+
+  const handleMouseOver = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    onMouseOver?.(event);
+    setActionsVisibleIfNotFromSubtree(event);
   });
 
-  const handleActionsInvisible = useEventCallback((event: React.FocusEvent | React.MouseEvent) => {
-    const isTargetFromSubtree = Boolean(
-      subtreeRef.current && elementContains(subtreeRef.current, event.target as Node),
-    );
-    const isRelatedTargetFromActions = Boolean(
-      actionsRef.current && elementContains(actionsRef.current, event.relatedTarget as Node),
-    );
-    if (isRelatedTargetFromActions) {
-      return setActionsVisible(true);
-    }
-    if (!isTargetFromSubtree) {
-      return setActionsVisible(false);
-    }
+  const handleFocus = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    onFocus?.(event);
+    setActionsVisibleIfNotFromSubtree(event);
+  });
+
+  const handleMouseOut = useEventCallback((event: React.MouseEvent<HTMLDivElement>) => {
+    onMouseOut?.(event);
+    setActionsInvisibleIfNotFromSubtree(event);
+  });
+  const handleBlur = useEventCallback((event: React.FocusEvent<HTMLDivElement>) => {
+    onBlur?.(event);
+    setActionsInvisibleIfNotFromSubtree(event);
   });
 
   const handleChange = useEventCallback((event: React.ChangeEvent<HTMLInputElement>) => {
+    onChange?.(event);
     if (event.isDefaultPrevented()) {
       return;
     }
@@ -252,7 +275,7 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
     isAsideVisible,
     isActionsVisible,
     root: slot.always(
-      getNativeElementProps(as, {
+      getIntrinsicElementProps(as, {
         tabIndex: -1,
         [dataTreeItemValueAttrName]: value,
         ...rest,
@@ -267,12 +290,12 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
         'aria-expanded': itemType === 'branch' ? open : undefined,
         onClick: handleClick,
         onKeyDown: handleKeyDown,
-        onMouseOver: handleActionsVisible,
-        onFocus: handleActionsVisible,
-        onMouseOut: handleActionsInvisible,
-        onBlur: handleActionsInvisible,
+        onMouseOver: handleMouseOver,
+        onFocus: handleFocus,
+        onMouseOut: handleMouseOut,
+        onBlur: handleBlur,
         onChange: handleChange,
-      }),
+      } as const),
       { elementType: 'div' },
     ),
   };

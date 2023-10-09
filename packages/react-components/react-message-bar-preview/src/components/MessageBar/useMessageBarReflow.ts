@@ -12,7 +12,7 @@ export function useMessageBarReflow(enabled: boolean = false) {
   const handleResize: ResizeObserverCallback = React.useCallback(
     entries => {
       // Resize observer is only owned by this component - one resize observer entry expected
-      // No need to support mutliple fragments - one border box entry expected
+      // No need to support multiple fragments - one border box entry expected
       if (process.env.NODE_ENV !== 'production' && entries.length > 1) {
         // eslint-disable-next-line no-console
         console.error(
