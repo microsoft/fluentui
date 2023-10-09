@@ -62,22 +62,29 @@ export const LazyLoading = () => {
 };
 
 const PeopleSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) => {
-  const peopleTree = useQuery<Entity[]>([]);
-  const { isLoaded, isLoading } = peopleTree;
+  const { isLoaded, isLoading, query } = useQuery<Entity[]>([]);
+  const [items, setItems] = React.useState<Entity[]>([]);
   const firstItemRef = React.useRef<HTMLDivElement>(null);
 
   const handleDataFetch = React.useCallback(
     async (type: string) => {
-      peopleTree.query(async () => {
-        const json = await mockFetch(type);
-        return json.results.map<Entity>(entity => ({
-          value: `${type}/${entity.name}`,
-          name: entity.name,
-          itemType: 'leaf',
-        }));
-      });
+      query(
+        async () => {
+          const json = await mockFetch(type);
+          return json.results.map<Entity>(entity => ({
+            value: `${type}/${entity.name}`,
+            name: entity.name,
+            itemType: 'leaf',
+          }));
+        },
+        data => {
+          setItems(data);
+          setAriaMessage(`people items loaded`);
+          firstItemRef.current?.focus();
+        },
+      );
     },
-    [peopleTree],
+    [query, setAriaMessage],
   );
 
   React.useEffect(() => {
@@ -85,27 +92,22 @@ const PeopleSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) =>
       setAriaMessage(`loading people items...`);
       handleDataFetch('people');
     }
-
-    if (isLoaded) {
-      setAriaMessage(`people items loaded`);
-      firstItemRef.current?.focus();
-    }
   }, [handleDataFetch, isLoaded, isLoading, openItems, setAriaMessage]);
 
   return (
     <>
       <FlatTreeItem value="people" aria-level={1} aria-setsize={3} aria-posinset={1} itemType="branch">
-        <TreeItemLayout expandIcon={peopleTree.isLoading ? <Spinner size="tiny" /> : undefined}>People</TreeItemLayout>
+        <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>People</TreeItemLayout>
       </FlatTreeItem>
       {openItems.has('people') &&
-        peopleTree.value.map((person, index) => (
+        items?.map((person, index) => (
           <FlatTreeItem
             key={person.value}
             ref={index === 0 ? firstItemRef : null}
             parentValue="people"
             value={person.value}
             aria-level={2}
-            aria-setsize={peopleTree.value.length}
+            aria-setsize={items.length}
             aria-posinset={index + 1}
             itemType="leaf"
           >
@@ -117,22 +119,29 @@ const PeopleSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) =>
 };
 
 const PlanetsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) => {
-  const planetsTree = useQuery<Entity[]>([]);
-  const { isLoaded, isLoading } = planetsTree;
+  const { isLoaded, isLoading, query } = useQuery<Entity[]>([]);
+  const [items, setItems] = React.useState<Entity[]>([]);
   const firstItemRef = React.useRef<HTMLDivElement>(null);
 
   const handleDataFetch = React.useCallback(
     async (type: string) => {
-      planetsTree.query(async () => {
-        const json = await mockFetch(type);
-        return json.results.map<Entity>(entity => ({
-          value: `${type}/${entity.name}`,
-          name: entity.name,
-          itemType: 'leaf',
-        }));
-      });
+      query(
+        async () => {
+          const json = await mockFetch(type);
+          return json.results.map<Entity>(entity => ({
+            value: `${type}/${entity.name}`,
+            name: entity.name,
+            itemType: 'leaf',
+          }));
+        },
+        data => {
+          setItems(data);
+          setAriaMessage(`planets items loaded`);
+          firstItemRef.current?.focus();
+        },
+      );
     },
-    [planetsTree],
+    [query, setAriaMessage],
   );
 
   React.useEffect(() => {
@@ -140,29 +149,22 @@ const PlanetsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) =
       setAriaMessage(`loading planets items...`);
       handleDataFetch('planets');
     }
-
-    if (isLoaded) {
-      setAriaMessage(`planets items loaded`);
-      firstItemRef.current?.focus();
-    }
   }, [handleDataFetch, isLoaded, isLoading, openItems, setAriaMessage]);
 
   return (
     <>
       <FlatTreeItem value="planets" aria-level={1} aria-setsize={3} aria-posinset={2} itemType="branch">
-        <TreeItemLayout expandIcon={planetsTree.isLoading ? <Spinner size="tiny" /> : undefined}>
-          Planets
-        </TreeItemLayout>
+        <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>Planets</TreeItemLayout>
       </FlatTreeItem>
       {openItems.has('planets') &&
-        planetsTree.value.map((planet, index) => (
+        items.map((planet, index) => (
           <FlatTreeItem
             key={planet.value}
             ref={index === 0 ? firstItemRef : null}
             parentValue="planets"
             value={planet.value}
             aria-level={2}
-            aria-setsize={planetsTree.value.length}
+            aria-setsize={items.length}
             aria-posinset={index + 1}
             itemType="leaf"
           >
@@ -174,22 +176,29 @@ const PlanetsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) =
 };
 
 const StarshipsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) => {
-  const starshipsTree = useQuery<Entity[]>([]);
-  const { isLoaded, isLoading } = starshipsTree;
+  const { isLoaded, isLoading, query } = useQuery<Entity[]>([]);
+  const [items, setItems] = React.useState<Entity[]>([]);
   const firstItemRef = React.useRef<HTMLDivElement>(null);
 
   const handleDataFetch = React.useCallback(
     async (type: string) => {
-      starshipsTree.query(async () => {
-        const json = await mockFetch(type);
-        return json.results.map<Entity>(entity => ({
-          value: `${type}/${entity.name}`,
-          name: entity.name,
-          itemType: 'leaf',
-        }));
-      });
+      query(
+        async () => {
+          const json = await mockFetch(type);
+          return json.results.map<Entity>(entity => ({
+            value: `${type}/${entity.name}`,
+            name: entity.name,
+            itemType: 'leaf',
+          }));
+        },
+        data => {
+          setItems(data);
+          setAriaMessage(`starships items loaded`);
+          firstItemRef.current?.focus();
+        },
+      );
     },
-    [starshipsTree],
+    [query, setAriaMessage],
   );
 
   React.useEffect(() => {
@@ -197,29 +206,22 @@ const StarshipsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage })
       setAriaMessage(`loading starships items...`);
       handleDataFetch('starships');
     }
-
-    if (isLoaded) {
-      setAriaMessage(`starships items loaded`);
-      firstItemRef.current?.focus();
-    }
   }, [handleDataFetch, isLoaded, isLoading, openItems, setAriaMessage]);
 
   return (
     <>
       <FlatTreeItem value="starships" aria-level={1} aria-setsize={3} aria-posinset={3} itemType="branch">
-        <TreeItemLayout expandIcon={starshipsTree.isLoading ? <Spinner size="tiny" /> : undefined}>
-          Starships
-        </TreeItemLayout>
+        <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>Starships</TreeItemLayout>
       </FlatTreeItem>
       {openItems.has('starships') &&
-        starshipsTree.value.map((starship, index) => (
+        items.map((starship, index) => (
           <FlatTreeItem
             key={starship.value}
             ref={index === 0 ? firstItemRef : null}
             parentValue="starships"
             value={starship.value}
             aria-level={2}
-            aria-setsize={starshipsTree.value.length}
+            aria-setsize={items.length}
             aria-posinset={index + 1}
             itemType="leaf"
           >
@@ -236,10 +238,13 @@ const StarshipsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage })
  */
 function useQuery<Value>(initialValue: Value) {
   const [queryResult, setQueryResult] = React.useState({ value: initialValue, isLoading: false, isLoaded: false });
-  const query = (fn: () => Promise<Value> | Value) => {
+  const query = (fn: () => Promise<Value> | Value, onDone?: (data: Value) => void) => {
     setQueryResult(curr => ({ ...curr, isLoading: true }));
     Promise.resolve(fn()).then(nextValue => {
       setQueryResult({ value: nextValue, isLoaded: true, isLoading: false });
+      if (onDone) {
+        onDone(nextValue);
+      }
     });
   };
   return { ...queryResult, query } as const;
