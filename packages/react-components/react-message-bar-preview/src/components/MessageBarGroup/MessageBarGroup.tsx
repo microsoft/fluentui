@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useMessageBarGroup_unstable } from './useMessageBarGroup';
 import { renderMessageBarGroup_unstable } from './renderMessageBarGroup';
 import { useMessageBarGroupStyles_unstable } from './useMessageBarGroupStyles.styles';
@@ -12,6 +13,7 @@ export const MessageBarGroup: ForwardRefComponent<MessageBarGroupProps> = React.
   const state = useMessageBarGroup_unstable(props, ref);
 
   useMessageBarGroupStyles_unstable(state);
+  useCustomStyleHook_unstable('useMessageBarGroupStyles_unstable')(state);
   return renderMessageBarGroup_unstable(state);
 });
 

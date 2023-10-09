@@ -106,6 +106,11 @@ export type CustomStyleHooksContextValue = Partial<{
   useBreadcrumbButtonStyles_unstable: CustomStyleHook;
   useBreadcrumbItemStyles_unstable: CustomStyleHook;
   useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+  useMessageBarStyles_unstable: CustomStyleHook;
+  useMessageBarBodyStyles_unstable: CustomStyleHook;
+  useMessageBarTitleStyles_unstable: CustomStyleHook;
+  useMessageBarActionsStyles_unstable: CustomStyleHook;
+  useMessageBarGroupStyles_unstable: CustomStyleHook;
 }>;
 
 /**
