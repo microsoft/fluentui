@@ -3,19 +3,28 @@ import {
   FlatTree,
   FlatTreeItem,
   TreeItemLayout,
+  TreeItemValue,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
-  HeadlessFlatTreeItemProps,
-  useHeadlessFlatTree_unstable,
-  TreeItemValue,
+  Spinner,
+  shorthands,
+  makeStyles,
 } from '@fluentui/react-components';
-import { makeStyles, Spinner, shorthands } from '@fluentui/react-components';
 
 interface Result {
   results: { name: string }[];
 }
 
-type Entity = HeadlessFlatTreeItemProps & { name: string };
+interface Entity {
+  name: string;
+  value: string;
+  itemType: 'branch' | 'leaf';
+}
+
+interface SubtreeProps {
+  openItems: Set<TreeItemValue>;
+  setAriaMessage: (message: string) => void;
+}
 
 const useStyles = makeStyles({
   screenReadersOnly: {
@@ -30,109 +39,194 @@ const useStyles = makeStyles({
 });
 
 export const LazyLoading = () => {
-  const peopleTree = useQuery<Entity[]>([]);
-  const planetsTree = useQuery<Entity[]>([]);
-  const starshipsTree = useQuery<Entity[]>([]);
-  const trees = {
-    people: peopleTree,
-    planets: planetsTree,
-    starships: starshipsTree,
-  };
-
-  const tree = React.useMemo<Entity[]>(
-    () => [
-      {
-        name: 'People',
-        value: 'people',
-        itemType: 'branch',
-      },
-      ...peopleTree.value,
-      {
-        name: 'Planets',
-        value: 'planets',
-        itemType: 'branch',
-      },
-      ...planetsTree.value,
-      {
-        name: 'Starship',
-        value: 'starships',
-        itemType: 'branch',
-      },
-      ...starshipsTree.value,
-    ],
-    [peopleTree, planetsTree, starshipsTree],
-  );
-
+  const [openItems, setOpenItems] = React.useState<Set<TreeItemValue>>(() => new Set());
   const [ariaMessage, setAriaMessage] = React.useState('');
-  const itemToFocusRef = React.useRef<HTMLDivElement>(null);
-  const [itemToFocusValue, setItemToFocusValue] = React.useState<TreeItemValue>();
+  const styles = useStyles();
 
-  const handleOpenChange = async (_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    if (data.open) {
-      if (
-        (data.value === 'people' || data.value === 'planets' || data.value === 'starships') &&
-        !trees[data.value].isLoaded
-      ) {
-        setAriaMessage(`loading ${data.value} items...`);
+  const handleOpenChange = React.useCallback((_: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    setOpenItems(data.openItems);
+  }, []);
 
-        trees[data.value].query(
-          async () => {
-            const json = await mockFetch(data.value as string);
-            return json.results.map<Entity>(entity => ({
-              value: `${data.value}/${entity.name}`,
-              parentValue: data.value,
-              name: entity.name,
-            }));
-          },
-          (entities: Entity[]) => {
-            const firstItemValue = entities[0].value;
-            if (firstItemValue) {
-              setItemToFocusValue(firstItemValue);
-              setAriaMessage(`${data.value} items loaded`);
-            }
-          },
-        );
-      }
-    }
-  };
-
-  React.useEffect(() => {
-    if (itemToFocusRef.current) {
-      itemToFocusRef.current.focus();
-      setItemToFocusValue(undefined);
-    }
-  }, [itemToFocusValue]);
-
-  const flatTree = useHeadlessFlatTree_unstable(tree, { onOpenChange: handleOpenChange });
-  const treeProps = flatTree.getTreeProps();
   return (
     <>
-      <FlatTree {...treeProps} aria-label="Lazy Loading">
-        {Array.from(flatTree.items(), item => {
-          const { name, ...itemProps } = item.getTreeItemProps();
-          const { isLoading = false } = trees[item.value as 'people' | 'planets' | 'starships'] ?? {};
-          return (
-            <FlatTreeItem
-              key={item.value}
-              {...itemProps}
-              ref={item.value === itemToFocusValue ? itemToFocusRef : undefined}
-            >
-              <TreeItemLayout expandIcon={isLoading ? <Spinner size="tiny" /> : undefined}>{name}</TreeItemLayout>
-            </FlatTreeItem>
-          );
-        })}
+      <FlatTree openItems={openItems} onOpenChange={handleOpenChange} aria-label="Lazy Loading">
+        <PeopleSubtree openItems={openItems} setAriaMessage={setAriaMessage} />
+        <PlanetsSubtree openItems={openItems} setAriaMessage={setAriaMessage} />
+        <StarshipsSubtree openItems={openItems} setAriaMessage={setAriaMessage} />
       </FlatTree>
-      <AriaLive content={ariaMessage} />
+      <div aria-live="polite" aria-atomic="true" className={styles.screenReadersOnly}>
+        {ariaMessage}
+      </div>
     </>
   );
 };
 
-const AriaLive = ({ content }: { content: string | undefined }) => {
-  const styles = useStyles();
+const PeopleSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) => {
+  const peopleTree = useQuery<Entity[]>([]);
+  const { isLoaded, isLoading } = peopleTree;
+  const firstItemRef = React.useRef<HTMLDivElement>(null);
+
+  const handleDataFetch = React.useCallback(
+    async (type: string) => {
+      peopleTree.query(async () => {
+        const json = await mockFetch(type);
+        return json.results.map<Entity>(entity => ({
+          value: `${type}/${entity.name}`,
+          name: entity.name,
+          itemType: 'leaf',
+        }));
+      });
+    },
+    [peopleTree],
+  );
+
+  React.useEffect(() => {
+    if (openItems.has('people') && !isLoaded && !isLoading) {
+      setAriaMessage(`loading people items...`);
+      handleDataFetch('people');
+    }
+
+    if (isLoaded) {
+      setAriaMessage(`people items loaded`);
+      firstItemRef.current?.focus();
+    }
+  }, [handleDataFetch, isLoaded, isLoading, openItems, setAriaMessage]);
+
   return (
-    <div aria-live="polite" aria-atomic="true" className={styles.screenReadersOnly}>
-      {content}
-    </div>
+    <>
+      <FlatTreeItem value="people" aria-level={1} aria-setsize={3} aria-posinset={1} itemType="branch">
+        <TreeItemLayout expandIcon={peopleTree.isLoading ? <Spinner size="tiny" /> : undefined}>People</TreeItemLayout>
+      </FlatTreeItem>
+      {openItems.has('people') &&
+        peopleTree.value.map((person, index) => (
+          <FlatTreeItem
+            key={person.value}
+            ref={index === 0 ? firstItemRef : null}
+            parentValue="people"
+            value={person.value}
+            aria-level={2}
+            aria-setsize={peopleTree.value.length}
+            aria-posinset={index + 1}
+            itemType="leaf"
+          >
+            <TreeItemLayout>{person.name}</TreeItemLayout>
+          </FlatTreeItem>
+        ))}
+    </>
+  );
+};
+
+const PlanetsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) => {
+  const planetsTree = useQuery<Entity[]>([]);
+  const { isLoaded, isLoading } = planetsTree;
+  const firstItemRef = React.useRef<HTMLDivElement>(null);
+
+  const handleDataFetch = React.useCallback(
+    async (type: string) => {
+      planetsTree.query(async () => {
+        const json = await mockFetch(type);
+        return json.results.map<Entity>(entity => ({
+          value: `${type}/${entity.name}`,
+          name: entity.name,
+          itemType: 'leaf',
+        }));
+      });
+    },
+    [planetsTree],
+  );
+
+  React.useEffect(() => {
+    if (openItems.has('planets') && !isLoaded && !isLoading) {
+      setAriaMessage(`loading planets items...`);
+      handleDataFetch('planets');
+    }
+
+    if (isLoaded) {
+      setAriaMessage(`planets items loaded`);
+      firstItemRef.current?.focus();
+    }
+  }, [handleDataFetch, isLoaded, isLoading, openItems, setAriaMessage]);
+
+  return (
+    <>
+      <FlatTreeItem value="planets" aria-level={1} aria-setsize={3} aria-posinset={2} itemType="branch">
+        <TreeItemLayout expandIcon={planetsTree.isLoading ? <Spinner size="tiny" /> : undefined}>
+          Planets
+        </TreeItemLayout>
+      </FlatTreeItem>
+      {openItems.has('planets') &&
+        planetsTree.value.map((planet, index) => (
+          <FlatTreeItem
+            key={planet.value}
+            ref={index === 0 ? firstItemRef : null}
+            parentValue="planets"
+            value={planet.value}
+            aria-level={2}
+            aria-setsize={planetsTree.value.length}
+            aria-posinset={index + 1}
+            itemType="leaf"
+          >
+            <TreeItemLayout>{planet.name}</TreeItemLayout>
+          </FlatTreeItem>
+        ))}
+    </>
+  );
+};
+
+const StarshipsSubtree: React.FC<SubtreeProps> = ({ openItems, setAriaMessage }) => {
+  const starshipsTree = useQuery<Entity[]>([]);
+  const { isLoaded, isLoading } = starshipsTree;
+  const firstItemRef = React.useRef<HTMLDivElement>(null);
+
+  const handleDataFetch = React.useCallback(
+    async (type: string) => {
+      starshipsTree.query(async () => {
+        const json = await mockFetch(type);
+        return json.results.map<Entity>(entity => ({
+          value: `${type}/${entity.name}`,
+          name: entity.name,
+          itemType: 'leaf',
+        }));
+      });
+    },
+    [starshipsTree],
+  );
+
+  React.useEffect(() => {
+    if (openItems.has('starships') && !isLoaded && !isLoading) {
+      setAriaMessage(`loading starships items...`);
+      handleDataFetch('starships');
+    }
+
+    if (isLoaded) {
+      setAriaMessage(`starships items loaded`);
+      firstItemRef.current?.focus();
+    }
+  }, [handleDataFetch, isLoaded, isLoading, openItems, setAriaMessage]);
+
+  return (
+    <>
+      <FlatTreeItem value="starships" aria-level={1} aria-setsize={3} aria-posinset={3} itemType="branch">
+        <TreeItemLayout expandIcon={starshipsTree.isLoading ? <Spinner size="tiny" /> : undefined}>
+          Starships
+        </TreeItemLayout>
+      </FlatTreeItem>
+      {openItems.has('starships') &&
+        starshipsTree.value.map((starship, index) => (
+          <FlatTreeItem
+            key={starship.value}
+            ref={index === 0 ? firstItemRef : null}
+            parentValue="starships"
+            value={starship.value}
+            aria-level={2}
+            aria-setsize={starshipsTree.value.length}
+            aria-posinset={index + 1}
+            itemType="leaf"
+          >
+            <TreeItemLayout>{starship.name}</TreeItemLayout>
+          </FlatTreeItem>
+        ))}
+    </>
   );
 };
 
@@ -142,13 +236,10 @@ const AriaLive = ({ content }: { content: string | undefined }) => {
  */
 function useQuery<Value>(initialValue: Value) {
   const [queryResult, setQueryResult] = React.useState({ value: initialValue, isLoading: false, isLoaded: false });
-  const query = (fn: () => Promise<Value> | Value, onDone?: (data: Value) => void) => {
+  const query = (fn: () => Promise<Value> | Value) => {
     setQueryResult(curr => ({ ...curr, isLoading: true }));
     Promise.resolve(fn()).then(nextValue => {
       setQueryResult({ value: nextValue, isLoaded: true, isLoading: false });
-      if (onDone) {
-        onDone(nextValue);
-      }
     });
   };
   return { ...queryResult, query } as const;
