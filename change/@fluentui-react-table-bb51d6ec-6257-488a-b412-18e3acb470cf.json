@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: remove row focus background color ",
+  "packageName": "@fluentui/react-table",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
