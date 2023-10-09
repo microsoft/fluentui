@@ -39,6 +39,16 @@ describe('getDependencies', () => {
     });
   });
 
+  it('versions in optionalDependencies should not be included if code doesnt use them', () => {
+    const code = `
+      import { stuff } from 'dependency-other';
+    `;
+    const deps = getDependencies(code, {}, { dependency: '1.0.0' });
+
+    expect(deps).toEqual({
+      ['dependency-other']: 'latest',
+    });
+  });
   it('versions in optionalDependencies should win ', () => {
     const code = `
       import { stuff } from 'dependency';
@@ -61,7 +71,7 @@ describe('getDependencies', () => {
     });
   });
 
-  it('versions in requiredDependencies should win ', () => {
+  it('versions in requiredDependencies should be added if not present in config', () => {
     const code = `
       import { stuff } from 'dependency';
     `;

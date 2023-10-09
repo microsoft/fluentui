@@ -1,5 +1,4 @@
 import 'cypress-storybook/react';
-import * as dedent from 'dedent';
 import './docs-root.css';
 import { withLinks } from '@storybook/addon-links';
 
@@ -41,31 +40,18 @@ export const parameters = {
     // (@fluentui/babel-preset-storybook-full-source).
     transformSource: (snippet, story) => story.parameters.fullSource,
   },
-  exportToCodeSandbox: {
+  exportToSandbox: {
+    provider: 'codesandbox-browser',
+    bundler: 'cra',
     requiredDependencies: {
       // for React
       react: '^17',
       'react-dom': '^17',
-      // necessary when using typescript in CodeSandbox
-      'react-scripts': 'latest',
       // necessary for FluentProvider:
       '@fluentui/react-components': '^9.0.0',
     },
     optionalDependencies: {
       '@fluentui/react-icons': 'latest',
     },
-    indexTsx: dedent`
-          import * as ReactDOM from 'react-dom';
-          import { FluentProvider, webLightTheme } from '@fluentui/react-components';
-          import { STORY_NAME as Example } from './example';
-          //
-          // You can edit this example in "example.tsx".
-          //
-          ReactDOM.render(
-              <FluentProvider theme={webLightTheme}>
-                  <Example />
-              </FluentProvider>,
-              document.getElementById('root'),
-          );`,
   },
 };
