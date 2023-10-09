@@ -897,8 +897,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     circleId,
                     circleId2,
                     xAxisCalloutAccessibilityData,
-                    // x2,
-                    // y2
                   )}
                   onMouseMove={this._handleHover.bind(
                     this,
@@ -911,8 +909,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     circleId,
                     circleId2,
                     xAxisCalloutAccessibilityData,
-                    // x2,
-                    // y2
                   )}
                   onMouseOut={this._handleMouseOut}
                   stroke={lineColor}
