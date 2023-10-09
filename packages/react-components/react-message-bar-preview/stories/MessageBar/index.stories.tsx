@@ -1,4 +1,10 @@
-import { MessageBar, MessageBarGroup } from '@fluentui/react-message-bar-preview';
+import {
+  MessageBar,
+  MessageBarGroup,
+  MessageBarBody,
+  MessageBarTitle,
+  MessageBarActions,
+} from '@fluentui/react-message-bar-preview';
 
 import descriptionMd from './MessageBarDescription.md';
 import bestPracticesMd from './MessageBarBestPractices.md';
@@ -17,6 +23,9 @@ export default {
   component: MessageBar,
   subcomponents: {
     MessageBarGroup,
+    MessageBarBody,
+    MessageBarTitle,
+    MessageBarActions,
   },
   parameters: {
     docs: {
