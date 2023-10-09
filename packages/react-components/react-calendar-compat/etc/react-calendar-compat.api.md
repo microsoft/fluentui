@@ -4,6 +4,14 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
+// @public
+export const Calendar: React_2.FC<CalendarProps>;
+
+// @public (undocumented)
+export type CalendarProps = {};
+
 // (No @packageDocumentation comment for this package)
 
 ```
