@@ -1143,6 +1143,7 @@ export type {
   ISchemeNames,
   ISemanticColors,
   ISemanticTextColors,
+  IShadowDomStyle,
   ISpacing,
   IStyle,
   IStyleSet,

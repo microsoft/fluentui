@@ -1,12 +1,11 @@
 import * as React from 'react';
 import type { IIconProps } from '../../Icon';
 import type { ISelectableOption, ISelectableDroppableTextProps } from '../../SelectableOption';
-import type { IStyle, ITheme } from '../../Styling';
+import type { IShadowDomStyle, IStyle, ITheme } from '../../Styling';
 import type { IButtonStyles, IButtonProps } from '../../Button';
 import type { IRefObject, IRenderFunction } from '../../Utilities';
 import type { IComboBoxClassNames } from './ComboBox.classNames';
 import type { IAutofillProps } from '../../Autofill';
-import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory ComboBox}
@@ -305,7 +304,7 @@ export interface IOnRenderComboBoxLabelProps {
 /**
  * {@docCategory ComboBox}
  */
-export interface IComboBoxStyles {
+export interface IComboBoxStyles extends IShadowDomStyle {
   /**
    * Style for the container which has the ComboBox and the label.
    * (In most other components this would be called `root`.)
@@ -414,8 +413,6 @@ export interface IComboBoxStyles {
    * Styles for hidden screen reader text.
    */
   screenReaderText: IStyle;
-
-  __shadowConfig__?: ShadowConfig;
 }
 
 /**
@@ -432,6 +429,4 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
    * Styles for the ComboBox option text's wrapper.
    */
   optionTextWrapper: IStyle;
-
-  __shadowConfig__?: ShadowConfig;
 }

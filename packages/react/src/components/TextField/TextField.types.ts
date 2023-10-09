@@ -1,8 +1,7 @@
 import * as React from 'react';
-import type { IStyle, ITheme } from '../../Styling';
+import type { IShadowDomStyle, IStyle, ITheme } from '../../Styling';
 import type { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { IIconProps } from '../../Icon';
-import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory TextField}
@@ -337,7 +336,7 @@ export interface ITextFieldSubComponentStyles {
 /**
  * {@docCategory TextField}
  */
-export interface ITextFieldStyles {
+export interface ITextFieldStyles extends IShadowDomStyle {
   /**
    * Style for root element.
    */
@@ -403,8 +402,6 @@ export interface ITextFieldStyles {
    * Styling for reveal password icon
    */
   revealIcon: IStyle;
-
-  __shadowConfig__?: ShadowConfig;
 }
 
 /**
