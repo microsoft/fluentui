@@ -14,10 +14,9 @@ export function setRTL(isRTL: boolean): void {
  */
 export function getRTL(): boolean {
   if (_rtl === undefined) {
-    _rtl =
-      typeof document !== 'undefined' &&
-      !!document.documentElement &&
-      document.documentElement.getAttribute('dir') === 'rtl';
+    // eslint-disable-next-line no-restricted-globals
+    const doc = document;
+    _rtl = typeof doc !== 'undefined' && !!doc.documentElement && doc.documentElement.getAttribute('dir') === 'rtl';
   }
   return _rtl;
 }

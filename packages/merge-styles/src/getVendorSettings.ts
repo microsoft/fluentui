@@ -9,6 +9,7 @@ let _vendorSettings: IVendorSettings | undefined;
 
 export function getVendorSettings(): IVendorSettings {
   if (!_vendorSettings) {
+    // eslint-disable-next-line no-restricted-globals
     const doc = typeof document !== 'undefined' ? document : undefined;
     const nav = typeof navigator !== 'undefined' ? navigator : undefined;
     const userAgent = nav?.userAgent?.toLowerCase();

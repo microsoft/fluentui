@@ -1,3 +1,4 @@
+/* eslint no-restricted-globals: 0 */ // globals in stylesheets will be addressed in a separate PR
 import { IStyle } from './IStyle';
 
 export const InjectionMode = {
