@@ -7,9 +7,8 @@ import type { ISplitButtonClassNames } from './SplitButton/SplitButton.className
 import type { IRefObject, IRenderFunction, IComponentAs } from '../../Utilities';
 import type { IContextualMenuProps } from '../../ContextualMenu';
 import type { IIconProps } from '../../Icon';
-import type { IStyle, ITheme } from '../../Styling';
+import type { IShadowDomStyle, IStyle, ITheme } from '../../Styling';
 import type { IKeytipProps } from '../../Keytip';
-import { ShadowConfig } from '@fluentui/merge-styles';
 
 /**
  * {@docCategory Button}
@@ -373,7 +372,7 @@ export enum ButtonType {
 /**
  * {@docCategory Button}
  */
-export interface IButtonStyles {
+export interface IButtonStyles extends IShadowDomStyle {
   /**
    * Style for the root element in the default enabled, non-toggled state.
    */
@@ -650,6 +649,4 @@ export interface IButtonStyles {
    * Style override for the SplitButton when only primaryButton is in a disabled state
    */
   splitButtonMenuFocused?: IStyle;
-
-  __shadowConfig__?: ShadowConfig;
 }
