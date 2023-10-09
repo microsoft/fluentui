@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: adding checks for is inverted and using different colors accordingly on neutralForeground3 and 4 in the createV9Theme function.",
+  "packageName": "@fluentui/react-migration-v8-v9",
+  "email": "matejera@microsoft.com",
+  "dependentChangeType": "patch"
+}
