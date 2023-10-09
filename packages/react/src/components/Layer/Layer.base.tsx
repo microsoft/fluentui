@@ -128,7 +128,7 @@ export const LayerBase: React.FunctionComponent<ILayerProps> = React.forwardRef<
     // If a doc or host exists, it will remove and update layer parentNodes.
     const createLayerElement = () => {
       const doc = getDocument(rootRef.current);
-      const shadowRoot = (rootRef.current?.getRootNode() as ShadowRoot).host
+      const shadowRoot = (rootRef.current?.getRootNode() as ShadowRoot)?.host
         ? (rootRef?.current?.getRootNode() as ShadowRoot)
         : undefined;
 
