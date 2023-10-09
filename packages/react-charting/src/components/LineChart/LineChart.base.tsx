@@ -1135,30 +1135,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         )
         .attr('visibility', 'visibility')
         .attr('y2', `${lineHeight - this._yAxisScale(pointToHighlight.y)}`);
-      console.log(xOffset);
-      // const leftLineDist=Math.abs(mouseEvent.clientX-d3Select(`#${this._verticalLine}`).node().getBoundingClientRect().x);
-      // d3Select(`#${this._verticalLine}`)
-      // .attr('transform', () => `translate(${_this._xAxisScale(x2)}, ${_this._yAxisScale(y2)})`)
-      // .attr('visibility', 'visibility')
-      // .attr('y2', `${lineHeight - _this._yAxisScale(y2)}`);
-      // d3Select(`#${this._staticHighlightCircle}_${linenumber}`)
-      //   .attr('cx', `${this._xAxisScale(pointToHighlight.x)}`)
-      //   .attr('cy', `${this._yAxisScale(pointToHighlight.y)}`)
-      //   .attr('visibility', 'visibility');
-      // const rightLineDist=Math.abs(mouseEvent.clientX-d3Select(`#${this._verticalLine}`).node().getBoundingClientRect().x);
-      // console.log(leftLineDist,rightLineDist)
-      // if(leftLineDist<rightLineDist)
-      // {
-      //   d3Select(`#${this._staticHighlightCircle}_${linenumber}`)
-      //   .attr('cx', `${this._xAxisScale(pointToHighlight.x)}`)
-      //   .attr('cy', `${this._yAxisScale(pointToHighlight.y)}`)
-      //   .attr('visibility', 'visibility');
-      //   d3Select(`#${this._verticalLine}`)
-      //   .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
-      //   .attr('visibility', 'visibility')
-      //   .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
-      // }
-
       this.setState({
         nearestCircleToHighlight: pointToHighlight,
         isCalloutVisible: true,
@@ -1258,14 +1234,12 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
       const rightLineDist = Math.abs(
         mouseEvent.clientX - d3Select(`#${this._verticalLine}`).node().getBoundingClientRect().x,
       );
-      // console.log(leftLineDist, rightLineDist);
       if (leftLineDist < rightLineDist) {
         d3Select(`#${this._verticalLine}`)
           .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
           .attr('visibility', 'visibility')
           .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
       }
-      console.log(circleId, circleId2);
       if (this._uniqueCallOutID !== circleId || this._uniqueCallOutID !== circleId2) {
         if (leftLineDist < rightLineDist) {
           this._uniqueCallOutID = circleId;
