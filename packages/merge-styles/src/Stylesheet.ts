@@ -236,6 +236,7 @@ export class Stylesheet {
   public addAdoptableStyleSheet(key: string, sheet: CSSStyleSheet): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
+      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
     }
 
     if (!this._adoptableSheets.has(key)) {
@@ -249,6 +250,7 @@ export class Stylesheet {
   public getAdoptableStyleSheet(key: string): CSSStyleSheet {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
+      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
     }
 
     let sheet = this._adoptableSheets.get(key);
@@ -269,6 +271,7 @@ export class Stylesheet {
   public onAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
+      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
     }
 
     this._adoptableSheets.on('add-sheet', callback);
@@ -277,6 +280,7 @@ export class Stylesheet {
   public offAddConstructableStyleSheet(callback: EventHandler<CSSStyleSheet>): void {
     if (!this._adoptableSheets) {
       this._adoptableSheets = new EventMap();
+      // window.__DEBUG_SHEETS__ = this._adoptableSheets;
     }
 
     this._adoptableSheets.off('add-sheet', callback);

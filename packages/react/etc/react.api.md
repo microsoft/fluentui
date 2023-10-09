@@ -2170,7 +2170,7 @@ export interface IActivityItemProps extends React_2.AllHTMLAttributes<HTMLElemen
 }
 
 // @public (undocumented)
-export interface IActivityItemStyles {
+export interface IActivityItemStyles extends IShadowDomStyle {
     activityContent?: IStyle;
     activityPersona?: IStyle;
     activityText?: IStyle;
@@ -2725,9 +2725,7 @@ export interface IButtonProps extends React_2.AllHTMLAttributes<HTMLAnchorElemen
 }
 
 // @public (undocumented)
-export interface IButtonStyles {
-    // (undocumented)
-    __shadowConfig__?: ShadowConfig;
+export interface IButtonStyles extends IShadowDomStyle {
     description?: IStyle;
     descriptionChecked?: IStyle;
     descriptionDisabled?: IStyle;
@@ -3907,8 +3905,6 @@ export interface IComboBoxOptionClassNames {
 
 // @public (undocumented)
 export interface IComboBoxOptionStyles extends IButtonStyles {
-    // (undocumented)
-    __shadowConfig__?: ShadowConfig;
     optionText: IStyle;
     optionTextWrapper: IStyle;
 }
@@ -3963,9 +3959,7 @@ export interface IComboBoxState {
 }
 
 // @public (undocumented)
-export interface IComboBoxStyles {
-    // (undocumented)
-    __shadowConfig__?: ShadowConfig;
+export interface IComboBoxStyles extends IShadowDomStyle {
     callout: IStyle;
     container: IStyle;
     divider: IStyle;
@@ -8409,6 +8403,11 @@ export { ISettingsMap }
 export { IsFocusVisibleClassName }
 
 // @public (undocumented)
+export interface IShadowDomStyle {
+    __shadowConfig__?: ShadowConfig;
+}
+
+// @public (undocumented)
 export interface IShimmerCircle {
 }
 
@@ -8732,9 +8731,7 @@ export interface ISpinButtonStyleProps {
 }
 
 // @public (undocumented)
-export interface ISpinButtonStyles {
-    // (undocumented)
-    __shadowConfig__?: ShadowConfig;
+export interface ISpinButtonStyles extends IShadowDomStyle {
     arrowButtonsContainer: IStyle;
     icon: IStyle;
     input: IStyle;
@@ -9369,9 +9366,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pi
 };
 
 // @public (undocumented)
-export interface ITextFieldStyles {
-    // (undocumented)
-    __shadowConfig__?: ShadowConfig;
+export interface ITextFieldStyles extends IShadowDomStyle {
     description: IStyle;
     errorMessage: IStyle;
     field: IStyle;
