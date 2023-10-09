@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add support for shadow roots",
+  "packageName": "@fluentui/react-hooks",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
