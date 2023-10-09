@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: address lint for restricted globals",
+  "packageName": "@fluentui/merge-styles",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
