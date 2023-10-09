@@ -1,3 +1,4 @@
-export * from './WindowProvider';
+export { WindowContext, useWindow, useDocument, WindowProvider } from './WindowProvider';
+export type { WindowProviderProps } from './WindowProvider';
 
 import './version';
