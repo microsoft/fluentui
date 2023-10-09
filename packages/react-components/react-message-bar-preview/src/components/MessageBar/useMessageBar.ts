@@ -16,8 +16,8 @@ import { useMessageBarTransitionContext } from '../../contexts/messageBarTransit
  * @param ref - reference to root HTMLElement of MessageBar
  */
 export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLDivElement>): MessageBarState => {
-  const { layout = 'auto', intent = 'info', politeness } = props;
-  const computedPolitness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
+  const { layout = 'auto', intent = 'info', politeness, shape = 'rounded' } = props;
+  const computedPoliteness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
@@ -32,8 +32,8 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     const actionsMessage = actionsRef.current?.textContent;
 
     const message = [bodyMessage, actionsMessage].filter(Boolean).join(',');
-    announce(message, { polite: computedPolitness === 'polite', alert: computedPolitness === 'assertive' });
-  }, [bodyRef, actionsRef, announce, computedPolitness]);
+    announce(message, { polite: computedPoliteness === 'polite', alert: computedPoliteness === 'assertive' });
+  }, [bodyRef, actionsRef, announce, computedPoliteness]);
 
   return {
     components: {
@@ -61,5 +61,6 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     actionsRef,
     bodyRef,
     titleId,
+    shape,
   };
 };

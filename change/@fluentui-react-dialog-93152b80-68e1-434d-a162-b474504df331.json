@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps",
+  "comment": "react-dialog/chore: replace harcoded transparent to token",
   "packageName": "@fluentui/react-dialog",
   "email": "bernardo.sunderhus@gmail.com",
   "dependentChangeType": "patch"

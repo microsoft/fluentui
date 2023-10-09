@@ -1,4 +1,7 @@
-## Best practices
+<details>
+<summary>
+ Best Practices
+</summary>
 
 ### Do
 
@@ -10,6 +13,8 @@
 ### Don't
 
 - Use enter animations on page load
-- Use manual layout if possible - this is a built in feature
+- Use manual layout if possible - this is a built-in feature
 - Use long messages for content - keep content to under 100 characters
 - Customize announcement politeness - check with your a11y champ
+
+</details>

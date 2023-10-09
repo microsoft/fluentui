@@ -63,7 +63,7 @@ Reflow.parameters = {
     description: {
       story: [
         'The `MessageBar` will reflow by default once the body content wraps to a second line. This changes the layout',
-        'of the actions in the MessageBar. ',
+        'of the actions in the MessageBar.',
       ].join('\n'),
     },
   },

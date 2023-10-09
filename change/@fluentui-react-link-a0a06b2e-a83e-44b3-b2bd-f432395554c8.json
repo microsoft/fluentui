@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: adds style to remove default outline style",
-  "packageName": "@fluentui/react-link",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

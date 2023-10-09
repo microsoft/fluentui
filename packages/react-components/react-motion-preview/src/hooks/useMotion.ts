@@ -177,11 +177,11 @@ function useMotionPresence<Element extends HTMLElement>(
       ref,
       type,
       active,
-      canRender: type !== 'unmounted',
+      canRender: presence || type !== 'unmounted',
     }),
     // No need to add ref to the deps array as it is stable
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [active, type],
+    [active, type, presence],
   );
 }
 

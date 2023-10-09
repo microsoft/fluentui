@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useMessageBar_unstable } from './useMessageBar';
 import { renderMessageBar_unstable } from './renderMessageBar';
 import { useMessageBarStyles_unstable } from './useMessageBarStyles.styles';
@@ -13,6 +14,7 @@ export const MessageBar: ForwardRefComponent<MessageBarProps> = React.forwardRef
   const state = useMessageBar_unstable(props, ref);
 
   useMessageBarStyles_unstable(state);
+  useCustomStyleHook_unstable('useMessageBarStyles_unstable')(state);
   return renderMessageBar_unstable(state, useMessageBarContextValue_unstable(state));
 });
 

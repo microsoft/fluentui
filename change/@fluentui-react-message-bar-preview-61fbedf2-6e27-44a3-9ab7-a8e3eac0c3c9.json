@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: screenreader narration improvements",
+  "comment": "feat: Add custom style hook to MessageBar.",
   "packageName": "@fluentui/react-message-bar-preview",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
