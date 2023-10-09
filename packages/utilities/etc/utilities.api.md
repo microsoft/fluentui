@@ -811,7 +811,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // @public
-export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null): boolean;
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null, win?: Window): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name "ISerializableObject" should be prefixed with an underscore because the declaration is marked as @internal
 //
@@ -1228,7 +1228,7 @@ export function setWarningCallback(warningCallback?: (message: string) => void):
 export function shallowCompare<TA extends any, TB extends any>(a: TA, b: TB): boolean;
 
 // @public
-export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap', doc?: Document): boolean;
 
 // @public
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React_2.ComponentClass<TComponentProps> | React_2.FunctionComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React_2.FunctionComponent<TComponentProps>;

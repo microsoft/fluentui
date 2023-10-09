@@ -59,12 +59,14 @@ function raiseClickFromKeyboardEvent(target: Element, ev?: React.KeyboardEvent<H
       cancelable: ev?.cancelable,
     });
   } else {
+    // eslint-disable-next-line no-restricted-globals
     event = document.createEvent('MouseEvents');
     // eslint-disable-next-line deprecation/deprecation
     event.initMouseEvent(
       'click',
       ev ? ev.bubbles : false,
       ev ? ev.cancelable : false,
+      // eslint-disable-next-line no-restricted-globals
       window, // not using getWindow() since this can only be run client side
       0, // detail
       0, // screen x
@@ -363,7 +365,8 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
         this._activeElement &&
         elementContains(this._root.current, this._activeElement) &&
         isElementTabbable(this._activeElement) &&
-        (!bypassHiddenElements || isElementVisibleAndNotHidden(this._activeElement))
+        (!bypassHiddenElements ||
+          isElementVisibleAndNotHidden(this._activeElement, this._getDocument().defaultView ?? undefined))
       ) {
         this._activeElement.focus();
         return true;
@@ -1442,7 +1445,7 @@ export class FocusZone extends React.Component<IFocusZoneProps> implements IFocu
    * Returns true if the element is a descendant of the FocusZone through a React portal.
    */
   private _portalContainsElement(element: HTMLElement): boolean {
-    return element && !!this._root.current && portalContainsElement(element, this._root.current);
+    return element && !!this._root.current && portalContainsElement(element, this._root.current, this._getDocument());
   }
 
   private _getDocument(): Document {

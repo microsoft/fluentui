@@ -206,6 +206,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
   // Show Tooltip
   private _onTooltipMouseEnter = (ev: any): void => {
     const { overflowMode, delay } = this.props;
+    const doc = getDocumentEx(this.context);
 
     if (TooltipHostBase._currentVisibleTooltip && TooltipHostBase._currentVisibleTooltip !== this) {
       TooltipHostBase._currentVisibleTooltip.dismiss();
@@ -219,7 +220,7 @@ export class TooltipHostBase extends React.Component<ITooltipHostProps, ITooltip
       }
     }
 
-    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement())) {
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._getTargetElement(), doc)) {
       // Do not show tooltip when target is inside a portal relative to TooltipHost.
       return;
     }

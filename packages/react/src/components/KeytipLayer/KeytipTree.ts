@@ -167,7 +167,7 @@ export class KeytipTree {
 
     // Attempt to find the node that corresponds to the first visible/non-hidden element
     const matchingIndex = Array.from(potentialTargetElements).findIndex((element: HTMLElement) =>
-      isElementVisibleAndNotHidden(element),
+      isElementVisibleAndNotHidden(element, doc.defaultView ?? undefined),
     );
     if (matchingIndex !== -1) {
       return matchingNodes[matchingIndex];

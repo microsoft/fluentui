@@ -9,8 +9,11 @@ import { getDocument } from './getDocument';
  * @public
  */
 export function getFirstVisibleElementFromSelector(selector: string): Element | undefined {
-  const elements = getDocument()!.querySelectorAll(selector);
+  const doc = getDocument()!;
+  const elements = doc.querySelectorAll(selector);
 
   // Iterate across the elements that match the selector and return the first visible/non-hidden element
-  return Array.from(elements).find((element: HTMLElement) => isElementVisibleAndNotHidden(element));
+  return Array.from(elements).find((element: HTMLElement) =>
+    isElementVisibleAndNotHidden(element, doc.defaultView ?? undefined),
+  );
 }

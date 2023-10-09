@@ -1220,6 +1220,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    */
   // eslint-disable-next-line deprecation/deprecation
   private _onBlur = (event: React.FocusEvent<HTMLElement | Autofill | BaseButton | Button>): void => {
+    const doc = getDocumentEx(this.context);
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
     // it we are not really blurring from the whole comboBox
@@ -1230,7 +1231,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = getDocumentEx(this.context).activeElement as Element;
+      relatedTarget = doc.activeElement as Element;
     }
 
     if (relatedTarget) {
@@ -1238,7 +1239,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       const isBlurFromComboBoxMenu = this._comboBoxMenu.current?.contains(relatedTarget as HTMLElement);
       const isBlurFromComboBoxMenuAncestor =
         this._comboBoxMenu.current &&
-        findElementRecursive(this._comboBoxMenu.current, (element: HTMLElement) => element === relatedTarget);
+        findElementRecursive(this._comboBoxMenu.current, (element: HTMLElement) => element === relatedTarget, doc);
 
       if (isBlurFromComboBoxTitle || isBlurFromComboBoxMenu || isBlurFromComboBoxMenuAncestor) {
         if (
