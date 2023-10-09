@@ -17,7 +17,7 @@ export const menuItemClassNames: SlotClassNames<MenuItemSlots> = {
 };
 
 const useRootBaseStyles = makeResetStyles({
-  ...shorthands.borderRadius(tokens.borderRadiusMedium),
+  borderRadius: tokens.borderRadiusMedium,
   position: 'relative',
   color: tokens.colorNeutralForeground2,
   backgroundColor: tokens.colorNeutralBackground1,
