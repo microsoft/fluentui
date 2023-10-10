@@ -42,7 +42,6 @@ export function keyToDate(key: string): Date | undefined {
  * formatTimeString(date, true, true); // Returns "11:45:12 PM"
  */
 export function formatTimeString(date: Date, showSeconds: boolean = false, hour12: boolean = false): string {
-  // Define the formatting options based on the provided parameters
   const timeFormatOptions: Intl.DateTimeFormatOptions = {
     hour: 'numeric',
     minute: '2-digit',
@@ -53,7 +52,6 @@ export function formatTimeString(date: Date, showSeconds: boolean = false, hour1
     timeFormatOptions.second = '2-digit';
   }
 
-  // Get the formatted time string using the options
   let formattedTime = date.toLocaleTimeString([], timeFormatOptions);
 
   // Correct the representation of midnight in 24-hour format, if needed
