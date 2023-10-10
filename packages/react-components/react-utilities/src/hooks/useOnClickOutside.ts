@@ -44,7 +44,11 @@ const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, 
  * @internal
  * Utility to perform checks where a click/touch event was made outside a component
  */
-export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
+export const useOnClickOutside = (
+  options: UseOnClickOrScrollOutsideOptions,
+  // eslint-disable-next-line no-restricted-globals
+  win: Window = window,
+) => {
   const { refs, callback, element, disabled, disabledFocusOnIframe, contains = DEFAULT_CONTAINS } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
 
@@ -80,7 +84,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     // Store the current event to avoid triggering handlers immediately
     // Note this depends on a deprecated but extremely well supported quirk of the web platform
     // https://github.com/facebook/react/issues/20074
-    let currentEvent = getWindowEvent(window);
+    let currentEvent = getWindowEvent(win);
 
     const conditionalHandler = (event: MouseEvent | TouchEvent) => {
       // Skip if this event is the same as the one running when we added the handlers
@@ -99,7 +103,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     element?.addEventListener('mousedown', handleMouseDown, true);
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
-    timeoutId.current = window.setTimeout(() => {
+    timeoutId.current = win?.setTimeout(() => {
       currentEvent = undefined;
     }, 1);
 
@@ -109,13 +113,13 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
       element?.removeEventListener('contextmenu', conditionalHandler, true);
       element?.removeEventListener('mousedown', handleMouseDown, true);
 
-      clearTimeout(timeoutId.current);
+      win?.clearTimeout(timeoutId.current);
       currentEvent = undefined;
     };
-  }, [listener, element, disabled, handleMouseDown]);
+  }, [listener, element, disabled, handleMouseDown, win]);
 };
 
-const getWindowEvent = (target: Node | Window): Event | undefined => {
+const getWindowEvent = (target: Node | Window | undefined): Event | undefined => {
   if (target) {
     if (typeof (target as Window).window === 'object' && (target as Window).window === target) {
       // eslint-disable-next-line deprecation/deprecation

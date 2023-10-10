@@ -354,7 +354,7 @@ export type UseOnClickOrScrollOutsideOptions = {
 };
 
 // @internal
-export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
+export const useOnClickOutside: (options: UseOnClickOrScrollOutsideOptions, win?: Window) => void;
 
 // @internal
 export const useOnScrollOutside: (options: UseOnClickOrScrollOutsideOptions) => void;
