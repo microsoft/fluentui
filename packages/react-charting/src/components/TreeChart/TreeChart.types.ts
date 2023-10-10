@@ -1,6 +1,11 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IMargins } from '../../types/index';
 
+/**
+ * ITreeChartDataPoint interface for Treechart component.
+ * {@docCategory TreeChart}
+ */
 export interface ITreeChartDataPoint {
   /**
    * Node main text
@@ -78,10 +83,13 @@ export interface ITreeProps {
    * * @default 700
    */
   height?: number;
+
   /**
-   * Margin for the SVG tree chart
+   * Margins for the chart
+   * @default `{ top: 30, bottom: 30, left: 50, right: 20 }`
+   * To avoid edge cuttings to the chart, we recommend you use default values or greater then default values
    */
-  marign?: { left: number; right: number; top: number; bottom: number };
+  margins?: IMargins;
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */

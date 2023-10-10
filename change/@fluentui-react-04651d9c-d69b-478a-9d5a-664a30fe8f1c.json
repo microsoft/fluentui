@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update ensuresuggestionmodel to use passed object ariaLabel property for generated suggestionmodel aria label override",
-  "packageName": "@fluentui/react",
-  "email": "daneuber@microsoft.com",
-  "dependentChangeType": "patch"
-}

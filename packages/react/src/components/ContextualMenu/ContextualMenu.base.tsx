@@ -21,6 +21,8 @@ import {
   getPropsWithDefaults,
   getDocument,
   FocusRects,
+  IComponentAs,
+  composeComponentAs,
 } from '../../Utilities';
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { Callout } from '../../Callout';
@@ -29,6 +31,7 @@ import {
   ContextualMenuSplitButton,
   ContextualMenuButton,
   ContextualMenuAnchor,
+  IContextualMenuItemWrapperProps,
 } from './ContextualMenuItemWrapper/index';
 import { concatStyleSetsWithProps } from '../../Styling';
 import { getItemStyles } from './ContextualMenu.classNames';
@@ -56,7 +59,11 @@ import type { IMenuItemClassNames, IContextualMenuClassNames } from './Contextua
 import type { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import type { ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
 import type { IProcessedStyleSet } from '../../Styling';
-import type { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import type {
+  IContextualMenuItemProps,
+  IContextualMenuItemStyleProps,
+  IContextualMenuItemStyles,
+} from './ContextualMenuItem.types';
 import type { IPopupRestoreFocusParams } from '../../Popup';
 
 const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
@@ -1095,12 +1102,27 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       } as const;
 
       if (item.href) {
-        return <ContextualMenuAnchor {...commonProps} onItemClick={onAnchorClick} />;
+        let ContextualMenuAnchorAs: IComponentAs<IContextualMenuItemWrapperProps> = ContextualMenuAnchor;
+
+        if (item.contextualMenuItemWrapperAs) {
+          ContextualMenuAnchorAs = composeComponentAs(item.contextualMenuItemWrapperAs, ContextualMenuAnchorAs);
+        }
+
+        return <ContextualMenuAnchorAs {...commonProps} onItemClick={onAnchorClick} />;
       }
 
       if (item.split && hasSubmenu(item)) {
+        let ContextualMenuSplitButtonAs: IComponentAs<IContextualMenuItemWrapperProps> = ContextualMenuSplitButton;
+
+        if (item.contextualMenuItemWrapperAs) {
+          ContextualMenuSplitButtonAs = composeComponentAs(
+            item.contextualMenuItemWrapperAs,
+            ContextualMenuSplitButtonAs,
+          );
+        }
+
         return (
-          <ContextualMenuSplitButton
+          <ContextualMenuSplitButtonAs
             {...commonProps}
             onItemClick={onItemClick}
             onItemClickBase={onItemClickBase}
@@ -1109,7 +1131,13 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
         );
       }
 
-      return <ContextualMenuButton {...commonProps} onItemClick={onItemClick} onItemClickBase={onItemClickBase} />;
+      let ContextualMenuButtonAs: IComponentAs<IContextualMenuItemWrapperProps> = ContextualMenuButton;
+
+      if (item.contextualMenuItemWrapperAs) {
+        ContextualMenuButtonAs = composeComponentAs(item.contextualMenuItemWrapperAs, ContextualMenuButtonAs);
+      }
+
+      return <ContextualMenuButtonAs {...commonProps} onItemClick={onItemClick} onItemClickBase={onItemClickBase} />;
     };
 
     const renderHeaderMenuItem = (
@@ -1122,7 +1150,16 @@ export const ContextualMenuBase: React.FunctionComponent<IContextualMenuProps> =
       hasCheckmarks: boolean,
       hasIcons: boolean,
     ): React.ReactNode => {
-      const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = props;
+      let ChildrenRenderer: IComponentAs<IContextualMenuItemProps> = ContextualMenuItem;
+
+      if (item.contextualMenuItemAs) {
+        ChildrenRenderer = composeComponentAs(item.contextualMenuItemAs, ChildrenRenderer);
+      }
+
+      if (props.contextualMenuItemAs) {
+        ChildrenRenderer = composeComponentAs(props.contextualMenuItemAs, ChildrenRenderer);
+      }
+
       const { itemProps, id } = item;
       const divHtmlProperties =
         itemProps && getNativeProps<React.HTMLAttributes<HTMLDivElement>>(itemProps, divProperties);

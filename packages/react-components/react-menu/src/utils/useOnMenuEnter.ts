@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useEventCallback } from '@fluentui/react-utilities';
-import { elementContains } from '@fluentui/react-portal';
+import { useEventCallback, elementContains } from '@fluentui/react-utilities';
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
 /**

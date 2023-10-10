@@ -2,6 +2,412 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 09 Oct 2023 20:45:41 GMT",
+      "tag": "@fluentui/react-components_v9.34.2",
+      "version": "9.34.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "a7cc521cea9413ee1739492a65dde3b35c30d60f",
+            "comment": "react-dialog/chore: replace harcoded transparent to token"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f2a882cedb19f177396e960079a3c6b9a2e7c64d",
+            "comment": "fix: MenuSplitGroup styles should target MenuItems"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add custom style hook to MessageBar."
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "8eee0cd4867ef5a44628bc7b7bf5f6a41b2a6dba",
+            "comment": "fix: sync internal value of canRender with presence"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "53f8d9c7e4f4c76a81194918a76d537eced78517",
+            "comment": "fix: Add zIndex=1 to PopoverSurface when rendering inline to avoid elements positioned relative to render on top of it."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "patch: update types for custom styles hook context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "1dae948ae2b74fb25bc63817f1cd0c42ffe73f85",
+            "comment": "fix(useMeasureElement): Should not remove parent element"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4",
+            "comment": "fix: remove row focus background color "
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "49f0630d6bdf94eadc671ac9fae4805e0a9df1ab",
+            "comment": "chore: add e2e test for useOnScrollOutside"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "fd51d508488549b816c5d7d0d3f89b2bac2b1065",
+            "comment": "feat: make dialog slot internal to be used for composition only"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "77070241677c9cea1de509948ffa5d999050c959",
+            "comment": "fix: Use caption 1 when size is small or medium."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "60a911e66db784521a35c1e1ac0362a3f2d8169f",
+            "comment": "feat: Add shape prop to MessageBar"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add MessageBar types to custom style hook context"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "93d4ee6dd801b672ade6ce41345cfbd9010af01a",
+            "comment": "chore: fix typos"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Oct 2023 15:25:29 GMT",
+      "tag": "@fluentui/react-components_v9.34.1",
+      "version": "9.34.1",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-alert",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          }
+        ],
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "b3a0fb9ea16298ba5553c7338cb9ec55fd5ef66b",
+            "comment": "feat: register items via context"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "a57604cac122983e263313ac3794d9f63c44e63f",
+            "comment": "feat: create useMotionClassNames hook"
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "25efb3d7d63f03a754f4a490175e24fec9b32ad6",
+            "comment": "chore: re-exports DialogSurface context types and hooks"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "a4410f44533c70f69f53c4985d2e72f4c41d874e",
+            "comment": "bugfix: removes context hooks invocations from styles hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "25efb3d7d63f03a754f4a490175e24fec9b32ad6",
+            "comment": "chore: exports DialogSurface context types and hooks"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "face7fef2060504eb2c5f27c9c7b1de1ff6cab76",
+            "comment": "chore: adds style to remove default outline style"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "f61b2b14b6daf39bb3c2da1909a4cfce94c73845",
+            "comment": "fix: screenreader narration improvements"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-migration-v0-v9",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-positioning",
+            "commit": "401ff6d9af9536b24ab3c52c658127d19706e030",
+            "comment": "fix: Consider all parents as scroll parents"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "1c0919a13a533014b70d6da64500f6bfe2ff14b3",
+            "comment": "fix(useTableColumnSizing): Removes the measuring div and measures parent"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "face7fef2060504eb2c5f27c9c7b1de1ff6cab76",
+            "comment": "chore: adds comments on createCustomFocusIndicatorStyle to explain that the default outline style is not removed"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tags",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toast",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-toolbar",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "86dd76990e3da5af1f2b6b04a3aec46141d5a653",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "f9ef593dd07abb0341e7be09f60cb841d577135d",
+            "comment": "bugfix: ensure TreeItem emits events properly"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d",
+            "comment": "Revert fix: useOnScrollOutside should invoke callback on dragging scrollbar"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 08:45:45 GMT",
+      "tag": "@fluentui/react-components_v9.34.0",
+      "version": "9.34.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "764314f0644f7de360536a955442c06470406c5b",
+            "comment": "Fix: Button focus borders were extending past bounding box causing overlap, focus border is now inset"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "44fc4425708d04018dbfa0875f453df324068fd7",
+            "comment": "fix: Icon in disabled Button shouldn't change color on hover or pressed."
+          },
+          {
+            "author": "gcox@microsoft.com",
+            "package": "@fluentui/react-progress",
+            "commit": "e0d871e6236b9ef86b8566daf7c8ba61a7325b1f",
+            "comment": "fix: Updated slots to be required in ProgressBarState"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "eb4533eee19eba7b7177e9938e5c5fd642f0e691",
+            "comment": "chore: replace makeStyles with makeResetStyles"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3b210c90f667620c54a8b85b99bf33888afa1f57",
+            "comment": "chore: delegate focus outline to layout components"
+          }
+        ],
+        "minor": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "f61033d77d6852838c580bfa7379d026128c2dbb",
+            "comment": "feat: exports getIntrinsicElementProps method"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "e81fd717e06cab9d563e32a721fdf07346d084f9",
+            "comment": "feat: release Tag component"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "b93332889af6fc14d25bcfe50ed0c56d988c10f8",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags",
+            "commit": "e81fd717e06cab9d563e32a721fdf07346d084f9",
+            "comment": "feat: initial release"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "f61033d77d6852838c580bfa7379d026128c2dbb",
+            "comment": "feat: creates getIntrinsicElementProps to replace getNativeElementProps on slots creation"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 02 Oct 2023 08:56:03 GMT",
+      "tag": "@fluentui/react-components_v9.33.0",
+      "version": "9.33.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "825527266f96ba80b865c072af9889360573b887",
+            "comment": "fix: exported BreadcrumbProvider and useBreadcrumbContext"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "03466e42548781a9f80a3859c13eda0e8bd33a6b",
+            "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "b7c4075ba6978c8435ce9942f6f04179a2f3be33",
+            "comment": "feat: export SubtreeContext from @fluentui/react-tree"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "bfa0ec8c423bc3d44b41c28d543c6bdabde3c468",
+            "comment": "feat: export useFluentProviderThemeStyleTag"
+          },
+          {
+            "author": "msnyder@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "d58a480cbe6de091979c053daaa1c4853a734498",
+            "comment": "feat; Add optional parameter to Table column renderHeaderCell callback"
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-tags-preview",
+            "commit": "6e692ab6be8e4169807a15ec1d2787cd29e64715",
+            "comment": "chore: properly type ref in state hook"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "b7c4075ba6978c8435ce9942f6f04179a2f3be33",
+            "comment": "feat: creates SubtreeContext"
+          }
+        ],
+        "none": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "d54dc8a1c10f8123413fe018e607cee9cffe2199",
+            "comment": "docs: Adding example of how to pass on click to primaryActionButton slot in the Default story for SplitButton."
+          }
+        ],
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-portal-compat",
+            "commit": "18ddec93bdb85a009bc1392058c52b2ea336340e",
+            "comment": "fix: handle multiple classes in PortalCompatProvider"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "03466e42548781a9f80a3859c13eda0e8bd33a6b",
+            "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "03466e42548781a9f80a3859c13eda0e8bd33a6b",
+            "comment": "feat: add custom styling hooks for Breadcrumb component and its sub-components"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Sep 2023 17:49:00 GMT",
       "tag": "@fluentui/react-components_v9.32.3",
       "version": "9.32.3",

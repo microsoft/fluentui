@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: MessageBarActions should not overflow into grid padding",
+  "packageName": "@fluentui/react-message-bar-preview",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

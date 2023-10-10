@@ -182,9 +182,7 @@ const getTooltipContent = (breadcrumbItems: readonly Item[] | undefined) => {
     return (
       <>
         {acc}
-        {arr[0].item !== initialValue.item && (
-          <BreadcrumbDivider style={{ display: 'inline', verticalAlign: 'middle' }} />
-        )}
+        {arr[0].item !== initialValue.item && ' > '}
         {initialValue.item}
       </>
     );
