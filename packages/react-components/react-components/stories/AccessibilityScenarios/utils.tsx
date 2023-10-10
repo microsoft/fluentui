@@ -30,6 +30,7 @@ export const BackLink = () => <ScenariosListLink>Go back to main menu</Scenarios
 
 export const Scenario: React.FunctionComponent<{ pageTitle: string }> = ({ pageTitle, children }) => {
   React.useEffect(() => {
+    // eslint-disable-next-line no-restricted-globals
     document.title = pageTitle + APP_TITLE_SEPARATOR + APP_TITLE;
   }, [pageTitle]);
 

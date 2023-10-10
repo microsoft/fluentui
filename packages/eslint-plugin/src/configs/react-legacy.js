@@ -15,7 +15,11 @@ module.exports = {
   overrides: [
     {
       // Test overrides
-      files: [...configHelpers.testFiles],
+      files: [
+        ...configHelpers.testFiles,
+        '**/packages/react-charting/**/*.{ts,tsx}',
+        '**/packages/react-experiments/**/*.{ts,tsx}',
+      ],
       rules: {
         'no-restricted-globals': 'off',
         'react/jsx-no-bind': 'off',
