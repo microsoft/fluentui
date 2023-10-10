@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Thu, 05 Oct 2023 15:25:35 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2023 20:45:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.33)
+
+Mon, 09 Oct 2023 20:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.32..@fluentui/react-drawer_v9.0.0-beta.33)
+
+### Changes
+
+- feat: make dialog slot internal to be used for composition only ([PR #29392](https://github.com/microsoft/fluentui/pull/29392) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-dialog to v9.7.7 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-motion-preview to v0.3.1 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.10.0 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-tabster to v9.13.5 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
 
 ## [9.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.32)
 

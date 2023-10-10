@@ -15,11 +15,12 @@ const useRootBaseStyles = makeResetStyles({
   ...shorthands.gridArea('secondaryActions'),
   display: 'flex',
   columnGap: tokens.spacingHorizontalM,
-  marginRight: tokens.spacingHorizontalM,
+  paddingRight: tokens.spacingHorizontalM,
 });
 
 const useContainerActionBaseStyles = makeResetStyles({
   ...shorthands.gridArea('actions'),
+  paddingRight: tokens.spacingHorizontalM,
 });
 
 const useMultilineStyles = makeStyles({
@@ -28,6 +29,7 @@ const useMultilineStyles = makeStyles({
     marginTop: tokens.spacingVerticalMNudge,
     marginBottom: tokens.spacingVerticalS,
     marginRight: '0px',
+    paddingRight: tokens.spacingVerticalM,
   },
 });
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "change for reducing width and height for tree chart such that it fits the doc site",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}

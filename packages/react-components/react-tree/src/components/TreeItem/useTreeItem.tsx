@@ -1,7 +1,13 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getIntrinsicElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
-import { elementContains } from '@fluentui/react-portal';
+import {
+  getIntrinsicElementProps,
+  useId,
+  useMergedRefs,
+  useEventCallback,
+  slot,
+  elementContains,
+} from '@fluentui/react-utilities';
 import type { TreeItemProps, TreeItemState } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';

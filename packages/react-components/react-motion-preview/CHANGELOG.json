@@ -2,6 +2,39 @@
   "name": "@fluentui/react-motion-preview",
   "entries": [
     {
+      "date": "Mon, 09 Oct 2023 20:45:42 GMT",
+      "tag": "@fluentui/react-motion-preview_v0.3.1",
+      "version": "0.3.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "8eee0cd4867ef5a44628bc7b7bf5f6a41b2a6dba",
+            "comment": "fix: sync internal value of canRender with presence"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.15",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.10.0",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-motion-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Oct 2023 15:25:31 GMT",
       "tag": "@fluentui/react-motion-preview_v0.3.0",
       "version": "0.3.0",

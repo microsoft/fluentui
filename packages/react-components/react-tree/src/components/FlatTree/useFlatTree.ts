@@ -11,16 +11,17 @@ import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useSubtree } from '../../hooks/useSubtree';
 import { ImmutableSet } from '../../utils/ImmutableSet';
 import { ImmutableMap } from '../../utils/ImmutableMap';
+import { SubtreeContext } from '../../contexts/subtreeContext';
 
 export const useFlatTree_unstable: (props: FlatTreeProps, ref: React.Ref<HTMLElement>) => FlatTreeState = (
   props,
   ref,
 ) => {
-  const level = useTreeContext_unstable(ctx => ctx.level);
+  const isRoot = React.useContext(SubtreeContext) === undefined;
   // as level is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return level > 1 ? useSubFlatTree(props, ref) : useRootFlatTree(props, ref);
+  return isRoot ? useRootFlatTree(props, ref) : useSubFlatTree(props, ref);
 };
 
 function useRootFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): FlatTreeState {
@@ -60,6 +61,13 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
       @fluentui/react-tree [useFlatTree]:
       Subtrees are not allowed in a FlatTree!
       You cannot use a <FlatTree> component inside of another <FlatTree> component.
+    `);
+  }
+  if (useTreeContext_unstable(ctx => ctx.treeType) === 'nested' && process.env.NODE_ENV === 'development') {
+    // eslint-disable-next-line no-console
+    console.error(/* #__DE-INDENT__ */ `
+      @fluentui/react-tree [useFlatTree]:
+      Error: <FlatTree> component cannot be used inside of a nested <Tree> component and vice versa.
     `);
   }
   return {

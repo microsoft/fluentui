@@ -7,8 +7,8 @@ import {
   slot,
   useMergedRefs,
   isHTMLElement,
+  elementContains,
 } from '@fluentui/react-utilities';
-import { elementContains } from '@fluentui/react-portal';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';

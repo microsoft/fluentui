@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "patch: update types for custom styles hook context",
-  "packageName": "@fluentui/react-provider",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix(useMeasureElement): Should not remove parent element",
-  "packageName": "@fluentui/react-table",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

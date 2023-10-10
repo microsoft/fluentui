@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Thu, 05 Oct 2023 15:25:34 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2023 20:45:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.14.2)
+
+Mon, 09 Oct 2023 20:45:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.14.1..@fluentui/react-utilities_v9.14.2)
+
+### Patches
+
+- chore: add e2e test for useOnScrollOutside ([PR #29413](https://github.com/microsoft/fluentui/pull/29413) by yuanboxue@microsoft.com)
 
 ## [9.14.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.14.1)
 
