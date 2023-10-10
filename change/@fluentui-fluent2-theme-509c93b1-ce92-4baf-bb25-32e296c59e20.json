@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "[BUG] Fix button focus bleeding into outside bounding box",
+  "comment": "fix: Button focus bleeding into outside bounding box",
   "packageName": "@fluentui/fluent2-theme",
   "email": "mifraser@microsoft.com",
   "dependentChangeType": "patch"
