@@ -61,12 +61,19 @@ export class EventGroup {
    *  which may lead to unexpected behavior if it differs from the defaults.
    *
    */
-  public static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined {
+  public static raise(
+    target: any,
+    eventName: string,
+    eventArgs?: any,
+    bubbleEvent?: boolean,
+    // eslint-disable-next-line no-restricted-globals
+    doc: Document = document,
+  ): boolean | undefined {
     let retVal;
 
     if (EventGroup._isElement(target)) {
-      if (typeof document !== 'undefined' && document.createEvent) {
-        let ev = document.createEvent('HTMLEvents');
+      if (typeof doc !== 'undefined' && doc.createEvent) {
+        let ev = doc.createEvent('HTMLEvents');
 
         // eslint-disable-next-line deprecation/deprecation
         ev.initEvent(eventName, bubbleEvent || false, true);
@@ -74,9 +81,9 @@ export class EventGroup {
         assign(ev, eventArgs);
 
         retVal = target.dispatchEvent(ev);
-      } else if (typeof document !== 'undefined' && (document as any).createEventObject) {
+      } else if (typeof doc !== 'undefined' && (doc as any).createEventObject) {
         // IE8
-        let evObj = (document as any).createEventObject(eventArgs);
+        let evObj = (doc as any).createEventObject(eventArgs);
         // cannot set cancelBubble on evObj, fireEvent will overwrite it
         target.fireEvent('on' + eventName, evObj);
       }

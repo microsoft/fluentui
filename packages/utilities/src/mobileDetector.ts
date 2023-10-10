@@ -3,8 +3,10 @@
  * Used to determine whether iOS-specific behavior should be applied.
  */
 export const isIOS = (): boolean => {
-  if (!window || !window.navigator || !window.navigator.userAgent) {
+  // eslint-disable-next-line no-restricted-globals
+  const win = window;
+  if (!win || !win.navigator || !win.navigator.userAgent) {
     return false;
   }
-  return /iPad|iPhone|iPod/i.test(window.navigator.userAgent);
+  return /iPad|iPhone|iPod/i.test(win.navigator.userAgent);
 };

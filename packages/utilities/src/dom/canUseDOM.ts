@@ -2,12 +2,14 @@
  * Verifies if an application can use DOM.
  */
 export function canUseDOM(): boolean {
+  // eslint-disable-next-line no-restricted-globals
+  const win = window;
   return (
-    typeof window !== 'undefined' &&
+    typeof win !== 'undefined' &&
     !!(
-      window.document &&
+      win.document &&
       // eslint-disable-next-line deprecation/deprecation
-      window.document.createElement
+      win.document.createElement
     )
   );
 }

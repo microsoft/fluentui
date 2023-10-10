@@ -26,7 +26,11 @@ export class AutoScroll {
   private _isVerticalScroll!: boolean;
   private _timeoutId?: number;
 
-  constructor(element: HTMLElement) {
+  constructor(
+    element: HTMLElement,
+    // eslint-disable-next-line no-restricted-globals
+    win: Window = window,
+  ) {
     this._events = new EventGroup(this);
     this._scrollableParent = findScrollableParent(element) as HTMLElement;
 
@@ -34,13 +38,13 @@ export class AutoScroll {
     this._scrollRect = getRect(this._scrollableParent);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (this._scrollableParent === (window as any)) {
-      this._scrollableParent = document.body;
+    if (this._scrollableParent === (win as any)) {
+      this._scrollableParent = win.document.body;
     }
 
     if (this._scrollableParent) {
-      this._events.on(window, 'mousemove', this._onMouseMove, true);
-      this._events.on(window, 'touchmove', this._onTouchMove, true);
+      this._events.on(win, 'mousemove', this._onMouseMove, true);
+      this._events.on(win, 'touchmove', this._onTouchMove, true);
     }
   }
 

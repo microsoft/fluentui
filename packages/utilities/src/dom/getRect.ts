@@ -5,17 +5,21 @@ import type { IRectangle } from '../IRectangle';
  *
  * @public
  */
-export function getRect(element: HTMLElement | Window | null): IRectangle | undefined {
+export function getRect(
+  element: HTMLElement | Window | null,
+  // eslint-disable-next-line no-restricted-globals
+  win: Window = window,
+): IRectangle | undefined {
   let rect: IRectangle | undefined;
   if (element) {
-    if (element === window) {
+    if (element === win) {
       rect = {
         left: 0,
         top: 0,
-        width: window.innerWidth,
-        height: window.innerHeight,
-        right: window.innerWidth,
-        bottom: window.innerHeight,
+        width: win.innerWidth,
+        height: win.innerHeight,
+        right: win.innerWidth,
+        bottom: win.innerHeight,
       };
     } else if ((element as { getBoundingClientRect?: unknown }).getBoundingClientRect) {
       rect = (element as HTMLElement).getBoundingClientRect();

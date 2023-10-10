@@ -87,7 +87,7 @@ export const audioProperties: Record<string, number>;
 
 // @public
 export class AutoScroll {
-    constructor(element: HTMLElement);
+    constructor(element: HTMLElement, win?: Window);
     // (undocumented)
     dispose(): void;
 }
@@ -241,7 +241,7 @@ export class EventGroup {
     onAll(target: any, events: {
         [key: string]: (args?: any) => void;
     }, useCapture?: boolean): void;
-    static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
+    static raise(target: any, eventName: string, eventArgs?: any, bubbleEvent?: boolean, doc?: Document): boolean | undefined;
     raise(eventName: string, eventArgs?: any, bubbleEvent?: boolean): boolean | undefined;
     // (undocumented)
     static stopPropagation(event: any): void;
@@ -375,7 +375,7 @@ export function getPreviousElement(rootElement: HTMLElement, currentElement: HTM
 export function getPropsWithDefaults<TProps extends {}>(defaultProps: Partial<TProps>, propsWithoutDefaults: TProps): TProps;
 
 // @public
-export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
+export function getRect(element: HTMLElement | Window | null, win?: Window): IRectangle | undefined;
 
 // @public @deprecated (undocumented)
 export function getResourceUrl(url: string): string;
@@ -391,7 +391,7 @@ export function getRTLSafeKeyCode(key: number, theme?: {
 }): number;
 
 // @public
-export function getScrollbarWidth(): number;
+export function getScrollbarWidth(doc?: Document): number;
 
 export { getVirtualParent }
 
@@ -1052,7 +1052,7 @@ export { portalContainsElement }
 export function precisionRound(value: number, precision: number, base?: number): number;
 
 // @public @deprecated
-export function raiseClick(target: Element): void;
+export function raiseClick(target: Element, doc?: Document): void;
 
 // @public
 export class Rectangle {

@@ -136,20 +136,23 @@ export function enableBodyScroll(): void {
  *
  * @public
  */
-export function getScrollbarWidth(): number {
+export function getScrollbarWidth(
+  // eslint-disable-next-line no-restricted-globals
+  doc: Document = document,
+): number {
   if (_scrollbarWidth === undefined) {
-    let scrollDiv: HTMLElement = document.createElement('div');
+    let scrollDiv: HTMLElement = doc.createElement('div');
     scrollDiv.style.setProperty('width', '100px');
     scrollDiv.style.setProperty('height', '100px');
     scrollDiv.style.setProperty('overflow', 'scroll');
     scrollDiv.style.setProperty('position', 'absolute');
     scrollDiv.style.setProperty('top', '-9999px');
-    document.body.appendChild(scrollDiv);
+    doc.body.appendChild(scrollDiv);
     // Get the scrollbar width
     _scrollbarWidth = scrollDiv.offsetWidth - scrollDiv.clientWidth;
 
     // Delete the DIV
-    document.body.removeChild(scrollDiv);
+    doc.body.removeChild(scrollDiv);
   }
 
   return _scrollbarWidth;

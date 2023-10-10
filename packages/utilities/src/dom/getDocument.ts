@@ -8,11 +8,18 @@ import { canUseDOM } from './canUseDOM';
  * @public
  */
 export function getDocument(rootElement?: HTMLElement | null): Document | undefined {
-  if (!canUseDOM() || typeof document === 'undefined') {
+  if (
+    !canUseDOM() ||
+    // eslint-disable-next-line no-restricted-globals
+    typeof document === 'undefined'
+  ) {
     return undefined;
   } else {
     const el = rootElement as Element;
 
-    return el && el.ownerDocument ? el.ownerDocument : document;
+    return el && el.ownerDocument
+      ? el.ownerDocument
+      : // eslint-disable-next-line no-restricted-globals
+        document;
   }
 }
