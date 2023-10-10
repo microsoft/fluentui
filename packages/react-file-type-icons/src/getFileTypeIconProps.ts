@@ -152,8 +152,13 @@ export function getFileTypeIconNameFromExtensionOrType(
   return iconBaseName || GENERIC_FILE;
 }
 
-export function getFileTypeIconSuffix(size: FileTypeIconSize, imageFileType: ImageFileType = 'svg'): string {
-  let devicePixelRatio: number = window.devicePixelRatio;
+export function getFileTypeIconSuffix(
+  size: FileTypeIconSize,
+  imageFileType: ImageFileType = 'svg',
+  // eslint-disable-next-line no-restricted-globals
+  win: Window = window,
+): string {
+  let devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 
   // SVGs scale well, so you can generally use the default image.
