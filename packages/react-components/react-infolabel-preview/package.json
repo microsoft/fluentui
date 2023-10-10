@@ -2,7 +2,7 @@
   "name": "@fluentui/react-infolabel-preview",
   "version": "0.0.0",
   "private": true,
-  "description": "New fluentui react package",
+  "description": "InfoLabel component for Fluent UI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
