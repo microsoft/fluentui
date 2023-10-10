@@ -31,7 +31,7 @@ function getProjectMetadata(options) {
 }
 
 const testFiles = [
-  '**/*{.,-}{test,spec,e2e}.{ts,tsx}',
+  '**/*{.,-}{test,spec,e2e,cy}.{ts,tsx}',
   '**/{test,tests}/**',
   '**/testUtilities.{ts,tsx}',
   '**/common/{isConformant,snapshotSerializers}.{ts,tsx}',
