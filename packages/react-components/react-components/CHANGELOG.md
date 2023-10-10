@@ -1,8 +1,47 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 05 Oct 2023 15:25:29 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2023 20:45:41 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.34.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.34.2)
+
+Mon, 09 Oct 2023 20:45:41 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.34.1..@fluentui/react-components_v9.34.2)
+
+### Minor changes
+
+- `@fluentui/react-message-bar-preview`
+  - feat: Add shape prop to MessageBar ([PR #29426](https://github.com/microsoft/fluentui/pull/29426) by lingfangao@hotmail.com)
+- `@fluentui/react-shared-contexts`
+  - feat: Add MessageBar types to custom style hook context ([PR #29431](https://github.com/microsoft/fluentui/pull/29431) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-dialog`
+  - react-dialog/chore: replace harcoded transparent to token ([PR #29406](https://github.com/microsoft/fluentui/pull/29406) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - fix: MenuSplitGroup styles should target MenuItems ([PR #29450](https://github.com/microsoft/fluentui/pull/29450) by lingfangao@hotmail.com)
+- `@fluentui/react-message-bar-preview`
+  - feat: Add custom style hook to MessageBar. ([PR #29431](https://github.com/microsoft/fluentui/pull/29431) by lingfangao@hotmail.com)
+- `@fluentui/react-motion-preview`
+  - fix: sync internal value of canRender with presence ([PR #29394](https://github.com/microsoft/fluentui/pull/29394) by marcosvmmoura@gmail.com)
+- `@fluentui/react-popover`
+  - fix: Add zIndex=1 to PopoverSurface when rendering inline to avoid elements positioned relative to render on top of it. ([PR #29425](https://github.com/microsoft/fluentui/pull/29425) by esteban.230@hotmail.com)
+- `@fluentui/react-provider`
+  - patch: update types for custom styles hook context ([PR #29431](https://github.com/microsoft/fluentui/pull/29431) by lingfangao@hotmail.com)
+- `@fluentui/react-table`
+  - fix(useMeasureElement): Should not remove parent element ([PR #29451](https://github.com/microsoft/fluentui/pull/29451) by lingfangao@hotmail.com)
+  - fix: remove row focus background color  ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by lingfangao@hotmail.com)
+- `@fluentui/react-utilities`
+  - chore: add e2e test for useOnScrollOutside ([PR #29413](https://github.com/microsoft/fluentui/pull/29413) by yuanboxue@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - feat: make dialog slot internal to be used for composition only ([PR #29392](https://github.com/microsoft/fluentui/pull/29392) by marcosvmmoura@gmail.com)
+- `@fluentui/react-infobutton`
+  - fix: Use caption 1 when size is small or medium. ([PR #29418](https://github.com/microsoft/fluentui/pull/29418) by esteban.230@hotmail.com)
 
 ## [9.34.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.34.1)
 

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: sync internal value of canRender with presence",
-  "packageName": "@fluentui/react-motion-preview",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

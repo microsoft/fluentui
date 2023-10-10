@@ -14,7 +14,7 @@ const useRootBaseStyles = makeResetStyles({
   gridTemplateColumns: 'auto 1fr auto auto',
   gridTemplateRows: '1fr',
   gridTemplateAreas: '"icon body secondaryActions actions"',
-  ...shorthands.padding('0', tokens.spacingHorizontalM),
+  paddingLeft: tokens.spacingHorizontalM,
   ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
   ...shorthands.borderRadius(tokens.borderRadiusMedium),
   alignItems: 'center',

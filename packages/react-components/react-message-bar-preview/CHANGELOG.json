@@ -2,6 +2,61 @@
   "name": "@fluentui/react-message-bar-preview",
   "entries": [
     {
+      "date": "Mon, 09 Oct 2023 20:45:42 GMT",
+      "tag": "@fluentui/react-message-bar-preview_v0.2.0",
+      "version": "0.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "60a911e66db784521a35c1e1ac0362a3f2d8169f",
+            "comment": "feat: Add shape prop to MessageBar"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.47",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.15",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.10.0",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ],
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add custom style hook to MessageBar."
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "93d4ee6dd801b672ade6ce41345cfbd9010af01a",
+            "comment": "chore: fix typos"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Oct 2023 15:25:31 GMT",
       "tag": "@fluentui/react-message-bar-preview_v0.1.1",
       "version": "0.1.1",

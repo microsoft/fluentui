@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 10 Oct 2023 07:37:02 GMT",
+      "tag": "@fluentui/react-charting_v5.18.3",
+      "version": "5.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e21386855c4b4aff1648f1fbb585799712f6ccd1",
+            "comment": "change for reducing width and height for tree chart such that it fits the doc site"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Oct 2023 07:37:25 GMT",
       "tag": "@fluentui/react-charting_v5.18.2",
       "version": "5.18.2",
