@@ -47,6 +47,10 @@ describe('AvatarGroupPopover', () => {
           getPortalElement: getPopoverSurfaceElement,
         },
       ],
+      'consistent-callback-args': {
+        // Popover onOpenChange uses Event type due to scroll event in useOnScrollOutside
+        ignoreProps: ['onOpenChange'],
+      },
     },
     requiredProps: {
       children: (

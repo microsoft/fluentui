@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "fix: update Menu open change event type to include `Event` (as `useOnScrollOutside` adds scroll event listener)",
+  "packageName": "@fluentui/react-menu",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}

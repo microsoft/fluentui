@@ -18,6 +18,12 @@ describe('Popover', () => {
       // Popover does not have own styles
       'make-styles-overrides-win',
     ],
+    testOptions: {
+      'consistent-callback-args': {
+        // Popover onOpenChange uses Event type due to scroll event in useOnScrollOutside
+        ignoreProps: ['onOpenChange'],
+      },
+    },
   });
 
   /**

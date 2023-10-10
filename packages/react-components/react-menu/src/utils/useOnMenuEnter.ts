@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { elementContains } from '@fluentui/react-portal';
+// eslint-disable-next-line deprecation/deprecation
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
 /**
@@ -19,6 +20,7 @@ export const MENU_ENTER_EVENT = 'fuimenuenter';
  * Instead, dispatch custom DOM event from the menu so that it can bubble
  * Each nested menu can use the listener to check if the event is from a child or parent menu
  */
+// eslint-disable-next-line deprecation/deprecation
 export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) => {
   const { refs, callback, element, disabled } = options;
 

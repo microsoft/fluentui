@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
 
-/**
- * @internal
- */
-export type UseOnClickOrScrollOutsideOptions = {
+export type UseOnClickOutsideOptions = {
   /**
    * The element to listen for the click event
    */
@@ -38,13 +35,18 @@ export type UseOnClickOrScrollOutsideOptions = {
   callback: (ev: MouseEvent | TouchEvent) => void;
 };
 
-const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, child) => !!parent?.contains(child);
+/**
+ * @deprecated use UseOnClickOutsideOptions instead
+ */
+export type UseOnClickOrScrollOutsideOptions = UseOnClickOutsideOptions;
+
+const DEFAULT_CONTAINS: UseOnClickOutsideOptions['contains'] = (parent, child) => !!parent?.contains(child);
 
 /**
  * @internal
  * Utility to perform checks where a click/touch event was made outside a component
  */
-export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
+export const useOnClickOutside = (options: UseOnClickOutsideOptions) => {
   const { refs, callback, element, disabled, disabledFocusOnIframe, contains = DEFAULT_CONTAINS } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
 
@@ -132,7 +134,7 @@ const getWindowEvent = (target: Node | Window): Event | undefined => {
 const FUI_FRAME_EVENT = 'fuiframefocus';
 
 interface UseIFrameFocusOptions
-  extends Pick<UseOnClickOrScrollOutsideOptions, 'disabled' | 'element' | 'callback' | 'contains' | 'refs'> {
+  extends Pick<UseOnClickOutsideOptions, 'disabled' | 'element' | 'callback' | 'contains' | 'refs'> {
   /**
    * Millisecond duration to poll
    */

@@ -281,7 +281,7 @@ export type MenuOpenChangeData = {
     event: MouseEvent | TouchEvent;
 } | {
     type: 'scrollOutside';
-    event: MouseEvent | TouchEvent;
+    event: MouseEvent | TouchEvent | Event;
 } | {
     type: 'menuMouseEnter';
     event: MouseEvent | TouchEvent;
