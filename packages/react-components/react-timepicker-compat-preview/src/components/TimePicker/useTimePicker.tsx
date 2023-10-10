@@ -11,6 +11,8 @@ import {
   getTimesBetween,
 } from './timeMath';
 
+// TODO before stable, replace useCallback to useEventCallback if needed
+
 /**
  * Create the state required to render TimePicker.
  *
