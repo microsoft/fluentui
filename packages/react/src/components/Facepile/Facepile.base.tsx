@@ -77,7 +77,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
               showTooltip,
             )}
           </ul>
-          {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
+          {this._getOverflowElement(personasOverflow)}
         </div>
       </div>
     );
