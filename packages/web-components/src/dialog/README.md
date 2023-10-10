@@ -37,15 +37,15 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
 ### **Attributes**
 
-| Name               | Privacy | Type      | Default | Description                                      |
-| ------------------ | ------- | --------- | ------- | ------------------------------------------------ |
-| `modal`            | public  | `boolean` | `false` | Renders dialog as a modal                        |
-| `alert`            | public  | `boolean` | `false` | Renders dialog as an alert modal                 |
-| `hidden`           | public  | `boolean` | `false` | Sets the visibility of the dialog                |
-| `no-focus-trap`    | public  | `boolean` | `false` | Indicates that the dialog should not trap focus. |
-| `aria-labelledby`  | public  | `boolean` | `false` | optional based on implementation\*\*             |
-| `aria-describedby` | public  | `boolean` | `false` | optional based on implementation\*\*             |
-| `aria-label `      | public  | `boolean` | `false` | optional based on implementation\*\*             |
+| Name               | Privacy | Type      | Default | Description                                                                                                   |
+| ------------------ | ------- | --------- | ------- | ------------------------------------------------------------------------------------------------------------- |
+| `modal`            | public  | `boolean` | `false` | Renders dialog as a modal                                                                                     |
+| `alert`            | public  | `boolean` | `false` | Renders dialog as an alert modal, alert modals will not close on escape keypress or by onclick of the overlay |
+| `hidden`           | public  | `boolean` | `false` | Sets the visibility of the dialog                                                                             |
+| `no-focus-trap`    | public  | `boolean` | `false` | Indicates that the dialog should not trap focus.                                                              |
+| `aria-labelledby`  | public  | `boolean` | `false` | optional based on implementation\*\*                                                                          |
+| `aria-describedby` | public  | `boolean` | `false` | optional based on implementation\*\*                                                                          |
+| `aria-label `      | public  | `boolean` | `false` | optional based on implementation\*\*                                                                          |
 
 \*\* See the [W3C Specification](https://w3c.github.io/aria-practices/#dialog_roles_states_props) for requirements and details.
 
