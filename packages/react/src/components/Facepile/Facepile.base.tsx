@@ -38,9 +38,7 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
   }
 
   public render(): JSX.Element {
-    let { overflowButtonProps } = this.props;
     const {
-      chevronButtonProps, // eslint-disable-line deprecation/deprecation
       maxDisplayablePersonas,
       personas,
       overflowPersonas,
@@ -54,11 +52,6 @@ export class FacepileBase extends React.Component<IFacepileProps, {}> {
     // Add a check to make sure maxDisplayalePersonas is defined to cover the edge case of it being 0.
     const numPersonasToShow: number =
       typeof maxDisplayablePersonas === 'number' ? Math.min(personas.length, maxDisplayablePersonas) : personas.length;
-
-    // Added for deprecating chevronButtonProps.  Can remove after v1.0
-    if (chevronButtonProps && !overflowButtonProps) {
-      overflowButtonProps = chevronButtonProps;
-    }
 
     const hasOverflowPersonas = overflowPersonas && overflowPersonas.length > 0;
     const personasPrimary: IFacepilePersona[] = hasOverflowPersonas ? personas : personas.slice(0, numPersonasToShow);
