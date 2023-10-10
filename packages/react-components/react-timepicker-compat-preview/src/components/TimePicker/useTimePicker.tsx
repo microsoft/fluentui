@@ -54,8 +54,11 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     initialState: undefined,
   });
 
-  const selectedOption = options.find(date => dateToKey(date) === dateToKey(selectedTime));
-  const selectedOptions = React.useMemo(() => [dateToKey(selectedOption)], [selectedOption]);
+  const selectedOptions = React.useMemo(() => {
+    const selectedOption = options.find(date => dateToKey(date) === dateToKey(selectedTime));
+    return [dateToKey(selectedOption)];
+  }, [options, selectedTime]);
+
   const handleOptionSelect: ComboboxProps['onOptionSelect'] = React.useCallback(
     (e, data) => {
       const timeSelectionData: TimeSelectionData = { selectedTime: keyToDate(data.optionValue) };
