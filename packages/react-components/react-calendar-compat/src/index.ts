@@ -1,4 +1,5 @@
 export { AnimationDirection } from './Calendar';
+export { Calendar } from './Calendar';
 export type { CalendarProps, ICalendar } from './Calendar';
 
 export type { CalendarDayProps, ICalendarDay } from './CalendarDay';
