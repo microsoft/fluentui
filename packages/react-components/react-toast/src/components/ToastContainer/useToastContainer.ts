@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   useMergedRefs,
   ExtractSlotProps,
   Slot,
@@ -219,8 +219,11 @@ export const useToastContainer_unstable = (
       { elementType: Timer },
     ),
     root: slot.always(
-      getNativeElementProps('div', {
-        ref: useMergedRefs(ref, toastRef, toastAnimationRef),
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, toastRef, toastAnimationRef) as React.Ref<HTMLDivElement>,
         children,
         tabIndex: 0,
         role: 'listitem',

@@ -5,6 +5,8 @@ import {
   IVSChartDataPoint,
   IVerticalStackedChartProps,
   IVerticalStackedBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
 import { DefaultPalette, IStyle, DefaultFontStyles } from '@fluentui/react/lib/Styling';
 import { ChoiceGroup, DirectionalHint, IChoiceGroupOption } from '@fluentui/react';
@@ -41,21 +43,21 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
-      { legend: 'Metadata2', data: 0.5, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 0, color: DefaultPalette.blueLight },
+      { legend: 'Metadata1', data: 2, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Metadata2', data: 0.5, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'Metadata3', data: 0, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: DefaultPalette.blue },
-      { legend: 'Metadata2', data: 3, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 40, color: DefaultPalette.blueLight },
+      { legend: 'Metadata1', data: 30, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Metadata2', data: 3, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: DefaultPalette.blue },
-      { legend: 'Metadata2', data: 60, color: DefaultPalette.blueMid },
-      { legend: 'Metadata3', data: 30, color: DefaultPalette.blueLight },
+      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Metadata2', data: 60, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'Metadata3', data: 30, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const data: IVerticalStackedChartProps[] = [
@@ -193,19 +195,22 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               },
             }}
             // eslint-disable-next-line react/jsx-no-bind
-            onRenderCalloutPerDataPoint={props =>
-              props ? (
-                <ChartHoverCard
-                  XValue={props.xAxisCalloutData}
-                  Legend={props.legend}
-                  YValue={`${props.yAxisCalloutData || props.data} h`}
-                  color={props.color}
-                />
-              ) : null
-            }
+            {...(this.state.selectedCallout === 'singleCallout' && {
+              onRenderCalloutPerDataPoint: (props: IVSChartDataPoint) => {
+                return props ? (
+                  <ChartHoverCard
+                    XValue={props.xAxisCalloutData}
+                    Legend={props.legend}
+                    YValue={`${props.yAxisCalloutData || props.data} h`}
+                    color={props.color}
+                  />
+                ) : null;
+              },
+            })}
             svgProps={{
               'aria-label': 'Example chart with metadata per month',
             }}
+            enableReflow={true}
           />
         </div>
       </>

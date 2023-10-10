@@ -4,6 +4,10 @@ import { ILegendsProps } from '../Legends/index';
 import { IAccessibilityProps } from '../../types/index';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 
+/**
+ * IGaugeChartSegment interface for Gaugechart.
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartSegment {
   /**
    * Legend text for a segment
@@ -31,6 +35,10 @@ export enum GaugeValueFormat {
   Fraction = 'fraction',
 }
 
+/**
+ * IGaugeChartProps for Gaugechart component.
+ * {@docCategory GaugeChart}
+ */
 export interface IGaugeChartProps {
   /**
    * Width of the chart
