@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
-import type { TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
+import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
 import {
   dateToKey,
@@ -36,13 +36,10 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     ...rest
   } = props;
 
-  const fallbackDateAnchor = React.useRef(new Date()).current;
-  const dateAnchor = dateAnchorInProps ?? selectedTimeInProps ?? defaultSelectedTimeInProps ?? fallbackDateAnchor;
-
-  const dateStartAnchor = React.useMemo(() => getDateStartAnchor(dateAnchor, startHour), [dateAnchor, startHour]);
-  const dateEndAnchor = React.useMemo(
-    () => getDateEndAnchor(dateAnchor, startHour, endHour),
-    [dateAnchor, endHour, startHour],
+  const { dateStartAnchor, dateEndAnchor } = useStableDateAnchor(
+    dateAnchorInProps ?? selectedTimeInProps ?? defaultSelectedTimeInProps,
+    startHour,
+    endHour,
   );
 
   const options: TimePickerOption[] = React.useMemo(
@@ -90,4 +87,24 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   );
 
   return state;
+};
+
+/**
+ * Provides stable start and end date anchors based on the provided date and time parameters.
+ * The hook ensures that the memoization remains consistent even if new Date objects representing the same date are provided.
+ */
+const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, endHour: Hour) => {
+  const fallbackDateAnchorRef = React.useRef(new Date());
+
+  // Convert the Date object to a stable key representation. This ensures that the memoization remains stable when a new Date object representing the same date is passed in.
+  const dateAnchorKey = dateToKey(providedDate);
+  const dateAnchor = React.useMemo(() => keyToDate(dateAnchorKey) ?? fallbackDateAnchorRef.current, [dateAnchorKey]);
+
+  const dateStartAnchor = React.useMemo(() => getDateStartAnchor(dateAnchor, startHour), [dateAnchor, startHour]);
+  const dateEndAnchor = React.useMemo(
+    () => getDateEndAnchor(dateAnchor, startHour, endHour),
+    [dateAnchor, endHour, startHour],
+  );
+
+  return { dateStartAnchor, dateEndAnchor };
 };
