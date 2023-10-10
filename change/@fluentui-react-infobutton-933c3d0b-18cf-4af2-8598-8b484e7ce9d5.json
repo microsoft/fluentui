@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities",
+  "packageName": "@fluentui/react-infobutton",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

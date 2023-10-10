@@ -4,6 +4,7 @@ import { getParent } from './getParent';
  * Similar functionality to `element.contains` DOM API for use without of order DOM elements that
  * checks the virtual parent hierarchy. If a virtual parents exists, it is chosen over the actual parent
  *
+ * @internal
  * @returns true if the child can find the parent in its virtual hierarchy
  */
 export function elementContains(parent: Node | null, child: Node | null): boolean {
