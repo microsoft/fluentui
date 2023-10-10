@@ -18,6 +18,12 @@ const buttonSpacingMedium = '5px';
 const buttonSpacingLarge = '8px';
 const buttonSpacingLargeWithIcon = '7px';
 
+/* Firefox has box shadow sizing issue at some zoom levels
+ * this will ensure the inset boxShadow is always uniform
+ * without affecting other browser platforms
+ */
+const boxShadowStrokeWidthThinMoz = `calc(${tokens.strokeWidthThin} + 0.25px)`;
+
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
   boxSizing: 'border-box',
@@ -104,6 +110,15 @@ const useRootBaseClassName = makeResetStyles({
     `,
     zIndex: 1,
   }),
+
+  // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+  '@supports (-moz-appearance:button)': {
+    ...createCustomFocusIndicatorStyle({
+      boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}
+      inset
+    `,
+    }),
+  },
 });
 
 const useIconBaseClassName = makeResetStyles({
@@ -453,14 +468,26 @@ const useRootFocusStyles = makeStyles({
   }),
 
   // Primary styles
-  primary: createCustomFocusIndicatorStyle({
-    ...shorthands.borderColor(tokens.colorStrokeFocus2),
-    boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
-    ':hover': {
-      boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+  primary: {
+    ...createCustomFocusIndicatorStyle({
       ...shorthands.borderColor(tokens.colorStrokeFocus2),
+      boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
+      ':hover': {
+        boxShadow: `${tokens.shadow2}, 0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2} inset`,
+        ...shorthands.borderColor(tokens.colorStrokeFocus2),
+      },
+    }),
+
+    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+    '@supports (-moz-appearance:button)': {
+      ...createCustomFocusIndicatorStyle({
+        boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
+        ':hover': {
+          boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset`,
+        },
+      }),
     },
-  }),
+  },
 
   // Size variations
   small: createCustomFocusIndicatorStyle({
