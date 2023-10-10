@@ -28,6 +28,8 @@ const useIconBaseStyles = makeResetStyles({
   fontSize: tokens.fontSizeBase500,
   marginRight: tokens.spacingHorizontalS,
   color: tokens.colorNeutralForeground3,
+  display: 'flex',
+  alignItems: 'center',
 });
 
 const useStyles = makeStyles({
