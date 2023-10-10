@@ -72,16 +72,6 @@ export const styles = css`
     padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
   }
 
-  :host([alert]) .root,
-  :host([modal]) .root {
-    grid-template-columns: auto 1fr;
-  }
-
-  :host([alert]) .header,
-  :host([modal]) .header {
-    padding-right: ${spacingVerticalXXL};
-  }
-
   .header {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};

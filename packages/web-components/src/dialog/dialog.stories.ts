@@ -46,14 +46,6 @@ const dialogTemplate = html<DialogStoryArgs>`
       hidden
     >
       <fluent-text slot="title">Dialog</fluent-text>
-      <fluent-button
-        appearance="transparent"
-        icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
-        slot="close"
-      >
-        ${dismissed16Regular}
-      </fluent-button>
       <fluent-text as="p" font="base" size="300" weight="regular">
         <p>
           The Dialog component is a window overlaid on either the primary window or another dialog window. Windows under
