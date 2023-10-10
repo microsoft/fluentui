@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "The overflowButtonProps is an optional property yet, overflow button is not seen until it is made available",
+  "packageName": "@fluentui/react",
+  "email": "kapil.kashyaps@gmail.com",
+  "dependentChangeType": "patch"
+}
