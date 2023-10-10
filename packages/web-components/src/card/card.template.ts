@@ -8,13 +8,11 @@ import type { Card } from './card.js';
 export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
   return html<T>`
     <template
-      ?disabled="${x => x.disabled}"
-      ?selected="${x => x.selected}"
-      ?selectable="${x => x.selectable}"
-      focus-mode="${x => x.focusMode}"
+      size="${x => x.size}"
       orientation="${x => x.orientation}"
       appearance="${x => x.appearance}"
-      size="${x => x.size}"
+      focus-mode="${x => x.focusMode}"
+      ?selectable="${x => x.selectable}"
     >
       <div
         role="group"
@@ -32,7 +30,13 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
       >
         <div class="root" part="root" ${ref('root')}>
           <div class="control" part="control">
-            <slot name="floating-action" part="floating-action" ${slotted('floatingActionSlot')}></slot>
+            <slot
+              @change="${(x, c) => x.floatingActionChangeHandler(c.event as MouseEvent)}"
+              name="floating-action"
+              part="floating-action"
+              tabindex="${x => (!x.isFocusable ? '0' : '-1')}"
+              ${slotted('floatingAction')}
+            ></slot>
           </div>
           <div class="content">
             <slot></slot>

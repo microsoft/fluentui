@@ -15,6 +15,9 @@ export const styles = css`
     grid-template-columns: auto 1fr auto;
   }
 
+  ::slotted([slot='image']) {
+    align-self: center;
+  }
   ::slotted([slot='header']) {
     font-size: ${fontSizeBase300};
     font-weight: ${fontWeightBold};

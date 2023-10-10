@@ -1,7 +1,7 @@
 import { attr, css, ElementStyles, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { FASTCard } from '@microsoft/fast-foundation';
 import { isTabbable } from 'tabbable';
-import { keyEnter, keyEscape, keySpace } from '@microsoft/fast-web-utilities';
+import { keyEnter, keyEscape, keySpace, keyTab } from '@microsoft/fast-web-utilities';
 import { CardAppearance, CardFocusMode, CardOrientation, CardSize } from './card.options.js';
 
 /**
@@ -15,35 +15,20 @@ export class Card extends FASTCard {
     super.connectedCallback();
     this.setComponent();
     this.updateComputedStylesheet();
-    Updates.enqueue(() => {
-      this.updateTrapFocus();
-    });
   }
 
   public disconnectedCallback(): void {
     super.disconnectedCallback();
-    this.updateTrapFocus(false);
   }
 
+  @observable
   @attr({ attribute: 'focus-mode' })
   public focusMode: CardFocusMode = CardFocusMode.off;
-
-  /**
-   * Indicates whether the card is currently trapping focus.
-   * @internal
-   */
-  private isTrappingFocus: boolean = false;
 
   /**
    * Stores the computed stylesheet for the card
    */
   private computedStylesheet?: ElementStyles;
-
-  /**
-   * A reference to the floating action slot
-   */
-  @observable
-  public floatingActionSlot?: HTMLElement;
 
   /**
    * @property appearance;
@@ -69,7 +54,6 @@ export class Card extends FASTCard {
    * @remarks
    * Determines the size of the card
    */
-  @observable
   @attr({ attribute: 'size' })
   public size?: CardSize;
 
@@ -124,27 +108,215 @@ export class Card extends FASTCard {
    * @remarks
    * Reference to the card element
    */
-  @observable
   public card!: HTMLElement;
 
   /**
    * @remarks
    * Reference to the root element
    */
-  @observable
   public root!: HTMLElement;
+
+  /**
+   * @remarks
+   * Reference to the floatingAction slot
+   */
+  @observable
+  public floatingAction: HTMLElement[] = [];
+
+  /**
+   * @remarks
+   * Reference to the root element
+   */
+  public control!: HTMLElement;
 
   /**
    * Toggles the selection state of the card.
    *
    * @param checked - Optional boolean value to set the selection state.
    */
-  public toggleCardSelection(checked?: boolean): void {
-    if (checked) {
-      this.selected = checked;
+  public toggleCardSelection(open?: boolean): void {
+    if (open) {
+      this.selected = true;
+    } else if (open === false) {
+      this.selected = false;
     } else {
       this.selected = !this.selected;
     }
+    const checkbox = this.floatingAction[0] as HTMLInputElement;
+    if (checkbox && checkbox.checked !== this.selected) {
+      checkbox.checked = this.selected;
+    }
+  }
+
+  /**
+   * Focuses on the element at the specified index in the bounds array.
+   * If the bounds array is empty, it focuses on the card itself.
+   *
+   * @param index - The index of the element to focus on.
+   */
+  private focusElementAtIndex = (index: number): void => {
+    if (this.bounds.length > 0) {
+      this.bounds[index].focus();
+    } else {
+      this.card.focus();
+    }
+  };
+
+  /**
+   * Focuses on the first element in the bounds array.
+   * If the bounds array is empty, it focuses on the card itself.
+   */
+  public focusFirstElement = (): void => {
+    this.focusElementAtIndex(0);
+  };
+
+  /**
+   * Focuses on the last element in the bounds array.
+   * If the bounds array is empty, it focuses on the card itself.
+   */
+  public focusLastElement = (): void => {
+    this.focusElementAtIndex(this.bounds.length - 1);
+  };
+
+  public floatingActionChangeHandler(e: Event): boolean | void {
+    if (this.disabled || e.defaultPrevented || !this.selectable) {
+      return;
+    }
+    const checkbox = this.floatingAction[0] as HTMLInputElement;
+    this.toggleCardSelection(checkbox.checked);
+    e.preventDefault();
+  }
+
+  /**
+   * Handles click events on the card.
+   *
+   * @param e - The mouse event.
+   * @returns {boolean | void} - Returns true if the card is not selectable, otherwise void.
+   */
+  public clickHandler(e: MouseEvent): boolean | void {
+    if (this.disabled || e.defaultPrevented || !this.selectable) {
+      return;
+    }
+    this.toggleCardSelection();
+    e.preventDefault();
+  }
+
+  /**
+   * Handles keydown events on the card.
+   *
+   * @param e - The keyboard event.
+   * @returns {boolean | void} - Returns true if the card is disabled, otherwise void.
+   */
+  public keydownHandler(e: KeyboardEvent): boolean | void | null {
+    if (this.disabled || e.defaultPrevented) {
+      return true;
+    }
+
+    const { key, target, currentTarget, shiftKey } = e;
+    const isTargetCurrent = target === currentTarget;
+    const isFloatingAction = target === this.floatingAction[0];
+    const isFocusModeOffOrTabOnly = this.focusMode === CardFocusMode.off || this.focusMode === CardFocusMode.tabOnly;
+    const isFocusModeOff = this.focusMode === CardFocusMode.off;
+    const isLastIndexFocused = this.isBoundsLastIndexFocused;
+    const isZeroIndexFocused = this.isBoundsZeroIndexFocused;
+    const checkbox = this.floatingAction[0] as HTMLInputElement;
+
+    switch (key) {
+      case keyEnter:
+      case keySpace:
+        if (!isTargetCurrent && !isFloatingAction) {
+          return true;
+        }
+        if (this.selectable) {
+          this.toggleCardSelection();
+          if (checkbox) {
+            checkbox.checked = this.selected;
+          }
+        } else if (!isFocusModeOff) {
+          Updates.enqueue(() => {
+            this.root.inert = false;
+            this.focusFirstElement();
+          });
+        }
+        e.preventDefault();
+        break;
+
+      case keyTab:
+        if (this.shouldTrapFocus) {
+          if ((isLastIndexFocused && !shiftKey) || (isZeroIndexFocused && shiftKey)) {
+            e.preventDefault();
+            isLastIndexFocused ? this.focusFirstElement() : this.focusLastElement();
+          }
+          return true;
+        } else if (this.focusMode === CardFocusMode.tabExit) {
+          if (
+            (isLastIndexFocused && !shiftKey) ||
+            (isZeroIndexFocused && shiftKey) ||
+            document.activeElement === this.card
+          ) {
+            this.root.inert = !this.root.inert;
+          }
+          return true;
+        }
+        return true;
+
+      case keyEscape:
+        if (this.focusMode !== CardFocusMode.off) {
+          this.card.focus();
+        }
+        if (!isFocusModeOffOrTabOnly) {
+          this.root.inert = true;
+        }
+        e.preventDefault();
+
+      default:
+        return true;
+    }
+  }
+
+  /**
+   * Determines if the card is focusable.
+   * @returns {boolean} - True if the card is focusable, false otherwise.
+   */
+  get isFocusable(): boolean {
+    return !this.disabled && this.focusMode !== 'off';
+  }
+
+  /**
+   * Returns the bounds of the tab queue.
+   * The tab queue is a collection of elements that are focusable.
+   *
+   * @returns {(HTMLElement | SVGElement)[]} - The bounds of the tab queue.
+   */
+  get bounds(): (HTMLElement | SVGElement)[] {
+    return this.getTabQueueBounds(this);
+  }
+
+  /**
+   * Checks if the first element in the tab queue is focused.
+   *
+   * @returns {boolean} - True if the first element in the tab queue is focused, false otherwise.
+   */
+  get isBoundsZeroIndexFocused(): boolean {
+    return document.activeElement === this.bounds[0];
+  }
+
+  /**
+   * Checks if the last element in the tab queue is focused.
+   *
+   * @returns {boolean} - True if the last element in the tab queue is focused, false otherwise.
+   */
+  get isBoundsLastIndexFocused(): boolean {
+    return document.activeElement === this.bounds[this.bounds.length - 1];
+  }
+
+  /**
+   * Determines if focus should be trapped within the card.
+   *
+   * @internal
+   */
+  get shouldTrapFocus(): boolean {
+    return this.focusMode === CardFocusMode.noTab;
   }
 
   /**
@@ -152,7 +324,7 @@ export class Card extends FASTCard {
    * @remarks
    * Updates the computed stylesheet when the size of the card changes
    */
-  protected sizeChanged(prev: string, next: string): void {
+  protected sizeChanged(): void {
     this.updateComputedStylesheet();
   }
 
@@ -161,7 +333,7 @@ export class Card extends FASTCard {
    * @remarks
    * Emits an event when the selected state of the card changes
    */
-  protected selectedChanged = (prev: boolean, next: boolean): void => {
+  protected selectedChanged = (): void => {
     this.$emit('onSelectionChanged', this.selected);
   };
 
@@ -171,7 +343,7 @@ export class Card extends FASTCard {
    * @private
    */
   private setComponent(): void {
-    if (this.focusMode === CardFocusMode.noTab || this.focusMode === CardFocusMode.tabExit || this.disabled) {
+    if ((this.focusMode !== CardFocusMode.off && this.focusMode !== CardFocusMode.tabOnly) || this.disabled) {
       this.root.inert = true;
     }
   }
@@ -207,90 +379,6 @@ export class Card extends FASTCard {
   }
 
   /**
-   * Handle the checked state of the Card when interactive and selectable
-   *
-   * @param e - the mouse event
-   * @internal
-   */
-  public clickHandler(e: MouseEvent): boolean | void {
-    if (this.disabled) {
-      return;
-    }
-    if (this.selectable) {
-      this.toggleCardSelection();
-    }
-  }
-
-  /**
-   * Handle keyboard interaction for the card.
-   *
-   * @param e - the keyboard event
-   * @internal
-   */
-  public keydownHandler(e: KeyboardEvent): boolean | void {
-    if (this.disabled) {
-      return true;
-    }
-    const key = e.key;
-    switch (key) {
-      case keyEnter:
-      case keySpace: {
-        if (e.target !== e.currentTarget) {
-          return true;
-        }
-        if (e.target === e.currentTarget && this.selectable) {
-          e.preventDefault();
-          this.toggleCardSelection();
-        } else if (
-          e.target === e.currentTarget &&
-          (this.focusMode === CardFocusMode.noTab || this.focusMode === CardFocusMode.tabExit)
-        ) {
-          e.preventDefault();
-          Updates.enqueue(() => {
-            this.root.inert = false;
-            this.focusFirstElement();
-          });
-        }
-        return true;
-      }
-      case keyEscape:
-        if (this.focusMode === CardFocusMode.noTab) {
-          this.card.focus();
-          this.root.inert = true;
-          e.preventDefault();
-        }
-        break;
-      default:
-        return true;
-    }
-  }
-
-  /**
-   * Handles changes to the `trapFocus` property.
-   * If the component is connected, it updates the focus trap.
-   * @internal
-   */
-  protected inertTrapFocusChanged = (): void => {
-    if (this.$fastController.isConnected) {
-      this.updateTrapFocus();
-    }
-  };
-
-  /**
-   * Handles focusing out of the card.
-   * If the event is not prevented and the focus should be forced on the target element,
-   * it focuses on the first element and prevents the default behavior.
-   *
-   * @internal
-   */
-  private handleCardFocusOut = (e: Event): void => {
-    if (!e.defaultPrevented && this.shouldForceFocus(e.target as HTMLElement)) {
-      this.focusFirstElement();
-      e.preventDefault();
-    }
-  };
-
-  /**
    * Returns the bounds of the tab queue.
    * The tab queue is a collection of elements that are focusable.
    *
@@ -299,78 +387,6 @@ export class Card extends FASTCard {
   private getTabQueueBounds = (context: FASTElement): (HTMLElement | SVGElement)[] => {
     const bounds: HTMLElement[] = [];
     return Card.reduceTabbableItems(bounds, context);
-  };
-
-  /**
-   * Focuses on the first element in the tab queue if it is tabbable.
-   * If the tab queue is empty or the first element is not tabbable, it focuses on the card if it is an instance of HTMLDivElement.
-   * @internal
-   */
-  private focusFirstElement = (): void => {
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds(this);
-    if (bounds.length > 0) {
-      bounds[0].focus();
-    } else if (this.card instanceof HTMLElement) {
-      this.card!.focus();
-    }
-  };
-
-  /**
-   * Determines if focus should be forced on the current focus element.
-   * Focus is forced if the card is trapping focus, the current focus element is not contained within the card, and the current focus element is not the first element in the tab queue.
-   *
-   * @param currentFocusElement - The current focus element.
-   * @internal
-   */
-  private shouldForceFocus = (currentFocusElement: Element | null): boolean => {
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds(this);
-    return (
-      this.isTrappingFocus &&
-      this.contains(currentFocusElement) &&
-      currentFocusElement === bounds[bounds.length - 1] &&
-      currentFocusElement !== bounds[0]
-    );
-  };
-
-  /**
-   * Determines if the card is focusable.
-   * @returns {boolean} - True if the card is focusable, false otherwise.
-   */
-  get isFocusable(): boolean {
-    if (this.disabled || this.focusMode === 'off') {
-      return false;
-    } else {
-      return true;
-    }
-  }
-
-  /**
-   * Determines if focus should be trapped within the card.
-   *
-   * @internal
-   */
-  private shouldTrapFocus = (): boolean => {
-    return this.focusMode === 'no-tab';
-  };
-
-  /**
-   * Updates the focus trap based on the current state of the card.
-   * If the card is open and focus trapping is enabled, it adds event listeners for focusin events and animationend events.
-   * If the card is closed or focus trapping is disabled, it removes these event listeners.
-   *
-   * @param shouldTrapFocusOverride - Optional parameter to override the default focus trapping behavior.
-   * @internal
-   */
-  private updateTrapFocus = (shouldTrapFocusOverride?: boolean): void => {
-    const shouldTrapFocus = shouldTrapFocusOverride === undefined ? this.shouldTrapFocus() : shouldTrapFocusOverride;
-
-    if (shouldTrapFocus && !this.isTrappingFocus) {
-      this.isTrappingFocus = true;
-      this.card.addEventListener('focusout', this.handleCardFocusOut);
-    } else if (!shouldTrapFocus && this.isTrappingFocus) {
-      this.isTrappingFocus = false;
-      this.card.removeEventListener('focusout', this.handleCardFocusOut);
-    }
   };
 
   /**

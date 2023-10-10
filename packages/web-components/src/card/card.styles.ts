@@ -49,8 +49,7 @@ export const styles = css`
 
   :host {
     font-family: ${fontFamilyBase};
-    background: ${colorNeutralBackground1};
-    border: ${strokeWidthThin} solid ${colorTransparentStroke};
+    background: ${colorTransparentBackground};
     border-radius: ${borderRadiusMedium};
     position: relative;
     max-width: 100%;
@@ -63,8 +62,11 @@ export const styles = css`
     z-index: var(--card-elevation, 1);
   }
 
-  .card:focus-visible::after {
-    border: ${strokeWidthThick} solid ${colorTransparentStroke};
+  :host .card:focus-visible::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    border-color: ${colorTransparentStroke};
     outline: ${strokeWidthThick} solid ${colorTransparentStroke};
     box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
   }
@@ -75,11 +77,17 @@ export const styles = css`
     top: 5px;
     right: 5px;
   }
+
   .content {
     display: grid;
     row-gap: ${spacingVerticalM};
     column-gap: ${spacingHorizontalM};
     padding: ${spacingVerticalM} ${spacingHorizontalM};
+  }
+
+  .card {
+    background: ${colorNeutralBackground1};
+    border: ${strokeWidthThin} solid ${colorTransparentStroke};
   }
 
   :host([size='small']) .content {
@@ -100,15 +108,15 @@ export const styles = css`
     align-items: center;
   }
 
-  :host([appearance='filled-alternative']) {
+  :host([appearance='filled-alternative']) .card {
     background: ${colorNeutralBackground2};
   }
-  :host([appearance='outline']) {
+  :host([appearance='outline']) .card {
     background: ${colorTransparentBackground};
     border-color: ${colorNeutralStroke1};
     box-shadow: none;
   }
-  :host([appearance='subtle']) {
+  :host([appearance='subtle']) .card {
     background: ${colorSubtleBackground};
     border-color: ${colorTransparentStroke};
     box-shadow: none;
@@ -118,68 +126,68 @@ export const styles = css`
     cursor: pointer;
     user-select: none;
   }
-  :host([selectable]:hover) {
+  :host([selectable]:hover) .card {
     background: ${colorNeutralBackground1Hover};
     border-color: ${colorTransparentStrokeInteractive};
     box-shadow: ${shadow8};
   }
-  :host([selectable]:active) {
+  :host([selectable]:active) .card {
     background: ${colorNeutralBackground1Pressed};
     border-color: ${colorTransparentStrokeInteractive};
   }
-  :host([selectable][appearance='filled-alternative']:hover) {
+  :host([selectable][appearance='filled-alternative']:hover) .card {
     background: ${colorNeutralBackground2Hover};
   }
-  :host([selectable][appearance='filled-alternative']:active) {
+  :host([selectable][appearance='filled-alternative']:active) .card {
     background: ${colorNeutralBackground2Pressed};
   }
-  :host([selectable][appearance='outline']:hover) {
+  :host([selectable][appearance='outline']:hover) .card {
     background: ${colorTransparentBackgroundHover};
     border-color: ${colorNeutralStroke1Hover};
     box-shadow: none;
   }
-  :host([selectable][appearance='outline']:active) {
+  :host([selectable][appearance='outline']:active) .card {
     background: ${colorTransparentBackgroundPressed};
     border-color: ${colorNeutralStroke1Pressed};
   }
-  :host([selectable][appearance='subtle']:hover) {
+  :host([selectable][appearance='subtle']:hover) .card {
     background: ${colorSubtleBackgroundHover};
     border-color: ${colorTransparentStrokeInteractive};
     box-shadow: none;
   }
-  :host([selectable][appearance='subtle']:active) {
+  :host([selectable][appearance='subtle']:active) .card {
     background: ${colorSubtleBackgroundPressed};
   }
 
-  :host([selected]) {
+  .card[aria-selected='true'] {
     background: ${colorNeutralBackground1Selected};
     border-color: ${colorTransparentStrokeInteractive};
     cursor: pointer;
   }
-  :host([appearance='subtle'][selected]) {
+  :host([appearance='subtle']) .card[aria-selected='true'] {
     background: ${colorSubtleBackgroundSelected};
     border-color: ${colorNeutralStroke1Selected};
   }
-  :host([appearance='outline'][selected]) {
+  :host([appearance='outline']) .card[aria-selected='true'] {
     background: ${colorTransparentBackgroundSelected};
     border-color: ${colorNeutralStroke1Selected};
   }
-  :host([appearance='filled-alternative'][selected]) {
+  :host([appearance='filled-alternative']) .card[aria-selected='true'] {
     background: ${colorNeutralBackground2Selected};
   }
 
-  :host([disabled]) {
+  :host([disabled]) .card {
     background: ${colorNeutralBackgroundDisabled};
     border-color: ${colorTransparentStrokeDisabled};
     cursor: not-allowed;
     pointer-events: none;
     box-shadow: ${shadow2};
   }
-  :host([disabled][appearance='subtle']),
-  :host([disabled][appearance='outline']) {
+  :host([appearance='subtle']) .card[aria-disabled='true'],
+  :host([appearance='outline']) .card[aria-disabled='true'] {
     box-shadow: none;
   }
-  :host([disabled][appearance='outline']) {
+  :host([appearance='outline']) .card[aria-disabled='true'] {
     background: ${colorTransparentBackground};
   }
 `;
