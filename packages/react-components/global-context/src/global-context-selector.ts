@@ -5,7 +5,10 @@ import { getMajorVersion } from './utils';
 import { GlobalObject } from './types';
 
 const isBrowser = canUseDOM();
-const globalObject: GlobalObject = isBrowser ? window : global;
+const globalObject: GlobalObject = isBrowser
+  ? // eslint-disable-next-line no-restricted-globals
+    window
+  : global;
 
 // Identifier for the symbol, for easy idenfitifaction of symbols created by this util
 // Useful for clearning global object during SSR reloads
