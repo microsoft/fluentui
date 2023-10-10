@@ -111,16 +111,12 @@ const useRootBaseClassName = makeResetStyles({
     zIndex: 1,
   }),
 
-  '@supports (-moz-appearance:none)': {
+  // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+  '@supports (-moz-appearance:button)': {
     ...createCustomFocusIndicatorStyle({
-      borderColor: tokens.colorStrokeFocus2,
-      borderRadius: tokens.borderRadiusMedium,
-      borderWidth: '1px',
-      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
       boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}
       inset
     `,
-      zIndex: 1,
     }),
   },
 });
@@ -481,13 +477,13 @@ const useRootFocusStyles = makeStyles({
         ...shorthands.borderColor(tokens.colorStrokeFocus2),
       },
     }),
-    '@supports (-moz-appearance:none)': {
+
+    // BUGFIX: Mozilla specific styles (Mozilla BugID: 1857642)
+    '@supports (-moz-appearance:button)': {
       ...createCustomFocusIndicatorStyle({
-        ...shorthands.borderColor(tokens.colorStrokeFocus2),
         boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset,  0 0 0 ${tokens.strokeWidthThick} ${tokens.colorNeutralForegroundOnBrand} inset`,
         ':hover': {
           boxShadow: `${tokens.shadow2}, 0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2} inset`,
-          ...shorthands.borderColor(tokens.colorStrokeFocus2),
         },
       }),
     },
