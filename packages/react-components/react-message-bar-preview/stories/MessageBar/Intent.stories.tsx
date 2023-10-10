@@ -19,7 +19,7 @@ export const Intent = () => {
       {intents.map(intent => (
         <MessageBar key={intent} intent={intent}>
           <MessageBarBody>
-            <MessageBarTitle>{intent}</MessageBarTitle>
+            <MessageBarTitle>Intent {intent}</MessageBarTitle>
             Message providing information to the user with actionable insights. <Link>Link</Link>
           </MessageBarBody>
         </MessageBar>
