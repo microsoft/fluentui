@@ -1,11 +1,12 @@
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingSlots, RatingState } from './Rating.types';
 
 export const ratingClassNames: SlotClassNames<RatingSlots> = {
   root: 'fui-Rating',
-  // TODO: add class names for all slots on RatingSlots.
-  // Should be of the form `<slotName>: 'fui-Rating__<slotName>`
+  ratingLabel: 'fui-Rating__ratingLabel',
+  countLabel: 'fui-Rating__countLabel',
 };
 
 /**
@@ -13,10 +14,10 @@ export const ratingClassNames: SlotClassNames<RatingSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    display: 'inline-flex',
+    position: 'relative',
+    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
   },
-
-  // TODO add additional classes for different states and/or slots
 });
 
 /**
@@ -25,9 +26,6 @@ const useStyles = makeStyles({
 export const useRatingStyles_unstable = (state: RatingState): RatingState => {
   const styles = useStyles();
   state.root.className = mergeClasses(ratingClassNames.root, styles.root, state.root.className);
-
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
 
   return state;
 };

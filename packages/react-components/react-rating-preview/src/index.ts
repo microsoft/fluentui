@@ -6,3 +6,4 @@ export {
   useRating_unstable,
 } from './Rating';
 export type { RatingProps, RatingSlots, RatingState } from './Rating';
+export * from './RatingItem';
