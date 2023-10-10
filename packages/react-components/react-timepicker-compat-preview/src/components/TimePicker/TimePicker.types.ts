@@ -27,6 +27,26 @@ export type Hour =
   | 23
   | 24;
 
+/**
+ * Data structure for rendering options in the TimePicker.
+ */
+export type TimePickerOption = {
+  /**
+   * The Date object associated with the option.
+   */
+  date: Date;
+
+  /**
+   * A unique identifier for the option.
+   */
+  key: string;
+
+  /**
+   * The display text for the option within the Combobox dropdown.
+   */
+  text: string;
+};
+
 export type TimePickerSlots = ComboboxSlots;
 
 export type TimeSelectionEvents = SelectionEvents;

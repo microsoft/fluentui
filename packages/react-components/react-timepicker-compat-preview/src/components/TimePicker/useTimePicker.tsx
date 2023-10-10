@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useControllableState } from '@fluentui/react-utilities';
-import type { TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
+import type { TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
 import {
   dateToKey,
@@ -43,9 +43,14 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     [dateAnchor, endHour, startHour],
   );
 
-  const options: Date[] = React.useMemo(
-    () => getTimesBetween(dateStartAnchor, dateEndAnchor, increment),
-    [increment, dateStartAnchor, dateEndAnchor],
+  const options: TimePickerOption[] = React.useMemo(
+    () =>
+      getTimesBetween(dateStartAnchor, dateEndAnchor, increment).map(time => ({
+        date: time,
+        key: dateToKey(time),
+        text: formatTimeString(time, showSeconds, hour12),
+      })),
+    [dateStartAnchor, dateEndAnchor, increment, showSeconds, hour12],
   );
 
   const [selectedTime, setSelectedTime] = useControllableState<Date | undefined>({
@@ -55,8 +60,8 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   });
 
   const selectedOptions = React.useMemo(() => {
-    const selectedOption = options.find(date => dateToKey(date) === dateToKey(selectedTime));
-    return [dateToKey(selectedOption)];
+    const selectedOption = options.find(date => date.key === dateToKey(selectedTime));
+    return selectedOption ? [selectedOption.key] : [];
   }, [options, selectedTime]);
 
   const handleOptionSelect: ComboboxProps['onOptionSelect'] = React.useCallback(
@@ -68,23 +73,16 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     [setSelectedTime, onTimeSelect],
   );
 
-  const dateToText = React.useCallback(
-    (date: Date) => formatTimeString(date, showSeconds, hour12),
-    [hour12, showSeconds],
-  );
   const state = useCombobox_unstable(
     {
       ...rest,
       selectedOptions,
       onOptionSelect: handleOptionSelect,
-      children: options.map(date => {
-        const optionValue = dateToKey(date);
-        return (
-          <Option key={optionValue} value={optionValue}>
-            {dateToText(date)}
-          </Option>
-        );
-      }),
+      children: options.map(date => (
+        <Option key={date.key} value={date.key}>
+          {date.text}
+        </Option>
+      )),
     },
     ref,
   );
