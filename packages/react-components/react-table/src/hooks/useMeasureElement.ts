@@ -31,9 +31,9 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
       // cleanup previous container
       if (container.current) {
         resizeObserver.unobserve(container.current);
-        container.current.remove();
       }
 
+      container.current = undefined;
       if (el?.parentElement) {
         container.current = el.parentElement;
         resizeObserver.observe(container.current);

@@ -48,7 +48,9 @@ export const Reflow = () => {
             <MessageBarTitle>Descriptive title</MessageBarTitle>
             Message providing information to the user with actionable insights. <Link>Link</Link>
           </MessageBarBody>
-          <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}>
+          <MessageBarActions
+            containerAction={<Button aria-label="dismiss" appearance="transparent" icon={<DismissRegular />} />}
+          >
             <Button>Action</Button>
             <Button>Action</Button>
           </MessageBarActions>
@@ -63,7 +65,7 @@ Reflow.parameters = {
     description: {
       story: [
         'The `MessageBar` will reflow by default once the body content wraps to a second line. This changes the layout',
-        'of the actions in the MessageBar. ',
+        'of the actions in the MessageBar.',
       ].join('\n'),
     },
   },

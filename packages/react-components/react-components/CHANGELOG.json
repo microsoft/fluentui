@@ -2,6 +2,105 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 09 Oct 2023 20:45:41 GMT",
+      "tag": "@fluentui/react-components_v9.34.2",
+      "version": "9.34.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "a7cc521cea9413ee1739492a65dde3b35c30d60f",
+            "comment": "react-dialog/chore: replace harcoded transparent to token"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "f2a882cedb19f177396e960079a3c6b9a2e7c64d",
+            "comment": "fix: MenuSplitGroup styles should target MenuItems"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add custom style hook to MessageBar."
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "8eee0cd4867ef5a44628bc7b7bf5f6a41b2a6dba",
+            "comment": "fix: sync internal value of canRender with presence"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "53f8d9c7e4f4c76a81194918a76d537eced78517",
+            "comment": "fix: Add zIndex=1 to PopoverSurface when rendering inline to avoid elements positioned relative to render on top of it."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "patch: update types for custom styles hook context"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "1dae948ae2b74fb25bc63817f1cd0c42ffe73f85",
+            "comment": "fix(useMeasureElement): Should not remove parent element"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4",
+            "comment": "fix: remove row focus background color "
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "49f0630d6bdf94eadc671ac9fae4805e0a9df1ab",
+            "comment": "chore: add e2e test for useOnScrollOutside"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "fd51d508488549b816c5d7d0d3f89b2bac2b1065",
+            "comment": "feat: make dialog slot internal to be used for composition only"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "77070241677c9cea1de509948ffa5d999050c959",
+            "comment": "fix: Use caption 1 when size is small or medium."
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "60a911e66db784521a35c1e1ac0362a3f2d8169f",
+            "comment": "feat: Add shape prop to MessageBar"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add MessageBar types to custom style hook context"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "93d4ee6dd801b672ade6ce41345cfbd9010af01a",
+            "comment": "chore: fix typos"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Oct 2023 15:25:29 GMT",
       "tag": "@fluentui/react-components_v9.34.1",
       "version": "9.34.1",
