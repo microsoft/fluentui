@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-shared-contexts
 
-This log was last generated on Mon, 02 Oct 2023 08:56:04 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2023 20:45:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.10.0)
+
+Mon, 09 Oct 2023 20:45:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-shared-contexts_v9.9.2..@fluentui/react-shared-contexts_v9.10.0)
+
+### Minor changes
+
+- feat: Add MessageBar types to custom style hook context ([PR #29431](https://github.com/microsoft/fluentui/pull/29431) by lingfangao@hotmail.com)
 
 ## [9.9.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-shared-contexts_v9.9.2)
 

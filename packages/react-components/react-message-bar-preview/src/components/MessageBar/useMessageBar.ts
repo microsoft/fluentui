@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { useAnnounce_unstable } from '@fluentui/react-shared-contexts';
 import type { MessageBarProps, MessageBarState } from './MessageBar.types';
 import { getIntentIcon } from './getIntentIcon';
@@ -15,9 +15,9 @@ import { useMessageBarTransitionContext } from '../../contexts/messageBarTransit
  * @param props - props from this instance of MessageBar
  * @param ref - reference to root HTMLElement of MessageBar
  */
-export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLElement>): MessageBarState => {
-  const { layout = 'auto', intent = 'info', politeness } = props;
-  const computedPolitness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
+export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HTMLDivElement>): MessageBarState => {
+  const { layout = 'auto', intent = 'info', politeness, shape = 'rounded' } = props;
+  const computedPoliteness = politeness ?? intent === 'info' ? 'polite' : 'assertive';
   const autoReflow = layout === 'auto';
   const { ref: reflowRef, reflowing } = useMessageBarReflow(autoReflow);
   const computedLayout = autoReflow ? (reflowing ? 'multiline' : 'singleline') : layout;
@@ -25,14 +25,15 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
   const actionsRef = React.useRef<HTMLDivElement | null>(null);
   const bodyRef = React.useRef<HTMLDivElement | null>(null);
   const { announce } = useAnnounce_unstable();
+  const titleId = useId();
 
   React.useEffect(() => {
     const bodyMessage = bodyRef.current?.textContent;
     const actionsMessage = actionsRef.current?.textContent;
 
     const message = [bodyMessage, actionsMessage].filter(Boolean).join(',');
-    announce(message, { polite: computedPolitness === 'polite', alert: computedPolitness === 'assertive' });
-  }, [bodyRef, actionsRef, announce, computedPolitness]);
+    announce(message, { polite: computedPoliteness === 'polite', alert: computedPoliteness === 'assertive' });
+  }, [bodyRef, actionsRef, announce, computedPoliteness]);
 
   return {
     components: {
@@ -40,8 +41,10 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
       icon: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref: useMergedRefs(ref, reflowRef, nodeRef),
+        role: 'group',
+        'aria-labelledby': titleId,
         ...props,
       }),
       { elementType: 'div' },
@@ -57,5 +60,7 @@ export const useMessageBar_unstable = (props: MessageBarProps, ref: React.Ref<HT
     transitionClassName,
     actionsRef,
     bodyRef,
+    titleId,
+    shape,
   };
 };

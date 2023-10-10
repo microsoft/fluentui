@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
-import { ILineChartProps } from '@fluentui/react-charting';
+import { ILineChartProps, DataVizPalette } from '@fluentui/react-charting';
 
 interface IAreaChartBasicState {
   width: number;
@@ -162,14 +162,17 @@ export class AreaChartMultipleExample extends React.Component<{}, IAreaChartBasi
       {
         legend: 'legend1',
         data: chart1Points,
+        color: DataVizPalette.color4,
       },
       {
         legend: 'legend2',
         data: chart2Points,
+        color: DataVizPalette.color5,
       },
       {
         legend: 'legend3',
         data: chart3Points,
+        color: DataVizPalette.color6,
       },
     ];
 

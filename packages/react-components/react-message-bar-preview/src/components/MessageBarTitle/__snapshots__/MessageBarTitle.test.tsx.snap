@@ -4,6 +4,7 @@ exports[`MessageBarTitle renders a default state 1`] = `
 <div>
   <span
     class="fui-MessageBarTitle"
+    id=""
   >
     Default MessageBarTitle
   </span>

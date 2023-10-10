@@ -4,18 +4,6 @@ import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import { useMotion } from '@fluentui/react-motion-preview';
 
-const visibleKeyframe = {
-  ...shorthands.borderRadius(0),
-  opacity: 1,
-  transform: 'translate3D(0, 0, 0) scale(1)',
-};
-
-const hiddenKeyframe = {
-  ...shorthands.borderRadius('36px'),
-  opacity: 0,
-  transform: 'translate3D(-100%, 0, 0) scale(0.5)',
-};
-
 const useStyles = makeStyles({
   root: {
     ...shorthands.border('2px', 'solid', '#ccc'),
@@ -27,24 +15,23 @@ const useStyles = makeStyles({
   },
 
   drawer: {
-    animationDuration: tokens.durationGentle,
-    willChange: 'opacity, transform, border-radius',
+    opacity: 0,
+    transform: 'translate3D(-100%, 0, 0)',
+    transitionDuration: tokens.durationGentle,
+    willChange: 'opacity, transform',
+  },
+
+  drawerVisible: {
+    opacity: 1,
+    transform: 'translate3D(0, 0, 0)',
   },
 
   drawerEntering: {
-    animationTimingFunction: tokens.curveDecelerateMid,
-    animationName: {
-      from: hiddenKeyframe,
-      to: visibleKeyframe,
-    },
+    transitionTimingFunction: tokens.curveDecelerateMid,
   },
 
   drawerExiting: {
-    animationTimingFunction: tokens.curveAccelerateMin,
-    animationName: {
-      from: visibleKeyframe,
-      to: hiddenKeyframe,
-    },
+    transitionTimingFunction: tokens.curveAccelerateMin,
   },
 
   content: {
@@ -80,8 +67,8 @@ const useStyles = makeStyles({
 export const MotionCustom = () => {
   const styles = useStyles();
 
-  const [isOpen, setIsOpen] = React.useState(false);
-  const motion = useMotion<HTMLDivElement>(isOpen);
+  const [open, setOpen] = React.useState(false);
+  const motion = useMotion<HTMLDivElement>(open);
 
   return (
     <div className={styles.root}>
@@ -90,6 +77,7 @@ export const MotionCustom = () => {
         open={motion}
         className={mergeClasses(
           styles.drawer,
+          motion.active && styles.drawerVisible,
           motion.type === 'entering' && styles.drawerEntering,
           motion.type === 'exiting' && styles.drawerExiting,
         )}
@@ -101,7 +89,7 @@ export const MotionCustom = () => {
                 appearance="subtle"
                 aria-label="Close"
                 icon={<Dismiss24Regular />}
-                onClick={() => setIsOpen(false)}
+                onClick={() => setOpen(false)}
               />
             }
           >
@@ -123,8 +111,8 @@ export const MotionCustom = () => {
           motion.type === 'idle' && styles.contentIdle,
         )}
       >
-        <Button appearance="primary" onClick={() => setIsOpen(!isOpen)}>
-          {isOpen ? 'Close' : 'Open'}
+        <Button appearance="primary" onClick={() => setOpen(!open)}>
+          {open ? 'Close' : 'Open'}
         </Button>
 
         {Array.from({ length: 50 }, (_, i) => (
@@ -143,9 +131,9 @@ MotionCustom.parameters = {
   docs: {
     description: {
       story: [
-        'Drawer components have transition animations built-in. However, you can customize the animation by using the `useMotion` hook.',
+        'Drawer components have motion built-in. However, you can customize the animation by using the `useMotion` hook.',
         'The hook returns properties that can be used to determine the state of the animation, and can be passed to the `open` prop of the drawer.',
-        'With this, you can create your own custom CSS animation and apply it to the drawer.',
+        'With this, you can create your own custom CSS animation/transition and apply it to the drawer.',
       ].join('\n'),
     },
   },

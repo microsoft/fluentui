@@ -3,7 +3,9 @@
 exports[`MessageBar renders a default state 1`] = `
 <div>
   <div
+    aria-labelledby="fui-1"
     class="fui-MessageBar"
+    role="group"
   >
     <div
       class="fui-MessageBar__icon"

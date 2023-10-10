@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 02 Oct 2023 07:36:46 GMT and should not be manually modified.
+This log was last generated on Mon, 09 Oct 2023 07:37:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.112.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.2)
+
+Mon, 09 Oct 2023 07:37:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.1..@fluentui/react_v8.112.2)
+
+### Patches
+
+- fix: DetailsList columns render correctly when the list is wider than the viewport ([PR #29415](https://github.com/microsoft/fluentui/pull/29415) by seanmonahan@microsoft.com)
+
+## [8.112.1](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.1)
+
+Wed, 04 Oct 2023 07:38:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.0..@fluentui/react_v8.112.1)
+
+### Patches
+
+- fix: GroupedListV2 scrollToIndex scrolls to correct index ([PR #29332](https://github.com/microsoft/fluentui/pull/29332) by seanmonahan@microsoft.com)
 
 ## [8.112.0](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.0)
 

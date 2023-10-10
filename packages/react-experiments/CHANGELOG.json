@@ -2,6 +2,36 @@
   "name": "@fluentui/react-experiments",
   "entries": [
     {
+      "date": "Mon, 09 Oct 2023 07:37:25 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.112",
+      "version": "8.14.112",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.112.2",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 07:38:36 GMT",
+      "tag": "@fluentui/react-experiments_v8.14.111",
+      "version": "8.14.111",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-experiments",
+            "comment": "Bump @fluentui/react to v8.112.1",
+            "commit": "44fc4425708d04018dbfa0875f453df324068fd7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 03 Oct 2023 07:46:33 GMT",
       "tag": "@fluentui/react-experiments_v8.14.110",
       "version": "8.14.110",
