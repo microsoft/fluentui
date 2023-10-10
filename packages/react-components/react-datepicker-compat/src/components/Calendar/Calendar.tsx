@@ -297,7 +297,10 @@ export const Calendar: React.FunctionComponent<CalendarProps> = React.forwardRef
           break;
       }
     };
-    const showMonthPickerAsOverlay = getShowMonthPickerAsOverlay(props);
+    const showMonthPickerAsOverlay = getShowMonthPickerAsOverlay({
+      isDayPickerVisible: isDayPickerVisibleProp,
+      showMonthPickerAsOverlay: showMonthPickerAsOverlayProp,
+    });
 
     const monthPickerOnly = !showMonthPickerAsOverlay && !isDayPickerVisible;
 
