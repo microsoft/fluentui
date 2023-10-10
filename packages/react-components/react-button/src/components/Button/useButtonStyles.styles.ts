@@ -19,10 +19,10 @@ const buttonSpacingLarge = '8px';
 const buttonSpacingLargeWithIcon = '7px';
 
 /* Firefox has box shadow sizing issue at some zoom levels
- * this will ensure the boxShadow is always uniform
+ * this will ensure the inset boxShadow is always uniform
  * without affecting other browser platforms
  */
-const boxShadowStrokeWidthThin = `calc(${tokens.strokeWidthThin} + 0.25px)`;
+const boxShadowStrokeWidthThinMoz = `calc(${tokens.strokeWidthThin} + 0.25px)`;
 
 const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
@@ -105,11 +105,24 @@ const useRootBaseClassName = makeResetStyles({
     borderRadius: tokens.borderRadiusMedium,
     borderWidth: '1px',
     outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
-    boxShadow: `0 0 0 ${boxShadowStrokeWidthThin} ${tokens.colorStrokeFocus2}
+    boxShadow: `0 0 0 ${tokens.strokeWidthThin} ${tokens.colorStrokeFocus2}
       inset
     `,
     zIndex: 1,
   }),
+
+  '@supports (-moz-appearance:none)': {
+    ...createCustomFocusIndicatorStyle({
+      borderColor: tokens.colorStrokeFocus2,
+      borderRadius: tokens.borderRadiusMedium,
+      borderWidth: '1px',
+      outline: `${tokens.strokeWidthThick} solid ${tokens.colorTransparentStroke}`,
+      boxShadow: `0 0 0 ${boxShadowStrokeWidthThinMoz} ${tokens.colorStrokeFocus2}
+      inset
+    `,
+      zIndex: 1,
+    }),
+  },
 });
 
 const useIconBaseClassName = makeResetStyles({
