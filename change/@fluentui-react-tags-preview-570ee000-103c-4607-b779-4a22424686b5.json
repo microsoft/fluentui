@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: useTag `getNativeElementProps` should conditionally use 'button' or 'span'",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

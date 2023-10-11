@@ -55,8 +55,10 @@ export const useSplitButton_unstable = (
     },
     renderByDefault: true,
     elementType: Button,
-  }); // Resolve menu button's aria-labelledby to be labelled by the primary action button if not a label was not provided
-  // by the user.
+  });
+
+  // Resolve menu button's aria-labelledby to be labelled by the primary action button if no label was provided by the
+  // user.
   if (
     menuButtonShorthand &&
     primaryActionButtonShorthand &&
@@ -65,6 +67,7 @@ export const useSplitButton_unstable = (
   ) {
     menuButtonShorthand['aria-labelledby'] = primaryActionButtonShorthand.id;
   }
+
   return {
     // Props passed at the top-level
     appearance,

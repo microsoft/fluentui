@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { HorizontalBarChart, IChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
 export const HorizontalBarChartBenchmarkExample: React.FunctionComponent<{}> = () => {
   const hideRatio: boolean[] = [true, false];
@@ -9,17 +8,34 @@ export const HorizontalBarChartBenchmarkExample: React.FunctionComponent<{}> = (
     {
       chartTitle: 'one',
       chartData: [
-        { legend: 'one', data: 50, horizontalBarChartdata: { x: 10, y: 100 }, color: DefaultPalette.tealDark },
+        {
+          legend: 'one',
+          data: 50,
+          horizontalBarChartdata: { x: 10, y: 100 },
+          color: getColorFromToken(DataVizPalette.color25),
+        },
       ],
     },
     {
       chartTitle: 'two',
-      chartData: [{ legend: 'two', data: 30, horizontalBarChartdata: { x: 30, y: 200 }, color: DefaultPalette.purple }],
+      chartData: [
+        {
+          legend: 'two',
+          data: 30,
+          horizontalBarChartdata: { x: 30, y: 200 },
+          color: getColorFromToken(DataVizPalette.color26),
+        },
+      ],
     },
     {
       chartTitle: 'three',
       chartData: [
-        { legend: 'three', data: 5, horizontalBarChartdata: { x: 15, y: 50 }, color: DefaultPalette.redDark },
+        {
+          legend: 'three',
+          data: 5,
+          horizontalBarChartdata: { x: 15, y: 50 },
+          color: getColorFromToken(DataVizPalette.color27),
+        },
       ],
     },
   ];

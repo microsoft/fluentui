@@ -29,6 +29,12 @@ const useStyles = makeStyles({
     ...createSlideStyles(10),
   },
 
+  inline: {
+    // When rendering inline, the PopoverSurface will be rendered under relatively positioned elements such as Input.
+    // This is due to the surface being positioned as absolute, therefore zIndex: 1 ensures that won't happen.
+    zIndex: 1,
+  },
+
   inverted: {
     backgroundColor: tokens.colorNeutralBackgroundStatic,
     color: tokens.colorNeutralForegroundStaticInverted,
@@ -64,6 +70,7 @@ export const usePopoverSurfaceStyles_unstable = (state: PopoverSurfaceState): Po
   state.root.className = mergeClasses(
     popoverSurfaceClassNames.root,
     styles.root,
+    state.inline && styles.inline,
     state.size === 'small' && styles.smallPadding,
     state.size === 'medium' && styles.mediumPadding,
     state.size === 'large' && styles.largePadding,

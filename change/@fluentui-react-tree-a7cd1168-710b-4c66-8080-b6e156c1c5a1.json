@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities",
+  "packageName": "@fluentui/react-tree",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: adds console error when mixing Tree and FlatTree components",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

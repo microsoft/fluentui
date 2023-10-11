@@ -2,6 +2,21 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Fri, 29 Sep 2023 07:45:30 GMT",
+      "tag": "@fluentui/utilities_v8.13.19",
+      "version": "8.13.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "d701af33ee0742cbbbc765be8eb9cec273136953",
+            "comment": "fix: focusAsync still works even if past animationFrame fails to run"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 14 Jul 2023 07:36:55 GMT",
       "tag": "@fluentui/utilities_v8.13.18",
       "version": "8.13.18",

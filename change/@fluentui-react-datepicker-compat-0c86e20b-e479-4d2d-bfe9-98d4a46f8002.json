@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: When the month picker is shown as overlay due to space restrictions, don't close the popover when selecting a month.",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}

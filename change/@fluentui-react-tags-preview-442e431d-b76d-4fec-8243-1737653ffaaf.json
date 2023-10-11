@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: update props descriptions",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
