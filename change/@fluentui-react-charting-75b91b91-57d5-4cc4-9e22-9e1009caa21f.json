@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "Fixing inner value change bug for donut",
+  "comment": "Fixing bug: Displayed value in center does not update on hovering over a different segment on Donut",
   "packageName": "@fluentui/react-charting",
   "email": "srmukher@microsoft.com",
   "dependentChangeType": "patch"
