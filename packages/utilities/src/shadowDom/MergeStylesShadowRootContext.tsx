@@ -1,33 +1,33 @@
 import * as React from 'react';
 import { GLOBAL_STYLESHEET_KEY } from '@fluentui/merge-styles';
 import { FocusRectsProvider } from '../FocusRectsProvider';
-import { useMergeStylesRootStylesheets_unstable } from './MergeStylesRootContext';
-/**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
- */
+import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
+
 export type MergeStylesShadowRootContextValue = {
+  /**
+   * Map of stylesheets available in the context.
+   */
   stylesheets: Map<string, CSSStyleSheet>;
+
+  /**
+   * Shadow root for this context.
+   */
   shadowRoot?: ShadowRoot | null;
 };
-
-// const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue>({
-//   stylesheets: new Map(),
-// });
 
 const MergeStylesShadowRootContext = React.createContext<MergeStylesShadowRootContextValue | undefined>(undefined);
 
-/**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
- */
 export type MergeStylesShadowRootProviderProps = {
+  /**
+   * Shadow root for this context.
+   */
   shadowRoot?: ShadowRoot | null;
 };
 
 /**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
+ * Context for a shadow root.
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const MergeStylesShadowRootProvider_unstable: React.FC<MergeStylesShadowRootProviderProps> = ({
+export const MergeStylesShadowRootProvider: React.FC<MergeStylesShadowRootProviderProps> = ({
   shadowRoot,
   ...props
 }) => {
@@ -61,8 +61,8 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
   stylesheetKey,
   children,
 }) => {
-  useAdoptedStylesheet_unstable(GLOBAL_STYLESHEET_KEY);
-  useAdoptedStylesheet_unstable(stylesheetKey);
+  useAdoptedStylesheet(GLOBAL_STYLESHEET_KEY);
+  useAdoptedStylesheet(stylesheetKey);
 
   const inShadow = useHasMergeStylesShadowRootContext();
 
@@ -70,16 +70,16 @@ export const MergeStylesShadowRootConsumer: React.FC<MergeStylesContextConsumerP
 };
 
 const GlobalStyles: React.FC = props => {
-  useAdoptedStylesheet_unstable(GLOBAL_STYLESHEET_KEY);
+  useAdoptedStylesheet(GLOBAL_STYLESHEET_KEY);
   return null;
 };
 
 /**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
+ * Use adopted stylesheets in the parent shadow root.
  */
-export const useAdoptedStylesheet_unstable = (stylesheetKey: string): boolean => {
-  const shadowCtx = useMergeStylesShadowRootContext_unstable();
-  const rootMergeStyles = useMergeStylesRootStylesheets_unstable();
+export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
+  const shadowCtx = useMergeStylesShadowRootContext();
+  const rootMergeStyles = useMergeStylesRootStylesheets();
   // console.log('useAdoptedStylesheets', stylesheetKey);
 
   if (!shadowCtx) {
@@ -97,10 +97,18 @@ export const useAdoptedStylesheet_unstable = (stylesheetKey: string): boolean =>
   return true;
 };
 
+/**
+ * Test if a context is available.
+ * @returns true if there is a context.
+ */
 export const useHasMergeStylesShadowRootContext = () => {
-  return !!useMergeStylesShadowRootContext_unstable();
+  return !!useMergeStylesShadowRootContext();
 };
 
-export const useMergeStylesShadowRootContext_unstable = () => {
+/**
+ * Get a reference to the shadow root context.
+ * @returns The context for the shadow root.
+ */
+export const useMergeStylesShadowRootContext = () => {
   return React.useContext(MergeStylesShadowRootContext);
 };
