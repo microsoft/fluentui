@@ -309,7 +309,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </g>
       );
     });
-    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale) {
+    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale && !this.props.hideLabels) {
       let showLabel = false;
       let barLabel = 0;
       if (this._noLegendHighlighted()) {
@@ -323,7 +323,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           }
         });
       }
-      if (!this.props.hideLabels && showLabel) {
+      if (showLabel) {
         bars.push(
           <text
             key="text"
