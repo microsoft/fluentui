@@ -2,6 +2,45 @@
   "name": "@fluentui/react-message-bar-preview",
   "entries": [
     {
+      "date": "Wed, 11 Oct 2023 13:54:24 GMT",
+      "tag": "@fluentui/react-message-bar-preview_v0.2.1",
+      "version": "0.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "5a1cee209858ce4e5c1c304755ff74bba0148193",
+            "comment": "fix: Align icons with text content"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "aed130bfbf4ac88947a697b723387fd8d8382686",
+            "comment": "fix: MessageBarActions should not overflow into grid padding"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.48",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.16",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar-preview",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Oct 2023 20:45:42 GMT",
       "tag": "@fluentui/react-message-bar-preview_v0.2.0",
       "version": "0.2.0",

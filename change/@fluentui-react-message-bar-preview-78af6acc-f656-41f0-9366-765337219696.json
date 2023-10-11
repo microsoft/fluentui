@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Align icons with text content",
-  "packageName": "@fluentui/react-message-bar-preview",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

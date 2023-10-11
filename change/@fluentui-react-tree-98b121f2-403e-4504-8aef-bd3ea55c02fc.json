@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bugfix: Tree indentation broken due to wrongly consuming root context instead of subtree context",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
