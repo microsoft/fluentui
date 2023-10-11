@@ -11,16 +11,9 @@ export const textClassNames: SlotClassNames<TextSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {
-    fontFamily: tokens.fontFamilyBase,
-    fontSize: tokens.fontSizeBase300,
-    lineHeight: tokens.lineHeightBase300,
-    fontWeight: tokens.fontWeightRegular,
-    textAlign: 'start',
-    display: 'inline',
+  wrap: {
     whiteSpace: 'normal',
     ...shorthands.overflow('visible'),
-    textOverflow: 'clip',
   },
   nowrap: {
     whiteSpace: 'nowrap',
@@ -28,6 +21,12 @@ const useStyles = makeStyles({
   },
   truncate: {
     textOverflow: 'ellipsis',
+  },
+  noTruncate: {
+    textOverflow: 'clip',
+  },
+  inline: {
+    display: 'inline',
   },
   block: {
     display: 'block',
@@ -51,6 +50,10 @@ const useStyles = makeStyles({
   base200: {
     fontSize: tokens.fontSizeBase200,
     lineHeight: tokens.lineHeightBase200,
+  },
+  base300: {
+    fontSize: tokens.fontSizeBase300,
+    lineHeight: tokens.lineHeightBase300,
   },
   base400: {
     fontSize: tokens.fontSizeBase400,
@@ -80,11 +83,17 @@ const useStyles = makeStyles({
     fontSize: tokens.fontSizeHero1000,
     lineHeight: tokens.lineHeightHero1000,
   },
-  monospace: {
+  fontBase: {
+    fontFamily: tokens.fontFamilyBase,
+  },
+  fontMonospace: {
     fontFamily: tokens.fontFamilyMonospace,
   },
-  numeric: {
+  fontNumeric: {
     fontFamily: tokens.fontFamilyNumeric,
+  },
+  weightRegular: {
+    fontWeight: tokens.fontWeightRegular,
   },
   weightMedium: {
     fontWeight: tokens.fontWeightMedium,
@@ -94,6 +103,9 @@ const useStyles = makeStyles({
   },
   weightBold: {
     fontWeight: tokens.fontWeightBold,
+  },
+  alignStart: {
+    textAlign: 'start',
   },
   alignCenter: {
     textAlign: 'center',
@@ -114,16 +126,19 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
 
   state.root.className = mergeClasses(
     textClassNames.root,
-    styles.root,
+    state.wrap === true && styles.wrap,
     state.wrap === false && styles.nowrap,
-    state.truncate && styles.truncate,
-    state.block && styles.block,
+    state.truncate === true && styles.truncate,
+    state.truncate === false && styles.noTruncate,
+    state.block === true && styles.block,
+    state.block === false && styles.inline,
     state.italic && styles.italic,
     state.underline && styles.underline,
     state.strikethrough && styles.strikethrough,
     state.underline && state.strikethrough && styles.strikethroughUnderline,
     state.size === 100 && styles.base100,
     state.size === 200 && styles.base200,
+    state.size === 300 && styles.base300,
     state.size === 400 && styles.base400,
     state.size === 500 && styles.base500,
     state.size === 600 && styles.base600,
@@ -131,11 +146,14 @@ export const useTextStyles_unstable = (state: TextState): TextState => {
     state.size === 800 && styles.hero800,
     state.size === 900 && styles.hero900,
     state.size === 1000 && styles.hero1000,
-    state.font === 'monospace' && styles.monospace,
-    state.font === 'numeric' && styles.numeric,
+    state.font === 'base' && styles.fontBase,
+    state.font === 'monospace' && styles.fontMonospace,
+    state.font === 'numeric' && styles.fontNumeric,
+    state.weight === 'regular' && styles.weightRegular,
     state.weight === 'medium' && styles.weightMedium,
     state.weight === 'semibold' && styles.weightSemibold,
     state.weight === 'bold' && styles.weightBold,
+    state.align === 'start' && styles.alignStart,
     state.align === 'center' && styles.alignCenter,
     state.align === 'end' && styles.alignEnd,
     state.align === 'justify' && styles.alignJustify,

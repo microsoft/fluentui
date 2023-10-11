@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Text: Adds prop disableDefaultStyling",
+  "packageName": "@fluentui/react-text",
+  "email": "swese44@gmail.com",
+  "dependentChangeType": "patch"
+}

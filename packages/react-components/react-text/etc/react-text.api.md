@@ -113,6 +113,7 @@ export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
 export type TextProps = ComponentProps<TextSlots> & {
     align?: 'start' | 'center' | 'end' | 'justify';
     block?: boolean;
+    disableDefaultStyling?: boolean;
     font?: 'base' | 'monospace' | 'numeric';
     italic?: boolean;
     size?: 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900 | 1000;
@@ -129,7 +130,7 @@ export type TextSlots = {
 };
 
 // @public
-export type TextState = ComponentState<TextSlots> & Required<Pick<TextProps, 'align' | 'block' | 'font' | 'italic' | 'size' | 'strikethrough' | 'truncate' | 'underline' | 'weight' | 'wrap'>>;
+export type TextState = ComponentState<TextSlots> & Pick<TextProps, TextStateProps>;
 
 // @public
 export const Title1: FunctionComponent<TextPresetProps>;

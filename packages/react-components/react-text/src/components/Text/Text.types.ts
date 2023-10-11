@@ -26,6 +26,13 @@ export type TextProps = ComponentProps<TextSlots> & {
   block?: boolean;
 
   /**
+   * Suppresses all default styling. Styles will only be applied for provided props.
+   *
+   * @default false
+   */
+  disableDefaultStyling?: boolean;
+
+  /**
    * Applies the font family to the content.
    *
    * @default base
@@ -88,13 +95,20 @@ export type TextProps = ComponentProps<TextSlots> & {
  */
 export type TextPresetProps = Omit<TextProps, 'font' | 'size' | 'weight'>;
 
+export type TextStateProps =
+  | 'align'
+  | 'block'
+  | 'disableDefaultStyling'
+  | 'font'
+  | 'italic'
+  | 'size'
+  | 'strikethrough'
+  | 'truncate'
+  | 'underline'
+  | 'weight'
+  | 'wrap';
+
 /**
  * State used in rendering Text
  */
-export type TextState = ComponentState<TextSlots> &
-  Required<
-    Pick<
-      TextProps,
-      'align' | 'block' | 'font' | 'italic' | 'size' | 'strikethrough' | 'truncate' | 'underline' | 'weight' | 'wrap'
-    >
-  >;
+export type TextState = ComponentState<TextSlots> & Pick<TextProps, TextStateProps>;
