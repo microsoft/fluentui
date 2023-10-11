@@ -116,18 +116,18 @@ const Subtree: React.FC<SubtreeProps> = ({ onDataLoaded, onDataLoading, value })
         </TreeItemLayout>
       </FlatTreeItem>
       {open &&
-        items.map((person, index) => (
+        items.map((item, index) => (
           <FlatTreeItem
-            key={person.value}
+            key={item.value}
             ref={index === 0 ? firstItemRef : null}
             parentValue={value}
-            value={person.value}
+            value={item.value}
             aria-level={2}
             aria-setsize={items.length}
             aria-posinset={index + 1}
             itemType="leaf"
           >
-            <TreeItemLayout>{person.name}</TreeItemLayout>
+            <TreeItemLayout>{item.name}</TreeItemLayout>
           </FlatTreeItem>
         ))}
     </>
