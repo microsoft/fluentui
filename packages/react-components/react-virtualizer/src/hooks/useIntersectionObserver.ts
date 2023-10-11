@@ -1,10 +1,12 @@
 import type { Dispatch, MutableRefObject, SetStateAction } from 'react';
 import * as React from 'react';
 import { useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 const { useCallback, useState, useRef } = React;
 import { useMutationObserver } from './useMutationObserver';
 
+const { targetDocument } = useFluent();
 /**
  * This function will take the rootMargin and flip the sides if we are in RTL based on the computed reading direction of the target element.
  * @param ltrRootMargin the margin to be processed and flipped if required
@@ -88,12 +90,14 @@ export const useIntersectionObserver = (
     [ltrRootMargin, observerInit, options?.root],
   );
 
-  // Observer only dir attribute changes in the document
-  useMutationObserver(document, mutationObserverCallback, {
-    attributes: true,
-    subtree: true,
-    attributeFilter: ['dir'],
-  });
+  if (targetDocument) {
+    // Observer only dir attribute changes in the document
+    useMutationObserver(targetDocument, mutationObserverCallback, {
+      attributes: true,
+      subtree: true,
+      attributeFilter: ['dir'],
+    });
+  }
 
   // Observer elements in passed in list and clean up previous list
   // This effect is only triggered when observerList is updated
