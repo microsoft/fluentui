@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: add warning for resolution problems",
+  "packageName": "@fluentui/react-jsx-runtime",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

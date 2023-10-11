@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { BreadcrumbProps, BreadcrumbState } from './Breadcrumb.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 
@@ -34,7 +34,7 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
       list: 'ol',
     },
     root: slot.always(
-      getNativeElementProps('nav', {
+      getIntrinsicElementProps('nav', {
         ref,
         'aria-label': props['aria-label'] ?? 'breadcrumb',
         ...(focusMode === 'arrow' ? focusAttributes : {}),
