@@ -5,10 +5,11 @@ import generator from './index';
 
 describe('react-component generator', () => {
   let tree: Tree;
+  let metadata: ReturnType<typeof createLibrary>['metadata'];
 
   beforeEach(() => {
     tree = createTreeWithEmptyWorkspace();
-    createLibrary(tree, 'react-one');
+    metadata = createLibrary(tree, 'react-one').metadata;
   });
 
   describe(`assertions`, () => {
@@ -148,6 +149,15 @@ describe('react-component generator', () => {
     `);
   });
 
+  it(`should remove stores/.gitkeep`, async () => {
+    const gitkeepPath = joinPathFragments(metadata.paths.storiesRoot, '.gitkeep');
+    expect(tree.exists(gitkeepPath)).toBe(true);
+
+    await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
+
+    expect(tree.exists(gitkeepPath)).toBe(false);
+  });
+
   it('should create component story', async () => {
     await generator(tree, { project: '@proj/react-one', name: 'MyOne' });
 
@@ -198,5 +208,9 @@ function createLibrary(tree: Tree, name: string, options: Partial<{ version: str
   tree.write(joinPathFragments(root, 'stories/.gitkeep'), '');
   tree.write(joinPathFragments(sourceRoot, 'index.ts'), 'export {}');
 
-  return tree;
+  const metadata = {
+    paths: { root, sourceRoot, storiesRoot: joinPathFragments(root, 'stories') },
+  };
+
+  return { tree, metadata };
 }

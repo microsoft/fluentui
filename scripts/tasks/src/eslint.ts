@@ -1,12 +1,13 @@
-import { eslintTask } from 'just-scripts';
-import * as path from 'path';
-import { eslintConstants } from '@fluentui/scripts-monorepo';
 import * as fs from 'fs';
+import * as path from 'path';
+
+import { eslintConstants } from '@fluentui/scripts-monorepo';
+import { eslintTask } from 'just-scripts';
 
 const files = [path.join(process.cwd(), eslintConstants.directory)];
 const storiesPath = path.join(process.cwd(), 'stories');
 
-if (fs.existsSync(storiesPath)) {
+if (hasProjectStories(storiesPath)) {
   files.push(storiesPath);
 }
 
@@ -20,3 +21,15 @@ export const eslint = eslintTask({
   // (to display more, edit the `slice` call in the `display` function of node_modules/eslint/lib/linter/timing.js)
   timing: process.argv.includes('--timing'),
 });
+
+function hasProjectStories(root: string) {
+  const gitKeep = path.join(root, '.gitkeep');
+  if (!fs.existsSync(root)) {
+    return false;
+  }
+  if (fs.existsSync(gitKeep)) {
+    return false;
+  }
+
+  return true;
+}
