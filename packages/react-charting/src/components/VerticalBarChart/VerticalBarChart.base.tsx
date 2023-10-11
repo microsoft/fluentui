@@ -672,6 +672,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     if (this.state.selectedLegend === legendTitle) {
       this.setState({
         selectedLegend: '',
+        activeLegend: '',
       });
     } else {
       this.setState({
