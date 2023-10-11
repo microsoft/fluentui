@@ -10,10 +10,10 @@ declare global {
   }
 }
 
-/**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
- */
 export type MergeStylesRootContextValue = {
+  /**
+   * Map of stylesheets available in the context.
+   */
   stylesheets: Map<string, CSSStyleSheet>;
 };
 
@@ -21,19 +21,24 @@ const MergeStylesRootContext = React.createContext<MergeStylesRootContextValue>(
   stylesheets: new Map(),
 });
 
-/**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
- */
 export type MergeStylesRootProviderProps = {
+  /**
+   * Map of stylesheets available in the context.
+   */
   stylesheets?: Map<string, CSSStyleSheet>;
+
+  /**
+   * Optional `window` object to use for reading adopted stylesheets.
+   * Useful for multi-window scenarios.
+   */
   window?: Window;
 };
 
 /**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
+ * Root context provider for mergeStyles shadow DOM.
+ * Typically this is placed at the render root of your React application.
  */
-// eslint-disable-next-line @typescript-eslint/naming-convention
-export const MergeStylesRootProvider_unstable: React.FC<MergeStylesRootProviderProps> = ({
+export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = ({
   stylesheets: userSheets,
   window: userWindow,
   ...props
@@ -105,8 +110,8 @@ export const MergeStylesRootProvider_unstable: React.FC<MergeStylesRootProviderP
 };
 
 /**
- * NOTE: This API is unstable and subject to breaking change or removal without notice.
+ * Get the map of stylesheets available in the context.
  */
-export const useMergeStylesRootStylesheets_unstable = () => {
+export const useMergeStylesRootStylesheets = () => {
   return React.useContext(MergeStylesRootContext).stylesheets;
 };
