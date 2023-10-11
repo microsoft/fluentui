@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.6",
+    "@fluentui/react-window-provider": "^2.2.15",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

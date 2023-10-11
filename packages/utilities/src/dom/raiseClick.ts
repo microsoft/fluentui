@@ -1,12 +1,11 @@
+import { getDocument } from './getDocument';
+
 /** Raises a click event.
  * @deprecated Moved to `FocusZone` component since it was the only place internally using this function.
  */
-export function raiseClick(
-  target: Element,
-  // eslint-disable-next-line no-restricted-globals
-  doc: Document = document,
-): void {
-  const event = createNewEvent('MouseEvents', doc);
+export function raiseClick(target: Element, doc?: Document): void {
+  const theDoc = doc ?? getDocument()!;
+  const event = createNewEvent('MouseEvents', theDoc);
   // eslint-disable-next-line deprecation/deprecation
   event.initEvent('click', true, true);
   target.dispatchEvent(event);

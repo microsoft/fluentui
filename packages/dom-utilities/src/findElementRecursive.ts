@@ -8,9 +8,10 @@ import { getParent } from './getParent';
 export function findElementRecursive(
   element: HTMLElement | null,
   matchFunction: (element: HTMLElement) => boolean,
-  // eslint-disable-next-line no-restricted-globals
-  doc: Document = document,
+  doc?: Document,
 ): HTMLElement | null {
+  // eslint-disable-next-line no-restricted-globals
+  doc ??= document;
   if (!element || element === doc.body) {
     return null;
   }

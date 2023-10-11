@@ -6,12 +6,9 @@ import { findElementRecursive } from './findElementRecursive';
  * @param attribute - the attribute to search for
  * @returns the value of the first instance found
  */
-export function elementContainsAttribute(
-  element: HTMLElement,
-  attribute: string,
+export function elementContainsAttribute(element: HTMLElement, attribute: string, doc?: Document): string | null {
   // eslint-disable-next-line no-restricted-globals
-  doc: Document = document,
-): string | null {
+  doc ??= document;
   const elementMatch = findElementRecursive(
     element,
     (testElement: HTMLElement) => testElement.hasAttribute(attribute),

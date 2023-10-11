@@ -382,13 +382,14 @@ export function isElementVisible(element: HTMLElement | undefined | null): boole
  *
  * @public
  */
-export function isElementVisibleAndNotHidden(
-  element: HTMLElement | undefined | null,
+export function isElementVisibleAndNotHidden(element: HTMLElement | undefined | null, win?: Window): boolean {
   // eslint-disable-next-line no-restricted-globals
-  win: Window = window,
-): boolean {
+  const theWin = win ?? getWindow()!;
   return (
-    !!element && isElementVisible(element) && !element.hidden && win.getComputedStyle(element).visibility !== 'hidden'
+    !!element &&
+    isElementVisible(element) &&
+    !element.hidden &&
+    theWin.getComputedStyle(element).visibility !== 'hidden'
   );
 }
 
@@ -474,10 +475,10 @@ export function doesElementContainFocus(element: HTMLElement): boolean {
 export function shouldWrapFocus(
   element: HTMLElement,
   noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap',
-  // eslint-disable-next-line no-restricted-globals
-  doc: Document = document,
+  doc?: Document,
 ): boolean {
-  return elementContainsAttribute(element, noWrapDataAttribute, doc) === 'true' ? false : true;
+  const theDoc = doc ?? getDocument()!;
+  return elementContainsAttribute(element, noWrapDataAttribute, theDoc) === 'true' ? false : true;
 }
 
 let animationId: number | undefined = undefined;

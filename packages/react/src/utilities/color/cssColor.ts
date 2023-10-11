@@ -1,3 +1,4 @@
+import { getDocument } from '@fluentui/utilities';
 import { MAX_COLOR_ALPHA } from './consts';
 import { hsl2rgb } from './hsl2rgb';
 import type { IRGB } from './interfaces';
@@ -8,14 +9,12 @@ import type { IRGB } from './interfaces';
  * Alpha in returned color defaults to 100.
  * Four and eight digit hex values (with alpha) are supported if the current browser supports them.
  */
-export function cssColor(
-  color?: string,
-  // eslint-disable-next-line no-restricted-globals
-  doc: Document = document,
-): IRGB | undefined {
+export function cssColor(color?: string, doc?: Document): IRGB | undefined {
   if (!color) {
     return undefined;
   }
+
+  const theDoc = doc ?? getDocument()!;
 
   // Need to check the following valid color formats: RGB(A), HSL(A), hex, named color
 
@@ -28,7 +27,7 @@ export function cssColor(
   }
 
   // if the above fails, do the more expensive catch-all
-  return _browserCompute(color, doc);
+  return _browserCompute(color, theDoc);
 }
 
 /**

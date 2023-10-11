@@ -155,9 +155,10 @@ export function getFileTypeIconNameFromExtensionOrType(
 export function getFileTypeIconSuffix(
   size: FileTypeIconSize,
   imageFileType: ImageFileType = 'svg',
-  // eslint-disable-next-line no-restricted-globals
-  win: Window = window,
+  win?: Window,
 ): string {
+  // eslint-disable-next-line no-restricted-globals
+  win ??= window;
   let devicePixelRatio: number = win.devicePixelRatio;
   let devicePixelRatioSuffix = ''; // Default is 1x
 

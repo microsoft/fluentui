@@ -1,5 +1,5 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { getScrollbarWidth, getRTL } from '../../Utilities';
+import { getScrollbarWidth, getRTL, getWindow } from '../../Utilities';
 import { RectangleEdge } from './positioning.types';
 import { Rectangle } from '../../Utilities';
 import type { IRectangle, Point } from '../../Utilities';
@@ -864,15 +864,16 @@ function _finalizePositionData(
 }
 
 function _positionElement(
-  win: Window,
   props: IPositionProps,
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
   previousPositions?: IPositionedData,
+  win?: Window,
 ): IPositionedData {
+  const theWin = win ?? getWindow()!;
   const boundingRect: Rectangle = props.bounds
     ? _getRectangleFromIRect(props.bounds)
-    : new Rectangle(0, win.innerWidth - getScrollbarWidth(), 0, win.innerHeight);
+    : new Rectangle(0, theWin.innerWidth - getScrollbarWidth(), 0, theWin.innerHeight);
   const positionedElement: IElementPosition = _positionElementRelative(
     props,
     elementToPosition,
@@ -883,20 +884,21 @@ function _positionElement(
 }
 
 function _positionCallout(
-  win: Window,
   props: ICalloutPositionProps,
   hostElement: HTMLElement,
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
   doNotFinalizeReturnEdge?: boolean,
+  win?: Window,
 ): ICalloutPositionedInfo {
+  const theWin = win ?? getWindow()!;
   const beakWidth: number = props.isBeakVisible ? props.beakWidth || 0 : 0;
   const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
   const boundingRect: Rectangle = props.bounds
     ? _getRectangleFromIRect(props.bounds)
-    : new Rectangle(0, win.innerWidth - getScrollbarWidth(), 0, win.innerHeight);
+    : new Rectangle(0, theWin.innerWidth - getScrollbarWidth(), 0, theWin.innerHeight);
   const positionedElement: IElementPositionInfo = _positionElementRelative(
     positionProps,
     callout,
@@ -918,13 +920,14 @@ function _positionCallout(
 }
 
 function _positionCard(
-  win: Window,
   props: ICalloutPositionProps,
   hostElement: HTMLElement,
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
+  win?: Window,
 ): ICalloutPositionedInfo {
-  return _positionCallout(win, props, hostElement, callout, previousPositions, true);
+  const theWin = win ?? getWindow()!;
+  return _positionCallout(props, hostElement, callout, previousPositions, true, theWin);
 }
 // END PRIVATE FUNCTIONS
 
@@ -948,10 +951,9 @@ export function positionElement(
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
   previousPositions?: IPositionedData,
-  // eslint-disable-next-line no-restricted-globals
-  win: Window = window,
+  win?: Window,
 ): IPositionedData {
-  return _positionElement(win, props, hostElement, elementToPosition, previousPositions);
+  return _positionElement(props, hostElement, elementToPosition, previousPositions, win);
 }
 
 export function positionCallout(
@@ -959,10 +961,9 @@ export function positionCallout(
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
-  // eslint-disable-next-line no-restricted-globals
-  win: Window = window,
+  win?: Window,
 ): ICalloutPositionedInfo {
-  return _positionCallout(win, props, hostElement, elementToPosition, previousPositions);
+  return _positionCallout(props, hostElement, elementToPosition, previousPositions, undefined, win);
 }
 
 export function positionCard(
@@ -970,10 +971,9 @@ export function positionCard(
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
-  // eslint-disable-next-line no-restricted-globals
-  win: Window = window,
+  win?: Window,
 ): ICalloutPositionedInfo {
-  return _positionCard(win, props, hostElement, elementToPosition, previousPositions);
+  return _positionCard(props, hostElement, elementToPosition, previousPositions, win);
 }
 
 /**
@@ -988,16 +988,16 @@ export function getMaxHeight(
   gapSpace: number = 0,
   bounds?: IRectangle,
   coverTarget?: boolean,
-  // eslint-disable-next-line no-restricted-globals
-  win: Window = window,
+  win?: Window,
 ): number {
+  const theWin = win ?? getWindow()!;
   const mouseTarget: MouseEvent = target as MouseEvent;
   const elementTarget: Element = target as Element;
   const rectOrPointTarget: Point & Rectangle = target as Point & Rectangle;
   let targetRect: Rectangle;
   const boundingRectangle = bounds
     ? _getRectangleFromIRect(bounds)
-    : new Rectangle(0, win.innerWidth - getScrollbarWidth(), 0, win.innerHeight);
+    : new Rectangle(0, theWin.innerWidth - getScrollbarWidth(), 0, theWin.innerHeight);
 
   // eslint-disable-next-line deprecation/deprecation
   const left = rectOrPointTarget.left || rectOrPointTarget.x;

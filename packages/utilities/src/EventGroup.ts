@@ -1,3 +1,4 @@
+import { getDocument } from './dom';
 import { assign } from './object';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -66,14 +67,14 @@ export class EventGroup {
     eventName: string,
     eventArgs?: any,
     bubbleEvent?: boolean,
-    // eslint-disable-next-line no-restricted-globals
-    doc: Document = document,
+    doc?: Document,
   ): boolean | undefined {
     let retVal;
+    const theDoc = doc ?? getDocument()!;
 
     if (EventGroup._isElement(target)) {
-      if (typeof doc !== 'undefined' && doc.createEvent) {
-        let ev = doc.createEvent('HTMLEvents');
+      if (typeof doc !== 'undefined' && theDoc.createEvent) {
+        let ev = theDoc.createEvent('HTMLEvents');
 
         // eslint-disable-next-line deprecation/deprecation
         ev.initEvent(eventName, bubbleEvent || false, true);
@@ -81,9 +82,9 @@ export class EventGroup {
         assign(ev, eventArgs);
 
         retVal = target.dispatchEvent(ev);
-      } else if (typeof doc !== 'undefined' && (doc as any).createEventObject) {
+      } else if (typeof theDoc !== 'undefined' && (theDoc as any).createEventObject) {
         // IE8
-        let evObj = (doc as any).createEventObject(eventArgs);
+        let evObj = (theDoc as any).createEventObject(eventArgs);
         // cannot set cancelBubble on evObj, fireEvent will overwrite it
         target.fireEvent('on' + eventName, evObj);
       }

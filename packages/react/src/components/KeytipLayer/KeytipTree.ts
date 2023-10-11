@@ -1,4 +1,4 @@
-import { find, isElementVisibleAndNotHidden, values } from '../../Utilities';
+import { find, getDocument, isElementVisibleAndNotHidden, values } from '../../Utilities';
 import { ktpTargetFromSequences, mergeOverflows, sequencesToID } from '../../utilities/keytips/KeytipUtils';
 import { KTP_LAYER_ID } from '../../utilities/keytips/KeytipConstants';
 import type { IKeytipProps } from '../../Keytip';
@@ -128,9 +128,9 @@ export class KeytipTree {
   public getExactMatchedNode(
     keySequence: string,
     currentKeytip: IKeytipTreeNode,
-    // eslint-disable-next-line no-restricted-globals
-    doc: Document = document,
+    doc?: Document,
   ): IKeytipTreeNode | undefined {
+    const theDoc = doc ?? getDocument()!;
     const possibleNodes = this.getNodes(currentKeytip.children);
     const matchingNodes = possibleNodes.filter((node: IKeytipTreeNode) => {
       return this._getNodeSequence(node) === keySequence && !node.disabled;
@@ -155,7 +155,7 @@ export class KeytipTree {
     const overflowSetSequence = node.overflowSetSequence;
     const fullKeySequences = overflowSetSequence ? mergeOverflows(keySequences, overflowSetSequence) : keySequences;
     const keytipTargetSelector = ktpTargetFromSequences(fullKeySequences);
-    const potentialTargetElements = doc.querySelectorAll(keytipTargetSelector);
+    const potentialTargetElements = theDoc.querySelectorAll(keytipTargetSelector);
 
     // If we have less nodes than the potential target elements,
     // we won't be able to map element to node, return the first node.
@@ -167,7 +167,7 @@ export class KeytipTree {
 
     // Attempt to find the node that corresponds to the first visible/non-hidden element
     const matchingIndex = Array.from(potentialTargetElements).findIndex((element: HTMLElement) =>
-      isElementVisibleAndNotHidden(element, doc.defaultView ?? undefined),
+      isElementVisibleAndNotHidden(element, theDoc.defaultView ?? undefined),
     );
     if (matchingIndex !== -1) {
       return matchingNodes[matchingIndex];
