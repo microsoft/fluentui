@@ -268,10 +268,12 @@ const useRootStyles = makeStyles({
 
     '@media (forced-colors: active)': {
       ':hover': {
+        backgroundColor: 'transparent',
         ...shorthands.borderColor('transparent'),
         color: 'Highlight',
       },
       ':hover:active': {
+        backgroundColor: 'transparent',
         ...shorthands.borderColor('transparent'),
         color: 'Highlight',
       },
