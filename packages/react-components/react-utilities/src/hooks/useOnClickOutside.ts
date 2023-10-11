@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEventCallback } from './useEventCallback';
-import { useWindow } from '@fluentui/react-window-provider';
+import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
 /**
  * @internal
@@ -46,7 +46,8 @@ const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, 
  * Utility to perform checks where a click/touch event was made outside a component
  */
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
-  const win = useWindow();
+  const { targetDocument } = useFluent();
+  const win = targetDocument?.defaultView;
   const { refs, callback, element, disabled, disabledFocusOnIframe, contains = DEFAULT_CONTAINS } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
 
