@@ -10,8 +10,6 @@ import { DATA_PORTAL_ATTRIBUTE } from './setPortalAttribute';
  * (or root if parent is undefined or invalid.)
  */
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement, doc?: Document): boolean {
-  // eslint-disable-next-line no-restricted-globals
-  doc ??= document;
   const elementMatch = findElementRecursive(
     target,
     (testElement: HTMLElement) => parent === testElement || testElement.hasAttribute(DATA_PORTAL_ATTRIBUTE),
