@@ -20,7 +20,7 @@ export const CalendarContiguousWorkWeekDays: React.FunctionComponent = () => {
   }
 
   return (
-    <div style={{ height: 'auto' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
       <Calendar
@@ -31,6 +31,14 @@ export const CalendarContiguousWorkWeekDays: React.FunctionComponent = () => {
         onSelectDate={onSelectDate}
         value={selectedDate}
       />
-    </div>
+    </>
   );
+};
+
+CalendarContiguousWorkWeekDays.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat can be modified to allow selecting a contiguous (5 day) work week.',
+    },
+  },
 };

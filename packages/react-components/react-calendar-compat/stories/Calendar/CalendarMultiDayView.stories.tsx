@@ -55,3 +55,13 @@ export const CalendarMultidayDayView: React.FunctionComponent = () => {
     </div>
   );
 };
+
+CalendarMultidayDayView.parameters = {
+  docs: {
+    description: {
+      story:
+        'A Calendar Compat allows you to pass a number of days that will be highlighted from the selected date' +
+        ' and forward.',
+    },
+  },
+};

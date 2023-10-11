@@ -9,10 +9,18 @@ export const CalendarWeekNumbers: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div style={{ height: '360px' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
 
       <Calendar showWeekNumbers showGoToToday onSelectDate={onSelectDate} value={selectedDate} />
-    </div>
+    </>
   );
+};
+
+CalendarWeekNumbers.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat allows you to show the week numbers next to the day grid for their respective week.',
+    },
+  },
 };

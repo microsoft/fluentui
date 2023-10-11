@@ -65,3 +65,11 @@ export const CalendarWeekSelection: React.FunctionComponent = () => {
     </div>
   );
 };
+
+CalendarWeekSelection.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat allows you to set a selection range of weeks instead of selecting a single day.',
+    },
+  },
+};

@@ -9,7 +9,7 @@ export const CalendarOverlaidMonth: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div style={{ height: '360px' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
 
       <Calendar
@@ -19,6 +19,16 @@ export const CalendarOverlaidMonth: React.FunctionComponent = () => {
         onSelectDate={onSelectDate}
         value={selectedDate}
       />
-    </div>
+    </>
   );
+};
+
+CalendarOverlaidMonth.parameters = {
+  docs: {
+    description: {
+      story:
+        'A Calendar Compat allows you to render the month picker over the day picker. This is useful' +
+        ' when there are width constraints and the month picker is needed.',
+    },
+  },
 };

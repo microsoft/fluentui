@@ -18,7 +18,7 @@ export const CalendarMonthOnly: React.FunctionComponent = () => {
   }
 
   return (
-    <div style={{ height: 'auto' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
       <Calendar
@@ -29,6 +29,14 @@ export const CalendarMonthOnly: React.FunctionComponent = () => {
         onSelectDate={onSelectDate}
         value={selectedDate}
       />
-    </div>
+    </>
   );
+};
+
+CalendarMonthOnly.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat allows you to only show the month and year picker leaving the day picker hidden.',
+    },
+  },
 };

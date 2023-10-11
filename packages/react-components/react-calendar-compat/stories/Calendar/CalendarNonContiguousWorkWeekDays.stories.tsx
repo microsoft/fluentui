@@ -20,7 +20,7 @@ export const CalendarNonContiguousWorkWeekDays: React.FunctionComponent = () => 
   }
 
   return (
-    <div style={{ height: '360px' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
 
@@ -33,6 +33,14 @@ export const CalendarNonContiguousWorkWeekDays: React.FunctionComponent = () => 
         onSelectDate={onSelectDate}
         value={selectedDate}
       />
-    </div>
+    </>
   );
+};
+
+CalendarNonContiguousWorkWeekDays.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat can be modified to allow selecting a non contiguous (7 day) week.',
+    },
+  },
 };

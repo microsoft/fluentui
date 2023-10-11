@@ -22,7 +22,7 @@ export const CalendarCustomDayCellRef: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div style={{ height: 'auto' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <Calendar
         highlightSelectedMonth
@@ -31,6 +31,14 @@ export const CalendarCustomDayCellRef: React.FunctionComponent = () => {
         onSelectDate={onSelectDate}
         value={selectedDate}
       />
-    </div>
+    </>
   );
+};
+
+CalendarCustomDayCellRef.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat can be modified to allow selecting a non contiguous (7 day) week.',
+    },
+  },
 };

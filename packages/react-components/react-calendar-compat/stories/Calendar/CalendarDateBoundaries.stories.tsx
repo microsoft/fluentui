@@ -14,7 +14,7 @@ export const CalendarDateBoundaries: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div style={{ height: 'auto' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>
         Date boundary: {minDate.toDateString()}-{maxDate.toDateString()}
@@ -29,6 +29,16 @@ export const CalendarDateBoundaries: React.FunctionComponent = () => {
         onSelectDate={onSelectDate}
         value={selectedDate}
       />
-    </div>
+    </>
   );
+};
+
+CalendarDateBoundaries.parameters = {
+  docs: {
+    description: {
+      story:
+        'A Calendar Compat can be modified to set a minDate and maxDate in order to restrict' +
+        'the dates that can be selected.',
+    },
+  },
 };

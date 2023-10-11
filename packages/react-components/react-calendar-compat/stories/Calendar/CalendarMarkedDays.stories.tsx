@@ -10,7 +10,7 @@ export const CalendarMarkedDays: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
 
   return (
-    <div style={{ height: '360px' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <Calendar
         showGoToToday
@@ -19,6 +19,16 @@ export const CalendarMarkedDays: React.FunctionComponent = () => {
         // Add the marked days
         calendarDayProps={calendarDayProps}
       />
-    </div>
+    </>
   );
+};
+
+CalendarMarkedDays.parameters = {
+  docs: {
+    description: {
+      story:
+        'A Calendar Compat allows you to pass a callback that returns an array of number that should be' +
+        'marked. This callback provides a starting date and an ending date.',
+    },
+  },
 };

@@ -9,10 +9,18 @@ export const CalendarSixWeeks: React.FunctionComponent = () => {
   }, []);
 
   return (
-    <div style={{ height: '360px' }}>
+    <>
       <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
 
       <Calendar showSixWeeksByDefault showGoToToday onSelectDate={onSelectDate} value={selectedDate} />
-    </div>
+    </>
   );
+};
+
+CalendarSixWeeks.parameters = {
+  docs: {
+    description: {
+      story: 'A Calendar Compat allows you to set a six day week.',
+    },
+  },
 };
