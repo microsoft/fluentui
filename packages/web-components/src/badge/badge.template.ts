@@ -1,5 +1,6 @@
 import { ElementViewTemplate, html } from '@microsoft/fast-element';
-import { endSlotTemplate, startSlotTemplate, staticallyCompose } from '@microsoft/fast-foundation';
+import { endSlotTemplate, startSlotTemplate } from '@microsoft/fast-foundation/patterns.js';
+import { staticallyCompose } from '@microsoft/fast-foundation/utilities.js';
 import type { Badge } from './badge.js';
 import type { BadgeOptions } from './badge.options.js';
 

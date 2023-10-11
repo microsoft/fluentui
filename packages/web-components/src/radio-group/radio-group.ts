@@ -1,5 +1,5 @@
 import { attr } from '@microsoft/fast-element';
-import { FASTRadioGroup } from '@microsoft/fast-foundation';
+import { FASTRadioGroup } from '@microsoft/fast-foundation/radio-group.js';
 
 /**
  * The base class used for constructing a fluent-radio-group custom element
