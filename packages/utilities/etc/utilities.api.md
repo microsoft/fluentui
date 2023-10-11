@@ -1018,12 +1018,12 @@ export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings |
 // Warning: (ae-forgotten-export) The symbol "MergeStylesRootProviderProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export const MergeStylesRootProvider_unstable: React_2.FC<MergeStylesRootProviderProps>;
+export const MergeStylesRootProvider: React_2.FC<MergeStylesRootProviderProps>;
 
 // Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootProviderProps" needs to be exported by the entry point index.d.ts
 //
 // @public
-export const MergeStylesShadowRootProvider_unstable: React_2.FC<MergeStylesShadowRootProviderProps>;
+export const MergeStylesShadowRootProvider: React_2.FC<MergeStylesShadowRootProviderProps>;
 
 // @public
 export function modalize(target: HTMLElement): () => void;
@@ -1276,7 +1276,7 @@ export const trProperties: Record<string, number>;
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-export const useAdoptedStylesheet_unstable: (stylesheetKey: string) => boolean;
+export const useAdoptedStylesheet: (stylesheetKey: string) => boolean;
 
 // @public
 export function useCustomizationSettings(properties: string[], scopeName?: string): ISettings;
@@ -1285,7 +1285,18 @@ export function useCustomizationSettings(properties: string[], scopeName?: strin
 export function useFocusRects(rootRef?: React_2.RefObject<HTMLElement>): void;
 
 // @public
+export const useHasMergeStylesShadowRootContext: () => boolean;
+
+// @public
 export const useIsomorphicLayoutEffect: typeof React_2.useEffect;
+
+// @public
+export const useMergeStylesRootStylesheets: () => Map<string, CSSStyleSheet>;
+
+// Warning: (ae-forgotten-export) The symbol "MergeStylesShadowRootContextValue" needs to be exported by the entry point index.d.ts
+//
+// @public
+export const useMergeStylesShadowRootContext: () => MergeStylesShadowRootContextValue | undefined;
 
 // @public
 export function values<T>(obj: any): T[];

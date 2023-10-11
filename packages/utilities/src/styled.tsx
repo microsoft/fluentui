@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
-import {
-  useAdoptedStylesheet_unstable,
-  useHasMergeStylesShadowRootContext,
-} from './shadowDom/MergeStylesShadowRootContext';
+import { useAdoptedStylesheet, useHasMergeStylesShadowRootContext } from './shadowDom/MergeStylesShadowRootContext';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from './dom/getWindow';
@@ -148,7 +145,7 @@ export function styled<
 
     styles.current.__shadowConfig__ = shadowConfig.current;
 
-    useAdoptedStylesheet_unstable(scope);
+    useAdoptedStylesheet(scope);
 
     return <Component ref={forwardedRef} {...rest} {...additionalProps} {...props} styles={styles.current} />;
   });
