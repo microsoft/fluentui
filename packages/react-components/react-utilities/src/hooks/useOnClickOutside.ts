@@ -118,7 +118,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
   }, [listener, element, disabled, handleMouseDown, win]);
 };
 
-const getWindowEvent = (target: Node | Window | undefined): Event | undefined => {
+const getWindowEvent = (target: Node | Window | null | undefined): Event | undefined => {
   if (target) {
     if (typeof (target as Window).window === 'object' && (target as Window).window === target) {
       // eslint-disable-next-line deprecation/deprecation
