@@ -4,7 +4,7 @@ import {
   MessageBarBody,
   MessageBarTitle,
   MessageBarActions,
-} from '@fluentui/react-message-bar-preview';
+} from '@fluentui/react-components';
 
 import descriptionMd from './MessageBarDescription.md';
 import bestPracticesMd from './MessageBarBestPractices.md';
