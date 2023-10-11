@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Calendar } from '@fluentui/react-calendar-compat';
 
-export const CalendarSixWeeks: React.FunctionComponent = () => {
+export const CalendarSixWeeks = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const onSelectDate = React.useCallback((date: Date, _): void => {

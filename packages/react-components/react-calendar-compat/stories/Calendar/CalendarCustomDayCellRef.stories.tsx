@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Calendar } from '@fluentui/react-calendar-compat';
 import type { CalendarDayProps } from '@fluentui/react-calendar-compat';
 
-export const CalendarCustomDayCellRef: React.FunctionComponent = () => {
+export const CalendarCustomDayCellRef = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
   const onSelectDate = React.useCallback((date: Date, _): void => {

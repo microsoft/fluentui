@@ -6,7 +6,7 @@ const calendarDayProps: Partial<CalendarDayProps> = {
   getMarkedDays: (startingDate, _) => [addDays(startingDate, 3), addDays(startingDate, 4)],
 };
 
-export const CalendarMarkedDays: React.FunctionComponent = () => {
+export const CalendarMarkedDays = () => {
   const [selectedDate, setSelectedDate] = React.useState<Date>(new Date());
 
   return (

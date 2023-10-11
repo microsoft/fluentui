@@ -9,7 +9,7 @@ const useStyles = makeStyles({
 
 const dayOptions = ['1', '2', '3', '4', '5', '6'];
 
-export const CalendarMultidayDayView: React.FunctionComponent = () => {
+export const CalendarMultidayDayView = () => {
   const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();

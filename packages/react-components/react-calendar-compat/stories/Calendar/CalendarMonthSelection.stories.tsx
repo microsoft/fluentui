@@ -8,7 +8,7 @@ const useStyles = makeStyles({
 const dateRangeType = DateRangeType.Month;
 const firstDayOfWeek = DayOfWeek.Sunday;
 
-export const CalendarMonthSelection: React.FunctionComponent = () => {
+export const CalendarMonthSelection = () => {
   const styles = useStyles();
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();

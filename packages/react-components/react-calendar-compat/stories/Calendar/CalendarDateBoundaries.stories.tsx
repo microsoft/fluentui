@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { addMonths, addYears, addDays, Calendar } from '@fluentui/react-calendar-compat';
 
-export const CalendarDateBoundaries: React.FunctionComponent = () => {
+export const CalendarDateBoundaries = () => {
   const today = new Date();
   const minDate = addMonths(today, -1);
   const maxDate = addYears(today, 1);

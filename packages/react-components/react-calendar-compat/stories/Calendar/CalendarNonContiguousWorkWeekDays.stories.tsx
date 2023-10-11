@@ -3,7 +3,7 @@ import { Calendar, DateRangeType, DayOfWeek } from '@fluentui/react-calendar-com
 
 const workWeekDays = [DayOfWeek.Tuesday, DayOfWeek.Saturday, DayOfWeek.Wednesday, DayOfWeek.Friday];
 
-export const CalendarNonContiguousWorkWeekDays: React.FunctionComponent = () => {
+export const CalendarNonContiguousWorkWeekDays = () => {
   const [selectedDateRange, setSelectedDateRange] = React.useState<Date[]>();
   const [selectedDate, setSelectedDate] = React.useState<Date>();
 
