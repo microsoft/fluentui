@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Mon, 09 Oct 2023 20:45:41 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 13:54:23 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.7.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.8)
+
+Wed, 11 Oct 2023 13:54:23 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.7.7..@fluentui/react-dialog_v9.7.8)
+
+### Patches
+
+- chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.40 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-aria to v9.3.42 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-tabster to v9.13.6 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-portal to v9.3.23 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
 
 ## [9.7.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.7.7)
 

@@ -55,7 +55,7 @@ export const useDialogSurface_unstable = (
       });
       // stop propagation to avoid conflicting with other elements that listen for `Escape`
       // e,g: nested Dialog, Popover, Menu and Tooltip
-      event.stopPropagation();
+      event.preventDefault();
     }
   });
 

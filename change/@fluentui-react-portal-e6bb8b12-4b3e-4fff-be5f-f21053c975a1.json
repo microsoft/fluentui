@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities",
-  "packageName": "@fluentui/react-portal",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

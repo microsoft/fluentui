@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-tooltip
 
-This log was last generated on Mon, 09 Oct 2023 20:45:44 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 13:54:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.3.15)
+
+Wed, 11 Oct 2023 13:54:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tooltip_v9.3.14..@fluentui/react-tooltip_v9.3.15)
+
+### Patches
+
+- chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-portal to v9.3.23 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-positioning to v9.9.20 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
 
 ## [9.3.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-tooltip_v9.3.14)
 
