@@ -19,8 +19,7 @@
   },
   "dependencies": {
     "@fluentui/react-components": "*",
-    "@fluentui/react-utilities": "*",
-    "@fluentui/react-window-provider": "*"
+    "@fluentui/react-utilities": "*"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
