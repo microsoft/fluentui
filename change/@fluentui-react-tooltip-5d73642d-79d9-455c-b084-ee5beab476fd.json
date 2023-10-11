@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: use default prevention instead of stop propagation for Escape handling",
+  "packageName": "@fluentui/react-tooltip",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
