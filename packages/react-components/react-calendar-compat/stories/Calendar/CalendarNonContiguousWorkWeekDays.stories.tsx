@@ -16,12 +16,12 @@ export const CalendarNonContiguousWorkWeekDays: React.FunctionComponent = () => 
   if (selectedDateRange) {
     const rangeStart = selectedDateRange[0];
     const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
-    dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
+    dateRangeString = rangeStart.toDateString() + '-' + rangeEnd.toDateString();
   }
 
   return (
     <div style={{ height: '360px' }}>
-      <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
+      <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
 
       <Calendar

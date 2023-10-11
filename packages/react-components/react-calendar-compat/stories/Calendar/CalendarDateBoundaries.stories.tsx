@@ -15,11 +15,11 @@ export const CalendarDateBoundaries: React.FunctionComponent = () => {
 
   return (
     <div style={{ height: 'auto' }}>
-      <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
+      <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>
-        Date boundary: {minDate.toLocaleDateString()}-{maxDate.toLocaleDateString()}
+        Date boundary: {minDate.toDateString()}-{maxDate.toDateString()}
       </div>
-      <div>Disabled dates: {restrictedDates.map(d => d.toLocaleDateString()).join(', ')}</div>
+      <div>Disabled dates: {restrictedDates.map(d => d.toDateString()).join(', ')}</div>
       <Calendar
         highlightSelectedMonth
         showGoToToday={false}

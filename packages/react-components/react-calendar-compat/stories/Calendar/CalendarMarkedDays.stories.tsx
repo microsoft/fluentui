@@ -11,7 +11,7 @@ export const CalendarMarkedDays: React.FunctionComponent = () => {
 
   return (
     <div style={{ height: '360px' }}>
-      <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
+      <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <Calendar
         showGoToToday
         onSelectDate={setSelectedDate}

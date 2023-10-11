@@ -23,7 +23,7 @@ export const CalendarCustomDayCellRef: React.FunctionComponent = () => {
 
   return (
     <div style={{ height: 'auto' }}>
-      <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
+      <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <Calendar
         highlightSelectedMonth
         showGoToToday

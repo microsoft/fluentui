@@ -28,7 +28,7 @@ export const CalendarMultidayDayView: React.FunctionComponent = () => {
   if (selectedDateRange) {
     const rangeStart = selectedDateRange[0];
     const rangeEnd = selectedDateRange[selectedDateRange.length - 1];
-    dateRangeString = rangeStart.toLocaleDateString() + '-' + rangeEnd.toLocaleDateString();
+    dateRangeString = rangeStart.toDateString() + '-' + rangeEnd.toDateString();
   }
 
   return (
@@ -36,7 +36,7 @@ export const CalendarMultidayDayView: React.FunctionComponent = () => {
       <p>
         This calendar uses <code>dateRangeType = Day</code> and <code>daysToSelectInView = 4</code>.
       </p>
-      <div>Selected date: {selectedDate?.toLocaleString() || 'Not set'}</div>
+      <div>Selected date: {selectedDate?.toDateString() || 'Not set'}</div>
       <div>Selected range: {dateRangeString}</div>
       <Calendar
         highlightSelectedMonth
