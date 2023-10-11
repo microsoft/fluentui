@@ -1,6 +1,7 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { SwatchPickerSlots, SwatchPickerState } from './SwatchPicker.types';
+import { swatchColorPikerCellClassNames } from '../SwatchColorPikerCell/useSwatchColorPikerCellStyles.styles';
 
 export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
   root: 'fui-SwatchPicker',
@@ -10,7 +11,11 @@ export const swatchPickerClassNames: SlotClassNames<SwatchPickerSlots> = {
  * Styles for the root slot
  */
 const useStyles = makeStyles({
-  root: {},
+  root: {
+    // [`& > .${swatchColorPikerCellClassNames.root}`]: {
+    //   opacity: 0.7,
+    // },
+  },
   row: {
     display: 'flex',
     flexDirection: 'row',

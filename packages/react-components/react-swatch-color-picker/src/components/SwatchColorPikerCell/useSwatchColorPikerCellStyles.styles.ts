@@ -17,8 +17,10 @@ const useStyles = makeStyles({
     alignItems: 'center',
     justifyContent: 'center',
     boxSizing: 'border-box',
+    ...shorthands.transition('transform', '.5s', 'ease-in-out'),
     '&:hover': {
-      ...shorthands.border('2px', 'solid', tokens.colorBrandForeground1),
+      transform: 'scale(1.3)',
+      ...shorthands.border('2px', 'solid', 'black'),
     },
   },
   input: {
@@ -46,7 +48,7 @@ const useStyles = makeStyles({
     height: '50px',
   },
   selected: {
-    ...shorthands.border('2px', 'solid', tokens.colorBrandForeground2),
+    ...shorthands.border('2px', 'solid', 'white'),
   },
 });
 
