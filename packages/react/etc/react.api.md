@@ -286,8 +286,8 @@ import { mergeScopedSettings } from '@fluentui/utilities';
 import { mergeSettings } from '@fluentui/utilities';
 import { mergeStyles } from '@fluentui/style-utilities';
 import { mergeStyleSets } from '@fluentui/style-utilities';
-import { MergeStylesRootProvider_unstable } from '@fluentui/utilities';
-import { MergeStylesShadowRootProvider_unstable } from '@fluentui/utilities';
+import { MergeStylesRootProvider } from '@fluentui/utilities';
+import { MergeStylesShadowRootProvider } from '@fluentui/utilities';
 import { mergeThemes } from '@fluentui/theme';
 import { modalize } from '@fluentui/utilities';
 import { MonthOfYear } from '@fluentui/date-time-utilities';
@@ -375,10 +375,13 @@ import { toMatrix } from '@fluentui/utilities';
 import { trProperties } from '@fluentui/utilities';
 import { unhoistMethods } from '@fluentui/utilities';
 import { unregisterIcons } from '@fluentui/style-utilities';
-import { useAdoptedStylesheet_unstable } from '@fluentui/utilities';
+import { useAdoptedStylesheet } from '@fluentui/utilities';
 import { useCustomizationSettings } from '@fluentui/utilities';
 import { useDocument } from '@fluentui/react-window-provider';
 import { useFocusRects } from '@fluentui/utilities';
+import { useHasMergeStylesShadowRootContext } from '@fluentui/utilities';
+import { useMergeStylesRootStylesheets } from '@fluentui/utilities';
+import { useMergeStylesShadowRootContext } from '@fluentui/utilities';
 import { useWindow } from '@fluentui/react-window-provider';
 import { values } from '@fluentui/utilities';
 import { videoProperties } from '@fluentui/utilities';
@@ -10012,9 +10015,9 @@ export { mergeStyles }
 
 export { mergeStyleSets }
 
-export { MergeStylesRootProvider_unstable }
+export { MergeStylesRootProvider }
 
-export { MergeStylesShadowRootProvider_unstable }
+export { MergeStylesShadowRootProvider }
 
 export { mergeThemes }
 
@@ -11435,7 +11438,7 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 // @public
 export function updateT(color: IColor, t: number): IColor;
 
-export { useAdoptedStylesheet_unstable }
+export { useAdoptedStylesheet }
 
 export { useCustomizationSettings }
 
@@ -11443,11 +11446,17 @@ export { useDocument }
 
 export { useFocusRects }
 
+export { useHasMergeStylesShadowRootContext }
+
 // @public (undocumented)
 export function useHeightOffset({ finalHeight }: IPositioningContainerProps, contentHost: React_2.RefObject<HTMLDivElement | null>): number;
 
 // @public
 export function useKeytipRef<TElement extends HTMLElement = HTMLElement>(options: KeytipDataOptions): React_2.Ref<TElement>;
+
+export { useMergeStylesRootStylesheets }
+
+export { useMergeStylesShadowRootContext }
 
 // @public
 export const useResponsiveMode: (elementRef: React_2.RefObject<HTMLElement | null>, overrideResponsiveMode?: ResponsiveMode) => ResponsiveMode;
