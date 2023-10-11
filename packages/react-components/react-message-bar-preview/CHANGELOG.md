@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-message-bar-preview
 
-This log was last generated on Mon, 09 Oct 2023 20:45:42 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 13:54:24 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar-preview_v0.2.1)
+
+Wed, 11 Oct 2023 13:54:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar-preview_v0.2.0..@fluentui/react-message-bar-preview_v0.2.1)
+
+### Patches
+
+- fix: Align icons with text content ([PR #29482](https://github.com/microsoft/fluentui/pull/29482) by lingfan.gao@microsoft.com)
+- fix: MessageBarActions should not overflow into grid padding ([PR #29462](https://github.com/microsoft/fluentui/pull/29462) by lingfangao@hotmail.com)
+- Bump @fluentui/react-button to v9.3.48 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar-preview_v0.2.0)
 

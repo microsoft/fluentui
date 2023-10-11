@@ -289,10 +289,10 @@ export class DonutChartBase extends React.Component<IDonutChartProps, IDonutChar
 
   private _valueInsideDonut(valueInsideDonut: string | number | undefined, data: IChartDataPoint[]) {
     const highlightedLegend = this._getHighlightedLegend();
-    if (valueInsideDonut !== undefined && highlightedLegend !== '' && !this.state.showHover) {
+    if (valueInsideDonut !== undefined && (highlightedLegend !== '' || this.state.showHover)) {
       let legendValue = valueInsideDonut;
       data!.map((point: IChartDataPoint, index: number) => {
-        if (point.legend === highlightedLegend) {
+        if (point.legend === highlightedLegend || (this.state.showHover && point.legend === this.state.legend)) {
           legendValue = point.yAxisCalloutData ? point.yAxisCalloutData : point.data!;
         }
         return;
