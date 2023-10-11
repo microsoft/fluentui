@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: disable lint for no-restricted-globals",
+  "packageName": "@fluentui/cra-template",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

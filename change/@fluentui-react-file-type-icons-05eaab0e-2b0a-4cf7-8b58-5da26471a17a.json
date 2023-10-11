@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: update `getFileTypeIconsSuffix()` to take optional parameter for `window` reference.",
+  "packageName": "@fluentui/react-file-type-icons",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

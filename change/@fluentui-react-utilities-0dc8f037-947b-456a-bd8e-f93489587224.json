@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: update to get `window` reference via `getWindow()`.",
+  "packageName": "@fluentui/react-utilities",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

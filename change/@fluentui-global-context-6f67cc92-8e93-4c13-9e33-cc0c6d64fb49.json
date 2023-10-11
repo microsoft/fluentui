@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: disable lint for no-restricted-globals",
+  "packageName": "@fluentui/global-context",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

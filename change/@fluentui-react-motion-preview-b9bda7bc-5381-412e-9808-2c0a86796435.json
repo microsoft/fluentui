@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: disable lint for no-retricted-globals",
+  "packageName": "@fluentui/react-motion-preview",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
