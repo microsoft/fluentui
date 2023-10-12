@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: refactor test to use latest APIs",
-  "packageName": "@fluentui/cra-template",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
