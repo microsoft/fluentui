@@ -2,6 +2,45 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Wed, 11 Oct 2023 13:54:22 GMT",
+      "tag": "@fluentui/react-button_v9.3.48",
+      "version": "9.3.48",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "ae35fa7c3a07ceba7e503319fa594174ed1bca9f",
+            "comment": "Fix: Buttons internal focus border was not consistent on firefox"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-aria to v9.3.42",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.16",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-tabster to v9.13.6",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Oct 2023 20:45:44 GMT",
       "tag": "@fluentui/react-button_v9.3.47",
       "version": "9.3.47",

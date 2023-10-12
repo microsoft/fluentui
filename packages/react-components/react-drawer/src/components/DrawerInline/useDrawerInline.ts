@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
@@ -29,7 +29,7 @@ export const useDrawerInline_unstable = (
     },
 
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ...props,
         ref: useMergedRefs(ref, motion.ref),
       }),

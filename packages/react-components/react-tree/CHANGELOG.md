@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Mon, 09 Oct 2023 20:45:44 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 13:54:25 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.4)
+
+Wed, 11 Oct 2023 13:54:25 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.4.3..@fluentui/react-tree_v9.4.4)
+
+### Patches
+
+- chore: adds console error when mixing Tree and FlatTree components ([PR #29461](https://github.com/microsoft/fluentui/pull/29461) by bernardo.sunderhus@gmail.com)
+- bugfix: Tree indentation broken due to wrongly consuming root context instead of subtree context ([PR #29459](https://github.com/microsoft/fluentui/pull/29459) by bernardo.sunderhus@gmail.com)
+- refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+- Bump @fluentui/react-aria to v9.3.42 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-avatar to v9.5.39 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-button to v9.3.48 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.49 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.40 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-radio to v9.1.49 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-tabster to v9.13.6 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
 
 ## [9.4.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.3)
 

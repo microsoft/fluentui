@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tabster",
   "entries": [
     {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/react-tabster_v9.13.6",
+      "version": "9.13.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-tabster",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Oct 2023 20:45:44 GMT",
       "tag": "@fluentui/react-tabster_v9.13.5",
       "version": "9.13.5",

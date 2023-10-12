@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Thu, 12 Oct 2023 07:37:06 GMT",
+      "tag": "@fluentui/react-charting_v5.18.4",
+      "version": "5.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bb1c1c72a83278b278fe7df4525c99e1e744a78f",
+            "comment": "Fixing bug: Displayed value in center does not update on hovering over a different segment on Donut"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 10 Oct 2023 07:37:02 GMT",
       "tag": "@fluentui/react-charting_v5.18.3",
       "version": "5.18.3",

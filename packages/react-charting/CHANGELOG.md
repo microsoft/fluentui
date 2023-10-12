@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Tue, 10 Oct 2023 07:37:02 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 07:37:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.18.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.4)
+
+Thu, 12 Oct 2023 07:37:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.3..@fluentui/react-charting_v5.18.4)
+
+### Patches
+
+- Fixing bug: Displayed value in center does not update on hovering over a different segment on Donut ([PR #29385](https://github.com/microsoft/fluentui/pull/29385) by srmukher@microsoft.com)
 
 ## [5.18.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.3)
 

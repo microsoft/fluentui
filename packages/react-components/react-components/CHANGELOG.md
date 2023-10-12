@@ -1,8 +1,51 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Mon, 09 Oct 2023 20:45:41 GMT and should not be manually modified.
+This log was last generated on Wed, 11 Oct 2023 13:54:22 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.34.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.34.3)
+
+Wed, 11 Oct 2023 13:54:22 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.34.2..@fluentui/react-components_v9.34.3)
+
+### Minor changes
+
+- `@fluentui/react-utilities`
+  - feat: Add virtual parent utilties ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-button`
+  - Fix: Buttons internal focus border was not consistent on firefox ([PR #29441](https://github.com/microsoft/fluentui/pull/29441) by mifraser@microsoft.com)
+- `@fluentui/react-datepicker-compat`
+  - fix: When the month picker is shown as overlay due to space restrictions, don't close the popover when selecting a month. ([PR #29481](https://github.com/microsoft/fluentui/pull/29481) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+  - chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-message-bar-preview`
+  - fix: Align icons with text content ([PR #29482](https://github.com/microsoft/fluentui/pull/29482) by lingfan.gao@microsoft.com)
+  - fix: MessageBarActions should not overflow into grid padding ([PR #29462](https://github.com/microsoft/fluentui/pull/29462) by lingfangao@hotmail.com)
+- `@fluentui/react-popover`
+  - refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+  - chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-portal`
+  - refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+- `@fluentui/react-table`
+  - refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+- `@fluentui/react-tooltip`
+  - chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tree`
+  - chore: adds console error when mixing Tree and FlatTree components ([PR #29461](https://github.com/microsoft/fluentui/pull/29461) by bernardo.sunderhus@gmail.com)
+  - bugfix: Tree indentation broken due to wrongly consuming root context instead of subtree context ([PR #29459](https://github.com/microsoft/fluentui/pull/29459) by bernardo.sunderhus@gmail.com)
+  - refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
 
 ## [9.34.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.34.2)
 

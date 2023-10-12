@@ -83,3 +83,5 @@ export type {
   SelectionMethods,
 } from './selection/index';
 export { useSelection } from './selection/index';
+
+export { elementContains, setVirtualParent, getParent } from './virtualParent/index';
