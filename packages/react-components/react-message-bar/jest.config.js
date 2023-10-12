@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-message-bar-preview',
+  displayName: 'react-message-bar',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

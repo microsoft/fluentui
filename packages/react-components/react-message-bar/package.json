@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-message-bar-preview",
-  "version": "0.2.1",
-  "description": "New fluentui react package",
+  "name": "@fluentui/react-message-bar",
+  "version": "9.0.0-alpha.0",
+  "description": "Fluent UI MessageBar component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",

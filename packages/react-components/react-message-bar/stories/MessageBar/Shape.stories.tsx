@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
-import { MessageBar, MessageBarTitle, MessageBarBody } from '@fluentui/react-message-bar-preview';
+import { makeStyles, shorthands, MessageBar, MessageBarTitle, MessageBarBody } from '@fluentui/react-components';
 
 const useClasses = makeStyles({
   container: {

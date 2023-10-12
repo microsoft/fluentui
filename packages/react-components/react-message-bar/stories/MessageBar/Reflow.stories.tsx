@@ -1,7 +1,18 @@
 import * as React from 'react';
-import { Button, Link, makeStyles, shorthands, tokens, Switch, mergeClasses } from '@fluentui/react-components';
+import {
+  Button,
+  Link,
+  makeStyles,
+  shorthands,
+  tokens,
+  Switch,
+  mergeClasses,
+  MessageBar,
+  MessageBarActions,
+  MessageBarBody,
+  MessageBarTitle,
+} from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
-import { MessageBar, MessageBarActions, MessageBarBody, MessageBarTitle } from '@fluentui/react-message-bar-preview';
 
 const useStyles = makeStyles({
   compact: {

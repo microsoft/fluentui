@@ -1,7 +1,13 @@
 import * as React from 'react';
-import { Button, Link } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
-import { MessageBar, MessageBarActions, MessageBarBody, MessageBarTitle } from '@fluentui/react-message-bar-preview';
+import {
+  MessageBar,
+  MessageBarActions,
+  MessageBarBody,
+  MessageBarTitle,
+  Button,
+  Link,
+} from '@fluentui/react-components';
 
 export const Actions = () => (
   <MessageBar>

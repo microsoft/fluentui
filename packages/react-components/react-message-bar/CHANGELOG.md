@@ -36,7 +36,7 @@ Mon, 09 Oct 2023 20:45:42 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-message-bar-preview_v0.1.1)
 
-Thu, 05 Oct 2023 15:25:31 GMT 
+Thu, 05 Oct 2023 15:25:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-message-bar-preview_v0.1.0..@fluentui/react-message-bar-preview_v0.1.1)
 
 ### Patches

@@ -1,4 +1,4 @@
-# @fluentui/react-message-bar-preview
+# @fluentui/react-message-bar
 
 **React Message Bar components for [Fluent UI React](https://react.fluentui.dev/)**
 

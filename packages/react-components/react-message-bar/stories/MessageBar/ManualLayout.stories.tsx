@@ -1,7 +1,14 @@
 import * as React from 'react';
-import { Button, Link, Switch } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
-import { MessageBar, MessageBarActions, MessageBarBody, MessageBarTitle } from '@fluentui/react-message-bar-preview';
+import {
+  MessageBar,
+  MessageBarActions,
+  MessageBarBody,
+  MessageBarTitle,
+  Button,
+  Link,
+  Switch,
+} from '@fluentui/react-components';
 
 const intents = ['info', 'warning', 'error', 'success'] as const;
 export const ManualLayout = () => {
