@@ -151,11 +151,11 @@ export interface IAreaChartProps extends ICartesianChartProps {
     styles?: IStyleFunctionOrObject<ICartesianChartStyleProps, ICartesianChartStyles>;
 }
 
-// @public (undocumented)
+// @public
 export interface IAreaChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface IAreaChartStyles extends ICartesianChartStyles {
 }
 
@@ -205,7 +205,7 @@ export interface IBasestate {
     }[];
 }
 
-// @public (undocumented)
+// @public
 export interface ICartesianChartProps {
     calloutProps?: Partial<ICalloutProps>;
     // @deprecated
@@ -257,7 +257,7 @@ export interface ICartesianChartProps {
     yMinValue?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ICartesianChartStyleProps {
     className?: string;
     color?: string;
@@ -271,7 +271,7 @@ export interface ICartesianChartStyleProps {
     width?: number;
 }
 
-// @public (undocumented)
+// @public
 export interface ICartesianChartStyles {
     axisTitle?: IStyle;
     calloutBlockContainer?: IStyle;
