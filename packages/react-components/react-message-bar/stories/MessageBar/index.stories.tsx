@@ -19,7 +19,7 @@ export { Reflow } from './Reflow.stories';
 export { ManualLayout } from './ManualLayout.stories';
 
 export default {
-  title: 'Preview Components/MessageBar',
+  title: 'Components/MessageBar',
   component: MessageBar,
   subcomponents: {
     MessageBarGroup,
