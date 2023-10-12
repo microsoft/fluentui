@@ -304,7 +304,7 @@ export function createStringXAxis(
  * @returns {number[]}
  */
 export function prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
-  const val = Math.ceil((maxVal - minVal) / splitInto);
+  const val = (maxVal - minVal) / splitInto;
   const dataPointsArray: number[] = [minVal, minVal + val];
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
