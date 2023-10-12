@@ -24,6 +24,9 @@ export enum AnimationDirection {
     Vertical = 1
 }
 
+// @internal (undocumented)
+export const Calendar: React_2.FunctionComponent<CalendarProps>;
+
 // @public (undocumented)
 export interface CalendarDayProps extends CalendarDayGridProps {
     allFocusable?: boolean;
