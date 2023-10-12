@@ -27,7 +27,7 @@ import { SVGProps } from 'react';
 // @public
 export const AreaChart: React_2.FunctionComponent<IAreaChartProps>;
 
-// @public (undocumented)
+// @public
 export const CartesianChart: React_2.FunctionComponent<IModifiedCartesianChartProps>;
 
 // @public
@@ -439,11 +439,11 @@ export interface IDonutChartProps extends ICartesianChartProps {
     valueInsideDonut?: string | number;
 }
 
-// @public (undocumented)
+// @public
 export interface IDonutChartStyleProps extends ICartesianChartStyleProps {
 }
 
-// @public (undocumented)
+// @public
 export interface IDonutChartStyles {
     chart?: IStyle;
     legendContainer: IStyle;
@@ -499,7 +499,7 @@ export interface IGaugeChartSegment {
     size: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IGaugeChartStyleProps {
     chartHeight?: number;
     chartValueSize?: number;
@@ -510,7 +510,7 @@ export interface IGaugeChartStyleProps {
     toDrawShape?: boolean;
 }
 
-// @public (undocumented)
+// @public
 export interface IGaugeChartStyles {
     calloutBlockContainer?: IStyle;
     calloutContentRoot?: IStyle;
