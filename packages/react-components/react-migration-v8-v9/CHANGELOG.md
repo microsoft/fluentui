@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-migration-v8-v9
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.25)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-migration-v8-v9_v9.4.24..@fluentui/react-migration-v8-v9_v9.4.25)
+
+### Patches
+
+- fix: adding checks for is inverted and using different colors accordingly on neutralForeground3 and 4 in the createV9Theme function. ([PR #29471](https://github.com/microsoft/fluentui/pull/29471) by matejera@microsoft.com)
+- Bump @fluentui/react-components to v9.35.0 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
 
 ## [9.4.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-migration-v8-v9_v9.4.24)
 

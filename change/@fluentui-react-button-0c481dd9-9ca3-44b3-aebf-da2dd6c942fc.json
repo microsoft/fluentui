@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Transparent buttons visible in teams high contrast mode",
-  "packageName": "@fluentui/react-button",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

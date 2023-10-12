@@ -2,6 +2,27 @@
   "name": "@fluentui/react-migration-v8-v9",
   "entries": [
     {
+      "date": "Thu, 12 Oct 2023 14:55:44 GMT",
+      "tag": "@fluentui/react-migration-v8-v9_v9.4.25",
+      "version": "9.4.25",
+      "comments": {
+        "patch": [
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c2e09fe47acb6010fdb188026180ee505abb9f67",
+            "comment": "fix: adding checks for is inverted and using different colors accordingly on neutralForeground3 and 4 in the createV9Theme function."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-migration-v8-v9",
+            "comment": "Bump @fluentui/react-components to v9.35.0",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Oct 2023 13:54:26 GMT",
       "tag": "@fluentui/react-migration-v8-v9_v9.4.24",
       "version": "9.4.24",

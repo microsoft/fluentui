@@ -1,8 +1,18 @@
 # Change Log - @fluentui/react-button
 
-This log was last generated on Wed, 11 Oct 2023 13:54:22 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.49](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.49)
+
+Thu, 12 Oct 2023 14:55:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-button_v9.3.48..@fluentui/react-button_v9.3.49)
+
+### Patches
+
+- fix: Transparent buttons visible in teams high contrast mode ([PR #29497](https://github.com/microsoft/fluentui/pull/29497) by lingfangao@hotmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
 
 ## [9.3.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-button_v9.3.48)
 

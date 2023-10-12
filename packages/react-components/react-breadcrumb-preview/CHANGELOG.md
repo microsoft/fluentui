@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-breadcrumb-preview
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:42 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.3)
+
+Thu, 12 Oct 2023 14:55:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.2.2..@fluentui/react-breadcrumb-preview_v1.2.3)
+
+### Patches
+
+- chore: migrate from getNativeElementProps for getIntrinsicElementProps ([PR #29498](https://github.com/microsoft/fluentui/pull/29498) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-button to v9.3.49 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-link to v9.1.28 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
 
 ## [1.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.2)
 

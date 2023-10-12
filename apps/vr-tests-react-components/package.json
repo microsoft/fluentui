@@ -40,7 +40,7 @@
     "@fluentui/react-label": "*",
     "@fluentui/react-link": "*",
     "@fluentui/react-menu": "*",
-    "@fluentui/react-message-bar": ">=9.0.0-alpha",
+    "@fluentui/react-message-bar": "*",
     "@fluentui/react-persona": "*",
     "@fluentui/react-popover": "*",
     "@fluentui/react-portal": "*",
