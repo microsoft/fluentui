@@ -2,6 +2,27 @@
   "name": "@fluentui/react-button",
   "entries": [
     {
+      "date": "Thu, 12 Oct 2023 14:55:42 GMT",
+      "tag": "@fluentui/react-button_v9.3.49",
+      "version": "9.3.49",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "3b8a86445f185e19ec9b0fc4ee4943a0867bab23",
+            "comment": "fix: Transparent buttons visible in teams high contrast mode"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-button",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.17",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Oct 2023 13:54:22 GMT",
       "tag": "@fluentui/react-button_v9.3.48",
       "version": "9.3.48",

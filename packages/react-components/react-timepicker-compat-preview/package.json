@@ -31,8 +31,8 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-combobox": "^9.5.23",
-    "@fluentui/react-jsx-runtime": "^9.0.16",
+    "@fluentui/react-combobox": "^9.5.24",
+    "@fluentui/react-jsx-runtime": "^9.0.17",
     "@fluentui/react-theme": "^9.1.14",
     "@fluentui/react-utilities": "^9.15.0",
     "@griffel/react": "^1.5.14",

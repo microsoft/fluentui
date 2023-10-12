@@ -1,6 +1,33 @@
 {
-  "name": "@fluentui/react-message-bar-preview",
+  "name": "@fluentui/react-message-bar",
   "entries": [
+    {
+      "date": "Thu, 12 Oct 2023 14:55:44 GMT",
+      "tag": "@fluentui/react-message-bar_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "40e6a376db3c2f11ba131c046c4241bf52e6d3a3",
+            "comment": "feat: Release MessageBar as stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-button to v9.3.49",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-message-bar",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.17",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          }
+        ]
+      }
+    },
     {
       "date": "Wed, 11 Oct 2023 13:54:24 GMT",
       "tag": "@fluentui/react-message-bar-preview_v0.2.1",

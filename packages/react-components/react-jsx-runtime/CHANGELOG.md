@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.17)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.16..@fluentui/react-jsx-runtime_v9.0.17)
+
+### Patches
+
+- chore: add warning for resolution problems ([PR #29434](https://github.com/microsoft/fluentui/pull/29434) by bernardo.sunderhus@gmail.com)
 
 ## [9.0.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.16)
 

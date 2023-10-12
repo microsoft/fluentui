@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.35](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.35)
+
+Thu, 12 Oct 2023 14:55:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.34..@fluentui/react-drawer_v9.0.0-beta.35)
+
+### Changes
+
+- chore: migrate from getNativeElementProps for getIntrinsicElementProps ([PR #29498](https://github.com/microsoft/fluentui/pull/29498) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-dialog to v9.7.9 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-motion-preview to v0.3.3 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
 
 ## [9.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.34)
 

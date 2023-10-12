@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps",
-  "packageName": "@fluentui/react-image",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}
