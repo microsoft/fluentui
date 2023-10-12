@@ -98,7 +98,10 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
 
   // Convert the Date object to a stable key representation. This ensures that the memoization remains stable when a new Date object representing the same date is passed in.
   const dateAnchorKey = dateToKey(providedDate);
-  const dateAnchor = React.useMemo(() => keyToDate(dateAnchorKey) ?? fallbackDateAnchorRef.current, [dateAnchorKey]);
+  const dateAnchor = React.useMemo(
+    () => keyToDate(dateAnchorKey) ?? fallbackDateAnchor,
+    [dateAnchorKey, fallbackDateAnchor],
+  );
 
   const dateStartAnchor = React.useMemo(() => getDateStartAnchor(dateAnchor, startHour), [dateAnchor, startHour]);
   const dateEndAnchor = React.useMemo(
