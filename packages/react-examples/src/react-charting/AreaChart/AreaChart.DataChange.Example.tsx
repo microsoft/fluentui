@@ -98,6 +98,7 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
               allowFocusOnLegends: true,
             }}
             enableReflow={true}
+            calloutProps={{ descriptionMessage: 'Shown Y values are cumulative' }}
           />
           <DefaultButton text="Change Ydata" onClick={this._changeData} />
           <DefaultButton text="Change Xdata" onClick={this._changeXData} />

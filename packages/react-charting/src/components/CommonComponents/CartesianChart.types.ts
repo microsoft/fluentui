@@ -385,7 +385,9 @@ export interface ICartesianChartProps {
   /**
    * Callout customization props
    */
-  calloutProps?: Partial<ICalloutProps>;
+  calloutProps?: Partial<ICalloutProps> & {
+    descriptionMessage?: string;
+  };
 
   /**
    * props for the svg; use this to include aria-* or other attributes on the tag

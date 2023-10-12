@@ -178,7 +178,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
         'data-is-focusable': true,
         xAxisCalloutAccessibilityData: this.state.xAxisCalloutAccessibilityData,
         ...this.props.calloutProps,
-        descriptionMessage: this.state.YValueHover!.length > 1 ? 'Shown Y values are cumulative' : undefined,
       };
       return (
         <CartesianChart
