@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Customizations } from './Customizations';
 import { hoistStatics } from '../hoistStatics';
 import { CustomizerContext } from './CustomizerContext';
-import { concatStyleSets } from '@fluentui/merge-styles';
+import { concatStyleSets, makeShadowConfig } from '@fluentui/merge-styles';
 import type { ICustomizerContext } from './CustomizerContext';
 import { MergeStylesShadowRootConsumer } from '../shadowDom/MergeStylesShadowRootContext';
 import type { ShadowConfig } from '@fluentui/merge-styles';
@@ -56,14 +56,8 @@ export function customizable(
                       this._shadowConfig.stylesheetKey !== scope ||
                       this._shadowConfig.inShadow !== inShadow ||
                       this._shadowConfig.window !== win
-                      // false
                     ) {
-                      this._shadowConfig = {
-                        stylesheetKey: scope,
-                        inShadow,
-                        window: win,
-                        __isShadowConfig__: true,
-                      };
+                      this._shadowConfig = makeShadowConfig(scope, inShadow, win);
                     }
 
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any

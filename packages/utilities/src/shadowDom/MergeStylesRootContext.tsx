@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GLOBAL_STYLESHEET_KEY, Stylesheet } from '@fluentui/merge-styles';
+import { GLOBAL_STYLESHEET_KEY, Stylesheet, makeShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from '../dom';
 
 declare global {
@@ -82,12 +82,8 @@ export const MergeStylesRootProvider: React.FC<MergeStylesRootProviderProps> = (
 
     let changed = false;
     const next = new Map<string, CSSStyleSheet>(stylesheets);
-    const sheet = Stylesheet.getInstance({
-      window: win,
-      inShadow: false,
-      stylesheetKey: GLOBAL_STYLESHEET_KEY,
-      __isShadowConfig__: true,
-    });
+    const sheet = Stylesheet.getInstance(makeShadowConfig(GLOBAL_STYLESHEET_KEY, false, win));
+
     sheet.forEachAdoptedStyleSheet((adoptedSheet, key) => {
       next.set(key, adoptedSheet);
       changed = true;
