@@ -469,6 +469,9 @@ export interface IStyleSheetConfig {
 // @public
 export function keyframes(timeline: IKeyframes): string;
 
+// @public (undocumented)
+export const makeShadowConfig: (stylesheetKey: string, inShadow: boolean, window?: Window) => ShadowConfig;
+
 // Warning: (ae-forgotten-export) The symbol "IStyleOptions" needs to be exported by the entry point index.d.ts
 //
 // @public
