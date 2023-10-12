@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { concatStyleSetsWithProps } from '@fluentui/merge-styles';
-import { useAdoptedStylesheet, useHasMergeStylesShadowRootContext } from './shadowDom/MergeStylesShadowRootContext';
+import { useAdoptedStylesheet, useShadowConfig } from './shadowDom/MergeStylesShadowRootContext';
 import { useCustomizationSettings } from './customizations/useCustomizationSettings';
 import type { IStyleSet, IStyleFunctionOrObject, ShadowConfig } from '@fluentui/merge-styles';
 import { getWindow } from './dom/getWindow';
@@ -103,21 +103,7 @@ export function styled<
     const additionalProps = getProps ? getProps(props) : undefined;
 
     const win = useWindow() ?? getWindow();
-
-    const inShadow = useHasMergeStylesShadowRootContext();
-    const shadowConfig = React.useRef<ShadowConfig>({ stylesheetKey: scope, inShadow, __isShadowConfig__: true });
-    if (
-      shadowConfig.current.stylesheetKey !== scope ||
-      shadowConfig.current.inShadow !== inShadow ||
-      shadowConfig.current.window !== win
-    ) {
-      shadowConfig.current = {
-        stylesheetKey: scope,
-        inShadow,
-        window: win,
-        __isShadowConfig__: true,
-      };
-    }
+    const shadowConfig = useShadowConfig(scope, win);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const cache = (styles.current && (styles.current as any).__cachedInputs__) || [];
@@ -143,7 +129,7 @@ export function styled<
       styles.current = concatenatedStyles as StyleFunction<TStyleProps, TStyleSet>;
     }
 
-    styles.current.__shadowConfig__ = shadowConfig.current;
+    styles.current.__shadowConfig__ = shadowConfig;
 
     useAdoptedStylesheet(scope);
 

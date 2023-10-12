@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { GLOBAL_STYLESHEET_KEY } from '@fluentui/merge-styles';
+import { GLOBAL_STYLESHEET_KEY, makeShadowConfig } from '@fluentui/merge-styles';
 import { FocusRectsProvider } from '../FocusRectsProvider';
 import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
 
@@ -80,7 +80,6 @@ const GlobalStyles: React.FC = props => {
 export const useAdoptedStylesheet = (stylesheetKey: string): boolean => {
   const shadowCtx = useMergeStylesShadowRootContext();
   const rootMergeStyles = useMergeStylesRootStylesheets();
-  // console.log('useAdoptedStylesheets', stylesheetKey);
 
   if (!shadowCtx) {
     return false;
@@ -111,4 +110,17 @@ export const useHasMergeStylesShadowRootContext = () => {
  */
 export const useMergeStylesShadowRootContext = () => {
   return React.useContext(MergeStylesShadowRootContext);
+};
+
+/**
+ * Get a shadow config.
+ * @param stylesheetKey - Globally unique key
+ * @param win - Reference to the `window` global.
+ * @returns ShadowConfig
+ */
+export const useShadowConfig = (stylesheetKey: string, win?: Window) => {
+  const inShadow = useHasMergeStylesShadowRootContext();
+  return React.useMemo(() => {
+    return makeShadowConfig(stylesheetKey, inShadow, win);
+  }, [stylesheetKey, inShadow, win]);
 };
