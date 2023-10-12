@@ -6,7 +6,8 @@ import { VerticalStackedBarChartBasicExample } from './VerticalStackedBarChart.B
 import { VerticalStackedBarChartStyledExample } from './VerticalStackedBarChart.Styled.Example';
 import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart.Callout.Example';
 //import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
-//import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
+//import { VerticalStackedBarChartCustomAccessibilityExample }
+// from './VerticalStackedBarChart.CustomAccessibility.Example';
 
 const VerticalBarChartBasicExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/VerticalStackedBarChart/VerticalStackedBarChart.Basic.Example.tsx') as string;

@@ -137,6 +137,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
             data={chartData}
             showYAxisGridLines={false}
             enablePerfOptimization={true}
+            enableReflow={true}
           />
         </div>
       </>

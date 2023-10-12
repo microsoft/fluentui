@@ -2,6 +2,21 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Tue, 26 Sep 2023 07:44:56 GMT",
+      "tag": "@fluentui/dom-utilities_v2.2.11",
+      "version": "2.2.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "ccc380cada5d9a6057bd8fca127700b700815fdc",
+            "comment": "chore: add ES2015.Iterable to tsconfig lib as jest types need it"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 28 Jun 2023 07:37:32 GMT",
       "tag": "@fluentui/dom-utilities_v2.2.11",
       "version": "2.2.11",

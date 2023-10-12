@@ -145,6 +145,7 @@ export class GroupedVerticalBarChartStyledExample extends React.Component<{}, IG
             showYAxisGridLines
             yAxisTickCount={10}
             barwidth={43}
+            enableReflow={true}
           />
         </div>
       </>

@@ -30,6 +30,7 @@ export { InlineStylingTreeItemLevel } from './TreeInlineStylingTreeItemLevel.sto
 export { FlatTreeStory as FlatTree } from './FlatTree.stories';
 
 // SCENARIOS & FEATURES
+export { UseHeadlessFlatTree } from './UseHeadlessFlatTree.stories';
 export { Selection } from './TreeSelection.stories';
 export { Manipulation } from './TreeManipulation.stories';
 export { LazyLoading } from './TreeLazyLoading.stories';

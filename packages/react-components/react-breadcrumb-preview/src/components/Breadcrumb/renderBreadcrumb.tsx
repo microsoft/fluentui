@@ -11,7 +11,7 @@ export const renderBreadcrumb_unstable = (state: BreadcrumbState, contextValues:
   assertSlots<BreadcrumbSlots>(state);
   return (
     <state.root>
-      <BreadcrumbProvider value={contextValues.breadcrumb}>
+      <BreadcrumbProvider value={contextValues}>
         {state.list && <state.list>{state.root.children}</state.list>}
       </BreadcrumbProvider>
     </state.root>
