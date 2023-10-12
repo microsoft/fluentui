@@ -94,7 +94,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
  * The hook ensures that the memoization remains consistent even if new Date objects representing the same date are provided.
  */
 const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, endHour: Hour) => {
-  const fallbackDateAnchorRef = React.useRef(new Date());
+  const [fallbackDateAnchor] = React.useState(() => new Date());
 
   // Convert the Date object to a stable key representation. This ensures that the memoization remains stable when a new Date object representing the same date is passed in.
   const dateAnchorKey = dateToKey(providedDate);
