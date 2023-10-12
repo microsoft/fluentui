@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Button, Link, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { DismissRegular } from '@fluentui/react-icons';
 import {
   MessageBar,
@@ -8,7 +7,12 @@ import {
   MessageBarBody,
   MessageBarGroup,
   MessageBarIntent,
-} from '@fluentui/react-message-bar-preview';
+  Button,
+  Link,
+  makeStyles,
+  shorthands,
+  tokens,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   messageBarGroup: {
