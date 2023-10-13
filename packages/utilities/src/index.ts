@@ -241,6 +241,7 @@ export {
   useAdoptedStylesheet,
   useHasMergeStylesShadowRootContext,
   useMergeStylesShadowRootContext,
+  useShadowConfig,
 } from './shadowDom/MergeStylesShadowRootContext';
 
 export { MergeStylesRootProvider, useMergeStylesRootStylesheets } from './shadowDom/MergeStylesRootContext';
