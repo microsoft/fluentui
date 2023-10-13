@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.6",
-    "@fluentui/react-shared-contexts": "^9.9.2",
+    "@fluentui/react-shared-contexts": "^9.10.0",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
