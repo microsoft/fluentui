@@ -2,6 +2,21 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Fri, 13 Oct 2023 04:17:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.4",
+      "version": "3.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "af42938529ee2284a933a9f64db163c3bf283400",
+            "comment": "fix: update switch to use margin instead of transform for the checked state to support RTL"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Sep 2023 04:18:49 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.3",
       "version": "3.0.0-beta.3",
