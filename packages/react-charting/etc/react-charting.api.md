@@ -207,9 +207,7 @@ export interface IBasestate {
 
 // @public
 export interface ICartesianChartProps {
-    calloutProps?: Partial<ICalloutProps> & {
-        descriptionMessage?: string;
-    };
+    calloutProps?: Partial<ICalloutProps>;
     // @deprecated
     chartLabel?: string;
     className?: string;
