@@ -46,7 +46,7 @@ export const styles = css`
     z-index: var(--dialog-elevation, 9999);
   }
 
-  .control {
+  dialog {
     background: ${colorNeutralBackground1};
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
     z-index: 2;
@@ -60,12 +60,16 @@ export const styles = css`
     overflow: unset;
     position: fixed;
     inset: 0;
+    padding: 0;
+  }
+
+  :host([modal-type='non-modal'][inert-trap-focus]) dialog::backdrop {
+    display: none;
   }
 
   .root {
     box-sizing: border-box;
     display: flex;
-    row-gap: 8px;
     flex-direction: column;
     overflow: unset;
     max-height: calc(100vh - 48px);
@@ -97,17 +101,24 @@ export const styles = css`
     box-sizing: border-box;
   }
 
+  dialog {
+    max-width: 100%;
+    width: 100vh;
+  }
+  /* .root {
+    max-width: 100vw;
+    grid-template-rows: auto 1fr auto;
+  } */
   .footer {
     display: flex;
     grid-column-start: 1;
     flex-direction: column;
     max-width: 100vw;
+    row-gap: ${spacingVerticalS};
     padding-top: ${spacingVerticalXXL};
     justify-self: stretch;
     width: 100%;
-    row-gap: ${spacingVerticalS};
   }
-
   ::slotted([slot='actions']) {
     width: 100%;
   }
@@ -116,7 +127,7 @@ export const styles = css`
     ::slotted([slot='actions']) {
       width: fit-content;
     }
-    .control {
+    dialog {
       max-width: 600px;
       width: 100%;
     }
@@ -125,11 +136,9 @@ export const styles = css`
       flex-direction: row;
       justify-content: flex-end;
       align-items: center;
-      height: fit-content;
       column-gap: ${spacingHorizontalS};
+      padding-top: ${spacingVerticalS};
       box-sizing: border-box;
-      row-gap: ${spacingHorizontalS};
-      column-gap: ${spacingVerticalS};
     }
   }
 `;

@@ -5,25 +5,33 @@ import type { Dialog as FluentDialog } from './dialog.js';
 import './define.js';
 import '../button/define.js';
 import '../text/define.js';
+import { DialogModalType } from './dialog.options.js';
 
 type DialogStoryArgs = Args & FluentDialog;
 type DialogStoryMeta = Meta<DialogStoryArgs>;
 
 const dismissed16Regular = html`
-  <svg
-    fill="currentColor"
-    aria-hidden="true"
-    width="20"
-    height="20"
-    viewBox="0 0 20 20"
-    xmlns="http://www.w3.org/2000/svg"
-  >
+  <svg fill="currentColor" aria-="true" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
     <path
       d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
       fill="currentColor"
     ></path>
   </svg>
 `;
+
+const rabbit16Regular = html`<svg
+  fill="currentColor"
+  aria-hidden="true"
+  width="20"
+  height="20"
+  viewBox="0 0 20 20"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10.51 15.01h2.12c.91 0 1.68-.57 1.99-1.37.88.07 1.79-.23 2.46-.9a3.15 3.15 0 0 0 0-4.45l-4.22-4.22c-.59-.59-1.55-.59-2.14 0-.6.6-.6 1.56 0 2.15l1.34 1.33c-.12.16-.22.33-.3.5a3.55 3.55 0 0 0-.54-.05H7.54c-.33 0-.65.05-.95.13A2.5 2.5 0 1 0 4 11.95v.93c0 1.18.95 2.13 2.12 2.13h4.39Zm1.64-10.23L16.38 9a2.15 2.15 0 0 1-2 3.6l-.56-.13-.06.56c-.07.56-.54.99-1.12.99h-1.62v-.1C11 12.78 9.99 12 8.89 12H7.5a.5.5 0 0 0 0 1h1.39c.69 0 1.12.46 1.12.91v.1H6.12c-.62 0-1.12-.5-1.12-1.13v-1.33A2.55 2.55 0 0 1 7.54 9h3.68c.23 0 .46.03.68.1l.42.11.18-.4c.1-.26.26-.57.47-.79l.5-.48-2.04-2.02a.52.52 0 0 1 0-.74c.2-.2.52-.2.72 0Zm-6.5 3.77a3.55 3.55 0 0 0-1.6 2.38 1.5 1.5 0 1 1 1.6-2.38Z"
+    fill="currentColor"
+  ></path>
+</svg>`;
 
 const closeDialog = (e: Event, id: string) => {
   const dialog = document.getElementById(id) as FluentDialog;
@@ -35,29 +43,49 @@ const openDialog = (e: Event, id: string) => {
   dialog.show();
 };
 
+const openDialogControlled = (e: Event, id: string) => {
+  const dialog = document.getElementById(id) as FluentDialog;
+  dialog.open = true;
+  dialog.show();
+};
+
+const closeDialogControlled = (e: Event, id: string) => {
+  const dialog = document.getElementById(id) as FluentDialog;
+  dialog.open = false;
+  dialog.hide();
+};
+
 const dialogTemplate = html<DialogStoryArgs>`
+  <style>
+    .css-t5lsh6 {
+      display: none;
+    }
+  </style>
   <div>
     <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
-    <fluent-dialog
-      id="dialog-default"
-      ?modal=${x => x.modal}
-      ?alert=${x => x.alert}
-      ?no-focus-trap=${x => x.noFocusTrap}
-      hidden
-    >
+    <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}">
       <fluent-text slot="title">Dialog</fluent-text>
-      <fluent-text as="p" font="base" size="300" weight="regular">
+      <fluent-button
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
+        slot="title-action"
+      >
+        ${dismissed16Regular}
+      </fluent-button>
+      <fluent-text as="p" weight="regular" block>
         <p>
           The Dialog component is a window overlaid on either the primary window or another dialog window. Windows under
           a modal dialog are inert. That is, users cannot interact with content outside an active dialog window.
         </p>
       </fluent-text>
       <br />
-      <fluent-text><code>fluent-dialog</code></fluent-text>
+      <fluent-text block><code>fluent-dialog</code></fluent-text>
+
       <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="actions" tabindex="0">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `;
@@ -65,47 +93,62 @@ const dialogTemplate = html<DialogStoryArgs>`
 export default {
   title: 'Components/Dialog',
   args: {
-    modal: false,
-    alert: false,
-    noFocusTrap: false,
+    modalType: DialogModalType.modal,
   },
   argTypes: {
-    modal: {
-      description: 'Renders dialog as a modal',
+    open: {
+      description: 'Controls the open state of the dialog',
       table: {
-        defaultValue: {
-          summary: false,
-        },
+        defaultValue: { summary: false },
       },
-      control: 'boolean',
     },
-    alert: {
-      description: 'Renders dialog as an alert',
-      table: {
-        defaultValue: {
-          summary: false,
-        },
-      },
-      control: 'boolean',
+    onOpenChange: {
+      description:
+        'Event fired when the component transitions from its open state.<br /><br /><code>event</code>: A CustomEvent emitted when the open state changes.<br /><br /> <code>detail</code>: An object containing relevant information, such as the open value and the type of interaction that triggered the event.',
     },
-    noFocusTrap: {
-      description: 'removes trap focus',
+    modalType: {
+      description:
+        '<code>modal</code>: When this type of dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab sequence is kept within the dialog and moving the focus outside the dialog will imply closing it. This is the default type of the component.<br /><br /><code>non-modal</code>: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.<br /><br /><code>alert</code>: A special type of modal dialog that interrupts the users workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background.',
       table: {
-        defaultValue: {
-          summary: false,
-        },
+        defaultValue: { summary: DialogModalType.modal },
       },
-      control: 'boolean',
+      control: {
+        type: 'select',
+        options: Object.values(DialogModalType),
+      },
+      defaultValue: DialogModalType.modal,
     },
   },
 } as DialogStoryMeta;
 
 export const Default = renderComponent(dialogTemplate).bind({});
 
+export const NonModal = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-nonmodal')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-nonmodal" modal-type="${DialogModalType.nonModal}">
+      <div slot="title">Non-modal</div>
+      </fluent-text as="p" block>
+      <p>
+        A <code>non-modal</code> Dialog by default presents no backdrop, allowing elements outside of the Dialog to be interacted with.
+
+        A <code>non-modal</code> Dialog will present by default a closeButton.
+</p>
+      </fluent-text>
+      </fluent-text as="p" block><p><fluent-text weight="bold" as="span"><span>Note:<span></fluent-text> if an element outside of the dialog is focused then it will not be possible to close the dialog with the Escape key.</p></fluent-text>
+      <fluent-text block><code>modal-type="non-modal"</code></fluent-text>
+      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-nonmodal')}"
+        >Close Dialog</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
 export const Modal = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-modal')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-modal" modal hidden>
+    <fluent-dialog id="dialog-modal" modal-type="${DialogModalType.modal}">
       <div slot="title">Modal</div>
       <div>
         A modal is a type of dialog that temporarily halts the main workflow to convey a significant message or require
@@ -113,7 +156,7 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
         close the modal-dialog, resuming the user's interaction with the main content.
       </div>
       <br />
-      <fluent-text><code>fluent-dialog modal</code></fluent-text>
+      <fluent-text><code>modal-type="modal"</code></fluent-text>
       <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
         >Close Dialog</fluent-button
       >
@@ -125,16 +168,83 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
 export const Alert = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-alert')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-alert" alert hidden>
+    <fluent-dialog id="dialog-alert" modal-type="${DialogModalType.alert}">
       <div slot="title">Alert</div>
       <div>
         An alert is a type of modal-dialog that interrupts the user's workflow to communicate an important message and
         acquire a response. By default clicking on backdrop and pressing Escape will not dismiss an alert Dialog.
       </div>
       <br />
-      <fluent-text><code>fluent-dialog alert</code></fluent-text>
+      <fluent-text><code>modal-type="alert"</code></fluent-text>
       <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
         >Close Dialog</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-button @click=${(e: Event) => openDialogControlled(e, 'dialog-controlled')}
+      >Open Controlled Dialog</fluent-button
+    >
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-uncontrolled')}>Open Uncontrolled Dialog</fluent-button>
+    <fluent-dialog id="dialog-controlled">
+      <div slot="title">Controlled Dialog</div>
+      <fluent-button
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => closeDialogControlled(e, 'dialog-controlled')}"
+        slot="title-action"
+      >
+        ${dismissed16Regular}
+      </fluent-button>
+      <div>
+        <fluent-text block>
+          <span>
+            Employ the open attribute to dictate the dialog's visibility state. This method offers a declarative
+            approach, where the dialog's visibility is determined by the presence or absence of the external open
+            attribute, ensuring the state is managed outside the component.
+          </span>
+        </fluent-text>
+      </div>
+      <br />
+
+      <fluent-button
+        slot="actions"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialogControlled(e, 'dialog-controlled')}"
+        >Close Controlled Dialog</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
+    </fluent-dialog>
+    <fluent-dialog id="dialog-uncontrolled">
+      <div slot="title">Uncontrolled Dialog</div>
+      <fluent-button
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-uncontrolled')}"
+        slot="title-action"
+      >
+        ${dismissed16Regular}
+      </fluent-button>
+      <div>
+        <fluent-text block>
+          <span>
+            Utilize the show and hide methods to manage the dialog's visibility. This approach allows the dialog to
+            handle its state internally, giving you a direct and programmatic way to toggle its display without relying
+            on external attributes.
+          </span>
+        </fluent-text>
+      </div>
+      <br />
+
+      <fluent-button
+        slot="actions"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-uncontrolled')}"
+        >Close Unontrolled Dialog</fluent-button
       >
       <fluent-button slot="actions">Do Something</fluent-button>
     </fluent-dialog>
@@ -144,57 +254,67 @@ export const Alert = renderComponent(html<DialogStoryArgs>`
 export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-longcontent')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-longcontent" hidden>
+    <fluent-dialog id="dialog-longcontent">
       <div slot="title">Scrolling Long Content</div>
       <fluent-button
         appearance="transparent"
         icon-only
         @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
-        slot="close"
+        slot="title-action"
       >
         ${dismissed16Regular}
       </fluent-button>
-      <div>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec lectus non lorem iaculis luctus. Proin ac
-        dolor eget enim commodo pretium. Duis ut nibh ac metus interdum finibus. Integer maximus ante a tincidunt
-        pretium. Aliquam erat volutpat. Sed nec ante vel lectus dignissim commodo id ut elit. Curabitur ullamcorper
-        sapien id mauris interdum, ac placerat mi malesuada. Duis aliquam, dolor eget facilisis mollis, ante leo
-        tincidunt quam, vel convallis ipsum turpis et turpis. Mauris fermentum neque nec tortor semper tempus. Integer
-        malesuada, nunc ac cursus facilisis, lectus mauris interdum erat, in vulputate risus velit in neque. Etiam
-        volutpat ante nec fringilla tempus. Quisque et lobortis dolor. Fusce sit amet odio sed ipsum fringilla auctor.
-        Suspendisse faucibus tellus in luctus hendrerit. Vestibulum euismod velit non laoreet feugiat. Nam sit amet
-        velit urna. Cras consectetur tempor sem, in suscipit sem ultrices id. Vivamus id felis fringilla, scelerisque
-        nulla non, aliquam leo. In pharetra mauris ut enim ullamcorper, id suscipit quam ullamcorper. Quisque tincidunt,
-        felis nec congue elementum, mauris est finibus ex, ut volutpat ante est nec est. Aliquam tempor, turpis ac
-        scelerisque dignissim, metus velit rutrum sem, eget efficitur mauris erat in metus. Vestibulum in urna massa.
-        Donec eleifend leo at dui convallis aliquet. Integer eleifend, velit ut consequat tempus, enim elit ultricies
-        diam, at congue enim enim id nunc. Nullam fringilla bibendum nulla, at lacinia sem bibendum eget. Nunc posuere
-        ipsum sed enim facilisis efficitur. Pellentesque id semper mi, a feugiat sem. Nunc interdum, leo ut tincidunt
-        consectetur, nunc mauris accumsan nulla, vel ultricies velit erat nec sapien. Praesent eleifend ex at odio
-        scelerisque cursus. Morbi eget tellus sed sapien scelerisque cursus at a ante. Sed venenatis vehicula erat eu
-        feugiat. Ut eu elit vitae urna tincidunt pulvinar nec at nunc. Vestibulum eget tristique sapien. Sed egestas
-        sapien vel ante viverra pharetra. Cras sit amet felis at nulla tincidunt euismod vitae et justo. Duis nec rutrum
-        lectus, nec lobortis quam. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis
-        egestas. Sed ac ex condimentum, consectetur felis non, maximus odio. Sed mattis arcu id justo fringilla, a
-        tristique purus vestibulum. Nulla nec fringilla quam. Sed ac elit ac sem posuere cursus nec vitae mauris.
-        Suspendisse nec pulvinar risus. Sed a tincidunt elit, in gravida tortor. Quisque sollicitudin lectus vel
-        interdum tempor. Fusce dictum fermentum sem sed suscipit. Vivamus sollicitudin ex turpis, sit amet consequat leo
-        auctor at. Donec fermentum aliquet lectus, sit amet efficitur nibh pellentesque et. Curabitur dapibus quam vitae
-        lectus pellentesque, vitae varius massa facilisis. Quisque consectetur eros a arcu cursus fringilla. Fusce
-        efficitur auctor nibh, nec sollicitudin eros semper eget. Cras a elit ut tortor semper volutpat eu vel nunc.
-        Duis dapibus quam risus, ac tristique nisl aliquam eu. Curabitur vel ipsum non nunc euismod fringilla vel a
-        lorem. Curabitur viverra magna ac justo fringilla, eu vestibulum purus finibus. Donec elementum volutpat libero,
-        in tempus massa convallis vitae. Curabitur vitae mauris id urna dictum pharetra. Nullam vehicula arcu arcu,
-        vitae elementum enim tincidunt at. Duis eleifend, lorem a efficitur facilisis, nulla dolor finibus orci, et
-        ullamcorper orci ex ac purus. Aenean sem lectus, malesuada id magna id, facilisis condimentum nibh. Cras tempor
-        neque mi, sit amet suscipit libero consectetur non. Nullam id eleifend mauris. Mauris iaculis lectus eu
-        scelerisque efficitur. In id suscipit libero. Donec condimentum, purus ac laoreet facilisis, risus lorem
-        facilisis neque, id volutpat felis mi eget metus. Nulla facilisi. Donec consequat tincidunt nunc sed elementum.
-        Integer consectetur tristique orci, ut congue justo pellentesque eu. Fusce faucibus iaculis mauris, eu lobortis
-        orci egestas eget. Nullam nec arcu bibendum, cursus diam ac, facilisis enim. Nulla facilisi. Curabitur lacinia
-        odio mauris, a gravida nisi volutpat in. Aliquam at maximus felis. Vestibulum convallis dignissim urna id
-        gravida.
-      </div>
+      <fluent-text style="overflow: hidden;" block as="p"
+        ><p>
+          By default content provided in the default slot should grow until it fits viewport size, overflowed content
+          will be scrollable
+        </p></fluent-text
+      >
+      <hr />
+      <br />
+      <fluent-text block as="p">
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce nec lectus non lorem iaculis luctus. Proin ac
+          dolor eget enim commodo pretium. Duis ut nibh ac metus interdum finibus. Integer maximus ante a tincidunt
+          pretium. Aliquam erat volutpat. Sed nec ante vel lectus dignissim commodo id ut elit. Curabitur ullamcorper
+          sapien id mauris interdum, ac placerat mi malesuada. Duis aliquam, dolor eget facilisis mollis, ante leo
+          tincidunt quam, vel convallis ipsum turpis et turpis. Mauris fermentum neque nec tortor semper tempus. Integer
+          malesuada, nunc ac cursus facilisis, lectus mauris interdum erat, in vulputate risus velit in neque. Etiam
+          volutpat ante nec fringilla tempus. Quisque et lobortis dolor. Fusce sit amet odio sed ipsum fringilla auctor.
+          Suspendisse faucibus tellus in luctus hendrerit. Vestibulum euismod velit non laoreet feugiat. Nam sit amet
+          velit urna. Cras consectetur tempor sem, in suscipit sem ultrices id. Vivamus id felis fringilla, scelerisque
+          nulla non, aliquam leo. In pharetra mauris ut enim ullamcorper, id suscipit quam ullamcorper. Quisque
+          tincidunt, felis nec congue elementum, mauris est finibus ex, ut volutpat ante est nec est. Aliquam tempor,
+          turpis ac scelerisque dignissim, metus velit rutrum sem, eget efficitur mauris erat in metus. Vestibulum in
+          urna massa. Donec eleifend leo at dui convallis aliquet. Integer eleifend, velit ut consequat tempus, enim
+          elit ultricies diam, at congue enim enim id nunc. Nullam fringilla bibendum nulla, at lacinia sem bibendum
+          eget. Nunc posuere ipsum sed enim facilisis efficitur. Pellentesque id semper mi, a feugiat sem. Nunc
+          interdum, leo ut tincidunt consectetur, nunc mauris accumsan nulla, vel ultricies velit erat nec sapien.
+          Praesent eleifend ex at odio scelerisque cursus. Morbi eget tellus sed sapien scelerisque cursus at a ante.
+          Sed venenatis vehicula erat eu feugiat. Ut eu elit vitae urna tincidunt pulvinar nec at nunc. Vestibulum eget
+          tristique sapien. Sed egestas sapien vel ante viverra pharetra. Cras sit amet felis at nulla tincidunt euismod
+          vitae et justo. Duis nec rutrum lectus, nec lobortis quam. Pellentesque habitant morbi tristique senectus et
+          netus et malesuada fames ac turpis egestas. Sed ac ex condimentum, consectetur felis non, maximus odio. Sed
+          mattis arcu id justo fringilla, a tristique purus vestibulum. Nulla nec fringilla quam. Sed ac elit ac sem
+          posuere cursus nec vitae mauris. Suspendisse nec pulvinar risus. Sed a tincidunt elit, in gravida tortor.
+          Quisque sollicitudin lectus vel interdum tempor. Fusce dictum fermentum sem sed suscipit. Vivamus sollicitudin
+          ex turpis, sit amet consequat leo auctor at. Donec fermentum aliquet lectus, sit amet efficitur nibh
+          pellentesque et. Curabitur dapibus quam vitae lectus pellentesque, vitae varius massa facilisis. Quisque
+          consectetur eros a arcu cursus fringilla. Fusce efficitur auctor nibh, nec sollicitudin eros semper eget. Cras
+          a elit ut tortor semper volutpat eu vel nunc. Duis dapibus quam risus, ac tristique nisl aliquam eu. Curabitur
+          vel ipsum non nunc euismod fringilla vel a lorem. Curabitur viverra magna ac justo fringilla, eu vestibulum
+          purus finibus. Donec elementum volutpat libero, in tempus massa convallis vitae. Curabitur vitae mauris id
+          urna dictum pharetra. Nullam vehicula arcu arcu, vitae elementum enim tincidunt at. Duis eleifend, lorem a
+          efficitur facilisis, nulla dolor finibus orci, et ullamcorper orci ex ac purus. Aenean sem lectus, malesuada
+          id magna id, facilisis condimentum nibh. Cras tempor neque mi, sit amet suscipit libero consectetur non.
+          Nullam id eleifend mauris. Mauris iaculis lectus eu scelerisque efficitur. In id suscipit libero. Donec
+          condimentum, purus ac laoreet facilisis, risus lorem facilisis neque, id volutpat felis mi eget metus. Nulla
+          facilisi. Donec consequat tincidunt nunc sed elementum. Integer consectetur tristique orci, ut congue justo
+          pellentesque eu. Fusce faucibus iaculis mauris, eu lobortis orci egestas eget. Nullam nec arcu bibendum,
+          cursus diam ac, facilisis enim. Nulla facilisi. Curabitur lacinia odio mauris, a gravida nisi volutpat in.
+          Aliquam at maximus felis. Vestibulum convallis dignissim urna id gravida.
+        </p>
+      </fluent-text>
       <fluent-button
         slot="actions"
         appearance="primary"
@@ -206,33 +326,149 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
   </div>
 `);
 
-export const NoFocusTrap = renderComponent(html<DialogStoryArgs>`
+export const Actions = renderComponent(html<DialogStoryArgs>`
   <div>
-    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-nofocustrap')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-nofocustrap" no-focus-trap hidden>
-      <div slot="title">No Focus Trap</div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-fluidactions')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-fluidactions">
+      <div slot="title">Actions</div>
       <fluent-button
         appearance="transparent"
         icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-nofocustrap')}"
-        slot="close"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
+        slot="title-action"
       >
         ${dismissed16Regular}
       </fluent-button>
       <div>
-        The no-focus-trap attribute removes the default behavior of trapping focus within the dialog, granting users
-        greater flexibility in managing focus and interacting with other elements on the page.
+        <fluent-text block>
+          <span
+            >A Dialog should have no more than
+            <fluent-text weight="bold"><span>two</span></fluent-text>
+            actions.
+          </span></fluent-text
+        >
+        <br />
+        <fluent-text block
+          ><span>
+            However, if required, you can populate the actions slot with any number of buttons as needed.</span
+          ></fluent-text
+        >
       </div>
       <br />
-      <fluent-text><code>fluent-dialog no-focus-trap</code></fluent-text>
+
+      <fluent-button size="small" slot="actions">Something</fluent-button>
+      <fluent-button size="small" slot="actions">Something Else</fluent-button>
+
+      <fluent-button
+        slot="actions"
+        size="small"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
+        >Close Dialog</fluent-button
+      >
+      <fluent-button size="small" slot="actions">Something Else Entirely</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-titlecustomaction')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-titlecustomaction">
+      <div slot="title">No Header Actions</div>
+      <fluent-button
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
+        slot="title-action"
+      >
+        ${rabbit16Regular}
+      </fluent-button>
+      <div>
+        <fluent-text block>
+          <span
+            >By default if Dialog has modalType='non-modal' a button with a close icon is provided to close the dialog
+            as action slot.
+          </span>
+        </fluent-text>
+        <br />
+        <fluent-text block>
+          <span>
+            This slot can be customized to add a different kind of action, that it'll be available in any kind of
+            Dialog, ignoring the modalType property, here's an example replacing the simple close icon with a fluent
+            button using a different icon.
+          </span>
+        </fluent-text>
+      </div>
+      <br />
 
       <fluent-button
         slot="actions"
         appearance="primary"
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-nofocustrap')}"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
         >Close Dialog</fluent-button
       >
       <fluent-button slot="actions">Do Something</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-notitleaction')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-notitleaction" modal-type="${DialogModalType.nonModal}" no-title-action>
+      <div slot="title">No Header Actions</div>
+      <div>
+        <fluent-text block>
+          <span
+            >The <code>no-title-action</code> attribute can be provided to opt out of rendering any title action.
+          </span></fluent-text
+        >
+      </div>
+      <br />
+
+      <fluent-button
+        slot="actions"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-notitleaction')}"
+        >Close Dialog</fluent-button
+      >
+      <fluent-button slot="actions">Do Something</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const ChangeFocus = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-changefocus')}>Open Dialog</fluent-button>
+    <fluent-dialog change-focus="dialog-changefocus-target" id="dialog-changefocus">
+      <div slot="title">Change Focus</div>
+      <fluent-button
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-changefocus')}"
+        slot="title-action"
+      >
+        ${dismissed16Regular}
+      </fluent-button>
+
+      <fluent-text as="p" block>
+        <p>
+          Changing the default focused element can be done by providing the id of the element to focus on in the
+          change-focus attribute.
+        </p>
+      </fluent-text>
+      <br />
+      <fluent-text as="p" block>
+        <p><code>change-focus="myElementId"</code></p>
+      </fluent-text>
+      <div slot="actions">
+        <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-changefocus')}"
+          >Close Dialog</fluent-button
+        >
+
+        <fluent-button id="dialog-changefocus-target" tabindex="0">Focus Me First</fluent-button>
+      </div>
     </fluent-dialog>
   </div>
 `);
