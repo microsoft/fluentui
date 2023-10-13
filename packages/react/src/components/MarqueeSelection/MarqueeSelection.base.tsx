@@ -176,7 +176,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
         this._events.on(this._scrollableParent, 'scroll', this._onAsyncMouseMove);
         this._events.on(win, 'click', this._onMouseUp, true);
 
-        this._autoScroll = new AutoScroll(this._root.current);
+        this._autoScroll = new AutoScroll(this._root.current, win);
         this._scrollTop = this._scrollableSurface.scrollTop;
         this._scrollLeft = this._scrollableSurface.scrollLeft;
         this._rootRect = this._root.current.getBoundingClientRect();

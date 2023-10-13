@@ -7,10 +7,13 @@ import { getWindow } from './getWindow';
  * @public
  */
 export function getRect(element: HTMLElement | Window | null, win?: Window): IRectangle | undefined {
-  const theWin = win ?? getWindow()!;
+  const theWin =
+    win ?? (!element || (element && element.hasOwnProperty('devicePixelRatio')))
+      ? getWindow()
+      : getWindow(element as HTMLElement)!;
   let rect: IRectangle | undefined;
   if (element) {
-    if (element === win) {
+    if (element === theWin) {
       rect = {
         left: 0,
         top: 0,

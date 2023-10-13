@@ -28,21 +28,21 @@ export class AutoScroll {
   private _timeoutId?: number;
 
   constructor(element: HTMLElement, win?: Window) {
-    const theWin = win ?? getWindow()!;
+    const theWin = win ?? getWindow(element)!;
     this._events = new EventGroup(this);
     this._scrollableParent = findScrollableParent(element) as HTMLElement;
 
     this._incrementScroll = this._incrementScroll.bind(this);
-    this._scrollRect = getRect(this._scrollableParent);
+    this._scrollRect = getRect(this._scrollableParent, win);
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    if (this._scrollableParent === (win as any)) {
+    if (this._scrollableParent === (theWin as any)) {
       this._scrollableParent = theWin.document.body;
     }
 
     if (this._scrollableParent) {
-      this._events.on(win, 'mousemove', this._onMouseMove, true);
-      this._events.on(win, 'touchmove', this._onTouchMove, true);
+      this._events.on(theWin, 'mousemove', this._onMouseMove, true);
+      this._events.on(theWin, 'touchmove', this._onTouchMove, true);
     }
   }
 
