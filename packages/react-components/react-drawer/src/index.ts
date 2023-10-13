@@ -7,36 +7,8 @@ export {
   renderOverlayDrawer_unstable,
   useOverlayDrawerStyles_unstable,
   useOverlayDrawer_unstable,
-
-  /** @deprecated Use `OverlayDrawer` instead */
-  OverlayDrawer as DrawerOverlay,
-
-  /** @deprecated Use `OverlayDrawerClassNames` instead */
-  OverlayDrawerClassNames as DrawerOverlayClassNames,
-
-  /** @deprecated Use `renderOverlayDrawer_unstable` instead */
-  renderOverlayDrawer_unstable as renderDrawerOverlay_unstable,
-
-  /** @deprecated Use `useOverlayDrawerStyles_unstable` instead */
-  useOverlayDrawerStyles_unstable as useDrawerOverlayStyles_unstable,
-
-  /** @deprecated Use `useOverlayDrawer_unstable` instead */
-  useOverlayDrawer_unstable as useDrawerOverlay_unstable,
 } from './OverlayDrawer';
-export type {
-  OverlayDrawerProps,
-  OverlayDrawerSlots,
-  OverlayDrawerState,
-
-  /** @deprecated Use `OverlayDrawerProps` instead */
-  OverlayDrawerProps as DrawerOverlayProps,
-
-  /** @deprecated Use `OverlayDrawerSlots` instead */
-  OverlayDrawerSlots as DrawerOverlaySlots,
-
-  /** @deprecated Use `OverlayDrawerState` instead */
-  OverlayDrawerState as DrawerOverlayState,
-} from './OverlayDrawer';
+export type { OverlayDrawerProps, OverlayDrawerSlots, OverlayDrawerState } from './OverlayDrawer';
 
 export {
   InlineDrawer,
@@ -44,36 +16,8 @@ export {
   renderInlineDrawer_unstable,
   useInlineDrawerStyles_unstable,
   useInlineDrawer_unstable,
-
-  /** @deprecated Use `InlineDrawer` instead */
-  InlineDrawer as DrawerInline,
-
-  /** @deprecated Use `InlineDrawerClassNames` instead */
-  InlineDrawerClassNames as DrawerInlineClassNames,
-
-  /** @deprecated Use `renderInlineDrawer_unstable` instead */
-  renderInlineDrawer_unstable as renderDrawerInline_unstable,
-
-  /** @deprecated Use `useInlineDrawerStyles_unstable` instead */
-  useInlineDrawerStyles_unstable as useDrawerInlineStyles_unstable,
-
-  /** @deprecated Use `useInlineDrawer_unstable` instead */
-  useInlineDrawer_unstable as useDrawerInline_unstable,
 } from './InlineDrawer';
-export type {
-  InlineDrawerProps,
-  InlineDrawerSlots,
-  InlineDrawerState,
-
-  /** @deprecated Use `InlineDrawerProps` instead */
-  InlineDrawerProps as DrawerInlineProps,
-
-  /** @deprecated Use `InlineDrawerProps` instead */
-  InlineDrawerSlots as DrawerInlineSlots,
-
-  /** @deprecated Use `InlineDrawerProps` instead */
-  InlineDrawerState as DrawerInlineState,
-} from './InlineDrawer';
+export type { InlineDrawerProps, InlineDrawerSlots, InlineDrawerState } from './InlineDrawer';
 
 export {
   DrawerBody,

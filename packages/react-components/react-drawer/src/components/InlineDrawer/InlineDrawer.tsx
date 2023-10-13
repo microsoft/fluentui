@@ -15,6 +15,7 @@ export const InlineDrawer: ForwardRefComponent<InlineDrawerProps> = React.forwar
   const state = useInlineDrawer_unstable(props, ref);
 
   useInlineDrawerStyles_unstable(state);
+  useCustomStyleHook_unstable('useDrawerInlineStyles_unstable')(state);
   useCustomStyleHook_unstable('useInlineDrawerStyles_unstable')(state);
 
   return renderInlineDrawer_unstable(state);
