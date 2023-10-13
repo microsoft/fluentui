@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps",
-  "packageName": "@fluentui/react-drawer",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

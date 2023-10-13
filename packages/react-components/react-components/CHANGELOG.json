@@ -2,6 +2,79 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 12 Oct 2023 14:55:42 GMT",
+      "tag": "@fluentui/react-components_v9.35.0",
+      "version": "9.35.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "3b8a86445f185e19ec9b0fc4ee4943a0867bab23",
+            "comment": "fix: Transparent buttons visible in teams high contrast mode"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "c5a97ca5b00df131ed12af2526953f5a4354ae66",
+            "comment": "chore: add warning for resolution problems"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c2e09fe47acb6010fdb188026180ee505abb9f67",
+            "comment": "fix: adding checks for is inverted and using different colors accordingly on neutralForeground3 and 4 in the createV9Theme function."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "40e6a376db3c2f11ba131c046c4241bf52e6d3a3",
+            "comment": "feat: Release MessageBar as stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "40e6a376db3c2f11ba131c046c4241bf52e6d3a3",
+            "comment": "feat: Release MessageBar as stable"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Oct 2023 13:54:22 GMT",
       "tag": "@fluentui/react-components_v9.34.3",
       "version": "9.34.3",

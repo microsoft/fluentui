@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Wed, 11 Oct 2023 13:54:24 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.15)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.14..@fluentui/react-popover_v9.8.15)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
 
 ## [9.8.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.14)
 

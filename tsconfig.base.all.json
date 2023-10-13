@@ -168,7 +168,8 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-infolabel-preview": ["packages/react-components/react-infolabel-preview/src/index.ts"]
+      "@fluentui/react-infolabel-preview": ["packages/react-components/react-infolabel-preview/src/index.ts"],
+      "@fluentui/react-swatch-picker-preview": ["packages/react-components/react-swatch-picker-preview/src/index.ts"]
     }
   }
 }
