@@ -92,7 +92,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useDrawerStyles_unstable: CustomStyleHook;
   /** @deprecated Use useInlineDrawerStyles_unstable instead. */
   useDrawerInlineStyles_unstable: CustomStyleHook;
-  /** @deprecated Use useInlineDrawerStyles_unstable instead. */
+  /** @deprecated Use useOverlayDrawerStyles_unstable instead. */
   useDrawerOverlayStyles_unstable: CustomStyleHook;
   useInlineDrawerStyles_unstable: CustomStyleHook;
   useOverlayDrawerStyles_unstable: CustomStyleHook;
