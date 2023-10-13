@@ -40,12 +40,11 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
     button,
   };
 
-  // move the aria labels from root to button, because we don't want the voice over to focus on the list item itself
-  if (button && !button['aria-label'] && !button['aria-labelledby']) {
-    button['aria-label'] = root['aria-label'];
-    button['aria-labelledby'] = root['aria-labelledby'];
-    root['aria-label'] = undefined;
-    root['aria-labelledby'] = undefined;
+  if (button && (root['aria-labelledby'] || root['aria-label']) && process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line no-console
+    console.warn(
+      `A list item with a button should not have an aria-label or aria-labelledby. This can cause issues with screen readers. Please remove the aria-label or aria-labelledby from the list item and add it to the button slot.`,
+    );
   }
 
   return state;

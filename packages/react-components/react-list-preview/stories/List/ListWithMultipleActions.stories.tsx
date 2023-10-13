@@ -26,7 +26,12 @@ export const ListWithMultipleActions = () => {
       <List focusableItems>
         {names.map(name => (
           <ListItem key={name} className={classes.listItem} aria-label={name}>
-            <Button appearance="transparent" onClick={() => alert(name)} className={classes.primaryButton}>
+            <Button
+              appearance="transparent"
+              onClick={() => alert(name)}
+              className={classes.primaryButton}
+              aria-label={name}
+            >
               <Persona
                 name={name}
                 secondaryText="Available"

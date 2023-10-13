@@ -4,6 +4,7 @@
 
 - Use `focusable` property on the `List` where the items have no actionable elements inside.
 - Use `focusableItems` property when the list items have more than one actionable element.
+- If the ListItem has one action, use the `button` slot with `onClick` handler. Also use this slot to add a11y attributes like `aria-label`.
 
 ### Don't
 

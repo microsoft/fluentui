@@ -16,5 +16,3 @@ export {
   useListItem_unstable,
 } from './ListItem';
 export type { ListItemProps, ListItemSlots, ListItemState } from './ListItem';
-
-export { useListFeatures, useListSelection } from './hooks';
