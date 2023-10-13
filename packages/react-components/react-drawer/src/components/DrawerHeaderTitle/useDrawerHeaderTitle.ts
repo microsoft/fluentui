@@ -1,7 +1,26 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useDialogContext_unstable } from '@fluentui/react-dialog';
 
 import type { DrawerHeaderTitleProps, DrawerHeaderTitleState } from './DrawerHeaderTitle.types';
+
+/**
+ * @internal
+ * Create the shorthand for the heading element.
+ * @param props - props from this instance of DrawerHeaderTitle
+ */
+const useHeadingProps = ({ children, heading }: DrawerHeaderTitleProps) => {
+  const id = useDialogContext_unstable(ctx => ctx.dialogTitleId);
+
+  return slot.optional(heading, {
+    defaultProps: {
+      id,
+      children,
+    },
+    renderByDefault: true,
+    elementType: 'h2',
+  });
+};
 
 /**
  * Create the state required to render DrawerHeaderTitle.
@@ -16,13 +35,7 @@ export const useDrawerHeaderTitle_unstable = (
   props: DrawerHeaderTitleProps,
   ref: React.Ref<HTMLDivElement>,
 ): DrawerHeaderTitleState => {
-  let heading = slot.resolveShorthand(props.heading);
-
-  if (!heading) {
-    heading = {
-      children: props.children,
-    };
-  }
+  const headingProps = useHeadingProps(props);
 
   return {
     components: {
@@ -32,19 +45,13 @@ export const useDrawerHeaderTitle_unstable = (
     },
 
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref,
         ...props,
       }),
       { elementType: 'div' },
     ),
-    heading: slot.optional(getNativeElementProps(heading.as ?? 'h2', heading), {
-      defaultProps: {
-        children: props.children,
-      },
-      renderByDefault: true,
-      elementType: 'h2',
-    }),
+    heading: headingProps,
     action: slot.optional(props.action, {
       elementType: 'div',
     }),

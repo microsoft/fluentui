@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+
 import { useDrawerHeaderNavigation_unstable } from './useDrawerHeaderNavigation';
 import { renderDrawerHeaderNavigation_unstable } from './renderDrawerHeaderNavigation';
 import { useDrawerHeaderNavigationStyles_unstable } from './useDrawerHeaderNavigationStyles.styles';
 import type { DrawerHeaderNavigationProps } from './DrawerHeaderNavigation.types';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DrawerHeaderNavigation provides a header navigation area for the Drawer.

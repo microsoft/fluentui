@@ -1,5 +1,5 @@
-import { TreeContextValues, renderTree_unstable } from '../../Tree';
-import type { FlatTreeState } from './FlatTree.types';
+import { renderTree_unstable } from '../../Tree';
+import type { FlatTreeContextValues, FlatTreeState } from './FlatTree.types';
 
-export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: TreeContextValues) => JSX.Element =
+export const renderFlatTree_unstable: (state: FlatTreeState, contextValues: FlatTreeContextValues) => JSX.Element =
   renderTree_unstable;

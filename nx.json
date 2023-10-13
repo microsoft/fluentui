@@ -20,12 +20,13 @@
   },
   "pluginsConfig": {
     "@nx/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": false
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "package": {
       "dependsOn": ["^package"]
