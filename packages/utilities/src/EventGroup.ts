@@ -73,7 +73,7 @@ export class EventGroup {
     const theDoc = doc ?? getDocument()!;
 
     if (EventGroup._isElement(target)) {
-      if (typeof doc !== 'undefined' && theDoc.createEvent) {
+      if (typeof theDoc !== 'undefined' && theDoc.createEvent) {
         let ev = theDoc.createEvent('HTMLEvents');
 
         // eslint-disable-next-line deprecation/deprecation
