@@ -5,10 +5,10 @@ import { Button as FluentButton } from '../button/button.js';
 import { DialogModalType } from './dialog.options.js';
 
 /**
- * Dialog component that extends the FASTDialog class.
+ * Dialog component that extends the FASTElement class.
  *
  * @public
- * @extends FASTDialog
+ * @extends FASTElement
  */
 export class Dialog extends FASTElement {
   /**
