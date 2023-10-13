@@ -5,6 +5,7 @@
     "@typescript-eslint/no-explicit-any": "off",
     "deprecation/deprecation": "off",
     "import/no-webpack-loader-syntax": "off", // ok in this project
+    "no-restricted-globals": "off",
     "prefer-const": "off",
     "react/jsx-no-bind": "off"
   }

@@ -4,6 +4,7 @@
   "rules": {
     "@typescript-eslint/no-explicit-any": "off",
     "deprecation/deprecation": "off",
+    "no-restricted-globals": "off",
     "prefer-const": "off"
   }
 }

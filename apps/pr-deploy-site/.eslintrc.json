@@ -12,6 +12,7 @@
         // turn off conflicting or unwanted rules from normal set
         "curly": "off",
         "no-var": "off",
+        "no-restricted-globals": "off",
         "vars-on-top": "off",
         "prefer-arrow-callback": "off"
       }

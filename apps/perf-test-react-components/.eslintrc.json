@@ -3,6 +3,7 @@
   "root": true,
   "rules": {
     "@griffel/styles-file": "off",
-    "no-console": "off"
+    "no-console": "off",
+    "no-restricted-globals": "off"
   }
 }
