@@ -52,6 +52,19 @@ export type TimePickerSlots = ComboboxSlots;
 export type TimeSelectionEvents = SelectionEvents;
 export type TimeSelectionData = {
   selectedTime: Date | undefined;
+  selectedTimeText: string | undefined;
+};
+
+export type TimeFormatOptions = {
+  /**
+   * If true, use 12-hour time format. Otherwise, use 24-hour format.
+   */
+  hour12?: boolean;
+
+  /**
+   * If true, show seconds in the dropdown options and consider seconds for default validation purposes.
+   */
+  showSeconds?: boolean;
 };
 
 /**
@@ -66,52 +79,48 @@ export type TimePickerProps = Omit<
   | 'multiselect'
   | 'onOptionSelect'
   | 'selectedOptions'
-> & {
-  /**
-   * If true, use 12-hour time format. Otherwise, use 24-hour format.
-   */
-  hour12?: boolean;
+> &
+  TimeFormatOptions & {
+    /**
+     * Start hour (inclusive) for the time range, 0-24.
+     */
+    startHour?: Hour;
 
-  /**
-   * Start hour (inclusive) for the time range, 0-24.
-   */
-  startHour?: Hour;
+    /**
+     * End hour (exclusive) for the time range, 0-24.
+     */
+    endHour?: Hour;
 
-  /**
-   * End hour (exclusive) for the time range, 0-24.
-   */
-  endHour?: Hour;
+    /**
+     * Time increment, in minutes, of the options in the dropdown.
+     */
+    increment?: number;
 
-  /**
-   * Time increment, in minutes, of the options in the dropdown.
-   */
-  increment?: number;
+    /**
+     * The date in which all dropdown options are based off of.
+     */
+    dateAnchor?: Date;
 
-  /**
-   * The date in which all dropdown options are based off of.
-   */
-  dateAnchor?: Date;
+    /**
+     * Currently selected time in the TimePicker.
+     */
+    selectedTime?: Date;
 
-  /**
-   * If true, show seconds in the dropdown options and consider seconds for default validation purposes.
-   */
-  showSeconds?: boolean;
+    /**
+     * Default selected time in the TimePicker, for uncontrolled scenarios.
+     */
+    defaultSelectedTime?: Date;
 
-  /**
-   * Currently selected time in the TimePicker.
-   */
-  selectedTime?: Date;
+    /**
+     * Callback for when a time selection is made.
+     */
+    onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
-  /**
-   * Default selected time in the TimePicker, for uncontrolled scenarios.
-   */
-  defaultSelectedTime?: Date;
-
-  /**
-   * Callback for when a time selection is made.
-   */
-  onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
-};
+    /**
+     * Custom the date strings displayed (in dropdown options and input).
+     */
+    formatDateToTimeString?: (date: Date) => string;
+  };
 
 /**
  * State used in rendering TimePicker

@@ -1,3 +1,5 @@
+import type { TimeFormatOptions } from './TimePicker.types';
+
 function isValidDate(date: Date): boolean {
   return !isNaN(date.getTime());
 }
@@ -28,20 +30,22 @@ export function keyToDate(key: string): Date | undefined {
 }
 
 /**
- * Formats a Date object into a localized time string based on the provided parameters.
+ * Formats a Date object into a time string based on provided options.
  *
  * @param date - The Date object to be formatted.
- * @param showSeconds - Indicates whether seconds should be included in the formatted string.
- * @param hour12 - If true, the time will be formatted in 12-hour format. Otherwise, it will use a 24-hour format.
- * @returns - A formatted time string.
+ * @param options - Formatting options. It has two properties:
+ *      1. hour12 (default: false): Determines if the time format should be 12-hour (AM/PM) or 24-hour.
+ *      2. showSeconds (default: false): Determines if the seconds should be included in the formatted string.
+ * @returns Formatted time string based on the given options.
  *
  * @example
  * const date = new Date(2023, 9, 6, 23, 45, 12);
- * formatTimeString(date);           // Returns "23:45"
- * formatTimeString(date, true);     // Returns "23:45:12"
- * formatTimeString(date, true, true); // Returns "11:45:12 PM"
+ * formatDateToTimeString(date);                         // Returns "23:45"
+ * formatDateToTimeString(date, { showSeconds: true });  // Returns "23:45:12"
+ * formatDateToTimeString(date, { hour12: true, showSeconds: true }); // Returns "11:45:12 PM"
  */
-export function formatTimeString(date: Date, showSeconds: boolean = false, hour12: boolean = false): string {
+export function formatDateToTimeString(date: Date, options: TimeFormatOptions = {}): string {
+  const { hour12 = false, showSeconds = false } = options;
   const timeFormatOptions: Intl.DateTimeFormatOptions = {
     hour: 'numeric',
     minute: '2-digit',

@@ -5,7 +5,7 @@ import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-com
 import {
   dateToKey,
   keyToDate,
-  formatTimeString,
+  formatDateToTimeString as defaultFormatDateToTimeString,
   getDateStartAnchor,
   getDateEndAnchor,
   getTimesBetween,
@@ -29,6 +29,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     endHour = 24,
     hour12 = false,
     increment = 30,
+    formatDateToTimeString,
     onTimeSelect,
     selectedTime: selectedTimeInProps,
     showSeconds = false,
@@ -42,14 +43,21 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     endHour,
   );
 
+  const dateToText = React.useCallback(
+    (dateTime: Date) =>
+      formatDateToTimeString
+        ? formatDateToTimeString(dateTime)
+        : defaultFormatDateToTimeString(dateTime, { showSeconds, hour12 }),
+    [hour12, formatDateToTimeString, showSeconds],
+  );
   const options: TimePickerOption[] = React.useMemo(
     () =>
       getTimesBetween(dateStartAnchor, dateEndAnchor, increment).map(time => ({
         date: time,
         key: dateToKey(time),
-        text: formatTimeString(time, showSeconds, hour12),
+        text: dateToText(time),
       })),
-    [dateStartAnchor, dateEndAnchor, increment, showSeconds, hour12],
+    [dateStartAnchor, dateEndAnchor, increment, dateToText],
   );
 
   const [selectedTime, setSelectedTime] = useControllableState<Date | undefined>({
@@ -65,7 +73,10 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
 
   const handleOptionSelect: ComboboxProps['onOptionSelect'] = React.useCallback(
     (e, data) => {
-      const timeSelectionData: TimeSelectionData = { selectedTime: keyToDate(data.optionValue) };
+      const timeSelectionData: TimeSelectionData = {
+        selectedTime: keyToDate(data.optionValue),
+        selectedTimeText: data.optionText,
+      };
       onTimeSelect?.(e, timeSelectionData);
       setSelectedTime(timeSelectionData.selectedTime);
     },

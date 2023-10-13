@@ -1,7 +1,7 @@
 import {
   dateToKey,
   keyToDate,
-  formatTimeString,
+  formatDateToTimeString,
   getDateEndAnchor,
   getDateStartAnchor,
   getTimesBetween,
@@ -65,24 +65,37 @@ describe('Time Utilities', () => {
     });
   });
 
-  describe('formatTimeString', () => {
+  describe('formatDateToTimeString', () => {
     const testDate = new Date(2023, 9, 6, 23, 45, 12);
 
     it('should format time in 24-hour format without seconds', () => {
-      expect(formatTimeString(testDate)).toBe('23:45');
+      expect(formatDateToTimeString(testDate)).toBe('23:45');
     });
 
     it('should format time in 24-hour format with seconds', () => {
-      expect(formatTimeString(testDate, true)).toBe('23:45:12');
+      expect(formatDateToTimeString(testDate, { showSeconds: true })).toBe('23:45:12');
     });
 
     it('should format time in 12-hour format with seconds', () => {
-      expect(formatTimeString(testDate, true, true)).toBe('11:45:12 PM');
+      expect(formatDateToTimeString(testDate, { showSeconds: true, hour12: true })).toBe('11:45:12 PM');
     });
 
     it('should format midnight correctly in 24-hour format', () => {
       const midnight = new Date(2023, 9, 7, 0, 0, 0);
-      expect(formatTimeString(midnight)).toBe('00:00');
+      expect(formatDateToTimeString(midnight)).toBe('00:00');
+    });
+
+    it('should format time in Japanese locale', () => {
+      const { toLocaleTimeString } = Date.prototype;
+      const toLocaleTimeStringMock = jest.spyOn(Date.prototype, 'toLocaleTimeString');
+      // Mock toLocaleTimeString to simulate running in a Japanese locale
+      toLocaleTimeStringMock.mockImplementation(function (this: Date, _locales, options) {
+        return toLocaleTimeString.call(this, 'ja-JP', options);
+      });
+
+      expect(formatDateToTimeString(testDate, { showSeconds: true, hour12: true })).toBe('午後11:45:12');
+
+      toLocaleTimeStringMock.mockClear();
     });
   });
 
