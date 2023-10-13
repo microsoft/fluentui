@@ -177,7 +177,9 @@ export const typeRampPlus6FontVariations = create<string>('type-ramp-plus-6-font
 // Color recipe values
 
 /** @public */
-export const baseLayerLuminance = create<number>('base-layer-luminance').withDefault(StandardLuminance.LightMode);
+export const baseLayerLuminance = create<number>('base-layer-luminance').withDefault(
+  window['DefaultBaseLayerLuminance'] || StandardLuminance.LightMode,
+);
 
 /** @public */
 export const accentFillRestDelta = createNonCss<number>('accent-fill-rest-delta').withDefault(0);
