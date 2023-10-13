@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-spinner",
-  "version": "9.3.0",
+  "version": "9.3.25",
   "description": "Spinner component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -33,19 +33,19 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.11",
-    "@fluentui/react-label": "^9.1.20",
-    "@fluentui/react-shared-contexts": "^9.6.0",
-    "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.10.1",
-    "@griffel/react": "^1.5.7",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-jsx-runtime": "^9.0.17",
+    "@fluentui/react-label": "^9.1.45",
+    "@fluentui/react-shared-contexts": "^9.10.0",
+    "@fluentui/react-theme": "^9.1.14",
+    "@fluentui/react-utilities": "^9.15.0",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

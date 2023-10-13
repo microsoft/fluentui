@@ -60,6 +60,7 @@ const classNames = mergeStyleSets({
     position: 'absolute',
     top: 0,
     left: 0,
+    height: '100%',
     width: '100%',
   },
 });
@@ -87,7 +88,12 @@ export const ListGridExample: React.FunctionComponent = () => {
       >
         <div className={classNames.listGridExampleSizer}>
           <div className={classNames.listGridExamplePadder}>
-            <img src={item.thumbnail} className={classNames.listGridExampleImage} />
+            <img
+              src={
+                'https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg'
+              }
+              className={classNames.listGridExampleImage}
+            />
             <span className={classNames.listGridExampleLabel}>{`item ${index}`}</span>
           </div>
         </div>

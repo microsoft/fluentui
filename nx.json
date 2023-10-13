@@ -19,13 +19,14 @@
     "defaultBase": "master"
   },
   "pluginsConfig": {
-    "@nrwl/js": {
-      "analyzeSourceFiles": true
+    "@nx/js": {
+      "analyzeSourceFiles": false
     }
   },
   "targetDefaults": {
     "build": {
-      "dependsOn": ["^build"]
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
     },
     "package": {
       "dependsOn": ["^package"]

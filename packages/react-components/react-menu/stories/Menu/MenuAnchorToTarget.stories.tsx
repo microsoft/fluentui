@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Menu, MenuList, MenuItem, MenuPopover } from '@fluentui/react-components';
+import { Button, Menu, MenuList, MenuItem, MenuPopover, useRestoreFocusTarget } from '@fluentui/react-components';
 import type { MenuProps, PositioningImperativeRef } from '@fluentui/react-components';
 
 export const AnchorToCustomTarget = () => {
@@ -17,10 +17,14 @@ export const AnchorToCustomTarget = () => {
     }
   }, [buttonRef, positioningRef]);
 
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
+
   return (
     <>
-      <Button onClick={() => setOpen(s => !s)}>Open menu</Button>
-      <Button ref={buttonRef} onClick={() => setOpen(s => !s)}>
+      <Button {...restoreFocusTargetAttribute} onClick={() => setOpen(s => !s)}>
+        Open menu
+      </Button>
+      <Button {...restoreFocusTargetAttribute} ref={buttonRef} onClick={() => setOpen(s => !s)}>
         Custom target
       </Button>
       <Menu open={open} onOpenChange={onOpenChange} positioning={{ positioningRef }}>

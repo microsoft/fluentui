@@ -3,7 +3,8 @@ import {
   useMergedRefs,
   useEventCallback,
   useControllableState,
-  getNativeElementProps,
+  getIntrinsicElementProps,
+  slot,
 } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { useHasParentContext } from '@fluentui/react-context-selector';
@@ -108,16 +109,23 @@ export const useMenuList_unstable = (props: MenuListProps, ref: React.Ref<HTMLEl
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, innerRef),
-      role: 'menu',
-      'aria-labelledby': menuContext.triggerId,
-      ...focusAttributes,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
+        role: 'menu',
+        'aria-labelledby': menuContext.triggerId,
+        ...focusAttributes,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     hasIcons: menuContext.hasIcons || false,
     hasCheckmarks: menuContext.hasCheckmarks || false,
     checkedValues,
+    hasMenuContext,
     setFocusByFirstCharacter,
     selectRadio,
     toggleCheckbox,

@@ -1,6 +1,7 @@
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { createCSSRuleFromTheme } from './createCSSRuleFromTheme';
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 
@@ -53,16 +54,40 @@ export const useFluentProviderThemeStyleTag = (
   const styleTagId = useId(fluentProviderClassNames.root);
   const styleElementAttributes = rendererAttributes;
 
-  const cssVarsAsString = React.useMemo(() => {
-    return theme
-      ? (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-          cssVarRule += `--${cssVar}: ${theme[cssVar]}; `;
-          return cssVarRule;
-        }, '')
-      : '';
-  }, [theme]);
+  const rule = React.useMemo(() => createCSSRuleFromTheme(`.${styleTagId}`, theme), [theme, styleTagId]);
 
-  const rule = `.${styleTagId} { ${cssVarsAsString} }`;
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useMemo(() => {
+      // Heads up!
+      // .useMemo() is used because it is called during render and DOM for _current_ component is not mounted yet. Also,
+      // this allows to do checks with strict mode enabled as .useEffect() will be called with incremented IDs because
+      // of double render.
+
+      if (targetDocument) {
+        const providerSelector = `.${fluentProviderClassNames.root}.${styleTagId}`;
+        const providerElements = targetDocument.querySelectorAll(providerSelector);
+
+        // In SSR, we will have DOM upfront. To avoid false positives the check on nested style tag is performed
+        const isSSR = targetDocument.querySelector(`${providerSelector} > style[id="${styleTagId}"]`) !== null;
+        const elementsCount = isSSR ? 1 : 0;
+
+        if (providerElements.length > elementsCount) {
+          // eslint-disable-next-line no-console
+          console.error(
+            [
+              '@fluentui/react-provider: There are conflicting ids in your DOM.',
+              'Please make sure that you configured your application properly.',
+              '\n',
+              '\n',
+              'Configuration guide: https://aka.ms/fluentui-conflicting-ids',
+            ].join(' '),
+          );
+        }
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
 
   useHandleSSRStyleElements(targetDocument, styleTagId);
   useInsertionEffect(() => {

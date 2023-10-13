@@ -1051,6 +1051,14 @@ describe('Context menu', () => {
     cy.get(menuTriggerSelector).rightclick().get(menuSelector).should('exist');
   });
 
+  it('should not open if event is prevented', () => {
+    mount(<ContextMenuExample />);
+    cy.get(menuTriggerSelector).then(([trigger]) => {
+      trigger.addEventListener('contextmenu', e => e.preventDefault(), { capture: true, once: true });
+    });
+    cy.get(menuTriggerSelector).rightclick().get(menuSelector).should('not.exist');
+  });
+
   it('should close when the trigger is clicked', () => {
     mount(<ContextMenuExample />);
 
@@ -1061,7 +1069,9 @@ describe('Context menu', () => {
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
-      .should('not.exist');
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
   });
 
   it('should close on scroll outside', () => {
@@ -1073,6 +1083,21 @@ describe('Context menu', () => {
       .get('body')
       .trigger('wheel')
       .get(menuSelector)
-      .should('not.exist');
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
+  });
+
+  it('should restore focus on escape', () => {
+    mount(<ContextMenuExample />);
+    cy.get(menuTriggerSelector)
+      .rightclick()
+      .get(menuSelector)
+      .should('exist')
+      .focused()
+      .type('{esc}')
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
   });
 });

@@ -1,22 +1,19 @@
-/** @jsxRuntime classic */
-/** @jsxFrag Fragment */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement, Fragment } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { DialogTitleState, DialogTitleSlots } from './DialogTitle.types';
 
 /**
  * Render the final JSX of DialogTitle
  */
 export const renderDialogTitle_unstable = (state: DialogTitleState) => {
-  const { slots, slotProps } = getSlotsNext<DialogTitleSlots>(state);
+  assertSlots<DialogTitleSlots>(state);
 
   return (
     <>
-      <slots.root {...slotProps.root}>{slotProps.root.children}</slots.root>
-      {slots.action && <slots.action {...slotProps.action} />}
+      <state.root>{state.root.children}</state.root>
+      {state.action && <state.action />}
     </>
   );
 };

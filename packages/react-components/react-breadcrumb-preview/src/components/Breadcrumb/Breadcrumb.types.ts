@@ -1,14 +1,18 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+export type BreadcrumbItem = {
+  key: string;
+  type: 'button' | 'non-interactive';
+};
+
 /**
  * Data shared between breadcrumb components
  */
-export type BreadcrumbContextValue = Required<
-  Pick<BreadcrumbProps, 'appearance' | 'dividerType' | 'iconPosition' | 'size'>
->;
-
-export type BreadcrumbContextValues = {
-  breadcrumb: BreadcrumbContextValue;
+export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'appearance' | 'dividerType' | 'size'>> & {
+  items: Set<BreadcrumbItem>;
+  registerItem: (item: BreadcrumbItem) => void;
+  removeItem: (item: BreadcrumbItem) => void;
+  hasInteractiveItems: boolean;
 };
 
 export type BreadcrumbSlots = {
@@ -55,13 +59,6 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
   dividerType?: 'chevron' | 'slash';
 
   /**
-   * Icon position for BreadcrumbButton or BreadcrumbLink.
-   *
-   * @default 'before'
-   */
-  iconPosition?: 'before' | 'after';
-
-  /**
    * Controls size of Breadcrumb items and dividers.
    *
    * @default 'medium'
@@ -73,4 +70,4 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
  * State used in rendering Breadcrumb
  */
 export type BreadcrumbState = ComponentState<BreadcrumbSlots> &
-  Required<Pick<BreadcrumbProps, 'appearance' | 'iconPosition' | 'size' | 'dividerType'>>;
+  Required<Pick<BreadcrumbProps, 'appearance' | 'size' | 'dividerType'>>;

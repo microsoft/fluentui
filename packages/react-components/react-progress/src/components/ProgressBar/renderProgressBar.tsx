@@ -1,15 +1,13 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
-
-import { getSlotsNext } from '@fluentui/react-utilities';
+import { assertSlots } from '@fluentui/react-utilities';
 import type { ProgressBarState, ProgressBarSlots } from './ProgressBar.types';
 
 /**
  * Render the final JSX of ProgressBar
  */
 export const renderProgressBar_unstable = (state: ProgressBarState) => {
-  const { slots, slotProps } = getSlotsNext<ProgressBarSlots>(state);
-  return <slots.root {...slotProps.root}>{slots.bar && <slots.bar {...slotProps.bar} />}</slots.root>;
+  assertSlots<ProgressBarSlots>(state);
+  return <state.root>{state.bar && <state.bar />}</state.root>;
 };

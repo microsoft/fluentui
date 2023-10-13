@@ -6,7 +6,6 @@ import {
 } from '@fluentui/react-shared-contexts';
 import {
   applyTriggerPropsToChildren,
-  resolveShorthand,
   useControllableState,
   useId,
   useIsomorphicLayoutEffect,
@@ -16,8 +15,9 @@ import {
   getTriggerChild,
   mergeCallbacks,
   useEventCallback,
+  slot,
 } from '@fluentui/react-utilities';
-import type { TooltipProps, TooltipState, TooltipChildProps } from './Tooltip.types';
+import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { Escape } from '@fluentui/keyboard-keys';
 
@@ -50,13 +50,13 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
 
   const [visible, setVisibleInternal] = useControllableState({ state: props.visible, initialState: false });
   const setVisible = React.useCallback(
-    (newVisible: boolean, ev?: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement>) => {
+    (ev: React.PointerEvent<HTMLElement> | React.FocusEvent<HTMLElement> | undefined, data: OnVisibleChangeData) => {
       clearDelayTimeout();
       setVisibleInternal(oldVisible => {
-        if (newVisible !== oldVisible) {
-          onVisibleChange?.(ev, { visible: newVisible });
+        if (data.visible !== oldVisible) {
+          onVisibleChange?.(ev, data);
         }
-        return newVisible;
+        return data.visible;
       });
     },
     [clearDelayTimeout, setVisibleInternal, onVisibleChange],
@@ -76,11 +76,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     components: {
       content: 'div',
     },
-    content: resolveShorthand(content, {
+    content: slot.always(content, {
       defaultProps: {
         role: 'tooltip',
       },
-      required: true,
+      elementType: 'div',
     }),
   };
 
@@ -117,17 +117,19 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   // Also add a listener on document to hide the tooltip if Escape is pressed
   useIsomorphicLayoutEffect(() => {
     if (visible) {
-      const thisTooltip = { hide: () => setVisible(false) };
+      const thisTooltip = {
+        hide: (ev?: KeyboardEvent) => setVisible(undefined, { visible: false, documentKeyboardEvent: ev }),
+      };
 
       context.visibleTooltip?.hide();
       context.visibleTooltip = thisTooltip;
 
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === Escape) {
-          thisTooltip.hide();
+        if (ev.key === Escape && !ev.defaultPrevented) {
+          thisTooltip.hide(ev);
           // stop propagation to avoid conflicting with other elements that listen for `Escape`
-          // e,g: Dialog, Popover, Menu
-          ev.stopPropagation();
+          // e,g: Dialog, Popover, Menu and Tooltip
+          ev.preventDefault();
         }
       };
 
@@ -166,7 +168,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       const delay = context.visibleTooltip ? 0 : state.showDelay;
 
       setDelayTimeout(() => {
-        setVisible(true, ev);
+        setVisible(ev, { visible: true });
       }, delay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously
@@ -187,7 +189,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       }
 
       setDelayTimeout(() => {
-        setVisible(false, ev);
+        setVisible(ev, { visible: false });
       }, delay);
 
       ev.persist(); // Persist the event since the setVisible call will happen asynchronously

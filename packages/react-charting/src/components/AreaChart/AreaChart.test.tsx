@@ -46,7 +46,7 @@ const points: ILineChartPoints[] = [
     color: 'red',
   },
 ];
-const chartPoints = {
+export const chartPoints = {
   chartTitle: 'AreaChart',
   lineChartData: points,
 };
@@ -70,7 +70,7 @@ const emptyPoint = [
     color: 'red',
   },
 ];
-const emptyChartPoints = {
+export const emptyChartPoints = {
   chartTitle: 'EmptyAreaChart',
   lineChartData: emptyPoint,
 };
@@ -101,7 +101,7 @@ describe('AreaChart snapShot testing', () => {
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders hideLegend hhh correctly', async () => {
+  it('renders hideLegend correctly', async () => {
     wrapper = mount(<AreaChart data={chartPoints} hideLegend={true} />);
     await new Promise(resolve => setTimeout(resolve));
     wrapper.update();

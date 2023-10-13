@@ -1,17 +1,22 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
-import type { DrawerOverlayState, DrawerOverlaySlots } from './DrawerOverlay.types';
-import { Dialog } from '@fluentui/react-dialog';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
+
+import type { DrawerOverlayState, DrawerOverlayInternalSlots } from './DrawerOverlay.types';
 
 /**
  * Render the final JSX of DrawerOverlay
  */
 export const renderDrawerOverlay_unstable = (state: DrawerOverlayState) => {
-  const { slots, slotProps } = getSlots<DrawerOverlaySlots>(state);
+  if (!state.motion.canRender) {
+    return null;
+  }
+
+  assertSlots<DrawerOverlayInternalSlots>(state);
 
   return (
-    <Dialog {...state.dialog}>
-      <slots.root {...slotProps.root} />
-    </Dialog>
+    <state.dialog>
+      <state.root />
+    </state.dialog>
   );
 };

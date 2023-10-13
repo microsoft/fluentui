@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-persona",
-  "version": "9.2.22",
+  "version": "9.2.50",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -13,7 +13,7 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
-    "bundle-size": "bundle-size measure",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
     "code-style": "just-scripts code-style",
     "just": "just-scripts",
@@ -33,20 +33,20 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-avatar": "^9.5.12",
-    "@fluentui/react-badge": "^9.1.20",
-    "@fluentui/react-shared-contexts": "^9.6.0",
-    "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.10.1",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.11",
-    "@griffel/react": "^1.5.7",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-avatar": "^9.5.40",
+    "@fluentui/react-badge": "^9.2.9",
+    "@fluentui/react-shared-contexts": "^9.10.0",
+    "@fluentui/react-theme": "^9.1.14",
+    "@fluentui/react-utilities": "^9.15.0",
+    "@fluentui/react-jsx-runtime": "^9.0.17",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

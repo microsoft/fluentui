@@ -1,18 +1,19 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   useMergedRefs,
   ExtractSlotProps,
   Slot,
   useEventCallback,
-  resolveShorthand,
   useId,
+  slot,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { Delete, Tab } from '@fluentui/keyboard-keys';
+import { useFocusableGroup, useFocusFinders } from '@fluentui/react-tabster';
 import { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
-import { useFocusFinders } from '@fluentui/react-tabster';
 
 const intentPolitenessMap = {
   success: 'assertive',
@@ -58,6 +59,12 @@ export const useToastContainer_unstable = (
   const [running, setRunning] = React.useState(false);
   const imperativePauseRef = React.useRef(false);
   const focusedToastBeforeClose = React.useRef(false);
+  const focusableGroupAttribute = useFocusableGroup({
+    tabBehavior: 'limited-trap-focus',
+    // Users should only use Tab to focus into the toast
+    // Escape is already reserved to dismiss all toasts
+    ignoreDefaultKeydown: { Tab: true, Escape: true, Enter: true },
+  });
 
   const close = useEventCallback(() => {
     const activeElement = targetDocument?.activeElement;
@@ -84,20 +91,13 @@ export const useToastContainer_unstable = (
     }
   });
 
-  const { findFirstFocusable } = useFocusFinders();
-
   React.useImperativeHandle(imperativeRef, () => ({
     focus: () => {
       if (!toastRef.current) {
         return;
       }
 
-      const firstFocusable = findFirstFocusable(toastRef.current);
-      if (firstFocusable) {
-        firstFocusable.focus();
-      } else {
-        toastRef.current.focus();
-      }
+      toastRef.current.focus();
     },
 
     play: () => {
@@ -172,10 +172,20 @@ export const useToastContainer_unstable = (
     userRootSlot?.onMouseEnter?.(e);
   });
 
+  const { findFirstFocusable, findLastFocusable } = useFocusFinders();
   const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.key === 'Escape') {
+    if (e.key === Delete) {
       e.preventDefault();
       close();
+    }
+
+    if (e.key === Tab && e.currentTarget === e.target) {
+      e.preventDefault();
+      if (e.shiftKey) {
+        findLastFocusable(e.currentTarget)?.focus();
+      } else {
+        findFirstFocusable(e.currentTarget)?.focus();
+      }
     }
 
     userRootSlot?.onKeyDown?.(e);
@@ -204,23 +214,30 @@ export const useToastContainer_unstable = (
       timer: Timer,
       root: 'div',
     },
-    timer: resolveShorthand<TimerProps>(
+    timer: slot.always<TimerProps>(
       { key: updateId, onTimeout: close, running, timeout: timerTimeout ?? -1 },
-      { required: true },
+      { elementType: Timer },
     ),
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, toastRef, toastAnimationRef),
-      children,
-      tabIndex: -1,
-      role: 'group',
-      'aria-labelledby': titleId,
-      'aria-describedby': bodyId,
-      ...rest,
-      ...userRootSlot,
-      onMouseEnter,
-      onMouseLeave,
-      onKeyDown,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, toastRef, toastAnimationRef) as React.Ref<HTMLDivElement>,
+        children,
+        tabIndex: 0,
+        role: 'listitem',
+        'aria-labelledby': titleId,
+        'aria-describedby': bodyId,
+        ...rest,
+        ...userRootSlot,
+        ...focusableGroupAttribute,
+        onMouseEnter,
+        onMouseLeave,
+        onKeyDown,
+      }),
+      { elementType: 'div' },
+    ),
     timerTimeout,
     transitionTimeout: 500,
     running,

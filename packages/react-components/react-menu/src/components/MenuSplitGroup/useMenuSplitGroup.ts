@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, getRTLSafeKey, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, getRTLSafeKey, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import type { MenuSplitGroupProps, MenuSplitGroupState } from './MenuSplitGroup.types';
@@ -54,11 +54,17 @@ export const useMenuSplitGroup_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      role: 'group',
-      ref: useMergedRefs(ref, innerRef),
-      onKeyDown,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        role: 'group',
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
+        onKeyDown,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

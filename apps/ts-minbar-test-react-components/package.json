@@ -9,7 +9,7 @@
   },
   "scripts": {
     "type-check": "tsc -p .",
-    "test": "ts-node --swc ./src/index.ts"
+    "test": "ts-node --transpileOnly ./src/index.ts"
   },
   "devDependencies": {
     "@fluentui/scripts-tasks": "*",

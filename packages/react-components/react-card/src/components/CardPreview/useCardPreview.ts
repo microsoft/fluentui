@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import type { CardPreviewProps, CardPreviewState } from './CardPreview.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardPreviewClassNames } from './useCardPreviewStyles.styles';
@@ -19,7 +19,10 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
   const {
     selectableA11yProps: { referenceLabel, referenceId, setReferenceLabel, setReferenceId },
   } = useCardContext_unstable();
-  const previewRef = useMergedRefs(ref, React.useRef<HTMLDivElement>(null));
+  // FIXME:
+  // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+  // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+  const previewRef = useMergedRefs(ref as React.Ref<HTMLDivElement>, React.useRef<HTMLDivElement>(null));
 
   React.useEffect(() => {
     if (referenceLabel && referenceId) {
@@ -50,10 +53,13 @@ export const useCardPreview_unstable = (props: CardPreviewProps, ref: React.Ref<
       logo: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ref: previewRef,
-      ...props,
-    }),
-    logo: resolveShorthand(logo),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ref: previewRef,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    logo: slot.optional(logo, { elementType: 'div' }),
   };
 };

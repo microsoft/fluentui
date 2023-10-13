@@ -3,9 +3,9 @@ import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
-  resolveShorthand,
   useControllableState,
   useTimeout,
+  slot,
 } from '@fluentui/react-utilities';
 import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
@@ -257,12 +257,11 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       incrementButton: 'button',
       decrementButton: 'button',
     },
-    root: resolveShorthand(root, {
-      required: true,
+    root: slot.always(root, {
       defaultProps: nativeProps.root,
+      elementType: 'span',
     }),
-    input: resolveShorthand(input, {
-      required: true,
+    input: slot.always(input, {
       defaultProps: {
         ref,
         autoComplete: 'off',
@@ -271,9 +270,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         type: 'text',
         ...nativeProps.primary,
       },
+      elementType: 'input',
     }),
-    incrementButton: resolveShorthand(incrementButton, {
-      required: true,
+    incrementButton: slot.always(incrementButton, {
       defaultProps: {
         tabIndex: -1,
         children: <ChevronUp16Regular />,
@@ -281,9 +280,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         'aria-label': 'Increment value',
         type: 'button',
       },
+      elementType: 'button',
     }),
-    decrementButton: resolveShorthand(decrementButton, {
-      required: true,
+    decrementButton: slot.always(decrementButton, {
       defaultProps: {
         tabIndex: -1,
         children: <ChevronDown16Regular />,
@@ -291,6 +290,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         'aria-label': 'Decrement value',
         type: 'button',
       },
+      elementType: 'button',
     }),
   };
 

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { BreadcrumbDividerProps, BreadcrumbDividerState } from './BreadcrumbDivider.types';
 import {
   ChevronRight20Regular,
@@ -34,12 +34,15 @@ export const useBreadcrumbDivider_unstable = (
     components: {
       root: 'li',
     },
-    root: getNativeElementProps('li', {
-      ref,
-      'aria-hidden': true,
-      children: icon,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('li', {
+        ref,
+        'aria-hidden': true,
+        children: icon,
+        ...props,
+      }),
+      { elementType: 'li' },
+    ),
   };
 };
 

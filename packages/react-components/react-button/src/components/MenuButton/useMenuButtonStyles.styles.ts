@@ -62,6 +62,14 @@ const useIconExpandedStyles = makeStyles({
   transparent: {
     color: tokens.colorNeutralForeground2BrandSelected,
   },
+  highContrast: {
+    // High contrast styles
+    '@media (forced-colors: active)': {
+      ':hover': {
+        color: 'Canvas',
+      },
+    },
+  },
 });
 
 const useMenuIconStyles = makeStyles({
@@ -110,7 +118,7 @@ export const useMenuButtonStyles_unstable = (state: MenuButtonState): MenuButton
   if (state.icon) {
     state.icon.className = mergeClasses(
       menuButtonClassNames.icon,
-      state.root['aria-expanded'] && iconExpandedStyles[state.appearance],
+      state.root['aria-expanded'] && iconExpandedStyles[state.appearance] && iconExpandedStyles.highContrast,
       state.icon.className,
     );
   }

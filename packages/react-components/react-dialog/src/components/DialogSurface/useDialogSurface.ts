@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
-  resolveShorthand,
   useEventCallback,
   useMergedRefs,
   isResolvedShorthand,
+  slot,
+  getIntrinsicElementProps,
 } from '@fluentui/react-utilities';
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
@@ -23,8 +23,8 @@ export const useDialogSurface_unstable = (
   props: DialogSurfaceProps,
   ref: React.Ref<DialogSurfaceElement>,
 ): DialogSurfaceState => {
-  const { backdrop, as } = props;
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
+  const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
   const open = useDialogContext_unstable(ctx => ctx.open);
@@ -55,31 +55,40 @@ export const useDialogSurface_unstable = (
       });
       // stop propagation to avoid conflicting with other elements that listen for `Escape`
       // e,g: nested Dialog, Popover, Menu and Tooltip
-      event.stopPropagation();
+      event.preventDefault();
     }
   });
 
-  return {
-    components: {
-      backdrop: 'div',
-      root: 'div',
+  const backdrop = slot.optional(props.backdrop, {
+    renderByDefault: open && modalType !== 'non-modal',
+    defaultProps: {
+      'aria-hidden': 'true',
     },
-    backdrop: resolveShorthand(backdrop, {
-      required: open && modalType !== 'non-modal',
-      defaultProps: {
-        'aria-hidden': 'true',
-        onClick: handledBackdropClick,
-      },
-    }),
-    root: getNativeElementProps(as ?? 'div', {
-      tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
-      'aria-modal': modalType !== 'non-modal',
-      role: modalType === 'alert' ? 'alertdialog' : 'dialog',
-      'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
-      ...props,
-      ...modalAttributes,
-      onKeyDown: handleKeyDown,
-      ref: useMergedRefs(ref, dialogRef),
-    }),
+    elementType: 'div',
+  });
+  if (backdrop) {
+    backdrop.onClick = handledBackdropClick;
+  }
+  return {
+    components: { backdrop: 'div', root: 'div' },
+    backdrop,
+    isNestedDialog,
+    mountNode: props.mountNode,
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        tabIndex: -1, // https://github.com/microsoft/fluentui/issues/25150
+        'aria-modal': modalType !== 'non-modal',
+        role: modalType === 'alert' ? 'alertdialog' : 'dialog',
+        'aria-labelledby': props['aria-label'] ? undefined : dialogTitleID,
+        ...props,
+        ...modalAttributes,
+        onKeyDown: handleKeyDown,
+        // FIXME:
+        // `DialogSurfaceElement` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, dialogRef) as React.Ref<HTMLDivElement>,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

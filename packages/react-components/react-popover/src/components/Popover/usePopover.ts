@@ -4,6 +4,7 @@ import {
   useEventCallback,
   useOnClickOutside,
   useOnScrollOutside,
+  elementContains,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
@@ -12,7 +13,6 @@ import {
   mergeArrowOffset,
   usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
-import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
@@ -97,14 +97,15 @@ export const usePopover_unstable = (props: PopoverProps): PopoverState => {
   );
 
   const positioningRefs = usePopoverRefs(initialState);
-
   const { targetDocument } = useFluent();
+
   useOnClickOutside({
     contains: elementContains,
     element: targetDocument,
     callback: ev => setOpen(ev, false),
     refs: [positioningRefs.triggerRef, positioningRefs.contentRef],
     disabled: !open,
+    disabledFocusOnIframe: !(props.closeOnIframeFocus ?? true),
   });
 
   // only close on scroll for context, or when closeOnScroll is specified

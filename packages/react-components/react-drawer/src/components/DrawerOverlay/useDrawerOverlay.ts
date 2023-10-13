@@ -1,8 +1,11 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { slot, useMergedRefs } from '@fluentui/react-utilities';
+import { Dialog } from '@fluentui/react-dialog';
+import { useMotion } from '@fluentui/react-motion-preview';
+
+import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
-import { DialogProps, DialogSurface } from '@fluentui/react-dialog';
-import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
+import { DrawerOverlaySurface } from './DrawerOverlaySurface';
 
 /**
  * Create the state required to render DrawerOverlay.
@@ -11,34 +14,68 @@ import { getDefaultDrawerProps } from '../../util/getDefaultDrawerProps';
  * before being passed to renderDrawerOverlay_unstable.
  *
  * @param props - props from this instance of DrawerOverlay
- * @param ref - reference to root HTMLElement of DrawerOverlay
+ * @param ref - reference to root HTMLDivElement of DrawerOverlay
  */
 export const useDrawerOverlay_unstable = (
   props: DrawerOverlayProps,
-  ref: React.Ref<HTMLElement>,
+  ref: React.Ref<HTMLDivElement>,
 ): DrawerOverlayState => {
-  const { open, defaultOpen, size, position } = getDefaultDrawerProps(props);
-  const { modalType = 'modal', inertTrapFocus, onOpenChange } = props;
+  const { open, size, position } = useDrawerDefaultProps(props);
+  const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
 
-  return {
-    components: {
-      root: DialogSurface,
-      backdrop: 'div',
-    },
+  const drawerMotion = useMotion<HTMLDivElement>(open);
+  const backdropMotion = useMotion<HTMLDivElement>(open);
 
-    root: getNativeElementProps('div', {
-      ref,
+  const backdropInnerProps = slot.resolveShorthand(props.backdrop);
+  const hasCustomBackdrop = modalType !== 'non-modal' && backdropInnerProps !== null;
+
+  const backdropProps = {
+    ...backdropInnerProps,
+    ref: useMergedRefs(backdropMotion.ref, backdropInnerProps?.ref),
+  };
+  const root = slot.always(
+    {
       ...props,
-    }),
-    dialog: {
-      open,
+      backdrop: hasCustomBackdrop ? backdropProps : null,
+    },
+    {
+      elementType: DrawerOverlaySurface,
+      defaultProps: {
+        ref: useMergedRefs(ref, drawerMotion.ref),
+      },
+    },
+  );
+
+  const dialog = slot.always(
+    {
+      open: true,
       defaultOpen,
       onOpenChange,
       inertTrapFocus,
       modalType,
-    } as DialogProps,
+      /*
+       * children is not needed here because we construct the children in the render function,
+       * but it's required by DialogProps
+       */
+      children: null as unknown as JSX.Element,
+    },
+    {
+      elementType: Dialog,
+    },
+  );
+
+  return {
+    components: {
+      root: DrawerOverlaySurface,
+      dialog: Dialog,
+    },
+
+    root,
+    dialog,
 
     size,
     position,
+    motion: drawerMotion,
+    backdropMotion,
   };
 };

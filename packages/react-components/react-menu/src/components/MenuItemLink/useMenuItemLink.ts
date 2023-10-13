@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { MenuItemLinkProps, MenuItemLinkState } from './MenuItemLink.types';
 import { useMenuItem_unstable } from '../MenuItem/useMenuItem';
 import { MenuItemProps } from '../MenuItem/MenuItem.types';
@@ -25,10 +25,13 @@ export const useMenuItemLink_unstable = (
       ...baseState.components,
       root: 'a',
     },
-    root: getNativeElementProps('a', {
-      ref,
-      role: 'menuitem',
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('a', {
+        ref,
+        role: 'menuitem',
+        ...props,
+      }),
+      { elementType: 'a' },
+    ),
   };
 };

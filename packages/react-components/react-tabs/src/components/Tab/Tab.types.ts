@@ -23,6 +23,10 @@ export type TabSlots = {
   content: NonNullable<Slot<'span'>>;
 };
 
+export type TabInternalSlots = TabSlots & {
+  contentReservedSpace?: Slot<'span'>;
+};
+
 /**
  * Tab Props
  */
@@ -41,7 +45,7 @@ export type TabProps = ComponentProps<Partial<TabSlots>> & {
 /**
  * State used in rendering Tab
  */
-export type TabState = ComponentState<TabSlots> &
+export type TabState = ComponentState<TabInternalSlots> &
   Pick<TabProps, 'value'> &
   Required<Pick<TabProps, 'disabled'>> & {
     /**
@@ -59,6 +63,8 @@ export type TabState = ComponentState<TabSlots> &
     /**
      * When defined, tab content with selected style is rendered hidden to reserve space.
      * This keeps consistent content size between unselected and selected states.
+     *
+     * @deprecated - use `contentReservedSpace` internal slot instead.
      */
     contentReservedSpaceClassName?: string;
     /**

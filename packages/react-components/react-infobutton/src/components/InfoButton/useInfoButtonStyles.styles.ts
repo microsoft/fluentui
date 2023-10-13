@@ -43,6 +43,7 @@ const useButtonStyles = makeStyles({
     ':hover': {
       backgroundColor: tokens.colorTransparentBackgroundHover,
       color: tokens.colorNeutralForeground2BrandHover,
+      cursor: 'pointer',
 
       [`& .${iconFilledClassName}`]: {
         display: 'inline-flex',
@@ -109,7 +110,7 @@ export const useInfoButtonStyles_unstable = (state: InfoButtonState): InfoButton
 
   state.info.className = mergeClasses(
     infoButtonClassNames.info,
-    size === 'large' && popoverSurfaceStyles.large,
+    size === 'large' ? popoverSurfaceStyles.large : popoverSurfaceStyles.smallMedium,
     state.info.className,
   );
 

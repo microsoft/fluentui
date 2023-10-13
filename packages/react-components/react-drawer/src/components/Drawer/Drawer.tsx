@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+
 import { useDrawer_unstable } from './useDrawer';
 import { renderDrawer_unstable } from './renderDrawer';
 import { useDrawerStyles_unstable } from './useDrawerStyles.styles';
 import type { DrawerProps } from './Drawer.types';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * Drawer contains supplementary content and are used for complex creation, edit, or management experiences.
