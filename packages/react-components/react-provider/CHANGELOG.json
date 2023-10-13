@@ -2,6 +2,87 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 12 Oct 2023 14:55:44 GMT",
+      "tag": "@fluentui/react-provider_v9.10.7",
+      "version": "9.10.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.17",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/react-provider_v9.10.6",
+      "version": "9.10.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.13.6",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.16",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:43 GMT",
+      "tag": "@fluentui/react-provider_v9.10.5",
+      "version": "9.10.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "patch: update types for custom styles hook context"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.10.0",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.13.5",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.15",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Oct 2023 15:25:32 GMT",
       "tag": "@fluentui/react-provider_v9.10.4",
       "version": "9.10.4",

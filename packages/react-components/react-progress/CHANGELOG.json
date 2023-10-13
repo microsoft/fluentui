@@ -2,6 +2,87 @@
   "name": "@fluentui/react-progress",
   "entries": [
     {
+      "date": "Thu, 12 Oct 2023 14:55:44 GMT",
+      "tag": "@fluentui/react-progress_v9.1.47",
+      "version": "9.1.47",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.1.37",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.17",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/react-progress_v9.1.46",
+      "version": "9.1.46",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.1.36",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.16",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:44 GMT",
+      "tag": "@fluentui/react-progress_v9.1.45",
+      "version": "9.1.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-field to v9.1.35",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.15",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.10.0",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-progress",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Oct 2023 15:25:35 GMT",
       "tag": "@fluentui/react-progress_v9.1.44",
       "version": "9.1.44",

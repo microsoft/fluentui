@@ -2,6 +2,60 @@
   "name": "@fluentui/react-portal",
   "entries": [
     {
+      "date": "Wed, 11 Oct 2023 13:54:25 GMT",
+      "tag": "@fluentui/react-portal_v9.3.23",
+      "version": "9.3.23",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.13.6",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:44 GMT",
+      "tag": "@fluentui/react-portal_v9.3.22",
+      "version": "9.3.22",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.10.0",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-tabster to v9.13.5",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 05 Oct 2023 15:25:35 GMT",
       "tag": "@fluentui/react-portal_v9.3.21",
       "version": "9.3.21",

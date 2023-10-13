@@ -20,7 +20,7 @@
   },
   "pluginsConfig": {
     "@nx/js": {
-      "analyzeSourceFiles": true
+      "analyzeSourceFiles": false
     }
   },
   "targetDefaults": {

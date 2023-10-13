@@ -1,9 +1,11 @@
 import * as React from 'react';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
-import type { DrawerOverlaySlots, DrawerOverlayState } from './DrawerOverlay.types';
+import type { DrawerOverlayState } from './DrawerOverlay.types';
+import { DrawerOverlaySurfaceSlots } from './DrawerOverlaySurface/DrawerOverlaySurface.types';
 import {
   drawerCSSVars,
   drawerDefaultStyles,
@@ -11,7 +13,7 @@ import {
   useDrawerDurationStyles,
 } from '../../shared/useDrawerBaseStyles.styles';
 
-export const drawerOverlayClassNames: Omit<SlotClassNames<DrawerOverlaySlots>, 'dialog'> = {
+export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySurfaceSlots> = {
   root: 'fui-DrawerOverlay',
   backdrop: 'fui-DrawerOverlay__backdrop',
 };
@@ -19,18 +21,19 @@ export const drawerOverlayClassNames: Omit<SlotClassNames<DrawerOverlaySlots>, '
 /**
  * Styles for the root slot
  */
-const useDrawerRootStyles = makeStyles({
-  root: {
-    ...drawerDefaultStyles,
-    position: 'fixed',
-    top: 0,
-    bottom: 0,
-    opacity: 0,
-    boxShadow: '0px transparent',
-    transitionProperty: 'transform, box-shadow, opacity',
-    willChange: 'transform, box-shadow, opacity',
-  },
+const useDrawerResetStyles = makeResetStyles({
+  ...createFocusOutlineStyle(),
+  ...drawerDefaultStyles,
+  position: 'fixed',
+  top: 0,
+  bottom: 0,
+  opacity: 0,
+  boxShadow: `0px ${tokens.colorTransparentBackground}`,
+  transitionProperty: 'transform, box-shadow, opacity',
+  willChange: 'transform, box-shadow, opacity',
+});
 
+const useDrawerRootStyles = makeStyles({
   /* Positioning */
   start: {
     transform: `translate3D(calc(var(${drawerCSSVars.drawerSizeVar}) * -1), 0, 0)`,
@@ -50,7 +53,7 @@ const useDrawerRootStyles = makeStyles({
 /**
  * Styles for the backdrop slot
  */
-const useBackdropMotionStyles = makeStyles({
+const useBackdropStyles = makeStyles({
   backdrop: {
     opacity: 0,
     transitionProperty: 'opacity',
@@ -68,8 +71,9 @@ const useBackdropMotionStyles = makeStyles({
  */
 export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
   const baseClassNames = useDrawerBaseClassNames(state);
+  const resetStyles = useDrawerResetStyles();
   const rootStyles = useDrawerRootStyles();
-  const backdropMotionStyles = useBackdropMotionStyles();
+  const backdropStyles = useBackdropStyles();
   const durationStyles = useDrawerDurationStyles();
 
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
@@ -77,7 +81,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   state.root.className = mergeClasses(
     drawerOverlayClassNames.root,
     baseClassNames,
-    rootStyles.root,
+    resetStyles,
     rootStyles[state.position],
     state.motion.active && rootStyles.visible,
     state.root.className,
@@ -86,9 +90,9 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   if (backdrop) {
     backdrop.className = mergeClasses(
       drawerOverlayClassNames.backdrop,
-      backdropMotionStyles.backdrop,
+      backdropStyles.backdrop,
       durationStyles[state.size],
-      state.backdropMotion.active && backdropMotionStyles.visible,
+      state.backdropMotion.active && backdropStyles.visible,
       backdrop.className,
     );
   }

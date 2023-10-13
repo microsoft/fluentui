@@ -1259,12 +1259,7 @@ export interface ITreeProps {
     composition?: NodesComposition.long | NodesComposition.compact;
     height?: number;
     layoutWidth?: number;
-    marign?: {
-        left: number;
-        right: number;
-        top: number;
-        bottom: number;
-    };
+    margins?: IMargins;
     styles?: IStyleFunctionOrObject<ITreeStyleProps, ITreeStyles>;
     theme?: ITheme;
     treeData: ITreeChartDataPoint;

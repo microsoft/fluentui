@@ -123,7 +123,7 @@ export class DetailsColumnBase extends React.Component<IDetailsColumnProps> {
           draggable={isDraggable}
           style={{
             width:
-              column.calculatedWidth! +
+              (column.calculatedWidth || 0) +
               cellStyleProps.cellLeftPadding +
               cellStyleProps.cellRightPadding +
               (column.isPadded ? cellStyleProps.cellExtraRightPadding : 0),

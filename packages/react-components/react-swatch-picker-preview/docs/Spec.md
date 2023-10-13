@@ -256,6 +256,36 @@ is used to pick images:
 | name     |                                          |          |                                 |
 | disabled | boolean                                  |          |                                 |
 | selected | boolean                                  |          |                                 |
+=======
+## Background
+
+_Description and use cases of this component_
+
+## Prior Art
+
+_Include background research done for this component_
+
+- _Link to Open UI research_
+- _Link to comparison of v7 and v0_
+- _Link to GitHub epic issue for the converged component_
+
+## Sample Code
+
+_Provide some representative example code that uses the proposed API for the component_
+
+## Variants
+
+_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+
+## API
+
+_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+
+## Structure
+
+- _**Public**_
+- _**Internal**_
+- _**DOM** - how the component will be rendered as HTML elements_
 
 ## Migration
 

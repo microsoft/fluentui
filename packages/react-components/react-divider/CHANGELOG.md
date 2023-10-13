@@ -1,8 +1,38 @@
 # Change Log - @fluentui/react-divider
 
-This log was last generated on Thu, 05 Oct 2023 15:25:35 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.2.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.45)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.44..@fluentui/react-divider_v9.2.45)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+
+## [9.2.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.44)
+
+Wed, 11 Oct 2023 13:54:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.43..@fluentui/react-divider_v9.2.44)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+
+## [9.2.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.43)
+
+Mon, 09 Oct 2023 20:45:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-divider_v9.2.42..@fluentui/react-divider_v9.2.43)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.10.0 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
 
 ## [9.2.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-divider_v9.2.42)
 

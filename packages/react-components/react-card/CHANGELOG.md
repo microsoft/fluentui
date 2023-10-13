@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-card
 
-This log was last generated on Thu, 05 Oct 2023 15:25:35 GMT and should not be manually modified.
+This log was last generated on Thu, 12 Oct 2023 14:55:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.48)
+
+Thu, 12 Oct 2023 14:55:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.47..@fluentui/react-card_v9.0.48)
+
+### Patches
+
+- chore: migrate from getNativeElementProps for getIntrinsicElementProps ([PR #29498](https://github.com/microsoft/fluentui/pull/29498) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+
+## [9.0.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.47)
+
+Wed, 11 Oct 2023 13:54:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.46..@fluentui/react-card_v9.0.47)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.13.6 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+
+## [9.0.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.46)
+
+Mon, 09 Oct 2023 20:45:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-card_v9.0.45..@fluentui/react-card_v9.0.46)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.13.5 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
 
 ## [9.0.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-card_v9.0.45)
 
