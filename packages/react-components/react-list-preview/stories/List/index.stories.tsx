@@ -7,7 +7,7 @@ export { Default } from './ListDefault.stories';
 export { ListHorizontal } from './ListHorizontal.stories';
 export { ListGrid } from './ListGrid.stories';
 export { ListArrowNavigation } from './ListArrowNavigation.stories';
-export { ListOverflowing } from './ListOverflowing.stories';
+export { ListWithAction } from './ListWithAction.stories';
 export { ListWithMultipleActions } from './ListWithMultipleActions.stories';
 export { VirtualizedList } from './VirtualizedList.stories';
 

@@ -16,7 +16,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListOverflowing = () => {
+export const ListWithAction = () => {
   const classes = useStyles();
   return (
     <div className={classes.wrapper}>
@@ -38,4 +38,15 @@ export const ListOverflowing = () => {
       </List>
     </div>
   );
+};
+ListWithAction.parameters = {
+  docs: {
+    description: {
+      story: [
+        'When the list item contains actionable element, it is recommended to use the built-in `button` slot on the `ListItem` component to handle these interactions. This will ensure the proper keyboard navigation and accessibility announcements.',
+        ``,
+        'In this case, the `ListItem` itself should __not be focusable, neither it should have any aria roles assigned__. It should be transparent to the screen reader and keyboard navigation.',
+      ].join('\n'),
+    },
+  },
 };
