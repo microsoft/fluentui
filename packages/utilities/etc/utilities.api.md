@@ -22,7 +22,7 @@ import { portalContainsElement } from '@fluentui/dom-utilities';
 import * as React_2 from 'react';
 import { setPortalAttribute } from '@fluentui/dom-utilities';
 import { setVirtualParent } from '@fluentui/dom-utilities';
-import type { ShadowConfig } from '@fluentui/merge-styles';
+import { ShadowConfig } from '@fluentui/merge-styles';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -1297,6 +1297,9 @@ export const useMergeStylesRootStylesheets: () => Map<string, CSSStyleSheet>;
 //
 // @public
 export const useMergeStylesShadowRootContext: () => MergeStylesShadowRootContextValue | undefined;
+
+// @public
+export const useShadowConfig: (stylesheetKey: string, win?: Window) => ShadowConfig;
 
 // @public
 export function values<T>(obj: any): T[];
