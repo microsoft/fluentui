@@ -1,6 +1,11 @@
 {
   "buildCommand": "build:codesandbox",
-  "packages": ["packages/react", "packages/merge-styles", "packages/react-components/react-components"],
+  "packages": [
+    "packages/react",
+    "packages/merge-styles",
+    "packages/react-components/react-components",
+    "packages/utilities"
+  ],
   "sandboxes": ["x5u3t", "spnyu"],
   "node": "18"
 }
