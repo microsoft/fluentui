@@ -4,23 +4,23 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
-import { DrawerOverlay } from './DrawerOverlay';
-import { DrawerOverlayProps } from './DrawerOverlay.types';
-import { drawerOverlayClassNames } from './useDrawerOverlayStyles.styles';
+import { OverlayDrawer } from './OverlayDrawer';
+import { OverlayDrawerProps } from './OverlayDrawer.types';
+import { OverlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-describe('DrawerOverlay', () => {
-  testDrawerBaseScenarios(DrawerOverlay);
+describe('OverlayDrawer', () => {
+  testDrawerBaseScenarios(OverlayDrawer);
 
   describe('modalType prop', () => {
-    const ExampleDrawer = (props: DrawerOverlayProps) => {
+    const ExampleDrawer = (props: OverlayDrawerProps) => {
       const [open, setOpen] = React.useState(true);
 
       return (
-        <DrawerOverlay id="drawer" open={open} onOpenChange={(_, { open: isOpen }) => setOpen(isOpen)} {...props} />
+        <OverlayDrawer id="drawer" open={open} onOpenChange={(_, { open: isOpen }) => setOpen(isOpen)} {...props} />
       );
     };
 
@@ -28,14 +28,14 @@ describe('DrawerOverlay', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer />);
 
-        cy.get(`.${drawerOverlayClassNames.backdrop}`).should('exist');
+        cy.get(`.${OverlayDrawerClassNames.backdrop}`).should('exist');
       });
 
       it('should close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${drawerOverlayClassNames.backdrop}`).click({ force: true });
+        cy.get(`.${OverlayDrawerClassNames.backdrop}`).click({ force: true });
         cy.get('#drawer').should('not.exist');
       });
     });
@@ -44,14 +44,14 @@ describe('DrawerOverlay', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
-        cy.get(`.${drawerOverlayClassNames.backdrop}`).should('exist');
+        cy.get(`.${OverlayDrawerClassNames.backdrop}`).should('exist');
       });
 
       it('should not close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${drawerOverlayClassNames.backdrop}`).click({ force: true });
+        cy.get(`.${OverlayDrawerClassNames.backdrop}`).click({ force: true });
         cy.get('#drawer').should('exist');
       });
     });
@@ -60,7 +60,7 @@ describe('DrawerOverlay', () => {
       it('should not render backdrop when modalType is default', () => {
         mountFluent(<ExampleDrawer modalType="non-modal" />);
 
-        cy.get(`.${drawerOverlayClassNames.backdrop}`).should('not.exist');
+        cy.get(`.${OverlayDrawerClassNames.backdrop}`).should('not.exist');
       });
     });
   });

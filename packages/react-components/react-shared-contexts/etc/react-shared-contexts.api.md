@@ -107,8 +107,8 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerInlineStyles_unstable: CustomStyleHook;
-    useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -216,8 +216,8 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerInlineStyles_unstable: CustomStyleHook;
-    useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -325,8 +325,8 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDataGridHeaderCellStyles_unstable: CustomStyleHook;
     useDataGridSelectionCellStyles_unstable: CustomStyleHook;
     useDrawerStyles_unstable: CustomStyleHook;
-    useDrawerInlineStyles_unstable: CustomStyleHook;
-    useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;

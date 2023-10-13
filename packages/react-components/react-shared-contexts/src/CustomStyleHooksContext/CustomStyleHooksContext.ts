@@ -90,8 +90,8 @@ export type CustomStyleHooksContextValue = Partial<{
   useDataGridHeaderCellStyles_unstable: CustomStyleHook;
   useDataGridSelectionCellStyles_unstable: CustomStyleHook;
   useDrawerStyles_unstable: CustomStyleHook;
-  useDrawerInlineStyles_unstable: CustomStyleHook;
-  useDrawerOverlayStyles_unstable: CustomStyleHook;
+  useInlineDrawerStyles_unstable: CustomStyleHook;
+  useOverlayDrawerStyles_unstable: CustomStyleHook;
   useDrawerHeaderStyles_unstable: CustomStyleHook;
   useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
   useDrawerHeaderTitleStyles_unstable: CustomStyleHook;

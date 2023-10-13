@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-drawer';
 import { Button, makeStyles, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -46,7 +46,7 @@ export const Inline = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline open={leftOpen}>
+      <InlineDrawer open={leftOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -65,7 +65,7 @@ export const Inline = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerInline>
+      </InlineDrawer>
 
       <div className={styles.content}>
         <div className={styles.buttons}>
@@ -87,7 +87,7 @@ export const Inline = () => {
         ))}
       </div>
 
-      <DrawerInline position="end" open={rightOpen}>
+      <InlineDrawer position="end" open={rightOpen}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -106,7 +106,7 @@ export const Inline = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerInline>
+      </InlineDrawer>
     </div>
   );
 };
@@ -115,7 +115,7 @@ Inline.parameters = {
   docs: {
     description: {
       story: [
-        'DrawerInline is often used for navigation that is not dismissible.',
+        'InlineDrawer is often used for navigation that is not dismissible.',
         'As it is on the same level as the main surface, users can still interact with other UI elements.',
         'This could be useful for swapping between different items in the main surface.',
       ].join('\n'),

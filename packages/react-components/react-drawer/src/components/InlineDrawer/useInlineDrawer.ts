@@ -2,22 +2,22 @@ import * as React from 'react';
 import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useMotion } from '@fluentui/react-motion-preview';
 
-import type { DrawerInlineProps, DrawerInlineState } from './DrawerInline.types';
+import type { InlineDrawerProps, InlineDrawerState } from './InlineDrawer.types';
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
 
 /**
- * Create the state required to render DrawerInline.
+ * Create the state required to render InlineDrawer.
  *
- * The returned state can be modified with hooks such as useDrawerInlineStyles_unstable,
- * before being passed to renderDrawerInline_unstable.
+ * The returned state can be modified with hooks such as useInlineDrawerStyles_unstable,
+ * before being passed to renderInlineDrawer_unstable.
  *
- * @param props - props from this instance of DrawerInline
- * @param ref - reference to root HTMLElement of DrawerInline
+ * @param props - props from this instance of InlineDrawer
+ * @param ref - reference to root HTMLElement of InlineDrawer
  */
-export const useDrawerInline_unstable = (
-  props: DrawerInlineProps,
+export const useInlineDrawer_unstable = (
+  props: InlineDrawerProps,
   ref: React.Ref<HTMLDivElement>,
-): DrawerInlineState => {
+): InlineDrawerState => {
   const { size, position, open } = useDrawerDefaultProps(props);
   const { separator = false } = props;
 

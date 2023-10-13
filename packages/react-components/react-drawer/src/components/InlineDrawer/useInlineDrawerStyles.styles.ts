@@ -3,11 +3,11 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
-import type { DrawerInlineSlots, DrawerInlineState } from './DrawerInline.types';
+import type { InlineDrawerSlots, InlineDrawerState } from './InlineDrawer.types';
 import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from '../../shared/useDrawerBaseStyles.styles';
 
-export const drawerInlineClassNames: SlotClassNames<DrawerInlineSlots> = {
-  root: 'fui-DrawerInline',
+export const InlineDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
+  root: 'fui-InlineDrawer',
 };
 
 const useDrawerResetStyles = makeResetStyles({
@@ -47,9 +47,9 @@ const useDrawerRootStyles = makeStyles({
 });
 
 /**
- * Apply styling to the DrawerInline slots based on the state
+ * Apply styling to the InlineDrawer slots based on the state
  */
-export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): DrawerInlineState => {
+export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): InlineDrawerState => {
   const resetStyles = useDrawerResetStyles();
   const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
@@ -63,7 +63,7 @@ export const useDrawerInlineStyles_unstable = (state: DrawerInlineState): Drawer
   }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
 
   state.root.className = mergeClasses(
-    drawerInlineClassNames.root,
+    InlineDrawerClassNames.root,
     resetStyles,
     baseClassNames,
     separatorClass,

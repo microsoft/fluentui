@@ -2,11 +2,11 @@ import { makeResetStyles, makeStyles, mergeClasses, shorthands } from '@griffel/
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 
-import type { DrawerOverlaySurfaceSlots, DrawerOverlaySurfaceState } from './DrawerOverlaySurface.types';
+import type { OverlayDrawerSurfaceSlots, OverlayDrawerSurfaceState } from './OverlayDrawerSurface.types';
 
-export const drawerOverlaySurfaceClassNames: SlotClassNames<DrawerOverlaySurfaceSlots> = {
-  root: 'fui-DrawerOverlaySurface',
-  backdrop: 'fui-DrawerOverlaySurface__backdrop',
+export const OverlayDrawerSurfaceClassNames: SlotClassNames<OverlayDrawerSurfaceSlots> = {
+  root: 'fui-OverlayDrawerSurface',
+  backdrop: 'fui-OverlayDrawerSurface__backdrop',
 };
 
 /**
@@ -25,9 +25,9 @@ const useBackdropStyles = makeStyles({
 });
 
 /**
- * Apply styling to the DrawerOverlaySurface slots based on the state
+ * Apply styling to the OverlayDrawerSurface slots based on the state
  */
-export const useDrawerOverlaySurfaceStyles_unstable = (state: DrawerOverlaySurfaceState): DrawerOverlaySurfaceState => {
+export const useOverlayDrawerSurfaceStyles_unstable = (state: OverlayDrawerSurfaceState): OverlayDrawerSurfaceState => {
   const backdropResetStyles = useBackdropResetStyles();
   const backdropStyles = useBackdropStyles();
 

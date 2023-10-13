@@ -4,22 +4,22 @@ import { Dialog } from '@fluentui/react-dialog';
 import { useMotion } from '@fluentui/react-motion-preview';
 
 import { useDrawerDefaultProps } from '../../shared/useDrawerDefaultProps';
-import type { DrawerOverlayProps, DrawerOverlayState } from './DrawerOverlay.types';
-import { DrawerOverlaySurface } from './DrawerOverlaySurface';
+import type { OverlayDrawerProps, OverlayDrawerState } from './OverlayDrawer.types';
+import { OverlayDrawerSurface } from './OverlayDrawerSurface';
 
 /**
- * Create the state required to render DrawerOverlay.
+ * Create the state required to render OverlayDrawer.
  *
- * The returned state can be modified with hooks such as useDrawerOverlayStyles_unstable,
- * before being passed to renderDrawerOverlay_unstable.
+ * The returned state can be modified with hooks such as useOverlayDrawerStyles_unstable,
+ * before being passed to renderOverlayDrawer_unstable.
  *
- * @param props - props from this instance of DrawerOverlay
- * @param ref - reference to root HTMLDivElement of DrawerOverlay
+ * @param props - props from this instance of OverlayDrawer
+ * @param ref - reference to root HTMLDivElement of OverlayDrawer
  */
-export const useDrawerOverlay_unstable = (
-  props: DrawerOverlayProps,
+export const useOverlayDrawer_unstable = (
+  props: OverlayDrawerProps,
   ref: React.Ref<HTMLDivElement>,
-): DrawerOverlayState => {
+): OverlayDrawerState => {
   const { open, size, position } = useDrawerDefaultProps(props);
   const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
 
@@ -39,7 +39,7 @@ export const useDrawerOverlay_unstable = (
       backdrop: hasCustomBackdrop ? backdropProps : null,
     },
     {
-      elementType: DrawerOverlaySurface,
+      elementType: OverlayDrawerSurface,
       defaultProps: {
         ref: useMergedRefs(ref, drawerMotion.ref),
       },
@@ -66,7 +66,7 @@ export const useDrawerOverlay_unstable = (
 
   return {
     components: {
-      root: DrawerOverlaySurface,
+      root: OverlayDrawerSurface,
       dialog: Dialog,
     },
 

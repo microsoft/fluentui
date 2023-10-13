@@ -31,16 +31,16 @@ import { DrawerHeaderTitle } from '@fluentui/react-drawer';
 import { drawerHeaderTitleClassNames } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleSlots } from '@fluentui/react-drawer';
 import { DrawerHeaderTitleState } from '@fluentui/react-drawer';
-import { DrawerInline } from '@fluentui/react-drawer';
-import { drawerInlineClassNames } from '@fluentui/react-drawer';
-import { DrawerInlineProps } from '@fluentui/react-drawer';
-import { DrawerInlineSlots } from '@fluentui/react-drawer';
-import { DrawerInlineState } from '@fluentui/react-drawer';
-import { DrawerOverlay } from '@fluentui/react-drawer';
-import { drawerOverlayClassNames } from '@fluentui/react-drawer';
-import { DrawerOverlayProps } from '@fluentui/react-drawer';
-import { DrawerOverlaySlots } from '@fluentui/react-drawer';
-import { DrawerOverlayState } from '@fluentui/react-drawer';
+import { InlineDrawer } from '@fluentui/react-drawer';
+import { InlineDrawerClassNames } from '@fluentui/react-drawer';
+import { InlineDrawerProps } from '@fluentui/react-drawer';
+import { InlineDrawerSlots } from '@fluentui/react-drawer';
+import { InlineDrawerState } from '@fluentui/react-drawer';
+import { OverlayDrawer } from '@fluentui/react-drawer';
+import { OverlayDrawerClassNames } from '@fluentui/react-drawer';
+import { OverlayDrawerProps } from '@fluentui/react-drawer';
+import { OverlayDrawerSlots } from '@fluentui/react-drawer';
+import { OverlayDrawerState } from '@fluentui/react-drawer';
 import { DrawerProps } from '@fluentui/react-drawer';
 import { DrawerSlots } from '@fluentui/react-drawer';
 import { DrawerState } from '@fluentui/react-drawer';
@@ -71,8 +71,8 @@ import { renderDrawerFooter_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeader_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderNavigation_unstable } from '@fluentui/react-drawer';
 import { renderDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
-import { renderDrawerInline_unstable } from '@fluentui/react-drawer';
-import { renderDrawerOverlay_unstable } from '@fluentui/react-drawer';
+import { renderInlineDrawer_unstable } from '@fluentui/react-drawer';
+import { renderOverlayDrawer_unstable } from '@fluentui/react-drawer';
 import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderInfoButton_unstable } from '@fluentui/react-infobutton';
 import { renderInfoLabel_unstable } from '@fluentui/react-infobutton';
@@ -130,10 +130,10 @@ import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer
 import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerInline_unstable } from '@fluentui/react-drawer';
-import { useDrawerInlineStyles_unstable } from '@fluentui/react-drawer';
-import { useDrawerOverlay_unstable } from '@fluentui/react-drawer';
-import { useDrawerOverlayStyles_unstable } from '@fluentui/react-drawer';
+import { useInlineDrawer_unstable } from '@fluentui/react-drawer';
+import { useInlineDrawerStyles_unstable } from '@fluentui/react-drawer';
+import { useOverlayDrawer_unstable } from '@fluentui/react-drawer';
+import { useOverlayDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useDynamicVirtualizerMeasure } from '@fluentui/react-virtualizer';
 import { useFlatTree_unstable } from '@fluentui/react-tree';
 import { useFlatTreeContextValues_unstable } from '@fluentui/react-tree';
@@ -240,25 +240,25 @@ export { DrawerHeaderTitleSlots }
 
 export { DrawerHeaderTitleState }
 
-export { DrawerInline }
+export { InlineDrawer }
 
-export { drawerInlineClassNames }
+export { InlineDrawerClassNames }
 
-export { DrawerInlineProps }
+export { InlineDrawerProps }
 
-export { DrawerInlineSlots }
+export { InlineDrawerSlots }
 
-export { DrawerInlineState }
+export { InlineDrawerState }
 
-export { DrawerOverlay }
+export { OverlayDrawer }
 
-export { drawerOverlayClassNames }
+export { OverlayDrawerClassNames }
 
-export { DrawerOverlayProps }
+export { OverlayDrawerProps }
 
-export { DrawerOverlaySlots }
+export { OverlayDrawerSlots }
 
-export { DrawerOverlayState }
+export { OverlayDrawerState }
 
 export { DrawerProps }
 
@@ -320,9 +320,9 @@ export { renderDrawerHeaderNavigation_unstable }
 
 export { renderDrawerHeaderTitle_unstable }
 
-export { renderDrawerInline_unstable }
+export { renderInlineDrawer_unstable }
 
-export { renderDrawerOverlay_unstable }
+export { renderOverlayDrawer_unstable }
 
 export { renderFlatTree_unstable }
 
@@ -438,13 +438,13 @@ export { useDrawerHeaderTitle_unstable }
 
 export { useDrawerHeaderTitleStyles_unstable }
 
-export { useDrawerInline_unstable }
+export { useInlineDrawer_unstable }
 
-export { useDrawerInlineStyles_unstable }
+export { useInlineDrawerStyles_unstable }
 
-export { useDrawerOverlay_unstable }
+export { useOverlayDrawer_unstable }
 
-export { useDrawerOverlayStyles_unstable }
+export { useOverlayDrawerStyles_unstable }
 
 export { useDynamicVirtualizerMeasure }
 

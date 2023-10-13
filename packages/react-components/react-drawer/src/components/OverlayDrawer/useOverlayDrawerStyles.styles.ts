@@ -4,8 +4,8 @@ import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 
-import type { DrawerOverlayState } from './DrawerOverlay.types';
-import { DrawerOverlaySurfaceSlots } from './DrawerOverlaySurface/DrawerOverlaySurface.types';
+import type { OverlayDrawerState } from './OverlayDrawer.types';
+import { OverlayDrawerSurfaceSlots } from './OverlayDrawerSurface/OverlayDrawerSurface.types';
 import {
   drawerCSSVars,
   drawerDefaultStyles,
@@ -13,9 +13,9 @@ import {
   useDrawerDurationStyles,
 } from '../../shared/useDrawerBaseStyles.styles';
 
-export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySurfaceSlots> = {
-  root: 'fui-DrawerOverlay',
-  backdrop: 'fui-DrawerOverlay__backdrop',
+export const OverlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots> = {
+  root: 'fui-OverlayDrawer',
+  backdrop: 'fui-OverlayDrawer__backdrop',
 };
 
 /**
@@ -67,9 +67,9 @@ const useBackdropStyles = makeStyles({
 });
 
 /**
- * Apply styling to the DrawerOverlay slots based on the state
+ * Apply styling to the OverlayDrawer slots based on the state
  */
-export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): DrawerOverlayState => {
+export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): OverlayDrawerState => {
   const baseClassNames = useDrawerBaseClassNames(state);
   const resetStyles = useDrawerResetStyles();
   const rootStyles = useDrawerRootStyles();
@@ -79,7 +79,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
   state.root.className = mergeClasses(
-    drawerOverlayClassNames.root,
+    OverlayDrawerClassNames.root,
     baseClassNames,
     resetStyles,
     rootStyles[state.position],
@@ -89,7 +89,7 @@ export const useDrawerOverlayStyles_unstable = (state: DrawerOverlayState): Draw
 
   if (backdrop) {
     backdrop.className = mergeClasses(
-      drawerOverlayClassNames.backdrop,
+      OverlayDrawerClassNames.backdrop,
       backdropStyles.backdrop,
       durationStyles[state.size],
       state.backdropMotion.active && backdropStyles.visible,
