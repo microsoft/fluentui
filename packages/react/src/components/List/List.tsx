@@ -1006,7 +1006,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     const { getPageSpecification } = props;
 
     if (getPageSpecification) {
-      const pageData = getPageSpecification(itemIndex, visibleRect);
+      const pageData = getPageSpecification(itemIndex, visibleRect, props.items);
 
       const { itemCount = this._getItemCountForPage(itemIndex, visibleRect) } = pageData;
 
@@ -1034,7 +1034,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
    */
   private _getPageHeight(itemIndex: number, visibleRect: IRectangle, itemsPerPage: number): number {
     if (this.props.getPageHeight) {
-      return this.props.getPageHeight(itemIndex, visibleRect, itemsPerPage);
+      return this.props.getPageHeight(itemIndex, visibleRect, itemsPerPage, this.props.items);
     } else {
       const cachedHeight = this._cachedPageHeights[itemIndex];
 

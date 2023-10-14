@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: avoid edge case where Sticky/ScrollablePane could fall into infinite loop",
+  "packageName": "@fluentui/react",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}

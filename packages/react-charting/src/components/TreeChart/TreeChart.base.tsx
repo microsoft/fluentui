@@ -14,6 +14,7 @@ import {
   ITreeStyleProps,
   ITreeStyles,
 } from '../../index';
+import { IMargins } from '../../utilities/utilities';
 
 const getClassNames = classNamesFunction<ITreeStyleProps, ITreeStyles>();
 
@@ -470,14 +471,19 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
   private _height: number;
   private _composition: number | undefined;
   private _classNames: IProcessedStyleSet<ITreeStyles>;
-  private _margin: { left: number; right: number; top: number; bottom: number };
+  private _margin: IMargins;
   private _nodeElements: JSX.Element[] = [];
   private _linkElements: JSX.Element[] = [];
   private _treeTraversal: number | undefined;
 
   constructor(props: ITreeProps) {
     super(props);
-    this._margin = { top: 30, right: 20, bottom: 30, left: 50 };
+    this._margin = {
+      top: this.props.margins?.top || 30,
+      bottom: this.props.margins?.bottom || 30,
+      left: this.props.margins?.left || 50,
+      right: this.props.margins?.right || 20,
+    };
     this._width = this.props.width || 1500;
     this._height = this.props.height || 700;
     this._treeData = this.props.treeData;
@@ -536,7 +542,7 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
       linkElements,
       this._treeTraversal,
     );
-    const width = this.state._width - this._margin.left - this._margin.right;
+    const width = this.state._width - this._margin.left! - this._margin.right!;
     treeObject.createTree(this.props.layoutWidth, width);
     this._nodeElements = nodeElements;
     this._linkElements = linkElements;
@@ -548,8 +554,8 @@ export class TreeChartBase extends React.Component<ITreeProps, ITreeState> {
         <div className={this._classNames?.root}>
           <svg
             className="svgTree"
-            width={this.state._width - this._margin.left - this._margin.right}
-            height={this.state._height - this._margin.top - this._margin.bottom}
+            width={this.state._width - this._margin.left! - this._margin.right!}
+            height={this.state._height - this._margin.top! - this._margin.bottom!}
           >
             <g className="svgNode">{this._nodeElements.map(element => element)}</g>
             <g className="svgLink">{this._linkElements.map(element => element)}</g>

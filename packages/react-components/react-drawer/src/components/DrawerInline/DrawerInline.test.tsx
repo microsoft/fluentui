@@ -14,8 +14,6 @@ describe('DrawerInline', () => {
     disabledTests: ['make-styles-overrides-win'],
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<DrawerInline>Default Drawer</DrawerInline>);
     expect(result.container).toMatchInlineSnapshot(`<div />`);
