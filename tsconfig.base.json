@@ -13,6 +13,7 @@
     "typeRoots": ["node_modules/@types", "./typings"],
     "baseUrl": ".",
     "paths": {
+      "@fluentui/react-anatomy-inspector": ["packages/react-components/react-anatomy-inspector/src/index.ts"],
       "@fluentui/babel-preset-global-context": ["packages/react-components/babel-preset-global-context/src/index.ts"],
       "@fluentui/babel-preset-storybook-full-source": [
         "packages/react-components/babel-preset-storybook-full-source/src/index.ts"

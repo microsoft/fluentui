@@ -1,8 +1,8 @@
 {
-  "name": "@fluentui/react-storybook-addon",
-  "version": "0.1.0",
+  "name": "@fluentui/react-anatomy-inspector",
+  "version": "1.0.0",
   "private": true,
-  "description": "fluentui react storybook addon",
+  "description": "The anatomy inspector provides a way to visualize and inspect Fluent UI components and slots.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -15,42 +15,33 @@
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
+    "generate-api": "just-scripts generate-api",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
-    "type-check": "tsc -b tsconfig.json",
-    "generate-api": "just-scripts generate-api"
+    "test": "jest --passWithNoTests",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "type-check": "tsc -b tsconfig.json"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
+    "@fluentui/react-conformance": "*",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-jsx-runtime": "^9.0.0-alpha.12",
     "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-anatomy-inspector": "^1.0.0",
-    "@fluentui/react-provider": "^9.7.13",
+    "@fluentui/react-utilities": "^9.10.1",
+    "@griffel/react": "^1.5.7",
     "@swc/helpers": "^0.4.14"
   },
   "peerDependencies": {
     "@types/react": ">=16.8.0 <19.0.0",
     "@types/react-dom": ">=16.8.0 <19.0.0",
     "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
-    "@storybook/addons": "^6.5.15",
-    "@storybook/api": "^6.5.15",
-    "@storybook/components": "^6.5.15",
-    "@storybook/core-events": "^6.5.15",
-    "@storybook/theming": "^6.5.15"
-  },
-  "beachball": {
-    "disallowedChangeTypes": [
-      "major",
-      "prerelease"
-    ]
+    "react-dom": ">=16.8.0 <19.0.0"
   },
   "exports": {
     ".": {
@@ -60,5 +51,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
   }
 }
