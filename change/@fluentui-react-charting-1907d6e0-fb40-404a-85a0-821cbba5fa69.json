@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added optional condition based y-axis scaling on narrow ranges",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}
