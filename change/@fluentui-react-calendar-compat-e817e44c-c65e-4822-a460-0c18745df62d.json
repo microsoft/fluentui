@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Release react-calendar-compat.",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
