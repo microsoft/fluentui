@@ -75,7 +75,7 @@ export const useBreadcrumbItemStyles_unstable = (state: BreadcrumbItemState): Br
     large: styles.currentLarge,
   } as const;
   const noSpacingStyle =
-    state.isInteractive || (!state.isInteractive && state.size === 'small') ? styles.noSpacing : '';
+    state.isInteractive || (!state.hasInteractiveItems && state.size === 'small') ? styles.noSpacing : '';
 
   state.root.className = mergeClasses(
     breadcrumbItemClassNames.root,

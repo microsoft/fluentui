@@ -8,9 +8,8 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DialogProps } from '@fluentui/react-dialog';
-import { DialogSurfaceProps } from '@fluentui/react-dialog';
-import { DialogSurfaceSlots } from '@fluentui/react-dialog';
+import type { DialogProps } from '@fluentui/react-dialog';
+import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { MotionShorthand } from '@fluentui/react-motion-preview';
 import { MotionState } from '@fluentui/react-motion-preview';
@@ -131,19 +130,18 @@ export type DrawerInlineState = Required<ComponentState<DrawerInlineSlots> & Dra
 export const DrawerOverlay: ForwardRefComponent<DrawerOverlayProps>;
 
 // @public (undocumented)
-export const drawerOverlayClassNames: Omit<SlotClassNames<DrawerOverlaySlots>, 'dialog'>;
+export const drawerOverlayClassNames: SlotClassNames<DrawerOverlaySurfaceSlots>;
 
 // @public
 export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;
 
-// @public (undocumented)
-export type DrawerOverlaySlots = DialogSurfaceSlots & {
-    root: Slot<DialogSurfaceProps>;
-    dialog?: Slot<DialogProps>;
+// @public
+export type DrawerOverlaySlots = {
+    root: Slot<DrawerOverlaySurfaceProps>;
 };
 
 // @public
-export type DrawerOverlayState = Omit<ComponentState<DrawerOverlaySlots>, 'backdrop'> & Required<DrawerBaseState & {
+export type DrawerOverlayState = Omit<ComponentState<DrawerOverlayInternalSlots>, 'backdrop'> & Required<DrawerBaseState & {
     backdropMotion: MotionState<HTMLDivElement>;
 }>;
 

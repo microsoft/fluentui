@@ -62,6 +62,11 @@ enum CircleVisbility {
   hide = 'hidden',
 }
 
+type CalloutAnchorPointData = {
+  xAxisDataPoint: string;
+  chartDataPoint: IVSChartDataPoint;
+};
+
 export interface IVerticalStackedBarChartState extends IBasestate {
   dataPointCalloutProps?: IVSChartDataPoint;
   stackCalloutProps?: IVerticalStackedChartProps;
@@ -87,7 +92,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
-  private _calloutAnchorPoint: IVSChartDataPoint | null;
+  private _calloutAnchorPoint: CalloutAnchorPointData | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _emptyChartId: string;
@@ -593,8 +598,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
-    if (this._calloutAnchorPoint !== point) {
-      this._calloutAnchorPoint = point;
+    if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
+      this._calloutAnchorPoint = {
+        chartDataPoint: point,
+        xAxisDataPoint: xAxisPoint,
+      };
       this.setState({
         refSelected,
         /**
@@ -782,8 +790,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < barMinimumHeight) {
-          barHeight = barMinimumHeight;
+        if (barHeight < Math.max(Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(Math.ceil(this._yMax / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
@@ -810,7 +818,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-        if (barHeight < 1) {
+        if (barHeight < 0) {
           return <React.Fragment key={index + indexNumber}> </React.Fragment>;
         }
         return (

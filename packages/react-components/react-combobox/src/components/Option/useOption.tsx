@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useContextSelector } from '@fluentui/react-context-selector';
 import { CheckmarkFilled, Checkmark12Filled } from '@fluentui/react-icons';
 import { ComboboxContext } from '../../contexts/ComboboxContext';
@@ -116,9 +116,12 @@ export const useOption_unstable = (props: OptionProps, ref: React.Ref<HTMLElemen
       checkIcon: 'span',
     },
     root: slot.always(
-      getNativeElementProps('div', {
-        ref: useMergedRefs(ref, optionRef),
-        'aria-disabled': disabled ? 'true' : undefined,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, optionRef) as React.Ref<HTMLDivElement>,
+        'aria-disabled': disabled ? ('true' as const) : undefined,
         id,
         ...semanticProps,
         ...props,

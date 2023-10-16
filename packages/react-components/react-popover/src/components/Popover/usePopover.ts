@@ -4,6 +4,7 @@ import {
   useEventCallback,
   useOnClickOutside,
   useOnScrollOutside,
+  elementContains,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import {
@@ -12,7 +13,6 @@ import {
   mergeArrowOffset,
   usePositioningMouseTarget,
 } from '@fluentui/react-positioning';
-import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { arrowHeights } from '../PopoverSurface/index';
 import type { OpenPopoverEvents, PopoverProps, PopoverState } from './Popover.types';
