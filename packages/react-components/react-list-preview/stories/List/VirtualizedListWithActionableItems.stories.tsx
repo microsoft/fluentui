@@ -35,14 +35,9 @@ VirtualizedListWithActionableItems.parameters = {
   docs: {
     description: {
       story: [
-        'When creating a list of large size, one way of making sure you are getting the best performance',
-        'is to use virtualization. In this example we are leveraging the `react-window` package.',
-        '',
-        'Please note that if the virtualized list contains non-actionable list items, scrolling should be achieved',
-        'by using the "focusable" property on the List.',
-        '',
-        'It is also important to manually set `aria-setsize` and `aria-posinset` attributes on the list items, since',
-        'the virualization will only render the visible items. Relying on the DOM state for these attributes will not work.',
+        'Virtualized list can also be used with interactive elements. Note that the list itself is not focusable',
+        'anymore, since each list item is focusable. To make sure list items are focusable, the `button` slot',
+        'is used.',
       ].join('\n'),
     },
   },
