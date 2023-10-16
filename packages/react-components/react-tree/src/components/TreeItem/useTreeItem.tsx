@@ -8,7 +8,7 @@ import {
   slot,
   elementContains,
 } from '@fluentui/react-utilities';
-import type { TreeItemProps, TreeItemState } from './TreeItem.types';
+import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
 import { useTreeContext_unstable, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
@@ -34,7 +34,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   // note, if the value is not externally provided,
   // then selection and expansion will not work properly
-  const value = useId('fuiTreeItemValue-', props.value?.toString());
+  const internalValue = useId('fuiTreeItemValue-');
+  const value: TreeItemValue = props.value ?? internalValue;
 
   const {
     onClick,

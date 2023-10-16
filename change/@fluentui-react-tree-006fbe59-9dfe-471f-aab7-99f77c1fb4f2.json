@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix(react-tree): stop coercing numbers to string on TreeItemValue",
+  "packageName": "@fluentui/react-tree",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
