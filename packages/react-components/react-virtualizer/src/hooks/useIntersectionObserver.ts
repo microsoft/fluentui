@@ -6,7 +6,6 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
 const { useCallback, useState, useRef } = React;
 import { useMutationObserver } from './useMutationObserver';
 
-const { targetDocument } = useFluent();
 /**
  * This function will take the rootMargin and flip the sides if we are in RTL based on the computed reading direction of the target element.
  * @param ltrRootMargin the margin to be processed and flipped if required
@@ -57,6 +56,7 @@ export const useIntersectionObserver = (
 } => {
   const observer = useRef<IntersectionObserver>();
   const [observerList, setObserverList] = useState<Element[]>();
+  const { targetDocument } = useFluent();
 
   // set the initial init with corrected margins based on the observed root's calculated reading direction.
   const [observerInit, setObserverInit] = useState<IntersectionObserverInit | undefined>(
@@ -90,14 +90,12 @@ export const useIntersectionObserver = (
     [ltrRootMargin, observerInit, options?.root],
   );
 
-  if (targetDocument) {
-    // Observer only dir attribute changes in the document
-    useMutationObserver(targetDocument, mutationObserverCallback, {
-      attributes: true,
-      subtree: true,
-      attributeFilter: ['dir'],
-    });
-  }
+  // Mutation observer for dir attribute changes in the document
+  useMutationObserver(targetDocument, mutationObserverCallback, {
+    attributes: true,
+    subtree: true,
+    attributeFilter: ['dir'],
+  });
 
   // Observer elements in passed in list and clean up previous list
   // This effect is only triggered when observerList is updated

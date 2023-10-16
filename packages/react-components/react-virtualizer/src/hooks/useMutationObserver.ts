@@ -4,7 +4,7 @@ import * as React from 'react';
 const { useRef, useEffect } = React;
 
 export const useMutationObserver = (
-  target: Element | Document,
+  target: Element | Document | undefined,
   callback: MutationCallback,
   options?: MutationObserverInit,
 ): {
@@ -18,8 +18,10 @@ export const useMutationObserver = (
   }, [callback]);
 
   useEffect(() => {
-    // Start observing the target node for configured mutations
-    observer.current?.observe(target, options);
+    if (target) {
+      // Start observing the target node for configured mutations
+      observer.current?.observe(target, options);
+    }
 
     return () => {
       observer.current?.disconnect();
