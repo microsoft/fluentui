@@ -90,10 +90,27 @@ export type CustomStyleHooksContextValue = Partial<{
   useDataGridHeaderCellStyles_unstable: CustomStyleHook;
   useDataGridSelectionCellStyles_unstable: CustomStyleHook;
   useDrawerStyles_unstable: CustomStyleHook;
-  useDrawerBodyStyles_unstable: CustomStyleHook;
+  useDrawerInlineStyles_unstable: CustomStyleHook;
+  useDrawerOverlayStyles_unstable: CustomStyleHook;
   useDrawerHeaderStyles_unstable: CustomStyleHook;
-  useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
   useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
+  useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
+  useDrawerBodyStyles_unstable: CustomStyleHook;
+  useDrawerFooterStyles_unstable: CustomStyleHook;
+  useInteractionTagStyles_unstable: CustomStyleHook;
+  useInteractionTagPrimaryStyles_unstable: CustomStyleHook;
+  useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
+  useTagStyles_unstable: CustomStyleHook;
+  useTagGroupStyles_unstable: CustomStyleHook;
+  useBreadcrumbStyles_unstable: CustomStyleHook;
+  useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+  useBreadcrumbItemStyles_unstable: CustomStyleHook;
+  useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+  useMessageBarStyles_unstable: CustomStyleHook;
+  useMessageBarBodyStyles_unstable: CustomStyleHook;
+  useMessageBarTitleStyles_unstable: CustomStyleHook;
+  useMessageBarActionsStyles_unstable: CustomStyleHook;
+  useMessageBarGroupStyles_unstable: CustomStyleHook;
 }>;
 
 /**

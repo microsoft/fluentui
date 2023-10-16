@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useAnimationFrame, useTimeout, usePrevious, useFirstMount } from '@fluentui/react-utilities';
 
+import { useReducedMotion } from './useReducedMotion';
 import { getMotionDuration } from '../utils/dom-style';
 import type { HTMLElementWithStyledMap } from '../utils/dom-style';
 
@@ -92,10 +93,11 @@ function useMotionPresence<Element extends HTMLElement>(
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
 
+  const isReducedMotion = useReducedMotion();
   const isFirstReactRender = useFirstMount();
   const isFirstDOMRender = useFirstMountCondition(!!currentElement);
   const isInitiallyPresent = React.useRef<boolean>(presence).current;
-  const disableAnimation = isFirstDOMRender && isInitiallyPresent && !animateOnFirstMount;
+  const disableAnimation = isReducedMotion || (isFirstDOMRender && isInitiallyPresent && !animateOnFirstMount);
 
   const ref: React.RefCallback<HTMLElementWithStyledMap<Element>> = React.useCallback(node => {
     if (!node) {
@@ -163,28 +165,23 @@ function useMotionPresence<Element extends HTMLElement>(
       cancelAnimationFrame();
       clearAnimationTimeout();
     };
-  }, [
-    cancelAnimationFrame,
-    clearAnimationTimeout,
-    currentElement,
-    disableAnimation,
-    isFirstReactRender,
-    onFinished,
-    presence,
-    setAnimationFrame,
-    setAnimationTimeout,
-  ]);
+    /*
+     * Only tracks dependencies that are either not stable or are used in the callbacks
+     * This is to avoid re-running the effect on every render, especially when the element is not rendered
+     */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentElement, disableAnimation, onFinished, presence]);
 
   return React.useMemo<MotionState<Element>>(
     () => ({
       ref,
       type,
       active,
-      canRender: type !== 'unmounted',
+      canRender: presence || type !== 'unmounted',
     }),
     // No need to add ref to the deps array as it is stable
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [active, type],
+    [active, type, presence],
   );
 }
 

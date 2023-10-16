@@ -103,7 +103,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -146,7 +146,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -168,13 +168,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -217,7 +217,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -239,7 +239,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -863,7 +863,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -906,7 +906,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -928,13 +928,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -977,7 +977,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -999,7 +999,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -1543,7 +1543,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -1586,7 +1586,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -1608,13 +1608,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -1657,7 +1657,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -1679,7 +1679,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -2135,7 +2135,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2178,7 +2178,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -2200,13 +2200,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2249,7 +2249,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -2271,7 +2271,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -2707,7 +2707,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2750,7 +2750,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={273.3152173913044}
           />
           <rect
@@ -2772,13 +2772,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={205.97826086956522}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2821,7 +2821,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={26.413043478260875}
           />
           <rect
@@ -2843,7 +2843,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={209.18478260869566}
           />
         </g>
@@ -2956,7 +2956,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2999,7 +2999,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -3021,13 +3021,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3070,7 +3070,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -3092,7 +3092,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -3548,7 +3548,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3591,7 +3591,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -3613,13 +3613,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3662,7 +3662,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -3684,7 +3684,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -4140,7 +4140,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4183,7 +4183,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -4205,13 +4205,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4254,7 +4254,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -4276,7 +4276,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -4732,7 +4732,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4775,7 +4775,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -4797,13 +4797,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4846,7 +4846,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -4868,7 +4868,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>

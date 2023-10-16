@@ -69,7 +69,7 @@ export const MotionExample = () => {
       </Button>
 
       {motion.canRender() && (
-        <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.isActive() && styles.visible)}>
+        <div ref={motion.ref} className={mergeClasses(styles.rectangle, motion.active && styles.visible)}>
           Lorem ipsum
         </div>
       )}

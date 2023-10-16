@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Tag } from '@fluentui/react-tags-preview';
+import { Tag } from '@fluentui/react-tags';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, withStoryWrightSteps, RTL } from '../../utilities';
 import { Avatar } from '@fluentui/react-avatar';

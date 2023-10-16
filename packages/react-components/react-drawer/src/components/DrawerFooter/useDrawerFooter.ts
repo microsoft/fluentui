@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+
 import type { DrawerFooterProps, DrawerFooterState } from './DrawerFooter.types';
 
 /**
@@ -18,7 +19,7 @@ export const useDrawerFooter_unstable = (props: DrawerFooterProps, ref: React.Re
     },
 
     root: slot.always(
-      getNativeElementProps('footer', {
+      getIntrinsicElementProps('footer', {
         ref,
         ...props,
       }),

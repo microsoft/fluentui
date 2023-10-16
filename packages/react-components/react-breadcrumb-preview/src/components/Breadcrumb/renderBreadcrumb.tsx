@@ -1,7 +1,5 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
 import { assertSlots } from '@fluentui/react-utilities';
 import { BreadcrumbProvider } from './BreadcrumbContext';
@@ -13,7 +11,7 @@ export const renderBreadcrumb_unstable = (state: BreadcrumbState, contextValues:
   assertSlots<BreadcrumbSlots>(state);
   return (
     <state.root>
-      <BreadcrumbProvider value={contextValues.breadcrumb}>
+      <BreadcrumbProvider value={contextValues}>
         {state.list && <state.list>{state.root.children}</state.list>}
       </BreadcrumbProvider>
     </state.root>

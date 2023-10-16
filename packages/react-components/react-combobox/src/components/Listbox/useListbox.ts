@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   mergeCallbacks,
   useEventCallback,
   useMergedRefs,
@@ -94,8 +94,11 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
       root: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
-        ref,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
         role: multiselect ? 'menu' : 'listbox',
         'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
         'aria-multiselectable': multiselect,
