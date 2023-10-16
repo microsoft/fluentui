@@ -1,4 +1,4 @@
-import { InfoLabel } from '@fluentui/react-infobutton';
+import { InfoLabel } from '@fluentui/react-infolabel-preview';
 
 import descriptionMd from './InfoLabelDescription.md';
 import bestPracticesMd from './InfoLabelBestPractices.md';
