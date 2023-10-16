@@ -2,6 +2,8 @@ import 'cypress-storybook/react';
 import './docs-root.css';
 import { withLinks } from '@storybook/addon-links';
 
+/** @typedef {import('../packages/react-components/react-storybook-addon-codesandbox/src/public-types').ParametersExtension & import('@storybook/addons').Parameters} Parameters */
+
 // This patches globals set up by cypress-storybook to work around its usage of the deprecated
 // forceReRender API that no longer works with storyStoreV7
 // https://github.com/NicholasBoll/cypress-storybook/issues/46
@@ -24,7 +26,7 @@ window.__setCurrentStory = function (categorization, story) {
 /** @type {NonNullable<import('@storybook/react').Story['decorators']>} */
 export const decorators = [withLinks];
 
-/** @type {import('@storybook/addons').Parameters} */
+/** @type {Parameters} */
 export const parameters = {
   viewMode: 'docs',
   controls: {

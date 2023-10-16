@@ -1,7 +1,9 @@
 import * as dedent from 'dedent';
 
 import { getDependencies } from './getDepdencies';
-import { ParametersConfig, StoryContext } from './types';
+import { StoryContext, ParametersExtension } from './types';
+
+type ParametersConfig = NonNullable<ParametersExtension['exportToSandbox']>;
 
 export function addHiddenInput(form: HTMLFormElement, name: string, value: string) {
   const input = document.createElement('input');
