@@ -19,16 +19,15 @@ export const TimePicker: ForwardRefComponent<TimePickerProps>;
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
 
 // @public
-export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedOptions' | 'multiselect' | 'onOptionSelect' | 'selectedOptions'> & {
-    hour12?: boolean;
+export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedOptions' | 'multiselect' | 'onOptionSelect' | 'selectedOptions'> & TimeFormatOptions & {
     startHour?: Hour;
     endHour?: Hour;
     increment?: number;
     dateAnchor?: Date;
-    showSeconds?: boolean;
     selectedTime?: Date;
     defaultSelectedTime?: Date;
     onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    formatDateToTimeString?: (date: Date) => string;
 };
 
 // @public (undocumented)
@@ -40,6 +39,7 @@ export type TimePickerState = ComboboxState;
 // @public (undocumented)
 export type TimeSelectionData = {
     selectedTime: Date | undefined;
+    selectedTimeText: string | undefined;
 };
 
 // @public (undocumented)
