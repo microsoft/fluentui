@@ -121,6 +121,8 @@ export const Default = (props: Partial<SwatchPickerProps>) => {
   const styles = customStyles();
   return (
     <>
+      Text
+      <input type="color" value="#f09" />
       <h2>row</h2>
       <SwatchPicker layout="row" value={color} onChange={(_, data) => setColor(data.value)} aria-labelledby="colors">
         {colors.map(item => (
