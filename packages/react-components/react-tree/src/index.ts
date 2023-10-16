@@ -64,6 +64,7 @@ export type {
   TreeItemProps,
   TreeItemState,
   TreeItemSlots,
+  TreeItemType,
   TreeItemValue,
   TreeItemOpenChangeData,
   TreeItemOpenChangeEvent,
