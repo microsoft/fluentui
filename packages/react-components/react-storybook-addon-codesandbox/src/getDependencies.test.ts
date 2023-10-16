@@ -1,4 +1,4 @@
-import { getDependencies } from './getDepdencies';
+import { getDependencies } from './getDependencies';
 
 describe('getDependencies', () => {
   it('should find all dependencies in a file', () => {

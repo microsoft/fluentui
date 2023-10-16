@@ -1,7 +1,8 @@
 import { getParameters } from 'codesandbox-import-utils/lib/api/define';
 
 import { scaffold } from './sandbox-scaffold';
-import { addHiddenInput, type Data } from './sandbox-utils';
+import { addHiddenInput, prepareData, prepareSandboxContainer, type Data } from './sandbox-utils';
+import { StoryContext } from './types';
 
 const defaultFileToPreview = encodeURIComponent('src/example.tsx');
 
@@ -20,7 +21,17 @@ const actionConfig = {
   },
 };
 
-export function addActionButton(container: HTMLElement, config: Data, classList: string[]) {
+export function addDemoActionButton(context: StoryContext) {
+  const { container, cssClasses } = prepareSandboxContainer(context);
+  const config = prepareData(context);
+  if (!config) {
+    throw new Error('issues with data');
+  }
+
+  addActionButton(container, config, cssClasses);
+}
+
+function addActionButton(container: HTMLElement, config: Data, classList: string[]) {
   const files = scaffold[config.bundler](config);
   const action = actionConfig[config.provider];
 

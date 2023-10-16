@@ -1,6 +1,6 @@
 import * as dedent from 'dedent';
 
-import { getDependencies } from './getDepdencies';
+import { getDependencies } from './getDependencies';
 import { StoryContext, ParametersExtension } from './types';
 
 type ParametersConfig = NonNullable<ParametersExtension['exportToSandbox']>;
