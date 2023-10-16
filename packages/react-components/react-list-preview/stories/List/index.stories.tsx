@@ -6,10 +6,10 @@ import bestPracticesMd from './ListBestPractices.md';
 export { Default } from './ListDefault.stories';
 export { ListHorizontal } from './ListHorizontal.stories';
 export { ListGrid } from './ListGrid.stories';
-export { ListArrowNavigation } from './ListArrowNavigation.stories';
 export { ListWithAction } from './ListWithAction.stories';
-export { ListWithMultipleActions } from './ListWithMultipleActions.stories';
+// export { ListWithMultipleActions } from './ListWithMultipleActions.stories';
 export { VirtualizedList } from './VirtualizedList.stories';
+export { VirtualizedListWithActionableItems } from './VirtualizedListWithActionableItems.stories';
 
 export default {
   title: 'Preview Components/List',

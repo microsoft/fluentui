@@ -11,14 +11,14 @@ const useStyles = makeStyles({
 export const ListGrid = (props: Partial<ListProps>) => {
   const classes = useStyles();
   return (
-    <List layout={ListLayout.Grid} focusableItems className={classes.root}>
-      <ListItem>Asia</ListItem>
-      <ListItem>Africa</ListItem>
-      <ListItem>Europe</ListItem>
-      <ListItem>North America</ListItem>
-      <ListItem>South America</ListItem>
-      <ListItem>Australia/Oceania</ListItem>
-      <ListItem>Antarctica</ListItem>
+    <List layout={ListLayout.Grid} className={classes.root}>
+      <ListItem button={{ onClick: () => alert('Asia') }}>Asia</ListItem>
+      <ListItem button={{ onClick: () => alert('Africa') }}>Africa</ListItem>
+      <ListItem button={{ onClick: () => alert('Europe') }}>Europe</ListItem>
+      <ListItem button={{ onClick: () => alert('North America') }}>North America</ListItem>
+      <ListItem button={{ onClick: () => alert('South America') }}>South America</ListItem>
+      <ListItem button={{ onClick: () => alert('Australia/Oceania') }}>Australia/Oceania</ListItem>
+      <ListItem button={{ onClick: () => alert('Antarctica') }}>Antarctica</ListItem>
     </List>
   );
 };

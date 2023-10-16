@@ -4,11 +4,9 @@ import { List, ListItem } from '@fluentui/react-list-preview';
 
 import countries from './countries';
 
-const CountriesList = (props: React.ComponentProps<typeof List>) => (
-  <List aria-label="Countries" focusable {...props} />
-);
+const CountriesList = (props: React.ComponentProps<typeof List>) => <List aria-label="Countries" {...props} />;
 
-export const VirtualizedList = () => {
+export const VirtualizedListWithActionableItems = () => {
   return (
     <FixedSizeList
       height={400}
@@ -19,7 +17,13 @@ export const VirtualizedList = () => {
       outerElementType={CountriesList}
     >
       {({ index, style, data }) => (
-        <ListItem style={style} key={index} aria-setsize={countries.length} aria-posinset={index + 1}>
+        <ListItem
+          style={style}
+          key={index}
+          aria-setsize={countries.length}
+          aria-posinset={index + 1}
+          button={{ onClick: () => alert(data[index]) }}
+        >
           {data[index]}
         </ListItem>
       )}
@@ -27,7 +31,7 @@ export const VirtualizedList = () => {
   );
 };
 
-VirtualizedList.parameters = {
+VirtualizedListWithActionableItems.parameters = {
   docs: {
     description: {
       story: [
