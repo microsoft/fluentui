@@ -7,7 +7,7 @@ It can be used as a drop-in replacement for Label when an InfoButton is also nee
 >
 > ```jsx
 >
-> import { InfoLabel } from '@fluentui/react-components/unstable';
+> import { InfoLabel } from '@fluentui/react-infolabel-preview';
 >
 > ```
 >
