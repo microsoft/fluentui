@@ -1,5 +1,6 @@
 import 'cypress-storybook/react';
 import './docs-root.css';
+import '../packages/react-components/react-storybook-addon-codesandbox/src/styles.css';
 import { withLinks } from '@storybook/addon-links';
 
 /** @typedef {import('../packages/react-components/react-storybook-addon-codesandbox/src/public-types').ParametersExtension & import('@storybook/addons').Parameters} Parameters */
