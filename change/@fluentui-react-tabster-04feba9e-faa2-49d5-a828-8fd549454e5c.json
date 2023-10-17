@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Tabster should support virtual parents",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
