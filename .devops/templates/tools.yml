@@ -2,10 +2,11 @@
 steps:
   - task: UseNode@1
     inputs:
-      version: '16.18.1'
+      # https://github.com/actions/runner-images/blob/ubuntu20/20230924.1/images/linux/Ubuntu2004-Readme.md#nodejs
+      version: '16.20.2'
       checkLatest: false
     displayName: 'Install Node.js'
-    retryCountOnTaskFailure: 3
+    retryCountOnTaskFailure: 1
 
   - script: |
       npm i -g yarn@1
