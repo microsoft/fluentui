@@ -23934,10 +23934,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.7.0.tgz#0c12e9e14e83a950e3a97e35ead17c255e8f2772"
-  integrity sha512-8+arpE2WOvhdU2bvU5GEaoaICbLBNNh8WhW9q85KeSOg4sIvRPfAI2/j18UxUnKT8Fv32zkbvEfToEf9Y1Sfug==
+tabster@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.8.0.tgz#e1f9b5c7c8e4b642d6a91e243de0dfc09d8cacc5"
+  integrity sha512-R1ib3x0Rd+iepvrzXdEkd2Qa2O5dV7jaZtR4BhkhE9sBYMolbVc6EgHGTHBQvdXQBdU8I2MXCMn0c6jarJb+GA==
   dependencies:
     keyborg "^2.0.0"
     tslib "^2.3.1"
