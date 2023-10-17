@@ -32,9 +32,9 @@ const popoverSizeMap = {
  * before being passed to renderInfoButton_unstable.
  *
  * @param props - props from this instance of InfoButton
- * @param ref - reference to root HTMLElement of InfoButton
+ * @param ref - reference to root HTMLButtonElement of InfoButton
  */
-export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
+export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLButtonElement>): InfoButtonState => {
   const { size = 'medium', inline = true } = props;
 
   const state: InfoButtonState = {
@@ -53,10 +53,7 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
         type: 'button',
         'aria-label': 'information',
         ...props,
-        // FIXME:
-        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLButtonElement`
-        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
-        ref: ref as React.Ref<HTMLButtonElement>,
+        ref,
       }),
       { elementType: 'button' },
     ),
