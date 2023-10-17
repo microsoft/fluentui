@@ -21,6 +21,9 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -29,7 +32,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -214,7 +217,7 @@ exports[`LineChart - mouse events Should render callout correctly on mouseover 1
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -553,6 +556,9 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -561,7 +567,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -746,7 +752,7 @@ exports[`LineChart - mouse events Should render customized callout on mouseover 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -983,6 +989,9 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -991,7 +1000,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1176,7 +1185,7 @@ exports[`LineChart - mouse events Should render customized callout per stack on 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1413,6 +1422,9 @@ exports[`LineChart snapShot testing Should render with default colors when line 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1421,7 +1433,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1612,7 +1624,7 @@ exports[`LineChart snapShot testing Should render with default colors when line 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1751,6 +1763,9 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1759,7 +1774,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1950,7 +1965,7 @@ exports[`LineChart snapShot testing renders LineChart correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2089,6 +2104,9 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2097,7 +2115,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2271,7 +2289,7 @@ exports[`LineChart snapShot testing renders enabledLegendsWrapLines correctly 1`
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone11"
+        data-focuszone-id="FocusZone12"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2407,6 +2425,9 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2415,7 +2436,7 @@ exports[`LineChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2584,6 +2605,9 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2592,7 +2616,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2783,7 +2807,7 @@ exports[`LineChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2922,6 +2946,9 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2930,7 +2957,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3121,7 +3148,7 @@ exports[`LineChart snapShot testing renders showXAxisLablesTooltip correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3260,6 +3287,9 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3268,7 +3298,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3459,7 +3489,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3598,6 +3628,9 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_10"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3606,7 +3639,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone11"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3797,7 +3830,7 @@ exports[`LineChart snapShot testing renders yAxisTickFormat correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone11"
+              data-focuszone-id="FocusZone12"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
