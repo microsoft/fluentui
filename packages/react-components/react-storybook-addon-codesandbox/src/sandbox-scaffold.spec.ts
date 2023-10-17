@@ -10,7 +10,6 @@ describe(`sabdbox-scaffold`, () => {
 
           export const Default = () => <Text>This is an example of the Text component's usage.</Text>;
         `,
-    // context,
     description: 'react sandbox demo',
     title: 'react sandbox',
   };
