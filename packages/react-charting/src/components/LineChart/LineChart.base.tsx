@@ -792,42 +792,87 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               xAxisCalloutAccessibilityData: lastCirlceXCalloutAccessibilityData,
             } = this._points[i].data[j];
             pointsForLine.push(
-              <path
-                id={lastCircleId}
-                key={lastCircleId}
-                d={path}
-                data-is-focusable={true}
-                onMouseOver={this._handleHover.bind(
-                  this,
-                  x2,
-                  y2,
-                  verticaLineHeight,
-                  lastCirlceXCallout,
-                  lastCircleId,
-                  lastCirlceXCalloutAccessibilityData,
-                )}
-                onMouseMove={this._handleHover.bind(
-                  this,
-                  x2,
-                  y2,
-                  verticaLineHeight,
-                  lastCirlceXCallout,
-                  lastCircleId,
-                  lastCirlceXCalloutAccessibilityData,
-                )}
-                onMouseOut={this._handleMouseOut}
-                onFocus={() =>
-                  this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
-                }
-                onBlur={this._handleMouseOut}
-                {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
-                opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
-                fill={this._getPointFill(lineColor, lastCircleId, j, true)}
-                stroke={lineColor}
-                strokeWidth={strokeWidth}
-                role="img"
-                aria-label={this._getAriaLabel(i, j)}
-              />,
+              <>
+                <path
+                  id={lastCircleId}
+                  key={lastCircleId}
+                  d={path}
+                  data-is-focusable={true}
+                  onMouseOver={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseMove={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseOut={this._handleMouseOut}
+                  onFocus={() =>
+                    this._handleFocus(lineId, x2, lastCirlceXCallout, lastCircleId, lastCirlceXCalloutAccessibilityData)
+                  }
+                  onBlur={this._handleMouseOut}
+                  {...this._getClickHandler(this._points[i].data[j].onDataPointClick)}
+                  opacity={isLegendSelected && !lastPointHidden ? 1 : 0.01}
+                  fill={this._getPointFill(lineColor, lastCircleId, j, true)}
+                  stroke={lineColor}
+                  strokeWidth={strokeWidth}
+                  role="img"
+                  aria-label={this._getAriaLabel(i, j)}
+                />
+                <circle
+                  id={circleId}
+                  key={circleId}
+                  r={20}
+                  cx={this._xAxisScale(x2)}
+                  cy={this._yAxisScale(y2)}
+                  opacity={0}
+                  width={0}
+                  onMouseOver={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseMove={this._handleHover.bind(
+                    this,
+                    x2,
+                    y2,
+                    verticaLineHeight,
+                    lastCirlceXCallout,
+                    lastCircleId,
+                    lastCirlceXCalloutAccessibilityData,
+                  )}
+                  onMouseOut={this._handleMouseOut}
+                  strokeWidth={0}
+                  // stroke={activePoint === circleId ? lineColor : ''}
+                  role="img"
+                  aria-label={this._getAriaLabel(i, 0)}
+                  data-is-focusable={true}
+                  ref={(e: SVGCircleElement | null) => {
+                    this._refCallback(e!, circleId);
+                  }}
+                  // onFocus={() =>
+                  //   this._handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
+                  // }
+                  focusable={false}
+                  onBlur={this._handleMouseOut}
+                  {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
+                />
+                ,
+              </>,
             );
             /* eslint-enable react/jsx-no-bind */
           }
