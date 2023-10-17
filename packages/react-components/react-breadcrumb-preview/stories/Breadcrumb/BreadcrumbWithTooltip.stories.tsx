@@ -150,7 +150,7 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
         >
           <Button
             id="menu"
-            appearance="transparent"
+            appearance="subtle"
             ref={ref}
             icon={<MoreHorizontal />}
             aria-label={`${overflowCount} more tabs`}

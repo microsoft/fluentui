@@ -174,7 +174,7 @@ const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<ButtonItem>) => 
       <Menu hasIcons>
         <MenuTrigger disableButtonEnhancement>
           <Button
-            appearance="transparent"
+            appearance="subtle"
             className={styles.menuButton}
             ref={ref}
             icon={<MoreHorizontal />}

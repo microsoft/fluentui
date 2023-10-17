@@ -33,11 +33,12 @@ export const useBreadcrumbButton_unstable = (
   return {
     ...useButton_unstable(
       {
+        appearance: 'subtle',
         ...rest,
-        appearance: 'transparent',
         iconPosition: 'before',
         icon,
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
+        'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,
       },
       ref,
     ),
