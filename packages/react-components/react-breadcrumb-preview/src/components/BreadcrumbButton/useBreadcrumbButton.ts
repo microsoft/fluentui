@@ -18,7 +18,7 @@ export const useBreadcrumbButton_unstable = (
   props: BreadcrumbButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
-  const { appearance, size, registerItem, removeItem } = useBreadcrumbContext_unstable();
+  const { size, registerItem, removeItem } = useBreadcrumbContext_unstable();
   const { current = false, icon, ...rest } = props;
   const id = useId('breadcrumb-button-', props.id);
 
@@ -34,7 +34,7 @@ export const useBreadcrumbButton_unstable = (
     ...useButton_unstable(
       {
         ...rest,
-        appearance: props.appearance || appearance,
+        appearance: 'transparent',
         iconPosition: 'before',
         icon,
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,

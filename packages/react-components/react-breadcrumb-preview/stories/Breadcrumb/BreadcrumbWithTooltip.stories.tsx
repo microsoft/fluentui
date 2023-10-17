@@ -87,10 +87,6 @@ const itemsWithLongNames: Item[] = [
     key: 4,
     item: 'Item 5 which is longer than 30 characters',
   },
-  {
-    key: 5,
-    item: "Don't think about what you want to be, but what you want to do.",
-  },
 ];
 
 const useTooltipStyles = makeStyles({
@@ -106,8 +102,8 @@ function renderItem(entry: Item, isLastItem: boolean) {
     <React.Fragment key={`item-${entry.key}`}>
       {isTruncatableBreadcrumbContent(entry.item, 30) ? (
         <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
-          <BreadcrumbItem current={isLastItem}>
-            <BreadcrumbButton>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbButton>
+          <BreadcrumbItem>
+            <BreadcrumbButton current={isLastItem}>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbButton>
           </BreadcrumbItem>
         </Tooltip>
       ) : (
