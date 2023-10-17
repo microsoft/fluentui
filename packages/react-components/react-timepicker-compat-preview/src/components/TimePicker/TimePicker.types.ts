@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
 
 export type Hour =
@@ -47,12 +48,23 @@ export type TimePickerOption = {
   text: string;
 };
 
+/**
+ * Error types returned by the `onValidationResult` callback.
+ */
+export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds';
+
+export type TimeStringValidationResult = {
+  date?: Date;
+  error?: TimePickerErrorType;
+};
+
 export type TimePickerSlots = ComboboxSlots;
 
-export type TimeSelectionEvents = SelectionEvents;
+export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
 export type TimeSelectionData = {
   selectedTime: Date | undefined;
   selectedTimeText: string | undefined;
+  error: TimePickerErrorType | undefined;
 };
 
 export type TimeFormatOptions = {
@@ -120,9 +132,25 @@ export type TimePickerProps = Omit<
      * Custom the date strings displayed (in dropdown options and input).
      */
     formatDateToTimeString?: (date: Date) => string;
+
+    /**
+     * Custom validation for the input time string from user in freeform TimePicker.
+     */
+    validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
   };
 
 /**
  * State used in rendering TimePicker
  */
-export type TimePickerState = ComboboxState;
+export type TimePickerState = ComboboxState &
+  Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
+    /**
+     * localize the date strings displayed
+     */
+    dateToText: (date: Date) => string;
+
+    /**
+     * Ref that stores the selected time text
+     */
+    selectedTimeTextRef: React.MutableRefObject<string | undefined>;
+  };
