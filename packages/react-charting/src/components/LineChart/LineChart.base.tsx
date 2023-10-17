@@ -829,6 +829,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   role="img"
                   aria-label={this._getAriaLabel(i, j)}
                 />
+                {/* Dummy circle acting as magnetic latch for last callout point */}
                 <circle
                   id={lastCircleId}
                   key={lastCircleId}
