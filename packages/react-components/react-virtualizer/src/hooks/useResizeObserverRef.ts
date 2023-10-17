@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { debounce } from '../utilities/debounce';
-import { canUseDOM } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { createResizeObserverFromDocument } from '@fluentui/react-utilities';
+import { debounce } from '../utilities/debounce';
 import { ResizeCallbackWithRef } from './hooks.types';
 
 /**
@@ -16,23 +16,15 @@ export const useResizeObserverRef_unstable = (resizeCallback: ResizeCallbackWith
   });
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver, setResizeObserver] = React.useState(() => {
-    if (!targetDocument?.defaultView?.ResizeObserver) {
-      return undefined;
-    }
-    return new targetDocument.defaultView.ResizeObserver(handleResize);
-  });
+  const [resizeObserver, setResizeObserver] = React.useState(() =>
+    createResizeObserverFromDocument(targetDocument, handleResize),
+  );
 
   React.useEffect(() => {
     // Update our state when resizeCallback changes
     container.current = null;
     resizeObserver?.disconnect();
-    setResizeObserver(() => {
-      if (!targetDocument?.defaultView?.ResizeObserver) {
-        return undefined;
-      }
-      return new targetDocument.defaultView.ResizeObserver(handleResize);
-    });
+    setResizeObserver(() => createResizeObserverFromDocument(targetDocument, handleResize));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [resizeCallback, targetDocument]);
 

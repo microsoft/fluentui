@@ -37,6 +37,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 // @internal (undocumented)
 export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
 
+// @public
+export function createResizeObserverFromDocument(targetDocument: Document | null | undefined, callback: ResizeObserverCallback): ResizeObserver | null;
+
 // @internal
 export function elementContains(parent: Node | null, child: Node | null): boolean;
 

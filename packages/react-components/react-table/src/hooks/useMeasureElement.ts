@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
+import { createResizeObserverFromDocument } from '@fluentui/react-utilities';
 
 /**
  * Provides a way of reporting element width.
@@ -20,13 +21,7 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
   }, []);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = React.useState(() => {
-    if (!targetDocument?.defaultView?.ResizeObserver) {
-      return null;
-    }
-
-    return new targetDocument.defaultView.ResizeObserver(handleResize);
-  });
+  const [resizeObserver] = React.useState(() => createResizeObserverFromDocument(targetDocument, handleResize));
   const measureElementRef = React.useCallback(
     (el: TElement | null) => {
       if (!targetDocument || !resizeObserver) {
