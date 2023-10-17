@@ -520,6 +520,12 @@ export const AppDefinition: IAppDefinition = {
       name: 'Charting',
       links: [
         {
+          component: require<any>('./components/pages/Charting/IntroductionPage').IntroductionPage,
+          key: 'Introduction',
+          name: 'Introduction',
+          url: '#/examples/Introduction',
+        },
+        {
           component: require<any>('./components/pages/Charting/LegendsPage').LegendsPage,
           key: 'Legends',
           name: 'Legends',

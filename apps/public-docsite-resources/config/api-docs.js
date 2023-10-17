@@ -108,6 +108,7 @@ module.exports = {
       'MultiStackedBarChart',
       'TreeChart',
       'VerticalStackedBarChart',
+      'Introduction',
     ],
   },
 };
