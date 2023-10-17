@@ -17,13 +17,13 @@ export const Size = () => {
 
   return (
     <div className={styles.container}>
-      <InfoLabel size="small" info="Example small InfoButton">
+      <InfoLabel size="small" info="Example small InfoLabel">
         Small label
       </InfoLabel>
-      <InfoLabel size="medium" info="Example medium InfoButton">
+      <InfoLabel size="medium" info="Example medium InfoLabel">
         Medium label
       </InfoLabel>
-      <InfoLabel size="large" info="Example large InfoButton">
+      <InfoLabel size="large" info="Example large InfoLabel">
         Large label
       </InfoLabel>
     </div>
