@@ -1,0 +1,7 @@
+{
+  "type": "major",
+  "comment": "feat: breadcrumb - removed appearance prop",
+  "packageName": "@fluentui/react-breadcrumb-preview",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
