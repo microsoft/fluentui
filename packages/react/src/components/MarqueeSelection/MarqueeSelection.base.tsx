@@ -78,7 +78,7 @@ export class MarqueeSelectionBase extends React.Component<IMarqueeSelectionProps
     const win = getWindowEx(this.context);
     const doc = getDocumentEx(this.context);
     this._scrollableParent = findScrollableParent(this._root.current) as HTMLElement;
-    this._scrollableSurface = this._scrollableParent === (win as any) ? doc.body : this._scrollableParent;
+    this._scrollableSurface = this._scrollableParent === (win as any) ? doc?.body : this._scrollableParent;
     // When scroll events come from window, we need to read scrollTop values from the body.
 
     const hitTarget = this.props.isDraggingConstrainedToRoot ? this._root.current : this._scrollableSurface;

@@ -113,7 +113,7 @@ export class DocumentCardBase extends React.Component<IDocumentCardProps, any> i
   private _onAction = (ev: React.SyntheticEvent<HTMLElement>): void => {
     const { onClick, onClickHref, onClickTarget } = this.props;
 
-    const win = getWindowEx(this.context);
+    const win = getWindowEx(this.context)!; // can only be called on the client
 
     if (onClick) {
       onClick(ev);

@@ -186,7 +186,7 @@ export class ColorRectangleBase
   }
 
   private _onMouseDown = (ev: React.MouseEvent): void => {
-    const win = getWindowEx(this.context);
+    const win = getWindowEx(this.context)!; // Can only be called on the client
     this._disposables.push(
       on(win, 'mousemove', this._onMouseMove as (ev: MouseEvent) => void, true),
       on(win, 'mouseup', this._disposeListeners, true),

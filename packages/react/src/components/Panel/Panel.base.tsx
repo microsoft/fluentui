@@ -117,7 +117,7 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
     this._events.on(win, 'resize', this._updateFooterPosition);
 
     if (this._shouldListenForOuterClick(this.props)) {
-      this._events.on(doc.body, 'mousedown', this._dismissOnOuterClick, true);
+      this._events.on(doc?.body, 'mousedown', this._dismissOnOuterClick, true);
     }
 
     if (this.props.isOpen) {
@@ -140,9 +140,9 @@ export class PanelBase extends React.Component<IPanelProps, IPanelState> impleme
 
     const doc = getDocumentEx(this.context);
     if (shouldListenOnOuterClick && !previousShouldListenOnOuterClick) {
-      this._events.on(doc.body, 'mousedown', this._dismissOnOuterClick, true);
+      this._events.on(doc?.body, 'mousedown', this._dismissOnOuterClick, true);
     } else if (!shouldListenOnOuterClick && previousShouldListenOnOuterClick) {
-      this._events.off(doc.body, 'mousedown', this._dismissOnOuterClick, true);
+      this._events.off(doc?.body, 'mousedown', this._dismissOnOuterClick, true);
     }
   }
 

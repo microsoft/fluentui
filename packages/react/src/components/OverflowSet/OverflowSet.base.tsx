@@ -28,7 +28,7 @@ const useComponentRef = (props: IOverflowSetProps, divContainer: React.RefObject
         }
         if (divContainer.current && elementContains(divContainer.current, childElement)) {
           childElement.focus();
-          focusSucceeded = doc.activeElement === childElement;
+          focusSucceeded = doc?.activeElement === childElement;
         }
         return focusSucceeded;
       },

@@ -954,7 +954,7 @@ export class DetailsListBase extends React.Component<IDetailsListProps, IDetails
       this.props.items !== prevProps.items &&
       this.props.items.length > 0 &&
       this.state.focusedItemIndex !== -1 &&
-      !elementContains(this._root.current, doc.activeElement as HTMLElement, false)
+      !elementContains(this._root.current, doc?.activeElement as HTMLElement, false)
     ) {
       // Item set has changed and previously-focused item is gone.
       // Set focus to item at index of previously-focused item if it is in range,

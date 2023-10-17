@@ -93,7 +93,7 @@ function usePositionState(
         // or don't check anything else if the target is a Point or Rectangle
         if (
           (!(target as Element).getBoundingClientRect && !(target as MouseEvent).preventDefault) ||
-          doc.body.contains(target as Node)
+          doc?.body.contains(target as Node)
         ) {
           currentProps!.gapSpace = offsetFromTarget;
           const newPositions: IPositionedData = positionElement(

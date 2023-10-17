@@ -509,7 +509,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
       } else {
         this.setState({
           suggestionsVisible:
-            this.input.current! && this.input.current!.inputElement === getDocumentEx(this.context).activeElement,
+            this.input.current! && this.input.current!.inputElement === getDocumentEx(this.context)?.activeElement,
         });
       }
 
@@ -603,7 +603,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
         // even when it's not. Using document.activeElement is another way
         // for us to be able to get what the relatedTarget without relying
         // on the event
-        relatedTarget = getDocumentEx(this.context).activeElement;
+        relatedTarget = getDocumentEx(this.context)!.activeElement;
       }
       if (relatedTarget && !elementContains(this.root.current!, relatedTarget as HTMLElement)) {
         this.setState({ isFocused: false });
@@ -1036,7 +1036,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>>
     const areSuggestionsVisible =
       this.input.current !== undefined &&
       this.input.current !== null &&
-      this.input.current.inputElement === getDocumentEx(this.context).activeElement &&
+      this.input.current.inputElement === getDocumentEx(this.context)?.activeElement &&
       this.input.current.value !== '';
 
     return areSuggestionsVisible;

@@ -97,7 +97,7 @@ export class ScrollablePaneBase
     });
     this.notifySubscribers();
 
-    if ('MutationObserver' in win) {
+    if (win && 'MutationObserver' in win) {
       this._mutationObserver = new MutationObserver(mutation => {
         // Function to check if mutation is occuring in stickyAbove or stickyBelow
         function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {

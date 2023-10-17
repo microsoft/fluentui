@@ -184,7 +184,7 @@ export const SwatchColorPickerBase: React.FunctionComponent<ISwatchColorPickerPr
       }
 
       // Get the elements that math the given selector
-      const elements = doc.querySelectorAll(parentSelector);
+      const elements = doc?.querySelectorAll(parentSelector) ?? [];
 
       // iterate over the elements return to make sure it is a parent of the target and focus it
       for (let index = 0; index < elements.length; index += 1) {

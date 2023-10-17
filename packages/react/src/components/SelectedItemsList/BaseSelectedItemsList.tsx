@@ -217,7 +217,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>>
     if (this.props.onCopyItems) {
       const copyText = (this.props.onCopyItems as any)(items);
 
-      const doc = getDocumentEx(this.context);
+      const doc = getDocumentEx(this.context)!; // equivalent to previous behavior of directly using `document`
 
       const copyInput = doc.createElement('input') as HTMLInputElement;
       doc.body.appendChild(copyInput);

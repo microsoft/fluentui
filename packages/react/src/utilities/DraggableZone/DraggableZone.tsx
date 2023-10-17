@@ -159,8 +159,8 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
     // smooth dragging
     const doc = getDocumentEx(this.context);
     this._events = [
-      on(doc.body, this._currentEventType.move, this._onDrag, true /* use capture phase */),
-      on(doc.body, this._currentEventType.stop, this._onDragStop, true /* use capture phase */),
+      on(doc!.body, this._currentEventType.move, this._onDrag, true /* use capture phase */),
+      on(doc!.body, this._currentEventType.stop, this._onDragStop, true /* use capture phase */),
     ];
   };
 
@@ -264,7 +264,7 @@ export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggab
    * Returns if an element (or any of the element's parents) match the given selector
    */
   private _matchesSelector(element: HTMLElement | null, selector: string): boolean {
-    if (!element || element === getDocumentEx(this.context).body) {
+    if (!element || element === getDocumentEx(this.context)?.body) {
       return false;
     }
 

@@ -383,7 +383,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
           !isOpen &&
           this._focusInputAfterClose &&
           this._autofill.current &&
-          doc.activeElement !== this._autofill.current.inputElement))
+          doc?.activeElement !== this._autofill.current.inputElement))
     ) {
       this.focus(undefined /*shouldOpenOnFocus*/, true /*useFocusAsync*/);
     }
@@ -1231,7 +1231,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       // even when it's not. Using document.activeElement is another way
       // for us to be able to get what the relatedTarget without relying
       // on the event
-      relatedTarget = doc.activeElement as Element;
+      relatedTarget = doc?.activeElement as Element;
     }
 
     if (relatedTarget) {

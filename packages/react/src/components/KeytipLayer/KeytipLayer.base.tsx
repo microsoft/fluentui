@@ -392,7 +392,7 @@ export class KeytipLayerBase extends React.Component<IKeytipLayerProps, IKeytipL
     const doc = getDocumentEx(this.context);
     const win = getWindowEx(this.context);
     const targetSelector = ktpTargetFromSequences(keySequences);
-    const matchingElements = doc.querySelectorAll(targetSelector);
+    const matchingElements = doc?.querySelectorAll(targetSelector) ?? [];
 
     // If there are multiple elements for the keytip sequence, return true if the element instance
     // that corresponds to the keytip instance is visible, otherwise return if there is only one instance

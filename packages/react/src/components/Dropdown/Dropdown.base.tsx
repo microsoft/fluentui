@@ -941,7 +941,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
    * for updating focus are not interacting during scroll
    */
   private _onScroll = (): void => {
-    const win = getWindowEx(this.context);
+    const win = getWindowEx(this.context)!; // can only be called on the client
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
       win.clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
@@ -964,7 +964,7 @@ class DropdownInternal extends React.Component<IDropdownInternalProps, IDropdown
   }
 
   private _onItemMouseMove(item: any, ev: React.MouseEvent<HTMLElement>): void {
-    const doc = getDocumentEx(this.context);
+    const doc = getDocumentEx(this.context)!; // can only be called on the client
     const targetElement = ev.currentTarget as HTMLElement;
     this._gotMouseMove = true;
 

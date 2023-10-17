@@ -305,15 +305,16 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
         newValue - internalState.latestLowerValue <= internalState.latestValue - newValue;
     }
 
+    // safe to use `win!` since it can only be called on the client
     if (event.type === 'mousedown') {
       disposables.current.push(
-        on(win, 'mousemove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
-        on(win, 'mouseup', onMouseUpOrTouchEnd, true),
+        on(win!, 'mousemove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
+        on(win!, 'mouseup', onMouseUpOrTouchEnd, true),
       );
     } else if (event.type === 'touchstart') {
       disposables.current.push(
-        on(win, 'touchmove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
-        on(win, 'touchend', onMouseUpOrTouchEnd, true),
+        on(win!, 'touchmove', onMouseMoveOrTouchMove as (ev: Event) => void, true),
+        on(win!, 'touchend', onMouseUpOrTouchEnd, true),
       );
     }
     onMouseMoveOrTouchMove(event, true);

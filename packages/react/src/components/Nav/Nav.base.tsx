@@ -364,7 +364,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       // resolve is not supported for ssr
       return false;
     } else {
-      const doc = getDocumentEx(this.context);
+      const doc = getDocumentEx(this.context)!; // there is an SSR check above so this is safe
       // If selectedKey is undefined in props and state, then check URL
       _urlResolver = _urlResolver || doc.createElement('a');
 

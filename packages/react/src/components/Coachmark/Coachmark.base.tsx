@@ -289,7 +289,7 @@ function useProximityHandlers(
           timeoutIds.push(
             setTimeout((): void => {
               setTargetElementRect();
-              setBounds(getBounds(win, props.isPositionForced, props.positioningContainerProps));
+              setBounds(getBounds(props.isPositionForced, props.positioningContainerProps, win));
             }, 100),
           );
         });
@@ -424,7 +424,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
   const [beakPositioningProps, transformOrigin] = useBeakPosition(props, targetAlignment, targetPosition);
   const [isMeasuring, entityInnerHostRect] = useEntityHostMeasurements(props, entityInnerHostElementRef);
   const [bounds, setBounds] = React.useState<IRectangle | undefined>(
-    getBounds(win, props.isPositionForced, props.positioningContainerProps),
+    getBounds(props.isPositionForced, props.positioningContainerProps, win),
   );
   const alertText = useAriaAlert(props);
   const entityHost = useAutoFocus(props);
@@ -435,7 +435,7 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
   useDeprecationWarning(props);
 
   React.useEffect(() => {
-    setBounds(getBounds(win, props.isPositionForced, props.positioningContainerProps));
+    setBounds(getBounds(props.isPositionForced, props.positioningContainerProps, win));
   }, [props.isPositionForced, props.positioningContainerProps, win]);
 
   const {
@@ -541,9 +541,9 @@ export const CoachmarkBase: React.FunctionComponent<ICoachmarkProps> = React.for
 CoachmarkBase.displayName = COMPONENT_NAME;
 
 function getBounds(
-  win: Window,
   isPositionForced?: boolean,
   positioningContainerProps?: IPositioningContainerProps,
+  win?: Window,
 ): IRectangle | undefined {
   if (isPositionForced) {
     // If directionalHint direction is the top or bottom auto edge, then we want to set the left/right bounds
@@ -557,8 +557,8 @@ function getBounds(
         left: 0,
         top: -Infinity,
         bottom: Infinity,
-        right: win.innerWidth,
-        width: win.innerWidth,
+        right: win?.innerWidth ?? 0,
+        width: win?.innerWidth ?? 0,
         height: Infinity,
       };
     } else {
