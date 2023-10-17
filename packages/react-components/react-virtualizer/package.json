@@ -33,6 +33,7 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "^9.0.17",
+    "@fluentui/react-shared-contexts": "^9.10.0",
     "@fluentui/react-utilities": "^9.15.0",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"

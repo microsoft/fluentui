@@ -1,4 +1,3 @@
-import { canUseDOM } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
@@ -21,7 +20,13 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
   }, []);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
-  const [resizeObserver] = React.useState(canUseDOM() ? new ResizeObserver(handleResize) : undefined);
+  const [resizeObserver] = React.useState(() => {
+    if (!targetDocument?.defaultView?.ResizeObserver) {
+      return null;
+    }
+
+    return new targetDocument.defaultView.ResizeObserver(handleResize);
+  });
   const measureElementRef = React.useCallback(
     (el: TElement | null) => {
       if (!targetDocument || !resizeObserver) {
