@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps",
+  "packageName": "@fluentui/react-utilities",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}

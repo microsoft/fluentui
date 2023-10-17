@@ -31,6 +31,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-label": "^9.1.45",
+    "@fluentui/react-popover": "^9.8.15",
+    "@fluentui/react-tabster": "^9.13.6",
     "@fluentui/react-jsx-runtime": "^9.0.17",
     "@fluentui/react-theme": "^9.1.14",
     "@fluentui/react-utilities": "^9.15.0",
