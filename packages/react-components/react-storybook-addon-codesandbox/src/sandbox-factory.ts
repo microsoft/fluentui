@@ -37,7 +37,7 @@ function addActionButton(container: HTMLElement, config: Data, classList: string
 
   const button = document.createElement('button');
   button.classList.add(...classList);
-  button.innerText = `Open in ${action.label}`;
+  button.textContent = `Open in ${action.label}`;
 
   container?.prepend(button);
 
