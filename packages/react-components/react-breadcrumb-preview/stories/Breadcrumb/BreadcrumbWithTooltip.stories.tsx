@@ -10,6 +10,7 @@ import {
   MenuPopover,
   MenuList,
   MenuItem,
+  Button,
 } from '@fluentui/react-components';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
 import {
@@ -147,7 +148,7 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
           }}
           relationship="label"
         >
-          <BreadcrumbButton
+          <Button
             id="menu"
             appearance="transparent"
             ref={ref}
