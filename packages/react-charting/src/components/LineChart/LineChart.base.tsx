@@ -830,9 +830,9 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   aria-label={this._getAriaLabel(i, j)}
                 />
                 <circle
-                  id={circleId}
-                  key={circleId}
-                  r={20}
+                  id={lastCircleId}
+                  key={lastCircleId}
+                  r={25}
                   cx={this._xAxisScale(x2)}
                   cy={this._yAxisScale(y2)}
                   opacity={0}
@@ -857,21 +857,14 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   )}
                   onMouseOut={this._handleMouseOut}
                   strokeWidth={0}
-                  // stroke={activePoint === circleId ? lineColor : ''}
                   role="img"
-                  aria-label={this._getAriaLabel(i, 0)}
-                  data-is-focusable={true}
                   ref={(e: SVGCircleElement | null) => {
                     this._refCallback(e!, circleId);
                   }}
-                  // onFocus={() =>
-                  //   this._handleFocus(circleId, x1, xAxisCalloutData, circleId, xAxisCalloutAccessibilityData)
-                  // }
                   focusable={false}
                   onBlur={this._handleMouseOut}
                   {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
                 />
-                ,
               </>,
             );
             /* eslint-enable react/jsx-no-bind */
