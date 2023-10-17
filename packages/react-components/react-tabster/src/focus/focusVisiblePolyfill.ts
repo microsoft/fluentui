@@ -1,5 +1,5 @@
 import { isHTMLElement } from '@fluentui/react-utilities';
-import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg } from 'keyborg';
+import { KEYBORG_FOCUSIN, KeyborgFocusInEvent, createKeyborg, disposeKeyborg, Keyborg } from 'keyborg';
 
 import { FOCUS_VISIBLE_ATTR } from './constants';
 
@@ -75,13 +75,29 @@ export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Wind
   scope.addEventListener('focusout', blurListener);
   (scope as HTMLElementWithFocusVisibleScope).focusVisible = true;
 
+  setInitialFocusVisible(keyborg, targetWindow.document, state);
+
   // Return disposer
   return () => {
+    if (state.current) {
+      removeFocusVisibleClass(state.current);
+      state.current = undefined;
+    }
     scope.removeEventListener(KEYBORG_FOCUSIN, keyborgListener as ListenerOverride);
     scope.removeEventListener('focusout', blurListener);
     delete (scope as HTMLElementWithFocusVisibleScope).focusVisible;
     disposeKeyborg(keyborg);
   };
+}
+
+function setInitialFocusVisible(keyborg: Keyborg, targetDocument: Document, state: FocusVisibleState) {
+  if (keyborg.isNavigatingWithKeyboard()) {
+    const activeElement = targetDocument.activeElement;
+    if (isHTMLElement(activeElement)) {
+      state.current = activeElement;
+      applyFocusVisibleClass(activeElement);
+    }
+  }
 }
 
 function applyFocusVisibleClass(el: HTMLElement) {
