@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Use container window's resize observer",
+  "packageName": "@fluentui/priority-overflow",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}

@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix: use targetDocument resize observer",
+  "packageName": "@fluentui/react-virtualizer",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
