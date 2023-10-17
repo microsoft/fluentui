@@ -850,16 +850,18 @@ export class VerticalStackedBarChartBase extends React.Component<
       };
       let showLabel = false;
       let barLabel = 0;
-      if (this._noLegendHighlighted()) {
-        showLabel = true;
-        barLabel = barTotalValue;
-      } else {
-        barsToDisplay.forEach(point => {
-          if (this._legendHighlighted(point.legend)) {
-            showLabel = true;
-            barLabel += point.data;
-          }
-        });
+      if (!this.props.hideLabels) {
+        if (this._noLegendHighlighted()) {
+          showLabel = true;
+          barLabel = barTotalValue;
+        } else {
+          barsToDisplay.forEach(point => {
+            if (this._legendHighlighted(point.legend)) {
+              showLabel = true;
+              barLabel += point.data;
+            }
+          });
+        }
       }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
