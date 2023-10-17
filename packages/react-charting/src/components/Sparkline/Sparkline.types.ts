@@ -7,7 +7,7 @@ export interface ISparklineStyleProps extends ICartesianChartStyleProps {}
 
 /**
  * Sparkline properties
- * {@docCategory Sparkline}
+ * {@docCategory SparklineChart}
  */
 export interface ISparklineProps {
   /**
@@ -61,7 +61,7 @@ export interface ISparklineProps {
 
 /**
  * Sparkline styles
- * {@docCategory Sparkline}
+ * {@docCategory SparklineChart}
  */
 export interface ISparklineStyles {
   inlineBlock?: IStyle;

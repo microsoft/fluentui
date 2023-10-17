@@ -216,6 +216,9 @@ export interface IHorizontalBarChartStyles {
  */
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
+/**
+ * {@docCategory HorizontalBarChart}
+ */
 export enum HorizontalBarChartVariant {
   PartToWhole = 'part-to-whole',
   AbsoluteScale = 'absolute-scale',
