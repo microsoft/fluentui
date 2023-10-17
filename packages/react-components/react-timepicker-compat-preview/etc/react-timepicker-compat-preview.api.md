@@ -4,15 +4,13 @@
 
 ```ts
 
-import type { ComponentProps } from '@fluentui/react-utilities';
-import type { ComponentState } from '@fluentui/react-utilities';
+import type { ComboboxProps } from '@fluentui/react-combobox';
+import type { ComboboxSlots } from '@fluentui/react-combobox';
+import type { ComboboxState } from '@fluentui/react-combobox';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
-import type { Slot } from '@fluentui/react-utilities';
+import type { SelectionEvents } from '@fluentui/react-combobox';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-
-// @public
-export const renderTimePicker_unstable: (state: TimePickerState) => JSX.Element;
 
 // @public
 export const TimePicker: ForwardRefComponent<TimePickerProps>;
@@ -21,18 +19,34 @@ export const TimePicker: ForwardRefComponent<TimePickerProps>;
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
 
 // @public
-export type TimePickerProps = ComponentProps<TimePickerSlots> & {};
-
-// @public (undocumented)
-export type TimePickerSlots = {
-    root: Slot<'div'>;
+export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedOptions' | 'multiselect' | 'onOptionSelect' | 'selectedOptions'> & TimeFormatOptions & {
+    startHour?: Hour;
+    endHour?: Hour;
+    increment?: number;
+    dateAnchor?: Date;
+    selectedTime?: Date;
+    defaultSelectedTime?: Date;
+    onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    formatDateToTimeString?: (date: Date) => string;
 };
 
-// @public
-export type TimePickerState = ComponentState<TimePickerSlots>;
+// @public (undocumented)
+export type TimePickerSlots = ComboboxSlots;
 
 // @public
-export const useTimePicker_unstable: (props: TimePickerProps, ref: React_2.Ref<HTMLElement>) => TimePickerState;
+export type TimePickerState = ComboboxState;
+
+// @public (undocumented)
+export type TimeSelectionData = {
+    selectedTime: Date | undefined;
+    selectedTimeText: string | undefined;
+};
+
+// @public (undocumented)
+export type TimeSelectionEvents = SelectionEvents;
+
+// @public
+export const useTimePicker_unstable: (props: TimePickerProps, ref: React_2.Ref<HTMLInputElement>) => TimePickerState;
 
 // @public
 export const useTimePickerStyles_unstable: (state: TimePickerState) => TimePickerState;

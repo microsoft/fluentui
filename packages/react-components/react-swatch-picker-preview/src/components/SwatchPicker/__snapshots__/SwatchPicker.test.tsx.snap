@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SwatchPicker renders a default state 1`] = `
+<div>
+  <div
+    class="fui-SwatchPicker fui-SwatchPicker"
+  >
+    Default SwatchPicker
+  </div>
+</div>
+`;

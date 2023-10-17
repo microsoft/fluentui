@@ -15,9 +15,7 @@ import { DrawerInline } from '../DrawerInline';
  * @param ref - reference to root HTMLElement of Drawer
  */
 export const useDrawer_unstable = (props: DrawerProps, ref: React.Ref<HTMLElement>): DrawerState => {
-  const { type = 'overlay' } = props;
-
-  const elementType = type === 'overlay' ? DrawerOverlay : DrawerInline;
+  const elementType = props.type === 'inline' ? DrawerInline : DrawerOverlay;
 
   return {
     components: {

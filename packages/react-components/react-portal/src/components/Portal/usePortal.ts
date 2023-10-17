@@ -1,7 +1,6 @@
-import { isHTMLElement } from '@fluentui/react-utilities';
+import { isHTMLElement, setVirtualParent } from '@fluentui/react-utilities';
 import * as React from 'react';
 
-import { setVirtualParent } from '../../virtualParent/index';
 import { usePortalMountNode } from './usePortalMountNode';
 import type { PortalProps, PortalState } from './Portal.types';
 

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "exporting TreeItemType from TreeItem component",
+  "packageName": "@fluentui/react-tree",
+  "email": "petrduda@microsoft.com",
+  "dependentChangeType": "patch"
+}

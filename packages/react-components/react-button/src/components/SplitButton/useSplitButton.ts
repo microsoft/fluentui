@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
 import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
@@ -26,7 +26,6 @@ export const useSplitButton_unstable = (
     shape = 'rounded',
     size = 'medium',
   } = props;
-
   const baseId = useId('splitButton-');
 
   const menuButtonShorthand = slot.optional(menuButton, {
@@ -77,7 +76,7 @@ export const useSplitButton_unstable = (
     shape,
     size, // Slots definition
     components: { root: 'div', menuButton: MenuButton, primaryActionButton: Button },
-    root: slot.always(getNativeElementProps('div', { ref, ...props }), { elementType: 'div' }),
+    root: slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' }),
     menuButton: menuButtonShorthand,
     primaryActionButton: primaryActionButtonShorthand,
   };

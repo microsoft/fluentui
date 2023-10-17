@@ -1,14 +1,14 @@
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   mergeCallbacks,
   useControllableState,
   slot,
   useMergedRefs,
   isHTMLElement,
+  elementContains,
 } from '@fluentui/react-utilities';
-import { elementContains } from '@fluentui/react-portal';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';
@@ -48,12 +48,15 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
+      getIntrinsicElementProps('button', {
         children: infoButtonIconMap[size],
         type: 'button',
         'aria-label': 'information',
         ...props,
-        ref,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLButtonElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLButtonElement>,
       }),
       { elementType: 'button' },
     ),

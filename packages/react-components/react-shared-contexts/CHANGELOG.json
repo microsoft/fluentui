@@ -2,6 +2,21 @@
   "name": "@fluentui/react-shared-contexts",
   "entries": [
     {
+      "date": "Mon, 09 Oct 2023 20:45:43 GMT",
+      "tag": "@fluentui/react-shared-contexts_v9.10.0",
+      "version": "9.10.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf",
+            "comment": "feat: Add MessageBar types to custom style hook context"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Oct 2023 08:56:04 GMT",
       "tag": "@fluentui/react-shared-contexts_v9.9.2",
       "version": "9.9.2",

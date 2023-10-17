@@ -236,6 +236,7 @@ import { DialogState } from '@fluentui/react-dialog';
 import { DialogSurface } from '@fluentui/react-dialog';
 import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
 import { DialogSurfaceContextValue } from '@fluentui/react-dialog';
+import { DialogSurfaceContextValues } from '@fluentui/react-dialog';
 import { DialogSurfaceProps } from '@fluentui/react-dialog';
 import { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import { DialogSurfaceState } from '@fluentui/react-dialog';
@@ -439,6 +440,34 @@ import { MenuTriggerProps } from '@fluentui/react-menu';
 import { MenuTriggerState } from '@fluentui/react-menu';
 import { mergeCallbacks } from '@fluentui/react-utilities';
 import { mergeClasses } from '@griffel/react';
+import { MessageBar } from '@fluentui/react-message-bar';
+import { MessageBarActions } from '@fluentui/react-message-bar';
+import { messageBarActionsClassNames } from '@fluentui/react-message-bar';
+import { MessageBarActionsProps } from '@fluentui/react-message-bar';
+import { MessageBarActionsSlots } from '@fluentui/react-message-bar';
+import { MessageBarActionsState } from '@fluentui/react-message-bar';
+import { MessageBarBody } from '@fluentui/react-message-bar';
+import { messageBarBodyClassNames } from '@fluentui/react-message-bar';
+import { MessageBarBodyProps } from '@fluentui/react-message-bar';
+import { MessageBarBodySlots } from '@fluentui/react-message-bar';
+import { MessageBarBodyState } from '@fluentui/react-message-bar';
+import { messageBarClassNames } from '@fluentui/react-message-bar';
+import { MessageBarContextProvider } from '@fluentui/react-message-bar';
+import { MessageBarContextValue } from '@fluentui/react-message-bar';
+import { MessageBarGroup } from '@fluentui/react-message-bar';
+import { messageBarGroupClassNames } from '@fluentui/react-message-bar';
+import { MessageBarGroupProps } from '@fluentui/react-message-bar';
+import { MessageBarGroupSlots } from '@fluentui/react-message-bar';
+import { MessageBarGroupState } from '@fluentui/react-message-bar';
+import { MessageBarIntent } from '@fluentui/react-message-bar';
+import { MessageBarProps } from '@fluentui/react-message-bar';
+import { MessageBarSlots } from '@fluentui/react-message-bar';
+import { MessageBarState } from '@fluentui/react-message-bar';
+import { MessageBarTitle } from '@fluentui/react-message-bar';
+import { messageBarTitleClassNames } from '@fluentui/react-message-bar';
+import { MessageBarTitleProps } from '@fluentui/react-message-bar';
+import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
+import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { OnOpenChangeData } from '@fluentui/react-popover';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
@@ -585,6 +614,11 @@ import { renderMenuList_unstable } from '@fluentui/react-menu';
 import { renderMenuPopover_unstable } from '@fluentui/react-menu';
 import { renderMenuSplitGroup_unstable } from '@fluentui/react-menu';
 import { renderMenuTrigger_unstable } from '@fluentui/react-menu';
+import { renderMessageBar_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarBody_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarGroup_unstable } from '@fluentui/react-message-bar';
+import { renderMessageBarTitle_unstable } from '@fluentui/react-message-bar';
 import { renderOption_unstable } from '@fluentui/react-combobox';
 import { renderOptionGroup_unstable } from '@fluentui/react-combobox';
 import { renderPersona_unstable } from '@fluentui/react-persona';
@@ -1021,6 +1055,7 @@ import { useDialogContentStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogContext_unstable } from '@fluentui/react-dialog';
 import { useDialogSurface_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceContext_unstable } from '@fluentui/react-dialog';
+import { useDialogSurfaceContextValues_unstable } from '@fluentui/react-dialog';
 import { useDialogSurfaceStyles_unstable } from '@fluentui/react-dialog';
 import { useDialogTitle_unstable } from '@fluentui/react-dialog';
 import { useDialogTitleStyles_unstable } from '@fluentui/react-dialog';
@@ -1107,6 +1142,17 @@ import { useMenuSplitGroupStyles_unstable } from '@fluentui/react-menu';
 import { useMenuTrigger_unstable } from '@fluentui/react-menu';
 import { useMenuTriggerContext_unstable } from '@fluentui/react-menu';
 import { useMergedRefs } from '@fluentui/react-utilities';
+import { useMessageBar_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActions_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarActionsStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarBody_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarBodyStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarContext } from '@fluentui/react-message-bar';
+import { useMessageBarGroup_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarGroupStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarStyles_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarTitle_unstable } from '@fluentui/react-message-bar';
+import { useMessageBarTitleStyles_unstable } from '@fluentui/react-message-bar';
 import { useModalAttributes } from '@fluentui/react-tabster';
 import { UseModalAttributesOptions } from '@fluentui/react-tabster';
 import { useObservedElement } from '@fluentui/react-tabster';
@@ -1713,6 +1759,8 @@ export { dialogSurfaceClassNames }
 
 export { DialogSurfaceContextValue }
 
+export { DialogSurfaceContextValues }
+
 export { DialogSurfaceProps }
 
 export { DialogSurfaceSlots }
@@ -2119,6 +2167,62 @@ export { mergeCallbacks }
 
 export { mergeClasses }
 
+export { MessageBar }
+
+export { MessageBarActions }
+
+export { messageBarActionsClassNames }
+
+export { MessageBarActionsProps }
+
+export { MessageBarActionsSlots }
+
+export { MessageBarActionsState }
+
+export { MessageBarBody }
+
+export { messageBarBodyClassNames }
+
+export { MessageBarBodyProps }
+
+export { MessageBarBodySlots }
+
+export { MessageBarBodyState }
+
+export { messageBarClassNames }
+
+export { MessageBarContextProvider }
+
+export { MessageBarContextValue }
+
+export { MessageBarGroup }
+
+export { messageBarGroupClassNames }
+
+export { MessageBarGroupProps }
+
+export { MessageBarGroupSlots }
+
+export { MessageBarGroupState }
+
+export { MessageBarIntent }
+
+export { MessageBarProps }
+
+export { MessageBarSlots }
+
+export { MessageBarState }
+
+export { MessageBarTitle }
+
+export { messageBarTitleClassNames }
+
+export { MessageBarTitleProps }
+
+export { MessageBarTitleSlots }
+
+export { MessageBarTitleState }
+
 export { OnOpenChangeData }
 
 export { OnVisibleChangeData }
@@ -2410,6 +2514,16 @@ export { renderMenuPopover_unstable }
 export { renderMenuSplitGroup_unstable }
 
 export { renderMenuTrigger_unstable }
+
+export { renderMessageBar_unstable }
+
+export { renderMessageBarActions_unstable }
+
+export { renderMessageBarBody_unstable }
+
+export { renderMessageBarGroup_unstable }
+
+export { renderMessageBarTitle_unstable }
 
 export { renderOption_unstable }
 
@@ -3283,6 +3397,8 @@ export { useDialogSurface_unstable }
 
 export { useDialogSurfaceContext_unstable }
 
+export { useDialogSurfaceContextValues_unstable }
+
 export { useDialogSurfaceStyles_unstable }
 
 export { useDialogTitle_unstable }
@@ -3454,6 +3570,28 @@ export { useMenuTrigger_unstable }
 export { useMenuTriggerContext_unstable }
 
 export { useMergedRefs }
+
+export { useMessageBar_unstable }
+
+export { useMessageBarActions_unstable }
+
+export { useMessageBarActionsStyles_unstable }
+
+export { useMessageBarBody_unstable }
+
+export { useMessageBarBodyStyles_unstable }
+
+export { useMessageBarContext }
+
+export { useMessageBarGroup_unstable }
+
+export { useMessageBarGroupStyles_unstable }
+
+export { useMessageBarStyles_unstable }
+
+export { useMessageBarTitle_unstable }
+
+export { useMessageBarTitleStyles_unstable }
 
 export { useModalAttributes }
 
