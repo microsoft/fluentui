@@ -575,8 +575,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               this,
               x1,
               y1,
+              x1,
+              y1,
               verticaLineHeight,
               xAxisCalloutData,
+              circleId,
               circleId,
               xAxisCalloutAccessibilityData,
             )}
@@ -584,8 +587,11 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               this,
               x1,
               y1,
+              x1,
+              y1,
               verticaLineHeight,
               xAxisCalloutData,
+              circleId,
               circleId,
               xAxisCalloutAccessibilityData,
             )}
@@ -721,7 +727,8 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
 
           const lineId = `${this._lineId}_${i}_${j}`;
           const borderId = `${this._borderId}_${i}_${j}`;
-          const circleId = `${this._circleId}_${i}_${j}`;
+          const circleId = `${this._circleId}_${i}_${j - 1}`;
+          const circleId2 = j + 1 === this._points[i].data.length ? `${circleId}${j}L` : `${this._circleId}_${i}_${j}`;
           const { x: x1, y: y1, xAxisCalloutData, xAxisCalloutAccessibilityData } = this._points[i].data[j - 1];
           const { x: x2, y: y2 } = this._points[i].data[j];
           let path = this._getPath(
@@ -749,18 +756,24 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                 this,
                 x1,
                 y1,
+                x2,
+                y2,
                 verticaLineHeight,
                 xAxisCalloutData,
                 circleId,
+                circleId2,
                 xAxisCalloutAccessibilityData,
               )}
               onMouseMove={this._handleHover.bind(
                 this,
                 x1,
                 y1,
+                x2,
+                y2,
                 verticaLineHeight,
                 xAxisCalloutData,
                 circleId,
+                circleId2,
                 xAxisCalloutAccessibilityData,
               )}
               onMouseOut={this._handleMouseOut}
@@ -910,18 +923,24 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                     this,
                     x1,
                     y1,
+                    x2,
+                    y2,
                     verticaLineHeight,
                     xAxisCalloutData,
                     circleId,
+                    circleId2,
                     xAxisCalloutAccessibilityData,
                   )}
                   onMouseMove={this._handleHover.bind(
                     this,
                     x1,
                     y1,
+                    x2,
+                    y2,
                     verticaLineHeight,
                     xAxisCalloutData,
                     circleId,
+                    circleId2,
                     xAxisCalloutAccessibilityData,
                   )}
                   onMouseOut={this._handleMouseOut}
@@ -1145,7 +1164,6 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
         )
         .attr('visibility', 'visibility')
         .attr('y2', `${lineHeight - this._yAxisScale(pointToHighlight.y)}`);
-
       this.setState({
         nearestCircleToHighlight: pointToHighlight,
         isCalloutVisible: true,
@@ -1213,38 +1231,74 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
   private _handleHover = (
     x: number | Date,
     y: number | Date,
+    x2: number | Date,
+    y2: number | Date,
     lineHeight: number,
     xAxisCalloutData: string,
     circleId: string,
+    circleId2: string,
     xAxisCalloutAccessibilityData: IAccessibilityProps,
     mouseEvent: React.MouseEvent<SVGElement>,
   ) => {
     mouseEvent.persist();
     const formattedData = x instanceof Date ? x.toLocaleDateString() : x;
-    const xVal = x instanceof Date ? x.getTime() : x;
+    const xVal1 = x instanceof Date ? x.getTime() : x;
+    const xVal2 = x2 instanceof Date ? x2.getTime() : x2;
     const _this = this;
-    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal);
+    const found = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal1);
+    const found2 = find(this._calloutPoints, (element: { x: string | number }) => element.x === xVal2);
     // if no points need to be called out then don't show vertical line and callout card
-
-    if (found) {
+    if (found || found2) {
       d3Select(`#${this._verticalLine}`)
         .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
         .attr('visibility', 'visibility')
         .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
-      if (this._uniqueCallOutID !== circleId) {
-        this._uniqueCallOutID = circleId;
-        this.setState({
-          isCalloutVisible: true,
-          refSelected: `#${circleId}`,
-          hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
-          YValueHover: found.values,
-          stackCalloutProps: found!,
-          dataPointCalloutProps: found!,
-          activePoint: circleId,
-          xAxisCalloutAccessibilityData,
-          nearestCircleToHighlight: null,
-          activeLine: null,
-        });
+      const leftLineDist = Math.abs(
+        mouseEvent.clientX - d3Select(`#${this._verticalLine}`).node().getBoundingClientRect().x,
+      );
+      d3Select(`#${this._verticalLine}`)
+        .attr('transform', () => `translate(${_this._xAxisScale(x2)}, ${_this._yAxisScale(y2)})`)
+        .attr('visibility', 'visibility')
+        .attr('y2', `${lineHeight - _this._yAxisScale(y2)}`);
+      const rightLineDist = Math.abs(
+        mouseEvent.clientX - d3Select(`#${this._verticalLine}`).node().getBoundingClientRect().x,
+      );
+      if (leftLineDist < rightLineDist) {
+        d3Select(`#${this._verticalLine}`)
+          .attr('transform', () => `translate(${_this._xAxisScale(x)}, ${_this._yAxisScale(y)})`)
+          .attr('visibility', 'visibility')
+          .attr('y2', `${lineHeight - _this._yAxisScale(y)}`);
+      }
+      if (this._uniqueCallOutID !== circleId || this._uniqueCallOutID !== circleId2) {
+        if (leftLineDist < rightLineDist) {
+          this._uniqueCallOutID = circleId;
+          this.setState({
+            isCalloutVisible: true,
+            refSelected: `#${circleId}`,
+            hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+            YValueHover: found.values,
+            stackCalloutProps: found!,
+            dataPointCalloutProps: found!,
+            activePoint: circleId,
+            xAxisCalloutAccessibilityData,
+            nearestCircleToHighlight: null,
+            activeLine: null,
+          });
+        } else {
+          this._uniqueCallOutID = circleId2;
+          this.setState({
+            isCalloutVisible: true,
+            refSelected: `#${circleId2}`,
+            hoverXValue: xAxisCalloutData ? xAxisCalloutData : '' + formattedData,
+            YValueHover: found2.values,
+            stackCalloutProps: found2!,
+            dataPointCalloutProps: found2!,
+            activePoint: circleId2,
+            xAxisCalloutAccessibilityData,
+            nearestCircleToHighlight: null,
+            activeLine: null,
+          });
+        }
       }
     } else {
       this.setState({
