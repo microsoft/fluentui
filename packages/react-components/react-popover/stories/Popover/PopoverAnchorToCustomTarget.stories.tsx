@@ -41,7 +41,7 @@ export const AnchorToCustomTarget = () => {
           <Button>Popover trigger</Button>
         </PopoverTrigger>
 
-        <PopoverSurface>
+        <PopoverSurface tabIndex={-1}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>

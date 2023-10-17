@@ -33,7 +33,7 @@ export const ControllingOpenAndClose = () => {
         <PopoverTrigger disableButtonEnhancement>
           <Button>Controlled trigger</Button>
         </PopoverTrigger>
-        <PopoverSurface>
+        <PopoverSurface tabIndex={-1}>
           <ExampleContent />
         </PopoverSurface>
       </Popover>

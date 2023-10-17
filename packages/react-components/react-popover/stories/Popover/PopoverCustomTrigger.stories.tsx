@@ -32,7 +32,7 @@ export const CustomTrigger = () => {
       <PopoverTrigger>
         <CustomPopoverTrigger />
       </PopoverTrigger>
-      <PopoverSurface>
+      <PopoverSurface tabIndex={-1}>
         <ExampleContent />
       </PopoverSurface>
     </Popover>
