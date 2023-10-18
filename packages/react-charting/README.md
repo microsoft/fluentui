@@ -61,11 +61,11 @@ A comprehensive contributor guide is available in our internal [wiki](https://ak
 
 ## Testing
 
-![Static Badge](https://img.shields.io/badge/coverage-85%25-brightgreen)
+![Static Badge](https://img.shields.io/badge/coverage-87%25-brightgreen)
 
 The library has a wide variety of tests to ensure quality of the library.
 The tests range from component tests, unit tests, visual regression tests, accessibility tests, integration tests and manual tests.
-The test automations ensure over 90% code coverage across the library.
+The test automations aim to ensure over 90% code coverage across the library.
 
 Further details available in the wiki
 
