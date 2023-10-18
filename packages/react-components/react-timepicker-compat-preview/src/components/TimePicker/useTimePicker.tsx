@@ -65,8 +65,8 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   );
 
   const [selectedTime, setSelectedTime] = useControllableState<Date | undefined>({
-    state: props.selectedTime,
-    defaultState: props.defaultSelectedTime,
+    state: selectedTimeInProps,
+    defaultState: defaultSelectedTimeInProps,
     initialState: undefined,
   });
 
