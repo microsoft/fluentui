@@ -124,7 +124,6 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
 
   const state: TimePickerState = {
     ...baseState,
-    dateToText,
     freeform,
     validateFreeFormTime: validateFreeFormTimeInProps ?? defaultValidateTime,
     selectedTimeTextRef,

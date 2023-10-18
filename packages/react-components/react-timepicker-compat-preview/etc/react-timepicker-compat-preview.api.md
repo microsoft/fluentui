@@ -36,7 +36,6 @@ export type TimePickerSlots = ComboboxSlots;
 
 // @public
 export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
-    dateToText: (date: Date) => string;
     selectedTimeTextRef: React_2.MutableRefObject<string | undefined>;
 };
 
