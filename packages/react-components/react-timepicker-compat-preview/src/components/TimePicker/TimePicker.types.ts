@@ -145,11 +145,6 @@ export type TimePickerProps = Omit<
 export type TimePickerState = ComboboxState &
   Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
     /**
-     * localize the date strings displayed
-     */
-    dateToText: (date: Date) => string;
-
-    /**
      * Ref that stores the selected time text
      */
     selectedTimeTextRef: React.MutableRefObject<string | undefined>;
