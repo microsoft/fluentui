@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: bump to tabster 4.8.0 in order to support support virtual parents",
+  "packageName": "@fluentui/react-tabster",
+  "email": "lingfangao@hotmail.com",
+  "dependentChangeType": "patch"
+}
