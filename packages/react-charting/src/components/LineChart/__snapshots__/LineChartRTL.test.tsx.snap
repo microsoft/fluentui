@@ -316,6 +316,17 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="-20"
+              cy="17.884615384615383"
+              focusable="false"
+              id="circle13_0_55D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
           </g>
         </g>
       </svg>
@@ -621,6 +632,17 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle0_2_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID1_1_1"
               opacity="1"
@@ -664,6 +686,17 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="4"
+              cy="18.804347826086957"
+              focusable="false"
+              id="circle0_1_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID1_0_1"
               opacity="1"
@@ -706,6 +739,17 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               stroke="red"
               stroke-width="4"
               tabindex="-1"
+            />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle0_0_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
             />
           </g>
         </g>
@@ -1180,6 +1224,17 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle26_2_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID27_1_1"
               opacity="1"
@@ -1223,6 +1278,17 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="4"
+              cy="18.804347826086957"
+              focusable="false"
+              id="circle26_1_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID27_0_1"
               opacity="1"
@@ -1265,6 +1331,17 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               stroke="red"
               stroke-width="4"
               tabindex="-1"
+            />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle26_0_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
             />
           </g>
         </g>
@@ -1749,6 +1826,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle241_2_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID242_1_1"
               opacity="1"
@@ -1792,6 +1880,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="4"
+              cy="18.804347826086957"
+              focusable="false"
+              id="circle241_1_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID242_0_1"
               opacity="1"
@@ -1834,6 +1933,17 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               stroke="red"
               stroke-width="4"
               tabindex="-1"
+            />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle241_0_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
             />
           </g>
         </g>
@@ -2312,6 +2422,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle254_2_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID255_1_1"
               opacity="1"
@@ -2355,6 +2476,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               stroke-width="4"
               tabindex="-1"
             />
+            <circle
+              cx="4"
+              cy="18.804347826086957"
+              focusable="false"
+              id="circle254_1_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
+            />
             <line
               id="lineID255_0_1"
               opacity="1"
@@ -2397,6 +2529,17 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               stroke="red"
               stroke-width="4"
               tabindex="-1"
+            />
+            <circle
+              cx="16"
+              cy="12.826086956521738"
+              focusable="false"
+              id="circle254_0_11D"
+              opacity="0"
+              r="25"
+              role="none"
+              stroke-width="0"
+              width="0"
             />
           </g>
         </g>
@@ -2888,6 +3031,17 @@ exports[`Should reflect theme change 1`] = `
                 stroke-width="4"
                 tabindex="-1"
               />
+              <circle
+                cx="16"
+                cy="12.826086956521738"
+                focusable="false"
+                id="circle270_2_11D"
+                opacity="0"
+                r="25"
+                role="none"
+                stroke-width="0"
+                width="0"
+              />
               <line
                 id="lineID271_1_1"
                 opacity="1"
@@ -2931,6 +3085,17 @@ exports[`Should reflect theme change 1`] = `
                 stroke-width="4"
                 tabindex="-1"
               />
+              <circle
+                cx="4"
+                cy="18.804347826086957"
+                focusable="false"
+                id="circle270_1_11D"
+                opacity="0"
+                r="25"
+                role="none"
+                stroke-width="0"
+                width="0"
+              />
               <line
                 id="lineID271_0_1"
                 opacity="1"
@@ -2973,6 +3138,17 @@ exports[`Should reflect theme change 1`] = `
                 stroke="red"
                 stroke-width="4"
                 tabindex="-1"
+              />
+              <circle
+                cx="16"
+                cy="12.826086956521738"
+                focusable="false"
+                id="circle270_0_11D"
+                opacity="0"
+                r="25"
+                role="none"
+                stroke-width="0"
+                width="0"
               />
             </g>
           </g>

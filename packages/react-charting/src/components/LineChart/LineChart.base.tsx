@@ -793,7 +793,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
               xAxisCalloutAccessibilityData: lastCirlceXCalloutAccessibilityData,
             } = this._points[i].data[j];
             pointsForLine.push(
-              <>
+              <React.Fragment key={lastCircleId + dummyCircleId}>
                 <path
                   id={lastCircleId}
                   key={lastCircleId}
@@ -867,7 +867,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   onBlur={this._handleMouseOut}
                   {...this._getClickHandler(this._points[i].data[0].onDataPointClick)}
                 />
-              </>,
+              </React.Fragment>,
             );
             /* eslint-enable react/jsx-no-bind */
           }
