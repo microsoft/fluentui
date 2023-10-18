@@ -2,4 +2,12 @@
 
 **React Infolabel components for [Fluent UI React](https://react.fluentui.dev/)**
 
-These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
+To use InfoLabel import InfoLabel like this:
+
+```jsx
+import { InfoLabel } from '@fluentui/react-components';
+
+const InfoLabelExample = () => {
+  return <InfoLabel info="Sample information">Sample label</InfoLabel>;
+};
+```
