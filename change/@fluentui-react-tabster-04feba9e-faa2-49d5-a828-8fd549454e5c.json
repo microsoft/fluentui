@@ -1,6 +1,6 @@
 {
   "type": "patch",
-  "comment": "fix: Tabster should support virtual parents",
+  "comment": "feat: bump to tabster 4.8.0 in order to support support virtual parents",
   "packageName": "@fluentui/react-tabster",
   "email": "lingfangao@hotmail.com",
   "dependentChangeType": "patch"
