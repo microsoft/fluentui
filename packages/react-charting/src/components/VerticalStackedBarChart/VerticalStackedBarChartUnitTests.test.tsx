@@ -362,9 +362,6 @@ describe('_getScales', () => {
 
     expect(scales.xBarScale).toBeDefined();
     expect(scales.yBarScale).toBeDefined();
-    // expect(scales.xBarScale(-1000)).toBeLessThan(0);
-    // expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
-    // expect(scales.xBarScale(40000)).toBeGreaterThan(containerWidth);
     expect(scales.yBarScale(-500)).toBeLessThan(0);
     expect(scales.yBarScale(60000)).toBeGreaterThan(containerHeight);
   });
