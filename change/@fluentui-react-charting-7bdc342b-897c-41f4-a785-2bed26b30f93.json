@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Hide bar labels of non highlighted bars",
-  "packageName": "@fluentui/react-charting",
-  "email": "kumarkshitij@microsoft.com",
-  "dependentChangeType": "patch"
-}
