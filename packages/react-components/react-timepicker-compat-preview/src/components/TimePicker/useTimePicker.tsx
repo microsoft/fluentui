@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { mergeCallbacks, useControllableState } from '@fluentui/react-utilities';
+import { Enter } from '@fluentui/keyboard-keys';
 import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
 import {
@@ -209,7 +210,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
 
   const handleKeyDown: ComboboxProps['onKeyDown'] = React.useCallback(
     e => {
-      if (!activeOption && (e.key === 'Enter' || e.key === 'Tab')) {
+      if (!activeOption && e.key === Enter) {
         selectTimeFromValue(e);
       }
     },

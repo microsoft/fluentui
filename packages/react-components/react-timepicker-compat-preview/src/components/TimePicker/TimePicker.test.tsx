@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { isConformant } from '../../testing/isConformant';
 import { TimePicker } from './TimePicker';
@@ -43,12 +43,11 @@ describe('TimePicker', () => {
     handleTimeSelect.mockClear();
 
     // Do not call onTimeSelect when Tab out but the value remains the same
-    userEvent.tab();
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
     // Call onTimeSelect when Tab out and the value changes
-    userEvent.type(input, '111');
-    userEvent.tab();
+    userEvent.type(input, '111{enter}');
     expect(handleTimeSelect).toHaveBeenCalledTimes(1);
     expect(handleTimeSelect).toHaveBeenCalledWith(
       expect.anything(),
