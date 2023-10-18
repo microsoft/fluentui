@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Mon, 16 Oct 2023 07:37:21 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 07:49:09 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.18.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.7)
+
+Wed, 18 Oct 2023 07:49:09 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.6..@fluentui/react-charting_v5.18.7)
+
+### Patches
+
+- Adding a default tabbable element to fix accessibilty issue ([PR #28874](https://github.com/microsoft/fluentui/pull/28874) by ankityadav@microsoft.com)
+- Hide bar labels of non highlighted bars ([PR #29454](https://github.com/microsoft/fluentui/pull/29454) by kumarkshitij@microsoft.com)
+
+## [5.18.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.6)
+
+Tue, 17 Oct 2023 07:36:52 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.5..@fluentui/react-charting_v5.18.6)
+
+### Patches
+
+- Added optional condition based y-axis scaling on narrow ranges ([PR #29526](https://github.com/microsoft/fluentui/pull/29526) by shubhabrata08@gmail.com)
 
 ## [5.18.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.5)
 

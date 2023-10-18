@@ -1,0 +1,44 @@
+{
+  "name": "@fluentui/react-calendar-compat",
+  "entries": [
+    {
+      "date": "Wed, 18 Oct 2023 17:54:02 GMT",
+      "tag": "@fluentui/react-calendar-compat_v0.0.1",
+      "version": "0.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad",
+            "comment": "chore: Add bundle size fixture for Calendar."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "8f9b998c7d2a19f62c043e2177a1e1eab0e1b71c",
+            "comment": "chore: Release react-calendar-compat."
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.18",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.14.0",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-calendar-compat",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    }
+  ]
+}

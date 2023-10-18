@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-infobutton
 
-This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 17:54:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.71](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.71)
+
+Wed, 18 Oct 2023 17:54:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-infobutton_v9.0.0-beta.70..@fluentui/react-infobutton_v9.0.0-beta.71)
+
+### Changes
+
+- chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-label to v9.1.46 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-popover to v9.8.16 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-tabster to v9.14.0 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
 
 ## [9.0.0-beta.70](https://github.com/microsoft/fluentui/tree/@fluentui/react-infobutton_v9.0.0-beta.70)
 
