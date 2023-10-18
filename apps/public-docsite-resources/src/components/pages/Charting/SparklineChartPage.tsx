@@ -5,7 +5,7 @@ import { SparklineChartPageProps } from '@fluentui/react-examples/lib/react-char
 
 export const SparklineChartPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
-    jsonDocs={require('../../../../dist/api/react-charting/Sparkline.page.json')}
+    jsonDocs={require('../../../../dist/api/react-charting/SparklineChart.page.json')}
     {...{ ...SparklineChartPageProps, ...props }}
   />
 );

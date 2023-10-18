@@ -144,6 +144,11 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
+        <p>
+          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
+          So instead of a numeric value, the callout will show the date that is passed in the{' '}
+          <code>xAxisCalloutData</code> property.
+        </p>
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"

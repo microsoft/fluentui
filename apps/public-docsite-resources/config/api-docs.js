@@ -103,7 +103,7 @@ module.exports = {
       'PieChart',
       'GaugeChart',
       'SankeyChart',
-      'Sparkline',
+      'SparklineChart',
       'StackedBarChart',
       'MultiStackedBarChart',
       'TreeChart',
