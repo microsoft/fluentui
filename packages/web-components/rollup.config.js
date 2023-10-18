@@ -1,13 +1,10 @@
 import commonJS from 'rollup-plugin-commonjs';
 import filesize from 'rollup-plugin-filesize';
-import resolve from 'rollup-plugin-node-resolve';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import { terser } from 'rollup-plugin-terser';
 import transformTaggedTemplate from 'rollup-plugin-transform-tagged-template';
-import typescript from 'rollup-plugin-typescript2';
+import esbuild from 'rollup-plugin-esbuild';
 import { transformCSSFragment, transformHTMLFragment } from './scripts/transform-fragments';
-
-// eslint-disable-next-line no-undef
-const tsBin = require.resolve('typescript');
 
 const parserOptions = {
   sourceType: 'module',
@@ -28,17 +25,10 @@ export default [
       },
     ],
     plugins: [
-      resolve(),
+      nodeResolve({ browser: true }),
       commonJS(),
-      typescript({
-        // eslint-disable-next-line no-undef
-        typescript: require(tsBin),
+      esbuild({
         tsconfig: './tsconfig.lib.json',
-        tsconfigOverride: {
-          compilerOptions: {
-            declaration: false,
-          },
-        },
       }),
       transformTaggedTemplate({
         tagsToProcess: ['css'],
