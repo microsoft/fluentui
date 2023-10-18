@@ -153,6 +153,7 @@
     "./dist/esm/divider/define.js",
     "./dist/esm/image/define.js",
     "./dist/esm/label/define.js",
+    "./dist/esm/menu/define.js",
     "./dist/esm/menu-list/define.js",
     "./dist/esm/menu-button/define.js",
     "./dist/esm/menu-item/define.js",
