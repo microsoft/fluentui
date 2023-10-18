@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { createResizeObserverFromDocument } from '@fluentui/react-utilities';
 
 /**
  * Provides a way of reporting element width.
@@ -48,4 +47,21 @@ export function useMeasureElement<TElement extends HTMLElement = HTMLElement>() 
   }, [resizeObserver]);
 
   return { width, measureElementRef };
+}
+
+/**
+ * A utility method that creates a ResizeObserver from a target document
+ * @param targetDocument - document to use to create the ResizeObserver
+ * @param callback  - https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/ResizeObserver#callback
+ * @returns a ResizeObserver instance or null if the global does not exist on the document
+ */
+export function createResizeObserverFromDocument(
+  targetDocument: Document | null | undefined,
+  callback: ResizeObserverCallback,
+) {
+  if (!targetDocument?.defaultView?.ResizeObserver) {
+    return null;
+  }
+
+  return new targetDocument.defaultView.ResizeObserver(callback);
 }

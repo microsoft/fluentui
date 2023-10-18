@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement helper method to create ResizeObserver from document",
-  "packageName": "@fluentui/react-utilities",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

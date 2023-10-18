@@ -60,7 +60,6 @@ export {
   isInteractiveHTMLElement,
   omit,
   createPriorityQueue,
-  createResizeObserverFromDocument,
 } from './utils/index';
 
 export type { PriorityQueue } from './utils/priorityQueue';

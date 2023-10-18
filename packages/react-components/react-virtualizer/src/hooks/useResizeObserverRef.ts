@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { createResizeObserverFromDocument } from '@fluentui/react-utilities';
 import { debounce } from '../utilities/debounce';
+import { createResizeObserverFromDocument } from '../utilities/createResizeObserverFromDocument';
 import { ResizeCallbackWithRef } from './hooks.types';
 
 /**
