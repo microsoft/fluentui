@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: bump keyborg to 2.1.0",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

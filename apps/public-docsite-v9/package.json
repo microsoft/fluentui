@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@fluentui/react-breadcrumb-preview": "*",
+    "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-migration-v8-v9": "*",
     "@fluentui/react-migration-v0-v9": "*",
@@ -41,6 +42,7 @@
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "react-window": "^1.8.6",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@fluentui/react-infolabel-preview": "*"
   }
 }
