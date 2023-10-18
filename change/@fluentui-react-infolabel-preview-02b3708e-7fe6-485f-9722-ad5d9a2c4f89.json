@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release preview package",
-  "packageName": "@fluentui/react-infolabel-preview",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

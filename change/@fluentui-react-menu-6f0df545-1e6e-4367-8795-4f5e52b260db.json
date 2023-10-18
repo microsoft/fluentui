@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: MenuItem uses makeResetStyles",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

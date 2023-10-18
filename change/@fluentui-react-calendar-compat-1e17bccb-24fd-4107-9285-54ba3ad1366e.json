@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: Add bundle size fixture for Calendar.",
-  "packageName": "@fluentui/react-calendar-compat",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}
