@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "Updates package with Menu component sideEffect.",
+  "packageName": "@fluentui/web-components",
+  "email": "hale.rankin@microsoft.com",
+  "dependentChangeType": "patch"
+}
