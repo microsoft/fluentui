@@ -145,7 +145,7 @@ export type TimePickerProps = Omit<
 export type TimePickerState = ComboboxState &
   Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
     /**
-     * Ref that stores the selected time text
+     * Selected time text
      */
-    selectedTimeTextRef: React.MutableRefObject<string | undefined>;
+    selectedTimeText: string | undefined;
   };
