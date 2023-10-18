@@ -1,4 +1,4 @@
-# @fluentui/react-infolabel-preview
+# @fluentui/react-infolabel
 
 **React Infolabel components for [Fluent UI React](https://react.fluentui.dev/)**
 

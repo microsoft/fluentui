@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-import { makeStyles, tokens } from '@fluentui/react-components';
-import { InfoLabel } from '@fluentui/react-infolabel-preview';
+import { InfoLabel, makeStyles, tokens } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {

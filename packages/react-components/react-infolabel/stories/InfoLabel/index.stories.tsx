@@ -1,4 +1,4 @@
-import { InfoLabel } from '@fluentui/react-infolabel-preview';
+import { InfoLabel } from '@fluentui/react-components';
 
 import descriptionMd from './InfoLabelDescription.md';
 import bestPracticesMd from './InfoLabelBestPractices.md';
@@ -10,7 +10,7 @@ export { Size } from './InfoLabelSize.stories';
 export { InField } from './InfoLabelInField.stories';
 
 export default {
-  title: 'Preview Components/InfoLabel',
+  title: 'Components/InfoLabel',
   component: InfoLabel,
   parameters: {
     docs: {
