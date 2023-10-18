@@ -243,7 +243,7 @@ export class VerticalStackedBarChartBase extends React.Component<
    * but if we have lines in the chart then we force the user to focus only the whole
    * bar, even if isCalloutForStack is false
    */
-  private _toFocusWholeStack = (_isHavingLines: boolean): boolean => {
+  public _toFocusWholeStack = (_isHavingLines: boolean): boolean => {
     const { isCalloutForStack = false } = this.props;
     let shouldFocusStackOnly: boolean = false;
     if (_isHavingLines) {
@@ -258,7 +258,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return shouldFocusStackOnly;
   };
 
-  private _getFormattedLineData = (data: IVerticalStackedChartProps[]): LineObject => {
+  public _getFormattedLineData = (data: IVerticalStackedChartProps[]): LineObject => {
     const linesData: LinePoint[] = [];
     const formattedLineData: LineObject = {};
     data.forEach((item: IVerticalStackedChartProps, index: number) => {
@@ -285,7 +285,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return formattedLineData;
   };
 
-  private _getLineLegends = (data: IVerticalStackedChartProps[]): LineLegends[] => {
+  public _getLineLegends = (data: IVerticalStackedChartProps[]): LineLegends[] => {
     const lineObject: LineObject = this._lineObject;
     const lineLegends: LineLegends[] = [];
     Object.keys(lineObject).forEach((item: string) => {
@@ -442,7 +442,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._lineObject = this._getFormattedLineData(this.props.data);
   }
 
-  private _createDataSetLayer(): IDataPoint[] {
+  public _createDataSetLayer(): IDataPoint[] {
     const tempArr: string[] = [];
     const dataset: IDataPoint[] = this._points.map(singlePointData => {
       let total: number = 0;
@@ -893,7 +893,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     return bars.filter((bar): bar is JSX.Element => !!bar);
   };
 
-  private _getScales = (containerHeight: number, containerWidth: number, isNumeric: boolean) => {
+  public _getScales = (containerHeight: number, containerWidth: number, isNumeric: boolean) => {
     const yMax = this._yMax;
     const yBarScale = d3ScaleLinear()
       .domain([0, yMax])
@@ -1052,5 +1052,18 @@ export class VerticalStackedBarChartBase extends React.Component<
       this.props.data.length > 0 &&
       this.props.data.filter(item => item.chartData.length === 0).length === 0
     );
+  }
+
+  public updateProperties(): void {
+    this._points = this.props.data || [];
+    this._lineObject = this._getFormattedLineData(this.props.data);
+    this._getMargins({
+      left: 10,
+      right: 10,
+      top: 10,
+      bottom: 10,
+    });
+    this._getAxisData({ yAxisDomainValues: [10, 20, 30, 40] });
+    this._dataset = this._createDataSetLayer();
   }
 }

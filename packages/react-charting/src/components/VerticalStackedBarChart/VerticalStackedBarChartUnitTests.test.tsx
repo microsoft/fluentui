@@ -4,6 +4,7 @@ import { DefaultPalette } from '@fluentui/react/lib/Styling';
 import { IVSChartDataPoint } from '../../index';
 import { VerticalStackedBarChart } from './VerticalStackedBarChart';
 import { testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
+import { VerticalStackedBarChartBase } from './VerticalStackedBarChart.base';
 
 const firstChartPoints: IVSChartDataPoint[] = [
   { legend: 'Metadata1', data: 2, color: DefaultPalette.blue },
@@ -261,4 +262,110 @@ describe('_createNumericBars', () => {
       expect(bars).toHaveLength(5);
     },
   );
+});
+
+describe('_getFormattedLineData', () => {
+  test('Should return the correct margins when total width is greater than required width', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    const lineObject = instance._getFormattedLineData(simplePointsWithLine);
+    expect(lineObject['Supported Builds']).toHaveLength(2);
+    const firstObject = lineObject['Supported Builds'][0];
+    expect(firstObject['index']).toEqual(0);
+    expect(firstObject['xItem']).toBeDefined();
+    const secondObject = lineObject['Supported Builds'][1];
+    expect(secondObject['index']).toEqual(1);
+    expect(secondObject['xItem']).toBeDefined();
+  });
+});
+
+describe('_toFocusWholeStack', () => {
+  test('Should return the correct margins when total width is greater than required width', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    const result = instance._toFocusWholeStack(false);
+    expect(result).toEqual(false);
+    const result1 = instance._toFocusWholeStack(true);
+    expect(result1).toEqual(true);
+  });
+});
+
+describe('_getLineLegends', () => {
+  test('Should return the correct line legends', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    instance.updateProperties();
+    const result = instance._getLineLegends(simplePointsWithLine);
+    expect(result).toHaveLength(1);
+    expect(result[0]['title']).toEqual('Supported Builds');
+  });
+});
+
+describe('_createDataSetLayer', () => {
+  test('Should return the correct data set', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    instance.updateProperties();
+    const result = instance._createDataSetLayer();
+    expect(result).toHaveLength(2);
+    const firstObject = result[0];
+    expect(firstObject['x']).toEqual(33);
+    expect(firstObject['y']).toEqual(2.5);
+    const secondObject = result[1];
+    expect(secondObject['x']).toEqual(55);
+    expect(secondObject['y']).toEqual(73);
+  });
+});
+
+describe('_getDomainMargins', () => {
+  test('Should return the correct domain margins', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    instance.updateProperties();
+    instance._createDataSetLayer();
+    var result = instance._getDomainMargins(1000);
+    expect(result['bottom']).toEqual(10);
+    expect(result['left']).toEqual(468);
+    expect(result['right']).toEqual(468);
+    expect(result['top']).toEqual(10);
+
+    result = instance._getDomainMargins(500);
+    expect(result['bottom']).toEqual(10);
+    expect(result['left']).toEqual(218);
+    expect(result['right']).toEqual(218);
+    expect(result['top']).toEqual(10);
+  });
+});
+
+describe('_getScales', () => {
+  test('Should return the correct  scale', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    instance.updateProperties();
+
+    const containerHeight = 500;
+    const containerWidth = 800;
+    const isNumericAxis = true;
+    const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+
+    expect(scales.xBarScale).toBeDefined();
+    expect(scales.yBarScale).toBeDefined();
+    // expect(scales.xBarScale(-1000)).toBeLessThan(0);
+    // expect(scales.xBarScale(20000)).toBeLessThanOrEqual(containerWidth);
+    // expect(scales.xBarScale(40000)).toBeGreaterThan(containerWidth);
+    expect(scales.yBarScale(-500)).toBeLessThan(0);
+    expect(scales.yBarScale(60000)).toBeGreaterThan(containerHeight);
+  });
 });
