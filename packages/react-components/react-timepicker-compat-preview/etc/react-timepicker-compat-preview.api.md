@@ -24,7 +24,7 @@ export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedO
     endHour?: Hour;
     increment?: number;
     dateAnchor?: Date;
-    selectedTime?: Date;
+    selectedTime?: Date | null;
     defaultSelectedTime?: Date;
     onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
     formatDateToTimeString?: (date: Date) => string;
@@ -41,7 +41,7 @@ export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'fr
 
 // @public (undocumented)
 export type TimeSelectionData = {
-    selectedTime: Date | undefined;
+    selectedTime: Date | null;
     selectedTimeText: string | undefined;
     error: TimePickerErrorType | undefined;
 };
