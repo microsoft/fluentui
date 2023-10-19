@@ -7,7 +7,7 @@ function isValidDate(date: Date): boolean {
 /**
  * Converts a Date object to a string key.
  */
-export function dateToKey(date?: Date): string {
+export function dateToKey(date: Date | null): string {
   if (!date) {
     return '';
   }
@@ -21,12 +21,12 @@ export function dateToKey(date?: Date): string {
  * Converts a string key back to a Date object.
  * Returns undefined for keys that don't represent valid dates.
  */
-export function keyToDate(key: string): Date | undefined {
+export function keyToDate(key: string): Date | null {
   if (key === '' || key === 'invalid') {
-    return undefined;
+    return null;
   }
   const date = new Date(key);
-  return isValidDate(date) ? date : undefined;
+  return isValidDate(date) ? date : null;
 }
 
 /**
@@ -157,7 +157,7 @@ export function getDateFromTimeString(
   timeFormatOptions: TimeFormatOptions,
 ): TimeStringValidationResult {
   if (!time) {
-    return { error: 'invalid-input' };
+    return { date: null, error: 'invalid-input' };
   }
 
   const { hour12, showSeconds } = timeFormatOptions;
@@ -171,12 +171,12 @@ export function getDateFromTimeString(
     : REGEX_HIDE_SECONDS_HOUR_24;
 
   if (!regex.test(time)) {
-    return { error: 'invalid-input' };
+    return { date: null, error: 'invalid-input' };
   }
 
   const timeParts = /^(\d\d?):(\d\d):?(\d\d)? ?([ap]m)?/i.exec(time);
   if (!timeParts) {
-    return { error: 'invalid-input' };
+    return { date: null, error: 'invalid-input' };
   }
 
   const [, selectedHours, minutes, seconds, amPm] = timeParts;

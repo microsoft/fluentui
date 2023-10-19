@@ -29,14 +29,14 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     dateAnchor: dateAnchorInProps,
     defaultSelectedTime: defaultSelectedTimeInProps,
     endHour = 24,
+    formatDateToTimeString,
     hour12 = false,
     increment = 30,
-    formatDateToTimeString,
     onTimeSelect,
-    validateFreeFormTime: validateFreeFormTimeInProps,
     selectedTime: selectedTimeInProps,
     showSeconds = false,
     startHour = 0,
+    validateFreeFormTime: validateFreeFormTimeInProps,
     ...rest
   } = props;
   const { freeform = false } = rest;
@@ -64,10 +64,10 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     [dateStartAnchor, dateEndAnchor, increment, dateToText],
   );
 
-  const [selectedTime, setSelectedTime] = useControllableState<Date | undefined>({
+  const [selectedTime, setSelectedTime] = useControllableState<Date | null>({
     state: selectedTimeInProps,
     defaultState: defaultSelectedTimeInProps,
-    initialState: undefined,
+    initialState: null,
   });
 
   const [submittedText, setSubmittedText] = React.useState<string | undefined>(undefined);
@@ -142,7 +142,7 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
   const [fallbackDateAnchor] = React.useState(() => new Date());
 
   // Convert the Date object to a stable key representation. This ensures that the memoization remains stable when a new Date object representing the same date is passed in.
-  const dateAnchorKey = dateToKey(providedDate);
+  const dateAnchorKey = dateToKey(providedDate ?? null);
   const dateAnchor = React.useMemo(
     () => keyToDate(dateAnchorKey) ?? fallbackDateAnchor,
     [dateAnchorKey, fallbackDateAnchor],

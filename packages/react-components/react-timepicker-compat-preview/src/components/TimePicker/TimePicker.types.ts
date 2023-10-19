@@ -54,7 +54,7 @@ export type TimePickerOption = {
 export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds';
 
 export type TimeStringValidationResult = {
-  date?: Date;
+  date: Date | null;
   error?: TimePickerErrorType;
 };
 
@@ -65,7 +65,7 @@ export type TimeSelectionData = {
   /**
    * The Date object associated with the selected option. For freeform TimePicker it can also be the Date object parsed from the user input.
    */
-  selectedTime: Date | undefined;
+  selectedTime: Date | null;
   /**
    * The display text for the selected option. For freeform TimePicker it can also be the value in user input.
    */
@@ -125,7 +125,7 @@ export type TimePickerProps = Omit<
     /**
      * Currently selected time in the TimePicker.
      */
-    selectedTime?: Date;
+    selectedTime?: Date | null;
 
     /**
      * Default selected time in the TimePicker, for uncontrolled scenarios.

@@ -10,8 +10,8 @@ import {
 
 describe('Time Utilities', () => {
   describe('dateToKey', () => {
-    it('should return empty string for undefined date', () => {
-      expect(dateToKey()).toBe('');
+    it('should return empty string for null date', () => {
+      expect(dateToKey(null)).toBe('');
     });
 
     it('should return "invalid" for invalid dates', () => {
@@ -26,12 +26,12 @@ describe('Time Utilities', () => {
   });
 
   describe('keyToDate', () => {
-    it('should return undefined for empty string', () => {
-      expect(keyToDate('')).toBeUndefined();
+    it('should return null for empty string', () => {
+      expect(keyToDate('')).toBeNull();
     });
 
-    it('should return undefined for "invalid" string', () => {
-      expect(keyToDate('invalid')).toBeUndefined();
+    it('should return null for "invalid" string', () => {
+      expect(keyToDate('invalid')).toBeNull();
     });
 
     it('should return date for valid ISO string', () => {
@@ -49,8 +49,8 @@ describe('Time Utilities', () => {
       expect(revertedDate?.getTime()).toEqual(originalDate.getTime());
     });
 
-    it('should be inverses of each other for undefined date', () => {
-      const originalDate = undefined;
+    it('should be inverses of each other for null date', () => {
+      const originalDate = null;
       const key = dateToKey(originalDate);
       const revertedDate = keyToDate(key);
 
@@ -62,7 +62,7 @@ describe('Time Utilities', () => {
       const key = dateToKey(originalDate);
       const revertedDate = keyToDate(key);
 
-      expect(revertedDate).toBeUndefined();
+      expect(revertedDate).toBeNull();
     });
   });
 
@@ -165,13 +165,13 @@ describe('Time Utilities', () => {
 
     it('returns an error when no time string is provided', () => {
       const result = getDateFromTimeString(undefined, dateStartAnchor, dateEndAnchor, {});
-      expect(result.date).toBeUndefined();
+      expect(result.date).toBeNull();
       expect(result.error).toBe('invalid-input');
     });
 
     it('returns an error for an invalid time string', () => {
       const result = getDateFromTimeString('25:30', dateStartAnchor, dateEndAnchor, {});
-      expect(result.date).toBeUndefined();
+      expect(result.date).toBeNull();
       expect(result.error).toBe('invalid-input');
     });
 
