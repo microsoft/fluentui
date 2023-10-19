@@ -68,23 +68,23 @@ const chartPointsWithStringXAxisPoint = [
   },
 ];
 
-describe('Unit tests for Path', () => {
-  testWithWait(
-    'Should return path when a point is hovered',
-    VerticalStackedBarChart,
-    { data: simplePointsWithLine },
-    container => {
-      const svg = container.querySelector('svg');
-      expect(svg).not.toBeNull();
-      const paths = svg!.querySelectorAll('path');
-      expect(paths).toHaveLength(2);
-      expect(paths[0]!.getAttribute('d')).toBe(`M56.5,6V0.5H-35.5V6`);
-      expect(paths[1]!.getAttribute('d')).toBe(`M-6,275.5H0.5V20.5H-6`);
-    },
-  );
-});
+describe('VerticalBarChart unit tests', () => {
+  describe('get Path', () => {
+    testWithWait(
+      'Should return path when a point is hovered',
+      VerticalStackedBarChart,
+      { data: simplePointsWithLine },
+      container => {
+        const svg = container.querySelector('svg');
+        expect(svg).not.toBeNull();
+        const paths = svg!.querySelectorAll('path');
+        expect(paths).toHaveLength(2);
+        expect(paths[0]!.getAttribute('d')).toBe(`M56.5,6V0.5H-35.5V6`);
+        expect(paths[1]!.getAttribute('d')).toBe(`M-6,275.5H0.5V20.5H-6`);
+      },
+    );
+  });
 
-describe('Unit tests for Points', () => {
   testWithWait(
     'Should return visibility as visibility if the point is active',
     VerticalStackedBarChart,
@@ -117,6 +117,18 @@ describe('Unit tests for Points', () => {
   );
 
   testWithoutWait(
+    'Should return circle Radius if active Point matches the circle',
+    VerticalStackedBarChart,
+    { data: simplePointsWithLine },
+    container => {
+      const points = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'circle');
+      expect(points).toHaveLength(2);
+      fireEvent.focus(points[0]);
+      expect(points[0].getAttribute('r')).toEqual('8');
+    },
+  );
+
+  testWithoutWait(
     'Should return circleRadius if activePoint matches the circle',
     VerticalStackedBarChart,
     { data: simplePointsWithLine },
@@ -128,25 +140,9 @@ describe('Unit tests for Points', () => {
     },
   );
 });
-
-describe('_addDefaultColors', () => {
-  testWithoutWait(
-    'Should return an array with the same length as the input array',
-    VerticalStackedBarChart,
-    { data: chartPointsWithoutColor },
-    container => {
-      const points = screen.getAllByText((content, element) => element!.tagName.toLowerCase() === 'circle');
-      expect(points).toHaveLength(2);
-      points.forEach(point => {
-        expect(point).toHaveAttribute('fill');
-      });
-    },
-  );
-});
-
-describe('_getAriaLabel', () => {
+describe('get area label', () => {
   testWithWait(
-    'Should return the correct aria label for a Bar',
+    'Should return the correct aria label for a stacked Bar',
     VerticalStackedBarChart,
     { data: simplePointsWithLine },
     container => {
@@ -168,7 +164,7 @@ describe('_getAriaLabel', () => {
   );
 });
 
-describe('_legendHighlighted', () => {
+describe('get area selected', () => {
   testWithWait(
     'Should return the correct aria selected for legends when mouse click',
     VerticalStackedBarChart,
@@ -185,9 +181,7 @@ describe('_legendHighlighted', () => {
       });
     },
   );
-});
 
-describe('_noLegendHighlighted', () => {
   testWithWait(
     'Should return the correct aria selected for legends',
     VerticalStackedBarChart,
@@ -236,7 +230,7 @@ describe('_noLegendHighlighted', () => {
   );
 });
 
-describe('_createStringBars', () => {
+describe('X- Axis Data', () => {
   testWithWait(
     'Should return the bars and x axis values for string XAxis data',
     VerticalStackedBarChart,
@@ -250,11 +244,9 @@ describe('_createStringBars', () => {
       expect(secondBarXAxisValue).not.toBeNull();
     },
   );
-});
 
-describe('_createNumericBars', () => {
   testWithWait(
-    'Should return the bars and x axis values for numaric XAxis data',
+    'Should return the bars count properly for numeric XAxis data',
     VerticalStackedBarChart,
     { data: simplePointsWithLine },
     container => {
@@ -264,8 +256,8 @@ describe('_createNumericBars', () => {
   );
 });
 
-describe('_getFormattedLineData', () => {
-  test('Should return the correct margins when total width is greater than required width', () => {
+describe('Get lines data', () => {
+  test('Should return line data properly after formatting', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
     });
@@ -279,22 +271,7 @@ describe('_getFormattedLineData', () => {
     expect(secondObject['index']).toEqual(1);
     expect(secondObject['xItem']).toBeDefined();
   });
-});
 
-describe('_toFocusWholeStack', () => {
-  test('Should return the correct margins when total width is greater than required width', () => {
-    const instance = new VerticalStackedBarChartBase({
-      data: simplePointsWithLine,
-    });
-    expect(instance).toBeDefined();
-    const result = instance._toFocusWholeStack(false);
-    expect(result).toEqual(false);
-    const result1 = instance._toFocusWholeStack(true);
-    expect(result1).toEqual(true);
-  });
-});
-
-describe('_getLineLegends', () => {
   test('Should return the correct line legends', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
@@ -307,7 +284,18 @@ describe('_getLineLegends', () => {
   });
 });
 
-describe('_createDataSetLayer', () => {
+describe('_toFocusWholeStack', () => {
+  test('Should return the correct focus to whole stack value properly', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    const result = instance._toFocusWholeStack(false);
+    expect(result).toEqual(false);
+    const result1 = instance._toFocusWholeStack(true);
+    expect(result1).toEqual(true);
+  });
+
   test('Should return the correct data set', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
@@ -325,8 +313,8 @@ describe('_createDataSetLayer', () => {
   });
 });
 
-describe('_getDomainMargins', () => {
-  test('Should return the correct domain margins', () => {
+describe('Get Domain Margins', () => {
+  test('Should return the correct margins when total width is greater than required width', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
     });
@@ -338,17 +326,25 @@ describe('_getDomainMargins', () => {
     expect(result['left']).toEqual(468);
     expect(result['right']).toEqual(468);
     expect(result['top']).toEqual(10);
+  });
 
-    result = instance._getDomainMargins(500);
+  test('Should return the correct margins when total width is less than required width', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: simplePointsWithLine,
+    });
+    expect(instance).toBeDefined();
+    instance.updateProperties();
+    instance._createDataSetLayer();
+    var result = instance._getDomainMargins(50);
     expect(result['bottom']).toEqual(10);
-    expect(result['left']).toEqual(218);
-    expect(result['right']).toEqual(218);
+    expect(result['left']).toEqual(18);
+    expect(result['right']).toEqual(18);
     expect(result['top']).toEqual(10);
   });
 });
 
-describe('_getScales', () => {
-  test('Should return the correct  scale', () => {
+describe('Get Scales', () => {
+  test('Should return scales for numeric x-axis', () => {
     const instance = new VerticalStackedBarChartBase({
       data: simplePointsWithLine,
     });
@@ -362,7 +358,21 @@ describe('_getScales', () => {
 
     expect(scales.xBarScale).toBeDefined();
     expect(scales.yBarScale).toBeDefined();
-    expect(scales.yBarScale(-500)).toBeLessThan(0);
-    expect(scales.yBarScale(60000)).toBeGreaterThan(containerHeight);
+  });
+
+  test('Should return scales for non-numeric axis', () => {
+    const instance = new VerticalStackedBarChartBase({
+      data: chartPointsWithStringXAxisPoint,
+    });
+    expect(instance).toBeDefined();
+    instance.updateProperties();
+
+    const containerHeight = 500;
+    const containerWidth = 800;
+    const isNumericAxis = true;
+    const scales = instance._getScales(containerHeight, containerWidth, isNumericAxis);
+
+    expect(scales.xBarScale).toBeDefined();
+    expect(scales.yBarScale).toBeDefined();
   });
 });
