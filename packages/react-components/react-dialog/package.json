@@ -38,6 +38,7 @@
   "dependencies": {
     "@fluentui/react-utilities": "^9.15.1",
     "@fluentui/react-jsx-runtime": "^9.0.18",
+    "react-transition-group": "^4.4.1",
     "@fluentui/keyboard-keys": "^9.0.6",
     "@fluentui/react-context-selector": "^9.1.41",
     "@fluentui/react-shared-contexts": "^9.10.0",
