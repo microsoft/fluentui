@@ -4,8 +4,8 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { VerticalStackedBarChartBasicExample } from './VerticalStackedBarChart.Basic.Example';
 import { VerticalStackedBarChartStyledExample } from './VerticalStackedBarChart.Styled.Example';
-import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart.Callout.Example';
 import { VerticalStackedBarChartTooltipExample } from './VerticalStackedBarChart.AxisTooltip.Example';
+import { VerticalStackedBarChartCalloutExample } from './VerticalStackedBarChart.Callout.Example';
 import { VerticalStackedBarChartCustomAccessibilityExample } from './VerticalStackedBarChart.CustomAccessibility.Example';
 
 const VerticalBarChartBasicExampleCode =
