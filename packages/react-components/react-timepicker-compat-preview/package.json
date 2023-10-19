@@ -31,6 +31,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/keyboard-keys": "^9.0.6",
     "@fluentui/react-combobox": "^9.5.25",
     "@fluentui/react-jsx-runtime": "^9.0.18",
     "@fluentui/react-theme": "^9.1.14",
