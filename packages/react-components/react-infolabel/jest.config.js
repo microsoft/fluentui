@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-infolabel-preview',
+  displayName: 'react-infolabel',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [
