@@ -167,7 +167,7 @@
     "@types/lodash": "4.14.182",
     "@types/markdown-table": "2.0.0",
     "@types/micromatch": "4.0.2",
-    "@types/node": "16.18.58",
+    "@types/node": "18.18.6",
     "@types/prettier": "2.7.2",
     "@types/progress": "2.0.5",
     "@types/prompts": "2.4.1",
