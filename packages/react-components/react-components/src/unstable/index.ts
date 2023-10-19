@@ -10,11 +10,13 @@ export {
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 
 export {
+  // eslint-disable-next-line deprecation/deprecation
   InfoButton,
   infoButtonClassNames,
   useInfoButton_unstable,
   useInfoButtonStyles_unstable,
   renderInfoButton_unstable,
+  // eslint-disable-next-line deprecation/deprecation
   InfoLabel,
   infoLabelClassNames,
   renderInfoLabel_unstable,

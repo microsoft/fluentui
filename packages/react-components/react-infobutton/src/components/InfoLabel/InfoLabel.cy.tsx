@@ -18,6 +18,7 @@ describe('InfoLabel - close on tab-out', () => {
   };
 
   it('no focusable elements', () => {
+    // eslint-disable-next-line deprecation/deprecation
     mount(<InfoLabel label="InfoLabel's label" info="Example non-focusable info" />);
 
     openInfoButton();
@@ -28,6 +29,7 @@ describe('InfoLabel - close on tab-out', () => {
 
   it('single focusable element', () => {
     mount(
+      // eslint-disable-next-line deprecation/deprecation
       <InfoLabel
         label="InfoLabel's label"
         info={
@@ -53,6 +55,7 @@ describe('InfoLabel - close on tab-out', () => {
 
   it('one or more focusable elements', () => {
     mount(
+      // eslint-disable-next-line deprecation/deprecation
       <InfoLabel
         label="InfoLabel's label"
         info={

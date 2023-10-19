@@ -16,7 +16,7 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
+// @public @deprecated
 export const InfoButton: ForwardRefComponent<InfoButtonProps>;
 
 // @public (undocumented)
@@ -38,7 +38,7 @@ export type InfoButtonSlots = {
 // @public
 export type InfoButtonState = ComponentState<InfoButtonSlots> & Required<Pick<InfoButtonProps, 'inline' | 'size'>>;
 
-// @public
+// @public @deprecated
 export const InfoLabel: ForwardRefComponent<InfoLabelProps>;
 
 // @public (undocumented)

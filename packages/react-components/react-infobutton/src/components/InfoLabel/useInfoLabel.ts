@@ -53,6 +53,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
       size,
       info,
     },
+    // eslint-disable-next-line deprecation/deprecation
     elementType: InfoButton,
   });
 
@@ -86,6 +87,7 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     components: {
       root: 'span',
       label: Label,
+      // eslint-disable-next-line deprecation/deprecation
       infoButton: InfoButton,
     },
     root,

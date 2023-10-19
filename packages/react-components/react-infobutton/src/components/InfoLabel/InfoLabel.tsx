@@ -8,6 +8,8 @@ import { useInfoLabelStyles_unstable } from './useInfoLabelStyles.styles';
 
 /**
  * InfoLabel component
+ *
+ * @deprecated use {@link [InfoLabel](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-infolabel/src/components/InfoLabel/InfoLabel.tsx)} from `@fluentui/react-components` or `@fluentui/react-infolabel` instead
  */
 export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((props, ref) => {
   const state = useInfoLabel_unstable(props, ref);
@@ -16,4 +18,5 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((
   return renderInfoLabel_unstable(state);
 });
 
+// eslint-disable-next-line deprecation/deprecation
 InfoLabel.displayName = 'InfoLabel';
