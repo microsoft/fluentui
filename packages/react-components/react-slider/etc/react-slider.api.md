@@ -8,6 +8,7 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ExtractSlotProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -52,9 +53,9 @@ export type SliderSlots = {
     root: NonNullable<Slot<'div'>>;
     rail: NonNullable<Slot<'div'>>;
     thumb: NonNullable<Slot<'div'>>;
-    input: NonNullable<Slot<'input'>> & {
+    input: NonNullable<Slot<ExtractSlotProps<Slot<'input'>> & {
         orient?: 'horizontal' | 'vertical';
-    };
+    }>>;
 };
 
 // @public (undocumented)

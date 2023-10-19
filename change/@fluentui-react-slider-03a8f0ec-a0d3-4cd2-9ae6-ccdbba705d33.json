@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: fix input slot erroneously declared",
+  "packageName": "@fluentui/react-slider",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
