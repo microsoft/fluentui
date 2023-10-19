@@ -1,4 +1,5 @@
 /**
+ * FIXME - TS 3.8/3.9 don't have ResizeObserver types by default, move this to a shared utility once we bump the minbar
  * A utility method that creates a ResizeObserver from a target document
  * @param targetDocument - document to use to create the ResizeObserver
  * @param callback  - https://developer.mozilla.org/en-US/docs/Web/API/ResizeObserver/ResizeObserver#callback
