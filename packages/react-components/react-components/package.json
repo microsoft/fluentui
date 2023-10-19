@@ -45,6 +45,7 @@
     "@fluentui/react-field": "^9.1.38",
     "@fluentui/react-image": "^9.1.43",
     "@fluentui/react-infobutton": "9.0.0-beta.71",
+    "@fluentui/react-infolabel": "9.0.0-alpha.0",
     "@fluentui/react-input": "^9.4.48",
     "@fluentui/react-label": "^9.1.46",
     "@fluentui/react-link": "^9.1.29",
@@ -79,8 +80,7 @@
     "@fluentui/react-tree": "^9.4.6",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
-    "@fluentui/react-message-bar": "^9.0.1",
-    "@fluentui/react-infolabel": "9.0.0-alpha.0"
+    "@fluentui/react-message-bar": "^9.0.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
