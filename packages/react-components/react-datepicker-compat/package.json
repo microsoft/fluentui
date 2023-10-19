@@ -36,6 +36,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.6",
+    "@fluentui/react-calendar-compat": "^0.0.1",
     "@fluentui/react-field": "^9.1.38",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-input": "^9.4.48",
