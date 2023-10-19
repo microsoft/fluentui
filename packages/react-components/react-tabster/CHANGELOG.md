@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 17:54:06 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.14.0)
+
+Wed, 18 Oct 2023 17:54:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.13.6..@fluentui/react-tabster_v9.14.0)
+
+### Minor changes
+
+- feat: bump to tabster 4.8.0 in order to support support virtual parents ([PR #29549](https://github.com/microsoft/fluentui/pull/29549) by lingfangao@hotmail.com)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+
+### Patches
+
+- chore: bump keyborg to 2.1.0 ([PR #29520](https://github.com/microsoft/fluentui/pull/29520) by lingfangao@hotmail.com)
 
 ## [9.13.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.13.6)
 
