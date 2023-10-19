@@ -86,7 +86,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Can contain two children including {@link DialogTrigger} and {@link DialogSurface}.
    * Alternatively can only contain {@link DialogSurface} if using trigger outside dialog, or controlling state.
    */
-  children: [JSX.Element, JSX.Element] | JSX.Element;
+  children?: [JSX.Element, JSX.Element] | JSX.Element;
   /**
    * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
    * where the focus trap involves setting outside elements inert.

@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "bugfix: Dialog children prop should be optional",
+  "packageName": "@fluentui/react-dialog",
+  "email": "bernardo.sunderhus@gmail.com",
+  "dependentChangeType": "patch"
+}
