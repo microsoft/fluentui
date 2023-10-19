@@ -1054,6 +1054,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     );
   }
 
+  // Added new function to updated the props while running the unit tests
   public updateProperties(): void {
     this._points = this.props.data || [];
     this._lineObject = this._getFormattedLineData(this.props.data);
