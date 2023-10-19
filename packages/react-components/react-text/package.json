@@ -23,7 +23,8 @@
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
     "generate-api": "just-scripts generate-api",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "verify-packaging": "just-scripts verify-packaging"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
