@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeCallbacks, useControllableState } from '@fluentui/react-utilities';
+import { mergeCallbacks, useControllableState, useMergedRefs } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
 import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
@@ -92,7 +92,6 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
         // Combobox clears selection when input value not matching any option; but we allow this case in freeform TimePicker.
         return;
       }
-
       const timeSelectionData: TimeSelectionData = {
         selectedTime: keyToDate(data.optionValue),
         selectedTimeText: data.optionText,
@@ -161,7 +160,7 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
  * Mimics the behavior of the browser's change event for a freeform TimePicker.
  * The provided callback is called when input changed and:
  * - Enter/Tab key is pressed on the input.
- * - TODO: TimePicker loses focus, signifying a possible change.
+ * - TimePicker loses focus, signifying a possible change.
  */
 const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProps['onTimeSelect']) => {
   const { activeOption, freeform, validateFreeFormTime, options, submittedText, setActiveOption, value } = state;
@@ -202,5 +201,30 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   );
   state.root.onKeyDown = mergeCallbacks(handleKeyDown, state.root.onKeyDown);
 
-  // TODO call selectTimeFromValue on blur
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  state.root.ref = useMergedRefs(state.root.ref, rootRef);
+
+  const listboxRef = React.useRef<HTMLDivElement>(null);
+  const mergedListboxRef = useMergedRefs(state.listbox?.ref, listboxRef);
+  if (state.listbox) {
+    state.listbox.ref = mergedListboxRef;
+    state.listbox.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
+  }
+
+  if (state.expandIcon) {
+    state.expandIcon.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
+  }
+
+  const handleInputBlur = React.useCallback(
+    (e: React.FocusEvent<HTMLInputElement>) => {
+      const isOutside = e.relatedTarget
+        ? [rootRef, listboxRef].every(({ current }) => !current?.contains(e.relatedTarget as HTMLElement))
+        : true;
+      if (isOutside) {
+        selectTimeFromValue(e);
+      }
+    },
+    [selectTimeFromValue],
+  );
+  state.input.onBlur = mergeCallbacks(handleInputBlur, state.input.onBlur);
 };
