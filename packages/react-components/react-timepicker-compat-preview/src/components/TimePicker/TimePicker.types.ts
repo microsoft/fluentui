@@ -62,8 +62,17 @@ export type TimePickerSlots = ComboboxSlots;
 
 export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
 export type TimeSelectionData = {
+  /**
+   * The Date object associated with the selected option. For freeform TimePicker it can also be the Date object parsed from the user input.
+   */
   selectedTime: Date | undefined;
+  /**
+   * The display text for the selected option. For freeform TimePicker it can also be the value in user input.
+   */
   selectedTimeText: string | undefined;
+  /**
+   * The error type for the selected option.
+   */
   error: TimePickerErrorType | undefined;
 };
 
@@ -145,7 +154,7 @@ export type TimePickerProps = Omit<
 export type TimePickerState = ComboboxState &
   Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
     /**
-     * Selected time text
+     * Submitted text from the input field. It is used to determine if the input value has changed when user submit a new value on Enter or blur from input.
      */
-    selectedTimeText: string | undefined;
+    submittedText: string | undefined;
   };
