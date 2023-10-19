@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "breaking: Update Datepicker to use react-calendar-compat and remove Calendar related exports.",
+  "comment": "BREAKING: Update Datepicker to use react-calendar-compat and remove Calendar related exports.",
   "packageName": "@fluentui/react-datepicker-compat",
   "email": "esteban.230@hotmail.com",
   "dependentChangeType": "patch"
