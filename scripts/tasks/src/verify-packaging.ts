@@ -50,7 +50,9 @@ export function verifyPackaging() {
   assert.doesNotMatch(processedResult, /\.babelrc\.json/i, `wont ship configuration files`);
   assert.doesNotMatch(processedResult, /\.swcrc/i, `wont ship configuration files`);
 
-  if (isV8package || tags.indexOf('ships-amd') !== -1) {
-    assert.match(processedResult, /lib-amd\/[.a-z0-9/-_]+(.js|.map)/i, 'ships amd');
-  }
+  // @FIXME `amd` is created only on release pipeline where `--production` flag is used on build commands which triggers it
+  // we should enable this also on PR pipelines - need to verify time execution impact
+  // if (isV8package || tags.indexOf('ships-amd') !== -1) {
+  //   assert.match(processedResult, /lib-amd\/[.a-z0-9/-_]+(.js|.map)/i, 'ships amd');
+  // }
 }
