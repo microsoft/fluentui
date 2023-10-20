@@ -80,7 +80,7 @@
     "@babel/preset-typescript": "7.21.5",
     "@babel/register": "7.21.0",
     "@babel/standalone": "7.21.8",
-    "@babel/traverse": "7.21.5",
+    "@babel/traverse": "7.23.2",
     "@babel/types": "7.21.5",
     "@cactuslab/usepubsub": "^1.0.2",
     "@ctrl/tinycolor": "3.3.4",
