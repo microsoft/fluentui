@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Part 2 - Changes to onboard charting to fluent docsite",
+  "packageName": "@fluentui/react-charting",
+  "email": "atishay.jain@microsoft.com",
+  "dependentChangeType": "patch"
+}
