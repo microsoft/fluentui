@@ -36,7 +36,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     canUseDOM() ? createOverflowManager() : null,
   );
 
-  const [bindings, setBindings] = React.useState(() => createReactBindings(overflowManager));
+  const bindingsRef = React.useRef(createReactBindings(overflowManager));
 
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current) {
@@ -53,7 +53,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
         onUpdateOverflow: updateOverflowItems ?? (() => undefined),
       });
 
-      setBindings(createReactBindings(overflowManager));
+      bindingsRef.current = createReactBindings(overflowManager);
 
       return () => {
         overflowManager.disconnect();
@@ -70,7 +70,7 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   ]);
 
   return {
-    ...bindings,
+    ...bindingsRef.current,
     containerRef,
   };
 };
