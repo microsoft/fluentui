@@ -295,6 +295,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
                 <ul
                   className={ this._classNames.list }
                   onKeyDown={ this._onKeyDown }
+                  role='presentation'
                 >
                   { items.map((item, index) => {
                     const menuItem = this._renderMenuItem(item, index, indexCorrection, totalItemCount, hasCheckmarks, hasIcons);
@@ -412,7 +413,7 @@ export class ContextualMenu extends BaseComponent<IContextualMenuProps, IContext
           key={ section.key }
         >
           <div role='group'>
-            <ul className={ this._classNames.list }>
+            <ul className={ this._classNames.list } role='presentation'>
               { section.topDivider && this._renderSeparator(index, menuClassNames, true, true) }
               { headerItem && this._renderListItem(headerItem, item.key || index, menuClassNames, item.title) }
               { section.items.map((contextualMenuItem, itemsIndex) => (

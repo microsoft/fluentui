@@ -87,6 +87,11 @@ export interface IDialogContentProps extends React.Props<DialogContentBase> {
   * @default DialogType.normal
   */
   type?: DialogType;
+
+  /**
+   * The heading level of title in dialog
+   */
+   titleAriaLevel?: number;
 }
 
 export enum DialogType {

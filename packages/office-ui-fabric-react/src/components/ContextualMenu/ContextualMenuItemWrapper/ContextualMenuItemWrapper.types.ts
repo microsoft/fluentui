@@ -2,7 +2,7 @@ import { IContextualMenuItem, IContextualMenuItemProps } from '../../ContextualM
 import { IMenuItemClassNames } from '../ContextualMenu.classNames';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 
-export interface IContextualMenuItemWrapperProps extends React.Props<IContextualMenuItem> {
+export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<IContextualMenuItem> {
   /**
    * Optional callback to access the ContextualMenuSplitButton interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -92,7 +92,9 @@ export interface IContextualMenuItemWrapperProps extends React.Props<IContextual
 
   /**
    * Callback to get the subMenu ID for an IContextualMenuItem.
+   * @deprecated ID relationship between a menu button and menu isn't necessary
    */
+  // eslint-disable-next-line deprecation/deprecation
   getSubMenuId?: (item: IContextualMenuItem) => string | undefined;
 
   /**

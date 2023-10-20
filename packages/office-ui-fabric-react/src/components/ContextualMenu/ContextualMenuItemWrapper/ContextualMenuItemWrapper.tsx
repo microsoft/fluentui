@@ -3,7 +3,6 @@ import {
   BaseComponent
 } from '../../../Utilities';
 import { IContextualMenuItemWrapperProps } from './ContextualMenuItemWrapper.types';
-import { IContextualMenuItem } from '../../ContextualMenu';
 
 export class ContextualMenuItemWrapper extends BaseComponent<IContextualMenuItemWrapperProps, {}> {
 
@@ -39,13 +38,6 @@ export class ContextualMenuItemWrapper extends BaseComponent<IContextualMenuItem
     const { item, onItemMouseMove } = this.props;
     if (onItemMouseMove) {
       onItemMouseMove(item, ev, ev.currentTarget as HTMLElement);
-    }
-  }
-
-  protected _getSubMenuId = (item: IContextualMenuItem): string | undefined => {
-    const { getSubMenuId } = this.props;
-    if (getSubMenuId) {
-      return getSubMenuId(item);
     }
   }
 
