@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added missing xAxisCalloutData param while fetching callout data",
-  "packageName": "@fluentui/react-charting",
-  "email": "shubhabrata08@gmail.com",
-  "dependentChangeType": "patch"
-}

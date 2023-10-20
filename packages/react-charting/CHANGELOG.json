@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 20 Oct 2023 07:35:43 GMT",
+      "tag": "@fluentui/react-charting_v5.18.8",
+      "version": "5.18.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8f2eb85fcde38ad239b1defcb0914263d01c2534",
+            "comment": "Added missing xAxisCalloutData param while fetching callout data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Oct 2023 07:49:09 GMT",
       "tag": "@fluentui/react-charting_v5.18.7",
       "version": "5.18.7",

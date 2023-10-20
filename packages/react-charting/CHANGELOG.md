@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Wed, 18 Oct 2023 07:49:09 GMT and should not be manually modified.
+This log was last generated on Fri, 20 Oct 2023 07:35:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.18.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.8)
+
+Fri, 20 Oct 2023 07:35:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.7..@fluentui/react-charting_v5.18.8)
+
+### Patches
+
+- Added missing xAxisCalloutData param while fetching callout data ([PR #29547](https://github.com/microsoft/fluentui/pull/29547) by shubhabrata08@gmail.com)
 
 ## [5.18.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.7)
 
