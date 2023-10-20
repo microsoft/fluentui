@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: Classnames removed and added to day cells need to be split instead of providing a string with spaces.",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
