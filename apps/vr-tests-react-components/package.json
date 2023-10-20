@@ -25,6 +25,7 @@
     "@fluentui/react-badge": "*",
     "@fluentui/react-breadcrumb-preview": "*",
     "@fluentui/react-button": "*",
+    "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-card": "*",
     "@fluentui/react-checkbox": "*",
     "@fluentui/react-combobox": "*",

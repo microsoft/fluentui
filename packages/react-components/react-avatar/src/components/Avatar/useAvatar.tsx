@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, mergeCallbacks, useId, slot } from '@fluentui/react-utilities';
 import { getInitials } from '../../utils/index';
 import type { AvatarNamedColor, AvatarProps, AvatarState } from './Avatar.types';
 import { PersonRegular } from '@fluentui/react-icons';
@@ -33,7 +33,7 @@ export const useAvatar_unstable = (props: AvatarProps, ref: React.Ref<HTMLElemen
   const baseId = useId('avatar-');
 
   const root: AvatarState['root'] = slot.always(
-    getNativeElementProps(
+    getIntrinsicElementProps(
       'span',
       {
         role: 'img',

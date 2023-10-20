@@ -4,6 +4,7 @@ import descriptionMd from './TimePickerDescription.md';
 import bestPracticesMd from './TimePickerBestPractices.md';
 
 export { Default } from './TimePickerDefault.stories';
+export { CustomTimeString } from './TimePickerCustomTimeString.stories';
 
 export default {
   title: 'Preview Components/TimePicker',

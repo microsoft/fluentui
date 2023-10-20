@@ -2,6 +2,39 @@
   "name": "@fluentui/react-link",
   "entries": [
     {
+      "date": "Wed, 18 Oct 2023 17:54:04 GMT",
+      "tag": "@fluentui/react-link_v9.1.29",
+      "version": "9.1.29",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.18",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-tabster to v9.14.0",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-link",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Oct 2023 14:55:44 GMT",
       "tag": "@fluentui/react-link_v9.1.28",
       "version": "9.1.28",

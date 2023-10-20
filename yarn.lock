@@ -5342,10 +5342,10 @@
     "@types/node" "*"
     form-data "^3.0.0"
 
-"@types/node@*", "@types/node@16.18.1", "@types/node@>=10.0.0", "@types/node@^14.0.10 || ^16.0.0", "@types/node@^14.14.20 || ^16.0.0":
-  version "16.18.1"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.1.tgz#fd860a5efc505a5417d25a99cbff78077447a391"
-  integrity sha512-Z659t5cj2Tt2SaqbJxXRo5EaU86E4l2CxtklCY1VftxYXhR81Z75UsugwdI7l5MUAR1I+l8sdt3B5Y++ZV76WQ==
+"@types/node@*", "@types/node@16.18.58", "@types/node@>=10.0.0", "@types/node@^14.0.10 || ^16.0.0", "@types/node@^14.14.20 || ^16.0.0":
+  version "16.18.58"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-16.18.58.tgz#bf66f63983104ed57c754f4e84ccaf16f8235adb"
+  integrity sha512-YGncyA25/MaVtQkjWW9r0EFBukZ+JulsLcVZBlGUfIb96OBMjkoRWwQo5IEWJ8Fj06Go3GHw+bjYDitv6BaGsA==
 
 "@types/node@12.20.24":
   version "12.20.24"
@@ -16739,10 +16739,10 @@ karma@6.4.0:
     ua-parser-js "^0.7.30"
     yargs "^16.1.1"
 
-keyborg@^2.0.0:
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.0.0.tgz#937e0346bb4e438c0cf26ca6989c56820b4754f6"
-  integrity sha512-RWY8nWrzRkwTQLaKyDtbTu5SOb5L4B20UzAsBHlQDFZqVY/+Mid0bQ7MVTC8vbOTrWY2xkkzj8gZF9Ua7re4xA==
+keyborg@^2.0.0, keyborg@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.1.0.tgz#e6975b83ade58bef7bed13d6e107b9ed2b98ccd3"
+  integrity sha512-0+v3/GIYG6gClwBOXrHet31n1UJW49xbKgVPUu6we41aq9tAmMosVXEdctZxsQdebyxtrcxVTkvHjBD1XPOHwg==
 
 keygrip@~1.1.0:
   version "1.1.0"
@@ -23934,10 +23934,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@^4.7.0:
-  version "4.7.0"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.7.0.tgz#0c12e9e14e83a950e3a97e35ead17c255e8f2772"
-  integrity sha512-8+arpE2WOvhdU2bvU5GEaoaICbLBNNh8WhW9q85KeSOg4sIvRPfAI2/j18UxUnKT8Fv32zkbvEfToEf9Y1Sfug==
+tabster@^4.8.0:
+  version "4.8.0"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-4.8.0.tgz#e1f9b5c7c8e4b642d6a91e243de0dfc09d8cacc5"
+  integrity sha512-R1ib3x0Rd+iepvrzXdEkd2Qa2O5dV7jaZtR4BhkhE9sBYMolbVc6EgHGTHBQvdXQBdU8I2MXCMn0c6jarJb+GA==
   dependencies:
     keyborg "^2.0.0"
     tslib "^2.3.1"
