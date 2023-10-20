@@ -21,8 +21,8 @@ describe('WindowProvider', () => {
   });
 
   it('can override defaults', () => {
-    const mockDocument = ({} as unknown) as Document;
-    const mockWindow = ({ document: mockDocument } as unknown) as Window;
+    const mockDocument = {} as unknown as Document;
+    const mockWindow = { document: mockDocument } as unknown as Window;
 
     render(
       <WindowProvider window={mockWindow}>

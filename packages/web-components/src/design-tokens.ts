@@ -332,9 +332,9 @@ export const neutralLayerCardContainerRecipe = createNonCss<ColorRecipe>(
 });
 
 /** @public */
-export const neutralLayerCardContainer = create<Swatch>(
-  'neutral-layer-card-container',
-).withDefault((element: HTMLElement) => neutralLayerCardContainerRecipe.getValueFor(element).evaluate(element));
+export const neutralLayerCardContainer = create<Swatch>('neutral-layer-card-container').withDefault(
+  (element: HTMLElement) => neutralLayerCardContainerRecipe.getValueFor(element).evaluate(element),
+);
 
 // Neutral Layer Floating
 /** @public */

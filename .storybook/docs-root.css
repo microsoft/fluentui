@@ -174,7 +174,7 @@
   }
 }
 
-/* Make storybook-addon-export-to-codesandbox button match Figma design */
+/* Make storybook codesandbox export button match Figma design */
 .docs-story .with-code-sandbox-button {
   right: 105px !important;
 }
@@ -340,6 +340,12 @@
 
 #docs-root .sbdocs-preview .prismjs {
   overflow: hidden;
+}
+
+#docs-root .os-content .prismjs * {
+  font-family: 'Cascadia Code', Menlo, 'Courier New', Courier, monospace;
+  font-size: 14px;
+  line-height: 1.4em;
 }
 
 #docs-root .sbdocs-preview .prismjs code {

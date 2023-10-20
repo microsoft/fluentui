@@ -271,7 +271,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       },
       hasCustomNavigation && {
         paddingTop: 'inherit',
-      }
+      },
     ],
     navigation: [
       classNames.navigation,

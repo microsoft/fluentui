@@ -3,8 +3,18 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 /**
  * Sizes for the avatar
+ * @deprecated use AvatarSize instead
  */
-export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarSizes = AvatarSize;
+/**
+ * Sizes for the avatar
+ */
+export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+
+/**
+ * Shape of the avatar
+ */
+export type AvatarShape = 'circular' | 'square';
 
 export type AvatarSlots = {
   root: Slot<'span'>;
@@ -115,7 +125,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
   /**
    * The name of the person or entity represented by this Avatar. This should always be provided if it is available.
    *
-   * The name will be used to determine the initials displayed when there is no icon, as well as provided to
+   * The name is used to determine the initials displayed when there is no image. It is also provided to
    * accessibility tools.
    */
   name?: string;
@@ -124,7 +134,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    * The avatar can have a circular or square shape.
    * @default circular
    */
-  shape?: 'circular' | 'square';
+  shape?: AvatarShape;
 
   /**
    * Size of the avatar in pixels.
@@ -142,7 +152,7 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
    *
    * @default 32
    */
-  size?: AvatarSizes;
+  size?: AvatarSize;
 };
 
 /**

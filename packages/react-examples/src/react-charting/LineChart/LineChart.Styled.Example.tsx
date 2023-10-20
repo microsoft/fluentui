@@ -6,8 +6,8 @@ import {
   LineChart,
   ChartHoverCard,
   ICustomizedCalloutData,
+  DataVizPalette,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
 
 interface IStyledLineChartExampleState {
   width: number;
@@ -45,11 +45,11 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
           { x: new Date('2018/01/26'), y: 35 },
           { x: new Date('2018/01/29'), y: 90 },
         ],
-        legend: 'Week',
+        legend: 'first legend',
         lineOptions: {
           lineBorderWidth: '4',
         },
-        color: DefaultPalette.blue,
+        color: DataVizPalette.color10,
       },
     ];
 
@@ -88,7 +88,6 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
             data={data}
             strokeWidth={4}
             yMaxValue={90}
-            hideLegend={true}
             showXAxisLablesTooltip
             height={this.state.height}
             width={this.state.width}
@@ -105,6 +104,14 @@ export class LineChartStyledExample extends React.Component<{}, IStyledLineChart
                 />
               ) : null
             }
+            enablePerfOptimization={true}
+            legendProps={{
+              styles: {
+                legend: {
+                  textTransform: 'none',
+                },
+              },
+            }}
           />
         </div>
       </>

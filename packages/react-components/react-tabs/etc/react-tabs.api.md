@@ -6,7 +6,11 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import { SlotClassNames } from '@fluentui/react-utilities';
@@ -73,6 +77,9 @@ export type TabListProps = ComponentProps<TabListSlots> & {
 };
 
 // @public (undocumented)
+export const TabListProvider: Provider<TabListContextValue> & FC<ProviderProps<TabListContextValue>>;
+
+// @public (undocumented)
 export type TabListSlots = {
     root: Slot<'div'>;
 };
@@ -100,7 +107,7 @@ export type TabSlots = {
 };
 
 // @public
-export type TabState = ComponentState<TabSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
+export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
     appearance?: 'transparent' | 'subtle';
     iconOnly: boolean;
     selected: boolean;
@@ -117,6 +124,12 @@ export const useTab_unstable: (props: TabProps, ref: React_2.Ref<HTMLElement>) =
 
 // @public
 export const useTabList_unstable: (props: TabListProps, ref: React_2.Ref<HTMLElement>) => TabListState;
+
+// @public (undocumented)
+export const useTabListContext_unstable: <T>(selector: ContextSelector<TabListContextValue, T>) => T;
+
+// @public (undocumented)
+export function useTabListContextValues_unstable(state: TabListState): TabListContextValues;
 
 // @public
 export const useTabListStyles_unstable: (state: TabListState) => TabListState;

@@ -8,7 +8,8 @@ const componentUrl =
 export const SnackbarPageProps: TFabricPlatformPageProps = {
   android: {
     title: 'Snackbar',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SnackbarPage/docs/android/SnackbarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/SnackbarPage/docs/android/SnackbarOverview.md') as string,
     related,
     componentUrl,
   },

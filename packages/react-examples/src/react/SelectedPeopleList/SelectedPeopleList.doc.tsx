@@ -5,8 +5,10 @@ import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 import { SelectedPeopleListBasicExample } from './SelectedPeopleList.Basic.Example';
 import { SelectedPeopleListControlledExample } from './SelectedPeopleList.Controlled.Example';
 
-const SelectedPeopleListBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/SelectedPeopleList.Basic.Example.tsx') as string;
-const SelectedPeopleListControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/SelectedPeopleList.Controlled.Example.tsx') as string;
+const SelectedPeopleListBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/SelectedPeopleList.Basic.Example.tsx') as string;
+const SelectedPeopleListControlledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/SelectedPeopleList/SelectedPeopleList.Controlled.Example.tsx') as string;
 
 export const SelectedPeopleListPageProps: IDocPageProps = {
   title: 'SelectedPeopleList',

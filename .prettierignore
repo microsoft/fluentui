@@ -17,6 +17,7 @@ lib-amd
 lib-esm
 lib-commonjs
 dist
+temp
 common/changes
 common/scripts
 coverage

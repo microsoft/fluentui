@@ -58,6 +58,4 @@ export {
   useOptionGroup_unstable,
 } from './OptionGroup';
 export type { OptionGroupProps, OptionGroupSlots, OptionGroupState } from './OptionGroup';
-
-export { ComboboxField as ComboboxField_unstable, comboboxFieldClassNames } from './ComboboxField';
-export type { ComboboxFieldProps as ComboboxFieldProps_unstable } from './ComboboxField';
+export type { OptionOnSelectData, SelectionEvents } from './Selection';

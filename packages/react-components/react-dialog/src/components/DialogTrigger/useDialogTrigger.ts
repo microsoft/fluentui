@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { useModalAttributes } from '@fluentui/react-tabster';
 import { applyTriggerPropsToChildren, getTriggerChild, useEventCallback } from '@fluentui/react-utilities';
 import type { DialogTriggerProps, DialogTriggerState } from './DialogTrigger.types';
 import { useDialogContext_unstable, useDialogSurfaceContext_unstable } from '../../contexts';
 import { useARIAButtonProps } from '@fluentui/react-aria';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render DialogTrigger.
@@ -19,8 +19,6 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
   const child = getTriggerChild(children);
 
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
-  const open = useDialogContext_unstable(ctx => ctx.open);
-
   const { triggerAttributes } = useModalAttributes();
 
   const handleClick = useEventCallback(
@@ -38,7 +36,6 @@ export const useDialogTrigger_unstable = (props: DialogTriggerProps): DialogTrig
 
   const triggerChildProps = {
     ...child?.props,
-    'aria-expanded': open,
     ref: child?.ref,
     onClick: handleClick,
     ...triggerAttributes,

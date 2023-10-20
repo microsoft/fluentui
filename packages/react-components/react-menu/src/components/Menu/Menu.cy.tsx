@@ -132,6 +132,41 @@ describe('MenuTrigger', () => {
     );
     cy.get(menuTriggerSelector).should('not.be.focused');
   });
+
+  it('should not focus itself after re-render', () => {
+    const Example = () => {
+      const [count, setCount] = React.useState(0);
+
+      React.useEffect(() => {
+        // trigger 2 re-renders to make sure that the focus effect has finished running
+        // after first re-render
+        if (count < 2) {
+          setCount(c => c + 1);
+        }
+      }, [count]);
+
+      return (
+        <>
+          <Menu>
+            <MenuTrigger disableButtonEnhancement>
+              <button data-status={count < 2 ? 'incomplete' : 'complete'} id={menuTriggerId}>
+                Menu
+              </button>
+            </MenuTrigger>
+            <MenuPopover>
+              <MenuList>
+                <MenuItem>Item</MenuItem>
+              </MenuList>
+            </MenuPopover>
+          </Menu>
+          <input type="text" />
+        </>
+      );
+    };
+
+    mount(<Example />);
+    cy.get(menuTriggerSelector).should('have.attr', 'data-status', 'complete').should('not.be.focused');
+  });
 });
 
 describe('Custom Trigger', () => {
@@ -391,6 +426,27 @@ describe('MenuItemRadio', () => {
 });
 
 describe('Menu', () => {
+  it('should not focus trigger on dismiss if another element is focused', () => {
+    mount(
+      <>
+        <Menu>
+          <MenuTrigger disableButtonEnhancement>
+            <button id={menuTriggerId}>Menu</button>
+          </MenuTrigger>
+          <MenuPopover>
+            <MenuList>
+              <MenuItem>Item</MenuItem>
+            </MenuList>
+          </MenuPopover>
+        </Menu>
+        <input type="text" />
+      </>,
+    );
+    cy.get(menuTriggerSelector).click().get(menuSelector).should('exist').get('input').realClick();
+
+    cy.get('input').should('be.focused');
+  });
+
   it('should be dismissed with Escape', () => {
     mount(
       <Menu>
@@ -936,9 +992,7 @@ describe(`Nested Menus`, () => {
       });
 
       it('should move focus out of document if menu trigger is the last focusable element in DOM', () => {
-        mount(
-          <Example />,
-        );
+        mount(<Example />);
 
         cy.get(menuTriggerSelector)
           .click()
@@ -997,6 +1051,14 @@ describe('Context menu', () => {
     cy.get(menuTriggerSelector).rightclick().get(menuSelector).should('exist');
   });
 
+  it('should not open if event is prevented', () => {
+    mount(<ContextMenuExample />);
+    cy.get(menuTriggerSelector).then(([trigger]) => {
+      trigger.addEventListener('contextmenu', e => e.preventDefault(), { capture: true, once: true });
+    });
+    cy.get(menuTriggerSelector).rightclick().get(menuSelector).should('not.exist');
+  });
+
   it('should close when the trigger is clicked', () => {
     mount(<ContextMenuExample />);
 
@@ -1007,7 +1069,9 @@ describe('Context menu', () => {
       .get(menuTriggerSelector)
       .click()
       .get(menuSelector)
-      .should('not.exist');
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
   });
 
   it('should close on scroll outside', () => {
@@ -1019,6 +1083,21 @@ describe('Context menu', () => {
       .get('body')
       .trigger('wheel')
       .get(menuSelector)
-      .should('not.exist');
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
+  });
+
+  it('should restore focus on escape', () => {
+    mount(<ContextMenuExample />);
+    cy.get(menuTriggerSelector)
+      .rightclick()
+      .get(menuSelector)
+      .should('exist')
+      .focused()
+      .type('{esc}')
+      .should('not.exist')
+      .get(menuTriggerSelector)
+      .should('have.focus');
   });
 });

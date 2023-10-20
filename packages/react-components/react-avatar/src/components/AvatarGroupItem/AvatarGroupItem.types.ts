@@ -1,5 +1,5 @@
 import { AvatarGroupProps } from '../AvatarGroup/AvatarGroup.types';
-import type { Avatar, AvatarSizes } from '../../Avatar';
+import type { Avatar, AvatarSize } from '../../Avatar';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
 export type AvatarGroupItemSlots = {
@@ -34,5 +34,5 @@ export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
   isOverflowItem?: boolean;
 
   layout: AvatarGroupProps['layout'];
-  size: AvatarSizes;
+  size: AvatarSize;
 };

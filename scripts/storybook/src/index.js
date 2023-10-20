@@ -1,3 +1,10 @@
+const rules = require('./rules');
+const { getPackageStoriesGlob, loadWorkspaceAddon, registerRules, registerTsPaths } = require('./utils');
+
 module.exports = {
-  ...require('./utils'),
+  getPackageStoriesGlob,
+  loadWorkspaceAddon,
+  registerRules,
+  registerTsPaths,
+  rules,
 };

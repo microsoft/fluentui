@@ -1,7 +1,27 @@
+import { isHTMLElement, setVirtualParent } from '@fluentui/react-utilities';
 import * as React from 'react';
+
 import { usePortalMountNode } from './usePortalMountNode';
-import { setVirtualParent } from '../../virtualParent/index';
 import type { PortalProps, PortalState } from './Portal.types';
+
+export function toMountNodeProps(mountNode: PortalProps['mountNode']): {
+  element?: HTMLElement | null;
+  className?: string;
+} {
+  if (isHTMLElement(mountNode)) {
+    return { element: mountNode };
+  }
+
+  if (typeof mountNode === 'object') {
+    if (mountNode === null) {
+      return { element: null };
+    }
+
+    return mountNode;
+  }
+
+  return {};
+}
 
 /**
  * Create the state required to render Portal.
@@ -11,14 +31,14 @@ import type { PortalProps, PortalState } from './Portal.types';
  * @param props - props from this instance of Portal
  */
 export const usePortal_unstable = (props: PortalProps): PortalState => {
-  const { children, mountNode } = props;
+  const { element, className } = toMountNodeProps(props.mountNode);
 
   const virtualParentRootRef = React.useRef<HTMLSpanElement>(null);
-  const fallbackMountNode = usePortalMountNode({ disabled: !!mountNode });
+  const fallbackElement = usePortalMountNode({ disabled: !!element, className });
 
   const state: PortalState = {
-    children,
-    mountNode: mountNode ?? fallbackMountNode,
+    children: props.children,
+    mountNode: element ?? fallbackElement,
     virtualParentRootRef,
   };
 
@@ -27,7 +47,9 @@ export const usePortal_unstable = (props: PortalProps): PortalState => {
       setVirtualParent(state.mountNode, state.virtualParentRootRef.current);
     }
     return () => {
-      if (state.mountNode) {setVirtualParent(state.mountNode, undefined);}
+      if (state.mountNode) {
+        setVirtualParent(state.mountNode, undefined);
+      }
     };
   }, [state.virtualParentRootRef, state.mountNode]);
 

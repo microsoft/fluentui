@@ -390,6 +390,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -522,6 +524,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -654,6 +658,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1225,6 +1231,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1357,6 +1365,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1489,6 +1499,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1754,11 +1766,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   onKeyDown={[Function]}
   onMouseDownCapture={[Function]}
   role="row"
-  style={
-    Object {
-      "minWidth": 0,
-    }
-  }
 >
   <div
     className=
@@ -2169,21 +2176,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       
     </div>
   </div>
-  <span
-    aria-checked={false}
-    className=
-
-        {
-          bottom: 0px;
-          display: none;
-          left: 0px;
-          position: absolute;
-          right: 0px;
-          top: -1px;
-        }
-    data-selection-toggle={true}
-    role="checkbox"
-  />
 </div>
 `;
 
@@ -2577,6 +2569,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2709,6 +2703,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2841,6 +2837,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3412,6 +3410,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3544,6 +3544,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3676,6 +3678,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {

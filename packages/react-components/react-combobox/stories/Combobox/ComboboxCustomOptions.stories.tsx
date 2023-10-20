@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId } from '@fluentui/react-components';
+import { Combobox, makeStyles, Option, OptionGroup, shorthands, useId } from '@fluentui/react-components';
+import type { ComboboxProps, OptionProps, OptionGroupProps } from '@fluentui/react-components';
 import { CheckmarkCircle20Filled } from '@fluentui/react-icons';
-import { Combobox, Option, OptionGroup } from '@fluentui/react-combobox';
-import type { ComboboxProps, OptionProps, OptionGroupProps } from '@fluentui/react-combobox';
 
 const CustomOption = (props: OptionProps) => {
   return <Option {...props} checkIcon={<CheckmarkCircle20Filled />} />;
 };
 
 const CustomOptionGroup = (props: Partial<OptionGroupProps> & { options: string[] }) => {
-  const labelSlot = typeof props.label === 'object' ? props.label : { children: props.label };
+  const { label, options, ...optionGroupProps } = props;
+  const labelSlot = typeof label === 'object' ? label : { children: label };
 
   return (
-    <OptionGroup label={{ style: { fontStyle: 'italic' }, ...labelSlot }}>
-      {props.options.map(option => (
+    <OptionGroup label={{ style: { fontStyle: 'italic' }, ...labelSlot }} {...optionGroupProps}>
+      {options.map(option => (
         <CustomOption key={option} disabled={option === 'Ferret'}>
           {option}
         </CustomOption>
@@ -60,7 +60,11 @@ export const CustomOptions = (props: Partial<ComboboxProps>) => {
 CustomOptions.parameters = {
   docs: {
     description: {
-      story: 'Options and OptionGroups can be extended and customized.',
+      story:
+        'Options and OptionGroups can be extended and customized.' +
+        'Here `OptionGroup` is wrapped in `CustomOptionGroup`,' +
+        'which adds a custom label style and takes an `options` array prop which is mapped to child Option elements.' +
+        '`Option` is also wrapped in `CustomOption`, which adds a custom check icon.',
     },
   },
 };

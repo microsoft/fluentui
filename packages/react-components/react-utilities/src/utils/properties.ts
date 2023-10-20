@@ -19,6 +19,8 @@ const toObjectMap = (...items: (string[] | Record<string, number>)[]) => {
  */
 export const baseElementEvents = toObjectMap([
   'onAuxClick',
+  'onAnimationEnd',
+  'onAnimationStart',
   'onCopy',
   'onCut',
   'onPaste',

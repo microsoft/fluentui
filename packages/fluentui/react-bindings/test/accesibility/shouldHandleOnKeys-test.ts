@@ -26,18 +26,15 @@ describe('shouldHandleOnKeys', () => {
       { keyCode: 39, ctrlKey: true },
       { keyCode: 42, altKey: true, ctrlKey: true, shiftKey: true, metaKey: true },
     ];
-    const events = [
-      ...keyCombinations,
-      { keyCode: 27, altKey: true },
-      { keyCode: 27, altKey: false },
-    ].map(keyCombination =>
-      getEventArg(
-        keyCombination.keyCode,
-        keyCombination.altKey,
-        keyCombination.ctrlKey,
-        keyCombination.metaKey,
-        keyCombination.shiftKey,
-      ),
+    const events = [...keyCombinations, { keyCode: 27, altKey: true }, { keyCode: 27, altKey: false }].map(
+      keyCombination =>
+        getEventArg(
+          keyCombination.keyCode,
+          keyCombination.altKey,
+          keyCombination.ctrlKey,
+          keyCombination.metaKey,
+          keyCombination.shiftKey,
+        ),
     );
 
     events.forEach(event => {

@@ -1,6 +1,7 @@
-const path = require('path');
+const { execSync } = require('child_process');
 const fs = require('fs');
-const { spawn, spawnSync } = require('child_process');
+const path = require('path');
+
 const { findGitRoot } = require('@fluentui/scripts-monorepo');
 
 const repoRoot = findGitRoot();
@@ -35,13 +36,12 @@ function getPrettierBinary() {
  *
  * @param {string[]} files - List of files for which to run prettier
  * @param {Object} config
- * @param {boolean=} config.runAsync - Whether to run the command synchronously or asynchronously
  * @param {boolean=} config.logErrorsOnly - If true, log errors/warnings only. Otherwise log all output.
  * @param {boolean=} config.check - run prettier in check mode
- * @returns A promise if run asynchronously, or nothing if run synchronously
+ * @returns {boolean} - true if all files pass formatting or no prettierSupportedFiles match
  */
 function runPrettier(files, config = {}) {
-  const { check, logErrorsOnly, runAsync } = config;
+  const { check, logErrorsOnly } = config;
 
   const fileIsGlob = files.length === 1 && files[0].includes('*');
 
@@ -53,8 +53,9 @@ function runPrettier(files, config = {}) {
       });
 
   if (!prettierSupportedFiles.length) {
+    console.log('prettier: No supported files found');
     // Exit if there are no supported files (otherwise it will hang forever waiting for stdin)
-    return;
+    return true;
   }
 
   // As of writing, Prettier's Node API (https://prettier.io/docs/en/api.html) only supports running
@@ -71,11 +72,12 @@ function runPrettier(files, config = {}) {
     ...prettierSupportedFiles,
   ].join(' ');
 
-  if (runAsync) {
-    return spawn(cmd, { shell: true });
+  try {
+    execSync(cmd, { stdio: 'inherit' });
+    return true;
+  } catch {
+    return false;
   }
-
-  return spawnSync(cmd, { shell: true });
 }
 
 /**
@@ -83,13 +85,12 @@ function runPrettier(files, config = {}) {
  *
  * @param {string} folderPath Path to the folder for which to run prettier
  * @param {Object} config
- * @param {boolean=} config.runAsync - Whether to run the command synchronously or asynchronously
  * @param {boolean=} config.nonRecursive - If true, don't add a multi-folder glob to the path.
  * @param {boolean=} config.check - run prettier in check mode
- * @returns A promise if run asynchronously, or nothing if run synchronously
+ * @returns
  */
 function runPrettierForFolder(folderPath, config = {}) {
-  const { check, nonRecursive, runAsync } = config;
+  const { check, nonRecursive } = config;
   if (!path.isAbsolute(folderPath)) {
     folderPath = path.join(repoRoot, folderPath);
   }
@@ -99,7 +100,7 @@ function runPrettierForFolder(folderPath, config = {}) {
 
   console.log(`Running prettier for ${sourcePath}`);
 
-  return runPrettier([sourcePath], { runAsync, logErrorsOnly: true, check });
+  return runPrettier([sourcePath], { logErrorsOnly: true, check });
 }
 
 module.exports = { runPrettierForFolder, runPrettier, prettierSupportedFileExtensionsByContext };

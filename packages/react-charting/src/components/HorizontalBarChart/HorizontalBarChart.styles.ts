@@ -1,8 +1,12 @@
 import { FontSizes, FontWeights } from '@fluentui/react/lib/Styling';
-import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
+import {
+  HorizontalBarChartVariant,
+  IHorizontalBarChartStyleProps,
+  IHorizontalBarChartStyles,
+} from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
-  const { className, theme, width, barHeight, showTriangle } = props;
+  const { className, theme, width, barHeight, showTriangle, variant, hideLabels } = props;
   const { palette } = theme!;
 
   return {
@@ -15,17 +19,15 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       className,
     ],
     items: {
-      marginBottom: showTriangle ? '16px' : '10px',
+      marginBottom: showTriangle || variant === HorizontalBarChartVariant.AbsoluteScale ? '16px' : '10px',
     },
     chart: {
       width: '100%',
       height: barHeight ? barHeight : 12,
       display: 'block',
+      overflow: 'visible',
     },
-    barWrapper: {
-      stroke: theme.palette.white,
-      strokeWidth: 2,
-    },
+    barWrapper: {},
     chartTitle: {
       ...theme.fonts.small,
       display: 'flex',
@@ -36,8 +38,8 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       overflow: 'hidden',
       whiteSpace: 'nowrap',
       display: 'block',
-      color: '#171717',
-      marginBottom: '5px',
+      color: theme.palette.neutralPrimary,
+      marginBottom: variant === HorizontalBarChartVariant.AbsoluteScale ? '4px' : '5px',
     },
     chartTitleRight: {
       fontSize: FontSizes.medium,
@@ -63,6 +65,14 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       borderTopColor: palette.blue,
       marginBottom: '4px',
       position: 'absolute',
+    },
+    barLabel: {
+      ...theme.fonts.small,
+      fontWeight: FontWeights.semibold,
+      fill: theme.palette.neutralPrimary,
+    },
+    chartWrapper: {
+      paddingRight: variant === HorizontalBarChartVariant.AbsoluteScale && !hideLabels ? 40 : 0,
     },
   };
 };

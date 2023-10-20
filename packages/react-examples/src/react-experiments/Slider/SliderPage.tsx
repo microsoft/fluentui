@@ -7,10 +7,12 @@ import {
 } from '@fluentui/react-docsite-components';
 
 import { SliderExample } from './Slider.Example';
-const SliderExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slider/Slider.Example.tsx') as string;
+const SliderExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slider/Slider.Example.tsx') as string;
 
 import { SliderVerticalExample } from './Slider.Vertical.Example';
-const SliderVerticalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slider/Slider.Vertical.Example.tsx') as string;
+const SliderVerticalExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-experiments/Slider/Slider.Vertical.Example.tsx') as string;
 
 export class SliderPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

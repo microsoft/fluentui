@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-component-ref",
   "description": "A set of components and utils to deal with React refs.",
-  "version": "0.66.0",
+  "version": "0.66.4",
   "author": "Oleksandr Fediashov <olfedias@microsoft.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
@@ -10,10 +10,10 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "lerna-alias": "^3.0.3-0",
-    "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-babel": "*",
-    "@fluentui/scripts-jest": "*"
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-jest": "*",
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"

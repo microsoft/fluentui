@@ -41,7 +41,7 @@ export enum TooltipOverflowMode {
  * passed through to the Tooltip itself, rather than being used on the host element.
  * {@docCategory Tooltip}
  */
-export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
+export interface ITooltipHostProps extends Omit<React.HTMLAttributes<HTMLDivElement | TooltipHostBase>, 'content'> {
   /**
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

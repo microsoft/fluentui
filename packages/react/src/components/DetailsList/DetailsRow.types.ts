@@ -324,6 +324,9 @@ export interface IDetailsRowStyles {
   isMultiline: IStyle;
   fields: IStyle;
   cellMeasurer: IStyle;
-  checkCover: IStyle;
+  /**
+   * @deprecated Node removed, do not use
+   */
+  checkCover?: IStyle;
   check: IStyle;
 }

@@ -15,7 +15,7 @@ const CutIcon = bundleIcon(CutFilled, CutRegular);
 const PasteIcon = bundleIcon(ClipboardPasteFilled, ClipboardPasteRegular);
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 
-export const useMenuListContainerStyles = makeStyles({
+const useMenuListContainerStyles = makeStyles({
   container: {
     backgroundColor: tokens.colorNeutralBackground1,
     minWidth: '128px',

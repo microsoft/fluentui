@@ -1,12 +1,13 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
 import type { TableRowState, TableRowSlots } from './TableRow.types';
 
 /**
  * Render the final JSX of TableRow
  */
 export const renderTableRow_unstable = (state: TableRowState) => {
-  const { slots, slotProps } = getSlots<TableRowSlots>(state);
+  assertSlots<TableRowSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

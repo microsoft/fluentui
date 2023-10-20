@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { makeStyles, shorthands, useId, Persona } from '@fluentui/react-components';
-import { Dropdown, Option } from '@fluentui/react-combobox';
-import type { DropdownProps } from '@fluentui/react-combobox';
+import { Dropdown, makeStyles, Option, shorthands, useId, Persona } from '@fluentui/react-components';
+import type { DropdownProps } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -70,9 +69,10 @@ ComplexOptions.parameters = {
   docs: {
     description: {
       story:
-        'Options can have structured JSX children. ' +
-        "When this is the case, the Option's `text` prop should be a plain text version of the option, " +
-        "and is used as the Dropdown button's content when the option is selected.",
+        'Options are defined as JSX children, and can include nested elements or other components. ' +
+        "When this is the case, the Option's `text` prop should be the plain text version of the option, " +
+        "and is used as the Dropdown button's value when the option is selected. " +
+        'Options should never contain interactive elements, such as buttons or links.',
     },
   },
 };

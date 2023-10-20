@@ -8,6 +8,10 @@ import {
 } from '../../index';
 import { ILineChartLineOptions } from '../../types/index';
 
+/**
+ * IVerticalBarChartProps for VerticalBarchart component.
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -73,6 +77,12 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
    * options for the line drawn
    */
   lineOptions?: ILineChartLineOptions;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
@@ -85,43 +95,43 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
   /**
    * Style for the chart label.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   chartLabel?: IStyle;
 
   /**
    * Style for the line representing the domain of the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisText?: IStyle;
 
   /**
    * Style for the line representing the domain of the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisText?: IStyle;
 
@@ -129,4 +139,9 @@ export interface IVerticalBarChartStyles extends ICartesianChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
 }

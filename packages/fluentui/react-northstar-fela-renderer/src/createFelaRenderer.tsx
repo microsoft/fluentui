@@ -23,7 +23,7 @@ try {
   felaDevMode = !!window.localStorage.felaDevMode;
 } catch {}
 
-if (typeof window !== "undefined" && process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
+if (typeof window !== 'undefined' && process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
   if (felaDevMode) {
     /* eslint-disable-next-line no-console */
     console.warn(
@@ -145,7 +145,7 @@ export function createFelaRenderer(options: CreateFelaRendererOptions = {}): Cre
           theme: { direction: param.direction },
         };
 
-        return felaRenderer.renderRule(() => (styles as unknown) as IStyle, felaParam);
+        return felaRenderer.renderRule(() => styles as unknown as IStyle, felaParam);
       },
 
       // getOriginalRenderer() is implemented only for tests to be compatible with jest-react-fela expectations.

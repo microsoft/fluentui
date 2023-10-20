@@ -5,6 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import type { PopoverProps } from '@fluentui/react-popover';
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -358,7 +359,7 @@ describe('Popover', () => {
     describe('legacy focus trap behaviour', () => {
       it('Tab should not go to the window', () => {
         mount(
-          <Popover trapFocus legacyTrapFocus>
+          <Popover trapFocus>
             <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>
             </PopoverTrigger>
@@ -377,12 +378,56 @@ describe('Popover', () => {
         cy.contains('One').should('have.focus').realPress(['Shift', 'Tab']);
         cy.contains('Two').should('have.focus');
       });
+
+      it('should work as inertTrapFocus when set to false', () => {
+        mount(
+          <Popover legacyTrapFocus={false} trapFocus>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <button>One</button>
+              <button>Two</button>
+            </PopoverSurface>
+          </Popover>,
+        );
+
+        cy.get(popoverTriggerSelector).focus().realPress('Enter');
+
+        cy.contains('One').should('have.focus').realPress('Tab');
+        cy.contains('Two').should('have.focus').realPress('Tab');
+        cy.focused().should('not.exist');
+      });
+    });
+
+    describe('inert focus trap behaviour', () => {
+      it('Tab should go to the window', () => {
+        mount(
+          <Popover inertTrapFocus trapFocus>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <button>One</button>
+              <button>Two</button>
+            </PopoverSurface>
+          </Popover>,
+        );
+
+        cy.get(popoverTriggerSelector).focus().realPress('Enter');
+
+        cy.contains('One').should('have.focus').realPress('Tab');
+        cy.contains('Two').should('have.focus').realPress('Tab');
+        cy.focused().should('not.exist');
+      });
     });
 
     describe('trap focus behaviour', () => {
       it('should focus on PopoverSurface when its tabIndex is a number', () => {
         mount(
-          <Popover trapFocus legacyTrapFocus>
+          <Popover trapFocus>
             <PopoverTrigger disableButtonEnhancement>
               <button>Popover trigger</button>
             </PopoverTrigger>
@@ -402,6 +447,199 @@ describe('Popover', () => {
         cy.contains('One').should('have.focus').realPress(['Shift', 'Tab']);
         cy.contains('Two').should('have.focus');
       });
+    });
+  });
+
+  describe('with Iframe', () => {
+    const iframeContent = `<div id="iframecontent">
+  <button>Hello World!</button>
+</div>`;
+
+    const ExampleFrame = () => {
+      return <iframe title="frame" srcDoc={iframeContent} />;
+    };
+
+    it('should close when focus is on an external iframe', () => {
+      mount(
+        <>
+          <ExampleFrame />
+          <div />
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>This is a popover</PopoverSurface>
+          </Popover>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector).click().get('iframe').focus().get(popoverContentSelector).should('not.exist');
+    });
+
+    it('should not close when focus is on an internal iframe', () => {
+      mount(
+        <>
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>Popover trigger</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <ExampleFrame />
+            </PopoverSurface>
+          </Popover>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get('iframe')
+        .focus()
+        // wait is generally bad practice but since the iframe focus
+        // detection works through polling, set a value here where the
+        // the event would definitely dispatch
+        .wait(2000)
+        .get(popoverContentSelector)
+        .should('exist');
+    });
+
+    it('should not close when focus is on an internal iframe in a nested popover', () => {
+      mount(
+        <>
+          <Popover>
+            <PopoverTrigger disableButtonEnhancement>
+              <button>First</button>
+            </PopoverTrigger>
+
+            <PopoverSurface>
+              <Popover>
+                <PopoverTrigger>
+                  <button>Second</button>
+                </PopoverTrigger>
+                <PopoverSurface>
+                  <ExampleFrame />
+                </PopoverSurface>
+              </Popover>
+            </PopoverSurface>
+          </Popover>
+        </>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .first()
+        .click()
+        .get(popoverTriggerSelector)
+        .eq(1)
+        .click()
+        .get('iframe')
+        .focus()
+        // wait is generally bad practice but since the iframe focus
+        // detection works through polling, set a value here where the
+        // the event would definitely dispatch
+        .wait(2000)
+        .get(popoverContentSelector)
+        .should('have.length', 2);
+    });
+  });
+
+  describe('Without trapFocus', () => {
+    it('should restore focus on close', () => {
+      mount(
+        <Popover>
+          <PopoverTrigger>
+            <button id="trigger">trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button id="button">button</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('#trigger')
+        .click()
+        .get(popoverContentSelector)
+        .should('exist')
+        .get('#button')
+        .focus()
+        .type('{esc}')
+        .get(popoverContentSelector)
+        .should('not.exist')
+        .get('#trigger')
+        .should('have.focus');
+    });
+  });
+
+  describe('Opens menu', () => {
+    it('should keep focus in popover once menu is dismissed with mouse', () => {
+      mount(
+        <Popover trapFocus>
+          <PopoverTrigger>
+            <button>Popover trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <Menu>
+              <MenuTrigger disableButtonEnhancement>
+                <button id="menu-trigger">Menu trigger</button>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem id="first-item">Item a</MenuItem>
+                  <MenuItem>Item b</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get('#menu-trigger')
+        .click()
+        .get('#first-item')
+        .should('have.focus')
+        .get('#menu-trigger')
+        .click()
+        .get('#first-item')
+        .should('not.exist')
+        .get('#menu-trigger')
+        .should('have.focus');
+    });
+
+    it('should keep focus in popover once menu is dismissed with keyboard', () => {
+      mount(
+        <Popover trapFocus>
+          <PopoverTrigger>
+            <button>Popover trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <Menu>
+              <MenuTrigger disableButtonEnhancement>
+                <button id="menu-trigger">Menu trigger</button>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem id="first-item">Item a</MenuItem>
+                  <MenuItem>Item b</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get('#menu-trigger')
+        .click()
+        .get('#first-item')
+        .should('have.focus')
+        .type('{esc}')
+        .get('#menu-trigger')
+        .should('have.focus');
     });
   });
 });

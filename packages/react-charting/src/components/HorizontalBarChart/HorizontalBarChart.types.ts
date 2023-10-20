@@ -3,6 +3,10 @@ import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
+/**
+ * IHorizontalBarChartProps for HorizontalBarchart component.
+ * {@docCategory HorizontalBarChart}
+ */
 export interface IHorizontalBarChartProps {
   /**
    * An array of chart data points for the Horizontal bar chart
@@ -67,7 +71,7 @@ export interface IHorizontalBarChartProps {
   /**
    * Custom text to the chart (right side of the chart)
    * IChartProps will be available as props to the method prop.
-   * If this method not given, default values (IHorizontalDataPoint {x,y})
+   * If this method not given, default values (IHorizontalDataPoint \{x,y\})
    * will be used to display the data/text based on given chartModeData prop.
    */
   barChartCustomData?: IRenderFunction<IChartProps>;
@@ -76,6 +80,18 @@ export interface IHorizontalBarChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * Prop to define the variant of HorizontalBarChart to render
+   * @default HorizontalBarChartVariant.PartToWhole
+   */
+  variant?: HorizontalBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   * @default false
+   */
+  hideLabels?: boolean;
 }
 
 export interface IHorizontalBarChartStyleProps {
@@ -109,6 +125,16 @@ export interface IHorizontalBarChartStyleProps {
    * prop to check if benchmark data is provided
    */
   showTriangle?: boolean;
+
+  /**
+   * Prop to define the variant of HorizontalBarChart to render
+   */
+  variant?: HorizontalBarChartVariant;
+
+  /**
+   * Prop to hide the bar labels
+   */
+  hideLabels?: boolean;
 }
 
 export interface IHorizontalBarChartStyles {
@@ -161,6 +187,16 @@ export interface IHorizontalBarChartStyles {
    * Style for the benchmark triangle
    */
   triangle: IStyle;
+
+  /**
+   * Style for the bar labels
+   */
+  barLabel: IStyle;
+
+  /**
+   * Style for the div containing the chart
+   */
+  chartWrapper: IStyle;
 }
 
 /**
@@ -170,3 +206,8 @@ export interface IHorizontalBarChartStyles {
  * percentage: show the percentage of (datapoint.x/datapoint.y)%
  */
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
+
+export enum HorizontalBarChartVariant {
+  PartToWhole = 'part-to-whole',
+  AbsoluteScale = 'absolute-scale',
+}

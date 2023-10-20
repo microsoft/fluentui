@@ -2232,6 +2232,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2420,6 +2422,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2608,6 +2612,8 @@ exports[`DetailsList renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3215,6 +3221,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3347,6 +3355,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3479,6 +3489,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3611,6 +3623,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3743,6 +3757,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4295,6 +4311,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4483,6 +4501,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4671,6 +4691,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5279,6 +5301,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5467,6 +5491,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5655,6 +5681,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6262,6 +6290,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6397,6 +6427,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6532,6 +6564,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6667,6 +6701,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6802,6 +6838,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7217,6 +7255,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7405,6 +7445,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7593,6 +7635,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -8114,7 +8158,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone7"
+                                data-focuszone-id="FocusZone9"
                                 data-is-focusable={true}
                                 data-item-index={0}
                                 data-selection-index={0}
@@ -8124,11 +8168,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -8316,21 +8355,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     0
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                             <div
@@ -8416,7 +8440,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       flex-shrink: 0;
                                     }
                                 data-automationid="DetailsRow"
-                                data-focuszone-id="FocusZone9"
+                                data-focuszone-id="FocusZone11"
                                 data-is-focusable={true}
                                 data-item-index={1}
                                 data-selection-index={1}
@@ -8426,11 +8450,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -8618,21 +8637,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     1
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                           </div>
@@ -8662,7 +8666,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                     >
                       <div
                         aria-expanded={true}
-                        aria-labelledby="GroupHeader11"
+                        aria-labelledby="GroupHeader7"
                         aria-rowindex={5}
                         className=
                             ms-GroupHeader
@@ -8854,7 +8858,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   white-space: nowrap;
                                 }
                             data-selection-invoke={true}
-                            id="GroupHeader11"
+                            id="GroupHeader7"
                             onClick={[Function]}
                             role="gridcell"
                           >
@@ -8881,7 +8885,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                       <div
                         aria-label="Group 1"
                         className="ms-List"
-                        id="GroupedListSection10"
+                        id="GroupedListSection6"
                         role="rowgroup"
                       >
                         <div
@@ -8986,11 +8990,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -9178,21 +9177,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     2
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                             <div
@@ -9288,11 +9272,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -9480,21 +9459,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     3
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                             <div
@@ -9590,11 +9554,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                 onKeyDown={[Function]}
                                 onMouseDownCapture={[Function]}
                                 role="row"
-                                style={
-                                  Object {
-                                    "minWidth": 300,
-                                  }
-                                }
                               >
                                 <span
                                   className="ms-GroupSpacer"
@@ -9782,21 +9741,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                     4
                                   </div>
                                 </div>
-                                <span
-                                  aria-checked={false}
-                                  className=
-
-                                      {
-                                        bottom: 0px;
-                                        display: none;
-                                        left: 0px;
-                                        position: absolute;
-                                        right: 0px;
-                                        top: -1px;
-                                      }
-                                  data-selection-toggle={true}
-                                  role="checkbox"
-                                />
                               </div>
                             </div>
                           </div>

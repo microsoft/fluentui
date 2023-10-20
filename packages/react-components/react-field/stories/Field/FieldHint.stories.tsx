@@ -1,12 +1,19 @@
 import * as React from 'react';
-import { InputField } from '@fluentui/react-components/unstable';
 
-export const Hint = () => <InputField label="Example with hint" hint="Hint text should be used sparingly" />;
+import { Field, Input } from '@fluentui/react-components';
+
+export const Hint = () => (
+  <Field label="Example with hint" hint="Sample hint text.">
+    <Input />
+  </Field>
+);
 
 Hint.parameters = {
   docs: {
     description: {
-      story: 'Hint text provides additional descriptive information about the field',
+      story:
+        'The `hint` provides additional descriptive information about the field. ' +
+        'Hint text should be used sparingly.',
     },
   },
 };

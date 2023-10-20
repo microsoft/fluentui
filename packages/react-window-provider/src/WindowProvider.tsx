@@ -8,6 +8,7 @@ export type WindowProviderProps = {
    * Provide the active window.
    */
   window: Window | undefined;
+  children?: React.ReactNode;
 };
 
 /**

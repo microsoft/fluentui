@@ -61,7 +61,7 @@ export function processPullRequestApiResponse(
     | RestEndpointMethodTypes['repos']['listPullRequestsAssociatedWithCommit']['response']['data'][number],
   authorEmail?: string,
 ): IPullRequest {
-  const user = pr.user as NonNullable<typeof pr['user']>;
+  const user = pr.user as NonNullable<(typeof pr)['user']>;
   return {
     // eslint-disable-next-line @typescript-eslint/naming-convention
     number: pr.number,

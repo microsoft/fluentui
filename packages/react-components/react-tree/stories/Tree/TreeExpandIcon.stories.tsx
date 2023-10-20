@@ -1,46 +1,59 @@
 import * as React from 'react';
-import { Tree, TreeItem } from '@fluentui/react-tree';
-import { Add12Regular, Subtract12Regular } from '@fluentui/react-icons';
-import { TreeOpenChangeData, TreeOpenChangeEvent } from '../../src/Tree';
-
-const RenderExpandIcon = ({ openSubtrees, id }: { openSubtrees: string[]; id: string }) =>
-  openSubtrees.includes(id) ? <Add12Regular /> : <Subtract12Regular />;
+import { Tree, TreeItem, TreeItemLayout, TreeItemValue } from '@fluentui/react-components';
+import { AddSquare16Regular, SubtractSquare16Regular } from '@fluentui/react-icons';
+import { TreeOpenChangeData, TreeOpenChangeEvent } from './../../src/Tree';
 
 export const ExpandIcon = () => {
-  const [openSubtrees, setOpenSubtrees] = React.useState<string[]>([]);
-  const handleOpenChange = (_e: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
-    setOpenSubtrees(curr => (data.open ? [...curr, data.id] : curr.filter(id => id !== data.id)));
+  const [openItems, setOpenItems] = React.useState<TreeItemValue[]>([]);
+  const handleOpenChange = (event: TreeOpenChangeEvent, data: TreeOpenChangeData) => {
+    setOpenItems(curr => (data.open ? [...curr, data.value] : curr.filter(value => value !== data.value)));
   };
   return (
-    <Tree aria-label="Tree" onOpenChange={handleOpenChange}>
-      <TreeItem
-        aria-owns="default-subtree-1"
-        expandIcon={<RenderExpandIcon openSubtrees={openSubtrees} id="default-subtree-1" />}
-      >
-        level 1, item 1
-      </TreeItem>
-      <Tree id="default-subtree-1">
-        <TreeItem>level 2, item 1</TreeItem>
-        <TreeItem>level 2, item 2</TreeItem>
-        <TreeItem>level 2, item 3</TreeItem>
-      </Tree>
-      <TreeItem
-        aria-owns="default-subtree-2"
-        expandIcon={<RenderExpandIcon openSubtrees={openSubtrees} id="default-subtree-2" />}
-      >
-        level 1, item 2
-      </TreeItem>
-      <Tree id="default-subtree-2">
-        <TreeItem
-          aria-owns="default-subtree-2-1"
-          expandIcon={<RenderExpandIcon openSubtrees={openSubtrees} id="default-subtree-2-1" />}
+    <Tree aria-label="Expand Icon" openItems={openItems} onOpenChange={handleOpenChange}>
+      <TreeItem itemType="branch" value="tree-item-2">
+        <TreeItemLayout
+          expandIcon={openItems.includes('tree-item-2') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
         >
-          level 2, item 1
-        </TreeItem>
-        <Tree id="default-subtree-2-1">
-          <TreeItem>level 3, item 1</TreeItem>
+          level 1, item 1
+        </TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch" value="tree-item-3">
+            <TreeItemLayout
+              expandIcon={openItems.includes('tree-item-3') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+            >
+              level 2, item 1
+            </TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
         </Tree>
-      </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch" value="tree-item-1">
+        <TreeItemLayout
+          expandIcon={openItems.includes('tree-item-1') ? <SubtractSquare16Regular /> : <AddSquare16Regular />}
+        >
+          level 1, item 2
+        </TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
     </Tree>
   );
+};
+
+ExpandIcon.parameters = {
+  docs: {
+    description: {
+      story: `Both tree item layouts can have a custom expand/collapse icon.`,
+    },
+  },
 };

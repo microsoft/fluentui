@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { IChartProps, ILineChartProps, LineChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { IChartProps, ILineChartProps, LineChart, DataVizPalette } from '@fluentui/react-charting';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 import * as d3 from 'd3-fetch';
 
@@ -99,7 +98,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
               onDataPointClick: () => alert('click on 218000'),
             },
           ],
-          color: DefaultPalette.blue,
+          color: DataVizPalette.color1,
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -137,7 +136,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
               y: 298000,
             },
           ],
-          color: DefaultPalette.green,
+          color: DataVizPalette.color2,
           lineOptions: {
             lineBorderWidth: '4',
           },
@@ -150,7 +149,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
               y: 282000,
             },
           ],
-          color: DefaultPalette.yellow,
+          color: DataVizPalette.color10,
         },
       ],
     };
@@ -201,6 +200,7 @@ export class LineChartCustomLocaleDateAxisExample extends React.Component<{}, IL
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
             rotateXAxisLables={true}
             timeFormatLocale={this.state.customLocale}
+            enablePerfOptimization={true}
           />
         </div>
       </>

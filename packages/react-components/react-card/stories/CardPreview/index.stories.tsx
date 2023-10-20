@@ -1,10 +1,10 @@
-import { CardPreview } from '@fluentui/react-card';
+import { CardPreview } from '@fluentui/react-components';
 import descriptionMd from './CardPreviewDescription.md';
 
 export { Default } from './CardPreviewDefault.stories';
 
 export default {
-  title: 'Preview Components/Card/CardPreview',
+  title: 'Components/Card/CardPreview',
   component: CardPreview,
   parameters: {
     docs: {

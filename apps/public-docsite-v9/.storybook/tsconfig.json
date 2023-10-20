@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "types": ["node", "static-assets", "storybook__addons"]
+  },
+  "include": ["*.js"]
+}

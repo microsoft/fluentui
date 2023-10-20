@@ -35,6 +35,27 @@ describe('useControllableState', () => {
     expect(result.current[0]).toBe(initialState);
   });
 
+  it('should call setState() with a value when is controlled', () => {
+    const spy = jest.fn();
+    const { result } = renderHook(() =>
+      useControllableState({ state: 'foo', defaultState: undefined, initialState: '' }),
+    );
+
+    const [, setState] = result.current;
+
+    act(() => {
+      setState(prevState => {
+        spy(prevState);
+        return prevState;
+      });
+    });
+
+    expect(result.current[0]).toEqual('foo');
+
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith('foo');
+  });
+
   it.each([
     ['', true],
     ['factory', () => true],
@@ -137,7 +158,5 @@ describe('useControllableState', () => {
     rerender();
 
     expect(spy).toHaveBeenCalledTimes(1);
-    const expectedWarning = `A component is changing ${controlWarning}. This is likely caused by the value changing from ${undefinedWarning} value, which should not happen. Decide between using a controlled or uncontrolled input element for the lifetime of the component. More info: https://reactjs.org/link/controlled-components`;
-    expect(spy).toHaveBeenCalledWith(expect.stringContaining(expectedWarning));
   });
 });

@@ -6,7 +6,10 @@ This app is official documentation for Fluentui react-components published to ht
 
 Fluent UI is a collection of projects that represent the Fluent design language in code. This website helps document the components and styles that make up Fluent UI.
 
-## Build the website
+## Start the website
 
-1. Run `yarn lage build --to @fluentui/public-docsite-v9 --no-cache`
-2. Run `yarn workspace @fluentui/public-docsite-v9 start`
+Run `yarn workspace @fluentui/public-docsite-v9 start`
+
+## Notes
+
+- `Open in CodeSandbox` button is located in different [repo](https://github.com/microsoft/fluentui-storybook-addons).

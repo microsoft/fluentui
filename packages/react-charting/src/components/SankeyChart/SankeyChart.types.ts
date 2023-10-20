@@ -4,6 +4,10 @@ import { IChartProps } from '../../types/IDataPoint';
 
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
+/**
+ * ISankeyChartProps for Sankeychart component.
+ * {@docCategory SankeyChart}
+ */
 export interface ISankeyChartProps {
   /**
    * Data to render in the chart.
@@ -49,6 +53,16 @@ export interface ISankeyChartProps {
    * Color for path
    */
   pathColor?: string;
+
+  /**
+   * Colors for nodes
+   */
+  colorsForNodes?: string[];
+
+  /**
+   * Colors for nodes border
+   */
+  borderColorsForNodes?: string[];
 }
 
 export interface ISankeyChartStyleProps {
@@ -74,4 +88,20 @@ export interface ISankeyChartStyles {
    *  Style for the links.
    */
   links?: IStyle;
+
+  /**
+   *  Style for the text inside node.
+   */
+  nodeTextContainer?: IStyle;
+
+  /**
+   *  Style for the tooltip ,when user hover over the truncated node detail.
+   */
+  toolTip?: IStyle;
+
+  /**
+   *  Style for the tooltip ,when user hover over the truncated node detail.
+   */
+
+  calloutContentRoot?: IStyle;
 }

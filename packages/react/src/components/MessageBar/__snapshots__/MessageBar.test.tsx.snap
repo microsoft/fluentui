@@ -45,6 +45,15 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -60,6 +69,9 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -103,6 +115,9 @@ exports[`MessageBar snapshots renders MessageBar correctly 1`] = `
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -176,6 +191,15 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -191,6 +215,9 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -234,6 +261,9 @@ exports[`MessageBar snapshots renders a error MessageBar correctly 1`] = `
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -306,6 +336,15 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -321,6 +360,9 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -364,6 +406,9 @@ exports[`MessageBar snapshots renders a info MessageBar correctly 1`] = `
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -436,6 +481,15 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -451,6 +505,9 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -494,6 +551,9 @@ exports[`MessageBar snapshots renders a multiline MessageBar correctly 1`] = `
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -567,6 +627,15 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -582,6 +651,9 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -625,6 +697,9 @@ exports[`MessageBar snapshots renders a multiline error MessageBar correctly 1`]
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -697,6 +772,15 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -712,6 +796,9 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -755,6 +842,9 @@ exports[`MessageBar snapshots renders a multiline info MessageBar correctly 1`] 
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -828,6 +918,15 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -843,6 +942,9 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -886,6 +988,9 @@ exports[`MessageBar snapshots renders a multiline severeWarning MessageBar corre
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -959,6 +1064,15 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -974,6 +1088,9 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -1017,6 +1134,9 @@ exports[`MessageBar snapshots renders a multiline success MessageBar correctly 1
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -1090,6 +1210,15 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -1105,6 +1234,9 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -1148,6 +1280,9 @@ exports[`MessageBar snapshots renders a multiline warning MessageBar correctly 1
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -1221,6 +1356,15 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -1236,6 +1380,9 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -1279,6 +1426,9 @@ exports[`MessageBar snapshots renders a severeWarning MessageBar correctly 1`] =
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -1352,6 +1502,15 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -1367,6 +1526,9 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -1410,6 +1572,9 @@ exports[`MessageBar snapshots renders a success MessageBar correctly 1`] = `
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;
@@ -1483,6 +1648,15 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
           line-height: normal;
           width: 100%;
         }
+        @media only screen and (min-width: 0px) and (max-width: 479px){& {
+          display: grid;
+          grid-template-areas: 
+                    "icon text close"
+                    "action action action"
+                  ;
+          grid-template-columns: auto 1fr auto;
+          grid-template-rows: 1fr auto;
+        }
   >
     <div
       aria-hidden={true}
@@ -1498,6 +1672,9 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
             margin-top: 8px;
             min-height: 16px;
             min-width: 16px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: icon;
           }
     >
       <i
@@ -1541,6 +1718,9 @@ exports[`MessageBar snapshots renders a warning MessageBar correctly 1`] = `
             margin-right: 12px;
             margin-top: 8px;
             min-width: 0px;
+          }
+          @media only screen and (min-width: 0px) and (max-width: 479px){& {
+            grid-area: text;
           }
           @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
             -ms-high-contrast-adjust: none;

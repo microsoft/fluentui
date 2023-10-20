@@ -33,3 +33,7 @@ tsd.json
 tslint.json
 typings
 visualtests
+!lib
+!lib-commonjs
+!lib-amd
+!dist

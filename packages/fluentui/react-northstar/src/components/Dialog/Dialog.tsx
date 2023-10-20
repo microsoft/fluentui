@@ -140,7 +140,7 @@ export type DialogStylesProps = Required<Pick<DialogProps, 'backdrop'>>;
  * [Jaws does not announce token values of aria-haspopup](https://github.com/FreedomScientific/VFO-standards-support/issues/33)
  * [Issue 989517: VoiceOver narrates dialog content and button twice](https://bugs.chromium.org/p/chromium/issues/detail?id=989517)
  */
-export const Dialog = (React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
+export const Dialog = React.forwardRef<HTMLDivElement, DialogProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Dialog.displayName, context.telemetry);
   setStart();
@@ -414,7 +414,7 @@ export const Dialog = (React.forwardRef<HTMLDivElement, DialogProps>((props, ref
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DialogProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DialogProps> &
   FluentComponentStaticProps<DialogProps> & {
     Footer: typeof DialogFooter;
   };

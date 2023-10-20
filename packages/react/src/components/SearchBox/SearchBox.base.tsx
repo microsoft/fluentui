@@ -23,6 +23,7 @@ const useComponentRef = (
     componentRef,
     () => ({
       focus: () => inputElementRef.current?.focus(),
+      blur: () => inputElementRef.current?.blur(),
       hasFocus: () => hasFocus,
     }),
     [inputElementRef, hasFocus],

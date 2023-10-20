@@ -17,7 +17,7 @@ export type ProgressBarSlots = {
 export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & {
   /**
    * The shape of the bar and track.
-   * @default 'rounded'
+   * @default rounded
    */
   shape?: 'rounded' | 'square';
   /**
@@ -35,19 +35,20 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
   max?: number;
   /**
    * The thickness of the ProgressBar bar
-   * @default 'medium'
+   * @default medium
    */
   thickness?: 'medium' | 'large';
 
   /**
    * The status of the ProgressBar bar. Changes the color of the bar.
+   * @default brand
    */
-  validationState?: 'success' | 'warning' | 'error';
+  color?: 'brand' | 'success' | 'warning' | 'error';
 };
 
 /**
  * State used in rendering ProgressBar
  */
-export type ProgressBarState = ComponentState<ProgressBarSlots> &
+export type ProgressBarState = ComponentState<Required<ProgressBarSlots>> &
   Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> &
-  Pick<ProgressBarProps, 'value' | 'validationState'>;
+  Pick<ProgressBarProps, 'value' | 'color'>;

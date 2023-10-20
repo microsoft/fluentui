@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: add popup maxHeight, and move shadow styles to combobox/dropdown",
-  "packageName": "@fluentui/react-combobox",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

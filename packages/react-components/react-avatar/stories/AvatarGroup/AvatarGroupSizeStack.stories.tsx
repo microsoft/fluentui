@@ -6,7 +6,7 @@ import {
   makeStyles,
   partitionAvatarGroupItems,
 } from '@fluentui/react-components';
-import type { AvatarSizes } from '@fluentui/react-components';
+import type { AvatarSize } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {
@@ -30,7 +30,7 @@ const names = [
   'Elliot Woodward',
 ];
 
-const sizes: AvatarSizes[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
+const sizes: AvatarSize[] = [16, 20, 24, 28, 32, 36, 40, 48, 56, 64, 72, 96, 120, 128];
 
 export const SizeStack = () => {
   const styles = useStyles();

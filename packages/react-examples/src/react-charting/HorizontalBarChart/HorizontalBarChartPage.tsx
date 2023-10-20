@@ -5,17 +5,25 @@ import {
   ExampleCard,
   IComponentDemoPageProps,
   PropertiesTableSet,
+  Markdown,
 } from '@fluentui/react-docsite-components';
 
 import { HorizontalBarChartBasicExample } from './HorizontalBarChart.Basic.Example';
 import { HorizontalBarChartCustomCalloutExample } from './HorizontalBarChart.CustomCallout.Example';
 import { HorizontalBarChartBenchmarkExample } from './HorizontalBarChart.Benchmark.Example';
 import { HorizontalBarChartCustomAccessibilityExample } from './HorizontalBarChart.CustomAccessibility.Example';
+import { HorizontalBarChartVariantExample } from './HorizontalBarChart.Variant.Example';
 
-const HorizontalBarChartBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
-const HorizontalBarChartCustomCalloutExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomCallout.Example.tsx') as string;
-const HorizontalBarChartBenchmarkExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
-const HorizontalBarChartCustomAccessibilityExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomAccessibility.Example.tsx') as string;
+const HorizontalBarChartBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Basic.Example.tsx') as string;
+const HorizontalBarChartCustomCalloutExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomCallout.Example.tsx') as string;
+const HorizontalBarChartBenchmarkExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Benchmark.Example.tsx') as string;
+const HorizontalBarChartCustomAccessibilityExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.CustomAccessibility.Example.tsx') as string;
+const HorizontalBarChartVariantExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/HorizontalBarChart.Variant.Example.tsx') as string;
 
 export class HorizontalBarChartPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -40,6 +48,9 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             >
               <HorizontalBarChartCustomAccessibilityExample />
             </ExampleCard>
+            <ExampleCard title="HorizontalBarChart Variant" code={HorizontalBarChartVariantExampleCode}>
+              <HorizontalBarChartVariantExample />
+            </ExampleCard>
           </div>
         }
         propertiesTables={
@@ -51,33 +62,14 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
         }
         isHeaderVisible={this.props.isHeaderVisible}
         overview={
-          <div>
-            <p>
-              Use a horizontal bar graph to compare between different values that are hierarchically equivalent. The
-              rectangular bar length is proportional to the values they represent. There will always be a maximum data
-              value (color) that is used to represent the total length.
-            </p>
-            <p>Numerical values are represented through abbreviations. </p>
-            <h4>Bar chart custom data</h4>
-            <p>
-              This property allows customizing the right side data part of the chart. See the usage of
-              <code>barChartCustomData</code>
-              prop in custom callout variant.
-            </p>
-            <h4>Custom hover callout</h4>
-            <p>
-              See <code>onRenderCalloutPerHorizontalBar</code> prop to customize the hover callout.
-            </p>
-            <p>
-              Set the <code>chartDataMode</code> as number, fraction or percentage to specify how numerical values will
-              be shown on the chart.
-            </p>
-            <h4>Benchmark data</h4>
-            <p>
-              Set the <code>data</code> attribute of IChartDataPoint to specify the benchmark value. The benchmark value
-              is shown as an inverted triangle in the chart.
-            </p>
-          </div>
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartOverview.md')}
+          </Markdown>
+        }
+        bestPractices={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartBestPractices.md')}
+          </Markdown>
         }
       />
     );

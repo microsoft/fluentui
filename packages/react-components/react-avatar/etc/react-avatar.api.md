@@ -33,7 +33,9 @@ export const AvatarContextProvider: React_2.Provider<AvatarContextValue | undefi
 // @internal (undocumented)
 export interface AvatarContextValue {
     // (undocumented)
-    size?: AvatarSizes;
+    shape?: AvatarShape;
+    // (undocumented)
+    size?: AvatarSize;
 }
 
 // @public
@@ -72,7 +74,7 @@ export type AvatarGroupItemSlots = {
 export type AvatarGroupItemState = ComponentState<AvatarGroupItemSlots> & {
     isOverflowItem?: boolean;
     layout: AvatarGroupProps['layout'];
-    size: AvatarSizes;
+    size: AvatarSize;
 };
 
 // @public
@@ -101,13 +103,13 @@ export type AvatarGroupPopoverSlots = {
 export type AvatarGroupPopoverState = ComponentState<AvatarGroupPopoverSlots> & Required<Pick<AvatarGroupPopoverProps, 'count' | 'indicator'>> & {
     popoverOpen: boolean;
     layout: AvatarGroupProps['layout'];
-    size: AvatarSizes;
+    size: AvatarSize;
 };
 
 // @public
 export type AvatarGroupProps = ComponentProps<AvatarGroupSlots> & {
     layout?: 'spread' | 'stack' | 'pie';
-    size?: AvatarSizes;
+    size?: AvatarSize;
 };
 
 // @public (undocumented)
@@ -131,12 +133,18 @@ export type AvatarProps = Omit<ComponentProps<AvatarSlots>, 'color'> & {
     color?: 'neutral' | 'brand' | 'colorful' | AvatarNamedColor;
     idForColor?: string | undefined;
     name?: string;
-    shape?: 'circular' | 'square';
-    size?: AvatarSizes;
+    shape?: AvatarShape;
+    size?: AvatarSize;
 };
 
 // @public
-export type AvatarSizes = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+export type AvatarShape = 'circular' | 'square';
+
+// @public
+export type AvatarSize = 16 | 20 | 24 | 28 | 32 | 36 | 40 | 48 | 56 | 64 | 72 | 96 | 120 | 128;
+
+// @public @deprecated
+export type AvatarSizes = AvatarSize;
 
 // @public (undocumented)
 export type AvatarSlots = {

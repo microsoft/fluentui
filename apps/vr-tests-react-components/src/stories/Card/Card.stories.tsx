@@ -1,12 +1,14 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
-import { MoreHorizontal24Filled } from '@fluentui/react-icons';
-import { Body1, Caption1 } from '@fluentui/react-text';
+import { MoreHorizontal24Filled, MoreHorizontal20Filled } from '@fluentui/react-icons';
+import { Body1, Caption1, Text } from '@fluentui/react-text';
 import { Button } from '@fluentui/react-button';
-import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent } from './utils';
+import { powerpointLogoURL, salesPresentationTemplateURL, SampleCardContent, appLogoUrl } from './utils';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL } from '../../utilities';
+import { makeStyles } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 export default {
   title: 'Card Converged',
@@ -94,22 +96,53 @@ export const Size = () => (
 
 Size.storyName = 'size';
 
-export const Orientation = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-    <div>
-      <h1>Vertical</h1>
-      <Card orientation="vertical">
-        <SampleCardContent />
-      </Card>
+const useOrientationStyles = makeStyles({
+  card: {
+    width: '360px',
+    maxWidth: '100%',
+    height: 'fit-content',
+    marginTop: '16px',
+  },
+
+  horizontalCardImage: {
+    width: '64px',
+    height: '64px',
+  },
+
+  caption: {
+    color: tokens.colorNeutralForeground3,
+  },
+});
+
+export const Orientation = () => {
+  const styles = useOrientationStyles();
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+      <div>
+        <h1>Vertical</h1>
+        <Card orientation="vertical">
+          <SampleCardContent />
+        </Card>
+      </div>
+
+      <div>
+        <h1>Horizontal</h1>
+        <Card className={styles.card} orientation="horizontal">
+          <CardPreview className={styles.horizontalCardImage}>
+            <img className={styles.horizontalCardImage} src={appLogoUrl} alt="App Name Document" />
+          </CardPreview>
+
+          <CardHeader
+            header={<Text weight="semibold">App Name</Text>}
+            description={<Caption1 className={styles.caption}>Developer</Caption1>}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+          />
+        </Card>
+      </div>
     </div>
-    <div>
-      <h1>Horizontal</h1>
-      <Card orientation="horizontal">
-        <SampleCardContent />
-      </Card>
-    </div>
-  </div>
-);
+  );
+};
 
 Orientation.storyName = 'orientation';
 

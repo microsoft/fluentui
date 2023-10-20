@@ -147,14 +147,14 @@ As the `ThemeProvider` consumes a React context, merges themes and creates a new
 const radiusOverrides = {
   global: {
     borderRadius: {
-      medium: '6px'
-    }
-  }
-}
+      medium: '6px',
+    },
+  },
+};
 
-<ThemeProvider theme={{radiusOverrides}}>
+<ThemeProvider theme={{ radiusOverrides }}>
   <Button>I have custom border radius</Button>
-</ThemeProvider>
+</ThemeProvider>;
 ```
 
 You can also override styles using `makeStyles`:

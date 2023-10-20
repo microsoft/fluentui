@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import { Card } from './Card';
 import { isConformant } from '../../testing/isConformant';
 import { CardProps } from './Card.types';
-import { cardClassNames } from './useCardStyles';
+import { cardClassNames } from './useCardStyles.styles';
 
 describe('Card', () => {
   isConformant<CardProps>({
@@ -13,11 +13,20 @@ describe('Card', () => {
       'has-static-classnames': [
         {
           props: {
-            floatingAction: 'Test Select',
+            floatingAction: '<button>Button</button>',
           },
           expectedClassNames: {
             root: cardClassNames.root,
             floatingAction: cardClassNames.floatingAction,
+          },
+        },
+        {
+          props: {
+            selected: true,
+          },
+          expectedClassNames: {
+            root: cardClassNames.root,
+            checkbox: cardClassNames.checkbox,
           },
         },
       ],

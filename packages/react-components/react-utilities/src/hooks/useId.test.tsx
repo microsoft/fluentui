@@ -1,5 +1,7 @@
 import { renderHook } from '@testing-library/react-hooks';
-import { resetIdsForTests, useId } from './useId';
+import * as React from 'react';
+
+import { IdPrefixProvider, resetIdsForTests, useId } from './useId';
 
 describe('useId', () => {
   afterEach(() => {
@@ -35,5 +37,13 @@ describe('useId', () => {
     rerender();
 
     expect(result.current).toBe(firstResult);
+  });
+
+  it('consumers prefix from a context', () => {
+    const { result } = renderHook(() => useId(), {
+      wrapper: ({ children }) => <IdPrefixProvider value="scope-">{children}</IdPrefixProvider>,
+    });
+
+    expect(result.current).toMatch(/^scope-fui-/);
   });
 });

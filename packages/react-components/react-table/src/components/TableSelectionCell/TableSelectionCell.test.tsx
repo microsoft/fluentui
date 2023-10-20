@@ -5,7 +5,7 @@ import { TableSelectionCell } from './TableSelectionCell';
 import { isConformant } from '../../testing/isConformant';
 import { TableSelectionCellProps } from './TableSelectionCell.types';
 import { tableContextDefaultValue, TableContextProvider } from '../../contexts/tableContext';
-import { tableSelectionCellClassNames } from './useTableSelectionCellStyles';
+import { tableSelectionCellClassNames } from './useTableSelectionCellStyles.styles';
 
 const tr = document.createElement('tr');
 describe('TableSelectionCell', () => {

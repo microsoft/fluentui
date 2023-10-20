@@ -10,7 +10,7 @@ import { Context, ContextValue } from './types';
  * @returns whether the hook is wrapped by a parent context
  */
 export function useHasParentContext<Value>(context: Context<Value>) {
-  const contextValue = React.useContext((context as unknown) as Context<ContextValue<Value>>);
+  const contextValue = React.useContext(context as unknown as Context<ContextValue<Value>>);
 
   if (contextValue.version) {
     return contextValue.version.current !== -1;

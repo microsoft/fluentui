@@ -22,7 +22,6 @@ export const ActionButtonStyles = (theme: ITheme): Partial<IButtonStyles> => {
       ...iconColor(extendedSemanticColors.iconButtonFill),
     },
     rootDisabled: {
-      border: `${StyleConstants.borderWidth} solid ${extendedSemanticColors.primaryButtonBorderDisabled} !important`,
       backgroundColor: semanticColors.primaryButtonBackgroundDisabled,
       color: semanticColors.primaryButtonTextDisabled,
       ...iconColor(semanticColors.primaryButtonTextDisabled),

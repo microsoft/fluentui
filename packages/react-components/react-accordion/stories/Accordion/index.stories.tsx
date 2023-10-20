@@ -1,6 +1,7 @@
-import { Accordion } from '@fluentui/react-components';
+import { Accordion, AccordionHeader, AccordionItem, AccordionPanel } from '@fluentui/react-components';
 export { Default } from './AccordionDefault.stories';
 export { Collapsible } from './AccordionCollapsible.stories';
+export { Controlled } from './AccordionControlled.stories';
 export { Multiple } from './AccordionMultiple.stories';
 export { Navigation } from './AccordionNavigation.stories';
 export { OpenItems } from './AccordionOpenItems.stories';
@@ -16,6 +17,11 @@ import descriptionMd from './AccordionDescription.md';
 export default {
   title: 'Components/Accordion',
   component: Accordion,
+  subcomponents: {
+    AccordionItem,
+    AccordionHeader,
+    AccordionPanel,
+  },
   parameters: {
     actions: { argTypesRegex: '^on.*' },
     docs: {

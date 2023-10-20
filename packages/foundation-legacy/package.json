@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/foundation-legacy",
-  "version": "8.2.26",
+  "version": "8.2.45",
   "description": "Legacy utilities for building Fluent UI React components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -26,7 +26,7 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/jest-serializer-merge-styles": "^8.0.22",
+    "@fluentui/jest-serializer-merge-styles": "*",
     "react-hooks-testing-library": "^0.5.0",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-jest": "*",
@@ -34,10 +34,10 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/merge-styles": "^8.5.5",
-    "@fluentui/set-version": "^8.2.4",
-    "@fluentui/style-utilities": "^8.8.5",
-    "@fluentui/utilities": "^8.13.5",
+    "@fluentui/merge-styles": "^8.5.12",
+    "@fluentui/set-version": "^8.2.11",
+    "@fluentui/style-utilities": "^8.9.18",
+    "@fluentui/utilities": "^8.13.19",
     "tslib": "^2.1.0"
   },
   "peerDependencies": {

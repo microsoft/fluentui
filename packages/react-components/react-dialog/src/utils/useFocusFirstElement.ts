@@ -11,26 +11,23 @@ export function useFocusFirstElement(open: boolean, modalType: DialogModalType) 
   const { findFirstFocusable } = useFocusFinders();
   const { targetDocument } = useFluent_unstable();
   const dialogRef = React.useRef<DialogSurfaceElement>(null);
-  const triggerRef = React.useRef<HTMLElement>();
 
   React.useEffect(() => {
     if (!open) {
-      return triggerRef.current?.focus();
+      return;
     }
-    triggerRef.current = targetDocument?.activeElement as HTMLElement | undefined;
     const element = dialogRef.current && findFirstFocusable(dialogRef.current);
     if (element) {
       element.focus();
     } else {
       dialogRef.current?.focus(); // https://github.com/microsoft/fluentui/issues/25150
-      if (process.env.NODE_ENV !== 'production') {
+      if (process.env.NODE_ENV === 'development') {
         // eslint-disable-next-line no-console
-        console.warn(
-          [
-            '@fluentui/react-dialog: a Dialog should have at least one focusable element inside DialogSurface.',
-            'Please add at least a close button either on `DialogTitle` action slot or inside `DialogActions`',
-          ].join('\n'),
-        );
+        console.warn(/** #__DE-INDENT__ */ `
+          @fluentui/react-dialog [useFocusFirstElement]:
+          A Dialog should have at least one focusable element inside DialogSurface.
+          Please add at least a close button either on \`DialogTitle\` action slot or inside \`DialogActions\`
+        `);
       }
     }
   }, [findFirstFocusable, open, modalType, targetDocument]);

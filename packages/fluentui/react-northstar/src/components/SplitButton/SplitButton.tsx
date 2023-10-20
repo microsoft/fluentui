@@ -110,7 +110,7 @@ export type SplitButtonStylesProps = Required<Pick<SplitButtonProps, 'size'>> & 
 /**
  * A SplitButton enables users to take one of several related actions, one being dominant and rest being displayed in a menu.
  */
-export const SplitButton = (React.forwardRef<HTMLDivElement, SplitButtonProps>((props, ref) => {
+export const SplitButton = React.forwardRef<HTMLDivElement, SplitButtonProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButton.displayName, context.telemetry);
   setStart();
@@ -281,7 +281,7 @@ export const SplitButton = (React.forwardRef<HTMLDivElement, SplitButtonProps>((
 
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonProps> &
   FluentComponentStaticProps<SplitButtonProps> & {
     Toggle: typeof SplitButtonToggle;
   };

@@ -74,6 +74,9 @@ const renderDropdown = (props: DropdownProps = {}, attachTo?: HTMLElement) => {
         ),
       );
     },
+    keyDownOnClearIndicator: (key: string, optional?: Object) => {
+      getClearIndicatorWrapper().simulate('keydown', { key, ...optional });
+    },
     keyDownOnSearchInput: (key: string, optional?: Object) =>
       searchInputWrapper.simulate('keydown', { key, ...optional }),
     keyDownOnItemsList: (key: string, optional?: Object) => itemsListWrapper.simulate('keydown', { key, ...optional }),

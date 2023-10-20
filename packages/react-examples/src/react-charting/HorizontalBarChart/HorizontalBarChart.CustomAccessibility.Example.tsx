@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { HorizontalBarChart, IChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { HorizontalBarChart, IChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
 export const HorizontalBarChartCustomAccessibilityExample: React.FunctionComponent<{}> = () => {
   const data: IChartProps[] = [
@@ -12,7 +11,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'one',
           horizontalBarChartdata: { x: 1543, y: 15000 },
-          color: DefaultPalette.tealDark,
+          color: getColorFromToken(DataVizPalette.color9),
           xAxisCalloutData: '2021/06/10',
           yAxisCalloutData: '10%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart one 2021/06/10 41%' },
@@ -27,7 +26,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'two',
           horizontalBarChartdata: { x: 800, y: 15000 },
-          color: DefaultPalette.purple,
+          color: getColorFromToken(DataVizPalette.color10),
           xAxisCalloutData: '2021/06/11',
           yAxisCalloutData: '5%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart two 2021/06/11 52%' },
@@ -42,7 +41,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'three',
           horizontalBarChartdata: { x: 8888, y: 15000 },
-          color: DefaultPalette.redDark,
+          color: getColorFromToken(DataVizPalette.color11),
           xAxisCalloutData: '2021/06/12',
           yAxisCalloutData: '59%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart three 2021/06/12 63%' },
@@ -57,7 +56,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'four',
           horizontalBarChartdata: { x: 15888, y: 15000 },
-          color: DefaultPalette.themeDarkAlt,
+          color: getColorFromToken(DataVizPalette.color12),
           xAxisCalloutData: '2021/06/13',
           yAxisCalloutData: '105%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart four 2021/06/13 74%' },
@@ -72,7 +71,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'five',
           horizontalBarChartdata: { x: 11444, y: 15000 },
-          color: DefaultPalette.themePrimary,
+          color: getColorFromToken(DataVizPalette.color13),
           xAxisCalloutData: '2021/06/14',
           yAxisCalloutData: '76%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart five 2021/06/14 85%' },
@@ -87,7 +86,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'six',
           horizontalBarChartdata: { x: 14000, y: 15000 },
-          color: DefaultPalette.greenDark,
+          color: getColorFromToken(DataVizPalette.color14),
           xAxisCalloutData: '2021/06/15',
           yAxisCalloutData: '93%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart six 2021/06/15 96%' },
@@ -102,7 +101,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'seven',
           horizontalBarChartdata: { x: 9855, y: 15000 },
-          color: DefaultPalette.accent,
+          color: getColorFromToken(DataVizPalette.color15),
           xAxisCalloutData: '2021/06/16',
           yAxisCalloutData: '65%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart seven 2021/06/16 98%' },
@@ -117,7 +116,7 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
         {
           legend: 'eight',
           horizontalBarChartdata: { x: 4250, y: 15000 },
-          color: DefaultPalette.blueLight,
+          color: getColorFromToken(DataVizPalette.color16),
           xAxisCalloutData: '2021/06/17',
           yAxisCalloutData: '28%',
           callOutAccessibilityData: { ariaLabel: 'Bar series 1 of chart eight 2021/06/17 99%' },
@@ -126,5 +125,9 @@ export const HorizontalBarChartCustomAccessibilityExample: React.FunctionCompone
     },
   ];
 
-  return <HorizontalBarChart data={data} width={600} />;
+  return (
+    <div style={{ maxWidth: 600 }}>
+      <HorizontalBarChart data={data} />
+    </div>
+  );
 };

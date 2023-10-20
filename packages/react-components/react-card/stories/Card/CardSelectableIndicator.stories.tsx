@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Caption1, tokens, Checkbox, Text } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
-import { Card, CardHeader, CardPreview } from '@fluentui/react-card';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { Card, CardHeader, CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -82,15 +82,15 @@ export const SelectableIndicator = () => {
         >
           <CardPreview
             className={styles.grayBackground}
-            logo={<img className={styles.logoBadge} alt="app logo" src={resolveAsset('logo3.svg')} />}
+            logo={<img className={styles.logoBadge} src={resolveAsset('logo3.svg')} alt="Figma app logo" />}
           >
-            <img alt="Presentation Preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
+            <img className={styles.smallRadius} src={resolveAsset('office1.png')} alt="Presentation Preview" />
           </CardPreview>
 
           <CardHeader
             header={<Text weight="semibold">iOS App Prototype</Text>}
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
           />
         </Card>
 
@@ -102,35 +102,43 @@ export const SelectableIndicator = () => {
         >
           <CardPreview
             className={styles.grayBackground}
-            logo={<img className={styles.logoBadge} alt="app logo" src={resolveAsset('logo3.svg')} />}
+            logo={<img className={styles.logoBadge} src={resolveAsset('logo3.svg')} alt="Figma app logo" />}
           >
-            <img alt="Presentation Preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
+            <img className={styles.smallRadius} src={resolveAsset('office1.png')} alt="Presentation Preview" />
           </CardPreview>
 
           <CardHeader
             header={<Text weight="semibold">iOS App Prototype</Text>}
             description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-            action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
+            action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
           />
         </Card>
       </div>
 
       <div className={styles.row}>
-        <Card className={styles.card} selected={selected3} onSelectionChange={onSelected3Change}>
+        <Card
+          className={styles.card}
+          selected={selected3}
+          onSelectionChange={onSelected3Change}
+          floatingAction={<Checkbox onChange={onSelected3Change} checked={selected3} />}
+        >
           <CardHeader
-            image={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word Logo" />}
+            image={<img src={resolveAsset('docx.png')} alt="Microsoft Word Logo" />}
             header={<Text weight="semibold">Secret Project Briefing</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Documents</Caption1>}
-            action={<Checkbox onChange={onSelected3Change} checked={selected3} />}
           />
         </Card>
 
-        <Card className={styles.card} selected={selected4} onSelectionChange={onSelected4Change}>
+        <Card
+          className={styles.card}
+          selected={selected4}
+          onSelectionChange={onSelected4Change}
+          floatingAction={<Checkbox onChange={onSelected4Change} checked={selected4} />}
+        >
           <CardHeader
-            image={<img src={resolveAsset('excel_logo.svg')} alt="Microsoft Excel Logo" />}
+            image={<img src={resolveAsset('xlsx.png')} alt="Microsoft Excel Logo" />}
             header={<Text weight="semibold">Team Budget</Text>}
             description={<Caption1 className={styles.caption}>OneDrive &gt; Spreadsheets</Caption1>}
-            action={<Checkbox onChange={onSelected4Change} checked={selected4} />}
           />
         </Card>
       </div>

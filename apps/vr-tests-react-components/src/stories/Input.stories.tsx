@@ -4,6 +4,7 @@ import { storiesOf } from '@storybook/react';
 import { Input } from '@fluentui/react-input';
 import { SearchRegular, DismissRegular } from '@fluentui/react-icons';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
+import { FluentProvider } from '@fluentui/react-provider';
 
 storiesOf('Input Converged', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
@@ -30,16 +31,28 @@ storiesOf('Input Converged', module)
       <Input appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Invalid: outline', () => <Input aria-invalid placeholder="Placeholder" />)
-  .addStory('Invalid: underline', () => <Input aria-invalid appearance="underline" placeholder="Placeholder" />)
-  .addStory('Invalid: filled-darker', () => <Input aria-invalid appearance="filled-darker" placeholder="Placeholder" />)
-  .addStory('Invalid: filled-lighter', () => (
+  .addStory('Invalid, appearance: outline', () => <Input aria-invalid placeholder="Placeholder" />)
+  .addStory('Invalid, appearance: underline', () => (
+    <Input aria-invalid appearance="underline" placeholder="Placeholder" />
+  ))
+  .addStory('Invalid, appearance: filled-darker', () => (
+    <Input aria-invalid appearance="filled-darker" placeholder="Placeholder" />
+  ))
+  .addStory('Invalid, appearance: filled-lighter', () => (
     // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
     <div style={{ background: '#f5f5f5', padding: '10px' }}>
       <Input aria-invalid appearance="filled-lighter" placeholder="Placeholder" />
     </div>
   ))
-  .addStory('Disabled', () => <Input disabled />)
+  .addStory('Disabled, appearance: outline', () => <Input disabled value="Disabled" />)
+  .addStory('Disabled, appearance: underline', () => <Input disabled appearance="underline" value="Disabled" />)
+  .addStory('Disabled, appearance: filled-darker', () => <Input disabled appearance="filled-darker" value="Disabled" />)
+  .addStory('Disabled, appearance: filled-lighter', () => (
+    // filledLighter requires a background to show up (this is colorNeutralBackground3 in web light theme)
+    <div style={{ background: '#f5f5f5', padding: '10px' }}>
+      <Input disabled appearance="filled-lighter" value="Disabled" />
+    </div>
+  ))
   .addStory('With value', () => <Input defaultValue="Value!" />);
 
 // Non-interactive stories
@@ -65,4 +78,12 @@ storiesOf('Input Converged', module)
     'contentAfter',
     () => <Input contentAfter={<DismissRegular style={{ fontSize: '20px' }} />} placeholder="Placeholder" />,
     { includeRtl: true },
-  );
+  )
+  .addStory('With appearance override', () => (
+    <FluentProvider overrides_unstable={{ inputDefaultAppearance: 'filled-darker' }}>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+        <Input placeholder="Default overriden appearance" />
+        <Input appearance="outline" placeholder="Outline appearance" />
+      </div>
+    </FluentProvider>
+  ));

@@ -16,6 +16,11 @@ import {
 } from '../CommonComponents/CartesianChart.types';
 
 export type { IChildProps, IRefArrayData, IBasestate, ILineChartDataPoint, ILineChartPoints, IMargins };
+
+/**
+ * IAreaChartProps properties for area chart.
+ * {@docCategory AreaChart}
+ */
 export interface IAreaChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -48,6 +53,17 @@ export interface IAreaChartProps extends ICartesianChartProps {
    * The prop used to define the culture to localized the numbers
    */
   culture?: string;
+
+  /**
+   * @default false
+   * The prop used to enable the perf optimization
+   */
+  enablePerfOptimization?: boolean;
+
+  /*
+   * Optimize area chart rendering for large data set.
+   */
+  optimizeLargeData?: boolean;
 }
 
 export interface IAreaChartStyles extends ICartesianChartStyles {}

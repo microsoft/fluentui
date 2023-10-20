@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
-import { ProgressBar } from '@fluentui/react-progress';
+import { Field, ProgressBar, makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -13,9 +12,13 @@ export const Thickness = () => {
 
   return (
     <div>
-      <ProgressBar className={styles.container} thickness="medium" />
+      <Field validationMessage="Medium ProgressBar" validationState="none">
+        <ProgressBar className={styles.container} thickness="medium" value={0.7} />
+      </Field>
 
-      <ProgressBar className={styles.container} thickness="large" />
+      <Field validationMessage="Large ProgressBar" validationState="none">
+        <ProgressBar className={styles.container} thickness="large" value={0.7} />
+      </Field>
     </div>
   );
 };
@@ -23,7 +26,7 @@ export const Thickness = () => {
 Thickness.parameters = {
   docs: {
     description: {
-      story: `ProgressBar can be one of two sizes.\n` + `It can be shown as the medium or large`,
+      story: 'The `thickness` prop affects the size of the bar. It can be `medium` (default) or `large`.',
     },
   },
 };

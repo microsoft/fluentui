@@ -48,6 +48,11 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
       borderColor: 'Highlight',
       color: 'HighlightText',
     },
+    ['.ms-Checkbox-checkbox']: {
+      [HighContrastSelector]: {
+        borderColor: 'HighlightText',
+      },
+    },
     ...highContrastAdjustMixin,
   },
 };
@@ -158,7 +163,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           },
           highContrastItemAndTitleStateMixin,
         ],
-        '&.is-multi-select:hover': [{ backgroundColor: !isSelected ? 'transparent' : selectedItemBackgroundColor }],
+        '&.is-multi-select:hover': [
+          { backgroundColor: !isSelected ? 'transparent' : selectedItemBackgroundColor },
+          highContrastItemAndTitleStateMixin,
+        ],
         '&:active:hover': [
           {
             color: semanticColors.menuItemTextHovered,
@@ -173,6 +181,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           top: 0,
           bottom: 0,
           right: 0,
+          [HighContrastSelector]: {
+            inset: '2px',
+          },
         },
         [HighContrastSelector]: {
           border: 'none',
@@ -382,8 +393,8 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
     dropdownItem: [...dropdownItemStyle, itemSelectors()],
-    dropdownItemSelected: dropdownItemSelected,
-    dropdownItemDisabled: dropdownItemDisabled,
+    dropdownItemSelected,
+    dropdownItemDisabled,
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
     dropdownItemHidden: [...dropdownItemStyle, { display: 'none' }],
     dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],

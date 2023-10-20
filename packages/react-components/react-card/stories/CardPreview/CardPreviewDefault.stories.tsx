@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { CardPreview } from '@fluentui/react-card';
+import { CardPreview } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -9,7 +9,7 @@ const resolveAsset = (asset: string) => {
 };
 
 export const Default = () => (
-  <CardPreview logo={<img src={resolveAsset('word_logo.svg')} alt="Microsoft Word logo" />}>
+  <CardPreview logo={<img src={resolveAsset('docx.png')} alt="Microsoft Word logo" />}>
     <img src={resolveAsset('doc_template.png')} alt="Preview of a Word document " />
   </CardPreview>
 );

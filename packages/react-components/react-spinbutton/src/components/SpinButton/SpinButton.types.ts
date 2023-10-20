@@ -1,5 +1,4 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-// import { Input } from '@fluentui/react-input';
 import * as React from 'react';
 
 export type SpinButtonSlots = {

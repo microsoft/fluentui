@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2019",
+    "noEmit": false,
+    "outDir": "lib",
+    "jsx": "react",
+    "sourceMap": true,
+    "types": ["webpack-env"]
+  },
+  "include": ["src"]
+}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: high contrast mode focus styles are applied",
-  "packageName": "@fluentui/react-button",
-  "email": "sarah.higley@microsoft.com",
-  "dependentChangeType": "patch"
-}

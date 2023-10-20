@@ -220,12 +220,12 @@ export interface IComboBoxProps
   scrollSelectedToTop?: boolean;
 
   /**
-   * Add additional content above the option list in the callout.
+   * Add additional content above the option list in the callout. Content should not include interactive items.
    */
   onRenderUpperContent?: IRenderFunction<IComboBoxProps>;
 
   /**
-   * Add additional content below the option list in the callout.
+   * Add additional content below the option list in the callout. Content should not include interactive items.
    */
   onRenderLowerContent?: IRenderFunction<IComboBoxProps>;
 

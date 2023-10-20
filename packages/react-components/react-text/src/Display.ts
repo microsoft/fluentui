@@ -1,1 +1,1 @@
-export * from './components/Display/index';
+export * from './components/presets/Display/index';

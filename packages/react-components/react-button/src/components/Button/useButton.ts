@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useButtonContext } from '../../contexts/ButtonContext';
 import type { ButtonProps, ButtonState } from './Button.types';
 
 /**
@@ -12,6 +13,7 @@ export const useButton_unstable = (
   props: ButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): ButtonState => {
+  const { size: contextSize } = useButtonContext();
   const {
     appearance = 'secondary',
     as = 'button',
@@ -20,10 +22,9 @@ export const useButton_unstable = (
     icon,
     iconPosition = 'before',
     shape = 'rounded',
-    size = 'medium',
+    size = contextSize ?? 'medium',
   } = props;
-  const iconShorthand = resolveShorthand(icon);
-
+  const iconShorthand = slot.optional(icon, { elementType: 'span' });
   return {
     // Props passed at the top-level
     appearance,
@@ -31,26 +32,21 @@ export const useButton_unstable = (
     disabledFocusable,
     iconPosition,
     shape,
-    size,
-
-    // State calculated from a set of props
-    iconOnly: Boolean(iconShorthand?.children && !props.children),
-
-    // Slots definition
-    components: {
-      root: 'button',
-      icon: 'span',
-    },
-
-    root: getNativeElementProps(
-      as,
-      useARIAButtonShorthand<ARIAButtonSlotProps<'a'>>(props, {
-        required: true,
-        defaultProps: {
-          ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
-          type: 'button',
-        },
-      }),
+    size, // State calculated from a set of props
+    iconOnly: Boolean(iconShorthand?.children && !props.children), // Slots definition
+    components: { root: 'button', icon: 'span' },
+    root: slot.always(
+      getIntrinsicElementProps(
+        as,
+        useARIAButtonShorthand<ARIAButtonSlotProps<'a'>>(props, {
+          required: true,
+          defaultProps: {
+            ref: ref as React.Ref<HTMLButtonElement & HTMLAnchorElement>,
+            type: 'button',
+          },
+        }),
+      ),
+      { elementType: 'button' },
     ),
     icon: iconShorthand,
   };

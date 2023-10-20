@@ -48,10 +48,10 @@ export function parameters(options?: FluentParameters): {
 };
 
 // @public (undocumented)
-export const THEME_ID: "storybook/fluentui-react-addon/theme";
+export const THEME_ID: "storybook_fluentui-react-addon_theme";
 
 // @public (undocumented)
-export type ThemeIds = typeof themes[number]['id'];
+export type ThemeIds = (typeof themes)[number]['id'];
 
 // @public (undocumented)
 export const themes: readonly [{

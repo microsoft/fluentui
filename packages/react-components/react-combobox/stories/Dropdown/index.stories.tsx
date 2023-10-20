@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Dropdown } from '@fluentui/react-combobox';
+import { Dropdown, Listbox, Option } from '@fluentui/react-components';
 
 import descriptionMd from './DropdownDescription.md';
 import bestPracticesMd from './DropdownBestPractices.md';
@@ -10,13 +10,18 @@ export { Appearance } from './DropdownAppearance.stories';
 export { Grouped } from './DropdownGrouped.stories';
 export { ComplexOptions } from './DropdownComplexOptions.stories';
 export { CustomOptions } from './DropdownCustomOptions.stories';
+export { Controlled } from './DropdownControlled.stories';
 export { Multiselect } from './DropdownMultiselect.stories';
 export { Size } from './DropdownSize.stories';
 export { Disabled } from './DropdownDisabled.stories';
 
 export default {
-  title: 'Preview Components/Dropdown',
+  title: 'Components/Dropdown',
   component: Dropdown,
+  subcomponents: {
+    Option,
+    Listbox,
+  },
   parameters: {
     docs: {
       description: {

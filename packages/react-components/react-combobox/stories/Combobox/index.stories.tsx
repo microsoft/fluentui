@@ -1,5 +1,5 @@
 import { Meta } from '@storybook/react';
-import { Combobox } from '@fluentui/react-combobox';
+import { Combobox, Listbox, Option } from '@fluentui/react-components';
 
 import descriptionMd from './ComboboxDescription.md';
 import bestPracticesMd from './ComboboxBestPractices.md';
@@ -7,6 +7,7 @@ import bestPracticesMd from './ComboboxBestPractices.md';
 export { Default } from './ComboboxDefault.stories';
 export { ComplexOptions } from './ComboboxComplexOptions.stories';
 export { CustomOptions } from './ComboboxCustomOptions.stories';
+export { Controlled } from './ComboboxControlled.stories';
 export { Filtering } from './ComboboxFiltering.stories';
 export { Freeform } from './ComboboxFreeform.stories';
 export { Multiselect } from './ComboboxMultiselect.stories';
@@ -18,8 +19,12 @@ export { Size } from './ComboboxSize.stories';
 export { Disabled } from './ComboboxDisabled.stories';
 
 export default {
-  title: 'Preview Components/Combobox',
+  title: 'Components/Combobox',
   component: Combobox,
+  subcomponents: {
+    Option,
+    Listbox,
+  },
   parameters: {
     docs: {
       description: {

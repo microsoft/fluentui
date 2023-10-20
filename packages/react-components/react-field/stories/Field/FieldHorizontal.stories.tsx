@@ -1,40 +1,22 @@
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-components/unstable';
 
-const useStyles = makeStyles({
-  stack: {
-    display: 'grid',
-    rowGap: tokens.spacingVerticalM,
-    width: '400px',
-  },
-});
+import { Field, Input } from '@fluentui/react-components';
 
-export const Horizontal = () => {
-  const styles = useStyles();
-  return (
-    <div className={styles.stack}>
-      <InputField
-        label="Horizontal"
-        orientation="horizontal"
-        validationState="success"
-        validationMessage="Validation message appears below the input"
-        hint="Hint text does too"
-      />
-      <InputField label="Longer labels will wrap to multiple lines" orientation="horizontal" />
-      <InputField label="First Name" orientation="horizontal" />
-      <InputField label="Last Name" orientation="horizontal" />
-    </div>
-  );
-};
+export const Horizontal = () => (
+  <Field label="Horizontal" orientation="horizontal" hint="Validation message and hint are below the input.">
+    <Input />
+  </Field>
+);
 
-Horizontal.storyName = 'Field orientation: horizontal';
+Horizontal.storyName = 'Horizontal Orientation';
 Horizontal.parameters = {
   docs: {
     description: {
       story:
-        'The field can have a horizontal orientation. If multiple fields are stacked together and all the same ' +
-        'width, the inputs will be vertically aligned as well.',
+        'Setting `orientation="horizontal"` places the label beside the input. The validationMessage and hint ' +
+        'still appear below the input.<br />' +
+        'The label width is a fixed 33% of the width of the field. This makes it so horizontal fields are aligned ' +
+        'when stacked together.',
     },
   },
 };

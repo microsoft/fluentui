@@ -124,7 +124,7 @@ export const treeItemClassName = 'ui-tree__item';
  * @accessibility
  * Implements [ARIA TreeView](https://www.w3.org/TR/wai-aria-practices-1.1/#TreeView) design pattern.
  */
-export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props, ref) => {
+export const TreeItem = React.forwardRef<HTMLDivElement, TreeItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeItem.displayName, context.telemetry);
   setStart();
@@ -334,7 +334,7 @@ export const TreeItem = (React.forwardRef<HTMLDivElement, TreeItemProps>((props,
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, TreeItemProps> & FluentComponentStaticProps<TreeItemProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TreeItemProps> & FluentComponentStaticProps<TreeItemProps>;
 
 TreeItem.displayName = 'TreeItem';
 

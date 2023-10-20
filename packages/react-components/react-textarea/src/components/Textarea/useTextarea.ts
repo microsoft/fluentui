@@ -1,11 +1,8 @@
 import * as React from 'react';
-import {
-  getPartitionedNativeProps,
-  resolveShorthand,
-  useControllableState,
-  useEventCallback,
-} from '@fluentui/react-utilities';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { getPartitionedNativeProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TextareaProps, TextareaState } from './Textarea.types';
+import { useOverrides_unstable as useOverrides } from '@fluentui/react-shared-contexts';
 
 /**
  * Create the state required to render Textarea.
@@ -17,7 +14,17 @@ import type { TextareaProps, TextareaState } from './Textarea.types';
  * @param ref - reference to root HTMLElement of Textarea
  */
 export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTextAreaElement>): TextareaState => {
-  const { size = 'medium', appearance = 'outline', resize = 'none', onChange } = props;
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+
+  const overrides = useOverrides();
+
+  const {
+    size = 'medium',
+    appearance = overrides.inputDefaultAppearance ?? 'outline',
+    resize = 'none',
+    onChange,
+  } = props;
 
   if (
     process.env.NODE_ENV !== 'production' &&
@@ -50,16 +57,16 @@ export const useTextarea_unstable = (props: TextareaProps, ref: React.Ref<HTMLTe
       root: 'span',
       textarea: 'textarea',
     },
-    textarea: resolveShorthand(props.textarea, {
-      required: true,
+    textarea: slot.always(props.textarea, {
       defaultProps: {
         ref,
         ...nativeProps.primary,
       },
+      elementType: 'textarea',
     }),
-    root: resolveShorthand(props.root, {
-      required: true,
+    root: slot.always(props.root, {
       defaultProps: nativeProps.root,
+      elementType: 'span',
     }),
   };
 

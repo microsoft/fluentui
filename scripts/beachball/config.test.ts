@@ -1,6 +1,6 @@
-import { config as sharedConfig } from './shared.config';
 import v8Config from './release-v8.config';
 import vNextConfig from './release-vNext.config';
+import { config as sharedConfig } from './shared.config';
 
 describe(`beachball configs`, () => {
   it(`should generate shared config`, () => {
@@ -14,10 +14,14 @@ describe(`beachball configs`, () => {
       ignorePatterns: [
         '**/*.{shot,snap}',
         '**/*.{test,spec}.{ts,tsx}',
-        '**/*.stories.tsx',
+        '**/*.stories.{ts,tsx}',
         '**/.eslintrc.*',
         '**/__fixtures__/**',
         '**/__mocks__/**',
+        '**/docs/**',
+        '**/stories/**',
+        '**/.storybook/**',
+        '**/bundle-size/**',
         '**/common/isConformant.ts',
         '**/src/testing/**',
         '**/config/tests.js',

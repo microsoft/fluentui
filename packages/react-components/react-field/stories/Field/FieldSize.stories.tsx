@@ -1,22 +1,32 @@
 import * as React from 'react';
-import { makeStyles, tokens } from '@fluentui/react-components';
-import { InputField } from '@fluentui/react-components/unstable';
 
-const useStyles = makeStyles({
-  stack: {
-    display: 'grid',
-    rowGap: tokens.spacingVerticalM,
-    width: '400px',
-  },
+import { Field, Input, makeResetStyles, tokens } from '@fluentui/react-components';
+
+const useStackClassName = makeResetStyles({
+  display: 'flex',
+  flexDirection: 'column',
+  rowGap: tokens.spacingVerticalL,
 });
 
-export const Size = () => {
-  const styles = useStyles();
-  return (
-    <div className={styles.stack}>
-      <InputField label="Size small" size="small" />
-      <InputField label="Size medium" size="medium" />
-      <InputField label="Size large" size="large" />
-    </div>
-  );
+export const Size = () => (
+  <div className={useStackClassName()}>
+    <Field label="Size small" size="small">
+      <Input />
+    </Field>
+    <Field label="Size medium" size="medium">
+      <Input />
+    </Field>
+    <Field label="Size large" size="large">
+      <Input />
+    </Field>
+  </div>
+);
+
+Size.parameters = {
+  docs: {
+    description: {
+      story:
+        "The `size` prop affects the size of the Field's label, as well as form controls that support a `size` prop.",
+    },
+  },
 };

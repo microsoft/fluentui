@@ -11,22 +11,7 @@ exports[`Option renders a default multi-select state 1`] = `
     <span
       aria-hidden="true"
       class="fui-Option__checkIcon"
-    >
-      <svg
-        aria-hidden="true"
-        class=""
-        fill="currentColor"
-        height="1em"
-        viewBox="0 0 20 20"
-        width="1em"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M3 6a3 3 0 013-3h8a3 3 0 013 3v8a3 3 0 01-3 3H6a3 3 0 01-3-3V6zm3-1.5c-.83 0-1.5.67-1.5 1.5v8c0 .83.67 1.5 1.5 1.5h8c.83 0 1.5-.67 1.5-1.5V6c0-.83-.67-1.5-1.5-1.5H6z"
-          fill="currentColor"
-        />
-      </svg>
-    </span>
+    />
     Default Option
   </div>
 </div>
@@ -54,7 +39,7 @@ exports[`Option renders a default single-select state 1`] = `
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M7.03 13.9L3.56 10a.75.75 0 00-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 00-1.06-1.06l-9.94 9.94z"
+          d="M7.03 13.9 3.56 10a.75.75 0 0 0-1.12 1l4 4.5c.29.32.79.34 1.09.03l10.5-10.5a.75.75 0 0 0-1.06-1.06l-9.94 9.94Z"
           fill="currentColor"
         />
       </svg>
@@ -80,13 +65,13 @@ exports[`Option renders a selected multi-select state 1`] = `
         aria-hidden="true"
         class=""
         fill="currentColor"
-        height="1em"
-        viewBox="0 0 20 20"
-        width="1em"
+        height="12"
+        viewBox="0 0 12 12"
+        width="12"
         xmlns="http://www.w3.org/2000/svg"
       >
         <path
-          d="M6 3a3 3 0 00-3 3v8a3 3 0 003 3h8a3 3 0 003-3V6a3 3 0 00-3-3H6zm7.85 4.85l-5 5a.5.5 0 01-.7 0l-2-2a.5.5 0 01.7-.7l1.65 1.64 4.65-4.64a.5.5 0 01.7.7z"
+          d="M9.76 3.2c.3.29.32.76.04 1.06l-4.25 4.5a.75.75 0 0 1-1.08.02L2.22 6.53a.75.75 0 0 1 1.06-1.06l1.7 1.7L8.7 3.24a.75.75 0 0 1 1.06-.04Z"
           fill="currentColor"
         />
       </svg>

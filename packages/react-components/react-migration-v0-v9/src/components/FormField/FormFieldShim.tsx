@@ -1,38 +1,13 @@
 import {
   FieldProps,
   renderField_unstable,
+  useFieldContextValues_unstable,
   useFieldStyles_unstable,
   useField_unstable,
-} from '@fluentui/react-components/unstable';
-import { ObjectShorthandValue } from '@fluentui/react-northstar';
+} from '@fluentui/react-components';
+import type { ObjectShorthandValue } from '@fluentui/react-northstar';
+
 import * as React from 'react';
-
-type FieldComponent = React.VoidFunctionComponent<
-  Pick<
-    React.HTMLAttributes<HTMLElement>,
-    'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-errormessage'
-  > & {
-    /**
-     * FormField children to be rendered
-     */
-    children?: unknown;
-  }
->;
-
-// TODO: It should be consuming it from V9
-type FieldPropsWithOptionalComponentProps<T extends FieldComponent> = FieldProps<T> & {
-  /**
-   * Whether the field label should be marked as required.
-   */
-  required?: boolean;
-
-  /**
-   * Size of the field label.
-   *
-   * Number sizes will be ignored, but are allowed because the HTML `<input>` element has a prop `size?: number`.
-   */
-  size?: 'small' | 'medium' | 'large' | number;
-};
 
 type WithContent = ObjectShorthandValue<React.HTMLAttributes<HTMLDivElement>> | string;
 
@@ -68,13 +43,9 @@ type CustomInputFieldProps = React.PropsWithChildren<{
   label?: WithContent;
 }>;
 
-const DummyVoidFunctionComponent: FieldComponent = () => {
-  return null;
-};
-
 export const FormFieldShim = React.forwardRef<HTMLInputElement, CustomInputFieldProps>((props, ref) => {
-  const { errorMessage, required, control, label, children } = props;
-  const fieldProps: FieldPropsWithOptionalComponentProps<typeof DummyVoidFunctionComponent> = { required };
+  const { errorMessage, required, control, label } = props;
+  const fieldProps: FieldProps = { required };
 
   if (errorMessage && control?.error === 'true') {
     fieldProps.validationState = 'error';
@@ -94,22 +65,21 @@ export const FormFieldShim = React.forwardRef<HTMLInputElement, CustomInputField
     }
   }
 
-  fieldProps.control = { children: () => children || control?.content };
+  const children: FieldProps['children'] = props.children || control?.content;
 
-  const state = useField_unstable(fieldProps, ref, {
-    component: DummyVoidFunctionComponent,
-    classNames: {
-      root: '',
-      control: '',
-      hint: '',
-      label: '',
-      validationMessage: '',
-      validationMessageIcon: '',
-    },
-  });
+  if (React.isValidElement(children)) {
+    const child: React.ReactElement = children;
 
+    // Use the Field's child render function to pass the field control props to the child
+    fieldProps.children = fieldControlProps => React.cloneElement(child, { ...fieldControlProps, ...child.props });
+  } else {
+    fieldProps.children = children;
+  }
+
+  const state = useField_unstable(fieldProps, ref);
   useFieldStyles_unstable(state);
-  return renderField_unstable(state);
+  const context = useFieldContextValues_unstable(state);
+  return renderField_unstable(state, context);
 });
 
 FormFieldShim.displayName = 'FormFieldShim';

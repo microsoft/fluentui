@@ -42,9 +42,9 @@ export const CodeExample = (props: { title?: string; children: React.ReactElemen
   const value: string = markdownCodeBlockValue.trim();
   const codeBlockTag = '```';
   // JSX source blocks are passed without the backticks
-  const language = (value.includes(codeBlockTag)
-    ? value.substring(3, value.indexOf('\n'))
-    : 'jsx') as keyof typeof codeLanguages;
+  const language = (
+    value.includes(codeBlockTag) ? value.substring(3, value.indexOf('\n')) : 'jsx'
+  ) as keyof typeof codeLanguages;
   const code = value
     .replace(codeBlockTag + language, '')
     .replace(codeBlockTag, '')

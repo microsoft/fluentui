@@ -1,31 +1,89 @@
+import { execSync } from 'child_process';
 import * as fs from 'fs';
 import * as path from 'path';
 
-import { stripJsonComments } from '@nrwl/devkit';
-import * as jju from 'jju';
+import { parseJson, stripJsonComments } from '@nx/devkit';
 import type { TscTaskOptions } from 'just-scripts';
+
+/**
+ *
+ * get full TS configuration for particular tsconfig.json.
+ * uses tsc --showConfig under the hood
+ */
+export function getFullTsConfig(options: { configFileName: string; cwd: string }): TsConfig | null {
+  const { configFileName, cwd } = options;
+  const configPath = path.join(cwd, configFileName);
+
+  if (!fs.existsSync(configPath)) {
+    console.warn(`${configPath} doesn't exist`);
+    return null;
+  }
+
+  const output = execSync(`tsc -p ${configFileName} --showConfig`, { cwd, encoding: 'utf-8' });
+  const json = JSON.parse(output);
+
+  return json;
+}
 
 export function getTsPathAliasesConfig() {
   const cwd = process.cwd();
-  const tsConfigFile = 'tsconfig.lib.json';
-  const tsConfigPath = path.join(cwd, './tsconfig.lib.json');
-  const tsConfig: TsConfig | null = fs.existsSync(tsConfigPath)
-    ? jju.parse(fs.readFileSync(tsConfigPath, 'utf-8'))
-    : null;
+  const tsConfigFileNames = {
+    root: 'tsconfig.json',
+    lib: 'tsconfig.lib.json',
+  };
+  const tsConfigFilePaths = {
+    root: path.join(cwd, tsConfigFileNames.root),
+    lib: path.join(cwd, tsConfigFileNames.lib),
+  };
+  const tsConfigFileContents = {
+    root: fs.existsSync(tsConfigFilePaths.root) ? fs.readFileSync(tsConfigFilePaths.root, 'utf-8') : null,
+    lib: fs.existsSync(tsConfigFilePaths.lib) ? fs.readFileSync(tsConfigFilePaths.lib, 'utf-8') : null,
+  };
+  const tsConfigs = {
+    root: tsConfigFileContents.root
+      ? (parseJson(tsConfigFileContents.root, { expectComments: true }) as TsConfig)
+      : null,
+    lib: tsConfigFileContents.lib ? (parseJson(tsConfigFileContents.lib, { expectComments: true }) as TsConfig) : null,
+  };
   const packageJson: PackageJson = JSON.parse(fs.readFileSync(path.join(cwd, './package.json'), 'utf-8'));
 
-  const isUsingTsSolutionConfigs = Boolean(tsConfig);
+  const isUsingTsSolutionConfigs =
+    tsConfigs.root &&
+    tsConfigs.root.references &&
+    tsConfigs.root.references.length > 0 &&
+    Boolean(tsConfigFileContents.lib);
 
-  return { tsConfig, isUsingTsSolutionConfigs, tsConfigFile, tsConfigPath, packageJson };
+  return {
+    tsConfigFileNames,
+    tsConfigFilePaths,
+    tsConfigFileContents,
+    tsConfigs,
+    packageJson,
+    isUsingTsSolutionConfigs,
+  };
 }
 
-export function getTsPathAliasesConfigV8() {
+export function getTsPathAliasesConfigUsedOnlyForDx() {
+  const tsConfigFilesWithAliases = ['tsconfig.app.json', 'tsconfig.lib.json', 'tsconfig.json'];
+  const tsConfigBaseFilesForDx = ['tsconfig.base.v8.json', 'tsconfig.base.all.json'];
   const cwd = process.cwd();
-  const tsConfigFile = 'tsconfig.json';
-  const tsConfigPath = path.join(cwd, `./${tsConfigFile}`);
+  const tsConfigPath = path.join(cwd, `./tsconfig.json`);
+
+  if (!fs.existsSync(tsConfigPath)) {
+    throw new Error(`${tsConfigPath} doesn't exist`);
+  }
+
   const tsConfig = JSON.parse(stripJsonComments(fs.readFileSync(tsConfigPath, 'utf-8')));
-  const isUsingV8pathAliases = tsConfig.extends && tsConfig.extends.includes('tsconfig.base.v8.json');
-  return { isUsingV8pathAliases, tsConfigFileV8: tsConfigFile };
+  const isUsingPathAliasesForDx =
+    tsConfig.extends && tsConfigBaseFilesForDx.some(relativeFilePath => tsConfig.extends.endsWith(relativeFilePath));
+
+  const tsConfigFileForCompilation = tsConfigFilesWithAliases.find(fileName => fs.existsSync(path.join(cwd, fileName)));
+
+  if (!tsConfigFileForCompilation) {
+    throw new Error(`no tsconfig from one of [${tsConfigFilesWithAliases}] found!`);
+  }
+
+  return { isUsingPathAliasesForDx, tsConfigFileForCompilation };
 }
 
 const packagesWithInvalidTypes = [
@@ -50,11 +108,13 @@ function enableAllowSyntheticDefaultImports(options: { pkgJson: PackageJson }) {
   return shouldEnable ? { allowSyntheticDefaultImports: true } : null;
 }
 
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - 💡 NOTE: this is not used unless api-extractor resolves resolving workspace d.ts packages - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
 function createNormalizedTsPaths(options: { definitionsRootPath: string; pathAliasesTsConfigPath: string }) {
   type PathAliases = Record<string, string[]>;
   const { definitionsRootPath, pathAliasesTsConfigPath } = options;
   const tsConfigRoot = JSON.parse(fs.readFileSync(pathAliasesTsConfigPath, 'utf-8')) as TsConfig;
-  const paths = (tsConfigRoot.compilerOptions.paths as unknown) as undefined | PathAliases;
+  const paths = tsConfigRoot.compilerOptions.paths as unknown as undefined | PathAliases;
 
   if (!paths) {
     throw new Error(`Provided "${pathAliasesTsConfigPath}" has no compilerOptions.path defined`);
@@ -74,14 +134,16 @@ export function getTsPathAliasesApiExtractorConfig(options: {
   definitionsRootPath: string;
   pathAliasesTsConfigPath?: string;
 }) {
-  const { packageJson, tsConfig, pathAliasesTsConfigPath, definitionsRootPath } = options;
+  const { packageJson, tsConfig /* , pathAliasesTsConfigPath, definitionsRootPath */ } = options;
   /**
    * Because api-extractor ran into race conditions when executing via lage (https://github.com/microsoft/fluentui/issues/25766),
    * we won't use path aliases on CI, rather serving api-extractor rolluped dts files cross package, that will be referenced via yarn workspace sym-links
+   *
+   * 💡 NOTE: this is not used unless api-extractor resolves resolving workspace d.ts packages - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
    */
-  const normalizedPaths = pathAliasesTsConfigPath
-    ? createNormalizedTsPaths({ definitionsRootPath, pathAliasesTsConfigPath })
-    : undefined;
+  // const normalizedPaths = pathAliasesTsConfigPath
+  //   ? createNormalizedTsPaths({ definitionsRootPath, pathAliasesTsConfigPath })
+  //   : undefined;
 
   /**
    * Customized TSConfig that uses `tsconfig.lib.json` as base with some required overrides:
@@ -108,10 +170,13 @@ export function getTsPathAliasesApiExtractorConfig(options: {
        */
       skipLibCheck: false,
       /**
-       * just-scripts provides invalid types for tsconfig, thus `paths` cannot be set to dictionary,nor null or `{}`
+       * api-extractor introduced a "feature" which is actually a bug and makes using path aliases impossible
+       * - with this api extractor change user is forced to rely on yarn/npm "workspace" symlinks in order to determine that inner workspace package should not be bundled in type definition rollup/api.md
+       * - see https://github.com/microsoft/rushstack/pull/3321, https://github.com/microsoft/rushstack/pull/3339
+       *
        */
-      // @ts-expect-error - just-scripts provides invalid types
-      paths: normalizedPaths,
+      paths: undefined,
+      baseUrl: '.',
     },
   };
 

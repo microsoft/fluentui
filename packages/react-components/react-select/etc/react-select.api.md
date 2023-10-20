@@ -8,9 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -24,15 +21,6 @@ export const Select: ForwardRefComponent<SelectProps>;
 
 // @public (undocumented)
 export const selectClassNames: SlotClassNames<SelectSlots>;
-
-// @public (undocumented)
-export const SelectField_unstable: ForwardRefComponent<SelectFieldProps_unstable>;
-
-// @public (undocumented)
-export const selectFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
-
-// @public (undocumented)
-export type SelectFieldProps_unstable = FieldProps<typeof Select>;
 
 // @public
 export type SelectOnChangeData = {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { DividerProps, DividerState } from './Divider.types';
 
 /**
@@ -24,19 +24,25 @@ export const useDivider_unstable = (props: DividerProps, ref: React.Ref<HTMLElem
       wrapper: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      role: 'separator',
-      'aria-orientation': vertical ? 'vertical' : 'horizontal',
-      'aria-labelledby': props.children ? dividerId : undefined,
-      ...props,
-      ref,
-    }),
-    wrapper: resolveShorthand(wrapper, {
-      required: true,
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        role: 'separator',
+        'aria-orientation': vertical ? 'vertical' : 'horizontal',
+        'aria-labelledby': props.children ? dividerId : undefined,
+        ...props,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+      } as const),
+      { elementType: 'div' },
+    ),
+    wrapper: slot.always(wrapper, {
       defaultProps: {
         id: dividerId,
         children: props.children,
       },
+      elementType: 'div',
     }),
   };
 };

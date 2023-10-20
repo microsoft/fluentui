@@ -1,4 +1,5 @@
 import * as path from 'path';
+
 import * as glob from 'glob';
 import { sassTask } from 'just-scripts';
 import postcssModules from 'postcss-modules';
@@ -37,10 +38,14 @@ function getJSON(cssFileName: string, json: Record<string, string>) {
   _fileNameToClassMap[path.resolve(cssFileName)] = json;
 }
 
+export function hasSass() {
+  return glob.sync(path.join(process.cwd(), 'src/**/*.scss')).length > 0;
+}
+
 export function sass() {
   // small optimization: if there are no sass files, the task does nothing
   // (skip actually calling sassTask which must parse several extra dependencies)
-  if (!glob.sync(path.join(process.cwd(), 'src/**/*.scss')).length) {
+  if (!hasSass()) {
     return () => undefined;
   }
 

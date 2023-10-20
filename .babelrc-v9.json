@@ -1,0 +1,10 @@
+{
+  "presets": [
+    [
+      "@fluentui/scripts-babel/preset-v9",
+      {
+        "tsBaseConfigPath": "./tsconfig.base.json"
+      }
+    ]
+  ]
+}

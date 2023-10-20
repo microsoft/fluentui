@@ -4,6 +4,7 @@ exports[`Menu renders a default state 1`] = `
 <div>
   <button
     aria-haspopup="menu"
+    data-tabster="{\\"restorer\\":{\\"type\\":1}}"
     id="menu1"
   >
     Menu trigger

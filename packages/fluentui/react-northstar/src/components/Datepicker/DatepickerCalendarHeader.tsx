@@ -65,23 +65,14 @@ export const datepickerCalendarHeaderClassName = 'ui-datepicker__calendarheader'
 /**
  * A DatepickerCalendarHeader is used to display header block above calendar grid.
  */
-export const DatepickerCalendarHeader = (React.forwardRef<HTMLDivElement, DatepickerCalendarHeaderProps>(
+export const DatepickerCalendarHeader = React.forwardRef<HTMLDivElement, DatepickerCalendarHeaderProps>(
   (props, ref) => {
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(DatepickerCalendarHeader.displayName, context.telemetry);
     setStart();
 
-    const {
-      className,
-      design,
-      styles,
-      variables,
-      label,
-      nextButton,
-      previousButton,
-      onPreviousClick,
-      onNextClick,
-    } = props;
+    const { className, design, styles, variables, label, nextButton, previousButton, onPreviousClick, onNextClick } =
+      props;
     const ElementType = getElementType(props);
     const unhandledProps = useUnhandledProps(DatepickerCalendarHeader.handledProps, props);
     const getA11yProps = useAccessibility(props.accessibility, {
@@ -159,7 +150,7 @@ export const DatepickerCalendarHeader = (React.forwardRef<HTMLDivElement, Datepi
     setEnd();
     return element;
   },
-) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DatepickerCalendarHeaderProps> &
+) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DatepickerCalendarHeaderProps> &
   FluentComponentStaticProps<DatepickerCalendarHeaderProps>;
 
 DatepickerCalendarHeader.displayName = 'DatepickerCalendarHeader';

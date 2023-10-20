@@ -3,9 +3,13 @@ import * as React from 'react';
 import { Datepicker } from '@fluentui/react-northstar';
 
 const DatepickerExampleOpen = () => {
-  const [open] = useBooleanKnob({ name: 'open' });
-
-  return <Datepicker calendarOpenState={open} />;
+  const [open, setOpen] = useBooleanKnob({ name: 'open' });
+  return (
+    <Datepicker
+      calendarOpenState={open}
+      onCalendarOpenStateChange={(_, { calendarOpenState }) => setOpen(calendarOpenState)}
+    />
+  );
 };
 
 export default DatepickerExampleOpen;

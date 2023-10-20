@@ -9,7 +9,7 @@
     "format:check": "yarn format -c",
     "e2e": "cypress run --component",
     "e2e:local": "cypress open --component",
-    "lint": "eslint --ext .js,.ts.,.tsx ./src",
+    "lint": "eslint --ext .js,.ts,.tsx ./src",
     "test": "jest --passWithNoTests",
     "start": "webpack-dev-server --mode=development"
   },
@@ -21,8 +21,8 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.104.6",
-    "@fluentui/react-hooks": "^8.6.15",
+    "@fluentui/react": "*",
+    "@fluentui/react-hooks": "*",
     "@types/react": "18.0.14",
     "@types/react-dom": "18.0.6",
     "react": "18.2.0",

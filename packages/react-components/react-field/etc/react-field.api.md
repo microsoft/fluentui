@@ -8,34 +8,61 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import type { SlotRenderFunction } from '@fluentui/react-utilities';
-import type { SlotShorthandValue } from '@fluentui/react-utilities';
 
-// @public
-export type FieldConfig<T extends FieldControl> = {
-    component: T;
-    classNames: SlotClassNames<FieldSlots<T>>;
-    labelConnection?: 'htmlFor' | 'aria-labelledby';
-    ariaInvalidOnError?: boolean;
+// @public (undocumented)
+export const Field: ForwardRefComponent<FieldProps>;
+
+// @public (undocumented)
+export const fieldClassNames: SlotClassNames<FieldSlots>;
+
+// @public (undocumented)
+export const FieldContextProvider: React_2.Provider<Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
+    labelFor?: string | undefined;
+    labelId?: string | undefined;
+    validationMessageId?: string | undefined;
+    hintId?: string | undefined;
+}> | undefined>;
+
+// @public (undocumented)
+export type FieldContextValue = Readonly<Pick<FieldState, 'generatedControlId' | 'orientation' | 'required' | 'size' | 'validationState'> & {
+    labelFor?: string;
+    labelId?: string;
+    validationMessageId?: string;
+    hintId?: string;
+}>;
+
+// @public (undocumented)
+export type FieldContextValues = {
+    field: FieldContextValue;
 };
 
 // @public
-export type FieldControl = React_2.VoidFunctionComponent<Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'className' | 'style' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid'>>;
+export type FieldControlProps = Pick<React_2.HTMLAttributes<HTMLElement>, 'id' | 'aria-labelledby' | 'aria-describedby' | 'aria-invalid' | 'aria-required'>;
 
 // @public
-export type FieldProps<T extends FieldControl> = ComponentProps<Partial<FieldSlots<T>>, 'control'> & {
+export type FieldControlPropsOptions = {
+    supportsLabelFor?: boolean;
+    supportsRequired?: boolean;
+    supportsSize?: boolean;
+};
+
+// @public
+export type FieldProps = Omit<ComponentProps<FieldSlots>, 'children'> & {
+    children?: React_2.ReactNode | ((props: FieldControlProps) => React_2.ReactNode);
     orientation?: 'vertical' | 'horizontal';
-    validationState?: 'error' | 'warning' | 'success';
+    validationState?: 'error' | 'warning' | 'success' | 'none';
+    required?: boolean;
+    size?: 'small' | 'medium' | 'large';
 };
 
 // @public
-export type FieldSlots<T extends FieldControl> = {
+export type FieldSlots = {
     root: NonNullable<Slot<'div'>>;
-    control: SlotComponent<T>;
     label?: Slot<typeof Label>;
     validationMessage?: Slot<'div'>;
     validationMessageIcon?: Slot<'span'>;
@@ -43,21 +70,35 @@ export type FieldSlots<T extends FieldControl> = {
 };
 
 // @public
-export type FieldState<T extends FieldControl> = ComponentState<Required<FieldSlots<T>>> & Pick<FieldProps<T>, 'orientation' | 'validationState'> & {
-    classNames: SlotClassNames<FieldSlots<T>>;
+export type FieldState = ComponentState<Required<FieldSlots>> & Required<Pick<FieldProps, 'orientation' | 'required' | 'size' | 'validationState'>> & Pick<FieldProps, 'children'> & {
+    generatedControlId: string;
 };
 
+// @public
+export const renderField_unstable: (state: FieldState, contextValues: FieldContextValues) => JSX.Element;
+
+// @public
+export const useField_unstable: (props: FieldProps, ref: React_2.Ref<HTMLDivElement>) => FieldState;
+
 // @public (undocumented)
-export const getFieldClassNames: (name: string) => SlotClassNames<FieldSlots<FieldControl>>;
+export const useFieldContext_unstable: () => Readonly<Pick<FieldState, "orientation" | "required" | "size" | "validationState" | "generatedControlId"> & {
+    labelFor?: string | undefined;
+    labelId?: string | undefined;
+    validationMessageId?: string | undefined;
+    hintId?: string | undefined;
+}> | undefined;
 
 // @public
-export const renderField_unstable: <T extends FieldControl>(state: FieldState<T>) => JSX.Element;
+export const useFieldContextValues_unstable: (state: FieldState) => FieldContextValues;
 
 // @public
-export const useField_unstable: <T extends FieldControl>(props: FieldPropsWithOptionalComponentProps<T>, ref: React_2.Ref<HTMLElement>, params: FieldConfig<T>) => FieldState<T>;
+export function useFieldControlProps_unstable(): FieldControlProps | undefined;
 
 // @public
-export const useFieldStyles_unstable: <T extends FieldControl>(state: FieldState<T>) => void;
+export function useFieldControlProps_unstable<Props extends FieldControlProps>(props: Props, options?: FieldControlPropsOptions): Props;
+
+// @public
+export const useFieldStyles_unstable: (state: FieldState) => void;
 
 // (No @packageDocumentation comment for this package)
 

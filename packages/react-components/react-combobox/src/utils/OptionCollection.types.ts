@@ -26,7 +26,10 @@ export type OptionCollectionState = {
   getOptionById(id: string): OptionValue | undefined;
 
   /** Returns an array of options filtered by a value matching function against the option's text string. */
-  getOptionsMatchingText(matcher: (value: string) => boolean): OptionValue[];
+  getOptionsMatchingText(matcher: (text: string) => boolean): OptionValue[];
+
+  /** Returns an array of options filtered by a value matching function against the option's value string. */
+  getOptionsMatchingValue(matcher: (value: string) => boolean): OptionValue[];
 
   /** The unordered option data. */
   options: OptionValue[];

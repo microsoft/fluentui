@@ -1,22 +1,39 @@
 import * as React from 'react';
-import { Tree, TreeItem } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
 export const Default = () => {
   return (
-    <Tree aria-label="Tree">
-      <TreeItem aria-owns="default-subtree-1">level 1, item 1</TreeItem>
-      <Tree id="default-subtree-1">
-        <TreeItem>level 2, item 1</TreeItem>
-        <TreeItem>level 2, item 2</TreeItem>
-        <TreeItem>level 2, item 3</TreeItem>
-      </Tree>
-      <TreeItem aria-owns="default-subtree-2">level 1, item 2</TreeItem>
-      <Tree id="default-subtree-2">
-        <TreeItem aria-owns="default-subtree-2-1">level 2, item 1</TreeItem>
-        <Tree id="default-subtree-2-1">
-          <TreeItem>level 3, item 1</TreeItem>
+    <Tree aria-label="Default">
+      <TreeItem itemType="branch">
+        <TreeItemLayout>level 1, item 1</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 2</TreeItemLayout>
+          </TreeItem>
+          <TreeItem itemType="leaf">
+            <TreeItemLayout>level 2, item 3</TreeItemLayout>
+          </TreeItem>
         </Tree>
-      </Tree>
+      </TreeItem>
+      <TreeItem itemType="branch">
+        <TreeItemLayout>level 1, item 2</TreeItemLayout>
+        <Tree>
+          <TreeItem itemType="branch">
+            <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            <Tree>
+              <TreeItem itemType="leaf">
+                <TreeItemLayout>level 3, item 1</TreeItemLayout>
+              </TreeItem>
+            </Tree>
+          </TreeItem>
+        </Tree>
+      </TreeItem>
+      <TreeItem itemType="leaf">
+        <TreeItemLayout>level 1, item 3</TreeItemLayout>
+      </TreeItem>
     </Tree>
   );
 };

@@ -1,4 +1,4 @@
-import { workspaceRoot } from '@nrwl/devkit';
+import { workspaceRoot } from '@nx/devkit';
 
 import preset from './jest.preset.v0';
 
@@ -12,11 +12,13 @@ describe(`v0 preset`, () => {
         coverageReporters: ['json', 'lcov'],
         moduleFileExtensions: ['ts', 'tsx', 'js', 'json'],
         moduleNameMapper: expect.any(Object),
+        modulePathIgnorePatterns: expect.any(Array),
         setupFilesAfterEnv: [`${workspaceRoot}/scripts/jest/src/v0/setupTests.js`],
         testRegex: '/test/.*-test\\.tsx?$',
         transform: {
           '^.+\\.tsx?$': 'babel-jest',
         },
+        testEnvironment: 'jsdom',
         verbose: false,
         watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
       }),

@@ -1,0 +1,158 @@
+import { Meta } from '@storybook/addon-docs';
+
+<Meta title="Concepts/Migration/from v0/Components/Grid Migration" />
+
+# Grid component Migration guide
+
+## Overview:
+
+To help with the migration we also offer a shim that [can be checked here](/docs/migration-shims-v0-gridshim--default)
+
+Before:
+
+```tsx
+import { Grid } from '@fluentui/react-northstar';
+const Component = () => <Grid />;
+```
+
+After:
+
+```tsx
+import { Grid } from '@fluentui/react-migration-v0-v9';
+const Component = () => <Grid />;
+```
+
+## How to migrate props:
+
+| `Grid` props              | migrate guide                                                                                            |
+| ------------------------- | -------------------------------------------------------------------------------------------------------- |
+| className                 | keep it as is                                                                                            |
+| content                   | see [Migrate content prop](#./Migrate-`content`-prop) in this document                                   |
+| variables, design, styles | see [Migrate style overrides](#./Migrate-style-overrides) in this document                               |
+| accessibility             | see [migrate-custom-accessibility.md](?path=/docs/concepts-migration-from-v0-custom-accessibility--page) |
+| columns                   | see [Migrate columns and rows](#./Migrate-columns-and-rows)                                              |
+| rows                      | see [Migrate columns and rows](#./Migrate-columns-and-rows)                                              |
+
+---
+
+## Migrate `content` prop
+
+Move `content` to JSX children.
+
+Before:
+
+```tsx
+import { Grid } from '@fluentui/react-northstar';
+const Component = () => <Grid content="hi" />;
+```
+
+After:
+
+```tsx
+import { Grid } from '@fluentui/react-migration-v0-v9';
+const Component = () => <Grid>hi</Grid>;
+```
+
+## Migrate style overrides
+
+> Note: **If this is your first migration**, please read [the general guide on how to migrate styles](?path=/docs/concepts-migration-from-v0-custom-style-overrides--page). Also check examples in ["how to migrate styles" for Box component](./migrate-Box.md#Migrate-style-overrides).
+
+### Example for migrate boolean `variables`:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Grid } from '@fluentui/react-northstar';
+
+export const Component = () => <Grid variables={{ isSomething: true }} />;
+
+// in grid-styles.ts
+export const gridStyles = {
+  root: ({ variables: { isSomething } }) => ({
+    ...(isSomething && { color: 'red' }),
+  }),
+};
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Grid } from '@fluentui/react-migration-v0-v9';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+
+  return <Grid className={classes.root} />;
+};
+```
+
+```tsx
+// in COMPONENT_NAME.styles.ts
+import { makeStyles } from '@fluentui/react-components';
+
+export const useStyles = makeStyles({
+  root: { color: 'red' },
+});
+```
+
+## Migrate columns and rows
+
+Classes for grids up to 3 rows and columns are prepared in the V9 component:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Grid } from '@fluentui/react-northstar';
+
+export const Component = () => <Grid columns="2" rows="2" />;
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Grid } from '@fluentui/react-migration-v0-v9';
+
+export const Component = () => <Grid columns={2} rows={2} />;
+```
+
+If the number of columns/rows is higher than 3 or if custom template is used, style overrides need to be used:
+
+Before:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Grid } from '@fluentui/react-northstar';
+
+export const Component = () => <Grid columns="5" rows="2fr repeat(2, 1fr)" />;
+```
+
+After:
+
+```tsx
+// in COMPONENT_NAME.tsx
+import { Grid } from '@fluentui/react-migration-v0-v9';
+import { useStyles } from './COMPONENT_NAME.styles.ts';
+
+export const Component = () => {
+  const classes = useStyles();
+
+  return <Grid className={classes.root} />;
+};
+```
+
+```tsx
+// in COMPONENT_NAME.styles.ts
+import { makeStyles, grid } from '@fluentui/react-migration-v0-v9';
+
+export const useStyles = makeStyles({
+  root: {
+    ...grid.columns('5'),
+    ...grid.rows('2fr repeat(2, 1fr)'),
+  },
+});
+```

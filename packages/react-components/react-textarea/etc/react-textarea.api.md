@@ -8,9 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { FieldControl } from '@fluentui/react-field';
-import type { FieldProps } from '@fluentui/react-field';
-import { FieldSlots } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
@@ -24,15 +21,6 @@ export const Textarea: ForwardRefComponent<TextareaProps>;
 
 // @public (undocumented)
 export const textareaClassNames: SlotClassNames<TextareaSlots>;
-
-// @public (undocumented)
-export const TextareaField_unstable: ForwardRefComponent<TextareaFieldProps_unstable>;
-
-// @public (undocumented)
-export const textareaFieldClassNames: SlotClassNames<FieldSlots<FieldControl>>;
-
-// @public (undocumented)
-export type TextareaFieldProps_unstable = FieldProps<typeof Textarea>;
 
 // @public
 export type TextareaOnChangeData = {

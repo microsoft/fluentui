@@ -1,70 +1,9 @@
 import * as React from 'react';
 import { DismissRegular, InfoRegular } from '@fluentui/react-icons';
-import { makeStyles, shorthands, tokens, Button, mergeClasses, Tooltip } from '@fluentui/react-components';
+import { Button, mergeClasses, Tooltip } from '@fluentui/react-components';
+
 import { V0IconComponent, V9IconComponent } from './types';
-
-const useIconTileStyles = makeStyles({
-  root: {
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    ...shorthands.padding('5px', '0px'),
-    ...shorthands.gap('10px'),
-    ...shorthands.border(tokens.strokeWidthThin, 'solid', tokens.colorNeutralStroke1),
-    maxHeight: '105px',
-    ':hover': {
-      backgroundColor: tokens.colorNeutralBackground2Hover,
-    },
-  },
-
-  badge: {
-    position: 'absolute',
-    top: '5px',
-    right: '10px',
-  },
-
-  warning: {
-    color: tokens.colorPaletteDarkOrangeBackground3,
-  },
-
-  success: {
-    color: tokens.colorPaletteGreenBackground3,
-  },
-
-  v0: {
-    width: '16px',
-    height: '16px',
-  },
-
-  v9: {
-    width: '20px',
-    height: '20px',
-  },
-
-  tile: {
-    display: 'flex',
-    flexDirection: 'column',
-    justifyContent: 'center',
-    alignItems: 'center',
-    ...shorthands.gap('2px'),
-  },
-
-  buttonReset: {
-    resize: 'horizontal',
-    boxSizing: 'content-box',
-    backgroundColor: 'inherit',
-    color: 'inherit',
-    fontFamily: 'inherit',
-    fontSize: 'inherit',
-    lineHeight: 'normal',
-    ...shorthands.overflow('visible'),
-    ...shorthands.padding(0),
-    ...shorthands.borderStyle('none'),
-    WebkitAppearance: 'button',
-    textAlign: 'unset',
-  },
-});
+import { useComparisonTileStyles } from './ComparisonTile.styles';
 
 interface IComparisonTileProps {
   V0Icon: V0IconComponent;
@@ -76,7 +15,7 @@ export const ComparisonTile: React.FC<IComparisonTileProps> = ({ V0Icon, V9Icon 
 
   const tooltipWarningContent = <ul>{noV9Icon && <li>No equivalent icon available</li>}</ul>;
 
-  const styles = useIconTileStyles();
+  const styles = useComparisonTileStyles();
   return (
     <div className={styles.root} role="listitem">
       <Tooltip relationship="description" content={noV9Icon ? tooltipWarningContent : 'Good to go!'}>

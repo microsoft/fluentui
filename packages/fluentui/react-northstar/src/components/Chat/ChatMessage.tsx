@@ -249,7 +249,7 @@ function partitionActionMenuPropsFromShorthand<P>(
 /**
  * A ChatMessage represents a single message in chat.
  */
-export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((inputProps, ref) => {
+export const ChatMessage = React.forwardRef<HTMLDivElement, ChatMessageProps>((inputProps, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(ChatMessage.displayName, context.telemetry);
   setStart();
@@ -303,9 +303,8 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   const isRefreshComfyLayout = layout === 'refresh' && density === 'comfy';
 
   const [actionMenuOptions, positioningProps] = partitionPopperPropsFromShorthand(props.actionMenu);
-  const [actionMenu, inlineActionMenu, controlledShowActionMenu] = partitionActionMenuPropsFromShorthand(
-    actionMenuOptions,
-  );
+  const [actionMenu, inlineActionMenu, controlledShowActionMenu] =
+    partitionActionMenuPropsFromShorthand(actionMenuOptions);
   const [showActionMenu, setShowActionMenu] = useAutoControlled<boolean>({
     defaultValue: false,
     value: controlledShowActionMenu,
@@ -726,7 +725,7 @@ export const ChatMessage = (React.forwardRef<HTMLDivElement, ChatMessageProps>((
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, ChatMessageProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, ChatMessageProps> &
   FluentComponentStaticProps<ChatMessageProps>;
 
 ChatMessage.displayName = 'ChatMessage';

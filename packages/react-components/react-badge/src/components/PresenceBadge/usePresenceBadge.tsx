@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import {
   presenceAvailableFilled,
   presenceAvailableRegular,
@@ -20,7 +20,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
     case 'available':
       return outOfOffice ? presenceAvailableRegular[size] : presenceAvailableFilled[size];
     case 'away':
-      return outOfOffice ? presenceOfflineRegular[size] : presenceAwayFilled[size];
+      return outOfOffice ? presenceOofRegular[size] : presenceAwayFilled[size];
     case 'blocked':
       return presenceBlockedRegular[size];
     case 'busy':
@@ -28,7 +28,7 @@ const iconMap = (status: PresenceBadgeState['status'], outOfOffice: boolean, siz
     case 'do-not-disturb':
       return outOfOffice ? presenceDndRegular[size] : presenceDndFilled[size];
     case 'offline':
-      return presenceOfflineRegular[size];
+      return outOfOffice ? presenceOofRegular[size] : presenceOfflineRegular[size];
     case 'out-of-office':
       return presenceOofRegular[size];
     case 'unknown':
@@ -68,11 +68,12 @@ export const usePresenceBadge_unstable = (
         role: 'img',
         ...props,
         size,
-        icon: resolveShorthand(props.icon, {
+        icon: slot.optional(props.icon, {
           defaultProps: {
             children: IconElement ? <IconElement /> : null,
           },
-          required: true,
+          renderByDefault: true,
+          elementType: 'span',
         }),
       },
       ref,

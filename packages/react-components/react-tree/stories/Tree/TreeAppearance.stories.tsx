@@ -1,17 +1,47 @@
 import * as React from 'react';
-import { Tree, TreeItem } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
 export const Appearance = () => {
   return (
     <>
-      <Tree aria-label="Tree">
-        <TreeItem>Subtle tree item</TreeItem>
+      <Tree aria-label="Default Appearance">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Default appearance</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
       </Tree>
-      <Tree appearance="subtle-alpha" aria-label="Tree">
-        <TreeItem>Subtle-alpha tree item</TreeItem>
+      <Tree aria-label="Subtle Alpha Appearance" appearance="subtle-alpha">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Subtle-alpha appearance</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
       </Tree>
-      <Tree appearance="transparent" aria-label="Tree">
-        <TreeItem>Transparent tree item</TreeItem>
+      <Tree aria-label="Transparent Appearance" appearance="transparent">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Transparent appearance</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+          </Tree>
+        </TreeItem>
       </Tree>
     </>
   );
@@ -20,10 +50,12 @@ export const Appearance = () => {
 Appearance.parameters = {
   docs: {
     description: {
-      story:
-        '- `(undefined)`: the tree item appears with the default style\n' +
-        '- `subtle`: minimizes emphasis on hovered or focused states\n' +
-        '- `transparent`: removes background color.\n',
+      story: `
+A tree can have the following \`appearance\` variants:
+- \`subtle\`: the default appearance.
+- \`subtle-alpha\`: minimizes emphasis on hovered or focused states.
+- \`transparent\`: no background color.
+      `,
     },
   },
 };

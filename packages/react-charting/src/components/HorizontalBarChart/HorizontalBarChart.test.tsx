@@ -3,9 +3,16 @@ import * as React from 'react';
 import { resetIds } from '../../Utilities';
 import { mount, ReactWrapper } from 'enzyme';
 import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { IChartProps, IChartDataPoint, IHorizontalBarChartProps, HorizontalBarChart } from './index';
+import {
+  IChartProps,
+  IChartDataPoint,
+  IHorizontalBarChartProps,
+  HorizontalBarChart,
+  HorizontalBarChartVariant,
+} from './index';
 import { IHorizontalBarChartState, HorizontalBarChartBase } from './HorizontalBarChart.base';
 import toJson from 'enzyme-to-json';
+import * as renderer from 'react-test-renderer';
 
 // Wrapper of the HorizontalBarChart to be tested.
 let wrapper: ReactWrapper<IHorizontalBarChartProps, IHorizontalBarChartState, HorizontalBarChartBase> | undefined;
@@ -21,7 +28,7 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints: IChartProps[] = [
+export const chartPoints: IChartProps[] = [
   {
     chartTitle: 'one',
     chartData: [
@@ -47,6 +54,31 @@ const chartPoints: IChartProps[] = [
     ],
   },
 ];
+
+describe('HorizontalBarChart snapShot testing', () => {
+  beforeEach(() => {
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
+
+  it('Should render absolute-scale variant correctly', () => {
+    const component = renderer.create(
+      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('Should not render bar labels in absolute-scale variant', () => {
+    const component = renderer.create(
+      <HorizontalBarChart data={chartPoints} variant={HorizontalBarChartVariant.AbsoluteScale} hideLabels={true} />,
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+});
 
 describe('HorizontalBarChart - basic props', () => {
   beforeEach(sharedBeforeEach);
@@ -117,23 +149,23 @@ describe('Render calling with respective to props', () => {
 });
 
 describe('HorizontalBarChart - mouse events', () => {
-  beforeEach(sharedBeforeEach);
-  afterEach(sharedAfterEach);
+  beforeEach(() => {
+    sharedBeforeEach();
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
+  });
+  afterEach(() => {
+    sharedAfterEach();
+    jest.spyOn(global.Math, 'random').mockRestore();
+  });
 
   it('Should render callout correctly on mouseover', () => {
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
-
     wrapper = mount(<HorizontalBarChart data={chartPoints} calloutProps={{ doNotLayer: true }} />);
     wrapper.find('rect').at(2).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
-
-    jest.spyOn(global.Math, 'random').mockRestore();
   });
 
   it('Should render customized callout on mouseover', () => {
-    jest.spyOn(global.Math, 'random').mockReturnValue(0.1);
-
     wrapper = mount(
       <HorizontalBarChart
         data={chartPoints}
@@ -150,7 +182,19 @@ describe('HorizontalBarChart - mouse events', () => {
     wrapper.find('rect').at(0).simulate('mouseover');
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
+  });
+});
 
-    jest.spyOn(global.Math, 'random').mockRestore();
+describe('Render empty chart aria label div when chart is empty', () => {
+  it('No empty chart aria label div rendered', () => {
+    wrapper = mount(<HorizontalBarChart data={chartPoints} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(0);
+  });
+
+  it('Empty chart aria label div rendered', () => {
+    wrapper = mount(<HorizontalBarChart data={[]} />);
+    const renderedDOM = wrapper.findWhere(node => node.prop('aria-label') === 'Graph has no data to display');
+    expect(renderedDOM!.length).toBe(1);
   });
 });

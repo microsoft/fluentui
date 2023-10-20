@@ -1,51 +1,94 @@
 import * as React from 'react';
-import { teamsLightTheme, typographyStyles } from '@fluentui/react-components';
-import type { TypographyStyle } from '@fluentui/react-components';
+import {
+  makeStyles,
+  Subtitle2Stronger,
+  Text,
+  Theme,
+  typographyStyles,
+  webLightTheme,
+} from '@fluentui/react-components';
+import type { TypographyStyles } from '@fluentui/react-components';
 
-const theme = teamsLightTheme;
+type TypographyTokens = [token: keyof TypographyStyles, tokenName: string, entries: [string, string][]][];
 
-export const TypographyStyles = () => {
-  // var(--tokenName) => tokenName
-  function formatTypographyStyleValue(typographyStyleValue: TypographyStyle) {
-    return (
-      <div>
-        {Object.values(typographyStyleValue).map(value => (
-          <div key={value}>{value.replace(/var\(--(.+)\)/, '$1')}</div>
-        ))}
-      </div>
-    );
-  }
+const useStyles = makeStyles({
+  container: {
+    rowGap: '24px',
+    columnGap: '48px',
+    display: 'grid',
+    gridTemplateColumns: 'auto auto auto 1fr',
+    alignItems: 'start',
+  },
+  value: {
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflowX: 'hidden',
+    maxWidth: '10.5em',
+  },
 
-  // caption1Strong => Caption 1 Strong
-  function formatTypographyStyleName(typographyStyleName: string) {
-    return typographyStyleName.replace(/([A-Z\d])/g, ' $1').replace(/^(.)/, firstChar => firstChar.toUpperCase());
-  }
+  ...typographyStyles,
+});
+
+// FIXME: hardcoded theme
+const theme = webLightTheme;
+
+const tokenOrder: (keyof TypographyStyles)[] = [
+  'caption2',
+  'caption2Strong',
+  'caption1',
+  'caption1Strong',
+  'caption1Stronger',
+  'body1',
+  'body1Strong',
+  'body1Stronger',
+  'body2',
+  'subtitle2',
+  'subtitle2Stronger',
+  'subtitle1',
+  'title3',
+  'title2',
+  'title1',
+  'largeTitle',
+  'display',
+];
+
+const tokens: TypographyTokens = tokenOrder.map(token => [
+  token,
+  token.replace(/([A-Z\d])/g, ' $1').replace(/^(.)/, firstChar => firstChar.toUpperCase()),
+  Object.entries(typographyStyles[token]).map(([k, v]) => [k, v.replace(/var\(--(.+)\)/, '$1')]),
+]);
+
+export const Typography = () => {
+  const styles = useStyles();
 
   return (
-    <div>
-      <div>
-        <em>Typography style is represented by a set of tokens instead of an individual token.</em>
-      </div>
-      <div
-        style={{
-          marginTop: '2em',
-          fontFamily: theme.fontFamilyBase,
-          display: 'grid',
-          gridTemplateColumns: 'auto auto 1fr',
-          gap: '10px',
-          alignItems: 'center',
-        }}
-      >
-        {(Object.keys(typographyStyles) as (keyof typeof typographyStyles)[]).map(typographyStyleName => [
-          <div key={typographyStyleName}>{typographyStyleName}</div>,
-          <div key={`${typographyStyleName}-value`}>
-            {formatTypographyStyleValue(typographyStyles[typographyStyleName])}
-          </div>,
-          <div key={`${typographyStyleName}-demo`} style={typographyStyles[typographyStyleName]}>
-            Hello, I am {formatTypographyStyleName(typographyStyleName)}
-          </div>,
-        ])}
-      </div>
+    <div className={styles.container}>
+      <Subtitle2Stronger>Name</Subtitle2Stronger>
+      <Subtitle2Stronger>Tokens</Subtitle2Stronger>
+      <Subtitle2Stronger>Default Values</Subtitle2Stronger>
+      <Subtitle2Stronger>Example</Subtitle2Stronger>
+
+      {tokens.map(([token, tokenName, entries]) => (
+        <React.Fragment key={token}>
+          <Text>{token}</Text>
+
+          <div>
+            {entries.map(([key, value]) => (
+              <div key={`${token}-${key}`}>{value}</div>
+            ))}
+          </div>
+
+          <div>
+            {entries.map(([key, value]) => (
+              <div key={`${token}-${key}`} className={styles.value}>
+                {key}: {theme[value as keyof Theme]}
+              </div>
+            ))}
+          </div>
+
+          <Text className={styles[token]}>{tokenName}</Text>
+        </React.Fragment>
+      ))}
     </div>
   );
 };

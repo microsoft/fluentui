@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { makeStyles, shorthands } from '@fluentui/react-components';
-import { ProgressBar } from '@fluentui/react-progress';
+import { Field, ProgressBar, makeStyles, shorthands } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
@@ -13,9 +12,12 @@ export const Shape = () => {
 
   return (
     <div>
-      <ProgressBar className={styles.container} shape="rounded" thickness="large" value={0.5} />
-
-      <ProgressBar className={styles.container} shape="square" thickness="large" value={0.5} />
+      <Field validationMessage="Rounded ProgressBar" validationState="none">
+        <ProgressBar className={styles.container} shape="rounded" thickness="large" value={0.5} />
+      </Field>
+      <Field validationMessage="Square ProgressBar" validationState="none">
+        <ProgressBar className={styles.container} shape="square" thickness="large" value={0.5} />
+      </Field>
     </div>
   );
 };
@@ -23,7 +25,7 @@ export const Shape = () => {
 Shape.parameters = {
   docs: {
     description: {
-      story: 'ProgressBar supports different shapes. `rounded` is the default.',
+      story: 'The `shape` prop affects the corners of the bar. It can be `rounded` (default) or `square`.',
     },
   },
 };

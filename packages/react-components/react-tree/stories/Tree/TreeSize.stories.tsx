@@ -1,17 +1,49 @@
 import * as React from 'react';
-import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-tree';
+import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components';
 
 export const Size = () => {
   return (
     <>
-      <Tree size="medium" aria-label="Tree">
-        <TreeItem>
-          <TreeItemLayout>Medium size tree item</TreeItemLayout>
+      <Tree size="small" aria-label="Small Size Tree">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Small size tree</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="branch">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
         </TreeItem>
       </Tree>
-      <Tree size="small" aria-label="Tree">
-        <TreeItem>
-          <TreeItemLayout>Small size tree item</TreeItemLayout>
+      <Tree aria-label="Default Size Tree">
+        <TreeItem itemType="branch">
+          <TreeItemLayout>Medium size tree</TreeItemLayout>
+          <Tree>
+            <TreeItem itemType="branch">
+              <TreeItemLayout>level 2, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem itemType="leaf">
+                  <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 2</TreeItemLayout>
+            </TreeItem>
+            <TreeItem itemType="leaf">
+              <TreeItemLayout>level 2, item 3</TreeItemLayout>
+            </TreeItem>
+          </Tree>
         </TreeItem>
       </Tree>
     </>
@@ -21,7 +53,9 @@ export const Size = () => {
 Size.parameters = {
   docs: {
     description: {
-      story: 'A tree item supports `small` and `medium` sizes.',
+      story: `
+A tree can be displayed in a \`small\` or \`medium\` (default) size.
+      `,
     },
   },
 };

@@ -62,7 +62,7 @@ export type RadioGroupStylesProps = Required<Pick<RadioGroupProps, 'vertical'>>;
  * @accessibilityIssues
  * [JAWS narrates instruction message on each radio in radiogroup](https://github.com/FreedomScientific/VFO-standards-support/issues/473)
  */
-export const RadioGroup = (React.forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
+export const RadioGroup = React.forwardRef<HTMLDivElement, RadioGroupProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(RadioGroup.displayName, context.telemetry);
   setStart();
@@ -205,7 +205,7 @@ export const RadioGroup = (React.forwardRef<HTMLDivElement, RadioGroupProps>((pr
 
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, RadioGroupProps> &
   FluentComponentStaticProps<RadioGroupProps> & {
     Item: typeof RadioGroupItem;
   };

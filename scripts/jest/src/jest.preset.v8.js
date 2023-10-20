@@ -1,8 +1,8 @@
-const fs = require('fs-extra');
 const path = require('path');
 
 const { findRepoDeps } = require('@fluentui/scripts-monorepo');
 const { findConfig, merge } = require('@fluentui/scripts-utils');
+const fs = require('fs-extra');
 
 const packageJsonPath = findConfig('package.json') ?? '';
 const packageRoot = path.dirname(packageJsonPath);
@@ -17,6 +17,11 @@ const jestAliases = () => {
   // eslint-disable-next-line no-shadow
   for (const { packageJson } of packageDeps) {
     const { name, main } = packageJson;
+    // jest 28 supports exports
+    if (packageJson.exports) {
+      continue;
+    }
+
     if (main && main.includes('lib-commonjs')) {
       // Map package root and lib imports to the commonjs version
       const mainImportPath = `${name}/${main.replace('.js', '')}`;
@@ -46,7 +51,13 @@ const createConfig = (customConfig = {}) => {
     },
 
     transform: {
-      '^.+\\.tsx?$': 'ts-jest',
+      '^.+\\.tsx?$': [
+        'ts-jest',
+        {
+          /** https://kulshekhar.github.io/ts-jest/docs/28.0/getting-started/options/isolatedModules */
+          isolatedModules: true,
+        },
+      ],
     },
 
     transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
@@ -63,16 +74,19 @@ const createConfig = (customConfig = {}) => {
       path.resolve(packageRoot, 'node_modules'),
       path.resolve(__dirname, '../node_modules'),
     ],
-
-    globals: {
-      'ts-jest': {
-        diagnostics: false,
-      },
+    testEnvironmentOptions: {
+      url: 'http://localhost',
     },
-
-    testURL: 'http://localhost',
+    testEnvironment: 'jsdom',
+    restoreMocks: true,
+    clearMocks: true,
 
     watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
+    // OLD format for migration to jest 29 - TODO: migrate to new format . https://jestjs.io/blog/2022/04/25/jest-28#future
+    snapshotFormat: {
+      escapeString: true,
+      printBasicPrototype: true,
+    },
   };
 
   return merge(defaultConfig, customConfig);

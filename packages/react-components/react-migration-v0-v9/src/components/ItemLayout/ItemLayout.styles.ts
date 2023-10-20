@@ -1,0 +1,61 @@
+import { makeStyles } from '@fluentui/react-components';
+
+export const useItemLayoutStyles = makeStyles({
+  root: {
+    display: 'grid',
+    gridTemplateColumns: 'auto 1fr auto auto',
+    minHeight: '48px',
+  },
+  contentMedia: {
+    alignSelf: 'start',
+    gridColumnStart: 3,
+    gridColumnEnd: 4,
+    gridRowStart: 2,
+    gridRowEnd: 3,
+    fontSize: '12px',
+    lineHeight: 1.3333,
+  },
+  contentWrapper: {
+    alignSelf: 'start',
+    gridColumnStart: 2,
+    gridColumnEnd: 3,
+    gridRowStart: 2,
+    gridRowEnd: 3,
+    marginRight: '8px',
+    fontSize: '12px',
+    lineHeight: 1.3333,
+  },
+  header: {
+    alignSelf: 'end',
+    gridColumnStart: 2,
+    gridColumnEnd: 3,
+    gridRowStart: 1,
+    gridRowEnd: 2,
+    fontSize: '14px',
+    marginRight: '8px',
+  },
+  headerMedia: {
+    alignSelf: 'end',
+    gridColumnStart: 3,
+    gridColumnEnd: 4,
+    gridRowStart: 1,
+    gridRowEnd: 2,
+    fontSize: '12px',
+    lineHeight: 1.3333,
+  },
+  startMedia: {
+    alignSelf: 'center',
+    gridColumnStart: 1,
+    gridColumnEnd: 2,
+    gridRowStart: 1,
+    gridRowEnd: 3,
+    marginRight: '8px',
+  },
+  endMedia: {
+    alignSelf: 'center',
+    gridColumnStart: 4,
+    gridColumnEnd: 5,
+    gridRowStart: 1,
+    gridRowEnd: 3,
+  },
+});
