@@ -36,7 +36,7 @@
     "@fluentui/react-field": "*",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-image": "*",
-    "@fluentui/react-infobutton": ">=9.0.0-alpha",
+    "@fluentui/react-infolabel": ">=9.0.0-alpha",
     "@fluentui/react-input": "*",
     "@fluentui/react-label": "*",
     "@fluentui/react-link": "*",
