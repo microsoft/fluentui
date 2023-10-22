@@ -1,0 +1,984 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`createDateXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `
+Array [
+  Array [
+    0,
+    "July",
+  ],
+  Array [
+    8.516483516483516,
+    "August",
+  ],
+  Array [
+    17.032967032967033,
+    "September",
+  ],
+  Array [
+    25.274725274725274,
+    "October",
+  ],
+  Array [
+    33.791208791208796,
+    "November",
+  ],
+  Array [
+    42.032967032967036,
+    "December",
+  ],
+  Array [
+    50.54945054945055,
+    "2022",
+  ],
+  Array [
+    59.065934065934066,
+    "February",
+  ],
+  Array [
+    66.75824175824175,
+    "March",
+  ],
+  Array [
+    75.27472527472527,
+    "April",
+  ],
+  Array [
+    83.51648351648352,
+    "May",
+  ],
+  Array [
+    92.03296703296702,
+    "June",
+  ],
+]
+`;
+
+exports[`createDateXAxis should create the x-axis labels correctly when culture and options are provided 1`] = `
+Array [
+  Array [
+    0,
+    "الخميس، ١ يوليو ٢٠٢١ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+  ],
+  Array [
+    25.274725274725274,
+    "الجمعة، ١ أكتوبر ٢٠٢١ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+  ],
+  Array [
+    50.54945054945055,
+    "السبت، ١ يناير ٢٠٢٢ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+  ],
+  Array [
+    75.27472527472527,
+    "الجمعة، ١ أبريل ٢٠٢٢ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+  ],
+]
+`;
+
+exports[`createDateXAxis should create the x-axis labels correctly when customDateTimeFormatter is provided 1`] = `
+Array [
+  Array [
+    0,
+    "Wed, 30 Jun 2021 18:30:00 GMT",
+  ],
+  Array [
+    25.274725274725274,
+    "Thu, 30 Sep 2021 18:30:00 GMT",
+  ],
+  Array [
+    50.54945054945055,
+    "Fri, 31 Dec 2021 18:30:00 GMT",
+  ],
+  Array [
+    75.27472527472527,
+    "Thu, 31 Mar 2022 18:30:00 GMT",
+  ],
+]
+`;
+
+exports[`createDateXAxis should create the x-axis labels correctly when timeFormatLocale is provided 1`] = `
+Array [
+  Array [
+    0,
+    "Luglio",
+  ],
+  Array [
+    25.274725274725274,
+    "Ottobre",
+  ],
+  Array [
+    50.54945054945055,
+    "2022",
+  ],
+  Array [
+    75.27472527472527,
+    "Aprile",
+  ],
+]
+`;
+
+exports[`createDateXAxis should render the x-axis labels correctly 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      July
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(25.774725274725274,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      October
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(51.04945054945055,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(75.77472527472527,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      April
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createDateXAxis should render the x-axis labels correctly for specific tick size and padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,10V0.5H100.5V10"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      July
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(25.774725274725274,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      October
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(51.04945054945055,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(75.77472527472527,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      April
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createDateXAxis should render the x-axis labels correctly when tickParams is provided 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Thu, 01 Jul 2021
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(25.774725274725274,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Fri, 01 Oct 2021
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(51.04945054945055,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Sat, 01 Jan 2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(75.77472527472527,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Fri, 01 Apr 2022
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="12"
+    >
+      Thu, 30 Jun 2022
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createNumericXAxis should create rounded x-axis labels when showRoundOffXTickValues is true 1`] = `
+Array [
+  Array [
+    5.000000000000004,
+    "0.25",
+  ],
+  Array [
+    30,
+    "0.3",
+  ],
+  Array [
+    54.99999999999999,
+    "0.35",
+  ],
+  Array [
+    80.00000000000001,
+    "0.4",
+  ],
+]
+`;
+
+exports[`createNumericXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `
+Array [
+  Array [
+    0,
+    0,
+  ],
+  Array [
+    50,
+    "50",
+  ],
+  Array [
+    100,
+    "100",
+  ],
+]
+`;
+
+exports[`createNumericXAxis should render the x-axis labels correctly 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(20.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(40.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(60.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(80.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createNumericXAxis should render the x-axis labels correctly for horizontal bar chart with axis 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="10"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(20.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="10"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(40.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="10"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(60.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="10"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(80.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="10"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="-100"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="10"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createNumericXAxis should render the x-axis labels correctly for specific tick size and padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,10V0.5H100.5V10"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      0
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(20.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      20
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(40.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      40
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(60.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      60
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(80.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      80
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(100.5,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      100
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringXAxis should create the x-axis labels correctly for specific inner and outer padding values 1`] = `
+Array [
+  Array [
+    10.526315789473685,
+    "X-axis label 1",
+  ],
+  Array [
+    42.10526315789474,
+    "X-axis label 2",
+  ],
+  Array [
+    73.6842105263158,
+    "X-axis label 3",
+  ],
+]
+`;
+
+exports[`createStringXAxis should create the x-axis labels correctly for specific padding values 1`] = `
+Array [
+  Array [
+    14.285714285714285,
+    "X-axis label 1",
+  ],
+  Array [
+    42.85714285714286,
+    "X-axis label 2",
+  ],
+  Array [
+    71.42857142857143,
+    "X-axis label 3",
+  ],
+]
+`;
+
+exports[`createStringXAxis should render the x-axis labels correctly 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      X-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      X-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      X-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createStringXAxis should render the x-axis labels correctly for specific tick size and padding values 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,10V0.5H100.5V10"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      X-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      X-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="#000"
+      y2="10"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="15"
+    >
+      X-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`prepareDatapoints should return an array of uniformly distributed data points 1`] = `
+Array [
+  0,
+  34,
+  68,
+  102,
+]
+`;
