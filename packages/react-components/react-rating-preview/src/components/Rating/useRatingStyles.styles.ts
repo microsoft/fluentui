@@ -2,6 +2,7 @@ import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingSlots, RatingState } from './Rating.types';
+//import { tokens } from '@fluentui/react-theme';
 
 export const ratingClassNames: SlotClassNames<RatingSlots> = {
   root: 'fui-Rating',
@@ -12,6 +13,7 @@ export const ratingClassNames: SlotClassNames<RatingSlots> = {
 /**
  * Styles for the root slot
  */
+
 const useStyles = makeStyles({
   root: {
     display: 'inline-flex',

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 
@@ -21,11 +22,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   defaultValue?: number;
   /**
-   * Disable this Rating.
-   * @default false
-   */
-  disabled?: boolean;
-  /**
    * Callback when the rating value is changed by the user.
    */
   onChange?: (ev: React.SyntheticEvent | Event, data: RatingOnChangeData) => void;
@@ -48,6 +44,10 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    * @default 'star'
    */
   shape?: 'star' | 'circle' | 'square';
+  /**
+   * Shows the tally of the ratings
+   */
+  showRatingCount?: boolean;
   /**
    * Shows the rating string
    */
@@ -75,19 +75,23 @@ export type RatingOnChangeData = {
   /**
    * The new value of the rating.
    */
-  value: number;
+  value?: number;
 };
 
 /**
  * State used in rendering Rating
  */
 export type RatingState = ComponentState<RatingSlots> &
-  Required<Pick<RatingProps, 'value' | 'shape' | 'size' | 'name'>> &
-  Pick<RatingProps, 'disabled' | 'readOnly' | 'precision'> & {
-    hoveredValue: number | undefined;
+  Required<Pick<RatingProps, 'size'>> &
+  Pick<RatingProps, 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value'> & {
+    hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
-  'disabled' | 'name' | 'precision' | 'readOnly' | 'shape' | 'size' | 'value' | 'hoveredValue'
+  'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'size' | 'value' | 'hoveredValue'
 >;
+
+export type RatingContextValues = {
+  rating: RatingContextValue;
+};

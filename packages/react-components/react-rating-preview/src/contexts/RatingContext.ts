@@ -7,7 +7,7 @@ import type { RatingContextValue } from '../Rating';
  */
 export const RatingContext = React.createContext<RatingContextValue | undefined>(undefined);
 
-const ratingContextDefaultValue: RatingContextValue = {};
+const ratingContextDefaultValue: RatingContextValue = { size: 'medium' };
 
 export const RatingProvider = RatingContext.Provider;
 

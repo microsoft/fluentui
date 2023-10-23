@@ -10,6 +10,11 @@ import type { RatingItemState, RatingItemSlots } from './RatingItem.types';
 export const renderRatingItem_unstable = (state: RatingItemState) => {
   assertSlots<RatingItemSlots>(state);
 
-  // TODO Add additional slots in the appropriate place
-  return <state.root />;
+  return (
+    <state.root>
+      {state.halfValueInput && <state.halfValueInput />}
+      {state.fullValueInput && <state.fullValueInput />}
+      {state.indicator && <state.indicator />}
+    </state.root>
+  );
 };

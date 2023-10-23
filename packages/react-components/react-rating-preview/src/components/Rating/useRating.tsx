@@ -23,16 +23,10 @@ import { RatingItem } from '../../RatingItem';
  */
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
   const generatedName = useId('rating-');
-  const {
-    disabled,
-    name = generatedName,
-    precision,
-    readOnly,
-    shape = 'star',
-    size = 'medium',
-    max = 5,
-    onChange,
-  } = props;
+  const { name = generatedName, precision, readOnly, shape = 'star', size = 'medium', max = 5, onChange } = props;
+
+  const ratingId = useId('ratingLabel');
+  const countId = useId('countLabel');
 
   const [value, setValue] = useControllableState({
     state: props.value,
@@ -46,7 +40,6 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     isHTMLElement(target, { constructorName: 'HTMLInputElement' }) && target.type === 'radio' && target.name === name;
 
   const state: RatingState = {
-    disabled,
     name,
     precision,
     readOnly,
@@ -67,30 +60,39 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
       }),
       { elementType: 'div' },
     ),
+    ratingLabel: slot.optional(props.ratingLabel, {
+      defaultProps: { id: ratingId },
+      renderByDefault: false,
+      elementType: Label,
+    }),
+    countLabel: slot.optional(props.countLabel, {
+      defaultProps: { id: countId },
+      renderByDefault: false,
+      elementType: Label,
+    }),
   };
 
   if (!readOnly) {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     state.root.onChange = useEventCallback(ev => {
       if (isRatingRadioItem(ev.target)) {
-        const newValue = parseInt(ev.target.value);
+        const newValue = parseFloat(ev.target.value);
         if (!isNaN(newValue)) {
           setValue(newValue);
           onChange?.(ev, { value: newValue });
         }
       }
     });
-    state.root.onMouseEnter = mergeCallbacks(props.onMouseEnter, ev => {
+    state.root.onMouseOver = mergeCallbacks(props.onMouseOver, ev => {
       if (isRatingRadioItem(ev.target)) {
-        const newValue = parseInt(ev.target.value);
+        const newValue = parseFloat(ev.target.value);
         if (!isNaN(newValue)) {
           setHoveredValue(newValue);
         }
       }
     });
     state.root.onMouseLeave = mergeCallbacks(props.onMouseLeave, ev => {
-      if (isRatingRadioItem(ev.target)) {
-        setHoveredValue(undefined);
-      }
+      setHoveredValue(undefined);
     });
   }
 
