@@ -2,6 +2,8 @@ import { Card } from '@fluentui/react-components';
 import descriptionMd from './CardDescription.md';
 import cardBestpracticesMd from './CardBestPractices.md';
 
+export { Definition } from './CardDefinition.stories';
+
 export { Default } from './CardDefault.stories';
 export { Orientation } from './CardOrientation.stories';
 export { Size } from './CardSize.stories';
