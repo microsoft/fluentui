@@ -9,7 +9,7 @@ import { useInfoLabelStyles_unstable } from './useInfoLabelStyles.styles';
 /**
  * InfoLabel component
  *
- * @deprecated use {@link [InfoLabel](https://github.com/microsoft/fluentui/blob/master/packages/react-components/react-infolabel/src/components/InfoLabel/InfoLabel.tsx)} from \`@fluentui/react-components\` or \`@fluentui/react-infolabel\` instead
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((props, ref) => {
   const state = useInfoLabel_unstable(props, ref);
