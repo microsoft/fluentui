@@ -40,9 +40,9 @@ const dismissCircle20Regular = html`<svg
   ></path>
 </svg>`;
 
-const closeDialog = (e: Event, id: string) => {
+const closeDialog = (e: Event, id: string, dismissed: boolean = false) => {
   const dialog = document.getElementById(id) as FluentDialog;
-  dialog.hide();
+  dialog.hide(dismissed);
 };
 
 const openDialog = (e: Event, id: string) => {
@@ -256,6 +256,44 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
         >Close Unontrolled Dialog</fluent-button
       >
       <fluent-button slot="footer-action">Do Something</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const TwoColumnLayout = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-twocolumn')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-twocolumn" modal-type="${DialogModalType.modal}">
+      <div slot="title">Sign Up</div>
+      <div style="display: grid; grid-template-columns: 240px 1fr; grid-column-gap: 12px; margin-bottom: 12px; overflow-x: hidden;">
+        <div>
+          <fluent-text as="p" block><p>The dialog is designed with flexibility in mind, accommodating multiple column layouts within its structure.</p><fluent-text>
+        </div>
+        <div>
+          <fluent-text-input>
+            <fluent-label>First Name</fluent-label>
+          </fluent-text-input>
+          <br />
+          <fluent-text-input>
+            <fluent-label>Last Name</fluent-label>
+          </fluent-text-input>
+          <br />
+          <fluent-text-input>
+            <fluent-label>Email</fluent-label>
+          </fluent-text-input>
+          <br />
+          <fluent-text-input>
+            <fluent-label>Phone Number</fluent-label>
+          </fluent-text-input>
+        </div>
+      </div>
+
+      <fluent-button appearance="primary" slot="footer-action">Submit</fluent-button>
+      <fluent-button
+        slot="footer-action"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-twocolumn', true)}"
+        >Cancel</fluent-button
+      >
     </fluent-dialog>
   </div>
 `);
