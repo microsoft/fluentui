@@ -5,7 +5,7 @@ import {
   MessageBarBody,
   MessageBarIntent,
   MessageBarTitle,
-} from '@fluentui/react-message-bar-preview';
+} from '@fluentui/react-message-bar';
 import { ComponentMeta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Button } from '@fluentui/react-button';

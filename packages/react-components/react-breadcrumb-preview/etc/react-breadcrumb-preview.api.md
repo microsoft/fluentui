@@ -164,7 +164,7 @@ export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref:
 export const useBreadcrumbDividerStyles_unstable: (state: BreadcrumbDividerState) => BreadcrumbDividerState;
 
 // @public
-export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbItemState;
+export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbItemState;
 
 // @public
 export const useBreadcrumbItemStyles_unstable: (state: BreadcrumbItemState) => BreadcrumbItemState;

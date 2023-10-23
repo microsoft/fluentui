@@ -1,8 +1,26 @@
 # Change Log - @fluentui/react-utilities
 
-This log was last generated on Mon, 09 Oct 2023 20:45:44 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 17:54:07 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.15.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.1)
+
+Wed, 18 Oct 2023 17:54:07 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.15.0..@fluentui/react-utilities_v9.15.1)
+
+### Patches
+
+- chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps ([PR #29535](https://github.com/microsoft/fluentui/pull/29535) by bernardo.sunderhus@gmail.com)
+
+## [9.15.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.15.0)
+
+Wed, 11 Oct 2023 13:54:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-utilities_v9.14.2..@fluentui/react-utilities_v9.15.0)
+
+### Minor changes
+
+- feat: Add virtual parent utilties ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
 
 ## [9.14.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-utilities_v9.14.2)
 

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 18 Oct 2023 17:54:07 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4dc9e5be60b6ce6f3f6c72c6da39bf19a504f524",
+            "comment": "chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.0",
+      "version": "9.15.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "feat: Add virtual parent utilties"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Oct 2023 20:45:44 GMT",
       "tag": "@fluentui/react-utilities_v9.14.2",
       "version": "9.14.2",

@@ -1,8 +1,0 @@
-{
-  "name": "@fluentui/react-infolabel-preview",
-  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
-  "projectType": "library",
-  "sourceRoot": "packages/react-components/react-infolabel-preview/src",
-  "tags": ["platform:web", "vNext"],
-  "implicitDependencies": []
-}

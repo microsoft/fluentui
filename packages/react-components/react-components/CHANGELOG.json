@@ -2,6 +2,450 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 23 Oct 2023 09:51:55 GMT",
+      "tag": "@fluentui/react-components_v9.36.0",
+      "version": "9.36.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "17dbeb93ab542e982942aef91ce3747acc8053c4",
+            "comment": "fix: Use container window's resize observer"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "2b55f6c9b895a497e7d0d82db3fb1f579f75ade6",
+            "comment": "fix: Classnames removed and added to day cells need to be split instead of providing a string with spaces."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "17dbeb93ab542e982942aef91ce3747acc8053c4",
+            "comment": "fix: use targetDocument resize observer"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "0c71d4a05d9ce16cca3fdddda4854e265b227ff5",
+            "comment": "fix: focus visible polyfill should be initialised/disposed correctly"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "16f754d8e123b02737b5980ca1c515b737b544f0",
+            "comment": "feat: Moving react-infolabel to stable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "626775836611bb51ca78425a52de8fc338b8b763",
+            "comment": "BREAKING: Update Datepicker to use react-calendar-compat and remove Calendar related exports."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "4ac68a632b61c2cb1886f32a6293c3218bf07c0e",
+            "comment": "feat: adds motion to DialogSurface"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "16f754d8e123b02737b5980ca1c515b737b544f0",
+            "comment": "feat: Move InfoLabel to stable."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "17dbeb93ab542e982942aef91ce3747acc8053c4",
+            "comment": "fix: use targetDocument resize observer"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:01 GMT",
+      "tag": "@fluentui/react-components_v9.35.1",
+      "version": "9.35.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-accordion",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-avatar",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-badge",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad",
+            "comment": "chore: Add bundle size fixture for Calendar."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "8f9b998c7d2a19f62c043e2177a1e1eab0e1b71c",
+            "comment": "chore: Release react-calendar-compat."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "4dc9e5be60b6ce6f3f6c72c6da39bf19a504f524",
+            "comment": "chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-divider",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-field",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-label",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-link",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "bdd690c1983d23dcb7ba703eb9ac75536f40c7c0",
+            "comment": "refactor: MenuItem uses makeResetStyles"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "8178c3cae60005bc21137aa1f3e766e18cdb4a30",
+            "comment": "chore Add bundle size fixture for MessageBar"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-persona",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-progress",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-radio",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-skeleton",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-spinner",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tabs",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "335cad5169597b51398b75eb44dc40003c29830b",
+            "comment": "chore: bump keyborg to 2.1.0"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "7dea38da7c75c481d8edf9b102eea8627078179d",
+            "comment": "bugfix(react-tree): stop coercing numbers to string on TreeItemValue"
+          },
+          {
+            "author": "petrduda@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ca6aa3311fccbc36139b0f4db5236a3c8f1b512f",
+            "comment": "exporting TreeItemType from TreeItem component"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4dc9e5be60b6ce6f3f6c72c6da39bf19a504f524",
+            "comment": "chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps"
+          }
+        ],
+        "none": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "aa6771ed95c5af78f413b3c20068867f032cf4c4",
+            "comment": "chore: Add e2e tests for virtual parents"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "aa6771ed95c5af78f413b3c20068867f032cf4c4",
+            "comment": "chore: Add e2e tests for virtual parents"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "967882a55a7333effea42e4c24a64e8547309116",
+            "comment": "chore: migrate from getNativeElementProps to getIntrinsicElementProps"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infolabel-preview",
+            "commit": "ddc97f6a199b73c0a1253bee8034d2ac9fbf5344",
+            "comment": "feat: release preview package"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "aa6771ed95c5af78f413b3c20068867f032cf4c4",
+            "comment": "feat: bump to tabster 4.8.0 in order to support support virtual parents"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Oct 2023 14:55:42 GMT",
+      "tag": "@fluentui/react-components_v9.35.0",
+      "version": "9.35.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-button",
+            "commit": "3b8a86445f185e19ec9b0fc4ee4943a0867bab23",
+            "comment": "fix: Transparent buttons visible in teams high contrast mode"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-card",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-image",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-jsx-runtime",
+            "commit": "c5a97ca5b00df131ed12af2526953f5a4354ae66",
+            "comment": "chore: add warning for resolution problems"
+          },
+          {
+            "author": "matejera@microsoft.com",
+            "package": "@fluentui/react-migration-v8-v9",
+            "commit": "c2e09fe47acb6010fdb188026180ee505abb9f67",
+            "comment": "fix: adding checks for is inverted and using different colors accordingly on neutralForeground3 and 4 in the createV9Theme function."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-text",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "40e6a376db3c2f11ba131c046c4241bf52e6d3a3",
+            "comment": "feat: Release MessageBar as stable"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar",
+            "commit": "40e6a376db3c2f11ba131c046c4241bf52e6d3a3",
+            "comment": "feat: Release MessageBar as stable"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "355fd5631311dc163f32ba79655a132376089f95",
+            "comment": "chore: migrate from getNativeElementProps for getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:22 GMT",
+      "tag": "@fluentui/react-components_v9.34.3",
+      "version": "9.34.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-button",
+            "commit": "ae35fa7c3a07ceba7e503319fa594174ed1bca9f",
+            "comment": "Fix: Buttons internal focus border was not consistent on firefox"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "4a7d6cb6fade8be511c13ea79b71982c98e58b93",
+            "comment": "fix: When the month picker is shown as overlay due to space restrictions, don't close the popover when selecting a month."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8",
+            "comment": "chore: use default prevention instead of stop propagation for Escape handling"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-menu",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8",
+            "comment": "chore: use default prevention instead of stop propagation for Escape handling"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "5a1cee209858ce4e5c1c304755ff74bba0148193",
+            "comment": "fix: Align icons with text content"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-message-bar-preview",
+            "commit": "aed130bfbf4ac88947a697b723387fd8d8382686",
+            "comment": "fix: MessageBarActions should not overflow into grid padding"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-popover",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-popover",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8",
+            "comment": "chore: use default prevention instead of stop propagation for Escape handling"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-portal",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tooltip",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8",
+            "comment": "chore: use default prevention instead of stop propagation for Escape handling"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "3beb206ba64c40d184d59de64931fb8de4f48961",
+            "comment": "chore: adds console error when mixing Tree and FlatTree components"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "96b161d215b1a2e5b5d67464264e69c7c241f9fa",
+            "comment": "bugfix: Tree indentation broken due to wrongly consuming root context instead of subtree context"
+          },
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-tree",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "refactor: consume virtual parent utilities from @fluentui/react-utilities"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "97c3bc01d08b40f2fd0291fa193d95a621c9bdb8",
+            "comment": "feat: Add virtual parent utilties"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Oct 2023 20:45:41 GMT",
       "tag": "@fluentui/react-components_v9.34.2",
       "version": "9.34.2",

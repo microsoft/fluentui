@@ -288,6 +288,9 @@ export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue
 };
 
 // @public (undocumented)
+export type TreeItemType = 'leaf' | 'branch';
+
+// @public (undocumented)
 export type TreeItemValue = string | number;
 
 // @public (undocumented)

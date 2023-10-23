@@ -24,8 +24,8 @@
   },
   "dependencies": {
     "@fluentui/react-breadcrumb-preview": "*",
+    "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-datepicker-compat": "*",
-    "@fluentui/react-message-bar-preview": "*",
     "@fluentui/react-migration-v8-v9": "*",
     "@fluentui/react-migration-v0-v9": "*",
     "@fluentui/react": "*",

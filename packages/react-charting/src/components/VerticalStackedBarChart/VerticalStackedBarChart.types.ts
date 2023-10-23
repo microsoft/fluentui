@@ -12,7 +12,7 @@ import {
 } from '../../index';
 
 /**
- * IVerticalStackedBarChartProps for VerticalStackedBarchart component.
+ * Vertical Stacked Bar Chart properties
  * {@docCategory VerticalStackedBarChart}
  */
 export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
@@ -124,8 +124,16 @@ export interface IVerticalStackedBarChartProps extends ICartesianChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Vertical Stacked Bar Chart style properties
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Vertical Stacked Bar Chart styles
+ * {@docCategory VerticalStackedBarChart}
+ */
 export interface IVerticalStackedBarChartStyles extends ICartesianChartStyles {
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

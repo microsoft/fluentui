@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fix: Buttons internal focus border was not consistent on firefox",
-  "packageName": "@fluentui/react-button",
-  "email": "mifraser@microsoft.com",
-  "dependentChangeType": "patch"
-}

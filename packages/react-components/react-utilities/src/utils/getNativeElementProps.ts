@@ -59,6 +59,8 @@ const nativeElementMap: Record<string, Record<string, number>> = {
  * @param tagName - Tag name (e.g. "div")
  * @param props - Props object
  * @param excludedPropNames - List of props to disallow
+ *
+ * @deprecated use getIntrinsicElementProps instead, it is a type-safe version of this method
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function getNativeElementProps<TAttributes extends React.HTMLAttributes<any>>(
@@ -99,6 +101,7 @@ export const getPartitionedNativeProps = <
 }) => {
   return {
     root: { style: props.style, className: props.className },
+    // eslint-disable-next-line deprecation/deprecation
     primary: getNativeElementProps<Omit<Props, ExcludedPropKeys>>(primarySlotTagName, props, [
       ...(excludedPropNames || []),
       'style',

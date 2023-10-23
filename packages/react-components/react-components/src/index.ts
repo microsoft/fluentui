@@ -97,6 +97,8 @@ export {
   usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
 export {
+  // getNativeElementProps is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
@@ -1363,3 +1365,61 @@ export type {
   TagDismissEvent,
   TagDismissHandler,
 } from '@fluentui/react-tags';
+
+export {
+  MessageBar,
+  useMessageBarStyles_unstable,
+  useMessageBar_unstable,
+  renderMessageBar_unstable,
+  messageBarClassNames,
+  MessageBarTitle,
+  useMessageBarTitleStyles_unstable,
+  useMessageBarTitle_unstable,
+  renderMessageBarTitle_unstable,
+  messageBarTitleClassNames,
+  MessageBarActions,
+  useMessageBarActionsStyles_unstable,
+  useMessageBarActions_unstable,
+  renderMessageBarActions_unstable,
+  messageBarActionsClassNames,
+  MessageBarBody,
+  useMessageBarBodyStyles_unstable,
+  useMessageBarBody_unstable,
+  renderMessageBarBody_unstable,
+  messageBarBodyClassNames,
+  MessageBarContextProvider,
+  useMessageBarContext,
+  MessageBarGroup,
+  useMessageBarGroupStyles_unstable,
+  useMessageBarGroup_unstable,
+  renderMessageBarGroup_unstable,
+  messageBarGroupClassNames,
+} from '@fluentui/react-message-bar';
+export type {
+  MessageBarProps,
+  MessageBarSlots,
+  MessageBarState,
+  MessageBarIntent,
+  MessageBarTitleProps,
+  MessageBarTitleSlots,
+  MessageBarTitleState,
+  MessageBarActionsProps,
+  MessageBarActionsSlots,
+  MessageBarActionsState,
+  MessageBarBodyProps,
+  MessageBarBodySlots,
+  MessageBarBodyState,
+  MessageBarContextValue,
+  MessageBarGroupProps,
+  MessageBarGroupSlots,
+  MessageBarGroupState,
+} from '@fluentui/react-message-bar';
+
+export {
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+  useInfoLabel_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
