@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bug- 8599 Adding comment in Hovercard that we support cumulative area chart currently",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}
