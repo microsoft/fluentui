@@ -74,7 +74,7 @@ const dialogTemplate = html<DialogStoryArgs>`
       <fluent-text slot="title">Dialog</fluent-text>
       <fluent-text as="p" weight="regular" block>
         <p>
-          The Dialog component is a window overlaid on either the primary window or another dialog window. Windows under
+          The dialog component is a window overlaid on either the primary window or another dialog window. Windows under
           a modal dialog are inert. That is, users cannot interact with content outside an active dialog window.
         </p>
       </fluent-text>
@@ -127,15 +127,25 @@ export const Default = renderComponent(dialogTemplate).bind({});
 
 export const NonModal = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text block>
+      <span>
+        A <code>non-modal</code> dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
+        A <code>non-modal</code> dialog will present by default a close button.
+      </span>
+    </fluent-text>
+    <br />
+    <fluent-text as="p" size="300" block><p><b>Note:</b> if an element outside of the dialog is focused then it will not be possible to close the dialog with the Escape key.</p></fluent-text>
+    <br />
+
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-nonmodal')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-nonmodal" modal-type="${DialogModalType.nonModal}">
       <div slot="title">Non-modal</div>
       </fluent-text as="p" block>
-      <p>
-        A <code>non-modal</code> Dialog by default presents no backdrop, allowing elements outside of the Dialog to be interacted with.
+        <p>
+          A <code>non-modal</code> dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
 
-        A <code>non-modal</code> Dialog will present by default a closeButton.
-</p>
+          A <code>non-modal</code> dialog will present by default a closeButton.
+        </p>
       </fluent-text>
       </fluent-text as="p" block><p><fluent-text weight="bold" as="span"><span>Note:<span></fluent-text> if an element outside of the dialog is focused then it will not be possible to close the dialog with the Escape key.</p></fluent-text>
       <fluent-text block><code>modal-type="non-modal"</code></fluent-text>
@@ -150,6 +160,14 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
 
 export const Modal = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text block>
+      <span>
+        A modal is a type of dialog that temporarily halts the main workflow to convey a significant message or require
+        user interaction. By default, interactions such as clicking outside the dialog or pressing the Escape key will
+        close the modal-dialog, resuming the user's interaction with the main content.
+      </span>
+    </fluent-text>
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-modal')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-modal" modal-type="${DialogModalType.modal}">
       <div slot="title">Modal</div>
@@ -173,6 +191,13 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
 
 export const Alert = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text block>
+      <span>
+        An alert is a type of modal-dialog that interrupts the user's workflow to communicate an important message and
+        acquire a response. By default clicking on backdrop and pressing Escape will not dismiss an alert Dialog.
+      </span>
+    </fluent-text>
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-alert')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-alert" modal-type="${DialogModalType.alert}">
       <div slot="title">Alert</div>
@@ -193,12 +218,31 @@ export const Alert = renderComponent(html<DialogStoryArgs>`
   </div>
 `);
 
-export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<DialogStoryArgs>`
+export const ControlledAndUncontrolled = renderComponent(html<DialogStoryArgs>`
   <div>
-    <fluent-button @click=${(e: Event) => openDialogControlled(e, 'dialog-controlled')}
-      >Open Controlled Dialog</fluent-button
-    >
+    <fluent-text block>
+      <span>
+        Employ the open attribute to dictate the dialog's visibility state. This method offers a declarative approach,
+        where the dialog's visibility is determined by the presence or absence of the external open attribute, ensuring
+        the state is managed outside the component.
+      </span>
+    </fluent-text>
+    <br />
+    <fluent-button @click=${(e: Event) => openDialogControlled(e, 'dialog-controlled')}>
+      Open Controlled Dialog
+    </fluent-button>
+    <br />
+    <br />
+    <fluent-text block>
+      <span>
+        Utilize the <code>show</code> and <code>hide</code> methods to manage the dialog's visibility. This approach
+        allows the dialog to handle its state internally, giving you a direct and programmatic way to toggle its display
+        without relying on external attributes.
+      </span>
+    </fluent-text>
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-uncontrolled')}>Open Uncontrolled Dialog</fluent-button>
+    <br />
     <fluent-dialog id="dialog-controlled">
       <div slot="title">Controlled Dialog</div>
       <fluent-button
@@ -224,8 +268,9 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
         slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialogControlled(e, 'dialog-controlled')}"
-        >Close Controlled Dialog</fluent-button
       >
+        Close Controlled Dialog
+      </fluent-button>
       <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
     <fluent-dialog id="dialog-uncontrolled">
@@ -241,9 +286,9 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
       <div>
         <fluent-text block>
           <span>
-            Utilize the show and hide methods to manage the dialog's visibility. This approach allows the dialog to
-            handle its state internally, giving you a direct and programmatic way to toggle its display without relying
-            on external attributes.
+            Utilize the <code>show</code> and <code>hide</code> methods to manage the dialog's visibility. This approach
+            allows the dialog to handle its state internally, giving you a direct and programmatic way to toggle its
+            display without relying on external attributes.
           </span>
         </fluent-text>
       </div>
@@ -253,8 +298,9 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
         slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-uncontrolled')}"
-        >Close Unontrolled Dialog</fluent-button
       >
+        Close Uncontrolled Dialog
+      </fluent-button>
       <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
@@ -262,44 +308,96 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
 
 export const TwoColumnLayout = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text as="p" block
+      ><p>
+        The dialog is designed with flexibility in mind, accommodating multiple column layouts within its structure.
+      </p></fluent-text
+    >
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-twocolumn')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-twocolumn" modal-type="${DialogModalType.modal}">
-      <div slot="title">Sign Up</div>
-      <div style="display: grid; grid-template-columns: 240px 1fr; grid-column-gap: 12px; margin-bottom: 12px; overflow-x: hidden;">
-        <div>
-          <fluent-text as="p" block><p>The dialog is designed with flexibility in mind, accommodating multiple column layouts within its structure.</p><fluent-text>
+      <div slot="title">Welcome!</div>
+      <div style="margin-bottom: 12px;">
+        <fluent-text as="p" block
+          ><p>
+            The dialog is designed with flexibility in mind, accommodating multiple column layouts within its structure.
+          </p></fluent-text
+        >
+      </div>
+      <div
+        style="display: grid; grid-template-columns: 1fr 1.5fr; grid-column-gap: 12px; margin-bottom: 4px; overflow-x: hidden;"
+      >
+        <div style="height: 248px;">
+          <fluent-image fit="cover">
+            <img alt="image layout story" src="https://picsum.photos/240/240" />
+          </fluent-image>
         </div>
         <div>
-          <fluent-text-input>
-            <fluent-label>First Name</fluent-label>
-          </fluent-text-input>
+          <fluent-text as="p" weight="semibold" block><p>Don't have an account? Sign up now!</p></fluent-text>
           <br />
-          <fluent-text-input>
-            <fluent-label>Last Name</fluent-label>
-          </fluent-text-input>
-          <br />
-          <fluent-text-input>
+          <fluent-text-input type="email">
             <fluent-label>Email</fluent-label>
           </fluent-text-input>
           <br />
           <fluent-text-input>
-            <fluent-label>Phone Number</fluent-label>
+            <fluent-label>Username</fluent-label>
           </fluent-text-input>
+          <br />
+          <fluent-text-input type="password">
+            <fluent-label>Password</fluent-label>
+          </fluent-text-input>
+          <br />
         </div>
       </div>
 
-      <fluent-button appearance="primary" slot="footer-action">Submit</fluent-button>
-      <fluent-button
-        slot="footer-action"
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-twocolumn', true)}"
+      <fluent-button slot="footer-action" @click="${(e: Event, c) => closeDialog(e, 'dialog-twocolumn', true)}"
         >Cancel</fluent-button
       >
+      <fluent-button appearance="primary" slot="footer-action">Sign Up</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const RTL = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-text as="p" block
+      ><p>
+        The dialog component seamlessly supports both Right-to-Left (RTL) and Left-to-Right (LTR) text directions,
+        ensuring flexibility for various language orientations.
+      </p></fluent-text
+    >
+    <br />
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-rtl')}>Open Dialog</fluent-button>
+
+    <fluent-dialog id="dialog-rtl" modal-type="${DialogModalType.modal}" dir="rtl">
+      <div slot="title">أهلاً!</div>
+      <fluent-button
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-rtl')}"
+        slot="title-action"
+      >
+        ${dismissed20Regular}
+      </fluent-button>
+      <fluent-text as="p" block><p>هذا المكون يدعم كلاً من LTR و RTL.</p></fluent-text>
+
+      <fluent-button slot="footer-action" @click="${(e: Event, c) => closeDialog(e, 'dialog-rtl', true)}"
+        >إلغاء</fluent-button
+      >
+      <fluent-button appearance="primary" slot="footer-action">قم بشيء</fluent-button>
     </fluent-dialog>
   </div>
 `);
 
 export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text as="p" block
+      ><p>
+        By default content provided in the default slot should grow until it fits viewport size, overflowed content will
+        be scrollable
+      </p></fluent-text
+    >
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-longcontent')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-longcontent">
       <div slot="title">Scrolling Long Content</div>
@@ -375,6 +473,19 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
 
 export const FooterAction = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text as="p" block
+      ><p>
+        A dialog should have no more than
+        <fluent-text weight="bold"><span>two</span></fluent-text>
+        footer actions.
+      </p></fluent-text
+    >
+    <fluent-text block
+      ><span>
+        However, if required, you can populate the footer-action slot with any number of buttons as needed.</span
+      ></fluent-text
+    >
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-fluidactions')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-fluidactions">
       <div slot="title">Footer Action</div>
@@ -389,7 +500,7 @@ export const FooterAction = renderComponent(html<DialogStoryArgs>`
       <div>
         <fluent-text block>
           <span
-            >A Dialog should have no more than
+            >A dialog should have no more than
             <fluent-text weight="bold"><span>two</span></fluent-text>
             footer actions.
           </span></fluent-text
@@ -420,6 +531,21 @@ export const FooterAction = renderComponent(html<DialogStoryArgs>`
 
 export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text block>
+      <span
+        >By default if the dialog is set to <code>modal-type='non-modal'</code> a button with a close icon is provided
+        to close the dialog as action slot.
+      </span>
+    </fluent-text>
+    <br />
+    <fluent-text block>
+      <span>
+        This slot can be customized to add a different kind of action, that it'll be available in any kind of dialog,
+        ignoring the <code>modalType</code> property, here's an example replacing the simple close icon with a fluent
+        button using a different icon.
+      </span>
+    </fluent-text>
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-titlecustomaction')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-titlecustomaction">
       <div slot="title">Title Custom Action</div>
@@ -434,16 +560,16 @@ export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
       <div>
         <fluent-text block>
           <span
-            >By default if Dialog has modalType='non-modal' a button with a close icon is provided to close the dialog
-            as action slot.
+            >By default if the dialog is set to <code>modal-type='non-modal'</code> a button with a close icon is
+            provided to close the dialog as action slot.
           </span>
         </fluent-text>
         <br />
         <fluent-text block>
           <span>
             This slot can be customized to add a different kind of action, that it'll be available in any kind of
-            Dialog, ignoring the modalType property, here's an example replacing the simple close icon with a fluent
-            button using a different icon.
+            dialog, ignoring the <code>modalType</code> property, here's an example replacing the simple close icon with
+            a fluent button using a different icon.
           </span>
         </fluent-text>
       </div>
@@ -462,6 +588,12 @@ export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
 
 export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text as="p" block
+      ><p>
+        The <code>no-title-action</code> attribute can be provided to opt out of rendering any title action.
+      </p></fluent-text
+    >
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-notitleaction')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-notitleaction" modal-type="${DialogModalType.nonModal}" no-title-action>
       <div slot="title">No Title Action</div>
@@ -487,6 +619,13 @@ export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
 
 export const ChangeFocus = renderComponent(html<DialogStoryArgs>`
   <div>
+    <fluent-text as="p" block
+      ><p>
+        Changing the default focused element can be done by providing the id of the element to focus on in the
+        <code>change-focus</code> attribute.
+      </p></fluent-text
+    >
+    <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-changefocus')}>Open Dialog</fluent-button>
     <fluent-dialog change-focus="dialog-changefocus-target" id="dialog-changefocus">
       <div slot="title">Change Focus</div>
@@ -502,7 +641,7 @@ export const ChangeFocus = renderComponent(html<DialogStoryArgs>`
       <fluent-text as="p" block>
         <p>
           Changing the default focused element can be done by providing the id of the element to focus on in the
-          change-focus attribute.
+          <code>change-focus</code> attribute.
         </p>
       </fluent-text>
       <br />
