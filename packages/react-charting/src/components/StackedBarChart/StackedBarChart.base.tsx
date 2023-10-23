@@ -78,7 +78,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     if (!this._isChartEmpty()) {
       this._adjustProps();
       const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
-      const { palette } = DarkTheme!;
+      const { palette } = this.props.theme!;
       const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 12;
 
       if (benchmarkData) {
