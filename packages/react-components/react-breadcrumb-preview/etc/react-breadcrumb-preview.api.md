@@ -26,7 +26,7 @@ export const BreadcrumbButton: ForwardRefComponent<BreadcrumbButtonProps>;
 export const breadcrumbButtonClassNames: SlotClassNames<BreadcrumbButtonSlots>;
 
 // @public
-export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'appearance' | 'size'> & Pick<ButtonProps, 'disabled'> & {
+export type BreadcrumbButtonProps = ComponentProps<BreadcrumbButtonSlots> & Pick<BreadcrumbProps, 'appearance' | 'size'> & Pick<ButtonProps, 'disabled' | 'disabledFocusable'> & {
     current?: boolean;
 };
 
@@ -38,6 +38,14 @@ export type BreadcrumbButtonState = ComponentState<BreadcrumbButtonSlots> & Omit
 
 // @public (undocumented)
 export const breadcrumbClassNames: SlotClassNames<BreadcrumbSlots>;
+
+// @public
+export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'appearance' | 'dividerType' | 'size'>> & {
+    items: Set<BreadcrumbItem_2>;
+    registerItem: (item: BreadcrumbItem_2) => void;
+    removeItem: (item: BreadcrumbItem_2) => void;
+    hasInteractiveItems: boolean;
+};
 
 // @public
 export const BreadcrumbDivider: ForwardRefComponent<BreadcrumbDividerProps>;
@@ -76,6 +84,7 @@ export type BreadcrumbItemSlots = {
 // @public
 export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size' | 'current'>> & {
     isInteractive?: boolean;
+    hasInteractiveItems?: boolean;
 };
 
 // @public
@@ -85,6 +94,9 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
     dividerType?: 'chevron' | 'slash';
     size?: 'small' | 'medium' | 'large';
 };
+
+// @internal (undocumented)
+export const BreadcrumbProvider: React_2.Provider<BreadcrumbContextValues | undefined>;
 
 // @public (undocumented)
 export type BreadcrumbSlots = {
@@ -142,6 +154,9 @@ export const useBreadcrumbButton_unstable: (props: BreadcrumbButtonProps, ref: R
 // @public
 export const useBreadcrumbButtonStyles_unstable: (state: BreadcrumbButtonState) => BreadcrumbButtonState;
 
+// @internal (undocumented)
+export const useBreadcrumbContext_unstable: () => BreadcrumbContextValues;
+
 // @public
 export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbDividerState;
 
@@ -149,7 +164,7 @@ export const useBreadcrumbDivider_unstable: (props: BreadcrumbDividerProps, ref:
 export const useBreadcrumbDividerStyles_unstable: (state: BreadcrumbDividerState) => BreadcrumbDividerState;
 
 // @public
-export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLElement>) => BreadcrumbItemState;
+export const useBreadcrumbItem_unstable: (props: BreadcrumbItemProps, ref: React_2.Ref<HTMLLIElement>) => BreadcrumbItemState;
 
 // @public
 export const useBreadcrumbItemStyles_unstable: (state: BreadcrumbItemState) => BreadcrumbItemState;

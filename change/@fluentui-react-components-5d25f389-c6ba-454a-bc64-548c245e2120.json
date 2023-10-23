@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export presence icons to let users override the new behavior in PresenceBadge.",
-  "packageName": "@fluentui/react-components",
-  "email": "estebanmu@microsoft.com",
-  "dependentChangeType": "patch"
-}

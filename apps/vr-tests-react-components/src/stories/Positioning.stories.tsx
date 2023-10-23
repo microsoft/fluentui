@@ -1084,6 +1084,63 @@ const ScrollJumpContext = () => {
   );
 };
 
+const MultiScrollParent = () => {
+  const { targetRef, containerRef } = usePositioning({});
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ top: 100 });
+    }
+  };
+
+  return (
+    <>
+      <span>The popover should stay attached to the trigger</span>
+      <button id="scroll" onClick={scroll}>
+        scroll
+      </button>
+      <div
+        ref={scrollContainerRef}
+        style={{
+          border: '2px dashed green',
+          height: 300,
+          width: 400,
+          overflow: 'auto',
+          display: 'grid',
+          gridTemplateColumns: '350px auto',
+          gridTemplateRows: '800px',
+        }}
+      >
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              overflow: 'auto',
+              border: '2px dashed red',
+              position: 'absolute',
+              top: 150,
+              left: 100,
+              padding: 20,
+            }}
+          >
+            <button id="target" ref={targetRef}>
+              Trigger
+            </button>
+          </div>
+        </div>
+        <div
+          style={{
+            backgroundImage: 'linear-gradient(to bottom, #ffffff, #b9b9b9, #777777, #3b3b3b, #000000)',
+          }}
+        />
+      </div>
+      <div ref={containerRef} style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white' }}>
+        Popover
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -1161,7 +1218,12 @@ storiesOf('Positioning', module)
     'disable CSS transform with position fixed',
     () => <PositionAndAlignProps positionFixed useTransform={false} />,
     { includeRtl: true },
-  );
+  )
+  .addStory('Multiple scroll parents', () => (
+    <StoryWright steps={new Steps().click('#scroll').snapshot('container attached to target').end()}>
+      <MultiScrollParent />
+    </StoryWright>
+  ));
 
 storiesOf('Positioning (no decorator)', module)
   .addStory('scroll jumps', () => (

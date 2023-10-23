@@ -1,58 +1,82 @@
-const path = require('path');
+const lernaUtils = require('lerna/utils');
 
-const { Project } = require('@lerna/project');
-
-const { PackageGraph } = require('@lerna/package-graph');
-
-const findGitRoot = require('./findGitRoot');
+/**
+* @typedef {{
+    name: string,
+    isTopLevel: boolean,
+    dependencyType: lernaUtils.ProjectGraphWorkspacePackageDependency['dependencyCollection'],
+  }} Dependency
+ */
 
 /**
  *
- * @param {string[]} rootPackages
- * @param {Map<any,any>} projectGraph
- * @param {string[]} packageList
- * @returns
+ * @param {string} project
+ * @param {lernaUtils.ProjectGraphWithPackages} projectGraph
+ * @param {*} options
+ * @param {Dependency[]} _acc
+ * @param {boolean} _areTopLevelDeps
+ * @returns {Dependency[]}
  */
-function flattenPackageGraph(rootPackages, projectGraph, packageList = []) {
-  rootPackages.forEach(packageName => {
-    packageList.push(packageName);
+function collectDependencies(
+  project,
+  projectGraph,
+  options = {
+    shallow: true,
+    dependenciesOnly: false,
+  },
+  _acc = [],
+  _areTopLevelDeps = true,
+) {
+  if (!projectGraph.localPackageDependencies[project]) {
+    return _acc;
+  }
 
-    flattenPackageGraph([...projectGraph.get(packageName).localDependencies.keys()], projectGraph, packageList);
+  projectGraph.localPackageDependencies[project].forEach(dependency => {
+    const isDependencyAlreadyCollected = _acc.some(dep => dep.name === dependency.target);
+
+    if (isDependencyAlreadyCollected) {
+      return;
+    }
+
+    if (
+      options.dependenciesOnly &&
+      dependency.dependencyCollection &&
+      dependency.dependencyCollection !== 'dependencies'
+    ) {
+      return;
+    }
+
+    _acc.push({
+      name: dependency.target,
+      dependencyType: dependency.dependencyCollection,
+      isTopLevel: _areTopLevelDeps,
+    });
+
+    if (!options.shallow) {
+      collectDependencies(dependency.target, projectGraph, options, _acc, false);
+    }
   });
 
-  return packageList.sort().filter((v, i, a) => a.indexOf(v) === i);
+  return _acc;
 }
 
 /**
- * Returns all the dependencies of a given package name
- * @param {string} packageName including `@fluentui/` prefix
- * @param {Object} options
- * @param {boolean} [options.dev] include dev dependencies
- * @param {boolean} [options.production] include production dependencies
+ * Returns dependencies metadata build from dependency graph for provided package
+ * @param {string} packageName - including `@fluentui/` prefix
  */
-async function getDependencies(packageName, options = { production: true }) {
-  const lernaProject = new Project(path.resolve(findGitRoot(), 'packages'));
-  const projectPackages = await lernaProject.getPackages();
+async function getDependencies(packageName) {
+  const { projectGraph } = await lernaUtils.detectProjects();
 
-  const allDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages));
-  const productionDepsGraph = flattenPackageGraph([packageName], new PackageGraph(projectPackages, 'dependencies'));
+  const allDepsGraph = collectDependencies(packageName, projectGraph, { shallow: false, dependenciesOnly: false });
+  const depsGraph = collectDependencies(packageName, projectGraph, { shallow: false, dependenciesOnly: true });
+  const devDepsGraph = allDepsGraph.filter(anyDep => !depsGraph.find(prodDep => prodDep.name === anyDep.name));
 
-  const devDependencies = allDepsGraph.filter(dep => !productionDepsGraph.includes(dep));
-
-  /**
-   * @type {string[]}
-   */
-  let res = [];
-
-  if (options.dev) {
-    res = res.concat(devDependencies);
-  }
-
-  if (options.production) {
-    res = res.concat(productionDepsGraph);
-  }
-
-  return res;
+  return {
+    dependencies: depsGraph,
+    devDependencies: devDepsGraph,
+    all: allDepsGraph,
+    projectGraph,
+  };
 }
 
-module.exports = getDependencies;
+exports.getDependencies = getDependencies;

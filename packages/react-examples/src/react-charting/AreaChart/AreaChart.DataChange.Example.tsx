@@ -97,6 +97,7 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
           <DefaultButton text="Change Ydata" onClick={this._changeData} />
           <DefaultButton text="Change Xdata" onClick={this._changeXData} />

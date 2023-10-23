@@ -16,6 +16,11 @@ import {
 } from '../CommonComponents/index';
 
 export type { IChildProps, ILineChartPoints, IMargins, IBasestate, IRefArrayData };
+
+/**
+ * Line Chart properties
+ * {@docCategory LineChart}
+ */
 export interface ILineChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -83,6 +88,10 @@ export interface ILineChartProps extends ICartesianChartProps {
    */
   enablePerfOptimization?: boolean;
 }
+
+/**
+ * {@docCategory LineChart}
+ */
 export interface IEventsAnnotationProps {
   events: IEventAnnotation[];
   strokeColor?: string;
@@ -92,10 +101,21 @@ export interface IEventsAnnotationProps {
   mergedLabel: (count: number) => string;
 }
 
+/**
+ * Line Chart styles
+ * {@docCategory LineChart}
+ */
 export interface ILineChartStyles extends ICartesianChartStyles {}
 
+/**
+ * Line Chart style properties
+ * {@docCategory LineChart}
+ */
 export interface ILineChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * {@docCategory LineChart}
+ */
 export interface IColorFillBarsProps {
   legend: string;
   color: string;
@@ -104,6 +124,9 @@ export interface IColorFillBarsProps {
   onLegendClick?: (selectedLegend: string | string[] | null) => void | undefined;
 }
 
+/**
+ * {@docCategory LineChart}
+ */
 export interface IColorFillBarData {
   startX: number | Date;
   endX: number | Date;

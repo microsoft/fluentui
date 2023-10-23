@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Sparkline, ISparklineProps } from '@fluentui/react-charting';
+import { Sparkline, ISparklineProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { IChartProps } from '@fluentui/react-charting';
 
 interface ISparklineState {}
@@ -18,7 +18,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
-          color: '#00AA00',
+          color: getColorFromToken(DataVizPalette.color1),
           data: [
             {
               x: 1,
@@ -61,7 +61,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
-          color: '#E60000',
+          color: getColorFromToken(DataVizPalette.color2),
           data: [
             {
               x: 1,
@@ -96,7 +96,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '19.64',
-          color: '#00AA00',
+          color: getColorFromToken(DataVizPalette.color3),
           data: [
             {
               x: 1,
@@ -131,7 +131,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '464.64',
-          color: '#E60000',
+          color: getColorFromToken(DataVizPalette.color4),
           data: [
             {
               x: 1,
@@ -166,7 +166,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '46.49',
-          color: '#E3008C',
+          color: getColorFromToken(DataVizPalette.color5),
           data: [
             {
               x: 1,
@@ -201,7 +201,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '49.44',
-          color: '#627CEF',
+          color: getColorFromToken(DataVizPalette.color6),
           data: [
             {
               x: new Date('2020-03-03T00:00:00.000Z'),
@@ -236,7 +236,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '49.44',
-          color: '#0078D4',
+          color: getColorFromToken(DataVizPalette.color7),
           data: [
             {
               x: 1,
@@ -271,7 +271,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
       lineChartData: [
         {
           legend: '541.44',
-          color: '#0078D4',
+          color: getColorFromToken(DataVizPalette.color8),
           data: [
             {
               x: 1,
@@ -340,7 +340,7 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         </div>
         <table>
           <tbody>
-            <tr style={{ borderBottom: '1pt solid black' }}>
+            <tr>
               <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
               <td>
                 <Sparkline data={sl1} showLegend={true} />
