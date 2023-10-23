@@ -1,8 +1,40 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 18 Oct 2023 17:54:01 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 09:51:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.36.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.36.0)
+
+Mon, 23 Oct 2023 09:51:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.35.1..@fluentui/react-components_v9.36.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Moving react-infolabel to stable. ([PR #29585](https://github.com/microsoft/fluentui/pull/29585) by esteban.230@hotmail.com)
+- `@fluentui/react-datepicker-compat`
+  - BREAKING: Update Datepicker to use react-calendar-compat and remove Calendar related exports. ([PR #29587](https://github.com/microsoft/fluentui/pull/29587) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - feat: adds motion to DialogSurface ([PR #29391](https://github.com/microsoft/fluentui/pull/29391) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-infolabel`
+  - feat: Move InfoLabel to stable. ([PR #29585](https://github.com/microsoft/fluentui/pull/29585) by esteban.230@hotmail.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: Use container window's resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+- `@fluentui/react-calendar-compat`
+  - fix: Classnames removed and added to day cells need to be split instead of providing a string with spaces. ([PR #29611](https://github.com/microsoft/fluentui/pull/29611) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - fix: use targetDocument resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - fix: focus visible polyfill should be initialised/disposed correctly ([PR #29564](https://github.com/microsoft/fluentui/pull/29564) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: use targetDocument resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
 
 ## [9.35.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.35.1)
 

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Tue, 26 Sep 2023 17:49:01 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 09:51:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.8)
+
+Mon, 23 Oct 2023 09:51:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.7..@fluentui/priority-overflow_v9.1.8)
+
+### Patches
+
+- fix: Use container window's resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
 
 ## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.7)
 

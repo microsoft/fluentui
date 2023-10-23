@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: focus visible polyfill should be initialised/disposed correctly",
-  "packageName": "@fluentui/react-tabster",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

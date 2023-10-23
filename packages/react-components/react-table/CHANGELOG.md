@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-table
 
-This log was last generated on Wed, 18 Oct 2023 17:54:08 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 09:51:56 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.10.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.7)
+
+Mon, 23 Oct 2023 09:51:56 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-table_v9.10.6..@fluentui/react-table_v9.10.7)
+
+### Patches
+
+- fix: use targetDocument resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+- Bump @fluentui/react-avatar to v9.5.42 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-checkbox to v9.1.52 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-radio to v9.1.52 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-tabster to v9.14.1 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
 
 ## [9.10.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-table_v9.10.6)
 
