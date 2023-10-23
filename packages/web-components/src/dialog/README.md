@@ -23,7 +23,7 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 ### **Basic Implemenation**
 
 ```html
-<fluent-dialog>
+<fluent-dialog open>
   <!-- Header -->
   <fluent-text slot="title">Dialog</fluent-text>
   <fluent-button slot="title-action"><svg></svg></fluent-button>
@@ -40,12 +40,12 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 | Name               | Privacy | Type              | Default                 | Description                                               |
 | ------------------ | ------- | ----------------- | ----------------------- | --------------------------------------------------------- |
 | `modal-type`       | public  | `DialogModalType` | `DialogModalType.modal` | Indicates that the type of modal to render.               |
-| `change-focus`     | public  | `string`          | `undefined`             | Used to set id of desired focus target.                   |
 | `open`             | public  | `boolean`         | `false`                 | Controls the open state of the dialog                     |
 | `no-title-action`  | public  | `boolean`         | `false`                 | Used to set whether the default title action is rendered. |
-| `aria-labelledby`  | public  | `boolean`         | `false`                 | optional based on implementation\*\*                      |
-| `aria-describedby` | public  | `boolean`         | `false`                 | optional based on implementation\*\*                      |
-| `aria-label `      | public  | `boolean`         | `false`                 | optional based on implementation\*\*                      |
+| `change-focus`     | public  | `string`          | `undefined`             | Used to set id of desired focus target.                   |
+| `aria-labelledby`  | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
+| `aria-describedby` | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
+| `aria-label `      | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
 
 \*\* See the [W3C Specification](https://w3c.github.io/aria-practices/#dialog_roles_states_props) for requirements and details.
 
@@ -73,9 +73,9 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
 ### **Events**
 
-| Name           | Description                                                     |
-| -------------- | --------------------------------------------------------------- |
-| `onOpenChange` | Event fired when the component transitions from its open state. |
+| Name           | Description                                                     | Details                                            |
+| -------------- | --------------------------------------------------------------- | -------------------------------------------------- |
+| `onOpenChange` | Event fired when the component transitions from its open state. | `{ open: this.dialog.open, dismissed: dismissed }` |
 
 ## **Preparation**
 
