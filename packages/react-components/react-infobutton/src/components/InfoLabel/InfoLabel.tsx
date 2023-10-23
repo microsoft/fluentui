@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -18,5 +19,4 @@ export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((
   return renderInfoLabel_unstable(state);
 });
 
-// eslint-disable-next-line deprecation/deprecation
 InfoLabel.displayName = 'InfoLabel';

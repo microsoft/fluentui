@@ -1,5 +1,5 @@
+/* eslint-disable deprecation/deprecation */
 export {
-  // eslint-disable-next-line deprecation/deprecation
   InfoButton,
   infoButtonClassNames,
   renderInfoButton_unstable,
@@ -8,7 +8,6 @@ export {
 } from './InfoButton';
 export type { InfoButtonProps, InfoButtonSlots, InfoButtonState } from './InfoButton';
 export {
-  // eslint-disable-next-line deprecation/deprecation
   InfoLabel,
   infoLabelClassNames,
   renderInfoLabel_unstable,

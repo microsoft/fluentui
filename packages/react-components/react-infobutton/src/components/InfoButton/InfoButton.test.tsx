@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles.styles';
@@ -24,7 +25,6 @@ const getPopoverSurfaceElement = (result: RenderResult) => {
 
 describe('InfoButton', () => {
   isConformant({
-    // eslint-disable-next-line deprecation/deprecation
     Component: InfoButton,
     displayName: 'InfoButton',
     requiredProps: {

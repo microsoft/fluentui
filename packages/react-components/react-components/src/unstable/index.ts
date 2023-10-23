@@ -9,14 +9,13 @@ export {
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 
+/* eslint-disable deprecation/deprecation */
 export {
-  // eslint-disable-next-line deprecation/deprecation
   InfoButton,
   infoButtonClassNames,
   useInfoButton_unstable,
   useInfoButtonStyles_unstable,
   renderInfoButton_unstable,
-  // eslint-disable-next-line deprecation/deprecation
   InfoLabel,
   infoLabelClassNames,
   renderInfoLabel_unstable,
@@ -31,6 +30,7 @@ export type {
   InfoLabelSlots,
   InfoLabelState,
 } from '@fluentui/react-infobutton';
+/* eslint-enable deprecation/deprecation */
 
 export {
   Virtualizer,

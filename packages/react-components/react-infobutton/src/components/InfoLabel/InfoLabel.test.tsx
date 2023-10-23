@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 
 import { fireEvent, render } from '@testing-library/react';
@@ -6,7 +7,6 @@ import { InfoLabel } from './InfoLabel';
 
 describe('InfoLabel', () => {
   isConformant({
-    // eslint-disable-next-line deprecation/deprecation
     Component: InfoLabel,
     displayName: 'InfoLabel',
     primarySlot: 'label',
@@ -22,25 +22,21 @@ describe('InfoLabel', () => {
   });
 
   it('renders an InfoButton when info is set', () => {
-    // eslint-disable-next-line deprecation/deprecation
     const result = render(<InfoLabel info="Test">Test label</InfoLabel>);
     expect(result.getByRole('button')).toBeTruthy();
   });
 
   it("renders an InfoButton when the infoButton's info slot is set", () => {
-    // eslint-disable-next-line deprecation/deprecation
     const result = render(<InfoLabel infoButton={{ info: 'Test' }}>Test label</InfoLabel>);
     expect(result.getByRole('button')).toBeTruthy();
   });
 
   it('does not render an InfoButton when info is not set', () => {
-    // eslint-disable-next-line deprecation/deprecation
     const result = render(<InfoLabel>Test label</InfoLabel>);
     expect(result.queryByRole('button')).toBeNull();
   });
 
   it('sets the infoButton aria-labelledby to the label and infoButton', () => {
-    // eslint-disable-next-line deprecation/deprecation
     const result = render(<InfoLabel info="Test">Test label</InfoLabel>);
 
     const infoButton = result.getByRole('button');
@@ -50,7 +46,6 @@ describe('InfoLabel', () => {
   });
 
   it("applies InfoButton's info slot id to aria-owns on the InfoLabel's wrapper when open", () => {
-    // eslint-disable-next-line deprecation/deprecation
     const { container } = render(<InfoLabel className="info-label-wrapper" info={{ id: 'test-id' }} />);
     expect(container.getElementsByClassName('info-label-wrapper')[0].getAttribute('aria-owns')).toBeNull();
 
@@ -60,7 +55,6 @@ describe('InfoLabel', () => {
   });
 
   it("applies InfoButton's correct id to aria-owns on the InfoLabel's wrapper when id is provided to the infoButton slot", () => {
-    // eslint-disable-next-line deprecation/deprecation
     const { container } = render(<InfoLabel className="info-label-wrapper" infoButton={{ info: { id: 'test-id' } }} />);
     expect(container.getElementsByClassName('info-label-wrapper')[0].getAttribute('aria-owns')).toBeNull();
 

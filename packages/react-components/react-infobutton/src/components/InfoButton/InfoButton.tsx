@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { ForwardRefComponent } from '@fluentui/react-utilities';
 import { renderInfoButton_unstable } from './renderInfoButton';
@@ -17,5 +18,4 @@ export const InfoButton: ForwardRefComponent<InfoButtonProps> = React.forwardRef
   return renderInfoButton_unstable(state);
 });
 
-// eslint-disable-next-line deprecation/deprecation
 InfoButton.displayName = 'InfoButton';
