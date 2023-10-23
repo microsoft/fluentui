@@ -1,0 +1,16 @@
+{
+  "name": "xplat-v9",
+  "displayName": "xplat-v9",
+  "components": [
+    {
+      "appKey": "xplat-v9",
+      "displayName": "xplat-v9"
+    }
+  ],
+  "resources": {
+    "android": ["dist/res", "dist/main.android.jsbundle"],
+    "ios": ["dist/assets", "dist/main.ios.jsbundle"],
+    "macos": ["dist/assets", "dist/main.macos.jsbundle"],
+    "windows": ["dist/assets", "dist/main.windows.bundle"]
+  }
+}
