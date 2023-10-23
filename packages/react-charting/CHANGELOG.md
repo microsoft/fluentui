@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 20 Oct 2023 07:35:43 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 07:35:31 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.18.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.9)
+
+Mon, 23 Oct 2023 07:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.8..@fluentui/react-charting_v5.18.9)
+
+### Patches
+
+- Part 2 - Changes to onboard charting to fluent docsite ([PR #29608](https://github.com/microsoft/fluentui/pull/29608) by atishay.jain@microsoft.com)
 
 ## [5.18.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.8)
 
