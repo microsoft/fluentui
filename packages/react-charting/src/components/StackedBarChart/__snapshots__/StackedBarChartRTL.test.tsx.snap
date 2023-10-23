@@ -1944,7 +1944,7 @@ exports[`Stacked bar chart rendering Should render the stacked bar chart with em
                   }
             >
               <rect
-                fill="#edebe9"
+                fill="#292827"
                 height="12"
                 id="_SBC_empty_bar_16"
                 width="100%"

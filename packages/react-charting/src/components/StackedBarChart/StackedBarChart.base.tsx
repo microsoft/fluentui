@@ -8,6 +8,7 @@ import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
 import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
+import { DarkTheme } from '@fluentui/theme-samples';
 
 const getClassNames = classNamesFunction<IStackedBarChartStyleProps, IStackedBarChartStyles>();
 export interface IStackedBarChartState {
@@ -77,7 +78,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     if (!this._isChartEmpty()) {
       this._adjustProps();
       const { data, benchmarkData, targetData, hideNumberDisplay, ignoreFixStyle, culture } = this.props;
-      const { palette } = this.props.theme!;
+      const { palette } = DarkTheme!;
       const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 12;
 
       if (benchmarkData) {
@@ -223,7 +224,7 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
    * Extra margin is also provided, in the x value to provide some spacing
    */
 
-  private _createBarsAndLegends(
+  public _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
     palette: IPalette,
@@ -512,13 +513,13 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 
-  private _getAriaLabel = (point: IChartDataPoint): string => {
+  public _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue = point.yAxisCalloutData || point.data || 0;
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
-  private _isChartEmpty(): boolean {
+  public _isChartEmpty(): boolean {
     return !(this.props.data && this.props.data.chartData && this.props.data.chartData.length > 0);
   }
 }
