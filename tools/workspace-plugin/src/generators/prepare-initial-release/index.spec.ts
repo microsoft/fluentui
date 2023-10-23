@@ -431,7 +431,7 @@ These are not production-ready components and **should never be used in product*
   graphMock.nodes[npmName] = {
     name: npmName,
     type: projectType === 'library' ? 'lib' : 'app',
-    data: { name: npmName, root: npmName, files: [] },
+    data: { name: npmName, root: npmName },
   };
 
   if (options.files) {
