@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useSkeletonContext } from '../../contexts/SkeletonContext';
 import type { SkeletonItemProps, SkeletonItemState } from './SkeletonItem.types';
 
@@ -22,8 +22,11 @@ export const useSkeletonItem_unstable = (props: SkeletonItemProps, ref: React.Re
   } = props;
 
   const root = slot.always(
-    getNativeElementProps('div', {
-      ref,
+    getIntrinsicElementProps('div', {
+      // FIXME:
+      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      ref: ref as React.Ref<HTMLDivElement>,
       ...props,
     }),
     { elementType: 'div' },

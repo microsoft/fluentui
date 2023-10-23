@@ -31,8 +31,8 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -532,7 +532,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
         const legend: ILegend = {
           title: point.legend,
-          color: color,
+          color,
           action: () => {
             this._onLegendClick(point.legend);
           },
@@ -774,7 +774,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
         this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
-          shouldHighlight: shouldHighlight,
+          shouldHighlight,
           href: this.props.href,
         });
         const rectFocusProps = !shouldFocusWholeStack && {
@@ -848,22 +848,37 @@ export class VerticalStackedBarChartBase extends React.Component<
         onClick: this._onClick.bind(this, singleChartData),
         role: 'img',
       };
+      let showLabel = false;
+      let barLabel = 0;
+      if (!this.props.hideLabels) {
+        if (this._noLegendHighlighted()) {
+          showLabel = true;
+          barLabel = barTotalValue;
+        } else {
+          barsToDisplay.forEach(point => {
+            if (this._legendHighlighted(point.legend)) {
+              showLabel = true;
+              barLabel += point.data;
+            }
+          });
+        }
+      }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
-          {!this.props.hideLabels && this._barWidth >= 16 && (
+          {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
               y={yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
-              aria-label={`Total: ${barTotalValue}`}
+              aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
+              {formatValueWithSIPrefix(barLabel)}
             </text>
           )}
         </g>

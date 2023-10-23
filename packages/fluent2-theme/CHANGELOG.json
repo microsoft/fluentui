@@ -2,6 +2,36 @@
   "name": "@fluentui/fluent2-theme",
   "entries": [
     {
+      "date": "Thu, 19 Oct 2023 07:36:24 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.45",
+      "version": "8.107.45",
+      "comments": {
+        "patch": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/fluent2-theme",
+            "commit": "2fb52c9549c1a13016d1f1725ad822fa513ec588",
+            "comment": "fix: Button focus bleeding into outside bounding box"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Oct 2023 07:37:21 GMT",
+      "tag": "@fluentui/fluent2-theme_v8.107.44",
+      "version": "8.107.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/fluent2-theme",
+            "comment": "Bump @fluentui/react to v8.112.3",
+            "commit": "2eedc2ec54397253a4e3076fbfa382f4fe3c1175"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 09 Oct 2023 07:37:25 GMT",
       "tag": "@fluentui/fluent2-theme_v8.107.43",
       "version": "8.107.43",

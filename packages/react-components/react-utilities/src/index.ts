@@ -52,6 +52,7 @@ export { canUseDOM, useIsSSR, SSRProvider } from './ssr/index';
 
 export {
   clamp,
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getPartitionedNativeProps,
   getRTLSafeKey,
@@ -83,3 +84,5 @@ export type {
   SelectionMethods,
 } from './selection/index';
 export { useSelection } from './selection/index';
+
+export { elementContains, setVirtualParent, getParent } from './virtualParent/index';

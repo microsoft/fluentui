@@ -37,6 +37,9 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 // @internal (undocumented)
 export function createPriorityQueue<T>(compare: PriorityQueueCompareFn<T>): PriorityQueue<T>;
 
+// @internal
+export function elementContains(parent: Node | null, child: Node | null): boolean;
+
 // @public
 export type ExtractSlotProps<S> = Exclude<S, SlotShorthandValue | null | undefined>;
 
@@ -57,8 +60,11 @@ export function getEventClientCoords(event: TouchOrMouseEvent): {
 // @public
 export const getIntrinsicElementProps: <Props extends UnknownSlotProps, ExcludedPropKeys extends Extract<keyof Props, string> = never>(tagName: NonNullable<Props["as"]>, props: Props & React_2.RefAttributes<InferredElementRefType<Props>>, excludedPropNames?: ExcludedPropKeys[] | undefined) => OmitWithoutExpanding<Props, ExcludedPropKeys | Exclude<keyof Props, "as" | keyof HTMLAttributes>>;
 
-// @public
+// @public @deprecated
 export function getNativeElementProps<TAttributes extends React_2.HTMLAttributes<any>>(tagName: string, props: {}, excludedPropNames?: string[]): TAttributes;
+
+// @internal
+export function getParent(child: Node | null, options?: GetParentOptions): Node | null;
 
 // @public
 export const getPartitionedNativeProps: <Props extends Pick<React_2.HTMLAttributes<HTMLElement>, "style" | "className">, ExcludedPropKeys extends Extract<keyof Props, string> = never>({ primarySlotTagName, props, excludedPropNames, }: {
@@ -224,6 +230,9 @@ export interface SelectionMethods {
 // @public (undocumented)
 type SelectionMode_2 = 'single' | 'multiselect';
 export { SelectionMode_2 as SelectionMode }
+
+// @internal
+export function setVirtualParent(child: Node, parent?: Node): void;
 
 // @public
 export type Slot<Type extends keyof JSX.IntrinsicElements | React_2.ComponentType | React_2.VoidFunctionComponent | UnknownSlotProps, AlternateAs extends keyof JSX.IntrinsicElements = never> = IsSingleton<Extract<Type, string>> extends true ? WithSlotShorthandValue<Type extends keyof JSX.IntrinsicElements ? {
