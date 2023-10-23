@@ -47,7 +47,8 @@ export const template: ElementViewTemplate<Dialog> = html`
           x => x.modalType === DialogModalType.nonModal && x.titleAction.length === 0 && !x.noTitleAction,
           html`<fluent-button
             tabindex="0"
-            class="close"
+            part="title-action"
+            class="title-action"
             appearance="transparent"
             icon-only
             @click=${x => x.dismiss()}
