@@ -27,25 +27,6 @@ import { display } from '@microsoft/fast-foundation';
 export const styles = css`
   ${display('flex')}
 
-  :host([hidden]) {
-    display: none;
-  }
-
-  .overlay {
-    position: fixed;
-    inset: 0;
-    background: ${colorBackgroundOverlay};
-    touch-action: none;
-  }
-
-  .positioning-region {
-    display: flex;
-    justify-content: center;
-    position: fixed;
-    inset: 0;
-    z-index: var(--dialog-elevation, 9999);
-  }
-
   dialog {
     background: ${colorNeutralBackground1};
     border: ${strokeWidthThin} solid ${colorTransparentStroke};
@@ -63,8 +44,8 @@ export const styles = css`
     padding: 0;
   }
 
-  :host([modal-type='non-modal'][inert-trap-focus]) dialog::backdrop {
-    display: none;
+  dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
   }
 
   .root {
@@ -101,14 +82,6 @@ export const styles = css`
     box-sizing: border-box;
   }
 
-  dialog {
-    max-width: 100%;
-    width: 100vh;
-  }
-  /* .root {
-    max-width: 100vw;
-    grid-template-rows: auto 1fr auto;
-  } */
   .footer {
     display: flex;
     grid-column-start: 1;
@@ -119,12 +92,12 @@ export const styles = css`
     justify-self: stretch;
     width: 100%;
   }
-  ::slotted([slot='actions']) {
+  ::slotted([slot='footer-action']) {
     width: 100%;
   }
 
   @media screen and (min-width: 480px) {
-    ::slotted([slot='actions']) {
+    ::slotted([slot='footer-action']) {
       width: fit-content;
     }
     dialog {

@@ -1,7 +1,7 @@
 import type { ValuesOf } from '@microsoft/fast-foundation/utilities.js';
 
 /**
- * Checkbox shape
+ * Dialog modal type
  * @public
  */
 export const DialogModalType = {

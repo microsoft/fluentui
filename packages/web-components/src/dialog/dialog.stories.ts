@@ -10,8 +10,15 @@ import { DialogModalType } from './dialog.options.js';
 type DialogStoryArgs = Args & FluentDialog;
 type DialogStoryMeta = Meta<DialogStoryArgs>;
 
-const dismissed16Regular = html`
-  <svg fill="currentColor" aria-="true" width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+const dismissed20Regular = html`
+  <svg
+    fill="currentColor"
+    aria-hidden="true"
+    width="20"
+    height="20"
+    viewBox="0 0 20 20"
+    xmlns="http://www.w3.org/2000/svg"
+  >
     <path
       d="m4.09 4.22.06-.07a.5.5 0 0 1 .63-.06l.07.06L10 9.29l5.15-5.14a.5.5 0 0 1 .63-.06l.07.06c.18.17.2.44.06.63l-.06.07L10.71 10l5.14 5.15c.18.17.2.44.06.63l-.06.07a.5.5 0 0 1-.63.06l-.07-.06L10 10.71l-5.15 5.14a.5.5 0 0 1-.63.06l-.07-.06a.5.5 0 0 1-.06-.63l.06-.07L9.29 10 4.15 4.85a.5.5 0 0 1-.06-.63l.06-.07-.06.07Z"
       fill="currentColor"
@@ -19,7 +26,7 @@ const dismissed16Regular = html`
   </svg>
 `;
 
-const rabbit16Regular = html`<svg
+const dismissCircle20Regular = html`<svg
   fill="currentColor"
   aria-hidden="true"
   width="20"
@@ -28,7 +35,7 @@ const rabbit16Regular = html`<svg
   xmlns="http://www.w3.org/2000/svg"
 >
   <path
-    d="M10.51 15.01h2.12c.91 0 1.68-.57 1.99-1.37.88.07 1.79-.23 2.46-.9a3.15 3.15 0 0 0 0-4.45l-4.22-4.22c-.59-.59-1.55-.59-2.14 0-.6.6-.6 1.56 0 2.15l1.34 1.33c-.12.16-.22.33-.3.5a3.55 3.55 0 0 0-.54-.05H7.54c-.33 0-.65.05-.95.13A2.5 2.5 0 1 0 4 11.95v.93c0 1.18.95 2.13 2.12 2.13h4.39Zm1.64-10.23L16.38 9a2.15 2.15 0 0 1-2 3.6l-.56-.13-.06.56c-.07.56-.54.99-1.12.99h-1.62v-.1C11 12.78 9.99 12 8.89 12H7.5a.5.5 0 0 0 0 1h1.39c.69 0 1.12.46 1.12.91v.1H6.12c-.62 0-1.12-.5-1.12-1.13v-1.33A2.55 2.55 0 0 1 7.54 9h3.68c.23 0 .46.03.68.1l.42.11.18-.4c.1-.26.26-.57.47-.79l.5-.48-2.04-2.02a.52.52 0 0 1 0-.74c.2-.2.52-.2.72 0Zm-6.5 3.77a3.55 3.55 0 0 0-1.6 2.38 1.5 1.5 0 1 1 1.6-2.38Z"
+    d="M10 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0 1a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM7.8 7.11l.08.06L10 9.3l2.12-2.12a.5.5 0 0 1 .64-.06l.07.06c.17.18.2.44.06.64l-.06.07L10.7 10l2.12 2.12c.17.17.2.44.06.64l-.06.07a.5.5 0 0 1-.64.06l-.07-.06L10 10.7l-2.12 2.12a.5.5 0 0 1-.64.06l-.07-.06a.5.5 0 0 1-.06-.64l.06-.07L9.3 10 7.17 7.88a.5.5 0 0 1-.06-.64l.06-.07a.5.5 0 0 1 .64-.06Z"
     fill="currentColor"
   ></path>
 </svg>`;
@@ -65,14 +72,6 @@ const dialogTemplate = html<DialogStoryArgs>`
     <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}">
       <fluent-text slot="title">Dialog</fluent-text>
-      <fluent-button
-        appearance="transparent"
-        icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
-        slot="title-action"
-      >
-        ${dismissed16Regular}
-      </fluent-button>
       <fluent-text as="p" weight="regular" block>
         <p>
           The Dialog component is a window overlaid on either the primary window or another dialog window. Windows under
@@ -82,10 +81,13 @@ const dialogTemplate = html<DialogStoryArgs>`
       <br />
       <fluent-text block><code>fluent-dialog</code></fluent-text>
 
-      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
+      <fluent-button
+        slot="footer-action"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions" tabindex="0">Do Something</fluent-button>
+      <fluent-button slot="footer-action" tabindex="0">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `;
@@ -137,10 +139,11 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
       </fluent-text>
       </fluent-text as="p" block><p><fluent-text weight="bold" as="span"><span>Note:<span></fluent-text> if an element outside of the dialog is focused then it will not be possible to close the dialog with the Escape key.</p></fluent-text>
       <fluent-text block><code>modal-type="non-modal"</code></fluent-text>
-      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-nonmodal')}"
+      <fluent-button slot="footer-action" appearance="primary" @click="${(e: Event, c) =>
+        closeDialog(e, 'dialog-nonmodal')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -157,10 +160,13 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
       </div>
       <br />
       <fluent-text><code>modal-type="modal"</code></fluent-text>
-      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
+      <fluent-button
+        slot="footer-action"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -176,10 +182,13 @@ export const Alert = renderComponent(html<DialogStoryArgs>`
       </div>
       <br />
       <fluent-text><code>modal-type="alert"</code></fluent-text>
-      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
+      <fluent-button
+        slot="footer-action"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -198,7 +207,7 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
         @click="${(e: Event, c) => closeDialogControlled(e, 'dialog-controlled')}"
         slot="title-action"
       >
-        ${dismissed16Regular}
+        ${dismissed20Regular}
       </fluent-button>
       <div>
         <fluent-text block>
@@ -212,12 +221,12 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
       <br />
 
       <fluent-button
-        slot="actions"
+        slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialogControlled(e, 'dialog-controlled')}"
         >Close Controlled Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
     <fluent-dialog id="dialog-uncontrolled">
       <div slot="title">Uncontrolled Dialog</div>
@@ -227,7 +236,7 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
         @click="${(e: Event, c) => closeDialog(e, 'dialog-uncontrolled')}"
         slot="title-action"
       >
-        ${dismissed16Regular}
+        ${dismissed20Regular}
       </fluent-button>
       <div>
         <fluent-text block>
@@ -241,12 +250,12 @@ export const ControlledAndUncontrolledOpenAndClose = renderComponent(html<Dialog
       <br />
 
       <fluent-button
-        slot="actions"
+        slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-uncontrolled')}"
         >Close Unontrolled Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -262,7 +271,7 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
         @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
         slot="title-action"
       >
-        ${dismissed16Regular}
+        ${dismissed20Regular}
       </fluent-button>
       <fluent-text style="overflow: hidden;" block as="p"
         ><p>
@@ -316,57 +325,57 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
         </p>
       </fluent-text>
       <fluent-button
-        slot="actions"
+        slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
 
-export const Actions = renderComponent(html<DialogStoryArgs>`
+export const FooterAction = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-fluidactions')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-fluidactions">
-      <div slot="title">Actions</div>
+      <div slot="title">Footer Action</div>
       <fluent-button
         appearance="transparent"
         icon-only
         @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
         slot="title-action"
       >
-        ${dismissed16Regular}
+        ${dismissed20Regular}
       </fluent-button>
       <div>
         <fluent-text block>
           <span
             >A Dialog should have no more than
             <fluent-text weight="bold"><span>two</span></fluent-text>
-            actions.
+            footer actions.
           </span></fluent-text
         >
         <br />
         <fluent-text block
           ><span>
-            However, if required, you can populate the actions slot with any number of buttons as needed.</span
+            However, if required, you can populate the footer-action slot with any number of buttons as needed.</span
           ></fluent-text
         >
       </div>
       <br />
 
-      <fluent-button size="small" slot="actions">Something</fluent-button>
-      <fluent-button size="small" slot="actions">Something Else</fluent-button>
+      <fluent-button size="small" slot="footer-action">Something</fluent-button>
+      <fluent-button size="small" slot="footer-action">Something Else</fluent-button>
 
       <fluent-button
-        slot="actions"
+        slot="footer-action"
         size="small"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button size="small" slot="actions">Something Else Entirely</fluent-button>
+      <fluent-button size="small" slot="footer-action">Something Else Entirely</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -375,14 +384,14 @@ export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-titlecustomaction')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-titlecustomaction">
-      <div slot="title">No Header Actions</div>
+      <div slot="title">Title Custom Action</div>
       <fluent-button
         appearance="transparent"
         icon-only
         @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
         slot="title-action"
       >
-        ${rabbit16Regular}
+        ${dismissCircle20Regular}
       </fluent-button>
       <div>
         <fluent-text block>
@@ -403,12 +412,12 @@ export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
       <br />
 
       <fluent-button
-        slot="actions"
+        slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -417,7 +426,7 @@ export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-notitleaction')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-notitleaction" modal-type="${DialogModalType.nonModal}" no-title-action>
-      <div slot="title">No Header Actions</div>
+      <div slot="title">No Title Action</div>
       <div>
         <fluent-text block>
           <span
@@ -428,12 +437,12 @@ export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
       <br />
 
       <fluent-button
-        slot="actions"
+        slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-notitleaction')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="footer-action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -449,7 +458,7 @@ export const ChangeFocus = renderComponent(html<DialogStoryArgs>`
         @click="${(e: Event, c) => closeDialog(e, 'dialog-changefocus')}"
         slot="title-action"
       >
-        ${dismissed16Regular}
+        ${dismissed20Regular}
       </fluent-button>
 
       <fluent-text as="p" block>
@@ -462,7 +471,7 @@ export const ChangeFocus = renderComponent(html<DialogStoryArgs>`
       <fluent-text as="p" block>
         <p><code>change-focus="myElementId"</code></p>
       </fluent-text>
-      <div slot="actions">
+      <div slot="footer-action">
         <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-changefocus')}"
           >Close Dialog</fluent-button
         >

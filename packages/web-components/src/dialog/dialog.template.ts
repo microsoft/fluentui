@@ -22,48 +22,47 @@ const dismissed16Regular = html.partial(`
  * @public
  */
 export const template: ElementViewTemplate<Dialog> = html`
-      <dialog
-        ?open="${x => x.open}"
-        role="${x => (x.modalType === DialogModalType.alert ? 'alertdialog' : 'dialog')}"
-        modal-type="${x => x.modalType}"
-        change-focus="${x => x.changeFocus}"
-        class="control"
-        part="control"
-        aria-modal="${x =>
-          x.modalType === DialogModalType.modal || x.modalType === DialogModalType.alert ? 'true' : void 0}"
-        aria-describedby="${x => x.ariaDescribedby}"
-        aria-labelledby="${x => x.ariaLabelledby}"
-        aria-label="${x => x.ariaLabel}"
-        @keydown="${(x, c) => x.handleKeydown(c.event as KeyboardEvent)}"
-        @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
-        ${ref('dialog')}
-      >
-        <div class="root" part="root">
-          <slot name="start"></slot>
-          <div class="header" part="header">
-            <slot name="title"></slot>
-            <slot ${slotted({ property: 'titleAction', filter: elements() })} name="title-action"></slot>
-            ${when(
-              x => x.modalType === DialogModalType.nonModal && x.titleAction.length === 0 && !x.noTitleAction,
-              html`<fluent-button
-                tabindex="0"
-                class="close"
-                appearance="transparent"
-                icon-only
-                @click=${x => x.dismiss()}
-                ${ref('defaultTitleAction')}
-                >${dismissed16Regular}</fluent-button
-              >`,
-            )}
-          </div>
-          <div class="content" part="content">
-            <slot></slot>
-          </div>
-          <div class="footer" part="footer">
-            <slot name="actions"></slot>
-          </div>
-          <slot name="end"></slot>
-        </div>
+  <dialog
+    ?open="${x => x.open}"
+    role="${x => (x.modalType === DialogModalType.alert ? 'alertdialog' : 'dialog')}"
+    modal-type="${x => x.modalType}"
+    change-focus="${x => x.changeFocus}"
+    class="control"
+    part="control"
+    aria-modal="${x =>
+      x.modalType === DialogModalType.modal || x.modalType === DialogModalType.alert ? 'true' : void 0}"
+    aria-describedby="${x => x.ariaDescribedby}"
+    aria-labelledby="${x => x.ariaLabelledby}"
+    aria-label="${x => x.ariaLabel}"
+    @keydown="${(x, c) => x.handleKeydown(c.event as KeyboardEvent)}"
+    @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
+    ${ref('dialog')}
+  >
+    <div class="root" part="root">
+      <slot name="start"></slot>
+      <div class="header" part="header">
+        <slot name="title"></slot>
+        <slot ${slotted({ property: 'titleAction', filter: elements() })} name="title-action"></slot>
+        ${when(
+          x => x.modalType === DialogModalType.nonModal && x.titleAction.length === 0 && !x.noTitleAction,
+          html`<fluent-button
+            tabindex="0"
+            class="close"
+            appearance="transparent"
+            icon-only
+            @click=${x => x.dismiss()}
+            ${ref('defaultTitleAction')}
+            >${dismissed16Regular}</fluent-button
+          >`,
+        )}
       </div>
+      <div class="content" part="content">
+        <slot></slot>
+      </div>
+      <div class="footer" part="footer">
+        <slot name="footer-action"></slot>
+      </div>
+      <slot name="end"></slot>
     </div>
+  </dialog>
 `;
