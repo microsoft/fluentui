@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { AreaChart, IChartProps, ICustomizedCalloutData } from '@fluentui/react-charting';
+import { AreaChart, IChartProps } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 import { DefaultButton } from '@fluentui/react/lib/Button';
@@ -98,48 +98,11 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
               allowFocusOnLegends: true,
             }}
             enableReflow={true}
-            {...{
-              onRenderCalloutPerStack: (props: ICustomizedCalloutData) => {
-                if (!props) {
-                  return null;
-                }
-                const listOfElements: JSX.Element[] = [];
-                props.values.forEach(value => {
-                  const element: JSX.Element = (
-                    <>
-                      <div role="text" data-is-focusable="false">
-                        <div>
-                          <div
-                            style={{ borderLeft: `4px solid ${value.color}`, paddingLeft: '8px', marginTop: '13px' }}
-                          >
-                            <div>
-                              <div>{value.legend}</div>
-                              <div>{value.y}</div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </>
-                  );
-                  listOfElements.push(element);
-                });
-
-                return (
-                  <div style={{ outline: 'none', maxHeight: '100%', padding: '11px 16px 10px 16px' }}>
-                    <div>
-                      <div>
-                        <div role="text" data-is-focusable="false">
-                          {props.x}
-                        </div>
-                      </div>
-                      <div>{listOfElements}</div>
-                      <div style={{ paddingTop: '10px' }}>Shown Y values are cumulative</div>
-                    </div>
-                  </div>
-                );
-              },
-            }}
           />
+          <div style={{ marginBottom: '13px' }}>
+            Note: Y values in callout display individual values. Y value plotted on chart are cumulative for the
+            datapoint.
+          </div>
           <DefaultButton text="Change Ydata" onClick={this._changeData} />
           <DefaultButton text="Change Xdata" onClick={this._changeXData} />
         </div>
