@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Move InfoLabel to stable.",
-  "packageName": "@fluentui/react-infolabel",
-  "email": "esteban.230@hotmail.com",
-  "dependentChangeType": "patch"
-}

@@ -2,6 +2,36 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 23 Oct 2023 07:35:31 GMT",
+      "tag": "@fluentui/react-charting_v5.18.9",
+      "version": "5.18.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c8ed0b5e2a48e82c30c9b257ae398cc6835b3a3b",
+            "comment": "Part 2 - Changes to onboard charting to fluent docsite"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Oct 2023 07:35:43 GMT",
+      "tag": "@fluentui/react-charting_v5.18.8",
+      "version": "5.18.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8f2eb85fcde38ad239b1defcb0914263d01c2534",
+            "comment": "Added missing xAxisCalloutData param while fetching callout data"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Oct 2023 07:49:09 GMT",
       "tag": "@fluentui/react-charting_v5.18.7",
       "version": "5.18.7",
