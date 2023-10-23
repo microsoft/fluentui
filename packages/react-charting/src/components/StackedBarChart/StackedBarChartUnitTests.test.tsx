@@ -14,13 +14,32 @@ const points: IChartDataPoint[] = [
   { legend: 'second', data: 1, color: DefaultPalette.green },
 ];
 
+const areaLabelPoints: IChartDataPoint[] = [
+  {
+    legend: 'first',
+    data: 3000000,
+    color: DefaultPalette.blue,
+    xAxisCalloutData: '2020/04/30',
+  },
+  {
+    legend: 'first',
+    data: 3000000,
+    color: DefaultPalette.blue,
+    yAxisCalloutData: '50%',
+  },
+  {
+    data: 2000,
+    color: DefaultPalette.blue,
+  },
+];
+
 const data: IChartProps = {
   chartTitle: 'Stacked Bar chart example',
   chartData: points,
 };
 
 describe('_createBarsAndLegends', () => {
-  test('Should return bars, legends, benchmark with target data', () => {
+  test('Should return bars and legends which includes benchmark and target data', () => {
     const instance = new StackedBarChartBase({
       data: {},
     });
@@ -40,7 +59,7 @@ describe('_createBarsAndLegends', () => {
     expect(legends).toHaveLength(4);
   });
 
-  test('Should return bars, legends, benchmark data without target data', () => {
+  test('Should return bars and legends which includes only benchmark data', () => {
     const instance = new StackedBarChartBase({
       data: {},
     });
@@ -59,7 +78,7 @@ describe('_createBarsAndLegends', () => {
     expect(legends).toHaveLength(3);
   });
 
-  test('Should return bars, legends data without benchmark and  target data', () => {
+  test('Should return bars and legends data without benchmark and target data', () => {
     const instance = new StackedBarChartBase({
       data: {},
     });
@@ -77,7 +96,7 @@ describe('_createBarsAndLegends', () => {
     expect(legends).toHaveLength(2);
   });
 
-  test('Should return bars, legends, target data without benchmark data', () => {
+  test('', () => {
     const instance = new StackedBarChartBase({
       data: {},
     });
@@ -85,34 +104,15 @@ describe('_createBarsAndLegends', () => {
     const { palette } = DarkTheme;
     const barHeight = 500;
     const targetData = points[0];
-
-    const barsAndLegends = instance._createBarsAndLegends(data, barHeight, palette, targetData);
+    const benchMarkData: IChartDataPoint = {};
+    const barsAndLegends = instance._createBarsAndLegends(data, barHeight, palette, benchMarkData, targetData);
     expect(barsAndLegends).toHaveLength(2);
     const bars = barsAndLegends[0];
     expect(bars).toHaveLength(2);
     const legendsDataObject = barsAndLegends[1];
     expect(legendsDataObject['props']).not.toBeNull();
     const legends = legendsDataObject['props']['legends'];
-    expect(legends).toHaveLength(3);
-  });
-
-  test('Should return bars, legends, target data without benchmark data', () => {
-    const emptyData: IChartProps = {};
-    const instance = new StackedBarChartBase({
-      data: emptyData,
-    });
-    expect(instance).toBeDefined();
-    const { palette } = DarkTheme;
-    const barHeight = 500;
-    const targetData = points[0];
-    const barsAndLegends = instance._createBarsAndLegends(data, barHeight, palette, targetData);
-    expect(barsAndLegends).toHaveLength(2);
-    const bars = barsAndLegends[0];
-    expect(bars).toHaveLength(2);
-    const legendsDataObject = barsAndLegends[1];
-    expect(legendsDataObject['props']).not.toBeNull();
-    const legends = legendsDataObject['props']['legends'];
-    expect(legends).toHaveLength(3);
+    expect(legends).toHaveLength(4);
   });
 });
 
@@ -136,7 +136,7 @@ describe('_isChartEmpty', () => {
 });
 
 describe('_getAriaLabel', () => {
-  test('Should return correct aria label for a point when we have xAxisCalloutData and yAxisCalloutData', () => {
+  test('Should return correct aria label for a point with xAxisCalloutData and yAxisCalloutData', () => {
     const emptyData: IChartProps = {};
     const instance = new StackedBarChartBase({
       data: emptyData,
@@ -145,12 +145,39 @@ describe('_getAriaLabel', () => {
     expect(instance._getAriaLabel(points[0])).toEqual('2020/04/30, 99%.');
   });
 
-  test('Should return correct aria label for a point when we do not have xAxisCalloutData and yAxisCalloutData', () => {
+  test('Should return correct aria label for a point without xAxisCalloutData and yAxisCalloutData', () => {
     const emptyData: IChartProps = {};
     const instance = new StackedBarChartBase({
       data: emptyData,
     });
     expect(instance).toBeDefined();
     expect(instance._getAriaLabel(points[1])).toEqual('second, 1.');
+  });
+
+  test('Should return correct aria label for a point with xAxisCalloutData and without yAxisCalloutData', () => {
+    const emptyData: IChartProps = {};
+    const instance = new StackedBarChartBase({
+      data: emptyData,
+    });
+    expect(instance).toBeDefined();
+    expect(instance._getAriaLabel(areaLabelPoints[0])).toEqual('2020/04/30, 3000000.');
+  });
+
+  test('Should return correct aria label for a point without xAxisCalloutData and with yAxisCalloutData', () => {
+    const emptyData: IChartProps = {};
+    const instance = new StackedBarChartBase({
+      data: emptyData,
+    });
+    expect(instance).toBeDefined();
+    expect(instance._getAriaLabel(areaLabelPoints[1])).toEqual('first, 50%.');
+  });
+
+  test('Should return correct aria label for a point without legend,xAxisCalloutData yAxisCalloutData', () => {
+    const emptyData: IChartProps = {};
+    const instance = new StackedBarChartBase({
+      data: emptyData,
+    });
+    expect(instance).toBeDefined();
+    expect(instance._getAriaLabel(areaLabelPoints[2])).toEqual('2000.');
   });
 });
