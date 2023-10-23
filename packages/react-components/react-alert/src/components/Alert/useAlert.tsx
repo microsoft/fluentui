@@ -8,6 +8,7 @@ import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { AlertProps, AlertState } from './Alert.types';
 
 /**
+ * @deprecated please use the Toast or MessageBar component
  * Create the state required to render Alert.
  *
  * The returned state can be modified with hooks such as useAlertStyles_unstable,

@@ -89,6 +89,7 @@ const useActionButtonColorInverted = makeStyles({
 });
 
 /**
+ * @deprecated please use the Toast or MessageBar component
  * Apply styling to the Alert slots based on the state
  */
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {

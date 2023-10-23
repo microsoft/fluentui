@@ -8,6 +8,7 @@ import type { AlertProps } from './Alert.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 
 /**
+ * @deprecated please use the Toast or MessageBar component
  * An Alert component displays a brief, important message to attract a user's attention
  *  without interrupting their current task.
  */

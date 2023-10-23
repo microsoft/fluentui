@@ -4,6 +4,9 @@ import { assertSlots } from '@fluentui/react-utilities';
 
 import type { AlertState, AlertSlots } from './Alert.types';
 
+/**
+ * @deprecated please use the Toast or MessageBar component
+ */
 export const renderAlert_unstable = (state: AlertState) => {
   assertSlots<AlertSlots>(state);
 

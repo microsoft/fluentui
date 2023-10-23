@@ -3,6 +3,9 @@ import { Button } from '@fluentui/react-button';
 
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated please use the Toast or MessageBar component
+ */
 export type AlertSlots = {
   /**
    * The root slot is the top level container for the alert component
@@ -24,6 +27,7 @@ export type AlertSlots = {
 
 /**
  * Alert Props
+ * @deprecated please use the Toast or MessageBar component
  */
 export type AlertProps = ComponentProps<AlertSlots> & {
   /**
@@ -40,6 +44,7 @@ export type AlertProps = ComponentProps<AlertSlots> & {
 
 /**
  * State used in rendering Alert
+ * @deprecated please use the Toast or MessageBar component
  */
 export type AlertState = ComponentState<AlertSlots> &
   Pick<AlertProps, 'intent'> &
