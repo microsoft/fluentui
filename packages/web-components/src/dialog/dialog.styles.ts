@@ -45,7 +45,7 @@ export const styles = css`
   }
 
   dialog::backdrop {
-    background: rgba(0, 0, 0, 0.4);
+    background: ${colorBackgroundOverlay};
   }
 
   .root {
