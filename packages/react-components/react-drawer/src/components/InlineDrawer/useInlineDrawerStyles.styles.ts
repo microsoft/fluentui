@@ -6,7 +6,7 @@ import { tokens } from '@fluentui/react-theme';
 import type { InlineDrawerSlots, InlineDrawerState } from './InlineDrawer.types';
 import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from '../../shared/useDrawerBaseStyles.styles';
 
-export const InlineDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
+export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
   root: 'fui-InlineDrawer',
 };
 
@@ -63,7 +63,7 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   }, [state.position, state.separator, rootStyles.separatorEnd, rootStyles.separatorStart]);
 
   state.root.className = mergeClasses(
-    InlineDrawerClassNames.root,
+    inlineDrawerClassNames.root,
     resetStyles,
     baseClassNames,
     separatorClass,

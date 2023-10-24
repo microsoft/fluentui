@@ -124,7 +124,7 @@ export type DrawerState = ComponentState<DrawerSlots>;
 export const InlineDrawer: ForwardRefComponent<InlineDrawerProps>;
 
 // @public (undocumented)
-export const InlineDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
+export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots>;
 
 // @public
 export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> & DrawerBaseProps & {
@@ -143,7 +143,7 @@ export type InlineDrawerState = Required<ComponentState<InlineDrawerSlots> & Dra
 export const OverlayDrawer: ForwardRefComponent<OverlayDrawerProps>;
 
 // @public (undocumented)
-export const OverlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots>;
+export const overlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots>;
 
 // @public
 export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> & Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> & DrawerBaseProps;

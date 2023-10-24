@@ -13,7 +13,7 @@ import {
   useDrawerDurationStyles,
 } from '../../shared/useDrawerBaseStyles.styles';
 
-export const OverlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots> = {
+export const overlayDrawerClassNames: SlotClassNames<OverlayDrawerSurfaceSlots> = {
   root: 'fui-OverlayDrawer',
   backdrop: 'fui-OverlayDrawer__backdrop',
 };
@@ -79,7 +79,7 @@ export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): Over
   const backdrop = state.root.backdrop as React.HTMLAttributes<HTMLDivElement> | undefined;
 
   state.root.className = mergeClasses(
-    OverlayDrawerClassNames.root,
+    overlayDrawerClassNames.root,
     baseClassNames,
     resetStyles,
     rootStyles[state.position],
@@ -89,7 +89,7 @@ export const useOverlayDrawerStyles_unstable = (state: OverlayDrawerState): Over
 
   if (backdrop) {
     backdrop.className = mergeClasses(
-      OverlayDrawerClassNames.backdrop,
+      overlayDrawerClassNames.backdrop,
       backdropStyles.backdrop,
       durationStyles[state.size],
       state.backdropMotion.active && backdropStyles.visible,

@@ -3,7 +3,7 @@ export type { DrawerProps, DrawerSlots, DrawerState } from './Drawer';
 
 export {
   OverlayDrawer,
-  OverlayDrawerClassNames,
+  overlayDrawerClassNames,
   renderOverlayDrawer_unstable,
   useOverlayDrawerStyles_unstable,
   useOverlayDrawer_unstable,
@@ -12,7 +12,7 @@ export type { OverlayDrawerProps, OverlayDrawerSlots, OverlayDrawerState } from 
 
 export {
   InlineDrawer,
-  InlineDrawerClassNames,
+  inlineDrawerClassNames,
   renderInlineDrawer_unstable,
   useInlineDrawerStyles_unstable,
   useInlineDrawer_unstable,

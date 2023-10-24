@@ -5,8 +5,8 @@ import { webLightTheme } from '@fluentui/react-theme';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { Drawer } from './Drawer';
-import { OverlayDrawerClassNames } from '../OverlayDrawer';
-import { InlineDrawerClassNames } from '../InlineDrawer';
+import { overlayDrawerClassNames } from '../OverlayDrawer';
+import { inlineDrawerClassNames } from '../InlineDrawer';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -19,13 +19,13 @@ describe('Drawer', () => {
     it('should render OverlayDrawer by default', () => {
       mountFluent(<Drawer id="drawer" open />);
 
-      cy.get(`.${OverlayDrawerClassNames.root}`).should('exist');
+      cy.get(`.${overlayDrawerClassNames.root}`).should('exist');
     });
 
     it('should render InlineDrawer when type is `inline`', () => {
       mountFluent(<Drawer id="drawer" type="inline" open />);
 
-      cy.get(`.${InlineDrawerClassNames.root}`).should('exist');
+      cy.get(`.${inlineDrawerClassNames.root}`).should('exist');
     });
   });
 });

@@ -6,7 +6,7 @@ import { webLightTheme } from '@fluentui/react-theme';
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { OverlayDrawer } from './OverlayDrawer';
 import { OverlayDrawerProps } from './OverlayDrawer.types';
-import { OverlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
+import { overlayDrawerClassNames } from './useOverlayDrawerStyles.styles';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -28,14 +28,14 @@ describe('OverlayDrawer', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer />);
 
-        cy.get(`.${OverlayDrawerClassNames.backdrop}`).should('exist');
+        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('exist');
       });
 
       it('should close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${OverlayDrawerClassNames.backdrop}`).click({ force: true });
+        cy.get(`.${overlayDrawerClassNames.backdrop}`).click({ force: true });
         cy.get('#drawer').should('not.exist');
       });
     });
@@ -44,14 +44,14 @@ describe('OverlayDrawer', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
-        cy.get(`.${OverlayDrawerClassNames.backdrop}`).should('exist');
+        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('exist');
       });
 
       it('should not close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${OverlayDrawerClassNames.backdrop}`).click({ force: true });
+        cy.get(`.${overlayDrawerClassNames.backdrop}`).click({ force: true });
         cy.get('#drawer').should('exist');
       });
     });
@@ -60,7 +60,7 @@ describe('OverlayDrawer', () => {
       it('should not render backdrop when modalType is default', () => {
         mountFluent(<ExampleDrawer modalType="non-modal" />);
 
-        cy.get(`.${OverlayDrawerClassNames.backdrop}`).should('not.exist');
+        cy.get(`.${overlayDrawerClassNames.backdrop}`).should('not.exist');
       });
     });
   });
