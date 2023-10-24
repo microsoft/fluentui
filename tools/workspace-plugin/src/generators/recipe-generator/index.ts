@@ -1,4 +1,4 @@
-import { Tree, formatFiles, generateFiles, readWorkspaceConfiguration, joinPathFragments } from '@nx/devkit';
+import { Tree, formatFiles, generateFiles, joinPathFragments, readNxJson } from '@nx/devkit';
 import { RecipeGeneratorGeneratorSchema } from './schema';
 import { getProjectConfig } from '../../utils';
 
@@ -13,7 +13,7 @@ export default async function (tree: Tree, schema: RecipeGeneratorGeneratorSchem
 }
 
 function normalizeOptions(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = assertAndReadNxJson(tree);
   const recipesProject = getProjectConfig(tree, {
     packageName: `@${workspaceConfig.npmScope}/recipes-react-components`,
   });
@@ -45,4 +45,14 @@ function validateSchema(tree: Tree, schema: RecipeGeneratorGeneratorSchema) {
   }
 
   return newSchema;
+}
+
+function assertAndReadNxJson(tree: Tree) {
+  const nxJson = readNxJson(tree);
+
+  if (!nxJson) {
+    throw new Error('nx.json doesnt exist');
+  }
+
+  return nxJson;
 }

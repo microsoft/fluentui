@@ -2,10 +2,10 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   serializeJson,
   addProjectConfiguration,
   readJson,
+  readNxJson,
 } from '@nx/devkit';
 
 import generator from './index';
@@ -200,7 +200,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReturnType<typeof readProjectConfiguration>>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = assertAndReadNxJson(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -239,4 +239,14 @@ function setupDummyPackage(
   });
 
   return tree;
+}
+
+function assertAndReadNxJson(tree: Tree) {
+  const nxJson = readNxJson(tree);
+
+  if (!nxJson) {
+    throw new Error('nx.json doesnt exist');
+  }
+
+  return nxJson;
 }
