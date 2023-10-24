@@ -110,8 +110,10 @@ export class Dialog extends FASTElement {
     if (newValue !== oldValue) {
       if (newValue && !oldValue && !this.dialog.open) {
         this.show();
+        this.open = true;
       } else if (!newValue && oldValue && this.dialog.open) {
         this.hide();
+        this.open = false;
       }
     }
   }
@@ -159,9 +161,11 @@ export class Dialog extends FASTElement {
     Updates.enqueue(() => {
       if (this.modalType === DialogModalType.alert || this.modalType === DialogModalType.modal) {
         this.dialog.showModal();
+        this.open = true;
         this.updateTrapFocus(true);
       } else if (this.modalType === DialogModalType.nonModal) {
         this.dialog.show();
+        this.open = true;
       }
       this.onOpenChangeEvent();
     });
@@ -174,6 +178,7 @@ export class Dialog extends FASTElement {
    */
   public hide(dismissed: boolean = false): void {
     this.dialog.close();
+    this.open = false;
     this.onOpenChangeEvent(dismissed);
   }
 
