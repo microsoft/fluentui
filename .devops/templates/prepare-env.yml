@@ -1,0 +1,12 @@
+jobs:
+  - job: prepare_env
+    displayName: Prepare environment
+    workspace:
+      clean: all
+    steps:
+      - template: tools.yml
+
+      - task: Bash@3
+        inputs:
+          filePath: yarn-ci.sh
+        displayName: yarn (install packages)
