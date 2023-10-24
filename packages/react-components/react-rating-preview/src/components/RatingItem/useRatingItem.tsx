@@ -56,7 +56,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         ref,
         name: context.name,
         value: value - 0.5,
-        checked: ratingValue === value - 0.5,
+        defaultChecked: ratingValue === value - 0.5,
       },
       elementType: 'input',
     });
@@ -70,7 +70,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         ref,
         value,
-        checked: ratingValue === value,
+        defaultChecked: ratingValue === value,
         ...nativeProps.primary,
       },
 
