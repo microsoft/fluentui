@@ -61,7 +61,7 @@ export const styles = css`
     padding: ${spacingVerticalXXL} ${spacingHorizontalXXL};
   }
 
-  .header {
+  .title {
     font-size: ${fontSizeBase500};
     line-height: ${lineHeightBase500};
     font-weight: ${fontWeightSemibold};
@@ -86,7 +86,7 @@ export const styles = css`
     box-sizing: border-box;
   }
 
-  .footer {
+  .actions {
     display: flex;
     grid-column-start: 1;
     flex-direction: column;
@@ -96,19 +96,19 @@ export const styles = css`
     justify-self: stretch;
     width: 100%;
   }
-  ::slotted([slot='footer-action']) {
+  ::slotted([slot='action']) {
     width: 100%;
   }
 
   @media screen and (min-width: 480px) {
-    ::slotted([slot='footer-action']) {
+    ::slotted([slot='action']) {
       width: fit-content;
     }
     dialog {
       max-width: 600px;
       width: 100%;
     }
-    .footer {
+    .actions {
       display: flex;
       flex-direction: row;
       justify-content: flex-end;

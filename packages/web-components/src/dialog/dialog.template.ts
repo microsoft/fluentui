@@ -39,7 +39,7 @@ export const template: ElementViewTemplate<Dialog> = html`
     ${ref('dialog')}
   >
     <div class="root" part="root">
-      <div class="header" part="header">
+      <div class="title" part="title">
         <slot name="title"></slot>
         <slot ${slotted({ property: 'titleAction', filter: elements() })} name="title-action"></slot>
         ${when(
@@ -59,8 +59,8 @@ export const template: ElementViewTemplate<Dialog> = html`
       <div class="content" part="content">
         <slot></slot>
       </div>
-      <div class="footer" part="footer">
-        <slot name="footer-action"></slot>
+      <div class="actions" part="actions">
+        <slot name="action"></slot>
       </div>
     </div>
   </dialog>
