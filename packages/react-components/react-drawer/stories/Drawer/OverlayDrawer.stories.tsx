@@ -40,9 +40,9 @@ Overlay.parameters = {
   docs: {
     description: {
       story: [
-        'OverlayDrawer contains supplementary content and are used for complex creation, edit, or management experiences.',
+        'OverlayDrawer contains supplementary content and is used for complex creation, edit, or management experiences.',
         'For example, viewing details about an item in a list or editing settings.',
-        'By default, drawer is blocking and signifies that the users full attention is required when making configurations.',
+        "By default, drawer is blocking and signifies that the user's full attention is required when making configurations.",
       ].join('\n'),
     },
   },
