@@ -3,13 +3,7 @@ import * as React from 'react';
 import descriptionMd from './Description.md';
 
 import { Checkbox } from '@fluentui/react';
-import {
-  FluentProvider,
-  Checkbox as CheckboxV9,
-  webLightTheme,
-  makeStyles,
-  shorthands,
-} from '@fluentui/react-components';
+import { Checkbox as CheckboxV9, makeStyles, shorthands } from '@fluentui/react-components';
 import { CheckboxShim } from '../../components/Checkbox/index';
 
 const useStyles = makeStyles({
@@ -39,12 +33,8 @@ export const Default = () => {
       <h3>shim</h3>
       <h3>v9</h3>
       <Checkbox label="checkbox" required={true} />
-      <FluentProvider theme={webLightTheme}>
-        <CheckboxShim label="checkbox" required={true} />
-      </FluentProvider>
-      <FluentProvider theme={webLightTheme}>
-        <CheckboxV9 label="checkbox" required={true} />
-      </FluentProvider>
+      <CheckboxShim label="checkbox" required={true} />
+      <CheckboxV9 label="checkbox" required={true} />
     </div>
   );
 };
