@@ -17,22 +17,22 @@ describe('DrawerInline', () => {
     it('should not render any border when separator is false', () => {
       mountFluent(<DrawerInline id="drawer" position="start" open />);
 
-      cy.get('#drawer').should('not.have.css', `border-right-width`, '1px');
-      cy.get('#drawer').should('not.have.css', `border-left-width`, '1px');
+      cy.get('#drawer').should('have.css', `border-right-color`, 'transparent');
+      cy.get('#drawer').should('have.css', `border-left-color`, 'transparent');
     });
 
     it('should render correct border when when position is `start`', () => {
       mountFluent(<DrawerInline id="drawer" position="start" separator open />);
 
-      cy.get('#drawer').should('not.have.css', `border-left-width`, '1px');
-      cy.get('#drawer').should('have.css', `border-right-width`, '1px');
+      cy.get('#drawer').should('have.css', `border-left-color`, 'transparent');
+      cy.get('#drawer').should('not.have.css', `border-right-color`, '1px');
     });
 
     it('should render correct border when when position is `end`', () => {
       mountFluent(<DrawerInline id="drawer" position="end" separator open />);
 
-      cy.get('#drawer').should('not.have.css', `border-right-width`, '1px');
-      cy.get('#drawer').should('have.css', `border-left-width`, '1px');
+      cy.get('#drawer').should('have.css', `border-right-color`, 'transparent');
+      cy.get('#drawer').should('not.have.css', `border-left-color`, 'transparent');
     });
   });
 });
