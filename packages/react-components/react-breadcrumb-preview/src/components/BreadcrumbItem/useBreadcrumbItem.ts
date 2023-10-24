@@ -17,13 +17,11 @@ export const useBreadcrumbItem_unstable = (
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbItemState => {
   const { size, hasInteractiveItems } = useBreadcrumbContext_unstable();
-  const { current = false, icon } = props;
 
   const isInteractive = typeof props.children === 'object';
-  const iconSlot = slot.optional(icon, { elementType: 'span' });
 
   return {
-    components: { root: 'li', icon: 'span' },
+    components: { root: 'li' },
     root: slot.always(
       getIntrinsicElementProps('li', {
         ref,
@@ -32,8 +30,6 @@ export const useBreadcrumbItem_unstable = (
       { elementType: 'li' },
     ),
     size,
-    current,
-    icon: iconSlot,
     isInteractive,
     hasInteractiveItems,
   };
