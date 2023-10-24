@@ -56,7 +56,11 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         ref,
         name: context.name,
         value: value - 0.5,
-        defaultChecked: ratingValue === value - 0.5,
+        checked: ratingValue === value - 0.5,
+        // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
+        // The parent Rating component has the real onChange handler to listen to change events from this input.
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onChange: () => {},
       },
       elementType: 'input',
     });
@@ -70,7 +74,11 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
         name: context.name,
         ref,
         value,
-        defaultChecked: ratingValue === value,
+        checked: ratingValue === value,
+        // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
+        // The parent Rating component has the real onChange handler to listen to change events from this input.
+        // eslint-disable-next-line @typescript-eslint/no-empty-function
+        onChange: () => {},
         ...nativeProps.primary,
       },
 
