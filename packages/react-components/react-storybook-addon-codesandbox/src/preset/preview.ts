@@ -1,3 +1,3 @@
-import { withCodeSandboxButton } from '../withCodeSandboxButton';
+import { withSandboxButton } from '../withCodeSandboxButton';
 
-export const decorators = [withCodeSandboxButton];
+export const decorators = [withSandboxButton];
