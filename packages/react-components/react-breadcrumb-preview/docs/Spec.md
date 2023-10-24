@@ -81,17 +81,17 @@ const BreadcrumbExampleIconDivider = props => (
 const BreadcrumbV9Example = props => (
   <Breadcrumb aria-label="breadcrumb">
     <BreadcrumbItem>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         Home
       </BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbItem>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         Gallery
       </BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbItem current={true}>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         About
       </BreadcrumbButton>
     </BreadcrumbItem>
@@ -102,17 +102,14 @@ const BreadcrumbV9Example = props => (
 
 ## Variants
 
-### BreadcrumbItem variants
+### Breadcrumb item variants
 
-- Non-clickable element which is BreadcrumbItem component.
-- Button - BreadcrumbButton component.
 - Link - BreadcrumbButton component with `as="a"` and `href` attributes.
 - Dropdown menu - can be added by a partner using JSX composition.
 
 ### Icon
 
-Breadcrumb items can have icons. If you need an icon for an interactive item, use it inside BreadcrumButton.
-For non-interactive items use the icon inside BreadcrumbItem.
+Breadcrumb items can have icons.
 
 ### Size
 
@@ -162,11 +159,10 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property    | Values                     | Default   | Purpose                        |
-| ----------- | -------------------------- | --------- | ------------------------------ |
-| dividerType | `chevron`, `slash`         | `chevron` | Sets type of divider           |
-| focusMode   | `tab`, `arrow`             | `tab`     | Sets focus mode                |
-| size        | `small`, `medium`, `large` | `medium`  | Defines size of the Breadcrumb |
+| Property  | Values                     | Default  | Purpose                        |
+| --------- | -------------------------- | -------- | ------------------------------ |
+| focusMode | `tab`, `arrow`             | `tab`    | Sets focus mode                |
+| size      | `small`, `medium`, `large` | `medium` | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 

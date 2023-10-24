@@ -8,7 +8,7 @@ export type BreadcrumbItem = {
 /**
  * Data shared between breadcrumb components
  */
-export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'dividerType' | 'size'>> & {
+export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'size'>> & {
   items: Set<BreadcrumbItem>;
   registerItem: (item: BreadcrumbItem) => void;
   removeItem: (item: BreadcrumbItem) => void;
@@ -45,13 +45,6 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
   focusMode?: 'arrow' | 'tab';
 
   /**
-   * Controls type of the divider.
-   *
-   * @default 'chevron'
-   */
-  dividerType?: 'chevron' | 'slash';
-
-  /**
    * Controls size of Breadcrumb items and dividers.
    *
    * @default 'medium'
@@ -62,4 +55,4 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
 /**
  * State used in rendering Breadcrumb
  */
-export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'size' | 'dividerType'>>;
+export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'size'>>;
