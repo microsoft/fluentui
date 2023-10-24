@@ -8,10 +8,6 @@ const BreadcrumbContext = React.createContext<BreadcrumbContextValues | undefine
  */
 export const breadcrumbDefaultValue: BreadcrumbContextValues = {
   size: 'medium',
-  items: new Set(),
-  registerItem: () => ({}),
-  removeItem: () => ({}),
-  hasInteractiveItems: false,
 };
 
 /**

@@ -1,19 +1,9 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 
-export type BreadcrumbItem = {
-  key: string;
-  type: 'button' | 'non-interactive';
-};
-
 /**
  * Data shared between breadcrumb components
  */
-export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'size'>> & {
-  items: Set<BreadcrumbItem>;
-  registerItem: (item: BreadcrumbItem) => void;
-  removeItem: (item: BreadcrumbItem) => void;
-  hasInteractiveItems: boolean;
-};
+export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'size'>>;
 
 export type BreadcrumbSlots = {
   /**

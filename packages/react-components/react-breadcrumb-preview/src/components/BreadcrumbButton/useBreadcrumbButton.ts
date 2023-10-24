@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { useButton_unstable } from '@fluentui/react-button';
-import { useId } from '@fluentui/react-utilities';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
-import { BreadcrumbItem } from '../Breadcrumb/Breadcrumb.types';
 import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
 
 /**
@@ -18,17 +16,8 @@ export const useBreadcrumbButton_unstable = (
   props: BreadcrumbButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
-  const { size, registerItem, removeItem } = useBreadcrumbContext_unstable();
+  const { size } = useBreadcrumbContext_unstable();
   const { current = false, icon, ...rest } = props;
-  const id = useId('breadcrumb-button-', props.id);
-
-  React.useEffect(() => {
-    const item: BreadcrumbItem = { key: id, type: 'button' };
-
-    registerItem(item);
-
-    return () => removeItem(item);
-  }, [id, registerItem, removeItem]);
 
   return {
     ...useButton_unstable(
