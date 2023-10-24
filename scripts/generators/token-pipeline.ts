@@ -31,7 +31,7 @@ function getGeneratedFiles(tmpDir: string) {
   ];
 }
 
-function runPipeline(theme: typeof themes[number], pipelineDir: string, outDir: string) {
+function runPipeline(theme: (typeof themes)[number], pipelineDir: string, outDir: string) {
   console.log(`Running pipeline for ${theme} theme`);
 
   console.log(`Generate tokens for theme`);

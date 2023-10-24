@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useTabsterAttributes } from '@fluentui/react-tabster';
-import { useAccordionItemContext_unstable } from '../AccordionItem/index';
-import { useAccordionContext_unstable } from '../Accordion/AccordionContext';
+import { useAccordionContext_unstable } from '../../contexts/accordion';
 import type { AccordionPanelProps, AccordionPanelState } from './AccordionPanel.types';
+import { useAccordionItemContext_unstable } from '../../contexts/accordionItem';
 
 /**
  * Returns the props and state required to render the component
@@ -23,10 +23,16 @@ export const useAccordionPanel_unstable = (
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-      ...(navigation && focusableProps),
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...props,
+        ...(navigation && focusableProps),
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

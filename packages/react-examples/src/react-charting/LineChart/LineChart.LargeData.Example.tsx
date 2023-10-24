@@ -144,6 +144,7 @@ export class LineChartLargeDataExample extends React.Component<{}, ILineChartBas
             margins={margins}
             allowMultipleShapesForPoints={this.state.allowMultipleShapes}
             optimizeLargeData={true}
+            enablePerfOptimization={true}
           />
         </div>
       </>

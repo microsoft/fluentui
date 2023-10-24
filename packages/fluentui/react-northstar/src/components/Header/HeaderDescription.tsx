@@ -40,7 +40,7 @@ export type HeaderDescriptionStylesProps = Pick<HeaderDescriptionProps, 'color'>
 /**
  * A HeaderDescription provides more detailed information about the Header.
  */
-export const HeaderDescription = (React.forwardRef<HTMLParagraphElement, HeaderDescriptionProps>((props, ref) => {
+export const HeaderDescription = React.forwardRef<HTMLParagraphElement, HeaderDescriptionProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(HeaderDescription.displayName, context.telemetry);
   setStart();
@@ -81,7 +81,7 @@ export const HeaderDescription = (React.forwardRef<HTMLParagraphElement, HeaderD
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'p', HTMLParagraphElement, HeaderDescriptionProps> &
+}) as unknown as ForwardRefWithAs<'p', HTMLParagraphElement, HeaderDescriptionProps> &
   FluentComponentStaticProps<HeaderDescriptionProps>;
 
 HeaderDescription.displayName = 'HeaderDescription';

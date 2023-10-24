@@ -1,5 +1,6 @@
 import { IExtendedSemanticColors } from '../IExtendedSemanticColors';
 import { IToggleStyleProps, IToggleStyles } from '@fluentui/react/lib/Toggle';
+import * as StyleConstants from '../Constants';
 
 export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> => {
   const { theme, disabled, checked } = props;
@@ -10,6 +11,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     container: {},
     pill: [
       {
+        height: StyleConstants.choiceFieldHeight,
         backgroundColor: semanticColors.bodyBackground,
         selectors: {
           '&:hover': {
@@ -22,7 +24,7 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
       },
       checked && [
         {
-          backgroundColor: extendedSemanticColors.controlFocus,
+          backgroundColor: extendedSemanticColors.controlAccent,
           selectors: {
             '&:hover': {
               backgroundColor: extendedSemanticColors.radioButtonPillCheckedHover,
@@ -63,6 +65,11 @@ export const ToggleStyles = (props: IToggleStyleProps): Partial<IToggleStyles> =
     ],
     // toggle circle
     thumb: [
+      {
+        borderWidth: 5.5,
+        height: StyleConstants.choiceFieldCircle,
+        width: StyleConstants.choiceFieldCircle,
+      },
       checked && [
         {
           backgroundColor: extendedSemanticColors.buttonBackground,

@@ -42,7 +42,7 @@ export const SplitButtonDividerClassName = 'ui-splitButtonDivider';
 /**
  * A SplitButtonDivider visually segments content.
  */
-export const SplitButtonDivider = (React.forwardRef<HTMLDivElement, SplitButtonDividerProps>((props, ref) => {
+export const SplitButtonDivider = React.forwardRef<HTMLDivElement, SplitButtonDividerProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(SplitButtonDivider.displayName, context.telemetry);
   setStart();
@@ -79,7 +79,7 @@ export const SplitButtonDivider = (React.forwardRef<HTMLDivElement, SplitButtonD
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonDividerProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, SplitButtonDividerProps> &
   FluentComponentStaticProps<SplitButtonDividerProps>;
 
 SplitButtonDivider.displayName = 'SplitButtonDivider';

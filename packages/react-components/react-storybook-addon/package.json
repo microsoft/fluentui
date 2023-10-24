@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-storybook-addon",
-  "version": "9.0.0-rc.1",
+  "version": "0.1.0",
   "private": true,
   "description": "fluentui react storybook addon",
   "main": "lib-commonjs/index.js",
@@ -22,7 +22,7 @@
     "test": "jest --passWithNoTests",
     "storybook": "start-storybook",
     "type-check": "tsc -b tsconfig.json",
-    "generate-api": "tsc -p ./tsconfig.lib.json --emitDeclarationOnly && just-scripts api-extractor"
+    "generate-api": "just-scripts generate-api"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
@@ -30,15 +30,15 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-theme": "^9.1.5",
-    "@fluentui/react-provider": "^9.3.1",
-    "tslib": "^2.1.0"
+    "@fluentui/react-theme": "^9.1.14",
+    "@fluentui/react-provider": "^9.10.9",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0",
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0",
     "@storybook/addons": "^6.5.15",
     "@storybook/api": "^6.5.15",
     "@storybook/components": "^6.5.15",
@@ -47,17 +47,16 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major"
+      "major",
+      "prerelease"
     ]
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
+      "node": "./lib-commonjs/index.js",
       "import": "./lib/index.js",
       "require": "./lib-commonjs/index.js"
-    },
-    "./preset": {
-      "require": "./preset.js"
     },
     "./package.json": "./package.json"
   }

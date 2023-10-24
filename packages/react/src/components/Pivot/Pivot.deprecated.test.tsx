@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { setWarningCallback, resetIds } from '@fluentui/utilities';
 
 import { Pivot, PivotItem } from './index';

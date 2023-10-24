@@ -58,17 +58,21 @@ export const DetailsListColumnResizeExample: React.FC<{}> = (props: {}): JSX.Ele
     return temp;
   }, [columns]);
 
-  const adjustRows = (modifier = 1) => (val: string) => {
-    const num = Number(val);
-    console.log('num: ', num);
-    setRowCount(num + modifier);
-  };
+  const adjustRows =
+    (modifier = 1) =>
+    (val: string) => {
+      const num = Number(val);
+      console.log('num: ', num);
+      setRowCount(num + modifier);
+    };
 
-  const adjustColumns = (modifier = 1) => (val: string) => {
-    const num = Number(val);
-    console.log('num: ', num);
-    setColumns(num + modifier);
-  };
+  const adjustColumns =
+    (modifier = 1) =>
+    (val: string) => {
+      const num = Number(val);
+      console.log('num: ', num);
+      setColumns(num + modifier);
+    };
 
   const validate = React.useCallback((val: string) => val, []);
 

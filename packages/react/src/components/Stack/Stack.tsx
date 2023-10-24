@@ -9,7 +9,15 @@ import type { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import type { IStackItemProps } from './StackItem/StackItem.types';
 
 const StackView: IStackComponent['view'] = props => {
-  const { as: RootType = 'div', disableShrink = false, enableScopedSelectors = false, wrap, ...rest } = props;
+  const {
+    as: RootType = 'div',
+    disableShrink = false,
+    // eslint-disable-next-line deprecation/deprecation
+    doNotRenderFalsyValues = false,
+    enableScopedSelectors = false,
+    wrap,
+    ...rest
+  } = props;
 
   warnDeprecations('Stack', props, {
     gap: 'tokens.childrenGap',
@@ -18,7 +26,11 @@ const StackView: IStackComponent['view'] = props => {
     padding: 'tokens.padding',
   });
 
-  const stackChildren = _processStackChildren(props.children, { disableShrink, enableScopedSelectors });
+  const stackChildren = _processStackChildren(props.children, {
+    disableShrink,
+    enableScopedSelectors,
+    doNotRenderFalsyValues,
+  });
 
   const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
@@ -40,18 +52,28 @@ const StackView: IStackComponent['view'] = props => {
 
 function _processStackChildren(
   children: React.ReactNode,
-  { disableShrink, enableScopedSelectors }: { disableShrink: boolean; enableScopedSelectors: boolean },
+  {
+    disableShrink,
+    enableScopedSelectors,
+    doNotRenderFalsyValues,
+  }: { disableShrink: boolean; enableScopedSelectors: boolean; doNotRenderFalsyValues: boolean },
 ): (React.ReactChild | React.ReactFragment | React.ReactPortal)[] {
   let childrenArray = React.Children.toArray(children);
 
   childrenArray = React.Children.map(childrenArray, child => {
-    if (!child || !React.isValidElement(child)) {
+    if (!child) {
+      return doNotRenderFalsyValues ? null : child;
+    }
+
+    // We need to allow children that aren't falsy values, but not valid elements since they could be
+    // a string like <Stack>{'sample string'}</Stack>
+    if (!React.isValidElement(child)) {
       return child;
     }
 
     if (child.type === React.Fragment) {
       return child.props.children
-        ? _processStackChildren(child.props.children, { disableShrink, enableScopedSelectors })
+        ? _processStackChildren(child.props.children, { disableShrink, enableScopedSelectors, doNotRenderFalsyValues })
         : null;
     }
 

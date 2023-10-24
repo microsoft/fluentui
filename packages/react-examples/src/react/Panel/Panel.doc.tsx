@@ -12,17 +12,28 @@ import { PanelLightDismissCustomExample } from './Panel.LightDismissCustom.Examp
 import { PanelNonModalExample } from './Panel.NonModal.Example';
 import { PanelSizesExample } from './Panel.Sizes.Example';
 
-const PanelBasicExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Basic.Example.tsx') as string;
-const PanelSizesExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Sizes.Example.tsx') as string;
-const PanelConfirmDismissExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.ConfirmDismiss.Example.tsx') as string;
-const PanelControlledExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Controlled.Example.tsx') as string;
-const PanelHiddenOnDismissExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.HiddenOnDismiss.Example.tsx') as string;
-const PanelLightDismissExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.LightDismiss.Example.tsx') as string;
-const PanelLightDismissCustomExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.LightDismissCustom.Example.tsx') as string;
-const PanelNonModalExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.NonModal.Example.tsx') as string;
-const PanelFooterExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Footer.Example.tsx') as string;
-const PanelNavigationExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Navigation.Example.tsx') as string;
-const PanelHandleDismissTargetExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.HandleDismissTarget.Example.tsx') as string;
+const PanelBasicExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Basic.Example.tsx') as string;
+const PanelSizesExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Sizes.Example.tsx') as string;
+const PanelConfirmDismissExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.ConfirmDismiss.Example.tsx') as string;
+const PanelControlledExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Controlled.Example.tsx') as string;
+const PanelHiddenOnDismissExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.HiddenOnDismiss.Example.tsx') as string;
+const PanelLightDismissExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.LightDismiss.Example.tsx') as string;
+const PanelLightDismissCustomExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.LightDismissCustom.Example.tsx') as string;
+const PanelNonModalExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.NonModal.Example.tsx') as string;
+const PanelFooterExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Footer.Example.tsx') as string;
+const PanelNavigationExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.Navigation.Example.tsx') as string;
+const PanelHandleDismissTargetExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/Panel/Panel.HandleDismissTarget.Example.tsx') as string;
 
 export const PanelPageProps: IDocPageProps = {
   title: 'Panel',

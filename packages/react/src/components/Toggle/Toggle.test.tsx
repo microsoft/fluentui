@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { mount } from 'enzyme';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { resetIds } from '@fluentui/utilities';
 import { Toggle } from './Toggle';
 import { isConformant } from '../../common/isConformant';

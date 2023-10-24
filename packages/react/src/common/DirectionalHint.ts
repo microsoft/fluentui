@@ -72,4 +72,4 @@ export const DirectionalHint = {
   rightBottomEdge: 13 as 13,
 };
 
-export type DirectionalHint = typeof DirectionalHint[keyof typeof DirectionalHint];
+export type DirectionalHint = (typeof DirectionalHint)[keyof typeof DirectionalHint];

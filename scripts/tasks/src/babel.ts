@@ -1,8 +1,9 @@
+import fs from 'fs';
+import path from 'path';
+
 import { BabelFileResult, transformAsync } from '@babel/core';
 import * as glob from 'glob';
-import fs from 'fs';
 import { logger } from 'just-scripts';
-import path from 'path';
 
 const EOL_REGEX = /\r?\n/g;
 
@@ -11,8 +12,12 @@ function addSourceMappingUrl(code: string, loc: string): string {
   return code + '\n//# sourceMappingURL=' + path.basename(loc);
 }
 
+export function hasBabel() {
+  return fs.existsSync(path.join(process.cwd(), '.babelrc.json'));
+}
+
 export async function babel() {
-  const files = glob.sync('{lib,lib-commonjs}/**/*.js');
+  const files = glob.sync('lib/**/*.styles.js');
 
   for (const filename of files) {
     const filePath = path.resolve(process.cwd(), filename);

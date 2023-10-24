@@ -45,7 +45,7 @@ export const avatarStatusClassName = statusClassName;
 /**
  * A AvatarStatus provides a status for the Avatar.
  */
-export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps>((props, ref) => {
+export const AvatarStatus = React.forwardRef<HTMLSpanElement, AvatarStatusProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AvatarStatus.displayName, context.telemetry);
   setStart();
@@ -99,7 +99,7 @@ export const AvatarStatus = (React.forwardRef<HTMLSpanElement, AvatarStatusProps
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusProps> & FluentComponentStaticProps;
+}) as unknown as ForwardRefWithAs<'span', HTMLSpanElement, AvatarStatusProps> & FluentComponentStaticProps;
 
 AvatarStatus.displayName = 'AvatarStatus';
 AvatarStatus.propTypes = {

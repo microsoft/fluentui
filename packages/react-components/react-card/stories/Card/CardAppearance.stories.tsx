@@ -10,8 +10,8 @@ import {
   Body1,
   mergeClasses,
 } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
-import { Card, CardHeader, CardProps } from '@fluentui/react-card';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -85,10 +85,10 @@ const CardExample = ({ className, ...props }: CardProps) => {
   return (
     <Card {...props} className={mergeClasses(className, styles.card)} onClick={onClick}>
       <CardHeader
-        image={<img className={styles.logo} src={resolveAsset('app_logo.svg')} />}
+        image={<img className={styles.logo} src={resolveAsset('app_logo.svg')} alt="App name logo" />}
         header={<Text weight="semibold">App Name</Text>}
         description={<Caption1 className={styles.caption}>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
       />
 
       <p className={styles.text}>
@@ -105,7 +105,7 @@ export const Appearance = () => {
     <div className={styles.main}>
       <section>
         <ExampleHeader
-          title="Default"
+          title="Filled (Default)"
           description="This is the default style to use for cards. Use this style variant for most of your card
           designs."
         />

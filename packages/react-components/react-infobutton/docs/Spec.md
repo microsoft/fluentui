@@ -30,38 +30,14 @@ Because the Popover isn't always visible, it should not contain information that
 ## Sample Code
 
 ```jsx
-<InfoButton content="This is some additional information." />
+<InfoButton info="This is some additional information." />
 ```
 
 ## API
 
 #### Props
 
-```ts
-export type InfoButtonSlots = {
-  root: NonNullable<Slot<'button'>>;
-
-  /**
-   * The Popover element that wraps the content and root. Use this slot to pass props to the Popover.
-   */
-  popover: NonNullable<Slot<PopoverProps>>;
-
-  /**
-   * The content to be displayed in the PopoverSurface when the button is pressed.
-   */
-  content: NonNullable<Slot<typeof PopoverSurface>>;
-};
-
-/**
- * InfoButton Props
- */
-export type InfoButtonProps = ComponentProps<Partial<InfoButtonSlots>>;
-
-/**
- * State used in rendering InfoButton
- */
-export type InfoButtonState = ComponentState<InfoButtonSlots>;
-```
+See (InfoButton.types.ts)[../src/components/InfoButton/InfoButton.types.ts] for more API details.
 
 ## Structure
 
@@ -69,7 +45,7 @@ _**Public**_
 
 ```jsx
 <InfoButton
-  content={
+  info={
     <>
       Popover above-start lorem ipsum dolor sit amet consectetur.
       <Link href="https://react.fluentui.dev">Learn more</Link>
@@ -86,7 +62,7 @@ return (
     <PopoverTrigger>
       <slots.root {...slotProps.root} />
     </PopoverTrigger>
-    <slots.content {...slotProps.content} />
+    <slots.info {...slotProps.info} />
   </slots.popover>
 );
 ```
@@ -94,12 +70,12 @@ return (
 _**DOM**_
 
 ```html
-<button type="button" class="fui-Button fui-InfoButton__button">
+<button type="button" class="fui-InfoButton">
   <!-- icon -->
 </button>
 
 <!-- on document.body -->
-<div role="tooltip" class="fui-PopoverSurface fui-InfoButton__content">
+<div role="tooltip" class="fui-PopoverSurface fui-InfoButton__info">
   Popover above-start lorem ipsum dolor sit amet consectetur.
   <a href="https://react.fluentui.dev">Learn more</a>
 </div>
@@ -118,9 +94,9 @@ There's no migration guide as `v0` and `v8` do not have an InfoButton component.
 - _Interaction_
   - _Keyboard_
     - `Enter` or `Space` key: Opens the Popover.
-      - Focusable items in Popover: Item should trap focus within the Popover.
-      - No focusable items in Popover: Focus should stay on the button.
-    - `Escape` key: Closes the Popover.
+      - Focusable items in Popover: Focus is moved to the `PopoverSurface` and focusable items can be accessed by tabbing.
+      - No focusable items in Popover: Focus is moved to the `PopoverSurface`.
+      - `Escape` key: Closes the Popover.
   - _Cursor_
     - `Click`: Opens the Popover.
     - `Click` outside of Popover: Closes the Popover.
@@ -128,16 +104,43 @@ There's no migration guide as `v0` and `v8` do not have an InfoButton component.
     - `Tap`: Opens the Popover.
     - `Tap` outside of Popover: Closes the Popover.
   - _Screen readers_
-    - When screen reader is on the button, it should announce that it is a button, that it can be used to open a Popover, and read out the aria-label of the button.
-    - When screen reader is on the Popover, it should announce that it is a dialog, and read out the content of the Popover.
+    - When focusing on the button, the screen reader should announce "{label associated to} information button collapsed".
+    - When the Popover is opened, the focus moves to the `PopoverSurface` and the screen reader announces the content of the `PopoverSurface` and "note" at the end.
 
 ## Accessibility
 
-- `role="tooltip"` is used on the PopoverSurface.
+- `PopoverSurfaces`'s role is `note` and its `tabIndex` is set to `-1`.
+- The button's `aria-label` is `information`.
 - Tab order
   - When tabbing through the page, the button should be a tab stop.
   - When focused on the button, pressing `Enter` or `Space` should open the Popover.
-    - If the popover does not contain any focusable items, focus should stay on the button.
-  - When focused on the button, pressing `Escape` should close the Popover.
-  - When the Popover is open and it has focusable items, tabbing should move to the next focusable item.
-    - When focused on an item inside the Popover, pressing `Escape` should close the Popover and return to the button.
+  - When the Popover is open, focus is moved to the `PopoverSurface`.
+  - When focused on the `PopoverSurface` or content within it, pressing `Escape` should close the Popover.
+
+## InfoButton vs. InfoIcon
+
+There are two use cases we want to tackle, covering these means covering the 80-90% of use cases:
+
+1. When the bubble has a few words and no interactive elements.
+2. When the bubble may have more than a few sentences and interactive elements.
+
+After considering the options, we've decided to have two controls that will cover these use cases. The first one will be InfoIcon which will cover the first use case and the second one will be InfoButton which will cover the second use case.
+
+### InfoIcon - Icon with a Tooltip
+
+- An InfoIcon is an icon that has a tooltip.
+- InfoIcons must keep the default cursor even when hovered.
+- InfoIcons are opened when hovered or focused.
+- InfoIcons do not move focus when opened.
+
+### InfoButton - InfoButton with a Popover
+
+- An InfoButton is a button that has a Popover attached to it.
+- InfoButtons must use the pointer cursor to show this is a button and will have a backplate to differenciate the icon vs button.
+- InfoButtons do not open when focused/hovered, instead they open on click/space/enter.
+- InfoButton's bubble can be dismissed by pressing Escape, clicking outside the bubble, moving focus away from the bubble, or clicking the button again.
+- InfoButton has role note and moves focus to the Popover's surface.
+
+## InfoButtonLabel and InfoIconLabel
+
+To avoid having accessibility issues, we will be providing these controls in the form of InfoIconLabel and InfoButtonLabel. These will provide an out of the box accessibility ready experience.

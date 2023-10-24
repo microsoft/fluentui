@@ -13,16 +13,18 @@ type LocalState<TType, TValue> = {
  * Set up a ref resolver function given internal state managed for the ref.
  * @param local Set
  */
-const createResolver = <TType, TValue>(local: LocalState<TType, TValue>) => (newValue: TType | TValue | null) => {
-  for (const ref of local.refs) {
-    if (typeof ref === 'function') {
-      ref(newValue);
-    } else if (ref) {
-      // work around the immutability of the React.Ref type
-      ((ref as unknown) as React.MutableRefObject<TType | TValue | null | undefined>).current = newValue;
+const createResolver =
+  <TType, TValue>(local: LocalState<TType, TValue>) =>
+  (newValue: TType | TValue | null) => {
+    for (const ref of local.refs) {
+      if (typeof ref === 'function') {
+        ref(newValue);
+      } else if (ref) {
+        // work around the immutability of the React.Ref type
+        (ref as unknown as React.MutableRefObject<TType | TValue | null | undefined>).current = newValue;
+      }
     }
-  }
-};
+  };
 
 /**
  * Helper to merge refs from within class components.

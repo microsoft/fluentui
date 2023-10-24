@@ -63,6 +63,11 @@ export type MenuListState = ComponentState<MenuListSlots> &
      * Toggles the state of a checkbox item
      */
     toggleCheckbox: SelectableHandler;
+
+    /**
+     * States if the MenuList is inside MenuContext
+     */
+    hasMenuContext?: boolean;
   };
 
 export type MenuListContextValues = {

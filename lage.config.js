@@ -5,9 +5,13 @@ module.exports = {
     'build:info': [],
     bundle: ['build'],
     'bundle-size': ['build'],
+    'bundle-size-auditor': ['build'],
+    // adding temporary back until import plugin rule is resolved https://github.com/microsoft/fluentui/issues/27727
     lint: ['build'],
     clean: [],
     test: ['build'],
+    'generate-api': ['^generate-api'],
+    'test-ssr': [],
     'type-check': ['build'],
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
@@ -29,6 +33,7 @@ module.exports = {
     '.github/CODEOWNERS',
     '.github/MAINTAINERS',
     '.github/ISSUE_TEMPLATE/**',
+    '.github/policies/**',
   ],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import { Virtualizer } from '@fluentui/react-components/unstable';
+import { useStaticVirtualizerMeasure, Virtualizer } from '@fluentui/react-components/unstable';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   container: {
     display: 'flex',
     flexDirection: 'row',
-    overflowAnchor: 'none',
     overflowY: 'auto',
     width: '100%',
     height: '100%',
@@ -24,9 +23,23 @@ export const RTL = () => {
   const styles = useStyles();
   const childLength = 1000;
 
+  const itemWidth = 100;
+  const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useStaticVirtualizerMeasure({
+    defaultItemSize: itemWidth,
+    direction: 'horizontal',
+  });
+
   return (
-    <div className={styles.container} role={'list'}>
-      <Virtualizer numItems={childLength} reversed axis={'horizontal'} virtualizerLength={100} itemSize={100}>
+    <div className={styles.container} role={'list'} ref={scrollRef}>
+      <Virtualizer
+        numItems={childLength}
+        reversed
+        axis={'horizontal'}
+        virtualizerLength={virtualizerLength}
+        bufferItems={bufferItems}
+        bufferSize={bufferSize}
+        itemSize={100}
+      >
         {index => {
           return (
             <span

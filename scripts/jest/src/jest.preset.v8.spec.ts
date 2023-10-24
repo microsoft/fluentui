@@ -1,4 +1,4 @@
-import { workspaceRoot } from '@nrwl/devkit';
+import { workspaceRoot } from '@nx/devkit';
 
 import preset from './jest.preset.v8';
 
@@ -8,11 +8,6 @@ describe(`v8 preset`, () => {
 
     expect(actual).toEqual(
       expect.objectContaining({
-        globals: {
-          'ts-jest': {
-            diagnostics: false,
-          },
-        },
         moduleDirectories: [
           'node_modules',
           `${workspaceRoot}/scripts/jest/node_modules`,
@@ -28,10 +23,20 @@ describe(`v8 preset`, () => {
         reporters: [`${workspaceRoot}/scripts/jest/src/v8/jest-reporter.js`],
         setupFiles: [`${workspaceRoot}/scripts/jest/src/v8/jest-setup.js`],
         testRegex: '(/__tests__/.*|\\.(test|spec))\\.(ts|tsx)$',
-        testURL: 'http://localhost',
-        transform: {
-          '^.+\\.tsx?$': 'ts-jest',
+        testEnvironmentOptions: {
+          url: 'http://localhost',
         },
+        testEnvironment: 'jsdom',
+        transform: {
+          '^.+\\.tsx?$': [
+            'ts-jest',
+            {
+              isolatedModules: true,
+            },
+          ],
+        },
+        restoreMocks: true,
+        clearMocks: true,
         transformIgnorePatterns: ['/node_modules/', '/lib-commonjs/', '\\.js$'],
         watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
       }),

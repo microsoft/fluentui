@@ -50,7 +50,7 @@ storiesOf('Dropdown Converged', module)
     </Dropdown>
   ))
   .addStory('Disabled with value', () => (
-    <Dropdown disabled selectedOptions={['text']}>
+    <Dropdown disabled value="text">
       <Option>text</Option>
     </Dropdown>
   ))
@@ -91,7 +91,7 @@ storiesOf('Dropdown Converged', module)
     </Dropdown>
   ))
   .addStory('With multiselect value', () => (
-    <Dropdown multiselect selectedOptions={['Green', 'Red']}>
+    <Dropdown multiselect value="Green, Red" selectedOptions={['Green', 'Red']}>
       <Option>Red</Option>
       <Option>Green</Option>
       <Option>Blue</Option>
@@ -146,6 +146,20 @@ storiesOf('Dropdown Converged', module)
       </Option>
       <Option>Red</Option>
       <Option>Green</Option>
+    </Dropdown>
+  ))
+  .addStory('With selection', () => (
+    <Dropdown selectedOptions={['Red']} open>
+      <Option>Red</Option>
+      <Option>Green</Option>
+      <Option>Blue</Option>
+    </Dropdown>
+  ))
+  .addStory('With multiselect selection', () => (
+    <Dropdown multiselect selectedOptions={['Green', 'Red']} open>
+      <Option>Red</Option>
+      <Option>Green</Option>
+      <Option>Blue</Option>
     </Dropdown>
   ))
   .addStory('Disabled option', () => (

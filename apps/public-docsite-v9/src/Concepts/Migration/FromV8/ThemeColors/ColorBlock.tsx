@@ -1,56 +1,8 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { mergeClasses } from '@griffel/react';
 import * as React from 'react';
-import { ColorInfo } from './types';
 
-const useStyles = makeStyles({
-  root: {
-    ...shorthands.borderTop('1px', 'solid', '#aaa'),
-    ...shorthands.borderBottom('1px', 'solid', '#aaa'),
-    ...shorthands.borderLeft('1px', 'solid', 'transparent'),
-    ...shorthands.borderRight('1px', 'solid', '#aaa'),
-    display: 'grid',
-    gridTemplateColumns: 'auto 1fr',
-    gridTemplateRows: 'auto',
-    columnGap: '10px',
-    ...shorthands.padding('0', '5px', '0', '0'),
-  },
-  flipAlign: {
-    ...shorthands.borderLeft('1px', 'solid', '#aaa'),
-    ...shorthands.borderRight('1px', 'solid', 'transparent'),
-    gridTemplateColumns: '1fr auto',
-    ...shorthands.padding('0', '0', '0', '5px'),
-  },
-  color: {
-    backgroundColor: 'var(--ColorBlock__background-color)',
-    ...shorthands.borderLeft('1px', 'solid', '#aaa'),
-    ...shorthands.borderRight('1px', 'solid', '#aaa'),
-    width: '20px',
-    alignSelf: 'stretch',
-  },
-  names: {
-    alignSelf: 'flex-start',
-    display: 'grid',
-    gridTemplateColumns: 'auto auto',
-    gridTemplateRows: 'auto',
-    columnGap: '5px',
-    justifySelf: 'flex-start',
-    '& label': {
-      textAlign: 'right',
-      color: '#aaa',
-      ...shorthands.margin(0),
-      ...shorthands.padding(0),
-    },
-  },
-  blockName: {
-    fontWeight: '700',
-  },
-  colorName: {},
-  colorValue: {},
-  comment: {
-    color: 'green',
-    maxWidth: '250px',
-  },
-});
+import { ColorInfo } from './types';
+import { useColorBlockStyles } from './ColorBlock.styles';
 
 type Props = ColorInfo & {
   flipAlign?: boolean;
@@ -95,7 +47,7 @@ const getLabels = (kind: string) => {
 export const ColorBlock = (props: Props) => {
   const { name, colorName, colorValue, kind, comment, flipAlign } = props;
 
-  const styles = useStyles();
+  const styles = useColorBlockStyles();
   const labels = getLabels(kind);
 
   const className = mergeClasses(styles.root, flipAlign && styles.flipAlign);

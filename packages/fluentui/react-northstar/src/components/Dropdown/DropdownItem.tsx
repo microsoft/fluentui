@@ -81,7 +81,7 @@ export const dropdownItemSlotClassNames: DropdownItemSlotClassNames = {
  * A DropdownItem represents an option of Dropdown list.
  * Displays an item with optional rich media metadata.
  */
-export const DropdownItem = (React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
+export const DropdownItem = React.forwardRef<HTMLLIElement, DropdownItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownItem.displayName, context.telemetry);
 
@@ -183,7 +183,7 @@ export const DropdownItem = (React.forwardRef<HTMLLIElement, DropdownItemProps>(
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, DropdownItemProps> &
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, DropdownItemProps> &
   FluentComponentStaticProps<DropdownItemProps>;
 
 DropdownItem.displayName = 'DropdownItem';

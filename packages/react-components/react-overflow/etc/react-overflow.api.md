@@ -4,11 +4,16 @@
 
 ```ts
 
+import { ContextSelector } from '@fluentui/react-context-selector';
 import type { ObserveOptions } from '@fluentui/priority-overflow';
 import type { OnUpdateOverflow } from '@fluentui/priority-overflow';
+import type { OverflowDividerEntry } from '@fluentui/priority-overflow';
 import { OverflowGroupState } from '@fluentui/priority-overflow';
 import type { OverflowItemEntry } from '@fluentui/priority-overflow';
 import * as React_2 from 'react';
+
+// @public (undocumented)
+export const DATA_OVERFLOW_DIVIDER = "data-overflow-divider";
 
 // @public (undocumented)
 export const DATA_OVERFLOW_ITEM = "data-overflow-item";
@@ -23,6 +28,9 @@ export const DATA_OVERFLOWING = "data-overflowing";
 export const Overflow: React_2.ForwardRefExoticComponent<Partial<Pick<ObserveOptions, "padding" | "overflowDirection" | "overflowAxis" | "minimumVisible">> & {
     children: React_2.ReactElement;
 } & React_2.RefAttributes<unknown>>;
+
+// @public
+export const OverflowDivider: React_2.ForwardRefExoticComponent<OverflowDividerProps & React_2.RefAttributes<unknown>>;
 
 // @public
 export const OverflowItem: React_2.ForwardRefExoticComponent<OverflowItemProps & React_2.RefAttributes<unknown>>;
@@ -50,12 +58,18 @@ export function useIsOverflowItemVisible(id: string): boolean;
 export const useOverflowContainer: <TElement extends HTMLElement>(update: OnUpdateOverflow, options: Omit<ObserveOptions, 'onUpdateOverflow'>) => UseOverflowContainerReturn<TElement>;
 
 // @internal (undocumented)
-export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu'> {
+export interface UseOverflowContainerReturn<TElement extends HTMLElement> extends Pick<OverflowContextValue, 'registerItem' | 'updateOverflow' | 'registerOverflowMenu' | 'registerDivider'> {
     containerRef: React_2.RefObject<TElement>;
 }
 
+// @internal (undocumented)
+export const useOverflowContext: <SelectedValue>(selector: ContextSelector<OverflowContextValue, SelectedValue>) => SelectedValue;
+
 // @public (undocumented)
 export const useOverflowCount: () => number;
+
+// @internal
+export function useOverflowDivider<TElement extends HTMLElement>(groupId?: string): React_2.RefObject<TElement>;
 
 // @internal
 export function useOverflowItem<TElement extends HTMLElement>(id: string, priority?: number, groupId?: string): React_2.RefObject<TElement>;

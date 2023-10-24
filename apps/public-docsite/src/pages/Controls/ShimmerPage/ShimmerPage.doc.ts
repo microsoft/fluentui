@@ -15,7 +15,8 @@ export const ShimmerPageProps: TFabricPlatformPageProps = {
     related,
   },
   ios: {
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ShimmerPage/docs/ios/ShimmerOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ShimmerPage/docs/ios/ShimmerOverview.md') as string,
     related,
     componentUrl,
   },

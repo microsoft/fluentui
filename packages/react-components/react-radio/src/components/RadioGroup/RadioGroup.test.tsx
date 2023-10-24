@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-field';
 import { isConformant } from '../../testing/isConformant';
 import { Radio } from '../../Radio';
 import { RadioGroup } from './RadioGroup';
@@ -84,6 +85,21 @@ describe('RadioGroup', () => {
     expect(items[0].required).toBe(true);
     expect(items[1].required).toBe(true);
     expect(items[2].required).toBe(true);
+  });
+
+  it('applies aria-describedby to every radio item, unless overridden locally', () => {
+    const { getAllByRole } = render(
+      <RadioGroup aria-describedby="test-describedby">
+        <Radio />
+        <Radio />
+        <Radio aria-describedby="overridden-describedby" />
+      </RadioGroup>,
+    );
+
+    const items = getAllByRole('radio') as HTMLInputElement[];
+    expect(items[0].getAttribute('aria-describedby')).toEqual('test-describedby');
+    expect(items[1].getAttribute('aria-describedby')).toEqual('test-describedby');
+    expect(items[2].getAttribute('aria-describedby')).toEqual('overridden-describedby');
   });
 
   it('has no radio item selected by default', () => {
@@ -242,5 +258,25 @@ describe('RadioGroup', () => {
     userEvent.click(getByRole('checkbox'));
 
     expect(onChange).not.toHaveBeenCalled();
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <RadioGroup>
+          <Radio value="a" />
+          <Radio value="b" />
+          <Radio value="c" />
+        </RadioGroup>
+      </Field>,
+    );
+
+    const radiogroup = result.getByRole('radiogroup');
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(radiogroup.getAttribute('aria-labelledby')).toEqual(label.id);
+    expect(radiogroup.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(radiogroup.getAttribute('aria-required')).toEqual('true');
   });
 });

@@ -8,12 +8,6 @@ parameters:
   - name: vrTestPackagePath
     type: string
     default: 'apps/vr-tests'
-  - name: shouldBuildstorybookaddon
-    type: boolean
-    default: false
-  - name: shouldBuildNorthstar
-    type: boolean
-    default: false
 
 steps:
   - task: Bash@3
@@ -25,7 +19,7 @@ steps:
       isPR=${{lower(eq(variables['Build.Reason'], 'PullRequest'))}}
       echo $isPR
       if [[ $isPR == true ]]; then
-        packageAffected=$(yarn --silent check:affected-package --packages ${{ parameters.vrTestPackageName }} --pr=true)
+        packageAffected=$(yarn --silent check:affected --package ${{ parameters.vrTestPackageName }})
         if [[ $packageAffected == false ]]; then
           echo "In PR pipeline but NOT affecting test package. Skipping test run"
           echo "##vso[task.setvariable variable=vrTestSkip;]yes"
@@ -38,18 +32,6 @@ steps:
         echo "##vso[task.setvariable variable=vrTestSkip;]no"
       fi
     displayName: Check if vrTests should be skipped
-
-  - ${{ if eq(parameters.shouldBuildstorybookaddon, 'true') }}:
-      - script: |
-          yarn build --to @fluentui/react-storybook-addon
-        displayName: Build react-storybook-addon
-        condition: eq(variables['vrTestSkip'], 'no')
-
-  - ${{ if eq(parameters.shouldBuildNorthstar, 'true') }}:
-      - script: |
-          yarn build --to @fluentui/docs
-        displayName: Build react-northstar
-        condition: eq(variables['vrTestSkip'], 'no')
 
   - script: |
       yarn workspace ${{ parameters.vrTestPackageName }} vr:build

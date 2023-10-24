@@ -2,21 +2,17 @@
 
 exports[`TreeItemPersonaLayout renders a default state 1`] = `
 <div>
-  <span
+  <div
     class="fui-TreeItemPersonaLayout"
   >
-    <span
+    <div
       class="fui-TreeItemPersonaLayout__media"
     />
     <div
-      class="fui-TreeItemPersonaLayout__content"
+      class="fui-TreeItemPersonaLayout__main"
     >
-      <span
-        class="fui-TreeItemPersonaLayout__main"
-      >
-        Default TreeItemPersonaLayout
-      </span>
+      Default TreeItemPersonaLayout
     </div>
-  </span>
+  </div>
 </div>
 `;

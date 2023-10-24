@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
 import type { TableCellLayoutState, TableCellLayoutSlots, TableCellLayoutContextValues } from './TableCellLayout.types';
 
@@ -10,21 +11,22 @@ export const renderTableCellLayout_unstable = (
   state: TableCellLayoutState,
   contextValues: TableCellLayoutContextValues,
 ) => {
-  const { slots, slotProps } = getSlots<TableCellLayoutSlots>(state);
+  assertSlots<TableCellLayoutSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.media && (
+    <state.root>
+      {state.media && (
         <AvatarContextProvider value={contextValues.avatar}>
-          <slots.media {...slotProps.media} />
+          <state.media />
         </AvatarContextProvider>
       )}
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          {slots.main && <slots.main {...slotProps.main}>{slotProps.root.children}</slots.main>}
-          {slots.description && <slots.description {...slotProps.description} />}
-        </slots.content>
+
+      {state.content && (
+        <state.content>
+          {state.main && <state.main>{state.root.children}</state.main>}
+          {state.description && <state.description />}
+        </state.content>
       )}
-    </slots.root>
+    </state.root>
   );
 };

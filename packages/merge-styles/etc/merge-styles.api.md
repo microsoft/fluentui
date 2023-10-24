@@ -78,7 +78,7 @@ export const InjectionMode: {
 };
 
 // @public (undocumented)
-export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
+export type InjectionMode = (typeof InjectionMode)[keyof typeof InjectionMode];
 
 // @public
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {

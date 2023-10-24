@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove mwf styles causing conflicts with react components",
-  "packageName": "@fluentui/public-docsite-setup",
-  "email": "mgodbolt@microsoft.com",
-  "dependentChangeType": "patch"
-}

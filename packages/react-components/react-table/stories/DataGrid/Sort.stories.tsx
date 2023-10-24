@@ -8,8 +8,9 @@ import {
   DocumentPdfRegular,
   VideoRegular,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
   DataGridBody,
   DataGridRow,
   DataGrid,
@@ -20,7 +21,7 @@ import {
   TableCellLayout,
   TableColumnDefinition,
   createTableColumn,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 type FileCell = {
   label: string;
@@ -136,11 +137,8 @@ const columns: TableColumnDefinition<Item>[] = [
   }),
   createTableColumn<Item>({
     columnId: 'lastUpdate',
-    compare: (a, b) => {
-      return a.lastUpdate.label.localeCompare(b.lastUpdate.label);
-    },
     renderHeaderCell: () => {
-      return 'Last update';
+      return 'Not sortable';
     },
     renderCell: item => {
       return <TableCellLayout media={item.lastUpdate.icon}>{item.lastUpdate.label}</TableCellLayout>;
@@ -155,7 +153,7 @@ export const Sort = () => {
   );
 
   return (
-    <DataGrid items={items} columns={columns} sortable defaultSortState={defaultSortState}>
+    <DataGrid items={items} columns={columns} defaultSortState={defaultSortState}>
       <DataGridHeader>
         <DataGridRow>
           {({ renderHeaderCell }) => <DataGridHeaderCell>{renderHeaderCell()}</DataGridHeaderCell>}
@@ -176,8 +174,9 @@ Sort.parameters = {
   docs: {
     description: {
       story: [
-        'To enable sorting, the `sortable` prop needs to be set. The API surface is directly',
-        'equivalent to the usage of `useTableFeatures`.',
+        'To enable sorting, the `sortable` prop needs to be set. ',
+        '',
+        '> ⚠️ Column definitions without a `compare` function will not be sortable.',
         '',
         '> Due to screen reader support, the sort status might not be announced once a sortable column header',
         'is invoked. [This is a known issue.](https://github.com/nvaccess/nvda/issues/10890)',

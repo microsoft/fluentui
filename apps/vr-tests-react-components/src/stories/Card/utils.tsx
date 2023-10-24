@@ -9,6 +9,7 @@ const ASSET_URL =
 
 export const powerpointLogoURL = ASSET_URL + 'powerpoint_logo.svg';
 export const salesPresentationTemplateURL = ASSET_URL + 'sales_template.png';
+export const appLogoUrl = ASSET_URL + 'app_logo.svg';
 
 export const SampleCardContent = () => (
   <>

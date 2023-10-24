@@ -1,5 +1,6 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
 import { MenuGroupContextValues, MenuGroupSlots, MenuGroupState } from './MenuGroup.types';
 import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
 
@@ -8,11 +9,11 @@ import { MenuGroupContextProvider } from '../../contexts/menuGroupContext';
  * slots to children.
  */
 export const renderMenuGroup_unstable = (state: MenuGroupState, contextValues: MenuGroupContextValues) => {
-  const { slots, slotProps } = getSlots<MenuGroupSlots>(state);
+  assertSlots<MenuGroupSlots>(state);
 
   return (
     <MenuGroupContextProvider value={contextValues.menuGroup}>
-      <slots.root {...slotProps.root} />
+      <state.root />
     </MenuGroupContextProvider>
   );
 };

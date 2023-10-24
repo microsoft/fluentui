@@ -4,6 +4,10 @@ import { IChartProps } from '../../types/IDataPoint';
 
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
+/**
+ * Sankey Chart properties
+ * {@docCategory SankeyChart}
+ */
 export interface ISankeyChartProps {
   /**
    * Data to render in the chart.
@@ -49,8 +53,22 @@ export interface ISankeyChartProps {
    * Color for path
    */
   pathColor?: string;
+
+  /**
+   * Colors for nodes
+   */
+  colorsForNodes?: string[];
+
+  /**
+   * Colors for nodes border
+   */
+  borderColorsForNodes?: string[];
 }
 
+/**
+ * Sankey Chart style properties
+ * {@docCategory SankeyChart}
+ */
 export interface ISankeyChartStyleProps {
   theme: ITheme;
   className?: string;
@@ -59,6 +77,10 @@ export interface ISankeyChartStyleProps {
   pathColor?: string;
 }
 
+/**
+ * Sankey Chart styles
+ * {@docCategory SankeyChart}
+ */
 export interface ISankeyChartStyles {
   /**
    *  Style for the root element.
@@ -74,4 +96,20 @@ export interface ISankeyChartStyles {
    *  Style for the links.
    */
   links?: IStyle;
+
+  /**
+   *  Style for the text inside node.
+   */
+  nodeTextContainer?: IStyle;
+
+  /**
+   *  Style for the tooltip ,when user hover over the truncated node detail.
+   */
+  toolTip?: IStyle;
+
+  /**
+   *  Style for the tooltip ,when user hover over the truncated node detail.
+   */
+
+  calloutContentRoot?: IStyle;
 }

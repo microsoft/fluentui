@@ -1,19 +1,19 @@
 {
   "name": "@fluentui/react-bindings",
   "description": "A set of components and hooks to build components libraries and UI kits.",
-  "version": "0.66.0",
+  "version": "0.66.4",
   "author": "Oleksandr Fediashov <a@fedyashov.com>",
   "bugs": "https://github.com/microsoft/fluentui/issues",
   "dependencies": {
     "@babel/runtime": "^7.10.4",
-    "@fluentui/accessibility": "^0.66.0",
+    "@fluentui/accessibility": "^0.66.4",
     "@fluentui/dom-utilities": "^1.1.1",
-    "@fluentui/react-component-event-listener": "^0.66.0",
-    "@fluentui/react-component-ref": "^0.66.0",
-    "@fluentui/react-northstar-fela-renderer": "^0.66.0",
-    "@fluentui/react-northstar-styles-renderer": "^0.66.0",
-    "@fluentui/state": "^0.66.0",
-    "@fluentui/styles": "^0.66.0",
+    "@fluentui/react-component-event-listener": "^0.66.4",
+    "@fluentui/react-component-ref": "^0.66.4",
+    "@fluentui/react-northstar-fela-renderer": "^0.66.4",
+    "@fluentui/react-northstar-styles-renderer": "^0.66.4",
+    "@fluentui/state": "^0.66.4",
+    "@fluentui/styles": "^0.66.4",
     "classnames": "^2.2.6",
     "lodash": "^4.17.15",
     "prop-types": "^15.7.2",
@@ -21,11 +21,11 @@
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
-    "@types/classnames": "^2.2.9",
-    "lerna-alias": "^3.0.3-0",
-    "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-babel": "*",
-    "@fluentui/scripts-jest": "*"
+    "@fluentui/scripts-gulp": "*",
+    "@fluentui/scripts-jest": "*",
+    "@types/classnames": "^2.2.9",
+    "lerna-alias": "^3.0.3-0"
   },
   "files": [
     "dist"

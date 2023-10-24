@@ -6,7 +6,7 @@
 
 import * as React_2 from 'react';
 
-// @public
+// @public (undocumented)
 export const ThemeDesigner: React_2.FC<ThemeDesignerProps>;
 
 // (No @packageDocumentation comment for this package)

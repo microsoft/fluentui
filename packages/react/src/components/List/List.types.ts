@@ -27,7 +27,7 @@ export const ScrollToMode = {
 /**
  * {@docCategory List}
  */
-export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
+export type ScrollToMode = (typeof ScrollToMode)[keyof typeof ScrollToMode];
 
 /**
  * Props passed to the render override for the list root.
@@ -179,7 +179,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * as well as an estimated rendered height for the page.
    * The list will use this to optimize virtualization.
    */
-  getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle) => IPageSpecification;
+  getPageSpecification?: (itemIndex?: number, visibleRect?: IRectangle, items?: T[]) => IPageSpecification;
 
   /**
    * Method called by the list to get how many items to render per page from specified index.
@@ -194,7 +194,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * in pixels, which has been seen to cause browser performance issues.
    * In general, use `getPageSpecification` instead.
    */
-  getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
+  getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number, items?: T[]) => number;
 
   /**
    * Method called by the list to derive the page style object. For spacer pages, the list will derive
@@ -279,6 +279,13 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * This is a performance optimization to let List skip a render cycle by not updating its scrolling state.
    */
   ignoreScrollingState?: boolean;
+
+  /**
+   * Whether to render the list earlier than the default.
+   * Use this in scenarios where the list is contained in a FocusZone or FocusTrapZone
+   * as in a Dialog.
+   */
+  renderEarly?: boolean;
 }
 
 /**

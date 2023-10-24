@@ -91,7 +91,7 @@ export const carouselNavigationItemSlotClassNames: CarouselNavigationItemSlotCla
 /**
  * A CarouselItem is an actionable item within a Carousel.
  */
-export const CarouselNavigationItem = (React.forwardRef<HTMLLIElement, CarouselNavigationItemProps>((props, ref) => {
+export const CarouselNavigationItem = React.forwardRef<HTMLLIElement, CarouselNavigationItemProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigationItem.displayName, context.telemetry);
   setStart();
@@ -195,7 +195,7 @@ export const CarouselNavigationItem = (React.forwardRef<HTMLLIElement, CarouselN
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'li', HTMLLIElement, CarouselNavigationItemProps> &
+}) as unknown as ForwardRefWithAs<'li', HTMLLIElement, CarouselNavigationItemProps> &
   FluentComponentStaticProps<CarouselNavigationItemProps>;
 
 CarouselNavigationItem.displayName = 'CarouselNavigationItem';

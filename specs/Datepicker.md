@@ -83,7 +83,7 @@ const InputBlock = () => (
 
 const Calendar = () => (
   <>
-    <CalendarContols />
+    <CalendarControl />
     <CalendarHeader />
     <CalendarBody />
     // Grid with current date interval layout

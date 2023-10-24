@@ -21,32 +21,35 @@ const handledCssProps: Partial<Record<keyof ICSSInJSStyle, true>> = {
 };
 
 export const felaExpandCssShorthandsPlugin = (styles: ICSSInJSStyle): ICSSInJSStyle => {
-  return Object.keys(styles).reduce((
-    // Without casting to any TSC gives "Expression produces a union type that is too complex to represent" error
-    acc: any,
-    cssPropertyName: keyof ICSSInJSStyle,
-  ) => {
-    const cssPropertyValue = styles[cssPropertyName];
+  return Object.keys(styles).reduce(
+    (
+      // Without casting to any TSC gives "Expression produces a union type that is too complex to represent" error
+      acc: any,
+      cssPropertyName: keyof ICSSInJSStyle,
+    ) => {
+      const cssPropertyValue = styles[cssPropertyName];
 
-    if (cssPropertyValue === null || typeof cssPropertyValue === 'undefined') {
-      acc[cssPropertyName] = cssPropertyValue;
-    } else if (handledCssProps[cssPropertyName]) {
-      const expandedProps = expandProperty(cssPropertyName, cssPropertyValue);
+      if (cssPropertyValue === null || typeof cssPropertyValue === 'undefined') {
+        acc[cssPropertyName] = cssPropertyValue;
+      } else if (handledCssProps[cssPropertyName]) {
+        const expandedProps = expandProperty(cssPropertyName, cssPropertyValue);
 
-      if (expandedProps) {
-        Object.assign(acc, expandedProps);
-        return acc;
+        if (expandedProps) {
+          Object.assign(acc, expandedProps);
+          return acc;
+        }
+
+        acc[cssPropertyName] = cssPropertyValue;
+      } else if (Array.isArray(cssPropertyValue)) {
+        acc[cssPropertyName] = cssPropertyValue;
+      } else if (typeof cssPropertyValue === 'object') {
+        acc[cssPropertyName] = felaExpandCssShorthandsPlugin(cssPropertyValue as ICSSInJSStyle);
+      } else {
+        acc[cssPropertyName] = cssPropertyValue;
       }
 
-      acc[cssPropertyName] = cssPropertyValue;
-    } else if (Array.isArray(cssPropertyValue)) {
-      acc[cssPropertyName] = cssPropertyValue;
-    } else if (typeof cssPropertyValue === 'object') {
-      acc[cssPropertyName] = felaExpandCssShorthandsPlugin(cssPropertyValue as ICSSInJSStyle);
-    } else {
-      acc[cssPropertyName] = cssPropertyValue;
-    }
-
-    return acc;
-  }, {});
+      return acc;
+    },
+    {},
+  );
 };

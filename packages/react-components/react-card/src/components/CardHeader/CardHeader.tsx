@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCardHeader_unstable } from './useCardHeader';
 import { renderCardHeader_unstable } from './renderCardHeader';
-import { useCardHeaderStyles_unstable } from './useCardHeaderStyles';
+import { useCardHeaderStyles_unstable } from './useCardHeaderStyles.styles';
 import type { CardHeaderProps } from './CardHeader.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

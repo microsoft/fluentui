@@ -1,11 +1,13 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
 import type {
   TreeItemPersonaLayoutState,
-  TreeItemPersonaLayoutSlots,
   TreeItemPersonaLayoutContextValues,
+  TreeItemPersonaLayoutSlots,
 } from './TreeItemPersonaLayout.types';
 import { AvatarContextProvider } from '@fluentui/react-avatar';
+import { ButtonContextProvider } from '@fluentui/react-button';
 
 /**
  * Render the final JSX of TreeItemPersonaLayout
@@ -14,23 +16,21 @@ export const renderTreeItemPersonaLayout_unstable = (
   state: TreeItemPersonaLayoutState,
   contextValues: TreeItemPersonaLayoutContextValues,
 ) => {
-  const { isActionsVisible } = state;
-  const { slots, slotProps } = getSlots<TreeItemPersonaLayoutSlots>(state);
+  assertSlots<TreeItemPersonaLayoutSlots>(state);
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.media && (
-        <AvatarContextProvider value={contextValues.avatar}>
-          <slots.media {...slotProps.media} />
-        </AvatarContextProvider>
-      )}
-      {slots.content && (
-        <slots.content {...slotProps.content}>
-          {slots.main && <slots.main {...slotProps.main} />}
-          {slots.description && <slots.description {...slotProps.description} />}
-        </slots.content>
-      )}
-      {!isActionsVisible && slots.aside && <slots.aside {...slotProps.aside} />}
-    </slots.root>
+    <state.root>
+      {state.expandIcon && <state.expandIcon />}
+      {state.selector && <state.selector />}
+      <AvatarContextProvider value={contextValues.avatar}>
+        <state.media />
+      </AvatarContextProvider>
+      <state.main />
+      {state.description && <state.description />}
+      <ButtonContextProvider value={state.buttonContextValue}>
+        {state.actions && <state.actions />}
+        {state.aside && <state.aside />}
+      </ButtonContextProvider>
+    </state.root>
   );
 };

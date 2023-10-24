@@ -4,31 +4,30 @@
   "version": "9.0.0-rc.0",
   "private": true,
   "scripts": {
-    "build": "just-scripts build",
     "bundle": "just-scripts bundle",
     "lint": "just-scripts lint",
     "just": "just-scripts",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style"
+    "code-style": "just-scripts code-style",
+    "type-check": "tsc -p . --noEmit",
+    "test:perf": "just-scripts perf-test"
   },
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-webpack": "*"
+    "@fluentui/scripts-storybook": "*"
   },
   "dependencies": {
-    "@griffel/core": "^1.9.0",
-    "@fluentui/react-avatar": "^9.3.1",
-    "@fluentui/react-button": "^9.2.1",
-    "@fluentui/react-infobutton": "9.0.0-beta.11",
-    "@fluentui/react-persona": "^9.1.7",
-    "@fluentui/react-provider": "^9.3.1",
-    "@fluentui/react-spinbutton": "^9.1.1",
-    "@fluentui/react-theme": "^9.1.5",
+    "@fluentui/scripts-perf-test-flamegrill": "*",
+    "@fluentui/react-avatar": "*",
+    "@fluentui/react-button": "*",
+    "@fluentui/react-field": "*",
+    "@fluentui/react-persona": "*",
+    "@fluentui/react-provider": "*",
+    "@fluentui/react-spinbutton": "*",
+    "@fluentui/react-theme": "*",
+    "@griffel/core": "^1.14.1",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "flamegrill": "0.2.0",
-    "lodash": "^4.17.15",
-    "querystring": "^0.2.0",
     "react": "17.0.2",
     "react-dom": "17.0.2",
     "tslib": "^2.1.0"

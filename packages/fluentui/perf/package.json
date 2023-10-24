@@ -1,19 +1,19 @@
 {
   "name": "@fluentui/perf",
-  "version": "0.66.0",
+  "version": "0.66.4",
   "private": true,
   "license": "MIT",
   "dependencies": {
     "@babel/polyfill": "^7.10.4",
-    "@fluentui/docs": "^0.66.0",
+    "@fluentui/docs": "*",
     "@fluentui/eslint-plugin": "*",
-    "@fluentui/react-northstar": "^0.66.0",
+    "@fluentui/react-northstar": "*",
     "lodash": "^4.17.15",
     "minimatch": "^3.0.4"
   },
   "devDependencies": {
-    "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-monorepo": "*"
   },
   "publishConfig": {
@@ -23,6 +23,7 @@
     "perf:test": "cross-env PERF=true gulp perf --times=100",
     "perf:test:debug": "cross-env PERF=true gulp perf:debug --debug",
     "lint": "eslint --ext .js,.ts,.tsx .",
-    "lint:fix": "yarn lint --fix"
+    "lint:fix": "yarn lint --fix",
+    "type-check": "tsc -p ."
   }
 }

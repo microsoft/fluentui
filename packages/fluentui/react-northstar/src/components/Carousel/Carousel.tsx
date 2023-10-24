@@ -177,7 +177,7 @@ function useDirection(activeIndex: number, circular: boolean, itemsLength: numbe
  * @accessibilityIssues
  * [VoiceOver doens't narrate label referenced by aria-labelledby attribute, when role is "tabpanel"](https://bugs.chromium.org/p/chromium/issues/detail?id=1040924)
  */
-export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
+export const Carousel = React.forwardRef<HTMLDivElement, CarouselProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Carousel.displayName, context.telemetry);
   setStart();
@@ -524,7 +524,7 @@ export const Carousel = (React.forwardRef<HTMLDivElement, CarouselProps>((props,
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CarouselProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselProps> &
   FluentComponentStaticProps<CarouselProps> & {
     Item: typeof CarouselItem;
     Navigation: typeof CarouselNavigation;

@@ -7,9 +7,11 @@ import {
   PositioningImperativeRef,
 } from '@fluentui/react-positioning';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import { useMergedRefs } from '@fluentui/react-utilities';
 import { tokens } from '@fluentui/react-theme';
 import { storiesOf } from '@storybook/react';
+import * as ReactDOM from 'react-dom';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { Steps, StoryWright } from 'storywright';
 
@@ -101,7 +103,10 @@ const Box = React.forwardRef<HTMLDivElement, React.HTMLAttributes<HTMLDivElement
   );
 });
 
-const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ positionFixed }) => {
+const PositionAndAlignProps: React.FC<{ positionFixed?: boolean; useTransform?: boolean }> = ({
+  positionFixed,
+  useTransform,
+}) => {
   const styles = useStyles();
   const positionedRefs = positions.reduce<ReturnType<typeof usePositioning>[]>((acc, cur) => {
     const positioningOptions: PositioningProps = { position: cur[0], align: cur[1] };
@@ -109,6 +114,7 @@ const PositionAndAlignProps: React.FC<{ positionFixed?: boolean }> = ({ position
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     positioningOptions.positionFixed = positionFixed;
+    positioningOptions.useTransform = useTransform;
 
     // this loop is deterministic
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -273,24 +279,112 @@ const VerticalOverflow = () => {
 const HorizontalOverflow = () => {
   const styles = useStyles();
   const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
-  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
-  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary ?? undefined });
+  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary });
+  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary });
   const { dir } = useFluent();
   const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
 
   return (
-    <div className={styles.boundary} style={{ display: 'flex', width: 400, padding: '50px 5px' }} ref={setBoundary}>
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', width: 400, padding: '50px 20px', boxSizing: 'border-box' }}
+      ref={setBoundary}
+    >
       <button ref={startPopper.targetRef}>Target</button>
-      <Box ref={startPopper.containerRef} style={{ width: 50 }}>
+      <Box ref={startPopper.containerRef} style={{ width: 100 }}>
         Shift
       </Box>
 
       <button style={{ [marginDir]: 'auto' }} ref={endPopper.targetRef}>
         Target
       </button>
-      <Box ref={endPopper.containerRef} style={{ width: 50 }}>
+      <Box ref={endPopper.containerRef} style={{ width: 100 }}>
         Shift
       </Box>
+    </div>
+  );
+};
+
+const HorizontalOverflowPadding = () => {
+  const styles = useStyles();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+  const startPopper = usePositioning({ position: 'below', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const endPopper = usePositioning({ position: 'below', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const { dir } = useFluent();
+  const marginDir = dir === 'ltr' ? 'marginLeft' : 'marginRight';
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', width: 400, padding: '50px 20px', boxSizing: 'border-box' }}
+      ref={setBoundary}
+    >
+      <button ref={startPopper.targetRef}>Target</button>
+      <Box ref={startPopper.containerRef} style={{ width: 100 }}>
+        Shift
+      </Box>
+
+      <button style={{ [marginDir]: 'auto' }} ref={endPopper.targetRef}>
+        Target
+      </button>
+      <Box ref={endPopper.containerRef} style={{ width: 100 }}>
+        Shift
+      </Box>
+    </div>
+  );
+};
+
+const VerticalOverflowPadding = () => {
+  const styles = useStyles();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+  const topPopper = usePositioning({ position: 'after', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+  const bottomPopper = usePositioning({ position: 'after', overflowBoundary: boundary, overflowBoundaryPadding: 10 });
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{ display: 'flex', flexDirection: 'column', height: 200, padding: '5px 50px' }}
+      ref={setBoundary}
+    >
+      <button ref={topPopper.targetRef}>Target</button>
+      <Box ref={topPopper.containerRef}>Shift</Box>
+
+      <button style={{ marginTop: 'auto' }} ref={bottomPopper.targetRef}>
+        Target
+      </button>
+      <Box ref={bottomPopper.containerRef}>Shift</Box>
+    </div>
+  );
+};
+
+const ExplicitOverflowPadding = () => {
+  const styles = useStyles();
+  const { dir } = useFluent();
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+
+  const right = dir === 'ltr' ? 'right' : 'left';
+
+  const first = usePositioning({
+    position: 'above',
+    overflowBoundary: boundary,
+    overflowBoundaryPadding: { start: 20 },
+  });
+  const second = usePositioning({
+    position: 'before',
+    overflowBoundary: boundary,
+    overflowBoundaryPadding: { top: 20 },
+  });
+
+  return (
+    <div className={styles.boundary} style={{ height: 200, width: 400, position: 'relative' }} ref={setBoundary}>
+      <Box ref={first.containerRef}>Shift</Box>
+      <button style={{ position: 'absolute', top: 50 }} ref={first.targetRef}>
+        Target
+      </button>
+      <Box ref={second.containerRef}>Shift</Box>
+      <button style={{ position: 'absolute', [right]: 0 }} ref={second.targetRef}>
+        Target
+      </button>
     </div>
   );
 };
@@ -383,13 +477,105 @@ const AutoSize = () => {
   );
 };
 
+const AutoSizeAsyncContent = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    autoSize: true,
+    overflowBoundary,
+  });
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        padding: '10px 50px',
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+        <AsyncFloatingContent />
+      </Box>
+    </div>
+  );
+};
+const AsyncFloatingContent = () => {
+  const [isLoaded, setLoaded] = React.useState(false);
+  const onLoaded = () => setLoaded(true);
+  return isLoaded ? (
+    <span id="full-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
+      pretium nibh ipsum consequat.
+    </span>
+  ) : (
+    <button id="load-content" onClick={onLoaded}>
+      load
+    </button>
+  );
+};
+
+const AutoSizeUpdatePosition = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    align: 'start',
+    autoSize: true,
+    overflowBoundary,
+    positioningRef,
+  });
+
+  const [isLoaded, setLoaded] = React.useState(false);
+  const onLoaded = () => setLoaded(true);
+
+  React.useEffect(() => {
+    if (isLoaded) {
+      positioningRef.current?.updatePosition();
+    }
+  }, [isLoaded]);
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        width: 250,
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef} style={{ width: 'fit-content', marginLeft: 100, marginTop: 10 }}>
+        Target
+      </button>
+      <Box ref={containerRef} style={{ overflow: 'clip', overflowClipMargin: 10, border: '3px solid green' }}>
+        {isLoaded ? (
+          <div id="full-content" style={{ backgroundColor: 'cornflowerblue', width: 300, height: 100 }} />
+        ) : (
+          <button id="load-content" onClick={onLoaded}>
+            load + update position
+          </button>
+        )}
+      </Box>
+    </div>
+  );
+};
+
 const DisableTether = () => {
   const styles = useStyles();
   const { containerRef, targetRef } = usePositioning({
     position: 'above',
     // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
-    // eslint-disable-next-line @typescript-eslint/naming-convention
     unstable_disableTether: 'all',
   });
 
@@ -561,6 +747,400 @@ const VisibilityModifiers = () => {
   );
 };
 
+const FallbackPositioning = () => {
+  const styles = useStyles();
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const [boundary, setBoundary] = React.useState<HTMLDivElement | null>(null);
+
+  // Fluent UI handles window resizing by default.
+  // Custom boundary resizing is not handled by default.
+  const resizeObserver = React.useState(
+    () =>
+      new ResizeObserver(() => {
+        positioningRef.current?.updatePosition();
+      }),
+  )[0];
+
+  React.useEffect(() => {
+    if (boundary) {
+      resizeObserver.observe(boundary);
+      return () => resizeObserver.unobserve(boundary);
+    }
+  }, [boundary, resizeObserver]);
+
+  React.useEffect(() => {
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [resizeObserver]);
+
+  const { containerRef, targetRef } = usePositioning({
+    position: 'after',
+    align: 'start',
+    fallbackPositions: ['below'],
+    flipBoundary: boundary,
+    overflowBoundary: boundary,
+    positioningRef,
+  });
+
+  return (
+    <div
+      className={styles.boundary}
+      style={{
+        width: 200,
+        height: 300,
+        padding: '50px 20px',
+        boxSizing: 'border-box',
+        overflow: 'hidden',
+        resize: 'both',
+      }}
+      ref={setBoundary}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box style={{ width: 120 }} ref={containerRef}>
+        position: after-start
+      </Box>
+    </div>
+  );
+};
+
+const ScrollJump: React.FC = () => {
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+  const [open, setOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    if (open && buttonRef.current) {
+      const scrollY = window.scrollY;
+      buttonRef.current.focus();
+
+      setTimeout(() => {
+        const element = document.querySelector<HTMLElement>(
+          scrollY === window.scrollY ? '#test-passed' : '#test-failed',
+        );
+
+        if (element) {
+          element.style.setProperty('display', 'block');
+          element.setAttribute('id', 'test-completed');
+        }
+      }, 500);
+    }
+  }, [open]);
+
+  const { containerRef, targetRef } = usePositioning({
+    position: 'above',
+    align: 'start',
+  });
+
+  const floating = ReactDOM.createPortal(
+    <Box ref={containerRef}>
+      Focusable element <button ref={buttonRef}>Focus me</button>
+    </Box>,
+    document.body,
+  );
+
+  return (
+    <>
+      <div
+        style={{
+          position: 'fixed',
+          top: 10,
+          left: 100,
+          right: 100,
+
+          background: 'white',
+        }}
+      >
+        <p style={{ fontWeight: 20, border: '8px dotted magenta', padding: 10, margin: 0 }}>
+          This example simulates a scroll jump on autofocus when opening a floating element. The example uses a layout
+          effect to focus on the content of the floating box before usePopper is called. This results in the focus
+          executing before the layout effect to position the floating is executed. The scroll jump is fixed internally
+          in usePositioning by using position: fixed on the floating element before it is first positioned.
+        </p>
+        <div
+          id="test-failed"
+          style={{
+            border: '8px dotted magenta',
+            borderTop: 'none',
+            padding: 10,
+            fontSize: 20,
+            color: 'red',
+            display: 'none',
+          }}
+        >
+          Test failed, scroll jump occurred 💥
+        </div>
+        <div
+          id="test-passed"
+          style={{
+            border: '8px dotted magenta',
+            borderTop: 'none',
+            padding: 10,
+            fontSize: 20,
+            color: 'green',
+            display: 'none',
+          }}
+        >
+          Test passed ✅
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          background: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #ccc 10px, #ccc 20px)',
+        }}
+      >
+        <div style={{ background: 'white', border: '4px dotted green', margin: 10 }}>
+          <div
+            style={{
+              display: 'flex',
+
+              background:
+                'repeating-linear-gradient(135deg, transparent, transparent 15px, #0f6cbd 10px, #0f6cbd 20px)',
+              margin: 30,
+              height: '100vh',
+            }}
+          />
+
+          <div style={{ border: '4px dotted black', padding: 10, margin: 100 }}>
+            <button id="target" ref={targetRef} onClick={() => setOpen(s => !s)}>
+              Target
+            </button>
+          </div>
+
+          <div
+            style={{
+              display: 'flex',
+
+              background:
+                'repeating-linear-gradient(135deg, transparent, transparent 15px, #0f6cbd 10px, #0f6cbd 20px)',
+              margin: 30,
+              height: '100vh',
+            }}
+          />
+
+          {open && floating}
+        </div>
+      </div>
+    </>
+  );
+};
+
+//
+//
+//
+
+const Context = createContext<
+  | {
+      containerRef: React.RefObject<HTMLDivElement>;
+      targetRef: React.RefObject<HTMLDivElement>;
+      open: boolean;
+      setOpen: (open: boolean) => void;
+    }
+  | undefined
+>(undefined);
+
+const Controller: React.FC<React.PropsWithChildren<{}>> = props => {
+  const [open, setOpen] = React.useState(false);
+  const children = React.Children.toArray(props.children);
+
+  const { containerRef, targetRef } = usePositioning({
+    position: 'above',
+    align: 'center',
+  });
+
+  React.useEffect(() => {
+    if (open) {
+      const scrollY = window.scrollY;
+      const button = containerRef.current?.querySelector('button');
+
+      button.focus();
+
+      setTimeout(() => {
+        const element = document.querySelector<HTMLElement>(
+          scrollY === window.scrollY ? '#test-passed' : '#test-failed',
+        );
+
+        if (element) {
+          element.style.setProperty('display', 'block');
+          element.setAttribute('id', 'test-completed');
+        }
+      }, 500);
+    }
+  }, [containerRef, open]);
+
+  return (
+    <Context.Provider value={{ setOpen, containerRef, targetRef, open }}>
+      {children[0]}
+      {open && children[1]}
+    </Context.Provider>
+  );
+};
+
+const Target: React.FC = props => {
+  const open = useContextSelector(Context, v => v!.open);
+  const setOpen = useContextSelector(Context, v => v!.setOpen);
+  const targetRef = useContextSelector(Context, v => v!.targetRef);
+
+  return React.cloneElement(props.children as React.ReactElement, {
+    'aria-expanded': `${open}`,
+    onClick: () => setOpen(true),
+    ref: targetRef,
+  });
+};
+
+const Container: React.FC = props => {
+  const containerRef = useContextSelector(Context, v => v!.containerRef);
+
+  return ReactDOM.createPortal(
+    <div style={{ position: 'absolute', left: 0, top: 0, right: 0, zIndex: 1000 }}>
+      <div ref={containerRef} style={{ background: 'white', padding: 20, border: '5px solid blue' }}>
+        {props.children}
+      </div>
+    </div>,
+    document.body,
+  );
+};
+
+const ScrollJumpContext = () => {
+  return (
+    <>
+      <div
+        style={{
+          position: 'fixed',
+          top: 10,
+          left: 100,
+          right: 100,
+
+          background: 'white',
+        }}
+      >
+        <p style={{ fontWeight: 20, border: '8px dotted magenta', padding: 10, margin: 0 }}>
+          This example simulates a scroll jump on autofocus when opening a floating element. The example uses a layout
+          effect to focus on the content of the floating box before usePopper is called. This results in the focus
+          executing before the layout effect to position the floating is executed. The scroll jump is fixed internally
+          in usePositioning by using position: fixed on the floating element before it is first positioned.
+        </p>
+        <div
+          id="test-failed"
+          style={{
+            border: '8px dotted magenta',
+            borderTop: 'none',
+            padding: 10,
+            fontSize: 20,
+            color: 'red',
+            display: 'none',
+          }}
+        >
+          Test failed, scroll jump occurred 💥
+        </div>
+        <div
+          id="test-passed"
+          style={{
+            border: '8px dotted magenta',
+            borderTop: 'none',
+            padding: 10,
+            fontSize: 20,
+            color: 'green',
+            display: 'none',
+          }}
+        >
+          Test passed ✅
+        </div>
+      </div>
+
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          background: 'repeating-linear-gradient(45deg, transparent, transparent 10px, #ccc 10px, #ccc 20px)',
+        }}
+      >
+        <div style={{ background: 'white', border: '4px dotted green', margin: 10, padding: 40 }}>
+          <div
+            style={{
+              display: 'flex',
+
+              background:
+                'repeating-linear-gradient(135deg, transparent, transparent 15px, #0f6cbd 10px, #0f6cbd 20px)',
+              margin: 30,
+              height: '100vh',
+            }}
+          />
+
+          <Controller>
+            <Target>
+              <button id="target">Popover trigger</button>
+            </Target>
+
+            <Container>
+              <button>Action</button>
+            </Container>
+          </Controller>
+        </div>
+      </div>
+    </>
+  );
+};
+
+const MultiScrollParent = () => {
+  const { targetRef, containerRef } = usePositioning({});
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ top: 100 });
+    }
+  };
+
+  return (
+    <>
+      <span>The popover should stay attached to the trigger</span>
+      <button id="scroll" onClick={scroll}>
+        scroll
+      </button>
+      <div
+        ref={scrollContainerRef}
+        style={{
+          border: '2px dashed green',
+          height: 300,
+          width: 400,
+          overflow: 'auto',
+          display: 'grid',
+          gridTemplateColumns: '350px auto',
+          gridTemplateRows: '800px',
+        }}
+      >
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              overflow: 'auto',
+              border: '2px dashed red',
+              position: 'absolute',
+              top: 150,
+              left: 100,
+              padding: 20,
+            }}
+          >
+            <button id="target" ref={targetRef}>
+              Trigger
+            </button>
+          </div>
+        </div>
+        <div
+          style={{
+            backgroundImage: 'linear-gradient(to bottom, #ffffff, #b9b9b9, #777777, #3b3b3b, #000000)',
+          }}
+        />
+      </div>
+      <div ref={containerRef} style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white' }}>
+        Popover
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -583,9 +1163,35 @@ storiesOf('Positioning', module)
   .addStory('vertical flip', () => <VerticalFlip />)
   .addStory('horizontal flip', () => <HorizontalFlip />, { includeRtl: true })
   .addStory('vertical overflow', () => <VerticalOverflow />)
+  .addStory('horizontal overflow padding', () => <HorizontalOverflowPadding />, { includeRtl: true })
+  .addStory('vertical overflow padding', () => <VerticalOverflowPadding />)
+  .addStory('explicit overflow padding', () => <ExplicitOverflowPadding />, { includeRtl: true })
   .addStory('horizontal overflow', () => <HorizontalOverflow />, { includeRtl: true })
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
+  .addStory('auto size with async content', () => (
+    <StoryWright
+      steps={new Steps()
+        .click('#load-content')
+        .wait('#full-content')
+        .snapshot('floating element is within the boundary')
+        .end()}
+    >
+      <AutoSizeAsyncContent />
+    </StoryWright>
+  ))
+  .addStory('auto size with async content reset styles on updatePosition', () => (
+    <StoryWright
+      steps={new Steps()
+        .click('#load-content')
+        .wait('#full-content')
+        .wait(250) // let updatePosition finish
+        .snapshot('floating element width fills boundary and overflows 10px because of overflow:clip')
+        .end()}
+    >
+      <AutoSizeUpdatePosition />
+    </StoryWright>
+  ))
   .addStory('disable tether', () => <DisableTether />)
   .addStory('position fixed', () => <PositionAndAlignProps positionFixed />, { includeRtl: true })
   .addStory('virtual element', () => <VirtualElement />)
@@ -605,4 +1211,42 @@ storiesOf('Positioning', module)
       <VisibilityModifiers />
     </StoryWright>
   ))
-  .addStory('arrow', () => <Arrow />, { includeRtl: true });
+  .addStory('arrow', () => <Arrow />, { includeRtl: true })
+  .addStory('fallback positioning', () => <FallbackPositioning />)
+  .addStory('disable CSS transform', () => <PositionAndAlignProps useTransform={false} />, { includeRtl: true })
+  .addStory(
+    'disable CSS transform with position fixed',
+    () => <PositionAndAlignProps positionFixed useTransform={false} />,
+    { includeRtl: true },
+  )
+  .addStory('Multiple scroll parents', () => (
+    <StoryWright steps={new Steps().click('#scroll').snapshot('container attached to target').end()}>
+      <MultiScrollParent />
+    </StoryWright>
+  ));
+
+storiesOf('Positioning (no decorator)', module)
+  .addStory('scroll jumps', () => (
+    <StoryWright
+      steps={new Steps()
+        .focus('#target')
+        .click('#target')
+        .wait('#test-completed')
+        .snapshot('positions without scroll jump')
+        .end()}
+    >
+      <ScrollJump />
+    </StoryWright>
+  ))
+  .addStory('scroll jumps (with context usage)', () => (
+    <StoryWright
+      steps={new Steps()
+        .focus('#target')
+        .click('#target')
+        .wait('#test-completed')
+        .snapshot('positions without scroll jump')
+        .end()}
+    >
+      <ScrollJumpContext />
+    </StoryWright>
+  ));

@@ -1,6 +1,6 @@
 import { Meta } from '@storybook/addon-docs';
 
-<Meta title="Concepts/Developer/Server-Side Rendering/NextJS Setup" />
+<Meta title="Concepts/Developer/Server-Side Rendering/Next.js setup" />
 
 ## Next.js
 
@@ -9,13 +9,17 @@ For basic instructions on getting Next.js set up, see [Getting Started](https://
 1. Get a basic next.js setup running, rendering a page from the `pages` folder, as guided by the tutorial.
 2. Add the Fluent UI dependencies: `@fluentui/react-components`.
 
-```sh
-// yarn
+```shell
+# Using Yarn
 yarn add @fluentui/react-components
 
-//npm
+# Using NPM
 npm install @fluentui/react-components
 ```
+
+> **Note on [experimental appDir support](https://beta.nextjs.org/docs/api-reference/next-config#appdir)**
+>
+> Fluent UI React v9 use extensively React Context API, to use Fluent components within `app` directory please use [`use client` directive](https://beta.nextjs.org/docs/rendering/server-and-client-components#convention).
 
 1. Create a `_document.tsx` file under your `pages` folder with the following content:
 

@@ -12,7 +12,7 @@ variables:
   - template: .devops/templates/variables.yml
 
 jobs:
-  - job: bundlesize
+  - job: bundle_size
     workspace:
       clean: all
     pool: '1ES-Host-Ubuntu'
@@ -29,7 +29,7 @@ jobs:
         displayName: build packages & create reports
 
       - script: |
-          yarn bundle-size compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --verbose
+          yarn monosize compare-reports --branch=$(System.PullRequest.TargetBranch) --output=markdown --verbose
         displayName: compare bundle size with base (PR only)
         condition: eq(variables.isPR, true)
 
@@ -39,21 +39,22 @@ jobs:
         inputs:
           githubOwner: microsoft
           githubRepo: 'fluentui'
-          blobFilePath: 'packages/bundle-size/dist/bundle-size.md'
+          blobFilePath: 'node_modules/monosize/dist/monosize.md'
           status: 'success'
           uniqueId: 'bundleSizeComment9423'
 
       - script: |
-          yarn bundle-size upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
+          yarn monosize upload-report --branch=$(Build.SourceBranchName) --commit-sha $(Build.SourceVersion)
         displayName: upload a report (base only)
         condition: eq(variables.isPR, false)
         env:
           # https://docs.microsoft.com/en-us/azure/devops/pipelines/process/variables?view=azure-devops&tabs=yaml%2Cbatch#secret-variables
           BUNDLESIZE_ACCOUNT_KEY: $(bundlesize-account-key)
+          BUNDLESIZE_ACCOUNT_NAME: fluentbundlesize
 
       - template: .devops/templates/cleanup.yml
 
-  - job: build_react
+  - job: bundle_size_auditor
     workspace:
       clean: all
     timeoutInMinutes: 75
@@ -65,112 +66,31 @@ jobs:
         inputs:
           filePath: yarn-ci.sh
         displayName: yarn
+        # we cannot use `--since` because the ligtrail service would calculate packages not build as a removal 🚨 - thus giving lot of noise and incorrect metrics on every PR
+      - script: yarn lage bundle-size-auditor
+        displayName: build packages & create reports
 
-      - script: yarn build --to @fluentui/react @fluentui/keyboard-key
-        displayName: yarn build to @fluentui/react
-
-      - script: yarn workspace @fluentui/test-bundles bundle:size
-        displayName: yarn bundle @fluentui/test-bundles
-        env:
-          PACKAGE: '@fluentui/react'
-
-      - script: yarn bundlesizecollect
-        displayName: 'Collate Bundle Size Information'
+      - script: yarn bundle-size-auditor --create-report --report-path dist/bundle-size-auditor
+        displayName: 'Merge generated bundlesize.json into bundlesizes.json'
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
+        displayName: 'Publish Merged Bundle Size information for lightrail processing'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
-          ArtifactName: bundlesize-react
+          PathtoPublish: 'dist/bundle-size-auditor/bundlesizes.json'
+          ArtifactName: drop
 
       - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
+        displayName: 'Publish bundled artifacts for debug'
         inputs:
-          PathtoPublish: 'apps/test-bundles/dist'
-          ArtifactName: distdrop-react
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: build_northstar
-    workspace:
-      clean: all
-    timeoutInMinutes: 75
-    pool: '1ES-Host-Ubuntu'
-    steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
-      - script: yarn build --to @fluentui/react-northstar
-        displayName: yarn build to @fluentui/react-northstar
-
-      - script: yarn workspace @fluentui/test-bundles bundle:size
-        displayName: yarn bundle @fluentui/test-bundles
-        env:
-          PACKAGE: '@fluentui/react-northstar'
-
-      - script: yarn bundlesizecollect
-        displayName: 'Collate Bundle Size Information'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Bundle Size information to Azure Dev Ops Artifacts'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist/bundlesize.json'
-          ArtifactName: bundlesize-northstar
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
-        inputs:
-          PathtoPublish: 'apps/test-bundles/dist'
-          ArtifactName: distdrop-northstar
-
-      - template: .devops/templates/cleanup.yml
-
-  - job: merge
-    pool:
-      vmImage: 'windows-2019'
-    dependsOn:
-      - build_northstar
-      - build_react
-    steps:
-      - checkout: none
-
-      - task: DownloadPipelineArtifact@2
-        displayName: 'Download Pipeline Artifact: @fluentui/react'
-        inputs:
-          artifactName: 'bundlesize-react'
-          targetPath: '$(Build.ArtifactStagingDirectory)/react'
-
-      - task: DownloadPipelineArtifact@2
-        displayName: 'Download Pipeline Artifact: @fluentui/react-northstar'
-        inputs:
-          artifactName: 'bundlesize-northstar'
-          targetPath: '$(Build.ArtifactStagingDirectory)/react-northstar'
-
-      - script: 'chocolatey install jq'
-        displayName: 'Install jq'
-
-      - script: jq -c -s "reduce .[] as $item ({}; . * $item)" $(Build.ArtifactStagingDirectory)/react-northstar/bundlesize.json $(Build.ArtifactStagingDirectory)/react/bundlesize.json > $(Build.ArtifactStagingDirectory)/bundlesizes.json
-        displayName: 'Merge @fluentui/react, @fluentui/react-components & @fluentui/react-northstar to bundlesizes.json'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Merged Bundle Size information'
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)/bundlesizes.json'
-
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact dist folder upon build for debug'
-        inputs:
-          PathtoPublish: '$(Build.ArtifactStagingDirectory)'
+          PathtoPublish: 'dist/bundle-size-auditor'
           ArtifactName: distdrop
+
+      - template: .devops/templates/cleanup.yml
 
   - job: lightrail
     pool: server
     dependsOn:
-      - merge
+      - bundle_size_auditor
     steps:
       - task: odefun.odsp-lightrail-tasks-partner.odsp-lightrail-tasks-SizeAuditorWorker.SizeAuditorWorker@0
         displayName: 'Size Auditor Check on LightRail'

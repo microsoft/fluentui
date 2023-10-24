@@ -29,7 +29,7 @@ export const carouselPaddlesContainerClassName = 'ui-carrouselpaddles_container'
 /**
  * A CarouselPaddlesContainer is a container for the Carousel Paddles.
  */
-export const CarouselPaddlesContainer = (React.forwardRef<HTMLDivElement, CarouselPaddlesContainerProps>(
+export const CarouselPaddlesContainer = React.forwardRef<HTMLDivElement, CarouselPaddlesContainerProps>(
   (props, ref) => {
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(CarouselPaddlesContainer.displayName, context.telemetry);
@@ -65,7 +65,7 @@ export const CarouselPaddlesContainer = (React.forwardRef<HTMLDivElement, Carous
 
     return element;
   },
-) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CarouselPaddlesContainerProps> &
+) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CarouselPaddlesContainerProps> &
   FluentComponentStaticProps<CarouselPaddlesContainerProps>;
 
 CarouselPaddlesContainer.displayName = 'CarouselPaddlesContainer';

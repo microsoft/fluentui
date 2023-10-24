@@ -91,10 +91,8 @@ describe('Returns correct element for custom CDN url', () => {
         size: 96,
         extension: 'docx',
       },
-      'https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/item-types-fluent/',
+      'https://example-base-url/assets/item-types-fluent/',
     );
-    expect(elm).toEqual(
-      '<img src="https://spoppe-b.azureedge.net/files/fabric-cdn-prod_20210407.001/assets/item-types-fluent/96/docx.svg" alt="" />',
-    );
+    expect(elm).toEqual('<img src="https://example-base-url/assets/item-types-fluent/96/docx.svg" alt="" />');
   });
 });

@@ -22,6 +22,7 @@ describe('useMenuContextValues_unstable', () => {
         "menuPopoverRef": Object {
           "current": null,
         },
+        "mountNode": null,
         "onCheckedValueChange": [Function],
         "open": false,
         "openOnContext": false,

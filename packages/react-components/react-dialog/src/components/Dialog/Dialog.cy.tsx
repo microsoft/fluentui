@@ -259,11 +259,13 @@ describe('Dialog', () => {
     cy.get('#open-menu-btn').realClick();
     cy.focused().realType('{esc}');
     cy.get(dialogSurfaceSelector).should('exist');
+    cy.get('#open-menu-btn').should('have.focus');
 
     // Open Popover and then close it with Escape
     cy.get('#open-popover-btn').realClick();
     cy.focused().realType('{esc}');
     cy.get(dialogSurfaceSelector).should('exist');
+    cy.get('#open-popover-btn').should('have.focus');
 
     // Open Tooltip, wait for the tooltip to appear and then close it with Escape
     cy.get(dialogTriggerCloseSelector).focus().wait(0).realType('{esc}');
@@ -327,6 +329,69 @@ describe('Dialog', () => {
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('have.css', 'overflow', 'hidden');
     });
+
+    it('should focus trap by default', () => {
+      mount(
+        <Dialog modalType="modal">
+          <DialogTrigger disableButtonEnhancement>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button id="do-something-btn" appearance="primary">
+                Do Something
+              </Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
+      cy.get('#do-something-btn').should('be.focused').realPress('Tab');
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
+    });
+    it('should focus on window after last element when inertTrapFocus=true', () => {
+      mount(
+        <Dialog inertTrapFocus modalType="modal">
+          <DialogTrigger disableButtonEnhancement>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button id="do-something-btn" appearance="primary">
+                Do Something
+              </Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
+      cy.get('#do-something-btn').should('be.focused').realPress('Tab');
+      cy.focused().should('not.exist');
+    });
   });
   describe('modalType = non-modal', () => {
     it('should close with escape keydown', () => {
@@ -388,9 +453,40 @@ describe('Dialog', () => {
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('not.have.css', 'overflow', 'hidden');
     });
+    it('should be able to focus inside non-modal dialog after navigating outside', () => {
+      mount(
+        <>
+          <Dialog modalType="non-modal">
+            <DialogTrigger disableButtonEnhancement>
+              <Button id={dialogTriggerOpenId}>Open dialog</Button>
+            </DialogTrigger>
+            <DialogSurface>
+              <DialogBody>
+                <DialogActions>
+                  <DialogTrigger disableButtonEnhancement>
+                    <Button id={dialogTriggerCloseId} appearance="secondary">
+                      Close
+                    </Button>
+                  </DialogTrigger>
+                  <Button id="extra-btn-inside" appearance="primary">
+                    Do Something
+                  </Button>
+                </DialogActions>
+              </DialogBody>
+            </DialogSurface>
+          </Dialog>
+          <Button id="extra-btn-outside">Button outside dialog</Button>
+        </>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
+      cy.get('#extra-btn-outside').realClick().should('be.focused');
+      cy.get('#extra-btn-inside').realClick().should('be.focused').realType('{esc}');
+      cy.get(dialogSurfaceSelector).should('not.exist');
+    });
   });
   describe('modalType = alert', () => {
-    it('should not close with escape keydown', () => {
+    it('should close with escape keydown', () => {
       mount(
         <Dialog modalType="alert">
           <DialogTrigger disableButtonEnhancement>
@@ -418,7 +514,7 @@ describe('Dialog', () => {
       );
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.focused().realType('{esc}');
-      cy.get(dialogSurfaceSelector).should('exist');
+      cy.get(dialogSurfaceSelector).should('not.exist');
     });
     it('should lock body scroll when dialog open', () => {
       mount(
@@ -448,6 +544,68 @@ describe('Dialog', () => {
       );
       cy.get(dialogTriggerOpenSelector).realClick();
       cy.get('body').should('have.css', 'overflow', 'hidden');
+    });
+    it('should focus trap by default', () => {
+      mount(
+        <Dialog modalType="alert">
+          <DialogTrigger disableButtonEnhancement>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button id="do-something-btn" appearance="primary">
+                Do Something
+              </Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
+      cy.get('#do-something-btn').should('be.focused').realPress('Tab');
+      cy.get(dialogTriggerCloseSelector).should('be.focused');
+    });
+    it('should focus on window after last element when inertTrapFocus=true', () => {
+      mount(
+        <Dialog inertTrapFocus modalType="alert">
+          <DialogTrigger disableButtonEnhancement>
+            <Button id={dialogTriggerOpenId}>Open dialog</Button>
+          </DialogTrigger>
+          <DialogSurface>
+            <DialogTitle>Dialog title</DialogTitle>
+            <DialogBody>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam exercitationem cumque repellendus eaque
+              est dolor eius expedita nulla ullam? Tenetur reprehenderit aut voluptatum impedit voluptates in natus iure
+              cumque eaque?
+            </DialogBody>
+            <DialogActions>
+              <DialogTrigger disableButtonEnhancement>
+                <Button id={dialogTriggerCloseId} appearance="secondary">
+                  Close
+                </Button>
+              </DialogTrigger>
+              <Button id="do-something-btn" appearance="primary">
+                Do Something
+              </Button>
+            </DialogActions>
+          </DialogSurface>
+        </Dialog>,
+      );
+      cy.get(dialogTriggerOpenSelector).realClick();
+      cy.get(dialogTriggerCloseSelector).should('be.focused').realPress('Tab');
+      cy.get('#do-something-btn').should('be.focused').realPress('Tab');
+      cy.focused().should('not.exist');
     });
   });
 

@@ -1,14 +1,14 @@
 {
   "name": "@fluentui/projects-test",
-  "version": "0.66.0",
+  "version": "0.66.4",
   "private": true,
   "license": "MIT",
   "dependencies": {
-    "@fluentui/react-northstar": "^0.66.0"
+    "@fluentui/react-northstar": "*"
   },
   "devDependencies": {
-    "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-babel": "*",
+    "@fluentui/scripts-gulp": "*",
     "@fluentui/scripts-projects-test": "*"
   },
   "publishConfig": {

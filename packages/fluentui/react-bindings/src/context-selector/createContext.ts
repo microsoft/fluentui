@@ -53,7 +53,7 @@ export const createContext = <Value>(defaultValue: Value): Context<Value> => {
   context.Provider = createProvider<Value>(context.Provider) as any;
 
   // We don't support Consumer API
-  delete ((context as unknown) as Context<Value>).Consumer;
+  delete (context as unknown as Context<Value>).Consumer;
 
-  return (context as unknown) as Context<Value>;
+  return context as unknown as Context<Value>;
 };

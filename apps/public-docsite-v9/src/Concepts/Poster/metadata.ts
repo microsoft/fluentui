@@ -4,7 +4,7 @@ export const libraryInfo: LibraryInfo = {
   name: 'Fluent UI React v9',
   areas: [
     {
-      name: 'Basic Inputs',
+      name: 'Buttons and Form Inputs',
       packages: [
         {
           name: 'react-button',
@@ -33,11 +33,26 @@ export const libraryInfo: LibraryInfo = {
         },
         {
           name: 'react-checkbox',
-          newColumn: true,
           codeItems: [{ name: 'CheckBox', componentType: 'component' }],
         },
         {
+          name: 'react-combobox',
+          newColumn: true,
+          codeItems: [
+            { name: 'Combobox', componentType: 'component' },
+            { name: 'Dropdown', componentType: 'component' },
+            { name: 'Listbox', componentType: 'component' },
+            { name: 'Option', componentType: 'component' },
+            { name: 'OptionGroup', componentType: 'component' },
+          ],
+        },
+        {
+          name: 'react-field',
+          codeItems: [{ name: 'Field', componentType: 'component' }],
+        },
+        {
           name: 'react-input',
+          newColumn: true,
           codeItems: [{ name: 'Input', componentType: 'component' }],
         },
         {
@@ -46,11 +61,11 @@ export const libraryInfo: LibraryInfo = {
         },
         {
           name: 'react-link',
-          newColumn: true,
           codeItems: [{ name: 'Link', componentType: 'component' }],
         },
         {
           name: 'react-radio',
+          newColumn: true,
           codeItems: [
             { name: 'Radio', componentType: 'component' },
             { name: 'RadioGroup', componentType: 'component' },
@@ -62,11 +77,11 @@ export const libraryInfo: LibraryInfo = {
         },
         {
           name: 'react-slider',
-          newColumn: true,
           codeItems: [{ name: 'Slider', componentType: 'component' }],
         },
         {
           name: 'react-spinbutton',
+          newColumn: true,
           codeItems: [{ name: 'SpinButton', componentType: 'component' }],
         },
         {
@@ -85,7 +100,35 @@ export const libraryInfo: LibraryInfo = {
       ],
     },
     {
+      name: 'Lists, Grids, and Trees',
+      packages: [
+        {
+          name: 'react-table',
+          codeItems: [
+            { name: 'DataGrid', componentType: 'component' },
+            { name: 'DataGridBody', componentType: 'component' },
+            { name: 'DataGridCell', componentType: 'component' },
+            { name: 'DataGridHeader', componentType: 'component' },
+            { name: 'DataGridHeaderCell', componentType: 'component' },
+            { name: 'DataGridRow', componentType: 'component' },
+            { name: 'DataGridSelectionCell', componentType: 'component' },
+            { name: 'Table', newColumn: true, componentType: 'component' },
+            { name: 'TableBody', componentType: 'component' },
+            { name: 'TableCell', componentType: 'component' },
+            { name: 'TableCellActions', componentType: 'component' },
+            { name: 'TableCellLayout', componentType: 'component' },
+            { name: 'TableHeader', newColumn: true, componentType: 'component' },
+            { name: 'TableHeaderCell', componentType: 'component' },
+            { name: 'TableResizeHandle', componentType: 'component' },
+            { name: 'TableRow', componentType: 'component' },
+            { name: 'TableSelectionCell', componentType: 'component' },
+          ],
+        },
+      ],
+    },
+    {
       name: 'Menus and Navigation',
+      newRow: true,
       packages: [
         {
           name: 'react-accordion',
@@ -125,7 +168,6 @@ export const libraryInfo: LibraryInfo = {
     },
     {
       name: 'Surfaces',
-      newRow: true,
       packages: [
         {
           name: 'react-card',
@@ -149,6 +191,10 @@ export const libraryInfo: LibraryInfo = {
           ],
         },
         {
+          name: 'react-divider',
+          codeItems: [{ name: 'Divider', componentType: 'component' }],
+        },
+        {
           name: 'react-popover',
           newColumn: true,
           codeItems: [
@@ -159,7 +205,6 @@ export const libraryInfo: LibraryInfo = {
         },
         {
           name: 'react-portal',
-          newColumn: true,
           codeItems: [
             { name: 'Portal', componentType: 'component' },
             { name: 'PopoverSurface', componentType: 'component' },
@@ -168,6 +213,7 @@ export const libraryInfo: LibraryInfo = {
         },
         {
           name: 'react-toolbar',
+          newColumn: true,
           codeItems: [
             { name: 'Toolbar', componentType: 'component' },
             { name: 'ToolbarButton', componentType: 'component' },
@@ -196,13 +242,17 @@ export const libraryInfo: LibraryInfo = {
           ],
         },
         {
-          name: 'react-divider',
-          newColumn: true,
-          codeItems: [{ name: 'Divider', componentType: 'component' }],
-        },
-        {
           name: 'react-image',
           codeItems: [{ name: 'Image', componentType: 'component' }],
+        },
+        {
+          name: 'react-persona',
+          newColumn: true,
+          codeItems: [{ name: 'Persona', componentType: 'component' }],
+        },
+        {
+          name: 'react-progress',
+          codeItems: [{ name: 'ProgressBar', componentType: 'component' }],
         },
         {
           name: 'react-spinner',
@@ -232,6 +282,7 @@ export const libraryInfo: LibraryInfo = {
     },
     {
       name: 'Theming',
+      newRow: true,
       packages: [
         {
           name: 'react-provider',
@@ -267,7 +318,6 @@ export const libraryInfo: LibraryInfo = {
     },
     {
       name: 'Utilities',
-      newRow: true,
       packages: [
         {
           name: 'react-context-selector',

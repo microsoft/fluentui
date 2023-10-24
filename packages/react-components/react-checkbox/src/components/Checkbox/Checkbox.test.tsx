@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { render, fireEvent } from '@testing-library/react';
+import { Field } from '@fluentui/react-field';
 import { Checkbox } from './Checkbox';
 import { isConformant } from '../../testing/isConformant';
 import { resetIdsForTests } from '@fluentui/react-utilities';
@@ -163,6 +164,38 @@ describe('Checkbox', () => {
     fireEvent.change(input);
 
     expect(input.indeterminate).toEqual(true);
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const renderedComponent = render(
+      <Field validationMessage="Test error message" required>
+        <Checkbox label="Checkbox" />
+      </Field>,
+    );
+
+    const checkbox = renderedComponent.getByRole('checkbox') as HTMLInputElement;
+    const message = renderedComponent.getByText('Test error message');
+
+    expect(checkbox.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(checkbox.getAttribute('aria-invalid')).toEqual('true');
+    expect(checkbox.required).toBe(true);
+  });
+
+  it('is labelled by both the Field and Checkbox labels, if both are present', () => {
+    const renderedComponent = render(
+      <Field label="Field label">
+        <Checkbox label="Checkbox label" />
+      </Field>,
+    );
+
+    const fieldLabel = renderedComponent.getByText('Field label') as HTMLLabelElement;
+    const checkboxLabel = renderedComponent.getByText('Checkbox label') as HTMLLabelElement;
+    const checkbox = renderedComponent.getByRole('checkbox') as HTMLInputElement;
+
+    // The checkbox should be labelled by both labels using htmlFor and not aria-labelledby
+    expect(checkbox.id).toEqual(fieldLabel.htmlFor);
+    expect(checkbox.id).toEqual(checkboxLabel.htmlFor);
+    expect(checkbox.getAttribute('aria-labelledby')).toBeNull();
   });
 
   describe('Accessibility Tests', () => {

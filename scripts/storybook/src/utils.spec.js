@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const { stripIndents } = require('@nrwl/devkit');
+const { stripIndents } = require('@nx/devkit');
 const tmp = require('tmp');
 
 const { loadWorkspaceAddon, getPackageStoriesGlob } = require('./utils');
@@ -20,23 +20,23 @@ describe(`utils`, () => {
       const packageRootPath = path.join('packages', options.packageName);
       const packageRootAbsolutePath = path.join(rootDir, packageRootPath);
       const paths = {
-        workspaceJsonPath: path.join(rootDir, 'workspace.json'),
+        nxJsonPath: path.join(rootDir, 'nx.json'),
+        projectJsonPath: path.join(packageRootAbsolutePath, 'project.json'),
         rootTsconfigPath: path.join(rootDir, 'tsconfig.base.json'),
         packageJson: path.join(packageRootAbsolutePath, 'package.json'),
         preset: path.join(packageRootAbsolutePath, 'preset.js'),
       };
 
-      // setup workspace
+      // setup project
+      fs.writeFileSync(paths.nxJsonPath, JSON.stringify({ npmScope: 'proj' }, null, 2), 'utf-8');
+      fs.mkdirSync(packageRootAbsolutePath, { recursive: true });
       fs.writeFileSync(
-        paths.workspaceJsonPath,
+        paths.projectJsonPath,
         JSON.stringify(
           {
-            projects: {
-              [`${npmScope}/${options.packageName}`]: {
-                root: packageRootPath,
-                sourceRoot: path.join(packageRootPath, 'src'),
-              },
-            },
+            name: `${npmScope}/${options.packageName}`,
+            root: packageRootPath,
+            sourceRoot: path.join(packageRootPath, 'src'),
           },
           null,
           2,
@@ -85,20 +85,6 @@ describe(`utils`, () => {
       };
     }
 
-    it(`should behave as identity function in prod env`, () => {
-      const originalEnv = process.env;
-      process.env = { ...originalEnv, NODE_ENV: 'production' };
-
-      const { tsConfigRoot } = setup({ packageName: 'storybook-custom-addon' });
-
-      const actual = loadWorkspaceAddon('@myorg/storybook-custom-addon', { tsConfigPath: tsConfigRoot });
-      const expected = '@myorg/storybook-custom-addon';
-
-      expect(actual).toBe(expected);
-
-      process.env = originalEnv;
-    });
-
     it(`should return path to in memory preset loader root`, () => {
       const { npmScope, workspaceRoot, tsConfigRoot } = setup({ packageName: 'storybook-custom-addon' });
 
@@ -123,7 +109,7 @@ describe(`utils`, () => {
         const { registerTsPaths } = require('@fluentui/scripts-storybook');
 
         function managerWebpack(config, options) {
-        registerTsPaths({config, tsConfigPath: '${tsConfigRoot}'});
+        registerTsPaths({config, configFile: '${tsConfigRoot}'});
         return config;
         }
 

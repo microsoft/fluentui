@@ -20,7 +20,7 @@ export const Default = () => {
   return (
     <div className={layoutStyles.base}>
       <Label htmlFor={id}>Default SpinButton</Label>
-      <SpinButton defaultValue={10} id={id} />
+      <SpinButton defaultValue={10} min={0} max={20} id={id} />
     </div>
   );
 };

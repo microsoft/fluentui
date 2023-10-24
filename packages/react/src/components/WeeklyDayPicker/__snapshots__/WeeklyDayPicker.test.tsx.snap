@@ -189,7 +189,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -265,7 +265,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -341,7 +341,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -417,7 +417,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -493,7 +493,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -569,7 +569,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -645,7 +645,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -737,7 +737,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -849,7 +849,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -961,7 +961,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1073,7 +1073,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1185,7 +1185,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1297,7 +1297,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1409,7 +1409,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1526,7 +1526,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1666,7 +1666,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1806,7 +1806,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -1946,7 +1946,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2087,7 +2087,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2277,7 +2277,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2413,7 +2413,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2565,7 +2565,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2673,7 +2673,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2781,7 +2781,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2889,7 +2889,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -2997,7 +2997,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3105,7 +3105,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3213,7 +3213,7 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3566,7 +3566,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3642,7 +3642,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3718,7 +3718,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3794,7 +3794,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3870,7 +3870,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -3946,7 +3946,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4022,7 +4022,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4114,7 +4114,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4226,7 +4226,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4338,7 +4338,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4450,7 +4450,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4562,7 +4562,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4674,7 +4674,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4786,7 +4786,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -4903,7 +4903,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -5043,7 +5043,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -5184,7 +5184,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -5374,7 +5374,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -5510,7 +5510,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -5646,7 +5646,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -5782,7 +5782,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -5934,7 +5934,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -6042,7 +6042,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -6150,7 +6150,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -6258,7 +6258,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -6366,7 +6366,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -6474,7 +6474,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;
@@ -6582,7 +6582,7 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
-                  background-color: Window;
+                  background-color: transparent;
                   color: WindowText;
                   forced-color-adjust: none;
                   z-index: 0;

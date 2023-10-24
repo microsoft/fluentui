@@ -1,4 +1,5 @@
 export {
+  createCSSRuleFromTheme,
   fluentProviderClassNames,
   FluentProvider,
   renderFluentProvider_unstable,
@@ -9,6 +10,7 @@ export {
 } from './FluentProvider';
 export type {
   FluentProviderContextValues,
+  FluentProviderCustomStyleHooks,
   FluentProviderProps,
   FluentProviderState,
   FluentProviderSlots,

@@ -21,3 +21,18 @@ export {
   useOverrides as useOverrides_unstable,
 } from './OverridesContext';
 export type { OverridesContextValue as OverridesContextValue_unstable } from './OverridesContext';
+
+export {
+  CustomStyleHooksContext as CustomStyleHooksContext_unstable,
+  CustomStyleHooksProvider as CustomStyleHooksProvider_unstable,
+  useCustomStyleHook as useCustomStyleHook_unstable,
+} from './CustomStyleHooksContext';
+export type { CustomStyleHooksContextValue as CustomStyleHooksContextValue_unstable } from './CustomStyleHooksContext';
+
+export { BackgroundAppearanceProvider, useBackgroundAppearance } from './BackgroundAppearanceContext';
+export type { BackgroundAppearanceContextValue } from './BackgroundAppearanceContext';
+
+export { PortalMountNodeProvider, usePortalMountNode } from './PortalMountNodeContext';
+
+export { AnnounceProvider as AnnounceProvider_unstable, useAnnounce as useAnnounce_unstable } from './AnnounceContext';
+export type { AnnounceContextValue as AnnounceContextValue_unstable } from './AnnounceContext';

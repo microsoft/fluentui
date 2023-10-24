@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useId } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import { Button } from '../Button/Button';
 import { MenuButton } from '../MenuButton/MenuButton';
 import type { SplitButtonProps, SplitButtonState } from './SplitButton.types';
@@ -26,10 +26,9 @@ export const useSplitButton_unstable = (
     shape = 'rounded',
     size = 'medium',
   } = props;
-
   const baseId = useId('splitButton-');
 
-  const menuButtonShorthand = resolveShorthand(menuButton, {
+  const menuButtonShorthand = slot.optional(menuButton, {
     defaultProps: {
       appearance,
       disabled,
@@ -38,10 +37,10 @@ export const useSplitButton_unstable = (
       shape,
       size,
     },
-    required: true,
+    renderByDefault: true,
+    elementType: MenuButton,
   });
-
-  const primaryActionButtonShorthand = resolveShorthand(primaryActionButton, {
+  const primaryActionButtonShorthand = slot.optional(primaryActionButton, {
     defaultProps: {
       appearance,
       children,
@@ -53,11 +52,12 @@ export const useSplitButton_unstable = (
       shape,
       size,
     },
-    required: true,
+    renderByDefault: true,
+    elementType: Button,
   });
 
-  // Resolve menu button's aria-labelledby to be labelled by the primary action button if not a label was not provided
-  // by the user.
+  // Resolve menu button's aria-labelledby to be labelled by the primary action button if no label was provided by the
+  // user.
   if (
     menuButtonShorthand &&
     primaryActionButtonShorthand &&
@@ -74,16 +74,9 @@ export const useSplitButton_unstable = (
     disabledFocusable,
     iconPosition,
     shape,
-    size,
-
-    // Slots definition
-    components: {
-      root: 'div',
-      menuButton: MenuButton,
-      primaryActionButton: Button,
-    },
-
-    root: getNativeElementProps('div', { ref, ...props }),
+    size, // Slots definition
+    components: { root: 'div', menuButton: MenuButton, primaryActionButton: Button },
+    root: slot.always(getIntrinsicElementProps('div', { ref, ...props }), { elementType: 'div' }),
     menuButton: menuButtonShorthand,
     primaryActionButton: primaryActionButtonShorthand,
   };

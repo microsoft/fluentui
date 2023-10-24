@@ -2,12 +2,13 @@ import * as React from 'react';
 import { MenuTriggerProps, MenuTriggerState } from './MenuTrigger.types';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
-import { useFocusFinders } from '@fluentui/react-tabster';
+import { useFocusFinders, useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 import { ArrowRight, ArrowLeft, Escape, ArrowDown } from '@fluentui/keyboard-keys';
 import {
   applyTriggerPropsToChildren,
   getTriggerChild,
+  isHTMLElement,
   mergeCallbacks,
   useEventCallback,
   useMergedRefs,
@@ -30,6 +31,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const triggerId = useMenuContext_unstable(context => context.triggerId);
   const openOnHover = useMenuContext_unstable(context => context.openOnHover);
   const openOnContext = useMenuContext_unstable(context => context.openOnContext);
+  const restoreFocusTargetAttribute = useRestoreFocusTarget();
 
   const isSubmenu = useIsSubmenu();
 
@@ -48,7 +50,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   const child = getTriggerChild(children);
 
   const onContextMenu = (event: React.MouseEvent<HTMLButtonElement & HTMLAnchorElement & HTMLDivElement>) => {
-    if (isTargetDisabled(event)) {
+    if (isTargetDisabled(event) || event.isDefaultPrevented()) {
       return;
     }
 
@@ -125,6 +127,7 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
     id: triggerId,
     ...child?.props,
     ref: useMergedRefs(triggerRef, child?.ref),
+    ...restoreFocusTargetAttribute,
     onMouseEnter: useEventCallback(mergeCallbacks(child?.props.onMouseEnter, onMouseEnter)),
     onMouseLeave: useEventCallback(mergeCallbacks(child?.props.onMouseLeave, onMouseLeave)),
     onContextMenu: useEventCallback(mergeCallbacks(child?.props.onContextMenu, onContextMenu)),
@@ -153,12 +156,12 @@ export const useMenuTrigger_unstable = (props: MenuTriggerProps): MenuTriggerSta
   };
 };
 
-const isTargetDisabled = (e: React.SyntheticEvent | Event) => {
+const isTargetDisabled = (event: React.SyntheticEvent | Event) => {
   const isDisabled = (el: HTMLElement) =>
     el.hasAttribute('disabled') || (el.hasAttribute('aria-disabled') && el.getAttribute('aria-disabled') === 'true');
-  if (e.target instanceof HTMLElement && isDisabled(e.target)) {
+  if (isHTMLElement(event.target) && isDisabled(event.target)) {
     return true;
   }
 
-  return e.currentTarget instanceof HTMLElement && isDisabled(e.currentTarget);
+  return isHTMLElement(event.currentTarget) && isDisabled(event.currentTarget);
 };

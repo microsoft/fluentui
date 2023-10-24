@@ -1,24 +1,35 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
-import type { FieldSlots, FieldState } from './Field.types';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+
+import { assertSlots } from '@fluentui/react-utilities';
+import { FieldContextProvider, getFieldControlProps } from '../../contexts/index';
+import type { FieldContextValues, FieldSlots, FieldState } from './Field.types';
 
 /**
  * Render the final JSX of Field
  */
-export const renderField_unstable = (state: FieldState) => {
-  const { slots, slotProps } = getSlots<FieldSlots>(state);
+export const renderField_unstable = (state: FieldState, contextValues: FieldContextValues) => {
+  assertSlots<FieldSlots>(state);
+
+  let { children } = state;
+  if (typeof children === 'function') {
+    children = children(getFieldControlProps(contextValues.field) || {});
+  }
 
   return (
-    <slots.root {...slotProps.root}>
-      {slots.label && <slots.label {...slotProps.label} />}
-      {slotProps.root.children}
-      {slots.validationMessage && (
-        <slots.validationMessage {...slotProps.validationMessage}>
-          {slots.validationMessageIcon && <slots.validationMessageIcon {...slotProps.validationMessageIcon} />}
-          {slotProps.validationMessage.children}
-        </slots.validationMessage>
-      )}
-      {slots.hint && <slots.hint {...slotProps.hint} />}
-    </slots.root>
+    <FieldContextProvider value={contextValues?.field}>
+      <state.root>
+        {state.label && <state.label />}
+        {children}
+        {state.validationMessage && (
+          <state.validationMessage>
+            {state.validationMessageIcon && <state.validationMessageIcon />}
+            {state.validationMessage.children}
+          </state.validationMessage>
+        )}
+
+        {state.hint && <state.hint />}
+      </state.root>
+    </FieldContextProvider>
   );
 };

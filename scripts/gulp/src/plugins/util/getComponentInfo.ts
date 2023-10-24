@@ -107,11 +107,12 @@ export default function getComponentInfo(options: GetComponentInfoOptions): Comp
   // class name for the component
   // example, the "button" in class="ui-button"
   // name of the component, sub component, or plural parent for sub component groups
-  const componentClassName = (isChild
-    ? _.includes(subcomponentName, 'Group')
-      ? `ui-${parentDisplayName}s`
-      : `ui-${parentDisplayName}__${subcomponentName}`
-    : `ui-${info.displayName}`
+  const componentClassName = (
+    isChild
+      ? _.includes(subcomponentName, 'Group')
+        ? `ui-${parentDisplayName}s`
+        : `ui-${parentDisplayName}__${subcomponentName}`
+      : `ui-${info.displayName}`
   ).toLowerCase();
 
   // replace the component.description string with a parsed docblock object

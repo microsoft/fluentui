@@ -108,7 +108,7 @@ export type MenuButtonStylesProps = never;
  * A MenuButton displays a menu connected to trigger element.
  * @accessibility
  */
-export const MenuButton = (React.forwardRef<HTMLDivElement, MenuButtonProps>((props, ref) => {
+export const MenuButton = React.forwardRef<HTMLDivElement, MenuButtonProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(MenuButton.displayName, context.telemetry);
   setStart();
@@ -303,8 +303,7 @@ export const MenuButton = (React.forwardRef<HTMLDivElement, MenuButtonProps>((pr
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, MenuButtonProps> &
-  FluentComponentStaticProps<MenuButtonProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, MenuButtonProps> & FluentComponentStaticProps<MenuButtonProps>;
 
 MenuButton.displayName = 'MenuButton';
 

@@ -24,7 +24,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/ios/NavBarImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/ios/NavBarImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/ios/NavBarImplementation.md') as string,
         },
       ];
     case 'android':
@@ -32,7 +33,8 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] | u
         {
           sectionName: 'Implementation',
           editUrl: baseUrl + 'docs/android/NavBarImplementation.md',
-          content: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/android/NavBarImplementation.md') as string,
+          content:
+            require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/NavBarPage/docs/android/NavBarImplementation.md') as string,
         },
       ];
   }

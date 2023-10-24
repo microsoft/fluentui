@@ -52,7 +52,7 @@ export type AccordionContentStylesProps = Required<Pick<AccordionContentProps, '
 /**
  * An AccordionContent displays content hosted in an Accordion.
  */
-export const AccordionContent = (React.forwardRef<HTMLDListElement, AccordionContentProps>((props, ref) => {
+export const AccordionContent = React.forwardRef<HTMLDListElement, AccordionContentProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(AccordionContent.displayName, context.telemetry);
 
@@ -103,7 +103,7 @@ export const AccordionContent = (React.forwardRef<HTMLDListElement, AccordionCon
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDListElement, AccordionContentProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDListElement, AccordionContentProps> &
   FluentComponentStaticProps<AccordionContentProps>;
 
 AccordionContent.displayName = 'AccordionContent';

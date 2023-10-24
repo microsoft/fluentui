@@ -11,7 +11,6 @@ export { Resize } from './TextareaResize.stories';
 export { Size } from './TextareaSize.stories';
 export { Uncontrolled } from './TextareaUncontrolled.stories';
 export { Controlled } from './TextareaControlled.stories';
-export { Height } from './TextareaHeight.stories';
 
 export default {
   title: 'Components/Textarea',

@@ -12,21 +12,31 @@ import type { Checkbox } from '@fluentui/react-checkbox';
 import type { CheckboxProps } from '@fluentui/react-checkbox';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { ContextSelector } from '@fluentui/react-context-selector';
+import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { Provider } from 'react';
+import { ProviderProps } from 'react';
 import type { Radio } from '@fluentui/react-radio';
 import * as React_2 from 'react';
 import { ReactNode } from 'react';
+import { SelectionHookParams } from '@fluentui/react-utilities';
+import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 // @public (undocumented)
-export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>) => React_2.ReactNode;
+export type CellRenderFunction<TItem = unknown> = (column: TableColumnDefinition<TItem>, dataGridContextValue: DataGridContextValue) => React_2.ReactNode;
+
+// @public (undocumented)
+export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined>;
 
 // @public
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
     columnId: TableColumnId;
     renderCell: (item: TItem) => ReactNode;
-    renderHeaderCell: () => ReactNode;
+    renderHeaderCell: (data?: unknown) => ReactNode;
     compare: (a: TItem, b: TItem) => number;
 };
 
@@ -66,7 +76,12 @@ export const DataGridCell: ForwardRefComponent<DataGridCellProps>;
 export const dataGridCellClassNames: SlotClassNames<DataGridCellSlots>;
 
 // @public
-export type DataGridCellProps = TableCellProps;
+export type DataGridCellFocusMode = 'group' | 'none' | 'cell';
+
+// @public
+export type DataGridCellProps = TableCellProps & {
+    focusMode?: DataGridCellFocusMode;
+};
 
 // @public (undocumented)
 export type DataGridCellSlots = TableCellSlots;
@@ -78,11 +93,16 @@ export type DataGridCellState = TableCellState;
 export const dataGridClassNames: SlotClassNames<DataGridSlots>;
 
 // @public (undocumented)
+export const DataGridContextProvider: Provider<DataGridContextValue | undefined> & FC<ProviderProps<DataGridContextValue | undefined>>;
+
+// @public (undocumented)
 export type DataGridContextValue = TableFeaturesState<any> & {
     focusMode: DataGridFocusMode;
     selectableRows: boolean;
     subtleSelection: boolean;
     selectionAppearance: TableRowProps['appearance'];
+    resizableColumns?: boolean;
+    compositeRowTabsterAttribute: TabsterDOMAttribute;
 };
 
 // @public (undocumented)
@@ -91,7 +111,7 @@ export type DataGridContextValues = TableContextValues & {
 };
 
 // @public (undocumented)
-export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable';
+export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable' | 'composite';
 
 // @public
 export const DataGridHeader: ForwardRefComponent<DataGridHeaderProps>;
@@ -103,7 +123,7 @@ export const DataGridHeaderCell: ForwardRefComponent<DataGridHeaderCellProps>;
 export const dataGridHeaderCellClassNames: SlotClassNames<DataGridHeaderCellSlots>;
 
 // @public
-export type DataGridHeaderCellProps = TableHeaderCellProps;
+export type DataGridHeaderCellProps = Omit<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export type DataGridHeaderCellSlots = TableHeaderCellSlots;
@@ -124,10 +144,16 @@ export type DataGridHeaderSlots = TableHeaderSlots;
 export type DataGridHeaderState = TableHeaderState;
 
 // @public
-export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+export type DataGridProps = TableProps & Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> & Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> & Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> & Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React_2.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React_2.MouseEvent | React_2.KeyboardEvent, data: OnSelectionChangeData) => void;
     selectionMode?: SelectionMode_2;
+    columnSizingOptions?: TableColumnSizingOptions;
+    onColumnResize?: (e: KeyboardEvent | TouchEvent | MouseEvent | undefined, data: {
+        columnId: TableColumnId;
+        width: number;
+    }) => void;
+    containerWidthOffset?: number;
 };
 
 // @public
@@ -150,6 +176,7 @@ export type DataGridRowSlots = TableRowSlots & {
 export type DataGridRowState = TableRowState & ComponentState<DataGridRowSlots> & {
     renderCell: CellRenderFunction;
     columnDefs: TableColumnDefinition<any>[];
+    dataGridContextValue: DataGridContextValue;
 };
 
 // @public
@@ -173,7 +200,7 @@ export type DataGridSlots = TableSlots;
 // @public
 export type DataGridState = TableState & {
     tableState: TableFeaturesState<unknown>;
-} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'>;
+} & Pick<DataGridContextValue, 'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId' | 'resizableColumns' | 'compositeRowTabsterAttribute'>;
 
 // @public
 export const renderDataGrid_unstable: (state: DataGridState, contextValues: DataGridContextValues) => JSX.Element;
@@ -218,6 +245,9 @@ export const renderTableHeader_unstable: (state: TableHeaderState) => JSX.Elemen
 export const renderTableHeaderCell_unstable: (state: TableHeaderCellState) => JSX.Element;
 
 // @public
+export const renderTableResizeHandle_unstable: (state: TableResizeHandleState) => JSX.Element;
+
+// @public
 export const renderTableRow_unstable: (state: TableRowState) => JSX.Element;
 
 // @public
@@ -231,6 +261,9 @@ export type SortDirection = 'ascending' | 'descending';
 
 // @public
 export const Table: ForwardRefComponent<TableProps>;
+
+// @public (undocumented)
+export const TABLE_SELECTION_CELL_WIDTH = 44;
 
 // @public
 export const TableBody: ForwardRefComponent<TableBodyProps>;
@@ -289,6 +322,7 @@ export const tableCellLayoutClassNames: SlotClassNames<TableCellLayoutSlots>;
 // @public
 export type TableCellLayoutProps = ComponentProps<Partial<TableCellLayoutSlots>> & {
     appearance?: 'primary';
+    truncate?: boolean;
 };
 
 // @public (undocumented)
@@ -301,7 +335,7 @@ export type TableCellLayoutSlots = {
 };
 
 // @public
-export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance'> & {
+export type TableCellLayoutState = ComponentState<TableCellLayoutSlots> & Pick<TableCellLayoutProps, 'appearance' | 'truncate'> & {
     avatarSize: AvatarSize | undefined;
 } & Pick<TableContextValue, 'size'>;
 
@@ -331,11 +365,16 @@ export interface TableColumnDefinition<TItem> {
     // (undocumented)
     renderCell: (item: TItem) => React_2.ReactNode;
     // (undocumented)
-    renderHeaderCell: () => React_2.ReactNode;
+    renderHeaderCell: (data?: unknown) => React_2.ReactNode;
 }
 
 // @public (undocumented)
 export type TableColumnId = string | number;
+
+// @public (undocumented)
+export type TableColumnSizingOptions = Record<TableColumnId, Partial<Pick<ColumnWidthState, 'minWidth' | 'idealWidth' | 'padding'>> & {
+    defaultWidth?: number;
+}>;
 
 // @public (undocumented)
 export const TableContextProvider: React_2.Provider<TableContextValue | undefined>;
@@ -358,9 +397,11 @@ export type TableFeaturePlugin = <TItem>(tableState: TableFeaturesState<TItem>) 
 // @public (undocumented)
 export interface TableFeaturesState<TItem> extends Pick<UseTableFeaturesOptions<TItem>, 'items' | 'getRowId'> {
     columns: TableColumnDefinition<TItem>[];
+    columnSizing_unstable: TableColumnSizingState;
     getRows: <TRowState extends TableRowData<TItem> = TableRowData<TItem>>(rowEnhancer?: RowEnhancer<TItem, TRowState>) => TRowState[];
     selection: TableSelectionState;
     sort: TableSortState<TItem>;
+    tableRef: React_2.Ref<HTMLDivElement>;
 }
 
 // @public
@@ -377,6 +418,7 @@ export const tableHeaderCellClassNames: SlotClassNames<TableHeaderCellSlots>;
 
 // @public
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+    sortable?: boolean;
     sortDirection?: SortDirection;
 };
 
@@ -385,16 +427,20 @@ export type TableHeaderCellSlots = {
     root: Slot<'th', 'div'>;
     sortIcon: Slot<'span'>;
     button: NonNullable<Slot<ARIAButtonSlotProps>>;
+    aside: Slot<'span'>;
 };
 
 // @public
-export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> & Pick<TableContextValue, 'noNativeElements'> & Pick<TableHeaderCellProps, 'sortable'>;
 
 // @public (undocumented)
 export const tableHeaderClassName = "fui-TableHeader";
 
 // @public (undocumented)
 export const tableHeaderClassNames: SlotClassNames<TableHeaderSlots>;
+
+// @public (undocumented)
+export const TableHeaderContextProvider: React_2.Provider<string | undefined>;
 
 // @public
 export type TableHeaderProps = ComponentProps<TableHeaderSlots> & {};
@@ -409,6 +455,23 @@ export type TableHeaderState = ComponentState<TableHeaderSlots> & Pick<TableCont
 
 // @public
 export type TableProps = ComponentProps<TableSlots> & Partial<TableContextValue>;
+
+// @public
+export const TableResizeHandle: ForwardRefComponent<TableResizeHandleProps>;
+
+// @public (undocumented)
+export const tableResizeHandleClassNames: SlotClassNames<TableResizeHandleSlots>;
+
+// @public
+export type TableResizeHandleProps = ComponentProps<TableResizeHandleSlots> & {};
+
+// @public (undocumented)
+export type TableResizeHandleSlots = {
+    root: Slot<'div'>;
+};
+
+// @public
+export type TableResizeHandleState = ComponentState<TableResizeHandleSlots>;
 
 // @public
 export const TableRow: ForwardRefComponent<TableRowProps>;
@@ -502,6 +565,9 @@ export interface TableSortState<TItem> {
 // @public
 export type TableState = ComponentState<TableSlots> & Pick<Required<TableProps>, 'size' | 'noNativeElements'> & TableContextValue;
 
+// @public (undocumented)
+export const useColumnIdContext: () => TableColumnId;
+
 // @public
 export const useDataGrid_unstable: (props: DataGridProps, ref: React_2.Ref<HTMLElement>) => DataGridState;
 
@@ -516,6 +582,12 @@ export const useDataGridCell_unstable: (props: DataGridCellProps, ref: React_2.R
 
 // @public
 export const useDataGridCellStyles_unstable: (state: DataGridCellState) => DataGridCellState;
+
+// @public (undocumented)
+export const useDataGridContext_unstable: <T>(selector: ContextSelector<DataGridContextValue, T>) => T;
+
+// @public (undocumented)
+export function useDataGridContextValues_unstable(state: DataGridState): DataGridContextValues;
 
 // @public
 export const useDataGridHeader_unstable: (props: DataGridHeaderProps, ref: React_2.Ref<HTMLElement>) => DataGridHeaderState;
@@ -544,6 +616,9 @@ export const useDataGridSelectionCellStyles_unstable: (state: DataGridSelectionC
 // @public
 export const useDataGridStyles_unstable: (state: DataGridState) => DataGridState;
 
+// @public (undocumented)
+export const useIsInTableHeader: () => boolean;
+
 // @public
 export const useTable_unstable: (props: TableProps, ref: React_2.Ref<HTMLElement>) => TableState;
 
@@ -570,6 +645,16 @@ export const useTableCellLayoutStyles_unstable: (state: TableCellLayoutState) =>
 
 // @public
 export const useTableCellStyles_unstable: (state: TableCellState) => TableCellState;
+
+// @public (undocumented)
+export function useTableColumnSizing_unstable<TItem>(params?: UseTableColumnSizingParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+
+// @public (undocumented)
+export function useTableCompositeNavigation(): {
+    onTableKeyDown: React_2.KeyboardEventHandler;
+    tableTabsterAttribute: TabsterDOMAttribute;
+    tableRowTabsterAttribute: TabsterDOMAttribute;
+};
 
 // @public (undocumented)
 export const useTableContext: () => TableContextValue;
@@ -600,6 +685,12 @@ export const useTableHeaderCellStyles_unstable: (state: TableHeaderCellState) =>
 export const useTableHeaderStyles_unstable: (state: TableHeaderState) => TableHeaderState;
 
 // @public
+export const useTableResizeHandle_unstable: (props: TableResizeHandleProps, ref: React_2.Ref<HTMLElement>) => TableResizeHandleState;
+
+// @public
+export const useTableResizeHandleStyles_unstable: (state: TableResizeHandleState) => TableResizeHandleState;
+
+// @public
 export const useTableRow_unstable: (props: TableRowProps, ref: React_2.Ref<HTMLElement>) => TableRowState;
 
 // @public (undocumented)
@@ -609,7 +700,7 @@ export const useTableRowIdContext: () => TableRowId;
 export const useTableRowStyles_unstable: (state: TableRowState) => TableRowState;
 
 // @public (undocumented)
-export function useTableSelection<TItem>(options: UseTableSelectionOptions): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
+export function useTableSelection<TItem>(options: SelectionHookParams): (tableState: TableFeaturesState<TItem>) => TableFeaturesState<TItem>;
 
 // @public
 export const useTableSelectionCell_unstable: (props: TableSelectionCellProps, ref: React_2.Ref<HTMLElement>) => TableSelectionCellState;

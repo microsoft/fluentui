@@ -1,12 +1,13 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import {
   getPartitionedNativeProps,
   mergeCallbacks,
-  resolveShorthand,
   useControllableState,
   useTimeout,
+  slot,
 } from '@fluentui/react-utilities';
-import * as Keys from '@fluentui/keyboard-keys';
+import { ArrowUp, ArrowDown, End, Enter, Escape, Home, PageDown, PageUp } from '@fluentui/keyboard-keys';
 import {
   SpinButtonProps,
   SpinButtonState,
@@ -31,7 +32,7 @@ const DEFAULT_SPIN_DELAY_MS = 150;
 const MIN_SPIN_DELAY_MS = 80;
 const MAX_SPIN_TIME_MS = 1000;
 
-// This is here to give an ease the mouse held down case.
+// This is here to give an ease for the mouse held down case.
 // Exact easing it to be defined. Once it is we'll likely
 // pull this out into a util function in the SpinButton package.
 const lerp = (start: number, end: number, percent: number): number => start + (end - start) * percent;
@@ -46,6 +47,9 @@ const lerp = (start: number, end: number, percent: number): number => start + (e
  * @param ref - reference to root HTMLElement of SpinButton
  */
 export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HTMLInputElement>): SpinButtonState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true });
+
   const nativeProps = getPartitionedNativeProps({
     props,
     primarySlotTagName: 'input',
@@ -143,7 +147,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (!internalState.current.previousTextValue) {
-      internalState.current.previousTextValue = textValue;
+      internalState.current.previousTextValue = textValue ?? String(currentValue);
     }
     const newValue = e.target.value;
     setTextValue(newValue);
@@ -174,30 +178,30 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     let nextKeyboardSpinState: SpinButtonSpinState = 'rest';
 
-    if (e.key === Keys.ArrowUp) {
+    if (e.key === ArrowUp) {
       stepValue(e, 'up', textValue);
       nextKeyboardSpinState = 'up';
-    } else if (e.key === Keys.ArrowDown) {
+    } else if (e.key === ArrowDown) {
       stepValue(e, 'down', textValue);
       nextKeyboardSpinState = 'down';
-    } else if (e.key === Keys.PageUp) {
+    } else if (e.key === PageUp) {
       e.preventDefault();
       stepValue(e, 'upPage', textValue);
       nextKeyboardSpinState = 'up';
-    } else if (e.key === Keys.PageDown) {
+    } else if (e.key === PageDown) {
       e.preventDefault();
       stepValue(e, 'downPage', textValue);
       nextKeyboardSpinState = 'down';
-    } else if (!e.shiftKey && e.key === Keys.Home && min !== undefined) {
+    } else if (!e.shiftKey && e.key === Home && min !== undefined) {
       commit(e, min);
       nextKeyboardSpinState = 'down';
-    } else if (!e.shiftKey && e.key === Keys.End && max !== undefined) {
+    } else if (!e.shiftKey && e.key === End && max !== undefined) {
       commit(e, max);
       nextKeyboardSpinState = 'up';
-    } else if (e.key === Keys.Enter) {
+    } else if (e.key === Enter) {
       commit(e, currentValue, textValue);
       internalState.current.previousTextValue = undefined;
-    } else if (e.key === Keys.Escape) {
+    } else if (e.key === Escape) {
       if (internalState.current.previousTextValue) {
         setTextValue(undefined);
         internalState.current.previousTextValue = undefined;
@@ -253,12 +257,11 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
       incrementButton: 'button',
       decrementButton: 'button',
     },
-    root: resolveShorthand(root, {
-      required: true,
+    root: slot.always(root, {
       defaultProps: nativeProps.root,
+      elementType: 'span',
     }),
-    input: resolveShorthand(input, {
-      required: true,
+    input: slot.always(input, {
       defaultProps: {
         ref,
         autoComplete: 'off',
@@ -267,9 +270,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         type: 'text',
         ...nativeProps.primary,
       },
+      elementType: 'input',
     }),
-    incrementButton: resolveShorthand(incrementButton, {
-      required: true,
+    incrementButton: slot.always(incrementButton, {
       defaultProps: {
         tabIndex: -1,
         children: <ChevronUp16Regular />,
@@ -277,9 +280,9 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         'aria-label': 'Increment value',
         type: 'button',
       },
+      elementType: 'button',
     }),
-    decrementButton: resolveShorthand(decrementButton, {
-      required: true,
+    decrementButton: slot.always(decrementButton, {
       defaultProps: {
         tabIndex: -1,
         children: <ChevronDown16Regular />,
@@ -287,6 +290,7 @@ export const useSpinButton_unstable = (props: SpinButtonProps, ref: React.Ref<HT
         'aria-label': 'Decrement value',
         type: 'button',
       },
+      elementType: 'button',
     }),
   };
 

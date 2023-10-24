@@ -12,7 +12,8 @@ const componentUrl =
 export const PillButtonBarPageProps: TFabricPlatformPageProps = {
   ios: {
     title: 'Pill Button Bar',
-    overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarOverview.md') as string,
+    overview:
+      require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/PillButtonBarPage/docs/ios/PillButtonBarOverview.md') as string,
     related,
     componentUrl,
   },

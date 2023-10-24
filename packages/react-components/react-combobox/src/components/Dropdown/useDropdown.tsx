@@ -1,6 +1,7 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
-import { getPartitionedNativeProps, mergeCallbacks, resolveShorthand, useTimeout } from '@fluentui/react-utilities';
+import { getPartitionedNativeProps, mergeCallbacks, useMergedRefs, useTimeout, slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
 import { useComboboxPopup } from '../../utils/useComboboxPopup';
@@ -9,7 +10,6 @@ import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
 import type { OptionValue } from '../../utils/OptionCollection.types';
 import type { DropdownProps, DropdownState } from './Dropdown.types';
-import { useMergedRefs } from '@fluentui/react-utilities';
 
 /**
  * Create the state required to render Dropdown.
@@ -21,16 +21,12 @@ import { useMergedRefs } from '@fluentui/react-utilities';
  * @param ref - reference to root HTMLElement of Dropdown
  */
 export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLButtonElement>): DropdownState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsSize: true });
+
   const baseState = useComboboxBaseState(props);
-  const {
-    activeOption,
-    getIndexOfId,
-    getOptionsMatchingText,
-    open,
-    setActiveOption,
-    setFocusVisible,
-    setOpen,
-  } = baseState;
+  const { activeOption, getIndexOfId, getOptionsMatchingText, open, setActiveOption, setFocusVisible, setOpen } =
+    baseState;
 
   const { primary: triggerNativeProps, root: rootNativeProps } = getPartitionedNativeProps({
     props,
@@ -52,7 +48,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
 
   const getNextMatchingOption = (): OptionValue | undefined => {
     // first check for matches for the full searchString
-    let matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(searchString.current) === 0;
+    let matcher = (optionText: string) => optionText.toLowerCase().indexOf(searchString.current) === 0;
     let matches = getOptionsMatchingText(matcher);
     let startIndex = activeOption ? getIndexOfId(activeOption.id) : 0;
 
@@ -71,7 +67,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
       // if the search is all the same letter, cycle through options starting with that letter
       if (allSameLetter) {
         startIndex++;
-        matcher = (optionValue: string) => optionValue.toLowerCase().indexOf(letters[0]) === 0;
+        matcher = (optionText: string) => optionText.toLowerCase().indexOf(letters[0]) === 0;
         matches = getOptionsMatchingText(matcher);
       }
     }
@@ -111,53 +107,43 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   let triggerSlot: Slot<'button'>;
   let listboxSlot: Slot<typeof Listbox> | undefined;
 
-  triggerSlot = resolveShorthand(props.button, {
-    required: true,
+  triggerSlot = slot.always(props.button, {
     defaultProps: {
       type: 'button',
       children: baseState.value || props.placeholder,
       ...triggerNativeProps,
     },
+    elementType: 'button',
   });
-
   triggerSlot.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot.onKeyDown);
-
   listboxSlot =
     baseState.open || baseState.hasFocus
-      ? resolveShorthand(props.listbox, {
-          required: true,
-          defaultProps: {
-            children: props.children,
-            style: { width: popupWidth },
-          },
+      ? slot.optional(props.listbox, {
+          renderByDefault: true,
+          defaultProps: { children: props.children, style: { width: popupWidth } },
+          elementType: Listbox,
         })
       : undefined;
-
   [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
-
   const state: DropdownState = {
-    components: {
-      root: 'div',
-      button: 'button',
-      expandIcon: 'span',
-      listbox: Listbox,
-    },
-    root: resolveShorthand(props.root, {
-      required: true,
+    components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
+    root: slot.always(props.root, {
       defaultProps: {
         'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
         children: props.children,
         ...rootNativeProps,
       },
+      elementType: 'div',
     }),
     button: triggerSlot,
     listbox: listboxSlot,
-    expandIcon: resolveShorthand(props.expandIcon, {
-      required: true,
+    expandIcon: slot.optional(props.expandIcon, {
+      renderByDefault: true,
       defaultProps: {
         children: <ChevronDownIcon />,
       },
+      elementType: 'span',
     }),
     placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,

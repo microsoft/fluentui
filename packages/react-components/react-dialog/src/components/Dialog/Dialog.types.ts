@@ -59,7 +59,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * `alert`: is a special type of modal dialogs that interrupts the user's workflow
    * to communicate an important message or ask for a decision.
    * Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog,
-   * and it cannot be dismissed through the dimmed background or escape key.
+   * and it cannot be dismissed through the dimmed background.
    *
    * @default modal
    */
@@ -87,6 +87,13 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * Alternatively can only contain {@link DialogSurface} if using trigger outside dialog, or controlling state.
    */
   children: [JSX.Element, JSX.Element] | JSX.Element;
+  /**
+   * Enables standard behavior according to the [HTML dialog spec](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/showModal)
+   * where the focus trap involves setting outside elements inert.
+   *
+   * @default false
+   */
+  inertTrapFocus?: boolean;
 };
 
 export type DialogState = ComponentState<DialogSlots> &

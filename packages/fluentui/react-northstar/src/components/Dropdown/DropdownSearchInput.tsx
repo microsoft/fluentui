@@ -84,7 +84,7 @@ export type DropdownSearchInputStylesProps = Required<Pick<DropdownSearchInputPr
  * A DropdownSearchInput represents item of 'search' Dropdown.
  * Used to display the search input field.
  */
-export const DropdownSearchInput = (React.forwardRef<HTMLInputElement, DropdownSearchInputProps>((props, ref) => {
+export const DropdownSearchInput = React.forwardRef<HTMLInputElement, DropdownSearchInputProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(DropdownSearchInput.displayName, context.telemetry);
   setStart();
@@ -153,7 +153,7 @@ export const DropdownSearchInput = (React.forwardRef<HTMLInputElement, DropdownS
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'input', HTMLInputElement, DropdownSearchInputProps> &
+}) as unknown as ForwardRefWithAs<'input', HTMLInputElement, DropdownSearchInputProps> &
   FluentComponentStaticProps<DropdownSearchInputProps>;
 
 DropdownSearchInput.displayName = 'DropdownSearchInput';

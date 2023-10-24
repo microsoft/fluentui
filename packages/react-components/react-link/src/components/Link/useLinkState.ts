@@ -8,7 +8,7 @@ import type { LinkState } from './Link.types';
  */
 export const useLinkState_unstable = (state: LinkState): LinkState => {
   const { disabled, disabledFocusable } = state;
-  const { onClick, onKeyDown, role, tabIndex, type} = state.root;
+  const { onClick, onKeyDown, role, tabIndex, type } = state.root;
 
   // Add href and tabIndex=0 for anchor elements.
   if (state.root.as === 'a') {

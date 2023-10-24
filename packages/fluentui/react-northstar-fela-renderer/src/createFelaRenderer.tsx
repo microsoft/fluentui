@@ -145,7 +145,7 @@ export function createFelaRenderer(options: CreateFelaRendererOptions = {}): Cre
           theme: { direction: param.direction },
         };
 
-        return felaRenderer.renderRule(() => (styles as unknown) as IStyle, felaParam);
+        return felaRenderer.renderRule(() => styles as unknown as IStyle, felaParam);
       },
 
       // getOriginalRenderer() is implemented only for tests to be compatible with jest-react-fela expectations.

@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { DialogSurfaceContextValue } from '../../contexts';
+import type { PortalProps } from '@fluentui/react-portal';
+import { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
 export type DialogSurfaceSlots = {
   /**
@@ -8,8 +9,6 @@ export type DialogSurfaceSlots = {
    * This slot expects a `<div>` element which will replace the default backdrop.
    * The backdrop should have `aria-hidden="true"`.
    *
-   * By default if `DialogSurface` is `<dialog>` element the backdrop is ignored,
-   * since native `<dialog>` element supports [::backdrop](https://developer.mozilla.org/en-US/docs/Web/CSS/::backdrop)
    */
   backdrop?: Slot<'div'>;
   root: Slot<'div'>;
@@ -18,18 +17,12 @@ export type DialogSurfaceSlots = {
 /**
  * Union between all possible semantic element that represent a DialogSurface
  */
-export type DialogSurfaceElement = HTMLDialogElement | HTMLDivElement;
-
-/** @internal */
-export type DialogSurfaceElementIntersection = HTMLDialogElement & HTMLDivElement;
+export type DialogSurfaceElement = HTMLElement;
 
 /**
  * DialogSurface Props
- *
- * Omits basic types from native `dialog` (`open`, `onCancel` and `onClose`)
- * to ensure `onOpenChange`, `open` and `defaultOpen` from `Dialog` is used instead
  */
-export type DialogSurfaceProps = Omit<ComponentProps<DialogSurfaceSlots>, 'open' | 'onCancel' | 'onClose'>;
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
 
 export type DialogSurfaceContextValues = {
   dialogSurface: DialogSurfaceContextValue;
@@ -38,4 +31,10 @@ export type DialogSurfaceContextValues = {
 /**
  * State used in rendering DialogSurface
  */
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
+  // This is only partial to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
+  Pick<DialogContextValue, 'isNestedDialog'> &
+  Pick<PortalProps, 'mountNode'> & {
+    // This is only optional to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
+    transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+  };

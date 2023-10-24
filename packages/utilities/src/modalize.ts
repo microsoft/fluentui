@@ -25,7 +25,7 @@ export function modalize(target: HTMLElement): () => void {
   // start at target, then recurse and do the same for parent, until we reach <body>
   while (target !== targetDocument.body && target.parentElement) {
     // grab all siblings of current element
-    for (const sibling of (target.parentElement.children as unknown) as HTMLElement[]) {
+    for (const sibling of target.parentElement.children as unknown as HTMLElement[]) {
       // but ignore elements that are already aria-hidden
       const ariaHidden = sibling.getAttribute('aria-hidden');
       if (sibling !== target && ariaHidden?.toLowerCase() !== 'true' && tagsToIgnore.indexOf(sibling.tagName) === -1) {

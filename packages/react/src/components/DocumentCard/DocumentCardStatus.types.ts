@@ -1,7 +1,6 @@
 import { DocumentCardStatusBase } from './DocumentCardStatus.base';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import type { IReactProps } from '../../common/React.types';
+import type { IReactProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory DocumentCard}

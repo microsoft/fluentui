@@ -1,0 +1,941 @@
+id:
+name: GitOps.PullRequestIssueManagement
+description: GitOps.PullRequestIssueManagement primitive
+owner:
+resource: repository
+disabled: false
+where:
+configuration:
+  resourceManagementConfiguration:
+    scheduledSearches:
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - hasLabel:
+              label: 'Resolution: Not An Issue'
+          - isIssue
+          - isOpen
+          - noActivitySince:
+              days: 1
+        actions:
+          - addReply:
+              reply: "This issue has been marked as being beyond the support scope of Fluent UI's issues board. It will now be closed automatically for house-keeping purposes. "
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isIssue
+          - isOpen
+          - hasLabel:
+              label: 'Status: No Recent Activity'
+          - noActivitySince:
+              days: 3
+        actions:
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isIssue
+          - isOpen
+          - hasLabel:
+              label: 'Needs: Author Feedback'
+          - noActivitySince:
+              days: 4
+          - isNotLabeledWith:
+              label: 'Status: No Recent Activity'
+        actions:
+          - addLabel:
+              label: 'Status: No Recent Activity'
+          - addReply:
+              reply: This issue has been automatically marked as stale because it has marked as requiring author feedback but has not had any activity for **4 days**. It will be closed if no further activity occurs **within 3 days of this comment**. Thank you for your contributions to Fluent UI!
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isPullRequest
+          - isOpen
+          - hasLabel:
+              label: 'Needs: Author Feedback'
+          - hasLabel:
+              label: 'Status: No Recent Activity'
+          - noActivitySince:
+              days: 5
+        actions:
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isPullRequest
+          - isOpen
+          - hasLabel:
+              label: 'Needs: Author Feedback'
+          - noActivitySince:
+              days: 7
+          - isNotLabeledWith:
+              label: 'Status: No Recent Activity'
+        actions:
+          - addLabel:
+              label: 'Status: No Recent Activity'
+          - addReply:
+              reply: This pull request has been automatically marked as stale because it was marked as requiring author feedback but has not had any activity for **7 days**. It will be closed if no further activity occurs **within 5 days of this comment**. Thank you for your contributions to Fluent UI!
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - hasLabel:
+              label: 'Needs: Attention'
+          - noActivitySince:
+              days: 14
+          - isOpen
+          - isNotLabeledWith:
+              label: Issue Pinged
+        actions:
+          - addReply:
+              reply: "${assignees}\n\nGentle ping that this issue needs attention. "
+          - addLabel:
+              label: Issue Pinged
+      - description:
+        frequencies:
+          - hourly:
+              hour: 6
+        filters:
+          - hasLabel:
+              label: 'Resolution: Duplicate'
+          - isOpen
+          - noActivitySince:
+              days: 3
+        actions:
+          - addReply:
+              reply: Because this issue is marked as a duplicate and has not had activity for over 3 days, we're closing this issue for house-keeping purposes. Please refer to the issue that this issue was duplicated to for the purposes of tracking progress. Thank you.
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 6
+        filters:
+          - isOpen
+          - isIssue
+          - hasLabel:
+              label: 'Needs: Actionable Feedback :female_detective:'
+          - isNotLabeledWith:
+              label: 'Status: No Recent Activity'
+          - noActivitySince:
+              days: 2
+        actions:
+          - addReply:
+              reply: This issue has been automatically marked as stale because it has marked as requiring actionable feedback but has not had any activity for **2 days**. It will be closed if no further activity occurs **within 3 days of this comment**. Thank you for your contributions to Fluent UI!
+          - addLabel:
+              label: 'Status: No Recent Activity'
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isOpen
+          - isIssue
+          - hasLabel:
+              label: "Resolution: Won't Fix"
+          - noActivitySince:
+              days: 3
+        actions:
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 6
+        filters:
+          - isOpen
+          - hasLabel:
+              label: 'Resolution: By Design'
+          - noActivitySince:
+              days: 3
+        actions:
+          - addReply:
+              reply: "Because this issue is marked as by design and has not had activity for over 3 days, we're automatically closing it for house-keeping purposes. "
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isOpen
+          - isIssue
+          - noActivitySince:
+              days: 150
+          - isNotLabeledWith:
+              label: Needs Dev Input
+          - isNotLabeledWith:
+              label: Needs details
+          - isNotLabeledWith:
+              label: 'Needs: Actionable Feedback :female_detective:'
+          - isNotLabeledWith:
+              label: 'Needs: Attention'
+          - isNotLabeledWith:
+              label: 'Needs: Author Feedback'
+          - isNotLabeledWith:
+              label: 'Needs: Backlog review'
+          - isNotLabeledWith:
+              label: 'Needs: Design'
+          - isNotLabeledWith:
+              label: 'Needs: Discussion'
+          - isNotLabeledWith:
+              label: 'Needs: Investigation'
+          - isNotLabeledWith:
+              label: 'Needs: Project Proposal'
+          - isNotLabeledWith:
+              label: 'Needs: Prototyping'
+          - isNotLabeledWith:
+              label: 'Needs: Triage :mag:'
+          - isNotLabeledWith:
+              label: 'Area: Accessibility'
+          - isNotLabeledWith:
+              label: Help Wanted ✨
+          - isNotLabeledWith:
+              label: 'Needs: Behavior Breaking Change'
+          - isNotLabeledWith:
+              label: Fluent UI vNext
+          - isNotLabeledWith:
+              label: 'Status: In PR'
+          - isNotLabeledWith:
+              label: Fluent UI react (v8)
+          - isNotLabeledWith:
+              label: Storybook
+          - isNotLabeledWith:
+              label: 'Area: Build System'
+          - isNotLabeledWith:
+              label: 'Needs: Repro'
+          - isNotLabeledWith:
+              label: 'Component: New'
+        actions:
+          - addReply:
+              reply: >-
+                Because this issue has not had activity for over 150 days, we're automatically closing it for house-keeping purposes.
+
+
+                *Still require assistance? Please, create a new issue with up-to date details.*
+          - addLabel:
+              label: 'Resolution: Soft Close'
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isIssue
+          - isOpen
+          - noActivitySince:
+              days: 180
+        actions:
+          - addLabel:
+              label: 'Resolution: Soft Close'
+          - addReply:
+              reply: >-
+                Because this issue has not had activity for over 180 days, we're automatically closing it for house-keeping purposes.
+
+
+                *Still require assistance? Please, create a new issue with up-to date details.*
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isOpen
+          - isIssue
+          - hasLabel:
+              label: 'Status: Not on Roadmap'
+          - noActivitySince:
+              days: 150
+        actions:
+          - addLabel:
+              label: 'Resolution: Soft Close'
+          - addReply:
+              reply: >-
+                Because this issue has not had activity for over 150 days and it is not on our roadmap - we are automatically closing it for house-keeping reasons.
+
+                Please, follow our planned [FluentUI React Roadmap](https://github.com/microsoft/fluentui/wiki/Fluent-UI-React-Roadmap).
+
+
+                *Still require assistance? Please, create a new issue with up-to date details.*
+          - closeIssue
+      - description:
+        frequencies:
+          - hourly:
+              hour: 3
+        filters:
+          - isOpen
+          - isIssue
+          - noActivitySince:
+              days: 180
+          - hasLabel:
+              label: 'Type: Bug :bug:'
+        actions:
+          - addReply:
+              reply: >-
+                Because this reported issue has not had any activity for over 180 days, we're automatically closing it for house-keeping reasons.
+
+
+                *Still require assistance? Please, create a new issue with up-to date details and latest version of Fluent.*
+          - addLabel:
+              label: 'Resolution: Soft Close'
+          - closeIssue
+    eventResponderTasks:
+      - if:
+          - payloadType: Pull_Request
+        then:
+          - if:
+              - targetsBranch:
+                  branch: 5.0
+            then:
+              - addLabel:
+                  label: Fabric 5
+          - if:
+              - targetsBranch:
+                  branch: 7.0
+            then:
+              - addLabel:
+                  label: Fabric 7
+          - if:
+              - targetsBranch:
+                  branch: 6.0
+            then:
+              - addLabel:
+                  label: Fabric 6
+          - if:
+              - targetsBranch:
+                  branch: office-ui-fabric-react_v5.79.1
+            then:
+              - addLabel:
+                  label: Fabric 5
+        description: Auto label pull requests based on branch
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+        then:
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/office-ui-fabric-react/src/components/pickers
+                    - packages/react/src/components/pickers
+                  excludedFiles:
+                    - packages/office-ui-fabric-react/src/components/__snapshots__/
+                    - change
+                    - common/changes
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Pickers'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - package.json
+                    - scripts
+                    - rush.json
+                    - apps/vr-tests/screener.config.js
+                    - apps/vr-tests/screener.local.config.js
+                    - apps/pr-deploy-site
+                    - apps/perf-test
+                    - packages/tslint-rules
+                    - packages/jest-serializer-merge-styles
+                    - packages/prettier-rules
+                    - packages/webpack-utils
+                    - packages/codemods
+                    - packages/monaco-editor
+                    - packages/eslint-plugin
+                    - lage.config.js
+                    - tools
+                  excludedFiles:
+                    - change
+                    - common/changes
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Area: Build System'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - apps/fabric-website
+                    - packages/example-app-base
+                    - apps/fabric-website-resources
+                    - packages/example-data
+                    - packages/examples
+                    - packages/tsx-editor
+                    - packages/monaco-editor
+                    - apps/public-docsite
+                    - apps/public-docsite-resources
+                    - packages/react-examples
+                    - packages/react-monaco-editor
+                  excludedFiles:
+                    - change
+                    - common/changes
+                    - scripts
+            then:
+              - addLabel:
+                  label: 'Area: Website'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/fluentui
+                  excludedFiles:
+                    - scripts
+            then:
+              - addLabel:
+                  label: Fluent UI react-northstar
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/tsx-editor
+                    - packages/monaco-editor
+                    - packages/react-monaco-editor
+                  excludedFiles:
+                    - change
+            then:
+              - addLabel:
+                  label: 'Package: react-monaco-editor'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/icons
+                    - packages/file-type-icons
+                    - packages/react-icons
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Area: Icons'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/web-components
+                  excludedFiles:
+                    - change
+                    - scripts
+            then:
+              - addLabel:
+                  label: web-components
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/react-button
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Button'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/react-avatar
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Avatar'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/react-checkbox
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Checkbox'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/react-link
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Link'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/react-tabs
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Pivot'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/react-slider
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Slider'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/react-toggle
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Component: Toggle'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/charting
+                    - packages/react-charting
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Package: charting'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/date-time
+                    - packages/date-time-utilities
+                    - packages/react-date-time
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Package: date-time'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/experiments
+                    - packages/react-experiments
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Package: experiments'
+          - if:
+              - includesModifiedFiles:
+                  files:
+                    - packages/styling
+                    - packages/style-utilities
+                  excludedFiles:
+                    - change
+                    - scripts
+                    - packages/react-examples
+            then:
+              - addLabel:
+                  label: 'Package: styling'
+        description: Auto label pull requests based on path
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+          - or:
+              - includesModifiedFiles:
+                  files:
+                    - packages/styling/etc/styling.api.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/utilities/etc/utilities.api.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/office-ui-fabric-react/etc/office-ui-fabric-react.api.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/date-time/etc/date-time.api.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/foundation-scenarios/etc/foundation-scenarios.api.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/merge-styles/etc/merge-styles.api.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/react/etc/react.api.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/style-utilities/etc/style-utilities.md
+              - includesModifiedFiles:
+                  files:
+                    - packages/theme/etc/theme.api.md
+          - or:
+              - isAction:
+                  action: Opened
+              - isAction:
+                  action: Synchronize
+        then:
+          - addLabel:
+              label: 'PR: API Modified'
+        description: 'Add "PR: API Modified" for all PRs that modifies api files'
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issue_Comment
+          - isAction:
+              action: Created
+          - isActivitySender:
+              issueAuthor: True
+          - hasLabel:
+              label: 'Needs: Author Feedback'
+          - isOpen
+        then:
+          - addLabel:
+              label: 'Needs: Attention'
+          - removeLabel:
+              label: 'Needs: Author Feedback'
+        description: Replace needs author feedback label with needs attention label when the author comments on an issue
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issues
+          - not:
+              isAction:
+                action: Closed
+          - hasLabel:
+              label: 'Status: No Recent Activity'
+          - not:
+              labelAdded:
+                label: 'Status: No Recent Activity'
+        then:
+          - removeLabel:
+              label: 'Status: No Recent Activity'
+        description: Remove no recent activity label from issues
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issue_Comment
+          - hasLabel:
+              label: 'Status: No Recent Activity'
+        then:
+          - removeLabel:
+              label: 'Status: No Recent Activity'
+        description: Remove no recent activity label when an issue is commented on
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request_Review
+          - isAction:
+              action: Submitted
+          - isReviewState:
+              reviewState: Changes_requested
+        then:
+          - addLabel:
+              label: 'Needs: Author Feedback'
+        description: Add needs author feedback label to pull requests when changes are requested
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+          - isActivitySender:
+              issueAuthor: True
+          - not:
+              isAction:
+                action: Closed
+          - hasLabel:
+              label: 'Needs: Author Feedback'
+        then:
+          - removeLabel:
+              label: 'Needs: Author Feedback'
+        description: Remove needs author feedback label when the author responds to a pull request
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issue_Comment
+          - isActivitySender:
+              issueAuthor: True
+          - hasLabel:
+              label: 'Needs: Author Feedback'
+        then:
+          - removeLabel:
+              label: 'Needs: Author Feedback'
+        description: Remove needs author feedback label when the author comments on a pull request
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request_Review
+          - isActivitySender:
+              issueAuthor: True
+          - hasLabel:
+              label: 'Needs: Author Feedback'
+        then:
+          - removeLabel:
+              label: 'Needs: Author Feedback'
+        description: Remove needs author feedback label when the author responds to a pull request review comment
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+          - not:
+              isAction:
+                action: Closed
+          - hasLabel:
+              label: 'Status: No Recent Activity'
+          - not:
+              labelAdded:
+                label: 'Status: No Recent Activity'
+        then:
+          - removeLabel:
+              label: 'Status: No Recent Activity'
+        description: Remove no recent activity label from pull requests
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issue_Comment
+          - hasLabel:
+              label: 'Status: No Recent Activity'
+        then:
+          - removeLabel:
+              label: 'Status: No Recent Activity'
+        description: Remove no recent activity label when a pull request is commented on
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request_Review
+          - hasLabel:
+              label: 'Status: No Recent Activity'
+        then:
+          - removeLabel:
+              label: 'Status: No Recent Activity'
+        description: Remove no recent activity label when a pull request is reviewed
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+          - hasLabel:
+              label: AutoMerge
+        then:
+          - enableAutoMerge:
+              mergeMethod: Squash
+        description: Automatically merge pull requests
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+          - labelRemoved:
+              label: AutoMerge
+        then:
+          - disableAutoMerge
+        description: Automatically merge pull requests
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+        then:
+          - inPrLabel:
+              label: 'Status: In PR'
+        description: Adds In-PR Label
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issues
+          - or:
+              - isAction:
+                  action: Opened
+              - isAction:
+                  action: Reopened
+          - or:
+              - bodyContains:
+                  pattern: ^\s*$
+                  isRegex: True
+        then:
+          - addReply:
+              reply: "Hi! Thanks for attempting to open an issue. Unfortunately, you didn't write anything in the body which makes it impossible to understand your concern. You are welcome to try again by opening a new issue. "
+          - closeIssue
+        description: Close issues with nothing in the body
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+          - isAction:
+              action: Opened
+          - or:
+              - activitySenderHasAssociation:
+                  association: FirstTimer
+              - activitySenderHasAssociation:
+                  association: FirstTimeContributor
+              - activitySenderHasPermission:
+                  permission: Write
+        then: []
+        description: Friendly bot
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issue_Comment
+          - isActivitySender:
+              user: msft-github-bot
+              issueAuthor: False
+          - or:
+              - isAction:
+                  action: Created
+              - isAction:
+                  action: Edited
+          - commentContains:
+              pattern: Perf Analysis
+              isRegex: False
+          - commentContains:
+              pattern: Possible regression
+              isRegex: False
+          - not:
+              hasLabel:
+                label: 'PR: Possible Perf Regression :snail:'
+        then:
+          - addLabel:
+              label: 'PR: Possible Perf Regression :snail:'
+        description: Add possible regression label to perf tests with regressions.
+        triggerOnOwnActions: true
+      - if:
+          - payloadType: Issue_Comment
+          - isActivitySender:
+              user: msft-github-bot
+              issueAuthor: False
+          - or:
+              - isAction:
+                  action: Edited
+          - hasLabel:
+              label: 'PR: Possible Perf Regression :snail:'
+          - not:
+              commentContains:
+                pattern: Possible regression
+                isRegex: False
+          - commentContains:
+              pattern: Component Perf Analysis
+              isRegex: False
+        then:
+          - removeLabel:
+              label: 'PR: Possible Perf Regression :snail:'
+        description: Remove possible regression label to perf tests without regressions.
+        triggerOnOwnActions: true
+      - if:
+          - payloadType: Issues
+          - labelAdded:
+              label: 'Needs: Actionable Feedback :female_detective:'
+          - isOpen
+        then:
+          - addReply:
+              reply: >
+                Thanks for taking the time to enter an issue. However, it seems that there aren't enough details here for this issue to be actionable.
+
+
+                When issues are created, we need details such as:
+
+                1. Which Fluent UI component is causing the issue
+
+                1. Which package name and version the component is from
+
+                1. Specific, complete steps to reproduce the issue
+
+                1. What behaviors and attributes are missing or incorrect
+
+                1. What you expected and what is actually happening
+
+                1. Confirmation that the problem reproduces in isolation
+
+
+                Without a clear understanding of these details, it's not possible to take clear action on issues. We are unable to meet your expectations, properly address the root cause, and make changes without affecting the expectations of other consumers.
+
+
+                Please provide these additional details as you are able. The default issue template provides an outline of these details and is viewable when creating a new issue. Additionally, if this is an accessibility issue, please see [Accessibility Troubleshooting](https://github.com/microsoft/fluentui/wiki/Accessibility-Troubleshooting) in our wiki for more guidance. If these details cannot be provided, please kindly close the issue.
+
+
+                Thank you for your patience.
+        description: 'Provide blurp when Needs: Actionable Feedback is added'
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issue_Comment
+          - isAction:
+              action: Created
+          - isActivitySender:
+              issueAuthor: True
+          - hasLabel:
+              label: 'Needs: Actionable Feedback :female_detective:'
+          - isOpen
+        then:
+          - removeLabel:
+              label: 'Needs: Actionable Feedback :female_detective:'
+          - addLabel:
+              label: 'Needs: Attention'
+        description: Replace needs actionable feedback label with needs attention label when the author comments on an issue
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issue_Comment
+        then:
+          - cleanEmailReply
+        description: Cleanse emails
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issues
+          - or:
+              - labelAdded:
+                  label: 'Needs: Author Feedback'
+              - labelAdded:
+                  label: 'Needs: Actionable Feedback :female_detective:'
+          - isOpen
+        then:
+          - removeLabel:
+              label: 'Needs: Triage :mag:'
+          - removeLabel:
+              label: 'Needs: Attention'
+        description: Remove needs triage if needs author feedback or needs actionable feedback label is added
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issues
+          - hasLabel:
+              label: 'Type: Feature'
+          - not:
+              hasLabel:
+                label: 'Area: Accessibility'
+          - or:
+              - hasLabel:
+                  label: 'Component: List'
+              - hasLabel:
+                  label: 'Component: DetailsList'
+              - hasLabel:
+                  label: 'Component: GroupedList'
+          - labelAdded:
+              label: "Resolution: Won't Fix"
+        then:
+          - addReply:
+              reply: Due to the complexity and dependencies of our List components, we are not able to take new feature requests at this time.
+        description: "List components: reply to won't fix feature requests"
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Issues
+          - hasLabel:
+              label: 'Type: Bug :bug:'
+          - not:
+              hasLabel:
+                label: 'Area: Accessibility'
+          - or:
+              - hasLabel:
+                  label: 'Component: List'
+              - hasLabel:
+                  label: 'Component: DetailsList'
+              - hasLabel:
+                  label: 'Component: GroupedList'
+          - labelAdded:
+              label: "Resolution: Won't Fix"
+        then:
+          - addReply:
+              reply: Due to the complexity and dependencies of our List components, we are actively trying to minimize risk of regressions. We sincerely apologize that we won't be able to address this issue at this moment.
+        description: "List components: reply to won't fix bugs"
+        triggerOnOwnActions: false
+      - if:
+          - payloadType: Pull_Request
+        then:
+          - labelSync:
+              pattern: ^Area
+          - labelSync:
+              pattern: ^Component
+        description: Sync labels from issues to prs
+        triggerOnOwnActions: false
+onFailure:
+onSuccess:

@@ -5,9 +5,10 @@ import { Stylesheet } from './Stylesheet';
  * Separates the classes and style objects. Any classes that are pre-registered
  * args are auto expanded into objects.
  */
-export function extractStyleParts(
-  ...args: (IStyle | IStyle[] | false | null | undefined)[]
-): { classes: string[]; objects: IStyleBaseArray } {
+export function extractStyleParts(...args: (IStyle | IStyle[] | false | null | undefined)[]): {
+  classes: string[];
+  objects: IStyleBaseArray;
+} {
   const classes: string[] = [];
   const objects: {}[] = [];
   const stylesheet = Stylesheet.getInstance();

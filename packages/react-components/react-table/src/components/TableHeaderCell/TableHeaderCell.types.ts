@@ -11,12 +11,21 @@ export type TableHeaderCellSlots = {
    * Button handles correct narration and interactions for sorting;
    */
   button: NonNullable<Slot<ARIAButtonSlotProps>>;
+  /**
+   * aside content for anything that should be after main content of the table header cell
+   */
+  aside: Slot<'span'>;
 };
 
 /**
  * TableHeaderCell Props
  */
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
+  /**
+   * Whether the column is sortable
+   * @default false
+   */
+  sortable?: boolean;
   /**
    * @default undefined
    */
@@ -27,4 +36,5 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
  * State used in rendering TableHeaderCell
  */
 export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> &
-  Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+  Pick<TableContextValue, 'noNativeElements'> &
+  Pick<TableHeaderCellProps, 'sortable'>;

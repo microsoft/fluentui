@@ -1,21 +1,23 @@
 {
+  "extends": "../../tsconfig.base.all.json",
   "compilerOptions": {
-    "target": "es5",
-    "outDir": "lib",
-    "module": "commonjs",
-    "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
+    "module": "ESNext",
+    "target": "ES2019",
     "noEmit": true,
     "experimentalDecorators": true,
     "noUnusedLocals": true,
-    "forceConsistentCasingInFileNames": true,
     "strictNullChecks": true,
     "noImplicitAny": true,
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "skipLibCheck": true,
-    "types": ["webpack-env", "@storybook/react"]
+    "types": ["webpack-env"]
   },
-  "include": ["src"]
+  "include": [],
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.app.json"
+    },
+    {
+      "path": "./.storybook/tsconfig.json"
+    }
+  ]
 }

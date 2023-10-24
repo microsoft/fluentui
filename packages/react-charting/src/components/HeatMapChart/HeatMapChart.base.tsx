@@ -7,7 +7,7 @@ import {
   IHeatMapChartDataPoint,
 } from '../../index';
 import { scaleLinear as d3ScaleLinear } from 'd3-scale';
-import { classNamesFunction, memoizeFunction } from '@fluentui/react/lib/Utilities';
+import { classNamesFunction, getId, memoizeFunction } from '@fluentui/react/lib/Utilities';
 import { FocusZoneDirection } from '@fluentui/react-focus';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
@@ -114,6 +114,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
   private _xAxisType: XAxisTypes;
   private _yAxisType: YAxisType;
   private _calloutAnchorPoint: FlattenData | null;
+  private _emptyChartId: string;
   public constructor(props: IHeatMapChartProps) {
     super(props);
     const { x, y } = this._getXandY();
@@ -147,15 +148,12 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       descriptionMessage: '',
       calloutId: '',
     };
+    this._emptyChartId = getId('_HeatMap_empty');
   }
+
   public render(): React.ReactNode {
-    const {
-      data,
-      xAxisDateFormatString,
-      xAxisNumberFormatString,
-      yAxisDateFormatString,
-      yAxisNumberFormatString,
-    } = this.props;
+    const { data, xAxisDateFormatString, xAxisNumberFormatString, yAxisDateFormatString, yAxisNumberFormatString } =
+      this.props;
     this._colorScale = this._getColorScale();
     const { dataSet, xAxisPoints, yAxisPoints } = this._createSet(
       data,
@@ -190,7 +188,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       }),
       descriptionMessage: this.state.descriptionMessage,
     };
-    return (
+    return !this._isChartEmpty() ? (
       <CartesianChart
         {...this.props}
         points={data}
@@ -218,6 +216,13 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
           this._yAxisScale = props.yScale;
           return this._createRectangles();
         }}
+      />
+    ) : (
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
       />
     );
   }
@@ -415,7 +420,7 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
     const { domainValuesForColorScale, rangeValuesForColorScale } = this.props;
     return d3ScaleLinear()
       .domain(domainValuesForColorScale)
-      .range((rangeValuesForColorScale as unknown) as number[]);
+      .range(rangeValuesForColorScale as unknown as number[]);
   };
 
   private _getXIndex = (value: string | Date | number): string => {
@@ -689,4 +694,8 @@ export class HeatMapChartBase extends React.Component<IHeatMapChartProps, IHeatM
       `${xValue}, ${yValue}. ${legend}, ${zValue}.` + (description ? ` ${description}.` : '')
     );
   };
+
+  private _isChartEmpty(): boolean {
+    return !(this.props.data && this.props.data.length > 0);
+  }
 }

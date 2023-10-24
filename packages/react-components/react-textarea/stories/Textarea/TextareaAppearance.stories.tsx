@@ -1,58 +1,44 @@
 import * as React from 'react';
-import { makeStyles, shorthands, tokens, useId, Label, Textarea } from '@fluentui/react-components';
+import { Field, makeStyles, mergeClasses, shorthands, tokens, Textarea } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   base: {
     display: 'flex',
     flexDirection: 'column',
-
-    '> div': {
-      display: 'flex',
-      flexDirection: 'column',
-      marginTop: tokens.spacingVerticalMNudge,
-      ...shorthands.padding(tokens.spacingHorizontalMNudge),
-    },
-
-    '> div > label': {
-      marginBottom: tokens.spacingHorizontalXXS,
-      marginLeft: tokens.spacingHorizontalMNudge,
-    },
+    rowGap: tokens.spacingVerticalMNudge,
   },
-  filledLighter: {
+  inverted: {
     backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
   },
-  filledDarker: {
-    backgroundColor: tokens.colorNeutralBackgroundInverted,
-    '> label': {
-      color: tokens.colorNeutralForegroundInverted2,
-    },
+  invertedLabel: {
+    color: tokens.colorNeutralForegroundInverted2,
+  },
+  fieldWrapper: {
+    ...shorthands.padding(tokens.spacingVerticalMNudge, tokens.spacingHorizontalMNudge),
   },
 });
 
 export const Appearance = () => {
-  const outlineId = useId('textarea-outline');
-  const filledDarkerId = useId('textarea-filleddarker');
-  const filledLighterId = useId('textarea-filledlighter');
   const styles = useStyles();
 
   return (
     <div className={styles.base}>
-      <div>
-        <Label htmlFor={outlineId}>Textarea with Outline appearance.</Label>
-        <Textarea id={outlineId} appearance="outline" placeholder="type here..." resize="both" />
+      <div className={styles.fieldWrapper}>
+        <Field label="Textarea with Outline appearance">
+          <Textarea appearance="outline" placeholder="type here..." resize="both" />
+        </Field>
       </div>
 
-      <div className={styles.filledDarker}>
-        <Label htmlFor={filledDarkerId}>Textarea with Filled Darker appearance.</Label>
-        <Textarea id={filledDarkerId} appearance="filled-darker" placeholder="type here..." resize="both" />
+      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
+        <Field label={{ children: 'Textarea with Filled Darker appearance', className: styles.invertedLabel }}>
+          <Textarea appearance="filled-darker" placeholder="type here..." resize="both" />
+        </Field>
       </div>
 
-      <div className={styles.filledLighter}>
-        <Label htmlFor={filledLighterId}>Textarea with Filled Lighter appearance.</Label>
-        <Textarea id={filledLighterId} appearance="filled-lighter" placeholder="type here..." resize="both" />
+      <div className={mergeClasses(styles.fieldWrapper, styles.inverted)}>
+        <Field label={{ children: 'Textarea with Filled Lighter appearance', className: styles.invertedLabel }}>
+          <Textarea appearance="filled-lighter" placeholder="type here..." resize="both" />
+        </Field>
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Caption1, tokens, Text } from '@fluentui/react-components';
-import { MoreHorizontal20Filled } from '@fluentui/react-icons';
-import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-card';
+import { MoreHorizontal20Regular } from '@fluentui/react-icons';
+import { Card, CardHeader, CardPreview, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -50,15 +50,15 @@ const CardExample = (props: CardProps) => {
     <Card className={styles.card} {...props}>
       <CardPreview
         className={styles.grayBackground}
-        logo={<img className={styles.logoBadge} alt="app logo" src={resolveAsset('logo3.svg')} />}
+        logo={<img className={styles.logoBadge} src={resolveAsset('logo3.svg')} alt="Figma app logo" />}
       >
-        <img alt="Presentation Preview" src={resolveAsset('office1.png')} className={styles.smallRadius} />
+        <img className={styles.smallRadius} src={resolveAsset('office1.png')} alt="Presentation Preview" />
       </CardPreview>
 
       <CardHeader
         header={<Text weight="semibold">iOS App Prototype</Text>}
         description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More actions" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />}
       />
     </Card>
   );

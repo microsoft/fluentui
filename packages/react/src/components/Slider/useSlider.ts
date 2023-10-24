@@ -264,6 +264,7 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
   };
 
   const calculateCurrentSteps = (event: DragChangeEvent) => {
+    // eslint-disable-next-line deprecation/deprecation
     const sliderPositionRect: ClientRect = sliderLine.current!.getBoundingClientRect();
     const sliderLength: number = !props.vertical ? sliderPositionRect.width : sliderPositionRect.height;
     const stepLength: number = sliderLength / steps;
@@ -452,23 +453,22 @@ export const useSlider = (props: ISliderProps, ref: React.ForwardedRef<HTMLDivEl
     }),
   };
 
-  const lowerValueThumbProps:
-    | (React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>)
-    | undefined = ranged
-    ? {
-        ref: lowerValueThumbRef,
-        className: classNames.thumb,
-        style: getPositionStyles(lowerValuePercent),
-        ...sliderProps,
-        ...onFocusProp,
-        id: `min-${id}`,
-        'aria-valuemin': min,
-        'aria-valuemax': value,
-        'aria-valuenow': lowerValue,
-        'aria-valuetext': getAriaValueText(lowerValue),
-        'aria-label': `min ${ariaLabel || label}`,
-      }
-    : undefined;
+  const lowerValueThumbProps: (React.HTMLAttributes<HTMLElement> & React.RefAttributes<HTMLElement>) | undefined =
+    ranged
+      ? {
+          ref: lowerValueThumbRef,
+          className: classNames.thumb,
+          style: getPositionStyles(lowerValuePercent),
+          ...sliderProps,
+          ...onFocusProp,
+          id: `min-${id}`,
+          'aria-valuemin': min,
+          'aria-valuemax': value,
+          'aria-valuenow': lowerValue,
+          'aria-valuetext': getAriaValueText(lowerValue),
+          'aria-label': `min ${ariaLabel || label}`,
+        }
+      : undefined;
 
   const containerProps: React.HTMLAttributes<HTMLElement> = {
     className: classNames.container,

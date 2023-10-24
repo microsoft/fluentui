@@ -3,22 +3,28 @@ import * as React from 'react';
 import { IDocPageProps } from '@fluentui/react/lib/common/DocPage.types';
 
 import { FocusTrapZoneBoxExample } from './FocusTrapZone.Box.Example';
-const FocusTrapZoneBoxExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Box.Example.tsx') as string;
+const FocusTrapZoneBoxExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Box.Example.tsx') as string;
 
 import { FocusTrapZoneBoxCustomElementExample } from './FocusTrapZone.Box.FocusOnCustomElement.Example';
-const FocusTrapZoneBoxCustomElementExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
+const FocusTrapZoneBoxCustomElementExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Box.FocusOnCustomElement.Example.tsx') as string;
 
 import { FocusTrapZoneBoxClickExample } from './FocusTrapZone.Box.Click.Example';
-const FocusTrapZoneBoxClickExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Box.Click.Example.tsx') as string;
+const FocusTrapZoneBoxClickExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Box.Click.Example.tsx') as string;
 
 import { FocusTrapZoneNestedExample } from './FocusTrapZone.Nested.Example';
-const FocusTrapZoneNestedExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Nested.Example.tsx') as string;
+const FocusTrapZoneNestedExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.Nested.Example.tsx') as string;
 
 import { FocusTrapZoneFocusZoneExample } from './FocusTrapZone.FocusZone.Example';
-const FocusTrapZoneFocusZoneExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.FocusZone.Example.tsx') as string;
+const FocusTrapZoneFocusZoneExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.FocusZone.Example.tsx') as string;
 
 import { FocusTrapZoneDialogInPanelExample } from './FocusTrapZone.DialogInPanel.Example';
-const FocusTrapZoneDialogInPanelExampleCode = require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.DialogInPanel.Example.tsx') as string;
+const FocusTrapZoneDialogInPanelExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/FocusTrapZone/FocusTrapZone.DialogInPanel.Example.tsx') as string;
 
 export const FocusTrapZonePageProps: IDocPageProps = {
   title: 'FocusTrapZone',
