@@ -77,13 +77,6 @@ export class Dialog extends FASTElement {
 
   /**
    * @public
-   * The ID of the element to focus when the dialog opens
-   */
-  @attr({ attribute: 'change-focus' })
-  public changeFocus?: string;
-
-  /**
-   * @public
    * The type of the dialog modal
    */
   @attr({ attribute: 'modal-type' })

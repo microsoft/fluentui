@@ -26,7 +26,6 @@ export const template: ElementViewTemplate<Dialog> = html`
     ?open="${x => x.open}"
     role="${x => (x.modalType === DialogModalType.alert ? 'alertdialog' : 'dialog')}"
     modal-type="${x => x.modalType}"
-    change-focus="${x => x.changeFocus}"
     class="dialog"
     part="dialog"
     aria-modal="${x =>
