@@ -44,6 +44,11 @@ export const styles = css`
     top: 0;
     left: 0;
     z-index: var(--drawer-elevation, 1000);
+    font-size: ${fontSizeBase300};
+    line-height: ${lineHeightBase300};
+    font-family: ${fontFamilyBase};
+    font-weight: ${fontWeightRegular};
+    color: ${colorNeutralForeground1};
   }
 
   :host([position='end']) {
@@ -77,10 +82,6 @@ export const styles = css`
     right: 0px;
   }
 
-  :host([modal-type='non-modal']) dialog::backdrop {
-    display: none;
-  }
-
   dialog::backdrop {
     background: rgba(0, 0, 0, 0.4);
   }
@@ -89,32 +90,38 @@ export const styles = css`
     color: inherit;
     font: inherit;
     background-color: transparent;
+    border: 1px solid ${colorTransparentStroke};
     top: 0;
     bottom: 0;
     border-radius: 0;
-    border: 1px solid ${colorTransparentStroke};
     height: 100%;
     margin-left: 0;
     margin-right: auto;
     padding: 0;
-    max-width: 100vh;
+    max-width: 100%;
     max-height: 100vh;
-    overflow-x: hidden;
-    overflow-y: hidden;
-    box-shadow: var(--shadow64);
+    overflow: hidden;
     width: var(--drawer-size, 592px);
   }
 
-  :host([type='overlay']) .drawer {
+  :host([open][modal-type='non-modal']) {
+    width: var(--drawer-size, 592px);
+  }
+
+  :host([type='overlay']) dialog {
     box-shadow: ${shadow64};
   }
 
-  :host([separator]) .drawer {
+  :host([modal-type='non-modal']) dialog::backdrop {
+    display: none;
+  }
+
+  :host([separator]) dialog {
     border-right-color: ${colorNeutralStroke2};
     border-left-color: ${colorTransparentStroke};
   }
 
-  :host([separator][position='end']) .drawer {
+  :host([separator][position='end']) dialog {
     border-right-color: ${colorTransparentStroke};
     border-left-color: ${colorNeutralStroke2};
   }
@@ -190,6 +197,10 @@ export const styles = css`
     box-shadow: inset 0 0 0 1px ${colorStrokeFocus2};
   }
 
+  dialog:focus-visible {
+    outline: none;
+  }
+
   dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.4);
     inset: 0;
@@ -201,29 +212,29 @@ export const styles = css`
     animation-duration: 250ms;
   }
 
-  :host(.closing) dialog::backdrop {
+  :host(.animating.closing) dialog::backdrop {
     animation-direction: reverse;
   }
 
-  :host(.animating) .drawer {
+  :host(.animating) dialog {
     animation: drawer-slide-in-start;
     animation-timing-function: ${curveDecelerateMid};
     animation-duration: ${durationNormal};
   }
 
-  :host(.closing) .drawer {
+  :host(.animating.closing) dialog {
     animation-direction: reverse;
     animation-timing-function: ${curveAccelerateMin};
     animation-duration: ${durationNormal};
   }
 
-  :host([position='end'].animating) .drawer {
+  :host([position='end'].animating) dialog {
     animation: drawer-slide-in-end;
     animation-timing-function: ${curveDecelerateMid};
     animation-duration: ${durationNormal};
   }
 
-  :host([position='end'].closing) .drawer {
+  :host([position='end'].closing) dialog {
     animation-direction: reverse;
     animation-timing-function: ${curveAccelerateMin};
     animation-duration: ${durationNormal};

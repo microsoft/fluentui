@@ -10,9 +10,7 @@ export class Drawer extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
     document.addEventListener('keydown', this.handleDocumentKeydown);
-    if (this.responsive) {
-      this.addEventListener('click', this.handleOverlayClick);
-    }
+    this.addEventListener('click', this.handleOverlayClick);
 
     Updates.enqueue(() => {
       this.updateTrapFocus();
@@ -23,15 +21,12 @@ export class Drawer extends FASTElement {
   public disconnectedCallback(): void {
     super.disconnectedCallback();
     document.removeEventListener('keydown', this.handleDocumentKeydown);
-    if (this.responsive) {
-      this.removeEventListener('click', this.handleOverlayClick);
-    }
+    this.removeEventListener('click', this.handleOverlayClick);
     this.updateTrapFocus(false);
   }
 
   public handleOverlayClick = (e: MouseEvent): void => {
-    console.log('handleOverlayClick');
-    if (this.responsive && e.target !== this.drawer) {
+    if (e.target !== this.drawer) {
       this.close();
     }
   };
@@ -93,10 +88,10 @@ export class Drawer extends FASTElement {
    * Enables standard behavior according to the HTML dialog spec where the focus trap involves setting outside elements inert.
    * @public
    * @remarks
-   * HTML Attribute: modalType
+   * HTML Attribute: trap-focus
    */
-  @attr({ attribute: 'inert-trap-focus', mode: 'boolean' })
-  public inertTrapFocus: boolean = false;
+  @attr({ attribute: 'trap-focus', mode: 'boolean' })
+  public trapFocus: boolean = false;
 
   /**
    * Sets the type of the drawer (overlay/inline).
@@ -137,16 +132,6 @@ export class Drawer extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public separator: boolean = false;
-
-  /**
-   * Determines whether drawer should change types at specific.
-   * @public
-   * @remarks
-   * HTML Attribute: responsive
-   * @defaultValue false
-   */
-  @attr({ mode: 'boolean' })
-  public responsive: boolean = false;
 
   /**
    * Sets the size of the drawer (small/medium/large).
@@ -208,7 +193,7 @@ export class Drawer extends FASTElement {
    */
   public async show(): Promise<void> {
     if (!this.open) {
-      this.openDialog();
+      this.openDrawer();
     }
   }
 
@@ -218,7 +203,7 @@ export class Drawer extends FASTElement {
    */
   public close(): void {
     if (this.open) {
-      this.closeDialog();
+      this.closeDrawer();
     }
   }
 
@@ -227,9 +212,9 @@ export class Drawer extends FASTElement {
    * Triggers the opening animation and updates the overflow styles and focus trap if necessary.
    * @private
    */
-  private openDialog(): void {
+  private openDrawer(): void {
     this.open = true;
-    if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal || this.responsive) {
+    if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal) {
       this.dialog.show();
     } else {
       this.dialog.showModal();
@@ -239,7 +224,7 @@ export class Drawer extends FASTElement {
 
     Updates.enqueue(() => {
       this.setOverflowStyles();
-      if (this.inertTrapFocus) {
+      if (this.trapFocus) {
         this.updateTrapFocus(true);
       }
     });
@@ -251,7 +236,7 @@ export class Drawer extends FASTElement {
    * Triggers the closing animation.
    * @private
    */
-  private closeDialog(): void {
+  private closeDrawer(): void {
     this.closing = true;
     Updates.enqueue(() => {
       this.triggerAnimation();
@@ -268,8 +253,8 @@ export class Drawer extends FASTElement {
     if (this.closing) {
       this.classList.add('closing');
     }
-
-    this.drawer.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
+    console.log('animating');
+    this.dialog.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
   }
 
   /**
@@ -278,7 +263,7 @@ export class Drawer extends FASTElement {
    *
    */
   private animationEndHandler(): void {
-    this.drawer.removeEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
+    this.dialog.removeEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
     this.classList.remove('animating');
     if (this.closing) {
       this.classList.remove('closing');
@@ -350,7 +335,7 @@ export class Drawer extends FASTElement {
    * @private
    */
   private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (!this.inertTrapFocus || !this.open) {
+    if (!this.trapFocus || !this.open) {
       return;
     }
 
@@ -408,7 +393,7 @@ export class Drawer extends FASTElement {
    * If the component is connected, it updates the focus trap.
    * @internal
    */
-  protected inertTrapFocusChanged = (): void => {
+  protected trapFocusChanged = (): void => {
     if (this.$fastController.isConnected) {
       this.updateTrapFocus();
     }
@@ -477,7 +462,7 @@ export class Drawer extends FASTElement {
    * @internal
    */
   private shouldTrapFocus = (): boolean => {
-    return this.inertTrapFocus && this.open;
+    return this.trapFocus && this.open;
   };
 
   /**

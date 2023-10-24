@@ -10,7 +10,7 @@ Link to Drawer Design Spec in Figma: [Link](<https://www.figma.com/file/V2sDk36x
 
 The Fluent WC3 Drawer extends `FASTElement`
 
-### Class: `Drawer`
+### Class `Drawer`
 
 ### Template
 
@@ -24,7 +24,6 @@ The Fluent WC3 Drawer extends `FASTElement`
       aria-labelledby="${x => x.ariaLabelledby}"
       aria-label="${x => x.ariaLabel}"
       ?inert-trap-focus="${x => x.inertTrapFocus}"
-      ?hidden="${x => x.hidden}"
       ?open-default="${x => x.openDefault}"
       ?separator="${x => x.separator}"
       size="${x => x.size}"
@@ -68,7 +67,7 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 | Name               | Type                                | Default             | Description                                                                       |
 | ------------------ | ----------------------------------- | ------------------- | --------------------------------------------------------------------------------- |
-| `inert-trap-focus` | `boolean`                           | `false`             | Determines whether the focus should be trapped within the drawer when it is open. |
+| `trap-focus`       | `boolean`                           | `false`             | Determines whether the focus should be trapped within the drawer when it is open. |
 | `modal-type`       | `modal` `non-modal` `alert`         | `modal`             | Determines whether the drawer should be displayed as modal, non-modal, or alert.  |
 | `type`             | `overlay` `inline`                  | `false`             | Determines whether the drawer should be displayed inline or as an overlay         |
 | `position`         | `DrawerPosition \| undefined`       | `start`             | Sets the position of the drawer (left/right).                                     |
