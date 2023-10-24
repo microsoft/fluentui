@@ -36,8 +36,8 @@ extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
   parameters:
     pool:
-      name: OneESHostedPool
-      image: HostedPoolWindowsImage
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
       os: windows # We need windows because compliance task only run on windows.
     stages:
       - stage: main
@@ -99,14 +99,6 @@ extends:
                   yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/release-vNext.config.js
                   git reset --hard origin/master
                 displayName: Publish changes and bump versions
-
-              - task: ComponentGovernanceComponentDetection@0
-                displayName: 'Component governance detection'
-                inputs:
-                  sourceScanPath: $(Agent.BuildDirectory)
-                condition: succeeded()
-                timeoutInMinutes: 5
-                continueOnError: true
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

@@ -37,8 +37,8 @@ extends:
   template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
   parameters:
     pool:
-      name: OneESHostedPool
-      image: HostedPoolWindowsImage
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
       os: windows # We need windows because compliance task only run on windows.
     stages:
       - stage: main
