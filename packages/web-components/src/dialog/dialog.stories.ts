@@ -52,14 +52,12 @@ const openDialog = (e: Event, id: string) => {
 
 const openDialogControlled = (e: Event, id: string) => {
   const dialog = document.getElementById(id) as FluentDialog;
-  dialog.open = true;
-  dialog.show();
+  dialog.setAttribute('open', '');
 };
 
 const closeDialogControlled = (e: Event, id: string) => {
   const dialog = document.getElementById(id) as FluentDialog;
-  dialog.open = false;
-  dialog.hide();
+  dialog.removeAttribute('open');
 };
 
 const dialogTemplate = html<DialogStoryArgs>`
@@ -70,7 +68,12 @@ const dialogTemplate = html<DialogStoryArgs>`
   </style>
   <div>
     <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}">
+    <fluent-dialog
+      id="dialog-default"
+      modal-type="${x => x.modalType}"
+      ?no-title-action="${x => x.noTitleAction}"
+      change-focus="${x => x.changeFocus}"
+    >
       <fluent-text slot="title">Dialog</fluent-text>
       <fluent-text as="p" weight="regular" block>
         <p>
@@ -80,14 +83,14 @@ const dialogTemplate = html<DialogStoryArgs>`
       </fluent-text>
       <br />
       <fluent-text block><code>fluent-dialog</code></fluent-text>
-
       <fluent-button
+        id="dialog-default-close"
         slot="footer-action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="footer-action" tabindex="0">Do Something</fluent-button>
+      <fluent-button id="dialog-default-dosomething" slot="footer-action" tabindex="0">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `;
@@ -98,16 +101,6 @@ export default {
     modalType: DialogModalType.modal,
   },
   argTypes: {
-    open: {
-      description: 'Controls the open state of the dialog',
-      table: {
-        defaultValue: { summary: false },
-      },
-    },
-    onOpenChange: {
-      description:
-        'Event fired when the component transitions from its open state.<br /><br /><code>event</code>: A CustomEvent emitted when the open state changes.<br /><br /> <code>detail</code>: An object containing relevant information, such as the open value and the type of interaction that triggered the event.',
-    },
     modalType: {
       description:
         '<code>modal</code>: When this type of dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab sequence is kept within the dialog and moving the focus outside the dialog will imply closing it. This is the default type of the component.<br /><br /><code>non-modal</code>: When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the last focusable element.<br /><br /><code>alert</code>: A special type of modal dialog that interrupts the users workflow to communicate an important message or ask for a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog, and it cannot be dismissed through the dimmed background.',
@@ -119,6 +112,38 @@ export default {
         options: Object.values(DialogModalType),
       },
       defaultValue: DialogModalType.modal,
+    },
+    changeFocus: {
+      description: 'Used to set the id of the element that should receive focus when the dialog is opened',
+      table: {
+        defaultValue: { summary: 'undefined' },
+      },
+      control: {
+        type: 'select',
+        options: ['dialog-default-close', 'dialog-default-dosomething'],
+      },
+      defaultValue: undefined,
+    },
+    noTitleAction: {
+      description:
+        'Used to opt out of rendering the default title action that is rendered when the dialog <code>type</code>is set to <code>non-modal</code>',
+      table: {
+        defaultValue: { summary: false },
+      },
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
+    open: {
+      description: 'Controls the open state of the dialog',
+      table: {
+        defaultValue: { summary: false },
+      },
+    },
+    onOpenChange: {
+      description:
+        'Event fired when the component transitions from its open state.<br /><br /><code>event</code>: A CustomEvent emitted when the open state changes.<br /><br /> <code>detail</code>: An object containing relevant information, such as the open value and the type of interaction that triggered the event.',
     },
   },
 } as DialogStoryMeta;

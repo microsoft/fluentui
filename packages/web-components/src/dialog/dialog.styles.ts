@@ -1,3 +1,5 @@
+import { css } from '@microsoft/fast-element';
+import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusXLarge,
   colorBackgroundOverlay,
@@ -17,15 +19,17 @@ import {
   spacingVerticalS,
   spacingVerticalXXL,
   strokeWidthThin,
-} from '@fluentui/web-components';
-import { css } from '@microsoft/fast-element';
-import { display } from '@microsoft/fast-foundation';
+} from '../theme/design-tokens.js';
 
 /** Dialog styles
  * @public
  */
 export const styles = css`
   ${display('flex')}
+
+  :host {
+    --dialog-backdrop: ${colorBackgroundOverlay};
+  }
 
   dialog {
     background: ${colorNeutralBackground1};
@@ -45,7 +49,7 @@ export const styles = css`
   }
 
   dialog::backdrop {
-    background: ${colorBackgroundOverlay};
+    background: var(--dialog-backdrop, rgba(0, 0, 0, 0.4));
   }
 
   .root {
