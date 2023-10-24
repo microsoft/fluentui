@@ -35,6 +35,7 @@ extends:
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
+              os: linux
             workspace:
               clean: all
             steps:
@@ -93,6 +94,7 @@ extends:
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
+              os: linux
             templateContext:
               outputs:
                 - output: pipelineArtifact

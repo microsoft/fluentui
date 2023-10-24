@@ -44,6 +44,7 @@ extends:
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
+              os: linux
             workspace:
               clean: all
             templateContext:
