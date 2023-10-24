@@ -56,37 +56,44 @@ test.describe('Drawer', () => {
   test('should reflect position attribute', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-          <fluent-drawer position="right"></fluent-drawer>
+          <fluent-drawer position="end"></fluent-drawer>
       `;
     });
 
-    await expect(element).toHaveAttribute('position', 'right');
-    await expect(element).toHaveJSProperty('position', 'right');
+    await expect(element).toHaveAttribute('position', 'end');
+    await expect(element).toHaveJSProperty('position', 'end');
 
     await element.evaluate((node: Drawer) => {
-      node.position = 'left';
+      node.position = 'start';
     });
 
-    await expect(element).toHaveAttribute('position', 'left');
-    await expect(element).toHaveJSProperty('position', 'left');
+    await expect(element).toHaveAttribute('position', 'start');
+    await expect(element).toHaveJSProperty('position', 'start');
   });
 
-  test('should reflect modal attribute', async () => {
+  test('should reflect modal-type attribute', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer modal></fluent-drawer>
+            <fluent-drawer modal-type="modal"></fluent-drawer>
         `;
     });
 
-    await expect(element).toHaveAttribute('modal', '');
-    await expect(element).toHaveJSProperty('modal', true);
+    await expect(element).toHaveAttribute('modal-type', 'modal');
+    await expect(element).toHaveJSProperty('modalType', 'modal');
 
     await element.evaluate((node: Drawer) => {
-      node.modal = false;
+      node.modalType = 'non-modal';
     });
 
-    await expect(element).not.toHaveAttribute('modal', '');
-    await expect(element).toHaveJSProperty('modal', false);
+    await expect(element).not.toHaveAttribute('modal-type', 'non-modal');
+    await expect(element).toHaveJSProperty('modalType', 'non-modal');
+
+    await element.evaluate((node: Drawer) => {
+      node.modalType = 'alert';
+    });
+
+    await expect(element).not.toHaveAttribute('modal-type', 'alert');
+    await expect(element).toHaveJSProperty('modalType', 'alert');
   });
 
   test('should reflect open attribute', async () => {
@@ -194,7 +201,7 @@ test.describe('Drawer', () => {
     await expect(overlay).toHaveAttribute('hidden', '');
   });
 
-  test('toggleDrawer method should toggle open state of drawer', async () => {
+  test('show and hide methods should toggle open state of drawer', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
           <fluent-drawer></fluent-drawer>
@@ -205,14 +212,14 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', false);
 
     await element.evaluate((node: Drawer) => {
-      node.toggleDrawer();
+      node.show();
     });
 
     await expect(element).toHaveAttribute('open', '');
     await expect(element).toHaveJSProperty('open', true);
 
     await element.evaluate((node: Drawer) => {
-      node.toggleDrawer();
+      node.close();
     });
 
     await expect(element).not.toHaveAttribute('open', '');
@@ -230,7 +237,7 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', true);
 
     await element.evaluate((node: Drawer) => {
-      node.hide();
+      node.close();
     });
 
     await expect(element).not.toHaveAttribute('open', '');
@@ -270,7 +277,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.toggleDrawer();
+        node.show();
       }),
     ]);
 
@@ -292,7 +299,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.toggleDrawer();
+        node.show();
       }),
     ]);
 
@@ -306,11 +313,11 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.position = 'left';
-        node.toggleDrawer();
+        node.position = 'start';
+        node.show();
       }),
     ]);
-    expect(left).toEqual('left');
+    expect(left).toEqual('start');
   });
 
   test('openChanged event should include drawers open state in detail', async () => {
@@ -342,7 +349,7 @@ test.describe('Drawer', () => {
           }),
       ),
       await element.evaluate((node: Drawer) => {
-        node.hide();
+        node.close();
       }),
     ]);
     expect(isOpen2).not.toEqual(true);
