@@ -186,7 +186,7 @@ Link
 </li>
 ```
 
-Button (used only as OverflowMenu) TODO
+Button (used only as OverflowMenu)
 
 ```HTML
 <li>
