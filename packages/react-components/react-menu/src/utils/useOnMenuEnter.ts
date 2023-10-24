@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { useEventCallback } from '@fluentui/react-utilities';
-import { elementContains } from '@fluentui/react-portal';
+import { useEventCallback, elementContains } from '@fluentui/react-utilities';
 import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
 
 /**
@@ -9,7 +8,7 @@ import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities
 export const MENU_ENTER_EVENT = 'fuimenuenter';
 
 /**
- * This hook works similarly to @see {useOnClickOutside}
+ * This hook works similarly to @see useOnClickOutside
  *
  * Problem: Trying to behave the same as system menus:
  * When the mouse leaves a stack of nested menus the stack should not dismiss.
@@ -62,8 +61,8 @@ export const useOnMenuMouseEnter = (options: UseOnClickOrScrollOutsideOptions) =
 
 /**
  * Dispatches the custom MouseEvent enter event. Similar to calling `el.click()`
- * @param el element for the event target
- * @param nativeEvent the native mouse event this is mapped to
+ * @param el - element for the event target
+ * @param nativeEvent - the native mouse event this is mapped to
  */
 export const dispatchMenuEnterEvent = (el: HTMLElement, nativeEvent: MouseEvent) => {
   el.dispatchEvent(new CustomEvent(MENU_ENTER_EVENT, { bubbles: true, detail: { nativeEvent } }));

@@ -204,8 +204,11 @@ export const mergeComponentVariables__DEV: typeof mergeComponentVariables__PROD 
   return [variablesA, variablesB].reduce<ComponentVariablesPrepared>((acc, next) => {
     return siteVariables => {
       const { _debug = [], ...accumulatedVariables } = acc(siteVariables);
-      const { _debug: computedDebug = undefined, _debugId = undefined, ...computedComponentVariables } =
-        callable(next)(siteVariables) || {};
+      const {
+        _debug: computedDebug = undefined,
+        _debugId = undefined,
+        ...computedComponentVariables
+      } = callable(next)(siteVariables) || {};
 
       const merged = deepmerge(accumulatedVariables, computedComponentVariables);
 
@@ -267,8 +270,12 @@ export const mergeSiteVariables__DEV: typeof mergeSiteVariables__PROD = (
 
   return [siteVariablesA, siteVariablesB].reduce<SiteVariablesPrepared>((acc, next) => {
     const { _debug = [], ...accumulatedSiteVariables } = acc;
-    const { _debug: computedDebug = undefined, _invertedKeys = undefined, _debugId = undefined, ...nextSiteVariables } =
-      next || {};
+    const {
+      _debug: computedDebug = undefined,
+      _invertedKeys = undefined,
+      _debugId = undefined,
+      ...nextSiteVariables
+    } = next || {};
 
     const merged = deepmerge({ ...accumulatedSiteVariables, _invertedKeys: undefined }, nextSiteVariables);
     merged._debug = _debug.concat(computedDebug || { resolved: nextSiteVariables, debugId: _debugId });

@@ -79,6 +79,20 @@ storiesOf('Tooltip Converged', module)
         <button>Target</button>
       </Tooltip>
     </div>
+  ))
+  .addStory('overflow-wrap', () => (
+    <div className={useStyles().wrapper}>
+      <Tooltip visible content="Thistooltiptextislongenoughtobebrokenintoanewline" relationship="description">
+        <button>Target</button>
+      </Tooltip>
+    </div>
+  ))
+  .addStory('overflow-wrap withArrow', () => (
+    <div className={useStyles().wrapper}>
+      <Tooltip visible withArrow content="Thistooltiptextislongenoughtobebrokenintoanewline" relationship="description">
+        <button>Target</button>
+      </Tooltip>
+    </div>
   ));
 
 const TooltipPositioning: React.FC = () => {

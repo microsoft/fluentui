@@ -1,18 +1,20 @@
 import * as React from 'react';
+import { SelectionHookParams, SelectionMode } from '@fluentui/react-utilities';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import type { TableContextValues, TableProps, TableSlots, TableState } from '../Table/Table.types';
 import type {
   SortState,
   TableFeaturesState,
   UseTableSortOptions,
-  SelectionMode,
-  UseTableSelectionOptions,
   OnSelectionChangeData,
+  TableColumnSizingOptions,
+  TableColumnId,
 } from '../../hooks';
 import { TableRowProps } from '../TableRow/TableRow.types';
 
 export type DataGridSlots = TableSlots;
 
-export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable';
+export type DataGridFocusMode = 'none' | 'cell' | 'row_unstable' | 'composite';
 
 export type DataGridContextValues = TableContextValues & {
   dataGrid: DataGridContextValue;
@@ -45,6 +47,13 @@ export type DataGridContextValue = TableFeaturesState<any> & {
    * @default brand
    */
   selectionAppearance: TableRowProps['appearance'];
+
+  /**
+   * Enables column resizing
+   */
+  resizableColumns?: boolean;
+
+  compositeRowTabsterAttribute: TabsterDOMAttribute;
 };
 
 /**
@@ -52,9 +61,9 @@ export type DataGridContextValue = TableFeaturesState<any> & {
  */
 export type DataGridProps = TableProps &
   Pick<DataGridContextValue, 'items' | 'columns' | 'getRowId'> &
-  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance'> &
+  Pick<Partial<DataGridContextValue>, 'focusMode' | 'subtleSelection' | 'selectionAppearance' | 'resizableColumns'> &
   Pick<UseTableSortOptions, 'sortState' | 'defaultSortState'> &
-  Pick<UseTableSelectionOptions, 'defaultSelectedItems' | 'selectedItems'> & {
+  Pick<SelectionHookParams, 'defaultSelectedItems' | 'selectedItems'> & {
     onSortChange?: (e: React.MouseEvent, sortState: SortState) => void;
     onSelectionChange?: (e: React.MouseEvent | React.KeyboardEvent, data: OnSelectionChangeData) => void;
     /**
@@ -62,6 +71,23 @@ export type DataGridProps = TableProps &
      * @default false
      */
     selectionMode?: SelectionMode;
+    /**
+     * Options for column resizing
+     */
+    columnSizingOptions?: TableColumnSizingOptions;
+    /**
+     * A callback triggered when a column is resized.
+     */
+    onColumnResize?: (
+      e: KeyboardEvent | TouchEvent | MouseEvent | undefined,
+      data: { columnId: TableColumnId; width: number },
+    ) => void;
+    /**
+     * For column resizing. Allows for a container size to be adjusted by a number of pixels, to make
+     * sure the columns don't overflow the table.
+     * By default, this value is calculated internally based on other props, but can be overriden.
+     */
+    containerWidthOffset?: number;
   };
 
 /**
@@ -69,5 +95,11 @@ export type DataGridProps = TableProps &
  */
 export type DataGridState = TableState & { tableState: TableFeaturesState<unknown> } & Pick<
     DataGridContextValue,
-    'focusMode' | 'selectableRows' | 'subtleSelection' | 'selectionAppearance' | 'getRowId'
+    | 'focusMode'
+    | 'selectableRows'
+    | 'subtleSelection'
+    | 'selectionAppearance'
+    | 'getRowId'
+    | 'resizableColumns'
+    | 'compositeRowTabsterAttribute'
   >;

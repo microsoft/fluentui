@@ -12,8 +12,10 @@ import {
   MoreHorizontalRegular,
   bundleIcon,
 } from '@fluentui/react-icons';
-import { PresenceBadgeStatus, Avatar, Button } from '@fluentui/react-components';
 import {
+  PresenceBadgeStatus,
+  Avatar,
+  Button,
   TableBody,
   TableCell,
   TableRow,
@@ -27,7 +29,7 @@ import {
   useTableSelection,
   createTableColumn,
   TableCellActions,
-} from '@fluentui/react-components/unstable';
+} from '@fluentui/react-components';
 
 const EditIcon = bundleIcon(EditFilled, EditRegular);
 const MoreHorizontalIcon = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
@@ -188,8 +190,8 @@ export const SelectionWithCellActions = () => {
             <TableCell>
               <TableCellLayout media={item.file.icon}>{item.file.label}</TableCellLayout>
               <TableCellActions onClick={onClickCellActions} onKeyDown={onKeyDownCellActions}>
-                <Button icon={<EditIcon />} appearance="subtle" />
-                <Button icon={<MoreHorizontalIcon />} appearance="subtle" />
+                <Button icon={<EditIcon />} appearance="subtle" aria-label="Edit" />
+                <Button icon={<MoreHorizontalIcon />} appearance="subtle" aria-label="More actions" />
               </TableCellActions>
             </TableCell>
             <TableCell>

@@ -7,7 +7,6 @@ import {
   log,
   shEcho,
   performBrowserTest,
-  workspaceRoot,
   generateFiles,
 } from '@fluentui/scripts-projects-test';
 
@@ -25,7 +24,7 @@ export async function nextjs() {
 
   logger('STEP 2. Add Fluent UI dependency to test project');
 
-  const packedPackages = await packProjectPackages(logger, workspaceRoot, ['@fluentui/react-northstar']);
+  const packedPackages = await packProjectPackages(logger, '@fluentui/react-northstar');
   await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
   await shEcho(`yarn add ${packedPackages['@fluentui/react-northstar']}`, tempPaths.testApp);
@@ -36,6 +35,7 @@ export async function nextjs() {
   logger(`✔️ Source and bundler's config were created`);
 
   logger('STEP 4. Build test project');
+  await shEcho(`yarn next telemetry disable`, tempPaths.testApp);
   await shEcho(`yarn next build`, tempPaths.testApp);
   await shEcho(`yarn next export`, tempPaths.testApp);
   logger(`✔️ Example project was successfully built: ${tempPaths.testApp}`);

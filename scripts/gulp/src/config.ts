@@ -59,7 +59,10 @@ const envConfig = {
 // Paths
 // ------------------------------------
 const base = (...paths: string[]) => path.resolve(envConfig.path_base, ...paths);
-const fromBase = (...paths: string[]) => (...subPaths: string[]) => base(...paths, ...subPaths);
+const fromBase =
+  (...paths: string[]) =>
+  (...subPaths: string[]) =>
+    base(...paths, ...subPaths);
 
 const tempPaths = {
   build: fromBase(envConfig.dir_build),
@@ -79,7 +82,10 @@ const tempPaths = {
   perfSrc: fromBase(envConfig.dir_perf_src),
   umdDist: fromBase(envConfig.dir_umd_dist),
   ciArtifacts: fromBase(envConfig.dir_ci_artifacts),
-  withRootAt: (root: string, ...subpaths: string[]) => (...args: string[]) => path.resolve(root, ...subpaths, ...args),
+  withRootAt:
+    (root: string, ...subpaths: string[]) =>
+    (...args: string[]) =>
+      path.resolve(root, ...subpaths, ...args),
 };
 
 const paths: typeof tempPaths & {
@@ -89,8 +95,11 @@ const paths: typeof tempPaths & {
   base,
   ...tempPaths,
   // all the sibling values, but with forward slashes regardless the OS
-  posix: _.mapValues(tempPaths, (func: (...args: string[]) => string) => (...args: string[]) =>
-    func(...args).replace(/\\/g, '/'),
+  posix: _.mapValues(
+    tempPaths,
+    (func: (...args: string[]) => string) =>
+      (...args: string[]) =>
+        func(...args).replace(/\\/g, '/'),
   ) as any,
 };
 

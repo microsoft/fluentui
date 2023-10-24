@@ -2,34 +2,20 @@ import * as React from 'react';
 import { Provider, teamsV2Theme } from '@fluentui/react-northstar';
 import * as v0Icons from '@fluentui/react-icons-northstar';
 import * as v9Icons from '@fluentui/react-icons';
-import { makeStyles, Input, Switch, Label } from '@fluentui/react-components';
+import { Input, Switch, Label } from '@fluentui/react-components';
 import type { InputProps, SwitchProps } from '@fluentui/react-components';
 import { iconMapping as rawMapping } from './iconMapping';
 import { IconGrid } from './IconGrid';
 import { useDebounce } from './useDebounce';
 import { V0IconComponent, V9IconComponent } from './types';
-
-const useStyles = makeStyles({
-  searchPanel: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    marginBottom: '10px',
-    marginTop: '20px',
-  },
-
-  switch: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-});
+import { useIconCatalogStyles } from './IconCatalog.styles';
 
 const _mapping = rawMapping
   .map(entry => {
     const v0IconName = `${entry.v0}`;
     const v9IconName = `${entry.v9}Regular`;
-    const V0Icon = ((v0Icons as unknown) as Record<string, V0IconComponent>)[v0IconName];
-    const V9Icon = ((v9Icons as unknown) as Record<string, V9IconComponent | undefined>)[v9IconName];
+    const V0Icon = (v0Icons as unknown as Record<string, V0IconComponent>)[v0IconName];
+    const V9Icon = (v9Icons as unknown as Record<string, V9IconComponent | undefined>)[v9IconName];
 
     if (!V0Icon) {
       return null;
@@ -43,10 +29,11 @@ const _mapping = rawMapping
     };
   })
   .filter(Boolean);
-const mapping = _mapping.filter(Boolean) as Array<NonNullable<typeof _mapping[number]>>;
+const mapping = _mapping.filter(Boolean) as Array<NonNullable<(typeof _mapping)[number]>>;
 
 const IconCatalogInner: React.FC = () => {
-  const styles = useStyles();
+  const styles = useIconCatalogStyles();
+
   const [searchTerm, setSearchTerm] = React.useState<string | undefined>(undefined);
   const [searchV0, setSearchV0] = React.useState(true);
 
@@ -75,9 +62,10 @@ const IconCatalogInner: React.FC = () => {
     [searchTerm, searchV0],
   );
 
-  const onInputChange: InputProps['onChange'] = React.useCallback((e, { value }) => updateSearchDebounced(value), [
-    updateSearchDebounced,
-  ]);
+  const onInputChange: InputProps['onChange'] = React.useCallback(
+    (e, { value }) => updateSearchDebounced(value),
+    [updateSearchDebounced],
+  );
   const onSwitchChange: SwitchProps['onChange'] = React.useCallback((e, { checked }) => setSearchV0(checked), []);
 
   return (

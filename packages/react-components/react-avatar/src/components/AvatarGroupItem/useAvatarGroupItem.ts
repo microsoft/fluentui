@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Avatar } from '../Avatar/Avatar';
 import { AvatarGroupContext, useAvatarGroupContext_unstable } from '../../contexts/AvatarGroupContext';
 import { defaultAvatarGroupSize } from '../AvatarGroup/useAvatarGroup';
-import { resolveShorthand } from '@fluentui/react-utilities';
+import { slot } from '@fluentui/react-utilities';
 import { useHasParentContext } from '@fluentui/react-context-selector';
 import type { AvatarGroupItemProps, AvatarGroupItemState } from './AvatarGroupItem.types';
 
@@ -41,29 +41,29 @@ export const useAvatarGroupItem_unstable = (
       avatar: Avatar,
       overflowLabel: 'span',
     },
-    root: resolveShorthand(props.root, {
-      required: true,
+    root: slot.always(props.root, {
       defaultProps: {
         style,
         className,
       },
+      elementType: groupIsOverflow ? 'li' : 'div',
     }),
-    avatar: resolveShorthand(props.avatar, {
-      required: true,
+    avatar: slot.always(props.avatar, {
       defaultProps: {
         ref,
         size,
         color: 'colorful',
         ...avatarSlotProps,
       },
+      elementType: Avatar,
     }),
-    overflowLabel: resolveShorthand(props.overflowLabel, {
-      required: true,
+    overflowLabel: slot.always(props.overflowLabel, {
       defaultProps: {
         // Avatar already has its aria-label set to the name, this will prevent the name to be read twice.
         'aria-hidden': true,
         children: props.name,
       },
+      elementType: 'span',
     }),
   };
 };

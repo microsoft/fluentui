@@ -7,7 +7,7 @@ export interface UseArrowNavigationGroupOptions {
    * Focus will navigate vertically, horizontally or in both directions (grid), defaults to horizontally
    * @defaultValue vertical
    */
-  axis?: 'vertical' | 'horizontal' | 'grid' | 'both';
+  axis?: 'vertical' | 'horizontal' | 'grid' | 'grid-linear' | 'both';
   /**
    * Focus will cycle to the first/last elements of the group without stopping
    */
@@ -25,6 +25,13 @@ export interface UseArrowNavigationGroupOptions {
    * Tabster should ignore default handling of keydown events
    */
   ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
+  /**
+   * The default focusable item in the group will be an element with Focusable.isDefault property.
+   * Note that there is no way in \@fluentui/react-tabster to set default focusable element,
+   * and this option is currently for internal testing purposes only.
+   */
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  unstable_hasDefault?: boolean;
 }
 
 /**
@@ -32,7 +39,15 @@ export interface UseArrowNavigationGroupOptions {
  * @param options - Options to configure keyboard navigation
  */
 export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions = {}): Types.TabsterDOMAttribute => {
-  const { circular, axis, memorizeCurrent, tabbable, ignoreDefaultKeydown } = options;
+  const {
+    circular,
+    axis,
+    memorizeCurrent,
+    tabbable,
+    ignoreDefaultKeydown,
+    // eslint-disable-next-line @typescript-eslint/naming-convention
+    unstable_hasDefault,
+  } = options;
   const tabster = useTabster();
 
   if (tabster) {
@@ -43,8 +58,9 @@ export const useArrowNavigationGroup = (options: UseArrowNavigationGroupOptions 
     mover: {
       cyclic: !!circular,
       direction: axisToMoverDirection(axis ?? 'vertical'),
-      memorizeCurrent: memorizeCurrent,
-      tabbable: tabbable,
+      memorizeCurrent,
+      tabbable,
+      hasDefault: unstable_hasDefault,
     },
     ...(ignoreDefaultKeydown && {
       focusable: {
@@ -60,6 +76,8 @@ function axisToMoverDirection(axis: UseArrowNavigationGroupOptions['axis']): Typ
       return Types.MoverDirections.Horizontal;
     case 'grid':
       return Types.MoverDirections.Grid;
+    case 'grid-linear':
+      return Types.MoverDirections.GridLinear;
     case 'both':
       return Types.MoverDirections.Both;
 

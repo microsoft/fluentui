@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { ProgressBar } from '@fluentui/react-progress';
+import { Field, ProgressBar } from '@fluentui/react-components';
 
 export const Indeterminate = () => {
-  return <ProgressBar />;
+  return (
+    <Field validationMessage="Indeterminate ProgressBar" validationState="none">
+      <ProgressBar />
+    </Field>
+  );
 };
 
 Indeterminate.parameters = {

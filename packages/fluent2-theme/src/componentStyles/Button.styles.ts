@@ -14,7 +14,7 @@ const getFocusStyle = (borderColor: string, borderRadius: string, outlineColor: 
   '.ms-Fabric--isFocusVisible &:focus::after': {
     border: `1px solid ${borderColor}`,
     borderRadius,
-    inset: '0',
+    inset: '1px',
     outline: `2px solid ${outlineColor}`,
   },
 });
@@ -38,7 +38,7 @@ export function getStandardButtonStyles(theme: ITheme): Partial<IButtonStyles> {
     root: {
       borderColor: semanticColors.buttonBorder,
       color: semanticColors.buttonText,
-      ...getFocusStyle('transparent', effects.roundedCorner4, semanticColors.focusBorder),
+      ...getFocusStyle('transparent', effects.roundedCorner2, semanticColors.focusBorder),
     },
     rootHovered: {
       backgroundColor: semanticColors.buttonBackgroundHovered,
@@ -68,7 +68,7 @@ export function getPrimaryButtonStyles(theme: ITheme): Partial<IButtonStyles> {
       backgroundColor: semanticColors.primaryButtonBackground,
       borderColor: semanticColors.primaryButtonBorder,
       color: semanticColors.primaryButtonText,
-      ...getFocusStyle(palette.white, effects.roundedCorner4, semanticColors.focusBorder),
+      ...getFocusStyle(palette.white, effects.roundedCorner2, semanticColors.focusBorder),
     },
     rootHovered: {
       backgroundColor: semanticColors.primaryButtonBackgroundHovered,
@@ -88,6 +88,9 @@ export function getPrimaryButtonStyles(theme: ITheme): Partial<IButtonStyles> {
     description: {
       color: semanticColors.primaryButtonText,
     },
+    descriptionHovered: {
+      color: semanticColors.primaryButtonText,
+    },
   };
 
   return styles;
@@ -102,7 +105,7 @@ export function getIconButtonStyles(props: IButtonProps): IStyleFunctionOrObject
       borderColor: 'transparent',
       borderRadius: effects.roundedCorner4,
       color: palette.neutralPrimaryAlt,
-      ...getFocusStyle('transparent', effects.roundedCorner4, semanticColors.focusBorder),
+      ...getFocusStyle('transparent', effects.roundedCorner2, semanticColors.focusBorder),
     },
     rootHovered: {
       backgroundColor: palette.neutralLighter,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { useId, slot } from '@fluentui/react-utilities';
 import { Checkbox } from '@fluentui/react-checkbox';
 import { Radio } from '@fluentui/react-radio';
 import type { TableSelectionCellProps, TableSelectionCellState } from './TableSelectionCell.types';
@@ -30,13 +30,15 @@ export const useTableSelectionCell_unstable = (
       checkboxIndicator: Checkbox,
       radioIndicator: Radio,
     },
-    checkboxIndicator: resolveShorthand(props.checkboxIndicator, {
-      required: type === 'checkbox',
+    checkboxIndicator: slot.optional(props.checkboxIndicator, {
+      renderByDefault: type === 'checkbox',
       defaultProps: { checked: props.checked },
+      elementType: Checkbox,
     }),
-    radioIndicator: resolveShorthand(props.radioIndicator, {
-      required: type === 'radio',
+    radioIndicator: slot.optional(props.radioIndicator, {
+      renderByDefault: type === 'radio',
       defaultProps: { checked: !!checked, input: { name: useId('table-selection-radio') } },
+      elementType: Radio,
     }),
     type,
     checked,

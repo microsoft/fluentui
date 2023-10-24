@@ -4,7 +4,7 @@ import { Axis as D3Axis } from 'd3-axis';
 import { select as d3Select } from 'd3-selection';
 import { scaleLinear as d3ScaleLinear, ScaleLinear as D3ScaleLinear, scaleBand as d3ScaleBand } from 'd3-scale';
 import { classNamesFunction, getId, getRTL, warnDeprecations, memoizeFunction } from '@fluentui/react/lib/Utilities';
-import { IPalette } from '@fluentui/react/lib/Styling';
+import { IPalette, IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { DirectionalHint } from '@fluentui/react/lib/Callout';
 import { ILegend, Legends } from '../Legends/index';
 import {
@@ -31,6 +31,7 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
@@ -43,6 +44,8 @@ const COMPONENT_NAME = 'VERTICAL STACKED BAR CHART';
 // of 1 pixel. (If these values are changed, update the comment for barGapMax.)
 const barGapMultiplier = 0.2;
 const barGapMin = 1;
+
+const MIN_DOMAIN_MARGIN = 8;
 
 interface IRefArrayData {
   refElement?: SVGGElement | null;
@@ -58,6 +61,11 @@ enum CircleVisbility {
   show = 'visibility',
   hide = 'hidden',
 }
+
+type CalloutAnchorPointData = {
+  xAxisDataPoint: string;
+  chartDataPoint: IVSChartDataPoint;
+};
 
 export interface IVerticalStackedBarChartState extends IBasestate {
   dataPointCalloutProps?: IVSChartDataPoint;
@@ -76,7 +84,6 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _bars: JSX.Element[];
   private _xAxisType: XAxisTypes;
   private _barWidth: number;
-  private _additionalSpace: number;
   private _calloutId: string;
   private _colors: string[];
   private margins: IMargins;
@@ -85,7 +92,10 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
-  private _calloutAnchorPoint: IVSChartDataPoint | null;
+  private _calloutAnchorPoint: CalloutAnchorPointData | null;
+  private _domainMargin: number;
+  private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
+  private _emptyChartId: string;
 
   public constructor(props: IVerticalStackedBarChartProps) {
     super(props);
@@ -110,9 +120,13 @@ export class VerticalStackedBarChartBase extends React.Component<
     this._handleMouseOut = this._handleMouseOut.bind(this);
     this._calloutId = getId('callout');
     this._tooltipId = getId('VSBCTooltipId_');
-    this._adjustProps();
-    this._dataset = this._createDataSetLayer();
+    if (this._isChartEmpty()) {
+      this._adjustProps();
+      this._dataset = this._createDataSetLayer();
+    }
     this._createLegendsForLine = memoizeFunction((data: IVerticalStackedChartProps[]) => this._getLineLegends(data));
+    this._domainMargin = MIN_DOMAIN_MARGIN;
+    this._emptyChartId = getId('_VSBC_empty');
   }
 
   public componentDidUpdate(prevProps: IVerticalStackedBarChartProps): void {
@@ -127,75 +141,96 @@ export class VerticalStackedBarChartBase extends React.Component<
   }
 
   public render(): React.ReactNode {
-    this._adjustProps();
-    const _isHavingLines = this.props.data.some(
-      (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
-    );
-    const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
-    const { isCalloutForStack = false } = this.props;
-    this._dataset = this._createDataSetLayer();
-    const legendBars: JSX.Element = this._getLegendData(
-      this._points,
-      this.props.theme!.palette,
-      this._createLegendsForLine(this.props.data),
-    );
+    if (!this._isChartEmpty()) {
+      this._adjustProps();
+      const _isHavingLines = this.props.data.some(
+        (item: IVerticalStackedChartProps) => item.lineData && item.lineData.length > 0,
+      );
+      const shouldFocusWholeStack = this._toFocusWholeStack(_isHavingLines);
+      const { isCalloutForStack = false } = this.props;
+      this._dataset = this._createDataSetLayer();
+      const legendBars: JSX.Element = this._getLegendData(
+        this._points,
+        this.props.theme!.palette,
+        this._createLegendsForLine(this.props.data),
+      );
+      this._classNames = getClassNames(this.props.styles!, {
+        theme: this.props.theme!,
+        href: this.props.href!,
+      });
+      const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
+        isCalloutVisible: this.state.isCalloutVisible,
+        directionalHint: DirectionalHint.topAutoEdge,
+        id: `toolTip${this._calloutId}`,
+        target: this.state.refSelected,
+        isBeakVisible: false,
+        gapSpace: 15,
+        color: this.state.color,
+        legend: this.state.calloutLegend,
+        XValue: this.state.xCalloutValue!,
+        YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
+        YValueHover: this.state.YValueHover,
+        hoverXValue: this.state.hoverXValue,
+        onDismiss: this._closeCallout,
+        preventDismissOnLostFocus: true,
+        ...this.props.calloutProps,
+        ...getAccessibleDataObject(this.state.callOutAccessibilityData),
+      };
+      const tickParams = {
+        tickValues: this.props.tickValues,
+        tickFormat: this.props.tickFormat,
+      };
 
-    const calloutProps: IModifiedCartesianChartProps['calloutProps'] = {
-      isCalloutVisible: this.state.isCalloutVisible,
-      directionalHint: DirectionalHint.topAutoEdge,
-      id: `toolTip${this._calloutId}`,
-      target: this.state.refSelected,
-      isBeakVisible: false,
-      gapSpace: 15,
-      color: this.state.color,
-      legend: this.state.calloutLegend,
-      XValue: this.state.xCalloutValue!,
-      YValue: this.state.yCalloutValue ? this.state.yCalloutValue : this.state.dataForHoverCard,
-      YValueHover: this.state.YValueHover,
-      hoverXValue: this.state.hoverXValue,
-      onDismiss: this._closeCallout,
-      preventDismissOnLostFocus: true,
-      ...this.props.calloutProps,
-      ...getAccessibleDataObject(this.state.callOutAccessibilityData),
-    };
-    const tickParams = {
-      tickValues: this.props.tickValues,
-      tickFormat: this.props.tickFormat,
-    };
-
+      return (
+        <CartesianChart
+          {...this.props}
+          points={this._dataset}
+          chartType={ChartTypes.VerticalStackedBarChart}
+          xAxisType={this._xAxisType}
+          calloutProps={calloutProps}
+          tickParams={tickParams}
+          legendBars={legendBars}
+          datasetForXAxisDomain={this._xAxisLabels}
+          isCalloutForStack={shouldFocusWholeStack}
+          barwidth={this._barWidth}
+          focusZoneDirection={
+            isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
+          }
+          getmargins={this._getMargins}
+          getGraphData={this._getGraphData}
+          getAxisData={this._getAxisData}
+          customizedCallout={this._getCustomizedCallout()}
+          onChartMouseLeave={this._handleChartMouseLeave}
+          getDomainMargins={this._getDomainMargins}
+          {...(this._xAxisType !== XAxisTypes.NumericAxis && { xAxisInnerPadding: 2 / 3, xAxisOuterPadding: 0 })}
+          /* eslint-disable react/jsx-no-bind */
+          // eslint-disable-next-line react/no-children-prop
+          children={(props: IChildProps) => {
+            return (
+              <>
+                <g>{this._bars}</g>
+                <g>
+                  {_isHavingLines &&
+                    this._createLines(
+                      props.xScale!,
+                      props.yScale!,
+                      props.containerHeight!,
+                      props.containerWidth!,
+                      props.yScaleSecondary,
+                    )}
+                </g>
+              </>
+            );
+          }}
+        />
+      );
+    }
     return (
-      <CartesianChart
-        {...this.props}
-        points={this._dataset}
-        chartType={ChartTypes.VerticalStackedBarChart}
-        xAxisType={this._xAxisType}
-        calloutProps={calloutProps}
-        tickParams={tickParams}
-        legendBars={legendBars}
-        datasetForXAxisDomain={this._xAxisLabels}
-        isCalloutForStack={shouldFocusWholeStack}
-        barwidth={this._barWidth}
-        focusZoneDirection={
-          isCalloutForStack || _isHavingLines ? FocusZoneDirection.horizontal : FocusZoneDirection.vertical
-        }
-        getmargins={this._getMargins}
-        getGraphData={this._getGraphData}
-        getAxisData={this._getAxisData}
-        customizedCallout={this._getCustomizedCallout()}
-        onChartMouseLeave={this._handleChartMouseLeave}
-        /* eslint-disable react/jsx-no-bind */
-        // eslint-disable-next-line react/no-children-prop
-        children={(props: IChildProps) => {
-          return (
-            <>
-              <g>{this._bars}</g>
-              <g>
-                {_isHavingLines &&
-                  this._createLines(props.xScale!, props.yScale!, props.containerHeight!, props.containerWidth!)}
-              </g>
-            </>
-          );
-        }}
+      <div
+        id={this._emptyChartId}
+        role={'alert'}
+        style={{ opacity: '0' }}
+        aria-label={'Graph has no data to display'}
       />
     );
   }
@@ -267,6 +302,7 @@ export class VerticalStackedBarChartBase extends React.Component<
     yScale: NumericScale,
     containerHeight: number,
     containerWidth: number,
+    secondaryYScale?: NumericScale,
   ): JSX.Element => {
     const isNumeric = this._xAxisType === XAxisTypes.NumericAxis;
     const { xBarScale } = this._getScales(containerHeight, containerWidth, isNumeric);
@@ -286,13 +322,15 @@ export class VerticalStackedBarChartBase extends React.Component<
         const x1 = isNumeric
           ? xScale(lineObject[item][i - 1].xItem.xAxisPoint as number)
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string) + this._additionalSpace;
-        const y1 = yScale(lineObject[item][i - 1].y);
+            (xBarScale as any)(lineObject[item][i - 1].xItem.xAxisPoint as string);
+        const useSecondaryYScale =
+          lineObject[item][i - 1].useSecondaryYScale && lineObject[item][i].useSecondaryYScale && secondaryYScale;
+        const y1 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i - 1].y) : yScale(lineObject[item][i - 1].y);
         const x2 = isNumeric
           ? xScale(lineObject[item][i].xItem.xAxisPoint as number)
           : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string) + this._additionalSpace;
-        const y2 = yScale(lineObject[item][i].y);
+            (xBarScale as any)(lineObject[item][i].xItem.xAxisPoint as string);
+        const y2 = useSecondaryYScale ? secondaryYScale!(lineObject[item][i].y) : yScale(lineObject[item][i].y);
 
         if (lineBorderWidth > 0) {
           borderForLines.push(
@@ -340,9 +378,11 @@ export class VerticalStackedBarChartBase extends React.Component<
               isNumeric
                 ? xScale(circlePoint.xItem.xAxisPoint as number)
                 : // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                  (xBarScale as any)(circlePoint.xItem.xAxisPoint as string) + this._additionalSpace
+                  (xBarScale as any)(circlePoint.xItem.xAxisPoint as string)
             }
-            cy={yScale(circlePoint.y)}
+            cy={
+              circlePoint.useSecondaryYScale && secondaryYScale ? secondaryYScale(circlePoint.y) : yScale(circlePoint.y)
+            }
             onMouseOver={
               this.state.selectedLegend === item
                 ? this._lineHover.bind(this, circlePoint)
@@ -393,8 +433,7 @@ export class VerticalStackedBarChartBase extends React.Component<
 
   private _adjustProps(): void {
     this._points = this.props.data || [];
-    this._barWidth = this.props.barWidth || 32;
-    this._additionalSpace = 0.5 * this._barWidth;
+    this._barWidth = this.props.barWidth || 16;
     const { theme } = this.props;
     const { palette } = theme!;
     // eslint-disable-next-line deprecation/deprecation
@@ -559,8 +598,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
-    if (this._calloutAnchorPoint !== point) {
-      this._calloutAnchorPoint = point;
+    if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
+      this._calloutAnchorPoint = {
+        chartDataPoint: point,
+        xAxisDataPoint: xAxisPoint,
+      };
       this.setState({
         refSelected,
         /**
@@ -708,6 +750,9 @@ export class VerticalStackedBarChartBase extends React.Component<
           ? (singleChartData.xAxisPoint as number)
           : (singleChartData.xAxisPoint as string),
       );
+      const xScaleBandwidthTranslate =
+        this._xAxisType === XAxisTypes.NumericAxis ? 0 : (xBarScale.bandwidth() - this._barWidth) / 2;
+      let barTotalValue = 0;
 
       // Removing datapoints with zero data
       const barsToDisplay = singleChartData.chartData.filter(point => point.data > 0);
@@ -727,7 +772,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         const ref: IRefArrayData = {};
 
         const shouldHighlight = this._legendHighlighted(point.legend) || this._noLegendHighlighted() ? true : false;
-        const classNames = getClassNames(this.props.styles!, {
+        this._classNames = getClassNames(this.props.styles!, {
           theme: this.props.theme!,
           shouldHighlight: shouldHighlight,
           href: this.props.href,
@@ -741,22 +786,22 @@ export class VerticalStackedBarChartBase extends React.Component<
           onFocus: this._onRectFocus.bind(this, point, singleChartData.xAxisPoint, color, ref),
           onBlur: this._handleMouseOut,
           onClick: this._onClick.bind(this, point),
+          role: 'img',
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < barMinimumHeight) {
-          barHeight = barMinimumHeight;
+        if (barHeight < Math.max(Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(Math.ceil(this._yMax / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
-
-        const xScaleBandwidthTranslate = this._xAxisType === XAxisTypes.NumericAxis ? 0 : xBarScale.bandwidth() / 2;
+        barTotalValue += point.data;
 
         // If set, apply the corner radius to the top of the final bar
         if (barCornerRadius && barHeight > barCornerRadius && index === barsToDisplay.length - 1) {
           return (
             <path
               key={index + indexNumber + `${shouldFocusWholeStack}`}
-              className={classNames.opacityChangeOnHover}
+              className={this._classNames.opacityChangeOnHover}
               d={`
                 M ${xPoint} ${yPoint + barCornerRadius}
                 a ${barCornerRadius} ${barCornerRadius} 0 0 1 ${barCornerRadius} ${-barCornerRadius}
@@ -773,13 +818,13 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-        if (barHeight < 1) {
+        if (barHeight < 0) {
           return <React.Fragment key={index + indexNumber}> </React.Fragment>;
         }
         return (
           <rect
             key={index + indexNumber}
-            className={classNames.opacityChangeOnHover}
+            className={this._classNames.opacityChangeOnHover}
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
@@ -787,7 +832,6 @@ export class VerticalStackedBarChartBase extends React.Component<
             fill={color}
             ref={e => (ref.refElement = e)}
             {...rectFocusProps}
-            role="img"
             transform={`translate(${xScaleBandwidthTranslate}, 0)`}
           />
         );
@@ -804,19 +848,41 @@ export class VerticalStackedBarChartBase extends React.Component<
         onClick: this._onClick.bind(this, singleChartData),
         role: 'img',
       };
+      let showLabel = false;
+      let barLabel = 0;
+      if (!this.props.hideLabels) {
+        if (this._noLegendHighlighted()) {
+          showLabel = true;
+          barLabel = barTotalValue;
+        } else {
+          barsToDisplay.forEach(point => {
+            if (this._legendHighlighted(point.legend)) {
+              showLabel = true;
+              barLabel += point.data;
+            }
+          });
+        }
+      }
       return (
-        <g
-          key={indexNumber + `${shouldFocusWholeStack}`}
-          id={`${indexNumber}-singleBar`}
-          ref={e => (groupRef.refElement = e)}
-          {...stackFocusProps}
-        >
-          {singleBar}
+        <g key={indexNumber + `${shouldFocusWholeStack}`}>
+          <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
+            {singleBar}
+          </g>
+          {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
+            <text
+              x={xPoint + this._barWidth / 2}
+              y={yPoint - 6}
+              textAnchor="middle"
+              className={this._classNames.barLabel}
+              aria-label={`Total: ${barLabel}`}
+              role="img"
+              transform={`translate(${xScaleBandwidthTranslate}, 0)`}
+            >
+              {formatValueWithSIPrefix(barLabel)}
+            </text>
+          )}
         </g>
       );
-    });
-    const className = getClassNames(this.props.styles!, {
-      theme: this.props.theme!,
     });
     // Removing un wanted tooltip div from DOM, when prop not provided.
     if (!this.props.showXAxisLablesTooltip) {
@@ -833,7 +899,7 @@ export class VerticalStackedBarChartBase extends React.Component<
         // eslint-disable-next-line no-empty
       } catch (e) {}
       const tooltipProps = {
-        tooltipCls: className.tooltip!,
+        tooltipCls: this._classNames.tooltip!,
         id: this._tooltipId,
         xAxis: xAxisElement,
       };
@@ -854,17 +920,17 @@ export class VerticalStackedBarChartBase extends React.Component<
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, xMin] : [xMin, xMax])
         .nice()
-        .range([this.margins.left!, containerWidth - this.margins.right! - this._barWidth]);
+        .range([
+          this.margins.left! + this._domainMargin,
+          containerWidth - this.margins.right! - this._barWidth - this._domainMargin,
+        ]);
 
       return { xBarScale, yBarScale };
     } else {
       const xBarScale = d3ScaleBand()
         .domain(this._xAxisLabels)
-        .range([
-          this.margins.left! - this._additionalSpace,
-          containerWidth - this.margins.right! - this._additionalSpace,
-        ])
-        .padding(this.props.xAxisPadding || 0.1);
+        .range([this.margins.left! + this._domainMargin, containerWidth - this.margins.right! - this._domainMargin])
+        .paddingInner(2 / 3);
 
       return { xBarScale, yBarScale };
     }
@@ -966,4 +1032,40 @@ export class VerticalStackedBarChartBase extends React.Component<
     const yValue = point.yAxisCalloutData || point.data;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
+
+  private _getDomainMargins = (containerWidth: number): IMargins => {
+    if (this._xAxisType !== XAxisTypes.NumericAxis) {
+      /** Total width available to render the bars */
+      const totalWidth =
+        containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
+      let barWidth = Math.min(this.props.barWidth || 16, 24);
+      /** Total width required to render the bars. Directly proportional to bar width */
+      const reqWidth = (3 * this._xAxisLabels.length - 2) * barWidth;
+
+      this._domainMargin = MIN_DOMAIN_MARGIN;
+      if (totalWidth >= reqWidth) {
+        // Center align the chart by setting equal left and right margins for domain
+        this._domainMargin += (totalWidth - reqWidth) / 2;
+      } else {
+        /** Maximum possible bar width to maintain 2:1 spacing */
+        const maxBandwidth = totalWidth / (3 * this._xAxisLabels.length - 2);
+        barWidth = maxBandwidth;
+      }
+      this._barWidth = barWidth;
+    }
+
+    return {
+      ...this.margins,
+      left: this.margins.left! + this._domainMargin,
+      right: this.margins.right! + this._domainMargin,
+    };
+  };
+
+  private _isChartEmpty(): boolean {
+    return !(
+      this.props.data &&
+      this.props.data.length > 0 &&
+      this.props.data.filter(item => item.chartData.length === 0).length === 0
+    );
+  }
 }

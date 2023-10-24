@@ -54,7 +54,7 @@ export const chatSlotClassNames: ChatSlotClassNames = {
 /**
  * A Chat displays messages from a conversation between multiple users.
  */
-export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) => {
+export const Chat = React.forwardRef<HTMLUListElement, ChatProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Chat.displayName, context.telemetry);
   setStart();
@@ -113,7 +113,7 @@ export const Chat = (React.forwardRef<HTMLUListElement, ChatProps>((props, ref) 
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'ul', HTMLUListElement, ChatProps> &
+}) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, ChatProps> &
   FluentComponentStaticProps<ChatProps> & {
     Item: typeof ChatItem;
     Message: typeof ChatMessage;

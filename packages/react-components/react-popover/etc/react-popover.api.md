@@ -23,7 +23,6 @@ import type { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
-import type { UseModalAttributesOptions } from '@fluentui/react-tabster';
 
 // @public (undocumented)
 export const arrowHeights: Record<PopoverSize, number>;
@@ -40,7 +39,7 @@ export type OpenPopoverEvents = MouseEvent | TouchEvent | React_2.FocusEvent<HTM
 export const Popover: React_2.FC<PopoverProps>;
 
 // @public
-export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'legacyTrapFocus' | 'inline'>;
+export type PopoverContextValue = Pick<PopoverState, 'open' | 'toggleOpen' | 'setOpen' | 'triggerRef' | 'contentRef' | 'openOnHover' | 'openOnContext' | 'mountNode' | 'withArrow' | 'arrowRef' | 'size' | 'appearance' | 'trapFocus' | 'inertTrapFocus' | 'inline'>;
 
 // @public
 export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
@@ -55,10 +54,12 @@ export type PopoverProps = Pick<PortalProps, 'mountNode'> & {
     open?: boolean;
     openOnContext?: boolean;
     openOnHover?: boolean;
+    closeOnIframeFocus?: boolean;
     positioning?: PositioningShorthand;
     size?: PopoverSize;
-    trapFocus?: UseModalAttributesOptions['trapFocus'];
-    legacyTrapFocus?: UseModalAttributesOptions['legacyTrapFocus'];
+    trapFocus?: boolean;
+    legacyTrapFocus?: boolean;
+    inertTrapFocus?: boolean;
     unstable_disableAutoFocus?: boolean;
 };
 
@@ -69,7 +70,7 @@ export const PopoverProvider: Provider<PopoverContextValue> & FC<ProviderProps<P
 export type PopoverSize = 'small' | 'medium' | 'large';
 
 // @public
-export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'legacyTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
+export type PopoverState = Pick<PopoverProps, 'appearance' | 'mountNode' | 'onOpenChange' | 'openOnContext' | 'openOnHover' | 'trapFocus' | 'withArrow' | 'inertTrapFocus'> & Required<Pick<PopoverProps, 'inline' | 'open'>> & Pick<PopoverProps, 'children'> & {
     arrowRef: React_2.MutableRefObject<HTMLDivElement | null>;
     contentRef: React_2.MutableRefObject<HTMLElement | null>;
     contextTarget: PositioningVirtualElement | undefined;

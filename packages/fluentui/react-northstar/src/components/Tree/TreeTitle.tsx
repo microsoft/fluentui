@@ -99,7 +99,7 @@ export const treeTitleSlotClassNames = {
 /**
  * A TreeTitle renders a title of TreeItem.
  */
-export const TreeTitle = (React.forwardRef<HTMLAnchorElement, TreeTitleProps>((props, ref) => {
+export const TreeTitle = React.forwardRef<HTMLAnchorElement, TreeTitleProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(TreeTitle.displayName, context.telemetry);
   setStart();
@@ -226,7 +226,7 @@ export const TreeTitle = (React.forwardRef<HTMLAnchorElement, TreeTitleProps>((p
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'a', HTMLAnchorElement, TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps>;
+}) as unknown as ForwardRefWithAs<'a', HTMLAnchorElement, TreeTitleProps> & FluentComponentStaticProps<TreeTitleProps>;
 
 TreeTitle.displayName = 'TreeTitle';
 

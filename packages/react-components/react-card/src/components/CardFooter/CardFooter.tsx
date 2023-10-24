@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useCardFooter_unstable } from './useCardFooter';
 import { renderCardFooter_unstable } from './renderCardFooter';
-import { useCardFooterStyles_unstable } from './useCardFooterStyles';
+import { useCardFooterStyles_unstable } from './useCardFooterStyles.styles';
 import type { CardFooterProps } from './CardFooter.types';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 

@@ -63,7 +63,7 @@ export const splitButtonToggleClassName = 'ui-splitbutton__toggle';
  * Implements [ARIA Button](https://www.w3.org/TR/wai-aria-practices-1.1/#button) design pattern.
  */
 
-export const SplitButtonToggle = (React.forwardRef<HTMLButtonElement, SplitButtonToggleProps & { as: React.ReactNode }>(
+export const SplitButtonToggle = React.forwardRef<HTMLButtonElement, SplitButtonToggleProps & { as: React.ReactNode }>(
   (props, ref) => {
     const context = useFluentContext();
     const { setStart, setEnd } = useTelemetry(SplitButtonToggle.displayName, context.telemetry);
@@ -148,7 +148,7 @@ export const SplitButtonToggle = (React.forwardRef<HTMLButtonElement, SplitButto
 
     return result;
   },
-) as unknown) as ForwardRefWithAs<'button', HTMLButtonElement, SplitButtonToggleProps> &
+) as unknown as ForwardRefWithAs<'button', HTMLButtonElement, SplitButtonToggleProps> &
   FluentComponentStaticProps<SplitButtonToggleProps>;
 
 SplitButtonToggle.defaultProps = {

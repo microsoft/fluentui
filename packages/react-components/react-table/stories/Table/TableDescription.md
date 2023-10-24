@@ -1,16 +1,3 @@
-<!-- Don't allow prettier to collapse code block into single line -->
-<!-- prettier-ignore -->
-> **⚠️ Preview components are considered unstable:**
->
-> ```jsx
->
-> import { Table } from '@fluentui/react-components/unstable';
->
-> ```
->
-> - Features and APIs may change before final release
-> - Please contact us if you intend to use this in your product
-
 > 💡 This component is considered **low-level** and should be used when there is a need for more **customization** and
 > support for **non-standard features**. Please check out the **DataGrid component**
 > if you don't need lots of customization and rely on common features. There is less work involved and you will benefit

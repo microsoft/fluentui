@@ -4,8 +4,10 @@ import {
   GroupedVerticalBarChart,
   IGroupedVerticalBarChartProps,
   IGVBarChartSeriesPoint,
+  DataVizPalette,
+  getColorFromToken,
 } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+
 interface IGroupedBarChartState {
   width: number;
   height: number;
@@ -39,7 +41,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
+            color: getColorFromToken(DataVizPalette.color8),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '33%',
@@ -47,7 +49,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
           {
             key: 'series2',
             data: 44000,
-            color: DefaultPalette.blue,
+            color: getColorFromToken(DataVizPalette.color9),
             legend: 'MetaData2',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '44%',
@@ -60,7 +62,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
+            color: getColorFromToken(DataVizPalette.color8),
             legend: 'MetaData1',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '33%',
@@ -68,7 +70,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
           {
             key: 'series2',
             data: 3000,
-            color: DefaultPalette.blue,
+            color: getColorFromToken(DataVizPalette.color9),
             legend: 'MetaData2',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '3%',
@@ -120,6 +122,7 @@ export class GroupedVerticalBarChartTruncatedExample extends React.Component<{},
                 />
               ) : null
             }
+            enableReflow={true}
           />
         </div>
       </>

@@ -1,7 +1,7 @@
+import * as React from 'react';
 import { DialogFooterBase } from './DialogFooter.base';
 import type { IStyle, ITheme } from '../../Styling';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import type { IReactProps } from '../../common/React.types';
+import type { IReactProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Dialog}
@@ -12,6 +12,8 @@ export interface IDialogFooter {}
  * {@docCategory Dialog}
  */
 export interface IDialogFooterProps extends IReactProps<DialogFooterBase> {
+  children?: React.ReactNode;
+
   /**
    * Gets the component ref.
    */

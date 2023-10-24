@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, tokens, shorthands, Caption1, Subtitle1, mergeClasses, Text } from '@fluentui/react-components';
-import { Card, CardHeader, CardProps } from '@fluentui/react-card';
+import { Card, CardHeader, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
   const ASSET_URL =
@@ -66,8 +66,8 @@ const CardExample = (props: CardProps) => {
   return (
     <Card className={styles.card} {...props}>
       <header className={styles.flex}>
-        <img className={styles.appIcon} src={resolveAsset('logo.svg')} />
-        <img className={styles.appIcon} src={resolveAsset('logo2.svg')} />
+        <img className={styles.appIcon} src={resolveAsset('logo.svg')} alt="Application one logo" />
+        <img className={styles.appIcon} src={resolveAsset('logo2.svg')} alt="Application two logo" />
       </header>
 
       <CardHeader

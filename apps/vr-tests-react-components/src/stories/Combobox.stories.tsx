@@ -50,7 +50,7 @@ storiesOf('Combobox Converged', module)
     </Combobox>
   ))
   .addStory('Disabled with value', () => (
-    <Combobox disabled selectedOptions={['text']}>
+    <Combobox disabled value="text">
       <Option>text</Option>
     </Combobox>
   ))
@@ -86,13 +86,6 @@ storiesOf('Combobox Converged', module)
   .addStory('With value', () => (
     <Combobox value="Text text">
       <Option>text</Option>
-    </Combobox>
-  ))
-  .addStory('With multiselect value', () => (
-    <Combobox multiselect selectedOptions={['Green', 'Red']}>
-      <Option>Red</Option>
-      <Option>Green</Option>
-      <Option>Blue</Option>
     </Combobox>
   ))
   .addStory('Size: small', () => (
@@ -149,6 +142,24 @@ storiesOf('Combobox Converged', module)
         </Option>
         <Option>Red</Option>
         <Option>Green</Option>
+      </Combobox>
+    </div>
+  ))
+  .addStory('With selection', () => (
+    <div style={{ paddingBottom: '120px' }}>
+      <Combobox selectedOptions={['Red']} open>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
+      </Combobox>
+    </div>
+  ))
+  .addStory('With multiselect selection', () => (
+    <div style={{ paddingBottom: '120px' }}>
+      <Combobox multiselect selectedOptions={['Green', 'Red']} open>
+        <Option>Red</Option>
+        <Option>Green</Option>
+        <Option>Blue</Option>
       </Combobox>
     </div>
   ))

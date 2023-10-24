@@ -1,13 +1,14 @@
 import * as React from 'react';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
 import { ArrowLeft, ArrowRight } from '@fluentui/keyboard-keys';
 import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import {
   getPartitionedNativeProps,
-  resolveShorthand,
   mergeCallbacks,
   useEventCallback,
   useId,
   useMergedRefs,
+  slot,
 } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
@@ -29,6 +30,9 @@ import type { ComboboxProps, ComboboxState } from './Combobox.types';
  * @param ref - reference to root HTMLElement of Combobox
  */
 export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLInputElement>): ComboboxState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props, { supportsLabelFor: true, supportsRequired: true, supportsSize: true });
+
   const baseState = useComboboxBaseState({ ...props, editable: true });
   const {
     activeOption,
@@ -61,6 +65,10 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   // To prevent this, we clear the HTML attribute (but save the state) when a user presses left/right arrows
   // ref: https://github.com/microsoft/fluentui/issues/26359#issuecomment-1397759888
   const [hideActiveDescendant, setHideActiveDescendant] = React.useState(false);
+
+  // save the typing vs. navigating options state, as the space key should behave differently in each case
+  // we do not want to update the combobox when this changes, just save the value between renders
+  const isTyping = React.useRef(false);
 
   // calculate listbox width style based on trigger width
   const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
@@ -107,7 +115,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     // handle selection and updating value if freeform is false
     if (!baseState.open && !freeform) {
       // select matching option, if the value fully matches
-      if (value && activeOption && value.trim().toLowerCase() === activeOption?.value.toLowerCase()) {
+      if (value && activeOption && value.trim().toLowerCase() === activeOption?.text.toLowerCase()) {
         baseState.selectOption(ev, activeOption);
       }
 
@@ -141,17 +149,68 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setFocusVisible(true);
 
     // clear selection for single-select if the input value no longer matches the selection
-    if (
-      !multiselect &&
-      selectedOptions.length === 1 &&
-      (inputValue.length < 1 || selectedOptions[0].indexOf(inputValue) !== 0)
-    ) {
+    if (!multiselect && selectedOptions.length === 1 && (inputValue.length < 1 || !matchingOption)) {
       clearSelection(ev);
     }
   };
 
-  // open Combobox when typing
-  const onTriggerKeyDown = (ev: React.KeyboardEvent<HTMLInputElement>) => {
+  // resolve input and listbox slot props
+  let triggerSlot: Slot<'input'>;
+  let listboxSlot: Slot<typeof Listbox> | undefined;
+
+  triggerSlot = slot.always(props.input, {
+    defaultProps: {
+      ref: useMergedRefs(props.input?.ref, triggerRef),
+      type: 'text',
+      value: value ?? '',
+      ...triggerNativeProps,
+    },
+    elementType: 'input',
+  });
+  const resolvedPropsOnKeyDown = triggerSlot.onKeyDown;
+  triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
+  triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur); // only resolve listbox slot if needed
+  listboxSlot =
+    open || hasFocus
+      ? slot.optional(props.listbox, {
+          renderByDefault: true,
+          defaultProps: { children: props.children, style: popupDimensions },
+          elementType: Listbox,
+        })
+      : undefined;
+  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
+  if (hideActiveDescendant) {
+    triggerSlot['aria-activedescendant'] = undefined;
+  }
+  const state: ComboboxState = {
+    components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
+    root: slot.always(props.root, {
+      defaultProps: {
+        'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
+        ...rootNativeProps,
+      },
+      elementType: 'div',
+    }),
+    input: triggerSlot,
+    listbox: listboxSlot,
+    expandIcon: slot.optional(props.expandIcon, {
+      renderByDefault: true,
+      defaultProps: {
+        'aria-expanded': open,
+        children: <ChevronDownIcon />,
+        role: 'button',
+      },
+      elementType: 'span',
+    }),
+    ...baseState,
+  };
+
+  state.root.ref = useMergedRefs(state.root.ref, rootRef);
+
+  /* Set input.onKeyDown here, so we can override the default behavior for spacebar */
+  const defaultOnTriggerKeyDown = state.input.onKeyDown;
+  state.input.onKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLInputElement>) => {
     if (!open && getDropdownActionFromKey(ev) === 'Type') {
       baseState.setOpen(ev, true);
     }
@@ -162,73 +221,35 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     } else {
       setHideActiveDescendant(false);
     }
-  };
 
-  // resolve input and listbox slot props
-  let triggerSlot: Slot<'input'>;
-  let listboxSlot: Slot<typeof Listbox> | undefined;
+    // update typing state to true if the user is typing
+    const action = getDropdownActionFromKey(ev, { open, multiselect });
+    if (action === 'Type') {
+      isTyping.current = true;
+    }
+    // otherwise, update the typing state to false if opening or navigating dropdown options
+    // other actions, like closing the dropdown, should not impact typing state.
+    else if (
+      (action === 'Open' && ev.key !== ' ') ||
+      action === 'Next' ||
+      action === 'Previous' ||
+      action === 'First' ||
+      action === 'Last' ||
+      action === 'PageUp' ||
+      action === 'PageDown'
+    ) {
+      isTyping.current = false;
+    }
 
-  triggerSlot = resolveShorthand(props.input, {
-    required: true,
-    defaultProps: {
-      ref: useMergedRefs(props.input?.ref, triggerRef),
-      type: 'text',
-      value: value ?? '',
-      ...triggerNativeProps,
-    },
+    // allow space to insert a character if freeform & the last action was typing, or if the popup is closed
+    if (freeform && (isTyping.current || !open) && ev.key === ' ') {
+      resolvedPropsOnKeyDown?.(ev);
+      return;
+    }
+
+    // if we're not allowing space to type, continue with default behavior
+    defaultOnTriggerKeyDown?.(ev);
   });
-
-  triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
-  triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur);
-  triggerSlot.onKeyDown = mergeCallbacks(triggerSlot.onKeyDown, onTriggerKeyDown);
-
-  // only resolve listbox slot if needed
-  listboxSlot =
-    open || hasFocus
-      ? resolveShorthand(props.listbox, {
-          required: true,
-          defaultProps: {
-            children: props.children,
-            style: popupDimensions,
-          },
-        })
-      : undefined;
-
-  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
-  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
-
-  if (hideActiveDescendant) {
-    triggerSlot['aria-activedescendant'] = undefined;
-  }
-
-  const state: ComboboxState = {
-    components: {
-      root: 'div',
-      input: 'input',
-      expandIcon: 'span',
-      listbox: Listbox,
-    },
-    root: resolveShorthand(props.root, {
-      required: true,
-      defaultProps: {
-        'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
-        ...rootNativeProps,
-      },
-    }),
-    input: triggerSlot,
-    listbox: listboxSlot,
-    expandIcon: resolveShorthand(props.expandIcon, {
-      required: true,
-      defaultProps: {
-        'aria-expanded': open,
-        children: <ChevronDownIcon />,
-        role: 'button',
-      },
-    }),
-    ...baseState,
-  };
-
-  state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   /* handle open/close + focus change when clicking expandIcon */
   const { onMouseDown: onIconMouseDown, onClick: onIconClick } = state.expandIcon || {};

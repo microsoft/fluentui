@@ -17,10 +17,47 @@
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
+### Documentation
+- `Input`: Remove wrong recommendation - usage of role="search" #28168 @kolaps33 ([#28168](https://github.com/microsoft/fluentui/pull/28168))
+
+### Fixes
+- Do not use `defaultProps` in `EventListener` to avoid deprecation warnings. @layershifter ([#28725](https://github.com/microsoft/fluentui/pull/28725))
+- `Datepicker`: add onCalendarOpenStateChange prop. @jurokapsiar ([#28136](https://github.com/microsoft/fluentui/pull/28136))
+- Outline color now respects OS force colors settings. @george-cz ([#28182](https://github.com/microsoft/fluentui/pull/28182))
+- Remove `items` from `defaultProps` in Toolbar to fix warnings @layershifter ([#28723](https://github.com/microsoft/fluentui/pull/28723))
+
+<!--------------------------------[ v0.66.4 ]------------------------------- -->
+## [v0.66.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.4) (2023-03-10)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.3..@fluentui/react-northstar_v0.66.4)
+
+### Fixes
+- `Datepicker`: indicators should be visible in high contrast mode. @ling1726 ([#27107](https://github.com/microsoft/fluentui/pull/27107))
+- `Datepicker`: Disabled buttons should be green in HC theme. @jurokapsiar ([#27114](https://github.com/microsoft/fluentui/pull/27114))
+- `SplitButton`: should display correctly in high contrast mode @ling1726 ([#27137](https://github.com/microsoft/fluentui/pull/27137))
+- `Embed`: play/pause indicator should render correctly in high contrast mode @ling1726 ([#27213](https://github.com/microsoft/fluentui/pull/27213))
+
+<!--------------------------------[ v0.66.3 ]------------------------------- -->
+## [v0.66.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.3) (2023-02-27)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.2..@fluentui/react-northstar_v0.66.3)
+
+### Fixes
+- `Dropdown`: Do not use aria-owns for search Dropdown on mac. @jurokapsiar ([#26972](https://github.com/microsoft/fluentui/pull/26972))
+
+<!--------------------------------[ v0.66.2 ]------------------------------- -->
+## [v0.66.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.2) (2023-02-24)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.1..@fluentui/react-northstar_v0.66.2)
+
+### Fixes
+- `Checkbox`: Toggle activation should be more obvious in high contrast mode. @ling1726 ([#26910](https://github.com/microsoft/fluentui/pull/26910))
+
+<!--------------------------------[ v0.66.1 ]------------------------------- -->
+## [v0.66.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.1) (2023-02-06)
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-northstar_v0.66.0..@fluentui/react-northstar_v0.66.1)
 
 ### Fixes
 - `ChatMessage` action menu is moved horizontally at the start in RTL. @silviuaavram ([#26378](https://github.com/microsoft/fluentui/pull/26378))
 - Add property that manages if panels should be rerendered or not ([#25368](https://github.com/microsoft/fluentui/pull/25368))
+- `Dropdown`: Allow clear on Enter/Space press. @jurokapsiar ([#26685](https://github.com/microsoft/fluentui/pull/26685))
 
 <!--------------------------------[ v0.66.0 ]------------------------------- -->
 ## [v0.66.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-northstar_v0.66.0) (2023-01-06)

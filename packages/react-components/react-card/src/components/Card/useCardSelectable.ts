@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Enter, Space } from '@fluentui/keyboard-keys';
-import { mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import { mergeCallbacks, slot, useControllableState } from '@fluentui/react-utilities';
+import { Enter } from '@fluentui/keyboard-keys';
 import { useFocusFinders } from '@fluentui/react-tabster';
 
 import type { CardContextValue, CardOnSelectionChangeEvent, CardProps, CardSlots } from './Card.types';
@@ -22,16 +22,21 @@ export const useCardSelectable = (
   { referenceLabel, referenceId }: Pick<CardContextValue['selectableA11yProps'], 'referenceId' | 'referenceLabel'>,
   cardRef: React.RefObject<HTMLDivElement>,
 ) => {
-  const { checkbox = {}, selected, defaultSelected, onSelectionChange, floatingAction, onClick, onKeyDown } = props;
+  const { checkbox = {}, onSelectionChange, floatingAction, onClick, onKeyDown } = props;
 
   const { findAllFocusable } = useFocusFinders();
-
   const checkboxRef = React.useRef<HTMLInputElement>(null);
 
-  const isSelectable = [selected, defaultSelected, onSelectionChange].some(prop => typeof prop !== 'undefined');
+  const [selected, setSelected] = useControllableState({
+    state: props.selected,
+    defaultState: props.defaultSelected,
+    initialState: false,
+  });
+  const selectable = [props.selected, props.defaultSelected, onSelectionChange].some(
+    prop => typeof prop !== 'undefined',
+  );
 
-  const [isCardSelected, setIsCardSelected] = React.useState(false);
-  const [isSelectFocused, setIsSelectFocused] = React.useState(false);
+  const [selectFocused, setSelectFocused] = React.useState(false);
 
   const shouldRestrictTriggerAction = React.useCallback(
     (event: CardOnSelectionChangeEvent) => {
@@ -55,20 +60,20 @@ export const useCardSelectable = (
         return;
       }
 
-      const newCheckedValue = !isCardSelected;
+      const newCheckedValue = !selected;
 
-      setIsCardSelected(newCheckedValue);
+      setSelected(newCheckedValue);
 
       if (onSelectionChange) {
         onSelectionChange(event, { selected: newCheckedValue });
       }
     },
-    [onSelectionChange, isCardSelected, shouldRestrictTriggerAction],
+    [onSelectionChange, selected, setSelected, shouldRestrictTriggerAction],
   );
 
   const onKeyDownHandler = React.useCallback(
     (event: React.KeyboardEvent<HTMLElement>) => {
-      if ([Enter, Space].includes(event.key)) {
+      if ([Enter].includes(event.key)) {
         event.preventDefault();
         onChangeHandler(event);
       }
@@ -77,7 +82,7 @@ export const useCardSelectable = (
   );
 
   const checkboxSlot = React.useMemo(() => {
-    if (!isSelectable || !!floatingAction) {
+    if (!selectable || floatingAction) {
       return;
     }
 
@@ -89,21 +94,35 @@ export const useCardSelectable = (
       selectableCheckboxProps['aria-label'] = referenceLabel;
     }
 
-    return resolveShorthand(checkbox, {
+    return slot.optional(checkbox, {
       defaultProps: {
         ref: checkboxRef,
         type: 'checkbox',
-        checked: isCardSelected,
+        checked: selected,
         onChange: (event: React.ChangeEvent<HTMLInputElement>) => onChangeHandler(event),
-        onFocus: () => setIsSelectFocused(true),
-        onBlur: () => setIsSelectFocused(false),
+        onFocus: () => setSelectFocused(true),
+        onBlur: () => setSelectFocused(false),
         ...selectableCheckboxProps,
       },
+      elementType: 'input',
     });
-  }, [isSelectable, floatingAction, referenceId, referenceLabel, checkbox, isCardSelected, onChangeHandler]);
+  }, [checkbox, floatingAction, selected, selectable, onChangeHandler, referenceId, referenceLabel]);
+
+  const floatingActionSlot = React.useMemo(() => {
+    if (!floatingAction) {
+      return;
+    }
+
+    return slot.optional(floatingAction, {
+      defaultProps: {
+        ref: checkboxRef,
+      },
+      elementType: 'div',
+    });
+  }, [floatingAction]);
 
   const selectableCardProps = React.useMemo(() => {
-    if (!isSelectable) {
+    if (!selectable) {
       return null;
     }
 
@@ -111,19 +130,14 @@ export const useCardSelectable = (
       onClick: mergeCallbacks(onClick, onChangeHandler),
       onKeyDown: mergeCallbacks(onKeyDown, onKeyDownHandler),
     };
-  }, [isSelectable, onChangeHandler, onClick, onKeyDown, onKeyDownHandler]);
-
-  React.useEffect(() => setIsCardSelected(Boolean(defaultSelected ?? selected)), [
-    defaultSelected,
-    selected,
-    setIsCardSelected,
-  ]);
+  }, [selectable, onChangeHandler, onClick, onKeyDown, onKeyDownHandler]);
 
   return {
-    selected: isCardSelected,
-    selectable: isSelectable,
-    selectFocused: isSelectFocused,
+    selected,
+    selectable,
+    selectFocused,
     selectableCardProps,
     checkboxSlot,
+    floatingActionSlot,
   };
 };

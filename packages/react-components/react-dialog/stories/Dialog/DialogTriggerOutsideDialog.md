@@ -1,8 +1,6 @@
-There's absolutely no benefit in using `DialogTrigger` outside of `Dialog`, using a simple `Button` with `aria-expanded` properly set would be equivalent.
+When using a `Dialog` without a `DialogTrigger` (or when using a `DialogTrigger` outside of a `Dialog`), it becomes your responsibility to control some of the dialog's behavior.
 
-Some disadvantages of not having the `DialogTrigger` inside the `Dialog`:
+1. You must make sure that the `open` state is set accordingly to the dialog's visibility (mostly this means to properly react to the events provided by `onOpenChange` callback on `Dialog` component).
+2. You must make sure that focus is properly restored once the dialog is closed (this can be achieved by using the `useRestoreFocusTarget` hook, or by manually invoking `.focus()` on the target element).
 
-1. `aria-expanded` should be manually configured
-2. `onOpenChange` callback won't fire `triggerClick` events, since there is not trigger to be clicked in context.
-
-> ⚠️ Do not forget to manually add `aria-expanded` attributes to ensure accessibility
+The example bellow showcases both explicit responsibilities:

@@ -29,7 +29,8 @@ const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollableP
 
 export class ScrollablePaneBase
   extends React.Component<IScrollablePaneProps, IScrollablePaneState>
-  implements IScrollablePane {
+  implements IScrollablePane
+{
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -106,7 +107,7 @@ export class ScrollablePaneBase
         // If the scrollbar height changed, update state so it's postioned correctly below sticky footer
         if (scrollbarHeight !== this.state.scrollbarHeight) {
           this.setState({
-            scrollbarHeight: scrollbarHeight,
+            scrollbarHeight,
           });
         }
 
@@ -313,8 +314,8 @@ export class ScrollablePaneBase
     });
 
     this.setState({
-      stickyTopHeight: stickyTopHeight,
-      stickyBottomHeight: stickyBottomHeight,
+      stickyTopHeight,
+      stickyBottomHeight,
     });
   };
 
@@ -465,7 +466,7 @@ export class ScrollablePaneBase
 
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
     return {
-      height: height,
+      height,
       ...(getRTL(this.props.theme)
         ? {
             right: '0',

@@ -3,8 +3,9 @@ import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { RadioGroupProps } from './RadioGroup.types';
 import { renderRadioGroup_unstable } from './renderRadioGroup';
 import { useRadioGroup_unstable } from './useRadioGroup';
-import { useRadioGroupStyles_unstable } from './useRadioGroupStyles';
+import { useRadioGroupStyles_unstable } from './useRadioGroupStyles.styles';
 import { useRadioGroupContextValues } from '../../contexts/useRadioGroupContextValues';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * A RadioGroup component presents a set of options where only one option can be selected.
@@ -14,6 +15,9 @@ export const RadioGroup: ForwardRefComponent<RadioGroupProps> = React.forwardRef
   const contextValues = useRadioGroupContextValues(state);
 
   useRadioGroupStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useRadioGroupStyles_unstable')(state);
+
   return renderRadioGroup_unstable(state, contextValues);
 });
 

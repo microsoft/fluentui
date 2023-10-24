@@ -75,7 +75,7 @@ export type TableStylesProps = never;
  * [VoiceOver not announcing rows correctly for a grid with presentation elements inside](https://bugs.chromium.org/p/chromium/issues/detail?id=1054424)
  * VoiceOver doesn't narrate aria-rowcount value in table or grid
  */
-export const Table = (React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
+export const Table = React.forwardRef<HTMLDivElement, TableProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Table.displayName, context.telemetry);
   setStart();
@@ -150,7 +150,7 @@ export const Table = (React.forwardRef<HTMLDivElement, TableProps>((props, ref) 
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, TableProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, TableProps> &
   FluentComponentStaticProps<TableProps> & {
     Cell: typeof TableCell;
     Row: typeof TableRow;

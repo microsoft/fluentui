@@ -1,1 +1,3 @@
-The Card component is a framework for organizing content within the confines of a container. It's main function is to provide the scaffolding for hosting actions and content for a single topic within a card.
+A card is a container that holds information and actions related to a single concept or object, like a document or a contact.
+
+Cards can give information prominence and create predictable patterns. While they're very flexible, it's important to use them consistently for particular use cases across experiences.

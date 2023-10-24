@@ -1,23 +1,15 @@
 import * as React from 'react';
 
+import { LikeIcon } from '@fluentui/react-icons-northstar';
+
 import { handlesAccessibility, implementsShorthandProp, isConformant } from 'test/specs/commonTests';
+import { mountWithProvider, EmptyThemeProvider } from 'test/utils';
 
 import { ChatMessage } from 'src/components/Chat/ChatMessage';
 import { Text } from 'src/components/Text/Text';
-import { usePopper } from 'src/utils/positioner';
-import { LikeIcon } from '@fluentui/react-icons-northstar';
 import { ChatMessageDetails } from 'src/components/Chat/ChatMessageDetails';
 import { ChatMessageContent } from 'src/components/Chat/ChatMessageContent';
-import { mountWithProvider, EmptyThemeProvider } from 'test/utils';
-
-jest.mock('src/utils/positioner', () => {
-  const actualPositioner = jest.requireActual('src/utils/positioner');
-
-  return {
-    ...actualPositioner,
-    usePopper: jest.fn().mockReturnValue(actualPositioner.usePopper),
-  };
-});
+import * as positionerApi from 'src/utils/positioner';
 
 const chatMessageImplementsShorthandProp = implementsShorthandProp(ChatMessage);
 
@@ -39,8 +31,12 @@ describe('ChatMessage', () => {
     handlesAccessibility(ChatMessage);
   });
 
-  describe('rtl', () => {
-    beforeEach(() => jest.clearAllMocks());
+  describe.only('rtl', () => {
+    let usePopperSpy;
+    beforeEach(() => {
+      jest.clearAllMocks();
+      usePopperSpy = jest.spyOn(positionerApi, 'usePopper');
+    });
 
     function render(wrappingComponent?: React.ComponentType) {
       const actionMenu = {
@@ -70,15 +66,15 @@ describe('ChatMessage', () => {
       const RTLProvider = props => <EmptyThemeProvider {...props} rtl={true} />;
       render(RTLProvider);
 
-      expect(usePopper).toHaveBeenCalledTimes(1);
-      expect(usePopper).toHaveBeenCalledWith(expect.objectContaining({ rtl: true }));
+      expect(usePopperSpy).toHaveBeenCalledTimes(1);
+      expect(usePopperSpy).toHaveBeenCalledWith(expect.objectContaining({ rtl: true }));
     });
 
     it('should pass rtl parameter as undefined to usePopper in LTR', () => {
       render();
 
-      expect(usePopper).toHaveBeenCalledTimes(1);
-      expect(usePopper).toHaveBeenCalledWith(expect.objectContaining({ rtl: undefined }));
+      expect(usePopperSpy).toHaveBeenCalledTimes(1);
+      expect(usePopperSpy).toHaveBeenCalledWith(expect.objectContaining({ rtl: undefined }));
     });
   });
 });

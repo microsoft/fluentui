@@ -70,7 +70,7 @@ describe('useFocusRects', () => {
       defaultView: mockWindow,
     },
   };
-  const mockRefObject = ({ current: mockTarget } as unknown) as React.RefObject<HTMLElement>;
+  const mockRefObject = { current: mockTarget } as unknown as React.RefObject<HTMLElement>;
 
   const mockWindow2 = new MockWindow();
   const mockTarget2 = {
@@ -78,7 +78,7 @@ describe('useFocusRects', () => {
       defaultView: mockWindow2,
     },
   };
-  const mockRefObject2 = ({ current: mockTarget2 } as unknown) as React.RefObject<HTMLElement>;
+  const mockRefObject2 = { current: mockTarget2 } as unknown as React.RefObject<HTMLElement>;
 
   beforeEach(() => {
     mockWindow.reset();

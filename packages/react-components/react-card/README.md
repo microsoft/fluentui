@@ -1,17 +1,15 @@
-# @fluentui/react-card [ALPHA]
+# @fluentui/react-card
 
 **React Card components for [Fluent UI React](https://react.fluentui.dev)**
 
-**⚠️ Please note that functionality is still being added to this package. Due to lockstep versioning, the version of this package is aligned with the others in _react-components_.**
-
-These are not production-ready components and **should never be used in a product**. This space is useful for testing new components whose APIs might change before final release.
+A card is a container that holds information and actions related to a single concept or object, like a document or a contact.
 
 ## Usage
 
 To import React Card components:
 
 ```js
-import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-components/unstable';
+import { Card, CardPreview, CardHeader, CardFooter } from "@fluentui/react-components';
 ```
 
 Example Card usage:
@@ -21,7 +19,7 @@ Example Card usage:
 ```jsx
 import { Share16Regular, ArrowReply16Regular } from '@fluentui/react-icons';
 import { Button, Body1, Caption1 } from '@fluentui/react-components';
-import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components/unstable';
+import { Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components';
 
 const App = () => (
   <>
@@ -43,7 +41,7 @@ const App = () => (
       <CardPreview
         logo={
           <img
-            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/word_logo.svg"
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/assets/docx.png"
             alt="Microsoft Word logo"
           />
         }

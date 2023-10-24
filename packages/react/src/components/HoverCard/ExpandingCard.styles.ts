@@ -9,14 +9,8 @@ const GlobalClassNames = {
 };
 
 export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles {
-  const {
-    theme,
-    needsScroll,
-    expandedCardFirstFrameRendered,
-    compactCardHeight,
-    expandedCardHeight,
-    className,
-  } = props;
+  const { theme, needsScroll, expandedCardFirstFrameRendered, compactCardHeight, expandedCardHeight, className } =
+    props;
 
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);

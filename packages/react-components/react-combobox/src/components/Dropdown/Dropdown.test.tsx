@@ -1,11 +1,17 @@
 import * as React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { Field } from '@fluentui/react-field';
 import { Dropdown } from './Dropdown';
 import { Option } from '../Option/index';
 import { isConformant } from '../../testing/isConformant';
+import { resetIdsForTests } from '@fluentui/react-utilities';
 
 describe('Dropdown', () => {
+  beforeEach(() => {
+    resetIdsForTests();
+  });
+
   isConformant({
     Component: Dropdown,
     displayName: 'Dropdown',
@@ -417,6 +423,20 @@ describe('Dropdown', () => {
     });
   });
 
+  it('should set display value to option text', () => {
+    const { getByRole, getByText } = render(
+      <Dropdown defaultOpen>
+        <Option value="r">Red</Option>
+        <Option value="g">Green</Option>
+        <Option value="b">Blue</Option>
+      </Dropdown>,
+    );
+
+    fireEvent.click(getByText('Green'));
+
+    expect(getByRole('combobox').textContent).toEqual('Green');
+  });
+
   it('calls onOptionSelect with correct data for multi-select', () => {
     const onOptionSelect = jest.fn();
 
@@ -637,5 +657,26 @@ describe('Dropdown', () => {
     userEvent.keyboard('red');
 
     expect(combobox.getAttribute('aria-activedescendant')).toEqual(getByText('Red').id);
+  });
+
+  it('gets props from a surrounding Field', () => {
+    const result = render(
+      <Field label="Test label" validationMessage="Test error message" required>
+        <Dropdown>
+          <Option>Red</Option>
+          <Option>Green</Option>
+          <Option>Blue</Option>
+        </Dropdown>
+      </Field>,
+    );
+
+    const combobox = result.getByRole('combobox') as HTMLInputElement;
+    const label = result.getByText('Test label') as HTMLLabelElement;
+    const message = result.getByText('Test error message');
+
+    expect(combobox.id).toEqual(label.htmlFor);
+    expect(combobox.getAttribute('aria-describedby')).toEqual(message.id);
+    expect(combobox.getAttribute('aria-invalid')).toEqual('true');
+    expect(combobox.getAttribute('aria-required')).toEqual('true');
   });
 });

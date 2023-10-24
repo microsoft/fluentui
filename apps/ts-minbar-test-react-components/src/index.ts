@@ -4,7 +4,6 @@ import {
   log,
   shEcho,
   TempPaths,
-  workspaceRoot,
   generateFiles,
   addResolutionPathsForProjectPackages,
   packProjectPackages,
@@ -34,8 +33,7 @@ async function performTest() {
     await shEcho(`yarn add ${dependencies}`, tempPaths.testApp);
     logger(`✔️ Dependencies were installed`);
 
-    const lernaRoot = workspaceRoot;
-    const packedPackages = await packProjectPackages(logger, lernaRoot, ['@fluentui/react-components']);
+    const packedPackages = await packProjectPackages(logger, '@fluentui/react-components');
     await addResolutionPathsForProjectPackages(tempPaths.testApp);
 
     await shEcho(`yarn add ${packedPackages['@fluentui/react-components']}`, tempPaths.testApp);
@@ -49,9 +47,9 @@ async function performTest() {
     await shEcho(`yarn --version`);
     await shEcho(`yarn tsc --version`);
     await shEcho(`yarn tsc --version`, tempPaths.testApp);
-  } catch (e) {
+  } catch (err) {
     console.error('Something went wrong setting up the test:');
-    console.error(e?.stack || e);
+    console.error(err instanceof Error ? err?.stack : err);
     process.exit(1);
   }
 

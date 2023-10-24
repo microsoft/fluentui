@@ -11,6 +11,7 @@ import {
 import { Calendar } from '../../Calendar';
 import { FirstWeekOfYear, getDatePartHashValue, compareDatePart, DayOfWeek } from '@fluentui/date-time-utilities';
 import { Callout, DirectionalHint } from '../../Callout';
+import { mergeStyles } from '../../Styling';
 import { TextField } from '../../TextField';
 import { FocusTrapZone } from '../../FocusTrapZone';
 import { useId, useAsync, useControllableValue } from '@fluentui/react-hooks';
@@ -117,6 +118,7 @@ function useErrorMessage(
     formatDate,
     minDate,
     maxDate,
+    textField,
   }: IDatePickerProps,
   selectedDate: Date | undefined,
   setSelectedDate: (date: Date | undefined) => void,
@@ -125,6 +127,9 @@ function useErrorMessage(
 ) {
   const [errorMessage, setErrorMessage] = React.useState<string | undefined>();
   const [statusMessage, setStatusMessage] = React.useState<string | undefined>();
+  const isFirstLoadRef = React.useRef<boolean>(true);
+
+  const validateOnLoad = textField?.validateOnLoad ?? true;
 
   const validateTextInput = (date: Date | null = null): void => {
     if (allowTextInput) {
@@ -176,6 +181,14 @@ function useErrorMessage(
   };
 
   React.useEffect(() => {
+    if (isFirstLoadRef.current) {
+      isFirstLoadRef.current = false;
+
+      if (!validateOnLoad) {
+        return;
+      }
+    }
+
     if (isRequired && !selectedDate) {
       setErrorMessage(strings!.isRequiredErrorMessage || ' ');
     } else if (selectedDate && isDateOutOfBounds(selectedDate, minDate, maxDate)) {
@@ -193,6 +206,7 @@ function useErrorMessage(
     // eslint-disable-next-line react-hooks/exhaustive-deps
     selectedDate && getDatePartHashValue(selectedDate),
     isRequired,
+    validateOnLoad,
   ]);
 
   return [
@@ -397,7 +411,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
   const renderTextfieldDescription = (inputProps: ITextFieldProps, defaultRender: IRenderFunction<ITextFieldProps>) => {
     return (
       <>
-        {inputProps.description ? defaultRender(inputProps) : null}
+        {inputProps.description || inputProps.onRenderDescription ? defaultRender(inputProps) : null}
         <div aria-live="assertive" className={classNames.statusMessage}>
           {statusMessage}
         </div>
@@ -407,11 +421,14 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
 
   const renderReadOnlyInput: ITextFieldProps['onRenderInput'] = inputProps => {
     const divProps = getNativeProps(inputProps!, divProperties);
+    // Need to merge styles so the provided styles win over the default ones. This is due to the classnames having the
+    // same specificity.
+    const readOnlyTextFieldClassName = mergeStyles(divProps.className, classNames.readOnlyTextField);
 
     // Talkback on Android treats readonly inputs as disabled, so swipe gestures to open the Calendar
     // don't register. Workaround is rendering a div with role="combobox" (passed in via TextField props).
     return (
-      <div {...divProps} className={css(divProps.className, classNames.readOnlyTextField)} tabIndex={tabIndex || 0}>
+      <div {...divProps} className={readOnlyTextFieldClassName} tabIndex={tabIndex || 0}>
         {formattedDate || (
           // Putting the placeholder in a separate span fixes specificity issues for the text color
           <span className={classNames.readOnlyPlaceholder}>{placeholder}</span>
@@ -438,6 +455,10 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
       ev.stopPropagation();
       calendarDismissed();
     }
+  };
+
+  const onCalendarDismissed = (ev?: React.MouseEvent<HTMLElement>): void => {
+    calendarDismissed();
   };
 
   const classNames = getClassNames(styles, {
@@ -525,7 +546,7 @@ export const DatePickerBase: React.FunctionComponent<IDatePickerProps> = React.f
               // eslint-disable-next-line react/jsx-no-bind
               onSelectDate={onSelectDate}
               // eslint-disable-next-line react/jsx-no-bind
-              onDismiss={calendarDismissed}
+              onDismiss={onCalendarDismissed}
               isMonthPickerVisible={props.isMonthPickerVisible}
               showMonthPickerAsOverlay={props.showMonthPickerAsOverlay}
               today={props.today}

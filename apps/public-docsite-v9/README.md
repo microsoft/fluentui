@@ -9,3 +9,7 @@ Fluent UI is a collection of projects that represent the Fluent design language 
 ## Start the website
 
 Run `yarn workspace @fluentui/public-docsite-v9 start`
+
+## Notes
+
+- `Open in CodeSandbox` button is located in different [repo](https://github.com/microsoft/fluentui-storybook-addons).

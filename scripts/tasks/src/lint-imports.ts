@@ -1,9 +1,20 @@
-import { getAllPackageInfo, findGitRoot } from '@fluentui/scripts-monorepo';
-import { readConfig } from '@fluentui/scripts-utils';
-import * as glob from 'glob';
-import * as path from 'path';
 import * as fs from 'fs';
+import * as path from 'path';
+
+import { findGitRoot, getAllPackageInfo } from '@fluentui/scripts-monorepo';
+import { readConfig } from '@fluentui/scripts-utils';
 import chalk from 'chalk';
+import * as glob from 'glob';
+
+function processArgs() {
+  const argv = process.argv.slice(2);
+  return {
+    /**
+     * This will throw errors only if amd import violations are present
+     */
+    checkAmd: argv.includes('--check-amd'),
+  };
+}
 
 interface ImportErrorGroup {
   count: number;
@@ -11,24 +22,73 @@ interface ImportErrorGroup {
 }
 
 interface ImportErrors {
-  pathAbsolute: ImportErrorGroup;
+  /**
+   * AMD = checkAmd
+   * This check is only "helpful" when import is from a folder without specifying explicitly `index`
+   *
+   * @example
+   * `from './folder'` - invalid (this resolves to 'index' only within NodeJS resolution. ESM spec nor AMD does not support loading folders  - TODO: migrate this to eslint rule and enable everywhere
+   * `from './folder/index'` - valid
+   */
   pathNotFile: ImportErrorGroup;
+  pathAbsolute: ImportErrorGroup;
+  /**
+   * Examples related
+   */
   pathRelative: ImportErrorGroup;
+  /**
+   * Examples related
+   */
   pathDeep: ImportErrorGroup;
+  /**
+   * Examples related
+   */
   pathReExported: ImportErrorGroup;
+  /**
+   * Examples related
+   */
   importStar: ImportErrorGroup;
+  /**
+   * Examples related
+   */
   exportMulti: ImportErrorGroup;
+  /**
+   * Examples related
+   */
   exportDefault: ImportErrorGroup;
 }
 
-export function lintImports() {
+export function lintImportTaskAll() {
+  return lintImports();
+}
+export function lintImportTaskAmdOnly() {
+  return lintImports({ checkAmd: true });
+}
+
+function lintImports(
+  options: {
+    /**
+     * This will throw errors only if amd import violations are present
+     */
+    checkAmd?: boolean;
+  } = {},
+) {
+  const { checkAmd } = options;
+
   const gitRoot = findGitRoot();
   const sourcePath = path.join(process.cwd(), 'src');
   const cwdNodeModulesPath = path.join(process.cwd(), 'node_modules');
   const nodeModulesPath = path.join(gitRoot, 'node_modules');
 
   if (!fs.existsSync(sourcePath)) {
+    console.log('no /src directory found. exiting...');
     return;
+  }
+
+  if (checkAmd) {
+    console.log(
+      'checkAmd enabled: validating if import path(s) reference physical files. violations can break AMD imports.',
+    );
   }
 
   const allowedDeepImports = [
@@ -60,7 +120,14 @@ export function lintImports() {
   const currentPackageJson = readConfig('package.json');
   const currentMonorepoPackage = currentPackageJson.name;
 
-  return lintSource();
+  // !! be careful !! changing the regex can affect matched parts below.
+  const importStatementRegex = /^(import|export) [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
+  const importStatementRegexGlobalMultiline = new RegExp(importStatementRegex, 'gm');
+
+  return lintSource().catch(err => {
+    console.error(err);
+    process.exit(1);
+  });
 
   function lintSource() {
     const files = glob.sync(path.join(sourcePath, '**/*.{ts,tsx}'));
@@ -92,21 +159,23 @@ export function lintImports() {
   }
 
   function _evaluateFile(filePath: string, importErrors: ImportErrors, isExample: boolean) {
-    // !! be careful !! changing the regex can affect matched parts below.
-    const importStatementRegex = /^(import|export) [^'"]*(?:from )?['"]([^'"]+)['"];.*$/;
-
     const fileContent = fs.readFileSync(filePath, 'utf8');
 
-    const importStatements = fileContent.match(new RegExp(importStatementRegex, 'gm'));
+    const importStatements = fileContent.match(importStatementRegexGlobalMultiline);
 
     if (importStatements) {
       importStatements.forEach(statement => {
-        const parts = importStatementRegex.exec(statement);
+        const [importMatch, declarationType, importSpecifier] = importStatementRegex.exec(statement) ?? [];
 
-        if (parts) {
-          _evaluateImport(filePath, parts, importErrors, isExample);
+        // import regex will include also invalid export declaration type that don't re-export thus we need to filter these in order to not get invalid results
+        if (importMatch && importSpecifier && declarationType !== 'export') {
+          _evaluateImport({ filePath, importSpecifier, importMatch, importErrors, isExample });
         }
       });
+    }
+
+    if (checkAmd) {
+      return;
     }
 
     if (isExample) {
@@ -132,17 +201,15 @@ export function lintImports() {
     }
   }
 
-  /**
-   * @param importMatch - Result of running `importStatementRegex` against a single import
-   * (`[1]` will be the import path)
-   */
-  function _evaluateImport(
-    filePath: string,
-    importMatch: RegExpMatchArray,
-    importErrors: ImportErrors,
-    isExample?: boolean,
-  ) {
-    const importPath = importMatch[2];
+  // eslint-disable-next-line @typescript-eslint/no-shadow
+  function _evaluateImport(options: {
+    filePath: string;
+    importMatch: string;
+    importSpecifier: string;
+    importErrors: ImportErrors;
+    isExample?: boolean;
+  }) {
+    const { filePath, importErrors, importMatch, importSpecifier: importPath, isExample } = options;
     const packageRootPath = importPath.split('/')[0];
     const relativePath = path.relative(sourcePath, filePath);
     let fullImportPath: string | undefined;
@@ -201,6 +268,10 @@ export function lintImports() {
       _addError(importErrors.pathNotFile, relativePath, importPath);
     }
 
+    if (checkAmd) {
+      return;
+    }
+
     if (isExample) {
       const isScss = importPath.endsWith('.scss');
 
@@ -224,7 +295,7 @@ export function lintImports() {
         );
       }
 
-      if (importMatch[0].startsWith('import * from') && !isScss) {
+      if (importMatch.startsWith('import * from') && !isScss) {
         _addError(importErrors.importStar, relativePath, importPath);
       }
     }
@@ -252,12 +323,14 @@ export function lintImports() {
   }
 
   function reportFilePathErrors(importErrors: ImportErrors) {
+    let hasError = false;
+
     const errorMessages: { [k in keyof ImportErrors]: string } = {
-      pathAbsolute:
-        'files are using absolute imports. Please update the following imports to use relative paths instead:',
       pathNotFile:
         'import path(s) do not reference physical files. This can break AMD imports. ' +
         'Please ensure the following imports reference physical files:',
+      pathAbsolute:
+        'files are using absolute imports. Please update the following imports to use relative paths instead:',
       pathRelative:
         'example files are using relative imports. For example portability, please ensure that the following imports are absolute:',
       pathDeep:
@@ -273,29 +346,40 @@ export function lintImports() {
       exportDefault: 'example files are using a default export. Please use only named exports.',
     };
 
-    let hasError = false;
-    for (const groupName of Object.keys(importErrors) as Array<keyof ImportErrors>) {
+    const groupNames: Array<keyof ImportErrors> = checkAmd
+      ? ['pathNotFile']
+      : (Object.keys(importErrors) as Array<keyof ImportErrors>);
+
+    for (const groupName of groupNames) {
+      reportViolations(groupName);
+    }
+
+    function reportViolations(groupName: keyof ImportErrors) {
       const errorGroup: ImportErrorGroup = importErrors[groupName];
-      if (errorGroup.count) {
-        hasError = true;
-        console.error(`${chalk.red('ERROR')}: ${errorGroup.count} ${errorMessages[groupName]}`);
-        console.error('-------------------------------------');
-        // eslint-disable-next-line guard-for-in
-        for (const filePath in errorGroup.matches) {
-          console.error(`  ${filePath}:`);
-          for (const { importPath, alternative } of errorGroup.matches[filePath]) {
-            console.error(`    ${chalk.inverse(importPath)}`);
-            if (alternative) {
-              console.error(`        (use instead: '${alternative}')`);
-            }
+      if (errorGroup.count === 0) {
+        return;
+      }
+
+      hasError = true;
+      console.error(`${chalk.red('ERROR')}: ${errorGroup.count} ${errorMessages[groupName]}`);
+      console.error('-------------------------------------');
+      // eslint-disable-next-line guard-for-in
+      for (const filePath in errorGroup.matches) {
+        console.error(`  ${filePath}:`);
+        for (const { importPath, alternative } of errorGroup.matches[filePath]) {
+          console.error(`    ${chalk.inverse(importPath)}`);
+          if (alternative) {
+            console.error(`        (use instead: '${alternative}')`);
           }
         }
       }
     }
+
     return hasError;
   }
 }
 
 if (require.main === module) {
-  lintImports();
+  const args = processArgs();
+  lintImports(args);
 }

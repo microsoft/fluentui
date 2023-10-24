@@ -11,7 +11,7 @@ export const defaultSelectorTypes = [
   'attribute-value',
 ] as const;
 
-type SelectorType = typeof defaultSelectorTypes[number];
+type SelectorType = (typeof defaultSelectorTypes)[number];
 
 type SelectorParams = {
   seed?: number;
@@ -32,7 +32,7 @@ export class RandomSelector {
 
   constructor({ seed, selectorTypes, tags, classNames, attributeNames, attributeValues }: SelectorParams = {}) {
     this.rando = random(seed);
-    this.selectorTypes = selectorTypes ?? ((defaultSelectorTypes as unknown) as SelectorType[]);
+    this.selectorTypes = selectorTypes ?? (defaultSelectorTypes as unknown as SelectorType[]);
     this.tags = tags ?? [];
     this.classNames = classNames ?? [];
     this.attributeNames = attributeNames ?? [];

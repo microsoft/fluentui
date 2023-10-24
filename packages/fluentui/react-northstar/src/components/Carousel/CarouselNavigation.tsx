@@ -73,7 +73,7 @@ export const carouselNavigationClassName = 'ui-carousel__navigation';
 /**
  * A Carousel navigation helps switching between Carousel items.
  */
-export const CarouselNavigation = (React.forwardRef<HTMLUListElement, CarouselNavigationProps>((props, ref) => {
+export const CarouselNavigation = React.forwardRef<HTMLUListElement, CarouselNavigationProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CarouselNavigation.displayName, context.telemetry);
   setStart();
@@ -162,7 +162,7 @@ export const CarouselNavigation = (React.forwardRef<HTMLUListElement, CarouselNa
   setEnd();
 
   return element;
-}) as unknown) as ForwardRefWithAs<'ul', HTMLUListElement, CarouselNavigationProps> &
+}) as unknown as ForwardRefWithAs<'ul', HTMLUListElement, CarouselNavigationProps> &
   FluentComponentStaticProps<CarouselNavigationProps>;
 
 CarouselNavigation.displayName = 'CarouselNavigation';

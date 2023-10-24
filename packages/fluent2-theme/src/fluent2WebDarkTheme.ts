@@ -1,8 +1,9 @@
-import type { IPalette, ISemanticColors, ITheme } from '@fluentui/react';
+import type { IPalette, ITheme } from '@fluentui/react';
 import { createTheme } from '@fluentui/react';
-import { IExtendedEffects } from './types';
+import { IExtendedEffects, IExtendedSemanticColors } from './types';
 import { fluent2ComponentStyles } from './fluent2ComponentStyles';
 import { fluent2SharedColors } from './fluent2SharedColors';
+import { Fluent2WebLightTheme } from './fluent2WebLightTheme';
 
 const fluent2ForV8DarkEffects: IExtendedEffects = {
   elevation4: '0px 2px 4px rgba(0, 0, 0, 0.14), 0px 0px 2px rgba(0, 0, 0, 0.12)',
@@ -55,7 +56,20 @@ const p = fluent2ForV8DarkPalette;
 // shortcut since the gray scale isn't part of the v8 palette.
 const grey36 = '#5C5C5C';
 
-const semanticColorMappingOverridesForDark: Partial<ISemanticColors> = {
+const semanticColorMappingOverridesForDark: Partial<IExtendedSemanticColors> = {
+  // Primary button is unique, it's background color is shared across themes
+  primaryButtonBackgroundHovered: Fluent2WebLightTheme.palette.themePrimary,
+  primaryButtonBackgroundPressed: Fluent2WebLightTheme.palette.themeDarker,
+  primaryButtonBackground: Fluent2WebLightTheme.palette.themeDarkAlt,
+
+  // This hex matches the v9 theme.
+  link: p.themeDark,
+
+  // Extended semantic colors
+  inputBottomBorderFocus: p.themePrimary,
+  inputBottomBorderRest: p.neutralLighter,
+
+  // Base semantic mapping overrides
   primaryButtonText: p.black,
   primaryButtonTextHovered: p.black,
   primaryButtonTextPressed: p.black,
@@ -63,9 +77,12 @@ const semanticColorMappingOverridesForDark: Partial<ISemanticColors> = {
   primaryButtonBackgroundDisabled: p.neutralLighter,
   accentButtonText: p.black,
   accentButtonBackground: p.themePrimary,
+
   inputPlaceholderText: p.neutralSecondaryAlt,
   inputForegroundChecked: p.black,
+  inputFocusBorderAlt: p.neutralTertiary,
   inputBorder: p.neutralQuaternary,
+  focusBorder: p.neutralTertiary,
 
   // Checkbox
   inputBackgroundChecked: p.themePrimary,
@@ -93,4 +110,5 @@ export const Fluent2WebDarkTheme: ITheme = createTheme({
   semanticColors: semanticColorMappingOverridesForDark,
   components: fluent2ComponentStyles,
   effects: fluent2ForV8DarkEffects,
+  isInverted: true,
 });

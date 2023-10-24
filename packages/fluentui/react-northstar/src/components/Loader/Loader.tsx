@@ -76,23 +76,12 @@ export type LoaderStylesProps = Pick<LoaderProps, 'inline' | 'labelPosition' | '
  * @accessibility
  * Implements [ARIA progressbar](https://www.w3.org/TR/wai-aria-1.1/#progressbar) role.
  */
-export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
+export const Loader = React.forwardRef<HTMLDivElement, LoaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Loader.displayName, context.telemetry);
   setStart();
-  const {
-    delay,
-    secondary,
-    label,
-    indicator,
-    inline,
-    labelPosition,
-    className,
-    design,
-    styles,
-    variables,
-    size,
-  } = props;
+  const { delay, secondary, label, indicator, inline, labelPosition, className, design, styles, variables, size } =
+    props;
 
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Loader.handledProps, props);
@@ -174,7 +163,7 @@ export const Loader = (React.forwardRef<HTMLDivElement, LoaderProps>((props, ref
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, LoaderProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, LoaderProps> &
   FluentComponentStaticProps<LoaderProps> & {
     shorthandConfig: ShorthandConfig<LoaderProps>;
   };

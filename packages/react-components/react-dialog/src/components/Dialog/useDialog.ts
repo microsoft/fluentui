@@ -5,6 +5,7 @@ import { useDisableBodyScroll, useFocusFirstElement } from '../../utils';
 import { DialogContext } from '../../contexts';
 
 import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.types';
+import { useModalAttributes } from '@fluentui/react-tabster';
 
 /**
  * Create the state required to render Dialog.
@@ -15,7 +16,7 @@ import type { DialogOpenChangeData, DialogProps, DialogState } from './Dialog.ty
  * @param props - props from this instance of Dialog
  */
 export const useDialog_unstable = (props: DialogProps): DialogState => {
-  const { children, modalType = 'modal', onOpenChange } = props;
+  const { children, modalType = 'modal', onOpenChange, inertTrapFocus = false } = props;
 
   const [trigger, content] = childrenToTriggerAndContent(children);
 
@@ -45,18 +46,26 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     }
   }, [disableBodyScroll, isBodyScrollLocked]);
 
+  const { modalAttributes, triggerAttributes } = useModalAttributes({
+    trapFocus: modalType !== 'non-modal',
+    legacyTrapFocus: !inertTrapFocus,
+  });
+
   return {
     components: {
       backdrop: 'div',
     },
+    inertTrapFocus,
     open,
     modalType,
-    content: open ? content : null,
+    content,
     trigger,
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),
     isNestedDialog: useHasParentContext(DialogContext),
     dialogRef: focusRef,
+    modalAttributes: modalType !== 'non-modal' ? modalAttributes : undefined,
+    triggerAttributes,
   };
 };
 
@@ -70,10 +79,11 @@ function childrenToTriggerAndContent(
   if (process.env.NODE_ENV !== 'production') {
     if (childrenArray.length !== 1 && childrenArray.length !== 2) {
       // eslint-disable-next-line no-console
-      console.warn(
-        'Dialog must contain at least one child <DialogSurface/>,\n' +
-          'and at most two children <DialogTrigger/> <DialogSurface/> (in this order)',
-      );
+      console.warn(/* #__DE-INDENT__ */ `
+        @fluentui/react-dialog [useDialog]:
+        Dialog must contain at least one child <DialogSurface/>,
+        and at most two children <DialogTrigger/> <DialogSurface/> (in this order).
+      `);
     }
   }
   switch (childrenArray.length) {

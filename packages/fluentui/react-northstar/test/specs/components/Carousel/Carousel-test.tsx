@@ -60,8 +60,6 @@ const getNavigationNavigationItemAtIndexWrapper = (wrapper: ReactWrapper, index:
   findIntrinsicElement(wrapper, `.${carouselNavigationItemClassName}`).at(index);
 const getButtonWrapper = (wrapper: ReactWrapper): CommonWrapper => findIntrinsicElement(wrapper, `#${buttonName}`);
 
-jest.useFakeTimers();
-
 describe('Carousel', () => {
   isConformant(Carousel, {
     testPath: __filename,
@@ -243,6 +241,8 @@ describe('Carousel', () => {
     const navigation = {
       items: items.map(item => ({ key: item.key, icon: { name: 'icon-circle' } })),
     };
+
+    jest.useFakeTimers();
 
     afterEach(() => {
       jest.runAllTimers();

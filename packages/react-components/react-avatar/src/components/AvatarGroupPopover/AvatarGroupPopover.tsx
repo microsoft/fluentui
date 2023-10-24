@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { renderAvatarGroupPopover_unstable } from './renderAvatarGroupPopover';
 import { useAvatarGroupPopoverContextValues } from './useAvatarGroupPopoverContextValues';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 import { useAvatarGroupPopover_unstable } from './useAvatarGroupPopover';
-import { useAvatarGroupPopoverStyles_unstable } from './useAvatarGroupPopoverStyles';
+import { useAvatarGroupPopoverStyles_unstable } from './useAvatarGroupPopoverStyles.styles';
 import type { AvatarGroupPopoverProps } from './AvatarGroupPopover.types';
 
 /**
@@ -13,6 +14,9 @@ export const AvatarGroupPopover: React.FC<AvatarGroupPopoverProps> = props => {
   const contextValues = useAvatarGroupPopoverContextValues(state);
 
   useAvatarGroupPopoverStyles_unstable(state);
+
+  useCustomStyleHook_unstable('useAvatarGroupPopoverStyles_unstable')(state);
+
   return renderAvatarGroupPopover_unstable(state, contextValues);
 };
 

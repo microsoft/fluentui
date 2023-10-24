@@ -51,7 +51,7 @@ export function composed<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
-  TStatics = {}
+  TStatics = {},
 >(
   options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>,
 ): IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics> & TStatics;
@@ -82,7 +82,7 @@ export function composed<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
-  TStatics = {}
+  TStatics = {},
 >(
   baseComponent: React.FunctionComponent,
   options: IRecompositionComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>,
@@ -117,7 +117,7 @@ export function composed<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
   TComponentSlots = {},
-  TStatics = {}
+  TStatics = {},
 >(
   baseComponentOrOptions:
     | IFoundationComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TComponentSlots, TStatics>

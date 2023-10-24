@@ -43,11 +43,11 @@ declare module '@storybook/addons' {
         type: 'source' | 'auto' | 'dynamic';
       };
 
-     /**
-     * Allows to override code that will be used for "Show Code" tab.
-     * @see https://github.com/storybookjs/storybook/blob/main/addons/docs/docs/recipes.md#customizing-source-snippets
-     */
-      transformSource: (snippet: string, story: StoryContextForEnhancers) => string | undefined;
+      /**
+       * Allows to override code that will be used for "Show Code" tab.
+       * @see https://github.com/storybookjs/storybook/blob/main/addons/docs/docs/recipes.md#customizing-source-snippets
+       */
+      transformSource?: (snippet: string, story: StoryContextForEnhancers) => string | undefined;
 
       container?: React.ComponentType<any>;
       page?: React.ComponentType<any>;

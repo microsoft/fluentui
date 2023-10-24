@@ -6,7 +6,7 @@ import * as minimatch from 'minimatch';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { ProfilerMeasure, ProfilerMeasureCycle } from '../types';
+import type { ProfilerMeasure, ProfilerMeasureCycle } from './globals';
 
 const mountNode = document.querySelector('#root');
 const performanceExamplesContext = require.context('@fluentui/docs/src/examples/', true, /.perf.tsx$/);

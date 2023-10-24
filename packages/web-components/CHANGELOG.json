@@ -2,6 +2,111 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 20 Jul 2023 07:35:18 GMT",
+      "tag": "@fluentui/web-components_v2.5.16",
+      "version": "2.5.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "vnbaaij@outlook.com",
+            "package": "@fluentui/web-components",
+            "commit": "9e52c0283219050674955e656d2934163a52a767",
+            "comment": "fix(web-components): ensures that text area size responds to rows and cols attributes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:30 GMT",
+      "tag": "@fluentui/web-components_v2.5.15",
+      "version": "2.5.15",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 01 Jun 2023 07:38:37 GMT",
+      "tag": "@fluentui/web-components_v2.5.15",
+      "version": "2.5.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "629df3c452dd3d0fd83472eb78ab8c98e22eb96e",
+            "comment": "fix listbox-option selected indicator position in RTL instances"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 17 Apr 2023 07:40:25 GMT",
+      "tag": "@fluentui/web-components_v2.5.14",
+      "version": "2.5.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "2e1cf8928df3e4f0b64b7390408374db94ae9e2c",
+            "comment": "update FAST dependencies to mitigate Safari 16.4 AdoptedStyleSheets bug"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 11 Apr 2023 07:43:45 GMT",
+      "tag": "@fluentui/web-components_v2.5.13",
+      "version": "2.5.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "d641ed3418a70dbcfcc29ca56acb4f2711551044",
+            "comment": "update fast foundation packages to import bug fixes"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Mar 2023 07:47:17 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "677a67b551966986db34a6fac608cb89ee150471",
+            "comment": "style: apply prettier 2.3-2.8 formatting on whole codebase"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 13 Feb 2023 07:37:39 GMT",
+      "tag": "@fluentui/web-components_v2.5.12",
+      "version": "2.5.12",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "cbba19f7ed8a619b5fa856575fde872e79be99b9",
+            "comment": "style: fix formatting in files that were silently passed previously"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 26 Jan 2023 07:35:32 GMT",
       "tag": "@fluentui/web-components_v2.5.12",
       "version": "2.5.12",

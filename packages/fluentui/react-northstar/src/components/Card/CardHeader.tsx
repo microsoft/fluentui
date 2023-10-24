@@ -30,7 +30,7 @@ export const cardHeaderClassName = 'ui-card__header';
 /**
  * A CardHeader is used to display data in Card header.
  */
-export const CardHeader = (React.forwardRef<HTMLDivElement, CardHeaderProps>((props, ref) => {
+export const CardHeader = React.forwardRef<HTMLDivElement, CardHeaderProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(CardHeader.displayName, context.telemetry);
   setStart();
@@ -68,8 +68,7 @@ export const CardHeader = (React.forwardRef<HTMLDivElement, CardHeaderProps>((pr
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, CardHeaderProps> &
-  FluentComponentStaticProps<CardHeaderProps>;
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, CardHeaderProps> & FluentComponentStaticProps<CardHeaderProps>;
 
 CardHeader.displayName = 'CardHeader';
 

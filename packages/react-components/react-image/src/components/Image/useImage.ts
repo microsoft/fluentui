@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { ImageProps, ImageState } from './Image.types';
 
 /**
@@ -17,10 +17,13 @@ export const useImage_unstable = (props: ImageProps, ref: React.Ref<HTMLImageEle
     components: {
       root: 'img',
     },
-    root: getNativeElementProps('img', {
-      ref,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('img', {
+        ref,
+        ...props,
+      }),
+      { elementType: 'img' },
+    ),
   };
 
   return state;

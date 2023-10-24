@@ -102,7 +102,7 @@ function useControllableValue<TValue, TElement extends HTMLElement>(
 function useControllableValue<
   TValue,
   TElement extends HTMLElement,
-  TCallback extends ChangeCallback<TElement, TValue> | undefined
+  TCallback extends ChangeCallback<TElement, TValue> | undefined,
 >(
   controlledValue: TValue | undefined,
   defaultUncontrolledValue: TValue | undefined,

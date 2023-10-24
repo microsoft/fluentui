@@ -1,12 +1,11 @@
 import * as React from 'react';
 import { Autofill } from '../../Autofill';
 import type { IPickerItemProps } from './PickerItem.types';
-import type { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import type { IReactProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import type { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
 import type { ICalloutProps } from '../../Callout';
 import type { ITheme, IStyle } from '../../Styling';
 import type { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
-import type { IReactProps } from '../../common/React.types';
 import { IIconProps } from '../Icon/Icon.types';
 
 /**

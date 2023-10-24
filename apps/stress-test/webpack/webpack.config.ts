@@ -1,7 +1,8 @@
 import * as path from 'path';
 import { fileURLToPath } from 'url';
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
-import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { registerTsPaths, rules } from '@fluentui/scripts-storybook';
 import { configurePages } from './pageConfig.js';
 import { configureGriffel } from './griffelConfig.js';
 import * as WebpackDevServer from 'webpack-dev-server';
@@ -10,6 +11,8 @@ import { GriffelMode } from '../scripts/utils/types';
 const enabledReactProfiling = true;
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+const tsConfigAllPath = path.join(__dirname, '../../../tsconfig.base.all.json');
 
 type WebpackArgs = {
   mode: 'production' | 'development' | 'none';
@@ -38,14 +41,10 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
         'scheduler/tracing': 'scheduler/tracing-profiling',
       },
       extensions: ['.tsx', '.ts', '.js'],
-      plugins: [
-        new TsconfigPathsPlugin({
-          configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
-        }),
-      ],
     },
     module: {
       rules: [
+        rules.scssRule,
         {
           test: /\.(ts|tsx)?$/,
           exclude: /node_modules/,
@@ -102,6 +101,8 @@ const createConfig: WebpackConfigurationCreator = (_env, argv) => {
 
   config = configureGriffel(config, argv.griffelMode);
   config = configurePages(config);
+
+  registerTsPaths({ config, configFile: tsConfigAllPath });
 
   return config;
 };

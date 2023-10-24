@@ -37,7 +37,8 @@ export type CardSlots = {
   root: Slot<'div'>;
 
   /**
-   * Select element represents a checkbox.
+   * Floating action that can be rendered on the top-right of a card. Often used together with
+   * `selected`, `defaultSelected`, and `onSelectionChange` props
    */
   floatingAction?: Slot<'div'>;
 
@@ -71,7 +72,7 @@ export type CardProps = ComponentProps<CardSlots> & {
   appearance?: 'filled' | 'filled-alternative' | 'outline' | 'subtle';
 
   /**
-   * Sets the focus behavior for the card. If `true`, the card will use the `noTab` focus behavior.
+   * Sets the focus behavior for the card.
    *
    * `off`
    * The card will not focusable.

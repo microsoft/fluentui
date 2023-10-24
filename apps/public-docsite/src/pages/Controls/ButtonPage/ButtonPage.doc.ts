@@ -20,30 +20,38 @@ export const ButtonPageProps = (disabled: boolean, checked: boolean): TPlatformP
       related,
     },
     ios: {
-      overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ios/ButtonOverview.md') as string,
+      overview:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/ios/ButtonOverview.md') as string,
       related,
       componentUrl,
     },
     android: {
-      overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/android/ButtonOverview.md') as string,
+      overview:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/android/ButtonOverview.md') as string,
       related,
       componentUrl,
     },
     windows: {
-      overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/windows/ButtonOverview.md') as string,
-      usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/windows/ButtonUsage.md') as string,
+      overview:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/windows/ButtonOverview.md') as string,
+      usage:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/windows/ButtonUsage.md') as string,
       related,
       componentUrl,
     },
     mac: {
-      overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonOverview.md') as string,
-      usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonUsage.md') as string,
+      overview:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonOverview.md') as string,
+      usage:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/mac/ButtonUsage.md') as string,
       related,
       componentUrl,
     },
     cross: {
-      overview: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/cross/ButtonOverview.md') as string,
-      usage: require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/cross/ButtonUsage.md') as string,
+      overview:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/cross/ButtonOverview.md') as string,
+      usage:
+        require('!raw-loader?esModule=false!@fluentui/public-docsite/src/pages/Controls/ButtonPage/docs/cross/ButtonUsage.md') as string,
       related,
       componentUrl,
     },

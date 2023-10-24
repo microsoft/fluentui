@@ -1,4 +1,4 @@
-import { workspaceRoot } from '@nrwl/devkit';
+import { workspaceRoot } from '@nx/devkit';
 
 import preset from './jest.preset.v0';
 
@@ -18,6 +18,7 @@ describe(`v0 preset`, () => {
         transform: {
           '^.+\\.tsx?$': 'babel-jest',
         },
+        testEnvironment: 'jsdom',
         verbose: false,
         watchPlugins: ['jest-watch-typeahead/filename', 'jest-watch-typeahead/testname'],
       }),

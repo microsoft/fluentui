@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, useId } from '@fluentui/react-utilities';
+import { useFieldControlProps_unstable } from '@fluentui/react-field';
+import { getIntrinsicElementProps, isHTMLElement, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
 
 /**
@@ -12,6 +13,9 @@ import { RadioGroupProps, RadioGroupState } from './RadioGroup.types';
  * @param ref - reference to root HTMLElement of RadioGroup
  */
 export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HTMLDivElement>): RadioGroupState => {
+  // Merge props from surrounding <Field>, if any
+  props = useFieldControlProps_unstable(props);
+
   const generatedName = useId('radiogroup-');
 
   const { name = generatedName, value, defaultValue, disabled, layout = 'vertical', onChange, required } = props;
@@ -29,9 +33,15 @@ export const useRadioGroup_unstable = (props: RadioGroupProps, ref: React.Ref<HT
     root: {
       ref,
       role: 'radiogroup',
-      ...getNativeElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']),
+      ...slot.always(getIntrinsicElementProps('div', props, /*excludedPropNames:*/ ['onChange', 'name']), {
+        elementType: 'div',
+      }),
       onChange: useEventCallback(ev => {
-        if (onChange && ev.target instanceof HTMLInputElement && ev.target.type === 'radio') {
+        if (
+          onChange &&
+          isHTMLElement(ev.target, { constructorName: 'HTMLInputElement' }) &&
+          ev.target.type === 'radio'
+        ) {
           onChange(ev, { value: ev.target.value });
         }
       }),

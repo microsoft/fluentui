@@ -8,7 +8,6 @@
 
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
-import { DeprecatedFieldProps } from '@fluentui/react-field';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Label } from '@fluentui/react-label';
 import * as React_2 from 'react';
@@ -26,22 +25,6 @@ export const switchClassName: string;
 
 // @public (undocumented)
 export const switchClassNames: SlotClassNames<SwitchSlots>;
-
-// @public @deprecated (undocumented)
-export const SwitchField_unstable: ForwardRefComponent<SwitchFieldProps_unstable>;
-
-// @public @deprecated (undocumented)
-export const switchFieldClassNames: {
-    control: string;
-    root: string;
-    label: string;
-    validationMessage: string;
-    validationMessageIcon: string;
-    hint: string;
-};
-
-// @public @deprecated (undocumented)
-export type SwitchFieldProps_unstable = DeprecatedFieldProps<SwitchProps>;
 
 // @public (undocumented)
 export type SwitchOnChangeData = {

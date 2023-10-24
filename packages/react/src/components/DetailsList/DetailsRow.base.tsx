@@ -189,7 +189,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
       onRenderField,
       getCellValueKey,
       selectionMode,
-      rowWidth = 0,
       checkboxVisibility,
       getRowAriaLabel,
       getRowAriaDescription,
@@ -330,7 +329,6 @@ export class DetailsRowBase extends React.Component<IDetailsRowBaseProps, IDetai
         data-item-index={itemIndex}
         aria-rowindex={ariaPositionInSet === undefined ? itemIndex + flatIndexOffset : undefined}
         data-automationid="DetailsRow"
-        style={{ minWidth: rowWidth }}
         aria-selected={ariaSelected}
         allowFocusRoot={true}
       >

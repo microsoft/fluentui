@@ -12,14 +12,23 @@ import { Slider } from '@fluentui/react-slider';
 import { SpinButton } from '@fluentui/react-spinbutton';
 import { Switch } from '@fluentui/react-switch';
 import { Textarea } from '@fluentui/react-textarea';
+import { DecoratorFunction } from '@storybook/addons';
 import { storiesOf } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
+import { ExtendedStoryFnReturnType } from '../utilities/types';
+
+const TestWrapperDecoratorFixedWidth400: DecoratorFunction<ExtendedStoryFnReturnType> = story => (
+  <div style={{ display: 'flex' }}>
+    <div className="testWrapper" style={{ padding: '10px', width: '400px' }}>
+      {story()}
+    </div>
+  </div>
+);
 
 storiesOf('Field', module)
+  .addDecorator(TestWrapperDecoratorFixedWidth400)
   .addDecorator(story => (
-    <div className="testWrapper" style={{ padding: '10px', width: '400px' }}>
-      <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-    </div>
+    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
   ))
   .addStory('base', () => (
     <Field label="Example field">
@@ -33,12 +42,12 @@ storiesOf('Field', module)
   ))
   .addStory('size:small', () => (
     <Field label="Small field" size="small">
-      <Input size="small" />
+      <Input />
     </Field>
   ))
   .addStory('size:large', () => (
     <Field label="Large field" size="large">
-      <Input size="large" />
+      <Input />
     </Field>
   ))
   .addStory('validation:error', () => (
@@ -109,57 +118,151 @@ storiesOf('Field', module)
       <Checkbox label="Checkbox in a horizontal field" />
     </Field>
   ))
-  .addStory('Checkbox:error', () => (
-    <Field validationMessage="Error message">
-      <Checkbox label="Checkbox in a Field with an error" />
-    </Field>
+  .addStory('Checkbox', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Checkbox in a Field with a label">
+        <Checkbox />
+      </Field>
+      <Field validationMessage="Error message">
+        <Checkbox label="Checkbox in a Field with an error" />
+      </Field>
+    </div>
   ))
-  .addStory('Combobox:error', () => (
-    <Field label="Combobox in a Field with an error" validationMessage="Error message">
-      <Combobox />
-    </Field>
+  .addStory('Combobox', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Combobox in a small Field" size="small">
+        <Combobox />
+      </Field>
+      <Field label="Combobox in a medium Field" size="medium">
+        <Combobox />
+      </Field>
+      <Field label="Combobox in a large Field" size="large">
+        <Combobox />
+      </Field>
+      <Field label="Combobox in a Field with an error" validationMessage="Error message">
+        <Combobox />
+      </Field>
+    </div>
   ))
-  .addStory('Dropdown:error', () => (
-    <Field label="Dropdown in a Field with an error" validationMessage="Error message">
-      <Dropdown />
-    </Field>
+  .addStory('Dropdown', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Dropdown in a small Field" size="small">
+        <Dropdown />
+      </Field>
+      <Field label="Dropdown in a medium Field" size="medium">
+        <Dropdown />
+      </Field>
+      <Field label="Dropdown in a large Field" size="large">
+        <Dropdown />
+      </Field>
+      <Field label="Dropdown in a Field with an error" validationMessage="Error message">
+        <Dropdown />
+      </Field>
+    </div>
   ))
-  .addStory('ProgressBar:error', () => (
-    <Field label="ProgressBar in a Field with an error" validationMessage="Error message">
-      <ProgressBar value={0.5} validationState="error" />
-    </Field>
+  .addStory('ProgressBar', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="ProgressBar in a Field with a hint" hint="Hint message">
+        <ProgressBar value={0.5} />
+      </Field>
+      <Field label="ProgressBar in a Field with success" validationMessage="Success message" validationState="success">
+        <ProgressBar value={0.5} />
+      </Field>
+      <Field
+        label="ProgressBar in a Field with a warning"
+        validationMessage="Warning message"
+        validationState="warning"
+      >
+        <ProgressBar value={0.5} />
+      </Field>
+      <Field label="ProgressBar in a Field with an error" validationMessage="Error message">
+        <ProgressBar value={0.5} />
+      </Field>
+    </div>
   ))
-  .addStory('RadioGroup:error', () => (
-    <Field label="RadioGroup in a Field with an error" validationMessage="Error message">
-      <RadioGroup>
-        <Radio label="Option one" />
-        <Radio label="Option two" />
-        <Radio label="Option three" />
-      </RadioGroup>
-    </Field>
+  .addStory('RadioGroup', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="RadioGroup in a Field">
+        <RadioGroup>
+          <Radio label="Option one" />
+          <Radio label="Option two" />
+          <Radio label="Option three" />
+        </RadioGroup>
+      </Field>
+      <Field label="RadioGroup in a Field with an error" validationMessage="Error message">
+        <RadioGroup>
+          <Radio label="Option one" />
+          <Radio label="Option two" />
+          <Radio label="Option three" />
+        </RadioGroup>
+      </Field>
+    </div>
   ))
-  .addStory('Select:error', () => (
-    <Field label="Select in a Field with an error" validationMessage="Error message">
-      <Select />
-    </Field>
+  .addStory('Select', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Select in a small Field" size="small">
+        <Select />
+      </Field>
+      <Field label="Select in a medium Field" size="medium">
+        <Select />
+      </Field>
+      <Field label="Select in a large Field" size="large">
+        <Select />
+      </Field>
+      <Field label="Select in a Field with an error" validationMessage="Error message">
+        <Select />
+      </Field>
+    </div>
   ))
-  .addStory('Slider:error', () => (
-    <Field label="Slider in a Field with an error" validationMessage="Error message">
-      <Slider />
-    </Field>
+  .addStory('Slider', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Slider in a Field">
+        <Slider />
+      </Field>
+      <Field label="Slider in a Field with an error" validationMessage="Error message">
+        <Slider />
+      </Field>
+    </div>
   ))
-  .addStory('SpinButton:error', () => (
-    <Field label="SpinButton in a Field with an error" validationMessage="Error message">
-      <SpinButton />
-    </Field>
+  .addStory('SpinButton', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="SpinButton in a small Field" size="small">
+        <SpinButton />
+      </Field>
+      <Field label="SpinButton in a medium Field" size="medium">
+        <SpinButton />
+      </Field>
+      <Field label="SpinButton in a large Field" size="large">
+        <SpinButton />
+      </Field>
+      <Field label="SpinButton in a Field with an error" validationMessage="Error message">
+        <SpinButton />
+      </Field>
+    </div>
   ))
-  .addStory('Switch:error', () => (
-    <Field label="Switch in a Field with an error" validationMessage="Error message">
-      <Switch />
-    </Field>
+  .addStory('Switch', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Switch in a Field">
+        <Switch />
+      </Field>
+      <Field label="Switch in a Field with an error" validationMessage="Error message">
+        <Switch />
+      </Field>
+    </div>
   ))
-  .addStory('Textarea:error', () => (
-    <Field label="Textarea in a Field with an error" validationMessage="Error message">
-      <Textarea />
-    </Field>
+  .addStory('Textarea', () => (
+    <div style={{ display: 'grid', gap: '10px' }}>
+      <Field label="Textarea in a small Field" size="small">
+        <Textarea />
+      </Field>
+      <Field label="Textarea in a medium Field" size="medium">
+        <Textarea />
+      </Field>
+      <Field label="Textarea in a large Field" size="large">
+        <Textarea />
+      </Field>
+      <Field label="Textarea in a Field with an error" validationMessage="Error message">
+        <Textarea />
+      </Field>
+    </div>
   ));

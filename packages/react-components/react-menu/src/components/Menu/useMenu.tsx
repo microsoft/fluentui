@@ -1,19 +1,35 @@
 import * as React from 'react';
-import { usePositioningMouseTarget, usePositioning, resolvePositioningShorthand } from '@fluentui/react-positioning';
+import {
+  usePositioningMouseTarget,
+  usePositioning,
+  resolvePositioningShorthand,
+  PositioningShorthandValue,
+} from '@fluentui/react-positioning';
 import {
   useControllableState,
   useId,
   useOnClickOutside,
   useEventCallback,
   useOnScrollOutside,
+  elementContains,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
-import { elementContains } from '@fluentui/react-portal';
 import { useFocusFinders } from '@fluentui/react-tabster';
 import { useMenuContext_unstable } from '../../contexts/menuContext';
 import { MENU_ENTER_EVENT, useOnMenuMouseEnter } from '../../utils/index';
 import { useIsSubmenu } from '../../utils/useIsSubmenu';
 import type { MenuOpenChangeData, MenuOpenEvent, MenuProps, MenuState } from './Menu.types';
+
+// If it's not possible to position the submenu in smaller viewports, try
+// and fallback to this order of positions
+const submenuFallbackPositions: PositioningShorthandValue[] = [
+  'after',
+  'after-bottom',
+  'before-top',
+  'before',
+  'before-bottom',
+  'above',
+];
 
 /**
  * Create the state required to render Menu.
@@ -35,6 +51,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     persistOnItemClick = false,
     openOnHover = isSubmenu,
     defaultCheckedValues,
+    mountNode = null,
   } = props;
   const triggerId = useId('menu');
   const [contextTarget, setContextTarget] = usePositioningMouseTarget();
@@ -43,6 +60,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     position: isSubmenu ? 'after' : 'below',
     align: isSubmenu ? 'top' : 'start',
     target: props.openOnContext ? contextTarget : undefined,
+    fallbackPositions: isSubmenu ? submenuFallbackPositions : undefined,
     ...resolvePositioningShorthand(props.positioning),
   } as const;
 
@@ -104,6 +122,7 @@ export const useMenu_unstable = (props: MenuProps): MenuState => {
     closeOnScroll,
     menuTrigger,
     menuPopover,
+    mountNode,
     triggerRef,
     menuPopoverRef,
     components: {},
@@ -157,7 +176,6 @@ const useMenuOpenState = (
   const parentSetOpen = useMenuContext_unstable(context => context.setOpen);
   const onOpenChange: MenuProps['onOpenChange'] = useEventCallback((e, data) => state.onOpenChange?.(e, data));
 
-  const shouldHandleCloseRef = React.useRef(false);
   const setOpenTimeout = React.useRef(0);
   const enteringTriggerRef = React.useRef(false);
 
@@ -176,7 +194,6 @@ const useMenuOpenState = (
 
     if (!data.open) {
       state.setContextTarget(undefined);
-      shouldHandleCloseRef.current = true;
     }
 
     if (data.bubble) {
@@ -260,20 +277,8 @@ const useMenuOpenState = (
   React.useEffect(() => {
     if (open) {
       focusFirst();
-    } else {
-      if (shouldHandleCloseRef.current) {
-        // We know that React effects are sync so we focus the trigger here
-        // after any event handler (event handlers will update state and re-render).
-        // Since the browser only performs the default behaviour for the Tab key once
-        // keyboard events have fully bubbled up the window, the browser will move
-        // focus to the next tabbable element before/after the trigger if needed.
-        // If the Tab key was not pressed, focus will remain on the trigger as expected.
-        state.triggerRef.current?.focus();
-      }
     }
-
-    shouldHandleCloseRef.current = false;
-  }, [state.triggerRef, state.isSubmenu, open, focusFirst]);
+  }, [open, focusFirst]);
 
   return [open, setOpen] as const;
 };

@@ -533,7 +533,7 @@ export interface IDeclaredEventsByName {
 }
 
 // @public
-export interface IDelayedRenderProps extends React_2.Props<{}> {
+export interface IDelayedRenderProps extends IReactProps<{}> {
     delay?: number;
 }
 
@@ -674,6 +674,16 @@ export interface IPoint extends Point {
 export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
     // (undocumented)
     styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
+}
+
+// @public (undocumented)
+export interface IReactProps<T> {
+    // (undocumented)
+    children?: React_2.ReactNode | undefined;
+    // (undocumented)
+    key?: React_2.Key | undefined;
+    // (undocumented)
+    ref?: React_2.LegacyRef<T> | undefined;
 }
 
 // @public

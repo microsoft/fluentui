@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { create } from '@fluentui/utilities/lib/test';
+import { create } from '@fluentui/test-utilities';
 import { TestImages } from '@fluentui/example-data';
 import { Icon } from '../../Icon';
 import { setRTL } from '../../Utilities';

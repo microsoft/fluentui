@@ -30,7 +30,7 @@ completed as part of creating a v9 component. More info can be found here: https
   - [ ] [Storybook stories](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#storybook-stories)
   - [ ] README.md covering basic usage
   - [ ] MIGRATION.md guide (include v8 and v0)
-- [ ] [Component released as unstable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#unstable-release) from `@fluentui/react-components/unstable`
+- [ ] [Component released as preview](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#preview-release)
 
 ## Validation
 
@@ -46,7 +46,9 @@ completed as part of creating a v9 component. More info can be found here: https
 - [ ] [Finalize documentation](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#finalize-documentation)
   - [ ] Review and add any missing storybook stories
   - [ ] Finalize migration guide
-- [ ] [Component released as stable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#stable-release) from `@fluentui/react-components`
-  - [ ] Ensure exports are removed from from `@fluentui/react-components/unstable`
+- [ ] [Component released as stable](https://github.com/microsoft/fluentui/wiki/Component-Implementation-Guide#stable-release)
+  - [ ] Run the `prepare-initial-release` script to remove the `-preview` suffix from the package name
+  - [ ] Deprecate the `-preview` package in NPM
+  - [ ] Export the component from `@fluentui/react-components`
   - [ ] In package.json: Remove the alpha/beta tag from the version number in package.json
   - [ ] In package.json: Change beachball's `disallowedChangeTypes` to `"major", "prerelease"`

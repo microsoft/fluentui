@@ -60,23 +60,12 @@ export const dividerClassName = 'ui-divider';
 /**
  * A Divider visually segments content.
  */
-export const Divider = (React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
+export const Divider = React.forwardRef<HTMLDivElement, DividerProps>((props, ref) => {
   const context = useFluentContext();
   const { setStart, setEnd } = useTelemetry(Divider.displayName, context.telemetry);
   setStart();
-  const {
-    children,
-    color,
-    fitted,
-    size,
-    important,
-    vertical,
-    className,
-    design,
-    styles,
-    variables,
-    accessibility,
-  } = props;
+  const { children, color, fitted, size, important, vertical, className, design, styles, variables, accessibility } =
+    props;
   const ElementType = getElementType(props);
   const unhandledProps = useUnhandledProps(Divider.handledProps, props);
   const getA11yProps = useAccessibility<never>(accessibility, {
@@ -118,7 +107,7 @@ export const Divider = (React.forwardRef<HTMLDivElement, DividerProps>((props, r
   );
   setEnd();
   return element;
-}) as unknown) as ForwardRefWithAs<'div', HTMLDivElement, DividerProps> &
+}) as unknown as ForwardRefWithAs<'div', HTMLDivElement, DividerProps> &
   FluentComponentStaticProps<DividerProps> & {
     Content: typeof DividerContent;
   };

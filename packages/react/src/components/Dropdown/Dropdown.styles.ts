@@ -48,6 +48,11 @@ const highContrastItemAndTitleStateMixin: IRawStyle = {
       borderColor: 'Highlight',
       color: 'HighlightText',
     },
+    ['.ms-Checkbox-checkbox']: {
+      [HighContrastSelector]: {
+        borderColor: 'HighlightText',
+      },
+    },
     ...highContrastAdjustMixin,
   },
 };
@@ -158,7 +163,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           },
           highContrastItemAndTitleStateMixin,
         ],
-        '&.is-multi-select:hover': [{ backgroundColor: !isSelected ? 'transparent' : selectedItemBackgroundColor }],
+        '&.is-multi-select:hover': [
+          { backgroundColor: !isSelected ? 'transparent' : selectedItemBackgroundColor },
+          highContrastItemAndTitleStateMixin,
+        ],
         '&:active:hover': [
           {
             color: semanticColors.menuItemTextHovered,

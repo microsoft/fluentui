@@ -13,6 +13,7 @@ import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { PortalProps } from '@fluentui/react-portal';
 import type { PositioningShorthand } from '@fluentui/react-positioning';
 import { PositioningVirtualElement } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
@@ -20,9 +21,16 @@ import { SetVirtualMouseTarget } from '@fluentui/react-positioning';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
+import type { UseOnClickOrScrollOutsideOptions } from '@fluentui/react-utilities';
+
+// @public
+export const dispatchMenuEnterEvent: (el: HTMLElement, nativeEvent: MouseEvent) => void;
 
 // @public
 export const Menu: React_2.FC<MenuProps>;
+
+// @public
+export const MENU_ENTER_EVENT = "fuimenuenter";
 
 // @public (undocumented)
 export type MenuCheckedValueChangeData = {
@@ -34,7 +42,7 @@ export type MenuCheckedValueChangeData = {
 export type MenuCheckedValueChangeEvent = React_2.MouseEvent | React_2.KeyboardEvent;
 
 // @public
-export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
+export type MenuContextValue = Pick<MenuState, 'openOnHover' | 'openOnContext' | 'triggerRef' | 'menuPopoverRef' | 'setOpen' | 'isSubmenu' | 'mountNode' | 'triggerId' | 'hasIcons' | 'hasCheckmarks' | 'persistOnItemClick' | 'inline' | 'checkedValues' | 'onCheckedValueChange'> & {
     open: boolean;
     triggerId: string;
     defaultCheckedValues?: Record<string, string[]>;
@@ -129,6 +137,25 @@ export type MenuItemCheckboxState = MenuItemState & MenuItemSelectableState;
 // @public (undocumented)
 export const menuItemClassNames: SlotClassNames<MenuItemSlots>;
 
+// @public
+export const MenuItemLink: ForwardRefComponent<MenuItemLinkProps>;
+
+// @public (undocumented)
+export const menuItemLinkClassNames: SlotClassNames<MenuItemLinkSlots>;
+
+// @public
+export type MenuItemLinkProps = ComponentProps<MenuItemLinkSlots> & Pick<MenuItemProps, 'disabled'> & {
+    href: string;
+};
+
+// @public (undocumented)
+export type MenuItemLinkSlots = {
+    root: Slot<'a'>;
+} & Pick<MenuItemSlots, 'icon' | 'content' | 'secondaryContent' | 'checkmark'>;
+
+// @public
+export type MenuItemLinkState = ComponentState<MenuItemLinkSlots>;
+
 // @public (undocumented)
 export type MenuItemProps = ComponentProps<Partial<MenuItemSlots>> & {
     hasSubmenu?: boolean;
@@ -214,6 +241,7 @@ export type MenuListState = ComponentState<MenuListSlots> & Required<Pick<MenuLi
     selectRadio: SelectableHandler;
     setFocusByFirstCharacter: NonNullable<MenuListContextValue['setFocusByFirstCharacter']>;
     toggleCheckbox: SelectableHandler;
+    hasMenuContext?: boolean;
 };
 
 // @public
@@ -280,12 +308,12 @@ export type MenuPopoverSlots = {
 };
 
 // @public
-export type MenuPopoverState = ComponentState<MenuPopoverSlots> & {
+export type MenuPopoverState = ComponentState<MenuPopoverSlots> & Pick<PortalProps, 'mountNode'> & {
     inline: boolean;
 };
 
 // @public
-export type MenuProps = ComponentProps<MenuSlots> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
+export type MenuProps = ComponentProps<MenuSlots> & Pick<PortalProps, 'mountNode'> & Pick<MenuListProps, 'checkedValues' | 'defaultCheckedValues' | 'hasCheckmarks' | 'hasIcons' | 'onCheckedValueChange'> & {
     children: [JSX.Element, JSX.Element] | JSX.Element;
     hoverDelay?: number;
     inline?: boolean;
@@ -323,7 +351,7 @@ export type MenuSplitGroupSlots = {
 export type MenuSplitGroupState = ComponentState<MenuSplitGroupSlots>;
 
 // @public (undocumented)
-export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
+export type MenuState = ComponentState<MenuSlots> & Required<Pick<MenuProps, 'hasCheckmarks' | 'hasIcons' | 'mountNode' | 'inline' | 'checkedValues' | 'onCheckedValueChange' | 'open' | 'openOnHover' | 'closeOnScroll' | 'hoverDelay' | 'openOnContext' | 'persistOnItemClick'>> & {
     contextTarget?: PositioningVirtualElement;
     isSubmenu: boolean;
     menuPopover: React_2.ReactNode;
@@ -383,6 +411,9 @@ export const renderMenuItem_unstable: (state: MenuItemState) => JSX.Element;
 
 // @public
 export const renderMenuItemCheckbox_unstable: (state: MenuItemCheckboxState) => JSX.Element;
+
+// @public
+export const renderMenuItemLink_unstable: (state: MenuItemLinkState) => JSX.Element;
 
 // @public
 export const renderMenuItemRadio_unstable: (state: MenuItemRadioState) => JSX.Element;
@@ -451,6 +482,12 @@ export const useMenuItemCheckbox_unstable: (props: MenuItemCheckboxProps, ref: R
 export const useMenuItemCheckboxStyles_unstable: (state: MenuItemCheckboxState) => void;
 
 // @public
+export const useMenuItemLink_unstable: (props: MenuItemLinkProps, ref: React_2.Ref<HTMLAnchorElement>) => MenuItemLinkState;
+
+// @public
+export const useMenuItemLinkStyles_unstable: (state: MenuItemLinkState) => MenuItemLinkState;
+
+// @public
 export const useMenuItemRadio_unstable: (props: MenuItemRadioProps, ref: React_2.Ref<ARIAButtonElement<'div'>>) => MenuItemRadioState;
 
 // @public (undocumented)
@@ -488,6 +525,9 @@ export const useMenuTrigger_unstable: (props: MenuTriggerProps) => MenuTriggerSt
 
 // @public (undocumented)
 export const useMenuTriggerContext_unstable: () => boolean;
+
+// @public
+export const useOnMenuMouseEnter: (options: UseOnClickOrScrollOutsideOptions) => void;
 
 // (No @packageDocumentation comment for this package)
 

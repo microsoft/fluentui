@@ -10,11 +10,14 @@ export const mockUseDialogContext = (options: Partial<DialogContextValue> = {}) 
   const mockContext: DialogContextValue = {
     open: false,
     modalType: 'modal',
+    inertTrapFocus: false,
     isNestedDialog: false,
     dialogRef: { current: null },
     requestOpenChange() {
       /* noop */
     },
+    modalAttributes: undefined,
+    triggerAttributes: { 'data-tabster': '{"deloser":{}}' },
     ...options,
   };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

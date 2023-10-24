@@ -32,7 +32,7 @@ describe(`triage bot`, () => {
       ],
     };
 
-    await main({ ...((githubApi as unknown) as GithubScriptsParams), config });
+    await main({ ...(githubApi as unknown as GithubScriptsParams), config });
 
     expect(githubApi.github.rest.issues.addLabels).not.toHaveBeenCalled();
     expect(githubApi.github.rest.issues.addAssignees).not.toHaveBeenCalled();
@@ -51,7 +51,7 @@ describe(`triage bot`, () => {
     };
     githubApi.github.rest.issues.addLabels.mockReturnValueOnce(Promise.resolve({ status: 200 }));
 
-    await main({ ...((githubApi as unknown) as GithubScriptsParams), config });
+    await main({ ...(githubApi as unknown as GithubScriptsParams), config });
 
     expect(formatMockedCalls(githubApi.core.info.mock.calls)).toMatchInlineSnapshot(`"Label set: bug"`);
   });
@@ -69,7 +69,7 @@ describe(`triage bot`, () => {
     };
     githubApi.github.rest.issues.addLabels.mockReturnValueOnce(Promise.resolve({ status: 200 }));
     githubApi.github.rest.issues.addAssignees.mockReturnValueOnce(Promise.resolve({ status: 201 }));
-    await main({ ...((githubApi as unknown) as GithubScriptsParams), config });
+    await main({ ...(githubApi as unknown as GithubScriptsParams), config });
 
     expect(formatMockedCalls(githubApi.core.info.mock.calls)).toMatchInlineSnapshot(`
       "Label set: bug

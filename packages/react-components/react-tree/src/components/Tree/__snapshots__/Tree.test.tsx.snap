@@ -4,8 +4,9 @@ exports[`Tree renders a default state 1`] = `
 <div>
   <div
     class="fui-Tree"
-    data-tabster="{\\"mover\\":{\\"cyclic\\":false,\\"direction\\":1,\\"tabbable\\":true}}"
     role="tree"
-  />
+  >
+    Default Tree
+  </div>
 </div>
 `;

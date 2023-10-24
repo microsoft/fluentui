@@ -215,6 +215,7 @@ export type {
   // eslint-disable-next-line deprecation/deprecation
   IPoint,
   IPropsWithStyles,
+  IReactProps,
   IRectangle,
   IRefObject,
   IRenderComponent,
