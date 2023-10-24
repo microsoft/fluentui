@@ -155,6 +155,7 @@
     "./dist/esm/compound-button/define.js",
     "./dist/esm/counter-badge/define.js",
     "./dist/esm/divider/define.js",
+    "./dist/esm/drawer/define.js",
     "./dist/esm/image/define.js",
     "./dist/esm/label/define.js",
     "./dist/esm/menu-list/define.js",

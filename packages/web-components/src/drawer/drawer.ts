@@ -1,7 +1,7 @@
 import { attr, css, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { isTabbable } from 'tabbable';
 import { eventAnimationEnd, keyEscape, keyTab } from '@microsoft/fast-web-utilities';
-import { colorNeutralStroke1, colorTransparentStroke } from '../index.js';
+import { colorNeutralStroke1, colorTransparentStroke } from '../theme/design-tokens.js';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 export class Drawer extends FASTElement {
