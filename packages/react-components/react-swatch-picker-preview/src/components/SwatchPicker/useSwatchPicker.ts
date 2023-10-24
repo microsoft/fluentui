@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types';
 
 /**
@@ -11,7 +11,10 @@ import type { SwatchPickerProps, SwatchPickerState } from './SwatchPicker.types'
  * @param props - props from this instance of SwatchPicker
  * @param ref - reference to root HTMLElement of SwatchPicker
  */
-export const useSwatchPicker_unstable = (props: SwatchPickerProps, ref: React.Ref<HTMLElement>): SwatchPickerState => {
+export const useSwatchPicker_unstable = (
+  props: SwatchPickerProps,
+  ref: React.Ref<HTMLDivElement>,
+): SwatchPickerState => {
   return {
     // TODO add appropriate props/defaults
     components: {
@@ -21,7 +24,7 @@ export const useSwatchPicker_unstable = (props: SwatchPickerProps, ref: React.Re
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref,
         ...props,
       }),

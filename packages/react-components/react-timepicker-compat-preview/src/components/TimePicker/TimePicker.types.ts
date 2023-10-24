@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
 
 export type Hour =
@@ -47,12 +48,32 @@ export type TimePickerOption = {
   text: string;
 };
 
+/**
+ * Error types returned by the `onValidationResult` callback.
+ */
+export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds';
+
+export type TimeStringValidationResult = {
+  date: Date | null;
+  error?: TimePickerErrorType;
+};
+
 export type TimePickerSlots = ComboboxSlots;
 
-export type TimeSelectionEvents = SelectionEvents;
+export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
 export type TimeSelectionData = {
-  selectedTime: Date | undefined;
+  /**
+   * The Date object associated with the selected option. For freeform TimePicker it can also be the Date object parsed from the user input.
+   */
+  selectedTime: Date | null;
+  /**
+   * The display text for the selected option. For freeform TimePicker it can also be the value in user input.
+   */
   selectedTimeText: string | undefined;
+  /**
+   * The error type for the selected option.
+   */
+  error: TimePickerErrorType | undefined;
 };
 
 export type TimeFormatOptions = {
@@ -104,7 +125,7 @@ export type TimePickerProps = Omit<
     /**
      * Currently selected time in the TimePicker.
      */
-    selectedTime?: Date;
+    selectedTime?: Date | null;
 
     /**
      * Default selected time in the TimePicker, for uncontrolled scenarios.
@@ -120,9 +141,20 @@ export type TimePickerProps = Omit<
      * Custom the date strings displayed (in dropdown options and input).
      */
     formatDateToTimeString?: (date: Date) => string;
+
+    /**
+     * Custom validation for the input time string from user in freeform TimePicker.
+     */
+    validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
   };
 
 /**
  * State used in rendering TimePicker
  */
-export type TimePickerState = ComboboxState;
+export type TimePickerState = ComboboxState &
+  Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
+    /**
+     * Submitted text from the input field. It is used to determine if the input value has changed when user submit a new value on Enter or blur from input.
+     */
+    submittedText: string | undefined;
+  };

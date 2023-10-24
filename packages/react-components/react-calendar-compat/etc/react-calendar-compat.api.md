@@ -5,6 +5,7 @@
 ```ts
 
 import * as React_2 from 'react';
+import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
 export function addDays(date: Date, days: number): Date;
@@ -27,6 +28,84 @@ export enum AnimationDirection {
 // @internal (undocumented)
 export const Calendar: React_2.FunctionComponent<CalendarProps>;
 
+// @internal (undocumented)
+export const calendarClassNames: SlotClassNames<CalendarStyles>;
+
+// @internal (undocumented)
+export const CalendarDay: React_2.FunctionComponent<CalendarDayProps>;
+
+// @internal (undocumented)
+export const calendarDayClassNames: SlotClassNames<CalendarDayStyles>;
+
+// Warning: (ae-incompatible-release-tags) The symbol "CalendarDayGrid" is marked as @public, but its signature references "CalendarDayGridProps" which is marked as @internal
+//
+// @public (undocumented)
+export const CalendarDayGrid: React_2.FunctionComponent<CalendarDayGridProps>;
+
+// @internal (undocumented)
+export const calendarDayGridClassNames: SlotClassNames<CalendarDayGridStyles>;
+
+// @internal (undocumented)
+export interface CalendarDayGridProps extends DayGridOptions {
+    allFocusable?: boolean;
+    animationDirection?: AnimationDirection;
+    className?: string;
+    componentRef?: React_2.RefObject<ICalendarDayGrid>;
+    customDayCellRef?: (element: HTMLElement, date: Date, classNames: CalendarDayGridStyles) => void;
+    dateRangeType: DateRangeType;
+    dateTimeFormatter: DateFormatting;
+    daysToSelectInDayView?: number;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    getMarkedDays?: (startingDate: Date, endingDate: Date) => Date[];
+    labelledBy?: string;
+    lightenDaysOutsideNavigatedMonth?: boolean;
+    maxDate?: Date;
+    minDate?: Date;
+    navigatedDate: Date;
+    onDismiss?: () => void;
+    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+    restrictedDates?: Date[];
+    selectedDate: Date;
+    showCloseButton?: boolean;
+    showWeekNumbers?: boolean;
+    strings: CalendarStrings;
+    today?: Date;
+    weeksToShow?: number;
+    workWeekDays?: DayOfWeek[];
+}
+
+// @internal (undocumented)
+export interface CalendarDayGridStyleProps {
+    animateBackwards?: boolean;
+    animationDirection?: AnimationDirection;
+    className?: string;
+    dateRangeType?: DateRangeType;
+    lightenDaysOutsideNavigatedMonth?: boolean;
+    showWeekNumbers?: boolean;
+}
+
+// @internal (undocumented)
+export interface CalendarDayGridStyles {
+    dayButton?: string;
+    dayCell?: string;
+    dayIsToday?: string;
+    dayMarker?: string;
+    dayOutsideBounds?: string;
+    dayOutsideNavigatedMonth?: string;
+    daySelected?: string;
+    firstTransitionWeek?: string;
+    lastTransitionWeek?: string;
+    table?: string;
+    weekDayLabelCell?: string;
+    weekNumberCell?: string;
+    weekRow?: string;
+    wrapper?: string;
+}
+
+// Warning: (ae-incompatible-release-tags) The symbol "CalendarDayProps" is marked as @public, but its signature references "CalendarDayGridProps" which is marked as @internal
+//
 // @public (undocumented)
 export interface CalendarDayProps extends CalendarDayGridProps {
     allFocusable?: boolean;
@@ -45,6 +124,26 @@ export interface CalendarDayProps extends CalendarDayGridProps {
     showWeekNumbers?: boolean;
     strings: CalendarStrings;
 }
+
+// @internal (undocumented)
+export interface CalendarDayStyleProps extends CalendarDayGridStyleProps {
+    className?: string;
+    headerIsClickable?: boolean;
+    showWeekNumbers?: boolean;
+}
+
+// @internal (undocumented)
+export interface CalendarDayStyles {
+    disabledStyle: string;
+    header: string;
+    headerIconButton: string;
+    monthAndYear: string;
+    monthComponents: string;
+    root: string;
+}
+
+// @internal (undocumented)
+export const CalendarMonth: React_2.FunctionComponent<CalendarMonthProps>;
 
 // @public (undocumented)
 export interface CalendarMonthProps {
@@ -65,6 +164,52 @@ export interface CalendarMonthProps {
     strings: CalendarStrings;
     today?: Date;
     yearPickerHidden?: boolean;
+}
+
+// @internal (undocumented)
+export interface CalendarMonthStyleProps extends CalendarPickerStyleProps {
+}
+
+// @internal (undocumented)
+export interface CalendarMonthStyles extends CalendarPickerStyles {
+}
+
+// @internal (undocumented)
+export const calendarPickerClassNames: SlotClassNames<CalendarPickerStyles>;
+
+// @internal (undocumented)
+export interface CalendarPickerStyleProps {
+    animateBackwards?: boolean;
+    animationDirection?: AnimationDirection;
+    className?: string;
+    hasHeaderClickCallback?: boolean;
+    highlightCurrent?: boolean;
+    highlightSelected?: boolean;
+}
+
+// @internal (undocumented)
+export interface CalendarPickerStyles {
+    // (undocumented)
+    buttonRow: string;
+    // (undocumented)
+    current: string;
+    // (undocumented)
+    currentItemButton: string;
+    // (undocumented)
+    disabled: string;
+    // (undocumented)
+    gridContainer: string;
+    // (undocumented)
+    headerContainer: string;
+    // (undocumented)
+    itemButton: string;
+    // (undocumented)
+    navigationButton: string;
+    // (undocumented)
+    navigationButtonsContainer: string;
+    root: string;
+    // (undocumented)
+    selected: string;
 }
 
 // @public (undocumented)
@@ -117,6 +262,95 @@ export interface CalendarStrings extends DateGridStrings {
     yearPickerHeaderAriaLabel?: string;
 }
 
+// @internal (undocumented)
+export interface CalendarStyleProps {
+    className?: string;
+    isDayPickerVisible?: boolean;
+    isMonthPickerVisible?: boolean;
+    monthPickerOnly?: boolean;
+    overlaidWithButton?: boolean;
+    // @deprecated (undocumented)
+    overlayedWithButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showWeekNumbers?: boolean;
+}
+
+// @internal (undocumented)
+export interface CalendarStyles {
+    // (undocumented)
+    divider: string;
+    // (undocumented)
+    goTodayButton: string;
+    // (undocumented)
+    liveRegion: string;
+    // (undocumented)
+    monthPickerWrapper: string;
+    root: string;
+}
+
+// @internal (undocumented)
+export const CalendarYear: React_2.FunctionComponent<CalendarYearProps>;
+
+// @internal (undocumented)
+export interface CalendarYearHeaderProps extends CalendarYearProps, CalendarYearRange {
+    animateBackwards?: boolean;
+    onSelectNext?: () => void;
+    onSelectPrev?: () => void;
+}
+
+// @internal (undocumented)
+export interface CalendarYearProps {
+    animationDirection?: AnimationDirection;
+    className?: string;
+    componentRef?: React_2.RefObject<ICalendarYear>;
+    highlightCurrentYear?: boolean;
+    highlightSelectedYear?: boolean;
+    maxYear?: number;
+    minYear?: number;
+    navigatedYear?: number;
+    onHeaderSelect?: (focus: boolean) => void;
+    onRenderTitle?: (props: CalendarYearHeaderProps) => React_2.ReactNode;
+    onRenderYear?: (year: number) => React_2.ReactNode;
+    onSelectYear?: (year: number) => void;
+    selectedYear?: number;
+    strings?: CalendarYearStrings;
+}
+
+// @internal (undocumented)
+export interface CalendarYearRange {
+    // (undocumented)
+    fromYear: number;
+    // (undocumented)
+    toYear: number;
+}
+
+// @internal (undocumented)
+export interface CalendarYearRangeToString {
+    // (undocumented)
+    (range: CalendarYearRange): string;
+}
+
+// @internal (undocumented)
+export interface CalendarYearStrings {
+    // (undocumented)
+    headerAriaLabelFormatString?: string;
+    // (undocumented)
+    nextRangeAriaLabel?: string | CalendarYearRangeToString;
+    // (undocumented)
+    prevRangeAriaLabel?: string | CalendarYearRangeToString;
+    // (undocumented)
+    rangeAriaLabel?: string | CalendarYearRangeToString;
+}
+
+// @internal (undocumented)
+export interface CalendarYearStyleProps extends CalendarPickerStyleProps {
+}
+
+// @internal (undocumented)
+export interface CalendarYearStyles extends CalendarPickerStyles {
+}
+
 // @public
 export function compareDatePart(date1: Date, date2: Date): Number;
 
@@ -152,6 +386,14 @@ export enum DateRangeType {
     WorkWeek = 3
 }
 
+// @public (undocumented)
+export interface DayInfo extends Day {
+    // (undocumented)
+    onSelected: () => void;
+    // (undocumented)
+    setRef(element: HTMLElement | null): void;
+}
+
 // @public
 export enum DayOfWeek {
     // (undocumented)
@@ -172,6 +414,24 @@ export enum DayOfWeek {
 
 // @public (undocumented)
 export const DAYS_IN_WEEK = 7;
+
+// @public (undocumented)
+export const DEFAULT_CALENDAR_STRINGS: CalendarStrings;
+
+// @public (undocumented)
+export const DEFAULT_DATE_FORMATTING: DateFormatting;
+
+// @public (undocumented)
+export const DEFAULT_DATE_GRID_STRINGS: DateGridStrings;
+
+// @public (undocumented)
+export const defaultCalendarStrings: CalendarStrings;
+
+// @internal (undocumented)
+export const extraCalendarDayGridClassNames: {
+    hoverStyle: string;
+    pressedStyle: string;
+};
 
 // @public
 export enum FirstWeekOfYear {
@@ -224,8 +484,20 @@ export interface ICalendarDay {
     focus(): void;
 }
 
+// @internal (undocumented)
+export interface ICalendarDayGrid {
+    // (undocumented)
+    focus(): void;
+}
+
 // @public (undocumented)
 export interface ICalendarMonth {
+    // (undocumented)
+    focus(): void;
+}
+
+// @internal (undocumented)
+export interface ICalendarYear {
     // (undocumented)
     focus(): void;
 }
@@ -280,6 +552,30 @@ export const TimeConstants: {
     OffsetTo24HourFormat: number;
     TimeFormatRegex: RegExp;
 };
+
+// @internal
+export const useCalendarDayGridStyles_unstable: (props: CalendarDayGridStyleProps) => CalendarDayGridStyles;
+
+// @internal
+export const useCalendarDayStyles_unstable: (props: CalendarDayStyleProps) => CalendarDayStyles;
+
+// @internal
+export const useCalendarMonthStyles_unstable: (props: CalendarMonthStyleProps) => CalendarMonthStyles;
+
+// @internal
+export const useCalendarPickerStyles_unstable: (props: CalendarPickerStyleProps) => CalendarPickerStyles;
+
+// @internal
+export const useCalendarStyles_unstable: (props: CalendarStyleProps) => CalendarStyles;
+
+// @internal
+export const useCalendarYearStyles_unstable: (props: CalendarYearStyleProps) => CalendarYearStyles;
+
+// @internal (undocumented)
+export interface WeekCorners {
+    // (undocumented)
+    [key: string]: string;
+}
 
 // (No @packageDocumentation comment for this package)
 

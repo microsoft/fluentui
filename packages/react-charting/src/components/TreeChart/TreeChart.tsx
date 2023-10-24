@@ -5,7 +5,7 @@ import { TreeChartBase } from './TreeChart.base';
 import { getStyles } from './TreeChart.styles';
 
 /**
- * Treechart component.
+ * Treechart component
  * {@docCategory TreeChart}
  */
 export const TreeChart: React.FunctionComponent<ITreeProps> = styled<ITreeProps, ITreeStyleProps, ITreeStyles>(

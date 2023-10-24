@@ -5,12 +5,13 @@ import {
   getDateEndAnchor,
   getDateStartAnchor,
   getTimesBetween,
+  getDateFromTimeString,
 } from './timeMath';
 
 describe('Time Utilities', () => {
   describe('dateToKey', () => {
-    it('should return empty string for undefined date', () => {
-      expect(dateToKey()).toBe('');
+    it('should return empty string for null date', () => {
+      expect(dateToKey(null)).toBe('');
     });
 
     it('should return "invalid" for invalid dates', () => {
@@ -25,12 +26,12 @@ describe('Time Utilities', () => {
   });
 
   describe('keyToDate', () => {
-    it('should return undefined for empty string', () => {
-      expect(keyToDate('')).toBeUndefined();
+    it('should return null for empty string', () => {
+      expect(keyToDate('')).toBeNull();
     });
 
-    it('should return undefined for "invalid" string', () => {
-      expect(keyToDate('invalid')).toBeUndefined();
+    it('should return null for "invalid" string', () => {
+      expect(keyToDate('invalid')).toBeNull();
     });
 
     it('should return date for valid ISO string', () => {
@@ -48,8 +49,8 @@ describe('Time Utilities', () => {
       expect(revertedDate?.getTime()).toEqual(originalDate.getTime());
     });
 
-    it('should be inverses of each other for undefined date', () => {
-      const originalDate = undefined;
+    it('should be inverses of each other for null date', () => {
+      const originalDate = null;
       const key = dateToKey(originalDate);
       const revertedDate = keyToDate(key);
 
@@ -61,7 +62,7 @@ describe('Time Utilities', () => {
       const key = dateToKey(originalDate);
       const revertedDate = keyToDate(key);
 
-      expect(revertedDate).toBeUndefined();
+      expect(revertedDate).toBeNull();
     });
   });
 
@@ -129,8 +130,8 @@ describe('Time Utilities', () => {
 
   describe('getTimesBetween', () => {
     it('should return correct Date objects with 15-minute increment', () => {
-      const start = new Date(2023, 0, 1, 10, 0); // Jan 1, 2023 10:00:00 AM
-      const end = new Date(2023, 0, 1, 11, 0); // Jan 1, 2023 11:00:00 AM
+      const start = new Date('January 1, 2023 10:00:00');
+      const end = new Date('January 1, 2023 11:00:00');
       const result = getTimesBetween(start, end, 15);
 
       expect(result.length).toBe(4);
@@ -138,15 +139,50 @@ describe('Time Utilities', () => {
     });
 
     it('should return correct Date objects spanning across midnight with 30-minute increment', () => {
-      const start = new Date(2023, 0, 1, 23, 30); // Jan 1, 2023 11:30:00 PM
-      const end = new Date(2023, 0, 2, 0, 30); // Jan 2, 2023 00:30:00 AM
+      const start = new Date('January 1, 2023 23:30:00');
+      const end = new Date('January 2, 2023 00:30:00');
       const result = getTimesBetween(start, end, 30);
 
       expect(result.length).toBe(2);
-      expect(result[0].getHours()).toBe(23);
-      expect(result[0].getMinutes()).toBe(30);
-      expect(result[1].getHours()).toBe(0);
-      expect(result[1].getMinutes()).toBe(0);
+      expect([result[0].getHours(), result[0].getMinutes()]).toEqual([23, 30]);
+      expect([result[1].getHours(), result[1].getMinutes()]).toEqual([0, 0]);
+    });
+  });
+
+  describe('getDateFromTimeString', () => {
+    const dateStartAnchor = new Date('November 25, 2023 12:00:00');
+    const dateEndAnchor = new Date('November 26, 2023 12:00:00');
+
+    it('returns a valid date when given a valid time string', () => {
+      const result = getDateFromTimeString('2:30 PM', dateStartAnchor, dateEndAnchor, {
+        hour12: true,
+        showSeconds: false,
+      });
+      expect(result.date?.getHours()).toBe(14);
+      expect(result.date?.getMinutes()).toBe(30);
+      expect(result.error).toBeUndefined();
+    });
+
+    it('returns an error when no time string is provided', () => {
+      const result = getDateFromTimeString(undefined, dateStartAnchor, dateEndAnchor, {});
+      expect(result.date).toBeNull();
+      expect(result.error).toBe('invalid-input');
+    });
+
+    it('returns an error for an invalid time string', () => {
+      const result = getDateFromTimeString('25:30', dateStartAnchor, dateEndAnchor, {});
+      expect(result.date).toBeNull();
+      expect(result.error).toBe('invalid-input');
+    });
+
+    it('returns a date in the next day and an out-of-bounds error when the time is before the dateStartAnchor', () => {
+      const result = getDateFromTimeString('1:30 PM', dateStartAnchor, new Date('November 25, 2023 13:00:00'), {
+        hour12: true,
+        showSeconds: false,
+      });
+      expect(result.date?.getHours()).toBe(13);
+      expect(result.date?.getMinutes()).toBe(30);
+      expect(result.error).toBe('out-of-bounds');
     });
   });
 });

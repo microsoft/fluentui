@@ -32,6 +32,9 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
     role="presentation"
   >
     <div
+      id="defaultTabbableElement_2"
+    />
+    <div
       class=
           ms-FocusZone
           &:focus {
@@ -40,7 +43,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone2"
+      data-focuszone-id="FocusZone3"
     >
       <svg
         focusable="false"
@@ -209,7 +212,7 @@ exports[`HeatMap chart rendering Should re-render the HeatMap chart with data 2`
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone3"
+                data-focuszone-id="FocusZone4"
                 role="listbox"
               >
                 <div

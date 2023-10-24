@@ -97,6 +97,8 @@ export {
   usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
 export {
+  // getNativeElementProps is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
@@ -1412,3 +1414,12 @@ export type {
   MessageBarGroupSlots,
   MessageBarGroupState,
 } from '@fluentui/react-message-bar';
+
+export {
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+  useInfoLabel_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';

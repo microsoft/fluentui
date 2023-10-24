@@ -17,9 +17,12 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           overflow: hidden;
           width: 100%;
         }
-    id="chart_15"
+    id="chart_16"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_17"
+    />
     <div
       class=
           ms-FocusZone
@@ -29,7 +32,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone16"
+      data-focuszone-id="FocusZone18"
     >
       <svg
         aria-label="Area chart styled example"
@@ -64,7 +67,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_15"
+          id="xAxisGElementchart_16"
           transform="translate(0, -35)"
         />
         <g
@@ -92,14 +95,14 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_15"
+          id="yAxisGElementchart_16"
           transform="translate(40, 0)"
         />
         <g>
           <rect
             fill="transparent"
             height="-20"
-            id="rectangle12"
+            id="rectangle13"
             width="-12.682926829268293"
           />
         </g>
@@ -107,7 +110,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
           <path
             d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763"
             fill="transparent"
-            id="0-line-areaChart_9"
+            id="0-line-areaChart_10"
             opacity="0.3"
             stroke="#0099BC"
             stroke-dasharray="5 5"
@@ -117,13 +120,13 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             d="M40,-31.382C39.024,-27.401,38.049,-23.421,37.073,-23.421C33.171,-23.421,29.268,-30.658,25.366,-30.658C15.122,-30.658,4.878,-13.289,-5.366,-13.289C-10.244,-13.289,-15.122,-20.526,-20,-27.763L-20,-35C-15.122,-35,-10.244,-35,-5.366,-35C4.878,-35,15.122,-35,25.366,-35C29.268,-35,33.171,-35,37.073,-35C38.049,-35,39.024,-35,40,-35Z"
             fill="#0099BC"
             fill-opacity="0.7"
-            id="0-graph-areaChart_9"
+            id="0-graph-areaChart_10"
             opacity="0.7"
           />
           <path
             d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842"
             fill="transparent"
-            id="1-line-areaChart_9"
+            id="1-line-areaChart_10"
             opacity="0.3"
             stroke="#002050"
             stroke-width="5"
@@ -132,7 +135,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             d="M40,-24.145C39.024,-11.842,38.049,0.461,37.073,0.461C33.171,0.461,29.268,-15.461,25.366,-15.461C15.122,-15.461,4.878,18.553,-5.366,18.553C-10.244,18.553,-15.122,3.355,-20,-11.842L-20,-27.763C-15.122,-20.526,-10.244,-13.289,-5.366,-13.289C4.878,-13.289,15.122,-30.658,25.366,-30.658C29.268,-30.658,33.171,-23.421,37.073,-23.421C38.049,-23.421,39.024,-27.401,40,-31.382Z"
             fill="#77004D"
             fill-opacity="0.7"
-            id="1-graph-areaChart_9"
+            id="1-graph-areaChart_10"
             opacity="0.8"
           />
           <g
@@ -145,7 +148,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-31.38157894736842"
               data-is-focusable="true"
               fill="#0099BC"
-              id="circle11_0"
+              id="circle12_0"
               opacity="1"
               r="0"
               role="img"
@@ -159,7 +162,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-23.42105263157895"
               data-is-focusable="true"
               fill="#0099BC"
-              id="circle11_1"
+              id="circle12_1"
               opacity="1"
               r="0"
               role="img"
@@ -173,7 +176,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-30.657894736842106"
               data-is-focusable="true"
               fill="#0099BC"
-              id="circle11_2"
+              id="circle12_2"
               opacity="1"
               r="0"
               role="img"
@@ -187,7 +190,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-13.289473684210524"
               data-is-focusable="true"
               fill="#0099BC"
-              id="circle11_3"
+              id="circle12_3"
               opacity="1"
               r="0"
               role="img"
@@ -201,7 +204,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-27.763157894736842"
               data-is-focusable="true"
               fill="#0099BC"
-              id="circle11_4"
+              id="circle12_4"
               opacity="1"
               r="0"
               role="img"
@@ -220,7 +223,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-24.14473684210526"
               data-is-focusable="true"
               fill="#77004D"
-              id="circle11_5"
+              id="circle12_5"
               opacity="1"
               r="0"
               role="img"
@@ -234,7 +237,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="0.46052631578947434"
               data-is-focusable="true"
               fill="#77004D"
-              id="circle11_6"
+              id="circle12_6"
               opacity="1"
               r="0"
               role="img"
@@ -248,7 +251,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-15.460526315789476"
               data-is-focusable="true"
               fill="#77004D"
-              id="circle11_7"
+              id="circle12_7"
               opacity="1"
               r="0"
               role="img"
@@ -262,7 +265,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="18.55263157894737"
               data-is-focusable="true"
               fill="#77004D"
-              id="circle11_8"
+              id="circle12_8"
               opacity="1"
               r="0"
               role="img"
@@ -276,7 +279,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
               cy="-11.842105263157896"
               data-is-focusable="true"
               fill="#77004D"
-              id="circle11_9"
+              id="circle12_9"
               opacity="1"
               r="0"
               role="img"
@@ -286,7 +289,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
             />
           </g>
           <line
-            id="verticalLine_10"
+            id="verticalLine_11"
             opacity="0.5"
             stroke="#002050"
             stroke-dasharray="10 10"
@@ -337,7 +340,7 @@ exports[`Area chart rendering Should render the area chart with date x-axis data
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone17"
+                data-focuszone-id="FocusZone19"
                 role="listbox"
               >
                 <div
@@ -555,6 +558,9 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
     role="presentation"
   >
     <div
+      id="defaultTabbableElement_7"
+    />
+    <div
       class=
           ms-FocusZone
           &:focus {
@@ -563,7 +569,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone7"
+      data-focuszone-id="FocusZone8"
     >
       <svg
         aria-label="Area chart multiple example"
@@ -1140,7 +1146,7 @@ exports[`Area chart rendering Should render the area chart with numeric x-axis d
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone8"
+                data-focuszone-id="FocusZone9"
                 role="listbox"
               >
                 <div
@@ -1440,9 +1446,12 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_123"
+    id="chart_136"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_137"
+    />
     <div
       class=
           ms-FocusZone
@@ -1452,7 +1461,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone124"
+      data-focuszone-id="FocusZone138"
     >
       <svg
         aria-label="Area chart multiple example"
@@ -1487,7 +1496,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_123"
+          id="xAxisGElementchart_136"
           transform="translate(0, -35)"
         />
         <g
@@ -1515,14 +1524,14 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_123"
+          id="yAxisGElementchart_136"
           transform="translate(40, 0)"
         />
         <g>
           <rect
             fill="transparent"
             height="-20"
-            id="rectangle120"
+            id="rectangle133"
             width="-20"
           />
         </g>
@@ -1530,7 +1539,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
           <path
             d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047"
             fill="transparent"
-            id="0-line-areaChart_117"
+            id="0-line-areaChart_130"
             opacity="0.3"
             stroke="green"
             stroke-width="3"
@@ -1539,13 +1548,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
             fill="green"
             fill-opacity="0.7"
-            id="0-graph-areaChart_117"
+            id="0-graph-areaChart_130"
             opacity="1"
           />
           <path
             d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392"
             fill="transparent"
-            id="1-line-areaChart_117"
+            id="1-line-areaChart_130"
             opacity="0.3"
             stroke="yellow"
             stroke-width="3"
@@ -1554,13 +1563,13 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
             fill="yellow"
             fill-opacity="0.7"
-            id="1-graph-areaChart_117"
+            id="1-graph-areaChart_130"
             opacity="1"
           />
           <path
             d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257"
             fill="transparent"
-            id="2-line-areaChart_117"
+            id="2-line-areaChart_130"
             opacity="0.3"
             stroke="blue"
             stroke-width="3"
@@ -1569,7 +1578,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
             fill="blue"
             fill-opacity="0.7"
-            id="2-graph-areaChart_117"
+            id="2-graph-areaChart_130"
             opacity="1"
           />
           <g
@@ -1582,7 +1591,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-31.655405405405403"
               data-is-focusable="true"
               fill="green"
-              id="circle119_0"
+              id="circle132_0"
               r="0"
               role="img"
               stroke="green"
@@ -1595,7 +1604,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-29.7972972972973"
               data-is-focusable="true"
               fill="green"
-              id="circle119_1"
+              id="circle132_1"
               r="0"
               role="img"
               stroke="green"
@@ -1608,7 +1617,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-29.7972972972973"
               data-is-focusable="true"
               fill="green"
-              id="circle119_2"
+              id="circle132_2"
               r="0"
               role="img"
               stroke="green"
@@ -1621,7 +1630,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-26.4527027027027"
               data-is-focusable="true"
               fill="green"
-              id="circle119_3"
+              id="circle132_3"
               r="0"
               role="img"
               stroke="green"
@@ -1634,7 +1643,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-27.567567567567572"
               data-is-focusable="true"
               fill="green"
-              id="circle119_4"
+              id="circle132_4"
               r="0"
               role="img"
               stroke="green"
@@ -1647,7 +1656,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-23.47972972972973"
               data-is-focusable="true"
               fill="green"
-              id="circle119_5"
+              id="circle132_5"
               r="0"
               role="img"
               stroke="green"
@@ -1660,7 +1669,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-24.222972972972972"
               data-is-focusable="true"
               fill="green"
-              id="circle119_6"
+              id="circle132_6"
               r="0"
               role="img"
               stroke="green"
@@ -1673,7 +1682,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-24.966216216216214"
               data-is-focusable="true"
               fill="green"
-              id="circle119_7"
+              id="circle132_7"
               r="0"
               role="img"
               stroke="green"
@@ -1686,7 +1695,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-21.25"
               data-is-focusable="true"
               fill="green"
-              id="circle119_8"
+              id="circle132_8"
               r="0"
               role="img"
               stroke="green"
@@ -1699,7 +1708,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-16.047297297297302"
               data-is-focusable="true"
               fill="green"
-              id="circle119_9"
+              id="circle132_9"
               r="0"
               role="img"
               stroke="green"
@@ -1717,7 +1726,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-23.851351351351347"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_10"
+              id="circle132_10"
               r="0"
               role="img"
               stroke="yellow"
@@ -1730,7 +1739,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-20.506756756756758"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_11"
+              id="circle132_11"
               r="0"
               role="img"
               stroke="yellow"
@@ -1743,7 +1752,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-26.08108108108108"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_12"
+              id="circle132_12"
               r="0"
               role="img"
               stroke="yellow"
@@ -1756,7 +1765,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-22.736486486486484"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_13"
+              id="circle132_13"
               r="0"
               role="img"
               stroke="yellow"
@@ -1769,7 +1778,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-22.364864864864863"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_14"
+              id="circle132_14"
               r="0"
               role="img"
               stroke="yellow"
@@ -1782,7 +1791,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-16.79054054054054"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_15"
+              id="circle132_15"
               r="0"
               role="img"
               stroke="yellow"
@@ -1795,7 +1804,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-20.87837837837838"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_16"
+              id="circle132_16"
               r="0"
               role="img"
               stroke="yellow"
@@ -1808,7 +1817,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-16.41891891891892"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_17"
+              id="circle132_17"
               r="0"
               role="img"
               stroke="yellow"
@@ -1821,7 +1830,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-18.648648648648646"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_18"
+              id="circle132_18"
               r="0"
               role="img"
               stroke="yellow"
@@ -1834,7 +1843,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="4.391891891891893"
               data-is-focusable="true"
               fill="yellow"
-              id="circle119_19"
+              id="circle132_19"
               r="0"
               role="img"
               stroke="yellow"
@@ -1852,7 +1861,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-12.702702702702698"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_20"
+              id="circle132_20"
               r="0"
               role="img"
               stroke="blue"
@@ -1865,7 +1874,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-7.5"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_21"
+              id="circle132_21"
               r="0"
               role="img"
               stroke="blue"
@@ -1878,7 +1887,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-13.817567567567572"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_22"
+              id="circle132_22"
               r="0"
               role="img"
               stroke="blue"
@@ -1891,7 +1900,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-7.871621621621623"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_23"
+              id="circle132_23"
               r="0"
               role="img"
               stroke="blue"
@@ -1904,7 +1913,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-18.648648648648646"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_24"
+              id="circle132_24"
               r="0"
               role="img"
               stroke="blue"
@@ -1917,7 +1926,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-1.9256756756756772"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_25"
+              id="circle132_25"
               r="0"
               role="img"
               stroke="blue"
@@ -1930,7 +1939,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-8.243243243243242"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_26"
+              id="circle132_26"
               r="0"
               role="img"
               stroke="blue"
@@ -1943,7 +1952,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="-1.5540540540540544"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_27"
+              id="circle132_27"
               r="0"
               role="img"
               stroke="blue"
@@ -1956,7 +1965,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="3.648648648648651"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_28"
+              id="circle132_28"
               r="0"
               role="img"
               stroke="blue"
@@ -1969,7 +1978,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               cy="19.256756756756758"
               data-is-focusable="true"
               fill="blue"
-              id="circle119_29"
+              id="circle132_29"
               r="0"
               role="img"
               stroke="blue"
@@ -1978,7 +1987,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
             />
           </g>
           <line
-            id="verticalLine_118"
+            id="verticalLine_131"
             opacity="0.5"
             stroke="blue"
             stroke-dasharray="5.5"
@@ -2029,7 +2038,7 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone125"
+                data-focuszone-id="FocusZone139"
                 role="listbox"
               >
                 <div
@@ -2329,9 +2338,12 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           overflow: hidden;
           width: 100%;
         }
-    id="chart_132"
+    id="chart_146"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_147"
+    />
     <div
       class=
           ms-FocusZone
@@ -2341,7 +2353,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone133"
+      data-focuszone-id="FocusZone148"
     >
       <svg
         aria-label="Area chart multiple example"
@@ -2376,7 +2388,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_132"
+          id="xAxisGElementchart_146"
           transform="translate(0, -35)"
         />
         <g
@@ -2404,14 +2416,14 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_132"
+          id="yAxisGElementchart_146"
           transform="translate(40, 0)"
         />
         <g>
           <rect
             fill="transparent"
             height="-20"
-            id="rectangle129"
+            id="rectangle143"
             width="-20"
           />
         </g>
@@ -2419,7 +2431,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
           <path
             d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047"
             fill="transparent"
-            id="0-line-areaChart_126"
+            id="0-line-areaChart_140"
             opacity="0.3"
             stroke="green"
             stroke-width="3"
@@ -2428,13 +2440,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
             fill="green"
             fill-opacity="0.7"
-            id="0-graph-areaChart_126"
+            id="0-graph-areaChart_140"
             opacity="1"
           />
           <path
             d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392"
             fill="transparent"
-            id="1-line-areaChart_126"
+            id="1-line-areaChart_140"
             opacity="0.3"
             stroke="yellow"
             stroke-width="3"
@@ -2443,13 +2455,13 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
             fill="yellow"
             fill-opacity="0.7"
-            id="1-graph-areaChart_126"
+            id="1-graph-areaChart_140"
             opacity="1"
           />
           <path
             d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257"
             fill="transparent"
-            id="2-line-areaChart_126"
+            id="2-line-areaChart_140"
             opacity="0.3"
             stroke="blue"
             stroke-width="3"
@@ -2458,7 +2470,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
             fill="blue"
             fill-opacity="0.7"
-            id="2-graph-areaChart_126"
+            id="2-graph-areaChart_140"
             opacity="1"
           />
           <g
@@ -2471,7 +2483,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-31.655405405405403"
               data-is-focusable="true"
               fill="green"
-              id="circle128_0"
+              id="circle142_0"
               r="0"
               role="img"
               stroke="green"
@@ -2484,7 +2496,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-29.7972972972973"
               data-is-focusable="true"
               fill="green"
-              id="circle128_1"
+              id="circle142_1"
               r="0"
               role="img"
               stroke="green"
@@ -2497,7 +2509,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-29.7972972972973"
               data-is-focusable="true"
               fill="green"
-              id="circle128_2"
+              id="circle142_2"
               r="0"
               role="img"
               stroke="green"
@@ -2510,7 +2522,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-26.4527027027027"
               data-is-focusable="true"
               fill="green"
-              id="circle128_3"
+              id="circle142_3"
               r="0"
               role="img"
               stroke="green"
@@ -2523,7 +2535,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-27.567567567567572"
               data-is-focusable="true"
               fill="green"
-              id="circle128_4"
+              id="circle142_4"
               r="0"
               role="img"
               stroke="green"
@@ -2536,7 +2548,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-23.47972972972973"
               data-is-focusable="true"
               fill="green"
-              id="circle128_5"
+              id="circle142_5"
               r="0"
               role="img"
               stroke="green"
@@ -2549,7 +2561,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-24.222972972972972"
               data-is-focusable="true"
               fill="green"
-              id="circle128_6"
+              id="circle142_6"
               r="0"
               role="img"
               stroke="green"
@@ -2562,7 +2574,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-24.966216216216214"
               data-is-focusable="true"
               fill="green"
-              id="circle128_7"
+              id="circle142_7"
               r="0"
               role="img"
               stroke="green"
@@ -2575,7 +2587,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-21.25"
               data-is-focusable="true"
               fill="green"
-              id="circle128_8"
+              id="circle142_8"
               r="0"
               role="img"
               stroke="green"
@@ -2588,7 +2600,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-16.047297297297302"
               data-is-focusable="true"
               fill="green"
-              id="circle128_9"
+              id="circle142_9"
               r="0"
               role="img"
               stroke="green"
@@ -2606,7 +2618,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-23.851351351351347"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_10"
+              id="circle142_10"
               r="0"
               role="img"
               stroke="yellow"
@@ -2619,7 +2631,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-20.506756756756758"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_11"
+              id="circle142_11"
               r="0"
               role="img"
               stroke="yellow"
@@ -2632,7 +2644,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-26.08108108108108"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_12"
+              id="circle142_12"
               r="0"
               role="img"
               stroke="yellow"
@@ -2645,7 +2657,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-22.736486486486484"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_13"
+              id="circle142_13"
               r="0"
               role="img"
               stroke="yellow"
@@ -2658,7 +2670,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-22.364864864864863"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_14"
+              id="circle142_14"
               r="0"
               role="img"
               stroke="yellow"
@@ -2671,7 +2683,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-16.79054054054054"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_15"
+              id="circle142_15"
               r="0"
               role="img"
               stroke="yellow"
@@ -2684,7 +2696,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-20.87837837837838"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_16"
+              id="circle142_16"
               r="0"
               role="img"
               stroke="yellow"
@@ -2697,7 +2709,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-16.41891891891892"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_17"
+              id="circle142_17"
               r="0"
               role="img"
               stroke="yellow"
@@ -2710,7 +2722,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-18.648648648648646"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_18"
+              id="circle142_18"
               r="0"
               role="img"
               stroke="yellow"
@@ -2723,7 +2735,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="4.391891891891893"
               data-is-focusable="true"
               fill="yellow"
-              id="circle128_19"
+              id="circle142_19"
               r="0"
               role="img"
               stroke="yellow"
@@ -2741,7 +2753,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-12.702702702702698"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_20"
+              id="circle142_20"
               r="0"
               role="img"
               stroke="blue"
@@ -2754,7 +2766,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-7.5"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_21"
+              id="circle142_21"
               r="0"
               role="img"
               stroke="blue"
@@ -2767,7 +2779,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-13.817567567567572"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_22"
+              id="circle142_22"
               r="0"
               role="img"
               stroke="blue"
@@ -2780,7 +2792,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-7.871621621621623"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_23"
+              id="circle142_23"
               r="0"
               role="img"
               stroke="blue"
@@ -2793,7 +2805,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-18.648648648648646"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_24"
+              id="circle142_24"
               r="0"
               role="img"
               stroke="blue"
@@ -2806,7 +2818,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-1.9256756756756772"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_25"
+              id="circle142_25"
               r="0"
               role="img"
               stroke="blue"
@@ -2819,7 +2831,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-8.243243243243242"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_26"
+              id="circle142_26"
               r="0"
               role="img"
               stroke="blue"
@@ -2832,7 +2844,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="-1.5540540540540544"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_27"
+              id="circle142_27"
               r="0"
               role="img"
               stroke="blue"
@@ -2845,7 +2857,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="3.648648648648651"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_28"
+              id="circle142_28"
               r="0"
               role="img"
               stroke="blue"
@@ -2858,7 +2870,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               cy="19.256756756756758"
               data-is-focusable="true"
               fill="blue"
-              id="circle128_29"
+              id="circle142_29"
               r="0"
               role="img"
               stroke="blue"
@@ -2867,7 +2879,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
             />
           </g>
           <line
-            id="verticalLine_127"
+            id="verticalLine_141"
             opacity="0.5"
             stroke="blue"
             stroke-dasharray="5.5"
@@ -2918,7 +2930,7 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone134"
+                data-focuszone-id="FocusZone149"
                 role="listbox"
               >
                 <div
@@ -3231,9 +3243,12 @@ exports[`Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_144"
+      id="chart_159"
       role="presentation"
     >
+      <div
+        id="defaultTabbableElement_160"
+      />
       <div
         class=
             ms-FocusZone
@@ -3243,7 +3258,7 @@ exports[`Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone145"
+        data-focuszone-id="FocusZone161"
       >
         <svg
           aria-label="Area chart multiple example"
@@ -3278,7 +3293,7 @@ exports[`Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_144"
+            id="xAxisGElementchart_159"
             transform="translate(0, -35)"
           />
           <g
@@ -3306,14 +3321,14 @@ exports[`Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_144"
+            id="yAxisGElementchart_159"
             transform="translate(40, 0)"
           />
           <g>
             <rect
               fill="transparent"
               height="-20"
-              id="rectangle141"
+              id="rectangle156"
               width="-20"
             />
           </g>
@@ -3321,7 +3336,7 @@ exports[`Should reflect theme change 1`] = `
             <path
               d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047"
               fill="transparent"
-              id="0-line-areaChart_138"
+              id="0-line-areaChart_153"
               opacity="0.3"
               stroke="green"
               stroke-width="3"
@@ -3330,13 +3345,13 @@ exports[`Should reflect theme change 1`] = `
               d="M40,-31.655C37.778,-30.726,35.556,-29.797,33.333,-29.797C31.111,-29.797,28.889,-29.797,26.667,-29.797C24.444,-29.797,22.222,-26.453,20,-26.453C17.778,-26.453,15.556,-27.568,13.333,-27.568C11.111,-27.568,8.889,-23.48,6.667,-23.48C4.444,-23.48,2.222,-23.975,0,-24.223C-2.222,-24.471,-4.444,-24.966,-6.667,-24.966C-8.889,-24.966,-11.111,-22.736,-13.333,-21.25C-15.556,-19.764,-17.778,-17.905,-20,-16.047L-20,-35C-17.778,-35,-15.556,-35,-13.333,-35C-11.111,-35,-8.889,-35,-6.667,-35C-4.444,-35,-2.222,-35,0,-35C2.222,-35,4.444,-35,6.667,-35C8.889,-35,11.111,-35,13.333,-35C15.556,-35,17.778,-35,20,-35C22.222,-35,24.444,-35,26.667,-35C28.889,-35,31.111,-35,33.333,-35C35.556,-35,37.778,-35,40,-35Z"
               fill="green"
               fill-opacity="0.7"
-              id="0-graph-areaChart_138"
+              id="0-graph-areaChart_153"
               opacity="1"
             />
             <path
               d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392"
               fill="transparent"
-              id="1-line-areaChart_138"
+              id="1-line-areaChart_153"
               opacity="0.3"
               stroke="yellow"
               stroke-width="3"
@@ -3345,13 +3360,13 @@ exports[`Should reflect theme change 1`] = `
               d="M40,-23.851C37.778,-22.179,35.556,-20.507,33.333,-20.507C31.111,-20.507,28.889,-26.081,26.667,-26.081C24.444,-26.081,22.222,-22.984,20,-22.736C17.778,-22.489,15.556,-22.613,13.333,-22.365C11.111,-22.117,8.889,-16.791,6.667,-16.791C4.444,-16.791,2.222,-20.878,0,-20.878C-2.222,-20.878,-4.444,-16.419,-6.667,-16.419C-8.889,-16.419,-11.111,-18.649,-13.333,-18.649C-15.556,-18.649,-17.778,-7.128,-20,4.392L-20,-16.047C-17.778,-17.905,-15.556,-19.764,-13.333,-21.25C-11.111,-22.736,-8.889,-24.966,-6.667,-24.966C-4.444,-24.966,-2.222,-24.471,0,-24.223C2.222,-23.975,4.444,-23.48,6.667,-23.48C8.889,-23.48,11.111,-27.568,13.333,-27.568C15.556,-27.568,17.778,-26.453,20,-26.453C22.222,-26.453,24.444,-29.797,26.667,-29.797C28.889,-29.797,31.111,-29.797,33.333,-29.797C35.556,-29.797,37.778,-30.726,40,-31.655Z"
               fill="yellow"
               fill-opacity="0.7"
-              id="1-graph-areaChart_138"
+              id="1-graph-areaChart_153"
               opacity="1"
             />
             <path
               d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257"
               fill="transparent"
-              id="2-line-areaChart_138"
+              id="2-line-areaChart_153"
               opacity="0.3"
               stroke="blue"
               stroke-width="3"
@@ -3360,7 +3375,7 @@ exports[`Should reflect theme change 1`] = `
               d="M40,-12.703C37.778,-10.101,35.556,-7.5,33.333,-7.5C31.111,-7.5,28.889,-13.818,26.667,-13.818C24.444,-13.818,22.222,-7.872,20,-7.872C17.778,-7.872,15.556,-18.649,13.333,-18.649C11.111,-18.649,8.889,-1.926,6.667,-1.926C4.444,-1.926,2.222,-8.243,0,-8.243C-2.222,-8.243,-4.444,-3.536,-6.667,-1.554C-8.889,0.428,-11.111,0.18,-13.333,3.649C-15.556,7.117,-17.778,13.187,-20,19.257L-20,4.392C-17.778,-7.128,-15.556,-18.649,-13.333,-18.649C-11.111,-18.649,-8.889,-16.419,-6.667,-16.419C-4.444,-16.419,-2.222,-20.878,0,-20.878C2.222,-20.878,4.444,-16.791,6.667,-16.791C8.889,-16.791,11.111,-22.117,13.333,-22.365C15.556,-22.613,17.778,-22.489,20,-22.736C22.222,-22.984,24.444,-26.081,26.667,-26.081C28.889,-26.081,31.111,-20.507,33.333,-20.507C35.556,-20.507,37.778,-22.179,40,-23.851Z"
               fill="blue"
               fill-opacity="0.7"
-              id="2-graph-areaChart_138"
+              id="2-graph-areaChart_153"
               opacity="1"
             />
             <g
@@ -3373,7 +3388,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-31.655405405405403"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_0"
+                id="circle155_0"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3386,7 +3401,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-29.7972972972973"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_1"
+                id="circle155_1"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3399,7 +3414,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-29.7972972972973"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_2"
+                id="circle155_2"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3412,7 +3427,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-26.4527027027027"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_3"
+                id="circle155_3"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3425,7 +3440,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-27.567567567567572"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_4"
+                id="circle155_4"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3438,7 +3453,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-23.47972972972973"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_5"
+                id="circle155_5"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3451,7 +3466,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-24.222972972972972"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_6"
+                id="circle155_6"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3464,7 +3479,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-24.966216216216214"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_7"
+                id="circle155_7"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3477,7 +3492,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-21.25"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_8"
+                id="circle155_8"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3490,7 +3505,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-16.047297297297302"
                 data-is-focusable="true"
                 fill="green"
-                id="circle140_9"
+                id="circle155_9"
                 r="0"
                 role="img"
                 stroke="green"
@@ -3508,7 +3523,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-23.851351351351347"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_10"
+                id="circle155_10"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3521,7 +3536,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-20.506756756756758"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_11"
+                id="circle155_11"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3534,7 +3549,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-26.08108108108108"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_12"
+                id="circle155_12"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3547,7 +3562,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-22.736486486486484"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_13"
+                id="circle155_13"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3560,7 +3575,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-22.364864864864863"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_14"
+                id="circle155_14"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3573,7 +3588,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-16.79054054054054"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_15"
+                id="circle155_15"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3586,7 +3601,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-20.87837837837838"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_16"
+                id="circle155_16"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3599,7 +3614,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-16.41891891891892"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_17"
+                id="circle155_17"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3612,7 +3627,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-18.648648648648646"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_18"
+                id="circle155_18"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3625,7 +3640,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="4.391891891891893"
                 data-is-focusable="true"
                 fill="yellow"
-                id="circle140_19"
+                id="circle155_19"
                 r="0"
                 role="img"
                 stroke="yellow"
@@ -3643,7 +3658,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-12.702702702702698"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_20"
+                id="circle155_20"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3656,7 +3671,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-7.5"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_21"
+                id="circle155_21"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3669,7 +3684,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-13.817567567567572"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_22"
+                id="circle155_22"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3682,7 +3697,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-7.871621621621623"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_23"
+                id="circle155_23"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3695,7 +3710,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-18.648648648648646"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_24"
+                id="circle155_24"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3708,7 +3723,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-1.9256756756756772"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_25"
+                id="circle155_25"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3721,7 +3736,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-8.243243243243242"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_26"
+                id="circle155_26"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3734,7 +3749,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="-1.5540540540540544"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_27"
+                id="circle155_27"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3747,7 +3762,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="3.648648648648651"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_28"
+                id="circle155_28"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3760,7 +3775,7 @@ exports[`Should reflect theme change 1`] = `
                 cy="19.256756756756758"
                 data-is-focusable="true"
                 fill="blue"
-                id="circle140_29"
+                id="circle155_29"
                 r="0"
                 role="img"
                 stroke="blue"
@@ -3769,7 +3784,7 @@ exports[`Should reflect theme change 1`] = `
               />
             </g>
             <line
-              id="verticalLine_139"
+              id="verticalLine_154"
               opacity="0.5"
               stroke="blue"
               stroke-dasharray="5.5"
@@ -3820,7 +3835,7 @@ exports[`Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone146"
+                  data-focuszone-id="FocusZone162"
                   role="listbox"
                 >
                   <div
