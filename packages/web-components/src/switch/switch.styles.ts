@@ -118,14 +118,15 @@ export const styles = css`
     height: 14px;
     width: 14px;
     border-radius: 50%;
+    margin-inline-start: 0;
     background-color: ${colorNeutralForeground3};
     transition-duration: ${durationNormal};
     transition-timing-function: ${curveEasyEase};
-    transition-property: transform;
+    transition-property: margin-inline-start;
   }
   :host([aria-checked='true']) .checked-indicator {
     background-color: ${colorNeutralForegroundInverted};
-    transform: translateX(20px);
+    margin-inline-start: calc(100% - 14px);
   }
   :host([aria-checked='true']:hover) .checked-indicator {
     background: ${colorNeutralForegroundInvertedHover};
