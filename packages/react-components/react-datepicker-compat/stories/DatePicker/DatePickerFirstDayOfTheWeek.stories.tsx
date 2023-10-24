@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek } from '@fluentui/react-datepicker-compat';
+import { DayOfWeek } from '@fluentui/react-calendar-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { Dropdown, Field, makeStyles, Option, useId } from '@fluentui/react-components';
 
 const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];

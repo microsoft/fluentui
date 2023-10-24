@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Field, Label, makeStyles, Select } from '@fluentui/react-components';
-import { DatePicker, DateRangeType } from '@fluentui/react-datepicker-compat';
+import { DateRangeType } from '@fluentui/react-calendar-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 
 const useStyles = makeStyles({
   container: {

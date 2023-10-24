@@ -21,6 +21,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -29,7 +32,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -286,7 +289,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -781,6 +784,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -789,7 +795,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1046,7 +1052,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1461,6 +1467,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1469,7 +1478,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1732,7 +1741,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2053,6 +2062,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2061,7 +2073,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2307,7 +2319,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2625,6 +2637,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2633,7 +2648,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2874,6 +2889,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2882,7 +2900,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3145,7 +3163,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3466,6 +3484,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3474,7 +3495,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3737,7 +3758,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4058,6 +4079,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -4066,7 +4090,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4329,7 +4353,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4650,6 +4674,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -4658,7 +4685,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4921,7 +4948,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

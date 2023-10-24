@@ -32,7 +32,7 @@ export type SwatchPickerSlots = {
 export type SwatchPickerState = ComponentState<SwatchPickerSlots>;
 
 // @public
-export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLElement>) => SwatchPickerState;
+export const useSwatchPicker_unstable: (props: SwatchPickerProps, ref: React_2.Ref<HTMLDivElement>) => SwatchPickerState;
 
 // @public
 export const useSwatchPickerStyles_unstable: (state: SwatchPickerState) => SwatchPickerState;

@@ -32,8 +32,8 @@ import {
   StringAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -568,7 +568,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -632,7 +632,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -788,8 +788,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number) {
-    if (this.props.hideLabels || this._barWidth < 16) {
+  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string) {
+    if (
+      this.props.hideLabels ||
+      this._barWidth < 16 ||
+      !(this._legendHighlighted(legend) || this._noLegendHighlighted())
+    ) {
       return null;
     }
 
@@ -801,7 +805,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+        {formatValueWithSIPrefix(barValue)}
       </text>
     );
   }

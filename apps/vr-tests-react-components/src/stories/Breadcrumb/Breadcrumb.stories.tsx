@@ -12,10 +12,7 @@ export default {
 export const Appearance = () => (
   <>
     <h1>BreadcrumbButton</h1>
-    <h2>Transparent</h2>
-    <SampleBreadcrumbButtons appearance="transparent" />
-    <h2>Subtle</h2>
-    <SampleBreadcrumbButtons appearance="subtle" />
+    <SampleBreadcrumbButtons />
   </>
 );
 
@@ -31,11 +28,8 @@ export const Size = () => (
     <SampleBreadcrumbButtons size="small" />
     <SampleBreadcrumbButtons size="medium" />
     <SampleBreadcrumbButtons size="large" />
-
     <h1>BreadcrumbItem</h1>
     <SampleBreadcrumbItems size="small" />
-    <SampleBreadcrumbItems size="medium" />
-    <SampleBreadcrumbItems size="large" />
   </>
 );
 

@@ -6,8 +6,13 @@
 
 /// <reference types="react" />
 
+import type { CalendarProps } from '@fluentui/react-calendar-compat';
+import type { CalendarStrings } from '@fluentui/react-calendar-compat';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
+import type { DateFormatting } from '@fluentui/react-calendar-compat';
+import { DayOfWeek } from '@fluentui/react-calendar-compat';
+import { FirstWeekOfYear } from '@fluentui/react-calendar-compat';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { Input } from '@fluentui/react-input';
 import type { PortalProps } from '@fluentui/react-portal';
@@ -15,137 +20,6 @@ import type { PositioningProps } from '@fluentui/react-positioning';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-
-// @public
-export function addDays(date: Date, days: number): Date;
-
-// @public
-export function addMonths(date: Date, months: number): Date;
-
-// @public
-export function addWeeks(date: Date, weeks: number): Date;
-
-// @public
-export function addYears(date: Date, years: number): Date;
-
-// @public (undocumented)
-export enum AnimationDirection {
-    Horizontal = 0,
-    Vertical = 1
-}
-
-// @public (undocumented)
-export interface CalendarDayProps extends CalendarDayGridProps {
-    allFocusable?: boolean;
-    className?: string;
-    componentRef?: React_2.RefObject<ICalendarDay>;
-    dateTimeFormatter: DateFormatting;
-    maxDate?: Date;
-    minDate?: Date;
-    navigatedDate: Date;
-    onDismiss?: () => void;
-    onHeaderSelect?: () => void;
-    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
-    restrictedDates?: Date[];
-    showCloseButton?: boolean;
-    showSixWeeksByDefault?: boolean;
-    showWeekNumbers?: boolean;
-    strings: CalendarStrings;
-}
-
-// @public (undocumented)
-export interface CalendarMonthProps {
-    allFocusable?: boolean;
-    animationDirection?: AnimationDirection;
-    className?: string;
-    componentRef?: React_2.RefObject<ICalendarMonth>;
-    dateTimeFormatter?: DateFormatting;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    maxDate?: Date;
-    minDate?: Date;
-    navigatedDate: Date;
-    onHeaderSelect?: () => void;
-    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
-    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
-    selectedDate: Date;
-    strings: CalendarStrings;
-    today?: Date;
-    yearPickerHidden?: boolean;
-}
-
-// @public (undocumented)
-export interface CalendarProps extends React_2.RefAttributes<HTMLDivElement> {
-    allFocusable?: boolean;
-    calendarDayProps?: Partial<CalendarDayProps>;
-    calendarMonthProps?: Partial<CalendarMonthProps>;
-    className?: string;
-    componentRef?: React_2.RefObject<ICalendar>;
-    dateRangeType?: DateRangeType;
-    dateTimeFormatter?: DateFormatting;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    id?: string;
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    maxDate?: Date;
-    minDate?: Date;
-    onDismiss?: () => void;
-    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
-    restrictedDates?: Date[];
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showSixWeeksByDefault?: boolean;
-    showWeekNumbers?: boolean;
-    strings?: CalendarStrings;
-    today?: Date;
-    value?: Date;
-    workWeekDays?: DayOfWeek[];
-}
-
-// @public (undocumented)
-export interface CalendarStrings extends DateGridStrings {
-    closeButtonAriaLabel?: string;
-    dayMarkedAriaLabel?: string;
-    goToToday: string;
-    monthPickerHeaderAriaLabel?: string;
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    nextYearRangeAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    prevYearRangeAriaLabel?: string;
-    selectedDateFormatString?: string;
-    todayDateFormatString?: string;
-    weekNumberFormatString?: string;
-    yearPickerHeaderAriaLabel?: string;
-}
-
-// @public
-export function compareDatePart(date1: Date, date2: Date): Number;
-
-// @public
-export function compareDates(date1: Date, date2: Date): boolean;
-
-// @public (undocumented)
-export interface DateFormatting {
-    formatDay: (date: Date) => string;
-    formatMonth: (date: Date, strings: DateGridStrings) => string;
-    formatMonthDayYear: (date: Date, strings: DateGridStrings) => string;
-    formatMonthYear: (date: Date, strings: DateGridStrings) => string;
-    formatYear: (date: Date) => string;
-}
-
-// @public (undocumented)
-export interface DateGridStrings {
-    days: string[];
-    months: string[];
-    shortDays: string[];
-    shortMonths: string[];
-}
 
 // @public (undocumented)
 export const DatePicker: ForwardRefComponent<DatePickerProps>;
@@ -199,39 +73,6 @@ export type DatePickerValidationResultData = {
     error?: DatePickerErrorType;
 };
 
-// @public
-export enum DateRangeType {
-    // (undocumented)
-    Day = 0,
-    // (undocumented)
-    Month = 2,
-    // (undocumented)
-    Week = 1,
-    // (undocumented)
-    WorkWeek = 3
-}
-
-// @public
-export enum DayOfWeek {
-    // (undocumented)
-    Friday = 5,
-    // (undocumented)
-    Monday = 1,
-    // (undocumented)
-    Saturday = 6,
-    // (undocumented)
-    Sunday = 0,
-    // (undocumented)
-    Thursday = 4,
-    // (undocumented)
-    Tuesday = 2,
-    // (undocumented)
-    Wednesday = 3
-}
-
-// @public (undocumented)
-export const DAYS_IN_WEEK = 7;
-
 // @public (undocumented)
 export const defaultDatePickerErrorStrings: Record<DatePickerErrorType, string>;
 
@@ -239,115 +80,7 @@ export const defaultDatePickerErrorStrings: Record<DatePickerErrorType, string>;
 export const defaultDatePickerStrings: CalendarStrings;
 
 // @public
-export enum FirstWeekOfYear {
-    // (undocumented)
-    FirstDay = 0,
-    // (undocumented)
-    FirstFourDayWeek = 2,
-    // (undocumented)
-    FirstFullWeek = 1
-}
-
-// @public
-export function getDatePartHashValue(date: Date): number;
-
-// @public
-export function getDateRangeArray(date: Date, dateRangeType: DateRangeType, firstDayOfWeek: DayOfWeek, workWeekDays?: DayOfWeek[], daysToSelectInDayView?: number): Date[];
-
-// @public
-export function getEndDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
-
-// @public
-export function getMonthEnd(date: Date): Date;
-
-// @public
-export function getMonthStart(date: Date): Date;
-
-// @public
-export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date;
-
-// @public
-export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear): number;
-
-// @public
-export function getWeekNumbersInMonth(weeksInMonth: number, firstDayOfWeek: DayOfWeek, firstWeekOfYear: FirstWeekOfYear, navigatedDate: Date): number[];
-
-// @public
-export function getYearEnd(date: Date): Date;
-
-// @public
-export function getYearStart(date: Date): Date;
-
-// @public (undocumented)
-export interface ICalendar {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface ICalendarDay {
-    // (undocumented)
-    focus(): void;
-}
-
-// @public (undocumented)
-export interface ICalendarMonth {
-    // (undocumented)
-    focus(): void;
-}
-
-// @public
-export function isInDateRangeArray(date: Date, dateRange: Date[]): boolean;
-
-// @public
-export enum MonthOfYear {
-    // (undocumented)
-    April = 3,
-    // (undocumented)
-    August = 7,
-    // (undocumented)
-    December = 11,
-    // (undocumented)
-    February = 1,
-    // (undocumented)
-    January = 0,
-    // (undocumented)
-    July = 6,
-    // (undocumented)
-    June = 5,
-    // (undocumented)
-    March = 2,
-    // (undocumented)
-    May = 4,
-    // (undocumented)
-    November = 10,
-    // (undocumented)
-    October = 9,
-    // (undocumented)
-    September = 8
-}
-
-// @public
 export const renderDatePicker_unstable: (state: DatePickerState) => JSX.Element;
-
-// @public
-export function setMonth(date: Date, month: number): Date;
-
-// @public (undocumented)
-export const TimeConstants: {
-    MillisecondsInOneDay: number;
-    MillisecondsIn1Sec: number;
-    MillisecondsIn1Min: number;
-    MillisecondsIn30Mins: number;
-    MillisecondsIn1Hour: number;
-    MinutesInOneDay: number;
-    MinutesInOneHour: number;
-    DaysInOneWeek: number;
-    MonthInOneYear: number;
-    HoursInOneDay: number;
-    SecondsInOneMinute: number;
-    OffsetTo24HourFormat: number;
-    TimeFormatRegex: RegExp;
-};
 
 // @public
 export const useDatePicker_unstable: (props: DatePickerProps, ref: React_2.Ref<HTMLInputElement>) => DatePickerState;

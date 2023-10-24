@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Steps, StoryWright } from 'storywright';
-import { InfoLabel } from '@fluentui/react-infobutton';
+import { InfoLabel } from '@fluentui/react-infolabel';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
@@ -40,4 +40,21 @@ storiesOf('InfoLabel', module)
     {
       includeRtl: true,
     },
-  );
+  )
+  .addStory('sizes -- open', () => (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        paddingTop: '60px',
+        paddingLeft: '10px',
+        paddingBottom: '10px',
+        gap: '80px',
+        alignItems: 'start',
+      }}
+    >
+      <InfoLabel size="small" info="This is the content of an InfoButton." infoButton={{ popover: { open: true } }} />
+      <InfoLabel size="medium" info="This is the content of an InfoButton." infoButton={{ popover: { open: true } }} />
+      <InfoLabel size="large" info="This is the content of an InfoButton." infoButton={{ popover: { open: true } }} />
+    </div>
+  ));

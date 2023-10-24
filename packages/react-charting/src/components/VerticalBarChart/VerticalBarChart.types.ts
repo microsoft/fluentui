@@ -9,7 +9,7 @@ import {
 import { ILineChartLineOptions } from '../../types/index';
 
 /**
- * IVerticalBarChartProps for VerticalBarchart component.
+ * Vertical Bar Chart properties
  * {@docCategory VerticalBarChart}
  */
 export interface IVerticalBarChartProps extends ICartesianChartProps {
@@ -85,6 +85,10 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Vertical Bar Chart style properties
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
   /**
    * color of the datapoint legend
@@ -92,6 +96,10 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
   legendColor?: string;
 }
 
+/**
+ * Vertical Bar Chart styles
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
   /**
    * Style for the chart label.

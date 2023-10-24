@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore Add bundle size fixture for MessageBar",
-  "packageName": "@fluentui/react-message-bar",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

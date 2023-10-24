@@ -5,12 +5,18 @@ import { ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import { StickyPositionType } from './Sticky.types';
 import type { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import type { IStickyProps } from './Sticky.types';
+import { getScrollUtils } from './util/scroll';
+import type { ScrollUtils } from './util/scroll';
+import { isLessThanInRange } from './util/comparison';
 
 export interface IStickyState {
   isStickyTop: boolean;
   isStickyBottom: boolean;
   distanceFromTop?: number;
 }
+
+// Pixels
+const COMPARISON_RANGE = 1;
 
 export class Sticky extends React.Component<IStickyProps, IStickyState> {
   public static defaultProps: IStickyProps = {
@@ -26,6 +32,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
   private _nonStickyContent = React.createRef<HTMLDivElement>();
   private _placeHolder = React.createRef<HTMLDivElement>();
   private _activeElement: HTMLElement | undefined;
+  private _scrollUtils: ScrollUtils;
 
   constructor(props: IStickyProps) {
     super(props);
@@ -37,6 +44,7 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
       distanceFromTop: undefined,
     };
     this._activeElement = undefined;
+    this._scrollUtils = getScrollUtils();
   }
 
   public get root(): HTMLDivElement | null {
@@ -258,14 +266,15 @@ export class Sticky extends React.Component<IStickyProps, IStickyState> {
 
       if (this.canStickyTop) {
         const distanceToStickTop = distanceFromTop - this._getStickyDistanceFromTop();
-        isStickyTop = distanceToStickTop < container.scrollTop;
+        const containerScrollTop = container.scrollTop;
+        isStickyTop = isLessThanInRange(distanceToStickTop, containerScrollTop, COMPARISON_RANGE);
       }
 
       // Can sticky bottom if the scrollablePane - total sticky footer height is smaller than the sticky's distance
       // from the top of the pane
       if (this.canStickyBottom && container.clientHeight - footerStickyContainer.offsetHeight <= distanceFromTop) {
         isStickyBottom =
-          distanceFromTop - Math.floor(container.scrollTop) >=
+          distanceFromTop - this._scrollUtils.getScrollTopInRange(container, COMPARISON_RANGE) >=
           this._getStickyDistanceFromTopForFooter(container, footerStickyContainer);
       }
 
