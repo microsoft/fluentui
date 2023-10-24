@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAnimationFrame, useTimeout, usePrevious, useFirstMount } from '@fluentui/react-utilities';
+import { useAnimationFrame, useTimeout, useFirstMount } from '@fluentui/react-utilities';
 
 import { useReducedMotion } from './useReducedMotion';
 import { getMotionDuration } from '../utils/dom-style';
@@ -117,9 +117,7 @@ function useMotionPresence<Element extends HTMLElement>(
       return;
     }
 
-    /*
-     * In case animation is disabled, we can skip the animation and go straight to the idle state.
-     */
+    // In case animation is disabled, we can skip the animation and go straight to the idle state.
     if (disableAnimation) {
       setType(presence ? 'idle' : 'unmounted');
       setActive(presence);
@@ -128,22 +126,16 @@ function useMotionPresence<Element extends HTMLElement>(
 
     setType(presence ? 'entering' : 'exiting');
 
-    /*
-     * If the element is not rendered, nothing to do.
-     */
+    // If the element is not rendered, nothing to do.
     if (!currentElement) {
       return;
     }
 
-    /*
-     * Wait for the next frame to ensure the element is rendered and the animation can start.
-     */
+    // Wait for the next frame to ensure the element is rendered and the animation can start.
     setAnimationFrame(() => {
       setActive(presence);
 
-      /*
-       * Wait for the next frame to ensure the animation has started.
-       */
+      // Wait for the next frame to ensure the animation has started.
       setAnimationFrame(() => {
         const duration = getMotionDuration(currentElement);
 
@@ -165,7 +157,8 @@ function useMotionPresence<Element extends HTMLElement>(
       cancelAnimationFrame();
       clearAnimationTimeout();
     };
-    /*
+
+    /**
      * Only tracks dependencies that are either not stable or are used in the callbacks
      * This is to avoid re-running the effect on every render, especially when the element is not rendered
      */
@@ -207,57 +200,8 @@ export function useMotion<Element extends HTMLElement>(
   shorthand: MotionShorthand<Element>,
   options?: MotionOptions,
 ): MotionState<Element> {
-  /**
-   * Heads up!
-   * This hook returns a Motion but also accepts Motion as an argument.
-   * In case the hook is called with a Motion as argument, we don't need to perform the expensive computation of the
-   * motion state and can just return the motion value as is. This is intentional as it allows others to use the hook
-   * on their side without having to worry about the performance impact of the hook.
-   */
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
-}
+  const isShorthand = typeof shorthand === 'object';
+  const motion = useMotionPresence<Element>(isShorthand ? false : shorthand, options);
 
-const stringifyShorthand = <Element extends HTMLElement>(value: MotionShorthand<Element>) => {
-  return JSON.stringify(value, null, 2);
-};
-
-/**
- * @internal
- *
- * This method emits a warning if the hook is called with
- * a different typeof of shorthand on subsequent renders,
- * since this can lead breaking the rules of hooks.
- *
- * It also return a boolean indicating whether the shorthand is a motion object.
- */
-export function useIsMotion<Element extends HTMLElement>(
-  shorthand: MotionShorthand<Element>,
-): shorthand is MotionState<Element> {
-  const previousShorthand = usePrevious(shorthand);
-
-  /**
-   * Heads up!
-   * We don't want these warnings in production even though it is against native behavior
-   */
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useEffect(() => {
-      if (previousShorthand !== null && typeof previousShorthand !== typeof shorthand) {
-        // eslint-disable-next-line no-console
-        console.error(
-          [
-            'useMotion: The hook needs to be called with the same typeof of shorthand on every render.',
-            'This is to ensure the internal state of the hook is stable and can be used to accurately detect the motion state.',
-            'Please make sure to not change the shorthand on subsequent renders or to use the hook conditionally.',
-            '\nCurrent shorthand:',
-            stringifyShorthand(shorthand),
-            '\nPrevious shorthand:',
-            stringifyShorthand(previousShorthand),
-          ].join(' '),
-        );
-      }
-    }, [shorthand, previousShorthand]);
-  }
-  return typeof shorthand === 'object';
+  return isShorthand ? shorthand : motion;
 }
