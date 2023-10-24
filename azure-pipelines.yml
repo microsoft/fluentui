@@ -57,11 +57,3 @@ steps:
   #    displayName: run VR Test
   #    env:
   #      SCREENER_API_KEY: $(screener.key)
-
-  # In theory the "workspace: clean: all" setting should handle this, but it doesn't always seem to work.
-  # ReallyClean is a custom task from our internal UI Fabric azure-devops-tasks repo which attempts to
-  # delete the given directory with multiple retries.
-  - task: ReallyClean@0
-    inputs:
-      directory: $(Agent.BuildDirectory)
-    condition: always()
