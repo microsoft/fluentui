@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: remove -apple-system from font stack as it is no longer necessary and causing errors",
+  "packageName": "@fluentui/tokens",
+  "email": "mgodbolt@microsoft.com",
+  "dependentChangeType": "patch"
+}

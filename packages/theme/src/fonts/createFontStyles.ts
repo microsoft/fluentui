@@ -3,7 +3,7 @@ import type { IFontWeight, IRawStyle } from '@fluentui/merge-styles';
 import type { IFontStyles } from '../types/IFontStyles';
 
 // Fallback fonts, if specified system or web fonts are unavailable.
-const FontFamilyFallbacks = `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
+const FontFamilyFallbacks = `'Segoe UI', BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`;
 
 // By default, we favor system fonts for the default.
 // All localized fonts use a web font and never use the system font.
