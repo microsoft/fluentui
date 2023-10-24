@@ -25,7 +25,7 @@ describe('DrawerInline', () => {
       mountFluent(<DrawerInline id="drawer" position="start" separator open />);
 
       cy.get('#drawer').should('have.css', `border-left-color`, 'transparent');
-      cy.get('#drawer').should('not.have.css', `border-right-color`, '1px');
+      cy.get('#drawer').should('not.have.css', `border-right-color`, 'transparent');
     });
 
     it('should render correct border when when position is `end`', () => {
