@@ -108,12 +108,10 @@ export class Dialog extends FASTElement {
    */
   public openChanged(oldValue: boolean, newValue: boolean): void {
     if (newValue !== oldValue) {
-      if (newValue && !oldValue && !this.dialog.open) {
+      if (newValue && !oldValue) {
         this.show();
-        this.open = true;
-      } else if (!newValue && oldValue && this.dialog.open) {
+      } else if (!newValue && oldValue) {
         this.hide();
-        this.open = false;
       }
     }
   }

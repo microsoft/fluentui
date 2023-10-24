@@ -317,7 +317,7 @@ export const TwoColumnLayout = renderComponent(html<DialogStoryArgs>`
     >
     <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-twocolumn')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-twocolumn" modal-type="${DialogModalType.modal}">
+    <fluent-dialog id="dialog-twocolumn" modal-type="${DialogModalType.nonModal}">
       <div slot="title">Welcome!</div>
       <div style="margin-bottom: 12px;">
         <fluent-text as="p" block
