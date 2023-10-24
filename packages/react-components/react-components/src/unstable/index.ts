@@ -1,5 +1,6 @@
 // Stub for unstable exports
 
+/* eslint-disable deprecation/deprecation */
 export {
   Alert,
   alertClassNames,
@@ -9,7 +10,6 @@ export {
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 
-/* eslint-disable deprecation/deprecation */
 export {
   InfoButton,
   infoButtonClassNames,
