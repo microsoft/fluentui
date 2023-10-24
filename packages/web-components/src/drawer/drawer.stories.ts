@@ -415,6 +415,138 @@ export default {
 
 export const Drawer = renderComponent(storyTemplate).bind({});
 
+export const Modal = renderComponent(html<DrawerStoryArgs>`
+  <div class="flex justify-c full-height">
+    <div>
+      <fluent-drawer id="drawer-modal">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Modal</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-modal')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+        <div class="row-gap-16 f-col flex">
+          <fluent-text font="base" size="300" weight="regular" as="p">
+            <p>
+              When a modal dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab
+              sequence is kept within the dialog and moving the focus outside the dialog will imply closing it. This is
+              the default type of the component.
+            </p>
+          </fluent-text>
+          <fluent-text font="monospace" size="300" weight="regular" as="p">
+            <code>modal-type="modal"</code>
+          </fluent-text>
+        </div>
+      </fluent-drawer>
+    </div>
+    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+      <fluent-text weight="bold" size="400" as="h3"><h3>Modal</h3></fluent-text>
+      <fluent-text weight="regular" size="300" as="p">
+        <p>
+          When a modal dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab
+          sequence is kept within the dialog and moving the focus outside the dialog will imply closing it. This is the
+          default type of the component.
+        </p>
+      </fluent-text>
+      <fluent-text font="monospace" size="300" weight="regular" as="p">
+        <code>modal-type="modal"</code>
+      </fluent-text>
+      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-modal')}">Toggle Drawer</fluent-button>
+    </div>
+  </div>
+`);
+
+export const Alert = renderComponent(html<DrawerStoryArgs>`
+  <div class="flex justify-c full-height">
+    <div>
+      <fluent-drawer id="drawer-alert" modal-type="alert">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Alert</h1></fluent-text>
+        <div class="row-gap-16 f-col flex">
+          <fluent-text font="base" size="300" weight="regular" as="p">
+            <p>
+              When an alert dialog is open it interrupts the user's workflow to communicate an important message or ask
+              for a decision. Unlike a typical modal dialog, the user must take an action through the options given to
+              dismiss the dialog, and it cannot be dismissed through the dimmed background.
+            </p>
+          </fluent-text>
+          <fluent-text font="monospace" size="300" weight="regular" as="p">
+            <code>modal-type="alert"</code>
+          </fluent-text>
+        </div>
+        <div slot="footer">
+          <fluent-button appearance="primary">Do Something</fluent-button>
+          <fluent-button appearance="secondary" @click=${() => hideDrawer('drawer-alert')}>Close</fluent-button>
+        </div>
+      </fluent-drawer>
+    </div>
+    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+      <fluent-text weight="bold" size="400" as="h3"><h3>Alert</h3></fluent-text>
+      <fluent-text weight="regular" size="300" as="p">
+        <p>
+          When an alert dialog is open it interrupts the user's workflow to communicate an important message or ask for
+          a decision. Unlike a typical modal dialog, the user must take an action through the options given to dismiss
+          the dialog, and it cannot be dismissed through the dimmed background.
+        </p>
+      </fluent-text>
+      <fluent-text font="monospace" size="300" weight="regular" as="p">
+        <code>modal-type="alert"</code>
+      </fluent-text>
+      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-alert')}">Toggle Drawer</fluent-button>
+    </div>
+  </div>
+`);
+
+export const NonModal = renderComponent(html<DrawerStoryArgs>`
+  <div class="flex justify-c full-height">
+    <div>
+      <fluent-drawer id="drawer-nonmodal" modal-type="non-modal">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Non Modal</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-nonmodal')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+        <div class="row-gap-16 f-col flex">
+          <fluent-text font="base" size="300" weight="regular" as="p">
+            <p>
+              When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the
+              rest of the page. This also implies that the tab focus can move outside the dialog when it reaches the
+              last focusable element.
+            </p>
+          </fluent-text>
+          <fluent-text font="monospace" size="300" weight="regular" as="p">
+            <code>modal-type="non-modal"</code>
+          </fluent-text>
+        </div>
+      </fluent-drawer>
+    </div>
+    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+      <fluent-text weight="bold" size="400" as="h3"><h3>Non Modal</h3></fluent-text>
+      <fluent-text weight="regular" size="300" as="p">
+        <p>
+          When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the rest
+          of the page. This also implies that the tab focus can move outside the dialog when it reaches the last
+          focusable element.
+        </p>
+      </fluent-text>
+      <fluent-text font="monospace" size="300" weight="regular" as="p">
+        <code>modal-type="non-modal"</code>
+      </fluent-text>
+      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-nonmodal')}"
+        >Toggle Drawer</fluent-button
+      >
+    </div>
+  </div>
+`);
+
 export const Overlay = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify-c full-height">
     <div>
@@ -457,60 +589,6 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
         <code>type="overlay"</code>
       </fluent-text>
       <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-overlay')}">Toggle Drawer</fluent-button>
-    </div>
-  </div>
-`);
-
-export const OverlayNonModal = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-c full-height">
-    <div>
-      <fluent-drawer id="drawer-overlay-nomodal" modal-type="non-modal">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
-          ><h1>Overlay No Modal</h1></fluent-text
-        >
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-overlay-nomodal')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-        <div class="row-gap-16 f-col flex">
-          <fluent-text font="base" size="300" weight="regular" as="p">
-            <p>
-              An overlay is optional depending on whether or not interacting with the background content is beneficial
-              to the user's context/scenario.
-            </p>
-          </fluent-text>
-          <fluent-text font="base" size="300" weight="regular" as="p">
-            <p>
-              By setting the <code>modal-type</code> attribute to <code>non-modal</code>, the <code>Drawer</code> will
-              not be blocking and the user can interact with the background content.
-            </p>
-          </fluent-text>
-          <fluent-text font="monospace" size="300" weight="regular" as="p">
-            <code>modal-type="non-modal"</code>
-          </fluent-text>
-        </div>
-      </fluent-drawer>
-    </div>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>Overlay No Modal</h3></fluent-text>
-      <fluent-text weight="regular" size="300" as="p">
-        <p>
-          An overlay is optional depending on whether or not interacting with the background content is beneficial to
-          the user's context/scenario. A Drawer rendered as non-modal will not be blocking and the user can interact
-          with the background content.
-        </p>
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>modal-type="non-modal"</code>
-      </fluent-text>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-overlay-nomodal')}"
-        >Toggle Drawer</fluent-button
-      >
     </div>
   </div>
 `);
@@ -595,9 +673,18 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify-sb full-height">
     <div>
       <fluent-drawer type="inline" id="drawer-position-start" size="small">
-        <div slot="title">
-          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Position Start</h1></fluent-text>
-        </div>
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
+          ><h1>Drawer Position Start</h1></fluent-text
+        >
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-position-start')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
         <div class="row-gap-16 f-col flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -638,9 +725,18 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
     </div>
     <div>
       <fluent-drawer position="end" type="inline" id="drawer-position-end" size="small">
-        <div slot="title">
-          <fluent-text font="base" size="500" weight="semibold" as="h1"><h1>Drawer Position End</h1></fluent-text>
-        </div>
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
+          ><h1>Drawer Position End</h1></fluent-text
+        >
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-position-end')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
         <div class="row-gap-16 f-col flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
@@ -746,7 +842,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       </div>
     </fluent-drawer>
     <fluent-drawer size="full" id="drawer-size-full">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Large</h1></fluent-text>
+      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Full</h1></fluent-text>
       <fluent-button
         slot="action"
         appearance="transparent"
