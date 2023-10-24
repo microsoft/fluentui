@@ -29,6 +29,7 @@ export type AlertSlots = {
  * Alert Props
  * @deprecated please use the Toast or MessageBar component
  */
+// eslint-disable-next-line deprecation/deprecation
 export type AlertProps = ComponentProps<AlertSlots> & {
   /**
    * The intent prop, if present, determines the icon to be rendered in the icon slot. The icon prop
@@ -46,6 +47,9 @@ export type AlertProps = ComponentProps<AlertSlots> & {
  * State used in rendering Alert
  * @deprecated please use the Toast or MessageBar component
  */
+// eslint-disable-next-line deprecation/deprecation
 export type AlertState = ComponentState<AlertSlots> &
+  // eslint-disable-next-line deprecation/deprecation
   Pick<AlertProps, 'intent'> &
+  // eslint-disable-next-line deprecation/deprecation
   Required<Pick<AlertProps, 'appearance'>>;

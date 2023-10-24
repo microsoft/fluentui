@@ -7,7 +7,9 @@ import type { AlertState, AlertSlots } from './Alert.types';
 /**
  * @deprecated please use the Toast or MessageBar component
  */
+// eslint-disable-next-line deprecation/deprecation
 export const renderAlert_unstable = (state: AlertState) => {
+  // eslint-disable-next-line deprecation/deprecation
   assertSlots<AlertSlots>(state);
 
   return (
