@@ -42,16 +42,38 @@ describe('TimePicker', () => {
     );
     handleTimeSelect.mockClear();
 
-    // Do not call onTimeSelect when Tab out but the value remains the same
+    // Do not call onTimeSelect on Enter when the value remains the same
     fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
     expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
-    // Call onTimeSelect when Tab out and the value changes
+    // Call onTimeSelect on Enter when the value changes
     userEvent.type(input, '111{enter}');
     expect(handleTimeSelect).toHaveBeenCalledTimes(1);
     expect(handleTimeSelect).toHaveBeenCalledWith(
       expect.anything(),
       expect.objectContaining({ selectedTimeText: '10:30111', error: 'invalid-input' }),
+    );
+  });
+
+  it('when freeform, trigger onTimeSelect on blur when value change', () => {
+    const handleTimeSelect = jest.fn();
+    const { getByRole } = render(
+      <TimePicker freeform dateAnchor={dateAnchor} onTimeSelect={handleTimeSelect} startHour={10} />,
+    );
+
+    const input = getByRole('combobox');
+    const expandIcon = getByRole('button');
+
+    // Do not call onTimeSelect when clicking dropdown icon
+    userEvent.type(input, '111');
+    userEvent.click(expandIcon);
+    expect(handleTimeSelect).toHaveBeenCalledTimes(0);
+
+    // Call onTimeSelect on focus lose
+    userEvent.tab();
+    expect(handleTimeSelect).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ selectedTimeText: '111' }),
     );
   });
 });

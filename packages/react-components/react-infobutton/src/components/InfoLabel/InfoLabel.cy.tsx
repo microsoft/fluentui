@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 /// <reference types="cypress-real-events" />
 
 import * as React from 'react';
