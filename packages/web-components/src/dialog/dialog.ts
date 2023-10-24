@@ -107,7 +107,7 @@ export class Dialog extends FASTElement {
    * @private
    * Indicates whether focus should be trapped within the dialog
    */
-  private inertTrapFocus: boolean = false;
+  private trapFocus: boolean = false;
 
   /**
    * @public
@@ -128,11 +128,12 @@ export class Dialog extends FASTElement {
    * Method called when the 'modalType' attribute changes
    */
   public modalTypeChanged(oldValue: DialogModalType, newValue: DialogModalType): void {
-    if (
-      newValue !== oldValue &&
-      (this.modalType === DialogModalType.modal || this.modalType !== DialogModalType.alert)
-    ) {
-      this.inertTrapFocus = true;
+    if (newValue !== oldValue) {
+      if (newValue == DialogModalType.alert || newValue == DialogModalType.modal) {
+        this.trapFocus = true;
+      } else {
+        this.trapFocus = false;
+      }
     }
   }
 
@@ -142,9 +143,9 @@ export class Dialog extends FASTElement {
    */
   public setComponent(): void {
     if (this.modalType == DialogModalType.modal || this.modalType == DialogModalType.alert) {
-      this.inertTrapFocus = true;
+      this.trapFocus = true;
     } else {
-      this.inertTrapFocus = false;
+      this.trapFocus = false;
     }
   }
 
@@ -251,7 +252,7 @@ export class Dialog extends FASTElement {
    * @param e - The keydown event
    */
   private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (!this.inertTrapFocus || !this.dialog.open) {
+    if (!this.trapFocus || !this.dialog.open) {
       return;
     }
 
@@ -317,7 +318,7 @@ export class Dialog extends FASTElement {
    * @returns boolean
    */
   private shouldTrapFocus = (): boolean => {
-    return this.inertTrapFocus && this.dialog.open;
+    return this.trapFocus && this.dialog.open;
   };
 
   /**
