@@ -18,7 +18,9 @@ export const FocusModeArrow = () => (
       <BreadcrumbButton icon={<CalendarMonth />}>Item 3</BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbDivider />
-    <BreadcrumbItem current>Item 4</BreadcrumbItem>
+    <BreadcrumbItem>
+      <BreadcrumbButton current>Item 4</BreadcrumbButton>
+    </BreadcrumbItem>
   </Breadcrumb>
 );
 
