@@ -9,7 +9,6 @@
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { DialogProps } from '@fluentui/react-dialog';
-import type { DialogSurfaceProps } from '@fluentui/react-dialog';
 import type { DialogSurfaceSlots } from '@fluentui/react-dialog';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import { MotionShorthand } from '@fluentui/react-motion-preview';

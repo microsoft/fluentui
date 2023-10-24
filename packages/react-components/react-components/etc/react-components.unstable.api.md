@@ -55,12 +55,12 @@ import { InfoLabelProps } from '@fluentui/react-infobutton';
 import { InfoLabelSlots } from '@fluentui/react-infobutton';
 import { InfoLabelState } from '@fluentui/react-infobutton';
 import { InlineDrawer } from '@fluentui/react-drawer';
-import { InlineDrawerClassNames } from '@fluentui/react-drawer';
+import { inlineDrawerClassNames } from '@fluentui/react-drawer';
 import { InlineDrawerProps } from '@fluentui/react-drawer';
 import { InlineDrawerSlots } from '@fluentui/react-drawer';
 import { InlineDrawerState } from '@fluentui/react-drawer';
 import { OverlayDrawer } from '@fluentui/react-drawer';
-import { OverlayDrawerClassNames } from '@fluentui/react-drawer';
+import { overlayDrawerClassNames } from '@fluentui/react-drawer';
 import { OverlayDrawerProps } from '@fluentui/react-drawer';
 import { OverlayDrawerSlots } from '@fluentui/react-drawer';
 import { OverlayDrawerState } from '@fluentui/react-drawer';
@@ -289,8 +289,8 @@ export { InfoLabelState }
 export { InlineDrawer as DrawerInline }
 export { InlineDrawer }
 
-export { InlineDrawerClassNames as DrawerInlineClassNames }
-export { InlineDrawerClassNames }
+export { inlineDrawerClassNames as DrawerInlineClassNames }
+export { inlineDrawerClassNames }
 
 export { InlineDrawerProps as DrawerInlineProps }
 export { InlineDrawerProps }
@@ -304,8 +304,8 @@ export { InlineDrawerState }
 export { OverlayDrawer as DrawerOverlay }
 export { OverlayDrawer }
 
-export { OverlayDrawerClassNames as DrawerOverlayClassNames }
-export { OverlayDrawerClassNames }
+export { overlayDrawerClassNames as DrawerOverlayClassNames }
+export { overlayDrawerClassNames }
 
 export { OverlayDrawerProps as DrawerOverlayProps }
 export { OverlayDrawerProps }
