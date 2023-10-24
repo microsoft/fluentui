@@ -68,12 +68,7 @@ const dialogTemplate = html<DialogStoryArgs>`
   </style>
   <div>
     <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
-    <fluent-dialog
-      id="dialog-default"
-      modal-type="${x => x.modalType}"
-      ?no-title-action="${x => x.noTitleAction}"
-      change-focus="${x => x.changeFocus}"
-    >
+    <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}" ?no-title-action="${x => x.noTitleAction}">
       <fluent-text slot="title">Dialog</fluent-text>
       <fluent-text as="p" weight="regular" block>
         <p>
@@ -112,17 +107,6 @@ export default {
         options: Object.values(DialogModalType),
       },
       defaultValue: DialogModalType.modal,
-    },
-    changeFocus: {
-      description: 'Used to set the id of the element that should receive focus when the dialog is opened',
-      table: {
-        defaultValue: { summary: 'undefined' },
-      },
-      control: {
-        type: 'select',
-        options: ['dialog-default-close', 'dialog-default-dosomething'],
-      },
-      defaultValue: undefined,
     },
     noTitleAction: {
       description:
@@ -638,48 +622,6 @@ export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
         >Close Dialog</fluent-button
       >
       <fluent-button slot="footer-action">Do Something</fluent-button>
-    </fluent-dialog>
-  </div>
-`);
-
-export const ChangeFocus = renderComponent(html<DialogStoryArgs>`
-  <div>
-    <fluent-text as="p" block
-      ><p>
-        Changing the default focused element can be done by providing the id of the element to focus on in the
-        <code>change-focus</code> attribute.
-      </p></fluent-text
-    >
-    <br />
-    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-changefocus')}>Open Dialog</fluent-button>
-    <fluent-dialog change-focus="dialog-changefocus-target" id="dialog-changefocus">
-      <div slot="title">Change Focus</div>
-      <fluent-button
-        appearance="transparent"
-        icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-changefocus')}"
-        slot="title-action"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
-
-      <fluent-text as="p" block>
-        <p>
-          Changing the default focused element can be done by providing the id of the element to focus on in the
-          <code>change-focus</code> attribute.
-        </p>
-      </fluent-text>
-      <br />
-      <fluent-text as="p" block>
-        <p><code>change-focus="myElementId"</code></p>
-      </fluent-text>
-      <div slot="footer-action">
-        <fluent-button appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-changefocus')}"
-          >Close Dialog</fluent-button
-        >
-
-        <fluent-button id="dialog-changefocus-target" tabindex="0">Focus Me First</fluent-button>
-      </div>
     </fluent-dialog>
   </div>
 `);

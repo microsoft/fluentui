@@ -146,11 +146,6 @@ export class Dialog extends FASTElement {
     } else {
       this.inertTrapFocus = false;
     }
-    if (this.open) {
-      this.show();
-    } else {
-      this.open = this.dialog.open;
-    }
   }
 
   /**
@@ -170,20 +165,11 @@ export class Dialog extends FASTElement {
     Updates.enqueue(() => {
       if (this.modalType === DialogModalType.alert || this.modalType === DialogModalType.modal) {
         this.dialog.showModal();
-        this.open = true;
         this.updateTrapFocus(true);
       } else if (this.modalType === DialogModalType.nonModal) {
         this.dialog.show();
-        this.open = true;
       }
       this.onOpenChangeEvent();
-      if (this.changeFocus) {
-        const element = this.querySelector(`#${this.changeFocus}`) as HTMLElement;
-        if (element) {
-          element.focus();
-          return;
-        }
-      }
     });
   }
 
@@ -194,7 +180,6 @@ export class Dialog extends FASTElement {
    */
   public hide(dismissed: boolean = false): void {
     this.dialog.close();
-    this.open = false;
     this.onOpenChangeEvent(dismissed);
   }
 
@@ -217,7 +202,7 @@ export class Dialog extends FASTElement {
    */
   public handleClick(event: Event): boolean {
     event.preventDefault();
-    if (this.open && this.modalType !== DialogModalType.alert && event.target === this.dialog) {
+    if (this.dialog.open && this.modalType !== DialogModalType.alert && event.target === this.dialog) {
       this.dismiss();
     }
     return true;
@@ -251,7 +236,7 @@ export class Dialog extends FASTElement {
    * @param e - The keydown event
    */
   private handleDocumentKeydown = (e: KeyboardEvent): void => {
-    if (!e.defaultPrevented && this.open) {
+    if (!e.defaultPrevented && this.dialog.open) {
       switch (e.key) {
         case keyTab:
           this.handleTabKeyDown(e);
@@ -266,7 +251,7 @@ export class Dialog extends FASTElement {
    * @param e - The keydown event
    */
   private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (!this.inertTrapFocus || !this.open) {
+    if (!this.inertTrapFocus || !this.dialog.open) {
       return;
     }
 
@@ -332,7 +317,7 @@ export class Dialog extends FASTElement {
    * @returns boolean
    */
   private shouldTrapFocus = (): boolean => {
-    return this.inertTrapFocus && this.open;
+    return this.inertTrapFocus && this.dialog.open;
   };
 
   /**

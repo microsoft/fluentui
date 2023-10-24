@@ -68,8 +68,6 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 | `title-action`  | slot for close button                                      |
 |                 | default slot for content rendered between title and footer |
 | `footer-action` | slot for actions content                                   |
-| `start`         | slot for content at the start of the dialog                |
-| `end`           | slot for content at the end of the dialog                  |
 
 ### **Events**
 

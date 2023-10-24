@@ -27,8 +27,8 @@ export const template: ElementViewTemplate<Dialog> = html`
     role="${x => (x.modalType === DialogModalType.alert ? 'alertdialog' : 'dialog')}"
     modal-type="${x => x.modalType}"
     change-focus="${x => x.changeFocus}"
-    class="control"
-    part="control"
+    class="dialog"
+    part="dialog"
     aria-modal="${x =>
       x.modalType === DialogModalType.modal || x.modalType === DialogModalType.alert ? 'true' : void 0}"
     aria-describedby="${x => x.ariaDescribedby}"
@@ -39,7 +39,6 @@ export const template: ElementViewTemplate<Dialog> = html`
     ${ref('dialog')}
   >
     <div class="root" part="root">
-      <slot name="start"></slot>
       <div class="header" part="header">
         <slot name="title"></slot>
         <slot ${slotted({ property: 'titleAction', filter: elements() })} name="title-action"></slot>
@@ -63,7 +62,6 @@ export const template: ElementViewTemplate<Dialog> = html`
       <div class="footer" part="footer">
         <slot name="footer-action"></slot>
       </div>
-      <slot name="end"></slot>
     </div>
   </dialog>
 `;
