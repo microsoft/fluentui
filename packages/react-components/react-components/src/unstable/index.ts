@@ -148,7 +148,7 @@ export {
   /** @deprecated Use `OverlayDrawer` instead */
   OverlayDrawer as DrawerOverlay,
   /** @deprecated Use `OverlayDrawerClassNames` instead */
-  OverlayDrawerClassNames as DrawerOverlayClassNames,
+  overlayDrawerClassNames as DrawerOverlayClassNames,
   /** @deprecated Use `renderOverlayDrawer_unstable` instead */
   renderOverlayDrawer_unstable as renderDrawerOverlay_unstable,
   /** @deprecated Use `useOverlayDrawerStyles_unstable` instead */
@@ -158,7 +158,7 @@ export {
   /** @deprecated Use `InlineDrawer` instead */
   InlineDrawer as DrawerInline,
   /** @deprecated Use `InlineDrawerClassNames` instead */
-  InlineDrawerClassNames as DrawerInlineClassNames,
+  inlineDrawerClassNames as DrawerInlineClassNames,
   /** @deprecated Use `renderInlineDrawer_unstable` instead */
   renderInlineDrawer_unstable as renderDrawerInline_unstable,
   /** @deprecated Use `useInlineDrawerStyles_unstable` instead */
@@ -166,12 +166,12 @@ export {
   /** @deprecated Use `useInlineDrawer_unstable` instead */
   useInlineDrawer_unstable as useDrawerInline_unstable,
   OverlayDrawer,
-  OverlayDrawerClassNames,
+  overlayDrawerClassNames,
   renderOverlayDrawer_unstable,
   useOverlayDrawerStyles_unstable,
   useOverlayDrawer_unstable,
   InlineDrawer,
-  InlineDrawerClassNames,
+  inlineDrawerClassNames,
   renderInlineDrawer_unstable,
   useInlineDrawerStyles_unstable,
   useInlineDrawer_unstable,
