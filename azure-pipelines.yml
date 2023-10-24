@@ -22,7 +22,7 @@ resources:
       ref: refs/tags/release
 
 extends:
-  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  template: v1/1ES.Unofficial.PipelineTemplate.yml@1esPipelines
   parameters:
     pool:
       name: OneESHostedPool
@@ -90,14 +90,14 @@ extends:
             displayName: Deploy and E2E
             workspace:
               clean: all
-              pool:
-                name: '1ES-Host-Ubuntu'
-                image: '1ES-PT-Ubuntu-20.04'
-              templateContext:
-                outputs:
-                  - output: pipelineArtifact
-                    targetPath: $(System.DefaultWorkingDirectory)/apps/pr-deploy-site/dist
-                    artifactName: web
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)/apps/pr-deploy-site/dist
+                  artifactName: web
             steps:
               - template: .devops/templates/tools.yml@self
 

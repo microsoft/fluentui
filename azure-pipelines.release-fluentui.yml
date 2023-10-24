@@ -35,7 +35,6 @@ variables:
     value: true
   - name: nightlyReleaseDate # used by nightly built docsite to setup codesandbox correctly
     value: empty
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 

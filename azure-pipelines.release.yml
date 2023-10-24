@@ -10,7 +10,6 @@ variables:
   - template: .devops/templates/variables.yml
     parameters:
       skipComponentGovernanceDetection: false
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 

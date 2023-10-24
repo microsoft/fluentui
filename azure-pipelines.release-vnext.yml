@@ -12,7 +12,6 @@ variables:
       skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 
@@ -107,13 +106,6 @@ extends:
 
               # This would usually be run automatically (via a pipeline decorator from an extension), but the
               # thorough cleanup step prevents it from working. So run it manually here.
-              - task: ComponentGovernanceComponentDetection@0
-                displayName: 'Component governance detection'
-                inputs:
-                  sourceScanPath: $(Agent.BuildDirectory)
-                condition: succeeded()
-                timeoutInMinutes: 5
-                continueOnError: true
 
               - template: .devops/templates/cleanup.yml@self
                 parameters:

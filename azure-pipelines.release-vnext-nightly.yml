@@ -12,7 +12,6 @@ variables:
       skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 
