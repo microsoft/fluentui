@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeCallbacks, useControllableState, useMergedRefs } from '@fluentui/react-utilities';
+import { elementContains, mergeCallbacks, useControllableState, useMergedRefs } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
 import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
@@ -204,10 +204,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   const rootRef = React.useRef<HTMLDivElement>(null);
   state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
-  const listboxRef = React.useRef<HTMLDivElement>(null);
-  const mergedListboxRef = useMergedRefs(state.listbox?.ref, listboxRef);
   if (state.listbox) {
-    state.listbox.ref = mergedListboxRef;
     state.listbox.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
   }
 
@@ -217,9 +214,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
 
   const handleInputBlur = React.useCallback(
     (e: React.FocusEvent<HTMLInputElement>) => {
-      const isOutside = e.relatedTarget
-        ? [rootRef, listboxRef].every(({ current }) => !current?.contains(e.relatedTarget as HTMLElement))
-        : true;
+      const isOutside = e.relatedTarget ? !elementContains(rootRef.current, e.relatedTarget) : true;
       if (isOutside) {
         selectTimeFromValue(e);
       }
