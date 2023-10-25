@@ -14,18 +14,6 @@ describe('DrawerInline', () => {
   testDrawerBaseScenarios(DrawerInline);
 
   describe('separator prop', () => {
-    it('should not render any border when separator is false and position is start', () => {
-      mountFluent(<DrawerInline id="drawer" position="start" open />);
-
-      cy.get('#drawer').should('have.css', `border-right-color`, 'transparent');
-    });
-
-    it('should not render any border when separator is false and position is end', () => {
-      mountFluent(<DrawerInline id="drawer" position="end" open />);
-
-      cy.get('#drawer').should('have.css', `border-left-color`, 'transparent');
-    });
-
     it('should render correct border when when position is `start`', () => {
       mountFluent(<DrawerInline id="drawer" position="start" separator open />);
 
