@@ -16,6 +16,7 @@ module.exports = {
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
+    'verify-packaging': ['build'],
   },
 
   // Adds some ADO-specific logging commands for reporting failures
