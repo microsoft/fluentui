@@ -186,7 +186,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
     }
 
     setActiveOption(undefined);
-  }, [freeform, setActiveOption, prefixMatchActiveOption]);
+  }, [freeform, prefixMatchActiveOption, setActiveOption]);
 
   const selectTimeFromValue = React.useCallback(
     (e: React.KeyboardEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>) => {
