@@ -20,36 +20,33 @@ const selectors = {
   menu: 'data-test-menu',
 };
 
-const Container: React.FC<
-  { children?: React.ReactNode; width?: number; overflowAxis?: OverflowAxis } & Omit<OverflowProps, 'children'>
-> = ({ children, width, ...userProps }) => {
+const Container: React.FC<{ children?: React.ReactNode; size?: number } & Omit<OverflowProps, 'children'>> = ({
+  children,
+  size,
+  overflowAxis = 'horizontal' as const,
+  ...userProps
+}) => {
   const selector = {
     [selectors.container]: '',
   };
 
-  const overflowProps = {
-    overflowAxis: 'horizontal' as const,
-    width: 500,
-    ...userProps,
-  };
-
   return (
-    <Overflow padding={0} {...overflowProps}>
+    <Overflow padding={0} {...userProps} overflowAxis={overflowAxis}>
       <div
         {...selector}
         style={{
-          ...(overflowProps.overflowAxis === 'horizontal' && {
-            width,
+          display: 'flex',
+          ...(overflowAxis === 'horizontal' && {
+            width: size,
           }),
-          ...(overflowProps.overflowAxis === 'vertical' && {
-            height: width,
-            display: 'flex',
+          ...(overflowAxis === 'vertical' && {
+            height: size,
             flexDirection: 'column',
           }),
           border: '1px dashed red',
           whiteSpace: 'nowrap',
           overflow: 'hidden',
-          resize: overflowProps.overflowAxis ?? 'horizontal',
+          resize: overflowAxis,
         }}
       >
         {children}
@@ -189,6 +186,7 @@ export const CustomDivider: React.FC<{
     width: '30px',
     backgroundColor: 'red',
     height: '20px',
+    flexShrink: 0,
   };
 
   return (
@@ -201,7 +199,7 @@ export const CustomDivider: React.FC<{
 };
 
 describe('Overflow', () => {
-  before(() => {
+  beforeEach(() => {
     cy.viewport(700, 700);
   });
 
@@ -256,7 +254,7 @@ describe('Overflow', () => {
     const mapHelper = new Array(10).fill(0).map((_, i) => i);
     const overflowElementIndex = 6;
     mount(
-      <Container width={350}>
+      <Container size={350}>
         <div>
           {mapHelper.map(i => (
             <Item key={i} id={i.toString()}>
@@ -559,6 +557,7 @@ describe('Overflow', () => {
       </Container>,
     );
 
+    setContainerWidth(500);
     cy.get(`[${selectors.item}="8"]`).should('not.be.visible');
     setContainerWidth(350);
     cy.get(`[${selectors.divider}="4"]`).should('not.exist');

@@ -98,7 +98,7 @@ const createReactBindings = (overflowManager: OverflowManager | null) => ({
   registerDivider: (divider: OverflowDividerEntry) => {
     const el = divider.element;
     overflowManager?.addDivider(divider);
-    el && el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
+    el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
 
     return () => {
       divider.groupId && overflowManager?.removeDivider(divider.groupId);
