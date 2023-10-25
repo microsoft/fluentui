@@ -1,4 +1,4 @@
-export type PackageDependencies = { [dependencyName: string]: string };
+type PackageDependencies = { [dependencyName: string]: string };
 
 function matchAll(str: string, re: RegExp) {
   const regexp = new RegExp(re, 'g');
