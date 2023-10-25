@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { mergeClasses } from '@griffel/react';
 
-import { MotionState, MotionType } from './useMotion';
+import { MotionState, MotionType } from './useMotionPresence';
 import { useReducedMotionStyles } from '../styles/useReducedMotionStyles.styles';
 
 export type MotionStylesKeys = 'default' | 'enter' | 'exit' | MotionType;

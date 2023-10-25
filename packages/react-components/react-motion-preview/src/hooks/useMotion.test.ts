@@ -1,6 +1,7 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { useMotion, MotionOptions, MotionShorthand, getDefaultMotionState } from './useMotion';
+import { useMotion, MotionShorthand } from './useMotion';
+import { getDefaultMotionState, MotionOptions } from './useMotionPresence';
 
 const defaultDuration = 100;
 const renderHookWithRef = (

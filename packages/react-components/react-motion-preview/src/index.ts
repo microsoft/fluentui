@@ -1,9 +1,11 @@
 export { getDefaultMotionState, useMotion, useMotionClassNames } from './hooks';
 export type {
+  MotionClassNames,
   MotionOptions,
   MotionShorthand,
   MotionShorthandValue,
   MotionState,
-  MotionClassNames,
+  MotionStylesKeys,
   MotionType,
+  UseMotionOptions,
 } from './hooks';
