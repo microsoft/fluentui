@@ -201,10 +201,7 @@ export function useMotion<Element extends HTMLElement>(
   options?: MotionOptions,
 ): MotionState<Element> {
   const isShorthand = typeof shorthand === 'object';
-  const motion = useMotionPresence<Element>(
-    isShorthand ? false : shorthand,
-    isShorthand ? { animateOnFirstMount: false } : options,
-  );
+  const motion = useMotionPresence<Element>(isShorthand ? false : shorthand, options);
 
   return isShorthand ? shorthand : motion;
 }
