@@ -4,6 +4,7 @@ import { DeleteRegular } from '@fluentui/react-icons';
 import { Alert } from '@fluentui/react-alert';
 
 export const Icon = () => (
+  // eslint-disable-next-line deprecation/deprecation
   <Alert icon={<DeleteRegular />} action="Undo">
     Chat deleted
   </Alert>

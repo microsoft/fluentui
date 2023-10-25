@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "chore: Deprecating Alert components and utilities.",
+  "packageName": "@fluentui/react-components",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}

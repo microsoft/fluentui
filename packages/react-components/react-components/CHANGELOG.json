@@ -2,6 +2,73 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 23 Oct 2023 09:51:55 GMT",
+      "tag": "@fluentui/react-components_v9.36.0",
+      "version": "9.36.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "17dbeb93ab542e982942aef91ce3747acc8053c4",
+            "comment": "fix: Use container window's resize observer"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "2b55f6c9b895a497e7d0d82db3fb1f579f75ade6",
+            "comment": "fix: Classnames removed and added to day cells need to be split instead of providing a string with spaces."
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-table",
+            "commit": "17dbeb93ab542e982942aef91ce3747acc8053c4",
+            "comment": "fix: use targetDocument resize observer"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "0c71d4a05d9ce16cca3fdddda4854e265b227ff5",
+            "comment": "fix: focus visible polyfill should be initialised/disposed correctly"
+          }
+        ],
+        "minor": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "16f754d8e123b02737b5980ca1c515b737b544f0",
+            "comment": "feat: Moving react-infolabel to stable."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-datepicker-compat",
+            "commit": "626775836611bb51ca78425a52de8fc338b8b763",
+            "comment": "BREAKING: Update Datepicker to use react-calendar-compat and remove Calendar related exports."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "4ac68a632b61c2cb1886f32a6293c3218bf07c0e",
+            "comment": "feat: adds motion to DialogSurface"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "16f754d8e123b02737b5980ca1c515b737b544f0",
+            "comment": "feat: Move InfoLabel to stable."
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "17dbeb93ab542e982942aef91ce3747acc8053c4",
+            "comment": "fix: use targetDocument resize observer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Oct 2023 17:54:01 GMT",
       "tag": "@fluentui/react-components_v9.35.1",
       "version": "9.35.1",

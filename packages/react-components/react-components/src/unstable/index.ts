@@ -1,5 +1,6 @@
 // Stub for unstable exports
 
+/* eslint-disable deprecation/deprecation */
 export {
   Alert,
   alertClassNames,
@@ -29,6 +30,7 @@ export type {
   InfoLabelSlots,
   InfoLabelState,
 } from '@fluentui/react-infobutton';
+/* eslint-enable deprecation/deprecation */
 
 export {
   Virtualizer,

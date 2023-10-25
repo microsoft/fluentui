@@ -170,35 +170,37 @@ const ControlledOverflowMenu = (props: PartitionBreadcrumbItems<ButtonItem>) => 
   }
 
   return (
-    <Menu hasIcons>
-      <MenuTrigger disableButtonEnhancement>
-        <Button
-          appearance="transparent"
-          className={styles.menuButton}
-          ref={ref}
-          icon={<MoreHorizontal />}
-          aria-label={`${overflowCount} more tabs`}
-          role="tab"
-        />
-      </MenuTrigger>
-      <MenuPopover>
-        <MenuList className={styles.menu}>
-          {isOverflowing &&
-            startDisplayedItems.map((item: ButtonItem) => (
-              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
-            ))}
-          {overflowItems &&
-            overflowItems.map((item: ButtonItem) => (
-              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
-            ))}
-          {isOverflowing &&
-            endDisplayedItems &&
-            endDisplayedItems.map((item: ButtonItem) => (
-              <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
-            ))}
-        </MenuList>
-      </MenuPopover>
-    </Menu>
+    <BreadcrumbItem>
+      <Menu hasIcons>
+        <MenuTrigger disableButtonEnhancement>
+          <Button
+            appearance="subtle"
+            className={styles.menuButton}
+            ref={ref}
+            icon={<MoreHorizontal />}
+            aria-label={`${overflowCount} more tabs`}
+            role="tab"
+          />
+        </MenuTrigger>
+        <MenuPopover>
+          <MenuList className={styles.menu}>
+            {isOverflowing &&
+              startDisplayedItems.map((item: ButtonItem) => (
+                <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+              ))}
+            {overflowItems &&
+              overflowItems.map((item: ButtonItem) => (
+                <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+              ))}
+            {isOverflowing &&
+              endDisplayedItems &&
+              endDisplayedItems.map((item: ButtonItem) => (
+                <OverflowBreadcrumbButton id={item.key.toString()} item={item} key={item.key} />
+              ))}
+          </MenuList>
+        </MenuPopover>
+      </Menu>
+    </BreadcrumbItem>
   );
 };
 const BreadcrumbControlledOverflowExample = () => {

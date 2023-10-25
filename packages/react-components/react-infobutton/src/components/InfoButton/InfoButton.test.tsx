@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { InfoButton } from './InfoButton';
 import { isConformant } from '../../testing/isConformant';
 import { infoButtonClassNames } from './useInfoButtonStyles.styles';
