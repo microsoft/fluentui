@@ -14,7 +14,7 @@ export const BreadcrumbSize = () => {
         <BreadcrumbDivider />
         <BreadcrumbItem>Item 3</BreadcrumbItem>
         <BreadcrumbDivider />
-        <BreadcrumbItem current>Item 4</BreadcrumbItem>
+        <BreadcrumbItem>Item 4</BreadcrumbItem>
       </Breadcrumb>
       <h4>Interactive Breadcrumb</h4>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">
@@ -30,7 +30,9 @@ export const BreadcrumbSize = () => {
           <BreadcrumbButton>Item 3</BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbDivider />
-        <BreadcrumbItem current>Item 4</BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbButton current>Item 4</BreadcrumbButton>
+        </BreadcrumbItem>
       </Breadcrumb>
       <Breadcrumb aria-label="Medium breadcrumb example with buttons" size="medium">
         <BreadcrumbItem>
@@ -45,7 +47,9 @@ export const BreadcrumbSize = () => {
           <BreadcrumbButton>Item 3</BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbDivider />
-        <BreadcrumbItem current>Item 4</BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbButton current>Item 4</BreadcrumbButton>
+        </BreadcrumbItem>
       </Breadcrumb>
       <Breadcrumb aria-label="Large breadcrumb example with buttons" size="large">
         <BreadcrumbItem>
@@ -60,7 +64,9 @@ export const BreadcrumbSize = () => {
           <BreadcrumbButton>Item 3</BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbDivider />
-        <BreadcrumbItem current>Item 4</BreadcrumbItem>
+        <BreadcrumbItem>
+          <BreadcrumbButton current>Item 4</BreadcrumbButton>
+        </BreadcrumbItem>
       </Breadcrumb>
     </>
   );

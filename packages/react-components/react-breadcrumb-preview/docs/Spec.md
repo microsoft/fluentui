@@ -102,13 +102,6 @@ const BreadcrumbV9Example = props => (
 
 ## Variants
 
-### Appearance
-
-Breadcrumb can be:
-
-- transparent (default)
-- subtle
-
 ### BreadcrumbItem variants
 
 - Non-clickable element which is BreadcrumbItem component.
@@ -169,12 +162,11 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property    | Values                     | Default       | Purpose                        |
-| ----------- | -------------------------- | ------------- | ------------------------------ |
-| appearance  | `transparent`, `subtle`    | `transparent` | Sets appearance                |
-| dividerType | `chevron`, `slash`         | `chevron`     | Sets type of divider           |
-| focusMode   | `tab`, `arrow`             | `tab`         | Sets focus mode                |
-| size        | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb |
+| Property    | Values                     | Default   | Purpose                        |
+| ----------- | -------------------------- | --------- | ------------------------------ |
+| dividerType | `chevron`, `slash`         | `chevron` | Sets type of divider           |
+| focusMode   | `tab`, `arrow`             | `tab`     | Sets focus mode                |
+| size        | `small`, `medium`, `large` | `medium`  | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 

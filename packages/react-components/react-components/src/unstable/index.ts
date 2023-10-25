@@ -9,6 +9,7 @@ export {
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 
+/* eslint-disable deprecation/deprecation */
 export {
   InfoButton,
   infoButtonClassNames,
@@ -29,6 +30,7 @@ export type {
   InfoLabelSlots,
   InfoLabelState,
 } from '@fluentui/react-infobutton';
+/* eslint-enable deprecation/deprecation */
 
 export {
   Virtualizer,

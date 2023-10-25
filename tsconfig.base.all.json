@@ -147,6 +147,7 @@
       "@fluentui/react-storybook-addon-codesandbox": [
         "packages/react-components/react-storybook-addon-codesandbox/src/index.ts"
       ],
+      "@fluentui/react-swatch-picker-preview": ["packages/react-components/react-swatch-picker-preview/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
@@ -168,7 +169,7 @@
       "@fluentui/theme-designer": ["packages/react-components/theme-designer/src/index.ts"],
       "@fluentui/tokens": ["packages/tokens/src/index.ts"],
       "@fluentui/workspace-plugin": ["tools/workspace-plugin/src/index.ts"],
-      "@fluentui/react-infolabel-preview": ["packages/react-components/react-infolabel-preview/src/index.ts"]
+      "@fluentui/react-infolabel": ["packages/react-components/react-infolabel/src/index.ts"]
     }
   }
 }

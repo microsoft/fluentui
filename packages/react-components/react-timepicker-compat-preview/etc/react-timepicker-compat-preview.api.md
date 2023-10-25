@@ -19,31 +19,35 @@ export const TimePicker: ForwardRefComponent<TimePickerProps>;
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
 
 // @public
-export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedOptions' | 'multiselect' | 'onOptionSelect' | 'selectedOptions'> & {
-    hour12?: boolean;
+export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedOptions' | 'multiselect' | 'onOptionSelect' | 'selectedOptions'> & TimeFormatOptions & {
     startHour?: Hour;
     endHour?: Hour;
     increment?: number;
     dateAnchor?: Date;
-    showSeconds?: boolean;
-    selectedTime?: Date;
+    selectedTime?: Date | null;
     defaultSelectedTime?: Date;
     onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    formatDateToTimeString?: (date: Date) => string;
+    validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
 };
 
 // @public (undocumented)
 export type TimePickerSlots = ComboboxSlots;
 
 // @public
-export type TimePickerState = ComboboxState;
-
-// @public (undocumented)
-export type TimeSelectionData = {
-    selectedTime: Date | undefined;
+export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
+    submittedText: string | undefined;
 };
 
 // @public (undocumented)
-export type TimeSelectionEvents = SelectionEvents;
+export type TimeSelectionData = {
+    selectedTime: Date | null;
+    selectedTimeText: string | undefined;
+    error: TimePickerErrorType | undefined;
+};
+
+// @public (undocumented)
+export type TimeSelectionEvents = SelectionEvents | React_2.FocusEvent<HTMLElement>;
 
 // @public
 export const useTimePicker_unstable: (props: TimePickerProps, ref: React_2.Ref<HTMLInputElement>) => TimePickerState;

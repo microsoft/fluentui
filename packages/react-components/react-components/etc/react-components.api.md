@@ -314,6 +314,11 @@ import { imageClassNames } from '@fluentui/react-image';
 import { ImageProps } from '@fluentui/react-image';
 import { ImageSlots } from '@fluentui/react-image';
 import { ImageState } from '@fluentui/react-image';
+import { InfoLabel } from '@fluentui/react-infolabel';
+import { infoLabelClassNames } from '@fluentui/react-infolabel';
+import { InfoLabelProps } from '@fluentui/react-infolabel';
+import { InfoLabelSlots } from '@fluentui/react-infolabel';
+import { InfoLabelState } from '@fluentui/react-infolabel';
 import { Input } from '@fluentui/react-input';
 import { inputClassNames } from '@fluentui/react-input';
 import { InputOnChangeData } from '@fluentui/react-input';
@@ -594,6 +599,7 @@ import { renderField_unstable } from '@fluentui/react-field';
 import { renderFlatTree_unstable } from '@fluentui/react-tree';
 import { renderFluentProvider_unstable } from '@fluentui/react-provider';
 import { renderImage_unstable } from '@fluentui/react-image';
+import { renderInfoLabel_unstable } from '@fluentui/react-infolabel';
 import { renderInput_unstable } from '@fluentui/react-input';
 import { renderInteractionTag_unstable } from '@fluentui/react-tags';
 import { renderInteractionTagPrimary_unstable } from '@fluentui/react-tags';
@@ -1087,6 +1093,8 @@ import { useHeadlessFlatTree_unstable } from '@fluentui/react-tree';
 import { useId } from '@fluentui/react-utilities';
 import { useImage_unstable } from '@fluentui/react-image';
 import { useImageStyles_unstable } from '@fluentui/react-image';
+import { useInfoLabel_unstable } from '@fluentui/react-infolabel';
+import { useInfoLabelStyles_unstable } from '@fluentui/react-infolabel';
 import { useInput_unstable } from '@fluentui/react-input';
 import { useInputStyles_unstable } from '@fluentui/react-input';
 import { useInteractionTag_unstable } from '@fluentui/react-tags';
@@ -1915,6 +1923,16 @@ export { ImageSlots }
 
 export { ImageState }
 
+export { InfoLabel }
+
+export { infoLabelClassNames }
+
+export { InfoLabelProps }
+
+export { InfoLabelSlots }
+
+export { InfoLabelState }
+
 export { Input }
 
 export { inputClassNames }
@@ -2474,6 +2492,8 @@ export { renderFlatTree_unstable }
 export { renderFluentProvider_unstable }
 
 export { renderImage_unstable }
+
+export { renderInfoLabel_unstable }
 
 export { renderInput_unstable }
 
@@ -3460,6 +3480,10 @@ export { useId }
 export { useImage_unstable }
 
 export { useImageStyles_unstable }
+
+export { useInfoLabel_unstable }
+
+export { useInfoLabelStyles_unstable }
 
 export { useInput_unstable }
 

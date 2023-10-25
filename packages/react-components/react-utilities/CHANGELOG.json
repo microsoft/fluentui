@@ -2,6 +2,21 @@
   "name": "@fluentui/react-utilities",
   "entries": [
     {
+      "date": "Wed, 18 Oct 2023 17:54:07 GMT",
+      "tag": "@fluentui/react-utilities_v9.15.1",
+      "version": "9.15.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-utilities",
+            "commit": "4dc9e5be60b6ce6f3f6c72c6da39bf19a504f524",
+            "comment": "chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Oct 2023 13:54:26 GMT",
       "tag": "@fluentui/react-utilities_v9.15.0",
       "version": "9.15.0",

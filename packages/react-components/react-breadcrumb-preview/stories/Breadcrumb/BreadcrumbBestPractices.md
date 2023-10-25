@@ -8,7 +8,7 @@
 - Place Breadcrumbs at the top of a page, above a list of items, or above the main content of a page.
 - Provide label to the Breadcrumb component using `aria-label` or `aria-labelledby` prop.
 - Set the `current` prop on the last item.
-- Use `slash` dividers only for small and non-interactive breadcrums.
+- Use `slash` dividers only for non-interactive file paths.
 - If long items are truncated, add a Tooltip to display the full text.
 
 ### Don't
