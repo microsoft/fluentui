@@ -7,6 +7,7 @@ export * from './button/index.js';
 export * from './checkbox/index.js';
 export * from './compound-button/index.js';
 export * from './counter-badge/index.js';
+export * from './dialog/index.js';
 export * from './divider/index.js';
 export * from './image/index.js';
 export * from './label/index.js';
