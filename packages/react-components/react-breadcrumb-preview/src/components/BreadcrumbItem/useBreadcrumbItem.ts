@@ -16,9 +16,7 @@ export const useBreadcrumbItem_unstable = (
   props: BreadcrumbItemProps,
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbItemState => {
-  const { size, hasInteractiveItems } = useBreadcrumbContext_unstable();
-
-  const isInteractive = typeof props.children === 'object';
+  const { size } = useBreadcrumbContext_unstable();
 
   return {
     components: { root: 'li' },
@@ -30,7 +28,5 @@ export const useBreadcrumbItem_unstable = (
       { elementType: 'li' },
     ),
     size,
-    isInteractive,
-    hasInteractiveItems,
   };
 };
