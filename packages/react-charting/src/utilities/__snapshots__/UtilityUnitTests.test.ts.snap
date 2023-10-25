@@ -1,5 +1,109 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`calloutData should return an array of data points grouped by their date-based x coordinates 1`] = `
+Array [
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "y": 10,
+        "yAxisCalloutData": undefined,
+      },
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "y": 30,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 1609439400000,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 1609525800000,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 1609612200000,
+  },
+]
+`;
+
+exports[`calloutData should return an array of data points grouped by their numeric x coordinates 1`] = `
+Array [
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "y": 10,
+        "yAxisCalloutData": undefined,
+      },
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "y": 30,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 10,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 1",
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 20,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "callOutAccessibilityData": undefined,
+        "color": undefined,
+        "index": undefined,
+        "legend": "Line 2",
+        "y": 20,
+        "yAxisCalloutData": undefined,
+      },
+    ],
+    "x": 30,
+  },
+]
+`;
+
 exports[`createDateXAxis should create the x-axis labels correctly for a specific number of ticks 1`] = `
 Array [
   Array [
@@ -1563,6 +1667,347 @@ exports[`createStringYAxisForOtherCharts should render y-axis labels correctly w
       x="-5"
     >
       label 3
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createWrapOfXLabels should retain full x-axis labels when their length is less than noOfCharsToTruncate
+  and showXAxisLablesTooltip is true 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 1"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="LessLength"
+        x="0"
+        y="16"
+      >
+        X-axis label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 2"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="LessLength"
+        x="0"
+        y="16"
+      >
+        X-axis label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 3"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="LessLength"
+        x="0"
+        y="16"
+      >
+        X-axis label 3
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createWrapOfXLabels should truncate x-axis labels when their length exceeds noOfCharsToTruncate
+  and showXAxisLablesTooltip is true 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 1"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="showDots"
+        x="0"
+        y="16"
+      >
+        X-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 2"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="showDots"
+        x="0"
+        y="16"
+      >
+        X-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 3"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      />
+      <tspan
+        dy="1.81em"
+        id="showDots"
+        x="0"
+        y="16"
+      >
+        X-axis lab...
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createWrapOfXLabels should wrap x-axis labels when their width exceeds the maximum allowed line width 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 1"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      >
+        X-axis
+      </tspan>
+      <tspan
+        dy="1.81em"
+        id="WordBreakId"
+        x="0"
+        y="16"
+      >
+        label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 2"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      >
+        X-axis
+      </tspan>
+      <tspan
+        dy="1.81em"
+        id="WordBreakId"
+        x="0"
+        y="16"
+      >
+        label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,0)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      <tspan
+        data-="X-axis label 3"
+        dy="0.71em"
+        id="BaseSpan"
+        x="0"
+        y="16"
+      >
+        X-axis
+      </tspan>
+      <tspan
+        dy="1.81em"
+        id="WordBreakId"
+        x="0"
+        y="16"
+      >
+        label 3
+      </tspan>
     </text>
   </g>
 </g>
@@ -3179,6 +3624,359 @@ exports[`createYAxisForOtherCharts should render y-axis labels correctly with sp
 </g>
 `;
 
+exports[`createYAxisLabels should offset y-axis labels when layout direction is RTL 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 1"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="15"
+      >
+        Y-axis label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 2"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="15"
+      >
+        Y-axis label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 3"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="15"
+      >
+        Y-axis label 3
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisLabels should retain full y-axis labels when truncateLabel is false 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 1"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="-18"
+      >
+        Y-axis label 1
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 2"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="-18"
+      >
+        Y-axis label 2
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      text-align="start"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 3"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1em"
+        id="LessLength"
+        x="-18"
+      >
+        Y-axis label 3
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`createYAxisLabels should truncate y-axis labels when their length exceeds noOfCharsToTruncate
+  and truncateLabel is true 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="end"
+>
+  <path
+    class="domain"
+    d="M-6,92.5H0.5V8.5H-6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,78)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 1"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1.5em"
+        dy="0.32"
+        id="showDots"
+        x="-18"
+      >
+        Y-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,50)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 2"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1.5em"
+        dy="0.32"
+        id="showDots"
+        x="-18"
+      >
+        Y-axis lab...
+      </tspan>
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(0,22)"
+  >
+    <line
+      stroke="#000"
+      x2="-6"
+    />
+    <text
+      dy="0.32em"
+      fill="#000"
+      x="-18"
+    >
+      <tspan
+        data-="Y-axis label 3"
+        dy="0.32em"
+        id="BaseSpan"
+        x="-18"
+      />
+      <tspan
+        dx="1.5em"
+        dy="0.32"
+        id="showDots"
+        x="-18"
+      >
+        Y-axis lab...
+      </tspan>
+    </text>
+  </g>
+</g>
+`;
+
+exports[`getUnique should return an array of data points with unique values
+determined by the provided comparison key 1`] = `
+Array [
+  Object {
+    "values": Array [
+      Object {
+        "legend": "Line 1",
+        "y": 10,
+      },
+      Object {
+        "legend": "Line 2",
+        "y": 30,
+      },
+    ],
+    "x": 10,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "legend": "Line 1",
+        "y": 20,
+      },
+    ],
+    "x": 20,
+  },
+  Object {
+    "values": Array [
+      Object {
+        "legend": "Line 2",
+        "y": 20,
+      },
+    ],
+    "x": 30,
+  },
+]
+`;
+
 exports[`prepareDatapoints should return an array of uniformly distributed data points 1`] = `
 Array [
   0,
@@ -3186,4 +3984,22 @@ Array [
   68,
   102,
 ]
+`;
+
+exports[`tooltipOfXAxislabels should render a tooltip for x-axis labels 1`] = `
+<body>
+  <div
+    class="tooltip-1"
+    id="VBCTooltipId_1"
+    style="opacity: 0;"
+  />
+</body>
+`;
+
+exports[`wrapContent should truncate text content when it exceeds the maxWidth 1`] = `
+<text
+  id="tooltip-host1"
+>
+  Lorem ipsu...
+</text>
 `;

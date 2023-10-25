@@ -2,6 +2,9 @@ import * as utils from './utilities';
 import * as colors from './colors';
 import { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
 import { format as d3Format } from 'd3-format';
+import { ILineChartPoints } from '../types/IDataPoint';
+import { ScaleBand } from 'd3-scale';
+import { select as d3Select } from 'd3-selection';
 
 // Reference to the test plan: packages\react-charting\docs\TestPlans\Utilities\UnitTests.md
 
@@ -488,5 +491,265 @@ describe('createStringYAxisForOtherCharts', () => {
     const yAxisParams = createYAxisParams({ yAxisTickFormat: (value: string) => `Y-axis ${value}` });
     utils.createStringYAxisForOtherCharts(yAxisParams, dataPoints, false);
     expect(yAxisParams.yAxisElement).toMatchSnapshot();
+  });
+});
+
+describe('calloutData', () => {
+  it('should return an array of data points grouped by their numeric x coordinates', () => {
+    const values: ILineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: 10, y: 10 },
+          { x: 20, y: 20 },
+        ],
+      },
+      {
+        legend: 'Line 2',
+        data: [
+          { x: 10, y: 30 },
+          { x: 30, y: 20 },
+        ],
+      },
+    ];
+    const result = utils.calloutData(values);
+    matchResult(result);
+  });
+
+  it('should return an array of data points grouped by their date-based x coordinates', () => {
+    const values: ILineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: new Date(2021, 0, 1), y: 10 },
+          { x: new Date(2021, 0, 2), y: 20 },
+        ],
+      },
+      {
+        legend: 'Line 2',
+        data: [
+          { x: new Date(2021, 0, 1), y: 30 },
+          { x: new Date(2021, 0, 3), y: 20 },
+        ],
+      },
+    ];
+    const result = utils.calloutData(values);
+    matchResult(result);
+  });
+});
+
+test(`getUnique should return an array of data points with unique values
+determined by the provided comparison key`, () => {
+  const arr = [
+    {
+      x: 10,
+      values: [
+        { legend: 'Line 1', y: 10 },
+        { legend: 'Line 2', y: 30 },
+      ],
+    },
+    { x: 10, values: [{ legend: 'Line 1', y: 10 }] },
+    { x: 20, values: [{ legend: 'Line 1', y: 20 }] },
+    { x: 30, values: [{ legend: 'Line 2', y: 20 }] },
+  ];
+  const result = utils.getUnique(arr, 'x');
+  matchResult(result);
+});
+
+test(`silceOrAppendToArray should add the element to the array if it's not present,
+and remove it if already included`, () => {
+  let array: string[] = [];
+
+  array = utils.silceOrAppendToArray(array, 'Legend 1');
+  expect(array).toEqual(['Legend 1']);
+
+  array = utils.silceOrAppendToArray(array, 'Legend 2');
+  expect(array).toEqual(['Legend 1', 'Legend 2']);
+
+  array = utils.silceOrAppendToArray(array, 'Legend 3');
+  expect(array).toEqual(['Legend 1', 'Legend 2', 'Legend 3']);
+
+  array = utils.silceOrAppendToArray(array, 'Legend 2');
+  expect(array).toEqual(['Legend 1', 'Legend 3']);
+
+  array = utils.silceOrAppendToArray(array, 'Legend 1');
+  expect(array).toEqual(['Legend 3']);
+
+  array = utils.silceOrAppendToArray(array, 'Legend 3');
+  expect(array).toEqual([]);
+});
+
+describe('createWrapOfXLabels', () => {
+  let xAxisParams: utils.IXAxisParams;
+  let result: { xScale: ScaleBand<string>; tickValues: string[] };
+
+  beforeEach(() => {
+    xAxisParams = createXAxisParams();
+    result = utils.createStringXAxis(xAxisParams, {}, ['X-axis label 1', 'X-axis label 2', 'X-axis label 3']);
+  });
+
+  it('should terminate when no node is provided', () => {
+    expect(
+      utils.createWrapOfXLabels({
+        node: null,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        xAxis: result.xScale as any,
+        noOfCharsToTruncate: 20,
+        showXAxisLablesTooltip: false,
+      }),
+    ).toBeUndefined();
+  });
+
+  it(`should truncate x-axis labels when their length exceeds noOfCharsToTruncate
+  and showXAxisLablesTooltip is true`, () => {
+    utils.createWrapOfXLabels({
+      node: xAxisParams.xAxisElement!,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      xAxis: result.xScale as any,
+      noOfCharsToTruncate: 10,
+      showXAxisLablesTooltip: true,
+    });
+    expect(xAxisParams.xAxisElement).toMatchSnapshot();
+  });
+
+  it(`should retain full x-axis labels when their length is less than noOfCharsToTruncate
+  and showXAxisLablesTooltip is true`, () => {
+    utils.createWrapOfXLabels({
+      node: xAxisParams.xAxisElement!,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      xAxis: result.xScale as any,
+      noOfCharsToTruncate: 20,
+      showXAxisLablesTooltip: true,
+    });
+    expect(xAxisParams.xAxisElement).toMatchSnapshot();
+  });
+
+  it('should wrap x-axis labels when their width exceeds the maximum allowed line width', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SVGElement: any = window.SVGElement;
+    const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+    let calls = 0;
+    const results = [6, 12, 7]; // 'X-axis', 'X-axis label', 'label 1'
+    SVGElement.prototype.getComputedTextLength = jest.fn().mockImplementation(() => results[calls++ % results.length]);
+    const originalGetBoundingClientRect = SVGElement.prototype.getBoundingClientRect;
+    SVGElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({ height: 15 });
+
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.appendChild(xAxisParams.xAxisElement!);
+    document.body.appendChild(svg);
+
+    const removeVal = utils.createWrapOfXLabels({
+      node: xAxisParams.xAxisElement!,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      xAxis: result.xScale as any,
+      noOfCharsToTruncate: 20,
+      showXAxisLablesTooltip: false,
+    });
+    expect(removeVal).toBe(15);
+    expect(xAxisParams.xAxisElement).toMatchSnapshot();
+
+    document.body.removeChild(svg);
+
+    SVGElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+  });
+});
+
+describe('createYAxisLabels', () => {
+  let yAxisParams: utils.IYAxisParams;
+  let yAxis: ScaleBand<string>;
+
+  beforeEach(() => {
+    yAxisParams = createYAxisParams();
+    yAxis = utils.createStringYAxisForHorizontalBarChartWithAxis(
+      yAxisParams,
+      ['Y-axis label 1', 'Y-axis label 2', 'Y-axis label 3'],
+      false,
+      16,
+    );
+  });
+
+  it('should terminate when no node is provided', () => {
+    expect(utils.createYAxisLabels(null, undefined, 20, false, 0, false)).toBeUndefined();
+  });
+
+  it('should retain full y-axis labels when truncateLabel is false', () => {
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 0, false);
+    expect(yAxisParams.yAxisElement).toMatchSnapshot();
+  });
+
+  it(`should truncate y-axis labels when their length exceeds noOfCharsToTruncate
+  and truncateLabel is true`, () => {
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 10, true, 0, false);
+    expect(yAxisParams.yAxisElement).toMatchSnapshot();
+  });
+
+  it('should offset y-axis labels when layout direction is RTL', () => {
+    utils.createYAxisLabels(yAxisParams.yAxisElement!, yAxis, 20, false, 15, true);
+    expect(yAxisParams.yAxisElement).toMatchSnapshot();
+  });
+});
+
+describe('wrapContent', () => {
+  const content = 'Lorem ipsum dolor sit amet';
+  const id = 'tooltip-host1';
+
+  it('should terminate when text node is not found', () => {
+    const isOverflowing = utils.wrapContent(content, id, 15);
+    expect(isOverflowing).toBe(false);
+  });
+
+  it('should truncate text content when it exceeds the maxWidth', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SVGElement: any = window.SVGElement;
+    const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+    let calls = 0;
+    SVGElement.prototype.getComputedTextLength = jest.fn().mockImplementation(() => content.length - calls++);
+
+    const textElement = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    textElement.id = id;
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.appendChild(textElement);
+    document.body.appendChild(svg);
+
+    const isOverflowing = utils.wrapContent(content, id, 10);
+    expect(isOverflowing).toBe(true);
+    expect(textElement).toMatchSnapshot();
+
+    document.body.removeChild(svg);
+
+    SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+  });
+});
+
+describe('tooltipOfXAxislabels', () => {
+  it('should terminate when no x-axis node is provided', () => {
+    const tooltipProps = {
+      tooltipCls: 'tooltip-1',
+      id: 'VBCTooltipId_1',
+      xAxis: null,
+    };
+    expect(utils.tooltipOfXAxislabels(tooltipProps)).toBeNull();
+  });
+
+  it('should render a tooltip for x-axis labels', () => {
+    const xAxisParams = createXAxisParams();
+    const result = utils.createStringXAxis(xAxisParams, {}, ['X-axis label 1', 'X-axis label 2', 'X-axis label 3']);
+    utils.createWrapOfXLabels({
+      node: xAxisParams.xAxisElement!,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      xAxis: result.xScale as any,
+      noOfCharsToTruncate: 10,
+      showXAxisLablesTooltip: true,
+    });
+
+    const tooltipProps = {
+      tooltipCls: 'tooltip-1',
+      id: 'VBCTooltipId_1',
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      xAxis: d3Select(xAxisParams.xAxisElement!).call(result.xScale as any),
+    };
+    utils.tooltipOfXAxislabels(tooltipProps);
+    expect(document.body).toMatchSnapshot();
   });
 });
