@@ -43,21 +43,21 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
 
   private _basicExample(): JSX.Element {
     const firstChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 2, color: getColorFromToken(DataVizPalette.color8) },
-      { legend: 'Metadata2', data: 0.5, color: getColorFromToken(DataVizPalette.color9) },
-      { legend: 'Metadata3', data: 0, color: getColorFromToken(DataVizPalette.color10) },
+      { legend: 'meta data 1', data: 2, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 0.5, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 0, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const secondChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 30, color: getColorFromToken(DataVizPalette.color8) },
-      { legend: 'Metadata2', data: 3, color: getColorFromToken(DataVizPalette.color9) },
-      { legend: 'Metadata3', data: 40, color: getColorFromToken(DataVizPalette.color10) },
+      { legend: 'meta data 1', data: 30, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 3, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 40, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const thirdChartPoints: IVSChartDataPoint[] = [
-      { legend: 'Metadata1', data: 10, color: getColorFromToken(DataVizPalette.color8) },
-      { legend: 'Metadata2', data: 60, color: getColorFromToken(DataVizPalette.color9) },
-      { legend: 'Metadata3', data: 30, color: getColorFromToken(DataVizPalette.color10) },
+      { legend: 'meta data 1', data: 10, color: getColorFromToken(DataVizPalette.color8) },
+      { legend: 'Meta data 2', data: 60, color: getColorFromToken(DataVizPalette.color9) },
+      { legend: 'meta Data 3', data: 30, color: getColorFromToken(DataVizPalette.color10) },
     ];
 
     const data: IVerticalStackedChartProps[] = [
@@ -191,6 +191,9 @@ export class VerticalStackedBarChartStyledExample extends React.Component<{}, IV
               styles: {
                 rect: {
                   borderRadius: '3px',
+                },
+                legend: {
+                  textTransform: 'none',
                 },
               },
             }}

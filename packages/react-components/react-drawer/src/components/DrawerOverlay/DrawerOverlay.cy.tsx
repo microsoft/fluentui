@@ -2,11 +2,11 @@ import * as React from 'react';
 import { mount } from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
-import { dialogSurfaceClassNames } from '@fluentui/react-dialog';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
 import { DrawerOverlay } from './DrawerOverlay';
 import { DrawerOverlayProps } from './DrawerOverlay.types';
+import { drawerOverlayClassNames } from './useDrawerOverlayStyles.styles';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
@@ -28,14 +28,14 @@ describe('DrawerOverlay', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer />);
 
-        cy.get(`.${dialogSurfaceClassNames.backdrop}`).should('exist');
+        cy.get(`.${drawerOverlayClassNames.backdrop}`).should('exist');
       });
 
       it('should close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${dialogSurfaceClassNames.backdrop}`).click({ force: true });
+        cy.get(`.${drawerOverlayClassNames.backdrop}`).click({ force: true });
         cy.get('#drawer').should('not.exist');
       });
     });
@@ -44,14 +44,14 @@ describe('DrawerOverlay', () => {
       it('should render backdrop', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
-        cy.get(`.${dialogSurfaceClassNames.backdrop}`).should('exist');
+        cy.get(`.${drawerOverlayClassNames.backdrop}`).should('exist');
       });
 
       it('should not close when backdrop is clicked', () => {
         mountFluent(<ExampleDrawer modalType="alert" />);
 
         cy.get('#drawer').should('exist');
-        cy.get(`.${dialogSurfaceClassNames.backdrop}`).click({ force: true });
+        cy.get(`.${drawerOverlayClassNames.backdrop}`).click({ force: true });
         cy.get('#drawer').should('exist');
       });
     });
@@ -60,7 +60,7 @@ describe('DrawerOverlay', () => {
       it('should not render backdrop when modalType is default', () => {
         mountFluent(<ExampleDrawer modalType="non-modal" />);
 
-        cy.get(`.${dialogSurfaceClassNames.backdrop}`).should('not.exist');
+        cy.get(`.${drawerOverlayClassNames.backdrop}`).should('not.exist');
       });
     });
   });

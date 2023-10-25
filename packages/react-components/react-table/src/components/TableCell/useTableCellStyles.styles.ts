@@ -54,7 +54,6 @@ const useFlexLayoutStyles = makeStyles({
  */
 const useStyles = makeStyles({
   root: {
-    backgroundColor: 'inherit',
     position: 'relative',
     ...shorthands.padding('0px', tokens.spacingHorizontalS),
 

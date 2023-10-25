@@ -1,8 +1,76 @@
 # Change Log - @fluentui/react-popover
 
-This log was last generated on Thu, 05 Oct 2023 15:25:32 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 09:51:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.17)
+
+Mon, 23 Oct 2023 09:51:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.16..@fluentui/react-popover_v9.8.17)
+
+### Patches
+
+- Bump @fluentui/react-portal to v9.3.25 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+- Bump @fluentui/react-tabster to v9.14.1 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+
+## [9.8.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.16)
+
+Wed, 18 Oct 2023 17:54:05 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.15..@fluentui/react-popover_v9.8.16)
+
+### Patches
+
+- Bump @fluentui/react-aria to v9.3.43 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.41 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-portal to v9.3.24 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-positioning to v9.9.21 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-tabster to v9.14.0 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+
+## [9.8.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.15)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.14..@fluentui/react-popover_v9.8.15)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+
+## [9.8.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.14)
+
+Wed, 11 Oct 2023 13:54:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.13..@fluentui/react-popover_v9.8.14)
+
+### Patches
+
+- refactor: consume virtual parent utilities from @fluentui/react-utilities ([PR #29286](https://github.com/microsoft/fluentui/pull/29286) by lingfan.gao@microsoft.com)
+- chore: use default prevention instead of stop propagation for Escape handling ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-aria to v9.3.42 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.40 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-portal to v9.3.23 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-positioning to v9.9.20 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-tabster to v9.13.6 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+
+## [9.8.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.13)
+
+Mon, 09 Oct 2023 20:45:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-popover_v9.8.12..@fluentui/react-popover_v9.8.13)
+
+### Patches
+
+- fix: Add zIndex=1 to PopoverSurface when rendering inline to avoid elements positioned relative to render on top of it. ([PR #29425](https://github.com/microsoft/fluentui/pull/29425) by esteban.230@hotmail.com)
+- Bump @fluentui/react-aria to v9.3.41 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-context-selector to v9.1.39 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-portal to v9.3.22 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-positioning to v9.9.19 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.10.0 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-tabster to v9.13.5 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
 
 ## [9.8.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-popover_v9.8.12)
 

@@ -1,8 +1,8 @@
 import { IStyle, ITheme } from '@fluentui/react/lib/Styling';
 import { IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
+import { IMargins } from '../../types/index';
 
 /**
- * ITreeChartDataPoint interface for Treechart component.
  * {@docCategory TreeChart}
  */
 export interface ITreeChartDataPoint {
@@ -32,6 +32,9 @@ export interface ITreeChartDataPoint {
   children?: Array<ITreeChartDataPoint>;
 }
 
+/**
+ * {@docCategory TreeChart}
+ */
 export enum NodesComposition {
   /**
    * NodeComposition enum val for long: number = 1
@@ -43,6 +46,9 @@ export enum NodesComposition {
   compact = 0,
 }
 
+/**
+ * {@docCategory TreeChart}
+ */
 export enum TreeTraverse {
   /**
    * TreeTraverse enum val for preOrder: number = 1
@@ -54,6 +60,10 @@ export enum TreeTraverse {
   levelOrder = 0,
 }
 
+/**
+ * Tree Chart properties
+ * {@docCategory TreeChart}
+ */
 export interface ITreeProps {
   /**
    * An object of chart data points for the Tree chart
@@ -82,10 +92,13 @@ export interface ITreeProps {
    * * @default 700
    */
   height?: number;
+
   /**
-   * Margin for the SVG tree chart
+   * Margins for the chart
+   * @default `{ top: 30, bottom: 30, left: 50, right: 20 }`
+   * To avoid edge cuttings to the chart, we recommend you use default values or greater then default values
    */
-  marign?: { left: number; right: number; top: number; bottom: number };
+  margins?: IMargins;
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
@@ -99,6 +112,7 @@ export interface ITreeProps {
    */
   theme?: ITheme;
 }
+
 export interface ITreeState {
   /**
    * Width of SVG tree chart
@@ -160,6 +174,10 @@ export interface ITreeDataStructure {
   parentID: number;
 }
 
+/**
+ * Tree Chart style properties
+ * {@docCategory TreeChart}
+ */
 export interface ITreeStyleProps {
   /**
    * Theme (provided through customization.)
@@ -170,6 +188,11 @@ export interface ITreeStyleProps {
    */
   className?: string;
 }
+
+/**
+ * Tree Chart styles
+ * {@docCategory TreeChart}
+ */
 export interface ITreeStyles {
   /**
    *  Style for the root element.

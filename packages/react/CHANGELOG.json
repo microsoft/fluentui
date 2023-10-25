@@ -2,6 +2,36 @@
   "name": "@fluentui/react",
   "entries": [
     {
+      "date": "Mon, 16 Oct 2023 07:37:21 GMT",
+      "tag": "@fluentui/react_v8.112.3",
+      "version": "8.112.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "2eedc2ec54397253a4e3076fbfa382f4fe3c1175",
+            "comment": "fix: avoid edge case where Sticky/ScrollablePane could fall into infinite loop"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 07:37:25 GMT",
+      "tag": "@fluentui/react_v8.112.2",
+      "version": "8.112.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "seanmonahan@microsoft.com",
+            "package": "@fluentui/react",
+            "commit": "6080e5644c19b7d3b5df0ca5316f6b73935ae5ba",
+            "comment": "fix: DetailsList columns render correctly when the list is wider than the viewport"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 04 Oct 2023 07:38:36 GMT",
       "tag": "@fluentui/react_v8.112.1",
       "version": "8.112.1",

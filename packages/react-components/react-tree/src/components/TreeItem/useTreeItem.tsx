@@ -1,8 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { getIntrinsicElementProps, useId, useMergedRefs, useEventCallback, slot } from '@fluentui/react-utilities';
-import { elementContains } from '@fluentui/react-portal';
-import type { TreeItemProps, TreeItemState } from './TreeItem.types';
+import {
+  getIntrinsicElementProps,
+  useId,
+  useMergedRefs,
+  useEventCallback,
+  slot,
+  elementContains,
+} from '@fluentui/react-utilities';
+import type { TreeItemProps, TreeItemState, TreeItemValue } from './TreeItem.types';
 import { Space } from '@fluentui/keyboard-keys';
 import { treeDataTypes } from '../../utils/tokens';
 import { useTreeContext_unstable, useSubtreeContext_unstable, useTreeItemContext_unstable } from '../../contexts';
@@ -28,7 +34,8 @@ export function useTreeItem_unstable(props: TreeItemProps, ref: React.Ref<HTMLDi
 
   // note, if the value is not externally provided,
   // then selection and expansion will not work properly
-  const value = useId('fuiTreeItemValue-', props.value?.toString());
+  const internalValue = useId('fuiTreeItemValue-');
+  const value: TreeItemValue = props.value ?? internalValue;
 
   const {
     onClick,

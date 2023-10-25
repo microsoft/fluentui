@@ -1,8 +1,52 @@
 # Change Log - @fluentui/react-select
 
-This log was last generated on Thu, 05 Oct 2023 15:25:35 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 17:54:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.48](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.48)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.47..@fluentui/react-select_v9.1.48)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.38 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+
+## [9.1.47](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.47)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.46..@fluentui/react-select_v9.1.47)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.37 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+
+## [9.1.46](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.46)
+
+Wed, 11 Oct 2023 13:54:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.45..@fluentui/react-select_v9.1.46)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.36 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+
+## [9.1.45](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.45)
+
+Mon, 09 Oct 2023 20:45:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-select_v9.1.44..@fluentui/react-select_v9.1.45)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.35 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.10.0 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
 
 ## [9.1.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-select_v9.1.44)
 

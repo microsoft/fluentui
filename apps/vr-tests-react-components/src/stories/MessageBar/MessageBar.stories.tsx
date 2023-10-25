@@ -5,7 +5,7 @@ import {
   MessageBarBody,
   MessageBarIntent,
   MessageBarTitle,
-} from '@fluentui/react-message-bar-preview';
+} from '@fluentui/react-message-bar';
 import { ComponentMeta } from '@storybook/react';
 import { Steps } from 'storywright';
 import { Button } from '@fluentui/react-button';
@@ -24,7 +24,7 @@ export default {
 const intents: MessageBarIntent[] = ['info', 'warning', 'error', 'success'];
 
 export const Intents = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', padding: 10 }} className="testWrapper">
     {intents.map(intent => (
       <MessageBar key={intent} intent={intent}>
         <MessageBarBody>
@@ -45,7 +45,10 @@ export const IntentsDarkMode = getStoryVariant(Intents, DARK_MODE);
 export const IntentsHighContrast = getStoryVariant(Intents, HIGH_CONTRAST);
 
 export const Multiline = () => (
-  <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: 500 }}>
+  <div
+    style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: 500, padding: 10 }}
+    className="testWrapper"
+  >
     {intents.map(intent => (
       <MessageBar layout="multiline" key={intent} intent={intent}>
         <MessageBarBody>
@@ -63,7 +66,10 @@ export const Multiline = () => (
 
 export const Auto = () => {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: 400 }}>
+    <div
+      style={{ display: 'flex', flexDirection: 'column', gap: '10px', width: 400, padding: 10 }}
+      className="testWrapper"
+    >
       <MessageBar layout="auto">
         <MessageBarBody>
           <MessageBarTitle>Title</MessageBarTitle>
@@ -75,5 +81,20 @@ export const Auto = () => {
         </MessageBarActions>
       </MessageBar>
     </div>
+  );
+};
+
+export const Square = () => {
+  return (
+    <MessageBar shape="square">
+      <MessageBarBody>
+        <MessageBarTitle>Title</MessageBarTitle>
+        Message providing information to the user with actionable insights. <Link>Link</Link>
+      </MessageBarBody>
+      <MessageBarActions containerAction={<Button appearance="transparent" icon={<DismissRegular />} />}>
+        <Button>Action</Button>
+        <Button>Action</Button>
+      </MessageBarActions>
+    </MessageBar>
   );
 };

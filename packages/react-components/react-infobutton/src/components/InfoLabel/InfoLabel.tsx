@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
@@ -8,6 +9,8 @@ import { useInfoLabelStyles_unstable } from './useInfoLabelStyles.styles';
 
 /**
  * InfoLabel component
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const InfoLabel: ForwardRefComponent<InfoLabelProps> = React.forwardRef((props, ref) => {
   const state = useInfoLabel_unstable(props, ref);

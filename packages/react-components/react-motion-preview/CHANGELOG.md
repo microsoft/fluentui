@@ -1,8 +1,49 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Thu, 05 Oct 2023 15:25:31 GMT and should not be manually modified.
+This log was last generated on Wed, 18 Oct 2023 17:54:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.3.4)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.3.3..@fluentui/react-motion-preview_v0.3.4)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+
+## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.3.3)
+
+Thu, 12 Oct 2023 14:55:44 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.3.2..@fluentui/react-motion-preview_v0.3.3)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.17 ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by beachball)
+
+## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.3.2)
+
+Wed, 11 Oct 2023 13:54:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.3.1..@fluentui/react-motion-preview_v0.3.2)
+
+### Patches
+
+- Bump @fluentui/react-jsx-runtime to v9.0.16 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+- Bump @fluentui/react-utilities to v9.15.0 ([PR #29262](https://github.com/microsoft/fluentui/pull/29262) by beachball)
+
+## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.3.1)
+
+Mon, 09 Oct 2023 20:45:42 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.3.0..@fluentui/react-motion-preview_v0.3.1)
+
+### Patches
+
+- fix: sync internal value of canRender with presence ([PR #29394](https://github.com/microsoft/fluentui/pull/29394) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-jsx-runtime to v9.0.15 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.10.0 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
+- Bump @fluentui/react-utilities to v9.14.2 ([PR #29364](https://github.com/microsoft/fluentui/pull/29364) by beachball)
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.3.0)
 
