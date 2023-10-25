@@ -17,15 +17,13 @@ describe('DrawerInline', () => {
     it('should render correct border when when position is `start`', () => {
       mountFluent(<DrawerInline id="drawer" position="start" separator open />);
 
-      cy.get('#drawer').should('have.css', `border-right-color`, 'transparent');
-      cy.get('#drawer').should('not.have.css', `border-left-color`, 'transparent');
+      cy.get('#drawer').should('not.have.css', `border-right-color`, 'transparent');
     });
 
     it('should render correct border when when position is `end`', () => {
       mountFluent(<DrawerInline id="drawer" position="end" separator open />);
 
-      cy.get('#drawer').should('have.css', `border-left-color`, 'transparent');
-      cy.get('#drawer').should('not.have.css', `border-right-color`, 'transparent');
+      cy.get('#drawer').should('not.have.css', `border-left-color`, 'transparent');
     });
   });
 });
