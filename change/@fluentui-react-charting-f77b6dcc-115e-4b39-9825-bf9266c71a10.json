@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Adding fix for tooltip not visible in dark mode for all applicable Cartesian charts",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}
