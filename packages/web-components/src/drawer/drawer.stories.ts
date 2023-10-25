@@ -180,7 +180,6 @@ const storyTemplate = html<DrawerStoryArgs>`
       }
       .width-400 {
         width: 400px;
-        flex-shrink: 0;
       }
     </style>
     <div class="flex justify-sb full-height">
@@ -191,7 +190,6 @@ const storyTemplate = html<DrawerStoryArgs>`
           size="${x => x.size}"
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
-          ?inert-trap-focus="${x => x.inertTrapFocus}"
           ?separator="${x => x.separator}"
         >
           <div slot="navigation">
@@ -269,9 +267,7 @@ const storyTemplate = html<DrawerStoryArgs>`
           size="${x => x.size}"
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
-          ?inert-trap-focus="${x => x.inertTrapFocus}"
           ?separator="${x => x.separator}"
-          autofocus
         >
           <div slot="navigation">
             <fluent-button appearance="transparent" icon-only size="medium" aria-label="back">
@@ -329,7 +325,6 @@ export default {
     modalType: DrawerModalType.modal,
     type: DrawerType.overlay,
     size: DrawerSize.medium,
-    inertTrapFocus: false,
     separator: false,
   },
   argTypes: {
@@ -352,20 +347,6 @@ export default {
         },
         defaultValue: {
           summary: DrawerModalType.modal,
-        },
-      },
-    },
-    inertTrapFocus: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary:
-            'Enables standard behavior according to the HTML dialog spec where the focus trap involves setting outside elements inert.',
-        },
-        defaultValue: {
-          summary: true,
         },
       },
     },
@@ -595,32 +576,30 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
 
 export const Inline = renderComponent(html<DrawerStoryArgs>`
   <div class="flex justify-sb full-height">
-    <div>
-      <fluent-drawer position="start" size="small" id="drawer-inline" type="inline" modal-type="non-modal">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-inline')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-        <div class="row-gap-16 f-col flex">
-          <fluent-text font="base" size="300" weight="regular" as="p">
-            <p>
-              An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
-              main surface, users can still interact with other UI elements. This could be useful for swapping between
-              different items in the main surface.
-            </p>
-          </fluent-text>
-          <fluent-text font="monospace" size="300" weight="regular" as="p">
-            <code>type="inline"</code>
-          </fluent-text>
-        </div>
-      </fluent-drawer>
-    </div>
+    <fluent-drawer position="start" size="small" id="drawer-inline" type="inline" modal-type="non-modal">
+      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
+      <fluent-button
+        slot="action"
+        appearance="transparent"
+        icon-only
+        aria-label="close"
+        @click="${() => hideDrawer('drawer-inline')}"
+      >
+        ${dismissed20Regular}
+      </fluent-button>
+      <div class="row-gap-16 f-col flex">
+        <fluent-text font="base" size="300" weight="regular" as="p">
+          <p>
+            An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
+            main surface, users can still interact with other UI elements. This could be useful for swapping between
+            different items in the main surface.
+          </p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular" as="p">
+          <code>type="inline"</code>
+        </fluent-text>
+      </div>
+    </fluent-drawer>
     <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Inline</h3></fluent-text>
       <fluent-text font="base" size="300" weight="regular" as="p">
@@ -640,32 +619,30 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
         >
       </div>
     </div>
-    <div>
-      <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline" modal-type="non-modal">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-inline-end')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-        <div class="row-gap-16 f-col flex">
-          <fluent-text font="base" size="300" weight="regular" as="p">
-            <p>
-              An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
-              main surface, users can still interact with other UI elements. This could be useful for swapping between
-              different items in the main surface.
-            </p>
-          </fluent-text>
-          <fluent-text font="monospace" size="300" weight="regular" as="p">
-            <code>type="inline"</code>
-          </fluent-text>
-        </div>
-      </fluent-drawer>
-    </div>
+    <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline" modal-type="non-modal">
+      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
+      <fluent-button
+        slot="action"
+        appearance="transparent"
+        icon-only
+        aria-label="close"
+        @click="${() => hideDrawer('drawer-inline-end')}"
+      >
+        ${dismissed20Regular}
+      </fluent-button>
+      <div class="row-gap-16 f-col flex">
+        <fluent-text font="base" size="300" weight="regular" as="p">
+          <p>
+            An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
+            main surface, users can still interact with other UI elements. This could be useful for swapping between
+            different items in the main surface.
+          </p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular" as="p">
+          <code>type="inline"</code>
+        </fluent-text>
+      </div>
+    </fluent-drawer>
   </div>
 `);
 
@@ -899,54 +876,6 @@ export const CustomSize = renderComponent(html`
         <fluent-text font="monospace" size="300" weight="regular">
           <code>--drawer-size</code>
         </fluent-text>
-      </div>
-    </fluent-drawer>
-  </div>
-`);
-
-export const InertTrapFocus = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-c full-height">
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>Inert Trap Focus</h3></fluent-text>
-
-      <fluent-text font="base" size="300" weight="regular" as="p">
-        When the <code>inert-trap-focus</code> is present standard behavior according to the HTML dialog spec where the
-        focus trap involves setting outside elements inert is enabled.
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>inert-trap-focus</code>
-      </fluent-text>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-inert-trap-focus')}"
-        >Toggle Drawer</fluent-button
-      >
-    </div>
-    <fluent-drawer id="drawer-inert-trap-focus" inert-trap-focus>
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Medium</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-inert-trap-focus')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
-      <div class="row-gap-16 f-col flex">
-        <fluent-text weight="bold" size="400" as="h3"><h3>Inert Trap Focus</h3></fluent-text>
-
-        <fluent-text font="base" size="300" weight="regular" as="p">
-          <p>
-            When the <code>inert-trap-focus</code> is present standard behavior according to the HTML dialog spec where
-            the focus trap involves setting outside elements inert is enabled.
-          </p>
-        </fluent-text>
-        <fluent-text font="monospace" size="300" weight="regular">
-          <code>inert-trap-focus</code>
-        </fluent-text>
-      </div>
-      <div slot="footer">
-        <fluent-button appearance="primary">Primary</fluent-button>
-        <fluent-button appearance="secondary">Secondary</fluent-button>
       </div>
     </fluent-drawer>
   </div>
