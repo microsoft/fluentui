@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { addMonths, addYears, DatePicker } from '@fluentui/react-datepicker-compat';
+import { addMonths, addYears } from '@fluentui/react-calendar-compat';
+import { DatePicker } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({

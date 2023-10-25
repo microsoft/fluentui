@@ -35,7 +35,7 @@ export const AreaChartPageProps: IDocPageProps = {
       view: <AreaChartStyledExample />,
     },
     {
-      title: 'Multiple Area chart',
+      title: 'Stacked Area chart',
       code: AreaChartMultipleExampleCode,
       view: <AreaChartMultipleExample />,
     },

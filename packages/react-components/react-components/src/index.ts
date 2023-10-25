@@ -1414,3 +1414,12 @@ export type {
   MessageBarGroupSlots,
   MessageBarGroupState,
 } from '@fluentui/react-message-bar';
+
+export {
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+  useInfoLabel_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';

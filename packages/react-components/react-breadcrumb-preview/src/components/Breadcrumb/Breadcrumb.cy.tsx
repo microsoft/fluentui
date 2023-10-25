@@ -50,9 +50,7 @@ const NonInteractiveBreadcrumbSample = (props: BreadcrumbProps) => (
     <Breadcrumb {...props} id="breadcrumb">
       <BreadcrumbItem id="breadcrumb-item-1">Item 1</BreadcrumbItem>
       <BreadcrumbItem id="breadcrumb-item-2">Item 2</BreadcrumbItem>
-      <BreadcrumbItem id="breadcrumb-item-3" current>
-        Item 3
-      </BreadcrumbItem>
+      <BreadcrumbItem id="breadcrumb-item-3">Item 3</BreadcrumbItem>
     </Breadcrumb>
 
     <p tabIndex={0} id="after">
