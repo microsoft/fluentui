@@ -41,7 +41,7 @@ Thu, 12 Oct 2023 14:55:43 GMT
 
 ## [9.0.0-beta.34](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.34)
 
-Wed, 11 Oct 2023 13:54:26 GMT
+Wed, 11 Oct 2023 13:54:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.33..@fluentui/react-drawer_v9.0.0-beta.34)
 
 ### Changes
@@ -54,7 +54,7 @@ Wed, 11 Oct 2023 13:54:26 GMT
 
 ## [9.0.0-beta.33](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.33)
 
-Mon, 09 Oct 2023 20:45:41 GMT
+Mon, 09 Oct 2023 20:45:41 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.32..@fluentui/react-drawer_v9.0.0-beta.33)
 
 ### Changes
@@ -69,7 +69,7 @@ Mon, 09 Oct 2023 20:45:41 GMT
 
 ## [9.0.0-beta.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.32)
 
-Thu, 05 Oct 2023 15:25:35 GMT
+Thu, 05 Oct 2023 15:25:35 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.31..@fluentui/react-drawer_v9.0.0-beta.32)
 
 ### Changes
@@ -81,7 +81,7 @@ Thu, 05 Oct 2023 15:25:35 GMT
 
 ## [9.0.0-beta.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.31)
 
-Wed, 04 Oct 2023 08:45:47 GMT
+Wed, 04 Oct 2023 08:45:47 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.30..@fluentui/react-drawer_v9.0.0-beta.31)
 
 ### Changes
@@ -93,7 +93,7 @@ Wed, 04 Oct 2023 08:45:47 GMT
 
 ## [9.0.0-beta.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.30)
 
-Mon, 02 Oct 2023 08:56:05 GMT
+Mon, 02 Oct 2023 08:56:05 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.29..@fluentui/react-drawer_v9.0.0-beta.30)
 
 ### Changes
@@ -104,7 +104,7 @@ Mon, 02 Oct 2023 08:56:05 GMT
 
 ## [9.0.0-beta.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.29)
 
-Tue, 26 Sep 2023 17:49:05 GMT
+Tue, 26 Sep 2023 17:49:05 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.28..@fluentui/react-drawer_v9.0.0-beta.29)
 
 ### Changes
@@ -119,7 +119,7 @@ Tue, 26 Sep 2023 17:49:05 GMT
 
 ## [9.0.0-beta.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.28)
 
-Tue, 26 Sep 2023 15:31:59 GMT
+Tue, 26 Sep 2023 15:31:59 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.27..@fluentui/react-drawer_v9.0.0-beta.28)
 
 ### Changes
@@ -128,7 +128,7 @@ Tue, 26 Sep 2023 15:31:59 GMT
 - fix: resolve technical debts ([PR #29272](https://github.com/microsoft/fluentui/pull/29272) by marcosvmmoura@gmail.com)
 - fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
 - fix: use context to fetch dialog id ([PR #29273](https://github.com/microsoft/fluentui/pull/29273) by marcosvmmoura@gmail.com)
-- fix: remove defaultOpen prop from InlineDrawer as it had no effect ([PR #29274](https://github.com/microsoft/fluentui/pull/29274) by marcosvmmoura@gmail.com)
+- fix: remove defaultOpen prop from DrawerInline as it had no effect ([PR #29274](https://github.com/microsoft/fluentui/pull/29274) by marcosvmmoura@gmail.com)
 - feat: add dialog slot ([PR #29217](https://github.com/microsoft/fluentui/pull/29217) by marcosvmmoura@gmail.com)
 - Bump @fluentui/react-dialog to v9.7.2 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
 - Bump @fluentui/react-jsx-runtime to v9.0.11 ([PR #29300](https://github.com/microsoft/fluentui/pull/29300) by beachball)
@@ -139,7 +139,7 @@ Tue, 26 Sep 2023 15:31:59 GMT
 
 ## [9.0.0-beta.27](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.27)
 
-Wed, 20 Sep 2023 17:47:37 GMT
+Wed, 20 Sep 2023 17:47:37 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.26..@fluentui/react-drawer_v9.0.0-beta.27)
 
 ### Changes
@@ -152,7 +152,7 @@ Wed, 20 Sep 2023 17:47:37 GMT
 
 ## [9.0.0-beta.26](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.26)
 
-Wed, 20 Sep 2023 14:59:52 GMT
+Wed, 20 Sep 2023 14:59:52 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.25..@fluentui/react-drawer_v9.0.0-beta.26)
 
 ### Changes
@@ -166,7 +166,7 @@ Wed, 20 Sep 2023 14:59:52 GMT
 
 ## [9.0.0-beta.25](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.25)
 
-Thu, 14 Sep 2023 16:44:47 GMT
+Thu, 14 Sep 2023 16:44:47 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.24..@fluentui/react-drawer_v9.0.0-beta.25)
 
 ### Changes
@@ -177,7 +177,7 @@ Thu, 14 Sep 2023 16:44:47 GMT
 
 ## [9.0.0-beta.24](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.24)
 
-Tue, 12 Sep 2023 08:51:34 GMT
+Tue, 12 Sep 2023 08:51:34 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.23..@fluentui/react-drawer_v9.0.0-beta.24)
 
 ### Changes
@@ -188,7 +188,7 @@ Tue, 12 Sep 2023 08:51:34 GMT
 
 ## [9.0.0-beta.23](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.23)
 
-Wed, 06 Sep 2023 13:31:31 GMT
+Wed, 06 Sep 2023 13:31:31 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.22..@fluentui/react-drawer_v9.0.0-beta.23)
 
 ### Changes
@@ -200,7 +200,7 @@ Wed, 06 Sep 2023 13:31:31 GMT
 
 ## [9.0.0-beta.22](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.22)
 
-Tue, 05 Sep 2023 15:39:03 GMT
+Tue, 05 Sep 2023 15:39:03 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.21..@fluentui/react-drawer_v9.0.0-beta.22)
 
 ### Changes
@@ -214,7 +214,7 @@ Tue, 05 Sep 2023 15:39:03 GMT
 
 ## [9.0.0-beta.21](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.21)
 
-Tue, 05 Sep 2023 13:29:22 GMT
+Tue, 05 Sep 2023 13:29:22 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.20..@fluentui/react-drawer_v9.0.0-beta.21)
 
 ### Changes
@@ -233,7 +233,7 @@ Tue, 05 Sep 2023 13:29:22 GMT
 
 ## [9.0.0-beta.20](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.20)
 
-Tue, 29 Aug 2023 12:57:36 GMT
+Tue, 29 Aug 2023 12:57:36 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.19..@fluentui/react-drawer_v9.0.0-beta.20)
 
 ### Changes
@@ -244,7 +244,7 @@ Tue, 29 Aug 2023 12:57:36 GMT
 
 ## [9.0.0-beta.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.19)
 
-Thu, 24 Aug 2023 10:26:35 GMT
+Thu, 24 Aug 2023 10:26:35 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.18..@fluentui/react-drawer_v9.0.0-beta.19)
 
 ### Changes
@@ -255,7 +255,7 @@ Thu, 24 Aug 2023 10:26:35 GMT
 
 ## [9.0.0-beta.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.18)
 
-Wed, 23 Aug 2023 12:01:49 GMT
+Wed, 23 Aug 2023 12:01:49 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.17..@fluentui/react-drawer_v9.0.0-beta.18)
 
 ### Changes
@@ -266,7 +266,7 @@ Wed, 23 Aug 2023 12:01:49 GMT
 
 ## [9.0.0-beta.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.17)
 
-Mon, 21 Aug 2023 11:38:00 GMT
+Mon, 21 Aug 2023 11:38:00 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.16..@fluentui/react-drawer_v9.0.0-beta.17)
 
 ### Changes
@@ -275,7 +275,7 @@ Mon, 21 Aug 2023 11:38:00 GMT
 
 ## [9.0.0-beta.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.16)
 
-Wed, 16 Aug 2023 17:41:08 GMT
+Wed, 16 Aug 2023 17:41:08 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.15..@fluentui/react-drawer_v9.0.0-beta.16)
 
 ### Changes
@@ -285,7 +285,7 @@ Wed, 16 Aug 2023 17:41:08 GMT
 
 ## [9.0.0-beta.15](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.15)
 
-Wed, 16 Aug 2023 11:38:33 GMT
+Wed, 16 Aug 2023 11:38:33 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.14..@fluentui/react-drawer_v9.0.0-beta.15)
 
 ### Changes
@@ -295,7 +295,7 @@ Wed, 16 Aug 2023 11:38:33 GMT
 
 ## [9.0.0-beta.14](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.14)
 
-Fri, 11 Aug 2023 12:14:26 GMT
+Fri, 11 Aug 2023 12:14:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.13..@fluentui/react-drawer_v9.0.0-beta.14)
 
 ### Changes
@@ -306,7 +306,7 @@ Fri, 11 Aug 2023 12:14:26 GMT
 
 ## [9.0.0-beta.13](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.13)
 
-Wed, 09 Aug 2023 13:16:55 GMT
+Wed, 09 Aug 2023 13:16:55 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.12..@fluentui/react-drawer_v9.0.0-beta.13)
 
 ### Changes
@@ -320,7 +320,7 @@ Wed, 09 Aug 2023 13:16:55 GMT
 
 ## [9.0.0-beta.12](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.12)
 
-Fri, 04 Aug 2023 08:52:58 GMT
+Fri, 04 Aug 2023 08:52:58 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.11..@fluentui/react-drawer_v9.0.0-beta.12)
 
 ### Changes
@@ -333,7 +333,7 @@ Fri, 04 Aug 2023 08:52:58 GMT
 
 ## [9.0.0-beta.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.11)
 
-Tue, 01 Aug 2023 10:17:21 GMT
+Tue, 01 Aug 2023 10:17:21 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.10..@fluentui/react-drawer_v9.0.0-beta.11)
 
 ### Changes
@@ -343,7 +343,7 @@ Tue, 01 Aug 2023 10:17:21 GMT
 
 ## [9.0.0-beta.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.10)
 
-Tue, 25 Jul 2023 13:29:23 GMT
+Tue, 25 Jul 2023 13:29:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.9..@fluentui/react-drawer_v9.0.0-beta.10)
 
 ### Changes
@@ -352,7 +352,7 @@ Tue, 25 Jul 2023 13:29:23 GMT
 
 ## [9.0.0-beta.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.9)
 
-Thu, 20 Jul 2023 18:27:36 GMT
+Thu, 20 Jul 2023 18:27:36 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.8..@fluentui/react-drawer_v9.0.0-beta.9)
 
 ### Changes
@@ -362,7 +362,7 @@ Thu, 20 Jul 2023 18:27:36 GMT
 
 ## [9.0.0-beta.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.8)
 
-Tue, 11 Jul 2023 18:46:36 GMT
+Tue, 11 Jul 2023 18:46:36 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.7..@fluentui/react-drawer_v9.0.0-beta.8)
 
 ### Changes
@@ -373,7 +373,7 @@ Tue, 11 Jul 2023 18:46:36 GMT
 
 ## [9.0.0-beta.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.7)
 
-Mon, 03 Jul 2023 13:34:28 GMT
+Mon, 03 Jul 2023 13:34:28 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.6..@fluentui/react-drawer_v9.0.0-beta.7)
 
 ### Changes
@@ -382,7 +382,7 @@ Mon, 03 Jul 2023 13:34:28 GMT
 
 ## [9.0.0-beta.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.6)
 
-Mon, 03 Jul 2023 11:57:14 GMT
+Mon, 03 Jul 2023 11:57:14 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.5..@fluentui/react-drawer_v9.0.0-beta.6)
 
 ### Changes
@@ -394,7 +394,7 @@ Mon, 03 Jul 2023 11:57:14 GMT
 
 ## [9.0.0-beta.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.5)
 
-Wed, 28 Jun 2023 11:12:26 GMT
+Wed, 28 Jun 2023 11:12:26 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.4..@fluentui/react-drawer_v9.0.0-beta.5)
 
 ### Changes
@@ -405,7 +405,7 @@ Wed, 28 Jun 2023 11:12:26 GMT
 
 ## [9.0.0-beta.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.4)
 
-Tue, 27 Jun 2023 11:21:23 GMT
+Tue, 27 Jun 2023 11:21:23 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.3..@fluentui/react-drawer_v9.0.0-beta.4)
 
 ### Changes
@@ -414,7 +414,7 @@ Tue, 27 Jun 2023 11:21:23 GMT
 
 ## [9.0.0-beta.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.3)
 
-Mon, 26 Jun 2023 09:53:54 GMT
+Mon, 26 Jun 2023 09:53:54 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.2..@fluentui/react-drawer_v9.0.0-beta.3)
 
 ### Changes
@@ -426,7 +426,7 @@ Mon, 26 Jun 2023 09:53:54 GMT
 
 ## [9.0.0-beta.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.2)
 
-Tue, 20 Jun 2023 12:39:07 GMT
+Tue, 20 Jun 2023 12:39:07 GMT 
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.1..@fluentui/react-drawer_v9.0.0-beta.2)
 
 ### Changes
