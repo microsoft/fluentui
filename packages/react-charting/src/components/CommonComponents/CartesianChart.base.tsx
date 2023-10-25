@@ -1,9 +1,12 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react/jsx-no-bind */
 import * as React from 'react';
 import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
+import { select as d3Select } from 'd3-selection';
 import {
   ICartesianChartStyles,
   ICartesianChartStyleProps,
@@ -36,6 +39,7 @@ import {
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
 import { SVGTooltipText } from '../../utilities/SVGTooltipText';
+import { Tooltip } from '@fluentui/react/lib/Tooltip';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
 const ChartHoverCard = lazy(() =>
@@ -59,6 +63,9 @@ export interface ICartesianChartState {
    */
   _removalValueForTextTuncate?: number;
   startFromX: number;
+  tooltipContent: string;
+  tooltipTarget: SVGRectElement | null;
+  isTooltipVisible: boolean;
 }
 
 /**
@@ -96,6 +103,9 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       _removalValueForTextTuncate: 0,
       isRemoveValCalculated: true,
       startFromX: 0,
+      tooltipContent: '',
+      tooltipTarget: null,
+      isTooltipVisible: false,
     };
     this.idForGraph = getId('chart_');
     this.titleMargin = 8;
@@ -166,6 +176,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   public componentDidUpdate(prevProps: IModifiedCartesianChartProps): void {
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
+    }
+    if (!this.props.wrapXAxisLables && this.props.showXAxisLablesTooltip) {
+      this.xAxisElement && this._tooltipOfXAxislabels(this.xAxisElement);
+    }
+    if (this.props.showYAxisLablesTooltip) {
+      this.yAxisElement && this._tooltipOfXAxislabels(this.yAxisElement);
     }
     if (
       !this.props.wrapXAxisLables &&
@@ -564,6 +580,19 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
                 wrapContent={wrapContent}
               />
             )}
+            {this.state.isTooltipVisible && (
+              <Tooltip
+                content={this.state.tooltipContent}
+                targetElement={this.state.tooltipTarget as unknown as HTMLElement}
+                calloutProps={{
+                  onDismiss: () => this._toggleTooltip(false),
+                  onMouseEnter: () => this._toggleTooltip(true),
+                  onMouseLeave: () => this._toggleTooltip(false),
+                }}
+                onMouseEnter={() => this._toggleTooltip(true)}
+                onMouseLeave={() => this._toggleTooltip(false)}
+              />
+            )}
           </svg>
         </FocusZone>
 
@@ -866,5 +895,37 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     }
 
     return minChartWidth;
+  };
+
+  private _toggleTooltip = (isTooltipVisible: boolean): void => {
+    if (this.state.isTooltipVisible !== isTooltipVisible) {
+      this.setState({ isTooltipVisible });
+    }
+  };
+
+  private _tooltipOfXAxislabels = (axis: any) => {
+    if (axis === null) {
+      return null;
+    }
+    const tickObject = axis!.children;
+    const tickObjectLength = tickObject && Object.keys(tickObject)!.length;
+    for (let i = 0; i < tickObjectLength; i++) {
+      const d1 = tickObject[i];
+      if (d1.getAttribute('class') === 'tick') {
+        d3Select(d1)
+          .on('mouseover', (d: string) => {
+            if (this.state.tooltipContent !== d.toString()) {
+              this.setState({
+                tooltipContent: d.toString(),
+                tooltipTarget: d1,
+              });
+            }
+            this._toggleTooltip(true);
+          })
+          .on('mouseout', d => {
+            this._toggleTooltip(false);
+          });
+      }
+    }
   };
 }
