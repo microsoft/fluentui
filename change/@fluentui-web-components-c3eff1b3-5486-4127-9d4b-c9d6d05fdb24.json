@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "feat(dialog): add dialog web component",
+  "packageName": "@fluentui/web-components",
+  "email": "brian.christopher.brady@gmail.com",
+  "dependentChangeType": "patch"
+}
