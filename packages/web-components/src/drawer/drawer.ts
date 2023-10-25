@@ -10,7 +10,6 @@ export class Drawer extends FASTElement {
   public connectedCallback(): void {
     super.connectedCallback();
     document.addEventListener('keydown', this.handleDocumentKeydown);
-    this.addEventListener('click', this.handleOverlayClick);
 
     Updates.enqueue(() => {
       this.updateTrapFocus();
@@ -21,15 +20,8 @@ export class Drawer extends FASTElement {
   public disconnectedCallback(): void {
     super.disconnectedCallback();
     document.removeEventListener('keydown', this.handleDocumentKeydown);
-    this.removeEventListener('click', this.handleOverlayClick);
     this.updateTrapFocus(false);
   }
-
-  public handleOverlayClick = (e: MouseEvent): void => {
-    if (e.target !== this.drawer) {
-      this.close();
-    }
-  };
 
   /**
    * The content container.
@@ -228,7 +220,7 @@ export class Drawer extends FASTElement {
         this.updateTrapFocus(true);
       }
     });
-    this.$emit('onOpenChange', { open: true });
+    this.$emit('onOpenChange', { detail: { open: true } });
   }
 
   /**
