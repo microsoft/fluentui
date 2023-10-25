@@ -1,20 +1,20 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { useMotion, MotionShorthand, UseMotionOptions } from './useMotion';
+import { useMotionDuration, MotionShorthand, UseMotionDurationOptions } from './useMotionDuration';
 import { getDefaultMotionState } from './useMotionPresence';
 
-const defaultDuration = 100;
+const cssDuration = 100;
 const renderHookWithRef = (
   initialMotion: MotionShorthand,
-  initialOptions?: UseMotionOptions,
-  style: Record<string, string | undefined> = { 'transition-duration': `${defaultDuration}ms` },
+  initialOptions?: UseMotionDurationOptions,
+  style: Record<string, string | undefined> = { 'transition-duration': `${cssDuration}ms` },
 ) => {
   const refEl = document.createElement('div');
-  const hook = renderHook(({ motion, options }) => useMotion(motion, options), {
+  const hook = renderHook(({ motion, options }) => useMotionDuration(motion, options), {
     initialProps: {
       motion: initialMotion,
       options: initialOptions,
-    } as { motion: MotionShorthand; options?: UseMotionOptions },
+    } as { motion: MotionShorthand; options?: UseMotionDurationOptions },
   });
 
   Object.entries(style).forEach(([key, value]) => value && refEl.style.setProperty(key, value));
@@ -33,7 +33,7 @@ const renderHookWithRef = (
 
   act(() => renderRef());
 
-  function rerender(motion: MotionShorthand, options?: UseMotionOptions) {
+  function rerender(motion: MotionShorthand, options?: UseMotionDurationOptions) {
     hook.rerender({ motion, options });
     act(() => renderRef());
   }
@@ -41,9 +41,29 @@ const renderHookWithRef = (
   return { ...hook, rerender };
 };
 
+const jumpAnimationFrame = () => {
+  // requestAnimationFrame
+  act(() => jest.advanceTimersToNextTimer());
+};
+
+const jumpAnimationTimeout = (timeout: number = 300) => {
+  // timeout + requestAnimationFrame
+  act(() => {
+    jest.advanceTimersByTime(timeout);
+    jest.advanceTimersToNextTimer();
+  });
+};
+
 describe('useMotion', () => {
+  let computedStyleMock: jest.SpyInstance;
+
   beforeEach(() => {
     jest.useFakeTimers();
+    computedStyleMock = jest.spyOn(window, 'getComputedStyle').mockImplementation(() => {
+      return {
+        getPropertyValue: () => `${cssDuration}ms`,
+      } as unknown as CSSStyleDeclaration;
+    });
   });
 
   afterEach(() => {
@@ -89,6 +109,35 @@ describe('useMotion', () => {
       act(() => jest.advanceTimersToNextTimer());
 
       expect(result.current.active).toBe(true);
+    });
+  });
+
+  describe('when duration is provided', () => {
+    it('should only call getComputedStyle when duration is not provided', () => {
+      const { result, rerender } = renderHookWithRef(false, { duration: 300 });
+
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
+      expect(result.current.canRender).toBe(false);
+
+      rerender(true, { duration: 300 });
+
+      expect(result.current.canRender).toBe(true);
+      expect(result.current.type).toBe('entering');
+      expect(result.current.active).toBe(false);
+
+      jumpAnimationFrame();
+      jumpAnimationTimeout();
+
+      expect(computedStyleMock).not.toHaveBeenCalled();
+
+      rerender(false);
+
+      jumpAnimationFrame();
+      jumpAnimationTimeout();
+
+      expect(computedStyleMock).toHaveBeenCalledTimes(1);
     });
   });
 

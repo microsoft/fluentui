@@ -17,6 +17,7 @@ export type MotionClassNames = {
 // @public (undocumented)
 export type MotionOptions = {
     animateOnFirstMount?: boolean;
+    duration?: number;
 };
 
 // @public (undocumented)
@@ -34,13 +35,19 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
 };
 
 // @public (undocumented)
+export type MotionStylesKeys = 'default' | 'enter' | 'exit' | MotionType;
+
+// @public (undocumented)
 export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 
 // @public
-export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: MotionOptions): MotionState<Element>;
+export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: UseMotionOptions): MotionState<Element>;
 
 // @public (undocumented)
 export const useMotionClassNames: (motion: MotionState, motionStyles: MotionClassNames) => string;
+
+// @public (undocumented)
+export type UseMotionOptions = Pick<MotionOptions, 'animateOnFirstMount'>;
 
 // (No @packageDocumentation comment for this package)
 
