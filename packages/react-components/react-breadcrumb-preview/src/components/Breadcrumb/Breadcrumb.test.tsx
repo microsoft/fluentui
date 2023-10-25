@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbButton } from '../BreadcrumbButton/BreadcrumbButton';
 import { BreadcrumbItem } from '../BreadcrumbItem/BreadcrumbItem';
-import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
 import { isConformant } from '../../testing/isConformant';
 
 describe('Breadcrumb', () => {
