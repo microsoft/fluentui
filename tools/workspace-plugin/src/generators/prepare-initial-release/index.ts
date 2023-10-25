@@ -129,18 +129,18 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
 
   // update stories
   visitNotIgnoredFiles(tree, options.paths.stories, filePath => {
-    if (filePath.indexOf('index.stories.tsx') !== -1) {
-      updateFileContent(tree, {
-        filePath,
-        updater: content => {
-          let newContent = content.replace(`'Preview Components/`, 'Components/');
+    updateFileContent(tree, {
+      filePath,
+      updater: content => {
+        let newContent = contentNameToSuiteUpdater(content);
 
-          newContent = contentNameUpdater(content);
+        if (filePath.indexOf('index.stories.tsx') !== -1) {
+          newContent = newContent.replace(`'Preview `, `'`);
+        }
 
-          return newContent;
-        },
-      });
-    }
+        return newContent;
+      },
+    });
   });
 
   // global updates
@@ -207,7 +207,10 @@ async function stableRelease(tree: Tree, options: NormalizedSchema) {
   updateJson<PackageJson>(tree, reactComponentsVrTestsProject.paths.packageJson, json => {
     json.dependencies = json.dependencies ?? {};
     delete json.dependencies[currentPackageName];
-    json.dependencies[newPackage.name] = '*';
+    // when going from preview to stable, package version changes to `9.0.0-alpha` in order to beachball properly bump to `9.0.0` stable.
+    // thus dependency on the package within workspace packages cannot use `*` but `>=9.0.0-alpha`
+    // on CI (release,pr) this is being checked normalized via [normalize-package-dependencies generator](tools/workspace-plugin/src/generators/normalize-package-dependencies/index.ts)
+    json.dependencies[newPackage.name] = '>=9.0.0-alpha';
     return json;
   });
   visitNotIgnoredFiles(

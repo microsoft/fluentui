@@ -119,6 +119,16 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
     useTagStyles_unstable: CustomStyleHook;
     useTagGroupStyles_unstable: CustomStyleHook;
+    useBreadcrumbStyles_unstable: CustomStyleHook;
+    useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+    useBreadcrumbItemStyles_unstable: CustomStyleHook;
+    useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -219,6 +229,16 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
     useTagStyles_unstable: CustomStyleHook;
     useTagGroupStyles_unstable: CustomStyleHook;
+    useBreadcrumbStyles_unstable: CustomStyleHook;
+    useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+    useBreadcrumbItemStyles_unstable: CustomStyleHook;
+    useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -319,6 +339,16 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useInteractionTagSecondaryStyles_unstable: CustomStyleHook;
     useTagStyles_unstable: CustomStyleHook;
     useTagGroupStyles_unstable: CustomStyleHook;
+    useBreadcrumbStyles_unstable: CustomStyleHook;
+    useBreadcrumbButtonStyles_unstable: CustomStyleHook;
+    useBreadcrumbItemStyles_unstable: CustomStyleHook;
+    useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFieldContext_unstable } from '@fluentui/react-field';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { clampValue, clampMax } from '../../utils/index';
 import type { ProgressBarProps, ProgressBarState } from './ProgressBar.types';
 
@@ -26,8 +26,11 @@ export const useProgressBar_unstable = (props: ProgressBarProps, ref: React.Ref<
   const value = clampValue(props.value, max);
 
   const root = slot.always(
-    getNativeElementProps('div', {
-      ref,
+    getIntrinsicElementProps('div', {
+      // FIXME:
+      // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+      // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+      ref: ref as React.Ref<HTMLDivElement>,
       role: 'progressbar',
       'aria-valuemin': value !== undefined ? 0 : undefined,
       'aria-valuemax': value !== undefined ? max : undefined,

@@ -1,6 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
 import type { PortalProps } from '@fluentui/react-portal';
-import { DialogSurfaceContextValue } from '../../contexts';
+import { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
 export type DialogSurfaceSlots = {
   /**
@@ -31,4 +31,10 @@ export type DialogSurfaceContextValues = {
 /**
  * State used in rendering DialogSurface
  */
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
+  // This is only partial to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
+  Pick<DialogContextValue, 'isNestedDialog'> &
+  Pick<PortalProps, 'mountNode'> & {
+    // This is only optional to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
+    transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+  };

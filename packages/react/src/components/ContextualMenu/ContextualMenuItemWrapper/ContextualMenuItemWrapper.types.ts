@@ -2,7 +2,7 @@ import * as React from 'react';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import type { IContextualMenuItem, IContextualMenuItemProps } from '../../../ContextualMenu';
 import type { IMenuItemClassNames } from '../ContextualMenu.classNames';
-import type { IRefObject } from '../../../Utilities';
+import type { IComponentAs, IRefObject } from '../../../Utilities';
 
 export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<IContextualMenuItem> {
   /**
@@ -51,9 +51,7 @@ export interface IContextualMenuItemWrapperProps extends React.ClassAttributes<I
    * Method to override the render of the individual menu items.
    * @defaultvalue ContextualMenuItem
    */
-  contextualMenuItemAs?:
-    | React.ComponentClass<IContextualMenuItemProps>
-    | React.FunctionComponent<IContextualMenuItemProps>;
+  contextualMenuItemAs?: IComponentAs<IContextualMenuItemProps>;
 
   /**
    * Callback for when the user's mouse enters the wrapper.

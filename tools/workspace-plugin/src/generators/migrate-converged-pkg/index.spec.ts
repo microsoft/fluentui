@@ -977,95 +977,40 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`npm config setup`, () => {
-    it(`should update .npmignore config`, async () => {
-      function getNpmIgnoreConfig(projectConfig: ReadProjectConfiguration) {
-        return tree.read(`${projectConfig.root}/.npmignore`)?.toString('utf-8');
-      }
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      let npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+  describe(`npm publish setup`, () => {
+    it(`should replace .npmignore config with package.json#files`, async () => {
+      const getNpmIgnoreConfigPath = (projectConfig: ReadProjectConfiguration) => `${projectConfig.root}/.npmignore`;
 
-      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        "*.api.json
-        *.config.js
-        *.log
-        *.nuspec
-        *.test.*
-        *.yml
-        .editorconfig
-        .eslintrc*
-        .eslintcache
-        .gitattributes
-        .gitignore
-        .vscode
-        coverage
-        dist/storybook
-        dist/*.stats.html
-        dist/*.stats.json
-        dist/demo
-        fabric-test*
-        gulpfile.js
-        images
-        index.html
-        jsconfig.json
-        node_modules
-        results
-        src/**/*
-        !src/**/examples/*.tsx
-        !src/**/docs/**/*.md
-        !src/**/*.types.ts
-        temp
-        tsconfig.json
-        tsd.json
-        tslint.json
-        typings
-        visualtests"
-      `);
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const npmIgnoreConfigPath = getNpmIgnoreConfigPath(projectConfig);
+
+      expect(tree.exists(npmIgnoreConfigPath)).toBe(true);
 
       await generator(tree, options);
 
-      npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+      expect(tree.exists(npmIgnoreConfigPath)).toBe(false);
+      let pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
 
-      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        ".storybook/
-        .vscode/
-        bundle-size/
-        config/
-        coverage/
-        docs/
-        etc/
-        node_modules/
-        src/
-        stories/
-        dist/types/
-        temp/
-        __fixtures__
-        __mocks__
-        __tests__
+      expect(pkgJson.files).toMatchInlineSnapshot(`
+        Array [
+          "lib",
+          "lib-commonjs",
+          "dist/*.d.ts",
+        ]
+      `);
 
-        *.api.json
-        *.log
-        *.spec.*
-        *.cy.*
-        *.test.*
-        *.yml
+      updateProjectConfiguration(tree, projectConfig.name!, { ...projectConfig, tags: ['ships-amd'] });
+      await generator(tree, options);
 
-        # config files
-        *config.*
-        *rc.*
-        .editorconfig
-        .eslint*
-        .git*
-        .prettierignore
-        .swcrc
-        project.json
+      pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
 
-        # exclude gitignore patterns explicitly
-        !lib
-        !lib-commonjs
-        !lib-amd
-        !dist/*.d.ts
-        "
+      expect(pkgJson.files).toMatchInlineSnapshot(`
+        Array [
+          "lib",
+          "lib-commonjs",
+          "lib-amd",
+          "dist/*.d.ts",
+        ]
       `);
     });
   });
@@ -1606,42 +1551,7 @@ function setupDummyPackage(
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
-    npmConfig: stripIndents`
-      *.api.json
-      *.config.js
-      *.log
-      *.nuspec
-      *.test.*
-      *.yml
-      .editorconfig
-      .eslintrc*
-      .eslintcache
-      .gitattributes
-      .gitignore
-      .vscode
-      coverage
-      dist/storybook
-      dist/*.stats.html
-      dist/*.stats.json
-      dist/demo
-      fabric-test*
-      gulpfile.js
-      images
-      index.html
-      jsconfig.json
-      node_modules
-      results
-      src/**/*
-      !src/**/examples/*.tsx
-      !src/**/docs/**/*.md
-      !src/**/*.types.ts
-      temp
-      tsconfig.json
-      tsd.json
-      tslint.json
-      typings
-      visualtests
-    `,
+    npmConfig: stripIndents``,
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },

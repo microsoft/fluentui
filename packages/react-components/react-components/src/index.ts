@@ -22,6 +22,7 @@ export {
   useFluentProvider_unstable,
   useFluentProviderContextValues_unstable,
   useFluentProviderStyles_unstable,
+  useFluentProviderThemeStyleTag,
 } from '@fluentui/react-provider';
 export type {
   FluentProviderContextValues,
@@ -96,7 +97,10 @@ export {
   usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
 export {
+  // getNativeElementProps is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
+  getIntrinsicElementProps,
   getPartitionedNativeProps,
   getSlots,
   slot,
@@ -825,6 +829,7 @@ export {
   renderDialogContent_unstable,
   useDialogContext_unstable,
   useDialogSurfaceContext_unstable,
+  useDialogSurfaceContextValues_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -855,6 +860,7 @@ export type {
   DialogContentState,
   DialogContextValue,
   DialogSurfaceContextValue,
+  DialogSurfaceContextValues,
 } from '@fluentui/react-dialog';
 
 export {
@@ -1253,6 +1259,7 @@ export {
   useHeadlessFlatTree_unstable,
   useTreeContextValues_unstable,
   useTreeContext_unstable,
+  useSubtreeContext_unstable,
   useTreeItemContextValues_unstable,
   useTreeItemContext_unstable,
   useTreeItemLayoutStyles_unstable,
@@ -1278,6 +1285,7 @@ export type {
   TreeCheckedChangeData,
   TreeCheckedChangeEvent,
   TreeContextValue,
+  SubtreeContextValue,
   TreeContextValues,
   TreeItemContextValue,
   TreeItemLayoutProps,
@@ -1301,3 +1309,117 @@ export type {
   TreeSlots,
   TreeState,
 } from '@fluentui/react-tree';
+
+export {
+  Tag,
+  renderTag_unstable,
+  tagClassNames,
+  useTagStyles_unstable,
+  useTag_unstable,
+  InteractionTag,
+  renderInteractionTag_unstable,
+  interactionTagClassNames,
+  useInteractionTagStyles_unstable,
+  useInteractionTag_unstable,
+  useInteractionTagContextValues_unstable,
+  InteractionTagPrimary,
+  interactionTagPrimaryClassNames,
+  renderInteractionTagPrimary_unstable,
+  useInteractionTagPrimaryStyles_unstable,
+  useInteractionTagPrimary_unstable,
+  InteractionTagSecondary,
+  renderInteractionTagSecondary_unstable,
+  interactionTagSecondaryClassNames,
+  useInteractionTagSecondaryStyles_unstable,
+  useInteractionTagSecondary_unstable,
+  TagGroup,
+  renderTagGroup_unstable,
+  tagGroupClassNames,
+  useTagGroupStyles_unstable,
+  useTagGroup_unstable,
+  useTagGroupContextValues_unstable,
+  useTagAvatarContextValues_unstable,
+} from '@fluentui/react-tags';
+export type {
+  TagProps,
+  TagSlots,
+  TagState,
+  InteractionTagProps,
+  InteractionTagSlots,
+  InteractionTagState,
+  InteractionTagPrimaryContextValues,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryState,
+  InteractionTagSecondaryProps,
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryState,
+  TagGroupProps,
+  TagGroupSlots,
+  TagGroupState,
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissData,
+  TagDismissEvent,
+  TagDismissHandler,
+} from '@fluentui/react-tags';
+
+export {
+  MessageBar,
+  useMessageBarStyles_unstable,
+  useMessageBar_unstable,
+  renderMessageBar_unstable,
+  messageBarClassNames,
+  MessageBarTitle,
+  useMessageBarTitleStyles_unstable,
+  useMessageBarTitle_unstable,
+  renderMessageBarTitle_unstable,
+  messageBarTitleClassNames,
+  MessageBarActions,
+  useMessageBarActionsStyles_unstable,
+  useMessageBarActions_unstable,
+  renderMessageBarActions_unstable,
+  messageBarActionsClassNames,
+  MessageBarBody,
+  useMessageBarBodyStyles_unstable,
+  useMessageBarBody_unstable,
+  renderMessageBarBody_unstable,
+  messageBarBodyClassNames,
+  MessageBarContextProvider,
+  useMessageBarContext,
+  MessageBarGroup,
+  useMessageBarGroupStyles_unstable,
+  useMessageBarGroup_unstable,
+  renderMessageBarGroup_unstable,
+  messageBarGroupClassNames,
+} from '@fluentui/react-message-bar';
+export type {
+  MessageBarProps,
+  MessageBarSlots,
+  MessageBarState,
+  MessageBarIntent,
+  MessageBarTitleProps,
+  MessageBarTitleSlots,
+  MessageBarTitleState,
+  MessageBarActionsProps,
+  MessageBarActionsSlots,
+  MessageBarActionsState,
+  MessageBarBodyProps,
+  MessageBarBodySlots,
+  MessageBarBodyState,
+  MessageBarContextValue,
+  MessageBarGroupProps,
+  MessageBarGroupSlots,
+  MessageBarGroupState,
+} from '@fluentui/react-message-bar';
+
+export {
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+  useInfoLabel_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';

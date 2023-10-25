@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useControllableState, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { AccordionProps, AccordionState } from './Accordion.types';
 import type { AccordionItemValue } from '../AccordionItem/AccordionItem.types';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
@@ -49,10 +49,13 @@ export const useAccordion_unstable = <Value = AccordionItemValue>(
       root: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ...props,
         ...(navigation ? arrowNavigationProps : undefined),
-        ref,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
       }),
       { elementType: 'div' },
     ),

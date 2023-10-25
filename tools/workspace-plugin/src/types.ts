@@ -24,6 +24,7 @@ export interface PackageJson {
   types?: string;
   typings?: string;
   private?: boolean;
+  files?: string[];
   name: string;
   main: string;
   module?: string;

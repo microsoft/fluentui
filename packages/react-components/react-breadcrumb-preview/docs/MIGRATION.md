@@ -7,7 +7,6 @@ Here's how the API of v8's `Breadcrumb` compares to the one from v9's `Breadcrum
 
 #### New props
 
-- `appearance`
 - `size`
 
 #### Props no longer supported with an equivalent functionality in Breadcrumb V9:
@@ -54,10 +53,9 @@ BreadcrumbItem component contains similar props in V9.
 | v8 `Breadcrumb`     | v9 `Breadcrumb` |
 | ------------------- | --------------- |
 | `ariaLabel`         |                 |
-|                     | `appearance`    |
 | `className`         |                 |
 | `componentRef`      |                 |
-| `dividerAs`         | `dividerType`   |
+| `dividerAs`         |                 |
 | `focusZoneProps`    |                 |
 | `maxDisplayedItems` |                 |
 |                     | `size`          |
@@ -83,12 +81,11 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 | Northstar `Breadcrumb` | v9 `Breadcrumb` |
 | ---------------------- | --------------- |
 | `accessibility`        |                 |
-|                        | `appearance`    |
 | `as`                   |                 |
 | `className`            |                 |
 | `content`              |                 |
 | `design`               |                 |
-|                        | `dividerType`   |
+|                        |                 |
 | `size`                 | `size`          |
 | `styles`               |                 |
 | `variables`            |                 |

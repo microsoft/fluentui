@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
-import { DatePicker as DatePickerBase, DateRangeType } from '@fluentui/react-datepicker-compat';
+import { DatePicker as DatePickerBase } from '@fluentui/react-datepicker-compat';
+import { DateRangeType } from '@fluentui/react-calendar-compat';
 import { Field } from '@fluentui/react-field';
 import { storiesOf } from '@storybook/react';
 import { TestWrapperDecorator } from '../utilities/TestWrapperDecorator';

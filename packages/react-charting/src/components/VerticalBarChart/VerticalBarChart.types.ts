@@ -8,6 +8,10 @@ import {
 } from '../../index';
 import { ILineChartLineOptions } from '../../types/index';
 
+/**
+ * Vertical Bar Chart properties
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartProps extends ICartesianChartProps {
   /**
    * Data to render in the chart.
@@ -81,6 +85,10 @@ export interface IVerticalBarChartProps extends ICartesianChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Vertical Bar Chart style properties
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
   /**
    * color of the datapoint legend
@@ -88,46 +96,50 @@ export interface IVerticalBarChartStyleProps extends ICartesianChartStyleProps {
   legendColor?: string;
 }
 
+/**
+ * Vertical Bar Chart styles
+ * {@docCategory VerticalBarChart}
+ */
 export interface IVerticalBarChartStyles extends ICartesianChartStyles {
   /**
    * Style for the chart label.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   chartLabel?: IStyle;
 
   /**
    * Style for the line representing the domain of the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the x-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   xAxisText?: IStyle;
 
   /**
    * Style for the line representing the domain of the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisDomain?: IStyle;
 
   /**
    * Style for the lines representing the ticks along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisTicks?: IStyle;
 
   /**
    * Style for the text labeling each tick along the y-axis.
-   * @deprecated
+   * @deprecated This style cannot be customized anymore
    */
   yAxisText?: IStyle;
 

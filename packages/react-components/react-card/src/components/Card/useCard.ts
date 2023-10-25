@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusableGroup, useFocusWithin } from '@fluentui/react-tabster';
 
 import type { CardProps, CardState } from './Card.types';
@@ -97,7 +97,7 @@ export const useCard_unstable = (props: CardProps, ref: React.Ref<HTMLDivElement
     },
 
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref: cardRef,
         role: 'group',
         ...focusAttributes,
