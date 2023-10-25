@@ -102,27 +102,16 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     [freeform, selectTime],
   );
 
-  /**
-   * useComboboxBaseState sets activeOption to the 1st option in an useEffect when children changes.
-   * But for freeform TimePicker we set activeOption to undefined when input value doesn't match any option.
-   * Therefore memoize the children to prevent the unnecessary useComboboxBaseState useEffect.
-   */
-  const children = React.useMemo(
-    () =>
-      options.map(date => (
-        <Option key={date.key} value={date.key}>
-          {date.text}
-        </Option>
-      )),
-    [options],
-  );
-
   const baseState = useCombobox_unstable(
     {
       ...rest,
       selectedOptions,
       onOptionSelect: handleOptionSelect,
-      children,
+      children: options.map(date => (
+        <Option key={date.key} value={date.key}>
+          {date.text}
+        </Option>
+      )),
     },
     ref,
   );
@@ -179,14 +168,19 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   // Base Combobox has activeOption default to first option in dropdown even if it doesn't match input value, and Enter key will select it.
   // This effect ensures that the activeOption is cleared when the input doesn't match any option.
   // This behavior is specific to a freeform TimePicker where the input value is treated as a valid time even if it's not in the dropdown.
-  const prefixMatchActiveOption = value && activeOption?.text && activeOption.text.indexOf(value) === 0;
   React.useEffect(() => {
-    if (!freeform || prefixMatchActiveOption) {
-      return;
-    }
+    setActiveOption(prevActiveOption => {
+      if (!freeform) {
+        return prevActiveOption;
+      }
 
-    setActiveOption(undefined);
-  }, [freeform, prefixMatchActiveOption, setActiveOption]);
+      const prefixMatchActiveOption = value && prevActiveOption?.text && prevActiveOption.text.indexOf(value) === 0;
+      if (prefixMatchActiveOption) {
+        return prevActiveOption;
+      }
+      return undefined;
+    });
+  }, [freeform, setActiveOption, value]);
 
   const selectTimeFromValue = React.useCallback(
     (e: React.KeyboardEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>) => {
