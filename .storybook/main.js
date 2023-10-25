@@ -64,7 +64,7 @@ module.exports = /** @type {Omit<StorybookConfig,'typescript'|'babel'>} */ ({
 
     /**  @see ../packages/react-components/react-storybook-addon */
     loadWorkspaceAddon('@fluentui/react-storybook-addon', { tsConfigPath }),
-    loadWorkspaceAddon('@fluentui/react-storybook-addon-codesandbox', { tsConfigPath }),
+    loadWorkspaceAddon('@fluentui/react-storybook-addon-export-to-sandbox', { tsConfigPath }),
   ],
   webpackFinal: config => {
     registerTsPaths({ config, configFile: tsConfigPath });

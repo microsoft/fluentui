@@ -1,7 +1,7 @@
 {
-  "name": "@fluentui/react-storybook-addon-codesandbox",
+  "name": "@fluentui/react-storybook-addon-export-to-sandbox",
   "version": "0.1.0",
-  "description": "Storybook addon that enables codesandbox exports for stories",
+  "description": "Storybook addon that enables cloud/web sandbox exports for stories doc mode code examples",
   "private": true,
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

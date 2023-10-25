@@ -36,7 +36,7 @@
     "@fluentui/react-components": "^9.36.0",
     "@fluentui/react-context-selector": "^9.1.41",
     "@fluentui/react-icons": "^2.0.217",
-    "@fluentui/react-storybook-addon-codesandbox": "^0.1.0",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
     "@fluentui/react-theme": "^9.1.14",
     "@fluentui/react-utilities": "^9.15.1",
     "@griffel/react": "^1.5.14",
