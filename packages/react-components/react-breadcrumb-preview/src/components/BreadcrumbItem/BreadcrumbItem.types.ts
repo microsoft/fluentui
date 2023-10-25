@@ -13,14 +13,4 @@ export type BreadcrumbItemProps = ComponentProps<BreadcrumbItemSlots> & Pick<Bre
 /**
  * State used in rendering BreadcrumbItem
  */
-export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> &
-  Required<Pick<BreadcrumbItemProps, 'size'>> & {
-    /**
-     * Defines whether item is interactive or not.
-     */
-    isInteractive?: boolean;
-    /**
-     * Defines whether Breadcrumb type is interactive or not.
-     */
-    hasInteractiveItems?: boolean;
-  };
+export type BreadcrumbItemState = ComponentState<BreadcrumbItemSlots> & Required<Pick<BreadcrumbItemProps, 'size'>>;

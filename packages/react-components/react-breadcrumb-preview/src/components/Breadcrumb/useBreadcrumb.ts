@@ -13,7 +13,7 @@ import { useArrowNavigationGroup } from '@fluentui/react-tabster';
  * @param ref - reference to root HTMLElement of Breadcrumb
  */
 export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HTMLElement>): BreadcrumbState => {
-  const { focusMode = 'tab', dividerType = 'chevron', size = 'medium', list, ...rest } = props;
+  const { focusMode = 'tab', size = 'medium', list, ...rest } = props;
 
   const focusAttributes = useArrowNavigationGroup({
     circular: true,
@@ -36,7 +36,6 @@ export const useBreadcrumb_unstable = (props: BreadcrumbProps, ref: React.Ref<HT
       { elementType: 'nav' },
     ),
     list: slot.optional(list, { renderByDefault: true, defaultProps: { role: 'list' }, elementType: 'ol' }),
-    dividerType,
     size,
   };
 };
