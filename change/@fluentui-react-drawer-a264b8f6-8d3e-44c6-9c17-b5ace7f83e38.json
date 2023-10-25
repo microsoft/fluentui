@@ -1,6 +1,6 @@
 {
   "type": "prerelease",
-  "comment": "refactor: rename main DrawerOverlay/DrawerInline components",
+  "comment": "BREAKING CHANGE: rename main DrawerOverlay/DrawerInline components",
   "packageName": "@fluentui/react-drawer",
   "email": "marcosvmmoura@gmail.com",
   "dependentChangeType": "patch"
