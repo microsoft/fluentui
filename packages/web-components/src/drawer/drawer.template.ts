@@ -10,12 +10,11 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.modalType !== 'non-modal' || x.type === 'inline' ? 'dialog' : 'complementary')}"
+      role="${x => (x.modalType === 'non-modal' || x.type === 'inline' ? 'complementary' : 'dialog')}"
       aria-modal="${x => (x.modalType === 'non-modal' ? 'false' : 'true')}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
       aria-label="${x => x.ariaLabel}"
-      ?separator="${x => x.separator}"
       ?open="${x => x.open}"
       size="${x => x.size}"
       position="${x => x.position}"

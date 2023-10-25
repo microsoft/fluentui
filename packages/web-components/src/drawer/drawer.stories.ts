@@ -2,6 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup } from '../radio-group/radio-group.js';
+import { colorNeutralStroke2 } from '../theme/design-tokens.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 import './define.js';
@@ -143,6 +144,9 @@ const storyTemplate = html<DrawerStoryArgs>`
       .justify-sbdocs-content {
         max-width: 1200px;
       }
+      .grid {
+        display: grid;
+      }
       .flex {
         display: flex;
       }
@@ -190,7 +194,6 @@ const storyTemplate = html<DrawerStoryArgs>`
           size="${x => x.size}"
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
-          ?separator="${x => x.separator}"
         >
           <div slot="navigation">
             <fluent-button appearance="transparent" icon-only size="medium" aria-label="back">
@@ -267,7 +270,6 @@ const storyTemplate = html<DrawerStoryArgs>`
           size="${x => x.size}"
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
-          ?separator="${x => x.separator}"
         >
           <div slot="navigation">
             <fluent-button appearance="transparent" icon-only size="medium" aria-label="back">
@@ -325,7 +327,6 @@ export default {
     modalType: DrawerModalType.modal,
     type: DrawerType.overlay,
     size: DrawerSize.medium,
-    separator: false,
   },
   argTypes: {
     position: {
@@ -375,19 +376,6 @@ export default {
         },
         defaultValue: {
           summary: DrawerSize.medium,
-        },
-      },
-    },
-    separator: {
-      control: {
-        type: 'boolean',
-      },
-      table: {
-        type: {
-          summary: 'Determines a separator line should appear between the drawer and the content.',
-        },
-        defaultValue: {
-          summary: false,
         },
       },
     },
@@ -841,6 +829,70 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
   </div>
 `);
 
+export const WithNavigation = renderComponent(html`
+  <div class="flex justify-c full-height">
+    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+      <fluent-text weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
+
+      <fluent-text size="300" font="base" as="p">
+        <p>
+          The drawer component features an optional top navigation slot named "navigation" providing users with the
+          flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
+          they will appear in the top navigation area of the drawer.
+        </p>
+      </fluent-text>
+      <fluent-text font="monospace" size="300" weight="regular">
+        <code>slot="navigation"</code>
+      </fluent-text>
+      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-top-navigation')}"
+        >Toggle Drawer</fluent-button
+      >
+    </div>
+    <fluent-drawer id="drawer-top-navigation">
+      <div slot="navigation">
+        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="back">
+          ${arrowLeft20Regular}
+        </fluent-button>
+        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
+          ${arrowClockwise20Regular}
+        </fluent-button>
+        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
+          ${settings20Regular}
+        </fluent-button>
+
+        <fluent-button
+          @click=${() => hideDrawer('drawer-top-navigation')}
+          appearance="transparent"
+          icon-only
+          size="medium"
+          size
+          aria-label="close"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+      </div>
+      <fluent-text slot="title" weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
+
+      <div class="row-gap-16 f-col flex">
+        <fluent-text size="300" font="base" as="p">
+          <p>
+            The drawer component features an optional top navigation slot named "navigation" providing users with the
+            flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
+            they will appear in the top navigation area of the drawer.
+          </p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code>slot="navigation"</code>
+        </fluent-text>
+      </div>
+      <div slot="footer">
+        <fluent-button appearance="primary">Primary</fluent-button>
+        <fluent-button appearance="secondary">Secondary</fluent-button>
+      </div>
+    </fluent-drawer>
+  </div>
+`);
+
 export const CustomSize = renderComponent(html`
   <div class="flex justify-c full-height">
     <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
@@ -879,141 +931,6 @@ export const CustomSize = renderComponent(html`
       </div>
     </fluent-drawer>
   </div>
-`);
-
-export const WithNavigation = renderComponent(html`
-  <div class="flex justify-c full-height">
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
-
-      <fluent-text size="300" font="base">
-        The drawer component features an optional top navigation slot named "navigation" providing users with the
-        flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
-        they will appear in the top navigation area of the drawer.
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>slot="navigation"</code>
-      </fluent-text>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-top-navigation')}"
-        >Toggle Drawer</fluent-button
-      >
-    </div>
-    <fluent-drawer id="drawer-top-navigation">
-      <div slot="navigation">
-        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="back">
-          ${arrowLeft20Regular}
-        </fluent-button>
-        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
-          ${arrowClockwise20Regular}
-        </fluent-button>
-        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
-          ${settings20Regular}
-        </fluent-button>
-
-        <fluent-button
-          @click=${() => hideDrawer('drawer-top-navigation')}
-          appearance="transparent"
-          icon-only
-          size="medium"
-          size
-          aria-label="close"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-      </div>
-      <fluent-text slot="title" weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
-
-      <div class="row-gap-16 f-col flex">
-        <fluent-text size="300" font="base">
-          The drawer component features an optional top navigation slot named "navigation" providing users with the
-          flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
-          they will appear in the top navigation area of the drawer.
-        </fluent-text>
-        <fluent-text font="monospace" size="300" weight="regular">
-          <code>slot="navigation"</code>
-        </fluent-text>
-      </div>
-      <div slot="footer">
-        <fluent-button appearance="primary">Primary</fluent-button>
-        <fluent-button appearance="secondary">Secondary</fluent-button>
-      </div>
-    </fluent-drawer>
-  </div>
-`);
-
-export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
-  <style>
-    .margin-auto {
-      margin: auto;
-    }
-  </style>
-  <div class="flex full-height">
-    <div>
-    <fluent-drawer position="start" id="drawer-overflow" type="inline" modal-type="non-modal">
-        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Content Overflow Separator</h1></fluent-text>
-        <fluent-button
-          slot="action"
-          appearance="transparent"
-          icon-only
-          aria-label="close"
-          @click="${() => hideDrawer('drawer-overflow')}"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-        <div class="row-gap-16 f-col flex">
-            <fluent-text>
-              When the content section of the drawer exceeds its allocated space and overflows, the --overflow-border CSS custom property is applied. This property is specifically designed to add a border style to the top of the drawer's footer, giving a visual indication that there's more content above.
-            </fluent-text>
-          <fluent-text size="400" weight="bold" as="h2"><h2>Personal Info</h2></fluent-text>
-          <div>
-            <fluent-label>First Name</fluent-label>
-            <fluent-text-input id="abc" type="text"></fluent-text-input>
-          </div>
-          <div>
-            <fluent-label>Last Name</fluent-label>
-            <fluent-text-input id="def" type="text" /></fluent-text-input>
-          </div>
-          <fluent-text size="400" weight="bold" as="h2"><h2>Contact Details</h2></fluent-text>
-          <div>
-            <fluent-label>Email</fluent-label>
-            <fluent-text-input id="ghi" type="text" /></fluent-text-input>
-          </div>
-          <div>
-            <fluent-label>Phone Number</fluent-label>
-            <fluent-text-input id="jkl" type="text" /></fluent-text-input>
-          </div>
-          <fluent-text size="400" weight="bold" as="h2"><h2>Account Settings</h2></fluent-text>
-          <div>
-            <fluent-label>Username</fluent-label>
-            <fluent-text-input id="ghi" type="text" /></fluent-text-input>
-          </div>
-          <div>
-            <fluent-label>Password</fluent-label>
-            <fluent-text-input id="jkl" type="password" /></fluent-text-input>
-          </div>
-        </div>
-        <div slot="footer">
-          <fluent-button  appearance="primary">Primary</fluent-button>
-          <fluent-button  appearance="secondary">Secondary</fluent-button>
-        </div>
-      </fluent-drawer>
-  </div>
-  <div class="row-gap-16 f-col flex justify-c padding-16 width-400 margin-auto">
-    <fluent-text weight="bold" size="400" as="h3"><h3>Content Overflow Separator</h3></fluent-text>
-    <fluent-text font="base" size="300" weight="regular" as="p">
-      <p>
-      When the content section of the drawer exceeds its allocated space and overflows, the --overflow-border CSS custom property is applied. This property is specifically designed to add a border style to the top of the drawer's footer, giving a visual indication that there's more content above.
-      </p>
-    </fluent-text>
-    <fluent-text font="monospace" size="300" weight="regular" as="p">
-      <code>var(--overflow-border)</code>
-    </fluent-text>
-    <div>
-      <fluent-button appearance="primary" @click="${() =>
-        toggleDrawer('drawer-overflow')}">Toggle Drawer</fluent-button>
-    </div>
-  </div>
-</div>
 `);
 
 export const WithTitleAndAction = renderComponent(html<DrawerStoryArgs>`
@@ -1056,4 +973,135 @@ export const WithTitleAndAction = renderComponent(html<DrawerStoryArgs>`
       </div>
     </div>
   </div>
+`);
+
+export const Separator = renderComponent(html<DrawerStoryArgs>`
+  <div class="grid full-height" style="grid-template-columns: auto auto;">
+    <fluent-drawer
+      style="--drawer-separator: ${colorNeutralStroke2};"
+      position="start"
+      size="small"
+      id="drawer-customstyles"
+      type="inline"
+      modal-type="non-modal"
+    >
+      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Separator</h1></fluent-text>
+      <fluent-button
+        slot="action"
+        appearance="transparent"
+        icon-only
+        aria-label="close"
+        @click="${() => hideDrawer('drawer-customstyles')}"
+      >
+        ${dismissed20Regular}
+      </fluent-button>
+      <div class="row-gap-16 f-col flex">
+        <fluent-text font="base" size="300" weight="regular" as="p">
+          <p>
+            To apply a separator line within the drawer, you can customize its color by setting the --drawer-separator
+            CSS variable. This provides flexibility in visually delineating sections of the drawer based on your design
+            requirements.
+          </p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular" as="p">
+          <code>--drawer-separator</code>
+        </fluent-text>
+      </div>
+    </fluent-drawer>
+    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+      <fluent-text weight="bold" size="400" as="h3"><h3>Separator</h3></fluent-text>
+      <fluent-text font="base" size="300" weight="regular" as="p">
+        <p>
+          To apply a separator line within the drawer, you can customize its color by setting the --drawer-separator CSS
+          variable. This provides flexibility in visually delineating sections of the drawer based on your design
+          requirements.
+        </p>
+      </fluent-text>
+      <fluent-text font="monospace" size="300" weight="regular" as="p">
+        <code>--drawer-separator</code>
+      </fluent-text>
+      <div>
+        <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-customstyles')}"
+          >Toggle Start</fluent-button
+        >
+      </div>
+    </div>
+  </div>
+`);
+
+export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
+  <style>
+    .margin-auto {
+      margin: auto;
+    }
+  </style>
+  <div class="flex full-height">
+    <div>
+    <fluent-drawer position="start" id="drawer-overflow" type="inline" modal-type="non-modal">
+        <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Content Overflow Separator</h1></fluent-text>
+        <fluent-button
+          slot="action"
+          appearance="transparent"
+          icon-only
+          aria-label="close"
+          @click="${() => hideDrawer('drawer-overflow')}"
+        >
+          ${dismissed20Regular}
+        </fluent-button>
+        <div class="row-gap-16 f-col flex">
+          <fluent-text font="base" size="300" weight="regular" as="p">
+            <p>
+              When the content section of the drawer exceeds its allocated space and overflows, the --overflow-border CSS custom property is applied. This property is specifically designed to add a border style to the top of the drawer's footer, giving a visual indication that there's more content above.
+            </p>
+          </fluent-text>
+          <fluent-text size="400" weight="bold" as="h2"><h2>Personal Info</h2></fluent-text>
+          <div>
+            <fluent-label>First Name</fluent-label>
+            <fluent-text-input id="abc" type="text"></fluent-text-input>
+          </div>
+          <div>
+            <fluent-label>Last Name</fluent-label>
+            <fluent-text-input id="def" type="text" /></fluent-text-input>
+          </div>
+          <fluent-text size="400" weight="bold" as="h2"><h2>Contact Details</h2></fluent-text>
+          <div>
+            <fluent-label>Email</fluent-label>
+            <fluent-text-input id="ghi" type="text" /></fluent-text-input>
+          </div>
+          <div>
+            <fluent-label>Phone Number</fluent-label>
+            <fluent-text-input id="jkl" type="text" /></fluent-text-input>
+          </div>
+          <fluent-text size="400" weight="bold" as="h2"><h2>Account Settings</h2></fluent-text>
+          <div>
+            <fluent-label>Username</fluent-label>
+            <fluent-text-input id="ghi" type="text" /></fluent-text-input>
+          </div>
+          <div>
+            <fluent-label>Password</fluent-label>
+            <fluent-text-input id="jkl" type="password" /></fluent-text-input>
+          </div>
+        </div>
+        <div slot="footer">
+          <fluent-button  appearance="primary">Primary</fluent-button>
+          <fluent-button  appearance="secondary">Secondary</fluent-button>
+        </div>
+      </fluent-drawer>
+  </div>
+  <div class="row-gap-16 f-col flex justify-c padding-16 width-400 margin-auto">
+    <fluent-text weight="bold" size="400" as="h3"><h3>Content Overflow Separator</h3></fluent-text>
+    <fluent-text font="base" size="300" weight="regular" as="p">
+      <p>
+      When the content section of the drawer exceeds its allocated space and overflows, the --overflow-border CSS custom property is applied. This property is specifically designed to add a border style to the top of the drawer's footer, giving a visual indication that there's more content above.
+      </p>
+    </fluent-text>
+    <fluent-text font="monospace" size="300" weight="regular" as="p">
+      <code>--overflow-border</code>
+    </fluent-text>
+    <div>
+      <fluent-button appearance="primary" @click="${() =>
+        toggleDrawer('drawer-overflow')}">Toggle Drawer</fluent-button>
+    </div>
+  </div>
+</div>
 `);

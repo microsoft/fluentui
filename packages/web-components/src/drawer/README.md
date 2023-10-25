@@ -15,7 +15,7 @@ The Fluent WC3 Drawer extends `FASTElement`
 ### Template
 
 ```html
-  <dialog
+   <dialog
       class="dialog"
       part="dialog"
       role="${x => (x.modalType !== 'non-modal' || x.type === 'inline' ? 'dialog' : 'complementary')}"
@@ -23,14 +23,11 @@ The Fluent WC3 Drawer extends `FASTElement`
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
       aria-label="${x => x.ariaLabel}"
-      ?inert-trap-focus="${x => x.inertTrapFocus}"
-      ?open-default="${x => x.openDefault}"
-      ?separator="${x => x.separator}"
+      ?open="${x => x.open}"
       size="${x => x.size}"
       position="${x => x.position}"
       modal-type="${x => x.modalType}"
       type="${x => x.type}"
-      @keydown="${(x, c) => x.handleKeydown(c.event as KeyboardEvent)}"
       @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
       ${ref('dialog')}
     >
@@ -65,25 +62,23 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 ### **Attributes**
 
-| Name               | Type                                | Default             | Description                                                                       |
-| ------------------ | ----------------------------------- | ------------------- | --------------------------------------------------------------------------------- |
-| `trap-focus`       | `boolean`                           | `false`             | Determines whether the focus should be trapped within the drawer when it is open. |
-| `modal-type`       | `modal` `non-modal` `alert`         | `modal`             | Determines whether the drawer should be displayed as modal, non-modal, or alert.  |
-| `type`             | `overlay` `inline`                  | `false`             | Determines whether the drawer should be displayed inline or as an overlay         |
-| `position`         | `DrawerPosition \| undefined`       | `start`             | Sets the position of the drawer (left/right).                                     |
-| `size`             | `DrawerSize \| number \| undefined` | `DrawerSize.medium` | Sets the control size of the drawer.                                              |
-| `open-default`     | `boolean`                           | `false`             | Sets the drawer to be open by default.                                            |
-| `open`             | `boolean`                           | `false`             | Sets the drawer to be open.                                                       |
-| `aria-labelledby`  | `string \| undefined`               | `undefined`         | Sets the aria-labelledby attribute of the drawer.                                 |
-| `aria-describedby` | `string \| undefined`               | `undefined`         | Sets the aria-describedby attribute of the drawer.                                |
-| `aria-label`       | `string \| undefined`               | `undefined`         | Sets the aria-label attribute of the drawer.                                      |
+| Name               | Type                                | Default             | Description                                                                      |
+| ------------------ | ----------------------------------- | ------------------- | -------------------------------------------------------------------------------- |
+| `modal-type`       | `modal` `non-modal` `alert`         | `modal`             | Determines whether the drawer should be displayed as modal, non-modal, or alert. |
+| `type`             | `overlay` `inline`                  | `false`             | Determines whether the drawer should be displayed inline or as an overlay        |
+| `position`         | `DrawerPosition \| undefined`       | `start`             | Sets the position of the drawer (left/right).                                    |
+| `size`             | `DrawerSize \| number \| undefined` | `DrawerSize.medium` | Sets the control size of the drawer.                                             |
+| `open`             | `boolean`                           | `false`             | Sets the drawer to be open.                                                      |
+| `aria-labelledby`  | `string \| undefined`               | `undefined`         | Sets the aria-labelledby attribute of the drawer.                                |
+| `aria-describedby` | `string \| undefined`               | `undefined`         | Sets the aria-describedby attribute of the drawer.                               |
+| `aria-label`       | `string \| undefined`               | `undefined`         | Sets the aria-label attribute of the drawer.                                     |
 
 ### **Events**
 
-| Name          | Type          | Description                                |
-| ------------- | ------------- | ------------------------------------------ |
-| `openChanged` | `CustomEvent` | Fires when the drawer is opened or closed. |
-| `dismiss`     | `CustomEvent` | Fires when the drawer is dismissed.        |
+| Name           | Type          | Description                                |
+| -------------- | ------------- | ------------------------------------------ |
+| `onOpenChange` | `CustomEvent` | Fires when the drawer is opened or closed. |
+| `dismiss`      | `CustomEvent` | Fires when the drawer is dismissed.        |
 
 ### **Methods**
 
@@ -103,10 +98,11 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 ### **CSS Variables**
 
-| Name                       | Description                           |
-| -------------------------- | ------------------------------------- |
-| `--drawer-overflow-border` | Used to set the overflow border color |
-| `--drawer-size`            | Used to set the overflow border color |
+| Name                       | Description                                             |
+| -------------------------- | ------------------------------------------------------- |
+| `--drawer-overflow-border` | Used to set the overflow border color                   |
+| `--drawer-size`            | Used to set the overflow border color                   |
+| `--drawer-separator`       | Used to set the border color between drawer and content |
 
 ## **Accessiblity**
 
@@ -154,11 +150,12 @@ The Fluent WC3 Drawer extends `FASTElement`
 
 **Component and Slot Mapping**
 
-| Fluent UI React 9          | Fluent Web Components 3 |
-| -------------------------- | ----------------------- |
-| `<DrawerOverlay>`          | `type="overlay"`        |
-| `<DrawerInline>`           | `type="inline"`         |
-| `<DrawerHeaderTitle>`      | `slot="title"`          |
-| `<DrawerBody> `            | `default slot`          |
-| `<DrawerHeaderNavigation>` | `slot="navigation"`     |
-| `<DrawerFooter>`           | `slot="footer"`         |
+| Fluent UI React 9               | Fluent Web Components 3 |
+| ------------------------------- | ----------------------- |
+| `<DrawerOverlay>`               | `type="overlay"`        |
+| `<DrawerInline>`                | `type="inline"`         |
+| `<DrawerHeaderTitle>`           | `slot="title"`          |
+| `<DrawerHeaderTitle action="">` | `slot="action"`         |
+| `<DrawerBody> `                 | `default slot`          |
+| `<DrawerHeaderNavigation>`      | `slot="navigation"`     |
+| `<DrawerFooter>`                | `slot="footer"`         |

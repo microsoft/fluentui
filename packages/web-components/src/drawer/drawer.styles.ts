@@ -3,7 +3,6 @@ import { display } from '@microsoft/fast-foundation';
 import {
   colorNeutralBackground1,
   colorNeutralForeground1,
-  colorNeutralStroke2,
   colorStrokeFocus1,
   colorStrokeFocus2,
   colorTransparentStroke,
@@ -111,6 +110,8 @@ export const styles = css`
     font: inherit;
     background-color: transparent;
     border: 1px solid ${colorTransparentStroke};
+    border-right-color: var(--drawer-separator, ${colorTransparentStroke});
+    border-left-color: ${colorTransparentStroke};
     top: 0;
     bottom: 0;
     border-radius: 0;
@@ -124,6 +125,11 @@ export const styles = css`
     width: var(--drawer-size, 592px);
   }
 
+  :host([position='end']) dialog {
+    border-right-color: ${colorTransparentStroke};
+    border-left-color: var(--drawer-separator, ${colorTransparentStroke});
+  }
+
   :host([open][type='inline']),
   :host([open][modal-type='non-modal']) {
     width: var(--drawer-size, 592px);
@@ -135,16 +141,6 @@ export const styles = css`
 
   :host([modal-type='non-modal']) dialog::backdrop {
     display: none;
-  }
-
-  :host([separator]) dialog {
-    border-right-color: ${colorNeutralStroke2};
-    border-left-color: ${colorTransparentStroke};
-  }
-
-  :host([separator][position='end']) dialog {
-    border-right-color: ${colorTransparentStroke};
-    border-left-color: ${colorNeutralStroke2};
   }
 
   .drawer {

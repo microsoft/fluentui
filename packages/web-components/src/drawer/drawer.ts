@@ -101,16 +101,6 @@ export class Drawer extends FASTElement {
   public position?: DrawerPosition;
 
   /**
-   * Determines whether the drawer has a separator line.
-   * @public
-   * @remarks
-   * HTML Attribute: separator
-   * @defaultValue false
-   */
-  @attr({ mode: 'boolean' })
-  public separator: boolean = false;
-
-  /**
    * Sets the size of the drawer (small/medium/large).
    * @public
    * @remarks
