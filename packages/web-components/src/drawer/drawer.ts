@@ -76,14 +76,9 @@ export class Drawer extends FASTElement {
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
 
-  /**
-   * Enables standard behavior according to the HTML dialog spec where the focus trap involves setting outside elements inert.
-   * @public
-   * @remarks
-   * HTML Attribute: trap-focus
-   */
-  @attr({ attribute: 'trap-focus', mode: 'boolean' })
-  public trapFocus: boolean = false;
+  get focusIsTrappable() {
+    return !(this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal);
+  }
 
   /**
    * Sets the type of the drawer (overlay/inline).
@@ -104,16 +99,6 @@ export class Drawer extends FASTElement {
    */
   @attr
   public position?: DrawerPosition;
-
-  /**
-   * Determines whether the drawer should be open by default.
-   * @public
-   * @remarks
-   * HTML Attribute: open-default
-   * @defaultValue false
-   */
-  @attr({ attribute: 'open-default', mode: 'boolean' })
-  public openDefault: boolean = false;
 
   /**
    * Determines whether the drawer has a separator line.
@@ -155,10 +140,12 @@ export class Drawer extends FASTElement {
    * @public
    */
   public openChanged(oldValue: boolean, newValue: boolean): void {
-    if (newValue && !oldValue) {
-      this.show();
-    } else if (!newValue && oldValue) {
-      this.close();
+    if (newValue !== oldValue) {
+      if (newValue && !oldValue) {
+        this.show();
+      } else if (!newValue && oldValue) {
+        this.close();
+      }
     }
   }
 
@@ -169,12 +156,12 @@ export class Drawer extends FASTElement {
   private isTrappingFocus: boolean = false;
 
   /**
-   * Sets the component state based on the `openDefault` property.
-   * If `openDefault` is true and the drawer is not open, it opens the drawer.
+   * Sets the component state based on the `open` property.
+   * If `open` is true and the drawer is not open, it opens the drawer.
    * @public
    */
   public setComponent(): void {
-    if (this.openDefault && !this.open) {
+    if (this.open) {
       this.show();
     }
   }
@@ -184,8 +171,8 @@ export class Drawer extends FASTElement {
    * @public
    */
   public async show(): Promise<void> {
-    if (!this.open) {
-      this.openDrawer();
+    if (!this.dialog.open) {
+      this.handleShow();
     }
   }
 
@@ -194,8 +181,8 @@ export class Drawer extends FASTElement {
    * @public
    */
   public close(): void {
-    if (this.open) {
-      this.closeDrawer();
+    if (this.dialog.open) {
+      this.handleClose();
     }
   }
 
@@ -204,7 +191,7 @@ export class Drawer extends FASTElement {
    * Triggers the opening animation and updates the overflow styles and focus trap if necessary.
    * @private
    */
-  private openDrawer(): void {
+  private handleShow(): void {
     this.open = true;
     if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal) {
       this.dialog.show();
@@ -216,7 +203,7 @@ export class Drawer extends FASTElement {
 
     Updates.enqueue(() => {
       this.setOverflowStyles();
-      if (this.trapFocus) {
+      if (this.focusIsTrappable) {
         this.updateTrapFocus(true);
       }
     });
@@ -228,7 +215,7 @@ export class Drawer extends FASTElement {
    * Triggers the closing animation.
    * @private
    */
-  private closeDrawer(): void {
+  private handleClose(): void {
     this.closing = true;
     Updates.enqueue(() => {
       this.triggerAnimation();
@@ -245,7 +232,6 @@ export class Drawer extends FASTElement {
     if (this.closing) {
       this.classList.add('closing');
     }
-    console.log('animating');
     this.dialog.addEventListener(eventAnimationEnd, this.animationEndHandlerFunction);
   }
 
@@ -273,36 +259,22 @@ export class Drawer extends FASTElement {
    * @param {KeyboardEvent} e - The keyboard event.
    * @private
    */
-  private handleDocumentKeydown = (e: KeyboardEvent): void => {
+  private handleDocumentKeydown = (e: KeyboardEvent): boolean | void => {
     if (!e.defaultPrevented && this.open) {
       switch (e.key) {
         case keyTab:
           this.handleTabKeyDown(e);
           break;
+        case keyEscape:
+          e.preventDefault();
+          if (this.modalType !== DrawerModalType.alert) {
+            this.close();
+            this.$emit('dismiss');
+          }
+          break;
+        default:
+          return true;
       }
-    }
-  };
-
-  /**
-   * Handles the keydown event.
-   *
-   * @public
-   * @param {KeyboardEvent} e - The keyboard event.
-   * @returns {boolean | void} - Returns true by default, void if the key is Escape.
-   */
-  public handleKeydown = (e: KeyboardEvent): boolean | void => {
-    if (e.defaultPrevented) {
-      return;
-    }
-    switch (e.key) {
-      case keyEscape:
-        if (this.modalType !== DrawerModalType.alert) {
-          this.close();
-          this.$emit('dismiss');
-        }
-        break;
-      default:
-        return true;
     }
   };
 
@@ -327,7 +299,7 @@ export class Drawer extends FASTElement {
    * @private
    */
   private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (!this.trapFocus || !this.open) {
+    if (!this.focusIsTrappable || !this.open) {
       return;
     }
 
@@ -454,7 +426,7 @@ export class Drawer extends FASTElement {
    * @internal
    */
   private shouldTrapFocus = (): boolean => {
-    return this.trapFocus && this.open;
+    return this.focusIsTrappable && this.open;
   };
 
   /**

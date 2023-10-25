@@ -51,6 +51,11 @@ export const styles = css`
     color: ${colorNeutralForeground1};
   }
 
+  :host([open][type='inline']),
+  :host([open][modal-type='non-modal']) {
+    width: 100%;
+  }
+
   :host([position='end']) {
     right: 0;
     left: unset;
@@ -65,11 +70,26 @@ export const styles = css`
     width: 320px;
   }
 
+  :host([open][size='small'][type='inline']),
+  :host([open][size='small'][modal-type='non-modal']) {
+    width: 320px;
+  }
+
   :host([size='large']) dialog {
     width: 940px;
   }
 
+  :host([open][size='large'][type='inline']),
+  :host([open][size='large'][modal-type='non-modal']) {
+    width: 940px;
+  }
+
   :host([size='full']) dialog {
+    width: 100%;
+  }
+
+  :host([open][size='large'][type='inline']),
+  :host([open][size='large'][modal-type='non-modal']) {
     width: 100%;
   }
 
@@ -104,6 +124,7 @@ export const styles = css`
     width: var(--drawer-size, 592px);
   }
 
+  :host([open][type='inline']),
   :host([open][modal-type='non-modal']) {
     width: var(--drawer-size, 592px);
   }

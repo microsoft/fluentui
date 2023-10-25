@@ -15,15 +15,12 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
       aria-label="${x => x.ariaLabel}"
-      ?trap-focus="${x => x.trapFocus}"
-      ?open-default="${x => x.openDefault}"
       ?separator="${x => x.separator}"
       ?open="${x => x.open}"
       size="${x => x.size}"
       position="${x => x.position}"
       modal-type="${x => x.modalType}"
       type="${x => x.type}"
-      @keydown="${(x, c) => x.handleKeydown(c.event as KeyboardEvent)}"
       @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
       ${ref('dialog')}
     >
