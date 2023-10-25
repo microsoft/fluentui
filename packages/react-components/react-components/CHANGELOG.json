@@ -1322,7 +1322,7 @@
             "author": "marcosvmmoura@gmail.com",
             "package": "@fluentui/react-drawer",
             "commit": "fbaba50e246b708d0fcac7d79d0f99df5228ce15",
-            "comment": "fix: remove defaultOpen prop from InlineDrawer as it had no effect"
+            "comment": "fix: remove defaultOpen prop from DrawerInline as it had no effect"
           },
           {
             "author": "marcosvmmoura@gmail.com",
