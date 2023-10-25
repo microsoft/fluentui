@@ -111,6 +111,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useMessageBarTitleStyles_unstable: CustomStyleHook;
   useMessageBarActionsStyles_unstable: CustomStyleHook;
   useMessageBarGroupStyles_unstable: CustomStyleHook;
+  useToasterStyles_unstable: CustomStyleHook;
 }>;
 
 /**
