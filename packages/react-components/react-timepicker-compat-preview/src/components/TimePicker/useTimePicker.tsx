@@ -102,6 +102,11 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     [freeform, selectTime],
   );
 
+  /**
+   * useComboboxBaseState sets activeOption to the 1st option in an useEffect when children changes.
+   * But for freeform TimePicker we set activeOption to undefined when input value doesn't match any option.
+   * Therefore memoize the children to prevent the unnecessary useComboboxBaseState useEffect.
+   */
   const children = React.useMemo(
     () =>
       options.map(date => (
@@ -174,12 +179,14 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   // Base Combobox has activeOption default to first option in dropdown even if it doesn't match input value, and Enter key will select it.
   // This effect ensures that the activeOption is cleared when the input doesn't match any option.
   // This behavior is specific to a freeform TimePicker where the input value is treated as a valid time even if it's not in the dropdown.
-  const prefixNotMatchActiveOption = value && (!activeOption || activeOption.text.indexOf(value) !== 0);
+  const prefixMatchActiveOption = value && activeOption?.text && activeOption.text.indexOf(value) === 0;
   React.useEffect(() => {
-    if (freeform && activeOption && prefixNotMatchActiveOption) {
-      setActiveOption(undefined);
+    if (!freeform || prefixMatchActiveOption) {
+      return;
     }
-  }, [activeOption, freeform, prefixNotMatchActiveOption, setActiveOption]);
+
+    setActiveOption(undefined);
+  }, [freeform, setActiveOption, prefixMatchActiveOption]);
 
   const selectTimeFromValue = React.useCallback(
     (e: React.KeyboardEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>) => {
