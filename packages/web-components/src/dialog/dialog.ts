@@ -1,7 +1,6 @@
 import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { isTabbable } from 'tabbable';
 import { keyEscape, keyTab } from '@microsoft/fast-web-utilities';
-import { Button as FluentButton } from '../button/button.js';
 import { DialogModalType } from './dialog.options.js';
 
 /**
@@ -49,20 +48,6 @@ export class Dialog extends FASTElement {
 
   /**
    * @public
-   * The title action elements
-   */
-  @observable
-  public titleAction: HTMLElement[] = [];
-
-  /**
-   * @public
-   * The default title action button
-   */
-  @observable
-  public defaultTitleAction?: FluentButton;
-
-  /**
-   * @public
    * The ID of the element that describes the dialog
    */
   @attr({ attribute: 'aria-describedby' })
@@ -88,13 +73,6 @@ export class Dialog extends FASTElement {
    */
   @attr({ mode: 'boolean' })
   public open: boolean = false;
-
-  /**
-   * @public
-   * Indicates whether the dialog has a title action
-   */
-  @attr({ mode: 'boolean', attribute: 'no-title-action' })
-  public noTitleAction: boolean = false;
 
   /**
    * @private
