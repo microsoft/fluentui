@@ -6,7 +6,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
     const legends: ILegend[] = [
       {
         title: 'Legend 1',
-        color: getColorFromToken(DataVizPalette.color5),
+        color: getColorFromToken(DataVizPalette.color11, true),
         action: () => {
           console.log('Legend1 clicked');
         },
@@ -72,7 +72,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 7',
-        color: getColorFromToken(DataVizPalette.color11),
+        color: getColorFromToken(DataVizPalette.color11, true),
         action: () => {
           console.log('Legend7 clicked');
         },
@@ -105,7 +105,7 @@ export class LegendOverflowExample extends React.Component<{}, {}> {
       },
       {
         title: 'Legend 10',
-        color: getColorFromToken(DataVizPalette.color14),
+        color: getColorFromToken(DataVizPalette.color11, true),
         action: () => {
           console.log('Legend10 clicked');
         },
