@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Callout): Calculate max height when the targetEdge is top using bottom and top bounds of the callout.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
