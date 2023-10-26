@@ -1,6 +1,5 @@
 import type { DialogProps } from '@fluentui/react-dialog';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import type { MotionState } from '@fluentui/react-motion-preview';
 
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
 import { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface';
@@ -36,11 +35,4 @@ export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> &
  * State used in rendering OverlayDrawer
  */
 export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> &
-  Required<
-    DrawerBaseState & {
-      /**
-       * Motion state for the drawer backdrop.
-       */
-      backdropMotion: MotionState<HTMLDivElement>;
-    }
-  >;
+  Required<DrawerBaseState>;

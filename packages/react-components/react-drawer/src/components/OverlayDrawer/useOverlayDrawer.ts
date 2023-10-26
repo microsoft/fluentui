@@ -23,25 +23,20 @@ export const useOverlayDrawer_unstable = (
   const { open, size, position } = useDrawerDefaultProps(props);
   const { modalType = 'modal', inertTrapFocus, defaultOpen = false, onOpenChange } = props;
 
-  const drawerMotion = useMotion<HTMLDivElement>(open);
-  const backdropMotion = useMotion<HTMLDivElement>(open);
+  const motion = useMotion<HTMLDivElement>(open);
 
-  const backdropInnerProps = slot.resolveShorthand(props.backdrop);
-  const hasCustomBackdrop = modalType !== 'non-modal' && backdropInnerProps !== null;
+  const backdropProps = slot.resolveShorthand(props.backdrop);
+  const hasCustomBackdrop = modalType !== 'non-modal' && backdropProps !== null;
 
-  const backdropProps = {
-    ...backdropInnerProps,
-    ref: useMergedRefs(backdropMotion.ref, backdropInnerProps?.ref),
-  };
   const root = slot.always(
     {
       ...props,
-      backdrop: hasCustomBackdrop ? backdropProps : null,
+      backdrop: hasCustomBackdrop ? { ...backdropProps } : null,
     },
     {
       elementType: OverlayDrawerSurface,
       defaultProps: {
-        ref: useMergedRefs(ref, drawerMotion.ref),
+        ref: useMergedRefs(ref, motion.ref),
       },
     },
   );
@@ -53,7 +48,7 @@ export const useOverlayDrawer_unstable = (
       onOpenChange,
       inertTrapFocus,
       modalType,
-      /*
+      /**
        * children is not needed here because we construct the children in the render function,
        * but it's required by DialogProps
        */
@@ -75,7 +70,6 @@ export const useOverlayDrawer_unstable = (
 
     size,
     position,
-    motion: drawerMotion,
-    backdropMotion,
+    motion,
   };
 };
