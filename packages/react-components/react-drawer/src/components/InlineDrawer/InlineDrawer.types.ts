@@ -2,14 +2,14 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 
 import { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
 
-export type DrawerInlineSlots = {
+export type InlineDrawerSlots = {
   root: Slot<'div'>;
 };
 
 /**
- * DrawerInline Props
+ * InlineDrawer Props
  */
-export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> &
+export type InlineDrawerProps = ComponentProps<InlineDrawerSlots> &
   DrawerBaseProps & {
     /**
      * Whether the drawer has a separator line.
@@ -20,8 +20,8 @@ export type DrawerInlineProps = ComponentProps<DrawerInlineSlots> &
   };
 
 /**
- * State used in rendering DrawerInline
+ * State used in rendering InlineDrawer
  */
-export type DrawerInlineState = Required<
-  ComponentState<DrawerInlineSlots> & DrawerBaseState & Pick<DrawerInlineProps, 'separator'>
+export type InlineDrawerState = Required<
+  ComponentState<InlineDrawerSlots> & DrawerBaseState & Pick<InlineDrawerProps, 'separator'>
 >;

@@ -3,22 +3,22 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import type { MotionState } from '@fluentui/react-motion-preview';
 
 import type { DrawerBaseProps, DrawerBaseState } from '../../shared/DrawerBase.types';
-import { DrawerOverlaySurfaceProps } from './DrawerOverlaySurface';
+import { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface';
 
 /**
- * DrawerOverlay slots
+ * OverlayDrawer slots
  */
-export type DrawerOverlaySlots = {
+export type OverlayDrawerSlots = {
   /**
    * Slot for the root element.
    */
-  root: Slot<DrawerOverlaySurfaceProps>;
+  root: Slot<OverlayDrawerSurfaceProps>;
 };
 
 /**
- * DrawerOverlay internal slots for when using with composition API
+ * OverlayDrawer internal slots for when using with composition API
  */
-export type DrawerOverlayInternalSlots = DrawerOverlaySlots & {
+export type OverlayDrawerInternalSlots = OverlayDrawerSlots & {
   /**
    * Slot for the dialog component that wraps the drawer.
    */
@@ -26,16 +26,16 @@ export type DrawerOverlayInternalSlots = DrawerOverlaySlots & {
 };
 
 /**
- * DrawerOverlay Props
+ * OverlayDrawer Props
  */
-export type DrawerOverlayProps = ComponentProps<DrawerOverlaySlots> &
+export type OverlayDrawerProps = ComponentProps<OverlayDrawerSlots> &
   Pick<DialogProps, 'modalType' | 'onOpenChange' | 'inertTrapFocus' | 'defaultOpen'> &
   DrawerBaseProps;
 
 /**
- * State used in rendering DrawerOverlay
+ * State used in rendering OverlayDrawer
  */
-export type DrawerOverlayState = Omit<ComponentState<DrawerOverlayInternalSlots>, 'backdrop'> &
+export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> &
   Required<
     DrawerBaseState & {
       /**

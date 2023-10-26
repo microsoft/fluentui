@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, OverlayDrawer } from '@fluentui/react-drawer';
 import { Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -8,7 +8,7 @@ export const Overlay = () => {
 
   return (
     <div>
-      <DrawerOverlay open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -27,7 +27,7 @@ export const Overlay = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
         Open Drawer
@@ -40,9 +40,9 @@ Overlay.parameters = {
   docs: {
     description: {
       story: [
-        'DrawerOverlay contains supplementary content and are used for complex creation, edit, or management experiences.',
+        'OverlayDrawer contains supplementary content and is used for complex creation, edit, or management experiences.',
         'For example, viewing details about an item in a list or editing settings.',
-        'By default, drawer is blocking and signifies that the users full attention is required when making configurations.',
+        "By default, drawer is blocking and signifies that the user's full attention is required when making configurations.",
       ].join('\n'),
     },
   },

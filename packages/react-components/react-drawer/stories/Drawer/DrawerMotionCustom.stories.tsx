@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerInline } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-drawer';
 import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 import { useMotion } from '@fluentui/react-motion-preview';
@@ -72,7 +72,7 @@ export const MotionCustom = () => {
 
   return (
     <div className={styles.root}>
-      <DrawerInline
+      <InlineDrawer
         separator
         open={motion}
         className={mergeClasses(
@@ -100,7 +100,7 @@ export const MotionCustom = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerInline>
+      </InlineDrawer>
 
       <div
         className={mergeClasses(
