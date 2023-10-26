@@ -3,16 +3,39 @@
 `useMotion` accepts a `MotionShorthand` param and a optional `MotionOptions`. It returns a `MotionState` object. See below the definitions of these types.
 
 ```tsx
-import { useMotion } from '@fluentui/react-motion';
+import * as React from 'react';
 
-function MyComponent() {
+import { makeStyles, mergeClasses } from '@fluentui/react-components';
+import { useMotion } from '@fluentui/react-motion-preview';
+
+const useStyles = makeStyles({
+  root: {
+    width: '200px',
+    height: '200px',
+    opacity: 0,
+    transitionDuration: '300ms',
+    transitionTimingFunction: 'ease-out',
+  },
+
+  visible: {
+    opacity: 1,
+  },
+});
+
+export function MyComponent() {
+  const styles = useStyles();
+
   const [isVisible, setIsVisible] = React.useState(false);
   const motion = useMotion(isVisible, { animateOnFirstMount: false });
 
   return (
     <>
       <button onClick={() => setIsVisible(!isVisible)}>Toggle</button>
-      <div style={{ opacity: motion.type.active ? 1 : 0 }}>Hello World</div>
+      {motion.canRender && (
+        <div ref={motion.ref} className={mergeClasses(styles.root, motion.active && styles.visible)}>
+          Hello World
+        </div>
+      )}
     </>
   );
 }

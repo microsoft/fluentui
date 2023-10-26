@@ -32,12 +32,14 @@ const useStyles = makeStyles({
   rectangleEnter: {
     opacity: 1,
     transform: 'translate3D(0, 0, 0) scale(1)',
+    transitionTimingFunction: 'ease-out',
     transitionDuration: `${tokens.durationSlow}, ${tokens.durationGentle}`,
   },
 
   rectangleExiting: {
     opacity: 0,
     transform: 'translate3D(100%, 0, 0)',
+    transitionTimingFunction: 'ease-in-out',
     transitionDuration: `${tokens.durationUltraSlow}, ${tokens.durationSlow}`,
   },
 });
