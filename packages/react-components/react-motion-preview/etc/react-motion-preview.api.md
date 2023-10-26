@@ -46,9 +46,6 @@ export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthan
 // @public (undocumented)
 export const useMotionClassNames: (motion: MotionState, motionStyles: MotionClassNames) => string;
 
-// @internal
-export function useMotionPresence<Element extends HTMLElement>(presence: boolean, options?: MotionOptions): MotionState<Element>;
-
 // (No @packageDocumentation comment for this package)
 
 ```
