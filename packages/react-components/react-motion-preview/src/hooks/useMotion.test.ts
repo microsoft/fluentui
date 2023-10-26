@@ -42,7 +42,10 @@ const renderHookWithRef = (
 
 const jumpAnimationFrame = () => {
   // requestAnimationFrame
-  act(() => jest.advanceTimersToNextTimer());
+  act(() => {
+    jest.advanceTimersToNextTimer();
+    jest.advanceTimersToNextTimer();
+  });
 };
 
 const jumpAnimationTimeout = (timeout: number = cssDuration) => {
@@ -105,7 +108,7 @@ describe('useMotion', () => {
       expect(result.current.active).toBe(false);
       expect(result.current.canRender).toBe(true);
 
-      act(() => jest.advanceTimersToNextTimer());
+      jumpAnimationFrame();
 
       expect(result.current.active).toBe(true);
     });
