@@ -1,34 +1,24 @@
 import * as React from 'react';
-import { Label, makeStyles, Radio, RadioGroup, tokens, useId } from '@fluentui/react-components';
 
-const useStyles = makeStyles({
-  field: {
-    display: 'grid',
-    gridRowGap: tokens.spacingVerticalS,
-  },
-});
+import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const Required = () => {
-  const styles = useStyles();
-  const labelId = useId('label-');
-  return (
-    <div className={styles.field}>
-      <Label id={labelId} required>
-        Favorite Fruit
-      </Label>
-      <RadioGroup aria-labelledby={labelId} required>
-        <Radio value="apple" label="Apple" />
-        <Radio value="pear" label="Pear" />
-        <Radio value="banana" label="Banana" />
-        <Radio value="orange" label="Orange" />
-      </RadioGroup>
-    </div>
-  );
-};
+export const Required = () => (
+  <Field label="Favorite Fruit" required>
+    <RadioGroup>
+      <Radio value="apple" label="Apple" />
+      <Radio value="pear" label="Pear" />
+      <Radio value="banana" label="Banana" />
+      <Radio value="orange" label="Orange" />
+    </RadioGroup>
+  </Field>
+);
+
 Required.parameters = {
   docs: {
     description: {
-      story: 'Use the `required` prop on `RadioGroup` to indicate that one of the radio items must be selected.',
+      story:
+        'Use the `required` prop to indicate that one of the radio items must be selected. ' +
+        'Or, if the RadioGroup is inside a Field, it will inherit the `required` prop from the Field.',
     },
   },
 };
