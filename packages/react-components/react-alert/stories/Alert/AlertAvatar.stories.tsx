@@ -5,9 +5,11 @@ import { Alert } from '@fluentui/react-alert';
 
 export const Avatar = () => (
   <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+    {/* eslint-disable-next-line deprecation/deprecation */}
     <Alert action="Undo" avatar={{ name: 'Jane Doe', size: 24, color: 'dark-red' }}>
       sent you a message
     </Alert>
+    {/* eslint-disable-next-line deprecation/deprecation */}
     <Alert
       action={{
         icon: <DismissCircleRegular />,

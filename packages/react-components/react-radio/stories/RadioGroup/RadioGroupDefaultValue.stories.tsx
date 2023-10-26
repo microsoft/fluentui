@@ -2,9 +2,9 @@ import * as React from 'react';
 
 import { Field, Radio, RadioGroup } from '@fluentui/react-components';
 
-export const Horizontal = () => (
+export const DefaultValue = () => (
   <Field label="Favorite Fruit">
-    <RadioGroup layout="horizontal">
+    <RadioGroup defaultValue="pear">
       <Radio value="apple" label="Apple" />
       <Radio value="pear" label="Pear" />
       <Radio value="banana" label="Banana" />
@@ -13,11 +13,13 @@ export const Horizontal = () => (
   </Field>
 );
 
-Horizontal.storyName = 'Layout: horizontal';
-Horizontal.parameters = {
+DefaultValue.parameters = {
   docs: {
     description: {
-      story: 'The `horizontal` layout places each radio item in a row, with labels after the radio indicator.',
+      story:
+        'The initially selected item can be set by setting the `defaultValue` of RadioGroup. ' +
+        'Alternatively, one Radio item can have `defaultChecked` set. ' +
+        'Both methods have the same effect, but only one should be used in a given RadioGroup.',
     },
   },
 };

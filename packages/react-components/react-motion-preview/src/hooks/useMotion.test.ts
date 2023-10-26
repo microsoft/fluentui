@@ -1,6 +1,6 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { useMotion, MotionOptions, MotionShorthand, getDefaultMotionState, useIsMotion } from './useMotion';
+import { useMotion, MotionOptions, MotionShorthand, getDefaultMotionState } from './useMotion';
 
 const defaultDuration = 100;
 const renderHookWithRef = (
@@ -88,28 +88,6 @@ describe('useMotion', () => {
 
       expect(result.current.ref).toStrictEqual(defaultState.ref);
       expect(result.current.active).toStrictEqual(true);
-    });
-
-    it('should show error when motion changes to a different type', () => {
-      const spy = jest.spyOn(console, 'error').mockImplementation(() => ({}));
-      let defaultMotion: MotionShorthand = getDefaultMotionState();
-      const { rerender } = renderHook(() => useIsMotion(defaultMotion));
-
-      defaultMotion = false;
-
-      rerender();
-      expect(spy).toHaveBeenCalledTimes(1);
-      expect(spy).toHaveBeenCalledWith(
-        [
-          'useMotion: The hook needs to be called with the same typeof of shorthand on every render.',
-          'This is to ensure the internal state of the hook is stable and can be used to accurately detect the motion state.',
-          'Please make sure to not change the shorthand on subsequent renders or to use the hook conditionally.',
-          '\nCurrent shorthand:',
-          JSON.stringify(defaultMotion, null, 2),
-          '\nPrevious shorthand:',
-          JSON.stringify(getDefaultMotionState(), null, 2),
-        ].join(' '),
-      );
     });
   });
 
