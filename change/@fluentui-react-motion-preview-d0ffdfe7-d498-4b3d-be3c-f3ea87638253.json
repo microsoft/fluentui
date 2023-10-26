@@ -1,0 +1,6 @@
+{
+  "type": "minor",
+  "packageName": "@fluentui/react-motion-preview",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}
