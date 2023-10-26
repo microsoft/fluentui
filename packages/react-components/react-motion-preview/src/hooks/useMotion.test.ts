@@ -1,20 +1,19 @@
 import { act, renderHook } from '@testing-library/react-hooks';
 
-import { useMotion, MotionShorthand, UseMotionOptions } from './useMotion';
-import { getDefaultMotionState } from './useMotionPresence';
+import { useMotion, MotionShorthand, MotionOptions, getDefaultMotionState } from './useMotion';
 
-const defaultDuration = 100;
+const cssDuration = 100;
 const renderHookWithRef = (
   initialMotion: MotionShorthand,
-  initialOptions?: UseMotionOptions,
-  style: Record<string, string | undefined> = { 'transition-duration': `${defaultDuration}ms` },
+  initialOptions?: MotionOptions,
+  style: Record<string, string | undefined> = { 'transition-duration': `${cssDuration}ms` },
 ) => {
   const refEl = document.createElement('div');
   const hook = renderHook(({ motion, options }) => useMotion(motion, options), {
     initialProps: {
       motion: initialMotion,
       options: initialOptions,
-    } as { motion: MotionShorthand; options?: UseMotionOptions },
+    } as { motion: MotionShorthand; options?: MotionOptions },
   });
 
   Object.entries(style).forEach(([key, value]) => value && refEl.style.setProperty(key, value));
@@ -33,7 +32,7 @@ const renderHookWithRef = (
 
   act(() => renderRef());
 
-  function rerender(motion: MotionShorthand, options?: UseMotionOptions) {
+  function rerender(motion: MotionShorthand, options?: MotionOptions) {
     hook.rerender({ motion, options });
     act(() => renderRef());
   }
@@ -41,9 +40,29 @@ const renderHookWithRef = (
   return { ...hook, rerender };
 };
 
+const jumpAnimationFrame = () => {
+  // requestAnimationFrame
+  act(() => jest.advanceTimersToNextTimer());
+};
+
+const jumpAnimationTimeout = (timeout: number = cssDuration) => {
+  // timeout + requestAnimationFrame
+  act(() => {
+    jest.advanceTimersByTime(timeout);
+    jest.advanceTimersToNextTimer();
+  });
+};
+
 describe('useMotion', () => {
+  let computedStyleMock: jest.SpyInstance;
+
   beforeEach(() => {
     jest.useFakeTimers();
+    computedStyleMock = jest.spyOn(window, 'getComputedStyle').mockImplementation(() => {
+      return {
+        getPropertyValue: () => `${cssDuration}ms`,
+      } as unknown as CSSStyleDeclaration;
+    });
   });
 
   afterEach(() => {
@@ -92,6 +111,35 @@ describe('useMotion', () => {
     });
   });
 
+  describe('when duration is provided', () => {
+    it('should only call getComputedStyle when duration is not provided', () => {
+      const { result, rerender } = renderHookWithRef(false, { duration: 300 });
+
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
+      expect(result.current.canRender).toBe(false);
+
+      rerender(true, { duration: 300 });
+
+      expect(result.current.canRender).toBe(true);
+      expect(result.current.type).toBe('entering');
+      expect(result.current.active).toBe(false);
+
+      jumpAnimationFrame();
+      jumpAnimationTimeout();
+
+      expect(computedStyleMock).not.toHaveBeenCalled();
+
+      rerender(false);
+
+      jumpAnimationFrame();
+      jumpAnimationTimeout();
+
+      expect(computedStyleMock).toHaveBeenCalledTimes(1);
+    });
+  });
+
   describe('when presence is a MotionShorthand', () => {
     it('should return default values when presence is false', () => {
       const defaultState = getDefaultMotionState();
@@ -108,6 +156,157 @@ describe('useMotion', () => {
 
       expect(result.current.ref).toStrictEqual(defaultState.ref);
       expect(result.current.active).toStrictEqual(true);
+    });
+  });
+
+  describe('when presence changes', () => {
+    it('should toggle values starting with false', () => {
+      const { result, rerender } = renderHookWithRef(false);
+
+      act(() => jest.advanceTimersToNextTimer());
+
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
+      expect(result.current.canRender).toBe(false);
+
+      rerender(true);
+
+      expect(result.current.canRender).toBe(true);
+      expect(result.current.type).toBe('entering');
+      jumpAnimationFrame();
+
+      expect(result.current.active).toBe(true);
+
+      jumpAnimationTimeout();
+      expect(result.current.type).toBe('entered');
+
+      jumpAnimationFrame();
+      expect(result.current.type).toBe('idle');
+
+      rerender(false);
+
+      expect(result.current.type).toBe('exiting');
+
+      jumpAnimationFrame();
+      expect(result.current.active).toBe(false);
+
+      jumpAnimationTimeout();
+      expect(result.current.type).toBe('exited');
+
+      jumpAnimationFrame();
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
+      expect(result.current.canRender).toBe(false);
+    });
+
+    it('should toggle values starting with true', () => {
+      const { result, rerender } = renderHookWithRef(true);
+
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.active).toBe(true);
+      expect(result.current.canRender).toBe(true);
+
+      rerender(false);
+
+      expect(result.current.type).toBe('exiting');
+
+      jumpAnimationFrame();
+      expect(result.current.active).toBe(false);
+
+      jumpAnimationTimeout();
+      expect(result.current.type).toBe('exited');
+
+      jumpAnimationFrame();
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.canRender).toBe(false);
+      expect(result.current.active).toBe(false);
+    });
+  });
+
+  describe.each([
+    { message: 'with transition', styles: { 'transition-duration': '100ms' } },
+    { message: 'with long transition', styles: { 'transition-duration': '1000ms' } },
+    { message: 'with animation', styles: { 'animation-duration': '100ms' } },
+    { message: 'with long animation', styles: { 'animation-duration': '1000ms' } },
+  ])('when presence changes - $message', ({ styles }) => {
+    it('should toggle values starting with false', () => {
+      const { result, rerender } = renderHookWithRef(false, {}, styles);
+
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
+      expect(result.current.canRender).toBe(false);
+
+      rerender(true);
+
+      expect(result.current.type).toBe('entering');
+
+      jumpAnimationFrame();
+      expect(result.current.active).toBe(true);
+
+      jumpAnimationTimeout();
+      expect(result.current.type).toBe('entered');
+
+      jumpAnimationFrame();
+      expect(result.current.type).toBe('idle');
+
+      rerender(false);
+
+      expect(result.current.type).toBe('exiting');
+
+      jumpAnimationFrame();
+      expect(result.current.active).toBe(false);
+
+      jumpAnimationTimeout();
+      expect(result.current.type).toBe('exited');
+
+      jumpAnimationFrame();
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
+    });
+  });
+
+  describe.each([
+    { message: 'with no transition', styles: { 'transition-duration': '0' } },
+    { message: 'with no animation', styles: { 'animation-duration': '0' } },
+  ])('when presence changes - $message', ({ styles }) => {
+    it('should toggle values starting with false', () => {
+      const { result, rerender } = renderHookWithRef(false, {}, styles);
+
+      expect(typeof result.current.ref).toBe('function');
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
+      expect(result.current.canRender).toBe(false);
+
+      rerender(true);
+
+      expect(result.current.type).toBe('entering');
+
+      jumpAnimationFrame();
+      expect(result.current.active).toBe(true);
+
+      jumpAnimationFrame();
+      jumpAnimationTimeout(0);
+      expect(result.current.type).toBe('entered');
+
+      jumpAnimationFrame();
+      expect(result.current.type).toBe('idle');
+
+      rerender(false);
+
+      expect(result.current.type).toBe('exiting');
+
+      jumpAnimationFrame();
+      expect(result.current.active).toBe(false);
+
+      jumpAnimationFrame();
+      jumpAnimationTimeout(0);
+      expect(result.current.type).toBe('exited');
+
+      jumpAnimationFrame();
+      expect(result.current.type).toBe('unmounted');
+      expect(result.current.active).toBe(false);
     });
   });
 });
