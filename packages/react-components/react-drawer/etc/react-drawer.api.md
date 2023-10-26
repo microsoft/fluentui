@@ -154,9 +154,7 @@ export type OverlayDrawerSlots = {
 };
 
 // @public
-export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> & Required<DrawerBaseState & {
-    backdropMotion: MotionState<HTMLDivElement>;
-}>;
+export type OverlayDrawerState = Omit<ComponentState<OverlayDrawerInternalSlots>, 'backdrop'> & Required<DrawerBaseState>;
 
 // @public
 export const renderDrawer_unstable: (state: DrawerState) => JSX.Element;
