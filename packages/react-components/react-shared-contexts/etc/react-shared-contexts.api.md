@@ -130,6 +130,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useMessageBarTitleStyles_unstable: CustomStyleHook;
     useMessageBarActionsStyles_unstable: CustomStyleHook;
     useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -241,6 +242,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useMessageBarTitleStyles_unstable: CustomStyleHook;
     useMessageBarActionsStyles_unstable: CustomStyleHook;
     useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -352,6 +354,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useMessageBarTitleStyles_unstable: CustomStyleHook;
     useMessageBarActionsStyles_unstable: CustomStyleHook;
     useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

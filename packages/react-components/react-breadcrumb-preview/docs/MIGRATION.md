@@ -55,7 +55,7 @@ BreadcrumbItem component contains similar props in V9.
 | `ariaLabel`         |                 |
 | `className`         |                 |
 | `componentRef`      |                 |
-| `dividerAs`         | `dividerType`   |
+| `dividerAs`         |                 |
 | `focusZoneProps`    |                 |
 | `maxDisplayedItems` |                 |
 |                     | `size`          |
@@ -85,7 +85,7 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 | `className`            |                 |
 | `content`              |                 |
 | `design`               |                 |
-|                        | `dividerType`   |
+|                        |                 |
 | `size`                 | `size`          |
 | `styles`               |                 |
 | `variables`            |                 |

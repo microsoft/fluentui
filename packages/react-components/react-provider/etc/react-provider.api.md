@@ -135,6 +135,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useMessageBarTitleStyles_unstable: (state: unknown) => void;
         useMessageBarActionsStyles_unstable: (state: unknown) => void;
         useMessageBarGroupStyles_unstable: (state: unknown) => void;
+        useToasterStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

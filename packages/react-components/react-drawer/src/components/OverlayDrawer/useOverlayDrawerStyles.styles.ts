@@ -59,6 +59,10 @@ const useBackdropStyles = makeStyles({
     transitionProperty: 'opacity',
     transitionTimingFunction: tokens.curveEasyEase,
     willChange: 'opacity',
+
+    '@media screen and (prefers-reduced-motion: reduce)': {
+      transitionDuration: '0.001ms',
+    },
   },
 
   visible: {

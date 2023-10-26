@@ -21,8 +21,6 @@ describe('BreadcrumbItem', () => {
     },
   });
 
-  // create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<BreadcrumbItem>Default BreadcrumbItem</BreadcrumbItem>);
     expect(result.container).toMatchInlineSnapshot(`

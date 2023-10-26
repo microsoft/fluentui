@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
@@ -5,6 +6,9 @@ import { tokens, typographyStyles } from '@fluentui/react-theme';
 import type { InfoButtonSlots, InfoButtonState } from './InfoButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+/**
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
+ */
 export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
   root: 'fui-InfoButton',
   // this className won't be used, but it's needed to satisfy the type checker
@@ -14,6 +18,8 @@ export const infoButtonClassNames: SlotClassNames<InfoButtonSlots> = {
 
 /**
  * Styles for the root slot
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 const useButtonStyles = makeStyles({
   base: {
