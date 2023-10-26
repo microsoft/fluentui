@@ -3940,6 +3940,281 @@ exports[`createYAxisLabels should truncate y-axis labels when their length excee
 </g>
 `;
 
+exports[`domainRageOfVerticalNumeric should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 82,
+  "rStartValue": 13,
+}
+`;
+
+exports[`domainRageOfVerticalNumeric should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 10,
+  "dStartValue": 30,
+  "rEndValue": 82,
+  "rStartValue": 13,
+}
+`;
+
+exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis 1`] = `
+Object {
+  "dEndValue": 2021-01-02T18:30:00.000Z,
+  "dStartValue": 2021-01-01T18:30:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 2021-01-01T18:30:00.000Z,
+  "dStartValue": 2021-01-02T18:30:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis when tickValues are provided 1`] = `
+Object {
+  "dEndValue": 2021-01-03T18:30:00.000Z,
+  "dStartValue": 2020-12-31T18:30:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfNumericForAreaChart should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfNumericForAreaChart should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 10,
+  "dStartValue": 30,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 6,
+}
+`;
+
+exports[`domainRangeOfNumericForHorizontalBarChartWithAxis should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 30,
+  "rEndValue": 89,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfVSBCNumeric should return domain and range values correctly for numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 82,
+  "rStartValue": 13,
+}
+`;
+
+exports[`domainRangeOfVSBCNumeric should return domain and range values correctly for numeric x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 10,
+  "dStartValue": 30,
+  "rEndValue": 82,
+  "rStartValue": 13,
+}
+`;
+
+exports[`domainRangeOfXStringAxis should return domain and range values correctly for string x-axis 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`domainRangeOfXStringAxis should return domain and range values correctly for string x-axis when layout direction is RTL 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 5,
+  "rStartValue": 90,
+}
+`;
+
+exports[`findHBCWANumericMinMaxOfY should return empty minimum and maximum values for non numeric y-axis 1`] = `
+Object {
+  "endValue": 0,
+  "startValue": 0,
+}
+`;
+
+exports[`findHBCWANumericMinMaxOfY should return minimum and maximum values for numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findNumericMinMaxOfY should return minimum and maximum values for line chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findVSBCNumericMinMaxOfY should return minimum and maximum values for numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findVerticalNumericMinMaxOfY should return minimum and maximum values for numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`findVerticalNumericMinMaxOfY should return minimum and maximum values for numeric y-axis when line data is also provided 1`] = `
+Object {
+  "endValue": 50,
+  "startValue": 10,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for charts with string x-axis 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for horizontal bar chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 0,
+  "rEndValue": 90,
+  "rStartValue": 6,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for line chart with date x-axis 1`] = `
+Object {
+  "dEndValue": 2021-01-02T18:30:00.000Z,
+  "dStartValue": 2021-01-01T18:30:00.000Z,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for line chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 90,
+  "rStartValue": 5,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for vertical bar chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 82,
+  "rStartValue": 13,
+}
+`;
+
+exports[`getDomainNRangeValues should return domain and range values correctly for vertical stacked bar chart with numeric x-axis 1`] = `
+Object {
+  "dEndValue": 30,
+  "dStartValue": 10,
+  "rEndValue": 82,
+  "rStartValue": 13,
+}
+`;
+
+exports[`getDomainNRangeValues should return empty domain and range values for charts that don't support date x-axis 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 0,
+  "rStartValue": 0,
+}
+`;
+
+exports[`getDomainNRangeValues should return empty domain and range values for charts that don't support numeric x-axis 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 0,
+  "rStartValue": 0,
+}
+`;
+
+exports[`getDomainNRangeValues should return empty domain and range values for charts that don't support string x-axis 1`] = `
+Object {
+  "dEndValue": 0,
+  "dStartValue": 0,
+  "rEndValue": 0,
+  "rStartValue": 0,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return empty minimum and maximum values for other charts 1`] = `
+Object {
+  "endValue": 0,
+  "startValue": 0,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for horizontal bar chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for line chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for vertical bar chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
+exports[`getMinMaxOfYAxis should return minimum and maximum values for vertical stacked bar chart with numeric y-axis 1`] = `
+Object {
+  "endValue": 40,
+  "startValue": 20,
+}
+`;
+
 exports[`getUnique should return an array of data points with unique values
 determined by the provided comparison key 1`] = `
 Array [
@@ -3986,6 +4261,75 @@ Array [
 ]
 `;
 
+exports[`rotateXAxisLabels should rotate x-axis labels to 45 degrees anticlockwise 1`] = `
+<g
+  fill="none"
+  font-family="sans-serif"
+  font-size="10"
+  text-anchor="middle"
+>
+  <path
+    class="domain"
+    d="M0.5,6V0.5H100.5V6"
+    stroke="#000"
+  />
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(17.741935483870968,7.5)rotate(-45)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      X-axis label 1
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(50,7.5)rotate(-45)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      X-axis label 2
+    </text>
+  </g>
+  <g
+    class="tick"
+    opacity="1"
+    transform="translate(82.25806451612904,7.5)rotate(-45)"
+  >
+    <line
+      stroke="#000"
+      y2="6"
+    />
+    <text
+      aria-hidden="true"
+      dy="0.71em"
+      fill="#000"
+      y="16"
+    >
+      X-axis label 3
+    </text>
+  </g>
+</g>
+`;
+
 exports[`tooltipOfXAxislabels should render a tooltip for x-axis labels 1`] = `
 <body>
   <div
@@ -4001,5 +4345,40 @@ exports[`wrapContent should truncate text content when it exceeds the maxWidth 1
   id="tooltip-host1"
 >
   Lorem ipsu...
+</text>
+`;
+
+exports[`wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWidth 1`] = `
+<text
+  class="insideDonutString-1"
+>
+  <tspan
+    dy="0em"
+    id="WordBreakId-0-0"
+    x="0"
+  >
+    Lorem 
+  </tspan>
+  <tspan
+    dy="1.1em"
+    id="WordBreakId-0-1"
+    x="0"
+  >
+    ipsum 
+  </tspan>
+  <tspan
+    dy="2.2em"
+    id="WordBreakId-0-2"
+    x="0"
+  >
+    dolor sit 
+  </tspan>
+  <tspan
+    dy="3.3000000000000003em"
+    id="WordBreakId-0-3"
+    x="0"
+  >
+    amet
+  </tspan>
 </text>
 `;

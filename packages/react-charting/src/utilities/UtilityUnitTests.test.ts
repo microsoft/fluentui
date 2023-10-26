@@ -2,7 +2,12 @@ import * as utils from './utilities';
 import * as colors from './colors';
 import { TimeLocaleDefinition as d3TimeLocaleDefinition } from 'd3-time-format';
 import { format as d3Format } from 'd3-format';
-import { ILineChartPoints } from '../types/IDataPoint';
+import {
+  IDataPoint,
+  IHorizontalBarChartWithAxisDataPoint,
+  ILineChartPoints,
+  IVerticalBarChartDataPoint,
+} from '../types/IDataPoint';
 import { ScaleBand } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
 
@@ -752,4 +757,540 @@ describe('tooltipOfXAxislabels', () => {
     utils.tooltipOfXAxislabels(tooltipProps);
     expect(document.body).toMatchSnapshot();
   });
+});
+
+describe('getXAxisType', () => {
+  it('should return false when chart is empty', () => {
+    let points: ILineChartPoints[] = [];
+    expect(utils.getXAxisType(points)).toBe(false);
+
+    points = [{ legend: 'Line 1', data: [] }];
+    expect(utils.getXAxisType(points)).toBe(false);
+  });
+
+  it('should return false for data points with numeric x coordinates', () => {
+    const points: ILineChartPoints[] = [{ legend: 'Line 1', data: [{ x: 10, y: 10 }] }];
+    expect(utils.getXAxisType(points)).toBe(false);
+  });
+
+  it('should return true for data points with date-based x coordinates', () => {
+    const points: ILineChartPoints[] = [{ legend: 'Line 1', data: [{ x: new Date(), y: 10 }] }];
+    expect(utils.getXAxisType(points)).toBe(true);
+  });
+});
+
+describe('domainRangeOfDateForAreaChart', () => {
+  const points: ILineChartPoints[] = [
+    {
+      legend: 'Line 1',
+      data: [
+        { x: new Date(2021, 0, 3), y: 10 },
+        { x: new Date(2021, 0, 2), y: 20 },
+      ],
+    },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for date x-axis', () => {
+    const result = utils.domainRangeOfDateForAreaChart(points, margins, 100, false);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for date x-axis when tickValues are provided', () => {
+    const result = utils.domainRangeOfDateForAreaChart(points, margins, 100, false, [
+      new Date(2021, 0, 1),
+      new Date(2021, 0, 4),
+    ]);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for date x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfDateForAreaChart(points, margins, 100, true);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfNumericForAreaChart', () => {
+  const points: ILineChartPoints[] = [
+    {
+      legend: 'Line 1',
+      data: [
+        { x: 10, y: 20 },
+        { x: 30, y: 40 },
+      ],
+    },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, false);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfNumericForAreaChart(points, margins, 100, true);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfNumericForHorizontalBarChartWithAxis', () => {
+  const points: IHorizontalBarChartWithAxisDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 30, y: 40 },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, false, 1);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfNumericForHorizontalBarChartWithAxis(points, margins, 100, true, 1);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfXStringAxis', () => {
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for string x-axis', () => {
+    const result = utils.domainRangeOfXStringAxis(margins, 100, false);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for string x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfXStringAxis(margins, 100, true);
+    matchResult(result);
+  });
+});
+
+describe('domainRangeOfVSBCNumeric', () => {
+  const points: IDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 30, y: 40 },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRangeOfVSBCNumeric(points, margins, 100, false, 16);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRangeOfVSBCNumeric(points, margins, 100, true, 16);
+    matchResult(result);
+  });
+});
+
+describe('domainRageOfVerticalNumeric', () => {
+  const points: IDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 30, y: 40 },
+  ];
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for numeric x-axis', () => {
+    const result = utils.domainRageOfVerticalNumeric(points, margins, 100, false, 16);
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for numeric x-axis when layout direction is RTL', () => {
+    const result = utils.domainRageOfVerticalNumeric(points, margins, 100, true, 16);
+    matchResult(result);
+  });
+});
+
+describe('getDomainNRangeValues', () => {
+  const margins: utils.IMargins = {
+    left: 5,
+    right: 10,
+    top: 0,
+    bottom: 0,
+  };
+
+  it('should return domain and range values correctly for line chart with numeric x-axis', () => {
+    const points: ILineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: 10, y: 20 },
+          { x: 30, y: 40 },
+        ],
+      },
+    ];
+    const result = utils.getDomainNRangeValues(
+      points,
+      margins,
+      100,
+      utils.ChartTypes.AreaChart,
+      false,
+      utils.XAxisTypes.NumericAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for vertical stacked bar chart with numeric x-axis', () => {
+    const points: IDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.getDomainNRangeValues(
+      points,
+      margins,
+      100,
+      utils.ChartTypes.VerticalStackedBarChart,
+      false,
+      utils.XAxisTypes.NumericAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for vertical bar chart with numeric x-axis', () => {
+    const points: IDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.getDomainNRangeValues(
+      points,
+      margins,
+      100,
+      utils.ChartTypes.VerticalBarChart,
+      false,
+      utils.XAxisTypes.NumericAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for horizontal bar chart with numeric x-axis', () => {
+    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.getDomainNRangeValues(
+      points,
+      margins,
+      100,
+      utils.ChartTypes.HorizontalBarChartWithAxis,
+      false,
+      utils.XAxisTypes.NumericAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it("should return empty domain and range values for charts that don't support numeric x-axis", () => {
+    const result = utils.getDomainNRangeValues(
+      [],
+      margins,
+      100,
+      utils.ChartTypes.GroupedVerticalBarChart,
+      false,
+      utils.XAxisTypes.NumericAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for line chart with date x-axis', () => {
+    const points: ILineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: new Date(2021, 0, 3), y: 10 },
+          { x: new Date(2021, 0, 2), y: 20 },
+        ],
+      },
+    ];
+    const result = utils.getDomainNRangeValues(
+      points,
+      margins,
+      100,
+      utils.ChartTypes.AreaChart,
+      false,
+      utils.XAxisTypes.DateAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it("should return empty domain and range values for charts that don't support date x-axis", () => {
+    const result = utils.getDomainNRangeValues(
+      [],
+      margins,
+      100,
+      utils.ChartTypes.GroupedVerticalBarChart,
+      false,
+      utils.XAxisTypes.DateAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it('should return domain and range values correctly for charts with string x-axis', () => {
+    const result = utils.getDomainNRangeValues(
+      [],
+      margins,
+      100,
+      utils.ChartTypes.VerticalStackedBarChart,
+      false,
+      utils.XAxisTypes.StringAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+
+  it("should return empty domain and range values for charts that don't support string x-axis", () => {
+    const result = utils.getDomainNRangeValues(
+      [],
+      margins,
+      100,
+      utils.ChartTypes.LineChart,
+      false,
+      utils.XAxisTypes.StringAxis,
+      16,
+      undefined,
+      1,
+    );
+    matchResult(result);
+  });
+});
+
+test('findNumericMinMaxOfY should return minimum and maximum values for line chart with numeric y-axis', () => {
+  const points: ILineChartPoints[] = [
+    {
+      legend: 'Line 1',
+      data: [
+        { x: 10, y: 20 },
+        { x: 30, y: 40 },
+      ],
+    },
+  ];
+  const result = utils.findNumericMinMaxOfY(points);
+  matchResult(result);
+});
+
+test('findVSBCNumericMinMaxOfY should return minimum and maximum values for numeric y-axis', () => {
+  const points: IDataPoint[] = [
+    { x: 10, y: 20 },
+    { x: 30, y: 40 },
+  ];
+  const result = utils.findVSBCNumericMinMaxOfY(points);
+  matchResult(result);
+});
+
+describe('findVerticalNumericMinMaxOfY', () => {
+  it('should return minimum and maximum values for numeric y-axis', () => {
+    const points: IVerticalBarChartDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.findVerticalNumericMinMaxOfY(points);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for numeric y-axis when line data is also provided', () => {
+    const points: IVerticalBarChartDataPoint[] = [
+      { x: 10, y: 20, lineData: { y: 50 } },
+      { x: 30, y: 40, lineData: { y: 10 } },
+    ];
+    const result = utils.findVerticalNumericMinMaxOfY(points);
+    matchResult(result);
+  });
+});
+
+describe('findHBCWANumericMinMaxOfY', () => {
+  it('should return empty minimum and maximum values for non numeric y-axis', () => {
+    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+      { x: 10, y: 'label 1' },
+      { x: 20, y: 'label 2' },
+    ];
+    const result = utils.findHBCWANumericMinMaxOfY(points, utils.YAxisType.StringAxis);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for numeric y-axis', () => {
+    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.findHBCWANumericMinMaxOfY(points, utils.YAxisType.NumericAxis);
+    matchResult(result);
+  });
+});
+
+describe('getMinMaxOfYAxis', () => {
+  it('should return minimum and maximum values for line chart with numeric y-axis', () => {
+    const points: ILineChartPoints[] = [
+      {
+        legend: 'Line 1',
+        data: [
+          { x: 10, y: 20 },
+          { x: 30, y: 40 },
+        ],
+      },
+    ];
+    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.AreaChart);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for vertical stacked bar chart with numeric y-axis', () => {
+    const points: IDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.VerticalStackedBarChart);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for vertical bar chart with numeric y-axis', () => {
+    const points: IVerticalBarChartDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.VerticalBarChart);
+    matchResult(result);
+  });
+
+  it('should return minimum and maximum values for horizontal bar chart with numeric y-axis', () => {
+    const points: IHorizontalBarChartWithAxisDataPoint[] = [
+      { x: 10, y: 20 },
+      { x: 30, y: 40 },
+    ];
+    const result = utils.getMinMaxOfYAxis(points, utils.ChartTypes.HorizontalBarChartWithAxis);
+    matchResult(result);
+  });
+
+  it('should return empty minimum and maximum values for other charts', () => {
+    const result = utils.getMinMaxOfYAxis([], utils.ChartTypes.HeatMapChart);
+    matchResult(result);
+  });
+});
+
+test('getTypeOfAxis should return the correct axis type based on the provided label and isXAxis flag', () => {
+  expect(utils.getTypeOfAxis('label 1', true)).toBe(utils.XAxisTypes.StringAxis);
+  expect(utils.getTypeOfAxis(100, true)).toBe(utils.XAxisTypes.NumericAxis);
+  expect(utils.getTypeOfAxis(new Date(), true)).toBe(utils.XAxisTypes.DateAxis);
+  expect(utils.getTypeOfAxis('label 1', false)).toBe(utils.YAxisType.StringAxis);
+  expect(utils.getTypeOfAxis(100, false)).toBe(utils.YAxisType.NumericAxis);
+  expect(utils.getTypeOfAxis(new Date(), false)).toBe(utils.YAxisType.DateAxis);
+});
+
+describe('rotateXAxisLabels', () => {
+  let xAxisParams: utils.IXAxisParams;
+  let result: { xScale: ScaleBand<string>; tickValues: string[] };
+
+  beforeEach(() => {
+    xAxisParams = createXAxisParams();
+    result = utils.createStringXAxis(xAxisParams, {}, ['X-axis label 1', 'X-axis label 2', 'X-axis label 3']);
+  });
+
+  it('should terminate when no x-axis node is provided', () => {
+    expect(
+      utils.rotateXAxisLabels({
+        node: null,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        xAxis: result.xScale as any,
+      }),
+    ).toBeUndefined();
+  });
+
+  it('should rotate x-axis labels to 45 degrees anticlockwise', () => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const SVGElement: any = window.SVGElement;
+    const originalGetBoundingClientRect = SVGElement.prototype.getBoundingClientRect;
+    SVGElement.prototype.getBoundingClientRect = jest.fn().mockReturnValue({ height: 15 });
+
+    const rotatedHeight = utils.rotateXAxisLabels({
+      node: xAxisParams.xAxisElement!,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      xAxis: result.xScale as any,
+    });
+    expect(rotatedHeight).toBe(Math.floor(15 * Math.sin(Math.PI / 4)));
+    expect(xAxisParams.xAxisElement).toMatchSnapshot();
+
+    SVGElement.prototype.getBoundingClientRect = originalGetBoundingClientRect;
+  });
+});
+
+test('wrapTextInsideDonut should wrap valueInsideDonut when it exceeds the maxWidth', () => {
+  const content = 'Lorem ipsum dolor sit amet';
+  const className = 'insideDonutString-1';
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const SVGElement: any = window.SVGElement;
+  const originalGetComputedTextLength = SVGElement.prototype.getComputedTextLength;
+  let calls = 0;
+  const results = [5, 11, 11, 9, 14]; // 'Lorem', 'Lorem ipsum', 'ipsum dolor', 'dolor sit', 'dolor sit amet'
+  SVGElement.prototype.getComputedTextLength = jest.fn().mockImplementation(() => results[calls++ % results.length]);
+
+  const textElement = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+  textElement.innerHTML = content;
+  textElement.classList.add(className);
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.appendChild(textElement);
+  document.body.appendChild(svg);
+
+  utils.wrapTextInsideDonut(className, 10);
+  expect(textElement).toMatchSnapshot();
+
+  document.body.removeChild(svg);
+
+  SVGElement.prototype.getComputedTextLength = originalGetComputedTextLength;
+});
+
+test('formatValueWithSIPrefix should format a numeric value with appropriate SI prefix', () => {
+  expect(utils.formatValueWithSIPrefix(19.53)).toBe('19.53');
+  expect(utils.formatValueWithSIPrefix(983)).toBe('983');
+  expect(utils.formatValueWithSIPrefix(9801)).toBe('9.8k');
+  expect(utils.formatValueWithSIPrefix(100990000)).toBe('101.0M');
 });
