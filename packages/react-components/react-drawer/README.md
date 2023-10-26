@@ -12,8 +12,9 @@ To import React Drawer components:
 
 ```tsx
 import {
-  DrawerOverlay,
-  DrawerInline,
+  Drawer,
+  OverlayDrawer,
+  InlineDrawer,
   DrawerHeader,
   DrawerHeaderTitle,
   DrawerHeaderNavigation,

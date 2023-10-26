@@ -1,12 +1,12 @@
 import * as React from 'react';
 import { render } from '@testing-library/react';
-import { DrawerInline } from './DrawerInline';
+import { InlineDrawer } from './InlineDrawer';
 import { isConformant } from '../../testing/isConformant';
 
-describe('DrawerInline', () => {
+describe('InlineDrawer', () => {
   isConformant({
-    Component: DrawerInline,
-    displayName: 'DrawerInline',
+    Component: InlineDrawer,
+    displayName: 'InlineDrawer',
     requiredProps: {
       open: true,
     },
@@ -15,21 +15,21 @@ describe('DrawerInline', () => {
   });
 
   it('renders a default state', () => {
-    const result = render(<DrawerInline>Default Drawer</DrawerInline>);
+    const result = render(<InlineDrawer>Default Drawer</InlineDrawer>);
     expect(result.container).toMatchInlineSnapshot(`<div />`);
   });
 
   it('renders an closed inline drawer', () => {
-    const result = render(<DrawerInline>Default Drawer</DrawerInline>);
+    const result = render(<InlineDrawer>Default Drawer</InlineDrawer>);
     expect(result.container).toMatchInlineSnapshot(`<div />`);
   });
 
   it('renders an open inline drawer', () => {
-    const result = render(<DrawerInline open>Default Drawer</DrawerInline>);
+    const result = render(<InlineDrawer open>Default Drawer</InlineDrawer>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <div
-          class="fui-DrawerInline"
+          class="fui-InlineDrawer"
         >
           Default Drawer
         </div>

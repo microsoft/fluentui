@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {
-  DrawerOverlay,
+  OverlayDrawer,
   DrawerBody,
   DrawerHeader,
   DrawerHeaderNavigation,
@@ -27,7 +27,7 @@ export const WithNavigation = () => {
 
   return (
     <div>
-      <DrawerOverlay position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer position="start" open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderNavigation>
             <Toolbar className={styles.toolbar}>
@@ -52,7 +52,7 @@ export const WithNavigation = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <Button appearance="primary" onClick={() => setIsOpen(true)}>
         Open Drawer

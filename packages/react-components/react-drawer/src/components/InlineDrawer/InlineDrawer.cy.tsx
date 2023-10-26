@@ -4,24 +4,24 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 
 import { testDrawerBaseScenarios } from '../../e2e/DrawerShared';
-import { DrawerInline } from './DrawerInline';
+import { InlineDrawer } from './InlineDrawer';
 
 const mountFluent = (element: JSX.Element) => {
   mount(<FluentProvider theme={webLightTheme}>{element}</FluentProvider>);
 };
 
-describe('DrawerInline', () => {
-  testDrawerBaseScenarios(DrawerInline);
+describe('InlineDrawer', () => {
+  testDrawerBaseScenarios(InlineDrawer);
 
   describe('separator prop', () => {
     it('should render correct border when when position is `start`', () => {
-      mountFluent(<DrawerInline id="drawer" position="start" separator open />);
+      mountFluent(<InlineDrawer id="drawer" position="start" separator open />);
 
       cy.get('#drawer').should('not.have.css', `border-right-color`, 'transparent');
     });
 
     it('should render correct border when when position is `end`', () => {
-      mountFluent(<DrawerInline id="drawer" position="end" separator open />);
+      mountFluent(<InlineDrawer id="drawer" position="end" separator open />);
 
       cy.get('#drawer').should('not.have.css', `border-left-color`, 'transparent');
     });

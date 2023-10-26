@@ -6,20 +6,20 @@ import {
   renderDialogSurface_unstable,
 } from '@fluentui/react-dialog';
 
-import { useDrawerOverlaySurfaceStyles_unstable } from './useDrawerOverlaySurfaceStyles.styles';
-import type { DrawerOverlaySurfaceProps } from './DrawerOverlaySurface.types';
+import { useOverlayDrawerSurfaceStyles_unstable } from './useOverlayDrawerSurfaceStyles.styles';
+import type { OverlayDrawerSurfaceProps } from './OverlayDrawerSurface.types';
 
 /**
  * @internal
- * DrawerOverlaySurface is a proxy for DialogSurface as is only meant to be used internally for Drawer.
+ * OverlayDrawerSurface is a proxy for DialogSurface as is only meant to be used internally for Drawer.
  */
-export const DrawerOverlaySurface: ForwardRefComponent<DrawerOverlaySurfaceProps> = React.forwardRef((props, ref) => {
+export const OverlayDrawerSurface: ForwardRefComponent<OverlayDrawerSurfaceProps> = React.forwardRef((props, ref) => {
   const dialogSurfaceState = useDialogSurface_unstable(props, ref);
   const dialogSurfaceContextValues = useDialogSurfaceContextValues_unstable(dialogSurfaceState);
 
-  useDrawerOverlaySurfaceStyles_unstable(dialogSurfaceState);
+  useOverlayDrawerSurfaceStyles_unstable(dialogSurfaceState);
 
   return renderDialogSurface_unstable(dialogSurfaceState, dialogSurfaceContextValues);
 });
 
-DrawerOverlaySurface.displayName = 'DrawerOverlaySurface';
+OverlayDrawerSurface.displayName = 'OverlayDrawerSurface';
