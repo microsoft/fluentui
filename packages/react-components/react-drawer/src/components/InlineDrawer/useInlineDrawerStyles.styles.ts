@@ -5,6 +5,7 @@ import { tokens } from '@fluentui/react-theme';
 
 import type { InlineDrawerSlots, InlineDrawerState } from './InlineDrawer.types';
 import { drawerCSSVars, drawerDefaultStyles, useDrawerBaseClassNames } from '../../shared/useDrawerBaseStyles.styles';
+import { useMotionClassNames } from '@fluentui/react-motion-preview';
 
 export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
   root: 'fui-InlineDrawer',
@@ -13,9 +14,6 @@ export const inlineDrawerClassNames: SlotClassNames<InlineDrawerSlots> = {
 const useDrawerResetStyles = makeResetStyles({
   ...drawerDefaultStyles,
   position: 'relative',
-  opacity: 0,
-  transitionProperty: 'opacity, transform',
-  willChange: 'opacity, transform',
 });
 
 /**
@@ -38,11 +36,18 @@ const useDrawerRootStyles = makeStyles({
   end: {
     transform: `translate3D(var(${drawerCSSVars.drawerSizeVar}), 0, 0)`,
   },
+});
 
-  /* Visible */
-  visible: {
+const useDrawerMotionStyles = makeStyles({
+  default: {
+    opacity: 0,
+    transitionProperty: 'opacity, transform',
+    willChange: 'opacity, transform',
+  },
+
+  enter: {
     opacity: 1,
-    transform: `translate3D(0, 0, 0)`,
+    transform: 'translate3D(0, 0, 0)',
   },
 });
 
@@ -53,6 +58,7 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
   const resetStyles = useDrawerResetStyles();
   const baseClassNames = useDrawerBaseClassNames(state);
   const rootStyles = useDrawerRootStyles();
+  const motionClassNames = useMotionClassNames(state.motion, useDrawerMotionStyles());
 
   const separatorClass = React.useMemo(() => {
     if (!state.separator) {
@@ -68,7 +74,7 @@ export const useInlineDrawerStyles_unstable = (state: InlineDrawerState): Inline
     baseClassNames,
     separatorClass,
     rootStyles[state.position],
-    state.motion.active && rootStyles.visible,
+    motionClassNames,
     state.root.className,
   );
 
