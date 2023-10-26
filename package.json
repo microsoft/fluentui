@@ -15,7 +15,7 @@
     "build": "lage build --verbose",
     "build:codesandbox": "yarn build --to @fluentui/react --to @fluentui/react-components",
     "build:fluentui:docs": "gulp build:docs",
-    "buildci": "lage build test lint type-check test-ssr --verbose",
+    "buildci": "lage build test lint type-check test-ssr verify-packaging --verbose",
     "builddemo": "yarn build --to public-docsite-resources",
     "buildto": "lage build --verbose --to",
     "buildto:lerna": "node ./scripts/executors/buildTo.js",

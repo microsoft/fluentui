@@ -140,7 +140,6 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema, _userLog: Use
 
   setupCypress(tree, options);
 
-  setupNpmIgnoreConfig(tree, options);
   setupBabel(tree, options);
 
   updateNxProject(tree, options);
@@ -594,12 +593,6 @@ function updateNxProject(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
-
-  return tree;
-}
-
 function setupSwcConfig(tree: Tree, options: NormalizedSchema) {
   const swcConfig = templates.swcConfig();
   writeJson(tree, joinPathFragments(options.projectConfig.root, '.swcrc'), swcConfig);
@@ -693,6 +686,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   packageJson = setupScripts(packageJson);
   packageJson = setupExportMaps(packageJson);
   packageJson = addSwcHelpers(packageJson);
+  packageJson = setupNpmPublishFiles(packageJson);
 
   writeJson(tree, options.paths.packageJson, packageJson);
 
@@ -739,13 +733,27 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
       return './' + path.posix.normalize(entryPath);
     }
   }
-}
 
-//TODO: remove after migration to swc transpilation is complete
-function addSwcHelpers(json: PackageJson) {
-  delete json.dependencies?.tslib;
-  json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.4.14' };
-  return json;
+  //TODO: remove after migration to swc transpilation is complete
+  function addSwcHelpers(json: PackageJson) {
+    delete json.dependencies?.tslib;
+    json.dependencies = { ...json.dependencies, '@swc/helpers': '^0.5.1' };
+    return json;
+  }
+
+  function setupNpmPublishFiles(json: PackageJson) {
+    json.files = json.files ?? [];
+    json.files = [
+      'lib',
+      'lib-commonjs',
+      options.projectConfig.tags?.includes('ships-amd') ? 'lib-amd' : '',
+      'dist/*.d.ts',
+    ].filter(Boolean);
+
+    tree.delete(options.paths.npmConfig);
+
+    return json;
+  }
 }
 
 function updateApiExtractor(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
