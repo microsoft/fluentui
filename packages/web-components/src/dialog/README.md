@@ -10,11 +10,9 @@
 
 Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implementation but not direct parity.
 
-## Superclass: [FASTElement](https://www.fast.design/docs/fast-element/defining-elements)
+### Superclass: [FASTElement](https://www.fast.design/docs/fast-element/defining-elements)
 
-## Class: `Dialog`
-
-<br />
+### Class: `Dialog`
 
 ### **Component Name**
 
@@ -24,28 +22,28 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
 ```html
 <fluent-dialog open>
-  <!-- Header -->
+  <!-- header -->
   <fluent-text slot="title">Dialog</fluent-text>
-  <fluent-button slot="title-action"><svg></svg></fluent-button>
-  <!-- Default Content -->
+  <fluent-button slot="close"><svg></svg></fluent-button>
+
+  <!-- default content -->
   <fluent-text>Default Content</fluent-text>
 
-  <!-- Footer/Actions -->
-  <fluent-button slot="action">Do Something</fluent-button>
-  <fluent-button slot="action">Close</fluent-button>
+  <!-- actions -->
+  <fluent-button slot="actions">Do Something</fluent-button>
+  <fluent-button slot="actions">Close</fluent-button>
 </fluent-dialog>
 ```
 
 ### **Attributes**
 
-| Name               | Privacy | Type              | Default                 | Description                                               |
-| ------------------ | ------- | ----------------- | ----------------------- | --------------------------------------------------------- |
-| `modal-type`       | public  | `DialogModalType` | `DialogModalType.modal` | Indicates that the type of modal to render.               |
-| `open`             | public  | `boolean`         | `false`                 | Controls the open state of the dialog                     |
-| `no-title-action`  | public  | `boolean`         | `false`                 | Used to set whether the default title action is rendered. |
-| `aria-labelledby`  | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
-| `aria-describedby` | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
-| `aria-label `      | public  | `string`          | `undefined`             | optional based on implementation\*\*                      |
+| Name               | Privacy | Type              | Default                 | Description                                 |
+| ------------------ | ------- | ----------------- | ----------------------- | ------------------------------------------- |
+| `modal-type`       | public  | `DialogModalType` | `DialogModalType.modal` | Indicates that the type of modal to render. |
+| `open`             | public  | `boolean`         | `false`                 | Controls the open state of the dialog       |
+| `aria-labelledby`  | public  | `string`          | `undefined`             | optional based on implementation\*\*        |
+| `aria-describedby` | public  | `string`          | `undefined`             | optional based on implementation\*\*        |
+| `aria-label `      | public  | `string`          | `undefined`             | optional based on implementation\*\*        |
 
 \*\* See the [W3C Specification](https://w3c.github.io/aria-practices/#dialog_roles_states_props) for requirements and details.
 
@@ -62,12 +60,12 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 
 ### **Slots**
 
-| Name           | Description                                                |
-| -------------- | ---------------------------------------------------------- |
-| `title`        | slot for title content                                     |
-| `title-action` | slot for close button                                      |
-|                | default slot for content rendered between title and footer |
-| `action`       | slot for actions content                                   |
+| Name      | Description                                                |
+| --------- | ---------------------------------------------------------- |
+| `title`   | slot for title content                                     |
+| `close`   | slot for the close button                                  |
+|           | default slot for content rendered between title and footer |
+| `actions` | slot for actions content                                   |
 
 ### **Events**
 
@@ -75,17 +73,31 @@ Fluent WC3 Dialog has feature parity with the Fluent UI React 9 Dialog implement
 | -------------- | --------------------------------------------------------------- | -------------------------------------------------- |
 | `onOpenChange` | Event fired when the component transitions from its open state. | `{ open: this.dialog.open, dismissed: dismissed }` |
 
-## **Preparation**
+### **Preparation**
 
-### **Fluent Web Component v3 v.s Fluent React 9**
+## Fluent Web Component v3 v.s Fluent React 9
 
-**Component, Element, and Slot Mapping**
+### Title Close Action
 
-| Fluent UI React 9         | Fluent Web Components 3  | Description of difference                                                                                                                                                                                                                                                                                                                                                                                                                                |
-| ------------------------- | ------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `<Dialog>`                | `<fluent-dialog>`        | tag name                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
-| `<DialogTrigger>`         | methods: `hide() show()` | In the React version of our components, a "DialogTrigger" component is utilized as part of a composite component of Dialog. The DialogTrigger component provides functionality for toggling the visibility of the Dialog component. <br /> In the Web Component version does not include a dialog trigger. Instead, it expects the user to directly access methods on the Dialog class or utilize CSS to control the visibility of the dialog component. |
-| `<DialogSurface>`         | `dialog::backdrop`       | In the React version of our components, the DialogSurface component is used as part of the composite Dialog component to represent the dimmed background of the dialog. <br /> The Web Component version utilizes the HTML dialog ::backdrop pseudoelement.                                                                                                                                                                                              |
-| `<DialogTitle>`           | `slot: title`            | In the React version of our components, the <DialogTitle> component is used to implement the title of the dialog. <br /> In the Web Component version, the title is provided through the title slot.                                                                                                                                                                                                                                                     |
-| `<DialogTitle action="">` | `slot: title-action`     | In the React version of our components, the <DialogTitle> component the DialogTitles action prop. <br /> In the Web Component version, the title action is provided through the Dialogs title-action slot                                                                                                                                                                                                                                                |
-| `<DialogActions>`         | `slot: action`           | In the React version of our components, the <DialogActions> component is used to implement the actions within the dialog. <br /> In the Web Component version, actions are passsed through the `action` slot                                                                                                                                                                                                                                             |
+In the Fluent v9 version of the Dialog, a default close button appears when the modalType is designated as 'non-modal'. This behavior, however, is not replicated in the WC3 version.
+
+For the WC3 version, we've transitioned to using the `close` slot, allowing users to provide their own close button. This modification emerged from two main concerns: accessibility (a11y) and performance when working with interactive elements inside the shadowDOM.
+
+#### **Performance Considerations**
+
+Dynamically generating elements can lead to unnecessary reflows and repaints in the browser's rendering mechanism. This becomes even more complex when these elements are inside the shadowDOM due to the encapsulation. By offering users a way to introduce their own close button via a slot, we circumvent these potential performance setbacks.
+
+#### **Accessibility Considerations**
+
+Interactive elements placed within the shadowDOM can sometimes behave unpredictably with screen readers and other assistive technologies. The encapsulation of the shadowDOM can make it trickier for these technologies to accurately interpret and interact with embedded elements. By allocating a specific slot for the close button outside the shadowDOM, we can ensure a more consistent and accessible experience.
+
+### **Component, Element, and Slot Mapping**
+
+| Fluent UI React 9         | Fluent Web Components 3  | Description of difference                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| ------------------------- | ------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `<Dialog>`                | `<fluent-dialog>`        | tag name                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| `<DialogTrigger>`         | methods: `hide() show()` | In the React version of the dialog, a "DialogTrigger" component is utilized as part of a composite component of Dialog. The DialogTrigger component provides functionality for toggling the visibility of the Dialog component. <br /> In the Web Component version does not include a dialog trigger. Instead, it expects the user to directly access methods on the Dialog class or utilize CSS to control the visibility of the dialog component. |
+| `<DialogSurface>`         | `dialog::backdrop`       | In the React version of the dialog, the DialogSurface component is used as part of the composite Dialog component to represent the dimmed background of the dialog. <br /> The Web Component version utilizes the HTML dialog ::backdrop pseudoelement.                                                                                                                                                                                              |
+| `<DialogTitle>`           | `slot: title`            | In the React version of the dialog, the <DialogTitle> component is used to implement the title of the dialog. <br /> In the web component version, the title is provided through the title slot.                                                                                                                                                                                                                                                     |
+| `<DialogTitle action="">` | `slot: close`            | In the React version of the dialog, a close button can be passed through the <DialogTitle> action slot. <br /> In the web component version, a close button can be provided through a dialog's `close` slot.                                                                                                                                                                                                                                         |
+| `<DialogActions>`         | `slot: actions`          | In the React version of the dialog, the <DialogActions> component is used to implement the actions within the dialog. <br /> In the Web Component version, actions are passsed through the `actions` slot.                                                                                                                                                                                                                                           |
