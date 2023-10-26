@@ -268,30 +268,30 @@ export const TitleAction = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-text as="p" block>
       <p>
-        This slot can be customized to add an action such as a close button, that will be available in any kind of
-        Dialog.
+        You can use the title-action to provide an action in the title such as a close button, that will be available in
+        any kind of Dialog.
       </p>
     </fluent-text>
     <br />
     <fluent-text block><code>slot="title-action"</code></fluent-text>
     <br />
-    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-closeslot')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-closeslot">
-      <div slot="title">Title Custom Action Slot</div>
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-titleaction')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-titleaction">
+      <div slot="title">Title Action Slot</div>
       <fluent-button
         appearance="transparent"
         icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-closeslot')}"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-titleaction')}"
         slot="title-action"
       >
         ${dismissed20Regular}
       </fluent-button>
       <div>
-        <fluent-text block>
-          <span>
-            This slot can be customized to add an action such as a close button, that will be available in any kind of
-            Dialog.
-          </span>
+        <fluent-text as="p" block>
+          <p>
+            You can use the title-action to provide an action in the title such as a close button, that will be
+            available in any kind of Dialog.
+          </p>
         </fluent-text>
         <br />
         <fluent-text block><code>slot="title-action"</code></fluent-text>
