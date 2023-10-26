@@ -84,7 +84,7 @@ const useFirstMountCondition = (condition: boolean): boolean => {
  * @param present - Whether the element should be present in the DOM
  * @param events - Callbacks for when the element enters or exits the DOM
  */
-export function useMotionPresence<Element extends HTMLElement>(
+function useMotionPresence<Element extends HTMLElement>(
   presence: boolean,
   options: MotionOptions = {},
 ): MotionState<Element> {
