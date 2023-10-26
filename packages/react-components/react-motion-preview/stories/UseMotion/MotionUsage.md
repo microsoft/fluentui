@@ -1,6 +1,6 @@
 ## Usage
 
-`useMotion` accepts a `MotionShorthand` param and a optional `MotionOptions`. It returns a `MotionState` object. See below the definitions of these types.
+`useMotion` accepts a `MotionShorthand` param and an optional `MotionOptions`. It returns a `MotionState` object. See below the definitions of these types.
 
 ```tsx
 import * as React from 'react';
