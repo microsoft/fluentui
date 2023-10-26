@@ -26,6 +26,20 @@ const dismissed20Regular = html`
   </svg>
 `;
 
+const dismissCircle20Regular = html`<svg
+  fill="currentColor"
+  aria-hidden="true"
+  width="20"
+  height="20"
+  viewBox="0 0 20 20"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M10 2a8 8 0 1 1 0 16 8 8 0 0 1 0-16Zm0 1a7 7 0 1 0 0 14 7 7 0 0 0 0-14ZM7.8 7.11l.08.06L10 9.3l2.12-2.12a.5.5 0 0 1 .64-.06l.07.06c.17.18.2.44.06.64l-.06.07L10.7 10l2.12 2.12c.17.17.2.44.06.64l-.06.07a.5.5 0 0 1-.64.06l-.07-.06L10 10.7l-2.12 2.12a.5.5 0 0 1-.64.06l-.07-.06a.5.5 0 0 1-.06-.64l.06-.07L9.3 10 7.17 7.88a.5.5 0 0 1-.06-.64l.06-.07a.5.5 0 0 1 .64-.06Z"
+    fill="currentColor"
+  ></path>
+</svg>`;
+
 const closeDialog = (e: Event, id: string, dismissed: boolean = false) => {
   const dialog = document.getElementById(id) as FluentDialog;
   dialog.hide(dismissed);
@@ -54,7 +68,7 @@ const dialogTemplate = html<DialogStoryArgs>`
   </style>
   <div>
     <fluent-button @click=${(e: Event, c) => openDialog(e, 'dialog-default')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}">
+    <fluent-dialog id="dialog-default" modal-type="${x => x.modalType}" ?no-title-action="${x => x.noTitleAction}">
       <fluent-text slot="title">Dialog</fluent-text>
       <fluent-text as="p" weight="regular" block>
         <p>
@@ -66,12 +80,12 @@ const dialogTemplate = html<DialogStoryArgs>`
       <fluent-text block><code>fluent-dialog</code></fluent-text>
       <fluent-button
         id="dialog-default-close"
-        slot="actions"
+        slot="action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-default')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button id="dialog-default-dosomething" slot="actions" tabindex="0">Do Something</fluent-button>
+      <fluent-button id="dialog-default-dosomething" slot="action" tabindex="0">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `;
@@ -94,6 +108,17 @@ export default {
       },
       defaultValue: DialogModalType.modal,
     },
+    noTitleAction: {
+      description:
+        'Used to opt out of rendering the default title action that is rendered when the dialog <code>type</code>is set to <code>non-modal</code>',
+      table: {
+        defaultValue: { summary: false },
+      },
+      control: {
+        type: 'boolean',
+      },
+      defaultValue: false,
+    },
     open: {
       description: 'Controls the open state of the dialog',
       table: {
@@ -114,6 +139,7 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
     <fluent-text block>
       <span>
         A non-modal dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
+        A non-modal dialog will present by default a close button.
       </span>
     </fluent-text>
     <br />
@@ -125,25 +151,19 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-nonmodal')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-nonmodal" modal-type="${DialogModalType.nonModal}">
       <div slot="title">Non-modal</div>
-      <fluent-button
-        appearance="transparent"
-        icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-nonmodal')}"
-        slot="close"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
       </fluent-text as="p" block>
         <p>
           A non-modal dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
+
+          A non-moda dialog will present by default a closeButton.
         </p>
       </fluent-text>
       </fluent-text as="p" block><p><fluent-text weight="bold" as="span"><span>Note:<span></fluent-text> if an element outside of the dialog is focused then it will not be possible to close the dialog with the Escape key.</p></fluent-text>
       <fluent-text block><code>modal-type="non-modal"</code></fluent-text>
-      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-nonmodal')}"
+      <fluent-button slot="action" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-nonmodal')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -170,10 +190,10 @@ export const Modal = renderComponent(html<DialogStoryArgs>`
       </div>
       <br />
       <fluent-text><code>modal-type="modal"</code></fluent-text>
-      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
+      <fluent-button slot="action" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-modal')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -199,15 +219,15 @@ export const Alert = renderComponent(html<DialogStoryArgs>`
       </div>
       <br />
       <fluent-text><code>modal-type="alert"</code></fluent-text>
-      <fluent-button slot="actions" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
+      <fluent-button slot="action" appearance="primary" @click="${(e: Event, c) => closeDialog(e, 'dialog-alert')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
 
-export const ActionsSlot = renderComponent(html<DialogStoryArgs>`
+export const Actions = renderComponent(html<DialogStoryArgs>`
   <div>
     <fluent-text as="p" block
       ><p>
@@ -218,79 +238,139 @@ export const ActionsSlot = renderComponent(html<DialogStoryArgs>`
     >
     <fluent-text block
       ><span>
-        However, if required, you can populate the actions slot with any number of buttons as needed.</span
+        However, if required, you can populate the action slot with any number of buttons as needed.</span
       ></fluent-text
     >
     <br />
-    <fluent-text block><code>slot="actions"</code></fluent-text>
+    <fluent-text block><code>slot="action"</code></fluent-text>
     <br />
     <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-fluidactions')}>Open Dialog</fluent-button>
     <fluent-dialog id="dialog-fluidactions">
-      <div slot="title">Actions Slot</div>
-      <div>
-        <fluent-text block>
-          <span
-            >A dialog should have no more than
-            <fluent-text weight="bold"><span>two</span></fluent-text>
-            actions.
-          </span></fluent-text
-        >
-        <fluent-text block
-          ><span>
-            However, if required, you can populate the actions slot with any number of buttons as needed.</span
-          ></fluent-text
-        >
-        <br />
-        <fluent-text block><code>slot="actions"</code></fluent-text>
-      </div>
-      <br />
-
-      <fluent-button slot="actions">Something</fluent-button>
-      <fluent-button slot="actions">Something Else</fluent-button>
-
-      <fluent-button
-        slot="actions"
-        appearance="primary"
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
-        >Close Dialog</fluent-button
-      >
-      <fluent-button slot="actions">Something Else Entirely</fluent-button>
-    </fluent-dialog>
-  </div>
-`);
-
-export const CloseSlot = renderComponent(html<DialogStoryArgs>`
-  <div>
-    <fluent-text as="p" block>
-      <p>
-        This slot allows users to insert a close button. Unlike the Fluent React v9 version, it does not render a close
-        button by default.
-      </p>
-    </fluent-text>
-    <br />
-    <fluent-text block><code>slot="close"</code></fluent-text>
-    <br />
-    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-closeslot')}>Open Dialog</fluent-button>
-    <fluent-dialog id="dialog-closeslot">
-      <div slot="title">Close Slot</div>
+      <div slot="title">Actions</div>
       <fluent-button
         appearance="transparent"
         icon-only
-        @click="${(e: Event, c) => closeDialog(e, 'dialog-closeslot')}"
-        slot="close"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
+        slot="title-action"
       >
         ${dismissed20Regular}
       </fluent-button>
       <div>
         <fluent-text block>
+          <span
+            >A dialog should have no more than
+            <fluent-text weight="bold"><span>two</span></fluent-text>
+            footer actions.
+          </span></fluent-text
+        >
+        <br />
+        <fluent-text block
+          ><span>
+            However, if required, you can populate the action slot with any number of buttons as needed.</span
+          ></fluent-text
+        >
+        <br />
+        <fluent-text block><code>slot="action"</code></fluent-text>
+      </div>
+      <br />
+
+      <fluent-button size="small" slot="action">Something</fluent-button>
+      <fluent-button size="small" slot="action">Something Else</fluent-button>
+
+      <fluent-button
+        slot="action"
+        size="small"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-fluidactions')}"
+        >Close Dialog</fluent-button
+      >
+      <fluent-button size="small" slot="action">Something Else Entirely</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const TitleCustomAction = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-text block>
+      <span>By default a non-modal dialog renders a dismiss button with a close icon. </span>
+    </fluent-text>
+    <br />
+    <fluent-text block>
+      <span>
+        This slot can be customized to add a different kind of action, that it'll be available in any kind of dialog,
+        ignoring the modalType property, here's an example replacing the simple close icon with a fluent button using a
+        different icon.
+      </span>
+    </fluent-text>
+    <br />
+    <fluent-text block><code>slot="title-action"</code></fluent-text>
+    <br />
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-titlecustomaction')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-titlecustomaction">
+      <div slot="title">Title Custom Action</div>
+      <fluent-button
+        appearance="transparent"
+        icon-only
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
+        slot="title-action"
+      >
+        ${dismissCircle20Regular}
+      </fluent-button>
+      <div>
+        <fluent-text block>
+          <span>By default a non-modal dialog renders a dismiss button with a close icon. </span>
+        </fluent-text>
+        <br />
+        <fluent-text block>
           <span>
-            This slot is a placeholder for users to insert a close button. Unlike the Fluent React v9 version, it does
-            not render a close button by default.
+            This slot can be customized to add a different kind of action, that it'll be available in any kind of
+            dialog, ignoring the modalType property, here's an example replacing the simple close icon with a fluent
+            button using a different icon.
           </span>
         </fluent-text>
         <br />
-        <fluent-text block><code>slot="close"</code></fluent-text>
+        <fluent-text block><code>slot="title-action"</code></fluent-text>
       </div>
+      <br />
+
+      <fluent-button
+        slot="action"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-titlecustomaction')}"
+        >Close Dialog</fluent-button
+      >
+      <fluent-button slot="action">Do Something</fluent-button>
+    </fluent-dialog>
+  </div>
+`);
+
+export const NoTitleAction = renderComponent(html<DialogStoryArgs>`
+  <div>
+    <fluent-text as="p" block
+      ><p>The no-title-action attribute can be provided to opt out of rendering any title action.</p></fluent-text
+    >
+    <br />
+    <fluent-text block><code>no-title-action</code></fluent-text>
+    <br />
+    <fluent-button @click=${(e: Event) => openDialog(e, 'dialog-notitleaction')}>Open Dialog</fluent-button>
+    <fluent-dialog id="dialog-notitleaction" modal-type="${DialogModalType.nonModal}" no-title-action>
+      <div slot="title">No Title Action</div>
+      <div>
+        <fluent-text as="p" block>
+          <p>The no-title-action attribute can be provided to opt out of rendering any title action.</p></fluent-text
+        >
+        <br />
+        <fluent-text block><code>no-title-action</code></fluent-text>
+      </div>
+      <br />
+
+      <fluent-button
+        slot="action"
+        appearance="primary"
+        @click="${(e: Event, c) => closeDialog(e, 'dialog-notitleaction')}"
+        >Close Dialog</fluent-button
+      >
+      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -331,7 +411,7 @@ export const ControlledAndUncontrolled = renderComponent(html<DialogStoryArgs>`
         appearance="transparent"
         icon-only
         @click="${(e: Event, c) => closeDialogControlled(e, 'dialog-controlled')}"
-        slot="close"
+        slot="title-action"
       >
         ${dismissed20Regular}
       </fluent-button>
@@ -348,13 +428,13 @@ export const ControlledAndUncontrolled = renderComponent(html<DialogStoryArgs>`
       <br />
 
       <fluent-button
-        slot="actions"
+        slot="action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialogControlled(e, 'dialog-controlled')}"
       >
         Close Controlled Dialog
       </fluent-button>
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
     <fluent-dialog id="dialog-uncontrolled">
       <div slot="title">Uncontrolled Dialog</div>
@@ -362,7 +442,7 @@ export const ControlledAndUncontrolled = renderComponent(html<DialogStoryArgs>`
         appearance="transparent"
         icon-only
         @click="${(e: Event, c) => closeDialog(e, 'dialog-uncontrolled')}"
-        slot="close"
+        slot="title-action"
       >
         ${dismissed20Regular}
       </fluent-button>
@@ -381,13 +461,13 @@ export const ControlledAndUncontrolled = renderComponent(html<DialogStoryArgs>`
       <br />
 
       <fluent-button
-        slot="actions"
+        slot="action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-uncontrolled')}"
       >
         Close Uncontrolled Dialog
       </fluent-button>
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -436,10 +516,10 @@ export const TwoColumnLayout = renderComponent(html<DialogStoryArgs>`
         </div>
       </div>
 
-      <fluent-button slot="actions" @click="${(e: Event, c) => closeDialog(e, 'dialog-twocolumn', true)}"
+      <fluent-button slot="action" @click="${(e: Event, c) => closeDialog(e, 'dialog-twocolumn', true)}"
         >Cancel</fluent-button
       >
-      <fluent-button appearance="primary" slot="actions">Sign Up</fluent-button>
+      <fluent-button appearance="primary" slot="action">Sign Up</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -461,16 +541,14 @@ export const RTL = renderComponent(html<DialogStoryArgs>`
         appearance="transparent"
         icon-only
         @click="${(e: Event, c) => closeDialog(e, 'dialog-rtl')}"
-        slot="close"
+        slot="title-action"
       >
         ${dismissed20Regular}
       </fluent-button>
       <fluent-text as="p" block><p>هذا المكون يدعم كلاً من LTR و RTL.</p></fluent-text>
 
-      <fluent-button slot="actions" @click="${(e: Event, c) => closeDialog(e, 'dialog-rtl', true)}"
-        >إلغاء</fluent-button
-      >
-      <fluent-button appearance="primary" slot="actions">قم بشيء</fluent-button>
+      <fluent-button slot="action" @click="${(e: Event, c) => closeDialog(e, 'dialog-rtl', true)}">إلغاء</fluent-button>
+      <fluent-button appearance="primary" slot="action">قم بشيء</fluent-button>
     </fluent-dialog>
   </div>
 `);
@@ -491,7 +569,7 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
         appearance="transparent"
         icon-only
         @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
-        slot="close"
+        slot="title-action"
       >
         ${dismissed20Regular}
       </fluent-button>
@@ -547,12 +625,12 @@ export const ScrollingLongContent = renderComponent(html<DialogStoryArgs>`
         </p>
       </fluent-text>
       <fluent-button
-        slot="actions"
+        slot="action"
         appearance="primary"
         @click="${(e: Event, c) => closeDialog(e, 'dialog-longcontent')}"
         >Close Dialog</fluent-button
       >
-      <fluent-button slot="actions">Do Something</fluent-button>
+      <fluent-button slot="action">Do Something</fluent-button>
     </fluent-dialog>
   </div>
 `);

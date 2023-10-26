@@ -88,10 +88,12 @@ export const styles = css`
 
   .actions {
     display: flex;
+    grid-column-start: 1;
     flex-direction: column;
+    max-width: 100vw;
     row-gap: ${spacingVerticalS};
     padding-top: ${spacingVerticalXXL};
-    align-items: center;
+    justify-self: stretch;
     width: 100%;
   }
   ::slotted([slot='action']) {
@@ -110,6 +112,7 @@ export const styles = css`
       display: flex;
       flex-direction: row;
       justify-content: flex-end;
+      align-items: center;
       column-gap: ${spacingHorizontalS};
       padding-top: ${spacingVerticalS};
       box-sizing: border-box;
