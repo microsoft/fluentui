@@ -41,13 +41,13 @@ export type MotionStylesKeys = 'default' | 'enter' | 'exit' | MotionType;
 export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
 
 // @public
-export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: UseMotionOptions): MotionState<Element>;
+export function useMotion<Element extends HTMLElement>(shorthand: MotionShorthand<Element>, options?: MotionOptions): MotionState<Element>;
 
 // @public (undocumented)
 export const useMotionClassNames: (motion: MotionState, motionStyles: MotionClassNames) => string;
 
-// @public (undocumented)
-export type UseMotionOptions = Pick<MotionOptions, 'animateOnFirstMount'>;
+// @internal
+export function useMotionPresence<Element extends HTMLElement>(presence: boolean, options?: MotionOptions): MotionState<Element>;
 
 // (No @packageDocumentation comment for this package)
 
