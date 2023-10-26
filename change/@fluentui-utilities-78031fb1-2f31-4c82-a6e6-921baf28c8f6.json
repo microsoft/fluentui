@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: add verify-packaging task",
-  "packageName": "@fluentui/utilities",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "none"
-}
