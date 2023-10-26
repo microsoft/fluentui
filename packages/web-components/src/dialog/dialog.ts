@@ -11,12 +11,6 @@ import { DialogModalType } from './dialog.options.js';
  */
 export class Dialog extends FASTElement {
   /**
-   * @private
-   * Indicates whether focus is being trapped within the dialog
-   */
-  private isTrappingFocus: boolean = false;
-
-  /**
    * @public
    * Lifecycle method called when the element is connected to the DOM
    */
@@ -81,6 +75,24 @@ export class Dialog extends FASTElement {
   private trapFocus: boolean = false;
 
   /**
+   * @private
+   * Indicates whether focus is being trapped within the dialog
+   */
+  private isTrappingFocus: boolean = false;
+
+  /**
+   * @public
+   * Method to set the component's state based on its attributes
+   */
+  public setComponent(): void {
+    if (this.modalType === DialogModalType.nonModal) {
+      this.trapFocus = false;
+    } else {
+      this.trapFocus = true;
+    }
+  }
+
+  /**
    * @public
    * Method called when the 'open' attribute changes
    */
@@ -100,23 +112,11 @@ export class Dialog extends FASTElement {
    */
   public modalTypeChanged(oldValue: DialogModalType, newValue: DialogModalType): void {
     if (newValue !== oldValue) {
-      if (newValue == DialogModalType.alert || newValue == DialogModalType.modal) {
-        this.trapFocus = true;
-      } else {
+      if (newValue == DialogModalType.nonModal) {
         this.trapFocus = false;
+      } else {
+        this.trapFocus = true;
       }
-    }
-  }
-
-  /**
-   * @public
-   * Method to set the component's state based on its attributes
-   */
-  public setComponent(): void {
-    if (this.modalType == DialogModalType.modal || this.modalType == DialogModalType.alert) {
-      this.trapFocus = true;
-    } else {
-      this.trapFocus = false;
     }
   }
 
@@ -134,17 +134,19 @@ export class Dialog extends FASTElement {
    * Method to show the dialog
    */
   public show(): void {
-    Updates.enqueue(() => {
-      if (this.modalType === DialogModalType.alert || this.modalType === DialogModalType.modal) {
-        this.dialog.showModal();
-        this.open = true;
-        this.updateTrapFocus(true);
-      } else if (this.modalType === DialogModalType.nonModal) {
-        this.dialog.show();
-        this.open = true;
-      }
-      this.onOpenChangeEvent();
-    });
+    if (!this.dialog.open) {
+      Updates.enqueue(() => {
+        if (this.modalType === DialogModalType.alert || this.modalType === DialogModalType.modal) {
+          this.dialog.showModal();
+          this.open = true;
+          this.updateTrapFocus(true);
+        } else if (this.modalType === DialogModalType.nonModal) {
+          this.dialog.show();
+          this.open = true;
+        }
+        this.onOpenChangeEvent();
+      });
+    }
   }
 
   /**
@@ -153,9 +155,11 @@ export class Dialog extends FASTElement {
    * @param dismissed - Indicates whether the dialog was dismissed
    */
   public hide(dismissed: boolean = false): void {
-    this.dialog.close();
-    this.open = false;
-    this.onOpenChangeEvent(dismissed);
+    if (this.dialog.open) {
+      this.dialog.close();
+      this.open = false;
+      this.onOpenChangeEvent(dismissed);
+    }
   }
 
   /**
