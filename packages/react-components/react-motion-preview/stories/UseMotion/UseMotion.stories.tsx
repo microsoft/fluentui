@@ -5,40 +5,38 @@ import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/
 
 const useStyles = makeStyles({
   root: {
+    height: '180px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'center',
     rowGap: '24px',
   },
 
   rectangle: {
     ...shorthands.borderRadius('8px'),
 
-    width: '200px',
-    height: '150px',
+    width: '150px',
+    height: '100px',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: tokens.colorBrandBackground2,
+    backgroundColor: tokens.colorBrandBackground,
     opacity: 0,
     transform: 'translate3D(0, 0, 0) scale(0.25)',
-    transitionDuration: `${tokens.durationNormal}, ${tokens.durationNormal}, ${tokens.durationUltraSlow}`,
-    transitionDelay: `${tokens.durationFast}, 0, ${tokens.durationSlow}`,
-    transitionProperty: 'opacity, transform, background-color',
-    willChange: 'opacity, transform, background-color',
+    transitionDuration: `${tokens.durationSlow}, ${tokens.durationGentle}`,
+    transitionProperty: 'opacity, transform',
+    willChange: 'opacity, transform',
     color: '#fff',
   },
 
   visible: {
     opacity: 1,
     transform: 'translate3D(0, 0, 0) scale(1)',
-    backgroundColor: tokens.colorBrandBackground,
   },
 });
 
-export const MotionExample = () => {
+export const UseMotion = () => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
