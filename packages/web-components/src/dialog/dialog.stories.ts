@@ -114,7 +114,6 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
     <fluent-text block>
       <span>
         A non-modal dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
-        A non-modal dialog will present by default a close button.
       </span>
     </fluent-text>
     <br />
@@ -129,8 +128,6 @@ export const NonModal = renderComponent(html<DialogStoryArgs>`
       </fluent-text as="p" block>
         <p>
           A non-modal dialog by default presents no backdrop, allowing elements outside of the dialog to be interacted with.
-
-          A non-moda dialog will present by default a closeButton.
         </p>
       </fluent-text>
       </fluent-text as="p" block><p><fluent-text weight="bold" as="span"><span>Note:<span></fluent-text> if an element outside of the dialog is focused then it will not be possible to close the dialog with the Escape key.</p></fluent-text>
