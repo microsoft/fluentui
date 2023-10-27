@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-storybook-addon-codesandbox',
+  displayName: 'react-storybook-addon-export-to-sandbox',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [
