@@ -148,6 +148,6 @@ extends:
                   node -r ./scripts/ts-node/register ./scripts/update-release-notes/index.ts --token=$(githubPAT) --apply --debug
                 displayName: 'Update github release notes'
 
-              - template: .devops/templates/cleanup.yml
+              - template: .devops/templates/cleanup.yml@self
                 parameters:
                   checkForModifiedFiles: false
