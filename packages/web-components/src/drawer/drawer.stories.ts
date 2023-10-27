@@ -2,7 +2,7 @@ import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
 import { RadioGroup } from '../radio-group/radio-group.js';
-import { colorNeutralStroke2 } from '../theme/design-tokens.js';
+import { colorNeutralStroke1, colorNeutralStroke2 } from '../theme/design-tokens.js';
 import type { Drawer as FluentDrawer } from './drawer.js';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 import './define.js';
@@ -112,22 +112,15 @@ const hideDrawer = (drawerID: string) => {
 
 setTimeout(() => {
   const input = document.getElementById('custom-size-input') as FluentDrawer;
-  const drawer = document.getElementById('drawer-size-custom') as FluentDrawer;
+  const drawer = document.getElementById('drawer-width-custom') as FluentDrawer;
   input.addEventListener('input', (e: any) => {
-    drawer.style.setProperty('--drawer-size', `${e.target.value}px`);
+    drawer.style.setProperty('--drawer-width', `${e.target.value}px`);
   });
 }, 2000);
 
 const storyTemplate = html<DrawerStoryArgs>`
   <div class="full-height">
     <style>
-      .story-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100%;
-        width: 100%;
-      }
       div.docs-story > div:first-child,
       #docs-root .innerZoomElementWrapper > div > div {
         height: 30em;
@@ -141,8 +134,15 @@ const storyTemplate = html<DrawerStoryArgs>`
       .innerZoomElementWrapper > div > div > div {
         height: 100%;
       }
-      .justify-sbdocs-content {
+      .justify--space-betweendocs-content {
         max-width: 1200px;
+      }
+      .story-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        width: 100%;
       }
       .grid {
         display: grid;
@@ -150,43 +150,29 @@ const storyTemplate = html<DrawerStoryArgs>`
       .flex {
         display: flex;
       }
-      .justify-sb {
-        justify-content: space-between;
-      }
-      .row-gap-16 {
-        row-gap: 16px;
-      }
-      .padding-16 {
-        padding: 16px;
-      }
-      .f-col {
+      .column {
         flex-direction: column;
       }
-      .justify-c {
+      .justify--center {
         justify-content: center;
       }
-      .align-c {
-        align-items: center;
+      .justify--space-between {
+        justify-content: space-between;
       }
-      .item {
-        width: 100%;
+      .row-gap--16 {
+        row-gap: 16px;
       }
-      .toggle-button-container {
+      .col-gap--8 {
+        column-gap: 8px;
+      }
+      .padding--16 {
         padding: 16px;
-        height: 100%;
-        flex-shrink: 0;
-        flex-grow: 0;
-        max-width: 400px;
-        margin: auto;
-      }
-      .scroll-y {
-        overflow-y: scroll;
       }
       .width-400 {
         width: 400px;
       }
     </style>
-    <div class="flex justify-sb full-height">
+    <div class="flex justify--space-between full-height">
       <div>
         <fluent-drawer
           id="drawer-default-start"
@@ -195,31 +181,10 @@ const storyTemplate = html<DrawerStoryArgs>`
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
         >
-          <div slot="navigation">
-            <fluent-button appearance="transparent" icon-only size="medium" aria-label="back">
-              ${arrowLeft20Regular}
-            </fluent-button>
-            <fluent-button appearance="transparent" icon-only size="medium" aria-label="close">
-              ${arrowClockwise20Regular}
-            </fluent-button>
-            <fluent-button appearance="transparent" icon-only size="medium" aria-label="close">
-              ${settings20Regular}
-            </fluent-button>
-
-            <fluent-button
-              @click=${() => hideDrawer('drawer-default-start')}
-              appearance="transparent"
-              icon-only
-              size="medium"
-              aria-label="close"
-            >
-              ${dismissed20Regular}
-            </fluent-button>
-          </div>
           <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
             ><h1>Drawer Header</h1></fluent-text
           >
-          <div class="row-gap-16 f-col flex">
+          <div class="row-gap--16 column flex">
             <fluent-text>
               The drawer gives users a quick entry point to configuration and information. It should be used when
               retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
@@ -236,12 +201,14 @@ const storyTemplate = html<DrawerStoryArgs>`
             </div>
           </div>
           <div slot="footer">
-            <fluent-button appearance="primary">Primary</fluent-button>
-            <fluent-button appearance="secondary">Secondary</fluent-button>
+            <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-start')}"
+              >Close</fluent-button
+            >
+            <fluent-button appearance="secondary">Do Something</fluent-button>
           </div>
         </fluent-drawer>
       </div>
-      <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+      <div class="row-gap--16 column flex justify--center padding--16 width-400">
         <fluent-text weight="bold" size="400" as="h3"><h3>Drawer</h3></fluent-text>
 
         <fluent-text font="base" size="300" weight="regular" as="p">
@@ -255,7 +222,7 @@ const storyTemplate = html<DrawerStoryArgs>`
         </fluent-text>
         <fluent-radio-group id="drawer-radio-default" orientation="horizontal">
           <fluent-label weight="semibold">Position</fluent-label>
-          <fluent-radio value="default-start">Start</fluent-radio>
+          <fluent-radio value="default-start" checked>Start</fluent-radio>
           <fluent-radio value="default-end">End</fluent-radio>
         </fluent-radio-group>
 
@@ -271,31 +238,10 @@ const storyTemplate = html<DrawerStoryArgs>`
           modal-type="${x => x.modalType}"
           type="${x => x.type}"
         >
-          <div slot="navigation">
-            <fluent-button appearance="transparent" icon-only size="medium" aria-label="back">
-              ${arrowLeft20Regular}
-            </fluent-button>
-            <fluent-button appearance="transparent" icon-only size="medium" aria-label="close">
-              ${arrowClockwise20Regular}
-            </fluent-button>
-            <fluent-button appearance="transparent" icon-only size="medium" aria-label="close">
-              ${settings20Regular}
-            </fluent-button>
-
-            <fluent-button
-              @click=${() => hideDrawer('drawer-default-end')}
-              appearance="transparent"
-              icon-only
-              size="medium"
-              aria-label="close"
-            >
-              ${dismissed20Regular}
-            </fluent-button>
-          </div>
           <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
             ><h1>Drawer Header</h1></fluent-text
           >
-          <div class="row-gap-16 f-col flex">
+          <div class="row-gap--16 column flex">
             <fluent-text>
               The drawer gives users a quick entry point to configuration and information. It should be used when
               retaining context is beneficial to users. An overlay is optional depending on whether or not interacting
@@ -312,8 +258,8 @@ const storyTemplate = html<DrawerStoryArgs>`
             </div>
           </div>
           <div slot="footer">
-            <fluent-button appearance="primary">Primary</fluent-button>
-            <fluent-button appearance="secondary">Secondary</fluent-button>
+            <fluent-button appearance="primary" @click="${() => hideDrawer('drawer-default-end')}">Close</fluent-button>
+            <fluent-button appearance="secondary">Do Something</fluent-button>
           </div>
         </fluent-drawer>
       </div>
@@ -334,6 +280,9 @@ export default {
       table: {
         type: {
           summary: 'Sets the position of drawer',
+        },
+        defaultValue: {
+          summary: DrawerPosition.start,
         },
       },
     },
@@ -385,7 +334,7 @@ export default {
 export const Drawer = renderComponent(storyTemplate).bind({});
 
 export const Modal = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-c full-height">
+  <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-modal">
         <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Modal</h1></fluent-text>
@@ -398,7 +347,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
         >
           ${dismissed20Regular}
         </fluent-button>
-        <div class="row-gap-16 f-col flex">
+        <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
               When a modal dialog is open, the rest of the page is dimmed out and cannot be interacted with. The tab
@@ -412,7 +361,7 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
         </div>
       </fluent-drawer>
     </div>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Modal</h3></fluent-text>
       <fluent-text weight="regular" size="300" as="p">
         <p>
@@ -430,11 +379,11 @@ export const Modal = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const Alert = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-c full-height">
+  <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-alert" modal-type="alert">
         <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Alert</h1></fluent-text>
-        <div class="row-gap-16 f-col flex">
+        <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
               When an alert dialog is open it interrupts the user's workflow to communicate an important message or ask
@@ -452,7 +401,7 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
         </div>
       </fluent-drawer>
     </div>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Alert</h3></fluent-text>
       <fluent-text weight="regular" size="300" as="p">
         <p>
@@ -470,7 +419,7 @@ export const Alert = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const NonModal = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-c full-height">
+  <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-nonmodal" modal-type="non-modal">
         <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Non Modal</h1></fluent-text>
@@ -483,7 +432,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
         >
           ${dismissed20Regular}
         </fluent-button>
-        <div class="row-gap-16 f-col flex">
+        <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
               When a non-modal dialog is open, the rest of the page is not dimmed out and users can interact with the
@@ -497,7 +446,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
         </div>
       </fluent-drawer>
     </div>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Non Modal</h3></fluent-text>
       <fluent-text weight="regular" size="300" as="p">
         <p>
@@ -517,7 +466,7 @@ export const NonModal = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const Overlay = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-c full-height">
+  <div class="flex justify--center full-height">
     <div>
       <fluent-drawer id="drawer-overlay" type="overlay">
         <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Overlay</h1></fluent-text>
@@ -530,7 +479,7 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
         >
           ${dismissed20Regular}
         </fluent-button>
-        <div class="row-gap-16 f-col flex">
+        <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
               A Drawer rendered with an overlay contains supplementary content and are used for complex creation, edit,
@@ -545,7 +494,7 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
         </div>
       </fluent-drawer>
     </div>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Overlay</h3></fluent-text>
       <fluent-text font="base" size="300" weight="regular" as="p">
         <p>
@@ -563,19 +512,19 @@ export const Overlay = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const Inline = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-sb full-height">
-    <fluent-drawer position="start" size="small" id="drawer-inline" type="inline" modal-type="non-modal">
+  <div class="flex justify--space-between full-height">
+    <fluent-drawer position="start" size="small" id="drawer-inline-start" type="inline" modal-type="non-modal">
       <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
       <fluent-button
         slot="action"
         appearance="transparent"
         icon-only
         aria-label="close"
-        @click="${() => hideDrawer('drawer-inline')}"
+        @click="${() => hideDrawer('drawer-inline-start')}"
       >
         ${dismissed20Regular}
       </fluent-button>
-      <div class="row-gap-16 f-col flex">
+      <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
             An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
@@ -588,7 +537,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
         </fluent-text>
       </div>
     </fluent-drawer>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Inline</h3></fluent-text>
       <fluent-text font="base" size="300" weight="regular" as="p">
         <p>
@@ -600,12 +549,14 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
       <fluent-text font="monospace" size="300" weight="regular" as="p">
         <code>type="inline"</code>
       </fluent-text>
-      <div>
-        <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-inline')}">Toggle Start</fluent-button>
-        <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-inline-end')}"
-          >Toggle End</fluent-button
-        >
-      </div>
+      <fluent-label weight="semibold">Select a Drawer Position</fluent-label>
+      <fluent-radio-group id="drawer-radiogroup-inline">
+        <fluent-radio value="inline-start" checked>Start</fluent-radio>
+        <fluent-radio value="inline-end">End</fluent-radio>
+      </fluent-radio-group>
+      <fluent-button appearance="primary" @click="${() => toggleSelectedDrawer('drawer-radiogroup-inline')}"
+        >Toggle Drawer</fluent-button
+      >
     </div>
     <fluent-drawer position="end" size="small" id="drawer-inline-end" type="inline" modal-type="non-modal">
       <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Drawer Inline</h1></fluent-text>
@@ -618,7 +569,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
       >
         ${dismissed20Regular}
       </fluent-button>
-      <div class="row-gap-16 f-col flex">
+      <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
             An inline Drawer is often used for navigation that is not dismissible. As it is on the same level as the
@@ -635,7 +586,7 @@ export const Inline = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const Position = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-sb full-height">
+  <div class="flex justify--space-between full-height">
     <div>
       <fluent-drawer type="inline" id="drawer-position-start" size="small">
         <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"
@@ -650,7 +601,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
         >
           ${dismissed20Regular}
         </fluent-button>
-        <div class="row-gap-16 f-col flex">
+        <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
               When a Drawer is invoked, it slides in from either the left or right side of the screen. This can be
@@ -667,7 +618,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
         </div>
       </fluent-drawer>
     </div>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Position</h3></fluent-text>
 
       <fluent-text font="base" size="300" weight="regular" as="p">
@@ -681,7 +632,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
       </fluent-text>
       <fluent-label weight="semibold">Select a Drawer Position</fluent-label>
       <fluent-radio-group id="drawer-radiogroup-position">
-        <fluent-radio value="position-start">Start</fluent-radio>
+        <fluent-radio value="position-start" checked>Start</fluent-radio>
         <fluent-radio value="position-end">End</fluent-radio>
       </fluent-radio-group>
       <fluent-button appearance="primary" @click="${() => toggleSelectedDrawer('drawer-radiogroup-position')}"
@@ -702,7 +653,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
         >
           ${dismissed20Regular}
         </fluent-button>
-        <div class="row-gap-16 f-col flex">
+        <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
               The drawer component offers flexible positioning options to suit your layout needs. By using the position
@@ -725,8 +676,8 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const Size = renderComponent(html<DrawerStoryArgs>`
-  <div class="flex justify-c full-height">
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+  <div class="flex justify--center full-height">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Size</h3></fluent-text>
 
       <fluent-text font="base" size="300" weight="regular" as="p">
@@ -738,7 +689,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       <fluent-label weight="semibold">Select a Drawer Size</fluent-label>
       <fluent-radio-group id="drawer-radiogroup-sizes">
         <fluent-radio value="size-small">Small</fluent-radio>
-        <fluent-radio value="size-medium">Medium</fluent-radio>
+        <fluent-radio value="size-medium" checked>Medium</fluent-radio>
         <fluent-radio value="size-large">Large</fluent-radio>
         <fluent-radio value="size-full">Full</fluent-radio>
       </fluent-radio-group>
@@ -757,7 +708,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       >
         ${dismissed20Regular}
       </fluent-button>
-      <div class="row-gap-16 f-col flex">
+      <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
@@ -777,7 +728,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       >
         ${dismissed20Regular}
       </fluent-button>
-      <div class="row-gap-16 f-col flex">
+      <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
@@ -797,7 +748,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       >
         ${dismissed20Regular}
       </fluent-button>
-      <div class="row-gap-16 f-col flex">
+      <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
@@ -817,116 +768,12 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
       >
         ${dismissed20Regular}
       </fluent-button>
-      <div class="row-gap-16 f-col flex">
+      <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>The size attribute controls the width of the drawer. The default is medium.</p>
         </fluent-text>
         <fluent-text font="monospace" size="300" weight="regular">
           <code>size="full"</code>
-        </fluent-text>
-      </div>
-    </fluent-drawer>
-  </div>
-`);
-
-export const WithNavigation = renderComponent(html`
-  <div class="flex justify-c full-height">
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
-
-      <fluent-text size="300" font="base" as="p">
-        <p>
-          The drawer component features an optional top navigation slot named "navigation" providing users with the
-          flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
-          they will appear in the top navigation area of the drawer.
-        </p>
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>slot="navigation"</code>
-      </fluent-text>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-top-navigation')}"
-        >Toggle Drawer</fluent-button
-      >
-    </div>
-    <fluent-drawer id="drawer-top-navigation">
-      <div slot="navigation">
-        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="back">
-          ${arrowLeft20Regular}
-        </fluent-button>
-        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
-          ${arrowClockwise20Regular}
-        </fluent-button>
-        <fluent-button appearance="transparent" icon-only size="medium" size aria-label="close">
-          ${settings20Regular}
-        </fluent-button>
-
-        <fluent-button
-          @click=${() => hideDrawer('drawer-top-navigation')}
-          appearance="transparent"
-          icon-only
-          size="medium"
-          size
-          aria-label="close"
-        >
-          ${dismissed20Regular}
-        </fluent-button>
-      </div>
-      <fluent-text slot="title" weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
-
-      <div class="row-gap-16 f-col flex">
-        <fluent-text size="300" font="base" as="p">
-          <p>
-            The drawer component features an optional top navigation slot named "navigation" providing users with the
-            flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
-            they will appear in the top navigation area of the drawer.
-          </p>
-        </fluent-text>
-        <fluent-text font="monospace" size="300" weight="regular">
-          <code>slot="navigation"</code>
-        </fluent-text>
-      </div>
-      <div slot="footer">
-        <fluent-button appearance="primary">Primary</fluent-button>
-        <fluent-button appearance="secondary">Secondary</fluent-button>
-      </div>
-    </fluent-drawer>
-  </div>
-`);
-
-export const CustomSize = renderComponent(html`
-  <div class="flex justify-c full-height">
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
-      <fluent-text weight="bold" size="400" as="h3"><h3>Custom Size</h3></fluent-text>
-
-      <fluent-text font="base" size="300" weight="regular" as="p">
-        <p>The Drawer can be sized to any custom width, by overriding the size CSS variable:</p>
-      </fluent-text>
-      <fluent-text font="monospace" size="300" weight="regular">
-        <code>--drawer-size</code>
-      </fluent-text>
-      <fluent-label weight="semibold">Set a Drawer Size</fluent-label>
-      <fluent-text-input id="custom-size-input" pattern="^[0-9]*$" type="text"></fluent-text-input>
-      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-size-custom')}"
-        >Toggle Drawer</fluent-button
-      >
-    </div>
-    <fluent-drawer id="drawer-size-custom">
-      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Custom Size</h1></fluent-text>
-      <fluent-button
-        slot="action"
-        appearance="transparent"
-        icon-only
-        aria-label="close"
-        @click="${() => hideDrawer('drawer-size-custom')}"
-      >
-        ${dismissed20Regular}
-      </fluent-button>
-      <div class="row-gap-16 f-col flex">
-        <fluent-text font="base" size="300" weight="regular" as="p">
-          <p>The Drawer can be sized to any custom width, by overriding the size CSS variable:</p>
-        </fluent-text>
-        <fluent-text font="monospace" size="300" weight="regular">
-          <code>--drawer-size</code>
         </fluent-text>
       </div>
     </fluent-drawer>
@@ -954,7 +801,7 @@ export const WithTitleAndAction = renderComponent(html<DrawerStoryArgs>`
         </fluent-button>
       </fluent-drawer>
     </div>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400 margin-auto">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400 margin-auto">
       <fluent-text weight="bold" size="400" as="h3"><h3>Drawer with title and action</h3></fluent-text>
 
       <fluent-text size="300" font="base">
@@ -972,6 +819,106 @@ export const WithTitleAndAction = renderComponent(html<DrawerStoryArgs>`
         >
       </div>
     </div>
+  </div>
+`);
+
+export const WithNavigation = renderComponent(html`
+  <div class="flex justify--center full-height">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+      <fluent-text weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
+
+      <fluent-text size="300" font="base" as="p">
+        <p>
+          The drawer component features an optional top navigation slot named "navigation" providing users with the
+          flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
+          they will appear in the top navigation area of the drawer.
+        </p>
+      </fluent-text>
+      <fluent-text font="monospace" size="300" weight="regular">
+        <code>slot="navigation"</code>
+      </fluent-text>
+      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-top-navigation')}"
+        >Toggle Drawer</fluent-button
+      >
+    </div>
+    <fluent-drawer id="drawer-top-navigation">
+      <div slot="navigation" class="flex justify--space-between">
+        <div>
+          <fluent-button appearance="transparent" icon-only size="medium"> ${arrowLeft20Regular} </fluent-button>
+        </div>
+        <div class="flex col-gap--8">
+          <fluent-button appearance="transparent" icon-only size="medium"> ${arrowClockwise20Regular} </fluent-button>
+          <fluent-button appearance="transparent" icon-only size="medium"> ${settings20Regular} </fluent-button>
+          <fluent-button
+            @click=${() => hideDrawer('drawer-default-end')}
+            appearance="transparent"
+            icon-only
+            size="medium"
+            aria-label="close"
+          >
+            ${dismissed20Regular}
+          </fluent-button>
+        </div>
+      </div>
+      <fluent-text slot="title" weight="bold" size="400" as="h3"><h3>With Navigation</h3></fluent-text>
+
+      <div class="row-gap--16 column flex">
+        <fluent-text size="300" font="base" as="p">
+          <p>
+            The drawer component features an optional top navigation slot named "navigation" providing users with the
+            flexibility to insert custom elements. Simply populate the "navigation" slot with your desired elements, and
+            they will appear in the top navigation area of the drawer.
+          </p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code>slot="navigation"</code>
+        </fluent-text>
+      </div>
+      <div slot="footer">
+        <fluent-button appearance="primary">Primary</fluent-button>
+        <fluent-button appearance="secondary">Secondary</fluent-button>
+      </div>
+    </fluent-drawer>
+  </div>
+`);
+
+export const CustomSize = renderComponent(html`
+  <div class="flex justify--center full-height">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
+      <fluent-text weight="bold" size="400" as="h3"><h3>Custom Size</h3></fluent-text>
+
+      <fluent-text font="base" size="300" weight="regular" as="p">
+        <p>The Drawer can be sized to any custom width, by overriding the drawer-width CSS variable:</p>
+      </fluent-text>
+      <fluent-text font="monospace" size="300" weight="regular">
+        <code>var(--drawer-width)</code>
+      </fluent-text>
+      <fluent-label weight="semibold">Set a Drawer Size</fluent-label>
+      <fluent-text-input id="custom-size-input" pattern="^[0-9]*$" type="text"></fluent-text-input>
+      <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-width-custom')}"
+        >Toggle Drawer</fluent-button
+      >
+    </div>
+    <fluent-drawer id="drawer-width-custom">
+      <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Custom Size</h1></fluent-text>
+      <fluent-button
+        slot="action"
+        appearance="transparent"
+        icon-only
+        aria-label="close"
+        @click="${() => hideDrawer('drawer-width-custom')}"
+      >
+        ${dismissed20Regular}
+      </fluent-button>
+      <div class="row-gap--16 column flex">
+        <fluent-text font="base" size="300" weight="regular" as="p">
+          <p>The Drawer can be sized to any custom width, by overriding the drawer-width CSS variable:</p>
+        </fluent-text>
+        <fluent-text font="monospace" size="300" weight="regular">
+          <code>var(--drawer-width)</code>
+        </fluent-text>
+      </div>
+    </fluent-drawer>
   </div>
 `);
 
@@ -995,7 +942,7 @@ export const Separator = renderComponent(html<DrawerStoryArgs>`
       >
         ${dismissed20Regular}
       </fluent-button>
-      <div class="row-gap-16 f-col flex">
+      <div class="row-gap--16 column flex">
         <fluent-text font="base" size="300" weight="regular" as="p">
           <p>
             To apply a separator line within the drawer, you can customize its color by setting the --drawer-separator
@@ -1004,11 +951,11 @@ export const Separator = renderComponent(html<DrawerStoryArgs>`
           </p>
         </fluent-text>
         <fluent-text font="monospace" size="300" weight="regular" as="p">
-          <code>--drawer-separator</code>
+          <code>var(--drawer-separator)</code>
         </fluent-text>
       </div>
     </fluent-drawer>
-    <div class="row-gap-16 f-col flex justify-c padding-16 width-400">
+    <div class="row-gap--16 column flex justify--center padding--16 width-400">
       <fluent-text weight="bold" size="400" as="h3"><h3>Separator</h3></fluent-text>
       <fluent-text font="base" size="300" weight="regular" as="p">
         <p>
@@ -1018,7 +965,7 @@ export const Separator = renderComponent(html<DrawerStoryArgs>`
         </p>
       </fluent-text>
       <fluent-text font="monospace" size="300" weight="regular" as="p">
-        <code>--drawer-separator</code>
+        <code>var(--drawer-separator)</code>
       </fluent-text>
       <div>
         <fluent-button appearance="primary" @click="${() => toggleDrawer('drawer-customstyles')}"
@@ -1030,14 +977,12 @@ export const Separator = renderComponent(html<DrawerStoryArgs>`
 `);
 
 export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
-  <style>
-    .margin-auto {
-      margin: auto;
-    }
-  </style>
   <div class="flex full-height">
     <div>
-    <fluent-drawer position="start" id="drawer-overflow" type="inline" modal-type="non-modal">
+    <fluent-drawer 
+      style="--drawer-overflow-border: ${colorNeutralStroke1}" 
+      id="drawer-overflow" 
+      type="inline">
         <fluent-text slot="title" font="base" size="500" weight="semibold" as="h1"><h1>Content Overflow Separator</h1></fluent-text>
         <fluent-button
           slot="action"
@@ -1048,10 +993,10 @@ export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
         >
           ${dismissed20Regular}
         </fluent-button>
-        <div class="row-gap-16 f-col flex">
+        <div class="row-gap--16 column flex">
           <fluent-text font="base" size="300" weight="regular" as="p">
             <p>
-              When the content section of the drawer exceeds its allocated space and overflows, the --overflow-border CSS custom property is applied. This property is specifically designed to add a border style to the top of the drawer's footer, giving a visual indication that there's more content above.
+            The --drawer-overflow-border CSS token allows you to define a border color for the top of the drawer's footer. This visual cue helps indicate the presence of overflowed content above, signaling to users that there's more content to be viewed or accessed.
             </p>
           </fluent-text>
           <fluent-text size="400" weight="bold" as="h2"><h2>Personal Info</h2></fluent-text>
@@ -1088,15 +1033,15 @@ export const ContentOverflowSeparator = renderComponent(html<DrawerStoryArgs>`
         </div>
       </fluent-drawer>
   </div>
-  <div class="row-gap-16 f-col flex justify-c padding-16 width-400 margin-auto">
+  <div class="row-gap--16 column flex justify--center padding--16 width-400 margin-auto">
     <fluent-text weight="bold" size="400" as="h3"><h3>Content Overflow Separator</h3></fluent-text>
     <fluent-text font="base" size="300" weight="regular" as="p">
       <p>
-      When the content section of the drawer exceeds its allocated space and overflows, the --overflow-border CSS custom property is applied. This property is specifically designed to add a border style to the top of the drawer's footer, giving a visual indication that there's more content above.
+      The --drawer-overflow-border CSS token allows you to define a border color for the top of the drawer's footer. This visual cue helps indicate the presence of overflowed content above, signaling to users that there's more content to be viewed or accessed.
       </p>
     </fluent-text>
     <fluent-text font="monospace" size="300" weight="regular" as="p">
-      <code>--overflow-border</code>
+      <code>var(--drawer-overflow-border)</code>
     </fluent-text>
     <div>
       <fluent-button appearance="primary" @click="${() =>

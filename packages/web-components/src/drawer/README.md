@@ -15,28 +15,28 @@ The Fluent WC3 Drawer extends `FASTElement`
 ### Template
 
 ```html
-   <dialog
+<dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.modalType !== 'non-modal' || x.type === 'inline' ? 'dialog' : 'complementary')}"
-      aria-modal="${x => (x.modalType === 'non-modal' ? 'false' : 'true')}"
+      role="${x => (x.modalType === DrawerModalType.alert ? 'alertdialog' : void 0)}"
+      aria-modal="${x => (x.modalType === 'non-modal' || x.type === 'inline' ? void 0 : 'true')}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
       aria-label="${x => x.ariaLabel}"
-      ?open="${x => x.open}"
       size="${x => x.size}"
       position="${x => x.position}"
       modal-type="${x => x.modalType}"
       type="${x => x.type}"
-      @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
+      @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
+      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       ${ref('dialog')}
     >
-      <div class="drawer" ${ref('drawer')}>
-        <div class="header">
+      <div class="drawer" part="drawer">
+        <div class="header" part="header">
           <nav class="navigation">
             <slot name="navigation"></slot>
           </nav>
-          <div class="title">
+          <div class="title" part="title">
             <slot name="title"></slot>
             <slot name="action"></slot>
           </div>
@@ -48,7 +48,7 @@ The Fluent WC3 Drawer extends `FASTElement`
           <slot name="footer"></slot>
         </div>
       </div>
-    </dialog>
+    </dialog>;
 ```
 
 ### **Variables**
@@ -78,7 +78,7 @@ The Fluent WC3 Drawer extends `FASTElement`
 | Name           | Type          | Description                                |
 | -------------- | ------------- | ------------------------------------------ |
 | `onOpenChange` | `CustomEvent` | Fires when the drawer is opened or closed. |
-| `dismiss`      | `CustomEvent` | Fires when the drawer is dismissed.        |
+| `cancel`       | `CustomEvent` | Fires when the drawer is dismissed.        |
 
 ### **Methods**
 
@@ -101,7 +101,7 @@ The Fluent WC3 Drawer extends `FASTElement`
 | Name                       | Description                                             |
 | -------------------------- | ------------------------------------------------------- |
 | `--drawer-overflow-border` | Used to set the overflow border color                   |
-| `--drawer-size`            | Used to set the overflow border color                   |
+| `--drawer-width`           | Used to set the width of the drawer                     |
 | `--drawer-separator`       | Used to set the border color between drawer and content |
 
 ## **Accessiblity**
