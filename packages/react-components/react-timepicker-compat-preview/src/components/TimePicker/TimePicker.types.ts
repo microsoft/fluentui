@@ -51,7 +51,7 @@ export type TimePickerOption = {
 /**
  * Error types returned by the `onValidationResult` callback.
  */
-export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds';
+export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 export type TimeStringValidationResult = {
   date: Date | null;
@@ -78,9 +78,12 @@ export type TimeSelectionData = {
 
 export type TimeFormatOptions = {
   /**
-   * If true, use 12-hour time format. Otherwise, use 24-hour format.
+   * A string value indicating whether the 12-hour format ("h11", "h12") or the 24-hour format ("h23", "h24") should be used.
+   * - 'h11' and 'h23' start with hour 0 and go up to 11 and 23 respectively.
+   * - 'h12' and 'h24' start with hour 1 and go up to 12 and 24 respectively.
+   * @default 'h23'
    */
-  hour12?: boolean;
+  hourCycle?: 'h11' | 'h12' | 'h23' | 'h24' | undefined;
 
   /**
    * If true, show seconds in the dropdown options and consider seconds for default validation purposes.
@@ -138,7 +141,7 @@ export type TimePickerProps = Omit<
     onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
     /**
-     * Custom the date strings displayed (in dropdown options and input).
+     * Custom the date strings displayed in dropdown options.
      */
     formatDateToTimeString?: (date: Date) => string;
 

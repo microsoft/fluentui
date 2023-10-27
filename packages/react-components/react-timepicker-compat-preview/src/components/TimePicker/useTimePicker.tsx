@@ -30,7 +30,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     defaultSelectedTime: defaultSelectedTimeInProps,
     endHour = 24,
     formatDateToTimeString,
-    hour12 = false,
+    hourCycle = 'h23',
     increment = 30,
     onTimeSelect,
     selectedTime: selectedTimeInProps,
@@ -51,8 +51,8 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     (dateTime: Date) =>
       formatDateToTimeString
         ? formatDateToTimeString(dateTime)
-        : defaultFormatDateToTimeString(dateTime, { showSeconds, hour12 }),
-    [hour12, formatDateToTimeString, showSeconds],
+        : defaultFormatDateToTimeString(dateTime, { showSeconds, hourCycle }),
+    [hourCycle, formatDateToTimeString, showSeconds],
   );
   const options: TimePickerOption[] = React.useMemo(
     () =>
@@ -117,8 +117,9 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   );
 
   const defaultValidateTime = React.useCallback(
-    (time: string | undefined) => getDateFromTimeString(time, dateStartAnchor, dateEndAnchor, { hour12, showSeconds }),
-    [dateEndAnchor, dateStartAnchor, hour12, showSeconds],
+    (time: string | undefined) =>
+      getDateFromTimeString(time, dateStartAnchor, dateEndAnchor, { hourCycle, showSeconds }),
+    [dateEndAnchor, dateStartAnchor, hourCycle, showSeconds],
   );
 
   const state: TimePickerState = {
