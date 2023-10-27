@@ -169,17 +169,14 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   // This effect ensures that the activeOption is cleared when the input doesn't match any option.
   // This behavior is specific to a freeform TimePicker where the input value is treated as a valid time even if it's not in the dropdown.
   React.useEffect(() => {
-    setActiveOption(prevActiveOption => {
-      if (!freeform) {
-        return prevActiveOption;
-      }
-
-      const prefixMatchActiveOption = value && prevActiveOption?.text?.indexOf(value) === 0;
-      if (prefixMatchActiveOption) {
-        return prevActiveOption;
-      }
-      return undefined;
-    });
+    if (freeform && value) {
+      setActiveOption(prevActiveOption => {
+        if (prevActiveOption?.text?.indexOf(value) === 0) {
+          return prevActiveOption;
+        }
+        return undefined;
+      });
+    }
   }, [freeform, setActiveOption, value]);
 
   const selectTimeFromValue = React.useCallback(
