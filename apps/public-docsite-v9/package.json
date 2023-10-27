@@ -33,7 +33,7 @@
     "@fluentui/react-icons-northstar": "*",
     "@fluentui/react-components": "*",
     "@fluentui/react-storybook-addon": "*",
-    "@fluentui/react-storybook-addon-codesandbox": "*",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "*",
     "@fluentui/theme-designer": "*",
     "@fluentui/react-search-preview": "*",
     "@fluentui/react-motion-preview": "*",

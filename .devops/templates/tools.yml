@@ -6,7 +6,7 @@ steps:
       # - we can use only versions that ship with container, otherwise we will run into nodejs installation issues.
       # - as 1es bumps those versions within container automatically we need to use `<major>.x` to not run into issues once they bump the versions.
       # https://github.com/actions/runner-images/blob/ubuntu20/20230924.1/images/linux/Ubuntu2004-Readme.md#nodejs
-      version: '16.x'
+      version: '18.x'
       checkLatest: false
     displayName: 'Install Node.js'
     retryCountOnTaskFailure: 1

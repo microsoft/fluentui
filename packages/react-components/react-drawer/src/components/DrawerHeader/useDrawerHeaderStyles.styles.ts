@@ -15,9 +15,12 @@ const useStyles = makeResetStyles({
   ...shorthands.padding(tokens.spacingVerticalXXL, tokens.spacingHorizontalXXL, tokens.spacingVerticalS),
   ...shorthands.gap(tokens.spacingHorizontalS),
 
+  width: '100%',
+  maxWidth: '100%',
   alignSelf: 'stretch',
   display: 'flex',
   flexDirection: 'column',
+  boxSizing: 'border-box',
 });
 
 /**
