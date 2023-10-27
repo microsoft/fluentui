@@ -125,11 +125,7 @@ extends:
                 displayName: generate PR Deploy Site
 
               - script: |
-                  powershell Get-FileHash apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.e8d34dd4887549374f08.manager.bundle.js
-                displayName: HAHS
-
-              - script: |
-                  type apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.e8d34dd4887549374f08.manager.bundle.js
+                  cat apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.e8d34dd4887549374f08.manager.bundle.js
                 displayName: TEsT
 
               - task: AzureUpload@2
