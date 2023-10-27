@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Fixing zero callout value not visible bug for cartesian charts",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "patch"
+}
