@@ -52,14 +52,17 @@ export function useTriggerListboxSlots(
 
   // handle trigger focus/blur
   const triggerRef: typeof ref = React.useRef(null);
+  const listboxRef: NonNullable<typeof listboxSlot>['ref'] = React.useRef(null);
 
   // resolve listbox shorthand props
   const listboxId = useId('fluent-listbox', listboxSlot?.id);
+  const mergedListboxRef = useMergedRefs(listboxSlot?.ref, listboxRef);
   const listbox: typeof listboxSlot = listboxSlot && {
     id: listboxId,
     multiselect,
     tabIndex: undefined,
     ...listboxSlot,
+    ref: mergedListboxRef,
   };
 
   // resolve trigger shorthand props
@@ -91,9 +94,17 @@ export function useTriggerListboxSlots(
     }, listbox?.onMouseOver),
   );
 
+  const documentOnMouseUp = useEventCallback((ev: MouseEvent) => {
+    if (!listboxRef.current?.contains(ev.target as HTMLElement)) {
+      setOpen(ev as unknown as React.MouseEvent<HTMLElement>, false);
+    }
+    document.removeEventListener('mouseup', documentOnMouseUp);
+  });
+
   const listboxOnMouseDown = useEventCallback(
     mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
       ignoreNextBlur.current = true;
+      document.addEventListener('mouseup', documentOnMouseUp);
     }, listbox?.onMouseDown),
   );
 
