@@ -34,7 +34,6 @@ describe('Breadcrumb', () => {
             >
               <button
                 class="fui-Button fui-BreadcrumbButton"
-                type="button"
               >
                 Item 1
               </button>
@@ -68,9 +67,7 @@ describe('Breadcrumb', () => {
             >
               <a
                 class="fui-Button fui-BreadcrumbButton"
-                role="button"
                 tabindex="0"
-                type="button"
               >
                 Link 1
               </a>

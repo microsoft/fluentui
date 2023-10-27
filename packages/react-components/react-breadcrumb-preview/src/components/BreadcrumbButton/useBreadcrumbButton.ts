@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useButton_unstable } from '@fluentui/react-button';
+import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
 import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
 
@@ -22,12 +23,17 @@ export const useBreadcrumbButton_unstable = (
   return {
     ...useButton_unstable(
       {
-        appearance: 'subtle',
-        ...rest,
-        iconPosition: 'before',
-        icon,
-        'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
-        'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,
+        ...getIntrinsicElementProps('a', {}),
+        ...{
+          appearance: 'subtle',
+          role: undefined,
+          type: undefined,
+          ...rest,
+          iconPosition: 'before',
+          icon,
+          'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
+          'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,
+        },
       },
       ref,
     ),
