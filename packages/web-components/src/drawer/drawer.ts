@@ -41,14 +41,6 @@ export class Drawer extends FASTElement {
   public dialog!: HTMLDialogElement;
 
   /**
-   * The drawer element.
-   * @public
-   *
-   */
-  @observable
-  public drawer!: HTMLDivElement;
-
-  /**
    * Determines whether the drawer should be displayed as modal, non-modal, or alert.
    * When in modal or alert mode, an overlay is applied over the rest of the view.
    * @public
@@ -75,10 +67,6 @@ export class Drawer extends FASTElement {
    */
   @attr({ attribute: 'aria-describedby' })
   public ariaDescribedby?: string;
-
-  get focusIsTrappable() {
-    return !(this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal);
-  }
 
   /**
    * Sets the type of the drawer (overlay/inline).
@@ -121,12 +109,15 @@ export class Drawer extends FASTElement {
   public open: boolean = false;
 
   /**
+   * Emits a 'cancel' event.
+   * @internal
+   */
+  public cancel(): void {
+    this.$emit('cancel');
+  }
+
+  /**
    * Handles changes to the `open` property.
-   * If the new value is true and the old value is false, it opens the drawer.
-   * If the new value is false and the old value is true, it closes the drawer.
-   *
-   * @param oldValue - The old value of the `open` property.
-   * @param newValue - The new value of the `open` property.
    * @public
    */
   public openChanged(oldValue: boolean, newValue: boolean): void {
@@ -137,7 +128,119 @@ export class Drawer extends FASTElement {
         this.close();
       }
     }
+    this.$emit('onOpenChange', { open: this.open });
   }
+
+  /**
+   * @public
+   * Method called when the 'modalType' attribute changes
+   */
+  public typeChanged(oldValue: DrawerType, newValue: DrawerType): void {
+    if (newValue !== oldValue) {
+      if (newValue == DrawerType.inline) {
+        this.modalType = DrawerModalType.nonModal;
+      }
+    }
+  }
+
+  /**
+   * @public
+   * Method called when the 'modalType' attribute changes
+   */
+  public modalTypeChanged(oldValue: DrawerModalType, newValue: DrawerModalType): void {
+    if (newValue !== oldValue) {
+      if (newValue == DrawerModalType.nonModal) {
+        this.trapFocus = false;
+      } else {
+        this.trapFocus = true;
+      }
+    }
+  }
+
+  /**
+   * Sets the component state based on the `open` property.
+   * @public
+   */
+  public setComponent(): void {
+    if (this.modalType == DrawerModalType.nonModal) {
+      this.trapFocus = false;
+    } else {
+      this.trapFocus = true;
+    }
+    if (this.open) {
+      this.show();
+    }
+  }
+
+  /**
+   * Opens the drawer if it is currently closed.
+   * @public
+   */
+  public show(): void {
+    if (!this.dialog.open) {
+      if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal) {
+        this.dialog.show();
+      } else {
+        this.dialog.showModal();
+      }
+      this.open = true;
+      this.closing = false;
+      this.triggerAnimation();
+    }
+  }
+
+  /**
+   * Closes the drawer if it is currently open.
+   * @public
+   */
+  public close(): void {
+    if (this.dialog.open) {
+      this.closing = true;
+      Updates.enqueue(() => {
+        this.triggerAnimation();
+      });
+    }
+  }
+
+  /**
+   * Handles click events on the drawer.
+   *
+   * @param event - The click event
+   * @returns boolean - Always returns true
+   * @public
+   */
+  public clickHandler(event: Event): boolean {
+    event.preventDefault();
+    if (this.open && this.modalType !== DrawerModalType.alert && event.target === this.dialog) {
+      this.close();
+      this.cancel();
+    }
+    return true;
+  }
+
+  /**
+   * @public
+   * Handles keydown events on the drawer
+   * @param e - The keydown event
+   * @returns boolean | void
+   */
+  public keydownHandler = (event: KeyboardEvent): boolean | void => {
+    if (event.defaultPrevented) {
+      return;
+    }
+    switch (event.key) {
+      case keyEscape:
+        event.preventDefault();
+
+        if (this.modalType !== DrawerModalType.alert) {
+          this.close();
+          this.cancel();
+        }
+        break;
+      default:
+        return true;
+    }
+  };
 
   /**
    * Indicates whether the drawer is currently trapping focus.
@@ -146,75 +249,19 @@ export class Drawer extends FASTElement {
   private isTrappingFocus: boolean = false;
 
   /**
-   * Sets the component state based on the `open` property.
-   * If `open` is true and the drawer is not open, it opens the drawer.
-   * @public
+   * @private
+   * Indicates whether focus should be trapped within the dialog
    */
-  public setComponent(): void {
-    if (this.open) {
-      this.show();
-    }
-  }
+  private trapFocus: boolean = false;
 
   /**
-   * Opens the drawer if it is not already open.
-   * @public
-   */
-  public async show(): Promise<void> {
-    if (!this.dialog.open) {
-      this.handleShow();
-    }
-  }
-
-  /**
-   * Closes the drawer if it is open.
-   * @public
-   */
-  public close(): void {
-    if (this.dialog.open) {
-      this.handleClose();
-    }
-  }
-
-  /**
-   * Opens the dialog based on the drawer type and modal type.
-   * Triggers the opening animation and updates the overflow styles and focus trap if necessary.
+   * A function that calls the animation end handler.
    * @private
    */
-  private handleShow(): void {
-    this.open = true;
-    if (this.type === DrawerType.inline || this.modalType === DrawerModalType.nonModal) {
-      this.dialog.show();
-    } else {
-      this.dialog.showModal();
-    }
-    this.closing = false;
-    this.triggerAnimation();
-
-    Updates.enqueue(() => {
-      this.setOverflowStyles();
-      if (this.focusIsTrappable) {
-        this.updateTrapFocus(true);
-      }
-    });
-    this.$emit('onOpenChange', { detail: { open: true } });
-  }
+  private readonly animationEndHandlerFunction = (): void => this.animationEndHandler();
 
   /**
-   * Closes the dialog if it is open.
-   * Triggers the closing animation.
-   * @private
-   */
-  private handleClose(): void {
-    this.closing = true;
-    Updates.enqueue(() => {
-      this.triggerAnimation();
-    });
-  }
-
-  /**
-   * Triggers the opening or closing animation on the dialog.
-   * Adds an event listener for the animation end event.
+   * Triggers the opening or closing animation on the drawer.
    * @private
    */
   private triggerAnimation(): void {
@@ -237,67 +284,36 @@ export class Drawer extends FASTElement {
       this.classList.remove('closing');
       this.dialog.close();
       this.open = false;
-      this.$emit('onOpenChange', { open: false });
       this.closing = false;
     }
   }
 
   /**
-   * Handles the keydown event on the document.
-   * If the Tab key is pressed, it calls the handleTabKeyDown function.
-   *
-   * @param {KeyboardEvent} e - The keyboard event.
    * @private
+   * Handles keydown events on the document
+   * @param e - The keydown event
    */
-  private handleDocumentKeydown = (e: KeyboardEvent): boolean | void => {
-    if (!e.defaultPrevented && this.open) {
+  private handleDocumentKeydown = (e: KeyboardEvent): void => {
+    if (!e.defaultPrevented && this.dialog.open) {
       switch (e.key) {
         case keyTab:
           this.handleTabKeyDown(e);
           break;
-        case keyEscape:
-          e.preventDefault();
-          if (this.modalType !== DrawerModalType.alert) {
-            this.close();
-            this.$emit('dismiss');
-          }
-          break;
-        default:
-          return true;
       }
     }
   };
 
   /**
-   * @internal
-   */
-  public handleClick(event: Event): boolean {
-    event.preventDefault();
-    if (this.open && this.modalType !== DrawerModalType.alert && event.target === this.dialog) {
-      this.close();
-      this.$emit('dismiss');
-    }
-    return true;
-  }
-
-  /**
-   * Handles the Tab key down event.
-   * If the drawer is not open or focus trapping is disabled, it does nothing.
-   * Otherwise, it gets the bounds of the tab queue and focuses on the appropriate element based on the current focus and whether the Shift key is pressed.
-   *
-   * @param {KeyboardEvent} e - The keyboard event.
    * @private
+   * Handles tab keydown events
+   * @param e - The keydown event
    */
   private handleTabKeyDown = (e: KeyboardEvent): void => {
-    if (!this.focusIsTrappable || !this.open) {
+    if (!this.trapFocus || !this.dialog.open) {
       return;
     }
 
     const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-
-    if (bounds.length === 0) {
-      return;
-    }
 
     if (bounds.length === 1) {
       bounds[0].focus();
@@ -317,50 +333,57 @@ export class Drawer extends FASTElement {
   };
 
   /**
-   * A function that calls the animation end handler.
    * @private
+   * Gets the bounds of the tab queue
+   * @returns (HTMLElement | SVGElement)[]
    */
-  private readonly animationEndHandlerFunction = (): void => this.animationEndHandler();
+  private getTabQueueBounds = (): (HTMLElement | SVGElement)[] => {
+    const bounds: HTMLElement[] = [];
+
+    return Drawer.reduceTabbableItems(bounds, this);
+  };
 
   /**
-   * Sets the overflow styles
-   * @internal
+   * @private
+   * Focuses the first element in the tab queue
    */
-  private setOverflowStyles(): void {
-    if (this.content && this.content.scrollHeight > this.content.clientHeight) {
-      this.$fastController.addStyles(css`
-        :host {
-          --drawer-overflow-border: ${colorNeutralStroke1};
-        }
-      `);
+  private focusFirstElement = (): void => {
+    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
+
+    if (bounds.length > 0) {
+      bounds[0].focus();
     } else {
-      this.$fastController.addStyles(css`
-        :host {
-          ---drawer-overflow-border: ${colorTransparentStroke};
-        }
-      `);
-    }
-  }
-
-  /**
-   * Handles changes to the `trapFocus` property.
-   * If the component is connected, it updates the focus trap.
-   * @internal
-   */
-  protected trapFocusChanged = (): void => {
-    if (this.$fastController.isConnected) {
-      this.updateTrapFocus();
+      if (this.dialog instanceof HTMLElement) {
+        this.dialog.focus();
+      }
     }
   };
 
   /**
-   * Handles focusing out of the drawer.
-   * If the event is not prevented and the focus should be forced on the target element,
-   * it focuses on the first element and prevents the default behavior.
-   *
-   * @internal
+   * @private
+   * Determines if focus should be forced
+   * @param currentFocusElement - The currently focused element
+   * @returns boolean
    */
-  private handleDrawerFocusOut = (e: Event): void => {
+  private shouldForceFocus = (currentFocusElement: Element | null): boolean => {
+    return this.isTrappingFocus && !this.contains(currentFocusElement);
+  };
+
+  /**
+   * @private
+   * Determines if focus should be trapped
+   * @returns boolean
+   */
+  private shouldTrapFocus = (): boolean => {
+    return this.trapFocus && this.dialog.open;
+  };
+
+  /**
+   * @private
+   * Handles focus events on the document
+   * @param e - The focus event
+   */
+  private handleDocumentFocus = (e: Event): void => {
     if (!e.defaultPrevented && this.shouldForceFocus(e.target as HTMLElement)) {
       this.focusFirstElement();
       e.preventDefault();
@@ -368,81 +391,35 @@ export class Drawer extends FASTElement {
   };
 
   /**
-   * Returns the bounds of the tab queue.
-   * The tab queue is a collection of elements that are focusable.
-   *
-   * @internal
-   */
-  private getTabQueueBounds = (): (HTMLElement | SVGElement)[] => {
-    const bounds: HTMLElement[] = [];
-    return Drawer.reduceTabbableItems(bounds, this);
-  };
-
-  /**
-   * Focuses on the first element in the tab queue if it is tabbable.
-   * If the tab queue is empty or the first element is not tabbable, it focuses on the drawer if it is an instance of HTMLDivElement.
-   * @internal
-   */
-  private focusFirstElement = (): void => {
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-    if (bounds.length > 0) {
-      bounds[0].focus();
-    } else if (this.dialog instanceof HTMLElement) {
-      this.dialog!.focus();
-    }
-  };
-
-  /**
-   * Determines if focus should be forced on the current focus element.
-   * Focus is forced if the drawer is trapping focus, the current focus element is not contained within the drawer, and the current focus element is not the first element in the tab queue.
-   *
-   * @param currentFocusElement - The current focus element.
-   * @internal
-   */
-  private shouldForceFocus = (currentFocusElement: Element | null): boolean => {
-    const bounds: (HTMLElement | SVGElement)[] = this.getTabQueueBounds();
-    return (
-      this.isTrappingFocus &&
-      this.contains(currentFocusElement) &&
-      currentFocusElement === bounds[bounds.length - 1] &&
-      currentFocusElement !== bounds[0]
-    );
-  };
-
-  /**
-   * Determines if focus should be trapped within the drawer.
-   * Focus is trapped if the drawer is open and focus trapping is not disabled.
-   *
-   * @internal
-   */
-  private shouldTrapFocus = (): boolean => {
-    return this.focusIsTrappable && this.open;
-  };
-
-  /**
-   * Updates the focus trap based on the current state of the drawer.
-   * If the drawer is open and focus trapping is enabled, it adds event listeners for focusin events and animationend events.
-   * If the drawer is closed or focus trapping is disabled, it removes these event listeners.
-   *
-   * @param shouldTrapFocusOverride - Optional parameter to override the default focus trapping behavior.
-   * @internal
+   * @private
+   * Updates the state of focus trapping
+   * @param shouldTrapFocusOverride - Optional override for whether focus should be trapped
    */
   private updateTrapFocus = (shouldTrapFocusOverride?: boolean): void => {
     const shouldTrapFocus = shouldTrapFocusOverride === undefined ? this.shouldTrapFocus() : shouldTrapFocusOverride;
 
     if (shouldTrapFocus && !this.isTrappingFocus) {
       this.isTrappingFocus = true;
-      this.dialog.addEventListener('focusout', this.handleDrawerFocusOut);
+      // Add an event listener for focusin events if we are trapping focus
+      document.addEventListener('focusin', this.handleDocumentFocus);
+      Updates.enqueue(() => {
+        if (this.shouldForceFocus(document.activeElement)) {
+          this.focusFirstElement();
+        }
+      });
     } else if (!shouldTrapFocus && this.isTrappingFocus) {
       this.isTrappingFocus = false;
-      this.dialog.removeEventListener('focusout', this.handleDrawerFocusOut);
+      // remove event listener if we are not trapping focus
+      document.removeEventListener('focusin', this.handleDocumentFocus);
     }
   };
 
   /**
-   * Reduce a collection to only its focusable elements.
-   *
-   * @internal
+   * @private
+   * Reduces the list of tabbable items
+   * @param elements - The current list of elements
+   * @param element - The element to consider adding to the list
+   * @returns HTMLElement[]
    */
   private static reduceTabbableItems(elements: HTMLElement[], element: FASTElement): HTMLElement[] {
     if (element.getAttribute('tabindex') === '-1') {
@@ -461,18 +438,20 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * Test if element is focusable fast element
-   *
-   * @internal
+   * @private
+   * Determines if an element is a focusable FASTElement
+   * @param element - The element to check
+   * @returns boolean
    */
   private static isFocusableFastElement(element: FASTElement): boolean {
     return !!element.$fastController?.definition.shadowOptions?.delegatesFocus;
   }
 
   /**
-   * Test if the element has a focusable shadow
-   *
-   * @internal
+   * @private
+   * Determines if an element has a tabbable shadow
+   * @param element - The element to check
+   * @returns boolean
    */
   private static hasTabbableShadow(element: FASTElement) {
     return Array.from(element.shadowRoot?.querySelectorAll('*') ?? []).some(x => {

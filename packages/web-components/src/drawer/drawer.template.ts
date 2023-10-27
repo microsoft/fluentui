@@ -1,5 +1,6 @@
 import { ElementViewTemplate, html, ref, when } from '@microsoft/fast-element';
 import type { Drawer } from './drawer.js';
+import { DrawerModalType } from './drawer.options.js';
 
 /**
  * The template for the Drawer component.
@@ -10,25 +11,25 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
     <dialog
       class="dialog"
       part="dialog"
-      role="${x => (x.modalType === 'non-modal' || x.type === 'inline' ? 'complementary' : 'dialog')}"
-      aria-modal="${x => (x.modalType === 'non-modal' ? 'false' : 'true')}"
+      role="${x => (x.modalType === DrawerModalType.alert ? 'alertdialog' : void 0)}"
+      aria-modal="${x => (x.modalType === 'non-modal' || x.type === 'inline' ? void 0 : 'true')}"
       aria-describedby="${x => x.ariaDescribedby}"
       aria-labelledby="${x => x.ariaLabelledby}"
       aria-label="${x => x.ariaLabel}"
-      ?open="${x => x.open}"
       size="${x => x.size}"
       position="${x => x.position}"
       modal-type="${x => x.modalType}"
       type="${x => x.type}"
-      @click="${(x, c) => x.handleClick(c.event as MouseEvent)}"
+      @click="${(x, c) => x.clickHandler(c.event as MouseEvent)}"
+      @keydown="${(x, c) => x.keydownHandler(c.event as KeyboardEvent)}"
       ${ref('dialog')}
     >
-      <div class="drawer" ${ref('drawer')}>
-        <div class="header">
+      <div class="drawer" part="drawer">
+        <div class="header" part="header">
           <nav class="navigation">
             <slot name="navigation"></slot>
           </nav>
-          <div class="title">
+          <div class="title" part="title">
             <slot name="title"></slot>
             <slot name="action"></slot>
           </div>

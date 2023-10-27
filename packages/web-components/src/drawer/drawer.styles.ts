@@ -122,7 +122,7 @@ export const styles = css`
     max-width: 100%;
     max-height: 100vh;
     overflow: hidden;
-    width: var(--drawer-size, 592px);
+    width: var(--drawer-width, 592px);
   }
 
   :host([position='end']) dialog {
@@ -132,7 +132,7 @@ export const styles = css`
 
   :host([open][type='inline']),
   :host([open][modal-type='non-modal']) {
-    width: var(--drawer-size, 592px);
+    width: var(--drawer-width, 592px);
   }
 
   :host([type='overlay']) dialog {
@@ -187,12 +187,8 @@ export const styles = css`
   }
 
   ::slotted([slot='navigation']) {
-    display: grid;
-    grid-auto-flow: column;
-    grid-template-columns: 1fr;
     column-gap: ${spacingHorizontalS};
     padding: 0 ${spacingHorizontalL};
-    justify-content: flex-start;
     margin-bottom: ${spacingVerticalS};
   }
 
