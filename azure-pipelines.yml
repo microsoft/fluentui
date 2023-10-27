@@ -28,6 +28,8 @@ extends:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest
       os: windows # We need windows because compliance task only run on windows.
+    customBuildTags: # send empty tags since it is not supported on GH repo's for PR's
+    customLogIssues: # send empty tags since it is not supported on GH repo's for PR's
     stages:
       - stage: main
         jobs:
