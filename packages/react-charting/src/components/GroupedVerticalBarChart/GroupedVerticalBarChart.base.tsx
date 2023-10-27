@@ -213,7 +213,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   private _getMargins = (margins: IMargins) => (this.margins = margins);
 
-  private _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[]) => {
+  public _createDataSetOfGVBC = (points: IGroupedVerticalBarChartData[]) => {
     const keys: string[] = [];
     const xAxisLabels: string[] = points.map(singlePoint => singlePoint.name);
     points[0].series.forEach((singleKey: IGVBarChartSeriesPoint) => {
@@ -311,7 +311,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     this._refArray[refIndexNumber] = { index: legendTitle, refElement: element };
   }
 
-  private _buildGraph = (
+  public _buildGraph = (
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     singleSet: any,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -406,7 +406,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     );
   };
 
-  private _createDataset = (points: IGroupedVerticalBarChartData[]) => {
+  public _createDataset = (points: IGroupedVerticalBarChartData[]) => {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const datasetForBars: any = [];
     const dataset: IGVDataPoint[] = [];
@@ -438,7 +438,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
 
   // For grouped vertical bar chart, First need to define total scale (from start to end)
   // From that need to define scale for single group of bars - done by createX1Scale
-  private _createX0Scale = (containerWidth: number) => {
+  public _createX0Scale = (containerWidth: number) => {
     const x0Axis = d3ScaleBand()
       .domain(this._xAxisLabels)
       .range(
@@ -454,7 +454,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  private _createX1Scale = (): any => {
+  public _createX1Scale = (): any => {
     return (
       d3ScaleBand()
         .domain(this._keys)
@@ -496,7 +496,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
     });
   }
 
-  private _getLegendData = (points: IGroupedVerticalBarChartData[], palette: IPalette): JSX.Element => {
+  public _getLegendData = (points: IGroupedVerticalBarChartData[], palette: IPalette): JSX.Element => {
     const data = points;
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
@@ -564,14 +564,14 @@ export class GroupedVerticalBarChartBase extends React.Component<
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 
-  private _getAriaLabel = (point: IGVBarChartSeriesPoint, xAxisPoint: string): string => {
+  public _getAriaLabel = (point: IGVBarChartSeriesPoint, xAxisPoint: string): string => {
     const xValue = point.xAxisCalloutData || xAxisPoint;
     const legend = point.legend;
     const yValue = point.yAxisCalloutData || point.data;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
   };
 
-  private _getDomainMargins = (containerWidth: number): IMargins => {
+  public _getDomainMargins = (containerWidth: number): IMargins => {
     /** Total width available to render the bars */
     const totalWidth =
       containerWidth - (this.margins.left! + MIN_DOMAIN_MARGIN) - (this.margins.right! + MIN_DOMAIN_MARGIN);
@@ -605,11 +605,23 @@ export class GroupedVerticalBarChartBase extends React.Component<
     };
   };
 
-  private _isChartEmpty(): boolean {
+  public _isChartEmpty(): boolean {
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
       this.props.data.filter((item: IGroupedVerticalBarChartData) => item.series.length).length > 0
     );
+  }
+
+  // Added new function to update the props while running the unit tests
+  public updateProperties(keys: string[], xAxisLabels: string[], margin: IMargins, dataset?: any): void {
+    this._getMargins(margin);
+    this._keys = keys;
+    this._xAxisLabels = xAxisLabels;
+    this._datasetForBars = dataset;
+    this._classNames = getClassNames(this.props.styles!, {
+      theme: this.props.theme!,
+      href: this.props.href!,
+    });
   }
 }
