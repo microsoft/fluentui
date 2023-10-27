@@ -97,6 +97,7 @@ export type TimeFormatOptions = {
 export type TimePickerProps = Omit<
   ComboboxProps,
   // Omit children as TimePicker has predefined children
+  // TODO add children prop to allow custom children through render function
   | 'children'
   // Omit selection props as TimePicker has `selectedTime` props
   | 'defaultSelectedOptions'
@@ -149,6 +150,8 @@ export type TimePickerProps = Omit<
      * Custom validation for the input time string from user in freeform TimePicker.
      */
     validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
+
+    // TODO: `validateOption` prop to do custom validation for the time selected from dropdown.
   };
 
 /**

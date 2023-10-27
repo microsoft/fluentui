@@ -4,7 +4,11 @@ import descriptionMd from './TimePickerDescription.md';
 import bestPracticesMd from './TimePickerBestPractices.md';
 
 export { Default } from './TimePickerDefault.stories';
+export { Controlled } from './TimePickerControlled.stories';
 export { CustomTimeString } from './TimePickerCustomTimeString.stories';
+export { FreeformWithErrorHandling } from './TimePickerFreeform.stories';
+export { CustomValidation } from './TimePickerCustomValidation.stories';
+export { TimePickerWithDatePicker } from './TimePickerWithDatePicker.stories';
 
 export default {
   title: 'Preview Components/TimePicker',

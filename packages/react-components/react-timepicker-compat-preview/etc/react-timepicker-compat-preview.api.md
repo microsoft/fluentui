@@ -13,10 +13,16 @@ import type { SelectionEvents } from '@fluentui/react-combobox';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
 // @public
+export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }?: TimeFormatOptions): string;
+
+// @public
 export const TimePicker: ForwardRefComponent<TimePickerProps>;
 
 // @public (undocumented)
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
+
+// @public
+export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
 
 // @public
 export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedOptions' | 'multiselect' | 'onOptionSelect' | 'selectedOptions'> & TimeFormatOptions & {
