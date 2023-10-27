@@ -174,7 +174,7 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
         return prevActiveOption;
       }
 
-      const prefixMatchActiveOption = value && prevActiveOption?.text && prevActiveOption.text.indexOf(value) === 0;
+      const prefixMatchActiveOption = value && prevActiveOption?.text?.indexOf(value) === 0;
       if (prefixMatchActiveOption) {
         return prevActiveOption;
       }
