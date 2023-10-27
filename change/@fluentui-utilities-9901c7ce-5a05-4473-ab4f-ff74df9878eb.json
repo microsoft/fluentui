@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: use Timers types based on environment to avoid TS failures introduced with node 18 types",
+  "packageName": "@fluentui/utilities",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "none"
+}
