@@ -14,6 +14,7 @@ const useRootBaseClassName = makeResetStyles({
   alignItems: 'center',
   gridColumnEnd: 3,
   color: tokens.colorNeutralForeground1,
+  wordBreak: 'break-word',
 });
 
 const useMediaBaseClassName = makeResetStyles({

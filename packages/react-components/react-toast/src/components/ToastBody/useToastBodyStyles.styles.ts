@@ -16,6 +16,7 @@ const useRootBaseClassName = makeResetStyles({
   lineHeight: tokens.fontSizeBase300,
   fontWeight: tokens.fontWeightRegular,
   color: tokens.colorNeutralForeground1,
+  wordBreak: 'break-word',
 });
 
 const useSubtitleBaseClassName = makeResetStyles({
