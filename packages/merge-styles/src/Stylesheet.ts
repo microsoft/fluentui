@@ -186,14 +186,30 @@ export class Stylesheet {
 
     const doc = win?.document ?? getDocument();
 
-    if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== doc)) {
+    // When an app has multiple versions of Fluent v8 it is possible
+    // that an older version of Stylesheet is initialized before
+    // the version that supports shadow DOM. We check for this case
+    // and re-initialize the stylesheet in that case.
+    const oldStylesheetInitializedFirst = _stylesheet && !_stylesheet.addAdoptableStyleSheet;
+
+    if (
+      !_stylesheet ||
+      oldStylesheetInitializedFirst ||
+      (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== doc)
+    ) {
       const fabricConfig = global?.FabricConfig || {};
       fabricConfig.mergeStyles = fabricConfig.mergeStyles || {};
       fabricConfig.mergeStyles.ownerWindow = fabricConfig.mergeStyles.ownerWindow ?? win ?? getWindow();
       fabricConfig.mergeStyles.inShadow = fabricConfig.mergeStyles.inShadow ?? inShadow;
       fabricConfig.mergeStyles.currentStylesheetKey = fabricConfig.mergeStyles.currentStylesheetKey ?? stylesheetKey;
 
-      const stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
+      let stylesheet: Stylesheet;
+      if (oldStylesheetInitializedFirst) {
+        stylesheet = new Stylesheet(fabricConfig.mergeStyles, JSON.parse(_stylesheet.serialize()));
+      } else {
+        stylesheet = new Stylesheet(fabricConfig.mergeStyles, fabricConfig.serializedStylesheet);
+      }
+
       _stylesheet = stylesheet;
     }
     if (inShadow || stylesheetKey === GLOBAL_STYLESHEET_KEY) {
