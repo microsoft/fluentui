@@ -71,7 +71,7 @@ export function prepareData(context: StoryContext): Data | null {
 
   if (!storyFile) {
     console.error(
-      dedent`Export to CodeSandbox: Couldn't find source for story ${context.story}. Did you install the babel plugin?`,
+      dedent`Export to Sandbox Addon: Couldn't find source for story ${context.story}. Did you install the babel plugin?`,
     );
     return null;
   }
