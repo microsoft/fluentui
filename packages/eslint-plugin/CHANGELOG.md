@@ -1,8 +1,17 @@
 # Change Log - @fluentui/eslint-plugin
 
-This log was last generated on Wed, 31 May 2023 07:38:38 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 00:29:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.17.2](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.2)
+
+Sat, 28 Oct 2023 00:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/eslint-plugin_v1.17.1..@fluentui/eslint-plugin_v1.17.2)
+
+### Patches
+
+- chore: bump eslint-plugin-jsdoc to version which support node 18 ([PR #29598](https://github.com/microsoft/fluentui/pull/29598) by martinhochel@microsoft.com)
 
 ## [1.17.1](https://github.com/microsoft/fluentui/tree/@fluentui/eslint-plugin_v1.17.1)
 
