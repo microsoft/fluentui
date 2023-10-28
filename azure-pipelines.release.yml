@@ -48,6 +48,7 @@ extends:
             workspace:
               clean: all
             templateContext:
+              outputParentDirectory: $(System.DefaultWorkingDirectory)
               outputs:
                 - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/homepage
