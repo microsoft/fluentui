@@ -71,10 +71,6 @@ extends:
                   artifactName: fabric-website-resources
                   displayName: fabric-website-resources
                 - output: pipelineArtifact
-                  targetPath: $(Build.ArtifactStagingDirectory)/api
-                  artifactName: api-json
-                  displayName: api-json
-                - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/apps/public-docsite/dist
                   artifactName: fabric-website
                   displayName: fabric-website
@@ -82,6 +78,10 @@ extends:
                   targetPath: $(System.DefaultWorkingDirectory)/packages/react/dist
                   artifactName: fabric
                   displayName: fabric
+                - output: pipelineArtifact
+                  targetPath: $(Build.ArtifactStagingDirectory)/api
+                  artifactName: api-json
+                  displayName: api-json
             steps:
               - template: .devops/templates/tools.yml@self
 

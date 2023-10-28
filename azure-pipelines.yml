@@ -124,10 +124,6 @@ extends:
                   yarn workspace @fluentui/pr-deploy-site generate:site
                 displayName: generate PR Deploy Site
 
-              - script: |
-                  cat apps/pr-deploy-site/dist/public-docsite-v9/storybook/407.e8d34dd4887549374f08.manager.bundle.js
-                displayName: TEsT
-
               - task: AzureUpload@2
                 displayName: Upload PR deploy site
                 inputs:
