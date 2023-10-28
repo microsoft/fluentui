@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: avoid breaking rule of hooks",
-  "packageName": "@fluentui/react-motion-preview",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

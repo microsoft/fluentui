@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add new drawer global style hooks that are needed by drawer public api changes",
-  "packageName": "@fluentui/react-provider",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
