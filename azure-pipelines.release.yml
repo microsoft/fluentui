@@ -52,27 +52,35 @@ extends:
                 - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/homepage
                   artifactName: homepage.htm
+                  displayName: homepage.htm
                 - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/packages/fluentui/docs/src/public
                   artifactName: demo-images
+                  displayName: demo-images
                 - output: pipelineArtifact
-                  targetPath: ./oufr-version.txt
+                  targetPath: $(System.DefaultWorkingDirectory)/oufr-version.txt
                   artifactName: oufr-version
+                  displayName: oufr-version
                 - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/site-manifests
                   artifactName: fabric-website-manifests
+                  displayName: fabric-website-manifests
                 - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/apps/public-docsite-resources/dist/demo
                   artifactName: fabric-website-resources
+                  displayName: fabric-website-resources
                 - output: pipelineArtifact
                   targetPath: $(Build.ArtifactStagingDirectory)/api
                   artifactName: api-json
+                  displayName: api-json
                 - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/apps/public-docsite/dist
                   artifactName: fabric-website
+                  displayName: fabric-website
                 - output: pipelineArtifact
                   targetPath: $(System.DefaultWorkingDirectory)/packages/react/dist
                   artifactName: fabric
+                  displayName: fabric
             steps:
               - template: .devops/templates/tools.yml@self
 
