@@ -204,14 +204,14 @@ describe('createDateXAxis', () => {
   it('should create the x-axis labels correctly when customDateTimeFormatter is provided', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues });
     const result = utils.createDateXAxis(xAxisParams, {}, undefined, undefined, undefined, (dateTime: Date) =>
-      dateTime.toUTCString(),
+      dateTime.toDateString(),
     );
     matchResult(convertXAxisResultToJson(result));
   });
 
   it('should create the x-axis labels correctly when culture and options are provided', () => {
     const xAxisParams = createXAxisParams({ domainNRangeValues });
-    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG', { dateStyle: 'full', timeStyle: 'long' });
+    const result = utils.createDateXAxis(xAxisParams, {}, 'ar-EG', { dateStyle: 'full' });
     matchResult(convertXAxisResultToJson(result));
   });
 
@@ -526,15 +526,15 @@ describe('calloutData', () => {
       {
         legend: 'Line 1',
         data: [
-          { x: new Date(2021, 0, 1), y: 10 },
-          { x: new Date(2021, 0, 2), y: 20 },
+          { x: new Date(Date.UTC(2021, 0, 1)), y: 10 },
+          { x: new Date(Date.UTC(2021, 0, 2)), y: 20 },
         ],
       },
       {
         legend: 'Line 2',
         data: [
-          { x: new Date(2021, 0, 1), y: 30 },
-          { x: new Date(2021, 0, 3), y: 20 },
+          { x: new Date(Date.UTC(2021, 0, 1)), y: 30 },
+          { x: new Date(Date.UTC(2021, 0, 3)), y: 20 },
         ],
       },
     ];
@@ -784,8 +784,8 @@ describe('domainRangeOfDateForAreaChart', () => {
     {
       legend: 'Line 1',
       data: [
-        { x: new Date(2021, 0, 3), y: 10 },
-        { x: new Date(2021, 0, 2), y: 20 },
+        { x: new Date(Date.UTC(2021, 0, 3)), y: 10 },
+        { x: new Date(Date.UTC(2021, 0, 2)), y: 20 },
       ],
     },
   ];
@@ -803,8 +803,8 @@ describe('domainRangeOfDateForAreaChart', () => {
 
   it('should return domain and range values correctly for date x-axis when tickValues are provided', () => {
     const result = utils.domainRangeOfDateForAreaChart(points, margins, 100, false, [
-      new Date(2021, 0, 1),
-      new Date(2021, 0, 4),
+      new Date(Date.UTC(2021, 0, 1)),
+      new Date(Date.UTC(2021, 0, 4)),
     ]);
     matchResult(result);
   });
@@ -1040,8 +1040,8 @@ describe('getDomainNRangeValues', () => {
       {
         legend: 'Line 1',
         data: [
-          { x: new Date(2021, 0, 3), y: 10 },
-          { x: new Date(2021, 0, 2), y: 20 },
+          { x: new Date(Date.UTC(2021, 0, 3)), y: 10 },
+          { x: new Date(Date.UTC(2021, 0, 2)), y: 20 },
         ],
       },
     ];

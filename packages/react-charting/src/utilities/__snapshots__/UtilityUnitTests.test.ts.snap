@@ -9,6 +9,7 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 1",
+        "xAxisCalloutData": undefined,
         "y": 10,
         "yAxisCalloutData": undefined,
       },
@@ -17,11 +18,12 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 2",
+        "xAxisCalloutData": undefined,
         "y": 30,
         "yAxisCalloutData": undefined,
       },
     ],
-    "x": 1609439400000,
+    "x": 1609459200000,
   },
   Object {
     "values": Array [
@@ -30,11 +32,12 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 1",
+        "xAxisCalloutData": undefined,
         "y": 20,
         "yAxisCalloutData": undefined,
       },
     ],
-    "x": 1609525800000,
+    "x": 1609545600000,
   },
   Object {
     "values": Array [
@@ -43,11 +46,12 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 2",
+        "xAxisCalloutData": undefined,
         "y": 20,
         "yAxisCalloutData": undefined,
       },
     ],
-    "x": 1609612200000,
+    "x": 1609632000000,
   },
 ]
 `;
@@ -61,6 +65,7 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 1",
+        "xAxisCalloutData": undefined,
         "y": 10,
         "yAxisCalloutData": undefined,
       },
@@ -69,6 +74,7 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 2",
+        "xAxisCalloutData": undefined,
         "y": 30,
         "yAxisCalloutData": undefined,
       },
@@ -82,6 +88,7 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 1",
+        "xAxisCalloutData": undefined,
         "y": 20,
         "yAxisCalloutData": undefined,
       },
@@ -95,6 +102,7 @@ Array [
         "color": undefined,
         "index": undefined,
         "legend": "Line 2",
+        "xAxisCalloutData": undefined,
         "y": 20,
         "yAxisCalloutData": undefined,
       },
@@ -161,19 +169,19 @@ exports[`createDateXAxis should create the x-axis labels correctly when culture 
 Array [
   Array [
     0,
-    "الخميس، ١ يوليو ٢٠٢١ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+    "الخميس، ١ يوليو ٢٠٢١",
   ],
   Array [
     25.274725274725274,
-    "الجمعة، ١ أكتوبر ٢٠٢١ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+    "الجمعة، ١ أكتوبر ٢٠٢١",
   ],
   Array [
     50.54945054945055,
-    "السبت، ١ يناير ٢٠٢٢ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+    "السبت، ١ يناير ٢٠٢٢",
   ],
   Array [
     75.27472527472527,
-    "الجمعة، ١ أبريل ٢٠٢٢ في ١٢:٠٠:٠٠ ص غرينتش+٥:٣٠",
+    "الجمعة، ١ أبريل ٢٠٢٢",
   ],
 ]
 `;
@@ -182,19 +190,19 @@ exports[`createDateXAxis should create the x-axis labels correctly when customDa
 Array [
   Array [
     0,
-    "Wed, 30 Jun 2021 18:30:00 GMT",
+    "Thu Jul 01 2021",
   ],
   Array [
     25.274725274725274,
-    "Thu, 30 Sep 2021 18:30:00 GMT",
+    "Fri Oct 01 2021",
   ],
   Array [
     50.54945054945055,
-    "Fri, 31 Dec 2021 18:30:00 GMT",
+    "Sat Jan 01 2022",
   ],
   Array [
     75.27472527472527,
-    "Thu, 31 Mar 2022 18:30:00 GMT",
+    "Fri Apr 01 2022",
   ],
 ]
 `;
@@ -3960,8 +3968,8 @@ Object {
 
 exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis 1`] = `
 Object {
-  "dEndValue": 2021-01-02T18:30:00.000Z,
-  "dStartValue": 2021-01-01T18:30:00.000Z,
+  "dEndValue": 2021-01-03T00:00:00.000Z,
+  "dStartValue": 2021-01-02T00:00:00.000Z,
   "rEndValue": 90,
   "rStartValue": 5,
 }
@@ -3969,8 +3977,8 @@ Object {
 
 exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis when layout direction is RTL 1`] = `
 Object {
-  "dEndValue": 2021-01-01T18:30:00.000Z,
-  "dStartValue": 2021-01-02T18:30:00.000Z,
+  "dEndValue": 2021-01-02T00:00:00.000Z,
+  "dStartValue": 2021-01-03T00:00:00.000Z,
   "rEndValue": 90,
   "rStartValue": 5,
 }
@@ -3978,8 +3986,8 @@ Object {
 
 exports[`domainRangeOfDateForAreaChart should return domain and range values correctly for date x-axis when tickValues are provided 1`] = `
 Object {
-  "dEndValue": 2021-01-03T18:30:00.000Z,
-  "dStartValue": 2020-12-31T18:30:00.000Z,
+  "dEndValue": 2021-01-04T00:00:00.000Z,
+  "dStartValue": 2021-01-01T00:00:00.000Z,
   "rEndValue": 90,
   "rStartValue": 5,
 }
@@ -4119,8 +4127,8 @@ Object {
 
 exports[`getDomainNRangeValues should return domain and range values correctly for line chart with date x-axis 1`] = `
 Object {
-  "dEndValue": 2021-01-02T18:30:00.000Z,
-  "dStartValue": 2021-01-01T18:30:00.000Z,
+  "dEndValue": 2021-01-03T00:00:00.000Z,
+  "dStartValue": 2021-01-02T00:00:00.000Z,
   "rEndValue": 90,
   "rStartValue": 5,
 }
