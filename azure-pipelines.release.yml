@@ -37,6 +37,9 @@ extends:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest
       os: windows # We need windows because compliance task only run on windows.
+    sdl:
+      credscan:
+        suppressionsFile: .devops/CredScanSuppressions.json
     stages:
       - stage: main
         jobs:
