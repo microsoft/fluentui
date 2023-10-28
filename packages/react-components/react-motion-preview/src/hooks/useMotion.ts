@@ -12,6 +12,14 @@ export type MotionOptions = {
    * @default false
    */
   animateOnFirstMount?: boolean;
+
+  /**
+   * Duration of the animation in milliseconds.
+   * If not specified, the duration will be inferred from the CSS transition/animation duration.
+   *
+   * @default 0
+   */
+  duration?: number;
 };
 
 export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
@@ -48,7 +56,6 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
 };
 
 export type MotionShorthandValue = boolean;
-
 export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | MotionState<Element>;
 
 /**
@@ -81,7 +88,7 @@ function useMotionPresence<Element extends HTMLElement>(
   presence: boolean,
   options: MotionOptions = {},
 ): MotionState<Element> {
-  const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
+  const { animateOnFirstMount, duration } = { animateOnFirstMount: false, ...options };
 
   const [type, setType] = React.useState<MotionType>(
     presence && animateOnFirstMount ? 'entering' : presence ? 'idle' : 'unmounted',
@@ -137,9 +144,9 @@ function useMotionPresence<Element extends HTMLElement>(
 
       // Wait for the next frame to ensure the animation has started.
       setAnimationFrame(() => {
-        const duration = getMotionDuration(currentElement);
+        const finalDuration = duration || getMotionDuration(currentElement);
 
-        if (duration === 0) {
+        if (finalDuration === 0) {
           onFinished();
           return;
         }
@@ -149,7 +156,7 @@ function useMotionPresence<Element extends HTMLElement>(
          * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
          * if the transition has multiple properties.
          */
-        setAnimationTimeout(() => onFinished(), duration);
+        setAnimationTimeout(() => onFinished(), finalDuration);
       });
     });
 

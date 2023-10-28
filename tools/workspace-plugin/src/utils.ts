@@ -80,7 +80,7 @@ export function parseArgs<T extends Record<string, any>>(args: string[]) {
   return parsedArguments;
 }
 
-export { updateJestConfig } from '@nx/jest/src/generators/jest-project/lib/update-jestconfig';
+export { updateJestConfig } from '@nx/jest/src/generators/configuration/lib/update-jestconfig';
 
 export function getProjectConfig(tree: Tree, options: { packageName: string }) {
   const projectConfig = readProjectConfiguration(tree, options.packageName);
