@@ -118,6 +118,11 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
           elementType: Listbox,
         })
       : undefined;
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
+  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
+  if (listboxSlot) {
+    listboxSlot.ref = listboxRef;
+  }
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {
@@ -129,12 +134,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
-  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
-  if (listboxSlot) {
-    listboxSlot.ref = listboxRef;
-  }
-
-  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
   const state: DropdownState = {
     components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,

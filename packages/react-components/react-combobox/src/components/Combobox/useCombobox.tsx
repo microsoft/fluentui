@@ -167,6 +167,12 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
           elementType: Listbox,
         })
       : undefined;
+  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
+  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
+  if (listboxSlot) {
+    listboxSlot.ref = listboxRef;
+  }
+
   const rootSlot = slot.always(props.root, {
     defaultProps: {
       'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
@@ -175,12 +181,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     elementType: 'div',
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
-  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
-  if (listboxSlot) {
-    listboxSlot.ref = listboxRef;
-  }
 
-  [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
   if (hideActiveDescendant) {
     triggerSlot['aria-activedescendant'] = undefined;
   }
