@@ -94,15 +94,25 @@ export type TimeFormatOptions = {
 /**
  * TimePicker Props
  */
-export type TimePickerProps = Omit<
+export type TimePickerProps = Pick<
   ComboboxProps,
-  // Omit children as TimePicker has predefined children
-  | 'children'
-  // Omit selection props as TimePicker has `selectedTime` props
-  | 'defaultSelectedOptions'
-  | 'multiselect'
-  | 'onOptionSelect'
-  | 'selectedOptions'
+  | 'root'
+  | 'expandIcon'
+  | 'input'
+  | 'listbox'
+  | 'as'
+  | 'appearance'
+  | 'defaultOpen'
+  | 'defaultValue'
+  | 'inlinePopup'
+  | 'onOpenChange'
+  | 'open'
+  | 'placeholder'
+  | 'positioning'
+  | 'size'
+  | 'value'
+  | 'mountNode'
+  | 'freeform'
 > &
   TimeFormatOptions & {
     /**
@@ -148,14 +158,14 @@ export type TimePickerProps = Omit<
     /**
      * Custom validation for the input time string from user in freeform TimePicker.
      */
-    validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
+    formatTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
   };
 
 /**
  * State used in rendering TimePicker
  */
 export type TimePickerState = ComboboxState &
-  Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
+  Required<Pick<TimePickerProps, 'freeform' | 'formatTimeStringToDate'>> & {
     /**
      * Submitted text from the input field. It is used to determine if the input value has changed when user submit a new value on Enter or blur from input.
      */
