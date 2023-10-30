@@ -81,17 +81,17 @@ const BreadcrumbExampleIconDivider = props => (
 const BreadcrumbV9Example = props => (
   <Breadcrumb aria-label="breadcrumb">
     <BreadcrumbItem>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         Home
       </BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbItem>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         Gallery
       </BreadcrumbButton>
     </BreadcrumbItem>
     <BreadcrumbItem current={true}>
-      <BreadcrumbButton onClick={() => {}}>
+      <BreadcrumbButton href="#">
         About
       </BreadcrumbButton>
     </BreadcrumbItem>
@@ -102,24 +102,14 @@ const BreadcrumbV9Example = props => (
 
 ## Variants
 
-### Appearance
+### Breadcrumb item variants
 
-Breadcrumb can be:
-
-- transparent (default)
-- subtle
-
-### BreadcrumbItem variants
-
-- Non-clickable element which is BreadcrumbItem component.
-- Button - BreadcrumbButton component.
 - Link - BreadcrumbButton component with `as="a"` and `href` attributes.
 - Dropdown menu - can be added by a partner using JSX composition.
 
 ### Icon
 
-Breadcrumb items can have icons. If you need an icon for an interactive item, use it inside BreadcrumButton.
-For non-interactive items use the icon inside BreadcrumbItem.
+Breadcrumb items can have icons.
 
 ### Size
 
@@ -169,28 +159,16 @@ Dropdown contains collapsed items.
 
 #### API
 
-| Property    | Values                     | Default       | Purpose                        |
-| ----------- | -------------------------- | ------------- | ------------------------------ |
-| appearance  | `transparent`, `subtle`    | `transparent` | Sets appearance                |
-| dividerType | `chevron`, `slash`         | `chevron`     | Sets type of divider           |
-| focusMode   | `tab`, `arrow`             | `tab`         | Sets focus mode                |
-| size        | `small`, `medium`, `large` | `medium`      | Defines size of the Breadcrumb |
+| Property  | Values                     | Default  | Purpose                        |
+| --------- | -------------------------- | -------- | ------------------------------ |
+| focusMode | `tab`, `arrow`             | `tab`    | Sets focus mode                |
+| size      | `small`, `medium`, `large` | `medium` | Defines size of the Breadcrumb |
 
 ### BreadcrumbItem
 
-#### Anatomy
-
-![visual anatomy of the BreadcrumbItem component](./assets/breadcrumb-item-anatomy.png)
-
-BreadcrumbItem can be:
-
-- Button/Link - BreadcrumbButton component is used inside BreadcrumbItem.
-- Non-clickable content (text and/or icon).
-- Dropdown Menu
+BreadcrumbItem is a container for BreadcrumbButton.
 
 #### DOM
-
-Non-clickable element
 
 ```HTML
 <li>
@@ -208,7 +186,7 @@ Link
 </li>
 ```
 
-Button
+Button (used only as OverflowMenu)
 
 ```HTML
 <li>
@@ -222,34 +200,27 @@ Usage
 
 ```jsx
 <BreadcrumbItem>
-  Item 1
+  <BreadcrumbButton href="#">
+    Item 1
+  </BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem>
-  <BreadcrumbButton onClick={() => console.log('smth...')}>
+  <BreadcrumbButton href="#">
     Item 2
   </BreadcrumbButton>
 </BreadcrumbItem>
 <BreadcrumbItem>
-  <BreadcrumbButton href="#" as="a">
-    Item 2
+  <BreadcrumbButton href="#">
+    Item 3
   </BreadcrumbButton>
 </BreadcrumbItem>
 ```
-
-#### API
-
-| Property | Values  | Default | Purpose                |
-| -------- | ------- | ------- | ---------------------- |
-| current  | boolean | false   | Indicates current page |
 
 #### Breadcrumb icon
 
 ```jsx
 <BreadcrumbItem>
   <BreadcrumbButton icon={<IconComponent />}>Item</BreadcrumbButton>
-</BreadcrumbItem>
-<BreadcrumbItem icon={<IconComponent />}>
-  Item
 </BreadcrumbItem>
 ```
 
@@ -272,18 +243,8 @@ Usage
   </li>
 ```
 
-Type of the divider is passed from the `Breadcrumb` component. In case if partner wants to have a custom divider it should be passed as `children` prop.
-The slash divider is only used in a small breadcrumb.
-
 ```jsx
-<Breadcrumb size="large" >
-  <BreadcrumbItem>Item</BreadcrumbItem>
-  <BreadcrumbDivider>
-    <ArrowRight16Filled />
-  </BreadcrumbDivider>
-  <BreadcrumbItem>Item</BreadcrumbItem>
-</Breadcrumb>
-<Breadcrumb size="small" dividerType="slash">
+<Breadcrumb>
   <BreadcrumbItem>Item</BreadcrumbItem>
   <BreadcrumbDivider />
   <BreadcrumbItem>Item</BreadcrumbItem>
@@ -293,7 +254,7 @@ The slash divider is only used in a small breadcrumb.
 ### BreadcrumbButton
 
 ```jsx
-<BreadcrumbButton onClick={() => console.log('smth...')}>Button Item</BreadcrumbButton>
+<BreadcrumbButton href="#">Item</BreadcrumbButton>
 ```
 
 #### API
@@ -400,12 +361,6 @@ Breadcrumb can have the folloing states:
 - Active
 
 ![Breadcrumb states](./assets/beadcrumb-states.png)
-
-#### Non-interactive Breadcrumb Item
-
-Non-interactive style variation for places where the Breadcrumb is purely representational or informational. Usually this instance is mostly used to describe file path location, etc.
-
-![Non-interactive Breadcrumb](./assets/breadcrumb-not-interactive.png)
 
 #### Tooltip
 

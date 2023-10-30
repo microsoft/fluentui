@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeCallbacks, useControllableState } from '@fluentui/react-utilities';
+import { elementContains, mergeCallbacks, useControllableState, useMergedRefs } from '@fluentui/react-utilities';
 import { Enter } from '@fluentui/keyboard-keys';
 import type { Hour, TimePickerOption, TimePickerProps, TimePickerState, TimeSelectionData } from './TimePicker.types';
 import { ComboboxProps, useCombobox_unstable, Option } from '@fluentui/react-combobox';
@@ -30,7 +30,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     defaultSelectedTime: defaultSelectedTimeInProps,
     endHour = 24,
     formatDateToTimeString,
-    hour12 = false,
+    hourCycle = 'h23',
     increment = 30,
     onTimeSelect,
     selectedTime: selectedTimeInProps,
@@ -51,8 +51,8 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     (dateTime: Date) =>
       formatDateToTimeString
         ? formatDateToTimeString(dateTime)
-        : defaultFormatDateToTimeString(dateTime, { showSeconds, hour12 }),
-    [hour12, formatDateToTimeString, showSeconds],
+        : defaultFormatDateToTimeString(dateTime, { showSeconds, hourCycle }),
+    [hourCycle, formatDateToTimeString, showSeconds],
   );
   const options: TimePickerOption[] = React.useMemo(
     () =>
@@ -92,7 +92,6 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
         // Combobox clears selection when input value not matching any option; but we allow this case in freeform TimePicker.
         return;
       }
-
       const timeSelectionData: TimeSelectionData = {
         selectedTime: keyToDate(data.optionValue),
         selectedTimeText: data.optionText,
@@ -118,8 +117,9 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   );
 
   const defaultValidateTime = React.useCallback(
-    (time: string | undefined) => getDateFromTimeString(time, dateStartAnchor, dateEndAnchor, { hour12, showSeconds }),
-    [dateEndAnchor, dateStartAnchor, hour12, showSeconds],
+    (time: string | undefined) =>
+      getDateFromTimeString(time, dateStartAnchor, dateEndAnchor, { hourCycle, showSeconds }),
+    [dateEndAnchor, dateStartAnchor, hourCycle, showSeconds],
   );
 
   const state: TimePickerState = {
@@ -161,20 +161,24 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
  * Mimics the behavior of the browser's change event for a freeform TimePicker.
  * The provided callback is called when input changed and:
  * - Enter/Tab key is pressed on the input.
- * - TODO: TimePicker loses focus, signifying a possible change.
+ * - TimePicker loses focus, signifying a possible change.
  */
 const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProps['onTimeSelect']) => {
-  const { activeOption, freeform, validateFreeFormTime, options, submittedText, setActiveOption, value } = state;
+  const { activeOption, freeform, validateFreeFormTime, submittedText, setActiveOption, value } = state;
 
   // Base Combobox has activeOption default to first option in dropdown even if it doesn't match input value, and Enter key will select it.
   // This effect ensures that the activeOption is cleared when the input doesn't match any option.
   // This behavior is specific to a freeform TimePicker where the input value is treated as a valid time even if it's not in the dropdown.
-  const isValueOptionPrefix = value ? options.some(({ text }) => text.indexOf(value) === 0) : false;
   React.useEffect(() => {
-    if (freeform && value && !isValueOptionPrefix) {
-      setActiveOption(undefined);
+    if (freeform && value) {
+      setActiveOption(prevActiveOption => {
+        if (prevActiveOption?.text?.indexOf(value) === 0) {
+          return prevActiveOption;
+        }
+        return undefined;
+      });
     }
-  }, [freeform, isValueOptionPrefix, setActiveOption, value]);
+  }, [freeform, setActiveOption, value]);
 
   const selectTimeFromValue = React.useCallback(
     (e: React.KeyboardEvent<HTMLInputElement> | React.FocusEvent<HTMLInputElement>) => {
@@ -202,5 +206,25 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
   );
   state.root.onKeyDown = mergeCallbacks(handleKeyDown, state.root.onKeyDown);
 
-  // TODO call selectTimeFromValue on blur
+  const rootRef = React.useRef<HTMLDivElement>(null);
+  state.root.ref = useMergedRefs(state.root.ref, rootRef);
+
+  if (state.listbox) {
+    state.listbox.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
+  }
+
+  if (state.expandIcon) {
+    state.expandIcon.tabIndex = -1; // allows it to be the relatedTarget of a blur event.
+  }
+
+  const handleInputBlur = React.useCallback(
+    (e: React.FocusEvent<HTMLInputElement>) => {
+      const isOutside = e.relatedTarget ? !elementContains(rootRef.current, e.relatedTarget) : true;
+      if (isOutside) {
+        selectTimeFromValue(e);
+      }
+    },
+    [selectTimeFromValue],
+  );
+  state.input.onBlur = mergeCallbacks(handleInputBlur, state.input.onBlur);
 };

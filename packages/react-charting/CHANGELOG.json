@@ -2,6 +2,60 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 00:29:15 GMT",
+      "tag": "@fluentui/react-charting_v5.18.10",
+      "version": "5.18.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "dd0a5fb307c7b46578cfb36059f3ac693af85811",
+            "comment": "Fixing zero callout value not visible bug for cartesian charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.33",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.118",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.4",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 07:35:31 GMT",
+      "tag": "@fluentui/react-charting_v5.18.9",
+      "version": "5.18.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c8ed0b5e2a48e82c30c9b257ae398cc6835b3a3b",
+            "comment": "Part 2 - Changes to onboard charting to fluent docsite"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 20 Oct 2023 07:35:43 GMT",
       "tag": "@fluentui/react-charting_v5.18.8",
       "version": "5.18.8",

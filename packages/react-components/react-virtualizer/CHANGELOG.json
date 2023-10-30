@@ -2,6 +2,36 @@
   "name": "@fluentui/react-virtualizer",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 23:35:59 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.54",
+      "version": "9.0.0-alpha.54",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-virtualizer",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.0",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 09:51:57 GMT",
+      "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.53",
+      "version": "9.0.0-alpha.53",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "17dbeb93ab542e982942aef91ce3747acc8053c4",
+            "comment": "fix: use targetDocument resize observer"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Oct 2023 17:54:08 GMT",
       "tag": "@fluentui/react-virtualizer_v9.0.0-alpha.52",
       "version": "9.0.0-alpha.52",

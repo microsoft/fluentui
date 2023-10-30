@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 20 Oct 2023 07:35:43 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 00:29:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.18.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.10)
+
+Sat, 28 Oct 2023 00:29:15 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.9..@fluentui/react-charting_v5.18.10)
+
+### Patches
+
+- Fixing zero callout value not visible bug for cartesian charts ([PR #29669](https://github.com/microsoft/fluentui/pull/29669) by srmukher@microsoft.com)
+- Bump @fluentui/react-focus to v8.8.33 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/theme-samples to v8.7.118 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react to v8.112.4 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [5.18.9](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.9)
+
+Mon, 23 Oct 2023 07:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.8..@fluentui/react-charting_v5.18.9)
+
+### Patches
+
+- Part 2 - Changes to onboard charting to fluent docsite ([PR #29608](https://github.com/microsoft/fluentui/pull/29608) by atishay.jain@microsoft.com)
 
 ## [5.18.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.8)
 

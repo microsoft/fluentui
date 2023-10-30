@@ -2,62 +2,104 @@
 
 ## Background
 
-_Description and use cases of this component_
+The `Skeleton` component is a temporary placeholder for UI that is in a loading state.
 
 ## Prior Art
 
-_Include background research done for this component_
+| Library     | Component Name | Spec Link                                                                       | Notes                                                                                                                                                                  |
+| ----------- | -------------- | ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Ant Design  | Skeleton       | [Skeleton](https://ant.design/components/skeleton/)                             | Has an `avatar`, `button`, `list`, and `togglebutton`. Has animated and non-animated versions, and shape variants for the component skeletons(rounded or rectangular). |
+| Fast        | Skeleton       | [Skeleton](https://explore.fast.design/components/fast-skeleton)                | Has three components: `Avatar`, `List`, and `Button`. No shape variants.                                                                                               |
+| Semantic UI | Placeholder    | [Placeholder](https://react.semantic-ui.com/elements/placeholder/)              | Has `Header` and `Paragraph` subcomponents. The `Header` can take in an image as a prop                                                                                |
+| UI Fabric   | Shimmer        | [Shimmer](https://developer.microsoft.com/en-us/fluentui#/controls/web/shimmer) | Shimmer has a way to pass in custom elements as well as the defaults. There is also a prop to change the colors of the Skeleton components.                            |
 
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+### Comparison of v8 and v0
+
+The existing components are:
+
+- v8
+  - `Shimmer`
+- v0
+  - Does not have an existing `Skeleton` component.
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+Basic example:
+
+```jsx
+import { Skeleton, SkeletonItem } from '@fluentui/react-skeleton';
+
+function App() {
+  return (
+    <Skeleton>
+      <SkeletonItem shape="circle" size={24} />
+      <SkeletonItem shape="rectangle" size={16} />
+    </Skeleton>
+  );
+}
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+- There are three basic `Skeleton` shapes
+  - `Rectangle`
+  - `Circle`
+  - `Square`
+
+### Shape
+
+The `Skeleton` is a combination of any of the two shapes in order to represent the content that will be loaded onto the screen. That is, it is a combination of rectangles and circles that is a visual representation of the wireframe of a page.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+### Slots
+
+- `root` - The root slot of the `Skeleton` is the container that will contain the items that make up a `Skeleton` in representation of the data that is loading. The default html element is a `svg`.
+
+### Props
+
+See API at:
+
+- [Skeleton.types.ts](./src/components/Skeleton/Skeleton.types.ts).
+- [SkeletonItem.types.ts](./src/components/SkeletonItem/SkeletonItem.types.ts).
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+```html
+<!-- Container for Skeleton -->
+
+<div class="fui-Skeleton">
+  <!-- Container for SkeletonElement -->
+
+  <div class="fui-SkeletonItem" />
+</div>
+```
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
-
-- _Migration from v8_
-- _Migration from v0_
+See [MIGRATION.md](./MIGRATION.md).
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+### States
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+- **Display** - The `Skeleton` will use the following priority:
+
+  - The `appearance` prop will allow the use of a `translucent` appearance.
+  - Specifying `wave` or `pulse` will change the animation style of the `Skeleton`
+  - The component also has `rtl` support and will animate the `Skeleton` from right to left if set.
+  - Setting the `shape` prop in `<SkeletonItem />` will render a `rectangle`, `square`, or a `circle` (default is `rectangle`).
+  - Setting the `size` prop in `<SkeletonItem />` will allow the user to specify the size of the element (default is 16).
+
+### Interaction
+
+The Skeleton is non-interactive.
+
+- **Keyboard** - Not keyboard focusable.
+- **Mouse** - Nothing
+
+- **Touch** - Nothing
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
-
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+- An `aria-label` is added to the `Skeleton` container to let users know that content is loading

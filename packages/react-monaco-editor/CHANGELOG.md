@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-monaco-editor
 
-This log was last generated on Fri, 20 Oct 2023 07:35:43 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [1.7.141](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.7.141)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.7.140..@fluentui/react-monaco-editor_v1.7.141)
+
+### Patches
+
+- Bump @fluentui/react to v8.112.4 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/example-data to v8.4.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/monaco-editor to v1.3.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-hooks to v8.6.31 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-charting to v5.18.10 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [1.7.140](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.7.140)
+
+Mon, 23 Oct 2023 07:35:31 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-monaco-editor_v1.7.139..@fluentui/react-monaco-editor_v1.7.140)
+
+### Patches
+
+- Bump @fluentui/react-charting to v5.18.9 ([PR #29603](https://github.com/microsoft/fluentui/pull/29603) by beachball)
 
 ## [1.7.139](https://github.com/microsoft/fluentui/tree/@fluentui/react-monaco-editor_v1.7.139)
 

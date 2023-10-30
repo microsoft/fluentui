@@ -57,25 +57,6 @@ declare module '@storybook/addons' {
        */
       inlineStories?: boolean;
     };
-    /**
-     * @see https://github.com/microsoft/fluentui-storybook-addons
-     */
-    exportToCodeSandbox?: AddonExportToCodesandboxParameters;
-  }
-
-  interface AddonExportToCodesandboxParameters {
-    /**
-     * Dependencies that should be included with every story
-     */
-    requiredDependencies?: Record<string, string>;
-    /**
-     * Dependencies that should be included if the story code contains it
-     */
-    optionalDependencies?: Record<string, string>;
-    /**
-     * Content of index.tsx in CodeSandbox
-     */
-    indexTsx?: string;
   }
 
   interface ControlsParameters {

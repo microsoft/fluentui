@@ -109,6 +109,8 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -128,6 +130,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useMessageBarTitleStyles_unstable: CustomStyleHook;
     useMessageBarActionsStyles_unstable: CustomStyleHook;
     useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -218,6 +221,8 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -237,6 +242,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useMessageBarTitleStyles_unstable: CustomStyleHook;
     useMessageBarActionsStyles_unstable: CustomStyleHook;
     useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -327,6 +333,8 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -346,6 +354,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useMessageBarTitleStyles_unstable: CustomStyleHook;
     useMessageBarActionsStyles_unstable: CustomStyleHook;
     useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)
