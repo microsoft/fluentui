@@ -159,11 +159,14 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const resolvedPropsOnKeyDown = triggerSlot.onKeyDown;
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur); // only resolve listbox slot if needed
-  listboxSlot = slot.optional(props.listbox, {
-    renderByDefault: open || hasFocus,
-    defaultProps: { children: props.children },
-    elementType: Listbox,
-  });
+  listboxSlot =
+    open || hasFocus
+      ? slot.optional(props.listbox, {
+          renderByDefault: true,
+          defaultProps: { children: props.children },
+          elementType: Listbox,
+        })
+      : undefined;
   const rootSlot = slot.always(props.root, {
     defaultProps: {
       'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,

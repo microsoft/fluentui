@@ -110,11 +110,14 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     elementType: 'button',
   });
   triggerSlot.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot.onKeyDown);
-  listboxSlot = slot.optional(props.listbox, {
-    renderByDefault: baseState.open || baseState.hasFocus,
-    defaultProps: { children: props.children },
-    elementType: Listbox,
-  });
+  listboxSlot =
+    baseState.open || baseState.hasFocus
+      ? slot.optional(props.listbox, {
+          renderByDefault: true,
+          defaultProps: { children: props.children },
+          elementType: Listbox,
+        })
+      : undefined;
 
   const rootSlot = slot.always(props.root, {
     defaultProps: {
