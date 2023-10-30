@@ -4,8 +4,6 @@ Padding on the left and right of the chart is determined by the x-axis labels - 
 
 Currently we support stacked area charts only.
 
-Refer this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
-
 ### Content
 
 - **Area line** - An area line represents a set of values from the same data set. Each line takes on a new swatch in the data visualization library to distinguish it from others. 2px wide. There is no rounding of joints to avoid data misrepresentation.
@@ -34,5 +32,5 @@ The area chart is a highly performant visual. It uses a path-based rendering mec
 
 The chart axes support 2 ways of localization.
 
-1.      JavaScript provided inbuilt localization for numeric and date axis. Specify the culture and `dateLocalizeOptions` for date axis to define target localization. Refer the [Javascript localization guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) for usage.
-2.      Custom locale definition: The consumer of the library can specify a custom locale definition as supported by d3 [like this](https://github.com/d3/d3-time-format/blob/main/locale/en-US.json). The date axis will use the date range and the multiformat specified in the definition to determine the correct labels to show in the ticks. For example - If the date range is in days, then the axis will show hourly ticks. If the date range spans across months, then the axis will show months in tick labels and so on. Specify the custom locale definition in the `timeFormatLocale` prop. Refer to the Custom Locale Date Axis example in line chart for sample usage.
+1.       JavaScript provided inbuilt localization for numeric and date axis. Specify the culture and `dateLocalizeOptions` for date axis to define target localization. Refer the [Javascript localization guide](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toLocaleDateString) for usage.
+2.       Custom locale definition: The consumer of the library can specify a custom locale definition as supported by d3 [like this](https://github.com/d3/d3-time-format/blob/main/locale/en-US.json). The date axis will use the date range and the multiformat specified in the definition to determine the correct labels to show in the ticks. For example - If the date range is in days, then the axis will show hourly ticks. If the date range spans across months, then the axis will show months in tick labels and so on. Specify the custom locale definition in the `timeFormatLocale` prop. Refer to the Custom Locale Date Axis example in line chart for sample usage.
