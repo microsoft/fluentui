@@ -1,6 +1,6 @@
 import { attr, css, Observable } from '@microsoft/fast-element';
 import type { ElementStyles } from '@microsoft/fast-element';
-import { FASTSlider } from '@microsoft/fast-foundation';
+import { FASTSlider } from '@microsoft/fast-foundation/slider.js';
 import type { SliderSize } from './slider.options.js';
 
 /**

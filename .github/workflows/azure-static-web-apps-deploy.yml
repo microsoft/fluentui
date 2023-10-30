@@ -5,7 +5,8 @@ on:
     branches:
       - web-components-v3
     paths:
-      - packages/web-components/*
+      - packages/web-components/**
+  workflow_dispatch:
 
 permissions:
   contents: read
