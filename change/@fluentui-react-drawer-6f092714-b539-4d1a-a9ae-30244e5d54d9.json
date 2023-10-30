@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: use useMotionClassNames to create drawer motion styles",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

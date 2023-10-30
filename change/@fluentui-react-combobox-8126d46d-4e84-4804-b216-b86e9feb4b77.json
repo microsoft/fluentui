@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: update `setActiveOption` type to be React Dispatch.",
-  "packageName": "@fluentui/react-combobox",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

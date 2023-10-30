@@ -1,8 +1,21 @@
 # Change Log - @fluentui/react-avatar
 
-This log was last generated on Mon, 23 Oct 2023 09:51:57 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 23:35:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.5.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.43)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-avatar_v9.5.42..@fluentui/react-avatar_v9.5.43)
+
+### Patches
+
+- Bump @fluentui/react-badge to v9.2.11 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-popover to v9.8.18 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-tabster to v9.14.2 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-tooltip to v9.3.19 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
 
 ## [9.5.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-avatar_v9.5.42)
 

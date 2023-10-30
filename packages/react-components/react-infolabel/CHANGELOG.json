@@ -2,6 +2,33 @@
   "name": "@fluentui/react-infolabel",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 23:35:59 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.1",
+      "version": "9.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-label to v9.1.47",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.8.18",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.14.2",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Oct 2023 09:51:56 GMT",
       "tag": "@fluentui/react-infolabel_v9.0.0",
       "version": "9.0.0",
