@@ -135,20 +135,18 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
 const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, endHour: Hour) => {
   const [fallbackDateAnchor] = React.useState(() => new Date());
 
-  // Convert the Date object to a stable key representation. This ensures that the memoization remains stable when a new Date object representing the same date is passed in.
-  const dateAnchorKey = dateToKey(providedDate ?? null);
-  const dateAnchor = React.useMemo(
-    () => keyToDate(dateAnchorKey) ?? fallbackDateAnchor,
-    [dateAnchorKey, fallbackDateAnchor],
-  );
+  const providedDateKey = dateToKey(providedDate ?? null);
 
-  const dateStartAnchor = React.useMemo(() => getDateStartAnchor(dateAnchor, startHour), [dateAnchor, startHour]);
-  const dateEndAnchor = React.useMemo(
-    () => getDateEndAnchor(dateAnchor, startHour, endHour),
-    [dateAnchor, endHour, startHour],
-  );
+  return React.useMemo(() => {
+    const dateAnchor = providedDate ?? fallbackDateAnchor;
 
-  return { dateStartAnchor, dateEndAnchor };
+    const dateStartAnchor = getDateStartAnchor(dateAnchor, startHour);
+    const dateEndAnchor = getDateEndAnchor(dateAnchor, startHour, endHour);
+
+    return { dateStartAnchor, dateEndAnchor };
+    // `providedDate`'s stable key representation is used as dependency instead of the Date object. This ensures that the memoization remains stable when a new Date object representing the same date is passed in.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [endHour, fallbackDateAnchor, providedDateKey, startHour]);
 };
 
 /**
