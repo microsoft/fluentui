@@ -29,6 +29,6 @@ V8 TimePicker is built on v8 Combobox, and v9 TimePicker compat on v9 Combobox. 
 ### Validate selected time
 
 V8 TimePicker allows custom validation on freeform input via `onValidateUserInput`. There is no way to validate selected option from dropdown.
-V9 TimePicker allows custom validation on freeform input via `validateFreeFormTime` and on selected option via `validateOption`.
+V9 TimePicker allows custom validation on freeform input via `validateFreeFormTime` and on selected option via `validateOption` (TODO).
 
 v8 TimePicker has default error messages. v9 TimePicker has no default error message - it returns an error type from `onTimeSelect` that can be used to display a custom error message.

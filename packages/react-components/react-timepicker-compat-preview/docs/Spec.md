@@ -32,7 +32,7 @@ See API at [TimePicker.types.ts](../src/components/TimePicker/TimePicker.types.t
 TimePicker share slots, visual and positioning props with Combobox. Its own specific props are:
 
 - For selection: `defaultSelectedTime`, `selectedTime` and `onTimeSelect`.
-  - Selection validation: `validateFreeFormTime`
+  - Selection validation: `validateFreeFormTime` and `validateOption` (TODO)
 - For generating time options:
   - `startHour`, `endHour` and `increment` props are used to generate the predefined time options.
   - The options' format can be changed via `hourCycle` and `showSeconds` props. Further customization is available via `formatDateToTimeString`.
