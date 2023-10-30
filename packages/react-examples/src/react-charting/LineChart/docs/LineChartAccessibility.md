@@ -1,1 +1,0 @@
-LineChart accessibility content placeholder
