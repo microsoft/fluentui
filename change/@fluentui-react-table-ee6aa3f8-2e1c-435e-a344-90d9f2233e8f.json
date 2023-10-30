@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "chore: move the component spec",
-  "packageName": "@fluentui/react-table",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "none"
-}
