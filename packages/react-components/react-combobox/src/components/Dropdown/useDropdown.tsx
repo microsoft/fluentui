@@ -34,13 +34,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     excludedPropNames: ['children'],
   });
 
-  // set listbox popup width based off the root/trigger width
-  const rootRef = React.useRef<HTMLDivElement>(null);
-  const [popupWidth, setPopupWidth] = React.useState<string>();
-  React.useEffect(() => {
-    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
-    setPopupWidth(width);
-  }, [open]);
+  const [comboboxPopupRef, comboboxTargetRef] = useComboboxPopup(props);
 
   // jump to matching option based on typing
   const searchString = React.useRef('');
@@ -116,26 +110,31 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     elementType: 'button',
   });
   triggerSlot.onKeyDown = mergeCallbacks(onTriggerKeyDown, triggerSlot.onKeyDown);
-  listboxSlot =
-    baseState.open || baseState.hasFocus
-      ? slot.optional(props.listbox, {
-          renderByDefault: true,
-          defaultProps: { children: props.children, style: { width: popupWidth } },
-          elementType: Listbox,
-        })
-      : undefined;
-  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  listboxSlot = slot.optional(props.listbox, {
+    renderByDefault: baseState.open || baseState.hasFocus,
+    defaultProps: { children: props.children },
+    elementType: Listbox,
+  });
+
+  const rootSlot = slot.always(props.root, {
+    defaultProps: {
+      'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
+      children: props.children,
+      ...rootNativeProps,
+    },
+    elementType: 'div',
+  });
+  rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
+
+  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
+  if (listboxSlot) {
+    listboxSlot.ref = listboxRef;
+  }
+
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
   const state: DropdownState = {
     components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
-    root: slot.always(props.root, {
-      defaultProps: {
-        'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
-        children: props.children,
-        ...rootNativeProps,
-      },
-      elementType: 'div',
-    }),
+    root: rootSlot,
     button: triggerSlot,
     listbox: listboxSlot,
     expandIcon: slot.optional(props.expandIcon, {
@@ -148,8 +147,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,
   };
-
-  state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   return state;
 };

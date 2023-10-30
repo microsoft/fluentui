@@ -1141,6 +1141,24 @@ const MultiScrollParent = () => {
   );
 };
 
+const MatchTargetSize = () => {
+  const { targetRef, containerRef } = usePositioning({ matchTargetSize: 'width' });
+
+  return (
+    <>
+      <button id="target" ref={targetRef} style={{ width: 350 }}>
+        Trigger
+      </button>
+      <div
+        ref={containerRef}
+        style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white', boxSizing: 'border-box' }}
+      >
+        Should have same width as trigger
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -1223,7 +1241,8 @@ storiesOf('Positioning', module)
     <StoryWright steps={new Steps().click('#scroll').snapshot('container attached to target').end()}>
       <MultiScrollParent />
     </StoryWright>
-  ));
+  ))
+  .addStory('Match target size', () => <MatchTargetSize />);
 
 storiesOf('Positioning (no decorator)', module)
   .addStory('scroll jumps', () => (

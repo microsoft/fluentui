@@ -49,6 +49,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue,
     value,
   } = baseState;
+  const [comboboxPopupRef, comboboxTargetRef] = useComboboxPopup(props);
   const { disabled, freeform, inlinePopup, multiselect } = props;
   const comboId = useId('combobox-');
 
@@ -69,18 +70,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   // save the typing vs. navigating options state, as the space key should behave differently in each case
   // we do not want to update the combobox when this changes, just save the value between renders
   const isTyping = React.useRef(false);
-
-  // calculate listbox width style based on trigger width
-  const [popupDimensions, setPopupDimensions] = React.useState<{ width: string }>();
-  React.useEffect(() => {
-    // only recalculate width when opening
-    if (open) {
-      const width = `${rootRef.current?.clientWidth}px`;
-      if (width !== popupDimensions?.width) {
-        setPopupDimensions({ width });
-      }
-    }
-  }, [open, popupDimensions]);
 
   // set active option and selection based on typing
   const getOptionFromInput = (inputValue: string): OptionValue | undefined => {
@@ -170,28 +159,31 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   const resolvedPropsOnKeyDown = triggerSlot.onKeyDown;
   triggerSlot.onChange = mergeCallbacks(triggerSlot.onChange, onTriggerChange);
   triggerSlot.onBlur = mergeCallbacks(triggerSlot.onBlur, onTriggerBlur); // only resolve listbox slot if needed
-  listboxSlot =
-    open || hasFocus
-      ? slot.optional(props.listbox, {
-          renderByDefault: true,
-          defaultProps: { children: props.children, style: popupDimensions },
-          elementType: Listbox,
-        })
-      : undefined;
-  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
+  listboxSlot = slot.optional(props.listbox, {
+    renderByDefault: open || hasFocus,
+    defaultProps: { children: props.children },
+    elementType: Listbox,
+  });
+  const rootSlot = slot.always(props.root, {
+    defaultProps: {
+      'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
+      ...rootNativeProps,
+    },
+    elementType: 'div',
+  });
+  rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
+  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
+  if (listboxSlot) {
+    listboxSlot.ref = listboxRef;
+  }
+
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
   if (hideActiveDescendant) {
     triggerSlot['aria-activedescendant'] = undefined;
   }
   const state: ComboboxState = {
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
-    root: slot.always(props.root, {
-      defaultProps: {
-        'aria-owns': !inlinePopup ? listboxSlot?.id : undefined,
-        ...rootNativeProps,
-      },
-      elementType: 'div',
-    }),
+    root: rootSlot,
     input: triggerSlot,
     listbox: listboxSlot,
     expandIcon: slot.optional(props.expandIcon, {

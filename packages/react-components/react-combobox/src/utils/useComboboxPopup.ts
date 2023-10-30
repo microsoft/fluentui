@@ -1,26 +1,12 @@
 import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning } from '@fluentui/react-positioning';
-import { ExtractSlotProps, Slot, useMergedRefs } from '@fluentui/react-utilities';
 import type { ComboboxBaseProps } from './ComboboxBase.types';
-import { Listbox } from '../components/Listbox/Listbox';
+import * as React from 'react';
 
-export function useComboboxPopup(
-  props: ComboboxBaseProps,
-  triggerShorthand?: ExtractSlotProps<Slot<'button'>>,
-  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [trigger: ExtractSlotProps<Slot<'button'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
-export function useComboboxPopup(
-  props: ComboboxBaseProps,
-  triggerShorthand?: ExtractSlotProps<Slot<'input'>>,
-  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [trigger: ExtractSlotProps<Slot<'input'>>, listbox?: ExtractSlotProps<Slot<typeof Listbox>>];
-
-export function useComboboxPopup(
-  props: ComboboxBaseProps,
-  triggerShorthand?: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
-  listboxShorthand?: ExtractSlotProps<Slot<typeof Listbox>>,
-): [
-  trigger: ExtractSlotProps<Slot<'input'>> | ExtractSlotProps<Slot<'button'>>,
-  listbox?: ExtractSlotProps<Slot<typeof Listbox>>,
+export function useComboboxPopup(props: ComboboxBaseProps): [
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  listboxRef: React.MutableRefObject<any>,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  triggerRef: React.MutableRefObject<any>,
 ] {
   const { positioning } = props;
 
@@ -33,13 +19,11 @@ export function useComboboxPopup(
     align: 'start' as const,
     offset: { crossAxis: 0, mainAxis: 2 },
     fallbackPositions,
+    matchTargetSize: 'width' as const,
     ...resolvePositioningShorthand(positioning),
   };
 
   const { targetRef, containerRef } = usePositioning(popperOptions);
 
-  const listboxRef = useMergedRefs(listboxShorthand?.ref, containerRef);
-  const listbox = listboxShorthand && { ...listboxShorthand, ref: listboxRef };
-
-  return [{ ...triggerShorthand, ref: useMergedRefs(triggerShorthand?.ref, targetRef) }, listbox];
+  return [containerRef, targetRef];
 }

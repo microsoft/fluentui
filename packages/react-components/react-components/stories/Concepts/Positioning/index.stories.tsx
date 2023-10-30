@@ -13,6 +13,7 @@ export { ImperativePositionUpdate } from './PositioningImperativePositionUpdate.
 export { OverflowBoundary } from './PositioningOverflowBoundary.stories';
 export { OverflowBoundaryPadding } from './OverflowBoundaryPadding.stories';
 export { FlipBoundary } from './PositioningFlipBoundary.stories';
+export { MatchTargetSize } from './MatchTargetSize.stories';
 export { DisableTransform } from './PositioningDisableTransform.stories';
 
 export default {
