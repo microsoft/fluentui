@@ -19,23 +19,23 @@ export const TimePicker: ForwardRefComponent<TimePickerProps>;
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
 
 // @public
-export type TimePickerProps = Omit<ComboboxProps, 'children' | 'defaultSelectedOptions' | 'multiselect' | 'onOptionSelect' | 'selectedOptions'> & TimeFormatOptions & {
+export type TimePickerProps = Pick<ComboboxProps, 'root' | 'expandIcon' | 'input' | 'listbox' | 'as' | 'appearance' | 'defaultOpen' | 'defaultValue' | 'inlinePopup' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size' | 'value' | 'mountNode' | 'freeform'> & TimeFormatOptions & {
     startHour?: Hour;
     endHour?: Hour;
     increment?: number;
     dateAnchor?: Date;
     selectedTime?: Date | null;
     defaultSelectedTime?: Date;
-    onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
     formatDateToTimeString?: (date: Date) => string;
-    validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
+    formatTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
 };
 
 // @public (undocumented)
 export type TimePickerSlots = ComboboxSlots;
 
 // @public
-export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
+export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'formatTimeStringToDate'>> & {
     submittedText: string | undefined;
 };
 
