@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add support to provide static duration to useMotion hook",
-  "packageName": "@fluentui/react-motion-preview",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "major",
-  "comment": "BREAKING CHANGE: remove `appearance` prop and set  `current` prop  for BreadcrumbButton last item",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
