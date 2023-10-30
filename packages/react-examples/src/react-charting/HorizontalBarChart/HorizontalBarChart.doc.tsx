@@ -53,6 +53,8 @@ export const HorizontalBarChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HorizontalBarChart/docs/HorizontalBarChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -1,0 +1,2 @@
+- Avoid having more than 20 bars in the chart.
+- The n/M variant should be used only when a value has to be compared against its target value.
