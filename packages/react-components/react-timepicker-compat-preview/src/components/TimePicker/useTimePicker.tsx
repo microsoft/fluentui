@@ -29,14 +29,14 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     dateAnchor: dateAnchorInProps,
     defaultSelectedTime: defaultSelectedTimeInProps,
     endHour = 24,
-    formatDateToTimeString,
+    formatDateToTimeString = defaultFormatDateToTimeString,
     hourCycle = 'h23',
     increment = 30,
     onTimeChange,
     selectedTime: selectedTimeInProps,
     showSeconds = false,
     startHour = 0,
-    validateFreeFormTime: validateFreeFormTimeInProps,
+    formatTimeStringToDate: formatTimeStringToDateInProps,
     ...rest
   } = props;
   const { freeform = false } = rest;
@@ -47,21 +47,14 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     endHour,
   );
 
-  const dateToText = React.useCallback(
-    (dateTime: Date) =>
-      formatDateToTimeString
-        ? formatDateToTimeString(dateTime)
-        : defaultFormatDateToTimeString(dateTime, { showSeconds, hourCycle }),
-    [hourCycle, formatDateToTimeString, showSeconds],
-  );
   const options: TimePickerOption[] = React.useMemo(
     () =>
       getTimesBetween(dateStartAnchor, dateEndAnchor, increment).map(time => ({
         date: time,
         key: dateToKey(time),
-        text: dateToText(time),
+        text: formatDateToTimeString(time, { showSeconds, hourCycle }),
       })),
-    [dateStartAnchor, dateEndAnchor, increment, dateToText],
+    [dateEndAnchor, dateStartAnchor, formatDateToTimeString, hourCycle, increment, showSeconds],
   );
 
   const [selectedTime, setSelectedTime] = useControllableState<Date | null>({
@@ -82,7 +75,8 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   );
 
   const selectedOptions = React.useMemo(() => {
-    const selectedOption = options.find(date => date.key === dateToKey(selectedTime));
+    const selectedTimeKey = dateToKey(selectedTime);
+    const selectedOption = options.find(date => date.key === selectedTimeKey);
     return selectedOption ? [selectedOption.key] : [];
   }, [options, selectedTime]);
 
@@ -116,7 +110,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     ref,
   );
 
-  const defaultValidateTime = React.useCallback(
+  const defaultFormatTimeStringToDate = React.useCallback(
     (time: string | undefined) =>
       getDateFromTimeString(time, dateStartAnchor, dateEndAnchor, { hourCycle, showSeconds }),
     [dateEndAnchor, dateStartAnchor, hourCycle, showSeconds],
@@ -125,7 +119,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
   const state: TimePickerState = {
     ...baseState,
     freeform,
-    validateFreeFormTime: validateFreeFormTimeInProps ?? defaultValidateTime,
+    formatTimeStringToDate: formatTimeStringToDateInProps ?? defaultFormatTimeStringToDate,
     submittedText,
   };
 
@@ -164,7 +158,7 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
  * - TimePicker loses focus, signifying a possible change.
  */
 const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProps['onTimeChange']) => {
-  const { activeOption, freeform, validateFreeFormTime, submittedText, setActiveOption, value } = state;
+  const { activeOption, freeform, formatTimeStringToDate, submittedText, setActiveOption, value } = state;
 
   // Base Combobox has activeOption default to first option in dropdown even if it doesn't match input value, and Enter key will select it.
   // This effect ensures that the activeOption is cleared when the input doesn't match any option.
@@ -186,14 +180,14 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
         return;
       }
 
-      const { date: selectedTime, error } = validateFreeFormTime(value);
+      const { date: selectedTime, error } = formatTimeStringToDate(value);
 
       // Only triggers callback when the text in input has changed.
       if (submittedText !== value) {
         callback?.(e, { selectedTime, selectedTimeText: value, error });
       }
     },
-    [callback, freeform, submittedText, validateFreeFormTime, value],
+    [callback, freeform, submittedText, formatTimeStringToDate, value],
   );
 
   const handleKeyDown: ComboboxProps['onKeyDown'] = React.useCallback(
