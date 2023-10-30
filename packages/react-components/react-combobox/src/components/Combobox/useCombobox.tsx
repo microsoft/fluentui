@@ -169,6 +169,11 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
       : undefined;
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
   const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
+
+  if (hideActiveDescendant) {
+    triggerSlot['aria-activedescendant'] = undefined;
+  }
+
   if (listboxSlot) {
     listboxSlot.ref = listboxRef;
   }
@@ -182,9 +187,6 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
   });
   rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
 
-  if (hideActiveDescendant) {
-    triggerSlot['aria-activedescendant'] = undefined;
-  }
   const state: ComboboxState = {
     components: { root: 'div', input: 'input', expandIcon: 'span', listbox: Listbox },
     root: rootSlot,
