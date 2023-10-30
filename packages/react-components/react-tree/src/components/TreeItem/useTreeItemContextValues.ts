@@ -10,7 +10,10 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
     open,
     expandIconRef,
     actionsRef,
+    treeItemRef,
+    // eslint-disable-next-line deprecation/deprecation
     isActionsVisible,
+    // eslint-disable-next-line deprecation/deprecation
     isAsideVisible,
     selectionRef,
     checked,
@@ -31,6 +34,7 @@ export function useTreeItemContextValues_unstable(state: TreeItemState): TreeIte
     isActionsVisible,
     isAsideVisible,
     actionsRef,
+    treeItemRef,
     expandIconRef,
   };
 
