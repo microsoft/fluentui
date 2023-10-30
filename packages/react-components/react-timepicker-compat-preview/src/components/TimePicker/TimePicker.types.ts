@@ -138,7 +138,7 @@ export type TimePickerProps = Omit<
     /**
      * Callback for when a time selection is made.
      */
-    onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
     /**
      * Custom the date strings displayed in dropdown options.

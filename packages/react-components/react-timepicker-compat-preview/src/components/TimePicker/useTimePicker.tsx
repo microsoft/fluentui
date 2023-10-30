@@ -32,7 +32,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     formatDateToTimeString,
     hourCycle = 'h23',
     increment = 30,
-    onTimeSelect,
+    onTimeChange,
     selectedTime: selectedTimeInProps,
     showSeconds = false,
     startHour = 0,
@@ -72,13 +72,13 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
 
   const [submittedText, setSubmittedText] = React.useState<string | undefined>(undefined);
 
-  const selectTime: TimePickerProps['onTimeSelect'] = React.useCallback(
+  const selectTime: TimePickerProps['onTimeChange'] = React.useCallback(
     (e, data) => {
       setSelectedTime(data.selectedTime);
       setSubmittedText(data.selectedTimeText);
-      onTimeSelect?.(e, data);
+      onTimeChange?.(e, data);
     },
-    [onTimeSelect, setSelectedTime],
+    [onTimeChange, setSelectedTime],
   );
 
   const selectedOptions = React.useMemo(() => {
@@ -163,7 +163,7 @@ const useStableDateAnchor = (providedDate: Date | undefined, startHour: Hour, en
  * - Enter/Tab key is pressed on the input.
  * - TimePicker loses focus, signifying a possible change.
  */
-const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProps['onTimeSelect']) => {
+const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProps['onTimeChange']) => {
   const { activeOption, freeform, validateFreeFormTime, submittedText, setActiveOption, value } = state;
 
   // Base Combobox has activeOption default to first option in dropdown even if it doesn't match input value, and Enter key will select it.
