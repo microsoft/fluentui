@@ -182,8 +182,8 @@ function usePositioningOptions(options: PositioningOptions) {
       const hasScrollableElement = hasScrollParent(container);
 
       const middleware = [
-        matchTargetSize && matchTargetSizeMiddleware(),
         autoSize && resetMaxSizeMiddleware(autoSize),
+        matchTargetSize && matchTargetSizeMiddleware(),
         offset && offsetMiddleware(offset),
         coverTarget && coverTargetMiddleware(),
         !pinned && flipMiddleware({ container, flipBoundary, hasScrollableElement, isRtl, fallbackPositions }),

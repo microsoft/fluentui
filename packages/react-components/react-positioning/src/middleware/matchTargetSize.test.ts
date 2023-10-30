@@ -23,7 +23,7 @@ describe('matchTargetSize', () => {
 
     expect(result).toEqual({
       data: {
-        matchTargetSizeAttempt: 1,
+        matchTargetSizeAttempt: true,
       },
       reset: {
         rects: true,
@@ -54,12 +54,12 @@ describe('matchTargetSize', () => {
     expect(result).toEqual({});
   });
 
-  it('should do nothing if there have been 3 match attempts', async () => {
+  it('should do nothing if there have been a match attempt', async () => {
     expect.assertions(1);
     const floatingElement = document.createElement('div');
     const referenceWidth = 100;
     const middlewareArguments = {
-      middlewareData: { matchTargetSizeAttempt: 3 },
+      middlewareData: { matchTargetSizeAttempt: true },
       elements: {
         floating: floatingElement,
       },
@@ -73,33 +73,5 @@ describe('matchTargetSize', () => {
     const result = await middlewareFn(middlewareArguments);
 
     expect(result).toEqual({});
-  });
-
-  it('should increment match attempt', async () => {
-    expect.assertions(1);
-    const floatingElement = document.createElement('div');
-    const referenceWidth = 100;
-    const middlewareArguments = {
-      middlewareData: { matchTargetSizeAttempt: 2 },
-      elements: {
-        floating: floatingElement,
-      },
-
-      rects: {
-        reference: { width: referenceWidth },
-        floating: { width: '1px' },
-      },
-    } as unknown as MiddlewareArguments;
-
-    const result = await middlewareFn(middlewareArguments);
-
-    expect(result).toEqual({
-      data: {
-        matchTargetSizeAttempt: 3,
-      },
-      reset: {
-        rects: true,
-      },
-    });
   });
 });

@@ -7,16 +7,10 @@ export function matchTargetSize(): Middleware {
       const {
         rects: { reference: referenceRect, floating: floatingRect },
         elements: { floating: floatingElement },
-        middlewareData: { matchTargetSizeAttempt = 0 },
+        middlewareData: { matchTargetSizeAttempt = false },
       } = middlewareArguments;
 
-      if (referenceRect.width === floatingRect.width || matchTargetSizeAttempt > 2) {
-        if (matchTargetSizeAttempt > 2 && process.env.NODE_ENV !== 'production') {
-          // eslint-disable-next-line no-console
-          console.error(
-            '@fluentui/react-positioning: matchTargetSize middleware could be running in a loop. Please report this error',
-          );
-        }
+      if (referenceRect.width === floatingRect.width || matchTargetSizeAttempt) {
         return {};
       }
 
@@ -25,7 +19,7 @@ export function matchTargetSize(): Middleware {
       floatingElement.style.boxSizing = 'border-box';
 
       return {
-        data: { matchTargetSizeAttempt: matchTargetSizeAttempt + 1 },
+        data: { matchTargetSizeAttempt: true },
         reset: {
           rects: true,
         },
