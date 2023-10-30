@@ -369,7 +369,7 @@ Items have tooltips when their names are longer than 30 symbols.
 
 ### Keyboard
 
-When navigating via keyboard, focus will be place initially on the first breadcrumb item. Either `tab`` key (default) or left and right arrow can be used to move through the breadcrumb items.
+When navigating via keyboard, focus will be place initially on the first breadcrumb item. Either `tab` key (default) or left and right arrow can be used to move through the breadcrumb items.
 
 ![Breadcrumb keyboard interaction](./assets/breadcrumb-keyboard-interaction.png)
 
