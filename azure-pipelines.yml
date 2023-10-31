@@ -17,17 +17,11 @@ variables:
 pool: '1ES-Host-Ubuntu'
 
 jobs:
+  - template: .devops/templates/prepare-env.yml
+
   - job: BuildTestLint
-    workspace:
-      clean: all
+    dependsOn: prepare_env
     steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn (install packages)
-
       - script: |
           yarn nx run @fluentui/workspace-plugin:check-graph
           yarn nx g @fluentui/workspace-plugin:tsconfig-base-all --verify
@@ -70,17 +64,9 @@ jobs:
       - template: .devops/templates/cleanup.yml
 
   - job: DeployE2E
+    dependsOn: prepare_env
     displayName: Deploy and E2E
-    workspace:
-      clean: all
     steps:
-      - template: .devops/templates/tools.yml
-
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
-
       # this also builds FUI N* docs if appropriate
       - script: |
           yarn bundle  $(sinceArg)
