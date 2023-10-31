@@ -88,10 +88,22 @@ TagGroup is a simple div wrapper around the children.
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+### Migrate from V0 Pill component
 
-- _Migration from v8_
-- _Migration from v0_
+Property mapping:
+
+| v0 Pill      | v9 Tag                                    |
+| ------------ | ----------------------------------------- |
+| `action`     | use `InteractionTag`                      |
+| `appearance` | `appearance`                              |
+| `content`    | `children`                                |
+| `disabled`   | `disabled`                                |
+| `icon`       | `icon`                                    |
+| `image`      | `media`                                   |
+| `onDismiss`  | wrap with `<TagGroup onDismiss={handler}` |
+| `size`       | `size`                                    |
+
+V0 Pill can be selectable, but v9 Tag is not selectable. A Picker component is planned to incorporate the selection behavior.
 
 ## Behaviors
 
