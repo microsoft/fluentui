@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
+import { ComponentProps } from '@fluentui/react-utilities';
 
 export type Hour =
   | 0
@@ -95,16 +96,25 @@ export type TimeFormatOptions = {
  * TimePicker Props
  */
 export type TimePickerProps = Omit<
-  ComboboxProps,
-  // Omit children as TimePicker has predefined children
-  // TODO add children prop to allow custom children through render function
-  | 'children'
-  // Omit selection props as TimePicker has `selectedTime` props
-  | 'defaultSelectedOptions'
-  | 'multiselect'
-  | 'onOptionSelect'
-  | 'selectedOptions'
+  ComponentProps<Partial<ComboboxSlots>, 'input'>,
+  | 'children' // TODO add children prop to allow custom children through render function
+  | 'size'
 > &
+  Pick<
+    ComboboxProps,
+    | 'appearance'
+    | 'defaultOpen'
+    | 'defaultValue'
+    | 'inlinePopup'
+    | 'onOpenChange'
+    | 'open'
+    | 'placeholder'
+    | 'positioning'
+    | 'size'
+    | 'value'
+    | 'mountNode'
+    | 'freeform'
+  > &
   TimeFormatOptions & {
     /**
      * Start hour (inclusive) for the time range, 0-24.
@@ -139,26 +149,24 @@ export type TimePickerProps = Omit<
     /**
      * Callback for when a time selection is made.
      */
-    onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
+    onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
     /**
-     * Custom the date strings displayed in dropdown options.
+     * Customizes the formatting of date strings displayed in dropdown options.
      */
     formatDateToTimeString?: (date: Date) => string;
 
     /**
-     * Custom validation for the input time string from user in freeform TimePicker.
+     * In the freeform TimePicker, customizes the parsing from the input time string into a Date and provides custom validation.
      */
-    validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
-
-    // TODO: `validateOption` prop to do custom validation for the time selected from dropdown.
+    formatTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
   };
 
 /**
  * State used in rendering TimePicker
  */
 export type TimePickerState = ComboboxState &
-  Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
+  Required<Pick<TimePickerProps, 'freeform' | 'formatTimeStringToDate'>> & {
     /**
      * Submitted text from the input field. It is used to determine if the input value has changed when user submit a new value on Enter or blur from input.
      */

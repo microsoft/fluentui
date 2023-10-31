@@ -30,7 +30,7 @@ const ControlledSelection = () => {
   const [selectedTime, setSelectedTime] = React.useState<Date | null>(new Date('November 25, 2023 12:30:00'));
   const [value, setValue] = React.useState<string>(selectedTime ? formatDateToTimeString(selectedTime) : '');
 
-  const onTimeSelect: TimePickerProps['onTimeSelect'] = (_ev, data) => {
+  const onTimeChange: TimePickerProps['onTimeChange'] = (_ev, data) => {
     setSelectedTime(data.selectedTime);
     setValue(data.selectedTimeText ?? '');
   };
@@ -44,7 +44,7 @@ const ControlledSelection = () => {
         startHour={8}
         endHour={20}
         selectedTime={selectedTime}
-        onTimeSelect={onTimeSelect}
+        onTimeChange={onTimeChange}
         value={value}
         onInput={onInput}
       />

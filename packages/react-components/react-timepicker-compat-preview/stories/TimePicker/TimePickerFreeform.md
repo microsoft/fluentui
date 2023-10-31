@@ -6,4 +6,4 @@ The selection behavior of freeform TimePicker aligns with the native `change` ev
   - if the dropdown is expanded and the `input` value is prefix of an option, the selected time is set to the matching option.
   - if the dropdown is collapsed or the `input` value does not match any option, the selected time is computed from `input` value.
 
-The selected time is available in `onTimeSelect` callback. Use Field to display the error message based on the error type provided by `onTimeSelect`.
+The selected time is available in `onTimeChange` callback. Use Field to display the error message based on the error type provided by `onTimeChange`.

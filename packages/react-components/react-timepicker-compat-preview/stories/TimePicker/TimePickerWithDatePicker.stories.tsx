@@ -38,7 +38,7 @@ export const TimePickerWithDatePicker = () => {
     }
   };
 
-  const onTimeSelect: TimePickerProps['onTimeSelect'] = (_ev, data) => {
+  const onTimeChange: TimePickerProps['onTimeChange'] = (_ev, data) => {
     setSelectedTime(data.selectedTime);
     setTimePickerValue(data.selectedTimeText ?? '');
   };
@@ -58,7 +58,7 @@ export const TimePickerWithDatePicker = () => {
             freeform
             dateAnchor={selectedDate ?? undefined}
             selectedTime={selectedTime}
-            onTimeSelect={onTimeSelect}
+            onTimeChange={onTimeChange}
             value={timePickerValue}
             onInput={onTimePickerInput}
           />

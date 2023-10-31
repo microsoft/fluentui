@@ -49,9 +49,9 @@ describe('TimePicker', () => {
   it('shows controlled time correctly', () => {
     const TestExample = () => {
       const [selectedTime, setSelectedTime] = React.useState<Date | null>(dateAnchor);
-      const onTimeSelect: TimePickerProps['onTimeSelect'] = (_e, data) => setSelectedTime(data.selectedTime);
+      const onTimeChange: TimePickerProps['onTimeChange'] = (_e, data) => setSelectedTime(data.selectedTime);
       return (
-        <TimePicker dateAnchor={dateAnchor} increment={60} selectedTime={selectedTime} onTimeSelect={onTimeSelect} />
+        <TimePicker dateAnchor={dateAnchor} increment={60} selectedTime={selectedTime} onTimeChange={onTimeChange} />
       );
     };
 
@@ -70,7 +70,7 @@ describe('TimePicker', () => {
 
     const ControlledFreeFormExample = () => {
       const [selectedTime, setSelectedTime] = React.useState<Date | null>(dateAnchor);
-      const onTimeSelect: TimePickerProps['onTimeSelect'] = (e, data) => {
+      const onTimeChange: TimePickerProps['onTimeChange'] = (e, data) => {
         handleTimeSelect(e, data);
         setSelectedTime(data.selectedTime);
       };
@@ -80,13 +80,13 @@ describe('TimePicker', () => {
           dateAnchor={dateAnchor}
           startHour={10}
           selectedTime={selectedTime}
-          onTimeSelect={onTimeSelect}
+          onTimeChange={onTimeChange}
         />
       );
     };
 
     const UnControlledFreeFormExample = () => (
-      <TimePicker freeform dateAnchor={dateAnchor} onTimeSelect={handleTimeSelect} startHour={10} />
+      <TimePicker freeform dateAnchor={dateAnchor} onTimeChange={handleTimeSelect} startHour={10} />
     );
 
     beforeEach(() => {
@@ -130,12 +130,12 @@ describe('TimePicker', () => {
       name              | Component
       ${'uncontrolled'} | ${UnControlledFreeFormExample}
       ${'controlled'}   | ${ControlledFreeFormExample}
-    `('$name - trigger onTimeSelect only when value change', ({ Component }) => {
+    `('$name - trigger onTimeChange only when value change', ({ Component }) => {
       const { getByRole, getAllByRole } = render(<Component />);
 
       const input = getByRole('combobox');
 
-      // Call onTimeSelect when select an option
+      // Call onTimeChange when select an option
       userEvent.click(input);
       userEvent.click(getAllByRole('option')[1]);
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
@@ -145,11 +145,11 @@ describe('TimePicker', () => {
       );
       handleTimeSelect.mockClear();
 
-      // Do not call onTimeSelect on Enter when the value remains the same
+      // Do not call onTimeChange on Enter when the value remains the same
       fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
       expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
-      // Call onTimeSelect on Enter when the value changes
+      // Call onTimeChange on Enter when the value changes
       userEvent.type(input, '111{enter}');
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
@@ -162,18 +162,18 @@ describe('TimePicker', () => {
       name              | Component
       ${'uncontrolled'} | ${UnControlledFreeFormExample}
       ${'controlled'}   | ${ControlledFreeFormExample}
-    `('$name - trigger onTimeSelect on blur when value change', ({ Component }) => {
+    `('$name - trigger onTimeChange on blur when value change', ({ Component }) => {
       const { getByRole } = render(<Component />);
 
       const input = getByRole('combobox');
       const expandIcon = getByRole('button');
 
-      // Do not call onTimeSelect when clicking dropdown icon
+      // Do not call onTimeChange when clicking dropdown icon
       userEvent.type(input, '111');
       userEvent.click(expandIcon);
       expect(handleTimeSelect).toHaveBeenCalledTimes(0);
 
-      // Call onTimeSelect on focus lose
+      // Call onTimeChange on focus lose
       userEvent.tab();
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
