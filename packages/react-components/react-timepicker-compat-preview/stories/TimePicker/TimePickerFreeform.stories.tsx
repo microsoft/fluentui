@@ -26,7 +26,7 @@ export const FreeformWithErrorHandling = () => {
   const styles = useStyles();
 
   const [errorType, setErrorType] = React.useState<TimePickerErrorType>();
-  const handleTimeSelect: TimePickerProps['onTimeChange'] = (_ev, { error }) => {
+  const handleTimeChange: TimePickerProps['onTimeChange'] = (_ev, { error }) => {
     setErrorType(error);
   };
 
@@ -39,7 +39,7 @@ export const FreeformWithErrorHandling = () => {
       }
       validationMessage={getErrorMessage(errorType)}
     >
-      <TimePicker className={styles.control} freeform startHour={10} endHour={20} onTimeChange={handleTimeSelect} />
+      <TimePicker className={styles.control} freeform startHour={10} endHour={20} onTimeChange={handleTimeChange} />
     </Field>
   );
 };
