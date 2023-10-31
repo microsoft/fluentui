@@ -55,6 +55,7 @@ export const TimePickerWithDatePicker = () => {
         <Field label="Select a time">
           <TimePicker
             placeholder="Select a time..."
+            freeform
             dateAnchor={selectedDate ?? undefined}
             selectedTime={selectedTime}
             onTimeSelect={onTimeSelect}
