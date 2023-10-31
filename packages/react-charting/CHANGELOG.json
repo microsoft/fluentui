@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Tue, 31 Oct 2023 07:34:28 GMT",
+      "tag": "@fluentui/react-charting_v5.18.11",
+      "version": "5.18.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e966dcf01463e9d9ea0697789e5cabdd2e20ca73",
+            "comment": "Added scale factor to minimum height logic"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 28 Oct 2023 00:29:15 GMT",
       "tag": "@fluentui/react-charting_v5.18.10",
       "version": "5.18.10",
