@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getPartitionedNativeProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useMergedRefs } from '@fluentui/react-utilities';
 import { useFocusWithin } from '@fluentui/react-tabster';
 import type { RatingItemProps, RatingItemState } from './RatingItem.types';
 import { useRatingContextValue_unstable } from '../../contexts/RatingContext';
@@ -20,23 +20,20 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
 
   const ratingValue = context.value || 0;
 
-  const displayedRatingValue = context.hoveredValue !== undefined ? context.hoveredValue : ratingValue;
+  const displayedRatingValue = context.hoveredValue ?? ratingValue;
 
-  const nativeProps = getPartitionedNativeProps({
-    props,
-    primarySlotTagName: 'input',
-    excludedPropNames: ['defaultChecked', 'onChange'],
-  });
-
-  const root = slot.always(props.root, {
-    defaultProps: { ref: useFocusWithin<HTMLSpanElement>(), ...nativeProps.root },
-    elementType: 'span',
-  });
+  const root = slot.always(
+    getIntrinsicElementProps('span', {
+      ref: useMergedRefs(useFocusWithin<HTMLSpanElement>(), ref),
+      ...props,
+    }),
+    { elementType: 'span' },
+  );
 
   let icon;
-  if (displayedRatingValue && displayedRatingValue >= value) {
+  if (displayedRatingValue >= value) {
     icon = <StarFilled />;
-  } else if (displayedRatingValue && displayedRatingValue >= value - 0.5) {
+  } else if (displayedRatingValue >= value - 0.5) {
     icon = <StarHalfRegular />;
   } else {
     icon = <StarRegular />;
@@ -44,6 +41,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   const indicator = slot.always(props.indicator, {
     defaultProps: {
       children: icon,
+      'aria-hidden': true,
     },
     elementType: 'div',
   });
@@ -53,14 +51,13 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
     halfValueInput = slot.always(props.halfValueInput, {
       defaultProps: {
         type: 'radio',
-        ref,
         name: context.name,
         value: value - 0.5,
         checked: ratingValue === value - 0.5,
-        // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
-        // The parent Rating component has the real onChange handler to listen to change events from this input.
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onChange: () => {},
+        onChange: () => {
+          // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
+          // The parent Rating component has the real onChange handler to listen to change events from this input.
+        },
       },
       elementType: 'input',
     });
@@ -72,14 +69,12 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
       defaultProps: {
         type: 'radio',
         name: context.name,
-        ref,
         value,
         checked: ratingValue === value,
-        // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
-        // The parent Rating component has the real onChange handler to listen to change events from this input.
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onChange: () => {},
-        ...nativeProps.primary,
+        onChange: () => {
+          // This empty onChange handler silences an incorrect React warning about not using onChange for a controlled input.
+          // The parent Rating component has the real onChange handler to listen to change events from this input.
+        },
       },
 
       elementType: 'input',

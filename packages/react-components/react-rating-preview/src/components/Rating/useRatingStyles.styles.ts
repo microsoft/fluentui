@@ -1,5 +1,5 @@
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses /*shorthands*/ } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingSlots, RatingState } from './Rating.types';
 //import { tokens } from '@fluentui/react-theme';
@@ -7,18 +7,22 @@ import type { RatingSlots, RatingState } from './Rating.types';
 export const ratingClassNames: SlotClassNames<RatingSlots> = {
   root: 'fui-Rating',
   ratingLabel: 'fui-Rating__ratingLabel',
-  countLabel: 'fui-Rating__countLabel',
+  ratingCountLabel: 'fui-Rating__countLabel',
 };
 
 /**
  * Styles for the root slot
  */
 
-const useStyles = makeStyles({
+const useStyles = makeResetStyles({
+  whiteSpace: 'nowrap',
+  ...createFocusOutlineStyle({ style: {}, selector: 'focus' }),
+  '& > label': {},
+});
+const useRatingLabelStyles = makeStyles({
   root: {
-    display: 'inline-flex',
-    position: 'relative',
-    ...createFocusOutlineStyle({ style: {}, selector: 'focus-within' }),
+    width: '100%',
+    height: '100%',
   },
 });
 
@@ -27,7 +31,22 @@ const useStyles = makeStyles({
  */
 export const useRatingStyles_unstable = (state: RatingState): RatingState => {
   const styles = useStyles();
-  state.root.className = mergeClasses(ratingClassNames.root, styles.root, state.root.className);
+  const labelStyles = useRatingLabelStyles();
+  state.root.className = mergeClasses(ratingClassNames.root, styles, state.root.className);
+  if (state.countLabel && state.ratingCountLabel) {
+    state.ratingCountLabel.className = mergeClasses(
+      ratingClassNames.ratingCountLabel,
+      labelStyles.root,
+      state.ratingCountLabel.className,
+    );
+  }
+  if (state.ratingLabel && state.valueLabel) {
+    state.ratingLabel.className = mergeClasses(
+      ratingClassNames.ratingCountLabel,
+      labelStyles.root,
+      state.ratingLabel.className,
+    );
+  }
 
   return state;
 };

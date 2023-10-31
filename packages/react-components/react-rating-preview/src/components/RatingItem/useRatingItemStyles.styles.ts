@@ -1,6 +1,7 @@
 import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { RatingItemSlots, RatingItemState } from './RatingItem.types';
+import { tokens } from '@fluentui/react-theme';
 //import { tokens } from '@fluentui/react-theme';
 
 export const ratingItemClassNames: SlotClassNames<RatingItemSlots> = {
@@ -22,6 +23,7 @@ const indicatorSizes = {
 const useStyles = makeStyles({
   root: {
     position: 'relative',
+    //display: 'inline-block',
   },
   small: {
     width: indicatorSizes.small,
@@ -62,8 +64,9 @@ const useIndicatorBaseClassName = makeResetStyles({
   boxSizing: 'border-box',
   flexShrink: 0,
 
-  display: 'flex',
+  display: 'inline-block',
   alignItems: 'center',
+  color: tokens.colorNeutralForeground3,
   justifyContent: 'center',
   overflow: 'hidden',
   fill: 'currentColor',

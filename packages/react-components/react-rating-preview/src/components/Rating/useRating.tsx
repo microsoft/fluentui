@@ -1,15 +1,14 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   isHTMLElement,
   mergeCallbacks,
   slot,
   useControllableState,
-  useEventCallback,
   useId,
 } from '@fluentui/react-utilities';
 import type { RatingProps, RatingState } from './Rating.types';
-import { Label } from '../../../../react-label/src/Label';
+import { Label } from '@fluentui/react-label';
 import { RatingItem } from '../../RatingItem';
 
 /**
@@ -23,7 +22,18 @@ import { RatingItem } from '../../RatingItem';
  */
 export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
   const generatedName = useId('rating-');
-  const { name = generatedName, precision, readOnly, shape = 'star', size = 'medium', max = 5, onChange } = props;
+  const {
+    compact = false,
+    countLabel,
+    max = 5,
+    name = generatedName,
+    onChange,
+    precision,
+    readOnly,
+    shape = 'star',
+    size = 'medium',
+    valueLabel,
+  } = props;
 
   const ratingId = useId('ratingLabel');
   const countId = useId('countLabel');
@@ -39,6 +49,15 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   const isRatingRadioItem = (target: EventTarget): target is HTMLInputElement =>
     isHTMLElement(target, { constructorName: 'HTMLInputElement' }) && target.type === 'radio' && target.name === name;
 
+  //Prevents unnecessary rerendering of children
+  const rootChildren = React.useMemo(() => {
+    return !compact ? (
+      Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />)
+    ) : (
+      <RatingItem value={1} key={1} />
+    );
+  }, [compact, max]);
+
   const state: RatingState = {
     name,
     precision,
@@ -50,31 +69,28 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     components: {
       root: 'div',
       ratingLabel: Label,
-      countLabel: Label,
+      ratingCountLabel: Label,
     },
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref,
-        children: Array.from(Array(max), (_, i) => <RatingItem value={i + 1} key={i + 1} />),
+        children: rootChildren,
         ...props,
       }),
       { elementType: 'div' },
     ),
-    ratingLabel: slot.optional(props.ratingLabel, {
-      defaultProps: { id: ratingId },
-      renderByDefault: false,
+    ratingLabel: slot.always(props.ratingLabel, {
+      defaultProps: { id: ratingId, children: valueLabel },
       elementType: Label,
     }),
-    countLabel: slot.optional(props.countLabel, {
-      defaultProps: { id: countId },
-      renderByDefault: false,
+    ratingCountLabel: slot.always(props.countLabel, {
+      defaultProps: { id: countId, children: countLabel },
       elementType: Label,
     }),
   };
 
   if (!readOnly) {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    state.root.onChange = useEventCallback(ev => {
+    state.root.onChange = ev => {
       if (isRatingRadioItem(ev.target)) {
         const newValue = parseFloat(ev.target.value);
         if (!isNaN(newValue)) {
@@ -82,7 +98,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
           onChange?.(ev, { value: newValue });
         }
       }
-    });
+    };
     state.root.onMouseOver = mergeCallbacks(props.onMouseOver, ev => {
       if (isRatingRadioItem(ev.target)) {
         const newValue = parseFloat(ev.target.value);

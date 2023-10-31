@@ -4,8 +4,8 @@ import { Label } from '@fluentui/react-label';
 
 export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
-  ratingLabel?: Slot<typeof Label>;
-  countLabel?: Slot<typeof Label>;
+  ratingLabel?: NonNullable<Slot<typeof Label>>;
+  ratingCountLabel?: NonNullable<Slot<typeof Label>>;
 };
 
 /**
@@ -18,9 +18,18 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   compact?: boolean;
   /**
+   * Sets the value of the total rating counts
+   */
+  countLabel?: number;
+  /**
    * Default value of the Rating
    */
   defaultValue?: number;
+  /**
+   * The max value of the rating.
+   * @default 5
+   */
+  max?: number;
   /**
    * Callback when the rating value is changed by the user.
    */
@@ -62,10 +71,9 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   value?: number;
   /**
-   * The max value of the rating.
-   * @default 5
+   * Sets the rating value label
    */
-  max?: number;
+  valueLabel?: number;
 };
 
 /**
@@ -83,7 +91,10 @@ export type RatingOnChangeData = {
  */
 export type RatingState = ComponentState<RatingSlots> &
   Required<Pick<RatingProps, 'size'>> &
-  Pick<RatingProps, 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value'> & {
+  Pick<
+    RatingProps,
+    'countLabel' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value' | 'valueLabel'
+  > & {
     hoveredValue?: number | undefined;
   };
 

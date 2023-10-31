@@ -24,7 +24,7 @@ export type RatingItemSlots = {
 /**
  * RatingItem Props
  */
-export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>, 'fullValueInput'> & {
+export type RatingItemProps = ComponentProps<Partial<RatingItemSlots>> & {
   /**
    * The positive whole number value that is displayed by this RatingItem
    */
