@@ -15,7 +15,7 @@ import { useListContext } from '../List/listContext';
  */
 export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLElement>): ListItemState => {
   const { focusableItems } = useListContext();
-  const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'unlimited' });
+  const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   const root = slot.always(
     getNativeElementProps('div', {

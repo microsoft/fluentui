@@ -10,6 +10,7 @@ export { ListWithAction } from './ListWithAction.stories';
 // export { ListWithMultipleActions } from './ListWithMultipleActions.stories';
 export { VirtualizedList } from './VirtualizedList.stories';
 export { VirtualizedListWithActionableItems } from './VirtualizedListWithActionableItems.stories';
+export { ListMultipleActions } from './ListMultipleActions.stories';
 
 export default {
   title: 'Preview Components/List',
