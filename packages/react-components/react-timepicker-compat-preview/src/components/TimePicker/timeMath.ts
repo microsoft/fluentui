@@ -119,23 +119,23 @@ const REGEX_HIDE_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-4]):[0-5][0-9]$/;
 
 /**
  * Calculates a new date from the user-selected time string based on anchor dates.
- * Returns an object containing a date if the provided time string is valid, and an optional error message indicating the type of error.
+ * Returns an object containing a date if the provided time string is valid, and an optional string indicating the type of error.
  *
  * @param time - The time string to be parsed (e.g., "2:30 PM", "15:45:20").
  * @param dateStartAnchor - The start anchor date.
  * @param dateEndAnchor - The end anchor date.
  * @param timeFormatOptions - format options for the provided time string.
- * @returns An object with either a 'date' or an 'error'.
+ * @returns An object with either a 'date' or an 'errorType'.
  *
  * @example
  * Input: time="2:30 PM", dateStartAnchor=2023-10-06T12:00:00Z, dateEndAnchor=2023-10-07T12:00:00Z, options={hourCycle: 'h12', showSeconds: false}
  * Output: { date: 2023-10-06T14:30:00Z }
  *
  * Input: time="25:30"
- * Output: { error: 'invalid-input' }
+ * Output: { errorType: 'invalid-input' }
  *
  * Input: time="1:30 AM", dateStartAnchor=2023-10-06T03:00:00Z, dateEndAnchor=2023-10-07T03:00:00Z, options={hourCycle: 'h12', showSeconds: false}
- * Output: { date: 2023-10-07T01:30:00Z, error: 'out-of-bounds' }
+ * Output: { date: 2023-10-07T01:30:00Z, errorType: 'out-of-bounds' }
  */
 export function getDateFromTimeString(
   time: string | undefined,
@@ -144,7 +144,7 @@ export function getDateFromTimeString(
   timeFormatOptions: TimeFormatOptions,
 ): TimeStringValidationResult {
   if (!time) {
-    return { date: null, error: 'required-input' };
+    return { date: null, errorType: 'required-input' };
   }
 
   const { hourCycle, showSeconds } = timeFormatOptions;
@@ -160,12 +160,12 @@ export function getDateFromTimeString(
     : REGEX_HIDE_SECONDS_HOUR_24;
 
   if (!regex.test(time)) {
-    return { date: null, error: 'invalid-input' };
+    return { date: null, errorType: 'invalid-input' };
   }
 
   const timeParts = /^(\d\d?):(\d\d):?(\d\d)? ?([ap]m)?/i.exec(time);
   if (!timeParts) {
-    return { date: null, error: 'invalid-input' };
+    return { date: null, errorType: 'invalid-input' };
   }
 
   const [, selectedHours, minutes, seconds, amPm] = timeParts;
@@ -189,7 +189,7 @@ export function getDateFromTimeString(
   }
 
   if (adjustedDate >= dateEndAnchor) {
-    return { date: adjustedDate, error: 'out-of-bounds' };
+    return { date: adjustedDate, errorType: 'out-of-bounds' };
   }
 
   return { date: adjustedDate };

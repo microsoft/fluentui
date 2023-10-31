@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Added scale factor to minimum height logic",
-  "packageName": "@fluentui/react-charting",
-  "email": "shubhabrata08@gmail.com",
-  "dependentChangeType": "patch"
-}

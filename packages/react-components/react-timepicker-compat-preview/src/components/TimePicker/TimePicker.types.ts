@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
 
 export type Hour =
   | 0
@@ -56,7 +56,7 @@ export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-
 
 export type TimeStringValidationResult = {
   date: Date | null;
-  error?: TimePickerErrorType;
+  errorType?: TimePickerErrorType;
 };
 
 export type TimePickerSlots = ComboboxSlots;
@@ -74,7 +74,7 @@ export type TimeSelectionData = {
   /**
    * The error type for the selected option.
    */
-  error: TimePickerErrorType | undefined;
+  errorType: TimePickerErrorType | undefined;
 };
 
 export type TimeFormatOptions = {

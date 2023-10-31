@@ -89,7 +89,7 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
       const timeSelectionData: TimeSelectionData = {
         selectedTime: keyToDate(data.optionValue),
         selectedTimeText: data.optionText,
-        error: undefined,
+        errorType: undefined,
       };
       selectTime(e, timeSelectionData);
     },
@@ -178,11 +178,11 @@ const useSelectTimeFromValue = (state: TimePickerState, callback: TimePickerProp
         return;
       }
 
-      const { date: selectedTime, error } = formatTimeStringToDate(value);
+      const { date: selectedTime, errorType } = formatTimeStringToDate(value);
 
       // Only triggers callback when the text in input has changed.
       if (submittedText !== value) {
-        callback?.(e, { selectedTime, selectedTimeText: value, error });
+        callback?.(e, { selectedTime, selectedTimeText: value, errorType });
       }
     },
     [callback, freeform, submittedText, formatTimeStringToDate, value],

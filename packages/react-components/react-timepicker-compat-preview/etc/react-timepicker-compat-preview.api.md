@@ -7,7 +7,7 @@
 import type { ComboboxProps } from '@fluentui/react-combobox';
 import type { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ComboboxState } from '@fluentui/react-combobox';
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { SelectionEvents } from '@fluentui/react-combobox';
@@ -50,7 +50,7 @@ export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'fr
 export type TimeSelectionData = {
     selectedTime: Date | null;
     selectedTimeText: string | undefined;
-    error: TimePickerErrorType | undefined;
+    errorType: TimePickerErrorType | undefined;
 };
 
 // @public (undocumented)
