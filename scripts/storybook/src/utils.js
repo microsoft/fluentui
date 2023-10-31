@@ -158,7 +158,7 @@ function _createCodesandboxRule(allPackageInfo = getAllPackageInfo()) {
     const excludePackages = [
       '@fluentui/babel-preset-storybook-full-source',
       '@fluentui/react-storybook-addon',
-      '@fluentui/react-storybook-addon-codesandbox',
+      '@fluentui/react-storybook-addon-export-to-sandbox',
       '@fluentui/react-conformance-griffel',
     ];
 

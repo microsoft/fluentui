@@ -36,7 +36,7 @@ export const Controlled = (props: Partial<ComboboxProps>) => {
     <div className={styles.root}>
       <div className={styles.field}>
         <label htmlFor={`${comboId}-default`}>Schedule a meeting (default selection)</label>
-        <Combobox id={`${comboId}-default`} {...props} defaultValue="Elvia Atkins" defaultSelectedOptions={['ea']}>
+        <Combobox id={`${comboId}-default`} {...props} defaultValue="Elvia Atkins" defaultSelectedOptions={['eatkins']}>
           <Option text="Katri Athokas" value="kathok">
             <Persona
               avatar={{ color: 'colorful', 'aria-hidden': true }}

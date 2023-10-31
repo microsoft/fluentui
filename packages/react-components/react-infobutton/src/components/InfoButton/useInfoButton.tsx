@@ -1,7 +1,8 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   mergeCallbacks,
   useControllableState,
   slot,
@@ -33,6 +34,8 @@ const popoverSizeMap = {
  *
  * @param props - props from this instance of InfoButton
  * @param ref - reference to root HTMLElement of InfoButton
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
   const { size = 'medium', inline = true } = props;
@@ -48,12 +51,15 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
     },
 
     root: slot.always(
-      getNativeElementProps('button', {
+      getIntrinsicElementProps('button', {
         children: infoButtonIconMap[size],
         type: 'button',
         'aria-label': 'information',
         ...props,
-        ref,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLButtonElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLButtonElement>,
       }),
       { elementType: 'button' },
     ),

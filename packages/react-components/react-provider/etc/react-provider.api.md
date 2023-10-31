@@ -114,6 +114,8 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useDrawerStyles_unstable: (state: unknown) => void;
         useDrawerInlineStyles_unstable: (state: unknown) => void;
         useDrawerOverlayStyles_unstable: (state: unknown) => void;
+        useInlineDrawerStyles_unstable: (state: unknown) => void;
+        useOverlayDrawerStyles_unstable: (state: unknown) => void;
         useDrawerHeaderStyles_unstable: (state: unknown) => void;
         useDrawerHeaderNavigationStyles_unstable: (state: unknown) => void;
         useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
@@ -133,6 +135,7 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useMessageBarTitleStyles_unstable: (state: unknown) => void;
         useMessageBarActionsStyles_unstable: (state: unknown) => void;
         useMessageBarGroupStyles_unstable: (state: unknown) => void;
+        useToasterStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

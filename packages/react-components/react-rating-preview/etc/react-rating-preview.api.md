@@ -32,7 +32,7 @@ export type RatingState = ComponentState<RatingSlots>;
 export const renderRating_unstable: (state: RatingState) => JSX.Element;
 
 // @public
-export const useRating_unstable: (props: RatingProps, ref: React_2.Ref<HTMLElement>) => RatingState;
+export const useRating_unstable: (props: RatingProps, ref: React_2.Ref<HTMLDivElement>) => RatingState;
 
 // @public
 export const useRatingStyles_unstable: (state: RatingState) => RatingState;

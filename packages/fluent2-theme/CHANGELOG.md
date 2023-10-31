@@ -1,8 +1,36 @@
 # Change Log - @fluentui/fluent2-theme
 
-This log was last generated on Mon, 09 Oct 2023 07:37:25 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.107.46](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.46)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.45..@fluentui/fluent2-theme_v8.107.46)
+
+### Patches
+
+- Bump @fluentui/react to v8.112.4 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.107.45](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.45)
+
+Thu, 19 Oct 2023 07:36:24 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.44..@fluentui/fluent2-theme_v8.107.45)
+
+### Patches
+
+- fix: Button focus bleeding into outside bounding box ([PR #28361](https://github.com/microsoft/fluentui/pull/28361) by mifraser@microsoft.com)
+
+## [8.107.44](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.44)
+
+Mon, 16 Oct 2023 07:37:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/fluent2-theme_v8.107.43..@fluentui/fluent2-theme_v8.107.44)
+
+### Patches
+
+- Bump @fluentui/react to v8.112.3 ([PR #29054](https://github.com/microsoft/fluentui/pull/29054) by beachball)
 
 ## [8.107.43](https://github.com/microsoft/fluentui/tree/@fluentui/fluent2-theme_v8.107.43)
 

@@ -1,8 +1,36 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Mon, 09 Oct 2023 07:37:25 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.112.4](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.4)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.3..@fluentui/react_v8.112.4)
+
+### Patches
+
+- Bump @fluentui/date-time-utilities to v8.5.14 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/foundation-legacy to v8.2.46 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/font-icons-mdl2 to v8.5.26 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/merge-styles to v8.5.13 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-focus to v8.8.33 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-hooks to v8.6.31 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/react-window-provider to v2.2.16 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/style-utilities to v8.9.19 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/theme to v2.6.37 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/utilities to v8.13.20 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.112.3](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.3)
+
+Mon, 16 Oct 2023 07:37:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.2..@fluentui/react_v8.112.3)
+
+### Patches
+
+- fix: avoid edge case where Sticky/ScrollablePane could fall into infinite loop ([PR #29054](https://github.com/microsoft/fluentui/pull/29054) by seanmonahan@microsoft.com)
 
 ## [8.112.2](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.2)
 

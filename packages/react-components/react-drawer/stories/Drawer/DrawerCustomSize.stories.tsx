@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, OverlayDrawer } from '@fluentui/react-drawer';
 import { Button, Label, useId, tokens, makeStyles, Input } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -26,7 +26,7 @@ export const CustomSize = () => {
 
   return (
     <div>
-      <DrawerOverlay
+      <OverlayDrawer
         open={open}
         position="end"
         onOpenChange={(_, state) => setOpen(state.open)}
@@ -50,7 +50,7 @@ export const CustomSize = () => {
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <div className={styles.main}>
         <Button appearance="primary" onClick={() => setOpen(true)}>

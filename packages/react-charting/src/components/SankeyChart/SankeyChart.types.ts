@@ -5,7 +5,7 @@ import { IChartProps } from '../../types/IDataPoint';
 export type { IChartProps, IDataPoint, ISankeyChartData } from '../../types/IDataPoint';
 
 /**
- * ISankeyChartProps for Sankeychart component.
+ * Sankey Chart properties
  * {@docCategory SankeyChart}
  */
 export interface ISankeyChartProps {
@@ -65,6 +65,10 @@ export interface ISankeyChartProps {
   borderColorsForNodes?: string[];
 }
 
+/**
+ * Sankey Chart style properties
+ * {@docCategory SankeyChart}
+ */
 export interface ISankeyChartStyleProps {
   theme: ITheme;
   className?: string;
@@ -73,6 +77,10 @@ export interface ISankeyChartStyleProps {
   pathColor?: string;
 }
 
+/**
+ * Sankey Chart styles
+ * {@docCategory SankeyChart}
+ */
 export interface ISankeyChartStyles {
   /**
    *  Style for the root element.

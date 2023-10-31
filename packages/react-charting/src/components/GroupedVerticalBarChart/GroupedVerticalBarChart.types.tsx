@@ -9,7 +9,7 @@ import {
 } from '../../index';
 
 /**
- * IGroupedVerticalBarChartProps for GroupedVerticalBarchart component.
+ * Grouped Vertical Bar Chart properties
  * {@docCategory GroupedVerticalBarChart}
  */
 export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
@@ -92,8 +92,16 @@ export interface IGroupedVerticalBarChartProps extends ICartesianChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Grouped Vertical Bar Chart style properties
+ * {@docCategory GroupedVerticalBarChart}
+ */
 export interface IGroupedVerticalBarChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Grouped Vertical Bar Chart styles
+ * {@docCategory GroupedVerticalBarChart}
+ */
 export interface IGroupedVerticalBarChartStyles extends ICartesianChartStyles {
   /**
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends

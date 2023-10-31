@@ -1,8 +1,157 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 12 Oct 2023 14:55:42 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 23:35:54 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.37.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.0)
+
+Sat, 28 Oct 2023 23:35:54 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.36.0..@fluentui/react-components_v9.37.0)
+
+### Major changes
+
+- `@fluentui/react-breadcrumb-preview`
+  - BREAKING CHANGE: Removed non-interactive item and `slash` divider ([PR #29623](https://github.com/microsoft/fluentui/pull/29623) by vkozlova@microsoft.com)
+  - BREAKING CHANGE: remove `appearance` prop and set  `current` prop  for BreadcrumbButton last item ([PR #29554](https://github.com/microsoft/fluentui/pull/29554) by vkozlova@microsoft.com)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - refactor: rename DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+- `@fluentui/react-motion-preview`
+  - feat: add support to provide static duration to useMotion hook ([PR #29655](https://github.com/microsoft/fluentui/pull/29655) by marcosvmmoura@gmail.com)
+- `@fluentui/react-provider`
+  - feat: add new drawer global style hooks that are needed by drawer public api changes ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+- `@fluentui/react-shared-contexts`
+  - refactor: rename main DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: update `setActiveOption` type to be React Dispatch. ([PR #29643](https://github.com/microsoft/fluentui/pull/29643) by yuanboxue@microsoft.com)
+- `@fluentui/react-components`
+  - chore: Deprecate InfoLabel and InfoButton from react-infobutton in favor of react-infolabel. ([PR #29605](https://github.com/microsoft/fluentui/pull/29605) by esteban.230@hotmail.com)
+  - chore: Deprecating Alert components and utilities. ([PR #29615](https://github.com/microsoft/fluentui/pull/29615) by Humberto.Morimoto@microsoft.com)
+- `@fluentui/react-motion-preview`
+  - fix: avoid breaking rule of hooks ([PR #29628](https://github.com/microsoft/fluentui/pull/29628) by marcosvmmoura@gmail.com)
+- `@fluentui/react-provider`
+  - fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
+- `@fluentui/react-shared-contexts`
+  - fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
+- `@fluentui/react-toast`
+  - fix: invoke useCustomStyleHook_unstable() ([PR #29632](https://github.com/microsoft/fluentui/pull/29632) by olfedias@microsoft.com)
+
+### Changes
+
+- `@fluentui/react-alert`
+  - feat: deprecate component and utilities ([PR #29615](https://github.com/microsoft/fluentui/pull/29615) by lingfan.gao@microsoft.com)
+- `@fluentui/react-drawer`
+  - fix: regression with mountNode prop not available after refactor ([PR #29524](https://github.com/microsoft/fluentui/pull/29524) by marcosvmmoura@gmail.com)
+  - feat: use useMotionClassNames to create drawer motion styles ([PR #29662](https://github.com/microsoft/fluentui/pull/29662) by marcosvmmoura@gmail.com)
+  - BREAKING CHANGE: rename main DrawerOverlay/DrawerInline components ([PR #29523](https://github.com/microsoft/fluentui/pull/29523) by marcosvmmoura@gmail.com)
+  - fix: improve high contrast mode ([PR #29627](https://github.com/microsoft/fluentui/pull/29627) by marcosvmmoura@gmail.com)
+  - docs: add example on how to implement multiple levels inside one drawer ([PR #29665](https://github.com/microsoft/fluentui/pull/29665) by marcosvmmoura@gmail.com)
+- `@fluentui/react-infobutton`
+  - chore: Deprecate InfoLabel and InfoButton from react-infobutton in favor of react-infolabel. ([PR #29605](https://github.com/microsoft/fluentui/pull/29605) by esteban.230@hotmail.com)
+
+## [9.36.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.36.0)
+
+Mon, 23 Oct 2023 09:51:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.35.1..@fluentui/react-components_v9.36.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: Moving react-infolabel to stable. ([PR #29585](https://github.com/microsoft/fluentui/pull/29585) by esteban.230@hotmail.com)
+- `@fluentui/react-datepicker-compat`
+  - BREAKING: Update Datepicker to use react-calendar-compat and remove Calendar related exports. ([PR #29587](https://github.com/microsoft/fluentui/pull/29587) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - feat: adds motion to DialogSurface ([PR #29391](https://github.com/microsoft/fluentui/pull/29391) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-infolabel`
+  - feat: Move InfoLabel to stable. ([PR #29585](https://github.com/microsoft/fluentui/pull/29585) by esteban.230@hotmail.com)
+
+### Patches
+
+- `@fluentui/priority-overflow`
+  - fix: Use container window's resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+- `@fluentui/react-calendar-compat`
+  - fix: Classnames removed and added to day cells need to be split instead of providing a string with spaces. ([PR #29611](https://github.com/microsoft/fluentui/pull/29611) by esteban.230@hotmail.com)
+- `@fluentui/react-table`
+  - fix: use targetDocument resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+- `@fluentui/react-tabster`
+  - fix: focus visible polyfill should be initialised/disposed correctly ([PR #29564](https://github.com/microsoft/fluentui/pull/29564) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - fix: use targetDocument resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+
+## [9.35.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.35.1)
+
+Wed, 18 Oct 2023 17:54:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.35.0..@fluentui/react-components_v9.35.1)
+
+### Minor changes
+
+- `@fluentui/react-infolabel-preview`
+  - feat: release preview package ([PR #29562](https://github.com/microsoft/fluentui/pull/29562) by esteban.230@hotmail.com)
+- `@fluentui/react-tabster`
+  - feat: bump to tabster 4.8.0 in order to support support virtual parents ([PR #29549](https://github.com/microsoft/fluentui/pull/29549) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-accordion`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-avatar`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-badge`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-button`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-calendar-compat`
+  - chore: Add bundle size fixture for Calendar. ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by esteban.230@hotmail.com)
+  - chore: Release react-calendar-compat. ([PR #29542](https://github.com/microsoft/fluentui/pull/29542) by esteban.230@hotmail.com)
+- `@fluentui/react-combobox`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-components`
+  - chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps ([PR #29535](https://github.com/microsoft/fluentui/pull/29535) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-divider`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-field`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-label`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-link`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-menu`
+  - refactor: MenuItem uses makeResetStyles ([PR #29449](https://github.com/microsoft/fluentui/pull/29449) by lingfangao@hotmail.com)
+- `@fluentui/react-message-bar`
+  - chore Add bundle size fixture for MessageBar ([PR #29513](https://github.com/microsoft/fluentui/pull/29513) by lingfangao@hotmail.com)
+- `@fluentui/react-persona`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-progress`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-radio`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-skeleton`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-spinner`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tabs`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
+- `@fluentui/react-tabster`
+  - chore: bump keyborg to 2.1.0 ([PR #29520](https://github.com/microsoft/fluentui/pull/29520) by lingfangao@hotmail.com)
+- `@fluentui/react-tree`
+  - bugfix(react-tree): stop coercing numbers to string on TreeItemValue ([PR #29529](https://github.com/microsoft/fluentui/pull/29529) by bernardo.sunderhus@gmail.com)
+  - exporting TreeItemType from TreeItem component ([PR #29532](https://github.com/microsoft/fluentui/pull/29532) by petrduda@microsoft.com)
+- `@fluentui/react-utilities`
+  - chore: deprecate getNativeElementProps in favor of getIntrinsicElementProps ([PR #29535](https://github.com/microsoft/fluentui/pull/29535) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-infobutton`
+  - chore: migrate from getNativeElementProps to getIntrinsicElementProps ([PR #29499](https://github.com/microsoft/fluentui/pull/29499) by bernardo.sunderhus@gmail.com)
 
 ## [9.35.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.35.0)
 

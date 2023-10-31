@@ -1,3 +1,4 @@
+import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
 
 export type Hour =
@@ -47,11 +48,47 @@ export type TimePickerOption = {
   text: string;
 };
 
+/**
+ * Error types returned by the `onValidationResult` callback.
+ */
+export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-input';
+
+export type TimeStringValidationResult = {
+  date: Date | null;
+  error?: TimePickerErrorType;
+};
+
 export type TimePickerSlots = ComboboxSlots;
 
-export type TimeSelectionEvents = SelectionEvents;
+export type TimeSelectionEvents = SelectionEvents | React.FocusEvent<HTMLElement>;
 export type TimeSelectionData = {
-  selectedTime: Date | undefined;
+  /**
+   * The Date object associated with the selected option. For freeform TimePicker it can also be the Date object parsed from the user input.
+   */
+  selectedTime: Date | null;
+  /**
+   * The display text for the selected option. For freeform TimePicker it can also be the value in user input.
+   */
+  selectedTimeText: string | undefined;
+  /**
+   * The error type for the selected option.
+   */
+  error: TimePickerErrorType | undefined;
+};
+
+export type TimeFormatOptions = {
+  /**
+   * A string value indicating whether the 12-hour format ("h11", "h12") or the 24-hour format ("h23", "h24") should be used.
+   * - 'h11' and 'h23' start with hour 0 and go up to 11 and 23 respectively.
+   * - 'h12' and 'h24' start with hour 1 and go up to 12 and 24 respectively.
+   * @default 'h23'
+   */
+  hourCycle?: 'h11' | 'h12' | 'h23' | 'h24' | undefined;
+
+  /**
+   * If true, show seconds in the dropdown options and consider seconds for default validation purposes.
+   */
+  showSeconds?: boolean;
 };
 
 /**
@@ -66,54 +103,61 @@ export type TimePickerProps = Omit<
   | 'multiselect'
   | 'onOptionSelect'
   | 'selectedOptions'
-> & {
-  /**
-   * If true, use 12-hour time format. Otherwise, use 24-hour format.
-   */
-  hour12?: boolean;
+> &
+  TimeFormatOptions & {
+    /**
+     * Start hour (inclusive) for the time range, 0-24.
+     */
+    startHour?: Hour;
 
-  /**
-   * Start hour (inclusive) for the time range, 0-24.
-   */
-  startHour?: Hour;
+    /**
+     * End hour (exclusive) for the time range, 0-24.
+     */
+    endHour?: Hour;
 
-  /**
-   * End hour (exclusive) for the time range, 0-24.
-   */
-  endHour?: Hour;
+    /**
+     * Time increment, in minutes, of the options in the dropdown.
+     */
+    increment?: number;
 
-  /**
-   * Time increment, in minutes, of the options in the dropdown.
-   */
-  increment?: number;
+    /**
+     * The date in which all dropdown options are based off of.
+     */
+    dateAnchor?: Date;
 
-  /**
-   * The date in which all dropdown options are based off of.
-   */
-  dateAnchor?: Date;
+    /**
+     * Currently selected time in the TimePicker.
+     */
+    selectedTime?: Date | null;
 
-  /**
-   * If true, show seconds in the dropdown options and consider seconds for default validation purposes.
-   */
-  showSeconds?: boolean;
+    /**
+     * Default selected time in the TimePicker, for uncontrolled scenarios.
+     */
+    defaultSelectedTime?: Date;
 
-  /**
-   * Currently selected time in the TimePicker.
-   */
-  selectedTime?: Date;
+    /**
+     * Callback for when a time selection is made.
+     */
+    onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
-  /**
-   * Default selected time in the TimePicker, for uncontrolled scenarios.
-   */
-  defaultSelectedTime?: Date;
+    /**
+     * Custom the date strings displayed in dropdown options.
+     */
+    formatDateToTimeString?: (date: Date) => string;
 
-  /**
-   * Callback for when a time selection is made.
-   */
-  onTimeSelect?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
-};
+    /**
+     * Custom validation for the input time string from user in freeform TimePicker.
+     */
+    validateFreeFormTime?: (time: string | undefined) => TimeStringValidationResult;
+  };
 
 /**
  * State used in rendering TimePicker
  */
-export type TimePickerState = ComboboxState;
+export type TimePickerState = ComboboxState &
+  Required<Pick<TimePickerProps, 'freeform' | 'validateFreeFormTime'>> & {
+    /**
+     * Submitted text from the input field. It is used to determine if the input value has changed when user submit a new value on Enter or blur from input.
+     */
+    submittedText: string | undefined;
+  };
