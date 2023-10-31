@@ -1,5 +1,6 @@
 import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
+import { ComponentProps } from '@fluentui/react-utilities';
 
 export type Hour =
   | 0
@@ -94,26 +95,22 @@ export type TimeFormatOptions = {
 /**
  * TimePicker Props
  */
-export type TimePickerProps = Pick<
-  ComboboxProps,
-  | 'root'
-  | 'expandIcon'
-  | 'input'
-  | 'listbox'
-  | 'as'
-  | 'appearance'
-  | 'defaultOpen'
-  | 'defaultValue'
-  | 'inlinePopup'
-  | 'onOpenChange'
-  | 'open'
-  | 'placeholder'
-  | 'positioning'
-  | 'size'
-  | 'value'
-  | 'mountNode'
-  | 'freeform'
-> &
+export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
+  Pick<
+    ComboboxProps,
+    | 'appearance'
+    | 'defaultOpen'
+    | 'defaultValue'
+    | 'inlinePopup'
+    | 'onOpenChange'
+    | 'open'
+    | 'placeholder'
+    | 'positioning'
+    | 'size'
+    | 'value'
+    | 'mountNode'
+    | 'freeform'
+  > &
   TimeFormatOptions & {
     /**
      * Start hour (inclusive) for the time range, 0-24.

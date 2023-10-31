@@ -7,6 +7,7 @@
 import type { ComboboxProps } from '@fluentui/react-combobox';
 import type { ComboboxSlots } from '@fluentui/react-combobox';
 import type { ComboboxState } from '@fluentui/react-combobox';
+import { ComponentProps } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
 import type { SelectionEvents } from '@fluentui/react-combobox';
@@ -19,7 +20,7 @@ export const TimePicker: ForwardRefComponent<TimePickerProps>;
 export const timePickerClassNames: SlotClassNames<TimePickerSlots>;
 
 // @public
-export type TimePickerProps = Pick<ComboboxProps, 'root' | 'expandIcon' | 'input' | 'listbox' | 'as' | 'appearance' | 'defaultOpen' | 'defaultValue' | 'inlinePopup' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size' | 'value' | 'mountNode' | 'freeform'> & TimeFormatOptions & {
+export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & Pick<ComboboxProps, 'appearance' | 'defaultOpen' | 'defaultValue' | 'inlinePopup' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size' | 'value' | 'mountNode' | 'freeform'> & TimeFormatOptions & {
     startHour?: Hour;
     endHour?: Hour;
     increment?: number;
