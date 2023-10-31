@@ -18,7 +18,6 @@ pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: BuildTestLint
-    timeoutInMinutes: 120
     workspace:
       clean: all
     steps:
@@ -26,7 +25,6 @@ jobs:
 
   - job: DeployE2E
     displayName: Deploy and E2E
-    timeoutInMinutes: 120
     workspace:
       clean: all
     steps:
