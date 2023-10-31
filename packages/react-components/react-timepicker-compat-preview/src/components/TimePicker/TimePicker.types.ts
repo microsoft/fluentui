@@ -1,6 +1,6 @@
 import * as React from 'react';
 import type { ComboboxSlots, ComboboxState, ComboboxProps, SelectionEvents } from '@fluentui/react-combobox';
-import { ComponentProps } from '@fluentui/react-utilities';
+import type { ComponentProps } from '@fluentui/react-utilities';
 
 export type Hour =
   | 0
