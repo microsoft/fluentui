@@ -13,12 +13,7 @@ import { ListLayout, ListProps, ListState } from './List.types';
  * @param ref - reference to root HTMLElement of List
  */
 export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>): ListState => {
-  const {
-    layout = ListLayout.Vertical,
-    focusableItems = false,
-    focusable = false,
-    customArrowNavigationOptions,
-  } = props;
+  const { layout = ListLayout.Vertical, focusableItems = false, customArrowNavigationOptions } = props;
 
   const arrowNavigationAttributes = useArrowNavigationGroup({
     axis: layout === ListLayout.Grid ? 'grid-linear' : 'both',
@@ -34,7 +29,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
       getNativeElementProps('div', {
         ref,
         role: 'list',
-        tabIndex: focusable ? 0 : undefined,
         ...arrowNavigationAttributes,
         ...props,
       }),

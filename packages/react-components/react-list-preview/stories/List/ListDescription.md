@@ -14,9 +14,9 @@ The interactive lists can then be further divided into 2 different categories:
 
 #### List items with a single action
 
-If the list item supports a single action, the preferred way of handling this is attaching the handler as `onClick` property on the `button` slot of the `ListItem`.
+If the list item supports a single action, the preferred way of handling this is either adding a children that can be focused and has its own event handlers, or use `ListItemButton` component.
 
-In this case you don't want to make the actual list items focusable and you don't provide any accessibility attributes to it. The `button` slot is what you should be targeting.
+In this case you don't want to make the actual list items focusable and you don't provide any accessibility attributes to it. The actionable component or `ListItemButton` is what you should be targeting.
 
 Making the List Item focusable or accessible by screen readers adds one unnecessary focusable element in the hierarchy that doesn't do anything.
 

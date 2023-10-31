@@ -17,7 +17,6 @@ export type ListSlots = {
 export type ListProps = ComponentProps<ListSlots> & {
   layout?: ListLayout;
   customArrowNavigationOptions?: Partial<UseArrowNavigationGroupOptions>;
-  focusable?: boolean;
   focusableItems?: boolean;
 };
 
