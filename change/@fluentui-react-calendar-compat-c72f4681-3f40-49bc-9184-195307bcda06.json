@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use globals from context",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "seanmonahan@microsoft.com",
+  "dependentChangeType": "patch"
+}
