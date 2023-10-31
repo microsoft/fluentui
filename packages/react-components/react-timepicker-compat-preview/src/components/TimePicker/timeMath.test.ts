@@ -160,22 +160,22 @@ describe('Time Utilities', () => {
       });
       expect(result.date?.getHours()).toBe(14);
       expect(result.date?.getMinutes()).toBe(30);
-      expect(result.error).toBeUndefined();
+      expect(result.errorType).toBeUndefined();
     });
 
-    it('returns an error when no time string is provided', () => {
+    it('returns an errorType when no time string is provided', () => {
       const result = getDateFromTimeString(undefined, dateStartAnchor, dateEndAnchor, {});
       expect(result.date).toBeNull();
-      expect(result.error).toBe('required-input');
+      expect(result.errorType).toBe('required-input');
     });
 
-    it('returns an error for an invalid time string', () => {
+    it('returns an errorType for an invalid time string', () => {
       const result = getDateFromTimeString('25:30', dateStartAnchor, dateEndAnchor, {});
       expect(result.date).toBeNull();
-      expect(result.error).toBe('invalid-input');
+      expect(result.errorType).toBe('invalid-input');
     });
 
-    it('returns a date in the next day and an out-of-bounds error when the time is before the dateStartAnchor', () => {
+    it('returns a date in the next day and an out-of-bounds errorType when the time is before the dateStartAnchor', () => {
       const result = getDateFromTimeString('11:30 AM', dateStartAnchor, new Date('November 25, 2023 13:00:00'), {
         hourCycle: 'h11',
         showSeconds: false,
@@ -183,17 +183,17 @@ describe('Time Utilities', () => {
       expect(result.date?.getDate()).toBe(26);
       expect(result.date?.getHours()).toBe(11);
       expect(result.date?.getMinutes()).toBe(30);
-      expect(result.error).toBe('out-of-bounds');
+      expect(result.errorType).toBe('out-of-bounds');
     });
 
-    it('returns an out-of-bounds error when the time is same as the dateEndAnchor', () => {
+    it('returns an out-of-bounds errorType when the time is same as the dateEndAnchor', () => {
       const result = getDateFromTimeString('1:00 PM', dateStartAnchor, new Date('November 25, 2023 13:00:00'), {
         hourCycle: 'h11',
         showSeconds: false,
       });
       expect(result.date?.getHours()).toBe(13);
       expect(result.date?.getMinutes()).toBe(0);
-      expect(result.error).toBe('out-of-bounds');
+      expect(result.errorType).toBe('out-of-bounds');
     });
   });
 });
