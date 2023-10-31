@@ -1,6 +1,6 @@
 import { makeStyles, mergeClasses } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { ListLayout, ListOrientation, ListSlots, ListState } from './List.types';
+import { ListLayout, ListSlots, ListState } from './List.types';
 
 export const listClassNames: SlotClassNames<ListSlots> = {
   root: 'fui-List',

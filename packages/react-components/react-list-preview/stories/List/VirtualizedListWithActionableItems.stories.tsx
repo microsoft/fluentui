@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FixedSizeList } from 'react-window';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem, ListItemButton } from '@fluentui/react-list-preview';
 
 import countries from './countries';
 
@@ -17,14 +17,8 @@ export const VirtualizedListWithActionableItems = () => {
       outerElementType={CountriesList}
     >
       {({ index, style, data }) => (
-        <ListItem
-          style={style}
-          key={index}
-          aria-setsize={countries.length}
-          aria-posinset={index + 1}
-          button={{ onClick: () => alert(data[index]) }}
-        >
-          {data[index]}
+        <ListItem style={style} key={index} aria-setsize={countries.length} aria-posinset={index + 1}>
+          <ListItemButton onClick={() => alert(data[index])}>{data[index]}</ListItemButton>
         </ListItem>
       )}
     </FixedSizeList>

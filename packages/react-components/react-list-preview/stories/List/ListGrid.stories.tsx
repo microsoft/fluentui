@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { List, ListProps, ListItem, ListLayout } from '@fluentui/react-list-preview';
+import { List, ListProps, ListItem, ListLayout, ListItemButton } from '@fluentui/react-list-preview';
 import { makeStyles } from '@fluentui/react-components';
 
 const useStyles = makeStyles({
@@ -12,13 +12,27 @@ export const ListGrid = (props: Partial<ListProps>) => {
   const classes = useStyles();
   return (
     <List layout={ListLayout.Grid} className={classes.root}>
-      <ListItem button={{ onClick: () => alert('Asia') }}>Asia</ListItem>
-      <ListItem button={{ onClick: () => alert('Africa') }}>Africa</ListItem>
-      <ListItem button={{ onClick: () => alert('Europe') }}>Europe</ListItem>
-      <ListItem button={{ onClick: () => alert('North America') }}>North America</ListItem>
-      <ListItem button={{ onClick: () => alert('South America') }}>South America</ListItem>
-      <ListItem button={{ onClick: () => alert('Australia/Oceania') }}>Australia/Oceania</ListItem>
-      <ListItem button={{ onClick: () => alert('Antarctica') }}>Antarctica</ListItem>
+      <ListItem>
+        <ListItemButton onClick={() => alert('Asia')}>Asia</ListItemButton>
+      </ListItem>
+      <ListItem>
+        <ListItemButton onClick={() => alert('Africa')}>Africa</ListItemButton>
+      </ListItem>
+      <ListItem>
+        <ListItemButton onClick={() => alert('Europe')}>Europe</ListItemButton>
+      </ListItem>
+      <ListItem>
+        <ListItemButton onClick={() => alert('North America')}>North America</ListItemButton>
+      </ListItem>
+      <ListItem>
+        <ListItemButton onClick={() => alert('South America')}>South America</ListItemButton>
+      </ListItem>
+      <ListItem>
+        <ListItemButton onClick={() => alert('Australia/Oceania')}>Australia/Oceania</ListItemButton>
+      </ListItem>
+      <ListItem>
+        <ListItemButton onClick={() => alert('Antarctica')}>Antarctica</ListItemButton>
+      </ListItem>
     </List>
   );
 };

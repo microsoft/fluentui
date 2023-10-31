@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { getNativeElementProps, slot } from '@fluentui/react-utilities';
-import { Button } from '@fluentui/react-button';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext } from '../List/listContext';
 
@@ -29,23 +28,12 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
     { elementType: 'div' },
   );
 
-  const button = slot.optional(props.button, { elementType: Button, defaultProps: { appearance: 'transparent' } });
-
   const state: ListItemState = {
     components: {
       root: 'div',
-      button: Button,
     },
     root,
-    button,
   };
-
-  if (button && (root['aria-labelledby'] || root['aria-label']) && process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line no-console
-    console.warn(
-      `A list item with a button should not have an aria-label or aria-labelledby. This can cause issues with screen readers. Please remove the aria-label or aria-labelledby from the list item and add it to the button slot.`,
-    );
-  }
 
   return state;
 };

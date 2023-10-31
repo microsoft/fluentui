@@ -1,5 +1,5 @@
 import { Button, makeStyles, Persona, shorthands } from '@fluentui/react-components';
-import { List, ListItem } from '@fluentui/react-list-preview';
+import { List, ListItem, ListItemButton } from '@fluentui/react-list-preview';
 import * as React from 'react';
 import names from './names';
 
@@ -22,17 +22,19 @@ export const ListWithAction = () => {
     <div className={classes.wrapper}>
       <List>
         {names.map(name => (
-          <ListItem id={`id_${name}`} key={name} button={{ onClick: () => alert(name), 'aria-label': name }}>
-            <Persona
-              name={name}
-              secondaryText="Available"
-              presence={{ status: 'available' }}
-              avatar={{
-                image: {
-                  src: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
-                },
-              }}
-            />
+          <ListItem id={`id_${name}`} key={name}>
+            <ListItemButton aria-label={name} onClick={() => alert(name)}>
+              <Persona
+                name={name}
+                secondaryText="Available"
+                presence={{ status: 'available' }}
+                avatar={{
+                  image: {
+                    src: 'https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/persona-male.png',
+                  },
+                }}
+              />
+            </ListItemButton>
           </ListItem>
         ))}
       </List>
