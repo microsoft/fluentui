@@ -30,33 +30,124 @@ We cannot just add the `Event` type to the existing callbacks as this is a break
 
 ## Detailed Proposal
 
-### Proposal
+Use generic [`Event`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/v17/global.d.ts#L10) type and strongly-typed events in "data bag".
 
-Change callbacks arrow functions to method declarations when event type needs to be extended:
+- For existing event handlers where we can't change the type:
+
+  - Deprecate the existing `onSomeEvent` handler and introduce `onSomeEvent2` with the new proposed type signatures.
+  - Continue to call the deprecated `onSomeEvent` in all cases. If the event object is of the wrong type for the existing function, do a cast.
+
+- For new event handlers (and the "2" versions of existing ones):
+  - Always use the type `React.SyntheticEvent | Event | undefined` for the first argument.
+  - "Data bag" - always add a strongly-typed event to the data object for all currently possible event types.
+    - `data` is a union of objects, where each object contains required `event` and `type` property. `event` is the specific event type, and `type` is a string literal that serves as a clear identifier of the event type. Developers can use the `type` property to easily verify and filter events of interest.
+      > Note that we have this approach to `data` in [`TreeItemOpenChangeData`](https://github.com/microsoft/fluentui/blob/2eedc2ec54397253a4e3076fbfa382f4fe3c1175/packages/react-components/react-tree/src/components/TreeItem/TreeItem.types.ts#L25C1-L31C3), [`DialogOpenChangeData`](https://github.com/microsoft/fluentui/blob/a0bd42391c0a259558383e0ea6077617485aa234/packages/react-components/react-dialog/src/components/Dialog/Dialog.types.ts#L10-L25)
 
 ```ts
-type OpenPopoverEvents = KeyboardEvent | MouseEvent | Event;
-type Props = {
-  onOpenChange(e: OpenPopoverEvents): void; // method instead of arrow function
-};
-const onOpenChange = (e: MouseEvent | KeyboardEvent) => {};
-const props: Props = { onOpenChange }; // ✅
+import * as React from 'react';
+
+export type CallbackEvents = React.SyntheticEvent | Event | undefined;
+
+// ======= For an existing component =======
+{
+  type OpenPopoverEvents = KeyboardEvent | MouseEvent; // existing event type
+
+  type MyComponentElement = HTMLElement;
+
+  type OnOpenChangeData =
+    | {
+        open: boolean;
+      }
+    // Add specific events to data:
+    | {
+        type: 'click';
+        open: boolean;
+        event: React.MouseEvent<MyComponentElement>;
+      }
+    | {
+        type: 'enterKeydown';
+        open: boolean;
+        event: React.KeyboardEvent<MyComponentElement>;
+      };
+
+  type PopoverProps = {
+    /**
+     * @deprecated Use onOpenChange2 instead.
+     */
+    onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
+
+    onOpenChange2?: (e: CallbackEvents, data: OnOpenChangeData) => void;
+  };
+}
+
+// ======= For a new component =======
+{
+  type MyComponentElement = HTMLElement;
+
+  type OnSomeEventData =
+    | {
+        type: 'click';
+        open: boolean;
+        event: React.MouseEvent<MyComponentElement>;
+      }
+    | {
+        type: 'focus';
+        open: boolean;
+        event: React.FocusEvent<MyComponentElement>;
+      };
+  type SomeProps = {
+    onSomeEvent?: (e: CallbackEvents, data: OnSomeEventData) => void;
+  };
+}
 ```
 
-### Reasoning
+- Pros 👍:
 
-The error described in the "Problem Statement" only occurs in TypeScript when the `strictFunctionType` option is enabled. This happens because the type `KeyboardEvent | MouseEvent | Event` is more specific than `KeyboardEvent | MouseEvent`. When attempting to assign a function with a less specific argument type (`const onOpenChange = (e: MouseEvent | KeyboardEvent) => {}`) to a function expecting a more specific argument type `onOpenChange: (e: KeyboardEvent | MouseEvent | Event) => void;`, TypeScript's `strictFunctionType` check fails.
+  1. Ensures correct typing and it can accommodate future, unforeseen event types.
+  2. Currently we use unions to type events in cases where a callback may be triggered by multiple events. Consumers will need to use type assertion or type predict to use a strongly-typed event. But this solution provides an easier way:
 
-However, this stricter checking does not apply to method or constructor declarations: https://github.com/microsoft/TypeScript/pull/18654. This is why we don't see the error in the following example:
+     ```ts
+     {
+       // Current way:
+       function isMouseEvent(e: MouseEvent | TouchEvent): e is MouseEvent {
+         return e instanceof MouseEvent; // This type check is just for demo purpose. There are issues with using `instanceof` in multi-window scenarios: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_realms
+       }
+       const onOpenChange = (e: MouseEvent | TouchEvent) => {
+         console.log(e.clientX); // ❌ type error - Property 'clientX' does not exist on type 'TouchEvent'
+         if (isMouseEvent(e)) {
+           console.log(e.clientX); // ✅
+         }
+       };
+     }
 
-`strictFunctionType` check is a valuable TypeScript feature. However, there is no harm to use method to bypass this check for our callbacks. This is because we commit to only adding event types to the events union, never removing them (removal would be a breaking change). Therefore we can permit less specific event type arguments on the user side without compromising overall type safety.
+     {
+       // Proposed way:
+       type OnSomeEventData =
+         | {
+             type: 'click';
+             open: boolean;
+             event: React.MouseEvent<HTMLElement>;
+           }
+         | {
+             type: 'focus';
+             open: boolean;
+             event: React.TouchEvent<HTMLElement>;
+           };
+       const onOpenChange = (_e: Event, data: OnSomeEventData) => {
+         if (data.type === 'click') {
+           // this won't blow as `data.type` verification will ensure `data.event` is a mouse event
+           console.log(data.event.clientX); // ✅
+         }
+       };
+     }
+     ```
 
-Another option following the same principle is [bivarance hack](https://www.typescriptlang.org/play?#code/C4TwDgpgBAQglgNwIYCc5IHYGMIAklYDWAPACoBiGUEAHsBBgCYDOUAFAHReoDmzAXFEwgA2gF0AlFAC8APiEYQ86VADeAKChQARolTpseAoU7cUfQQAVUSALYR6KZmUqyJggEoOArigylwCBcMWQBudQBfEQByXWQ0TBx8ImixcPVQSCgAeUgMSwB7MAKECBQAUVKMYFYVAGkIEG0C1EZKhmAoAB8oAFkC72YIduruqBHgcMzoSxQi2rVNKAKMXIYAYQALTB4IQXh4gyTjYjY9nLzC4tKKqpqpOSgEArhGMMjwrBXmTpW1jC2O2gKjOgn6g2GdzGDSaLRQbTuD3kqgin2+nTAczAAigs3mMjUy1WeUBGF2UFRUAA9FSoIBQcnU6i+GB+RP+pN2MCQjAJoLUKEwjAKtkEGG8tm0ZQiSLUqKZ6KgmPmXMYVixC1UbJJ2zJ5z+2qBKopoWptLp1BokCw9B5wAKOmgZTmTiAA) which is widely used in open-source repositories. This RFC propose the method solution because of its simplicity compared to the bivariance hack.
+- Cons 👎:
+  1. The complexity of the callback signature increases. Users need to discern the differences between the event argument and the events within the data argument.
+  2. Code bloat - as there are many callbacks, maintaining both versions of callbacks can become cumbersome. This is a problem that can only be solved in v10.
+  3. there may be a case where generic event is inappropriate. For instance, if we can confidently assert that a callback only triggers on keyboard events. Although no such cases are identified yet, it remains a potential concern.
 
-### Lint/Test
-
-We do not have lint rules for event callbacks.
-We have conformance test `'consistent-callback-args'` to ensure the consistency of callback arguments. This test checks prop type for [property signature](https://github.com/microsoft/fluentui/blob/d8ccb09308a24eea6adf419896254116546296ee/packages/react-conformance/src/utils/getCallbackArguments.ts#L286C32-L286C32). It will need to be updated to look for method signature as well.
+We explored various alternatives, but this particular option stands out as the only secure choice for runtime, and therefore its drawbacks become inconsequential.
 
 ## Discarded Solutions
 
@@ -81,72 +172,27 @@ const props: Props = { onOpenChange };
 
 This solution has been discarded due to its potential for runtime type inaccuracies as illustrated in the code comment above.
 
-#### Discarded Solution 2 - generic [`Event`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/v17/global.d.ts#L10) type and strongly-typed events in "data bag"
+#### Discarded Solution 2 - use method declaration type
 
-- For existing event handlers where we can't change the type:
-
-  - Deprecate the existing `onSomeEvent` handler and introduce `onSomeEvent2` with the new proposed type signatures.
-  - Continue to call the deprecated `onSomeEvent` in all cases. If the event object is of the wrong type for the existing function, do a cast.
-
-- For new event handlers (and the "2" versions of existing ones):
-  - Always use the type `React.SyntheticEvent | Event | undefined` for the first argument.
-  - "Data bag" - always add a strongly-typed event to the data object for all currently possible event types, as optional (?) properties.
+Change callbacks arrow functions to method declarations when event type needs to be extended:
 
 ```ts
-export type CallbackEvents = React.SyntheticEvent | Event | undefined;
-
-// ======= For an existing component =======
-export type OnOpenChangeData = {
-  open: boolean;
-  // Assuming 'open' state change can be triggered by mouse or keyboard events:
-  mouseEvent?: MouseEvent;
-  keyboardEvent?: KeyboardEvent;
+type OpenPopoverEvents = MouseEvent | PointerEvent;
+type Props = {
+  onOpenChange(e: OpenPopoverEvents): void; // method instead of arrow function
 };
-
-export type PopoverProps = {
-  /**
-   * @deprecated Use onOpenChange2 instead.
-   */
-  onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
-
-  onOpenChange2?: (e: CallbackEvents, data: OnOpenChangeData) => void;
+const onOpenChange = (e: MouseEvent) => {
+  console.log(e.clientX);
 };
-
-// ======= For a new component =======
-export type onSomeEventData = {
-  open: boolean;
-  // Assuming state change can be triggered by focus event:
-  focusEvent?: FocusEvent;
-};
-export type SomeProps = {
-  onSomeEvent?: (e: CallbackEvents, data: SomeData) => void;
-};
+const props: Props = { onOpenChange }; // ✅
 ```
 
-- Pros 👍:
+- Why typing works:
+  The error described in the "Problem Statement" only occurs in TypeScript when the `strictFunctionType` option is enabled. This happens because the type `KeyboardEvent | MouseEvent | Event` is more specific than `KeyboardEvent | MouseEvent`. When attempting to assign a function with a less specific argument type (`const onOpenChange = (e: MouseEvent | KeyboardEvent) => {}`) to a function expecting a more specific argument type `onOpenChange: (e: KeyboardEvent | MouseEvent | Event) => void;`, TypeScript's `strictFunctionType` check fails.
 
-  1. Ensures correct typing and it can accommodate future, unforeseen event types.
-  2. Consumers can use the strongly-typed event in data without runtime checks.
+  However, this stricter checking does not apply to method or constructor declarations: https://github.com/microsoft/TypeScript/pull/18654. This is why we don't see the error in the above code snippet.
 
-- Cons 👎:
-  1. The complexity of the callback signature increases. Users need to discern the differences between the event argument and the events within the data argument.
-  2. Code bloat - as there are many callbacks, maintaining both versions of callbacks can become cumbersome. This is a problem that can only be solved in v10.
+- Where this solution fails 💣:
+  This solution is similar to solution 1 (casting). In the above example, when adding `KeyboardEvent` to `OpenPopoverEvents`, there will not be any typing error, but there is a potential for runtime type inaccuracies - because `KeyboardEvent` does not have `clientX`.
 
-Additionally, there may be a case where generic event is inappropriate. For instance, if we can confidently assert that a callback only triggers on keyboard events. Although no such cases are identified yet, it remains a potential concern.
-
-✨ Even though this solution has been discarded, it offers insights into how we can improve the event typing in v10.
-In v9 we use unions to type events when a callback can be triggered by multiple events. Consumers will need to use type assertion or type predict to use a strongly-typed event:
-
-```ts
-function isMouseEvent(e: MouseEvent | TouchEvent): e is MouseEvent {
-  return e instanceof MouseEvent; // This type check is just for demo purpose. There are issues with using `instanceof` in multi-window scenarios: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/instanceof#instanceof_and_multiple_realms
-}
-const onOpenChange = (e: MouseEvent | TouchEvent) => {
-  console.log(e.clientX); // ❌ type error - Property 'clientX' does not exist on type 'TouchEvent'
-  if (isMouseEvent(e)) {
-    console.log(e.clientX); // ✅
-  }
-};
-```
-
-We can consider the data bag approach in v10 to eliminate the need for type assertion. V9 Tree is already implementing a similar approach in [`TreeItemOpenChangeData`](https://github.com/microsoft/fluentui/blob/2eedc2ec54397253a4e3076fbfa382f4fe3c1175/packages/react-components/react-tree/src/components/TreeItem/TreeItem.types.ts#L25C1-L31C3).
+Note that another option following the same principle is [bivarance hack](https://www.typescriptlang.org/play?#code/C4TwDgpgBAQglgNwIYCc5IHYGMIAklYDWAPACoBiGUEAHsBBgCYDOUAFAHReoDmzAXFEwgA2gF0AlFAC8APiEYQ86VADeAKChQARolTpseAoU7cUfQQAVUSALYR6KZmUqyJggEoOArigylwCBcMWQBudQBfEQByXWQ0TBx8ImixcPVQSCgAeUgMSwB7MAKECBQAUVKMYFYVAGkIEG0C1EZKhmAoAB8oAFkC72YIduruqBHgcMzoSxQi2rVNKAKMXIYAYQALTB4IQXh4gyTjYjY9nLzC4tKKqpqpOSgEArhGMMjwrBXmTpW1jC2O2gKjOgn6g2GdzGDSaLRQbTuD3kqgin2+nTAczAAigs3mMjUy1WeUBGF2UFRUAA9FSoIBQcnU6i+GB+RP+pN2MCQjAJoLUKEwjAKtkEGG8tm0ZQiSLUqKZ6KgmPmXMYVixC1UbJJ2zJ5z+2qBKopoWptLp1BokCw9B5wAKOmgZTmTiAA) which is widely used in open-source repositories.
