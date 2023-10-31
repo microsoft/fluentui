@@ -5,7 +5,7 @@ Use a horizontal bar graph to compare between different values that are hierarch
 Horizontal bar chart can be of 2 types -
 
 - **Absolute scale** the length of the bar is proportional to the biggest value for the category.
-- **n/M scale** the length of the bar is determined by the total/target value of the specific bar. Due to this reason, 2 bars of this type can have different data scales. This aspect should be kept in mind while using this chart type.
+- **n/M scale** the length of the bar is determined by the total/target value of the specific bar. As a result, 2 adjacent bars can have different data scales and not be comparable. This aspect should be kept in mind while using this chart type. See HorizontalBarChart benchmark example to see the behavior. Each bar has a different scale - 100, 200 and 50 units.
 
 ### Content
 
