@@ -12,9 +12,15 @@ variables:
       skipComponentGovernanceDetection: false
   - name: release.web_components # Used to scope beachball to release only vnext packages
     value: true
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
+
+resources:
+  repositories:
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
 
 schedules:
   # Triggers the nightly release
@@ -26,60 +32,55 @@ schedules:
       include:
         - web-components-v3
 
-jobs:
-  - template: .devops/templates/compliance-job.yml
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    stages:
+      - stage: main
+        jobs:
+          - job: Release
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            workspace:
+              clean: all
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)
+                  artifactName: output
+            steps:
+              - template: .devops/templates/tools.yml@self
 
-  - job: Release
-    dependsOn: Compliance
-    pool: '1ES-Host-Ubuntu'
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
+              - script: |
+                  git config user.name "Fluent UI Build"
+                  git config user.email "fluentui-internal@service.microsoft.com"
+                  git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+                displayName: Authenticate git for pushes
 
-      - script: |
-          git config user.name "Fluent UI Build"
-          git config user.email "fluentui-internal@service.microsoft.com"
-          git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-        displayName: Authenticate git for pushes
+              - task: Bash@3
+                inputs:
+                  filePath: yarn-ci.sh
+                displayName: yarn
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+              # https://github.com/microsoft/fluentui/issues/21686
+              - script: |
+                  yarn lage format:check lint test build --to @fluentui/web-components
+                displayName: Build, [test], Lint
 
-      # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-      # https://github.com/microsoft/fluentui/issues/21686
-      - script: |
-          yarn lage format:check lint test build --to @fluentui/web-components
-        displayName: Build, Test, Lint
+              - script: |
+                  yarn beachball publish -b origin/web-components-v3 --access public -y -n $(npmToken) --config scripts/beachball/release-web-components.config.js
+                  git reset --hard origin/web-components-v3
+                env:
+                  GITHUB_PAT: $(githubPAT)
+                displayName: Publish changes and bump versions
 
-      - script: |
-          yarn beachball publish -b origin/web-components-v3 --access public -y -n $(npmToken) --config scripts/beachball/release-web-components.config.js
-          git reset --hard origin/web-components-v3
-        env:
-          GITHUB_PAT: $(githubPAT)
-        displayName: Publish changes and bump versions
-
-      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-        displayName: 📒 Generate Manifest
-        inputs:
-          BuildDropPath: $(System.DefaultWorkingDirectory)
-
-      - task: PublishPipelineArtifact@1
-        displayName: 📒 Publish Manifest
-        inputs:
-          artifactName: SBom-$(System.JobAttempt)
-          targetPath: $(System.DefaultWorkingDirectory)/_manifest
-
-      - task: ComponentGovernanceComponentDetection@0
-        displayName: 'Component governance detection'
-        inputs:
-          sourceScanPath: $(Agent.BuildDirectory)
-        condition: succeeded()
-        timeoutInMinutes: 5
-        continueOnError: true
-
-      - template: .devops/templates/cleanup.yml
-        parameters:
-          checkForModifiedFiles: false
+              - template: .devops/templates/cleanup.yml@self
+                parameters:
+                  checkForModifiedFiles: false
