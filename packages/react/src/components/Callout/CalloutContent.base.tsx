@@ -126,7 +126,9 @@ function useMaxHeight(
     const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
     let calculatedHeight: number | undefined;
 
-    if (typeof top === 'number' && bottomBounds) {
+    if (positions?.targetEdge === RectangleEdge.top && bottom && top && topBounds) {
+      calculatedHeight = Math.abs(bottom) - top - topBounds;
+    } else if (typeof top === 'number' && bottomBounds) {
       calculatedHeight = bottomBounds - top;
     } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
       calculatedHeight = bottomBounds - topBounds - bottom;

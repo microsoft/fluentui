@@ -335,10 +335,36 @@ function _adjustFitWithinBounds(
     alignmentEdge,
   };
 
-  if (!directionalHintFixed && !coverTarget) {
+  const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
+  const shouldScroll =
+    ((positionData.targetEdge === RectangleEdge.bottom && outOfBounds.includes(RectangleEdge.bottom)) ||
+      (positionData.targetEdge === RectangleEdge.top && outOfBounds.includes(RectangleEdge.top))) &&
+    _getRelativeEdgeDifference(target, bounding, positionData.targetEdge) > 100;
+
+  if (shouldScroll) {
+    const scrollableElementRectangle: Rectangle = { ...element };
+
+    switch (positionData.targetEdge) {
+      case RectangleEdge.bottom:
+        scrollableElementRectangle.bottom = bounding.bottom;
+        break;
+      case RectangleEdge.top:
+        scrollableElementRectangle.top = bounding.top;
+        break;
+    }
+
+    elementEstimate = {
+      elementRectangle: scrollableElementRectangle,
+      targetEdge: positionData.targetEdge,
+      alignmentEdge,
+      forcedInBounds: true,
+    };
+  }
+
+  if (!directionalHintFixed && !coverTarget && !shouldScroll) {
     elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
   }
-  const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
+
   // if directionalHintFixed is specified, we need to force the target edge to not change
   // we need *-1 because targetEdge refers to the target's edge; the callout edge is the opposite
   const fixedEdge = directionalHintFixed ? -elementEstimate.targetEdge : undefined;
