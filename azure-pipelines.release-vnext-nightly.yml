@@ -12,7 +12,6 @@ variables:
       skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 
@@ -26,80 +25,82 @@ schedules:
       include:
         - master
 
-jobs:
-  - template: .devops/templates/compliance-job.yml
+resources:
+  repositories:
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
 
-  - job: Release
-    dependsOn: Compliance
-    pool: '1ES-Host-Ubuntu'
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    stages:
+      - stage: main
+        jobs:
+          - job: Release
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            workspace:
+              clean: all
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)
+                  artifactName: output
+            steps:
+              - template: .devops/templates/tools.yml@self
 
-      - script: |
-          git config user.name "Fluent UI Build"
-          git config user.email "fluentui-internal@service.microsoft.com"
-        displayName: Configure git user (used by beachball)
+              - script: |
+                  git config user.name "Fluent UI Build"
+                  git config user.email "fluentui-internal@service.microsoft.com"
+                displayName: Configure git user (used by beachball)
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+              - task: Bash@3
+                inputs:
+                  filePath: yarn-ci.sh
+                displayName: yarn
 
-        # Deletes all existing changefiles so that only bump that happens is for nightly
-      - script: |
-          rm -f change/*
-        displayName: 'Delete existing changefiles'
+                # Deletes all existing changefiles so that only bump that happens is for nightly
+              - script: |
+                  rm -f change/*
+                displayName: 'Delete existing changefiles'
 
-        # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
-      - script: |
-          date=$(date +"%Y%m%d-%H%M")
-          #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
-          yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
-          git add .
-          git commit -m "bump nightly versions"
-          yarn change --type prerelease --message "Release nightly v9" --dependent-change-type "prerelease"
-        displayName: 'Bump and commit nightly versions'
+                # Bumps all v9 packages to a x.x.x-nightly.commitSha version and checks in change files
+              - script: |
+                  date=$(date +"%Y%m%d-%H%M")
+                  #release version name will follow a 0.0.0-nightly-{year}{month}{day}-{hour}{minute} format.
+                  yarn nx g @fluentui/workspace-plugin:version-bump --all --bumpType nightly --prereleaseTag "nightly-${date}"
+                  git add .
+                  git commit -m "bump nightly versions"
+                  yarn change --type prerelease --message "Release nightly v9" --dependent-change-type "prerelease"
+                displayName: 'Bump and commit nightly versions'
 
-      # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-      # https://github.com/microsoft/fluentui/issues/21686
-      - script: |
-          yarn lage test --to @fluentui/react-components
-        displayName: yarn test
+              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+              # https://github.com/microsoft/fluentui/issues/21686
+              - script: |
+                  yarn lage test --to @fluentui/react-components
+                displayName: yarn test
 
-      - script: |
-          yarn lage lint --to @fluentui/react-components
-        displayName: yarn lint
+              - script: |
+                  yarn lage lint --to @fluentui/react-components
+                displayName: yarn lint
 
-      - script: |
-          yarn lage build --to @fluentui/react-components
-        displayName: yarn build
+              - script: |
+                  yarn lage build --to @fluentui/react-components
+                displayName: yarn build
 
-      - script: |
-          yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/release-vNext.config.js
-          git reset --hard origin/master
-        displayName: Publish changes and bump versions
+              - script: |
+                  yarn publish:beachball -n $(npmToken) --no-push --tag nightly --config scripts/beachball/release-vNext.config.js
+                  git reset --hard origin/master
+                displayName: Publish changes and bump versions
 
-      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-        displayName: 📒 Generate Manifest
-        inputs:
-          BuildDropPath: $(System.DefaultWorkingDirectory)
-
-      - task: PublishPipelineArtifact@1
-        displayName: 📒 Publish Manifest
-        inputs:
-          artifactName: SBom-$(System.JobAttempt)
-          targetPath: $(System.DefaultWorkingDirectory)/_manifest
-
-      - task: ComponentGovernanceComponentDetection@0
-        displayName: 'Component governance detection'
-        inputs:
-          sourceScanPath: $(Agent.BuildDirectory)
-        condition: succeeded()
-        timeoutInMinutes: 5
-        continueOnError: true
-
-      - template: .devops/templates/cleanup.yml
-        parameters:
-          checkForModifiedFiles: false
+              - template: .devops/templates/cleanup.yml@self
+                parameters:
+                  checkForModifiedFiles: false
