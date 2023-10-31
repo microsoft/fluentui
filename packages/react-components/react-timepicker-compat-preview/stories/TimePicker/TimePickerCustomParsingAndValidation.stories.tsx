@@ -29,10 +29,14 @@ export const CustomParsingAndValidation = () => {
 
   const [errorType, setErrorType] = React.useState<TimePickerErrorType>();
 
-  const handleTimeSelect: TimePickerProps['onTimeChange'] = (_ev, { selectedTime, error }) => {
-    setErrorType(error);
+  const handleTimeSelect: TimePickerProps['onTimeChange'] = (_ev, data) => {
+    setErrorType(data.errorType);
 
-    if (!error && selectedTime && (selectedTime.getHours() < 10 || selectedTime.getHours() >= 20)) {
+    if (
+      !data.errorType &&
+      data.selectedTime &&
+      (data.selectedTime.getHours() < 10 || data.selectedTime.getHours() >= 20)
+    ) {
       setErrorType('out-of-bounds');
     }
   };
