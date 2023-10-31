@@ -116,8 +116,8 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
   TimeFormatOptions & {
     /**
      * TimePicker has default children. It can be customized as either:
-     * 1. A single element
-     * 2. A render function that will receive properties and must return a valid element or null
+     * 1. A single element or an array of elements
+     * 2. A render function that will receive properties and must return valid element(s) or null
      * 3. null or undefined
      */
     children?:
