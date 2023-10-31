@@ -5,7 +5,7 @@ import { List, ListItem } from '@fluentui/react-list-preview';
 import countries from './countries';
 
 const CountriesList = (props: React.ComponentProps<typeof List>) => (
-  <List aria-label="Countries" focusable {...props} />
+  <List aria-label="Countries" tabIndex={0} {...props} />
 );
 
 export const VirtualizedList = () => {
@@ -35,7 +35,7 @@ VirtualizedList.parameters = {
         'is to use virtualization. In this example we are leveraging the `react-window` package.',
         '',
         'Please note that if the virtualized list contains non-actionable list items, scrolling should be achieved',
-        'by using the "focusable" property on the List.',
+        'by using the `tabIndex={0}` property on the List.',
         '',
         'It is also important to manually set `aria-setsize` and `aria-posinset` attributes on the list items, since',
         'the virualization will only render the visible items. Relying on the DOM state for these attributes will not work.',

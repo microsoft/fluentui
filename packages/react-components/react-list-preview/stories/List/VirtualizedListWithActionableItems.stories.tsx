@@ -30,7 +30,7 @@ VirtualizedListWithActionableItems.parameters = {
     description: {
       story: [
         'Virtualized list can also be used with interactive elements. Note that the list itself is not focusable',
-        'anymore, since each list item is focusable. To make sure list items are focusable, the `button` slot',
+        'anymore, since each list item is focusable. To make sure list items are focusable, the `ListItemButton` component',
         'is used.',
       ].join('\n'),
     },
