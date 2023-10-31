@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: allow custom children through render function.",
+  "packageName": "@fluentui/react-timepicker-compat-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "patch"
+}
