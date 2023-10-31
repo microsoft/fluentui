@@ -148,12 +148,12 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
     onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
 
     /**
-     * Custom the date strings displayed in dropdown options.
+     * Customizes the formatting of date strings displayed in dropdown options.
      */
     formatDateToTimeString?: (date: Date) => string;
 
     /**
-     * Custom validation for the input time string from user in freeform TimePicker.
+     * In the freeform TimePicker, customizes the parsing from the input time string into a Date and provides custom validation.
      */
     formatTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
   };
