@@ -32,11 +32,12 @@ describe('Breadcrumb', () => {
             <li
               class="fui-BreadcrumbItem"
             >
-              <button
+              <a
                 class="fui-Button fui-BreadcrumbButton"
+                tabindex="0"
               >
                 Item 1
-              </button>
+              </a>
             </li>
           </ol>
         </nav>
