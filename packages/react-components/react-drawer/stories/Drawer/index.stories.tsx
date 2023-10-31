@@ -9,7 +9,6 @@ import {
 } from '@fluentui/react-drawer';
 import descriptionMd from './DrawerDescription.md';
 import bestPracticesMd from './DrawerBestPractices.md';
-import previewMd from './DrawerPreview.md';
 
 export { Default } from './DrawerDefault.stories';
 export { Overlay } from './OverlayDrawer.stories';
@@ -31,7 +30,7 @@ export { Responsive } from './DrawerResponsive.stories';
 export { Resizable } from './DrawerResizable.stories';
 
 export default {
-  title: 'Preview Components/Drawer',
+  title: 'Components/Drawer',
   component: Drawer,
   subcomponents: {
     OverlayDrawer,
@@ -44,7 +43,7 @@ export default {
   parameters: {
     docs: {
       description: {
-        component: [descriptionMd, bestPracticesMd, previewMd].join('\n'),
+        component: [descriptionMd, bestPracticesMd].join('\n'),
       },
     },
   },

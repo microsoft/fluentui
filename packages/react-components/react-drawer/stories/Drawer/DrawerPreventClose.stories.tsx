@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { OverlayDrawer, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
-import { Button } from '@fluentui/react-components';
+import { OverlayDrawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 export const PreventClose = () => {

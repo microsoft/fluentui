@@ -1,6 +1,12 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-drawer';
-import { makeStyles, shorthands } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  InlineDrawer,
+  makeStyles,
+  shorthands,
+} from '@fluentui/react-components';
 
 const useStyles = makeStyles({
   root: {

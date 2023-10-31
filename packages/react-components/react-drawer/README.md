@@ -25,7 +25,7 @@ import {
 Simple example of Drawer Usage:
 
 ```tsx
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, Drawer } from '@fluentui/react-drawer';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, Drawer } from '@fluentui/react-components';
 import { Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
@@ -59,4 +59,4 @@ See the [Spec.md](./docs/Spec.md) file for background information on the design/
 
 ## API
 
-For information about the components, please refer to the [API documentation](https://react.fluentui.dev/?path=/docs/preview-components-drawer--default).
+For information about the components, please refer to the [API documentation](https://react.fluentui.dev/?path=/docs/components-drawer--default).

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, OverlayDrawer } from '@fluentui/react-drawer';
-import { Button } from '@fluentui/react-components';
+import { DrawerBody, DrawerHeader, DrawerHeaderTitle, OverlayDrawer, Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 export const Overlay = () => {
