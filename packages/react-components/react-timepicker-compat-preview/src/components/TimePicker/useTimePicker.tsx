@@ -26,6 +26,7 @@ import {
  */
 export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HTMLInputElement>): TimePickerState => {
   const {
+    children: childrenInProps,
     dateAnchor: dateAnchorInProps,
     defaultSelectedTime: defaultSelectedTimeInProps,
     endHour = 24,
@@ -96,16 +97,25 @@ export const useTimePicker_unstable = (props: TimePickerProps, ref: React.Ref<HT
     [freeform, selectTime],
   );
 
+  const children = React.useMemo(() => {
+    if (typeof childrenInProps === 'function') {
+      return childrenInProps({ options });
+    } else if (childrenInProps) {
+      return childrenInProps;
+    }
+    return options.map(date => (
+      <Option key={date.key} value={date.key}>
+        {date.text}
+      </Option>
+    ));
+  }, [childrenInProps, options]);
+
   const baseState = useCombobox_unstable(
     {
       ...rest,
       selectedOptions,
       onOptionSelect: handleOptionSelect,
-      children: options.map(date => (
-        <Option key={date.key} value={date.key}>
-          {date.text}
-        </Option>
-      )),
+      children,
     },
     ref,
   );

@@ -92,14 +92,12 @@ export type TimeFormatOptions = {
   showSeconds?: boolean;
 };
 
+export type TimePickerChildrenProps = { options: TimePickerOption[] };
+
 /**
  * TimePicker Props
  */
-export type TimePickerProps = Omit<
-  ComponentProps<Partial<ComboboxSlots>, 'input'>,
-  | 'children' // TODO add children prop to allow custom children through render function
-  | 'size'
-> &
+export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
   Pick<
     ComboboxProps,
     | 'appearance'
@@ -116,6 +114,18 @@ export type TimePickerProps = Omit<
     | 'freeform'
   > &
   TimeFormatOptions & {
+    /**
+     * TimePicker has default children. It can be customized as either:
+     * 1. A single element
+     * 2. A render function that will receive properties and must return a valid element or null
+     * 3. null or undefined
+     */
+    children?:
+      | React.ReactElement
+      | React.ReactElement[]
+      | ((props: TimePickerChildrenProps) => React.ReactElement[] | React.ReactElement | null)
+      | null;
+
     /**
      * Start hour (inclusive) for the time range, 0-24.
      */

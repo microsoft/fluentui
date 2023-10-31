@@ -27,6 +27,7 @@ export type TimePickerErrorType = 'invalid-input' | 'out-of-bounds' | 'required-
 
 // @public
 export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> & Pick<ComboboxProps, 'appearance' | 'defaultOpen' | 'defaultValue' | 'inlinePopup' | 'onOpenChange' | 'open' | 'placeholder' | 'positioning' | 'size' | 'value' | 'mountNode' | 'freeform'> & TimeFormatOptions & {
+    children?: React_2.ReactElement | React_2.ReactElement[] | ((props: TimePickerChildrenProps) => React_2.ReactElement[] | React_2.ReactElement | null) | null;
     startHour?: Hour;
     endHour?: Hour;
     increment?: number;
