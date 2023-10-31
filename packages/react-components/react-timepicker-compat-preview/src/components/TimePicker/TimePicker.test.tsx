@@ -106,7 +106,7 @@ describe('TimePicker', () => {
         expect(handleTimeSelect).toHaveBeenCalledTimes(1);
         expect(handleTimeSelect).toHaveBeenCalledWith(
           expect.anything(),
-          expect.objectContaining({ selectedTime: null, selectedTimeText: '111', error: 'invalid-input' }),
+          expect.objectContaining({ selectedTime: null, selectedTimeText: '111', errorType: 'invalid-input' }),
         );
       },
     );
@@ -122,7 +122,7 @@ describe('TimePicker', () => {
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ selectedTimeText: '11:00', error: undefined }),
+        expect.objectContaining({ selectedTimeText: '11:00', errorType: undefined }),
       );
     });
 
@@ -154,7 +154,7 @@ describe('TimePicker', () => {
       expect(handleTimeSelect).toHaveBeenCalledTimes(1);
       expect(handleTimeSelect).toHaveBeenCalledWith(
         expect.anything(),
-        expect.objectContaining({ selectedTimeText: '10:30111', error: 'invalid-input' }),
+        expect.objectContaining({ selectedTimeText: '10:30111', errorType: 'invalid-input' }),
       );
     });
 
