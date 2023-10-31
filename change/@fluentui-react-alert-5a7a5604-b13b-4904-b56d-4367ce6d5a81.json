@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: deprecate component and utilities",
-  "packageName": "@fluentui/react-alert",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

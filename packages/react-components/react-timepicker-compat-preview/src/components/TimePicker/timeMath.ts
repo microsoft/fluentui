@@ -34,36 +34,23 @@ export function keyToDate(key: string): Date | null {
  *
  * @param date - The Date object to be formatted.
  * @param options - Formatting options. It has two properties:
- *      1. hour12 (default: false): Determines if the time format should be 12-hour (AM/PM) or 24-hour.
+ *      1. hourCycle (default: 'h23'): Determines if the time format should be 12-hour or 24-hour.
  *      2. showSeconds (default: false): Determines if the seconds should be included in the formatted string.
  * @returns Formatted time string based on the given options.
  *
  * @example
  * const date = new Date(2023, 9, 6, 23, 45, 12);
  * formatDateToTimeString(date);                         // Returns "23:45"
- * formatDateToTimeString(date, { showSeconds: true });  // Returns "23:45:12"
- * formatDateToTimeString(date, { hour12: true, showSeconds: true }); // Returns "11:45:12 PM"
+ * formatDateToTimeString(date, \{ showSeconds: true \});  // Returns "23:45:12"
+ * formatDateToTimeString(date, \{ hourCycle: 'h12', showSeconds: true \}); // Returns "11:45:12 PM"
  */
-export function formatDateToTimeString(date: Date, options: TimeFormatOptions = {}): string {
-  const { hour12 = false, showSeconds = false } = options;
-  const timeFormatOptions: Intl.DateTimeFormatOptions = {
+export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }: TimeFormatOptions = {}): string {
+  return date.toLocaleTimeString([], {
     hour: 'numeric',
+    hourCycle: hourCycle ?? 'h23',
     minute: '2-digit',
-    hour12,
-  };
-
-  if (showSeconds) {
-    timeFormatOptions.second = '2-digit';
-  }
-
-  let formattedTime = date.toLocaleTimeString([], timeFormatOptions);
-
-  // Correct the representation of midnight in 24-hour format, if needed
-  if (!hour12 && formattedTime.startsWith('24')) {
-    formattedTime = '00' + formattedTime.slice(2);
-  }
-
-  return formattedTime;
+    second: showSeconds ? '2-digit' : undefined,
+  });
 }
 
 /**
@@ -114,7 +101,7 @@ export function getTimesBetween(dateStartAnchor: Date, dateEndAnchor: Date, incr
     return [];
   }
 
-  const result = [];
+  const result: Date[] = [];
 
   const startDate = new Date(dateStartAnchor);
   while (startDate < dateEndAnchor) {
@@ -127,28 +114,28 @@ export function getTimesBetween(dateStartAnchor: Date, dateEndAnchor: Date, incr
 
 const REGEX_SHOW_SECONDS_HOUR_12 = /^((1[0-2]|0?[0-9]):([0-5][0-9]):([0-5][0-9])\s([AaPp][Mm]))$/;
 const REGEX_HIDE_SECONDS_HOUR_12 = /^((1[0-2]|0?[0-9]):[0-5][0-9]\s([AaPp][Mm]))$/;
-const REGEX_SHOW_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]:[0-5][0-9]$/;
-const REGEX_HIDE_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+const REGEX_SHOW_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-4]):[0-5][0-9]:[0-5][0-9]$/;
+const REGEX_HIDE_SECONDS_HOUR_24 = /^([0-1]?[0-9]|2[0-4]):[0-5][0-9]$/;
 
 /**
  * Calculates a new date from the user-selected time string based on anchor dates.
- * Returns an object containing a date if the provided time string is valid, and an optional error message indicating the type of error.
+ * Returns an object containing a date if the provided time string is valid, and an optional string indicating the type of error.
  *
  * @param time - The time string to be parsed (e.g., "2:30 PM", "15:45:20").
  * @param dateStartAnchor - The start anchor date.
  * @param dateEndAnchor - The end anchor date.
  * @param timeFormatOptions - format options for the provided time string.
- * @returns An object with either a 'date' or an 'error'.
+ * @returns An object with either a 'date' or an 'errorType'.
  *
  * @example
- * Input: time="2:30 PM", dateStartAnchor=2023-10-06T12:00:00Z, dateEndAnchor=2023-10-07T12:00:00Z, options={hour12: true, showSeconds: false}
+ * Input: time="2:30 PM", dateStartAnchor=2023-10-06T12:00:00Z, dateEndAnchor=2023-10-07T12:00:00Z, options={hourCycle: 'h12', showSeconds: false}
  * Output: { date: 2023-10-06T14:30:00Z }
  *
  * Input: time="25:30"
- * Output: { error: 'invalid-input' }
+ * Output: { errorType: 'invalid-input' }
  *
- * Input: time="1:30 AM", dateStartAnchor=2023-10-06T03:00:00Z, dateEndAnchor=2023-10-07T03:00:00Z, options={hour12: true, showSeconds: false}
- * Output: { date: 2023-10-07T01:30:00Z, error: 'out-of-bounds' }
+ * Input: time="1:30 AM", dateStartAnchor=2023-10-06T03:00:00Z, dateEndAnchor=2023-10-07T03:00:00Z, options={hourCycle: 'h12', showSeconds: false}
+ * Output: { date: 2023-10-07T01:30:00Z, errorType: 'out-of-bounds' }
  */
 export function getDateFromTimeString(
   time: string | undefined,
@@ -157,10 +144,12 @@ export function getDateFromTimeString(
   timeFormatOptions: TimeFormatOptions,
 ): TimeStringValidationResult {
   if (!time) {
-    return { date: null, error: 'invalid-input' };
+    return { date: null, errorType: 'required-input' };
   }
 
-  const { hour12, showSeconds } = timeFormatOptions;
+  const { hourCycle, showSeconds } = timeFormatOptions;
+  const hour12 = hourCycle === 'h11' || hourCycle === 'h12';
+
   // Determine the regex based on format
   const regex = hour12
     ? showSeconds
@@ -171,12 +160,12 @@ export function getDateFromTimeString(
     : REGEX_HIDE_SECONDS_HOUR_24;
 
   if (!regex.test(time)) {
-    return { date: null, error: 'invalid-input' };
+    return { date: null, errorType: 'invalid-input' };
   }
 
   const timeParts = /^(\d\d?):(\d\d):?(\d\d)? ?([ap]m)?/i.exec(time);
   if (!timeParts) {
-    return { date: null, error: 'invalid-input' };
+    return { date: null, errorType: 'invalid-input' };
   }
 
   const [, selectedHours, minutes, seconds, amPm] = timeParts;
@@ -199,8 +188,8 @@ export function getDateFromTimeString(
     adjustedDate.setDate(adjustedDate.getDate() + 1);
   }
 
-  if (adjustedDate > dateEndAnchor) {
-    return { date: adjustedDate, error: 'out-of-bounds' };
+  if (adjustedDate >= dateEndAnchor) {
+    return { date: adjustedDate, errorType: 'out-of-bounds' };
   }
 
   return { date: adjustedDate };
