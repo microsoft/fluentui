@@ -2,5 +2,5 @@
   "buildCommand": "build:codesandbox",
   "packages": ["packages/react", "packages/react-components/react-components"],
   "sandboxes": ["x5u3t", "spnyu"],
-  "node": "16"
+  "node": "18"
 }

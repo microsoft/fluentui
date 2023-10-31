@@ -48,10 +48,14 @@ const useDrawerStyles = makeStyles({
 
   /* Positioning */
   start: {
+    ...shorthands.borderRight(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
     left: 0,
     right: 'auto',
   },
   end: {
+    ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
     right: 0,
     left: 'auto',
   },

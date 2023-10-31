@@ -1,8 +1,22 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Wed, 18 Oct 2023 17:54:08 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 23:35:57 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.4.0)
+
+Sat, 28 Oct 2023 23:35:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.3.4..@fluentui/react-motion-preview_v0.4.0)
+
+### Minor changes
+
+- feat: add support to provide static duration to useMotion hook ([PR #29655](https://github.com/microsoft/fluentui/pull/29655) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+
+### Patches
+
+- fix: avoid breaking rule of hooks ([PR #29628](https://github.com/microsoft/fluentui/pull/29628) by marcosvmmoura@gmail.com)
 
 ## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.3.4)
 

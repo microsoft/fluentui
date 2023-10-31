@@ -4,6 +4,7 @@ import { createCustomFocusIndicatorStyle } from '@fluentui/react-tabster';
 import type { AlertSlots, AlertState } from './Alert.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
+// eslint-disable-next-line deprecation/deprecation
 export const alertClassNames: SlotClassNames<AlertSlots> = {
   root: 'fui-Alert',
   icon: 'fui-Alert__icon',
@@ -89,8 +90,10 @@ const useActionButtonColorInverted = makeStyles({
 });
 
 /**
+ * @deprecated please use the Toast or MessageBar component
  * Apply styling to the Alert slots based on the state
  */
+// eslint-disable-next-line deprecation/deprecation
 export const useAlertStyles_unstable = (state: AlertState): AlertState => {
   const inverted = state.appearance === 'inverted';
   const styles = useStyles();

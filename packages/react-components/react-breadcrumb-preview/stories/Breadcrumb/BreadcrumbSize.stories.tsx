@@ -6,17 +6,6 @@ const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 export const BreadcrumbSize = () => {
   return (
     <>
-      <h4>Non-interactive Breadcrumb</h4>
-      <Breadcrumb aria-label="Small non-interactive breadcrumb" size="small">
-        <BreadcrumbItem>Item 1</BreadcrumbItem>
-        <BreadcrumbDivider />
-        <BreadcrumbItem>Item 2</BreadcrumbItem>
-        <BreadcrumbDivider />
-        <BreadcrumbItem>Item 3</BreadcrumbItem>
-        <BreadcrumbDivider />
-        <BreadcrumbItem>Item 4</BreadcrumbItem>
-      </Breadcrumb>
-      <h4>Interactive Breadcrumb</h4>
       <Breadcrumb aria-label="Small breadcrumb example with buttons" size="small">
         <BreadcrumbItem>
           <BreadcrumbButton>Item 1</BreadcrumbButton>
@@ -75,9 +64,7 @@ export const BreadcrumbSize = () => {
 BreadcrumbSize.parameters = {
   docs: {
     description: {
-      story:
-        'Breadcrumb `size` can be `"small"`, `"medium"` (default), or `"large"`. ' +
-        'Note: BreadcrumbButton and BreadcrumbItem have different spacing in "small" size.',
+      story: 'Breadcrumb `size` can be `"small"`, `"medium"` (default), or `"large"`. ',
     },
   },
 };

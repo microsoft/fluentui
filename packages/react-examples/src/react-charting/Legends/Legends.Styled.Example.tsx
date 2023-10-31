@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ILegend, Legends, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
-import { DefaultPalette, FontWeights } from '@fluentui/react/lib/Styling';
+import { FontWeights } from '@fluentui/react/lib/Styling';
 
 export class LegendStyledExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -83,9 +83,9 @@ export class LegendStyledExample extends React.Component<{}, {}> {
         canSelectMultipleLegends={false}
         overflowProps={{
           styles: {
-            item: { border: `1px dotted ${DefaultPalette.green}` },
+            item: { border: `1px dotted ${getColorFromToken(DataVizPalette.color5)}` },
             root: {},
-            overflowButton: { backgroundColor: DefaultPalette.neutralLight },
+            overflowButton: {},
           },
         }}
         styles={{

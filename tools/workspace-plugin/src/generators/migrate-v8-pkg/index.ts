@@ -10,6 +10,7 @@ import {
   ProjectConfiguration,
   stripIndents,
   updateProjectConfiguration,
+  writeJson,
 } from '@nx/devkit';
 
 import { printStats } from '../print-stats';
@@ -198,16 +199,27 @@ function runMigrationOnProject(tree: Tree, schema: AssertedSchema) {
 
   // updates start
 
-  setupNpmIgnoreConfig(tree, options);
+  updatePackageJson(tree, options);
   updateNxProject(tree, options);
 
   return tree;
 }
 
-function setupNpmIgnoreConfig(tree: Tree, options: NormalizedSchema) {
-  tree.write(options.paths.npmConfig, templates.npmIgnoreConfig);
+function updatePackageJson(tree: Tree, options: NormalizedSchema) {
+  let packageJson = readJson(tree, options.paths.packageJson);
 
-  return tree;
+  packageJson = setupNpmPublishFiles(packageJson);
+
+  writeJson(tree, options.paths.packageJson, packageJson);
+
+  function setupNpmPublishFiles(json: PackageJson) {
+    json.files = json.files ?? [];
+    json.files = ['lib', 'lib-commonjs', 'lib-amd', 'dist'];
+
+    tree.delete(options.paths.npmConfig);
+
+    return json;
+  }
 }
 
 function updateNxProject(tree: Tree, options: NormalizedSchema) {
@@ -221,49 +233,7 @@ function updateNxProject(tree: Tree, options: NormalizedSchema) {
   return tree;
 }
 
-const templates = {
-  npmIgnoreConfig: stripIndents`
-*.api.json
-*.config.js
-*.log
-*.nuspec
-*.test.*
-*.yml
-.editorconfig
-.eslintrc*
-.eslintcache
-.gitattributes
-.gitignore
-.vscode
-coverage
-dist/storybook
-dist/*.stats.html
-dist/*.stats.json
-dist/demo
-fabric-test*
-gulpfile.js
-images
-index.html
-jsconfig.json
-node_modules
-results
-src/**/*
-!src/**/*.types.ts
-temp
-tsconfig.json
-tsd.json
-tslint.json
-typings
-visualtests
-project.json
-
-# exclude gitignore patterns explicitly
-!lib
-!lib-commonjs
-!lib-amd
-!dist
-`,
-};
+const _templates = {};
 
 function uniqueArray<T extends unknown>(value: T[]) {
   return Array.from(new Set(value));

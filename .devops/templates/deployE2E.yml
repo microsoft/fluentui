@@ -1,0 +1,46 @@
+steps:
+  - template: tools.yml
+
+  - task: Bash@3
+    inputs:
+      filePath: yarn-ci.sh
+    displayName: yarn
+
+  # this also builds FUI N* docs if appropriate
+  - script: |
+      yarn bundle  $(sinceArg)
+    displayName: bundle
+
+  - script: |
+      yarn lage build-storybook  --verbose $(sinceArg)
+    displayName: build Storybooks
+
+  ## This runs regardless of scope, the app will adapt to the scope as well
+  - script: |
+      yarn workspace @fluentui/pr-deploy-site generate:site
+    displayName: generate PR Deploy Site
+
+  - task: AzureUpload@2
+    displayName: Upload PR deploy site
+    inputs:
+      azureSubscription: $(azureSubscription)
+      BlobPrefix: $(deployBasePath)
+      ContainerName: '$web'
+      SourcePath: 'apps/pr-deploy-site/dist'
+      storage: $(azureStorage)
+
+  - task: GithubPRStatus@0
+    displayName: 'Update PR deploy site github status'
+    inputs:
+      githubOwner: microsoft
+      githubRepo: fluentui
+      githubContext: 'Pull request demo site'
+      githubDescription: 'Click "Details" to go to the deployed demo site for this pull request'
+      # This MUST have a trailing slash, or the links to PR deploy site assets won't work
+      githubTargetLink: $(deployUrl)/
+
+  - script: |
+      yarn e2e $(sinceArg)
+    displayName: Cypress E2E tests
+
+  - template: cleanup.yml

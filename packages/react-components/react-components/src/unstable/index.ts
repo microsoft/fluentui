@@ -1,5 +1,6 @@
 // Stub for unstable exports
 
+/* eslint-disable deprecation/deprecation */
 export {
   Alert,
   alertClassNames,
@@ -9,7 +10,6 @@ export {
 } from '@fluentui/react-alert';
 export type { AlertProps, AlertSlots, AlertState } from '@fluentui/react-alert';
 
-/* eslint-disable deprecation/deprecation */
 export {
   InfoButton,
   infoButtonClassNames,
@@ -147,16 +147,36 @@ export {
   Drawer,
   renderDrawer_unstable,
   useDrawer_unstable,
-  DrawerOverlay,
-  drawerOverlayClassNames,
-  renderDrawerOverlay_unstable,
-  useDrawerOverlayStyles_unstable,
-  useDrawerOverlay_unstable,
-  DrawerInline,
-  drawerInlineClassNames,
-  renderDrawerInline_unstable,
-  useDrawerInlineStyles_unstable,
-  useDrawerInline_unstable,
+  /** @deprecated Use `OverlayDrawer` instead */
+  OverlayDrawer as DrawerOverlay,
+  /** @deprecated Use `OverlayDrawerClassNames` instead */
+  overlayDrawerClassNames as DrawerOverlayClassNames,
+  /** @deprecated Use `renderOverlayDrawer_unstable` instead */
+  renderOverlayDrawer_unstable as renderDrawerOverlay_unstable,
+  /** @deprecated Use `useOverlayDrawerStyles_unstable` instead */
+  useOverlayDrawerStyles_unstable as useDrawerOverlayStyles_unstable,
+  /** @deprecated Use `useOverlayDrawer_unstable` instead */
+  useOverlayDrawer_unstable as useDrawerOverlay_unstable,
+  /** @deprecated Use `InlineDrawer` instead */
+  InlineDrawer as DrawerInline,
+  /** @deprecated Use `InlineDrawerClassNames` instead */
+  inlineDrawerClassNames as DrawerInlineClassNames,
+  /** @deprecated Use `renderInlineDrawer_unstable` instead */
+  renderInlineDrawer_unstable as renderDrawerInline_unstable,
+  /** @deprecated Use `useInlineDrawerStyles_unstable` instead */
+  useInlineDrawerStyles_unstable as useDrawerInlineStyles_unstable,
+  /** @deprecated Use `useInlineDrawer_unstable` instead */
+  useInlineDrawer_unstable as useDrawerInline_unstable,
+  OverlayDrawer,
+  overlayDrawerClassNames,
+  renderOverlayDrawer_unstable,
+  useOverlayDrawerStyles_unstable,
+  useOverlayDrawer_unstable,
+  InlineDrawer,
+  inlineDrawerClassNames,
+  renderInlineDrawer_unstable,
+  useInlineDrawerStyles_unstable,
+  useInlineDrawer_unstable,
   DrawerBody,
   drawerBodyClassNames,
   renderDrawerBody_unstable,
@@ -188,12 +208,24 @@ export type {
   DrawerProps,
   DrawerSlots,
   DrawerState,
-  DrawerOverlayProps,
-  DrawerOverlaySlots,
-  DrawerOverlayState,
-  DrawerInlineProps,
-  DrawerInlineSlots,
-  DrawerInlineState,
+  /** @deprecated Use `OverlayDrawerProps` instead */
+  OverlayDrawerProps as DrawerOverlayProps,
+  /** @deprecated Use `OverlayDrawerSlots` instead */
+  OverlayDrawerSlots as DrawerOverlaySlots,
+  /** @deprecated Use `OverlayDrawerState` instead */
+  OverlayDrawerState as DrawerOverlayState,
+  /** @deprecated Use `InlineDrawerProps` instead */
+  InlineDrawerProps as DrawerInlineProps,
+  /** @deprecated Use `InlineDrawerSlots` instead */
+  InlineDrawerSlots as DrawerInlineSlots,
+  /** @deprecated Use `InlineDrawerState` instead */
+  InlineDrawerState as DrawerInlineState,
+  OverlayDrawerProps,
+  OverlayDrawerSlots,
+  OverlayDrawerState,
+  InlineDrawerProps,
+  InlineDrawerSlots,
+  InlineDrawerState,
   DrawerBodySlots,
   DrawerBodyState,
   DrawerHeaderSlots,

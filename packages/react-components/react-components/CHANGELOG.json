@@ -2,6 +2,155 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 23:35:54 GMT",
+      "tag": "@fluentui/react-components_v9.37.0",
+      "version": "9.37.0",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "lingfan.gao@microsoft.com",
+            "package": "@fluentui/react-alert",
+            "commit": "d4ad8bc01ee253a6da6a2f7e0b8978ee900e7887",
+            "comment": "feat: deprecate component and utilities"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "601e93272fe2b51515c9706d1d1ed03b4f9fc765",
+            "comment": "fix: regression with mountNode prop not available after refactor"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "4611e31dd38799b5e7bd2faa3ff735398e176b03",
+            "comment": "feat: use useMotionClassNames to create drawer motion styles"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "8381d2c4c7d389b2199398212beccbe1a899d4ea",
+            "comment": "BREAKING CHANGE: rename main DrawerOverlay/DrawerInline components"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b77e96763ca6d1ce4ef1ee8482977f908538fbd1",
+            "comment": "fix: improve high contrast mode"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "d936b79dd82bffe98192bee64b5e0db28905e7df",
+            "comment": "docs: add example on how to implement multiple levels inside one drawer"
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infobutton",
+            "commit": "61d4a2910a5039af8b8509422ecfe58bc636191c",
+            "comment": "chore: Deprecate InfoLabel and InfoButton from react-infobutton in favor of react-infolabel."
+          }
+        ],
+        "major": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "d518c2850d957d654fccc923b263e2f2921ac08a",
+            "comment": "BREAKING CHANGE: Removed non-interactive item and `slash` divider"
+          },
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "011e2da1c62cc5387c84c141263cd3721d3c9615",
+            "comment": "BREAKING CHANGE: remove `appearance` prop and set  `current` prop  for BreadcrumbButton last item"
+          }
+        ],
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-combobox",
+            "commit": "fcb66088ae79124fabbc12cb57197930dc0f5a80",
+            "comment": "fix: update `setActiveOption` type to be React Dispatch."
+          },
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "61d4a2910a5039af8b8509422ecfe58bc636191c",
+            "comment": "chore: Deprecate InfoLabel and InfoButton from react-infobutton in favor of react-infolabel."
+          },
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/react-components",
+            "commit": "d4ad8bc01ee253a6da6a2f7e0b8978ee900e7887",
+            "comment": "chore: Deprecating Alert components and utilities."
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "9ce5148c9917876fd555b22f9a6cf06eb0495d10",
+            "comment": "fix: avoid breaking rule of hooks"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5e65d8013cd09faf4b3777202f251d5c3d67c138",
+            "comment": "fix: invoke useCustomStyleHook_unstable()"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "5e65d8013cd09faf4b3777202f251d5c3d67c138",
+            "comment": "fix: invoke useCustomStyleHook_unstable()"
+          },
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-toast",
+            "commit": "5e65d8013cd09faf4b3777202f251d5c3d67c138",
+            "comment": "fix: invoke useCustomStyleHook_unstable()"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "8381d2c4c7d389b2199398212beccbe1a899d4ea",
+            "comment": "refactor: rename DrawerOverlay/DrawerInline components"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-motion-preview",
+            "commit": "1865fb7022f3e8debece2cd001f4e25e703eb01b",
+            "comment": "feat: add support to provide static duration to useMotion hook"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8381d2c4c7d389b2199398212beccbe1a899d4ea",
+            "comment": "feat: add new drawer global style hooks that are needed by drawer public api changes"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-shared-contexts",
+            "commit": "8381d2c4c7d389b2199398212beccbe1a899d4ea",
+            "comment": "refactor: rename main DrawerOverlay/DrawerInline components"
+          }
+        ],
+        "none": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-table",
+            "commit": "971eb8653bcb54723876fd89778eb30bf40a40cf",
+            "comment": "chore: move the component spec"
+          },
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-text",
+            "commit": "d22e99a22d1e52347c3c0a8c9cd1ff870b528a9d",
+            "comment": "chore: add verify-packaging task"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Oct 2023 09:51:55 GMT",
       "tag": "@fluentui/react-components_v9.36.0",
       "version": "9.36.0",
