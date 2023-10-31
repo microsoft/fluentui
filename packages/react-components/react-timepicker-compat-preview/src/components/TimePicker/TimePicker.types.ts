@@ -95,7 +95,11 @@ export type TimeFormatOptions = {
 /**
  * TimePicker Props
  */
-export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input'>, 'children' | 'size'> &
+export type TimePickerProps = Omit<
+  ComponentProps<Partial<ComboboxSlots>, 'input'>,
+  | 'children' // TODO add children prop to allow custom children through render function
+  | 'size'
+> &
   Pick<
     ComboboxProps,
     | 'appearance'

@@ -41,8 +41,8 @@ export function keyToDate(key: string): Date | null {
  * @example
  * const date = new Date(2023, 9, 6, 23, 45, 12);
  * formatDateToTimeString(date);                         // Returns "23:45"
- * formatDateToTimeString(date, { showSeconds: true });  // Returns "23:45:12"
- * formatDateToTimeString(date, { hourCycle: 'h12', showSeconds: true }); // Returns "11:45:12 PM"
+ * formatDateToTimeString(date, \{ showSeconds: true \});  // Returns "23:45:12"
+ * formatDateToTimeString(date, \{ hourCycle: 'h12', showSeconds: true \}); // Returns "11:45:12 PM"
  */
 export function formatDateToTimeString(date: Date, { hourCycle, showSeconds }: TimeFormatOptions = {}): string {
   return date.toLocaleTimeString([], {
