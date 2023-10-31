@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { mergeCallbacks, useId, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { ExtractSlotProps, Slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey, getIndexFromAction } from '../utils/dropdownKeyActions';
@@ -94,17 +95,18 @@ export function useTriggerListboxSlots(
     }, listbox?.onMouseOver),
   );
 
+  const { targetDocument } = useFluent_unstable();
   const documentOnMouseUp = useEventCallback((ev: MouseEvent) => {
     if (!listboxRef.current?.contains(ev.target as HTMLElement)) {
       setOpen(ev as unknown as React.MouseEvent<HTMLElement>, false);
     }
-    document.removeEventListener('mouseup', documentOnMouseUp);
+    targetDocument?.removeEventListener('mouseup', documentOnMouseUp);
   });
 
   const listboxOnMouseDown = useEventCallback(
     mergeCallbacks((event: React.MouseEvent<HTMLDivElement>) => {
       ignoreNextBlur.current = true;
-      document.addEventListener('mouseup', documentOnMouseUp);
+      targetDocument?.addEventListener('mouseup', documentOnMouseUp);
     }, listbox?.onMouseDown),
   );
 
