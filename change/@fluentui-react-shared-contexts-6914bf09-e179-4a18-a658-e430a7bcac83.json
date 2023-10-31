@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: invoke useCustomStyleHook_unstable()",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "olfedias@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -80,8 +80,8 @@
       "@fluentui/react-spinbutton": ["packages/react-components/react-spinbutton/src/index.ts"],
       "@fluentui/react-spinner": ["packages/react-components/react-spinner/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
-      "@fluentui/react-storybook-addon-codesandbox": [
-        "packages/react-components/react-storybook-addon-codesandbox/src/index.ts"
+      "@fluentui/react-storybook-addon-export-to-sandbox": [
+        "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
       ],
       "@fluentui/react-swatch-picker-preview": ["packages/react-components/react-swatch-picker-preview/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],

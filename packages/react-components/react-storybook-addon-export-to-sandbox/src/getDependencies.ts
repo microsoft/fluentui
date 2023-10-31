@@ -15,7 +15,7 @@ function matchAll(str: string, re: RegExp) {
 /**
  *
  * @param fileContent - code
- * @param requiredDependencies - dependencies that will always be incldued in package.json
+ * @param requiredDependencies - dependencies that will always be included in package.json
  * @param optionalDependencies - whose versions will override those found in the code
  * @returns - Map of dependencies and their versions to include in package.json
  */

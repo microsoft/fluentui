@@ -89,7 +89,7 @@ Axis.parameters = {
         '- vertical - navigation with up/downkeys',
         '- both - navigation with all arrow keys, left/down and right/up will navigate in the same direction',
         '- grid - bidirectional navigation in a 2D grid',
-        '- grid-liear - same as grid navigation, but horizontal focus will continue to flow to the next row',
+        '- grid-linear - same as grid navigation, but horizontal focus will continue to flow to the next row',
       ].join('\n'),
     },
   },
