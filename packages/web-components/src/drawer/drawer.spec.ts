@@ -194,7 +194,7 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', false);
   });
 
-  test('hide method should close drawer', async () => {
+  test('close method should close drawer', async () => {
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
             <fluent-drawer open></fluent-drawer>

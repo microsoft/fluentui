@@ -86,7 +86,7 @@ export class Drawer extends FASTElement {
    * @defaultValue end
    */
   @attr
-  public position?: DrawerPosition;
+  public position?: DrawerPosition = DrawerPosition.end;
 
   /**
    * Sets the size of the drawer (small/medium/large).
