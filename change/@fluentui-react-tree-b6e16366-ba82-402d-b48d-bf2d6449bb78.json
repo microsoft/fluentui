@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: stop unnecessary re-rendering when no actions are available",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

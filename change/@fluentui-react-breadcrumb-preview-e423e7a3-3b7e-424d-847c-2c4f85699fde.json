@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: made BreadcrumbButton semantically as a link",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}
