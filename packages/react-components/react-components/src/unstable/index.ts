@@ -150,25 +150,25 @@ export {
   renderDrawer_unstable,
   /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
   useDrawer_unstable,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `OverlayDrawer` from @fluentui/react-components instead */
   OverlayDrawer as DrawerOverlay,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `OverlayDrawerClassNames` from @fluentui/react-components instead */
   overlayDrawerClassNames as DrawerOverlayClassNames,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `renderOverlayDrawer_unstable` from @fluentui/react-components instead */
   renderOverlayDrawer_unstable as renderDrawerOverlay_unstable,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `useOverlayDrawerStyles_unstable` from @fluentui/react-components instead */
   useOverlayDrawerStyles_unstable as useDrawerOverlayStyles_unstable,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `useOverlayDrawer_unstable` from @fluentui/react-components instead */
   useOverlayDrawer_unstable as useDrawerOverlay_unstable,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `InlineDrawer` from @fluentui/react-components instead */
   InlineDrawer as DrawerInline,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `InlineDrawerClassNames` from @fluentui/react-components instead */
   inlineDrawerClassNames as DrawerInlineClassNames,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `renderInlineDrawer_unstable` from @fluentui/react-components instead */
   renderInlineDrawer_unstable as renderDrawerInline_unstable,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `useInlineDrawerStyles_unstable` from @fluentui/react-components instead */
   useInlineDrawerStyles_unstable as useDrawerInlineStyles_unstable,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `useInlineDrawer_unstable` from @fluentui/react-components instead */
   useInlineDrawer_unstable as useDrawerInline_unstable,
   /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
   OverlayDrawer,
@@ -249,17 +249,17 @@ export type {
   DrawerSlots,
   /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
   DrawerState,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `OverlayDrawerProps` from @fluentui/react-components instead */
   OverlayDrawerProps as DrawerOverlayProps,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `OverlayDrawerSlots` from @fluentui/react-components instead */
   OverlayDrawerSlots as DrawerOverlaySlots,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `OverlayDrawerState` from @fluentui/react-components instead */
   OverlayDrawerState as DrawerOverlayState,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `InlineDrawerProps` from @fluentui/react-components instead */
   InlineDrawerProps as DrawerInlineProps,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `InlineDrawerSlots` from @fluentui/react-components instead */
   InlineDrawerSlots as DrawerInlineSlots,
-  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
+  /** @deprecated Use `InlineDrawerState` from @fluentui/react-components instead */
   InlineDrawerState as DrawerInlineState,
   /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
   OverlayDrawerProps,
@@ -295,4 +295,5 @@ export type {
   DrawerHeaderNavigationSlots,
   /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
   DrawerHeaderNavigationState,
+  /** @deprecated Drawer is currently stable. Import from @fluentui/react-components instead */
 } from '@fluentui/react-drawer';
