@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: remove animation from test environments",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

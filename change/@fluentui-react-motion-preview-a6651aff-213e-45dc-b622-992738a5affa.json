@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "fix: separate timeouts to better synchronize changes in between browser frames",
-  "packageName": "@fluentui/react-motion-preview",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
