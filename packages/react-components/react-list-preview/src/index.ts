@@ -16,5 +16,13 @@ export {
   useListItem_unstable,
 } from './ListItem';
 export type { ListItemProps, ListItemSlots, ListItemState } from './ListItem';
-export { ListItemButton, listItemButtonClassNames, renderListItemButton_unstable, useListItemButtonStyles_unstable, useListItemButton_unstable } from './ListItemButton';
+export {
+  ListItemButton,
+  listItemButtonClassNames,
+  renderListItemButton_unstable,
+  useListItemButtonStyles_unstable,
+  useListItemButton_unstable,
+} from './ListItemButton';
 export type { ListItemButtonProps, ListItemButtonSlots, ListItemButtonState } from './ListItemButton';
+
+export { useListFeatures, useListSelection } from './hooks';

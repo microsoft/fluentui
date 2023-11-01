@@ -8,9 +8,11 @@ export { ListHorizontal } from './ListHorizontal.stories';
 export { ListGrid } from './ListGrid.stories';
 export { ListWithAction } from './ListWithAction.stories';
 // export { ListWithMultipleActions } from './ListWithMultipleActions.stories';
+export { ListOverflowing } from './ListOverflowing.stories';
+export { ListSelection } from './ListSelection.stories';
+export { ListWithMultipleActions } from './ListWithMultipleActions.stories';
 export { VirtualizedList } from './VirtualizedList.stories';
 export { VirtualizedListWithActionableItems } from './VirtualizedListWithActionableItems.stories';
-export { ListMultipleActions } from './ListMultipleActions.stories';
 
 export default {
   title: 'Preview Components/List',
