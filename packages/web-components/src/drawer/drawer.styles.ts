@@ -123,6 +123,7 @@ export const styles = css`
     max-height: 100vh;
     overflow: hidden;
     width: var(--drawer-width, 592px);
+    box-shadow: ${shadow64};
   }
 
   :host([position='end']) dialog {
@@ -135,8 +136,8 @@ export const styles = css`
     width: var(--drawer-width, 592px);
   }
 
-  :host([type='overlay']) dialog {
-    box-shadow: ${shadow64};
+  :host([type='inline']) dialog {
+    box-shadow: none;
   }
 
   :host([modal-type='non-modal']) dialog::backdrop {

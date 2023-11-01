@@ -34,7 +34,7 @@ export function drawerTemplate<T extends Drawer>(): ElementViewTemplate<T> {
             <slot name="action"></slot>
           </div>
         </div>
-        <div class="content" part="content" ${ref('content')}>
+        <div class="content" part="content">
           <slot></slot>
         </div>
         <div class="footer" part="footer">
