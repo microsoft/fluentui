@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Add sanity check for addEventListener in useOnEvent",
-  "packageName": "@fluentui/react-hooks",
-  "email": "mikula@gmail.com",
-  "dependentChangeType": "patch"
-}
