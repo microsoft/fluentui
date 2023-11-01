@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "fix(tokens): Fix motion curves to match design",
+  "packageName": "@fluentui/tokens",
+  "email": "robertpenner@microsoft.com",
+  "dependentChangeType": "patch"
+}
