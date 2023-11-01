@@ -81,17 +81,58 @@ More details are covered in the wiki.
 
 Performance is a key success criteria for the charting library.
 Performance is measured and has been improved for the following scenarios.
-|**S No**| **Scenario** | **Lighthouse Score** |
-|:------:|:------------------------------------------------: | :----------------------: |
-| 1. | 1 LineChart of 1 series with 30,000 datapoints | 79.2 |
-| 2. | 6 LineCharts of 1 series with 100 datapoints each | 98.8 |
-| 3. | 18 LineCharts of 1 series with 5 datapoints | 98 |
-| 4. | 50 Linecharts of 1 Series with 10 datapoints each | 89.6 |
-| 5. | 1 Linechart of 2 series with 500 datapoints each | 98.6 |
-| 6. |10 Linecharts of 1 series with 1000 datapoints each| 94.4 |
-| 7. | 1 Areachart with 30,000 datapoints | 49 |
-| 8. | 6 Areacharts of 1 series with 100 datapoints each | 95.4 |
-| 9. |18 Areacharts of 1 series with 5 data points each | 96.8 |
+
+<table>
+  <tr>
+    <th>S No</th>
+    <th>Scenario</th>
+    <th>Lighthouse Score</th>
+  </tr><tr>
+            <td>1.</td>
+            <td>1 LineChart of 1 series with 30,000 datapoints</td>
+            <td>79.2</td>
+           </tr>
+<tr>
+            <td>2.</td>
+            <td>6 LineCharts of 1 series with 100 datapoints each</td>
+            <td>98.8</td>
+           </tr>
+<tr>
+            <td>3.</td>
+            <td>18 LineCharts of 1 series with 5 datapoints</td>
+            <td>98</td>
+           </tr>
+<tr>
+    <td>4.</td>
+    <td>50 Linecharts of 1 Series with 10 datapoints each</td>
+    <td>89.6</td>
+</tr>
+<tr>
+    <td>5.</td>
+    <td>1 Linechart of 2 series with 500 datapoints each</td>
+    <td>98.6</td>
+</tr>
+<tr>
+    <td>6.</td>
+    <td>10 Linecharts of 1 series with 1000 datapoints each</td>
+    <td>94.4</td>
+</tr>
+<tr>
+    <td>7.</td>
+    <td>1 Areachart with 30,000 datapoints</td>
+    <td>49</td>
+</tr>
+<tr>
+    <td>8.</td>
+    <td>6 Areacharts of 1 series with 100 datapoints each</td>
+    <td>95.4</td>
+</tr>
+<tr>
+    <td>9.</td>
+    <td>18 Areacharts of 1 series with 5 data points each</td>
+    <td>96.8</td>
+</tr>
+<table>
 
 More details are covered in the wiki.
 
