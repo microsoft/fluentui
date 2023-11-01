@@ -30,6 +30,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     focusableItems = false,
     customArrowNavigationOptions,
     selectable = false,
+    selectionMode = 'multiselect',
     componentRef,
     onSelectionChange,
   } = props;
@@ -40,15 +41,9 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     ...(customArrowNavigationOptions || {}),
   });
 
-  // const items = React.useRef<Array<{ id: string | number }>>([]);
   const [items, setItems] = React.useState<Array<{ id: string | number }>>([]);
 
-  const { selection } = useListFeatures({ items }, [
-    useListSelection({ onSelectionChange, selectionMode: 'multiselect' }),
-  ]);
-
-  // const rootRef = React.useRef<HTMLDivElement | null>(null);
-  // const mergedRootRefs: React.Ref<HTMLElement> = useMergedRefs(rootRef, forwardedRef);
+  const { selection } = useListFeatures({ items }, [useListSelection({ onSelectionChange, selectionMode })]);
   useComponentRef(componentRef, selection);
 
   const registerItem = useEventCallback((id: string | number) => {
@@ -58,7 +53,6 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
   });
 
   const deregisterItem = useEventCallback((id: string | number) => {
-    // items.current = items.current.filter(item => item.id !== id);
     if (items.find(k => k.id === id)) {
       setItems(current => current.filter(item => item.id !== id));
     }
@@ -66,16 +60,18 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
 
   return {
     components: {
-      root: 'div',
+      root: 'ul',
     },
     root: slot.always(
-      getNativeElementProps('div', {
+      getNativeElementProps('ul', {
         ref,
-        role: 'list',
+        role: selectable ? 'listbox' : 'list',
+        tabIndex: -1,
+        'aria-multiselectable': selectable ? true : undefined, // TODO not true for single select
         ...arrowNavigationAttributes,
         ...props,
       }),
-      { elementType: 'div' },
+      { elementType: 'ul' },
     ),
     layout,
     // context:

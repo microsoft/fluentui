@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { ListLayout, ListSlots, ListState } from './List.types';
 
@@ -13,7 +13,8 @@ export const listClassNames: SlotClassNames<ListSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    // TODO Add default styles for the root element
+    ...shorthands.padding(0),
+    ...shorthands.margin(0),
   },
 
   rootHorizontal: {

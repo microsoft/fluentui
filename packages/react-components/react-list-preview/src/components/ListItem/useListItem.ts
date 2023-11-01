@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { getNativeElementProps, slot, useId, useMergedRefs } from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import { Checkbox } from '@fluentui/react-checkbox';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
@@ -16,7 +16,7 @@ import { useListContext_unstable } from '../List/listContext';
  */
 export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLElement>): ListItemState => {
   const id = useId('listItem');
-  const { value = id } = props;
+  const { value = id, onKeyDown, onClick } = props;
 
   const focusableItems = useListContext_unstable(ctx => ctx.focusableItems);
   const registerItem = useListContext_unstable(ctx => ctx.registerItem);
@@ -38,22 +38,62 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
     // in a loop of registering and deregistering.
   }, [innerRef, value, registerItem, deregisterItem]);
 
+  const handleKeyDown: typeof onKeyDown = useEventCallback(e => {
+    onKeyDown?.(e);
+
+    // Compare targets to make sure this only triggers when the event is fired on the list item
+    // and not on a button inside
+    if (e.defaultPrevented || e.target !== e.currentTarget) {
+      return;
+    }
+
+    if (e.key === ' ') {
+      e.preventDefault();
+      selection.toggleItem(e, value);
+    }
+  });
+
+  const handleClick: typeof onClick = useEventCallback(e => {
+    onClick?.(e);
+
+    if (e.defaultPrevented) {
+      return;
+    }
+
+    if (selectable) {
+      selection.toggleItem(e, value);
+    }
+  });
+
+  const ariaLabel = selectable
+    ? selection.isSelected(value)
+      ? `${props['aria-label']}, selected`
+      : `${props['aria-label']}, not selected`
+    : props['aria-label'];
+
   const root = slot.always(
-    getNativeElementProps('div', {
+    getNativeElementProps('li', {
       ref: useMergedRefs(ref, innerRef),
-      role: 'listitem',
-      tabIndex: focusableItems ? 0 : undefined,
+      // role: selectable ? 'option' : 'listitem',
+      role: 'option',
+      tabIndex: focusableItems || selectable ? 0 : undefined,
+      'aria-selected': selectable ? selection.isSelected(value) : undefined,
+      id: value,
       ...focusableGroupAttrs,
       ...props,
+      onKeyDown: handleKeyDown,
+      onClick: handleClick,
+      // 'aria-live': 'polite',
+      'aria-label': ariaLabel,
     }),
-    { elementType: 'div' },
+    { elementType: 'li' },
   );
 
   const checkbox = slot.optional(props.checkbox, {
     renderByDefault: selectable,
     elementType: Checkbox,
     defaultProps: {
-      tabIndex: 0,
+      tabIndex: -1,
       checked: selection.isSelected(value),
       onChange: e => selection.toggleItem(e, value),
     },

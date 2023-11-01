@@ -14,6 +14,7 @@ export const listItemClassNames: SlotClassNames<ListItemSlots> = {
  */
 const useStyles = makeStyles({
   root: {
+    position: 'relative',
     ...createCustomFocusIndicatorStyle(
       {
         ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
@@ -25,6 +26,7 @@ const useStyles = makeStyles({
 
   rootSelectable: {
     display: 'flex',
+    cursor: 'pointer',
   },
 });
 

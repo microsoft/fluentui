@@ -52,7 +52,7 @@ export const ListSelectionInternal = () => {
       >
         {items.map(({ name, avatar }) => {
           return (
-            <ListItem key={name} value={name}>
+            <ListItem key={name} value={name} aria-label={name}>
               <Persona
                 name={name}
                 secondaryText="Available"
@@ -63,6 +63,14 @@ export const ListSelectionInternal = () => {
                   },
                 }}
               />
+              <Button
+                onClick={e => {
+                  e.preventDefault();
+                  console.log('yo');
+                }}
+              >
+                Text
+              </Button>
             </ListItem>
           );
         })}

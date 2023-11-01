@@ -1,6 +1,6 @@
 import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { ListFeaturesState, ListSelectionState, UseListSelectionOptions } from './types';
+import { ListFeaturesState, ListSelectionState } from './types';
 
 export const defaultListSelectionState: ListSelectionState = {
   isSelected: () => false,

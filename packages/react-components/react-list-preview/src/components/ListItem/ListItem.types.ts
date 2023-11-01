@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { Checkbox } from '@fluentui/react-checkbox';
 
 export type ListItemSlots = {
-  root: NonNullable<Slot<'div', 'li' | 'dt' | 'dd'>>;
+  root: NonNullable<Slot<'li', 'div' | 'dt' | 'dd'>>;
   checkbox?: Slot<typeof Checkbox>;
 };
 
@@ -10,7 +10,7 @@ export type ListItemSlots = {
  * ListItem Props
  */
 export type ListItemProps = ComponentProps<ListItemSlots> & {
-  value: string | number;
+  value?: string | number;
 };
 
 /**

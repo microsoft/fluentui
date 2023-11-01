@@ -1,5 +1,11 @@
 import * as React from 'react';
-import type { ComponentProps, ComponentState, OnSelectionChangeData, Slot } from '@fluentui/react-utilities';
+import type {
+  ComponentProps,
+  ComponentState,
+  OnSelectionChangeData,
+  Slot,
+  SelectionMode,
+} from '@fluentui/react-utilities';
 import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
 import { ListSelectionState } from '../../hooks/types';
 
@@ -15,7 +21,7 @@ export type IList = {
 };
 
 export type ListSlots = {
-  root: NonNullable<Slot<'div', 'ul' | 'ol' | 'dl'>>;
+  root: NonNullable<Slot<'ul', 'div' | 'ol' | 'dl'>>;
 };
 
 /**
@@ -26,6 +32,7 @@ export type ListProps = ComponentProps<ListSlots> & {
   customArrowNavigationOptions?: Partial<UseArrowNavigationGroupOptions>;
   focusableItems?: boolean;
   selectable?: boolean;
+  selectionMode?: SelectionMode;
   onSelectionChange?: (event: React.SyntheticEvent, data: OnSelectionChangeData) => void;
   componentRef: React.Ref<IList>;
 };

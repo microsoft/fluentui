@@ -55,79 +55,114 @@ const useStyles = makeStyles({
     display: 'flex',
     ...shorthands.gap('8px'),
   },
+  selectedMark: {
+    position: 'absolute',
+    left: '20px',
+    top: '20px',
+    zIndex: 1,
+    fontSize: '24px',
+  },
 });
 
-const CardExample = (props: CardProps) => {
+const CardExample = (props: CardProps & { value: string; selected?: boolean }) => {
   const styles = useStyles();
 
   return (
-    <Card {...props}>
-      <CardPreview
-        className={styles.grayBackground}
-        logo={<img className={styles.logoBadge} src={resolveAsset('logo3.svg')} alt="Figma app logo" />}
-      >
-        <img className={styles.smallRadius} src={resolveAsset('office1.png')} alt="Presentation Preview" />
-      </CardPreview>
+    <ListItem aria-label="iOS App Prototype" value={props.value} checkbox={null}>
+      {props.selected && <div className={styles.selectedMark}>✅</div>}
+      <Card {...props} selected={undefined} tabIndex={-1}>
+        <CardPreview
+          className={styles.grayBackground}
+          logo={<img className={styles.logoBadge} src={resolveAsset('logo3.svg')} alt="Figma app logo" />}
+        >
+          <img className={styles.smallRadius} src={resolveAsset('office1.png')} alt="Presentation Preview" />
+        </CardPreview>
 
-      <CardHeader
-        header={<Text weight="semibold">iOS App Prototype</Text>}
-        description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
-        action={
-          <div className={styles.actionsWrapper}>
-            <Button appearance="primary" aria-label="Install" onClick={() => alert('Installing!')}>
-              Install
-            </Button>
-            <Menu>
-              <MenuTrigger disableButtonEnhancement>
-                <Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More actions" />
-              </MenuTrigger>
+        <CardHeader
+          header={<Text weight="semibold">iOS App Prototype</Text>}
+          description={<Caption1 className={styles.caption}>You created 53m ago</Caption1>}
+          action={
+            <div className={styles.actionsWrapper}>
+              <Button
+                appearance="primary"
+                aria-label="Install"
+                onClick={e => {
+                  e.preventDefault();
+                  alert('Installing!');
+                }}
+              >
+                Install
+              </Button>
+              <Menu>
+                <MenuTrigger disableButtonEnhancement>
+                  <Button
+                    onClick={e => e.preventDefault()}
+                    appearance="transparent"
+                    icon={<MoreHorizontal20Regular />}
+                    aria-label="More actions"
+                  />
+                </MenuTrigger>
 
-              <MenuPopover>
-                <MenuList>
-                  <MenuItem onClick={() => alert('Clicked menu item')}>About</MenuItem>
-                  <MenuItem onClick={() => alert('Clicked menu item')}>Uninstall</MenuItem>
-                  <MenuItem onClick={() => alert('Clicked menu item')}>Block</MenuItem>
-                </MenuList>
-              </MenuPopover>
-            </Menu>
-          </div>
-        }
-      />
-    </Card>
+                <MenuPopover>
+                  <MenuList>
+                    <MenuItem
+                      onClick={e => {
+                        e.preventDefault();
+                        alert('Clicked menu item');
+                      }}
+                    >
+                      About
+                    </MenuItem>
+                    <MenuItem
+                      onClick={e => {
+                        e.preventDefault();
+                        alert('Clicked menu item');
+                      }}
+                    >
+                      Uninstall
+                    </MenuItem>
+                    <MenuItem
+                      onClick={e => {
+                        e.preventDefault();
+                        alert('Clicked menu item');
+                      }}
+                    >
+                      Block
+                    </MenuItem>
+                  </MenuList>
+                </MenuPopover>
+              </Menu>
+            </div>
+          }
+        />
+      </Card>
+    </ListItem>
   );
 };
 
 export const ListMultipleActions = (props: Partial<ListProps>) => {
   const classes = useStyles();
+
+  const [selectedItems, setSelectedItems] = React.useState<Array<string | number>>([]);
+
   return (
-    <List layout={ListLayout.Grid} className={classes.list} focusableItems>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
-      <ListItem aria-label="iOS App Prototype">
-        <CardExample />
-      </ListItem>
+    <List
+      layout={ListLayout.Grid}
+      className={classes.list}
+      focusableItems
+      selectable
+      onSelectionChange={(e, data) => setSelectedItems(Array.from(data.selectedItems))}
+      selectionMode="multiselect"
+    >
+      <CardExample value="card-1" selected={selectedItems.includes('card-1')} />
+      <CardExample value="card-2" selected={selectedItems.includes('card-2')} />
+      <CardExample value="card-3" selected={selectedItems.includes('card-3')} />
+      <CardExample value="card-4" selected={selectedItems.includes('card-4')} />
+      <CardExample value="card-5" selected={selectedItems.includes('card-5')} />
+      <CardExample value="card-6" selected={selectedItems.includes('card-6')} />
+      <CardExample value="card-7" selected={selectedItems.includes('card-7')} />
+      <CardExample value="card-8" selected={selectedItems.includes('card-8')} />
+      <CardExample value="card-9" selected={selectedItems.includes('card-9')} />
     </List>
   );
 };
