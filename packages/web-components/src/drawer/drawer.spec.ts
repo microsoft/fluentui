@@ -1,7 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { Locator, Page } from '@playwright/test';
 import { keyEscape } from '@microsoft/fast-web-utilities';
-import { Updates } from '@microsoft/fast-element';
 
 import { fixtureURL } from '../helpers.tests.js';
 import type { Drawer } from './drawer.js';
@@ -9,12 +8,14 @@ import type { Drawer } from './drawer.js';
 test.describe('Drawer', () => {
   let page: Page;
   let element: Locator;
+  let dialog: Locator;
   let root: Locator;
 
   test.beforeAll(async ({ browser }) => {
     page = await browser.newPage();
     root = page.locator('#root');
     element = page.locator('fluent-drawer');
+    dialog = page.locator('dialog');
 
     await page.goto(fixtureURL('components-drawer--drawer'));
   });
@@ -187,7 +188,7 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', true);
 
     await element.evaluate((node: Drawer) => {
-      node.close();
+      node.hide();
     });
 
     await expect(element).not.toHaveAttribute('open', '');
@@ -205,7 +206,7 @@ test.describe('Drawer', () => {
     await expect(element).toHaveJSProperty('open', true);
 
     await element.evaluate((node: Drawer) => {
-      node.close();
+      node.hide();
     });
 
     await expect(element).not.toHaveAttribute('open', '');
@@ -228,6 +229,15 @@ test.describe('Drawer', () => {
 
     await expect(element).toHaveAttribute('open', '');
     await expect(element).toHaveJSProperty('open', true);
+  });
+
+  test('a drawer with an alert modal-type should include a role of `alertdialog` on the control', async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+              <fluent-drawer modal-type="alert"></fluent-drawer>
+            `;
+    });
+    await expect(dialog).toHaveAttribute('role', 'alertdialog');
   });
 
   test('should emit an event when open property changes', async () => {
@@ -253,24 +263,89 @@ test.describe('Drawer', () => {
   });
 
   test('drawer should close on escape keypress', async () => {
+    const first: Locator = element.locator('button', { hasText: 'First' });
+
     await root.evaluate(node => {
       node.innerHTML = /* html */ `
-            <fluent-drawer open tabindex="0"></fluent-drawer>
+            <fluent-drawer open>
+              <button>First</button>
+            </fluent-drawer>
         `;
     });
 
     await expect(element).toHaveAttribute('open', '');
     await expect(element).toHaveJSProperty('open', true);
 
-    await element.evaluate(node => {
-      node.focus();
-    });
+    await first.focus();
 
-    await expect(element).toBeFocused();
+    await expect(first).toBeFocused();
 
-    await element.press(keyEscape);
+    await first.press(keyEscape);
 
     await expect(element).not.toHaveAttribute('open', '');
     await expect(element).toHaveJSProperty('open', false);
+  });
+
+  test("should fire a 'dismiss' event when keydown is invoked on the document", async () => {
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+            <fluent-drawer modal-type="modal"></fluent-drawer>
+        `;
+    });
+
+    const [wasDismissed] = await Promise.all([
+      element.evaluate(
+        node =>
+          new Promise(resolve => {
+            node.addEventListener('cancel', () => resolve(true));
+          }),
+      ),
+      element.evaluate(node => {
+        node.dispatchEvent(
+          new Event('cancel', {
+            key: 'Escape',
+          } as EventInit),
+        );
+      }),
+    ]);
+
+    expect(wasDismissed).toBe(true);
+  });
+
+  test('should trap focus in the drawer when arrow up/down keys', async () => {
+    const first: Locator = element.locator('button', { hasText: 'First' });
+    const second: Locator = element.locator('button', { hasText: 'Second' });
+    const third: Locator = page.locator('button', { hasText: 'Third' });
+    await root.evaluate(node => {
+      node.innerHTML = /* html */ `
+          <fluent-drawer open>
+            <button>First</button>
+            <button>Second</button>
+            <button>Third</button>
+          </fluent-drawer>
+      `;
+    });
+
+    await first.focus();
+
+    await expect(first).toBeFocused();
+    await first.press('Tab');
+
+    await expect(second).toBeFocused();
+    await second.press('Tab');
+
+    await expect(third).toBeFocused();
+    await third.press('Tab');
+
+    await expect(first).toBeFocused();
+    await first.press('Tab');
+
+    await expect(second).toBeFocused();
+    await second.press('Shift+Tab');
+
+    await expect(first).toBeFocused();
+    await first.press('Shift+Tab');
+
+    await expect(third).toBeFocused();
   });
 });
