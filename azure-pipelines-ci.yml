@@ -31,7 +31,7 @@ extends:
       - stage: main
         jobs:
           - job: BuildTestLint
-            timeoutInMinutes: 120
+            timeoutInMinutes: 90
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
