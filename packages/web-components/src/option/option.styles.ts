@@ -3,18 +3,21 @@ import { display } from '@microsoft/fast-foundation';
 import {
   borderRadiusMedium,
   borderRadiusSmall,
-  colorCompoundBrandStroke,
   colorNeutralBackground1,
   colorNeutralBackground1Hover,
   colorNeutralBackground1Pressed,
   colorNeutralForeground1,
   colorNeutralForeground2,
   colorNeutralForegroundDisabled,
+  colorStrokeFocus2,
   colorTransparentBackground,
+  colorTransparentStroke,
   fontFamilyBase,
+  shadow4,
   spacingHorizontalXS,
   spacingHorizontalXXS,
   spacingVerticalSNudge,
+  strokeWidthThick,
 } from '../theme/design-tokens.js';
 
 /** Option styles
@@ -38,21 +41,24 @@ export const styles = css`
     font-weight: inherit;
     height: 32px;
     line-height: inherit;
-    outline: none;
     overflow: hidden;
     padding: inherit ${spacingVerticalSNudge};
     user-select: none;
     white-space: nowrap;
     width: 100%;
   }
+  :host[aria-checked='true'],
+  :host[aria-selected='true'] {
+    border-color: ${colorTransparentStroke};
+    outline: ${strokeWidthThick} solid ${colorTransparentStroke};
+    box-shadow: ${shadow4}, 0 0 0 2px ${colorStrokeFocus2};
+  }
+
   :host([hidden]) {
     display: none;
   }
   :host(:hover) {
     background: ${colorNeutralBackground1Hover};
-  }
-  :host([aria-checked='true']) {
-    outline: ${colorCompoundBrandStroke} 1px solid;
   }
   :host(:active) {
     background-color: ${colorNeutralBackground1Pressed};
@@ -86,7 +92,7 @@ export const styles = css`
     line-height: 0;
     width: 16px;
   }
-  :host([data-selected]) .checkmark {
+  :host([aria-checked][aria-selected='true']) .checkmark {
     background: var(--checkmark-selected-background, ${colorTransparentBackground});
   }
 
@@ -96,6 +102,7 @@ export const styles = css`
     width: 100%;
   }
 
+  :host([aria-checked]) .select-indicator,
   :host([data-selected]) .select-indicator {
     align-items: center;
     display: flex;

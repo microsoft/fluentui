@@ -6,4 +6,9 @@ import { FASTListboxOption } from '@microsoft/fast-foundation';
  * @remarks
  * This class extends the FASTListboxOption.
  */
-export class ListboxOption extends FASTListboxOption {}
+export class ListboxOption extends FASTListboxOption {
+  public connectedCallback() {
+    super.connectedCallback();
+    this.tabIndex = 0;
+  }
+}
