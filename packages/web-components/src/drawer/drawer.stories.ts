@@ -74,12 +74,12 @@ const toggleDrawer = (drawerID: string, containerID?: string) => {
     drawers.forEach(drawerElement => {
       const drawer = drawerElement as FluentDrawer;
       if (drawer.open) {
-        drawer.close();
+        drawer.hide();
       }
     });
   }
   if (drawer.open) {
-    drawer.close();
+    drawer.hide();
   } else {
     drawer.show();
   }
@@ -91,14 +91,14 @@ const toggleSelectedDrawer = (radioGroupId: string) => {
   const drawerToOpen = document.querySelector(`#drawer-${idSubString}`) as FluentDrawer;
   const drawersToClose = document.querySelectorAll(`fluent-drawer:not(#drawer-${idSubString})`);
   if (drawerToOpen.open) {
-    drawerToOpen.close();
+    drawerToOpen.hide();
   } else {
     drawerToOpen.show();
   }
   drawersToClose.forEach(d => {
     const drawer = d as FluentDrawer;
     if (drawer.open) {
-      drawer.close();
+      drawer.hide();
     }
   });
 };
@@ -106,7 +106,7 @@ const toggleSelectedDrawer = (radioGroupId: string) => {
 const hideDrawer = (drawerID: string) => {
   const drawer = document.getElementById(drawerID) as FluentDrawer;
   if (drawer.open) {
-    drawer.close();
+    drawer.hide();
   }
 };
 
@@ -628,7 +628,7 @@ export const Position = renderComponent(html<DrawerStoryArgs>`
         </p>
       </fluent-text>
       <fluent-text font="monospace" size="300" weight="regular">
-        <code>position</code>
+        <code>position=""</code>
       </fluent-text>
       <fluent-label weight="semibold">Select a Drawer Position</fluent-label>
       <fluent-radio-group id="drawer-radiogroup-position">
@@ -684,7 +684,7 @@ export const Size = renderComponent(html<DrawerStoryArgs>`
         <p>The size attribute controls the width of the drawer. The default is medium.</p>
       </fluent-text>
       <fluent-text font="monospace" size="300" weight="regular">
-        <code>size</code>
+        <code>size=""</code>
       </fluent-text>
       <fluent-label weight="semibold">Select a Drawer Size</fluent-label>
       <fluent-radio-group id="drawer-radiogroup-sizes">

@@ -1,7 +1,6 @@
-import { attr, css, FASTElement, observable, Updates } from '@microsoft/fast-element';
+import { attr, FASTElement, observable, Updates } from '@microsoft/fast-element';
 import { isTabbable } from 'tabbable';
 import { eventAnimationEnd, keyEscape, keyTab } from '@microsoft/fast-web-utilities';
-import { colorNeutralStroke1, colorTransparentStroke } from '../theme/design-tokens.js';
 import { DrawerModalType, DrawerPosition, DrawerSize, DrawerType } from './drawer.options.js';
 
 export class Drawer extends FASTElement {
@@ -22,15 +21,6 @@ export class Drawer extends FASTElement {
     document.removeEventListener('keydown', this.handleDocumentKeydown);
     this.updateTrapFocus(false);
   }
-
-  /**
-   * The content container.
-   * @public
-   * @remarks
-   * HTML Attribute: content
-   */
-  @observable
-  public content?: HTMLElement;
 
   /**
    * The dialog element.
@@ -76,17 +66,17 @@ export class Drawer extends FASTElement {
    * @defaultValue overlay
    */
   @attr
-  public type?: DrawerType = DrawerType.overlay;
+  public type?: DrawerType;
 
   /**
    * Sets the position of the drawer (start/end).
    * @public
    * @remarks
    * HTML Attribute: position
-   * @defaultValue end
+   * @defaultValue start
    */
   @attr
-  public position?: DrawerPosition = DrawerPosition.end;
+  public position?: DrawerPosition;
 
   /**
    * Sets the size of the drawer (small/medium/large).
@@ -125,7 +115,7 @@ export class Drawer extends FASTElement {
       if (newValue && !oldValue) {
         this.show();
       } else if (!newValue && oldValue) {
-        this.close();
+        this.hide();
       }
     }
     this.$emit('onOpenChange', { open: this.open });
@@ -173,7 +163,7 @@ export class Drawer extends FASTElement {
   }
 
   /**
-   * Opens the drawer if it is currently closed.
+   * Opens the drawer if it is currently hidden.
    * @public
    */
   public show(): void {
@@ -193,7 +183,7 @@ export class Drawer extends FASTElement {
    * Closes the drawer if it is currently open.
    * @public
    */
-  public close(): void {
+  public hide(): void {
     if (this.dialog.open) {
       this.closing = true;
       Updates.enqueue(() => {
@@ -212,7 +202,7 @@ export class Drawer extends FASTElement {
   public clickHandler(event: Event): boolean {
     event.preventDefault();
     if (this.open && this.modalType !== DrawerModalType.alert && event.target === this.dialog) {
-      this.close();
+      this.hide();
       this.cancel();
     }
     return true;
@@ -233,7 +223,7 @@ export class Drawer extends FASTElement {
         event.preventDefault();
 
         if (this.modalType !== DrawerModalType.alert) {
-          this.close();
+          this.hide();
           this.cancel();
         }
         break;
