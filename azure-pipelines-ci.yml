@@ -43,7 +43,7 @@ extends:
 
           - job: DeployE2E
             displayName: Deploy and E2E
-            timeoutInMinutes: 120
+            timeoutInMinutes: 90
             workspace:
               clean: all
             pool:
