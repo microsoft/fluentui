@@ -19,7 +19,6 @@ export const useBreadcrumbButton_unstable = (
 ): BreadcrumbButtonState => {
   const { size } = useBreadcrumbContext_unstable();
   const { current = false, ...rest } = props;
-  rest.as = 'a';
 
   return {
     ...useButton_unstable(
