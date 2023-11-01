@@ -8,28 +8,45 @@ export const defaultListSelectionState: ListSelectionState = {
   selectItem: () => undefined,
   deselectItem: () => undefined,
   clearSelection: () => undefined,
+  toggleAllItems: () => undefined,
+  selectedItems: new Set(),
 };
 
-export function useListSelection<TItem>(options: SelectionHookParams = { selectionMode: 'multiselect' }) {
+export function useListSelection<TItem extends { id: string | number }>(
+  options: SelectionHookParams = { selectionMode: 'multiselect' },
+) {
   // False positive, these plugin hooks are intended to be run on every render
   // eslint-disable-next-line react-hooks/rules-of-hooks
   return (listState: ListFeaturesState<TItem>) => useListSelectionState(listState, options);
 }
 
-export function useListSelectionState<TItem>(listState: ListFeaturesState<TItem>, options: SelectionHookParams) {
-  const { selectionMode, defaultSelectedItems } = options;
+export function useListSelectionState<TItem extends { id: string | number }>(
+  listState: ListFeaturesState<TItem>,
+  options: SelectionHookParams,
+) {
+  const { selectionMode, defaultSelectedItems, onSelectionChange } = options;
   const [selectedItems, setSelectedItems] = React.useState(() => new Set<string | number>(defaultSelectedItems || []));
 
   const [selected, selectionMethods] = useSelection({
     selectionMode,
     defaultSelectedItems,
     selectedItems,
-    onSelectionChange: (e, data) => setSelectedItems(data.selectedItems),
+    onSelectionChange: (e, data) => {
+      setSelectedItems(data.selectedItems);
+      onSelectionChange?.(e, data);
+    },
   });
 
   const toggleItem: ListSelectionState['toggleItem'] = useEventCallback((e, itemId) =>
     selectionMethods.toggleItem(e, itemId),
   );
+
+  const toggleAllItems: ListSelectionState['toggleAllItems'] = useEventCallback(e => {
+    selectionMethods.toggleAllItems(
+      e,
+      listState.items.map(item => item.id),
+    );
+  });
 
   const deselectItem: ListSelectionState['deselectItem'] = useEventCallback((e, itemId: string | number) =>
     selectionMethods.deselectItem(e, itemId),
@@ -46,6 +63,7 @@ export function useListSelectionState<TItem>(listState: ListFeaturesState<TItem>
     selection: {
       selectedItems: selected,
       toggleItem,
+      toggleAllItems,
       deselectItem,
       selectItem,
       setSelectedItems,

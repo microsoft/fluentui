@@ -7,7 +7,7 @@ export {
   ListLayout,
 } from './List';
 
-export type { ListProps, ListSlots, ListState } from './List';
+export type { ListProps, ListSlots, ListState, IList } from './List';
 export {
   ListItem,
   listItemClassNames,

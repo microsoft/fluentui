@@ -11,5 +11,11 @@ import type { ListItemState, ListItemSlots } from './ListItem.types';
 export const renderListItem_unstable = (state: ListItemState) => {
   assertSlots<ListItemSlots>(state);
 
-  return <state.root />;
+  // TODO Add additional slots in the appropriate place
+  return (
+    <state.root>
+      {state.checkbox ? <state.checkbox /> : null}
+      {state.root.children}
+    </state.root>
+  );
 };
