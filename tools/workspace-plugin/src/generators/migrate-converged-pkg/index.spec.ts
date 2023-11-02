@@ -863,6 +863,7 @@ describe('migrate-converged-pkg generator', () => {
 
     it(`should update package npm scripts`, async () => {
       const projectConfig = readProjectConfiguration(tree, options.name);
+
       const pkgJsonPath = `${projectConfig.root}/package.json`;
       updateJson(tree, pkgJsonPath, json => {
         json.scripts.docs = 'api-extractor run --config=config/api-extractor.local.json --local';
@@ -901,31 +902,30 @@ describe('migrate-converged-pkg generator', () => {
         just: 'just-scripts',
         lint: 'just-scripts lint',
         test: 'jest --passWithNoTests',
-        'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
         'type-check': 'tsc -b tsconfig.json',
       });
+
+      // verify test-ssr addition
+      updateProjectConfiguration(tree, options.name, { ...projectConfig, tags: ['platform:web'] });
+      tree.write(joinPathFragments(projectConfig.root, 'stories/Foo/Foo.stories.tsx'), 'export {}');
+
+      await generator(tree, options);
+
+      pkgJson = readJson(tree, `${projectConfig.root}/package.json`);
+
+      expect(pkgJson.scripts).toEqual(
+        expect.objectContaining({
+          'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
+        }),
+      );
     });
 
     describe(`export-maps`, () => {
-      function setup(config: { name: string; addModuleField?: boolean }) {
-        const addModuleField = config.addModuleField ?? true;
-        const projectConfig = readProjectConfiguration(tree, config.name);
-        const pkgJsonPath = `${projectConfig.root}/package.json`;
-
-        if (addModuleField) {
-          updateJson(tree, pkgJsonPath, json => {
-            json.module = './lib/index.js';
-            return json;
-          });
-        }
-
-        const getPackageJson = () => readJson(tree, pkgJsonPath);
-
-        return { getPackageJson };
-      }
-
       it(`should update exports map`, async () => {
-        const { getPackageJson } = setup({ name: options.name });
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+          jsonUpdates: { module: './lib/index.js', style: './css/index.css' },
+        });
 
         let pkgJson = getPackageJson();
 
@@ -936,25 +936,28 @@ describe('migrate-converged-pkg generator', () => {
         pkgJson = getPackageJson();
 
         expect(pkgJson.exports).toMatchInlineSnapshot(`
-                  Object {
-                    ".": Object {
-                      "import": "./lib/index.js",
-                      "node": "./lib-commonjs/index.js",
-                      "require": "./lib-commonjs/index.js",
-                      "types": "./dist/index.d.ts",
-                    },
-                    "./package.json": "./package.json",
-                  }
-              `);
+          Object {
+            ".": Object {
+              "import": "./lib/index.js",
+              "node": "./lib-commonjs/index.js",
+              "require": "./lib-commonjs/index.js",
+              "style": "./css/index.css",
+              "types": "./dist/index.d.ts",
+            },
+            "./package.json": "./package.json",
+          }
+        `);
       });
 
       it(`should update exports map based on main,module fields`, async () => {
-        const { getPackageJson } = setup({ name: options.name, addModuleField: false });
+        const { getPackageJson } = updatePackageJson(tree, {
+          projectName: options.name,
+        });
 
         await generator(tree, options);
 
         const pkgJson = getPackageJson();
-        expect(pkgJson.exports['.'].module).toBe(undefined);
+        expect((pkgJson.exports?.['.'] as { import?: string }).import).toBe(undefined);
       });
     });
 
@@ -989,27 +992,63 @@ describe('migrate-converged-pkg generator', () => {
       await generator(tree, options);
 
       expect(tree.exists(npmIgnoreConfigPath)).toBe(false);
-      let pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
+      const pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
 
       expect(pkgJson.files).toMatchInlineSnapshot(`
         Array [
-          "lib",
-          "lib-commonjs",
+          "*.md",
           "dist/*.d.ts",
+          "lib-commonjs",
+        ]
+      `);
+    });
+
+    it(`should set package.json#files bases on project setup`, async () => {
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      updateProjectConfiguration(tree, projectConfig.name!, { ...projectConfig, tags: ['ships-amd'] });
+      let getPackageJson = updatePackageJson(tree, {
+        projectName: options.name,
+        jsonUpdates: { module: './lib/index.js', style: './sass/index.scss', bin: './bin/cli.js', storybook: {} },
+      }).getPackageJson;
+
+      await generator(tree, options);
+
+      expect(getPackageJson().files).toMatchInlineSnapshot(`
+        Array [
+          "*.md",
+          "bin",
+          "dist/*.d.ts",
+          "lib",
+          "lib-amd",
+          "lib-commonjs",
+          "preset.js",
+          "sass",
         ]
       `);
 
-      updateProjectConfiguration(tree, projectConfig.name!, { ...projectConfig, tags: ['ships-amd'] });
+      getPackageJson = updatePackageJson(tree, {
+        projectName: options.name,
+        jsonUpdates: {
+          module: './lib/index.js',
+          types: 'one/two/index.d.ts',
+          bin: { one: './bin/one.js', two: './bin-two/one.js' },
+        },
+      }).getPackageJson;
+
       await generator(tree, options);
 
-      pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
-
-      expect(pkgJson.files).toMatchInlineSnapshot(`
+      expect(getPackageJson().files).toMatchInlineSnapshot(`
         Array [
-          "lib",
-          "lib-commonjs",
-          "lib-amd",
+          "*.md",
+          "bin",
+          "bin-two",
           "dist/*.d.ts",
+          "lib",
+          "lib-amd",
+          "lib-commonjs",
+          "one/two/*.d.ts",
+          "preset.js",
+          "sass",
         ]
       `);
     });
@@ -1653,4 +1692,18 @@ function assertAndReadNxJson(tree: Tree) {
   }
 
   return nxJson;
+}
+
+function updatePackageJson(tree: Tree, config: { projectName: string; jsonUpdates?: Partial<PackageJson> }) {
+  const projectConfig = readProjectConfiguration(tree, config.projectName);
+  const pkgJsonPath = `${projectConfig.root}/package.json`;
+
+  updateJson(tree, pkgJsonPath, json => {
+    Object.assign(json, config.jsonUpdates);
+    return json;
+  });
+
+  const getPackageJson = () => readJson<PackageJson>(tree, pkgJsonPath);
+
+  return { getPackageJson };
 }

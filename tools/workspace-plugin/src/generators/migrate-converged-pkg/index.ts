@@ -17,7 +17,6 @@ import {
   readNxJson,
 } from '@nx/devkit';
 import path from 'path';
-import os from 'os';
 import ts from 'typescript';
 
 import { getTemplate, uniqueArray } from './lib/utils';
@@ -364,47 +363,7 @@ const templates = {
       include: ['**/*.cy.ts', '**/*.cy.tsx'],
     },
   },
-  npmIgnoreConfig:
-    stripIndents`
-    .storybook/
-    .vscode/
-    bundle-size/
-    config/
-    coverage/
-    docs/
-    etc/
-    node_modules/
-    src/
-    stories/
-    dist/types/
-    temp/
-    __fixtures__
-    __mocks__
-    __tests__
-
-    *.api.json
-    *.log
-    *.spec.*
-    *.cy.*
-    *.test.*
-    *.yml
-
-    # config files
-    *config.*
-    *rc.*
-    .editorconfig
-    .eslint*
-    .git*
-    .prettierignore
-    .swcrc
-    project.json
-
-    # exclude gitignore patterns explicitly
-    !lib
-    !lib-commonjs
-    !lib-amd
-    !dist/*.d.ts
-  ` + os.EOL,
+  npmIgnoreConfig: ``,
   swcConfig: () => {
     return {
       $schema: 'https://json.schemastore.org/swcrc',
@@ -693,11 +652,16 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   return tree;
 
   function setupScripts(json: PackageJson) {
-    const scripts = {
+    const packageType = getPackageType(tree, options);
+    const hasStories = shouldSetupStorybook(tree, options) === 'init';
+    const scripts: Record<string, string> = {
       test: 'jest --passWithNoTests',
-      'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
       'type-check': 'tsc -b tsconfig.json',
     };
+
+    if (packageType === 'web' && hasStories) {
+      scripts['test-ssr'] = 'test-ssr "./stories/**/*.stories.tsx"';
+    }
 
     json.scripts = json.scripts || {};
     delete json.scripts['update-snapshots'];
@@ -708,7 +672,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
     Object.assign(json.scripts, scripts);
 
-    if (getPackageType(tree, options) === 'node') {
+    if (packageType === 'node') {
       delete json.scripts.start;
       delete json.scripts.storybook;
     }
@@ -720,6 +684,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     json.exports = {
       '.': {
         types: json.typings,
+        ...(json.style ? { style: normalizePackageEntryPointPaths(json.style) } : null),
         ...(json.main ? { node: normalizePackageEntryPointPaths(json.main) } : null),
         ...(json.module ? { import: normalizePackageEntryPointPaths(json.module) } : null),
         ...(json.main ? { require: normalizePackageEntryPointPaths(json.main) } : null),
@@ -742,17 +707,70 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   function setupNpmPublishFiles(json: PackageJson) {
+    const rootMarkdownPath = '*.md';
+    const mainPath = json.main ? path.dirname(json.main) : null;
+    const modulePath = json.module ? path.dirname(json.module) : null;
+    const binPath = getBinFolders(json);
+    const stylesPath = json.style ? path.dirname(json.style) : null;
+    const typesPath = getTypes(json);
+    const storybookPath = getStorybookPath(json);
+    const amdPath = options.projectConfig.tags?.includes('ships-amd') ? 'lib-amd' : null;
+    const filesDefinition = [
+      rootMarkdownPath,
+      mainPath,
+      modulePath,
+      ...(binPath ?? []),
+      stylesPath,
+      typesPath,
+      storybookPath,
+      amdPath,
+    ]
+      .filter(Boolean)
+      .map(value => {
+        return value?.replace('./', '');
+      }) as string[];
+
     json.files = json.files ?? [];
-    json.files = [
-      'lib',
-      'lib-commonjs',
-      options.projectConfig.tags?.includes('ships-amd') ? 'lib-amd' : '',
-      'dist/*.d.ts',
-    ].filter(Boolean);
+    json.files = uniqueArray([...json.files, ...filesDefinition]).sort();
 
     tree.delete(options.paths.npmConfig);
 
     return json;
+
+    // helpers
+
+    function getStorybookPath(pkgJson: PackageJson) {
+      return pkgJson.storybook || tree.exists(joinPathFragments(options.projectConfig.root, 'preset.js'))
+        ? 'preset.js'
+        : null;
+    }
+
+    function getTypes(pkgJson: PackageJson) {
+      const typesDeclarationPath = pkgJson.types || pkgJson.typings;
+      return typesDeclarationPath ? globifyPath(path.dirname(typesDeclarationPath), 'd.ts') : null;
+    }
+    function getBinFolders(pkgJson: PackageJson) {
+      const bin = pkgJson.bin;
+      if (!bin) {
+        return null;
+      }
+
+      if (typeof bin === 'string') {
+        return [path.dirname(bin)];
+      }
+
+      const binRootPaths = new Set<string>();
+
+      for (const binDefinitionPath of Object.values(bin)) {
+        binRootPaths.add(path.dirname(binDefinitionPath));
+      }
+
+      return Array.from(binRootPaths);
+    }
+
+    function globifyPath(value: string, extension: string) {
+      return `${value}/*.${extension}`;
+    }
   }
 }
 
