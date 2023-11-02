@@ -44,6 +44,16 @@ export class SparklineChartPage extends React.Component<IComponentDemoPageProps,
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/docs/SparklineChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/docs/SparklineChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/docs/SparklineChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

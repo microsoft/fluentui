@@ -62,6 +62,16 @@ export class DonutChartPage extends React.Component<IComponentDemoPageProps, {}>
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/docs/DonutChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/docs/DonutChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/docs/DonutChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

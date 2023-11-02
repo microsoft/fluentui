@@ -26,6 +26,8 @@ export const HeatMapChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/HeatMapChart/docs/HeatMapChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

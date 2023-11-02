@@ -99,11 +99,6 @@ export class LineChartPage extends React.Component<IComponentDemoPageProps, {}> 
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/LineChartDonts.md')}
           </Markdown>
         }
-        accessibility={
-          <Markdown>
-            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/LineChart/docs/LineChartAccessibility.md')}
-          </Markdown>
-        }
       />
     );
   }

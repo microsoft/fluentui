@@ -76,6 +76,16 @@ export class StackedBarChartPage extends React.Component<IComponentDemoPageProps
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/docs/StackedBarChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/docs/StackedBarChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/docs/StackedBarChartDonts.md')}
+          </Markdown>
+        }
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );
