@@ -41,9 +41,9 @@
     "@fluentui/react-context-selector": "^9.1.41",
     "@fluentui/react-popover": "^9.8.19",
     "@fluentui/react-portal": "^9.3.27",
-    "@fluentui/react-icons": "^2.0.221",
+    "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-tabster": "^9.14.3",
-    "@griffel/react": "^1.5.17",
+    "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
