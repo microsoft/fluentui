@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Combobox now collapses when mousing up outside of listbox after having moused within it.",
-  "packageName": "@fluentui/react-combobox",
-  "email": "makotom@microsoft.com",
-  "dependentChangeType": "patch"
-}

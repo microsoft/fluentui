@@ -44,7 +44,7 @@ describe(`sabdbox-utils`, () => {
       expect(actual).toBe(null);
       expect(consoleErrorSpy.mock.calls.flat()).toMatchInlineSnapshot(`
         Array [
-          "Export to CodeSandbox: Couldn't find source for story Showcase. Did you install the babel plugin?",
+          "Export to Sandbox Addon: Couldn't find source for story Showcase. Did you install the babel plugin?",
         ]
       `);
     });

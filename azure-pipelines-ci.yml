@@ -31,6 +31,7 @@ extends:
       - stage: main
         jobs:
           - job: BuildTestLint
+            timeoutInMinutes: 90
             pool:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
@@ -42,6 +43,7 @@ extends:
 
           - job: DeployE2E
             displayName: Deploy and E2E
+            timeoutInMinutes: 90
             workspace:
               clean: all
             pool:

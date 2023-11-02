@@ -18,7 +18,7 @@ export class DonutChartCustomAccessibilityExample extends React.Component<IDonut
       {
         legend: 'first',
         data: 20000,
-        color: getColorFromToken(DataVizPalette.disabled),
+        color: getColorFromToken(DataVizPalette.color16),
         xAxisCalloutData: '2020/04/30',
         callOutAccessibilityData: { ariaLabel: 'Pia chart 1 of 2 2020/04/30' },
       },

@@ -61,6 +61,8 @@ export const StackedBarChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/docs/StackedBarChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/docs/StackedBarChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/docs/StackedBarChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/StackedBarChart/docs/StackedBarChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

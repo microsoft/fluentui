@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-link",
-  "version": "9.1.31",
+  "version": "9.1.32",
   "description": "Fluent UI React Link component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,9 +36,9 @@
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.6",
     "@fluentui/react-jsx-runtime": "^9.0.18",
-    "@fluentui/react-shared-contexts": "^9.11.0",
-    "@fluentui/react-tabster": "^9.14.2",
-    "@fluentui/react-theme": "^9.1.14",
+    "@fluentui/react-shared-contexts": "^9.11.1",
+    "@fluentui/react-tabster": "^9.14.3",
+    "@fluentui/react-theme": "^9.1.15",
     "@fluentui/react-utilities": "^9.15.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"

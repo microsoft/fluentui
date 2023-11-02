@@ -1,0 +1,1 @@
+- Refer to Vertical Bar Chart page for common don'ts.

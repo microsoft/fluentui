@@ -2,11 +2,9 @@ import { createTreeWithEmptyWorkspace } from '@nx/devkit/testing';
 import {
   Tree,
   readProjectConfiguration,
-  readWorkspaceConfiguration,
   stripIndents,
   addProjectConfiguration,
   serializeJson,
-  WorkspaceConfiguration,
   parseJson,
   getProjects,
   joinPathFragments,
@@ -14,6 +12,7 @@ import {
   readJson,
   updateJson,
   NxJsonConfiguration,
+  readNxJson,
 } from '@nx/devkit';
 
 import generator from './index';
@@ -273,7 +272,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = assertAndReadNxJson(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -386,6 +385,16 @@ function setupDummyPackage(
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
+function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
+}
+
+function assertAndReadNxJson(tree: Tree) {
+  const nxJson = readNxJson(tree);
+
+  if (!nxJson) {
+    throw new Error('nx.json doesnt exist');
+  }
+
+  return nxJson;
 }

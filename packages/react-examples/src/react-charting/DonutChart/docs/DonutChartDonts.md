@@ -1,0 +1,1 @@
+- Don't overuse donuts charts. They require a lot of space on the page and using more than one next to each other dilutes the intended message.

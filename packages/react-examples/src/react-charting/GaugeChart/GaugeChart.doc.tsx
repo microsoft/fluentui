@@ -28,6 +28,8 @@ export const GaugeChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/docs/GaugeChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/docs/GaugeChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/docs/GaugeChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GaugeChart/docs/GaugeChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

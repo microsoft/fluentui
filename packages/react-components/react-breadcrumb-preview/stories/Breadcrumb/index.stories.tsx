@@ -3,7 +3,6 @@ import { Breadcrumb, BreadcrumbButton, BreadcrumbItem, BreadcrumbDivider } from 
 import descriptionMd from './BreadcrumbDescription.md';
 import bestPracticesMd from './BreadcrumbBestPractices.md';
 export { Default } from './BreadcrumbDefault.stories';
-export { BreadcrumbButtonWithHrefAttribute } from './BreadcrumbButtonWithHrefAttribute.stories';
 export { BreadcrumbSize } from './BreadcrumbSize.stories';
 export { FocusModeArrow } from './BreadcrumbFocusMode.stories';
 export { BreadcrumbWithOverflow } from './BreadcrumbWithOverflow.stories';
