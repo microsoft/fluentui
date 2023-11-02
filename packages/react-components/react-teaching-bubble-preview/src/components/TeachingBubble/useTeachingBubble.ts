@@ -4,16 +4,16 @@ import * as React from 'react';
 import { TeachingBubbleCarousel } from '../TeachingBubbleCarousel/TeachingBubbleCarousel';
 import { useCallback } from 'react';
 
-export function countCarouselChildren(children: React.ReactNode | React.ReactNode[]): number {
+export function countCarouselChildren(children: React.ReactElement | React.ReactElement[]): number {
   const childArray = Array.isArray(children) ? children : [children];
   let childCount = 0;
-  childArray.forEach(child => {
-    if (!child.props) {
+  childArray.forEach((child: React.ReactElement) => {
+    if (!child || !child.props) {
       return;
     }
-    if (child.type === TeachingBubbleCarousel) {
+    if (child.props && child.type === TeachingBubbleCarousel) {
       childCount = React.Children.toArray(child.props.children).length;
-    } else if (child.props.children) {
+    } else if (child.props && child.props.children) {
       const newChildCount = countCarouselChildren(child.props.children);
       if (newChildCount > 0) {
         childCount = newChildCount;

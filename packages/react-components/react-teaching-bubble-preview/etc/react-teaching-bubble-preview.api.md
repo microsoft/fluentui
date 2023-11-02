@@ -4,21 +4,20 @@
 
 ```ts
 
-import { ARIAButtonResultProps } from '@fluentui/react-aria';
-import { ARIAButtonType } from '@fluentui/react-aria';
+/// <reference types="react" />
+
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { Context } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { FC } from 'react';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import type { PopoverContextValue } from '@fluentui/react-popover';
 import type { PopoverProps } from '@fluentui/react-popover';
 import type { PopoverState } from '@fluentui/react-popover';
+import { PopoverTriggerProps } from '@fluentui/react-popover';
 import { Provider } from 'react';
 import { ProviderProps } from 'react';
 import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
-import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
 export const TeachingBubble: React_2.FC<TeachingBubbleProps>;
@@ -27,16 +26,25 @@ export const TeachingBubble: React_2.FC<TeachingBubbleProps>;
 export const TeachingBubbleContext: Context<TeachingBubbleContextValue>;
 
 // @public
-export type TeachingBubbleContextValue = PopoverContextValue & {};
+export type TeachingBubbleContextValue = Pick<TeachingBubbleState, 'currentPage' | 'setCurrentPage' | 'totalPages' | 'setTotalPages' | 'appearance' | 'onPageChange' | 'onFinish'>;
 
 // @public
-export type TeachingBubbleProps = PopoverProps & {};
+export type TeachingBubbleProps = Omit<PopoverProps, 'appearance'> & {
+    currentPage?: number;
+    onPageChange?: (index: number) => void;
+    onFinish?: () => void;
+    appearance?: 'brand';
+};
 
 // @public (undocumented)
-export const TeachingBubbleProvider: Provider<PopoverContextValue> & FC<ProviderProps<PopoverContextValue>>;
+export const TeachingBubbleProvider: Provider<TeachingBubbleContextValue> & FC<ProviderProps<TeachingBubbleContextValue>>;
 
 // @public
-export type TeachingBubbleState = PopoverState & {};
+export type TeachingBubbleState = Omit<PopoverState, 'appearance'> & Partial<Pick<TeachingBubbleProps, 'onPageChange' | 'onFinish' | 'appearance'>> & Required<Pick<TeachingBubbleProps, 'currentPage'>> & {
+    totalPages: number;
+    setCurrentPage: (page: number) => void;
+    setTotalPages: (pages: number) => void;
+};
 
 // @public
 export const TeachingBubbleSurface: ForwardRefComponent<TeachingBubbleSurfaceProps>;
@@ -45,7 +53,7 @@ export const TeachingBubbleSurface: ForwardRefComponent<TeachingBubbleSurfacePro
 export const TeachingBubbleTrigger: React_2.FC<TeachingBubbleTriggerProps>;
 
 // @public (undocumented)
-export const useTeachingBubbleContext_unstable: <T>(selector: ContextSelector<PopoverContextValue, T>) => T;
+export const useTeachingBubbleContext_unstable: <T>(selector: ContextSelector<TeachingBubbleContextValue, T>) => T;
 
 // (No @packageDocumentation comment for this package)
 
