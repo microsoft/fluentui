@@ -387,7 +387,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should not add 3rd party packages that use same scope as our repo `, async () => {
-      const workspaceConfig = readNxJson(tree)!;
+      const workspaceConfig = assertAndReadNxJson(tree);
       const normalizedPkgName = getNormalizedPkgName({ pkgName: options.name, workspaceConfig });
       const thirdPartyPackageName = '@proj/jango-fet';
 
