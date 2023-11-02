@@ -34,7 +34,7 @@ export type ListProps = ComponentProps<ListSlots> & {
   selectable?: boolean;
   selectionMode?: SelectionMode;
   onSelectionChange?: (event: React.SyntheticEvent, data: OnSelectionChangeData) => void;
-  componentRef: React.Ref<IList>;
+  componentRef?: React.Ref<IList>;
 };
 
 export type ListContextValue = {

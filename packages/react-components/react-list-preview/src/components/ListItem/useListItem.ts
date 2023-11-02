@@ -101,7 +101,7 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
 
   const state: ListItemState = {
     components: {
-      root: 'div',
+      root: 'li',
       checkbox: Checkbox,
     },
     root,
