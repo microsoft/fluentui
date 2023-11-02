@@ -59,5 +59,11 @@
       "major",
       "prerelease"
     ]
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

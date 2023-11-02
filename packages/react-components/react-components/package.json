@@ -108,5 +108,12 @@
       "import": "./lib/unstable/index.js",
       "require": "./lib-commonjs/unstable/index.js"
     }
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs",
+    "unstable"
+  ]
 }

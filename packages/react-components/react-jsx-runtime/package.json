@@ -65,5 +65,13 @@
       "require": "./lib-commonjs/jsx-runtime.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "jsx-dev-runtime",
+    "jsx-runtime",
+    "lib",
+    "lib-commonjs"
+  ]
 }

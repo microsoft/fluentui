@@ -43,5 +43,10 @@
       "require": "./src/index.ts"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs"
+  ]
 }
