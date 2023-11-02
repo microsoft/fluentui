@@ -1,40 +1,11 @@
-<div>
-  <p>
-    Gauge chart measures the progress of a metric against its target and its primary components are a
-    speedometer and a needle. The speedometer usually consists of color-coded segments progressing value from
-    left to right.
-  </p>
-  <h3>Implementation details</h3>
-  <ul>
-    <li>
-      The diameter of the gauge depends upon the <code>width</code> and <code>height</code> props passed to
-      the chart. If the props are omitted, a default diameter of 140px will be used.
-    </li>
-    <li>
-      To render a title above the gauge, set the <code>chartTitle</code> prop.
-    </li>
-    <li>
-      The needle position depends upon the required <code>chartValue</code> prop.
-    </li>
-    <li>
-      Use the required <code>segments</code> prop to divide the gauge into colored sections. These sections
-      can have fixed sizes, or the users can choose to create a sweeping effect by varying the segment size
-      with the chartValue.
-    </li>
-    <li>
-      Set the <code>minValue</code> prop if the minimum value of the gauge is different than 0. A placeholder
-      segment will be rendered if the <code>maxValue</code> prop is greater than the total size of the
-      segments.
-    </li>
-    <li>
-      To render an additional text below the chartValue, set the <code>sublabel</code> prop.
-    </li>
-    <li>
-      To hide the minimum and maximum values of the gauge, set the <code>hideMinMax</code> prop.
-    </li>
-    <li>
-      The chartValue prop is rendered as a percentage by default. Set the <code>chartVaueFormat</code> prop to
-      'fraction' or a formatter function.
-    </li>
-  </ul>
-</div>
+A radial gauge chart uses a circular arc to show how a single value progresses toward a goal or a Key Performance Indicator (KPI). The gauge line (or needle) represents the goal or target value. The shading represents progress toward the goal. The value inside the arc represents the progress value.
+
+There are two types of gauge charts: Speedometer and rating meter.
+
+The speedometer measures a numerical value against a whole, like storage capacity. The needle is an optional component. The color of the segment representing the value being measured can be customized by product teams to suit certain scenarios or to align with branding colors.
+
+The rating meter shows status of the current value within a few predefined ranges or segments. The needle is a required component here.
+
+The segment sizes and colors can be customized by the product team to suit their needs.
+
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.

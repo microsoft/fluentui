@@ -1,0 +1,2 @@
+- Try to keep the number of bars in the chart between 3 and 20 to maximize readability.
+- Use this chart if the bar labels are very long.

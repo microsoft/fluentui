@@ -1,0 +1,3 @@
+- Prefer line charts to plot trends.
+- No more than 9 lines on a chart; fewer are better.
+- Do not remove axis titles unless it is clear to the user what is being visualized.

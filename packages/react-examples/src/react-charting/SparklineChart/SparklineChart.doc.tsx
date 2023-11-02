@@ -21,6 +21,8 @@ export const SparklineChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/docs/SparklineChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/docs/SparklineChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/docs/SparklineChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/SparklineChart/docs/SparklineChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

@@ -1,13 +1,5 @@
-<div>
-  <p>
-    Grouped vertical bar chart is slightly different than a vertical stacked bar chart. In a vertical stacked
-    bar chart, the bars are stacked one on top of the other. In a grouped vertical bar chart, the vertical
-    bars are aligned next to each other in groups. In stacked bar chart, the reference point for each bar is
-    either the x axis or another bar in the stack. For grouped vertical bar chart, each bar has x axis as the
-    reference point. Having a common reference point helps in better comparison between different values in
-    the chart.
-  </p>
-  <p>
-    The bar labels are shown by default. Set the <code>hideLabels</code> prop to hide them.
-  </p>
-</div>
+A grouped vertical bar chart displays multiple series of data as a group of bars, with each bar denoting a category. The bars are grouped together side by side, with each group denoting a different series.
+
+Effectively, a grouped vertical bar chart can slice data across 2 dimensions - (1) A dimension along the x axis and (2) Groups within the first dimension. And the y-axis plots the values of each category. Each bar in a group is colored differently to differentiate among categories within the group.
+
+Refer to this [Readme](https://github.com/microsoft/fluentui/blob/master/packages/react-charting/README.md) on how to start using the `@fluentui/react-charting` library.
