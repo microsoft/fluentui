@@ -179,7 +179,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
    * Extra margin is also provided, in the x value to provide some spacing
    */
 
-  private _createBarsAndLegends(
+  public _createBarsAndLegends(
     data: IChartProps,
     barHeight: number,
     palette: IPalette,
@@ -468,7 +468,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     });
   }
 
-  private _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
+  public _getLegendData = (data: IChartProps[], hideRatio: boolean[], palette: IPalette): JSX.Element => {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
     const actions: ILegend[] = [];
     data.forEach((singleChartData: IChartProps, index: number) => {
@@ -623,13 +623,13 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return this.state.selectedLegend === '' && this.state.activeLegend === '';
   };
 
-  private _getAriaLabel = (point: IChartDataPoint): string => {
+  public _getAriaLabel = (point: IChartDataPoint): string => {
     const legend = point.xAxisCalloutData || point.legend;
     const yValue = point.yAxisCalloutData || point.data || 0;
     return point.callOutAccessibilityData?.ariaLabel || (legend ? `${legend}, ` : '') + `${yValue}.`;
   };
 
-  private _computeLongestBarTotalValue = () => {
+  public _computeLongestBarTotalValue = () => {
     let longestBarTotalValue = 0;
     this.props.data!.forEach(({ chartData }) => {
       const barTotalValue = chartData!.reduce(
@@ -641,7 +641,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     return longestBarTotalValue;
   };
 
-  private _isChartEmpty(): boolean {
+  public _isChartEmpty(): boolean {
     return !(
       this.props.data &&
       this.props.data.length > 0 &&
