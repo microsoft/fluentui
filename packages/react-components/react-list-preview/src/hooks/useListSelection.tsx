@@ -9,6 +9,8 @@ export const defaultListSelectionState: ListSelectionState = {
   deselectItem: () => undefined,
   clearSelection: () => undefined,
   toggleAllItems: () => undefined,
+  getListProps: () => ({}),
+  getListItemProps: () => ({}),
   selectedItems: new Set(),
 };
 
@@ -58,6 +60,20 @@ export function useListSelectionState<TItem extends { id: string | number }>(
 
   const clearSelection: ListSelectionState['clearSelection'] = useEventCallback(e => selectionMethods.clearItems(e));
 
+  const getListProps: ListSelectionState['getListProps'] = () => {
+    return {
+      role: 'listbox',
+      'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
+    };
+  };
+  const getListItemProps: ListSelectionState['getListItemProps'] = value => {
+    return {
+      tabIndex: 0,
+      role: 'option',
+      'aria-selected': selectionMethods.isSelected(value) || undefined,
+    };
+  };
+
   return {
     ...listState,
     selection: {
@@ -69,6 +85,8 @@ export function useListSelectionState<TItem extends { id: string | number }>(
       setSelectedItems,
       isSelected: (id: string | number) => selectionMethods.isSelected(id),
       clearSelection,
+      getListProps,
+      getListItemProps,
     },
   };
 }

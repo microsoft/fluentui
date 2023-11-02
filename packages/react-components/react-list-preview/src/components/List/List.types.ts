@@ -5,6 +5,7 @@ import type {
   OnSelectionChangeData,
   Slot,
   SelectionMode,
+  SelectionItemId,
 } from '@fluentui/react-utilities';
 import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
 import { ListSelectionState } from '../../hooks/types';
@@ -40,10 +41,9 @@ export type ListProps = ComponentProps<ListSlots> & {
 export type ListContextValue = {
   focusableItems: boolean;
   items: Array<{ id: string | number }>;
-  registerItem: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
-  deregisterItem: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
-  selection: ListSelectionState;
-  selectable: boolean;
+  selection?: ListSelectionState;
+  registerItem?: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
+  deregisterItem?: (id: string | number, ref: React.RefObject<HTMLElement>) => void;
 };
 
 export type ListContextValues = {

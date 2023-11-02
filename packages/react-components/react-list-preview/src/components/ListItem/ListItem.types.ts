@@ -16,6 +16,6 @@ export type ListItemProps = ComponentProps<ListItemSlots> & {
 /**
  * State used in rendering ListItem
  */
-export type ListItemState = ComponentState<ListItemSlots> & { selectable: boolean };
+export type ListItemState = ComponentState<ListItemSlots> & {};
 // TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from ListItemProps.
 // & Required<Pick<ListItemProps, 'propName'>>

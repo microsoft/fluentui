@@ -65,9 +65,8 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     root: slot.always(
       getNativeElementProps('ul', {
         ref,
-        role: selectable ? 'listbox' : 'list',
         tabIndex: -1,
-        'aria-multiselectable': selectable ? true : undefined, // TODO not true for single select
+        ...selection.getListProps(),
         ...arrowNavigationAttributes,
         ...props,
       }),
@@ -77,9 +76,9 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     // context:
     focusableItems,
     items,
-    registerItem,
-    deregisterItem,
-    selectable,
-    selection,
+    registerItem: selectable ? registerItem : undefined,
+    deregisterItem: selectable ? deregisterItem : undefined,
+    // only pass down selection state if its handled internally, otherwise just report the events
+    selection: selectable ? selection : undefined,
   };
 };

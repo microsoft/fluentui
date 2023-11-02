@@ -19,20 +19,19 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const { value = id, onKeyDown, onClick } = props;
 
   const focusableItems = useListContext_unstable(ctx => ctx.focusableItems);
+  const selection = useListContext_unstable(ctx => ctx.selection);
   const registerItem = useListContext_unstable(ctx => ctx.registerItem);
   const deregisterItem = useListContext_unstable(ctx => ctx.deregisterItem);
-  const selectable = useListContext_unstable(ctx => ctx.selectable);
-  const selection = useListContext_unstable(ctx => ctx.selection);
 
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
   const innerRef = React.useRef<HTMLElement>(null);
 
   React.useEffect(() => {
-    registerItem(value, innerRef);
+    registerItem?.(value, innerRef);
 
     return () => {
-      deregisterItem(value, innerRef);
+      deregisterItem?.(value, innerRef);
     };
     // Always make sure the dependencies are stable across rerenders, otherwise we go
     // in a loop of registering and deregistering.
@@ -40,6 +39,11 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
 
   const handleKeyDown: typeof onKeyDown = useEventCallback(e => {
     onKeyDown?.(e);
+
+    // Return early if selection state is not provided = not selectable or controlled
+    if (!selection) {
+      return;
+    }
 
     // Compare targets to make sure this only triggers when the event is fired on the list item
     // and not on a button inside
@@ -56,46 +60,40 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const handleClick: typeof onClick = useEventCallback(e => {
     onClick?.(e);
 
+    // Return early if selection state is not provided =  or controlled
+    if (!selection) {
+      return;
+    }
+
     if (e.defaultPrevented) {
       return;
     }
 
-    if (selectable) {
-      selection.toggleItem(e, value);
-    }
+    selection.toggleItem(e, value);
   });
-
-  const ariaLabel = selectable
-    ? selection.isSelected(value)
-      ? `${props['aria-label']}, selected`
-      : `${props['aria-label']}, not selected`
-    : props['aria-label'];
 
   const root = slot.always(
     getNativeElementProps('li', {
       ref: useMergedRefs(ref, innerRef),
-      // role: selectable ? 'option' : 'listitem',
-      role: 'option',
-      tabIndex: focusableItems || selectable ? 0 : undefined,
-      'aria-selected': selectable ? selection.isSelected(value) : undefined,
+      tabIndex: focusableItems ? 0 : undefined,
+      role: 'listitem',
       id: value,
+      ...(selection ? selection.getListItemProps(value) : {}),
       ...focusableGroupAttrs,
       ...props,
-      onKeyDown: handleKeyDown,
-      onClick: handleClick,
-      // 'aria-live': 'polite',
-      'aria-label': ariaLabel,
+      onKeyDown: selection ? handleKeyDown : onKeyDown,
+      onClick: selection ? handleClick : onClick,
     }),
     { elementType: 'li' },
   );
 
   const checkbox = slot.optional(props.checkbox, {
-    renderByDefault: selectable,
+    renderByDefault: !!selection,
     elementType: Checkbox,
     defaultProps: {
       tabIndex: -1,
-      checked: selection.isSelected(value),
-      onChange: e => selection.toggleItem(e, value),
+      checked: selection?.isSelected(value),
+      onChange: e => selection?.toggleItem(e, value),
     },
   });
 
@@ -106,7 +104,6 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
     },
     root,
     checkbox,
-    selectable,
   };
 
   return state;

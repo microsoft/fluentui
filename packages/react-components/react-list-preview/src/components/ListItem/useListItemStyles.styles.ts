@@ -24,8 +24,8 @@ const useStyles = makeStyles({
     ),
   },
 
-  rootSelectable: {
-    display: 'flex',
+  rootClickable: {
+    display: 'flex', //TODO needed?
     cursor: 'pointer',
   },
 });
@@ -38,7 +38,7 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
   state.root.className = mergeClasses(
     listItemClassNames.root,
     styles.root,
-    state.selectable && styles.rootSelectable,
+    state.root.onClick && styles.rootClickable,
     state.root.className,
   );
 
