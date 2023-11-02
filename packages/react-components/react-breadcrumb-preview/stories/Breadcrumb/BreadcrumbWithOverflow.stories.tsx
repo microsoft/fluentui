@@ -41,7 +41,7 @@ type Item = {
   itemProps?: {
     icon?: ButtonProps['icon'];
     disabled?: boolean;
-    href: string;
+    href?: string;
   };
 };
 
@@ -123,12 +123,17 @@ const useExampleStyles = makeStyles({
 const MenuItem: React.FC<{ id: string; item: Item }> = props => {
   const { item, id } = props;
   const isVisible = useIsOverflowItemVisible(id);
+  const href = item.itemProps?.href || '';
 
   if (isVisible) {
     return null;
   }
 
-  return <MenuItemLink {...item.itemProps}>{item.item}</MenuItemLink>;
+  return (
+    <MenuItemLink {...item.itemProps} href={href}>
+      {item.item}
+    </MenuItemLink>
+  );
 };
 
 const OverflowGroupDivider: React.FC<{
