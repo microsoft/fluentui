@@ -32,21 +32,35 @@ We cannot just add the `Event` type to the existing callbacks as this is a break
 
 Use generic [`Event`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/v17/global.d.ts#L10) type and strongly-typed events in "data bag".
 
+### Implementation
+
+Define two helper types `EventData` and `EventHandler` to ensure consistency across all components:
+
+```ts
+export type EventData<Type extends string, TEvent> =
+  | { type: undefined; event: React.SyntheticEvent | Event | undefined }
+  | { type: Type; event: TEvent };
+
+export type EventHandler<TData extends EventData<string, unknown>> = (
+  ev: React.SyntheticEvent | Event | undefined,
+  data: TData,
+) => void;
+```
+
 - For existing event handlers where we can't change the type:
 
   - Deprecate the existing `onSomeEvent` handler and introduce `onSomeEvent2` with the new proposed type signatures.
   - Continue to call the deprecated `onSomeEvent` in all cases. If the event object is of the wrong type for the existing function, do a cast.
 
 - For new event handlers (and the "2" versions of existing ones):
-  - Always use the type `React.SyntheticEvent | Event | undefined` for the first argument.
-  - "Data bag" - always add a strongly-typed event to the data object for all currently possible event types.
-    - `data` is a union of objects, where each object contains required `event` and `type` property. `event` is the specific event type, and `type` is a string literal that serves as a clear identifier of the event type. Developers can use the `type` property to easily verify and filter events of interest.
-      > Note that we have this approach to `data` in [`TreeItemOpenChangeData`](https://github.com/microsoft/fluentui/blob/2eedc2ec54397253a4e3076fbfa382f4fe3c1175/packages/react-components/react-tree/src/components/TreeItem/TreeItem.types.ts#L25C1-L31C3), [`DialogOpenChangeData`](https://github.com/microsoft/fluentui/blob/a0bd42391c0a259558383e0ea6077617485aa234/packages/react-components/react-dialog/src/components/Dialog/Dialog.types.ts#L10-L25)
+  - Always use `EventHandler` type for the callback. It ensures the first argument is `React.SyntheticEvent | Event | undefined`.
+  - Add strongly-typed events to the data object using `EventData` type.
+    - `EventData` makes data a discriminated union, where each object requires `event` and `type` property. `event` is the specific event type, and `type` is a string literal that serves as a clear identifier of the event type. Developers can use the `type` property to easily verify and filter events of interest.
+      > Note that we have similar approach to `data` in [`TreeItemOpenChangeData`](https://github.com/microsoft/fluentui/blob/2eedc2ec54397253a4e3076fbfa382f4fe3c1175/packages/react-components/react-tree/src/components/TreeItem/TreeItem.types.ts#L25C1-L31C3), [`DialogOpenChangeData`](https://github.com/microsoft/fluentui/blob/a0bd42391c0a259558383e0ea6077617485aa234/packages/react-components/react-dialog/src/components/Dialog/Dialog.types.ts#L10-L25)
+    - `EventData` includes `{ type: undefined; event: React.SyntheticEvent | Event | undefined }` to ensure the event type of the data union is narrowed down to generic event. Developers must check `data.type` before using type-specific event.
 
 ```ts
 import * as React from 'react';
-
-export type CallbackEvents = React.SyntheticEvent | Event | undefined;
 
 // ======= For an existing component =======
 {
@@ -54,21 +68,13 @@ export type CallbackEvents = React.SyntheticEvent | Event | undefined;
 
   type MyComponentElement = HTMLElement;
 
-  type OnOpenChangeData =
-    | {
-        open: boolean;
-      }
-    // Add specific events to data:
-    | {
-        type: 'click';
-        open: boolean;
-        event: React.MouseEvent<MyComponentElement>;
-      }
-    | {
-        type: 'enterKeydown';
-        open: boolean;
-        event: React.KeyboardEvent<MyComponentElement>;
-      };
+  type OnOpenChangeData = (
+    | EventData<'click', React.MouseEvent<MyComponentElement>>
+    | EventData<'keydown', React.KeyboardEvent<MyComponentElement>>
+    | EventData<'scroll', Event>
+  ) & {
+    open: boolean;
+  };
 
   type PopoverProps = {
     /**
@@ -76,7 +82,7 @@ export type CallbackEvents = React.SyntheticEvent | Event | undefined;
      */
     onOpenChange?: (e: OpenPopoverEvents, data: OnOpenChangeData) => void;
 
-    onOpenChange2?: (e: CallbackEvents, data: OnOpenChangeData) => void;
+    onOpenChange2?: EventHandler<OnOpenChangeData>;
   };
 }
 
@@ -84,19 +90,18 @@ export type CallbackEvents = React.SyntheticEvent | Event | undefined;
 {
   type MyComponentElement = HTMLElement;
 
-  type OnSomeEventData =
-    | {
-        type: 'click';
-        open: boolean;
-        event: React.MouseEvent<MyComponentElement>;
-      }
-    | {
-        type: 'focus';
-        open: boolean;
-        event: React.FocusEvent<MyComponentElement>;
-      };
+  type OnSomeEventData = EventData<'click', React.MouseEvent<MyComponentElement>> & {
+    open: boolean;
+  };
+  // If one day we need to add more events, we can just add them to the union:
+  // type OnSomeEventData =
+  //   | EventData<'click', React.MouseEvent<MyComponentElement>>
+  //   | (EventData<'focus', React.FocusEvent<MyComponentElement>> & {
+  //       open: boolean;
+  //     });
+
   type SomeProps = {
-    onSomeEvent?: (e: CallbackEvents, data: OnSomeEventData) => void;
+    onSomeEvent?: EventHandler<OnSomeEventData>;
   };
 }
 ```
@@ -123,20 +128,15 @@ export type CallbackEvents = React.SyntheticEvent | Event | undefined;
      {
        // Proposed way:
        type OnSomeEventData =
-         | {
-             type: 'click';
+         | EventData<'click', React.MouseEvent<MyComponentElement>>
+         | (EventData<'focus', React.FocusEvent<MyComponentElement>> & {
              open: boolean;
-             event: React.MouseEvent<HTMLElement>;
-           }
-         | {
-             type: 'focus';
-             open: boolean;
-             event: React.TouchEvent<HTMLElement>;
-           };
+           });
        const onOpenChange = (_e: Event, data: OnSomeEventData) => {
+         console.log(data.event?.currentTarget); // base event data can be used without checking data.type
+         console.log(data.event?.clientX); // Typescript will give an error here as expected
          if (data.type === 'click') {
-           // this won't blow as `data.type` verification will ensure `data.event` is a mouse event
-           console.log(data.event.clientX); // ✅
+           console.log(data.event.clientX); // ✅ this won't blow as `data.type` verification will ensure `data.event` is a mouse event
          }
        };
      }
