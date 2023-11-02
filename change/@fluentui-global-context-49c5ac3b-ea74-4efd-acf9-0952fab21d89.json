@@ -1,0 +1,7 @@
+{
+  "type": "prerelease",
+  "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries",
+  "packageName": "@fluentui/global-context",
+  "email": "martinhochel@microsoft.com",
+  "dependentChangeType": "patch"
+}
