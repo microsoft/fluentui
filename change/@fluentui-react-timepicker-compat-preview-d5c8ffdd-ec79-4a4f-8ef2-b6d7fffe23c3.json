@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "chore: add cypress tests.",
+  "packageName": "@fluentui/react-timepicker-compat-preview",
+  "email": "yuanboxue@microsoft.com",
+  "dependentChangeType": "none"
+}
