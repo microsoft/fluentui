@@ -67,7 +67,7 @@ The library has a wide variety of tests to ensure quality of the library.
 The tests range from component tests, unit tests, visual regression tests, accessibility tests, integration tests and manual tests.
 The test automations aim to ensure over 90% code coverage across the library.
 
-Further details available in the wiki
+Further details available in the [wiki](https://aka.ms/fluentChartingWiki)
 
 Run `yarn test` from within the package to run all the tests.
 
@@ -75,7 +75,7 @@ Run `yarn test` from within the package to run all the tests.
 
 Our charts have elaborate accessibility support. The charts are WCAG 2.1 MAS C compliant for accessibility.
 
-More details are covered in the wiki.
+More details are covered in the [wiki](https://aka.ms/fluentChartingWiki).
 
 ## Performance
 
@@ -87,21 +87,22 @@ Performance is measured and has been improved for the following scenarios.
     <th>S No</th>
     <th>Scenario</th>
     <th>Lighthouse Score</th>
-  </tr><tr>
-            <td>1.</td>
-            <td>1 LineChart of 1 series with 30,000 datapoints</td>
-            <td>79.2</td>
-           </tr>
+  </tr>
 <tr>
-            <td>2.</td>
-            <td>6 LineCharts of 1 series with 100 datapoints each</td>
-            <td>98.8</td>
-           </tr>
+    <td>1.</td>
+    <td>1 LineChart of 1 series with 30,000 datapoints</td>
+    <td>79.2</td>
+</tr>
 <tr>
-            <td>3.</td>
-            <td>18 LineCharts of 1 series with 5 datapoints</td>
-            <td>98</td>
-           </tr>
+    <td>2.</td>
+    <td>6 LineCharts of 1 series with 100 datapoints each</td>
+    <td>98.8</td>
+</tr>
+<tr>
+    <td>3.</td>
+    <td>18 LineCharts of 1 series with 5 datapoints</td>
+    <td>98</td>
+</tr>
 <tr>
     <td>4.</td>
     <td>50 Linecharts of 1 Series with 10 datapoints each</td>
@@ -134,7 +135,7 @@ Performance is measured and has been improved for the following scenarios.
 </tr>
 <table>
 
-More details are covered in the wiki.
+More details are covered in the [wiki](https://aka.ms/fluentChartingWiki).
 
 ## Versioning and changelog
 
