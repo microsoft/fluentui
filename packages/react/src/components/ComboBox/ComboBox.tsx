@@ -853,6 +853,12 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
    * @returns a boolean indicating whether the callout dismissal should be prevented
    */
   private _preventDismissOnScrollOrResize(ev: Event) {
+    // default to passed-in preventDismiss
+    const { calloutProps } = this.props;
+    if (calloutProps?.preventDismissOnEvent) {
+      return calloutProps.preventDismissOnEvent(ev);
+    }
+
     if (this._overrideScrollDismiss && (ev.type === 'scroll' || ev.type === 'resize')) {
       return true;
     }
