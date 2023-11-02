@@ -5,6 +5,7 @@ export { Default } from './TeachingBubbleDefault.stories';
 export { DefaultBrand } from './TeachingBubbleDefaultBranded.stories';
 export { Carousel } from './TeachingBubbleCarousel.stories';
 export { CarouselBrand } from './TeachingBubbleCarouselBranded.stories';
+export { CarouselText } from './TeachingBubbleCarouselText.stories';
 
 export default {
   title: 'Preview Components/TeachingBubble',

@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Button } from '@fluentui/react-components';
-import { TeachingBubble, TeachingBubbleTrigger, TeachingBubbleSurface } from '@fluentui/react-components/unstable';
-import type { TeachingBubbleProps } from '@fluentui/react-components/unstable';
+import { TeachingBubble } from '../../src/components/TeachingBubble/TeachingBubble';
+import type { TeachingBubbleProps } from '../../src/components/TeachingBubble/index';
+import { TeachingBubbleTrigger } from '../../src/components/TeachingBubbleTrigger/index';
+import { TeachingBubbleSurface } from '../../src/components/TeachingBubbleSurface/index';
 import { TeachingBubbleHeader } from '../../src/components/TeachingBubbleHeader/TeachingBubbleHeader';
 import { TeachingBubbleBody } from '../../src/components/TeachingBubbleBody/index';
 import { TeachingBubbleActions } from '../../src/components/TeachingBubbleActions/index';
@@ -18,7 +20,7 @@ const ExampleContent = (index: number) => {
   );
 };
 
-export const Carousel = (props: TeachingBubbleProps) => (
+export const CarouselText = (props: TeachingBubbleProps) => (
   <TeachingBubble withArrow={true} {...props}>
     <TeachingBubbleTrigger>
       <Button>TeachingBubble trigger</Button>
