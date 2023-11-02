@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-components",
-  "version": "9.37.2",
+  "version": "9.37.3",
   "description": "Suite package for converged React components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -41,7 +41,7 @@
     "@fluentui/react-combobox": "^9.5.28",
     "@fluentui/react-dialog": "^9.8.2",
     "@fluentui/react-divider": "^9.2.48",
-    "@fluentui/react-drawer": "9.0.0-beta.39",
+    "@fluentui/react-drawer": "9.0.0-beta.40",
     "@fluentui/react-field": "^9.1.40",
     "@fluentui/react-image": "^9.1.45",
     "@fluentui/react-infobutton": "9.0.0-beta.74",
@@ -77,7 +77,7 @@
     "@fluentui/react-utilities": "^9.15.1",
     "@fluentui/react-text": "^9.3.45",
     "@fluentui/react-virtualizer": "9.0.0-alpha.55",
-    "@fluentui/react-tree": "^9.4.10",
+    "@fluentui/react-tree": "^9.4.11",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1",
     "@fluentui/react-message-bar": "^9.0.4"
