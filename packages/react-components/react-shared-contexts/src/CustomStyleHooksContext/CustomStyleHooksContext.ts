@@ -82,6 +82,14 @@ export type CustomStyleHooksContextValue = Partial<{
   useTableSelectionCellStyles_unstable: CustomStyleHook;
   useTableCellActionsStyles_unstable: CustomStyleHook;
   useTableCellLayoutStyles_unstable: CustomStyleHook;
+  useTeachingBubbleActionsStyles_unstable: CustomStyleHook;
+  useTeachingBubbleBodyStyles_unstable: CustomStyleHook;
+  useTeachingBubbleButtonStyles_unstable: CustomStyleHook;
+  useTeachingBubbleSurfaceStyles_unstable: CustomStyleHook;
+  useTeachingBubbleTitleStyles_unstable: CustomStyleHook;
+  useTeachingBubbleHeaderStyles_unstable: CustomStyleHook;
+  useTeachingBubblePageCountStyles_unstable: CustomStyleHook;
+  useTeachingBubbleCarouselStyles_unstable: CustomStyleHook;
   useDataGridCellStyles_unstable: CustomStyleHook;
   useDataGridRowStyles_unstable: CustomStyleHook;
   useDataGridBodyStyles_unstable: CustomStyleHook;

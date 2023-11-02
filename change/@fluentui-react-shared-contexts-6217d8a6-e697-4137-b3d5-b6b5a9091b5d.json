@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "feat: Adds TeachingBubblePreview style hooks",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "mifraser@microsoft.com",
+  "dependentChangeType": "patch"
+}

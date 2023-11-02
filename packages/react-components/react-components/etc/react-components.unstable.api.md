@@ -368,6 +368,22 @@ export { scrollToItemStatic }
 
 export { ScrollToItemStaticParams }
 
+export { TeachingBubble }
+
+export { TeachingBubbleContext }
+
+export { TeachingBubbleContextValue }
+
+export { TeachingBubbleProps }
+
+export { TeachingBubbleProvider }
+
+export { TeachingBubbleState }
+
+export { TeachingBubbleSurface }
+
+export { TeachingBubbleTrigger }
+
 export { Tree }
 
 export { treeClassNames }
@@ -485,6 +501,8 @@ export { useOverlayDrawerStyles_unstable }
 export { useResizeObserverRef_unstable }
 
 export { useStaticVirtualizerMeasure }
+
+export { useTeachingBubbleContext_unstable }
 
 export { useTree_unstable }
 

@@ -104,6 +104,8 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useTableSelectionCellStyles_unstable: (state: unknown) => void;
         useTableCellActionsStyles_unstable: (state: unknown) => void;
         useTableCellLayoutStyles_unstable: (state: unknown) => void;
+        useTeachingBubbleSurfaceStyles_unstable: (state: unknown) => void;
+        useTeachingBubbleHeaderStyles_unstable: (state: unknown) => void;
         useDataGridCellStyles_unstable: (state: unknown) => void;
         useDataGridRowStyles_unstable: (state: unknown) => void;
         useDataGridBodyStyles_unstable: (state: unknown) => void;

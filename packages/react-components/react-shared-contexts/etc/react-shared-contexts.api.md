@@ -99,6 +99,7 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useTableSelectionCellStyles_unstable: CustomStyleHook;
     useTableCellActionsStyles_unstable: CustomStyleHook;
     useTableCellLayoutStyles_unstable: CustomStyleHook;
+    useTeachingBubbleSurfaceStyles_unstable: CustomStyleHook;
     useDataGridCellStyles_unstable: CustomStyleHook;
     useDataGridRowStyles_unstable: CustomStyleHook;
     useDataGridBodyStyles_unstable: CustomStyleHook;
@@ -211,6 +212,7 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useTableSelectionCellStyles_unstable: CustomStyleHook;
     useTableCellActionsStyles_unstable: CustomStyleHook;
     useTableCellLayoutStyles_unstable: CustomStyleHook;
+    useTeachingBubbleSurfaceStyles_unstable: CustomStyleHook;
     useDataGridCellStyles_unstable: CustomStyleHook;
     useDataGridRowStyles_unstable: CustomStyleHook;
     useDataGridBodyStyles_unstable: CustomStyleHook;
@@ -323,6 +325,7 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useTableSelectionCellStyles_unstable: CustomStyleHook;
     useTableCellActionsStyles_unstable: CustomStyleHook;
     useTableCellLayoutStyles_unstable: CustomStyleHook;
+    useTeachingBubbleSurfaceStyles_unstable: CustomStyleHook;
     useDataGridCellStyles_unstable: CustomStyleHook;
     useDataGridRowStyles_unstable: CustomStyleHook;
     useDataGridBodyStyles_unstable: CustomStyleHook;
