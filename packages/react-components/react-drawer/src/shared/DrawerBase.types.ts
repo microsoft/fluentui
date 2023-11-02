@@ -1,4 +1,4 @@
-import { MotionShorthand, MotionState } from '@fluentui/react-motion-preview';
+import { MotionState } from '@fluentui/react-motion-preview';
 
 export type DrawerBaseProps = {
   /**
@@ -25,7 +25,7 @@ export type DrawerBaseProps = {
    *
    * @default false
    */
-  open?: MotionShorthand<HTMLDivElement>;
+  open?: boolean;
 };
 
 export type DrawerBaseState = Required<Pick<DrawerBaseProps, 'position' | 'size'>> & {
