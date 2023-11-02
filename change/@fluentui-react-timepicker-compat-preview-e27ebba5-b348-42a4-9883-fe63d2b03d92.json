@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "none",
   "comment": "chore: add bundle size fixture.",
   "packageName": "@fluentui/react-timepicker-compat-preview",
   "email": "yuanboxue@microsoft.com",
