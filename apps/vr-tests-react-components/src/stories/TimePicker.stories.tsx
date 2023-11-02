@@ -6,13 +6,7 @@ import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorato
 
 storiesOf('TimePicker compat', module)
   .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => (
-    <StoryWright steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</StoryWright>
-  ))
-  .addStory('Default', () => (
-    <div style={{ paddingBottom: '120px' }}>
-      <TimePicker open startHour={11} endHour={13} />
-    </div>
-  ))
+  .addDecorator(story => <StoryWright steps={new Steps().snapshot('default').end()}>{story()}</StoryWright>)
+  .addStory('Default', () => <TimePicker open startHour={11} endHour={13} />)
   .addStory('With 12-hour format', () => <TimePicker open startHour={11} endHour={13} hourCycle="h11" />)
   .addStory('Show seconds', () => <TimePicker open startHour={11} endHour={13} showSeconds />);
