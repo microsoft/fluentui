@@ -6,6 +6,8 @@ import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './typ
 /**
  * @internal
  *
+ * @deprecated use useARIAButtonProps instead
+ *
  * This function expects to receive a slot, if `as` property is not desired use `useARIAButtonProps` instead
  *
  * Button keyboard handling, role, disabled and tabIndex implementation that ensures ARIA spec
