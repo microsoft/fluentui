@@ -177,6 +177,7 @@ export type TreeItemContextValue = {
     expandIconRef: React_2.Ref<HTMLDivElement>;
     layoutRef: React_2.Ref<HTMLDivElement>;
     subtreeRef: React_2.Ref<HTMLDivElement>;
+    treeItemRef?: React_2.RefObject<HTMLDivElement>;
     itemType: TreeItemType;
     value: TreeItemValue;
     open: boolean;

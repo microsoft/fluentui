@@ -37,9 +37,6 @@ extends:
       name: Azure-Pipelines-1ESPT-ExDShared
       image: windows-latest
       os: windows # We need windows because compliance task only run on windows.
-    sdl:
-      credscan:
-        suppressionsFile: .devops/CredScanSuppressions.json
     stages:
       - stage: main
         jobs:
@@ -48,6 +45,7 @@ extends:
               name: '1ES-Host-Ubuntu'
               image: '1ES-PT-Ubuntu-20.04'
               os: linux
+            timeoutInMinutes: 90
             workspace:
               clean: all
             templateContext:

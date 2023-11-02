@@ -1,5 +1,12 @@
 const rules = require('./rules');
-const { getPackageStoriesGlob, loadWorkspaceAddon, registerRules, registerTsPaths } = require('./utils');
+const {
+  getPackageStoriesGlob,
+  loadWorkspaceAddon,
+  registerRules,
+  registerTsPaths,
+  processBabelLoaderOptions,
+  getImportMappingsForExportToSandboxAddon,
+} = require('./utils');
 
 module.exports = {
   getPackageStoriesGlob,
@@ -7,4 +14,6 @@ module.exports = {
   registerRules,
   registerTsPaths,
   rules,
+  getImportMappingsForExportToSandboxAddon,
+  processBabelLoaderOptions,
 };
