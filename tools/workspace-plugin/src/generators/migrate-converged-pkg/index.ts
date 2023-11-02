@@ -185,7 +185,7 @@ const templates = {
     return {
       main: () => {
         const tsConfig = {
-          extends: '../../../../../tsconfig.base.json',
+          extends: offsetFromRoot(options.projectConfig.root) + 'tsconfig.base.json',
           compilerOptions: {
             target: 'ES2019',
             // by default we gonna use tsc for type checking only
@@ -293,6 +293,7 @@ const templates = {
     pkgName: string;
     addSnapshotSerializers: boolean;
     testSetupFilePath: string;
+    projectConfig: ProjectConfiguration;
   }) => stripIndents`
       // @ts-check
 
@@ -301,7 +302,7 @@ const templates = {
       */
       module.exports = {
         displayName: '${options.pkgName}',
-        preset: '../../../../../jest.preset.js',
+        preset: '${offsetFromRoot(options.projectConfig.root)}jest.preset.js',
         transform: {
           '^.+\\.tsx?$': [
             'ts-jest',
@@ -316,11 +317,13 @@ const templates = {
         ${options.addSnapshotSerializers ? `snapshotSerializers: ['@griffel/jest-serializer'],` : ''}
       };
   `,
-  storybook: {
-    main: stripIndents`
-      const rootMain = require('../../../../../../.storybook/main');
+  storybook: (options: NormalizedSchema) => {
+    const rootOffsetPath = offsetFromRoot(options.paths.storybook.rootFolder);
+    return {
+      main: stripIndents`
+      const rootMain = require('${rootOffsetPath}.storybook/main');
 
-      module.exports = /** @type {Omit<import('../../../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+      module.exports = /** @type {Omit<import('${rootOffsetPath}.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -333,8 +336,8 @@ const templates = {
         },
       });
     `,
-    preview: stripIndents`
-      import * as rootPreview from '../../../../../../.storybook/preview';
+      preview: stripIndents`
+      import * as rootPreview from '${rootOffsetPath}.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
@@ -342,15 +345,16 @@ const templates = {
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
     `,
-    tsconfig: {
-      extends: '../tsconfig.json',
-      compilerOptions: {
-        outDir: '',
-        allowJs: true,
-        checkJs: true,
+      tsconfig: {
+        extends: '../tsconfig.json',
+        compilerOptions: {
+          outDir: '',
+          allowJs: true,
+          checkJs: true,
+        },
+        include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
       },
-      include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
-    },
+    };
   },
   cypress: {
     tsconfig: {
@@ -804,9 +808,10 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   const js = isJs(tree, options);
 
   if (sbAction === 'init') {
-    tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
-    tree.write(options.paths.storybook.main, templates.storybook.main);
-    tree.write(options.paths.storybook.preview, templates.storybook.preview);
+    const sbTemplates = templates.storybook(options);
+    tree.write(options.paths.storybook.tsconfig, serializeJson(sbTemplates.tsconfig));
+    tree.write(options.paths.storybook.main, sbTemplates.main);
+    tree.write(options.paths.storybook.preview, sbTemplates.preview);
 
     const libTsConfig: TsConfig = readJson(tree, options.paths.tsconfig.lib);
 
@@ -972,6 +977,7 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
       Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
     testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
     platform: packageType,
+    projectConfig: options.projectConfig,
   } as const;
 
   tree.write(options.paths.jestConfig, templates.jest(config));
@@ -1016,6 +1022,14 @@ function updateConformanceSetup(tree: Tree, options: NormalizedSchema) {
       if (defaultOptionsVar === 'defaultOptions') {
         const initializer = node.declarationList.declarations[0].initializer;
         if (initializer && ts.isObjectLiteralExpression(initializer)) {
+          const isTsConfigAlreadySet = initializer.properties.some(prop => {
+            return prop.name && ts.isIdentifier(prop.name) && prop.name.escapedText === 'tsConfig';
+          });
+
+          if (isTsConfigAlreadySet) {
+            return;
+          }
+
           const firstProp = initializer.properties[0];
           start = firstProp.pos;
           return;

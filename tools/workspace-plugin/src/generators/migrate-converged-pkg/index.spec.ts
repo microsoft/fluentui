@@ -243,7 +243,7 @@ describe('migrate-converged-pkg generator', () => {
       const tsConfigTest = getTsConfig.test();
 
       expect(tsConfigMain).toEqual({
-        extends: '../../../../../tsconfig.base.json',
+        extends: '../../tsconfig.base.json',
         compilerOptions: {
           importHelpers: true,
           isolatedModules: true,
@@ -439,7 +439,7 @@ describe('migrate-converged-pkg generator', () => {
          */
         module.exports = {
           displayName: 'react-dummy',
-          preset: '../../../../../jest.preset.js',
+          preset: '../../jest.preset.js',
           transform: {
             '^.+\\\\\\\\.tsx?$': [
               'ts-jest',
@@ -585,10 +585,10 @@ describe('migrate-converged-pkg generator', () => {
       );
 
       expect(tree.read(`${projectStorybookConfigPath}/main.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "const rootMain = require('../../../../../../.storybook/main');
+        "const rootMain = require('../../../.storybook/main');
 
         module.exports =
-          /** @type {Omit<import('../../../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+          /** @type {Omit<import('../../../.storybook/main'), 'typescript'|'babel'>} */ ({
             ...rootMain,
             stories: [
               ...rootMain.stories,
@@ -608,7 +608,7 @@ describe('migrate-converged-pkg generator', () => {
       `);
 
       expect(tree.read(`${projectStorybookConfigPath}/preview.js`)?.toString('utf-8')).toMatchInlineSnapshot(`
-        "import * as rootPreview from '../../../../../../.storybook/preview';
+        "import * as rootPreview from '../../../.storybook/preview';
 
         /** @type {typeof rootPreview.decorators} */
         export const decorators = [...rootPreview.decorators];
@@ -1307,6 +1307,27 @@ describe('migrate-converged-pkg generator', () => {
         }
         "
       `);
+
+      // make sure it is added only once
+
+      await generator(tree, options);
+
+      expect(stripIndents`${tree.read(conformanceSetupPath, 'utf-8')}`).toEqual(
+        expect.stringContaining(stripIndents`
+          const defaultOptions: Partial<IsConformantOptions<TProps>> = {
+            tsConfig: { configName: 'tsconfig.spec.json' },
+            componentPath: require.main?.filename.replace('.test', ''),
+            extraTests: griffelTests as TestObject<TProps>,
+            testOptions: {
+              'make-styles-overrides-win': {
+                callCount: 2,
+              },
+              // TODO: https://github.com/microsoft/fluentui/issues/19618
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            } as any,
+          };
+      `),
+      );
     });
   });
 
