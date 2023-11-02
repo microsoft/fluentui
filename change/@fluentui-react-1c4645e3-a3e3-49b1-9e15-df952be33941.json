@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: preventDismissOnEvent does not override passed-in prop",
+  "packageName": "@fluentui/react",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}
