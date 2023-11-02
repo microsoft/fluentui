@@ -2,6 +2,21 @@
   "name": "@fluentui/react-drawer",
   "entries": [
     {
+      "date": "Thu, 02 Nov 2023 17:38:45 GMT",
+      "tag": "@fluentui/react-drawer_v9.0.0-beta.40",
+      "version": "9.0.0-beta.40",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b4b696c7dd574454581ff697b03381650eb00f9c",
+            "comment": "breaking: open prop now only accepts a boolean instead of MotionShorthand "
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Nov 2023 12:55:59 GMT",
       "tag": "@fluentui/react-drawer_v9.0.0-beta.39",
       "version": "9.0.0-beta.39",

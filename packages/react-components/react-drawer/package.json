@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-drawer",
-  "version": "9.0.0-beta.39",
+  "version": "9.0.0-beta.40",
   "description": "Drawer components for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

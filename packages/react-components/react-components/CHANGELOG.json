@@ -2,6 +2,37 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Thu, 02 Nov 2023 17:38:45 GMT",
+      "tag": "@fluentui/react-components_v9.37.3",
+      "version": "9.37.3",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-drawer",
+            "commit": "b4b696c7dd574454581ff697b03381650eb00f9c",
+            "comment": "breaking: open prop now only accepts a boolean instead of MotionShorthand "
+          }
+        ],
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "727224140e113363c3e5bb1f26b092b81da2ccb9",
+            "comment": "chore: add bundle size fixture."
+          }
+        ],
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "9b59f49f035e556aab24cfd8ad8da429815db061",
+            "comment": "chore: throws if FlatTree is used as a subtree"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Nov 2023 19:15:55 GMT",
       "tag": "@fluentui/react-components_v9.37.2",
       "version": "9.37.2",
