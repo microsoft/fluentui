@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     listStyleType: 'none',
     ...createCustomFocusIndicatorStyle(
       {
-        ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
+        ...shorthands.outline(tokens.strokeWidthThick, 'solid', tokens.colorStrokeFocus2),
         ...shorthands.borderRadius(tokens.borderRadiusMedium),
       },
       { selector: 'focus' },
@@ -28,16 +28,16 @@ const useStyles = makeStyles({
   },
 
   rootClickable: {
-    display: 'flex', //TODO needed?
+    display: 'flex',
     cursor: 'pointer',
   },
 
   checkmark: {
     display: 'flex',
     alignSelf: 'center',
-    marginRight: '8px',
-    width: '16px',
-    height: '16px',
+    marginRight: tokens.spacingHorizontalS,
+    width: tokens.spacingHorizontalL,
+    height: tokens.spacingVerticalL,
   },
 });
 

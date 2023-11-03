@@ -49,8 +49,5 @@ export const useListStyles_unstable = (state: ListState): ListState => {
     state.root.className,
   );
 
-  // TODO Add class names to slots, for example:
-  // state.mySlot.className = mergeClasses(styles.mySlot, state.mySlot.className);
-
   return state;
 };
