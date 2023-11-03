@@ -1,5 +1,4 @@
 import { Button, makeStyles, Persona, shorthands } from '@fluentui/react-components';
-import { Checkmark16Filled } from '@fluentui/react-icons';
 import { List, ListItem, useListFeatures, useListSelection } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
@@ -87,4 +86,22 @@ export const ListSelectionControlled = () => {
       </List>
     </div>
   );
+};
+
+ListSelectionControlled.parameters = {
+  docs: {
+    description: {
+      story: [
+        'In the controlled approach you are in charge of the selection state. First, you create the state using `useListFeatures` in combination with `useListSelection` hooks.',
+        '',
+        'This will return a List state object with `selection` property. You can then use the `selection` object to control the selection state.',
+        '',
+        'In this case, you are in control of deciding what item should be selected and when, including listening on events and calling the `selection` methods.',
+        '',
+        'The `selection` object also provides utility functions like `getListProps` and `getListItemProps`. These functions return props that should be applied to the List and ListItems respectively to ensure the right accessibility attributes are passed.',
+        '',
+        'The `getListItemProps` also configures the `checkmark` hook to visualize the selection state of the item. Feel free to override this behavior by passing your own `checkmark` prop to the ListItem.',
+      ].join('\n'),
+    },
+  },
 };

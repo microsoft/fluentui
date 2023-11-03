@@ -179,6 +179,8 @@ ListMultipleActions.parameters = {
       story: [
         'List can have a grid layout. What this means is that the wrapper will have `display: grid` applied to it. Also the arrow navigation will work horizontaly and vertically.',
         "\nBy default, the grid doesn't have any columns defined. It is up to the user to define the columns using CSS. Please refer to the example below.",
+        '',
+        'You can also select the items with a click or using a Spacebar key.',
       ].join('\n'),
     },
   },
