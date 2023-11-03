@@ -3,56 +3,83 @@ import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
 
-export function verifyPackaging() {
+import micromatch from 'micromatch';
+
+import type { JustArgs } from './argv';
+
+/**
+ * @see https://docs.npmjs.com/cli/v10/commands/npm-publish#files-included-in-package
+ */
+const alwaysPublishedFiles = ['LICENSE', 'package.json', 'README.md'];
+const rootConfigFiles = [
+  'just.config.[jt]s',
+  'jest.config.[jt]s',
+  '.eslintrc.(js|json)',
+  'project.json',
+  '.babelrc.json',
+  '.swcrc',
+  'tsconfig(.*)?.json',
+];
+const nonProdAssets = ['assets/', 'docs/*', 'temp/*', 'bundle-size/*', '.storybook/*', 'stories/*'];
+
+interface Options extends Partial<JustArgs> {}
+export function verifyPackaging(options: Options) {
   const cwd = process.cwd();
+  const packageJSON: { private?: boolean } = JSON.parse(readFileSync(path.join(cwd, 'package.json'), 'utf-8'));
+
+  // no need to check if package is not being published yet
+  if (packageJSON.private) {
+    return;
+  }
+
   const projectJSON: import('@nx/devkit').ProjectConfiguration = JSON.parse(
     readFileSync(path.join(cwd, 'project.json'), 'utf-8'),
   );
   const tags = projectJSON.tags ?? [];
 
-  const result = spawnSync('npm', ['pack', '--dry-run']);
+  const npmPackResult = spawnSync('npm', ['pack', '--dry-run']);
 
-  const processedResult = result.output
+  const processedResult = npmPackResult.output
     .toString()
     .replace(/\bnpm notice\b\s+[\d.]+[kB]+\s+/gi, '')
     .replace(/[ ]+/g, '');
+  const processedResultArr = processedResult.split('\n');
 
   const isV8package = tags.indexOf('v8') !== -1;
   const isV9package = tags.indexOf('vNext') !== -1;
+  const shipsAMD = isV8package || tags.indexOf('ships-amd') !== -1;
+  const platform = { web: tags.indexOf('platform:web') !== -1, node: tags.indexOf('platform:node') !== -1 };
+
+  // shared assertions
+  assert.ok(micromatch(processedResultArr, alwaysPublishedFiles).length, `npm always shipped files`);
+  assert.equal(
+    micromatch(processedResultArr, nonProdAssets).length,
+    0,
+    `wont ship non production code related folders/files`,
+  );
+  assert.equal(micromatch(processedResultArr, rootConfigFiles).length, 0, `wont ship configuration files`);
+  assert.ok(micromatch(processedResultArr, 'package.json').length, 'ships package.json');
+  assert.ok(micromatch(processedResultArr, '(README|CHANGELOG).md').length, 'ships markdown files');
+  assert.ok(micromatch(processedResultArr, 'dist/*.d.ts').length, 'ships rolluped dts');
+  assert.ok(micromatch(processedResultArr, 'lib-commonjs/**/*.(js|map)').length, 'ships cjs');
+  assert.equal(micromatch(processedResultArr, 'src/*').length, 0, `wont ship source code from "/src"`);
+
+  if (!platform.node) {
+    assert.ok(micromatch(processedResultArr, 'lib/**/*.(js|map)').length, 'ships esm');
+  }
 
   if (isV9package) {
-    assert.doesNotMatch(processedResult, /src\/[.a-z0-9/-_]+/i, `wont ship source code from "/src"`);
-    assert.doesNotMatch(processedResult, /config\/[.a-z0-9/-_]+/i, `wont ship config folder`);
-    assert.doesNotMatch(processedResult, /etc\/[.a-z0-9/-_]+/i, `wont ship etc folder`);
-    assert.doesNotMatch(processedResult, /just\.config\.[jt]s/i, `wont ship configuration files`);
+    assert.equal(micromatch(processedResultArr, 'config/*').length, 0, `wont ship config folder`);
+    assert.equal(micromatch(processedResultArr, 'etc/*').length, 0, `wont ship etc folder"`);
   }
 
   if (isV8package) {
-    assert.match(processedResult, /lib\/[.a-z0-9/-_]+(.d.ts)/i, 'ships dts');
+    assert.ok(micromatch(processedResultArr, '(lib|lib-commonjs)/**/*.d.ts').length, `ships dts`);
   }
-
-  assert.match(processedResult, /package\.json/, 'ships package.json');
-  assert.match(processedResult, /README\.md/, 'ships README.md');
-  assert.match(processedResult, /CHANGELOG\.md/, 'ships CHANGELOG.md');
-  assert.match(processedResult, /dist\/[a-z-]+\.d\.ts/, 'ships rolluped dts');
-  assert.match(processedResult, /lib-commonjs\/[.a-z0-9/-_]+(.js|.map)/i, 'ships cjs');
-  assert.match(processedResult, /lib\/[.a-z0-9/-_]+(.js|.map)/i, 'ships esm');
-
-  assert.doesNotMatch(processedResult, /docs\/[.a-z0-9/-_]+/i, `wont ship docs folder`);
-  assert.doesNotMatch(processedResult, /temp\/[.a-z0-9/-_]+/i, `wont ship temp folder`);
-  assert.doesNotMatch(processedResult, /bundle-size\/[.a-z0-9/-_]+/i, `wont ship bundle-size fixtures`);
-  assert.doesNotMatch(processedResult, /.storybook\/[.a-z0-9/-_]+/i, `wont ship .storybook config`);
-  assert.doesNotMatch(processedResult, /stories\/[.a-z0-9/-_]+/i, `wont ship stories`);
-  assert.doesNotMatch(processedResult, /jest\.config\.js/i, `wont ship configuration files`);
-  assert.doesNotMatch(processedResult, /tsconfig[.a-z]*\.json/i, `wont ship configuration files`);
-  assert.doesNotMatch(processedResult, /project\.json/i, `wont ship configuration files`);
-  assert.doesNotMatch(processedResult, /\.eslintrc\.(json|js)/i, `wont ship configuration files`);
-  assert.doesNotMatch(processedResult, /\.babelrc\.json/i, `wont ship configuration files`);
-  assert.doesNotMatch(processedResult, /\.swcrc/i, `wont ship configuration files`);
 
   // @FIXME `amd` is created only on release pipeline where `--production` flag is used on build commands which triggers it
   // we should enable this also on PR pipelines - need to verify time execution impact
-  // if (isV8package || tags.indexOf('ships-amd') !== -1) {
-  //   assert.match(processedResult, /lib-amd\/[.a-z0-9/-_]+(.js|.map)/i, 'ships amd');
-  // }
+  if (options.production && shipsAMD) {
+    assert.ok(micromatch(processedResultArr, 'lib-amd/**/*.(js|map)').length, 'ships amd');
+  }
 }
