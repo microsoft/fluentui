@@ -353,18 +353,29 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     : 'outline';
 
   const [triggerWrapperRef, popupRef] = usePopupPositioning(props);
-  const root = slot.always(restOfProps, {
-    defaultProps: {
-      appearance: inputAppearance,
-      'aria-controls': open ? popupSurfaceId : undefined,
-      'aria-expanded': open,
-      'aria-haspopup': 'dialog',
-      contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
-      readOnly: !allowTextInput,
-      role: 'combobox',
+  const root = slot.always(
+    {
+      ...restOfProps,
+      // wrap contentAfter to apply icon click logic to allow for opening date picker popup on custom icons
+      contentAfter: restOfProps.contentAfter ? (
+        <span onClick={onIconClick} style={{ all: 'inherit' }}>
+          {restOfProps.contentAfter}
+        </span>
+      ) : undefined,
     },
-    elementType: Input,
-  });
+    {
+      defaultProps: {
+        appearance: inputAppearance,
+        'aria-controls': open ? popupSurfaceId : undefined,
+        'aria-expanded': open,
+        'aria-haspopup': 'dialog',
+        contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
+        readOnly: !allowTextInput,
+        role: 'combobox',
+      },
+      elementType: Input,
+    },
+  );
 
   const inputRoot = slot.always(props.root, {
     defaultProps: {
