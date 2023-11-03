@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
-import { canUseDOM } from '@fluentui/react-utilities';
+import { canUseDOM } from '@fluentui/react/lib/Utilities';
 
 interface IACLargeDataExampleState {
   width: number;

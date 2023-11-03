@@ -2,7 +2,7 @@ import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps, DataVizPalette } from '@fluentui/react-charting';
-import { canUseDOM } from '@fluentui/react-utilities';
+import { canUseDOM } from '@fluentui/react/lib/Utilities';
 
 interface IAreaChartBasicState {
   width: number;

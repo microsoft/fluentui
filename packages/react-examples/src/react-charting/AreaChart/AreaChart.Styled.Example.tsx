@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import { ILineChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
-import { canUseDOM } from '@fluentui/react-utilities';
+import { canUseDOM } from '@fluentui/react/lib/Utilities';
 
 interface IAreaChartBasicState {
   width: number;

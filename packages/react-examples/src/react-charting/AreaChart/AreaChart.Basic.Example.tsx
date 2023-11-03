@@ -3,7 +3,7 @@ import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
 import { IAreaChartProps, ChartHoverCard, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
-import { canUseDOM } from '@fluentui/react-utilities';
+import { canUseDOM } from '@fluentui/react/lib/Utilities';
 
 interface IAreaChartBasicState {
   width: number;
