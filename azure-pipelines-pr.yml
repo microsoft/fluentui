@@ -1,5 +1,6 @@
 pr:
   - master
+  - shadow-dom # Remove before merging to master
 
 # There's a separate pipeline for CI which also uses this file, but with a trigger override in the UI
 # https://dev.azure.com/uifabric/fabricpublic/_apps/hub/ms.vss-ciworkflow.build-ci-hub?_a=edit-build-definition&id=164&view=Tab_Triggers
