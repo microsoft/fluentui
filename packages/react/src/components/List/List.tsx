@@ -24,6 +24,7 @@ import type {
   IListOnRenderSurfaceProps,
   IListOnRenderRootProps,
 } from './List.types';
+import { ListDebugRenderer } from './utils/ListDebugRenderer';
 
 const RESIZE_DELAY = 16;
 const MIN_SCROLL_UPDATE_DELAY = 100;
@@ -37,6 +38,8 @@ const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const PAGE_KEY_PREFIX = 'page-';
 const SPACER_KEY_PREFIX = 'spacer-';
+// Fraction of a page to have been scrolled before re-running expensive calculations
+const SCROLL_RATIO = 1 / 3;
 
 export interface IListState<T = any> {
   pages?: IPage<T>[];
@@ -144,6 +147,9 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _scrollHeight?: number;
   private _scrollTop: number;
   private _pageCache: IPageCache<T>;
+
+  private _debugRenderer: ListDebugRenderer;
+  private _debugRafId: number | undefined = undefined;
 
   public static getDerivedStateFromProps<U = any>(
     nextProps: IListProps<U>,
@@ -350,6 +356,25 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
       this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
     }
+
+    this._debugRenderer = new ListDebugRenderer();
+
+    const debugRender = () => {
+      this._debugRenderer.render({
+        visibleRect: this._visibleRect,
+        allowedRect: this._allowedRect,
+        requiredRect: this._requiredRect,
+        materializedRect: this._materializedRect,
+        surfaceRect: this._surfaceRect,
+        totalListHeight: this.getTotalListHeight(),
+        pages: this.state.pages,
+        scrollTop: Math.abs(this._scrollTop - getScrollYPosition(this._scrollElement)),
+        estimatedLine: this._estimatedPageHeight * SCROLL_RATIO,
+        scrollY: getScrollYPosition(this._scrollElement),
+      });
+      this._debugRafId = requestAnimationFrame(debugRender);
+    };
+    debugRender();
   }
 
   public componentDidUpdate(previousProps: IListProps, previousState: IListState<T>): void {
@@ -394,6 +419,12 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     this._events.dispose();
 
     delete this._scrollElement;
+
+    this._debugRenderer.dispose();
+    if (this._debugRafId) {
+      cancelAnimationFrame(this._debugRafId);
+      this._debugRafId = undefined;
+    }
   }
 
   public shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean {
@@ -721,6 +752,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
   private _onScrollingDone(): void {
     if (!this.props.ignoreScrollingState) {
       this.setState({ isScrolling: false });
+      // this._onAsyncIdle();
     }
   }
 
@@ -909,13 +941,17 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
       const isPageInAllowedRange = !allowedRect || (pageBottom >= allowedRect.top && pageTop <= allowedRect.bottom!);
       const isPageInRequiredRange =
         !this._requiredRect || (pageBottom >= this._requiredRect.top && pageTop <= this._requiredRect.bottom!);
+
+      const isPagePartiallyInRequiredRange =
+        !isPageInRequiredRange &&
+        this._requiredRect &&
+        ((pageTop < this._requiredRect.top && pageBottom > this._requiredRect.top) ||
+          (pageTop < this._requiredRect.bottom! && pageBottom > this._requiredRect.bottom!));
+
       const isPageVisible =
         (!isFirstRender && (isPageInRequiredRange || (isPageInAllowedRange && isPageRendered))) || !shouldVirtualize;
       const isPageFocused = focusedIndex >= itemIndex && focusedIndex < itemIndex + itemsPerPage;
       const isFirstPage = itemIndex === startIndex;
-
-      // console.log('building page', itemIndex, 'pageTop: ' + pageTop, 'inAllowed: ' +
-      // isPageInAllowedRange, 'inRequired: ' + isPageInRequiredRange);
 
       // Only render whats visible, focused, or first page,
       // or when running in fast rendering mode (not in virtualized mode), we render all current items in pages
@@ -943,7 +979,7 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
 
         pages.push(newPage);
 
-        if (isPageInRequiredRange && this._allowedRect) {
+        if ((isPageInRequiredRange || isPagePartiallyInRequiredRange) && this._allowedRect) {
           _mergeRect(materializedRect, {
             top: pageTop,
             bottom: pageBottom,
@@ -1097,6 +1133,10 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
     const scrollHeight = getScrollHeight(this._scrollElement);
     const scrollTop = getScrollYPosition(this._scrollElement);
 
+    const doUpdate =
+      Math.abs((this._visibleRect?.bottom ?? 0) - (this._materializedRect?.bottom ?? 0)) <
+      this._estimatedPageHeight / 5;
+
     // WARNING: EXPENSIVE CALL! We need to know the surface top relative to the window.
     // This needs to be called to recalculate when new pages should be loaded.
     // We check to see how far we've scrolled and if it's further than a third of a page we run it again.
@@ -1107,7 +1147,8 @@ export class List<T = any> extends React.Component<IListProps<T>, IListState<T>>
         !this._surfaceRect ||
         !scrollHeight ||
         scrollHeight !== this._scrollHeight ||
-        Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight / 3)
+        // doUpdate ||
+        Math.abs(this._scrollTop - scrollTop) > this._estimatedPageHeight * SCROLL_RATIO)
     ) {
       surfaceRect = this._surfaceRect = _measureSurfaceRect(this._surface.current);
       this._scrollTop = scrollTop;
