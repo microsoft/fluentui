@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Wrapping contentAfter prop for DatePicker compat in a span and moving click event logic to that span tag to allow opening DatePicker popover for default and custom contentAfter elements",
+  "packageName": "@fluentui/react-datepicker-compat",
+  "email": "stevenco@microsoft.com",
+  "dependentChangeType": "patch"
+}

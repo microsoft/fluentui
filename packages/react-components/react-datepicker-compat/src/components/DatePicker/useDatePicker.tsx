@@ -353,29 +353,18 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     : 'outline';
 
   const [triggerWrapperRef, popupRef] = usePopupPositioning(props);
-  const root = slot.always(
-    {
-      ...restOfProps,
-      // wrap contentAfter to apply icon click logic to allow for opening date picker popup on custom icons
-      contentAfter: restOfProps.contentAfter ? (
-        <span onClick={onIconClick} style={{ all: 'inherit' }}>
-          {restOfProps.contentAfter}
-        </span>
-      ) : undefined,
+  const root = slot.always(restOfProps, {
+    defaultProps: {
+      appearance: inputAppearance,
+      'aria-controls': open ? popupSurfaceId : undefined,
+      'aria-expanded': open,
+      'aria-haspopup': 'dialog',
+      contentAfter: <CalendarMonthRegular />,
+      readOnly: !allowTextInput,
+      role: 'combobox',
     },
-    {
-      defaultProps: {
-        appearance: inputAppearance,
-        'aria-controls': open ? popupSurfaceId : undefined,
-        'aria-expanded': open,
-        'aria-haspopup': 'dialog',
-        contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
-        readOnly: !allowTextInput,
-        role: 'combobox',
-      },
-      elementType: Input,
-    },
-  );
+    elementType: Input,
+  });
 
   const inputRoot = slot.always(props.root, {
     defaultProps: {
@@ -396,6 +385,11 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
   root.onKeyDown = useEventCallback(mergeCallbacks(root.onKeyDown, onInputKeyDown));
   root.onFocus = useEventCallback(mergeCallbacks(root.onFocus, onInputFocus));
   root.onClick = useEventCallback(mergeCallbacks(root.onClick, onInputClick));
+  root.contentAfter = (
+    <span onClick={onIconClick} style={{ all: 'inherit' }}>
+      {root.contentAfter}
+    </span>
+  );
   const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
   const popupSurface = open
     ? slot.optional(props.popupSurface, {
