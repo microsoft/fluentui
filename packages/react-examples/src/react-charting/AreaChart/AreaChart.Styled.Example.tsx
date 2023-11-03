@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
 import { ILineChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
+import { canUseDOM } from '@fluentui/react-utilities';
 
 interface IAreaChartBasicState {
   width: number;
@@ -17,6 +18,9 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
   }
 
   public render(): JSX.Element {
+    if (!canUseDOM) {
+      return <></>;
+    }
     return <div>{this._basicExample()}</div>;
   }
 
