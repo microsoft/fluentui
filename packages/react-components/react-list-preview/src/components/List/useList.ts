@@ -31,6 +31,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
     customArrowNavigationOptions,
     selectable = false,
     selectionMode = 'multiselect',
+    defaultSelectedItems,
     componentRef,
     onSelectionChange,
   } = props;
@@ -43,7 +44,9 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
 
   const [items, setItems] = React.useState<Array<{ id: string | number }>>([]);
 
-  const { selection } = useListFeatures({ items }, [useListSelection({ onSelectionChange, selectionMode })]);
+  const { selection } = useListFeatures({ items }, [
+    useListSelection({ defaultSelectedItems, onSelectionChange, selectionMode }),
+  ]);
   useComponentRef(componentRef, selection);
 
   const registerItem = useEventCallback((id: string | number) => {

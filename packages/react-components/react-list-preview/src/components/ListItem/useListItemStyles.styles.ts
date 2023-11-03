@@ -6,7 +6,7 @@ import { tokens } from '@fluentui/react-theme';
 
 export const listItemClassNames: SlotClassNames<ListItemSlots> = {
   root: 'fui-ListItem',
-  checkbox: 'fui-ListItem__checkbox',
+  checkmark: 'fui-ListItem__checkmark',
 };
 
 /**
@@ -14,7 +14,10 @@ export const listItemClassNames: SlotClassNames<ListItemSlots> = {
  */
 const useStyles = makeStyles({
   root: {
-    position: 'relative',
+    ...shorthands.padding(0),
+    ...shorthands.margin(0),
+    textIndent: 0,
+    listStyleType: 'none',
     ...createCustomFocusIndicatorStyle(
       {
         ...shorthands.outline('2px', 'solid', tokens.colorStrokeFocus2),
@@ -27,6 +30,14 @@ const useStyles = makeStyles({
   rootClickable: {
     display: 'flex', //TODO needed?
     cursor: 'pointer',
+  },
+
+  checkmark: {
+    display: 'flex',
+    alignSelf: 'center',
+    marginRight: '8px',
+    width: '16px',
+    height: '16px',
   },
 });
 
@@ -42,8 +53,12 @@ export const useListItemStyles_unstable = (state: ListItemState): ListItemState 
     state.root.className,
   );
 
-  if (state.checkbox) {
-    state.checkbox.className = mergeClasses(listItemClassNames.checkbox, state.checkbox?.className);
+  if (state.checkmark) {
+    state.checkmark.className = mergeClasses(
+      listItemClassNames.checkmark,
+      styles.checkmark,
+      state.checkmark?.className,
+    );
   }
 
   return state;

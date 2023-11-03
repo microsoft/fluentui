@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
 import { getNativeElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
-import { Checkbox } from '@fluentui/react-checkbox';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
+import { Checkmark16Filled } from '@fluentui/react-icons';
 
 /**
  * Create the state required to render ListItem.
@@ -87,23 +87,19 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
     { elementType: 'li' },
   );
 
-  const checkbox = slot.optional(props.checkbox, {
+  const checkmark = slot.optional(props.checkmark, {
+    defaultProps: { children: selection?.isSelected(value) ? <Checkmark16Filled /> : null },
     renderByDefault: !!selection,
-    elementType: Checkbox,
-    defaultProps: {
-      tabIndex: -1,
-      checked: selection?.isSelected(value),
-      onChange: e => selection?.toggleItem(e, value),
-    },
+    elementType: 'span',
   });
 
   const state: ListItemState = {
     components: {
       root: 'li',
-      checkbox: Checkbox,
+      checkmark: 'span',
     },
     root,
-    checkbox,
+    checkmark,
   };
 
   return state;

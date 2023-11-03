@@ -1,3 +1,4 @@
+import { Checkmark16Filled } from '@fluentui/react-icons';
 import { SelectionHookParams, useEventCallback, useSelection } from '@fluentui/react-utilities';
 import * as React from 'react';
 import { ListFeaturesState, ListSelectionState } from './types';
@@ -71,6 +72,9 @@ export function useListSelectionState<TItem extends { id: string | number }>(
       tabIndex: 0,
       role: 'option',
       'aria-selected': selectionMethods.isSelected(value) || undefined,
+      checkmark: {
+        children: selectionMethods.isSelected(value) ? <Checkmark16Filled /> : null,
+      },
     };
   };
 

@@ -34,6 +34,7 @@
     "@fluentui/react-button": "^9.3.34",
     "@fluentui/react-checkbox": "^9.1.35",
     "@fluentui/react-context-selector": "^9.1.31",
+    "@fluentui/react-icons": "^2.0.207",
     "@fluentui/react-jsx-runtime": "^9.0.3",
     "@fluentui/react-tabster": "^9.12.5",
     "@fluentui/react-theme": "^9.1.11",

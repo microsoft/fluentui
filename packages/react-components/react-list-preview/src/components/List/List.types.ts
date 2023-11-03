@@ -34,6 +34,7 @@ export type ListProps = ComponentProps<ListSlots> & {
   focusableItems?: boolean;
   selectable?: boolean;
   selectionMode?: SelectionMode;
+  defaultSelectedItems?: SelectionItemId[];
   onSelectionChange?: (event: React.SyntheticEvent, data: OnSelectionChangeData) => void;
   componentRef?: React.Ref<IList>;
 };

@@ -8,7 +8,6 @@ export { ListHorizontal } from './ListHorizontal.stories';
 export { ListGrid } from './ListGrid.stories';
 export { ListWithAction } from './ListWithAction.stories';
 export { ListMultipleActions } from './ListMultipleActions.stories';
-export { ListSelection } from './ListSelection.stories';
 export { ListSelectionUncontrolled } from './ListSelectionUncontrolled.stories';
 export { ListSelectionControlled } from './ListSelectionControlled.stories';
 export { VirtualizedList } from './VirtualizedList.stories';

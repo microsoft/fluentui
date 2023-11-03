@@ -15,6 +15,8 @@ const useStyles = makeStyles({
   root: {
     ...shorthands.padding(0),
     ...shorthands.margin(0),
+    textIndent: 0,
+    listStyleType: 'none',
   },
 
   rootHorizontal: {

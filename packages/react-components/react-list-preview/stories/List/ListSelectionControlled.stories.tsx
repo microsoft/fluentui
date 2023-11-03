@@ -1,5 +1,7 @@
 import { Button, makeStyles, Persona, shorthands } from '@fluentui/react-components';
-import { IList, List, ListItem } from '@fluentui/react-list-preview';
+import { Checkmark16Filled } from '@fluentui/react-icons';
+import { List, ListItem, useListFeatures, useListSelection } from '@fluentui/react-list-preview';
+
 import * as React from 'react';
 import names from './names';
 
@@ -32,7 +34,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const ListSelectionUncontrolled = () => {
+export const ListSelectionControlled = () => {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = React.useState(4);
 
@@ -40,26 +42,35 @@ export const ListSelectionUncontrolled = () => {
     return origItems.slice(0, currentIndex);
   }, [currentIndex]);
 
-  const defaultSelectedItems = ['Demetra Manwaring', 'Sonya Farner'];
-
-  const ref = React.useRef<IList>(null);
+  const { selection } = useListFeatures({ items }, [
+    useListSelection({
+      selectionMode: 'multiselect',
+      onSelectionChange: (_, data) => console.log(data.selectedItems),
+    }),
+  ]);
 
   return (
     <div className={classes.wrapper}>
       <div className={classes.buttonControls}>
-        <Button onClick={e => setCurrentIndex(cur => cur + 1)}>Add item</Button>
-        <Button onClick={e => ref.current?.selection?.toggleAllItems(e)}>Toggle all</Button>
+        <Button onClick={e => setCurrentIndex(cur => cur + 1)}>Add one</Button>
+        <Button onClick={e => selection.toggleAllItems(e)}>Toggle all</Button>
       </div>
-      <List
-        selectable
-        componentRef={ref}
-        defaultSelectedItems={defaultSelectedItems}
-        // this is just a notification to the parent component, it doesn't control the state
-        onSelectionChange={(_, data) => console.log(data.selectedItems)}
-      >
+
+      <List {...selection.getListProps()}>
         {items.map(({ name, avatar }) => {
           return (
-            <ListItem key={name} value={name} aria-label={name}>
+            <ListItem
+              key={name}
+              aria-label={name}
+              {...selection.getListItemProps(name)}
+              onClick={e => selection.toggleItem(e, name)}
+              onKeyDown={e => {
+                if (e.key === ' ') {
+                  e.preventDefault();
+                  selection.toggleItem(e, name);
+                }
+              }}
+            >
               <Persona
                 name={name}
                 secondaryText="Available"

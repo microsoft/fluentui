@@ -32,6 +32,10 @@ const useStyles = makeStyles({
     ...shorthands.gap('16px'),
   },
 
+  listItem: {
+    position: 'relative',
+  },
+
   caption: {
     color: tokens.colorNeutralForeground3,
   },
@@ -54,12 +58,11 @@ const useStyles = makeStyles({
     display: 'flex',
     ...shorthands.gap('8px'),
   },
-  selectedMark: {
+  checkmark: {
     position: 'absolute',
-    left: '20px',
-    top: '20px',
+    left: '10px',
+    top: '10px',
     zIndex: 1,
-    fontSize: '24px',
   },
 });
 
@@ -67,8 +70,12 @@ const CardExample = (props: CardProps & { value: string; selected?: boolean }) =
   const styles = useStyles();
 
   return (
-    <ListItem aria-label="iOS App Prototype" value={props.value} checkbox={null}>
-      {props.selected && <div className={styles.selectedMark}>✅</div>}
+    <ListItem
+      aria-label="iOS App Prototype"
+      value={props.value}
+      className={styles.listItem}
+      checkmark={{ className: styles.checkmark }}
+    >
       <Card {...props} selected={undefined} tabIndex={-1}>
         <CardPreview
           className={styles.grayBackground}

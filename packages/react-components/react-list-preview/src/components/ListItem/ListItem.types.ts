@@ -1,9 +1,8 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { Checkbox } from '@fluentui/react-checkbox';
 
 export type ListItemSlots = {
   root: NonNullable<Slot<'li', 'div' | 'dt' | 'dd'>>;
-  checkbox?: Slot<typeof Checkbox>;
+  checkmark?: Slot<'div'>;
 };
 
 /**
