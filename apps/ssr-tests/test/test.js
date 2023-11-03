@@ -25,7 +25,12 @@ let AppDefinition = require('@fluentui/public-docsite-resources/lib/AppDefinitio
 
 describe('Fabric components', () => {
   for (let i = 0; i < AppDefinition.examplePages.length; i++) {
+    if (AppDefinition.examplePages[i].componentName === 'Charting') {
+      // Charting controls do not support SSR currently.
+      continue;
+    }
     let links = AppDefinition.examplePages[i].links;
+
     for (let j = 0; j < links.length; j++) {
       let { key, component } = links[j];
 
