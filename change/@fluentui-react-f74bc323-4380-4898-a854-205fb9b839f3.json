@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Calendar): Calendar should memoize default value since it's a new Date() to avoid rerenders.",
+  "packageName": "@fluentui/react",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
