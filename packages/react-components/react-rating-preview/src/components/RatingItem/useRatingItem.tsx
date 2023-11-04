@@ -14,7 +14,7 @@ import { StarRegular, StarFilled, StarHalfRegular } from '@fluentui/react-icons'
  * @param props - props from this instance of RatingItem
  * @param ref - reference to root HTMLElement of RatingItem
  */
-export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLInputElement>): RatingItemState => {
+export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HTMLSpanElement>): RatingItemState => {
   const context = useRatingContextValue_unstable();
   const { value = 0 } = props;
 

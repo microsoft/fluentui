@@ -70,6 +70,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
       root: 'div',
       ratingLabel: Label,
       ratingCountLabel: Label,
+      divider: 'span',
     },
     root: slot.always(
       getIntrinsicElementProps('div', {
@@ -86,6 +87,10 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     ratingCountLabel: slot.always(props.countLabel, {
       defaultProps: { id: countId, children: countLabel },
       elementType: Label,
+    }),
+    divider: slot.always(props.divider, {
+      defaultProps: { children: '.' },
+      elementType: 'span',
     }),
   };
 

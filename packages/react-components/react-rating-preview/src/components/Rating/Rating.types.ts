@@ -6,6 +6,7 @@ export type RatingSlots = {
   root: NonNullable<Slot<'div'>>;
   ratingLabel?: NonNullable<Slot<typeof Label>>;
   ratingCountLabel?: NonNullable<Slot<typeof Label>>;
+  divider?: NonNullable<Slot<'span'>>;
 };
 
 /**

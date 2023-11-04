@@ -16,6 +16,7 @@ export const renderRating_unstable = (state: RatingState, contextValues: RatingC
       <state.root>
         {state.root.children}
         {state.ratingLabel && <state.ratingLabel />}
+        {state.divider && <state.divider />}
         {state.ratingCountLabel && <state.ratingCountLabel />}
       </state.root>
     </RatingProvider>

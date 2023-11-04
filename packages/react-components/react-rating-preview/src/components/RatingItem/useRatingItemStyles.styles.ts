@@ -23,7 +23,6 @@ const indicatorSizes = {
 const useStyles = makeStyles({
   root: {
     position: 'relative',
-    //display: 'inline-block',
   },
   small: {
     width: indicatorSizes.small,
@@ -66,7 +65,7 @@ const useIndicatorBaseClassName = makeResetStyles({
 
   display: 'inline-block',
   alignItems: 'center',
-  color: tokens.colorNeutralForeground3,
+  color: tokens.colorNeutralForeground1,
   justifyContent: 'center',
   overflow: 'hidden',
   fill: 'currentColor',
