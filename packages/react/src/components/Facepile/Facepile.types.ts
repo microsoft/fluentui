@@ -72,9 +72,6 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /** Show add person button */
   showAddButton?: boolean;
 
-  /** Show overflow button */
-  showOverflowButton?: boolean;
-
   /** Button properties for the add face button */
   addButtonProps?: IButtonProps;
 
