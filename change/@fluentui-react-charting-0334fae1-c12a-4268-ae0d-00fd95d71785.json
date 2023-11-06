@@ -1,0 +1,7 @@
+{
+  "type": "none",
+  "comment": "Using Rewire to unit test private functions",
+  "packageName": "@fluentui/react-charting",
+  "email": "srmukher@microsoft.com",
+  "dependentChangeType": "none"
+}
