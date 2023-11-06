@@ -372,7 +372,6 @@ function _adjustFitWithinBounds(
     elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
   }
   const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
-
   // if directionalHintFixed is specified, we need to force the target edge to not change
   // we need *-1 because targetEdge refers to the target's edge; the callout edge is the opposite
   const fixedEdge = directionalHintFixed ? -elementEstimate.targetEdge : undefined;
