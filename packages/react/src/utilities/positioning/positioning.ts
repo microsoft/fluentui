@@ -213,30 +213,17 @@ function _getOutOfBoundsDegree(rect: Rectangle, bounds: Rectangle) {
 }
 
 /**
- * Returns true if scrolling
+ * Returns true if scroll-resizing will move the target edge within the bounding rectangle,
+ * and there is room between the target edge and the bounding edge for scrolled content.
+ * Returns false otherwise.
  */
-function _canScrollToFitEdge(target: Rectangle, bounding: Rectangle, edge: RectangleEdge) {
+function _canScrollResizeToFitEdge(target: Rectangle, bounding: Rectangle, targetEdge: RectangleEdge) {
   // Only scroll vertically to fit - cannot scroll to fit right or left edges
-  if (edge !== RectangleEdge.bottom && edge !== RectangleEdge.top) {
+  if (targetEdge !== RectangleEdge.bottom && targetEdge !== RectangleEdge.top) {
     return false;
   }
 
-  return _getRelativeEdgeDifference(target, bounding, edge) > 100;
-}
-
-function _getScrollAdjustedRectangle(elementRectangle: Rectangle, bounding: Rectangle, targetEdge: RectangleEdge) {
-  const scrollAdjustedRectangle: Rectangle = { ...elementRectangle };
-
-  switch (targetEdge) {
-    case RectangleEdge.bottom:
-      scrollAdjustedRectangle.bottom = bounding.bottom;
-      break;
-    case RectangleEdge.top:
-      scrollAdjustedRectangle.top = bounding.top;
-      break;
-  }
-
-  return scrollAdjustedRectangle;
+  return _getRelativeEdgeDifference(target, bounding, targetEdge) > 100;
 }
 
 /**
@@ -280,12 +267,21 @@ function _flipToFit(
         targetEdge: currentEdge,
         alignmentEdge: currentAlignment,
       };
-    } else if (_canScrollToFitEdge(target, bounding, currentEdge)) {
-      // Scrolling will allow edge to fit
-      const scrollAdjustedRectangle = _getScrollAdjustedRectangle(currentEstimate, bounding, currentEdge);
+    } else if (_canScrollResizeToFitEdge(target, bounding, currentEdge)) {
+      // Scrolling will allow edge to fit, move the estimate currentEdge inside the bounds and return
+      const scrollAdjustedEstimate: Rectangle = { ...currentEstimate };
+
+      switch (currentEdge) {
+        case RectangleEdge.bottom:
+          scrollAdjustedEstimate.bottom = bounding.bottom;
+          break;
+        case RectangleEdge.top:
+          scrollAdjustedEstimate.top = bounding.top;
+          break;
+      }
 
       return {
-        elementRectangle: scrollAdjustedRectangle,
+        elementRectangle: scrollAdjustedEstimate,
         targetEdge: currentEdge,
         alignmentEdge: currentAlignment,
       };
