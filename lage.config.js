@@ -22,6 +22,7 @@ module.exports = {
     'change/**',
     'rfcs/**',
     'README.md',
+    '*.md',
     '.vscode/**',
     '.github/*.yml',
     '.github/*.json',
@@ -29,6 +30,8 @@ module.exports = {
     '.github/CODEOWNERS',
     '.github/MAINTAINERS',
     '.github/ISSUE_TEMPLATE/**',
+    '.github/policies/**',
+    '.devcontainer/**',
   ],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md
