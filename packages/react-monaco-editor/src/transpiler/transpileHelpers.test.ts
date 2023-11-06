@@ -90,7 +90,6 @@ describe('_supportedPackageToGlobalMap', () => {
         "@fluentui/foundation-legacy": "FluentUIReact",
         "@fluentui/merge-styles": "FluentUIReact",
         "@fluentui/react": "FluentUIReact",
-        "@fluentui/react-charting": "FluentUIReactCharting",
         "@fluentui/react-focus": "FluentUIReact",
         "@fluentui/react-hooks": "FluentUIReactHooks",
         "@fluentui/react-window-provider": "FluentUIReact",

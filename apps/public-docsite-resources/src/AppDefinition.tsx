@@ -523,7 +523,7 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('./components/pages/Charting/LegendsPage').LegendsPage,
           key: 'Legends',
           name: 'Legends',
-          url: '#/examples/Legends',
+          url: '#/examples/ChartLegends',
         },
         {
           component: require<any>('./components/pages/Charting/LineChartPage').LineChartPage,
