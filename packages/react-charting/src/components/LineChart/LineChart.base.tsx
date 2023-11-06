@@ -85,7 +85,7 @@ const _getPointPath = (x: number, y: number, w: number, index: number): string =
      Z`,
     //pyramid
     `M${x} ${y - 0.5774 * w}
-     L${x + w / 2} ${y + 0.288 * w}
+     L${x + w / 2} ${y + 0.2886 * w}
      L${x - w / 2} ${y + 0.2886 * w} Z`,
     //hexagon
     `M${x - 0.5 * w} ${y - 0.866 * w}
