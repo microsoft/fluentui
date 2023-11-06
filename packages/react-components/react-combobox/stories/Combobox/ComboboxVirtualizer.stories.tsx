@@ -31,7 +31,7 @@ export const ComboboxVirtualizer = (props: Partial<ComboboxProps>) => {
       <div>
         <label htmlFor={`${comboId}`}>Medium</label>
         <Combobox
-          aria-labelledby={`${comboId}`}
+          id={`${comboId}`}
           placeholder="Select a number"
           listbox={{ ref: scrollRef, className: styles.listbox }}
         >
