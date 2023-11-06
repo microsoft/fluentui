@@ -2,6 +2,27 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Mon, 06 Nov 2023 13:16:03 GMT",
+      "tag": "@fluentui/react-components_v9.37.4",
+      "version": "9.37.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-calendar-compat",
+            "commit": "fb0dbceef6690276ad24c1cb4a44f882bee887a5",
+            "comment": "fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time."
+          },
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-dialog",
+            "commit": "bcd30395b61cb18b5a42a8c0a4f91ccc2b88377d",
+            "comment": "chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment."
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 02 Nov 2023 17:38:45 GMT",
       "tag": "@fluentui/react-components_v9.37.3",
       "version": "9.37.3",

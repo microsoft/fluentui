@@ -1,8 +1,20 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 02 Nov 2023 17:38:45 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 13:16:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.37.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.4)
+
+Mon, 06 Nov 2023 13:16:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.3..@fluentui/react-components_v9.37.4)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time. ([PR #29747](https://github.com/microsoft/fluentui/pull/29747) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment. ([PR #29755](https://github.com/microsoft/fluentui/pull/29755) by yuanboxue@microsoft.com)
 
 ## [9.37.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.3)
 

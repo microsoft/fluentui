@@ -1,8 +1,17 @@
 import * as React from 'react';
-import { Button, makeStyles, mergeClasses, shorthands /* tokens */ } from '@fluentui/react-components';
+import {
+  Button,
+  makeStyles,
+  mergeClasses,
+  shorthands,
+  // tokens,
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  InlineDrawer,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 // import { useMotionClassNames, useMotion } from '@fluentui/react-motion-preview';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-drawer';
 
 /**
  * TODO: The contents of this file should be uncommented when react-motion is stable.
