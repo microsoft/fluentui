@@ -17,7 +17,7 @@ export const renderDialog_unstable = (state: DialogState, contextValues: DialogC
       <DialogSurfaceProvider value={contextValues.dialogSurface}>
         {trigger}
         {process.env.NODE_ENV === 'test' ? (
-          state.open && <DialogTransitionProvider value={'entered'}>{content}</DialogTransitionProvider>
+          state.open && <DialogTransitionProvider value={'none'}>{content}</DialogTransitionProvider>
         ) : (
           <Transition
             mountOnEnter

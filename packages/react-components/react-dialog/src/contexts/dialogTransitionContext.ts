@@ -4,12 +4,12 @@ import { TransitionStatus } from 'react-transition-group';
 /**
  * @internal
  */
-export type DialogTransitionContextValue = TransitionStatus;
+export type DialogTransitionContextValue = TransitionStatus | 'none';
 
 /**
  * @internal
  */
-const defaultContextValue: DialogTransitionContextValue = 'unmounted';
+const defaultContextValue: DialogTransitionContextValue = 'none';
 
 // Contexts should default to undefined
 /**
