@@ -134,8 +134,8 @@ import * as React from 'react';
              open: boolean;
            });
        const onOpenChange = (_e: Event, data: OnSomeEventData) => {
-         console.log(data.event?.currentTarget); // base event data can be used without checking data.type
-         console.log(data.event?.clientX); // Typescript will give an error here as expected
+         console.log(data.event.currentTarget); // ✅ base event data can be used without checking data.type
+         console.log(data.event.clientX); // ❌ Typescript will give an error here as expected
          if (data.type === 'click') {
            console.log(data.event.clientX); // ✅ this won't blow as `data.type` verification will ensure `data.event` is a mouse event
          }
