@@ -1122,6 +1122,7 @@ import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer
 import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useEventCallback } from '@fluentui/react-utilities';
@@ -3596,6 +3597,8 @@ export { useDrawerHeaderStyles_unstable }
 export { useDrawerHeaderTitle_unstable }
 
 export { useDrawerHeaderTitleStyles_unstable }
+
+export { useDrawerStyles_unstable }
 
 export { useDropdown_unstable }
 
