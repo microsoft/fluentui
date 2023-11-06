@@ -2,6 +2,60 @@
   "name": "@fluentui/react-breadcrumb-preview",
   "entries": [
     {
+      "date": "Wed, 01 Nov 2023 19:15:55 GMT",
+      "tag": "@fluentui/react-breadcrumb-preview_v2.1.0",
+      "version": "2.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "877aa5574a2028398fba63f5d5d696b3dcccb21e",
+            "comment": "feat: made BreadcrumbButton semantically as a link"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-breadcrumb-preview_v2.0.1",
+      "version": "2.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-button to v9.3.53",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-link to v9.1.32",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.1",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-tabster to v9.14.3",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "comment": "Bump @fluentui/react-theme to v9.1.15",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 28 Oct 2023 23:35:54 GMT",
       "tag": "@fluentui/react-breadcrumb-preview_v2.0.0",
       "version": "2.0.0",

@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Sat, 28 Oct 2023 23:35:59 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 13:16:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.3)
+
+Mon, 06 Nov 2023 13:16:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.2..@fluentui/react-dialog_v9.8.3)
+
+### Patches
+
+- chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment. ([PR #29755](https://github.com/microsoft/fluentui/pull/29755) by yuanboxue@microsoft.com)
+
+## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.2)
+
+Wed, 01 Nov 2023 12:55:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.1..@fluentui/react-dialog_v9.8.2)
+
+### Patches
+
+- chore: remove animation from test environments ([PR #29692](https://github.com/microsoft/fluentui/pull/29692) by bernardo.sunderhus@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-portal to v9.3.27 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
 
 ## [9.8.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.1)
 

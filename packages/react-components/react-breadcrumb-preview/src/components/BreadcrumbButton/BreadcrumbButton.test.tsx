@@ -26,12 +26,12 @@ describe('BreadcrumbButton', () => {
     const result = render(<BreadcrumbButton>Default BreadcrumbButton</BreadcrumbButton>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <button
+        <a
           class="fui-Button fui-BreadcrumbButton"
-          type="button"
+          tabindex="0"
         >
           Default BreadcrumbButton
-        </button>
+        </a>
       </div>
     `);
   });
@@ -42,9 +42,9 @@ describe('BreadcrumbButton', () => {
     );
     expect(result.container).toMatchInlineSnapshot(`
       <div>
-        <button
+        <a
           class="fui-Button fui-BreadcrumbButton"
-          type="button"
+          tabindex="0"
         >
           <span
             class="fui-Button__icon"
@@ -65,7 +65,7 @@ describe('BreadcrumbButton', () => {
             </svg>
           </span>
           BreadcrumbButton with icon
-        </button>
+        </a>
       </div>
     `);
   });

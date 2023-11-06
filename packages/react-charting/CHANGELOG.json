@@ -2,6 +2,63 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Mon, 06 Nov 2023 07:27:33 GMT",
+      "tag": "@fluentui/react-charting_v5.18.14",
+      "version": "5.18.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.120",
+            "commit": "fb0dbceef6690276ad24c1cb4a44f882bee887a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.6",
+            "commit": "fb0dbceef6690276ad24c1cb4a44f882bee887a5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Nov 2023 07:27:57 GMT",
+      "tag": "@fluentui/react-charting_v5.18.13",
+      "version": "5.18.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "26e7bd757ab3d6547506da7100c72f6ef5e43c06",
+            "comment": "Updating documentation content"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 07:29:14 GMT",
+      "tag": "@fluentui/react-charting_v5.18.12",
+      "version": "5.18.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.119",
+            "commit": "fccf16cffd5a6833a5232a543815f5146d886439"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.5",
+            "commit": "fccf16cffd5a6833a5232a543815f5146d886439"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 31 Oct 2023 07:34:28 GMT",
       "tag": "@fluentui/react-charting_v5.18.11",
       "version": "5.18.11",

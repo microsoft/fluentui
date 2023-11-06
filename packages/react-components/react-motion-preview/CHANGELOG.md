@@ -1,8 +1,19 @@
 # Change Log - @fluentui/react-motion-preview
 
-This log was last generated on Sat, 28 Oct 2023 23:35:57 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Nov 2023 12:55:58 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.5.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.5.0)
+
+Wed, 01 Nov 2023 12:55:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-motion-preview_v0.4.0..@fluentui/react-motion-preview_v0.5.0)
+
+### Minor changes
+
+- fix: separate timeouts to better synchronize changes in between browser frames ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by marcosvmmoura@gmail.com)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
 
 ## [0.4.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-motion-preview_v0.4.0)
 

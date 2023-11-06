@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Sat, 28 Oct 2023 23:35:59 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 13:16:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.5)
+
+Mon, 06 Nov 2023 13:16:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.4..@fluentui/react-calendar-compat_v0.0.5)
+
+### Patches
+
+- fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time. ([PR #29747](https://github.com/microsoft/fluentui/pull/29747) by esteban.230@hotmail.com)
+
+## [0.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.4)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.3..@fluentui/react-calendar-compat_v0.0.4)
+
+### Patches
+
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
 
 ## [0.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.3)
 

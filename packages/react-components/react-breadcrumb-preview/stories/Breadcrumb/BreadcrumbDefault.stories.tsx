@@ -9,19 +9,33 @@ export const Default = () => {
     <>
       <Breadcrumb aria-label="Breadcrumb default example">
         <BreadcrumbItem>
-          <BreadcrumbButton>Item 1</BreadcrumbButton>
+          <BreadcrumbButton href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--default">
+            Item 1
+          </BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbDivider />
         <BreadcrumbItem>
-          <BreadcrumbButton icon={<CalendarMonth />}>Item 2</BreadcrumbButton>
+          <BreadcrumbButton
+            href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-size"
+            icon={<CalendarMonth />}
+          >
+            Item 2
+          </BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbDivider />
         <BreadcrumbItem>
-          <BreadcrumbButton>Item 3</BreadcrumbButton>
+          <BreadcrumbButton href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-with-overflow">
+            Item 3
+          </BreadcrumbButton>
         </BreadcrumbItem>
         <BreadcrumbDivider />
         <BreadcrumbItem>
-          <BreadcrumbButton current>Item 4</BreadcrumbButton>
+          <BreadcrumbButton
+            href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-with-tooltip"
+            current
+          >
+            Item 4
+          </BreadcrumbButton>
         </BreadcrumbItem>
       </Breadcrumb>
     </>

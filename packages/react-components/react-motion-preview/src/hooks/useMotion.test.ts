@@ -41,14 +41,21 @@ const renderHookWithRef = (
 };
 
 const jumpAnimationFrame = () => {
-  // requestAnimationFrame
-  act(() => jest.advanceTimersToNextTimer());
+  act(() => {
+    // Timeout to defer until the next animation frame
+    jest.advanceTimersToNextTimer();
+
+    // The actual animation frame to sync with the browser
+    jest.advanceTimersToNextTimer();
+  });
 };
 
 const jumpAnimationTimeout = (timeout: number = cssDuration) => {
-  // timeout + requestAnimationFrame
   act(() => {
+    // Timeout to finish the animation
     jest.advanceTimersByTime(timeout);
+
+    // Animation frame to sync with the browser
     jest.advanceTimersToNextTimer();
   });
 };
@@ -105,7 +112,7 @@ describe('useMotion', () => {
       expect(result.current.active).toBe(false);
       expect(result.current.canRender).toBe(true);
 
-      act(() => jest.advanceTimersToNextTimer());
+      jumpAnimationFrame();
 
       expect(result.current.active).toBe(true);
     });

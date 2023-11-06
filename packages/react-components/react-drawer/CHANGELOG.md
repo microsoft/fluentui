@@ -1,8 +1,39 @@
 # Change Log - @fluentui/react-drawer
 
-This log was last generated on Sat, 28 Oct 2023 23:35:56 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 13:16:04 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.41](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.41)
+
+Mon, 06 Nov 2023 13:16:04 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.40..@fluentui/react-drawer_v9.0.0-beta.41)
+
+### Changes
+
+- Bump @fluentui/react-dialog to v9.8.3 ([PR #29755](https://github.com/microsoft/fluentui/pull/29755) by beachball)
+
+## [9.0.0-beta.40](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.40)
+
+Thu, 02 Nov 2023 17:38:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.39..@fluentui/react-drawer_v9.0.0-beta.40)
+
+### Changes
+
+- breaking: open prop now only accepts a boolean instead of MotionShorthand  ([PR #29736](https://github.com/microsoft/fluentui/pull/29736) by marcosvmmoura@gmail.com)
+
+## [9.0.0-beta.39](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.39)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-drawer_v9.0.0-beta.38..@fluentui/react-drawer_v9.0.0-beta.39)
+
+### Changes
+
+- Bump @fluentui/react-dialog to v9.8.2 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-motion-preview to v0.5.0 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
 
 ## [9.0.0-beta.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-drawer_v9.0.0-beta.38)
 

@@ -2,6 +2,72 @@
   "name": "@fluentui/react-portal-compat",
   "entries": [
     {
+      "date": "Mon, 06 Nov 2023 13:16:04 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.107",
+      "version": "9.0.107",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.37.4",
+            "commit": "bcd30395b61cb18b5a42a8c0a4f91ccc2b88377d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 02 Nov 2023 17:38:46 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.106",
+      "version": "9.0.106",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.37.3",
+            "commit": "b4b696c7dd574454581ff697b03381650eb00f9c"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 19:15:55 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.105",
+      "version": "9.0.105",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.37.2",
+            "commit": "c36875cbd92a1dd7f5863719a24ca7feeb3a5e83"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-portal-compat_v9.0.104",
+      "version": "9.0.104",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-tabster to v9.14.3",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-portal-compat",
+            "comment": "Bump @fluentui/react-components to v9.37.1",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 28 Oct 2023 23:35:59 GMT",
       "tag": "@fluentui/react-portal-compat_v9.0.103",
       "version": "9.0.103",

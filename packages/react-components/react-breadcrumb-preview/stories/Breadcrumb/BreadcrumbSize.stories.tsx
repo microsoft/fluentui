@@ -54,7 +54,9 @@ export const BreadcrumbSize = () => {
         </BreadcrumbItem>
         <BreadcrumbDivider />
         <BreadcrumbItem>
-          <BreadcrumbButton current>Item 4</BreadcrumbButton>
+          <BreadcrumbButton icon={<CalendarMonth />} current>
+            Item 4
+          </BreadcrumbButton>
         </BreadcrumbItem>
       </Breadcrumb>
     </>

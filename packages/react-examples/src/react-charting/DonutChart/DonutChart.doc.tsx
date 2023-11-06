@@ -44,6 +44,8 @@ export const DonutChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/docs/DonutChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/docs/DonutChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/docs/DonutChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/DonutChart/docs/DonutChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

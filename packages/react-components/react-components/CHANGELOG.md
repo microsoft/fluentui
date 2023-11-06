@@ -1,8 +1,74 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Sat, 28 Oct 2023 23:35:54 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 13:16:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.37.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.4)
+
+Mon, 06 Nov 2023 13:16:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.3..@fluentui/react-components_v9.37.4)
+
+### Patches
+
+- `@fluentui/react-calendar-compat`
+  - fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time. ([PR #29747](https://github.com/microsoft/fluentui/pull/29747) by esteban.230@hotmail.com)
+- `@fluentui/react-dialog`
+  - chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment. ([PR #29755](https://github.com/microsoft/fluentui/pull/29755) by yuanboxue@microsoft.com)
+
+## [9.37.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.3)
+
+Thu, 02 Nov 2023 17:38:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.2..@fluentui/react-components_v9.37.3)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - chore: throws if FlatTree is used as a subtree ([PR #29729](https://github.com/microsoft/fluentui/pull/29729) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - breaking: open prop now only accepts a boolean instead of MotionShorthand  ([PR #29736](https://github.com/microsoft/fluentui/pull/29736) by marcosvmmoura@gmail.com)
+
+## [9.37.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.2)
+
+Wed, 01 Nov 2023 19:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.1..@fluentui/react-components_v9.37.2)
+
+### Minor changes
+
+- `@fluentui/react-breadcrumb-preview`
+  - feat: made BreadcrumbButton semantically as a link ([PR #29679](https://github.com/microsoft/fluentui/pull/29679) by vkozlova@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - chore: stop unnecessary re-rendering when no actions are available ([PR #29694](https://github.com/microsoft/fluentui/pull/29694) by bernardo.sunderhus@gmail.com)
+
+## [9.37.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.1)
+
+Wed, 01 Nov 2023 12:55:58 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.0..@fluentui/react-components_v9.37.1)
+
+### Minor changes
+
+- `@fluentui/react-motion-preview`
+  - fix: separate timeouts to better synchronize changes in between browser frames ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by marcosvmmoura@gmail.com)
+- `@fluentui/react-timepicker-compat-preview`
+  - feat: release preview package ([PR #29677](https://github.com/microsoft/fluentui/pull/29677) by yuanboxue@microsoft.com)
+
+### Patches
+
+- `@fluentui/react-combobox`
+  - fix: Combobox now collapses when mousing up outside of listbox after having moused within it. ([PR #29682](https://github.com/microsoft/fluentui/pull/29682) by makotom@microsoft.com)
+- `@fluentui/react-dialog`
+  - chore: remove animation from test environments ([PR #29692](https://github.com/microsoft/fluentui/pull/29692) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/tokens`
+  - fix(tokens): Fix motion curves to match design ([PR #29546](https://github.com/microsoft/fluentui/pull/29546) by robertpenner@microsoft.com)
 
 ## [9.37.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.0)
 

@@ -1,8 +1,30 @@
 # Change Log - @fluentui/react-breadcrumb-preview
 
-This log was last generated on Sat, 28 Oct 2023 23:35:54 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Nov 2023 19:15:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.1.0)
+
+Wed, 01 Nov 2023 19:15:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v2.0.1..@fluentui/react-breadcrumb-preview_v2.1.0)
+
+### Minor changes
+
+- feat: made BreadcrumbButton semantically as a link ([PR #29679](https://github.com/microsoft/fluentui/pull/29679) by vkozlova@microsoft.com)
+
+## [2.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.0.1)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v2.0.0..@fluentui/react-breadcrumb-preview_v2.0.1)
+
+### Patches
+
+- Bump @fluentui/react-button to v9.3.53 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-link to v9.1.32 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
 
 ## [2.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.0.0)
 

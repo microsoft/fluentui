@@ -2,6 +2,21 @@
   "name": "@fluentui/react-hooks",
   "entries": [
     {
+      "date": "Wed, 01 Nov 2023 07:29:14 GMT",
+      "tag": "@fluentui/react-hooks_v8.6.32",
+      "version": "8.6.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "mikula@gmail.com",
+            "package": "@fluentui/react-hooks",
+            "commit": "fccf16cffd5a6833a5232a543815f5146d886439",
+            "comment": "Add sanity check for addEventListener in useOnEvent"
+          }
+        ]
+      }
+    },
+    {
       "date": "Sat, 28 Oct 2023 00:29:16 GMT",
       "tag": "@fluentui/react-hooks_v8.6.31",
       "version": "8.6.31",
