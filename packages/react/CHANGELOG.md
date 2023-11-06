@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react
 
-This log was last generated on Wed, 01 Nov 2023 07:29:14 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 07:27:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.112.6](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.6)
+
+Mon, 06 Nov 2023 07:27:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react_v8.112.5..@fluentui/react_v8.112.6)
+
+### Patches
+
+- fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time. ([PR #29747](https://github.com/microsoft/fluentui/pull/29747) by esteban.230@hotmail.com)
 
 ## [8.112.5](https://github.com/microsoft/fluentui/tree/@fluentui/react_v8.112.5)
 
