@@ -30,7 +30,6 @@ describe('Fabric components', () => {
       continue;
     }
     let links = AppDefinition.examplePages[i].links;
-
     for (let j = 0; j < links.length; j++) {
       let { key, component } = links[j];
 
