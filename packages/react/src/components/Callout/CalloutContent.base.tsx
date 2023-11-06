@@ -143,6 +143,7 @@ function useMaxHeight(
     let { bottom: bottomBounds } = getBounds() ?? {};
     let calculatedHeight: number | undefined;
 
+    // If aligned to top edge of target, update bottom bounds to the top of the target (accounting for gap space and beak)
     if (positions?.targetEdge === RectangleEdge.top && targetRect?.top) {
       bottomBounds = targetRect.top - calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
     }
