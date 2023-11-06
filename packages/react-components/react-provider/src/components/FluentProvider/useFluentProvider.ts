@@ -16,6 +16,8 @@ import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
+const EMPTY_OBJECT = {};
+
 /**
  * Create the state required to render FluentProvider.
  *
@@ -32,7 +34,8 @@ export const useFluentProvider_unstable = (
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
-  const parentCustomStyleHooks: CustomStyleHooksContextValue = React.useContext(CustomStyleHooksContext) || {};
+  const parentCustomStyleHooks: CustomStyleHooksContextValue =
+    React.useContext(CustomStyleHooksContext) || EMPTY_OBJECT;
 
   /**
    * TODO: add merge functions to "dir" merge,

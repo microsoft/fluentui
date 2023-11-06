@@ -1,9 +1,18 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import { getNativeElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getNativeElementProps,
+  slot,
+  useEventCallback,
+  useId,
+  useMergedRefs,
+  usePrevious,
+} from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Checkmark16Filled } from '@fluentui/react-icons';
+
+const EMPTY_OBJECT = {};
 
 /**
  * Create the state required to render ListItem.
@@ -19,9 +28,12 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const { value = id, onKeyDown, onClick } = props;
 
   const focusableItems = useListContext_unstable(ctx => ctx.focusableItems);
-  const selection = useListContext_unstable(ctx => ctx.selection);
   const registerItem = useListContext_unstable(ctx => ctx.registerItem);
   const deregisterItem = useListContext_unstable(ctx => ctx.deregisterItem);
+  const toggleItem = useListContext_unstable(ctx => ctx.selection?.toggleItem);
+  const isSelectionEnabled = useListContext_unstable(ctx => !!ctx.selection);
+  const isSelected = useListContext_unstable(ctx => ctx.selection?.isSelected(value));
+  const selectionProps = useListContext_unstable(ctx => ctx.selection?.getListItemProps(value) || EMPTY_OBJECT);
 
   const focusableGroupAttrs = useFocusableGroup({ tabBehavior: 'limited-trap-focus' });
 
@@ -40,11 +52,6 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
   const handleKeyDown: typeof onKeyDown = useEventCallback(e => {
     onKeyDown?.(e);
 
-    // Return early if selection state is not provided = not selectable or controlled
-    if (!selection) {
-      return;
-    }
-
     // Compare targets to make sure this only triggers when the event is fired on the list item
     // and not on a button inside
     if (e.defaultPrevented || e.target !== e.currentTarget) {
@@ -53,23 +60,18 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
 
     if (e.key === ' ') {
       e.preventDefault();
-      selection.toggleItem(e, value);
+      toggleItem?.(e, value);
     }
   });
 
   const handleClick: typeof onClick = useEventCallback(e => {
     onClick?.(e);
 
-    // Return early if selection state is not provided =  or controlled
-    if (!selection) {
-      return;
-    }
-
     if (e.defaultPrevented) {
       return;
     }
 
-    selection.toggleItem(e, value);
+    toggleItem?.(e, value);
   });
 
   const root = slot.always(
@@ -78,25 +80,25 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
       tabIndex: focusableItems ? 0 : undefined,
       role: 'listitem',
       id: value,
-      ...(selection ? selection.getListItemProps(value) : {}),
+      ...selectionProps,
       ...focusableGroupAttrs,
       ...props,
-      onKeyDown: selection ? handleKeyDown : onKeyDown,
-      onClick: selection ? handleClick : onClick,
+      onKeyDown: isSelectionEnabled ? handleKeyDown : onKeyDown,
+      onClick: isSelectionEnabled ? handleClick : onClick,
     }),
     { elementType: 'li' },
   );
 
   const checkmark = slot.optional(props.checkmark, {
-    defaultProps: { children: selection?.isSelected(value) ? <Checkmark16Filled /> : null },
-    renderByDefault: !!selection,
-    elementType: 'span',
+    defaultProps: { children: isSelected ? <Checkmark16Filled /> : null },
+    renderByDefault: isSelectionEnabled,
+    elementType: 'div',
   });
 
   const state: ListItemState = {
     components: {
       root: 'li',
-      checkmark: 'span',
+      checkmark: 'div',
     },
     root,
     checkmark,

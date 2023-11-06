@@ -67,16 +67,33 @@ export function useListSelectionState<TItem extends { id: string | number }>(
       'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
     };
   };
-  const getListItemProps: ListSelectionState['getListItemProps'] = value => {
+
+  const listPropsForSelected = React.useMemo(() => {
     return {
       tabIndex: 0,
       role: 'option',
-      'aria-selected': selectionMethods.isSelected(value) || undefined,
+      'aria-selected': true,
       checkmark: {
-        children: selectionMethods.isSelected(value) ? <Checkmark16Filled /> : null,
+        children: <Checkmark16Filled />,
       },
     };
-  };
+  }, []);
+
+  const listPropsForNotSelected = React.useMemo(() => {
+    return {
+      tabIndex: 0,
+      role: 'option',
+      'aria-selected': false,
+      checkmark: {
+        children: null,
+      },
+    };
+  }, []);
+
+  const getListItemProps: ListSelectionState['getListItemProps'] = React.useCallback(
+    value => (selectionMethods.isSelected(value) ? listPropsForSelected : listPropsForNotSelected),
+    [listPropsForNotSelected, listPropsForSelected, selectionMethods],
+  );
 
   return {
     ...listState,

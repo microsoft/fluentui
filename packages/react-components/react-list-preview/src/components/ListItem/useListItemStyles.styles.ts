@@ -33,7 +33,6 @@ const useStyles = makeStyles({
   },
 
   checkmark: {
-    display: 'flex',
     alignSelf: 'center',
     marginRight: tokens.spacingHorizontalS,
     width: tokens.spacingHorizontalL,

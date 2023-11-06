@@ -2,15 +2,15 @@ import { createContext, useContextSelector } from '@fluentui/react-context-selec
 import type { ContextSelector } from '@fluentui/react-context-selector';
 import { ListContextValue } from './List.types';
 
+const noop = () => {
+  /*noop*/
+};
+
 export const listContextDefaultValue: ListContextValue = {
   focusableItems: false,
   items: [],
-  registerItem: () => {
-    /* noop */
-  },
-  deregisterItem: () => {
-    /* noop */
-  },
+  registerItem: noop,
+  deregisterItem: noop,
   selection: undefined,
 };
 

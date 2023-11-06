@@ -1,7 +1,15 @@
-import { Button, makeStyles, Persona, shorthands } from '@fluentui/react-components';
+import {
+  Button,
+  makeStyles,
+  Persona,
+  PresenceBadgeProps,
+  shorthands,
+  useEventCallback,
+} from '@fluentui/react-components';
 import { List, ListItem, useListFeatures, useListSelection } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
+import { ListSelectionState } from '../../src/hooks/types';
 import names from './names';
 
 type Item = {
@@ -33,6 +41,41 @@ const useStyles = makeStyles({
   },
 });
 
+// This component is memoized, i.e. it will only re-render if the props change.
+// This is important for performance, as we don't want to re-render the entire list
+// when the selection state changes.
+const MyListItem: React.FC<{
+  name: string;
+  avatar: string;
+  toggleItem: (e: React.SyntheticEvent, id: string) => void;
+  selectionProps: ReturnType<ListSelectionState['getListItemProps']>;
+}> = React.memo(({ name, avatar, toggleItem, selectionProps }) => {
+  const onClick = useEventCallback((e: React.MouseEvent) => toggleItem(e, name));
+  const onKeyDown = useEventCallback((e: React.KeyboardEvent) => {
+    if (e.key === ' ') {
+      e.preventDefault();
+      toggleItem(e, name);
+    }
+  });
+
+  return (
+    <ListItem key={name} aria-label={name} {...selectionProps} onClick={onClick} onKeyDown={onKeyDown}>
+      <Persona
+        name={name}
+        secondaryText="Available"
+        presence={{
+          status: 'available',
+        }}
+        avatar={{
+          image: {
+            src: avatar,
+          },
+        }}
+      />
+    </ListItem>
+  );
+});
+
 export const ListSelectionControlled = () => {
   const classes = useStyles();
   const [currentIndex, setCurrentIndex] = React.useState(4);
@@ -56,33 +99,15 @@ export const ListSelectionControlled = () => {
       </div>
 
       <List {...selection.getListProps()}>
-        {items.map(({ name, avatar }) => {
-          return (
-            <ListItem
-              key={name}
-              aria-label={name}
-              {...selection.getListItemProps(name)}
-              onClick={e => selection.toggleItem(e, name)}
-              onKeyDown={e => {
-                if (e.key === ' ') {
-                  e.preventDefault();
-                  selection.toggleItem(e, name);
-                }
-              }}
-            >
-              <Persona
-                name={name}
-                secondaryText="Available"
-                presence={{ status: 'available' }}
-                avatar={{
-                  image: {
-                    src: avatar,
-                  },
-                }}
-              />
-            </ListItem>
-          );
-        })}
+        {items.map(({ name, avatar }) => (
+          <MyListItem
+            name={name}
+            avatar={avatar}
+            key={name}
+            toggleItem={selection.toggleItem}
+            selectionProps={selection.getListItemProps(name)}
+          />
+        ))}
       </List>
     </div>
   );
