@@ -4,7 +4,7 @@ This RFC proposes solutions to enhance event typing within callbacks.
 
 ---
 
-@yuanboxue-amber
+@yuanboxue-amber @@bsunderhus @behowell
 
 ## Summary
 
@@ -38,7 +38,7 @@ Define two helper types `EventData` and `EventHandler` to ensure consistency acr
 
 ```ts
 export type EventData<Type extends string, TEvent> =
-  | { type: undefined; event: React.SyntheticEvent | Event}
+  | { type: undefined; event: React.SyntheticEvent | Event }
   | { type: Type; event: TEvent };
 
 export type EventHandler<TData extends EventData<string, unknown>> = (
@@ -49,15 +49,16 @@ export type EventHandler<TData extends EventData<string, unknown>> = (
 
 - Add `EventData<...>` to the `data` argument of all existing events in the library.
 - If a new event type needs to be added to an existing event handler that has a strongly-typed event:
+
   - Deprecate the existing `onSomeEvent` handler and introduce `onSomeEvent2` with the new proposed type signatures.
   - Continue to call the deprecated `onSomeEvent` in all cases. If the event object is of the wrong type for the existing function, do a cast.
 
 - For new event handlers (and the "2" versions of existing ones):
-  - Always use `EventHandler` type for the callback. It ensures the first argument is `React.SyntheticEvent | Event | undefined`.
+  - Always use `EventHandler` type for the callback. It ensures the first argument is `React.SyntheticEvent | Event`.
   - Add strongly-typed events to the data object using `EventData` type.
     - `EventData` makes data a discriminated union, where each object requires `event` and `type` property. `event` is the specific event type, and `type` is a string literal that serves as a clear identifier of the event type. Developers can use the `type` property to easily verify and filter events of interest.
       > Note that we have similar approach to `data` in [`TreeItemOpenChangeData`](https://github.com/microsoft/fluentui/blob/2eedc2ec54397253a4e3076fbfa382f4fe3c1175/packages/react-components/react-tree/src/components/TreeItem/TreeItem.types.ts#L25C1-L31C3), [`DialogOpenChangeData`](https://github.com/microsoft/fluentui/blob/a0bd42391c0a259558383e0ea6077617485aa234/packages/react-components/react-dialog/src/components/Dialog/Dialog.types.ts#L10-L25)
-    - `EventData` includes `{ type: undefined; event: React.SyntheticEvent | Event | undefined }` to ensure the event type of the data union is narrowed down to generic event. Developers must check `data.type` before using type-specific event.
+    - `EventData` includes `{ type: undefined; event: React.SyntheticEvent | Event }` to ensure the event type of the data union is narrowed down to generic event. Developers must check `data.type` before using type-specific event.
 
 ```ts
 import * as React from 'react';
@@ -94,12 +95,12 @@ import * as React from 'react';
     open: boolean;
   };
   // If one day we need to add more events, we can just add them to the union:
- // type OnSomeEventData = (
-//     | EventData<'click', React.MouseEvent<MyComponentElement>>
-//     | EventData<'focus', React.FocusEvent<MyComponentElement>>
-//   ) & {
-//     open: boolean;
-//   };
+  // type OnSomeEventData = (
+  //     | EventData<'click', React.MouseEvent<MyComponentElement>>
+  //     | EventData<'focus', React.FocusEvent<MyComponentElement>>
+  //   ) & {
+  //     open: boolean;
+  //   };
 
   type SomeProps = {
     onSomeEvent?: EventHandler<OnSomeEventData>;
@@ -145,7 +146,7 @@ import * as React from 'react';
 
 - Cons 👎:
   1. The complexity of the callback signature increases. Users need to discern the differences between the event argument and the events within the data argument.
-  2. Code bloat - as there are many callbacks, maintaining both versions of callbacks can become cumbersome. This is a problem that can only be solved in v10.
+  2. Code bloat - as there are many callbacks, maintaining both versions of callbacks can become cumbersome. This is a problem that can only be solved in v10. But this is less of an issue since this proposal specifies deprecating/replacing the events on an as-needed basis.
   3. there may be a case where generic event is inappropriate. For instance, if we can confidently assert that a callback only triggers on keyboard events. Although no such cases are identified yet, it remains a potential concern.
 
 We explored various alternatives, but this particular option stands out as the only secure choice for runtime, and therefore its drawbacks become inconsequential.
