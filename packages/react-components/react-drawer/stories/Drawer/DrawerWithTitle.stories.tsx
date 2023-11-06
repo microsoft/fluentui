@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { InlineDrawer, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
-import { Button, makeStyles } from '@fluentui/react-components';
+import { InlineDrawer, DrawerHeader, DrawerHeaderTitle, Button, makeStyles } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
