@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expose toMountNodeProps in react-components",
+  "packageName": "@fluentui/react-components",
+  "email": "jaguilarvega@microsoft.com",
+  "dependentChangeType": "patch"
+}

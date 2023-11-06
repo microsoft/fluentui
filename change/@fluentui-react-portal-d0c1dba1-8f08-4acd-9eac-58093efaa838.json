@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "Expose toMountNodeProps in react-portal",
+  "packageName": "@fluentui/react-portal",
+  "email": "jaguilarvega@microsoft.com",
+  "dependentChangeType": "patch"
+}

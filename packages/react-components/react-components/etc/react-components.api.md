@@ -958,6 +958,7 @@ import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
+import { toMountNodeProps } from '@fluentui/react-portal';
 import { Toolbar } from '@fluentui/react-toolbar';
 import { ToolbarButton } from '@fluentui/react-toolbar';
 import { ToolbarButtonProps } from '@fluentui/react-toolbar';
@@ -3268,6 +3269,8 @@ export { ToggleButtonProps }
 export { ToggleButtonState }
 
 export { tokens }
+
+export { toMountNodeProps }
 
 export { Toolbar }
 

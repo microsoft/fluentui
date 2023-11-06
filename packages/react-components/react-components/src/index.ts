@@ -586,7 +586,7 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
-export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
+export { Portal, usePortal_unstable, renderPortal_unstable, toMountNodeProps } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Radio,
