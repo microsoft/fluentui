@@ -47,8 +47,8 @@ export type EventHandler<TData extends EventData<string, unknown>> = (
 ) => void;
 ```
 
-- For existing event handlers where we can't change the type:
-
+- Add `EventData<...>` to the `data` argument of all existing events in the library.
+- If a new event type needs to be added to an existing event handler that has a strongly-typed event:
   - Deprecate the existing `onSomeEvent` handler and introduce `onSomeEvent2` with the new proposed type signatures.
   - Continue to call the deprecated `onSomeEvent` in all cases. If the event object is of the wrong type for the existing function, do a cast.
 
