@@ -1,13 +1,6 @@
 import * as React from 'react';
 import { useFocusableGroup } from '@fluentui/react-tabster';
-import {
-  getNativeElementProps,
-  slot,
-  useEventCallback,
-  useId,
-  useMergedRefs,
-  usePrevious,
-} from '@fluentui/react-utilities';
+import { getNativeElementProps, slot, useEventCallback, useId, useMergedRefs } from '@fluentui/react-utilities';
 import type { ListItemProps, ListItemState } from './ListItem.types';
 import { useListContext_unstable } from '../List/listContext';
 import { Checkmark16Filled } from '@fluentui/react-icons';
@@ -45,7 +38,7 @@ export const useListItem_unstable = (props: ListItemProps, ref: React.Ref<HTMLEl
     return () => {
       deregisterItem?.(value, innerRef);
     };
-    // Always make sure the dependencies are stable across rerenders, otherwise we go
+    // Always make sure the dependencies are stable across re-renders, otherwise we go
     // in a loop of registering and deregistering.
   }, [innerRef, value, registerItem, deregisterItem]);
 

@@ -4,12 +4,25 @@
 
 ```ts
 
+/// <reference types="react" />
+
+import { Button } from '@fluentui/react-button';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import type { OnSelectionChangeData } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { SelectionHookParams } from '@fluentui/react-utilities';
+import { SelectionItemId } from '@fluentui/react-utilities';
+import type { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import type { UseArrowNavigationGroupOptions } from '@fluentui/react-components';
+
+// @public (undocumented)
+export type IList = {
+    selection: ListState['selection'];
+};
 
 // @public
 export const List: ForwardRefComponent<ListProps>;
@@ -20,45 +33,120 @@ export const listClassNames: SlotClassNames<ListSlots>;
 // @public
 export const ListItem: ForwardRefComponent<ListItemProps>;
 
+// @public
+export const ListItemButton: ForwardRefComponent<ListItemButtonProps>;
+
+// @public (undocumented)
+export const listItemButtonClassNames: SlotClassNames<ListItemButtonSlots>;
+
+// @public
+export type ListItemButtonProps = ComponentProps<ListItemButtonSlots> & {};
+
+// @public (undocumented)
+export type ListItemButtonSlots = {
+    root: Slot<typeof Button>;
+};
+
+// @public
+export type ListItemButtonState = ComponentState<ListItemButtonSlots>;
+
 // @public (undocumented)
 export const listItemClassNames: SlotClassNames<ListItemSlots>;
 
 // @public
-export type ListItemProps = ComponentProps<ListItemSlots> & {};
+export type ListItemProps = ComponentProps<ListItemSlots> & {
+    value?: string | number;
+};
 
 // @public (undocumented)
 export type ListItemSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'li', 'div' | 'dt' | 'dd'>>;
+    checkmark?: Slot<'div'>;
 };
 
 // @public
-export type ListItemState = ComponentState<ListItemSlots>;
+export type ListItemState = ComponentState<ListItemSlots> & {};
+
+// @public (undocumented)
+export enum ListLayout {
+    // (undocumented)
+    Grid = "grid",
+    // (undocumented)
+    Horizontal = "horizontal",
+    // (undocumented)
+    Vertical = "vertical"
+}
 
 // @public
-export type ListProps = ComponentProps<ListSlots> & {};
+export type ListProps = ComponentProps<ListSlots> & {
+    layout?: ListLayout;
+    customArrowNavigationOptions?: Partial<UseArrowNavigationGroupOptions>;
+    focusableItems?: boolean;
+    selectable?: boolean;
+    selectionMode?: SelectionMode_2;
+    defaultSelectedItems?: SelectionItemId[];
+    onSelectionChange?: (event: React_2.SyntheticEvent, data: OnSelectionChangeData) => void;
+    componentRef?: React_2.Ref<IList>;
+};
 
 // @public (undocumented)
 export type ListSlots = {
-    root: Slot<'div'>;
+    root: NonNullable<Slot<'ul', 'div' | 'ol' | 'dl'>>;
 };
 
 // @public
-export type ListState = ComponentState<ListSlots>;
+export type ListState = ComponentState<ListSlots> & Required<Pick<ListProps, 'layout'>> & ListContextValue;
 
 // @public
-export const renderList_unstable: (state: ListState) => JSX.Element;
+export const renderList_unstable: (state: ListState, contextValues: ListContextValues) => JSX.Element;
 
 // @public
 export const renderListItem_unstable: (state: ListItemState) => JSX.Element;
 
 // @public
+export const renderListItemButton_unstable: (state: ListItemButtonState) => JSX.Element;
+
+// @public
 export const useList_unstable: (props: ListProps, ref: React_2.Ref<HTMLElement>) => ListState;
+
+// @public (undocumented)
+export function useListFeatures<TItem extends {
+    id: string | number;
+}>(options: UseListFeaturesOptions<TItem>, plugins?: ListFeaturePlugin[]): {
+    items: TItem[];
+    selection: ListSelectionState;
+};
 
 // @public
 export const useListItem_unstable: (props: ListItemProps, ref: React_2.Ref<HTMLElement>) => ListItemState;
 
 // @public
+export const useListItemButton_unstable: (props: ListItemButtonProps, ref: React_2.Ref<HTMLElement>) => ListItemButtonState;
+
+// @public
+export const useListItemButtonStyles_unstable: (state: ListItemButtonState) => ListItemButtonState;
+
+// @public
 export const useListItemStyles_unstable: (state: ListItemState) => ListItemState;
+
+// @public (undocumented)
+export function useListSelection<TItem extends {
+    id: string | number;
+}>(options?: SelectionHookParams): (listState: ListFeaturesState<TItem>) => {
+    selection: {
+        selectedItems: Set<SelectionItemId>;
+        toggleItem: (e: React_2.SyntheticEvent<Element, Event>, id: string | number) => void;
+        toggleAllItems: (e: React_2.SyntheticEvent<Element, Event>) => void;
+        deselectItem: (e: React_2.SyntheticEvent<Element, Event>, id: string | number) => void;
+        selectItem: (e: React_2.SyntheticEvent<Element, Event>, id: string | number) => void;
+        setSelectedItems: React_2.Dispatch<React_2.SetStateAction<Set<string | number>>>;
+        isSelected: (id: string | number) => boolean;
+        clearSelection: (e: React_2.SyntheticEvent<Element, Event>) => void;
+        getListProps: () => Pick<ListProps & React_2.RefAttributes<HTMLDivElement | HTMLDListElement>, "role" | "aria-multiselectable">;
+        getListItemProps: (value: string | number) => Pick<ListItemProps & React_2.RefAttributes<HTMLElement>, "tabIndex" | "role" | "aria-selected">;
+    };
+    items: TItem[];
+};
 
 // @public
 export const useListStyles_unstable: (state: ListState) => ListState;
