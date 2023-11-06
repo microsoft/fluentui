@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
-import { canUseDOM } from '@fluentui/react/lib/Utilities';
 
 interface IACLargeDataExampleState {
   width: number;
@@ -17,9 +16,6 @@ export class AreaChartLargeDataExample extends React.Component<{}, IACLargeDataE
   }
 
   public render(): JSX.Element {
-    if (!canUseDOM) {
-      return <></>;
-    }
     return <div>{this._basicExample()}</div>;
   }
 
