@@ -38,7 +38,7 @@ Define two helper types `EventData` and `EventHandler` to ensure consistency acr
 
 ```ts
 export type EventData<Type extends string, TEvent> =
-  | { type: undefined; event: React.SyntheticEvent | Event | undefined }
+  | { type: undefined; event: React.SyntheticEvent | Event}
   | { type: Type; event: TEvent };
 
 export type EventHandler<TData extends EventData<string, unknown>> = (
