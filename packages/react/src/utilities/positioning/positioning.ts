@@ -269,19 +269,17 @@ function _flipToFit(
       };
     } else if (_canScrollResizeToFitEdge(target, bounding, currentEdge)) {
       // Scrolling will allow edge to fit, move the estimate currentEdge inside the bounds and return
-      const scrollAdjustedEstimate: Rectangle = { ...currentEstimate };
-
       switch (currentEdge) {
         case RectangleEdge.bottom:
-          scrollAdjustedEstimate.bottom = bounding.bottom;
+          currentEstimate.bottom = bounding.bottom;
           break;
         case RectangleEdge.top:
-          scrollAdjustedEstimate.top = bounding.top;
+          currentEstimate.top = bounding.top;
           break;
       }
 
       return {
-        elementRectangle: scrollAdjustedEstimate,
+        elementRectangle: currentEstimate,
         targetEdge: currentEdge,
         alignmentEdge: currentAlignment,
       };
