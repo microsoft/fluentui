@@ -16,6 +16,7 @@ import * as React from 'react';
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
 
+// Fixes a bug where returning a new object each time would cause unnecessary rerenders.
 const EMPTY_OBJECT = {};
 
 /**
