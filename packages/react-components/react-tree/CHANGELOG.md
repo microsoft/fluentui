@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tree
 
-This log was last generated on Wed, 01 Nov 2023 19:15:55 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2023 17:38:46 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.4.11](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.11)
+
+Thu, 02 Nov 2023 17:38:46 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tree_v9.4.10..@fluentui/react-tree_v9.4.11)
+
+### Patches
+
+- chore: throws if FlatTree is used as a subtree ([PR #29729](https://github.com/microsoft/fluentui/pull/29729) by bernardo.sunderhus@gmail.com)
 
 ## [9.4.10](https://github.com/microsoft/fluentui/tree/@fluentui/react-tree_v9.4.10)
 

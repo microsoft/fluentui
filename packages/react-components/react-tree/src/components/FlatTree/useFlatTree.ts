@@ -5,9 +5,8 @@ import { useFlatTreeNavigation } from './useFlatTreeNavigation';
 import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { treeItemFilter } from '../../utils/treeItemFilter';
-import { slot, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
 import type { TreeNavigationData_unstable, TreeNavigationEvent_unstable } from '../Tree/Tree.types';
-import { useTreeContext_unstable } from '../../contexts/treeContext';
 import { useSubtree } from '../../hooks/useSubtree';
 import { ImmutableSet } from '../../utils/ImmutableSet';
 import { ImmutableMap } from '../../utils/ImmutableMap';
@@ -56,18 +55,10 @@ function useRootFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Fla
 
 function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): FlatTreeState {
   if (process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.error(/* #__DE-INDENT__ */ `
+    throw new Error(/* #__DE-INDENT__ */ `
       @fluentui/react-tree [useFlatTree]:
       Subtrees are not allowed in a FlatTree!
-      You cannot use a <FlatTree> component inside of another <FlatTree> component.
-    `);
-  }
-  if (useTreeContext_unstable(ctx => ctx.treeType) === 'nested' && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.error(/* #__DE-INDENT__ */ `
-      @fluentui/react-tree [useFlatTree]:
-      Error: <FlatTree> component cannot be used inside of a nested <Tree> component and vice versa.
+      You cannot use a <FlatTree> component inside of another <FlatTree> nor a <Tree> component!
     `);
   }
   return {
@@ -84,8 +75,6 @@ function useSubFlatTree(props: FlatTreeProps, ref: React.Ref<HTMLElement>): Flat
     size: 'medium',
     // ------ defaultTreeContextValue
     open: false,
-    components: { root: React.Fragment },
-    root: slot.always(props, { elementType: React.Fragment }),
   };
 }
 

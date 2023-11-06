@@ -2,6 +2,21 @@
   "name": "@fluentui/react-tree",
   "entries": [
     {
+      "date": "Thu, 02 Nov 2023 17:38:46 GMT",
+      "tag": "@fluentui/react-tree_v9.4.11",
+      "version": "9.4.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "9b59f49f035e556aab24cfd8ad8da429815db061",
+            "comment": "chore: throws if FlatTree is used as a subtree"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Nov 2023 19:15:55 GMT",
       "tag": "@fluentui/react-tree_v9.4.10",
       "version": "9.4.10",

@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Wed, 01 Nov 2023 19:15:55 GMT and should not be manually modified.
+This log was last generated on Thu, 02 Nov 2023 17:38:45 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.37.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.3)
+
+Thu, 02 Nov 2023 17:38:45 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.37.2..@fluentui/react-components_v9.37.3)
+
+### Patches
+
+- `@fluentui/react-tree`
+  - chore: throws if FlatTree is used as a subtree ([PR #29729](https://github.com/microsoft/fluentui/pull/29729) by bernardo.sunderhus@gmail.com)
+
+### Changes
+
+- `@fluentui/react-drawer`
+  - breaking: open prop now only accepts a boolean instead of MotionShorthand  ([PR #29736](https://github.com/microsoft/fluentui/pull/29736) by marcosvmmoura@gmail.com)
 
 ## [9.37.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.37.2)
 

@@ -2,6 +2,21 @@
   "name": "@fluentui/react-timepicker-compat-preview",
   "entries": [
     {
+      "date": "Thu, 02 Nov 2023 17:38:46 GMT",
+      "tag": "@fluentui/react-timepicker-compat-preview_v0.1.0",
+      "version": "0.1.0",
+      "comments": {
+        "none": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-timepicker-compat-preview",
+            "commit": "727224140e113363c3e5bb1f26b092b81da2ccb9",
+            "comment": "chore: add bundle size fixture."
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Nov 2023 12:55:58 GMT",
       "tag": "@fluentui/react-timepicker-compat-preview_v0.1.0",
       "version": "0.1.0",
