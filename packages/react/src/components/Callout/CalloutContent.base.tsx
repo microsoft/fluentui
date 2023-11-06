@@ -20,11 +20,7 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
-import {
-  _getRectangleFromElement,
-  calculateGapSpace,
-  getRectangleFromElement,
-} from '../../utilities/positioning/positioning';
+import { calculateGapSpace, getRectangleFromElement } from '../../utilities/positioning/positioning';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
