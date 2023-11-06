@@ -213,6 +213,33 @@ function _getOutOfBoundsDegree(rect: Rectangle, bounds: Rectangle) {
 }
 
 /**
+ * Returns true if scrolling
+ */
+function _canScrollToFitEdge(target: Rectangle, bounding: Rectangle, edge: RectangleEdge) {
+  // Only scroll vertically to fit - cannot scroll to fit right or left edges
+  if (edge !== RectangleEdge.bottom && edge !== RectangleEdge.top) {
+    return false;
+  }
+
+  return _getRelativeEdgeDifference(target, bounding, edge) > 100;
+}
+
+function _getScrollAdjustedRectangle(elementRectangle: Rectangle, bounding: Rectangle, targetEdge: RectangleEdge) {
+  const scrollAdjustedRectangle: Rectangle = { ...elementRectangle };
+
+  switch (targetEdge) {
+    case RectangleEdge.bottom:
+      scrollAdjustedRectangle.bottom = bounding.bottom;
+      break;
+    case RectangleEdge.top:
+      scrollAdjustedRectangle.top = bounding.top;
+      break;
+  }
+
+  return scrollAdjustedRectangle;
+}
+
+/**
  * Attempts to move the rectangle through various sides of the target to find a place to fit.
  * If no fit is found, the least bad option should be returned.
  */
@@ -246,7 +273,23 @@ function _flipToFit(
   // Keep switching sides until one is found with enough space.
   // If all sides don't fit then return the unmodified element.
   for (let i = 0; i < 4; i++) {
-    if (!_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
+    if (_isEdgeInBounds(currentEstimate, bounding, currentEdge)) {
+      // Edge is in bounds, return current estimate
+      return {
+        elementRectangle: currentEstimate,
+        targetEdge: currentEdge,
+        alignmentEdge: currentAlignment,
+      };
+    } else if (_canScrollToFitEdge(target, bounding, currentEdge)) {
+      // Scrolling will allow edge to fit
+      const scrollAdjustedRectangle = _getScrollAdjustedRectangle(currentEstimate, bounding, currentEdge);
+
+      return {
+        elementRectangle: scrollAdjustedRectangle,
+        targetEdge: currentEdge,
+        alignmentEdge: currentAlignment,
+      };
+    } else {
       // update least-bad edges
       const currentOOBDegree = _getOutOfBoundsDegree(currentEstimate, bounding);
       if (!oobDegree || currentOOBDegree < oobDegree) {
@@ -270,12 +313,6 @@ function _flipToFit(
           gap,
         );
       }
-    } else {
-      return {
-        elementRectangle: currentEstimate,
-        targetEdge: currentEdge,
-        alignmentEdge: currentAlignment,
-      };
     }
   }
 
@@ -342,16 +379,7 @@ function _adjustFitWithinBounds(
     _getRelativeEdgeDifference(target, bounding, positionData.targetEdge) > 100;
 
   if (shouldScroll) {
-    const scrollableElementRectangle: Rectangle = { ...element };
-
-    switch (positionData.targetEdge) {
-      case RectangleEdge.bottom:
-        scrollableElementRectangle.bottom = bounding.bottom;
-        break;
-      case RectangleEdge.top:
-        scrollableElementRectangle.top = bounding.top;
-        break;
-    }
+    const scrollableElementRectangle = _getScrollAdjustedRectangle(element, bounding, positionData.targetEdge);
 
     elementEstimate = {
       elementRectangle: scrollableElementRectangle,
@@ -907,6 +935,14 @@ function _positionElement(
   return _finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget);
 }
 
+function _calculateGapSpace(
+  isBeakVisible: boolean | undefined,
+  beakWidth: number | undefined,
+  gapSpace: number | undefined,
+): number {
+  return _calculateActualBeakWidthInPixels(isBeakVisible ? beakWidth || 0 : 0) / 2 + (gapSpace ? gapSpace : 0);
+}
+
 function _positionCallout(
   props: ICalloutPositionProps,
   hostElement: HTMLElement,
@@ -915,7 +951,7 @@ function _positionCallout(
   doNotFinalizeReturnEdge?: boolean,
 ): ICalloutPositionedInfo {
   const beakWidth: number = props.isBeakVisible ? props.beakWidth || 0 : 0;
-  const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
+  const gap = _calculateGapSpace(props.isBeakVisible, props.beakWidth, props.gapSpace);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
   const boundingRect: Rectangle = props.bounds
@@ -1103,4 +1139,16 @@ export function getBoundsFromTargetWindow(
   targetWindow: IWindowWithSegments,
 ): IRectangle {
   return _getBoundsFromTargetWindow(target, targetWindow);
+}
+
+export function getRectangleFromElement(element: Element): Rectangle {
+  return _getRectangleFromElement(element);
+}
+
+export function calculateGapSpace(
+  isBeakVisible: boolean | undefined,
+  beakWidth: number | undefined,
+  gapSpace: number | undefined,
+): number {
+  return _calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
 }

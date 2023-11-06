@@ -20,6 +20,11 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
+import {
+  _getRectangleFromElement,
+  calculateGapSpace,
+  getRectangleFromElement,
+} from '../../utilities/positioning/positioning';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -115,20 +120,34 @@ function useBounds(
  * (Hook) to return the maximum available height for the Callout to render into.
  */
 function useMaxHeight(
-  { calloutMaxHeight, finalHeight, directionalHint, directionalHintFixed, hidden }: ICalloutProps,
+  {
+    calloutMaxHeight,
+    finalHeight,
+    directionalHint,
+    directionalHintFixed,
+    hidden,
+    gapSpace,
+    beakWidth,
+    isBeakVisible,
+  }: ICalloutProps,
   getBounds: () => IRectangle | undefined,
+  targetRef: React.RefObject<Element | MouseEvent | Point | null>,
   positions?: ICalloutPositionedInfo,
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const { top, bottom } = positions?.elementPosition ?? {};
+  const targetRect = targetRef?.current ? getRectangleFromElement(targetRef.current) : undefined;
 
   React.useEffect(() => {
-    const { top: topBounds, bottom: bottomBounds } = getBounds() ?? {};
+    const { top: topBounds } = getBounds() ?? {};
+    let { bottom: bottomBounds } = getBounds() ?? {};
     let calculatedHeight: number | undefined;
 
-    if (positions?.targetEdge === RectangleEdge.top && bottom && top && topBounds) {
-      calculatedHeight = Math.abs(bottom) - top - topBounds;
-    } else if (typeof top === 'number' && bottomBounds) {
+    if (positions?.targetEdge === RectangleEdge.top && targetRect?.top) {
+      bottomBounds = targetRect.top - calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
+    }
+
+    if (typeof top === 'number' && bottomBounds) {
       calculatedHeight = bottomBounds - top;
     } else if (typeof bottom === 'number' && typeof topBounds === 'number' && bottomBounds) {
       calculatedHeight = bottomBounds - topBounds - bottom;
@@ -144,7 +163,21 @@ function useMaxHeight(
     } else {
       setMaxHeight(undefined);
     }
-  }, [bottom, calloutMaxHeight, finalHeight, directionalHint, directionalHintFixed, getBounds, hidden, positions, top]);
+  }, [
+    bottom,
+    calloutMaxHeight,
+    finalHeight,
+    directionalHint,
+    directionalHintFixed,
+    getBounds,
+    hidden,
+    positions,
+    top,
+    targetRect,
+    gapSpace,
+    beakWidth,
+    isBeakVisible,
+  ]);
 
   return maxHeight;
 }
@@ -444,7 +477,7 @@ export const CalloutContentBase: React.FunctionComponent<ICalloutProps> = React.
     });
     const getBounds = useBounds(props, targetRef, targetWindow);
     const positions = usePositions(props, hostElement, calloutElement, targetRef, getBounds);
-    const maxHeight = useMaxHeight(props, getBounds, positions);
+    const maxHeight = useMaxHeight(props, getBounds, targetRef, positions);
     const [mouseDownOnPopup, mouseUpOnPopup] = useDismissHandlers(
       props,
       positions,
