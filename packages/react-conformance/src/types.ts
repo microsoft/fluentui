@@ -50,6 +50,14 @@ export interface IsConformantOptions<TProps = {}> {
    * If there are tests that aren't supposed to run on a component, this allows to opt out of any test.
    */
   disabledTests?: string[];
+
+  /**
+   * Disable tests that verify the component's prop types.
+   * These tests require TypeScript information.
+   * It is recommended to keep these tests enabled, but they can be disabled in a large repo to improve test performance and memory consumption.
+   */
+  disableTypeTests?: boolean;
+
   /**
    * Optional flag that means the component is not exported at top level.
    * @defaultvalue false
@@ -104,12 +112,31 @@ export interface IsConformantOptions<TProps = {}> {
   tsConfig?: Partial<{ configName: string; configDir: string }>;
 }
 
+export type BaseConformanceTest<TProps = {}> = (testInfo: IsConformantOptions<TProps>) => void;
 export type ConformanceTest<TProps = {}> = (
-  componentInfo: ComponentDoc,
   testInfo: IsConformantOptions<TProps>,
+  componentInfo: ComponentDoc,
   tsProgram: ts.Program,
 ) => void;
 
 export interface TestObject<TProps = {}> {
-  [key: string]: ConformanceTest<TProps>;
+  [key: string]: BaseConformanceTest<TProps> | ConformanceTest<TProps>;
+}
+
+export interface DefaultTestObject<TProps = {}> {
+  'exports-component': BaseConformanceTest<TProps>;
+  'component-renders': BaseConformanceTest<TProps>;
+  'component-has-displayname': BaseConformanceTest<TProps>;
+  'component-handles-ref': BaseConformanceTest<TProps>;
+  'component-has-root-ref': BaseConformanceTest<TProps>;
+  'omits-size-prop': ConformanceTest<TProps>;
+  'component-handles-classname': BaseConformanceTest<TProps>;
+  'component-has-static-classnames-object': ConformanceTest<TProps>;
+  'name-matches-filename': BaseConformanceTest<TProps>;
+  'exported-top-level': BaseConformanceTest<TProps>;
+  'has-top-level-file': BaseConformanceTest<TProps>;
+  'kebab-aria-attributes': ConformanceTest<TProps>;
+  'consistent-callback-names': ConformanceTest<TProps>;
+  'consistent-callback-args': ConformanceTest<TProps>;
+  'primary-slot-gets-native-props': BaseConformanceTest<TProps>;
 }

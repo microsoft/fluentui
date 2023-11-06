@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: create useReducedMotion and apply to useMotion to skip all motion calculations",
-  "packageName": "@fluentui/react-motion-preview",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

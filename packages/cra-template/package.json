@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/cra-template",
-  "version": "8.4.112",
+  "version": "8.4.121",
   "description": "Create React App template for Fluent UI React (@fluentui/react)",
   "repository": {
     "type": "git",
@@ -19,7 +19,6 @@
   ],
   "devDependencies": {
     "@fluentui/react": "*",
-    "@fluentui/scripts-projects-test": "*",
-    "@fluentui/scripts-monorepo": "*"
+    "@fluentui/scripts-projects-test": "*"
   }
 }

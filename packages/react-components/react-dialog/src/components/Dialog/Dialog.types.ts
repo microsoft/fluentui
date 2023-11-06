@@ -59,7 +59,7 @@ export type DialogProps = ComponentProps<Partial<DialogSlots>> & {
    * `alert`: is a special type of modal dialogs that interrupts the user's workflow
    * to communicate an important message or ask for a decision.
    * Unlike a typical modal dialog, the user must take an action through the options given to dismiss the dialog,
-   * and it cannot be dismissed through the dimmed background or escape key.
+   * and it cannot be dismissed through the dimmed background.
    *
    * @default modal
    */

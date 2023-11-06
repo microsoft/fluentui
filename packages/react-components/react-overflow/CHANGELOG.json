@@ -2,6 +2,306 @@
   "name": "@fluentui/react-overflow",
   "entries": [
     {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.42",
+      "version": "9.0.42",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.1.15",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 09:51:57 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.41",
+      "version": "9.0.41",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.8",
+            "commit": "e4ef1febe8a185dddc10f8936944d177d50bc396"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:08 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.40",
+      "version": "9.0.40",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.41",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 11 Oct 2023 13:54:26 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.39",
+      "version": "9.0.39",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.40",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.15.0",
+            "commit": "b4466a0b9d3568e8e1ee1d814db5c8449dfd65b8"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 20:45:44 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.38",
+      "version": "9.0.38",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.39",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.14.2",
+            "commit": "d2196ea1ca001fbc22f38fcb258016f1df6c87e4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Oct 2023 15:25:35 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.37",
+      "version": "9.0.37",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.38",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.14.1",
+            "commit": "690590449dc3d65cd40b2b06a990fd920180919d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 08:45:47 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.36",
+      "version": "9.0.36",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.37",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.14.0",
+            "commit": "67b6cc6534e684ed32704dc6c0faee632bb840dc"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 17:49:08 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.35",
+      "version": "9.0.35",
+      "comments": {
+        "patch": [
+          {
+            "author": "yuanboxue@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d",
+            "comment": "chore: trigger manual version bump after broken release"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.7",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.36",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.1.14",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.13.5",
+            "commit": "05a23f6f5f331841c9ac9fb63764440c543f791d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 15:31:54 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.34",
+      "version": "9.0.34",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "e61473fa10195f6ebf2308205c1e72e91b711831",
+            "comment": "fix: bump swc core to mitigate transpilation memory leaks"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.6",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.35",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.1.13",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.13.4",
+            "commit": "e16520437e10cd824ac254dd797e32762b5de72d"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 06 Sep 2023 13:31:31 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.33",
+      "version": "9.0.33",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.34",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.13.3",
+            "commit": "52532950407fd4d3664ec6aa337855214233813b"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 15:39:04 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.32",
+      "version": "9.0.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.33",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.13.2",
+            "commit": "94019033dfe3fd39ec0cde7dfb3b57c22805aa91"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 05 Sep 2023 13:28:57 GMT",
+      "tag": "@fluentui/react-overflow_v9.0.31",
+      "version": "9.0.31",
+      "comments": {
+        "patch": [
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "eea6d93a62249ba4fba3347fb291c67ee1a3fb24",
+            "comment": "bumps react peer dependencies to v16.14.0"
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "b93c2ac22355b6cb6f33dd509c6cd9c21f4fffc8",
+            "comment": "bumps @swc/helpers version to 0.5.1"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/priority-overflow to v9.1.5",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-context-selector to v9.1.32",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-theme to v9.1.12",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-overflow",
+            "comment": "Bump @fluentui/react-utilities to v9.13.1",
+            "commit": "da959e66f36b429e40ae61810d08dc71c16e154a"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 29 Aug 2023 12:57:36 GMT",
       "tag": "@fluentui/react-overflow_v9.0.30",
       "version": "9.0.30",

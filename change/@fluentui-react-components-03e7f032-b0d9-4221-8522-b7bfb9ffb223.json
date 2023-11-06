@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: release Drawer as stable",
+  "packageName": "@fluentui/react-components",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

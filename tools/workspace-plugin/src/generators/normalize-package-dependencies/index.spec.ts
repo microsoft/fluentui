@@ -357,7 +357,7 @@ function createProject(
   graphMock.nodes[packageName] = {
     name: packageName,
     type: projectType === 'library' ? 'lib' : 'app',
-    data: { name: packageName, root: rootPath, files: [] },
+    data: { name: packageName, root: rootPath },
   };
 
   return tree;

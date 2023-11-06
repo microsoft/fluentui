@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: migrate package to use JSX importSource",
-  "packageName": "@fluentui/react-menu",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

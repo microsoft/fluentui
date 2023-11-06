@@ -3,11 +3,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 /**
  * Data shared between breadcrumb components
  */
-export type BreadcrumbContextValue = Required<Pick<BreadcrumbProps, 'appearance' | 'dividerType' | 'size'>>;
-
-export type BreadcrumbContextValues = {
-  breadcrumb: BreadcrumbContextValue;
-};
+export type BreadcrumbContextValues = Required<Pick<BreadcrumbProps, 'size'>>;
 
 export type BreadcrumbSlots = {
   /**
@@ -25,13 +21,6 @@ export type BreadcrumbSlots = {
  */
 export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
   /**
-   * Breadcrumb appearance.
-   *
-   * @default 'transparent'
-   */
-  appearance?: 'transparent' | 'subtle';
-
-  /**
    * Sets the focus behavior for the Breadcrumb.
    *
    * `tab`
@@ -46,13 +35,6 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
   focusMode?: 'arrow' | 'tab';
 
   /**
-   * Controls type of the divider.
-   *
-   * @default 'chevron'
-   */
-  dividerType?: 'chevron' | 'slash';
-
-  /**
    * Controls size of Breadcrumb items and dividers.
    *
    * @default 'medium'
@@ -63,5 +45,4 @@ export type BreadcrumbProps = ComponentProps<BreadcrumbSlots> & {
 /**
  * State used in rendering Breadcrumb
  */
-export type BreadcrumbState = ComponentState<BreadcrumbSlots> &
-  Required<Pick<BreadcrumbProps, 'appearance' | 'size' | 'dividerType'>>;
+export type BreadcrumbState = ComponentState<BreadcrumbSlots> & Required<Pick<BreadcrumbProps, 'size'>>;

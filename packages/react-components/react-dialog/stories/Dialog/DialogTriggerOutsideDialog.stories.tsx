@@ -19,8 +19,10 @@ export const TriggerOutsideDialog = () => {
   return (
     <>
       <Button
+        // restoreFocusTargetAttribute ensures that focus is restored to this button when the dialog closes
         {...restoreFocusTargetAttribute}
         onClick={() => {
+          // it is the user responsibility to open the dialog
           setOpen(true);
         }}
       >
@@ -28,8 +30,10 @@ export const TriggerOutsideDialog = () => {
       </Button>
 
       <Dialog
+        // this controls the dialog open state
         open={open}
         onOpenChange={(event, data) => {
+          // it is the users responsibility to react accordingly to the open state change
           setOpen(data.open);
         }}
       >
@@ -43,6 +47,7 @@ export const TriggerOutsideDialog = () => {
             </DialogContent>
 
             <DialogActions>
+              {/* DialogTrigger inside of a Dialog still works properly */}
               <DialogTrigger disableButtonEnhancement>
                 <Button appearance="secondary">Close</Button>
               </DialogTrigger>

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: Update Spinner appearance token to colorBrandStroke2Contrast",
-  "packageName": "@fluentui/react-spinner",
-  "email": "ololubek@microsoft.com",
-  "dependentChangeType": "patch"
-}

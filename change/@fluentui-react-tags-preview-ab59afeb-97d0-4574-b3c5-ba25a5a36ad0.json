@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: add style for windows high contrast",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

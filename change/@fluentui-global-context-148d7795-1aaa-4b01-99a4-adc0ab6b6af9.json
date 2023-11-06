@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bumps react peer dependencies to v16.14.0",
-  "packageName": "@fluentui/global-context",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

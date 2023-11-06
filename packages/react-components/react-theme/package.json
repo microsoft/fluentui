@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme",
-  "version": "9.1.11",
+  "version": "9.1.15",
   "description": "Fluent UI themes",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,7 +30,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/tokens": "1.0.0-alpha.8",
+    "@fluentui/tokens": "1.0.0-alpha.12",
     "@swc/helpers": "^0.5.1"
   },
   "beachball": {

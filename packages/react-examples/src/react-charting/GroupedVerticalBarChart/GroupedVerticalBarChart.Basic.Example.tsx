@@ -1,6 +1,10 @@
 import * as React from 'react';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
-import { GroupedVerticalBarChart, IGroupedVerticalBarChartProps } from '@fluentui/react-charting';
+import {
+  GroupedVerticalBarChart,
+  IGroupedVerticalBarChartProps,
+  DataVizPalette,
+  getColorFromToken,
+} from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Checkbox } from '@fluentui/react/lib/Checkbox';
 interface IGroupedBarChartState {
@@ -46,42 +50,42 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
   private _basicExample(): JSX.Element {
     const data = [
       {
-        name: 'Metadata info multi lines text Completed',
+        name: 'Jan - Mar',
         series: [
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
             xAxisCalloutData: '2020/04/30',
-            yAxisCalloutData: '33%',
+            yAxisCalloutData: '29%',
           },
           {
             key: 'series2',
             data: 44000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
             xAxisCalloutData: '2020/04/30',
             yAxisCalloutData: '44%',
           },
         ],
       },
       {
-        name: 'Meta Data2',
+        name: 'Apr - Jun',
         series: [
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
             xAxisCalloutData: '2020/05/30',
-            yAxisCalloutData: '33%',
+            yAxisCalloutData: '29%',
           },
           {
             key: 'series2',
             data: 3000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
             xAxisCalloutData: '2020/05/30',
             yAxisCalloutData: '3%',
           },
@@ -89,42 +93,42 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
       },
 
       {
-        name: 'Single line text ',
+        name: 'Jul - Sep',
         series: [
           {
             key: 'series1',
             data: 14000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
             xAxisCalloutData: '2020/06/30',
-            yAxisCalloutData: '14%',
+            yAxisCalloutData: '13%',
           },
           {
             key: 'series2',
             data: 50000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
             xAxisCalloutData: '2020/06/30',
             yAxisCalloutData: '50%',
           },
         ],
       },
       {
-        name: 'Hello World!!!',
+        name: 'Oct - Dec',
         series: [
           {
             key: 'series1',
             data: 33000,
-            color: DefaultPalette.blueLight,
-            legend: 'MetaData1',
+            color: getColorFromToken(DataVizPalette.color3),
+            legend: '2022',
             xAxisCalloutData: '2020/07/30',
-            yAxisCalloutData: '33%',
+            yAxisCalloutData: '29%',
           },
           {
             key: 'series2',
             data: 3000,
-            color: DefaultPalette.blue,
-            legend: 'MetaData4',
+            color: getColorFromToken(DataVizPalette.color4),
+            legend: '2023',
             xAxisCalloutData: '2020/07/30',
             yAxisCalloutData: '3%',
           },
@@ -140,6 +144,11 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
     return (
       <>
+        <p>
+          In this example the <code>xAxisCalloutData</code> property overrides the x value that is shown on the callout.
+          So instead of a numeric value, the callout will show the date that is passed in the{' '}
+          <code>xAxisCalloutData</code> property.
+        </p>
         <label htmlFor="changeWidth_Basic">Change Width:</label>
         <input
           type="range"
@@ -191,11 +200,10 @@ export class GroupedVerticalBarChartBasicExample extends React.Component<{}, IGr
             data={data}
             height={this.state.height}
             width={this.state.width}
-            showYAxisGridLines
-            wrapXAxisLables
             isCalloutForStack={this.state.selectedCallout === 'StackCallout'}
             barwidth={this.state.barwidth}
             hideLabels={this.state.hideLabels}
+            enableReflow={true}
           />
         </div>
       </>

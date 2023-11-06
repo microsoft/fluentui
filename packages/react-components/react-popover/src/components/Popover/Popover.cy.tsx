@@ -5,6 +5,7 @@ import { FluentProvider } from '@fluentui/react-provider';
 import { teamsLightTheme } from '@fluentui/react-theme';
 
 import { Popover, PopoverTrigger, PopoverSurface } from '@fluentui/react-popover';
+import { Menu, MenuTrigger, MenuPopover, MenuList, MenuItem } from '@fluentui/react-menu';
 import type { PopoverProps } from '@fluentui/react-popover';
 const mount = (element: JSX.Element) => {
   mountBase(<FluentProvider theme={teamsLightTheme}>{element}</FluentProvider>);
@@ -539,6 +540,106 @@ describe('Popover', () => {
         .wait(2000)
         .get(popoverContentSelector)
         .should('have.length', 2);
+    });
+  });
+
+  describe('Without trapFocus', () => {
+    it('should restore focus on close', () => {
+      mount(
+        <Popover>
+          <PopoverTrigger>
+            <button id="trigger">trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <button id="button">button</button>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get('#trigger')
+        .click()
+        .get(popoverContentSelector)
+        .should('exist')
+        .get('#button')
+        .focus()
+        .type('{esc}')
+        .get(popoverContentSelector)
+        .should('not.exist')
+        .get('#trigger')
+        .should('have.focus');
+    });
+  });
+
+  describe('Opens menu', () => {
+    it('should keep focus in popover once menu is dismissed with mouse', () => {
+      mount(
+        <Popover trapFocus>
+          <PopoverTrigger>
+            <button>Popover trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <Menu>
+              <MenuTrigger disableButtonEnhancement>
+                <button id="menu-trigger">Menu trigger</button>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem id="first-item">Item a</MenuItem>
+                  <MenuItem>Item b</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get('#menu-trigger')
+        .click()
+        .get('#first-item')
+        .should('have.focus')
+        .get('#menu-trigger')
+        .click()
+        .get('#first-item')
+        .should('not.exist')
+        .get('#menu-trigger')
+        .should('have.focus');
+    });
+
+    it('should keep focus in popover once menu is dismissed with keyboard', () => {
+      mount(
+        <Popover trapFocus>
+          <PopoverTrigger>
+            <button>Popover trigger</button>
+          </PopoverTrigger>
+          <PopoverSurface>
+            <Menu>
+              <MenuTrigger disableButtonEnhancement>
+                <button id="menu-trigger">Menu trigger</button>
+              </MenuTrigger>
+
+              <MenuPopover>
+                <MenuList>
+                  <MenuItem id="first-item">Item a</MenuItem>
+                  <MenuItem>Item b</MenuItem>
+                </MenuList>
+              </MenuPopover>
+            </Menu>
+          </PopoverSurface>
+        </Popover>,
+      );
+
+      cy.get(popoverTriggerSelector)
+        .click()
+        .get('#menu-trigger')
+        .click()
+        .get('#first-item')
+        .should('have.focus')
+        .type('{esc}')
+        .get('#menu-trigger')
+        .should('have.focus');
     });
   });
 });

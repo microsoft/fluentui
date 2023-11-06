@@ -14,17 +14,18 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
 
 // @public
-export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
+export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector: selectorType, customizeSelector, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    customizeSelector?: (selector: string) => string;
     // @deprecated
     enableOutline?: boolean;
     selector?: 'focus' | 'focus-within';
 }
 
 // @public
-export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ enableOutline, selector, customizeSelector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {

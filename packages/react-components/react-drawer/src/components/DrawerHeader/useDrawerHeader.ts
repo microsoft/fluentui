@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+
 import type { DrawerHeaderProps, DrawerHeaderState } from './DrawerHeader.types';
 
 /**
@@ -18,7 +19,7 @@ export const useDrawerHeader_unstable = (props: DrawerHeaderProps, ref: React.Re
     },
 
     root: slot.always(
-      getNativeElementProps('header', {
+      getIntrinsicElementProps('header', {
         ref,
         ...props,
       }),

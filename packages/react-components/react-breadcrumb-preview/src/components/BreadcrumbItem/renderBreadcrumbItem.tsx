@@ -10,10 +10,5 @@ import type { BreadcrumbItemState, BreadcrumbItemSlots } from './BreadcrumbItem.
 export const renderBreadcrumbItem_unstable = (state: BreadcrumbItemState) => {
   assertSlots<BreadcrumbItemSlots>(state);
 
-  return (
-    <state.root>
-      {state.icon && <state.icon />}
-      {state.root.children}
-    </state.root>
-  );
+  return <state.root>{state.root.children}</state.root>;
 };

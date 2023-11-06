@@ -73,6 +73,7 @@ export const toasterClassNames: SlotClassNames<ToasterSlots>;
 // @public
 export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & Pick<PortalProps, 'mountNode'> & {
     announce?: Announce;
+    inline?: boolean;
 };
 
 // @public (undocumented)
@@ -81,7 +82,7 @@ export type ToasterSlots = {
 };
 
 // @public
-export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<PortalProps, 'mountNode'> & Pick<Required<ToasterProps>, 'announce'> & {
+export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<PortalProps, 'mountNode'> & Pick<Required<ToasterProps>, 'announce' | 'inline'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
     dir: 'rtl' | 'ltr';
@@ -117,7 +118,7 @@ export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | To
 export type ToastPoliteness = 'assertive' | 'polite';
 
 // @public (undocumented)
-export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'top' | 'bottom';
 
 // @public
 export type ToastProps = ComponentProps<ToastSlots> & {

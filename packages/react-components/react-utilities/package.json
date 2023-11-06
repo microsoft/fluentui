@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-utilities",
-  "version": "9.13.0",
+  "version": "9.15.1",
   "description": "A set of general React-specific utilities.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -31,7 +31,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.3",
+    "@fluentui/keyboard-keys": "^9.0.6",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-breadcrumb-preview",
-  "version": "0.3.5",
+  "version": "2.1.0",
   "description": "Breadcrumb component for Fluent UI React.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -35,14 +35,14 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.34",
-    "@fluentui/react-icons": "^2.0.207",
-    "@fluentui/react-link": "^9.1.13",
-    "@fluentui/react-shared-contexts": "^9.7.2",
-    "@fluentui/react-tabster": "^9.12.5",
-    "@fluentui/react-theme": "^9.1.11",
-    "@fluentui/react-utilities": "^9.13.0",
-    "@fluentui/react-jsx-runtime": "^9.0.3",
+    "@fluentui/react-button": "^9.3.53",
+    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-link": "^9.1.32",
+    "@fluentui/react-shared-contexts": "^9.11.1",
+    "@fluentui/react-tabster": "^9.14.3",
+    "@fluentui/react-theme": "^9.1.15",
+    "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/react-jsx-runtime": "^9.0.18",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -54,7 +54,6 @@
   },
   "beachball": {
     "disallowedChangeTypes": [
-      "major",
       "prerelease"
     ]
   },

@@ -1,15 +1,15 @@
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
 import { useEventCallback } from '@fluentui/react-utilities';
 import { TreeNavigationData_unstable } from '../../Tree';
-import { HeadlessTree, HeadlessTreeItemProps } from '../../utils/createHeadlessTree';
 import { nextTypeAheadElement } from '../../utils/nextTypeAheadElement';
 import { treeDataTypes } from '../../utils/tokens';
 import { treeItemFilter } from '../../utils/treeItemFilter';
 import { useRovingTabIndex } from '../../hooks/useRovingTabIndexes';
-import { dataTreeItemValueAttrName, getTreeItemValueFromElement } from '../../utils/getTreeItemValueFromElement';
 import { HTMLElementWalker } from '../../utils/createHTMLElementWalker';
+import { TreeItemValue } from '../../TreeItem';
+import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
 
-export function useFlatTreeNavigation<Props extends HeadlessTreeItemProps>(virtualTree: HeadlessTree<Props>) {
+export function useFlatTreeNavigation() {
   const { targetDocument } = useFluent_unstable();
   const { rove, initialize } = useRovingTabIndex(treeItemFilter);
 
@@ -23,11 +23,39 @@ export function useFlatTreeNavigation<Props extends HeadlessTreeItemProps>(virtu
       case treeDataTypes.TypeAhead:
         walker.currentElement = data.target;
         return nextTypeAheadElement(walker, data.event.key);
-      case treeDataTypes.ArrowLeft:
-        return parentElement(virtualTree, data.target, walker);
-      case treeDataTypes.ArrowRight:
+      case treeDataTypes.ArrowLeft: {
+        const nextElement = parentElement(data.parentValue, walker);
+        if (!nextElement && process.env.NODE_ENV !== 'production') {
+          // eslint-disable-next-line no-console
+          console.warn(
+            /* #__DE-INDENT__ */ `
+            @fluentui/react-tree [useFlatTreeNavigation]:
+            \'ArrowLeft\' navigation was not possible.
+            No parent element found for the current element:
+          `,
+            data.target,
+          );
+        }
+        return nextElement;
+      }
+      case treeDataTypes.ArrowRight: {
         walker.currentElement = data.target;
-        return firstChild(data.target, walker);
+        const nextElement = firstChild(data.target, walker);
+        if (!nextElement && process.env.NODE_ENV !== 'production') {
+          const ariaLevel = Number(data.target.getAttribute('aria-level'));
+          // eslint-disable-next-line no-console
+          console.warn(
+            /* #__DE-INDENT__ */ `
+            @fluentui/react-tree [useFlatTreeNavigation]:
+            \'ArrowRight\' navigation was not possible.
+            No element with "aria-posinset=1" and "aria-level=${ariaLevel + 1}"
+            was found after the current element!
+          `,
+            data.target,
+          );
+        }
+        return nextElement;
+      }
       case treeDataTypes.End:
         walker.currentElement = walker.root;
         return walker.lastChild();
@@ -65,20 +93,9 @@ function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLEle
   return null;
 }
 
-function parentElement(
-  virtualTreeItems: HeadlessTree<HeadlessTreeItemProps>,
-  target: HTMLElement,
-  treeWalker: HTMLElementWalker,
-) {
-  const value = getTreeItemValueFromElement(target);
-  if (value === null) {
+function parentElement(parentValue: TreeItemValue | undefined, treeWalker: HTMLElementWalker) {
+  if (parentValue === undefined) {
     return null;
   }
-  const virtualTreeItem = virtualTreeItems.get(value);
-  if (virtualTreeItem?.parentValue) {
-    return treeWalker.root.querySelector<HTMLElement>(
-      `[${dataTreeItemValueAttrName}="${virtualTreeItem.parentValue}"]`,
-    );
-  }
-  return null;
+  return treeWalker.root.querySelector<HTMLElement>(`[${dataTreeItemValueAttrName}="${parentValue}"]`);
 }

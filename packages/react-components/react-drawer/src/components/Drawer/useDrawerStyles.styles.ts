@@ -1,6 +1,7 @@
 import { mergeClasses } from '@griffel/react';
-import type { DrawerSlots, DrawerState } from './Drawer.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+
+import type { DrawerSlots, DrawerState } from './Drawer.types';
 
 export const drawerClassNames: SlotClassNames<DrawerSlots> = {
   root: 'fui-Drawer',

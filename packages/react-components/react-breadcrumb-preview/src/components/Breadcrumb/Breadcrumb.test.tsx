@@ -3,8 +3,6 @@ import { render } from '@testing-library/react';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbButton } from '../BreadcrumbButton/BreadcrumbButton';
 import { BreadcrumbItem } from '../BreadcrumbItem/BreadcrumbItem';
-import { BreadcrumbLink } from '../BreadcrumbLink/BreadcrumbLink';
-import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
 import { isConformant } from '../../testing/isConformant';
 
 describe('Breadcrumb', () => {
@@ -12,8 +10,6 @@ describe('Breadcrumb', () => {
     Component: Breadcrumb,
     displayName: 'Breadcrumb',
   });
-
-  // create visual regression tests in /apps/vr-tests
 
   it('renders a default state with BreadcrumbButton', () => {
     const result = render(
@@ -36,62 +32,24 @@ describe('Breadcrumb', () => {
             <li
               class="fui-BreadcrumbItem"
             >
-              <button
+              <a
                 class="fui-Button fui-BreadcrumbButton"
-                type="button"
+                tabindex="0"
               >
                 Item 1
-              </button>
+              </a>
             </li>
           </ol>
         </nav>
       </div>
     `);
   });
-  it('renders a small non-interactive Breadcrumb with a slash divider', () => {
-    const result = render(
-      <Breadcrumb size="small" dividerType="slash">
-        <BreadcrumbItem>Item 1</BreadcrumbItem>
-        <BreadcrumbDivider />
-        <BreadcrumbItem>Item 2</BreadcrumbItem>
-      </Breadcrumb>,
-    );
-    expect(result.container).toMatchInlineSnapshot(`
-      <div>
-        <nav
-          aria-label="breadcrumb"
-          class="fui-Breadcrumb"
-        >
-          <ol
-            class="fui-Breadcrumb__list"
-            role="list"
-          >
-            <li
-              class="fui-BreadcrumbItem"
-            >
-              Item 1
-            </li>
-            <li
-              aria-hidden="true"
-              class="fui-BreadcrumbDivider"
-            >
-              /
-            </li>
-            <li
-              class="fui-BreadcrumbItem"
-            >
-              Item 2
-            </li>
-          </ol>
-        </nav>
-      </div>
-    `);
-  });
-  it('renders with a large BreadcrumbLink', () => {
+
+  it('renders with `a` tag', () => {
     const result = render(
       <Breadcrumb>
         <BreadcrumbItem>
-          <BreadcrumbLink>Link 1</BreadcrumbLink>
+          <BreadcrumbButton as="a">Link 1</BreadcrumbButton>
         </BreadcrumbItem>
       </Breadcrumb>,
     );
@@ -108,12 +66,12 @@ describe('Breadcrumb', () => {
             <li
               class="fui-BreadcrumbItem"
             >
-              <button
-                class="fui-Link fui-BreadcrumbLink"
-                type="button"
+              <a
+                class="fui-Button fui-BreadcrumbButton"
+                tabindex="0"
               >
                 Link 1
-              </button>
+              </a>
             </li>
           </ol>
         </nav>

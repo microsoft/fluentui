@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "bumps @swc/helpers version to 0.5.1",
-  "packageName": "@fluentui/global-context",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

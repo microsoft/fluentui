@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {
   FlatTree,
-  TreeItem,
+  FlatTreeItem,
   TreeItemLayout,
   TreeOpenChangeData,
   TreeOpenChangeEvent,
   HeadlessFlatTreeItemProps,
   useHeadlessFlatTree_unstable,
-  TreeItemProps,
   TreeItemValue,
+  FlatTreeItemProps,
 } from '@fluentui/react-components';
 import { Delete20Regular } from '@fluentui/react-icons';
 import {
@@ -35,7 +35,7 @@ const subtrees: ItemProps[][] = [
   ],
 ];
 
-type CustomTreeItemProps = TreeItemProps & {
+type CustomTreeItemProps = FlatTreeItemProps & {
   onRemoveItem?: (value: string) => void;
 };
 
@@ -53,7 +53,7 @@ const CustomTreeItem = React.forwardRef(
     return (
       <Menu positioning="below-end" openOnContext>
         <MenuTrigger disableButtonEnhancement>
-          <TreeItem aria-description="has actions" {...focusTargetAttribute} {...props} ref={ref}>
+          <FlatTreeItem aria-description="has actions" {...focusTargetAttribute} {...props} ref={ref}>
             <TreeItemLayout
               actions={
                 isItemRemovable ? (
@@ -69,7 +69,7 @@ const CustomTreeItem = React.forwardRef(
             >
               {props.children}
             </TreeItemLayout>
-          </TreeItem>
+          </FlatTreeItem>
         </MenuTrigger>
         <MenuPopover>
           <MenuList>

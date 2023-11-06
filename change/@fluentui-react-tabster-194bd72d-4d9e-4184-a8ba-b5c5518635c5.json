@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "bumps @swc/helpers version to 0.5.1",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

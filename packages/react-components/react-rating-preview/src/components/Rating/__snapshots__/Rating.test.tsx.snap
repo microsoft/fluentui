@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Rating renders a default state 1`] = `
+<div>
+  <div
+    class="fui-Rating"
+  >
+    Default Rating
+  </div>
+</div>
+`;

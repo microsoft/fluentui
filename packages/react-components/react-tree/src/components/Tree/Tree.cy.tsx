@@ -239,4 +239,130 @@ describe('Tree', () => {
       });
     });
   });
+
+  describe('Control open state per item', () => {
+    it('should remain open when opening/closing a controlled item', () => {
+      const OpenItemControlled = () => {
+        return (
+          <Tree aria-label="Open Item Controlled">
+            <TreeItem open itemType="branch" value="tree-item-1" data-testid="tree-item-1">
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem value="tree-item-1-1" data-testid="tree-item-1-1" itemType="leaf">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem value="tree-tem-1-2" data-testid="tree-tem-1-2" itemType="leaf">
+                  <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                </TreeItem>
+                <TreeItem value="tree-item-1-3" data-testid="tree-item-1-3" itemType="leaf">
+                  <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="branch" value="tree-item-2" data-testid="tree-item-2">
+              <TreeItemLayout>level 1, item 2</TreeItemLayout>
+              <Tree>
+                <TreeItem value="tree-item-2-1" data-testid="tree-item-2-1" itemType="branch">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <Tree>
+                    <TreeItem itemType="leaf">
+                      <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                    </TreeItem>
+                  </Tree>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        );
+      };
+      mount(<OpenItemControlled />);
+      cy.get('[data-testid="tree-item-1"]').should('exist');
+      cy.get('[data-testid="tree-item-2"]').should('exist');
+      cy.get('[data-testid="tree-item-2-1"]').should('not.exist');
+      cy.get('[data-testid="tree-item-1-1"]').should('exist');
+      cy.get('[data-testid="tree-item-1"]').realClick();
+      cy.get('[data-testid="tree-item-1-1"]').should('exist');
+    });
+    it('should remain closed when opening/closing a controlled item', () => {
+      const OpenItemControlled = () => {
+        return (
+          <Tree aria-label="Open Item Controlled">
+            <TreeItem open={false} itemType="branch" data-testid="tree-item-1" value="tree-item-1">
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-1-1" value="tree-item-1-1" itemType="leaf">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-tem-1-2" value="tree-tem-1-2" itemType="leaf">
+                  <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-item-1-3" value="tree-item-1-3" itemType="leaf">
+                  <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem itemType="branch" data-testid="tree-item-2" value="tree-item-2">
+              <TreeItemLayout>level 1, item 2</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-2-1" value="tree-item-2-1" itemType="branch">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <Tree>
+                    <TreeItem data-testid="tree-item-2-1-1" value="tree-item-2-1-1" itemType="leaf">
+                      <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                    </TreeItem>
+                  </Tree>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        );
+      };
+      mount(<OpenItemControlled />);
+      cy.get('[data-testid="tree-item-1"]').should('exist');
+      cy.get('[data-testid="tree-item-1-1"]').should('not.exist');
+      cy.get('[data-testid="tree-item-1"]').realClick();
+      cy.get('[data-testid="tree-item-1-1"]').should('not.exist');
+    });
+    it('should not affect other items open state when opening/closing a controlled item', () => {
+      const OpenItemControlled = () => {
+        return (
+          <Tree aria-label="Open Item Controlled">
+            <TreeItem open={false} itemType="branch" data-testid="tree-item-1" value="tree-item-1">
+              <TreeItemLayout>level 1, item 1</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-1-1" value="tree-item-1-1" itemType="leaf">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-tem-1-2" value="tree-tem-1-2" itemType="leaf">
+                  <TreeItemLayout>level 2, item 2</TreeItemLayout>
+                </TreeItem>
+                <TreeItem data-testid="tree-item-1-3" value="tree-item-1-3" itemType="leaf">
+                  <TreeItemLayout>level 2, item 3</TreeItemLayout>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+            <TreeItem open={true} itemType="branch" data-testid="tree-item-2" value="tree-item-2">
+              <TreeItemLayout>level 1, item 2</TreeItemLayout>
+              <Tree>
+                <TreeItem data-testid="tree-item-2-1" value="tree-item-2-1" itemType="branch">
+                  <TreeItemLayout>level 2, item 1</TreeItemLayout>
+                  <Tree>
+                    <TreeItem data-testid="tree-item-2-1-1" value="tree-item-2-1-1" itemType="leaf">
+                      <TreeItemLayout>level 3, item 1</TreeItemLayout>
+                    </TreeItem>
+                  </Tree>
+                </TreeItem>
+              </Tree>
+            </TreeItem>
+          </Tree>
+        );
+      };
+      mount(<OpenItemControlled />);
+      cy.get('[data-testid="tree-item-2"]').should('exist');
+      cy.get('[data-testid="tree-item-2-1"]').should('exist');
+      cy.get('[data-testid="tree-item-2-1-1"]').should('not.exist');
+      cy.get('[data-testid="tree-item-2-1"]').realClick();
+      cy.get('[data-testid="tree-item-2-1-1"]').should('exist');
+    });
+  });
 });

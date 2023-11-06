@@ -1,8 +1,44 @@
 # Change Log - @fluentui/priority-overflow
 
-This log was last generated on Fri, 11 Aug 2023 12:14:24 GMT and should not be manually modified.
+This log was last generated on Mon, 23 Oct 2023 09:51:55 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.8](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.8)
+
+Mon, 23 Oct 2023 09:51:55 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.7..@fluentui/priority-overflow_v9.1.8)
+
+### Patches
+
+- fix: Use container window's resize observer ([PR #29551](https://github.com/microsoft/fluentui/pull/29551) by lingfangao@hotmail.com)
+
+## [9.1.7](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.7)
+
+Tue, 26 Sep 2023 17:49:01 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.6..@fluentui/priority-overflow_v9.1.7)
+
+### Patches
+
+- chore: trigger manual version bump after broken release ([PR #29303](https://github.com/microsoft/fluentui/pull/29303) by yuanboxue@microsoft.com)
+
+## [9.1.6](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.6)
+
+Tue, 26 Sep 2023 15:32:06 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.5..@fluentui/priority-overflow_v9.1.6)
+
+### Patches
+
+- fix: bump swc core to mitigate transpilation memory leaks ([PR #29253](https://github.com/microsoft/fluentui/pull/29253) by martinhochel@microsoft.com)
+
+## [9.1.5](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.5)
+
+Tue, 05 Sep 2023 13:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/priority-overflow_v9.1.4..@fluentui/priority-overflow_v9.1.5)
+
+### Patches
+
+- bumps @swc/helpers version to 0.5.1 ([PR #28989](https://github.com/microsoft/fluentui/pull/28989) by bernardo.sunderhus@gmail.com)
 
 ## [9.1.4](https://github.com/microsoft/fluentui/tree/@fluentui/priority-overflow_v9.1.4)
 

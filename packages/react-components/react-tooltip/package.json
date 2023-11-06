@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-tooltip",
-  "version": "9.3.1",
+  "version": "9.3.20",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,13 +33,13 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.3",
-    "@fluentui/react-jsx-runtime": "^9.0.3",
-    "@fluentui/react-portal": "^9.3.10",
-    "@fluentui/react-positioning": "^9.9.8",
-    "@fluentui/react-shared-contexts": "^9.7.2",
-    "@fluentui/react-theme": "^9.1.11",
-    "@fluentui/react-utilities": "^9.13.0",
+    "@fluentui/keyboard-keys": "^9.0.6",
+    "@fluentui/react-jsx-runtime": "^9.0.18",
+    "@fluentui/react-portal": "^9.3.27",
+    "@fluentui/react-positioning": "^9.9.23",
+    "@fluentui/react-shared-contexts": "^9.11.1",
+    "@fluentui/react-theme": "^9.1.15",
+    "@fluentui/react-utilities": "^9.15.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

@@ -9,7 +9,6 @@ import {
   readJson,
   stripIndents,
   addProjectConfiguration,
-  readWorkspaceConfiguration,
   updateJson,
   logger,
   updateProjectConfiguration,
@@ -17,9 +16,10 @@ import {
   names,
   visitNotIgnoredFiles,
   writeJson,
-  WorkspaceConfiguration,
   ProjectConfiguration,
   joinPathFragments,
+  readNxJson,
+  NxJsonConfiguration,
 } from '@nx/devkit';
 
 import { PackageJson, TsConfig } from '../../types';
@@ -387,7 +387,7 @@ describe('migrate-converged-pkg generator', () => {
     });
 
     it(`should not add 3rd party packages that use same scope as our repo `, async () => {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const workspaceConfig = assertAndReadNxJson(tree);
       const normalizedPkgName = getNormalizedPkgName({ pkgName: options.name, workspaceConfig });
       const thirdPartyPackageName = '@proj/jango-fet';
 
@@ -502,7 +502,7 @@ describe('migrate-converged-pkg generator', () => {
 
   describe(`storybook updates`, () => {
     function setup(config: Partial<{ createDummyStories: boolean }> = {}) {
-      const workspaceConfig = readWorkspaceConfiguration(tree);
+      const workspaceConfig = assertAndReadNxJson(tree);
       const projectConfig = readProjectConfiguration(tree, options.name);
       const normalizedProjectName = options.name.replace(`@${workspaceConfig.npmScope}/`, '');
       const projectStorybookConfigPath = `${projectConfig.root}/.storybook`;
@@ -977,95 +977,40 @@ describe('migrate-converged-pkg generator', () => {
     });
   });
 
-  describe(`npm config setup`, () => {
-    it(`should update .npmignore config`, async () => {
-      function getNpmIgnoreConfig(projectConfig: ReadProjectConfiguration) {
-        return tree.read(`${projectConfig.root}/.npmignore`)?.toString('utf-8');
-      }
-      const projectConfig = readProjectConfiguration(tree, options.name);
-      let npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+  describe(`npm publish setup`, () => {
+    it(`should replace .npmignore config with package.json#files`, async () => {
+      const getNpmIgnoreConfigPath = (projectConfig: ReadProjectConfiguration) => `${projectConfig.root}/.npmignore`;
 
-      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        "*.api.json
-        *.config.js
-        *.log
-        *.nuspec
-        *.test.*
-        *.yml
-        .editorconfig
-        .eslintrc*
-        .eslintcache
-        .gitattributes
-        .gitignore
-        .vscode
-        coverage
-        dist/storybook
-        dist/*.stats.html
-        dist/*.stats.json
-        dist/demo
-        fabric-test*
-        gulpfile.js
-        images
-        index.html
-        jsconfig.json
-        node_modules
-        results
-        src/**/*
-        !src/**/examples/*.tsx
-        !src/**/docs/**/*.md
-        !src/**/*.types.ts
-        temp
-        tsconfig.json
-        tsd.json
-        tslint.json
-        typings
-        visualtests"
-      `);
+      const projectConfig = readProjectConfiguration(tree, options.name);
+      const npmIgnoreConfigPath = getNpmIgnoreConfigPath(projectConfig);
+
+      expect(tree.exists(npmIgnoreConfigPath)).toBe(true);
 
       await generator(tree, options);
 
-      npmIgnoreConfig = getNpmIgnoreConfig(projectConfig);
+      expect(tree.exists(npmIgnoreConfigPath)).toBe(false);
+      let pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
 
-      expect(npmIgnoreConfig).toMatchInlineSnapshot(`
-        ".storybook/
-        .vscode/
-        bundle-size/
-        config/
-        coverage/
-        docs/
-        etc/
-        node_modules/
-        src/
-        stories/
-        dist/types/
-        temp/
-        __fixtures__
-        __mocks__
-        __tests__
+      expect(pkgJson.files).toMatchInlineSnapshot(`
+        Array [
+          "lib",
+          "lib-commonjs",
+          "dist/*.d.ts",
+        ]
+      `);
 
-        *.api.json
-        *.log
-        *.spec.*
-        *.cy.*
-        *.test.*
-        *.yml
+      updateProjectConfiguration(tree, projectConfig.name!, { ...projectConfig, tags: ['ships-amd'] });
+      await generator(tree, options);
 
-        # config files
-        *config.*
-        *rc.*
-        .editorconfig
-        .eslint*
-        .git*
-        .prettierignore
-        .swcrc
-        project.json
+      pkgJson = readJson<PackageJson>(tree, `${projectConfig.root}/package.json`);
 
-        # exclude gitignore patterns explicitly
-        !lib
-        !lib-commonjs
-        !lib-amd
-        !dist/*.d.ts
-        "
+      expect(pkgJson.files).toMatchInlineSnapshot(`
+        Array [
+          "lib",
+          "lib-commonjs",
+          "lib-amd",
+          "dist/*.d.ts",
+        ]
       `);
     });
   });
@@ -1534,7 +1479,7 @@ describe('migrate-converged-pkg generator', () => {
 // ==== helpers ====
 
 function getScopedPkgName(tree: Tree, pkgName: string) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = assertAndReadNxJson(tree);
 
   return `@${workspaceConfig.npmScope}/${pkgName}`;
 }
@@ -1550,7 +1495,7 @@ function setupDummyPackage(
       projectConfiguration: Partial<ReadProjectConfiguration>;
     }>,
 ) {
-  const workspaceConfig = readWorkspaceConfiguration(tree);
+  const workspaceConfig = assertAndReadNxJson(tree);
   const defaults = {
     version: '9.0.0-alpha.40',
     dependencies: {
@@ -1606,42 +1551,7 @@ function setupDummyPackage(
     jestSetupFile: stripIndents`
      /** Jest test setup file. */
     `,
-    npmConfig: stripIndents`
-      *.api.json
-      *.config.js
-      *.log
-      *.nuspec
-      *.test.*
-      *.yml
-      .editorconfig
-      .eslintrc*
-      .eslintcache
-      .gitattributes
-      .gitignore
-      .vscode
-      coverage
-      dist/storybook
-      dist/*.stats.html
-      dist/*.stats.json
-      dist/demo
-      fabric-test*
-      gulpfile.js
-      images
-      index.html
-      jsconfig.json
-      node_modules
-      results
-      src/**/*
-      !src/**/examples/*.tsx
-      !src/**/docs/**/*.md
-      !src/**/*.types.ts
-      temp
-      tsconfig.json
-      tsd.json
-      tslint.json
-      typings
-      visualtests
-    `,
+    npmConfig: stripIndents``,
     babelConfig: {
       ...normalizedOptions.babelConfig,
     },
@@ -1722,7 +1632,7 @@ function append(tree: Tree, filePath: string, content: string) {
   return tree;
 }
 
-function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: WorkspaceConfiguration }) {
+function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: NxJsonConfiguration }) {
   return options.pkgName.replace(`@${options.workspaceConfig.npmScope}/`, '');
 }
 
@@ -1733,4 +1643,14 @@ function getNormalizedPkgName(options: { pkgName: string; workspaceConfig: Works
  */
 function getFixture(src: string) {
   return fs.readFileSync(path.join(__dirname, '__fixtures__', src), 'utf-8');
+}
+
+function assertAndReadNxJson(tree: Tree) {
+  const nxJson = readNxJson(tree);
+
+  if (!nxJson) {
+    throw new Error('nx.json doesnt exist');
+  }
+
+  return nxJson;
 }
