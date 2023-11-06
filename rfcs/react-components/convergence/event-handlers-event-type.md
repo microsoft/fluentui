@@ -30,7 +30,7 @@ We cannot just add the `Event` type to the existing callbacks as this is a break
 
 ## Detailed Proposal
 
-Use generic [`Event`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/master/types/react/v17/global.d.ts#L10) type and strongly-typed events in "data bag".
+Change the first argument of event handlers to be generic [`Event`](https://github.com/microsoft/TypeScript/blob/cf73e5af5d225c9d963dd501f24c6e0fc0bf8314/src/lib/dom.generated.d.ts#L7971) or [`React.SyntheticEvent`](https://github.com/DefinitelyTyped/DefinitelyTyped/blob/6c9c7db2ac452f97b8e20e0d8b99bcf47625ed54/types/react/index.d.ts#L1251) types, and include strongly-typed events in the second `data` argument.
 
 ### Implementation
 
