@@ -145,11 +145,16 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
   }
 
   private _isChartEmpty(): boolean {
+    this._test();
     return !(
       this.props.data &&
       this.props.data.lineChartData &&
       this.props.data.lineChartData.length > 0 &&
       this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
     );
+  }
+
+  private _test() {
+    return 100;
   }
 }

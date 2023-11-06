@@ -1,4 +1,5 @@
 /** Jest test setup file. */
+const updateFile = require('D:/fluentui/packages/react-charting/src/components/Sparkline/script');
 
 const { setIconOptions } = require('@fluentui/react/lib/Styling');
 const { configure } = require('enzyme');
