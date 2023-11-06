@@ -42,7 +42,6 @@ const useRootBaseStyle = makeResetStyles({
 });
 
 const useRootStyles = makeStyles({
-  none: {},
   animated: {
     // initial style before animation:
     opacity: 0,
@@ -84,7 +83,6 @@ const useBackdropBaseStyle = makeResetStyles({
 });
 
 const useBackdropStyles = makeStyles({
-  none: {},
   nestedDialogBackdrop: {
     backgroundColor: tokens.colorTransparentBackground,
   },
@@ -104,7 +102,7 @@ const useBackdropStyles = makeStyles({
  * Apply styling to the DialogSurface slots based on the state
  */
 export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): DialogSurfaceState => {
-  const { isNestedDialog, root, backdrop, transitionStatus = 'none' } = state;
+  const { isNestedDialog, root, backdrop, transitionStatus } = state;
 
   const rootBaseStyle = useRootBaseStyle();
   const rootStyles = useRootStyles();
@@ -115,8 +113,8 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
   root.className = mergeClasses(
     dialogSurfaceClassNames.root,
     rootBaseStyle,
-    transitionStatus !== 'none' && rootStyles.animated,
-    rootStyles[transitionStatus],
+    transitionStatus && rootStyles.animated,
+    transitionStatus && rootStyles[transitionStatus],
     root.className,
   );
 
@@ -125,7 +123,7 @@ export const useDialogSurfaceStyles_unstable = (state: DialogSurfaceState): Dial
       dialogSurfaceClassNames.backdrop,
       backdropBaseStyle,
       isNestedDialog && backdropStyles.nestedDialogBackdrop,
-      backdropStyles[transitionStatus],
+      transitionStatus && backdropStyles[transitionStatus],
       backdrop.className,
     );
   }

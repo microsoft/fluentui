@@ -35,6 +35,9 @@ export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
   // This is only partial to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
   Pick<DialogContextValue, 'isNestedDialog'> &
   Pick<PortalProps, 'mountNode'> & {
-    // This is only optional to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
+    /**
+     * Transition status for animation.
+     * In test environment, this is always `undefined`.
+     */
     transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
   };
