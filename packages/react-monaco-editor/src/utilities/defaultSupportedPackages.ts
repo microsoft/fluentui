@@ -79,6 +79,9 @@ if (typesContext) {
   hooksGroup.packages.push({ packageName: '@fluentui/react-hooks', loadTypes });
   exampleDataGroup.packages.push({ packageName: '@fluentui/example-data', loadTypes });
 }
+// Add charting package only if we're on the charting page on the demo site.
+// There is an issue where the export to codepen button is not showing intermittently for charting examples.
+// Adding this check while we investigate the issue. https://github.com/microsoft/fluentui/issues/29761
 if (typeof window === 'object' && window.location.href.indexOf('chart') !== -1) {
   chartingGroup.packages.push({ packageName: '@fluentui/react-charting', loadTypes });
 }
