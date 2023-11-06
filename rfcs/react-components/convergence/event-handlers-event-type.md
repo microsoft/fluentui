@@ -42,7 +42,7 @@ export type EventData<Type extends string, TEvent> =
   | { type: Type; event: TEvent };
 
 export type EventHandler<TData extends EventData<string, unknown>> = (
-  ev: React.SyntheticEvent | Event | undefined,
+  ev: React.SyntheticEvent | Event,
   data: TData,
 ) => void;
 ```
