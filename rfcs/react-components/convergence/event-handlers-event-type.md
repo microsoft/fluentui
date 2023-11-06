@@ -94,11 +94,12 @@ import * as React from 'react';
     open: boolean;
   };
   // If one day we need to add more events, we can just add them to the union:
-  // type OnSomeEventData =
-  //   | EventData<'click', React.MouseEvent<MyComponentElement>>
-  //   | (EventData<'focus', React.FocusEvent<MyComponentElement>> & {
-  //       open: boolean;
-  //     });
+ // type OnSomeEventData = (
+//     | EventData<'click', React.MouseEvent<MyComponentElement>>
+//     | EventData<'focus', React.FocusEvent<MyComponentElement>>
+//   ) & {
+//     open: boolean;
+//   };
 
   type SomeProps = {
     onSomeEvent?: EventHandler<OnSomeEventData>;
