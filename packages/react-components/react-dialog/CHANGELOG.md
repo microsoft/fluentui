@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-dialog
 
-This log was last generated on Wed, 01 Nov 2023 12:55:58 GMT and should not be manually modified.
+This log was last generated on Mon, 06 Nov 2023 13:16:03 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.8.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.3)
+
+Mon, 06 Nov 2023 13:16:03 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-dialog_v9.8.2..@fluentui/react-dialog_v9.8.3)
+
+### Patches
+
+- chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment. ([PR #29755](https://github.com/microsoft/fluentui/pull/29755) by yuanboxue@microsoft.com)
 
 ## [9.8.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-dialog_v9.8.2)
 

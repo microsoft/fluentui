@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: set default DialogTransitionProvider value to `undefined` to remove animation styles from test environment.",
-  "packageName": "@fluentui/react-dialog",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}
