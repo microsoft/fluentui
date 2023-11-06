@@ -1,6 +1,7 @@
 import { useId, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import * as React from 'react';
 
+import { createCSSRuleFromTheme } from './createCSSRuleFromTheme';
 import type { FluentProviderState } from './FluentProvider.types';
 import { fluentProviderClassNames } from './useFluentProviderStyles.styles';
 
@@ -53,16 +54,7 @@ export const useFluentProviderThemeStyleTag = (
   const styleTagId = useId(fluentProviderClassNames.root);
   const styleElementAttributes = rendererAttributes;
 
-  const cssVarsAsString = React.useMemo(() => {
-    return theme
-      ? (Object.keys(theme) as (keyof typeof theme)[]).reduce((cssVarRule, cssVar) => {
-          cssVarRule += `--${cssVar}: ${theme[cssVar]}; `;
-          return cssVarRule;
-        }, '')
-      : '';
-  }, [theme]);
-
-  const rule = `.${styleTagId} { ${cssVarsAsString} }`;
+  const rule = React.useMemo(() => createCSSRuleFromTheme(`.${styleTagId}`, theme), [theme, styleTagId]);
 
   if (process.env.NODE_ENV !== 'production') {
     // eslint-disable-next-line react-hooks/rules-of-hooks

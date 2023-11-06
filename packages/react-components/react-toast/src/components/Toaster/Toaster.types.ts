@@ -30,6 +30,8 @@ export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> &
      * User override API for aria-live narration for toasts
      */
     announce?: Announce;
+
+    inline?: boolean;
   };
 
 /**
@@ -38,7 +40,7 @@ export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> &
 export type ToasterState = ComponentState<ToasterSlotsInternal> &
   Pick<AriaLiveProps, 'announceRef'> &
   Pick<PortalProps, 'mountNode'> &
-  Pick<Required<ToasterProps>, 'announce'> & {
+  Pick<Required<ToasterProps>, 'announce' | 'inline'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
     dir: 'rtl' | 'ltr';

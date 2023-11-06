@@ -1,4 +1,4 @@
-import { SelectionMode, getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { SelectionMode, getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type {
   TreeCheckedChangeData,
   TreeNavigationData_unstable,
@@ -7,11 +7,11 @@ import type {
   TreeState,
 } from '../Tree';
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-import { TreeItemRequest } from '../contexts/treeContext';
+import { TreeContextValue, TreeItemRequest } from '../contexts/treeContext';
 import { createOpenItems } from '../utils/createOpenItems';
 import { createCheckedItems } from '../utils/createCheckedItems';
 import { treeDataTypes } from '../utils/tokens';
+import { createNextOpenItems } from './useControllableOpenItems';
 
 /**
  * Create the state required to render the root level tree.
@@ -20,29 +20,22 @@ import { treeDataTypes } from '../utils/tokens';
  * @param ref - reference to root HTMLElement of tree
  */
 export function useRootTree(
-  props: Pick<
-    TreeProps,
-    | 'selectionMode'
-    | 'appearance'
-    | 'size'
-    | 'openItems'
-    | 'checkedItems'
-    | 'onOpenChange'
-    | 'onCheckedChange'
-    | 'onNavigation'
-    | 'aria-label'
-    | 'aria-labelledby'
-  >,
-
+  props: TreeProps,
   ref: React.Ref<HTMLElement>,
-): TreeState {
+): Omit<TreeState & TreeContextValue, 'treeType'> {
   warnIfNoProperPropsRootTree(props);
 
   const { appearance = 'subtle', size = 'medium', selectionMode = 'none' } = props;
 
   const openItems = React.useMemo(() => createOpenItems(props.openItems), [props.openItems]);
   const checkedItems = React.useMemo(() => createCheckedItems(props.checkedItems), [props.checkedItems]);
-  const requestOpenChange = (data: TreeOpenChangeData) => props.onOpenChange?.(data.event, data);
+  const requestOpenChange = (data: TreeOpenChangeData) => {
+    const nextOpenItems = createNextOpenItems(data, openItems);
+    props.onOpenChange?.(data.event, {
+      ...data,
+      openItems: nextOpenItems.dangerouslyGetInternalSet_unstable(),
+    });
+  };
 
   const requestCheckedChange = (data: TreeCheckedChangeData) => props.onCheckedChange?.(data.event, data);
 
@@ -60,65 +53,21 @@ export function useRootTree(
   };
 
   const requestTreeResponse = useEventCallback((request: TreeItemRequest) => {
-    switch (request.type) {
-      case treeDataTypes.Click:
-      case treeDataTypes.ExpandIconClick: {
-        return ReactDOM.unstable_batchedUpdates(() => {
-          requestOpenChange({
-            ...request,
-            open: request.itemType === 'branch' && !openItems.has(request.value),
-            openItems: openItems.dangerouslyGetInternalSet_unstable(),
-          });
-          requestNavigation({ ...request, type: treeDataTypes.Click });
-        });
-      }
-      case treeDataTypes.ArrowRight: {
-        if (request.itemType === 'leaf') {
-          return;
-        }
-        const open = openItems.has(request.value);
-        if (!open) {
-          return requestOpenChange({
-            ...request,
-            open: true,
-            openItems: openItems.dangerouslyGetInternalSet_unstable(),
-          });
-        }
+    switch (request.requestType) {
+      case 'navigate':
         return requestNavigation(request);
-      }
-      case treeDataTypes.Enter: {
-        const open = openItems.has(request.value);
+      case 'open':
         return requestOpenChange({
           ...request,
-          open: request.itemType === 'branch' && !open,
+          open: request.itemType === 'branch' && !openItems.has(request.value),
           openItems: openItems.dangerouslyGetInternalSet_unstable(),
         });
-      }
-      case treeDataTypes.ArrowLeft: {
-        const open = openItems.has(request.value);
-        if (open && request.itemType === 'branch') {
-          return requestOpenChange({
-            ...request,
-            open: false,
-            type: treeDataTypes.ArrowLeft,
-            openItems: openItems.dangerouslyGetInternalSet_unstable(),
-          });
-        }
-        return requestNavigation({ ...request, type: treeDataTypes.ArrowLeft });
-      }
-      case treeDataTypes.End:
-      case treeDataTypes.Home:
-      case treeDataTypes.ArrowUp:
-      case treeDataTypes.ArrowDown:
-      case treeDataTypes.TypeAhead:
-        return requestNavigation({ ...request, target: request.event.currentTarget });
-      case treeDataTypes.Change: {
+      case 'selection':
         return requestCheckedChange({
           ...request,
           selectionMode: selectionMode as SelectionMode,
           checkedItems: checkedItems.dangerouslyGetInternalMap_unstable(),
         } as TreeCheckedChangeData);
-      }
     }
   });
 
@@ -126,6 +75,7 @@ export function useRootTree(
     components: {
       root: 'div',
     },
+    contextType: 'root',
     selectionMode,
     open: true,
     appearance,
@@ -135,8 +85,11 @@ export function useRootTree(
     checkedItems,
     requestTreeResponse,
     root: slot.always(
-      getNativeElementProps('div', {
-        ref,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
         role: 'tree',
         'aria-multiselectable': selectionMode === 'multiselect' ? true : undefined,
         ...props,

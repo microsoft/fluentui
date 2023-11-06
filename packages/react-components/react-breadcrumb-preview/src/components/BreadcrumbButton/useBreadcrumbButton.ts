@@ -1,7 +1,8 @@
 import * as React from 'react';
-import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
 import { useButton_unstable } from '@fluentui/react-button';
+import type { ButtonProps } from '@fluentui/react-button';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
+import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
 
 /**
  * Create the state required to render BreadcrumbButton.
@@ -16,18 +17,21 @@ export const useBreadcrumbButton_unstable = (
   props: BreadcrumbButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
-  const { appearance, size } = useBreadcrumbContext_unstable();
-  const { current = false, icon, ...rest } = props;
+  const { size } = useBreadcrumbContext_unstable();
+  const { current = false, ...rest } = props;
 
   return {
     ...useButton_unstable(
       {
-        ...rest,
-        appearance: props.appearance || appearance,
+        appearance: 'subtle',
+        role: undefined,
+        type: undefined,
+        as: 'a' as const,
         iconPosition: 'before',
-        icon,
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
-      },
+        'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,
+        ...rest,
+      } as ButtonProps,
       ref,
     ),
     current,

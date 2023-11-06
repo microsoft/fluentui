@@ -125,11 +125,11 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       context.visibleTooltip = thisTooltip;
 
       const onDocumentKeyDown = (ev: KeyboardEvent) => {
-        if (ev.key === Escape) {
+        if (ev.key === Escape && !ev.defaultPrevented) {
           thisTooltip.hide(ev);
           // stop propagation to avoid conflicting with other elements that listen for `Escape`
-          // e,g: Dialog, Popover, Menu
-          ev.stopPropagation();
+          // e,g: Dialog, Popover, Menu and Tooltip
+          ev.preventDefault();
         }
       };
 

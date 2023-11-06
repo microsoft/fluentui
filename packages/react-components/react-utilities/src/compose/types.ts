@@ -215,13 +215,20 @@ export type ComponentState<Slots extends SlotPropsRecord> = {
 type ObscureEventName = 'onLostPointerCaptureCapture';
 
 /**
- * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ * Infers the element type from props that are declared using ComponentProps.
  */
-export type ForwardRefComponent<Props> = ObscureEventName extends keyof Props
+export type InferredElementRefType<Props> = ObscureEventName extends keyof Props
   ? Required<Props>[ObscureEventName] extends React.PointerEventHandler<infer Element>
-    ? React.ForwardRefExoticComponent<Props & React.RefAttributes<Element>>
+    ? Element
     : never
   : never;
+
+/**
+ * Return type for `React.forwardRef`, including inference of the proper typing for the ref.
+ */
+export type ForwardRefComponent<Props> = React.ForwardRefExoticComponent<
+  Props & React.RefAttributes<InferredElementRefType<Props>>
+>;
 // A definition like this would also work, but typescript is more likely to unnecessarily expand
 // the props type with this version (and it's likely much more expensive to evaluate)
 // export type ForwardRefComponent<Props> = Props extends React.DOMAttributes<infer Element>

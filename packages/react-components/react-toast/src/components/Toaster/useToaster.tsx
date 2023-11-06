@@ -2,7 +2,7 @@ import * as React from 'react';
 import {
   ExtractSlotProps,
   Slot,
-  getNativeElementProps,
+  getIntrinsicElementProps,
   useEventCallback,
   useMergedRefs,
   slot,
@@ -23,14 +23,16 @@ import { useToastAnnounce } from './useToastAnnounce';
  * @param props - props from this instance of Toaster
  */
 export const useToaster_unstable = (props: ToasterProps): ToasterState => {
-  const { offset, announce: announceProp, mountNode, ...rest } = props;
+  const { offset, announce: announceProp, mountNode, inline = false, ...rest } = props;
   const announceRef = React.useRef<Announce>(() => null);
   const { toastsToRender, isToastVisible, pauseAllToasts, playAllToasts, tryRestoreFocus, closeAllToasts } =
     useToaster<HTMLDivElement>(rest);
   const announce = React.useCallback<Announce>((message, options) => announceRef.current(message, options), []);
   const { dir } = useFluent();
 
-  const rootProps = slot.always(getNativeElementProps('div', rest), { elementType: 'div' });
+  const rootProps = slot.always(getIntrinsicElementProps<ExtractSlotProps<Slot<'div'>>>('div', rest), {
+    elementType: 'div',
+  });
   const focusableGroupAttr = useFocusableGroup({
     tabBehavior: 'limited-trap-focus',
     ignoreDefaultKeydown: { Escape: true },
@@ -45,7 +47,7 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
   const usePositionSlot = (toastPosition: ToastPosition) => {
     const focusManagementRef = useToasterFocusManagement_unstable(pauseAllToasts, playAllToasts);
     const { announceToast, toasterRef } = useToastAnnounce(announceProp ?? announce);
-    return slot.optional(toastsToRender.has(toastPosition) ? rootProps : null, {
+    return slot.optional<ExtractSlotProps<Slot<'div'>>>(toastsToRender.has(toastPosition) ? rootProps : null, {
       defaultProps: {
         ref: useMergedRefs(focusManagementRef, toasterRef),
         children: toastsToRender.get(toastPosition)?.map(toast => (
@@ -93,5 +95,6 @@ export const useToaster_unstable = (props: ToasterProps): ToasterState => {
     offset,
     announce: announceProp ?? announce,
     renderAriaLive: !announceProp,
+    inline,
   };
 };

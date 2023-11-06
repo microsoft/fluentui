@@ -28,6 +28,7 @@
       "@fluentui/react-badge": ["packages/react-components/react-badge/src/index.ts"],
       "@fluentui/react-breadcrumb-preview": ["packages/react-components/react-breadcrumb-preview/src/index.ts"],
       "@fluentui/react-button": ["packages/react-components/react-button/src/index.ts"],
+      "@fluentui/react-calendar-compat": ["packages/react-components/react-calendar-compat/src/index.ts"],
       "@fluentui/react-card": ["packages/react-components/react-card/src/index.ts"],
       "@fluentui/react-checkbox": ["packages/react-components/react-checkbox/src/index.ts"],
       "@fluentui/react-colorpicker-compat": ["packages/react-components/react-colorpicker-compat/src/index.ts"],
@@ -45,6 +46,7 @@
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
       "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
+      "@fluentui/react-infolabel": ["packages/react-components/react-infolabel/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
       "@fluentui/react-jsx-runtime": ["packages/react-components/react-jsx-runtime/src/index.ts"],
       "@fluentui/react-jsx-runtime/jsx-dev-runtime": [
@@ -54,6 +56,7 @@
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
+      "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/src/index.ts"],
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
       "@fluentui/react-migration-v8-v9": ["packages/react-components/react-migration-v8-v9/src/index.ts"],
       "@fluentui/react-motion-preview": ["packages/react-components/react-motion-preview/src/index.ts"],
@@ -68,6 +71,7 @@
       "@fluentui/react-progress": ["packages/react-components/react-progress/src/index.ts"],
       "@fluentui/react-provider": ["packages/react-components/react-provider/src/index.ts"],
       "@fluentui/react-radio": ["packages/react-components/react-radio/src/index.ts"],
+      "@fluentui/react-rating-preview": ["packages/react-components/react-rating-preview/src/index.ts"],
       "@fluentui/react-search-preview": ["packages/react-components/react-search-preview/src/index.ts"],
       "@fluentui/react-select": ["packages/react-components/react-select/src/index.ts"],
       "@fluentui/react-shared-contexts": ["packages/react-components/react-shared-contexts/src/index.ts"],
@@ -76,18 +80,22 @@
       "@fluentui/react-spinbutton": ["packages/react-components/react-spinbutton/src/index.ts"],
       "@fluentui/react-spinner": ["packages/react-components/react-spinner/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
-      "@fluentui/react-storybook-addon-codesandbox": [
-        "packages/react-components/react-storybook-addon-codesandbox/src/index.ts"
+      "@fluentui/react-storybook-addon-export-to-sandbox": [
+        "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
       ],
+      "@fluentui/react-swatch-picker-preview": ["packages/react-components/react-swatch-picker-preview/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],
       "@fluentui/react-table": ["packages/react-components/react-table/src/index.ts"],
       "@fluentui/react-tabs": ["packages/react-components/react-tabs/src/index.ts"],
       "@fluentui/react-tabster": ["packages/react-components/react-tabster/src/index.ts"],
-      "@fluentui/react-tags-preview": ["packages/react-components/react-tags-preview/src/index.ts"],
+      "@fluentui/react-tags": ["packages/react-components/react-tags/src/index.ts"],
       "@fluentui/react-text": ["packages/react-components/react-text/src/index.ts"],
       "@fluentui/react-textarea": ["packages/react-components/react-textarea/src/index.ts"],
       "@fluentui/react-theme": ["packages/react-components/react-theme/src/index.ts"],
       "@fluentui/react-theme-sass": ["packages/react-components/react-theme-sass/src/index.ts"],
+      "@fluentui/react-timepicker-compat-preview": [
+        "packages/react-components/react-timepicker-compat-preview/src/index.ts"
+      ],
       "@fluentui/react-toast": ["packages/react-components/react-toast/src/index.ts"],
       "@fluentui/react-toolbar": ["packages/react-components/react-toolbar/src/index.ts"],
       "@fluentui/react-tooltip": ["packages/react-components/react-tooltip/src/index.ts"],

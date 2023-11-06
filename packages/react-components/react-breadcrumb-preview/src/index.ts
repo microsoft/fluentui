@@ -37,11 +37,5 @@ export {
   useBreadcrumbButton_unstable,
 } from './BreadcrumbButton';
 export type { BreadcrumbButtonProps, BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton';
-export {
-  BreadcrumbLink,
-  breadcrumbLinkClassNames,
-  renderBreadcrumbLink_unstable,
-  useBreadcrumbLinkStyles_unstable,
-  useBreadcrumbLink_unstable,
-} from './BreadcrumbLink';
-export type { BreadcrumbLinkProps, BreadcrumbLinkSlots, BreadcrumbLinkState } from './BreadcrumbLink';
+export { BreadcrumbProvider, useBreadcrumbContext_unstable } from './Breadcrumb';
+export type { BreadcrumbContextValues } from './Breadcrumb';

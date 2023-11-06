@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Add center aligned positions for Toast",
-  "packageName": "@fluentui/react-toast",
-  "email": "lingfan.gao@microsoft.com",
-  "dependentChangeType": "patch"
-}

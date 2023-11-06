@@ -53,6 +53,7 @@ export class VerticalBarChartDynamicExample extends React.Component<IVerticalBar
           yAxisTickCount={5}
           height={400}
           width={650}
+          enableReflow={true}
         />
 
         <DefaultButton text="Change data" onClick={this._changeData} />

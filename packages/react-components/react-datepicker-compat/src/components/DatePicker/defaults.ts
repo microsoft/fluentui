@@ -1,5 +1,5 @@
-import { defaultCalendarStrings } from '../Calendar/defaults';
-import type { CalendarStrings } from '../../utils/index';
+import { defaultCalendarStrings } from '@fluentui/react-calendar-compat';
+import type { CalendarStrings } from '@fluentui/react-calendar-compat';
 import type { DatePickerErrorType } from './DatePicker.types';
 
 export const defaultDatePickerStrings: CalendarStrings = {

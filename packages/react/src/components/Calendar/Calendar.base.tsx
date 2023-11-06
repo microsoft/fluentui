@@ -59,7 +59,16 @@ const DEFAULT_PROPS: Partial<ICalendarProps> = {
   allFocusable: false,
 };
 
-function useDateState({ value, today = new Date(), onSelectDate }: ICalendarProps) {
+function useDateState(props: ICalendarProps) {
+  const { value, today: todayProp, onSelectDate } = props;
+
+  const today = React.useMemo(() => {
+    if (todayProp === undefined) {
+      return new Date();
+    }
+    return todayProp;
+  }, [todayProp]);
+
   /** The currently selected date in the calendar */
   const [selectedDate = today, setSelectedDate] = useControllableValue(value, today);
 

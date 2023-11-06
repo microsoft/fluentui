@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import { useFocusVisible, useFocusWithin } from '@fluentui/react-tabster';
 import type { TableRowProps, TableRowState } from './TableRow.types';
 import { useTableContext } from '../../contexts/tableContext';
@@ -26,8 +26,11 @@ export const useTableRow_unstable = (props: TableRowProps, ref: React.Ref<HTMLEl
       root: rootComponent,
     },
     root: slot.always(
-      getNativeElementProps(rootComponent, {
-        ref: useMergedRefs(ref, focusVisibleRef, focusWithinRef),
+      getIntrinsicElementProps(rootComponent, {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, focusVisibleRef, focusWithinRef) as React.Ref<HTMLDivElement>,
         role: rootComponent === 'div' ? 'row' : undefined,
         ...props,
       }),
