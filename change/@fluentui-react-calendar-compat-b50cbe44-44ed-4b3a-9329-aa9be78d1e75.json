@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix(Calendar): Calendar should memoize today's default value since it causes rerenders by creating a new object each time.",
+  "packageName": "@fluentui/react-calendar-compat",
+  "email": "esteban.230@hotmail.com",
+  "dependentChangeType": "patch"
+}
