@@ -2,7 +2,7 @@
 
 ## Background
 
-A Teaching Bubble is a structured popover to showcase information about a new component feature to a user. It should be attached via a trigger to a button, info tip, or component - or for further extension, callout(s). TeachingPopover can also be displayed programmatically, in this case it's intent should be announced to the user on launch to define context for accessibility users.
+A Teaching Popover is a structured popover to showcase information about a new component feature to a user. It should be attached via a trigger to a button, info tip, or component - or for further extension, callout(s). TeachingPopover can also be displayed programmatically, in this case it's intent should be announced to the user on launch to define context for accessibility users.
 
 For a simple feature, a single paged TeachingPopover can be used to display core information, while extensive reading can be linked via a 'Learn More' secondary action.
 
@@ -32,7 +32,7 @@ For more complicated features, we recommend using the TeachingPopoverCarousel, t
         src: 'mediaSrc',
       }}
     >
-      <TeachingPopoverTitle>{'Teaching Bubble Title'}</TeachingPopoverTitle>
+      <TeachingPopoverTitle>{'Teaching Popover Title'}</TeachingPopoverTitle>
       {ExampleContent(1)}
     </TeachingPopoverBody>
     <TeachingPopoverActions>
@@ -191,4 +191,4 @@ Focus and popover functionality will be handled by the underlying popover and fo
 
 Keyboard accessibility will follow the default DOM tab order, and all interaction elements are ARIA compliant buttons, including the icon version of carousel pagination.
 
-Tabster tabBehavior: 'limited' is applied to the carousel icons, using 'Enter' will dive into the list of page icons, and can be exited via continuing tab, or using 'escape' key - The pagination icons will adhere to the 'tabList' A11y spec when a carousel is present in icon mode.
+Tabster tabBehavior: 'limited' is applied to the carousel icons, using 'Enter' will dive into the list of page icons, and can be exited via continuing tab, or using 'escape' key - Additionally, the pagination icons will adhere to the 'tabList' A11y spec when a carousel is present in icon mode.
