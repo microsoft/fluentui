@@ -23,6 +23,7 @@ describe('react-library generator', () => {
     tree = createLibrary(tree, 'react-jsx-runtime');
     tree = createLibrary(tree, 'react-theme');
     tree = createLibrary(tree, 'react-utilities');
+    tree = createLibrary(tree, 'react-shared-contexts');
 
     writeJson(tree, 'tsconfig.base.v0.json', { compilerOptions: { paths: {} } });
     writeJson(tree, 'tsconfig.base.v8.json', { compilerOptions: { paths: {} } });
@@ -103,6 +104,7 @@ describe('react-library generator', () => {
         version: '0.0.0',
         dependencies: {
           '@fluentui/react-jsx-runtime': '^9.0.0',
+          '@fluentui/react-shared-contexts': '^9.0.0',
           '@fluentui/react-theme': '^9.0.0',
           '@fluentui/react-utilities': '^9.0.0',
           '@griffel/react': '^1.2.3',
