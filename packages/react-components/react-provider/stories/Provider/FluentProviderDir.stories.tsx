@@ -26,7 +26,7 @@ export const Dir = () => {
         <FluentProvider>
           <div className={styles.text}>Text left to right</div>
         </FluentProvider>
-        <FluentProvider dir="rtl">
+        <FluentProvider dir="rtl" lang="ar">
           <div className={styles.text}>نص من اليمين إلى اليسار</div>
         </FluentProvider>
       </div>
