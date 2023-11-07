@@ -4,7 +4,7 @@ import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, mergeCallbacks, useMergedRefs, useTimeout, slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
@@ -34,7 +34,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     excludedPropNames: ['children'],
   });
 
-  const [comboboxPopupRef, comboboxTargetRef] = useComboboxPopup(props);
+  const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
 
   // jump to matching option based on typing
   const searchString = React.useRef('');

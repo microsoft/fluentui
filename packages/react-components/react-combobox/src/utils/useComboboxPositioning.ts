@@ -2,7 +2,7 @@ import { PositioningShorthandValue, resolvePositioningShorthand, usePositioning 
 import type { ComboboxBaseProps } from './ComboboxBase.types';
 import * as React from 'react';
 
-export function useComboboxPopup(props: ComboboxBaseProps): [
+export function useComboboxPositioning(props: ComboboxBaseProps): [
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   listboxRef: React.MutableRefObject<any>,
   // eslint-disable-next-line @typescript-eslint/no-explicit-any

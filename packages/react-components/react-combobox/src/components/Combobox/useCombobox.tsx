@@ -12,7 +12,7 @@ import {
 } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
@@ -49,7 +49,7 @@ export const useCombobox_unstable = (props: ComboboxProps, ref: React.Ref<HTMLIn
     setValue,
     value,
   } = baseState;
-  const [comboboxPopupRef, comboboxTargetRef] = useComboboxPopup(props);
+  const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
   const { disabled, freeform, inlinePopup, multiselect } = props;
   const comboId = useId('combobox-');
 
