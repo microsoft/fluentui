@@ -169,6 +169,8 @@ const OverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
     return null;
   }
 
+  const overflowItemsCount = overflowItems ? overflowItems.length + overflowCount : overflowCount;
+
   return (
     <BreadcrumbItem>
       <Menu hasIcons>
@@ -177,7 +179,7 @@ const OverflowMenu = (props: PartitionBreadcrumbItems<Item>) => {
             appearance="subtle"
             ref={ref}
             icon={<MoreHorizontal />}
-            aria-label={`${overflowCount} more items`}
+            aria-label={`${overflowItemsCount} more items`}
             role="button"
           />
         </MenuTrigger>
