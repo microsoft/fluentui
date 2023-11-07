@@ -101,6 +101,7 @@ describe('react-library generator', () => {
         name: '@proj/react-one-preview',
         private: true,
         version: '0.0.0',
+        files: ['*.md', 'dist/*.d.ts', 'lib', 'lib-commonjs'],
         dependencies: {
           '@fluentui/react-jsx-runtime': '^9.0.0',
           '@fluentui/react-theme': '^9.0.0',
