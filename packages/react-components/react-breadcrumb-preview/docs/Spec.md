@@ -104,7 +104,7 @@ const BreadcrumbV9Example = props => (
 
 ### Breadcrumb item variants
 
-- Link - BreadcrumbButton component with `as="a"` and `href` attributes.
+- Link - `BreadcrumbButton` uses @fluentui/react-button component under the hood. It's semantically a Link but has appearance of subtle `Button`.
 - Dropdown menu - can be added by a partner using JSX composition.
 
 ### Icon
@@ -264,8 +264,6 @@ Usage
 | current  | boolean | false   | Indicates current page |
 | icon     | _slot_  |         | Sets icon              |
 
-Under the hood @fluentui/react-button component is used.
-
 ## Behaviors
 
 #### Overflow
@@ -355,10 +353,9 @@ Breadcrumb can have the folloing states:
 - Rest
 - Hover
 - Pressed
-- Selected
 - Focused
 - Disabled
-- Active
+- Current
 
 ![Breadcrumb states](./assets/beadcrumb-states.png)
 
@@ -368,18 +365,16 @@ Tooltip is shown `onHover` on collapsed menu or items with long names.
 ![Breadcrumb Tooltip](./assets/breadcrumb-tooltip.png)
 
 Tooltipls can be multiline. It is recommended to use content no longer than 80 symbols.
-Interactive items have tooltips when their names are longer than 30 symbols.
-Non-interactive Breadcrumb runs the entire available space where the control is placed.
-If the space is limited, the string will truncate the end of it.
+Items have tooltips when their names are longer than 30 symbols.
 
 ### Keyboard
 
-When navigating via keyboard, focus will be place initially on the first breadcrumb item. Left and right arrow keys move through the breadcrumb items.
+When navigating via keyboard, focus will be place initially on the first breadcrumb item. Either `tab` key (default) or left and right arrow can be used to move through the breadcrumb items.
 
 ![Breadcrumb keyboard interaction](./assets/breadcrumb-keyboard-interaction.png)
 
 - Tab => Focus on breadcrumb trail or the first item only.
-- Arrow => Move focus to items in the string.
+- Arrow/Tab => Move focus to items in the string.
 - Enter or Space => Selects the item; opens the page; expand collapsed items.
 
 #### Collapsed items - Menu
@@ -391,13 +386,12 @@ If the overflow button is in focus, `Enter`, `Arrow down` or `Space` activate th
 
 ## Accessibility
 
-Use the `tab` key to navigate to the first item of the string and `arrow` keys to move through previous and next items.
+Use the `tab` key to navigate to the first item of the string and `Tab` or `arrow` keys to move through previous and next items.
 Each item is conisdered a ListItem with nested links.
-Tab stops don't apply for non-interactive Breadcrumbs.
 
 ![Breadcrumb Accessibility](./assets/a11y-breadcrumb.png)
 
-Use button roles for actions in the same space (overflow).
+Use button roles for Overflow menu.
 ![Breadcrumb Accessibility Overflow](./assets/a11y-breadcrumb-overflow.png)
 
 ### Truncated text

@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: regression with mountNode prop not available after refactor",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

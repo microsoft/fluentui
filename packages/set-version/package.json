@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/set-version",
-  "version": "8.2.11",
+  "version": "8.2.12",
   "description": "Non-Fabric-specific package version setter",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

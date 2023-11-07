@@ -15,7 +15,6 @@ Here's how the API of v8's `Breadcrumb` compares to the one from v9's `Breadcrum
 - `className` => Slot system supports it by default. We don't need to provide it explicitly.
 - `items` => Use `children` prop instead.
 - `componentRef` => NOT SUPPORTED - use `ref` instead.
-- `dividerAs` => Divider is a separate component. Type of divider is passed to the Breadcrumb component as `dividerType`.
 - `focusZoneProps` => use `focusMode` instead.
 - `overflowButtonAs` => Custom component for the overflow button - use custom overflow button instead.
 - `styles` => Use style customization through `className` instead.
@@ -23,6 +22,8 @@ Here's how the API of v8's `Breadcrumb` compares to the one from v9's `Breadcrum
 - `overflowAriaLabel` => Aria label for the overflow button.
 
 #### Props no longer supported
+
+- `dividerAs`
 
 - `onRenderOverflowIcon` => Render a custom overflow icon in place of the default icon `...`.
 - `onGrowData` => Method that determines how to group the length of the breadcrumb. Return undefined to never increase breadcrumb length.
@@ -96,12 +97,15 @@ BreadcrumbDivider has default `span`. BreadcrumbLink has `a` and Breadcrumb has 
 
 #### BreadcrumbItem component:
 
+In V9 BreadcrumbItem is `li` component which is wrapper for `BreadcrumbButton`.
+`BreadcrumbButton` has props `current` and `disabled`.
+
 - `active` => Indicates if the link is the active. Use `current` instead.
 - `disabled` => The Breadcrumb Item can be disabled.
 
 #### Property Mapping
 
-| Northstar `BreadcrumbItem` | v9 `BreadcrumbItem` |
-| -------------------------- | ------------------- |
-| `active`                   | `current`           |
-| `disabled`                 | `disabled`          |
+| Northstar `BreadcrumbItem` | v9 `BreadcrumbButton` |
+| -------------------------- | --------------------- |
+| `active`                   | `current`             |
+| `disabled`                 | `disabled`            |

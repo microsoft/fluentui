@@ -29,7 +29,16 @@ const defaultWorkWeekDays: DayOfWeek[] = [
   DayOfWeek.Friday,
 ];
 
-function useDateState({ value, today = new Date(), onSelectDate }: CalendarProps) {
+function useDateState(props: CalendarProps) {
+  const { value, today: todayProp, onSelectDate } = props;
+
+  const today = React.useMemo(() => {
+    if (todayProp === undefined) {
+      return new Date();
+    }
+    return todayProp;
+  }, [todayProp]);
+
   /** The currently selected date in the calendar */
   const [selectedDate, setSelectedDate] = useControllableState({
     defaultState: today,

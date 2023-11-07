@@ -13,6 +13,7 @@ const Wrapper: React.FC = ({ children }) => (
       subtreeRef: React.createRef(),
       actionsRef: React.createRef(),
       expandIconRef: React.createRef(),
+      treeItemRef: React.createRef(),
       isActionsVisible: true,
       isAsideVisible: true,
       itemType: 'leaf',
@@ -29,6 +30,11 @@ describe('TreeItemPersonaLayout', () => {
     Component: TreeItemPersonaLayout,
     renderOptions: { wrapper: Wrapper },
     displayName: 'TreeItemPersonaLayout',
+    disabledTests: [
+      // This is disabled as aside and actions cannot be visible at the same time
+      'component-has-static-classnames',
+      'component-has-static-classnames-object',
+    ],
     requiredProps: {
       description: 'description',
       expandIcon: 'expandIcon',

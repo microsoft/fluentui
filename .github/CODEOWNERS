@@ -236,7 +236,7 @@ packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopil
 packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @geoffcoxmsft
 packages/react-components/react-breadcrumb-preview @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
+packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg

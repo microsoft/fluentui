@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "refactor: rename main DrawerOverlay/DrawerInline components",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

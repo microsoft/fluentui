@@ -1,20 +1,25 @@
 import * as React from 'react';
-import { Button, makeStyles, mergeClasses, shorthands, tokens } from '@fluentui/react-components';
+import { Button, makeStyles, mergeClasses, shorthands /* tokens */ } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
-import { useMotionClassNames, useMotion } from '@fluentui/react-motion-preview';
+// import { useMotionClassNames, useMotion } from '@fluentui/react-motion-preview';
 import { DrawerBody, DrawerHeader, DrawerHeaderTitle, InlineDrawer } from '@fluentui/react-drawer';
 
-const visibleKeyframe = {
-  ...shorthands.borderRadius(0),
-  opacity: 1,
-  transform: 'translate3D(0, 0, 0)',
-};
+/**
+ * TODO: The contents of this file should be uncommented when react-motion is stable.
+ * Note that this file is not included in the documentation, but we can keep it here for use in the future.
+ */
 
-const hiddenKeyframe = {
-  ...shorthands.borderRadius('36px'),
-  opacity: 0,
-  transform: 'translate3D(-100%, 0, 0)',
-};
+// const visibleKeyframe = {
+//   ...shorthands.borderRadius(0),
+//   opacity: 1,
+//   transform: 'translate3D(0, 0, 0)',
+// };
+
+// const hiddenKeyframe = {
+//   ...shorthands.borderRadius('36px'),
+//   opacity: 0,
+//   transform: 'translate3D(-100%, 0, 0)',
+// };
 
 const useStyles = makeStyles({
   root: {
@@ -42,68 +47,68 @@ const useStyles = makeStyles({
   },
 });
 
-const drawerWidth = '360px';
+// const drawerWidth = '360px';
 
-const useDrawerMotionStyles = makeStyles({
-  default: {
-    width: drawerWidth,
-    willChange: 'opacity, transform, border-radius',
-  },
+// const useDrawerMotionStyles = makeStyles({
+//   default: {
+//     width: drawerWidth,
+//     willChange: 'opacity, transform, border-radius',
+//   },
 
-  enter: {
-    animationDuration: tokens.durationGentle,
-    animationTimingFunction: tokens.curveDecelerateMid,
-    animationName: {
-      from: hiddenKeyframe,
-      to: visibleKeyframe,
-    },
-  },
+//   enter: {
+//     animationDuration: tokens.durationGentle,
+//     animationTimingFunction: tokens.curveDecelerateMid,
+//     animationName: {
+//       from: hiddenKeyframe,
+//       to: visibleKeyframe,
+//     },
+//   },
 
-  exit: {
-    transitionDuration: tokens.durationSlower,
-    animationTimingFunction: tokens.curveAccelerateMin,
-    animationName: {
-      from: visibleKeyframe,
-      to: hiddenKeyframe,
-    },
-  },
-});
+//   exit: {
+//     transitionDuration: tokens.durationSlower,
+//     animationTimingFunction: tokens.curveAccelerateMin,
+//     animationName: {
+//       from: visibleKeyframe,
+//       to: hiddenKeyframe,
+//     },
+//   },
+// });
 
-const useContentMotionStyles = makeStyles({
-  default: {
-    transitionProperty: 'transform, background-color',
-    willChange: 'transform, background-color',
-  },
+// const useContentMotionStyles = makeStyles({
+//   default: {
+//     transitionProperty: 'transform, background-color',
+//     willChange: 'transform, background-color',
+//   },
 
-  enter: {
-    transitionDuration: tokens.durationSlower,
-    transitionTimingFunction: tokens.curveDecelerateMid,
-    transform: `translate3D(${drawerWidth}, 0, 0)`,
-    backgroundColor: tokens.colorNeutralBackground4,
-  },
+//   enter: {
+//     transitionDuration: tokens.durationSlower,
+//     transitionTimingFunction: tokens.curveDecelerateMid,
+//     transform: `translate3D(${drawerWidth}, 0, 0)`,
+//     backgroundColor: tokens.colorNeutralBackground4,
+//   },
 
-  exit: {
-    transitionDuration: tokens.durationGentle,
-    transitionTimingFunction: tokens.curveAccelerateMin,
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
+//   exit: {
+//     transitionDuration: tokens.durationGentle,
+//     transitionTimingFunction: tokens.curveAccelerateMin,
+//     backgroundColor: tokens.colorNeutralBackground1,
+//   },
 
-  idle: {
-    width: `calc(100% - ${drawerWidth})`,
-  },
-});
+//   idle: {
+//     width: `calc(100% - ${drawerWidth})`,
+//   },
+// });
 
 export const MotionCustom = () => {
   const styles = useStyles();
 
   const [open, setOpen] = React.useState(false);
-  const motion = useMotion<HTMLDivElement>(open);
-  const drawerMotionClassNames = useMotionClassNames(motion, useDrawerMotionStyles());
-  const contentMotionClassNames = useMotionClassNames(motion, useContentMotionStyles());
+  // const motion = useMotion<HTMLDivElement>(open);
+  // const drawerMotionClassNames = useMotionClassNames(motion, useDrawerMotionStyles());
+  // const contentMotionClassNames = useMotionClassNames(motion, useContentMotionStyles());
 
   return (
     <div className={styles.root}>
-      <InlineDrawer separator open={motion} className={drawerMotionClassNames}>
+      <InlineDrawer separator /* open={motion} className={drawerMotionClassNames} */>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -124,7 +129,7 @@ export const MotionCustom = () => {
         </DrawerBody>
       </InlineDrawer>
 
-      <div className={mergeClasses(styles.content, contentMotionClassNames)}>
+      <div className={mergeClasses(styles.content /* contentMotionClassNames */)}>
         <Button appearance="primary" onClick={() => setOpen(!open)}>
           {open ? 'Close' : 'Open'}
         </Button>

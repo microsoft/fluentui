@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-skeleton
 
-This log was last generated on Wed, 18 Oct 2023 17:54:06 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Nov 2023 12:55:59 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.38](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.38)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.37..@fluentui/react-skeleton_v9.0.38)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.40 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.0.37](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.37)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-skeleton_v9.0.36..@fluentui/react-skeleton_v9.0.37)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.39 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
 
 ## [9.0.36](https://github.com/microsoft/fluentui/tree/@fluentui/react-skeleton_v9.0.36)
 

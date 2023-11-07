@@ -1,8 +1,9 @@
 import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { BreadcrumbButtonSlots, BreadcrumbButtonState } from './BreadcrumbButton.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
-import { useButtonStyles_unstable } from '@fluentui/react-button';
+import { useButtonStyles_unstable, buttonClassNames } from '@fluentui/react-button';
 import { tokens, typographyStyles } from '@fluentui/react-theme';
+import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 
 /**
  * Static CSS class names used internally for the component slots.
@@ -47,6 +48,20 @@ const defaultButtonStyles = {
   color: tokens.colorNeutralForeground2,
   cursor: 'auto',
 };
+
+const currentIconStyles = {
+  ...defaultButtonStyles,
+  [`& .${buttonClassNames.icon}`]: {
+    color: 'unset',
+  },
+  [`& .${iconFilledClassName}`]: {
+    display: 'none',
+  },
+  [`& .${iconRegularClassName}`]: {
+    display: 'inline',
+  },
+};
+
 const useStyles = makeStyles({
   root: {
     minWidth: 'unset',
@@ -70,13 +85,13 @@ const useStyles = makeStyles({
   },
   current: {
     ':hover': {
-      ...defaultButtonStyles,
+      ...currentIconStyles,
     },
     ':hover:active': {
-      ...defaultButtonStyles,
+      ...currentIconStyles,
     },
     ':disabled': {
-      ...defaultButtonStyles,
+      ...currentIconStyles,
     },
   },
   currentSmall: {

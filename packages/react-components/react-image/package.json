@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-image",
-  "version": "9.1.43",
+  "version": "9.1.45",
   "description": "Fluent UI React Image component.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,10 +33,10 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-shared-contexts": "^9.10.0",
+    "@fluentui/react-shared-contexts": "^9.11.1",
     "@fluentui/react-utilities": "^9.15.1",
     "@fluentui/react-jsx-runtime": "^9.0.18",
-    "@fluentui/react-theme": "^9.1.14",
+    "@fluentui/react-theme": "^9.1.15",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },

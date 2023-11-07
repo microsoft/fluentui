@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "docs: add example on how to implement multiple levels inside one drawer",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
