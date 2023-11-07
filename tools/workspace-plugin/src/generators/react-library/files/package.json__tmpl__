@@ -38,6 +38,7 @@
   },
   "dependencies": {
     "@fluentui/react-jsx-runtime": "",
+    "@fluentui/react-shared-contexts": "",
     "@fluentui/react-theme": "",
     "@fluentui/react-utilities": "",
     "@griffel/react": "",
