@@ -1,12 +1,19 @@
 import * as React from 'react';
+import { ComponentMeta } from '@storybook/react';
 import { Steps, StoryWright } from 'storywright';
-import { storiesOf } from '@storybook/react';
 import { TimePicker } from '@fluentui/react-timepicker-compat-preview';
-import { TestWrapperDecoratorFixedWidth } from '../utilities/TestWrapperDecorator';
 
-storiesOf('TimePicker compat', module)
-  .addDecorator(TestWrapperDecoratorFixedWidth)
-  .addDecorator(story => <StoryWright steps={new Steps().snapshot('default').end()}>{story()}</StoryWright>)
-  .addStory('Default', () => <TimePicker open startHour={11} endHour={13} />)
-  .addStory('With 12-hour format', () => <TimePicker open startHour={11} endHour={13} hourCycle="h11" />)
-  .addStory('Show seconds', () => <TimePicker open startHour={11} endHour={13} showSeconds />);
+export default {
+  title: 'TimePicker compat',
+  decorators: [
+    Story => (
+      <StoryWright steps={new Steps().snapshot('default').end()}>
+        <Story />
+      </StoryWright>
+    ),
+  ],
+} as ComponentMeta<typeof TimePicker>;
+
+export const Default = () => <TimePicker open startHour={11} endHour={13} />;
+export const With12HourFormat = () => <TimePicker open startHour={11} endHour={13} hourCycle="h11" />;
+export const ShowSeconds = () => <TimePicker open startHour={11} endHour={13} showSeconds />;
