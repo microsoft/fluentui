@@ -17,7 +17,6 @@ import {
   readNxJson,
 } from '@nx/devkit';
 import path from 'path';
-import os from 'os';
 import ts from 'typescript';
 
 import { getTemplate, uniqueArray } from './lib/utils';
@@ -186,7 +185,7 @@ const templates = {
     return {
       main: () => {
         const tsConfig = {
-          extends: '../../../../../tsconfig.base.json',
+          extends: offsetFromRoot(options.projectConfig.root) + 'tsconfig.base.json',
           compilerOptions: {
             target: 'ES2019',
             // by default we gonna use tsc for type checking only
@@ -294,6 +293,7 @@ const templates = {
     pkgName: string;
     addSnapshotSerializers: boolean;
     testSetupFilePath: string;
+    projectConfig: ProjectConfiguration;
   }) => stripIndents`
       // @ts-check
 
@@ -302,7 +302,7 @@ const templates = {
       */
       module.exports = {
         displayName: '${options.pkgName}',
-        preset: '../../../../../jest.preset.js',
+        preset: '${offsetFromRoot(options.projectConfig.root)}jest.preset.js',
         transform: {
           '^.+\\.tsx?$': [
             'ts-jest',
@@ -317,11 +317,13 @@ const templates = {
         ${options.addSnapshotSerializers ? `snapshotSerializers: ['@griffel/jest-serializer'],` : ''}
       };
   `,
-  storybook: {
-    main: stripIndents`
-      const rootMain = require('../../../../../../.storybook/main');
+  storybook: (options: NormalizedSchema) => {
+    const rootOffsetPath = offsetFromRoot(options.paths.storybook.rootFolder);
+    return {
+      main: stripIndents`
+      const rootMain = require('${rootOffsetPath}.storybook/main');
 
-      module.exports = /** @type {Omit<import('../../../../../../.storybook/main'), 'typescript'|'babel'>} */ ({
+      module.exports = /** @type {Omit<import('${rootOffsetPath}.storybook/main'), 'typescript'|'babel'>} */ ({
         ...rootMain,
         stories: [...rootMain.stories, '../stories/**/*.stories.mdx', '../stories/**/index.stories.@(ts|tsx)'],
         addons: [...rootMain.addons],
@@ -334,8 +336,8 @@ const templates = {
         },
       });
     `,
-    preview: stripIndents`
-      import * as rootPreview from '../../../../../../.storybook/preview';
+      preview: stripIndents`
+      import * as rootPreview from '${rootOffsetPath}.storybook/preview';
 
       /** @type {typeof rootPreview.decorators} */
       export const decorators = [...rootPreview.decorators];
@@ -343,15 +345,16 @@ const templates = {
       /** @type {typeof rootPreview.parameters} */
       export const parameters = { ...rootPreview.parameters };
     `,
-    tsconfig: {
-      extends: '../tsconfig.json',
-      compilerOptions: {
-        outDir: '',
-        allowJs: true,
-        checkJs: true,
+      tsconfig: {
+        extends: '../tsconfig.json',
+        compilerOptions: {
+          outDir: '',
+          allowJs: true,
+          checkJs: true,
+        },
+        include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
       },
-      include: ['../stories/**/*.stories.ts', '../stories/**/*.stories.tsx', '*.js'],
-    },
+    };
   },
   cypress: {
     tsconfig: {
@@ -364,47 +367,7 @@ const templates = {
       include: ['**/*.cy.ts', '**/*.cy.tsx'],
     },
   },
-  npmIgnoreConfig:
-    stripIndents`
-    .storybook/
-    .vscode/
-    bundle-size/
-    config/
-    coverage/
-    docs/
-    etc/
-    node_modules/
-    src/
-    stories/
-    dist/types/
-    temp/
-    __fixtures__
-    __mocks__
-    __tests__
-
-    *.api.json
-    *.log
-    *.spec.*
-    *.cy.*
-    *.test.*
-    *.yml
-
-    # config files
-    *config.*
-    *rc.*
-    .editorconfig
-    .eslint*
-    .git*
-    .prettierignore
-    .swcrc
-    project.json
-
-    # exclude gitignore patterns explicitly
-    !lib
-    !lib-commonjs
-    !lib-amd
-    !dist/*.d.ts
-  ` + os.EOL,
+  npmIgnoreConfig: ``,
   swcConfig: () => {
     return {
       $schema: 'https://json.schemastore.org/swcrc',
@@ -693,11 +656,16 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   return tree;
 
   function setupScripts(json: PackageJson) {
-    const scripts = {
+    const packageType = getPackageType(tree, options);
+    const hasStories = shouldSetupStorybook(tree, options) === 'init';
+    const scripts: Record<string, string> = {
       test: 'jest --passWithNoTests',
-      'test-ssr': 'test-ssr "./stories/**/*.stories.tsx"',
       'type-check': 'tsc -b tsconfig.json',
     };
+
+    if (packageType === 'web' && hasStories) {
+      scripts['test-ssr'] = 'test-ssr "./stories/**/*.stories.tsx"';
+    }
 
     json.scripts = json.scripts || {};
     delete json.scripts['update-snapshots'];
@@ -708,7 +676,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
 
     Object.assign(json.scripts, scripts);
 
-    if (getPackageType(tree, options) === 'node') {
+    if (packageType === 'node') {
       delete json.scripts.start;
       delete json.scripts.storybook;
     }
@@ -720,6 +688,7 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
     json.exports = {
       '.': {
         types: json.typings,
+        ...(json.style ? { style: normalizePackageEntryPointPaths(json.style) } : null),
         ...(json.main ? { node: normalizePackageEntryPointPaths(json.main) } : null),
         ...(json.module ? { import: normalizePackageEntryPointPaths(json.module) } : null),
         ...(json.main ? { require: normalizePackageEntryPointPaths(json.main) } : null),
@@ -742,17 +711,70 @@ function updatePackageJson(tree: Tree, options: NormalizedSchemaWithTsConfigs) {
   }
 
   function setupNpmPublishFiles(json: PackageJson) {
+    const rootMarkdownPath = '*.md';
+    const mainPath = json.main ? path.dirname(json.main) : null;
+    const modulePath = json.module ? path.dirname(json.module) : null;
+    const binPath = getBinFolders(json);
+    const stylesPath = json.style ? path.dirname(json.style) : null;
+    const typesPath = getTypes(json);
+    const storybookPath = getStorybookPath(json);
+    const amdPath = options.projectConfig.tags?.includes('ships-amd') ? 'lib-amd' : null;
+    const filesDefinition = [
+      rootMarkdownPath,
+      mainPath,
+      modulePath,
+      ...(binPath ?? []),
+      stylesPath,
+      typesPath,
+      storybookPath,
+      amdPath,
+    ]
+      .filter(Boolean)
+      .map(value => {
+        return value?.replace('./', '');
+      }) as string[];
+
     json.files = json.files ?? [];
-    json.files = [
-      'lib',
-      'lib-commonjs',
-      options.projectConfig.tags?.includes('ships-amd') ? 'lib-amd' : '',
-      'dist/*.d.ts',
-    ].filter(Boolean);
+    json.files = uniqueArray([...json.files, ...filesDefinition]).sort();
 
     tree.delete(options.paths.npmConfig);
 
     return json;
+
+    // helpers
+
+    function getStorybookPath(pkgJson: PackageJson) {
+      return pkgJson.storybook || tree.exists(joinPathFragments(options.projectConfig.root, 'preset.js'))
+        ? 'preset.js'
+        : null;
+    }
+
+    function getTypes(pkgJson: PackageJson) {
+      const typesDeclarationPath = pkgJson.types || pkgJson.typings;
+      return typesDeclarationPath ? globifyPath(path.dirname(typesDeclarationPath), 'd.ts') : null;
+    }
+    function getBinFolders(pkgJson: PackageJson) {
+      const bin = pkgJson.bin;
+      if (!bin) {
+        return null;
+      }
+
+      if (typeof bin === 'string') {
+        return [path.dirname(bin)];
+      }
+
+      const binRootPaths = new Set<string>();
+
+      for (const binDefinitionPath of Object.values(bin)) {
+        binRootPaths.add(path.dirname(binDefinitionPath));
+      }
+
+      return Array.from(binRootPaths);
+    }
+
+    function globifyPath(value: string, extension: string) {
+      return `${value}/*.${extension}`;
+    }
   }
 }
 
@@ -786,9 +808,10 @@ function setupStorybook(tree: Tree, options: NormalizedSchema) {
   const js = isJs(tree, options);
 
   if (sbAction === 'init') {
-    tree.write(options.paths.storybook.tsconfig, serializeJson(templates.storybook.tsconfig));
-    tree.write(options.paths.storybook.main, templates.storybook.main);
-    tree.write(options.paths.storybook.preview, templates.storybook.preview);
+    const sbTemplates = templates.storybook(options);
+    tree.write(options.paths.storybook.tsconfig, serializeJson(sbTemplates.tsconfig));
+    tree.write(options.paths.storybook.main, sbTemplates.main);
+    tree.write(options.paths.storybook.preview, sbTemplates.preview);
 
     const libTsConfig: TsConfig = readJson(tree, options.paths.tsconfig.lib);
 
@@ -954,6 +977,7 @@ function updateLocalJestConfig(tree: Tree, options: NormalizedSchema) {
       Object.keys(packageJson.dependencies).some(pkgDepName => packagesThatTriggerAddingSnapshots.includes(pkgDepName)),
     testSetupFilePath: `./${path.basename(options.paths.configRoot)}/tests.js`,
     platform: packageType,
+    projectConfig: options.projectConfig,
   } as const;
 
   tree.write(options.paths.jestConfig, templates.jest(config));
@@ -998,6 +1022,14 @@ function updateConformanceSetup(tree: Tree, options: NormalizedSchema) {
       if (defaultOptionsVar === 'defaultOptions') {
         const initializer = node.declarationList.declarations[0].initializer;
         if (initializer && ts.isObjectLiteralExpression(initializer)) {
+          const isTsConfigAlreadySet = initializer.properties.some(prop => {
+            return prop.name && ts.isIdentifier(prop.name) && prop.name.escapedText === 'tsConfig';
+          });
+
+          if (isTsConfigAlreadySet) {
+            return;
+          }
+
           const firstProp = initializer.properties[0];
           start = firstProp.pos;
           return;

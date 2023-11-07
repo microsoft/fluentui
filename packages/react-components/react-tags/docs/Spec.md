@@ -2,62 +2,134 @@
 
 ## Background
 
-_Description and use cases of this component_
+The `@fluentui/react-tags` component is designed to allow users to visualize, interact with, and manage multiple tags. It is useful in scenarios such as selecting multiple options from a list, categorizing items, or adding metadata.
 
 ## Prior Art
 
-_Include background research done for this component_
-
-- _Link to Open UI research_
-- _Link to comparison of v7 and v0_
-- _Link to GitHub epic issue for the converged component_
+[Open UI #726](https://github.com/openui/open-ui/pull/726)
+[#26001](https://github.com/microsoft/fluentui/issues/26001)
 
 ## Sample Code
 
-_Provide some representative example code that uses the proposed API for the component_
+```jsx
+<Tag>Content</Tag>
+
+<InteractionTag>
+  <InteractionTagPrimary>Content</InteractionTagPrimary>
+</InteractionTag>
+
+<TagGroup>
+  <Tag>Tag 1</Tag>
+  <Tag>Tag 2</Tag>
+  <Tag>Tag 3</Tag>
+</TagGroup>
+```
 
 ## Variants
 
-_Describe visual or functional variants of this control, if applicable. For example, a slider could have a 2D variant._
+### Appearance
+
+- appearance="filled": default appearance.
+- appearance="outline": the tag is emphasized through the styling of its content and borders.
+- appearance="brand": the component is styled with brand tokens.
+
+### Shape
+
+- shape="rounded": default shape. The component has rounded corners.
+- shape="circular": The component has completely round corners.
+
+### Sizes
+
+Three different sizes are supported: `medium` (default), `small` and `extra-small`.
 
 ## API
 
-_List the **Props** and **Slots** proposed for the component. Ideally this would just be a link to the component's `.types.ts` file_
+[Tag.type.ts](../src/components/Tag/Tag.types.ts)
+[InteractionTag.type.ts](../src/components/InteractionTag/InteractionTag.types.ts)
+[TagGroup.type.ts](../src/components/TagGroup/TagGroup.types.ts)
 
 ## Structure
 
-- _**Public**_
-- _**Internal**_
-- _**DOM** - how the component will be rendered as HTML elements_
+### Tag Structure
+
+```tsx
+// without dismiss icon
+<span>
+  <span>{iconOrMedia}</span>
+  <span>{primaryText}</span>
+  <span>{secondaryText}</span>
+</span>
+
+// with dismiss icon
+<button>
+  <span>{iconOrMedia}</span>
+  <span>{primaryText}</span>
+  <span>{secondaryText}</span>
+  <span>{dismissIcon}</span>
+</button>
+```
+
+### InteractionTag Structure
+
+```tsx
+<div>
+  <button>
+    <span>{iconOrMedia}</span>
+    <span>{primaryText}</span>
+    <span>{secondaryText}</span>
+  </button>
+  <button>{dismissIcon}</button>
+</div>
+```
+
+### TagGroup Structure
+
+TagGroup is a simple div wrapper around the children.
 
 ## Migration
 
-_Describe what will need to be done to upgrade from the existing implementations:_
+### Migrate from V0 Pill component
 
-- _Migration from v8_
-- _Migration from v0_
+Property mapping:
+
+| v0 Pill      | v9 Tag                                    |
+| ------------ | ----------------------------------------- |
+| `action`     | use `InteractionTag`                      |
+| `appearance` | `appearance`                              |
+| `content`    | `children`                                |
+| `disabled`   | `disabled`                                |
+| `icon`       | `icon`                                    |
+| `image`      | `media`                                   |
+| `onDismiss`  | wrap with `<TagGroup onDismiss={handler}` |
+| `size`       | `size`                                    |
+
+V0 Pill can be selectable, but v9 Tag is not selectable. A Picker component is planned to incorporate the selection behavior.
 
 ## Behaviors
 
-_Explain how the component will behave in use, including:_
+### States
 
-- _Component States_
-- _Interaction_
-  - _Keyboard_
-  - _Cursor_
-  - _Touch_
-  - _Screen readers_
+Tag/InteractionTag has enabled/disabled states. The enabled states changes styling on hover and press.
+
+Note that on hover, Tag only changes styling on the dismiss icon. InteractionTag changes styling on the entire component.
+
+### Keyboard Interaction
+
+A Tag without a dismiss icon is not focusable. A Tag with a dismiss icon is focusable.
+
+InteractionTag is one button when it's not dismissible. And a dismissible InteractionTag has two focus stops, on its primary button and on its secondary button.
+
+TagGroup wraps multiple Tag/InteractionTag and applies arrow navigation.
+
+#### Keyboard Interaction for dismiss
+
+When TagGroup contains a collection of Tag/InteractionTag that can be dismissed, the dismiss happens on <kbd>Space</kbd>, <kbd>Enter</kbd>, <kbd>BackSpace</kbd> or <kbd>Delete</kbd> key.
+When a Tag is dismissed, focus moves to the next Tag. If there's no next focusable Tag, focus moves on the previous Tag.
 
 ## Accessibility
 
-Base accessibility information is included in the design document. After the spec is filled and review, outcomes from it need to be communicated to design and incorporated in the design document.
+Dismissible Tag should have `role='img'` on its dismissIcon slot. `aria-label` is required to provide information to screen readers about the dismiss action.
 
-- Decide whether to use **native element** or folow **ARIA** and provide reasons
-- Identify the **[ARIA](https://www.w3.org/TR/wai-aria-practices-1.2/) pattern** and, if the component is listed there, follow its specification as possible.
-- Identify accessibility **variants**, the `role` ([ARIA roles](https://www.w3.org/TR/wai-aria-1.1/#role_definitions)) of the component, its `slots` and `aria-*` props.
-- Describe the **keyboard navigation**: Tab Oder and Arrow Key Navigation. Describe any other keyboard **shortcuts** used
-- Specify texts for **state change announcements** - [ARIA live regions
-  ](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) (number of available items in dropdown, error messages, confirmations, ...)
-- Identify UI parts that appear on **hover or focus** and specify keyboard and screen reader interaction with them
-- List cases when **focus** needs to be **trapped** in sections of the UI (for dialogs and popups or for hierarchical navigation)
-- List cases when **focus** needs to be **moved programatically** (if parts of the UI are appearing/disappearing or other cases)
+Dismissible InteractionTag are composed of two buttons. Therefore it should have two focus stop. `aria-label` is required to provide information to screen readers about the dismiss action. By default InteractionTag has `aria-labelledby` attribute combining the id values from both the InteractionTagPrimary and InteractionTagSecondary components, allowing the accessible name to be computed from both.
+
+By default TagGroup has `role='listbox'` and `role='option'` for its children. But when using `TagGroup` with non-actionable `Tag` (i.e. `Tag` without dismiss icon), `TagGroup` should be set to `list` role, and each `Tag` should have the `listitem` role.
