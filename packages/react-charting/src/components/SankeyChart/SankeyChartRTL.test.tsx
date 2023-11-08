@@ -75,7 +75,7 @@ describe('Sankey bar chart rendering', () => {
 
 describe('Sankey chart - Subcomponent Node', () => {
   testWithWait(
-    'Should update path color same as node clolor when we clck on node',
+    'Should update path color same as node color when we clck on node',
     SankeyChart,
     { data: chartPointsWithStringNodeId },
     async container => {
