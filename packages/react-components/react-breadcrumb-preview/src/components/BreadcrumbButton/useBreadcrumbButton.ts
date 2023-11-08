@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { useButton_unstable } from '@fluentui/react-button';
-import { useId } from '@fluentui/react-utilities';
+import type { ButtonProps } from '@fluentui/react-button';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
-import { BreadcrumbItem } from '../Breadcrumb/Breadcrumb.types';
 import type { BreadcrumbButtonProps, BreadcrumbButtonState } from './BreadcrumbButton.types';
 
 /**
@@ -18,27 +17,21 @@ export const useBreadcrumbButton_unstable = (
   props: BreadcrumbButtonProps,
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
-  const { appearance, size, registerItem, removeItem } = useBreadcrumbContext_unstable();
-  const { current = false, icon, ...rest } = props;
-  const id = useId('breadcrumb-button-', props.id);
-
-  React.useEffect(() => {
-    const item: BreadcrumbItem = { key: id, type: 'button' };
-
-    registerItem(item);
-
-    return () => removeItem(item);
-  }, [id, registerItem, removeItem]);
+  const { size } = useBreadcrumbContext_unstable();
+  const { current = false, ...rest } = props;
 
   return {
     ...useButton_unstable(
       {
-        ...rest,
-        appearance: props.appearance || appearance,
+        appearance: 'subtle',
+        role: undefined,
+        type: undefined,
+        as: 'a' as const,
         iconPosition: 'before',
-        icon,
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
-      },
+        'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,
+        ...rest,
+      } as ButtonProps,
       ref,
     ),
     current,

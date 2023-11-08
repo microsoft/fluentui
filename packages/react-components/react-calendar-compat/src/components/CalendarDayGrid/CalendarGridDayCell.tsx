@@ -137,7 +137,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
 
           const classNamesToAdd = calculateRoundedStyles(false, false, index > 0, index < dayRefs.length - 1).trim();
           if (classNamesToAdd) {
-            dayRef.classList.add(...classNamesToAdd);
+            dayRef.classList.add(...classNamesToAdd.trim().split(' '));
           }
         }
       }
@@ -182,7 +182,7 @@ export const CalendarGridDayCell: React.FunctionComponent<CalendarGridDayCellPro
         ) {
           const classNamesToAdd = calculateRoundedStyles(false, false, index > 0, index < dayRefs.length - 1).trim();
           if (classNamesToAdd) {
-            dayRef.classList.remove(...classNamesToAdd);
+            dayRef.classList.remove(...classNamesToAdd.trim().split(' '));
           }
         }
       }

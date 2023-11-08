@@ -9,6 +9,7 @@ import {
 import type { DialogSurfaceElement, DialogSurfaceProps, DialogSurfaceState } from './DialogSurface.types';
 import { useDialogContext_unstable } from '../../contexts';
 import { Escape } from '@fluentui/keyboard-keys';
+import { useDialogTransitionContext_unstable } from '../../contexts/dialogTransitionContext';
 
 /**
  * Create the state required to render DialogSurface.
@@ -25,9 +26,9 @@ export const useDialogSurface_unstable = (
 ): DialogSurfaceState => {
   const modalType = useDialogContext_unstable(ctx => ctx.modalType);
   const isNestedDialog = useDialogContext_unstable(ctx => ctx.isNestedDialog);
+  const transitionStatus = useDialogTransitionContext_unstable();
   const modalAttributes = useDialogContext_unstable(ctx => ctx.modalAttributes);
   const dialogRef = useDialogContext_unstable(ctx => ctx.dialogRef);
-  const open = useDialogContext_unstable(ctx => ctx.open);
   const requestOpenChange = useDialogContext_unstable(ctx => ctx.requestOpenChange);
   const dialogTitleID = useDialogContext_unstable(ctx => ctx.dialogTitleId);
 
@@ -60,7 +61,7 @@ export const useDialogSurface_unstable = (
   });
 
   const backdrop = slot.optional(props.backdrop, {
-    renderByDefault: open && modalType !== 'non-modal',
+    renderByDefault: modalType !== 'non-modal',
     defaultProps: {
       'aria-hidden': 'true',
     },
@@ -73,6 +74,7 @@ export const useDialogSurface_unstable = (
     components: { backdrop: 'div', root: 'div' },
     backdrop,
     isNestedDialog,
+    transitionStatus,
     mountNode: props.mountNode,
     root: slot.always(
       getIntrinsicElementProps('div', {

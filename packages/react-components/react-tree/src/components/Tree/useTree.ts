@@ -90,12 +90,17 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
 }
 
 function useNestedSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
-  if (useTreeContext_unstable(ctx => ctx.treeType) === 'flat' && process.env.NODE_ENV === 'development') {
-    // eslint-disable-next-line no-console
-    console.error(/* #__DE-INDENT__ */ `
-      @fluentui/react-tree [useTree]:
-      Error: <Tree> component cannot be used inside of a nested <FlatTree> component and vice versa.
-    `);
+  if (process.env.NODE_ENV === 'development') {
+    // this doesn't break rule of hooks, as environment is a static value
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const treeType = useTreeContext_unstable(ctx => ctx.treeType);
+    if (treeType === 'flat') {
+      throw new Error(/* #__DE-INDENT__ */ `
+        @fluentui/react-tree [useTree]:
+        Subtrees are not allowed in a FlatTree!
+        You cannot use a <Tree> component inside of a <FlatTree> component!
+      `);
+    }
   }
   return useSubtree(props, ref);
 }

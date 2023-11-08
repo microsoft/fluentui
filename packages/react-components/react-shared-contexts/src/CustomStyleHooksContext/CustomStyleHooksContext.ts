@@ -30,6 +30,9 @@ export type CustomStyleHooksContextValue = Partial<{
   useComboboxStyles_unstable: CustomStyleHook;
   useDropdownStyles_unstable: CustomStyleHook;
   useListboxStyles_unstable: CustomStyleHook;
+  useListStyles_unstable: CustomStyleHook;
+  useListItemStyles_unstable: CustomStyleHook;
+  useListItemButtonStyles_unstable: CustomStyleHook;
   useOptionStyles_unstable: CustomStyleHook;
   useOptionGroupStyles_unstable: CustomStyleHook;
   useDividerStyles_unstable: CustomStyleHook;
@@ -90,8 +93,12 @@ export type CustomStyleHooksContextValue = Partial<{
   useDataGridHeaderCellStyles_unstable: CustomStyleHook;
   useDataGridSelectionCellStyles_unstable: CustomStyleHook;
   useDrawerStyles_unstable: CustomStyleHook;
+  /** @deprecated Use useInlineDrawerStyles_unstable instead. */
   useDrawerInlineStyles_unstable: CustomStyleHook;
+  /** @deprecated Use useOverlayDrawerStyles_unstable instead. */
   useDrawerOverlayStyles_unstable: CustomStyleHook;
+  useInlineDrawerStyles_unstable: CustomStyleHook;
+  useOverlayDrawerStyles_unstable: CustomStyleHook;
   useDrawerHeaderStyles_unstable: CustomStyleHook;
   useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
   useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -111,6 +118,7 @@ export type CustomStyleHooksContextValue = Partial<{
   useMessageBarTitleStyles_unstable: CustomStyleHook;
   useMessageBarActionsStyles_unstable: CustomStyleHook;
   useMessageBarGroupStyles_unstable: CustomStyleHook;
+  useToasterStyles_unstable: CustomStyleHook;
 }>;
 
 /**

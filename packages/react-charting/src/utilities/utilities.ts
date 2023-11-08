@@ -502,6 +502,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -510,6 +511,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -522,6 +524,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
         legend: ele.legend,
         y: ele.y,
         color: ele.color!,
+        xAxisCalloutData: ele.xAxisCalloutData,
         yAxisCalloutData: ele.yAxisCalloutData,
         callOutAccessibilityData: ele.callOutAccessibilityData,
         index: ele.index,
@@ -532,6 +535,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
           legend: ele.legend,
           y: ele.y,
           color: ele.color!,
+          xAxisCalloutData: ele.xAxisCalloutData,
           yAxisCalloutData: ele.yAxisCalloutData,
           callOutAccessibilityData: ele.callOutAccessibilityData,
           index: ele.index,

@@ -4,7 +4,7 @@ import { ICalloutProps } from '@fluentui/react/lib/Callout';
 import { IRenderFunction, IStyleFunctionOrObject } from '@fluentui/react/lib/Utilities';
 
 /**
- * IHorizontalBarChartProps for HorizontalBarchart component.
+ * Horizontal Bar Chart properties
  * {@docCategory HorizontalBarChart}
  */
 export interface IHorizontalBarChartProps {
@@ -94,6 +94,10 @@ export interface IHorizontalBarChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Horizontal Bar Chart style properties
+ * {@docCategory HorizontalBarChart}
+ */
 export interface IHorizontalBarChartStyleProps {
   /**
    * Theme (provided through customization.)
@@ -137,6 +141,10 @@ export interface IHorizontalBarChartStyleProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Horizontal Bar Chart styles
+ * {@docCategory HorizontalBarChart}
+ */
 export interface IHorizontalBarChartStyles {
   /**
    * Styling for the root container
@@ -204,9 +212,13 @@ export interface IHorizontalBarChartStyles {
  * default: show the datapoint.x value
  * fraction: show the fraction of datapoint.x/datapoint.y
  * percentage: show the percentage of (datapoint.x/datapoint.y)%
+ * {@docCategory HorizontalBarChart}
  */
 export type ChartDataMode = 'default' | 'fraction' | 'percentage';
 
+/**
+ * {@docCategory HorizontalBarChart}
+ */
 export enum HorizontalBarChartVariant {
   PartToWhole = 'part-to-whole',
   AbsoluteScale = 'absolute-scale',

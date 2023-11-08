@@ -69,7 +69,7 @@ exports[`Dropdown renders an open listbox 1`] = `
       class="fui-Listbox fui-Dropdown__listbox"
       id="fluent-listbox1"
       role="listbox"
-      style="position: fixed; left: 0px; top: 0px; margin: 0px; width: 0px;"
+      style="position: fixed; left: 0px; top: 0px; margin: 0px;"
     >
       <div
         aria-selected="false"

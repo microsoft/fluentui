@@ -26,9 +26,9 @@ export const useBreadcrumbDivider_unstable = (
   props: BreadcrumbDividerProps,
   ref: React.Ref<HTMLLIElement>,
 ): BreadcrumbDividerState => {
-  const { size, dividerType } = useBreadcrumbContext_unstable();
+  const { size } = useBreadcrumbContext_unstable();
   const { dir } = useFluent();
-  const icon = getDividerIcon(size, dividerType, dir);
+  const icon = getDividerIcon(size, dir);
 
   return {
     components: {
@@ -63,18 +63,10 @@ const dividerIcons = {
  * Get icon of the divider
  *
  * @param size - size of the Breadcrumb
- * @param dividerType - type of the divider, can be `slash` or `chevron`
  */
-function getDividerIcon(
-  size: BreadcrumbProps['size'] = 'medium',
-  dividerType: BreadcrumbProps['dividerType'],
-  dir: string,
-) {
+function getDividerIcon(size: BreadcrumbProps['size'] = 'medium', dir: string) {
   const dividerIcon = dir === 'rtl' ? dividerIcons.rtl : dividerIcons.ltr;
   if (size === 'small') {
-    if (dividerType === 'slash') {
-      return dir === 'rtl' ? '\\' : '/';
-    }
     return dividerIcon.small;
   }
   if (size === 'large') {

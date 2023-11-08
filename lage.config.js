@@ -16,6 +16,7 @@ module.exports = {
     'code-style': [],
     'update-snapshots': ['^update-snapshots'],
     '@fluentui/docs#build': ['@fluentui/react-northstar#build:info'],
+    'verify-packaging': ['build'],
   },
 
   // Adds some ADO-specific logging commands for reporting failures
@@ -26,6 +27,7 @@ module.exports = {
     'change/**',
     'rfcs/**',
     'README.md',
+    '*.md',
     '.vscode/**',
     '.github/*.yml',
     '.github/*.json',
@@ -34,6 +36,7 @@ module.exports = {
     '.github/MAINTAINERS',
     '.github/ISSUE_TEMPLATE/**',
     '.github/policies/**',
+    '.devcontainer/**',
   ],
 
   // All of these options are sent to `backfill`: https://github.com/microsoft/backfill/blob/master/README.md

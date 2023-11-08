@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Adding a default tabbable element to fix accessibilty issue",
-  "packageName": "@fluentui/react-charting",
-  "email": "ankityadav@microsoft.com",
-  "dependentChangeType": "patch"
-}

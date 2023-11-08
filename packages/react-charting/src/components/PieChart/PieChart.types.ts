@@ -5,7 +5,7 @@ export type { IDataPoint } from '../../types/IDataPoint';
 export interface IPieChart {}
 
 /**
- * IPieChartProps for Piechart component.
+ * Pie Chart properties
  * {@docCategory PieChart}
  */
 export interface IPieChartProps {
@@ -60,8 +60,17 @@ export interface IPieChartProps {
   culture?: string;
 }
 
+/**
+ * Pie Chart style properties
+ * {@docCategory PieChart}
+ */
 export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> &
   Pick<IPieChartProps, 'className'>;
+
+/**
+ * Pie Chart styles
+ * {@docCategory PieChart}
+ */
 export interface IPieChartStyles {
   /**
    *  Style for the root element.

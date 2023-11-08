@@ -7,7 +7,7 @@ import { IChartProps, IChartDataPoint } from './index';
 export interface IDonutChart {}
 
 /**
- * IDonutChartProps for Donutchart component.
+ * Donut Chart properties.
  * {@docCategory DonutChart}
  */
 export interface IDonutChartProps extends ICartesianChartProps {
@@ -59,8 +59,16 @@ export interface IDonutChartProps extends ICartesianChartProps {
   hideLabels?: boolean;
 }
 
+/**
+ * Donut Chart style properties
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartStyleProps extends ICartesianChartStyleProps {}
 
+/**
+ * Donut Chart styles
+ * {@docCategory DonutChart}
+ */
 export interface IDonutChartStyles {
   /**
    *  Style for the root element.

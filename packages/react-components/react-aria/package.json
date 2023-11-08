@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-aria",
-  "version": "9.3.42",
+  "version": "9.3.43",
   "description": "React helper to ensure ARIA",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -32,7 +32,7 @@
   },
   "dependencies": {
     "@fluentui/keyboard-keys": "^9.0.6",
-    "@fluentui/react-utilities": "^9.15.0",
+    "@fluentui/react-utilities": "^9.15.1",
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
