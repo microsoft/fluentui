@@ -11,9 +11,6 @@ import {
 import { UpcomingMeetingsListRenderer, RecentMeetingsTreeListRenderer } from './AccessibleMeetListsRenderer';
 
 import {
-  Checkbox,
-  CheckboxOnChangeData,
-  Divider,
   Button,
   SplitButton,
   Menu,
@@ -142,15 +139,7 @@ interface IAccessibleMeetBaseProps {
   variant: string;
 }
 export const AccessibleMeetBase: React.FC<IAccessibleMeetBaseProps> = ({ variant }) => {
-  const [cellNavigationOnly, setCellNavigationOnly] = React.useState(false);
   const recentCategoriesRef = React.useRef<RecentCategory[]>([]);
-
-  const handleCellNavigationOnlyChange = React.useCallback(
-    (event: React.ChangeEvent, data: CheckboxOnChangeData) => {
-      setCellNavigationOnly(!!data.checked);
-    },
-    [setCellNavigationOnly],
-  );
 
   const threeUpcomingMeetings = React.useMemo(() => {
     let upcomingMeetings = meetings.filter(meeting => {
@@ -273,17 +262,6 @@ export const AccessibleMeetBase: React.FC<IAccessibleMeetBaseProps> = ({ variant
     <>
       <h1>Accessible Meet</h1>
 
-      {variant === 'grids' && (
-        <>
-          <Checkbox
-            checked={cellNavigationOnly}
-            onChange={handleCellNavigationOnlyChange}
-            label="Use cell-only navigation"
-          />
-          <Divider />
-        </>
-      )}
-
       <div>
         <Toolbar>
           <ToolbarButton>Join with an ID</ToolbarButton>
@@ -315,24 +293,15 @@ export const AccessibleMeetBase: React.FC<IAccessibleMeetBaseProps> = ({ variant
         <Button>Next meetings</Button>
 
         {variant === 'stitchedGridsRowNavigation' && (
-          <UpcomingMeetingsGridRowNavigationRenderer
-            cellNavigationOnly={cellNavigationOnly}
-            threeUpcomingMeetings={threeUpcomingMeetings}
-          />
+          <UpcomingMeetingsGridRowNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
         )}
 
         {variant === 'gridsRowNavigation' && (
-          <UpcomingMeetingsGridRowNavigationRenderer
-            cellNavigationOnly={cellNavigationOnly}
-            threeUpcomingMeetings={threeUpcomingMeetings}
-          />
+          <UpcomingMeetingsGridRowNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
         )}
 
         {variant === 'gridsCellNavigation' && (
-          <UpcomingMeetingsGridCellNavigationRenderer
-            cellNavigationOnly={cellNavigationOnly}
-            threeUpcomingMeetings={threeUpcomingMeetings}
-          />
+          <UpcomingMeetingsGridCellNavigationRenderer threeUpcomingMeetings={threeUpcomingMeetings} />
         )}
 
         {variant === 'lists' && <UpcomingMeetingsListRenderer threeUpcomingMeetings={threeUpcomingMeetings} />}

@@ -6,58 +6,24 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  TableCellActions,
-  TableCellLayout,
-  useArrowNavigationGroup,
   useTableCompositeNavigation,
   Button,
-  SplitButton,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
-  Toolbar,
-  ToolbarButton,
   useFluent,
 } from '@fluentui/react-components';
 
 interface IUpcomingMeetingsGridRowNavigationRendererProps {
-  cellNavigationOnly: boolean;
   threeUpcomingMeetings: UpcomingMeeting[];
 }
 export const UpcomingMeetingsGridRowNavigationRenderer: React.FC<IUpcomingMeetingsGridRowNavigationRendererProps> = ({
-  cellNavigationOnly,
   threeUpcomingMeetings,
 }) => {
-  const [tableNavigationAttribute, setTableNavigationAttribute] = React.useState({});
-  const [tableRowNavigationAttribute, setTableRowNavigationAttribute] = React.useState({});
-  const [handleTableKeyDown, setHandleTableKeyDown] = React.useState<React.KeyboardEventHandler | undefined>(undefined);
-
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
-  const cellTableNavigationAttribute = useArrowNavigationGroup({ axis: 'grid' });
-
-  React.useEffect(() => {
-    if (cellNavigationOnly) {
-      setTableNavigationAttribute(() => cellTableNavigationAttribute);
-      setTableRowNavigationAttribute(() => {});
-      setHandleTableKeyDown(undefined);
-    } else {
-      setTableNavigationAttribute(() => tableTabsterAttribute);
-      setTableRowNavigationAttribute(() => tableRowTabsterAttribute);
-      setHandleTableKeyDown(() => onTableKeyDown);
-    }
-  }, [
-    cellNavigationOnly,
-    tableTabsterAttribute,
-    tableRowTabsterAttribute,
-    onTableKeyDown,
-    cellTableNavigationAttribute,
-    setTableNavigationAttribute,
-    setTableRowNavigationAttribute,
-    setHandleTableKeyDown,
-  ]);
 
   const threeUpcomingMeetingsItems = React.useMemo(
     () =>
@@ -71,13 +37,13 @@ export const UpcomingMeetingsGridRowNavigationRenderer: React.FC<IUpcomingMeetin
     <Table
       role="grid"
       noNativeElements
-      onKeyDown={handleTableKeyDown}
+      onKeyDown={onTableKeyDown}
       aria-label="Upcoming meetings"
-      {...tableNavigationAttribute}
+      {...tableTabsterAttribute}
     >
       <TableBody>
         {threeUpcomingMeetingsItems.map((meeting, index) => (
-          <TableRow key={index} tabIndex={cellNavigationOnly ? undefined : 0} {...tableRowNavigationAttribute}>
+          <TableRow key={index} tabIndex={0} {...tableRowTabsterAttribute}>
             <TableCell role="gridcell" tabIndex={0}>
               {meeting.title}
             </TableCell>

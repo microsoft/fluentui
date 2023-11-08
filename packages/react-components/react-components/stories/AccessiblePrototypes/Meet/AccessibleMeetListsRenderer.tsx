@@ -1,20 +1,9 @@
 import * as React from 'react';
 import { RecentCategory, UpcomingMeeting, RecentMeetings } from './AccessibleMeetBase';
 
-import { List, ListItemProps } from '@fluentui/react-northstar';
+import { List } from '@fluentui/react-northstar';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components/unstable';
-import {
-  Button,
-  SplitButton,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
-  MenuPopover,
-  MenuTrigger,
-  Toolbar,
-  ToolbarButton,
-} from '@fluentui/react-components';
+import { Button, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
 interface IUpcomingMeetingsListRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];

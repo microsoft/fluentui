@@ -6,59 +6,25 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  TableCellActions,
-  TableCellLayout,
   useArrowNavigationGroup,
-  useTableCompositeNavigation,
   Button,
-  SplitButton,
   Menu,
   MenuButton,
   MenuItem,
   MenuList,
   MenuPopover,
   MenuTrigger,
-  Toolbar,
-  ToolbarButton,
   useFluent,
 } from '@fluentui/react-components';
 import { createTabster, getMover, getGroupper, getTabsterAttribute, Types } from 'tabster';
 
 interface IUpcomingMeetingsGridCellNavigationRendererProps {
-  cellNavigationOnly: boolean;
   threeUpcomingMeetings: UpcomingMeeting[];
 }
 export const UpcomingMeetingsGridCellNavigationRenderer: React.FC<IUpcomingMeetingsGridCellNavigationRendererProps> = ({
-  cellNavigationOnly,
   threeUpcomingMeetings,
 }) => {
-  const [tableNavigationAttribute, setTableNavigationAttribute] = React.useState({});
-  const [tableRowNavigationAttribute, setTableRowNavigationAttribute] = React.useState({});
-  const [handleTableKeyDown, setHandleTableKeyDown] = React.useState<React.KeyboardEventHandler | undefined>(undefined);
-
-  const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
-  const cellTableNavigationAttribute = useArrowNavigationGroup({ axis: 'grid' });
-
-  React.useEffect(() => {
-    if (cellNavigationOnly) {
-      setTableNavigationAttribute(() => cellTableNavigationAttribute);
-      setTableRowNavigationAttribute(() => {});
-      setHandleTableKeyDown(undefined);
-    } else {
-      setTableNavigationAttribute(() => tableTabsterAttribute);
-      setTableRowNavigationAttribute(() => tableRowTabsterAttribute);
-      setHandleTableKeyDown(() => onTableKeyDown);
-    }
-  }, [
-    cellNavigationOnly,
-    tableTabsterAttribute,
-    tableRowTabsterAttribute,
-    onTableKeyDown,
-    cellTableNavigationAttribute,
-    setTableNavigationAttribute,
-    setTableRowNavigationAttribute,
-    setHandleTableKeyDown,
-  ]);
+  const tableTabsterAttribute = useArrowNavigationGroup({ axis: 'grid' });
 
   const threeUpcomingMeetingsItems = React.useMemo(
     () =>
@@ -69,16 +35,10 @@ export const UpcomingMeetingsGridCellNavigationRenderer: React.FC<IUpcomingMeeti
   );
 
   return (
-    <Table
-      role="grid"
-      noNativeElements
-      onKeyDown={handleTableKeyDown}
-      aria-label="Upcoming meetings"
-      {...tableNavigationAttribute}
-    >
+    <Table role="grid" noNativeElements aria-label="Upcoming meetings" {...tableTabsterAttribute}>
       <TableBody>
         {threeUpcomingMeetingsItems.map((meeting, index) => (
-          <TableRow key={index} tabIndex={cellNavigationOnly ? undefined : 0} {...tableRowNavigationAttribute}>
+          <TableRow key={index}>
             <TableCell role="gridcell" tabIndex={0}>
               {meeting.title}
             </TableCell>
