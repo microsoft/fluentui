@@ -46,9 +46,13 @@ import { DetailsListGroupedLargeExample } from './DetailsList.Grouped.Large.Exam
 const DetailsListGroupedLargeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.Grouped.Large.Example.tsx') as string;
 
-import { DetailsListGroupedV2LargeExmaple } from './DetailsList.GroupedV2.Large.Example';
+import { DetailsListGroupedV2LargeExample } from './DetailsList.GroupedV2.Large.Example';
 const DetailsListGroupedV2LargeExampleCode =
   require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.GroupedV2.Large.Example.tsx') as string;
+
+import { DetailsListGroupedV2ScrollToIndexExample } from './DetailsList.GroupedV2.ScrollToIndex.Example';
+const DetailsListGroupedV2ScrollToIndexExampleCode =
+  require('!raw-loader?esModule=false!@fluentui/react-examples/src/react/DetailsList/DetailsList.GroupedV2.ScrollToIndex.Example.tsx') as string;
 
 import { DetailsListDragDropExample } from './DetailsList.DragDrop.Example';
 const DetailsListDragDropExampleCode =
@@ -144,7 +148,13 @@ export const DetailsListLargeGroupedPageProps: IDocPageProps = generateProps({
 export const DetailsListLargeGroupedV2PageProps: IDocPageProps = generateProps({
   title: 'Large grouped DetailsList V2',
   code: DetailsListGroupedV2LargeExampleCode,
-  view: <DetailsListGroupedV2LargeExmaple />,
+  view: <DetailsListGroupedV2LargeExample />,
+});
+
+export const DetailsListScrollToIndexGroupedV2PageProps: IDocPageProps = generateProps({
+  title: 'Scroll To Index DetailsList V2',
+  code: DetailsListGroupedV2ScrollToIndexExampleCode,
+  view: <DetailsListGroupedV2ScrollToIndexExample />,
 });
 
 export const DetailsListCustomColumnsPageProps: IDocPageProps = generateProps({

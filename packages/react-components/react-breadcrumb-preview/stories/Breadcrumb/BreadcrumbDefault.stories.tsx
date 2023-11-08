@@ -1,91 +1,42 @@
 import * as React from 'react';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbDivider,
-  BreadcrumbProps,
-  BreadcrumbButton,
-} from '@fluentui/react-breadcrumb-preview';
-import { RadioGroup, Radio, Label } from '@fluentui/react-components';
-type Item = {
-  key: number;
-  value: string;
-};
-const items: Item[] = [
-  {
-    key: 0,
-    value: 'Item 1',
-  },
-  {
-    key: 1,
-    value: 'Item 2',
-  },
-  {
-    key: 2,
-    value: 'Item 3',
-  },
-  {
-    key: 3,
-    value: 'Item 4',
-  },
-];
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbButton } from '@fluentui/react-breadcrumb-preview';
+import { CalendarMonthFilled, CalendarMonthRegular, bundleIcon } from '@fluentui/react-icons';
 
-function renderItem(item: Item) {
-  const isLastItem = items.length - 1 === item.key;
-  return (
-    <React.Fragment key={`item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>{item.value}</BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
-
-function renderButton(item: Item) {
-  const isLastItem = items.length - 1 === item.key;
-  return (
-    <React.Fragment key={`item-${item.key}`}>
-      <BreadcrumbItem current={isLastItem}>
-        <BreadcrumbButton>{item.value}</BreadcrumbButton>
-      </BreadcrumbItem>
-      {!isLastItem && <BreadcrumbDivider />}
-    </React.Fragment>
-  );
-}
+const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
 export const Default = () => {
-  const [size, setSize] = React.useState('medium' as BreadcrumbProps['size']);
-  const [breadcrumbType, setBreadcrumbType] = React.useState('item');
   return (
     <>
-      <h2>Playground</h2>
-      <div style={{ display: 'flex', flexGrow: 2 }}>
-        <div>
-          <Label>Size</Label>
-          <RadioGroup
-            aria-labelledby="breadcrumb-size"
-            value={size}
-            onChange={(_, data) => setSize(data.value as BreadcrumbProps['size'])}
+      <Breadcrumb aria-label="Breadcrumb default example">
+        <BreadcrumbItem>
+          <BreadcrumbButton href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--default">
+            Item 1
+          </BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton
+            href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-size"
+            icon={<CalendarMonth />}
           >
-            <Radio value="small" label="Small" />
-            <Radio value="medium" label="Medium" />
-            <Radio value="large" label="Large" />
-          </RadioGroup>
-        </div>
-        <div>
-          <Label>Breadcrumb type</Label>
-          <RadioGroup
-            aria-labelledby="bredcrumb-type"
-            value={breadcrumbType}
-            onChange={(_, data) => setBreadcrumbType(data.value)}
+            Item 2
+          </BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-with-overflow">
+            Item 3
+          </BreadcrumbButton>
+        </BreadcrumbItem>
+        <BreadcrumbDivider />
+        <BreadcrumbItem>
+          <BreadcrumbButton
+            href="https://react.fluentui.dev/?path=/docs/preview-components-breadcrumb--breadcrumb-with-tooltip"
+            current
           >
-            <Radio value="item" label="Non-interactive item" />
-            <Radio value="button" label="Button" />
-          </RadioGroup>
-        </div>
-      </div>
-      <Breadcrumb aria-label="Small Breadcrumb" size={size}>
-        {breadcrumbType === 'item' && items.map(item => renderItem(item))}
-        {breadcrumbType === 'button' && items.map(item => renderButton(item))}
+            Item 4
+          </BreadcrumbButton>
+        </BreadcrumbItem>
       </Breadcrumb>
     </>
   );

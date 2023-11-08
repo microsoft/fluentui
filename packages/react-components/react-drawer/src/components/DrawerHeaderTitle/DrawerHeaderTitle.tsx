@@ -1,10 +1,11 @@
 import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+
 import { useDrawerHeaderTitle_unstable } from './useDrawerHeaderTitle';
 import { renderDrawerHeaderTitle_unstable } from './renderDrawerHeaderTitle';
 import { useDrawerHeaderTitleStyles_unstable } from './useDrawerHeaderTitleStyles.styles';
 import type { DrawerHeaderTitleProps } from './DrawerHeaderTitle.types';
-import type { ForwardRefComponent } from '@fluentui/react-utilities';
-import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
 
 /**
  * DrawerHeader provides a structured header for the drawer component.

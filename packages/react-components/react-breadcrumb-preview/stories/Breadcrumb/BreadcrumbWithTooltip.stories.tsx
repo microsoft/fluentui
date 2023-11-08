@@ -10,6 +10,7 @@ import {
   MenuPopover,
   MenuList,
   MenuItem,
+  Button,
 } from '@fluentui/react-components';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
 import {
@@ -87,10 +88,6 @@ const itemsWithLongNames: Item[] = [
     key: 4,
     item: 'Item 5 which is longer than 30 characters',
   },
-  {
-    key: 5,
-    item: "Don't think about what you want to be, but what you want to do.",
-  },
 ];
 
 const useTooltipStyles = makeStyles({
@@ -106,8 +103,8 @@ function renderItem(entry: Item, isLastItem: boolean) {
     <React.Fragment key={`item-${entry.key}`}>
       {isTruncatableBreadcrumbContent(entry.item, 30) ? (
         <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
-          <BreadcrumbItem current={isLastItem}>
-            <BreadcrumbButton>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbButton>
+          <BreadcrumbItem>
+            <BreadcrumbButton current={isLastItem}>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbButton>
           </BreadcrumbItem>
         </Tooltip>
       ) : (
@@ -151,13 +148,13 @@ const MenuWithTooltip = (props: PartitionBreadcrumbItems<Item>) => {
           }}
           relationship="label"
         >
-          <BreadcrumbButton
+          <Button
             id="menu"
-            appearance="transparent"
+            appearance="subtle"
             ref={ref}
             icon={<MoreHorizontal />}
-            aria-label={`${overflowCount} more tabs`}
-            role="tab"
+            aria-label={`${overflowCount} more items`}
+            role="button"
           />
         </Tooltip>
       </MenuTrigger>
@@ -182,9 +179,7 @@ const getTooltipContent = (breadcrumbItems: readonly Item[] | undefined) => {
     return (
       <>
         {acc}
-        {arr[0].item !== initialValue.item && (
-          <BreadcrumbDivider style={{ display: 'inline', verticalAlign: 'middle' }} />
-        )}
+        {arr[0].item !== initialValue.item && ' > '}
         {initialValue.item}
       </>
     );

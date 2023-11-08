@@ -49,6 +49,6 @@ export type ProgressBarProps = Omit<ComponentProps<ProgressBarSlots>, 'size'> & 
 /**
  * State used in rendering ProgressBar
  */
-export type ProgressBarState = ComponentState<ProgressBarSlots> &
+export type ProgressBarState = ComponentState<Required<ProgressBarSlots>> &
   Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> &
   Pick<ProgressBarProps, 'value' | 'color'>;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import { useButtonContext } from '../../contexts/ButtonContext';
 import type { ButtonProps, ButtonState } from './Button.types';
 
@@ -36,7 +36,7 @@ export const useButton_unstable = (
     iconOnly: Boolean(iconShorthand?.children && !props.children), // Slots definition
     components: { root: 'button', icon: 'span' },
     root: slot.always(
-      getNativeElementProps(
+      getIntrinsicElementProps(
         as,
         useARIAButtonShorthand<ARIAButtonSlotProps<'a'>>(props, {
           required: true,

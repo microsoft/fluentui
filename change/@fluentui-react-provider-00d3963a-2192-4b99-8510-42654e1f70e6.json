@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add API for List",
+  "packageName": "@fluentui/react-provider",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}

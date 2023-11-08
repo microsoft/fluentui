@@ -179,6 +179,11 @@ export interface PositioningOptions {
    * If false, does not position anything
    */
   enabled?: boolean;
+
+  /**
+   * When set, the positioned element matches the chosen dimension(s) of the target element
+   */
+  matchTargetSize?: 'width';
 }
 
 /**
@@ -199,6 +204,7 @@ export interface PositioningProps
     | 'position'
     | 'strategy'
     | 'useTransform'
+    | 'matchTargetSize'
   > {
   /** An imperative handle to Popper methods. */
   positioningRef?: React.Ref<PositioningImperativeRef>;

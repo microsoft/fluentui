@@ -45,9 +45,9 @@ declare module '@storybook/addons' {
 
       /**
        * Allows to override code that will be used for "Show Code" tab.
-       * @see https://github.com/storybookjs/storybook/blob/main/addons/docs/docs/recipes.md#customizing-source-snippets
+       * @see https://github.com/storybookjs/storybook/blob/release-6-5/addons/docs/docs/recipes.md#customizing-source-snippets
        */
-      transformSource?: (snippet: string, story: StoryContextForEnhancers) => string | undefined;
+      transformSource?: (snippet: string, storyContext: StoryContextForEnhancers) => string | undefined;
 
       container?: React.ComponentType<any>;
       page?: React.ComponentType<any>;
@@ -57,25 +57,6 @@ declare module '@storybook/addons' {
        */
       inlineStories?: boolean;
     };
-    /**
-     * @see https://github.com/microsoft/fluentui-storybook-addons
-     */
-    exportToCodeSandbox?: AddonExportToCodesandboxParameters;
-  }
-
-  interface AddonExportToCodesandboxParameters {
-    /**
-     * Dependencies that should be included with every story
-     */
-    requiredDependencies?: Record<string, string>;
-    /**
-     * Dependencies that should be included if the story code contains it
-     */
-    optionalDependencies?: Record<string, string>;
-    /**
-     * Content of index.tsx in CodeSandbox
-     */
-    indexTsx?: string;
   }
 
   interface ControlsParameters {

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { TextProps, TextState } from './Text.types';
 
 /**
@@ -13,7 +13,6 @@ import type { TextProps, TextState } from './Text.types';
  */
 export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>): TextState => {
   const { wrap, truncate, block, italic, underline, strikethrough, size, font, weight, align } = props;
-  const as = props.as ?? 'span';
 
   const state: TextState = {
     align: align ?? 'start',
@@ -30,10 +29,12 @@ export const useText_unstable = (props: TextProps, ref: React.Ref<HTMLElement>):
     components: { root: 'span' },
 
     root: slot.always(
-      getNativeElementProps(as, {
-        ref,
+      getIntrinsicElementProps('span', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLHeadingElement & HTMLPreElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLHeadingElement & HTMLPreElement>,
         ...props,
-        as,
       }),
       { elementType: 'span' },
     ),

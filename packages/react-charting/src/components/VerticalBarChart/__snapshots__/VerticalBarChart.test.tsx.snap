@@ -21,6 +21,9 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -29,7 +32,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -114,7 +117,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
-            id="_VBC_bar_15"
+            id="_VBC_bar_16"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -153,7 +156,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#002050"
             height={255}
-            id="_VBC_bar_16"
+            id="_VBC_bar_17"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -192,7 +195,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             data-is-focusable={true}
             fill="#00188f"
             height={153}
-            id="_VBC_bar_17"
+            id="_VBC_bar_18"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -250,7 +253,7 @@ exports[`VerticalBarChart - mouse events Should render callout correctly on mous
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -739,6 +742,9 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -747,7 +753,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -832,7 +838,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#0078d4"
             height={51}
-            id="_VBC_bar_9"
+            id="_VBC_bar_10"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -871,7 +877,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#002050"
             height={255}
-            id="_VBC_bar_10"
+            id="_VBC_bar_11"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -910,7 +916,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             data-is-focusable={true}
             fill="#00188f"
             height={153}
-            id="_VBC_bar_11"
+            id="_VBC_bar_12"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseLeave={[Function]}
@@ -968,7 +974,7 @@ exports[`VerticalBarChart - mouse events Should render customized callout on mou
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -1371,10 +1377,13 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_44"
+  id="chart_51"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_52"
+  />
   <div
     className=
         ms-FocusZone
@@ -1384,7 +1393,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone45"
+    data-focuszone-id="FocusZone53"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1424,7 +1433,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_44"
+        id="xAxisGElementchart_51"
         transform="translate(0, -35)"
       />
       <g
@@ -1452,7 +1461,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_44"
+        id="yAxisGElementchart_51"
         transform="translate(40, 0)"
       />
       <g>
@@ -1508,7 +1517,7 @@ exports[`VerticalBarChart snapShot testing Should not render bar labels 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone46"
+              data-focuszone-id="FocusZone54"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1826,6 +1835,9 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -1834,7 +1846,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -1958,7 +1970,7 @@ exports[`VerticalBarChart snapShot testing renders VerticalBarChart correctly 1`
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -2271,10 +2283,13 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         overflow: hidden;
         width: 100%;
       }
-  id="chart_20"
+  id="chart_23"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_24"
+  />
   <div
     className=
         ms-FocusZone
@@ -2284,7 +2299,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone21"
+    data-focuszone-id="FocusZone25"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2324,7 +2339,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             & path {
               display: none;
             }
-        id="xAxisGElementchart_20"
+        id="xAxisGElementchart_23"
         transform="translate(0, -35)"
       />
       <g
@@ -2352,7 +2367,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_20"
+        id="yAxisGElementchart_23"
         transform="translate(40, 0)"
       />
       <g>
@@ -2391,7 +2406,7 @@ exports[`VerticalBarChart snapShot testing renders enabledLegendsWrapLines corre
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone22"
+        data-focuszone-id="FocusZone26"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2701,10 +2716,13 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_9"
+  id="chart_10"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_11"
+  />
   <div
     className=
         ms-FocusZone
@@ -2714,7 +2732,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone10"
+    data-focuszone-id="FocusZone12"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2754,7 +2772,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_9"
+        id="xAxisGElementchart_10"
         transform="translate(0, -35)"
       />
       <g
@@ -2782,7 +2800,7 @@ exports[`VerticalBarChart snapShot testing renders hideLegend correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_9"
+        id="yAxisGElementchart_10"
         transform="translate(40, 0)"
       />
       <g>
@@ -2811,10 +2829,13 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         overflow: hidden;
         width: 100%;
       }
-  id="chart_14"
+  id="chart_16"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_17"
+  />
   <div
     className=
         ms-FocusZone
@@ -2824,7 +2845,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone15"
+    data-focuszone-id="FocusZone18"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2864,7 +2885,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
             & path {
               display: none;
             }
-        id="xAxisGElementchart_14"
+        id="xAxisGElementchart_16"
         transform="translate(0, -35)"
       />
       <g
@@ -2892,7 +2913,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_14"
+        id="yAxisGElementchart_16"
         transform="translate(40, 0)"
       />
       <g>
@@ -2948,7 +2969,7 @@ exports[`VerticalBarChart snapShot testing renders hideTooltip correctly 1`] = `
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone16"
+              data-focuszone-id="FocusZone19"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3261,10 +3282,13 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_26"
+  id="chart_30"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_31"
+  />
   <div
     className=
         ms-FocusZone
@@ -3274,7 +3298,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone27"
+    data-focuszone-id="FocusZone32"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3314,7 +3338,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_26"
+        id="xAxisGElementchart_30"
         transform="translate(0, -35)"
       />
       <g
@@ -3342,7 +3366,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_26"
+        id="yAxisGElementchart_30"
         transform="translate(40, 0)"
       />
       <g>
@@ -3398,7 +3422,7 @@ exports[`VerticalBarChart snapShot testing renders showXAxisLablesTooltip correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone28"
+              data-focuszone-id="FocusZone33"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3711,10 +3735,13 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_32"
+  id="chart_37"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_38"
+  />
   <div
     className=
         ms-FocusZone
@@ -3724,7 +3751,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone33"
+    data-focuszone-id="FocusZone39"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3764,7 +3791,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_32"
+        id="xAxisGElementchart_37"
         transform="translate(0, -35)"
       />
       <g
@@ -3792,7 +3819,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_32"
+        id="yAxisGElementchart_37"
         transform="translate(40, 0)"
       />
       <g>
@@ -3848,7 +3875,7 @@ exports[`VerticalBarChart snapShot testing renders wrapXAxisLables correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone34"
+              data-focuszone-id="FocusZone40"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4161,10 +4188,13 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         overflow: hidden;
         width: 100%;
       }
-  id="chart_38"
+  id="chart_44"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_45"
+  />
   <div
     className=
         ms-FocusZone
@@ -4174,7 +4204,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone39"
+    data-focuszone-id="FocusZone46"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4214,7 +4244,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
             & path {
               display: none;
             }
-        id="xAxisGElementchart_38"
+        id="xAxisGElementchart_44"
         transform="translate(0, -35)"
       />
       <g
@@ -4242,7 +4272,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_38"
+        id="yAxisGElementchart_44"
         transform="translate(40, 0)"
       />
       <g>
@@ -4298,7 +4328,7 @@ exports[`VerticalBarChart snapShot testing renders yAxisTickFormat correctly 1`]
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone40"
+              data-focuszone-id="FocusZone47"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}

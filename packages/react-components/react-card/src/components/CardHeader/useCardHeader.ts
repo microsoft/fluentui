@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useId, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useId, slot } from '@fluentui/react-utilities';
 import type { CardHeaderProps, CardHeaderState } from './CardHeader.types';
 import { useCardContext_unstable } from '../Card/CardContext';
 import { cardHeaderClassNames } from './useCardHeaderStyles.styles';
@@ -80,8 +80,11 @@ export const useCardHeader_unstable = (props: CardHeaderProps, ref: React.Ref<HT
     components: { root: 'div', image: 'div', header: 'div', description: 'div', action: 'div' },
 
     root: slot.always(
-      getNativeElementProps('div', {
-        ref,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
         ...props,
       }),
       { elementType: 'div' },

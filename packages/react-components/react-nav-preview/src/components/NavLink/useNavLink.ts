@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps } from '@fluentui/react-utilities';
 import type { NavLinkProps, NavLinkState } from './NavLink.types';
 
 /**
@@ -11,7 +11,7 @@ import type { NavLinkProps, NavLinkState } from './NavLink.types';
  * @param props - props from this instance of NavLink
  * @param ref - reference to root HTMLElement of NavLink
  */
-export const useNavLink_unstable = (props: NavLinkProps, ref: React.Ref<HTMLElement>): NavLinkState => {
+export const useNavLink_unstable = (props: NavLinkProps, ref: React.Ref<HTMLDivElement>): NavLinkState => {
   return {
     // TODO add appropriate props/defaults
     components: {
@@ -20,7 +20,7 @@ export const useNavLink_unstable = (props: NavLinkProps, ref: React.Ref<HTMLElem
     },
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
-    root: getNativeElementProps('div', {
+    root: getIntrinsicElementProps('div', {
       ref,
       ...props,
     }),

@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
@@ -11,15 +11,16 @@ export const drawerFooterClassNames: SlotClassNames<DrawerFooterSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingHorizontalXXL, tokens.spacingVerticalXXL),
+const useStyles = makeResetStyles({
+  ...shorthands.padding(tokens.spacingVerticalL, tokens.spacingHorizontalXXL, tokens.spacingVerticalXXL),
 
-    display: 'flex',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    columnGap: tokens.spacingHorizontalS,
-  },
+  width: '100%',
+  maxWidth: '100%',
+  display: 'flex',
+  justifyContent: 'flex-start',
+  alignItems: 'center',
+  columnGap: tokens.spacingHorizontalS,
+  boxSizing: 'border-box',
 });
 
 /**
@@ -28,7 +29,7 @@ const useStyles = makeStyles({
 export const useDrawerFooterStyles_unstable = (state: DrawerFooterState): DrawerFooterState => {
   const styles = useStyles();
 
-  state.root.className = mergeClasses(drawerFooterClassNames.root, styles.root, state.root.className);
+  state.root.className = mergeClasses(drawerFooterClassNames.root, styles, state.root.className);
 
   return state;
 };

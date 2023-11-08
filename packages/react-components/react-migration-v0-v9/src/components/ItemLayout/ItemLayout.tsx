@@ -7,7 +7,7 @@ import { mergeClasses } from '@fluentui/react-components';
 import {
   ComponentProps,
   ComponentState,
-  getNativeElementProps,
+  getIntrinsicElementProps,
   Slot,
   slot,
   assertSlots,
@@ -45,7 +45,7 @@ export const ItemLayout = React.forwardRef<HTMLDivElement, ItemLayoutProps>((pro
       startMedia: 'div',
       endMedia: 'div',
     },
-    root: slot.always(getNativeElementProps('div', { ...props, ref }), { elementType: 'div' }),
+    root: slot.always(getIntrinsicElementProps('div', { ...props, ref }), { elementType: 'div' }),
     contentMedia: slot.optional(props.contentMedia, { elementType: 'div' }),
     contentWrapper: slot.optional(props.contentWrapper, { renderByDefault: true, elementType: 'div' }),
     header: slot.optional(props.header, { elementType: 'div' }),

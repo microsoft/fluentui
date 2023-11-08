@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-portal-compat-context",
-  "version": "9.0.7",
+  "version": "9.0.9",
   "description": "A package that holds React context for compatibility of React Contexts",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,5 +48,12 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-amd",
+    "lib-commonjs"
+  ]
 }

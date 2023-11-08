@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MessageBarGroup renders a default state 1`] = `
+<div>
+  <div
+    class="fui-MessageBarGroup"
+  >
+    <span>
+      Default MessageBarGroup
+    </span>
+  </div>
+</div>
+`;

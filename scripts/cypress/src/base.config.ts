@@ -1,6 +1,7 @@
 import * as path from 'path';
 
 import { defineConfig } from 'cypress';
+import { TsconfigPathsPlugin } from 'tsconfig-paths-webpack-plugin';
 import type { Configuration } from 'webpack';
 
 /**
@@ -31,6 +32,14 @@ const cypressWebpackConfig = (): Configuration => {
       },
     });
   }
+
+  baseWebpackConfig.resolve ??= {};
+  baseWebpackConfig.resolve.plugins ??= [];
+  baseWebpackConfig.resolve.plugins.push(
+    new TsconfigPathsPlugin({
+      configFile: path.resolve(__dirname, '../../../tsconfig.base.json'),
+    }),
+  );
 
   return baseWebpackConfig;
 };

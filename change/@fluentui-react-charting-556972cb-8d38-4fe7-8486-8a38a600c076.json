@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Added dummy circle for magnetic hover callout for last point in a line chart",
+  "packageName": "@fluentui/react-charting",
+  "email": "shubhabrata08@gmail.com",
+  "dependentChangeType": "patch"
+}

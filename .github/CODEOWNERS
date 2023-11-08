@@ -27,6 +27,8 @@
 #### Change files (no owner)
 /change
 
+/.github/ @microsoft/fluentui-react-build
+
 #### Build folders
 /.codesandbox @microsoft/fluentui-react-build
 /.devcontainer @microsoft/fluentui-react-build
@@ -124,13 +126,13 @@ apps/vr-tests @microsoft/fluentui-react
 apps/vr-tests-react-components @microsoft/fluentui-react
 apps/ssr-tests @microsoft/fluentui-react
 apps/pr-deploy-site @microsoft/fluentui-react-build
-apps/public-docsite-v9 @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react-build
+apps/public-docsite-v9 @microsoft/cxe-red @microsoft/fluentui-react-build
 apps/theming-designer @microsoft/fluentui-react
 apps/ssr-tests-v9 @microsoft/fluentui-react-build
 apps/stress-test @microsoft/cxe-red @spmonahan @micahgodbolt
-apps/react-18-tests-v8 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
-apps/react-18-tests-v9 @microsoft/cxe-red @microsoft/cxe-coastal @micahgodbolt
-apps/recipes-react-components @microsoft/cxe-red @microsoft/cxe-coastal @microsoft/fluentui-react @sopranopillow
+apps/react-18-tests-v8 @microsoft/cxe-red @micahgodbolt
+apps/react-18-tests-v9 @microsoft/cxe-red @micahgodbolt
+apps/recipes-react-components @microsoft/cxe-red @microsoft/fluentui-react @sopranopillow
 
 #### Packages
 packages/azure-themes @Jacqueline-ms @robtaft-ms
@@ -141,7 +143,7 @@ packages/foundation-legacy @microsoft/cxe-red @khmakoto
 # packages/font-icons-mdl2
 # packages/jest-serializer-merge-styles
 
-packages/merge-styles @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/merge-styles @dzearing @microsoft/cxe-red
 packages/monaco-editor @microsoft/fluentui-v8-website
 packages/public-docsite-setup @microsoft/fluentui-v8-website
 packages/react-components/priority-overflow @microsoft/teams-prg
@@ -152,11 +154,12 @@ packages/react-components/react-conformance-griffel @microsoft/teams-prg
 packages/react-components/react-context-selector @microsoft/teams-prg
 packages/react-date-time @microsoft/cxe-red
 packages/react-docsite-components @microsoft/fluentui-v8-website
-packages/react-examples @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react-examples @microsoft/cxe-red
 packages/react-examples/src/react-charting @microsoft/charting-team
 packages/react-file-type-icons @microsoft/cxe-red @jahnp @bigbadcapers
 packages/react-hooks @microsoft/cxe-red
-packages/react-icons-mdl2 @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react-icons-mdl2 @microsoft/cxe-red
+packages/react-icons-mdl2-branded @microsoft/cxe-red
 packages/react-monaco-editor @microsoft/fluentui-v8-website
 packages/react-components/react-positioning @microsoft/teams-prg
 packages/react-components/react-overflow @microsoft/teams-prg
@@ -166,10 +169,10 @@ packages/react-components/react-tabster @microsoft/teams-prg
 packages/react-components/react-theme @microsoft/teams-prg
 packages/react-components/react-utilities @microsoft/teams-prg
 packages/storybook @microsoft/cxe-prg @microsoft/teams-prg
-packages/style-utilities @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
-packages/style-utilities/src/interfaces @phkuo @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
-packages/style-utilities/src/styles @phkuo @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
-packages/theme @dzearing @microsoft/cxe-red @microsoft/cxe-coastal
+packages/style-utilities @dzearing @microsoft/cxe-red
+packages/style-utilities/src/interfaces @phkuo @dzearing @microsoft/cxe-red
+packages/style-utilities/src/styles @phkuo @dzearing @microsoft/cxe-red
+packages/theme @dzearing @microsoft/cxe-red
 packages/utilities @microsoft/cxe-red
 
 ### Fabric
@@ -181,33 +184,33 @@ common/_common.scss @microsoft/cxe-red @phkuo
 
 ## vNext packages
 packages/react-components/keyboard-keys @microsoft/teams-prg
-packages/react-components/react-accordion @microsoft/cxe-coastal
+packages/react-components/react-accordion @microsoft/cxe-red
 packages/react-components/react-avatar @microsoft/cxe-red @behowell @khmakoto @sopranopillow
 packages/react-components/react-badge @microsoft/cxe-red @behowell
 packages/react-components/react-button @microsoft/cxe-red @khmakoto
 packages/react-components/react-card @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-checkbox @microsoft/cxe-red @khmakoto
-packages/react-components/react-combobox @microsoft/cxe-coastal @smhigley
+packages/react-components/react-combobox @microsoft/cxe-red @smhigley
 packages/react-components/react-components @microsoft/fluentui-react
 packages/react-components/react-dialog @microsoft/teams-prg
-packages/react-components/react-divider @microsoft/cxe-coastal
+packages/react-components/react-divider @microsoft/cxe-red
 packages/react-components/react-field @microsoft/cxe-red @behowell
 packages/react-focus @microsoft/cxe-red @khmakoto
 packages/react-components/react-image @microsoft/cxe-prg
 packages/react-components/react-input @microsoft/cxe-red @spmonahan
 packages/react-components/react-label @microsoft/cxe-red @sopranopillow @micahgodbolt
-packages/react-components/react-link @microsoft/cxe-red @khmakoto @microsoft/cxe-coastal
+packages/react-components/react-link @microsoft/cxe-red @khmakoto
 packages/react-components/react-menu @microsoft/teams-prg
 packages/react-components/react-popover @microsoft/teams-prg
 packages/react-components/react-portal @microsoft/teams-prg
 packages/react-components/react-provider @microsoft/teams-prg
 packages/react-components/react-radio @microsoft/cxe-red @behowell @spmonahan
-packages/react-components/react-select @microsoft/cxe-coastal @smhigley
-packages/react-components/react-slider @microsoft/cxe-coastal @micahgodbolt
+packages/react-components/react-select @microsoft/cxe-red @smhigley
+packages/react-components/react-slider @microsoft/cxe-red @micahgodbolt
 packages/react-components/react-spinbutton @microsoft/cxe-red @spmonahan
 packages/react-components/react-spinner @microsoft/cxe-red @tomi-msft
 packages/react-components/react-switch @microsoft/cxe-red @behowell @khmakoto
-packages/react-components/react-tabs @microsoft/cxe-coastal @geoffcoxmsft
+packages/react-components/react-tabs @microsoft/cxe-red @geoffcoxmsft
 packages/react-components/react-text @microsoft/cxe-prg @marcosmoura
 packages/react-components/react-textarea @microsoft/cxe-red @sopranopillow
 packages/react-components/react-tooltip @microsoft/cxe-red @behowell @khmakoto
@@ -216,7 +219,7 @@ packages/react-components/react-portal-compat @microsoft/teams-prg
 packages/react-components/react-alert @microsoft/teams-prg
 packages/react-components/react-portal-compat-context @microsoft/teams-prg
 packages/react-components/react-theme-sass @microsoft/teams-prg
-packages/react-components/theme-designer @microsoft/cxe-coastal @ms-acalzaretto
+packages/react-components/theme-designer @microsoft/cxe-red @ms-acalzaretto
 packages/react-components/global-context @microsoft/teams-prg
 packages/react-components/babel-preset-global-context @microsoft/teams-prg
 packages/react-components/react-table @microsoft/teams-prg
@@ -227,73 +230,79 @@ packages/react-components/react-tree @microsoft/teams-prg
 packages/react-components/react-virtualizer @microsoft/xc-uxe @Mitch-At-Work
 packages/react-components/react-skeleton @microsoft/cxe-red
 packages/tokens @microsoft/teams-prg
-packages/react-components/react-tags-preview @microsoft/cxe-coastal @microsoft/teams-prg
+packages/react-components/react-tags @microsoft/cxe-red @microsoft/teams-prg
 packages/react-components/react-migration-v0-v9 @microsoft/teams-prg
 packages/react-components/react-datepicker-compat @microsoft/cxe-red @sopranopillow @khmakoto
-packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
+packages/react-components/react-migration-v8-v9 @microsoft/cxe-red @geoffcoxmsft
 packages/react-components/react-breadcrumb-preview @microsoft/cxe-prg
 packages/react-components/react-drawer @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-storybook-addon-codesandbox @microsoft/fluentui-react-build
+packages/react-components/react-storybook-addon-export-to-sandbox @microsoft/fluentui-react-build
 packages/react-components/babel-preset-storybook-full-source @microsoft/fluentui-react-build
 packages/react-components/react-jsx-runtime @microsoft/teams-prg
 packages/react-components/react-toast @microsoft/teams-prg
-packages/react-components/react-search-preview @microsoft/cxe-coastal
+packages/react-components/react-search-preview @microsoft/cxe-red
 packages/react-components/react-colorpicker-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-nav-preview @microsoft/cxe-red @mltejera
 packages/react-components/react-motion-preview @microsoft/cxe-prg @marcosmoura
-packages/react-components/react-message-bar-preview @microsoft/teams-prg
+packages/react-components/react-message-bar @microsoft/teams-prg
+packages/react-components/react-timepicker-compat-preview @microsoft/teams-prg
+packages/react-components/react-rating-preview @microsoft/cxe-red @tomi-msft
+packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
+packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
+packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
+packages/react-components/react-list-preview @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components
-packages/react @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/ActivityItem @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Announced @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Breadcrumb @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Button @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
+packages/react @microsoft/cxe-red
+packages/react/src/components/ActivityItem @microsoft/cxe-red @khmakoto
+packages/react/src/components/Announced @microsoft/cxe-red @khmakoto
+packages/react/src/components/Breadcrumb @microsoft/cxe-red @khmakoto
+packages/react/src/components/Button @microsoft/cxe-red @khmakoto
 packages/react/src/components/Calendar @microsoft/cxe-red
 packages/react/src/components/CalendarDayGrid @microsoft/cxe-red
-packages/react/src/components/Check @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @khmakoto
-packages/react/src/components/Checkbox @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/ChoiceGroup @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Coachmark @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/ColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
+packages/react/src/components/Check @microsoft/cxe-red @ThomasMichon @khmakoto
+packages/react/src/components/Checkbox @microsoft/cxe-red @khmakoto
+packages/react/src/components/ChoiceGroup @microsoft/cxe-red
+packages/react/src/components/Coachmark @microsoft/cxe-red
+packages/react/src/components/ColorPicker @microsoft/cxe-red
 packages/react/src/components/DatePicker @microsoft/cxe-red
-packages/react/src/components/DetailsList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
-packages/react/src/components/DocumentCard @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Fabric @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
-packages/react/src/components/Facepile @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/FolderCover @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon @bigbadcapers
-packages/react/src/components/FocusTrapZone @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/GroupedList @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan @ThomasMichon
-packages/react/src/components/HoverCard @microsoft/cxe-red @microsoft/cxe-coastal @Jahnp
-packages/react/src/components/Icon @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
-packages/react/src/components/Image @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
-packages/react/src/components/Label @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Layer @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
-packages/react/src/components/Link @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/List @microsoft/cxe-red @microsoft/cxe-coastal @spmonahan  @ThomasMichon
-packages/react/src/components/MarqueeSelection @microsoft/cxe-red @microsoft/cxe-coastal @ThomasMichon
-packages/react/src/components/MessageBar @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Nav @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Overlay @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Panel @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Persona @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/PersonaCoin @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Pivot @microsoft/cxe-red @microsoft/cxe-coastal @behowell
-packages/react/src/components/SearchBox @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Shimmer @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/SpinButton @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Stack @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/SwatchColorPicker @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Text @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/TextField @microsoft/cxe-red @microsoft/cxe-coastal
-packages/react/src/components/Toggle @microsoft/cxe-red @microsoft/cxe-coastal @khmakoto
-packages/react/src/components/Tooltip @microsoft/cxe-red @microsoft/cxe-coastal @behowell
+packages/react/src/components/DetailsList @microsoft/cxe-red @spmonahan @ThomasMichon
+packages/react/src/components/DocumentCard @microsoft/cxe-red
+packages/react/src/components/Fabric @microsoft/cxe-red @dzearing
+packages/react/src/components/Facepile @microsoft/cxe-red
+packages/react/src/components/FolderCover @microsoft/cxe-red @ThomasMichon @bigbadcapers
+packages/react/src/components/FocusTrapZone @microsoft/cxe-red @khmakoto
+packages/react/src/components/GroupedList @microsoft/cxe-red @spmonahan @ThomasMichon
+packages/react/src/components/HoverCard @microsoft/cxe-red @Jahnp
+packages/react/src/components/Icon @microsoft/cxe-red @dzearing
+packages/react/src/components/Image @microsoft/cxe-red @dzearing
+packages/react/src/components/Label @microsoft/cxe-red @khmakoto
+packages/react/src/components/Layer @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/Link @microsoft/cxe-red @khmakoto
+packages/react/src/components/List @microsoft/cxe-red @spmonahan  @ThomasMichon
+packages/react/src/components/MarqueeSelection @microsoft/cxe-red @ThomasMichon
+packages/react/src/components/MessageBar @microsoft/cxe-red
+packages/react/src/components/Nav @microsoft/cxe-red
+packages/react/src/components/Overlay @microsoft/cxe-red @khmakoto
+packages/react/src/components/Panel @microsoft/cxe-red @khmakoto
+packages/react/src/components/Persona @microsoft/cxe-red
+packages/react/src/components/PersonaCoin @microsoft/cxe-red
+packages/react/src/components/Pivot @microsoft/cxe-red @behowell
+packages/react/src/components/SearchBox @microsoft/cxe-red
+packages/react/src/components/Shimmer @microsoft/cxe-red
+packages/react/src/components/SpinButton @microsoft/cxe-red
+packages/react/src/components/Stack @microsoft/cxe-red @khmakoto
+packages/react/src/components/SwatchColorPicker @microsoft/cxe-red
+packages/react/src/components/Text @microsoft/cxe-red @khmakoto
+packages/react/src/components/TextField @microsoft/cxe-red
+packages/react/src/components/Toggle @microsoft/cxe-red @khmakoto
+packages/react/src/components/Tooltip @microsoft/cxe-red @behowell
 packages/react/src/components/WeeklyDayPicker @microsoft/cxe-red
 
 ## Theming and styling
-packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @microsoft/cxe-coastal @dzearing
-packages/fluent2-theme @microsoft/cxe-red @microsoft/cxe-coastal @geoffcoxmsft
+packages/react/src/utilities/ThemeProvider @microsoft/cxe-red @dzearing
+packages/fluent2-theme @microsoft/cxe-red @geoffcoxmsft
 ## Experiments
 packages/react-experiments/src/components/Signals @ThomasMichon
 packages/react-experiments/src/components/Tile @ThomasMichon

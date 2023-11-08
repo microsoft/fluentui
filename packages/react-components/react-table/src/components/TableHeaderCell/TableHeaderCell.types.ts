@@ -22,6 +22,11 @@ export type TableHeaderCellSlots = {
  */
 export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>> & {
   /**
+   * Whether the column is sortable
+   * @default false
+   */
+  sortable?: boolean;
+  /**
    * @default undefined
    */
   sortDirection?: SortDirection;
@@ -31,4 +36,5 @@ export type TableHeaderCellProps = ComponentProps<Partial<TableHeaderCellSlots>>
  * State used in rendering TableHeaderCell
  */
 export type TableHeaderCellState = ComponentState<TableHeaderCellSlots> &
-  Pick<TableContextValue, 'noNativeElements' | 'sortable'>;
+  Pick<TableContextValue, 'noNativeElements'> &
+  Pick<TableHeaderCellProps, 'sortable'>;

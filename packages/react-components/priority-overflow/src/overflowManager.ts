@@ -1,4 +1,5 @@
 import { DATA_OVERFLOWING, DATA_OVERFLOW_GROUP } from './consts';
+import { observeResize } from './createResizeObserver';
 import { debounce } from './debounce';
 import { createPriorityQueue, PriorityQueue } from './priorityQueue';
 import type {
@@ -35,13 +36,7 @@ export function createOverflowManager(): OverflowManager {
 
   const overflowItems: Record<string, OverflowItemEntry> = {};
   const overflowDividers: Record<string, OverflowDividerEntry> = {};
-  const resizeObserver = new ResizeObserver(entries => {
-    if (!entries[0] || !container) {
-      return;
-    }
-
-    update();
-  });
+  let disposeResizeObserver: () => void = () => null;
 
   const getNextItem = (queueToDequeue: PriorityQueue<string>, queueToEnqueue: PriorityQueue<string>) => {
     const nextItem = queueToDequeue.dequeue();
@@ -247,13 +242,19 @@ export function createOverflowManager(): OverflowManager {
     Object.values(overflowItems).forEach(item => visibleItemQueue.enqueue(item.id));
 
     container = observedContainer;
-    resizeObserver.observe(container);
+    disposeResizeObserver = observeResize(container, entries => {
+      if (!entries[0] || !container) {
+        return;
+      }
+
+      update();
+    });
   };
 
   const disconnect: OverflowManager['disconnect'] = () => {
     observing = false;
     sizeCache.clear();
-    resizeObserver.disconnect();
+    disposeResizeObserver();
   };
 
   const addItem: OverflowManager['addItem'] = item => {

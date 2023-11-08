@@ -61,7 +61,6 @@ module.exports = (plop: NodePlopAPI) => {
         choices: [
           '@microsoft/fluentui-react-build',
           '@microsoft/teams-prg',
-          '@microsoft/cxe-coastal',
           '@microsoft/cxe-red',
           '@microsoft/cxe-prg',
         ],
