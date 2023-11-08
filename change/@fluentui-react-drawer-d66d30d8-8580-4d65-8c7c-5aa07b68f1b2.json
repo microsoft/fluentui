@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries",
-  "packageName": "@fluentui/react-drawer",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}
