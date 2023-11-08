@@ -1427,6 +1427,7 @@ export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/r
 export {
   Drawer,
   renderDrawer_unstable,
+  useDrawerStyles_unstable,
   useDrawer_unstable,
   OverlayDrawer,
   overlayDrawerClassNames,

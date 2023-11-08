@@ -212,6 +212,9 @@ export const useDrawerHeaderTitle_unstable: (props: DrawerHeaderTitleProps, ref:
 export const useDrawerHeaderTitleStyles_unstable: (state: DrawerHeaderTitleState) => DrawerHeaderTitleState;
 
 // @public
+export const useDrawerStyles_unstable: (state: DrawerState) => DrawerState;
+
+// @public
 export const useInlineDrawer_unstable: (props: InlineDrawerProps, ref: React_2.Ref<HTMLDivElement>) => InlineDrawerState;
 
 // @public
