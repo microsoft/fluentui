@@ -317,6 +317,7 @@ exports[`Line chart rendering Should render the Line chart with date x-axis data
               tabindex="-1"
             />
             <circle
+              aria-label="08/25/2023. First, 50."
               cx="-20"
               cy="17.884615384615383"
               focusable="false"
@@ -633,6 +634,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
@@ -687,6 +689,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
+              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
@@ -741,6 +744,7 @@ exports[`Line chart rendering Should render the Line chart with numeric x-axis d
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
@@ -1225,6 +1229,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
@@ -1279,6 +1284,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
+              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
@@ -1333,6 +1339,7 @@ exports[`Line chart rendering Should render the Line chart with points in multip
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
@@ -1827,10 +1834,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle241_2_11D"
+              id="circle227_2_11D"
               opacity="0"
               r="8"
               role="none"
@@ -1881,10 +1889,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
+              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
-              id="circle241_1_11D"
+              id="circle227_1_11D"
               opacity="0"
               r="8"
               role="none"
@@ -1935,10 +1944,11 @@ exports[`Screen resolution Should remain unchanged on zoom in 1`] = `
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle241_0_11D"
+              id="circle227_0_11D"
               opacity="0"
               r="8"
               role="none"
@@ -2423,10 +2433,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData3, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle254_2_11D"
+              id="circle240_2_11D"
               opacity="0"
               r="8"
               role="none"
@@ -2477,10 +2488,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
+              aria-label="50. metaData2, 90."
               cx="4"
               cy="18.804347826086957"
               focusable="false"
-              id="circle254_1_11D"
+              id="circle240_1_11D"
               opacity="0"
               r="8"
               role="none"
@@ -2531,10 +2543,11 @@ exports[`Screen resolution Should remain unchanged on zoom out 1`] = `
               tabindex="-1"
             />
             <circle
+              aria-label="40. metaData1, 80."
               cx="16"
               cy="12.826086956521738"
               focusable="false"
-              id="circle254_0_11D"
+              id="circle240_0_11D"
               opacity="0"
               r="8"
               role="none"
@@ -3032,10 +3045,11 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
+                aria-label="40. metaData3, 80."
                 cx="16"
                 cy="12.826086956521738"
                 focusable="false"
-                id="circle270_2_11D"
+                id="circle256_2_11D"
                 opacity="0"
                 r="8"
                 role="none"
@@ -3086,10 +3100,11 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
+                aria-label="50. metaData2, 90."
                 cx="4"
                 cy="18.804347826086957"
                 focusable="false"
-                id="circle270_1_11D"
+                id="circle256_1_11D"
                 opacity="0"
                 r="8"
                 role="none"
@@ -3140,10 +3155,11 @@ exports[`Should reflect theme change 1`] = `
                 tabindex="-1"
               />
               <circle
+                aria-label="40. metaData1, 80."
                 cx="16"
                 cy="12.826086956521738"
                 focusable="false"
-                id="circle270_0_11D"
+                id="circle256_0_11D"
                 opacity="0"
                 r="8"
                 role="none"

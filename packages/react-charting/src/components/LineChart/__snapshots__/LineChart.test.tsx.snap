@@ -3584,6 +3584,7 @@ exports[`LineChart snapShot testing renders wrapXAxisLables correctly 1`] = `
             strokeWidth={4}
           />
           <circle
+            aria-label="40. metaData1, 80."
             cx={120}
             cy={20}
             focusable={false}
