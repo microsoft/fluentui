@@ -1,8 +1,12 @@
 import * as React from 'react';
-import { Avatar, makeStyles } from '@fluentui/react-components';
-import { Calendar3Day20Regular } from '@fluentui/react-icons';
-
-import { InteractionTag } from '@fluentui/react-tags';
+import {
+  InteractionTag,
+  InteractionTagPrimary,
+  InteractionTagSecondary,
+  Avatar,
+  makeStyles,
+} from '@fluentui/react-components';
+import { CalendarMonthRegular } from '@fluentui/react-icons';
 
 const useContainerStyles = makeStyles({
   root: {
@@ -17,16 +21,28 @@ export const Shape = () => {
   const containerStyles = useContainerStyles();
   return (
     <div className={containerStyles.root}>
-      <InteractionTag media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>Rounded</InteractionTag>
-      <InteractionTag shape="circular" media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
-        Circular
+      <InteractionTag>
+        <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
+          Rounded
+        </InteractionTagPrimary>
+      </InteractionTag>
+      <InteractionTag shape="circular">
+        <InteractionTagPrimary media={<Avatar name="Katri Athokas" badge={{ status: 'busy' }} />}>
+          Circular
+        </InteractionTagPrimary>
       </InteractionTag>
 
-      <InteractionTag dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
-        Rounded
+      <InteractionTag>
+        <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
+          Rounded
+        </InteractionTagPrimary>
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
-      <InteractionTag shape="circular" dismissible icon={<Calendar3Day20Regular />} secondaryText="Secondary text">
-        Circular
+      <InteractionTag shape="circular">
+        <InteractionTagPrimary icon={<CalendarMonthRegular />} secondaryText="Secondary text" hasSecondaryAction>
+          Circular
+        </InteractionTagPrimary>
+        <InteractionTagSecondary aria-label="remove" />
       </InteractionTag>
     </div>
   );
@@ -36,7 +52,7 @@ Shape.storyName = 'Shape';
 Shape.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can be rounded or circular,',
+      story: 'An InteractionTag can be rounded or circular,',
     },
   },
 };

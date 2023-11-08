@@ -4,6 +4,8 @@ import {
   dismissToast as dismissToastVanilla,
   dispatchToast as dispatchToastVanilla,
   updateToast as updateToastVanilla,
+  pauseToast as pauseToastVanilla,
+  playToast as playToastVanilla,
 } from './vanilla';
 import { useToastController } from './useToastController';
 
@@ -17,17 +19,21 @@ describe('useToastController', () => {
   it('should set toaster id for all actions if passed as an argument', () => {
     const toasterId = 'test';
     const { result } = renderHook(() => useToastController(toasterId));
-    const { dismissAllToasts, dismissToast, dispatchToast, updateToast } = result.current;
+    const { dismissAllToasts, dismissToast, dispatchToast, updateToast, playToast, pauseToast } = result.current;
 
     dismissAllToasts();
     dismissToast('toast');
     dispatchToast('toast');
     updateToast({ toastId: 'toast' });
+    playToast('toast');
+    pauseToast('toast');
 
     expect(dismissAllToastsVanilla).toHaveBeenCalledTimes(1);
     expect(dismissToastVanilla).toHaveBeenCalledTimes(1);
     expect(dispatchToastVanilla).toHaveBeenCalledTimes(1);
     expect(updateToastVanilla).toHaveBeenCalledTimes(1);
+    expect(pauseToastVanilla).toHaveBeenCalledTimes(1);
+    expect(playToastVanilla).toHaveBeenCalledTimes(1);
 
     expect(dismissAllToastsVanilla).toHaveBeenCalledWith(toasterId, document);
     expect(dismissToastVanilla).toHaveBeenCalledWith(expect.anything(), toasterId, document);
@@ -37,6 +43,8 @@ describe('useToastController', () => {
       document,
     );
     expect(updateToastVanilla).toHaveBeenCalledWith(expect.objectContaining({ toasterId }), document);
+    expect(pauseToastVanilla).toHaveBeenCalledWith(expect.anything(), toasterId, document);
+    expect(playToastVanilla).toHaveBeenCalledWith(expect.anything(), toasterId, document);
   });
 
   describe('dispatchToast', () => {

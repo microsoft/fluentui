@@ -29,6 +29,7 @@ __tests__
 .git*
 .prettierignore
 .swcrc
+project.json
 
 # exclude gitignore patterns explicitly
 !lib

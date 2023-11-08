@@ -3,10 +3,11 @@
 bundle-size/
 config/
 coverage/
-e2e/
+docs/
 etc/
 node_modules/
 src/
+stories/
 dist/types/
 temp/
 __fixtures__
@@ -16,7 +17,7 @@ __tests__
 *.api.json
 *.log
 *.spec.*
-*.stories.*
+*.cy.*
 *.test.*
 *.yml
 
@@ -28,6 +29,7 @@ __tests__
 .git*
 .prettierignore
 .swcrc
+project.json
 
 # exclude gitignore patterns explicitly
 !lib

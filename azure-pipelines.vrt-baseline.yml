@@ -16,82 +16,73 @@ pool: '1ES-Host-Ubuntu'
 
 jobs:
   - job: VRToolUpdateBaseline_V9
+    variables:
+      pipelineId: '311'
     workspace:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
+      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v9
           vrTestPackageName: '@fluentui/vr-tests-react-components'
           vrTestPackagePath: 'apps/vr-tests-react-components'
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentuiv9" --buildId $(Build.BuildId)
+      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'fluentuiv9' --locationPostfix 'vrscreenshotv9' --pipelineId $(pipelineId)
         displayName: 'Run Screenshotdiff update baseline'
         env:
-          API_URL: $(System.CollectionUri)
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          API_REPOSITORY: $(Build.Repository.Name)
-          API_PROJECT: $(System.TeamProject)
-          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv9
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
-          STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
-          BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
+          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_API_URL: $(VR_APP_API_URL)
 
   - job: VRToolUpdateBaseline_V8
+    variables:
+      pipelineId: '312'
     workspace:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
+      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v8
           vrTestPackageName: '@fluentui/vr-tests'
           vrTestPackagePath: 'apps/vr-tests'
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "fluentuiv8" --buildId $(Build.BuildId)
-        displayName: 'Run Screenshotdiff update baseline'
+      - bash: vr-app run-diff --screenshotsDirectory ./screenshots --buildType release --clientType "FLUENTUI" --locationPrefix 'fluentuiv8' --locationPostfix 'vrscreenshotv8' --pipelineId $(pipelineId)
+        displayName: 'Run fluentui-screenshotdiff'
         env:
-          API_URL: $(System.CollectionUri)
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          API_REPOSITORY: $(Build.Repository.Name)
-          API_PROJECT: $(System.TeamProject)
-          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv8
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
-          STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
-          BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
+          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_API_URL: $(VR_APP_API_URL)
 
   - job: VRToolUpdateBaseline_V0
+    variables:
+      pipelineId: '313'
     workspace:
       clean: all
     steps:
       - template: .devops/templates/tools.yml
-
+      - template: download-vr-cli.yml
       - template: .devops/templates/runpublishvrscreenshot.yml
         parameters:
           fluentVersion: v0
           vrTestPackageName: '@fluentui/docs'
           vrTestPackagePath: 'packages/fluentui/docs'
 
-      - bash: node node_modules/vrscreenshotdiff/lib/index.js release --clientType "FluentUI-v0" --buildId $(Build.BuildId)
-        displayName: 'Run Screenshotdiff update baseline'
+      - bash: vr-app run-diff --buildType release --screenshotsDirectory ./screenshots --clientType "FLUENTUI" --locationPrefix 'FluentUI-v0' --locationPostfix 'vrscreenshotv0' --pipelineId $(pipelineId)
+        displayName: 'Run fluentui-screenshotdiff'
         env:
-          API_URL: $(System.CollectionUri)
           API_TOKEN: $(fabric-public-pipeline-access-PAT)
-          API_REPOSITORY: $(Build.Repository.Name)
-          API_PROJECT: $(System.TeamProject)
-          SCREENSHOT_ARTIFACT_FOLDER: vrscreenshotv0
           GITHUB_API_TOKEN: $(githubRepoStatusPAT)
-          STORAGE_ACCOUNT_FLUENTUI: $(STORAGE-ACCOUNT-FLUENTUI)
-          STORAGE_KEY_FLUENTUI: $(STORAGE-KEY-BLOB-FLUENTUI)
-          BLOB_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
-          VR_APPROVAL_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
-          VR_APPROVAL_HOST: $(VR_APPROVAL_HOST)
+          STORAGE_CONNECTION_STRING: $(BLOB-CONNECTION-STRING)
+          VR_APP_CLIENT_SECRET: $(VR-APPROVAL-CLIENT-SECRET)
+          VR_APP_CLIENT_ID: $(VR_APP_CLIENT_ID)
+          VR_APP_API_URL: $(VR_APP_API_URL)

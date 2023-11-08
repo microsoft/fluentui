@@ -1,8 +1,17 @@
 # Change Log - @fluentui/web-components
 
-This log was last generated on Thu, 01 Jun 2023 07:38:37 GMT and should not be manually modified.
+This log was last generated on Thu, 20 Jul 2023 07:35:18 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.5.16](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.16)
+
+Thu, 20 Jul 2023 07:35:18 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/web-components_v2.5.15..@fluentui/web-components_v2.5.16)
+
+### Patches
+
+- fix(web-components): ensures that text area size responds to rows and cols attributes ([PR #28135](https://github.com/microsoft/fluentui/pull/28135) by vnbaaij@outlook.com)
 
 ## [2.5.15](https://github.com/microsoft/fluentui/tree/@fluentui/web-components_v2.5.15)
 

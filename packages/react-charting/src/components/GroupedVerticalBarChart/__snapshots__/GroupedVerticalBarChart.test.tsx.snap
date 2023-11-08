@@ -16,10 +16,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -29,13 +32,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -69,8 +72,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -97,13 +100,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -114,7 +117,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
             key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -125,7 +128,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -136,7 +139,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
             key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -146,8 +149,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -158,7 +161,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
             key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -168,13 +171,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -185,7 +188,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
             key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -196,7 +199,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -207,7 +210,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
             key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -217,8 +220,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -229,7 +232,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
             key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -239,8 +242,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -277,12 +280,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -292,7 +289,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -589,130 +586,107 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-      data-is-focusable={false}
-      hidden={false}
-      id="toolTipcallout0"
-      style={
-        Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        role="text"
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
+        data-is-focusable={false}
+        hidden={false}
+        id="toolTipcallout0"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "left": 8,
+            "maxHeight": 745,
+            "top": 15,
           }
         }
+        tabIndex={-1}
       >
         <div
           className=
-
+              ms-Callout-main
               {
-                background-blend-mode: normal, luminosity;
                 background-color: #ffffff;
-                display: grid;
-                overflow: hidden;
-                padding-bottom: 10px;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 11px;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
               }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          role="text"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
         >
           <div
             className=
 
                 {
-                  display: flex;
-                  flex-direction: row;
-                  justify-content: space-between;
+                  background-blend-mode: normal, luminosity;
+                  background-color: #ffffff;
+                  display: grid;
+                  overflow: hidden;
+                  padding-bottom: 10px;
+                  padding-left: 16px;
+                  padding-right: 16px;
+                  padding-top: 11px;
                 }
           >
             <div
               className=
 
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #605e5c;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                    line-height: 16px;
-                    opacity: 0.8;
-                  }
-            >
-               
-            </div>
-          </div>
-          <div
-            className=""
-          >
-            <div
-              className=
-
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    border-left: 4px solid #0078d4;
-                    color: #323130;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 28px;
-                    font-weight: 600;
-                    line-height: 22px;
-                    margin-top: unset;
-                    padding-left: 8px;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
                   }
             >
               <div
@@ -721,34 +695,71 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #323130;
+                      color: #605e5c;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
                       line-height: 16px;
+                      opacity: 0.8;
                     }
-              />
+              >
+                 
+              </div>
+            </div>
+            <div
+              className=""
+            >
               <div
                 className=
 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #0078d4;
+                      border-left: 4px solid #0078d4;
+                      color: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 28px;
-                      font-weight: bold;
-                      line-height: 36px;
+                      font-weight: 600;
+                      line-height: 22px;
+                      margin-top: unset;
+                      padding-left: 8px;
                     }
               >
-                66
+                <div
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #323130;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 12px;
+                        font-weight: 400;
+                        line-height: 16px;
+                      }
+                />
+                <div
+                  className=
+
+                      {
+                        -moz-osx-font-smoothing: grayscale;
+                        -webkit-font-smoothing: antialiased;
+                        color: #0078d4;
+                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                        font-size: 28px;
+                        font-weight: bold;
+                        line-height: 36px;
+                      }
+                >
+                  66
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -768,10 +779,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -781,13 +795,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -821,8 +835,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -849,13 +863,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -866,7 +880,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
             key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -877,7 +891,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -888,7 +902,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
             key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -898,8 +912,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -910,7 +924,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
             key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -920,13 +934,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -937,7 +951,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
             key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -948,7 +962,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -959,7 +973,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
             key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -969,8 +983,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -981,7 +995,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
             key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
@@ -991,8 +1005,8 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -1029,12 +1043,6 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         >
           <div
             data-automation-id="visibleContent"
-            style={
-              Object {
-                "position": "fixed",
-                "visibility": "hidden",
-              }
-            }
           >
             <div
               aria-label="Legends"
@@ -1044,7 +1052,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1341,86 +1349,100 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       </div>
     </div>
   </div>
-  <div
-    className=
-        ms-Callout-container
-        {
-          position: relative;
-        }
+  <Suspense
+    fallback={
+      <div>
+        Loading...
+      </div>
+    }
   >
     <div
       className=
-          ms-Callout
+          ms-Callout-container
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            border-radius: 2px;
-            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
-            box-sizing: border-box;
-            display: flex;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            outline: transparent;
-            position: absolute;
-            z-index: 1000000;
+            position: relative;
           }
-          @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
-            border-color: WindowText;
-            border-style: solid;
-            border-width: 1px;
-          }
-          &::-moz-focus-inner {
-            border: 0px;
-          }
-      data-is-focusable={false}
-      hidden={false}
-      id="toolTipcallout0"
-      style={
-        Object {
-          "filter": "opacity(0)",
-          "opacity": 0,
-          "pointerEvents": "none",
-        }
-      }
-      tabIndex={-1}
     >
       <div
         className=
-            ms-Callout-main
+            ms-Callout
             {
-              background-color: #ffffff;
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-radius: 2px;
-              overflow-x: hidden;
-              overflow-y: auto;
-              position: relative;
-              width: 100%;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+              box-sizing: border-box;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              outline: transparent;
+              position: absolute;
+              z-index: 1000000;
             }
-        onKeyDown={[Function]}
-        onMouseDown={[Function]}
-        onMouseUp={[Function]}
-        role="text"
+            @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
+              border-color: WindowText;
+              border-style: solid;
+              border-width: 1px;
+            }
+            &::-moz-focus-inner {
+              border: 0px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(0,-10px,0);pointer-events:none;}to{transform:translate3d(0,0,0);pointer-events:auto;};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
+        data-is-focusable={false}
+        hidden={false}
+        id="toolTipcallout0"
         style={
           Object {
-            "maxHeight": "100%",
-            "outline": "none",
-            "overflowY": undefined,
+            "left": 8,
+            "maxHeight": 745,
+            "top": 15,
           }
         }
+        tabIndex={-1}
       >
-        <div>
-          <pre>
-            {
+        <div
+          className=
+              ms-Callout-main
+              {
+                background-color: #ffffff;
+                border-radius: 2px;
+                overflow-x: hidden;
+                overflow-y: auto;
+                position: relative;
+                width: 100%;
+              }
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          role="text"
+          style={
+            Object {
+              "maxHeight": "100%",
+              "outline": "none",
+              "overflowY": undefined,
+            }
+          }
+        >
+          <div>
+            <pre>
+              {
   "key": "series1",
   "data": 66,
   "color": "#0078d4",
   "legend": "MetaData1"
 }
-          </pre>
+            </pre>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </Suspense>
 </div>
 `;
 
@@ -1440,10 +1462,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         overflow: hidden;
         width: 100%;
       }
-  id="chart_2"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -1453,13 +1478,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone3"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -1493,8 +1518,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             & path {
               display: none;
             }
-        id="xAxisGElementchart_2"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -1521,12 +1546,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_2"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
-          transform="translate(19, 0)"
+          key="0"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -1537,7 +1563,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
+            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1547,7 +1574,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -1558,7 +1585,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
+            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1567,8 +1595,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -1579,7 +1607,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
+            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1588,12 +1617,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
-          transform="translate(-28, 0)"
+          key="1"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -1604,7 +1634,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
+            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1614,7 +1645,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -1625,7 +1656,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
+            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1634,8 +1666,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -1646,7 +1678,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
+            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -1655,8 +1688,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -1708,7 +1741,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone4"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -1732,6 +1765,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -1822,6 +1856,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="1"
                   role="none"
                 >
                   <button
@@ -1912,6 +1947,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="2"
                   role="none"
                 >
                   <button
@@ -2002,9 +2038,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2024,10 +2057,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         overflow: hidden;
         width: 100%;
       }
-  id="chart_16"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -2037,13 +2073,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone17"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -2077,8 +2113,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             & path {
               display: none;
             }
-        id="xAxisGElementchart_16"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2105,12 +2141,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_16"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
-          transform="translate(19, 0)"
+          key="0"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2121,7 +2158,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
+            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2131,7 +2169,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -2142,7 +2180,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
+            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2151,8 +2190,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -2163,7 +2202,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
+            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2172,12 +2212,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
-          transform="translate(-28, 0)"
+          key="1"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2188,7 +2229,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
+            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2198,7 +2240,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -2209,7 +2251,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
+            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2218,8 +2261,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -2230,7 +2273,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
+            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2239,8 +2283,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -2275,7 +2319,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone18"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -2299,6 +2343,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   display: inherit;
                   flex-shrink: 0;
                 }
+            key="0"
             role="none"
           >
             <button
@@ -2389,6 +2434,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   display: inherit;
                   flex-shrink: 0;
                 }
+            key="1"
             role="none"
           >
             <button
@@ -2479,6 +2525,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
                   display: inherit;
                   flex-shrink: 0;
                 }
+            key="2"
             role="none"
           >
             <button
@@ -2566,9 +2613,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2588,10 +2632,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         overflow: hidden;
         width: 100%;
       }
-  id="chart_7"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -2601,13 +2648,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone8"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={350}
       style={
         Object {
           "display": "block",
@@ -2641,8 +2688,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             & path {
               display: none;
             }
-        id="xAxisGElementchart_7"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 315)"
       />
       <g
         className=
@@ -2669,12 +2716,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_7"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
-          transform="translate(19, 0)"
+          key="0"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2685,7 +2733,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={211.6304347826087}
+            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2695,7 +2744,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={103.36956521739131}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -2706,7 +2755,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={41.68478260869565}
+            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2715,8 +2765,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={273.3152173913044}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -2727,7 +2777,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={109.02173913043478}
+            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2736,12 +2787,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={205.97826086956522}
           />
         </g>
         <g
-          transform="translate(-28, 0)"
+          key="1"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2752,7 +2804,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={44.89130434782609}
+            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2762,7 +2815,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={270.1086956521739}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -2773,7 +2826,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={288.5869565217391}
+            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2782,8 +2836,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={26.413043478260875}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -2794,7 +2848,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={105.81521739130434}
+            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2803,16 +2858,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={209.18478260869566}
           />
         </g>
       </g>
     </svg>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -2832,10 +2884,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         overflow: hidden;
         width: 100%;
       }
-  id="chart_11"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -2845,13 +2900,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone12"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -2885,8 +2940,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             & path {
               display: none;
             }
-        id="xAxisGElementchart_11"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -2913,12 +2968,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_11"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
-          transform="translate(19, 0)"
+          key="0"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2929,7 +2985,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 }
             data-is-focusable={false}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
+            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2939,7 +2996,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -2950,7 +3007,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 }
             data-is-focusable={false}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
+            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2959,8 +3017,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -2971,7 +3029,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 }
             data-is-focusable={false}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
+            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -2980,12 +3039,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
-          transform="translate(-28, 0)"
+          key="1"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2996,7 +3056,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 }
             data-is-focusable={false}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
+            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3006,7 +3067,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -3017,7 +3078,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 }
             data-is-focusable={false}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
+            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3026,8 +3088,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -3038,7 +3100,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                 }
             data-is-focusable={false}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
+            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3047,8 +3110,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -3100,7 +3163,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone13"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3124,6 +3187,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -3214,6 +3278,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="1"
                   role="none"
                 >
                   <button
@@ -3304,6 +3369,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="2"
                   role="none"
                 >
                   <button
@@ -3394,9 +3460,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -3416,10 +3479,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         overflow: hidden;
         width: 100%;
       }
-  id="chart_21"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -3429,13 +3495,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone22"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -3469,8 +3535,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             & path {
               display: none;
             }
-        id="xAxisGElementchart_21"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -3497,12 +3563,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_21"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
-          transform="translate(19, 0)"
+          key="0"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3513,7 +3580,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
+            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3523,7 +3591,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -3534,7 +3602,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
+            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3543,8 +3612,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -3555,7 +3624,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
+            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3564,12 +3634,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
-          transform="translate(-28, 0)"
+          key="1"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3580,7 +3651,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
+            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3590,7 +3662,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -3601,7 +3673,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
+            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3610,8 +3683,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -3622,7 +3695,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
+            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -3631,8 +3705,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -3684,7 +3758,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone23"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3708,6 +3782,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -3798,6 +3873,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="1"
                   role="none"
                 >
                   <button
@@ -3888,6 +3964,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="2"
                   role="none"
                 >
                   <button
@@ -3978,9 +4055,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4000,10 +4074,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_26"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -4013,13 +4090,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone27"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -4053,8 +4130,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_26"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -4081,12 +4158,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_26"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
-          transform="translate(19, 0)"
+          key="0"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4097,7 +4175,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
+            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4107,7 +4186,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -4118,7 +4197,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
+            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4127,8 +4207,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -4139,7 +4219,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
+            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4148,12 +4229,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
-          transform="translate(-28, 0)"
+          key="1"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4164,7 +4246,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
+            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4174,7 +4257,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -4185,7 +4268,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
+            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4194,8 +4278,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -4206,7 +4290,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
+            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4215,8 +4300,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -4268,7 +4353,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone28"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4292,6 +4377,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -4382,6 +4468,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="1"
                   role="none"
                 >
                   <button
@@ -4472,6 +4559,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="2"
                   role="none"
                 >
                   <button
@@ -4562,9 +4650,6 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;
 
@@ -4584,10 +4669,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         overflow: hidden;
         width: 100%;
       }
-  id="chart_31"
+  id="chart_3"
   onMouseLeave={[Function]}
   role="presentation"
 >
+  <div
+    id="defaultTabbableElement_4"
+  />
   <div
     className=
         ms-FocusZone
@@ -4597,13 +4685,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone32"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
   >
     <svg
-      height={0}
+      height={310}
       style={
         Object {
           "display": "block",
@@ -4637,8 +4725,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             & path {
               display: none;
             }
-        id="xAxisGElementchart_31"
-        transform="translate(0, -35)"
+        id="xAxisGElementchart_3"
+        transform="translate(0, 275)"
       />
       <g
         className=
@@ -4665,12 +4753,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
               opacity: 0.1;
               stroke: rgb(179, 179, 179);
             }
-        id="yAxisGElementchart_31"
+        id="yAxisGElementchart_3"
         transform="translate(40, 0)"
       />
       <g>
         <g
-          transform="translate(19, 0)"
+          key="0"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4681,7 +4770,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={182.93478260869566}
+            key="0-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4691,7 +4781,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             role="img"
             width={-9}
             x={0}
-            y={4.45652173913043}
+            y={92.06521739130434}
           />
           <rect
             aria-label="2000. MetaData2, 13."
@@ -4702,7 +4792,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={36.03260869565217}
+            key="0-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4711,8 +4802,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={0}
+            x={-10}
+            y={238.9673913043478}
           />
           <rect
             aria-label="2000. MetaData3, 34."
@@ -4723,7 +4814,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={94.23913043478261}
+            key="0-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4732,12 +4824,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={180.76086956521738}
           />
         </g>
         <g
-          transform="translate(-28, 0)"
+          key="1"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4748,7 +4841,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 }
             data-is-focusable={true}
             fill="#0078d4"
-            height={0}
+            height={38.80434782608696}
+            key="1-0"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4758,7 +4852,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             role="img"
             width={-9}
             x={0}
-            y={0}
+            y={236.19565217391303}
           />
           <rect
             aria-label="2010. MetaData2, 90."
@@ -4769,7 +4863,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 }
             data-is-focusable={true}
             fill="#00188f"
-            height={0}
+            height={249.45652173913044}
+            key="1-1"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4778,8 +4873,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
-            y={18.80434782608696}
+            x={-10}
+            y={25.543478260869563}
           />
           <rect
             aria-label="2010. MetaData3, 33."
@@ -4790,7 +4885,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                 }
             data-is-focusable={true}
             fill="#00bcf2"
-            height={0}
+            height={91.46739130434783}
+            key="1-2"
             onBlur={[Function]}
             onFocus={[Function]}
             onMouseMove={[Function]}
@@ -4799,8 +4895,8 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
-            y={0}
+            x={-20}
+            y={183.5326086956522}
           />
         </g>
       </g>
@@ -4852,7 +4948,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone33"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4876,6 +4972,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="0"
                   role="none"
                 >
                   <button
@@ -4966,6 +5063,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="1"
                   role="none"
                 >
                   <button
@@ -5056,6 +5154,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                         display: inherit;
                         flex-shrink: 0;
                       }
+                  key="2"
                   role="none"
                 >
                   <button
@@ -5146,8 +5245,5 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
       </div>
     </div>
   </div>
-  <span
-    className="ms-layer"
-  />
 </div>
 `;

@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { createPriorityQueue } from '@fluentui/react-utilities';
-import { Toast, ToasterOptions, ToastId, ToastOptions, UpdateToastEventDetail } from '../types';
+import { Toast, ToasterOptions, ToastId, ToastImperativeRef, ToastOptions, UpdateToastEventDetail } from '../types';
 
 function assignDefined<T extends object>(a: Partial<T>, b: Partial<T>) {
   // This cast is required, as Object.entries will return string as key which is not indexable
@@ -22,6 +23,9 @@ const defaulToastOptions: Pick<
   timeout: 3000,
 };
 
+// Multiple toasts can be dispatched in a single tick, use counter to prevent collisions
+let counter = 0;
+
 /**
  * Toast are managed outside of the react lifecycle because they can be
  * dispatched imperatively. Therefore the state of toast visibility can't
@@ -40,7 +44,7 @@ export function createToaster(options: Partial<ToasterOptions>) {
     }
 
     if (a.priority === b.priority) {
-      return a.dispatchedAt - b.dispatchedAt;
+      return a.order - b.order;
     }
 
     return a.priority - b.priority;
@@ -107,7 +111,6 @@ export function createToaster(options: Partial<ToasterOptions>) {
         return;
       }
 
-      toast.onStatusChange?.(null, { status: 'unmounted', ...toast });
       toasts.delete(toastId);
 
       if (visibleToasts.size < limit && queue.peek()) {
@@ -117,7 +120,6 @@ export function createToaster(options: Partial<ToasterOptions>) {
         }
 
         visibleToasts.add(nextToast.toastId);
-        toast.onStatusChange?.(null, { status: 'visible', ...nextToast });
       }
 
       onUpdate();
@@ -131,8 +133,9 @@ export function createToaster(options: Partial<ToasterOptions>) {
       content,
       updateId: 0,
       toasterId,
-      dispatchedAt: Date.now(),
+      order: counter++,
       data: {},
+      imperativeRef: React.createRef<ToastImperativeRef>(),
     };
 
     assignDefined(toast, options);
@@ -144,7 +147,6 @@ export function createToaster(options: Partial<ToasterOptions>) {
       queue.enqueue(toastId);
     } else {
       visibleToasts.add(toastId);
-      toast.onStatusChange?.(null, { status: 'visible', ...toast });
     }
   };
 

@@ -1,8 +1,45 @@
 # Change Log - @fluentui/scheme-utilities
 
-This log was last generated on Mon, 19 Jun 2023 07:36:39 GMT and should not be manually modified.
+This log was last generated on Sat, 28 Oct 2023 00:29:16 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.3.38](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.38)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.37..@fluentui/scheme-utilities_v8.3.38)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.37 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.3.37](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.37)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.36..@fluentui/scheme-utilities_v8.3.37)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.36 ([PR #29313](https://github.com/microsoft/fluentui/pull/29313) by beachball)
+
+## [8.3.36](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.36)
+
+Fri, 18 Aug 2023 07:35:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.35..@fluentui/scheme-utilities_v8.3.36)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.35 ([PR #28862](https://github.com/microsoft/fluentui/pull/28862) by beachball)
+
+## [8.3.35](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.35)
+
+Wed, 28 Jun 2023 07:37:29 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/scheme-utilities_v8.3.34..@fluentui/scheme-utilities_v8.3.35)
+
+### Patches
+
+- Bump @fluentui/theme to v2.6.34 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
 
 ## [8.3.34](https://github.com/microsoft/fluentui/tree/@fluentui/scheme-utilities_v8.3.34)
 

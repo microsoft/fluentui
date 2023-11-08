@@ -293,6 +293,10 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
   private _async: Async;
   private _events: EventGroup;
 
+  // props to prevent dismiss on scroll/resize immediately after opening
+  private _overrideScrollDismiss = false;
+  private _overrideScrollDimissTimeout: number;
+
   constructor(props: IComboBoxInternalProps) {
     super(props);
 
@@ -403,8 +407,15 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
 
     this._notifyPendingValueChanged(prevState);
 
-    if (isOpen && !prevState.isOpen && onMenuOpen) {
-      onMenuOpen();
+    if (isOpen && !prevState.isOpen) {
+      // handle dismiss buffer after suggestions are opened
+      this._overrideScrollDismiss = true;
+      this._async.clearTimeout(this._overrideScrollDimissTimeout);
+      this._overrideScrollDimissTimeout = this._async.setTimeout(() => {
+        this._overrideScrollDismiss = false;
+      }, 100);
+
+      onMenuOpen?.();
     }
 
     if (!isOpen && prevState.isOpen && onMenuDismissed) {
@@ -834,6 +845,26 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
       ? this._processInputChangeWithFreeform(updatedValue)
       : this._processInputChangeWithoutFreeform(updatedValue);
   };
+
+  /**
+   * Do not dismiss if the window resizes or scrolls within 100ms of opening
+   * This prevents the Android issue where pickers immediately dismiss on open, because the keyboard appears
+   * @param ev - the event triggering the dismiss check
+   * @returns a boolean indicating whether the callout dismissal should be prevented
+   */
+  private _preventDismissOnScrollOrResize(ev: Event) {
+    // default to passed-in preventDismiss
+    const { calloutProps } = this.props;
+    if (calloutProps?.preventDismissOnEvent) {
+      return calloutProps.preventDismissOnEvent(ev);
+    }
+
+    if (this._overrideScrollDismiss && (ev.type === 'scroll' || ev.type === 'resize')) {
+      return true;
+    }
+
+    return false;
+  }
 
   /**
    * Process the new input's new value when the combo box allows freeform entry
@@ -1371,6 +1402,8 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
         calloutMaxWidth={dropdownMaxWidth ? dropdownMaxWidth : comboBoxMenuWidth}
         hidden={persistMenu ? !isOpen : undefined}
         shouldRestoreFocus={shouldRestoreFocus}
+        // eslint-disable-next-line react/jsx-no-bind
+        preventDismissOnEvent={(ev: Event) => this._preventDismissOnScrollOrResize(ev)}
       >
         {onRenderUpperContent(this.props, this._onRenderUpperContent)}
         <div className={this._classNames.optionsContainerWrapper} ref={this._comboBoxMenu}>
@@ -1521,7 +1554,7 @@ class ComboBoxInternal extends React.Component<IComboBoxInternalProps, IComboBox
     const { index, key } = item;
 
     if (index && index > 0) {
-      return <div role="separator" key={key} className={this._classNames.divider} />;
+      return <div role="presentation" key={key} className={this._classNames.divider} />;
     }
     return null;
   }

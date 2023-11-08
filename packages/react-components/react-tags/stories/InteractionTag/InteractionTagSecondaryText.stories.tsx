@@ -1,13 +1,17 @@
 import * as React from 'react';
-import { InteractionTag } from '@fluentui/react-tags';
+import { InteractionTag, InteractionTagPrimary } from '@fluentui/react-components';
 
-export const SecondaryText = () => <InteractionTag secondaryText="Secondary text">Primary text</InteractionTag>;
+export const SecondaryText = () => (
+  <InteractionTag>
+    <InteractionTagPrimary secondaryText="Secondary text">Primary text</InteractionTagPrimary>
+  </InteractionTag>
+);
 
 SecondaryText.storyName = 'SecondaryText';
 SecondaryText.parameters = {
   docs: {
     description: {
-      story: 'A InteractionTag can have a secondary text.',
+      story: 'An InteractionTag can have a secondary text.',
     },
   },
 };

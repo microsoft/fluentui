@@ -4,7 +4,7 @@ exports[`PopoverSurface renders a default state 1`] = `
 <div
   aria-label="test"
   class="fui-PopoverSurface"
-  data-tabster="{\\"deloser\\":{},\\"modalizer\\":{\\"id\\":\\"modal-1\\",\\"isOthersAccessible\\":true,\\"isAlwaysAccessible\\":true}}"
+  data-tabster="{\\"restorer\\":{\\"type\\":0}}"
   data-testid="component"
   role="group"
 >

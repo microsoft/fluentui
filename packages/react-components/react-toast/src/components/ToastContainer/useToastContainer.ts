@@ -1,13 +1,17 @@
 import * as React from 'react';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   useMergedRefs,
   ExtractSlotProps,
   Slot,
   useEventCallback,
-  resolveShorthand,
+  useId,
+  slot,
 } from '@fluentui/react-utilities';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { Delete, Tab } from '@fluentui/keyboard-keys';
+import { useFocusableGroup, useFocusFinders } from '@fluentui/react-tabster';
+import { ToastStatus } from '../../state';
 import type { ToastContainerProps, ToastContainerState } from './ToastContainer.types';
 import { Timer, TimerProps } from '../Timer/Timer';
 
@@ -34,7 +38,7 @@ export const useToastContainer_unstable = (
   const {
     visible,
     children,
-    close,
+    close: closeProp,
     remove,
     updateId,
     announce,
@@ -44,13 +48,71 @@ export const useToastContainer_unstable = (
     intent = 'info',
     pauseOnHover,
     pauseOnWindowBlur,
+    imperativeRef,
+    tryRestoreFocus,
     ...rest
   } = props;
+  const titleId = useId('toast-title');
+  const bodyId = useId('toast-body');
   const toastRef = React.useRef<HTMLDivElement | null>(null);
   const { targetDocument } = useFluent_unstable();
   const [running, setRunning] = React.useState(false);
+  const imperativePauseRef = React.useRef(false);
+  const focusedToastBeforeClose = React.useRef(false);
+  const focusableGroupAttribute = useFocusableGroup({
+    tabBehavior: 'limited-trap-focus',
+    // Users should only use Tab to focus into the toast
+    // Escape is already reserved to dismiss all toasts
+    ignoreDefaultKeydown: { Tab: true, Escape: true, Enter: true },
+  });
+
+  const close = useEventCallback(() => {
+    const activeElement = targetDocument?.activeElement;
+    if (activeElement && toastRef.current?.contains(activeElement)) {
+      focusedToastBeforeClose.current = true;
+    }
+
+    closeProp();
+  });
+  const onStatusChange = useEventCallback((status: ToastStatus) => props.onStatusChange?.(null, { status, ...props }));
   const pause = useEventCallback(() => setRunning(false));
-  const play = useEventCallback(() => setRunning(true));
+  const play = useEventCallback(() => {
+    if (imperativePauseRef.current) {
+      return;
+    }
+    const containsActive = !!toastRef.current?.contains(targetDocument?.activeElement ?? null);
+    if (timerTimeout < 0) {
+      setRunning(true);
+      return;
+    }
+
+    if (!containsActive) {
+      setRunning(true);
+    }
+  });
+
+  React.useImperativeHandle(imperativeRef, () => ({
+    focus: () => {
+      if (!toastRef.current) {
+        return;
+      }
+
+      toastRef.current.focus();
+    },
+
+    play: () => {
+      imperativePauseRef.current = false;
+      play();
+    },
+    pause: () => {
+      imperativePauseRef.current = true;
+      pause();
+    },
+  }));
+
+  React.useEffect(() => {
+    return () => onStatusChange('unmounted');
+  }, [onStatusChange]);
 
   React.useEffect(() => {
     if (!targetDocument) {
@@ -67,15 +129,6 @@ export const useToastContainer_unstable = (
     }
   }, [targetDocument, pause, play, pauseOnWindowBlur]);
 
-  React.useEffect(() => {
-    if (!visible) {
-      return;
-    }
-
-    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
-    announce(toastRef.current?.textContent ?? '', { politeness });
-  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
-
   // It's impossible to animate to height: auto in CSS, the actual pixel value must be known
   // Get the height of the toast before animation styles have been applied and set a CSS
   // variable with its height. The CSS variable will be used by the styles
@@ -91,11 +144,23 @@ export const useToastContainer_unstable = (
   // Users never actually use ToastContainer as a JSX but imperatively through useToastContainerController
   const userRootSlot = (data as { root?: ExtractSlotProps<Slot<'div'>> }).root;
 
-  const onAnimationEnd = useEventCallback((e: React.AnimationEvent<HTMLDivElement>) => {
-    // start toast once it's fully animated in
-    play();
-    userRootSlot?.onAnimationEnd?.(e);
-  });
+  // Using a ref callback here because addEventListener supports `once`
+  const toastAnimationRef = React.useCallback(
+    (el: HTMLDivElement | null) => {
+      if (el && toastRef.current) {
+        toastRef.current.addEventListener(
+          'animationend',
+          () => {
+            // start toast once it's fully animated in
+            play();
+            onStatusChange('visible');
+          },
+          { once: true },
+        );
+      }
+    },
+    [play, onStatusChange],
+  );
 
   const onMouseEnter = useEventCallback((e: React.MouseEvent<HTMLDivElement>) => {
     pause();
@@ -107,24 +172,72 @@ export const useToastContainer_unstable = (
     userRootSlot?.onMouseEnter?.(e);
   });
 
+  const { findFirstFocusable, findLastFocusable } = useFocusFinders();
+  const onKeyDown = useEventCallback((e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === Delete) {
+      e.preventDefault();
+      close();
+    }
+
+    if (e.key === Tab && e.currentTarget === e.target) {
+      e.preventDefault();
+      if (e.shiftKey) {
+        findLastFocusable(e.currentTarget)?.focus();
+      } else {
+        findFirstFocusable(e.currentTarget)?.focus();
+      }
+    }
+
+    userRootSlot?.onKeyDown?.(e);
+  });
+
+  React.useEffect(() => {
+    if (!visible) {
+      return;
+    }
+
+    const politeness = desiredPoliteness ?? intentPolitenessMap[intent];
+    announce(toastRef.current?.textContent ?? '', { politeness });
+  }, [announce, desiredPoliteness, toastRef, visible, updateId, intent]);
+
+  React.useEffect(() => {
+    return () => {
+      if (focusedToastBeforeClose.current) {
+        focusedToastBeforeClose.current = false;
+        tryRestoreFocus();
+      }
+    };
+  }, [tryRestoreFocus]);
+
   return {
     components: {
       timer: Timer,
       root: 'div',
     },
-    timer: resolveShorthand<TimerProps>(
+    timer: slot.always<TimerProps>(
       { key: updateId, onTimeout: close, running, timeout: timerTimeout ?? -1 },
-      { required: true },
+      { elementType: Timer },
     ),
-    root: getNativeElementProps('div', {
-      ref: useMergedRefs(ref, toastRef),
-      children,
-      ...rest,
-      ...userRootSlot,
-      onAnimationEnd,
-      onMouseEnter,
-      onMouseLeave,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, toastRef, toastAnimationRef) as React.Ref<HTMLDivElement>,
+        children,
+        tabIndex: 0,
+        role: 'listitem',
+        'aria-labelledby': titleId,
+        'aria-describedby': bodyId,
+        ...rest,
+        ...userRootSlot,
+        ...focusableGroupAttribute,
+        onMouseEnter,
+        onMouseLeave,
+        onKeyDown,
+      }),
+      { elementType: 'div' },
+    ),
     timerTimeout,
     transitionTimeout: 500,
     running,
@@ -135,5 +248,7 @@ export const useToastContainer_unstable = (
     updateId,
     nodeRef: toastRef,
     intent,
+    titleId,
+    bodyId,
   };
 };

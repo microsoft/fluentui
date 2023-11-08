@@ -10,6 +10,7 @@ export { ControllingOpenAndClose } from './PopoverControllingOpenAndClose.storie
 export { NestedPopovers } from './PopoverNestedPopovers.stories';
 export { AnchorToCustomTarget } from './PopoverAnchorToCustomTarget.stories';
 export { CustomTrigger } from './PopoverCustomTrigger.stories';
+export { WithoutTrigger } from './PopoverWithoutTrigger.stories';
 export { InternalUpdateContent } from './PopoverInternalUpdateContent.stories';
 export { Appearance } from './PopoverAppearance.stories';
 

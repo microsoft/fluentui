@@ -4,13 +4,13 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "build:withdependencies": "yarn --cwd ../../.. build --scope=@fluentui/local-sandbox --include-filtered-dependencies",
+    "build:withdependencies": "yarn lage build --verbose --scope=@fluentui/local-sandbox --include-filtered-dependencies",
     "build": "webpack",
     "build:production": "webpack -p",
     "serve": "node ./server.js"
   },
   "dependencies": {
-    "@fluentui/react-northstar": "^0.66.4"
+    "@fluentui/react-northstar": "*"
   },
   "publishConfig": {
     "access": "public"

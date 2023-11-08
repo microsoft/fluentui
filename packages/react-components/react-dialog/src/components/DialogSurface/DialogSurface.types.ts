@@ -1,5 +1,6 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { DialogSurfaceContextValue } from '../../contexts';
+import type { PortalProps } from '@fluentui/react-portal';
+import { DialogContextValue, DialogSurfaceContextValue } from '../../contexts';
 
 export type DialogSurfaceSlots = {
   /**
@@ -21,7 +22,7 @@ export type DialogSurfaceElement = HTMLElement;
 /**
  * DialogSurface Props
  */
-export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots>;
+export type DialogSurfaceProps = ComponentProps<DialogSurfaceSlots> & Pick<PortalProps, 'mountNode'>;
 
 export type DialogSurfaceContextValues = {
   dialogSurface: DialogSurfaceContextValue;
@@ -30,4 +31,13 @@ export type DialogSurfaceContextValues = {
 /**
  * State used in rendering DialogSurface
  */
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> &
+  // This is only partial to avoid breaking changes, it should be mandatory and in fact it is always defined internally.
+  Pick<DialogContextValue, 'isNestedDialog'> &
+  Pick<PortalProps, 'mountNode'> & {
+    /**
+     * Transition status for animation.
+     * In test environment, this is always `undefined`.
+     */
+    transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+  };

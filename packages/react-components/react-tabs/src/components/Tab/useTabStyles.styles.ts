@@ -497,8 +497,8 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
   }
 
   // This needs to be before state.content.className is updated
-  if (state.contentReservedSpaceClassName !== undefined) {
-    state.contentReservedSpaceClassName = mergeClasses(
+  if (state.contentReservedSpace) {
+    state.contentReservedSpace.className = mergeClasses(
       reservedSpaceClassNames.content,
       contentStyles.base,
       size === 'large' ? contentStyles.largeSelected : contentStyles.selected,
@@ -506,6 +506,10 @@ export const useTabStyles_unstable = (state: TabState): TabState => {
       contentStyles.placeholder,
       state.content.className,
     );
+    // FIXME: this is a deprecated API
+    // should be removed in the next major version
+    // eslint-disable-next-line deprecation/deprecation
+    state.contentReservedSpaceClassName = state.contentReservedSpace.className;
   }
 
   state.content.className = mergeClasses(

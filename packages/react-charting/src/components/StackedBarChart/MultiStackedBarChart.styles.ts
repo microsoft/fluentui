@@ -49,8 +49,6 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: href ? 'pointer' : 'default',
-      stroke: theme.palette.white,
-      strokeWidth: 2,
       selectors: {
         '&:focus': {
           stroke: theme.palette.black,
@@ -70,8 +68,6 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
     placeHolderOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
       cursor: 'default',
-      stroke: theme.palette.white,
-      strokeWidth: '2',
       selectors: {
         '&:focus': {
           stroke: theme.palette.black,

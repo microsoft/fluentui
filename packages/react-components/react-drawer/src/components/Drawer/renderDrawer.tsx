@@ -1,16 +1,15 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
 
-import { createElement } from '@fluentui/react-jsx-runtime';
+import { assertSlots } from '@fluentui/react-utilities';
 
-import { getSlotsNext } from '@fluentui/react-utilities';
 import type { DrawerState, DrawerSlots } from './Drawer.types';
 
 /**
  * Render the final JSX of Drawer
  */
 export const renderDrawer_unstable = (state: DrawerState) => {
-  const { slots, slotProps } = getSlotsNext<DrawerSlots>(state);
+  assertSlots<DrawerSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

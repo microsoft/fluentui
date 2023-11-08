@@ -1,26 +1,13 @@
-import { useMergedRefs } from '@fluentui/react-utilities';
 import * as React from 'react';
-import { HTMLElementFilter, useHTMLElementWalkerRef } from './useHTMLElementWalker';
+import { HTMLElementFilter, HTMLElementWalker } from '../utils/createHTMLElementWalker';
 
 /**
  * https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#kbd_roving_tabindex
  */
 export function useRovingTabIndex(filter?: HTMLElementFilter) {
   const currentElementRef = React.useRef<HTMLElement>();
-  const [walkerRef, rootRef] = useHTMLElementWalkerRef(filter);
 
-  const rootRefCallback = (element?: HTMLElement) => {
-    if (!element) {
-      return;
-    }
-    reset();
-  };
-
-  function reset() {
-    if (!walkerRef.current) {
-      return;
-    }
-    const walker = walkerRef.current;
+  const initialize = React.useCallback((walker: HTMLElementWalker) => {
     walker.currentElement = walker.root;
     let tabbableChild = walker.firstChild(element =>
       element.tabIndex === 0 ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_SKIP,
@@ -28,10 +15,6 @@ export function useRovingTabIndex(filter?: HTMLElementFilter) {
     walker.currentElement = walker.root;
     tabbableChild ??= walker.firstChild();
     if (!tabbableChild) {
-      if (process.env.NODE_ENV === 'development') {
-        // eslint-disable-next-line no-console
-        console.warn('useRovingTabIndexes: internal error, no tabbable element was found');
-      }
       return;
     }
     tabbableChild.tabIndex = 0;
@@ -40,8 +23,8 @@ export function useRovingTabIndex(filter?: HTMLElementFilter) {
     while ((nextElement = walker.nextElement()) && nextElement !== tabbableChild) {
       nextElement.tabIndex = -1;
     }
-  }
-  function rove(nextElement: HTMLElement) {
+  }, []);
+  const rove = React.useCallback((nextElement: HTMLElement) => {
     if (!currentElementRef.current) {
       return;
     }
@@ -49,13 +32,10 @@ export function useRovingTabIndex(filter?: HTMLElementFilter) {
     nextElement.tabIndex = 0;
     nextElement.focus();
     currentElementRef.current = nextElement;
-  }
+  }, []);
 
-  return [
-    {
-      rove,
-      reset,
-    },
-    useMergedRefs(rootRef, rootRefCallback) as React.Ref<HTMLElement>,
-  ] as const;
+  return {
+    rove,
+    initialize,
+  };
 }

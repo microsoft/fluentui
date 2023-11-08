@@ -1,7 +1,8 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
-import { resolveShorthand, useId } from '@fluentui/react-utilities';
+import { mergeCallbacks, useEventCallback, useId, slot } from '@fluentui/react-utilities';
 import { InfoButton } from '../InfoButton/InfoButton';
 import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
 
@@ -13,6 +14,8 @@ import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
  *
  * @param props - props from this instance of InfoLabel
  * @param ref - reference to label element of InfoLabel
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElement>): InfoLabelState => {
   const {
@@ -26,43 +29,59 @@ export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTML
     ...labelProps
   } = props;
   const baseId = useId('infolabel-');
+  const [open, setOpen] = React.useState(false);
 
-  const root = resolveShorthand(rootShorthand, {
-    required: true,
+  const root = slot.always(rootShorthand, {
     defaultProps: {
       className,
       style,
     },
+    elementType: 'span',
   });
 
-  const label = resolveShorthand(labelShorthand, {
-    required: true,
+  const label = slot.always(labelShorthand, {
     defaultProps: {
       id: baseId + '__label',
       ref,
       size,
       ...labelProps,
     },
+    elementType: Label,
   });
 
-  const infoButton = resolveShorthand(infoButtonShorthand, {
-    required: !!info,
+  const infoButton = slot.optional(infoButtonShorthand, {
+    renderByDefault: !!info,
     defaultProps: {
       id: baseId + '__infoButton',
       size,
       info,
     },
+    elementType: InfoButton,
   });
 
+  const infoButtonPopover = slot.always(infoButton?.popover, {
+    elementType: 'div',
+  });
+  infoButtonPopover.onOpenChange = useEventCallback(
+    mergeCallbacks(infoButtonPopover.onOpenChange, (e, data) => {
+      setOpen(data.open);
+    }),
+  );
+
   if (infoButton) {
-    infoButton.info = resolveShorthand(infoButton?.info, {
+    infoButton.popover = infoButtonPopover;
+    infoButton.info = slot.optional(infoButton?.info, {
       defaultProps: {
         id: baseId + '__info',
       },
+      elementType: 'div',
     });
 
     infoButton['aria-labelledby'] ??= `${label.id} ${infoButton.id}`;
-    root['aria-owns'] ??= infoButton.info?.id;
+
+    if (open) {
+      root['aria-owns'] ??= infoButton.info?.id;
+    }
   }
 
   return {

@@ -2,35 +2,83 @@
   "migrations": [
     {
       "cli": "nx",
-      "version": "15.0.0-beta.1",
-      "description": "Replace implicitDependencies with namedInputs + target inputs",
-      "implementation": "./src/migrations/update-15-0-0/migrate-to-inputs",
+      "version": "16.2.0-beta.0",
+      "description": "Remove outputPath from run commands",
+      "implementation": "./src/migrations/update-16-2-0/remove-run-commands-output-path",
       "package": "nx",
-      "name": "15.0.0-migrate-to-inputs"
+      "name": "16.2.0-remove-output-path-from-run-commands"
     },
     {
       "cli": "nx",
-      "version": "15.0.0-beta.1",
+      "version": "16.6.0-beta.6",
       "description": "Prefix outputs with {workspaceRoot}/{projectRoot} if needed",
       "implementation": "./src/migrations/update-15-0-0/prefix-outputs",
       "package": "nx",
-      "name": "15.0.0-prefix-outputs"
+      "name": "16.6.0-prefix-outputs"
     },
     {
       "cli": "nx",
-      "version": "15.0.12-beta.1",
-      "description": "Set project names in project.json files",
-      "implementation": "./src/migrations/update-15-1-0/set-project-names",
+      "version": "16.8.0-beta.3",
+      "description": "Escape $ in env variables",
+      "implementation": "./src/migrations/update-16-8-0/escape-dollar-sign-env-variables",
       "package": "nx",
-      "name": "15.1.0-set-project-names"
+      "name": "16.8.0-escape-dollar-sign-env"
     },
     {
-      "version": "15.0.0-beta.0",
       "cli": "nx",
-      "description": "Stop hashing jest spec files and config files for build targets and dependent tasks",
-      "factory": "./src/migrations/update-15-0-0/add-jest-inputs",
-      "package": "@nrwl/jest",
-      "name": "add-jest-inputs"
+      "version": "16.3.1-beta.0",
+      "description": "Replace @nrwl/node:webpack and @nx/node:webpack with @nx/webpack:webpack for all project targets",
+      "implementation": "./src/migrations/update-16-3-1/update-webpack-executor",
+      "package": "@nx/node",
+      "name": "update-16-3-1-update-executor"
+    },
+    {
+      "cli": "nx",
+      "version": "16.4.0-beta.8",
+      "description": "Replace @nx/node:node with @nx/js:node for all project targets",
+      "implementation": "./src/migrations/update-16-4-0/replace-node-executor",
+      "package": "@nx/node",
+      "name": "update-16-4-0-replace-node-executor"
+    },
+    {
+      "cli": "nx",
+      "version": "16.6.0-beta.0",
+      "description": "Explicitly set 'updateBuildableProjectDepsInPackageJson' to 'true' in targets that rely on that value as the default.",
+      "factory": "./src/migrations/update-16-6-0/explicitly-set-projects-to-update-buildable-deps",
+      "package": "@nx/js",
+      "name": "explicitly-set-projects-to-update-buildable-deps"
+    },
+    {
+      "cli": "nx",
+      "version": "16.8.2-beta.0",
+      "description": "Remove invalid options (strict, noInterop) for ES6 type modules.",
+      "factory": "./src/migrations/update-16-8-2/update-swcrc",
+      "package": "@nx/js",
+      "name": "16-8-2-update-swcrc"
+    },
+    {
+      "cli": "nx",
+      "version": "16.9.0-beta.1",
+      "description": "Replace imports of Module Federation utils frm @nx/devkit to @nx/webpack",
+      "implementation": "./src/migrations/update-16-9-0/migrate-mf-util-usage",
+      "package": "@nx/devkit",
+      "name": "update-16-9-0-migrate-mf-usage-to-webpack"
+    },
+    {
+      "cli": "nx",
+      "version": "16.5.0-beta.2",
+      "description": "Add test-setup.ts to ignored files in production input",
+      "implementation": "./src/migrations/update-16-5-0/add-test-setup-to-inputs-ignore",
+      "package": "@nx/jest",
+      "name": "add-test-setup-to-inputs-ignore"
+    },
+    {
+      "cli": "nx",
+      "version": "16.2.0-beta.0",
+      "description": "Replace @nx/plugin:e2e with @nx/jest",
+      "implementation": "./src/migrations/update-16-2-0/replace-e2e-executor",
+      "package": "@nx/plugin",
+      "name": "update-16-2-0-replace-e2e-executor"
     }
   ]
 }

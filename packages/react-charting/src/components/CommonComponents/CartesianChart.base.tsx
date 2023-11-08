@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { lazy } from 'react';
 import { IProcessedStyleSet } from '@fluentui/react/lib/Styling';
 import { classNamesFunction, getId, getRTL } from '@fluentui/react/lib/Utilities';
 import { Callout } from '@fluentui/react/lib/Callout';
@@ -11,7 +12,6 @@ import {
   IHorizontalBarChartWithAxisDataPoint,
 } from '../../index';
 import {
-  ChartHoverCard,
   convertToLocaleString,
   createNumericXAxis,
   createStringXAxis,
@@ -32,10 +32,15 @@ import {
   calculateLongestLabelWidth,
   createYAxisLabels,
   ChartTypes,
+  wrapContent,
 } from '../../utilities/index';
 import { LegendShape, Shape } from '../Legends/index';
+import { SVGTooltipText } from '../../utilities/SVGTooltipText';
 
 const getClassNames = classNamesFunction<ICartesianChartStyleProps, ICartesianChartStyles>();
+const ChartHoverCard = lazy(() =>
+  import('../../utilities/ChartHoverCard/ChartHoverCard').then(module => ({ default: module.ChartHoverCard })),
+);
 
 export interface ICartesianChartState {
   containerWidth: number;
@@ -72,9 +77,12 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
   private yAxisElementSecondary: SVGElement | null;
   private margins: IMargins;
   private idForGraph: string;
+  private idForDefaultTabbableElement: string;
   private _reqID: number;
   private _isRtl: boolean = getRTL();
   private _tickValues: (string | number)[];
+  private titleMargin: number;
+  private _isFirstRender: boolean = true;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _xScale: any;
@@ -91,6 +99,8 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       startFromX: 0,
     };
     this.idForGraph = getId('chart_');
+    this.titleMargin = 8;
+    this.idForDefaultTabbableElement = getId('defaultTabbableElement_');
     /**
      * In RTL mode, Only graph will be rendered left/right. We need to provide left and right margins manually.
      * So that, in RTL, left margins becomes right margins and viceversa.
@@ -111,6 +121,21 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
           : 20
         : this.props.margins?.left ?? 40,
     };
+    if (this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '') {
+      this.margins.bottom! = this.props.margins?.bottom ?? 55;
+    }
+    if (this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '') {
+      this.margins.left! = this._isRtl
+        ? this.props.margins?.right ?? this.props?.secondaryYAxistitle
+          ? 60
+          : 40
+        : this.props.margins?.left ?? 60;
+      this.margins.right! = this._isRtl
+        ? this.props.margins?.left ?? 60
+        : this.props.margins?.right ?? this.props?.secondaryYAxistitle
+        ? 60
+        : 40;
+    }
   }
 
   public componentDidMount(): void {
@@ -144,7 +169,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     if (prevProps.height !== this.props.height || prevProps.width !== this.props.width) {
       this._fitParentContainer();
     }
-
     if (
       !this.props.wrapXAxisLables &&
       this.props.rotateXAxisLables &&
@@ -215,173 +239,193 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     // Callback for margins to the chart
     this.props.getmargins && this.props.getmargins(margin);
 
-    const XAxisParams = {
-      domainNRangeValues: getDomainNRangeValues(
-        points,
-        this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
-        this.state.containerWidth,
-        chartType,
-        this._isRtl,
-        this.props.xAxisType,
-        this.props.barwidth!,
-        this.props.tickValues!,
-        // This is only used for Horizontal Bar Chart with Axis for y as string axis
-        this.state.startFromX,
-      ),
-      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
-      margins: this.margins,
-      xAxisElement: this.xAxisElement!,
-      showRoundOffXTickValues: true,
-      xAxisCount: this.props.xAxisTickCount,
-      xAxistickSize: this.props.xAxistickSize,
-      tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
-      xAxisPadding: this.props.xAxisPadding,
-      xAxisInnerPadding: this.props.xAxisInnerPadding,
-      xAxisOuterPadding: this.props.xAxisOuterPadding,
-    };
+    let callout: JSX.Element | null = null;
 
-    const YAxisParams = {
-      margins: this.margins,
-      containerWidth: this.state.containerWidth,
-      containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
-      yAxisElement: this.yAxisElement,
-      yAxisTickFormat: this.props.yAxisTickFormat!,
-      yAxisTickCount: this.props.yAxisTickCount!,
-      yMinValue: this.props.yMinValue || 0,
-      yMaxValue: this.props.yMaxValue || 0,
-      tickPadding: 10,
-      maxOfYVal: this.props.maxOfYVal,
-      yMinMaxValues: getMinMaxOfYAxis(points, chartType, this.props.yAxisType),
-      // please note these padding default values must be consistent in here
-      // and the parent chart(HBWA/Vertical etc..) for more details refer example
-      // http://using-d3js.com/04_07_ordinal_scales.html
-      yAxisPadding: this.props.yAxisPadding || 0,
-    };
-    /**
-     * These scales used for 2 purposes.
-     * 1. To create x and y axis
-     * 2. To draw the graph.
-     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
-     */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let xScale: any;
-    let tickValues: (string | number)[];
-    switch (this.props.xAxisType!) {
-      case XAxisTypes.NumericAxis:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
-        break;
-      case XAxisTypes.DateAxis:
-        ({ xScale, tickValues } = createDateXAxis(
-          XAxisParams,
-          this.props.tickParams!,
-          culture,
-          dateLocalizeOptions,
-          timeFormatLocale,
-          customDateTimeFormatter,
-        ));
-        break;
-      case XAxisTypes.StringAxis:
-        ({ xScale, tickValues } = createStringXAxis(
-          XAxisParams,
-          this.props.tickParams!,
-          this.props.datasetForXAxisDomain!,
-          culture,
-        ));
-        break;
-      default:
-        ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
-    }
-    this._xScale = xScale;
-    this._tickValues = tickValues;
-
-    /*
-     * To enable wrapping of x axis tick values or to display complete x axis tick values,
-     * we need to calculate how much space it needed to render the text.
-     * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
-     * Required space will be calculated first time chart rendering and if any width/height of chart updated.
-     * */
-    if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
-      const wrapLabelProps = {
-        node: this.xAxisElement,
-        xAxis: xScale,
-        showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
-        noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
-      };
-      const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
-      // this value need to be updated for draw graph updated. So instead of using private value, using set state.
-      if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
-        this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
-      }
-    }
-
-    /**
-     * These scales used for 2 purposes.
-     * 1. To create x and y axis
-     * 2. To draw the graph.
-     * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
-     */
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScale: any;
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    let yScaleSecondary: any;
-    const axisData: IAxisData = { yAxisDomainValues: [] };
-    if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
-      yScale = createStringYAxis(
-        YAxisParams,
-        this.props.stringDatasetForYAxisDomain!,
-        this._isRtl,
-        this.props.chartType,
-        this.props.barwidth,
-        culture,
-      );
-    } else {
-      if (this.props?.secondaryYScaleOptions) {
-        const YAxisParamsSecondary = {
-          margins: this.margins,
-          containerWidth: this.state.containerWidth,
-          containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
-          yAxisElement: this.yAxisElementSecondary,
-          yAxisTickFormat: this.props.yAxisTickFormat!,
-          yAxisTickCount: this.props.yAxisTickCount!,
-          yMinValue: this.props.secondaryYScaleOptions?.yMinValue || 0,
-          yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-          tickPadding: 10,
-          maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
-          yMinMaxValues: getMinMaxOfYAxis(points, chartType),
-          yAxisPadding: this.props.yAxisPadding,
-        };
-
-        yScaleSecondary = createYAxis(
-          YAxisParamsSecondary,
-          this._isRtl,
-          axisData,
+    let children = null;
+    if (
+      (this.props.enableFirstRenderOptimization && this.chartContainer) ||
+      !this.props.enableFirstRenderOptimization
+    ) {
+      this._isFirstRender = false;
+      const XAxisParams = {
+        domainNRangeValues: getDomainNRangeValues(
+          points,
+          this.props.getDomainMargins ? this.props.getDomainMargins(this.state.containerWidth) : this.margins,
+          this.state.containerWidth,
           chartType,
+          this._isRtl,
+          this.props.xAxisType,
           this.props.barwidth!,
-          true,
-        );
-      }
-      yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
-    }
+          this.props.tickValues!,
+          // This is only used for Horizontal Bar Chart with Axis for y as string axis
+          this.state.startFromX,
+        ),
+        containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+        margins: this.margins,
+        xAxisElement: this.xAxisElement!,
+        showRoundOffXTickValues: true,
+        xAxisCount: this.props.xAxisTickCount,
+        xAxistickSize: this.props.xAxistickSize,
+        tickPadding: this.props.tickPadding || this.props.showXAxisLablesTooltip ? 5 : 10,
+        xAxisPadding: this.props.xAxisPadding,
+        xAxisInnerPadding: this.props.xAxisInnerPadding,
+        xAxisOuterPadding: this.props.xAxisOuterPadding,
+      };
 
-    /*
+      const YAxisParams = {
+        margins: this.margins,
+        containerWidth: this.state.containerWidth,
+        containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+        yAxisElement: this.yAxisElement,
+        yAxisTickFormat: this.props.yAxisTickFormat!,
+        yAxisTickCount: this.props.yAxisTickCount!,
+        yMinValue: this.props.yMinValue || 0,
+        yMaxValue: this.props.yMaxValue || 0,
+        tickPadding: 10,
+        maxOfYVal: this.props.maxOfYVal,
+        yMinMaxValues: getMinMaxOfYAxis(points, chartType, this.props.yAxisType),
+        // please note these padding default values must be consistent in here
+        // and the parent chart(HBWA/Vertical etc..) for more details refer example
+        // http://using-d3js.com/04_07_ordinal_scales.html
+        yAxisPadding: this.props.yAxisPadding || 0,
+      };
+      /**
+       * These scales used for 2 purposes.
+       * 1. To create x and y axis
+       * 2. To draw the graph.
+       * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+       */
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let xScale: any;
+      let tickValues: (string | number)[];
+      switch (this.props.xAxisType!) {
+        case XAxisTypes.NumericAxis:
+          ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
+          break;
+        case XAxisTypes.DateAxis:
+          ({ xScale, tickValues } = createDateXAxis(
+            XAxisParams,
+            this.props.tickParams!,
+            culture,
+            dateLocalizeOptions,
+            timeFormatLocale,
+            customDateTimeFormatter,
+          ));
+          break;
+        case XAxisTypes.StringAxis:
+          ({ xScale, tickValues } = createStringXAxis(
+            XAxisParams,
+            this.props.tickParams!,
+            this.props.datasetForXAxisDomain!,
+            culture,
+          ));
+          break;
+        default:
+          ({ xScale, tickValues } = createNumericXAxis(XAxisParams, this.props.chartType, culture));
+      }
+      this._xScale = xScale;
+      this._tickValues = tickValues;
+
+      /*
+       * To enable wrapping of x axis tick values or to display complete x axis tick values,
+       * we need to calculate how much space it needed to render the text.
+       * No need to re-calculate every time the chart renders and same time need to get an update. So using setState.
+       * Required space will be calculated first time chart rendering and if any width/height of chart updated.
+       * */
+      if (this.props.wrapXAxisLables || this.props.showXAxisLablesTooltip) {
+        const wrapLabelProps = {
+          node: this.xAxisElement,
+          xAxis: xScale,
+          showXAxisLablesTooltip: this.props.showXAxisLablesTooltip || false,
+          noOfCharsToTruncate: this.props.noOfCharsToTruncate || 4,
+        };
+        const temp = xScale && (createWrapOfXLabels(wrapLabelProps) as number);
+        // this value need to be updated for draw graph updated. So instead of using private value, using set state.
+        if (this.state.isRemoveValCalculated && this.state._removalValueForTextTuncate !== temp) {
+          this.setState({ _removalValueForTextTuncate: temp, isRemoveValCalculated: false });
+        }
+      }
+
+      /**
+       * These scales used for 2 purposes.
+       * 1. To create x and y axis
+       * 2. To draw the graph.
+       * For area/line chart using same scales. For other charts, creating their own scales to draw the graph.
+       */
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let yScale: any;
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let yScaleSecondary: any;
+      const axisData: IAxisData = { yAxisDomainValues: [] };
+      if (this.props.yAxisType && this.props.yAxisType === YAxisType.StringAxis) {
+        yScale = createStringYAxis(
+          YAxisParams,
+          this.props.stringDatasetForYAxisDomain!,
+          this._isRtl,
+          this.props.chartType,
+          this.props.barwidth,
+          culture,
+        );
+      } else {
+        if (this.props?.secondaryYScaleOptions) {
+          const YAxisParamsSecondary = {
+            margins: this.margins,
+            containerWidth: this.state.containerWidth,
+            containerHeight: this.state.containerHeight - this.state._removalValueForTextTuncate!,
+            yAxisElement: this.yAxisElementSecondary,
+            yAxisTickFormat: this.props.yAxisTickFormat!,
+            yAxisTickCount: this.props.yAxisTickCount!,
+            yMinValue: this.props.secondaryYScaleOptions?.yMinValue || 0,
+            yMaxValue: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
+            tickPadding: 10,
+            maxOfYVal: this.props.secondaryYScaleOptions?.yMaxValue ?? 100,
+            yMinMaxValues: getMinMaxOfYAxis(points, chartType),
+            yAxisPadding: this.props.yAxisPadding,
+          };
+
+          yScaleSecondary = createYAxis(
+            YAxisParamsSecondary,
+            this._isRtl,
+            axisData,
+            chartType,
+            this.props.barwidth!,
+            true,
+          );
+        }
+        yScale = createYAxis(YAxisParams, this._isRtl, axisData, chartType, this.props.barwidth!);
+      }
+
+      /*
      * To create y axis tick values by if specified
     truncating the rest of the text and showing elipsis
     or showing the whole string,
      * */
-    this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
-      yScale &&
-      createYAxisLabels(
-        this.yAxisElement,
-        yScale,
-        this.props.noOfCharsToTruncate || 4,
-        this.props.showYAxisLablesTooltip || false,
-        this.state.startFromX,
-        this._isRtl,
-      );
+      this.props.chartType === ChartTypes.HorizontalBarChartWithAxis &&
+        yScale &&
+        createYAxisLabels(
+          this.yAxisElement,
+          yScale,
+          this.props.noOfCharsToTruncate || 4,
+          this.props.showYAxisLablesTooltip || false,
+          this.state.startFromX,
+          this._isRtl,
+        );
 
-    this.props.getAxisData && this.props.getAxisData(axisData);
-    // Callback function for chart, returns axis
-    this._getData(xScale, yScale);
+      this.props.getAxisData && this.props.getAxisData(axisData);
+      // Callback function for chart, returns axis
+      this._getData(xScale, yScale);
+
+      children = this.props.children({
+        ...this.state,
+        xScale,
+        yScale,
+        yScaleSecondary,
+      });
+
+      if (!this.props.hideTooltip && calloutProps!.isCalloutVisible) {
+        callout = this._generateCallout(calloutProps, chartHoverProps);
+      }
+    }
 
     this._classNames = getClassNames(this.props.styles!, {
       theme: this.props.theme!,
@@ -396,13 +440,6 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       height: this.state.containerHeight,
     };
 
-    const children = this.props.children({
-      ...this.state,
-      xScale,
-      yScale,
-      yScaleSecondary,
-    });
-
     let focusDirection;
     if (this.props.focusZoneDirection === FocusZoneDirection.vertical) {
       focusDirection = this.props.focusZoneDirection;
@@ -411,6 +448,35 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
     } else {
       focusDirection = FocusZoneDirection.horizontal;
     }
+
+    const xAxisTitleMaximumAllowedWidth =
+      svgDimensions.width - this.margins.left! - this.margins.right! - this.state.startFromX!;
+    const yAxisTitleMaximumAllowedHeight =
+      svgDimensions.height -
+      this.margins.bottom! -
+      this.margins.top! -
+      this.state._removalValueForTextTuncate! -
+      this.titleMargin;
+    /**
+     * We have use the {@link defaultTabbableElement } to fix
+     * the Focus not landing on chart while tabbing, instead  goes to legend.
+     * This issue is observed in Area, line chart after performance optimization done in the PR {@link https://github.com/microsoft/fluentui/pull/27721 }
+     * This issue is observed in Bar charts after the changes done by FocusZone team in the PR: {@link https://github.com/microsoft/fluentui/pull/24175 }
+     * The issue in Bar Charts(VB and VSB) is due to a {@link FocusZone } update where previously an event listener was
+     * attached on keydown to the window, so that whenever the tab key is pressed all outer FocusZone's
+     * tab-indexes are updated (an outer FocusZone is a FocusZone that is not within another one).
+     * But now after the above PR : they are attaching the
+     * listeners to the FocusZone elements instead of the window. So in the first render cycle in Bar charts
+     * bars are not created as in the first render cycle the size of the chart container is not known( or is 0)
+     * which creates bars of height 0 so instead we do not create any bars  and instead return empty fragments.
+     *
+     * We have tried 2 Approaches to fix the issue:
+     * 1. Using the {@link elementRef} property of FocusZone where we dispatch event for tab keydown
+     *    after the second render cycle which triggers an update of the tab index in FocusZone.
+     *    But this is a hacky solution and not a proper fix and also elementRef is deprecated.
+     * 2. Using the default tabbable element to fix the issue.
+     */
+
     return (
       <div
         id={this.idForGraph}
@@ -419,7 +485,14 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
         ref={(rootElem: HTMLDivElement) => (this.chartContainer = rootElem)}
         onMouseLeave={this._onChartLeave}
       >
-        <FocusZone direction={focusDirection} className={this._classNames.chartWrapper} {...svgFocusZoneProps}>
+        {!this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
+        <FocusZone
+          direction={focusDirection}
+          className={this._classNames.chartWrapper}
+          defaultTabbableElement={`#${this.idForDefaultTabbableElement}`}
+          {...svgFocusZoneProps}
+        >
+          {this._isFirstRender && <div id={this.idForDefaultTabbableElement} />}
           <svg
             width={svgDimensions.width}
             height={svgDimensions.height}
@@ -438,6 +511,19 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               })`}
               className={this._classNames.xAxis}
             />
+            {this.props.xAxisTitle !== undefined && this.props.xAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.xAxisTitle}
+                textProps={{
+                  x: this.margins.left! + this.state.startFromX + xAxisTitleMaximumAllowedWidth / 2,
+                  y: svgDimensions.height - this.titleMargin,
+                  className: this._classNames.axisTitle!,
+                  textAnchor: 'middle',
+                }}
+                maxWidth={xAxisTitleMaximumAllowedWidth}
+                wrapContent={wrapContent}
+              />
+            )}
             <g
               ref={(e: SVGElement | null) => {
                 this.yAxisElement = e;
@@ -451,49 +537,107 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               className={this._classNames.yAxis}
             />
             {this.props.secondaryYScaleOptions && (
-              <g
-                ref={(e: SVGElement | null) => {
-                  this.yAxisElementSecondary = e;
-                }}
-                id={`yAxisGElementSecondary${this.idForGraph}`}
-                transform={`translate(${
-                  this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
-                }, 0)`}
-                className={this._classNames.yAxis}
-              />
+              <g>
+                <g
+                  ref={(e: SVGElement | null) => {
+                    this.yAxisElementSecondary = e;
+                  }}
+                  id={`yAxisGElementSecondary${this.idForGraph}`}
+                  transform={`translate(${
+                    this._isRtl ? this.margins.left! : svgDimensions.width - this.margins.right!
+                  }, 0)`}
+                  className={this._classNames.yAxis}
+                />
+                {this.props.secondaryYAxistitle !== undefined && this.props.secondaryYAxistitle !== '' && (
+                  <SVGTooltipText
+                    content={this.props.secondaryYAxistitle}
+                    textProps={{
+                      x:
+                        (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                        this.state._removalValueForTextTuncate!,
+                      y: this._isRtl
+                        ? this.state.startFromX - this.titleMargin
+                        : svgDimensions.width - this.margins.right!,
+                      textAnchor: 'middle',
+                      transform: `translate(${
+                        this._isRtl
+                          ? this.margins.right! / 2 - this.titleMargin
+                          : this.margins.right! / 2 + this.titleMargin
+                      },
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                      className: this._classNames.axisTitle!,
+                    }}
+                    maxWidth={yAxisTitleMaximumAllowedHeight}
+                    wrapContent={wrapContent}
+                  />
+                )}
+              </g>
             )}
             {children}
+            {this.props.yAxisTitle !== undefined && this.props.yAxisTitle !== '' && (
+              <SVGTooltipText
+                content={this.props.yAxisTitle}
+                textProps={{
+                  x:
+                    (yAxisTitleMaximumAllowedHeight - this.margins.bottom!) / 2 +
+                    this.state._removalValueForTextTuncate!,
+                  y: this._isRtl
+                    ? svgDimensions.width - this.margins.right! / 2 + this.titleMargin
+                    : this.margins.left! / 2 + this.state.startFromX - this.titleMargin,
+                  textAnchor: 'middle',
+                  transform: `translate(0,
+                   ${svgDimensions.height - this.margins.bottom! - this.margins.top! - this.titleMargin})rotate(-90)`,
+                  className: this._classNames.axisTitle!,
+                }}
+                maxWidth={yAxisTitleMaximumAllowedHeight}
+                wrapContent={wrapContent}
+              />
+            )}
           </svg>
         </FocusZone>
+
         {!this.props.hideLegend && (
           <div ref={(e: HTMLDivElement) => (this.legendContainer = e)} className={this._classNames.legendContainer}>
             {this.props.legendBars}
           </div>
         )}
         {/** The callout is used for narration, so keep it mounted on the DOM */}
-        <Callout
-          hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
-          /** Keep the callout updated with details of focused/hovered chart element */
-          shouldUpdateWhenHidden={true}
-          {...calloutProps}
-        >
-          {/** Given custom callout, then it will render */}
-          {this.props.customizedCallout && this.props.customizedCallout}
-          {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
-          {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
-          {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
-          {!this.props.customizedCallout && !this.props.isCalloutForStack && (
-            <ChartHoverCard
-              XValue={calloutProps.XValue}
-              Legend={calloutProps.legend!}
-              YValue={calloutProps.YValue!}
-              color={calloutProps.color!}
-              culture={this.props.culture}
-              {...chartHoverProps}
-            />
-          )}
-        </Callout>
+        {callout && <React.Suspense fallback={<div>Loading...</div>}>{callout}</React.Suspense>}
       </div>
+    );
+  }
+  /**
+   * Dedicated function to return the Callout JSX Element , which can further be used to only call this when
+   * only the calloutprops and charthover props changes.
+   * @param calloutProps
+   * @param chartHoverProps
+   * @returns
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _generateCallout(calloutProps: any, chartHoverProps: any): JSX.Element {
+    return (
+      <Callout
+        hidden={!(!this.props.hideTooltip && calloutProps!.isCalloutVisible)}
+        /** Keep the callout updated with details of focused/hovered chart element */
+        shouldUpdateWhenHidden={true}
+        {...calloutProps}
+      >
+        {/** Given custom callout, then it will render */}
+        {this.props.customizedCallout && this.props.customizedCallout}
+        {/** single x point its corresponding y points of all the bars/lines in chart will render in callout */}
+        {!this.props.customizedCallout && this.props.isCalloutForStack && this._multiValueCallout(calloutProps)}
+        {/** single x point its corresponding y point of single line/bar in the chart will render in callout */}
+        {!this.props.customizedCallout && !this.props.isCalloutForStack && (
+          <ChartHoverCard
+            XValue={calloutProps.XValue}
+            Legend={calloutProps.legend!}
+            YValue={calloutProps.YValue!}
+            color={calloutProps.color!}
+            culture={this.props.culture}
+            {...chartHoverProps}
+          />
+        )}
+      </Callout>
     );
   }
 
@@ -611,7 +755,7 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
               <div className={_classNames.calloutlegendText}> {xValue.legend}</div>
               <div className={_classNames.calloutContentY}>
                 {convertToLocaleString(
-                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y || xValue.data,
+                  xValue.yAxisCalloutData ? xValue.yAxisCalloutData : xValue.y ?? xValue.data,
                   culture,
                 )}
               </div>
@@ -662,9 +806,10 @@ export class CartesianChartBase extends React.Component<IModifiedCartesianChartP
       }
       if (this.props.parentRef || this.chartContainer) {
         const container = this.props.parentRef ? this.props.parentRef : this.chartContainer;
-        const currentContainerWidth = this.props.enableReflow
-          ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
-          : container.getBoundingClientRect().width;
+        const currentContainerWidth =
+          this.props.enableReflow && !this._isFirstRender
+            ? Math.max(container.getBoundingClientRect().width, this._calculateChartMinWidth())
+            : container.getBoundingClientRect().width;
         const currentContainerHeight =
           container.getBoundingClientRect().height > legendContainerHeight
             ? container.getBoundingClientRect().height

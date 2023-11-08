@@ -107,7 +107,7 @@ export type TabSlots = {
 };
 
 // @public
-export type TabState = ComponentState<TabSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
+export type TabState = ComponentState<TabInternalSlots> & Pick<TabProps, 'value'> & Required<Pick<TabProps, 'disabled'>> & {
     appearance?: 'transparent' | 'subtle';
     iconOnly: boolean;
     selected: boolean;

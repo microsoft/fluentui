@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { makeStyles, shorthands, Button, Caption1, Body1, Subtitle1 } from '@fluentui/react-components';
-import { MoreHorizontal20Filled, Open16Regular, Share16Regular } from '@fluentui/react-icons';
+import { MoreHorizontal20Regular, Open16Regular, Share16Regular } from '@fluentui/react-icons';
 import { Card, CardHeader, CardFooter, CardPreview, CardProps } from '@fluentui/react-components';
 
 const resolveAsset = (asset: string) => {
@@ -68,14 +68,14 @@ const CardExample = (props: CardProps) => {
       </CardPreview>
 
       <CardHeader
-        image={<img src={resolveAsset('powerpoint_logo.svg')} alt="Microsoft PowerPoint logo" />}
+        image={<img src={resolveAsset('pptx.png')} width="32px" height="32px" alt="Microsoft PowerPoint logo" />}
         header={
           <Body1>
             <b>App Name</b>
           </Body1>
         }
         description={<Caption1>Developer</Caption1>}
-        action={<Button appearance="transparent" icon={<MoreHorizontal20Filled />} aria-label="More options" />}
+        action={<Button appearance="transparent" icon={<MoreHorizontal20Regular />} aria-label="More options" />}
       />
 
       <p className={styles.text}>

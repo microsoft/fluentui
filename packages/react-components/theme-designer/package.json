@@ -32,23 +32,23 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-alert": "9.0.0-beta.54",
-    "@fluentui/react-components": "^9.23.0",
-    "@fluentui/react-context-selector": "^9.1.24",
-    "@fluentui/react-icons": "^2.0.203",
-    "@fluentui/react-storybook-addon-codesandbox": "9.0.0-alpha.0",
-    "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.9.4",
-    "@griffel/react": "^1.5.7",
-    "@swc/helpers": "^0.4.14",
+    "@fluentui/react-alert": "9.0.0-beta.90",
+    "@fluentui/react-components": "^9.37.4",
+    "@fluentui/react-context-selector": "^9.1.41",
+    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-storybook-addon-export-to-sandbox": "^0.1.0",
+    "@fluentui/react-theme": "^9.1.15",
+    "@fluentui/react-utilities": "^9.15.1",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1",
     "@types/dedent": "0.7.0",
     "codesandbox-import-utils": "2.2.3"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

@@ -34,8 +34,9 @@ import {
   mink,
   platinum,
   anchor,
+  orange,
 } from './colors';
-import { PersonaSharedColors, StatusSharedColors } from '../types';
+import { MappedStatusColors, PersonaSharedColors, StatusSharedColors } from '../types';
 
 export const statusSharedColors: StatusSharedColors = {
   red,
@@ -76,4 +77,10 @@ export const personaSharedColors: PersonaSharedColors = {
   mink,
   platinum,
   anchor,
+};
+
+export const mappedStatusColors: MappedStatusColors = {
+  cranberry,
+  green,
+  orange,
 };

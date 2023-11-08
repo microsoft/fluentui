@@ -1,3 +1,4 @@
+import { useRenderer_unstable } from '@griffel/react';
 import { useFocusVisible } from '@fluentui/react-tabster';
 import {
   ThemeContext_unstable as ThemeContext,
@@ -9,12 +10,14 @@ import type {
   CustomStyleHooksContextValue_unstable as CustomStyleHooksContextValue,
   ThemeContextValue_unstable as ThemeContextValue,
 } from '@fluentui/react-shared-contexts';
-
-import { getNativeElementProps, useMergedRefs } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useMergedRefs, slot } from '@fluentui/react-utilities';
 import * as React from 'react';
+
 import { useFluentProviderThemeStyleTag } from './useFluentProviderThemeStyleTag';
 import type { FluentProviderProps, FluentProviderState } from './FluentProvider.types';
-import { useRenderer_unstable } from '@griffel/react';
+
+// Fixes a bug where returning a new object each time would cause unnecessary rerenders.
+const EMPTY_OBJECT = {};
 
 /**
  * Create the state required to render FluentProvider.
@@ -32,7 +35,8 @@ export const useFluentProvider_unstable = (
   const parentContext = useFluent();
   const parentTheme = useTheme();
   const parentOverrides = useOverrides();
-  const parentCustomStyleHooks: CustomStyleHooksContextValue = React.useContext(CustomStyleHooksContext) || {};
+  const parentCustomStyleHooks: CustomStyleHooksContextValue =
+    React.useContext(CustomStyleHooksContext) || EMPTY_OBJECT;
 
   /**
    * TODO: add merge functions to "dir" merge,
@@ -48,8 +52,8 @@ export const useFluentProvider_unstable = (
     theme,
     overrides_unstable: overrides = {},
   } = props;
-  const mergedTheme = shallowMerge(parentTheme, theme);
 
+  const mergedTheme = shallowMerge(parentTheme, theme);
   const mergedOverrides = shallowMerge(parentOverrides, overrides);
 
   const mergedCustomStyleHooks = shallowMerge(
@@ -57,24 +61,29 @@ export const useFluentProvider_unstable = (
     customStyleHooks_unstable,
   ) as CustomStyleHooksContextValue;
 
-  React.useEffect(() => {
-    if (process.env.NODE_ENV !== 'production' && mergedTheme === undefined) {
-      // eslint-disable-next-line no-console
-      console.warn(`
-      FluentProvider: your "theme" is not defined !
-      =============================================
-      Make sure your root FluentProvider has set a theme or you're setting the theme in your child FluentProvider.
-      `);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const renderer = useRenderer_unstable();
   const { styleTagId, rule } = useFluentProviderThemeStyleTag({
     theme: mergedTheme,
     targetDocument,
     rendererAttributes: renderer.styleElementAttributes ?? {},
   });
+
+  if (process.env.NODE_ENV !== 'production') {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    React.useEffect(() => {
+      if (mergedTheme === undefined) {
+        // eslint-disable-next-line no-console
+        console.warn(
+          [
+            '@fluentui/react-provider: FluentProvider does not have your "theme" defined.',
+            "Make sure that your top-level FluentProvider has set a `theme` prop or you're setting the theme in your child FluentProvider.",
+          ].join(' '),
+        );
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+  }
+
   return {
     applyStylesToPortals,
     // eslint-disable-next-line @typescript-eslint/naming-convention
@@ -90,11 +99,17 @@ export const useFluentProvider_unstable = (
       root: 'div',
     },
 
-    root: getNativeElementProps('div', {
-      ...props,
-      dir,
-      ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })),
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        ...props,
+        dir,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, useFocusVisible<HTMLDivElement>({ targetDocument })) as React.Ref<HTMLDivElement>,
+      }),
+      { elementType: 'div' },
+    ),
 
     serverStyleProps: {
       cssRule: rule,

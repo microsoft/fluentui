@@ -58,7 +58,7 @@ const basicRenderSelectedItemsList = (props: IBaseSelectedItemsListProps<ISimple
 };
 
 const floatingPickerProps = {
-  onResolveSuggestions: onResolveSuggestions,
+  onResolveSuggestions,
   onRenderSuggestionsItem: basicSuggestionRenderer,
   suggestionsStore: new SuggestionsStore<ISimple>(),
 };

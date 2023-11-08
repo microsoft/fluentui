@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { AreaChart } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { AreaChart, DataVizPalette } from '@fluentui/react-charting';
 import * as d3 from 'd3-format';
 import { ILineChartProps } from '@fluentui/react-charting';
 
@@ -123,17 +122,17 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
       {
         legend: 'First',
         data: chart1Points,
-        color: DefaultPalette.accent,
+        color: DataVizPalette.color8,
       },
       {
         legend: 'Second',
         data: chart2Points,
-        color: DefaultPalette.blueLight,
+        color: DataVizPalette.color9,
       },
       {
         legend: 'Third',
         data: chart3Points,
-        color: DefaultPalette.blueDark,
+        color: DataVizPalette.color10,
       },
     ];
 
@@ -172,9 +171,11 @@ export class AreaChartCustomAccessibilityExample extends React.Component<{}, IAr
             data={chartData}
             legendsOverflowText={'Overflow Items'}
             yAxisTickFormat={d3.format('$,')}
+            enablePerfOptimization={true}
             legendProps={{
               allowFocusOnLegends: true,
             }}
+            enableReflow={true}
           />
         </div>
       </>

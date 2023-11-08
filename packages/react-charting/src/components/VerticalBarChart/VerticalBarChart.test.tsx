@@ -29,7 +29,7 @@ function sharedAfterEach() {
   }
 }
 
-const chartPoints = [
+export const chartPoints = [
   {
     x: 0,
     y: 10000,
@@ -207,6 +207,8 @@ describe('VerticalBarChart - mouse events', () => {
     wrapper.update();
 
     wrapper.find('rect').at(1).simulate('mouseover');
+    await new Promise(resolve => setTimeout(resolve));
+    wrapper.update();
     const tree = toJson(wrapper, { mode: 'deep' });
     expect(tree).toMatchSnapshot();
   });
@@ -268,8 +270,8 @@ describe('Render empty chart calling with respective to props', () => {
       data: [],
     };
     const component = mount(<VerticalBarChart {...props} />);
-    component.setProps({ ...props });
-    expect(renderMock).toHaveBeenCalledTimes(3);
+    component.setProps({ ...props, data: chartPoints });
+    expect(renderMock).toHaveBeenCalledTimes(2);
     renderMock.mockRestore();
   });
 });

@@ -1,5 +1,6 @@
 import { createContext, useContextSelector } from '@fluentui/react-context-selector';
 import type { ContextSelector } from '@fluentui/react-context-selector';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 import { DataGridContextValue } from '../components/DataGrid/DataGrid.types';
 import { defaultTableState } from '../hooks';
 
@@ -11,6 +12,7 @@ const dataGridContextDefaultValue: DataGridContextValue = {
   selectableRows: false,
   selectionAppearance: 'brand',
   focusMode: 'none',
+  compositeRowTabsterAttribute: {} as TabsterDOMAttribute,
 };
 
 export const DataGridContextProvider = dataGridContext.Provider;

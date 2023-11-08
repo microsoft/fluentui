@@ -1,8 +1,16 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 import { DefaultInfoButtonIcon12, DefaultInfoButtonIcon16, DefaultInfoButtonIcon20 } from './DefaultInfoButtonIcons';
-import { getNativeElementProps, mergeCallbacks, resolveShorthand } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  useControllableState,
+  slot,
+  useMergedRefs,
+  isHTMLElement,
+  elementContains,
+} from '@fluentui/react-utilities';
 import { Popover, PopoverSurface } from '@fluentui/react-popover';
-import { useControllableState } from '@fluentui/react-utilities';
 import type { InfoButtonProps, InfoButtonState } from './InfoButton.types';
 import type { PopoverProps } from '@fluentui/react-popover';
 
@@ -26,11 +34,14 @@ const popoverSizeMap = {
  *
  * @param props - props from this instance of InfoButton
  * @param ref - reference to root HTMLElement of InfoButton
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HTMLElement>): InfoButtonState => {
-  const { size = 'medium' } = props;
+  const { size = 'medium', inline = true } = props;
 
   const state: InfoButtonState = {
+    inline,
     size,
 
     components: {
@@ -39,27 +50,34 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
       info: PopoverSurface,
     },
 
-    root: getNativeElementProps('button', {
-      children: infoButtonIconMap[size],
-      type: 'button',
-      'aria-label': 'information',
-      ...props,
-      ref,
-    }),
-    popover: resolveShorthand(props.popover, {
-      required: true,
+    root: slot.always(
+      getIntrinsicElementProps('button', {
+        children: infoButtonIconMap[size],
+        type: 'button',
+        'aria-label': 'information',
+        ...props,
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLButtonElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLButtonElement>,
+      }),
+      { elementType: 'button' },
+    ),
+    popover: slot.always(props.popover, {
       defaultProps: {
+        inline,
         positioning: 'above-start',
         size: popoverSizeMap[size],
         withArrow: true,
       },
+      elementType: Popover as React.FC<Partial<Omit<PopoverProps, 'openOnHover'>>>,
     }),
-    info: resolveShorthand(props.info, {
-      required: true,
+    info: slot.always(props.info, {
       defaultProps: {
         role: 'note',
         tabIndex: -1,
       },
+      elementType: PopoverSurface,
     }),
   };
 
@@ -71,6 +89,25 @@ export const useInfoButton_unstable = (props: InfoButtonProps, ref: React.Ref<HT
 
   state.popover.open = popoverOpen;
   state.popover.onOpenChange = mergeCallbacks(state.popover.onOpenChange, (e, data) => setPopoverOpen(data.open));
+
+  const focusOutRef = React.useCallback(
+    (el: HTMLDivElement) => {
+      if (!el) {
+        return;
+      }
+
+      el.addEventListener('focusout', e => {
+        const nextFocused = e.relatedTarget;
+
+        if (isHTMLElement(nextFocused) && !elementContains(el, nextFocused)) {
+          setPopoverOpen(false);
+        }
+      });
+    },
+    [setPopoverOpen],
+  );
+
+  state.info.ref = useMergedRefs(state.info.ref, focusOutRef);
 
   return state;
 };

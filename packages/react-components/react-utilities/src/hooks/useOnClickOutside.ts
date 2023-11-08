@@ -28,23 +28,34 @@ export type UseOnClickOrScrollOutsideOptions = {
   disabled?: boolean;
 
   /**
+   * Disables custom focus event listeners for iframes
+   */
+  disabledFocusOnIframe?: boolean;
+
+  /**
    * Called if the click is outside the element refs
    */
   callback: (ev: MouseEvent | TouchEvent) => void;
 };
+
+const DEFAULT_CONTAINS: UseOnClickOrScrollOutsideOptions['contains'] = (parent, child) => !!parent?.contains(child);
 
 /**
  * @internal
  * Utility to perform checks where a click/touch event was made outside a component
  */
 export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => {
-  const { refs, callback, element, disabled, contains: containsProp } = options;
+  const { refs, callback, element, disabled, disabledFocusOnIframe, contains = DEFAULT_CONTAINS } = options;
   const timeoutId = React.useRef<number | undefined>(undefined);
-  useIFrameFocus(options);
 
+  useIFrameFocus({ element, disabled: disabledFocusOnIframe || disabled, callback, refs, contains });
+
+  const isMouseDownInsideRef = React.useRef(false);
   const listener = useEventCallback((ev: MouseEvent | TouchEvent) => {
-    const contains: UseOnClickOrScrollOutsideOptions['contains'] =
-      containsProp || ((parent, child) => !!parent?.contains(child));
+    if (isMouseDownInsideRef.current) {
+      isMouseDownInsideRef.current = false;
+      return;
+    }
 
     const target = ev.composedPath()[0] as HTMLElement;
     const isOutside = refs.every(ref => !contains(ref.current || null, target));
@@ -52,6 +63,13 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     if (isOutside && !disabled) {
       callback(ev);
     }
+  });
+
+  const handleMouseDown = useEventCallback((ev: MouseEvent) => {
+    // Selecting text from inside to outside will rigger click event.
+    // In this case click event target is outside but mouse down event target is inside.
+    // And this click event should be considered as inside click.
+    isMouseDownInsideRef.current = refs.some(ref => contains(ref.current || null, ev.target as HTMLElement));
   });
 
   React.useEffect(() => {
@@ -78,6 +96,7 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
     element?.addEventListener('click', conditionalHandler, true);
     element?.addEventListener('touchstart', conditionalHandler, true);
     element?.addEventListener('contextmenu', conditionalHandler, true);
+    element?.addEventListener('mousedown', handleMouseDown, true);
 
     // Garbage collect this event after it's no longer useful to avoid memory leaks
     timeoutId.current = window.setTimeout(() => {
@@ -88,11 +107,12 @@ export const useOnClickOutside = (options: UseOnClickOrScrollOutsideOptions) => 
       element?.removeEventListener('click', conditionalHandler, true);
       element?.removeEventListener('touchstart', conditionalHandler, true);
       element?.removeEventListener('contextmenu', conditionalHandler, true);
+      element?.removeEventListener('mousedown', handleMouseDown, true);
 
       clearTimeout(timeoutId.current);
       currentEvent = undefined;
     };
-  }, [listener, element, disabled]);
+  }, [listener, element, disabled, handleMouseDown]);
 };
 
 const getWindowEvent = (target: Node | Window): Event | undefined => {
@@ -111,7 +131,8 @@ const getWindowEvent = (target: Node | Window): Event | undefined => {
 
 const FUI_FRAME_EVENT = 'fuiframefocus';
 
-interface UseIFrameFocusOptions extends UseOnClickOrScrollOutsideOptions {
+interface UseIFrameFocusOptions
+  extends Pick<UseOnClickOrScrollOutsideOptions, 'disabled' | 'element' | 'callback' | 'contains' | 'refs'> {
   /**
    * Millisecond duration to poll
    */
@@ -133,16 +154,15 @@ const useIFrameFocus = (options: UseIFrameFocusOptions) => {
     disabled,
     element: targetDocument,
     callback,
-    contains: containsProp = (parent, child) => !!parent?.contains(child),
+    contains = DEFAULT_CONTAINS,
     pollDuration = 1000,
     refs,
   } = options;
   const timeoutRef = React.useRef<number>();
 
   const listener = useEventCallback((e: Event) => {
-    const contains = containsProp || ((parent, child) => !!parent?.contains(child));
-
     const isOutside = refs.every(ref => !contains(ref.current || null, e.target as HTMLElement));
+
     if (isOutside && !disabled) {
       callback(e as MouseEvent);
     }

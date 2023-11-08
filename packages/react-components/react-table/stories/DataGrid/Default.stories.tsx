@@ -157,6 +157,7 @@ export const Default = () => {
       selectionMode="multiselect"
       getRowId={item => item.file.label}
       onSelectionChange={(e, data) => console.log(data)}
+      focusMode="composite"
     >
       <DataGridHeader>
         <DataGridRow selectionCell={{ 'aria-label': 'Select all rows' }}>

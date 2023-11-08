@@ -1,4 +1,3 @@
-// Default eslintrc for packages without one, or files outside a package
 {
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
@@ -20,5 +19,12 @@
     "**/node_modules",
     "**/temp",
     "**/*.scss.ts"
+  ],
+  "overrides": [
+    {
+      "files": "*.json",
+      "parser": "jsonc-eslint-parser",
+      "rules": {}
+    }
   ]
 }

@@ -1,26 +1,24 @@
-import { FlatTreeItemProps } from '../hooks/useFlatTree';
-import { TreeItemProps } from '../TreeItem';
+import { HeadlessFlatTreeItemProps } from '../FlatTree';
+import { TreeItemProps, TreeItemValue } from '../TreeItem';
 
-export type NestedTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
-  subtree?: NestedTreeItem<Props>[];
+export type FlattenTreeItem<Props extends TreeItemProps> = Omit<Props, 'subtree' | 'itemType'> & {
+  value: TreeItemValue;
+  subtree?: FlattenTreeItem<Props>[];
 };
 
-export type FlattenedTreeItem<Props extends TreeItemProps> = FlatTreeItemProps & Props;
+export type FlattenedTreeItem<Props extends TreeItemProps> = HeadlessFlatTreeItemProps & Props;
 
-let count = 1;
 function flattenTreeRecursive<Props extends TreeItemProps>(
-  items: NestedTreeItem<Props>[],
-  parent?: FlatTreeItemProps & Props,
+  items: FlattenTreeItem<Props>[],
+  parent?: HeadlessFlatTreeItemProps & Props,
   level = 1,
 ): FlattenedTreeItem<Props>[] {
   return items.reduce<FlattenedTreeItem<Props>[]>((acc, { subtree, ...item }, index) => {
-    const id = item.id ?? `fui-FlatTreeItem-${count++}`;
     const flatTreeItem = {
       'aria-level': level,
       'aria-posinset': index + 1,
       'aria-setsize': items.length,
       parentValue: parent?.value,
-      value: item.value ?? (id as unknown as Props['value']),
       ...item,
     } as FlattenedTreeItem<Props>;
     acc.push(flatTreeItem);
@@ -73,5 +71,5 @@ function flattenTreeRecursive<Props extends TreeItemProps>(
  */
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export const flattenTree_unstable = <Props extends TreeItemProps>(
-  items: NestedTreeItem<Props>[],
+  items: FlattenTreeItem<Props>[],
 ): FlattenedTreeItem<Props>[] => flattenTreeRecursive(items);

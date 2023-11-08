@@ -14,17 +14,18 @@ import { Types } from 'tabster';
 export function applyFocusVisiblePolyfill(scope: HTMLElement, targetWindow: Window): () => void;
 
 // @public
-export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
+export function createCustomFocusIndicatorStyle<TStyle extends GriffelStyle | GriffelResetStyle>(style: TStyle, { selector: selectorType, customizeSelector, }?: CreateCustomFocusIndicatorStyleOptions): TStyle extends GriffelStyle ? GriffelStyle : GriffelResetStyle;
 
 // @public (undocumented)
 export interface CreateCustomFocusIndicatorStyleOptions {
+    customizeSelector?: (selector: string) => string;
     // @deprecated
     enableOutline?: boolean;
     selector?: 'focus' | 'focus-within';
 }
 
 // @public
-export const createFocusOutlineStyle: ({ enableOutline, selector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
+export const createFocusOutlineStyle: ({ enableOutline, selector, customizeSelector, style, }?: CreateFocusOutlineStyleOptions) => GriffelStyle;
 
 // @public (undocumented)
 export interface CreateFocusOutlineStyleOptions extends Omit<CreateCustomFocusIndicatorStyleOptions, 'enableOutline'> {
@@ -44,6 +45,9 @@ export type FocusOutlineStyleOptions = {
     outlineOffset?: string | FocusOutlineOffset;
 };
 
+// @public (undocumented)
+export type TabsterDOMAttribute = Types.TabsterDOMAttribute;
+
 // @public
 export const useArrowNavigationGroup: (options?: UseArrowNavigationGroupOptions) => Types.TabsterDOMAttribute;
 
@@ -62,6 +66,7 @@ export const useFocusableGroup: (options?: UseFocusableGroupOptions) => Types.Ta
 
 // @public (undocumented)
 export interface UseFocusableGroupOptions {
+    ignoreDefaultKeydown?: Types.FocusableProps['ignoreKeydown'];
     tabBehavior?: 'unlimited' | 'limited' | 'limited-trap-focus';
 }
 
@@ -86,6 +91,9 @@ export function useFocusWithin<TElement extends HTMLElement = HTMLElement>(): Re
 // @public
 export function useKeyboardNavAttribute<E extends HTMLElement>(): RefObject<E>;
 
+// @internal
+export const useMergedTabsterAttributes_unstable: (...attributes: Types.TabsterDOMAttribute[]) => Types.TabsterDOMAttribute;
+
 // @public
 export const useModalAttributes: (options?: UseModalAttributesOptions) => {
     modalAttributes: Types.TabsterDOMAttribute;
@@ -102,6 +110,12 @@ export interface UseModalAttributesOptions {
 
 // @public (undocumented)
 export function useObservedElement(name: string | string[]): Types.TabsterDOMAttribute;
+
+// @public
+export function useRestoreFocusSource(): Types.TabsterDOMAttribute;
+
+// @public
+export function useRestoreFocusTarget(): Types.TabsterDOMAttribute;
 
 // @internal
 export const useTabsterAttributes: (props: Types.TabsterAttributeProps) => Types.TabsterDOMAttribute;

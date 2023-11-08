@@ -1,26 +1,18 @@
 const { execSync } = require('child_process');
-const fs = require('fs');
-const path = require('path');
 
-const { workspaceRoot } = require('@nrwl/devkit');
+const { workspaceRoot, readProjectConfiguration } = require('@nx/devkit');
 
-const findGitRoot = require('./findGitRoot');
+const { tree } = require('./tree');
+
 const TEN_MEGABYTES = 1024 * 10000;
 
 /**
- * Gets project metadata from monorepo source of truth which is `workspace.json`
- * @param {Object} options
- * @param {string} [options.root] - repo root path
- * @param {string} options.name - package name
- * @returns {import('@nrwl/devkit').ProjectConfiguration}
+ * Gets nx project metadata
+ * @param {string} projectName - package name
+ * @returns {import('@nx/devkit').ProjectConfiguration}
  */
-function getProjectMetadata(options) {
-  const { root = findGitRoot() } = options;
-
-  /**@type {import('@nrwl/devkit').WorkspaceJsonConfiguration} */
-  const nxWorkspace = JSON.parse(fs.readFileSync(path.join(root, 'workspace.json'), 'utf-8'));
-
-  return nxWorkspace.projects[options.name];
+function getProjectMetadata(projectName) {
+  return readProjectConfiguration(tree, projectName);
 }
 
 /**

@@ -9,6 +9,7 @@ import {
   TableSortState,
   defaultColumnSizingState,
 } from '../hooks';
+import { TabsterDOMAttribute } from '@fluentui/react-tabster';
 
 interface Item {
   first: string;
@@ -45,6 +46,7 @@ export function mockDataGridContext(
     // eslint-disable-next-line @typescript-eslint/naming-convention
     columnSizing_unstable: defaultColumnSizingState,
     tableRef: React.createRef(),
+    compositeRowTabsterAttribute: {} as TabsterDOMAttribute,
     ...options,
   };
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand, useEventCallback, useId } from '@fluentui/react-utilities';
-import { DismissRegular, bundleIcon, DismissFilled } from '@fluentui/react-icons';
+import { getIntrinsicElementProps, useEventCallback, useId, slot } from '@fluentui/react-utilities';
+import { DismissRegular } from '@fluentui/react-icons';
 import type { TagProps, TagState } from './Tag.types';
 import { Delete, Backspace } from '@fluentui/keyboard-keys';
-import { useTagGroupContext_unstable } from '../../contexts/TagGroupContext';
+import { useTagGroupContext_unstable } from '../../contexts/tagGroupContext';
 
 const tagAvatarSizeMap = {
   medium: 28,
@@ -16,8 +16,6 @@ const tagAvatarShapeMap = {
   circular: 'circular',
 } as const;
 
-const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
-
 /**
  * Create the state required to render Tag.
  *
@@ -25,35 +23,37 @@ const DismissIcon = bundleIcon(DismissFilled, DismissRegular);
  * before being passed to renderTag_unstable.
  *
  * @param props - props from this instance of Tag
- * @param ref - reference to root HTMLElement of Tag
+ * @param ref - reference to root HTMLSpanElement or HTMLButtonElement of Tag
  */
-export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): TagState => {
-  const { dismissible: contextDismissible, handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
+export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLSpanElement | HTMLButtonElement>): TagState => {
+  const { handleTagDismiss, size: contextSize } = useTagGroupContext_unstable();
 
   const id = useId('fui-Tag', props.id);
 
   const {
-    appearance = 'filled-lighter',
+    appearance = 'filled',
     disabled = false,
-    dismissible = contextDismissible,
+    dismissible = false,
     shape = 'rounded',
     size = contextSize,
     value = id,
   } = props;
 
-  const handleClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
+  const dismissOnClick = useEventCallback((ev: React.MouseEvent<HTMLButtonElement>) => {
     props.onClick?.(ev);
     if (!ev.defaultPrevented) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
 
-  const handleKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
+  const dismissOnKeyDown = useEventCallback((ev: React.KeyboardEvent<HTMLButtonElement>) => {
     props?.onKeyDown?.(ev);
     if (!ev.defaultPrevented && (ev.key === Delete || ev.key === Backspace)) {
-      handleTagDismiss?.(ev, value);
+      handleTagDismiss?.(ev, { value });
     }
   });
+
+  const elementType = dismissible ? 'button' : 'span';
 
   return {
     appearance,
@@ -65,7 +65,7 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
     size,
 
     components: {
-      root: 'button',
+      root: elementType,
       media: 'span',
       icon: 'span',
       primaryText: 'span',
@@ -73,28 +73,33 @@ export const useTag_unstable = (props: TagProps, ref: React.Ref<HTMLElement>): T
       dismissIcon: 'span',
     },
 
-    root: getNativeElementProps('button', {
-      ref,
-      ...props,
-      id,
-      onClick: handleClick,
-      onKeyDown: handleKeyDown,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps(elementType, {
+        ref,
+        ...props,
+        id,
+        ...(dismissible && { onClick: dismissOnClick, onKeyDown: dismissOnKeyDown }),
+      }),
+      { elementType },
+    ),
 
-    media: resolveShorthand(props.media),
-    icon: resolveShorthand(props.icon),
-    primaryText: resolveShorthand(props.primaryText, {
-      required: true,
+    media: slot.optional(props.media, { elementType: 'span' }),
+    icon: slot.optional(props.icon, { elementType: 'span' }),
+    primaryText: slot.optional(props.primaryText, {
+      renderByDefault: true,
       defaultProps: {
         children: props.children,
       },
+      elementType: 'span',
     }),
-    secondaryText: resolveShorthand(props.secondaryText),
-    dismissIcon: resolveShorthand(props.dismissIcon, {
-      required: dismissible,
+    secondaryText: slot.optional(props.secondaryText, { elementType: 'span' }),
+    dismissIcon: slot.optional(props.dismissIcon, {
+      renderByDefault: dismissible,
       defaultProps: {
-        children: <DismissIcon />,
+        children: <DismissRegular />,
+        role: 'img',
       },
+      elementType: 'span',
     }),
   };
 };

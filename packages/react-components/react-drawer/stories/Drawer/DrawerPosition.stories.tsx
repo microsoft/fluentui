@@ -1,6 +1,14 @@
 import * as React from 'react';
-import { DrawerBody, DrawerHeader, DrawerHeaderTitle, DrawerOverlay, DrawerProps } from '@fluentui/react-drawer';
-import { Button, makeStyles, tokens } from '@fluentui/react-components';
+import {
+  DrawerBody,
+  DrawerHeader,
+  DrawerHeaderTitle,
+  OverlayDrawer,
+  DrawerProps,
+  Button,
+  makeStyles,
+  tokens,
+} from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -16,21 +24,21 @@ export const Position = () => {
   const styles = useStyles();
 
   const [isOpen, setIsOpen] = React.useState(false);
-  const [position, setPosition] = React.useState<DrawerProps['position']>('left');
+  const [position, setPosition] = React.useState<DrawerProps['position']>('start');
 
   const onClickLeftButton = React.useCallback(() => {
-    setPosition('left');
+    setPosition('start');
     setIsOpen(true);
   }, []);
 
   const onClickRightButton = React.useCallback(() => {
-    setPosition('right');
+    setPosition('end');
     setIsOpen(true);
   }, []);
 
   return (
     <div>
-      <DrawerOverlay position={position} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
+      <OverlayDrawer position={position} open={isOpen} onOpenChange={(_, { open }) => setIsOpen(open)}>
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -42,14 +50,14 @@ export const Position = () => {
               />
             }
           >
-            {position === 'left' ? 'Left' : 'Right'} Drawer
+            {position === 'start' ? 'Left' : 'Right'} Drawer
           </DrawerHeaderTitle>
         </DrawerHeader>
 
         <DrawerBody>
           <p>Drawer content</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <div className={styles.content}>
         <Button appearance="primary" onClick={onClickLeftButton}>

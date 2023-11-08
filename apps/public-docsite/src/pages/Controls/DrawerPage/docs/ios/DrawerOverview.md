@@ -3,12 +3,12 @@ Drawers let you reveal lightweight views inside your application without being a
 <DisplayToggle onText="Dark" offText="Light" label="Theme Switcher">
 ### Vertical
 
-<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/ios/updated/img_drawer_03_floatingsheet_light.png?text=LightMode" />
-<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/ios/updated/img_drawer_03_floatingsheet_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_drawer_03_floatingsheet_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_drawer_03_floatingsheet_dark.png?text=DarkMode" />
 
 ### Horizontal
 
-<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/ios/updated/img_drawer_04_leftrightsheet_light.png?text=LightMode" />
-<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20221209.001/fabric-website/images/controls/ios/updated/img_drawer_04_leftrightsheet_dark.png?text=DarkMode" />
+<img className="off" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_drawer_04_leftrightsheet_light.png?text=LightMode" />
+<img className="on" src="https://res-1.cdn.office.net/files/fabric-cdn-prod_20230815.002/fabric-website/images/controls/ios/updated/img_drawer_04_leftrightsheet_dark.png?text=DarkMode" />
 
 </DisplayToggle>

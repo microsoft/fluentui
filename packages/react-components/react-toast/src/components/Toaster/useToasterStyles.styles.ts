@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses } from '@griffel/react';
+import { makeResetStyles, makeStyles, mergeClasses } from '@griffel/react';
 import type { ToasterSlots, ToasterState } from './Toaster.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { TOAST_POSITIONS, getPositionStyles } from '../../state/index';
@@ -10,11 +10,15 @@ export const toasterClassNames: SlotClassNames<ToasterSlots> = {
 /**
  * Styles for the root slot
  */
-const useStyles = makeStyles({
-  root: {
-    position: 'fixed',
-    width: '292px',
-    pointerEvents: 'none',
+const useRootBaseClassName = makeResetStyles({
+  position: 'fixed',
+  width: '292px',
+  pointerEvents: 'none',
+});
+
+const useToasterStyles = makeStyles({
+  inline: {
+    position: 'absolute',
   },
 });
 
@@ -22,8 +26,14 @@ const useStyles = makeStyles({
  * Apply styling to the Toaster slots based on the state
  */
 export const useToasterStyles_unstable = (state: ToasterState): ToasterState => {
-  const styles = useStyles();
-  const className = mergeClasses(toasterClassNames.root, styles.root, state.root.className);
+  const rootBaseClassName = useRootBaseClassName();
+  const styles = useToasterStyles();
+  const className = mergeClasses(
+    toasterClassNames.root,
+    rootBaseClassName,
+    state.inline && styles.inline,
+    state.root.className,
+  );
   if (state.bottomStart) {
     state.bottomStart.className = className;
     state.bottomStart.style ??= {};
@@ -46,6 +56,18 @@ export const useToasterStyles_unstable = (state: ToasterState): ToasterState => 
     state.topEnd.className = className;
     state.topEnd.style ??= {};
     Object.assign(state.topEnd.style, getPositionStyles(TOAST_POSITIONS.topEnd, state.dir, state.offset));
+  }
+
+  if (state.top) {
+    state.top.className = className;
+    state.top.style ??= {};
+    Object.assign(state.top.style, getPositionStyles(TOAST_POSITIONS.top, state.dir, state.offset));
+  }
+
+  if (state.bottom) {
+    state.bottom.className = className;
+    state.bottom.style ??= {};
+    Object.assign(state.bottom.style, getPositionStyles(TOAST_POSITIONS.bottom, state.dir, state.offset));
   }
 
   return state;

@@ -12,8 +12,8 @@ import type { ARIAButtonProps, ARIAButtonSlotProps, ARIAButtonType } from './typ
  * for multiple scenarios of shorthand properties. Ensuring 1st rule of ARIA for cases
  * where no attribute addition is required.
  */
-export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (slot, options) => {
-  const shorthand = resolveShorthand(slot, options);
+export const useARIAButtonShorthand: ResolveShorthandFunction<ARIAButtonSlotProps> = (value, options) => {
+  const shorthand = resolveShorthand(value, options);
   const shorthandARIAButton = useARIAButtonProps<ARIAButtonType, ARIAButtonProps>(shorthand?.as ?? 'button', shorthand);
   return shorthand && shorthandARIAButton;
 };

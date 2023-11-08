@@ -4,6 +4,7 @@ import descriptionMd from './MenuDescription.md';
 import bestPracticesMd from './MenuBestPractices.md';
 export { Default } from './MenuDefault.stories';
 export { Interaction } from './MenuInteraction.stories';
+export { MenuItemLinkNavigation } from './MenuItemLinkNavigation.stories';
 export { MenuItemsWithIcons } from './MenuMenuItemsWithIcons.stories';
 export { AligningWithIcons } from './MenuAligningWithIcons.stories';
 export { AligningWithSelectableItems } from './MenuAligningWithSelectableItems.stories';

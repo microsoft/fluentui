@@ -4,6 +4,7 @@ exports[`ToastBody renders a default state 1`] = `
 <div>
   <div
     class="fui-ToastBody"
+    id=""
   >
     Default ToastBody
   </div>

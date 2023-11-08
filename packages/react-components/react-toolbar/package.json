@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-toolbar",
-  "version": "9.1.20",
+  "version": "9.1.54",
   "description": "React components for building web experiences",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -29,29 +29,29 @@
   "devDependencies": {
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.23",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-cypress": "*",
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-button": "^9.3.19",
-    "@fluentui/react-divider": "^9.2.17",
-    "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.9.4",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.8",
-    "@fluentui/react-context-selector": "^9.1.24",
-    "@fluentui/react-radio": "^9.1.20",
-    "@fluentui/react-shared-contexts": "^9.5.1",
-    "@fluentui/react-tabster": "^9.9.0",
-    "@griffel/react": "^1.5.7",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/react-button": "^9.3.53",
+    "@fluentui/react-divider": "^9.2.48",
+    "@fluentui/react-theme": "^9.1.15",
+    "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/react-jsx-runtime": "^9.0.18",
+    "@fluentui/react-context-selector": "^9.1.41",
+    "@fluentui/react-radio": "^9.1.54",
+    "@fluentui/react-shared-contexts": "^9.11.1",
+    "@fluentui/react-tabster": "^9.14.3",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "beachball": {
     "disallowedChangeTypes": [

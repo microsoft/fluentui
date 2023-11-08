@@ -8,16 +8,20 @@
 
 import { ARIAButtonResultProps } from '@fluentui/react-aria';
 import { ARIAButtonType } from '@fluentui/react-aria';
+import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 import type { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { JSXElementConstructor } from 'react';
+import type { PortalProps } from '@fluentui/react-portal';
 import * as React_2 from 'react';
+import { ReactElement } from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import type { TriggerProps } from '@fluentui/react-utilities';
 
 // @public
-export const renderToast_unstable: (state: ToastState) => JSX.Element;
+export const renderToast_unstable: (state: ToastState, contextValues: ToastContextValues) => JSX.Element;
 
 // @public
 export const renderToastBody_unstable: (state: ToastBodyState) => JSX.Element;
@@ -30,6 +34,9 @@ export const renderToastFooter_unstable: (state: ToastFooterState) => JSX.Elemen
 
 // @public
 export const renderToastTitle_unstable: (state: ToastTitleState) => JSX.Element;
+
+// @public
+export const renderToastTrigger_unstable: (state: ToastTriggerState) => ReactElement<any, string | JSXElementConstructor<any>> | null;
 
 // @public
 export const Toast: ForwardRefComponent<ToastProps>;
@@ -50,7 +57,9 @@ export type ToastBodySlots = {
 };
 
 // @public
-export type ToastBodyState = ComponentState<ToastBodySlots>;
+export type ToastBodyState = ComponentState<ToastBodySlots> & {
+    backgroundAppearance: BackgroundAppearanceContextValue;
+};
 
 // @public (undocumented)
 export const toastClassNames: SlotClassNames<ToastSlots>;
@@ -62,8 +71,9 @@ export const Toaster: React_2.FC<ToasterProps>;
 export const toasterClassNames: SlotClassNames<ToasterSlots>;
 
 // @public
-export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & {
+export type ToasterProps = Omit<ComponentProps<ToasterSlots>, 'children'> & Partial<ToasterOptions> & Pick<PortalProps, 'mountNode'> & {
     announce?: Announce;
+    inline?: boolean;
 };
 
 // @public (undocumented)
@@ -72,7 +82,7 @@ export type ToasterSlots = {
 };
 
 // @public
-export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<Required<ToasterProps>, 'announce'> & {
+export type ToasterState = ComponentState<ToasterSlotsInternal> & Pick<AriaLiveProps, 'announceRef'> & Pick<PortalProps, 'mountNode'> & Pick<Required<ToasterProps>, 'announce' | 'inline'> & {
     offset: ToasterOptions['offset'] | undefined;
     renderAriaLive: boolean;
     dir: 'rtl' | 'ltr';
@@ -108,10 +118,12 @@ export type ToastOffset = Partial<Record<ToastPosition, ToastOffsetObject>> | To
 export type ToastPoliteness = 'assertive' | 'polite';
 
 // @public (undocumented)
-export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start';
+export type ToastPosition = 'top-end' | 'top-start' | 'bottom-end' | 'bottom-start' | 'top' | 'bottom';
 
 // @public
-export type ToastProps = ComponentProps<ToastSlots> & {};
+export type ToastProps = ComponentProps<ToastSlots> & {
+    appearance?: BackgroundAppearanceContextValue;
+};
 
 // @public (undocumented)
 export type ToastSlots = {
@@ -119,7 +131,9 @@ export type ToastSlots = {
 };
 
 // @public
-export type ToastState = ComponentState<ToastSlots>;
+export type ToastState = ComponentState<ToastSlots> & {
+    backgroundAppearance: BackgroundAppearanceContextValue;
+};
 
 // @public (undocumented)
 export type ToastStatus = 'queued' | 'visible' | 'dismissed' | 'unmounted';
@@ -141,7 +155,9 @@ export type ToastTitleSlots = {
 };
 
 // @public
-export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContextValue, 'intent'>;
+export type ToastTitleState = ComponentState<ToastTitleSlots> & Pick<ToastContainerContextValue, 'intent'> & {
+    backgroundAppearance: BackgroundAppearanceContextValue;
+};
 
 // @public
 export const ToastTrigger: React_2.FC<ToastTriggerProps>;
@@ -174,6 +190,8 @@ export function useToastController(toasterId?: ToasterId): {
     dismissToast: (toastId: ToastId) => void;
     dismissAllToasts: () => void;
     updateToast: (options: UpdateToastOptions) => void;
+    pauseToast: (toastId: ToastId) => void;
+    playToast: (toastId: ToastId) => void;
 };
 
 // @public
@@ -196,6 +214,9 @@ export const useToastTitle_unstable: (props: ToastTitleProps, ref: React_2.Ref<H
 
 // @public
 export const useToastTitleStyles_unstable: (state: ToastTitleState) => ToastTitleState;
+
+// @public
+export const useToastTrigger_unstable: (props: ToastTriggerProps) => ToastTriggerState;
 
 // (No @packageDocumentation comment for this package)
 

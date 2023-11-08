@@ -54,6 +54,12 @@ export interface IDPointType {
   values: { 0: number; 1: number; data: {} };
   xVal: number | Date;
 }
+export interface IMapXToDataSet {
+  [key: string]: ILineChartDataPoint[];
+  [key: number]: ILineChartDataPoint[];
+}
+
+//by default d3-shape 3.2.0 limits the< path> data point precision to 3 digits(d3/d3-path#10)
 
 export interface IAreaChartState extends IBasestate {
   lineXValue: number;
@@ -64,7 +70,6 @@ export interface IAreaChartState extends IBasestate {
   nearestCircleToHighlight: number | string | Date | null;
   xAxisCalloutAccessibilityData?: IAccessibilityProps;
   isShowCalloutPending: boolean;
-  emptyChart?: boolean;
   /** focused point */
   activePoint: string;
 }
@@ -97,6 +102,11 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   private _isMultiStackChart: boolean;
   private _tooltipId: string;
   private _highlightedCircleId: string;
+  //enableComputationOptimization is used for optimized code to group data points by x value
+  //from O(n^2) to O(n) using a map.
+  private _enableComputationOptimization: boolean;
+  private _firstRenderOptimization: boolean;
+  private _emptyChartId: string;
 
   public constructor(props: IAreaChartProps) {
     super(props);
@@ -113,17 +123,6 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
       isCircleClicked: false,
       nearestCircleToHighlight: null,
       isShowCalloutPending: false,
-      emptyChart: !(
-        (
-          this.props.data &&
-          this.props.data.lineChartData &&
-          this.props.data.lineChartData.length > 0 &&
-          this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
-        )
-        // if all the data sets have no data
-        // filtering all items which have no data and checking if the length of the filtered array is 0
-        // which means chart is not empty
-      ),
       activePoint: '',
     };
     warnDeprecations(COMPONENT_NAME, props, {
@@ -134,6 +133,9 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     this._circleId = getId('circle');
     this._rectId = getId('rectangle');
     this._tooltipId = getId('AreaChartTooltipID');
+    this._enableComputationOptimization = true;
+    this._firstRenderOptimization = true;
+    this._emptyChartId = getId('_AreaChart_empty');
   }
 
   public componentDidUpdate() {
@@ -147,7 +149,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   }
 
   public render(): JSX.Element {
-    if (!this.state.emptyChart) {
+    if (!this._isChartEmpty()) {
       const { lineChartData, chartTitle } = this.props.data;
       const points = this._addDefaultColors(lineChartData);
       const { colors, opacity, stackedInfo, calloutPoints } = this._createSet(points);
@@ -193,6 +195,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
           getmargins={this._getMargins}
           customizedCallout={this._getCustomizedCallout()}
           onChartMouseLeave={this._handleChartMouseLeave}
+          enableFirstRenderOptimization={this.props.enablePerfOptimization && this._firstRenderOptimization}
           /* eslint-disable react/jsx-no-bind */
           // eslint-disable-next-line react/no-children-prop
           children={(props: IChildProps) => {
@@ -222,7 +225,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     }
     return (
       <div
-        id={getId('_AreaChart_')}
+        id={this._emptyChartId}
         role={'alert'}
         style={{ opacity: '0' }}
         aria-label={'Graph has no data to display'}
@@ -379,58 +382,116 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
   };
 
   private _createDataSet = (points: ILineChartPoints[]) => {
-    const allChartPoints: ILineChartDataPoint[] = [];
-    const dataSet: IAreaChartDataSetPoint[] = [];
-    const colors: string[] = [];
-    const opacity: number[] = [];
-    const calloutPoints = calloutData(points!);
+    if (this.props.enablePerfOptimization && this._enableComputationOptimization) {
+      const allChartPoints: ILineChartDataPoint[] = [];
+      const dataSet: IAreaChartDataSetPoint[] = [];
+      const colors: string[] = [];
+      const opacity: number[] = [];
+      const calloutPoints = calloutData(points!);
 
-    points &&
-      points.length &&
-      points.forEach((singleChartPoint: ILineChartPoints) => {
-        colors.push(singleChartPoint.color!);
-        opacity.push(singleChartPoint.opacity || 1);
-        allChartPoints.push(...singleChartPoint.data);
+      points &&
+        points.length &&
+        points.forEach((singleChartPoint: ILineChartPoints) => {
+          colors.push(singleChartPoint.color!);
+          opacity.push(singleChartPoint.opacity || 1);
+          allChartPoints.push(...singleChartPoint.data);
+        });
+
+      const mapOfXvalToListOfDataPoints: IMapXToDataSet = {};
+      allChartPoints.forEach((dataPoint: ILineChartDataPoint) => {
+        const xValue = dataPoint.x instanceof Date ? dataPoint.x.toLocaleString() : dataPoint.x;
+        // map of x value to the list of data points which share the same x value .
+        if (mapOfXvalToListOfDataPoints[xValue]) {
+          mapOfXvalToListOfDataPoints[xValue].push(dataPoint);
+        } else {
+          mapOfXvalToListOfDataPoints[xValue] = [dataPoint];
+        }
       });
 
-    let tempArr = allChartPoints;
-    while (tempArr.length) {
-      const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-      const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
-        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
-      );
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const singleDataset: any = {};
-      filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
-        singleDataset.xVal = singleDataPoint.x;
-        singleDataset[`chart${index}`] = singleDataPoint.y;
+      Object.keys(mapOfXvalToListOfDataPoints).forEach((key: number | string) => {
+        const value: ILineChartDataPoint[] = mapOfXvalToListOfDataPoints[key];
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const singleDataset: any = {};
+        value.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
+          singleDataset.xVal = singleDataPoint.x;
+          singleDataset[`chart${index}`] = singleDataPoint.y;
+        });
+        dataSet.push(singleDataset);
       });
-      dataSet.push(singleDataset);
-      // removing compared objects from array
-      const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
-      tempArr = tempArr.filter(
-        (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
-      );
+
+      // get keys from dataset, used to create stacked data
+      const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+      const keys: string[] = [];
+      for (let i = 0; i < keysLength - 1; i++) {
+        const keyVal = `chart${i}`;
+        keys.push(keyVal);
+      }
+
+      // Stacked Info used to draw graph
+      const stackedInfo = this._getStackedData(keys, dataSet);
+
+      return {
+        colors,
+        opacity,
+        keys,
+        stackedInfo,
+        calloutPoints,
+      };
+    } else {
+      const allChartPoints: ILineChartDataPoint[] = [];
+      const dataSet: IAreaChartDataSetPoint[] = [];
+      const colors: string[] = [];
+      const opacity: number[] = [];
+      const calloutPoints = calloutData(points!);
+
+      points &&
+        points.length &&
+        points.forEach((singleChartPoint: ILineChartPoints) => {
+          colors.push(singleChartPoint.color!);
+          opacity.push(singleChartPoint.opacity || 1);
+          allChartPoints.push(...singleChartPoint.data);
+        });
+
+      let tempArr = allChartPoints;
+      while (tempArr.length) {
+        const valToCheck = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+        const filteredChartPoints: ILineChartDataPoint[] = tempArr.filter(
+          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) === valToCheck,
+        );
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const singleDataset: any = {};
+        filteredChartPoints.forEach((singleDataPoint: ILineChartDataPoint, index: number) => {
+          singleDataset.xVal = singleDataPoint.x;
+          singleDataset[`chart${index}`] = singleDataPoint.y;
+        });
+        dataSet.push(singleDataset);
+        // removing compared objects from array
+        const val = tempArr[0].x instanceof Date ? tempArr[0].x.toLocaleString() : tempArr[0].x;
+        tempArr = tempArr.filter(
+          (point: ILineChartDataPoint) => (point.x instanceof Date ? point.x.toLocaleString() : point.x) !== val,
+        );
+      }
+
+      // get keys from dataset, used to create stacked data
+      const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
+      const keys: string[] = [];
+      for (let i = 0; i < keysLength - 1; i++) {
+        const keyVal = `chart${i}`;
+        keys.push(keyVal);
+      }
+
+      // Stacked Info used to draw graph
+      const stackedInfo = this._getStackedData(keys, dataSet);
+
+      return {
+        colors,
+        opacity,
+        keys,
+        stackedInfo,
+        calloutPoints,
+      };
     }
-
-    // get keys from dataset, used to create stacked data
-    const keysLength: number = dataSet && Object.keys(dataSet[0])!.length;
-    const keys: string[] = [];
-    for (let i = 0; i < keysLength - 1; i++) {
-      const keyVal = `chart${i}`;
-      keys.push(keyVal);
-    }
-
-    // Stacked Info used to draw graph
-    const stackedInfo = this._getStackedData(keys, dataSet);
-
-    return {
-      colors,
-      opacity,
-      keys,
-      stackedInfo,
-      calloutPoints,
-    };
   };
 
   private _getCustomizedCallout = () => {
@@ -624,7 +685,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
               onMouseOut={this._onRectMouseOut}
               onMouseOver={this._onRectMouseMove}
               {...(this.props.optimizeLargeData && {
-                'data-is-focusable': true,
+                'data-is-focusable': this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted(),
                 role: 'img',
                 'aria-label': `${points[index].legend}, series ${index + 1} of ${points.length} with ${
                   points[index].data.length
@@ -655,7 +716,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
                 <circle
                   key={circleId}
                   id={circleId}
-                  data-is-focusable={true}
+                  data-is-focusable={this._legendHighlighted(points[index]!.legend) || this._noLegendHighlighted()}
                   cx={xScale(singlePoint.xVal)}
                   cy={yScale(singlePoint.values[1])}
                   stroke={lineColor}
@@ -829,7 +890,7 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     });
   };
 
-  private _getAriaLabel = (lineIndex: number, pointIndex: number): string => {
+  private _getAriaLabel(lineIndex: number, pointIndex: number): string {
     const line = this.props.data.lineChartData![lineIndex];
     const point = line.data[pointIndex];
     const formattedDate = point.x instanceof Date ? point.x.toLocaleString() : point.x;
@@ -837,5 +898,19 @@ export class AreaChartBase extends React.Component<IAreaChartProps, IAreaChartSt
     const legend = line.legend;
     const yValue = point.yAxisCalloutData || point.y;
     return point.callOutAccessibilityData?.ariaLabel || `${xValue}. ${legend}, ${yValue}.`;
-  };
+  }
+
+  private _isChartEmpty(): boolean {
+    return !(
+      (
+        this.props.data &&
+        this.props.data.lineChartData &&
+        this.props.data.lineChartData.length > 0 &&
+        this.props.data.lineChartData.filter(item => item.data.length === 0).length === 0
+      )
+      // if all the data sets have no data
+      // filtering all items which have no data and checking if the length of the filtered array is 0
+      // which means chart is not empty
+    );
+  }
 }

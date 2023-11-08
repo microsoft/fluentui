@@ -7,18 +7,18 @@ export type TreeItemPersonaLayoutContextValues = {
   avatar: AvatarContextValue;
 };
 
-export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon'> & {
+export type TreeItemPersonaLayoutSlots = Pick<TreeItemLayoutSlots, 'actions' | 'aside' | 'expandIcon' | 'selector'> & {
   root: NonNullable<Slot<'div'>>;
   /**
    * Avatar to display.
    */
   media: NonNullable<Slot<'div'>>;
   /**
-   * Main text. Children of the root slot are automatically rendered here
+   * Content. Children of the root slot are automatically rendered here
    */
   main: NonNullable<Slot<'div'>>;
   /**
-   * Secondary text that describes or complements the main text
+   * Secondary text that describes or complements the content
    */
   description?: Slot<'div'>;
 };

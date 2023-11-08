@@ -1704,6 +1704,8 @@ exports[`DetailsListV2 renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -1892,6 +1894,8 @@ exports[`DetailsListV2 renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2080,6 +2084,8 @@ exports[`DetailsListV2 renders List correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2687,6 +2693,8 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2819,6 +2827,8 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -2951,6 +2961,8 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3083,6 +3095,8 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3215,6 +3229,8 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3767,6 +3783,8 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -3955,6 +3973,8 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4143,6 +4163,8 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4751,6 +4773,8 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -4939,6 +4963,8 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5127,6 +5153,8 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5734,6 +5762,8 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_0"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -5869,6 +5899,8 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_1"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6004,6 +6036,8 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_2"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6139,6 +6173,8 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_3"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6274,6 +6310,8 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
             data-is-focusable="true"
             data-item-key="column_key_4"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6689,6 +6727,8 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="key"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -6877,6 +6917,8 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="name"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {
@@ -7065,6 +7107,8 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
             data-is-focusable="true"
             data-item-key="value"
             draggable={false}
+            onBlur={[Function]}
+            onFocus={[Function]}
             role="columnheader"
             style={
               Object {

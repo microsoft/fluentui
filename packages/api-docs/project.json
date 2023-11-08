@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/api-docs",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "tags": ["v8", "platform:node"],
+  "sourceRoot": "packages/api-docs/src"
+}

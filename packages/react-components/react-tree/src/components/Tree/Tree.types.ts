@@ -1,14 +1,25 @@
-import * as React from 'react';
-import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import { TreeContextValue } from '../../contexts/treeContext';
-import { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import type * as React from 'react';
+import type { ComponentProps, ComponentState, SelectionMode, Slot } from '@fluentui/react-utilities';
+import type { TreeContextValue, SubtreeContextValue } from '../../contexts';
+import type { ArrowDown, ArrowLeft, ArrowRight, ArrowUp, End, Enter, Home } from '@fluentui/keyboard-keys';
+import type { TreeItemValue } from '../TreeItem/TreeItem.types';
+import { CheckboxProps } from '@fluentui/react-checkbox';
+import { RadioProps } from '@fluentui/react-radio';
+
+type MultiSelectValue = NonNullable<CheckboxProps['checked']>;
+type SingleSelectValue = NonNullable<RadioProps['checked']>;
+export type TreeSelectionValue = MultiSelectValue | SingleSelectValue;
 
 export type TreeSlots = {
   root: Slot<'div'>;
 };
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-export type TreeNavigationData_unstable = { target: HTMLElement; value: string } & (
+export type TreeNavigationData_unstable = {
+  target: HTMLElement;
+  value: TreeItemValue;
+  parentValue: TreeItemValue | undefined;
+} & (
   | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
   | { event: React.KeyboardEvent<HTMLElement>; type: 'TypeAhead' }
   | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
@@ -22,38 +33,48 @@ export type TreeNavigationData_unstable = { target: HTMLElement; value: string }
 // eslint-disable-next-line @typescript-eslint/naming-convention
 export type TreeNavigationEvent_unstable = TreeNavigationData_unstable['event'];
 
-export type TreeOpenChangeData = { open: boolean; value: string } & (
-  | {
-      event: React.MouseEvent<HTMLElement>;
-      target: HTMLElement;
-      type: 'ExpandIconClick';
-    }
-  | {
-      event: React.MouseEvent<HTMLElement>;
-      target: HTMLElement;
-      type: 'Click';
-    }
-  | {
-      event: React.KeyboardEvent<HTMLElement>;
-      target: HTMLElement;
-      type: typeof Enter;
-    }
-  | {
-      event: React.KeyboardEvent<HTMLElement>;
-      target: HTMLElement;
-      type: typeof ArrowRight;
-    }
-  | {
-      event: React.KeyboardEvent<HTMLElement>;
-      target: HTMLElement;
-      type: typeof ArrowLeft;
-    }
+export type TreeOpenChangeData = {
+  open: boolean;
+  openItems: Set<TreeItemValue>;
+  value: TreeItemValue;
+  target: HTMLElement;
+} & (
+  | { event: React.MouseEvent<HTMLElement>; type: 'ExpandIconClick' }
+  | { event: React.MouseEvent<HTMLElement>; type: 'Click' }
+  /**
+   * @deprecated
+   * Use `type: 'Click'` instead of Enter,
+   * an enter press will trigger a click event, which will trigger an open change,
+   * so there is no need to have a separate type for it.
+   */
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof Enter }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowRight }
+  | { event: React.KeyboardEvent<HTMLElement>; type: typeof ArrowLeft }
 );
 
 export type TreeOpenChangeEvent = TreeOpenChangeData['event'];
 
+export type TreeCheckedChangeData = {
+  value: TreeItemValue;
+  checkedItems: Map<TreeItemValue, TreeSelectionValue>;
+  target: HTMLElement;
+  event: React.ChangeEvent<HTMLElement>;
+  type: 'Change';
+} & (
+  | {
+      selectionMode: 'multiselect';
+      checked: MultiSelectValue;
+    }
+  | {
+      selectionMode: 'single';
+      checked: SingleSelectValue;
+    }
+);
+
+export type TreeCheckedChangeEvent = TreeCheckedChangeData['event'];
+
 export type TreeContextValues = {
-  tree: TreeContextValue;
+  tree: TreeContextValue | SubtreeContextValue;
 };
 
 export type TreeProps = ComponentProps<TreeSlots> & {
@@ -75,13 +96,12 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * Controls the state of the open tree items.
    * These property is ignored for subtrees.
    */
-  openItems?: Iterable<string>;
+  openItems?: Iterable<TreeItemValue>;
   /**
-   * This refers to a list of ids of opened tree items.
-   * Default value for the uncontrolled state of open tree items.
-   * These property is ignored for subtrees.
+   * This refers to a list of ids of default opened items.
+   * This property is ignored for subtrees.
    */
-  defaultOpenItems?: Iterable<string>;
+  defaultOpenItems?: Iterable<TreeItemValue>;
   /**
    * Callback fired when the component changes value from open state.
    * These property is ignored for subtrees.
@@ -101,14 +121,37 @@ export type TreeProps = ComponentProps<TreeSlots> & {
    * @param event - a React's Synthetic event
    * @param data - A data object with relevant information,
    */
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  onNavigation_unstable?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+  onNavigation?(event: TreeNavigationEvent_unstable, data: TreeNavigationData_unstable): void;
+
+  /**
+   * This refers to the selection mode of the tree.
+   * - undefined: No selection can be done.
+   * - 'single': Only one tree item can be selected, radio buttons are rendered.
+   * - 'multiselect': Multiple tree items can be selected, checkboxes are rendered.
+   *
+   * @default undefined
+   */
+  selectionMode?: SelectionMode;
+  /**
+   * This refers to a list of ids of checked tree items, or a list of tuples of ids and checked state.
+   * Controls the state of the checked tree items.
+   * These property is ignored for subtrees.
+   */
+  checkedItems?: Iterable<TreeItemValue | [TreeItemValue, TreeSelectionValue]>;
+  /**
+   * Callback fired when the component changes value from checked state.
+   * These property is ignored for subtrees.
+   *
+   * @param event - a React's Synthetic event
+   * @param data - A data object with relevant information,
+   * such as checked value and type of interaction that created the event.
+   */
+  onCheckedChange?(event: TreeCheckedChangeEvent, data: TreeCheckedChangeData): void;
 };
 
 /**
  * State used in rendering Tree
  */
-export type TreeState = ComponentState<TreeSlots> &
-  TreeContextValue & {
-    open: boolean;
-  };
+export type TreeState = ComponentState<TreeSlots> & {
+  open: boolean;
+} & (TreeContextValue | SubtreeContextValue);

@@ -1,15 +1,18 @@
-/** @jsxRuntime classic */
-/** @jsx createElement */
-
-import { createElement } from '@fluentui/react-jsx-runtime';
-import { getSlotsNext } from '@fluentui/react-utilities';
-import type { ToastState, ToastSlots } from './Toast.types';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
+import { BackgroundAppearanceProvider } from '@fluentui/react-shared-contexts';
+import type { ToastState, ToastSlots, ToastContextValues } from './Toast.types';
 
 /**
  * Render the final JSX of Toast
  */
-export const renderToast_unstable = (state: ToastState) => {
-  const { slots, slotProps } = getSlotsNext<ToastSlots>(state);
+export const renderToast_unstable = (state: ToastState, contextValues: ToastContextValues) => {
+  assertSlots<ToastSlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return (
+    <BackgroundAppearanceProvider value={contextValues.backgroundAppearance}>
+      <state.root />
+    </BackgroundAppearanceProvider>
+  );
 };

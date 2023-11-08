@@ -1,4 +1,5 @@
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
+import { BackgroundAppearanceContextValue } from '@fluentui/react-shared-contexts';
 
 export type ToastBodySlots = {
   root: Slot<'div'>;
@@ -13,4 +14,6 @@ export type ToastBodyProps = ComponentProps<ToastBodySlots> & {};
 /**
  * State used in rendering ToastBody
  */
-export type ToastBodyState = ComponentState<ToastBodySlots>;
+export type ToastBodyState = ComponentState<ToastBodySlots> & {
+  backgroundAppearance: BackgroundAppearanceContextValue;
+};

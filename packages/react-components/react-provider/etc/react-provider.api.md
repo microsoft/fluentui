@@ -4,9 +4,12 @@
 
 ```ts
 
+/// <reference types="react" />
+
 import { ComponentProps } from '@fluentui/react-utilities';
 import type { ComponentState } from '@fluentui/react-utilities';
 import type { CustomStyleHooksContextValue_unstable } from '@fluentui/react-shared-contexts';
+import type { IconDirectionContextValue } from '@fluentui/react-icons';
 import { OverridesContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { PartialTheme } from '@fluentui/react-theme';
 import type { ProviderContextValue_unstable } from '@fluentui/react-shared-contexts';
@@ -17,6 +20,9 @@ import { Theme } from '@fluentui/tokens';
 import type { ThemeClassNameContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { ThemeContextValue_unstable } from '@fluentui/react-shared-contexts';
 import type { TooltipVisibilityContextValue_unstable } from '@fluentui/react-shared-contexts';
+
+// @public
+export function createCSSRuleFromTheme(selector: string, theme: PartialTheme | undefined): string;
 
 // @public (undocumented)
 export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentProps<FluentProviderSlots, "root">, "dir"> & {
@@ -106,10 +112,30 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useDataGridHeaderCellStyles_unstable: (state: unknown) => void;
         useDataGridSelectionCellStyles_unstable: (state: unknown) => void;
         useDrawerStyles_unstable: (state: unknown) => void;
-        useDrawerBodyStyles_unstable: (state: unknown) => void;
+        useDrawerInlineStyles_unstable: (state: unknown) => void;
+        useDrawerOverlayStyles_unstable: (state: unknown) => void;
+        useInlineDrawerStyles_unstable: (state: unknown) => void;
+        useOverlayDrawerStyles_unstable: (state: unknown) => void;
         useDrawerHeaderStyles_unstable: (state: unknown) => void;
-        useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
         useDrawerHeaderNavigationStyles_unstable: (state: unknown) => void;
+        useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
+        useDrawerBodyStyles_unstable: (state: unknown) => void;
+        useDrawerFooterStyles_unstable: (state: unknown) => void;
+        useInteractionTagStyles_unstable: (state: unknown) => void;
+        useInteractionTagPrimaryStyles_unstable: (state: unknown) => void;
+        useInteractionTagSecondaryStyles_unstable: (state: unknown) => void;
+        useTagStyles_unstable: (state: unknown) => void;
+        useTagGroupStyles_unstable: (state: unknown) => void;
+        useBreadcrumbStyles_unstable: (state: unknown) => void;
+        useBreadcrumbButtonStyles_unstable: (state: unknown) => void;
+        useBreadcrumbItemStyles_unstable: (state: unknown) => void;
+        useBreadcrumbDividerStyles_unstable: (state: unknown) => void;
+        useMessageBarStyles_unstable: (state: unknown) => void;
+        useMessageBarBodyStyles_unstable: (state: unknown) => void;
+        useMessageBarTitleStyles_unstable: (state: unknown) => void;
+        useMessageBarActionsStyles_unstable: (state: unknown) => void;
+        useMessageBarGroupStyles_unstable: (state: unknown) => void;
+        useToasterStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
@@ -125,6 +151,7 @@ export type FluentProviderContextValues = Pick<FluentProviderState, 'customStyle
     provider: ProviderContextValue_unstable;
     themeClassName: ThemeClassNameContextValue_unstable;
     textDirection: 'ltr' | 'rtl';
+    iconDirection: IconDirectionContextValue;
     tooltip: TooltipVisibilityContextValue_unstable;
 };
 

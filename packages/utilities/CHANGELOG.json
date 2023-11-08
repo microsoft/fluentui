@@ -2,6 +2,109 @@
   "name": "@fluentui/utilities",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 00:29:15 GMT",
+      "tag": "@fluentui/utilities_v8.13.20",
+      "version": "8.13.20",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "9dce1d4962e1f62ec8fce4359f0074dee5b38072",
+            "comment": "chore: use Timers types based on environment to avoid TS failures introduced with node 18 types"
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/dom-utilities to v2.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/merge-styles to v8.5.13",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 26 Oct 2023 07:35:35 GMT",
+      "tag": "@fluentui/utilities_v8.13.19",
+      "version": "8.13.19",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "d22e99a22d1e52347c3c0a8c9cd1ff870b528a9d",
+            "comment": "chore: add verify-packaging task"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 29 Sep 2023 07:45:30 GMT",
+      "tag": "@fluentui/utilities_v8.13.19",
+      "version": "8.13.19",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "d701af33ee0742cbbbc765be8eb9cec273136953",
+            "comment": "fix: focusAsync still works even if past animationFrame fails to run"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 14 Jul 2023 07:36:55 GMT",
+      "tag": "@fluentui/utilities_v8.13.18",
+      "version": "8.13.18",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "8a9e1018f2abb2c7608c49d32acf44e93c43cba6",
+            "comment": "chore: update devDependencies to use * for inner workspace dependencies"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:30 GMT",
+      "tag": "@fluentui/utilities_v8.13.18",
+      "version": "8.13.18",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ],
+        "patch": [
+          {
+            "author": "Humberto.Morimoto@microsoft.com",
+            "package": "@fluentui/utilities",
+            "commit": "b75bc1a413fb4dce6b50c28947730e3fdc0e0dad",
+            "comment": "fix: Checking for the existence of addEventListener on element coming from context in useFocusRects."
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 19 Jun 2023 07:36:38 GMT",
       "tag": "@fluentui/utilities_v8.13.17",
       "version": "8.13.17",

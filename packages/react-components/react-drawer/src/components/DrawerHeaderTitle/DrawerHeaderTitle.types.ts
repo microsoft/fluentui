@@ -1,6 +1,4 @@
-import { DialogTitleSlots } from '@fluentui/react-dialog';
 import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utilities';
-import * as React from 'react';
 
 export type DrawerHeaderTitleSlots = {
   root: Slot<'div'>;
@@ -9,24 +7,18 @@ export type DrawerHeaderTitleSlots = {
    * By default this is a h2, but can be any heading or div.
    * If `div` is provided do not forget to also provide proper `role="heading"` and `aria-level` attributes
    */
-  heading?: DialogTitleSlots['root'];
+  heading?: Slot<'h2', 'h1' | 'h3' | 'h4' | 'h5' | 'h6' | 'div'>;
 
   /**
    * Action slot for the close button
    */
-  action?: DialogTitleSlots['action'];
+  action?: Slot<'div'>;
 };
 
 /**
  * DrawerHeaderTitle Props
  */
-export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots> & {
-  /**
-   * Content of the DrawerHeaderTitle
-   * Children is mandatory because DrawerHeaderTitle is a wrapper component
-   */
-  children: React.ReactNode | undefined;
-};
+export type DrawerHeaderTitleProps = ComponentProps<DrawerHeaderTitleSlots>;
 
 /**
  * State used in rendering DrawerHeaderTitle

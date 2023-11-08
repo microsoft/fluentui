@@ -1,10 +1,11 @@
 import * as React from 'react';
 
 import { CheckmarkCircleFilled, DismissCircleFilled, InfoFilled, WarningFilled } from '@fluentui/react-icons';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
+import { useBackgroundAppearance } from '@fluentui/react-shared-contexts';
 
 import type { ToastTitleProps, ToastTitleState } from './ToastTitle.types';
-import { useToastContext } from '../../contexts/toastContext';
+import { useToastContainerContext } from '../../contexts/toastContainerContext';
 
 /**
  * Create the state required to render ToastTitle.
@@ -16,7 +17,8 @@ import { useToastContext } from '../../contexts/toastContext';
  * @param ref - reference to root HTMLElement of ToastTitle
  */
 export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HTMLElement>): ToastTitleState => {
-  const { intent } = useToastContext();
+  const { intent, titleId } = useToastContainerContext();
+  const backgroundAppearance = useBackgroundAppearance();
 
   /** Determine the role and media to render based on the intent */
   let defaultIcon;
@@ -36,18 +38,26 @@ export const useToastTitle_unstable = (props: ToastTitleProps, ref: React.Ref<HT
   }
 
   return {
-    action: resolveShorthand(props.action),
-    components: {
-      root: 'div',
-      media: 'div',
-      action: 'div',
-    },
-    media: resolveShorthand(props.media, { required: !!intent, defaultProps: { children: defaultIcon } }),
-    intent,
-    root: getNativeElementProps('div', {
-      ref,
-      children: props.children,
-      ...props,
+    action: slot.optional(props.action, { elementType: 'div' }),
+    components: { root: 'div', media: 'div', action: 'div' },
+    media: slot.optional(props.media, {
+      renderByDefault: !!intent,
+      defaultProps: { children: defaultIcon },
+      elementType: 'div',
     }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        children: props.children,
+        id: titleId,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    intent,
+    backgroundAppearance,
   };
 };

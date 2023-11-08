@@ -1,6 +1,18 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast, ToastIntent } from '@fluentui/react-toast';
-import { useId, Button, Field, RadioGroup, Radio, Spinner, Avatar } from '@fluentui/react-components';
+import {
+  useId,
+  Button,
+  Field,
+  RadioGroup,
+  Radio,
+  Spinner,
+  Avatar,
+  Toaster,
+  useToastController,
+  ToastTitle,
+  Toast,
+  ToastIntent,
+} from '@fluentui/react-components';
 
 export const Intent = () => {
   const toasterId = useId('toaster');

@@ -20,7 +20,7 @@ export function useOnEvent<TElement extends Element, TEvent extends Event>(
 
   React.useEffect(() => {
     const actualElement = element && 'current' in element ? element.current : element;
-    if (!actualElement) {
+    if (!actualElement || !actualElement.addEventListener) {
       return;
     }
 

@@ -46,6 +46,7 @@ export class VerticalBarChartRotatedLabelExample extends React.Component<{}, IVe
             width={650}
             hideLegend={true}
             rotateXAxisLables={true}
+            enableReflow={true}
           />
         </div>
       </>

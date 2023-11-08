@@ -2,9 +2,28 @@ import * as React from 'react';
 import { Steps, StoryWright } from 'storywright';
 import { storiesOf } from '@storybook/react';
 import { Link, LinkProps } from '@fluentui/react-link';
+import { BackgroundAppearanceProvider } from '@fluentui/react-shared-contexts';
+import { makeStyles, shorthands } from '@griffel/react';
+import { tokens } from '@fluentui/react-theme';
 
 const AnchorLink = (props: LinkProps & { as?: 'a' }) => <Link {...props} href="https://www.bing.com" />;
 const ButtonLink = (props: LinkProps) => <Link {...props} />;
+
+const useInvertedBackgroundStyles = makeStyles({
+  root: {
+    ...shorthands.padding('14px'),
+    backgroundColor: tokens.colorNeutralBackgroundInverted,
+  },
+});
+
+const InvertedBackground: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  const styles = useInvertedBackgroundStyles();
+  return (
+    <div className={styles.root}>
+      <BackgroundAppearanceProvider value="inverted">{children}</BackgroundAppearanceProvider>
+    </div>
+  );
+};
 
 storiesOf('Link Converged - Rendered as anchor', module)
   .addDecorator(story => (
@@ -57,7 +76,27 @@ storiesOf('Link Converged - Rendered as anchor', module)
       </AnchorLink>{' '}
       used alongside other text content.
     </div>
-  ));
+  ))
+  .addStory(
+    'Inverted',
+    () => (
+      <InvertedBackground>
+        <AnchorLink>Link on inverted background</AnchorLink>
+      </InvertedBackground>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
+  .addStory(
+    'Inverted disabled',
+    () => (
+      <InvertedBackground>
+        <AnchorLink disabled disabledFocusable>
+          Disabled link on inverted background
+        </AnchorLink>
+      </InvertedBackground>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  );
 
 // We put the disabled stories separately so they do not error on the focused step.
 storiesOf('Link Converged - Rendered as anchor', module)
@@ -129,7 +168,27 @@ storiesOf('Link Converged - Rendered as button', module)
       </ButtonLink>{' '}
       used alongside other text content.
     </div>
-  ));
+  ))
+  .addStory(
+    'Inverted',
+    () => (
+      <InvertedBackground>
+        <ButtonLink>Link on inverted background</ButtonLink>
+      </InvertedBackground>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  )
+  .addStory(
+    'Inverted disabled',
+    () => (
+      <InvertedBackground>
+        <AnchorLink disabled disabledFocusable>
+          Disabled link on inverted background
+        </AnchorLink>
+      </InvertedBackground>
+    ),
+    { includeDarkMode: true, includeHighContrast: true },
+  );
 
 // We put the disabled stories separately so they do not error on the focused step.
 storiesOf('Link Converged - Rendered as button', module)

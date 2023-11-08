@@ -62,6 +62,7 @@ describe('useTableColumnSizing', () => {
         "getOnMouseDown": [MockFunction],
         "getTableCellProps": [Function],
         "getTableHeaderCellProps": [Function],
+        "getTableProps": [Function],
         "setColumnWidth": [Function],
       }
     `);
@@ -88,7 +89,15 @@ describe('useTableColumnSizing', () => {
     const props = renderHookResult.result.current.columnSizing_unstable.getTableHeaderCellProps(1);
     expect(props).toMatchInlineSnapshot(`
       Object {
-        "aside": <TableResizeHandle />,
+        "aside": <TableResizeHandle
+          aria-hidden={true}
+          aria-label="Resize column"
+          aria-valuetext="150 pixels"
+          data-tabster="{\\"focusable\\":{\\"ignoreKeydown\\":{\\"ArrowLeft\\":true,\\"ArrowRight\\":true}}}"
+          onBlur={[Function]}
+          onKeyDown={[Function]}
+          role="separator"
+        />,
         "style": Object {
           "maxWidth": 150,
           "minWidth": 150,

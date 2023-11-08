@@ -59,7 +59,13 @@ const classNames = mergeStyleSets({
 const onRenderCell = (item: IExampleItem, index: number | undefined): JSX.Element => {
   return (
     <div className={classNames.itemCell} data-is-focusable={true}>
-      <Image className={classNames.itemImage} src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
+      <Image
+        className={classNames.itemImage}
+        src="https://res.cdn.office.net/files/fabric-cdn-prod_20230815.002/office-ui-fabric-react-assets/fluent-placeholder.svg"
+        width={50}
+        height={50}
+        imageFit={ImageFit.cover}
+      />
       <div className={classNames.itemContent}>
         <div className={classNames.itemName}>{item.name}</div>
         <div className={classNames.itemIndex}>{`Item ${index}`}</div>

@@ -1,13 +1,12 @@
 import * as React from 'react';
-import { Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-toast';
-import { useId, Button } from '@fluentui/react-components';
+import { useId, Button, Toaster, useToastController, ToastTitle, Toast } from '@fluentui/react-components';
 
 export const DismissToast = () => {
   const toasterId = useId('toaster');
   const toastId = useId('example');
   const [unmounted, setUnmounted] = React.useState(true);
   const { dispatchToast, dismissToast } = useToastController(toasterId);
-  console.log(unmounted);
+
   const notify = () => {
     dispatchToast(
       <Toast>

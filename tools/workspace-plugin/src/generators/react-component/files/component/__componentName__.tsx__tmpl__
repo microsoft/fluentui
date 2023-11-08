@@ -1,0 +1,22 @@
+import * as React from 'react';
+import type { ForwardRefComponent } from '@fluentui/react-utilities';
+import { useCustomStyleHook_unstable } from '@fluentui/react-shared-contexts';
+import { use<%= componentName %>_unstable } from './use<%= componentName %>';
+import { render<%= componentName %>_unstable } from './render<%= componentName %>';
+import { use<%= componentName %>Styles_unstable } from './use<%= componentName %>Styles.styles';
+import type { <%= componentName %>Props } from './<%= componentName %>.types';
+
+/**
+ * <%= componentName %> component - TODO: add more docs
+ */
+export const <%= componentName %>: ForwardRefComponent<<%= componentName %>Props> = React.forwardRef((props, ref) => {
+  const state = use<%= componentName %>_unstable(props, ref);
+
+  use<%= componentName %>Styles_unstable(state);
+  // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
+  // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
+  useCustomStyleHook_unstable('use<%= componentName %>Styles_unstable')(state);
+  return render<%= componentName %>_unstable(state);
+});
+
+<%= componentName %>.displayName = '<%= componentName %>';

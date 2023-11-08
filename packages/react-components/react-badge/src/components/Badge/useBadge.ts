@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, resolveShorthand } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { BadgeProps, BadgeState } from './Badge.types';
 
 /**
@@ -24,11 +24,17 @@ export const useBadge_unstable = (props: BadgeProps, ref: React.Ref<HTMLElement>
       root: 'div',
       icon: 'span',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      ...props,
-    }),
-    icon: resolveShorthand(props.icon),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
+    icon: slot.optional(props.icon, { elementType: 'span' }),
   };
 
   return state;

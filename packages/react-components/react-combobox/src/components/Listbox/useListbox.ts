@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { getNativeElementProps, mergeCallbacks, useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import {
+  getIntrinsicElementProps,
+  mergeCallbacks,
+  useEventCallback,
+  useMergedRefs,
+  slot,
+} from '@fluentui/react-utilities';
 import { useContextSelector, useHasParentContext } from '@fluentui/react-context-selector';
 import { getDropdownActionFromKey, getIndexFromAction } from '../../utils/dropdownKeyActions';
 import type { OptionValue } from '../../utils/OptionCollection.types';
@@ -87,14 +93,20 @@ export const useListbox_unstable = (props: ListboxProps, ref: React.Ref<HTMLElem
     components: {
       root: 'div',
     },
-    root: getNativeElementProps('div', {
-      ref,
-      role: multiselect ? 'menu' : 'listbox',
-      'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
-      'aria-multiselectable': multiselect,
-      tabIndex: 0,
-      ...props,
-    }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        role: multiselect ? 'menu' : 'listbox',
+        'aria-activedescendant': hasComboboxContext ? undefined : activeOption?.id,
+        'aria-multiselectable': multiselect,
+        tabIndex: 0,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
     multiselect,
     clearSelection,
     ...optionCollection,

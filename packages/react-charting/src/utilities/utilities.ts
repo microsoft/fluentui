@@ -304,7 +304,8 @@ export function createStringXAxis(
  * @returns {number[]}
  */
 export function prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
-  const val = Math.ceil((maxVal - minVal) / splitInto);
+  const val =
+    (maxVal - minVal) / splitInto > 1 ? Math.ceil((maxVal - minVal) / splitInto) : (maxVal - minVal) / splitInto;
   const dataPointsArray: number[] = [minVal, minVal + val];
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
@@ -480,64 +481,73 @@ export const createStringYAxisForOtherCharts = (yAxisParams: IYAxisParams, dataP
  * @param values
  */
 
-type DataPoint = {
-  legend: string;
-  y: number;
-  x: number | Date | string;
-  color: string;
-  yAxisCalloutData: string;
-  index?: number;
-  callOutAccessibilityData?: IAccessibilityProps;
-};
-
 export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
-  let combinedResult: {
+  let combinedResult: (ILineChartDataPoint & {
     legend: string;
-    y: number;
-    x: number | Date | string;
-    color: string;
-    yAxisCalloutData?: string | { [id: string]: number };
-    callOutAccessibilityData?: IAccessibilityProps;
-  }[] = [];
+    color?: string;
+    index?: number;
+  })[] = [];
 
-  values.forEach((element: { data: ILineChartDataPoint[]; legend: string; color: string; index?: number }) => {
-    const elements = element.data
-      .filter((ele: ILineChartDataPoint) => !ele.hideCallout)
-      .map((ele: ILineChartDataPoint) => {
-        return { legend: element.legend, ...ele, color: element.color, index: element.index };
+  values.forEach((line: ILineChartPoints & { index?: number }) => {
+    const elements = line.data
+      .filter((point: ILineChartDataPoint) => !point.hideCallout)
+      .map((point: ILineChartDataPoint) => {
+        return { ...point, legend: line.legend, color: line.color, index: line.index };
       });
     combinedResult = combinedResult.concat(elements);
   });
 
-  const result: { x: number | Date | string; values: { legend: string; y: number }[] }[] = [];
-  combinedResult.forEach((e1: DataPoint, index: number) => {
-    e1.x = e1.x instanceof Date ? e1.x.getTime() : e1.x;
-    const filteredValues = [
-      {
-        legend: e1.legend,
-        y: e1.y,
-        color: e1.color,
-        yAxisCalloutData: e1.yAxisCalloutData,
-        callOutAccessibilityData: e1.callOutAccessibilityData,
-        index: e1.index,
-      },
-    ];
-    combinedResult.slice(index + 1).forEach((e2: DataPoint) => {
-      e2.x = e2.x instanceof Date ? e2.x.getTime() : e2.x;
-      if (e1.x === e2.x) {
-        filteredValues.push({
-          legend: e2.legend,
-          y: e2.y,
-          color: e2.color,
-          yAxisCalloutData: e2.yAxisCalloutData,
-          callOutAccessibilityData: e2.callOutAccessibilityData,
-          index: e2.index,
-        });
-      }
-    });
-    result.push({ x: e1.x, values: filteredValues });
+  const xValToDataPoints: {
+    [key: number]: {
+      legend: string;
+      y: number;
+      color: string;
+      xAxisCalloutData?: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+    [key: string]: {
+      legend: string;
+      y: number;
+      color: string;
+      xAxisCalloutData?: string;
+      yAxisCalloutData?: string | { [id: string]: number };
+      callOutAccessibilityData?: IAccessibilityProps;
+      index?: number;
+    }[];
+  } = {};
+  combinedResult.forEach(ele => {
+    const xValue = ele.x instanceof Date ? ele.x.getTime() : ele.x;
+    if (xValue in xValToDataPoints) {
+      xValToDataPoints[xValue].push({
+        legend: ele.legend,
+        y: ele.y,
+        color: ele.color!,
+        xAxisCalloutData: ele.xAxisCalloutData,
+        yAxisCalloutData: ele.yAxisCalloutData,
+        callOutAccessibilityData: ele.callOutAccessibilityData,
+        index: ele.index,
+      });
+    } else {
+      xValToDataPoints[xValue] = [
+        {
+          legend: ele.legend,
+          y: ele.y,
+          color: ele.color!,
+          xAxisCalloutData: ele.xAxisCalloutData,
+          yAxisCalloutData: ele.yAxisCalloutData,
+          callOutAccessibilityData: ele.callOutAccessibilityData,
+          index: ele.index,
+        },
+      ];
+    }
   });
-  return getUnique(result, 'x');
+
+  const result = Object.keys(xValToDataPoints).map(xValue => {
+    return { x: Number(xValue), values: xValToDataPoints[xValue] };
+  });
+  return result;
 }
 
 export function getUnique(
@@ -733,6 +743,24 @@ export function createYAxisLabels(
     }
   });
 }
+
+export const wrapContent = (content: string, id: string, maxWidth: number) => {
+  const textElement = d3Select<SVGTextElement, {}>(`#${id}`);
+  textElement.text(content);
+  if (!textElement.node()) {
+    return false;
+  }
+
+  let isOverflowing = false;
+  let textLength = textElement.node()!.getComputedTextLength();
+  while (textLength > maxWidth && content.length > 0) {
+    content = content.slice(0, -1);
+    textElement.text(content + '...');
+    isOverflowing = true;
+    textLength = textElement.node()!.getComputedTextLength();
+  }
+  return isOverflowing;
+};
 
 /**
  * Calculates the width of the longest axis label in pixels
@@ -1105,8 +1133,28 @@ export function findVerticalNumericMinMaxOfY(points: IVerticalBarChartDataPoint[
   startValue: number;
   endValue: number;
 } {
-  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => point.y)!;
-  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => point.y)!;
+  const yMax = d3Max(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y > point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
+  const yMin = d3Min(points, (point: IVerticalBarChartDataPoint) => {
+    if (point.lineData !== undefined) {
+      if (point.y < point.lineData!.y) {
+        return point.y;
+      } else {
+        return point.lineData!.y;
+      }
+    } else {
+      return point.y;
+    }
+  })!;
 
   return { startValue: yMin, endValue: yMax };
 }

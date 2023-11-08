@@ -1,12 +1,14 @@
-import * as React from 'react';
-import { getSlots } from '@fluentui/react-utilities';
-import type { DrawerBodyState, DrawerBodySlots } from './DrawerBody.types';
+/** @jsxRuntime automatic */
+/** @jsxImportSource @fluentui/react-jsx-runtime */
+import { assertSlots } from '@fluentui/react-utilities';
+
+import type { DrawerBodySlots, DrawerBodyState } from './DrawerBody.types';
 
 /**
  * Render the final JSX of DrawerBody
  */
 export const renderDrawerBody_unstable = (state: DrawerBodyState) => {
-  const { slots, slotProps } = getSlots<DrawerBodySlots>(state);
+  assertSlots<DrawerBodySlots>(state);
 
-  return <slots.root {...slotProps.root} />;
+  return <state.root />;
 };

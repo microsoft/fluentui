@@ -33,6 +33,8 @@ export interface ResizeCallbackWithRef {
 // @public (undocumented)
 export type ScrollToInterface = {
     scrollTo: (index: number, behavior?: ScrollBehavior, callback?: (index: number) => void) => void;
+    virtualizerLength: RefObject<number>;
+    currentIndex: RefObject<number> | undefined;
 };
 
 // @public (undocumented)
@@ -133,6 +135,7 @@ export type VirtualizerDataRef = {
     progressiveSizes: RefObject<number[]>;
     nodeSizes: RefObject<number[]>;
     setFlaggedIndex: (index: number | null) => void;
+    currentIndex: RefObject<number>;
 };
 
 // @public (undocumented)

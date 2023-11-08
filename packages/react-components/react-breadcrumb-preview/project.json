@@ -1,0 +1,8 @@
+{
+  "name": "@fluentui/react-breadcrumb-preview",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "implicitDependencies": [],
+  "sourceRoot": "packages/react-components/react-breadcrumb-preview/src",
+  "tags": ["vNext", "platform:web"]
+}

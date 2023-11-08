@@ -1,7 +1,7 @@
 {
   "name": "@fluentui/react-tree",
-  "version": "9.0.0-beta.21",
-  "description": "React components for building web experiences",
+  "version": "9.4.11",
+  "description": "Tree component for Fluent UI React",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
@@ -14,55 +14,49 @@
   "scripts": {
     "build": "just-scripts build",
     "clean": "just-scripts clean",
-    "code-style": "just-scripts code-style",
-    "just": "just-scripts",
-    "lint": "just-scripts lint",
-    "test": "jest --passWithNoTests",
-    "e2e": "cypress run --component",
-    "e2e:local": "cypress open --component",
     "generate-api": "just-scripts generate-api",
-    "type-check": "tsc -b tsconfig.json",
-    "storybook": "start-storybook",
+    "lint": "just-scripts lint",
     "start": "yarn storybook",
-    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\""
+    "storybook": "start-storybook",
+    "test": "jest --passWithNoTests",
+    "test-ssr": "test-ssr \"./stories/**/*.stories.tsx\"",
+    "type-check": "tsc -b tsconfig.json",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component"
   },
   "devDependencies": {
+    "@dnd-kit/core": "^6.0.8",
+    "@dnd-kit/sortable": "^7.0.2",
+    "@dnd-kit/utilities": "^3.2.1",
     "@fluentui/eslint-plugin": "*",
     "@fluentui/react-conformance": "*",
-    "@fluentui/react-conformance-griffel": "9.0.0-beta.23",
+    "@fluentui/react-conformance-griffel": "*",
     "@fluentui/scripts-api-extractor": "*",
     "@fluentui/scripts-tasks": "*",
-    "@fluentui/scripts-cypress": "*",
-    "react-window": "^1.8.6"
+    "@fluentui/scripts-cypress": "*"
   },
   "dependencies": {
-    "@fluentui/keyboard-keys": "^9.0.3",
-    "@fluentui/react-aria": "^9.3.24",
-    "@fluentui/react-avatar": "^9.5.8",
-    "@fluentui/react-button": "^9.3.19",
-    "@fluentui/react-context-selector": "^9.1.24",
-    "@fluentui/react-icons": "^2.0.203",
-    "@fluentui/react-portal": "^9.2.15",
-    "@fluentui/react-shared-contexts": "^9.5.1",
-    "@fluentui/react-tabster": "^9.9.0",
-    "@fluentui/react-theme": "^9.1.9",
-    "@fluentui/react-utilities": "^9.9.4",
-    "@fluentui/react-jsx-runtime": "9.0.0-alpha.8",
-    "@griffel/react": "^1.5.7",
-    "@swc/helpers": "^0.4.14"
+    "@fluentui/keyboard-keys": "^9.0.6",
+    "@fluentui/react-aria": "^9.3.43",
+    "@fluentui/react-avatar": "^9.5.44",
+    "@fluentui/react-button": "^9.3.53",
+    "@fluentui/react-checkbox": "^9.1.54",
+    "@fluentui/react-context-selector": "^9.1.41",
+    "@fluentui/react-icons": "^2.0.217",
+    "@fluentui/react-radio": "^9.1.54",
+    "@fluentui/react-shared-contexts": "^9.11.1",
+    "@fluentui/react-tabster": "^9.14.3",
+    "@fluentui/react-theme": "^9.1.15",
+    "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/react-jsx-runtime": "^9.0.18",
+    "@griffel/react": "^1.5.14",
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@types/react": ">=16.8.0 <19.0.0",
-    "@types/react-dom": ">=16.8.0 <19.0.0",
-    "react": ">=16.8.0 <19.0.0",
-    "react-dom": ">=16.8.0 <19.0.0"
-  },
-  "beachball": {
-    "disallowedChangeTypes": [
-      "major",
-      "minor",
-      "patch"
-    ]
+    "@types/react": ">=16.14.0 <19.0.0",
+    "@types/react-dom": ">=16.14.0 <19.0.0",
+    "react": ">=16.14.0 <19.0.0",
+    "react-dom": ">=16.14.0 <19.0.0"
   },
   "exports": {
     ".": {
@@ -72,5 +66,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
+  },
+  "beachball": {
+    "disallowedChangeTypes": [
+      "major",
+      "prerelease"
+    ]
   }
 }

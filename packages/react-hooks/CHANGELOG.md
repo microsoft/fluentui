@@ -1,8 +1,46 @@
 # Change Log - @fluentui/react-hooks
 
-This log was last generated on Mon, 19 Jun 2023 07:36:39 GMT and should not be manually modified.
+This log was last generated on Wed, 01 Nov 2023 07:29:14 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.6.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.32)
+
+Wed, 01 Nov 2023 07:29:14 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.31..@fluentui/react-hooks_v8.6.32)
+
+### Patches
+
+- Add sanity check for addEventListener in useOnEvent ([PR #29699](https://github.com/microsoft/fluentui/pull/29699) by mikula@gmail.com)
+
+## [8.6.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.31)
+
+Sat, 28 Oct 2023 00:29:16 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.30..@fluentui/react-hooks_v8.6.31)
+
+### Patches
+
+- Bump @fluentui/react-window-provider to v2.2.16 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/set-version to v8.2.12 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+- Bump @fluentui/utilities to v8.13.20 ([commit](https://github.com/microsoft/fluentui/commit/70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4) by beachball)
+
+## [8.6.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.30)
+
+Fri, 29 Sep 2023 07:45:30 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.29..@fluentui/react-hooks_v8.6.30)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.19 ([PR #29313](https://github.com/microsoft/fluentui/pull/29313) by beachball)
+
+## [8.6.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.29)
+
+Wed, 28 Jun 2023 07:37:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-hooks_v8.6.28..@fluentui/react-hooks_v8.6.29)
+
+### Patches
+
+- Bump @fluentui/utilities to v8.13.18 ([PR #28335](https://github.com/microsoft/fluentui/pull/28335) by beachball)
 
 ## [8.6.28](https://github.com/microsoft/fluentui/tree/@fluentui/react-hooks_v8.6.28)
 

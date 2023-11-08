@@ -10,6 +10,7 @@ module.exports = {
     '^.+\\.tsx?$': [
       'ts-jest',
       {
+        tsconfig: '<rootDir>/tsconfig.spec.json',
         isolatedModules: true,
       },
     ],

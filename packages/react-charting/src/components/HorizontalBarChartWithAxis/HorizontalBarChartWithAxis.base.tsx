@@ -396,6 +396,7 @@ export class HorizontalBarChartWithAxisBase extends React.Component<
 
       const xBarScale = d3ScaleLinear()
         .domain(this._isRtl ? [xMax, 0] : [0, xMax])
+        .nice()
         .range([this.margins.left!, containerWidth - this.margins.right!]);
       return { xBarScale, yBarScale };
     }

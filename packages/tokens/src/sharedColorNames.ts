@@ -41,6 +41,9 @@ export const personaSharedColorNames = [
   'anchor',
 ] as const;
 
+/* List of global colors which semantic alias status tokens map to */
+export const mappedStatusColorNames = ['cranberry', 'green', 'orange'] as const;
+
 /* Names of colors not used in alias tokens but produced by token pipeline as global color tokens. */
 export const unusedSharedColorNames = [
   'burgundy',

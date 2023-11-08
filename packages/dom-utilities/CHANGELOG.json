@@ -2,6 +2,51 @@
   "name": "@fluentui/dom-utilities",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 00:29:16 GMT",
+      "tag": "@fluentui/dom-utilities_v2.2.12",
+      "version": "2.2.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/dom-utilities",
+            "comment": "Bump @fluentui/set-version to v8.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 26 Sep 2023 07:44:56 GMT",
+      "tag": "@fluentui/dom-utilities_v2.2.11",
+      "version": "2.2.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "ccc380cada5d9a6057bd8fca127700b700815fdc",
+            "comment": "chore: add ES2015.Iterable to tsconfig lib as jest types need it"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 28 Jun 2023 07:37:32 GMT",
+      "tag": "@fluentui/dom-utilities_v2.2.11",
+      "version": "2.2.11",
+      "comments": {
+        "none": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/dom-utilities",
+            "commit": "fbe878e9c9785588197481f172c42c2c0a230292",
+            "comment": "fix: update .npmignore to unify v8 packages and exclude project.json"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 31 May 2023 07:38:40 GMT",
       "tag": "@fluentui/dom-utilities_v2.2.11",
       "version": "2.2.11",

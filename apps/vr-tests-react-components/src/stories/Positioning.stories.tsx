@@ -477,6 +477,99 @@ const AutoSize = () => {
   );
 };
 
+const AutoSizeAsyncContent = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    autoSize: true,
+    overflowBoundary,
+  });
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        padding: '10px 50px',
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef}>Target</button>
+      <Box ref={containerRef} style={{ overflow: 'auto', border: '3px solid green' }}>
+        <AsyncFloatingContent />
+      </Box>
+    </div>
+  );
+};
+const AsyncFloatingContent = () => {
+  const [isLoaded, setLoaded] = React.useState(false);
+  const onLoaded = () => setLoaded(true);
+  return isLoaded ? (
+    <span id="full-content">
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. In fermentum et sollicitudin ac orci phasellus egestas. Facilisi cras fermentum odio eu feugiat
+      pretium nibh ipsum consequat.
+    </span>
+  ) : (
+    <button id="load-content" onClick={onLoaded}>
+      load
+    </button>
+  );
+};
+
+const AutoSizeUpdatePosition = () => {
+  const styles = useStyles();
+  const [overflowBoundary, setOverflowBoundary] = React.useState<HTMLDivElement | null>(null);
+  const positioningRef = React.useRef<PositioningImperativeRef>(null);
+  const { containerRef, targetRef } = usePositioning({
+    position: 'below',
+    align: 'start',
+    autoSize: true,
+    overflowBoundary,
+    positioningRef,
+  });
+
+  const [isLoaded, setLoaded] = React.useState(false);
+  const onLoaded = () => setLoaded(true);
+
+  React.useEffect(() => {
+    if (isLoaded) {
+      positioningRef.current?.updatePosition();
+    }
+  }, [isLoaded]);
+
+  return (
+    <div
+      ref={setOverflowBoundary}
+      className={styles.boundary}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        height: 200,
+        width: 250,
+        position: 'relative',
+      }}
+    >
+      <button ref={targetRef} style={{ width: 'fit-content', marginLeft: 100, marginTop: 10 }}>
+        Target
+      </button>
+      <Box ref={containerRef} style={{ overflow: 'clip', overflowClipMargin: 10, border: '3px solid green' }}>
+        {isLoaded ? (
+          <div id="full-content" style={{ backgroundColor: 'cornflowerblue', width: 300, height: 100 }} />
+        ) : (
+          <button id="load-content" onClick={onLoaded}>
+            load + update position
+          </button>
+        )}
+      </Box>
+    </div>
+  );
+};
+
 const DisableTether = () => {
   const styles = useStyles();
   const { containerRef, targetRef } = usePositioning({
@@ -991,6 +1084,81 @@ const ScrollJumpContext = () => {
   );
 };
 
+const MultiScrollParent = () => {
+  const { targetRef, containerRef } = usePositioning({});
+  const scrollContainerRef = React.useRef<HTMLDivElement>(null);
+
+  const scroll = () => {
+    if (scrollContainerRef.current) {
+      scrollContainerRef.current.scrollBy({ top: 100 });
+    }
+  };
+
+  return (
+    <>
+      <span>The popover should stay attached to the trigger</span>
+      <button id="scroll" onClick={scroll}>
+        scroll
+      </button>
+      <div
+        ref={scrollContainerRef}
+        style={{
+          border: '2px dashed green',
+          height: 300,
+          width: 400,
+          overflow: 'auto',
+          display: 'grid',
+          gridTemplateColumns: '350px auto',
+          gridTemplateRows: '800px',
+        }}
+      >
+        <div style={{ position: 'relative' }}>
+          <div
+            style={{
+              overflow: 'auto',
+              border: '2px dashed red',
+              position: 'absolute',
+              top: 150,
+              left: 100,
+              padding: 20,
+            }}
+          >
+            <button id="target" ref={targetRef}>
+              Trigger
+            </button>
+          </div>
+        </div>
+        <div
+          style={{
+            backgroundImage: 'linear-gradient(to bottom, #ffffff, #b9b9b9, #777777, #3b3b3b, #000000)',
+          }}
+        />
+      </div>
+      <div ref={containerRef} style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white' }}>
+        Popover
+      </div>
+    </>
+  );
+};
+
+const MatchTargetSize = () => {
+  const { targetRef, containerRef } = usePositioning({ matchTargetSize: 'width' });
+
+  return (
+    <>
+      <button id="target" ref={targetRef} style={{ width: 350 }}>
+        Trigger
+      </button>
+      <div
+        ref={containerRef}
+        style={{ border: '2px solid blue', padding: 20, backgroundColor: 'white', boxSizing: 'border-box' }}
+      >
+        Should have same width as trigger
+      </div>
+    </>
+  );
+};
+
 storiesOf('Positioning', module)
   .addDecorator(story => (
     <div
@@ -1019,6 +1187,29 @@ storiesOf('Positioning', module)
   .addStory('horizontal overflow', () => <HorizontalOverflow />, { includeRtl: true })
   .addStory('pinned', () => <Pinned />)
   .addStory('auto size', () => <AutoSize />)
+  .addStory('auto size with async content', () => (
+    <StoryWright
+      steps={new Steps()
+        .click('#load-content')
+        .wait('#full-content')
+        .snapshot('floating element is within the boundary')
+        .end()}
+    >
+      <AutoSizeAsyncContent />
+    </StoryWright>
+  ))
+  .addStory('auto size with async content reset styles on updatePosition', () => (
+    <StoryWright
+      steps={new Steps()
+        .click('#load-content')
+        .wait('#full-content')
+        .wait(250) // let updatePosition finish
+        .snapshot('floating element width fills boundary and overflows 10px because of overflow:clip')
+        .end()}
+    >
+      <AutoSizeUpdatePosition />
+    </StoryWright>
+  ))
   .addStory('disable tether', () => <DisableTether />)
   .addStory('position fixed', () => <PositionAndAlignProps positionFixed />, { includeRtl: true })
   .addStory('virtual element', () => <VirtualElement />)
@@ -1045,7 +1236,13 @@ storiesOf('Positioning', module)
     'disable CSS transform with position fixed',
     () => <PositionAndAlignProps positionFixed useTransform={false} />,
     { includeRtl: true },
-  );
+  )
+  .addStory('Multiple scroll parents', () => (
+    <StoryWright steps={new Steps().click('#scroll').snapshot('container attached to target').end()}>
+      <MultiScrollParent />
+    </StoryWright>
+  ))
+  .addStory('Match target size', () => <MatchTargetSize />);
 
 storiesOf('Positioning (no decorator)', module)
   .addStory('scroll jumps', () => (
