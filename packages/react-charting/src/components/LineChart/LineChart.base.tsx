@@ -862,6 +862,7 @@ export class LineChartBase extends React.Component<ILineChartProps, ILineChartSt
                   role="none"
                   focusable={false}
                   onBlur={this._handleMouseOut}
+                  aria-label={this._getAriaLabel(i, j)}
                 />
               </React.Fragment>,
             );
