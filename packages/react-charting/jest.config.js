@@ -25,6 +25,7 @@ const config = createConfig({
   moduleNameMapper: {
     ...getEsmOnlyPackagesToCjsMapping(),
   },
+  reporters: ['./CustomReporter.js'],
 });
 
 module.exports = config;

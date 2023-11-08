@@ -22,6 +22,5 @@
     "types": ["jest", "custom-global", "@testing-library/jest-dom"],
     "isolatedModules": true
   },
-  "include": ["src"],
-  "exclude": ["src/components/Sparkline/SparklineBase.js"]
+  "include": ["src"]
 }
