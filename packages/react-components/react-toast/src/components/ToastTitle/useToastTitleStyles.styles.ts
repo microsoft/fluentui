@@ -11,14 +11,14 @@ export const toastTitleClassNames: SlotClassNames<ToastTitleSlots> = {
 
 const useRootBaseClassName = makeResetStyles({
   display: 'flex',
-  alignItems: 'center',
   gridColumnEnd: 3,
   color: tokens.colorNeutralForeground1,
+  wordBreak: 'break-word',
 });
 
 const useMediaBaseClassName = makeResetStyles({
   display: 'flex',
-  alignItems: 'center',
+  paddingTop: '2px',
   gridColumnEnd: 2,
   paddingRight: '8px',
   fontSize: '16px',
@@ -27,7 +27,7 @@ const useMediaBaseClassName = makeResetStyles({
 
 const useActionBaseClassName = makeResetStyles({
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'start',
   paddingLeft: '12px',
   gridColumnEnd: -1,
   color: tokens.colorBrandForeground1,

@@ -1,5 +1,5 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { SlotClassNames } from '@fluentui/react-utilities';
+import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { ListLayout, ListSlots, ListState } from './List.types';
 
 export const listClassNames: SlotClassNames<ListSlots> = {

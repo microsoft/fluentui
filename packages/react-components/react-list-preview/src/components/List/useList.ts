@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { ListLayout, ListProps, ListState, IList } from './List.types';
 import { useListFeatures } from '../../hooks/useListFeatures';
@@ -66,7 +66,7 @@ export const useList_unstable = (props: ListProps, ref: React.Ref<HTMLElement>):
       root: 'ul',
     },
     root: slot.always(
-      getNativeElementProps('ul', {
+      getIntrinsicElementProps('ul', {
         ref,
         tabIndex: -1,
         ...selection.getListProps(),

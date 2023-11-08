@@ -7,6 +7,11 @@
   "module": "lib/index.js",
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
+  "files": [
+    "lib",
+    "lib-commonjs",
+    "dist/*.d.ts"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -39,6 +44,7 @@
     "@fluentui/react-tabster": "^9.14.3",
     "@fluentui/react-theme": "^9.1.15",
     "@fluentui/react-utilities": "^9.15.1",
+    "@fluentui/react-shared-contexts": "^9.11.1",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
