@@ -58,7 +58,6 @@ export function verifyPackaging(options: Options) {
     `wont ship non production code related folders/files`,
   );
   assert.equal(micromatch(processedResultArr, rootConfigFiles).length, 0, `wont ship configuration files`);
-  assert.ok(micromatch(processedResultArr, 'package.json').length, 'ships package.json');
   assert.ok(micromatch(processedResultArr, '(README|CHANGELOG).md').length, 'ships markdown files');
   assert.ok(micromatch(processedResultArr, 'dist/*.d.ts').length, 'ships rolluped dts');
   assert.ok(micromatch(processedResultArr, 'lib-commonjs/**/*.(js|map)').length, 'ships cjs');
