@@ -25,7 +25,7 @@ const getErrorMessage = (error?: TimePickerErrorType): FieldProps['validationMes
 export const CustomParsingAndValidation = () => {
   const styles = useStyles();
 
-  const [anchor] = React.useState(new Date('November 25, 2023'));
+  const [anchor] = React.useState(() => new Date('November 25, 2023'));
 
   const [errorType, setErrorType] = React.useState<TimePickerErrorType>();
 
