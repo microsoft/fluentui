@@ -34,10 +34,10 @@ export const Prototype: React.FC<{ pageTitle: string }> = ({ pageTitle, children
   }, [pageTitle]);
 
   return (
-    <div role="main">
+    <>
       <BackLink />
       <br />
       {children}
-    </div>
+    </>
   );
 };

@@ -1,6 +1,12 @@
 import * as React from 'react';
+import { Prototype } from './../utils';
+
 import { AccessibleMeetBase } from './AccessibleMeetBase';
 
-export const AccessibleMeetUsingGridsRowNavigation: React.FC = () => {
-  return <AccessibleMeetBase variant="gridsRowNavigation" />;
+export const UsingGridsRowNavigation: React.FC = () => {
+  return (
+    <Prototype pageTitle="Accessible Meet Using Grids Row Navigation">
+      <AccessibleMeetBase variant="gridsRowNavigation" />
+    </Prototype>
+  );
 };
