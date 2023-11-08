@@ -1,6 +1,6 @@
 {
   "type": "minor",
-  "comment": "Expose toMountNodeProps in react-components",
+  "comment": "feat: re-export toMountNodeProps()",
   "packageName": "@fluentui/react-components",
   "email": "jaguilarvega@microsoft.com",
   "dependentChangeType": "patch"
