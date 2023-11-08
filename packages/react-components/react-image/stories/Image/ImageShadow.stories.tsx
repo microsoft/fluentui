@@ -5,7 +5,7 @@ export const Shadow = () => (
   <Image
     shadow
     src="https://fabricweb.azureedge.net/fabric-website/placeholders/300x300.png"
-    alt="Image placeholdder"
+    alt="Image placeholder"
   />
 );
 

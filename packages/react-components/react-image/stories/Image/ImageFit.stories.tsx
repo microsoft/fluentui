@@ -7,7 +7,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 150, width: 300 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="none"
       />
     </div>
@@ -15,7 +15,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 150, width: 300 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/200x100.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="none"
       />
     </div>
@@ -24,7 +24,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 150, width: 300 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="center"
       />
     </div>
@@ -32,7 +32,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 150, width: 300 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/200x100.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="center"
       />
     </div>
@@ -41,7 +41,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 200, width: 400 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x200.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="contain"
       />
     </div>
@@ -49,7 +49,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 250, width: 400 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x200.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="contain"
       />
     </div>
@@ -57,7 +57,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 200, width: 450 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x200.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="contain"
       />
     </div>
@@ -66,7 +66,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 200, width: 400 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x250.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="cover"
       />
     </div>
@@ -74,7 +74,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 200, width: 400 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/400x300.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="cover"
       />
     </div>
@@ -82,7 +82,7 @@ export const Fit = () => (
     <div style={{ border: '1px solid green', height: 200, width: 400 }}>
       <Image
         src="https://fabricweb.azureedge.net/fabric-website/placeholders/600x200.png"
-        alt="Image placeholdder"
+        alt="Image placeholder"
         fit="cover"
       />
     </div>
