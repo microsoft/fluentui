@@ -69,26 +69,26 @@ If required, extract the unit testable portions out of the functions which can b
 
 1. Identify the parts within those functions which cannot be tested via unit tests.
 
-  1. **wrapTextInsideDonut() -** cannot be unit tested as it requires the tspan length to be calculated using Browser Functions like **getComputedTextLength()**
-  2. **\_computeTotalValue() -** depends on the data prop passed down from the DonutChart.base to Pie during component rendering
+1. **wrapTextInsideDonut() -** cannot be unit tested as it requires the tspan length to be calculated using Browser Functions like **getComputedTextLength()**
+2. **\_computeTotalValue() -** depends on the data prop passed down from the DonutChart.base to Pie during component rendering
 
 **Step 2 [Component Tests]:**
 
 1. Identify the component level scenarios that can be tested (as per the test plan). - Component Test Plan
 2. Identify if the parts in Step 1 (ii) can be covered via component tests.
 
-  1. **\_computeTotalValue() -** can be covered by component tests by passing the data prop during component rendering.
+1. **\_computeTotalValue() -** can be covered by component tests by passing the data prop during component rendering.
 
 1. Identify the scenarios which cannot be covered via Step 2(I and ii).
 
-  1. **wrapTextInsideDonut() -** cannot be unit/component tested as it requires the tspan length to be calculated using Browser Functions like **getComputedTextLength()**
+1. **wrapTextInsideDonut() -** cannot be unit/component tested as it requires the tspan length to be calculated using Browser Functions like **getComputedTextLength()**
 
 **Step 3 [E2E Tests]:**
 
 1. Identify the E2E scenarios that can be covered (as per the test plan) - Visual Regression with Interaction Test Plan – Donut Chart
 2. Cover all the test scenarios which could not be covered either in Step 1 or in Step 2.
 
-  1. **wrapTextInsideDonut() -** can be covered by E2E tests as the component is now rendered in a browser.
+1. **wrapTextInsideDonut() -** can be covered by E2E tests as the component is now rendered in a browser.
 
 Sample PRs and Test Plans:
 
