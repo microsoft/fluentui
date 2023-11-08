@@ -41,7 +41,7 @@ export const CustomParsingAndValidation = () => {
     }
   };
 
-  const formatTimeStringToDate: TimePickerProps['formatTimeStringToDate'] = (time: string | undefined) => {
+  const parseTimeStringToDate: TimePickerProps['parseTimeStringToDate'] = (time: string | undefined) => {
     if (!time) {
       return { error: 'required-input', date: null };
     }
@@ -70,7 +70,7 @@ export const CustomParsingAndValidation = () => {
         freeform
         dateAnchor={anchor}
         onTimeChange={handleTimeSelect}
-        formatTimeStringToDate={formatTimeStringToDate}
+        parseTimeStringToDate={parseTimeStringToDate}
       />
     </Field>
   );
