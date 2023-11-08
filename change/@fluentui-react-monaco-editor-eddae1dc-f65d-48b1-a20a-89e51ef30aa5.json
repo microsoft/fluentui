@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Update default supported packages",
-  "packageName": "@fluentui/react-monaco-editor",
-  "email": "atishay.jain@microsoft.com",
-  "dependentChangeType": "patch"
-}
