@@ -18,10 +18,10 @@ import {
 } from '@fluentui/react-components';
 import { createTabster, getMover, getGroupper, getTabsterAttribute, Types } from 'tabster';
 
-interface IUpcomingMeetingsGridCellNavigationRendererProps {
+interface UpcomingMeetingsGridCellNavigationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
 }
-export const UpcomingMeetingsGridCellNavigationRenderer: React.FC<IUpcomingMeetingsGridCellNavigationRendererProps> = ({
+export const UpcomingMeetingsGridCellNavigationRenderer: React.FC<UpcomingMeetingsGridCellNavigationRendererProps> = ({
   threeUpcomingMeetings,
 }) => {
   const tableTabsterAttribute = useArrowNavigationGroup({ axis: 'grid' });
@@ -81,12 +81,12 @@ export const UpcomingMeetingsGridCellNavigationRenderer: React.FC<IUpcomingMeeti
   );
 };
 
-interface IRecentMeetingsGridCellNavigationRendererrerProps {
+interface RecentMeetingsGridCellNavigationRendererrerProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
 export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
-  IRecentMeetingsGridCellNavigationRendererrerProps
+  RecentMeetingsGridCellNavigationRendererrerProps
 > = ({ recentCategories, recentMeetings }) => {
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
@@ -136,7 +136,7 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
         }
       }
     },
-    [changeRecentCategoryExpandedState, recentCategories, recentMeetings, setRecentCategoryState, targetDocument],
+    [changeRecentCategoryExpandedState, recentCategories, recentMeetings, targetDocument],
   );
 
   return (
@@ -153,9 +153,9 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
       })}
     >
       {recentCategories.map(category => (
-        <Table role="presentation" noNativeElements>
+        <Table key={category.id} role="presentation" noNativeElements>
           <TableBody role="presentation">
-            <TableRow key={category.id} id={category.id} role="row" aria-level={1}>
+            <TableRow id={category.id} role="row" aria-level={1}>
               <TableCell
                 role="gridcell"
                 tabIndex={0}

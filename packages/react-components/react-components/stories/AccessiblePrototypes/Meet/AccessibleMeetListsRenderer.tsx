@@ -5,10 +5,10 @@ import { List } from '@fluentui/react-northstar';
 import { Tree, TreeItem, TreeItemLayout } from '@fluentui/react-components/unstable';
 import { Button, Menu, MenuButton, MenuItem, MenuList, MenuPopover, MenuTrigger } from '@fluentui/react-components';
 
-interface IUpcomingMeetingsListRendererProps {
+interface UpcomingMeetingsListRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
 }
-export const UpcomingMeetingsListRenderer: React.FC<IUpcomingMeetingsListRendererProps> = ({
+export const UpcomingMeetingsListRenderer: React.FC<UpcomingMeetingsListRendererProps> = ({
   threeUpcomingMeetings,
 }) => {
   const [selectedUpcomingMeetingTitle, setSelectedUpcomingMeetingTitle] = React.useState<string | undefined>();
@@ -63,11 +63,11 @@ export const UpcomingMeetingsListRenderer: React.FC<IUpcomingMeetingsListRendere
   );
 };
 
-interface IRecentMeetingsTreeRendererrerProps {
+interface RecentMeetingsTreeRendererrerProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const RecentMeetingsTreeListRenderer: React.FC<IRecentMeetingsTreeRendererrerProps> = ({
+export const RecentMeetingsTreeListRenderer: React.FC<RecentMeetingsTreeRendererrerProps> = ({
   recentCategories,
   recentMeetings,
 }) => {
@@ -91,8 +91,8 @@ export const RecentMeetingsTreeListRenderer: React.FC<IRecentMeetingsTreeRendere
             <TreeItemLayout>{category.title}</TreeItemLayout>
             <Tree>
               {recentMeetings[category.id].map(meeting => (
-                <TreeItem itemType="leaf">
-                  <TreeItemLayout onClick={() => alert(meeting.title)}>{meeting.titleWithTime}</TreeItemLayout>
+                <TreeItem key={meeting.id} itemType="leaf">
+                  <TreeItemLayout>{meeting.titleWithTime}</TreeItemLayout>
                 </TreeItem>
               ))}
             </Tree>

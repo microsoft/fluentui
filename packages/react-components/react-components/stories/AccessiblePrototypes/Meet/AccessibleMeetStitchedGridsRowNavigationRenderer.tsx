@@ -11,12 +11,12 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 
-interface IRecentMeetingsStitchedGridRowNavigationRendererProps {
+interface RecentMeetingsStitchedGridRowNavigationRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
 export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
-  IRecentMeetingsStitchedGridRowNavigationRendererProps
+  RecentMeetingsStitchedGridRowNavigationRendererProps
 > = ({ recentCategories, recentMeetings }) => {
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
@@ -70,8 +70,8 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
           } else if ((event.key === 'Enter' || event.key === ' ') && level === '1') {
             changeRecentCategoryExpandedState(category, !category?.expanded);
           } else if (event.key === 'ArrowLeft' && level === '2') {
-            const categoryToFocus = recentCategories.find(category => {
-              return !!recentMeetings[category.id].find(meeting => {
+            const categoryToFocus = recentCategories.find(testedCategory => {
+              return !!recentMeetings[testedCategory.id].find(meeting => {
                 return meeting.id === selectedRowId;
               });
             }) as RecentCategory;
@@ -89,7 +89,6 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
       getCategoryById,
       recentCategories,
       recentMeetings,
-      setRecentCategoryState,
       onTableKeyDown,
       targetDocument,
     ],
@@ -104,10 +103,9 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
       {...tableTabsterAttribute}
     >
       {recentCategories.map((category, categoryIndex) => (
-        <Table role="treegrid" noNativeElements>
+        <Table key={category.id} role="treegrid" noNativeElements>
           <TableBody role="presentation">
             <TableRow
-              key={category.id}
               role="row"
               id={category.id}
               tabIndex={0}

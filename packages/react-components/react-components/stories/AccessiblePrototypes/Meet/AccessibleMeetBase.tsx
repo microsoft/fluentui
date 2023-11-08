@@ -135,10 +135,10 @@ const getFormattedTime = (date: Date) => {
   return time;
 };
 
-interface IAccessibleMeetBaseProps {
+interface AccessibleMeetBaseProps {
   variant: string;
 }
-export const AccessibleMeetBase: React.FC<IAccessibleMeetBaseProps> = ({ variant }) => {
+export const AccessibleMeetBase: React.FC<AccessibleMeetBaseProps> = ({ variant }) => {
   const recentCategoriesRef = React.useRef<RecentCategory[]>([]);
 
   const threeUpcomingMeetings = React.useMemo(() => {
@@ -252,7 +252,6 @@ export const AccessibleMeetBase: React.FC<IAccessibleMeetBaseProps> = ({ variant
           }
         });
       });
-      console.log(category.id + ' = ' + JSON.stringify(category.columns));
     });
 
     return result;

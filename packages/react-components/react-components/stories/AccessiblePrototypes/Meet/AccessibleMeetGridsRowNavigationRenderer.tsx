@@ -17,10 +17,10 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 
-interface IUpcomingMeetingsGridRowNavigationRendererProps {
+interface UpcomingMeetingsGridRowNavigationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
 }
-export const UpcomingMeetingsGridRowNavigationRenderer: React.FC<IUpcomingMeetingsGridRowNavigationRendererProps> = ({
+export const UpcomingMeetingsGridRowNavigationRenderer: React.FC<UpcomingMeetingsGridRowNavigationRendererProps> = ({
   threeUpcomingMeetings,
 }) => {
   const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
@@ -86,11 +86,11 @@ export const UpcomingMeetingsGridRowNavigationRenderer: React.FC<IUpcomingMeetin
   );
 };
 
-interface IRecentMeetingsGridRowNavigationRendererProps {
+interface RecentMeetingsGridRowNavigationRendererProps {
   recentCategories: RecentCategory[];
   recentMeetings: RecentMeetings;
 }
-export const RecentMeetingsTreeGridRowNavigationRenderer: React.FC<IRecentMeetingsGridRowNavigationRendererProps> = ({
+export const RecentMeetingsTreeGridRowNavigationRenderer: React.FC<RecentMeetingsGridRowNavigationRendererProps> = ({
   recentCategories,
   recentMeetings,
 }) => {
@@ -142,14 +142,7 @@ export const RecentMeetingsTreeGridRowNavigationRenderer: React.FC<IRecentMeetin
         onTableKeyDown(event);
       }
     },
-    [
-      changeRecentCategoryExpandedState,
-      recentCategories,
-      recentMeetings,
-      setRecentCategoryState,
-      onTableKeyDown,
-      targetDocument,
-    ],
+    [changeRecentCategoryExpandedState, recentCategories, recentMeetings, onTableKeyDown, targetDocument],
   );
 
   return (
