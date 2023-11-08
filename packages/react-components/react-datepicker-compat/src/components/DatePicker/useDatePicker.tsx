@@ -353,18 +353,6 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     : 'outline';
 
   const [triggerWrapperRef, popupRef] = usePopupPositioning(props);
-  const root = slot.always(restOfProps, {
-    defaultProps: {
-      appearance: inputAppearance,
-      'aria-controls': open ? popupSurfaceId : undefined,
-      'aria-expanded': open,
-      'aria-haspopup': 'dialog',
-      contentAfter: <CalendarMonthRegular onClick={onIconClick as unknown as React.MouseEventHandler<SVGElement>} />,
-      readOnly: !allowTextInput,
-      role: 'combobox',
-    },
-    elementType: Input,
-  });
 
   const inputRoot = slot.always(props.root, {
     defaultProps: {
@@ -374,17 +362,40 @@ export const useDatePicker_unstable = (props: DatePickerProps, ref: React.Ref<HT
     elementType: 'span',
   });
   inputRoot.ref = useMergedRefs(inputRoot.ref, triggerWrapperRef);
-  root.root = inputRoot;
-  const inputShorthand = slot.always(props.input, {
+
+  const input = slot.always(props.input, {
     elementType: 'input',
   });
-  inputShorthand.ref = useMergedRefs(inputShorthand.ref, ref, rootRef);
-  root.input = inputShorthand;
+  input.ref = useMergedRefs(input.ref, ref, rootRef);
+
+  const contentAfter = slot.always(props.contentAfter || {}, {
+    defaultProps: {
+      children: <CalendarMonthRegular />,
+    },
+    elementType: 'span',
+  });
+  contentAfter.onClick = useEventCallback(mergeCallbacks(contentAfter.onClick, onIconClick));
+
+  const root = slot.always(restOfProps, {
+    defaultProps: {
+      appearance: inputAppearance,
+      'aria-controls': open ? popupSurfaceId : undefined,
+      'aria-expanded': open,
+      'aria-haspopup': 'dialog',
+      readOnly: !allowTextInput,
+      role: 'combobox',
+    },
+    elementType: Input,
+  });
+  root.root = inputRoot;
+  root.input = input;
+  root.contentAfter = contentAfter;
   root.onChange = useEventCallback(mergeCallbacks(root.onChange, onInputChange));
   root.onBlur = useEventCallback(mergeCallbacks(root.onBlur, onInputBlur));
   root.onKeyDown = useEventCallback(mergeCallbacks(root.onKeyDown, onInputKeyDown));
   root.onFocus = useEventCallback(mergeCallbacks(root.onFocus, onInputFocus));
   root.onClick = useEventCallback(mergeCallbacks(root.onClick, onInputClick));
+
   const { modalAttributes } = useModalAttributes({ trapFocus: true, alwaysFocusable: true, legacyTrapFocus: false });
   const popupSurface = open
     ? slot.optional(props.popupSurface, {
