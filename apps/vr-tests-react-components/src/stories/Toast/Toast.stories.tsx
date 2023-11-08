@@ -248,7 +248,9 @@ export const ToastTitleWordBreak = () => {
   const dispatchToasts = () => {
     dispatchToast(
       <Toast ref={toastRef}>
-        <ToastTitle>This is a really long messagexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</ToastTitle>
+        <ToastTitle action={<Link>Action</Link>}>
+          This is a really long messagexxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+        </ToastTitle>
       </Toast>,
       {
         onStatusChange,
