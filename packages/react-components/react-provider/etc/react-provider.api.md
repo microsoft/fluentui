@@ -52,6 +52,9 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useComboboxStyles_unstable: (state: unknown) => void;
         useDropdownStyles_unstable: (state: unknown) => void;
         useListboxStyles_unstable: (state: unknown) => void;
+        useListStyles_unstable: (state: unknown) => void;
+        useListItemStyles_unstable: (state: unknown) => void;
+        useListItemButtonStyles_unstable: (state: unknown) => void;
         useOptionStyles_unstable: (state: unknown) => void;
         useOptionGroupStyles_unstable: (state: unknown) => void;
         useDividerStyles_unstable: (state: unknown) => void;
