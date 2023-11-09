@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: mark react-tree apis as deprecated and add Deprecation heading to the /unstable module",
-  "packageName": "@fluentui/react-components",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

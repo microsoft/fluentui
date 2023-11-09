@@ -2,6 +2,21 @@
   "name": "@fluentui/priority-overflow",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:49 GMT",
+      "tag": "@fluentui/priority-overflow_v9.1.9",
+      "version": "9.1.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/priority-overflow",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 23 Oct 2023 09:51:55 GMT",
       "tag": "@fluentui/priority-overflow_v9.1.8",
       "version": "9.1.8",

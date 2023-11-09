@@ -1,8 +1,23 @@
 # Change Log - @fluentui/react-calendar-compat
 
-This log was last generated on Mon, 06 Nov 2023 13:16:03 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:51 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [0.0.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.6)
+
+Thu, 09 Nov 2023 17:29:51 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-calendar-compat_v0.0.5..@fluentui/react-calendar-compat_v0.0.6)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.7 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-tabster to v9.14.4 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
 
 ## [0.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-calendar-compat_v0.0.5)
 
