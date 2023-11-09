@@ -4,6 +4,8 @@ import {
   useTooltipVisibility_unstable as useTooltipVisibility,
   useFluent_unstable as useFluent,
 } from '@fluentui/react-shared-contexts';
+import type { KeyborgFocusInEvent } from '@fluentui/react-tabster';
+import { KEYBORG_FOCUSIN } from '@fluentui/react-tabster';
 import {
   applyTriggerPropsToChildren,
   useControllableState,
@@ -17,7 +19,6 @@ import {
   useEventCallback,
   slot,
 } from '@fluentui/react-utilities';
-import { KEYBORG_FOCUSIN, KeyborgFocusInEvent } from 'keyborg';
 import type { TooltipProps, TooltipState, TooltipChildProps, OnVisibleChangeData } from './Tooltip.types';
 import { arrowHeight, tooltipBorderRadius } from './private/constants';
 import { Escape } from '@fluentui/keyboard-keys';

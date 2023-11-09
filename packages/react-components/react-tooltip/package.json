@@ -38,11 +38,11 @@
     "@fluentui/react-portal": "^9.3.27",
     "@fluentui/react-positioning": "^9.9.23",
     "@fluentui/react-shared-contexts": "^9.11.1",
+    "@fluentui/react-tabster": "^9.14.3",
     "@fluentui/react-theme": "^9.1.15",
     "@fluentui/react-utilities": "^9.15.1",
     "@griffel/react": "^1.5.14",
-    "@swc/helpers": "^0.5.1",
-    "keyborg": "^2.1.0"
+    "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
     "@types/react": ">=16.14.0 <19.0.0",
