@@ -102,11 +102,11 @@ function renderItem(entry: Item, isLastItem: boolean) {
   return (
     <React.Fragment key={`item-${entry.key}`}>
       {isTruncatableBreadcrumbContent(entry.item, 30) ? (
-        <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
-          <BreadcrumbItem>
+        <BreadcrumbItem>
+          <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
             <BreadcrumbButton current={isLastItem}>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbButton>
-          </BreadcrumbItem>
-        </Tooltip>
+          </Tooltip>
+        </BreadcrumbItem>
       ) : (
         <BreadcrumbItem>
           <BreadcrumbButton current={isLastItem}>{entry.item}</BreadcrumbButton>

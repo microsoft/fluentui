@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: use button when no href is defined",
+  "packageName": "@fluentui/react-breadcrumb-preview",
+  "email": "sarah.higley@microsoft.com",
+  "dependentChangeType": "patch"
+}

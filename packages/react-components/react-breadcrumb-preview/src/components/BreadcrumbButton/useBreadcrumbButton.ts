@@ -1,4 +1,5 @@
 import * as React from 'react';
+import type { ARIAButtonProps } from '@fluentui/react-aria';
 import { useButton_unstable } from '@fluentui/react-button';
 import type { ButtonProps } from '@fluentui/react-button';
 import { useBreadcrumbContext_unstable } from '../Breadcrumb/BreadcrumbContext';
@@ -18,7 +19,9 @@ export const useBreadcrumbButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
   const { size } = useBreadcrumbContext_unstable();
-  const { current = false, ...rest } = props;
+  const { current = false, as, ...rest } = props;
+
+  const controlType = as ?? (props as ARIAButtonProps<'a'>).href ? 'a' : 'button';
 
   return {
     ...useButton_unstable(
@@ -26,7 +29,7 @@ export const useBreadcrumbButton_unstable = (
         appearance: 'subtle',
         role: undefined,
         type: undefined,
-        as: 'a' as const,
+        as: controlType,
         iconPosition: 'before',
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
         'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,

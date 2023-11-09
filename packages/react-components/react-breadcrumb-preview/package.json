@@ -35,6 +35,7 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
+    "@fluentui/react-aria": "^9.3.44",
     "@fluentui/react-button": "^9.3.54",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-link": "^9.1.33",
