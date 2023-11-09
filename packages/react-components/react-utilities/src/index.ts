@@ -75,14 +75,14 @@ export type { FluentTriggerComponent, TriggerProps } from './trigger/index';
 export type { NativeTouchOrMouseEvent, ReactTouchOrMouseEvent, TouchOrMouseEvent } from './events/index';
 export { isTouchEvent, isMouseEvent, getEventClientCoords } from './events/index';
 
-export { useSelection } from './selection/index';
 export type {
+  SelectionMode,
   OnSelectionChangeCallback,
   OnSelectionChangeData,
-  SelectionHookParams,
   SelectionItemId,
+  SelectionHookParams,
   SelectionMethods,
-  SelectionMode,
 } from './selection/index';
+export { useSelection } from './selection/index';
 
 export { elementContains, setVirtualParent, getParent } from './virtualParent/index';

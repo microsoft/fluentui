@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Export selection utils",
-  "packageName": "@fluentui/react-utilities",
-  "email": "jirivyhnalek@microsoft.com",
-  "dependentChangeType": "patch"
-}
