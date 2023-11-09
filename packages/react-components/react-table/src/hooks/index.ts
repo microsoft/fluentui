@@ -5,3 +5,4 @@ export * from './useTableSelection';
 export * from './createColumn';
 export * from './useTableColumnSizing';
 export * from './useTableCompositeNavigation';
+export * from './useAdamTableCompositeNavigation';

@@ -5,6 +5,7 @@ export {
   createTableColumn,
   useTableColumnSizing_unstable,
   useTableCompositeNavigation,
+  useAdamTableCompositeNavigation,
 } from './hooks';
 
 export type {

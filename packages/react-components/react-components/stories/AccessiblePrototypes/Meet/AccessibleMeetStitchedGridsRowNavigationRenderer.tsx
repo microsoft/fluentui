@@ -6,7 +6,7 @@ import {
   TableBody,
   TableRow,
   TableCell,
-  useTableCompositeNavigation,
+  useAdamTableCompositeNavigation,
   Button,
   useFluent,
 } from '@fluentui/react-components';
@@ -21,7 +21,7 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
 
-  const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
+  const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useAdamTableCompositeNavigation();
 
   const getCategoryById = React.useCallback(
     (id: string) => {

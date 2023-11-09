@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { RecentCategory, UpcomingMeeting, RecentMeetings } from './AccessibleMeetBase';
+import { UpcomingMeeting, RecentCategory, RecentMeetings } from './AccessibleMeetBase';
 
 import {
   Table,
@@ -7,6 +7,7 @@ import {
   TableRow,
   TableCell,
   useTableCompositeNavigation,
+  useAdamTableCompositeNavigation,
   Button,
   Menu,
   MenuButton,
@@ -97,20 +98,35 @@ export const RecentMeetingsTreeGridRowNavigationRenderer: React.FC<RecentMeeting
   const { targetDocument } = useFluent();
   const [recentCategoriesState, setRecentCategoryState] = React.useState(recentCategories);
 
-  const { tableRowTabsterAttribute, tableTabsterAttribute, onTableKeyDown } = useTableCompositeNavigation();
+  const { tableTabsterAttribute, tableRowTabsterAttribute, onTableKeyDown } = useAdamTableCompositeNavigation();
+
+  const getCategoryById = React.useCallback(
+    (id: string) => {
+      return recentCategoriesState.find(category => {
+        return id === category.id;
+      });
+    },
+    [recentCategoriesState],
+  );
 
   const changeRecentCategoryExpandedState = React.useCallback(
-    (id: string, expanded: boolean) => {
-      recentCategoriesState.find(category => {
-        if (id === category.id) {
-          category.expanded = expanded;
-          return true;
-        }
-        return false;
-      });
+    (category: RecentCategory | undefined, expanded: boolean) => {
+      if (category) {
+        category.expanded = expanded;
+      }
       setRecentCategoryState([...recentCategoriesState]);
     },
     [recentCategoriesState],
+  );
+
+  const handleRowClick = React.useCallback(
+    (event: React.MouseEvent) => {
+      const element = event.target as HTMLElement;
+      const selectedRowId = element.id;
+      const category = getCategoryById(selectedRowId);
+      changeRecentCategoryExpandedState(category, !category?.expanded);
+    },
+    [getCategoryById, changeRecentCategoryExpandedState],
   );
 
   const handleTreeGridKeyDown = React.useCallback(
@@ -121,15 +137,18 @@ export const RecentMeetingsTreeGridRowNavigationRenderer: React.FC<RecentMeeting
         const isModifierDown = event.altKey || event.ctrlKey || event.metaKey || event.shiftKey;
         if (!isModifierDown) {
           const selectedRowId = element.id;
+          const category = getCategoryById(selectedRowId);
           const level = element.getAttribute('aria-level');
-          if (event.key === 'ArrowRight' && level === '1') {
-            changeRecentCategoryExpandedState(selectedRowId, true);
+          if (event.key === 'ArrowRight' && level === '1' && category && !category.expanded) {
+            changeRecentCategoryExpandedState(category, true);
             callTabsterKeyboardHandler = false;
           } else if (event.key === 'ArrowLeft' && level === '1') {
-            changeRecentCategoryExpandedState(selectedRowId, false);
+            changeRecentCategoryExpandedState(category, false);
+          } else if ((event.key === 'Enter' || event.key === ' ') && level === '1') {
+            changeRecentCategoryExpandedState(category, !category?.expanded);
           } else if (event.key === 'ArrowLeft' && level === '2') {
-            const categoryToFocus = recentCategories.find(category => {
-              return !!recentMeetings[category.id].find(meeting => {
+            const categoryToFocus = recentCategories.find(testedCategory => {
+              return !!recentMeetings[testedCategory.id].find(meeting => {
                 return meeting.id === selectedRowId;
               });
             }) as RecentCategory;
@@ -142,64 +161,84 @@ export const RecentMeetingsTreeGridRowNavigationRenderer: React.FC<RecentMeeting
         onTableKeyDown(event);
       }
     },
-    [changeRecentCategoryExpandedState, recentCategories, recentMeetings, onTableKeyDown, targetDocument],
+    [
+      changeRecentCategoryExpandedState,
+      getCategoryById,
+      recentCategories,
+      recentMeetings,
+      onTableKeyDown,
+      targetDocument,
+    ],
   );
 
   return (
-    <>
-      <Table
-        role="treegrid"
-        noNativeElements
-        onKeyDown={handleTreeGridKeyDown}
-        aria-label="All meetings"
-        aria-describedby="lastMeetings-hint"
-        {...tableTabsterAttribute}
-      >
-        <TableBody>
-          {recentCategories.map(category => (
-            <>
-              <TableRow
-                key={category.id}
-                id={category.id}
-                role="row"
-                tabIndex={0}
-                aria-level={1}
-                // aria-expanded={category.expanded}
-                {...tableRowTabsterAttribute}
-              >
-                <TableCell role="gridcell" tabIndex={0} colSpan={4}>
-                  {category.title}
-                </TableCell>
-              </TableRow>
-              {category.expanded &&
-                recentMeetings[category.id].map(meeting => (
-                  <TableRow
-                    key={meeting.id}
-                    id={meeting.id}
-                    role="row"
-                    tabIndex={0}
-                    aria-level={2}
-                    {...tableRowTabsterAttribute}
-                  >
-                    <TableCell role="gridcell" tabIndex={0}>
-                      {meeting.titleWithTime}
-                    </TableCell>
+    <div
+      role="treegrid"
+      aria-label="All meetings"
+      aria-describedby="lastMeetings-hint"
+      onKeyDown={handleTreeGridKeyDown}
+      {...tableTabsterAttribute}
+    >
+      {recentCategories.map((category, categoryIndex) => (
+        <Table key={category.id} role="presentation" noNativeElements>
+          <TableBody role="presentation">
+            <TableRow
+              role="row"
+              id={category.id}
+              tabIndex={0}
+              onClick={handleRowClick}
+              aria-level={1}
+              aria-posinset={categoryIndex + 1}
+              aria-setsize={recentCategories.length}
+              // aria-expanded={category.expanded}
+              {...tableRowTabsterAttribute}
+            >
+              <TableCell role="gridcell" tabIndex={0}>
+                {category.title}
+              </TableCell>
+              <TableCell role="gridcell" aria-colspan={category.columns.length + 2}>
+                <Button>Header action</Button>
+              </TableCell>
+            </TableRow>
+            {category.expanded &&
+              recentMeetings[category.id].map(meeting => (
+                <TableRow
+                  key={meeting.id}
+                  role="row"
+                  id={meeting.id}
+                  tabIndex={0}
+                  aria-level={2}
+                  {...tableRowTabsterAttribute}
+                >
+                  <TableCell role="gridcell" tabIndex={0}>
+                    {meeting.titleWithTime}
+                  </TableCell>
+                  <TableCell role="gridcell">
+                    <Button>Chat with participants</Button>
+                  </TableCell>
+                  <TableCell role="gridcell">
+                    <Button>View recap</Button>
+                  </TableCell>
+                  {category.columns.includes('includingContent') && (
                     <TableCell role="gridcell">
-                      {' '}
-                      <Button>Agenda and notes</Button>
+                      {meeting.properties?.includes('includingContent') && <Button>Agenda and notes</Button>}
                     </TableCell>
+                  )}
+                  {category.columns.includes('tasks') && (
                     <TableCell role="gridcell">
-                      <Button>Chat with participants</Button>
+                      {meeting.tasksCount && <Button>{`${meeting.tasksCount} tasks`}</Button>}
                     </TableCell>
+                  )}
+                  {category.columns.includes('transcript') && (
                     <TableCell role="gridcell">
-                      <Button>View recap</Button>
+                      {meeting.properties?.includes('transcript') && <Button>Transcript</Button>}
                     </TableCell>
-                  </TableRow>
-                ))}
-            </>
-          ))}
-        </TableBody>
-      </Table>
-    </>
+                  )}
+                </TableRow>
+              ))}
+          </TableBody>
+        </Table>
+      ))}
+    </div>
   );
 };
