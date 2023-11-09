@@ -1,11 +1,4 @@
-import {
-  Button,
-  makeStyles,
-  Persona,
-  PresenceBadgeProps,
-  shorthands,
-  useEventCallback,
-} from '@fluentui/react-components';
+import { Button, makeStyles, Persona, shorthands, useEventCallback } from '@fluentui/react-components';
 import { List, ListItem, useListFeatures, useListSelection } from '@fluentui/react-list-preview';
 
 import * as React from 'react';
