@@ -504,6 +504,8 @@ import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { OnOpenChangeData } from '@fluentui/react-popover';
+import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
+import { OnSelectionChangeData } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
 import { Option as Option_2 } from '@fluentui/react-combobox';
@@ -725,6 +727,10 @@ import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
+import { SelectionHookParams } from '@fluentui/react-utilities';
+import { SelectionItemId } from '@fluentui/react-utilities';
+import { SelectionMethods } from '@fluentui/react-utilities';
+import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import { SelectOnChangeData } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
@@ -958,6 +964,7 @@ import { toggleButtonClassNames } from '@fluentui/react-button';
 import { ToggleButtonProps } from '@fluentui/react-button';
 import { ToggleButtonState } from '@fluentui/react-button';
 import { tokens } from '@fluentui/react-theme';
+import { toMountNodeProps } from '@fluentui/react-portal';
 import { Toolbar } from '@fluentui/react-toolbar';
 import { ToolbarButton } from '@fluentui/react-toolbar';
 import { ToolbarButtonProps } from '@fluentui/react-toolbar';
@@ -1122,6 +1129,7 @@ import { useDrawerHeaderNavigationStyles_unstable } from '@fluentui/react-drawer
 import { useDrawerHeaderStyles_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeaderTitle_unstable } from '@fluentui/react-drawer';
 import { useDrawerHeaderTitleStyles_unstable } from '@fluentui/react-drawer';
+import { useDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { useDropdown_unstable } from '@fluentui/react-combobox';
 import { useDropdownStyles_unstable } from '@fluentui/react-combobox';
 import { useEventCallback } from '@fluentui/react-utilities';
@@ -1252,6 +1260,7 @@ import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelection } from '@fluentui/react-utilities';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSkeleton_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonContext } from '@fluentui/react-skeleton';
@@ -2361,6 +2370,10 @@ export { MessageBarTitleState }
 
 export { OnOpenChangeData }
 
+export { OnSelectionChangeCallback }
+
+export { OnSelectionChangeData }
+
 export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
@@ -2802,6 +2815,14 @@ export { Select }
 export { SelectableHandler }
 
 export { selectClassNames }
+
+export { SelectionHookParams }
+
+export { SelectionItemId }
+
+export { SelectionMethods }
+
+export { SelectionMode_2 as SelectionMode }
 
 export { SelectOnChangeData }
 
@@ -3269,6 +3290,8 @@ export { ToggleButtonState }
 
 export { tokens }
 
+export { toMountNodeProps }
+
 export { Toolbar }
 
 export { ToolbarButton }
@@ -3597,6 +3620,8 @@ export { useDrawerHeaderTitle_unstable }
 
 export { useDrawerHeaderTitleStyles_unstable }
 
+export { useDrawerStyles_unstable }
+
 export { useDropdown_unstable }
 
 export { useDropdownStyles_unstable }
@@ -3856,6 +3881,8 @@ export { useRestoreFocusTarget }
 export { useScrollbarWidth }
 
 export { useSelect_unstable }
+
+export { useSelection }
 
 export { useSelectStyles_unstable }
 

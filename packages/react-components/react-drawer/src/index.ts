@@ -1,4 +1,4 @@
-export { Drawer, renderDrawer_unstable, useDrawer_unstable } from './Drawer';
+export { Drawer, renderDrawer_unstable, useDrawerStyles_unstable, useDrawer_unstable } from './Drawer';
 export type { DrawerProps, DrawerSlots, DrawerState } from './Drawer';
 
 export {

@@ -32,8 +32,8 @@
   },
   "dependencies": {
     "@ctrl/tinycolor": "3.3.4",
-    "@fluentui/fluent2-theme": "^8.107.49",
-    "@fluentui/react": "^8.112.7",
+    "@fluentui/fluent2-theme": "^8.107.50",
+    "@fluentui/react": "^8.112.8",
     "@fluentui/react-components": "^9.37.4",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-theme": "^9.1.15",
@@ -60,5 +60,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }
