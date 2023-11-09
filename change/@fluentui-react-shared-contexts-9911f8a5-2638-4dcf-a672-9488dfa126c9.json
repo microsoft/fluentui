@@ -1,5 +1,5 @@
 {
-  "type": "patch",
+  "type": "minor",
   "comment": "feat: TeachingPopover style hooks added",
   "packageName": "@fluentui/react-shared-contexts",
   "email": "mifraser@microsoft.com",
