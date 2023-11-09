@@ -165,7 +165,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
    * select  multiple legends
    * @param legend ILegend
    */
-  private _canSelectMultipleLegends = (legend: ILegend): void => {
+  private _canSelectMultipleLegends = (legend: ILegend): { [key: string]: boolean } => {
     let selectedLegends = { ...this.state.selectedLegends };
     if (selectedLegends[legend.title]) {
       // Delete entry for the deselected legend to make
@@ -179,6 +179,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       }
     }
     this.setState({ selectedLegends });
+    return selectedLegends;
   };
 
   /**
@@ -187,26 +188,26 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
    * @param legend ILegend
    */
 
-  private _canSelectOnlySingleLegend = (legend: ILegend): void => {
+  private _canSelectOnlySingleLegend = (legend: ILegend): boolean => {
     if (this.state.selectedLegend === legend.title) {
       this.setState({ selectedLegend: '' });
+      return false;
     } else {
       this.setState({ selectedLegend: legend.title });
+      return true;
     }
   };
 
   private _onClick = (legend: ILegend): void => {
-    if (legend.action) {
-      const { canSelectMultipleLegends = false } = this.props;
-      if (canSelectMultipleLegends) {
-        this._canSelectMultipleLegends(legend);
-        this.props.onChange?.(Object.keys(this.state.selectedLegends));
-      } else {
-        this._canSelectOnlySingleLegend(legend);
-        this.props.onChange?.([this.state.selectedLegend].filter(key => !!key));
-      }
-      legend.action();
+    const { canSelectMultipleLegends = false } = this.props;
+    if (canSelectMultipleLegends) {
+      const selectedLegends = this._canSelectMultipleLegends(legend);
+      this.props.onChange?.(Object.keys(selectedLegends));
+    } else {
+      const isSelected = this._canSelectOnlySingleLegend(legend);
+      this.props.onChange?.(isSelected ? [legend.title] : []);
     }
+    legend.action?.();
   };
 
   private _onRenderCompactCard = (expandingCard: IExpandingCardProps): JSX.Element => {
