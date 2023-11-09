@@ -24033,10 +24033,10 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
-tabster@5.0.0-canary.6:
-  version "5.0.0-canary.6"
-  resolved "https://registry.yarnpkg.com/tabster/-/tabster-5.0.0-canary.6.tgz#4e76e24cfad756dd16436f300385137a50e3bcef"
-  integrity sha512-6wCE2uUUjux6txOJRmX1KDE8G1klC4Hpvja/Lxiyh5RK6Qp3v7IyLCRDXdAoCIOo8DK45yASQpXaX/C4lJJHTQ==
+tabster@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/tabster/-/tabster-5.0.0.tgz#e083949b71343fef9e7a76b5c2e0a0d1b390773a"
+  integrity sha512-kp34UX9AqGWDY4Jr/lp3to7TQt1TlawBAZvOLW9VSMWIGT6c2Hjbg3MKKkWut3FT0rFPuM7eLfPiM4mF4z6AAQ==
   dependencies:
     keyborg "^2.0.0"
     tslib "^2.3.1"
