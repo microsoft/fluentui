@@ -25,7 +25,7 @@ const config = createConfig({
   moduleNameMapper: {
     ...getEsmOnlyPackagesToCjsMapping(),
   },
-  reporters: ['./CustomReporter.js'],
+  globalTeardown: './GlobalTeardown.js',
 });
 
 module.exports = config;
