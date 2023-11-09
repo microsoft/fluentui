@@ -1,0 +1,10 @@
+{
+  "type": "minor",
+  "comment": {
+    "title": "add defaultSelectedLegends and onChange",
+    "value": "defaultSelectedLegends for default selected legends and onChange to listen the changes"
+  },
+  "packageName": "@fluentui/react-charting",
+  "email": "NewFuture@users.noreply.github.com",
+  "dependentChangeType": "patch"
+}
