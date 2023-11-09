@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: Add custom style hook types for List",
+  "packageName": "@fluentui/react-shared-contexts",
+  "email": "jirivyhnalek@microsoft.com",
+  "dependentChangeType": "patch"
+}

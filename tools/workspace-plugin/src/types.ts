@@ -28,6 +28,20 @@ export interface PackageJson {
   name: string;
   main: string;
   module?: string;
+  /**
+   * Vite and Webpack(sass-loader) consume this field
+   * @see https://github.com/microsoft/fluentui/pull/27274
+   */
+  style?: string;
+  /**
+   * https://storybook.js.org/docs/6.5/react/addons/integration-catalog
+   */
+  storybook?: Partial<{
+    displayName: string;
+    icon: string;
+    unsupportedFrameworks: string[];
+    supportedFrameworks: string[];
+  }>;
   version: string;
   scripts?: Record<string, string>;
   dependencies?: Record<string, string>;

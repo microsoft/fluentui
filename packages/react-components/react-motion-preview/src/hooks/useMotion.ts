@@ -12,6 +12,14 @@ export type MotionOptions = {
    * @default false
    */
   animateOnFirstMount?: boolean;
+
+  /**
+   * Duration of the animation in milliseconds.
+   * If not specified, the duration will be inferred from the CSS transition/animation duration.
+   *
+   * @default 0
+   */
+  duration?: number;
 };
 
 export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
@@ -48,7 +56,6 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
 };
 
 export type MotionShorthandValue = boolean;
-
 export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | MotionState<Element>;
 
 /**
@@ -81,7 +88,7 @@ function useMotionPresence<Element extends HTMLElement>(
   presence: boolean,
   options: MotionOptions = {},
 ): MotionState<Element> {
-  const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
+  const { animateOnFirstMount, duration } = { animateOnFirstMount: false, ...options };
 
   const [type, setType] = React.useState<MotionType>(
     presence && animateOnFirstMount ? 'entering' : presence ? 'idle' : 'unmounted',
@@ -89,6 +96,7 @@ function useMotionPresence<Element extends HTMLElement>(
   const [active, setActive] = React.useState<boolean>(!animateOnFirstMount && presence);
 
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setTickTimeout, clearTickTimeout] = useTimeout();
   const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
@@ -107,10 +115,22 @@ function useMotionPresence<Element extends HTMLElement>(
     setCurrentElement(node);
   }, []);
 
+  const nextTick = React.useCallback(
+    (cb: () => void) => {
+      setTickTimeout(() => setAnimationFrame(cb), 0);
+
+      return () => {
+        clearTickTimeout();
+        cancelAnimationFrame();
+      };
+    },
+    [cancelAnimationFrame, clearTickTimeout, setAnimationFrame, setTickTimeout],
+  );
+
   const onFinished = React.useCallback(() => {
     setType(presence ? 'entered' : 'exited');
-    setAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
-  }, [presence, setAnimationFrame]);
+    nextTick(() => setType(presence ? 'idle' : 'unmounted'));
+  }, [nextTick, presence]);
 
   React.useEffect(() => {
     if (isFirstReactRender) {
@@ -132,14 +152,14 @@ function useMotionPresence<Element extends HTMLElement>(
     }
 
     // Wait for the next frame to ensure the element is rendered and the animation can start.
-    setAnimationFrame(() => {
+    nextTick(() => {
       setActive(presence);
 
       // Wait for the next frame to ensure the animation has started.
-      setAnimationFrame(() => {
-        const duration = getMotionDuration(currentElement);
+      nextTick(() => {
+        const finalDuration = duration || getMotionDuration(currentElement);
 
-        if (duration === 0) {
+        if (finalDuration === 0) {
           onFinished();
           return;
         }
@@ -149,18 +169,14 @@ function useMotionPresence<Element extends HTMLElement>(
          * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
          * if the transition has multiple properties.
          */
-        setAnimationTimeout(() => onFinished(), duration);
+        setAnimationTimeout(() => onFinished(), finalDuration);
       });
     });
 
-    return () => {
-      cancelAnimationFrame();
-      clearAnimationTimeout();
-    };
-
-    /**
+    return () => clearAnimationTimeout();
+    /*
      * Only tracks dependencies that are either not stable or are used in the callbacks
-     * This is to avoid re-running the effect on every render, especially when the element is not rendered
+     * This is to avoid re-running the effect on every render, especially when the DOM element is not rendered
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentElement, disableAnimation, onFinished, presence]);

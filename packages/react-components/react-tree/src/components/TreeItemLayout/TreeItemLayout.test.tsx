@@ -13,6 +13,7 @@ const Wrapper: React.FC = ({ children }) => (
       subtreeRef: React.createRef(),
       actionsRef: React.createRef(),
       expandIconRef: React.createRef(),
+      treeItemRef: React.createRef(),
       isActionsVisible: true,
       isAsideVisible: true,
       itemType: 'leaf',
@@ -29,6 +30,11 @@ describe('TreeItemLayout', () => {
     Component: TreeItemLayout,
     renderOptions: { wrapper: Wrapper },
     displayName: 'TreeItemLayout',
+    disabledTests: [
+      // This is disabled as aside and actions cannot be visible at the same time
+      'component-has-static-classnames',
+      'component-has-static-classnames-object',
+    ],
     requiredProps: {
       iconAfter: 'iconAfter',
       iconBefore: 'iconBefore',
@@ -38,8 +44,6 @@ describe('TreeItemLayout', () => {
       selector: {},
     },
   });
-
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
 
   it('renders a default state', () => {
     const result = render(<TreeItemLayout>Default TreeItemLayout</TreeItemLayout>);
