@@ -4,7 +4,7 @@ import { ChevronDownRegular as ChevronDownIcon } from '@fluentui/react-icons';
 import { getPartitionedNativeProps, mergeCallbacks, useMergedRefs, useTimeout, slot } from '@fluentui/react-utilities';
 import { getDropdownActionFromKey } from '../../utils/dropdownKeyActions';
 import { useComboboxBaseState } from '../../utils/useComboboxBaseState';
-import { useComboboxPopup } from '../../utils/useComboboxPopup';
+import { useComboboxPositioning } from '../../utils/useComboboxPositioning';
 import { useTriggerListboxSlots } from '../../utils/useTriggerListboxSlots';
 import { Listbox } from '../Listbox/Listbox';
 import type { Slot } from '@fluentui/react-utilities';
@@ -34,13 +34,7 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     excludedPropNames: ['children'],
   });
 
-  // set listbox popup width based off the root/trigger width
-  const rootRef = React.useRef<HTMLDivElement>(null);
-  const [popupWidth, setPopupWidth] = React.useState<string>();
-  React.useEffect(() => {
-    const width = open ? `${rootRef.current?.clientWidth}px` : undefined;
-    setPopupWidth(width);
-  }, [open]);
+  const [comboboxPopupRef, comboboxTargetRef] = useComboboxPositioning(props);
 
   // jump to matching option based on typing
   const searchString = React.useRef('');
@@ -120,22 +114,29 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     baseState.open || baseState.hasFocus
       ? slot.optional(props.listbox, {
           renderByDefault: true,
-          defaultProps: { children: props.children, style: { width: popupWidth } },
+          defaultProps: { children: props.children },
           elementType: Listbox,
         })
       : undefined;
-  [triggerSlot, listboxSlot] = useComboboxPopup(props, triggerSlot, listboxSlot);
   [triggerSlot, listboxSlot] = useTriggerListboxSlots(props, baseState, ref, triggerSlot, listboxSlot);
+  const listboxRef = useMergedRefs(listboxSlot?.ref, comboboxPopupRef);
+  if (listboxSlot) {
+    listboxSlot.ref = listboxRef;
+  }
+
+  const rootSlot = slot.always(props.root, {
+    defaultProps: {
+      'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
+      children: props.children,
+      ...rootNativeProps,
+    },
+    elementType: 'div',
+  });
+  rootSlot.ref = useMergedRefs(rootSlot.ref, comboboxTargetRef);
+
   const state: DropdownState = {
     components: { root: 'div', button: 'button', expandIcon: 'span', listbox: Listbox },
-    root: slot.always(props.root, {
-      defaultProps: {
-        'aria-owns': !props.inlinePopup ? listboxSlot?.id : undefined,
-        children: props.children,
-        ...rootNativeProps,
-      },
-      elementType: 'div',
-    }),
+    root: rootSlot,
     button: triggerSlot,
     listbox: listboxSlot,
     expandIcon: slot.optional(props.expandIcon, {
@@ -148,8 +149,6 @@ export const useDropdown_unstable = (props: DropdownProps, ref: React.Ref<HTMLBu
     placeholderVisible: !baseState.value && !!props.placeholder,
     ...baseState,
   };
-
-  state.root.ref = useMergedRefs(state.root.ref, rootRef);
 
   return state;
 };

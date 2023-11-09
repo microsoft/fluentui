@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: used makeResetStyles instead of makeStyles",
-  "packageName": "@fluentui/react-breadcrumb-preview",
-  "email": "vkozlova@microsoft.com",
-  "dependentChangeType": "patch"
-}

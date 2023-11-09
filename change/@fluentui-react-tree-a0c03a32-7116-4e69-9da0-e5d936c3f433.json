@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: FlatTree supports navigation without useHeadlessFlatTree",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

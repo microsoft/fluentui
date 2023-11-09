@@ -5,6 +5,10 @@ import { StackedBarChartBase } from './StackedBarChart.base';
 import { getStyles } from './StackedBarChart.styles';
 
 // Create a StackedBarChart variant which uses these default styles and this styled subcomponent.
+/**
+ * StackedBarchart component
+ * {@docCategory StackedBarChart}
+ */
 export const StackedBarChart: React.FunctionComponent<IStackedBarChartProps> = styled<
   IStackedBarChartProps,
   IStackedBarChartStyleProps,

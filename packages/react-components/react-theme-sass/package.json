@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-theme-sass",
-  "version": "9.0.0-alpha.16",
+  "version": "9.0.0-alpha.19",
   "description": "SASS variables referencing react-theme design tokens injected to DOM by react-provider.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -48,5 +48,12 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs",
+    "sass"
+  ]
 }

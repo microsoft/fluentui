@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: bump swc core to mitigate transpilation memory leaks",
-  "packageName": "@fluentui/babel-preset-global-context",
-  "email": "martinhochel@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove hover color for disabled InteractionTag under windows high contrast",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

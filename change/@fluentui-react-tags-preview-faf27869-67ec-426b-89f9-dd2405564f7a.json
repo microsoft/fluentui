@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: remove double curve from dismissible circular InteractionTag on windows high contrast",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

@@ -36,7 +36,7 @@ export const ColumnIdContextProvider: React_2.Provider<TableColumnId | undefined
 export function createTableColumn<TItem>(options: CreateTableColumnOptions<TItem>): {
     columnId: TableColumnId;
     renderCell: (item: TItem) => ReactNode;
-    renderHeaderCell: () => ReactNode;
+    renderHeaderCell: (data?: unknown) => ReactNode;
     compare: (a: TItem, b: TItem) => number;
 };
 
@@ -365,7 +365,7 @@ export interface TableColumnDefinition<TItem> {
     // (undocumented)
     renderCell: (item: TItem) => React_2.ReactNode;
     // (undocumented)
-    renderHeaderCell: () => React_2.ReactNode;
+    renderHeaderCell: (data?: unknown) => React_2.ReactNode;
 }
 
 // @public (undocumented)

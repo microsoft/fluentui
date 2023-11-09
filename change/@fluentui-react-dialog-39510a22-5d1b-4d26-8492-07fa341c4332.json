@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "doc: updates documentation on alert dialog escape dismiss",
-  "packageName": "@fluentui/react-dialog",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

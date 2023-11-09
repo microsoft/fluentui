@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: use context to fetch dialog id",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

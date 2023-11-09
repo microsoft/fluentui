@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "feat: add dialog slot",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

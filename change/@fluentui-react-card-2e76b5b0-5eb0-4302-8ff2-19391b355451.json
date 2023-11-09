@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: sync controllable state for selectable cards",
-  "packageName": "@fluentui/react-card",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: set default aria-labelledby on InteractionTagSecondary",
-  "packageName": "@fluentui/react-tags-preview",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

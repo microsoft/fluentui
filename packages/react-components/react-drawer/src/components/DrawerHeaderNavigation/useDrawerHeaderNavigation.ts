@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 
 import type { DrawerHeaderNavigationProps, DrawerHeaderNavigationState } from './DrawerHeaderNavigation.types';
 
@@ -22,7 +22,7 @@ export const useDrawerHeaderNavigation_unstable = (
     },
 
     root: slot.always(
-      getNativeElementProps('nav', {
+      getIntrinsicElementProps('nav', {
         ref,
         ...props,
       }),

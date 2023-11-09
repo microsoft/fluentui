@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add custom style hooks for tag components",
-  "packageName": "@fluentui/react-shared-contexts",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

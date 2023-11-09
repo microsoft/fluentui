@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { NavProps, NavState } from './Nav.types';
 
 /**
@@ -11,7 +11,7 @@ import type { NavProps, NavState } from './Nav.types';
  * @param props - props from this instance of Nav
  * @param ref - reference to root HTMLElement of Nav
  */
-export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLElement>): NavState => {
+export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLDivElement>): NavState => {
   return {
     // TODO add appropriate props/defaults
     components: {
@@ -21,7 +21,7 @@ export const useNav_unstable = (props: NavProps, ref: React.Ref<HTMLElement>): N
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref,
         ...props,
       }),

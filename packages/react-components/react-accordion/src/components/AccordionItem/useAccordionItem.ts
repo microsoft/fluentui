@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot, useEventCallback } from '@fluentui/react-utilities';
 import type { AccordionItemProps, AccordionItemState } from './AccordionItem.types';
 import type { AccordionToggleEvent } from '../Accordion/Accordion.types';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
@@ -27,6 +27,15 @@ export const useAccordionItem_unstable = (
     components: {
       root: 'div',
     },
-    root: slot.always(getNativeElementProps('div', { ref, ...props }), { elementType: 'div' }),
+    root: slot.always(
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
+        ...props,
+      }),
+      { elementType: 'div' },
+    ),
   };
 };

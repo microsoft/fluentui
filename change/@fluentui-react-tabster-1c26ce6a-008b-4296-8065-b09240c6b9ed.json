@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: adds suffixes to selectors on focus creator methods",
-  "packageName": "@fluentui/react-tabster",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

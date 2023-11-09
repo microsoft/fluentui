@@ -2,6 +2,21 @@
   "name": "@fluentui/eslint-plugin",
   "entries": [
     {
+      "date": "Sat, 28 Oct 2023 00:29:15 GMT",
+      "tag": "@fluentui/eslint-plugin_v1.17.2",
+      "version": "1.17.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/eslint-plugin",
+            "commit": "9dce1d4962e1f62ec8fce4359f0074dee5b38072",
+            "comment": "chore: bump eslint-plugin-jsdoc to version which support node 18"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 31 Jul 2023 07:33:19 GMT",
       "tag": "@fluentui/eslint-plugin_v1.17.1",
       "version": "1.17.1",

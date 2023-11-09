@@ -1,7 +1,0 @@
-{
-  "type": "prerelease",
-  "comment": "fix: remove defaultOpen prop from DrawerInline as it had no effect",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

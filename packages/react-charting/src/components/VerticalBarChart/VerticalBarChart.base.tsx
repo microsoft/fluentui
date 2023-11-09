@@ -32,8 +32,8 @@ import {
   StringAxis,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 enum CircleVisbility {
   show = 'visibility',
@@ -533,14 +533,19 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       this._classNames = getClassNames(this.props.styles!, {
         theme: this.props.theme!,
         legendColor: this.state.color,
-        shouldHighlight: shouldHighlight,
+        shouldHighlight,
       });
       const barHeight: number = Math.max(yBarScale(point.y), 0);
-      if (barHeight < 1) {
+      let adjustedBarHeight = 0;
+      if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
+      } else {
+        adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x as number);
-      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x}>
           <rect
@@ -550,7 +555,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             y={yPoint}
             width={this._barWidth}
             data-is-focusable={!this.props.hideTooltip}
-            height={barHeight}
+            height={adjustedBarHeight}
             ref={(e: SVGRectElement) => {
               this._refCallback(e, point.legend!);
             }}
@@ -563,7 +568,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onBlur={this._onBarLeave}
             fill={point.color && !useSingleColor ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -596,11 +601,16 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     const colorScale = this._createColors();
     const bars = this._points.map((point: IVerticalBarChartDataPoint, index: number) => {
       const barHeight: number = Math.max(yBarScale(point.y), 0);
-      if (barHeight < 1) {
+      let adjustedBarHeight = 0;
+      if (barHeight <= 0) {
         return <React.Fragment key={point.x}> </React.Fragment>;
+      } else if (barHeight <= Math.ceil(yBarScale(this._yMax) / 100.0)) {
+        adjustedBarHeight = Math.ceil(yBarScale(this._yMax) / 100.0);
+      } else {
+        adjustedBarHeight = barHeight;
       }
       const xPoint = xBarScale(point.x);
-      const yPoint = containerHeight - this.margins.bottom! - yBarScale(point.y);
+      const yPoint = containerHeight - this.margins.bottom! - adjustedBarHeight;
       return (
         <g key={point.x} transform={`translate(${0.5 * (xBarScale.bandwidth() - this._barWidth)}, 0)`}>
           <rect
@@ -608,7 +618,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             x={xPoint}
             y={yPoint}
             width={this._barWidth}
-            height={barHeight}
+            height={adjustedBarHeight}
             aria-label={this._getAriaLabel(point)}
             role="img"
             ref={(e: SVGRectElement) => {
@@ -622,7 +632,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
             onFocus={this._onBarFocus.bind(this, point, index, colorScale(point.y))}
             fill={point.color ? point.color : colorScale(point.y)}
           />
-          {this._renderBarLabel(xPoint, yPoint, point.y)}
+          {this._renderBarLabel(xPoint, yPoint, point.y, point.legend!)}
         </g>
       );
     });
@@ -691,7 +701,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
       // mapping data to the format Legends component needs
       const legend: ILegend = {
         title: point.legend!,
-        color: color,
+        color,
         action: () => {
           this._onLegendClick(point.legend!);
         },
@@ -778,8 +788,12 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
     );
   };
 
-  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number) {
-    if (this.props.hideLabels || this._barWidth < 16) {
+  private _renderBarLabel(xPoint: number, yPoint: number, barValue: number, legend: string) {
+    if (
+      this.props.hideLabels ||
+      this._barWidth < 16 ||
+      !(this._legendHighlighted(legend) || this._noLegendHighlighted())
+    ) {
       return null;
     }
 
@@ -791,7 +805,7 @@ export class VerticalBarChartBase extends React.Component<IVerticalBarChartProps
         className={this._classNames.barLabel}
         aria-hidden={true}
       >
-        {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+        {formatValueWithSIPrefix(barValue)}
       </text>
     );
   }

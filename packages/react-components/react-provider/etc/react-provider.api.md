@@ -52,6 +52,9 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useComboboxStyles_unstable: (state: unknown) => void;
         useDropdownStyles_unstable: (state: unknown) => void;
         useListboxStyles_unstable: (state: unknown) => void;
+        useListStyles_unstable: (state: unknown) => void;
+        useListItemStyles_unstable: (state: unknown) => void;
+        useListItemButtonStyles_unstable: (state: unknown) => void;
         useOptionStyles_unstable: (state: unknown) => void;
         useOptionGroupStyles_unstable: (state: unknown) => void;
         useDividerStyles_unstable: (state: unknown) => void;
@@ -114,6 +117,8 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useDrawerStyles_unstable: (state: unknown) => void;
         useDrawerInlineStyles_unstable: (state: unknown) => void;
         useDrawerOverlayStyles_unstable: (state: unknown) => void;
+        useInlineDrawerStyles_unstable: (state: unknown) => void;
+        useOverlayDrawerStyles_unstable: (state: unknown) => void;
         useDrawerHeaderStyles_unstable: (state: unknown) => void;
         useDrawerHeaderNavigationStyles_unstable: (state: unknown) => void;
         useDrawerHeaderTitleStyles_unstable: (state: unknown) => void;
@@ -124,6 +129,16 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useInteractionTagSecondaryStyles_unstable: (state: unknown) => void;
         useTagStyles_unstable: (state: unknown) => void;
         useTagGroupStyles_unstable: (state: unknown) => void;
+        useBreadcrumbStyles_unstable: (state: unknown) => void;
+        useBreadcrumbButtonStyles_unstable: (state: unknown) => void;
+        useBreadcrumbItemStyles_unstable: (state: unknown) => void;
+        useBreadcrumbDividerStyles_unstable: (state: unknown) => void;
+        useMessageBarStyles_unstable: (state: unknown) => void;
+        useMessageBarBodyStyles_unstable: (state: unknown) => void;
+        useMessageBarTitleStyles_unstable: (state: unknown) => void;
+        useMessageBarActionsStyles_unstable: (state: unknown) => void;
+        useMessageBarGroupStyles_unstable: (state: unknown) => void;
+        useToasterStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;

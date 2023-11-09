@@ -3,6 +3,9 @@ import { render } from '@testing-library/react';
 import { Dialog } from './Dialog';
 import { DialogProps } from './Dialog.types';
 import { isConformant } from '../../testing/isConformant';
+import { DialogTrigger } from '../DialogTrigger/DialogTrigger';
+import { makeStyles, mergeClasses } from '@griffel/react';
+import { DialogSurface, DialogSurfaceProps } from '../../DialogSurface';
 
 describe('Dialog', () => {
   isConformant<DialogProps>({
@@ -22,8 +25,6 @@ describe('Dialog', () => {
     ],
   });
 
-  // TODO add more tests here, and create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(
       <Dialog>
@@ -31,5 +32,34 @@ describe('Dialog', () => {
       </Dialog>,
     );
     expect(result.container).toMatchSnapshot();
+  });
+
+  it('Testing DialogSurface with toBeVisible works as expected', () => {
+    // eslint-disable-next-line @griffel/styles-file
+    const useStyles = makeStyles({
+      root: {
+        left: '2px',
+      },
+    });
+    const CustomDialogSurface = React.forwardRef<HTMLDivElement, DialogSurfaceProps>((props, ref) => {
+      const styles = useStyles();
+      return <DialogSurface ref={ref} className={mergeClasses(styles.root, props.className)} {...props} />;
+    });
+
+    const result = render(
+      <Dialog>
+        <DialogTrigger disableButtonEnhancement>
+          <button data-testid="trigger">Open dialog</button>
+        </DialogTrigger>
+        <CustomDialogSurface>
+          <div data-testid="surface-content">content in surface</div>
+        </CustomDialogSurface>
+      </Dialog>,
+    );
+
+    result.getByTestId('trigger').click();
+
+    expect(result.getByTestId('surface-content')).toBeInTheDocument();
+    expect(result.getByTestId('surface-content')).toBeVisible();
   });
 });

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useAnimationFrame, useTimeout, usePrevious, useFirstMount } from '@fluentui/react-utilities';
+import { useAnimationFrame, useTimeout, useFirstMount } from '@fluentui/react-utilities';
 
 import { useReducedMotion } from './useReducedMotion';
 import { getMotionDuration } from '../utils/dom-style';
@@ -12,6 +12,14 @@ export type MotionOptions = {
    * @default false
    */
   animateOnFirstMount?: boolean;
+
+  /**
+   * Duration of the animation in milliseconds.
+   * If not specified, the duration will be inferred from the CSS transition/animation duration.
+   *
+   * @default 0
+   */
+  duration?: number;
 };
 
 export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
@@ -48,7 +56,6 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
 };
 
 export type MotionShorthandValue = boolean;
-
 export type MotionShorthand<Element extends HTMLElement = HTMLElement> = MotionShorthandValue | MotionState<Element>;
 
 /**
@@ -81,7 +88,7 @@ function useMotionPresence<Element extends HTMLElement>(
   presence: boolean,
   options: MotionOptions = {},
 ): MotionState<Element> {
-  const { animateOnFirstMount } = { animateOnFirstMount: false, ...options };
+  const { animateOnFirstMount, duration } = { animateOnFirstMount: false, ...options };
 
   const [type, setType] = React.useState<MotionType>(
     presence && animateOnFirstMount ? 'entering' : presence ? 'idle' : 'unmounted',
@@ -89,6 +96,7 @@ function useMotionPresence<Element extends HTMLElement>(
   const [active, setActive] = React.useState<boolean>(!animateOnFirstMount && presence);
 
   const [setAnimationTimeout, clearAnimationTimeout] = useTimeout();
+  const [setTickTimeout, clearTickTimeout] = useTimeout();
   const [setAnimationFrame, cancelAnimationFrame] = useAnimationFrame();
 
   const [currentElement, setCurrentElement] = React.useState<HTMLElementWithStyledMap<Element> | null>(null);
@@ -107,19 +115,29 @@ function useMotionPresence<Element extends HTMLElement>(
     setCurrentElement(node);
   }, []);
 
+  const nextTick = React.useCallback(
+    (cb: () => void) => {
+      setTickTimeout(() => setAnimationFrame(cb), 0);
+
+      return () => {
+        clearTickTimeout();
+        cancelAnimationFrame();
+      };
+    },
+    [cancelAnimationFrame, clearTickTimeout, setAnimationFrame, setTickTimeout],
+  );
+
   const onFinished = React.useCallback(() => {
     setType(presence ? 'entered' : 'exited');
-    setAnimationFrame(() => setType(presence ? 'idle' : 'unmounted'));
-  }, [presence, setAnimationFrame]);
+    nextTick(() => setType(presence ? 'idle' : 'unmounted'));
+  }, [nextTick, presence]);
 
   React.useEffect(() => {
     if (isFirstReactRender) {
       return;
     }
 
-    /*
-     * In case animation is disabled, we can skip the animation and go straight to the idle state.
-     */
+    // In case animation is disabled, we can skip the animation and go straight to the idle state.
     if (disableAnimation) {
       setType(presence ? 'idle' : 'unmounted');
       setActive(presence);
@@ -128,26 +146,20 @@ function useMotionPresence<Element extends HTMLElement>(
 
     setType(presence ? 'entering' : 'exiting');
 
-    /*
-     * If the element is not rendered, nothing to do.
-     */
+    // If the element is not rendered, nothing to do.
     if (!currentElement) {
       return;
     }
 
-    /*
-     * Wait for the next frame to ensure the element is rendered and the animation can start.
-     */
-    setAnimationFrame(() => {
+    // Wait for the next frame to ensure the element is rendered and the animation can start.
+    nextTick(() => {
       setActive(presence);
 
-      /*
-       * Wait for the next frame to ensure the animation has started.
-       */
-      setAnimationFrame(() => {
-        const duration = getMotionDuration(currentElement);
+      // Wait for the next frame to ensure the animation has started.
+      nextTick(() => {
+        const finalDuration = duration || getMotionDuration(currentElement);
 
-        if (duration === 0) {
+        if (finalDuration === 0) {
           onFinished();
           return;
         }
@@ -157,17 +169,14 @@ function useMotionPresence<Element extends HTMLElement>(
          * This is an alternative to using the `transitionend` event which can be unreliable as it fires multiple times
          * if the transition has multiple properties.
          */
-        setAnimationTimeout(() => onFinished(), duration);
+        setAnimationTimeout(() => onFinished(), finalDuration);
       });
     });
 
-    return () => {
-      cancelAnimationFrame();
-      clearAnimationTimeout();
-    };
+    return () => clearAnimationTimeout();
     /*
      * Only tracks dependencies that are either not stable or are used in the callbacks
-     * This is to avoid re-running the effect on every render, especially when the element is not rendered
+     * This is to avoid re-running the effect on every render, especially when the DOM element is not rendered
      */
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentElement, disableAnimation, onFinished, presence]);
@@ -177,11 +186,11 @@ function useMotionPresence<Element extends HTMLElement>(
       ref,
       type,
       active,
-      canRender: type !== 'unmounted',
+      canRender: presence || type !== 'unmounted',
     }),
     // No need to add ref to the deps array as it is stable
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [active, type],
+    [active, type, presence],
   );
 }
 
@@ -207,57 +216,8 @@ export function useMotion<Element extends HTMLElement>(
   shorthand: MotionShorthand<Element>,
   options?: MotionOptions,
 ): MotionState<Element> {
-  /**
-   * Heads up!
-   * This hook returns a Motion but also accepts Motion as an argument.
-   * In case the hook is called with a Motion as argument, we don't need to perform the expensive computation of the
-   * motion state and can just return the motion value as is. This is intentional as it allows others to use the hook
-   * on their side without having to worry about the performance impact of the hook.
-   */
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  return useIsMotion(shorthand) ? shorthand : useMotionPresence(shorthand, options);
-}
+  const isShorthand = typeof shorthand === 'object';
+  const motion = useMotionPresence<Element>(isShorthand ? false : shorthand, options);
 
-const stringifyShorthand = <Element extends HTMLElement>(value: MotionShorthand<Element>) => {
-  return JSON.stringify(value, null, 2);
-};
-
-/**
- * @internal
- *
- * This method emits a warning if the hook is called with
- * a different typeof of shorthand on subsequent renders,
- * since this can lead breaking the rules of hooks.
- *
- * It also return a boolean indicating whether the shorthand is a motion object.
- */
-export function useIsMotion<Element extends HTMLElement>(
-  shorthand: MotionShorthand<Element>,
-): shorthand is MotionState<Element> {
-  const previousShorthand = usePrevious(shorthand);
-
-  /**
-   * Heads up!
-   * We don't want these warnings in production even though it is against native behavior
-   */
-  if (process.env.NODE_ENV !== 'production') {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    React.useEffect(() => {
-      if (previousShorthand !== null && typeof previousShorthand !== typeof shorthand) {
-        // eslint-disable-next-line no-console
-        console.error(
-          [
-            'useMotion: The hook needs to be called with the same typeof of shorthand on every render.',
-            'This is to ensure the internal state of the hook is stable and can be used to accurately detect the motion state.',
-            'Please make sure to not change the shorthand on subsequent renders or to use the hook conditionally.',
-            '\nCurrent shorthand:',
-            stringifyShorthand(shorthand),
-            '\nPrevious shorthand:',
-            stringifyShorthand(previousShorthand),
-          ].join(' '),
-        );
-      }
-    }, [shorthand, previousShorthand]);
-  }
-  return typeof shorthand === 'object';
+  return isShorthand ? shorthand : motion;
 }
