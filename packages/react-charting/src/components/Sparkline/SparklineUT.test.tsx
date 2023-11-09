@@ -1,4 +1,5 @@
 /* eslint-disable import/no-absolute-path */
+export {};
 describe('unit test', () => {
   test('UT 1', () => {
     const rewire = require('rewire');

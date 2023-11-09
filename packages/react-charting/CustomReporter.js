@@ -12,7 +12,7 @@ class CustomReporter {
     console.log('global config: ', this._globalConfig);
     console.log('options for this reporter from Jest config: ', this._options);
     console.log('reporter context passed from test scheduler: ', this._context);
-    fs.unlink('D:/fluentui/packages/react-charting/src/components/Sparkline/SparklineBase.js', err => {});
+    fs.unlink('src/components/Sparkline/SparklineBase.js', err => {});
   }
 
   // Optionally, reporters can force Jest to exit with non zero code by returning
