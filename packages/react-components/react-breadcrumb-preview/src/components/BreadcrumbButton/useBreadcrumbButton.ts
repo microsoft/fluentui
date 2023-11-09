@@ -19,9 +19,9 @@ export const useBreadcrumbButton_unstable = (
   ref: React.Ref<HTMLButtonElement | HTMLAnchorElement>,
 ): BreadcrumbButtonState => {
   const { size } = useBreadcrumbContext_unstable();
-  const { current = false, ...rest } = props;
+  const { current = false, as, ...rest } = props;
 
-  const as = (props as ARIAButtonProps<'a'>).href ? 'a' : 'button';
+  const controlType = as ?? (props as ARIAButtonProps<'a'>).href ? 'a' : 'button';
 
   return {
     ...useButton_unstable(
@@ -29,7 +29,7 @@ export const useBreadcrumbButton_unstable = (
         appearance: 'subtle',
         role: undefined,
         type: undefined,
-        as,
+        as: controlType,
         iconPosition: 'before',
         'aria-current': current ? props['aria-current'] ?? 'page' : undefined,
         'aria-disabled': current ? props['aria-disabled'] ?? true : undefined,
