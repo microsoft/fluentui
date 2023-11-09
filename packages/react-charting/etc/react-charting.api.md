@@ -787,13 +787,14 @@ export interface ILegendsProps {
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;
+    defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
     focusZonePropsInHoverCard?: IFocusZoneProps;
     legends: ILegend[];
+    onChange?: (selectedLegends: string[]) => void;
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
-    selectedLegend?: string;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
 }
