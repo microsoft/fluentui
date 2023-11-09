@@ -49,11 +49,14 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   public constructor(props: ILegendsProps) {
     super(props);
+    const defaultSelectedLegends =
+      props.defaultSelectedLegends?.reduce((combinedDict, key) => ({ [key]: true, ...combinedDict }), {}) || {};
+
     this.state = {
       selectedLegend: '',
       activeLegend: '',
       isHoverCardVisible: false,
-      selectedLegends: {},
+      selectedLegends: defaultSelectedLegends,
     };
   }
 
@@ -197,8 +200,10 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       const { canSelectMultipleLegends = false } = this.props;
       if (canSelectMultipleLegends) {
         this._canSelectMultipleLegends(legend);
+        this.props.onChange?.(Object.keys(this.state.selectedLegends));
       } else {
         this._canSelectOnlySingleLegend(legend);
+        this.props.onChange?.([this.state.selectedLegend].filter(key => !!key));
       }
       legend.action();
     }
@@ -330,7 +335,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       className,
       colorOnSelectedState: color,
       borderColor: legend.color,
-      overflow: overflow,
+      overflow,
       stripePattern: legend.stripePattern,
       isLineLegendInBarChart: legend.isLineLegendInBarChart,
       opacity: legend.opacity,
