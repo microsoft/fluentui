@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "[Bug]: React Charting Heat Map Chart tooltip appears above the wrong cell fixed",
+  "packageName": "@fluentui/react-charting",
+  "email": "gautam33776@gmail.com",
+  "dependentChangeType": "patch"
+}
