@@ -8,9 +8,10 @@
   "typings": "./dist/index.d.ts",
   "sideEffects": false,
   "files": [
+    "*.md",
+    "dist/*.d.ts",
     "lib",
-    "lib-commonjs",
-    "dist/*.d.ts"
+    "lib-commonjs"
   ],
   "repository": {
     "type": "git",

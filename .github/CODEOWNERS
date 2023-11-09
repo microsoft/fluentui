@@ -251,6 +251,7 @@ packages/react-components/react-rating-preview @microsoft/cxe-red @tomi-msft
 packages/react-components/react-swatch-picker-preview @microsoft/cxe-prg
 packages/react-components/react-calendar-compat @microsoft/cxe-red @sopranopillow
 packages/react-components/react-infolabel @microsoft/cxe-red @sopranopillow
+packages/react-components/react-list-preview @microsoft/teams-prg
 # <%= NX-CODEOWNER-PLACEHOLDER %>
 
 ## Components

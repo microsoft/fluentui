@@ -159,14 +159,14 @@ export type TimePickerProps = Omit<
     /**
      * In the freeform TimePicker, customizes the parsing from the input time string into a Date and provides custom validation.
      */
-    formatTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
+    parseTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
   };
 
 /**
  * State used in rendering TimePicker
  */
 export type TimePickerState = ComboboxState &
-  Required<Pick<TimePickerProps, 'freeform' | 'formatTimeStringToDate'>> & {
+  Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {
     /**
      * Submitted text from the input field. It is used to determine if the input value has changed when user submit a new value on Enter or blur from input.
      */

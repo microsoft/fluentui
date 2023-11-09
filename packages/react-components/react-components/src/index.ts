@@ -593,7 +593,7 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
-export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
+export { Portal, usePortal_unstable, renderPortal_unstable, toMountNodeProps } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Radio,
@@ -1434,6 +1434,7 @@ export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/r
 export {
   Drawer,
   renderDrawer_unstable,
+  useDrawerStyles_unstable,
   useDrawer_unstable,
   OverlayDrawer,
   overlayDrawerClassNames,

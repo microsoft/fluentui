@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "chore: Export missing useDrawerStyles_unstable from react-drawer.",
+  "packageName": "@fluentui/react-components",
+  "email": "Humberto.Morimoto@microsoft.com",
+  "dependentChangeType": "patch"
+}
