@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Thu, 09 Nov 2023 07:29:20 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 07:26:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.18.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.17)
+
+Fri, 10 Nov 2023 07:26:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.16..@fluentui/react-charting_v5.18.17)
+
+### Patches
+
+- [Bug]: React Charting Heat Map Chart tooltip appears above the wrong cell fixed ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by gautam33776@gmail.com)
 
 ## [5.18.16](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.16)
 
