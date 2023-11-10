@@ -221,16 +221,3 @@ export const BreadcrumbWithTooltip = () => {
     </>
   );
 };
-
-BreadcrumbWithTooltip.parameters = {
-  docs: {
-    description: {
-      story: [
-        'Interactive items have tooltips when their names are longer than 30 symbols.',
-        'Tooltips are truncated when its content is longer than 80 symbols.',
-        'Non-interactive Breadcrumb runs the entire available space where the control is placed.',
-        'If the space is limited, the string will truncate the end of it.',
-      ].join('\n\n'),
-    },
-  },
-};
