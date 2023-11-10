@@ -12,7 +12,6 @@ variables:
       skipComponentGovernanceDetection: false
   - name: release.vnext # Used to scope beachball to release only vnext packages
     value: true
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 
@@ -27,85 +26,88 @@ variables:
 #       include:
 #         - master
 
-jobs:
-  - template: .devops/templates/compliance-job.yml
+resources:
+  repositories:
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
 
-  - job: Release
-    dependsOn: Compliance
-    pool: '1ES-Host-Ubuntu'
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    stages:
+      - stage: main
+        jobs:
+          - job: Release
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            workspace:
+              clean: all
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)
+                  artifactName: output
+            steps:
+              - template: .devops/templates/tools.yml@self
 
-      - script: |
-          git config user.name "Fluent UI Build"
-          git config user.email "fluentui-internal@service.microsoft.com"
-          git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
-        displayName: Authenticate git for pushes
+              - script: |
+                  git config user.name "Fluent UI Build"
+                  git config user.email "fluentui-internal@service.microsoft.com"
+                  git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/microsoft/fluentui.git
+                displayName: Authenticate git for pushes
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+              - task: Bash@3
+                inputs:
+                  filePath: yarn-ci.sh
+                displayName: yarn
 
-      # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
-      # https://github.com/microsoft/fluentui/issues/21686
-      - script: |
-          yarn run:published test
-        displayName: yarn test
+              # --only makes it only run tests (otherwise due to the missing --production arg, lage would re-run the build)
+              # https://github.com/microsoft/fluentui/issues/21686
+              - script: |
+                  yarn run:published test
+                displayName: yarn test
 
-      - script: |
-          yarn run:published lint
-        displayName: yarn lint
+              - script: |
+                  yarn run:published lint
+                displayName: yarn lint
 
-      - script: |
-          yarn run:published build --production
-        displayName: yarn build
+              - script: |
+                  yarn run:published build --production
+                displayName: yarn build
 
-      - script: |
-          yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-vNext.config.js
-          git reset --hard origin/master
-        env:
-          GITHUB_PAT: $(githubPAT)
-        displayName: Publish changes and bump versions
+              - script: |
+                  yarn publish:beachball -n $(npmToken) --config scripts/beachball/release-vNext.config.js
+                  git reset --hard origin/master
+                env:
+                  GITHUB_PAT: $(githubPAT)
+                displayName: Publish changes and bump versions
 
-      - script: |
-          node -r ./scripts/ts-node/register scripts/executors/tag-react-components.ts --token $(npmToken)
-        displayName: Tag prelease packages with prerelease tag
-        continueOnError: true
+              - script: |
+                  node -r ./scripts/ts-node/register scripts/executors/tag-react-components.ts --token $(npmToken)
+                displayName: Tag prelease packages with prerelease tag
+                continueOnError: true
 
-      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-        displayName: 📒 Generate Manifest
-        inputs:
-          BuildDropPath: $(System.DefaultWorkingDirectory)
+              # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
+              - script: |
+                  yarn syncpack list-mismatches
+                displayName: Check for dependency mismatches
 
-      - task: PublishPipelineArtifact@1
-        displayName: 📒 Publish Manifest
-        inputs:
-          artifactName: SBom-$(System.JobAttempt)
-          targetPath: $(System.DefaultWorkingDirectory)/_manifest
+              # TODO update release notes script for v9
+              # - script: |
+              #     node -r ./scripts/ts-node/register ./scripts/update-release-notes/index.ts --token=$(githubPAT) --apply --debug
+              #   displayName: 'Update github release notes'
 
-      # Since releases are scoped, this should warn for any packages that were mistakenly not included in scoping
-      - script: |
-          yarn syncpack list-mismatches
-        displayName: Check for dependency mismatches
+              # This would usually be run automatically (via a pipeline decorator from an extension), but the
+              # thorough cleanup step prevents it from working. So run it manually here.
 
-      # TODO update release notes script for v9
-      # - script: |
-      #     node -r ./scripts/ts-node/register ./scripts/update-release-notes/index.ts --token=$(githubPAT) --apply --debug
-      #   displayName: 'Update github release notes'
-
-      # This would usually be run automatically (via a pipeline decorator from an extension), but the
-      # thorough cleanup step prevents it from working. So run it manually here.
-      - task: ComponentGovernanceComponentDetection@0
-        displayName: 'Component governance detection'
-        inputs:
-          sourceScanPath: $(Agent.BuildDirectory)
-        condition: succeeded()
-        timeoutInMinutes: 5
-        continueOnError: true
-
-      - template: .devops/templates/cleanup.yml
-        parameters:
-          checkForModifiedFiles: false
+              - template: .devops/templates/cleanup.yml@self
+                parameters:
+                  checkForModifiedFiles: false

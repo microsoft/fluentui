@@ -1,8 +1,29 @@
 # Change Log - @fluentui/global-context
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:49 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-beta.49](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.49)
+
+Thu, 09 Nov 2023 17:29:49 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.48..@fluentui/global-context_v9.0.0-beta.49)
+
+### Changes
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-context-selector to v9.1.42 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.0.0-beta.48](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.48)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/global-context_v9.0.0-beta.47..@fluentui/global-context_v9.0.0-beta.48)
+
+### Changes
+
+- Bump @fluentui/react-context-selector to v9.1.41 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
 
 ## [9.0.0-beta.47](https://github.com/microsoft/fluentui/tree/@fluentui/global-context_v9.0.0-beta.47)
 

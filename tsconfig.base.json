@@ -46,7 +46,7 @@
       "@fluentui/react-focus-management": ["packages/react-focus-management/src/index.ts"],
       "@fluentui/react-image": ["packages/react-components/react-image/src/index.ts"],
       "@fluentui/react-infobutton": ["packages/react-components/react-infobutton/src/index.ts"],
-      "@fluentui/react-infolabel-preview": ["packages/react-components/react-infolabel-preview/src/index.ts"],
+      "@fluentui/react-infolabel": ["packages/react-components/react-infolabel/src/index.ts"],
       "@fluentui/react-input": ["packages/react-components/react-input/src/index.ts"],
       "@fluentui/react-jsx-runtime": ["packages/react-components/react-jsx-runtime/src/index.ts"],
       "@fluentui/react-jsx-runtime/jsx-dev-runtime": [
@@ -55,6 +55,7 @@
       "@fluentui/react-jsx-runtime/jsx-runtime": ["packages/react-components/react-jsx-runtime/src/jsx-runtime.ts"],
       "@fluentui/react-label": ["packages/react-components/react-label/src/index.ts"],
       "@fluentui/react-link": ["packages/react-components/react-link/src/index.ts"],
+      "@fluentui/react-list-preview": ["packages/react-components/react-list-preview/src/index.ts"],
       "@fluentui/react-menu": ["packages/react-components/react-menu/src/index.ts"],
       "@fluentui/react-message-bar": ["packages/react-components/react-message-bar/src/index.ts"],
       "@fluentui/react-migration-v0-v9": ["packages/react-components/react-migration-v0-v9/src/index.ts"],
@@ -80,8 +81,8 @@
       "@fluentui/react-spinbutton": ["packages/react-components/react-spinbutton/src/index.ts"],
       "@fluentui/react-spinner": ["packages/react-components/react-spinner/src/index.ts"],
       "@fluentui/react-storybook-addon": ["packages/react-components/react-storybook-addon/src/index.ts"],
-      "@fluentui/react-storybook-addon-codesandbox": [
-        "packages/react-components/react-storybook-addon-codesandbox/src/index.ts"
+      "@fluentui/react-storybook-addon-export-to-sandbox": [
+        "packages/react-components/react-storybook-addon-export-to-sandbox/src/index.ts"
       ],
       "@fluentui/react-swatch-picker-preview": ["packages/react-components/react-swatch-picker-preview/src/index.ts"],
       "@fluentui/react-switch": ["packages/react-components/react-switch/src/index.ts"],

@@ -2,6 +2,48 @@
   "name": "@fluentui/react-aria",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:50 GMT",
+      "tag": "@fluentui/react-aria_v9.3.44",
+      "version": "9.3.44",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-aria",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/keyboard-keys to v9.0.7",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.15.2",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:08 GMT",
+      "tag": "@fluentui/react-aria_v9.3.43",
+      "version": "9.3.43",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-aria",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 11 Oct 2023 13:54:26 GMT",
       "tag": "@fluentui/react-aria_v9.3.42",
       "version": "9.3.42",

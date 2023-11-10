@@ -1,8 +1,67 @@
 # Change Log - @fluentui/react-slider
 
-This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:43 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.55](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.55)
+
+Thu, 09 Nov 2023 17:29:43 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.54..@fluentui/react-slider_v9.1.55)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-field to v9.1.41 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.19 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.12.0 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-tabster to v9.14.4 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-theme to v9.1.16 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.1.54](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.54)
+
+Wed, 01 Nov 2023 12:55:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.53..@fluentui/react-slider_v9.1.54)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.40 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.1 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-tabster to v9.14.3 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+- Bump @fluentui/react-theme to v9.1.15 ([PR #29663](https://github.com/microsoft/fluentui/pull/29663) by beachball)
+
+## [9.1.53](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.53)
+
+Sat, 28 Oct 2023 23:35:59 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.52..@fluentui/react-slider_v9.1.53)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.39 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+- Bump @fluentui/react-tabster to v9.14.2 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
+
+## [9.1.52](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.52)
+
+Mon, 23 Oct 2023 09:51:57 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.51..@fluentui/react-slider_v9.1.52)
+
+### Patches
+
+- Bump @fluentui/react-tabster to v9.14.1 ([commit](https://github.com/microsoft/fluentui/commit/e4ef1febe8a185dddc10f8936944d177d50bc396) by beachball)
+
+## [9.1.51](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.51)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-slider_v9.1.50..@fluentui/react-slider_v9.1.51)
+
+### Patches
+
+- Bump @fluentui/react-field to v9.1.38 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-jsx-runtime to v9.0.18 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-tabster to v9.14.0 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
 
 ## [9.1.50](https://github.com/microsoft/fluentui/tree/@fluentui/react-slider_v9.1.50)
 

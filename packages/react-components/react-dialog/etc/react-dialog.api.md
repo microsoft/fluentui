@@ -166,7 +166,9 @@ export type DialogSurfaceSlots = {
 };
 
 // @public
-export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Partial<Pick<DialogContextValue, 'isNestedDialog'>> & Pick<PortalProps, 'mountNode'>;
+export type DialogSurfaceState = ComponentState<DialogSurfaceSlots> & Pick<DialogContextValue, 'isNestedDialog'> & Pick<PortalProps, 'mountNode'> & {
+    transitionStatus?: 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';
+};
 
 // @public
 export const DialogTitle: ForwardRefComponent<DialogTitleProps>;

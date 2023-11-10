@@ -58,7 +58,7 @@ export const useDialog_unstable = (props: DialogProps): DialogState => {
     inertTrapFocus,
     open,
     modalType,
-    content: open ? content : null,
+    content,
     trigger,
     requestOpenChange,
     dialogTitleId: useId('dialog-title-'),

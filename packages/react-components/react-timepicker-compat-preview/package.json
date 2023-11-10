@@ -1,7 +1,6 @@
 {
   "name": "@fluentui/react-timepicker-compat-preview",
-  "version": "0.0.0",
-  "private": true,
+  "version": "0.1.1",
   "description": "Fluent UI TimePicker Compat Component",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -14,7 +13,10 @@
   "license": "MIT",
   "scripts": {
     "build": "just-scripts build",
+    "bundle-size": "monosize measure",
     "clean": "just-scripts clean",
+    "e2e": "cypress run --component",
+    "e2e:local": "cypress open --component",
     "generate-api": "just-scripts generate-api",
     "lint": "just-scripts lint",
     "start": "yarn storybook",
@@ -31,10 +33,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-combobox": "^9.5.24",
-    "@fluentui/react-jsx-runtime": "^9.0.17",
-    "@fluentui/react-theme": "^9.1.14",
-    "@fluentui/react-utilities": "^9.15.0",
+    "@fluentui/keyboard-keys": "^9.0.7",
+    "@fluentui/react-combobox": "^9.5.29",
+    "@fluentui/react-jsx-runtime": "^9.0.19",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -58,5 +61,11 @@
       "major",
       "prerelease"
     ]
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

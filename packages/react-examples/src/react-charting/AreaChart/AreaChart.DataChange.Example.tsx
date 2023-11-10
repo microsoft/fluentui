@@ -99,6 +99,10 @@ export class AreaChartDataChangeExample extends React.Component<{}, IAreaChartBa
             }}
             enableReflow={true}
           />
+          <div style={{ marginBottom: '13px' }}>
+            Note: Y values in callout display individual values. Y value plotted on chart are cumulative for the
+            datapoint.
+          </div>
           <DefaultButton text="Change Ydata" onClick={this._changeData} />
           <DefaultButton text="Change Xdata" onClick={this._changeXData} />
         </div>

@@ -16,7 +16,7 @@ export class LineChartGapsExample extends React.Component<{}, ILineChartGapsStat
   constructor(props: ILineChartProps) {
     super(props);
     this.state = {
-      width: 1200,
+      width: 700,
       height: 400,
     };
   }

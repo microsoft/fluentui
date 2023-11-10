@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-monaco-editor",
-  "version": "1.7.135",
+  "version": "1.7.148",
   "description": "Live React example editing using monaco",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,12 +30,12 @@
     "@fluentui/scripts-webpack": "*"
   },
   "dependencies": {
-    "@fluentui/react": "^8.112.2",
+    "@fluentui/react": "^8.112.8",
     "@microsoft/load-themed-styles": "^1.10.26",
-    "@fluentui/example-data": "^8.4.12",
-    "@fluentui/monaco-editor": "^1.3.11",
-    "@fluentui/react-hooks": "^8.6.30",
-    "@fluentui/react-charting": "^5.18.4",
+    "@fluentui/example-data": "^8.4.13",
+    "@fluentui/monaco-editor": "^1.3.12",
+    "@fluentui/react-hooks": "^8.6.33",
+    "@fluentui/react-charting": "^5.18.17",
     "raw-loader": "4.0.2",
     "react-syntax-highlighter": "^10.1.3",
     "tslib": "^2.1.0"

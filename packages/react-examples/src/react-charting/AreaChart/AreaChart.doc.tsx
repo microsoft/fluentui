@@ -35,7 +35,7 @@ export const AreaChartPageProps: IDocPageProps = {
       view: <AreaChartStyledExample />,
     },
     {
-      title: 'Multiple Area chart',
+      title: 'Stacked Area chart',
       code: AreaChartMultipleExampleCode,
       view: <AreaChartMultipleExample />,
     },
@@ -52,6 +52,8 @@ export const AreaChartPageProps: IDocPageProps = {
   ],
   overview: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartOverview.md'),
   bestPractices: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartBestPractices.md'),
+  dos: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartDos.md'),
+  donts: require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/AreaChart/docs/AreaChartDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
 };

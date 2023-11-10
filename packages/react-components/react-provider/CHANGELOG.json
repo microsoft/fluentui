@@ -2,6 +2,169 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:41 GMT",
+      "tag": "@fluentui/react-provider_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "9343f295b18084e44f6751081907aa7e9987b767",
+            "comment": "feat: Add API for List"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.12.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.14.4",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.1.16",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.15.2",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.19",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "9fecb0701b66d4256d181df9a9e8c463ab759c60",
+            "comment": "fix: useFluentProvider now returns the same empty object every time, fixing unnecessary re-renders"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/react-provider_v9.11.1",
+      "version": "9.11.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.1",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.14.3",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.1.15",
+            "commit": "838b05367dbdddb17732b9e0c807090e0a4445d5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 23:35:58 GMT",
+      "tag": "@fluentui/react-provider_v9.11.0",
+      "version": "9.11.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "olfedias@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "5e65d8013cd09faf4b3777202f251d5c3d67c138",
+            "comment": "fix: invoke useCustomStyleHook_unstable()"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-provider",
+            "commit": "8381d2c4c7d389b2199398212beccbe1a899d4ea",
+            "comment": "feat: add new drawer global style hooks that are needed by drawer public api changes"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.11.0",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.14.2",
+            "commit": "555b0fae3ec7f052e765557ae243c58000514f92"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 09:51:57 GMT",
+      "tag": "@fluentui/react-provider_v9.10.9",
+      "version": "9.10.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.14.1",
+            "commit": "e4ef1febe8a185dddc10f8936944d177d50bc396"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 17:54:08 GMT",
+      "tag": "@fluentui/react-provider_v9.10.8",
+      "version": "9.10.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.14.0",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.15.1",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.18",
+            "commit": "c0d3065982e1646c54ba00c1d524248b792dbcad"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 12 Oct 2023 14:55:44 GMT",
       "tag": "@fluentui/react-provider_v9.10.7",
       "version": "9.10.7",

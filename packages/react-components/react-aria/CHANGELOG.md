@@ -1,8 +1,28 @@
 # Change Log - @fluentui/react-aria
 
-This log was last generated on Wed, 11 Oct 2023 13:54:26 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:50 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.3.44](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.44)
+
+Thu, 09 Nov 2023 17:29:50 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.43..@fluentui/react-aria_v9.3.44)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/keyboard-keys to v9.0.7 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.3.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.43)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-aria_v9.3.42..@fluentui/react-aria_v9.3.43)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
 
 ## [9.3.42](https://github.com/microsoft/fluentui/tree/@fluentui/react-aria_v9.3.42)
 

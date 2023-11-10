@@ -31,8 +31,8 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -790,8 +790,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < Math.max(Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
-          barHeight = Math.max(Math.ceil(this._yMax / 100.0), barMinimumHeight);
+        if (barHeight < Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
@@ -848,22 +848,37 @@ export class VerticalStackedBarChartBase extends React.Component<
         onClick: this._onClick.bind(this, singleChartData),
         role: 'img',
       };
+      let showLabel = false;
+      let barLabel = 0;
+      if (!this.props.hideLabels) {
+        if (this._noLegendHighlighted()) {
+          showLabel = true;
+          barLabel = barTotalValue;
+        } else {
+          barsToDisplay.forEach(point => {
+            if (this._legendHighlighted(point.legend)) {
+              showLabel = true;
+              barLabel += point.data;
+            }
+          });
+        }
+      }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
-          {!this.props.hideLabels && this._barWidth >= 16 && (
+          {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
               y={yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
-              aria-label={`Total: ${barTotalValue}`}
+              aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
+              {formatValueWithSIPrefix(barLabel)}
             </text>
           )}
         </g>

@@ -13,7 +13,6 @@ export const <%= componentName %>: ForwardRefComponent<<%= componentName %>Props
   const state = use<%= componentName %>_unstable(props, ref);
 
   use<%= componentName %>Styles_unstable(state);
-  use<%= componentName %>Styles_unstable(state);
   // TODO update types in packages/react-components/react-shared-contexts/src/CustomStyleHooksContext/CustomStyleHooksContext.ts
   // https://github.com/microsoft/fluentui/blob/master/rfcs/react-components/convergence/custom-styling.md
   useCustomStyleHook_unstable('use<%= componentName %>Styles_unstable')(state);

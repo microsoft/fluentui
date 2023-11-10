@@ -66,6 +66,16 @@ export class GroupedVerticalBarChart extends React.Component<IComponentDemoPageP
             {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/docs/GroupedVerticalBarChartBestPractices.md')}
           </Markdown>
         }
+        dos={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/docs/GroupedVerticalBarChartDos.md')}
+          </Markdown>
+        }
+        donts={
+          <Markdown>
+            {require<string>('!raw-loader?esModule=false!@fluentui/react-examples/src/react-charting/GroupedVerticalBarChart/docs/GroupedVerticalBarChartDonts.md')}
+          </Markdown>
+        }
       />
     );
   }

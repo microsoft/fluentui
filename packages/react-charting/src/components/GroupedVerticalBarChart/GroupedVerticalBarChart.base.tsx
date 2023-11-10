@@ -14,6 +14,7 @@ import {
   tooltipOfXAxislabels,
   XAxisTypes,
   getTypeOfAxis,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
 import {
   IAccessibilityProps,
@@ -29,7 +30,6 @@ import {
   IRefArrayData,
   Legends,
 } from '../../index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const COMPONENT_NAME = 'GROUPED VERTICAL BAR CHART';
 const getClassNames = classNamesFunction<IGroupedVerticalBarChartStyleProps, IGroupedVerticalBarChartStyles>();
@@ -362,7 +362,12 @@ export class GroupedVerticalBarChartBase extends React.Component<
             role="img"
           />,
         );
-      if (pointData.data && !this.props.hideLabels && this._barWidth >= 16) {
+      if (
+        pointData.data &&
+        !this.props.hideLabels &&
+        this._barWidth >= 16 &&
+        (this._legendHighlighted(pointData.legend) || this._noLegendHighlighted())
+      ) {
         barLabelsForGroup.push(
           <text
             x={xPoint + this._barWidth / 2}
@@ -371,7 +376,7 @@ export class GroupedVerticalBarChartBase extends React.Component<
             className={this._classNames.barLabel}
             aria-hidden={true}
           >
-            {d3FormatPrefix(pointData.data < 1000 ? '.2~' : '.1', pointData.data)(pointData.data)}
+            {formatValueWithSIPrefix(pointData.data)}
           </text>,
         );
       }

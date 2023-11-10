@@ -6,7 +6,7 @@ import { getStyles } from './SankeyChart.styles';
 
 // Create a SankeyChart variant which uses these default styles and this styled subcomponent.
 /**
- * Sankeychart component.
+ * Sankeychart component
  * {@docCategory SankeyChart}
  */
 export const SankeyChart: React.FunctionComponent<ISankeyChartProps> = styled<

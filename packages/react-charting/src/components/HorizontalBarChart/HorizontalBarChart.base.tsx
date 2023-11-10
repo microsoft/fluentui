@@ -12,9 +12,13 @@ import {
   HorizontalBarChartVariant,
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
-import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
+import {
+  ChartHoverCard,
+  convertToLocaleString,
+  formatValueWithSIPrefix,
+  getAccessibleDataObject,
+} from '../../utilities/index';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
@@ -383,7 +387,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             className={this._classNames.barLabel}
             aria-hidden={true}
           >
-            {d3FormatPrefix(barValue < 1000 ? '.2~' : '.1', barValue)(barValue)}
+            {formatValueWithSIPrefix(barValue)}
           </text>
         );
       }

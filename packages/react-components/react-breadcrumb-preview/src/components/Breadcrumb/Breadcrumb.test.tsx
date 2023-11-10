@@ -3,7 +3,6 @@ import { render } from '@testing-library/react';
 import { Breadcrumb } from './Breadcrumb';
 import { BreadcrumbButton } from '../BreadcrumbButton/BreadcrumbButton';
 import { BreadcrumbItem } from '../BreadcrumbItem/BreadcrumbItem';
-import { BreadcrumbDivider } from '../BreadcrumbDivider/BreadcrumbDivider';
 import { isConformant } from '../../testing/isConformant';
 
 describe('Breadcrumb', () => {
@@ -11,8 +10,6 @@ describe('Breadcrumb', () => {
     Component: Breadcrumb,
     displayName: 'Breadcrumb',
   });
-
-  // create visual regression tests in /apps/vr-tests
 
   it('renders a default state with BreadcrumbButton', () => {
     const result = render(
@@ -37,7 +34,6 @@ describe('Breadcrumb', () => {
             >
               <button
                 class="fui-Button fui-BreadcrumbButton"
-                type="button"
               >
                 Item 1
               </button>
@@ -47,45 +43,7 @@ describe('Breadcrumb', () => {
       </div>
     `);
   });
-  it('renders a small non-interactive Breadcrumb with a slash divider', () => {
-    const result = render(
-      <Breadcrumb size="small" dividerType="slash">
-        <BreadcrumbItem>Item 1</BreadcrumbItem>
-        <BreadcrumbDivider />
-        <BreadcrumbItem>Item 2</BreadcrumbItem>
-      </Breadcrumb>,
-    );
-    expect(result.container).toMatchInlineSnapshot(`
-      <div>
-        <nav
-          aria-label="breadcrumb"
-          class="fui-Breadcrumb"
-        >
-          <ol
-            class="fui-Breadcrumb__list"
-            role="list"
-          >
-            <li
-              class="fui-BreadcrumbItem"
-            >
-              Item 1
-            </li>
-            <li
-              aria-hidden="true"
-              class="fui-BreadcrumbDivider"
-            >
-              /
-            </li>
-            <li
-              class="fui-BreadcrumbItem"
-            >
-              Item 2
-            </li>
-          </ol>
-        </nav>
-      </div>
-    `);
-  });
+
   it('renders with `a` tag', () => {
     const result = render(
       <Breadcrumb>
@@ -109,9 +67,7 @@ describe('Breadcrumb', () => {
             >
               <a
                 class="fui-Button fui-BreadcrumbButton"
-                role="button"
                 tabindex="0"
-                type="button"
               >
                 Link 1
               </a>

@@ -177,6 +177,7 @@ export type TreeItemContextValue = {
     expandIconRef: React_2.Ref<HTMLDivElement>;
     layoutRef: React_2.Ref<HTMLDivElement>;
     subtreeRef: React_2.Ref<HTMLDivElement>;
+    treeItemRef?: React_2.RefObject<HTMLDivElement>;
     itemType: TreeItemType;
     value: TreeItemValue;
     open: boolean;
@@ -286,6 +287,9 @@ export type TreeItemState = ComponentState<TreeItemSlots> & TreeItemContextValue
     level: number;
     itemType: TreeItemType;
 };
+
+// @public (undocumented)
+export type TreeItemType = 'leaf' | 'branch';
 
 // @public (undocumented)
 export type TreeItemValue = string | number;

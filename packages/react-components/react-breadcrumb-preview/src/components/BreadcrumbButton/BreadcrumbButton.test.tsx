@@ -22,15 +22,12 @@ describe('BreadcrumbButton', () => {
     },
   });
 
-  // TODO create visual regression tests in /apps/vr-tests
-
   it('renders a default state', () => {
     const result = render(<BreadcrumbButton>Default BreadcrumbButton</BreadcrumbButton>);
     expect(result.container).toMatchInlineSnapshot(`
       <div>
         <button
           class="fui-Button fui-BreadcrumbButton"
-          type="button"
         >
           Default BreadcrumbButton
         </button>
@@ -46,7 +43,6 @@ describe('BreadcrumbButton', () => {
       <div>
         <button
           class="fui-Button fui-BreadcrumbButton"
-          type="button"
         >
           <span
             class="fui-Button__icon"

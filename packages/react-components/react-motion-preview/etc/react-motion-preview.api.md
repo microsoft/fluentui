@@ -17,6 +17,7 @@ export type MotionClassNames = {
 // @public (undocumented)
 export type MotionOptions = {
     animateOnFirstMount?: boolean;
+    duration?: number;
 };
 
 // @public (undocumented)
@@ -32,6 +33,9 @@ export type MotionState<Element extends HTMLElement = HTMLElement> = {
     canRender: boolean;
     active: boolean;
 };
+
+// @public (undocumented)
+export type MotionStylesKeys = 'default' | 'enter' | 'exit' | MotionType;
 
 // @public (undocumented)
 export type MotionType = 'entering' | 'entered' | 'idle' | 'exiting' | 'exited' | 'unmounted';

@@ -2,6 +2,36 @@
   "name": "@fluentui/tokens",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:48 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.13",
+      "version": "1.0.0-alpha.13",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 12:55:59 GMT",
+      "tag": "@fluentui/tokens_v1.0.0-alpha.12",
+      "version": "1.0.0-alpha.12",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "robertpenner@microsoft.com",
+            "package": "@fluentui/tokens",
+            "commit": "ecb1b8aafb16bb992010ca480f0c40e4dbb76960",
+            "comment": "fix(tokens): Fix motion curves to match design"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Sep 2023 17:49:15 GMT",
       "tag": "@fluentui/tokens_v1.0.0-alpha.11",
       "version": "1.0.0-alpha.11",

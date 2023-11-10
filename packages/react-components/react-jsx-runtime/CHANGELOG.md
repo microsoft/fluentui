@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-jsx-runtime
 
-This log was last generated on Thu, 12 Oct 2023 14:55:44 GMT and should not be manually modified.
+This log was last generated on Thu, 09 Nov 2023 17:29:36 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.19](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.19)
+
+Thu, 09 Nov 2023 17:29:36 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.18..@fluentui/react-jsx-runtime_v9.0.19)
+
+### Patches
+
+- chore: use package.json#files setup instead of npmignore for all v9 libraries ([PR #29734](https://github.com/microsoft/fluentui/pull/29734) by martinhochel@microsoft.com)
+- Bump @fluentui/react-utilities to v9.15.2 ([PR #29800](https://github.com/microsoft/fluentui/pull/29800) by beachball)
+
+## [9.0.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.18)
+
+Wed, 18 Oct 2023 17:54:08 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-jsx-runtime_v9.0.17..@fluentui/react-jsx-runtime_v9.0.18)
+
+### Patches
+
+- Bump @fluentui/react-utilities to v9.15.1 ([PR #29560](https://github.com/microsoft/fluentui/pull/29560) by beachball)
 
 ## [9.0.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-jsx-runtime_v9.0.17)
 
