@@ -341,49 +341,49 @@ export class SparklineChartBasicExample extends React.Component<{}, ISparklineSt
         <table>
           <tbody>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 1</td>
+              <td style={{ padding: '5px 15px' }}>Row 1</td>
               <td>
                 <Sparkline data={sl1} showLegend={true} />
               </td>
             </tr>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 2</td>
+              <td style={{ padding: '5px 15px' }}>Row 2</td>
               <td>
                 <Sparkline data={sl2} showLegend={true} />
               </td>
             </tr>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 3</td>
+              <td style={{ padding: '5px 15px' }}>Row 3</td>
               <td>
                 <Sparkline data={sl3} showLegend={false} />
               </td>
             </tr>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 4</td>
+              <td style={{ padding: '5px 15px' }}>Row 4</td>
               <td>
                 <Sparkline data={sl4} showLegend={false} />
               </td>
             </tr>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 5</td>
+              <td style={{ padding: '5px 15px' }}>Row 5</td>
               <td>
                 <Sparkline data={sl5} showLegend={false} />
               </td>
             </tr>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 6</td>
+              <td style={{ padding: '5px 15px' }}>Row 6</td>
               <td>
                 <Sparkline data={sl6} showLegend={true} />
               </td>
             </tr>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 7</td>
+              <td style={{ padding: '5px 15px' }}>Row 7</td>
               <td>
                 <Sparkline data={sl7} showLegend={true} />
               </td>
             </tr>
             <tr>
-              <td style={{ paddingRight: '15px', paddingBottom: '5px', paddingTop: '5px' }}>Row 8</td>
+              <td style={{ padding: '5px 15px' }}>Row 8</td>
               <td>
                 <Sparkline data={sl8} showLegend={true} />
               </td>
