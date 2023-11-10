@@ -1,7 +1,7 @@
 import { mergeClasses, makeStyles, makeResetStyles } from '@griffel/react';
 import { iconFilledClassName, iconRegularClassName } from '@fluentui/react-icons';
 import { createFocusOutlineStyle } from '@fluentui/react-tabster';
-import { tokens } from '@fluentui/react-theme';
+import { tokens, typographyStyles } from '@fluentui/react-theme';
 import { useCheckmarkStyles_unstable } from '../../selectable/index';
 import type { MenuItemCheckboxState } from '../MenuItemCheckbox/index';
 import type { MenuItemSlots, MenuItemState } from './MenuItem.types';
@@ -63,11 +63,15 @@ const useContentBaseStyles = makeResetStyles({
 const useSecondaryContentBaseStyles = makeResetStyles({
   paddingLeft: '2px',
   paddingRight: '2px',
+  ...typographyStyles.caption1,
+  lineHeight: '20px',
   color: tokens.colorNeutralForeground3,
   ':hover': {
+    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground3Hover,
   },
   ':focus': {
+    ...typographyStyles.caption1,
     color: tokens.colorNeutralForeground3Hover,
   },
 });
