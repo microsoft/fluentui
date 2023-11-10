@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { useOverflowContext } from './overflowContext';
 
 /**
@@ -7,5 +8,8 @@ import { useOverflowContext } from './overflowContext';
  * @returns visibility status of all items and groups
  */
 export function useOverflowVisibility() {
-  return useOverflowContext(ctx => ({ itemVisibility: ctx.itemVisibility, groupVisibility: ctx.groupVisibility }));
+  const itemVisibility = useOverflowContext(ctx => ctx.itemVisibility);
+  const groupVisibility = useOverflowContext(ctx => ctx.groupVisibility);
+
+  return React.useMemo(() => ({ itemVisibility, groupVisibility }), [itemVisibility, groupVisibility]);
 }
