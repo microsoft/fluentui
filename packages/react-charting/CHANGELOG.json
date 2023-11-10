@@ -2,6 +2,403 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 10 Nov 2023 07:26:21 GMT",
+      "tag": "@fluentui/react-charting_v5.18.17",
+      "version": "5.18.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629",
+            "comment": "[Bug]: React Charting Heat Map Chart tooltip appears above the wrong cell fixed"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 09 Nov 2023 07:29:20 GMT",
+      "tag": "@fluentui/react-charting_v5.18.16",
+      "version": "5.18.16",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "aedfb05be11eed7bdf235c3edbcafc8c40b47ca7",
+            "comment": "Added dummy circle for magnetic hover callout for last point in a line chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.34",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.122",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.8",
+            "commit": "c139fc66cca05255b5c96f6c92d9230b37975276"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 08 Nov 2023 07:27:23 GMT",
+      "tag": "@fluentui/react-charting_v5.18.15",
+      "version": "5.18.15",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.121",
+            "commit": "85709b6c5db37650981ca7250f6a0afad5a8e9b4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.7",
+            "commit": "85709b6c5db37650981ca7250f6a0afad5a8e9b4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 06 Nov 2023 07:27:33 GMT",
+      "tag": "@fluentui/react-charting_v5.18.14",
+      "version": "5.18.14",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.120",
+            "commit": "fb0dbceef6690276ad24c1cb4a44f882bee887a5"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.6",
+            "commit": "fb0dbceef6690276ad24c1cb4a44f882bee887a5"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 03 Nov 2023 07:27:57 GMT",
+      "tag": "@fluentui/react-charting_v5.18.13",
+      "version": "5.18.13",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "26e7bd757ab3d6547506da7100c72f6ef5e43c06",
+            "comment": "Updating documentation content"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 01 Nov 2023 07:29:14 GMT",
+      "tag": "@fluentui/react-charting_v5.18.12",
+      "version": "5.18.12",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.119",
+            "commit": "fccf16cffd5a6833a5232a543815f5146d886439"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.5",
+            "commit": "fccf16cffd5a6833a5232a543815f5146d886439"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 31 Oct 2023 07:34:28 GMT",
+      "tag": "@fluentui/react-charting_v5.18.11",
+      "version": "5.18.11",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e966dcf01463e9d9ea0697789e5cabdd2e20ca73",
+            "comment": "Added scale factor to minimum height logic"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Sat, 28 Oct 2023 00:29:15 GMT",
+      "tag": "@fluentui/react-charting_v5.18.10",
+      "version": "5.18.10",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "dd0a5fb307c7b46578cfb36059f3ac693af85811",
+            "comment": "Fixing zero callout value not visible bug for cartesian charts"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react-focus to v8.8.33",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.118",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/set-version to v8.2.12",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.4",
+            "commit": "70d0762fd12eb211f7c1dbe31a23b2fbb73a67c4"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 23 Oct 2023 07:35:31 GMT",
+      "tag": "@fluentui/react-charting_v5.18.9",
+      "version": "5.18.9",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "c8ed0b5e2a48e82c30c9b257ae398cc6835b3a3b",
+            "comment": "Part 2 - Changes to onboard charting to fluent docsite"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 20 Oct 2023 07:35:43 GMT",
+      "tag": "@fluentui/react-charting_v5.18.8",
+      "version": "5.18.8",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "8f2eb85fcde38ad239b1defcb0914263d01c2534",
+            "comment": "Added missing xAxisCalloutData param while fetching callout data"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 18 Oct 2023 07:49:09 GMT",
+      "tag": "@fluentui/react-charting_v5.18.7",
+      "version": "5.18.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "d8ccb09308a24eea6adf419896254116546296ee",
+            "comment": "Adding a default tabbable element to fix accessibilty issue"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "a01b6d9a3f741e8921694a7ca484438ff982e0a5",
+            "comment": "Hide bar labels of non highlighted bars"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 17 Oct 2023 07:36:52 GMT",
+      "tag": "@fluentui/react-charting_v5.18.6",
+      "version": "5.18.6",
+      "comments": {
+        "patch": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "155b09d131f599254b80d173b6f3eb08bc47f3b4",
+            "comment": "Added optional condition based y-axis scaling on narrow ranges"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 16 Oct 2023 07:37:21 GMT",
+      "tag": "@fluentui/react-charting_v5.18.5",
+      "version": "5.18.5",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.117",
+            "commit": "2eedc2ec54397253a4e3076fbfa382f4fe3c1175"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.3",
+            "commit": "2eedc2ec54397253a4e3076fbfa382f4fe3c1175"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 12 Oct 2023 07:37:06 GMT",
+      "tag": "@fluentui/react-charting_v5.18.4",
+      "version": "5.18.4",
+      "comments": {
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "bb1c1c72a83278b278fe7df4525c99e1e744a78f",
+            "comment": "Fixing bug: Displayed value in center does not update on hovering over a different segment on Donut"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Tue, 10 Oct 2023 07:37:02 GMT",
+      "tag": "@fluentui/react-charting_v5.18.3",
+      "version": "5.18.3",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e21386855c4b4aff1648f1fbb585799712f6ccd1",
+            "comment": "change for reducing width and height for tree chart such that it fits the doc site"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Mon, 09 Oct 2023 07:37:25 GMT",
+      "tag": "@fluentui/react-charting_v5.18.2",
+      "version": "5.18.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.116",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.2",
+            "commit": "dbc18f02facdc420ec4baf7c125ddab22271facf"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 06 Oct 2023 07:37:00 GMT",
+      "tag": "@fluentui/react-charting_v5.18.1",
+      "version": "5.18.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "ankityadav@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "7d84045d929d54c01f2fca7439356817212c2905",
+            "comment": "Fix for bug 9136 and 7997 Fixing the issue of Going from stack callout to single callout and back to stack callout still shows the single callout. Also this consist of Fix for if the bar y value is same, the single callout does not move from the first instance where the callout was shown"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 05 Oct 2023 07:36:20 GMT",
+      "tag": "@fluentui/react-charting_v5.18.0",
+      "version": "5.18.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "atishay.jain@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "e27181b1511f48817de41bffe4a1b4bb7941464d",
+            "comment": "Prepare charting package for publishing to fluent docsite"
+          },
+          {
+            "author": "kumarkshitij@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "26881a0cb2cee952b14df917b1b6843cc24affa9",
+            "comment": "Fix overlapping bars in single group"
+          }
+        ],
+        "minor": [
+          {
+            "author": "shubhabrata08@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "b4611f7230fa90d1f01ab92ded39ebe2f02298f3",
+            "comment": "Minimum height of non zero positive values set to 1% of Max barHeight"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Wed, 04 Oct 2023 07:38:36 GMT",
+      "tag": "@fluentui/react-charting_v5.17.12",
+      "version": "5.17.12",
+      "comments": {
+        "none": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "5ecda73d4fa24a1e33cf34a42804a04a2b181204",
+            "comment": "Adding axis title examples for line, area, vertical bar and vertical stacked bar charts"
+          }
+        ],
+        "patch": [
+          {
+            "author": "srmukher@microsoft.com",
+            "package": "@fluentui/react-charting",
+            "commit": "fccbb78318fd2fae50442737b5a49bc4281734c5",
+            "comment": "Fixing line not visible bug for vertical bar chart"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/theme-samples to v8.7.115",
+            "commit": "44fc4425708d04018dbfa0875f453df324068fd7"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-charting",
+            "comment": "Bump @fluentui/react to v8.112.1",
+            "commit": "44fc4425708d04018dbfa0875f453df324068fd7"
+          }
+        ]
+      }
+    },
+    {
       "date": "Mon, 02 Oct 2023 07:36:47 GMT",
       "tag": "@fluentui/react-charting_v5.17.11",
       "version": "5.17.11",

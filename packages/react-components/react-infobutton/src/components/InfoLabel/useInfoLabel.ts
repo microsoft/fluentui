@@ -1,3 +1,4 @@
+/* eslint-disable deprecation/deprecation */
 import * as React from 'react';
 
 import { Label } from '@fluentui/react-label';
@@ -13,6 +14,8 @@ import type { InfoLabelProps, InfoLabelState } from './InfoLabel.types';
  *
  * @param props - props from this instance of InfoLabel
  * @param ref - reference to label element of InfoLabel
+ *
+ * @deprecated use {@link @fluentui/react-components#InfoLabel} from `\@fluentui/react-components` or `\@fluentui/react-infolabel` instead
  */
 export const useInfoLabel_unstable = (props: InfoLabelProps, ref: React.Ref<HTMLLabelElement>): InfoLabelState => {
   const {

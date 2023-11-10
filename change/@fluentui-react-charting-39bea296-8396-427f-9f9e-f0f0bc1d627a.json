@@ -1,7 +1,0 @@
-{
-  "type": "none",
-  "comment": "Adding axis title examples for line, area, vertical bar and vertical stacked bar charts",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "none"
-}

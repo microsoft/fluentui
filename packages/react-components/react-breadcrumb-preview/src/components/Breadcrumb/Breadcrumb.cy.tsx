@@ -41,26 +41,6 @@ const BreadcrumbSampleWithButton = (props: BreadcrumbProps) => (
   </>
 );
 
-const NonInteractiveBreadcrumbSample = (props: BreadcrumbProps) => (
-  <>
-    <p tabIndex={0} id="before">
-      Before
-    </p>
-
-    <Breadcrumb {...props} id="breadcrumb">
-      <BreadcrumbItem id="breadcrumb-item-1">Item 1</BreadcrumbItem>
-      <BreadcrumbItem id="breadcrumb-item-2">Item 2</BreadcrumbItem>
-      <BreadcrumbItem id="breadcrumb-item-3" current>
-        Item 3
-      </BreadcrumbItem>
-    </Breadcrumb>
-
-    <p tabIndex={0} id="after">
-      After
-    </p>
-  </>
-);
-
 describe('Breadcrumb', () => {
   describe('focus behaviors for BreadcrumbButton', () => {
     describe('focusMode="tab"(default)', () => {
@@ -101,22 +81,6 @@ describe('Breadcrumb', () => {
         cy.realPress('ArrowRight');
         cy.get('#breadcrumb-button-1').should('be.focused');
       });
-    });
-  });
-
-  describe('focus behaviors for BreadcrumbItem', () => {
-    it('should not be focusable', () => {
-      mountFluent(<NonInteractiveBreadcrumbSample />);
-
-      cy.get('#before').focus();
-
-      cy.get('#breadcrumb-item-1').should('not.be.focused');
-      cy.get('#before').should('be.focused');
-
-      cy.realPress('Tab');
-
-      cy.get('#breadcrumb-item-1').should('not.be.focused');
-      cy.get('#after').should('be.focused');
     });
   });
 });

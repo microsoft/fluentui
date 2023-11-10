@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, isResolvedShorthand, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, isResolvedShorthand, useEventCallback, slot } from '@fluentui/react-utilities';
 import { ARIAButtonSlotProps, useARIAButtonShorthand } from '@fluentui/react-aria';
 import type { AccordionHeaderProps, AccordionHeaderState } from './AccordionHeader.types';
 import { useAccordionContext_unstable } from '../../contexts/accordion';
@@ -16,7 +16,7 @@ export const useAccordionHeader_unstable = (
   props: AccordionHeaderProps,
   ref: React.Ref<HTMLElement>,
 ): AccordionHeaderState => {
-  const { as, icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
+  const { icon, button, expandIcon, inline = false, size = 'medium', expandIconPosition = 'start' } = props;
   const { value, disabled, open } = useAccordionItemContext_unstable();
   const requestToggle = useAccordionContext_unstable(ctx => ctx.requestToggle);
 
@@ -51,8 +51,11 @@ export const useAccordionHeader_unstable = (
       icon: 'div',
     },
     root: slot.always(
-      getNativeElementProps(as || 'div', {
-        ref,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
         ...props,
       }),
       { elementType: 'div' },

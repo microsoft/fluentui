@@ -88,21 +88,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         data: 40,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '61%',
       },
       {
         legend: 'Metadata2',
         data: 5,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '5%',
+        yAxisCalloutData: '8%',
       },
       {
         legend: 'Metadata3',
         data: 20,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '31%',
       },
     ];
 
@@ -112,21 +112,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         data: 30,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '30%',
+        yAxisCalloutData: '33%',
       },
       {
         legend: 'Metadata2',
         data: 20,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '22%',
       },
       {
         legend: 'Metadata3',
         data: 40,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '45%',
       },
     ];
 
@@ -136,14 +136,14 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         data: 44,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '44%',
+        yAxisCalloutData: '43%',
       },
       {
         legend: 'Metadata2',
         data: 28,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '28%',
+        yAxisCalloutData: '27%',
       },
       {
         legend: 'Metadata3',
@@ -160,21 +160,21 @@ export class VerticalStackedBarChartBasicExample extends React.Component<{}, IVe
         data: 88,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '88%',
+        yAxisCalloutData: '63%',
       },
       {
         legend: 'Metadata2',
         data: 22,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '22%',
+        yAxisCalloutData: '16%',
       },
       {
         legend: 'Metadata3',
         data: 30,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '30%',
+        yAxisCalloutData: '21%',
       },
     ];
 

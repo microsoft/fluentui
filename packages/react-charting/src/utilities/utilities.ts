@@ -304,7 +304,8 @@ export function createStringXAxis(
  * @returns {number[]}
  */
 export function prepareDatapoints(maxVal: number, minVal: number, splitInto: number): number[] {
-  const val = Math.ceil((maxVal - minVal) / splitInto);
+  const val =
+    (maxVal - minVal) / splitInto > 1 ? Math.ceil((maxVal - minVal) / splitInto) : (maxVal - minVal) / splitInto;
   const dataPointsArray: number[] = [minVal, minVal + val];
   while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
     dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
@@ -501,6 +502,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -509,6 +511,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
       legend: string;
       y: number;
       color: string;
+      xAxisCalloutData?: string;
       yAxisCalloutData?: string | { [id: string]: number };
       callOutAccessibilityData?: IAccessibilityProps;
       index?: number;
@@ -521,6 +524,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
         legend: ele.legend,
         y: ele.y,
         color: ele.color!,
+        xAxisCalloutData: ele.xAxisCalloutData,
         yAxisCalloutData: ele.yAxisCalloutData,
         callOutAccessibilityData: ele.callOutAccessibilityData,
         index: ele.index,
@@ -531,6 +535,7 @@ export function calloutData(values: (ILineChartPoints & { index?: number })[]) {
           legend: ele.legend,
           y: ele.y,
           color: ele.color!,
+          xAxisCalloutData: ele.xAxisCalloutData,
           yAxisCalloutData: ele.yAxisCalloutData,
           callOutAccessibilityData: ele.callOutAccessibilityData,
           index: ele.index,

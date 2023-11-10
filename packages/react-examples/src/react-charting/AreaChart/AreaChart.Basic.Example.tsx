@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AreaChart, ICustomizedCalloutData } from '@fluentui/react-charting';
-import { IAreaChartProps, ChartHoverCard } from '@fluentui/react-charting';
+import { IAreaChartProps, ChartHoverCard, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import { Toggle } from '@fluentui/react/lib/Toggle';
 
@@ -57,37 +57,37 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
         x: 20,
         y: 7000,
         xAxisCalloutData: '2018/01/01',
-        yAxisCalloutData: '10%',
+        yAxisCalloutData: '35%',
       },
       {
         x: 25,
         y: 9000,
         xAxisCalloutData: '2018/01/15',
-        yAxisCalloutData: '18%',
+        yAxisCalloutData: '45%',
       },
       {
         x: 30,
         y: 13000,
         xAxisCalloutData: '2018/01/28',
-        yAxisCalloutData: '24%',
+        yAxisCalloutData: '65%',
       },
       {
         x: 35,
         y: 15000,
         xAxisCalloutData: '2018/02/01',
-        yAxisCalloutData: '25%',
+        yAxisCalloutData: '75%',
       },
       {
         x: 40,
         y: 11000,
         xAxisCalloutData: '2018/03/01',
-        yAxisCalloutData: '15%',
+        yAxisCalloutData: '55%',
       },
       {
         x: 45,
         y: 8760,
         xAxisCalloutData: '2018/03/15',
-        yAxisCalloutData: '30%',
+        yAxisCalloutData: '43%',
       },
       {
         x: 50,
@@ -99,49 +99,49 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
         x: 55,
         y: 20000,
         xAxisCalloutData: '2018/04/04',
-        yAxisCalloutData: '32%',
+        yAxisCalloutData: '100%',
       },
       {
         x: 60,
         y: 17000,
         xAxisCalloutData: '2018/04/15',
-        yAxisCalloutData: '29%',
+        yAxisCalloutData: '85%',
       },
       {
         x: 65,
         y: 1000,
         xAxisCalloutData: '2018/05/05',
-        yAxisCalloutData: '43%',
+        yAxisCalloutData: '5%',
       },
       {
         x: 70,
         y: 12000,
         xAxisCalloutData: '2018/06/01',
-        yAxisCalloutData: '45%',
+        yAxisCalloutData: '60%',
       },
       {
         x: 75,
         y: 6876,
         xAxisCalloutData: '2018/01/15',
-        yAxisCalloutData: '18%',
+        yAxisCalloutData: '34%',
       },
       {
         x: 80,
         y: 12000,
         xAxisCalloutData: '2018/04/30',
-        yAxisCalloutData: '55%',
+        yAxisCalloutData: '60%',
       },
       {
         x: 85,
         y: 7000,
         xAxisCalloutData: '2018/05/04',
-        yAxisCalloutData: '12%',
+        yAxisCalloutData: '35%',
       },
       {
         x: 90,
         y: 10000,
         xAxisCalloutData: '2018/06/01',
-        yAxisCalloutData: '45%',
+        yAxisCalloutData: '50%',
       },
     ];
 
@@ -149,7 +149,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
       {
         legend: 'legend1',
         data: chart1Points,
-        color: '#0099BC',
       },
     ];
 
@@ -199,7 +198,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               height={this.state.height}
               width={this.state.width}
               data={chartData}
-              showYAxisGridLines={true}
               enablePerfOptimization={true}
               // eslint-disable-next-line react/jsx-no-bind
               onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
@@ -208,7 +206,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                     XValue={props.x.toString()}
                     Legend={'Custom Legend'}
                     YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
-                    color={'red'}
+                    color={getColorFromToken(DataVizPalette.color7)}
                   />
                 ) : null
               }
@@ -225,7 +223,6 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
               height={this.state.height}
               width={this.state.width}
               data={chartData}
-              showYAxisGridLines={true}
               enablePerfOptimization={true}
               // eslint-disable-next-line react/jsx-no-bind
               onRenderCalloutPerDataPoint={(props: ICustomizedCalloutData) =>
@@ -234,7 +231,7 @@ export class AreaChartBasicExample extends React.Component<{}, IAreaChartBasicSt
                     XValue={props.x.toString()}
                     Legend={'Custom Legend'}
                     YValue={`${props.values[0].yAxisCalloutData || props.values[0].y} h`}
-                    color={'red'}
+                    color={getColorFromToken(DataVizPalette.color7)}
                   />
                 ) : null
               }

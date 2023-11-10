@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { DrawerOverlay, DrawerBody, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
-import { Button } from '@fluentui/react-components';
+import { OverlayDrawer, DrawerBody, DrawerHeader, DrawerHeaderTitle, Button } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 export const PreventClose = () => {
@@ -8,7 +7,7 @@ export const PreventClose = () => {
 
   return (
     <div>
-      <DrawerOverlay position="end" open={open} modalType="alert">
+      <OverlayDrawer position="end" open={open} modalType="alert">
         <DrawerHeader>
           <DrawerHeaderTitle
             action={
@@ -27,7 +26,7 @@ export const PreventClose = () => {
         <DrawerBody>
           <p>This drawer cannot be closed when clicking outside nor using the "ESC" key</p>
         </DrawerBody>
-      </DrawerOverlay>
+      </OverlayDrawer>
 
       <Button appearance="primary" onClick={() => setOpen(true)}>
         Open Drawer

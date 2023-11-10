@@ -4,7 +4,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
 <div>
   <div
     aria-label="Graph has no data to display"
-    id="_GVBC_empty133"
+    id="_GVBC_empty154"
     role="alert"
     style="opacity: 0;"
   />
@@ -28,9 +28,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           overflow: hidden;
           width: 100%;
         }
-    id="chart_134"
+    id="chart_155"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_156"
+    />
     <div
       class=
           ms-FocusZone
@@ -40,7 +43,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone135"
+      data-focuszone-id="FocusZone157"
     >
       <svg
         focusable="false"
@@ -74,7 +77,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_134"
+          id="xAxisGElementchart_155"
           transform="translate(0, -35)"
         />
         <g
@@ -102,12 +105,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_134"
+          id="yAxisGElementchart_155"
           transform="translate(40, 0)"
         />
         <g>
           <g
-            transform="translate(32.47311827956989, 0)"
+            transform="translate(48, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -123,7 +126,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               role="img"
               tabindex="0"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -140,12 +143,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(2.2365591397849443, 0)"
+            transform="translate(17.763440860215052, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -161,7 +164,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -178,12 +181,12 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="0"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(-12.473118279569892, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -199,7 +202,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="0"
             />
             <rect
@@ -216,7 +219,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="20"
             />
           </g>
@@ -260,7 +263,7 @@ exports[`Grouped Vertical Bar chart rendering Should re-render the Grouped Verti
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone136"
+                data-focuszone-id="FocusZone158"
                 role="listbox"
               >
                 <div
@@ -478,6 +481,9 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
     role="presentation"
   >
     <div
+      id="defaultTabbableElement_7"
+    />
+    <div
       class=
           ms-FocusZone
           &:focus {
@@ -486,7 +492,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone7"
+      data-focuszone-id="FocusZone8"
     >
       <svg
         focusable="false"
@@ -553,7 +559,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
         />
         <g>
           <g
-            transform="translate(32.47311827956989, 0)"
+            transform="translate(48, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -569,7 +575,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               tabindex="0"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -586,12 +592,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(2.2365591397849443, 0)"
+            transform="translate(17.763440860215052, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -607,7 +613,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -624,12 +630,12 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="0"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(-12.473118279569892, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -645,7 +651,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="0"
             />
             <rect
@@ -662,7 +668,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="20"
             />
           </g>
@@ -706,7 +712,7 @@ exports[`Grouped Vertical bar chart rendering Should render the grouped vertical
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone8"
+                data-focuszone-id="FocusZone9"
                 role="listbox"
               >
                 <div
@@ -920,9 +926,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           overflow: hidden;
           width: 100%;
         }
-    id="chart_12"
+    id="chart_13"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_14"
+    />
     <div
       class=
           ms-FocusZone
@@ -932,7 +941,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone13"
+      data-focuszone-id="FocusZone15"
     >
       <svg
         focusable="false"
@@ -966,7 +975,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_12"
+          id="xAxisGElementchart_13"
           transform="translate(0, -35)"
         />
         <g
@@ -994,12 +1003,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_12"
+          id="yAxisGElementchart_13"
           transform="translate(40, 0)"
         />
         <g>
           <g
-            transform="translate(32.47311827956989, 0)"
+            transform="translate(48, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1015,7 +1024,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               tabindex="0"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -1032,12 +1041,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(2.2365591397849443, 0)"
+            transform="translate(17.763440860215052, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1053,7 +1062,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -1070,12 +1079,12 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="0"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(-12.473118279569892, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1091,7 +1100,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="0"
             />
             <rect
@@ -1108,7 +1117,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="20"
             />
           </g>
@@ -1152,7 +1161,7 @@ exports[`Grouped Vertical bar chart rendering Should render the vertical bar cha
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone14"
+                data-focuszone-id="FocusZone16"
                 role="listbox"
               >
                 <div
@@ -1366,9 +1375,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_113"
+    id="chart_131"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_132"
+    />
     <div
       class=
           ms-FocusZone
@@ -1378,7 +1390,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone114"
+      data-focuszone-id="FocusZone133"
     >
       <svg
         focusable="false"
@@ -1412,7 +1424,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_113"
+          id="xAxisGElementchart_131"
           transform="translate(0, -35)"
         />
         <g
@@ -1440,12 +1452,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_113"
+          id="yAxisGElementchart_131"
           transform="translate(40, 0)"
         />
         <g>
           <g
-            transform="translate(32.47311827956989, 0)"
+            transform="translate(48, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1461,7 +1473,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="0"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -1478,12 +1490,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(2.2365591397849443, 0)"
+            transform="translate(17.763440860215052, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1499,7 +1511,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -1516,12 +1528,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="0"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(-12.473118279569892, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1537,7 +1549,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="0"
             />
             <rect
@@ -1554,7 +1566,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="20"
             />
           </g>
@@ -1598,7 +1610,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone115"
+                data-focuszone-id="FocusZone134"
                 role="listbox"
               >
                 <div
@@ -1812,9 +1824,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           overflow: hidden;
           width: 100%;
         }
-    id="chart_119"
+    id="chart_138"
     role="presentation"
   >
+    <div
+      id="defaultTabbableElement_139"
+    />
     <div
       class=
           ms-FocusZone
@@ -1824,7 +1839,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
           {
             overflow: auto;
           }
-      data-focuszone-id="FocusZone120"
+      data-focuszone-id="FocusZone140"
     >
       <svg
         focusable="false"
@@ -1858,7 +1873,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               & path {
                 display: none;
               }
-          id="xAxisGElementchart_119"
+          id="xAxisGElementchart_138"
           transform="translate(0, -35)"
         />
         <g
@@ -1886,12 +1901,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                 opacity: 0.1;
                 stroke: rgb(179, 179, 179);
               }
-          id="yAxisGElementchart_119"
+          id="yAxisGElementchart_138"
           transform="translate(40, 0)"
         />
         <g>
           <g
-            transform="translate(32.47311827956989, 0)"
+            transform="translate(48, 0)"
           >
             <rect
               aria-label="2020/04/30. MetaData1, 33%."
@@ -1907,7 +1922,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="0"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -1924,12 +1939,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="13.399999999999999"
             />
           </g>
           <g
-            transform="translate(2.2365591397849443, 0)"
+            transform="translate(17.763440860215052, 0)"
           >
             <rect
               aria-label="2020/05/30. MetaData1, 33%."
@@ -1945,7 +1960,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="1.3000000000000043"
             />
             <rect
@@ -1962,12 +1977,12 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="0"
             />
           </g>
           <g
-            transform="translate(-28, 0)"
+            transform="translate(-12.473118279569892, 0)"
           >
             <rect
               aria-label="2020/06/30. MetaData1, 14%."
@@ -1983,7 +1998,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="0"
+              x="-8.881784197001252e-16"
               y="0"
             />
             <rect
@@ -2000,7 +2015,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
               role="img"
               tabindex="-1"
               width="-7.354838709677419"
-              x="8.172043010752688"
+              x="-8.172043010752688"
               y="20"
             />
           </g>
@@ -2044,7 +2059,7 @@ exports[`Grouped vertical bar chart - Screen resolution Should remain unchanged 
                     &:focus {
                       outline: none;
                     }
-                data-focuszone-id="FocusZone121"
+                data-focuszone-id="FocusZone141"
                 role="listbox"
               >
                 <div
@@ -2262,6 +2277,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -2270,7 +2288,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -2344,7 +2362,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -2387,7 +2405,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -2409,13 +2427,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -2458,7 +2476,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -2480,7 +2498,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -2527,7 +2545,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render callout correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3022,6 +3040,9 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3030,7 +3051,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3104,7 +3125,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3147,7 +3168,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -3169,13 +3190,13 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3218,7 +3239,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -3240,7 +3261,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -3287,7 +3308,7 @@ exports[`GroupedVerticalBarChart - mouse events Should render customized callout
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -3702,6 +3723,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -3710,7 +3734,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -3784,7 +3808,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -3827,7 +3851,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -3849,13 +3873,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -3898,7 +3922,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -3920,7 +3944,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -3973,7 +3997,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders GroupedVerticalBarChar
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -4294,6 +4318,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -4302,7 +4329,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4376,7 +4403,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4419,7 +4446,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -4441,13 +4468,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -4490,7 +4517,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -4512,7 +4539,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -4548,7 +4575,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders enabledLegendsWrapLine
             &:focus {
               outline: none;
             }
-        data-focuszone-id="FocusZone5"
+        data-focuszone-id="FocusZone6"
         onFocus={[Function]}
         onKeyDown={[Function]}
         onMouseDownCapture={[Function]}
@@ -4866,6 +4893,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -4874,7 +4904,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -4948,7 +4978,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -4991,7 +5021,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={273.3152173913044}
           />
           <rect
@@ -5013,13 +5043,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={205.97826086956522}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -5062,7 +5092,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={26.413043478260875}
           />
           <rect
@@ -5084,7 +5114,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideLegend correctly 1
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={209.18478260869566}
           />
         </g>
@@ -5115,6 +5145,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -5123,7 +5156,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -5197,7 +5230,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -5240,7 +5273,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -5262,13 +5295,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -5311,7 +5344,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -5333,7 +5366,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -5386,7 +5419,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders hideTooltip correctly 
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -5707,6 +5740,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -5715,7 +5751,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -5789,7 +5825,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -5832,7 +5868,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -5854,13 +5890,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -5903,7 +5939,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -5925,7 +5961,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -5978,7 +6014,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders showXAxisLablesTooltip
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -6299,6 +6335,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -6307,7 +6346,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -6381,7 +6420,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -6424,7 +6463,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -6446,13 +6485,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -6495,7 +6534,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -6517,7 +6556,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -6570,7 +6609,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders wrapXAxisLables correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -6891,6 +6930,9 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
   role="presentation"
 >
   <div
+    id="defaultTabbableElement_4"
+  />
+  <div
     className=
         ms-FocusZone
         &:focus {
@@ -6899,7 +6941,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
         {
           overflow: auto;
         }
-    data-focuszone-id="FocusZone4"
+    data-focuszone-id="FocusZone5"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -6973,7 +7015,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
       <g>
         <g
           key="0"
-          transform="translate(19, 0)"
+          transform="translate(48, 0)"
         >
           <rect
             aria-label="2000. MetaData1, 66."
@@ -7016,7 +7058,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={238.9673913043478}
           />
           <rect
@@ -7038,13 +7080,13 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={180.76086956521738}
           />
         </g>
         <g
           key="1"
-          transform="translate(-28, 0)"
+          transform="translate(1, 0)"
         >
           <rect
             aria-label="2010. MetaData1, 14."
@@ -7087,7 +7129,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={10}
+            x={-10}
             y={25.543478260869563}
           />
           <rect
@@ -7109,7 +7151,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
             opacity=""
             role="img"
             width={-9}
-            x={20}
+            x={-20}
             y={183.5326086956522}
           />
         </g>
@@ -7162,7 +7204,7 @@ exports[`GroupedVerticalBarChart snapShot testing renders yAxisTickFormat correc
                   &:focus {
                     outline: none;
                   }
-              data-focuszone-id="FocusZone5"
+              data-focuszone-id="FocusZone6"
               onFocus={[Function]}
               onKeyDown={[Function]}
               onMouseDownCapture={[Function]}
@@ -7492,9 +7534,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             overflow: hidden;
             width: 100%;
           }
-      id="chart_128"
+      id="chart_148"
       role="presentation"
     >
+      <div
+        id="defaultTabbableElement_149"
+      />
       <div
         class=
             ms-FocusZone
@@ -7504,7 +7549,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
             {
               overflow: auto;
             }
-        data-focuszone-id="FocusZone129"
+        data-focuszone-id="FocusZone150"
       >
         <svg
           focusable="false"
@@ -7538,7 +7583,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 & path {
                   display: none;
                 }
-            id="xAxisGElementchart_128"
+            id="xAxisGElementchart_148"
             transform="translate(0, -35)"
           />
           <g
@@ -7566,12 +7611,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                   opacity: 0.1;
                   stroke: rgb(179, 179, 179);
                 }
-            id="yAxisGElementchart_128"
+            id="yAxisGElementchart_148"
             transform="translate(40, 0)"
           />
           <g>
             <g
-              transform="translate(32.47311827956989, 0)"
+              transform="translate(48, 0)"
             >
               <rect
                 aria-label="2020/04/30. MetaData1, 33%."
@@ -7587,7 +7632,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 tabindex="0"
                 width="-7.354838709677419"
-                x="0"
+                x="-8.881784197001252e-16"
                 y="1.3000000000000043"
               />
               <rect
@@ -7604,12 +7649,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 tabindex="-1"
                 width="-7.354838709677419"
-                x="8.172043010752688"
+                x="-8.172043010752688"
                 y="13.399999999999999"
               />
             </g>
             <g
-              transform="translate(2.2365591397849443, 0)"
+              transform="translate(17.763440860215052, 0)"
             >
               <rect
                 aria-label="2020/05/30. MetaData1, 33%."
@@ -7625,7 +7670,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 tabindex="-1"
                 width="-7.354838709677419"
-                x="0"
+                x="-8.881784197001252e-16"
                 y="1.3000000000000043"
               />
               <rect
@@ -7642,12 +7687,12 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 tabindex="-1"
                 width="-7.354838709677419"
-                x="8.172043010752688"
+                x="-8.172043010752688"
                 y="0"
               />
             </g>
             <g
-              transform="translate(-28, 0)"
+              transform="translate(-12.473118279569892, 0)"
             >
               <rect
                 aria-label="2020/06/30. MetaData1, 14%."
@@ -7663,7 +7708,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 tabindex="-1"
                 width="-7.354838709677419"
-                x="0"
+                x="-8.881784197001252e-16"
                 y="0"
               />
               <rect
@@ -7680,7 +7725,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                 role="img"
                 tabindex="-1"
                 width="-7.354838709677419"
-                x="8.172043010752688"
+                x="-8.172043010752688"
                 y="20"
               />
             </g>
@@ -7724,7 +7769,7 @@ exports[`Vertical stacked bar chart - Theme Should reflect theme change 1`] = `
                       &:focus {
                         outline: none;
                       }
-                  data-focuszone-id="FocusZone130"
+                  data-focuszone-id="FocusZone151"
                   role="listbox"
                 >
                   <div

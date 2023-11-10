@@ -4,10 +4,11 @@
 
 ```ts
 
+import { elementContains } from '@fluentui/react-utilities';
 import * as React_2 from 'react';
+import { setVirtualParent } from '@fluentui/react-utilities';
 
-// @public
-export function elementContains(parent: Node | null, child: Node | null): boolean;
+export { elementContains }
 
 // @public
 export const Portal: React_2.FC<PortalProps>;
@@ -30,8 +31,13 @@ export type PortalState = Pick<PortalProps, 'children'> & {
 // @public
 export const renderPortal_unstable: (state: PortalState) => React_2.ReactElement;
 
-// @public
-export function setVirtualParent(child: Node, parent?: Node): void;
+export { setVirtualParent }
+
+// @public (undocumented)
+export function toMountNodeProps(mountNode: PortalProps['mountNode']): {
+    element?: HTMLElement | null;
+    className?: string;
+};
 
 // @public
 export const usePortal_unstable: (props: PortalProps) => PortalState;

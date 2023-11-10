@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { LabelProps, LabelState } from './Label.types';
 
 /**
@@ -22,6 +22,15 @@ export const useLabel_unstable = (props: LabelProps, ref: React.Ref<HTMLElement>
     weight,
     size,
     components: { root: 'label', required: 'span' },
-    root: slot.always(getNativeElementProps('label', { ref, ...props }), { elementType: 'label' }),
+    root: slot.always(
+      getIntrinsicElementProps('label', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLLabelElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLLabelElement>,
+        ...props,
+      }),
+      { elementType: 'label' },
+    ),
   };
 };

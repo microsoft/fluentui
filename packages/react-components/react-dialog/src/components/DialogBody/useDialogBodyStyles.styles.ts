@@ -2,7 +2,6 @@ import { makeResetStyles, mergeClasses, shorthands } from '@griffel/react';
 import type { DialogBodySlots, DialogBodyState } from './DialogBody.types';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 import { DIALOG_GAP, MEDIA_QUERY_BREAKPOINT_SELECTOR, SURFACE_PADDING } from '../../contexts';
-import { backdropStyles } from '../DialogSurface/useDialogSurfaceStyles.styles';
 
 export const dialogBodyClassNames: SlotClassNames<DialogBodySlots> = {
   root: 'fui-DialogBody',
@@ -19,8 +18,6 @@ const useResetStyles = makeResetStyles({
   boxSizing: 'border-box',
   gridTemplateRows: 'auto 1fr',
   gridTemplateColumns: '1fr 1fr auto',
-
-  '&::backdrop': backdropStyles,
 
   [MEDIA_QUERY_BREAKPOINT_SELECTOR]: {
     maxWidth: '100vw',

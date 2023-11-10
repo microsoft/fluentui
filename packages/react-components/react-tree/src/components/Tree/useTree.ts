@@ -12,20 +12,21 @@ import type {
 } from './Tree.types';
 import { createNextOpenItems, useControllableOpenItems } from '../../hooks/useControllableOpenItems';
 import { createNextNestedCheckedItems, useNestedCheckedItems } from './useNestedControllableCheckedItems';
-import { useSubtreeContext_unstable } from '../../contexts/subtreeContext';
+import { SubtreeContext } from '../../contexts/subtreeContext';
 import { useRootTree } from '../../hooks/useRootTree';
 import { useSubtree } from '../../hooks/useSubtree';
 import { HTMLElementWalker, createHTMLElementWalker } from '../../utils/createHTMLElementWalker';
 import { treeItemFilter } from '../../utils/treeItemFilter';
 import { useTreeNavigation } from './useTreeNavigation';
 import { useFluent_unstable } from '@fluentui/react-shared-contexts';
+import { useTreeContext_unstable } from '../../contexts/treeContext';
 
 export const useTree_unstable = (props: TreeProps, ref: React.Ref<HTMLElement>): TreeState => {
-  const { level } = useSubtreeContext_unstable();
+  const isRoot = React.useContext(SubtreeContext) === undefined;
   // as level is static, this doesn't break rule of hooks
   // and if this becomes an issue later on, this can be easily converted
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  return level > 0 ? useSubtree(props, ref) : useNestedRootTree(props, ref);
+  return isRoot ? useNestedRootTree(props, ref) : useNestedSubtree(props, ref);
 };
 
 function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
@@ -86,4 +87,20 @@ function useNestedRootTree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeS
       useMergedRefs(ref, initializeWalker),
     ),
   };
+}
+
+function useNestedSubtree(props: TreeProps, ref: React.Ref<HTMLElement>): TreeState {
+  if (process.env.NODE_ENV === 'development') {
+    // this doesn't break rule of hooks, as environment is a static value
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const treeType = useTreeContext_unstable(ctx => ctx.treeType);
+    if (treeType === 'flat') {
+      throw new Error(/* #__DE-INDENT__ */ `
+        @fluentui/react-tree [useTree]:
+        Subtrees are not allowed in a FlatTree!
+        You cannot use a <Tree> component inside of a <FlatTree> component!
+      `);
+    }
+  }
+  return useSubtree(props, ref);
 }

@@ -97,6 +97,8 @@ export {
   usePortalMountNode,
 } from '@fluentui/react-shared-contexts';
 export {
+  // getNativeElementProps is deprecated but removing it would be a breaking change
+  // eslint-disable-next-line deprecation/deprecation
   getNativeElementProps,
   getIntrinsicElementProps,
   getPartitionedNativeProps,
@@ -114,6 +116,7 @@ export {
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
+  useSelection,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -127,6 +130,12 @@ export type {
   SlotClassNames,
   SlotPropsRecord,
   SlotRenderFunction,
+  OnSelectionChangeCallback,
+  OnSelectionChangeData,
+  SelectionHookParams,
+  SelectionItemId,
+  SelectionMethods,
+  SelectionMode,
 } from '@fluentui/react-utilities';
 
 // Components
@@ -584,7 +593,7 @@ export type {
   PopoverTriggerProps,
   PopoverTriggerState,
 } from '@fluentui/react-popover';
-export { Portal, usePortal_unstable, renderPortal_unstable } from '@fluentui/react-portal';
+export { Portal, usePortal_unstable, renderPortal_unstable, toMountNodeProps } from '@fluentui/react-portal';
 export type { PortalProps, PortalState } from '@fluentui/react-portal';
 export {
   Radio,
@@ -827,6 +836,7 @@ export {
   renderDialogContent_unstable,
   useDialogContext_unstable,
   useDialogSurfaceContext_unstable,
+  useDialogSurfaceContextValues_unstable,
 } from '@fluentui/react-dialog';
 
 export type {
@@ -857,6 +867,7 @@ export type {
   DialogContentState,
   DialogContextValue,
   DialogSurfaceContextValue,
+  DialogSurfaceContextValues,
 } from '@fluentui/react-dialog';
 
 export {
@@ -1305,3 +1316,182 @@ export type {
   TreeSlots,
   TreeState,
 } from '@fluentui/react-tree';
+
+export {
+  Tag,
+  renderTag_unstable,
+  tagClassNames,
+  useTagStyles_unstable,
+  useTag_unstable,
+  InteractionTag,
+  renderInteractionTag_unstable,
+  interactionTagClassNames,
+  useInteractionTagStyles_unstable,
+  useInteractionTag_unstable,
+  useInteractionTagContextValues_unstable,
+  InteractionTagPrimary,
+  interactionTagPrimaryClassNames,
+  renderInteractionTagPrimary_unstable,
+  useInteractionTagPrimaryStyles_unstable,
+  useInteractionTagPrimary_unstable,
+  InteractionTagSecondary,
+  renderInteractionTagSecondary_unstable,
+  interactionTagSecondaryClassNames,
+  useInteractionTagSecondaryStyles_unstable,
+  useInteractionTagSecondary_unstable,
+  TagGroup,
+  renderTagGroup_unstable,
+  tagGroupClassNames,
+  useTagGroupStyles_unstable,
+  useTagGroup_unstable,
+  useTagGroupContextValues_unstable,
+  useTagAvatarContextValues_unstable,
+} from '@fluentui/react-tags';
+export type {
+  TagProps,
+  TagSlots,
+  TagState,
+  InteractionTagProps,
+  InteractionTagSlots,
+  InteractionTagState,
+  InteractionTagPrimaryContextValues,
+  InteractionTagPrimaryProps,
+  InteractionTagPrimarySlots,
+  InteractionTagPrimaryState,
+  InteractionTagSecondaryProps,
+  InteractionTagSecondarySlots,
+  InteractionTagSecondaryState,
+  TagGroupProps,
+  TagGroupSlots,
+  TagGroupState,
+  TagAppearance,
+  TagShape,
+  TagSize,
+  TagValue,
+  TagDismissData,
+  TagDismissEvent,
+  TagDismissHandler,
+} from '@fluentui/react-tags';
+
+export {
+  MessageBar,
+  useMessageBarStyles_unstable,
+  useMessageBar_unstable,
+  renderMessageBar_unstable,
+  messageBarClassNames,
+  MessageBarTitle,
+  useMessageBarTitleStyles_unstable,
+  useMessageBarTitle_unstable,
+  renderMessageBarTitle_unstable,
+  messageBarTitleClassNames,
+  MessageBarActions,
+  useMessageBarActionsStyles_unstable,
+  useMessageBarActions_unstable,
+  renderMessageBarActions_unstable,
+  messageBarActionsClassNames,
+  MessageBarBody,
+  useMessageBarBodyStyles_unstable,
+  useMessageBarBody_unstable,
+  renderMessageBarBody_unstable,
+  messageBarBodyClassNames,
+  MessageBarContextProvider,
+  useMessageBarContext,
+  MessageBarGroup,
+  useMessageBarGroupStyles_unstable,
+  useMessageBarGroup_unstable,
+  renderMessageBarGroup_unstable,
+  messageBarGroupClassNames,
+} from '@fluentui/react-message-bar';
+export type {
+  MessageBarProps,
+  MessageBarSlots,
+  MessageBarState,
+  MessageBarIntent,
+  MessageBarTitleProps,
+  MessageBarTitleSlots,
+  MessageBarTitleState,
+  MessageBarActionsProps,
+  MessageBarActionsSlots,
+  MessageBarActionsState,
+  MessageBarBodyProps,
+  MessageBarBodySlots,
+  MessageBarBodyState,
+  MessageBarContextValue,
+  MessageBarGroupProps,
+  MessageBarGroupSlots,
+  MessageBarGroupState,
+} from '@fluentui/react-message-bar';
+
+export {
+  InfoLabel,
+  infoLabelClassNames,
+  renderInfoLabel_unstable,
+  useInfoLabelStyles_unstable,
+  useInfoLabel_unstable,
+} from '@fluentui/react-infolabel';
+export type { InfoLabelProps, InfoLabelSlots, InfoLabelState } from '@fluentui/react-infolabel';
+
+export {
+  Drawer,
+  renderDrawer_unstable,
+  useDrawerStyles_unstable,
+  useDrawer_unstable,
+  OverlayDrawer,
+  overlayDrawerClassNames,
+  renderOverlayDrawer_unstable,
+  useOverlayDrawerStyles_unstable,
+  useOverlayDrawer_unstable,
+  InlineDrawer,
+  inlineDrawerClassNames,
+  renderInlineDrawer_unstable,
+  useInlineDrawerStyles_unstable,
+  useInlineDrawer_unstable,
+  DrawerBody,
+  drawerBodyClassNames,
+  renderDrawerBody_unstable,
+  useDrawerBodyStyles_unstable,
+  useDrawerBody_unstable,
+  DrawerHeader,
+  drawerHeaderClassNames,
+  renderDrawerHeader_unstable,
+  useDrawerHeaderStyles_unstable,
+  useDrawerHeader_unstable,
+  DrawerHeaderTitle,
+  drawerHeaderTitleClassNames,
+  renderDrawerHeaderTitle_unstable,
+  useDrawerHeaderTitleStyles_unstable,
+  useDrawerHeaderTitle_unstable,
+  DrawerHeaderNavigation,
+  drawerHeaderNavigationClassNames,
+  renderDrawerHeaderNavigation_unstable,
+  useDrawerHeaderNavigationStyles_unstable,
+  useDrawerHeaderNavigation_unstable,
+  DrawerFooter,
+  drawerFooterClassNames,
+  renderDrawerFooter_unstable,
+  useDrawerFooterStyles_unstable,
+  useDrawerFooter_unstable,
+} from '@fluentui/react-drawer';
+
+export type {
+  DrawerProps,
+  DrawerSlots,
+  DrawerState,
+  OverlayDrawerProps,
+  OverlayDrawerSlots,
+  OverlayDrawerState,
+  InlineDrawerProps,
+  InlineDrawerSlots,
+  InlineDrawerState,
+  DrawerBodySlots,
+  DrawerBodyState,
+  DrawerHeaderSlots,
+  DrawerHeaderState,
+  DrawerHeaderTitleSlots,
+  DrawerHeaderTitleState,
+  DrawerFooterSlots,
+  DrawerFooterState,
+  DrawerHeaderNavigationProps,
+  DrawerHeaderNavigationSlots,
+  DrawerHeaderNavigationState,
+} from '@fluentui/react-drawer';

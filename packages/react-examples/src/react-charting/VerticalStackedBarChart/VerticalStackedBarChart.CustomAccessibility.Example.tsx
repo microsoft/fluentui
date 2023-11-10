@@ -48,7 +48,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 40,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '61%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-1 of 4, 2020/04/30 40%' },
       },
       {
@@ -56,7 +56,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 5,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '5%',
+        yAxisCalloutData: '8%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-2 of 4, 2020/04/30 5%' },
       },
       {
@@ -64,7 +64,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 20,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '31%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 1-3 of 4, 2020/04/30 20%' },
       },
     ];
@@ -75,7 +75,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 30,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '30%',
+        yAxisCalloutData: '33%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-1 of 4, 2020/04/30 30%' },
       },
       {
@@ -83,7 +83,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 20,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '20%',
+        yAxisCalloutData: '22%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-2 of 4, 2020/04/30 20%' },
       },
       {
@@ -91,7 +91,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 40,
         color: DefaultPalette.blueLight,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '40%',
+        yAxisCalloutData: '45%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 2-3 of 4, 2020/04/30 40%' },
       },
     ];
@@ -102,7 +102,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 44,
         color: DefaultPalette.blue,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '44%',
+        yAxisCalloutData: '43%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-1 of 4, 2020/04/30 44%' },
       },
       {
@@ -110,7 +110,7 @@ export class VerticalStackedBarChartCustomAccessibilityExample extends React.Com
         data: 28,
         color: DefaultPalette.blueMid,
         xAxisCalloutData: '2020/04/30',
-        yAxisCalloutData: '28%',
+        yAxisCalloutData: '27%',
         callOutAccessibilityData: { ariaLabel: 'Bar series 3-2 of 4, 2020/04/30 28%' },
       },
       {

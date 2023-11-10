@@ -31,8 +31,8 @@ import {
   XAxisTypes,
   getTypeOfAxis,
   tooltipOfXAxislabels,
+  formatValueWithSIPrefix,
 } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
 
 const getClassNames = classNamesFunction<IVerticalStackedBarChartStyleProps, IVerticalStackedBarChartStyles>();
 type NumericAxis = D3Axis<number | { valueOf(): number }>;
@@ -62,6 +62,11 @@ enum CircleVisbility {
   hide = 'hidden',
 }
 
+type CalloutAnchorPointData = {
+  xAxisDataPoint: string;
+  chartDataPoint: IVSChartDataPoint;
+};
+
 export interface IVerticalStackedBarChartState extends IBasestate {
   dataPointCalloutProps?: IVSChartDataPoint;
   stackCalloutProps?: IVerticalStackedChartProps;
@@ -87,7 +92,7 @@ export class VerticalStackedBarChartBase extends React.Component<
   private _lineObject: LineObject;
   private _tooltipId: string;
   private _yMax: number;
-  private _calloutAnchorPoint: IVSChartDataPoint | null;
+  private _calloutAnchorPoint: CalloutAnchorPointData | null;
   private _domainMargin: number;
   private _classNames: IProcessedStyleSet<IVerticalStackedBarChartStyles>;
   private _emptyChartId: string;
@@ -593,8 +598,11 @@ export class VerticalStackedBarChartBase extends React.Component<
     color: string,
     refSelected: React.MouseEvent<SVGElement> | SVGGElement,
   ): void {
-    if (this._calloutAnchorPoint !== point) {
-      this._calloutAnchorPoint = point;
+    if (this._calloutAnchorPoint?.chartDataPoint !== point || this._calloutAnchorPoint?.xAxisDataPoint !== xAxisPoint) {
+      this._calloutAnchorPoint = {
+        chartDataPoint: point,
+        xAxisDataPoint: xAxisPoint,
+      };
       this.setState({
         refSelected,
         /**
@@ -782,8 +790,8 @@ export class VerticalStackedBarChartBase extends React.Component<
         };
 
         let barHeight = heightValueScale * point.data;
-        if (barHeight < barMinimumHeight) {
-          barHeight = barMinimumHeight;
+        if (barHeight < Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight)) {
+          barHeight = Math.max(heightValueScale * Math.ceil(this._yMax / 100.0), barMinimumHeight);
         }
         yPoint = yPoint - barHeight - (index ? gapHeight : 0);
         barTotalValue += point.data;
@@ -810,7 +818,7 @@ export class VerticalStackedBarChartBase extends React.Component<
             />
           );
         }
-        if (barHeight < 1) {
+        if (barHeight < 0) {
           return <React.Fragment key={index + indexNumber}> </React.Fragment>;
         }
         return (
@@ -840,22 +848,37 @@ export class VerticalStackedBarChartBase extends React.Component<
         onClick: this._onClick.bind(this, singleChartData),
         role: 'img',
       };
+      let showLabel = false;
+      let barLabel = 0;
+      if (!this.props.hideLabels) {
+        if (this._noLegendHighlighted()) {
+          showLabel = true;
+          barLabel = barTotalValue;
+        } else {
+          barsToDisplay.forEach(point => {
+            if (this._legendHighlighted(point.legend)) {
+              showLabel = true;
+              barLabel += point.data;
+            }
+          });
+        }
+      }
       return (
         <g key={indexNumber + `${shouldFocusWholeStack}`}>
           <g id={`${indexNumber}-singleBar`} ref={e => (groupRef.refElement = e)} {...stackFocusProps}>
             {singleBar}
           </g>
-          {!this.props.hideLabels && this._barWidth >= 16 && (
+          {!this.props.hideLabels && this._barWidth >= 16 && showLabel && (
             <text
               x={xPoint + this._barWidth / 2}
               y={yPoint - 6}
               textAnchor="middle"
               className={this._classNames.barLabel}
-              aria-label={`Total: ${barTotalValue}`}
+              aria-label={`Total: ${barLabel}`}
               role="img"
               transform={`translate(${xScaleBandwidthTranslate}, 0)`}
             >
-              {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
+              {formatValueWithSIPrefix(barLabel)}
             </text>
           )}
         </g>

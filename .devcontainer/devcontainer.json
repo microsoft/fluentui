@@ -1,7 +1,10 @@
 {
   "name": "Node.js",
   "build": {
-    "dockerfile": "Dockerfile"
+    "dockerfile": "Dockerfile",
+    "args": {
+      "VARIANT": "18-bookworm"
+    }
   },
   "features": {
     "ghcr.io/devcontainers/features/github-cli:1": {}

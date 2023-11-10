@@ -4,6 +4,10 @@ import { ILegendsProps, ILegendStyleProps, ILegendsStyles } from './Legends.type
 import { LegendsBase } from './Legends.base';
 import { getStyles } from './Legends.styles';
 
+/**
+ * Legends component
+ * {@docCategory Legends}
+ */
 export const Legends: React.FunctionComponent<ILegendsProps> = styled<ILegendsProps, ILegendStyleProps, ILegendsStyles>(
   LegendsBase,
   getStyles,

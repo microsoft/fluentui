@@ -47,6 +47,9 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useComboboxStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useListboxStyles_unstable: CustomStyleHook;
+    useListStyles_unstable: CustomStyleHook;
+    useListItemStyles_unstable: CustomStyleHook;
+    useListItemButtonStyles_unstable: CustomStyleHook;
     useOptionStyles_unstable: CustomStyleHook;
     useOptionGroupStyles_unstable: CustomStyleHook;
     useDividerStyles_unstable: CustomStyleHook;
@@ -109,6 +112,8 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -123,6 +128,12 @@ export const CustomStyleHooksContext_unstable: React_2.Context<Partial<{
     useBreadcrumbButtonStyles_unstable: CustomStyleHook;
     useBreadcrumbItemStyles_unstable: CustomStyleHook;
     useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @public (undocumented)
@@ -151,6 +162,9 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useComboboxStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useListboxStyles_unstable: CustomStyleHook;
+    useListStyles_unstable: CustomStyleHook;
+    useListItemStyles_unstable: CustomStyleHook;
+    useListItemButtonStyles_unstable: CustomStyleHook;
     useOptionStyles_unstable: CustomStyleHook;
     useOptionGroupStyles_unstable: CustomStyleHook;
     useDividerStyles_unstable: CustomStyleHook;
@@ -213,6 +227,8 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -227,6 +243,12 @@ export type CustomStyleHooksContextValue_unstable = Partial<{
     useBreadcrumbButtonStyles_unstable: CustomStyleHook;
     useBreadcrumbItemStyles_unstable: CustomStyleHook;
     useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }>;
 
 // @internal (undocumented)
@@ -255,6 +277,9 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useComboboxStyles_unstable: CustomStyleHook;
     useDropdownStyles_unstable: CustomStyleHook;
     useListboxStyles_unstable: CustomStyleHook;
+    useListStyles_unstable: CustomStyleHook;
+    useListItemStyles_unstable: CustomStyleHook;
+    useListItemButtonStyles_unstable: CustomStyleHook;
     useOptionStyles_unstable: CustomStyleHook;
     useOptionGroupStyles_unstable: CustomStyleHook;
     useDividerStyles_unstable: CustomStyleHook;
@@ -317,6 +342,8 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useDrawerStyles_unstable: CustomStyleHook;
     useDrawerInlineStyles_unstable: CustomStyleHook;
     useDrawerOverlayStyles_unstable: CustomStyleHook;
+    useInlineDrawerStyles_unstable: CustomStyleHook;
+    useOverlayDrawerStyles_unstable: CustomStyleHook;
     useDrawerHeaderStyles_unstable: CustomStyleHook;
     useDrawerHeaderNavigationStyles_unstable: CustomStyleHook;
     useDrawerHeaderTitleStyles_unstable: CustomStyleHook;
@@ -331,6 +358,12 @@ export const CustomStyleHooksProvider_unstable: React_2.Provider<Partial<{
     useBreadcrumbButtonStyles_unstable: CustomStyleHook;
     useBreadcrumbItemStyles_unstable: CustomStyleHook;
     useBreadcrumbDividerStyles_unstable: CustomStyleHook;
+    useMessageBarStyles_unstable: CustomStyleHook;
+    useMessageBarBodyStyles_unstable: CustomStyleHook;
+    useMessageBarTitleStyles_unstable: CustomStyleHook;
+    useMessageBarActionsStyles_unstable: CustomStyleHook;
+    useMessageBarGroupStyles_unstable: CustomStyleHook;
+    useToasterStyles_unstable: CustomStyleHook;
 }> | undefined>;
 
 // @internal (undocumented)

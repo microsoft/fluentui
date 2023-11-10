@@ -573,7 +573,7 @@ describe('Line chart - Subcomponent xAxis Labels', () => {
   );
 });
 
-describe('Line chart - Subcomponent Event', () => {
+describe.skip('Line chart - Subcomponent Event', () => {
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
   // Replace the original method with the mock implementation
   Object.defineProperty(
@@ -587,7 +587,7 @@ describe('Line chart - Subcomponent Event', () => {
   testWithWait(
     'Should render events with defined data',
     LineChart,
-    { data: simplePoints, eventAnnotationProps: eventAnnotationProps, tickValues: tickValues, tickFormat: '%m/%d' },
+    { data: simplePoints, eventAnnotationProps, tickValues, tickFormat: '%m/%d' },
     container => {
       // Arrange
       const event = screen.queryByText('3 events');

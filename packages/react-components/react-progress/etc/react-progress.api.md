@@ -35,7 +35,7 @@ export type ProgressBarSlots = {
 };
 
 // @public
-export type ProgressBarState = ComponentState<ProgressBarSlots> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'color'>;
+export type ProgressBarState = ComponentState<Required<ProgressBarSlots>> & Required<Pick<ProgressBarProps, 'max' | 'shape' | 'thickness'>> & Pick<ProgressBarProps, 'value' | 'color'>;
 
 // @public
 export const renderProgressBar_unstable: (state: ProgressBarState) => JSX.Element;

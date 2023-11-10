@@ -2,6 +2,27 @@
   "name": "@fluentui/react-conformance-griffel",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:33 GMT",
+      "tag": "@fluentui/react-conformance-griffel_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-conformance-griffel",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-conformance-griffel",
+            "comment": "Bump @fluentui/react-conformance to v0.18.3",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Sep 2023 17:49:04 GMT",
       "tag": "@fluentui/react-conformance-griffel_v9.0.6",
       "version": "9.0.6",

@@ -13,8 +13,12 @@ import {
 } from './index';
 import { Callout, DirectionalHint } from '@fluentui/react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from '@fluentui/react-focus';
-import { ChartHoverCard, convertToLocaleString, getAccessibleDataObject } from '../../utilities/index';
-import { formatPrefix as d3FormatPrefix } from 'd3-format';
+import {
+  ChartHoverCard,
+  convertToLocaleString,
+  formatValueWithSIPrefix,
+  getAccessibleDataObject,
+} from '../../utilities/index';
 import { FocusableTooltipText } from '../../utilities/FocusableTooltipText';
 
 const getClassNames = classNamesFunction<IMultiStackedBarChartStyleProps, IMultiStackedBarChartStyles>();
@@ -305,8 +309,21 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         </g>
       );
     });
-    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale) {
-      if (!this.props.hideLabels) {
+    if (this.props.variant === MultiStackedBarChartVariant.AbsoluteScale && !this.props.hideLabels) {
+      let showLabel = false;
+      let barLabel = 0;
+      if (this._noLegendHighlighted()) {
+        showLabel = true;
+        barLabel = barTotalValue;
+      } else {
+        data.chartData?.forEach(point => {
+          if (this._legendHighlighted(point.legend!)) {
+            showLabel = true;
+            barLabel += point.data ? point.data : 0;
+          }
+        });
+      }
+      if (showLabel) {
         bars.push(
           <text
             key="text"
@@ -320,10 +337,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             dominantBaseline="central"
             transform={`translate(${this._isRTL ? -4 : 4})`}
             className={this._classNames.barLabel}
-            aria-label={`Total: ${barTotalValue}`}
+            aria-label={`Total: ${barLabel}`}
             role="img"
           >
-            {d3FormatPrefix(barTotalValue < 1000 ? '.2~' : '.1', barTotalValue)(barTotalValue)}
+            {formatValueWithSIPrefix(barLabel)}
           </text>,
         );
       }

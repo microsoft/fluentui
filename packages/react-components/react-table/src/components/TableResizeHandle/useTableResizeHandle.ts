@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, useEventCallback, slot } from '@fluentui/react-utilities';
 import type { TableResizeHandleProps, TableResizeHandleState } from './TableResizeHandle.types';
 
 /**
@@ -24,8 +24,11 @@ export const useTableResizeHandle_unstable = (
       root: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
-        ref,
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: ref as React.Ref<HTMLDivElement>,
         ...props,
         onClick,
       }),

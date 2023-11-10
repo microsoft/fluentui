@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Fixing line not visible bug for vertical bar chart",
-  "packageName": "@fluentui/react-charting",
-  "email": "srmukher@microsoft.com",
-  "dependentChangeType": "patch"
-}

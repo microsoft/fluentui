@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { getNativeElementProps, slot } from '@fluentui/react-utilities';
+import { getIntrinsicElementProps, slot } from '@fluentui/react-utilities';
 import type { RatingProps, RatingState } from './Rating.types';
 
 /**
@@ -11,7 +11,7 @@ import type { RatingProps, RatingState } from './Rating.types';
  * @param props - props from this instance of Rating
  * @param ref - reference to root HTMLElement of Rating
  */
-export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLElement>): RatingState => {
+export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivElement>): RatingState => {
   return {
     // TODO add appropriate props/defaults
     components: {
@@ -21,7 +21,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLElemen
     // TODO add appropriate slots, for example:
     // mySlot: resolveShorthand(props.mySlot),
     root: slot.always(
-      getNativeElementProps('div', {
+      getIntrinsicElementProps('div', {
         ref,
         ...props,
       }),
