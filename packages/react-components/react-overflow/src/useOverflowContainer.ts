@@ -32,45 +32,81 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   const containerRef = React.useRef<TElement>(null);
   const updateOverflowItems = useEventCallback(update);
 
-  const [overflowManager] = React.useState<OverflowManager | null>(() =>
-    canUseDOM() ? createOverflowManager() : null,
-  );
-
-  const [bindings, setBindings] = React.useState(() => createReactBindings(overflowManager));
+  const [overflowManager, setOverflowManager] = React.useState<OverflowManager | null>(null);
 
   useIsomorphicLayoutEffect(() => {
-    if (!containerRef.current) {
+    if (!containerRef.current || !canUseDOM()) {
       return;
     }
 
-    if (overflowManager) {
-      overflowManager.observe(containerRef.current, {
-        overflowDirection: overflowDirection ?? 'end',
-        overflowAxis: overflowAxis ?? 'horizontal',
-        padding: padding ?? 10,
-        minimumVisible: minimumVisible ?? 0,
-        onUpdateItemVisibility: onUpdateItemVisibility ?? (() => undefined),
-        onUpdateOverflow: updateOverflowItems ?? (() => undefined),
-      });
+    const newOverflowManager = createOverflowManager();
 
-      setBindings(createReactBindings(overflowManager));
+    newOverflowManager.observe(containerRef.current, {
+      overflowDirection: overflowDirection ?? 'end',
+      overflowAxis: overflowAxis ?? 'horizontal',
+      padding: padding ?? 10,
+      minimumVisible: minimumVisible ?? 0,
+      onUpdateItemVisibility: onUpdateItemVisibility ?? (() => undefined),
+      onUpdateOverflow: updateOverflowItems ?? (() => undefined),
+    });
+
+    setOverflowManager(newOverflowManager);
+
+    return () => {
+      newOverflowManager.disconnect();
+    };
+  }, [updateOverflowItems, overflowDirection, overflowAxis, padding, minimumVisible, onUpdateItemVisibility]);
+
+  const registerItem = React.useCallback(
+    (item: OverflowItemEntry) => {
+      overflowManager?.addItem(item);
+      item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
 
       return () => {
-        overflowManager.disconnect();
+        item.element.removeAttribute(DATA_OVERFLOWING);
+        item.element.removeAttribute(DATA_OVERFLOW_ITEM);
+        overflowManager?.removeItem(item.id);
       };
-    }
-  }, [
-    updateOverflowItems,
-    overflowManager,
-    overflowDirection,
-    overflowAxis,
-    padding,
-    minimumVisible,
-    onUpdateItemVisibility,
-  ]);
+    },
+    [overflowManager],
+  );
+
+  const registerDivider = React.useCallback(
+    (divider: OverflowDividerEntry) => {
+      const el = divider.element;
+      overflowManager?.addDivider(divider);
+      el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
+
+      return () => {
+        divider.groupId && overflowManager?.removeDivider(divider.groupId);
+        el.removeAttribute(DATA_OVERFLOW_DIVIDER);
+      };
+    },
+    [overflowManager],
+  );
+
+  const registerOverflowMenu = React.useCallback(
+    (el: HTMLElement) => {
+      overflowManager?.addOverflowMenu(el);
+      el.setAttribute(DATA_OVERFLOW_MENU, '');
+
+      return () => {
+        overflowManager?.removeOverflowMenu();
+        el.removeAttribute(DATA_OVERFLOW_MENU);
+      };
+    },
+    [overflowManager],
+  );
+
+  const updateOverflow = React.useCallback(() => {
+    overflowManager?.update();
+  }, [overflowManager]);
 
   return {
-    ...bindings,
+    registerItem,
+    registerDivider,
+    registerOverflowMenu,
+    updateOverflow,
     containerRef,
   };
 };
@@ -82,41 +118,3 @@ export const updateVisibilityAttribute: OnUpdateItemVisibility = ({ item, visibl
     item.element.setAttribute(DATA_OVERFLOWING, '');
   }
 };
-
-const createReactBindings = (overflowManager: OverflowManager | null) => ({
-  registerItem: (item: OverflowItemEntry) => {
-    overflowManager?.addItem(item);
-    item.element.setAttribute(DATA_OVERFLOW_ITEM, '');
-
-    return () => {
-      item.element.removeAttribute(DATA_OVERFLOWING);
-      item.element.removeAttribute(DATA_OVERFLOW_ITEM);
-      overflowManager?.removeItem(item.id);
-    };
-  },
-
-  registerDivider: (divider: OverflowDividerEntry) => {
-    const el = divider.element;
-    overflowManager?.addDivider(divider);
-    el.setAttribute(DATA_OVERFLOW_DIVIDER, '');
-
-    return () => {
-      divider.groupId && overflowManager?.removeDivider(divider.groupId);
-      el.removeAttribute(DATA_OVERFLOW_DIVIDER);
-    };
-  },
-
-  registerOverflowMenu: (el: HTMLElement) => {
-    overflowManager?.addOverflowMenu(el);
-    el.setAttribute(DATA_OVERFLOW_MENU, '');
-
-    return () => {
-      overflowManager?.removeOverflowMenu();
-      el.removeAttribute(DATA_OVERFLOW_MENU);
-    };
-  },
-
-  updateOverflow: () => {
-    overflowManager?.update();
-  },
-});
