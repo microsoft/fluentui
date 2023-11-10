@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-overflow
 
-This log was last generated on Thu, 09 Nov 2023 17:29:38 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 13:46:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.1.0)
+
+Fri, 10 Nov 2023 13:46:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-overflow_v9.0.43..@fluentui/react-overflow_v9.1.0)
+
+### Minor changes
+
+- feat: Implement useOverflowVisibility hook ([PR #29809](https://github.com/microsoft/fluentui/pull/29809) by lingfangao@hotmail.com)
 
 ## [9.0.43](https://github.com/microsoft/fluentui/tree/@fluentui/react-overflow_v9.0.43)
 

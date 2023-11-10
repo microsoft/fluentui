@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: Implement useOverflowVisibility hook",
-  "packageName": "@fluentui/react-overflow",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

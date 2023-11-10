@@ -2,6 +2,21 @@
   "name": "@fluentui/react-menu",
   "entries": [
     {
+      "date": "Fri, 10 Nov 2023 13:46:32 GMT",
+      "tag": "@fluentui/react-menu_v9.12.32",
+      "version": "9.12.32",
+      "comments": {
+        "patch": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e6172eb364bd61f02d998e6fa11676aadb34af6c",
+            "comment": "fix: MenuTrigger tabster attributes can be overriden by user"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:37 GMT",
       "tag": "@fluentui/react-menu_v9.12.31",
       "version": "9.12.31",

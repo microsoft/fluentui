@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: MenuTrigger tabster attributes can be overriden by user",
-  "packageName": "@fluentui/react-menu",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

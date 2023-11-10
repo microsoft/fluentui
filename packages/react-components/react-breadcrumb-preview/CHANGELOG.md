@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-breadcrumb-preview
 
-This log was last generated on Thu, 09 Nov 2023 17:29:50 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 13:46:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.1.2)
+
+Fri, 10 Nov 2023 13:46:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v2.1.1..@fluentui/react-breadcrumb-preview_v2.1.2)
+
+### Patches
+
+- fix: use button when no href is defined ([PR #29803](https://github.com/microsoft/fluentui/pull/29803) by sarah.higley@microsoft.com)
 
 ## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.1.1)
 

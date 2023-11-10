@@ -1,8 +1,32 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Thu, 09 Nov 2023 17:29:30 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 13:46:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.39.0)
+
+Fri, 10 Nov 2023 13:46:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.38.0..@fluentui/react-components_v9.39.0)
+
+### Minor changes
+
+- `@fluentui/react-components`
+  - feat: export useOverflowVisibility hook ([PR #29809](https://github.com/microsoft/fluentui/pull/29809) by lingfangao@hotmail.com)
+- `@fluentui/react-overflow`
+  - feat: Implement useOverflowVisibility hook ([PR #29809](https://github.com/microsoft/fluentui/pull/29809) by lingfangao@hotmail.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb-preview`
+  - fix: use button when no href is defined ([PR #29803](https://github.com/microsoft/fluentui/pull/29803) by sarah.higley@microsoft.com)
+- `@fluentui/react-menu`
+  - fix: MenuTrigger tabster attributes can be overriden by user ([PR #29810](https://github.com/microsoft/fluentui/pull/29810) by lingfangao@hotmail.com)
+
+### Changes
+
+- `@fluentui/react-virtualizer`
+  - feat: Ensure IO handles RTL margin and mutations ([PR #29501](https://github.com/microsoft/fluentui/pull/29501) by mifraser@microsoft.com)
 
 ## [9.38.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.38.0)
 

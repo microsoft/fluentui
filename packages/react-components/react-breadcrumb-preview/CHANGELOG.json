@@ -2,6 +2,21 @@
   "name": "@fluentui/react-breadcrumb-preview",
   "entries": [
     {
+      "date": "Fri, 10 Nov 2023 13:46:32 GMT",
+      "tag": "@fluentui/react-breadcrumb-preview_v2.1.2",
+      "version": "2.1.2",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "506c225d88c8d1452cf64dffad3d7243ad161d11",
+            "comment": "fix: use button when no href is defined"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:50 GMT",
       "tag": "@fluentui/react-breadcrumb-preview_v2.1.1",
       "version": "2.1.1",

@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-virtualizer
 
-This log was last generated on Thu, 09 Nov 2023 17:29:48 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 13:46:33 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.0.0-alpha.57](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.57)
+
+Fri, 10 Nov 2023 13:46:33 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-virtualizer_v9.0.0-alpha.56..@fluentui/react-virtualizer_v9.0.0-alpha.57)
+
+### Changes
+
+- feat: Ensure IO handles RTL margin and mutations ([PR #29501](https://github.com/microsoft/fluentui/pull/29501) by mifraser@microsoft.com)
 
 ## [9.0.0-alpha.56](https://github.com/microsoft/fluentui/tree/@fluentui/react-virtualizer_v9.0.0-alpha.56)
 

@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-portal-compat",
-  "version": "9.0.108",
+  "version": "9.0.109",
   "description": "A package that contains compatibility layer for React Portals",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -39,7 +39,7 @@
     "@swc/helpers": "^0.5.1"
   },
   "peerDependencies": {
-    "@fluentui/react-components": "^9.38.0",
+    "@fluentui/react-components": "^9.39.0",
     "@types/react": ">=16.14.0 <19.0.0",
     "react": ">=16.14.0 <19.0.0"
   },

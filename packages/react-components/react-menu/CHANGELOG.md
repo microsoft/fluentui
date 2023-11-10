@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-menu
 
-This log was last generated on Thu, 09 Nov 2023 17:29:37 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 13:46:32 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.12.32](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.32)
+
+Fri, 10 Nov 2023 13:46:32 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-menu_v9.12.31..@fluentui/react-menu_v9.12.32)
+
+### Patches
+
+- fix: MenuTrigger tabster attributes can be overriden by user ([PR #29810](https://github.com/microsoft/fluentui/pull/29810) by lingfangao@hotmail.com)
 
 ## [9.12.31](https://github.com/microsoft/fluentui/tree/@fluentui/react-menu_v9.12.31)
 

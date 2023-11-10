@@ -2,6 +2,49 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Fri, 10 Nov 2023 13:46:32 GMT",
+      "tag": "@fluentui/react-components_v9.39.0",
+      "version": "9.39.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "sarah.higley@microsoft.com",
+            "package": "@fluentui/react-breadcrumb-preview",
+            "commit": "506c225d88c8d1452cf64dffad3d7243ad161d11",
+            "comment": "fix: use button when no href is defined"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-menu",
+            "commit": "e6172eb364bd61f02d998e6fa11676aadb34af6c",
+            "comment": "fix: MenuTrigger tabster attributes can be overriden by user"
+          }
+        ],
+        "minor": [
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "af9cde68a324d0b14d5a584b4589c90743483f03",
+            "comment": "feat: export useOverflowVisibility hook"
+          },
+          {
+            "author": "lingfangao@hotmail.com",
+            "package": "@fluentui/react-overflow",
+            "commit": "af9cde68a324d0b14d5a584b4589c90743483f03",
+            "comment": "feat: Implement useOverflowVisibility hook"
+          }
+        ],
+        "prerelease": [
+          {
+            "author": "mifraser@microsoft.com",
+            "package": "@fluentui/react-virtualizer",
+            "commit": "7a359e8d433593f9ee27d86be56af4b0babe09a4",
+            "comment": "feat: Ensure IO handles RTL margin and mutations"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:30 GMT",
       "tag": "@fluentui/react-components_v9.38.0",
       "version": "9.38.0",
