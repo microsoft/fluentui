@@ -271,8 +271,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
 
       this._classNames = getClassNames(styles!, {
         theme: this.props.theme!,
-        shouldHighlight: shouldHighlight,
-        href: href,
+        shouldHighlight,
+        href,
         variant: this.props.variant,
         hideLabels: this.props.hideLabels,
       });
@@ -295,7 +295,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            id={`${this._barId}-${index}`}
+            id={`${this._barId + Math.floor(Math.random() * 100) + Math.floor(Math.random() * 10)}-${
+              index + Math.floor(Math.random() * 10)
+            }`}
             x={`${
               this._isRTL
                 ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
@@ -335,7 +337,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             textAnchor={this._isRTL ? 'end' : 'start'}
             y={barHeight / 2}
             dominantBaseline="central"
-            transform={`translate(${this._isRTL ? -4 : 4})`}
+            transform={`translate(${this._isRTL ? (barLabel < 100 ? -18 : -24) : 4})`}
             className={this._classNames.barLabel}
             aria-label={`Total: ${barLabel}`}
             role="img"
@@ -437,7 +439,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
           calloutLegend: point.legend!,
           dataForHoverCard: pointData,
-          color: color,
+          color,
           xCalloutValue: point.xAxisCalloutData!,
           yCalloutValue: point.yAxisCalloutData!,
           dataPointCalloutProps: point,
@@ -456,9 +458,9 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
       theme: theme!,
-      width: width,
+      width,
       className,
-      barHeight: barHeight,
+      barHeight,
     });
   };
 
@@ -486,7 +488,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
             }
             const legend: ILegend = {
               title: point.legend!,
-              color: color,
+              color,
               action: () => {
                 this._onClick(point.legend!);
               },
@@ -512,7 +514,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           }
           const legend: ILegend = {
             title: point.legend!,
-            color: color,
+            color,
             action: () => {
               this._onClick(point.legend!);
             },
@@ -573,7 +575,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         isCalloutVisible: this.state.selectedLegend === '' || this.state.selectedLegend === point.legend!,
         calloutLegend: point.legend!,
         dataForHoverCard: pointData,
-        color: color,
+        color,
         xCalloutValue: point.xAxisCalloutData!,
         yCalloutValue: point.yAxisCalloutData!,
         dataPointCalloutProps: point,
