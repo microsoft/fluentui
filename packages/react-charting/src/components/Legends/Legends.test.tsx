@@ -226,7 +226,7 @@ describe('Legends - multi Legends', () => {
         defaultSelectedLegends={[legends[0].title, legends[2].title]}
       />,
     );
-    const renderedLegends = wrapper.getDOMNode().querySelectorAll('button["aria-selected"=true]');
+    const renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
     expect(renderedLegends?.length).toBe(2);
   });
 });
