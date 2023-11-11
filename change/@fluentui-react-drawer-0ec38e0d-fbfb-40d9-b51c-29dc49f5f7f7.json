@@ -1,6 +1,6 @@
 {
-  "type": "prerelease",
-  "comment": "Add bottom-to-up position for drawer",
+  "type": "minor",
+  "comment": "Add bottom position",
   "packageName": "@fluentui/react-drawer",
   "email": "yiliu9@microsoft.com",
   "dependentChangeType": "patch"
