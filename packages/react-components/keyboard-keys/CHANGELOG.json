@@ -2,6 +2,21 @@
   "name": "@fluentui/keyboard-keys",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:49 GMT",
+      "tag": "@fluentui/keyboard-keys_v9.0.7",
+      "version": "9.0.7",
+      "comments": {
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/keyboard-keys",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 26 Sep 2023 17:49:01 GMT",
       "tag": "@fluentui/keyboard-keys_v9.0.6",
       "version": "9.0.6",

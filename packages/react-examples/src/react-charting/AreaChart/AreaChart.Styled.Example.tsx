@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { AreaChart } from '@fluentui/react-charting';
-import { ILineChartProps } from '@fluentui/react-charting';
-import { DefaultPalette } from '@fluentui/react/lib/Styling';
+import { ILineChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
 interface IAreaChartBasicState {
   width: number;
@@ -80,7 +79,7 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
       {
         legend: 'legend1',
         data: chart1Points,
-        color: '#0099BC',
+        color: DataVizPalette.color2,
         opacity: 0.7,
         lineOptions: {
           strokeWidth: 2,
@@ -90,11 +89,11 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
       {
         legend: 'legend2',
         data: chart2Points,
-        color: '#77004D',
+        color: DataVizPalette.color3,
         opacity: 0.8,
         lineOptions: {
           strokeWidth: 5,
-          stroke: DefaultPalette.blueDark,
+          stroke: getColorFromToken(DataVizPalette.color13),
         },
       },
     ];
@@ -102,8 +101,8 @@ export class AreaChartStyledExample extends React.Component<{}, IAreaChartBasicS
     const chartData = {
       chartTitle: 'Area chart styled example',
       lineChartData: chartPoints,
-      pointOptions: { r: 10, strokeWidth: 3, opacity: 1, stroke: DefaultPalette.blueDark },
-      pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: DefaultPalette.blueDark },
+      pointOptions: { r: 10, strokeWidth: 3, opacity: 1, stroke: getColorFromToken(DataVizPalette.color13) },
+      pointLineOptions: { strokeWidth: 2, strokeDasharray: '10 10', stroke: getColorFromToken(DataVizPalette.color13) },
     };
 
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };

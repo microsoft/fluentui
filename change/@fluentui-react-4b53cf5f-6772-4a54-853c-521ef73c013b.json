@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: trigger manual version bump after broken release",
-  "packageName": "@fluentui/react",
-  "email": "yuanboxue@microsoft.com",
-  "dependentChangeType": "patch"
-}

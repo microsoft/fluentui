@@ -53,9 +53,16 @@ export {
   dialogSurfaceClassNames,
   useDialogSurface_unstable,
   useDialogSurfaceStyles_unstable,
+  useDialogSurfaceContextValues_unstable,
   renderDialogSurface_unstable,
 } from './DialogSurface';
-export type { DialogSurfaceProps, DialogSurfaceSlots, DialogSurfaceState, DialogSurfaceElement } from './DialogSurface';
+export type {
+  DialogSurfaceProps,
+  DialogSurfaceSlots,
+  DialogSurfaceState,
+  DialogSurfaceElement,
+  DialogSurfaceContextValues,
+} from './DialogSurface';
 
 export {
   DialogContent,

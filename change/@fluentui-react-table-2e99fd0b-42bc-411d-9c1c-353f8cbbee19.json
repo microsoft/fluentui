@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat; Add optional parameter to Table column renderHeaderCell callback",
-  "packageName": "@fluentui/react-table",
-  "email": "msnyder@microsoft.com",
-  "dependentChangeType": "patch"
-}

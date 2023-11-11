@@ -1,9 +1,9 @@
 {
   "name": "@fluentui/react-conformance",
-  "version": "0.18.2",
+  "version": "0.18.3",
   "description": "Customizable conformance testing utility for Fluent UI React components.",
   "main": "lib-commonjs/index.js",
-  "typings": "dist/index.d.ts",
+  "typings": "./dist/index.d.ts",
   "repository": {
     "type": "git",
     "url": "https://github.com/microsoft/fluentui"
@@ -53,5 +53,10 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib-commonjs"
+  ]
 }

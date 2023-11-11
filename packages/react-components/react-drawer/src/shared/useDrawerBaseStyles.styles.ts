@@ -14,20 +14,19 @@ export const drawerCSSVars = {
  * Default shared styles for the Drawer component
  */
 export const drawerDefaultStyles: GriffelStyle = {
-  ...shorthands.padding(0),
   ...shorthands.overflow('hidden'),
-  ...shorthands.borderRadius(0),
-  ...shorthands.border(0),
 
   width: `var(${drawerCSSVars.drawerSizeVar})`,
   maxWidth: '100vw',
   height: 'auto',
+  maxHeight: '100vh',
   boxSizing: 'border-box',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',
   justifyContent: 'flex-start',
   backgroundColor: tokens.colorNeutralBackground1,
+  color: tokens.colorNeutralForeground1,
 };
 
 /**
@@ -49,10 +48,14 @@ const useDrawerStyles = makeStyles({
 
   /* Positioning */
   start: {
+    ...shorthands.borderRight(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
     left: 0,
     right: 'auto',
   },
   end: {
+    ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
     right: 0,
     left: 'auto',
   },

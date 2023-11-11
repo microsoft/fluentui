@@ -11,68 +11,78 @@ parameters:
 
 variables:
   - template: .devops/templates/variables.yml
-  - group: InfoSec-SecurityResults
   - name: tags
     value: production,externalfacing
 
-jobs:
-  - template: .devops/templates/compliance-job.yml
+resources:
+  repositories:
+    - repository: 1esPipelines
+      type: git
+      name: 1ESPipelineTemplates/1ESPipelineTemplates
+      ref: refs/tags/release
 
-  - job: Release
-    dependsOn: Compliance
-    pool: '1ES-Host-Ubuntu'
-    workspace:
-      clean: all
-    steps:
-      - template: .devops/templates/tools.yml
+extends:
+  template: v1/1ES.Official.PipelineTemplate.yml@1esPipelines
+  parameters:
+    pool:
+      name: Azure-Pipelines-1ESPT-ExDShared
+      image: windows-latest
+      os: windows # We need windows because compliance task only run on windows.
+    stages:
+      - stage: main
+        jobs:
+          - job: Release
+            dependsOn: Compliance
+            pool:
+              name: '1ES-Host-Ubuntu'
+              image: '1ES-PT-Ubuntu-20.04'
+              os: linux
+            workspace:
+              clean: all
+            templateContext:
+              outputs:
+                - output: pipelineArtifact
+                  targetPath: $(System.DefaultWorkingDirectory)
+                  artifactName: output
+            steps:
+              - template: .devops/templates/tools.yml@self
 
-      - script: |
-          node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
-        displayName: 'Checking for targetNpmVersion variable'
+              - script: |
+                  node -e "if('$(targetNpmVersion)' === '') throw new Error('targetNpmVersion is not specified');"
+                displayName: 'Checking for targetNpmVersion variable'
 
-      - script: |
-          npm install semver
-          node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
-        displayName: 'Check targetNpmVersion is valid semver'
+              - script: |
+                  npm install semver
+                  node -e "let semver = require('semver');if(semver.valid('$(targetNpmVersion)') === null){ throw new Error('Invalid version specified'); }"
+                displayName: 'Check targetNpmVersion is valid semver'
 
-      - task: Bash@3
-        inputs:
-          filePath: yarn-ci.sh
-        displayName: yarn
+              - task: Bash@3
+                inputs:
+                  filePath: yarn-ci.sh
+                displayName: yarn
 
-      - script: |
-          npm version $(targetNpmVersion)
-        workingDirectory: 'packages/react'
-        displayName: 'Manually set package version'
+              - script: |
+                  npm version $(targetNpmVersion)
+                workingDirectory: 'packages/react'
+                displayName: 'Manually set package version'
 
-      - script: |
-          yarn buildto @fluentui/react --production
-        displayName: yarn build to FUIR (Create production build)
+              - script: |
+                  yarn buildto @fluentui/react --production
+                displayName: yarn build to FUIR (Create production build)
 
-      - script: yarn workspace @fluentui/react bundle --production
-        displayName: yarn bundle FUIR
+              - script: yarn workspace @fluentui/react bundle --production
+                displayName: yarn bundle FUIR
 
-      - script: |
-          npm pack
-        displayName: 'Create tarball'
-        workingDirectory: 'packages/react'
+              - script: |
+                  npm pack
+                displayName: 'Create tarball'
+                workingDirectory: 'packages/react'
 
-      - ${{ if ne(parameters.isTestRun, true) }}:
-          - script: |
-              npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
-            displayName: Publish new version
+              - ${{ if ne(parameters.isTestRun, true) }}:
+                  - script: |
+                      npm publish packages/react/react-$(targetNpmVersion).tgz --tag hf8 --//registry.npmjs.org/:_authToken=$(npmToken)
+                    displayName: Publish new version
 
-      - task: AzureArtifacts.manifest-generator-task.manifest-generator-task.ManifestGeneratorTask@0
-        displayName: 📒 Generate Manifest
-        inputs:
-          BuildDropPath: $(System.DefaultWorkingDirectory)
-
-      - task: PublishPipelineArtifact@1
-        displayName: 📒 Publish Manifest
-        inputs:
-          artifactName: SBom-$(System.JobAttempt)
-          targetPath: $(System.DefaultWorkingDirectory)/_manifest
-
-      - template: .devops/templates/cleanup.yml
-        parameters:
-          checkForModifiedFiles: false
+              - template: .devops/templates/cleanup.yml@self
+                parameters:
+                  checkForModifiedFiles: false

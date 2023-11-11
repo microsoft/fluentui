@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { DrawerInline, DrawerHeader, DrawerHeaderTitle } from '@fluentui/react-drawer';
-import { Button, makeStyles } from '@fluentui/react-components';
+import { InlineDrawer, DrawerHeader, DrawerHeaderTitle, Button, makeStyles } from '@fluentui/react-components';
 import { Dismiss24Regular } from '@fluentui/react-icons';
 
 const useStyles = makeStyles({
@@ -12,7 +11,7 @@ const useStyles = makeStyles({
 
 export const WithTitle = () => {
   return (
-    <DrawerInline className={useStyles().drawer} open>
+    <InlineDrawer className={useStyles().drawer} open>
       <DrawerHeader>
         <DrawerHeaderTitle>Drawer with title</DrawerHeaderTitle>
         <DrawerHeaderTitle heading={{ as: 'h1' }}>Drawer with custom tag</DrawerHeaderTitle>
@@ -20,7 +19,7 @@ export const WithTitle = () => {
           Drawer with title and action
         </DrawerHeaderTitle>
       </DrawerHeader>
-    </DrawerInline>
+    </InlineDrawer>
   );
 };
 

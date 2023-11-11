@@ -6,8 +6,9 @@ import { ImmutableMap } from '../utils/ImmutableMap';
 import { TreeCheckedChangeData, TreeNavigationData_unstable, TreeOpenChangeData } from '../Tree';
 
 export type TreeContextValue = {
-  treeType: 'nested' | 'flat';
+  contextType?: 'root';
   level: number;
+  treeType: 'nested' | 'flat';
   selectionMode: 'none' | SelectionMode;
   appearance: 'subtle' | 'subtle-alpha' | 'transparent';
   size: 'small' | 'medium';
@@ -25,12 +26,19 @@ export type TreeItemRequest = { itemType: TreeItemType } & (
   | (OmitWithoutExpanding<TreeCheckedChangeData, 'selectionMode' | 'checkedItems'> & { requestType: 'selection' })
 );
 
-// helper type that avoids the expansion of unions while inferring it, should work exactly the same as Omit
+/**
+ * helper type that avoids the expansion of unions while inferring it,
+ * should work exactly the same as Omit
+ */
 type OmitWithoutExpanding<P, K extends string | number | symbol> = P extends unknown ? Omit<P, K> : P;
 
-const defaultContextValue: TreeContextValue = {
-  treeType: 'nested',
+/**
+ * @internal
+ */
+const defaultTreeContextValue: TreeContextValue = {
   level: 0,
+  contextType: 'root',
+  treeType: 'nested',
   selectionMode: 'none',
   openItems: ImmutableSet.empty,
   checkedItems: ImmutableMap.empty,
@@ -43,10 +51,12 @@ function noop() {
   /* noop */
 }
 
-export const TreeContext: Context<TreeContextValue | undefined> = createContext<TreeContextValue | undefined>(
+/**
+ * @internal
+ */
+export const TreeContext: Context<TreeContextValue> = createContext<TreeContextValue | undefined>(
   undefined,
-);
+) as Context<TreeContextValue>;
 
-export const { Provider: TreeProvider } = TreeContext;
 export const useTreeContext_unstable = <T>(selector: ContextSelector<TreeContextValue, T>): T =>
-  useContextSelector(TreeContext, (ctx = defaultContextValue) => selector(ctx));
+  useContextSelector(TreeContext, (ctx = defaultTreeContextValue) => selector(ctx));

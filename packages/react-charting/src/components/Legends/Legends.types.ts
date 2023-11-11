@@ -12,10 +12,19 @@ export interface ILegendOverflowData {
   overflow?: ILegend[];
 }
 
+/**
+ * @public
+ * {@docCategory Legends}
+ */
 export interface ILegendSubComponentStyles {
   hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
 
+/**
+ * @public
+ * Legends styles
+ * {@docCategory Legends}
+ */
 export interface ILegendsStyles {
   /**
    * Style set for the root of the legend component
@@ -68,6 +77,11 @@ export interface ILegendsStyles {
   subComponentStyles: ILegendSubComponentStyles;
 }
 
+/**
+ * @public
+ * ILegend interface
+ * {@docCategory Legends}
+ */
 export interface ILegend {
   /**
    * Defines the title of the legend
@@ -120,6 +134,11 @@ export interface ILegend {
   nativeButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
+/**
+ * @public
+ * Legend style properties
+ * {@docCategory Legends}
+ */
 export interface ILegendStyleProps {
   theme?: ITheme;
   className?: string;
@@ -131,6 +150,11 @@ export interface ILegendStyleProps {
   isLineLegendInBarChart?: boolean;
 }
 
+/**
+ * @public
+ * Legend properties
+ * {@docCategory Legends}
+ */
 export interface ILegendsProps {
   /**
    * Prop that takes list of legends
@@ -203,8 +227,10 @@ export interface ILegendsProps {
 }
 
 /**
+ * @public
  * The shape for the legend
  * default: show the rect legend
  * triangle: show the triangle legend
+ * {@docCategory Legends}
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;

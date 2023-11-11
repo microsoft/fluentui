@@ -1,15 +1,13 @@
 import * as React from 'react';
-import { BreadcrumbContextValue } from './Breadcrumb.types';
+import { BreadcrumbContextValues } from './Breadcrumb.types';
 
-const BreadcrumbContext = React.createContext<BreadcrumbContextValue | undefined>(undefined);
+const BreadcrumbContext = React.createContext<BreadcrumbContextValues | undefined>(undefined);
 
 /**
  * @internal
  */
-export const breadcrumbDefaultValue: BreadcrumbContextValue = {
-  appearance: 'transparent',
+export const breadcrumbDefaultValue: BreadcrumbContextValues = {
   size: 'medium',
-  dividerType: 'chevron',
 };
 
 /**

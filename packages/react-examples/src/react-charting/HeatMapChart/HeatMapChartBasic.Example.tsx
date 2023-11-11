@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { HeatMapChart, IHeatMapChartProps } from '@fluentui/react-charting';
+import { HeatMapChart, IHeatMapChartProps, DataVizPalette, getColorFromToken } from '@fluentui/react-charting';
 
 interface IHeatMapChartBasicExampleState {
   width: number;
@@ -16,8 +16,8 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
   }
   public render(): React.ReactNode {
     const rootStyle = { width: `${this.state.width}px`, height: `${this.state.height}px` };
-    const ypointMapping: { [key: string]: string } = {
-      p1: 'ohio',
+    const yPointMapping: { [key: string]: string } = {
+      p1: 'Ohio',
       p2: 'Alaska',
       p3: 'Texas',
       p4: 'DC',
@@ -32,34 +32,35 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
       new Date('2020-03-06'), // 3
       new Date('2020-03-07'), // 4
       new Date('2020-03-08'), // 5
-      new Date('2020-03-09'), // 4
-      new Date('2020-03-10'), // 5
+      new Date('2020-03-09'), // 6
+      new Date('2020-03-10'), // 7
     ];
     const HeatMapData: IHeatMapChartProps['data'] = [
       {
         value: 100,
-        legend: 'Execllent (0-200)',
-        data: [],
+        legend: 'Excellent (0-200)',
+        data: [
+          {
+            x: xPoint[2],
+            y: yPoint[2],
+            value: 46,
+            rectText: 46,
+            ratio: [46, 2391],
+            descriptionMessage: 'air quality seems to be excellent today',
+          },
+        ],
       },
       {
         value: 250,
         legend: 'Good (201-300)',
         data: [
           {
-            x: xPoint[2],
-            y: yPoint[2],
-            value: 246,
-            rectText: 246,
-            ratio: [246, 2391],
-            descriptionMessage: 'air quality is seems to be very nice today',
-          },
-          {
             x: xPoint[0],
             y: yPoint[1],
             value: 265,
             rectText: 265,
             ratio: [265, 2479],
-            descriptionMessage: 'today we have a good air quality in the alaska',
+            descriptionMessage: 'today we have good air quality in Alaska',
           },
           {
             x: xPoint[1],
@@ -67,7 +68,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 250,
             rectText: 250,
             ratio: [250, 2043],
-            descriptionMessage: 'a sudden rise of 150 units in the ohio today',
+            descriptionMessage: 'a sudden rise of 150 units in Ohio today',
           },
           {
             x: xPoint[2],
@@ -75,7 +76,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 235,
             rectText: 235,
             ratio: [235, 2043],
-            descriptionMessage: 'air quality seems to decrease only 15 units from yesterday',
+            descriptionMessage: 'air quality seems to have decreased by only 15 units from yesterday',
           },
           {
             x: xPoint[6],
@@ -83,7 +84,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 300,
             rectText: 300,
             ratio: [300, 2391],
-            descriptionMessage: 'air comes to control little bit more that yesterday',
+            descriptionMessage: 'air comes to control a little bit more than yesterday',
           },
           {
             x: xPoint[0],
@@ -91,7 +92,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 290,
             rectText: 290,
             ratio: [290, 2462],
-            descriptionMessage: '1st day in the week, DC witnesses a good air quality',
+            descriptionMessage: '1st day in the week, DC witnesses good air quality',
           },
           {
             x: xPoint[4],
@@ -99,8 +100,16 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 280,
             rectText: 280,
             ratio: [280, 2486],
-            descriptionMessage: `Air quality index is decreases exactly 200 units
-            giving the people of NYC a good hope`,
+            descriptionMessage: `Air quality index decreases by exactly 300 units,
+            giving the people of NYC good hope`,
+          },
+          {
+            x: xPoint[5],
+            y: yPoint[3],
+            value: 300,
+            rectText: 300,
+            ratio: [300, 2462],
+            descriptionMessage: '60 units decreased from yesterday.',
           },
         ],
       },
@@ -114,7 +123,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 345,
             rectText: 345,
             ratio: [345, 2479],
-            descriptionMessage: 'alaska has just reported nearly 100 units hike air quality',
+            descriptionMessage: 'Alaska has just reported nearly 100 units hike in air quality',
           },
           {
             x: xPoint[6],
@@ -122,7 +131,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 325,
             rectText: 325,
             ratio: [325, 2479],
-            descriptionMessage: `alaska to 300`,
+            descriptionMessage: `Alaska to 300`,
           },
           {
             x: xPoint[5],
@@ -130,7 +139,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 390,
             rectText: 390,
             ratio: [390, 2391],
-            descriptionMessage: 'air comes to control little bit',
+            descriptionMessage: 'air comes to control a little bit',
           },
           {
             x: xPoint[1],
@@ -138,7 +147,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 385,
             rectText: 385,
             ratio: [385, 2462],
-            descriptionMessage: 'washington DC witnesses a hike of nearly 100 units in air quality',
+            descriptionMessage: 'Washington DC witnesses a hike of nearly 100 units in air quality',
           },
           {
             x: xPoint[4],
@@ -148,20 +157,6 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             ratio: [360, 2462],
             descriptionMessage: 'a 200% hike in the air quality index',
           },
-          {
-            x: xPoint[5],
-            y: yPoint[3],
-            value: 300,
-            rectText: 300,
-            ratio: [300, 2462],
-            descriptionMessage: '60 units decreased form yesterday.',
-          },
-        ],
-      },
-      {
-        value: 450,
-        legend: 'Danger (401-500)',
-        data: [
           {
             x: xPoint[1],
             y: yPoint[2],
@@ -176,15 +171,21 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 400,
             rectText: 400,
             ratio: [400, 2043],
-            descriptionMessage: 'stuation gor worse in air quality, due to industrial smoke',
+            descriptionMessage: 'situation got worse in air quality due to industrial smoke',
           },
+        ],
+      },
+      {
+        value: 450,
+        legend: 'Danger (401-500)',
+        data: [
           {
             x: xPoint[4],
             y: yPoint[0],
             value: 423,
             rectText: 423,
             ratio: [423, 2043],
-            descriptionMessage: 'we can see increase by 23 units',
+            descriptionMessage: 'we can see an increase of 23 units',
           },
           {
             x: xPoint[2],
@@ -192,7 +193,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 463,
             rectText: 463,
             ratio: [463, 2479],
-            descriptionMessage: 'day by day situation is getting worse in the alaska',
+            descriptionMessage: 'day by day, situation is getting worse in Alaska',
           },
           {
             x: xPoint[3],
@@ -200,7 +201,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 480,
             rectText: 480,
             ratio: [480, 2391],
-            descriptionMessage: 'same story, tolday also air quality decreases. a bad day in texas',
+            descriptionMessage: 'same story, today also air quality decreases. a bad day in Texas',
           },
           {
             x: xPoint[2],
@@ -208,7 +209,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 491,
             rectText: 491,
             ratio: [491, 2462],
-            descriptionMessage: 'Day by Day 100 units are increasing in air quality',
+            descriptionMessage: 'Day by day, 100 units are increasing in air quality',
           },
           {
             x: xPoint[1],
@@ -216,8 +217,8 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 433,
             rectText: 433,
             ratio: [433, 2486],
-            descriptionMessage: `They say good things stay for shor time, today
-            this saying becaome reality, new york has witnessed nearly 300% bad air quality`,
+            descriptionMessage: `They say good things stay for a short time, today
+            this saying became reality. New York has witnessed nearly 300% bad air quality`,
           },
           {
             x: xPoint[5],
@@ -225,8 +226,8 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 473,
             rectText: 473,
             ratio: [473, 2486],
-            descriptionMessage: `Today is the same fate as the 2nd day. still air quality
-            stay's above 400`,
+            descriptionMessage: `Today is the same fate as the 2nd day. still, air quality
+            stays above 400`,
           },
         ],
       },
@@ -240,7 +241,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 600,
             rectText: 600,
             ratio: [600, 2043],
-            descriptionMessage: 'looks like the god has cursed us with the poision air. worst air quality index',
+            descriptionMessage: 'looks like god has cursed us with poisonous air. worst air quality index',
           },
           {
             x: xPoint[5],
@@ -248,8 +249,8 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 536,
             rectText: 536,
             ratio: [536, 2479],
-            descriptionMessage: `shhh!, all the hopes are washed away in the rain yesterday,
-            again hike of 400% in air quality`,
+            descriptionMessage: `shh!, all the hopes were washed away in the rain yesterday,
+            with another hike of 400% in air quality`,
           },
           {
             x: xPoint[3],
@@ -257,7 +258,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 520,
             rectText: 520,
             ratio: [520, 2479],
-            descriptionMessage: 'Alaska planning to bulild the air purifier to control in the air quality',
+            descriptionMessage: 'Alaska planning to build air purifier to control the air quality',
           },
           {
             x: xPoint[4],
@@ -265,7 +266,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 525,
             rectText: 525,
             ratio: [525, 2391],
-            descriptionMessage: 'air decreases badly today due to farmer bufing the harvest',
+            descriptionMessage: 'air worsens badly today due to farmers burning the harvest',
           },
           {
             x: xPoint[6],
@@ -273,8 +274,8 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 560,
             rectText: 560,
             ratio: [560, 2462],
-            descriptionMessage: `Due to industiral pollution and the
-            burning of harvest in the alaska, resulted to bad air quality in the washington DC`,
+            descriptionMessage: `Due to industrial pollution and the
+            burning of harvest, it resulted in bad air quality in Washington DC`,
           },
           {
             x: xPoint[3],
@@ -291,7 +292,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             value: 590,
             rectText: 590,
             ratio: [590, 2486],
-            descriptionMessage: `finally the Weekend end's with very bad air quality in the new your city`,
+            descriptionMessage: `finally, the weekend ends with very bad air quality in New York City`,
           },
         ],
       },
@@ -316,7 +317,7 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
           max={1000}
           id="changeHeight_Example"
           onChange={this._onHeightChange}
-          aria-valuetext={`ChangeHeightslider${this.state.height}`}
+          aria-valuetext={`ChangeHeightSlider${this.state.height}`}
         />
         <p>Heat map explaining the Air Quality Index</p>
         <div style={rootStyle}>
@@ -325,13 +326,18 @@ export class HeatMapChartBasicExample extends React.Component<{}, IHeatMapChartB
             chartTitle="Heat map chart basic example"
             data={HeatMapData}
             // eslint-disable-next-line react/jsx-no-bind
-            yAxisStringFormatter={(point: string) => ypointMapping[point as string]}
+            yAxisStringFormatter={(point: string) => yPointMapping[point as string]}
             xAxisNumberFormatString=".7s"
             yAxisNumberFormatString=".3s"
             width={this.state.width}
             height={this.state.height}
-            domainValuesForColorScale={[0, 600]}
-            rangeValuesForColorScale={['lightblue', 'darkblue']}
+            domainValuesForColorScale={[0, 200, 400, 600]}
+            rangeValuesForColorScale={[
+              getColorFromToken(DataVizPalette.success),
+              getColorFromToken(DataVizPalette.warning),
+              getColorFromToken(DataVizPalette.error),
+              getColorFromToken(DataVizPalette.highError),
+            ]}
             enableReflow={true}
           />
         </div>

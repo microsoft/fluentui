@@ -32,8 +32,15 @@ export {
 
 export type { FlatTreeSlots, FlatTreeProps, FlatTreeState } from './FlatTree';
 
-export { useTreeContext_unstable, useTreeItemContext_unstable, TreeItemProvider, TreeProvider } from './contexts';
-export type { TreeContextValue, TreeItemContextValue } from './contexts';
+export { TreeProvider } from './components/TreeProvider';
+
+export {
+  useTreeContext_unstable,
+  useTreeItemContext_unstable,
+  useSubtreeContext_unstable,
+  TreeItemProvider,
+} from './contexts';
+export type { TreeContextValue, SubtreeContextValue, TreeItemContextValue } from './contexts';
 
 export { treeItemLevelToken } from './utils/tokens';
 
@@ -57,6 +64,7 @@ export type {
   TreeItemProps,
   TreeItemState,
   TreeItemSlots,
+  TreeItemType,
   TreeItemValue,
   TreeItemOpenChangeData,
   TreeItemOpenChangeEvent,
