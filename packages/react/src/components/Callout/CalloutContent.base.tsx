@@ -20,7 +20,7 @@ import type { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } 
 import type { Point, IRectangle } from '../../Utilities';
 import type { ICalloutPositionedInfo, IPositionProps, IPosition } from '../../Positioning';
 import type { Target } from '@fluentui/react-hooks';
-import { calculateGapSpace, getRectangleFromElement } from '../../utilities/positioning/positioning';
+import { calculateGapSpace, getTargetRect } from '../../utilities/positioning/positioning';
 
 const COMPONENT_NAME = 'CalloutContentBase';
 
@@ -132,12 +132,12 @@ function useMaxHeight(
 ) {
   const [maxHeight, setMaxHeight] = React.useState<number | undefined>();
   const { top, bottom } = positions?.elementPosition ?? {};
-  const targetRect = targetRef?.current ? getRectangleFromElement(targetRef.current as Element) : undefined;
 
   React.useEffect(() => {
     const { top: topBounds } = getBounds() ?? {};
     let { bottom: bottomBounds } = getBounds() ?? {};
     let calculatedHeight: number | undefined;
+    const targetRect = targetRef?.current ? getTargetRect(getBounds(), targetRef.current) : undefined;
 
     // If aligned to top edge of target, update bottom bounds to the top of the target (accounting for gap space and beak)
     if (positions?.targetEdge === RectangleEdge.top && targetRect?.top) {
@@ -170,7 +170,7 @@ function useMaxHeight(
     hidden,
     positions,
     top,
-    targetRect,
+    targetRef?.current,
     gapSpace,
     beakWidth,
     isBeakVisible,
@@ -193,7 +193,7 @@ function usePositions(
   const positionAttempts = React.useRef(0);
   const previousTarget = React.useRef<Target>();
   const async = useAsync();
-  const { hidden, target, finalHeight, calloutMaxHeight, onPositioned, directionalHint } = props;
+  const { hidden, target, finalHeight, calloutMaxHeight, onPositioned, directionalHint, style, hideOverflow } = props;
 
   React.useEffect(() => {
     if (!hidden) {
@@ -213,11 +213,14 @@ function usePositions(
 
           const previousPositions = previousTarget.current === target ? positions : undefined;
 
+          const isOverflowYHidden = hideOverflow || style?.overflowY === 'hidden' || style?.overflowY === 'clip';
+          const shouldScroll = !isOverflowYHidden;
+
           // If there is a finalHeight given then we assume that the user knows and will handle
           // additional positioning adjustments so we should call positionCard
           const newPositions: ICalloutPositionedInfo = finalHeight
             ? positionCard(currentProps, hostElement.current, dupeCalloutElement, previousPositions)
-            : positionCallout(currentProps, hostElement.current, dupeCalloutElement, previousPositions);
+            : positionCallout(currentProps, hostElement.current, dupeCalloutElement, previousPositions, shouldScroll);
 
           // clean up duplicate calloutElement
           calloutElement.parentElement?.removeChild(dupeCalloutElement);
@@ -265,6 +268,8 @@ function usePositions(
     positions,
     props,
     target,
+    style?.overflowY,
+    hideOverflow,
   ]);
 
   return positions;

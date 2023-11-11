@@ -235,6 +235,7 @@ function _flipToFit(
   target: Rectangle,
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
+  shouldScroll: boolean,
   gap: number = 0,
 ): IElementPosition {
   const directions: RectangleEdge[] = [
@@ -267,7 +268,7 @@ function _flipToFit(
         targetEdge: currentEdge,
         alignmentEdge: currentAlignment,
       };
-    } else if (_canScrollResizeToFitEdge(target, bounding, currentEdge)) {
+    } else if (shouldScroll && _canScrollResizeToFitEdge(target, bounding, currentEdge)) {
       // Scrolling will allow edge to fit, move the estimate currentEdge inside the bounds and return
       switch (currentEdge) {
         case RectangleEdge.bottom:
@@ -282,6 +283,7 @@ function _flipToFit(
         elementRectangle: currentEstimate,
         targetEdge: currentEdge,
         alignmentEdge: currentAlignment,
+        forcedInBounds: true,
       };
     } else {
       // update least-bad edges
@@ -355,6 +357,7 @@ function _adjustFitWithinBounds(
   target: Rectangle,
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
+  shouldScroll: boolean,
   gap: number = 0,
   directionalHintFixed?: boolean,
   coverTarget?: boolean,
@@ -367,7 +370,7 @@ function _adjustFitWithinBounds(
   };
 
   if (!directionalHintFixed && !coverTarget) {
-    elementEstimate = _flipToFit(element, target, bounding, positionData, gap);
+    elementEstimate = _flipToFit(element, target, bounding, positionData, shouldScroll, gap);
   }
   const outOfBounds = _getOutOfBoundsEdges(elementEstimate.elementRectangle, bounding);
   // if directionalHintFixed is specified, we need to force the target edge to not change
@@ -661,6 +664,7 @@ function _positionElementWithinBounds(
   bounding: Rectangle,
   positionData: IPositionDirectionalHintData,
   gap: number,
+  shouldScroll: boolean,
   directionalHintFixed?: boolean,
   coverTarget?: boolean,
 ): IElementPosition {
@@ -683,6 +687,7 @@ function _positionElementWithinBounds(
       target,
       bounding,
       positionData,
+      shouldScroll,
       gap,
       directionalHintFixed,
       coverTarget,
@@ -848,6 +853,7 @@ function _positionElementRelative(
   elementToPosition: HTMLElement,
   boundingRect: Rectangle,
   previousPositions?: IPositionedData,
+  shouldScroll = false,
 ): IElementPositionInfo {
   const gap: number = props.gapSpace ? props.gapSpace : 0;
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
@@ -864,6 +870,7 @@ function _positionElementRelative(
     boundingRect,
     positionData,
     gap,
+    shouldScroll,
     props.directionalHintFixed,
     props.coverTarget,
   );
@@ -925,6 +932,7 @@ function _positionCallout(
   hostElement: HTMLElement,
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
+  shouldScroll = false,
   doNotFinalizeReturnEdge?: boolean,
 ): ICalloutPositionedInfo {
   const beakWidth: number = props.isBeakVisible ? props.beakWidth || 0 : 0;
@@ -934,11 +942,13 @@ function _positionCallout(
   const boundingRect: Rectangle = props.bounds
     ? _getRectangleFromIRect(props.bounds)
     : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+
   const positionedElement: IElementPositionInfo = _positionElementRelative(
     positionProps,
     callout,
     boundingRect,
     previousPositions,
+    shouldScroll,
   );
 
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
@@ -960,7 +970,7 @@ function _positionCard(
   callout: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
 ): ICalloutPositionedInfo {
-  return _positionCallout(props, hostElement, callout, previousPositions, true);
+  return _positionCallout(props, hostElement, callout, previousPositions, false, true);
 }
 // END PRIVATE FUNCTIONS
 
@@ -993,8 +1003,9 @@ export function positionCallout(
   hostElement: HTMLElement,
   elementToPosition: HTMLElement,
   previousPositions?: ICalloutPositionedInfo,
+  shouldScroll?: boolean,
 ): ICalloutPositionedInfo {
-  return _positionCallout(props, hostElement, elementToPosition, previousPositions);
+  return _positionCallout(props, hostElement, elementToPosition, previousPositions, shouldScroll);
 }
 
 export function positionCard(
@@ -1128,4 +1139,11 @@ export function calculateGapSpace(
   gapSpace: number | undefined,
 ): number {
   return _calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
+}
+
+export function getTargetRect(
+  bounds: Rectangle,
+  target: Element | MouseEvent | Point | Rectangle | undefined,
+): Rectangle {
+  return _getTargetRect(bounds, target);
 }
