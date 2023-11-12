@@ -27,7 +27,6 @@ export interface IRefArrayData {
   legendText?: string;
   refElement?: SVGGElement;
 }
-
 export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
@@ -59,7 +58,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _isRTL: boolean = getRTL();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
   private _emptyChartId: string;
-  private _barId: string;
   private _barIdPlaceholderPartToWhole: string;
   private _barIdEmpty: string;
 
@@ -83,7 +81,6 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._calloutId = getId('callout');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
     this._emptyChartId = getId('_MSBC_empty');
-    this._barId = getId('_MSBC_rect_');
     this._barIdPlaceholderPartToWhole = getId('_MSBC_rect_partToWhole_');
     this._barIdEmpty = getId('_MSBC_rect_empty');
   }
@@ -124,6 +121,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
           this.props.hideRatio![index],
           this.props.hideDenominator![index],
           this.props.href,
+          index,
         );
         return (
           <div key={index} id={`_MSBC_bar-${index}`}>
@@ -186,6 +184,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideRatio: boolean,
     hideDenominator: boolean,
     href?: string,
+    barId?: number,
   ): JSX.Element {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -295,9 +294,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            id={`${this._barId + Math.floor(Math.random() * 100) + Math.floor(Math.random() * 10)}-${
-              index + Math.floor(Math.random() * 10)
-            }`}
+            id={`_MSBC_rect_${barId}-${index}`}
             x={`${
               this._isRTL
                 ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
@@ -334,10 +331,10 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
                 ? 100 - (startingPoint[startingPoint.length - 1] || 0) - value - totalMarginPercent
                 : (startingPoint[startingPoint.length - 1] || 0) + value + totalMarginPercent
             }%`}
-            textAnchor={this._isRTL ? 'end' : 'start'}
+            textAnchor={'start'}
             y={barHeight / 2}
             dominantBaseline="central"
-            transform={`translate(${this._isRTL ? (barLabel < 100 ? -18 : -24) : 4})`}
+            transform={`translate(${this._isRTL ? -4 : 4})`}
             className={this._classNames.barLabel}
             aria-label={`Total: ${barLabel}`}
             role="img"
