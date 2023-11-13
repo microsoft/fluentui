@@ -1,5 +1,10 @@
 import * as React from 'react';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbButton,
+  BreadcrumbDivider,
+  partitionBreadcrumbItems,
   ButtonProps,
   makeStyles,
   shorthands,
@@ -23,13 +28,6 @@ import {
   MoreHorizontalFilled,
   bundleIcon,
 } from '@fluentui/react-icons';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbButton,
-  BreadcrumbDivider,
-  partitionBreadcrumbItems,
-} from '@fluentui/react-components';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);

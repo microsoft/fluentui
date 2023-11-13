@@ -1,5 +1,13 @@
 import * as React from 'react';
 import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbButton,
+  BreadcrumbDivider,
+  partitionBreadcrumbItems,
+  truncateBreadcrumbLongName,
+  truncateBreadcrumLongTooltip,
+  isTruncatableBreadcrumbContent,
   makeStyles,
   shorthands,
   Tooltip,
@@ -13,16 +21,6 @@ import {
   Button,
 } from '@fluentui/react-components';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbButton,
-  BreadcrumbDivider,
-  partitionBreadcrumbItems,
-  truncateBreadcrumbLongName,
-  truncateBreadcrumLongTooltip,
-  isTruncatableBreadcrumbContent,
-} from '@fluentui/react-components';
 import type { PartitionBreadcrumbItems } from '@fluentui/react-components';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
