@@ -116,6 +116,7 @@ export {
   useIsSSR,
   useMergedRefs,
   useScrollbarWidth,
+  useSelection,
 } from '@fluentui/react-utilities';
 export type {
   ComponentProps,
@@ -129,6 +130,12 @@ export type {
   SlotClassNames,
   SlotPropsRecord,
   SlotRenderFunction,
+  OnSelectionChangeCallback,
+  OnSelectionChangeData,
+  SelectionHookParams,
+  SelectionItemId,
+  SelectionMethods,
+  SelectionMode,
 } from '@fluentui/react-utilities';
 
 // Components
@@ -884,6 +891,7 @@ export {
   DATA_OVERFLOW_MENU,
   DATA_OVERFLOW_ITEM,
   DATA_OVERFLOW_DIVIDER,
+  useOverflowVisibility,
 } from '@fluentui/react-overflow';
 
 export type { OverflowProps, OverflowItemProps } from '@fluentui/react-overflow';

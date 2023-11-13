@@ -504,6 +504,8 @@ import { MessageBarTitleProps } from '@fluentui/react-message-bar';
 import { MessageBarTitleSlots } from '@fluentui/react-message-bar';
 import { MessageBarTitleState } from '@fluentui/react-message-bar';
 import { OnOpenChangeData } from '@fluentui/react-popover';
+import { OnSelectionChangeCallback } from '@fluentui/react-utilities';
+import { OnSelectionChangeData } from '@fluentui/react-utilities';
 import { OnVisibleChangeData } from '@fluentui/react-tooltip';
 import { OpenPopoverEvents } from '@fluentui/react-popover';
 import { Option as Option_2 } from '@fluentui/react-combobox';
@@ -725,6 +727,10 @@ import { ResolveShorthandOptions } from '@fluentui/react-utilities';
 import { Select } from '@fluentui/react-select';
 import { SelectableHandler } from '@fluentui/react-menu';
 import { selectClassNames } from '@fluentui/react-select';
+import { SelectionHookParams } from '@fluentui/react-utilities';
+import { SelectionItemId } from '@fluentui/react-utilities';
+import { SelectionMethods } from '@fluentui/react-utilities';
+import { SelectionMode as SelectionMode_2 } from '@fluentui/react-utilities';
 import { SelectOnChangeData } from '@fluentui/react-select';
 import { SelectProps } from '@fluentui/react-select';
 import { SelectSlots } from '@fluentui/react-select';
@@ -1228,6 +1234,7 @@ import { useOptionGroupStyles_unstable } from '@fluentui/react-combobox';
 import { useOptionStyles_unstable } from '@fluentui/react-combobox';
 import { useOverflowCount } from '@fluentui/react-overflow';
 import { useOverflowMenu } from '@fluentui/react-overflow';
+import { useOverflowVisibility } from '@fluentui/react-overflow';
 import { useOverlayDrawer_unstable } from '@fluentui/react-drawer';
 import { useOverlayDrawerStyles_unstable } from '@fluentui/react-drawer';
 import { usePersona_unstable } from '@fluentui/react-persona';
@@ -1254,6 +1261,7 @@ import { useRestoreFocusSource } from '@fluentui/react-tabster';
 import { useRestoreFocusTarget } from '@fluentui/react-tabster';
 import { useScrollbarWidth } from '@fluentui/react-utilities';
 import { useSelect_unstable } from '@fluentui/react-select';
+import { useSelection } from '@fluentui/react-utilities';
 import { useSelectStyles_unstable } from '@fluentui/react-select';
 import { useSkeleton_unstable } from '@fluentui/react-skeleton';
 import { useSkeletonContext } from '@fluentui/react-skeleton';
@@ -2363,6 +2371,10 @@ export { MessageBarTitleState }
 
 export { OnOpenChangeData }
 
+export { OnSelectionChangeCallback }
+
+export { OnSelectionChangeData }
+
 export { OnVisibleChangeData }
 
 export { OpenPopoverEvents }
@@ -2804,6 +2816,14 @@ export { Select }
 export { SelectableHandler }
 
 export { selectClassNames }
+
+export { SelectionHookParams }
+
+export { SelectionItemId }
+
+export { SelectionMethods }
+
+export { SelectionMode_2 as SelectionMode }
 
 export { SelectOnChangeData }
 
@@ -3811,6 +3831,8 @@ export { useOverflowCount }
 
 export { useOverflowMenu }
 
+export { useOverflowVisibility }
+
 export { useOverlayDrawer_unstable }
 
 export { useOverlayDrawerStyles_unstable }
@@ -3862,6 +3884,8 @@ export { useRestoreFocusTarget }
 export { useScrollbarWidth }
 
 export { useSelect_unstable }
+
+export { useSelection }
 
 export { useSelectStyles_unstable }
 

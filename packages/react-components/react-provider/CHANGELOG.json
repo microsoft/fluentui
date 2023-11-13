@@ -2,6 +2,65 @@
   "name": "@fluentui/react-provider",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:41 GMT",
+      "tag": "@fluentui/react-provider_v9.12.0",
+      "version": "9.12.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "9343f295b18084e44f6751081907aa7e9987b767",
+            "comment": "feat: Add API for List"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-shared-contexts to v9.12.0",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-tabster to v9.14.4",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-theme to v9.1.16",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-utilities to v9.15.2",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-provider",
+            "comment": "Bump @fluentui/react-jsx-runtime to v9.0.19",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ],
+        "patch": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "jirivyhnalek@microsoft.com",
+            "package": "@fluentui/react-provider",
+            "commit": "9fecb0701b66d4256d181df9a9e8c463ab759c60",
+            "comment": "fix: useFluentProvider now returns the same empty object every time, fixing unnecessary re-renders"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 01 Nov 2023 12:55:59 GMT",
       "tag": "@fluentui/react-provider_v9.11.1",
       "version": "9.11.1",

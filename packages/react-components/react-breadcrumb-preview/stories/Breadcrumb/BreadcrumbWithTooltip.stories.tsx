@@ -102,11 +102,11 @@ function renderItem(entry: Item, isLastItem: boolean) {
   return (
     <React.Fragment key={`item-${entry.key}`}>
       {isTruncatableBreadcrumbContent(entry.item, 30) ? (
-        <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
-          <BreadcrumbItem>
+        <BreadcrumbItem>
+          <Tooltip withArrow content={truncateBreadcrumLongTooltip(entry.item)} relationship="label">
             <BreadcrumbButton current={isLastItem}>{truncateBreadcrumbLongName(entry.item)}</BreadcrumbButton>
-          </BreadcrumbItem>
-        </Tooltip>
+          </Tooltip>
+        </BreadcrumbItem>
       ) : (
         <BreadcrumbItem>
           <BreadcrumbButton current={isLastItem}>{entry.item}</BreadcrumbButton>
@@ -220,17 +220,4 @@ export const BreadcrumbWithTooltip = () => {
       </Breadcrumb>
     </>
   );
-};
-
-BreadcrumbWithTooltip.parameters = {
-  docs: {
-    description: {
-      story: [
-        'Interactive items have tooltips when their names are longer than 30 symbols.',
-        'Tooltips are truncated when its content is longer than 80 symbols.',
-        'Non-interactive Breadcrumb runs the entire available space where the control is placed.',
-        'If the space is limited, the string will truncate the end of it.',
-      ].join('\n\n'),
-    },
-  },
 };

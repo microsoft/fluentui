@@ -2,6 +2,21 @@
   "name": "@fluentui/react-charting",
   "entries": [
     {
+      "date": "Fri, 10 Nov 2023 07:26:21 GMT",
+      "tag": "@fluentui/react-charting_v5.18.17",
+      "version": "5.18.17",
+      "comments": {
+        "patch": [
+          {
+            "author": "gautam33776@gmail.com",
+            "package": "@fluentui/react-charting",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629",
+            "comment": "[Bug]: React Charting Heat Map Chart tooltip appears above the wrong cell fixed"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 07:29:20 GMT",
       "tag": "@fluentui/react-charting_v5.18.16",
       "version": "5.18.16",

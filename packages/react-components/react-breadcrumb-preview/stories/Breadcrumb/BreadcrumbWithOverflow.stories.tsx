@@ -232,18 +232,3 @@ const BreadcrumbOverflowExample = () => {
 export const BreadcrumbWithOverflow = () => {
   return <BreadcrumbOverflowExample />;
 };
-
-BreadcrumbWithOverflow.parameters = {
-  docs: {
-    description: {
-      story: [
-        'The maximum number of items in a breadcrumb can be customized. We recommend a maximum of 6 items or fewer.',
-        'Interactive Breadcrumb: When the maximum number is exceeded, items in the middle auto-collapse into an overflow menu.',
-        'Tooltip should be added to the overflow menu.',
-        '\nThe first and last items should always appear  in the breadcrumb. Breadcrumbs should never wrap.',
-        'Non-interactive Breadcrumb runs the entire available space where the control is placed.',
-        'If the space is limited, the string will truncate the end of it.',
-      ].join('\n'),
-    },
-  },
-};
