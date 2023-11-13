@@ -297,7 +297,7 @@ function assertProject(tree: Tree, options: NormalizedSchema) {
   const pkgJson = readJson<PackageJson>(tree, options.paths.packageJson);
 
   const isVnextPackage = options.projectConfig.tags?.includes('vNext');
-  const isPreviewPackage = /* pkgJson.version.startsWith('0') &&  */ pkgJson.name.endsWith('-preview');
+  const isPreviewPackage = pkgJson.version.startsWith('0') && pkgJson.name.endsWith('-preview');
   const isPreparedForStableAlready = pkgJson.version === '9.0.0-alpha.0';
 
   if (!isVnextPackage) {
