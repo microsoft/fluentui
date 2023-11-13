@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "Upgrading d3-scale dependent libraries",
+  "packageName": "@fluentui/react-charting",
+  "email": "ankityadav@microsoft.com",
+  "dependentChangeType": "patch"
+}
