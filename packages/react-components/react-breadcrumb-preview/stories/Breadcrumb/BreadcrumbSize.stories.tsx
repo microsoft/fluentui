@@ -62,11 +62,3 @@ export const BreadcrumbSize = () => {
     </>
   );
 };
-
-BreadcrumbSize.parameters = {
-  docs: {
-    description: {
-      story: 'Breadcrumb `size` can be `"small"`, `"medium"` (default), or `"large"`. ',
-    },
-  },
-};

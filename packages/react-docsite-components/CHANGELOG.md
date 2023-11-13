@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-docsite-components
 
-This log was last generated on Thu, 09 Nov 2023 07:29:20 GMT and should not be manually modified.
+This log was last generated on Fri, 10 Nov 2023 07:26:21 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [8.13.30](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.30)
+
+Fri, 10 Nov 2023 07:26:21 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-docsite-components_v8.13.29..@fluentui/react-docsite-components_v8.13.30)
+
+### Patches
+
+- Bump @fluentui/react-monaco-editor to v1.7.148 ([PR #29807](https://github.com/microsoft/fluentui/pull/29807) by beachball)
 
 ## [8.13.29](https://github.com/microsoft/fluentui/tree/@fluentui/react-docsite-components_v8.13.29)
 
