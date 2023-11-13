@@ -126,7 +126,14 @@ export class SparklineBase extends React.Component<ISparklineProps, ISparklineSt
           )}
           {this.props.showLegend && this.props.data!.lineChartData![0].legend ? (
             <svg width={this.state._valueTextWidth} height={this.state._height} data-is-focusable={true}>
-              <text x="0%" dx={this._isRTL ? 28 : 8} y="100%" dy={-5} className={classNames.valueText}>
+              <text
+                x="0%"
+                textAnchor={this._isRTL ? 'end' : 'start'}
+                dx={8}
+                y="100%"
+                dy={-5}
+                className={classNames.valueText}
+              >
                 {this.props.data!.lineChartData![0].legend!}
               </text>
             </svg>
