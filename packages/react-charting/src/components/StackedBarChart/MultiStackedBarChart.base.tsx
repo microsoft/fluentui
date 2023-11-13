@@ -58,6 +58,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
   private _isRTL: boolean = getRTL();
   private barChartSvgRef: React.RefObject<SVGSVGElement>;
   private _emptyChartId: string;
+  private _barId: string;
   private _barIdPlaceholderPartToWhole: string;
   private _barIdEmpty: string;
 
@@ -81,6 +82,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     this._calloutId = getId('callout');
     this.barChartSvgRef = React.createRef<SVGSVGElement>();
     this._emptyChartId = getId('_MSBC_empty');
+    this._barId = getId('_MSBC_rect_');
     this._barIdPlaceholderPartToWhole = getId('_MSBC_rect_partToWhole_');
     this._barIdEmpty = getId('_MSBC_rect_empty');
   }
@@ -184,7 +186,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
     hideRatio: boolean,
     hideDenominator: boolean,
     href?: string,
-    barId?: number,
+    barNo?: number,
   ): JSX.Element {
     const noOfBars =
       data.chartData?.reduce((count: number, point: IChartDataPoint) => (count += (point.data || 0) > 0 ? 1 : 0), 0) ||
@@ -294,7 +296,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            id={`_MSBC_rect_${barId}-${index}`}
+            id={`${this._barId}${barNo}-${index}`}
             x={`${
               this._isRTL
                 ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index
