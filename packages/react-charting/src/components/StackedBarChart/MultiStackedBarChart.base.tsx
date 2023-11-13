@@ -27,6 +27,7 @@ export interface IRefArrayData {
   legendText?: string;
   refElement?: SVGGElement;
 }
+
 export interface IMultiStackedBarChartState {
   isCalloutVisible: boolean;
   refArray: IRefArrayData[];
