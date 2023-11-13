@@ -22,8 +22,8 @@ import {
   truncateBreadcrumbLongName,
   truncateBreadcrumLongTooltip,
   isTruncatableBreadcrumbContent,
-} from '@fluentui/react-breadcrumb-preview';
-import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb-preview';
+} from '@fluentui/react-components';
+import type { PartitionBreadcrumbItems } from '@fluentui/react-components';
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
 

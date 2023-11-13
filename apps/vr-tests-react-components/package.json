@@ -23,7 +23,6 @@
     "@fluentui/react-accordion": "*",
     "@fluentui/react-avatar": "*",
     "@fluentui/react-badge": "*",
-    "@fluentui/react-breadcrumb-preview": "*",
     "@fluentui/react-button": "*",
     "@fluentui/react-calendar-compat": "*",
     "@fluentui/react-card": "*",
@@ -74,6 +73,7 @@
     "@griffel/react": "^1.5.14",
     "react": "17.0.2",
     "react-dom": "17.0.2",
-    "tslib": "^2.1.0"
+    "tslib": "^2.1.0",
+    "@fluentui/react-breadcrumb": ">=9.0.0-alpha"
   }
 }

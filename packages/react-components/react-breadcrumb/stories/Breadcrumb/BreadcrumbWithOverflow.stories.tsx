@@ -29,8 +29,8 @@ import {
   BreadcrumbButton,
   BreadcrumbDivider,
   partitionBreadcrumbItems,
-} from '@fluentui/react-breadcrumb-preview';
-import type { PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb-preview';
+} from '@fluentui/react-components';
+import type { PartitionBreadcrumbItems } from '@fluentui/react-components';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
