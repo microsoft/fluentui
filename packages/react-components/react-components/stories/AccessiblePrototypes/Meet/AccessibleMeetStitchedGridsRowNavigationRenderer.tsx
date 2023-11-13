@@ -44,7 +44,7 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
 
   const handleRowClick = React.useCallback(
     (event: React.MouseEvent) => {
-      const element = event.target as HTMLElement;
+      const element = event.currentTarget as HTMLElement;
       const selectedRowId = element.id;
       const category = getCategoryById(selectedRowId);
       changeRecentCategoryExpandedState(category, !category?.expanded);
@@ -113,7 +113,7 @@ export const RecentMeetingsStitchedTreeGridRowNavigationRenderer: React.FC<
               aria-level={1}
               aria-posinset={categoryIndex + 1}
               aria-setsize={recentCategories.length}
-              // aria-expanded={category.expanded}
+              aria-expanded={category.expanded}
               {...tableRowTabsterAttribute}
             >
               <TableCell role="gridcell" tabIndex={0}>

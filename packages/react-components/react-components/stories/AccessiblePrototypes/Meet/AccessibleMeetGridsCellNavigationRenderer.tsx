@@ -156,12 +156,7 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
         <Table key={category.id} role="presentation" noNativeElements>
           <TableBody role="presentation">
             <TableRow id={category.id} role="row" aria-level={1}>
-              <TableCell
-                role="gridcell"
-                tabIndex={0}
-                colSpan={4}
-                // aria-expanded={category.expanded}
-              >
+              <TableCell role="gridcell" tabIndex={0} aria-colSpan={4} aria-expanded={category.expanded}>
                 {category.title}
               </TableCell>
             </TableRow>
