@@ -24,18 +24,6 @@ const useStyles = makeStyles({
   root: {
     position: 'relative',
   },
-  small: {
-    width: indicatorSizes.small,
-    height: indicatorSizes.small,
-  },
-  medium: {
-    width: indicatorSizes.medium,
-    height: indicatorSizes.medium,
-  },
-  large: {
-    width: indicatorSizes.large,
-    height: indicatorSizes.large,
-  },
 });
 
 const useInputBaseClassName = makeResetStyles({
@@ -60,13 +48,8 @@ const useInputStyles = makeStyles({
 });
 
 const useIndicatorBaseClassName = makeResetStyles({
-  boxSizing: 'border-box',
-  flexShrink: 0,
-
   display: 'inline-block',
-  alignItems: 'center',
   color: tokens.colorNeutralForeground1,
-  justifyContent: 'center',
   overflow: 'hidden',
   fill: 'currentColor',
   pointerEvents: 'none',
@@ -97,7 +80,7 @@ export const useRatingItemStyles_unstable = (state: RatingItemState): RatingItem
   const indicatorBaseClassName = useIndicatorBaseClassName();
   const indicatorStyles = useIndicatorStyles();
 
-  state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, styles[size], state.root.className);
+  state.root.className = mergeClasses(ratingItemClassNames.root, styles.root, state.root.className);
 
   if (state.halfValueInput) {
     state.halfValueInput.className = mergeClasses(

@@ -11,24 +11,38 @@ export const ratingClassNames: SlotClassNames<RatingSlots> = {
   divider: 'fui-Rating__divider',
 };
 
+const labelSizes = {
+  small: '12px',
+  medium: '16px',
+  large: '20px',
+};
+
 /**
  * Styles for the root slot
  */
 
 const useStyles = makeResetStyles({
-  whiteSpace: 'nowrap',
+  display: 'flex',
   ...createFocusOutlineStyle({ style: {}, selector: 'focus' }),
-  '& > label': {},
 });
 
 const useLabelStyles = makeResetStyles({
   verticalAlign: 'top',
-  ...shorthands.margin('0px', '3px'),
+  ...shorthands.margin('0px', '2px'),
 });
 
 const useRatingLabelStyles = makeStyles({
   root: {
     fontWeight: tokens.fontWeightSemibold,
+  },
+  small: {
+    fontSize: labelSizes.small,
+  },
+  medium: {
+    fontSize: labelSizes.medium,
+  },
+  large: {
+    fontSize: labelSizes.large,
   },
 });
 
@@ -36,13 +50,34 @@ const useRatingCountLabelStyles = makeStyles({
   root: {
     fontWeight: tokens.fontWeightMedium,
   },
+  small: {
+    fontSize: labelSizes.small,
+  },
+  medium: {
+    fontSize: labelSizes.medium,
+  },
+  large: {
+    fontSize: labelSizes.large,
+  },
 });
 
-const useDividerlStyles = makeStyles({
+const useDividerStyles = makeStyles({
   root: {
     verticalAlign: 'top',
-    ...shorthands.margin('0px', '-2px'),
+    ...shorthands.margin('0px', '1px', '0px', '1px'),
     fontWeight: tokens.fontWeightMedium,
+  },
+  small: {
+    fontSize: labelSizes.small,
+  },
+  medium: {
+    fontSize: labelSizes.medium,
+  },
+  large: {
+    fontSize: labelSizes.large,
+  },
+  hidden: {
+    display: 'none',
   },
 });
 
@@ -54,13 +89,14 @@ export const useRatingStyles_unstable = (state: RatingState): RatingState => {
   const labelStyles = useLabelStyles();
   const ratingCountStyles = useRatingCountLabelStyles();
   const ratingLabelStyles = useRatingLabelStyles();
-  const dividerStyles = useDividerlStyles();
+  const dividerStyles = useDividerStyles();
   state.root.className = mergeClasses(ratingClassNames.root, styles, state.root.className);
   if (state.ratingLabel) {
     state.ratingLabel.className = mergeClasses(
       ratingClassNames.ratingCountLabel,
       labelStyles,
       ratingLabelStyles.root,
+      ratingLabelStyles[state.size],
       state.ratingLabel.className,
     );
   }
@@ -69,11 +105,19 @@ export const useRatingStyles_unstable = (state: RatingState): RatingState => {
       ratingClassNames.ratingCountLabel,
       labelStyles,
       ratingCountStyles.root,
+      ratingCountStyles[state.size],
       state.ratingCountLabel.className,
     );
   }
   if (state.divider) {
-    state.divider.className = mergeClasses(ratingClassNames.divider, dividerStyles.root, state.divider.className);
+    state.divider.className = mergeClasses(
+      ratingClassNames.divider,
+      dividerStyles.root,
+      dividerStyles[state.size],
+      !state.countLabel && dividerStyles.hidden,
+      !state.valueLabel && dividerStyles.hidden,
+      state.divider.className,
+    );
   }
 
   return state;

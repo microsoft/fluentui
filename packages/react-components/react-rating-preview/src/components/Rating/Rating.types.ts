@@ -21,7 +21,7 @@ export type RatingProps = ComponentProps<RatingSlots> & {
   /**
    * Sets the value of the total rating counts
    */
-  countLabel?: number;
+  countLabel?: string;
   /**
    * Default value of the Rating
    */
@@ -55,14 +55,6 @@ export type RatingProps = ComponentProps<RatingSlots> & {
    */
   shape?: 'star' | 'circle' | 'square';
   /**
-   * Shows the tally of the ratings
-   */
-  showRatingCount?: boolean;
-  /**
-   * Shows the rating string
-   */
-  showRatingString?: boolean;
-  /**
    * Sets the size of the Rating star in pixels
    * @default medium
    */
@@ -94,14 +86,14 @@ export type RatingState = ComponentState<RatingSlots> &
   Required<Pick<RatingProps, 'size'>> &
   Pick<
     RatingProps,
-    'countLabel' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value' | 'valueLabel'
+    'compact' | 'countLabel' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'value' | 'valueLabel'
   > & {
     hoveredValue?: number | undefined;
   };
 
 export type RatingContextValue = Pick<
   RatingState,
-  'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'size' | 'value' | 'hoveredValue'
+  'compact' | 'defaultValue' | 'name' | 'precision' | 'readOnly' | 'shape' | 'size' | 'value' | 'hoveredValue'
 >;
 
 export type RatingContextValues = {

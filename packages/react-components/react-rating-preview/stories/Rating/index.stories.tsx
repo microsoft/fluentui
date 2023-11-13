@@ -4,6 +4,11 @@ import descriptionMd from './RatingDescription.md';
 import bestPracticesMd from './RatingBestPractices.md';
 
 export { Default } from './RatingDefault.stories';
+export { Compact } from './RatingCompact.stories';
+export { Max } from './RatingMax.stories';
+export { Precision } from './RatingPrecision.stories';
+export { ReadOnly } from './RatingReadOnly.stories';
+export { Size } from './RatingSize.stories';
 
 export default {
   title: 'Preview Components/Rating',

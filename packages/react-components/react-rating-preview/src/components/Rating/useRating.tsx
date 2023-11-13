@@ -24,7 +24,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   const generatedName = useId('rating-');
   const {
     compact = false,
-    countLabel,
+    countLabel = undefined,
     max = 5,
     name = generatedName,
     onChange,
@@ -32,7 +32,7 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
     readOnly,
     shape = 'star',
     size = 'medium',
-    valueLabel,
+    valueLabel = undefined,
   } = props;
 
   const ratingId = useId('ratingLabel');
@@ -59,12 +59,15 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
   }, [compact, max]);
 
   const state: RatingState = {
+    compact,
+    countLabel,
     name,
     precision,
     readOnly,
     shape,
     size,
     value,
+    valueLabel,
     hoveredValue,
     components: {
       root: 'div',
@@ -88,9 +91,10 @@ export const useRating_unstable = (props: RatingProps, ref: React.Ref<HTMLDivEle
       defaultProps: { id: countId, children: countLabel },
       elementType: Label,
     }),
-    divider: slot.always(props.divider, {
+    divider: slot.optional(props.divider, {
       defaultProps: { children: '.' },
       elementType: 'span',
+      renderByDefault: true,
     }),
   };
 

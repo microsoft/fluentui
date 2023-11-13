@@ -31,7 +31,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   );
 
   let icon;
-  if (displayedRatingValue >= value) {
+  if (displayedRatingValue >= value || context.compact) {
     icon = <StarFilled />;
   } else if (displayedRatingValue >= value - 0.5) {
     icon = <StarHalfRegular />;
@@ -47,7 +47,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   });
 
   let halfValueInput;
-  if (!context.readOnly && context.precision) {
+  if (!context.readOnly && context.precision && !context.compact) {
     halfValueInput = slot.always(props.halfValueInput, {
       defaultProps: {
         type: 'radio',
@@ -64,7 +64,7 @@ export const useRatingItem_unstable = (props: RatingItemProps, ref: React.Ref<HT
   }
 
   let fullValueInput;
-  if (!context.readOnly) {
+  if (!context.readOnly && !context.compact) {
     fullValueInput = slot.always(props.fullValueInput, {
       defaultProps: {
         type: 'radio',
