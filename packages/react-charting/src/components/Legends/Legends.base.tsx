@@ -201,15 +201,17 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     }
   };
 
-  private _onClick = (legend: ILegend): void => {
+  private _onClick = (legend: ILegend, event: React.MouseEvent<HTMLButtonElement>): void => {
     const { canSelectMultipleLegends = false } = this.props;
+    let selectedLegends: string[] = [];
     if (canSelectMultipleLegends) {
-      const selectedLegends = this._canSelectMultipleLegends(legend);
-      this.props.onChange?.(Object.keys(selectedLegends));
+      const nextSelectedLegends = this._canSelectMultipleLegends(legend);
+      selectedLegends = Object.keys(nextSelectedLegends);
     } else {
       const isSelected = this._canSelectOnlySingleLegend(legend);
-      this.props.onChange?.(isSelected ? [legend.title] : []);
+      selectedLegends = isSelected ? [legend.title] : [];
     }
+    this.props.onChange?.(selectedLegends, event, legend);
     legend.action?.();
   };
 
@@ -344,8 +346,8 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       isLineLegendInBarChart: legend.isLineLegendInBarChart,
       opacity: legend.opacity,
     });
-    const onClickHandler = () => {
-      this._onClick(legend);
+    const onClickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+      this._onClick(legend, event);
     };
     const onHoverHandler = () => {
       this._onHoverOverLegend(legend);

@@ -223,7 +223,7 @@ export interface ILegendsProps {
   /**
    * Callback issued when the selected option changes.
    */
-  onChange?: (selectedLegends: string[]) => void;
+  onChange?: (selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
 
   /**
    * Keys (title) that will be initially used to set selected items.
