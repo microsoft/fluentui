@@ -32,6 +32,7 @@
     "@fluentui/react-datepicker-compat": "*",
     "@fluentui/react-dialog": "*",
     "@fluentui/react-divider": "*",
+    "@fluentui/react-drawer": "*",
     "@fluentui/react-field": "*",
     "@fluentui/react-icons": "^2.0.217",
     "@fluentui/react-image": "*",
