@@ -6,7 +6,7 @@ This log was last generated on Fri, 10 Nov 2023 13:46:32 GMT and should not be m
 
 ## [2.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.1.2)
 
-Fri, 10 Nov 2023 13:46:32 GMT 
+Fri, 10 Nov 2023 13:46:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v2.1.1..@fluentui/react-breadcrumb-preview_v2.1.2)
 
 ### Patches
@@ -15,7 +15,7 @@ Fri, 10 Nov 2023 13:46:32 GMT
 
 ## [2.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.1.1)
 
-Thu, 09 Nov 2023 17:29:50 GMT 
+Thu, 09 Nov 2023 17:29:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v2.1.0..@fluentui/react-breadcrumb-preview_v2.1.1)
 
 ### Patches
@@ -31,7 +31,7 @@ Thu, 09 Nov 2023 17:29:50 GMT
 
 ## [2.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.1.0)
 
-Wed, 01 Nov 2023 19:15:55 GMT 
+Wed, 01 Nov 2023 19:15:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v2.0.1..@fluentui/react-breadcrumb-preview_v2.1.0)
 
 ### Minor changes
@@ -40,7 +40,7 @@ Wed, 01 Nov 2023 19:15:55 GMT
 
 ## [2.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.0.1)
 
-Wed, 01 Nov 2023 12:55:59 GMT 
+Wed, 01 Nov 2023 12:55:59 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v2.0.0..@fluentui/react-breadcrumb-preview_v2.0.1)
 
 ### Patches
@@ -53,13 +53,13 @@ Wed, 01 Nov 2023 12:55:59 GMT
 
 ## [2.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v2.0.0)
 
-Sat, 28 Oct 2023 23:35:54 GMT 
+Sat, 28 Oct 2023 23:35:54 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.2.5..@fluentui/react-breadcrumb-preview_v2.0.0)
 
 ### Major changes
 
 - BREAKING CHANGE: Removed non-interactive item and `slash` divider ([PR #29623](https://github.com/microsoft/fluentui/pull/29623) by vkozlova@microsoft.com)
-- BREAKING CHANGE: remove `appearance` prop and set  `current` prop  for BreadcrumbButton last item ([PR #29554](https://github.com/microsoft/fluentui/pull/29554) by vkozlova@microsoft.com)
+- BREAKING CHANGE: remove `appearance` prop and set `current` prop for BreadcrumbButton last item ([PR #29554](https://github.com/microsoft/fluentui/pull/29554) by vkozlova@microsoft.com)
 - Bump @fluentui/react-button to v9.3.52 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
 - Bump @fluentui/react-link to v9.1.31 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
 - Bump @fluentui/react-shared-contexts to v9.11.0 ([commit](https://github.com/microsoft/fluentui/commit/555b0fae3ec7f052e765557ae243c58000514f92) by beachball)
@@ -67,7 +67,7 @@ Sat, 28 Oct 2023 23:35:54 GMT
 
 ## [1.2.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.5)
 
-Mon, 23 Oct 2023 09:51:57 GMT 
+Mon, 23 Oct 2023 09:51:57 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.2.4..@fluentui/react-breadcrumb-preview_v1.2.5)
 
 ### Patches
@@ -78,7 +78,7 @@ Mon, 23 Oct 2023 09:51:57 GMT
 
 ## [1.2.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.4)
 
-Wed, 18 Oct 2023 17:54:08 GMT 
+Wed, 18 Oct 2023 17:54:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.2.3..@fluentui/react-breadcrumb-preview_v1.2.4)
 
 ### Patches
@@ -91,7 +91,7 @@ Wed, 18 Oct 2023 17:54:08 GMT
 
 ## [1.2.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.3)
 
-Thu, 12 Oct 2023 14:55:42 GMT 
+Thu, 12 Oct 2023 14:55:42 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.2.2..@fluentui/react-breadcrumb-preview_v1.2.3)
 
 ### Patches
@@ -103,7 +103,7 @@ Thu, 12 Oct 2023 14:55:42 GMT
 
 ## [1.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.2)
 
-Wed, 11 Oct 2023 13:54:26 GMT 
+Wed, 11 Oct 2023 13:54:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.2.1..@fluentui/react-breadcrumb-preview_v1.2.2)
 
 ### Patches
@@ -116,7 +116,7 @@ Wed, 11 Oct 2023 13:54:26 GMT
 
 ## [1.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.1)
 
-Mon, 09 Oct 2023 20:45:44 GMT 
+Mon, 09 Oct 2023 20:45:44 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.2.0..@fluentui/react-breadcrumb-preview_v1.2.1)
 
 ### Patches
@@ -130,7 +130,7 @@ Mon, 09 Oct 2023 20:45:44 GMT
 
 ## [1.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.2.0)
 
-Thu, 05 Oct 2023 15:25:29 GMT 
+Thu, 05 Oct 2023 15:25:29 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.1.1..@fluentui/react-breadcrumb-preview_v1.2.0)
 
 ### Minor changes
@@ -144,7 +144,7 @@ Thu, 05 Oct 2023 15:25:29 GMT
 
 ## [1.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.1.1)
 
-Wed, 04 Oct 2023 08:45:47 GMT 
+Wed, 04 Oct 2023 08:45:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.1.0..@fluentui/react-breadcrumb-preview_v1.1.1)
 
 ### Patches
@@ -157,7 +157,7 @@ Wed, 04 Oct 2023 08:45:47 GMT
 
 ## [1.1.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.1.0)
 
-Mon, 02 Oct 2023 08:56:03 GMT 
+Mon, 02 Oct 2023 08:56:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.0.5..@fluentui/react-breadcrumb-preview_v1.1.0)
 
 ### Minor changes
@@ -171,7 +171,7 @@ Mon, 02 Oct 2023 08:56:03 GMT
 
 ## [1.0.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.0.5)
 
-Tue, 26 Sep 2023 17:49:03 GMT 
+Tue, 26 Sep 2023 17:49:03 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.0.4..@fluentui/react-breadcrumb-preview_v1.0.5)
 
 ### Patches
@@ -187,7 +187,7 @@ Tue, 26 Sep 2023 17:49:03 GMT
 
 ## [1.0.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.0.4)
 
-Tue, 26 Sep 2023 15:32:04 GMT 
+Tue, 26 Sep 2023 15:32:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.0.3..@fluentui/react-breadcrumb-preview_v1.0.4)
 
 ### Patches
@@ -205,7 +205,7 @@ Tue, 26 Sep 2023 15:32:04 GMT
 
 ## [1.0.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.0.3)
 
-Wed, 20 Sep 2023 17:47:35 GMT 
+Wed, 20 Sep 2023 17:47:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.0.2..@fluentui/react-breadcrumb-preview_v1.0.3)
 
 ### Patches
@@ -219,7 +219,7 @@ Wed, 20 Sep 2023 17:47:35 GMT
 
 ## [1.0.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.0.2)
 
-Wed, 20 Sep 2023 14:59:53 GMT 
+Wed, 20 Sep 2023 14:59:53 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.0.1..@fluentui/react-breadcrumb-preview_v1.0.2)
 
 ### Patches
@@ -233,7 +233,7 @@ Wed, 20 Sep 2023 14:59:53 GMT
 
 ## [1.0.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.0.1)
 
-Thu, 14 Sep 2023 16:44:47 GMT 
+Thu, 14 Sep 2023 16:44:47 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v1.0.0..@fluentui/react-breadcrumb-preview_v1.0.1)
 
 ### Patches
@@ -244,7 +244,7 @@ Thu, 14 Sep 2023 16:44:47 GMT
 
 ## [1.0.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v1.0.0)
 
-Tue, 12 Sep 2023 08:51:31 GMT 
+Tue, 12 Sep 2023 08:51:31 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.8..@fluentui/react-breadcrumb-preview_v1.0.0)
 
 ### Major changes
@@ -261,7 +261,7 @@ Tue, 12 Sep 2023 08:51:31 GMT
 
 ## [0.3.8](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.8)
 
-Wed, 06 Sep 2023 13:31:30 GMT 
+Wed, 06 Sep 2023 13:31:30 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.7..@fluentui/react-breadcrumb-preview_v0.3.8)
 
 ### Patches
@@ -275,7 +275,7 @@ Wed, 06 Sep 2023 13:31:30 GMT
 
 ## [0.3.7](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.7)
 
-Tue, 05 Sep 2023 15:39:04 GMT 
+Tue, 05 Sep 2023 15:39:04 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.6..@fluentui/react-breadcrumb-preview_v0.3.7)
 
 ### Patches
@@ -288,7 +288,7 @@ Tue, 05 Sep 2023 15:39:04 GMT
 
 ## [0.3.6](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.6)
 
-Tue, 05 Sep 2023 13:29:16 GMT 
+Tue, 05 Sep 2023 13:29:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.5..@fluentui/react-breadcrumb-preview_v0.3.6)
 
 ### Patches
@@ -305,7 +305,7 @@ Tue, 05 Sep 2023 13:29:16 GMT
 
 ## [0.3.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.5)
 
-Tue, 29 Aug 2023 12:57:36 GMT 
+Tue, 29 Aug 2023 12:57:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.4..@fluentui/react-breadcrumb-preview_v0.3.5)
 
 ### Patches
@@ -318,7 +318,7 @@ Tue, 29 Aug 2023 12:57:36 GMT
 
 ## [0.3.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.4)
 
-Thu, 24 Aug 2023 10:26:35 GMT 
+Thu, 24 Aug 2023 10:26:35 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.3..@fluentui/react-breadcrumb-preview_v0.3.4)
 
 ### Patches
@@ -331,7 +331,7 @@ Thu, 24 Aug 2023 10:26:35 GMT
 
 ## [0.3.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.3)
 
-Wed, 23 Aug 2023 12:01:49 GMT 
+Wed, 23 Aug 2023 12:01:49 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.2..@fluentui/react-breadcrumb-preview_v0.3.3)
 
 ### Patches
@@ -344,7 +344,7 @@ Wed, 23 Aug 2023 12:01:49 GMT
 
 ## [0.3.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.2)
 
-Mon, 21 Aug 2023 11:38:00 GMT 
+Mon, 21 Aug 2023 11:38:00 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.1..@fluentui/react-breadcrumb-preview_v0.3.2)
 
 ### Patches
@@ -353,7 +353,7 @@ Mon, 21 Aug 2023 11:38:00 GMT
 
 ## [0.3.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.1)
 
-Wed, 16 Aug 2023 17:41:08 GMT 
+Wed, 16 Aug 2023 17:41:08 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.3.0..@fluentui/react-breadcrumb-preview_v0.3.1)
 
 ### Patches
@@ -364,7 +364,7 @@ Wed, 16 Aug 2023 17:41:08 GMT
 
 ## [0.3.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.3.0)
 
-Wed, 16 Aug 2023 11:38:32 GMT 
+Wed, 16 Aug 2023 11:38:32 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.2.2..@fluentui/react-breadcrumb-preview_v0.3.0)
 
 ### Minor changes
@@ -380,7 +380,7 @@ Wed, 16 Aug 2023 11:38:32 GMT
 
 ## [0.2.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.2.2)
 
-Fri, 11 Aug 2023 12:14:26 GMT 
+Fri, 11 Aug 2023 12:14:26 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.2.1..@fluentui/react-breadcrumb-preview_v0.2.2)
 
 ### Patches
@@ -393,7 +393,7 @@ Fri, 11 Aug 2023 12:14:26 GMT
 
 ## [0.2.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.2.1)
 
-Wed, 09 Aug 2023 13:16:50 GMT 
+Wed, 09 Aug 2023 13:16:50 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.2.0..@fluentui/react-breadcrumb-preview_v0.2.1)
 
 ### Patches
@@ -410,7 +410,7 @@ Wed, 09 Aug 2023 13:16:50 GMT
 
 ## [0.2.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.2.0)
 
-Fri, 04 Aug 2023 08:52:55 GMT 
+Fri, 04 Aug 2023 08:52:55 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.1.3..@fluentui/react-breadcrumb-preview_v0.2.0)
 
 ### Minor changes
@@ -430,7 +430,7 @@ Fri, 04 Aug 2023 08:52:55 GMT
 
 ## [0.1.3](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.1.3)
 
-Tue, 01 Aug 2023 10:17:21 GMT 
+Tue, 01 Aug 2023 10:17:21 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.1.2..@fluentui/react-breadcrumb-preview_v0.1.3)
 
 ### Patches
@@ -442,7 +442,7 @@ Tue, 01 Aug 2023 10:17:21 GMT
 
 ## [0.1.2](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.1.2)
 
-Tue, 25 Jul 2023 13:29:16 GMT 
+Tue, 25 Jul 2023 13:29:16 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.1.1..@fluentui/react-breadcrumb-preview_v0.1.2)
 
 ### Patches
@@ -456,7 +456,7 @@ Tue, 25 Jul 2023 13:29:16 GMT
 
 ## [0.1.1](https://github.com/microsoft/fluentui/tree/@fluentui/react-breadcrumb-preview_v0.1.1)
 
-Thu, 20 Jul 2023 18:27:36 GMT 
+Thu, 20 Jul 2023 18:27:36 GMT
 [Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-breadcrumb-preview_v0.1.0..@fluentui/react-breadcrumb-preview_v0.1.1)
 
 ### Patches
