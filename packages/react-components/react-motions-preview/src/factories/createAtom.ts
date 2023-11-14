@@ -17,9 +17,7 @@ export type AtomProps = {
  * @param motion - A motion definition.
  */
 export function createAtom(motion: MotionAtom) {
-  // Return a component that will animate the children
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  return function AtomMotion(props: AtomProps) {
+  const Atom: React.FC<AtomProps> = props => {
     const { children, iterations = 1, playState = 'running' } = props;
 
     const child = React.Children.only(children) as React.ReactElement & { ref: React.Ref<HTMLElement> };
@@ -30,22 +28,12 @@ export function createAtom(motion: MotionAtom) {
     const isReducedMotion = useIsReducedMotion();
 
     useIsomorphicLayoutEffect(() => {
-      if (animationRef.current) {
-        if (playState === 'running') {
-          animationRef.current.play();
-        }
-
-        if (playState === 'paused') {
-          animationRef.current.pause();
-        }
-      }
-    }, [playState]);
-
-    useIsomorphicLayoutEffect(() => {
       const element = elementRef.current;
 
       if (element) {
         const animation = element.animate(motion.keyframes, {
+          fill: 'forwards',
+
           ...motion.options,
           iterations,
 
@@ -60,6 +48,23 @@ export function createAtom(motion: MotionAtom) {
       }
     }, [iterations, isReducedMotion]);
 
+    // TODO: Find a way to avoid this effect/refactor as currently it will call .play() on initial render
+    useIsomorphicLayoutEffect(() => {
+      const animation = animationRef.current;
+
+      if (animation) {
+        if (playState === 'running') {
+          animation.play();
+        }
+
+        if (playState === 'paused') {
+          animation.pause();
+        }
+      }
+    }, [playState]);
+
     return React.cloneElement(children, { ref: useMergedRefs(elementRef, child.ref) });
   };
+
+  return Atom;
 }

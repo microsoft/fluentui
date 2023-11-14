@@ -16,7 +16,7 @@ declare namespace atoms {
 export { atoms }
 
 // @public
-export function createAtom(motion: MotionAtom): (props: AtomProps) => React_2.ReactElement<any, string | React_2.JSXElementConstructor<any>>;
+export function createAtom(motion: MotionAtom): React_2.FC<AtomProps>;
 
 // @public (undocumented)
 const downEnterFast: ({ fromValue }: SlideParams) => MotionAtom;

@@ -13,6 +13,7 @@ const motion: MotionAtom = {
 
 function createElementMock() {
   const animateMock = jest.fn().mockImplementation(() => ({
+    play: jest.fn(),
     cancel: jest.fn(),
   }));
   const ElementMock = React.forwardRef((props, ref) => {
@@ -40,6 +41,10 @@ describe('createAtom', () => {
       </TestAtom>,
     );
 
-    expect(animateMock).toHaveBeenCalledWith(motion.keyframes, { ...motion.options, iterations: 1 });
+    expect(animateMock).toHaveBeenCalledWith(motion.keyframes, {
+      ...motion.options,
+      fill: 'forwards',
+      iterations: 1,
+    });
   });
 });
