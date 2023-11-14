@@ -214,3 +214,19 @@ describe('Render calling with respective to props', () => {
     renderMock.mockRestore();
   });
 });
+
+describe('Legends - multi Legends', () => {
+  beforeEach(sharedBeforeEach);
+  afterEach(sharedAfterEach);
+  it('Should render defaultSelectedLegends', () => {
+    wrapper = mount(
+      <Legends
+        legends={legends}
+        canSelectMultipleLegends={true}
+        defaultSelectedLegends={[legends[0].title, legends[2].title]}
+      />,
+    );
+    const renderedLegends = wrapper.getDOMNode().querySelectorAll('button[aria-selected="true"]');
+    expect(renderedLegends?.length).toBe(2);
+  });
+});

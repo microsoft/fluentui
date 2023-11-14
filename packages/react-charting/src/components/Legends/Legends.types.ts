@@ -202,11 +202,6 @@ export interface ILegendsProps {
   overflowText?: string;
 
   /**
-   * Prop that takes the active legend
-   */
-  selectedLegend?: string;
-
-  /**
    * prop that decides if legends are focusable
    * @default true
    */
@@ -220,10 +215,28 @@ export interface ILegendsProps {
 
   /**
    * Defines the function that is executed upon hiding of hover card
-   * make sure to send prop  when  the prop  is canSelectMultipleLegends is set to ture
-   * and empty the selecetd state legends
+   * make sure to send prop  when  the prop  is canSelectMultipleLegends is set to true
+   * and empty the selected state legends
    */
   onLegendHoverCardLeave?: VoidFunction;
+
+  /**
+   * Callback issued when the selected option changes.
+   */
+  onChange?: (selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
+
+  /**
+   * Keys (title) that will be initially used to set selected items.
+   * This prop is used for multiSelect scenarios.
+   * In other cases, defaultSelectedLegend should be used.
+   */
+  defaultSelectedLegends?: string[];
+
+  /**
+   * Key that will be initially used to set selected item.
+   * This prop is used for singleSelect scenarios.
+   */
+  defaultSelectedLegend?: string;
 }
 
 /**
