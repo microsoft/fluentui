@@ -9,6 +9,7 @@ import { useDynamicVirtualizerMeasure } from '../../Hooks';
 import { useVirtualizerContextState_unstable, scrollToItemDynamic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
 import { useImperativeHandle } from 'react';
+import { useMeasureList } from '../../hooks/useMeasureList';
 
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
@@ -82,6 +83,29 @@ export function useVirtualizerScrollViewDynamic_unstable(
     imperativeVirtualizerRef: _imperativeVirtualizerRef,
     onRenderedFlaggedIndex: handleRenderedIndex,
   });
+
+  const measureObject = useMeasureList(virtualizerState.virtualizerStartIndex, virtualizerLength, props.numItems);
+
+  // Append self-measurement if no measure function provided:
+  // if (!props.getItemSize) {
+  // virtualizerState.virtualizedChildren.forEach((child, index) => {
+  //   if (React.isValidElement(child)) {
+  //     child.props.ref = measureObject.refArray.current[index];
+  //     virtualizerState.virtualizedChildren[index] = React.cloneElement(child, {
+  //       ref: measureObject.refArray.current[index],
+  //     });
+  // });
+  // }
+
+  React.Children.map(virtualizerState.virtualizedChildren, (child, index) => {
+    if (React.isValidElement(child)) {
+      virtualizerState.virtualizedChildren[index] = (
+        <child.type {...child.props} ref={measureObject.createIndexedRef(index)} />
+      );
+    }
+  });
+
+  console.log('virtualizerState.virtualizedChildren:', virtualizerState.virtualizedChildren);
 
   return {
     ...virtualizerState,
