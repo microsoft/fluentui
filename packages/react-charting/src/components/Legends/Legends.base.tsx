@@ -35,10 +35,9 @@ interface ILegendItem extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 export interface ILegendState {
-  selectedLegend: string;
   activeLegend: string;
   isHoverCardVisible: boolean;
-  /** Set of legends selected when multiple selection is allowed */
+  /** Set of legends selected, both for multiple selection and single selection */
   selectedLegends: { [key: string]: boolean };
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
@@ -49,11 +48,15 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
 
   public constructor(props: ILegendsProps) {
     super(props);
-    const defaultSelectedLegends =
-      props.defaultSelectedLegends?.reduce((combinedDict, key) => ({ [key]: true, ...combinedDict }), {}) || {};
+    let defaultSelectedLegends = {};
+    if (props.canSelectMultipleLegends) {
+      defaultSelectedLegends =
+        props.defaultSelectedLegends?.reduce((combinedDict, key) => ({ [key]: true, ...combinedDict }), {}) || {};
+    } else if (props.defaultSelectedLegend) {
+      defaultSelectedLegends = { [props.defaultSelectedLegend]: true };
+    }
 
     this.state = {
-      selectedLegend: '',
       activeLegend: '',
       isHoverCardVisible: false,
       selectedLegends: defaultSelectedLegends,
@@ -66,7 +69,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       theme: theme!,
       className,
     });
-    this._isLegendSelected = this.state.selectedLegend !== '' || Object.keys(this.state.selectedLegends).length > 0;
+    this._isLegendSelected = Object.keys(this.state.selectedLegends).length > 0;
     const dataToRender = this._generateData();
     return (
       <div className={this._classNames.root}>
@@ -189,11 +192,11 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
    */
 
   private _canSelectOnlySingleLegend = (legend: ILegend): boolean => {
-    if (this.state.selectedLegend === legend.title) {
-      this.setState({ selectedLegend: '' });
+    if (this.state.selectedLegends[legend.title]) {
+      this.setState({ selectedLegends: {} });
       return false;
     } else {
-      this.setState({ selectedLegend: legend.title });
+      this.setState({ selectedLegends: { [legend.title]: true } });
       return true;
     }
   };
@@ -330,7 +333,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       opacity: data.opacity,
     };
     const color = this._getColor(legend.title, legend.color);
-    const { theme, className, styles, canSelectMultipleLegends = false } = this.props;
+    const { theme, className, styles } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -354,9 +357,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     return (
       <button
         {...(allowFocusOnLegends && {
-          'aria-selected': canSelectMultipleLegends
-            ? !!this.state.selectedLegends[legend.title]
-            : this.state.selectedLegend === legend.title,
+          'aria-selected': !!this.state.selectedLegends[legend.title],
           role: 'option',
           'aria-label': `${legend.title}`,
           'aria-setsize': data['aria-setsize'],
@@ -409,7 +410,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     // if one or more legends are selected
     if (this._isLegendSelected) {
       // if the given legend (title) is one of the selected legends
-      if (this.state.selectedLegend === title || this.state.selectedLegends[title]) {
+      if (this.state.selectedLegends[title]) {
         legendColor = color;
       }
       // if the given legend is unselected

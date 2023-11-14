@@ -226,12 +226,17 @@ export interface ILegendsProps {
   onChange?: (selectedLegends: string[]) => void;
 
   /**
-   * Keys of the selected items.
-   * If you provide this, you must maintain selection state by observing onChange events
-   * and passing a new value in when changed.
-   * Passing null in will clear the selection. Mutually exclusive with defaultSelectedLegends.
+   * Keys (title) that will be initially used to set selected items.
+   * This prop is used for multiSelect scenarios.
+   * In other cases, defaultSelectedLegend should be used.
    */
   defaultSelectedLegends?: string[];
+
+  /**
+   * Key that will be initially used to set selected item.
+   * This prop is used for singleSelect scenarios.
+   */
+  defaultSelectedLegend?: string;
 }
 
 /**
