@@ -17,7 +17,6 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 import { createTabster, getMover, getGroupper, getTabsterAttribute, Types } from 'tabster';
-import { is } from '@babel/types';
 
 interface UpcomingMeetingsGridCellNavigationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
