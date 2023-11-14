@@ -85,6 +85,17 @@ exports[`DetailsHeader can render 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
     onClick={[Function]}
     role="columnheader"
   >
@@ -137,6 +148,17 @@ exports[`DetailsHeader can render 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -333,6 +355,17 @@ exports[`DetailsHeader can render 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -390,6 +423,17 @@ exports[`DetailsHeader can render 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -524,6 +568,17 @@ exports[`DetailsHeader can render 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -581,6 +636,17 @@ exports[`DetailsHeader can render 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -745,6 +811,17 @@ exports[`DetailsHeader can render 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -804,6 +881,17 @@ exports[`DetailsHeader can render 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -1010,6 +1098,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
     role="columnheader"
   >
     <span
@@ -1071,6 +1170,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               top: 1px;
               z-index: 1;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
         id="header2-check"
       />
     </span>
@@ -1111,6 +1221,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
           border: 1px solid #ffffff;
           bottom: 1px;
           content: "";
@@ -1178,6 +1299,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -1312,6 +1444,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -1369,6 +1512,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -1533,6 +1687,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -1592,6 +1757,17 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -1798,6 +1974,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
     onClick={[Function]}
     role="columnheader"
   >
@@ -1851,6 +2038,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -2071,6 +2269,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -2128,6 +2337,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -2263,6 +2483,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -2320,6 +2551,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";
@@ -2510,6 +2752,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         &:hover {
           background: #f3f2f1;
           color: #323130;
@@ -2569,6 +2822,17 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 1px;
+              content: "";
+              left: 1px;
+              outline: 1px solid #605e5c;
+              position: absolute;
+              right: 1px;
+              top: 1px;
+              z-index: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus:after {
               border: 1px solid #ffffff;
               bottom: 1px;
               content: "";

@@ -64,6 +64,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         .ms-WeeklyDayPicker-root:hover & {
           height: 53px;
           min-height: 12px;
@@ -187,6 +198,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -253,6 +275,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -339,6 +372,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -405,6 +449,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -491,6 +546,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -567,6 +633,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -633,6 +710,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -725,6 +813,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -847,6 +946,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -949,6 +1059,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -1071,6 +1192,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -1173,6 +1305,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -1295,6 +1438,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -1397,6 +1551,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -1514,6 +1679,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -1664,6 +1840,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -1794,6 +1981,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -1944,6 +2142,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -2075,6 +2284,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -2275,6 +2495,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -2401,6 +2632,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -2563,6 +2805,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -2661,6 +2914,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -2779,6 +3043,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -2877,6 +3152,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -2995,6 +3281,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -3103,6 +3400,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -3201,6 +3509,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -3323,6 +3642,17 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           top: 1px;
           z-index: 1;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
         .ms-WeeklyDayPicker-root:hover & {
           height: 53px;
           min-height: 12px;
@@ -3431,6 +3761,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
           border: 1px solid #ffffff;
           bottom: 1px;
           content: "";
@@ -3564,6 +3905,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -3630,6 +3982,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -3716,6 +4079,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -3782,6 +4156,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -3868,6 +4253,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -3944,6 +4340,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -4010,6 +4417,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -4102,6 +4520,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -4224,6 +4653,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -4326,6 +4766,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -4448,6 +4899,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -4550,6 +5012,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -4672,6 +5145,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -4774,6 +5258,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -4891,6 +5386,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -5041,6 +5547,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -5172,6 +5689,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -5372,6 +5900,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -5498,6 +6037,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -5644,6 +6194,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -5770,6 +6331,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -5932,6 +6504,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -6030,6 +6613,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -6148,6 +6742,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -6246,6 +6851,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -6364,6 +6980,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -6462,6 +7089,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
                   border: 1px solid #ffffff;
                   bottom: -2px;
                   content: "";
@@ -6580,6 +7218,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
                   top: -2px;
                   z-index: 1;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #605e5c;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){& {
                   -ms-high-contrast-adjust: none;
                   background-color: transparent;
@@ -6682,6 +7331,17 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 1px;
+          content: "";
+          left: 1px;
+          outline: 1px solid #605e5c;
+          position: absolute;
+          right: 1px;
+          top: 1px;
+          z-index: 1;
+        }
+        :host(.ms-Fabric--isFocusVisible) &:focus:after {
           border: 1px solid #ffffff;
           bottom: 1px;
           content: "";
