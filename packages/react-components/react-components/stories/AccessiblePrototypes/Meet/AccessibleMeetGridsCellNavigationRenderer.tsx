@@ -17,6 +17,7 @@ import {
   useFluent,
 } from '@fluentui/react-components';
 import { createTabster, getMover, getGroupper, getTabsterAttribute, Types } from 'tabster';
+import { is } from '@babel/types';
 
 interface UpcomingMeetingsGridCellNavigationRendererProps {
   threeUpcomingMeetings: UpcomingMeeting[];
@@ -95,18 +96,33 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
   getMover(tabsterCore);
   getGroupper(tabsterCore);
 
-  const changeRecentCategoryExpandedState = React.useCallback(
-    (id: string, expanded: boolean) => {
-      recentCategoriesState.find(category => {
-        if (id === category.id) {
-          category.expanded = expanded;
-          return true;
-        }
-        return false;
+  const getCategoryById = React.useCallback(
+    (id: string) => {
+      return recentCategoriesState.find(category => {
+        return id === category.id;
       });
+    },
+    [recentCategoriesState],
+  );
+
+  const changeRecentCategoryExpandedState = React.useCallback(
+    (category: RecentCategory | undefined, expanded: boolean) => {
+      if (category) {
+        category.expanded = expanded;
+      }
       setRecentCategoryState([...recentCategoriesState]);
     },
     [recentCategoriesState],
+  );
+
+  const handleRowClick = React.useCallback(
+    (event: React.MouseEvent) => {
+      const element = event.currentTarget as HTMLElement;
+      const selectedRowId = element.id;
+      const category = getCategoryById(selectedRowId);
+      changeRecentCategoryExpandedState(category, !category?.expanded);
+    },
+    [getCategoryById, changeRecentCategoryExpandedState],
   );
 
   const handleTreeGridKeyDown = React.useCallback(
@@ -117,16 +133,18 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
         if (!isModifierDown) {
           const parent = element.parentElement;
           const isFirstChild = (parent?.querySelector('*:first-child') as HTMLElement) === element;
-          const isLastChild = (parent?.querySelector('*:first-child') as HTMLElement) === element;
           const selectedRowId = parent?.id || '';
+          const category = getCategoryById(selectedRowId);
           const level = parent?.getAttribute('aria-level') || 1;
-          if (event.key === 'ArrowRight' && level === '1' && isLastChild) {
-            changeRecentCategoryExpandedState(selectedRowId, true);
+          if (event.key === 'ArrowRight' && level === '1' && isFirstChild && category && !category.expanded) {
+            changeRecentCategoryExpandedState(category, true);
           } else if (event.key === 'ArrowLeft' && level === '1' && isFirstChild) {
-            changeRecentCategoryExpandedState(selectedRowId, false);
+            changeRecentCategoryExpandedState(category, false);
+          } else if ((event.key === 'Enter' || event.key === ' ') && level === '1') {
+            changeRecentCategoryExpandedState(category, !category?.expanded);
           } else if (event.key === 'ArrowLeft' && level === '2' && isFirstChild) {
-            const categoryToFocus = recentCategories.find(category => {
-              return !!recentMeetings[category.id].find(meeting => {
+            const categoryToFocus = recentCategories.find(testedCategory => {
+              return !!recentMeetings[testedCategory.id].find(meeting => {
                 return meeting.id === selectedRowId;
               });
             }) as RecentCategory;
@@ -136,7 +154,7 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
         }
       }
     },
-    [changeRecentCategoryExpandedState, recentCategories, recentMeetings, targetDocument],
+    [getCategoryById, changeRecentCategoryExpandedState, recentCategories, recentMeetings, targetDocument],
   );
 
   return (
@@ -155,9 +173,12 @@ export const RecentMeetingsTreeGridCellNavigationRenderer: React.FC<
       {recentCategories.map(category => (
         <Table key={category.id} role="presentation" noNativeElements>
           <TableBody role="presentation">
-            <TableRow id={category.id} role="row" aria-level={1}>
-              <TableCell role="gridcell" tabIndex={0} aria-colSpan={4} aria-expanded={category.expanded}>
+            <TableRow role="row" id={category.id} onClick={handleRowClick} aria-level={1}>
+              <TableCell role="gridcell" tabIndex={0} aria-expanded={category.expanded}>
                 {category.title}
+              </TableCell>
+              <TableCell role="gridcell" aria-colspan={3}>
+                <Button>Header action</Button>
               </TableCell>
             </TableRow>
             {category.expanded &&
