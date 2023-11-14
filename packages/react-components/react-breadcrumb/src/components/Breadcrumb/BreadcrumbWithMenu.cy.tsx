@@ -4,14 +4,13 @@ import type {} from '@cypress/react';
 import { FluentProvider } from '@fluentui/react-provider';
 import { webLightTheme } from '@fluentui/react-theme';
 import { MoreHorizontalRegular, MoreHorizontalFilled, bundleIcon } from '@fluentui/react-icons';
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbButton,
-  BreadcrumbDivider,
-  partitionBreadcrumbItems,
-} from '@fluentui/react-breadcrumb-preview';
-import type { BreadcrumbProps, PartitionBreadcrumbItems } from '@fluentui/react-breadcrumb-preview';
+import { Breadcrumb } from './Breadcrumb';
+import { BreadcrumbItem } from '../BreadcrumbItem';
+import { BreadcrumbButton } from '../BreadcrumbButton';
+import { BreadcrumbDivider } from '../BreadcrumbDivider';
+import { partitionBreadcrumbItems } from '../../utils';
+import type { BreadcrumbProps } from './Breadcrumb.types';
+import type { PartitionBreadcrumbItems } from '../../utils';
 import {
   Button,
   Menu,
