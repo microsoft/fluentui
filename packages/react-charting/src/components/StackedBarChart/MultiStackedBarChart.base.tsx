@@ -297,7 +297,7 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
         >
           <rect
             key={index}
-            id={`${this._barId}${barNo}-${index}`}
+            id={`${this._barId}-${barNo}-${index}`}
             x={`${
               this._isRTL
                 ? 100 - startingPoint[index] - value - this.state.barSpacingInPercent * index

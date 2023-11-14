@@ -178,7 +178,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_20-0"
+                id="_MSBC_rect_2-0-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -209,7 +209,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_20-1"
+                id="_MSBC_rect_2-0-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -383,7 +383,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_21-0"
+                id="_MSBC_rect_2-1-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -414,7 +414,7 @@ exports[`MultiStackedBarChart - mouse events Should render callout correctly on 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_21-1"
+                id="_MSBC_rect_2-1-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -840,7 +840,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_20-0"
+                id="_MSBC_rect_2-0-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -871,7 +871,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_20-1"
+                id="_MSBC_rect_2-0-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -1045,7 +1045,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_21-0"
+                id="_MSBC_rect_2-1-0"
                 key="0"
                 width="63.49206349206349%"
                 x="0%"
@@ -1076,7 +1076,7 @@ exports[`MultiStackedBarChart - mouse events Should render customized callout on
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_21-1"
+                id="_MSBC_rect_2-1-1"
                 key="1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
@@ -1393,7 +1393,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_730-0"
+                id="_MSBC_rect_73-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1422,7 +1422,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_730-1"
+                id="_MSBC_rect_73-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1567,7 +1567,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_731-0"
+                id="_MSBC_rect_73-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1596,7 +1596,7 @@ exports[`MultiStackedBarChart snapShot testing Should not render bar labels in a
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_731-1"
+                id="_MSBC_rect_73-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -1834,7 +1834,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_610-0"
+                id="_MSBC_rect_61-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -1863,7 +1863,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_610-1"
+                id="_MSBC_rect_61-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2026,7 +2026,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_611-0"
+                id="_MSBC_rect_61-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2055,7 +2055,7 @@ exports[`MultiStackedBarChart snapShot testing Should render absolute-scale vari
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_611-1"
+                id="_MSBC_rect_61-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2337,7 +2337,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_20-0"
+                id="_MSBC_rect_2-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2366,7 +2366,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_20-1"
+                id="_MSBC_rect_2-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2537,7 +2537,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_21-0"
+                id="_MSBC_rect_2-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2566,7 +2566,7 @@ exports[`MultiStackedBarChart snapShot testing renders MultiStackedBarChart corr
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_21-1"
+                id="_MSBC_rect_2-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -2820,7 +2820,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_490-0"
+                id="_MSBC_rect_49-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -2849,7 +2849,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_490-1"
+                id="_MSBC_rect_49-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3010,7 +3010,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_491-0"
+                id="_MSBC_rect_49-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3039,7 +3039,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideDenominator correctly
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_491-1"
+                id="_MSBC_rect_49-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3303,7 +3303,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_140-0"
+                id="_MSBC_rect_14-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3332,7 +3332,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_140-1"
+                id="_MSBC_rect_14-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3503,7 +3503,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_141-0"
+                id="_MSBC_rect_14-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3532,7 +3532,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideLegend correctly 1`] 
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_141-1"
+                id="_MSBC_rect_14-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3699,7 +3699,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_370-0"
+                id="_MSBC_rect_37-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3728,7 +3728,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_370-1"
+                id="_MSBC_rect_37-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -3899,7 +3899,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_371-0"
+                id="_MSBC_rect_37-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -3928,7 +3928,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideRatio correctly 1`] =
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_371-1"
+                id="_MSBC_rect_37-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -4373,7 +4373,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#e81123"
                 height={12}
-                id="_MSBC_rect_250-0"
+                id="_MSBC_rect_25-0-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -4402,7 +4402,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_250-1"
+                id="_MSBC_rect_25-0-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
@@ -4573,7 +4573,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#0078d4"
                 height={12}
-                id="_MSBC_rect_251-0"
+                id="_MSBC_rect_25-1-0"
                 width="63.49206349206349%"
                 x="0%"
                 y={0}
@@ -4602,7 +4602,7 @@ exports[`MultiStackedBarChart snapShot testing renders hideTooltip correctly 1`]
               <rect
                 fill="#107c10"
                 height={12}
-                id="_MSBC_rect_251-1"
+                id="_MSBC_rect_25-1-1"
                 width="36.507936507936506%"
                 x="63.49206349206349%"
                 y={0}
