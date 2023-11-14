@@ -18,7 +18,7 @@ type FadeParams = {
 // Fade Ins
 // --------------------------------------------------
 
-export const fadeEnterUltraFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const enterUltraFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
   options: {
     duration: durationUltraFast,
@@ -26,7 +26,7 @@ export const fadeEnterUltraFast = ({ fromValue = 0 }: FadeParams): MotionAtom =>
   },
 });
 
-export const fadeEnterFaster = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const enterFaster = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
   options: {
     duration: durationFaster,
@@ -34,7 +34,7 @@ export const fadeEnterFaster = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeEnterFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const enterFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
   options: {
     duration: durationFast,
@@ -42,7 +42,7 @@ export const fadeEnterFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeEnterNormal = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const enterNormal = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
   options: {
     duration: durationNormal,
@@ -50,8 +50,7 @@ export const fadeEnterNormal = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-// Basic Fade In Animation --Slow
-export const fadeEnterSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const enterSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
   options: {
     duration: durationSlow,
@@ -59,7 +58,7 @@ export const fadeEnterSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeEnterSlower = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const enterSlower = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
   options: {
     duration: durationSlower,
@@ -67,7 +66,7 @@ export const fadeEnterSlower = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeEnterUltraSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const enterUltraSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: fromValue }, { opacity: 1 }],
   options: {
     duration: durationUltraSlow,
@@ -78,7 +77,7 @@ export const fadeEnterUltraSlow = ({ fromValue = 0 }: FadeParams): MotionAtom =>
 // Fade Ins
 // --------------------------------------------------
 
-export const fadeExitUltraFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const exitUltraFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
   options: {
     duration: durationUltraFast,
@@ -86,7 +85,7 @@ export const fadeExitUltraFast = ({ fromValue = 0 }: FadeParams): MotionAtom => 
   },
 });
 
-export const fadeExitFaster = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const exitFaster = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
   options: {
     duration: durationFaster,
@@ -94,7 +93,7 @@ export const fadeExitFaster = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeExitFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const exitFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
   options: {
     duration: durationFast,
@@ -102,7 +101,7 @@ export const fadeExitFast = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeExitNormal = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const exitNormal = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
   options: {
     duration: durationNormal,
@@ -110,7 +109,7 @@ export const fadeExitNormal = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeExitSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const exitSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
   options: {
     duration: durationSlow,
@@ -118,7 +117,7 @@ export const fadeExitSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeExitSlower = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const exitSlower = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
   options: {
     duration: durationSlower,
@@ -126,7 +125,7 @@ export const fadeExitSlower = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   },
 });
 
-export const fadeExitUltraSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
+export const exitUltraSlow = ({ fromValue = 0 }: FadeParams): MotionAtom => ({
   keyframes: [{ opacity: 1 }, { opacity: fromValue }],
   options: {
     duration: durationUltraSlow,
