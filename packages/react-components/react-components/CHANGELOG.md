@@ -1,8 +1,29 @@
 # Change Log - @fluentui/react-components
 
-This log was last generated on Fri, 10 Nov 2023 13:46:32 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Nov 2023 17:51:26 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.40.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.40.0)
+
+Tue, 14 Nov 2023 17:51:26 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-components_v9.39.0..@fluentui/react-components_v9.40.0)
+
+### Minor changes
+
+- `@fluentui/react-breadcrumb`
+  - feat: release stable ([PR #29826](https://github.com/microsoft/fluentui/pull/29826) by marcosvmmoura@gmail.com)
+- `@fluentui/react-components`
+  - feat: add @fluentui/react-breadcrumb to suite ([PR #29826](https://github.com/microsoft/fluentui/pull/29826) by marcosvmmoura@gmail.com)
+
+### Patches
+
+- `@fluentui/react-breadcrumb`
+  - docs(breadcrumb): removed preview from all the links ([PR #29838](https://github.com/microsoft/fluentui/pull/29838) by vkozlova@microsoft.com)
+- `@fluentui/react-tabster`
+  - Improving how Tabster uncontrolled areas are handled for better interop with third party focus management tools like FocusZone. ([PR #29832](https://github.com/microsoft/fluentui/pull/29832) by marata@microsoft.com)
+- `@fluentui/react-tree`
+  - chore: refactor tree navigation ([PR #29731](https://github.com/microsoft/fluentui/pull/29731) by bernardo.sunderhus@gmail.com)
 
 ## [9.39.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-components_v9.39.0)
 

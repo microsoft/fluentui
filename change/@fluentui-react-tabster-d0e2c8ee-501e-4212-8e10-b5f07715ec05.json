@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "Improving how Tabster uncontrolled areas are handled for better interop with third party focus management tools like FocusZone.",
-  "packageName": "@fluentui/react-tabster",
-  "email": "marata@microsoft.com",
-  "dependentChangeType": "patch"
-}

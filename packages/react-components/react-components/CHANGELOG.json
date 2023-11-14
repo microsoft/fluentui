@@ -2,6 +2,55 @@
   "name": "@fluentui/react-components",
   "entries": [
     {
+      "date": "Tue, 14 Nov 2023 17:51:26 GMT",
+      "tag": "@fluentui/react-components_v9.40.0",
+      "version": "9.40.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "1ab86f8d92e16e29a5de8502f84b750f47823c47",
+            "comment": "docs(breadcrumb): removed preview from all the links"
+          },
+          {
+            "author": "marata@microsoft.com",
+            "package": "@fluentui/react-tabster",
+            "commit": "5a3da360acdc28e15ea5bcb481a8b25204e19c1e",
+            "comment": "Improving how Tabster uncontrolled areas are handled for better interop with third party focus management tools like FocusZone."
+          },
+          {
+            "author": "bernardo.sunderhus@gmail.com",
+            "package": "@fluentui/react-tree",
+            "commit": "ee8ca9b273641f6fe348338086a7aa29424fbbfb",
+            "comment": "chore: refactor tree navigation"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "69fef129d9fba9bab5824281dd5c2f4fac1291ee",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-components",
+            "commit": "69fef129d9fba9bab5824281dd5c2f4fac1291ee",
+            "comment": "feat: add @fluentui/react-breadcrumb to suite"
+          }
+        ],
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "4189b9dbe75e9be3e9344c077e3afc8ca5939991",
+            "comment": "docs: Copying SPEC.md from react-infobutton."
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 10 Nov 2023 13:46:32 GMT",
       "tag": "@fluentui/react-components_v9.39.0",
       "version": "9.39.0",

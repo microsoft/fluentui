@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: release stable",
-  "packageName": "@fluentui/react-breadcrumb",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}

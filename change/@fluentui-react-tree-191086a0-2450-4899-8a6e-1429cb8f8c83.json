@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "chore: refactor tree navigation",
-  "packageName": "@fluentui/react-tree",
-  "email": "bernardo.sunderhus@gmail.com",
-  "dependentChangeType": "patch"
-}

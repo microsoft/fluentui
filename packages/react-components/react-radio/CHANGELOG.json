@@ -2,6 +2,21 @@
   "name": "@fluentui/react-radio",
   "entries": [
     {
+      "date": "Tue, 14 Nov 2023 17:51:27 GMT",
+      "tag": "@fluentui/react-radio_v9.1.56",
+      "version": "9.1.56",
+      "comments": {
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-radio",
+            "comment": "Bump @fluentui/react-tabster to v9.14.5",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:41 GMT",
       "tag": "@fluentui/react-radio_v9.1.55",
       "version": "9.1.55",

@@ -2,6 +2,35 @@
   "name": "@fluentui/react-infolabel",
   "entries": [
     {
+      "date": "Tue, 14 Nov 2023 17:51:27 GMT",
+      "tag": "@fluentui/react-infolabel_v9.0.4",
+      "version": "9.0.4",
+      "comments": {
+        "none": [
+          {
+            "author": "esteban.230@hotmail.com",
+            "package": "@fluentui/react-infolabel",
+            "commit": "4189b9dbe75e9be3e9344c077e3afc8ca5939991",
+            "comment": "docs: Copying SPEC.md from react-infobutton."
+          }
+        ],
+        "patch": [
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-popover to v9.8.21",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-infolabel",
+            "comment": "Bump @fluentui/react-tabster to v9.14.5",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 09 Nov 2023 17:29:36 GMT",
       "tag": "@fluentui/react-infolabel_v9.0.3",
       "version": "9.0.3",

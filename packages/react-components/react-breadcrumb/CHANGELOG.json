@@ -1,6 +1,47 @@
 {
-  "name": "@fluentui/react-breadcrumb-preview",
+  "name": "@fluentui/react-breadcrumb",
   "entries": [
+    {
+      "date": "Tue, 14 Nov 2023 17:51:26 GMT",
+      "tag": "@fluentui/react-breadcrumb_v9.0.0",
+      "version": "9.0.0",
+      "comments": {
+        "patch": [
+          {
+            "author": "vkozlova@microsoft.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "1ab86f8d92e16e29a5de8502f84b750f47823c47",
+            "comment": "docs(breadcrumb): removed preview from all the links"
+          }
+        ],
+        "minor": [
+          {
+            "author": "marcosvmmoura@gmail.com",
+            "package": "@fluentui/react-breadcrumb",
+            "commit": "69fef129d9fba9bab5824281dd5c2f4fac1291ee",
+            "comment": "feat: release stable"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-button to v9.3.55",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-link to v9.1.34",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/react-breadcrumb",
+            "comment": "Bump @fluentui/react-tabster to v9.14.5",
+            "commit": "74af9993e1f812bdc9d8a4635f8477295168efa8"
+          }
+        ]
+      }
+    },
     {
       "date": "Fri, 10 Nov 2023 13:46:32 GMT",
       "tag": "@fluentui/react-breadcrumb-preview_v2.1.2",
