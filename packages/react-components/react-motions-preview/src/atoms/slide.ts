@@ -18,7 +18,7 @@ type SlideParams = {
 // Slide Down Ins
 // --------------------------------------------------
 
-export const slideDownEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(-${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -29,7 +29,7 @@ export const slideDownEnterUltraFast = ({ fromValue = '20px' }: SlideParams): Mo
   },
 });
 
-export const slideDownEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(-${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -40,7 +40,7 @@ export const slideDownEnterFaster = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideDownEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(-${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -51,7 +51,7 @@ export const slideDownEnterFast = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideDownEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(-${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -62,7 +62,7 @@ export const slideDownEnterNormal = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideDownEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(-${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -73,7 +73,7 @@ export const slideDownEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideDownEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(-${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -84,7 +84,7 @@ export const slideDownEnterSlower = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideDownEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(-${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -98,7 +98,7 @@ export const slideDownEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): Mo
 // Slide Up Ins
 // --------------------------------------------------
 
-export const slideUpEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -109,7 +109,7 @@ export const slideUpEnterUltraFast = ({ fromValue = '20px' }: SlideParams): Moti
   },
 });
 
-export const slideUpEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -120,7 +120,7 @@ export const slideUpEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideUpEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -131,7 +131,7 @@ export const slideUpEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAto
   },
 });
 
-export const slideUpEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -142,7 +142,7 @@ export const slideUpEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideUpEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -153,7 +153,7 @@ export const slideUpEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAto
   },
 });
 
-export const slideUpEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -164,7 +164,7 @@ export const slideUpEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideUpEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateY(${fromValue})`, opacity: 0 },
     { transform: 'translateY(0px)', opacity: 1 },
@@ -178,7 +178,7 @@ export const slideUpEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): Moti
 // Slide Left Ins
 // --------------------------------------------------
 
-export const slideLeftEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -189,7 +189,7 @@ export const slideLeftEnterUltraFast = ({ fromValue = '20px' }: SlideParams): Mo
   },
 });
 
-export const slideLeftEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -200,7 +200,7 @@ export const slideLeftEnterFaster = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideLeftEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -211,7 +211,7 @@ export const slideLeftEnterFast = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideLeftEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -222,7 +222,7 @@ export const slideLeftEnterNormal = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideLeftEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -233,7 +233,7 @@ export const slideLeftEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideLeftEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -244,7 +244,7 @@ export const slideLeftEnterSlower = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideLeftEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -258,7 +258,7 @@ export const slideLeftEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): Mo
 // Slide Right Ins
 // --------------------------------------------------
 
-export const slideRightEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightEnterUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(-${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -269,7 +269,7 @@ export const slideRightEnterUltraFast = ({ fromValue = '20px' }: SlideParams): M
   },
 });
 
-export const slideRightEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightEnterFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(-${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -280,7 +280,7 @@ export const slideRightEnterFaster = ({ fromValue = '20px' }: SlideParams): Moti
   },
 });
 
-export const slideRightEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightEnterFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(-${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -291,7 +291,7 @@ export const slideRightEnterFast = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideRightEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightEnterNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(-${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -302,7 +302,7 @@ export const slideRightEnterNormal = ({ fromValue = '20px' }: SlideParams): Moti
   },
 });
 
-export const slideRightEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightEnterSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(-${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -313,7 +313,7 @@ export const slideRightEnterSlow = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideRightEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightEnterSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(-${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -324,7 +324,7 @@ export const slideRightEnterSlower = ({ fromValue = '20px' }: SlideParams): Moti
   },
 });
 
-export const slideRightEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: `translateX(-${fromValue})`, opacity: 0 },
     { transform: 'translateX(0px)', opacity: 1 },
@@ -338,7 +338,7 @@ export const slideRightEnterUltraSlow = ({ fromValue = '20px' }: SlideParams): M
 // Slide Down Outs
 // --------------------------------------------------
 
-export const slideDownExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(${fromValue})`, opacity: 0 },
@@ -349,7 +349,7 @@ export const slideDownExitUltraFast = ({ fromValue = '20px' }: SlideParams): Mot
   },
 });
 
-export const slideDownExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(${fromValue})`, opacity: 0 },
@@ -360,7 +360,7 @@ export const slideDownExitFaster = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideDownExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(${fromValue})`, opacity: 0 },
@@ -371,7 +371,7 @@ export const slideDownExitFast = ({ fromValue = '20px' }: SlideParams): MotionAt
   },
 });
 
-export const slideDownExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(${fromValue})`, opacity: 0 },
@@ -382,7 +382,7 @@ export const slideDownExitNormal = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideDownExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(${fromValue})`, opacity: 0 },
@@ -393,7 +393,7 @@ export const slideDownExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAt
   },
 });
 
-export const slideDownExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(${fromValue})`, opacity: 0 },
@@ -404,7 +404,7 @@ export const slideDownExitSlower = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideDownExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const downExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(${fromValue})`, opacity: 0 },
@@ -418,7 +418,7 @@ export const slideDownExitUltraSlow = ({ fromValue = '20px' }: SlideParams): Mot
 // Slide Up Outs
 // --------------------------------------------------
 
-export const slideUpExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(-${fromValue})`, opacity: 0 },
@@ -429,7 +429,7 @@ export const slideUpExitUltraFast = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideUpExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(-${fromValue})`, opacity: 0 },
@@ -440,7 +440,7 @@ export const slideUpExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAt
   },
 });
 
-export const slideUpExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(-${fromValue})`, opacity: 0 },
@@ -451,7 +451,7 @@ export const slideUpExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom
   },
 });
 
-export const slideUpExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(-${fromValue})`, opacity: 0 },
@@ -462,7 +462,7 @@ export const slideUpExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAt
   },
 });
 
-export const slideUpExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(-${fromValue})`, opacity: 0 },
@@ -473,7 +473,7 @@ export const slideUpExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom
   },
 });
 
-export const slideUpExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(-${fromValue})`, opacity: 0 },
@@ -484,7 +484,7 @@ export const slideUpExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAt
   },
 });
 
-export const slideUpExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const upExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateY(0px)', opacity: 1 },
     { transform: `translateY(-${fromValue})`, opacity: 0 },
@@ -498,7 +498,7 @@ export const slideUpExitUltraSlow = ({ fromValue = '20px' }: SlideParams): Motio
 // Slide Right Outs
 // --------------------------------------------------
 
-export const slideRightExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(${fromValue})`, opacity: 0 },
@@ -509,7 +509,7 @@ export const slideRightExitUltraFast = ({ fromValue = '20px' }: SlideParams): Mo
   },
 });
 //
-export const slideRightExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(${fromValue})`, opacity: 0 },
@@ -520,7 +520,7 @@ export const slideRightExitFaster = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideRightExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(${fromValue})`, opacity: 0 },
@@ -531,7 +531,7 @@ export const slideRightExitFast = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideRightExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(${fromValue})`, opacity: 0 },
@@ -542,7 +542,7 @@ export const slideRightExitNormal = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideRightExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(${fromValue})`, opacity: 0 },
@@ -553,7 +553,7 @@ export const slideRightExitSlow = ({ fromValue = '20px' }: SlideParams): MotionA
   },
 });
 
-export const slideRightExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(${fromValue})`, opacity: 0 },
@@ -564,7 +564,7 @@ export const slideRightExitSlower = ({ fromValue = '20px' }: SlideParams): Motio
   },
 });
 
-export const slideRightExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const rightExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(${fromValue})`, opacity: 0 },
@@ -578,7 +578,7 @@ export const slideRightExitUltraSlow = ({ fromValue = '20px' }: SlideParams): Mo
 // Slide Left Outs
 // --------------------------------------------------
 
-export const slideLeftExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftExitUltraFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(-${fromValue})`, opacity: 0 },
@@ -589,7 +589,7 @@ export const slideLeftExitUltraFast = ({ fromValue = '20px' }: SlideParams): Mot
   },
 });
 
-export const slideLeftExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftExitFaster = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(-${fromValue})`, opacity: 0 },
@@ -600,7 +600,7 @@ export const slideLeftExitFaster = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideLeftExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftExitFast = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(-${fromValue})`, opacity: 0 },
@@ -611,7 +611,7 @@ export const slideLeftExitFast = ({ fromValue = '20px' }: SlideParams): MotionAt
   },
 });
 
-export const slideLeftExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftExitNormal = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(-${fromValue})`, opacity: 0 },
@@ -622,7 +622,7 @@ export const slideLeftExitNormal = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideLeftExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(-${fromValue})`, opacity: 0 },
@@ -633,7 +633,7 @@ export const slideLeftExitSlow = ({ fromValue = '20px' }: SlideParams): MotionAt
   },
 });
 
-export const slideLeftExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftExitSlower = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(-${fromValue})`, opacity: 0 },
@@ -644,7 +644,7 @@ export const slideLeftExitSlower = ({ fromValue = '20px' }: SlideParams): Motion
   },
 });
 
-export const slideLeftExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
+export const leftExitUltraSlow = ({ fromValue = '20px' }: SlideParams): MotionAtom => ({
   keyframes: [
     { transform: 'translateX(0px)', opacity: 1 },
     { transform: `translateX(-${fromValue})`, opacity: 0 },
