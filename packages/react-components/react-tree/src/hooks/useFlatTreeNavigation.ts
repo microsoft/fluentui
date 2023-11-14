@@ -1,30 +1,39 @@
-import { useFluent_unstable } from '@fluentui/react-shared-contexts';
-import { useEventCallback } from '@fluentui/react-utilities';
-import { TreeNavigationData_unstable } from '../../Tree';
-import { nextTypeAheadElement } from '../../utils/nextTypeAheadElement';
-import { treeDataTypes } from '../../utils/tokens';
-import { treeItemFilter } from '../../utils/treeItemFilter';
-import { useRovingTabIndex } from '../../hooks/useRovingTabIndexes';
-import { HTMLElementWalker } from '../../utils/createHTMLElementWalker';
-import { TreeItemValue } from '../../TreeItem';
-import { dataTreeItemValueAttrName } from '../../utils/getTreeItemValueFromElement';
+import { useEventCallback, useMergedRefs } from '@fluentui/react-utilities';
+import { TreeNavigationData_unstable } from '../Tree';
+import { nextTypeAheadElement } from '../utils/nextTypeAheadElement';
+import { treeDataTypes } from '../utils/tokens';
+import { useRovingTabIndex } from './useRovingTabIndexes';
+import { HTMLElementWalker } from '../utils/createHTMLElementWalker';
+import { TreeItemValue } from '../TreeItem';
+import { dataTreeItemValueAttrName } from '../utils/getTreeItemValueFromElement';
+import * as React from 'react';
+import { useHTMLElementWalkerRef } from './useHTMLElementWalkerRef';
 
 export function useFlatTreeNavigation() {
-  const { targetDocument } = useFluent_unstable();
-  const { rove, initialize } = useRovingTabIndex(treeItemFilter);
+  const { walkerRef, rootRef: walkerRootRef } = useHTMLElementWalkerRef();
+  const { rove, initialize: initializeRovingTabIndex } = useRovingTabIndex();
 
-  function getNextElement(data: TreeNavigationData_unstable, walker: HTMLElementWalker) {
-    if (!targetDocument) {
+  const rootRefCallback: React.RefCallback<HTMLElement> = React.useCallback(
+    root => {
+      if (walkerRef.current && root) {
+        initializeRovingTabIndex(walkerRef.current);
+      }
+    },
+    [initializeRovingTabIndex, walkerRef],
+  );
+
+  function getNextElement(data: TreeNavigationData_unstable) {
+    if (!walkerRef.current) {
       return null;
     }
     switch (data.type) {
       case treeDataTypes.Click:
         return data.target;
       case treeDataTypes.TypeAhead:
-        walker.currentElement = data.target;
-        return nextTypeAheadElement(walker, data.event.key);
+        walkerRef.current.currentElement = data.target;
+        return nextTypeAheadElement(walkerRef.current, data.event.key);
       case treeDataTypes.ArrowLeft: {
-        const nextElement = parentElement(data.parentValue, walker);
+        const nextElement = parentElement(data.parentValue, walkerRef.current);
         if (!nextElement && process.env.NODE_ENV !== 'production') {
           // eslint-disable-next-line no-console
           console.warn(
@@ -39,8 +48,8 @@ export function useFlatTreeNavigation() {
         return nextElement;
       }
       case treeDataTypes.ArrowRight: {
-        walker.currentElement = data.target;
-        const nextElement = firstChild(data.target, walker);
+        walkerRef.current.currentElement = data.target;
+        const nextElement = firstChild(data.target, walkerRef.current);
         if (!nextElement && process.env.NODE_ENV !== 'production') {
           const ariaLevel = Number(data.target.getAttribute('aria-level'));
           // eslint-disable-next-line no-console
@@ -57,26 +66,26 @@ export function useFlatTreeNavigation() {
         return nextElement;
       }
       case treeDataTypes.End:
-        walker.currentElement = walker.root;
-        return walker.lastChild();
+        walkerRef.current.currentElement = walkerRef.current.root;
+        return walkerRef.current.lastChild();
       case treeDataTypes.Home:
-        walker.currentElement = walker.root;
-        return walker.firstChild();
+        walkerRef.current.currentElement = walkerRef.current.root;
+        return walkerRef.current.firstChild();
       case treeDataTypes.ArrowDown:
-        walker.currentElement = data.target;
-        return walker.nextElement();
+        walkerRef.current.currentElement = data.target;
+        return walkerRef.current.nextElement();
       case treeDataTypes.ArrowUp:
-        walker.currentElement = data.target;
-        return walker.previousElement();
+        walkerRef.current.currentElement = data.target;
+        return walkerRef.current.previousElement();
     }
   }
-  const navigate = useEventCallback((data: TreeNavigationData_unstable, walker: HTMLElementWalker) => {
-    const nextElement = getNextElement(data, walker);
+  const navigate = useEventCallback((data: TreeNavigationData_unstable) => {
+    const nextElement = getNextElement(data);
     if (nextElement) {
       rove(nextElement);
     }
   });
-  return { navigate, initialize } as const;
+  return { navigate, rootRef: useMergedRefs<HTMLDivElement>(walkerRootRef, rootRefCallback) } as const;
 }
 
 function firstChild(target: HTMLElement, treeWalker: HTMLElementWalker): HTMLElement | null {
