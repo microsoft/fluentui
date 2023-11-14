@@ -12,7 +12,7 @@ import type {
   OverflowManager,
   ObserveOptions,
 } from '@fluentui/priority-overflow';
-import { canUseDOM, useEventCallback, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
+import { canUseDOM, useEventCallback, useFirstMount, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { UseOverflowContainerReturn } from './types';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
@@ -27,15 +27,18 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   options: Omit<ObserveOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
   const { overflowAxis, overflowDirection, padding, minimumVisible, onUpdateItemVisibility } = options;
+  const firstMount = useFirstMount();
 
   // DOM ref to the overflow container element
   const containerRef = React.useRef<TElement>(null);
   const updateOverflowItems = useEventCallback(update);
 
-  const [overflowManager, setOverflowManager] = React.useState<OverflowManager | null>(null);
+  const [overflowManager, setOverflowManager] = React.useState<OverflowManager | null>(() =>
+    canUseDOM() ? createOverflowManager() : null,
+  );
 
   useIsomorphicLayoutEffect(() => {
-    if (!containerRef.current || !canUseDOM()) {
+    if (!containerRef.current || !canUseDOM() || firstMount) {
       return;
     }
 
@@ -55,7 +58,15 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     return () => {
       newOverflowManager.disconnect();
     };
-  }, [updateOverflowItems, overflowDirection, overflowAxis, padding, minimumVisible, onUpdateItemVisibility]);
+  }, [
+    updateOverflowItems,
+    overflowDirection,
+    overflowAxis,
+    padding,
+    minimumVisible,
+    onUpdateItemVisibility,
+    firstMount,
+  ]);
 
   const registerItem = React.useCallback(
     (item: OverflowItemEntry) => {
