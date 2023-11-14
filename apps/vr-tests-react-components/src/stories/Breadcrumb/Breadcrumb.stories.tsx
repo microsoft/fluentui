@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breadcrumb } from '@fluentui/react-breadcrumb-preview';
+import { Breadcrumb } from '@fluentui/react-breadcrumb';
 import { SampleBreadcrumbButtons, steps } from './utils';
 import { ComponentMeta } from '@storybook/react';
 import { getStoryVariant, DARK_MODE, HIGH_CONTRAST, RTL, withStoryWrightSteps } from '../../utilities';

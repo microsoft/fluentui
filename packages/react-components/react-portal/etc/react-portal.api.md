@@ -33,6 +33,12 @@ export const renderPortal_unstable: (state: PortalState) => React_2.ReactElement
 
 export { setVirtualParent }
 
+// @public (undocumented)
+export function toMountNodeProps(mountNode: PortalProps['mountNode']): {
+    element?: HTMLElement | null;
+    className?: string;
+};
+
 // @public
 export const usePortal_unstable: (props: PortalProps) => PortalState;
 

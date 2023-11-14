@@ -194,8 +194,7 @@ describe('Line chart rendering', () => {
     { data: dateChartPoints },
     container => {
       // Assert
-      // @FIXME: this tests is failing with jest 29.7.0
-      // expect(container).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     },
     undefined,
     beforeAll,
@@ -624,8 +623,7 @@ describe('Screen resolution', () => {
         global.dispatchEvent(new Event('resize'));
       });
       // Assert
-      // @FIXME: this tests is failing with jest 29.7.0
-      // expect(container).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     },
   );
 
@@ -641,14 +639,12 @@ describe('Screen resolution', () => {
         global.dispatchEvent(new Event('resize'));
       });
       // Assert
-      // @FIXME: this tests is failing with jest 29.7.0
-      // expect(container).toMatchSnapshot();
+      expect(container).toMatchSnapshot();
     },
   );
 });
 
-// @FIXME: this tests is failing with jest 29.7.0
-test.skip('Should reflect theme change', () => {
+test('Should reflect theme change', () => {
   // Arrange
   const { container } = render(
     <ThemeProvider theme={DarkTheme}>

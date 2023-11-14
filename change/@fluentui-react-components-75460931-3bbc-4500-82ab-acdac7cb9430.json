@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "feat: add @fluentui/react-breadcrumb to suite",
+  "packageName": "@fluentui/react-components",
+  "email": "marcosvmmoura@gmail.com",
+  "dependentChangeType": "patch"
+}

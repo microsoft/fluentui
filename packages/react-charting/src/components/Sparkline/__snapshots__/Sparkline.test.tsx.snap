@@ -62,6 +62,7 @@ exports[`Sparkline snapShot testing renders Sparkline correctly 1`] = `
             }
         dx={8}
         dy={-5}
+        textAnchor="start"
         x="0%"
         y="100%"
       >

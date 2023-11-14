@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "feat: release stable 9.0.0",
-  "packageName": "@fluentui/react-drawer",
-  "email": "marcosvmmoura@gmail.com",
-  "dependentChangeType": "patch"
-}
