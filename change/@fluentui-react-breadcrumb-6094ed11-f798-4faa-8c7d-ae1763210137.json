@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "docs(breadcrumb): removed preview from all the links",
+  "packageName": "@fluentui/react-breadcrumb",
+  "email": "vkozlova@microsoft.com",
+  "dependentChangeType": "patch"
+}
