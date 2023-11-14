@@ -4,6 +4,8 @@
 
 ```ts
 
+import * as React_2 from 'react';
+
 declare namespace atoms {
     export {
         fade,
@@ -12,6 +14,9 @@ declare namespace atoms {
     }
 }
 export { atoms }
+
+// @public
+export function createAtom(motion: MotionAtom): React_2.FC<AtomProps>;
 
 // @public (undocumented)
 const downEnterFast: ({ fromValue }: SlideParams) => MotionAtom;
