@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbButton } from '@fluentui/react-breadcrumb-preview';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider, BreadcrumbButton } from '@fluentui/react-components';
 import { bundleIcon, CalendarMonth20Filled, CalendarMonth20Regular } from '@fluentui/react-icons';
 const CalendarMonth = bundleIcon(CalendarMonth20Filled, CalendarMonth20Regular);
 

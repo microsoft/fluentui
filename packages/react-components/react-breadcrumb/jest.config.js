@@ -4,7 +4,7 @@
  * @type {import('@jest/types').Config.InitialOptions}
  */
 module.exports = {
-  displayName: 'react-breadcrumb-preview',
+  displayName: 'react-breadcrumb',
   preset: '../../../jest.preset.js',
   transform: {
     '^.+\\.tsx?$': [

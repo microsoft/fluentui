@@ -1,4 +1,4 @@
-# @fluentui/react-breadcrumb-preview
+# @fluentui/react-breadcrumb
 
 **React Breadcrumb components for [Fluent UI React](https://react.fluentui.dev/)**
 
@@ -23,7 +23,7 @@ import {
 Simple example of Breadcrumb Usage:
 
 ```tsx
-import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider } from '@fluentui/react-breadcrumb-preview';
+import { Breadcrumb, BreadcrumbItem, BreadcrumbDivider } from '@fluentui/react-breadcrumb';
 
 export const App = () => (
   <Breadcrumb aria-label="breadcrumb">
