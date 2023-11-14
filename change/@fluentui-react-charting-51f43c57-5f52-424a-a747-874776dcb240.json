@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "fix: Text in sparkline does not render correctly in RTL mode",
-  "packageName": "@fluentui/react-charting",
-  "email": "gautam33776@gmail.com",
-  "dependentChangeType": "patch"
-}
