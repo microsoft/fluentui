@@ -2,6 +2,26 @@ import * as React from 'react';
 import { canUseDOM, useIsomorphicLayoutEffect } from '@fluentui/react-utilities';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
+type MediaQueryListener = (e: MediaQueryListEvent) => void;
+
+/**
+ * @internal
+ * Event listener manager for useReducedMotion hook to avoid adding multiple listeners
+ */
+const listenerManager = {
+  listeners: new Set<MediaQueryListener>(),
+  addListener(listener: MediaQueryListener) {
+    this.listeners.add(listener);
+  },
+  removeListener(listener: MediaQueryListener) {
+    this.listeners.delete(listener);
+  },
+  notifyListeners(e: MediaQueryListEvent) {
+    this.listeners.forEach(listener => listener(e));
+  },
+};
+let matcher: MediaQueryList | null = null;
+
 /**
  * @internal
  *
@@ -9,28 +29,40 @@ import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts
  */
 export const useReducedMotion = (): boolean => {
   const fluent = useFluent();
-  const reducedMotion = React.useRef(false);
   const targetWindow = canUseDOM() && fluent.targetDocument?.defaultView;
+  const [reducedMotion, setReducedMotion] = React.useState(false);
 
-  const onMediaQueryChange = React.useCallback((e: MediaQueryListEvent) => {
-    reducedMotion.current = e.matches;
-  }, []);
+  const onMediaQueryChange = React.useCallback((e: MediaQueryListEvent) => setReducedMotion(e.matches), []);
 
   useIsomorphicLayoutEffect(() => {
     if (!targetWindow || !targetWindow.matchMedia) {
       return;
     }
 
-    const match = targetWindow.matchMedia('screen and (prefers-reduced-motion: reduce)');
-
-    if (match.matches) {
-      reducedMotion.current = true;
+    // If the event is not yet registered, register it and call the listener
+    if (!matcher) {
+      matcher = targetWindow.matchMedia('screen and (prefers-reduced-motion: reduce)');
+      matcher.addEventListener('change', listenerManager.notifyListeners);
+      onMediaQueryChange({ matches: matcher.matches } as MediaQueryListEvent);
     }
-
-    match.addEventListener('change', onMediaQueryChange);
-
-    return () => match.removeEventListener('change', onMediaQueryChange);
   }, [onMediaQueryChange, targetWindow]);
 
-  return reducedMotion.current;
+  // Add the listener to the manager
+  React.useEffect(() => {
+    listenerManager.addListener(onMediaQueryChange);
+
+    return () => {
+      listenerManager.removeListener(onMediaQueryChange);
+
+      // If the component unmounts and there are no more listeners, remove the event listener
+      if (matcher && listenerManager.listeners.size === 0) {
+        matcher.removeEventListener('change', listenerManager.notifyListeners);
+        matcher = null;
+      }
+    };
+    // We only want to add the listener once
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return reducedMotion;
 };
