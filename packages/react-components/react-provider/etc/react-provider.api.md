@@ -139,6 +139,15 @@ export const FluentProvider: React_2.ForwardRefExoticComponent<Omit<ComponentPro
         useMessageBarActionsStyles_unstable: (state: unknown) => void;
         useMessageBarGroupStyles_unstable: (state: unknown) => void;
         useToasterStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverActionsStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverBodyStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverButtonStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverCarouselStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverHeaderStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverPageCountStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverSurfaceStyles_unstable: (state: unknown) => void;
+        useTeachingPopoverTitleStyles_unstable: (state: unknown) => void;
     }> | undefined;
     dir?: "ltr" | "rtl" | undefined;
     targetDocument?: Document | undefined;
