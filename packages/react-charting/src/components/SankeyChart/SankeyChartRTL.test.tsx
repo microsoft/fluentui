@@ -4,7 +4,7 @@ import { queryAllByAttribute, render, waitFor, screen, fireEvent } from '@testin
 import { data } from './SankeyChart.test';
 import { IChartProps, SankeyChart } from './index';
 import { resetIds } from '../../Utilities';
-import { SankeyChartBase } from './SankeyChart.base';
+// import { SankeyChartBase } from './SankeyChart.base';
 import { getByClass, testWithWait, testWithoutWait } from '../../utilities/TestUtility.test';
 import { DarkTheme } from '@fluentui/theme-samples';
 import { ThemeProvider } from '@fluentui/react';
