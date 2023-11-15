@@ -11,7 +11,7 @@ import {
 
 import type { MotionAtom } from '../types';
 
-type FadeParams = {
+export type FadeParams = {
   fromValue?: number;
 };
 
@@ -74,7 +74,7 @@ export const enterUltraSlow = ({ fromValue = 0 }: FadeParams = {}): MotionAtom =
   },
 });
 
-// Fade Ins
+// Fade Outs
 // --------------------------------------------------
 
 export const exitUltraFast = ({ fromValue = 0 }: FadeParams = {}): MotionAtom => ({
