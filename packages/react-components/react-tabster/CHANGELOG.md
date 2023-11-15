@@ -1,8 +1,17 @@
 # Change Log - @fluentui/react-tabster
 
-This log was last generated on Thu, 09 Nov 2023 17:29:44 GMT and should not be manually modified.
+This log was last generated on Tue, 14 Nov 2023 17:51:27 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [9.14.5](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.14.5)
+
+Tue, 14 Nov 2023 17:51:27 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-tabster_v9.14.4..@fluentui/react-tabster_v9.14.5)
+
+### Patches
+
+- Improving how Tabster uncontrolled areas are handled for better interop with third party focus management tools like FocusZone. ([PR #29832](https://github.com/microsoft/fluentui/pull/29832) by marata@microsoft.com)
 
 ## [9.14.4](https://github.com/microsoft/fluentui/tree/@fluentui/react-tabster_v9.14.4)
 

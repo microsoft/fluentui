@@ -16861,10 +16861,17 @@ karma@6.4.0:
     ua-parser-js "^0.7.30"
     yargs "^16.1.1"
 
+<<<<<<< HEAD
 keyborg@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.1.0.tgz#e6975b83ade58bef7bed13d6e107b9ed2b98ccd3"
   integrity sha512-0+v3/GIYG6gClwBOXrHet31n1UJW49xbKgVPUu6we41aq9tAmMosVXEdctZxsQdebyxtrcxVTkvHjBD1XPOHwg==
+=======
+keyborg@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/keyborg/-/keyborg-2.2.0.tgz#a59c431f3b949dcec3b0357d5b9c6b7a69d0c1e9"
+  integrity sha512-yQa1dz+FilQ+w3JM6GH2V/wnFeQhfbkK9stvs3UiraW3GOEO7zrOBBh0ZuHsrzeN1xx6v7P5EpA2JtOUUnfN/w==
+>>>>>>> master
 
 keyborg@^2.2.0:
   version "2.2.0"
@@ -24054,7 +24061,11 @@ table@^6.0.4, table@^6.0.7:
     string-width "^4.2.3"
     strip-ansi "^6.0.1"
 
+<<<<<<< HEAD
 tabster@^5.0.0:
+=======
+tabster@^5.0.1:
+>>>>>>> master
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/tabster/-/tabster-5.0.1.tgz#e6a1bd6f11db87826f11e36c207c29b7314b4c77"
   integrity sha512-j5GGbN214MiPihGKemENq+fAHKoEpKZvVKakG/reUk3u+dPm/xvmlxYCQY8XayzxpvEu0i/6cMYjBMsEjcvdgA==

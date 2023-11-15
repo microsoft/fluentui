@@ -11,6 +11,13 @@ export const checkboxClassNames: SlotClassNames<CheckboxSlots> = {
   indicator: 'fui-Checkbox__indicator',
 };
 
+// CSS variables used internally in Checkbox's styles
+const vars = {
+  indicatorColor: '--fui-Checkbox__indicator--color',
+  indicatorBorderColor: '--fui-Checkbox__indicator--borderColor',
+  indicatorBackgroundColor: '--fui-Checkbox__indicator--backgroundColor',
+} as const;
+
 // The indicator size is used by the indicator and label styles
 const indicatorSizeMedium = '16px';
 const indicatorSizeLarge = '20px';
@@ -28,63 +35,45 @@ const useRootStyles = makeStyles({
   unchecked: {
     ':hover': {
       color: tokens.colorNeutralForeground2,
-      [`> .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessibleHover),
-      },
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessibleHover,
     },
 
     ':active': {
       color: tokens.colorNeutralForeground1,
-      [`> .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorNeutralStrokeAccessiblePressed),
-      },
+      [vars.indicatorBorderColor]: tokens.colorNeutralStrokeAccessiblePressed,
     },
   },
 
   checked: {
     color: tokens.colorNeutralForeground1,
-
-    [`> .${checkboxClassNames.indicator}`]: {
-      backgroundColor: tokens.colorCompoundBrandBackground,
-      color: tokens.colorNeutralForegroundInverted,
-      ...shorthands.borderColor(tokens.colorCompoundBrandBackground),
-    },
+    [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackground,
+    [vars.indicatorColor]: tokens.colorNeutralForegroundInverted,
+    [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackground,
 
     ':hover': {
-      [`> .${checkboxClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundHover,
-        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundHover),
-      },
+      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundHover,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundHover,
     },
 
     ':active': {
-      [`> .${checkboxClassNames.indicator}`]: {
-        backgroundColor: tokens.colorCompoundBrandBackgroundPressed,
-        ...shorthands.borderColor(tokens.colorCompoundBrandBackgroundPressed),
-      },
+      [vars.indicatorBackgroundColor]: tokens.colorCompoundBrandBackgroundPressed,
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandBackgroundPressed,
     },
   },
 
   mixed: {
     color: tokens.colorNeutralForeground1,
-
-    [`> .${checkboxClassNames.indicator}`]: {
-      ...shorthands.borderColor(tokens.colorCompoundBrandStroke),
-      color: tokens.colorCompoundBrandForeground1,
-    },
+    [vars.indicatorBorderColor]: tokens.colorCompoundBrandStroke,
+    [vars.indicatorColor]: tokens.colorCompoundBrandForeground1,
 
     ':hover': {
-      [`> .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorCompoundBrandStrokeHover),
-        color: tokens.colorCompoundBrandForeground1Hover,
-      },
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokeHover,
+      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Hover,
     },
 
     ':active': {
-      [`> .${checkboxClassNames.indicator}`]: {
-        ...shorthands.borderColor(tokens.colorCompoundBrandStrokePressed),
-        color: tokens.colorCompoundBrandForeground1Pressed,
-      },
+      [vars.indicatorBorderColor]: tokens.colorCompoundBrandStrokePressed,
+      [vars.indicatorColor]: tokens.colorCompoundBrandForeground1Pressed,
     },
   },
 
@@ -92,17 +81,12 @@ const useRootStyles = makeStyles({
     cursor: 'default',
 
     color: tokens.colorNeutralForegroundDisabled,
-
-    [`> .${checkboxClassNames.indicator}`]: {
-      ...shorthands.borderColor(tokens.colorNeutralStrokeDisabled),
-      color: tokens.colorNeutralForegroundDisabled,
-    },
+    [vars.indicatorBorderColor]: tokens.colorNeutralStrokeDisabled,
+    [vars.indicatorColor]: tokens.colorNeutralForegroundDisabled,
 
     '@media (forced-colors: active)': {
       color: 'GrayText',
-      [`> .${checkboxClassNames.indicator}`]: {
-        color: 'GrayText',
-      },
+      [vars.indicatorColor]: 'GrayText',
     },
   },
 });
@@ -143,7 +127,11 @@ const useIndicatorBaseClassName = makeResetStyles({
   justifyContent: 'center',
   overflow: 'hidden',
 
-  border: tokens.strokeWidthThin + ' solid ' + tokens.colorNeutralStrokeAccessible,
+  color: `var(${vars.indicatorColor})`,
+  backgroundColor: `var(${vars.indicatorBackgroundColor})`,
+  borderColor: `var(${vars.indicatorBorderColor}, ${tokens.colorNeutralStrokeAccessible})`,
+  borderStyle: 'solid',
+  borderWidth: tokens.strokeWidthThin,
   borderRadius: tokens.borderRadiusSmall,
   margin: tokens.spacingVerticalS + ' ' + tokens.spacingHorizontalS,
   fill: 'currentColor',

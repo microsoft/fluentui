@@ -1,8 +1,27 @@
 # Change Log - @fluentui/react-charting
 
-This log was last generated on Fri, 10 Nov 2023 07:26:21 GMT and should not be manually modified.
+This log was last generated on Wed, 15 Nov 2023 07:28:11 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## [5.19.0](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.19.0)
+
+Wed, 15 Nov 2023 07:28:11 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.18..@fluentui/react-charting_v5.19.0)
+
+### Minor changes
+
+- add defaultSelectedLegeands and onChange for Legends ([PR #29799](https://github.com/microsoft/fluentui/pull/29799) by NewFuture@users.noreply.github.com)
+
+## [5.18.18](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.18)
+
+Tue, 14 Nov 2023 07:26:38 GMT 
+[Compare changes](https://github.com/microsoft/fluentui/compare/@fluentui/react-charting_v5.18.17..@fluentui/react-charting_v5.18.18)
+
+### Patches
+
+- fix: Text in sparkline does not render correctly in RTL mode ([PR #29817](https://github.com/microsoft/fluentui/pull/29817) by gautam33776@gmail.com)
+- Upgrading d3-scale dependent libraries ([PR #29754](https://github.com/microsoft/fluentui/pull/29754) by ankityadav@microsoft.com)
 
 ## [5.18.17](https://github.com/microsoft/fluentui/tree/@fluentui/react-charting_v5.18.17)
 
