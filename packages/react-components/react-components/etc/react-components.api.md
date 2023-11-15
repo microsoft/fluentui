@@ -1082,6 +1082,7 @@ import { useAccordionItemStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanel_unstable } from '@fluentui/react-accordion';
 import { useAccordionPanelStyles_unstable } from '@fluentui/react-accordion';
 import { useAccordionStyles_unstable } from '@fluentui/react-accordion';
+import { useAdamTableCompositeNavigation } from '@fluentui/react-table';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import { UseArrowNavigationGroupOptions } from '@fluentui/react-tabster';
 import { useAvatar_unstable } from '@fluentui/react-avatar';
@@ -3567,6 +3568,8 @@ export { useAccordionPanel_unstable }
 export { useAccordionPanelStyles_unstable }
 
 export { useAccordionStyles_unstable }
+
+export { useAdamTableCompositeNavigation }
 
 export { useArrowNavigationGroup }
 
