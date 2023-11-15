@@ -2,6 +2,51 @@
   "name": "@fluentui/web-components",
   "entries": [
     {
+      "date": "Thu, 26 Oct 2023 04:16:51 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.6",
+      "version": "3.0.0-beta.6",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "brian.christopher.brady@gmail.com",
+            "package": "@fluentui/web-components",
+            "commit": "dd16c56adf42b8f2771907749d3f8fde8eb52f4e",
+            "comment": "feat(dialog): add dialog web component"
+          }
+        ]
+      }
+    },
+    {
+      "date": "Thu, 19 Oct 2023 04:18:07 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.5",
+      "version": "3.0.0-beta.5",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "hale.rankin@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "ef39b5c4329868b9426612c188e31496b26d75e5",
+            "comment": "Updates package with Menu component sideEffect."
+          }
+        ]
+      }
+    },
+    {
+      "date": "Fri, 13 Oct 2023 04:17:27 GMT",
+      "tag": "@fluentui/web-components_v3.0.0-beta.4",
+      "version": "3.0.0-beta.4",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "chhol@microsoft.com",
+            "package": "@fluentui/web-components",
+            "commit": "af42938529ee2284a933a9f64db163c3bf283400",
+            "comment": "fix: update switch to use margin instead of transform for the checked state to support RTL"
+          }
+        ]
+      }
+    },
+    {
       "date": "Thu, 28 Sep 2023 04:18:49 GMT",
       "tag": "@fluentui/web-components_v3.0.0-beta.3",
       "version": "3.0.0-beta.3",
