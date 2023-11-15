@@ -130,8 +130,8 @@ describe('Sankey chart rendering', () => {
       },
     );
 
-    jest.spyOn(SankeyChartBase.prototype as any, '_truncateText').mockImplementation(() => 'test');
-    jest.spyOn(SankeyChartBase.prototype as any, '_createNodes').mockImplementation(() => []);
+    // jest.spyOn(SankeyChartBase.prototype as any, '_truncateText').mockImplementation(() => 'test');
+    // jest.spyOn(SankeyChartBase.prototype as any, '_createNodes').mockImplementation(() => []);
     // Arrange
     const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
     const getById = queryAllByAttribute.bind(null, 'id');
