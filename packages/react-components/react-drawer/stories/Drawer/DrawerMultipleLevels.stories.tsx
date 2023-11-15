@@ -6,8 +6,6 @@ import {
   DrawerHeaderNavigation,
   DrawerHeaderTitle,
   DrawerFooter,
-} from '@fluentui/react-drawer';
-import {
   Button,
   Toolbar,
   ToolbarGroup,
