@@ -1471,6 +1471,9 @@ exports[`DetailsListV2 renders List correctly 1`] = `
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
+                      opacity: 1;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -2546,6 +2549,9 @@ exports[`DetailsListV2 renders List correctly with onRenderDivider props 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -3770,6 +3776,9 @@ exports[`DetailsListV2 renders List in compact mode correctly 1`] = `
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
+                      opacity: 1;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -4848,6 +4857,9 @@ exports[`DetailsListV2 renders List in fixed constrained layout correctly 1`] = 
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
+                      opacity: 1;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -5923,6 +5935,9 @@ exports[`DetailsListV2 renders List with custom icon as column divider 1`] = `
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -7964,6 +7979,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                             opacity: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-GroupHeader-check {
+                            opacity: 1;
+                          }
                           & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                             opacity: 1;
                             transform: rotate(0.2deg) scale(1);
@@ -8239,6 +8257,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {
@@ -8567,6 +8588,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
                           & .ms-GroupSpacer {
                             flex-grow: 0;
                             flex-shrink: 0;
@@ -8863,6 +8887,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           .ms-Fabric--isFocusVisible &:focus .ms-GroupHeader-check {
                             opacity: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-GroupHeader-check {
+                            opacity: 1;
+                          }
                           & > .ms-GroupHeader .ms-GroupHeader-dropIcon {
                             opacity: 1;
                             transform: rotate(0.2deg) scale(1);
@@ -9138,6 +9165,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {
@@ -9466,6 +9496,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
                           & .ms-GroupSpacer {
                             flex-grow: 0;
                             flex-shrink: 0;
@@ -9790,6 +9823,9 @@ exports[`DetailsListV2 renders List with hidden checkboxes correctly 1`] = `
                             opacity: 1;
                           }
                           .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
+                            opacity: 1;
+                          }
+                          :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
                             opacity: 1;
                           }
                           & .ms-GroupSpacer {

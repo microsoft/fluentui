@@ -424,7 +424,16 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                             .ms-Fabric--isFocusVisible &:focus:hover {
                               background-color: #ffffff;
                             }
+                            :host(.ms-Fabric--isFocusVisible) &:focus {
+                              background-color: #ffffff;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:focus:hover {
+                              background-color: #ffffff;
+                            }
                             .ms-Fabric--isFocusVisible &:hover {
+                              background: inherit;
+                            }
+                            :host(.ms-Fabric--isFocusVisible) &:hover {
                               background: inherit;
                             }
                         onClick={[Function]}

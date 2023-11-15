@@ -157,6 +157,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
+                      opacity: 1;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1086,6 +1089,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
+                      opacity: 1;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
@@ -1939,6 +1945,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
       .ms-Fabric--isFocusVisible &:focus .ms-DetailsRow-check {
         opacity: 1;
       }
+      :host(.ms-Fabric--isFocusVisible) &:focus .ms-DetailsRow-check {
+        opacity: 1;
+      }
       & .ms-GroupSpacer {
         flex-grow: 0;
         flex-shrink: 0;
@@ -2576,6 +2585,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {
@@ -3505,6 +3517,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       height: 42px;
                     }
                     .ms-Fabric--isFocusVisible &:focus {
+                      opacity: 1;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
                       opacity: 1;
                     }
                     {

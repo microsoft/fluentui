@@ -37,6 +37,10 @@ exports[`Suggestions renders a list properly 1`] = `
               background: #edebe9;
               display: block;
             }
+            :host(.ms-Fabric--isFocusVisible) & .ms-Suggestions-closeButton {
+              background: #edebe9;
+              display: block;
+            }
             &:after {
               border: 1px solid #605e5c;
               bottom: 0px;
@@ -2378,6 +2382,10 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
               display: block;
             }
             .ms-Fabric--isFocusVisible & .ms-Suggestions-closeButton {
+              background: #edebe9;
+              display: block;
+            }
+            :host(.ms-Fabric--isFocusVisible) & .ms-Suggestions-closeButton {
               background: #edebe9;
               display: block;
             }
@@ -5935,6 +5943,10 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
               display: block;
             }
             .ms-Fabric--isFocusVisible & .ms-Suggestions-closeButton {
+              background: #edebe9;
+              display: block;
+            }
+            :host(.ms-Fabric--isFocusVisible) & .ms-Suggestions-closeButton {
               background: #edebe9;
               display: block;
             }

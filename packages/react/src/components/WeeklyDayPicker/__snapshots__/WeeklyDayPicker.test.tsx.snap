@@ -85,12 +85,27 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible &:focus {
           height: 53px;
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible .ms-WeeklyDayPicker-root:focus-within & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus-within & {
           height: 53px;
           min-height: 12px;
           overflow: initial;
@@ -3663,12 +3678,27 @@ exports[`WeeklyDayPicker renders WeeklyDayPicker with FirstDayOfWeek=Wednesday c
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible &:focus {
           height: 53px;
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible .ms-WeeklyDayPicker-root:focus-within & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus-within & {
           height: 53px;
           min-height: 12px;
           overflow: initial;
@@ -3792,12 +3822,27 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible &:focus {
           height: 53px;
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible .ms-WeeklyDayPicker-root:focus-within & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus-within & {
           height: 53px;
           min-height: 12px;
           overflow: initial;
@@ -7362,12 +7407,27 @@ exports[`WeeklyDayPicker renders default WeeklyDayPicker correctly 1`] = `
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible &:focus {
           height: 53px;
           min-height: 12px;
           overflow: initial;
         }
+        :host(.ms-Fabric--isFocusVisible) &:focus {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
         .ms-Fabric--isFocusVisible .ms-WeeklyDayPicker-root:focus-within & {
+          height: 53px;
+          min-height: 12px;
+          overflow: initial;
+        }
+        :host(.ms-Fabric--isFocusVisible) .ms-WeeklyDayPicker-root:focus-within & {
           height: 53px;
           min-height: 12px;
           overflow: initial;

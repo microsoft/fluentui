@@ -157,6 +157,9 @@ exports[`DetailsColumn renders a sortable icon on an unsorted column when showSo
                     .ms-Fabric--isFocusVisible &:focus {
                       opacity: 1;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus {
+                      opacity: 1;
+                    }
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;

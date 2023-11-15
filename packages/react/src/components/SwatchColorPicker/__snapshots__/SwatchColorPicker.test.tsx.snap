@@ -148,6 +148,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
                 &:hover {
                   background-color: #ffffff;
                   border: 2px solid #f3f2f1;
@@ -340,6 +352,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -536,6 +560,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
                 &:hover {
                   background-color: #ffffff;
                   border: 2px solid #f3f2f1;
@@ -728,6 +764,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -928,6 +976,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
                 &:hover {
                   background-color: #ffffff;
                   border: 2px solid #f3f2f1;
@@ -1120,6 +1180,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1316,6 +1388,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
                 &:hover {
                   background-color: #ffffff;
                   border: 2px solid #f3f2f1;
@@ -1508,6 +1592,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -1708,6 +1804,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
                 &:hover {
                   background-color: #ffffff;
                   border: 2px solid #f3f2f1;
@@ -1900,6 +2008,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {
@@ -2096,6 +2216,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
                   outline: 1px solid ButtonText;
                 }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
                 &:hover {
                   background-color: #ffffff;
                   border: 2px solid #f3f2f1;
@@ -2288,6 +2420,18 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   top: -2px;
                 }
                 @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus::after {
+                  outline: 1px solid ButtonText;
+                }
+                :host(.ms-Fabric--isFocusVisible) &:focus::after {
+                  border-color: #605e5c;
+                  border-radius: 50%;
+                  bottom: -2px;
+                  left: -2px;
+                  outline: none;
+                  right: -2px;
+                  top: -2px;
+                }
+                @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus::after {
                   outline: 1px solid ButtonText;
                 }
                 &:hover {

@@ -91,12 +91,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: -2px;
           }
           :host(.ms-Fabric--isFocusVisible) &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -139,6 +139,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {
@@ -278,12 +281,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             top: -2px;
           }
           :host(.ms-Fabric--isFocusVisible) &:focus:after {
-            border: 1px solid transparent;
+            border: 0px;
             bottom: 2px;
-            content: "";
+            content: attr(data-content);
             left: 2px;
             outline: 1px solid #605e5c;
-            position: absolute;
+            position: relative;
             right: 2px;
             top: 2px;
             z-index: 1;
@@ -325,6 +328,9 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             color: #004578;
           }
           .ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid #605e5c;
+          }
+          :host(.ms-Fabric--isFocusVisible) &:focus {
             outline: 1px solid #605e5c;
           }
           &:before {

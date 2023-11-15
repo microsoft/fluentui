@@ -115,6 +115,9 @@ exports[`DetailsHeader can render 1`] = `
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus {
+              opacity: 1;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1127,6 +1130,9 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
             .ms-Fabric--isFocusVisible &:focus {
               opacity: 1;
             }
+            :host(.ms-Fabric--isFocusVisible) &:focus {
+              opacity: 1;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2003,6 +2009,9 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               height: 42px;
             }
             .ms-Fabric--isFocusVisible &:focus {
+              opacity: 1;
+            }
+            :host(.ms-Fabric--isFocusVisible) &:focus {
               opacity: 1;
             }
             {

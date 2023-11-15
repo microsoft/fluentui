@@ -218,6 +218,7 @@ exports[`TeachingBubble renders renders with hasCloseIcon which is deprecated 1`
                   bottom: 1px;
                   content: "";
                   left: 1px;
+                  outline-color: #ffffff;
                   outline: 1px solid transparent;
                   position: absolute;
                   right: 1px;
