@@ -16,6 +16,8 @@ import { canUseDOM, useEventCallback, useFirstMount, useIsomorphicLayoutEffect }
 import { UseOverflowContainerReturn } from './types';
 import { DATA_OVERFLOWING, DATA_OVERFLOW_DIVIDER, DATA_OVERFLOW_ITEM, DATA_OVERFLOW_MENU } from './constants';
 
+const noop = () => null;
+
 /**
  * @internal
  * @param update - Callback when overflow state changes
@@ -26,16 +28,43 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
   update: OnUpdateOverflow,
   options: Omit<ObserveOptions, 'onUpdateOverflow'>,
 ): UseOverflowContainerReturn<TElement> => {
-  const { overflowAxis, overflowDirection, padding, minimumVisible, onUpdateItemVisibility } = options;
+  const {
+    overflowAxis = 'horizontal',
+    overflowDirection = 'end',
+    padding = 10,
+    minimumVisible = 0,
+    onUpdateItemVisibility = noop,
+  } = options;
+
+  const onUpdateOverflow = useEventCallback(update);
+
+  const overflowOptions = React.useMemo(
+    () => ({
+      overflowAxis,
+      overflowDirection,
+      padding,
+      minimumVisible,
+      onUpdateItemVisibility,
+      onUpdateOverflow,
+    }),
+    [minimumVisible, onUpdateItemVisibility, overflowAxis, overflowDirection, padding, onUpdateOverflow],
+  );
+
   const firstMount = useFirstMount();
 
   // DOM ref to the overflow container element
   const containerRef = React.useRef<TElement>(null);
-  const updateOverflowItems = useEventCallback(update);
 
   const [overflowManager, setOverflowManager] = React.useState<OverflowManager | null>(() =>
     canUseDOM() ? createOverflowManager() : null,
   );
+
+  // On first mount there is no need to create an overflow manager and re-render
+  useIsomorphicLayoutEffect(() => {
+    if (firstMount && containerRef.current) {
+      overflowManager?.observe(containerRef.current, overflowOptions);
+    }
+  }, [firstMount, overflowManager, overflowOptions]);
 
   useIsomorphicLayoutEffect(() => {
     if (!containerRef.current || !canUseDOM() || firstMount) {
@@ -43,30 +72,13 @@ export const useOverflowContainer = <TElement extends HTMLElement>(
     }
 
     const newOverflowManager = createOverflowManager();
-
-    newOverflowManager.observe(containerRef.current, {
-      overflowDirection: overflowDirection ?? 'end',
-      overflowAxis: overflowAxis ?? 'horizontal',
-      padding: padding ?? 10,
-      minimumVisible: minimumVisible ?? 0,
-      onUpdateItemVisibility: onUpdateItemVisibility ?? (() => undefined),
-      onUpdateOverflow: updateOverflowItems ?? (() => undefined),
-    });
-
+    newOverflowManager.observe(containerRef.current, overflowOptions);
     setOverflowManager(newOverflowManager);
 
     return () => {
       newOverflowManager.disconnect();
     };
-  }, [
-    updateOverflowItems,
-    overflowDirection,
-    overflowAxis,
-    padding,
-    minimumVisible,
-    onUpdateItemVisibility,
-    firstMount,
-  ]);
+  }, [overflowOptions, firstMount]);
 
   const registerItem = React.useCallback(
     (item: OverflowItemEntry) => {
