@@ -176,18 +176,18 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
   );
 
   // Callback ref that attaches a keyborg:focusin event listener.
-  const keyborgListenerCallbackRef = React.useMemo(() => {
+  const [keyborgListenerCallbackRef] = React.useState(() => {
     const onKeyborgFocusIn = ((ev: KeyborgFocusInEvent) => {
       // Skip showing the tooltip if focus moved programmatically.
-      // For example, we don't want to show the tooltip when a dialog is closed and Tabster
-      // programmatically restores focus to the button that triggered the dialog.
+      // For example, we don't want to show the tooltip when a dialog is closed
+      // and Tabster programmatically restores focus to the trigger button.
       // See https://github.com/microsoft/fluentui/issues/27576
       if (ev.details?.isFocusedProgrammatically) {
         ignoreNextFocusEventRef.current = true;
       }
     }) as EventListener;
 
-    // Save the currently registered element so we can remove the listener from it when the ref changes
+    // Save the current element to remove the listener when the ref changes
     let current: Element | null = null;
 
     // Callback ref that attaches the listener to the element
@@ -196,7 +196,7 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
       element?.addEventListener(KEYBORG_FOCUSIN, onKeyborgFocusIn);
       current = element;
     };
-  }, []);
+  });
 
   // Listener for onPointerLeave and onBlur on the trigger element
   const onLeaveTrigger = React.useCallback(
@@ -261,9 +261,9 @@ export const useTooltip_unstable = (props: TooltipProps): TooltipState => {
     ...child?.props,
     ref: useMergedRefs(
       child?.ref,
+      keyborgListenerCallbackRef,
       // If the target prop is not provided, attach targetRef to the trigger element's ref prop
       positioningOptions.target === undefined ? targetRef : undefined,
-      keyborgListenerCallbackRef,
     ),
     onPointerEnter: useEventCallback(mergeCallbacks(child?.props?.onPointerEnter, onEnterTrigger)),
     onPointerLeave: useEventCallback(mergeCallbacks(child?.props?.onPointerLeave, onLeaveTrigger)),
