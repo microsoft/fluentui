@@ -120,6 +120,16 @@ describe('Sankey chart - Theme', () => {
 describe('Sankey chart rendering', () => {
   beforeEach(sharedBeforeEach);
   test('Should re-render the Sankey chart with data', async () => {
+    // Replace the original method with the mock implementation
+    const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
+    Object.defineProperty(
+      Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+      'getComputedTextLength',
+      {
+        value: mockGetComputedTextLength,
+      },
+    );
+
     jest.spyOn(SankeyChartBase.prototype as any, '_truncateText').mockImplementation(() => 'test');
     jest.spyOn(SankeyChartBase.prototype as any, '_createNodes').mockImplementation(() => []);
     // Arrange
