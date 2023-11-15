@@ -9,7 +9,7 @@ import { useDynamicVirtualizerMeasure } from '../../Hooks';
 import { useVirtualizerContextState_unstable, scrollToItemDynamic } from '../../Utilities';
 import type { VirtualizerDataRef } from '../Virtualizer/Virtualizer.types';
 import { useImperativeHandle } from 'react';
-import { useMeasureList } from '../../hooks/useMeasureList';
+import { IndexedResizeCallbackElement, useMeasureList } from '../../hooks/useMeasureList';
 
 export function useVirtualizerScrollViewDynamic_unstable(
   props: VirtualizerScrollViewDynamicProps,
@@ -17,10 +17,26 @@ export function useVirtualizerScrollViewDynamic_unstable(
   const contextState = useVirtualizerContextState_unstable(props.virtualizerContext);
   const { imperativeRef, axis = 'vertical', reversed, imperativeVirtualizerRef } = props;
 
+  let sizeTrackingArray = React.useRef<number[]>(new Array(props.numItems));
+
+  const getChildSizeAuto = React.useCallback(
+    (index: number) => {
+      if (sizeTrackingArray.current.length <= index || sizeTrackingArray.current[index] <= 0) {
+        // Default size for initial state or untracked
+        return props.itemSize;
+      }
+      /* Required prior to our measure function
+       * we return a ref that we will update post-render
+       */
+      return sizeTrackingArray.current[index];
+    },
+    [sizeTrackingArray],
+  );
+
   const { virtualizerLength, bufferItems, bufferSize, scrollRef } = useDynamicVirtualizerMeasure({
     defaultItemSize: props.itemSize,
     direction: props.axis ?? 'vertical',
-    getItemSize: props.getItemSize,
+    getItemSize: props.getItemSize ?? getChildSizeAuto,
     currentIndex: contextState?.contextIndex ?? 0,
     numItems: props.numItems,
   });
@@ -86,26 +102,32 @@ export function useVirtualizerScrollViewDynamic_unstable(
 
   const measureObject = useMeasureList(virtualizerState.virtualizerStartIndex, virtualizerLength, props.numItems);
 
-  // Append self-measurement if no measure function provided:
-  // if (!props.getItemSize) {
-  // virtualizerState.virtualizedChildren.forEach((child, index) => {
-  //   if (React.isValidElement(child)) {
-  //     child.props.ref = measureObject.refArray.current[index];
-  //     virtualizerState.virtualizedChildren[index] = React.cloneElement(child, {
-  //       ref: measureObject.refArray.current[index],
-  //     });
-  // });
-  // }
+  if (axis == 'horizontal') {
+    sizeTrackingArray = measureObject.widthArray;
+  } else {
+    sizeTrackingArray = measureObject.heightArray;
+  }
 
-  React.Children.map(virtualizerState.virtualizedChildren, (child, index) => {
-    if (React.isValidElement(child)) {
-      virtualizerState.virtualizedChildren[index] = (
-        <child.type {...child.props} ref={measureObject.createIndexedRef(index)} />
-      );
-    }
-  });
-
-  console.log('virtualizerState.virtualizedChildren:', virtualizerState.virtualizedChildren);
+  if (!props.getItemSize) {
+    // Auto-measuring is required
+    React.Children.map(virtualizerState.virtualizedChildren, (child, index) => {
+      if (React.isValidElement(child)) {
+        virtualizerState.virtualizedChildren[index] = (
+          <child.type
+            {...child.props}
+            ref={(element: HTMLElement & IndexedResizeCallbackElement) => {
+              if (typeof child.props.ref === 'function') {
+                child.props.ref(element);
+              } else if (child.props.ref) {
+                child.props.ref.current = element;
+              }
+              measureObject.createIndexedRef(index)(element);
+            }}
+          />
+        );
+      }
+    });
+  }
 
   return {
     ...virtualizerState,

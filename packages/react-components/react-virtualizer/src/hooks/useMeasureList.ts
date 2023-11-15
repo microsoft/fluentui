@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useFluent_unstable as useFluent } from '@fluentui/react-shared-contexts';
 
-interface IndexedResizeCallbackElement {
+export interface IndexedResizeCallbackElement {
   handleResize: () => void;
 }
 /**

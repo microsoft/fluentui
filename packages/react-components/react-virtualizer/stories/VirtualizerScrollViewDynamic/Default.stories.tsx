@@ -41,7 +41,7 @@ export const Default = () => {
     <VirtualizerScrollViewDynamic
       numItems={childLength}
       itemSize={minHeight}
-      getItemSize={getItemSizeCallback}
+      // getItemSize={getItemSizeCallback}
       container={{ role: 'list', style: { maxHeight: '100vh' } }}
     >
       {(index: number) => {
