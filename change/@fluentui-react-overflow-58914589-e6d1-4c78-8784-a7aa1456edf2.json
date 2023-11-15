@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fix: register should happen again once observe options change",
+  "packageName": "@fluentui/react-overflow",
+  "email": "lingfan.gao@microsoft.com",
+  "dependentChangeType": "patch"
+}
