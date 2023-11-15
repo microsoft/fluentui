@@ -1,5 +1,5 @@
 import { makeStyles, shorthands, tokens, Label, Slider, useId, Checkbox } from '@fluentui/react-components';
-import { atoms, createTransition } from '@fluentui/react-motions-preview';
+import { createTransition, transitions } from '@fluentui/react-motions-preview';
 import * as React from 'react';
 
 const useClasses = makeStyles({
@@ -40,11 +40,7 @@ const useClasses = makeStyles({
   },
 });
 
-// TODO: use transition instead of atom
-const Fade = createTransition({
-  in: atoms.fade.enterSlow(),
-  out: atoms.fade.exitSlow(),
-});
+const Fade = createTransition(transitions.fade.slow());
 
 export const CreateTransition = () => {
   const classes = useClasses();

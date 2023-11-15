@@ -2,7 +2,7 @@ import { useEventCallback, useIsomorphicLayoutEffect, useMergedRefs } from '@flu
 import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
-import type { MotionAtom } from '../types';
+import type { MotionTransition } from '../types';
 
 type TransitionProps = {
   children: React.ReactElement;
@@ -14,7 +14,7 @@ type TransitionProps = {
 };
 
 // TODO: use Transition types
-export function createTransition(motion: { in: MotionAtom; out: MotionAtom }) {
+export function createTransition(transition: MotionTransition) {
   const Transition: React.FC<TransitionProps> = props => {
     const { appear, children, visible, unmountOnExit } = props;
 
@@ -41,14 +41,16 @@ export function createTransition(motion: { in: MotionAtom; out: MotionAtom }) {
       }
 
       if (elementRef.current) {
-        const animation = elementRef.current.animate(motion.out.keyframes, {
+        const animation = elementRef.current.animate(transition.exit.keyframes, {
           fill: 'forwards',
 
-          ...motion.out.options,
+          ...transition.exit.options,
           ...(isReducedMotion() && { duration: 1 }),
         });
 
         if (isFirstMount.current) {
+          // Heads up!
+          // .finish() is used there to skip animation on first mount, but apply animation styles
           animation.finish();
           return;
         }
@@ -68,10 +70,10 @@ export function createTransition(motion: { in: MotionAtom; out: MotionAtom }) {
       }
 
       if (elementRef.current && mounted && visible) {
-        const animation = elementRef.current.animate(motion.in.keyframes, {
+        const animation = elementRef.current.animate(transition.enter.keyframes, {
           fill: 'forwards',
 
-          ...motion.in.options,
+          ...transition.enter.options,
           ...(isReducedMotion() && { duration: 1 }),
         });
 
@@ -86,9 +88,9 @@ export function createTransition(motion: { in: MotionAtom; out: MotionAtom }) {
         isFirstMount.current = false;
 
         if (elementRef.current && appear && visible) {
-          const animation = elementRef.current.animate(motion.in.keyframes, {
+          const animation = elementRef.current.animate(transition.enter.keyframes, {
             fill: 'forwards',
-            ...motion.in.options,
+            ...transition.enter.options,
             ...(isReducedMotion() && { duration: 1 }),
           });
 

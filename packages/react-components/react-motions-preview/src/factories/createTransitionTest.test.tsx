@@ -1,21 +1,23 @@
 import { render } from '@testing-library/react';
 import * as React from 'react';
 
-import type { MotionAtom } from '../types';
+import type { MotionTransition } from '../types';
 import { createTransition } from './createTransition';
 
-const motionIn: MotionAtom = {
-  keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: {
-    duration: 500,
-    fill: 'forwards',
+const transition: MotionTransition = {
+  enter: {
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
+    options: {
+      duration: 500,
+      fill: 'forwards',
+    },
   },
-};
-const motionOut: MotionAtom = {
-  keyframes: [{ opacity: 0 }, { opacity: 1 }],
-  options: {
-    duration: 500,
-    fill: 'forwards',
+  exit: {
+    keyframes: [{ opacity: 0 }, { opacity: 1 }],
+    options: {
+      duration: 500,
+      fill: 'forwards',
+    },
   },
 };
 
@@ -44,7 +46,7 @@ function createElementMock() {
 describe('createTransition', () => {
   describe('appear', () => {
     it('does not animate by default', () => {
-      const TestAtom = createTransition({ in: motionIn, out: motionOut });
+      const TestAtom = createTransition(transition);
       const { animateMock, ElementMock } = createElementMock();
 
       render(
@@ -57,7 +59,7 @@ describe('createTransition', () => {
     });
 
     it('animates when is "true"', () => {
-      const TestAtom = createTransition({ in: motionIn, out: motionOut });
+      const TestAtom = createTransition(transition);
       const { animateMock, ElementMock } = createElementMock();
 
       render(
@@ -66,13 +68,13 @@ describe('createTransition', () => {
         </TestAtom>,
       );
 
-      expect(animateMock).toHaveBeenCalledWith(motionIn.keyframes, motionIn.options);
+      expect(animateMock).toHaveBeenCalledWith(transition.enter.keyframes, transition.enter.options);
     });
   });
 
   describe('visible', () => {
     it('animates when state changes', () => {
-      const TestAtom = createTransition({ in: motionIn, out: motionOut });
+      const TestAtom = createTransition(transition);
       const { animateMock, ElementMock } = createElementMock();
 
       const { rerender } = render(
@@ -89,13 +91,13 @@ describe('createTransition', () => {
         </TestAtom>,
       );
 
-      expect(animateMock).toHaveBeenCalledWith(motionOut.keyframes, motionOut.options);
+      expect(animateMock).toHaveBeenCalledWith(transition.exit.keyframes, transition.exit.options);
     });
   });
 
   describe('unmountOnExit', () => {
     it('unmounts when state changes', () => {
-      const TestAtom = createTransition({ in: motionIn, out: motionOut });
+      const TestAtom = createTransition(transition);
       const { animateMock, ElementMock } = createElementMock();
 
       const { rerender, queryByText } = render(
@@ -114,7 +116,7 @@ describe('createTransition', () => {
       );
 
       expect(queryByText('ElementMock')).toBe(null);
-      expect(animateMock).toHaveBeenCalledWith(motionOut.keyframes, motionOut.options);
+      expect(animateMock).toHaveBeenCalledWith(transition.exit.keyframes, transition.exit.options);
     });
   });
 });
