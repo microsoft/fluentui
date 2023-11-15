@@ -477,7 +477,7 @@ export function shouldWrapFocus(
   return elementContainsAttribute(element, noWrapDataAttribute) === 'true' ? false : true;
 }
 
-let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | undefined = undefined;
+let animationId: number | undefined = undefined;
 
 /**
  * Sets focus to an element asynchronously. The focus will be set at the next browser repaint,
@@ -487,23 +487,20 @@ let targetToFocusOnNextRepaint: HTMLElement | { focus: () => void } | null | und
  */
 export function focusAsync(element: HTMLElement | { focus: () => void } | undefined | null): void {
   if (element) {
-    // An element was already queued to be focused, so replace that one with the new element
-    if (targetToFocusOnNextRepaint) {
-      targetToFocusOnNextRepaint = element;
-      return;
-    }
-
-    targetToFocusOnNextRepaint = element;
-
     const win = getWindow(element as Element);
 
     if (win) {
+      // cancel any previous focus queues
+      if (animationId !== undefined) {
+        win.cancelAnimationFrame(animationId);
+      }
+
       // element.focus() is a no-op if the element is no longer in the DOM, meaning this is always safe
-      win.requestAnimationFrame(() => {
-        targetToFocusOnNextRepaint && targetToFocusOnNextRepaint.focus();
+      animationId = win.requestAnimationFrame(() => {
+        element && element.focus();
 
         // We are done focusing for this frame, so reset the queued focus element
-        targetToFocusOnNextRepaint = undefined;
+        animationId = undefined;
       });
     }
   }

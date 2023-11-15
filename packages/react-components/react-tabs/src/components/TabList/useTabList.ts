@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useArrowNavigationGroup } from '@fluentui/react-tabster';
 import {
-  getNativeElementProps,
+  getIntrinsicElementProps,
   useControllableState,
   useEventCallback,
   useMergedRefs,
@@ -83,13 +83,16 @@ export const useTabList_unstable = (props: TabListProps, ref: React.Ref<HTMLElem
       root: 'div',
     },
     root: slot.always(
-      getNativeElementProps('div', {
-        ref: useMergedRefs(ref, innerRef),
+      getIntrinsicElementProps('div', {
+        // FIXME:
+        // `ref` is wrongly assigned to be `HTMLElement` instead of `HTMLDivElement`
+        // but since it would be a breaking change to fix it, we are casting ref to it's proper type
+        ref: useMergedRefs(ref, innerRef) as React.Ref<HTMLDivElement>,
         role: 'tablist',
         'aria-orientation': vertical ? 'vertical' : 'horizontal',
         ...focusAttributes,
         ...props,
-      }),
+      } as const),
       { elementType: 'div' },
     ),
     appearance,

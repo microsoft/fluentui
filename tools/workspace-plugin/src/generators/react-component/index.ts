@@ -81,6 +81,11 @@ function addFiles(tree: Tree, options: NormalizedSchema) {
     path.join(options.paths.stories, options.componentName),
     templateOptions,
   );
+
+  const storiesGitkeep = path.join(options.paths.stories, '.gitkeep');
+  if (tree.exists(storiesGitkeep)) {
+    tree.delete(storiesGitkeep);
+  }
 }
 
 function updateBarrel(tree: Tree, options: NormalizedSchema) {

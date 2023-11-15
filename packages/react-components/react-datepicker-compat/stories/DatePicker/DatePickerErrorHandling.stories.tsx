@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { addMonths, addYears, DatePicker, defaultDatePickerErrorStrings } from '@fluentui/react-datepicker-compat';
+import { addMonths, addYears } from '@fluentui/react-calendar-compat';
+import { DatePicker, defaultDatePickerErrorStrings } from '@fluentui/react-datepicker-compat';
 import { Field, makeStyles } from '@fluentui/react-components';
 import type { DatePickerValidationResultData } from '@fluentui/react-datepicker-compat';
 

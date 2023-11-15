@@ -12,10 +12,19 @@ export interface ILegendOverflowData {
   overflow?: ILegend[];
 }
 
+/**
+ * @public
+ * {@docCategory Legends}
+ */
 export interface ILegendSubComponentStyles {
   hoverCardStyles: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
 }
 
+/**
+ * @public
+ * Legends styles
+ * {@docCategory Legends}
+ */
 export interface ILegendsStyles {
   /**
    * Style set for the root of the legend component
@@ -68,6 +77,11 @@ export interface ILegendsStyles {
   subComponentStyles: ILegendSubComponentStyles;
 }
 
+/**
+ * @public
+ * ILegend interface
+ * {@docCategory Legends}
+ */
 export interface ILegend {
   /**
    * Defines the title of the legend
@@ -120,6 +134,11 @@ export interface ILegend {
   nativeButtonProps?: React.ButtonHTMLAttributes<HTMLButtonElement>;
 }
 
+/**
+ * @public
+ * Legend style properties
+ * {@docCategory Legends}
+ */
 export interface ILegendStyleProps {
   theme?: ITheme;
   className?: string;
@@ -131,6 +150,11 @@ export interface ILegendStyleProps {
   isLineLegendInBarChart?: boolean;
 }
 
+/**
+ * @public
+ * Legend properties
+ * {@docCategory Legends}
+ */
 export interface ILegendsProps {
   /**
    * Prop that takes list of legends
@@ -178,11 +202,6 @@ export interface ILegendsProps {
   overflowText?: string;
 
   /**
-   * Prop that takes the active legend
-   */
-  selectedLegend?: string;
-
-  /**
    * prop that decides if legends are focusable
    * @default true
    */
@@ -196,15 +215,35 @@ export interface ILegendsProps {
 
   /**
    * Defines the function that is executed upon hiding of hover card
-   * make sure to send prop  when  the prop  is canSelectMultipleLegends is set to ture
-   * and empty the selecetd state legends
+   * make sure to send prop  when  the prop  is canSelectMultipleLegends is set to true
+   * and empty the selected state legends
    */
   onLegendHoverCardLeave?: VoidFunction;
+
+  /**
+   * Callback issued when the selected option changes.
+   */
+  onChange?: (selectedLegends: string[], event: React.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
+
+  /**
+   * Keys (title) that will be initially used to set selected items.
+   * This prop is used for multiSelect scenarios.
+   * In other cases, defaultSelectedLegend should be used.
+   */
+  defaultSelectedLegends?: string[];
+
+  /**
+   * Key that will be initially used to set selected item.
+   * This prop is used for singleSelect scenarios.
+   */
+  defaultSelectedLegend?: string;
 }
 
 /**
+ * @public
  * The shape for the legend
  * default: show the rect legend
  * triangle: show the triangle legend
+ * {@docCategory Legends}
  */
 export type LegendShape = 'default' | 'triangle' | keyof typeof Points | keyof typeof CustomPoints;

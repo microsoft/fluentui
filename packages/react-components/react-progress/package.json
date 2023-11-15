@@ -1,6 +1,6 @@
 {
   "name": "@fluentui/react-progress",
-  "version": "9.1.35",
+  "version": "9.1.51",
   "description": "Progress component for FluentUI v9",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -33,11 +33,11 @@
     "@fluentui/scripts-tasks": "*"
   },
   "dependencies": {
-    "@fluentui/react-field": "^9.1.25",
-    "@fluentui/react-jsx-runtime": "^9.0.6",
-    "@fluentui/react-shared-contexts": "^9.7.3",
-    "@fluentui/react-theme": "^9.1.12",
-    "@fluentui/react-utilities": "^9.13.3",
+    "@fluentui/react-field": "^9.1.41",
+    "@fluentui/react-jsx-runtime": "^9.0.19",
+    "@fluentui/react-shared-contexts": "^9.12.0",
+    "@fluentui/react-theme": "^9.1.16",
+    "@fluentui/react-utilities": "^9.15.2",
     "@griffel/react": "^1.5.14",
     "@swc/helpers": "^0.5.1"
   },
@@ -61,5 +61,11 @@
       "require": "./lib-commonjs/index.js"
     },
     "./package.json": "./package.json"
-  }
+  },
+  "files": [
+    "*.md",
+    "dist/*.d.ts",
+    "lib",
+    "lib-commonjs"
+  ]
 }

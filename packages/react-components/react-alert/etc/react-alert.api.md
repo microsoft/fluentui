@@ -15,19 +15,19 @@ import * as React_2 from 'react';
 import type { Slot } from '@fluentui/react-utilities';
 import type { SlotClassNames } from '@fluentui/react-utilities';
 
-// @public
+// @public @deprecated (undocumented)
 export const Alert: ForwardRefComponent<AlertProps>;
 
 // @public (undocumented)
 export const alertClassNames: SlotClassNames<AlertSlots>;
 
-// @public
+// @public @deprecated
 export type AlertProps = ComponentProps<AlertSlots> & {
     intent?: 'info' | 'success' | 'error' | 'warning';
     appearance?: 'primary' | 'inverted';
 };
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export type AlertSlots = {
     root: NonNullable<Slot<'div'>>;
     icon?: Slot<'span'>;
@@ -35,16 +35,16 @@ export type AlertSlots = {
     avatar?: Slot<typeof Avatar>;
 };
 
-// @public
+// @public @deprecated
 export type AlertState = ComponentState<AlertSlots> & Pick<AlertProps, 'intent'> & Required<Pick<AlertProps, 'appearance'>>;
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export const renderAlert_unstable: (state: AlertState) => JSX.Element;
 
-// @public
+// @public @deprecated (undocumented)
 export const useAlert_unstable: (props: AlertProps, ref: React_2.Ref<HTMLElement>) => AlertState;
 
-// @public
+// @public @deprecated (undocumented)
 export const useAlertStyles_unstable: (state: AlertState) => AlertState;
 
 // (No @packageDocumentation comment for this package)

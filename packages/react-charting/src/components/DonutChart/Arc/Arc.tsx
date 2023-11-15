@@ -4,7 +4,8 @@ import { classNamesFunction, getRTL } from '@fluentui/react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 import { IArcProps, IArcStyles } from './index';
-import { format as d3Format, formatPrefix as d3FormatPrefix } from 'd3-format';
+import { format as d3Format } from 'd3-format';
+import { formatValueWithSIPrefix } from '../../../utilities/index';
 
 export interface IArcState {
   isCalloutVisible?: boolean;
@@ -94,9 +95,13 @@ export class Arc extends React.Component<IArcProps, IArcState> {
   };
 
   private _renderArcLabel = (className: string) => {
-    const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels } = this.props;
+    const { arc, data, innerRadius, outerRadius, showLabelsInPercent, totalValue, hideLabels, activeArc } = this.props;
 
-    if (hideLabels || Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12) {
+    if (
+      hideLabels ||
+      Math.abs(data!.endAngle - data!.startAngle) < Math.PI / 12 ||
+      (activeArc !== data!.data.legend && activeArc !== '')
+    ) {
       return null;
     }
 
@@ -117,7 +122,7 @@ export class Arc extends React.Component<IArcProps, IArcState> {
       >
         {showLabelsInPercent
           ? d3Format('.0%')(totalValue! === 0 ? 0 : arcValue / totalValue!)
-          : d3FormatPrefix(arcValue < 1000 ? '.2~' : '.1', arcValue)(arcValue)}
+          : formatValueWithSIPrefix(arcValue)}
       </text>
     );
   };

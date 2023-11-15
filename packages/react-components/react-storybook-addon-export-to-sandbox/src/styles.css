@@ -1,0 +1,47 @@
+/* Remove z-index from "show code" button container */
+/* https://github.com/microsoft/fluentui/issues/22773 */
+.docs-story > div:nth-child(2) {
+  z-index: auto;
+}
+
+#docs-root .docblock-code-toggle,
+.docs-story .with-code-sandbox-button {
+  font-family: 'Segoe UI', 'Segoe UI Web (West European)', -apple-system, BlinkMacSystemFont, Roboto, 'Helvetica Neue',
+    sans-serif;
+  min-width: 91px;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 150% !important;
+  color: #201f1e !important;
+  text-align: center !important;
+  justify-content: center !important;
+  letter-spacing: -0.01em !important;
+  background: #f8f8f8 !important;
+  border: none !important;
+  /* box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25) !important; */
+  border-radius: 5px 5px 0px 0px !important;
+}
+
+.docs-story .with-code-sandbox-button {
+  margin-right: 32px;
+}
+
+/* Reduce font size of CodeSandbox and Show Code button when zoomed or small window width*/
+/* https://github.com/microsoft/fluentui/issues/22764 */
+
+@media screen and (max-width: 380px) {
+  #docs-root .docblock-code-toggle,
+  .docs-story .with-code-sandbox-button {
+    font-size: 10px !important;
+  }
+}
+
+/* Make storybook codesandbox export button match Figma design */
+.docs-story .with-code-sandbox-button {
+  right: 105px !important;
+}
+
+.docs-story .with-code-sandbox-button:focus {
+  outline: none;
+  box-shadow: #1ea7fd 0 -3px 0 0 inset;
+}

@@ -22,7 +22,6 @@
     "@fluentui/react-avatar": "*",
     "@fluentui/react-button": "*",
     "@fluentui/react-field": "*",
-    "@fluentui/react-infobutton": ">=9.0.0-alpha",
     "@fluentui/react-persona": "*",
     "@fluentui/react-provider": "*",
     "@fluentui/react-spinbutton": "*",

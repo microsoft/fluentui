@@ -1,4 +1,4 @@
-import { makeStyles, mergeClasses, shorthands } from '@griffel/react';
+import { GriffelStyle, makeStyles, mergeClasses, shorthands } from '@griffel/react';
 import { tokens } from '@fluentui/react-theme';
 
 import { DrawerBaseState } from './DrawerBase.types';
@@ -11,26 +11,28 @@ export const drawerCSSVars = {
 };
 
 /**
- * Styles for the root slot
+ * Default shared styles for the Drawer component
  */
-export const useDrawerBaseStyles = makeStyles({
-  root: {
-    ...shorthands.padding(0),
-    ...shorthands.overflow('hidden'),
-    ...shorthands.borderRadius(0),
-    ...shorthands.border(0),
+export const drawerDefaultStyles: GriffelStyle = {
+  ...shorthands.overflow('hidden'),
 
-    width: `var(${drawerCSSVars.drawerSizeVar})`,
-    maxWidth: '100vw',
-    height: 'auto',
-    boxSizing: 'border-box',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'flex-start',
-    backgroundColor: tokens.colorNeutralBackground1,
-  },
+  width: `var(${drawerCSSVars.drawerSizeVar})`,
+  maxWidth: '100vw',
+  height: 'auto',
+  maxHeight: '100vh',
+  boxSizing: 'border-box',
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'flex-start',
+  justifyContent: 'flex-start',
+  backgroundColor: tokens.colorNeutralBackground1,
+  color: tokens.colorNeutralForeground1,
+};
 
+/**
+ * Shared dynamic styles for the Drawer component
+ */
+const useDrawerStyles = makeStyles({
   /* Motion */
   entering: {
     transitionTimingFunction: tokens.curveDecelerateMid,
@@ -46,10 +48,14 @@ export const useDrawerBaseStyles = makeStyles({
 
   /* Positioning */
   start: {
+    ...shorthands.borderRight(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
     left: 0,
     right: 'auto',
   },
   end: {
+    ...shorthands.borderLeft(tokens.strokeWidthThin, 'solid', tokens.colorTransparentStroke),
+
     right: 0,
     left: 'auto',
   },
@@ -85,11 +91,10 @@ export const useDrawerDurationStyles = makeStyles({
 });
 
 export const useDrawerBaseClassNames = ({ position, size, motion }: DrawerBaseState) => {
-  const baseStyles = useDrawerBaseStyles();
+  const baseStyles = useDrawerStyles();
   const durationStyles = useDrawerDurationStyles();
 
   return mergeClasses(
-    baseStyles.root,
     baseStyles[position],
     durationStyles[size],
     baseStyles[size],
