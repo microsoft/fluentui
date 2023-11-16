@@ -139,7 +139,7 @@ describe('Sankey chart rendering', () => {
     expect(container).toMatchSnapshot();
     expect(getById(container, /_SankeyChart_empty/i)).toHaveLength(1);
     // Act
-    rerender(<SankeyChart data={data} />);
+    rerender(<SankeyChart data={chartPointsWithStringNodeId} />);
     await waitFor(() => {
       // Assert
       expect(container).toMatchSnapshot();
