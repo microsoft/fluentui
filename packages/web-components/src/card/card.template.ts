@@ -34,7 +34,6 @@ export function cardTemplate<T extends Card>(): ElementViewTemplate<T> {
               @change="${(x, c) => x.floatingActionChangeHandler(c.event as MouseEvent)}"
               name="floating-action"
               part="floating-action"
-              tabindex="${x => (!x.isFocusable ? '0' : '-1')}"
               ${slotted('floatingAction')}
             ></slot>
           </div>
