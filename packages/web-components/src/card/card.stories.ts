@@ -1,7 +1,6 @@
 import { html } from '@microsoft/fast-element';
 import type { Args, Meta } from '@storybook/html';
 import { renderComponent } from '../helpers.stories.js';
-import type { Checkbox as FluentCheckbox } from '../checkbox/checkbox.js';
 import './define.js';
 import '../card-footer/define.js';
 import '../card-preview/define.js';
@@ -44,11 +43,10 @@ const iconReply = html`<svg
 const iconEllipsis = html` <svg
   fill="currentColor"
   aria-hidden="true"
-  width="20"
-  height="20"
+  width="1em"
+  height="1em"
   viewBox="0 0 20 20"
   xmlns="http://www.w3.org/2000/svg"
-  slot="end"
 >
   <path
     d="M6.75 10a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0Zm5 0a1.75 1.75 0 1 1-3.5 0 1.75 1.75 0 0 1 3.5 0ZM15 11.75a1.75 1.75 0 1 0 0-3.5 1.75 1.75 0 0 0 0 3.5Z"
@@ -59,10 +57,6 @@ const iconEllipsis = html` <svg
 setTimeout(() => {
   const buttons = document.querySelectorAll('.stop-prop');
   buttons.forEach(button => {
-    (button as HTMLButtonElement).addEventListener('click', function (event: MouseEvent) {
-      event.preventDefault();
-      event.stopPropagation();
-    });
     (button as HTMLButtonElement).addEventListener('keydown', function (event: KeyboardEvent) {
       if (event.key !== 'Tab' && event.key !== 'Escape') {
         event.preventDefault();
@@ -185,10 +179,8 @@ const cardTemplate = html<CardStoryArgs>`
       </fluent-card-preview>
       <fluent-card-footer>
         <div>
-          <fluent-button class="stop-prop" tabindex="0" ?disabled="${x =>
-            x.disabled}" icon>${iconReply}Reply</fluent-button>
-          <fluent-button class="stop-prop" tabindex="0" ?disabled="${x =>
-            x.disabled}" icon>${iconShare}Share</fluent-button>
+          <fluent-button class="stop-prop" tabindex="0" icon>${iconReply}Reply</fluent-button>
+          <fluent-button class="stop-prop" tabindex="0" icon>${iconShare}Share</fluent-button>
         </div>
       </fluent-card-footer>
     </fluent-card>
@@ -200,7 +192,6 @@ export default {
   args: {
     appearance: CardAppearance.filled,
     size: CardSize.medium,
-    disabled: false,
   },
   argTypes: {
     appearance: {
@@ -230,21 +221,37 @@ export default {
       },
       table: {
         type: {
-          summary: 'Sets the focus mode of card',
+          summary: 'Sets the focus mode of the card',
         },
         defaultValue: {
           summary: 'off',
         },
       },
     },
-    disabled: {
-      control: 'boolean',
+    orientation: {
       table: {
         type: {
-          summary: 'Sets whether card is disbled or not',
+          summary: 'Sets layout orientation of the card (vertical, horizontal)',
+        },
+        defaultValue: {
+          summary: 'vertical',
+        },
+      },
+    },
+    disabled: {
+      table: {
+        type: {
+          summary: 'Sets whether card is disbled or not when card is selectable',
         },
         defaultValue: {
           summary: 'false',
+        },
+      },
+    },
+    onSelectionChange: {
+      table: {
+        type: {
+          summary: 'event emitted when the selected state value changes.',
         },
       },
     },
@@ -675,35 +682,6 @@ export const SelectableIndicator = renderComponent(html<CardStoryArgs>`
   </div>
   <br />
   <div class="container flex gap column">
-    <fluent-card orientation="vertical" selectable id="card-selectable-indicator">
-      <fluent-checkbox slot="floating-action"></fluent-checkbox>
-      <fluent-card-preview class="preview-vertical">
-        <fluent-image fit="contain" shape="square">
-          <img
-            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/office1.png"
-          />
-        </fluent-image>
-      </fluent-card-preview>
-      <fluent-card-header>
-        <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
-          <span>iOS Prototype App</span>
-        </fluent-text>
-        <fluent-text block size="200" font="base" weight="regular" block slot="description">
-          <span>You created 53 minutes ago</span>
-        </fluent-text>
-        <fluent-menu slot="action" style="--z-index-menu: 999;">
-          <fluent-menu-button aria-label="Toggle Menu" appearance="transparent" slot="trigger" icon-only
-            ><div slot="end">${iconEllipsis}</div></fluent-menu-button
-          >
-          <fluent-menu-list>
-            <fluent-menu-item>Menu item 1</fluent-menu-item>
-            <fluent-menu-item>Menu item 2</fluent-menu-item>
-            <fluent-menu-item>Menu item 3</fluent-menu-item>
-            <fluent-menu-item>Menu item 4</fluent-menu-item>
-          </fluent-menu-list>
-        </fluent-menu>
-      </fluent-card-header>
-    </fluent-card>
     <fluent-card selectable size="small">
       <fluent-checkbox slot="floating-action"></fluent-checkbox>
       <fluent-card-header>
@@ -734,6 +712,34 @@ export const SelectableIndicator = renderComponent(html<CardStoryArgs>`
         <fluent-text block size="200" font="base" weight="regular" block slot="description">
           <span>OneDrive > Documents</span>
         </fluent-text>
+      </fluent-card-header>
+    </fluent-card>
+    <fluent-card orientation="vertical" selectable id="card-selectable-indicator">
+      <fluent-checkbox slot="floating-action"></fluent-checkbox>
+      <fluent-card-preview class="preview-vertical">
+        <fluent-image fit="contain" shape="square">
+          <img
+            src="https://raw.githubusercontent.com/microsoft/fluentui/master/packages/react-components/react-card/stories/assets/office1.png"
+          />
+        </fluent-image>
+      </fluent-card-preview>
+      <fluent-card-header>
+        <fluent-text align="start" font="base" size="300" weight="bold" slot="header">
+          <span>iOS Prototype App</span>
+        </fluent-text>
+        <fluent-text block size="200" font="base" weight="regular" block slot="description">
+          <span>You created 53 minutes ago</span>
+        </fluent-text>
+        <fluent-button
+          class="stop-prop"
+          slot="action"
+          size="small"
+          icon-only
+          appearance="transparent"
+          aria-label="actions example button"
+        >
+          ${iconEllipsis}
+        </fluent-button>
       </fluent-card-header>
     </fluent-card>
   </div>
@@ -949,7 +955,7 @@ export const Templates = renderComponent(html<CardStoryArgs>`
             <fluent-checkbox></fluent-checkbox>
           </div>
           <div class="flex column">
-            <fluent-label weight="semibold">Task Title</fluent-label>
+            <fluent-label weight="semibold">Task Title 1</fluent-label>
             <fluent-text block size="200" font="base" weight="regular">
               <span
                 >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae urna maximus, faucibus augue at,
@@ -963,7 +969,7 @@ export const Templates = renderComponent(html<CardStoryArgs>`
             <fluent-checkbox></fluent-checkbox>
           </div>
           <div class="flex column">
-            <fluent-label weight="semibold">Task Title</fluent-label>
+            <fluent-label weight="semibold">Task Title 2</fluent-label>
             <fluent-text block size="200" font="base" weight="regular">
               <span
                 >Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae urna maximus, faucibus augue at,

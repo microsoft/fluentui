@@ -159,24 +159,24 @@ export const styles = css`
     background: ${colorSubtleBackgroundPressed};
   }
 
-  .card[aria-selected='true'] {
+  .card[aria-pressed='true'] {
     background: ${colorNeutralBackground1Selected};
     border-color: ${colorTransparentStrokeInteractive};
     cursor: pointer;
   }
-  :host([appearance='subtle']) .card[aria-selected='true'] {
+  :host([appearance='subtle']) .card[aria-pressed='true'] {
     background: ${colorSubtleBackgroundSelected};
     border-color: ${colorNeutralStroke1Selected};
   }
-  :host([appearance='outline']) .card[aria-selected='true'] {
+  :host([appearance='outline']) .card[aria-pressed='true'] {
     background: ${colorTransparentBackgroundSelected};
     border-color: ${colorNeutralStroke1Selected};
   }
-  :host([appearance='filled-alternative']) .card[aria-selected='true'] {
+  :host([appearance='filled-alternative']) .card[aria-pressed='true'] {
     background: ${colorNeutralBackground2Selected};
   }
 
-  :host([disabled]) .card {
+  :host([aria-disabled='true']) .card {
     background: ${colorNeutralBackgroundDisabled};
     border-color: ${colorTransparentStrokeDisabled};
     cursor: not-allowed;
