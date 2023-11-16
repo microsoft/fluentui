@@ -1,13 +1,5 @@
 import * as React from 'react';
-import {
-  GLOBAL_STYLESHEET_KEY,
-  SUPPORTS_CONSTRUCTABLE_STYLESHEETS,
-  SUPPORTS_MODIFYING_ADOPTED_STYLESHEETS,
-  Stylesheet,
-  makeShadowConfig,
-  cloneCSSStyleSheet,
-  EventHandler,
-} from '@fluentui/merge-styles';
+import { GLOBAL_STYLESHEET_KEY, makeShadowConfig } from '@fluentui/merge-styles';
 import { useMergeStylesRootStylesheets } from './MergeStylesRootContext';
 import { useWindow } from '@fluentui/react-window-provider';
 import type { ExtendedCSSStyleSheet } from '@fluentui/merge-styles';
