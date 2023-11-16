@@ -1,7 +1,0 @@
-{
-  "type": "patch",
-  "comment": "refactor: Removes double render infavour of matchTargetSize",
-  "packageName": "@fluentui/react-combobox",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

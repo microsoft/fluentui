@@ -55,7 +55,7 @@ Inline.parameters = {
       story: [
         'Setting the `inline` prop on a toaster will render toasts in DOM order, positioned relative to the closest',
         'positioned ancestor. The simplest way to achieve this is to render the toaster inside an element',
-        'with `position: relavtive`.',
+        'with `position: relative`.',
       ].join('\n'),
     },
   },

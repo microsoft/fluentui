@@ -75,7 +75,7 @@ export function preset() {
   task('babel:postprocess', babel);
   task('generate-api', generateApi);
   task('type-check', typeCheck);
-  task('verify-packaging', verifyPackaging);
+  task('verify-packaging', () => verifyPackaging(args));
 
   task('ts:compile', () => {
     const moduleFlag = args.module;
