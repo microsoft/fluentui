@@ -17,9 +17,9 @@ import { SelectNavGroupEvent } from '../NavContext.types';
  * before being passed to renderTab_unstable.
  *
  * @param props - props from this instance of Tab
- * @param ref - reference to root HTMLElement of Tab
+ * @param ref - reference to root HTMLButtonElement of Tab
  */
-export const useNavGroup = (props: NavGroupProps, ref: React.Ref<HTMLElement>): NavGroupState => {
+export const useNavGroup = (props: NavGroupProps, ref: React.Ref<HTMLButtonElement>): NavGroupState => {
   const { content, icon, onClick, value } = props;
 
   const selected = useNavContext(ctx => ctx.selectedValue === value);
