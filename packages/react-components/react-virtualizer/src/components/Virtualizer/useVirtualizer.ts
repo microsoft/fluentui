@@ -332,7 +332,8 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       const _actualIndex = Math.max(newIndex, 0);
       const end = Math.min(_actualIndex + virtualizerLength, numItems);
       for (let i = _actualIndex; i < end; i++) {
-        childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(renderChild(i, isScrolling), i);
+        // childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(renderChild(i, isScrolling), i);
+        childArray.current[i - _actualIndex] = renderChild(i, isScrolling);
       }
     },
     [isScrolling, numItems, renderChild, virtualizerLength],
@@ -521,5 +522,7 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
     axis,
     bufferSize,
     reversed,
+    childSizes,
+    childProgressiveSizes,
   };
 }

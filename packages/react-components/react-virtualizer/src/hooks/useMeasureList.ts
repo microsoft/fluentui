@@ -13,9 +13,9 @@ export interface IndexedResizeCallbackElement {
  */
 export function useMeasureList<
   TElement extends HTMLElement & IndexedResizeCallbackElement = HTMLElement & IndexedResizeCallbackElement,
->(currentIndex: number, refLength: number, totalLength: number) {
-  const widthArray = React.useRef(new Array(totalLength));
-  const heightArray = React.useRef(new Array(totalLength));
+>(currentIndex: number, refLength: number, totalLength: number, defaultItemSize: number) {
+  const widthArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
+  const heightArray = React.useRef(new Array(totalLength).fill(defaultItemSize));
 
   const refArray = React.useRef<Array<TElement | undefined | null>>([]);
   const { targetDocument } = useFluent();
@@ -28,8 +28,6 @@ export function useMeasureList<
 
       const containerHeight = refArray.current[index]?.getBoundingClientRect().height;
       heightArray.current[currentIndex + index] = containerHeight || 0;
-
-      console.log(`Handled resize for index: ${index + currentIndex} - Height: ${containerHeight}`);
     },
     [currentIndex],
   );
@@ -43,9 +41,9 @@ export function useMeasureList<
   };
 
   React.useEffect(() => {
-    widthArray.current = new Array(totalLength);
-    heightArray.current = new Array(totalLength);
-  }, [totalLength]);
+    widthArray.current = new Array(totalLength).fill(defaultItemSize);
+    heightArray.current = new Array(totalLength).fill(defaultItemSize);
+  }, [defaultItemSize, totalLength]);
 
   // Keep the reference of ResizeObserver in the state, as it should live through renders
   const [resizeObserver] = React.useState(() => createResizeObserverFromDocument(targetDocument, handleResize));
