@@ -188,8 +188,6 @@ export const RecentMeetingsTreeGridRowNavigationRenderer: React.FC<RecentMeeting
               tabIndex={0}
               onClick={handleRowClick}
               aria-level={1}
-              aria-posinset={categoryIndex + 1}
-              aria-setsize={recentCategories.length}
               aria-expanded={category.expanded}
               {...tableRowTabsterAttribute}
             >
