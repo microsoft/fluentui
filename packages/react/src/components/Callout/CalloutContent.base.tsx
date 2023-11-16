@@ -140,7 +140,8 @@ function useMaxHeight(
     let calculatedHeight: number | undefined;
     const targetRect = targetRef?.current ? getRectangleFromTarget(targetRef?.current) : undefined;
 
-    // If aligned to top edge of target, update bottom bounds to the top of the target (accounting for gap space and beak)
+    // If aligned to top edge of target, update bottom bounds to the top of the target
+    // (accounting for gap space and beak)
     if (positions?.targetEdge === RectangleEdge.top && targetRect?.top) {
       bottomBounds = targetRect.top - calculateGapSpace(isBeakVisible, beakWidth, gapSpace);
     }
@@ -171,10 +172,11 @@ function useMaxHeight(
     hidden,
     positions,
     top,
-    targetRef?.current,
+    targetRef,
     gapSpace,
     beakWidth,
     isBeakVisible,
+    targetRef,
   ]);
 
   return maxHeight;
@@ -224,7 +226,8 @@ function usePositions(
 
           const previousPositions = previousTarget.current === target ? positions : undefined;
 
-          // only account for scroll resizing if styles allow callout to scroll (popup styles determine if callout will scroll)
+          // only account for scroll resizing if styles allow callout to scroll
+          // (popup styles determine if callout will scroll)
           const popupStyles = popupRef?.current ? window.getComputedStyle(popupRef.current) : undefined;
           const isOverflowYHidden =
             hideOverflow || popupStyles?.overflowY === 'clip' || popupStyles?.overflowY === 'hidden';
@@ -283,7 +286,6 @@ function usePositions(
     props,
     target,
     hideOverflow,
-    popupRef?.current,
     preferScrollResizePositioning,
   ]);
 
