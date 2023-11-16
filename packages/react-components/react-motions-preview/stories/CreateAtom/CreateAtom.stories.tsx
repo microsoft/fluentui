@@ -50,8 +50,8 @@ const useClasses = makeStyles({
   },
 });
 
-const FadeEnter = createAtom(atoms.fade.enterUltraSlow({}));
-const FadeExit = createAtom(atoms.fade.exitUltraSlow({}));
+const FadeEnter = createAtom(atoms.fade.enterUltraSlow());
+const FadeExit = createAtom(atoms.fade.exitUltraSlow());
 
 export const CreateAtom = () => {
   const classes = useClasses();
