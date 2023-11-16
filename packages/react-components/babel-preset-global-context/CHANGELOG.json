@@ -2,6 +2,27 @@
   "name": "@fluentui/babel-preset-global-context",
   "entries": [
     {
+      "date": "Thu, 09 Nov 2023 17:29:48 GMT",
+      "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.49",
+      "version": "9.0.0-beta.49",
+      "comments": {
+        "prerelease": [
+          {
+            "author": "martinhochel@microsoft.com",
+            "package": "@fluentui/babel-preset-global-context",
+            "commit": "baa8387b51ae5e028dd7c2f98827ab9bd749f90e",
+            "comment": "chore: use package.json#files setup instead of npmignore for all v9 libraries"
+          },
+          {
+            "author": "beachball",
+            "package": "@fluentui/babel-preset-global-context",
+            "comment": "Bump @fluentui/global-context to v9.0.0-beta.49",
+            "commit": "9c30220feb177e8336960c21cf6df78c9c1ca629"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 18 Oct 2023 17:54:08 GMT",
       "tag": "@fluentui/babel-preset-global-context_v9.0.0-beta.48",
       "version": "9.0.0-beta.48",

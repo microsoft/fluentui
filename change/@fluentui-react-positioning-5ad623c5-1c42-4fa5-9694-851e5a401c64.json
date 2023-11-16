@@ -1,7 +1,0 @@
-{
-  "type": "minor",
-  "comment": "feat: add `matchTargetSize` positioning option",
-  "packageName": "@fluentui/react-positioning",
-  "email": "lingfangao@hotmail.com",
-  "dependentChangeType": "patch"
-}

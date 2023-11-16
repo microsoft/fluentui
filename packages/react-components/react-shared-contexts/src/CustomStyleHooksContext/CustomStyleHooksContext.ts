@@ -30,6 +30,9 @@ export type CustomStyleHooksContextValue = Partial<{
   useComboboxStyles_unstable: CustomStyleHook;
   useDropdownStyles_unstable: CustomStyleHook;
   useListboxStyles_unstable: CustomStyleHook;
+  useListStyles_unstable: CustomStyleHook;
+  useListItemStyles_unstable: CustomStyleHook;
+  useListItemButtonStyles_unstable: CustomStyleHook;
   useOptionStyles_unstable: CustomStyleHook;
   useOptionGroupStyles_unstable: CustomStyleHook;
   useDividerStyles_unstable: CustomStyleHook;
@@ -116,6 +119,15 @@ export type CustomStyleHooksContextValue = Partial<{
   useMessageBarActionsStyles_unstable: CustomStyleHook;
   useMessageBarGroupStyles_unstable: CustomStyleHook;
   useToasterStyles_unstable: CustomStyleHook;
+  useTeachingPopoverStyles_unstable: CustomStyleHook;
+  useTeachingPopoverActionsStyles_unstable: CustomStyleHook;
+  useTeachingPopoverBodyStyles_unstable: CustomStyleHook;
+  useTeachingPopoverButtonStyles_unstable: CustomStyleHook;
+  useTeachingPopoverCarouselStyles_unstable: CustomStyleHook;
+  useTeachingPopoverHeaderStyles_unstable: CustomStyleHook;
+  useTeachingPopoverPageCountStyles_unstable: CustomStyleHook;
+  useTeachingPopoverSurfaceStyles_unstable: CustomStyleHook;
+  useTeachingPopoverTitleStyles_unstable: CustomStyleHook;
 }>;
 
 /**

@@ -35,14 +35,14 @@ export type TimePickerProps = Omit<ComponentProps<Partial<ComboboxSlots>, 'input
     defaultSelectedTime?: Date;
     onTimeChange?: (event: TimeSelectionEvents, data: TimeSelectionData) => void;
     formatDateToTimeString?: (date: Date) => string;
-    formatTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
+    parseTimeStringToDate?: (time: string | undefined) => TimeStringValidationResult;
 };
 
 // @public (undocumented)
 export type TimePickerSlots = ComboboxSlots;
 
 // @public
-export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'formatTimeStringToDate'>> & {
+export type TimePickerState = ComboboxState & Required<Pick<TimePickerProps, 'freeform' | 'parseTimeStringToDate'>> & {
     submittedText: string | undefined;
 };
 

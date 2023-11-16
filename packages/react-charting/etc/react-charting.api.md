@@ -787,13 +787,15 @@ export interface ILegendsProps {
     canSelectMultipleLegends?: boolean;
     centerLegends?: boolean;
     className?: string;
+    defaultSelectedLegend?: string;
+    defaultSelectedLegends?: string[];
     enabledWrapLines?: boolean;
     focusZonePropsInHoverCard?: IFocusZoneProps;
     legends: ILegend[];
+    onChange?: (selectedLegends: string[], event: React_2.MouseEvent<HTMLButtonElement>, currentLegend?: ILegend) => void;
     onLegendHoverCardLeave?: VoidFunction;
     overflowProps?: Partial<IOverflowSetProps>;
     overflowText?: string;
-    selectedLegend?: string;
     styles?: IStyleFunctionOrObject<ILegendStyleProps, ILegendsStyles>;
     theme?: ITheme;
 }
