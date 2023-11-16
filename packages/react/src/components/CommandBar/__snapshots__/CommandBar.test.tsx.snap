@@ -111,6 +111,25 @@ exports[`CommandBar renders commands correctly 1`] = `
                       right: 4px;
                       top: 4px;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
                     &:active > span {
                       left: 0px;
                       position: relative;
@@ -242,6 +261,25 @@ exports[`CommandBar renders commands correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: none;
                       bottom: 4px;
                       left: 4px;
@@ -443,6 +481,25 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                       right: 4px;
                       top: 4px;
                     }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
                     &:active > span {
                       left: 0px;
                       position: relative;
@@ -574,6 +631,25 @@ exports[`CommandBar renders empty farItems correctly 1`] = `
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){.ms-Fabric--isFocusVisible &:focus:after {
+                      border: none;
+                      bottom: 4px;
+                      left: 4px;
+                      outline-color: ButtonText;
+                      right: 4px;
+                      top: 4px;
+                    }
+                    :host(.ms-Fabric--isFocusVisible) &:focus:after {
+                      border: 1px solid transparent;
+                      bottom: 3px;
+                      content: "";
+                      left: 3px;
+                      outline: 1px solid #605e5c;
+                      position: absolute;
+                      right: 3px;
+                      top: 3px;
+                      z-index: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active), screen and (forced-colors: active){:host(.ms-Fabric--isFocusVisible) &:focus:after {
                       border: none;
                       bottom: 4px;
                       left: 4px;

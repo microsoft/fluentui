@@ -33,7 +33,10 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
           ':focus': {
             outline: '0px solid',
           },
-          [`.${IsFocusVisibleClassName} &:focus`]: getInputFocusStyle(palette.neutralSecondary, effects.roundedCorner2),
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: getInputFocusStyle(
+            palette.neutralSecondary,
+            effects.roundedCorner2,
+          ),
           [`.${locationClassNames.root} + .${titleClassNames.root}`]: {
             paddingTop: '4px',
           },
