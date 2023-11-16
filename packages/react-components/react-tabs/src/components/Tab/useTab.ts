@@ -20,10 +20,11 @@ import { SelectTabEvent } from '../TabList/TabList.types';
  * @param ref - reference to root HTMLElement of Tab
  */
 export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): TabState => {
-  const { content, disabled: tabDisabled = false, icon, onClick, value } = props;
+  const { content, disabled: tabDisabled = false, icon, onClick, onFocus, value } = props;
 
   const appearance = useTabListContext_unstable(ctx => ctx.appearance);
   const reserveSelectedTabSpace = useTabListContext_unstable(ctx => ctx.reserveSelectedTabSpace);
+  const selectTabOnFocus = useTabListContext_unstable(ctx => ctx.selectTabOnFocus);
   const listDisabled = useTabListContext_unstable(ctx => ctx.disabled);
   const selected = useTabListContext_unstable(ctx => ctx.selectedValue === value);
   const onRegister = useTabListContext_unstable(ctx => ctx.onRegister);
@@ -35,6 +36,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
 
   const innerRef = React.useRef<HTMLElement>(null);
   const onTabClick = useEventCallback(mergeCallbacks(onClick, (event: SelectTabEvent) => onSelect(event, { value })));
+  const onTabFocus = useEventCallback(mergeCallbacks(onFocus, (event: SelectTabEvent) => onSelect(event, { value })));
 
   React.useEffect(() => {
     onRegister({
@@ -69,6 +71,7 @@ export const useTab_unstable = (props: TabProps, ref: React.Ref<HTMLElement>): T
         ...props,
         disabled,
         onClick: onTabClick,
+        onFocus: selectTabOnFocus ? onTabFocus : onFocus,
       }),
       { elementType: 'button' },
     ),
