@@ -2,7 +2,7 @@ import type { ComponentProps, ComponentState, Slot } from '@fluentui/react-utili
 import { NavContextValue, NavGroupValue, SelectNavGroupEventHandler } from '../NavContext.types';
 
 export type NavSlots = {
-  root: Slot<'div'>;
+  root: NonNullable<Slot<'div'>>;
 };
 
 /**
@@ -10,8 +10,8 @@ export type NavSlots = {
  */
 export type NavProps = ComponentProps<NavSlots> & {
   /**
-   * Tab size may change between unselected and selected states.
-   * The default scenario is a selected tab has bold text.
+   * Nav size may change between unselected and selected states.
+   * The default scenario is a selected NavGroup has bold text.
    *
    * When true, this property requests tabs be the same size whether unselected or selected.
    * @default true
@@ -38,6 +38,6 @@ export type NavProps = ComponentProps<NavSlots> & {
 /**
  * State used in rendering Nav
  */
-export type NavState = ComponentState<Required<NavSlots>> & NavContextValue;
+export type NavState = ComponentState<NavSlots> & NavContextValue;
 // TODO: Remove semicolon from previous line, uncomment next line, and provide union of props to pick from NavProps.
 // & Required<Pick<NavProps, 'propName'>>
