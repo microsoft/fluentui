@@ -71,6 +71,19 @@ describe('Sankey bar chart rendering', () => {
   );
 });
 
+describe('Sankey chart - Theme', () => {
+  test('Should reflect theme change', () => {
+    // Arrange
+    const { container } = render(
+      <ThemeProvider theme={DarkTheme}>
+        <SankeyChart data={chartPointsWithStringNodeId} />
+      </ThemeProvider>,
+    );
+    // Assert
+    expect(container).toMatchSnapshot();
+  });
+});
+
 describe('Sankey chart - Subcomponent Node', () => {
   // Replace the original method with the mock implementation
   const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
@@ -109,19 +122,6 @@ describe('Sankey chart - Subcomponent Label', () => {
       expect(screen.queryByText('192.168.42.72')).not.toBeNull();
     },
   );
-});
-
-describe('Sankey chart - Theme', () => {
-  test('Should reflect theme change', () => {
-    // Arrange
-    const { container } = render(
-      <ThemeProvider theme={DarkTheme}>
-        <SankeyChart data={chartPointsWithStringNodeId} />
-      </ThemeProvider>,
-    );
-    // Assert
-    expect(container).toMatchSnapshot();
-  });
 });
 
 describe('Sankey chart rendering', () => {
