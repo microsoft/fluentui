@@ -73,6 +73,15 @@ describe('Sankey bar chart rendering', () => {
 });
 
 describe('Sankey chart - Subcomponent Node', () => {
+  // Replace the original method with the mock implementation
+  const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
+  Object.defineProperty(
+    Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
+    'getComputedTextLength',
+    {
+      value: mockGetComputedTextLength,
+    },
+  );
   testWithWait(
     'Should update path color same as node color when we clck on node',
     SankeyChart,
@@ -119,18 +128,6 @@ describe('Sankey chart - Theme', () => {
 describe('Sankey chart rendering', () => {
   beforeEach(sharedBeforeEach);
   test('Should re-render the Sankey chart with data', async () => {
-    // Replace the original method with the mock implementation
-    const mockGetComputedTextLength = jest.fn().mockReturnValue(100);
-    Object.defineProperty(
-      Object.getPrototypeOf(document.createElementNS('http://www.w3.org/2000/svg', 'tspan')),
-      'getComputedTextLength',
-      {
-        value: mockGetComputedTextLength,
-      },
-    );
-
-    // jest.spyOn(SankeyChartBase.prototype as any, '_truncateText').mockImplementation(() => 'test');
-    // jest.spyOn(SankeyChartBase.prototype as any, '_createNodes').mockImplementation(() => []);
     // Arrange
     const { container, rerender } = render(<SankeyChart data={emptyChartPoints} />);
     const getById = queryAllByAttribute.bind(null, 'id');
