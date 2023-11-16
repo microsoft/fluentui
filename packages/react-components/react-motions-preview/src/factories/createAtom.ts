@@ -2,6 +2,7 @@ import { useIsomorphicLayoutEffect, useMergedRefs } from '@fluentui/react-utilit
 import * as React from 'react';
 
 import { useIsReducedMotion } from '../hooks/useIsReducedMotion';
+import { getChildElement } from '../utils/getChildElement';
 import type { MotionAtom } from '../types';
 
 export type AtomProps = {
@@ -20,7 +21,7 @@ export function createAtom(motion: MotionAtom) {
   const Atom: React.FC<AtomProps> = props => {
     const { children, iterations = 1, playState = 'running' } = props;
 
-    const child = React.Children.only(children) as React.ReactElement & { ref: React.Ref<HTMLElement> };
+    const child = getChildElement(children);
 
     const animationRef = React.useRef<Animation | undefined>();
     const elementRef = React.useRef<HTMLElement>();
