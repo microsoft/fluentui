@@ -13,7 +13,6 @@ type TransitionProps = {
   unmountOnExit?: boolean;
 };
 
-// TODO: use Transition types
 export function createTransition(transition: MotionTransition) {
   const Transition: React.FC<TransitionProps> = props => {
     const { appear, children, visible, unmountOnExit } = props;
@@ -65,11 +64,13 @@ export function createTransition(transition: MotionTransition) {
     }, [isReducedMotion, onExitFinish, visible]);
 
     useIsomorphicLayoutEffect(() => {
-      if (isFirstMount.current) {
+      if (!elementRef.current) {
         return;
       }
 
-      if (elementRef.current && mounted && visible) {
+      const shouldEnter = isFirstMount.current ? appear && visible : mounted && visible;
+
+      if (shouldEnter) {
         const animation = elementRef.current.animate(transition.enter.keyframes, {
           fill: 'forwards',
 
@@ -81,25 +82,11 @@ export function createTransition(transition: MotionTransition) {
           animation.cancel();
         };
       }
-    }, [isReducedMotion, mounted, visible]);
+    }, [isReducedMotion, mounted, visible, appear]);
 
     useIsomorphicLayoutEffect(() => {
-      if (isFirstMount.current) {
-        isFirstMount.current = false;
-
-        if (elementRef.current && appear && visible) {
-          const animation = elementRef.current.animate(transition.enter.keyframes, {
-            fill: 'forwards',
-            ...transition.enter.options,
-            ...(isReducedMotion() && { duration: 1 }),
-          });
-
-          return () => {
-            animation.cancel();
-          };
-        }
-      }
-    }, [appear, isReducedMotion, visible]);
+      isFirstMount.current = false;
+    }, []);
 
     if (mounted) {
       return React.cloneElement(child, { ref });
