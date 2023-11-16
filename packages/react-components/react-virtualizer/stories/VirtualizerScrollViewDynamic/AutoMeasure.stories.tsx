@@ -19,11 +19,9 @@ export const AutoMeasure = () => {
   const arraySize = React.useRef(new Array<number>(childLength).fill(minHeight));
 
   useEffect(() => {
-    let _totalSize = 0;
     // Set random heights on init (to be measured)
     for (let i = 0; i < childLength; i++) {
       arraySize.current[i] = Math.floor(Math.random() * 150 + minHeight);
-      _totalSize += arraySize.current[i];
     }
   }, []);
 
