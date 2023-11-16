@@ -99,8 +99,8 @@ export function useTriggerListboxSlots(
   const documentOnMouseUp = useEventCallback((ev: MouseEvent) => {
     if (!listboxRef.current?.contains(ev.target as HTMLElement)) {
       setOpen(ev as unknown as React.MouseEvent<HTMLElement>, false);
+      targetDocument?.removeEventListener('mouseup', documentOnMouseUp);
     }
-    targetDocument?.removeEventListener('mouseup', documentOnMouseUp);
   });
 
   const listboxOnMouseDown = useEventCallback(
