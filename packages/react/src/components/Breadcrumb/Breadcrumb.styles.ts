@@ -203,7 +203,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
           ':focus': {
             color: palette.neutralDark,
           },
-          [`.${IsFocusVisibleClassName} &:focus`]: {
+          [`.${IsFocusVisibleClassName} &:focus, :host(.${IsFocusVisibleClassName}) &:focus`]: {
             outline: `none`,
           },
           ...itemStateSelectors,
