@@ -126,15 +126,14 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 
 ### **Methods**
 
-| Name                                            | Description                                                                                                                                                                                                     |
-| ----------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `onSelectionChange`                             | Callback called when the card selection changes                                                                                                                                                                 |
-| `sizeChanged(prev: string, next: string)`       | Triggered when the size of the card changes, updating the computed stylesheet accordingly.                                                                                                                      |
-| `selectedChanged(prev: boolean, next: boolean)` | Emits an event when the selected state of the card changes.                                                                                                                                                     |
-| `toggleCardSelection(checked?: boolean)`        | Toggles the selection state of the card. If a boolean value is provided, it sets the selection state to that value. Otherwise, it inverts the current selection state.                                          |
-| `updateInternalCheckboxState()`                 | Updates the state of the internal checkbox to match the selection state of the card. If the internal checkbox is not present, it sets the 'checked' attribute of the first element in the floating action slot. |
-| `clickHandler(e: MouseEvent)`                   | Handles mouse interaction with the card                                                                                                                                                                         |
-| `keydownHandler(e: KeyboardEvent)`              | Handles keyboard interaction with the card                                                                                                                                                                      |
+| Name                                            | Description                                                                                                                                                            |
+| ----------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `select()`                                      | Selects the card when the selectable.                                                                                                                                  |
+| `unselect()`                                    | Unselects the card when the card is selectable.                                                                                                                        |
+| `toggleCardSelection(checked?: boolean)`        | Toggles the selection state of the card. If a boolean value is provided, it sets the selection state to that value. Otherwise, it inverts the current selection state. |
+| `selectedChanged`                               | Callback called when the card selection changes .                                                                                                                      |
+| `sizeChanged(prev: string, next: string)`       | Triggered when the size of the card changes, updating the computed stylesheet accordingly.                                                                             |
+| `selectedChanged(prev: boolean, next: boolean)` | Emits an event when the selected state of the card changes.                                                                                                            |
 
 ### **Slots**
 
@@ -145,12 +144,12 @@ Fluent WC3 Card has feature parity with the Fluent UI React 9 Card implementatio
 
 ### **CSS Variables**
 
-| Name               | Description                                                                         |
-| ------------------ | ----------------------------------------------------------------------------------- |
-| `--card-size`      | The size of the card is used to set vertical and horizontal spacing within the card |
-| `--card-width`     | Used to set the width of the card                                                   |
-| `--card-height`    | Used to set the height of the card                                                  |
-| `--card-elevation` | Used to set the z-index of the card                                                 |
+| Name               | Description                                                                                             |
+| ------------------ | ------------------------------------------------------------------------------------------------------- |
+| `--card-size`      | Set based on the card's size attribute value. Used to set the horizontal, vertical spacing of the card. |
+| `--card-width`     | Used to set the width of the card                                                                       |
+| `--card-height`    | Used to set the height of the card                                                                      |
+| `--card-elevation` | Used to set the z-index of the card                                                                     |
 
 # Proposal for Interactive and Selectable Card Implementation
 
