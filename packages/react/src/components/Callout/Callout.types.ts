@@ -288,7 +288,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement>, Rea
   /**
    * The minimum height, in pixels, that the callout will scroll-resize down to on top/bottom edges before repositioning to a new edge.
    * Note: this prop has no effect if `directionalHintFixed=true`.
-   * Note: if callout styles do not allow y-direction overflow scrolling, the callout will not scroll-resize.
+   * Note: if `hideOverflow = true` or if callout styles do not allow y-direction overflow scrolling, the callout will not scroll-resize.
    * @defaultvalue 200
    */
   minimumScrollResizeHeight?: number;

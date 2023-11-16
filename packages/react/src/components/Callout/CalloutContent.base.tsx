@@ -134,8 +134,9 @@ function useMaxHeight(
   const { top, bottom } = positions?.elementPosition ?? {};
 
   React.useEffect(() => {
-    const { top: topBounds } = getBounds() ?? {};
-    let { bottom: bottomBounds } = getBounds() ?? {};
+    const bounds = getBounds();
+    const { top: topBounds } = bounds ?? {};
+    let { bottom: bottomBounds } = bounds ?? {};
     let calculatedHeight: number | undefined;
     const targetRect = targetRef?.current ? getRectangleFromTarget(targetRef?.current) : undefined;
 
