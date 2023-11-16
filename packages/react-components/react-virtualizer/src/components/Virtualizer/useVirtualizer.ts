@@ -5,7 +5,6 @@ import { useEffect, useRef, useCallback, useReducer, useImperativeHandle, useSta
 import { useIntersectionObserver } from '../../hooks/useIntersectionObserver';
 import { flushSync } from 'react-dom';
 import { useVirtualizerContextState_unstable } from '../../Utilities';
-import { renderVirtualizerChildPlaceholder } from './renderVirtualizer';
 import { slot } from '@fluentui/react-utilities';
 
 export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerState {
@@ -332,7 +331,6 @@ export function useVirtualizer_unstable(props: VirtualizerProps): VirtualizerSta
       const _actualIndex = Math.max(newIndex, 0);
       const end = Math.min(_actualIndex + virtualizerLength, numItems);
       for (let i = _actualIndex; i < end; i++) {
-        // childArray.current[i - _actualIndex] = renderVirtualizerChildPlaceholder(renderChild(i, isScrolling), i);
         childArray.current[i - _actualIndex] = renderChild(i, isScrolling);
       }
     },
