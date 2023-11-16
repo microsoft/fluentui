@@ -10395,7 +10395,7 @@ export enum Position {
 }
 
 // @public (undocumented)
-export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
+export function positionCallout(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo, shouldScroll?: boolean): ICalloutPositionedInfo;
 
 // @public (undocumented)
 export function positionCard(props: IPositionProps, hostElement: HTMLElement, elementToPosition: HTMLElement, previousPositions?: ICalloutPositionedInfo): ICalloutPositionedInfo;
